@@ -1,0 +1,196 @@
+/**
+ * Internationalization helper.
+ * Manages UI string resolution and language toggles (EN / TH / EN+TH).
+ */
+
+export const UI_STRINGS = {
+  appTitle: {
+    en: "ISC2 CC — Combined Practice Bank",
+    th: "ISC2 CC — คลังข้อสอบฝึกฝนรวม"
+  },
+  studyModeLabel: {
+    en: "Study Mode",
+    th: "โหมดการเรียน"
+  },
+  practiceTitle: {
+    en: "Practice",
+    th: "ฝึกฝน"
+  },
+  practiceDesc: {
+    en: "Instant feedback & explanations · No time limit",
+    th: "เฉลยและคำอธิบายทันที · ไม่จำกัดเวลา"
+  },
+  examTitle: {
+    en: "Exam",
+    th: "สอบจำลอง"
+  },
+  examDesc: {
+    en: "125 questions · 120 minutes · Results at the end",
+    th: "125 ข้อ · 120 นาที · สรุปผลเมื่อสิ้นสุดการสอบ"
+  },
+  practiceNote: {
+    en: "No time limit · Immediate feedback & explanations",
+    th: "ไม่จำกัดเวลา · แสดงเฉลยและคำอธิบายทันทีหลังตอบ"
+  },
+  examNote: {
+    en: "125 questions · 120 minutes · Feedback after completion",
+    th: "125 ข้อ · 120 นาที · สรุปผลและเฉลยหลังสอบเสร็จ"
+  },
+  orderLabel: {
+    en: "Order",
+    th: "ลำดับคำถาม"
+  },
+  sequentialTitle: {
+    en: "Sequential",
+    th: "เรียงลำดับ"
+  },
+  sequentialDesc: {
+    en: "Questions in order",
+    th: "คำถามเรียงตามลำดับ"
+  },
+  randomTitle: {
+    en: "Random",
+    th: "สุ่ม"
+  },
+  randomDesc: {
+    en: "Shuffled questions",
+    th: "คำถามแบบสุ่ม"
+  },
+  examOrderLocked: {
+    en: "Randomized for mock exam",
+    th: "สุ่มลำดับคำถามสำหรับข้อสอบจำลอง"
+  },
+  domainsLabel: {
+    en: "Domains",
+    th: "โดเมน"
+  },
+  selectAll: {
+    en: "Select all",
+    th: "เลือกทั้งหมด"
+  },
+  clearAll: {
+    en: "Clear all",
+    th: "ล้างการเลือก"
+  },
+  examAllDomainsLocked: {
+    en: "All 5 domains included",
+    th: "รวมครบทั้ง 5 โดเมน"
+  },
+  questionsCountLabel: {
+    en: "Number of questions",
+    th: "จำนวนข้อ"
+  },
+  warnSelectDomain: {
+    en: "Select at least one domain to begin.",
+    th: "กรุณาเลือกอย่างน้อยหนึ่งโดเมนเพื่อเริ่มต้น"
+  },
+  availableSuffix: {
+    en: "questions available from selected domains",
+    th: "ข้อที่มีให้ฝึกจากโดเมนที่เลือก"
+  },
+  examSettingsLabel: {
+    en: "Exam Settings",
+    th: "การตั้งค่าข้อสอบจำลอง"
+  },
+  examQuestionsBadge: {
+    en: "125 Questions",
+    th: "125 ข้อ"
+  },
+  examTimeBadge: {
+    en: "120 Minutes",
+    th: "120 นาที"
+  },
+  examDistributionNote: {
+    en: "125 questions across all 5 domains",
+    th: "125 ข้อ ครอบคลุมทั้ง 5 โดเมน"
+  },
+  startPracticeBtn: {
+    en: "Start Practice",
+    th: "เริ่มฝึกทำข้อสอบ"
+  },
+  startExamBtn: {
+    en: "Start Exam",
+    th: "เริ่มสอบจำลอง"
+  },
+  startQuizBtn: {
+    en: "Start Quiz",
+    th: "เริ่มทำข้อสอบ"
+  },
+  backToCertifications: {
+    en: "← Back to Certifications",
+    th: "← กลับไปยังหน้ารวมใบรับรอง"
+  },
+  outlineVersion: {
+    en: "Exam Outline",
+    th: "แนวข้อสอบ"
+  },
+  questionsUnit: {
+    en: "Questions",
+    th: "ข้อ"
+  },
+  readyNotificationTitle: {
+    en: "Quiz Setup Configured",
+    th: "บันทึกการตั้งค่าข้อสอบแล้ว"
+  },
+  readyNotificationDesc: {
+    en: "Your setup parameters have been saved in state. The real 583-question bank and quiz engine migration will follow in Phase 3.",
+    th: "บันทึกข้อมูลการตั้งค่าในระบบเรียบร้อย การย้ายคลังข้อสอบ 583 ข้อและระบบทำข้อสอบจริงจะดำเนินการใน Phase 3"
+  },
+  closeBtn: {
+    en: "Close",
+    th: "ปิด"
+  },
+  explanation: {
+    en: "Explanation",
+    th: "คำอธิบาย"
+  },
+  nextQuestion: {
+    en: "Next Question →",
+    th: "ข้อถัดไป →"
+  },
+  prevQuestion: {
+    en: "← Previous",
+    th: "← ก่อนหน้า"
+  },
+  exitQuiz: {
+    en: "Exit Quiz",
+    th: "ออกจากแบบทดสอบ"
+  },
+  finishQuiz: {
+    en: "Finish Quiz",
+    th: "สิ้นสุดแบบทดสอบ"
+  },
+  noTimeLimit: {
+    en: "No Time Limit",
+    th: "ไม่จำกัดเวลา"
+  },
+  correctLabel: {
+    en: "Correct",
+    th: "ถูกต้อง"
+  },
+  wrongLabel: {
+    en: "Wrong",
+    th: "ไม่ถูกต้อง"
+  },
+  questionProgress: {
+    en: "Question",
+    th: "คำถามข้อที่"
+  },
+  ofLabel: {
+    en: "of",
+    th: "จากทั้งหมด"
+  }
+};
+
+/**
+ * Returns the localized text for a key based on the language.
+ * @param {string} key - String identifier
+ * @param {string} lang - 'en' | 'th' | 'both'
+ * @returns {string} Localized string
+ */
+export function t(key, lang = 'en') {
+  const entry = UI_STRINGS[key];
+  if (!entry) return key;
+  if (lang === 'both') return `${entry.en} / ${entry.th}`;
+  return lang === 'th' ? entry.th : entry.en;
+}

@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Base Styles & Design System Tokens — SEC CERT TEST
+   ========================================================================== */
+
+:root,
+html[data-theme="dark"] {
+  --bg: #0a0a0d;
+  --panel: #131318;
+  --panel-2: #1b1b22;
+  --panel-hover: #1e1e28;
+  --line: #272733;
+  --line-hover: #3d3d52;
+  --text: #f2f2f5;
+  --text-dim: #9a9aa8;
+  --text-muted: #717182;
+  --blue: #3a86ff;
+  --blue-hover: #2563eb;
+  --blue-bg: rgba(58, 134, 255, 0.12);
+  --green: #2ecc71;
+  --green-bg: rgba(46, 204, 113, 0.12);
+  --red: #e63946;
+  --red-bg: rgba(230, 57, 70, 0.12);
+  --gold: #f4c542;
+  --gold-bg: rgba(244, 197, 66, 0.12);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --available-card-bg: linear-gradient(180deg, var(--panel) 0%, rgba(26, 26, 35, 0.8) 100%);
+  --disabled-card-bg: var(--panel);
+  --disabled-card-border: #232330;
+  --logo-bg: #ffffff;
+  --logo-border: var(--line);
+}
+
+html[data-theme="light"] {
+  --bg: #f6f8fc;
+  --panel: #ffffff;
+  --panel-2: #f1f5f9;
+  --panel-hover: #f8fafc;
+  --line: #d9e1ec;
+  --line-hover: #b9c7dc;
+  --text: #172033;
+  --text-dim: #5c6c84;
+  --text-muted: #8b99ad;
+  --blue: #2563eb;
+  --blue-hover: #1d4ed8;
+  --blue-bg: rgba(37, 99, 235, 0.08);
+  --green: #16a34a;
+  --green-bg: rgba(22, 163, 74, 0.1);
+  --red: #dc2626;
+  --red-bg: rgba(220, 38, 38, 0.1);
+  --gold: #d97706;
+  --gold-bg: rgba(217, 119, 6, 0.1);
+  --shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+  --card-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  --available-card-bg: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+  --disabled-card-bg: #f9fafd;
+  --disabled-card-border: #e2e8f0;
+  --logo-bg: #ffffff;
+  --logo-border: #d9e1ec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', 'Noto Sans Thai', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Wide Desktop-First Application Shell */
+.app {
+  max-width: 1320px;
+  width: min(100% - 48px, 1320px);
+  margin: 0 auto;
+  padding: 40px 0 80px;
+}
+
+@media (max-width: 768px) {
+  .app {
+    width: min(100% - 32px, 1320px);
+    padding: 24px 0 60px;
+  }
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', 'Noto Sans Thai', sans-serif;
+  margin: 0;
+  color: var(--text);
+}
+
+.subheading {
+  color: var(--text-dim);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-weight: 700;
+}

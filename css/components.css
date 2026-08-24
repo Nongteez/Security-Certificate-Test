@@ -1,0 +1,1076 @@
+/* ==========================================================================
+   UI Components (Buttons, Cards, Badges, Headers, Theme Toggle) — SEC CERT TEST
+   ========================================================================== */
+
+/* ===== Buttons ===== */
+.btn {
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: 'Space Grotesk', 'Noto Sans Thai', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--blue-hover);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.42);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--blue);
+  background: var(--panel-hover);
+}
+
+.btn-disabled,
+.btn:disabled {
+  background: var(--panel-2);
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* ===== Home Screen Header & Branding ===== */
+.home-header {
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.home-branding {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex: 1;
+}
+
+.home-logo {
+  width: 68px;
+  height: 68px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--logo-border);
+  background: var(--logo-bg);
+  flex-shrink: 0;
+}
+
+.home-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-title {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 4px 0 8px;
+  color: var(--text);
+}
+
+.home-tagline {
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 720px;
+}
+
+/* ===== Theme Toggle Button ===== */
+.home-header-actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--panel-2);
+  border: 1.5px solid var(--line);
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--card-shadow);
+}
+
+.theme-toggle:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--panel-hover);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.theme-icon {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .home-header-main {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .home-header-actions {
+    align-self: flex-end;
+  }
+  .home-branding {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+  .home-logo {
+    width: 56px;
+    height: 56px;
+  }
+  .home-title {
+    font-size: 26px;
+  }
+}
+
+/* ===== Certification Section & Grid ===== */
+.cert-section {
+  margin-bottom: 10px;
+}
+
+/* Responsive 3-Column Grid for Desktop (3 cols x 2 rows for 6 coming soon cards) */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.cert-grid-available {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 1080px) {
+  .cert-grid,
+  .cert-grid-available {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cert-grid,
+  .cert-grid-available {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* ===== Certification Cards ===== */
+.cert-card {
+  background: var(--panel);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 235px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--card-shadow);
+}
+
+.cert-card-available {
+  cursor: pointer;
+  border-color: rgba(58, 134, 255, 0.45);
+  background: var(--available-card-bg);
+}
+
+.cert-card-available:hover {
+  border-color: var(--blue);
+  box-shadow: 0 10px 32px rgba(58, 134, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.cert-card-disabled {
+  background: var(--disabled-card-bg);
+  border: 1.5px solid var(--disabled-card-border);
+  opacity: 0.88;
+  cursor: default;
+}
+
+.cert-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.cert-card-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cert-card-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: var(--logo-bg);
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--logo-border);
+  flex-shrink: 0;
+  display: block;
+}
+
+.cert-card-logo.muted {
+  opacity: 0.92;
+}
+
+.cert-vendor-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: var(--blue-bg);
+  color: var(--blue);
+  border: 1px solid rgba(58, 134, 255, 0.3);
+}
+
+.cert-vendor-badge.muted {
+  background: var(--panel-2);
+  color: var(--text-dim);
+  border-color: var(--line);
+}
+
+.cert-code-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 3px 9px;
+}
+
+.cert-code-chip.muted {
+  color: var(--text-muted);
+}
+
+.cert-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+  margin-bottom: 18px;
+}
+
+.cert-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.cert-card-title.muted {
+  color: var(--text);
+  opacity: 0.88;
+}
+
+.cert-card-desc {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.cert-card-desc.muted {
+  color: var(--text-dim);
+}
+
+.cert-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  gap: 12px;
+  margin-top: auto;
+}
+
+.status-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.status-available {
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+
+.status-coming-soon {
+  background: var(--panel-2);
+  color: var(--text-dim);
+  border: 1px solid var(--line);
+}
+
+/* ===== Certification Start / Quiz Setup Screen ===== */
+.start-screen-wrapper {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.start-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  gap: 16px;
+}
+
+.btn-back-home {
+  padding: 8px 18px;
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+}
+
+.start-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Language Segmented Control */
+.lang-toggle-wrap {
+  display: inline-flex;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  background: var(--panel-2);
+  border: 1.5px solid var(--line);
+  border-radius: 100px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.lang-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  white-space: nowrap;
+}
+
+.lang-btn:hover:not(.active) {
+  color: var(--text);
+  background: var(--panel-hover);
+}
+
+.lang-btn.active {
+  background: var(--blue);
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+
+/* Main Setup Panel Card */
+.start-panel-card {
+  background: var(--panel);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 28px 28px;
+  box-shadow: var(--shadow);
+}
+
+/* Compact Certification Branding Header */
+.start-header-hero {
+  margin-bottom: 2px;
+}
+
+.start-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.start-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: var(--logo-bg);
+  border: 1px solid var(--logo-border);
+  padding: 5px;
+  box-shadow: var(--card-shadow);
+  flex-shrink: 0;
+}
+
+.start-title-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.start-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.start-meta-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.meta-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 6px;
+  line-height: 1.3;
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+}
+
+.meta-badge-vendor {
+  background: var(--blue-bg);
+  color: var(--blue);
+  border: 1px solid rgba(58, 134, 255, 0.3);
+  font-weight: 700;
+}
+
+.meta-badge-outline {
+  background: var(--panel-2);
+  color: var(--text-dim);
+  border: 1px solid var(--line);
+}
+
+.meta-badge-count {
+  background: var(--panel-2);
+  color: var(--text-dim);
+  border: 1px solid var(--line);
+}
+
+.start-form-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 16px 0 20px;
+}
+
+/* Form Groups & Rhythm */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  min-height: 44px;
+  background: var(--panel-2);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: 'Space Grotesk', 'Noto Sans Thai', sans-serif;
+  font-size: 15px;
+  transition: all 0.16s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-bg);
+}
+
+.form-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mode Cards (Study Mode & Order) */
+.mode-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.mode-card {
+  background: var(--panel-2);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  min-height: 48px;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  user-select: none;
+}
+
+.mode-card:hover {
+  border-color: var(--blue);
+  background: var(--panel-hover);
+  transform: translateY(-1px);
+}
+
+.mode-card:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.mode-card.selected {
+  border-color: var(--blue);
+  background: var(--blue-bg);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.14);
+}
+
+.mode-card-header h3 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.mode-card.selected .mode-card-header h3 {
+  color: var(--blue);
+}
+
+.mode-card-desc {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+.mode-note-box {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--panel-2);
+  border-left: 3px solid var(--blue);
+  border-radius: 6px;
+}
+
+/* Locked Order in Exam Mode */
+.order-locked-box {
+  background: var(--panel-2);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.order-locked-box .locked-icon {
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+/* Domains Selection */
+.domains-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.domains-locked-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue);
+  background: var(--blue-bg);
+  border: 1px solid rgba(58, 134, 255, 0.3);
+  border-radius: 6px;
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+
+.domains-header-row .section-label {
+  margin-bottom: 0;
+}
+
+.domain-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-text-action {
+  background: none;
+  border: none;
+  color: var(--blue);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px 8px;
+  min-height: 32px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-text-action:hover {
+  text-decoration: underline;
+  background: var(--blue-bg);
+}
+
+.action-separator {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.domain-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.domain-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--panel-2);
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 14px;
+  min-height: 48px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  user-select: none;
+}
+
+.domain-row:hover {
+  border-color: var(--line-hover);
+  background: var(--panel-hover);
+}
+
+.domain-row:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
+
+.domain-row.checked {
+  border-color: rgba(37, 99, 235, 0.45);
+  background: var(--blue-bg);
+}
+
+.domain-row.locked {
+  cursor: default;
+}
+
+.domain-row.locked:hover {
+  border-color: rgba(37, 99, 235, 0.45);
+  background: var(--blue-bg);
+}
+
+.domain-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blue);
+  cursor: pointer;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.domain-row.locked .domain-checkbox {
+  cursor: default;
+}
+
+.domain-row .dnum {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dname-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.domain-row .dname {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.35;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dname-short {
+  display: none !important;
+}
+
+.dname-full {
+  display: block !important;
+}
+
+.dcount-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 3px 9px;
+  min-width: 38px;
+  text-align: center;
+  flex-shrink: 0;
+  transition: all 0.16s ease;
+}
+
+.domain-row.checked .dcount-badge {
+  background: var(--panel-2);
+  border-color: rgba(58, 134, 255, 0.3);
+  color: var(--blue);
+}
+
+/* Exam Settings Display */
+.exam-settings-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.exam-stat-card {
+  background: var(--panel-2);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.exam-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+.exam-stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.exam-distribution-info {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+/* Question Count Row */
+.count-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.count-row .form-label {
+  margin-bottom: 0;
+}
+
+.count-input {
+  width: 96px;
+  min-height: 44px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pool-count-info {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+
+.warn {
+  color: var(--red);
+  font-size: 12.5px;
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Start Quiz Button */
+.start-btn-row {
+  margin-top: 24px;
+}
+
+.btn-start-quiz {
+  width: 100%;
+  padding: 13px 24px;
+  min-height: 48px;
+  font-size: 15.5px;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+}
+
+/* Confirmation / Status Modal Dialog */
+.setup-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.setup-modal-content {
+  background: var(--panel);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: var(--shadow);
+  text-align: center;
+  animation: modalFadeIn 0.2s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.modal-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.modal-desc {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.modal-summary-box {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 14px;
+  text-align: left;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-dim);
+}
+
+.summary-item strong {
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+}
+
+.summary-item span {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--blue);
+}
+
+.modal-close-btn {
+  width: 100%;
+  min-height: 44px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 600px) {
+  .start-panel-card {
+    padding: 18px 16px 20px;
+  }
+  .dname-full {
+    display: none !important;
+  }
+  .dname-short {
+    display: block !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .start-top-bar {
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .btn-back-home {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+  .start-top-actions {
+    gap: 8px;
+  }
+  .lang-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+  }
+  .start-logo {
+    width: 44px;
+    height: 44px;
+  }
+  .start-title {
+    font-size: 17.5px;
+  }
+  .start-meta-badges {
+    gap: 6px;
+  }
+  .meta-badge {
+    font-size: 10px;
+    padding: 2px 7px;
+  }
+  .mode-cards {
+    grid-template-columns: 1fr;
+  }
+  .count-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .count-input {
+    width: 100%;
+  }
+  .domain-row {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .dcount-badge {
+    font-size: 11px;
+    padding: 2px 7px;
+    min-width: 32px;
+  }
+}
+
+
