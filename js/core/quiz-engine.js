@@ -325,7 +325,7 @@ export function isExamCountdownRunning() {
 }
 
 /**
- * Finalizes the active quiz session.
+ * Finalizes the active quiz session and routes to the Results screen.
  * @param {boolean} [timedOut=false]
  */
 export function finishQuizSession(timedOut = false) {
@@ -335,7 +335,7 @@ export function finishQuizSession(timedOut = false) {
     state.quiz.finishedAt = Date.now();
     state.quiz.timedOut = timedOut;
   }
-  state.screen = 'cert-start';
+  state.screen = 'results';
 }
 
 /**
@@ -345,4 +345,95 @@ export function exitQuizSession() {
   stopExamCountdown();
   resetQuizState();
   state.screen = 'cert-start';
+}
+
+/**
+ * Returns to the certification setup screen while preserving previous setup parameters.
+ */
+export function returnToQuizSetup() {
+  stopExamCountdown();
+  resetQuizState();
+  state.screen = 'cert-start';
+}
+
+/**
+ * Restarts the completed quiz session from Question 1 using the same question selection/config.
+ * Resets all answers, score counts, and exam timer.
+ */
+export function retryQuizSession() {
+  if (!state.quiz || !state.quiz.questions || state.quiz.questions.length === 0) return;
+
+  const mode = state.quiz.mode || 'practice';
+  const questions = [...state.quiz.questions];
+  const timeMinutes = state.setup.exam?.timeMinutes || 120;
+
+  stopExamCountdown();
+
+  state.quiz = {
+    active: true,
+    mode,
+    questions,
+    currentIndex: 0,
+    answers: new Array(questions.length).fill(null),
+    correct: 0,
+    wrong: 0,
+    startedAt: Date.now(),
+    timeRemainingSeconds: mode === 'exam' ? timeMinutes * 60 : null,
+    finished: false,
+    timedOut: false
+  };
+
+  state.screen = 'quiz';
+}
+
+/**
+ * Extracts questions answered incorrectly in the completed session.
+ * Excludes correct and unanswered questions.
+ * @returns {Array<{ questionIndex: number, question: Object, answer: Object }>}
+ */
+export function getWrongQuestions() {
+  if (!state.quiz || !state.quiz.questions || !state.quiz.answers) return [];
+  const wrongList = [];
+
+  state.quiz.questions.forEach((question, index) => {
+    const answer = state.quiz.answers[index];
+    if (answer !== null && answer.isCorrect === false) {
+      wrongList.push({
+        questionIndex: index,
+        question,
+        answer
+      });
+    }
+  });
+
+  return wrongList;
+}
+
+/**
+ * Starts a new untimed Practice-style quiz session containing only the questions
+ * answered incorrectly in the completed attempt.
+ */
+export function retryWrongAnswersSession() {
+  const wrongItems = getWrongQuestions();
+  if (wrongItems.length === 0) return;
+
+  const wrongQuestions = wrongItems.map((item) => item.question);
+
+  stopExamCountdown();
+
+  state.quiz = {
+    active: true,
+    mode: 'practice', // Always Practice mode for remediation
+    questions: wrongQuestions,
+    currentIndex: 0,
+    answers: new Array(wrongQuestions.length).fill(null),
+    correct: 0,
+    wrong: 0,
+    startedAt: Date.now(),
+    timeRemainingSeconds: null, // Always untimed
+    finished: false,
+    timedOut: false
+  };
+
+  state.screen = 'quiz';
 }

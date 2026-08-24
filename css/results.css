@@ -1,1 +1,370 @@
-/* Results screen layout, score circle, stat cards, incorrect answer review. */
+/* ==========================================================================
+   Results & Review Screen Styles — SEC CERT TEST
+   Responsive, Theme-adaptive Score Circle, Stat Cards, Action Buttons & Review
+   ========================================================================== */
+
+.results-container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Results Content Card */
+.results-content-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius, 14px);
+  padding: 44px 32px 48px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SVG Score Circle */
+.results-circle-wrap {
+  margin: 8px auto 22px;
+}
+
+.results-circle {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+
+.results-circle svg {
+  transform: rotate(-90deg);
+  display: block;
+}
+
+.results-svg-fill {
+  transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pct-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.pct-number {
+  font-size: 46px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.pct-label {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', 'Space Grotesk', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* Titles and Subtitles */
+.results-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.results-subtitle {
+  font-size: 15px;
+  color: var(--text-dim);
+  margin: 0 0 32px;
+  max-width: 620px;
+  line-height: 1.55;
+}
+
+/* 3 Stat Cards Grid: [ Correct ] [ Incorrect ] [ Score ] */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 580px;
+  margin-bottom: 36px;
+}
+
+.stat-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 12px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-hover);
+}
+
+.stat-card .val {
+  font-size: 26px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.1;
+}
+
+.stat-card .lbl {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+.stat-card.green .val {
+  color: var(--green);
+}
+
+.stat-card.red .val {
+  color: var(--red);
+}
+
+.stat-card.gold .val {
+  color: var(--gold);
+}
+
+/* Action Buttons Grid */
+.results-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 620px;
+}
+
+.results-btn {
+  min-height: 52px;
+  padding: 10px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.3;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.results-btn span {
+  display: inline;
+  line-height: 1.3;
+}
+
+.results-btn .btn-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-retry-wrong {
+  background: var(--red-bg);
+  border: 1px solid rgba(230, 57, 70, 0.35);
+  color: var(--red);
+}
+
+.btn-retry-wrong:hover:not(:disabled) {
+  background: rgba(230, 57, 70, 0.22);
+  border-color: var(--red);
+}
+
+/* Review Wrong Answers Screen Styles */
+.review-pill {
+  background: var(--red-bg);
+  color: var(--red);
+  border: 1px solid rgba(230, 57, 70, 0.4);
+}
+
+.review-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--panel-2);
+  border: 1.5px solid rgba(230, 57, 70, 0.35);
+  border-radius: var(--radius-sm, 8px);
+  padding: 5px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  white-space: nowrap;
+  box-shadow: var(--card-shadow);
+}
+
+.review-option-item {
+  cursor: default !important;
+}
+
+.review-badge-wrap {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.review-choice-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3.5px 9px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', 'Noto Sans Thai', monospace;
+  line-height: 1.3;
+}
+
+.review-choice-badge.correct {
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid rgba(46, 204, 113, 0.35);
+}
+
+.review-choice-badge.wrong {
+  background: var(--red-bg);
+  color: var(--red);
+  border: 1px solid rgba(230, 57, 70, 0.35);
+}
+
+/* Responsive Breakpoints for Results & Review */
+@media (max-width: 768px) {
+  .results-container {
+    gap: 16px;
+    padding-bottom: 40px;
+  }
+
+  .results-content-card {
+    padding: 36px 20px 40px;
+  }
+
+  .results-title {
+    font-size: 24px;
+  }
+
+  .results-subtitle {
+    font-size: 14.5px;
+    margin-bottom: 28px;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+    max-width: 480px;
+  }
+
+  .stat-card.gold {
+    grid-column: span 2;
+  }
+
+  .results-actions {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 480px;
+  }
+
+  .results-btn {
+    min-height: 48px;
+    padding: 11px 14px;
+    font-size: 13.5px;
+  }
+}
+
+@media (max-width: 430px) {
+  .results-content-card {
+    padding: 28px 14px 32px;
+  }
+
+  .results-circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .results-circle svg {
+    width: 160px;
+    height: 160px;
+  }
+
+  .pct-number {
+    font-size: 40px;
+  }
+
+  .pct-label {
+    font-size: 12px;
+  }
+
+  .results-title {
+    font-size: 20px;
+  }
+
+  .results-subtitle {
+    font-size: 13.5px;
+    margin-bottom: 22px;
+  }
+
+  .stat-card {
+    padding: 14px 10px;
+  }
+
+  .stat-card .val {
+    font-size: 22px;
+  }
+
+  .stat-card .lbl {
+    font-size: 11.5px;
+  }
+
+  .results-btn {
+    min-height: 48px;
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .review-status-tag {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .review-badge-wrap {
+    margin-top: 6px;
+  }
+
+  .review-choice-badge {
+    font-size: 11px;
+    padding: 2.5px 7px;
+  }
+}
+

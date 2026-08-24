@@ -235,6 +235,103 @@ export const UI_STRINGS = {
   examTimedOutDesc: {
     en: "The 120-minute exam time limit has expired. Your exam has been submitted automatically.",
     th: "หมดเวลาสอบ 120 นาทีแล้ว ระบบได้ทำการส่งแบบทดสอบของคุณโดยอัตโนมัติ"
+  },
+  // Results & Review Screen strings
+  resultsTitle: {
+    en: "Quiz Results",
+    th: "สรุปผลการทดสอบ"
+  },
+  resultsSubtitle: {
+    en: "Performance Summary",
+    th: "สรุปผลคะแนน"
+  },
+  passStatus: {
+    en: "PASS",
+    th: "ผ่าน"
+  },
+  failStatus: {
+    en: "FAIL",
+    th: "ไม่ผ่าน"
+  },
+  examPassedTitle: {
+    en: "Congratulations! You Passed!",
+    th: "ยินดีด้วย! คุณสอบผ่านเกณฑ์"
+  },
+  examFailedTitle: {
+    en: "Did Not Pass",
+    th: "ยังไม่ผ่านเกณฑ์การสอบ"
+  },
+  examTimedOutResultTitle: {
+    en: "Time Expired · Did Not Pass",
+    th: "หมดเวลาสอบ · ยังไม่ผ่านเกณฑ์"
+  },
+  practiceGreatJobTitle: {
+    en: "Great Job! Practice Completed",
+    th: "ยอดเยี่ยม! จบการฝึกฝนแล้ว"
+  },
+  practiceCompletedTitle: {
+    en: "Practice Completed",
+    th: "จบการฝึกฝนแล้ว"
+  },
+  incorrectLabel: {
+    en: "Incorrect",
+    th: "ไม่ถูกต้อง"
+  },
+  scoreLabel: {
+    en: "Score",
+    th: "คะแนน"
+  },
+  newQuizBtn: {
+    en: "New Quiz",
+    th: "สร้างชุดข้อสอบใหม่"
+  },
+  retryBtn: {
+    en: "Retry",
+    th: "เริ่มทำใหม่อีกครั้ง"
+  },
+  reviewWrongBtn: {
+    en: "Review Wrong Answers",
+    th: "ดูข้อที่ตอบผิด"
+  },
+  retryWrongBtn: {
+    en: "Retry Wrong Answers",
+    th: "ฝึกทำเฉพาะข้อที่ผิด"
+  },
+  reviewWrongTitle: {
+    en: "Review Wrong Answers",
+    th: "ทบทวนข้อที่ตอบผิด"
+  },
+  reviewWrongSubtitle: {
+    en: "Reviewing questions answered incorrectly in completed attempt",
+    th: "ทบทวนคำถามที่คุณตอบผิดจากการทำข้อสอบในรอบนี้"
+  },
+  backToResults: {
+    en: "← Back to Results",
+    th: "← กลับไปยังหน้าผลสอบ"
+  },
+  yourAnswerLabel: {
+    en: "Your Answer",
+    th: "คำตอบของคุณ"
+  },
+  correctAnswerLabel: {
+    en: "Correct Answer",
+    th: "คำตอบที่ถูกต้อง"
+  },
+  noWrongAnswersTitle: {
+    en: "Perfect Score! No Wrong Answers",
+    th: "ยอดเยี่ยม! ไม่มีข้อที่ตอบผิด"
+  },
+  noWrongAnswersDesc: {
+    en: "You answered all questions correctly in this session.",
+    th: "คุณตอบคำถามถูกต้องครบทุกข้อในรอบนี้"
+  },
+  reviewItemCounter: {
+    en: "Wrong Question",
+    th: "ข้อที่ตอบผิด"
+  },
+  reviewModeBadge: {
+    en: "Review Mode",
+    th: "โหมดทบทวน"
   }
 };
 

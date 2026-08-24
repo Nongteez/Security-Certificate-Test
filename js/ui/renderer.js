@@ -9,6 +9,7 @@ import { loadExamConfig } from '../core/question-loader.js';
 import { renderHomeScreen } from './screen-home.js';
 import { renderCertStartScreen } from './screen-start.js';
 import { renderQuizScreen } from './screen-quiz.js';
+import { renderResultsScreen, renderReviewWrongScreen } from './screen-results.js';
 
 /**
  * Main render function. Reads state.screen and mounts the active view into #app.
@@ -56,6 +57,24 @@ export async function renderApp() {
 
     case 'quiz':
       renderQuizScreen(
+        container,
+        () => {
+          renderApp();
+        }
+      );
+      break;
+
+    case 'results':
+      renderResultsScreen(
+        container,
+        () => {
+          renderApp();
+        }
+      );
+      break;
+
+    case 'review-wrong':
+      renderReviewWrongScreen(
         container,
         () => {
           renderApp();

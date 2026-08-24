@@ -140,6 +140,7 @@ export function renderQuizScreen(container, onRerender) {
     } else {
       expContentHtml = `
         <div class="explanation-en"><span class="lang-badge">EN</span>${escapeHtml(currentQ.explanation)}</div>
+        <div class="explanation-divider" aria-hidden="true"></div>
         <div class="explanation-th"><span class="lang-badge">TH</span>${escapeHtml(currentQ.explanation_th || currentQ.explanation)}</div>
       `;
     }
@@ -179,11 +180,6 @@ export function renderQuizScreen(container, onRerender) {
         </div>
 
         <div class="quiz-header-right">
-          <!-- Always accessible Finish Action Button -->
-          <button type="button" class="btn btn-finish-quiz ${isExam ? 'exam' : 'practice'}" id="btn-quiz-finish">
-            ${finishButtonLabel}
-          </button>
-
           <!-- Timer or No Time Limit Pill -->
           <div class="quiz-timer-badge ${isExam ? 'exam-timer' : ''}" id="quiz-timer-container">
             <span id="quiz-timer-display">⏱ ${initialTimeFormatted}</span>
@@ -203,18 +199,32 @@ export function renderQuizScreen(container, onRerender) {
 
       <!-- Question Meta & Progress Bar -->
       <div class="quiz-meta-bar">
-        <div class="quiz-progress-text">
-          <span>${t('questionProgress', lang)} ${currentIndex + 1} / ${totalQuestions}</span>
-        </div>
-        <div class="quiz-domain-tag">
-          <span>🏷️ D${currentQ.dom}: ${escapeHtml(domainLabel)}</span>
-        </div>
-        ${!isExam ? `
-          <div class="quiz-score-counters">
-            <span class="score-counter-correct">✓ ${quiz.correct} ${t('correctLabel', lang)}</span>
-            <span class="score-counter-wrong">✗ ${quiz.wrong} ${t('wrongLabel', lang)}</span>
+        <div class="quiz-meta-left">
+          <span class="domain-pill">Domain ${currentQ.dom} · ${escapeHtml(domainLabel)}</span>
+          <div class="quiz-question-counter quiz-progress-text">
+            <span>${t('questionProgress', lang)} ${currentIndex + 1} / ${totalQuestions}</span>
           </div>
-        ` : ''}
+        </div>
+        <div class="quiz-meta-actions">
+          ${!isExam ? `
+            <div class="quiz-score-segment" aria-label="Score status">
+              <div class="score-segment-item score-segment-correct">
+                <span class="score-icon">✓</span>
+                <span class="score-val">${quiz.correct}</span>
+                <span class="score-label">${t('correctLabel', lang)}</span>
+              </div>
+              <div class="score-segment-divider" aria-hidden="true"></div>
+              <div class="score-segment-item score-segment-wrong">
+                <span class="score-icon">✕</span>
+                <span class="score-val">${quiz.wrong}</span>
+                <span class="score-label">${t('wrongLabel', lang)}</span>
+              </div>
+            </div>
+          ` : ''}
+          <button type="button" class="btn btn-finish-quiz ${isExam ? 'exam' : 'practice'}" id="btn-quiz-finish">
+            ${finishButtonLabel}
+          </button>
+        </div>
       </div>
 
       <!-- Progress Track -->
