@@ -8,6 +8,7 @@ import certifications from '../../data/certifications.js';
 import { loadExamConfig } from '../core/question-loader.js';
 import { renderHomeScreen } from './screen-home.js';
 import { renderCertStartScreen } from './screen-start.js';
+import { renderQuizScreen } from './screen-quiz.js';
 
 /**
  * Main render function. Reads state.screen and mounts the active view into #app.
@@ -45,10 +46,22 @@ export async function renderApp() {
           resetToHome();
           renderApp();
         },
-        examConfig
+        examConfig,
+        () => {
+          renderApp();
+        }
       );
       break;
     }
+
+    case 'quiz':
+      renderQuizScreen(
+        container,
+        () => {
+          renderApp();
+        }
+      );
+      break;
 
     default:
       console.warn(`Unknown screen state: ${state.screen}. Falling back to home.`);

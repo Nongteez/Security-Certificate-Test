@@ -5,7 +5,7 @@
 
 import { state, updateSetup } from '../core/state.js';
 import { recordAnswer, nextQuestion, previousQuestion, exitQuizSession } from '../core/quiz-engine.js';
-import { toggleTheme, getStoredTheme } from '../core/theme.js';
+import { toggleTheme, getCurrentTheme } from '../core/theme.js';
 import { t } from '../core/i18n.js';
 
 const DOMAIN_MAP = {
@@ -33,7 +33,7 @@ export function renderQuizScreen(container, onRerender) {
   }
 
   const lang = state.setup.language || 'en';
-  const currentTheme = getStoredTheme();
+  const currentTheme = getCurrentTheme();
   const isDark = currentTheme === 'dark';
   const isExam = quiz.mode === 'exam';
 

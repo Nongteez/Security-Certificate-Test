@@ -8,6 +8,8 @@
 import { state, updateSetup, updatePracticeSetup } from '../core/state.js';
 import { t } from '../core/i18n.js';
 import { toggleTheme, getCurrentTheme } from '../core/theme.js';
+import { loadQuestionsForDomains } from '../core/question-loader.js';
+import { createPracticeSession, createExamSession, startQuizSession } from '../core/quiz-engine.js';
 
 /**
  * Renders the Certification Start / Setup screen into the given container.
@@ -16,8 +18,9 @@ import { toggleTheme, getCurrentTheme } from '../core/theme.js';
  * @param {string} version - The active exam version (e.g. "2026")
  * @param {Function} onBackToHome - Callback invoked when "Back to Certifications" is clicked
  * @param {Object} examConfig - The exam version configuration from exam.config.js
+ * @param {Function} [onStartQuiz] - Callback invoked when a quiz session is started
  */
-export function renderCertStartScreen(container, cert, version, onBackToHome, examConfig) {
+export function renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz) {
   const lang = state.setup.language || 'en';
   const studyMode = state.setup.studyMode || 'practice';
   const isExam = studyMode === 'exam';
@@ -292,26 +295,6 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
         </div>
       </div>
     </div>
-
-    <!-- Feedback / Mode Confirmation Modal Dialog -->
-    <div class="setup-modal-backdrop" id="setup-confirmation-modal" style="display: none;">
-      <div class="setup-modal-content">
-        <div class="modal-header-icon">${isExam ? '⏱️' : '🚀'}</div>
-        <h3 class="modal-title">${t('readyNotificationTitle', lang)}</h3>
-        <p class="modal-desc">${t('readyNotificationDesc', lang)}</p>
-        <div class="modal-summary-box">
-          <div class="summary-item"><strong>Language:</strong> <span>${state.setup.language.toUpperCase()}</span></div>
-          <div class="summary-item"><strong>Mode:</strong> <span>${isExam ? 'Exam (120 min · Feedback at end)' : 'Practice (Instant feedback · No timer)'}</span></div>
-          <div class="summary-item"><strong>Order:</strong> <span>${isExam ? 'Randomized' : (practiceOrder === 'random' ? 'Random' : 'Sequential')}</span></div>
-          <div class="summary-item"><strong>Domains:</strong> <span>${isExam ? 'All 5 Domains (1-5)' : `${practiceSelectedDomains.size}/${domains.length} (${Array.from(practiceSelectedDomains).sort().join(', ')})`}</span></div>
-          <div class="summary-item"><strong>Questions:</strong> <span>${isExam ? '125 Questions' : `${practiceQuestionCount} of ${practicePoolSize} available`}</span></div>
-          ${isExam ? `<div class="summary-item"><strong>Time Limit:</strong> <span>120 Minutes</span></div>` : ''}
-        </div>
-        <button type="button" class="btn btn-primary modal-close-btn" id="btn-modal-close">
-          ${t('closeBtn', lang)}
-        </button>
-      </div>
-    </div>
   `;
 
   // --- Attach Event Listeners ---
@@ -329,7 +312,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
   if (themeBtn) {
     themeBtn.addEventListener('click', () => {
       toggleTheme();
-      renderCertStartScreen(container, cert, version, onBackToHome, examConfig);
+      renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
     });
   }
 
@@ -340,7 +323,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
       const selectedLang = btn.getAttribute('data-lang');
       if (selectedLang) {
         updateSetup({ language: selectedLang });
-        renderCertStartScreen(container, cert, version, onBackToHome, examConfig);
+        renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
       }
     });
   });
@@ -351,13 +334,13 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
   if (practiceCard) {
     practiceCard.addEventListener('click', () => {
       updateSetup({ studyMode: 'practice' });
-      renderCertStartScreen(container, cert, version, onBackToHome, examConfig);
+      renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
     });
   }
   if (examCard) {
     examCard.addEventListener('click', () => {
       updateSetup({ studyMode: 'exam' });
-      renderCertStartScreen(container, cert, version, onBackToHome, examConfig);
+      renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
     });
   }
 
@@ -368,13 +351,13 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
     if (seqCard) {
       seqCard.addEventListener('click', () => {
         updatePracticeSetup({ order: 'all' });
-        renderCertStartScreen(container, cert, version, onBackToHome, examConfig);
+        renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
       });
     }
     if (randCard) {
       randCard.addEventListener('click', () => {
         updatePracticeSetup({ order: 'random' });
-        renderCertStartScreen(container, cert, version, onBackToHome, examConfig);
+        renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
       });
     }
   }
@@ -403,7 +386,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
           questionCount: newPool
         });
 
-        renderCertStartScreen(container, cert, version, onBackToHome, examConfig);
+        renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
       };
 
       row.addEventListener('click', toggle);
@@ -435,7 +418,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
             questionCount: newPool
           });
 
-          renderCertStartScreen(container, cert, version, onBackToHome, examConfig);
+          renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
         });
       }
     });
@@ -454,7 +437,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
           questionCount: newPool
         });
 
-        renderCertStartScreen(container, cert, version, onBackToHome, examConfig);
+        renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
       });
     }
 
@@ -466,7 +449,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
           questionCount: 0
         });
 
-        renderCertStartScreen(container, cert, version, onBackToHome, examConfig);
+        renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
       });
     }
 
@@ -486,26 +469,70 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
 
   // Start Quiz Button
   const startQuizBtn = container.querySelector('#btn-start-quiz');
-  const modalEl = container.querySelector('#setup-confirmation-modal');
-  const modalCloseBtn = container.querySelector('#btn-modal-close');
-
-  if (startQuizBtn && modalEl) {
-    startQuizBtn.addEventListener('click', () => {
+  if (startQuizBtn) {
+    startQuizBtn.addEventListener('click', async () => {
       if (!isExam && practicePoolSize === 0) return;
 
-      if (!isExam) {
-        const countInput = container.querySelector('#question-count-input');
-        const countVal = parseInt(countInput ? countInput.value : practiceQuestionCount, 10) || practiceQuestionCount;
-        updatePracticeSetup({ questionCount: Math.min(Math.max(1, countVal), practicePoolSize) });
+      startQuizBtn.disabled = true;
+      const originalText = startQuizBtn.textContent;
+      startQuizBtn.textContent = lang === 'th' ? 'กำลังโหลดคำถาม...' : 'Loading Questions...';
+
+      try {
+        if (isExam) {
+          const allDomainIds = (examConfig.domains || []).map((d) => d.id);
+          const questionsByDomain = await loadQuestionsForDomains({
+            vendorId: cert?.vendorId || 'isc2',
+            certId: cert?.certId || 'cc',
+            version: examVersion,
+            domainIds: allDomainIds
+          });
+
+          const questions = createExamSession({
+            questionsByDomain,
+            examConfig,
+            totalQuestions: 125
+          });
+
+          startQuizSession({
+            mode: 'exam',
+            questions,
+            timeMinutes: 120
+          });
+        } else {
+          const countInput = container.querySelector('#question-count-input');
+          const countVal = parseInt(countInput ? countInput.value : practiceQuestionCount, 10) || practiceQuestionCount;
+          const validCount = Math.min(Math.max(1, countVal), practicePoolSize);
+          updatePracticeSetup({ questionCount: validCount });
+
+          const selectedDomainIds = Array.from(state.setup.practice.selectedDomains);
+          const questionsByDomain = await loadQuestionsForDomains({
+            vendorId: cert?.vendorId || 'isc2',
+            certId: cert?.certId || 'cc',
+            version: examVersion,
+            domainIds: selectedDomainIds
+          });
+
+          const questions = createPracticeSession({
+            questionsByDomain,
+            selectedDomainIds,
+            order: state.setup.practice.order,
+            questionCount: validCount
+          });
+
+          startQuizSession({
+            mode: 'practice',
+            questions
+          });
+        }
+
+        if (onStartQuiz) {
+          onStartQuiz();
+        }
+      } catch (err) {
+        console.error('Failed to start quiz session:', err);
+        startQuizBtn.disabled = false;
+        startQuizBtn.textContent = originalText;
       }
-
-      modalEl.style.display = 'flex';
-    });
-  }
-
-  if (modalCloseBtn && modalEl) {
-    modalCloseBtn.addEventListener('click', () => {
-      modalEl.style.display = 'none';
     });
   }
 }
