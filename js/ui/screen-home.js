@@ -4,27 +4,7 @@
  * loaded dynamically from data/certifications.js, along with the Theme Toggle.
  */
 
-import { getSavedTheme, toggleTheme } from '../core/theme.js';
-
-const SUN_ICON = `
-  <svg class="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="5"></circle>
-    <line x1="12" y1="1" x2="12" y2="3"></line>
-    <line x1="12" y1="21" x2="12" y2="23"></line>
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-    <line x1="1" y1="12" x2="3" y2="12"></line>
-    <line x1="21" y1="12" x2="23" y2="12"></line>
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-  </svg>
-`;
-
-const MOON_ICON = `
-  <svg class="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-  </svg>
-`;
+import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
 
 /**
  * Renders the Home screen into the given container.
@@ -35,8 +15,6 @@ const MOON_ICON = `
 export function renderHomeScreen(container, certifications, onSelectCert) {
   const availableCerts = certifications.filter(c => c.enabled);
   const comingSoonCerts = certifications.filter(c => !c.enabled);
-  const currentTheme = getSavedTheme();
-  const isDark = currentTheme === 'dark';
 
   const availableCardsHtml = availableCerts.map(cert => `
     <div class="cert-card cert-card-available" data-cert-id="${cert.id}">
@@ -61,22 +39,22 @@ export function renderHomeScreen(container, certifications, onSelectCert) {
   `).join('');
 
   const comingSoonCardsHtml = comingSoonCerts.map(cert => `
-    <div class="cert-card cert-card-disabled">
+    <div class="cert-card cert-card-disabled" data-cert-id="${cert.id}">
       <div class="cert-card-header">
         <div class="cert-card-brand">
-          ${cert.logo ? `<img src="${cert.logo}" alt="${cert.name} Logo" class="cert-card-logo muted">` : ''}
-          <span class="cert-vendor-badge muted">${cert.vendor}</span>
+          ${cert.logo ? `<img src="${cert.logo}" alt="${cert.name} Logo" class="cert-card-logo">` : ''}
+          <span class="cert-vendor-badge">${cert.vendor}</span>
         </div>
-        <span class="cert-code-chip muted">${cert.shortName}</span>
+        <span class="cert-code-chip">${cert.shortName}</span>
       </div>
       <div class="cert-card-body">
-        <h3 class="cert-card-title muted">${cert.name}</h3>
-        <p class="cert-card-desc muted">${cert.description || ''}</p>
+        <h3 class="cert-card-title">${cert.name}</h3>
+        <p class="cert-card-desc">${cert.description || ''}</p>
       </div>
       <div class="cert-card-footer">
-        <span class="status-badge status-coming-soon">COMING SOON</span>
-        <button class="btn btn-disabled" disabled>
-          Not Available Yet
+        <span class="status-badge status-planned">ROADMAP</span>
+        <button class="btn btn-secondary btn-disabled" disabled>
+          In Development
         </button>
       </div>
     </div>
@@ -96,14 +74,7 @@ export function renderHomeScreen(container, certifications, onSelectCert) {
           </div>
         </div>
         <div class="home-header-actions">
-          <button
-            id="theme-toggle-btn"
-            class="theme-toggle"
-            aria-label="${isDark ? 'Switch to light mode' : 'Switch to dark mode'}"
-            title="${isDark ? 'Switch to light mode' : 'Switch to dark mode'}"
-          >
-            ${isDark ? SUN_ICON : MOON_ICON}
-          </button>
+          ${renderThemeToggle('theme-toggle-btn')}
         </div>
       </div>
     </header>
@@ -137,14 +108,5 @@ export function renderHomeScreen(container, certifications, onSelectCert) {
   });
 
   // Attach event listener to Theme Toggle button
-  const themeToggleBtn = container.querySelector('#theme-toggle-btn');
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const newTheme = toggleTheme();
-      const nowDark = newTheme === 'dark';
-      themeToggleBtn.innerHTML = nowDark ? SUN_ICON : MOON_ICON;
-      themeToggleBtn.setAttribute('aria-label', nowDark ? 'Switch to light mode' : 'Switch to dark mode');
-      themeToggleBtn.setAttribute('title', nowDark ? 'Switch to light mode' : 'Switch to dark mode');
-    });
-  }
+  attachThemeToggle(container, 'theme-toggle-btn');
 }

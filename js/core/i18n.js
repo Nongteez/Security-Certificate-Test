@@ -179,6 +179,62 @@ export const UI_STRINGS = {
   ofLabel: {
     en: "of",
     th: "จากทั้งหมด"
+  },
+  finishPractice: {
+    en: "Finish Practice",
+    th: "จบการฝึกฝน"
+  },
+  finishExam: {
+    en: "Finish Exam",
+    th: "ส่งข้อสอบ"
+  },
+  finishConfirmTitle: {
+    en: "Finish Quiz?",
+    th: "ยืนยันการสิ้นสุดแบบทดสอบ?"
+  },
+  finishConfirmAllAnswered: {
+    en: "All questions have been answered. Are you ready to finish and submit?",
+    th: "คุณตอบคำถามครบทุกข้อแล้ว พร้อมที่จะจบแบบทดสอบหรือไม่?"
+  },
+  finishConfirmUnansweredWarn: {
+    en: "You still have unanswered questions. Unanswered questions will be counted as incorrect in Exam mode.",
+    th: "คุณยังมีคำถามที่ยังไม่ได้ตอบ คำถามที่เว้นว่างจะถูกนับเป็นข้อผิดในการสอบจำลอง"
+  },
+  answeredLabel: {
+    en: "Answered",
+    th: "ตอบแล้ว"
+  },
+  unansweredLabel: {
+    en: "Unanswered",
+    th: "ยังไม่ได้ตอบ"
+  },
+  continueQuiz: {
+    en: "Continue Quiz",
+    th: "ทำข้อสอบต่อ"
+  },
+  submitFinish: {
+    en: "Finish / Submit",
+    th: "ส่งแบบทดสอบ"
+  },
+  exitConfirmTitle: {
+    en: "Exit Quiz?",
+    th: "ออกจากแบบทดสอบ?"
+  },
+  exitConfirmDesc: {
+    en: "Are you sure you want to exit? Your current quiz progress and score will be discarded.",
+    th: "คุณแน่ใจหรือไม่ว่าต้องการออก? ความคืบหน้าและคะแนนในรอบนี้จะถูกยกเลิก"
+  },
+  exitConfirmBtn: {
+    en: "Exit Quiz",
+    th: "ออกจากแบบทดสอบ"
+  },
+  examTimedOutTitle: {
+    en: "Time's Up!",
+    th: "หมดเวลาสอบ!"
+  },
+  examTimedOutDesc: {
+    en: "The 120-minute exam time limit has expired. Your exam has been submitted automatically.",
+    th: "หมดเวลาสอบ 120 นาทีแล้ว ระบบได้ทำการส่งแบบทดสอบของคุณโดยอัตโนมัติ"
   }
 };
 

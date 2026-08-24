@@ -1,12 +1,24 @@
 /**
  * Quiz screen UI.
- * Renders active question, options, feedback, language switching, and navigation controls.
+ * Renders active question, options, feedback, language switching,
+ * real-time HH:MM:SS exam countdown timer, Finish confirmation modal,
+ * and Exit confirmation modal.
  */
 
 import { state, updateSetup } from '../core/state.js';
-import { recordAnswer, nextQuestion, previousQuestion, exitQuizSession } from '../core/quiz-engine.js';
-import { toggleTheme, getCurrentTheme } from '../core/theme.js';
+import {
+  recordAnswer,
+  nextQuestion,
+  previousQuestion,
+  exitQuizSession,
+  finishQuizSession,
+  formatTimeHHMMSS,
+  startExamCountdown,
+  stopExamCountdown,
+  isExamCountdownRunning
+} from '../core/quiz-engine.js';
 import { t } from '../core/i18n.js';
+import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
 
 const DOMAIN_MAP = {
   1: { en: "Security Principles", th: "หลักการความปลอดภัย" },
@@ -33,8 +45,6 @@ export function renderQuizScreen(container, onRerender) {
   }
 
   const lang = state.setup.language || 'en';
-  const currentTheme = getCurrentTheme();
-  const isDark = currentTheme === 'dark';
   const isExam = quiz.mode === 'exam';
 
   const currentIndex = quiz.currentIndex;
@@ -47,6 +57,10 @@ export function renderQuizScreen(container, onRerender) {
   const domainLabel = lang === 'th' ? domainInfo.th : (lang === 'both' ? `${domainInfo.en} · ${domainInfo.th}` : domainInfo.en);
 
   const progressPercent = Math.round(((currentIndex + 1) / totalQuestions) * 100);
+
+  // Statistics for finish modal
+  const answeredCount = quiz.answers.filter(a => a !== null).length;
+  const unansweredCount = totalQuestions - answeredCount;
 
   // Render question text according to language
   let questionHtml = '';
@@ -140,17 +154,22 @@ export function renderQuizScreen(container, onRerender) {
     `;
   }
 
-  // Next / Finish button state
+  // Next button state
   const isLastQuestion = currentIndex === totalQuestions - 1;
-  const nextButtonText = isLastQuestion ? t('finishQuiz', lang) : t('nextQuestion', lang);
+  const nextButtonText = isLastQuestion ? (isExam ? t('finishExam', lang) : t('finishPractice', lang)) : t('nextQuestion', lang);
   const nextButtonDisabled = (!isExam && !isAnswered) ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : '';
+  const finishButtonLabel = isExam ? t('finishExam', lang) : t('finishPractice', lang);
+
+  const initialTimeFormatted = isExam 
+    ? formatTimeHHMMSS(quiz.timeRemainingSeconds ?? 7200) 
+    : t('noTimeLimit', lang);
 
   container.innerHTML = `
     <div class="quiz-container">
       <!-- Top Navigation & Controls Header -->
       <div class="quiz-header">
         <div class="quiz-header-left">
-          <button type="button" class="btn btn-secondary" id="btn-quiz-exit" style="padding: 8px 14px; font-size: 13px;">
+          <button type="button" class="btn btn-secondary" id="btn-quiz-exit" style="padding: 7px 13px; font-size: 13px;">
             ← ${t('exitQuiz', lang)}
           </button>
           <div class="quiz-cert-badge">
@@ -160,9 +179,14 @@ export function renderQuizScreen(container, onRerender) {
         </div>
 
         <div class="quiz-header-right">
+          <!-- Always accessible Finish Action Button -->
+          <button type="button" class="btn btn-finish-quiz ${isExam ? 'exam' : 'practice'}" id="btn-quiz-finish">
+            ${finishButtonLabel}
+          </button>
+
           <!-- Timer or No Time Limit Pill -->
-          <div class="quiz-timer-badge ${isExam ? 'exam-timer' : ''}">
-            ${isExam ? '⏱ 120:00' : `⏱ ${t('noTimeLimit', lang)}`}
+          <div class="quiz-timer-badge ${isExam ? 'exam-timer' : ''}" id="quiz-timer-container">
+            <span id="quiz-timer-display">⏱ ${initialTimeFormatted}</span>
           </div>
 
           <!-- Language Selector -->
@@ -172,10 +196,8 @@ export function renderQuizScreen(container, onRerender) {
             <button type="button" class="lang-btn ${lang === 'both' ? 'active' : ''}" data-lang="both">EN+TH</button>
           </div>
 
-          <!-- Theme Toggle -->
-          <button type="button" class="theme-toggle-btn" id="quiz-theme-toggle" title="Toggle Theme">
-            ${isDark ? '☀️' : '🌙'}
-          </button>
+          <!-- Theme Toggle (consistent with Home and Setup screens) -->
+          ${renderThemeToggle('quiz-theme-toggle')}
         </div>
       </div>
 
@@ -240,20 +262,174 @@ export function renderQuizScreen(container, onRerender) {
         </div>
       </div>
     </div>
+
+    <!-- Exit Confirmation Modal Dialog -->
+    <div class="setup-modal-backdrop" id="exit-confirmation-modal" style="display: none;">
+      <div class="setup-modal-content">
+        <div class="modal-header-icon">⚠️</div>
+        <h3 class="modal-title">${t('exitConfirmTitle', lang)}</h3>
+        <p class="modal-desc">${t('exitConfirmDesc', lang)}</p>
+        <div class="modal-btn-row">
+          <button type="button" class="btn btn-secondary" id="btn-exit-cancel">
+            ${t('continueQuiz', lang)}
+          </button>
+          <button type="button" class="btn btn-primary" id="btn-exit-confirm" style="background: var(--red); border-color: var(--red);">
+            ${t('exitConfirmBtn', lang)}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Finish Confirmation Modal Dialog -->
+    <div class="setup-modal-backdrop" id="finish-confirmation-modal" style="display: none;">
+      <div class="setup-modal-content">
+        <div class="modal-header-icon">${unansweredCount === 0 ? '🎉' : '⚠️'}</div>
+        <h3 class="modal-title">${t('finishConfirmTitle', lang)}</h3>
+        <p class="modal-desc">${unansweredCount === 0 ? t('finishConfirmAllAnswered', lang) : t('finishConfirmUnansweredWarn', lang)}</p>
+        
+        <div class="modal-summary-box">
+          <div class="summary-item">
+            <strong>${t('answeredLabel', lang)}:</strong>
+            <span style="color: var(--green);">${answeredCount} / ${totalQuestions}</span>
+          </div>
+          ${unansweredCount > 0 ? `
+            <div class="summary-item">
+              <strong>${t('unansweredLabel', lang)}:</strong>
+              <span style="color: var(--red); font-weight: 700;">${unansweredCount}</span>
+            </div>
+          ` : ''}
+        </div>
+
+        <div class="modal-btn-row">
+          <button type="button" class="btn btn-secondary" id="btn-finish-cancel">
+            ${t('continueQuiz', lang)}
+          </button>
+          <button type="button" class="btn btn-primary" id="btn-finish-confirm">
+            ${t('submitFinish', lang)}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exam Timeout Modal Dialog -->
+    <div class="setup-modal-backdrop" id="timeout-modal" style="display: none;">
+      <div class="setup-modal-content">
+        <div class="modal-header-icon">⏰</div>
+        <h3 class="modal-title">${t('examTimedOutTitle', lang)}</h3>
+        <p class="modal-desc">${t('examTimedOutDesc', lang)}</p>
+        <div class="modal-btn-row">
+          <button type="button" class="btn btn-primary" id="btn-timeout-ok" style="width: 100%;">
+            ${t('closeBtn', lang)}
+          </button>
+        </div>
+      </div>
+    </div>
   `;
+
+  // --- Exam Countdown Timer ---
+  if (isExam && !quiz.finished) {
+    if (!isExamCountdownRunning()) {
+      startExamCountdown(
+        (remainingSeconds) => {
+          const displayEl = document.getElementById('quiz-timer-display');
+          const containerEl = document.getElementById('quiz-timer-container');
+          if (displayEl) {
+            displayEl.textContent = `⏱ ${formatTimeHHMMSS(remainingSeconds)}`;
+          }
+          if (containerEl) {
+            if (remainingSeconds <= 300) {
+              containerEl.classList.add('low-time');
+            } else {
+              containerEl.classList.remove('low-time');
+            }
+          }
+        },
+        () => {
+          // Timer reached 00:00:00 -> auto finish
+          const timeoutModal = document.getElementById('timeout-modal');
+          if (timeoutModal) {
+            timeoutModal.style.display = 'flex';
+          } else {
+            finishQuizSession(true);
+            if (onRerender) onRerender();
+          }
+        }
+      );
+    }
+  } else if (!isExam) {
+    stopExamCountdown();
+  }
 
   // --- Attach Event Listeners ---
 
-  // 1. Exit Button
+  // 1. Exit Button -> Open Exit Confirmation Modal
   const exitBtn = container.querySelector('#btn-quiz-exit');
-  if (exitBtn) {
+  const exitModal = container.querySelector('#exit-confirmation-modal');
+  const exitCancelBtn = container.querySelector('#btn-exit-cancel');
+  const exitConfirmBtn = container.querySelector('#btn-exit-confirm');
+
+  if (exitBtn && exitModal) {
     exitBtn.addEventListener('click', () => {
+      exitModal.style.display = 'flex';
+    });
+  }
+
+  if (exitCancelBtn && exitModal) {
+    exitCancelBtn.addEventListener('click', () => {
+      exitModal.style.display = 'none';
+    });
+  }
+
+  if (exitConfirmBtn && exitModal) {
+    exitConfirmBtn.addEventListener('click', () => {
+      exitModal.style.display = 'none';
       exitQuizSession();
       if (onRerender) onRerender();
     });
   }
 
-  // 2. Language Switcher
+  // 2. Finish Button -> Open Finish Confirmation Modal
+  const finishBtn = container.querySelector('#btn-quiz-finish');
+  const finishModal = container.querySelector('#finish-confirmation-modal');
+  const finishCancelBtn = container.querySelector('#btn-finish-cancel');
+  const finishConfirmBtn = container.querySelector('#btn-finish-confirm');
+
+  const openFinishModal = () => {
+    if (finishModal) {
+      finishModal.style.display = 'flex';
+    }
+  };
+
+  if (finishBtn) {
+    finishBtn.addEventListener('click', openFinishModal);
+  }
+
+  if (finishCancelBtn && finishModal) {
+    finishCancelBtn.addEventListener('click', () => {
+      finishModal.style.display = 'none';
+    });
+  }
+
+  if (finishConfirmBtn && finishModal) {
+    finishConfirmBtn.addEventListener('click', () => {
+      finishModal.style.display = 'none';
+      finishQuizSession(false);
+      if (onRerender) onRerender();
+    });
+  }
+
+  // 3. Timeout Modal OK Button
+  const timeoutModal = container.querySelector('#timeout-modal');
+  const timeoutOkBtn = container.querySelector('#btn-timeout-ok');
+  if (timeoutOkBtn && timeoutModal) {
+    timeoutOkBtn.addEventListener('click', () => {
+      timeoutModal.style.display = 'none';
+      finishQuizSession(true);
+      if (onRerender) onRerender();
+    });
+  }
+
+  // 4. Language Switcher
   const langBtns = container.querySelectorAll('.lang-btn');
   langBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -265,16 +441,10 @@ export function renderQuizScreen(container, onRerender) {
     });
   });
 
-  // 3. Theme Switcher
-  const themeBtn = container.querySelector('#quiz-theme-toggle');
-  if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      toggleTheme();
-      renderQuizScreen(container, onRerender);
-    });
-  }
+  // 5. Theme Switcher (toggles without resetting quiz progress)
+  attachThemeToggle(container, 'quiz-theme-toggle');
 
-  // 4. Option Clicks
+  // 6. Option Clicks
   const optionButtons = container.querySelectorAll('.option-item:not(:disabled)');
   optionButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -284,7 +454,7 @@ export function renderQuizScreen(container, onRerender) {
     });
   });
 
-  // 5. Previous Button
+  // 7. Previous Button
   const prevBtn = container.querySelector('#btn-quiz-prev');
   if (prevBtn && currentIndex > 0) {
     prevBtn.addEventListener('click', () => {
@@ -293,14 +463,12 @@ export function renderQuizScreen(container, onRerender) {
     });
   }
 
-  // 6. Next / Finish Button
+  // 8. Next / Finish Button
   const nextBtn = container.querySelector('#btn-quiz-next');
   if (nextBtn && (!nextButtonDisabled || isExam)) {
     nextBtn.addEventListener('click', () => {
       if (isLastQuestion) {
-        // Safe exit / complete placeholder for Phase 4
-        exitQuizSession();
-        if (onRerender) onRerender();
+        openFinishModal();
       } else {
         nextQuestion();
         renderQuizScreen(container, onRerender);

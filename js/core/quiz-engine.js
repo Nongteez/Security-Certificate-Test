@@ -254,9 +254,95 @@ export function previousQuestion() {
 }
 
 /**
+ * Formats total seconds into HH:MM:SS string format.
+ * @param {number} totalSeconds 
+ * @returns {string} e.g. "01:59:59"
+ */
+export function formatTimeHHMMSS(totalSeconds) {
+  if (totalSeconds === null || totalSeconds === undefined) return '';
+  const s = Math.max(0, Math.floor(totalSeconds));
+  const hours = Math.floor(s / 3600);
+  const minutes = Math.floor((s % 3600) / 60);
+  const seconds = s % 60;
+  const hh = String(hours).padStart(2, '0');
+  const mm = String(minutes).padStart(2, '0');
+  const ss = String(seconds).padStart(2, '0');
+  return `${hh}:${mm}:${ss}`;
+}
+
+let timerIntervalId = null;
+
+/**
+ * Starts the countdown timer for Exam mode.
+ * Updates state.quiz.timeRemainingSeconds every second and calls onTick callback.
+ * @param {Function} [onTick] - Callback receiving remaining seconds
+ * @param {Function} [onTimeout] - Callback invoked when timer reaches 00:00:00
+ */
+export function startExamCountdown(onTick, onTimeout) {
+  stopExamCountdown();
+
+  if (!state.quiz.active || state.quiz.mode !== 'exam') return;
+  if (state.quiz.timeRemainingSeconds === null || state.quiz.timeRemainingSeconds <= 0) return;
+
+  timerIntervalId = setInterval(() => {
+    if (!state.quiz.active || state.quiz.mode !== 'exam') {
+      stopExamCountdown();
+      return;
+    }
+
+    state.quiz.timeRemainingSeconds--;
+
+    if (onTick) {
+      onTick(state.quiz.timeRemainingSeconds);
+    }
+
+    if (state.quiz.timeRemainingSeconds <= 0) {
+      stopExamCountdown();
+      state.quiz.timeRemainingSeconds = 0;
+      if (onTimeout) {
+        onTimeout();
+      }
+    }
+  }, 1000);
+}
+
+/**
+ * Stops any active countdown timer.
+ */
+export function stopExamCountdown() {
+  if (timerIntervalId) {
+    clearInterval(timerIntervalId);
+    timerIntervalId = null;
+  }
+}
+
+/**
+ * Checks if countdown timer is currently running.
+ * @returns {boolean}
+ */
+export function isExamCountdownRunning() {
+  return timerIntervalId !== null;
+}
+
+/**
+ * Finalizes the active quiz session.
+ * @param {boolean} [timedOut=false]
+ */
+export function finishQuizSession(timedOut = false) {
+  stopExamCountdown();
+  if (state.quiz) {
+    state.quiz.finished = true;
+    state.quiz.finishedAt = Date.now();
+    state.quiz.timedOut = timedOut;
+  }
+  state.screen = 'cert-start';
+}
+
+/**
  * Exits the current active quiz session and returns to certification start screen.
  */
 export function exitQuizSession() {
+  stopExamCountdown();
   resetQuizState();
   state.screen = 'cert-start';
 }

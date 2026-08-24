@@ -7,9 +7,9 @@
 
 import { state, updateSetup, updatePracticeSetup } from '../core/state.js';
 import { t } from '../core/i18n.js';
-import { toggleTheme, getCurrentTheme } from '../core/theme.js';
 import { loadQuestionsForDomains } from '../core/question-loader.js';
 import { createPracticeSession, createExamSession, startQuizSession } from '../core/quiz-engine.js';
+import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
 
 /**
  * Renders the Certification Start / Setup screen into the given container.
@@ -54,11 +54,6 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
   );
 
   const isStartDisabled = !isExam && practicePoolSize === 0;
-
-  const currentTheme = getCurrentTheme();
-  const themeIcon = currentTheme === 'dark'
-    ? `<svg class="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`
-    : `<svg class="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
 
   // Build domain rows HTML
   const domainRowsHtml = domains.map((d) => {
@@ -216,9 +211,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
           </div>
 
           <!-- Theme Toggle Button -->
-          <button class="theme-toggle" id="start-theme-toggle" title="Toggle color theme" aria-label="Toggle theme">
-            ${themeIcon}
-          </button>
+          ${renderThemeToggle('start-theme-toggle')}
         </div>
       </div>
 
@@ -308,13 +301,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
   }
 
   // Theme Toggle Button
-  const themeBtn = container.querySelector('#start-theme-toggle');
-  if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      toggleTheme();
-      renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
-    });
-  }
+  attachThemeToggle(container, 'start-theme-toggle');
 
   // Language Buttons
   const langBtns = container.querySelectorAll('.lang-btn');
