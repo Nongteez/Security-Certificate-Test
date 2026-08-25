@@ -58,16 +58,8 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
   // Build domain rows HTML
   const domainRowsHtml = domains.map((d) => {
     const isChecked = activeDomainSet.has(d.id);
-    let domainDisplayName = d.name.en;
-    let domainShortName = d.shortName?.en || d.name.en;
-
-    if (lang === 'both') {
-      domainDisplayName = `${d.name.en} / ${d.name.th || d.name.en}`;
-      domainShortName = `${d.shortName?.en || d.name.en} / ${d.shortName?.th || d.name.th || d.name.en}`;
-    } else if (lang === 'th') {
-      domainDisplayName = d.name.th || d.name.en;
-      domainShortName = d.shortName?.th || d.name.th || d.name.en;
-    }
+    const domainDisplayName = d.name.en;
+    const domainShortName = d.shortName?.en || d.name.en;
 
     return `
       <div 
@@ -462,7 +454,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
 
       startQuizBtn.disabled = true;
       const originalText = startQuizBtn.textContent;
-      startQuizBtn.textContent = lang === 'th' ? 'กำลังโหลดคำถาม...' : 'Loading Questions...';
+      startQuizBtn.textContent = 'Loading Questions...';
 
       try {
         if (isExam) {

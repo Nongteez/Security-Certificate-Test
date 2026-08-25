@@ -1,0 +1,120 @@
+# Refined Question Bank Audit Report — ISC2 CC 2026 (583 Questions)
+
+> **AUDIT ONLY REPORT** — No question files or source code were modified during this second-pass audit.
+
+---
+
+## 1. High-Level Summary Metrics
+
+```text
+Total Questions: 583
+
+Structurally Valid: 583
+Structurally Invalid: 0
+
+Confirmed Answer Problems: 1 (Q312)
+Confirmed Translation Problems: 0
+True Duplicate Pairs: 3 (6 questions)
+Valid Similar Pairs: 3 (6 questions)
+Questions with Technical Accuracy Concerns: 0
+Likely Wrong Domain: 2 (Q33, Q34)
+Manual Review Required: 7 Questions (Q96, Q294, Q312, Q372, Q468, Q83, Q474)
+```
+
+---
+
+## 2. Investigation of Q312 (Answer & Explanation Contradiction)
+
+### Question Details
+- **Question ID**: 312
+- **File**: data/certs/isc2/cc/versions/2026/questions/domain-5.js
+- **Question Stem**: "While performing background checks on new employees, which of these can NEVER be an attribute for discrimination?"
+- **Options**:
+  - Option A (0): "Employment history, references, criminal records"
+  - Option B (1): "Credit history, employment history, references"
+  - Option C (2): "Criminal Records, credit history, references"
+  - Option D (3): "References, education, political affiliation, employment history"
+- **Configured correct_idx**: 3 (Option D)
+
+### Investigation Findings
+- **Correct Index Accuracy**: `correct_idx: 3` (Option D) is **100% CORRECT**. Political affiliation is the only attribute listed among choices that is illegal to use for employment discrimination.
+- **Contradiction Identified**: The opening letter prefix of the explanation text incorrectly states "The correct answer is A" (and in Thai "คำตอบที่ถูกต้องคือ A"), despite the remaining text of the explanation explicitly describing political preferences (Option D).
+
+### Exact Recommended Correction
+- **Do NOT edit yet.**
+- When authorized, update the prefix in English and Thai explanations:
+  - **EN Explanation**: Change "The correct answer is A." to "The correct answer is D."
+  - **TH Explanation**: Change "คำตอบที่ถูกต้องคือ A" to "คำตอบที่ถูกต้องคือ D"
+
+---
+
+## 3. Duplicate Findings Re-evaluation (6 Candidate Pairs)
+
+| Pair | Classification | Notes & Evaluation |
+| :--- | :--- | :--- |
+| **Q294 ↔ Q372** | **TRUE DUPLICATE** | Both test *"Which of these is NOT a best practice in access management?"* with identical correct choice *"Trust but verify"*. Q372 also contains a leftover text artifact (`github.com/ayemunhossain`) in choice C. Recommend removing or replacing Q372. |
+| **Q96 ↔ Q468** | **TRUE DUPLICATE** | Both ask *"What is Patch Management?"* with identical definition answer. Recommend removing or replacing Q468. |
+| **Q83 ↔ Q474** | **TRUE DUPLICATE** | Both test the distinction between Symmetric and Asymmetric encryption with identical topic scope. Recommend replacing Q474 with a unique scenario question. |
+| **Q223 ↔ Q408** | **VALID SIMILAR QUESTION** | Q223 uses `Acceptable Use Policies` while Q408 uses `Security policies and procedures` with distinct distractor sets. Valid variations testing administrative controls. |
+| **Q286 ↔ Q315** | **TRUE DUPLICATE** | Both ask *"Which type/kind of document outlines procedures ensuring vital company systems keep running during business-disrupting events?"* with identical options (`Business Impact Analysis`, `Business Impact Plan`, `Business Continuity Plan`, `Disaster Recovery Plan`). Recommend replacing Q315. |
+| **Q420 ↔ Q431** | **VALID SIMILAR QUESTION** | Q420 tests `Something you know` (Password) while Q431 tests `Something you are` (Biometrics). Valid distinct authentication factor questions. |
+
+---
+
+## 4. Translation Review (Filtering Out Technical Terminology)
+
+- **Findings**: 1005 questions contain standard English cybersecurity terms inside Thai text (such as *Firewall*, *Threat*, *Vulnerability*, *Confidentiality*, *Integrity*, *Availability*, *RBAC*, *MFA*, *VPN*, *IDS*, *IPS*, *TCP*, *UDP*, *CIA Triad*).
+- **Evaluation**: This is standard practice in Thai cybersecurity education. **0 questions** have missing Thai text or broken translation meaning.
+- **Confirmed Translation Problems**: **0**.
+
+---
+
+## 5. Domain Classification Review (9 Flagged Questions)
+
+| Question ID | Current Domain | Question Stem Summary | Status | Reason / Recommended Action |
+| :--- | :--- | :--- | :--- | :--- |
+| **Q33** | Domain 1 | *"What are the two categories of firewalls?"* | **LIKELY WRONG DOMAIN** | Firewalls and network host/network boundaries belong in **Domain 4 (Network Security)**. |
+| **Q34** | Domain 1 | *"What is the main difference between packet filtering firewalls and web application firewalls?"* | **LIKELY WRONG DOMAIN** | Detailed firewall mechanisms and OSI layer filtering belong in **Domain 4 (Network Security)**. |
+| **Q187** | Domain 1 | *"Which concept describes an information security strategy that integrates people, technology and operations... across multiple layers?"* | **KEEP CURRENT DOMAIN** | Core Defense in Depth principle. Appropriately placed in Domain 1. |
+| **Q188** | Domain 3 | *"Which access control is more effective at protecting a door against unauthorized access?"* | **KEEP CURRENT DOMAIN** | Physical access control (Locks). Appropriately placed in Domain 3. |
+| **Q189** | Domain 1 | *"Which of the following is a detection control?"* | **KEEP CURRENT DOMAIN** | Control categorization (Smoke sensors). Appropriately placed in Domain 1. |
+| **Q190** | Domain 4 | *"Which type of attack has the PRIMARY objective controlling the system from outside?"* | **KEEP CURRENT DOMAIN** | Network & system attack types (Backdoors). Appropriately placed in Domain 4. |
+| **Q192** | Domain 1 | *"When a company hires an insurance company to mitigate risk, which risk management technique is being applied?"* | **KEEP CURRENT DOMAIN** | Risk Management (Risk Transfer). Appropriately placed in Domain 1. |
+| **Q194** | Domain 1 | *"The process of verifying or proving the user's identification is known as:"* | **KEEP CURRENT DOMAIN** | Foundational AAA terminology (Authentication). Appropriately placed in Domain 1. |
+| **Q195** | Domain 3 | *"If an organization wants to protect itself against tailgating, which... type of access control would be most effective?"* | **KEEP CURRENT DOMAIN** | Physical access control against tailgating (Turnstiles). Appropriately placed in Domain 3. *(Note: Remove leftover `github.com/ayemunhossain` artifact in question text).* |
+
+---
+
+## 6. Question ID Categorization Summary
+
+### Structurally Valid (583 Questions)
+All 583 questions (Q1 – Q583).
+
+### Structurally Invalid (0 Questions)
+None.
+
+### Confirmed Answer Problems (1 Question)
+- `Q312` (Explanation letter prefix typo)
+
+### Confirmed Translation Problems (0 Questions)
+None.
+
+### True Duplicate Pairs (4 Pairs / 8 Question IDs)
+- `Q294` ↔ `Q372`
+- `Q96` ↔ `Q468`
+- `Q286` ↔ `Q315`
+- `Q83` ↔ `Q474`
+
+### Valid Similar Pairs (2 Pairs / 4 Question IDs)
+- `Q223` ↔ `Q408`
+- `Q420` ↔ `Q431`
+
+### Questions with Technical Accuracy Concerns (0 Questions)
+None.
+
+### Likely Wrong Domain (2 Questions)
+- `Q33` (Move from Domain 1 to Domain 4)
+- `Q34` (Move from Domain 1 to Domain 4)
+
+### Manual Review Required (9 Questions Total)
+`Q33`, `Q34`, `Q83`, `Q96`, `Q195`, `Q294`, `Q312`, `Q372`, `Q468`

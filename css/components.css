@@ -67,20 +67,19 @@
 }
 
 .home-header-main {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "logo title actions";
   align-items: flex-start;
   gap: 24px;
 }
 
-.home-branding {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  flex: 1;
+.home-header-top {
+  display: contents;
 }
 
 .home-logo {
+  grid-area: logo;
   width: 68px;
   height: 68px;
   border-radius: 14px;
@@ -92,6 +91,7 @@
 }
 
 .home-title-group {
+  grid-area: title;
   display: flex;
   flex-direction: column;
 }
@@ -115,9 +115,11 @@
 
 /* ===== Theme Toggle Button ===== */
 .home-header-actions {
+  grid-area: actions;
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  justify-self: end;
 }
 
 .theme-toggle {
@@ -151,25 +153,29 @@
   display: block;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .home-header-main {
-    flex-direction: column-reverse;
-    align-items: flex-end;
-    gap: 12px;
-  }
-  .home-header-actions {
-    align-self: flex-end;
-  }
-  .home-branding {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 16px;
+  }
+
+  .home-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
   }
+
   .home-logo {
     width: 56px;
     height: 56px;
   }
+
+  .home-header-actions {
+    justify-self: auto;
+  }
+
   .home-title {
     font-size: 26px;
   }

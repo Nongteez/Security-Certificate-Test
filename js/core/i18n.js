@@ -336,14 +336,14 @@ export const UI_STRINGS = {
 };
 
 /**
- * Returns the localized text for a key based on the language.
+ * Returns the localized UI text for a key.
+ * UI labels are always English to keep navigation clean and compact.
  * @param {string} key - String identifier
- * @param {string} lang - 'en' | 'th' | 'both'
  * @returns {string} Localized string
  */
-export function t(key, lang = 'en') {
+export function t(key) {
   const entry = UI_STRINGS[key];
   if (!entry) return key;
-  if (lang === 'both') return `${entry.en} / ${entry.th}`;
-  return lang === 'th' ? entry.th : entry.en;
+  return entry.en;
 }
+

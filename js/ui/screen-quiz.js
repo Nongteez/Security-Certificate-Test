@@ -53,8 +53,8 @@ export function renderQuizScreen(container, onRerender) {
   const currentAnswer = quiz.answers[currentIndex];
   const isAnswered = currentAnswer !== null;
 
-  const domainInfo = DOMAIN_MAP[currentQ.dom] || { en: `Domain ${currentQ.dom}`, th: `โดเมน ${currentQ.dom}` };
-  const domainLabel = lang === 'th' ? domainInfo.th : (lang === 'both' ? `${domainInfo.en} · ${domainInfo.th}` : domainInfo.en);
+  const domainInfo = DOMAIN_MAP[currentQ.dom] || { en: `Domain ${currentQ.dom}` };
+  const domainLabel = domainInfo.en;
 
   const progressPercent = Math.round(((currentIndex + 1) / totalQuestions) * 100);
 

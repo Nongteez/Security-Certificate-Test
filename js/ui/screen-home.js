@@ -63,18 +63,18 @@ export function renderHomeScreen(container, certifications, onSelectCert) {
   container.innerHTML = `
     <header class="home-header">
       <div class="home-header-main">
-        <div class="home-branding">
+        <div class="home-header-top">
           <img src="./assets/logos/LOGO.png" alt="SEC CERT TEST Logo" class="home-logo">
-          <div class="home-title-group">
-            <div class="subheading">CERTIFICATION PRACTICE PLATFORM</div>
-            <h1 class="home-title">SEC CERT TEST</h1>
-            <p class="home-tagline">
-              Interactive practice questions and mock exams for cybersecurity and networking certifications.
-            </p>
+          <div class="home-header-actions">
+            ${renderThemeToggle('theme-toggle-btn')}
           </div>
         </div>
-        <div class="home-header-actions">
-          ${renderThemeToggle('theme-toggle-btn')}
+        <div class="home-title-group">
+          <div class="subheading">CERTIFICATION PRACTICE PLATFORM</div>
+          <h1 class="home-title">SEC CERT TEST</h1>
+          <p class="home-tagline">
+            Interactive practice questions and mock exams for cybersecurity and networking certifications.
+          </p>
         </div>
       </div>
     </header>

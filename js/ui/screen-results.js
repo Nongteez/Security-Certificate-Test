@@ -83,16 +83,8 @@ export function renderResultsScreen(container, onRerender) {
     resultTitle = passed ? t('practiceGreatJobTitle', lang) : t('practiceCompletedTitle', lang);
   }
 
-  // Summary Subtitle
-  let resultSummary = '';
-  if (lang === 'en') {
-    resultSummary = `You answered ${correctCount} out of ${totalQuestions} correctly (${pct}%)${unansweredCount > 0 ? ` (${unansweredCount} unanswered)` : ''}.`;
-  } else if (lang === 'th') {
-    resultSummary = `คุณตอบถูก ${correctCount} จากทั้งหมด ${totalQuestions} ข้อ (${pct}%)${unansweredCount > 0 ? ` (ยังไม่ได้ตอบ ${unansweredCount} ข้อ)` : ''}`;
-  } else {
-    // Both
-    resultSummary = `You answered ${correctCount} of ${totalQuestions} correctly (${pct}%)${unansweredCount > 0 ? ` (${unansweredCount} unanswered)` : ''} / คุณตอบถูก ${correctCount} จาก ${totalQuestions} ข้อ`;
-  }
+  // Summary Subtitle (UI label always English)
+  const resultSummary = `You answered ${correctCount} out of ${totalQuestions} correctly (${pct}%)${unansweredCount > 0 ? ` (${unansweredCount} unanswered)` : ''}.`;
 
   container.innerHTML = `
     <div class="results-container">
@@ -307,8 +299,8 @@ export function renderReviewWrongScreen(container, onRerender) {
   const currentAnswer = currentItem.answer;
   const totalWrong = wrongItems.length;
 
-  const domainInfo = DOMAIN_MAP[currentQ.dom] || { en: `Domain ${currentQ.dom}`, th: `โดเมน ${currentQ.dom}` };
-  const domainLabel = lang === 'th' ? domainInfo.th : (lang === 'both' ? `${domainInfo.en} · ${domainInfo.th}` : domainInfo.en);
+  const domainInfo = DOMAIN_MAP[currentQ.dom] || { en: `Domain ${currentQ.dom}` };
+  const domainLabel = domainInfo.en;
   const progressPercent = Math.round(((activeReviewIndex + 1) / totalWrong) * 100);
 
   // Render question text
