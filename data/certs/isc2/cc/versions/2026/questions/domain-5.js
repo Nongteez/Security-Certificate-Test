@@ -826,7 +826,7 @@ const questions = [
     "options": [
       "Encryption",
       "Backup",
-      "Archival github.com/ayemunhossain",
+      "Archival",
       "Destruction"
     ],
     "correct_idx": 3,
@@ -852,8 +852,8 @@ const questions = [
       "Marked as potentially vulnerable and placed in a quarantine area"
     ],
     "correct_idx": 1,
-    "explanation": "Security baselines are used to guarantee that network devices, software, hardware and endpoints are configured consistently. Baselines ensure that all such devices comply with the security baseline set by the organization. Whenever a device is found not compliant with the security baseline, it may be disabled or isolated into a quarantine area until it can be checked and updated (see ISC2 Study Guide, chapter 5, module 2, under Configuration Management Overview). A github.com/ayemunhossain DMZ i",
-    "short_explanation_en": "Security baselines are used to guarantee that network devices, software, hardware and endpoints are configured consistently.",
+    "explanation": "Security baselines are used to guarantee that network devices, software, hardware and endpoints are configured consistently. Baselines ensure that all such devices comply with the security baseline set by the organization. Whenever a device is found not compliant with the security baseline, it may be disabled or isolated into a quarantine area until it can be checked and updated (see ISC2 Study Guide, chapter 5, module 2, under Configuration Management Overview).",
+    "short_explanation_en": "Security baselines are used to guarantee that network devices, software, hardware and endpoints are configured consistently. Baselines ensure that all such devices comply with the security baseline set by the organization. Whenever a device is found not compliant with the security baseline, it may be disabled or isolated into a quarantine area until it can be checked and updated (see ISC2 Study Guide, chapter 5, module 2, under Configuration Management Overview).",
     "question_th": "อุปกรณ์ที่พบว่าไม่สอดคล้องกับ security baseline ควรถูก:",
     "options_th": [
       "ปิดใช้งานหรือแยกไว้ในพื้นที่กักกันจนกว่าจะสามารถสแกนไวรัสได้",
@@ -976,7 +976,7 @@ const questions = [
   {
     "id": 227,
     "dom": 5,
-    "question": "What is an effective way of hardening a system? github.com/ayemunhossain",
+    "question": "What is an effective way of hardening a system?",
     "options": [
       "Patch the system",
       "Have an IDS in place",
@@ -1023,7 +1023,7 @@ const questions = [
     "question": "Which regulations address data protection and privacy in Europe?",
     "options": [
       "SOX",
-      "HIPAA github.com/ayemunhossain",
+      "HIPAA",
       "FISMA",
       "GDPR"
     ],
@@ -1046,7 +1046,7 @@ const questions = [
     "options": [
       "2 - 3",
       "1",
-      "1-2 github.com/ayemunhossain",
+      "1-2",
       ">4"
     ],
     "correct_idx": 0,
@@ -1130,7 +1130,7 @@ const questions = [
   {
     "id": 244,
     "dom": 5,
-    "question": "According to ISC2, which are the six phases of data handling? github.com/ayemunhossain",
+    "question": "According to ISC2, which are the six phases of data handling?",
     "options": [
       "Create -> Use -> Store -> Share -> Archive -> Destroy",
       "Create -> Store -> Use -> Share -> Archive -> Destroy",
@@ -1240,24 +1240,24 @@ const questions = [
   {
     "id": 288,
     "dom": 5,
-    "question": "If a company collects PII, which policy is required?",
+    "question": "According to media sanitization standards (such as NIST SP 800-88), which sanitization level renders target data recovery infeasible even using state-of-the-art laboratory techniques?",
     "options": [
-      "Remote Access Policy",
-      "GDPR",
-      "Privacy Policy",
-      "Acceptable Use Policy"
+      "Clearing",
+      "Purging",
+      "Formatting",
+      "Deleting"
     ],
-    "correct_idx": 2,
-    "explanation": "A Privacy Policy (PP) outlines the data security mechanisms which ensure that customer data is protected, namely, how Personal Identifiable Information (PII) is collected, stored and processed. An Acceptable Use Policy (AUP) defines the guidelines and limitations that users must agree on while accessing the an organization's network, computer systems or other related resources. The General Data Protection Regulation (GDPR) is a regulation on data protection and privacy for the European Union and",
-    "short_explanation_en": "A Privacy Policy (PP) outlines the data security mechanisms which ensure that customer data is protected, namely, how Personal Identifiable Information (PII) is collected, stored and processed.",
-    "question_th": "หากบริษัทเก็บรวบรวม PII ต้องมีนโยบายใด?",
+    "correct_idx": 1,
+    "explanation": "Purging applies physical or logical techniques (such as cryptographic erase or degaussing) that render target data recovery infeasible against advanced laboratory attacks. Clearing protects only against simple non-laboratory recovery tools.",
+    "short_explanation_en": "Purging renders data recovery infeasible even with laboratory techniques, whereas Clearing protects against basic tools.",
+    "question_th": "ตามมาตรฐานการทำลายข้อมูลบนสื่อบันทึก (เช่น NIST SP 800-88) ระดับการทำลายข้อมูลใดที่ทำให้การกู้คืนข้อมูลเป้าหมายไม่สามารถทำได้แม้จะใช้เทคนิคขั้นสูงในห้องปฏิบัติการ?",
     "options_th": [
-      "Remote Access Policy",
-      "GDPR",
-      "Privacy Policy",
-      "Acceptable Use Policy"
+      "Clearing (การลบล้างเชิงตรรกะ)",
+      "Purging (การล้างระดับลึก)",
+      "Formatting (การฟอร์แมต)",
+      "Deleting (การลบทั่วไป)"
     ],
-    "explanation_th": "Privacy Policy (PP) ระบุกลไกความปลอดภัยของข้อมูลที่รับประกันว่าข้อมูลลูกค้าได้รับการปกป้อง กล่าวคือ วิธีที่ Personal Identifiable Information (PII) ถูกเก็บรวบรวม จัดเก็บ และประมวลผล"
+    "explanation_th": "Purging (การล้างระดับลึก) ใช้เทคนิคทางกายภาพหรือตรรกะ (เช่น การลบกุญแจเข้ารหัส หรือการล้างสนามแม่เหล็ก) ที่ทำให้การกู้คืนข้อมูลไม่สามารถทำได้แม้จะใช้เทคนิคขั้นสูงในห้องปฏิบัติการ ส่วน Clearing ป้องกันได้เฉพาะการกู้คืนด้วยเครื่องมือทั่วไปที่ไม่ใช่ระดับห้องปฏิบัติการ"
   },
   {
     "id": 307,
@@ -1292,8 +1292,8 @@ const questions = [
       "References, education, political affiliation, employment history"
     ],
     "correct_idx": 3,
-    "explanation": "The correct answer is A. A best practice when hiring new staff is to perform a background check, so as to minimize risks. A company can use discriminatory factors such as references, academic degrees, and employment, criminal, or credit history (although this is not very common). However, it is illegal to inquire about potential or current employees' political preferences (see ISC2 Study Guide, chapter 5, module 4).",
-    "short_explanation_en": "The correct answer is A. A best practice when hiring new staff is to perform a background check, so as to minimize risks.",
+    "explanation": "The correct answer is D. A best practice when hiring new staff is to perform a background check, so as to minimize risks. A company can use discriminatory factors such as references, academic degrees, and employment, criminal, or credit history (although this is not very common). However, it is illegal to inquire about potential or current employees' political preferences (see ISC2 Study Guide, chapter 5, module 4).",
+    "short_explanation_en": "The correct answer is D. A best practice when hiring new staff is to perform a background check, so as to minimize risks.",
     "question_th": "เมื่อทำการตรวจสอบประวัติพนักงานใหม่ ข้อใดไม่สามารถใช้เป็นปัจจัยในการเลือกปฏิบัติได้เลย?",
     "options_th": [
       "ประวัติการทำงาน การอ้างอิง บันทึกอาชญากรรม",
@@ -1301,12 +1301,12 @@ const questions = [
       "บันทึกอาชญากรรม ประวัติเครดิต การอ้างอิง",
       "การอ้างอิง การศึกษา ความเกี่ยวข้องทางการเมือง ประวัติการทำงาน"
     ],
-    "explanation_th": "คำตอบที่ถูกต้องคือ A แนวปฏิบัติที่ดีเมื่อจ้างพนักงานใหม่คือการตรวจสอบประวัติเพื่อลดความเสี่ยง บริษัทสามารถใช้ปัจจัยเช่น การอ้างอิง วุฒิการศึกษา และประวัติการทำงาน อาชญากรรม หรือเครดิต (แม้จะไม่ค่อยพบบ่อยนัก) อย่างไรก็ตาม การสอบถามเกี่ยวกับความเกี่ยวข้องทางการเมืองของพนักงานที่มีศักยภาพหรือปัจจุบันนั้นผิดกฎหมาย"
+    "explanation_th": "คำตอบที่ถูกต้องคือ D แนวปฏิบัติที่ดีเมื่อจ้างพนักงานใหม่คือการตรวจสอบประวัติเพื่อลดความเสี่ยง บริษัทสามารถใช้ปัจจัยเช่น การอ้างอิง วุฒิการศึกษา และประวัติการทำงาน อาชญากรรม หรือเครดิต (แม้จะไม่ค่อยพบบ่อยนัก) อย่างไรก็ตาม การสอบถามเกี่ยวกับความเกี่ยวข้องทางการเมืองของพนักงานที่มีศักยภาพหรือปัจจุบันนั้นผิดกฎหมาย"
   },
   {
     "id": 318,
     "dom": 5,
-    "question": "What is the PRIMARY objective of a degaussing? github.com/ayemunhossain",
+    "question": "What is the PRIMARY objective of a degaussing?",
     "options": [
       "Preventing magnetic side-channel attacks",
       "Reducing noisy data on a disk",
@@ -1353,7 +1353,7 @@ const questions = [
     "question": "The PRIMARY objective of a security baseline is to establish ...",
     "options": [
       ". a minimum understood and a good level of security requirements",
-      "a minimum understood and acceptable level of security requirements github.com/ayemunhossain",
+      "a minimum understood and acceptable level of security requirements",
       "security and configuration requirements",
       "a maximum understood and an acceptable level of security requirements"
     ],
@@ -1372,7 +1372,7 @@ const questions = [
   {
     "id": 335,
     "dom": 5,
-    "question": "Which of these is a type of corrective security control? github.com/ayemunhossain",
+    "question": "Which of these is a type of corrective security control?",
     "options": [
       "Patches",
       "Intrusion detection systems",
@@ -1553,7 +1553,7 @@ const questions = [
       "Log auditing",
       "Log encryption",
       "Log consolidation",
-      "Log retention github.com/ayemunhossain"
+      "Log retention"
     ],
     "correct_idx": 0,
     "explanation": "Log auditing is not a feature of a SIEM (Security Information and Event Management). A SIEM typically provides the following features: Log consolidation, which consists in collecting logs from various sources (like servers, firewalls or IDS/IPS) and then storing them in one central location. Log retention, which consists in storing logs for a specific period (like 90 days), so as to allow security analysts to keep track of and investigate past events. Log encryption, which is an optional feature",
@@ -1574,7 +1574,7 @@ const questions = [
     "options": [
       "A differential backup",
       "An incremental backup",
-      "A backup snapshot github.com/ayemunhossain",
+      "A backup snapshot",
       "A full backup"
     ],
     "correct_idx": 0,

@@ -15,7 +15,8 @@ import {
   formatTimeHHMMSS,
   startExamCountdown,
   stopExamCountdown,
-  isExamCountdownRunning
+  isExamCountdownRunning,
+  persistCurrentQuizSession
 } from '../core/quiz-engine.js';
 import { t } from '../core/i18n.js';
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
@@ -170,7 +171,7 @@ export function renderQuizScreen(container, onRerender) {
       <!-- Top Navigation & Controls Header -->
       <div class="quiz-header">
         <div class="quiz-header-left">
-          <button type="button" class="btn btn-secondary" id="btn-quiz-exit" style="padding: 7px 13px; font-size: 13px;">
+          <button type="button" class="btn btn-secondary btn-quiz-exit" id="btn-quiz-exit">
             ← ${t('exitQuiz', lang)}
           </button>
           <div class="quiz-cert-badge">
@@ -372,6 +373,21 @@ export function renderQuizScreen(container, onRerender) {
 
   // --- Attach Event Listeners ---
 
+  // Helper functions for modal scroll locking
+  const openModal = (modal) => {
+    if (modal) {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeModal = (modal) => {
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  };
+
   // 1. Exit Button -> Open Exit Confirmation Modal
   const exitBtn = container.querySelector('#btn-quiz-exit');
   const exitModal = container.querySelector('#exit-confirmation-modal');
@@ -379,20 +395,16 @@ export function renderQuizScreen(container, onRerender) {
   const exitConfirmBtn = container.querySelector('#btn-exit-confirm');
 
   if (exitBtn && exitModal) {
-    exitBtn.addEventListener('click', () => {
-      exitModal.style.display = 'flex';
-    });
+    exitBtn.addEventListener('click', () => openModal(exitModal));
   }
 
   if (exitCancelBtn && exitModal) {
-    exitCancelBtn.addEventListener('click', () => {
-      exitModal.style.display = 'none';
-    });
+    exitCancelBtn.addEventListener('click', () => closeModal(exitModal));
   }
 
   if (exitConfirmBtn && exitModal) {
     exitConfirmBtn.addEventListener('click', () => {
-      exitModal.style.display = 'none';
+      closeModal(exitModal);
       exitQuizSession();
       if (onRerender) onRerender();
     });
@@ -405,9 +417,7 @@ export function renderQuizScreen(container, onRerender) {
   const finishConfirmBtn = container.querySelector('#btn-finish-confirm');
 
   const openFinishModal = () => {
-    if (finishModal) {
-      finishModal.style.display = 'flex';
-    }
+    openModal(finishModal);
   };
 
   if (finishBtn) {
@@ -415,14 +425,12 @@ export function renderQuizScreen(container, onRerender) {
   }
 
   if (finishCancelBtn && finishModal) {
-    finishCancelBtn.addEventListener('click', () => {
-      finishModal.style.display = 'none';
-    });
+    finishCancelBtn.addEventListener('click', () => closeModal(finishModal));
   }
 
   if (finishConfirmBtn && finishModal) {
     finishConfirmBtn.addEventListener('click', () => {
-      finishModal.style.display = 'none';
+      closeModal(finishModal);
       finishQuizSession(false);
       if (onRerender) onRerender();
     });
@@ -433,7 +441,7 @@ export function renderQuizScreen(container, onRerender) {
   const timeoutOkBtn = container.querySelector('#btn-timeout-ok');
   if (timeoutOkBtn && timeoutModal) {
     timeoutOkBtn.addEventListener('click', () => {
-      timeoutModal.style.display = 'none';
+      closeModal(timeoutModal);
       finishQuizSession(true);
       if (onRerender) onRerender();
     });
@@ -446,6 +454,7 @@ export function renderQuizScreen(container, onRerender) {
       const selectedLang = btn.getAttribute('data-lang');
       if (selectedLang) {
         updateSetup({ language: selectedLang });
+        persistCurrentQuizSession();
         renderQuizScreen(container, onRerender);
       }
     });

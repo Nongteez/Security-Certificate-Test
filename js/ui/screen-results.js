@@ -91,7 +91,7 @@ export function renderResultsScreen(container, onRerender) {
       <!-- Top Navigation & Controls Header -->
       <div class="quiz-header">
         <div class="quiz-header-left">
-          <button type="button" class="btn btn-secondary" id="btn-results-exit" style="padding: 7px 13px; font-size: 13px;">
+          <button type="button" class="btn btn-secondary btn-quiz-exit" id="btn-results-exit">
             ← ${t('exitQuiz', lang)}
           </button>
           <div class="quiz-cert-badge">
@@ -382,12 +382,12 @@ export function renderReviewWrongScreen(container, onRerender) {
       <!-- Top Navigation & Controls Header -->
       <div class="quiz-header">
         <div class="quiz-header-left">
-          <button type="button" class="btn btn-secondary" id="btn-review-back-top" style="padding: 7px 13px; font-size: 13px;">
+          <button type="button" class="btn btn-secondary btn-quiz-exit" id="btn-review-back-top">
             ${t('backToResults', lang)}
           </button>
           <div class="quiz-cert-badge">
             <span>ISC2 CC</span>
-            <span class="quiz-mode-pill review-pill">${t('reviewWrongTitle', lang)}</span>
+            <span class="quiz-mode-pill review-pill"><span class="review-title-full">${t('reviewWrongTitle', lang)}</span><span class="review-title-short">Review</span></span>
           </div>
         </div>
 

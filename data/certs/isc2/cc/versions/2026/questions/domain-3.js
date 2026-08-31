@@ -712,7 +712,7 @@ const questions = [
   {
     "id": 195,
     "dom": 3,
-    "question": "If an organization wants to protect itself against tailgating, which of the following types of access control would be most effective? github.com/ayemunhossain",
+    "question": "If an organization wants to protect itself against tailgating, which of the following types of access control would be most effective?",
     "options": [
       "Locks",
       "Fences",
@@ -822,7 +822,7 @@ const questions = [
   {
     "id": 269,
     "dom": 3,
-    "question": "In which of the following access control models can the creator of an object delegate permission? github.com/ayemunhossain",
+    "question": "In which of the following access control models can the creator of an object delegate permission?",
     "options": [
       "ABAC",
       "MAC",
@@ -852,8 +852,8 @@ const questions = [
       "DAC"
     ],
     "correct_idx": 2,
-    "explanation": "Role-Based Access Control (RBAC) restricts access to the resources of a computer or network, according to the roles of individual users within your organization. Attribute-Based Access Control (ABAC) is based on complex attribute rules. In Discretionary Access Control (DAC), users may grant privileges to other subjects, as well as change the security attributes of the objects they have access to. github.com/ayemunhossain",
-    "short_explanation_en": "Role-Based Access Control (RBAC) restricts access to the resources of a computer or network, according to the roles of individual users within your organization.",
+    "explanation": "Role-Based Access Control (RBAC) restricts access to the resources of a computer or network, according to the roles of individual users within your organization. Attribute-Based Access Control (ABAC) is based on complex attribute rules. In Discretionary Access Control (DAC), users may grant privileges to other subjects, as well as change the security attributes of the objects they have access to.",
+    "short_explanation_en": "Role-Based Access Control (RBAC) restricts access to the resources of a computer or network, according to the roles of individual users within your organization. Attribute-Based Access Control (ABAC) is based on complex attribute rules. In Discretionary Access Control (DAC), users may grant privileges to other subjects, as well as change the security attributes of the objects they have access to.",
     "question_th": "การกำหนดให้ต้องมีบทบาทผู้ใช้เฉพาะเพื่อเข้าถึงทรัพยากรเป็นตัวอย่างของ:",
     "options_th": [
       "MAC",
@@ -940,8 +940,8 @@ const questions = [
       "Identity factors"
     ],
     "correct_idx": 1,
-    "explanation": "Attributes such as a person's name, age, location, job title, and even characteristics such as height or hair color, may all be associated with their identity. None of these describe biometric factors used for authentication. Identity factors are something you know, are or have. Account permissions determine what an authenticated person (a user) can do, and not attributes related to the user's identity. github.com/ayemunhossain",
-    "short_explanation_en": "Attributes such as a person's name, age, location, job title, and even characteristics such as height or hair color, may all be associated with their identity.",
+    "explanation": "Attributes such as a person's name, age, location, job title, and even characteristics such as height or hair color, may all be associated with their identity. None of these describe biometric factors used for authentication. Identity factors are something you know, are or have. Account permissions determine what an authenticated person (a user) can do, and not attributes related to the user's identity.",
+    "short_explanation_en": "Attributes such as a person's name, age, location, job title, and even characteristics such as height or hair color, may all be associated with their identity. None of these describe biometric factors used for authentication. Identity factors are something you know, are or have. Account permissions determine what an authenticated person (a user) can do, and not attributes related to the user's identity.",
     "question_th": "ชื่อ อายุ สถานที่ และตำแหน่งงานของบุคคล ล้วนเป็นตัวอย่างของ:",
     "options_th": [
       "ปัจจัยชีวมิติ (Biometric factors)",
@@ -1069,7 +1069,7 @@ const questions = [
       "Turnstiles",
       "Barriers",
       "Fences",
-      "Bollards github.com/ayemunhossain"
+      "Bollards"
     ],
     "correct_idx": 3,
     "explanation": "Bollards are short, vertical posts that block vehicles from accessing a data center. They are, however, ineffective at preventing access to individuals. Fences can be placed around the perimeter of the data center, so as to block unauthorized access and deter potential intruders. Barriers such as gates, walls or barricades can be used to block access to the data center. Finally, turnstiles can be used to control access to a data center, namely by allowing entry only to authorized individuals.",

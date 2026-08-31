@@ -1,20 +1,26 @@
 /**
  * Home screen UI.
  * Renders SEC CERT TEST Home page displaying available and roadmap certifications
- * loaded dynamically from data/certifications.js, along with the Theme Toggle.
+ * loaded dynamically from data/certifications.js, active quiz resume banner if an unfinished session exists,
+ * along with the Theme Toggle.
  */
 
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
+import { loadActiveQuizSession } from '../core/storage.js';
+import { loadQuestionsForDomains } from '../core/question-loader.js';
+import { resumeQuizSession } from '../core/quiz-engine.js';
 
 /**
  * Renders the Home screen into the given container.
  * @param {HTMLElement} container - The DOM container (#app)
  * @param {Array} certifications - List of certifications from data/certifications.js
  * @param {Function} onSelectCert - Callback invoked when an enabled certification is selected
+ * @param {Function} [onResumeQuiz] - Callback invoked when an active quiz session is resumed
  */
-export function renderHomeScreen(container, certifications, onSelectCert) {
+export function renderHomeScreen(container, certifications, onSelectCert, onResumeQuiz) {
   const availableCerts = certifications.filter(c => c.enabled);
   const comingSoonCerts = certifications.filter(c => !c.enabled);
+  const activeSession = loadActiveQuizSession();
 
   const availableCardsHtml = availableCerts.map(cert => `
     <div class="cert-card cert-card-available" data-cert-id="${cert.id}">
@@ -60,6 +66,39 @@ export function renderHomeScreen(container, certifications, onSelectCert) {
     </div>
   `).join('');
 
+  let resumeBannerHtml = '';
+  if (activeSession) {
+    const answeredCount = activeSession.answers ? activeSession.answers.filter(a => a !== null).length : 0;
+    const progressPercent = Math.round(((activeSession.currentIndex + 1) / (activeSession.questionCount || 1)) * 100);
+    const modeLabel = activeSession.mode === 'exam' ? 'EXAM MODE' : 'PRACTICE MODE';
+
+    resumeBannerHtml = `
+      <section class="cert-section resume-section">
+        <div class="resume-session-card">
+          <div class="resume-session-header">
+            <span class="resume-badge"><span class="pulse-dot"></span> UNFINISHED QUIZ IN PROGRESS</span>
+            <span class="resume-mode-tag">${modeLabel}</span>
+          </div>
+          <div class="resume-session-body">
+            <h3 class="resume-title">${activeSession.certName || 'ISC2 Certified in Cybersecurity'}</h3>
+            <div class="resume-progress-bar-wrap">
+              <div class="resume-progress-bar-fill" style="width: ${progressPercent}%"></div>
+            </div>
+            <div class="resume-progress-meta">
+              <span>Question ${activeSession.currentIndex + 1} of ${activeSession.questionCount}</span>
+              <span>${answeredCount} answered</span>
+            </div>
+          </div>
+          <div class="resume-actions">
+            <button type="button" class="btn btn-primary" id="btn-home-resume">
+              Resume Quiz →
+            </button>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
   container.innerHTML = `
     <header class="home-header">
       <div class="home-header-main">
@@ -78,6 +117,8 @@ export function renderHomeScreen(container, certifications, onSelectCert) {
         </div>
       </div>
     </header>
+
+    ${resumeBannerHtml}
 
     <section class="cert-section">
       <div class="section-label">Available Certifications</div>
@@ -106,6 +147,43 @@ export function renderHomeScreen(container, certifications, onSelectCert) {
       }
     });
   });
+
+  // Attach event listener for Home Resume button
+  const homeResumeBtn = container.querySelector('#btn-home-resume');
+  if (homeResumeBtn && activeSession) {
+    homeResumeBtn.addEventListener('click', async () => {
+      homeResumeBtn.disabled = true;
+      const origText = homeResumeBtn.textContent;
+      homeResumeBtn.textContent = 'Loading Session...';
+
+      try {
+        const allDomainIds = activeSession.selectedDomains || [1, 2, 3, 4, 5];
+        const questionsByDomain = await loadQuestionsForDomains({
+          vendorId: activeSession.vendorId || 'isc2',
+          certId: activeSession.certId || 'cc',
+          version: activeSession.version || '2026',
+          domainIds: allDomainIds
+        });
+
+        const res = resumeQuizSession({
+          storedSession: activeSession,
+          questionsByDomain,
+          certifications
+        });
+
+        if (res.success && onResumeQuiz) {
+          onResumeQuiz();
+        } else if (!res.success) {
+          // Re-render home if session was corrupted/discarded
+          renderHomeScreen(container, certifications, onSelectCert, onResumeQuiz);
+        }
+      } catch (err) {
+        console.error('Failed to resume active session from home:', err);
+        homeResumeBtn.disabled = false;
+        homeResumeBtn.textContent = origText;
+      }
+    });
+  }
 
   // Attach event listener to Theme Toggle button
   attachThemeToggle(container, 'theme-toggle-btn');

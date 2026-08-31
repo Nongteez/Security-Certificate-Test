@@ -2,13 +2,15 @@
  * Certification Start / Quiz Setup Screen.
  * Compact, task-focused setup UI supporting language selection (EN/TH/Both),
  * Practice Mode vs Exam Mode, dynamic pool calculations, domain locking in Exam,
- * and mobile-optimized responsive UX.
+ * active session resume banner, start new confirmation modal, and mobile-optimized responsive UX.
  */
 
 import { state, updateSetup, updatePracticeSetup } from '../core/state.js';
 import { t } from '../core/i18n.js';
 import { loadQuestionsForDomains } from '../core/question-loader.js';
-import { createPracticeSession, createExamSession, startQuizSession } from '../core/quiz-engine.js';
+import { createPracticeSession, createExamSession, startQuizSession, resumeQuizSession } from '../core/quiz-engine.js';
+import { loadActiveQuizSession, clearActiveQuizSession } from '../core/storage.js';
+import certifications from '../../data/certifications.js';
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
 
 /**
@@ -18,7 +20,7 @@ import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.
  * @param {string} version - The active exam version (e.g. "2026")
  * @param {Function} onBackToHome - Callback invoked when "Back to Certifications" is clicked
  * @param {Object} examConfig - The exam version configuration from exam.config.js
- * @param {Function} [onStartQuiz] - Callback invoked when a quiz session is started
+ * @param {Function} [onStartQuiz] - Callback invoked when a quiz session is started or resumed
  */
 export function renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz) {
   const lang = state.setup.language || 'en';
@@ -32,6 +34,10 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
   const certLogo = cert?.logo || './assets/logos/CC-ISC2.png';
   const domains = examConfig?.domains || [];
   const totalQuestions = examConfig?.totalQuestions || 583;
+
+  // Check for existing active session
+  const activeSession = loadActiveQuizSession();
+  const isSessionForThisCert = activeSession && activeSession.certId === (cert?.certId || cert?.id || 'cc');
 
   // Domain selection based on mode
   const practiceSelectedDomains = state.setup.practice.selectedDomains || new Set([1, 2, 3, 4, 5]);
@@ -184,6 +190,72 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
     ? t('startExamBtn', lang) 
     : t('startPracticeBtn', lang);
 
+  // Resume Banner HTML
+  let resumeBannerHtml = '';
+  if (isSessionForThisCert) {
+    const answeredCount = activeSession.answers ? activeSession.answers.filter((a) => a !== null).length : 0;
+    const progressPercent = Math.round(((activeSession.currentIndex + 1) / (activeSession.questionCount || 1)) * 100);
+    const modeTag = activeSession.mode === 'exam' ? 'EXAM' : 'PRACTICE';
+
+    resumeBannerHtml = `
+      <div class="resume-session-card" id="resume-session-banner">
+        <div class="resume-session-header">
+          <span class="resume-badge"><span class="pulse-dot"></span> UNFINISHED QUIZ IN PROGRESS</span>
+          <span class="resume-mode-tag">${modeTag}</span>
+        </div>
+        <div class="resume-session-body">
+          <h3 class="resume-title">${activeSession.certName || certName}</h3>
+          <div class="resume-progress-bar-wrap">
+            <div class="resume-progress-bar-fill" style="width: ${progressPercent}%"></div>
+          </div>
+          <div class="resume-progress-meta">
+            <span>Question ${activeSession.currentIndex + 1} of ${activeSession.questionCount}</span>
+            <span>${answeredCount} answered</span>
+          </div>
+        </div>
+        <div class="resume-actions">
+          <button type="button" class="btn btn-primary" id="btn-resume-quiz-banner">
+            ${t('resumeQuiz', lang)} →
+          </button>
+          <button type="button" class="btn btn-text-danger" id="btn-discard-session">
+            ${t('discardQuiz', lang)}
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  // Start New Confirmation Modal HTML
+  const confirmModalHtml = `
+    <div class="setup-modal-backdrop" id="confirm-start-new-modal" style="display: none;">
+      <div class="setup-modal-content">
+        <div class="modal-header-icon">⚠️</div>
+        <h3 class="modal-title">${t('confirmStartNewTitle', lang)}</h3>
+        <p class="modal-desc">
+          ${t('confirmStartNewDesc', lang)}
+        </p>
+        <div class="modal-summary-box">
+          <div class="summary-item">
+            <strong>Current Progress:</strong>
+            <span>Question ${activeSession ? activeSession.currentIndex + 1 : 1} of ${activeSession ? activeSession.questionCount : 0}</span>
+          </div>
+          <div class="summary-item">
+            <strong>Mode:</strong>
+            <span>${activeSession ? activeSession.mode.toUpperCase() : ''}</span>
+          </div>
+        </div>
+        <div class="modal-btn-row">
+          <button type="button" class="btn btn-secondary" id="btn-confirm-start-cancel">
+            ${t('cancelKeepExisting', lang)}
+          </button>
+          <button type="button" class="btn btn-primary" id="btn-confirm-start-proceed">
+            ${t('startNewQuiz', lang)}
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
   container.innerHTML = `
     <div class="start-screen-wrapper">
       <!-- Top Navigation Bar -->
@@ -223,6 +295,8 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
             </div>
           </div>
         </div>
+
+        ${resumeBannerHtml}
 
         <div class="start-form-divider"></div>
 
@@ -279,6 +353,8 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
           </button>
         </div>
       </div>
+
+      ${confirmModalHtml}
     </div>
   `;
 
@@ -446,71 +522,174 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
     }
   }
 
-  // Start Quiz Button
-  const startQuizBtn = container.querySelector('#btn-start-quiz');
-  if (startQuizBtn) {
-    startQuizBtn.addEventListener('click', async () => {
-      if (!isExam && practicePoolSize === 0) return;
-
-      startQuizBtn.disabled = true;
-      const originalText = startQuizBtn.textContent;
-      startQuizBtn.textContent = 'Loading Questions...';
+  // Resume Banner Button
+  const resumeBtn = container.querySelector('#btn-resume-quiz-banner');
+  if (resumeBtn && isSessionForThisCert) {
+    resumeBtn.addEventListener('click', async () => {
+      resumeBtn.disabled = true;
+      const origText = resumeBtn.textContent;
+      resumeBtn.textContent = 'Loading Session...';
 
       try {
-        if (isExam) {
-          const allDomainIds = (examConfig.domains || []).map((d) => d.id);
-          const questionsByDomain = await loadQuestionsForDomains({
-            vendorId: cert?.vendorId || 'isc2',
-            certId: cert?.certId || 'cc',
-            version: examVersion,
-            domainIds: allDomainIds
-          });
+        const allDomainIds = activeSession.selectedDomains || [1, 2, 3, 4, 5];
+        const questionsByDomain = await loadQuestionsForDomains({
+          vendorId: activeSession.vendorId || 'isc2',
+          certId: activeSession.certId || 'cc',
+          version: activeSession.version || '2026',
+          domainIds: allDomainIds
+        });
 
-          const questions = createExamSession({
-            questionsByDomain,
-            examConfig,
-            totalQuestions: 125
-          });
+        const res = resumeQuizSession({
+          storedSession: activeSession,
+          questionsByDomain,
+          certifications
+        });
 
-          startQuizSession({
-            mode: 'exam',
-            questions,
-            timeMinutes: 120
-          });
-        } else {
-          const countInput = container.querySelector('#question-count-input');
-          const countVal = parseInt(countInput ? countInput.value : practiceQuestionCount, 10) || practiceQuestionCount;
-          const validCount = Math.min(Math.max(1, countVal), practicePoolSize);
-          updatePracticeSetup({ questionCount: validCount });
-
-          const selectedDomainIds = Array.from(state.setup.practice.selectedDomains);
-          const questionsByDomain = await loadQuestionsForDomains({
-            vendorId: cert?.vendorId || 'isc2',
-            certId: cert?.certId || 'cc',
-            version: examVersion,
-            domainIds: selectedDomainIds
-          });
-
-          const questions = createPracticeSession({
-            questionsByDomain,
-            selectedDomainIds,
-            order: state.setup.practice.order,
-            questionCount: validCount
-          });
-
-          startQuizSession({
-            mode: 'practice',
-            questions
-          });
-        }
-
-        if (onStartQuiz) {
+        if (res.success && onStartQuiz) {
           onStartQuiz();
+        } else if (!res.success) {
+          renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
         }
       } catch (err) {
-        console.error('Failed to start quiz session:', err);
+        console.error('Failed to resume active session:', err);
+        resumeBtn.disabled = false;
+        resumeBtn.textContent = origText;
+      }
+    });
+  }
+
+  // Discard Session Button
+  const discardBtn = container.querySelector('#btn-discard-session');
+  if (discardBtn) {
+    discardBtn.addEventListener('click', () => {
+      clearActiveQuizSession();
+      renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
+    });
+  }
+
+  // Start New Confirmation Modal Handlers
+  const confirmModal = container.querySelector('#confirm-start-new-modal');
+  const confirmCancelBtn = container.querySelector('#btn-confirm-start-cancel');
+  const confirmProceedBtn = container.querySelector('#btn-confirm-start-proceed');
+
+  const openConfirmModal = () => {
+    if (confirmModal) {
+      confirmModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeConfirmModal = () => {
+    if (confirmModal) {
+      confirmModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  };
+
+  if (confirmCancelBtn) {
+    confirmCancelBtn.addEventListener('click', closeConfirmModal);
+  }
+
+  if (confirmModal) {
+    confirmModal.addEventListener('click', (e) => {
+      if (e.target === confirmModal) {
+        closeConfirmModal();
+      }
+    });
+  }
+
+  // Core quiz startup routine
+  const executeStartQuiz = async () => {
+    if (!isExam && practicePoolSize === 0) return;
+
+    document.body.style.overflow = '';
+    const startQuizBtn = container.querySelector('#btn-start-quiz');
+    if (startQuizBtn) {
+      startQuizBtn.disabled = true;
+      startQuizBtn.textContent = 'Loading Questions...';
+    }
+
+    try {
+      // Clear previous active session
+      clearActiveQuizSession();
+
+      if (isExam) {
+        const allDomainIds = (examConfig.domains || []).map((d) => d.id);
+        const questionsByDomain = await loadQuestionsForDomains({
+          vendorId: cert?.vendorId || 'isc2',
+          certId: cert?.certId || 'cc',
+          version: examVersion,
+          domainIds: allDomainIds
+        });
+
+        const questions = createExamSession({
+          questionsByDomain,
+          examConfig,
+          totalQuestions: 125
+        });
+
+        startQuizSession({
+          mode: 'exam',
+          questions,
+          timeMinutes: 120
+        });
+      } else {
+        const countInput = container.querySelector('#question-count-input');
+        const countVal = parseInt(countInput ? countInput.value : practiceQuestionCount, 10) || practiceQuestionCount;
+        const validCount = Math.min(Math.max(1, countVal), practicePoolSize);
+        updatePracticeSetup({ questionCount: validCount });
+
+        const selectedDomainIds = Array.from(state.setup.practice.selectedDomains);
+        const questionsByDomain = await loadQuestionsForDomains({
+          vendorId: cert?.vendorId || 'isc2',
+          certId: cert?.certId || 'cc',
+          version: examVersion,
+          domainIds: selectedDomainIds
+        });
+
+        const questions = createPracticeSession({
+          questionsByDomain,
+          selectedDomainIds,
+          order: state.setup.practice.order,
+          questionCount: validCount
+        });
+
+        startQuizSession({
+          mode: 'practice',
+          questions
+        });
+      }
+
+      if (onStartQuiz) {
+        onStartQuiz();
+      }
+    } catch (err) {
+      console.error('Failed to start quiz session:', err);
+      if (startQuizBtn) {
         startQuizBtn.disabled = false;
-        startQuizBtn.textContent = originalText;
+        startQuizBtn.textContent = startBtnLabel;
+      }
+    }
+  };
+
+  if (confirmProceedBtn) {
+    confirmProceedBtn.addEventListener('click', () => {
+      closeConfirmModal();
+      executeStartQuiz();
+    });
+  }
+
+  // Start Quiz Button Listener
+  const startQuizBtn = container.querySelector('#btn-start-quiz');
+  if (startQuizBtn) {
+    startQuizBtn.addEventListener('click', () => {
+      if (!isExam && practicePoolSize === 0) return;
+
+      const active = loadActiveQuizSession();
+      if (active && active.certId === (cert?.certId || cert?.id || 'cc')) {
+        openConfirmModal();
+      } else {
+        executeStartQuiz();
       }
     });
   }

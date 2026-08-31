@@ -4,6 +4,23 @@
  */
 
 import { state, resetQuizState } from './state.js';
+import {
+  saveActiveQuizSession,
+  clearActiveQuizSession,
+  buildSessionSnapshot,
+  loadActiveQuizSession
+} from './storage.js';
+
+/**
+ * Persists the current active quiz session to local storage.
+ */
+export function persistCurrentQuizSession() {
+  if (!state.quiz || !state.quiz.active) return;
+  const snapshot = buildSessionSnapshot(state);
+  if (snapshot) {
+    saveActiveQuizSession(snapshot);
+  }
+}
 
 /**
  * Unbiased Fisher-Yates shuffle algorithm. Always returns a new array copy.
@@ -162,6 +179,10 @@ export function createExamSession({
  * @param {number} [params.timeMinutes=120]
  */
 export function startQuizSession({ mode, questions, timeMinutes = 120 }) {
+  const startedAt = Date.now();
+  const examDurationSeconds = timeMinutes * 60;
+  const expiresAt = mode === 'exam' ? startedAt + (examDurationSeconds * 1000) : null;
+
   state.quiz = {
     active: true,
     mode,
@@ -170,12 +191,16 @@ export function startQuizSession({ mode, questions, timeMinutes = 120 }) {
     answers: new Array(questions.length).fill(null),
     correct: 0,
     wrong: 0,
-    startedAt: Date.now(),
-    timeRemainingSeconds: mode === 'exam' ? timeMinutes * 60 : null,
-    finished: false
+    startedAt,
+    expiresAt,
+    examDurationSeconds: mode === 'exam' ? examDurationSeconds : null,
+    timeRemainingSeconds: mode === 'exam' ? examDurationSeconds : null,
+    finished: false,
+    timedOut: false
   };
 
   state.screen = 'quiz';
+  persistCurrentQuizSession();
 }
 
 /**
@@ -224,6 +249,7 @@ export function recordAnswer({ questionIndex, selectedIndex }) {
     state.quiz.wrong++;
   }
 
+  persistCurrentQuizSession();
   return record;
 }
 
@@ -235,6 +261,7 @@ export function nextQuestion() {
   if (!state.quiz.active) return false;
   if (state.quiz.currentIndex < state.quiz.questions.length - 1) {
     state.quiz.currentIndex++;
+    persistCurrentQuizSession();
     return true;
   }
   return false;
@@ -248,6 +275,7 @@ export function previousQuestion() {
   if (!state.quiz.active) return false;
   if (state.quiz.currentIndex > 0) {
     state.quiz.currentIndex--;
+    persistCurrentQuizSession();
     return true;
   }
   return false;
@@ -335,6 +363,7 @@ export function finishQuizSession(timedOut = false) {
     state.quiz.finishedAt = Date.now();
     state.quiz.timedOut = timedOut;
   }
+  clearActiveQuizSession();
   state.screen = 'results';
 }
 
@@ -366,6 +395,9 @@ export function retryQuizSession() {
   const mode = state.quiz.mode || 'practice';
   const questions = [...state.quiz.questions];
   const timeMinutes = state.setup.exam?.timeMinutes || 120;
+  const startedAt = Date.now();
+  const examDurationSeconds = timeMinutes * 60;
+  const expiresAt = mode === 'exam' ? startedAt + (examDurationSeconds * 1000) : null;
 
   stopExamCountdown();
 
@@ -377,13 +409,16 @@ export function retryQuizSession() {
     answers: new Array(questions.length).fill(null),
     correct: 0,
     wrong: 0,
-    startedAt: Date.now(),
-    timeRemainingSeconds: mode === 'exam' ? timeMinutes * 60 : null,
+    startedAt,
+    expiresAt,
+    examDurationSeconds: mode === 'exam' ? examDurationSeconds : null,
+    timeRemainingSeconds: mode === 'exam' ? examDurationSeconds : null,
     finished: false,
     timedOut: false
   };
 
   state.screen = 'quiz';
+  persistCurrentQuizSession();
 }
 
 /**
@@ -436,4 +471,88 @@ export function retryWrongAnswersSession() {
   };
 
   state.screen = 'quiz';
+  persistCurrentQuizSession();
 }
+
+/**
+ * Resumes an existing unfinished quiz session from stored payload.
+ * @param {Object} params
+ * @param {Object} params.storedSession - Loaded and validated session payload
+ * @param {Record<number|string, Array>} params.questionsByDomain - Map of domainId -> Question[]
+ * @param {Array} [params.certifications=[]] - Available certification definitions
+ * @returns {{ success: boolean, expired?: boolean, reason?: string }}
+ */
+export function resumeQuizSession({ storedSession, questionsByDomain, certifications = [] }) {
+  if (!storedSession || !storedSession.questionIds || storedSession.questionIds.length === 0) {
+    return { success: false, reason: 'empty_session' };
+  }
+
+  // Build question lookup map
+  const questionMap = new Map();
+  Object.values(questionsByDomain).flat().forEach((q) => questionMap.set(q.id, q));
+
+  // Reconstruct exact ordered questions
+  const questions = storedSession.questionIds.map((id) => questionMap.get(id));
+  if (questions.some((q) => !q)) {
+    console.warn('One or more question IDs in saved session could not be resolved. Discarding invalid session.');
+    clearActiveQuizSession();
+    return { success: false, reason: 'unresolved_questions' };
+  }
+
+  // Match certification in state if available
+  const matchedCert = certifications.find((c) => (c.certId || c.id) === storedSession.certId) || {
+    vendorId: storedSession.vendorId || 'isc2',
+    certId: storedSession.certId || 'cc',
+    name: storedSession.certName || 'Certified in Cybersecurity'
+  };
+  state.selectedCertification = matchedCert;
+  state.selectedExamVersion = storedSession.version || '2026';
+  state.setup.language = storedSession.language || 'en';
+  state.setup.studyMode = storedSession.mode || 'practice';
+
+  if (storedSession.selectedDomains && Array.isArray(storedSession.selectedDomains)) {
+    state.setup.practice.selectedDomains = new Set(storedSession.selectedDomains);
+  }
+
+  const isExam = storedSession.mode === 'exam';
+  const now = Date.now();
+  let isExpired = false;
+  let timeRemainingSeconds = null;
+
+  if (isExam) {
+    if (storedSession.expiresAt && now >= storedSession.expiresAt) {
+      isExpired = true;
+      timeRemainingSeconds = 0;
+    } else if (storedSession.expiresAt) {
+      timeRemainingSeconds = Math.max(0, Math.floor((storedSession.expiresAt - now) / 1000));
+    } else {
+      timeRemainingSeconds = storedSession.examDurationSeconds || 7200;
+    }
+  }
+
+  state.quiz = {
+    active: true,
+    mode: storedSession.mode,
+    questions,
+    currentIndex: Math.min(storedSession.currentIndex || 0, questions.length - 1),
+    answers: storedSession.answers || new Array(questions.length).fill(null),
+    correct: storedSession.correct || 0,
+    wrong: storedSession.wrong || 0,
+    startedAt: storedSession.startedAt || now,
+    expiresAt: storedSession.expiresAt || null,
+    examDurationSeconds: storedSession.examDurationSeconds || (isExam ? 7200 : null),
+    timeRemainingSeconds,
+    finished: false,
+    timedOut: false
+  };
+
+  if (isExpired) {
+    finishQuizSession(true);
+    return { success: true, expired: true };
+  }
+
+  state.screen = 'quiz';
+  persistCurrentQuizSession();
+  return { success: true, expired: false };
+}
+

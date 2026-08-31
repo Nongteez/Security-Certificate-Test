@@ -332,6 +332,38 @@ export const UI_STRINGS = {
   reviewModeBadge: {
     en: "Review Mode",
     th: "โหมดทบทวน"
+  },
+  resumeQuiz: {
+    en: "Resume Quiz",
+    th: "ทำต่อจากที่ค้างไว้"
+  },
+  continueQuiz: {
+    en: "Continue Quiz",
+    th: "ทำต่อจากที่ค้างไว้"
+  },
+  activeQuizInProgress: {
+    en: "Unfinished Quiz in Progress",
+    th: "มีแบบทดสอบที่ยังทำไม่เสร็จ"
+  },
+  discardQuiz: {
+    en: "Discard Quiz",
+    th: "ยกเลิกแบบทดสอบ"
+  },
+  startNewQuiz: {
+    en: "Start New Quiz",
+    th: "เริ่มแบบทดสอบใหม่"
+  },
+  confirmStartNewTitle: {
+    en: "Start New Quiz?",
+    th: "เริ่มแบบทดสอบใหม่หรือไม่?"
+  },
+  confirmStartNewDesc: {
+    en: "Starting a new quiz will discard your current unfinished quiz session. Are you sure you want to proceed?",
+    th: "การเริ่มแบบทดสอบใหม่จะยกเลิกแบบทดสอบที่ยังทำค้างอยู่ คุณแน่ใจหรือไม่ที่จะดำเนินการต่อ?"
+  },
+  cancelKeepExisting: {
+    en: "Cancel / Keep Existing",
+    th: "ยกเลิก / เก็บอันเดิมไว้"
   }
 };
 

@@ -1,6 +1,6 @@
 /**
  * ISC2 Certified in Cybersecurity (CC) - 2026 Outline
- * Domain 2: BC/DR/IR
+ * Domain 2: BC / DR / Incident Response
  * Question Count: 65
  */
 
@@ -492,24 +492,24 @@ const questions = [
   {
     "id": 197,
     "dom": 2,
-    "question": "In the event of a disaster, which of these should be the PRIMARY objective? (★)",
+    "question": "Which type of disaster recovery test involves team members gathering in a room to verbally walk through scenario responses without making operational changes to production systems?",
     "options": [
-      "Guarantee the safety of people",
-      "Guarantee the continuity of critical systems",
-      "Protection of the production database github.com/ayemunhossain",
-      "Application of disaster communication"
+      "Full Interruption Test",
+      "Parallel Test",
+      "Tabletop Exercise",
+      "Checklist Review"
     ],
-    "correct_idx": 0,
-    "explanation": "In the event of a disaster, the clear priority is to guarantee the safety of human life above all. The remaining options, though important from the point of view of disaster recovery and business continuity, are secondary when compared to safety.",
-    "short_explanation_en": "In the event of a disaster, the clear priority is to guarantee the safety of human life above all.",
-    "question_th": "ในกรณีเกิดภัยพิบัติ วัตถุประสงค์หลักควรเป็นสิ่งใด?",
+    "correct_idx": 2,
+    "explanation": "A Tabletop Exercise is a discussion-based exercise where team members gather to walk through role-based scenario responses step by step without impacting live operational systems.",
+    "short_explanation_en": "A Tabletop Exercise is a discussion-based exercise where team members walk through scenario responses without impacting live systems.",
+    "question_th": "การทดสอบแผนกู้คืนภัยพิบัติประเภทใดที่สมาชิกในทีมมารวมตัวกันในห้องเพื่ออภิปรายและทบทวนขั้นตอนการตอบสนองตามสถานการณ์จำลองโดยไม่มีการเปลี่ยนแปลงการทำงานของระบบจริง?",
     "options_th": [
-      "รับประกันความปลอดภัยของบุคลากร",
-      "รับประกันความต่อเนื่องของระบบสำคัญ",
-      "ปกป้องฐานข้อมูลการผลิต",
-      "การสื่อสารในสถานการณ์ภัยพิบัติ"
+      "Full Interruption Test (การทดสอบแบบหยุดระบบจริง)",
+      "Parallel Test (การทดสอบแบบขนาน)",
+      "Tabletop Exercise (การฝึกซ้อมแบบอภิปรายบนโต๊ะ)",
+      "Checklist Review (การตรวจสอบรายการ)"
     ],
-    "explanation_th": "ในกรณีเกิดภัยพิบัติ ความสำคัญอันดับแรกคือการรับประกันความปลอดภัยของชีวิตมนุษย์เหนือสิ่งอื่นใด"
+    "explanation_th": "Tabletop Exercise (การฝึกซ้อมบนโต๊ะ) เป็นการฝึกซ้อมแบบอภิปรายที่สมาชิกในทีมรวมตัวกันเพื่อทบทวนขั้นตอนการตอบสนองตามสถานการณ์จำลองทีละขั้นตอน โดยไม่กระทบต่อระบบการทำงานจริง"
   },
   {
     "id": 203,
@@ -588,8 +588,8 @@ const questions = [
       "Preparation -> Detection and Analysis -> Containment, Eradication and Recovery -> Post-Incident Activity"
     ],
     "correct_idx": 3,
-    "explanation": "The components commonly found in an incident response plan are (in this order): Preparation; Detection and Analysis; Containment, Eradication and Recovery; Post-Incident Activity (see the ISC2 Chapter 2, Module 1, under Components of github.com/ayemunhossain an Incident Response Plan).",
-    "short_explanation_en": "The components commonly found in an incident response plan are (in this order): Preparation; Detection and Analysis; Containment, Eradication and Recovery; Post-Incident Activity (see the ISC2 Chapter 2, Module 1, under Components of...",
+    "explanation": "The components commonly found in an incident response plan are (in this order): Preparation; Detection and Analysis; Containment, Eradication and Recovery; Post-Incident Activity (see the ISC2 Chapter 2, Module 1, under Components of an Incident Response Plan).",
+    "short_explanation_en": "The components commonly found in an incident response plan are (in this order): Preparation; Detection and Analysis; Containment, Eradication and Recovery; Post-Incident Activity (see the ISC2 Chapter 2, Module 1, under Components of an Incident Response Plan).",
     "question_th": "องค์ประกอบของแผนตอบสนองต่อเหตุการณ์คืออะไร?",
     "options_th": [
       "Preparation -> Detection and Analysis -> Recovery -> Containment -> Eradication -> Post-Incident Activity",
@@ -624,7 +624,7 @@ const questions = [
   {
     "id": 242,
     "dom": 2,
-    "question": "After an earthquake disrupting business operations, which document contains the procedures required to return business github.com/ayemunhossain to normal operation?",
+    "question": "After an earthquake disrupting business operations, which document contains the procedures required to return business to normal operation?",
     "options": [
       "The Business Impact Plan",
       "The Business Impact Analysis",
@@ -698,7 +698,7 @@ const questions = [
       "Contentment, Eradication, and Recovery"
     ],
     "correct_idx": 1,
-    "explanation": "Incident responses are prioritized in the Detection and Analysis phase (see the ISC2 Study Guide, Chapter 2, Module 1, under Components of Incident Response). github.com/ayemunhossain",
+    "explanation": "Incident responses are prioritized in the Detection and Analysis phase (see the ISC2 Study Guide, Chapter 2, Module 1, under Components of Incident Response).",
     "short_explanation_en": "Incident responses are prioritized in the Detection and Analysis phase (see the ISC2 Study Guide, Chapter 2, Module 1, under Components of Incident Response).",
     "question_th": "ในขั้นตอนใดของแผนกู้คืนจากเหตุการณ์ที่มีการจัดลำดับความสำคัญของการตอบสนองต่อเหตุการณ์?",
     "options_th": [
@@ -778,24 +778,24 @@ const questions = [
   {
     "id": 283,
     "dom": 2,
-    "question": "Which of the following is included in an SLA document?",
+    "question": "When collecting digital evidence during a security incident, what is the primary purpose of maintaining a Chain of Custody?",
     "options": [
-      "A plan to prepare the organization for the continuation of critical business functions",
-      "A plan to keep business operations going while recovering from a significant disruption",
-      "Instructions to detect, respond to, and limit the consequences of a cyber-attack",
-      "Instructions on data ownership and destruction"
+      "To ensure evidence is tracked, protected from tampering, and admissible in legal proceedings",
+      "To speed up system recovery and restoration of business services",
+      "To notify affected customers immediately of the data breach",
+      "To permanently wipe the affected hard drives after analysis"
     ],
-    "correct_idx": 3,
-    "explanation": "A set of instructions or procedures to detect, respond and limit the consequences of a cyber-attack is an Incident Response Plan (see ISC2 Study Guide Chapter 2, module 1, under The Goal of Incident Response). A plan to sustain business operations while recovering from a significant disruption is a Business Continuity Plan (see ISC2 Study Guide Chapter 2, module 2, under The Importance of Business Continuity). A plan to prepare the organization for the continuation of critical business functions",
-    "short_explanation_en": "A set of instructions or procedures to detect, respond and limit the consequences of a cyber-attack is an Incident Response Plan (see ISC2 Study Guide Chapter 2, module 1, under The Goal of Incident Response).",
-    "question_th": "ข้อใดรวมอยู่ในเอกสาร SLA?",
+    "correct_idx": 0,
+    "explanation": "Chain of Custody is a chronological documentation trail recording who collected, handled, transferred, and analyzed digital evidence, ensuring integrity and legal admissibility.",
+    "short_explanation_en": "Chain of Custody ensures digital evidence is tracked and protected from tampering for legal admissibility.",
+    "question_th": "เมื่อรวบรวมหลักฐานดิจิทัลในระหว่างเหตุการณ์ความปลอดภัย วัตถุประสงค์หลักของการรักษา Chain of Custody (สายการครอบครองหลักฐาน) คืออะไร?",
     "options_th": [
-      "แผนเตรียมองค์กรสำหรับความต่อเนื่องของฟังก์ชันทางธุรกิจสำคัญ",
-      "แผนรักษาการดำเนินธุรกิจระหว่างการกู้คืนจากการหยุดชะงักครั้งใหญ่",
-      "ขั้นตอนตรวจจับ ตอบสนอง และจำกัดผลกระทบจากการโจมตีทางไซเบอร์",
-      "ขั้นตอนเกี่ยวกับความเป็นเจ้าของข้อมูลและการทำลายข้อมูล"
+      "เพื่อรับประกันว่าหลักฐานได้รับการติดตาม ป้องกันการแก้ไขเปลี่ยนแปลง และสามารถใช้ยอมรับในกระบวนการทางกฎหมายได้",
+      "เพื่อเร่งกระบวนการกู้คืนระบบและการฟื้นฟูบริการทางธุรกิจ",
+      "เพื่อแจ้งลูกค้าที่ได้รับผลกระทบจากการรั่วไหลของข้อมูลโดยทันที",
+      "เพื่อลบข้อมูลในฮาร์ดไดรฟ์ที่ได้รับผลกระทบอย่างถาวรหลังการวิเคราะห์"
     ],
-    "explanation_th": "SLA (Service Level Agreement) คือสัญญาระหว่างผู้ให้บริการกับลูกค้าที่กำหนดระดับการบริการ ซึ่งรวมถึงขั้นตอนเกี่ยวกับความเป็นเจ้าของข้อมูลและการทำลายข้อมูล"
+    "explanation_th": "Chain of Custody คือบันทึกลำดับเหตุการณ์ที่เป็นลายลักษณ์อักษรว่าใครเป็นผู้รวบรวม ถือครอง โอนย้าย และวิเคราะห์หลักฐานดิจิทัล เพื่อรับประกันความสมบูรณ์ถูกต้องและความน่าเชื่อถือทางกฎหมาย"
   },
   {
     "id": 286,
@@ -827,7 +827,7 @@ const questions = [
       "Configuration standards",
       "Incident response policies",
       "Communication policies",
-      "Retention policies github.com/ayemunhossain"
+      "Retention policies"
     ],
     "correct_idx": 3,
     "explanation": "For many organizations, retention policies entail keeping data only for a limited time. Because of the high costs of data storage capacity, organizations maintain specific logs only for a short period of time (a few hours to several days), and keep other data records for more extended periods (months to years). Because of this, not all data regarding an incident may be available. Communication and incident response policies can provide valuable help to an incident investigation. Finally, configu",
@@ -915,7 +915,7 @@ const questions = [
       "Any observable occurrence in a network or system",
       "Being exposed to the possibility of attack",
       "Unavailability of critical systems",
-      "Access of private information by an unauthorized person github.com/ayemunhossain"
+      "Access of private information by an unauthorized person"
     ],
     "correct_idx": 3,
     "explanation": "A privacy breach is a compromise of confidentiality (see ISC2 Study Guide, chapter 2, module 1). The NIST defines privacy breach as \"the loss of control, compromise, unauthorized disclosure, unauthorized acquisition, or any similar occurrence where a person other than an authorized user accesses (or potentially accesses) personally identifiable information, or uses it for anything other than its authorized purpose\". The unavailability of a critical system is a compromise of availability (not of",
@@ -932,24 +932,24 @@ const questions = [
   {
     "id": 315,
     "dom": 2,
-    "question": "Which kind of document outlines the procedures ensuring that vital company systems keep running during business- disrupting events?",
+    "question": "During a Business Impact Analysis (BIA), an organization determines the longest period a critical business function can be unavailable before irreversible damage occurs. What metric is this?",
     "options": [
-      "Business Impact Analysis",
-      "Business Impact Plan",
-      "Business Continuity Plan",
-      "Disaster Recovery Plan"
+      "Recovery Point Objective (RPO)",
+      "Maximum Tolerable Downtime (MTD)",
+      "Mean Time Between Failures (MTBF)",
+      "Service Level Agreement (SLA)"
     ],
-    "correct_idx": 2,
-    "explanation": "A Business Continuity Plan (BCP) is a predetermined set of instructions describing how an organization's business processes will be sustained during and after a significant disruption (see Chapter 2 ISC2 Study Guide, module 4, under Terms and Definitions). A Business Impact Analysis (BIA) is a method of analyzing how such disruptions can affect an organization. A Disaster Recovery Plan is used to recover systems after a major failure or disaster. The term 'Business Impact Plan' does not actually",
-    "short_explanation_en": "A Business Continuity Plan (BCP) is a predetermined set of instructions describing how an organization's business processes will be sustained during and after a significant disruption (see Chapter 2 ISC2 Study Guide, module 4, under...",
-    "question_th": "เอกสารประเภทใดที่ระบุขั้นตอนเพื่อให้ระบบสำคัญขององค์กรยังคงทำงานได้ในระหว่างเหตุการณ์ที่รบกวนธุรกิจ?",
+    "correct_idx": 1,
+    "explanation": "Maximum Tolerable Downtime (MTD) is the maximum total time a business process can be disrupted without causing catastrophic or irreversible damage. The Recovery Time Objective (RTO) must always be set within the MTD.",
+    "short_explanation_en": "Maximum Tolerable Downtime (MTD) is the maximum total time a business function can be down before irreversible harm occurs.",
+    "question_th": "ในระหว่างการประเมินผลกระทบทางธุรกิจ (BIA) องค์กรกำหนดระยะเวลาที่ยาวนานที่สุดที่ฟังก์ชันทางธุรกิจสำคัญสามารถหยุดทำงานได้ก่อนที่จะเกิดความเสียหายที่ไม่สามารถกู้คืนได้ ตัวชี้วัดนี้คืออะไร?",
     "options_th": [
-      "Business Impact Analysis",
-      "Business Impact Plan",
-      "Business Continuity Plan",
-      "Disaster Recovery Plan"
+      "Recovery Point Objective (RPO)",
+      "Maximum Tolerable Downtime (MTD)",
+      "Mean Time Between Failures (MTBF)",
+      "Service Level Agreement (SLA)"
     ],
-    "explanation_th": "Business Continuity Plan (BCP) คือชุดคำสั่งที่กำหนดไว้ล่วงหน้าเพื่ออธิบายว่ากระบวนการทางธุรกิจขององค์กรจะดำเนินต่อไปอย่างไรในระหว่างเหตุการณ์หยุดชะงัก"
+    "explanation_th": "Maximum Tolerable Downtime (MTD) คือระยะเวลาหยุดทำงานสูงสุดที่กระบวนการทางธุรกิจสามารถทนได้โดยไม่ก่อให้เกิดความเสียหายร้ายแรงหรือไม่สามารถกู้คืนได้ โดย Recovery Time Objective (RTO) จะต้องถูกกำหนดไว้ให้น้อยกว่าหรือเท่ากับ MTD เสมอ"
   },
   {
     "id": 323,
@@ -962,8 +962,8 @@ const questions = [
       "To restore the business to the full last-known reliable state of operations"
     ],
     "correct_idx": 1,
-    "explanation": "A Business Continuity Plan (BCP) is a predetermined set of instructions describing how the mission and business processes of an organization will be sustained during and after a significant disruption (see Chapter 2 ISC2 Study Guide, module 4, under Terms and Definitions). Restoring a business to its last-known reliable state of operations is the goal of a Disaster Recovery Plan (see Chapter 2 ISC2 Study Guide, module 4, under The Goal of Disaster Recovery). Assessing the github.com/ayemunhossai",
-    "short_explanation_en": "A Business Continuity Plan (BCP) is a predetermined set of instructions describing how the mission and business processes of an organization will be sustained during and after a significant disruption (see Chapter 2 ISC2 Study Guide,...",
+    "explanation": "A Business Continuity Plan (BCP) is a predetermined set of instructions describing how the mission and business processes of an organization will be sustained during and after a significant disruption (see Chapter 2 ISC2 Study Guide, module 4, under Terms and Definitions). Restoring a business to its last-known reliable state of operations is the goal of a Disaster Recovery Plan (see Chapter 2 ISC2 Study Guide, module 4, under The Goal of Disaster Recovery).",
+    "short_explanation_en": "A Business Continuity Plan (BCP) is a predetermined set of instructions describing how the mission and business processes of an organization will be sustained during and after a significant disruption (see Chapter 2 ISC2 Study Guide, module 4, under Terms and Definitions). Restoring a business to its last-known reliable state of operations is the goal of a Disaster Recovery Plan (see Chapter 2 ISC2 Study Guide, module 4, under The Goal of Disaster Recovery).",
     "question_th": "วัตถุประสงค์หลักของแผนความต่อเนื่องทางธุรกิจคืออะไร?",
     "options_th": [
       "ตรวจสอบเป็นประจำว่าองค์กรปฏิบัติตามกฎระเบียบที่บังคับใช้หรือไม่",
@@ -984,8 +984,8 @@ const questions = [
       "Communicating with top management regarding the circumstances of the cybersecurity event"
     ],
     "correct_idx": 3,
-    "explanation": "While communicating with top management about the circumstances of the cybersecurity event is always important, it is not a primary responsibility of the response team. Indeed, the primary responsibility of the response team is to address github.com/ayemunhossain the immediate impact of the incident, and to restore security as quickly as possible. When an incident occurs, the primary duties of a response team include the following: Determining the scope of the damage caused by the incident, and",
-    "short_explanation_en": "While communicating with top management about the circumstances of the cybersecurity event is always important, it is not a primary responsibility of the response team.",
+    "explanation": "While communicating with top management about the circumstances of the cybersecurity event is always important, it is not a primary responsibility of the response team. Indeed, the primary responsibility of the response team is to address the immediate impact of the incident and to restore security as quickly as possible.",
+    "short_explanation_en": "While communicating with top management about the circumstances of the cybersecurity event is always important, it is not a primary responsibility of the response team. Indeed, the primary responsibility of the response team is to address the immediate impact of the incident and to restore security as quickly as possible.",
     "question_th": "เมื่อเกิดเหตุการณ์ ข้อใดไม่ใช่ความรับผิดชอบหลักของทีมตอบสนองขององค์กร?",
     "options_th": [
       "กำหนดขอบเขตความเสียหายที่เกิดจากเหตุการณ์",
@@ -1068,7 +1068,7 @@ const questions = [
     "options": [
       "A simulation exercise",
       "A walk-through exercise",
-      "A tabletop exercise github.com/ayemunhossain",
+      "A tabletop exercise",
       "A checklist exercise"
     ],
     "correct_idx": 1,

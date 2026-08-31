@@ -927,16 +927,19 @@
 }
 
 /* Confirmation / Status Modal Dialog */
-.setup-modal-backdrop {
+.setup-modal-backdrop,
+.modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.68);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 9999;
   padding: 16px;
+  overflow-y: auto;
 }
 
 .setup-modal-content {
@@ -946,9 +949,12 @@
   padding: 28px 24px;
   max-width: 440px;
   width: 100%;
+  max-height: min(90vh, 90dvh);
+  overflow-y: auto;
   box-shadow: var(--shadow);
   text-align: center;
   animation: modalFadeIn 0.2s ease;
+  margin: auto;
 }
 
 @keyframes modalFadeIn {
@@ -1026,22 +1032,32 @@
 @media (max-width: 480px) {
   .start-top-bar {
     gap: 8px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
   .btn-back-home {
-    padding: 7px 12px;
+    padding: 6px 12px;
     font-size: 12px;
+    min-height: 34px;
   }
   .start-top-actions {
     gap: 8px;
   }
+  .lang-toggle {
+    padding: 2px;
+  }
   .lang-btn {
-    padding: 5px 10px;
+    padding: 4px 8px;
     font-size: 11px;
+    min-height: 26px;
   }
   .theme-toggle {
-    width: 38px;
-    height: 38px;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+  }
+  .theme-toggle svg {
+    width: 15px;
+    height: 15px;
   }
   .start-logo {
     width: 44px;
@@ -1076,6 +1092,194 @@
     font-size: 11px;
     padding: 2px 7px;
     min-width: 32px;
+  }
+  .setup-modal-backdrop,
+  .modal-overlay {
+    padding: 14px;
+  }
+  .setup-modal-content {
+    padding: 22px 16px;
+    max-width: min(100%, 360px);
+    max-height: min(90vh, 90dvh);
+    overflow-y: auto;
+  }
+  .modal-title {
+    font-size: 18px;
+  }
+  .modal-desc {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .modal-summary-box {
+    padding: 10px 12px;
+    margin-bottom: 16px;
+  }
+  .modal-btn-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-top: 14px;
+  }
+  .modal-btn-row .btn {
+    width: 100%;
+    min-height: 44px;
+    font-size: 13.5px;
+  }
+}
+
+/* ===== Resume Active Session Card & Banner ===== */
+.resume-section {
+  margin-bottom: 28px;
+}
+
+.resume-session-card {
+  background: linear-gradient(135deg, rgba(58, 134, 255, 0.08) 0%, rgba(27, 27, 34, 0.95) 100%);
+  border: 1.5px solid rgba(58, 134, 255, 0.35);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 0.25s ease;
+}
+
+html[data-theme="light"] .resume-session-card {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.06) 0%, #ffffff 100%);
+  border: 1.5px solid rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
+}
+
+.resume-session-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.resume-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: 0.04em;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 8px var(--blue);
+  animation: pulseGlow 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.55; }
+}
+
+.resume-mode-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--panel-2);
+  color: var(--text-dim);
+  border: 1px solid var(--line);
+}
+
+.resume-session-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resume-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.resume-progress-text {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.resume-progress-bar-wrap {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--panel-2);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.resume-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue) 0%, #60a5fa 100%);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.resume-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  color: var(--text-dim);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.resume-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.btn-text-danger {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--red);
+  font-family: 'Space Grotesk', 'Noto Sans Thai', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: all 0.18s ease;
+}
+
+.btn-text-danger:hover {
+  background: var(--red-bg);
+  border-color: var(--red);
+}
+
+@media (max-width: 600px) {
+  .resume-session-card {
+    padding: 16px 14px;
+    gap: 10px;
+  }
+  .resume-title {
+    font-size: 15px;
+  }
+  .resume-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .resume-actions .btn {
+    width: 100%;
   }
 }
 

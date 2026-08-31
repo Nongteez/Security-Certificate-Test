@@ -29,6 +29,9 @@ export async function renderApp() {
         (selectedCert) => {
           selectCertification(selectedCert);
           renderApp();
+        },
+        () => {
+          renderApp();
         }
       );
       break;

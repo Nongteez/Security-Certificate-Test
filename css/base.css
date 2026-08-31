@@ -65,8 +65,11 @@ html[data-theme="light"] {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: 'Space Grotesk', 'Noto Sans Thai', sans-serif;
@@ -92,7 +95,7 @@ body {
 
 @media (max-width: 480px) {
   .app {
-    width: min(100% - 24px, 1320px);
+    width: min(100% - 28px, 1320px);
     padding: 14px 0 40px;
   }
 }

@@ -1204,8 +1204,8 @@ const questions = [
       "Risk tolerance"
     ],
     "correct_idx": 1,
-    "explanation": "Risk transfer is a risk management strategy that contractually shifts a pure risk from one party to another (in this case, to an insurance company). Risk avoidance consists in stopping activities and exposures that can negatively affect an organization and its assets. Risk mitigation consists of mechanisms to reduce the risk. Finally, risk tolerance is the degree of risk that an investor is willing to endure. github.com/ayemunhossain",
-    "short_explanation_en": "Risk transfer is a risk management strategy that contractually shifts a pure risk from one party to another (in this case, to an insurance company).",
+    "explanation": "Risk transfer is a risk management strategy that contractually shifts a pure risk from one party to another (in this case, to an insurance company). Risk avoidance consists in stopping activities and exposures that can negatively affect an organization and its assets. Risk mitigation consists of mechanisms to reduce the risk. Finally, risk tolerance is the degree of risk that an investor is willing to endure.",
+    "short_explanation_en": "Risk transfer is a risk management strategy that contractually shifts a pure risk from one party to another (in this case, to an insurance company). Risk avoidance consists in stopping activities and exposures that can negatively affect an organization and its assets. Risk mitigation consists of mechanisms to reduce the risk. Finally, risk tolerance is the degree of risk that an investor is willing to endure.",
     "question_th": "เมื่อบริษัทจ้างบริษัทประกันเพื่อลดความเสี่ยง เทคนิคการบริหารความเสี่ยงใดที่ถูกนำมาใช้?",
     "options_th": [
       "Risk avoidance",
@@ -1245,7 +1245,7 @@ const questions = [
       "Firewalls",
       "Biometric access controls",
       "Remote control electronic locks",
-      "Security cameras github.com/ayemunhossain"
+      "Security cameras"
     ],
     "correct_idx": 0,
     "explanation": "Firewalls are a type of electronic equipment which connects to a network that filters inbound traffic arriving from the Internet, and, thus are a type of technical security controls. Security cameras, biometric access control and electronic locks, though connected to a network, control access to physical facilities, and thus are types of physical security controls. (ISC2 Study Guide, Chapter 1, Module 3)",
@@ -1292,8 +1292,8 @@ const questions = [
       "Procedures"
     ],
     "correct_idx": 3,
-    "explanation": "Policies are high-level documents that frame all ongoing activities of an organization to ensure that it complies with industry standards and regulations. Regulations are usually devised by governments. Standards are created by governing or professional bodies to support regulations. Both regulations and standards are created outside of the organization (see ISC2 Study Guide Chapter 1, Module 4). github.com/ayemunhossain",
-    "short_explanation_en": "Policies are high-level documents that frame all ongoing activities of an organization to ensure that it complies with industry standards and regulations.",
+    "explanation": "Policies are high-level documents that frame all ongoing activities of an organization to ensure that it complies with industry standards and regulations. Regulations are usually devised by governments. Standards are created by governing or professional bodies to support regulations. Both regulations and standards are created outside of the organization (see ISC2 Study Guide Chapter 1, Module 4).",
+    "short_explanation_en": "Policies are high-level documents that frame all ongoing activities of an organization to ensure that it complies with industry standards and regulations. Regulations are usually devised by governments. Standards are created by governing or professional bodies to support regulations. Both regulations and standards are created outside of the organization (see ISC2 Study Guide Chapter 1, Module 4).",
     "question_th": "ขั้นตอนโดยละเอียดในการทำงานให้เสร็จสมบูรณ์เพื่อสนับสนุนนโยบายของหน่วยงานหรือองค์กร มักถูกบันทึกไว้ใน:",
     "options_th": [
       "Regulations",
@@ -1306,7 +1306,7 @@ const questions = [
   {
     "id": 214,
     "dom": 1,
-    "question": "A Security safeguard is the same as a: github.com/ayemunhossain",
+    "question": "A Security safeguard is the same as a:",
     "options": [
       "Safety control",
       "Privacy control",
@@ -1333,7 +1333,7 @@ const questions = [
       "Common controls",
       "Hybrid controls",
       "System-specific controls",
-      "Storage controls github.com/ayemunhossain"
+      "Storage controls"
     ],
     "correct_idx": 3,
     "explanation": "Storage controls are not a type of security control. Security controls are safeguards or countermeasures that an organization can employ to avoid, counteract or minimize security risks. System-specific controls are security controls that provide security capability for only one specific information system. Common controls are security controls that provide security capability for multiple information systems. Hybrid controls have characteristics of both system-specific and common controls.",
@@ -1464,7 +1464,7 @@ const questions = [
     "options": [
       "Threat Vector",
       "Threat Actor",
-      "Threat github.com/ayemunhossain",
+      "Threat",
       "Attacker"
     ],
     "correct_idx": 1,
@@ -1600,8 +1600,8 @@ const questions = [
       "Confidentiality"
     ],
     "correct_idx": 3,
-    "explanation": "Confidentiality is the most distinctive property of personally identifiable information (see ISC2 study guide, Module 1, under CIA Deep Dive). The remaining options apply to all types of data. All data requires integrity to be usable. Non- repudiation refers to the inability to deny the production, approval, or transmission of information. Authentication refers to the access to information. github.com/ayemunhossain",
-    "short_explanation_en": "Confidentiality is the most distinctive property of personally identifiable information (see ISC2 study guide, Module 1, under CIA Deep Dive).",
+    "explanation": "Confidentiality is the most distinctive property of personally identifiable information (see ISC2 Study Guide, Module 1, under CIA Deep Dive). The remaining options apply to all types of data. All data requires integrity to be usable. Non-repudiation refers to the inability to deny the production, approval, or transmission of information. Authentication refers to the access to information.",
+    "short_explanation_en": "Confidentiality is the most distinctive property of personally identifiable information (see ISC2 Study Guide, Module 1, under CIA Deep Dive). The remaining options apply to all types of data. All data requires integrity to be usable. Non-repudiation refers to the inability to deny the production, approval, or transmission of information. Authentication refers to the access to information.",
     "question_th": "พื้นที่ใดต่อไปนี้เกี่ยวข้องกับ PII?",
     "options_th": [
       "Non-Repudiation",
@@ -1622,8 +1622,8 @@ const questions = [
       "Promote the understanding and acceptance of prudent information security measures."
     ],
     "correct_idx": 2,
-    "explanation": "The direction for applying the ethical principles of ISC2 states that avoiding conflicts of interest or the appearance thereof is a consequence of providing diligent and competent service to principals (see https://resources.infosecinstitute.com/certification/the-isc2-code-of-ethics-a-binding-requirement-for-certification/). The other options are consequences of the remaining three ethical principles.",
-    "short_explanation_en": "The direction for applying the ethical principles of ISC2 states that avoiding conflicts of interest or the appearance thereof is a consequence of providing diligent and competent service to principals (see...",
+    "explanation": "The direction for applying the ethical principles of ISC2 states that avoiding conflicts of interest or the appearance thereof is a consequence of providing diligent and competent service to principals (see ISC2 Code of Ethics). The other options are consequences of the remaining three ethical principles.",
+    "short_explanation_en": "The direction for applying the ethical principles of ISC2 states that avoiding conflicts of interest or the appearance thereof is a consequence of providing diligent and competent service to principals (see ISC2 Code of Ethics). The other options are consequences of the remaining three ethical principles.",
     "question_th": "ตามจรรยาบรรณ 'Provide diligent and competent service to principals' ผู้เชี่ยวชาญ ISC2 ต้อง:",
     "options_th": [
       "ระมัดระวังไม่ทำให้ชื่อเสียงของผู้เชี่ยวชาญคนอื่นเสียหายด้วยความมุ่งร้ายหรือความเฉยเมย",
@@ -1710,8 +1710,8 @@ const questions = [
       "Authentication"
     ],
     "correct_idx": 1,
-    "explanation": "The correct answer is B. Confidentiality is the most distinctive property of protected health information (see ISC2 Study Guide, Module 1, under CIA Deep Dive). The remaining options apply to all types of data. All data requires integrity to be usable. Non-repudiation refers to the inability to deny the production, approval, or transmission of information. Authentication refers to guaranteeing that systems and information are accessed by persons and systems that are who github.com/ayemunhossain",
-    "short_explanation_en": "The correct answer is B. Confidentiality is the most distinctive property of protected health information (see ISC2 Study Guide, Module 1, under CIA Deep Dive).",
+    "explanation": "The correct answer is B. Confidentiality is the most distinctive property of protected health information (see ISC2 Study Guide, Module 1, under CIA Deep Dive). The remaining options apply to all types of data. All data requires integrity to be usable. Non-repudiation refers to the inability to deny the production, approval, or transmission of information. Authentication refers to guaranteeing that systems and information are accessed by persons and systems that are who they claim to be.",
+    "short_explanation_en": "The correct answer is B. Confidentiality is the most distinctive property of protected health information (see ISC2 Study Guide, Module 1, under CIA Deep Dive). The remaining options apply to all types of data. All data requires integrity to be usable. Non-repudiation refers to the inability to deny the production, approval, or transmission of information. Authentication refers to guaranteeing that systems and information are accessed by persons and systems that are who they claim to be.",
     "question_th": "พื้นที่ใดต่อไปนี้เป็นคุณสมบัติที่โดดเด่นที่สุดของ PHI?",
     "options_th": [
       "Integrity",
@@ -1754,8 +1754,8 @@ const questions = [
       "A court of law"
     ],
     "correct_idx": 1,
-    "explanation": "The code of ethics requires security professionals to be honest, but not necessarily \"law enforcers\". A violation of a company's security policy should be reported and handled within the company itself (usually involving the human resources, legal, or management departments). Only individuals can be reported to the ISC2 ethics committee (i.e. not companies). National authorities only deal with violations of laws and regulations. github.com/ayemunhossain",
-    "short_explanation_en": "The code of ethics requires security professionals to be honest, but not necessarily \"law enforcers\".",
+    "explanation": "The code of ethics requires security professionals to be honest, but not necessarily \"law enforcers\". A violation of a company's security policy should be reported and handled within the company itself (usually involving the human resources, legal, or management departments). Only individuals can be reported to the ISC2 ethics committee (i.e. not companies). National authorities only deal with violations of laws and regulations.",
+    "short_explanation_en": "The code of ethics requires security professionals to be honest, but not necessarily \"law enforcers\". A violation of a company's security policy should be reported and handled within the company itself (usually involving the human resources, legal, or management departments). Only individuals can be reported to the ISC2 ethics committee (i.e. not companies). National authorities only deal with violations of laws and regulations.",
     "question_th": "ผู้เชี่ยวชาญด้านความปลอดภัยควรรายงานการฝ่าฝืนนโยบายความปลอดภัยของบริษัทไปยัง:",
     "options_th": [
       "The ISC Ethics Committee",
@@ -1798,8 +1798,8 @@ const questions = [
       "Trust but verify"
     ],
     "correct_idx": 3,
-    "explanation": "The “Trust but verify” model is a method of threat protection wherein privileged accounts are trusted (but always verified) and allowed access to the network and other resources . Over time, the “Trust but verify” model has been found to expose organizations to multiple security threats, and is therefore being progressively abandoned in favor of the Zero Trust model. The remaining options are all good practices of access management. github.com/ayemunhossain",
-    "short_explanation_en": "The “Trust but verify” model is a method of threat protection wherein privileged accounts are trusted (but always verified) and allowed access to the network and other resources .",
+    "explanation": "The “Trust but verify” model is a method of threat protection wherein privileged accounts are trusted (but always verified) and allowed access to the network and other resources. Over time, the “Trust but verify” model has been found to expose organizations to multiple security threats, and is therefore being progressively abandoned in favor of the Zero Trust model. The remaining options are all good practices of access management.",
+    "short_explanation_en": "The “Trust but verify” model is a method of threat protection wherein privileged accounts are trusted (but always verified) and allowed access to the network and other resources. Over time, the “Trust but verify” model has been found to expose organizations to multiple security threats, and is therefore being progressively abandoned in favor of the Zero Trust model. The remaining options are all good practices of access management.",
     "question_th": "ข้อใดไม่ใช่แนวปฏิบัติที่ดีในการจัดการการเข้าถึง (Access management)?",
     "options_th": [
       "ให้สิทธิ์เท่าที่จำเป็นเท่านั้น",
@@ -1817,7 +1817,7 @@ const questions = [
       "Do what is right in each situation you encounter on the job",
       "Give continuity to the legacy of security practices of your company",
       "Apply patches annually",
-      "Researching and acquiring the knowledge to do your job right github.com/ayemunhossain"
+      "Researching and acquiring the knowledge to do your job right"
     ],
     "correct_idx": 0,
     "explanation": "The concept of 'due Care' (also known as 'the prudent person rule') refers to what a prudent person would do in a given situation. In cybersecurity, 'due care' means taking reasonable steps to secure and protect the organization's assets, reputation and finances. The concept is holistic and includes, among other things: implementing the appropriate security standards, policies and procedures; ensuring proper cybersecurity awareness training; and promoting the continuous improvement of monitoring",
@@ -1834,29 +1834,29 @@ const questions = [
   {
     "id": 294,
     "dom": 1,
-    "question": "(★) Which of these is NOT a best practice in access management?",
+    "question": "Which type of security governance document provides recommended advice or best practices that are discretionary rather than mandatory?",
     "options": [
-      "Periodically assessing whether user permissions still apply",
-      "Requesting a justification when upgrading permission",
-      "Giving only the right amount of permission",
-      "Trust but verify"
+      "Policy",
+      "Guideline",
+      "Standard",
+      "Procedure"
     ],
-    "correct_idx": 3,
-    "explanation": "The \"Trust but verify\" model is a method of threat protection that involves granting privileged accounts access to the network and other resources, while at the same time verifying their actions and activities. However, over time, this model was found to have limitations that expose organizations to a wide array of security threats. Therefore, \"Trust but verify\" is being progressively abandoned in favor of the Zero Trust model. The remaining options are all best practices of access management.",
-    "short_explanation_en": "The \"Trust but verify\" model is a method of threat protection that involves granting privileged accounts access to the network and other resources, while at the same time verifying their actions and activities.",
-    "question_th": "ข้อใดไม่ใช่แนวปฏิบัติที่ดีในการจัดการการเข้าถึง (Access management)?",
+    "correct_idx": 1,
+    "explanation": "A Guideline contains recommendations and best practices that are discretionary (optional), providing flexible advice for implementation. In contrast, Policies, Standards, and Procedures are mandatory governance documents.",
+    "short_explanation_en": "A Guideline contains recommendations and best practices that are discretionary (optional), providing flexible advice for implementation.",
+    "question_th": "เอกสารการกำกับดูแลความปลอดภัยประเภทใดที่ให้คำแนะนำหรือแนวปฏิบัติที่ดีที่สุดซึ่งเป็นไปตามดุลยพินิจมากกว่าการบังคับใช้?",
     "options_th": [
-      "ประเมินเป็นระยะว่าสิทธิ์ของผู้ใช้ยังคงเหมาะสมหรือไม่",
-      "ขอเหตุผลเมื่อมีการอัปเกรดสิทธิ์",
-      "ให้สิทธิ์เท่าที่จำเป็นเท่านั้น",
-      "Trust but verify"
+      "Policy (นโยบาย)",
+      "Guideline (แนวทางปฏิบัติ)",
+      "Standard (มาตรฐาน)",
+      "Procedure (ขั้นตอนการปฏิบัติงาน)"
     ],
-    "explanation_th": "โมเดล 'Trust but verify' เป็นวิธีการป้องกันภัยคุกคามที่เกี่ยวข้องกับการให้บัญชีสิทธิพิเศษเข้าถึงเครือข่ายและทรัพยากรอื่น ๆ ในขณะเดียวกันก็ตรวจสอบการกระทำและกิจกรรมของพวกเขา อย่างไรก็ตาม เมื่อเวลาผ่านไป โมเดลนี้พบว่ามีข้อจำกัดที่เปิดโอกาสให้องค์กรเผชิญภัยคุกคามด้านความปลอดภัยหลากหลาย"
+    "explanation_th": "Guideline (แนวทางปฏิบัติ) ประกอบด้วยข้อเสนอแนะและแนวปฏิบัติที่ดีที่สุดซึ่งเป็นไปตามดุลยพินิจ (ไม่บังคับ) เพื่อให้คำแนะนำที่ยืดหยุ่นในการนำไปปฏิบัติ ในทางตรงกันข้าม Policy, Standard และ Procedure เป็นเอกสารการกำกับดูแลที่บังคับใช้"
   },
   {
     "id": 301,
     "dom": 1,
-    "question": "Acting ethically is mandatory for (ISC)² members. Which of these is NOT considered unethical? github.com/ayemunhossain",
+    "question": "Acting ethically is mandatory for (ISC)² members. Which of these is NOT considered unethical?",
     "options": [
       "Disrupting the intended use of the internet",
       "Seeking to gain unauthorized access to resources on thae internet",
@@ -1886,8 +1886,8 @@ const questions = [
       "Separation of Duties"
     ],
     "correct_idx": 0,
-    "explanation": "Security in Depth (SID) is not a security principle, but a security model that involves implementing multiple layers of security controls, so as to protect against threats and reduce the risk of a successful attack. In Security in Depth, the idea is to create a multi-layered defense system that includes both technical controls (such as firewalls and intrusion detection systems) and administrative controls (such as policies and procedures). github.com/ayemunhossain Zero Trust model, Separation of",
-    "short_explanation_en": "Security in Depth (SID) is not a security principle, but a security model that involves implementing multiple layers of security controls, so as to protect against threats and reduce the risk of a successful attack.",
+    "explanation": "Security in Depth (SID) is not a security principle, but a security model that involves implementing multiple layers of security controls, so as to protect against threats and reduce the risk of a successful attack. In Security in Depth, the idea is to create a multi-layered defense system that includes both technical controls (such as firewalls and intrusion detection systems) and administrative controls (such as policies and procedures).",
+    "short_explanation_en": "Security in Depth (SID) is not a security principle, but a security model that involves implementing multiple layers of security controls, so as to protect against threats and reduce the risk of a successful attack. In Security in Depth, the idea is to create a multi-layered defense system that includes both technical controls (such as firewalls and intrusion detection systems) and administrative controls (such as policies and procedures).",
     "question_th": "ข้อใดไม่ใช่หลักการความปลอดภัย?",
     "options_th": [
       "Security in Depth (SID)",
@@ -2018,8 +2018,8 @@ const questions = [
       "Act always in the best interest of your client"
     ],
     "correct_idx": 1,
-    "explanation": "The four canons of ISC2 are (see ISC2 Study Guide, chapter 1, module 5): Advance and protect the profession; Act honorably, honestly, justly, responsibly and legally; Provide diligent and competent service to principals; Protect society, the common good, necessary public trust and confidence and the infrastructure.Although some options seem right, only 'Advance and protect the profession' is correct. github.com/ayemunhossain",
-    "short_explanation_en": "The four canons of ISC2 are (see ISC2 Study Guide, chapter 1, module 5): Advance and protect the profession; Act honorably, honestly, justly, responsibly and legally; Provide diligent and competent service to principals; Protect...",
+    "explanation": "The four canons of ISC2 are (see ISC2 Study Guide, chapter 1, module 5): Advance and protect the profession; Act honorably, honestly, justly, responsibly and legally; Provide diligent and competent service to principals; Protect society, the common good, necessary public trust and confidence and the infrastructure. Although some options seem right, only 'Advance and protect the profession' is correct.",
+    "short_explanation_en": "The four canons of ISC2 are (see ISC2 Study Guide, chapter 1, module 5): Advance and protect the profession; Act honorably, honestly, justly, responsibly and legally; Provide diligent and competent service to principals; Protect society, the common good, necessary public trust and confidence and the infrastructure. Although some options seem right, only 'Advance and protect the profession' is correct.",
     "question_th": "ข้อใดเป็นส่วนหนึ่งของจรรยาบรรณ (ISC)² code of ethics?",
     "options_th": [
       "Provide diligent and competent services to stakeholders",
@@ -2081,7 +2081,7 @@ const questions = [
       "Human Resources",
       "Security engineer",
       "Financial Department",
-      "Senior management github.com/ayemunhossain"
+      "Senior management"
     ],
     "correct_idx": 3,
     "explanation": "Senior management is typically responsible for setting the organization's overall direction and strategy, and for ensuring that policies and procedures are in place to support that strategy. Therefore, it is the senior management's responsibilityto sign the organization's policies. Although other departments and stakeholders may be called in to develop and draft policies, it is ultimately the responsibility of senior management to sign off on the policies, indicating their approval and support.",
@@ -2150,8 +2150,8 @@ const questions = [
       "Application Security"
     ],
     "correct_idx": 1,
-    "explanation": "ISO 27002 is a supplementary standard aimed at guiding implementation controls in order to maintain security controls for Information Security Management Systems (ISMS), as defined in ISO 27001. Among many other aspects, these security controls comprise application security. Risk management is an activity that is touched on in this standard, but is not its primary focus (it is the focus of the ISO 31000 standard). HIPAA is the United States law that governs the privacy github.com/ayemunhossain o",
-    "short_explanation_en": "ISO 27002 is a supplementary standard aimed at guiding implementation controls in order to maintain security controls for Information Security Management Systems (ISMS), as defined in ISO 27001.",
+    "explanation": "ISO 27002 is a supplementary standard aimed at guiding implementation controls in order to maintain security controls for Information Security Management Systems (ISMS), as defined in ISO 27001. Among many other aspects, these security controls comprise application security. Risk management is an activity that is touched on in this standard, but is not its primary focus (it is the focus of the ISO 31000 standard). HIPAA is the United States law that governs the privacy of health information.",
+    "short_explanation_en": "ISO 27002 is a supplementary standard aimed at guiding implementation controls in order to maintain security controls for Information Security Management Systems (ISMS), as defined in ISO 27001. Among many other aspects, these security controls comprise application security. Risk management is an activity that is touched on in this standard, but is not its primary focus (it is the focus of the ISO 31000 standard). HIPAA is the United States law that governs the privacy of health information.",
     "question_th": "ข้อใดคือจุดเน้นหลักของมาตรฐาน ISO 27002?",
     "options_th": [
       "Health Insurance Portability and Accountability Act (HIPAA)",
@@ -2230,24 +2230,24 @@ const questions = [
   {
     "id": 372,
     "dom": 1,
-    "question": "Which of these is NOT a best practice in access management?",
+    "question": "An organization deploys security guards at the facility entrance, requires badge access at internal doors, and enforces multi-factor authentication on servers. Which security strategy is being demonstrated?",
     "options": [
-      "Trust but verify",
-      "Periodically assessing whether user permissions still apply",
-      "Giving only the right amount of permission github.com/ayemunhossain",
-      "Requesting a justification when upgrading permission"
+      "Single Point of Failure",
+      "Defense in Depth",
+      "Security through Obscurity",
+      "Separation of Duties"
     ],
-    "correct_idx": 0,
-    "explanation": "The \"Trust but verify\" model is a method of threat protection that involves granting privileged accounts access to the network and other resources, while at the same time verifying their actions and activities. However, over time, this model was found to have limitations that expose organizations to a wide array of security threats. Therefore, \"Trust but verify\" is being progressively abandoned in favor of the Zero Trust model. The remaining options are all best practices of access management.",
-    "short_explanation_en": "The \"Trust but verify\" model is a method of threat protection that involves granting privileged accounts access to the network and other resources, while at the same time verifying their actions and activities.",
-    "question_th": "ข้อใดไม่ใช่แนวปฏิบัติที่ดีในการจัดการการเข้าถึง (Access management)?",
+    "correct_idx": 1,
+    "explanation": "Defense in Depth (layered security) uses multiple independent defensive layers across administrative, physical, and technical domains so that if one control fails, subsequent controls prevent a compromise.",
+    "short_explanation_en": "Defense in Depth uses multiple independent defensive layers across administrative, physical, and technical domains.",
+    "question_th": "องค์กรจัดวางเจ้าหน้าที่รักษาความปลอดภัยที่ทางเข้าอาคาร กำหนดให้ใช้บัตรแตะผ่านประตูภายใน และบังคับใช้การยืนยันตัวตนแบบหลายปัจจัยบนเซิร์ฟเวอร์ กลยุทธ์ความปลอดภัยใดกำลังถูกนำมาใช้?",
     "options_th": [
-      "Trust but verify",
-      "ประเมินเป็นระยะว่าสิทธิ์ของผู้ใช้ยังคงเหมาะสมหรือไม่",
-      "ให้สิทธิ์เท่าที่จำเป็นเท่านั้น",
-      "ขอเหตุผลเมื่อมีการอัปเกรดสิทธิ์"
+      "Single Point of Failure (จุดล้มเหลวเพียงจุดเดียว)",
+      "Defense in Depth (การป้องกันเชิงลึก)",
+      "Security through Obscurity (ความปลอดภัยโดยการปกปิด)",
+      "Separation of Duties (การแบ่งแยกหน้าที่)"
     ],
-    "explanation_th": "โมเดล 'Trust but verify' เป็นวิธีการป้องกันภัยคุกคามที่เกี่ยวข้องกับการให้บัญชีสิทธิพิเศษเข้าถึงเครือข่ายและทรัพยากรอื่น ๆ ในขณะเดียวกันก็ตรวจสอบการกระทำและกิจกรรมของพวกเขา อย่างไรก็ตาม โมเดลนี้พบว่ามีข้อจำกัดที่เปิดโอกาสให้องค์กรเผชิญภัยคุกคามด้านความปลอดภัยหลากหลาย จึงกำลังถูกยกเลิกเพื่อหันไปใช้โมเดล Zero Trust แทน"
+    "explanation_th": "Defense in Depth (การป้องกันเชิงลึกหรือการรักษาความปลอดภัยแบบหลายชั้น) ใช้การควบคุมอิสระหลายชั้นครอบคลุมด้านการบริหารจัดการ กายภาพ และทางเทคนิค เพื่อให้หากการควบคุมชั้นใดชั้นหนึ่งล้มเหลว การควบคุมในชั้นถัดไปยังคงป้องกันการถูกบุกรุกได้"
   },
   {
     "id": 373,
