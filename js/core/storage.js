@@ -3,6 +3,9 @@
  * Provides safe, defensive persistence for unfinished local quiz sessions.
  */
 
+import certifications from '../../data/certifications.js';
+import { resolveExamVersion } from '../../data/exam-versions.js';
+
 export const ACTIVE_SESSION_KEY = 'sec_cert_active_session_v1';
 export const CURRENT_SCHEMA_VERSION = 1;
 
@@ -73,6 +76,20 @@ export function validateSessionData(data) {
   return true;
 }
 
+/** Read-only legacy migration. Missing metadata is recognized only for schema-v1 ISC2 CC. */
+export function resolveSessionVersion(session) {
+  if (!validateSessionData(session)) return null;
+  for (const field of ['version', 'versionId']) {
+    if (session[field] !== undefined && (typeof session[field] !== 'string' || !session[field])) return null;
+  }
+  const cert = certifications.find(c => (c.certId === session.certId || c.id === session.certId) &&
+    (session.vendorId ? c.vendorId === session.vendorId : c.id === 'isc2-cc'));
+  if (!cert) return null;
+  if (session.versionId !== undefined && session.version !== undefined && session.versionId !== session.version) return null;
+  const id = session.versionId ?? session.version ?? (cert.id === 'isc2-cc' ? '2026' : null);
+  return resolveExamVersion(cert.id, id);
+}
+
 /**
  * Builds a clean, serializable session object from current application state.
  * @param {Object} state - The global application state object
@@ -84,7 +101,7 @@ export function buildSessionSnapshot(state) {
     return null;
   }
 
-  const cert = state.selectedCertification;
+  const cert = quiz.certification || state.selectedCertification;
   const setup = state.setup;
 
   const questionIds = quiz.questions.map((q) => q.id);
@@ -105,7 +122,8 @@ export function buildSessionSnapshot(state) {
     vendorId: cert?.vendorId || 'isc2',
     certId: cert?.certId || cert?.id || 'cc',
     certName: cert?.name || 'Certified in Cybersecurity',
-    version: state.selectedExamVersion || '2026',
+    version: quiz.versionId || state.selectedExamVersion || '2026',
+    versionId: quiz.versionId || state.selectedExamVersion || '2026',
     mode: quiz.mode,
     language: setup?.language || 'en',
     selectedDomains,
@@ -144,7 +162,7 @@ export function saveActiveQuizSession(sessionData) {
 
 /**
  * Loads and defensively validates the active quiz session from localStorage.
- * Discards corrupted or invalid sessions gracefully.
+ * Leaves corrupted or unsupported sessions untouched so they can be recovered.
  * @returns {Object|null} Validated session object or null
  */
 export function loadActiveQuizSession() {
@@ -155,15 +173,13 @@ export function loadActiveQuizSession() {
 
     const parsed = JSON.parse(raw);
     if (!validateSessionData(parsed)) {
-      console.warn('Stored quiz session is invalid or incompatible with schema. Discarding.');
-      clearActiveQuizSession();
+      console.warn('Stored quiz session is invalid or incompatible with schema. Keeping saved data.');
       return null;
     }
 
     return parsed;
   } catch (err) {
     console.warn('Failed to load active quiz session from storage:', err);
-    clearActiveQuizSession();
     return null;
   }
 }
@@ -186,4 +202,13 @@ export function clearActiveQuizSession() {
  */
 export function hasActiveQuizSession() {
   return loadActiveQuizSession() !== null;
+}
+
+/** Includes unreadable payloads: starting over must not silently overwrite recoverable data. */
+export function hasStoredQuizSession() {
+  try {
+    return getStorage().getItem(ACTIVE_SESSION_KEY) !== null;
+  } catch {
+    return false;
+  }
 }

@@ -5,6 +5,7 @@
  */
 
 import { state, updateSetup } from '../core/state.js';
+import { resolveExamVersion } from '../../data/exam-versions.js';
 import { t } from '../core/i18n.js';
 import {
   returnToQuizSetup,
@@ -13,6 +14,7 @@ import {
   getWrongQuestions
 } from '../core/quiz-engine.js';
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
+import { renderExplanation2026Content } from './components/explanation-2026.js';
 
 const DOMAIN_MAP = {
   1: { en: 'Security Principles', th: 'หลักการความมั่นคงปลอดภัย' },
@@ -50,6 +52,7 @@ function escapeHtml(str) {
 export function renderResultsScreen(container, onRerender) {
   const lang = state.setup.language || 'en';
   const quiz = state.quiz;
+  const version = resolveExamVersion(quiz.certification?.id || state.selectedCertification?.id, quiz.versionId || state.selectedExamVersion);
   const isExam = quiz.mode === 'exam';
 
   const totalQuestions = quiz.questions?.length || 0;
@@ -96,6 +99,7 @@ export function renderResultsScreen(container, onRerender) {
           </button>
           <div class="quiz-cert-badge">
             <span>ISC2 CC</span>
+            ${version ? `<span class="meta-badge meta-badge-outline">${escapeHtml(version.badge || version.title)}</span>` : ''}
             <span class="quiz-mode-pill ${isExam ? 'exam' : 'practice'}">${isExam ? t('examTitle', lang) : t('practiceTitle', lang)}</span>
           </div>
         </div>
@@ -363,16 +367,21 @@ export function renderReviewWrongScreen(container, onRerender) {
 
   // Explanation content
   let expContentHtml = '';
-  if (lang === 'en') {
-    expContentHtml = `<div class="explanation-en">${escapeHtml(currentQ.explanation)}</div>`;
-  } else if (lang === 'th') {
-    expContentHtml = `<div class="explanation-th">${escapeHtml(currentQ.explanation_th || currentQ.explanation)}</div>`;
+  const versionId = state.quiz?.versionId || state.selectedExamVersion;
+  if (versionId === 'next-bank') {
+    expContentHtml = renderExplanation2026Content(currentQ, lang);
   } else {
-    expContentHtml = `
-      <div class="explanation-en"><span class="lang-badge">EN</span>${escapeHtml(currentQ.explanation)}</div>
-      <div class="explanation-divider" aria-hidden="true"></div>
-      <div class="explanation-th"><span class="lang-badge">TH</span>${escapeHtml(currentQ.explanation_th || currentQ.explanation)}</div>
-    `;
+    if (lang === 'en') {
+      expContentHtml = `<div class="explanation-en">${escapeHtml(currentQ.explanation)}</div>`;
+    } else if (lang === 'th') {
+      expContentHtml = `<div class="explanation-th">${escapeHtml(currentQ.explanation_th || currentQ.explanation)}</div>`;
+    } else {
+      expContentHtml = `
+        <div class="explanation-en"><span class="lang-badge">EN</span>${escapeHtml(currentQ.explanation)}</div>
+        <div class="explanation-divider" aria-hidden="true"></div>
+        <div class="explanation-th"><span class="lang-badge">TH</span>${escapeHtml(currentQ.explanation_th || currentQ.explanation)}</div>
+      `;
+    }
   }
 
   const isLastItem = activeReviewIndex === totalWrong - 1;

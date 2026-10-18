@@ -7,9 +7,10 @@
 
 import { state, updateSetup, updatePracticeSetup } from '../core/state.js';
 import { t } from '../core/i18n.js';
-import { loadQuestionsForDomains } from '../core/question-loader.js';
+import { loadQuestionsForDomains, loadQuestionsForSession } from '../core/question-loader.js';
 import { createPracticeSession, createExamSession, startQuizSession, resumeQuizSession } from '../core/quiz-engine.js';
-import { loadActiveQuizSession, clearActiveQuizSession } from '../core/storage.js';
+import { loadActiveQuizSession, clearActiveQuizSession, resolveSessionVersion, hasStoredQuizSession } from '../core/storage.js';
+import { getExamVersions, resolveExamVersion } from '../../data/exam-versions.js';
 import certifications from '../../data/certifications.js';
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
 
@@ -31,16 +32,20 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
   const certName = cert?.name || 'Certified in Cybersecurity';
   const shortName = cert?.shortName || 'CC';
   const examVersion = version || cert?.defaultVersion || examConfig?.version || '2026';
+  const versionEntry = resolveExamVersion(cert?.id, examVersion);
+  const stillOnSetup = () => state.screen === 'cert-start' && state.selectedCertification === cert && state.selectedExamVersion === examVersion;
   const certLogo = cert?.logo || './assets/logos/CC-ISC2.png';
   const domains = examConfig?.domains || [];
-  const totalQuestions = examConfig?.totalQuestions || 583;
+  const totalQuestions = examConfig?.totalQuestions || 0;
 
   // Check for existing active session
   const activeSession = loadActiveQuizSession();
-  const isSessionForThisCert = activeSession && activeSession.certId === (cert?.certId || cert?.id || 'cc');
+  const savedVersion = resolveSessionVersion(activeSession);
+  const isSessionForThisCert = savedVersion && savedVersion.certificationId === cert?.id && savedVersion.id === examVersion;
 
   // Domain selection based on mode
-  const practiceSelectedDomains = state.setup.practice.selectedDomains || new Set([1, 2, 3, 4, 5]);
+  const availableDomains = domains.filter(d => (d.questionCount || 0) > 0 && d.available !== false);
+  const practiceSelectedDomains = state.setup.practice.selectedDomains || new Set(availableDomains.map(d => d.id));
   const activeDomainSet = isExam 
     ? new Set(domains.map((d) => d.id))
     : practiceSelectedDomains;
@@ -59,28 +64,30 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
     practicePoolSize || 1
   );
 
-  const isStartDisabled = !isExam && practicePoolSize === 0;
+  const isStartDisabled = !examConfig || (getExamVersions(cert?.id).length && !versionEntry) || (!isExam && practicePoolSize === 0) || (isExam && examConfig.totalQuestions < 125);
 
   // Build domain rows HTML
   const domainRowsHtml = domains.map((d) => {
-    const isChecked = activeDomainSet.has(d.id);
+    const isAvailable = (d.questionCount || 0) > 0 && d.available !== false;
+    const isChecked = isAvailable && activeDomainSet.has(d.id);
     const domainDisplayName = d.name.en;
     const domainShortName = d.shortName?.en || d.name.en;
+    const isLockedOrDisabled = isExam || !isAvailable;
 
     return `
       <div 
-        class="domain-row ${isChecked ? 'checked' : ''} ${isExam ? 'locked' : ''}" 
+        class="domain-row ${isChecked ? 'checked' : ''} ${isLockedOrDisabled ? 'locked' : ''} ${!isAvailable ? 'domain-unavailable' : ''}" 
         data-domain-id="${d.id}" 
-        role="${isExam ? 'presentation' : 'checkbox'}" 
+        role="${isLockedOrDisabled ? 'presentation' : 'checkbox'}" 
         aria-checked="${isChecked}" 
-        ${isExam ? 'aria-disabled="true"' : 'tabindex="0"'}
+        ${isLockedOrDisabled ? 'aria-disabled="true"' : 'tabindex="0"'}
       >
         <input 
           type="checkbox" 
           class="domain-checkbox" 
           id="dom-check-${d.id}" 
           ${isChecked ? 'checked' : ''} 
-          ${isExam ? 'disabled' : ''} 
+          ${isLockedOrDisabled ? 'disabled' : ''} 
           tabindex="-1" 
           aria-hidden="true"
         >
@@ -260,8 +267,8 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
     <div class="start-screen-wrapper">
       <!-- Top Navigation Bar -->
       <div class="start-top-bar">
-        <button class="btn btn-secondary btn-back-home" id="btn-back-home" title="Back to Certifications">
-          ${t('backToCertifications', lang)}
+        <button class="btn btn-secondary btn-back-home" id="btn-back-home" title="${getExamVersions(cert?.id).length ? 'Back to Exam Versions' : 'Back to Certifications'}">
+          ${getExamVersions(cert?.id).length ? '← Back to Exam Versions' : t('backToCertifications', lang)}
         </button>
 
         <div class="start-top-actions">
@@ -289,7 +296,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
               <h1 class="start-title">${certName} (${shortName})</h1>
               <div class="start-meta-badges">
                 <span class="meta-badge meta-badge-vendor">${vendorName}</span>
-                <span class="meta-badge meta-badge-outline">${examVersion} ${t('outlineVersion', lang)}</span>
+                <span class="meta-badge meta-badge-outline">${versionEntry?.badge || versionEntry?.title || `${examVersion} ${t('outlineVersion', lang)}`}</span>
                 <span class="meta-badge meta-badge-count">${totalQuestions} ${t('questionsUnit', lang)}</span>
               </div>
             </div>
@@ -297,6 +304,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
         </div>
 
         ${resumeBannerHtml}
+        <p role="alert" id="setup-error" hidden></p>
 
         <div class="start-form-divider"></div>
 
@@ -482,7 +490,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
     const selectAllBtn = container.querySelector('#btn-select-all');
     if (selectAllBtn) {
       selectAllBtn.addEventListener('click', () => {
-        const allIds = domains.map((d) => d.id);
+        const allIds = domains.filter(d => (d.questionCount || 0) > 0 && d.available !== false).map((d) => d.id);
         const nextSet = new Set(allIds);
         let newPool = 0;
         domains.forEach((d) => { newPool += d.questionCount || 0; });
@@ -531,13 +539,8 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
       resumeBtn.textContent = 'Loading Session...';
 
       try {
-        const allDomainIds = activeSession.selectedDomains || [1, 2, 3, 4, 5];
-        const questionsByDomain = await loadQuestionsForDomains({
-          vendorId: activeSession.vendorId || 'isc2',
-          certId: activeSession.certId || 'cc',
-          version: activeSession.version || '2026',
-          domainIds: allDomainIds
-        });
+        const questionsByDomain = await loadQuestionsForSession(activeSession);
+        if (!stillOnSetup() || JSON.stringify(loadActiveQuizSession()) !== JSON.stringify(activeSession)) return;
 
         const res = resumeQuizSession({
           storedSession: activeSession,
@@ -548,12 +551,14 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
         if (res.success && onStartQuiz) {
           onStartQuiz();
         } else if (!res.success) {
-          renderCertStartScreen(container, cert, version, onBackToHome, examConfig, onStartQuiz);
+          throw new Error('The saved quiz could not be restored. Saved progress has been kept.');
         }
       } catch (err) {
         console.error('Failed to resume active session:', err);
         resumeBtn.disabled = false;
         resumeBtn.textContent = origText;
+        const error = container.querySelector('#setup-error');
+        if (error) { error.textContent = err.message; error.hidden = false; }
       }
     });
   }
@@ -600,7 +605,7 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
 
   // Core quiz startup routine
   const executeStartQuiz = async () => {
-    if (!isExam && practicePoolSize === 0) return;
+    if (isStartDisabled) return;
 
     document.body.style.overflow = '';
     const startQuizBtn = container.querySelector('#btn-start-quiz');
@@ -610,9 +615,6 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
     }
 
     try {
-      // Clear previous active session
-      clearActiveQuizSession();
-
       if (isExam) {
         const allDomainIds = (examConfig.domains || []).map((d) => d.id);
         const questionsByDomain = await loadQuestionsForDomains({
@@ -627,6 +629,8 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
           examConfig,
           totalQuestions: 125
         });
+
+        if (!stillOnSetup()) return;
 
         startQuizSession({
           mode: 'exam',
@@ -654,6 +658,8 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
           questionCount: validCount
         });
 
+        if (!stillOnSetup()) return;
+
         startQuizSession({
           mode: 'practice',
           questions
@@ -669,13 +675,15 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
         startQuizBtn.disabled = false;
         startQuizBtn.textContent = startBtnLabel;
       }
+      const error = container.querySelector('#setup-error');
+      if (error) { error.textContent = 'Questions could not be loaded. Saved progress has been kept.'; error.hidden = false; }
     }
   };
 
   if (confirmProceedBtn) {
     confirmProceedBtn.addEventListener('click', () => {
       closeConfirmModal();
-      executeStartQuiz();
+      return executeStartQuiz();
     });
   }
 
@@ -683,13 +691,12 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
   const startQuizBtn = container.querySelector('#btn-start-quiz');
   if (startQuizBtn) {
     startQuizBtn.addEventListener('click', () => {
-      if (!isExam && practicePoolSize === 0) return;
+      if (isStartDisabled) return;
 
-      const active = loadActiveQuizSession();
-      if (active && active.certId === (cert?.certId || cert?.id || 'cc')) {
+      if (hasStoredQuizSession()) {
         openConfirmModal();
       } else {
-        executeStartQuiz();
+        return executeStartQuiz();
       }
     });
   }

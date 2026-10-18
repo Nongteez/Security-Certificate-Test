@@ -20,6 +20,7 @@ import {
 } from '../core/quiz-engine.js';
 import { t } from '../core/i18n.js';
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
+import { renderExplanation2026Content } from './components/explanation-2026.js';
 
 const DOMAIN_MAP = {
   1: { en: "Security Principles", th: "หลักการความปลอดภัย" },
@@ -133,17 +134,23 @@ export function renderQuizScreen(container, onRerender) {
   // Explanation Box (Practice Mode only, after answering)
   let explanationHtml = '';
   if (!isExam && isAnswered) {
+    const versionId = quiz.versionId || state.selectedExamVersion;
     let expContentHtml = '';
-    if (lang === 'en') {
-      expContentHtml = `<div class="explanation-en">${escapeHtml(currentQ.explanation)}</div>`;
-    } else if (lang === 'th') {
-      expContentHtml = `<div class="explanation-th">${escapeHtml(currentQ.explanation_th || currentQ.explanation)}</div>`;
+
+    if (versionId === 'next-bank') {
+      expContentHtml = renderExplanation2026Content(currentQ, lang);
     } else {
-      expContentHtml = `
-        <div class="explanation-en"><span class="lang-badge">EN</span>${escapeHtml(currentQ.explanation)}</div>
-        <div class="explanation-divider" aria-hidden="true"></div>
-        <div class="explanation-th"><span class="lang-badge">TH</span>${escapeHtml(currentQ.explanation_th || currentQ.explanation)}</div>
-      `;
+      if (lang === 'en') {
+        expContentHtml = `<div class="explanation-en">${escapeHtml(currentQ.explanation)}</div>`;
+      } else if (lang === 'th') {
+        expContentHtml = `<div class="explanation-th">${escapeHtml(currentQ.explanation_th || currentQ.explanation)}</div>`;
+      } else {
+        expContentHtml = `
+          <div class="explanation-en"><span class="lang-badge">EN</span>${escapeHtml(currentQ.explanation)}</div>
+          <div class="explanation-divider" aria-hidden="true"></div>
+          <div class="explanation-th"><span class="lang-badge">TH</span>${escapeHtml(currentQ.explanation_th || currentQ.explanation)}</div>
+        `;
+      }
     }
 
     explanationHtml = `

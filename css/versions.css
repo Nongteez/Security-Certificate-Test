@@ -1,0 +1,184 @@
+/* Only the added screen: retain the shared card/grid/theme and breakpoint styles. */
+.exam-versions-screen .btn:focus-visible,
+.exam-versions-screen .lang-btn:focus-visible,
+.exam-versions-screen .btn-version-info:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.exam-versions-screen .version-card {
+  position: relative;
+}
+
+.exam-versions-screen .version-card .cert-card-title {
+  padding-inline-end: 30px;
+}
+
+.exam-versions-screen .btn-version-info {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--panel-2);
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.exam-versions-screen .btn-version-info:hover {
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.exam-versions-screen .version-info-backdrop[hidden] {
+  display: none;
+}
+
+.exam-versions-screen .version-info-backdrop {
+  padding: 16px;
+  overflow: hidden;
+}
+
+.exam-versions-screen .version-info-dialog {
+  width: 100%;
+  max-width: 880px;
+  max-height: min(90vh, calc(100vh - 32px));
+  max-height: min(90dvh, calc(100dvh - 32px));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  text-align: left;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .exam-versions-screen .version-info-dialog {
+    width: 90vw;
+    max-width: 90vw;
+  }
+}
+
+.exam-versions-screen .version-info-dialog > .modal-title,
+.exam-versions-screen .version-info-dialog > .modal-close-btn {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.exam-versions-screen .version-info-dialog > #version-info-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding-inline-end: 8px;
+}
+
+.exam-versions-screen #version-info-content,
+.exam-versions-screen .version-info-table-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-hover) var(--panel);
+}
+
+.exam-versions-screen .version-info-dialog ol,
+.exam-versions-screen .version-info-dialog ul {
+  padding-inline-start: 20px;
+}
+
+.exam-versions-screen .version-info-dialog li + li {
+  margin-top: 8px;
+}
+
+/* Dialog content only. */
+.exam-versions-screen .version-info-section {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.exam-versions-screen .version-info-section h3,
+.exam-versions-screen .version-domain-details h4 {
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.exam-versions-screen .version-info-section h4,
+.exam-versions-screen .version-info-section h5 {
+  margin-top: 14px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.exam-versions-screen .version-info-section h5 {
+  font-size: 13.5px;
+}
+
+.exam-versions-screen .version-info-topics {
+  margin: 6px 0 12px;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.exam-versions-screen .version-info-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  margin: 10px 0 14px;
+}
+
+.exam-versions-screen .version-info-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.exam-versions-screen .version-info-table caption {
+  text-align: left;
+  margin-bottom: 8px;
+  color: var(--text-dim);
+}
+
+.exam-versions-screen .version-info-table th,
+.exam-versions-screen .version-info-table td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.exam-versions-screen .version-info-table th:first-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.exam-versions-screen .version-info-table thead th:nth-child(3),
+.exam-versions-screen .version-info-table .version-info-number {
+  width: 1%;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.exam-versions-screen .version-info-table thead,
+.exam-versions-screen .version-info-table tfoot {
+  background: var(--panel-2);
+  color: var(--text);
+}
+
+.exam-versions-screen .version-info-table .version-info-number {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}

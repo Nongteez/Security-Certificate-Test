@@ -762,6 +762,18 @@
   background: var(--blue-bg);
 }
 
+.domain-row.domain-unavailable {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--bg);
+  border-color: var(--border);
+}
+
+.domain-row.domain-unavailable:hover {
+  background: var(--bg);
+  border-color: var(--border);
+}
+
 .domain-checkbox {
   width: 18px;
   height: 18px;
@@ -1146,6 +1158,11 @@
   animation: fadeIn 0.25s ease;
 }
 
+/* Exam Setup Screen: Vertical spacing between certification header badges and resume card */
+.start-panel-card .resume-session-card {
+  margin-top: 20px;
+}
+
 html[data-theme="light"] .resume-session-card {
   background: linear-gradient(135deg, rgba(37, 99, 235, 0.06) 0%, #ffffff 100%);
   border: 1.5px solid rgba(37, 99, 235, 0.3);
@@ -1266,6 +1283,9 @@ html[data-theme="light"] .resume-session-card {
 }
 
 @media (max-width: 600px) {
+  .start-panel-card .resume-session-card {
+    margin-top: 16px;
+  }
   .resume-session-card {
     padding: 16px 14px;
     gap: 10px;

@@ -1,0 +1,59 @@
+/** Selector entries. Exam paths are relative to this module; learning content has no exam loader. */
+const versions = [
+  {
+    id: '2026',
+    certificationId: 'isc2-cc',
+    title: 'ISC2 CC — Pre-2026 Exam Outline',
+    description: '583 practice questions based on the previous ISC2 CC exam domain structure.',
+    badge: '2026 Exam Outline',
+    status: 'available',
+    questionCount: 583,
+    examConfigReference: './certs/isc2/cc/versions/2026/exam.config.js',
+    domainMetadataReference: './certs/isc2/cc/versions/2026/exam.config.js',
+    questionBankReference: './certs/isc2/cc/versions/2026/questions/'
+  },
+  {
+    id: 'next-bank', // Provisional stable bank ID, not an official outline/date.
+    certificationId: 'isc2-cc',
+    title: 'ISC2 CC — 2026 Exam Outline',
+    description: 'Updated exam domains effective September 1, 2026, including AI security concepts. Domain 1 practice available.',
+    badge: '2026 Exam Outline',
+    status: 'available',
+    questionCount: 24,
+    examConfigReference: './certs/isc2/cc/versions/next-bank/exam.config.js',
+    domainMetadataReference: './certs/isc2/cc/versions/next-bank/exam.config.js',
+    questionBankReference: './certs/isc2/cc/versions/next-bank/questions/'
+  },
+  {
+    id: 'isc2-cc-vocabulary',
+    certificationId: 'isc2-cc',
+    type: 'vocabulary',
+    title: 'ISC2 CC — Exam Vocabulary',
+    description: 'Learn and practice essential terminology for the ISC2 Certified in Cybersecurity (CC) exam.',
+    descriptionTh: 'เรียนรู้และฝึกคำศัพท์สำคัญสำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC)',
+    status: 'coming-soon'
+  }
+];
+
+export default versions;
+
+export function getExamVersions(certificationId) {
+  return versions.filter(v => v.certificationId === certificationId);
+}
+
+/** Unknown, ambiguous, unavailable or incomplete entries never resolve to another bank. */
+export function resolveExamVersion(certificationId, versionId, registry = versions) {
+  const matches = registry.filter(v => v.certificationId === certificationId && v.id === versionId);
+  if (matches.length !== 1) return null;
+  const version = matches[0];
+  // Missing type retains the existing exam-entry contract. Learning content never resolves as an exam.
+  if ((version.type && version.type !== 'exam') || version.status !== 'available' || !version.title) return null;
+  for (const key of ['examConfigReference', 'domainMetadataReference', 'questionBankReference']) {
+    if (typeof version[key] !== 'string' || !version[key].startsWith('./certs/') || version[key].includes('..')) return null;
+  }
+  return version;
+}
+
+export function versionReferenceURL(reference) {
+  return new URL(reference, import.meta.url);
+}

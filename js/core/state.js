@@ -3,8 +3,10 @@
  * Simple Vanilla JS shared state module.
  */
 
+import { getExamVersions, resolveExamVersion } from '../../data/exam-versions.js';
+
 export const state = {
-  screen: "home", // "home" | "cert-start" | "quiz" | "results"
+  screen: "home", // "home" | "exam-versions" | "cert-start" | "quiz" | "results"
   selectedCertification: null,
   selectedExamVersion: null,
 
@@ -51,6 +53,13 @@ export const state = {
  * @param {string} [version] - Optional exam outline version
  */
 export function selectCertification(cert, version) {
+  if (getExamVersions(cert?.id).length && version === undefined) {
+    state.selectedCertification = cert;
+    state.selectedExamVersion = null;
+    state.screen = 'exam-versions';
+    return;
+  }
+  if (getExamVersions(cert?.id).length && !resolveExamVersion(cert.id, version)) return false;
   state.selectedCertification = cert;
   state.selectedExamVersion = version || cert?.defaultVersion || "2026";
   state.screen = "cert-start";
@@ -62,6 +71,20 @@ export function selectCertification(cert, version) {
   if (!state.setup.practice.questionCount) {
     state.setup.practice.questionCount = 583;
   }
+}
+
+/** Called after the selected version's validated configuration is loaded. */
+export function selectExamVersion(versionId, examConfig) {
+  const entry = resolveExamVersion(state.selectedCertification?.id, versionId);
+  if (!entry || !examConfig || examConfig.version !== entry.id || !examConfig.domains?.length) return false;
+  const changed = state.selectedExamVersion !== entry.id;
+  state.selectedExamVersion = entry.id;
+  if (changed) {
+    state.setup.practice.selectedDomains = new Set(examConfig.domains.map(d => d.id));
+    state.setup.practice.questionCount = examConfig.totalQuestions;
+  }
+  state.screen = 'cert-start';
+  return true;
 }
 
 /**

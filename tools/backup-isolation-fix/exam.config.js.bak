@@ -1,0 +1,102 @@
+/**
+ * Exam version configuration for ISC2 CC (2026 Outline).
+ */
+const config = {
+  version: "2026",
+  effectiveDate: "2026",
+  supportedLanguages: ["en", "th", "both"],
+  defaultLanguage: "en",
+  passingPercentage: 70,
+  secondsPerQuestion: 90,
+  defaultQuestionCount: 50,
+  totalQuestions: 607,
+  domains: [
+    {
+      id: 1,
+      code: "D1",
+      name: {
+        en: "Security Principles",
+        th: "หลักการความปลอดภัย"
+      },
+      shortName: {
+        en: "Security Principles",
+        th: "หลักการความปลอดภัย"
+      },
+      weight: 0.26,
+      weightPercentage: 26,
+      questionCount: 166,
+      questionThCount: 166,
+      questionFile: "./questions/domain-1.js"
+    },
+    {
+      id: 2,
+      code: "D2",
+      name: {
+        en: "Business Continuity (BC), Disaster Recovery (DR) & Incident Response (IR) Concepts",
+        th: "BC/DR/IR"
+      },
+      shortName: {
+        en: "BC / DR / Incident Response",
+        th: "BC / DR / IR"
+      },
+      weight: 0.10,
+      weightPercentage: 10,
+      questionCount: 65,
+      questionThCount: 65,
+      questionFile: "./questions/domain-2.js"
+    },
+    {
+      id: 3,
+      code: "D3",
+      name: {
+        en: "Access Controls Concepts",
+        th: "แนวคิดการควบคุมการเข้าถึง"
+      },
+      shortName: {
+        en: "Access Controls",
+        th: "การควบคุมการเข้าถึง"
+      },
+      weight: 0.22,
+      weightPercentage: 22,
+      questionCount: 93,
+      questionThCount: 93,
+      questionFile: "./questions/domain-3.js"
+    },
+    {
+      id: 4,
+      code: "D4",
+      name: {
+        en: "Network Security",
+        th: "ความปลอดภัยเครือข่าย"
+      },
+      shortName: {
+        en: "Network Security",
+        th: "ความปลอดภัยเครือข่าย"
+      },
+      weight: 0.24,
+      weightPercentage: 24,
+      questionCount: 156,
+      questionThCount: 156,
+      questionFile: "./questions/domain-4.js"
+    },
+    {
+      id: 5,
+      code: "D5",
+      name: {
+        en: "Security Operations",
+        th: "ปฏิบัติการความปลอดภัย"
+      },
+      shortName: {
+        en: "Security Operations",
+        th: "ปฏิบัติการความปลอดภัย"
+      },
+      weight: 0.18,
+      weightPercentage: 18,
+      questionCount: 127,
+      questionThCount: 127,
+      questionFile: "./questions/domain-5.js"
+    }
+  ]
+};
+
+export default config;

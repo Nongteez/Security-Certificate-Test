@@ -7,8 +7,9 @@
 
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
 import { loadActiveQuizSession } from '../core/storage.js';
-import { loadQuestionsForDomains } from '../core/question-loader.js';
+import { loadQuestionsForSession } from '../core/question-loader.js';
 import { resumeQuizSession } from '../core/quiz-engine.js';
+import { state } from '../core/state.js';
 
 /**
  * Renders the Home screen into the given container.
@@ -90,6 +91,7 @@ export function renderHomeScreen(container, certifications, onSelectCert, onResu
             </div>
           </div>
           <div class="resume-actions">
+            <p role="alert" id="home-resume-error" hidden></p>
             <button type="button" class="btn btn-primary" id="btn-home-resume">
               Resume Quiz →
             </button>
@@ -157,13 +159,8 @@ export function renderHomeScreen(container, certifications, onSelectCert, onResu
       homeResumeBtn.textContent = 'Loading Session...';
 
       try {
-        const allDomainIds = activeSession.selectedDomains || [1, 2, 3, 4, 5];
-        const questionsByDomain = await loadQuestionsForDomains({
-          vendorId: activeSession.vendorId || 'isc2',
-          certId: activeSession.certId || 'cc',
-          version: activeSession.version || '2026',
-          domainIds: allDomainIds
-        });
+        const questionsByDomain = await loadQuestionsForSession(activeSession);
+        if (state.screen !== 'home' || JSON.stringify(loadActiveQuizSession()) !== JSON.stringify(activeSession)) return;
 
         const res = resumeQuizSession({
           storedSession: activeSession,
@@ -174,13 +171,17 @@ export function renderHomeScreen(container, certifications, onSelectCert, onResu
         if (res.success && onResumeQuiz) {
           onResumeQuiz();
         } else if (!res.success) {
-          // Re-render home if session was corrupted/discarded
-          renderHomeScreen(container, certifications, onSelectCert, onResumeQuiz);
+          throw new Error('The saved quiz could not be restored. Saved progress has been kept.');
         }
       } catch (err) {
         console.error('Failed to resume active session from home:', err);
         homeResumeBtn.disabled = false;
         homeResumeBtn.textContent = origText;
+        const error = container.querySelector('#home-resume-error');
+        if (error) {
+          error.textContent = err.message;
+          error.hidden = false;
+        }
       }
     });
   }

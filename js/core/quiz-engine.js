@@ -8,8 +8,12 @@ import {
   saveActiveQuizSession,
   clearActiveQuizSession,
   buildSessionSnapshot,
-  loadActiveQuizSession
+  loadActiveQuizSession,
+  resolveSessionVersion,
+  validateSessionData
 } from './storage.js';
+import { getExamVersions, resolveExamVersion } from '../../data/exam-versions.js';
+import { questionsMatchVersion } from './question-loader.js';
 
 /**
  * Persists the current active quiz session to local storage.
@@ -179,12 +183,20 @@ export function createExamSession({
  * @param {number} [params.timeMinutes=120]
  */
 export function startQuizSession({ mode, questions, timeMinutes = 120 }) {
+  const certification = state.selectedCertification;
+  const versionId = state.selectedExamVersion;
+  if (getExamVersions(certification?.id).length &&
+      (!resolveExamVersion(certification.id, versionId) || !questionsMatchVersion(questions, certification.id, versionId))) {
+    throw new Error('Questions do not belong to the selected available exam version.');
+  }
   const startedAt = Date.now();
   const examDurationSeconds = timeMinutes * 60;
   const expiresAt = mode === 'exam' ? startedAt + (examDurationSeconds * 1000) : null;
 
   state.quiz = {
     active: true,
+    certification: certification ? { ...certification } : null,
+    versionId,
     mode,
     questions,
     currentIndex: 0,
@@ -372,6 +384,8 @@ export function finishQuizSession(timedOut = false) {
  */
 export function exitQuizSession() {
   stopExamCountdown();
+  if (state.quiz.certification) state.selectedCertification = state.quiz.certification;
+  if (state.quiz.versionId) state.selectedExamVersion = state.quiz.versionId;
   resetQuizState();
   state.screen = 'cert-start';
 }
@@ -381,6 +395,8 @@ export function exitQuizSession() {
  */
 export function returnToQuizSetup() {
   stopExamCountdown();
+  if (state.quiz.certification) state.selectedCertification = state.quiz.certification;
+  if (state.quiz.versionId) state.selectedExamVersion = state.quiz.versionId;
   resetQuizState();
   state.screen = 'cert-start';
 }
@@ -393,6 +409,8 @@ export function retryQuizSession() {
   if (!state.quiz || !state.quiz.questions || state.quiz.questions.length === 0) return;
 
   const mode = state.quiz.mode || 'practice';
+  const certification = state.quiz.certification || state.selectedCertification;
+  const versionId = state.quiz.versionId || state.selectedExamVersion;
   const questions = [...state.quiz.questions];
   const timeMinutes = state.setup.exam?.timeMinutes || 120;
   const startedAt = Date.now();
@@ -403,6 +421,8 @@ export function retryQuizSession() {
 
   state.quiz = {
     active: true,
+    certification,
+    versionId,
     mode,
     questions,
     currentIndex: 0,
@@ -453,11 +473,15 @@ export function retryWrongAnswersSession() {
   if (wrongItems.length === 0) return;
 
   const wrongQuestions = wrongItems.map((item) => item.question);
+  const certification = state.quiz.certification || state.selectedCertification;
+  const versionId = state.quiz.versionId || state.selectedExamVersion;
 
   stopExamCountdown();
 
   state.quiz = {
     active: true,
+    certification,
+    versionId,
     mode: 'practice', // Always Practice mode for remediation
     questions: wrongQuestions,
     currentIndex: 0,
@@ -486,6 +510,8 @@ export function resumeQuizSession({ storedSession, questionsByDomain, certificat
   if (!storedSession || !storedSession.questionIds || storedSession.questionIds.length === 0) {
     return { success: false, reason: 'empty_session' };
   }
+  const entry = resolveSessionVersion(storedSession);
+  if (!validateSessionData(storedSession) || !entry) return { success: false, reason: 'invalid_version_or_session' };
 
   // Build question lookup map
   const questionMap = new Map();
@@ -494,19 +520,22 @@ export function resumeQuizSession({ storedSession, questionsByDomain, certificat
   // Reconstruct exact ordered questions
   const questions = storedSession.questionIds.map((id) => questionMap.get(id));
   if (questions.some((q) => !q)) {
-    console.warn('One or more question IDs in saved session could not be resolved. Discarding invalid session.');
-    clearActiveQuizSession();
+    console.warn('One or more saved question IDs could not be resolved. Keeping saved data.');
     return { success: false, reason: 'unresolved_questions' };
+  }
+  if (!questionsMatchVersion(questions, entry.certificationId, entry.id)) {
+    return { success: false, reason: 'question_bank_mismatch' };
   }
 
   // Match certification in state if available
-  const matchedCert = certifications.find((c) => (c.certId || c.id) === storedSession.certId) || {
+  const matchedCert = certifications.find((c) => c.id === entry.certificationId) || {
+    id: entry.certificationId,
     vendorId: storedSession.vendorId || 'isc2',
     certId: storedSession.certId || 'cc',
     name: storedSession.certName || 'Certified in Cybersecurity'
   };
   state.selectedCertification = matchedCert;
-  state.selectedExamVersion = storedSession.version || '2026';
+  state.selectedExamVersion = entry.id;
   state.setup.language = storedSession.language || 'en';
   state.setup.studyMode = storedSession.mode || 'practice';
 
@@ -532,6 +561,8 @@ export function resumeQuizSession({ storedSession, questionsByDomain, certificat
 
   state.quiz = {
     active: true,
+    certification: { ...matchedCert },
+    versionId: entry.id,
     mode: storedSession.mode,
     questions,
     currentIndex: Math.min(storedSession.currentIndex || 0, questions.length - 1),

@@ -491,6 +491,210 @@
   color: var(--text-dim);
 }
 
+/* ===== 2026 Structured Explanation Layout (next-bank only) — Minimal Neutral Theme ===== */
+.exp-2026-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.exp-single-lang-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exp-lang-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exp-lang-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Base minimal section: neutral, borderless, separated by subtle neutral dividers */
+.exp-section {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Subtle neutral divider between consecutive sections */
+.exp-section + .exp-section {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+/* Section titles */
+.exp-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+/* Prominent Correct Answer Title */
+.exp-correct-section .exp-section-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Status Icons */
+.exp-status-icon {
+  font-size: 13.5px;
+  font-weight: 800;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Green checkmark beside Correct Answer */
+.exp-status-correct {
+  color: var(--green);
+}
+
+/* Red cross beside Why Other Options Are Incorrect */
+.exp-status-incorrect {
+  color: var(--red);
+}
+
+/* Prominent Correct Option quote */
+.exp-option-quote {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.5;
+  padding-left: 22px;
+}
+
+/* Explanation body */
+.exp-section-body {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-dim);
+  padding-left: 22px;
+}
+
+.exp-correct-section .exp-section-body {
+  color: var(--text);
+}
+
+/* Incorrect options list: clean rows without nested card borders */
+.exp-incorrect-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 6px;
+  padding-left: 22px;
+}
+
+.exp-incorrect-item {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exp-incorrect-item:first-child {
+  padding-top: 4px;
+}
+
+.exp-incorrect-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.exp-incorrect-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Plain-text option letter label A, B, C, D (clean, unbadged, aligned) */
+.exp-letter-tag {
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-dim);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  letter-spacing: normal;
+  flex-shrink: 0;
+  line-height: inherit;
+}
+
+.exp-incorrect-option-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.exp-incorrect-body {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+
+/* Optional Sections (Examples & Exam Tips): minimal, neutral, no colored left borders or tints */
+.exp-example-section,
+.exp-tip-section {
+  background: transparent;
+  border: none;
+}
+
+/* Paragraph and bullet formatting */
+.exp-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.exp-bullet {
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.exp-p {
+  margin: 0 0 6px 0;
+  line-height: 1.6;
+}
+
+.exp-p:last-child {
+  margin-bottom: 0;
+}
+
+
 /* Bottom Action Bar */
 .quiz-actions-bar {
   display: flex;
@@ -813,6 +1017,49 @@
   .explanation-divider {
     height: 1px;
     margin: 3px 0;
+  }
+
+  .exp-section {
+    padding: 0;
+    gap: 6px;
+  }
+
+  .exp-section + .exp-section {
+    padding-top: 14px;
+    margin-top: 14px;
+  }
+
+  .exp-section-title {
+    font-size: 13px;
+  }
+
+  .exp-correct-section .exp-section-title {
+    font-size: 14px;
+  }
+
+  .exp-option-quote,
+  .exp-section-body,
+  .exp-incorrect-list {
+    padding-left: 0;
+  }
+
+  .exp-section-body {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .exp-incorrect-item {
+    padding: 8px 0;
+    gap: 3px;
+  }
+
+  .exp-incorrect-body {
+    font-size: 12.5px;
+  }
+
+  .exp-letter-tag {
+    font-size: 13px;
+    padding: 0;
   }
 
   /* 6. Action Bar: Both Previous / Next on one row with flex: 1 */

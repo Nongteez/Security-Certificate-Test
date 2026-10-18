@@ -15,9 +15,12 @@
 | 13. Question Bank Cleanup — Phase 2: Fix Q356 & Q312 Explanations | Completed | Restored complete IPv6 coverage in Q356 and fixed A->D explanation prefix typo in Q312 across EN & TH explanations |
 | 14. Question Bank Cleanup — Phase 3B: Duplicate Replacement Implementation | Completed | Replaced all 10 confirmed duplicate questions in place with high-value, distinct ISC2 CC questions across D1, D2, D4, and D5 |
 | 15. Local Quiz Session Persistence / Resume Quiz Implementation | Completed | Implemented browser localStorage session persistence, autosave triggers, resume banners, start-new confirmation modal, and real-time elapsed timer calculation |
-
-
-
-
-
+| 16. Audit CC1, CC2, CC3 new sources against current ISC2 CC 2026 question bank | Completed | Complete read-only audit across 2,355 questions; categorized exact, near, possible duplicates, cross-source overlap, and new question candidates |
+| 17. Continue & complete ISC2 CC 2026 Phase 3 Domain 1 Curation Plan | Completed | Validated curation plan, preserved 18 SQ + P3-01 review holds, added 62 missing reference links/definitions, verified 91 concepts, 39 units, 20 opportunities, 0 missing links |
+| 18. Verify & refine Language Switching scoped to question content only | Completed | Browser-verified: EN/TH/EN+TH toggle strictly translates question content & options; all UI labels, navigation, buttons, modals & results remain in English; exam state preserved |
+| 19. ISC2 CC 2026 Phase 4 & 5: Domain 1 Question Generation, Validation & Activation | In Progress | Generate source-grounded questions across 18 plannable opportunities, validate batches, check anti-duplication, integrate into 2026 Domain 1 bank, and activate in app |
+| 20. Fix Vertical Spacing Between Certification Header and Resume Quiz Card | Completed | Added 20px desktop / 16px mobile top margin to .start-panel-card .resume-session-card; preserved 16px absent spacing and badge gap; verified with 6/6 automated tests |
+| 21. Improve Explanation Formatting — ISC2 CC 2026 ONLY | Completed | Structured 24/24 D1 questions with explanation_detail; rendered Correct/Incorrect/Example/Tip in EN/TH/EN+TH; isolated strictly to next-bank; verified with 7/7 automated tests |
+| 22. Simplify ISC2 CC 2026 Explanation UI — Minimal Neutral Design | Completed | Refined structured explanation UI to minimal neutral theme; removed colored borders, tinted backgrounds, and red badges; retained green check and red cross icons; verified with 8/8 automated tests |
+| 23. Simplify Incorrect Option Labels — ISC2 CC 2026 Only | Completed | Replaced bordered badges "Option B/C/D" with clean plain-text letter labels A, B, C, D in neutral typography; verified with 8/8 automated tests |
 
