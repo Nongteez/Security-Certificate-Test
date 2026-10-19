@@ -29,9 +29,10 @@ const versions = [
     certificationId: 'isc2-cc',
     type: 'vocabulary',
     title: 'ISC2 CC — Exam Vocabulary',
-    description: 'Learn and practice essential terminology for the ISC2 Certified in Cybersecurity (CC) exam.',
+    description: 'Learn and practice essential cybersecurity terminology for the ISC2 Certified in Cybersecurity (CC) exam.',
     descriptionTh: 'เรียนรู้และฝึกคำศัพท์สำคัญสำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC)',
-    status: 'coming-soon'
+    status: 'available',
+    vocabularyCount: 110
   }
 ];
 

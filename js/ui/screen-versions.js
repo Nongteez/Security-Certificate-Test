@@ -113,21 +113,21 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
           <p role="alert" id="version-error" ${error ? '' : 'hidden'}></p>
           <div class="cert-grid">
             ${versions.map(version => {
-              const available = !!resolveExamVersion(cert.id, version.id);
-              const info = information[version.id];
               const isVocabulary = version.type === 'vocabulary';
+              const available = isVocabulary ? (version.status === 'available') : !!resolveExamVersion(cert.id, version.id);
+              const info = information[version.id];
               const viewLabel = info?.viewLabel || informationLabels.view;
-              const comingSoon = isVocabulary && info?.statusLabel ? localized(info.statusLabel, language) : 'Coming Soon';
               return `<article class="cert-card version-card ${available ? '' : 'cert-card-disabled'}">
-                ${info ? `<button type="button" class="btn-version-info" data-info-version-id="${version.id}" aria-label="${escapeHtml(language === 'both' ? `${viewLabel.en} / ${viewLabel.th}` : viewLabel[language] || viewLabel.en)}: ${escapeHtml(version.title)}" aria-haspopup="dialog" aria-controls="version-info-modal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r=".75" fill="currentColor" stroke="none"/></svg></button>` : ''}
+                ${info ? `<button type="button" class="btn-version-info" data-info-version-id="${version.id}" aria-label="${escapeHtml(viewLabel.en || 'View exam version information')}: ${escapeHtml(version.title)}" aria-haspopup="dialog" aria-controls="version-info-modal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r=".75" fill="currentColor" stroke="none"/></svg></button>` : ''}
                 <div class="cert-card-body">
-                  <h3 class="cert-card-title">${isVocabulary ? localized({ en: version.title, th: info?.titleTh || version.title }, language) : version.title}</h3>
-                  <p class="cert-card-desc">${isVocabulary ? localized({ en: version.description, th: version.descriptionTh || version.description }, language) : version.description}</p>
+                  <h3 class="cert-card-title">${escapeHtml(version.title)}</h3>
+                  <p class="cert-card-desc">${escapeHtml(version.description)}</p>
                   ${version.questionCount !== undefined ? `<span class="meta-badge meta-badge-count">${version.questionCount} Questions</span>` : ''}
+                  ${version.vocabularyCount !== undefined ? `<span class="meta-badge meta-badge-count">${version.vocabularyCount} Terms</span>` : ''}
                 </div>
                 <div class="cert-card-footer">
-                  <span class="status-badge ${available ? 'status-available' : 'status-planned'}">${available ? 'Available' : comingSoon}</span>
-                  ${available ? `<button type="button" class="btn btn-primary btn-select-version" data-version-id="${version.id}">Select Version →</button>` : `<button type="button" class="btn btn-secondary btn-disabled" disabled>${comingSoon}</button>`}
+                  <span class="status-badge ${available ? 'status-available' : 'status-planned'}">${available ? 'Available' : 'Coming Soon'}</span>
+                  ${available ? `<button type="button" class="btn btn-primary btn-select-version" data-version-id="${version.id}">Select Version →</button>` : '<button type="button" class="btn btn-secondary btn-disabled" disabled>Coming Soon</button>'}
                 </div>
               </article>`;
             }).join('')}
@@ -204,7 +204,10 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
     button.addEventListener('click', async () => {
       if (selectionPending || openInfoId) return;
       const id = button.getAttribute('data-version-id');
-      if (!resolveExamVersion(cert.id, id)) return;
+      const targetVersion = versions.find(v => v.id === id);
+      if (!targetVersion) return;
+      if (targetVersion.type !== 'vocabulary' && !resolveExamVersion(cert.id, id)) return;
+      if (targetVersion.type === 'vocabulary' && targetVersion.status !== 'available') return;
       selectionPending = true;
       const controls = [...infoButtons, ...container.querySelectorAll('.lang-btn')];
       controls.forEach(control => { control.disabled = true; });
