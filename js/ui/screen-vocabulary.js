@@ -44,9 +44,33 @@ function categoryBadgeClass(cat) {
     case 'acronym': return 'badge-acronym';
     case 'scenario_vocabulary': return 'badge-scenario';
     case 'exam_language': return 'badge-strategy';
+    case 'confusing_term': return 'badge-confusing';
     default: return 'badge-default';
   }
 }
+
+const VOCAB_CATEGORIES = [
+  { id: 'core_term', label: 'Core Terms' },
+  { id: 'acronym', label: 'Acronyms' },
+  { id: 'confusing_term', label: 'Confusing Terms' },
+  { id: 'scenario_vocabulary', label: 'Scenario Vocab' },
+  { id: 'exam_language', label: 'Exam Language' }
+];
+
+const OBJECTIVES_MAP = [
+  { id: '1.1', domain: '1', label: '1.1 Security Concepts' },
+  { id: '1.2', domain: '1', label: '1.2 Physical Security' },
+  { id: '1.3', domain: '1', label: '1.3 Access Controls' },
+  { id: '1.4', domain: '1', label: '1.4 Governance & Risk' },
+  { id: '1.5', domain: '1', label: '1.5 Incident & BCP/DR' },
+  { id: '2.1', domain: '2', label: '2.1 Security Governance' },
+  { id: '2.2', domain: '2', label: '2.2 Business Continuity & DR' },
+  { id: '2.3', domain: '2', label: '2.3 Security Awareness & Culture' },
+  { id: '2.4', domain: '2', label: '2.4 Security Metrics & Reporting' },
+  { id: '3.1', domain: '3', label: '3.1 Identity Lifecycle' },
+  { id: '3.2', domain: '3', label: '3.2 Access Controls' },
+  { id: 'exam_strategy', domain: 'all', label: 'Exam Strategy' }
+];
 
 /**
  * Derives a concise, punchy definition at the presentation layer without altering technical meaning.
@@ -101,7 +125,7 @@ export async function renderVocabularyScreen(container, onBack) {
 
   let data;
   try {
-    data = await loadVocabularyData(1);
+    data = await loadVocabularyData('all');
   } catch (err) {
     console.error('Failed to load vocabulary data:', err);
     container.innerHTML = `
@@ -128,8 +152,10 @@ export async function renderVocabularyScreen(container, onBack) {
   // Local state
   let currentTab = 'cards'; // 'cards' | 'flashcards'
   let searchQuery = '';
-  let selectedCategory = 'all';
-  let selectedObjective = 'all';
+  let selectedDomain = 'all'; // 'all' | '1' | '2' | '3'
+  const selectedCategories = new Set(); // Multi-select Set (empty = no restriction)
+  const selectedObjectives = new Set(); // Multi-select Set (empty = no restriction)
+  let isFiltersExpanded = false; // Collapsed by default
   let flashcardIndex = 0;
   let isCardFlipped = false;
   let isShuffled = false;
@@ -153,12 +179,24 @@ export async function renderVocabularyScreen(container, onBack) {
     if (modalTrigger?.isConnected) modalTrigger.focus({ preventScroll: true });
   }
 
+  function pruneIncompatibleObjectives(newDomain) {
+    if (newDomain === 'all') return;
+    for (const objId of selectedObjectives) {
+      if (objId !== 'exam_strategy' && !objId.startsWith(`${newDomain}.`)) {
+        selectedObjectives.delete(objId);
+      }
+    }
+  }
+
   function getFilteredEntries() {
     return allEntries.filter(entry => {
-      if (selectedCategory !== 'all' && entry.category !== selectedCategory) {
+      if (selectedDomain !== 'all' && String(entry.domain) !== String(selectedDomain)) {
         return false;
       }
-      if (selectedObjective !== 'all' && entry.objective !== selectedObjective) {
+      if (selectedCategories.size > 0 && !selectedCategories.has(entry.category)) {
+        return false;
+      }
+      if (selectedObjectives.size > 0 && !selectedObjectives.has(entry.objective)) {
         return false;
       }
       if (searchQuery) {
@@ -196,13 +234,25 @@ export async function renderVocabularyScreen(container, onBack) {
   function renderMain() {
     const focused = container.contains(document.activeElement) ? document.activeElement : null;
     const focusedId = focused?.id;
-    const focusedCategory = focused?.getAttribute('data-cat');
-    const focusedObjective = focused?.getAttribute('data-obj');
-    const filterScroll = [...container.querySelectorAll('.vocab-filter-pills')].map(el => el.scrollLeft);
+    const focusedCatCheck = focused?.getAttribute('data-cat-check');
+    const focusedObjCheck = focused?.getAttribute('data-obj-check');
     const filtered = getFilteredEntries();
     const activeDeck = getActiveDeck();
     const totalCount = allEntries.length;
     const filteredCount = filtered.length;
+
+    // Entries in selected domain pool (for category & objective counts)
+    const domainPool = selectedDomain === 'all'
+      ? allEntries
+      : allEntries.filter(e => String(e.domain) === String(selectedDomain));
+
+    // Dynamic domain counts
+    const domainCounts = {
+      all: totalCount,
+      1: allEntries.filter(e => String(e.domain) === '1').length,
+      2: allEntries.filter(e => String(e.domain) === '2').length,
+      3: allEntries.filter(e => String(e.domain) === '3').length
+    };
 
     // Boundary check for flashcardIndex
     if (flashcardIndex >= activeDeck.length) {
@@ -210,14 +260,24 @@ export async function renderVocabularyScreen(container, onBack) {
       isCardFlipped = false;
     }
 
-    // Dynamic category counts
-    const counts = {
-      all: totalCount,
-      core_term: allEntries.filter(e => e.category === 'core_term').length,
-      acronym: allEntries.filter(e => e.category === 'acronym').length,
-      scenario_vocabulary: allEntries.filter(e => e.category === 'scenario_vocabulary').length,
-      exam_language: allEntries.filter(e => e.category === 'exam_language').length
-    };
+    // Active filter badge count on "More Filters" button
+    const activeFilterCount = selectedCategories.size + selectedObjectives.size;
+    const hasActiveFilters = Boolean(searchQuery || selectedDomain !== 'all' || selectedCategories.size > 0 || selectedObjectives.size > 0);
+
+    // Objectives relevant to selected domain
+    const relevantObjectives = selectedDomain === 'all'
+      ? OBJECTIVES_MAP
+      : OBJECTIVES_MAP.filter(obj => obj.domain === selectedDomain || obj.id === 'exam_strategy');
+
+    // Domain hero badge label
+    let domainBadgeLabel = 'All Domains (D1, D2 & D3)';
+    if (selectedDomain === '1') {
+      domainBadgeLabel = 'Domain 1 · Security Principles';
+    } else if (selectedDomain === '2') {
+      domainBadgeLabel = 'Domain 2 · Security Governance';
+    } else if (selectedDomain === '3') {
+      domainBadgeLabel = 'Domain 3 · IAM Concepts';
+    }
 
     container.innerHTML = `
       <div class="vocab-screen">
@@ -234,8 +294,8 @@ export async function renderVocabularyScreen(container, onBack) {
           <div class="vocab-hero-content">
             <div class="vocab-hero-badge-row">
               <span class="meta-badge meta-badge-vendor">ISC2 CC 2026</span>
-              <span class="meta-badge meta-badge-outline">Domain 1 · Security Principles</span>
-              <span class="meta-badge meta-badge-count">${totalCount} Terms</span>
+              <span class="meta-badge meta-badge-outline">${escapeHtml(domainBadgeLabel)}</span>
+              <span class="meta-badge meta-badge-count">${domainPool.length} Terms</span>
             </div>
             <h1 class="vocab-hero-title">ISC2 CC — Exam Vocabulary</h1>
             <p class="vocab-hero-desc">
@@ -246,7 +306,7 @@ export async function renderVocabularyScreen(container, onBack) {
 
         <!-- Controls & Filter Toolbar -->
         <div class="vocab-toolbar-panel">
-          <!-- Mode Tabs & Search Row -->
+          <!-- Top Row: Mode Tabs & Compact Domain Select / More Filters -->
           <div class="vocab-toolbar-top">
             <div class="vocab-mode-tabs" role="tablist" aria-label="Vocabulary view mode">
               <button type="button" class="vocab-mode-tab ${currentTab === 'cards' ? 'active' : ''}" id="tab-cards" role="tab" aria-selected="${currentTab === 'cards'}">
@@ -259,43 +319,84 @@ export async function renderVocabularyScreen(container, onBack) {
               </button>
             </div>
 
-            <div class="vocab-search-wrap">
-              <svg class="vocab-search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input type="text" class="vocab-search-input" id="vocab-search-input" placeholder="Search English term, acronym, or Thai meaning..." value="${escapeHtml(searchQuery)}" autocomplete="off" spellcheck="false" aria-label="Search vocabulary">
-              ${searchQuery ? `<button type="button" class="vocab-search-clear" id="btn-clear-search" title="Clear search" aria-label="Clear search">✕</button>` : ''}
+            <div class="vocab-controls-row">
+              <div class="vocab-select-wrap">
+                <label for="vocab-domain-select" class="vocab-control-label">Domain:</label>
+                <select id="vocab-domain-select" class="vocab-select" aria-label="Filter by domain">
+                  <option value="all" ${selectedDomain === 'all' ? 'selected' : ''}>All Domains (${domainCounts.all})</option>
+                  <option value="1" ${selectedDomain === '1' ? 'selected' : ''}>Domain 1 (${domainCounts['1']})</option>
+                  <option value="2" ${selectedDomain === '2' ? 'selected' : ''}>Domain 2 (${domainCounts['2']})</option>
+                  <option value="3" ${selectedDomain === '3' ? 'selected' : ''}>Domain 3 (${domainCounts['3']})</option>
+                  <option value="4" disabled>Domain 4 — Coming Soon</option>
+                  <option value="5" disabled>Domain 5 — Coming Soon</option>
+                </select>
+              </div>
+
+              <button type="button" class="vocab-btn-more-filters ${isFiltersExpanded ? 'active' : ''} ${activeFilterCount > 0 ? 'has-active' : ''}" id="btn-toggle-filters" aria-expanded="${isFiltersExpanded}" aria-controls="vocab-filters-collapse">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                <span>More Filters</span>
+                ${activeFilterCount > 0 ? `<span class="vocab-filter-active-count">${activeFilterCount}</span>` : ''}
+                <svg class="vocab-chevron-icon ${isFiltersExpanded ? 'open' : ''}" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
             </div>
           </div>
 
-          <!-- Category Filters -->
-          <div class="vocab-filter-group">
-            <span class="vocab-filter-label">Category:</span>
-            <div class="vocab-filter-pills" role="group" aria-label="Filter by category">
-              <button type="button" class="vocab-pill ${selectedCategory === 'all' ? 'active' : ''}" data-cat="all">All (${counts.all})</button>
-              <button type="button" class="vocab-pill ${selectedCategory === 'core_term' ? 'active' : ''}" data-cat="core_term">Core Terms (${counts.core_term})</button>
-              <button type="button" class="vocab-pill ${selectedCategory === 'acronym' ? 'active' : ''}" data-cat="acronym">Acronyms (${counts.acronym})</button>
-              <button type="button" class="vocab-pill ${selectedCategory === 'scenario_vocabulary' ? 'active' : ''}" data-cat="scenario_vocabulary">Scenario Vocab (${counts.scenario_vocabulary})</button>
-              <button type="button" class="vocab-pill ${selectedCategory === 'exam_language' ? 'active' : ''}" data-cat="exam_language">Exam Language (${counts.exam_language})</button>
+          <!-- Collapsible Filters: Category & Learning Objectives -->
+          <div class="vocab-filters-collapse" id="vocab-filters-collapse" ${!isFiltersExpanded ? 'hidden' : ''}>
+            <!-- Category Group -->
+            <div class="vocab-collapse-group">
+              <div class="vocab-collapse-header">
+                <span class="vocab-collapse-title">Category</span>
+                ${selectedCategories.size > 0 ? `<button type="button" class="vocab-link-btn" id="btn-clear-categories">Clear</button>` : ''}
+              </div>
+              <div class="vocab-checkbox-grid" role="group" aria-label="Filter by category">
+                ${VOCAB_CATEGORIES.map(cat => {
+                  const isChecked = selectedCategories.has(cat.id);
+                  const count = domainPool.filter(e => e.category === cat.id).length;
+                  return `
+                    <label class="vocab-checkbox-label ${isChecked ? 'checked' : ''}">
+                      <input type="checkbox" class="vocab-checkbox" data-cat-check="${cat.id}" ${isChecked ? 'checked' : ''}>
+                      <span class="vocab-checkbox-text">${escapeHtml(cat.label)}</span>
+                      <span class="vocab-checkbox-count">(${count})</span>
+                    </label>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+
+            <!-- Learning Objectives Group -->
+            <div class="vocab-collapse-group">
+              <div class="vocab-collapse-header">
+                <span class="vocab-collapse-title">Learning Objectives</span>
+                ${selectedObjectives.size > 0 ? `<button type="button" class="vocab-link-btn" id="btn-clear-objectives">Clear</button>` : ''}
+              </div>
+              <div class="vocab-checkbox-grid-objs" role="group" aria-label="Filter by learning objective">
+                ${relevantObjectives.map(obj => {
+                  const isChecked = selectedObjectives.has(obj.id);
+                  const count = domainPool.filter(e => e.objective === obj.id).length;
+                  return `
+                    <label class="vocab-checkbox-label ${isChecked ? 'checked' : ''}">
+                      <input type="checkbox" class="vocab-checkbox" data-obj-check="${obj.id}" ${isChecked ? 'checked' : ''}>
+                      <span class="vocab-checkbox-text">${escapeHtml(obj.label)}</span>
+                      <span class="vocab-checkbox-count">(${count})</span>
+                    </label>
+                  `;
+                }).join('')}
+              </div>
             </div>
           </div>
 
-          <!-- Objective Filters -->
-          <div class="vocab-filter-group">
-            <span class="vocab-filter-label">Objective:</span>
-            <div class="vocab-filter-pills" role="group" aria-label="Filter by objective">
-              <button type="button" class="vocab-pill ${selectedObjective === 'all' ? 'active' : ''}" data-obj="all">All Objectives</button>
-              <button type="button" class="vocab-pill ${selectedObjective === '1.1' ? 'active' : ''}" data-obj="1.1">1.1 Security Concepts</button>
-              <button type="button" class="vocab-pill ${selectedObjective === '1.2' ? 'active' : ''}" data-obj="1.2">1.2 Physical Security</button>
-              <button type="button" class="vocab-pill ${selectedObjective === '1.3' ? 'active' : ''}" data-obj="1.3">1.3 Access Controls</button>
-              <button type="button" class="vocab-pill ${selectedObjective === '1.4' ? 'active' : ''}" data-obj="1.4">1.4 Governance & Risk</button>
-              <button type="button" class="vocab-pill ${selectedObjective === '1.5' ? 'active' : ''}" data-obj="1.5">1.5 Incident & BCP/DR</button>
-              <button type="button" class="vocab-pill ${selectedObjective === 'exam_strategy' ? 'active' : ''}" data-obj="exam_strategy">Exam Strategy</button>
-            </div>
+          <!-- Search Input moved to bottom of filter section -->
+          <div class="vocab-search-wrap vocab-search-fullwidth">
+            <svg class="vocab-search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" class="vocab-search-input" id="vocab-search-input" placeholder="Search English term, acronym, or Thai meaning..." value="${escapeHtml(searchQuery)}" autocomplete="off" spellcheck="false" aria-label="Search vocabulary">
+            ${searchQuery ? `<button type="button" class="vocab-search-clear" id="btn-clear-search" title="Clear search" aria-label="Clear search">✕</button>` : ''}
           </div>
 
-          <!-- Meta Result Count -->
+          <!-- Results Bar: Live Result Count & Reset Filters -->
           <div class="vocab-results-bar">
             <span class="vocab-count-indicator">Showing <strong>${filteredCount}</strong> of <strong>${totalCount}</strong> vocabulary terms</span>
-            ${(searchQuery || selectedCategory !== 'all' || selectedObjective !== 'all') ? `
+            ${hasActiveFilters ? `
               <button type="button" class="vocab-reset-filters-btn" id="btn-reset-filters">Reset Filters</button>
             ` : ''}
           </div>
@@ -319,11 +420,14 @@ export async function renderVocabularyScreen(container, onBack) {
             <div class="vocab-modal-body" id="vocab-modal-body" tabindex="0" role="region" aria-label="Vocabulary details"></div>
             <footer class="vocab-modal-footer">
               <div class="vocab-modal-nav">
-                <button type="button" class="btn btn-secondary vocab-modal-nav-btn" id="btn-modal-prev">← Previous Term</button>
+                <button type="button" class="vocab-modal-nav-btn" id="btn-modal-prev" aria-label="Previous Term" title="Previous Term (←)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
                 <span class="vocab-modal-counter" id="vocab-modal-counter"></span>
-                <button type="button" class="btn btn-secondary vocab-modal-nav-btn" id="btn-modal-next">Next Term →</button>
+                <button type="button" class="vocab-modal-nav-btn" id="btn-modal-next" aria-label="Next Term" title="Next Term (→)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
               </div>
-              <button type="button" class="btn btn-secondary" id="btn-modal-done">Close</button>
             </footer>
           </div>
         </div>
@@ -331,13 +435,13 @@ export async function renderVocabularyScreen(container, onBack) {
     `;
 
     attachEventHandlers(filtered, activeDeck);
-    container.querySelectorAll('.vocab-filter-pills').forEach((el, i) => { el.scrollLeft = filterScroll[i] || 0; });
-    if (focusedId || focusedCategory != null || focusedObjective != null) {
-      const nextFocus = focusedId ? container.querySelector(`#${focusedId}`)
-        : [...container.querySelectorAll('.vocab-pill')].find(el => focusedCategory != null
-          ? el.getAttribute('data-cat') === focusedCategory : el.getAttribute('data-obj') === focusedObjective);
-      const fallback = container.querySelector('#flashcard-card') || container.querySelector('#btn-card-shuffle');
-      (nextFocus && !nextFocus.disabled ? nextFocus : fallback)?.focus({ preventScroll: true });
+    if (focusedId) {
+      const nextFocus = container.querySelector(`#${focusedId}`);
+      (nextFocus && !nextFocus.disabled ? nextFocus : null)?.focus({ preventScroll: true });
+    } else if (focusedCatCheck) {
+      container.querySelector(`[data-cat-check="${focusedCatCheck}"]`)?.focus({ preventScroll: true });
+    } else if (focusedObjCheck) {
+      container.querySelector(`[data-obj-check="${focusedObjCheck}"]`)?.focus({ preventScroll: true });
     }
   }
 
@@ -367,6 +471,73 @@ export async function renderVocabularyScreen(container, onBack) {
       }
     });
 
+    // Domain select
+    const domainSelect = container.querySelector('#vocab-domain-select');
+    domainSelect?.addEventListener('change', (e) => {
+      selectedDomain = e.target.value;
+      pruneIncompatibleObjectives(selectedDomain);
+      shuffledEntries = null;
+      flashcardIndex = 0;
+      isCardFlipped = false;
+      renderMain();
+    });
+
+    // Toggle More Filters button
+    container.querySelector('#btn-toggle-filters')?.addEventListener('click', () => {
+      isFiltersExpanded = !isFiltersExpanded;
+      renderMain();
+    });
+
+    // Clear Category Filters link
+    container.querySelector('#btn-clear-categories')?.addEventListener('click', () => {
+      selectedCategories.clear();
+      shuffledEntries = null;
+      flashcardIndex = 0;
+      isCardFlipped = false;
+      renderMain();
+    });
+
+    // Clear Objective Filters link
+    container.querySelector('#btn-clear-objectives')?.addEventListener('click', () => {
+      selectedObjectives.clear();
+      shuffledEntries = null;
+      flashcardIndex = 0;
+      isCardFlipped = false;
+      renderMain();
+    });
+
+    // Category checkboxes
+    container.querySelectorAll('[data-cat-check]').forEach(input => {
+      input.addEventListener('change', () => {
+        const catId = input.getAttribute('data-cat-check');
+        if (input.checked) {
+          selectedCategories.add(catId);
+        } else {
+          selectedCategories.delete(catId);
+        }
+        shuffledEntries = null;
+        flashcardIndex = 0;
+        isCardFlipped = false;
+        renderMain();
+      });
+    });
+
+    // Objective checkboxes
+    container.querySelectorAll('[data-obj-check]').forEach(input => {
+      input.addEventListener('change', () => {
+        const objId = input.getAttribute('data-obj-check');
+        if (input.checked) {
+          selectedObjectives.add(objId);
+        } else {
+          selectedObjectives.delete(objId);
+        }
+        shuffledEntries = null;
+        flashcardIndex = 0;
+        isCardFlipped = false;
+        renderMain();
+      });
+    });
+
     // Search input
     const searchInput = container.querySelector('#vocab-search-input');
     if (searchInput) {
@@ -394,34 +565,13 @@ export async function renderVocabularyScreen(container, onBack) {
 
     container.querySelector('#btn-reset-filters')?.addEventListener('click', () => {
       searchQuery = '';
-      selectedCategory = 'all';
-      selectedObjective = 'all';
+      selectedDomain = 'all';
+      selectedCategories.clear();
+      selectedObjectives.clear();
       shuffledEntries = null;
       flashcardIndex = 0;
       isCardFlipped = false;
       renderMain();
-    });
-
-    // Category pills
-    container.querySelectorAll('[data-cat]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        selectedCategory = btn.getAttribute('data-cat');
-        shuffledEntries = null;
-        flashcardIndex = 0;
-        isCardFlipped = false;
-        renderMain();
-      });
-    });
-
-    // Objective pills
-    container.querySelectorAll('[data-obj]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        selectedObjective = btn.getAttribute('data-obj');
-        shuffledEntries = null;
-        flashcardIndex = 0;
-        isCardFlipped = false;
-        renderMain();
-      });
     });
 
     // Entire Study Card click & keyboard interaction (Enter / Space)
@@ -554,11 +704,9 @@ export async function renderVocabularyScreen(container, onBack) {
 
     // Close handlers
     const closeBtn = modal.querySelector('#btn-vocab-modal-close');
-    const doneBtn = modal.querySelector('#btn-modal-done');
     const closeModal = closeDetailModal;
 
     closeBtn.onclick = closeModal;
-    doneBtn.onclick = closeModal;
     closeBtn.focus({ preventScroll: true });
     modal.onclick = (e) => {
       if (e.target === modal) closeModal();
@@ -597,18 +745,19 @@ export async function renderVocabularyScreen(container, onBack) {
     const prevBtn = modal.querySelector('#btn-modal-prev');
     const nextBtn = modal.querySelector('#btn-modal-next');
 
-    const catClass = categoryBadgeClass(entry.category);
-    const catText = categoryLabel(entry.category);
+    // Hide category and domain/objective badges from modal UI per requirement
+    badgesContainer.innerHTML = '';
 
-    badgesContainer.innerHTML = `
-      <span class="vocab-badge ${catClass}">${escapeHtml(catText)}</span>
-      <span class="vocab-badge badge-obj">Obj ${escapeHtml(entry.objective || '1.1')}</span>
-      ${entry.acronym ? `<span class="vocab-acronym-tag">${escapeHtml(entry.acronym)}</span>` : ''}
+    // Main heading with optional acronym tag
+    titleEl.innerHTML = `
+      ${escapeHtml(entry.term)}
+      ${entry.acronym && entry.acronym !== entry.term ? `
+        <span class="vocab-acronym-tag">${escapeHtml(entry.acronym)}</span>
+      ` : ''}
     `;
 
-    titleEl.textContent = entry.term;
-
     bodyEl.innerHTML = `
+      <!-- Optional Full Form Subtitle -->
       ${entry.full_form ? `
         <div class="modal-fullform-row">
           <span class="modal-label-dim">Full Form:</span>
@@ -616,27 +765,27 @@ export async function renderVocabularyScreen(container, onBack) {
         </div>
       ` : ''}
 
-      <!-- Thai Meaning Banner -->
+      <!-- 1. Thai Meaning (Prominent Translation) -->
       <div class="modal-thai-banner">
         <span class="modal-section-eyebrow">Thai Meaning</span>
         <h3 class="modal-thai-title">${escapeHtml(entry.thai_meaning)}</h3>
       </div>
 
-      <!-- English Definition -->
+      <!-- 2. English Definition -->
       <div class="modal-detail-section">
         <h4 class="modal-section-heading">English Definition</h4>
         <p class="modal-def-text">${escapeHtml(entry.definition_en)}</p>
       </div>
 
-      <!-- Thai Explanation -->
+      <!-- 3. Detailed Thai Explanation -->
       <div class="modal-detail-section">
         <h4 class="modal-section-heading">Detailed Thai Explanation</h4>
         <p class="modal-exp-th-text">${escapeHtml(entry.explanation_th)}</p>
       </div>
 
-      <!-- Examples -->
+      <!-- 4. Example Scenario in English & Thai -->
       ${(entry.example_en || entry.example_th) ? `
-        <div class="modal-example-card">
+        <div class="modal-detail-section modal-example-card">
           <h4 class="modal-section-heading">Example Scenario</h4>
           ${entry.example_en ? `
             <div class="modal-example-row">
@@ -653,67 +802,21 @@ export async function renderVocabularyScreen(container, onBack) {
         </div>
       ` : ''}
 
-      <!-- Exam Relevance & Strategy Tips -->
+      <!-- 5. Exam Relevance & Strategy Guidance -->
       ${entry.exam_relevance ? `
-        <div class="modal-relevance-box">
-          <div class="modal-relevance-header">
-            <span class="modal-relevance-bulb" aria-hidden="true">💡</span>
-            <span class="modal-relevance-title">Exam Relevance & Strategy</span>
-          </div>
-          <p class="modal-relevance-text">${escapeHtml(entry.exam_relevance)}</p>
-        </div>
-      ` : ''}
-
-      <!-- Commonly Confused With -->
-      ${(entry.confused_with && entry.confused_with.length > 0) ? `
-        <div class="modal-confused-box">
-          <span class="modal-confused-title">Commonly Confused With:</span>
-          <div class="modal-confused-tags">
-            ${entry.confused_with.map(item => `
-              <button type="button" class="modal-confused-tag-btn" data-modal-search="${escapeHtml(item)}" title="Search for '${escapeHtml(item)}'">
-                <span>${escapeHtml(item)}</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              </button>
-            `).join('')}
+        <div class="modal-detail-section modal-relevance-box">
+          <h4 class="modal-section-heading">Exam Guidance & Relevance</h4>
+          <div class="modal-relevance-content">
+            <p class="modal-relevance-text">${escapeHtml(entry.exam_relevance)}</p>
+            ${(entry.exam_relevance_th && entry.exam_relevance_th.trim()) ? `
+              <p class="modal-relevance-text modal-thai-font">${escapeHtml(entry.exam_relevance_th.trim())}</p>
+            ` : ''}
           </div>
         </div>
       ` : ''}
-
-      <!-- Keywords / Tags -->
-      ${(entry.keywords && entry.keywords.length > 0) ? `
-        <div class="modal-keywords-box">
-          <span class="modal-kw-label">Keywords:</span>
-          <div class="modal-keywords-list">
-            ${entry.keywords.map(kw => `<span class="vocab-kw-item">${escapeHtml(kw)}</span>`).join('')}
-          </div>
-        </div>
-      ` : ''}
-
-      <!-- Metadata Reference -->
-      <div class="modal-meta-line">
-        <span>ID: <code>${escapeHtml(entry.id)}</code></span>
-        <span>·</span>
-        <span>Domain ${escapeHtml(String(entry.domain))}</span>
-        <span>·</span>
-        <span>Objective ${escapeHtml(String(entry.objective))}</span>
-      </div>
     `;
 
-    // Click on confused term searches for that term
-    bodyEl.querySelectorAll('[data-modal-search]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const query = btn.getAttribute('data-modal-search');
-        closeDetailModal();
-        searchQuery = query;
-        shuffledEntries = null;
-        flashcardIndex = 0;
-        isCardFlipped = false;
-        renderMain();
-        container.querySelector('#vocab-search-input')?.focus();
-      });
-    });
-
-    counterEl.textContent = `Term ${index + 1} of ${list.length}`;
+    counterEl.textContent = `${index + 1} / ${list.length}`;
     prevBtn.disabled = index === 0;
     nextBtn.disabled = index === list.length - 1;
 
@@ -813,30 +916,32 @@ function renderCardsView(entries) {
 
         return `
           <article class="vocab-dict-card" id="${escapeHtml(entry.id)}" data-card-id="${escapeHtml(entry.id)}" role="button" tabindex="0" aria-label="${escapeHtml(entry.term)}: View details">
-            <header class="dict-card-header">
-              <div class="dict-card-title-group">
-                <h3 class="dict-card-term">${escapeHtml(entry.term)}</h3>
-                ${entry.acronym && entry.acronym !== entry.term ? `
-                  <span class="vocab-acronym-tag">${escapeHtml(entry.acronym)}</span>
-                ` : ''}
+            <div class="dict-card-body">
+              <header class="dict-card-header">
+                <div class="dict-card-title-group">
+                  <h3 class="dict-card-term">${escapeHtml(entry.term)}</h3>
+                  ${entry.acronym && entry.acronym !== entry.term ? `
+                    <span class="vocab-acronym-tag">${escapeHtml(entry.acronym)}</span>
+                  ` : ''}
+                </div>
+                <span class="vocab-badge badge-obj">D${escapeHtml(String(entry.domain))} · ${escapeHtml(entry.objective || '')}</span>
+              </header>
+
+              ${entry.full_form ? `
+                <div class="dict-fullform-row">
+                  <span class="dict-fullform-val">${escapeHtml(entry.full_form)}</span>
+                </div>
+              ` : ''}
+
+              <!-- Thai Meaning (Clear Headline) -->
+              <div class="dict-thai-box">
+                <span class="dict-thai-text">${escapeHtml(entry.thai_meaning)}</span>
               </div>
-            </header>
 
-            ${entry.full_form ? `
-              <div class="dict-fullform-row">
-                <span class="dict-fullform-label">Full Form:</span>
-                <span class="dict-fullform-val">${escapeHtml(entry.full_form)}</span>
+              <!-- Short English Definition -->
+              <div class="dict-def-box">
+                <p class="dict-def-text">${escapeHtml(shortDef)}</p>
               </div>
-            ` : ''}
-
-            <!-- Thai Meaning (Clear Headline) -->
-            <div class="dict-thai-box">
-              <span class="dict-thai-text">${escapeHtml(entry.thai_meaning)}</span>
-            </div>
-
-            <!-- Short English Definition -->
-            <div class="dict-def-box">
-              <p class="dict-def-text">${escapeHtml(shortDef)}</p>
             </div>
 
             <!-- Thai Example -->
@@ -904,6 +1009,7 @@ function renderFlashcardsView(activeDeck, currentIndex, isFlipped, isShuffled) {
           <div class="flashcard-face flashcard-front" ${isFlipped ? 'inert' : ''}>
             <div class="flashcard-face-top">
               <span class="vocab-badge ${catClass}">${escapeHtml(catText)}</span>
+              <span class="vocab-badge badge-obj">D${escapeHtml(String(currentItem.domain))} · ${escapeHtml(currentItem.objective || '')}</span>
             </div>
 
             <div class="flashcard-face-center">
@@ -925,6 +1031,7 @@ function renderFlashcardsView(activeDeck, currentIndex, isFlipped, isShuffled) {
           <div class="flashcard-face flashcard-back" ${!isFlipped ? 'inert' : ''}>
             <div class="flashcard-face-top">
               <span class="flashcard-back-term-small">${escapeHtml(currentItem.term)}</span>
+              <span class="vocab-badge badge-obj">D${escapeHtml(String(currentItem.domain))} · ${escapeHtml(currentItem.objective || '')}</span>
             </div>
 
             <div class="flashcard-face-center flashcard-back-body" tabindex="0" role="region" aria-label="Flashcard answer; scroll for more">

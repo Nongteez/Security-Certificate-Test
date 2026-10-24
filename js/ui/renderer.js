@@ -3,7 +3,7 @@
  * Dispatches view rendering to appropriate screen modules based on application state.
  */
 
-import { state, selectCertification, selectExamVersion, resetToHome } from '../core/state.js';
+import { state, selectCertification, selectExamVersion, resetToHome, selectLearningScreen } from '../core/state.js';
 import { getExamVersions } from '../../data/exam-versions.js';
 import certifications from '../../data/certifications.js';
 import { loadExamConfig } from '../core/question-loader.js';
@@ -13,11 +13,16 @@ import { renderCertStartScreen } from './screen-start.js';
 import { renderQuizScreen } from './screen-quiz.js';
 import { renderResultsScreen, renderReviewWrongScreen } from './screen-results.js';
 import { renderVocabularyScreen } from './screen-vocabulary.js';
+import { hasPublishedLearning } from '../core/learning-loader.js';
+let learningRoutes;
+let renderGeneration = 0;
 
 /**
  * Main render function. Reads state.screen and mounts the active view into #app.
  */
 export async function renderApp(versionError = '') {
+  const generation = ++renderGeneration;
+  learningRoutes?.disposeLearningRoute();
   const container = document.getElementById('app');
   if (!container) {
     console.error('Root element #app not found');
@@ -45,7 +50,11 @@ export async function renderApp(versionError = '') {
         resetToHome();
         return renderApp();
       }
-      renderExamVersionsScreen(container, cert, async id => {
+      const versionScreen = renderExamVersionsScreen(container, cert, async id => {
+        if (id === 'isc2-cc-learning-slides') {
+          if (!await hasPublishedLearning() || state.screen !== 'exam-versions' || state.selectedCertification !== cert) return;
+          selectLearningScreen('learning-center'); return renderApp();
+        }
         if (id === 'isc2-cc-vocabulary') {
           state.screen = 'vocabulary';
           return renderApp();
@@ -60,6 +69,21 @@ export async function renderApp(versionError = '') {
         resetToHome();
         renderApp();
       }, versionError);
+      // Existing exam/vocabulary cards stay usable even if the new content request is slow.
+      hasPublishedLearning().then(available => {
+        if (generation === renderGeneration && state.screen === 'exam-versions' && state.selectedCertification === cert) versionScreen.setLearningAvailable(available);
+      });
+      break;
+    }
+
+    case 'learning-center':
+    case 'learning-domain':
+    case 'learning-lesson':
+    case 'learning-viewer': {
+      const module = await import('./learning/routes.js');
+      if (generation !== renderGeneration) return;
+      learningRoutes = module;
+      module.renderLearningRoute(container, renderApp);
       break;
     }
 

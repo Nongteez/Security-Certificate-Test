@@ -6,18 +6,58 @@
   outline-offset: 2px;
 }
 
+/* Align container width to 1320px matching main Certifications landing page */
+.start-screen-wrapper.exam-versions-screen {
+  max-width: 1320px;
+  width: 100%;
+}
+
+/* Panel card padding & layout */
+.exam-versions-screen .start-panel-card {
+  padding: 28px 32px 34px;
+}
+
+/* Header scale & branding adjustments for wide desktop */
+.exam-versions-screen .start-logo {
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+}
+
+.exam-versions-screen .start-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.exam-versions-screen .start-form-divider {
+  margin: 18px 0 22px;
+}
+
+/* Version card proportions & typography for enhanced desktop readability */
 .exam-versions-screen .version-card {
   position: relative;
+  padding: 24px;
+  min-height: 250px;
 }
 
 .exam-versions-screen .version-card .cert-card-title {
-  padding-inline-end: 30px;
+  padding-inline-end: 36px;
+}
+
+.exam-versions-screen .version-card .cert-card-desc {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.exam-versions-screen .version-card .meta-badge-count {
+  margin-top: auto;
 }
 
 .exam-versions-screen .btn-version-info {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 16px;
+  right: 16px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -34,6 +74,58 @@
 .exam-versions-screen .btn-version-info:hover {
   color: var(--blue);
   border-color: var(--blue);
+}
+
+@media (max-width: 1080px) {
+  .exam-versions-screen .start-panel-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .exam-versions-screen .start-panel-card {
+    padding: 18px 16px 20px;
+  }
+
+  .exam-versions-screen .start-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+  }
+
+  .exam-versions-screen .start-title {
+    font-size: 20px;
+  }
+
+  .exam-versions-screen .version-card {
+    padding: 18px;
+    min-height: auto;
+  }
+
+  .exam-versions-screen .version-card .cert-card-title {
+    font-size: 17px;
+    padding-inline-end: 32px;
+  }
+
+  .exam-versions-screen .btn-version-info {
+    top: 14px;
+    right: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exam-versions-screen .start-top-bar {
+    flex-wrap: wrap;
+  }
+
+  .exam-versions-screen .start-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .exam-versions-screen .start-title {
+    font-size: 17.5px;
+  }
 }
 
 .exam-versions-screen .version-info-backdrop[hidden] {

@@ -80,7 +80,9 @@ function informationContent(info, language) {
   return html + section('source', informationLabels.source, paragraph(info.notice));
 }
 
-export function renderExamVersionsScreen(container, cert, onSelectVersion, onBack, error = '', activeInfoId = null) {
+export function renderExamVersionsScreen(container, cert, onSelectVersion, onBack, error = '', activeInfoId = null, learningAvailable = false) {
+  // Shared across local language rerenders so an in-flight check updates the live card only.
+  const learningAvailability = typeof learningAvailable === 'object' && learningAvailable !== null ? learningAvailable : { available: learningAvailable === true };
   const versions = getExamVersions(cert?.id);
   const language = state.setup.language;
   let openInfoId = null;
@@ -114,10 +116,11 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
           <div class="cert-grid">
             ${versions.map(version => {
               const isVocabulary = version.type === 'vocabulary';
-              const available = isVocabulary ? (version.status === 'available') : !!resolveExamVersion(cert.id, version.id);
+              const isLearning = version.type === 'learning';
+              const available = isLearning ? learningAvailability.available : isVocabulary ? (version.status === 'available') : !!resolveExamVersion(cert.id, version.id);
               const info = information[version.id];
               const viewLabel = info?.viewLabel || informationLabels.view;
-              return `<article class="cert-card version-card ${available ? '' : 'cert-card-disabled'}">
+              return `<article class="cert-card version-card ${available ? '' : 'cert-card-disabled'}"${isLearning ? ' data-learning-card' : ''}>
                 ${info ? `<button type="button" class="btn-version-info" data-info-version-id="${version.id}" aria-label="${escapeHtml(viewLabel.en || 'View exam version information')}: ${escapeHtml(version.title)}" aria-haspopup="dialog" aria-controls="version-info-modal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r=".75" fill="currentColor" stroke="none"/></svg></button>` : ''}
                 <div class="cert-card-body">
                   <h3 class="cert-card-title">${escapeHtml(version.title)}</h3>
@@ -126,8 +129,8 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
                   ${version.vocabularyCount !== undefined ? `<span class="meta-badge meta-badge-count">${version.vocabularyCount} Terms</span>` : ''}
                 </div>
                 <div class="cert-card-footer">
-                  <span class="status-badge ${available ? 'status-available' : 'status-planned'}">${available ? 'Available' : 'Coming Soon'}</span>
-                  ${available ? `<button type="button" class="btn btn-primary btn-select-version" data-version-id="${version.id}">Select Version →</button>` : '<button type="button" class="btn btn-secondary btn-disabled" disabled>Coming Soon</button>'}
+                  <span class="status-badge ${available ? 'status-available' : 'status-planned'}${isLearning ? ' learning-entry-status' : ''}">${available ? 'Available' : 'Coming Soon'}</span>
+                  ${isLearning ? `<button type="button" class="btn ${available ? 'btn-primary' : 'btn-secondary btn-disabled'} btn-select-version btn-learning-entry" data-version-id="${version.id}"${available ? '' : ' disabled'}>${available ? 'Learning →' : 'Coming Soon'}</button>` : available ? `<button type="button" class="btn btn-primary btn-select-version" data-version-id="${version.id}">Select →</button>` : '<button type="button" class="btn btn-secondary btn-disabled" disabled>Coming Soon</button>'}
                 </div>
               </article>`;
             }).join('')}
@@ -139,7 +142,7 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
         <div class="setup-modal-content version-info-dialog" role="dialog" aria-modal="true" aria-labelledby="version-info-title">
           <h2 class="modal-title" id="version-info-title" tabindex="-1"></h2>
           <div id="version-info-content"></div>
-          <button type="button" class="btn btn-secondary modal-close-btn" id="btn-version-info-close"></button>
+          <button type="button" class="btn btn-secondary modal-close-btn" id="btn-version-info-close">Close</button>
         </div>
       </div>
     </div>`;
@@ -169,7 +172,7 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
     title.innerHTML = localized({ en: version.title, th: info.titleTh }, language);
     content.innerHTML = informationContent(info, language);
     content.scrollTop = 0;
-    closeButton.innerHTML = localized(informationLabels.close, language);
+    closeButton.textContent = 'Close';
     overlay.hidden = false;
     background.inert = true;
     if (body) body.style.overflow = 'hidden';
@@ -206,7 +209,8 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
       const id = button.getAttribute('data-version-id');
       const targetVersion = versions.find(v => v.id === id);
       if (!targetVersion) return;
-      if (targetVersion.type !== 'vocabulary' && !resolveExamVersion(cert.id, id)) return;
+      if (targetVersion.type === 'learning' && !learningAvailability.available) return;
+      if (!['vocabulary', 'learning'].includes(targetVersion.type) && !resolveExamVersion(cert.id, id)) return;
       if (targetVersion.type === 'vocabulary' && targetVersion.status !== 'available') return;
       selectionPending = true;
       const controls = [...infoButtons, ...container.querySelectorAll('.lang-btn')];
@@ -225,7 +229,7 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
       const currentInfoId = openInfoId;
       closeInformation();
       updateSetup({ language: button.getAttribute('data-lang') });
-      renderExamVersionsScreen(container, cert, onSelectVersion, onBack, error, currentInfoId);
+      renderExamVersionsScreen(container, cert, onSelectVersion, onBack, error, currentInfoId, learningAvailability);
     });
   });
   attachThemeToggle(container, 'versions-theme-toggle');
@@ -233,4 +237,20 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
     const button = Array.from(infoButtons).find(item => item.getAttribute('data-info-version-id') === activeInfoId);
     if (button) openInformation(activeInfoId, button);
   }
+  return {
+    setLearningAvailable(value) {
+      learningAvailability.available = value === true;
+      const card = container.querySelector('[data-learning-card]');
+      const action = container.querySelector('.btn-learning-entry');
+      const status = container.querySelector('.learning-entry-status');
+      if (!card || !action || !status) return;
+      const available = learningAvailability.available;
+      card.classList.toggle('cert-card-disabled', !available);
+      action.className = `btn ${available ? 'btn-primary' : 'btn-secondary btn-disabled'} btn-select-version btn-learning-entry`;
+      action.disabled = !available;
+      action.textContent = available ? 'Learning →' : 'Coming Soon';
+      status.className = `status-badge ${available ? 'status-available' : 'status-planned'} learning-entry-status`;
+      status.textContent = available ? 'Available' : 'Coming Soon';
+    }
+  };
 }

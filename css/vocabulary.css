@@ -201,7 +201,271 @@
   color: var(--text);
 }
 
-/* Filter Groups */
+/* Controls Row: Domain Dropdown & More Filters Button */
+.vocab-controls-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.vocab-select-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vocab-control-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.vocab-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--panel-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238892b0' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 12px center / 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 8px 34px 8px 12px;
+  cursor: pointer;
+  min-height: 38px;
+  transition: border-color 0.16s ease, background-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.vocab-select:hover {
+  border-color: var(--line-hover);
+  background-color: var(--panel-hover);
+}
+
+.vocab-select:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.18);
+}
+
+.vocab-select option {
+  background: var(--panel-2);
+  color: var(--text);
+  font-weight: 500;
+  padding: 6px 10px;
+}
+
+.vocab-select option:disabled {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* More Filters Collapsible Button */
+.vocab-btn-more-filters {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  min-height: 38px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.vocab-btn-more-filters:hover {
+  background: var(--panel-hover);
+  color: var(--text);
+  border-color: var(--line-hover);
+}
+
+.vocab-btn-more-filters.active,
+.vocab-btn-more-filters.has-active {
+  background: var(--blue-bg);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.vocab-filter-active-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 9px;
+  background: var(--blue);
+  color: #ffffff;
+}
+
+.vocab-chevron-icon {
+  transition: transform 0.2s ease;
+}
+
+.vocab-chevron-icon.open {
+  transform: rotate(180deg);
+}
+
+/* Collapsible Filter Panel */
+.vocab-filters-collapse {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  align-items: start;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  animation: vocabFadeIn 0.18s ease;
+}
+
+@keyframes vocabFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.vocab-filters-collapse[hidden] {
+  display: none !important;
+}
+
+.vocab-collapse-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.vocab-collapse-group:first-child {
+  border-right: 1px solid var(--line);
+  padding-right: 16px;
+}
+
+.vocab-collapse-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 5px;
+  min-height: 24px;
+}
+
+.vocab-collapse-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.vocab-screen .vocab-link-btn {
+  min-height: auto !important;
+  height: auto !important;
+  background: transparent;
+  border: none;
+  color: var(--blue);
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 1px 4px;
+  border-radius: 3px;
+  line-height: 1.2;
+  transition: opacity 0.15s ease;
+}
+
+.vocab-screen .vocab-link-btn:hover {
+  text-decoration: underline;
+}
+
+.vocab-checkbox-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vocab-checkbox-grid-objs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+  align-content: start;
+  gap: 3px 8px;
+}
+
+.vocab-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--text-dim);
+  cursor: pointer;
+  user-select: none;
+  padding: 4px 6px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  min-height: 26px;
+  transition: all 0.12s ease;
+}
+
+.vocab-checkbox-label:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.vocab-checkbox-label.checked {
+  color: var(--text);
+  background: rgba(58, 134, 255, 0.08);
+  border-color: rgba(58, 134, 255, 0.25);
+  font-weight: 600;
+}
+
+.vocab-screen .vocab-checkbox {
+  width: 14px;
+  height: 14px;
+  min-height: 14px !important;
+  max-height: 14px !important;
+  margin: 2px 0 0 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: var(--blue);
+}
+
+.vocab-checkbox-text {
+  flex: 1;
+  min-width: 0;
+  white-space: normal;
+  line-height: 1.35;
+  word-break: normal;
+}
+
+.vocab-checkbox-count {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-left: auto;
+  padding-left: 6px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  align-self: flex-start;
+  line-height: 1.5;
+}
+
+/* Full-width Search Bar */
+.vocab-search-fullwidth {
+  width: 100%;
+  max-width: 100%;
+  flex: 1 1 100%;
+}
+
+/* Filter Groups (Legacy & pill support) */
 .vocab-filter-group {
   display: flex;
   align-items: center;
@@ -367,7 +631,7 @@
 .dict-card-title-group {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   gap: 6px;
 }
 
@@ -375,9 +639,21 @@
   margin: 0;
   font-size: 17px;
   font-weight: 700;
-  color: var(--text);
-  line-height: 1.3;
+  color: #ffffff;
+  line-height: 1.35;
   letter-spacing: -0.01em;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #2563EB;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+/* Hide Domain/Objective badges on Study Cards only */
+.vocab-dict-card .badge-obj {
+  display: none;
 }
 
 .vocab-acronym-tag {
@@ -426,6 +702,12 @@
   background: rgba(168, 85, 247, 0.12);
   color: #c084fc;
   border: 1px solid rgba(168, 85, 247, 0.26);
+}
+
+.badge-confusing {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.26);
 }
 
 .badge-obj {
@@ -483,7 +765,7 @@
 
 /* Short English Definition */
 .dict-def-box {
-  flex: 1;
+  min-width: 0;
 }
 
 .dict-def-text {
@@ -498,12 +780,15 @@
   background: var(--panel-2);
   border: 1px solid var(--line);
   border-radius: 6px;
-  padding: 8px 12px;
+  padding: 10px 14px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.6;
+  margin-top: auto;
+  min-height: 120px;
+  box-sizing: border-box;
 }
 
 .dict-example-lead {
@@ -520,9 +805,48 @@
   color: var(--text-dim);
   font-style: normal;
   font-family: 'Noto Sans Thai', sans-serif;
-  line-height: 1.55;
+  line-height: 1.6;
   overflow-wrap: break-word;
   word-break: break-word;
+}
+
+/* Card Body (Upper Content Container) */
+.dict-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Synchronized EXAMPLE Panel Alignment & Equal Row Heights via CSS Grid Subgrid */
+@supports (grid-template-rows: subgrid) {
+  .vocab-grid {
+    grid-auto-rows: auto auto;
+  }
+
+  .vocab-dict-card {
+    grid-row: span 2;
+    display: grid;
+    grid-template-rows: subgrid;
+    row-gap: 12px;
+  }
+
+  .dict-card-body {
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .dict-example-box {
+    grid-row: 2;
+    margin-top: 0;
+    height: 100%;
+    min-height: 0;
+    box-sizing: border-box;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -558,10 +882,10 @@
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  max-width: 680px;
-  width: 100%;
-  max-height: calc(100vh - 32px);
-  max-height: min(900px, calc(100dvh - 32px));
+  max-width: 1000px;
+  width: min(1000px, calc(100vw - 48px));
+  max-height: calc(100vh - 40px);
+  max-height: min(920px, calc(100dvh - 40px));
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow);
@@ -584,10 +908,10 @@
 /* Modal Header */
 .vocab-modal-header {
   flex-shrink: 0;
-  padding: 18px 24px;
+  padding: 22px 36px;
   border-bottom: 1px solid var(--line);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
   background: var(--panel);
@@ -600,6 +924,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 
 .vocab-modal-badges {
@@ -609,13 +934,21 @@
   align-items: center;
 }
 
+.vocab-modal-badges:empty {
+  display: none;
+}
+
 .vocab-modal-title {
   margin: 0;
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--text);
-  line-height: 1.25;
+  line-height: 1.3;
   letter-spacing: -0.01em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 
 .vocab-modal-close {
@@ -644,27 +977,30 @@
 .vocab-modal-body {
   min-height: 0;
   flex: 1 1 auto;
-  padding: 22px 24px;
+  padding: 30px 36px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
   scrollbar-width: thin;
   scrollbar-color: var(--line-hover) var(--panel);
 }
 
-.vocab-modal-body > * { flex-shrink: 0; }
+.vocab-modal-body > * {
+  flex-shrink: 0;
+  max-width: 900px;
+  width: 100%;
+}
 
 .modal-fullform-row {
-  flex-wrap: wrap;
   display: flex;
   align-items: baseline;
   gap: 8px;
   background: var(--panel-2);
   border: 1px solid var(--line);
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: 6px;
-  font-size: 13px;
+  font-size: 13.5px;
 }
 
 .modal-label-dim {
@@ -680,18 +1016,20 @@
   font-weight: 600;
 }
 
+/* 1. Thai Meaning (Prominent Translation) */
 .modal-thai-banner {
-  background: rgba(58, 134, 255, 0.07);
-  border: 1px solid rgba(58, 134, 255, 0.2);
-  border-radius: 8px;
-  padding: 12px 16px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--blue);
+  border-radius: 6px;
+  padding: 14px 18px;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
 .modal-section-eyebrow {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -700,224 +1038,127 @@
 
 .modal-thai-title {
   margin: 0;
-  font-size: 18px;
+  font-size: 19.5px;
   font-weight: 600;
   color: var(--text);
   font-family: 'Noto Sans Thai', sans-serif;
-  line-height: 1.4;
+  line-height: 1.55;
 }
 
+/* 2 & 3. English Definition & Detailed Thai Explanation */
 .modal-detail-section {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .modal-section-heading {
   margin: 0;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--blue);
+  color: var(--text-muted);
 }
 
 .modal-def-text {
   margin: 0;
-  font-size: 14.5px;
-  line-height: 1.55;
+  font-size: 16.5px;
+  line-height: 1.7;
   color: var(--text);
 }
 
 .modal-exp-th-text {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 16.5px;
+  line-height: 1.75;
   color: var(--text-dim);
   font-family: 'Noto Sans Thai', sans-serif;
 }
 
-/* Modal Example Card */
+/* 4. Example Scenario (English & Thai) */
 .modal-example-card {
   background: var(--panel-2);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 12px 16px;
+  padding: 18px 22px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .modal-example-row {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 13.5px;
-  line-height: 1.5;
+  gap: 12px;
+  font-size: 16.5px;
+  line-height: 1.7;
 }
 
 .vocab-lang-pill {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 2px 6px;
+  padding: 2px 7px;
   border-radius: 4px;
   background: var(--line);
-  color: var(--text);
+  color: var(--text-muted);
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 3px;
   font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
 }
 
 .modal-example-text {
   margin: 0;
+  font-size: 16.5px;
+  line-height: 1.7;
   color: var(--text-dim);
 }
 
 .modal-thai-font {
   font-family: 'Noto Sans Thai', sans-serif;
+  line-height: 1.75;
 }
 
-/* Modal Exam Tip */
+/* 5. Exam Guidance & Relevance (Neutralized & Bilingual-Ready) */
 .modal-relevance-box {
-  background: rgba(244, 197, 66, 0.08);
-  border: 1px solid rgba(244, 197, 66, 0.25);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 12px 16px;
+  padding: 18px 22px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
-.modal-relevance-header {
+.modal-relevance-content {
   display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.modal-relevance-bulb {
-  font-size: 14px;
-}
-
-.modal-relevance-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .modal-relevance-text {
   margin: 0;
-  font-size: 13.5px;
-  line-height: 1.5;
+  font-size: 15.5px;
+  line-height: 1.7;
   color: var(--text-dim);
 }
 
-/* Modal Confused Terms */
+/* Hidden Unnecessary Metadata Elements (Safe Guard) */
+.modal-keywords-box,
+.modal-meta-line,
 .modal-confused-box {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 10px 14px;
-  background: rgba(230, 57, 70, 0.05);
-  border: 1px dashed rgba(230, 57, 70, 0.28);
-  border-radius: 8px;
-}
-
-.modal-confused-title {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--red);
-  letter-spacing: 0.04em;
-}
-
-.modal-confused-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.modal-confused-tag-btn {
-  max-width: 100%;
-  text-align: left;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--red);
-  background: rgba(230, 57, 70, 0.1);
-  border: 1px solid rgba(230, 57, 70, 0.2);
-  padding: 3px 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.15s ease;
-}
-
-.modal-confused-tag-btn:hover {
-  background: rgba(230, 57, 70, 0.18);
-  border-color: var(--red);
-}
-
-/* Modal Keywords */
-.modal-keywords-box {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding-top: 4px;
-}
-
-.modal-kw-label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-}
-
-.modal-keywords-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.vocab-kw-item {
-  font-size: 11.5px;
-  color: var(--text-dim);
-  background: var(--panel-2);
-  border: 1px solid var(--line);
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-/* Modal Metadata Line */
-.modal-meta-line {
-  flex-wrap: wrap;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--text-muted);
-  padding-top: 8px;
-  border-top: 1px solid var(--line);
-}
-
-.modal-meta-line code {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--text-dim);
+  display: none !important;
 }
 
 /* Modal Footer */
 .vocab-modal-footer {
   flex-shrink: 0;
-  padding: 14px 24px;
+  padding: 12px 28px;
   border-top: 1px solid var(--line);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: center;
   background: var(--panel);
   position: sticky;
   bottom: 0;
@@ -925,24 +1166,47 @@
 }
 
 .vocab-modal-nav {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  flex: 1;
-  min-width: 0;
+  display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 480px;
+  gap: 16px;
 }
 
 .vocab-modal-nav-btn {
-  min-width: 0;
-  padding: 6px 12px;
-  font-size: 12.5px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.vocab-modal-nav-btn:hover:not(:disabled) {
+  background: var(--panel-hover);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.vocab-modal-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
 .vocab-modal-counter {
-  font-size: 12px;
-  color: var(--text-muted);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-dim);
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
 }
 
 /* --------------------------------------------------------------------------
@@ -1154,7 +1418,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 35px;
   justify-content: flex-start;
   overflow-y: auto;
   scrollbar-width: auto;
@@ -1218,15 +1482,15 @@
 
 .flashcard-back-def-val {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 15.5px;
+  line-height: 1.55;
   color: var(--text-dim);
 }
 
 .flashcard-back-def-th {
   margin: 0;
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--text-dim);
   font-family: 'Noto Sans Thai', sans-serif;
 }
@@ -1301,6 +1565,46 @@
     min-width: 100%;
   }
 
+  .vocab-controls-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .vocab-select-wrap {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .vocab-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .vocab-btn-more-filters {
+    flex-shrink: 0;
+  }
+
+  .vocab-filters-collapse {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .vocab-collapse-group:first-child {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding-right: 0;
+    padding-bottom: 10px;
+  }
+
+  .vocab-checkbox-grid-objs {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 3px 8px;
+  }
+
   .vocab-grid {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 14px;
@@ -1318,26 +1622,47 @@
     font-size: 16px;
   }
 
+  .flashcard-back-def-val {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .flashcard-back-def-th {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
   .flashcard-back-bottom {
     justify-content: flex-end;
   }
 
+  .vocab-modal-dialog {
+    max-width: min(92vw, 760px);
+  }
+
   .vocab-modal-header {
-    padding: 14px 18px;
+    padding: 16px 22px;
+  }
+
+  .vocab-modal-title {
+    font-size: 24px;
   }
 
   .vocab-modal-body {
-    padding: 16px 18px;
+    padding: 20px 24px;
+    gap: 20px;
   }
 
   .vocab-modal-footer {
-    padding: 12px 18px;
-    flex-direction: column-reverse;
-    gap: 10px;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .vocab-modal-nav {
     width: 100%;
+    max-width: 420px;
   }
 }
 
@@ -1370,23 +1695,157 @@
   .vocab-mode-tabs {
     width: 100%;
     display: flex;
+    padding: 3px;
+    gap: 3px;
+    box-sizing: border-box;
   }
 
   .vocab-mode-tab {
     min-width: 0;
-    flex: 1;
+    flex: 1 1 0;
     justify-content: center;
-    padding: 8px 10px;
+    padding: 8px 6px;
     font-size: 13px;
+    gap: 6px;
+  }
+
+  .vocab-controls-row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .vocab-select-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .vocab-control-label {
+    font-size: 11.5px;
+    flex-shrink: 0;
+  }
+
+  .vocab-select {
+    width: 100%;
+    flex: 1;
+    min-width: 0;
+    padding: 7px 32px 7px 10px;
+    font-size: 13px;
+    min-height: 38px;
+  }
+
+  .vocab-btn-more-filters {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 13px;
+    min-height: 38px;
+    box-sizing: border-box;
+  }
+
+  .vocab-filters-collapse {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+  }
+
+  .vocab-collapse-group {
+    gap: 6px;
+  }
+
+  .vocab-collapse-group:first-child {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding-right: 0;
+    padding-bottom: 10px;
+  }
+
+  .vocab-collapse-header {
+    padding-bottom: 4px;
+    min-height: 22px;
+  }
+
+  .vocab-collapse-title {
+    font-size: 11px;
+  }
+
+  .vocab-checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 130px), 1fr));
+    gap: 2px 6px;
+  }
+
+  .vocab-checkbox-grid-objs {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 135px), 1fr));
+    align-content: start;
+    gap: 2px 6px;
+  }
+
+  .vocab-checkbox-label {
+    padding: 3px 5px;
+    font-size: 12px;
+    line-height: 1.3;
+    min-height: 26px;
+    gap: 6px;
+  }
+
+  .vocab-screen .vocab-checkbox {
+    width: 14px;
+    height: 14px;
+    min-height: 14px !important;
+    max-height: 14px !important;
+    margin-top: 1px;
+  }
+
+  .vocab-checkbox-text {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .vocab-checkbox-count {
+    font-size: 10.5px;
+    padding-left: 4px;
   }
 
   .vocab-search-wrap {
     min-width: 100%;
+    width: 100%;
   }
 
   .vocab-search-input {
     font-size: 16px;
-    padding: 8px 34px 8px 36px;
+    padding: 9px 36px 9px 38px;
+    width: 100%;
+    min-height: 42px;
+    box-sizing: border-box;
+  }
+
+  .vocab-results-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 4px;
+    margin-bottom: 2px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .vocab-count-indicator {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .vocab-screen .vocab-reset-filters-btn {
+    min-height: 32px !important;
+    height: auto !important;
+    font-size: 12px;
+    padding: 3px 6px;
+    white-space: nowrap;
   }
 
   .vocab-filter-group {
@@ -1415,29 +1874,68 @@
     font-size: 12px;
   }
 
-  /* Single Column Study Cards with Enhanced Spacing & Readability */
+  /* Single Column Study Cards with Comfortable Spacing & Reading Rhythm */
   .vocab-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    grid-auto-rows: auto;
+    gap: 18px;
     width: 100%;
   }
 
   .vocab-dict-card {
-    padding: 14px 14px;
+    grid-row: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 18px;
     border-radius: var(--radius-sm);
-    gap: 10px;
-    min-height: 48px;
+    gap: 18px;
+    min-height: auto;
+  }
+
+  .dict-card-body {
+    grid-row: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .dict-card-header {
+    gap: 8px;
+  }
+
+  .dict-card-title-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+    min-width: 0;
   }
 
   .dict-card-term {
     font-size: 16px;
-    line-height: 1.3;
+    line-height: 1.35;
+    padding: 4px 10px;
+    border-radius: 6px;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .vocab-acronym-tag {
+    font-size: 11px;
+    padding: 2px 7px;
   }
 
   .dict-fullform-row {
-    font-size: 11.5px;
-    padding: 5px 8px;
+    font-size: 12.5px;
+    line-height: 1.45;
+    padding: 7px 12px;
+    border-radius: 6px;
+    gap: 6px;
     flex-wrap: wrap;
+    margin-bottom: 2px;
   }
 
   .dict-fullform-val {
@@ -1446,26 +1944,48 @@
   }
 
   .dict-thai-box {
-    padding: 6px 10px;
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 2px;
   }
 
   .dict-thai-text {
-    font-size: 14.5px;
-    line-height: 1.45;
+    font-size: 15.5px;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .dict-def-box {
+    min-width: 0;
+    margin-top: 0;
   }
 
   .dict-def-text {
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 14.5px;
+    line-height: 1.65;
   }
 
   .dict-example-box {
-    padding: 7px 10px;
+    grid-row: auto;
+    margin-top: 0;
+    padding: 13px 15px;
+    min-height: auto;
+    height: auto;
+    gap: 7px;
+    border-radius: 6px;
+  }
+
+  .dict-example-lead {
+    font-size: 11px;
+    letter-spacing: 0.04em;
   }
 
   .dict-example-text {
-    font-size: 12.5px;
-    line-height: 1.5;
+    font-size: 13.5px;
+    line-height: 1.65;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   /* Modal Dialog Optimizations for Mobile (320px–430px) */
@@ -1484,11 +2004,12 @@
   }
 
   .vocab-modal-header {
-    padding: 12px 14px;
+    padding: 14px 16px;
   }
 
   .vocab-modal-title {
-    font-size: 18px;
+    font-size: 20px;
+    line-height: 1.3;
   }
 
   .vocab-modal-close {
@@ -1498,34 +2019,70 @@
   }
 
   .vocab-modal-body {
-    padding: 14px 14px;
-    gap: 12px;
+    padding: 16px 16px;
+    gap: 16px;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
   }
 
+  .vocab-modal-body > * {
+    max-width: 100%;
+  }
+
   .modal-thai-title {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .modal-def-text,
   .modal-exp-th-text {
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+
+  .modal-example-card,
+  .modal-relevance-box {
+    padding: 12px 14px;
+  }
+
+  .modal-example-row {
     font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .modal-relevance-text {
+    font-size: 13.5px;
+    line-height: 1.6;
   }
 
   .vocab-modal-footer {
-    padding: 10px 14px;
+    padding: 10px 16px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vocab-modal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 320px;
+    gap: 12px;
   }
 
   .vocab-modal-nav-btn {
-    padding: 8px 12px;
-    font-size: 12px;
-    min-height: 44px;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+    padding: 0;
+    font-size: 13px;
   }
 
-  #btn-modal-done {
-    min-height: 44px;
-    width: 100%;
+  .vocab-modal-counter {
+    font-size: 13px;
+    text-align: center;
   }
 
   .flashcard-nav-controls {
@@ -1542,8 +2099,43 @@
 
   .flashcard-face { padding: 18px 14px; gap: 12px; }
   .flashcard-back-thai-wrap { padding: 10px 12px; }
-  .vocab-modal-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  .vocab-modal-counter { grid-column: 1 / -1; grid-row: 1; text-align: center; }
+}
+
+/* Very Narrow Mobile Screens (<= 340px e.g. iPhone SE 1st gen) */
+@media (max-width: 340px) {
+  .vocab-grid {
+    gap: 14px;
+  }
+
+  .vocab-dict-card {
+    padding: 14px 14px;
+    gap: 14px;
+  }
+
+  .dict-card-body {
+    gap: 12px;
+  }
+
+  .dict-card-term {
+    font-size: 15px;
+  }
+
+  .dict-thai-box {
+    padding: 8px 10px;
+    margin-bottom: 0;
+  }
+
+  .dict-thai-text {
+    font-size: 14.5px;
+  }
+
+  .dict-def-text {
+    font-size: 14px;
+  }
+
+  .dict-example-box {
+    padding: 10px 12px;
+  }
 }
 
 @media (max-height: 480px) {

@@ -9,6 +9,7 @@ export const state = {
   screen: "home", // "home" | "exam-versions" | "cert-start" | "quiz" | "results"
   selectedCertification: null,
   selectedExamVersion: null,
+  learning: { domainId: null, objectiveId: null, lessonId: null, slideId: null },
 
   // Setup configuration for current certification session
   setup: {
@@ -121,6 +122,13 @@ export function resetQuizState() {
  */
 export function updateSetup(updates) {
   Object.assign(state.setup, updates);
+}
+
+/** Learning navigation never creates, resets or writes an exam session. */
+export function selectLearningScreen(screen, selection = {}) {
+  if (!['learning-center', 'learning-domain', 'learning-lesson', 'learning-viewer'].includes(screen)) return false;
+  for (const key of ['domainId', 'objectiveId', 'lessonId', 'slideId']) if (Object.hasOwn(selection, key)) state.learning[key] = selection[key];
+  state.screen = screen; return true;
 }
 
 /**

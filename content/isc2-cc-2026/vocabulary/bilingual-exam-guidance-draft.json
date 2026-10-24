@@ -1,0 +1,2219 @@
+{
+  "meta": {
+    "title": "ISC2 CC 2026 Vocabulary — Bilingual Exam Guidance Draft",
+    "generated_at": "2026-10-24T03:07:32.528Z",
+    "total_domains": 3,
+    "total_entries": 313
+  },
+  "domains": {
+    "domain_1": {
+      "domain_id": 1,
+      "count": 110,
+      "entries": [
+        {
+          "id": "VOC-CC26-D1-001",
+          "term": "Confidentiality",
+          "objective": "1.1",
+          "exam_relevance_en": "Exam scenarios often test whether an incident involves disclosure (loss of confidentiality) versus alteration (loss of integrity). Encryption, access controls, and NDAs are common mechanisms.",
+          "exam_relevance_th": "ข้อสอบมักทดสอบสถานการณ์ว่าเหตุการณ์ที่เกิดขึ้นเป็นการเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต (การสูญเสียการรักษาความลับ - Loss of Confidentiality) หรือเป็นการแก้ไขดัดแปลงข้อมูล (การสูญเสียความถูกต้องแท้จริง - Loss of Integrity) โดยมีกลไกสำคัญ เช่น การเข้ารหัสข้อมูล (Encryption), การควบคุมการเข้าถึง (Access Controls) และข้อตกลงการไม่เปิดเผยข้อมูล (NDAs)"
+        },
+        {
+          "id": "VOC-CC26-D1-002",
+          "term": "Integrity",
+          "objective": "1.1",
+          "exam_relevance_en": "Look for scenarios involving unauthorized changes, tampering, incorrect database values, or corrupted transmissions. Key mechanisms include hashing, checksums, and digital signatures.",
+          "exam_relevance_th": "มองหาสถานการณ์ที่เกี่ยวกับการแก้ไขข้อมูลโดยไม่ได้รับอนุญาต การดัดแปลงทำลาย ค่าในฐานข้อมูลไม่ถูกต้อง หรือข้อมูลผิดเพี้ยนระหว่างส่ง กลไกหลักที่ใช้ ได้แก่ การคำนวณแฮช (Hashing), ผลรวมตรวจสอบ (Checksums) และลายมือชื่อดิจิทัล (Digital Signatures)"
+        },
+        {
+          "id": "VOC-CC26-D1-003",
+          "term": "Availability",
+          "objective": "1.1",
+          "exam_relevance_en": "Questions involve denial-of-service (DoS) attacks, system crashes, power outages, and hardware failures. Key mechanisms are redundancy, failover, UPS, load balancers, and backups.",
+          "exam_relevance_th": "โจทย์มักเกี่ยวข้องกับการโจมตีปฏิเสธการให้บริการ (DoS), ระบบหยุดทำงานกะทันหัน, ไฟฟ้าดับ และความล้มเหลวของฮาร์ดแวร์ กลไกสำคัญที่ช่วยรักษาความพร้อมใช้งาน ได้แก่ การทำระบบสำรอง (Redundancy), ระบบสลับการทำงานอัตโนมัติ (Failover), เครื่องสำรองไฟ (UPS), อุปกรณ์กระจายโหลด (Load Balancers) และการสำรองข้อมูล (Backups)"
+        },
+        {
+          "id": "VOC-CC26-D1-004",
+          "term": "CIA Triad",
+          "objective": "1.1",
+          "exam_relevance_en": "Fundamental reference model. Exam questions test balancing these three objectives under organizational operational constraints.",
+          "exam_relevance_th": "เป็นโมเดลอ้างอิงพื้นฐานด้านความมั่นคงปลอดภัย คำถามในข้อสอบจะทดสอบการสร้างสมดุลระหว่างเป้าหมายทั้งสามด้านนี้ ภายใต้ข้อจำกัดและบริบทการดำเนินงานขององค์กร"
+        },
+        {
+          "id": "VOC-CC26-D1-005",
+          "term": "Authentication",
+          "objective": "1.1",
+          "exam_relevance_en": "Exams frequently test the distinction between Authentication (verifying who you are) and Authorization (determining what you are permitted to do). Authentication always precedes authorization in access control.",
+          "exam_relevance_th": "ข้อสอบมักทดสอบความแตกต่างระหว่าง Authentication (การพิสูจน์ตัวตนว่าคุณคือใคร) และ Authorization (การกำหนดสิทธิ์ว่าคุณได้รับอนุญาตให้ทำสิ่งใดได้บ้าง) โดยในกระบวนการควบคุมการเข้าถึง การพิสูจน์ตัวตนจะต้องเกิดขึ้นก่อนการกำหนดสิทธิ์เสมอ"
+        },
+        {
+          "id": "VOC-CC26-D1-006",
+          "term": "Authorization",
+          "objective": "1.1",
+          "exam_relevance_en": "Deals with permissions, privileges, and access control lists. A user can be successfully authenticated but still unauthorized to view certain records.",
+          "exam_relevance_th": "เกี่ยวข้องกับการกำหนดสิทธิ์ (Permissions), อภิสิทธิ์การใช้งาน (Privileges) และรายการควบคุมการเข้าถึง (ACLs) ผู้ใช้สามารถผ่านการพิสูจน์ตัวตนได้สำเร็จ แต่ก็ยังอาจไม่มีสิทธิ์เข้าถึงหรือดูข้อมูลบางรายการได้"
+        },
+        {
+          "id": "VOC-CC26-D1-007",
+          "term": "Accounting",
+          "objective": "1.1",
+          "exam_relevance_en": "Associated with log files, audit trails, login records, and command history. Essential for non-repudiation, incident investigation, and regulatory compliance.",
+          "exam_relevance_th": "สัมพันธ์กับไฟล์บันทึกประวัติการทำงาน (Log Files), บันทึกการตรวจสอบ (Audit Trails), ประวัติการเข้าสู่ระบบ และประวัติคำสั่ง มีความสำคัญอย่างยิ่งต่อการตรวจสอบย้อนกลับเพื่อไม่ให้ปฏิเสธความรับผิดชอบได้ (Non-repudiation), การสืบสวนเหตุการณ์ผิดปกติ และการปฏิบัติตามกฎระเบียบข้อบังคับ"
+        },
+        {
+          "id": "VOC-CC26-D1-008",
+          "term": "AAA Model",
+          "objective": "1.1",
+          "exam_relevance_en": "Must not be confused with the CIA Triad. AAA describes access control operations, whereas CIA describes security properties.",
+          "exam_relevance_th": "ต้องไม่สับสนกับ CIA Triad โดยโมเดล AAA อธิบายถึงกระบวนการปฏิบัติการควบคุมการเข้าถึง (Access Control Operations) ในขณะที่ CIA อธิบายถึงคุณสมบัติด้านความมั่นคงปลอดภัย (Security Properties)"
+        },
+        {
+          "id": "VOC-CC26-D1-009",
+          "term": "Multifactor Authentication (MFA)",
+          "objective": "1.1",
+          "exam_relevance_en": "Critical exam point: Using a password plus a PIN is NOT MFA because both are 'Something You Know' (single factor). MFA requires at least two DIFFERENT categories (e.g., password + smart card, or password + fingerprint).",
+          "exam_relevance_th": "จุดสำคัญของข้อสอบ: การใช้รหัสผ่านร่วมกับรหัส PIN ไม่ถือเป็น MFA เพราะทั้งสองสิ่งจัดอยู่ในหมวด 'สิ่งที่ท่านรู้' (Something You Know) เหมือนกัน (เป็นเพียงปัจจัยเดียว) การเป็น MFA ต้องใช้ปัจจัยจากหมวดหมู่ที่แตกต่างกันอย่างน้อย 2 หมวดหมู่ขึ้นไป (เช่น รหัสผ่าน + สมาร์ตการ์ด หรือ รหัสผ่าน + ลายนิ้วมือ)"
+        },
+        {
+          "id": "VOC-CC26-D1-010",
+          "term": "Two-Factor Authentication (2FA)",
+          "objective": "1.1",
+          "exam_relevance_en": "All 2FA is MFA, but not all MFA is limited to two factors. Often paired in questions with SMS OTP codes or hardware tokens.",
+          "exam_relevance_th": "การพิสูจน์ตัวตนแบบ 2FA ทั้งหมดจัดเป็น MFA แต่ MFA ไม่ได้จำกัดอยู่เพียงแค่สองปัจจัย ในคำถามข้อสอบมักจับคู่รหัสผ่านเข้ากับรหัส SMS OTP หรือโทเคนฮาร์ดแวร์ (Hardware Tokens)"
+        },
+        {
+          "id": "VOC-CC26-D1-011",
+          "term": "Something You Know",
+          "objective": "1.1",
+          "exam_relevance_en": "Remember that passwords and PINs belong to the SAME category. Combining them does NOT achieve multifactor authentication.",
+          "exam_relevance_th": "จำไว้ว่ารหัสผ่าน (Passwords) และรหัส PIN จัดอยู่ในหมวดหมู่เดียวกัน การนำสิ่งเหล่านี้มารวมกันจึงไม่ถือว่าเป็นการพิสูจน์ตัวตนแบบหลายปัจจัย (MFA)"
+        },
+        {
+          "id": "VOC-CC26-D1-012",
+          "term": "Something You Have",
+          "objective": "1.1",
+          "exam_relevance_en": "Commonly paired with 'Something You Know' to form 2FA. Examples include USB security keys (FIDO), RSA SecurID fobs, and smartphones receiving push notifications.",
+          "exam_relevance_th": "มักถูกนำมาจับคู่กับ 'สิ่งที่ท่านรู้' (Something You Know) เพื่อสร้างการพิสูจน์ตัวตนแบบ 2FA ตัวอย่างได้แก่ คีย์ความปลอดภัย USB (FIDO), โทเคน RSA SecurID และสมาร์ตโฟนที่รับการแจ้งเตือนแบบพุช (Push Notifications)"
+        },
+        {
+          "id": "VOC-CC26-D1-013",
+          "term": "Something You Are",
+          "objective": "1.1",
+          "exam_relevance_en": "Commonly referred to as Biometrics. Often highlighted on exams because inherence factors cannot easily be shared or forgotten, though biometric templates can still be subject to sensor spoofing or database leaks.",
+          "exam_relevance_th": "โดยทั่วไปเรียกว่าข้อมูลชีวมิติ (Biometrics) มักถูกเน้นย้ำในข้อสอบเนื่องจากเป็นปัจจัยประจำตัวที่ไม่สามารถแบ่งปันหรือลืมได้ง่าย แม้ว่าแม่แบบข้อมูลไบโอเมตริกจะยังคงมีความเสี่ยงต่อการปลอมแปลงหลอกเซนเซอร์ (Sensor Spoofing) หรือการรั่วไหลของฐานข้อมูลก็ตาม"
+        },
+        {
+          "id": "VOC-CC26-D1-014",
+          "term": "Somewhere You Are",
+          "objective": "1.1",
+          "exam_relevance_en": "Instructors and materials mention this as an auxiliary or contextual factor (SQ-06 flags that some standards consider it contextual rather than an independent fourth factor). Used in geofencing and risk-based adaptive authentication.",
+          "exam_relevance_th": "ผู้สอนและเอกสารการเรียนกล่าวถึงสิ่งนี้ในฐานะปัจจัยเสริมหรือปัจจัยตามบริบท (ประเด็น SQ-06 ชี้ให้เห็นว่าบางมาตรฐานถือเป็นบริบทแวดล้อมมากกว่าที่จะเป็นปัจจัยที่ 4 แยกเดี่ยว) นำมาใช้ในระบบ Geofencing และการพิสูจน์ตัวตนแบบปรับเปลี่ยนตามระดับความเสี่ยง (Adaptive Authentication)"
+        },
+        {
+          "id": "VOC-CC26-D1-015",
+          "term": "Credential",
+          "objective": "1.1",
+          "exam_relevance_en": "Credentials can be compromised via phishing, brute-force, or credential stuffing. Presenting multiple credentials of the same category does not equate to multifactor authentication.",
+          "exam_relevance_th": "ข้อมูลประจำตัวอาจถูกเจาะผ่านการฟิชชิ่ง (Phishing), การเดาสุ่มรหัสผ่าน (Brute-force) หรือการใช้ข้อมูลประจำตัวที่หลุดรั่วมาโจมตี (Credential Stuffing) การแสดงข้อมูลประจำตัวหลายอย่างที่มาจากหมวดหมู่เดียวกันไม่ถือเป็นการพิสูจน์ตัวตนแบบหลายปัจจัย"
+        },
+        {
+          "id": "VOC-CC26-D1-016",
+          "term": "Encryption",
+          "objective": "1.1",
+          "exam_relevance_en": "Primary mechanism to protect data at rest and data in transit. Remember: encryption protects confidentiality, but without integrity controls (like MAC or authenticated encryption), it does not fully guarantee data tampering prevention.",
+          "exam_relevance_th": "กลไกหลักในการปกป้องข้อมูลที่ถูกจัดเก็บ (Data at Rest) และข้อมูลขณะส่งผ่านเครือข่าย (Data in Transit) ข้อควรจำ: การเข้ารหัสช่วยรักษาความลับ แต่หากไม่มีการควบคุมความถูกต้องสมบูรณ์ร่วมด้วย (เช่น MAC หรือ Authenticated Encryption) ก็จะไม่สามารถรับประกันการป้องกันการดัดแปลงข้อมูลได้อย่างสมบูรณ์"
+        },
+        {
+          "id": "VOC-CC26-D1-017",
+          "term": "Data Masking",
+          "objective": "1.1",
+          "exam_relevance_en": "Distinct from encryption. Data masking does not require decryption keys to view the unmasked portion; it is used on user interfaces, call centers, and test databases.",
+          "exam_relevance_th": "มีความแตกต่างจากการเข้ารหัสข้อมูล การมาสก์ข้อมูลไม่จำเป็นต้องใช้กุญแจถอดรหัสเพื่อดูข้อมูลส่วนที่เปิดเผย นิยมนำมาใช้กับส่วนต่อประสานผู้ใช้ (User Interfaces), ศูนย์บริการข้อมูล (Call Centers) และฐานข้อมูลสำหรับทดสอบระบบ"
+        },
+        {
+          "id": "VOC-CC26-D1-018",
+          "term": "Non-Disclosure Agreement (NDA)",
+          "objective": "1.1",
+          "exam_relevance_en": "Classified as an administrative/managerial control protecting confidentiality. Do not confuse the acronym NDA with Non-repudiation.",
+          "exam_relevance_th": "จัดเป็นการควบคุมเชิงบริหารจัดการ (Administrative/Managerial Control) เพื่อปกป้องการรักษาความลับ ต้องระวังอย่าสับสนชื่อย่อ NDA กับคำว่า Non-repudiation (การไม่สามารถปฏิเสธความรับผิดชอบได้)"
+        },
+        {
+          "id": "VOC-CC26-D1-019",
+          "term": "Tampering",
+          "objective": "1.1",
+          "exam_relevance_en": "Direct threat to Integrity. When an exam question describes unauthorized record changes, parameter manipulation, or modified script execution, tampering is the core concern.",
+          "exam_relevance_th": "เป็นภัยคุกคามโดยตรงต่อความถูกต้องสมบูรณ์ของข้อมูล (Integrity) เมื่อโจทย์ข้อสอบบรรยายถึงการแก้ไขข้อมูลโดยไม่ได้รับอนุญาต การดัดแปลงพารามิเตอร์ หรือการรันสคริปต์ที่ถูกแก้ไข การปลอมแปลงแก้ไข (Tampering) จะเป็นประเด็นหลักที่ต้องคำนึงถึง"
+        },
+        {
+          "id": "VOC-CC26-D1-020",
+          "term": "Hashing",
+          "objective": "1.1",
+          "exam_relevance_en": "Used for integrity verification and password storage. Key characteristic: one-way (irreversible), unlike encryption which is two-way (reversible with key). Even a 1-bit change creates a vastly different hash (avalanche effect).",
+          "exam_relevance_th": "ใช้สำหรับการตรวจสอบความถูกต้องสมบูรณ์ของข้อมูลและการจัดเก็บรหัสผ่าน คุณสมบัติสำคัญ: เป็นกระบวนการทางเดียว (ไม่สามารถย้อนกลับได้) ซึ่งแตกต่างจากการเข้ารหัสที่เป็นแบบสองทาง (สามารถถอดรหัสกลับคืนได้ด้วยกุญแจ) และการเปลี่ยนแปลงข้อมูลแม้เพียง 1 บิตจะทำให้ค่าแฮชเปลี่ยนไปอย่างสิ้นเชิง (Avalanche Effect)"
+        },
+        {
+          "id": "VOC-CC26-D1-021",
+          "term": "Checksum",
+          "objective": "1.1",
+          "exam_relevance_en": "Exam scenarios often cite checksums as a method used by administrators to verify that downloaded installers have not been corrupted or infected with malware.",
+          "exam_relevance_th": "สถานการณ์ในข้อสอบมักยกตัวอย่างผลรวมตรวจสอบ (Checksums) ว่าเป็นวิธีที่ผู้ดูแลระบบใช้ในการตรวจสอบว่าไฟล์ติดตั้งซอฟต์แวร์ที่ดาวน์โหลดมาไม่ได้เกิดความเสียหายหรือติดมัลแวร์"
+        },
+        {
+          "id": "VOC-CC26-D1-022",
+          "term": "Digital Signature",
+          "objective": "1.1",
+          "exam_relevance_en": "Provides BOTH integrity and proof of origin. If a message is digitally signed, any alteration breaks the signature, and the sender cannot credibly deny authoring it.",
+          "exam_relevance_th": "ให้ทั้งคุณสมบัติด้านความถูกต้องสมบูรณ์ของข้อมูล (Integrity) และหลักฐานยืนยันแหล่งกำเนิด (Proof of Origin) หากข้อความได้รับการลงลายมือชื่อดิจิทัลแล้ว การดัดแปลงใดๆ จะทำให้ลายมือชื่อใช้งานไม่ได้ทันที และผู้ส่งจะไม่สามารถปฏิเสธการเป็นผู้ส่งข้อความนั้นได้อย่างน่าเชื่อถือ"
+        },
+        {
+          "id": "VOC-CC26-D1-023",
+          "term": "Downtime",
+          "objective": "1.1",
+          "exam_relevance_en": "Availability controls aim to minimize unplanned downtime. Often evaluated alongside metrics like Service Level Agreements (SLAs).",
+          "exam_relevance_th": "มาตรการควบคุมความพร้อมใช้งานมีเป้าหมายเพื่อลดระยะเวลาหยุดทำงานที่ไม่ได้วางแผนไว้ให้เหลือน้อยที่สุด มักได้รับการประเมินควบคู่ไปกับตัวชี้วัด เช่น ข้อตกลงระดับการให้บริการ (SLAs)"
+        },
+        {
+          "id": "VOC-CC26-D1-024",
+          "term": "Redundancy",
+          "objective": "1.1",
+          "exam_relevance_en": "Key technical design principle supporting Availability. Examples include redundant power supplies, duplicate firewalls, RAID disks, and multiple network paths.",
+          "exam_relevance_th": "หลักการออกแบบทางเทคนิคที่สำคัญเพื่อสนับสนุนความพร้อมใช้งาน (Availability) ตัวอย่างได้แก่ แหล่งจ่ายไฟสำรอง (Redundant Power Supplies), ไฟร์วอลล์คู่ขนาน, ดิสก์แบบ RAID และเส้นทางเครือข่ายสำรองหลายเส้นทาง"
+        },
+        {
+          "id": "VOC-CC26-D1-025",
+          "term": "Failover",
+          "objective": "1.1",
+          "exam_relevance_en": "Focuses on the active process of switching to redundant resources. Contrast with manual restoration from backups.",
+          "exam_relevance_th": "มุ่งเน้นไปที่กระบวนการเชิงรุกในการสลับการทำงานไปยังทรัพยากรสำรอง ให้เปรียบเทียบความแตกต่างกับการกู้คืนระบบแบบแมนนวลจากไฟล์สำรองข้อมูล (Manual Restoration from Backups)"
+        },
+        {
+          "id": "VOC-CC26-D1-026",
+          "term": "Load Balancer",
+          "objective": "1.1",
+          "exam_relevance_en": "Supports Availability by balancing workloads and automatically routing traffic away from failed or unresponsive servers.",
+          "exam_relevance_th": "สนับสนุนความพร้อมใช้งานโดยการกระจายปริมาณงานอย่างสมดุล และกำหนดเส้นทางทราฟฟิกให้หลบเลี่ยงเซิร์ฟเวอร์ที่ขัดข้องหรือไม่ตอบสนองโดยอัตโนมัติ"
+        },
+        {
+          "id": "VOC-CC26-D1-027",
+          "term": "Uninterruptible Power Supply (UPS)",
+          "objective": "1.1",
+          "exam_relevance_en": "Physical/technical control supporting Availability. UPS provides short-term power bridge until generators start or systems execute orderly shutdown; it does not replace long-term generators.",
+          "exam_relevance_th": "การควบคุมทางกายภาพและทางเทคนิคเพื่อสนับสนุนความพร้อมใช้งาน โดย UPS จะช่วยจ่ายไฟสำรองระยะสั้นจนกว่าเครื่องกำเนิดไฟฟ้าจะเริ่มทำงาน หรือจนกว่าระบบจะปิดการทำงานอย่างเป็นระเบียบสมบูรณ์ ซึ่งไม่ได้นำมาใช้ทดแทนเครื่องกำเนิดไฟฟ้าระยะยาว"
+        },
+        {
+          "id": "VOC-CC26-D1-028",
+          "term": "Privacy",
+          "objective": "1.1",
+          "exam_relevance_en": "Distinguish Privacy from Confidentiality. Confidentiality protects any sensitive data (trade secrets, military data, passwords) from unauthorized viewing. Privacy specifically concerns personal data of living human beings and individual legal rights.",
+          "exam_relevance_th": "แยกแยะความแตกต่างระหว่างความเป็นส่วนตัว (Privacy) กับการรักษาความลับ (Confidentiality) โดยการรักษาความลับจะปกป้องข้อมูลสำคัญใดๆ (ความลับทางการค้า, ข้อมูลทางทหาร, รหัสผ่าน) จากการถูกเปิดเผย ส่วนความเป็นส่วนตัวจะมุ่งเน้นข้อมูลส่วนบุคคลของมนุษย์ที่มีชีวิตและสิทธิตามกฎหมายของบุคคลเป็นสำคัญ"
+        },
+        {
+          "id": "VOC-CC26-D1-029",
+          "term": "Personal Information",
+          "objective": "1.1",
+          "exam_relevance_en": "Core subject of privacy laws (GDPR, HIPAA). Must be inventoried, protected via access control/encryption, and destroyed according to retention rules.",
+          "exam_relevance_th": "หัวใจสำคัญของกฎหมายคุ้มครองข้อมูลส่วนบุคคล (เช่น GDPR, HIPAA) จะต้องมีการจัดทำบัญชีรายการข้อมูล (Data Inventory), ได้รับการปกป้องด้วยการควบคุมการเข้าถึงและการเข้ารหัส รวมถึงต้องทำลายทิ้งตามกำหนดระยะเวลาการจัดเก็บข้อมูล"
+        },
+        {
+          "id": "VOC-CC26-D1-030",
+          "term": "Data Subject",
+          "objective": "1.1",
+          "exam_relevance_en": "In privacy frameworks (e.g. GDPR), the data subject possesses legal rights such as the right of access, rectification, and deletion (right to be forgotten).",
+          "exam_relevance_th": "ในกรอบการคุ้มครองข้อมูลส่วนบุคคล (เช่น GDPR) เจ้าของข้อมูลส่วนบุคคลจะมีสิทธิตามกฎหมาย เช่น สิทธิในการเข้าถึงข้อมูล, สิทธิในการแก้ไขข้อมูลให้ถูกต้อง และสิทธิในการลบข้อมูล (สิทธิที่จะถูกลืม)"
+        },
+        {
+          "id": "VOC-CC26-D1-031",
+          "term": "Data Controller",
+          "objective": "1.1",
+          "exam_relevance_en": "Primary entity accountable for privacy compliance. Crucial distinction: The Controller decides WHY and HOW data is used, while the Processor only acts on the Controller's instructions.",
+          "exam_relevance_th": "หน่วยงานหลักที่มีหน้าที่รับผิดชอบต่อการปฏิบัติตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล ข้อแตกต่างสำคัญคือ ผู้ควบคุมข้อมูลจะเป็นผู้ตัดสินใจว่า 'เหตุใด' (WHY) และ 'อย่างไร' (HOW) ที่จะนำข้อมูลไปใช้ ในขณะที่ผู้ประมวลผลข้อมูลจะดำเนินการตามคำสั่งของผู้ควบคุมข้อมูลเท่านั้น"
+        },
+        {
+          "id": "VOC-CC26-D1-032",
+          "term": "Data Processor",
+          "objective": "1.1",
+          "exam_relevance_en": "Often represented in exam questions by cloud hosting providers, payroll service vendors, or external analytics firms processing data for another organization.",
+          "exam_relevance_th": "ในคำถามข้อสอบมักยกตัวอย่างผู้ประมวลผลข้อมูล ได้แก่ ผู้ให้บริการคลาวด์โฮสติ้ง, บริษัทรับทำบัญชีเงินเดือน หรือบริษัทวิเคราะห์ข้อมูลภายนอกที่ทำหน้าที่ประมวลผลข้อมูลให้กับองค์กรอื่น"
+        },
+        {
+          "id": "VOC-CC26-D1-033",
+          "term": "Data Inventory",
+          "objective": "1.1",
+          "exam_relevance_en": "Foundational step in data governance and risk management: you cannot protect or maintain privacy over data if you do not know where it exists.",
+          "exam_relevance_th": "ขั้นตอนพื้นฐานในการกำกับดูแลข้อมูลและการบริหารความเสี่ยง: คุณไม่สามารถปกป้องหรือรักษาความเป็นส่วนตัวของข้อมูลได้ หากคุณไม่ทราบว่าข้อมูลนั้นจัดเก็บอยู่ที่ใดบ้าง"
+        },
+        {
+          "id": "VOC-CC26-D1-034",
+          "term": "Data Retention",
+          "objective": "1.1",
+          "exam_relevance_en": "Holding data longer than necessary increases legal liability and breach impact. Policies must define both retention duration AND secure destruction methods.",
+          "exam_relevance_th": "การเก็บรักษาข้อมูลไว้นานเกินความจำเป็นจะเพิ่มความรับผิดทางกฎหมายและขยายผลกระทบหากเกิดเหตุข้อมูลรั่วไหล นโยบายจะต้องระบุทั้งระยะเวลาในการจัดเก็บ และวิธีการทำลายข้อมูลอย่างปลอดภัย"
+        },
+        {
+          "id": "VOC-CC26-D1-035",
+          "term": "Right to Be Forgotten",
+          "objective": "1.1",
+          "exam_relevance_en": "Also known as the Right to Erasure in GDPR. Subject to lawful exceptions (e.g. legal compliance, public health, or contractual defense).",
+          "exam_relevance_th": "หรือที่เรียกว่าสิทธิในการลบข้อมูล (Right to Erasure) ภายใต้ GDPR โดยสิทธินี้อยู่ภายใต้ข้อยกเว้นตามกฎหมาย (เช่น การปฏิบัติตามกฎหมาย, ประโยชน์ด้านสาธารณสุข หรือการต่อสู้คดีตามสัญญา)"
+        },
+        {
+          "id": "VOC-CC26-D1-036",
+          "term": "Risk Management",
+          "objective": "1.2",
+          "exam_relevance_en": "Central exam theme: Risk management is never a one-time project; it is an ongoing cycle that supports organizational decision-making and resource allocation.",
+          "exam_relevance_th": "หัวข้อสำคัญของข้อสอบ: การบริหารความเสี่ยงไม่ใช่โครงการที่ทำครั้งเดียวจบ แต่เป็นวงจรกระบวนการที่ดำเนินไปอย่างต่อเนื่องเพื่อสนับสนุนการตัดสินใจและการจัดสรรทรัพยากรขององค์กร"
+        },
+        {
+          "id": "VOC-CC26-D1-037",
+          "term": "Asset",
+          "objective": "1.2",
+          "exam_relevance_en": "The starting anchor of risk management: Risk only exists when there is an asset that could be harmed. Valuation of assets dictates appropriate security expenditures.",
+          "exam_relevance_th": "จุดเริ่มต้นที่เป็นรากฐานของการบริหารความเสี่ยง: ความเสี่ยงจะเกิดขึ้นได้ก็ต่อเมื่อมีสินทรัพย์ที่อาจได้รับความเสียหาย การประเมินมูลค่าสินทรัพย์จะเป็นตัวกำหนดระดับงบประมาณความมั่นคงปลอดภัยที่เหมาะสม"
+        },
+        {
+          "id": "VOC-CC26-D1-038",
+          "term": "Threat",
+          "objective": "1.2",
+          "exam_relevance_en": "Crucial exam distinction: Threat = what could cause harm (e.g. ransomware, natural disaster, malicious insider). Vulnerability = the internal flaw (e.g. unpatched operating system).",
+          "exam_relevance_th": "ข้อแตกต่างที่สำคัญในข้อสอบ: Threat (ภัยคุกคาม) = สิ่งที่อาจก่อให้เกิดความเสียหาย (เช่น แรนซัมแวร์, ภัยธรรมชาติ, คนร้ายภายในองค์กร) ส่วน Vulnerability (ช่องโหว่) = จุดอ่อนภายในระบบ (เช่น ระบบปฏิบัติการที่ยังไม่ได้รับการแพตช์)"
+        },
+        {
+          "id": "VOC-CC26-D1-039",
+          "term": "Vulnerability",
+          "objective": "1.2",
+          "exam_relevance_en": "Without a vulnerability, a threat cannot easily cause harm. Without a threat, a vulnerability presents no active risk. Examples: unpatched software, weak passwords, missing door locks.",
+          "exam_relevance_th": "หากปราศจากช่องโหว่ ภัยคุกคามก็ยากที่จะก่อความเสียหายได้ และหากปราศจากภัยคุกคาม ช่องโหว่นั้นก็จะไม่ก่อให้เกิดความเสี่ยงที่เกิดขึ้นจริง ตัวอย่างช่องโหว่ ได้แก่ ซอฟต์แวร์ที่ไม่มีการแพตช์, รหัสผ่านที่คาดเดาง่าย, ประตูที่ไม่มีกุญแจล็อก"
+        },
+        {
+          "id": "VOC-CC26-D1-040",
+          "term": "Potential Impact",
+          "objective": "1.2",
+          "exam_relevance_en": "One of the two primary variables in calculating risk (Risk = Likelihood × Impact). Impact can be quantified in monetary loss, downtime hours, or qualitative ratings.",
+          "exam_relevance_th": "หนึ่งในสองตัวแปรหลักในการคำนวณระดับความเสี่ยง (Risk = Likelihood × Impact) โดยผลกระทบสามารถวัดค่าเป็นตัวเงิน ระยะเวลาการหยุดทำงานของระบบ หรือการให้คะแนนเชิงคุณภาพ"
+        },
+        {
+          "id": "VOC-CC26-D1-041",
+          "term": "Likelihood",
+          "objective": "1.2",
+          "exam_relevance_en": "The second key variable in risk assessment. Even if impact is high, if likelihood is nearly impossible, the overall risk rating may be moderate.",
+          "exam_relevance_th": "ตัวแปรหลักตัวที่สองในการประเมินความเสี่ยง แม้ว่าผลกระทบจะสูงมาก แต่หากโอกาสเกิดแทบเป็นไปไม่ได้เลย ระดับความเสี่ยงโดยรวมก็อาจได้รับการประเมินให้อยู่ในระดับปานกลาง"
+        },
+        {
+          "id": "VOC-CC26-D1-042",
+          "term": "Risk Assessment",
+          "objective": "1.2",
+          "exam_relevance_en": "Divided into Qualitative and Quantitative methodologies. Conducted before selecting risk treatment options.",
+          "exam_relevance_th": "แบ่งออกเป็นวิธีการเชิงคุณภาพ (Qualitative) และเชิงปริมาณ (Quantitative) โดยจะต้องดำเนินการประเมินก่อนที่จะเลือกแนวทางการจัดการความเสี่ยง"
+        },
+        {
+          "id": "VOC-CC26-D1-043",
+          "term": "Qualitative Risk Analysis",
+          "objective": "1.2",
+          "exam_relevance_en": "Faster, subjective, and cost-effective. Excellent for initial screening and prioritization. Contrast with Quantitative analysis.",
+          "exam_relevance_th": "มีความรวดเร็ว ใช้ดุลยพินิจ และประหยัดค่าใช้จ่าย เหมาะอย่างยิ่งสำหรับการคัดกรองเบื้องต้นและการจัดลำดับความสำคัญ ให้เปรียบเทียบความแตกต่างกับการวิเคราะห์เชิงปริมาณ"
+        },
+        {
+          "id": "VOC-CC26-D1-044",
+          "term": "Quantitative Risk Analysis",
+          "objective": "1.2",
+          "exam_relevance_en": "Objective and numbers-based, but requires reliable historical data and is more time-consuming. Supports cost-benefit analysis for security investments.",
+          "exam_relevance_th": "มีวัตถุวิสัยและอิงกับตัวเลขเป็นหลัก แต่จำเป็นต้องมีข้อมูลสถิติย้อนหลังที่เชื่อถือได้และต้องใช้เวลาในการดำเนินการมากกว่า ช่วยสนับสนุนการวิเคราะห์ผลประโยชน์เทียบกับต้นทุน (Cost-Benefit Analysis) ในการลงทุนด้านความมั่นคงปลอดภัย"
+        },
+        {
+          "id": "VOC-CC26-D1-045",
+          "term": "Asset Value (AV)",
+          "objective": "1.2",
+          "exam_relevance_en": "Input variable used in calculating Single Loss Expectancy (SLE = AV × EF).",
+          "exam_relevance_th": "เป็นตัวแปรที่ใช้ในการคำนวณค่าความเสียหายที่คาดว่าจะเกิดขึ้นต่อครั้ง (SLE = AV × EF)"
+        },
+        {
+          "id": "VOC-CC26-D1-046",
+          "term": "Exposure Factor (EF)",
+          "objective": "1.2",
+          "exam_relevance_en": "Expressed as a percentage (e.g. 50% = 0.5). Used to compute Single Loss Expectancy (SLE = AV × EF).",
+          "exam_relevance_th": "แสดงในรูปของเปอร์เซ็นต์หรืออัตราส่วน (เช่น 50% = 0.5) ใช้สำหรับคำนวณค่าความเสียหายที่คาดว่าจะเกิดขึ้นต่อครั้ง (SLE = AV × EF)"
+        },
+        {
+          "id": "VOC-CC26-D1-047",
+          "term": "Single Loss Expectancy (SLE)",
+          "objective": "1.2",
+          "exam_relevance_en": "Represents cost per single incident, NOT per year. Note: Disputed textbook calculation details in lecture examples are flagged under SQ-04.",
+          "exam_relevance_th": "แสดงถึงต้นทุนความเสียหายต่อเหตุการณ์หนึ่งครั้ง ไม่ใช่ความเสียหายต่อปี (หมายเหตุ: รายละเอียดการคำนวณในตัวอย่างการบรรยายที่มีข้อถกเถียงระบุไว้ภายใต้ประเด็น SQ-04)"
+        },
+        {
+          "id": "VOC-CC26-D1-048",
+          "term": "Annualized Rate of Occurrence (ARO)",
+          "objective": "1.2",
+          "exam_relevance_en": "Unit is frequency per year (not currency). Discrepancy noted in course slides (SQ-04 where once every 5 years was noted as 0.2 vs transcript mentioning 2).",
+          "exam_relevance_th": "หน่วยวัดคือความถี่ต่อปี (ไม่ใช่จำนวนเงิน) มีประเด็นข้อคลาดเคลื่อนในสไลด์ของหลักสูตร (SQ-04 ซึ่งระบุว่าเหตุการณ์ที่เกิด 1 ครั้งใน 5 ปีถูกบันทึกเป็น 0.2 ขณะที่คำบรรยายพูดถึงเลข 2)"
+        },
+        {
+          "id": "VOC-CC26-D1-049",
+          "term": "Annualized Loss Expectancy (ALE)",
+          "objective": "1.2",
+          "exam_relevance_en": "Primary financial metric for justifying security control costs. If a control costs more than the ALE, implementing it is financially unjustified.",
+          "exam_relevance_th": "ตัวชี้วัดทางการเงินหลักที่ใช้เพื่อประเมินความคุ้มค่าของมาตรการควบคุม หากมาตรการควบคุมมีค่าใช้จ่ายสูงกว่าค่า ALE การนำมาตรการนั้นมาใช้จะถือว่าไม่คุ้มค่าในเชิงการเงิน"
+        },
+        {
+          "id": "VOC-CC26-D1-050",
+          "term": "Risk Treatment (Risk Response)",
+          "objective": "1.2",
+          "exam_relevance_en": "Heavily tested. Candidates must analyze a scenario and identify which of the four treatment strategies is being applied.",
+          "exam_relevance_th": "ออกข้อสอบบ่อยมาก ผู้สอบต้องสามารถวิเคราะห์สถานการณ์และระบุได้ว่ากำลังใช้กลยุทธ์การจัดการความเสี่ยงใดใน 4 รูปแบบ (Transfer, Accept, Avoid, Mitigate)"
+        },
+        {
+          "id": "VOC-CC26-D1-051",
+          "term": "Risk Transfer",
+          "objective": "1.2",
+          "exam_relevance_en": "Purchasing insurance or outsourcing is the classic indicator of Risk Transfer. Critical exam caveat (SQ-07): Transferring financial risk does NOT absolve the organization of legal or reputational accountability.",
+          "exam_relevance_th": "การซื้อประกันภัยหรือการจ้างบุคคลภายนอก (Outsourcing) เป็นตัวบ่งชี้แบบดั้งเดิมของการถ่ายโอนความเสี่ยง ข้อควรระวังสำคัญในข้อสอบ (SQ-07): การถ่ายโอนความเสี่ยงทางการเงินไม่ได้ช่วยปลดเปลื้ององค์กรจากความรับผิดชอบตามกฎหมายหรือชื่อเสียงขององค์กร"
+        },
+        {
+          "id": "VOC-CC26-D1-052",
+          "term": "Risk Acceptance",
+          "objective": "1.2",
+          "exam_relevance_en": "Acceptance does NOT mean ignoring a risk or failing to discover it. An accepted risk must still be documented in the risk register and continually monitored.",
+          "exam_relevance_th": "การยอมรับความเสี่ยงไม่ได้หมายถึงการเพิกเฉยต่อความเสี่ยงหรือไม่ค้นหาความเสี่ยง ความเสี่ยงที่ยอมรับแล้วจะต้องได้รับการบันทึกไว้ในทะเบียนความเสี่ยง (Risk Register) และต้องมีการติดตามตรวจสอบอย่างต่อเนื่อง"
+        },
+        {
+          "id": "VOC-CC26-D1-053",
+          "term": "Risk Avoidance",
+          "objective": "1.2",
+          "exam_relevance_en": "Key indicator: canceling a project, exiting a market, or refusing to deploy a risky feature. Contrast with Mitigation (where you continue the activity but add controls).",
+          "exam_relevance_th": "ตัวบ่งชี้หลัก: การยกเลิกโครงการ, การถอนตัวออกจากตลาด หรือการปฏิเสธที่จะเปิดใช้งานฟีเจอร์ที่มีความเสี่ยงสูง ให้เปรียบเทียบกับการลดความเสี่ยง (Mitigation) ซึ่งองค์กรยังคงดำเนินกิจกรรมต่อไปแต่เพิ่มมาตรการควบคุมเข้าไป"
+        },
+        {
+          "id": "VOC-CC26-D1-054",
+          "term": "Risk Mitigation",
+          "objective": "1.2",
+          "exam_relevance_en": "The most common response in cybersecurity operations. Controls like firewalls, patching, MFA, and employee training represent mitigation. Mitigation reduces risk but rarely eliminates it completely.",
+          "exam_relevance_th": "เป็นการตอบสนองที่พบบ่อยที่สุดในการดำเนินงานด้านความมั่นคงปลอดภัยไซเบอร์ มาตรการต่างๆ เช่น ไฟร์วอลล์, การแพตช์, MFA และการฝึกอบรมพนักงาน จัดเป็นการลดความเสี่ยง ซึ่งช่วยลดระดับความเสี่ยงลงแต่แทบจะไม่สามารถกำจัดให้หมดไปได้ 100%"
+        },
+        {
+          "id": "VOC-CC26-D1-055",
+          "term": "Risk Tolerance",
+          "objective": "1.2",
+          "exam_relevance_en": "Dictates whether a risk must be mitigated or can be accepted. Closely linked to management oversight.",
+          "exam_relevance_th": "เป็นตัวกำหนดว่าความเสี่ยงนั้นจำเป็นต้องได้รับการลดทอนลงหรือสามารถยอมรับได้ ซึ่งมีความเชื่อมโยงอย่างใกล้ชิดกับการกำกับดูแลของผู้บริหารระดับสูง"
+        },
+        {
+          "id": "VOC-CC26-D1-056",
+          "term": "Risk Monitoring and Review",
+          "objective": "1.2",
+          "exam_relevance_en": "Re-evaluates previously accepted risks. Exam questions emphasize that risk management is cyclical and requires continuous monitoring, not a set-and-forget attitude.",
+          "exam_relevance_th": "การประเมินซ้ำความเสี่ยงที่เคยได้รับการยอมรับไปแล้ว คำถามในข้อสอบจะเน้นย้ำว่าการบริหารความเสี่ยงเป็นกระบวนการแบบวงจรที่ต้องติดตามอย่างต่อเนื่อง ไม่ใช่การตั้งค่าแล้วละเลยทิ้งไว้"
+        },
+        {
+          "id": "VOC-CC26-D1-057",
+          "term": "Risk Communication and Reporting",
+          "objective": "1.2",
+          "exam_relevance_en": "Essential for governance. Provides management with the necessary facts to prioritize cybersecurity budget and human resources.",
+          "exam_relevance_th": "จำเป็นอย่างยิ่งต่อการกำกับดูแล โดยให้ข้อมูลข้อเท็จจริงที่จำเป็นแก่ฝ่ายบริหารเพื่อจัดลำดับความสำคัญของงบประมาณและบุคลากรด้านความมั่นคงปลอดภัยไซเบอร์"
+        },
+        {
+          "id": "VOC-CC26-D1-058",
+          "term": "Governance",
+          "objective": "1.3",
+          "exam_relevance_en": "Distinguish Governance (strategic direction, policies, and accountability set by the Board/Executives) from Operations (tactical day-to-day execution handled by technical teams).",
+          "exam_relevance_th": "แยกแยะความแตกต่างระหว่าง Governance (การกำกับดูแล: ทิศทางเชิงกลยุทธ์ นโยบาย และภาระความรับผิดชอบที่กำหนดโดยคณะกรรมการ/ผู้บริหาร) กับ Operations (การปฏิบัติการ: การดำเนินงานทางเทคนิคประจำวันของทีมงาน)"
+        },
+        {
+          "id": "VOC-CC26-D1-059",
+          "term": "Compliance",
+          "objective": "1.3",
+          "exam_relevance_en": "Exams frequently test: Compliance does not automatically guarantee total security, but non-compliance leads to severe legal penalties, lawsuits, and license revocation.",
+          "exam_relevance_th": "ข้อสอบมักทดสอบว่า: การปฏิบัติตามข้อกำหนดไม่ได้ช่วยรับประกันความมั่นคงปลอดภัยที่สมบูรณ์แบบโดยอัตโนมัติ แต่การไม่ปฏิบัติตามข้อกำหนดจะนำไปสู่บทลงโทษทางกฎหมายที่รุนแรง การถูกฟ้องร้องดำเนินคดี และการถูกเพิกถอนใบอนุญาต"
+        },
+        {
+          "id": "VOC-CC26-D1-060",
+          "term": "Law / Regulation",
+          "objective": "1.3",
+          "exam_relevance_en": "Top of the hierarchy of governance artifacts. Internal policies can never lawfully violate or override applicable legislation.",
+          "exam_relevance_th": "อยู่บนจุดสูงสุดของลำดับชั้นเอกสารการกำกับดูแล นโยบายภายในองค์กรจะต้องไม่ขัดต่อกฎหมายหรือละเมิดกฎหมายที่มีผลบังคับใช้ได้โดยชอบด้วยกฎหมาย"
+        },
+        {
+          "id": "VOC-CC26-D1-061",
+          "term": "General Data Protection Regulation (GDPR)",
+          "objective": "1.3",
+          "exam_relevance_en": "Key example of a privacy law. Mentions concepts like Data Subject, Controller, Processor, and the Right to Erasure.",
+          "exam_relevance_th": "ตัวอย่างสำคัญของกฎหมายคุ้มครองข้อมูลส่วนบุคคล ซึ่งกล่าวถึงแนวคิดต่างๆ เช่น เจ้าของข้อมูลส่วนบุคคล (Data Subject), ผู้ควบคุมข้อมูล (Controller), ผู้ประมวลผลข้อมูล (Processor) และสิทธิในการลบข้อมูล (Right to Erasure)"
+        },
+        {
+          "id": "VOC-CC26-D1-062",
+          "term": "Health Insurance Portability and Accountability Act (HIPAA)",
+          "objective": "1.3",
+          "exam_relevance_en": "Primary example of sector-specific healthcare legislation. Watch out for spelling typos in source transcripts (e.g. 'HIPPA' vs official 'HIPAA' noted in SQ-03).",
+          "exam_relevance_th": "ตัวอย่างหลักของกฎหมายเฉพาะภาคธุรกิจด้านการดูแลสุขภาพ ระวังการสะกดคำผิดในเอกสารประกอบการบรรยาย (เช่น การเขียน 'HIPPA' เทียบกับคำที่ถูกต้องคือ 'HIPAA' ตามที่บันทึกใน SQ-03)"
+        },
+        {
+          "id": "VOC-CC26-D1-063",
+          "term": "Payment Card Industry Data Security Standard (PCI DSS)",
+          "objective": "1.3",
+          "exam_relevance_en": "Crucial distinction: PCI DSS is an industry contractual standard, NOT a government-enacted law, although failing to comply can result in fines and loss of card processing abilities.",
+          "exam_relevance_th": "ข้อแตกต่างสำคัญ: PCI DSS เป็นมาตรฐานข้อตกลงตามสัญญาในอุตสาหกรรมบัตรชำระเงิน ไม่ใช่กฎหมายที่ออกโดยรัฐบาล แม้ว่าการไม่ปฏิบัติตามมาตรฐานอาจนำไปสู่การถูกปรับและการถูกระงับสิทธิ์ในการรับชำระเงินผ่านบัตรก็ตาม"
+        },
+        {
+          "id": "VOC-CC26-D1-064",
+          "term": "Security Framework",
+          "objective": "1.3",
+          "exam_relevance_en": "Provides the overarching structure and common taxonomy for security controls. Examples include NIST CSF and ISO/IEC 27001.",
+          "exam_relevance_th": "เป็นโครงสร้างภาพรวมและอนุกรมวิธานมาตรฐานร่วมสำหรับมาตรการควบคุมความมั่นคงปลอดภัย ตัวอย่างเช่น NIST CSF และ ISO/IEC 27001"
+        },
+        {
+          "id": "VOC-CC26-D1-065",
+          "term": "NIST Cybersecurity Framework (NIST CSF)",
+          "objective": "1.3",
+          "exam_relevance_en": "Widely cited framework example. Known for its core functions (Identify, Protect, Detect, Respond, Recover).",
+          "exam_relevance_th": "ตัวอย่างกรอบการทำงานที่ได้รับการอ้างอิงอย่างกว้างขวาง โดดเด่นด้วยฟังก์ชันหลัก 5 ด้าน (Identify, Protect, Detect, Respond, Recover)"
+        },
+        {
+          "id": "VOC-CC26-D1-066",
+          "term": "ISO / ISO/IEC 27001",
+          "objective": "1.3",
+          "exam_relevance_en": "Key standard for ISMS certification. ISO is the organization; ISO/IEC 27001 is the specific certifiable management system standard.",
+          "exam_relevance_th": "มาตรฐานหลักสำหรับการรับรองระบบ ISMS โดย ISO คือชื่อองค์กร ส่วน ISO/IEC 27001 คือมาตรฐานระบบการจัดการความมั่นคงปลอดภัยของข้อมูลเฉพาะที่สามารถขอรับการรับรองได้"
+        },
+        {
+          "id": "VOC-CC26-D1-067",
+          "term": "Information Security Management System (ISMS)",
+          "objective": "1.3",
+          "exam_relevance_en": "ISMS is the overarching management system, not a piece of software or a single technical control. Evaluated directly under ISO/IEC 27001.",
+          "exam_relevance_th": "ISMS คือระบบการจัดการภาพรวม ไม่ใช่โปรแกรมซอฟต์แวร์หรือมาตรการควบคุมทางเทคนิคเดี่ยวๆ และได้รับการประเมินรับรองโดยตรงภายใต้มาตรฐาน ISO/IEC 27001"
+        },
+        {
+          "id": "VOC-CC26-D1-068",
+          "term": "Center for Internet Security (CIS) / CIS Controls",
+          "objective": "1.3",
+          "exam_relevance_en": "Known for prioritized, highly prescriptive technical baselines and security benchmarks.",
+          "exam_relevance_th": "เป็นที่รู้จักในด้านการกำหนดเกณฑ์มาตรฐานทางเทคนิค (Technical Baselines) และคู่มือการปรับแต่งความปลอดภัย (Benchmarks) ที่มีลำดับความสำคัญชัดเจนและมีข้อกำหนดอย่างละเอียด"
+        },
+        {
+          "id": "VOC-CC26-D1-069",
+          "term": "Security Policy",
+          "objective": "1.3",
+          "exam_relevance_en": "Top internal governance document. Key exam mnemonic: Policy tells you WHAT must be done (management's intent); Standard specifies mandatory technical specs; Procedure tells you HOW step-by-step.",
+          "exam_relevance_th": "เอกสารการกำกับดูแลภายในระดับสูงสุด หลักการช่วยจำสำคัญในข้อสอบ: Policy บอกว่า 'ต้องทำอะไร' (WHAT - เจตจำนงของฝ่ายบริหาร), Standard ระบุ 'ข้อกำหนดทางเทคนิคที่บังคับใช้', Procedure บอกว่า 'ทำอย่างไรทีละขั้นตอน' (HOW)"
+        },
+        {
+          "id": "VOC-CC26-D1-070",
+          "term": "Security Standard",
+          "objective": "1.3",
+          "exam_relevance_en": "Mandatory technical requirement. Example: If the Policy says 'use strong passwords', the Standard specifies 'minimum 14 characters, complexity requirements, and account lockout after 5 failed attempts'.",
+          "exam_relevance_th": "ข้อกำหนดทางเทคนิคที่มีผลบังคับใช้ ตัวอย่าง: หากนโยบาย (Policy) กำหนดว่า 'ต้องใช้รหัสผ่านที่รัดกุม' มาตรฐาน (Standard) จะระบุว่า 'ต้องมีความยาวอย่างน้อย 14 ตัวอักษร มีข้อกำหนดความซับซ้อน และล็อกบัญชีเมื่อป้อนรหัสผิดครบ 5 ครั้ง'"
+        },
+        {
+          "id": "VOC-CC26-D1-071",
+          "term": "Security Procedure",
+          "objective": "1.3",
+          "exam_relevance_en": "Exam takeaway: 'step-by-step instructions' = Procedure. (SQ-05 flags that transcripts erroneously mentioned procedures can be optional; in practice, operational procedures must be followed strictly).",
+          "exam_relevance_th": "สิ่งสำคัญในข้อสอบ: 'คำแนะนำการปฏิบัติงานทีละขั้นตอน' = Procedure (ขั้นตอนปฏิบัติงาน) (ประเด็น SQ-05 ชี้ว่าเอกสารการบรรยายเคยระบุคลาดเคลื่อนว่าขั้นตอนปฏิบัติอาจเป็นทางเลือกได้ แต่ในทางปฏิบัติขั้นตอนการดำเนินงานจะต้องปฏิบัติตามอย่างเคร่งครัด)"
+        },
+        {
+          "id": "VOC-CC26-D1-072",
+          "term": "Security Guideline",
+          "objective": "1.3",
+          "exam_relevance_en": "Crucial governance distinction: Policies, Standards, and Procedures are MANDATORY. Guidelines are ADVISORY / RECOMMENDATIONS.",
+          "exam_relevance_th": "ข้อแตกต่างสำคัญด้านการกำกับดูแล: Policies, Standards และ Procedures มีผลบังคับใช้ (MANDATORY) ส่วน Guidelines เป็นเพียงคำแนะนำหรือแนวทางปฏิบัติที่แนะนำ (ADVISORY / RECOMMENDATIONS)"
+        },
+        {
+          "id": "VOC-CC26-D1-073",
+          "term": "Security Control",
+          "objective": "1.4",
+          "exam_relevance_en": "Classified along two distinct dimensions: by implementation category (Technical, Managerial, Operational, Physical) and by functional type (Deterrent, Preventive, Detective, Corrective, Compensating, Directive).",
+          "exam_relevance_th": "จำแนกตาม 2 มิติที่แตกต่างกัน: จำแนกตามหมวดหมู่การนำไปใช้ (Technical, Managerial, Operational, Physical) และจำแนกตามหน้าที่การทำงาน (Deterrent, Preventive, Detective, Corrective, Compensating, Directive)"
+        },
+        {
+          "id": "VOC-CC26-D1-074",
+          "term": "Technical Control (Logical Control)",
+          "objective": "1.4",
+          "exam_relevance_en": "Also known as Logical Controls. Involves technology configurations. Examples: Antivirus, firewalls, ACLs, biometrics scanners, encryption algorithms.",
+          "exam_relevance_th": "หรือที่เรียกว่า Logical Controls เกี่ยวข้องกับการกำหนดค่าทางเทคโนโลยี ตัวอย่างเช่น แอนติไวรัส, ไฟร์วอลล์, รายการควบคุมการเข้าถึง (ACLs), เครื่องสแกนไบโอเมตริก, อัลกอริทึมการเข้ารหัสข้อมูล"
+        },
+        {
+          "id": "VOC-CC26-D1-075",
+          "term": "Managerial Control (Administrative Control)",
+          "objective": "1.4",
+          "exam_relevance_en": "Also known as Administrative Controls. Sets the organizational rules. Examples: Hiring policies, background checks, security policies, separation of duties.",
+          "exam_relevance_th": "หรือที่เรียกว่า Administrative Controls ทำหน้าที่กำหนดกฎเกณฑ์ขององค์กร ตัวอย่างเช่น นโยบายการจ้างงาน, การตรวจประวัติอาชญากรรม, นโยบายความมั่นคงปลอดภัย, การแบ่งแยกหน้าที่ความรับผิดชอบ (Separation of Duties)"
+        },
+        {
+          "id": "VOC-CC26-D1-076",
+          "term": "Operational Control",
+          "objective": "1.4",
+          "exam_relevance_en": "Focuses on human execution and daily routines. Note: Course materials note that Security Training appears in both Managerial and Operational contexts depending on whether it is the policy program or actual delivery.",
+          "exam_relevance_th": "มุ่งเน้นไปที่การปฏิบัติงานของมนุษย์และกิจวัตรประจำวัน หมายเหตุ: เอกสารหลักสูตรระบุว่า การฝึกอบรมด้านความปลอดภัย (Security Training) อาจปรากฏทั้งในบริบทเชิงบริหารและเชิงปฏิบัติการ ขึ้นอยู่กับว่าเป็นตัวโครงการตามนโยบายหรือเป็นการจัดฝึกอบรมจริง"
+        },
+        {
+          "id": "VOC-CC26-D1-077",
+          "term": "Physical Control",
+          "objective": "1.4",
+          "exam_relevance_en": "Protects real-world tangible assets. If physical security fails, technical controls can often be bypassed (e.g. stealing hard drives or consoles). Examples include fences, guards, mantraps, locks.",
+          "exam_relevance_th": "ปกป้องสินทรัพย์ทางกายภาพที่จับต้องได้ หากระบบความปลอดภัยทางกายภาพล้มเหลว มาตรการควบคุมทางเทคนิคก็มักจะถูกข้ามผ่านได้ง่าย (เช่น การขโมยฮาร์ดดิสก์หรือเครื่องคอนโซล) ตัวอย่างได้แก่ รั้ว, รปภ., ประตูสองชั้น (Mantraps), แม่กุญแจ"
+        },
+        {
+          "id": "VOC-CC26-D1-078",
+          "term": "Deterrent Control",
+          "objective": "1.4",
+          "exam_relevance_en": "Key clue: Deterrent controls DISCOURAGE but do not physically prevent or stop an action. Examples: Warning signs ('Trespassers will be prosecuted'), visible security cameras, visible guard patrols.",
+          "exam_relevance_th": "จุดสังเกตสำคัญ: มาตรการป้องปรามมีไว้เพื่อ 'ยับยั้ง/ลดความอยาก' แต่ไม่ได้ป้องกันหรือหยุดยั้งการกระทำทางกายภาพ ตัวอย่างเช่น ป้ายเตือน ('ผู้บุกรุกจะถูกดำเนินคดี'), กล้องวงจรปิดที่ติดตั้งให้เห็นเด่นชัด, การเดินตรวจของ รปภ."
+        },
+        {
+          "id": "VOC-CC26-D1-079",
+          "term": "Preventive Control",
+          "objective": "1.4",
+          "exam_relevance_en": "Active prevention. If an action is blocked before it happens, it is Preventive. Examples: Firewalls blocking ports, door locks, biometric scanners, encryption, least privilege.",
+          "exam_relevance_th": "การป้องกันเชิงรุก หากการกระทำถูกขัดขวางหรือปิดกั้นก่อนที่จะเกิดขึ้น จัดเป็น Preventive ตัวอย่างเช่น ไฟร์วอลล์บล็อกพอร์ต, กุญแจล็อกประตู, เครื่องสแกนไบโอเมตริก, การเข้ารหัสข้อมูล, หลักการให้สิทธิ์น้อยที่สุด (Least Privilege)"
+        },
+        {
+          "id": "VOC-CC26-D1-080",
+          "term": "Detective Control",
+          "objective": "1.4",
+          "exam_relevance_en": "Keywords: Alerts, alarms, logs, monitoring, review. Detective controls identify that an event occurred but do not stop it by themselves. Examples: IDS, motion sensors, audit logs, CCTV recording.",
+          "exam_relevance_th": "คำสำคัญ: แจ้งเตือน, สัญญาณเตือน, บันทึกการใช้งาน, การเฝ้าระวัง, การตรวจสอบ มาตรการตรวจจับจะระบุว่ามีเหตุการณ์เกิดขึ้นแล้ว แต่ไม่ได้ยับยั้งเหตุการณ์นั้นด้วยตัวเอง ตัวอย่างเช่น ระบบตรวจจับการบุกรุก (IDS), เซนเซอร์ตรวจจับความเคลื่อนไหว, ล็อกการตรวจสอบ, การบันทึกภาพของกล้อง CCTV"
+        },
+        {
+          "id": "VOC-CC26-D1-081",
+          "term": "Corrective Control",
+          "objective": "1.4",
+          "exam_relevance_en": "Operates AFTER the incident. Keywords: Restore, recover, repair, patch, incident response. Examples: Restoring data from backups, applying security patches after an exploit, quarantining infected files.",
+          "exam_relevance_th": "ทำงาน 'ภายหลังจาก' เกิดเหตุการณ์ขึ้นแล้ว คำสำคัญ: ฟื้นฟู, กู้คืน, ซ่อมแซม, แพตช์, การตอบสนองต่อเหตุการณ์ ตัวอย่างเช่น การกู้คืนข้อมูลจากไฟล์สำรอง, การติดตั้งแพตช์ความปลอดภัยหลังพบช่องโหว่, การกักกันไฟล์ที่ติดมัลแวร์"
+        },
+        {
+          "id": "VOC-CC26-D1-082",
+          "term": "Compensating Control",
+          "objective": "1.4",
+          "exam_relevance_en": "Deployed when the ideal control is impossible. Example: An obsolete medical device cannot support encryption, so it is isolated on an air-gapped VLAN with strict firewalling as a compensating control.",
+          "exam_relevance_th": "นำมาใช้เมื่อไม่สามารถนำมาตรการควบคุมในอุดมคติมาใช้งานได้จริง ตัวอย่างเช่น อุปกรณ์ทางการแพทย์รุ่นเก่าที่ไม่รองรับการเข้ารหัสข้อมูล จึงถูกแยกไปไว้ในระบบเครือข่ายเสมือน (VLAN) ที่ตัดขาดจากอินเทอร์เน็ตพร้อมกำหนดไฟร์วอลล์อย่างเข้มงวด เพื่อเป็นมาตรการชดเชย"
+        },
+        {
+          "id": "VOC-CC26-D1-083",
+          "term": "Directive Control",
+          "objective": "1.4",
+          "exam_relevance_en": "Guides behavior. Key examples: Acceptable Use Policy (AUP), clean desk policies, compliance checklists.",
+          "exam_relevance_th": "ทำหน้าที่ชี้แนะพฤติกรรม ตัวอย่างสำคัญได้แก่ นโยบายการใช้งานที่ยอมรับได้ (AUP), นโยบายจัดเก็บโต๊ะทำงานให้ปลอดเอกสารสำคัญ (Clean Desk Policy), รายการตรวจสอบการปฏิบัติตามข้อกำหนด"
+        },
+        {
+          "id": "VOC-CC26-D1-084",
+          "term": "Defense in Depth (Layered Defense)",
+          "objective": "1.4",
+          "exam_relevance_en": "Core architectural philosophy. No single security tool is 100% foolproof; combining physical, administrative, and technical controls creates resilience.",
+          "exam_relevance_th": "ปรัชญาการออกแบบสถาปัตยกรรมความมั่นคงปลอดภัยหลัก ไม่มีเครื่องมือความปลอดภัยใดที่สมบูรณ์แบบ 100% การผสมผสานการควบคุมทางกายภาพ การบริหารจัดการ และเทคโนโลยีหลายชั้นจะช่วยสร้างความยืดหยุ่นในการรับมือกับภัยคุกคาม"
+        },
+        {
+          "id": "VOC-CC26-D1-085",
+          "term": "Overlapping Security Controls",
+          "objective": "1.4",
+          "exam_relevance_en": "Exams frequently test dual functions: A video camera is both Deterrent (its visible presence dissuades intruders) and Detective (recording footage to detect incidents). An ACL can be Preventive (blocking ports) and Detective (logging traffic).",
+          "exam_relevance_th": "ข้อสอบมักทดสอบหน้าที่การทำงานแบบคู่ขนาน: กล้องวงจรปิดทำหน้าที่เป็นทั้งมาตรการป้องปราม (Deterrent - การมองเห็นกล้องช่วยยับยั้งผู้บุกรุก) และมาตรการตรวจจับ (Detective - การบันทึกภาพเพื่อตรวจจับเหตุการณ์) รายการ ACL ทำหน้าที่ได้ทั้งการป้องกัน (Preventive - ปิดกั้นพอร์ต) และการตรวจจับ (Detective - บันทึกทราฟฟิก)"
+        },
+        {
+          "id": "VOC-CC26-D1-086",
+          "term": "Access Control List (ACL)",
+          "objective": "1.4",
+          "exam_relevance_en": "Primary technical control found on routers, firewalls, and file systems. Demonstrates both preventive filtering and detective logging.",
+          "exam_relevance_th": "มาตรการควบคุมทางเทคนิคหลักที่พบในเราเตอร์ ไฟร์วอลล์ และระบบไฟล์ แสดงให้เห็นทั้งหน้าที่การคัดกรองเพื่อป้องกัน (Preventive) และการบันทึกประวัติเพื่อตรวจจับ (Detective)"
+        },
+        {
+          "id": "VOC-CC26-D1-087",
+          "term": "Firewall",
+          "objective": "1.4",
+          "exam_relevance_en": "Primary boundary protection tool. Acts as a Technical Preventive control.",
+          "exam_relevance_th": "เครื่องมือหลักในการป้องกันขอบเขตเครือข่าย ทำหน้าที่เป็นมาตรการควบคุมทางเทคนิคแบบป้องกัน (Technical Preventive Control)"
+        },
+        {
+          "id": "VOC-CC26-D1-088",
+          "term": "Professional Code of Conduct",
+          "objective": "1.5",
+          "exam_relevance_en": "Reflects integrity, responsibility, public trust, and compliance. Adhering to professional codes is mandatory for certified practitioners.",
+          "exam_relevance_th": "สะท้อนถึงความซื่อสัตย์สุจริต ความรับผิดชอบ ความไว้วางใจจากสาธารณะ และการปฏิบัติตามกฎเกณฑ์ การปฏิบัติตามจรรยาบรรณวิชาชีพเป็นข้อบังคับสำหรับผู้ที่ได้รับใบรับรอง"
+        },
+        {
+          "id": "VOC-CC26-D1-089",
+          "term": "Due Care",
+          "objective": "1.5",
+          "exam_relevance_en": "Crucial exam distinction: Due Care = DOING the right things (taking action, implementing safeguards, patching). Due Diligence = KNOWING the right things (investigating, assessing, reviewing, verifying before and during activities).",
+          "exam_relevance_th": "ข้อแตกต่างที่สำคัญยิ่งในข้อสอบ: Due Care = การ 'ลงมือทำ' ในสิ่งที่ถูกต้อง (การลงมือปฏิบัติ, การวางมาตรการป้องกัน, การติดตั้งแพตช์) ส่วน Due Diligence = การ 'รู้และตรวจสอบ' ในสิ่งที่ถูกต้อง (การสืบสวน, การประเมิน, การทบทวน, การตรวจสอบยืนยันก่อนและระหว่างการดำเนินการ)"
+        },
+        {
+          "id": "VOC-CC26-D1-090",
+          "term": "Due Diligence",
+          "objective": "1.5",
+          "exam_relevance_en": "Due Diligence is the research, verification, and ongoing assessment that justifies and validates Due Care. Exam tip: S59 explicitly states Due Diligence occurs 'before and during', not just before.",
+          "exam_relevance_th": "Due Diligence คือการค้นคว้า การตรวจสอบยืนยัน และการประเมินอย่างต่อเนื่องเพื่อรองรับและตรวจสอบความถูกต้องของการปฏิบัติด้วยความระมัดระวัง (Due Care) เคล็ดลับข้อสอบ: สไลด์ S59 ระบุชัดเจนว่า Due Diligence เกิดขึ้น 'ทั้งก่อนหน้าและในระหว่าง' การดำเนินการ ไม่ใช่แค่ก่อนหน้าเท่านั้น"
+        },
+        {
+          "id": "VOC-CC26-D1-091",
+          "term": "ISC2 Code of Ethics Canons",
+          "objective": "1.5",
+          "exam_relevance_en": "The four canons are: 1. Protect society, the common good, necessary public trust, and the infrastructure. 2. Act honorably, honestly, justly, responsibly, and legally. 3. Provide diligent and competent service to principals. 4. Advance and protect the profession. Note: Instructor commentary regarding canon precedence order in conflict scenarios is flagged under SQ-09.",
+          "exam_relevance_th": "หลักจรรยาบรรณ 4 ข้อได้แก่: 1. ปกป้องสังคม ประโยชน์ส่วนรวม ความไว้วางใจที่จำเป็นของสาธารณะ และโครงสร้างพื้นฐาน 2. ประพฤติตนอย่างมีเกียรติ ซื่อสัตย์ ยุติธรรม มีความรับผิดชอบ และถูกต้องตามกฎหมาย 3. ให้บริการอย่างขยันขันแข็งและมีสมรรถนะแก่ผู้ว่าจ้าง/นายจ้าง 4. ส่งเสริมและปกป้องวิชาชีพ (หมายเหตุ: ความเห็นของผู้สอนเกี่ยวกับลำดับความสำคัญของหลักจรรยาบรรณเมื่อเกิดกรณีขัดแย้งถูกบันทึกไว้ใน SQ-09)"
+        },
+        {
+          "id": "VOC-CC26-D1-092",
+          "term": "Principals",
+          "objective": "1.5",
+          "exam_relevance_en": "Do not confuse 'Principals' (people/employers who hire you) with 'Principles' (fundamental security rules). Appears in Canon 3: 'Provide diligent and competent service to principals'.",
+          "exam_relevance_th": "อย่าสับสนคำว่า 'Principals' (ผู้ว่าจ้าง/นายจ้างที่ว่าจ้างคุณ) กับคำว่า 'Principles' (หลักการพื้นฐานด้านความมั่นคงปลอดภัย) คำนี้ปรากฏในหลักจรรยาบรรณข้อที่ 3: 'ให้บริการอย่างขยันขันแข็งและมีสมรรถนะแก่ผู้ว่าจ้าง (Principals)'"
+        },
+        {
+          "id": "VOC-CC26-D1-093",
+          "term": "BEST",
+          "objective": "exam_strategy",
+          "exam_relevance_en": "In questions asking for the 'BEST' option, other options may also be technically viable or good practices, but one option addresses the root cause or highest priority security objective most effectively.",
+          "exam_relevance_th": "ในคำถามที่ถามหาตัวเลือกที่ 'ดีที่สุด' (BEST) ตัวเลือกอื่นอาจเป็นแนวทางที่ใช้ได้ในทางเทคนิคหรือเป็นแนวปฏิบัติที่ดีเช่นกัน แต่จะมีตัวเลือกหนึ่งที่จัดการกับสาเหตุต้นตอหรือตอบสนองเป้าหมายความมั่นคงปลอดภัยที่มีลำดับความสำคัญสูงสุดได้อย่างมีประสิทธิผลที่สุด"
+        },
+        {
+          "id": "VOC-CC26-D1-094",
+          "term": "FIRST",
+          "objective": "exam_strategy",
+          "exam_relevance_en": "Chronological sequence test. Even if other answer options describe necessary actions, the question asks which action must happen FIRST (e.g. assess/contain before eradicating, identify assets before risk assessing).",
+          "exam_relevance_th": "การทดสอบลำดับขั้นตอนตามเวลา แม้ว่าตัวเลือกอื่นจะอธิบายถึงการกระทำที่จำเป็นต้องทำก็ตาม แต่คำถามต้องการทราบว่าการกระทำใดต้องเกิดขึ้นเป็น 'ลำดับแรก' (FIRST) (เช่น ประเมินและควบคุมความเสียหายก่อนกำจัดภัย, จำแนกสินทรัพย์ก่อนทำการประเมินความเสี่ยง)"
+        },
+        {
+          "id": "VOC-CC26-D1-095",
+          "term": "PRIMARY",
+          "objective": "exam_strategy",
+          "exam_relevance_en": "Distinguishes primary security functions from secondary or side benefits. E.g. The PRIMARY purpose of hashing is integrity verification, even though it can also be used in deduplication.",
+          "exam_relevance_th": "แยกแยะหน้าที่หลักด้านความมั่นคงปลอดภัยออกจากประโยชน์รองหรือผลพลอยได้ เช่น วัตถุประสงค์หลัก (PRIMARY) ของการแฮชคือการตรวจสอบความถูกต้องสมบูรณ์ของข้อมูล แม้ว่าจะสามารถนำมาใช้ในการขจัดข้อมูลซ้ำซ้อนได้ด้วยก็ตาม"
+        },
+        {
+          "id": "VOC-CC26-D1-096",
+          "term": "LEAST",
+          "objective": "exam_strategy",
+          "exam_relevance_en": "Candidates must be careful not to pick the strongest answer out of habit. Three options will be good ideas; the correct answer is the WEAKEST or least relevant option.",
+          "exam_relevance_th": "ผู้สอบต้องระมัดระวังอย่าเลือกคำตอบที่แข็งแกร่งที่สุดตามความเคยชิน โดยจะมี 3 ตัวเลือกที่เป็นแนวคิดที่ดี และคำตอบที่ถูกต้องจะเป็นตัวเลือกที่ 'อ่อนแอที่สุด' หรือเกี่ยวข้องน้อยที่สุด (LEAST)"
+        },
+        {
+          "id": "VOC-CC26-D1-097",
+          "term": "EXCEPT / NOT",
+          "objective": "exam_strategy",
+          "exam_relevance_en": "Requires careful reading. Identify three true statements and eliminate them; the outlier or false statement is the correct answer.",
+          "exam_relevance_th": "ต้องอ่านโจทย์อย่างรอบคอบ ให้ค้นหาข้อความที่เป็นจริง 3 ข้อความแล้วตัดทิ้งไป ข้อความที่ผิดปกติหรือไม่เป็นจริงจะเป็นคำตอบที่ถูกต้อง"
+        },
+        {
+          "id": "VOC-CC26-D1-098",
+          "term": "MOST LIKELY",
+          "objective": "exam_strategy",
+          "exam_relevance_en": "Tests diagnosis and situational deduction. Eliminate remote or unlikely possibilities and select the consequence with highest correlation.",
+          "exam_relevance_th": "ทดสอบการวินิจฉัยและการอนุมานตามสถานการณ์ ให้ตัดความเป็นไปได้ที่ห่างไกลหรือมีโอกาสเกิดน้อยทิ้งไป แล้วเลือกผลลัพธ์ที่มีความเชื่อมโยงสอดคล้องสูงสุด"
+        },
+        {
+          "id": "VOC-CC26-D1-099",
+          "term": "NEXT STEP",
+          "objective": "exam_strategy",
+          "exam_relevance_en": "Requires knowledge of security lifecycles (e.g. Risk Management: Identify -> Assess -> Respond -> Monitor). If the stem completed Risk Identification, the NEXT STEP is Risk Assessment.",
+          "exam_relevance_th": "ต้องมีความเข้าใจในวงจรความมั่นคงปลอดภัย (เช่น การบริหารความเสี่ยง: ระบุความเสี่ยง -> ประเมินความเสี่ยง -> จัดการความเสี่ยง -> ติดตามความเสี่ยง) หากโจทย์ระบุว่าระบุความเสี่ยงเสร็จสิ้นแล้ว ขั้นตอนถัดไป (NEXT STEP) ย่อมเป็นการประเมินความเสี่ยง"
+        },
+        {
+          "id": "VOC-CC26-D1-100",
+          "term": "Unauthorized Access",
+          "objective": "1.1",
+          "exam_relevance_en": "Core security violation. Often the central problem in exam question stems testing Confidentiality, Authentication, or Authorization.",
+          "exam_relevance_th": "การละเมิดความมั่นคงปลอดภัยหลัก มักเป็นโจทย์ปัญหาใจกลางในการทดสอบเรื่อง Confidentiality, Authentication หรือ Authorization"
+        },
+        {
+          "id": "VOC-CC26-D1-101",
+          "term": "Security Breach",
+          "objective": "1.2",
+          "exam_relevance_en": "Represents realized high-impact incidents. Distinct from a security event (observable occurrence) or incident (possible compromise).",
+          "exam_relevance_th": "หมายถึงเหตุการณ์ความมั่นคงปลอดภัยที่เกิดขึ้นจริงและส่งผลกระทบสูง แตกต่างจากเหตุการณ์ทั่วไป (Security Event - สิ่งที่สังเกตพบได้) หรือเหตุการณ์ต้องสงสัย (Incident - เหตุการณ์ที่อาจกระทบต่อระบบ)"
+        },
+        {
+          "id": "VOC-CC26-D1-102",
+          "term": "Mitigate",
+          "objective": "1.2",
+          "exam_relevance_en": "Primary operational verb for risk reduction. Whenever controls are implemented, the action being taken is mitigation.",
+          "exam_relevance_th": "คำกริยาหลักในการปฏิบัติการเพื่อลดทอนความเสี่ยง เมื่อใดก็ตามที่มีการนำมาตรการควบคุมมาใช้งาน การกระทำนั้นย่อมหมายถึงการลดความเสี่ยง (Mitigation)"
+        },
+        {
+          "id": "VOC-CC26-D1-103",
+          "term": "Enforce",
+          "objective": "1.3",
+          "exam_relevance_en": "Policies without enforcement mechanisms are ineffective. Technical controls are often deployed to enforce written managerial policies.",
+          "exam_relevance_th": "นโยบายที่ปราศจากกลไกการบังคับใช้ย่อมไร้ประสิทธิผล มาตรการควบคุมทางเทคนิคมักถูกนำมาติดตั้งเพื่อบังคับใช้นโยบายเชิงบริหารจัดการที่เป็นลายลักษณ์อักษร"
+        },
+        {
+          "id": "VOC-CC26-D1-104",
+          "term": "Implement",
+          "objective": "1.4",
+          "exam_relevance_en": "Common exam action verb. Represents translating theoretical policy requirements into physical or technical safeguards.",
+          "exam_relevance_th": "คำกริยาการกระทำที่พบบ่อยในข้อสอบ หมายถึงการแปลงข้อกำหนดเชิงทฤษฎีในนโยบายไปสู่การติดตั้งมาตรการป้องกันจริงทั้งทางกายภาพหรือทางเทคนิค"
+        },
+        {
+          "id": "VOC-CC26-D1-105",
+          "term": "Assess",
+          "objective": "1.2",
+          "exam_relevance_en": "Occurs before mitigation. You cannot manage or treat risks effectively until you assess their scope.",
+          "exam_relevance_th": "เกิดขึ้นก่อนการลดความเสี่ยง คุณไม่สามารถจัดการหรือปฏิบัติต่อความเสี่ยงได้อย่างมีประสิทธิผลจนกว่าคุณจะได้ประเมินขอบเขตและผลกระทบของความเสี่ยงนั้นเสียก่อน"
+        },
+        {
+          "id": "VOC-CC26-D1-106",
+          "term": "Monitor",
+          "objective": "1.4",
+          "exam_relevance_en": "Detective activity supporting continuous risk management. Essential for early threat containment.",
+          "exam_relevance_th": "กิจกรรมการตรวจจับเพื่อสนับสนุนการบริหารความเสี่ยงอย่างต่อเนื่อง จำเป็นอย่างยิ่งสำหรับการควบคุมและกักกันภัยคุกคามได้อย่างทันท่วงที"
+        },
+        {
+          "id": "VOC-CC26-D1-107",
+          "term": "Escalate",
+          "objective": "1.5",
+          "exam_relevance_en": "Essential concept in incident response and professional conduct. First-line analysts must know when to escalate an anomaly to incident response leads or executive leadership.",
+          "exam_relevance_th": "แนวคิดสำคัญในการตอบสนองต่อเหตุการณ์และการปฏิบัติตามจรรยาบรรณวิชาชีพ นักวิเคราะห์ด่านหน้าต้องทราบว่าเมื่อใดควรยกระดับเหตุการณ์ผิดปกติไปยังหัวหน้าทีมตอบสนองหรือผู้บริหารระดับสูง"
+        },
+        {
+          "id": "VOC-CC26-D1-108",
+          "term": "Patch Management / Patching",
+          "objective": "1.4",
+          "exam_relevance_en": "Fundamental security hygiene. Eliminates known vulnerabilities. Demonstrates Due Care in operational maintenance.",
+          "exam_relevance_th": "สุขอนามัยพื้นฐานด้านความมั่นคงปลอดภัย ช่วยกำจัดช่องโหว่ที่เป็นที่รู้จัก และสะท้อนถึงการปฏิบัติหน้าที่ด้วยความระมัดระวัง (Due Care) ในการบำรุงรักษาระบบ"
+        },
+        {
+          "id": "VOC-CC26-D1-109",
+          "term": "Audit Trail / Logging",
+          "objective": "1.1",
+          "exam_relevance_en": "Primary mechanism for Accounting. Essential for post-incident root-cause analysis, regulatory audits, and non-repudiation.",
+          "exam_relevance_th": "กลไกหลักสำหรับกระบวนการตรวจสอบและบันทึกประวัติ (Accounting) จำเป็นอย่างยิ่งสำหรับการวิเคราะห์หาสาเหตุต้นตอภายหลังเกิดเหตุการณ์ การตรวจสอบตามกฎระเบียบ และการป้องกันการปฏิเสธความรับผิดชอบ (Non-repudiation)"
+        },
+        {
+          "id": "VOC-CC26-D1-110",
+          "term": "Incident Response",
+          "objective": "1.4",
+          "exam_relevance_en": "Corrective and operational activity. Essential for mitigating incident impact and maintaining business continuity.",
+          "exam_relevance_th": "กิจกรรมเชิงปฏิบัติการและเชิงแก้ไข (Corrective & Operational Activity) จำเป็นอย่างยิ่งในการบรรเทาผลกระทบจากเหตุการณ์ความมั่นคงปลอดภัยและรักษาความต่อเนื่องทางธุรกิจ"
+        }
+      ]
+    },
+    "domain_2": {
+      "domain_id": 2,
+      "count": 101,
+      "entries": [
+        {
+          "id": "VOC-CC26-D2-001",
+          "term": "Governance, Risk, and Compliance",
+          "objective": "2.1",
+          "exam_relevance_en": "GRC operates as a holistic enterprise discipline. Exam scenarios test the synergy where governance sets policy, risk management guides resource allocation, and compliance satisfies mandatory obligations.",
+          "exam_relevance_th": "GRC ทำงานร่วมกันในฐานะระเบียบวิธีระดับองค์กรแบบองค์รวม สถานการณ์ในข้อสอบจะทดสอบการทำงานประสานกัน โดย Governance กำหนดนโยบาย, Risk Management ชี้นำการจัดสรรทรัพยากร และ Compliance ตอบสนองพันธกรณีตามข้อบังคับ"
+        },
+        {
+          "id": "VOC-CC26-D2-002",
+          "term": "Security Governance",
+          "objective": "2.1",
+          "exam_relevance_en": "Governance flows from executive leadership (tone at the top) and the board of directors. It answers 'who is accountable' and 'what are the strategic priorities', distinct from operational security tasks.",
+          "exam_relevance_th": "การกำกับดูแลต้องได้รับการขับเคลื่อนมาจากผู้นำระดับสูง (Tone at the Top) และคณะกรรมการบริหาร โดยตอบคำถามว่า 'ใครคือผู้รับผิดชอบ' และ 'อะไรคือเป้าหมายเชิงกลยุทธ์' ซึ่งแตกต่างจากงานด้านความมั่นคงปลอดภัยเชิงปฏิบัติการ"
+        },
+        {
+          "id": "VOC-CC26-D2-003",
+          "term": "Risk Management",
+          "objective": "2.1",
+          "exam_relevance_en": "Risk management is never a one-time project; it is cyclical. Decisions must balance security investments against potential business loss, avoiding expenditure exceeding asset value.",
+          "exam_relevance_th": "การบริหารความเสี่ยงไม่ใช่โครงการที่ทำครั้งเดียวจบ แต่ดำเนินไปเป็นวงจร การตัดสินใจต้องสร้างสมดุลระหว่างการลงทุนด้านความมั่นคงปลอดภัยกับความเสียหายทางธุรกิจที่อาจเกิดขึ้น และหลีกเลี่ยงค่าใช้จ่ายที่สูงเกินกว่ามูลค่าของสินทรัพย์"
+        },
+        {
+          "id": "VOC-CC26-D2-004",
+          "term": "Compliance",
+          "objective": "2.1",
+          "exam_relevance_en": "Compliance establishes a mandatory legal/contractual baseline, but achieving compliance alone does not guarantee robust security. Scenarios test the boundary between statutory duty and practical risk reduction.",
+          "exam_relevance_th": "การปฏิบัติตามกฎเกณฑ์สร้างเกณฑ์มาตรฐานขั้นต่ำทางกฎหมายและสัญญา แต่การปฏิบัติตามข้อกำหนดเพียงอย่างเดียวไม่ได้ช่วยรับประกันความมั่นคงปลอดภัยที่แข็งแกร่ง โจทย์จะทดสอบเส้นแบ่งระหว่างหน้าที่ตามกฎหมายกับการลดทอนความเสี่ยงในทางปฏิบัติจริง"
+        },
+        {
+          "id": "VOC-CC26-D2-005",
+          "term": "NIST Cybersecurity Framework",
+          "objective": "2.1",
+          "exam_relevance_en": "NIST CSF provides voluntary flexible risk management guidance rather than certifiable mandatory audits. Questions test its distinction from certifiable standards like ISO/IEC 27001.",
+          "exam_relevance_th": "NIST CSF ให้แนวทางการบริหารความเสี่ยงที่มีความยืดหยุ่นและเป็นไปตามความสมัครใจ มากกว่าที่จะเป็นการตรวจสอบเพื่อออกใบรับรองภาคบังคับ คำถามจะทดสอบความแตกต่างระหว่างแนวทางนี้กับมาตรฐานที่สามารถขอรับการรับรองได้ เช่น ISO/IEC 27001"
+        },
+        {
+          "id": "VOC-CC26-D2-006",
+          "term": "ISO/IEC 27001",
+          "objective": "2.1",
+          "exam_relevance_en": "ISO/IEC 27001 is certifiable via accredited external third-party audits, whereas NIST CSF is non-certifiable guidance. Questions test this certifiable standard vs guidance framework difference.",
+          "exam_relevance_th": "ISO/IEC 27001 สามารถขอรับการรับรองอย่างเป็นทางการผ่านการตรวจสอบโดยผู้ประเมินอิสระภายนอก (Third-party Audit) ในขณะที่ NIST CSF เป็นเพียงกรอบแนวทางปฏิบัติที่ไม่สามารถออกใบรับรองได้ ข้อสอบมักทดสอบความแตกต่างระหว่างมาตรฐานที่ตรวจรับรองได้กับกรอบแนวทางปฏิบัติ"
+        },
+        {
+          "id": "VOC-CC26-D2-007",
+          "term": "Information Security Management System",
+          "objective": "2.1",
+          "exam_relevance_en": "An ISMS represents the overarching administrative management system specified by ISO/IEC 27001, distinct from any single piece of security software or hardware tool.",
+          "exam_relevance_th": "ISMS หมายถึงระบบการบริหารจัดการเชิงบริหารภาพรวมตามที่ระบุไว้ในมาตรฐาน ISO/IEC 27001 ซึ่งแตกต่างจากโปรแกรมซอฟต์แวร์หรืออุปกรณ์ฮาร์ดแวร์ด้านความปลอดภัยเดี่ยวๆ"
+        },
+        {
+          "id": "VOC-CC26-D2-008",
+          "term": "COBIT",
+          "objective": "2.1",
+          "exam_relevance_en": "COBIT focuses primarily on IT governance and business alignment at the enterprise level, bridging IT services with executive decision-making.",
+          "exam_relevance_th": "COBIT มุ่งเน้นไปที่การกำกับดูแลด้านไอทีและการปรับการดำเนินงานไอทีให้สอดคล้องกับธุรกิจในระดับองค์กร เชื่อมโยงบริการด้านไอทีเข้ากับการตัดสินใจของผู้บริหารระดับสูง"
+        },
+        {
+          "id": "VOC-CC26-D2-009",
+          "term": "GRC Software Platform",
+          "objective": "2.1",
+          "exam_relevance_en": "GRC software is an operational technology tool that facilitates governance, but it does NOT replace human accountability, leadership oversight, or risk ownership.",
+          "exam_relevance_th": "แพลตฟอร์มซอฟต์แวร์ GRC เป็นเครื่องมือทางเทคโนโลยีเชิงปฏิบัติการที่ช่วยอำนวยความสะดวกในการกำกับดูแล แต่ไม่ได้เข้ามาแทนที่ความรับผิดชอบของมนุษย์ การกำกับดูแลของผู้นำ หรือการเป็นเจ้าของความเสี่ยง"
+        },
+        {
+          "id": "VOC-CC26-D2-010",
+          "term": "Risk Register",
+          "objective": "2.1",
+          "exam_relevance_en": "The risk register is the primary operational ledger for enterprise risks. Every identified risk must be logged and paired with an accountable risk owner and treatment strategy.",
+          "exam_relevance_th": "ทะเบียนความเสี่ยงคือบัญชีหลักในการบันทึกความเสี่ยงขององค์กร ความเสี่ยงทุกรายการที่ตรวจพบจะต้องได้รับการลงบันทึก พร้อมทั้งจับคู่กับเจ้าของความเสี่ยง (Risk Owner) และกลยุทธ์การจัดการความเสี่ยง"
+        },
+        {
+          "id": "VOC-CC26-D2-011",
+          "term": "Risk Ownership",
+          "objective": "2.1",
+          "exam_relevance_en": "Risk must be owned by the business owner of the asset or process, not the cybersecurity team alone. The risk owner decides and funds the treatment strategy.",
+          "exam_relevance_th": "ความเสี่ยงต้องเป็นของเจ้าของสายธุรกิจที่เป็นเจ้าของสินทรัพย์หรือกระบวนการนั้น ไม่ใช่เป็นของทีมความมั่นคงปลอดภัยทางไซเบอร์เพียงฝ่ายเดียว โดยเจ้าของความเสี่ยงจะเป็นผู้ตัดสินใจและจัดสรรงบประมาณสำหรับกลยุทธ์การจัดการความเสี่ยง"
+        },
+        {
+          "id": "VOC-CC26-D2-012",
+          "term": "Risk Treatment",
+          "objective": "2.1",
+          "exam_relevance_en": "Exam scenarios present business situations and test which of the four treatments is MOST appropriate based on costs, benefits, and risk appetite.",
+          "exam_relevance_th": "สถานการณ์ในข้อสอบจะนำเสนอบริบททางธุรกิจและทดสอบว่า การจัดการความเสี่ยงใน 4 รูปแบบใดมีความเหมาะสม 'ที่สุด' (MOST) โดยพิจารณาจากต้นทุน ผลประโยชน์ และระดับความเสี่ยงที่องค์กรยอมรับได้ (Risk Appetite)"
+        },
+        {
+          "id": "VOC-CC26-D2-013",
+          "term": "Risk Avoidance",
+          "objective": "2.1",
+          "exam_relevance_en": "Avoidance is the only treatment that completely eliminates a specific risk, but it also sacrifices any business benefits associated with the abandoned activity.",
+          "exam_relevance_th": "การหลีกเลี่ยงความเสี่ยงเป็นการจัดการเพียงรูปแบบเดียวที่กำจัดความเสี่ยงที่ระบุไว้ได้อย่างสิ้นเชิง 100% แต่ก็ต้องแลกกับการสูญเสียผลประโยชน์ทางธุรกิจที่เกี่ยวข้องกับกิจกรรมที่ยกเลิกไปนั้นด้วยเช่นกัน"
+        },
+        {
+          "id": "VOC-CC26-D2-014",
+          "term": "Risk Mitigation",
+          "objective": "2.1",
+          "exam_relevance_en": "Mitigation (also called risk reduction) is the most common operational treatment. Controls should be cost-effective and proportional to the asset value.",
+          "exam_relevance_th": "การลดความเสี่ยง (หรือการบรรเทาความเสี่ยง) เป็นการจัดการเชิงปฏิบัติการที่พบบ่อยที่สุด มาตรการควบคุมที่นำมาใช้ควรคุ้มค่าต่อการลงทุนและได้สัดส่วนที่เหมาะสมกับมูลค่าของสินทรัพย์"
+        },
+        {
+          "id": "VOC-CC26-D2-015",
+          "term": "Risk Transfer",
+          "objective": "2.1",
+          "exam_relevance_en": "Cyber insurance transfers financial loss, but NEVER transfers executive accountability or brand reputation damage. Scenarios test this critical limitation.",
+          "exam_relevance_th": "การทำประกันภัยไซเบอร์ช่วยถ่ายโอนความสูญเสียทางการเงิน แต่ 'ไม่มีวัน' ถ่ายโอนความรับผิดชอบของผู้บริหารหรือความเสียหายต่อชื่อเสียงของแบรนด์ได้ โจทย์ข้อสอบมักทดสอบข้อจำกัดสำคัญข้อนี้"
+        },
+        {
+          "id": "VOC-CC26-D2-016",
+          "term": "Risk Acceptance",
+          "objective": "2.1",
+          "exam_relevance_en": "Acceptance is valid only when formally approved and documented by designated business leadership; it is never passive neglect or ignoring known risks.",
+          "exam_relevance_th": "การยอมรับความเสี่ยงจะถูกต้องสมบูรณ์ก็ต่อเมื่อได้รับการอนุมัติอย่างเป็นทางการและบันทึกเป็นลายลักษณ์อักษรโดยผู้นำทางธุรกิจที่มีอำนาจเท่านั้น ไม่ใช่การละเลย เพิกเฉย หรือมองข้ามความเสี่ยงที่ตรวจพบ"
+        },
+        {
+          "id": "VOC-CC26-D2-017",
+          "term": "Residual Risk",
+          "objective": "2.1",
+          "exam_relevance_en": "Residual risk in operational systems is rarely zero. If residual risk exceeds organizational risk appetite, additional controls must be applied until it reaches an acceptable level.",
+          "exam_relevance_th": "ความเสี่ยงที่หลงเหลืออยู่ในระบบปฏิบัติการจริงแทบจะไม่มีวันเป็นศูนย์ หากความเสี่ยงที่หลงเหลืออยู่สูงเกินกว่าระดับความเสี่ยงที่ยอมรับได้ จะต้องติดตั้งมาตรการควบคุมเพิ่มเติมจนกว่าความเสี่ยงจะลดลงมาอยู่ในระดับที่ยอมรับได้"
+        },
+        {
+          "id": "VOC-CC26-D2-018",
+          "term": "Inherent Risk",
+          "objective": "2.1",
+          "exam_relevance_en": "Inherent risk represents total raw exposure. Subtracting the effect of security controls from inherent risk yields residual risk.",
+          "exam_relevance_th": "ความเสี่ยงที่มีอยู่แต่เดิมแสดงถึงระดับความเสี่ยงดิบทั้งหมดก่อนมีมาตรการป้องกัน หากนำผลของมาตรการควบคุมความปลอดภัยไปหักออกจากความเสี่ยงแต่เดิม ผลลัพธ์ที่ได้ก็คือความเสี่ยงที่หลงเหลืออยู่ (Residual Risk = Inherent Risk - Impact of Controls)"
+        },
+        {
+          "id": "VOC-CC26-D2-019",
+          "term": "Risk Rating Scales",
+          "objective": "2.1",
+          "exam_relevance_en": "NIST SP 800-30 Rev. 1 clarifies that representative numbers like '1 to 4' are semi-quantitative ordinal rankings, NOT mathematical quantitative figures with financial units.",
+          "exam_relevance_th": "NIST SP 800-30 Rev. 1 อธิบายชัดเจนว่า ตัวเลขแทนค่าระดับ เช่น '1 ถึง 4' ถือเป็นการจัดลำดับเชิงกึ่งปริมาณ (Semi-quantitative Ordinal Rankings) ไม่ใช่ตัวเลขเชิงปริมาณทางคณิตศาสตร์ที่มีหน่วยวัดทางการเงินจริง"
+        },
+        {
+          "id": "VOC-CC26-D2-020",
+          "term": "Qualitative Risk Assessment",
+          "objective": "2.1",
+          "exam_relevance_en": "Qualitative analysis is fast and widely accessible because it does not require complex mathematical modeling or exact monetary data. It is the most common starting assessment method.",
+          "exam_relevance_th": "การวิเคราะห์เชิงคุณภาพมีความรวดเร็วและเข้าถึงได้ง่าย เนื่องจากไม่ต้องใช้แบบจำลองทางคณิตศาสตร์ที่ซับซ้อนหรือข้อมูลตัวเลขทางการเงินที่แน่นอน เป็นวิธีการประเมินเริ่มต้นที่นิยมใช้มากที่สุด"
+        },
+        {
+          "id": "VOC-CC26-D2-021",
+          "term": "Semi-Quantitative Risk Assessment",
+          "objective": "2.1",
+          "exam_relevance_en": "Assigning numbers 1 to 4 does NOT make an assessment quantitative. Numbers represent ordinal order, not monetary currency or exact failure rates.",
+          "exam_relevance_th": "การกำหนดตัวเลข 1 ถึง 4 ไม่ได้ทำให้การประเมินกลายเป็นการประเมินเชิงปริมาณ ตัวเลขเหล่านี้เป็นเพียงลำดับขั้น ไม่ใช่หน่วยเงินตราหรืออัตราความล้มเหลวที่แท้จริง"
+        },
+        {
+          "id": "VOC-CC26-D2-022",
+          "term": "Quantitative Risk Assessment",
+          "objective": "2.1",
+          "exam_relevance_en": "Quantitative assessment produces dollar-based loss expectancies (ALE = SLE x ARO), which are directly comparable to the annual cost of prospective security countermeasures.",
+          "exam_relevance_th": "การประเมินเชิงปริมาณจะสร้างค่าคาดการณ์ความสูญเสียในรูปของตัวเงิน (ALE = SLE x ARO) ซึ่งสามารถนำไปเปรียบเทียบกับค่าใช้จ่ายรายปีของมาตรการป้องกันความปลอดภัยได้อย่างตรงไปตรงมา"
+        },
+        {
+          "id": "VOC-CC26-D2-023",
+          "term": "Risk Appetite",
+          "objective": "2.1",
+          "exam_relevance_en": "Risk appetite is set at the board/executive level as high-level policy guidance. It dictates whether the organization takes an aggressive or conservative posture toward emerging tech or expansion.",
+          "exam_relevance_th": "ระดับความเสี่ยงที่ยอมรับได้จะถูกกำหนดขึ้นในระดับคณะกรรมการบริหาร/ผู้บริหารระดับสูงในฐานะแนวทางนโยบายระดับสูง เป็นตัวกำหนดว่าองค์กรจะมีท่าทีที่กล้าเสี่ยงหรือระมัดระวังต่อการขยายตัวหรือการใช้เทคโนโลยีใหม่"
+        },
+        {
+          "id": "VOC-CC26-D2-024",
+          "term": "Risk Tolerance",
+          "objective": "2.1",
+          "exam_relevance_en": "Distinction: Risk appetite is broad and strategic ('we accept moderate cloud risk'); risk tolerance is operational and measurable ('we tolerate up to 4 hours of planned downtime quarterly').",
+          "exam_relevance_th": "ข้อแตกต่าง: Risk Appetite เป็นแนวคิดเชิงกลยุทธ์ภาพกว้าง (เช่น 'เรายอมรับความเสี่ยงระดับปานกลางในการใช้งานคลาวด์') ส่วน Risk Tolerance เป็นค่าความเบี่ยงเบนเชิงปฏิบัติการที่วัดผลได้ (เช่น 'เรายอมรับการหยุดทำงานตามแผนได้ไม่เกิน 4 ชั่วโมงต่อไตรมาส')"
+        },
+        {
+          "id": "VOC-CC26-D2-025",
+          "term": "Risk Appetite vs Risk Tolerance",
+          "objective": "2.1",
+          "exam_relevance_en": "Exam scenarios frequently test candidates on distinguishing broad executive philosophy (appetite) from concrete operational variance limits (tolerance).",
+          "exam_relevance_th": "สถานการณ์ในข้อสอบมักทดสอบความสามารถในการแยกแยะระหว่างปรัชญาภาพกว้างของผู้บริหาร (Appetite) กับขีดจำกัดความเบี่ยงเบนเชิงปฏิบัติการที่เป็นรูปธรรม (Tolerance)"
+        },
+        {
+          "id": "VOC-CC26-D2-026",
+          "term": "Endpoint Detection and Response",
+          "objective": "2.1",
+          "exam_relevance_en": "EDR is cited in governance and risk scenarios as a primary technical control for mitigating malware, ransomware propagation, and credential theft across enterprise endpoints.",
+          "exam_relevance_th": "EDR ถูกยกขึ้นมาในสถานการณ์ด้านการกำกับดูแลและความเสี่ยง ในฐานะมาตรการควบคุมทางเทคนิคหลักในการลดทอนมัลแวร์ การแพร่กระจายของแรนซัมแวร์ และการขโมยข้อมูลประจำตัวบนอุปกรณ์ปลายทางขององค์กร"
+        },
+        {
+          "id": "VOC-CC26-D2-027",
+          "term": "Protected Health Information",
+          "objective": "2.1",
+          "exam_relevance_en": "Candidates must distinguish general personal information (PII) from statutory healthcare data (PHI). Under regulations like HIPAA, PHI requires specific technical and physical privacy safeguards.",
+          "exam_relevance_th": "ผู้สอบต้องแยกแยะระหว่างข้อมูลระบุตัวบุคคลทั่วไป (PII) กับข้อมูลสุขภาพที่ได้รับการคุ้มครองตามกฎหมาย (PHI) ภายใต้กฎระเบียบเช่น HIPAA ข้อมูล PHI จะต้องมีมาตรการรักษาความปลอดภัยทางเทคนิคและกายภาพที่เคร่งครัดเฉพาะเจาะจง"
+        },
+        {
+          "id": "VOC-CC26-D2-028",
+          "term": "Business Alignment",
+          "objective": "2.1",
+          "exam_relevance_en": "Exam Qualifier: Security does not exist in a vacuum. Scenarios test candidates to select the answer that aligns with business enablement rather than imposing impractical, paralyzing security roadblocks.",
+          "exam_relevance_th": "เงื่อนไขสำคัญในข้อสอบ: ความมั่นคงปลอดภัยไม่ได้ดำรงอยู่อย่างโดดเดี่ยว สถานการณ์จะทดสอบให้ผู้สอบเลือกคำตอบที่สนับสนุนและขับเคลื่อนธุรกิจ มากกว่าการสร้างอุปสรรคด้านความปลอดภัยที่ทำลายการดำเนินงานและไม่สามารถปฏิบัติได้จริง"
+        },
+        {
+          "id": "VOC-CC26-D2-029",
+          "term": "AI Governance",
+          "objective": "2.1",
+          "exam_relevance_en": "Part of the updated 2026 exam outline. Scenarios test governance of AI use, prohibiting unauthorized data ingestion into public models and establishing organizational oversight for algorithmic risks.",
+          "exam_relevance_th": "เป็นส่วนหนึ่งของโครงร่างข้อสอบปี 2026 สถานการณ์จะทดสอบการกำกับดูแลการใช้งาน AI ห้ามการนำข้อมูลลับขององค์กรไปป้อนเข้าโมเดลสาธารณะโดยไม่ได้รับอนุญาต และจัดให้มีกลไกกำกับดูแลความเสี่ยงจากอัลกอริทึม"
+        },
+        {
+          "id": "VOC-CC26-D2-030",
+          "term": "Business Continuity",
+          "objective": "2.2",
+          "exam_relevance_en": "Business Continuity covers the entire organization (people, physical facilities, supply chains, customer communications), while Disaster Recovery focuses specifically on technical IT restoration.",
+          "exam_relevance_th": "ความต่อเนื่องทางธุรกิจครอบคลุมทั้งองค์กร (บุคลากร, อาคารสถานที่, ห่วงโซ่อุปทาน, การสื่อสารกับลูกค้า) ในขณะที่การกู้คืนระบบจากภัยพิบัติ (DR) จะมุ่งเน้นไปที่การฟื้นฟูระบบเทคนิคและไอทีโดยเฉพาะ"
+        },
+        {
+          "id": "VOC-CC26-D2-031",
+          "term": "Business Continuity Plan",
+          "objective": "2.2",
+          "exam_relevance_en": "The BCP is business-focused and operational. It details how employees conduct daily business when regular office facilities, power, or vendor services are unavailable.",
+          "exam_relevance_th": "แผน BCP มุ่งเน้นที่การดำเนินงานทางธุรกิจ ระบุรายละเอียดว่าพนักงานจะดำเนินงานประจำวันต่อไปได้อย่างไร เมื่ออาคารสำนักงาน ไฟฟ้า หรือบริการของคู่ค้าไม่สามารถใช้งานได้ตามปกติ"
+        },
+        {
+          "id": "VOC-CC26-D2-032",
+          "term": "Disaster Recovery",
+          "objective": "2.2",
+          "exam_relevance_en": "DR is technically oriented (hardware, virtual machines, database backups, network links). It serves as a technical subset supporting broader Business Continuity goals.",
+          "exam_relevance_th": "DR มุ่งเน้นทางเทคนิค (ฮาร์ดแวร์, เวอร์ชวลแมชชีน, การสำรองฐานข้อมูล, ลิงก์เครือข่าย) ทำหน้าที่เป็นส่วนย่อยทางเทคนิคที่สนับสนุนเป้าหมายความต่อเนื่องทางธุรกิจในภาพรวม"
+        },
+        {
+          "id": "VOC-CC26-D2-033",
+          "term": "Disaster Recovery Plan",
+          "objective": "2.2",
+          "exam_relevance_en": "The DRP contains exact technical restore commands, boot order dependencies, IP reconfigurations, and cryptographic key recoveries. It answers 'how do we restore IT systems?'.",
+          "exam_relevance_th": "แผน DRP บรรจุคำสั่งกู้คืนระบบทางเทคนิคที่ชัดเจน ลำดับการบูตระบบ การกำหนดค่า IP ใหม่ และการกู้คืนกุญแจเข้ารหัส โดยตอบคำถามว่า 'เราจะกู้คืนระบบไอทีขึ้นมาได้อย่างไร'"
+        },
+        {
+          "id": "VOC-CC26-D2-034",
+          "term": "Business Impact Analysis",
+          "objective": "2.2",
+          "exam_relevance_en": "The BIA is conducted BEFORE drafting BCP or DRP. It provides the empirical justification and target recovery metrics (RTO, RPO, MTD) for subsequent continuity investments.",
+          "exam_relevance_th": "การวิเคราะห์ผลกระทบทางธุรกิจ (BIA) จะต้องจัดทำขึ้น 'ก่อน' ที่จะร่างแผน BCP หรือ DRP โดยจะให้ข้อมูลเชิงประจักษ์และตัวชี้วัดเป้าหมายการกู้คืน (RTO, RPO, MTD) สำหรับการลงทุนด้านความต่อเนื่องทางธุรกิจในลำดับถัดไป"
+        },
+        {
+          "id": "VOC-CC26-D2-035",
+          "term": "Recovery Time Objective",
+          "objective": "2.2",
+          "exam_relevance_en": "RTO answers 'How quickly must we restore the system?'. Shorter RTO requires costlier recovery solutions like hot sites or active-active failover clusters.",
+          "exam_relevance_th": "RTO ตอบคำถามว่า 'เราต้องกู้คืนระบบให้กลับมาทำงานได้เร็วแค่ไหน' ยิ่งกำหนด RTO สั้นลงเท่าใด ก็ยิ่งต้องใช้โซลูชันการกู้คืนที่มีค่าใช้จ่ายสูงขึ้น เช่น ศูนย์สำรองข้อมูลแบบ Hot Site หรือคลัสเตอร์แบบ Active-Active"
+        },
+        {
+          "id": "VOC-CC26-D2-036",
+          "term": "Recovery Point Objective",
+          "objective": "2.2",
+          "exam_relevance_en": "RPO answers 'How much data can we afford to lose?'. An RPO of 2 hours means backups must be taken at least every 2 hours, or synchronous replication employed.",
+          "exam_relevance_th": "RPO ตอบคำถามว่า 'เรายอมให้ข้อมูลสูญหายได้มากที่สุดเท่าใด' หากกำหนด RPO ไว้ที่ 2 ชั่วโมง หมายความว่าต้องมีการสำรองข้อมูลอย่างน้อยทุก 2 ชั่วโมง หรือต้องใช้ระบบจำลองข้อมูลแบบซิงโครนัส"
+        },
+        {
+          "id": "VOC-CC26-D2-037",
+          "term": "Maximum Tolerable Downtime",
+          "objective": "2.2",
+          "exam_relevance_en": "MTD represents the overarching ceiling established by executive leadership in the BIA. By definition, RTO must always be set shorter than or equal to MTD (RTO <= MTD).",
+          "exam_relevance_th": "MTD หมายถึงเพดานเวลาสูงสุดที่องค์กรสามารถทนต่อการหยุดทำงานได้ ซึ่งกำหนดโดยผู้บริหารระดับสูงในการทำ BIA ตามนิยามแล้ว ค่า RTO จะต้องสั้นกว่าหรือเท่ากับค่า MTD เสมอ (RTO <= MTD)"
+        },
+        {
+          "id": "VOC-CC26-D2-038",
+          "term": "RTO vs RPO",
+          "objective": "2.2",
+          "exam_relevance_en": "Extremely high exam frequency. Scenarios describe a failure and ask which metric was violated (e.g. system restored in 3 hours vs 2-hour target = RTO violation; lost 6 hours of orders vs 1-hour target = RPO violation).",
+          "exam_relevance_th": "ออกข้อสอบบ่อยมาก โจทย์จะบรรยายสถานการณ์ความล้มเหลวและถามว่าละเมิดตัวชี้วัดใด (เช่น กู้ระบบได้ใน 3 ชั่วโมงขณะที่เป้าหมายคือ 2 ชั่วโมง = ละเมิด RTO; ข้อมูลคำสั่งซื้อหายไป 6 ชั่วโมงขณะที่เป้าหมายยอมรับได้ 1 ชั่วโมง = ละเมิด RPO)"
+        },
+        {
+          "id": "VOC-CC26-D2-039",
+          "term": "BCP vs DRP",
+          "objective": "2.2",
+          "exam_relevance_en": "Exam scenarios ask whether relocating staff to an alternate office or switching to manual invoicing is BCP or DRP (Answer: BCP). Restoring database backups from snapshots is DRP.",
+          "exam_relevance_th": "คำถามจะทดสอบว่า การย้ายพนักงานไปทำงานที่สำนักงานสำรองหรือการเปลี่ยนไปใช้การออกใบแจ้งหนี้ด้วยมือ เป็น BCP หรือ DRP (คำตอบ: BCP) ส่วนการกู้คืนฐานข้อมูลจากสแนปช็อตคือ DRP"
+        },
+        {
+          "id": "VOC-CC26-D2-040",
+          "term": "Backup Strategy",
+          "objective": "2.2",
+          "exam_relevance_en": "Simply taking backups does not guarantee recovery. Backups must be geographically separated, protected against unauthorized modification (immutability), and regularly tested via restore drills.",
+          "exam_relevance_th": "การทำสำรองข้อมูลเพียงอย่างเดียวไม่ได้ช่วยรับประกันการกู้คืน ข้อมูลสำรองต้องถูกแยกเก็บต่างพื้นที่ มีการป้องกันการแก้ไขดัดแปลง (Immutability) และต้องได้รับการทดสอบซ้อมกู้คืนระบบอย่างสม่ำเสมอ"
+        },
+        {
+          "id": "VOC-CC26-D2-041",
+          "term": "Hot Site",
+          "objective": "2.2",
+          "exam_relevance_en": "Hot sites provide the shortest RTO and RPO, but carry the highest ongoing operational cost. They are reserved for mission-critical operations where downtime causes immediate catastrophic financial loss.",
+          "exam_relevance_th": "Hot Site ให้ค่า RTO และ RPO สั้นที่สุด แต่มีค่าใช้จ่ายในการดำเนินงานต่อเนื่องสูงที่สุด สงวนไว้สำหรับระบบที่มีความสำคัญอย่างยิ่งยวดต่อภารกิจ (Mission-Critical) ซึ่งการหยุดทำงานจะก่อให้เกิดความเสียหายทางการเงินอย่างรุนแรงทันที"
+        },
+        {
+          "id": "VOC-CC26-D2-042",
+          "term": "Warm Site",
+          "objective": "2.2",
+          "exam_relevance_en": "A warm site balances cost against recovery time. It costs significantly less than a hot site while offering a much shorter recovery window than an unequipped cold site.",
+          "exam_relevance_th": "Warm Site สร้างความสมดุลระหว่างค่าใช้จ่ายกับระยะเวลาในการกู้คืน มีค่าใช้จ่ายต่ำกว่า Hot Site อย่างมาก ขณะเดียวกันก็ใช้เวลากู้คืนสั้นกว่าศูนย์แบบ Cold Site ที่ไม่มีการติดตั้งอุปกรณ์ล่วงหน้า"
+        },
+        {
+          "id": "VOC-CC26-D2-043",
+          "term": "Cold Site",
+          "objective": "2.2",
+          "exam_relevance_en": "Correction per NIST SP 800-34: A cold site DOES have power, HVAC, and raised flooring; what it lacks is computer servers and data. Recovery takes days to weeks, making it the least expensive option.",
+          "exam_relevance_th": "ข้อเท็จจริงตาม NIST SP 800-34: Cold Site มีไฟฟ้า ระบบปรับอากาศ (HVAC) และพื้นยกพร้อมใช้งาน สิ่งที่ขาดไปคือเครื่องเซิร์ฟเวอร์คอมพิวเตอร์และข้อมูล การกู้คืนจึงต้องใช้เวลาหลายวันถึงหลายสัปดาห์ ทำให้เป็นตัวเลือกที่มีค่าใช้จ่ายต่ำที่สุด"
+        },
+        {
+          "id": "VOC-CC26-D2-044",
+          "term": "Hot vs Warm vs Cold Recovery Sites",
+          "objective": "2.2",
+          "exam_relevance_en": "Exam scenarios ask which site type to choose when an organization requires a specific recovery timeframe (RTO) or has budget constraints.",
+          "exam_relevance_th": "สถานการณ์ในข้อสอบจะถามว่าควรเลือกศูนย์กู้คืนระบบประเภทใด เมื่อองค์กรมีข้อกำหนดเรื่องกรอบเวลาในการกู้คืน (RTO) หรือมีข้อจำกัดด้านงบประมาณ"
+        },
+        {
+          "id": "VOC-CC26-D2-045",
+          "term": "Disaster Recovery Testing",
+          "objective": "2.2",
+          "exam_relevance_en": "An untested disaster plan is merely a theory. Regular testing discovers procedural flaws, outdated contact numbers, and corrupted backups before an actual catastrophe strikes.",
+          "exam_relevance_th": "แผนกู้คืนระบบที่ปราศจากการทดสอบเป็นเพียงแค่ทฤษฎี การทดสอบอย่างสม่ำเสมอจะช่วยค้นพบข้อบกพร่องในขั้นตอนปฏิบัติ หมายเลขติดต่อที่ล้าสมัย และข้อมูลสำรองที่เสียหาย ก่อนที่ภัยพิบัติจริงจะเกิดขึ้น"
+        },
+        {
+          "id": "VOC-CC26-D2-046",
+          "term": "Tabletop Exercise",
+          "objective": "2.2",
+          "exam_relevance_en": "Tabletop exercises are cost-effective, low-stress, and cause zero operational interruption. They are ideal for validating decision-making chains and communications before conducting technical simulations.",
+          "exam_relevance_th": "การซ้อมแผนบนโต๊ะ (Tabletop) ประหยัดค่าใช้จ่าย ไม่สร้างความตึงเครียด และไม่กระทบต่อการดำเนินงานจริงเลย เหมาะอย่างยิ่งสำหรับการตรวจสอบยืนยันสายการบังคับบัญชาและการสื่อสาร ก่อนที่จะลงมือจำลองเชิงเทคนิค"
+        },
+        {
+          "id": "VOC-CC26-D2-047",
+          "term": "Simulation Exercise",
+          "objective": "2.2",
+          "exam_relevance_en": "Simulation exercises test technical staff skills and verify that data backups can actually be restored within the targeted RTO, without risking downtime in the live production environment.",
+          "exam_relevance_th": "การฝึกซ้อมแบบจำลองจะทดสอบทักษะของทีมเทคนิค และตรวจสอบยืนยันว่าข้อมูลสำรองสามารถนำมากู้คืนได้ภายในกรอบเวลา RTO จริงหรือไม่ โดยไม่เสี่ยงต่อการหยุดทำงานในสภาพแวดล้อมการใช้งานจริง"
+        },
+        {
+          "id": "VOC-CC26-D2-048",
+          "term": "Cutover Test",
+          "objective": "2.2",
+          "exam_relevance_en": "Full cutover tests provide the highest level of assurance, but also carry the highest operational risk. They are conducted during planned maintenance windows with executive sign-off.",
+          "exam_relevance_th": "การทดสอบสลับระบบเต็มรูปแบบให้ความมั่นใจในระดับสูงสุด แต่ก็มีความเสี่ยงต่อการดำเนินงานสูงสุดเช่นกัน จึงต้องดำเนินการในช่วงเวลาบำรุงรักษาตามแผนและต้องได้รับการอนุมัติจากผู้บริหาร"
+        },
+        {
+          "id": "VOC-CC26-D2-049",
+          "term": "Failover vs Fallback",
+          "objective": "2.2",
+          "exam_relevance_en": "Disaster recovery plans must address BOTH phases. A plan that only describes failover will leave an organization stranded on secondary hardware with unsynchronized data when returning to normal.",
+          "exam_relevance_th": "แผนกู้คืนระบบต้องระบุทั้งสองขั้นตอน แผนที่มีเฉพาะการสลับไประบบสำรอง (Failover) จะทำให้องค์กรติดค้างอยู่บนฮาร์ดแวร์สำรองและข้อมูลไม่ซิงค์กันเมื่อต้องเดินทางกลับมาใช้งานระบบหลักตามปกติ (Fallback)"
+        },
+        {
+          "id": "VOC-CC26-D2-050",
+          "term": "Operational Resilience",
+          "objective": "2.2",
+          "exam_relevance_en": "Operational resilience represents the modern evolution beyond traditional static disaster recovery. It focuses on end-to-end service continuity rather than just restoring isolated servers.",
+          "exam_relevance_th": "ความยืดหยุ่นในการดำเนินงานเป็นวิวัฒนาการยุคใหม่ที่ก้าวข้ามการกู้คืนระบบแบบเดิม โดยมุ่งเน้นไปที่ความต่อเนื่องของบริการตั้งแต่ต้นทางจนถึงปลายทาง มากกว่าการเพียงแค่กู้คืนเซิร์ฟเวอร์ที่แยกโดดเดี่ยว"
+        },
+        {
+          "id": "VOC-CC26-D2-051",
+          "term": "Security Awareness",
+          "objective": "2.3",
+          "exam_relevance_en": "Awareness focuses on knowledge transfer and recognizing deception (e.g., spotting phishing emails). It is the individual cognitive foundation necessary for building an organizational security culture.",
+          "exam_relevance_th": "การตระหนักรู้มุ่งเน้นไปที่การถ่ายทอดความรู้และการตรวจจับกลลวง (เช่น การสังเกตอีเมลฟิชชิ่ง) เป็นรากฐานทางปัญญาของแต่ละบุคคลที่จำเป็นต่อการสร้างวัฒนธรรมความปลอดภัยขององค์กร"
+        },
+        {
+          "id": "VOC-CC26-D2-052",
+          "term": "Security Culture",
+          "objective": "2.3",
+          "exam_relevance_en": "Awareness is what people KNOW; culture is what people DO when no one is watching. Culture is driven by executive leadership modeling and psychological safety.",
+          "exam_relevance_th": "การตระหนักรู้คือสิ่งที่บุคลากร 'รู้' แต่วัฒนธรรมความปลอดภัยคือสิ่งที่บุคลากร 'ปฏิบัติ' เมื่อไม่มีใครจับตามอง วัฒนธรรมขับเคลื่อนด้วยการทำเป็นแบบอย่างของผู้นำและความปลอดภัยทางจิตวิทยาในการรายงานปัญหา"
+        },
+        {
+          "id": "VOC-CC26-D2-053",
+          "term": "Security Leadership",
+          "objective": "2.3",
+          "exam_relevance_en": "Tone at the top is vital. If executives demand bypasses around security rules (like refusing MFA), security culture collapses. Leadership must visibly follow all controls.",
+          "exam_relevance_th": "แบบอย่างของผู้นำมีความสำคัญอย่างยิ่ง หากผู้บริหารเรียกร้องข้อยกเว้นไม่ปฏิบัติตามกฎ (เช่น ปฏิเสธการใช้ MFA) วัฒนธรรมความปลอดภัยจะพังทลาย ผู้นำต้องปฏิบัติตามมาตรการควบคุมทั้งหมดให้เห็นเป็นแบบอย่าง"
+        },
+        {
+          "id": "VOC-CC26-D2-054",
+          "term": "Security Awareness vs Security Culture",
+          "objective": "2.3",
+          "exam_relevance_en": "Exam questions emphasize that 100% completion of awareness training does NOT automatically guarantee a strong security culture. Culture requires continuous behavioral reinforcement.",
+          "exam_relevance_th": "คำถามในข้อสอบจะเน้นย้ำว่า การผ่านการฝึกอบรมการตระหนักรู้ครบ 100% ไม่ได้ช่วยรับประกันว่าจะเกิดวัฒนธรรมความปลอดภัยที่เข้มแข็งโดยอัตโนมัติ วัฒนธรรมต้องการการตอกย้ำพฤติกรรมอย่างต่อเนื่อง"
+        },
+        {
+          "id": "VOC-CC26-D2-055",
+          "term": "Social Engineering",
+          "objective": "2.3",
+          "exam_relevance_en": "Social engineering targets the human element rather than software vulnerabilities. It underpins most major enterprise compromises. Scenarios test identifying psychological triggers (urgency, authority).",
+          "exam_relevance_th": "วิศวกรรมสังคมมุ่งเป้าไปที่จุดอ่อนของมนุษย์มากกว่าช่องโหว่ของซอฟต์แวร์ เป็นสาเหตุหลักของการบุกรุกองค์กรส่วนใหญ่ โจทย์จะทดสอบการระบุสิ่งกระตุ้นทางจิตวิทยา (เช่น ความเร่งด่วน การอ้างอำนาจ)"
+        },
+        {
+          "id": "VOC-CC26-D2-056",
+          "term": "Phishing",
+          "objective": "2.3",
+          "exam_relevance_en": "Phishing is generic and mass-volume (uses generic greetings like 'Dear Customer'). It is contrasted with targeted spear phishing and executive-targeted whaling.",
+          "exam_relevance_th": "ฟิชชิ่งเป็นการส่งแบบหว่านแหจำนวนมาก (ใช้คำทักทายทั่วไป เช่น 'เรียน ลูกค้าผู้มีอุปการคุณ') ให้เปรียบเทียบกับสเปียร์ฟิชชิ่งที่เจาะจงเป้าหมาย และเวลลิงที่มุ่งเป้าผู้บริหารระดับสูง"
+        },
+        {
+          "id": "VOC-CC26-D2-057",
+          "term": "Spear Phishing",
+          "objective": "2.3",
+          "exam_relevance_en": "Spear phishing uses specific internal terminology, project names, and colleague references. Candidates must identify that tailored context distinguishes spear phishing from mass phishing.",
+          "exam_relevance_th": "สเปียร์ฟิชชิ่งใช้คำศัพท์ภายในองค์กร ชื่อโครงการ และการอ้างอิงถึงเพื่อนร่วมงานอย่างเจาะจง ผู้สอบต้องระบุให้ได้ว่าบริบทที่ปรับแต่งมาโดยเฉพาะนี้คือสิ่งที่แยกสเปียร์ฟิชชิ่งออกจากฟิชชิ่งทั่วไป"
+        },
+        {
+          "id": "VOC-CC26-D2-058",
+          "term": "Whaling",
+          "objective": "2.3",
+          "exam_relevance_en": "Whaling focuses on C-suite executives who possess high authorization limits, financial transfer authority, or sensitive board-level strategic information.",
+          "exam_relevance_th": "เวลลิงมุ่งเป้าไปที่ผู้บริหารระดับสูง (C-suite) ผู้มีอำนาจลงนามในวงเงินสูง มีสิทธิ์อนุมัติโอนเงิน หรือครอบครองข้อมูลกลยุทธ์ระดับบอร์ดบริหาร"
+        },
+        {
+          "id": "VOC-CC26-D2-059",
+          "term": "Phishing vs Spear Phishing vs Whaling",
+          "objective": "2.3",
+          "exam_relevance_en": "Questions test candidate ability to recognize the hierarchy based on the victim's profile: generic recipient = phishing; department analyst = spear phishing; CEO/CFO = whaling.",
+          "exam_relevance_th": "คำถามทดสอบความสามารถในการจำแนกลำดับชั้นตามโปรไฟล์ของเหยื่อ: ผู้รับทั่วไป = Phishing; นักวิเคราะห์ในแผนก = Spear Phishing; ซีอีโอหรือซีเอฟโอ = Whaling"
+        },
+        {
+          "id": "VOC-CC26-D2-060",
+          "term": "Voice Phishing",
+          "objective": "2.3",
+          "exam_relevance_en": "Vishing defines the transmission medium (voice phone calls). Scenarios frequently combine vishing with spoofed caller IDs and high urgency.",
+          "exam_relevance_th": "วิชชิ่งระบุช่องทางการสื่อสารผ่านทางเสียง (โทรศัพท์) ในสถานการณ์มักรวมวิชชิ่งเข้ากับการปลอมแปลงหมายเลขโทรเข้า (Caller ID Spoofing) และการสร้างความกดดันเร่งด่วน"
+        },
+        {
+          "id": "VOC-CC26-D2-061",
+          "term": "SMS Phishing",
+          "objective": "2.3",
+          "exam_relevance_en": "Smishing defines the transmission channel (cellular SMS). Attackers exploit high SMS read rates and limited screen space to mask deceptive URLs.",
+          "exam_relevance_th": "สมิชชิ่งระบุช่องทางการโจมตีผ่านข้อความ SMS บนโทรศัพท์มือถือ ผู้โจมตีอาศัยอัตราการเปิดอ่าน SMS ที่รวดเร็วและพื้นที่หน้าจอที่จำกัดเพื่อบดบัง URL ที่หลอกลวง"
+        },
+        {
+          "id": "VOC-CC26-D2-062",
+          "term": "Pretexting",
+          "objective": "2.3",
+          "exam_relevance_en": "Pretexting is the deceptive STORYLINE/PERSONA mechanism. It can be delivered through any channel (email, phone, in person). Vishing is the voice channel; pretexting is the narrative.",
+          "exam_relevance_th": "พรีเท็กซ์ติงเป็นกลไกการสร้าง 'เรื่องราวหรือตัวตนสมมุติ' ขึ้นมาหลอกลวง สามารถส่งผ่านช่องทางใดก็ได้ (อีเมล โทรศัพท์ หรือพบหน้าโดยตรง) วิชชิ่งคือช่องทางเสียง ส่วนพรีเท็กซ์ติงคือบทเรื่องเล่า"
+        },
+        {
+          "id": "VOC-CC26-D2-063",
+          "term": "Vishing / Smishing vs Pretexting",
+          "objective": "2.3",
+          "exam_relevance_en": "These concepts are not mutually exclusive. An attacker often uses vishing (the phone channel) to deliver an invented pretext (such as posing as an external auditor).",
+          "exam_relevance_th": "แนวคิดเหล่านี้ไม่ได้แยกขาดจากกัน ผู้โจมตีมักใช้วิชชิ่ง (การโทรศัพท์) เป็นช่องทางในการถ่ายทอดเรื่องราวที่แต่งขึ้นมา (เช่น ปลอมตัวเป็นผู้ตรวจสอบระบบจากภายนอก)"
+        },
+        {
+          "id": "VOC-CC26-D2-064",
+          "term": "Password Hygiene",
+          "objective": "2.3",
+          "exam_relevance_en": "Password hygiene is an individual user responsibility. Modern standards emphasize length, uniqueness, and multifactor authentication over frequent arbitrary character changes that lead to predictable patterns.",
+          "exam_relevance_th": "สุขอนามัยด้านรหัสผ่านเป็นความรับผิดชอบส่วนบุคคลของผู้ใช้ มาตรฐานยุคใหม่เน้นย้ำเรื่องความยาว ความไม่ซ้ำซ้อน และการใช้ MFA มากกว่าการบังคับเปลี่ยนรหัสผ่านบ่อยๆ จนนำไปสู่รูปแบบรหัสผ่านที่เดาง่าย"
+        },
+        {
+          "id": "VOC-CC26-D2-065",
+          "term": "Credential Protection",
+          "objective": "2.3",
+          "exam_relevance_en": "Distinction: Password hygiene is the user's personal practice; Credential protection represents the organization's technical safeguards (MFA, salted hashes, least privilege).",
+          "exam_relevance_th": "ข้อแตกต่าง: Password Hygiene เป็นแนวปฏิบัติส่วนตัวของผู้ใช้ ส่วน Credential Protection เป็นมาตรการทางเทคนิคขององค์กรในการปกป้องข้อมูลประจำตัว (เช่น MFA, Salted Hashes, Least Privilege)"
+        },
+        {
+          "id": "VOC-CC26-D2-066",
+          "term": "Reporting Suspicious Activity",
+          "objective": "2.3",
+          "exam_relevance_en": "Critical exam rule: The correct FIRST action for general employees is to RECOGNIZE AND REPORT. Employees must not inspect malware, attempt to trace attackers, or confront intruders.",
+          "exam_relevance_th": "กฎเหล็กในข้อสอบ: การกระทำ 'แรกสุด' ที่ถูกต้องสำหรับพนักงานทั่วไปคือ การสังเกตและรายงาน (RECOGNIZE AND REPORT) พนักงานต้องไม่ตรวจสอบมัลแวร์ด้วยตนเอง ไม่พยายามตามรอยผู้โจมตี หรือเผชิญหน้ากับผู้บุกรุก"
+        },
+        {
+          "id": "VOC-CC26-D2-067",
+          "term": "FIRST (Recognize and Report)",
+          "objective": "2.3",
+          "exam_relevance_en": "Exam Qualifier: Questions asking what an employee should do FIRST when receiving a suspicious email or encountering an unbadged visitor test this rule. The correct answer is always reporting, not investigating or modifying settings.",
+          "exam_relevance_th": "เงื่อนไขข้อสอบ: คำถามที่ถามว่าพนักงานควรทำสิ่งใดเป็นสิ่ง 'แรก' (FIRST) เมื่อได้รับอีเมลน่าสงสัยหรือพบผู้ไม่ติดบัตร จะทดสอบกฎข้อนี้เสมอ คำตอบที่ถูกต้องคือการรายงาน ไม่ใช่การสืบสวนหรือแก้ไขการตั้งค่าระบบ"
+        },
+        {
+          "id": "VOC-CC26-D2-068",
+          "term": "Chief Information Security Officer",
+          "objective": "2.3",
+          "exam_relevance_en": "The CISO provides strategic leadership, bridges technical risks to board members, and establishes security policies, distinct from daily hands-on technical administrators.",
+          "exam_relevance_th": "CISO ให้ความเป็นผู้นำเชิงกลยุทธ์ เชื่อมโยงความเสี่ยงทางเทคนิคกับคณะกรรมการบริหาร และจัดทำนโยบายความปลอดภัย ซึ่งแตกต่างจากผู้ดูแลระบบทางเทคนิคที่ปฏิบัติงานประจำวัน"
+        },
+        {
+          "id": "VOC-CC26-D2-069",
+          "term": "Security Measurement",
+          "objective": "2.4",
+          "exam_relevance_en": "Per NIST SP 800-55, measurement provides evidence for executive decision-making. Security cannot be effectively managed or justified without consistent, repeatable measurement.",
+          "exam_relevance_th": "ตามมาตรฐาน NIST SP 800-55 การวัดผลให้หลักฐานเชิงประจักษ์สำหรับการตัดสินใจของผู้บริหาร ความมั่นคงปลอดภัยจะไม่สามารถบริหารจัดการหรือของบประมาณได้อย่างมีประสิทธิผลหากปราศจากการวัดผลที่ทำซ้ำได้อย่างสม่ำเสมอ"
+        },
+        {
+          "id": "VOC-CC26-D2-070",
+          "term": "Security Metric",
+          "objective": "2.4",
+          "exam_relevance_en": "Metrics must be specific, measurable, achievable, repeatable, and time-bound (SMART). Scenarios test selecting actionable operational metrics (like patch compliance rate) over vague claims.",
+          "exam_relevance_th": "ตัวชี้วัดต้องมีความเฉพาะเจาะจง วัดผลได้ ทำได้จริง ทำซ้ำได้ และมีกรอบเวลากำกับ (SMART) คำถามจะทดสอบการเลือกตัวชี้วัดเชิงปฏิบัติการที่นำไปปฏิบัติได้จริง (เช่น อัตราการติดตั้งแพตช์ตามเกณฑ์) มากกว่าการอ้างข้อความลอยๆ"
+        },
+        {
+          "id": "VOC-CC26-D2-071",
+          "term": "Mean Time to Detect",
+          "objective": "2.4",
+          "exam_relevance_en": "MTTD measures detection efficiency. Shorter MTTD limits attacker dwell time, reducing potential data exfiltration and damage. Calculated from initial compromise to alert timestamp.",
+          "exam_relevance_th": "MTTD วัดประสิทธิภาพในการตรวจจับ ยิ่ง MTTD สั้นลง ก็ยิ่งลดระยะเวลาที่ผู้โจมตีแฝงตัวอยู่ในระบบ (Dwell Time) ช่วยลดการขโมยข้อมูลและความเสียหาย คำนวณจากเวลาที่เริ่มถูกบุกรุกจนถึงเวลาที่ระบบแจ้งเตือน"
+        },
+        {
+          "id": "VOC-CC26-D2-072",
+          "term": "Mean Time to Respond",
+          "objective": "2.4",
+          "exam_relevance_en": "In ISC2 CC primary materials, MTTR represents 'Mean Time to Respond'. (Note: In wider engineering literature, it can also denote Mean Time to Repair or Recover). Measured from alert to active response.",
+          "exam_relevance_th": "ในเอกสารหลักของ ISC2 CC คำว่า MTTR หมายถึง 'Mean Time to Respond' (ระยะเวลาเฉลี่ยในการตอบสนอง) (หมายเหตุ: ในวรรณกรรมวิศวกรรมทั่วไปอาจหมายถึง Repair หรือ Recover ได้ด้วย) วัดจากเวลาที่เกิดการแจ้งเตือนจนถึงเวลาที่เริ่มตอบสนองปฏิบัติการ"
+        },
+        {
+          "id": "VOC-CC26-D2-073",
+          "term": "MTTD vs MTTR",
+          "objective": "2.4",
+          "exam_relevance_en": "Exam scenarios ask which metric is improved when investing in automated SIEM detection rules (MTTD) versus investing in incident response playbooks and automated containment (MTTR).",
+          "exam_relevance_th": "สถานการณ์ในข้อสอบจะถามว่า ตัวชี้วัดใดได้รับการปรับปรุงดีขึ้นเมื่อลงทุนในกฎการตรวจจับอัตโนมัติบน SIEM (ตอบ: MTTD) เทียบกับการลงทุนในคู่มือขั้นตอนตอบสนองเหตุการณ์และการกักกันภัยอัตโนมัติ (ตอบ: MTTR)"
+        },
+        {
+          "id": "VOC-CC26-D2-074",
+          "term": "Remediation Metric",
+          "objective": "2.4",
+          "exam_relevance_en": "Evaluating vulnerability remediation requires tracking time-to-remediation against formal SLA categories based on vulnerability severity (e.g., Critical = 15 days).",
+          "exam_relevance_th": "การประเมินการแก้ไขช่องโหว่ต้องติดตามระยะเวลาที่ใช้ในการแก้ไขเทียบกับหมวดหมู่ SLA ที่กำหนดไว้ตามระดับความรุนแรงของช่องโหว่ (เช่น ระดับวิกฤต Critical = ต้องแก้ภายใน 15 วัน)"
+        },
+        {
+          "id": "VOC-CC26-D2-075",
+          "term": "Patch Compliance Percentage",
+          "objective": "2.4",
+          "exam_relevance_en": "A classic security scorecard KPI. The calculation requires a complete asset inventory as the denominator: (Systems compliant / Total systems) x 100.",
+          "exam_relevance_th": "ดัชนีชี้วัดผลงานหลัก (KPI) แบบคลาสสิก การคำนวณต้องอาศัยบัญชีรายการสินทรัพย์ทั้งหมดเป็นตัวหาร: (จำนวนระบบที่เป็นไปตามเกณฑ์ / จำนวนระบบทั้งหมด) x 100"
+        },
+        {
+          "id": "VOC-CC26-D2-076",
+          "term": "Training Completion Rate",
+          "objective": "2.4",
+          "exam_relevance_en": "Training completion is an implementation/participation metric, NOT a proof of security effectiveness. High completion does not automatically guarantee employees will resist real attacks.",
+          "exam_relevance_th": "อัตราการผ่านการฝึกอบรมเป็นตัวชี้วัดด้านการมีส่วนร่วมและการดำเนินงาน ไม่ใช่หลักฐานยืนยันประสิทธิผลด้านความมั่นคงปลอดภัย อัตราการอบรมที่สูงไม่ได้เป็นหลักประกันว่าพนักงานจะต้านทานการโจมตีจริงได้"
+        },
+        {
+          "id": "VOC-CC26-D2-077",
+          "term": "Training Completion vs Security Effectiveness",
+          "objective": "2.4",
+          "exam_relevance_en": "Foundational NIST SP 800-55 and ISC2 concept. An organization with 100% training completion can still suffer disastrous breaches if behavioral effectiveness is low.",
+          "exam_relevance_th": "แนวคิดพื้นฐานตาม NIST SP 800-55 และ ISC2: องค์กรที่มีอัตราการอบรมผ่าน 100% ก็ยังอาจเผชิญกับเหตุการณ์ข้อมูลรั่วไหลขั้นรุนแรงได้ หากพฤติกรรมในทางปฏิบัติจริงไม่มีประสิทธิผล"
+        },
+        {
+          "id": "VOC-CC26-D2-078",
+          "term": "Key Risk Indicator",
+          "objective": "2.4",
+          "exam_relevance_en": "KRIs signal growing danger before an incident happens (e.g., sharp increase in unpatched critical servers or external probe spikes). Context matters: rising phishing reports can signal higher attack activity or higher vigilance.",
+          "exam_relevance_th": "KRI ส่งสัญญาณเตือนถึงอันตรายที่กำลังก่อตัวก่อนที่เหตุการณ์จะเกิดขึ้น (เช่น เซิร์ฟเวอร์วิกฤตที่ยังไม่แพตช์พุ่งสูงขึ้น หรือการสแกนเครือข่ายจากภายนอกเพิ่มขึ้น) บริบทมีความสำคัญ: การรายงานฟิชชิ่งที่เพิ่มขึ้นอาจหมายถึงการโจมตีที่รุนแรงขึ้น หรือหมายถึงพนักงานมีความระมัดระวังมากขึ้นก็ได้"
+        },
+        {
+          "id": "VOC-CC26-D2-079",
+          "term": "Key Performance Indicator",
+          "objective": "2.4",
+          "exam_relevance_en": "KPIs measure how well operational teams perform work (e.g., percentage of systems patched within SLA, time to resolve tickets).",
+          "exam_relevance_th": "KPI วัดว่าทีมปฏิบัติการทำงานได้ดีเพียงใด (เช่น เปอร์เซ็นต์ของระบบที่ได้รับการแพตช์ภายในกำหนดเวลา SLA, ระยะเวลาในการแก้ไขทิกเก็ต)"
+        },
+        {
+          "id": "VOC-CC26-D2-080",
+          "term": "KPI vs KRI",
+          "objective": "2.4",
+          "exam_relevance_en": "Classic governance exam topic. Scenarios ask whether a metric tracks operational progress (KPI) or provides early risk warnings (KRI). Some metrics (like reported phishing count) can serve both based on context.",
+          "exam_relevance_th": "หัวข้อข้อสอบการกำกับดูแลยอดนิยม โจทย์จะถามว่าตัวชี้วัดนี้ติดตามความคืบหน้าในการปฏิบัติงาน (KPI) หรือแจ้งเตือนความเสี่ยงล่วงหน้า (KRI) ตัวชี้วัดบางตัว (เช่น จำนวนรายงานฟิชชิ่ง) สามารถทำหน้าที่ได้ทั้งสองอย่างขึ้นอยู่กับบริบท"
+        },
+        {
+          "id": "VOC-CC26-D2-081",
+          "term": "Security Dashboard",
+          "objective": "2.4",
+          "exam_relevance_en": "Dashboards emphasize visual presentation, dynamic graphical elements (charts, gauges), and real-time operational monitoring for SOC analysts and IT operators.",
+          "exam_relevance_th": "แดชบอร์ดเน้นการนำเสนอด้วยภาพ องค์ประกอบกราฟิกที่ปรับเปลี่ยนแบบไดนามิก (แผนภูมิ, มาตรวัด) และการติดตามการทำงานเชิงปฏิบัติการแบบเรียลไทม์สำหรับนักวิเคราะห์ SOC และผู้ดูแลระบบ"
+        },
+        {
+          "id": "VOC-CC26-D2-082",
+          "term": "Security Scorecard",
+          "objective": "2.4",
+          "exam_relevance_en": "Scorecards are tabular and target-driven (Target vs Actual vs Status). They evaluate variance (e.g. Target: 95%, Actual: 91%, Deficit: 4 percentage points) for management review.",
+          "exam_relevance_th": "สกอร์การ์ดมีรูปแบบตารางและขับเคลื่อนด้วยเป้าหมาย (เป้าหมาย vs ทำได้จริง vs สถานะ) ประเมินความแปรปรวน (เช่น เป้าหมาย 95%, ทำได้จริง 91%, ส่วนต่างติดลบ 4 จุดเปอร์เซ็นต์) เพื่อให้ฝ่ายบริหารพิจารณา"
+        },
+        {
+          "id": "VOC-CC26-D2-083",
+          "term": "Cybersecurity Report",
+          "objective": "2.4",
+          "exam_relevance_en": "Reports provide detailed narrative context, historical trends, and strategic investment justifications tailored to specific audiences (board of directors, auditors, technical managers).",
+          "exam_relevance_th": "รายงานให้บริบทเชิงบรรยายที่ละเอียด แนวโน้มย้อนหลัง และเหตุผลสนับสนุนการลงทุนเชิงกลยุทธ์ที่ปรับให้เหมาะสมกับผู้รับสารแต่ละกลุ่ม (คณะกรรมการบริหาร, ผู้ตรวจสอบ, ผู้จัดการสายเทคนิค)"
+        },
+        {
+          "id": "VOC-CC26-D2-084",
+          "term": "Dashboard vs Scorecard vs Report",
+          "objective": "2.4",
+          "exam_relevance_en": "Candidates must select the appropriate format based on user need: real-time SOC monitoring = dashboard; tracking SLA targets = scorecard; executive board review = formal report.",
+          "exam_relevance_th": "ผู้สอบต้องเลือกรูปแบบรายงานที่เหมาะสมกับความต้องการของผู้ใช้: การติดตามแบบเรียลไทม์ในศูนย์ SOC = Dashboard; การติดตามเป้าหมาย SLA = Scorecard; การนำเสนอต่อคณะกรรมการบริหาร = รายงานอย่างเป็นทางการ (Report)"
+        },
+        {
+          "id": "VOC-CC26-D2-085",
+          "term": "Service Level Agreement",
+          "objective": "2.4",
+          "exam_relevance_en": "SLAs establish the measurable contractual targets evaluated in security scorecards and vendor governance (e.g., cloud provider promising 99.9% uptime or vendor resolving critical bugs within 15 days).",
+          "exam_relevance_th": "SLA กำหนดเป้าหมายตามสัญญาที่วัดผลได้ ซึ่งจะนำมาประเมินในสกอร์การ์ดความปลอดภัยและการกำกับดูแลคู่ค้าภายนอก (เช่น ผู้ให้บริการคลาวด์รับประกันความพร้อมใช้งาน 99.9% หรือคู่ค้ารับปากแก้บั๊กวิกฤตภายใน 15 วัน)"
+        },
+        {
+          "id": "VOC-CC26-D2-086",
+          "term": "Leading vs Lagging Indicator",
+          "objective": "2.4",
+          "exam_relevance_en": "Exam scenarios ask which indicator type helps prevent incidents before they manifest (leading) versus which indicator records post-incident damage for historical trends (lagging).",
+          "exam_relevance_th": "สถานการณ์ในข้อสอบจะถามว่า ตัวบ่งชี้ประเภทใดช่วยป้องกันเหตุการณ์ก่อนที่จะเกิดขึ้น (Leading Indicator) เทียบกับตัวบ่งชี้ประเภทใดที่บันทึกความเสียหายย้อนหลังเพื่อวิเคราะห์แนวโน้ม (Lagging Indicator)"
+        },
+        {
+          "id": "VOC-CC26-D2-087",
+          "term": "Percentage-Point Deficit",
+          "objective": "2.4",
+          "exam_relevance_en": "Math and wording guidance for scorecard questions. Subtracting 91% from 95% is four percentage points, avoiding linguistic ambiguity in question options.",
+          "exam_relevance_th": "แนวทางการใช้คำและการคำนวณสำหรับคำถามสกอร์การ์ด: การนำ 91% ไปลบออกจาก 95% จะได้ส่วนต่าง 4 จุดเปอร์เซ็นต์ (Percentage Points) เพื่อหลีกเลี่ยงความคลุมเครือทางภาษาในตัวเลือกข้อสอบ"
+        },
+        {
+          "id": "VOC-CC26-D2-088",
+          "term": "AI Model Drift",
+          "objective": "2.2",
+          "exam_relevance_en": "Included in the 2026 exam outline under operational continuity and resilience. Organizations using AI security defenses must continuously monitor for drift to prevent degraded threat detection.",
+          "exam_relevance_th": "บรรจุอยู่ในโครงร่างข้อสอบปี 2026 ภายใต้หัวข้อความต่อเนื่องและความยืดหยุ่นในการดำเนินงาน องค์กรที่ใช้ระบบรักษาความปลอดภัยแบบ AI จะต้องคอยติดตามการเบี่ยงเบนของโมเดลอย่างต่อเนื่องเพื่อป้องกันไม่ให้ประสิทธิภาพในการตรวจจับภัยคุกคามลดลง"
+        },
+        {
+          "id": "VOC-CC26-D2-089",
+          "term": "AI-Specific Key Risk Indicator",
+          "objective": "2.4",
+          "exam_relevance_en": "Part of the updated 2026 exam outline metrics scope. Scenarios test monitoring AI systems using leading indicators to detect reliability degradation before decisions cause business disruption.",
+          "exam_relevance_th": "ส่วนหนึ่งของขอบเขตตัวชี้วัดตามโครงร่างข้อสอบปี 2026 โจทย์จะทดสอบการติดตามระบบ AI ด้วยตัวบ่งชี้นำ (Leading Indicators) เพื่อตรวจจับความเสื่อมถอยของความน่าเชื่อถือก่อนที่การตัดสินใจจะก่อให้เกิดการหยุดชะงักทางธุรกิจ"
+        },
+        {
+          "id": "VOC-CC26-D2-090",
+          "term": "National Institute of Standards and Technology",
+          "objective": "2.1",
+          "exam_relevance_en": "NIST Special Publications are foundational reference benchmarks for ISC2 exam objectives across risk management (SP 800-30), contingency planning (SP 800-34), and metrics (SP 800-55).",
+          "exam_relevance_th": "เอกสารสิ่งพิมพ์พิเศษของ NIST (Special Publications) เป็นเกณฑ์มาตรฐานอ้างอิงพื้นฐานสำหรับวัตถุประสงค์ข้อสอบ ISC2 ทั้งด้านการบริหารความเสี่ยง (SP 800-30), การวางแผนรองรับเหตุฉุกเฉิน (SP 800-34) และการวัดผล (SP 800-55)"
+        },
+        {
+          "id": "VOC-CC26-D2-091",
+          "term": "Short Message Service",
+          "objective": "2.3",
+          "exam_relevance_en": "SMS is an unencrypted, cleartext carrier medium susceptible to caller/sender ID spoofing and interception, which is why SMS-based MFA is less secure than app-based authenticators or hardware keys.",
+          "exam_relevance_th": "SMS เป็นสื่อส่งผ่านข้อมูลแบบข้อความธรรมดาที่ไม่เข้ารหัส ทำให้เสี่ยงต่อการถูกปลอมแปลงหมายเลขผู้ส่ง (Caller ID Spoofing) และการดักรับข้อมูล นี่คือเหตุผลที่ MFA ผ่าน SMS มีความปลอดภัยน้อยกว่าแอปพลิเคชัน Authenticator หรือคีย์ฮาร์ดแวร์"
+        },
+        {
+          "id": "VOC-CC26-D2-092",
+          "term": "Chief Executive Officer",
+          "objective": "2.3",
+          "exam_relevance_en": "The CEO sets the tone at the top for security culture and is frequently impersonated in business email compromise (BEC) and targeted in whaling campaigns.",
+          "exam_relevance_th": "ซีอีโอเป็นผู้กำหนดแบบอย่างที่ดีของผู้นำ (Tone at the Top) ด้านวัฒนธรรมความปลอดภัย และมักถูกปลอมแปลงตัวตนในการหลอกลวงทางอีเมลธุรกิจ (BEC) รวมถึงตกเป็นเป้าหมายของการโจมตีแบบ Whaling"
+        },
+        {
+          "id": "VOC-CC26-D2-093",
+          "term": "Chief Financial Officer",
+          "objective": "2.3",
+          "exam_relevance_en": "CFOs possess high-level authorization for wire transfers and capital expenditure, making them primary targets for whaling and executive impersonation attacks.",
+          "exam_relevance_th": "ซีเอฟโอมีอำนาจระดับสูงในการอนุมัติโอนเงินและการจัดซื้อจัดจ้าง ทำให้ตกเป็นเป้าหมายหลักของการโจมตีแบบ Whaling และการสวมรอยเป็นผู้บริหาร"
+        },
+        {
+          "id": "VOC-CC26-D2-094",
+          "term": "Enterprise Resource Planning",
+          "objective": "2.2",
+          "exam_relevance_en": "ERP systems are frequently classified as mission-critical systems in BIA assessments, requiring aggressive RTO and RPO targets and dedicated disaster recovery failover sites.",
+          "exam_relevance_th": "ระบบ ERP มักถูกจัดเป็นระบบที่มีความสำคัญอย่างยิ่งยวดต่อภารกิจ (Mission-Critical) ในการประเมิน BIA ซึ่งจำเป็นต้องมีเป้าหมาย RTO และ RPO ที่สั้นมาก และต้องมีศูนย์กู้คืนระบบสำรองรองรับ"
+        },
+        {
+          "id": "VOC-CC26-D2-095",
+          "term": "Database",
+          "objective": "2.2",
+          "exam_relevance_en": "Databases represent core data assets in disaster recovery. RPO specifically dictates how frequently database transaction logs or snapshots must be backed up to prevent unacceptable loss.",
+          "exam_relevance_th": "ฐานข้อมูลเป็นสินทรัพย์ข้อมูลหลักในการกู้คืนระบบจากภัยพิบัติ โดย RPO จะเป็นตัวกำหนดโดยตรงว่าต้องสำรองบันทึกธุรกรรม (Transaction Logs) หรือสแนปช็อตของฐานข้อมูลบ่อยเพียงใดเพื่อป้องกันการสูญหายที่ยอมรับไม่ได้"
+        },
+        {
+          "id": "VOC-CC26-D2-096",
+          "term": "General Data Protection Regulation",
+          "objective": "2.1",
+          "exam_relevance_en": "GDPR exemplifies international statutory compliance. Organizations must implement appropriate technical and organizational measures; note that GDPR requires notification without undue delay (often within 72 hours), but does NOT prescribe specific hourly system recovery targets (correcting KNOW-D2-028).",
+          "exam_relevance_th": "GDPR เป็นตัวอย่างของการปฏิบัติตามกฎหมายระหว่างประเทศ องค์กรต้องดำเนินมาตรการทางเทคนิคและองค์กรที่เหมาะสม หมายเหตุ: GDPR กำหนดให้แจ้งเตือนเหตุละเมิดโดยไม่ชักช้า (โดยทั่วไปภายใน 72 ชั่วโมง) แต่ 'ไม่ได้' กำหนดเป้าหมายชั่วโมงในการกู้คืนระบบอย่างเจาะจง (แก้ไขตาม KNOW-D2-028)"
+        },
+        {
+          "id": "VOC-CC26-D2-097",
+          "term": "Health Insurance Portability and Accountability Act",
+          "objective": "2.1",
+          "exam_relevance_en": "HIPAA Security Rule mandates administrative, physical, and technical safeguards and contingency planning. Note that HIPAA mandates contingency plans, but does NOT dictate specific numerical RTO hours (correcting KNOW-D2-028).",
+          "exam_relevance_th": "กฎความปลอดภัย HIPAA กำหนดให้มีมาตรการป้องกันเชิงบริหาร กายภาพ และเทคนิค รวมถึงการวางแผนรองรับเหตุฉุกเฉิน หมายเหตุ: HIPAA บังคับให้ต้องมีแผนฉุกเฉิน แต่ 'ไม่ได้' กำหนดตัวเลขชั่วโมง RTO ไว้อย่างตายตัว (แก้ไขตาม KNOW-D2-028)"
+        },
+        {
+          "id": "VOC-CC26-D2-098",
+          "term": "Direction, Oversight, and Accountability",
+          "objective": "2.1",
+          "exam_relevance_en": "Reading Clue: Whenever an exam stem refers to providing strategic direction, executive oversight, or final accountability, the question points to Governance rather than technical administration.",
+          "exam_relevance_th": "จุดสังเกตในการอ่านโจทย์: เมื่อใดก็ตามที่โจทย์กล่าวถึงการให้ทิศทางเชิงกลยุทธ์ การกำกับดูแลของผู้บริหาร หรือภาระความรับผิดชอบสูงสุด คำถามนั้นชี้ไปที่เรื่อง Governance (การกำกับดูแล) มากกว่าการบริหารจัดการทางเทคนิค"
+        },
+        {
+          "id": "VOC-CC26-D2-099",
+          "term": "BEST (Risk Treatment Strategy)",
+          "objective": "2.1",
+          "exam_relevance_en": "Exam Qualifier: Questions asking for the BEST treatment require evaluating business context. Mitigation is not always superior to acceptance if control costs exceed the asset value.",
+          "exam_relevance_th": "เงื่อนไขข้อสอบ: คำถามที่ถามหากลยุทธ์การจัดการความเสี่ยงที่ 'ดีที่สุด' (BEST) จำเป็นต้องประเมินบริบททางธุรกิจ การลดความเสี่ยงไม่ได้เหนือกว่าการยอมรับความเสี่ยงเสมอไป หากต้นทุนของมาตรการควบคุมสูงเกินกว่ามูลค่าของสินทรัพย์"
+        },
+        {
+          "id": "VOC-CC26-D2-100",
+          "term": "Tone at the Top",
+          "objective": "2.3",
+          "exam_relevance_en": "A favorite ISC2 concept: Without a strong tone at the top, security awareness fails and policies are ignored. Executive modeling of compliance is required for organizational security culture.",
+          "exam_relevance_th": "แนวคิดยอดนิยมของ ISC2: หากปราศจากแบบอย่างที่ดีของผู้บริหารระดับสูง (Tone at the Top) การตระหนักรู้ด้านความปลอดภัยจะล้มเหลวและนโยบายจะถูกละเลย ผู้บริหารต้องปฏิบัติตามกฎเพื่อเป็นแบบอย่างในการสร้างวัฒนธรรมความปลอดภัยขององค์กร"
+        },
+        {
+          "id": "VOC-CC26-D2-101",
+          "term": "LEAST / NOT / EXCEPT (Governance Exclusions)",
+          "objective": "exam_strategy",
+          "exam_relevance_en": "Candidates must invert their search and identify the distractor or prohibited behavior (such as transferring accountability to an insurer, or expecting an unequipped cold site to restore systems within hours).",
+          "exam_relevance_th": "ผู้สอบต้องกลับทิศทางการค้นหาคำตอบเพื่อระบุตัวลวงหรือพฤติกรรมที่ห้ามทำ (เช่น การถ่ายโอนภาระความรับผิดชอบไปยังบริษัทประกัน หรือการคาดหวังว่าศูนย์แบบ Cold Site ที่ไม่มีอุปกรณ์จะกู้ระบบได้ภายในไม่กี่ชั่วโมง)"
+        }
+      ]
+    },
+    "domain_3": {
+      "domain_id": 3,
+      "count": 102,
+      "entries": [
+        {
+          "id": "VOC-CC26-D3-001",
+          "term": "Identity and Access Management",
+          "objective": "3.1",
+          "exam_relevance_en": "IAM spans the full lifecycle of identities. The ISC2 CC exam focuses on distinguishing authentication from authorization, managing account lifecycles, and applying least privilege across systems.",
+          "exam_relevance_th": "IAM ครอบคลุมวงจรชีวิตทั้งหมดของอัตลักษณ์ ข้อสอบ ISC2 CC มุ่งเน้นการแยกแยะระหว่างการพิสูจน์ตัวตน (Authentication) กับการอนุญาตกำหนดสิทธิ์ (Authorization), การจัดการวงจรชีวิตของบัญชีผู้ใช้ และการบังคับใช้หลักการให้สิทธิ์น้อยที่สุดเท่าที่จำเป็น (Least Privilege) ทั่วทั้งระบบ"
+        },
+        {
+          "id": "VOC-CC26-D3-002",
+          "term": "Identity Lifecycle Management",
+          "objective": "3.1",
+          "exam_relevance_en": "Often tested through the Joiner-Mover-Leaver (JML) paradigm. Exam scenarios frequently assess what action must occur during transfers (movers) or departures (leavers).",
+          "exam_relevance_th": "มักทดสอบผ่านแบบจำลองการรับเข้า-ย้ายแผนก-ลาออก (Joiner-Mover-Leaver: JML) สถานการณ์ในข้อสอบมักประเมินว่าต้องดำเนินการอย่างไรเมื่อพนักงานย้ายตำแหน่งหน้าที่ (Movers) หรือพ้นสภาพการเป็นพนักงาน (Leavers)"
+        },
+        {
+          "id": "VOC-CC26-D3-003",
+          "term": "Digital Identity",
+          "objective": "3.1",
+          "exam_relevance_en": "Distinguish an identity from an account or username. One real-world person may hold multiple digital identities or accounts across different environments.",
+          "exam_relevance_th": "แยกแยะความแตกต่างระหว่างอัตลักษณ์ (Identity) ออกจากบัญชีผู้ใช้ (Account) หรือชื่อผู้ใช้ (Username) บุคคลหนึ่งคนในโลกจริงอาจถือครองอัตลักษณ์ดิจิทัลหรือบัญชีผู้ใช้งานได้หลายบัญชีในสภาพแวดล้อมระบบที่แตกต่างกัน"
+        },
+        {
+          "id": "VOC-CC26-D3-004",
+          "term": "Identifier",
+          "objective": "3.1",
+          "exam_relevance_en": "A username or employee ID is an identifier, not an authentication factor or the complete identity itself. Identifiers are claimed during identification, not secret.",
+          "exam_relevance_th": "ชื่อผู้ใช้หรือรหัสพนักงานเป็นเพียงตัวระบุตัวตน (Identifier) ไม่ใช่ปัจจัยการพิสูจน์ตัวตน และไม่ใช่ตัวตนดิจิทัลที่สมบูรณ์ ตัวระบุตัวตนเป็นสิ่งที่นำมาอ้างสิทธิ์ในขั้นตอนการระบุตัวตน (Identification) และไม่ใช่ข้อมูลที่เป็นความลับ"
+        },
+        {
+          "id": "VOC-CC26-D3-005",
+          "term": "Account",
+          "objective": "3.1",
+          "exam_relevance_en": "System accounts are objects of governance and auditing. An individual may possess separate user and administrative accounts to enforce separation of duties and privilege isolation.",
+          "exam_relevance_th": "บัญชีระบบเป็นเป้าหมายของการกำกับดูแลและการตรวจสอบ บุคคลหนึ่งคนอาจมีบัญชีผู้ใช้ทั่วไปและบัญชีผู้ดูแลระบบแยกจากกัน เพื่อบังคับใช้การแบ่งแยกหน้าที่และการแยกสิทธิ์การใช้งาน (Privilege Isolation)"
+        },
+        {
+          "id": "VOC-CC26-D3-006",
+          "term": "Credential",
+          "objective": "3.1",
+          "exam_relevance_en": "Per NIST SP 800-63, a credential binds an identity to an authenticator. Passwords, digital certificates, and smart cards represent credentials or authenticators.",
+          "exam_relevance_th": "ตามมาตรฐาน NIST SP 800-63 ข้อมูลรับรอง (Credential) จะทำหน้าที่ผูกโยงอัตลักษณ์เข้ากับอุปกรณ์หรือกลไกยืนยันตัวตน รหัสผ่าน ใบรับรองดิจิทัล และสมาร์ตการ์ด จัดเป็นข้อมูลรับรองหรือกลไกยืนยันตัวตน"
+        },
+        {
+          "id": "VOC-CC26-D3-007",
+          "term": "Authenticator",
+          "objective": "3.1",
+          "exam_relevance_en": "Authenticators represent authentication factors (knowledge, possession, inherence). Do not confuse an authenticator with a publicly known username.",
+          "exam_relevance_th": "กลไกยืนยันตัวตนทำหน้าที่แทนปัจจัยการพิสูจน์ตัวตน (ความรู้, สิ่งที่ครอบครอง, อัตลักษณ์ทางกายภาพ) อย่าสับสนกลไกยืนยันตัวตนกับชื่อผู้ใช้ที่เปิดเผยต่อสาธารณะ"
+        },
+        {
+          "id": "VOC-CC26-D3-008",
+          "term": "Identity Proofing",
+          "objective": "3.1",
+          "exam_relevance_en": "Crucial exam distinction: Identity proofing happens BEFORE an account or credentials are created (e.g., HR vetting/passport check); authentication happens AFTER during login.",
+          "exam_relevance_th": "ข้อแตกต่างสำคัญยิ่งในข้อสอบ: การตรวจพิสูจน์อัตลักษณ์ (Identity Proofing) จะเกิดขึ้น 'ก่อนหน้า' ที่บัญชีหรือข้อมูลรับรองจะถูกสร้างขึ้น (เช่น การตรวจสอบประวัติโดย HR / การตรวจหนังสือเดินทาง) ส่วนการพิสูจน์ตัวตน (Authentication) จะเกิดขึ้น 'ภายหลัง' ในระหว่างการเข้าสู่ระบบ"
+        },
+        {
+          "id": "VOC-CC26-D3-009",
+          "term": "Identification",
+          "objective": "3.1",
+          "exam_relevance_en": "Identification is the initial step of the AAA framework where a user enters a username. It does not provide security until authentication proves the claim.",
+          "exam_relevance_th": "การระบุตัวตนคือขั้นตอนเริ่มต้นของกรอบการทำงาน AAA ที่ผู้ใช้ป้อนชื่อผู้ใช้เข้าสู่ระบบ โดยขั้นตอนนี้ยังไม่ได้รับประกันความมั่นคงปลอดภัย จนกว่าจะมีการพิสูจน์ตัวตนเพื่อยืนยันข้อกล่าวอ้างนั้น"
+        },
+        {
+          "id": "VOC-CC26-D3-010",
+          "term": "Authentication",
+          "objective": "3.1",
+          "exam_relevance_en": "Core exam principle: Authentication proves identity (Who are you?); it does not grant permissions (What can you do?). High-scoring candidates never confuse AuthN with AuthZ.",
+          "exam_relevance_th": "หลักการสำคัญของข้อสอบ: การพิสูจน์ตัวตน (Authentication) เป็นการพิสูจน์ตัวตนว่า 'คุณคือใคร' (Who are you?) ไม่ใช่การให้สิทธิ์ว่า 'คุณทำอะไรได้บ้าง' (What can you do?) ผู้สอบที่ได้คะแนนสูงจะต้องไม่สับสนระหว่าง AuthN กับ AuthZ โดยเด็ดขาด"
+        },
+        {
+          "id": "VOC-CC26-D3-011",
+          "term": "Authorization",
+          "objective": "3.1",
+          "exam_relevance_en": "Authorization follows successful authentication. Even validly authenticated users will be denied access if their authorization policy excludes the resource.",
+          "exam_relevance_th": "การกำหนดสิทธิ์จะเกิดขึ้นหลังจากผ่านการพิสูจน์ตัวตนสำเร็จแล้ว แม้ว่าผู้ใช้จะผ่านการพิสูจน์ตัวตนได้อย่างถูกต้อง แต่ก็จะถูกปฏิเสธการเข้าถึงทันทีหากนโยบายการอนุญาตสิทธิ์ไม่ได้รวมทรัพยากรนั้นไว้"
+        },
+        {
+          "id": "VOC-CC26-D3-012",
+          "term": "Provisioning",
+          "objective": "3.1",
+          "exam_relevance_en": "Provisioning must be governed by business approval and least privilege. Account creation should never occur based on urgency alone without formal owner approval.",
+          "exam_relevance_th": "การจัดเตรียมสิทธิ์การใช้งานต้องได้รับการกำกับดูแลด้วยการอนุมัติทางธุรกิจและหลักการให้สิทธิ์น้อยที่สุดเท่าที่จำเป็น การสร้างบัญชีจะต้องไม่เกิดขึ้นจากความเร่งด่วนเพียงอย่างเดียวโดยปราศจากการอนุมัติอย่างเป็นทางการจากเจ้าของข้อมูล"
+        },
+        {
+          "id": "VOC-CC26-D3-013",
+          "term": "Deprovisioning",
+          "objective": "3.1",
+          "exam_relevance_en": "Critical exam point: Deprovisioning terminates access but must preserve historical audit records under retention policies. Terminating central accounts must also revoke downstream app sessions.",
+          "exam_relevance_th": "จุดสำคัญของข้อสอบ: การเพิกถอนสิทธิ์เป็นการยกเลิกการเข้าถึง แต่ต้องยังคงเก็บรักษาบันทึกประวัติการตรวจสอบย้อนหลังตามนโยบายการจัดเก็บข้อมูล การระงับบัญชีที่ระบบศูนย์กลางจะต้องเพิกถอนเซสชันการทำงานของแอปพลิเคชันปลายทางด้วยเสมอ"
+        },
+        {
+          "id": "VOC-CC26-D3-014",
+          "term": "Joiner Process",
+          "objective": "3.1",
+          "exam_relevance_en": "Part of the Joiner-Mover-Leaver (JML) framework. Do not copy an existing peer's permissions, which leads to immediate over-entitlement.",
+          "exam_relevance_th": "ส่วนหนึ่งของกรอบการทำงาน Joiner-Mover-Leaver (JML) ห้ามคัดลอกสิทธิ์ของเพื่อนร่วมงานที่มีอยู่เดิม เพราะจะนำไปสู่การได้รับสิทธิ์เกินความจำเป็นทันที (Over-entitlement)"
+        },
+        {
+          "id": "VOC-CC26-D3-015",
+          "term": "Mover Process",
+          "objective": "3.1",
+          "exam_relevance_en": "The most frequent source of 'privilege accumulation' or 'access creep'. The exam heavily tests revoking previous duties when employees transition departments.",
+          "exam_relevance_th": "สาเหตุที่พบบ่อยที่สุดของการสะสมอภิสิทธิ์การใช้งาน (Privilege Accumulation หรือ Access Creep) ข้อสอบเน้นการทดสอบอย่างหนักเกี่ยวกับการยกเลิกสิทธิ์หน้าที่เดิมออกไปเมื่อพนักงานย้ายแผนก"
+        },
+        {
+          "id": "VOC-CC26-D3-016",
+          "term": "Leaver Process",
+          "objective": "3.1",
+          "exam_relevance_en": "Exam scenarios emphasize speed, completeness across cloud and on-prem systems, independent session termination, and audit log retention.",
+          "exam_relevance_th": "สถานการณ์ในข้อสอบเน้นย้ำเรื่องความรวดเร็ว ความครบถ้วนครอบคลุมทั้งระบบคลาวด์และระบบในองค์กร การยกเลิกเซสชันการใช้งานทันที และการเก็บรักษาบันทึกการตรวจสอบย้อนหลัง"
+        },
+        {
+          "id": "VOC-CC26-D3-017",
+          "term": "Privilege Accumulation",
+          "objective": "3.1",
+          "exam_relevance_en": "Also known as 'privilege creep'. Periodic access reviews and automated mover workflows are the primary countermeasures to detect and remediate privilege accumulation.",
+          "exam_relevance_th": "หรือที่เรียกว่า 'Privilege Creep' การทบทวนสิทธิ์การเข้าถึงเป็นระยะและขั้นตอนการทำงานอัตโนมัติสำหรับการย้ายแผนกถือเป็นมาตรการหลักในการตรวจจับและแก้ไขปัญหาการสะสมสิทธิ์เกินความจำเป็น"
+        },
+        {
+          "id": "VOC-CC26-D3-018",
+          "term": "Access Review",
+          "objective": "3.1",
+          "exam_relevance_en": "Reviewing alone is not sufficient; decisions must be enforced. If permissions are rejected, remediation must be carried out and verified.",
+          "exam_relevance_th": "การทบทวนสิทธิ์เพียงอย่างเดียวยังไม่เพียงพอ การตัดสินใจจะต้องถูกนำไปบังคับใช้จริงด้วย หากผลการทบทวนระบุให้ยกเลิกสิทธิ์ จะต้องดำเนินการแก้ไขทางเทคนิคและตรวจสอบยืนยันผลเสมอ"
+        },
+        {
+          "id": "VOC-CC26-D3-019",
+          "term": "Access Recertification",
+          "objective": "3.1",
+          "exam_relevance_en": "Exam context: Recertification is not a rubber-stamp exercise. Reviewers must inspect evidence of actual need, reject stale rights, and trigger technical remediation.",
+          "exam_relevance_th": "บริบทในข้อสอบ: การรับรองสิทธิ์ซ้ำต้องไม่ใช่การเซ็นอนุมัติผ่านๆ โดยไม่ดู ผู้ทบทวนต้องตรวจสอบหลักฐานความจำเป็นในการใช้งานจริง ปฏิเสธสิทธิ์ที่ไม่จำเป็นแล้ว และสั่งการแก้ไขทางเทคนิค"
+        },
+        {
+          "id": "VOC-CC26-D3-020",
+          "term": "Access Remediation",
+          "objective": "3.1",
+          "exam_relevance_en": "An access review is incomplete without remediation. Recording that a permission should be removed provides zero protection until the technical entitlement is revoked.",
+          "exam_relevance_th": "การทบทวนสิทธิ์จะไม่สมบูรณ์หากปราศจากการแก้ไขสิทธิ์ การบันทึกไว้ในรายงานว่าควรลบสิทธิ์ออกไปจะไม่มีผลป้องกันความปลอดภัยใดๆ จนกว่าสิทธิ์ทางเทคนิคนั้นจะถูกเพิกถอนออกไปจริง"
+        },
+        {
+          "id": "VOC-CC26-D3-021",
+          "term": "Account Ownership",
+          "objective": "3.1",
+          "exam_relevance_en": "Both human and non-human accounts (service accounts, bots) must possess assigned owners. Accounts without accountable owners are classified as orphaned accounts.",
+          "exam_relevance_th": "ทั้งบัญชีของบุคคลและบัญชีที่ไม่ได้เป็นของบุคคล (Service Accounts, Bots) จะต้องมีเจ้าของที่ได้รับมอบหมาย บัญชีที่ปราศจากเจ้าของที่รับผิดชอบจะถูกจัดเป็นบัญชีไร้เจ้าของ (Orphaned Accounts)"
+        },
+        {
+          "id": "VOC-CC26-D3-022",
+          "term": "Inactive Account",
+          "objective": "3.1",
+          "exam_relevance_en": "Crucial distinction: Inactivity measures time since last logon; orphaning measures missing ownership. A rarely used disaster recovery account is inactive but NOT orphaned.",
+          "exam_relevance_th": "ข้อแตกต่างสำคัญ: การไม่ใช้งานวัดจากระยะเวลาตั้งแต่เข้าสู่ระบบครั้งสุดท้าย ส่วนการไร้เจ้าของวัดจากการขาดผู้รับผิดชอบดูแล บัญชีสำหรับกู้คืนระบบจากภัยพิบัติที่นานๆ ใช้ครั้งหนึ่งจัดเป็นบัญชีที่ไม่เคลื่อนไหว แต่ 'ไม่ใช่' บัญชีไร้เจ้าของ"
+        },
+        {
+          "id": "VOC-CC26-D3-023",
+          "term": "Orphaned Account",
+          "objective": "3.1",
+          "exam_relevance_en": "A major security vulnerability. An orphaned account can be actively running automated tasks, yet remains a critical governance defect because nobody manages or reviews it.",
+          "exam_relevance_th": "ช่องโหว่ความปลอดภัยระดับร้ายแรง บัญชีไร้เจ้าของอาจยังคงรันงานอัตโนมัติอยู่ตลอดเวลา แต่ยังคงเป็นข้อบกพร่องร้ายแรงด้านการกำกับดูแลเพราะไม่มีใครคอยบริหารจัดการหรือทบทวนสิทธิ์"
+        },
+        {
+          "id": "VOC-CC26-D3-024",
+          "term": "Service Account",
+          "objective": "3.1",
+          "exam_relevance_en": "Service accounts frequently hold elevated privileges. They must have assigned owners, scoped rights, automated password rotation, and regular access reviews.",
+          "exam_relevance_th": "บัญชีบริการมักครอบครองสิทธิ์ระดับสูง จะต้องมีเจ้าของที่รับผิดชอบชัดเจน มีการจำกัดขอบเขตสิทธิ์ มีการเปลี่ยนรหัสผ่านอัตโนมัติ และได้รับการทบทวนสิทธิ์การเข้าถึงอย่างสม่ำเสมอ"
+        },
+        {
+          "id": "VOC-CC26-D3-025",
+          "term": "Workload Identity",
+          "objective": "3.1",
+          "exam_relevance_en": "Part of the 2026 exam update. Automated workloads must have their own identities and cannot use interactive human MFA prompts.",
+          "exam_relevance_th": "ส่วนหนึ่งของการอัปเดตข้อสอบปี 2026 งานประมวลผลอัตโนมัติจะต้องมีอัตลักษณ์ของตนเอง และไม่สามารถใช้ขั้นตอนการแจ้งเตือน MFA แบบโต้ตอบที่ออกแบบมาสำหรับมนุษย์ได้"
+        },
+        {
+          "id": "VOC-CC26-D3-026",
+          "term": "Directory Service",
+          "objective": "3.1",
+          "exam_relevance_en": "Directory services (like LDAP or Active Directory) store structured identity and group membership data. They are not the same as an IdP that generates federated assertions.",
+          "exam_relevance_th": "บริการไดเรกทอรี (เช่น LDAP หรือ Active Directory) จัดเก็บข้อมูลโครงสร้างอัตลักษณ์และการเป็นสมาชิกกลุ่ม ซึ่งไม่ใช่สิ่งเดียวกับ IdP ที่ทำหน้าที่สร้างการยืนยันสิทธิ์แบบสหพันธ์ (Federated Assertions)"
+        },
+        {
+          "id": "VOC-CC26-D3-027",
+          "term": "Identity Provider",
+          "objective": "3.1",
+          "exam_relevance_en": "In federated authentication, the IdP authenticates the user, while the Service Provider (relying party) validates the assertion and makes local authorization decisions.",
+          "exam_relevance_th": "ในการพิสูจน์ตัวตนแบบสหพันธ์ ตัว IdP จะทำหน้าที่พิสูจน์ตัวตนผู้ใช้ ส่วนผู้ให้บริการปลายทาง (Service Provider หรือ Relying Party) จะตรวจสอบความถูกต้องของการยืนยันสิทธิ์และทำการตัดสินใจอนุญาตสิทธิ์ภายในระบบตนเอง"
+        },
+        {
+          "id": "VOC-CC26-D3-028",
+          "term": "Relying Party",
+          "objective": "3.1",
+          "exam_relevance_en": "Also known as a Service Provider (SP) in SAML. The relying party does not see the user's password; it trusts and validates the IdP's cryptographic assertion.",
+          "exam_relevance_th": "หรือที่เรียกว่า Service Provider (SP) ใน SAML โดยผู้พึ่งพาการยืนยันสิทธิ์จะไม่เห็นรหัสผ่านของผู้ใช้ แต่จะเชื่อถือและตรวจสอบการยืนยันสิทธิ์ทางวิทยาการรหัสลับที่ส่งมาจาก IdP"
+        },
+        {
+          "id": "VOC-CC26-D3-029",
+          "term": "Identity Federation",
+          "objective": "3.1",
+          "exam_relevance_en": "Federation enables Single Sign-On (SSO) across enterprise boundaries or third-party cloud apps without synchronizing passwords to every vendor.",
+          "exam_relevance_th": "การรวมศูนย์อัตลักษณ์แบบสหพันธ์ช่วยให้เปิดใช้งาน Single Sign-On (SSO) ข้ามขอบเขตองค์กรหรือข้ามแอปพลิเคชันคลาวด์ภายนอกได้ โดยไม่ต้องซิงโครไนซ์รหัสผ่านไปยังผู้ให้บริการทุกราย"
+        },
+        {
+          "id": "VOC-CC26-D3-030",
+          "term": "Single Sign-On",
+          "objective": "3.1",
+          "exam_relevance_en": "SSO improves user experience and password hygiene. However, exam candidates must remember that SSO does not bypass authorization or grant blanket resource access.",
+          "exam_relevance_th": "SSO ช่วยยกระดับประสบการณ์ของผู้ใช้และสุขอนามัยของรหัสผ่าน อย่างไรก็ตาม ผู้สอบต้องตระหนักว่า SSO ไม่ได้ข้ามขั้นตอนการกำหนดสิทธิ์ และไม่ได้ให้สิทธิ์ในการเข้าถึงทรัพยากรทั้งหมดแบบเหมารวม"
+        },
+        {
+          "id": "VOC-CC26-D3-031",
+          "term": "Authentication Assertion",
+          "objective": "3.1",
+          "exam_relevance_en": "Standardized as SAML assertions or OIDC/JWT tokens. The relying party checks the signature, audience, and expiry before granting session access.",
+          "exam_relevance_th": "มีมาตรฐานในรูปของ SAML Assertions หรือ OIDC/JWT Tokens โดยผู้ให้บริการปลายทางจะตรวจสอบลายมือชื่อ ผู้รับสารเป้าหมาย (Audience) และวันหมดอายุก่อนจะอนุญาตให้เริ่มเซสชันการทำงาน"
+        },
+        {
+          "id": "VOC-CC26-D3-032",
+          "term": "Session Revocation",
+          "objective": "3.1",
+          "exam_relevance_en": "Disabling a central account in directory services does not guarantee immediate termination of active downstream cloud sessions without explicit session revocation.",
+          "exam_relevance_th": "การสั่งระงับบัญชีที่ระบบไดเรกทอรีส่วนกลางไม่ได้เป็นหลักประกันว่าจะยุติเซสชันการทำงานที่เปิดค้างอยู่บนระบบคลาวด์ปลายทางได้ในทันที หากไม่มีการสั่งเพิกถอนเซสชันการทำงานอย่างชัดเจน"
+        },
+        {
+          "id": "VOC-CC26-D3-033",
+          "term": "Identity Governance and Administration",
+          "objective": "3.1",
+          "exam_relevance_en": "IGA platforms provide automated workflows for access requests, approvals, reviews, and reporting, helping enterprises satisfy strict audit and regulatory standards.",
+          "exam_relevance_th": "แพลตฟอร์ม IGA มีกระบวนการทำงานอัตโนมัติสำหรับการขอเข้าถึง การอนุมัติ การทบทวน และการออกรายงาน ช่วยให้องค์กรปฏิบัติตามมาตรฐานการตรวจสอบและกฎเกณฑ์ข้อบังคับได้อย่างเคร่งครัด"
+        },
+        {
+          "id": "VOC-CC26-D3-034",
+          "term": "NIST SP 800-63",
+          "objective": "3.1",
+          "exam_relevance_en": "SP 800-63 is a technical guidance document, not an IAM software platform. It divides identity assurance into proofing (63A), authentication (63B), and federation (63C).",
+          "exam_relevance_th": "NIST SP 800-63 เป็นเอกสารแนวทางปฏิบัติทางเทคนิค ไม่ใช่ซอฟต์แวร์แพลตฟอร์ม IAM โดยแบ่งระดับการรับรองอัตลักษณ์ออกเป็นการตรวจพิสูจน์ (63A), การพิสูจน์ตัวตน (63B) และการรวมศูนย์สหพันธ์ (63C)"
+        },
+        {
+          "id": "VOC-CC26-D3-035",
+          "term": "Principle of Least Privilege",
+          "objective": "3.2",
+          "exam_relevance_en": "Heavily tested on the ISC2 CC exam. Least privilege minimizes the blast radius of compromises and insider mistakes, but it does NOT guarantee that harm is impossible.",
+          "exam_relevance_th": "ออกข้อสอบบ่อยมากใน ISC2 CC โดยหลักการให้สิทธิ์น้อยที่สุดเท่าที่จำเป็นจะช่วยลดขอบเขตความเสียหาย (Blast Radius) จากการถูกเจาะระบบหรือความผิดพลาดของบุคลากรภายใน แต่ไม่ได้เป็นหลักประกันว่าจะไม่เกิดความเสียหายขึ้นอย่างสิ้นเชิง"
+        },
+        {
+          "id": "VOC-CC26-D3-036",
+          "term": "Need-to-Know",
+          "objective": "3.2",
+          "exam_relevance_en": "Distinguish from clearance: In MAC/government models, having a Top Secret clearance is NOT enough; you must also demonstrate a valid need-to-know for that specific project.",
+          "exam_relevance_th": "แยกแยะความแตกต่างจากการผ่านการตรวจสอบความไว้วางใจ (Clearance): ในโมเดล MAC ของหน่วยงานรัฐ การมีระดับความไว้วางใจชั้นลับที่สุด (Top Secret) เพียงอย่างเดียวยัง 'ไม่เพียงพอ' ผู้ใช้จะต้องแสดงให้เห็นถึงความจำเป็นต้องรู้ข้อมูล (Need-to-Know) สำหรับโครงการนั้นอย่างแท้จริงด้วย"
+        },
+        {
+          "id": "VOC-CC26-D3-037",
+          "term": "Separation of Duties",
+          "objective": "3.2",
+          "exam_relevance_en": "Primary defense against unilateral fraud and single-point errors. Exam questions stress that SoD reduces unilateral abuse, but collusion between parties can still cause harm.",
+          "exam_relevance_th": "เกราะป้องกันด่านแรกต่อการทุจริตและการกระทำผิดพลาดโดยบุคคลคนเดียว คำถามในข้อสอบจะเน้นย้ำว่า SoD ช่วยลดการใช้อำนาจมิชอบจากคนคนเดียวได้ แต่การสมรู้ร่วมคิดกันระหว่างหลายคน (Collusion) ยังคงสามารถก่อให้เกิดความเสียหายได้"
+        },
+        {
+          "id": "VOC-CC26-D3-038",
+          "term": "Dual Control",
+          "objective": "3.2",
+          "exam_relevance_en": "Often used in cryptographic master key management or physical vault access. Similar to SoD, but typically requires both parties present at the same time for a single action.",
+          "exam_relevance_th": "มักนำมาใช้ในการจัดการกุญแจเข้ารหัสระดับมาสเตอร์หรือการเปิดห้องมั่นคงทางกายภาพ คล้ายกับ SoD แต่โดยทั่วไปจะกำหนดให้บุคคลทั้งสองคนต้องอยู่ร่วมกันในเวลาเดียวกันเพื่อดำเนินการในขั้นตอนนั้น"
+        },
+        {
+          "id": "VOC-CC26-D3-039",
+          "term": "Collusion",
+          "objective": "3.2",
+          "exam_relevance_en": "Exam takeaway: Separation of duties prevents unilateral (single-person) fraud, but CANNOT eliminate fraud if participants collude with each other.",
+          "exam_relevance_th": "ข้อสรุปสำคัญในข้อสอบ: การแบ่งแยกหน้าที่ความรับผิดชอบ (SoD) ช่วยป้องกันการทุจริตที่ทำโดยคนเพียงคนเดียวได้ แต่ 'ไม่สามารถ' ป้องกันการทุจริตได้หากบุคคลเหล่านั้นร่วมมือสมรู้ร่วมคิดกัน"
+        },
+        {
+          "id": "VOC-CC26-D3-040",
+          "term": "Discretionary Access Control",
+          "objective": "3.2",
+          "exam_relevance_en": "Core exam points: In DAC, the owner sets permissions, but the operating system still enforces them. DAC is flexible but susceptible to Trojan horses and inadvertent over-sharing.",
+          "exam_relevance_th": "จุดสำคัญของข้อสอบ: ใน DAC เจ้าของข้อมูลจะเป็นผู้กำหนดสิทธิ์ แต่ระบบปฏิบัติการจะเป็นผู้บังคับใช้นโยบายสิทธิ์นั้น DAC มีความยืดหยุ่นสูงแต่เสี่ยงต่อม้าโทรจันและการเผลอแชร์ข้อมูลเกินขอบเขต"
+        },
+        {
+          "id": "VOC-CC26-D3-041",
+          "term": "Mandatory Access Control",
+          "objective": "3.2",
+          "exam_relevance_en": "In MAC, end users and data owners CANNOT override or modify access policies. Used in military, intelligence, and high-security environments. Clearance + Need-to-know are both required.",
+          "exam_relevance_th": "ใน MAC ผู้ใช้ทั่วไปและเจ้าของข้อมูล 'ไม่สามารถ' แก้ไขหรือยกเว้นนโยบายการเข้าถึงได้ นิยมใช้ในกองทัพ หน่วยข่าวกรอง และสภาพแวดล้อมความมั่นคงสูง โดยผู้ใช้ต้องมีทั้งระดับความไว้วางใจ (Clearance) และความจำเป็นต้องรู้ (Need-to-Know) ครบถ้วน"
+        },
+        {
+          "id": "VOC-CC26-D3-042",
+          "term": "Role-Based Access Control",
+          "objective": "3.2",
+          "exam_relevance_en": "The most popular enterprise access model. Simplifies administration and enforces consistency across large user populations. However, poorly designed roles can lead to role explosion or over-permissioning.",
+          "exam_relevance_th": "รูปแบบการควบคุมการเข้าถึงที่นิยมใช้มากที่สุดในระดับองค์กร ช่วยลดความซับซ้อนในการบริหารจัดการและสร้างความสม่ำเสมอให้กับผู้ใช้จำนวนมาก อย่างไรก็ตาม หากออกแบบบทบาทหน้าที่ไม่ดีก็อาจทำให้เกิดปัญหามีบทบาทมากเกินไป (Role Explosion) หรือการให้สิทธิ์เกินจำเป็น"
+        },
+        {
+          "id": "VOC-CC26-D3-043",
+          "term": "Attribute-Based Access Control",
+          "objective": "3.2",
+          "exam_relevance_en": "ABAC enables fine-grained, context-aware decisions (e.g. Allow doctor to view record IF time is during shift AND location is hospital AND device is managed). Highly tested on 2026 exam.",
+          "exam_relevance_th": "ABAC ช่วยให้สามารถตัดสินใจอนุญาตสิทธิ์ตามบริบทได้อย่างละเอียดอ่อน (เช่น อนุญาตให้แพทย์เปิดดูเวชระเบียนได้หาก 'เวลา' อยู่ในกะการทำงาน และ 'ตำแหน่งที่อยู่' อยู่ในโรงพยาบาล และ 'อุปกรณ์' เป็นเครื่องที่องค์กรจัดการ) ออกข้อสอบบ่อยมากในปี 2026"
+        },
+        {
+          "id": "VOC-CC26-D3-044",
+          "term": "Subject",
+          "objective": "3.2",
+          "exam_relevance_en": "In all access control models (DAC, MAC, RBAC, ABAC), a subject requests access to an object. Subjects can be human users or system software threads.",
+          "exam_relevance_th": "ในโมเดลการควบคุมการเข้าถึงทั้งหมด (DAC, MAC, RBAC, ABAC) Subject (ประธาน) คือผู้ร้องขอการเข้าถึง Object (วัตถุ) โดย Subject อาจเป็นมนุษย์หรือเธรดการทำงานของซอฟต์แวร์ระบบก็ได้"
+        },
+        {
+          "id": "VOC-CC26-D3-045",
+          "term": "Object",
+          "objective": "3.2",
+          "exam_relevance_en": "Objects receive actions from subjects. Controls like ACLs or security labels are attached to objects to govern how subjects may manipulate them.",
+          "exam_relevance_th": "Object เป็นผู้รับการกระทำจาก Subject โดยมาตรการควบคุม เช่น รายการสิทธิ์ (ACLs) หรือป้ายกำกับความปลอดภัยจะถูกผูกติดอยู่กับ Object เพื่อควบคุมว่า Subject จะกระทำการใดกับมันได้บ้าง"
+        },
+        {
+          "id": "VOC-CC26-D3-046",
+          "term": "Security Clearance",
+          "objective": "3.2",
+          "exam_relevance_en": "Central to Mandatory Access Control (MAC). Remember: Clearance is assigned to SUBJECTS, whereas classification labels are assigned to OBJECTS. Both clearance and need-to-know are mandatory.",
+          "exam_relevance_th": "หัวใจสำคัญของ Mandatory Access Control (MAC) ข้อควรจำ: สิทธิ์ความไว้วางใจ (Clearance) จะถูกกำหนดให้กับ SUBJECT (บุคคล) ในขณะที่ป้ายกำกับชั้นความลับ (Classification Labels) จะถูกกำหนดให้กับ OBJECT (ข้อมูล) โดยต้องมีทั้งสองสิ่งพร้อมกับ Need-to-Know"
+        },
+        {
+          "id": "VOC-CC26-D3-047",
+          "term": "Security Label",
+          "objective": "3.2",
+          "exam_relevance_en": "In MAC systems, the operating system compares the subject's clearance against the object's security label to make automated, unbypassable access decisions.",
+          "exam_relevance_th": "ในระบบ MAC ระบบปฏิบัติการจะนำระดับความไว้วางใจของประธานไปเปรียบเทียบกับป้ายกำกับความปลอดภัยของวัตถุ เพื่อตัดสินใจอนุญาตการเข้าถึงโดยอัตโนมัติและไม่สามารถหลบเลี่ยงได้"
+        },
+        {
+          "id": "VOC-CC26-D3-048",
+          "term": "Access Control List",
+          "objective": "3.2",
+          "exam_relevance_en": "ACLs are common implementations of DAC on file systems (specifying Read/Write per user/group) and packet filtering on routers/firewalls.",
+          "exam_relevance_th": "ACL เป็นการนำรูปแบบ DAC ไปใช้งานทั่วไปบนระบบไฟล์ (ระบุสิทธิ์อ่าน/เขียนตามรายชื่อผู้ใช้/กลุ่ม) รวมถึงการคัดกรองแพ็กเก็ตข้อมูลบนเราเตอร์และไฟร์วอลล์"
+        },
+        {
+          "id": "VOC-CC26-D3-049",
+          "term": "Access Control Matrix",
+          "objective": "3.2",
+          "exam_relevance_en": "Foundational computer security concept. Looking down columns yields an Access Control List (ACL); looking across rows yields a Capability Ticket/Table.",
+          "exam_relevance_th": "แนวคิดพื้นฐานด้านความปลอดภัยของคอมพิวเตอร์ การอ่านตามแนวคอลัมน์จะได้รายการควบคุมการเข้าถึง (ACL) ส่วนการอ่านตามแนวนอนจะได้ตารางสิทธิ์การเข้าถึง (Capability Ticket/Table)"
+        },
+        {
+          "id": "VOC-CC26-D3-050",
+          "term": "Privileged Access Management",
+          "objective": "3.2",
+          "exam_relevance_en": "Administrative credentials represent the highest-risk targets. PAM vaults eliminate static administrator passwords, enforce session recording, and enable Just-in-Time access.",
+          "exam_relevance_th": "ข้อมูลประจำตัวของผู้ดูแลระบบถือเป็นเป้าหมายที่มีความเสี่ยงสูงสุด ระบบตู้นิรภัย PAM จะช่วยยกเลิกรหัสผ่านผู้ดูแลระบบแบบคงที่ บังคับให้มีการบันทึกภาพเซสชัน และเปิดใช้งานการให้สิทธิ์แบบทันเวลาเท่าที่จำเป็น (Just-in-Time Access)"
+        },
+        {
+          "id": "VOC-CC26-D3-051",
+          "term": "Just-in-Time Access",
+          "objective": "3.2",
+          "exam_relevance_en": "Drastically limits standing privileges (eliminates 24/7 administrator rights). A key tenet of modern Zero Trust and Least Privilege architectures.",
+          "exam_relevance_th": "จำกัดสิทธิ์การใช้งานที่ค้างอยู่แบบถาวรได้อย่างมาก (ขจัดสิทธิ์ผู้ดูแลระบบที่เปิดทิ้งไว้ 24/7) เป็นหลักการสำคัญของสถาปัตยกรรม Zero Trust และหลักการ Least Privilege ในยุคปัจจุบัน"
+        },
+        {
+          "id": "VOC-CC26-D3-052",
+          "term": "Context-Aware Access Control",
+          "objective": "3.2",
+          "exam_relevance_en": "Core foundation of Attribute-Based Access Control (ABAC) and Zero Trust architecture. Even with correct credentials, access is blocked if contextual factors fail policy checks.",
+          "exam_relevance_th": "รากฐานสำคัญของ Attribute-Based Access Control (ABAC) และสถาปัตยกรรม Zero Trust แม้ว่าจะป้อนข้อมูลประจำตัวถูกต้อง แต่การเข้าถึงจะถูกปิดกั้นทันทีหากปัจจัยตามบริบทแวดล้อมไม่ผ่านเกณฑ์นโยบาย"
+        },
+        {
+          "id": "VOC-CC26-D3-053",
+          "term": "Multifactor Authentication",
+          "objective": "3.2",
+          "exam_relevance_en": "Critical exam rule: MFA requires DIFFERENT FACTOR TYPES. A password and a PIN represent only ONE factor type (knowledge). A password plus a hardware key represents TWO factors.",
+          "exam_relevance_th": "กฎเหล็กในข้อสอบ: MFA ต้องใช้ 'ประเภทของปัจจัยที่แตกต่างกัน' การใช้รหัสผ่านร่วมกับรหัส PIN ถือเป็นปัจจัยประเภทเดียวกัน (ความรู้) ส่วนการใช้รหัสผ่านร่วมกับคีย์ฮาร์ดแวร์จัดเป็น 2 ปัจจัยที่ถูกต้อง"
+        },
+        {
+          "id": "VOC-CC26-D3-054",
+          "term": "Authentication Factor",
+          "objective": "3.2",
+          "exam_relevance_en": "Exam candidates must memorize the three canonical categories: Something you know (knowledge), Something you have (possession), Something you are (inherence).",
+          "exam_relevance_th": "ผู้สอบต้องจดจำหมวดหมู่มาตรฐานทั้ง 3 ด้านให้ขึ้นใจ: สิ่งที่ท่านรู้ (ความรู้), สิ่งที่ท่านมี (การครอบครอง), สิ่งที่ท่านเป็น (อัตลักษณ์ทางกายภาพชีวมิติ)"
+        },
+        {
+          "id": "VOC-CC26-D3-055",
+          "term": "Knowledge Factor",
+          "objective": "3.2",
+          "exam_relevance_en": "The most widely used but weakest authentication factor type due to phishing, brute-force, and credential-stuffing vulnerabilities. Entering two passwords is NOT multifactor.",
+          "exam_relevance_th": "เป็นปัจจัยที่มีการใช้งานกว้างขวางที่สุดแต่เปราะบางที่สุด เนื่องจากเสี่ยงต่อการฟิชชิ่ง การเดารหัสผ่าน และการใช้ชุดข้อมูลหลุด การป้อนรหัสผ่าน 2 ตัวไม่ถือเป็นการพิสูจน์ตัวตนแบบหลายปัจจัย"
+        },
+        {
+          "id": "VOC-CC26-D3-056",
+          "term": "Possession Factor",
+          "objective": "3.2",
+          "exam_relevance_en": "Examples: FIDO2 hardware keys, smart cards, OTP authenticator apps on a smartphone, and time-based hardware tokens.",
+          "exam_relevance_th": "ตัวอย่างได้แก่ คีย์ฮาร์ดแวร์ FIDO2, สมาร์ตการ์ด, แอปพลิเคชัน OTP บนสมาร์ตโฟน และอุปกรณ์โทเคนสร้างรหัสผ่านตามเวลา"
+        },
+        {
+          "id": "VOC-CC26-D3-057",
+          "term": "Inherence Factor",
+          "objective": "3.2",
+          "exam_relevance_en": "Cannot be lost or forgotten, but cannot be changed if compromised. Subject to False Acceptance Rates (FAR) and False Rejection Rates (FRR).",
+          "exam_relevance_th": "ไม่สามารถสูญหายหรือลืมได้ แต่ไม่สามารถเปลี่ยนแปลงใหม่ได้หากถูกเจาะข้อมูล มีความเสี่ยงต่ออัตราการยอมรับผิดพลาด (FAR) และอัตราการปฏิเสธผิดพลาด (FRR)"
+        },
+        {
+          "id": "VOC-CC26-D3-058",
+          "term": "Cryptographic Authenticator",
+          "objective": "3.2",
+          "exam_relevance_en": "A multi-factor cryptographic authenticator (like a FIDO security key activated by a PIN) satisfies MFA (possession + knowledge) within a single physical device.",
+          "exam_relevance_th": "กลไกยืนยันตัวตนทางวิทยาการรหัสลับแบบหลายปัจจัย (เช่น คีย์ความปลอดภัย FIDO ที่เปิดใช้งานด้วยรหัส PIN) สามารถตอบสนองคุณสมบัติ MFA (การครอบครอง + ความรู้) ได้ครบถ้วนภายในอุปกรณ์ชิ้นเดียว"
+        },
+        {
+          "id": "VOC-CC26-D3-059",
+          "term": "Risk-Based Authentication",
+          "objective": "3.2",
+          "exam_relevance_en": "Also known as adaptive authentication. Exam questions test that an automated risk signal triggers further verification or investigation, but is NOT an MFA factor in itself.",
+          "exam_relevance_th": "หรือที่เรียกว่า Adaptive Authentication คำถามในข้อสอบจะทดสอบว่า สัญญาณความเสี่ยงอัตโนมัติจะช่วยกระตุ้นให้เกิดการตรวจสอบเพิ่มเติม แต่ตัวระดับความเสี่ยงเองไม่ได้ถือเป็นปัจจัย MFA แยกต่างหาก"
+        },
+        {
+          "id": "VOC-CC26-D3-060",
+          "term": "Anomalous Sign-In Detection",
+          "objective": "3.2",
+          "exam_relevance_en": "Included in the 2026 exam update. Behavioral signals must be reviewed in context under authorized incident response procedures, not treated as absolute proof of compromise.",
+          "exam_relevance_th": "บรรจุอยู่ในการปรับปรุงข้อสอบปี 2026 สัญญาณพฤติกรรมผิดปกติจะต้องได้รับการทบทวนตามบริบทภายใต้ขั้นตอนการตอบสนองเหตุการณ์ที่ได้รับอนุมัติ และต้องไม่ด่วนสรุปว่าเป็นหลักฐานการถูกเจาะระบบอย่างแน่นอนโดยไม่ได้ตรวจสอบ"
+        },
+        {
+          "id": "VOC-CC26-D3-061",
+          "term": "Atypical Travel",
+          "objective": "3.2",
+          "exam_relevance_en": "Common exam indicator of credential theft or proxy/VPN usage. The security response must validate context (e.g. corporate VPN egress) before permanently deleting the account.",
+          "exam_relevance_th": "ตัวบ่งชี้ข้อสอบยอดนิยมของการขโมยข้อมูลประจำตัวหรือการใช้งานพร็อกซี/VPN กระบวนการตอบสนองความปลอดภัยต้องตรวจสอบบริบทก่อน (เช่น ทางออกเครือข่าย VPN ของบริษัท) ก่อนที่จะสั่งลบบัญชีทิ้งอย่างถาวร"
+        },
+        {
+          "id": "VOC-CC26-D3-062",
+          "term": "IAM",
+          "objective": "3.1",
+          "exam_relevance_en": "The overarching theme and official title of Domain 3 (weighted at 20% on the 2026 exam outline).",
+          "exam_relevance_th": "หัวข้อหลักและชื่ออย่างเป็นทางการของโดเมนที่ 3 (มีน้ำหนัก 20% ในโครงร่างข้อสอบปี 2026)"
+        },
+        {
+          "id": "VOC-CC26-D3-063",
+          "term": "IdP",
+          "objective": "3.1",
+          "exam_relevance_en": "Key architectural component in federated identity. Tested in conjunction with Service Providers (SP) and Single Sign-On (SSO).",
+          "exam_relevance_th": "องค์ประกอบสถาปัตยกรรมหลักในการรวมศูนย์อัตลักษณ์ มักออกข้อสอบร่วมกับ Service Providers (SP) และ Single Sign-On (SSO)"
+        },
+        {
+          "id": "VOC-CC26-D3-064",
+          "term": "SSO",
+          "objective": "3.1",
+          "exam_relevance_en": "Improves security by reducing password fatigue, but increases risk if the single primary credential or master session is compromised.",
+          "exam_relevance_th": "ช่วยเพิ่มความปลอดภัยโดยลดความเหนื่อยล้าในการจำรหัสผ่าน แต่เพิ่มความเสี่ยงหากข้อมูลประจำตัวหลักหรือเซสชันหลักถูกเจาะระบบ"
+        },
+        {
+          "id": "VOC-CC26-D3-065",
+          "term": "IGA",
+          "objective": "3.1",
+          "exam_relevance_en": "Distinguish IGA (governance, reviews, approvals) from access enforcement (firewalls, gatekeepers blocking/allowing packets).",
+          "exam_relevance_th": "แยกแยะความแตกต่างระหว่าง IGA (การกำกับดูแล, การทบทวนสิทธิ์, การอนุมัติ) ออกจากการบังคับใช้นโยบายการเข้าถึง (ไฟร์วอลล์ หรือตัวคัดกรองแพ็กเก็ต)"
+        },
+        {
+          "id": "VOC-CC26-D3-066",
+          "term": "LDAP",
+          "objective": "3.1",
+          "exam_relevance_en": "The universal directory query protocol. Often tested as the query mechanism for checking user existence and group attributes.",
+          "exam_relevance_th": "โพรโทคอลสอบถามไดเรกทอรีสากล มักนำมาทดสอบในฐานะกลไกสำหรับตรวจสอบการมีอยู่ของผู้ใช้และแอตทริบิวต์การเป็นสมาชิกกลุ่ม"
+        },
+        {
+          "id": "VOC-CC26-D3-067",
+          "term": "SAML",
+          "objective": "3.1",
+          "exam_relevance_en": "Standard enterprise federation protocol. Powers browser-based SSO across enterprise networks and third-party SaaS platforms.",
+          "exam_relevance_th": "โพรโทคอลมาตรฐานสำหรับการรวมศูนย์อัตลักษณ์ระดับองค์กร ทำหน้าที่ขับเคลื่อนระบบ SSO ผ่านเว็บเบราว์เซอร์ข้ามเครือข่ายองค์กรและแอปพลิเคชันคลาวด์ SaaS ภายนอก"
+        },
+        {
+          "id": "VOC-CC26-D3-068",
+          "term": "OIDC",
+          "objective": "3.1",
+          "exam_relevance_en": "Uses JSON Web Tokens (JWT) for modern web and mobile application federation, contrasting with legacy XML-based SAML.",
+          "exam_relevance_th": "ใช้งาน JSON Web Tokens (JWT) สำหรับการรวมศูนย์อัตลักษณ์บนเว็บและแอปพลิเคชันมือถือยุคใหม่ ซึ่งแตกต่างจาก SAML ดั้งเดิมที่ใช้รูปแบบ XML"
+        },
+        {
+          "id": "VOC-CC26-D3-069",
+          "term": "PoLP",
+          "objective": "3.2",
+          "exam_relevance_en": "A core principle tested repeatedly across multiple domains. Reduces the attack surface and damage potential of compromised credentials.",
+          "exam_relevance_th": "หลักการสำคัญที่ได้รับการทดสอบซ้ำๆ ในหลายโดเมน ช่วยลดพื้นที่การโจมตี (Attack Surface) และขอบเขตความเสียหายหากข้อมูลประจำตัวถูกบุกรุก"
+        },
+        {
+          "id": "VOC-CC26-D3-070",
+          "term": "SoD",
+          "objective": "3.2",
+          "exam_relevance_en": "Separation of duties protects against unilateral fraud and mistakes. Collusion remains an inherent limitation.",
+          "exam_relevance_th": "การแบ่งแยกหน้าที่ความรับผิดชอบช่วยป้องกันการทุจริตและความผิดพลาดจากคนเพียงคนเดียว โดยการสมรู้ร่วมคิดกัน (Collusion) ยังคงเป็นข้อจำกัดที่มีอยู่ตามธรรมชาติ"
+        },
+        {
+          "id": "VOC-CC26-D3-071",
+          "term": "DAC",
+          "objective": "3.2",
+          "exam_relevance_en": "Deciding authority: The resource OWNER. System software enforces the owner's choices. Common in end-user file sharing.",
+          "exam_relevance_th": "อำนาจในการตัดสินใจ: เจ้าของทรัพยากร (Resource OWNER) โดยซอฟต์แวร์ระบบจะบังคับใช้ตามที่เจ้าของเลือก พบบ่อยในการแชร์ไฟล์ของผู้ใช้ทั่วไป"
+        },
+        {
+          "id": "VOC-CC26-D3-072",
+          "term": "MAC",
+          "objective": "3.2",
+          "exam_relevance_en": "Deciding authority: CENTRAL POLICY. Owners cannot share files at will. Mandatory policy requires both clearance and need-to-know.",
+          "exam_relevance_th": "อำนาจในการตัดสินใจ: นโยบายส่วนกลาง (CENTRAL POLICY) เจ้าของไม่สามารถแชร์ไฟล์ตามใจชอบได้ นโยบายบังคับต้องมีทั้งระดับความไว้วางใจและ Need-to-Know"
+        },
+        {
+          "id": "VOC-CC26-D3-073",
+          "term": "RBAC",
+          "objective": "3.2",
+          "exam_relevance_en": "Deciding authority: ORGANIZATIONAL ROLES. Simplifies management at scale. Exam questions highlight that role assignment alone does not guarantee least privilege if roles are over-permissioned.",
+          "exam_relevance_th": "อำนาจในการตัดสินใจ: บทบาทหน้าที่ในองค์กร (ORGANIZATIONAL ROLES) ช่วยลดความยุ่งยากในการจัดการสิทธิ์ขนาดใหญ่ คำถามจะเน้นย้ำว่าการกำหนดบทบาทเพียงอย่างเดียวไม่ได้รับประกัน Least Privilege หากบทบาทนั้นได้รับสิทธิ์เกินจำเป็น"
+        },
+        {
+          "id": "VOC-CC26-D3-074",
+          "term": "ABAC",
+          "objective": "3.2",
+          "exam_relevance_en": "Deciding authority: ATTRIBUTES AND POLICY RULES. Enables context-aware decisions (device health, time of day, geolocation).",
+          "exam_relevance_th": "อำนาจในการตัดสินใจ: แอตทริบิวต์และกฎนโยบาย (ATTRIBUTES AND POLICY RULES) รองรับการตัดสินใจตามบริบทแวดล้อม (ความสมบูรณ์ของอุปกรณ์, ช่วงเวลา, ตำแหน่งทางภูมิศาสตร์)"
+        },
+        {
+          "id": "VOC-CC26-D3-075",
+          "term": "PAM",
+          "objective": "3.2",
+          "exam_relevance_en": "PAM protects against credential theft, lateral movement, and privilege abuse by rotating administrative passwords and recording privileged sessions.",
+          "exam_relevance_th": "PAM ป้องกันการขโมยข้อมูลประจำตัว การเคลื่อนย้ายในแนวราบ (Lateral Movement) และการใช้อภิสิทธิ์ในทางที่ผิด โดยการสลับหมุนเวียนรหัสผ่านผู้ดูแลระบบและบันทึกประวัติเซสชันระดับสูง"
+        },
+        {
+          "id": "VOC-CC26-D3-076",
+          "term": "JIT",
+          "objective": "3.2",
+          "exam_relevance_en": "Zero standing privilege practice. Reduces the attack window by ensuring accounts are not permanently privileged.",
+          "exam_relevance_th": "แนวปฏิบัติด้านการไม่เปิดสิทธิ์ค้างไว้ถาวร (Zero Standing Privilege) ช่วยลดกรอบเวลาในการโจมตีโดยทำให้แน่ใจว่าบัญชีจะไม่ได้รับอภิสิทธิ์ค้างไว้ตลอดเวลา"
+        },
+        {
+          "id": "VOC-CC26-D3-077",
+          "term": "MFA",
+          "objective": "3.2",
+          "exam_relevance_en": "Frequently tested acronym. Knowledge + Possession + Inherence = The 3 standard factor types.",
+          "exam_relevance_th": "คำย่อที่ออกข้อสอบบ่อยมาก ความรู้ (Knowledge) + การครอบครอง (Possession) + อัตลักษณ์ชีวมิติ (Inherence) = ปัจจัยมาตรฐานทั้ง 3 ด้าน"
+        },
+        {
+          "id": "VOC-CC26-D3-078",
+          "term": "FIDO",
+          "objective": "3.2",
+          "exam_relevance_en": "FIDO2 / WebAuthn authenticators provide phishing-resistant MFA because private keys never leave the hardware device and authentication is cryptographically bound to the domain.",
+          "exam_relevance_th": "กลไกยืนยันตัวตน FIDO2 / WebAuthn ให้การพิสูจน์ตัวตนแบบ MFA ที่ต้านทานการฟิชชิ่ง เนื่องจากกุญแจส่วนตัว (Private Key) จะไม่หลุดออกจากอุปกรณ์ฮาร์ดแวร์ และการพิสูจน์ตัวตนจะถูกผูกโยงทางวิทยาการรหัสลับเข้ากับโดเมนนั้นอย่างเจาะจง"
+        },
+        {
+          "id": "VOC-CC26-D3-079",
+          "term": "Authentication vs. Authorization",
+          "objective": "3.2",
+          "exam_relevance_en": "Number one most frequently tested distinction in IAM. Passing authentication never automatically grants authorization to all files.",
+          "exam_relevance_th": "ข้อแตกต่างที่ออกข้อสอบบ่อยเป็นอันดับหนึ่งในหมวด IAM การผ่านการพิสูจน์ตัวตนสำเร็จไม่ได้หมายความว่าจะได้รับอนุญาตให้เข้าถึงไฟล์ทั้งหมดโดยอัตโนมัติ"
+        },
+        {
+          "id": "VOC-CC26-D3-080",
+          "term": "Identification vs. Identity Proofing",
+          "objective": "3.1",
+          "exam_relevance_en": "Identity proofing happens during onboarding before account creation. Identification happens each time a user enters an identifier to log in.",
+          "exam_relevance_th": "การตรวจพิสูจน์อัตลักษณ์ (Identity Proofing) เกิดขึ้นระหว่างการรับเข้าทำงานก่อนสร้างบัญชี ส่วนการระบุตัวตน (Identification) เกิดขึ้นทุกครั้งที่ผู้ใช้ป้อนชื่อผู้ใช้เพื่อเข้าสู่ระบบ"
+        },
+        {
+          "id": "VOC-CC26-D3-081",
+          "term": "Digital Identity vs. Account vs. Identifier",
+          "objective": "3.1",
+          "exam_relevance_en": "One human identity can be linked to multiple accounts (e.g., standard account and admin account) with distinct identifiers.",
+          "exam_relevance_th": "อัตลักษณ์ของมนุษย์หนึ่งคนสามารถเชื่อมโยงเข้ากับบัญชีได้หลายบัญชี (เช่น บัญชีผู้ใช้ทั่วไปและบัญชีผู้ดูแลระบบ) โดยมีตัวระบุตัวตนที่แตกต่างกัน"
+        },
+        {
+          "id": "VOC-CC26-D3-082",
+          "term": "Credential vs. Authenticator",
+          "objective": "3.1",
+          "exam_relevance_en": "Per NIST terminology, a credential is the authoritative binding issued to a subscriber, while the authenticator is the mechanism used during the authentication transaction.",
+          "exam_relevance_th": "ตามศัพท์ของ NIST ข้อมูลรับรอง (Credential) คือข้อผูกมัดที่เชื่อถือได้ซึ่งออกให้แก่สมาชิก ส่วนกลไกยืนยันตัวตน (Authenticator) คือกลไกที่นำมาใช้ในระหว่างการทำธุรกรรมพิสูจน์ตัวตน"
+        },
+        {
+          "id": "VOC-CC26-D3-083",
+          "term": "Inactive Account vs. Orphaned Account",
+          "objective": "3.1",
+          "exam_relevance_en": "Academic QA correction: Inactivity and orphaning are independent dimensions. Do not assume active use proves good governance, or that inactive accounts must be deleted immediately.",
+          "exam_relevance_th": "ข้อแก้ไขทางวิชาการ: การไม่ใช้งาน (Inactivity) และการไร้เจ้าของ (Orphaning) เป็นมิติที่แยกขาดจากกัน อย่าด่วนสรุปว่าบัญชีที่มีการใช้งานอยู่แปลว่ามีการกำกับดูแลที่ดี หรือบัญชีที่ไม่เคลื่อนไหวจะต้องถูกลบทิ้งทันทีเสมอไป"
+        },
+        {
+          "id": "VOC-CC26-D3-084",
+          "term": "Provisioning vs. Deprovisioning",
+          "objective": "3.1",
+          "exam_relevance_en": "Exam questions test the timing and prerequisites: Provisioning requires prior owner approval; Deprovisioning requires revoking downstream sessions and preserving audit logs.",
+          "exam_relevance_th": "คำถามในข้อสอบจะทดสอบจังหวะเวลาและเงื่อนไขเบื้องต้น: การจัดเตรียมสิทธิ์ (Provisioning) ต้องได้รับการอนุมัติล่วงหน้าจากเจ้าของ ส่วนการเพิกถอนสิทธิ์ (Deprovisioning) ต้องยกเลิกเซสชันปลายทางและเก็บรักษาบันทึกการตรวจสอบไว้"
+        },
+        {
+          "id": "VOC-CC26-D3-085",
+          "term": "Least Privilege vs. Need-to-Know",
+          "objective": "3.2",
+          "exam_relevance_en": "Least privilege applies broadly to privileges, system calls, and administrative rights; Need-to-know applies specifically to data confidentiality and classified materials.",
+          "exam_relevance_th": "Least Privilege บังคับใช้ในภาพกว้างกับสิทธิ์ การเรียกใช้คำสั่งระบบ และสิทธิ์ผู้ดูแลระบบ ส่วน Need-to-Know บังคับใช้เฉพาะเจาะจงกับการรักษาความลับของข้อมูลและเอกสารชั้นความลับ"
+        },
+        {
+          "id": "VOC-CC26-D3-086",
+          "term": "Discretionary (DAC) vs. Mandatory (MAC)",
+          "objective": "3.2",
+          "exam_relevance_en": "Exam rule: There is NO universal 'MAC is always better than DAC' ranking. Model choice depends on organizational policy and requirements. In DAC, software still enforces permissions.",
+          "exam_relevance_th": "กฎข้อสอบ: ไม่มีการจัดอันดับสากลว่า 'MAC ดีกว่า DAC เสมอไป' การเลือกรูปแบบขึ้นอยู่กับนโยบายและความต้องการขององค์กร โดยใน DAC ซอฟต์แวร์ระบบก็ยังคงเป็นผู้บังคับใช้สิทธิ์ตามที่กำหนด"
+        },
+        {
+          "id": "VOC-CC26-D3-087",
+          "term": "Role-Based (RBAC) vs. Attribute-Based (ABAC)",
+          "objective": "3.2",
+          "exam_relevance_en": "RBAC is simple and scalable for standard jobs; ABAC is required when access depends on contextual variables like device health, location, or time of day.",
+          "exam_relevance_th": "RBAC ใช้งานง่ายและปรับขนาดได้ดีสำหรับตำแหน่งงานมาตรฐาน ส่วน ABAC จำเป็นเมื่อการเข้าถึงต้องขึ้นอยู่กับตัวแปรตามบริบท เช่น ความสมบูรณ์ของอุปกรณ์ ตำแหน่ง หรือช่วงเวลา"
+        },
+        {
+          "id": "VOC-CC26-D3-088",
+          "term": "Security Clearance vs. Need-to-Know",
+          "objective": "3.2",
+          "exam_relevance_en": "High-probability exam question: An officer holding a Top Secret clearance CANNOT read a Top Secret project file unless they also have an assigned need-to-know on that specific project.",
+          "exam_relevance_th": "คำถามข้อสอบที่มีโอกาสออกสูง: เจ้าหน้าที่ที่มีระดับความไว้วางใจชั้นลับที่สุด (Top Secret) ไม่สามารถเปิดอ่านเอกสารโครงการลับที่สุดได้ เว้นแต่จะได้รับการมอบหมายความจำเป็นต้องรู้ (Need-to-Know) ในโครงการนั้นด้วย"
+        },
+        {
+          "id": "VOC-CC26-D3-089",
+          "term": "Separation of Duties vs. Least Privilege",
+          "objective": "3.2",
+          "exam_relevance_en": "Both can apply simultaneously. A billing clerk should have minimal billing permissions (PoLP) and cannot also approve payments (SoD).",
+          "exam_relevance_th": "สามารถบังคับใช้ควบคู่กันได้ เสมียนฝ่ายบัญชีควรได้รับสิทธิ์ขั้นต่ำสำหรับการลงบัญชี (PoLP) และต้องไม่มีสิทธิ์ในการอนุมัติจ่ายเงินด้วย (SoD)"
+        },
+        {
+          "id": "VOC-CC26-D3-090",
+          "term": "Directory Service vs. Identity Provider",
+          "objective": "3.1",
+          "exam_relevance_en": "Modern platforms may bundle both capabilities, but their responsibilities differ: LDAP is a directory; Okta/Entra ID functioning as SAML authorities are IdPs.",
+          "exam_relevance_th": "แพลตฟอร์มยุคใหม่อาจรวมความสามารถทั้งสองอย่างไว้ด้วยกัน แต่หน้าที่ต่างกัน: LDAP เป็นระบบไดเรกทอรี ส่วน Okta/Entra ID ที่ทำหน้าที่ออกการยืนยันสิทธิ์ SAML จะเป็น IdP"
+        },
+        {
+          "id": "VOC-CC26-D3-091",
+          "term": "Access Review vs. Access Remediation",
+          "objective": "3.1",
+          "exam_relevance_en": "Crucial scenario pattern: Marking a contractor for access removal on a review report does not secure the system until remediation actually revokes the technical rights.",
+          "exam_relevance_th": "รูปแบบสถานการณ์สำคัญ: การทำเครื่องหมายบนรายงานทบทวนว่าให้ลบสิทธิ์ผู้รับจ้างออก ไม่ได้ช่วยรักษาความปลอดภัยให้ระบบ จนกว่ากระบวนการแก้ไขทางเทคนิคจะทำการเพิกถอนสิทธิ์จริงออกไป"
+        },
+        {
+          "id": "VOC-CC26-D3-092",
+          "term": "Multi-Step vs. Multi-Factor Authentication",
+          "objective": "3.2",
+          "exam_relevance_en": "Exam trap: Two passwords or a password plus a PIN is multi-step, NOT multi-factor (both are knowledge factors). Password plus a smartphone push is MFA.",
+          "exam_relevance_th": "กับดักข้อสอบ: รหัสผ่าน 2 ตัว หรือรหัสผ่านคู่กับรหัส PIN ถือเป็นการพิสูจน์ตัวตนแบบหลายขั้นตอน (Multi-step) แต่ 'ไม่ใช่' หลายปัจจัย (Multi-factor) เพราะเป็นปัจจัยความรู้ทั้งคู่ ส่วนรหัสผ่านคู่กับสมาร์ตโฟนแจ้งเตือนจัดเป็น MFA"
+        },
+        {
+          "id": "VOC-CC26-D3-093",
+          "term": "Break-Glass Account",
+          "objective": "3.1",
+          "exam_relevance_en": "Break-glass accounts must have complex credentials stored in a physical or digital vault, generate immediate security alerts when used, and be audited continuously.",
+          "exam_relevance_th": "บัญชีฉุกเฉินต้องมีข้อมูลประจำตัวที่ซับซ้อนจัดเก็บไว้ในตู้นิรภัยจริงหรือตู้ดิจิทัล มีการสร้างสัญญาณเตือนความปลอดภัยทันทีเมื่อถูกเปิดใช้งาน และต้องได้รับการตรวจสอบอย่างต่อเนื่อง"
+        },
+        {
+          "id": "VOC-CC26-D3-094",
+          "term": "Standing Privileges",
+          "objective": "3.2",
+          "exam_relevance_en": "Modern access controls seek 'zero standing privileges' by replacing permanent administrative rights with Just-in-Time (JIT) elevation and temporary access brokers.",
+          "exam_relevance_th": "การควบคุมการเข้าถึงยุคใหม่มุ่งสู่การไม่มีสิทธิ์ค้างไว้ถาวร (Zero Standing Privileges) โดยแทนที่สิทธิ์ผู้ดูแลระบบถาวรด้วยการยกระดับสิทธิ์แบบทันเวลา (JIT) และตัวกลางจัดสรรสิทธิ์ชั่วคราว"
+        },
+        {
+          "id": "VOC-CC26-D3-095",
+          "term": "Effective Permissions",
+          "objective": "3.2",
+          "exam_relevance_en": "Critical in access audits: A user may belong to multiple roles that grant overlapping rights. Auditors must inspect effective permissions rather than assuming a single role defines total access.",
+          "exam_relevance_th": "สำคัญมากในการตรวจสอบสิทธิ์: ผู้ใช้อาจสังกัดอยู่หลายบทบาทหน้าที่ซึ่งให้สิทธิ์ทับซ้อนกัน ผู้ตรวจสอบต้องตรวจสอบสิทธิ์ที่มีผลบังคับใช้จริง (Effective Permissions) มากกว่าการทึกทักเอาว่าบทบาทเดียวจะครอบคลุมสิทธิ์ทั้งหมด"
+        },
+        {
+          "id": "VOC-CC26-D3-096",
+          "term": "Blast Radius",
+          "objective": "3.2",
+          "exam_relevance_en": "Least privilege and segmentation are primarily designed to reduce the blast radius when an individual credential or host is compromised.",
+          "exam_relevance_th": "หลักการ Least Privilege และการแบ่งส่วนระบบ (Segmentation) มีเป้าหมายหลักเพื่อลดขอบเขตความเสียหาย (Blast Radius) เมื่อข้อมูลประจำตัวหรือเครื่องคอมพิวเตอร์ถูกบุกรุก"
+        },
+        {
+          "id": "VOC-CC26-D3-097",
+          "term": "Federated Trust Relationship",
+          "objective": "3.1",
+          "exam_relevance_en": "Without establishing a trust relationship (exchanging signing certificates and metadata), single sign-on assertions cannot be validated or accepted.",
+          "exam_relevance_th": "หากปราศจากการสร้างความสัมพันธ์ที่ไว้วางใจกัน (การแลกเปลี่ยนใบรับรองลงนามและข้อมูล Metadata) การยืนยันสิทธิ์ SSO จะไม่สามารถตรวจสอบความถูกต้องหรือยอมรับได้"
+        },
+        {
+          "id": "VOC-CC26-D3-098",
+          "term": "FIRST (IAM Decision Sequence)",
+          "objective": "exam_strategy",
+          "exam_relevance_en": "Exam rule: In access request scenarios, obtaining proper owner approval is always required FIRST before administrators provision access. In departure scenarios, immediate access revocation comes FIRST.",
+          "exam_relevance_th": "กฎข้อสอบ: ในสถานการณ์ขอสิทธิ์เข้าถึง การขออนุมัติจากเจ้าของข้อมูลที่ถูกต้องเป็นสิ่งที่ต้องทำเป็น 'ลำดับแรก' (FIRST) ก่อนที่ผู้ดูแลระบบจะให้สิทธิ์ ส่วนในสถานการณ์การลาออก การระงับสิทธิ์เข้าถึงทันทีต้องทำเป็นลำดับแรก"
+        },
+        {
+          "id": "VOC-CC26-D3-099",
+          "term": "BEST (Access Governance Fit)",
+          "objective": "exam_strategy",
+          "exam_relevance_en": "Look for answers that enforce least privilege, verify removals, maintain accountability, and respect documented policy, rather than convenient administrative shortcuts.",
+          "exam_relevance_th": "มองหาคำตอบที่บังคับใช้สิทธิ์น้อยที่สุด มีการตรวจสอบยืนยันการถอดถอนสิทธิ์ รักษาความรับผิดชอบ และเคารพนโยบายที่เป็นลายลักษณ์อักษร มากกว่าคำตอบที่เป็นทางลัดสะดวกสบายของผู้ดูแลระบบ"
+        },
+        {
+          "id": "VOC-CC26-D3-100",
+          "term": "MOST Directly (Technical Enforcement)",
+          "objective": "exam_strategy",
+          "exam_relevance_en": "Technical permissions enforce access restrictions. Signing a policy form or sending an email acknowledgment does NOT directly enforce read-only restrictions.",
+          "exam_relevance_th": "สิทธิ์ทางเทคนิคจะทำหน้าที่บังคับใช้การจำกัดสิทธิ์ การลงนามในแบบฟอร์มนโยบายหรือการตอบรับทางอีเมล 'ไม่ได้' บังคับใช้การจำกัดสิทธิ์ให้อ่านอย่างเดียวโดยตรงในทางเทคนิค"
+        },
+        {
+          "id": "VOC-CC26-D3-101",
+          "term": "Incompatible Duties",
+          "objective": "3.2",
+          "exam_relevance_en": "Key trigger in Separation of Duties (SoD) questions (e.g. creating vendors and paying vendors, writing code and approving code, requesting and approving).",
+          "exam_relevance_th": "สิ่งกระตุ้นสำคัญในคำถามเรื่อง Separation of Duties (SoD) เช่น การสร้างรายชื่อผู้ขายคู่กับการสั่งจ่ายเงิน, การเขียนโค้ดคู่กับการอนุมัติโค้ดขึ้นระบบจริง, การขอสิทธิ์คู่กับการอนุมัติสิทธิ์"
+        },
+        {
+          "id": "VOC-CC26-D3-102",
+          "term": "Delegated Authority",
+          "objective": "3.2",
+          "exam_relevance_en": "Foundational in Discretionary Access Control (DAC), where policy authority is delegated to the file owner, contrasting with central administrative authority in MAC.",
+          "exam_relevance_th": "รากฐานของ Discretionary Access Control (DAC) ซึ่งอำนาจในการกำหนดนโยบายจะถูกส่งมอบให้แก่เจ้าของไฟล์ ต่างจากอำนาจรวมศูนย์ของผู้ดูแลระบบใน MAC"
+        }
+      ]
+    }
+  }
+}

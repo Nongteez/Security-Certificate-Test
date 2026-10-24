@@ -45,6 +45,7 @@ Each vocabulary database file (e.g. `domain-1.json`) contains a top-level JSON o
       "domain": 1,
       "objective": "1.1",
       "exam_relevance": "Distinguish authentication from authorization.",
+      "exam_relevance_th": "ข้อสอบมักทดสอบความแตกต่างระหว่าง Authentication (การพิสูจน์ตัวตนว่าคุณคือใคร) และ Authorization (การกำหนดสิทธิ์ว่าคุณได้รับอนุญาตให้ทำสิ่งใดได้บ้าง)",
       "example_en": "The system authenticates the user before granting access.",
       "example_th": "ระบบพิสูจน์ตัวตนผู้ใช้ก่อนอนุญาตให้เข้าถึง",
       "confused_with": ["Authorization"],
@@ -81,6 +82,7 @@ Each vocabulary database file (e.g. `domain-1.json`) contains a top-level JSON o
 | `domain` | `integer` | **Yes** | Exam domain number (`1` for Security Principles). |
 | `objective` | `string` | **Yes** | Official Exam Objective ID (e.g. `"1.1"`, `"1.2"`, `"1.3"`, `"1.4"`, `"1.5"`, or `"exam_strategy"`). |
 | `exam_relevance` | `string` | **Yes** | Practical guidance on how this term appears in questions and how it impacts answer choice selection. |
+| `exam_relevance_th` | `string \| null` | No | Accurate, natural Thai translation of the exam guidance, preserving technical qualifiers and exam relevance. |
 | `example_en` | `string` | **Yes** | Realistic enterprise/cybersecurity scenario sentence in English illustrating usage. |
 | `example_th` | `string` | **Yes** | Natural Thai translation of the example sentence. |
 | `confused_with` | `string[]` | **Yes** | Array of related terms learners commonly confuse with this concept (empty array `[]` if none). |

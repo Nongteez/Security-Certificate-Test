@@ -139,11 +139,11 @@ test('Other exam version cards remain stable, available, and English-only', () =
   assert.ok(card1.includes('ISC2 CC — Pre-2026 Exam Outline'));
   assert.ok(card1.includes('583 practice questions based on the previous ISC2 CC exam domain structure.'));
   assert.ok(card1.includes('status-available">Available</span>'));
-  assert.ok(card1.includes('Select Version →</button>'));
+  assert.ok(card1.includes('Select →</button>'));
 
   assert.ok(card2.includes('ISC2 CC — 2026 Exam Outline'));
   assert.ok(card2.includes('status-available">Available</span>'));
-  assert.ok(card2.includes('Select Version →</button>'));
+  assert.ok(card2.includes('Select →</button>'));
 });
 
 test('UI labels remain English-only via i18n across all modes', () => {
