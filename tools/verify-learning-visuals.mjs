@@ -126,7 +126,7 @@ test('budget violations and structure defects are properly caught', () => {
   assert.ok(rTone.structure.length > 0, 'Should reject invalid tone');
 });
 
-test('viewer mounts Slide 2 (pillars) with complete cards, badges, and takeaway', () => {
+test('viewer mounts Slide 2 with a peer triad, three labels and complete takeaway', () => {
   const doc = new TestDocument();
   const root = doc.createElement('div');
   doc.body.append(root);
@@ -134,17 +134,17 @@ test('viewer mounts Slide 2 (pillars) with complete cards, badges, and takeaway'
   const viewer = mountLearningViewer(root, { lesson, language: 'en' });
   viewer.goToSlide('slide-02-cia-overview');
 
-  assert.ok(root.querySelector('.learning-pillars-deck'), 'Pillars deck must mount');
-  const cards = root.querySelectorAll('.pillar-card');
-  assert.equal(cards.length, 3, 'Must render 3 pillar cards');
+  assert.ok(root.querySelector('.cia-v3-overview'), 'Peer triad must mount');
+  const cards = root.querySelectorAll('.v3-goal-explanation');
+  assert.equal(cards.length, 3, 'Must render 3 goal explanations');
 
-  const badges = root.querySelectorAll('.pillar-symbol-badge');
+  const badges = root.querySelectorAll('.v3-goal-symbol');
   assert.equal(badges.length, 3);
-  assert.equal(badges[0].textContent, 'C');
-  assert.equal(badges[1].textContent, 'I');
-  assert.equal(badges[2].textContent, 'A');
+  assert.equal(badges[0].querySelector('[lang]').textContent, 'C');
+  assert.equal(badges[1].querySelector('[lang]').textContent, 'I');
+  assert.equal(badges[2].querySelector('[lang]').textContent, 'A');
 
-  const takeaway = root.querySelector('.pillars-takeaway-bar');
+  const takeaway = root.querySelector('.v3-footer');
   assert.ok(takeaway, 'Takeaway bar must render');
 
   // Verify bilingual support
@@ -162,20 +162,20 @@ test('viewer mounts Slide 6 (incident-flow) with sequence stages and connectors'
   const viewer = mountLearningViewer(root, { lesson, language: 'en' });
   viewer.goToSlide('slide-06-compound-impact');
 
-  assert.ok(root.querySelector('.learning-incident-deck'), 'Incident deck must mount');
-  const stageCards = root.querySelectorAll('.incident-stage-card');
+  assert.ok(root.querySelector('.cia-v3-incident'), 'Open incident sequence must mount');
+  const stageCards = root.querySelectorAll('.v3-incident-phase');
   assert.equal(stageCards.length, 3, 'Must render 3 stage cards');
 
-  const phases = root.querySelectorAll('.stage-phase-badge');
+  const phases = root.querySelectorAll('.v3-phase-number');
   assert.equal(phases.length, 3);
-  assert.equal(phases[0].textContent, '1');
-  assert.equal(phases[1].textContent, '2');
-  assert.equal(phases[2].textContent, '3');
+  assert.equal(phases[0].querySelector('[lang]').textContent, '1');
+  assert.equal(phases[1].querySelector('[lang]').textContent, '2');
+  assert.equal(phases[2].querySelector('[lang]').textContent, '3');
 
-  const connectors = root.querySelectorAll('.incident-connector');
+  const connectors = root.querySelectorAll('.v3-sequence-arrow');
   assert.equal(connectors.length, 2, 'Must render 2 connector arrows between 3 stages');
 
-  const note = root.querySelector('.incident-note-badge');
+  const note = root.querySelector('.v3-sequence-note');
   assert.ok(note, 'Disclaimer note badge must render');
 
   viewer.destroy();
@@ -189,8 +189,8 @@ test('viewer mounts Slide 7 (scenario-decision) with interactive options and saf
   const viewer = mountLearningViewer(root, { lesson, language: 'en' });
   viewer.goToSlide('slide-07-scenario-reflection');
 
-  assert.ok(root.querySelector('.learning-scenario-deck'), 'Scenario deck must mount');
-  const options = root.querySelectorAll('.scenario-option-card');
+  assert.ok(root.querySelector('.cia-v3-investigation'), 'Ledger investigation must mount');
+  const options = root.querySelectorAll('[data-option-key]');
   assert.equal(options.length, 3, 'Must render 3 options');
 
   // All interactive options must have data-slide-interactive to avoid fullscreen slide advance
@@ -218,7 +218,9 @@ test('reading mode toggle renders semantic blocks for structured slides', () => 
   viewer.goToSlide('slide-02-cia-overview');
 
   // Toggle reading mode via the reading button
-  const readingBtn = root.querySelectorAll('button').find(b => b.children.some(c => c.textContent === 'Reading layout'));
+  const more = root.querySelector('[data-action="more"]');
+  if (more) fire(more, 'click');
+  const readingBtn = root.querySelector('[data-action="reading"]');
   assert.ok(readingBtn);
   fire(readingBtn, 'click');
 
@@ -226,6 +228,47 @@ test('reading mode toggle renders semantic blocks for structured slides', () => 
   const body = root.querySelector('.learning-slide-body');
   assert.ok(body.querySelector('ul'), 'Reading mode should render semantic ul list');
   assert.ok(body.querySelector('p'), 'Reading mode should render semantic paragraph');
+
+  viewer.destroy();
+});
+
+test('viewer mounts Phase 3 Prototype 1 (hero-intro), Prototype 2 (connected diagram), and Prototype 3 (process timeline)', () => {
+  const doc = new TestDocument();
+  const root = doc.createElement('div');
+  doc.body.append(root);
+
+  const viewer = mountLearningViewer(root, { lesson, language: 'th' });
+
+  // Prototype 1: Hero Intro (Slide 1)
+  viewer.goToSlide('slide-01-orientation');
+  assert.ok(root.querySelector('.cia-editorial'), 'Editorial composition must mount on Slide 1');
+  assert.ok(root.querySelector('.cia-editorial-question'), 'Opening question must render as HTML');
+  assert.ok(root.querySelector('.cia-editorial-art'), 'Editorial document illustration must render');
+  assert.equal(root.querySelectorAll('.cia-editorial-goal').length, 3, 'Must render the three CIA goals');
+  assert.equal(root.querySelectorAll('.hero-mini-pill').length, 0, 'Rejected mini pills must not render');
+
+  // Prototype 2: Pillars with Connected Concept Diagram (Slide 2)
+  const allText = el => (el.textContent || '') + (el.children || []).map(allText).join('');
+  viewer.goToSlide('slide-02-cia-overview');
+  assert.ok(root.querySelector('.cia-v3-overview'), 'Overview must mount on Slide 2');
+  assert.ok(root.querySelector('.v3-triad-figure'), 'Large peer relationship must render');
+  assert.ok(root.querySelector('.v3-graphic'), 'Original geometry must render');
+  const pillarTitles = root.querySelectorAll('.v3-node-term');
+  assert.equal(pillarTitles.length, 3);
+  // Verify English terms retained in Thai mode
+  assert.ok(allText(pillarTitles[0]).includes('Confidentiality'), 'Must retain English term in Thai mode');
+  assert.ok(allText(pillarTitles[1]).includes('Integrity'), 'Must retain English term in Thai mode');
+  assert.ok(allText(pillarTitles[2]).includes('Availability'), 'Must retain English term in Thai mode');
+
+  // Prototype 3: Incident Timeline Track and Flow Connectors (Slide 6)
+  viewer.goToSlide('slide-06-compound-impact');
+  assert.ok(root.querySelector('.cia-v3-incident'), 'Incident sequence must mount on Slide 6');
+  assert.ok(root.querySelector('.v3-incident-sequence'), 'Open incident sequence must render');
+  const timeTags = root.querySelectorAll('.v3-phase-number');
+  assert.equal(timeTags.length, 3, 'Must render 3 ordered phases without invented timing');
+  assert.ok(allText(timeTags[0]).includes('1'), 'First source phase remains first');
+  const flowLabels = root.querySelectorAll('.v3-sequence-arrow');
+  assert.equal(flowLabels.length, 2, 'Must render 2 connector flow labels');
 
   viewer.destroy();
 });

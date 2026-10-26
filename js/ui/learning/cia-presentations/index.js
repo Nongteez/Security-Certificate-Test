@@ -1,0 +1,10 @@
+import {overview} from './overview.js';
+import {confidentiality} from './confidentiality.js';
+import {integrity} from './integrity.js';
+import {availability} from './availability.js';
+import {incident} from './incident.js';
+import {investigation} from './investigation.js';
+import {recap} from './recap.js';
+const renderers=new Map([['slide-02-cia-overview',overview],['slide-03-confidentiality',confidentiality],['slide-04-integrity',integrity],['slide-05-availability',availability],['slide-06-compound-impact',incident],['slide-07-scenario-reflection',investigation],['slide-08-takeaways',recap]]);
+export const hasCiaPresentation=({lesson,slide})=>lesson.id==='lesson-d1-01-cia-triad'&&renderers.has(slide.id);
+export const renderCiaPresentation=(host,context)=>renderers.get(context.slide.id)(host,context);

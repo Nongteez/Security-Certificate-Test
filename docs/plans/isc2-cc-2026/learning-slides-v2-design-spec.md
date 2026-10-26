@@ -163,38 +163,53 @@ Wireframe progress numbers illustrate a possible saved state, not repository/use
 
 With no valid in-progress lesson, replace Continue Learning with a short “Choose a domain to get started” introduction. If all available lessons are complete, show that factual status and a review link rather than a false Resume. Optional aggregate text says `x of y available lessons completed`; unavailable objectives are not in the denominator.
 
-### 4.3 Domain Overview
+### 4.3 Domain Overview (Objective Selection Redesign)
 
-Header: Back to Learning Center, domain number/title/weight, short English introduction, and language selection. The introduction summarizes the catalog's official objective themes; it is static course metadata with outline provenance.
+Header: Back to Learning Center, domain number/eyebrow, title, weight, short English introduction, theme toggle, and language selection. Unnecessary clutter (redundant per-domain progress counters, repeated lesson metadata blocks) is removed.
 
-Objectives are visible section headings, ordered by their catalog codes. Use spacing, typography, and a subtle divider. Do not put these sections inside accordions. An optional desktop anchor list may be considered only if real content length warrants it.
-
-Available lessons appear as compact cards below their owning objective: English title/synopsis, objective association, progress status, and one primary action. A secondary Info icon may open the same Lesson Info component without starting the lesson; it must not create a mandatory step.
+Objectives are presented as a clean, selectable radio list (`.learning-objective-list` with `role="radiogroup"` and `.learning-objective-item` with `role="radio"`):
+- All official ISC2 2026 Objectives appear in catalog order (e.g., 1.1 through 1.5).
+- Entire Objective row is clickable and keyboard-focusable (`tabindex`, `ArrowDown`, `ArrowUp`, `Space`, `Enter`).
+- Selecting an Objective highlights the row with a subtle blue border/background and soft blue glow, and updates the selection indicator without immediate navigation.
+- If an available Objective exists, the first available Objective is preselected by default; returning from viewer restores the previously selected Objective.
+- Unavailable Objectives display an understated `Coming Soon` badge, have `aria-disabled="true"`, and are not selectable.
+- A single primary learning action is situated below the Objective list:
+  - Always displays `Start Learning →` regardless of whether the selected lesson is not started, in progress, or completed.
+  - No available Objective selected: Disabled `Start Learning →`.
+  - Progress handling remains active internally: not started launches Slide 1, in progress resumes the saved slide, and completed reopens without resetting completed status.
+- An optional, lightweight `Lesson Info` link is provided alongside the bottom action button for the selected available lesson without mandatory navigation.
 
 ```text
-← Learning Center                                  EN  TH  EN+TH
-01  Security Principles                                    24%
-Understand security goals, risk, governance, controls and conduct.
-1 lesson available · 0 completed
+← Learning Center                                  EN  TH  EN+TH  [Theme]
+DOMAIN 01 · 24% EXAM WEIGHT
+Security Principles
+Build a foundation in security goals, risk, governance, controls, and professional conduct.
 
-1.1  Understand cybersecurity concepts
-┌ The CIA Triad: Core Information Security Goals ────────────────┐
-│ Distinguish the goals and recognize their effects in incidents│
-│ Objective 1.1 · In progress · 3 of 8 slides viewed             │
-│ [Resume Lesson]                                      [Info]  │
-└───────────────────────────────────────────────────────────────┘
+┌ (•) 1.1 — Understand cybersecurity concepts ────────────────────────┐
+│     [Selected: subtle blue border, light glow]                       │
+└──────────────────────────────────────────────────────────────────────┘
+┌ ( ) 1.2 — Understand risk management concepts           [Coming Soon]│
+└──────────────────────────────────────────────────────────────────────┘
+┌ ( ) 1.3 — Understand governance concepts                [Coming Soon]│
+└──────────────────────────────────────────────────────────────────────┘
+┌ ( ) 1.4 — Understand cybersecurity controls             [Coming Soon]│
+└──────────────────────────────────────────────────────────────────────┘
+┌ ( ) 1.5 — Maintain professional and ethical conduct     [Coming Soon]│
+└──────────────────────────────────────────────────────────────────────┘
 
-1.2  Understand risk management concepts
-Coming Soon
-
-1.3  Understand governance concepts
-Coming Soon
-...remaining official objectives remain visible...
+────────────────────────────────────────────────────────────────────────
+[Start Learning →]   Lesson Info
 ```
 
-The displayed synopsis comes from validated content; wireframe phrasing is illustrative. Start opens the first authored slide; Resume opens the reconciled saved slide; Review Lesson reopens the saved position without clearing completion. No action first opens a lesson launch screen.
-
-For an actual unpublished summary, show Coming Soon without a lesson action. With no summary, show one objective-level empty message, not invented lesson titles. Related-objective links reference the same lesson identity and do not duplicate counts or progress.
+#### Objective → Lessons → Slides Architecture
+The hierarchy remains Domain → Objective → Lesson(s) → Slides:
+- Objectives serve as the primary selection and authoring boundaries.
+- When an Objective contains multiple lessons:
+  - Resumes the appropriate unfinished lesson when valid in-progress progress exists (prioritizing the most recently updated).
+  - Otherwise begins the first appropriate published lesson in catalog order.
+  - If all lessons are completed, allows review without resetting completed progress.
+  - Slide progress remains strictly independent per lesson.
+- Reusable helper: `resolveObjectiveLearningState(objective)` in `js/core/learning-course.js`.
 
 ### 4.4 Presentation and optional Lesson Info
 
@@ -215,16 +230,37 @@ The toolbar is approximately 56px high at desktop widths; narrow layouts use int
 
 Stage sizing uses available width and viewport height together: fit a 16:9 canvas inside the space remaining after toolbar, gutters, and an open rail. Use learning-scoped container rules, removing the existing double gutters; do not modify `.app` for Quiz/Vocabulary. At short laptop heights, collapse rail by default and prioritize legibility. No arbitrary 75%-height rule or global viewport-only font scaling.
 
-Lesson Info opens as an overlay drawer, about 400–480px wide on desktop and a full-height sheet on mobile. It contains:
+Lesson Info opens as a centered, responsive modal dialog:
+- **Desktop (≥1100px):** `width: min(940px, calc(100vw - 64px))`, `max-height: min(88vh, 880px)`, generous internal padding (`38px 44px`), readable typography, subtle border, shadow (`0 28px 65px -15px rgba(0,0,0,0.6)`), dark/light theme compatibility, custom themed scrollbars, and a dimmed backdrop.
+- **Tablet (720px–1099px):** `width: min(820px, calc(100vw - 48px))`, `padding: 32px 34px`.
+- **Mobile (≤719px):** `width: 100%`, `max-height: 92vh`, `padding: 24px 20px`, `border-radius: 14px`, 0 horizontal overflow, internal scrolling only when content genuinely exceeds available height.
 
-- Learning outcomes and prerequisites, preserving all approved EN/TH text.
-- Slide count and a read-only ordered outline of English slide titles.
-- Sources and a concise content-version note.
-- Optional Review details disclosure preserving existing academic metadata and flags, without an “approved” hero badge.
+It contains:
+- Header with 'Lesson Info' (18–20px / `1.25rem`) and single '✕' close button.
+- Objective identifier (13–14px / `0.86rem`) and actual published lesson title (22–25px / `clamp(1.4rem, 2vw, 1.55rem)`).
+- Main section: Heading `What you'll learn` (16–18px / `1.1rem`) displaying original learning outcomes as a spacious bullet list (16–17px / `1.05rem`, line-height 1.65, 12px item gap), preserving all approved EN/TH educational content without rewriting.
+- Collapsible disclosure section: `References & lesson details` (collapsed by default, summary 15–16px / `0.98rem` with `14px 20px` padding):
+  - When expanded, reveals:
+    1. `Before you begin` (prerequisites when provided; omitted without filler if absent).
+    2. `Sources` (all existing citations preserved, formatted with authority badges such as Technical Standard, Official Outline, Project Reference, font 14–15px / `0.94rem`, and accessible external links with `target="_blank" rel="noopener noreferrer"`).
+    3. Review metadata and content version note (13–14px / `0.88rem`).
+  - When collapsed on desktop, the modal content fits comfortably within the viewport without triggering scrollbars.
 
-The outline is read-only to avoid duplicating the Slides navigator. Section labels and dialog controls are English. The user can start/resume without opening Info.
+Redundant information removed:
+- The full Slide Outline list has been removed from Lesson Info to keep the dialog compact and readable without duplicating the Presentation Viewer navigator (catalog outline data remains preserved).
+- No completion percentages, fake progress indicators, decorative statistics, or redundant footer action buttons.
 
-Opening Info pauses active explanatory animation/media and keeps slide, language, visits, and scenario selection. Use a labeled dialog, initial focus on Close or heading, Escape close, contained dialog focus, inert background, and focus return to Info. Closing never invokes slide navigation. After closing, media resumes only on user action. If fullscreen is active, exit fullscreen first, retain the slide, and open Info in normal mode.
+Custom scrollbar & overflow handling:
+- Internal scrolling occurs only when content exceeds available viewport height.
+- Styled with a thin, theme-consistent scrollbar (`scrollbar-width: thin; scrollbar-color: var(--line) transparent;` in Firefox and `::-webkit-scrollbar` in Chromium) preventing white native scrollbars in Dark Mode.
+
+Modal interaction & accessibility:
+- Header features title `Lesson Info` and a single upper-right `✕` close button (`[data-action="close-info"]`).
+- Opening Info does not change selected objective, launch lessons, or write progress.
+- Focus moves into the dialog upon opening; focus is trapped inside with Tab and Shift+Tab (respecting collapsed/expanded disclosure states).
+- Closing via `✕` button, backdrop click, or Escape key restores focus to the opener trigger.
+- Siblings are marked `inert` and body scrolling is locked while the modal is open.
+- Opening Info pauses active explanatory animation/media and keeps slide, language, visits, and scenario selection. After closing, media resumes only on user action. If fullscreen is active, exit fullscreen first, retain the slide, and open Info in normal mode.
 
 ### 4.5 Slides / filmstrip
 
@@ -438,17 +474,17 @@ This is the proposed sequence for approval, not permission to execute all phases
 - [x] Produce the implementation checklist and explicit review checkpoints.
 - [x] **Gate A: user explicitly approved the revised specification for Phase 2 on 2026-10-25.**
 
-### Phase 2 — navigation and core UI (pending Gate A)
+### Phase 2 — navigation and core UI (Complete)
 
-- [ ] Add `learning-domain` to the state/renderer route allowlists; retain legacy `learning-lesson` as a compatibility redirect to Viewer.
-- [ ] Implement `buildLearningCourseModel({catalog, lessonsById, progressStore, availabilityById})` in `learning-course.js`: returns domains, unique available lessons, progress counts, resume candidate, and unresolved availability.
-- [ ] Populate weights/intros keyed by existing outline ID and domain ID; use validated catalog English titles/objectives.
-- [ ] Implement Center cards and direct Continue Learning; implement Domain objective sections and direct Start/Resume/Review actions.
-- [ ] Implement `renderLessonInfo(host, {lesson, language, onClose, onNavigateTextView})` with safe source links and accessible focus behavior.
-- [ ] Add minimal Info invocation and Back to Domain to the existing viewer so Phase 2 works end to end before the full shell replacement.
-- [ ] Keep V1 progress writes identical; preserve all source content and existing selector labels.
-- [ ] Verify direct route destinations, one-click resume, invalid/stale selections, legacy redirect, back/focus restoration, loading failures, English UI, and storage preservation.
-- [ ] Deliver the working navigation checkpoint and report observed limits. Do not expand slides in this phase.
+- [x] Add `learning-domain` to the state/renderer route allowlists; retain legacy `learning-lesson` as a compatibility redirect to Viewer.
+- [x] Implement `buildLearningCourseModel({catalog, lessonsById, progressStore, availabilityById})` in `learning-course.js`: returns domains, unique available lessons, progress counts, resume candidate, and unresolved availability.
+- [x] Populate weights/intros keyed by existing outline ID and domain ID; use validated catalog English titles/objectives.
+- [x] Implement Center cards and direct Continue Learning; implement Domain objective sections and direct Start/Resume/Review actions.
+- [x] Implement `renderLessonInfo(host, {lesson, language, onClose, onNavigateTextView})` with safe source links and accessible focus behavior.
+- [x] Add minimal Info invocation and Back to Domain to the existing viewer so Phase 2 works end to end before the full shell replacement.
+- [x] Keep V1 progress writes identical; preserve all source content and existing selector labels.
+- [x] Verify direct route destinations, one-click resume, invalid/stale selections, legacy redirect, back/focus restoration, loading failures, English UI, and storage preservation.
+- [x] Deliver the working navigation checkpoint and report observed limits. Do not expand slides in this phase.
 
 ### Phase 3 — presentation viewer (after Phase 2 checkpoint)
 

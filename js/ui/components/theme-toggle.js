@@ -56,3 +56,35 @@ export function attachThemeToggle(container, buttonId = 'theme-toggle', onToggle
     });
   }
 }
+
+/**
+ * Creates and returns a DOM theme toggle button element with click handler.
+ * @param {Document} doc - Document instance to create element
+ * @param {string} [buttonId='theme-toggle'] - ID for the button
+ * @param {Function} [onToggle] - Optional callback after toggle
+ * @param {AbortSignal} [signal] - Optional abort signal
+ * @returns {HTMLElement} The created theme toggle button
+ */
+export function createThemeToggleButton(doc, buttonId = 'theme-toggle', onToggle, signal) {
+  const btn = doc.createElement('button');
+  btn.type = 'button';
+  btn.className = 'theme-toggle';
+  btn.id = buttonId;
+  btn.title = 'Toggle color theme';
+  btn.setAttribute('aria-label', 'Toggle theme');
+  const updateIcon = (theme) => {
+    btn.innerHTML = theme === 'dark' ? SUN_ICON : MOON_ICON;
+  };
+  try {
+    updateIcon(getCurrentTheme());
+  } catch {}
+  btn.addEventListener('click', () => {
+    const nextTheme = toggleTheme();
+    updateIcon(nextTheme);
+    if (doc.documentElement && typeof doc.documentElement.setAttribute === 'function') {
+      try { doc.documentElement.setAttribute('data-theme', nextTheme); } catch {}
+    }
+    if (onToggle) onToggle(nextTheme);
+  }, signal ? { signal } : undefined);
+  return btn;
+}

@@ -48,7 +48,7 @@ export function renderLearningRoute(container, renderApp, { loadCatalog = loadLe
         const objective = summary.objectiveIds.includes(objectiveId) ? objectiveId : summary.primaryObjectiveId;
         if (state.screen === 'learning-domain') rememberScroll('domainY');
         else { rememberScroll('centerY'); returnContext.domainY = 0; }
-        returnContext.focusId = `learning-lesson-${id}-${objective.replace('.', '-')}`;
+        returnContext.focusId = 'btn-start-learning';
         const slideId = intent === 'start' ? (lesson.slideOrder?.[0] || lesson.slides[0].id) : progress.lastSlideId;
         navigate('learning-viewer', { lessonId: id, domainId: summary.domainId, objectiveId: objective, slideId });
       };
@@ -59,7 +59,7 @@ export function renderLearningRoute(container, renderApp, { loadCatalog = loadLe
           if (route === 'learning-domain') {
             const domain = course.domains.find(d => d.id === selected.domainId);
             if (!domain) { navigate('learning-center', { domainId: null }); return; }
-            disposeScreen = renderLearningDomain(container, { domain, language, focusId, onLanguage, onLaunch: launch, onInfo: openInfo,
+            disposeScreen = renderLearningDomain(container, { domain, language, focusId, selectedObjectiveId: selected.objectiveId, onLanguage, onLaunch: launch, onInfo: openInfo,
               onBack: () => { rememberScroll('domainY'); returnContext.focusId = `learning-domain-${domain.id}`; navigate('learning-center'); } });
             restoreScroll('domainY');
           } else {
@@ -77,6 +77,7 @@ export function renderLearningRoute(container, renderApp, { loadCatalog = loadLe
         }));
         if (alive) {
           const active = doc.activeElement; if (container.contains(active)) returnContext.focusId = active.id || returnContext.focusId;
+          rememberScroll(route === 'learning-domain' ? 'domainY' : 'centerY');
           paint();
         }
         return;
@@ -90,7 +91,7 @@ export function renderLearningRoute(container, renderApp, { loadCatalog = loadLe
       const objectiveId = summary.objectiveIds.includes(selected.objectiveId) ? selected.objectiveId : summary.primaryObjectiveId;
       selectLearningScreen('learning-viewer', { lessonId: lesson.id, domainId: lesson.domainId, objectiveId, slideId: progress.lastSlideId });
       const handle = mountLearningViewer(container, { lesson, language, progress,
-        onBack: () => { returnContext.focusId = `learning-lesson-${lesson.id}-${objectiveId.replace('.', '-')}`; navigate('learning-domain', { domainId: lesson.domainId, objectiveId }); },
+        onBack: () => { returnContext.focusId = 'btn-start-learning'; navigate('learning-domain', { domainId: lesson.domainId, objectiveId }); },
         onLanguage: mode => updateSetup({ language: mode }),
         onProgress: p => { state.learning.slideId = p.lastSlideId; return progressStore.save(lesson, p); } });
       disposeScreen = () => handle.destroy();

@@ -1,0 +1,44 @@
+/* This stylesheet is loaded only by this standalone exploration page. */
+:root { color-scheme: light; font-family: 'Segoe UI', Tahoma, sans-serif; color: #172d42; background: #e9edf1; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: #174b73; text-underline-offset: 4px; }
+a:focus-visible, summary:focus-visible { outline: 3px solid #176fa6; outline-offset: 5px; }
+.preview-header { max-width: 1760px; margin: auto; padding: 42px 40px 28px; display: flex; gap: 28px; align-items: center; justify-content: space-between; }
+.eyebrow { font-size: 11px; letter-spacing: .16em; font-weight: 700; }
+h1 { font-size: clamp(25px, 2.4vw, 38px); margin: 10px 0; letter-spacing: -.035em; }
+.preview-header p { margin: 0; color: #536679; font-size: 15px; }
+.source-link { font-size: 14px; white-space: nowrap; }
+.preview-nav { display: flex; flex-wrap: wrap; gap: 12px 30px; max-width: 1760px; margin: auto; padding: 0 40px 28px; font-size: 14px; }
+main { max-width: 1760px; padding: 0 40px; margin: auto; }
+.concept { scroll-margin-top: 20px; margin-bottom: 48px; }
+.concept-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 15px; }
+.concept-heading h2 { font-size: 20px; margin: 4px 0 0; font-weight: 600; }
+.concept-heading a { font-size: 14px; }
+figure { margin: 0; }
+.canvas { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; box-shadow: 0 12px 35px #10243716; }
+figcaption { font-size: 14px; line-height: 1.6; margin-top: 12px; max-width: 1000px; color: #4c6274; }
+.source { border-top: 1px solid #b9c6d0; padding: 24px 0; max-width: 1080px; }
+.source h2 { font-size: 25px; }
+.source p, .source li { font-size: 17px; line-height: 1.9; }
+.source details { padding: 18px 0; border-bottom: 1px solid #c5d0d8; }
+.source summary { font-size: 18px; font-weight: 600; cursor: pointer; }
+.source [lang=th] { font-family: Tahoma, 'Leelawadee UI', sans-serif; }
+.source code { overflow-wrap: anywhere; font-size: 13px; }
+.preview-footer { max-width: 1760px; padding: 20px 40px 40px; margin: auto; color: #536679; font-size: 13px; }
+/* Focus is a preview-page convenience, independent of production fullscreen/navigation. */
+body.focus .preview-header, body.focus .preview-nav, body.focus .source, body.focus .preview-footer, body.focus figcaption, body.focus .concept-heading { display: none; }
+body.focus main { max-width: none; padding: 0; }
+body.focus .concept { display: none; margin: 0; }
+body.focus .concept.selected { display: grid; min-height: 100dvh; place-items: center; background: #182333; }
+body.focus figure { width: min(100vw, calc(100dvh * 16 / 9)); }
+body.focus .canvas { box-shadow: none; }
+@media(max-width: 720px) {
+ .preview-header { align-items: flex-start; flex-direction: column; padding: 28px 16px; gap: 14px; }
+ .preview-nav { padding: 0 16px 24px; gap: 12px 20px; }
+ main { padding: 0 16px; }
+ .concept-heading h2 { font-size: 17px; }
+ .concept-heading a { white-space: nowrap; }
+ .preview-footer { padding-inline: 16px; }
+}
+@media print { .preview-header, .preview-nav, .concept-heading, figcaption, .source, .preview-footer { display: none; } main { padding: 0; } .concept { break-after: page; margin: 0; } .canvas { box-shadow: none; } }

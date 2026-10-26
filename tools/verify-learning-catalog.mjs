@@ -5,12 +5,16 @@ import { createFixture, reviewedTestInput } from './fixtures/learning/fixture.mj
 const core = await import('../js/core/learning-loader.js').catch(() => ({}));
 const catalog = () => JSON.parse(fs.readFileSync(new URL('../content/isc2-cc-2026/learning/published/catalog.json', import.meta.url), 'utf8'));
 function populated(lesson = reviewedTestInput()) { const c = catalog(); c.domains[0].objectives[0].lessons.push({ id: lesson.id, domainId: 1, primaryObjectiveId: '1.1', objectiveIds: ['1.1'], title: lesson.title, synopsis: lesson.synopsis, status: 'published', revision: lesson.revision, lessonPath: `lessons/${lesson.id}.json` }); return c; }
-test('public catalog has five correct Domains, all official objectives and published CIA Triad pilot lesson', () => {
+test('public catalog has five correct Domains, all official objectives and four reviewed Objective 1.1 lessons and two Objective 1.2 lessons', () => {
   assert.equal(typeof core.validateCatalog, 'function', 'catalog validation must be implemented');
   const c = catalog(); assert.equal(core.validateCatalog(c).valid, true);
   assert.deepEqual(c.domains.map(d => d.objectives.length), [5, 4, 2, 3, 5]);
   const published = core.publishedLessons(c);
-  assert.equal(published.length, 1);
+  assert.deepEqual(published.map(l => l.id), ['lesson-d1-01-cia-triad', 'lesson-d1-02-aaa-mfa', 'lesson-d1-03-non-repudiation', 'lesson-d1-04-privacy', 'lesson-d1-05-risk-foundations', 'lesson-d1-06-assessment']);
+  for (const summary of published) {
+    const body = JSON.parse(fs.readFileSync(new URL(`../content/isc2-cc-2026/learning/published/${summary.lessonPath}`, import.meta.url), 'utf8'));
+    assert.equal(core.validateLesson(body).valid, true, summary.id);
+  }
   assert.equal(published[0].id, 'lesson-d1-01-cia-triad');
   assert.equal(published[0].domainId, 1);
   assert.equal(published[0].primaryObjectiveId, '1.1');

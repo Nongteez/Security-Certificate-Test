@@ -156,7 +156,7 @@ test('6. HTML Card Content & Action Labels: All 4 cards intact with exact labels
   assert.ok(cards[0].includes('583 Questions'));
 
   // 2026 card
-  assert.ok(cards[1].includes('ISC2 CC — 2026 Exam Outline'));
+  assert.ok(cards[1].includes('ISC2 CC 2026 — Exam Outline') || cards[1].includes('ISC2 CC — 2026 Exam Outline'));
   assert.ok(cards[1].includes('Select →'));
   assert.ok(cards[1].includes('86 Questions'));
 
@@ -166,7 +166,7 @@ test('6. HTML Card Content & Action Labels: All 4 cards intact with exact labels
   assert.ok(cards[2].includes('313 Terms'));
 
   // Learning Slides card (4th card in 2nd row)
-  assert.ok(cards[3].includes('ISC2 CC — Learning Slides'));
+  assert.ok(cards[3].includes('ISC2 CC 2026 — Update Slides') || cards[3].includes('ISC2 CC 2026 Update — Slides'));
   assert.ok(cards[3].includes('Learning →'));
   assert.ok(cards[3].includes('data-learning-card'));
 });

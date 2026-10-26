@@ -15,7 +15,7 @@ const versions = [
   {
     id: 'next-bank', // Provisional stable bank ID, not an official outline/date.
     certificationId: 'isc2-cc',
-    title: 'ISC2 CC — 2026 Exam Outline',
+    title: 'ISC2 CC 2026 — Exam Outline',
     description: 'Updated exam domains effective September 1, 2026, including AI security concepts. Domain 1, Domain 2 and Domain 3 practice available.',
     badge: '2026 Exam Outline',
     status: 'available',
@@ -38,7 +38,7 @@ const versions = [
     id: 'isc2-cc-learning-slides',
     certificationId: 'isc2-cc',
     type: 'learning',
-    title: 'ISC2 CC — Learning Slides',
+    title: 'ISC2 CC 2026 — Update Slides',
     description: 'Explore cybersecurity concepts through interactive presentations, visual explanations, and structured lessons aligned with the 2026 exam outline.',
     status: 'coming-soon'
   }

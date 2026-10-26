@@ -27,8 +27,15 @@ export function button(doc, label, mode, action, signal, className = 'btn btn-se
 }
 /** Application chrome always uses English; localize() is for educational content only. */
 export function uiLabel(node, label) { return localize(node, { en: typeof label === 'string' ? label : label?.en || '' }, 'en'); }
-export function languageControls(doc, mode, onChange, signal) {
+export function languageControls(doc, mode, onChange, signal, modes = ['en', 'th', 'both']) {
   const group = element(doc, 'div', 'lang-toggle'); group.setAttribute('role', 'group'); group.setAttribute('aria-label', 'Content language');
-  for (const lang of ['en', 'th', 'both']) { const b = button(doc, pair(lang === 'both' ? 'EN+TH' : lang.toUpperCase(), lang === 'both' ? 'EN+TH' : lang.toUpperCase()), 'en', () => onChange(lang), signal, `lang-btn ${lang === mode ? 'active' : ''}`); b.setAttribute('aria-pressed', String(lang === mode)); group.append(b); }
-  Array.from(group.children).forEach((b, i) => { b.id = `learning-language-${['en', 'th', 'both'][i]}`; }); return group;
+  for (const lang of modes) {
+    const label = lang === 'both' ? 'EN+TH' : lang.toUpperCase();
+    const b = button(doc, pair(label, label), 'en', () => onChange(lang), signal, `lang-btn ${lang === mode ? 'active' : ''}`);
+    b.setAttribute('aria-pressed', String(lang === mode));
+    b.setAttribute('data-lang', lang);
+    b.id = `learning-language-${lang}`;
+    group.append(b);
+  }
+  return group;
 }

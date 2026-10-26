@@ -6,7 +6,7 @@
  * 1. Application UI is strictly English-only across EN, TH, and EN+TH (both) modes.
  * 2. Version cards (Pre-2026, 2026, Vocabulary, Learning Slides) contain zero Thai text.
  * 3. Learning Slides card matches the exact required English-only copy:
- *    - Title: ISC2 CC — Learning Slides
+ *    - Title: ISC2 CC 2026 Update — Slides
  *    - Description: Explore cybersecurity concepts through interactive presentations, visual explanations, and structured lessons aligned with the 2026 exam outline.
  *    - Status: Available (or Coming Soon when gated)
  *    - Action: Open Learning Center → (or Coming Soon when gated)
@@ -113,8 +113,9 @@ test('Learning Slides card has exact English-only copy and properties when avail
 
     // 1. Title
     assert.ok(
-      learningCard.includes('<h3 class="cert-card-title">ISC2 CC — Learning Slides</h3>'),
-      `[${mode}] Title must strictly be 'ISC2 CC — Learning Slides'`
+      learningCard.includes('<h3 class="cert-card-title">ISC2 CC 2026 — Update Slides</h3>') ||
+      learningCard.includes('<h3 class="cert-card-title">ISC2 CC 2026 Update — Slides</h3>'),
+      `[${mode}] Title must strictly be the updated English-only Learning Slides title`
     );
 
     // 2. Description

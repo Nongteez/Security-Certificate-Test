@@ -25,9 +25,10 @@ test('resume preserves saved slide and counts actual visits without mutating V1 
 test('unavailable and pending lesson bodies never expose resume or fabricated completion totals', () => {
   const p = visitSlide(lesson, null, 'slide-06-compound-impact');
   const pending = build({ lessonsById: new Map(), availabilityById: new Map(), progressStore: saved({ [lesson.id]: p }) });
-  assert.equal(pending.pending, 1); assert.equal(pending.total, 0); assert.equal(pending.resume, null);
+  const lessonCount = catalog.domains.flatMap(d => d.objectives.flatMap(o => o.lessons)).filter(l => l.status === 'published').length;
+  assert.equal(pending.pending, lessonCount); assert.equal(pending.total, 0); assert.equal(pending.resume, null);
   const failed = build({ lessonsById: new Map(), availabilityById: new Map([[lesson.id, 'failed']]), progressStore: saved({ [lesson.id]: p }) });
-  assert.equal(failed.failed, 1); assert.equal(failed.pending, 0); assert.equal(failed.resume, null);
+  assert.equal(failed.failed, 1); assert.equal(failed.pending, lessonCount - 1); assert.equal(failed.resume, null);
 });
 test('stale saved slide falls back to first authored slide and unpublished records remain unlaunched', () => {
   const p = { lessonId: lesson.id, contentRevision: '1', lastSlideId: 'deleted', visitedSlideIds: ['slide-03-confidentiality'], status: 'in-progress' };
@@ -43,7 +44,7 @@ test('related objectives do not duplicate available lessons or domain completion
   const c = structuredClone(catalog), l = structuredClone(lesson); l.objectiveIds.push('1.2');
   c.domains[0].objectives[0].lessons[0].objectiveIds.push('1.2'); c.domains[0].objectives[1].relatedLessonIds.push(l.id);
   const m = build({ catalog: c, lessonsById: new Map([[l.id, l]]) });
-  assert.equal(m.total, 1); assert.equal(m.domains[0].objectives[1].lessons[0].summary.id, l.id);
+  assert.equal(m.total, 1); assert.equal(m.domains[0].objectives[1].lessons.filter(e => e.summary.id === l.id).length, 1);
 });
 test('newest valid progress timestamp wins and malformed dates cannot steal Continue Learning', () => {
   const c = structuredClone(catalog), second = { ...structuredClone(lesson), id: 'second-lesson' };

@@ -1,0 +1,949 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d1-05-risk-foundations",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 1,
+  "primaryObjectiveId": "1.2",
+  "objectiveIds": [
+    "1.2"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Risk Foundations & Lifecycle",
+    "th": "พื้นฐาน Risk และวงจรการบริหารความเสี่ยง"
+  },
+  "synopsis": {
+    "en": "Connect assets, threats, weaknesses, likelihood and consequences, then follow risk through an ongoing decision cycle.",
+    "th": "เชื่อม Asset ภัย จุดอ่อน โอกาสและผลกระทบ แล้วติดตาม Risk ผ่านวงจรตัดสินใจที่ทบทวนต่อเนื่อง"
+  },
+  "outcomes": [
+    {
+      "en": "Distinguish assets, threats, vulnerabilities, impacts and risk in a concrete scenario.",
+      "th": "แยก Asset, Threat, Vulnerability, Impact และ Risk จากสถานการณ์"
+    },
+    {
+      "en": "Explain why likelihood and impact need context, evidence and explicit assumptions.",
+      "th": "อธิบายว่าทำไม Likelihood และ Impact ต้องมีบริบท หลักฐานและสมมติฐาน"
+    },
+    {
+      "en": "Follow identification, assessment, response and monitoring with communication throughout.",
+      "th": "ติดตามการระบุ ประเมิน ตอบสนองและทบทวน โดยสื่อสารตลอด"
+    },
+    {
+      "en": "Write a useful risk statement and recognize when to reassess and report.",
+      "th": "เขียนข้อความ Risk ที่ใช้ต่อได้ และจำแนกเหตุให้ประเมินใหม่และรายงาน"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: CIA Triad. Earlier AAA, evidence and privacy lessons provide context.",
+      "th": "แนะนำ CIA Triad โดย AAA หลักฐาน และ Privacy ช่วยเสริมบริบท"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-01-potential-harm",
+      "title": {
+        "en": "Risk exists before an incident happens.",
+        "th": "Risk มีอยู่ได้ ก่อนเกิดเหตุการณ์จริง"
+      },
+      "rendererId": "comparison",
+      "layoutId": "risk-potential-harm",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Risk considers possible harm and how likely it is in a defined context.",
+            "th": "Risk พิจารณาความเสียหายที่อาจเกิดและโอกาสเกิดในบริบทที่กำหนด"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Original teaching scenario and distinctions",
+            "th": "สถานการณ์แต่งขึ้นและความแตกต่างประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Scenario",
+              "th": "สถานการณ์"
+            },
+            {
+              "en": "Reasoning",
+              "th": "การพิจารณา"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Something valuable",
+                "th": "สิ่งที่มีคุณค่า"
+              },
+              {
+                "en": "A clinic’s appointment service",
+                "th": "บริการนัดหมายของคลินิก"
+              },
+              {
+                "en": "Patients and staff depend on it.",
+                "th": "ผู้ป่วยและเจ้าหน้าที่ต้องใช้บริการ"
+              }
+            ],
+            [
+              {
+                "en": "A possible adverse event",
+                "th": "เหตุที่อาจก่อผลเสีย"
+              },
+              {
+                "en": "An attacker could disrupt bookings.",
+                "th": "ผู้โจมตีอาจทำให้ระบบจองหยุดทำงาน"
+              },
+              {
+                "en": "A scenario to assess—not a confirmed incident.",
+                "th": "เป็นสถานการณ์ให้ประเมิน ไม่ใช่เหตุที่ยืนยันแล้ว"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The notes describe risk management as identifying, assessing, responding to and monitoring potential risks. Risk is not simply a hacker, a weakness or the loss itself: it concerns a possible adverse outcome and its likelihood in context. In this original teaching scenario a clinic depends on an online appointment service. An attacker might exploit a weakness and interrupt bookings; no attack has been confirmed. The organisation can assess that risk before an incident occurs. Consider the service, the people who rely on it, the scope and the period being considered. Risk management supports informed decisions about protection and resources, rather than promising to prevent every possible event. The example is not a real exam question.",
+            "th": "โน้ตอธิบาย Risk management ว่าเป็นการระบุ ประเมิน ตอบสนอง และติดตามความเสี่ยงที่อาจเกิด Risk ไม่ใช่เพียงแฮ็กเกอร์ ช่องโหว่ หรือความเสียหาย แต่พิจารณาผลเสียที่อาจเกิดพร้อมโอกาสเกิดในบริบท ในสถานการณ์ที่แต่งขึ้น คลินิกพึ่งบริการนัดหมายออนไลน์ ผู้โจมตีอาจใช้จุดอ่อนทำให้ระบบจองหยุดทำงาน แต่ยังไม่มีการยืนยันว่าเกิดการโจมตี องค์กรประเมินความเสี่ยงนี้ได้ก่อนเกิดเหตุจริง โดยระบุบริการ คนที่พึ่งพา ขอบเขต และช่วงเวลาที่พิจารณา Risk management ช่วยตัดสินใจเรื่องการปกป้องและทรัพยากรอย่างมีข้อมูล ไม่ใช่รับรองว่าจะป้องกันได้ทุกเหตุการณ์ ตัวอย่างนี้ไม่ใช่ข้อสอบจริง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "No incident yet does not mean no risk.",
+            "th": "ยังไม่เกิดเหตุ ไม่ได้แปลว่าไม่มีความเสี่ยง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-a",
+        "notes-b",
+        "nist-assessment"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-02-connect-the-scenario",
+      "title": {
+        "en": "Connect the weakness to a consequence.",
+        "th": "เชื่อมจุดอ่อนให้เห็นผลที่อาจตามมา"
+      },
+      "rendererId": "comparison",
+      "layoutId": "risk-connect-the-scenario",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "One original scenario, four different parts.",
+            "th": "สถานการณ์แต่งขึ้นหนึ่งเรื่อง ประกอบด้วยสี่ส่วนที่ต่างกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Original teaching scenario and distinctions",
+            "th": "สถานการณ์แต่งขึ้นและความแตกต่างประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Scenario",
+              "th": "สถานการณ์"
+            },
+            {
+              "en": "Reasoning",
+              "th": "การพิจารณา"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Asset",
+                "th": "Asset"
+              },
+              {
+                "en": "Appointment service",
+                "th": "บริการนัดหมาย"
+              },
+              {
+                "en": "What needs protection?",
+                "th": "อะไรต้องได้รับการปกป้อง"
+              }
+            ],
+            [
+              {
+                "en": "Vulnerability",
+                "th": "Vulnerability"
+              },
+              {
+                "en": "Missing security update",
+                "th": "ยังไม่ติดตั้งอัปเดตความปลอดภัย"
+              },
+              {
+                "en": "What weakness could be exploited?",
+                "th": "มีจุดอ่อนใดที่อาจถูกใช้"
+              }
+            ],
+            [
+              {
+                "en": "Threat event",
+                "th": "Threat event"
+              },
+              {
+                "en": "An attacker exploits that weakness",
+                "th": "ผู้โจมตีใช้จุดอ่อนนั้น"
+              },
+              {
+                "en": "What harmful event could occur?",
+                "th": "เหตุอันตรายใดอาจเกิดขึ้น"
+              }
+            ],
+            [
+              {
+                "en": "Potential impact",
+                "th": "Potential impact"
+              },
+              {
+                "en": "Bookings stop; staff must reschedule",
+                "th": "ระบบจองหยุด เจ้าหน้าที่ต้องนัดใหม่"
+              },
+              {
+                "en": "What would the consequence be?",
+                "th": "ผลที่ตามมาคืออะไร"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Source A lists assets, threats, vulnerabilities and potential impacts; Source B connects them. Follow the clinic story: the appointment service is the asset; a relevant missing security update leaves a vulnerability; an attacker is a threat source and exploiting that weakness is a possible threat event; interrupted bookings and rescheduling work are potential impacts. Whether that event can realistically happen depends on exposure, exploitability and existing safeguards. The arrows describe this scenario, not a mathematical formula or a claim that every threat always succeeds. One event may cause several CIA or privacy effects, but this example focuses on availability and operational disruption. Assets include valuable information, systems, services and people—not just hardware.",
+            "th": "แหล่ง A แยก Asset, Threat, Vulnerability และ Potential impact ส่วนแหล่ง B เชื่อมความสัมพันธ์ ในเรื่องคลินิก บริการนัดหมายคือ Asset การขาดอัปเดตที่เกี่ยวข้องทำให้มี Vulnerability ผู้โจมตีเป็น Threat source และการใช้จุดอ่อนนั้นคือ Threat event ที่อาจเกิด ระบบจองหยุดและภาระนัดใหม่คือ Potential impact ส่วนโอกาสเกิดจริงต้องดูการเปิดรับ การใช้ประโยชน์จากจุดอ่อน และมาตรการที่มี ลูกศรอธิบายเรื่องนี้ ไม่ใช่สูตรคำนวณหรือการยืนยันว่าทุกภัยสำเร็จเสมอ เหตุหนึ่งอาจกระทบ CIA หรือ Privacy หลายด้าน แต่ตัวอย่างเน้น Availability และการดำเนินงาน Asset อาจเป็นข้อมูล ระบบ บริการ และบุคคลที่มีคุณค่า ไม่ใช่แค่ฮาร์ดแวร์"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A vulnerability enables a scenario; impact describes its consequence.",
+            "th": "Vulnerability เป็นจุดอ่อนในสถานการณ์ ส่วน Impact คือผลที่ตามมา"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-a",
+        "notes-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-03-separate-the-terms",
+      "title": {
+        "en": "A threat is not a vulnerability.",
+        "th": "Threat ไม่ใช่ Vulnerability"
+      },
+      "rendererId": "comparison",
+      "layoutId": "risk-separate-the-terms",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Classify the role a fact plays in this scenario.",
+            "th": "จำแนกตามบทบาทของข้อเท็จจริงในสถานการณ์"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Original teaching scenario and distinctions",
+            "th": "สถานการณ์แต่งขึ้นและความแตกต่างประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Scenario",
+              "th": "สถานการณ์"
+            },
+            {
+              "en": "Reasoning",
+              "th": "การพิจารณา"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Threat",
+                "th": "Threat"
+              },
+              {
+                "en": "Flood water could damage equipment.",
+                "th": "น้ำท่วมอาจทำให้อุปกรณ์เสียหาย"
+              },
+              {
+                "en": "Potential cause of harm",
+                "th": "สิ่งที่อาจก่ออันตราย"
+              }
+            ],
+            [
+              {
+                "en": "Vulnerability",
+                "th": "Vulnerability"
+              },
+              {
+                "en": "Equipment sits in a flood-prone basement.",
+                "th": "อุปกรณ์อยู่ในชั้นใต้ดินที่เสี่ยงน้ำท่วม"
+              },
+              {
+                "en": "A weakness in the situation",
+                "th": "จุดอ่อนในสถานการณ์"
+              }
+            ],
+            [
+              {
+                "en": "Impact",
+                "th": "Impact"
+              },
+              {
+                "en": "The service becomes unavailable.",
+                "th": "บริการไม่พร้อมใช้งาน"
+              },
+              {
+                "en": "The adverse consequence",
+                "th": "ผลเสียที่ตามมา"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Do not use threat, vulnerability and impact as interchangeable labels. The notes include floods as well as attackers and malware: threats are not limited to deliberate cyberattacks. In this original flood example, damaging flood water is a possible cause of harm, vulnerable equipment placement makes damage more plausible, and service unavailability is the consequence. A weakness is not proof that harm has already happened. A vulnerability scan finding is evidence to investigate, not a complete risk assessment on its own. Ask what is valuable, what could cause harm, what weakness or condition matters and what outcome would follow. These role-based questions are reasoning guidance; no isolated keyword guarantees an official exam answer.",
+            "th": "อย่าใช้ Threat, Vulnerability และ Impact แทนกัน โน้ตยกทั้งน้ำท่วม ผู้โจมตี และมัลแวร์ จึงไม่ได้จำกัดภัยไว้เฉพาะการโจมตีโดยตั้งใจ ในตัวอย่างน้ำท่วมที่แต่งขึ้น น้ำที่ทำให้อุปกรณ์เสียหายเป็นสิ่งที่อาจก่ออันตราย ตำแหน่งวางอุปกรณ์ที่เปราะบางทำให้เกิดความเสียหายได้ง่ายขึ้น และบริการไม่พร้อมใช้งานเป็นผลตามมา การมีจุดอ่อนไม่ได้พิสูจน์ว่าเกิดความเสียหายแล้ว ผลสแกนช่องโหว่เป็นหลักฐานให้ตรวจต่อ ไม่ใช่การประเมิน Risk ที่ครบในตัวเอง ให้ถามว่าอะไรมีค่า อะไรอาจก่ออันตราย จุดอ่อนหรือเงื่อนไขใดเกี่ยวข้อง และจะเกิดผลใด คำถามเหล่านี้ช่วยคิดจากบทบาท ไม่ใช่สูตรจับคำเพื่อรับรองคำตอบข้อสอบ"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Name the cause, the weakness and the consequence separately.",
+            "th": "แยกสิ่งที่ก่ออันตราย จุดอ่อน และผลที่ตามมา"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-a",
+        "notes-b",
+        "nist-assessment"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-04-likelihood-and-impact",
+      "title": {
+        "en": "Two questions shape the risk judgment.",
+        "th": "สองคำถามช่วยประเมินความเสี่ยง"
+      },
+      "rendererId": "comparison",
+      "layoutId": "risk-likelihood-and-impact",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Likelihood and impact describe different aspects of the same scenario.",
+            "th": "Likelihood และ Impact อธิบายคนละด้านของสถานการณ์เดียวกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Original teaching scenario and distinctions",
+            "th": "สถานการณ์แต่งขึ้นและความแตกต่างประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Scenario",
+              "th": "สถานการณ์"
+            },
+            {
+              "en": "Reasoning",
+              "th": "การพิจารณา"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Likelihood",
+                "th": "Likelihood"
+              },
+              {
+                "en": "How plausible is this harmful outcome?",
+                "th": "ผลเสียนี้มีโอกาสเกิดเพียงใด"
+              },
+              {
+                "en": "Exposure, threat capability and safeguards matter.",
+                "th": "ดูการเปิดรับ ความสามารถของภัย และมาตรการ"
+              }
+            ],
+            [
+              {
+                "en": "Impact",
+                "th": "Impact"
+              },
+              {
+                "en": "How serious would the harm be?",
+                "th": "หากเกิดแล้วจะเสียหายรุนแรงเพียงใด"
+              },
+              {
+                "en": "Consider service, people, cost and obligations.",
+                "th": "ดูบริการ บุคคล ค่าใช้จ่าย และหน้าที่"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Source B explains likelihood and impact and cautions that assessment methods vary. Likelihood concerns the chance of the harmful outcome in the defined circumstances and time horizon; impact concerns its consequences. For the clinic, exposure and a relevant exploitable weakness may affect likelihood, while service dependence and workarounds affect impact. A low-likelihood event can still deserve attention when consequences are severe. Do not treat an unpatched-server count, a vulnerability severity score or a single red label as the complete risk judgment. This two-axis picture is conceptual, with no measured probability, score or official grading matrix. Qualitative/quantitative methods, AV, EF, SLE, ARO and ALE are reserved for L06; a multiplication shorthand does not make every ordinal label a valid number.",
+            "th": "แหล่ง B อธิบาย Likelihood และ Impact พร้อมระบุว่าวิธีประเมินอาจต่างกัน Likelihood คือโอกาสเกิดผลเสียภายใต้เงื่อนไขและช่วงเวลาที่กำหนด ส่วน Impact คือผลที่จะตามมา สำหรับคลินิก การเปิดรับและจุดอ่อนที่ใช้ได้จริงอาจกระทบ Likelihood ขณะที่การพึ่งบริการและวิธีทำงานทดแทนกระทบ Impact เหตุที่โอกาสต่ำก็อาจต้องใส่ใจหากผลรุนแรง อย่าใช้จำนวนเซิร์ฟเวอร์ที่ยังไม่อัปเดต คะแนนความรุนแรงช่องโหว่ หรือป้ายสีแดงเพียงอย่างเดียวแทนการพิจารณา Risk ภาพสองแกนนี้เป็นแนวคิด ไม่ใช่ค่าความน่าจะเป็น คะแนนที่วัดได้ หรือตารางทางการ วิธีเชิงคุณภาพ/ปริมาณและ AV, EF, SLE, ARO, ALE อยู่ใน L06 การเขียนคูณแบบย่อไม่ได้ทำให้ป้ายระดับทุกชนิดนำมาคูณเป็นตัวเลขได้"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Low likelihood alone does not prove that a risk is acceptable.",
+            "th": "โอกาสต่ำอย่างเดียว ไม่ได้พิสูจน์ว่า Risk ยอมรับได้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-a",
+        "notes-b",
+        "nist-assessment"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-05-continuous-lifecycle",
+      "title": {
+        "en": "Risk management is a loop, not a checklist finish.",
+        "th": "Risk management วนทบทวน ไม่จบแค่ติ๊กครบ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "risk-continuous-lifecycle",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the course cycle while sharing information throughout.",
+            "th": "ใช้วงจรจากบทเรียน โดยสื่อสารข้อมูลตลอดกระบวนการ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Original teaching scenario and distinctions",
+            "th": "สถานการณ์แต่งขึ้นและความแตกต่างประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Scenario",
+              "th": "สถานการณ์"
+            },
+            {
+              "en": "Reasoning",
+              "th": "การพิจารณา"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Identify",
+                "th": "Identify · ระบุ"
+              },
+              {
+                "en": "Describe what could go wrong.",
+                "th": "อธิบายว่าอะไรอาจผิดพลาด"
+              },
+              {
+                "en": "Asset, threat, weakness, consequence",
+                "th": "Asset ภัย จุดอ่อน และผลตามมา"
+              }
+            ],
+            [
+              {
+                "en": "Assess",
+                "th": "Assess · ประเมิน"
+              },
+              {
+                "en": "Evaluate likelihood and impact.",
+                "th": "พิจารณาโอกาสและผลกระทบ"
+              },
+              {
+                "en": "Use evidence and state assumptions.",
+                "th": "ใช้หลักฐานและระบุสมมติฐาน"
+              }
+            ],
+            [
+              {
+                "en": "Respond",
+                "th": "Respond · ตอบสนอง"
+              },
+              {
+                "en": "Choose and assign an appropriate response.",
+                "th": "เลือกวิธีที่เหมาะสมและมอบหมาย"
+              },
+              {
+                "en": "Decisions need appropriate authority.",
+                "th": "ผู้ตัดสินใจต้องมีอำนาจเหมาะสม"
+              }
+            ],
+            [
+              {
+                "en": "Monitor / Review",
+                "th": "Monitor / Review · ติดตาม"
+              },
+              {
+                "en": "Check effectiveness and changed conditions.",
+                "th": "ตรวจผลของมาตรการและเงื่อนไขที่เปลี่ยน"
+              },
+              {
+                "en": "Feed findings back into the cycle.",
+                "th": "นำผลกลับไปทบทวนวงจร"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Source A teaches identify, assess, treat/respond, monitor/review and communicate/report. Source B lists four core activities. This lesson reconciles them by showing a repeatable cycle with communication throughout, not postponed until the end. Set the scope and context, identify a scenario, evaluate likelihood and impact, select and assign a response, then review results and changes. Avoidance, mitigation, sharing/transfer and acceptance are response choices introduced in the notes; L07 will teach their distinctions and authorization in detail. A scan or risk assessment is only part of risk management. The course cycle is a learning model, not an assertion that ISC2 mandates this exact diagram or every framework uses the same stage names. NIST uses framing, assessing, responding and monitoring with information flows, which corroborates ongoing feedback rather than an identical five-step sequence.",
+            "th": "แหล่ง A สอน Identify, Assess, Treat/Respond, Monitor/Review และ Communicate/Report ส่วนแหล่ง B แสดงกิจกรรมหลักสี่ด้าน บทเรียนนี้เชื่อมสองแบบด้วยวงจรที่สื่อสารตลอด ไม่รอไว้ตอนท้าย เริ่มกำหนดขอบเขตและบริบท ระบุสถานการณ์ ประเมิน Likelihood กับ Impact เลือกและมอบหมายการตอบสนอง แล้วทบทวนผลและความเปลี่ยนแปลง โน้ตแนะนำการหลีกเลี่ยง ลด แบ่ง/โอน และยอมรับ ซึ่ง L07 จะอธิบายความต่างและอำนาจตัดสินใจอย่างละเอียด การสแกนหรือ Risk assessment เป็นเพียงส่วนของ Risk management วงจรนี้เป็นแบบจำลองการเรียน ไม่ได้อ้างว่า ISC2 กำหนดแผนภาพนี้หรือทุก Framework ใช้ชื่อขั้นเหมือนกัน NIST ใช้ Framing, Assessing, Responding และ Monitoring พร้อมการไหลของข้อมูล จึงช่วยยืนยันการย้อนทบทวน ไม่ใช่ยืนยันลำดับห้าขั้นที่เหมือนกันทุกแห่ง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Communicate / Report connects every activity—not only the last one.",
+            "th": "Communicate / Report เชื่อมทุกกิจกรรม ไม่ใช่มีแค่ตอนจบ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-a",
+        "notes-b",
+        "nist-management"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-06-write-a-risk-statement",
+      "title": {
+        "en": "Write a scenario people can act on.",
+        "th": "เขียนสถานการณ์ให้คนตัดสินใจต่อได้"
+      },
+      "rendererId": "comparison",
+      "layoutId": "risk-write-a-risk-statement",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A finding becomes useful when its context and consequence are clear.",
+            "th": "ข้อค้นพบมีประโยชน์ เมื่อเห็นบริบทและผลที่อาจตามมา"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Original teaching scenario and distinctions",
+            "th": "สถานการณ์แต่งขึ้นและความแตกต่างประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Scenario",
+              "th": "สถานการณ์"
+            },
+            {
+              "en": "Reasoning",
+              "th": "การพิจารณา"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Finding",
+                "th": "ข้อค้นพบ"
+              },
+              {
+                "en": "The booking server lacks a relevant security update.",
+                "th": "เซิร์ฟเวอร์จองยังไม่มีอัปเดตที่เกี่ยวข้อง"
+              },
+              {
+                "en": "Verify affected version and exposure.",
+                "th": "ตรวจรุ่นที่ได้รับผลและการเปิดรับ"
+              }
+            ],
+            [
+              {
+                "en": "Risk statement",
+                "th": "ข้อความระบุ Risk"
+              },
+              {
+                "en": "An attacker could exploit the weakness and disrupt bookings.",
+                "th": "ผู้โจมตีอาจใช้จุดอ่อน ทำให้ระบบจองหยุด"
+              },
+              {
+                "en": "Staff may need to reschedule appointments.",
+                "th": "เจ้าหน้าที่อาจต้องนัดหมายใหม่"
+              }
+            ],
+            [
+              {
+                "en": "Record the context",
+                "th": "บันทึกบริบท"
+              },
+              {
+                "en": "Scope, evidence, assumptions and responsible owner",
+                "th": "ขอบเขต หลักฐาน สมมติฐาน และผู้รับผิดชอบ"
+              },
+              {
+                "en": "Track assessment, action and review status.",
+                "th": "ติดตามผลประเมิน การดำเนินการ และการทบทวน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Risk identification discovers and documents potential risks; it should not stop at a list of technical findings. The original clinic statement links a relevant missing update, possible exploitation and a business consequence. Verify that the software is affected and the scenario is plausible rather than declaring every unpatched system equally risky. Record scope, evidence and unknowns, the responsible owner and the next assessment or action. This is an illustrative risk record, not a mandated universal risk-register template. Unknown likelihood is not zero likelihood, and no exact rating is invented from insufficient evidence. A clear statement lets stakeholders ask the right questions and prioritize further assessment. It also separates a possible event from an incident that has actually been detected.",
+            "th": "Risk identification ต้องค้นหาและบันทึกความเสี่ยง ไม่หยุดที่รายการข้อค้นพบทางเทคนิค ข้อความตัวอย่างของคลินิกเชื่อมการขาดอัปเดตที่เกี่ยวข้อง การใช้จุดอ่อนที่อาจเกิด และผลต่อการดำเนินงาน ต้องตรวจว่า Software ได้รับผลจริงและสถานการณ์เป็นไปได้ ไม่เหมาว่าทุกระบบที่ยังไม่อัปเดตเสี่ยงเท่ากัน บันทึกขอบเขต หลักฐาน สิ่งที่ยังไม่รู้ ผู้รับผิดชอบ และการประเมินหรือการดำเนินการถัดไป นี่คือตัวอย่างระเบียน Risk ไม่ใช่แม่แบบ Risk register สากลที่ต้องใช้ การไม่ทราบ Likelihood ไม่ได้แปลว่าเป็นศูนย์ และไม่ควรแต่งระดับคะแนนจากหลักฐานที่ยังไม่พอ ข้อความที่ชัดช่วยให้ผู้เกี่ยวข้องถามและจัดลำดับการประเมินต่อได้ และแยกเหตุที่อาจเกิดออกจากเหตุที่ตรวจพบแล้ว"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Finding → plausible event → meaningful consequence → accountable follow-up.",
+            "th": "ข้อค้นพบ → เหตุที่เป็นไปได้ → ผลที่มีความหมาย → ผู้รับผิดชอบติดตาม"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-a",
+        "notes-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-07-review-after-change",
+      "title": {
+        "en": "A completed patch is evidence—not “risk zero.”",
+        "th": "ติดตั้ง Patch แล้ว ต้องประเมิน Risk ต่อ"
+      },
+      "rendererId": "interactive",
+      "layoutId": "risk-review-after-change",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Compare the clinic’s evidence before and after the change.",
+            "th": "เปรียบเทียบหลักฐานของคลินิก ก่อนและหลังเปลี่ยนแปลง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Original teaching scenario and distinctions",
+            "th": "สถานการณ์แต่งขึ้นและความแตกต่างประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Scenario",
+              "th": "สถานการณ์"
+            },
+            {
+              "en": "Reasoning",
+              "th": "การพิจารณา"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Before the change",
+                "th": "ก่อนเปลี่ยนแปลง"
+              },
+              {
+                "en": "A relevant update is missing; exposure needs assessment.",
+                "th": "ยังขาดอัปเดตที่เกี่ยวข้อง ต้องประเมินการเปิดรับ"
+              },
+              {
+                "en": "Investigate the scenario and plan a response.",
+                "th": "ตรวจสถานการณ์และวางแผนตอบสนอง"
+              }
+            ],
+            [
+              {
+                "en": "After the change",
+                "th": "หลังเปลี่ยนแปลง"
+              },
+              {
+                "en": "The update is installed; effectiveness still needs verification.",
+                "th": "ติดตั้งอัปเดตแล้ว ยังต้องตรวจว่าได้ผลจริง"
+              },
+              {
+                "en": "Reassess this scenario and check other weaknesses.",
+                "th": "ประเมินสถานการณ์นี้ใหม่และตรวจจุดอ่อนอื่น"
+              }
+            ],
+            [
+              {
+                "en": "Keep watching",
+                "th": "ติดตามต่อ"
+              },
+              {
+                "en": "New exposure, threats, vulnerabilities or service changes",
+                "th": "การเปิดรับ ภัย จุดอ่อน หรือบริการที่เปลี่ยน"
+              },
+              {
+                "en": "Update the assessment and communicate the result.",
+                "th": "ปรับผลประเมินและสื่อสารสิ่งที่พบ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Source A says risk management continues after controls are implemented and lists new technology, software changes, regulations, threats and vulnerabilities as reassessment triggers. In this original comparison a relevant update is first missing, then installed. Verify installation and whether the intended weakness is actually addressed; review service effects and remaining exposure. That evidence can change an assessment, but does not prove that all risk has disappeared or prescribe an exact numeric reduction. New weaknesses, threat activity and business changes can make an earlier judgment stale. A scan and deployment record are evidence inputs, not an automatic acceptance decision. Monitor agreed indicators, record changes and inform the responsible decision makers. The button is a teaching comparison only; it does not scan, patch or access any real system.",
+            "th": "แหล่ง A ระบุว่า Risk management ดำเนินต่อหลังใช้ Control และยกเทคโนโลยี Software กฎระเบียบ ภัย และช่องโหว่ใหม่เป็นเหตุให้ทบทวน ในภาพเปรียบเทียบที่แต่งขึ้น เริ่มจากขาดอัปเดตแล้วจึงติดตั้ง ต้องตรวจทั้งการติดตั้งและว่าจุดอ่อนเป้าหมายถูกแก้จริง รวมถึงผลต่อบริการและการเปิดรับที่เหลือ หลักฐานอาจทำให้ผลประเมินเปลี่ยน แต่ไม่พิสูจน์ว่า Risk ทั้งหมดหายไปหรือบอกตัวเลขลดได้แน่นอน จุดอ่อนใหม่ ความเคลื่อนไหวของภัย และธุรกิจที่เปลี่ยนทำให้ข้อสรุปเดิมล้าสมัยได้ ผลสแกนและบันทึกติดตั้งเป็นข้อมูลประกอบ ไม่ใช่คำตัดสินยอมรับ Risk อัตโนมัติ ให้ติดตามตัวชี้วัดที่ตกลง บันทึกการเปลี่ยน และแจ้งผู้ตัดสินใจที่รับผิดชอบ ปุ่มนี้เปรียบเทียบเพื่อเรียนเท่านั้น ไม่สแกน ติดตั้ง หรือเข้าถึงระบบจริง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Review changed conditions and control effectiveness; do not declare victory by checkbox.",
+            "th": "ทบทวนเงื่อนไขและผลของ Control ไม่สรุปว่าจบจากการติ๊กครบ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-a",
+        "notes-b",
+        "nist-management"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-08-communicate-for-a-decision",
+      "title": {
+        "en": "A useful report leads to an informed decision.",
+        "th": "รายงานที่ดี ช่วยให้ตัดสินใจอย่างมีข้อมูล"
+      },
+      "rendererId": "comparison",
+      "layoutId": "risk-communicate-for-a-decision",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Describe the risk, its current evidence and what needs to happen next.",
+            "th": "อธิบาย Risk หลักฐานปัจจุบัน และสิ่งที่ต้องทำต่อ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Original teaching scenario and distinctions",
+            "th": "สถานการณ์แต่งขึ้นและความแตกต่างประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Scenario",
+              "th": "สถานการณ์"
+            },
+            {
+              "en": "Reasoning",
+              "th": "การพิจารณา"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Explain the consequence",
+                "th": "อธิบายผลที่อาจตามมา"
+              },
+              {
+                "en": "Bookings may stop and staff may need to reschedule.",
+                "th": "ระบบจองอาจหยุด เจ้าหน้าที่อาจต้องนัดใหม่"
+              },
+              {
+                "en": "Use language the service owner understands.",
+                "th": "ใช้ภาษาที่ผู้รับผิดชอบบริการเข้าใจ"
+              }
+            ],
+            [
+              {
+                "en": "State what is known",
+                "th": "ระบุสิ่งที่ทราบ"
+              },
+              {
+                "en": "Update installed; verification and remaining exposure under review.",
+                "th": "ติดตั้งอัปเดตแล้ว กำลังตรวจผลและการเปิดรับที่เหลือ"
+              },
+              {
+                "en": "Distinguish evidence, assumptions and unknowns.",
+                "th": "แยกหลักฐาน สมมติฐาน และสิ่งที่ยังไม่รู้"
+              }
+            ],
+            [
+              {
+                "en": "Make follow-up explicit",
+                "th": "ระบุการติดตามให้ชัด"
+              },
+              {
+                "en": "Assign an owner, next action and review trigger.",
+                "th": "มอบหมายผู้รับผิดชอบ งานถัดไป และเงื่อนไขทบทวน"
+              },
+              {
+                "en": "Escalate decisions to the appropriate authority.",
+                "th": "ส่งการตัดสินใจให้ผู้มีอำนาจเหมาะสม"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Source A says reporting documents identified risks, status, mitigation efforts and potential impacts so stakeholders can understand risk and prioritize resources. In the clinic example a count of missing patches alone is not a complete business risk report. Explain the possible service consequence, current evidence and uncertainty, actions already taken and remaining decisions. Assign responsibility and a review date or event so information produces follow-up rather than becoming a static document. Share information throughout identification, assessment, response and monitoring. A technician installing a patch does not by itself demonstrate that a business owner accepted every remaining risk. L07 will develop response selection and formal acceptance further. The eight-slide lesson builds foundations; it does not claim to complete all Objective 1.2 processes or the rest of Domain 1.",
+            "th": "แหล่ง A ระบุว่ารายงานบันทึก Risk ที่พบ สถานะ ความพยายามลด และ Potential impact เพื่อให้ผู้เกี่ยวข้องเข้าใจและจัดลำดับทรัพยากร ในเรื่องคลินิก จำนวน Patch ที่ยังขาดอย่างเดียวไม่ใช่รายงานความเสี่ยงธุรกิจที่ครบ ต้องอธิบายผลที่อาจกระทบบริการ หลักฐานและความไม่แน่นอน งานที่ทำแล้ว และเรื่องที่ยังต้องตัดสินใจ ระบุผู้รับผิดชอบพร้อมวันหรือเหตุให้ทบทวน เพื่อให้ข้อมูลนำไปสู่การติดตาม ไม่กลายเป็นเอกสารนิ่ง ควรสื่อสารระหว่างการระบุ ประเมิน ตอบสนอง และติดตาม การที่ช่างติดตั้ง Patch ไม่ได้ยืนยันว่าผู้รับผิดชอบธุรกิจยอมรับ Risk ที่เหลือทั้งหมด L07 จะต่อยอดการเลือกวิธีและการยอมรับอย่างเป็นทางการ บทเรียนแปดสไลด์นี้เป็นพื้นฐาน ไม่ได้อ้างว่าครบทุกกระบวนการของ Objective 1.2 หรือทั้ง Domain 1"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Risk management connects technical evidence to decisions, ownership and review.",
+            "th": "Risk management เชื่อมหลักฐานทางเทคนิคกับการตัดสินใจ ผู้รับผิดชอบ และการทบทวน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-a",
+        "notes-b",
+        "nist-management"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC Exam Outline — September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain 1, Objective 1.2 — risk management lifecycle and processes.",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "notes-a",
+      "title": "User Domain 1 Summary (Source A)",
+      "authority": "course",
+      "locator": "§§15–16 risk lifecycle and identification; §§23–24 monitoring and communication; §22 response context.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/D1 sum.md"
+    },
+    {
+      "id": "notes-b",
+      "title": "User Domain 1 Course Notes (Source B)",
+      "authority": "course",
+      "locator": "§1 assets/threats/vulnerabilities; §§5.1–5.2 likelihood/impact and cycle; §§5.3–5.4 response context.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/Domain 1.md"
+    },
+    {
+      "id": "nist-assessment",
+      "title": "NIST SP 800-30 Rev.1 — Guide for Conducting Risk Assessments",
+      "authority": "technical-primary",
+      "locator": "§2.3 key risk concepts, risk factors and uncertainty; §2.1 overall management context. Supplemental corroboration, not an ISC2-mandated matrix.",
+      "url": "https://csrc.nist.gov/pubs/sp/800/30/r1/final"
+    },
+    {
+      "id": "nist-management",
+      "title": "NIST SP 800-39 — Managing Information Security Risk",
+      "authority": "technical-primary",
+      "locator": "§2.1 / Figure 1 feedback and information flows; §3.4 monitoring. Its framing model is distinct from the course diagram.",
+      "url": "https://csrc.nist.gov/pubs/sp/800/39/final"
+    }
+  ],
+  "assets": [],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/lesson-d1-05-risk-foundations-implementation.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — technical self-review; user review pending",
+      "reviewedAt": "2026-10-26"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — bilingual self-review; user review pending",
+      "reviewedAt": "2026-10-26"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — rights self-review; user review pending",
+      "reviewedAt": "2026-10-26"
+    }
+  }
+}

@@ -47,3 +47,61 @@ export function buildLearningCourseModel({ catalog, lessonsById = new Map(), ava
   });
   return { domains, availableLessons, resume, total: availableLessons.length, completed: availableLessons.filter(e => e.progress.status === 'completed').length, pending, failed };
 }
+
+/** Pure helper to resolve the appropriate lesson and action state for an Objective. */
+export function resolveObjectiveLearningState(objective) {
+  const availableEntries = (objective?.lessons || []).filter(
+    e => e && e.availability === 'available' && e.lesson && e.progress
+  );
+  if (!availableEntries.length) return null;
+
+  // 1. Resume unfinished lesson if valid in-progress progress exists (most recently updated first)
+  const inProgress = availableEntries
+    .filter(e => e.progress.status === 'in-progress')
+    .sort((a, b) => {
+      const at = timestamp(a.progress.updatedAt), bt = timestamp(b.progress.updatedAt);
+      if (at !== bt) return at > bt ? -1 : 1;
+      return a.summary.id.localeCompare(b.summary.id);
+    });
+
+  if (inProgress.length > 0) {
+    const target = inProgress[0];
+    return {
+      entry: target,
+      lesson: target.lesson,
+      summary: target.summary,
+      progress: target.progress,
+      intent: 'resume',
+      status: 'in-progress',
+      buttonLabel: 'Start Learning →'
+    };
+  }
+
+  // 2. Otherwise begin first not-started lesson in catalog order
+  const notStarted = availableEntries.find(e => e.progress.status === 'not-started');
+  const anyCompleted = availableEntries.some(e => e.progress.status === 'completed');
+
+  if (notStarted) {
+    return {
+      entry: notStarted,
+      lesson: notStarted.lesson,
+      summary: notStarted.summary,
+      progress: notStarted.progress,
+      intent: 'start',
+      status: anyCompleted ? 'in-progress' : 'not-started',
+      buttonLabel: 'Start Learning →'
+    };
+  }
+
+  // 3. If all lessons are completed, allow review without resetting completed progress
+  const firstCompleted = availableEntries[0];
+  return {
+    entry: firstCompleted,
+    lesson: firstCompleted.lesson,
+    summary: firstCompleted.summary,
+    progress: firstCompleted.progress,
+    intent: 'review',
+    status: 'completed',
+    buttonLabel: 'Start Learning →'
+  };
+}

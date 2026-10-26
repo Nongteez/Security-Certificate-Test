@@ -1,7 +1,9 @@
 // Minimal DOM/event double for Node behavior checks, not a browser or layout engine.
 export class TestElement extends EventTarget {
   constructor(tag, doc) { super(); this.tagName = tag.toUpperCase(); this.ownerDocument = doc; this.children = []; this.attributes = new Map(); this.style = {}; this.hidden = false; this.disabled = false; this.scrollLeft = 0; this.clientWidth = 600; this.textContent = ''; this.className = ''; }
-  append(...nodes) { for (const node of nodes) { if (typeof node === 'string') { this.textContent += node; continue; } node.parentElement = this; this.children.push(node); } }
+  append(...nodes) { for (const node of nodes) { if (typeof node === 'string') { this.textContent += node; continue; } if (node.parentElement) node.parentElement.removeChild(node); node.parentElement = this; this.children.push(node); } }
+  prepend(...nodes) { for (const node of [...nodes].reverse()) { if (typeof node === 'string') { this.textContent = node + this.textContent; continue; } if (node.parentElement) node.parentElement.removeChild(node); node.parentElement = this; this.children.unshift(node); } }
+  insertBefore(newNode, refNode) { if (newNode.parentElement) newNode.parentElement.removeChild(newNode); newNode.parentElement = this; const index = this.children.indexOf(refNode); if (index < 0) this.children.push(newNode); else this.children.splice(index, 0, newNode); return newNode; }
   replaceChildren(...nodes) { this.children.forEach(n => { n.parentElement = null; }); this.children = []; this.textContent = ''; this.append(...nodes); }
   removeChild(node) { const index = this.children.indexOf(node); if (index < 0) throw Error('Not a child'); this.children.splice(index, 1); node.parentElement = null; return node; }
   setAttribute(k, v) { this.attributes.set(k, String(v)); if (k === 'class') this.className = String(v); }

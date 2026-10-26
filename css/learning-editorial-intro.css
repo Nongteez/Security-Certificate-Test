@@ -1,0 +1,45 @@
+/* Slide-content scope only: no viewer, toolbar, routing or other slide layout changes. */
+.learning-info-panel .learning-info-intro-explanation { border: 1px solid var(--line); border-radius: 12px; margin: 18px 0; }
+.learning-viewer .learning-slide.learning-editorial-slide {
+  container-type: inline-size; padding: 0; background: #13283b; color: #fff6e5;
+  overflow: visible;
+}
+.learning-viewer .learning-editorial-slide > .learning-slide-body { gap: 0; height: 100%; min-height: 0; }
+.learning-viewer .cia-editorial {
+  display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 2.4cqw;
+  height: 100%; min-height: 0; padding: 3.8cqw 4.2cqw 3.4cqw;
+  box-sizing: border-box; color: #fff6e5;
+  background: linear-gradient(125deg, #172d42, #0c1b2c);
+  border-radius: inherit;
+}
+.learning-viewer .cia-editorial-main { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2cqw; align-items: center; min-height: 0; }
+.learning-viewer .cia-editorial-narrative { min-width: 0; }
+.learning-viewer .cia-editorial-question { font-size: clamp(32px, 3.65cqw, 65px); font-weight: 700; line-height: 1.48; letter-spacing: -.035em; margin: 0; color: #fff6e5; }
+.learning-viewer .cia-editorial-question-line { display: block; }
+.learning-viewer .cia-editorial-question-line[lang="th"] { line-height: 1.5; }
+.learning-viewer .cia-editorial-emphasis { color: #f0c579; }
+.learning-viewer .learning-editorial-slide .cia-editorial p.cia-editorial-mission { color: #d0dbe4; font-size: clamp(19px, 1.65cqw, 29px); line-height: 1.65; margin: 1.7cqw 0 0; max-width: 37em; }
+.learning-viewer .cia-editorial-art { width: 100%; height: 100%; max-height: 30cqw; min-height: 0; object-fit: contain; align-self: center; }
+.learning-viewer .cia-editorial-goals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.4cqw; border-top: 1px solid #647587; padding-top: 1.8cqw; }
+.learning-viewer .cia-editorial-goal { min-width: 0; }
+.learning-viewer .cia-editorial-goal + .cia-editorial-goal { border-left: 1px solid #425b6e; padding-left: 2.4cqw; }
+.learning-viewer .cia-editorial-term { display: flex; align-items: baseline; gap: .85cqw; font-size: clamp(22px, 2.15cqw, 37px); line-height: 1.3; margin: 0 0 .65cqw; font-weight: 700; letter-spacing: -.025em; color: #fff6e5; }
+.learning-viewer .cia-editorial-letter { font-size: clamp(36px, 3.4cqw, 58px); line-height: 1; color: #f0c579; }
+.learning-viewer .learning-editorial-slide .cia-editorial p.cia-editorial-label { font-size: clamp(19px, 1.7cqw, 29px); color: #fff6e5; line-height: 1.65; margin: 0 0 .3cqw; }
+.learning-viewer .learning-editorial-slide .cia-editorial p.cia-editorial-meaning { font-size: clamp(18px, 1.6cqw, 27px); color: #c6d1da; line-height: 1.65; white-space: pre-line; margin: 0; }
+/* Follow the existing mobile flow policy; never miniaturize the desktop composition. */
+@media (max-width: 719px) {
+  .learning-viewer .learning-slide.learning-editorial-slide { padding: 0 !important; }
+  .learning-viewer .cia-editorial { height: auto; padding: 28px 22px; gap: 24px; }
+  .learning-viewer .cia-editorial-main { grid-template-columns: 1fr; gap: 16px; }
+  .learning-viewer .cia-editorial-question { font-size: 27px; line-height: 1.5; letter-spacing: -.03em; }
+  .learning-viewer .cia-editorial-question-line { display: inline; }
+  .learning-viewer .cia-editorial-question-line + .cia-editorial-question-line::before { content: ' '; }
+  .learning-viewer .learning-editorial-slide .cia-editorial p.cia-editorial-mission { font-size: 18px; margin-top: 14px; }
+  .learning-viewer .cia-editorial-art { width: 100%; height: 220px; max-height: none; }
+  .learning-viewer .cia-editorial-goals { grid-template-columns: 1fr; gap: 22px; padding-top: 24px; }
+  .learning-viewer .cia-editorial-goal + .cia-editorial-goal { border: 0; padding: 0; }
+  .learning-viewer .cia-editorial-term { font-size: 24px; gap: 12px; margin-bottom: 8px; }
+  .learning-viewer .cia-editorial-letter { font-size: 36px; }
+  .learning-viewer .learning-editorial-slide .cia-editorial p.cia-editorial-label, .learning-viewer .learning-editorial-slide .cia-editorial p.cia-editorial-meaning { font-size: 18px; line-height: 1.7; }
+}

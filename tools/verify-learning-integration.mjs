@@ -28,7 +28,12 @@ test('original cards render immediately while the independent learning availabil
   const { renderApp } = await import('../js/ui/renderer.js');
   const oldDocument = globalThis.document, oldFetch = globalThis.fetch, oldScreen = state.screen, oldCert = state.selectedCertification;
   const root = { innerHTML: '', querySelector: () => null, querySelectorAll: () => [] };
-  let release; globalThis.fetch = () => new Promise(resolve => { release = () => resolve({ ok: true, json: async () => JSON.parse(fs.readFileSync(new URL('../content/isc2-cc-2026/learning/published/catalog.json', import.meta.url))) }); });
+  let release, firstRequest = true;
+  globalThis.fetch = url => {
+    const response = { ok: true, json: async () => JSON.parse(fs.readFileSync(url, 'utf8')) };
+    if (!firstRequest) return Promise.resolve(response);
+    firstRequest = false; return new Promise(resolve => { release = () => resolve(response); });
+  };
   globalThis.document = { getElementById: () => root }; state.selectedCertification = certs[0]; state.screen = 'exam-versions';
   const pending = renderApp();
   try { await Promise.resolve(); assert.match(root.innerHTML, /ISC2 CC — Pre-2026 Exam Outline/); assert.match(root.innerHTML, /ISC2 CC — Exam Vocabulary/); }

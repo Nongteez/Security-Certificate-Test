@@ -1,16 +1,23 @@
+import {hasAssessmentPresentation,renderAssessmentPresentation} from './assessment-presentations.js';
+import {hasRiskFoundationsPresentation,renderRiskFoundationsPresentation} from './risk-foundations-presentations.js';
+import { hasPrivacyPresentation, renderPrivacyPresentation } from './privacy-presentations.js';
 import { element, localize } from './dom.js';
 import { registerRendererType } from '../../core/learning-schema.js';
 import { isStructuredRenderer, semanticBlocks } from '../../core/learning-visuals.js';
 import { renderPillars, renderIncidentFlow, renderScenarioDecision, renderVisualThumbnail } from './visual-components.js';
+import { renderEditorialIntro } from './editorial-intro.js';
+import { hasCiaPresentation, renderCiaPresentation } from './cia-presentations/index.js';
+import { hasAaaPresentation, renderAaaPresentation } from './aaa-presentations.js';
+import { hasNonRepudiationPresentation, renderNonRepudiationPresentation } from './non-repudiation-presentations.js';
 const registry = new Map();
 /** Trusted code registers adapters. JSON never supplies module URLs or executable content. */
 export function registerLearningRenderer(id, { validate, load, thumbnail }) {
   if (typeof load !== 'function' || typeof thumbnail !== 'function') throw Error('Renderer needs load and thumbnail functions');
   registerRendererType(id, validate); registry.set(id, { load, thumbnail });
 }
-function blocks(host, { slide, lesson, language, mode, signal }) {
+function blocks(host, { slide, lesson, language, mode, signal, interactionState = {} }) {
   const doc = host.ownerDocument;
-  for (const b of slide.blocks || []) {
+  for (const [blockIndex, b] of (slide.blocks || []).entries()) {
     if (b.kind === 'text') host.append(localize(element(doc, 'p'), b.text, language));
     if (b.kind === 'list') { const ul = element(doc, 'ul'); for (const item of b.items) ul.append(localize(element(doc, 'li'), item, language)); host.append(ul); }
     if (b.kind === 'table') {
@@ -30,7 +37,7 @@ function blocks(host, { slide, lesson, language, mode, signal }) {
       }
       const ol = element(doc, 'ol'); for (const step of b.steps) ol.append(localize(element(doc, 'li'), step, language)); figure.append(ol); host.append(figure);
     }
-    if (b.kind === 'reveal') { const details = element(doc, 'details'); details.setAttribute('data-slide-interactive', ''); details.append(localize(element(doc, 'summary'), b.label, 'en'), localize(element(doc, 'p'), b.text, language)); if (mode === 'reading') details.open = true; host.append(details); }
+    if (b.kind === 'reveal') { const details = element(doc, 'details'); details.setAttribute('data-slide-interactive', ''); details.append(localize(element(doc, 'summary'), b.label, 'en'), localize(element(doc, 'p'), b.text, language)); details.open = mode === 'reading' || interactionState.reveals?.[blockIndex] === true; details.addEventListener('toggle', () => { if (mode !== 'reading') { interactionState.reveals ||= {}; interactionState.reveals[blockIndex] = details.open; } }, { signal }); host.append(details); }
     if (b.kind === 'media') {
       const a = lesson.assets.find(asset => asset.id === b.assetId); if (!a) continue;
       const figure = element(doc, 'figure'); const fallback = () => { figure.replaceChildren(localize(element(doc, 'figcaption'), a.transcript || a.alt, language)); };
@@ -52,12 +59,29 @@ export function renderThumbnail(host, slide, language) {
   if (first?.kind === 'table') host.append(element(doc, 'span', 'learning-thumb-pattern', '▥  ▥  ▥'));
   if (first?.kind === 'diagram') host.append(element(doc, 'span', 'learning-thumb-pattern', '□ → □ → □'));
   if (first?.kind === 'reveal') host.append(element(doc, 'span', 'learning-thumb-pattern', '＋'));
+  if (slide.layoutId === 'hero-intro' || slide.rendererId === 'hero-intro') host.append(element(doc, 'span', 'learning-thumb-pattern', '▲ 🛡️ ▲'));
 }
 export function renderSlide(host, context) {
-  const abort = new AbortController(); let cleanup = () => {}; host.replaceChildren();
+  const abort = new AbortController(); let cleanup = () => {}, ready = Promise.resolve(); host.replaceChildren();
   host.setAttribute('data-layout', context.slide.layoutId || 'default');
   host.setAttribute('data-renderer', context.slide.rendererId || 'text');
   const heading = localize(element(host.ownerDocument, 'h2', 'learning-slide-title'), context.slide.title, context.language); host.append(heading);
+  const isIntro = context.slide.layoutId === 'hero-intro' || context.slide.rendererId === 'hero-intro';
+  const editorial = isIntro && (context.mode !== 'reading' || host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches);
+  const cia = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasCiaPresentation(context);
+  const aaa = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasAaaPresentation(context);
+  const nr = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasNonRepudiationPresentation(context);
+  const privacy = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasPrivacyPresentation(context);
+  const risk = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasRiskFoundationsPresentation(context);
+  const assessment = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasAssessmentPresentation(context);
+  host.classList.toggle('learning-assessment-slide', Boolean(assessment));
+  host.classList.toggle('learning-risk-slide', Boolean(risk));
+  host.classList.toggle('learning-privacy-slide', Boolean(privacy));
+  host.classList.toggle('learning-nr-slide', Boolean(nr));
+  host.classList.toggle('learning-aaa-slide', Boolean(aaa));
+  if (cia) host.classList.add('learning-cia-slide'); else if (host.classList.contains('learning-cia-slide')) host.classList.remove('learning-cia-slide');
+  host.classList.toggle('learning-editorial-slide', Boolean(editorial));
+  if (editorial || cia || aaa || nr || privacy || risk || assessment) heading.classList.add('learning-sr-only');
   const body = element(host.ownerDocument, 'div', 'learning-slide-body');
   body.setAttribute('data-layout', context.slide.layoutId || 'default');
   host.append(body);
@@ -66,7 +90,21 @@ export function renderSlide(host, context) {
   const fallback = () => { if (!abort.signal.aborted) { body.replaceChildren(); blocks(body, { ...args, slide: getSemanticSlide(), mode: 'reading' }); } };
   const custom = registry.get(context.slide.rendererId);
 
-  if (context.mode !== 'reading') {
+  if (editorial) {
+    const handle = renderEditorialIntro(body, args); cleanup = () => handle?.destroy?.();
+  } else if (cia) {
+    const handle = renderCiaPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (aaa) {
+    const handle = renderAaaPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (nr) {
+    const handle = renderNonRepudiationPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (privacy) {
+    const handle = renderPrivacyPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (risk) {
+    const handle = renderRiskFoundationsPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (assessment) {
+    const handle = renderAssessmentPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (context.mode !== 'reading') {
     if (context.slide.rendererId === 'pillars') {
       const handle = renderPillars(body, args); cleanup = () => handle?.destroy?.();
     } else if (context.slide.rendererId === 'incident-flow') {
@@ -74,12 +112,12 @@ export function renderSlide(host, context) {
     } else if (context.slide.rendererId === 'scenario-decision') {
       const handle = renderScenarioDecision(body, args); cleanup = () => handle?.destroy?.();
     } else if (custom) {
-      Promise.resolve().then(() => custom.load()).then(module => {
+      ready = Promise.resolve().then(() => custom.load()).then(module => {
         if (abort.signal.aborted) return; const handle = module.render(body, args); cleanup = () => handle?.destroy?.();
       }).catch(fallback);
     } else blocks(body, args);
   } else {
     blocks(body, { ...args, slide: getSemanticSlide(), mode: 'reading' });
   }
-  return { destroy() { abort.abort(); cleanup(); } };
+  return { ready, destroy() { abort.abort(); cleanup(); } };
 }

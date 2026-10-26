@@ -1,111 +1,179 @@
 import { reconcileProgress, visitSlide, completeReading } from '../../core/learning-progress.js';
-import { LABELS as L, pair, element, uiLabel, button, languageControls } from './dom.js';
+import { element, button } from './dom.js';
 import { renderLessonInfo } from './lesson-info.js';
-import { renderSlide, renderThumbnail } from './renderers.js';
+import { renderSlide } from './renderers.js';
 import { createFullscreenController } from './fullscreen.js';
-const MODES = ['en', 'th', 'both'];
+import { createViewerControls } from './viewer-controls.js';
+import { createPresentationStage } from './presentation-stage.js';
+import { openSlideOverview } from './slide-overview.js';
+import { openKeyboardHelp } from './keyboard-help.js';
+const MODES = ['th', 'en'];
 const INTERACTIVE = 'button, a, input, textarea, select, summary, details, audio, video, [contenteditable], [data-slide-interactive], [role="button"], [role="slider"]';
 export function keyboardDelta(event) { if (event.ctrlKey || event.altKey || event.metaKey || event.isComposing || event.target?.closest?.(INTERACTIVE)) return 0; return ['ArrowLeft', '<'].includes(event.key) ? -1 : ['ArrowRight', '>'].includes(event.key) ? 1 : 0; }
-export function createSlideController(lesson, { language = 'en', slideId } = {}) {
+export function createSlideController(lesson, { language = 'th', slideId } = {}) {
   const ordered = lesson.slideOrder ? lesson.slideOrder.map(id => lesson.slides.find(s => s.id === id)) : lesson.slides;
-  let index = Math.max(0, ordered.findIndex(s => s.id === slideId)), mode = MODES.includes(language) ? language : 'en';
+  let index = Math.max(0, ordered.findIndex(s => s.id === slideId));
+  // TH is the preferred default for Learning Slides; safely map 'both' to 'th'
+  let mode = language === 'en' ? 'en' : 'th';
   return { get index() { return index; }, get language() { return mode; }, get slides() { return ordered; }, current: () => ordered[index],
     move(delta) { index = Math.max(0, Math.min(ordered.length - 1, index + delta)); },
     goToSlide(id) { const target = ordered.findIndex(s => s.id === id); if (target >= 0) index = target; },
-    setLanguage(value) { if (MODES.includes(value)) mode = value; }
+    setLanguage(value) { mode = value === 'en' ? 'en' : 'th'; }
   };
 }
+
 export function mountLearningViewer(container, { lesson, language = 'en', progress, onProgress = () => {}, onBack = () => {}, onLanguage = () => {} }) {
   const doc = container.ownerDocument, abort = new AbortController(), signal = abort.signal;
-  let saved = reconcileProgress(lesson, progress), slideHandle, infoHandle, destroyed = false, reading = false, pointer, exitTimer;
-  const controller = createSlideController(lesson, { language, slideId: saved.lastSlideId });
-  const root = element(doc, 'section', 'learning-screen learning-viewer'), header = element(doc, 'header', 'learning-toolbar');
-  const back = button(doc, 'Back to Domain', language, onBack, signal), title = element(doc, 'h1', 'learning-lesson-title'), languages = element(doc, 'div'); back.setAttribute('data-action', 'back-domain'); header.append(back, title, languages);
-  const controls = element(doc, 'nav', 'learning-controls'); controls.setAttribute('aria-label', 'Slide navigation');
-  const previous = button(doc, L.previous, language, () => move(-1), signal), indicator = element(doc, 'span', 'learning-counter'), next = button(doc, L.next, language, () => move(1), signal);
-  previous.setAttribute('data-action', 'previous'); next.setAttribute('data-action', 'next');
-  const readingButton = button(doc, L.reading, language, () => { reading = !reading; paint(); }, signal);
-  const fullButton = button(doc, L.fullscreen, language, () => fullscreen.enter(), signal);
-  const complete = button(doc, L.complete, language, () => { saved = completeReading(lesson, saved); emit(); paintLabels(); }, signal);
-  const infoButton = button(doc, 'Lesson Info', 'en', async () => {
-    if (fullscreen.active) await fullscreen.exit(); if (destroyed) return;
-    infoHandle?.destroy();
-    root.querySelectorAll('audio, video').forEach(media => media.pause?.());
-    infoHandle = renderLessonInfo(root, { lesson, language: controller.language, onNavigateTextView: () => { reading = true; paint(); } });
-  }, signal); infoButton.setAttribute('data-action', 'lesson-info');
-  controls.append(previous, indicator, next, readingButton, fullButton, complete, infoButton);
-  const notice = element(doc, 'p', 'learning-notice'); notice.setAttribute('role', 'status');
-  const surface = element(doc, 'div', 'learning-presentation'); surface.tabIndex = 0; surface.setAttribute('role', 'region');
-  const stage = element(doc, 'article', 'learning-slide'), help = element(doc, 'div', 'learning-presentation-help'); help.hidden = true; help.setAttribute('data-slide-interactive', '');
-  const hint = element(doc, 'p'), exit = button(doc, L.exit, language, () => fullscreen.exit(), signal); help.append(hint, exit); surface.append(stage, help);
-  const filmstrip = element(doc, 'nav', 'learning-filmstrip'); filmstrip.setAttribute('aria-label', 'Slide thumbnails');
-  const track = element(doc, 'div', 'learning-filmstrip-track'); track.style.width = `${controller.slides.length * 156}px`; filmstrip.append(track);
-  const jump = element(doc, 'select', 'learning-slide-picker'); jump.setAttribute('aria-label', 'Go to slide');
-  controller.slides.forEach((s, i) => { const o = element(doc, 'option', '', `${i + 1}. ${s.title.en}`); o.value = s.id; jump.append(o); });
-  jump.addEventListener('change', () => goToSlide(jump.value), { signal });
+  const hadHostClass = container.classList.contains('learning-viewer-host'); container.classList.add('learning-viewer-host');
+  const root = element(doc, 'section', 'learning-screen learning-viewer');
+  const workspace = element(doc, 'div', 'learning-presentation presentation-workspace'); workspace.tabIndex = 0; workspace.setAttribute('role', 'region'); workspace.setAttribute('data-view', 'presentation');
+  const slot = element(doc, 'div', 'presentation-stage-slot'), stage = element(doc, 'article', 'learning-slide presentation-canvas');
+  slot.append(stage);
+  const notice = element(doc, 'p', 'viewer-notice'); notice.setAttribute('role', 'status'); notice.hidden = true;
   const announcement = element(doc, 'p', 'learning-sr-only'); announcement.setAttribute('aria-live', 'polite'); announcement.setAttribute('aria-atomic', 'true');
-  root.append(header, controls, notice, surface, filmstrip, jump, announcement); container.replaceChildren(root);
-  const fullscreen = createFullscreenController(surface, { onChange(active) { help.hidden = true; root.classList.toggle('learning-is-fullscreen', active); paint(); }, onError() { uiLabel(notice, L.unsupported); } });
-  function emit() { if (destroyed) return; const outcome = onProgress(saved); if (outcome?.persisted === false) uiLabel(notice, L.storage); }
-  function paintLabels() {
-    const mode = controller.language; uiLabel(title, lesson.title); uiLabel(back, 'Back to Domain'); uiLabel(previous, L.previous); uiLabel(next, L.next); uiLabel(fullButton, L.fullscreen); uiLabel(readingButton, reading ? L.presentation : L.reading); uiLabel(complete, saved.status === 'completed' ? L.completed : L.complete); uiLabel(hint, L.hint); uiLabel(exit, L.exit);
-    indicator.textContent = `${controller.index + 1} / ${controller.slides.length}`; previous.disabled = controller.index === 0; next.disabled = controller.index === controller.slides.length - 1;
-    complete.disabled = saved.status === 'completed' || saved.visitedSlideIds.length !== controller.slides.length;
-    jump.value = controller.current().id; controller.slides.forEach((s, i) => { jump.children[i].textContent = `${i + 1}. ${s.title.en}`; });
-    if (!languages.children.length) languages.append(languageControls(doc, mode, setLanguage, signal));
-    Array.from(languages.children[0].children).forEach((control, index) => { const active = MODES[index] === mode; control.classList.toggle('active', active); control.setAttribute('aria-pressed', String(active)); });
-    surface.setAttribute('aria-label', `${controller.current().title.en} (${controller.index + 1}/${controller.slides.length})`);
+  let saved = reconcileProgress(lesson, progress), destroyed = false, slideHandle, infoHandle, overviewHandle, helpHandle, pointer, longPressTimer, chromeTimer;
+  const initialLang = language === 'en' ? 'en' : 'th';
+  const states = new Map(), controller = createSlideController(lesson, { language: initialLang, slideId: saved.lastSlideId });
+  function notify(message) { if (!destroyed) { notice.textContent = message; notice.hidden = !message; stageEngine.refresh(); } }
+  function emit() { if (!destroyed && onProgress(saved)?.persisted === false) notify('Progress is available for this visit only because local storage is unavailable or unreadable.'); }
+  function pauseMedia() { stage.querySelectorAll('audio, video').forEach(m => m.pause?.()); }
+  async function normalMode() { if (fullscreen.active) await fullscreen.exit(); return !destroyed && !fullscreen.active; }
+  async function showInfo() {
+    if (fullscreen.active && !await normalMode()) return;
+    if (destroyed) return;
+    overviewHandle?.destroy(); infoHandle?.destroy(); helpHandle?.destroy(); pauseMedia();
+    infoHandle = renderLessonInfo(root, { lesson, language: controller.language });
   }
-  function paintThumbnails() {
-    const focused = track.contains(doc.activeElement); track.replaceChildren();
-    const first = Math.max(0, Math.floor(filmstrip.scrollLeft / 156) - 3), last = Math.min(controller.slides.length, first + Math.min(25, Math.ceil((filmstrip.clientWidth || 800) / 156) + 7));
-    for (let i = first; i < last; i++) {
-      const s = controller.slides[i], b = element(doc, 'button', 'learning-thumbnail'); b.type = 'button'; b.style.left = `${i * 156}px`; b.tabIndex = i === controller.index ? 0 : -1;
-      b.setAttribute('aria-label', `${i + 1}. ${s.title.en}`); if (i === controller.index) b.setAttribute('aria-current', 'true');
-      renderThumbnail(b, s, 'en');
-      // Removed thumbnails release their handlers with their DOM; no global listener per thumbnail.
-      b.addEventListener('click', () => { if (!destroyed) goToSlide(s.id); });
-      b.addEventListener('keydown', event => { const target = event.key === 'Home' ? 0 : event.key === 'End' ? controller.slides.length - 1 : event.key === 'ArrowLeft' ? controller.index - 1 : event.key === 'ArrowRight' ? controller.index + 1 : null; if (target !== null) { event.preventDefault(); move(target - controller.index); track.querySelector('[aria-current="true"]')?.focus(); } });
-      track.append(b);
+  async function showSlides() {
+    // Synchronous in normal mode so an activated button opens its dialog immediately.
+    if (fullscreen.active) { if (!await normalMode()) return; }
+    if (destroyed) return; infoHandle?.destroy(); overviewHandle?.destroy(); helpHandle?.destroy(); pauseMedia();
+    controls.slides.setAttribute('aria-expanded', 'true');
+    overviewHandle = openSlideOverview(root, { slides: controller.slides, activeSlideId: controller.current().id,
+      onClose: () => controls.slides.setAttribute('aria-expanded', 'false'),
+      onSelect: id => { goToSlide(id); workspace.focus(); } });
+  }
+  async function showHelp() {
+    if (fullscreen.active && !await normalMode()) return;
+    if (destroyed) return; infoHandle?.destroy(); overviewHandle?.destroy(); helpHandle?.destroy(); pauseMedia();
+    controls.help?.setAttribute?.('aria-expanded', 'true');
+    helpHandle = openKeyboardHelp(root, {
+      onClose: () => controls.help?.setAttribute?.('aria-expanded', 'false')
+    });
+  }
+  const controls = createViewerControls(doc, { lesson, language: controller.language, signal,
+    onBack, onPrevious: () => move(-1), onNext: () => move(1), onSlides: showSlides, onInfo: showInfo,
+    onFullscreen: () => fullscreen.enter(), onExitFullscreen: () => fullscreen.exit(), onLanguage: setLanguage,
+    onComplete: () => { saved = completeReading(lesson, saved); emit(); updateControls(); },
+    onHelp: showHelp });
+  const readingToggle = button(doc, 'Toggle reading layout', 'en', () => stageEngine.setReading(stageEngine.mode !== 'reading'), signal, 'learning-sr-only');
+  readingToggle.setAttribute('data-action', 'reading');
+  const showControls = button(doc, 'Show controls', 'en', () => { wakeControls(); controls.bar.querySelector('[data-action="exit-fullscreen"]')?.focus(); }, signal, 'viewer-show-controls'); showControls.setAttribute('data-action', 'show-controls'); showControls.hidden = true;
+  workspace.append(slot, readingToggle, showControls);
+  root.append(controls.bar, notice, workspace, announcement);
+  container.replaceChildren(root);
+  const fullscreen = createFullscreenController(workspace, {
+    onChange(active) {
+      root.classList.toggle('learning-is-fullscreen', active);
+      showControls.hidden = !active;
+      if (active) {
+        workspace.prepend(controls.bar);
+      } else {
+        root.insertBefore(controls.bar, notice);
+      }
+      wakeControls();
+      updateControls();
+      stageEngine.refresh();
+    },
+    onError() { notify('Fullscreen is unavailable. Continue in the normal presentation.'); }
+  });
+  const stageEngine = createPresentationStage(workspace, stage, controls.bar, {
+    notice,
+    onModeChange(mode) {
+      root.classList.toggle('learning-reading-mode', mode === 'reading');
+      announcement.textContent = mode === 'reading' ? 'Readable slide view' : 'Presentation view';
+      paintSlide(false);
     }
-    if (focused) track.querySelector('[aria-current="true"]')?.focus();
+  });
+  function updateControls() {
+    controls.update({ index: controller.index, count: controller.slides.length, mode: controller.language,
+      completed: saved.status === 'completed', canComplete: saved.visitedSlideIds.length === controller.slides.length, fullscreen: fullscreen.active });
+    workspace.setAttribute('aria-label', `${controller.current().title.en} (${controller.index + 1}/${controller.slides.length})`);
   }
-  function paint() {
-    if (destroyed) return; slideHandle?.destroy();
-    const activeReading = reading && !fullscreen.active; root.classList.toggle('learning-reading-mode', activeReading);
-    slideHandle = renderSlide(stage, { slide: controller.current(), lesson, language: controller.language, mode: activeReading ? 'reading' : 'presentation' });
-    saved = visitSlide(lesson, saved, controller.current().id, controller.language);
-    paintLabels();
-    const left = controller.index * 156, width = filmstrip.clientWidth || 800;
-    if (left < filmstrip.scrollLeft || left + 148 > filmstrip.scrollLeft + width) filmstrip.scrollTo({ left: Math.max(0, left - width / 2 + 74), behavior: 'auto' });
-    paintThumbnails(); emit();
-    announcement.textContent = surface.getAttribute('aria-label');
+  function paintSlide(visit = true) {
+    if (destroyed) return;
+    slideHandle?.destroy();
+    const current = controller.current();
+    if (!states.has(current.id)) states.set(current.id, {});
+    slideHandle = renderSlide(stage, { slide: current, lesson, language: controller.language,
+      mode: stageEngine.mode === 'reading' ? 'reading' : 'presentation', interactionState: states.get(current.id) });
+    stageEngine.setContent({ key: `${current.id}:${controller.language}`, ready: slideHandle.ready });
+    if (visit) { saved = visitSlide(lesson, saved, current.id, controller.language); emit(); }
+    updateControls(); announcement.textContent = workspace.getAttribute('aria-label');
   }
-  function goToSlide(id) { if (!destroyed) { controller.goToSlide(id); paint(); } }
-  function move(delta) { if (!destroyed) { controller.move(delta); paint(); } }
-  function setLanguage(mode) { if (!destroyed && MODES.includes(mode)) { controller.setLanguage(mode); onLanguage(mode); paint(); } }
-  filmstrip.addEventListener('scroll', paintThumbnails, { signal, passive: true });
-  surface.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && fullscreen.active) { fullscreen.exit(); return; }
-    if (event.key === '?' && !event.target.closest?.(INTERACTIVE)) { help.hidden = !help.hidden; return; }
+  function goToSlide(id) {
+    if (destroyed || !controller.slides.some(s => s.id === id) || id === controller.current().id) return;
+    controller.goToSlide(id); paintSlide(); wakeControls();
+    if (stageEngine.mode === 'reading') doc.defaultView?.scrollTo?.({ top: 0, behavior: 'auto' });
+  }
+  function move(delta) { if (!destroyed) { const target = Math.max(0, Math.min(controller.slides.length - 1, controller.index + delta)); goToSlide(controller.slides[target].id); } }
+  function setLanguage(mode) {
+    if (destroyed) return;
+    const safeMode = mode === 'en' ? 'en' : 'th';
+    if (controller.language === safeMode) return;
+    controller.setLanguage(safeMode);
+    onLanguage(safeMode);
+    paintSlide(false);
+  }
+  function wakeControls() {
+    if (destroyed) return; clearTimeout(chromeTimer); workspace.removeAttribute('data-controls-hidden'); controls.bar.inert = false; controls.bar.removeAttribute('aria-hidden');
+    if (fullscreen.active) chromeTimer = setTimeout(() => {
+      if (destroyed || controls.bar.contains(doc.activeElement) || showControls === doc.activeElement) return;
+      workspace.setAttribute('data-controls-hidden', 'true'); controls.bar.inert = true; controls.bar.setAttribute('aria-hidden', 'true');
+    }, 2500);
+  }
+  workspace.addEventListener('focusin', wakeControls, { signal });
+  workspace.addEventListener('pointermove', wakeControls, { signal, passive: true });
+  workspace.addEventListener('keydown', event => {
+    wakeControls();
+    if (event.key === 'Escape') {
+      if (helpHandle) { helpHandle.destroy(); helpHandle = null; return; }
+      if (fullscreen.active) { fullscreen.exit(); return; }
+    }
+    if (event.key === '?' && !event.target.closest?.(INTERACTIVE)) {
+      event.preventDefault();
+      showHelp();
+      return;
+    }
+    if ((event.key === 'f' || event.key === 'F') && !event.ctrlKey && !event.altKey && !event.metaKey && !event.target.closest?.(INTERACTIVE)) {
+      event.preventDefault();
+      if (fullscreen.active) fullscreen.exit(); else fullscreen.enter();
+      return;
+    }
     const delta = keyboardDelta(event); if (delta) { event.preventDefault(); move(delta); }
   }, { signal });
-  surface.addEventListener('pointerdown', event => { if (!fullscreen.active || event.target.closest?.(INTERACTIVE) || event.isPrimary === false || event.button > 0) return;
-    pointer = { x: event.clientX, y: event.clientY, drag: false, suppress: false }; clearTimeout(exitTimer);
-    exitTimer = setTimeout(() => { if (pointer && !pointer.drag) { pointer.suppress = true; help.hidden = false; exit.focus(); } }, 650);
+  workspace.addEventListener('pointerdown', event => {
+    if (!fullscreen.active || event.target.closest?.(INTERACTIVE) || event.isPrimary === false || event.button > 0) return;
+    pointer = { x: event.clientX, y: event.clientY, drag: false, suppress: false };
+    clearTimeout(longPressTimer); longPressTimer = setTimeout(() => { if (pointer && !pointer.drag) { pointer.suppress = true; wakeControls(); showControls.focus(); } }, 650);
   }, { signal });
-  surface.addEventListener('pointermove', event => { if (pointer && Math.hypot(event.clientX - pointer.x, event.clientY - pointer.y) > 10) { pointer.drag = true; clearTimeout(exitTimer); } }, { signal, passive: true });
-  surface.addEventListener('pointerup', () => clearTimeout(exitTimer), { signal });
-  surface.addEventListener('pointercancel', () => { clearTimeout(exitTimer); if (pointer) pointer.suppress = true; }, { signal });
-  surface.addEventListener('click', event => {
+  workspace.addEventListener('pointermove', event => { if (pointer && Math.hypot(event.clientX - pointer.x, event.clientY - pointer.y) > 10) { pointer.drag = true; clearTimeout(longPressTimer); } }, { signal, passive: true });
+  workspace.addEventListener('pointerup', () => clearTimeout(longPressTimer), { signal });
+  workspace.addEventListener('pointercancel', () => { clearTimeout(longPressTimer); if (pointer) pointer.suppress = true; }, { signal });
+  workspace.addEventListener('click', event => {
     const suppress = pointer?.drag || pointer?.suppress; pointer = null;
     if (!fullscreen.active || suppress || event.target.closest?.(INTERACTIVE) || doc.getSelection?.().toString() || event.detail === 0) return;
     const box = stage.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.left + box.width || event.clientY < box.top || event.clientY > box.top + box.height) return;
     move(event.clientX - box.left < box.width / 2 ? -1 : 1);
   }, { signal });
-  doc.defaultView?.addEventListener('pagehide', emit, { signal });
-  paint(); surface.focus();
+  doc.defaultView?.addEventListener?.('pagehide', emit, { signal });
+  paintSlide(); workspace.focus();
   return { get currentSlideId() { return controller.current().id; }, goToSlide, setLanguage,
-    destroy() { if (destroyed) return; emit(); destroyed = true; infoHandle?.destroy(); clearTimeout(exitTimer); abort.abort(); fullscreen.destroy(); slideHandle?.destroy(); }
+    setReading(value) { stageEngine.setReading(value); },
+    destroy() {
+      if (destroyed) return; emit(); destroyed = true; infoHandle?.destroy(); overviewHandle?.destroy(); helpHandle?.destroy();
+      clearTimeout(chromeTimer); clearTimeout(longPressTimer); abort.abort(); stageEngine.destroy(); fullscreen.destroy(); slideHandle?.destroy();
+      if (!hadHostClass) container.classList.remove('learning-viewer-host');
+    }
   };
 }

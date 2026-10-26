@@ -32,7 +32,9 @@ export function getCurrentTheme() {
  */
 export function applyTheme(theme) {
   const activeTheme = theme === 'light' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', activeTheme);
+  if (typeof document !== 'undefined' && document.documentElement) {
+    document.documentElement.setAttribute('data-theme', activeTheme);
+  }
   try {
     localStorage.setItem(THEME_STORAGE_KEY, activeTheme);
   } catch (e) {

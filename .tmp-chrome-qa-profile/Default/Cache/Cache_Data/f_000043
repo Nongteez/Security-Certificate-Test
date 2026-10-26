@@ -1,0 +1,802 @@
+import { element, localize, pair } from './dom.js';
+
+/**
+ * SEC CERT TEST — ISC2 CC 2026 Presentation V3 Modules
+ * Professional Educational Presentation Renderers for CIA Triad (Slides 2–8)
+ */
+
+/** Helper to create bilingual elements with proper lang attribute */
+function createBilingualElement(doc, tag, className, textObj, language) {
+  const isThai = language === 'th';
+  const el = element(doc, tag, className, textObj[isThai ? 'th' : 'en']);
+  el.setAttribute('lang', isThai ? 'th' : 'en');
+  return el;
+}
+
+/** Slide 2: The Three Pillars of Information Security (Pillars Architectural Presentation) */
+export function renderPillars(host, { slide, language }) {
+  const doc = host.ownerDocument;
+  const isThai = language === 'th';
+  const visual = slide.visual || {};
+
+  const deck = element(doc, 'div', 'cia-presentation cia-pillars-presentation learning-pillars-deck');
+  deck.setAttribute('lang', isThai ? 'th' : 'en');
+
+  // Header Zone
+  const header = element(doc, 'header', 'cia-pres-header');
+  const eyebrow = element(doc, 'span', 'cia-pres-eyebrow', isThai ? 'โครงสร้างพื้นฐานความมั่นคงปลอดภัย' : 'FOUNDATIONAL ARCHITECTURE');
+  eyebrow.setAttribute('lang', isThai ? 'th' : 'en');
+  const headline = element(doc, 'h3', 'cia-pres-title', slide.title[isThai ? 'th' : 'en']);
+  headline.setAttribute('lang', isThai ? 'th' : 'en');
+  header.append(eyebrow, headline);
+  deck.append(header);
+
+  // Architectural Central Triad Diagram Bar
+  const diagramBar = element(doc, 'div', 'pillars-diagram-bar');
+  const triadImg = element(doc, 'img', 'pillars-diagram-svg');
+  triadImg.setAttribute('src', new URL('../../../assets/learning/cia-pillars-triad.svg', import.meta.url).href);
+  triadImg.setAttribute('alt', isThai ? 'แผนภาพโครงสร้าง 3 เสาหลัก CIA Triad' : 'Architectural diagram of CIA Triad Pillars');
+  triadImg.setAttribute('aria-hidden', 'true');
+  diagramBar.append(triadImg);
+  deck.append(diagramBar);
+
+  // 3-Pillar Architectural Cards Grid
+  const grid = element(doc, 'div', 'pillars-grid');
+  const pillarsData = visual.pillars || [
+    {
+      key: 'confidentiality', tone: 'blue', symbol: 'C',
+      term: { en: 'Confidentiality', th: 'การรักษาความลับ' },
+      question: { en: 'Who can see the sensitive data?', th: 'ใครมีสิทธิ์มองเห็นข้อมูลลับบ้าง?' },
+      summary: { en: 'Prevent unauthorized disclosure through encryption, ACLs, and MFA.', th: 'ป้องกันการเปิดเผยข้อมูลโดยมิชอบ ด้วยการเข้ารหัส ACLs และ MFA' }
+    },
+    {
+      key: 'integrity', tone: 'green', symbol: 'I',
+      term: { en: 'Integrity', th: 'ความถูกต้องครบถ้วน' },
+      question: { en: 'Can we trust and rely on the data?', th: 'ข้อมูลถูกต้องแม่นยำและเชื่อถือได้หรือไม่?' },
+      summary: { en: 'Protect data from unauthorized modification, tampering, or deletion.', th: 'ป้องกันการแก้ไข ดัดแปลง หรือทำลายข้อมูล ด้วยแฮชและลายมือชื่อดิจิทัล' }
+    },
+    {
+      key: 'availability', tone: 'amber', symbol: 'A',
+      term: { en: 'Availability', th: 'ความพร้อมใช้งาน' },
+      question: { en: 'Can authorized users reach systems?', th: 'ผู้มีสิทธิ์เข้าถึงระบบได้เมื่อจำเป็นหรือไม่?' },
+      summary: { en: 'Ensure timely, dependable access via redundancy, backups, and DR plans.', th: 'รับรองการเข้าถึงอย่างต่อเนื่อง ด้วยระบบสำรอง แบ็กอัป และแผนกู้คืน' }
+    }
+  ];
+
+  for (const pillar of pillarsData) {
+    const card = element(doc, 'article', `pillar-card tone-${pillar.tone || 'blue'}`);
+
+    const cardHead = element(doc, 'div', 'pillar-card-header');
+    const badge = element(doc, 'span', 'pillar-symbol-badge', pillar.symbol || '');
+    const titleGroup = element(doc, 'div', 'pillar-title-group');
+    const termObj = {
+      en: pillar.term.en,
+      th: `${pillar.term.en} (${pillar.term.th})`
+    };
+    const term = localize(element(doc, 'h4', 'pillar-term-title'), termObj, language);
+    titleGroup.append(term);
+    cardHead.append(badge, titleGroup);
+
+    const questionBox = element(doc, 'div', 'pillar-question-box');
+    const questionText = localize(element(doc, 'p', 'pillar-question-text'), pillar.question, language);
+    questionBox.append(questionText);
+
+    const summaryBox = element(doc, 'div', 'pillar-summary-box');
+    const summaryText = localize(element(doc, 'p', 'pillar-summary-text'), pillar.summary, language);
+    summaryBox.append(summaryText);
+
+    card.append(cardHead, questionBox, summaryBox);
+    grid.append(card);
+  }
+  deck.append(grid);
+
+  // Bottom Takeaway Bar
+  const takeawayTextObj = visual.takeaway || {
+    en: 'Security controls work together: strong encryption cannot help if systems are down or records are tampered with.',
+    th: 'มาตรการความปลอดภัยต้องทำงานร่วมกัน การเข้ารหัสที่ดีจะไร้ผลหากระบบล่ม หรือข้อมูลถูกแก้ไขทำลาย'
+  };
+  const takeawayBar = element(doc, 'aside', 'pillars-takeaway-bar');
+  const icon = element(doc, 'span', 'pillars-takeaway-icon', '✦');
+  const takeawayText = localize(element(doc, 'p', 'pillars-takeaway-text'), takeawayTextObj, language);
+  takeawayBar.append(icon, takeawayText);
+  deck.append(takeawayBar);
+
+  host.append(deck);
+  return { destroy() {} };
+}
+
+/** Slide 3: Confidentiality Deep Dive */
+export function renderConfidentiality(host, { slide, language }) {
+  const doc = host.ownerDocument;
+  const isThai = language === 'th';
+
+  const deck = element(doc, 'div', 'cia-presentation cia-concept-presentation cia-confidentiality-slide');
+  deck.setAttribute('lang', isThai ? 'th' : 'en');
+
+  // Header
+  const header = element(doc, 'header', 'cia-pres-header');
+  const eyebrow = element(doc, 'span', 'cia-pres-eyebrow', isThai ? 'เสาหลักที่ 1 · CONFIDENTIALITY' : 'PILLAR 1 · CONFIDENTIALITY');
+  const headline = element(doc, 'h3', 'cia-pres-title', isThai
+    ? 'Confidentiality: การป้องกันการเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต'
+    : 'Confidentiality: Protecting Against Unauthorized Disclosure');
+  header.append(eyebrow, headline);
+  deck.append(header);
+
+  // Two-column split layout
+  const split = element(doc, 'div', 'cia-split-grid');
+
+  // Left Column: Core Principle & 3 Defense Layers
+  const leftCol = element(doc, 'div', 'cia-split-col');
+
+  // Definition Box
+  const defBox = element(doc, 'div', 'cia-callout-card tone-blue');
+  const defBadge = element(doc, 'span', 'cia-card-kicker', isThai ? 'คำจำกัดความหลัก' : 'CORE DEFINITION');
+  const defText = element(doc, 'p', 'cia-card-text', isThai
+    ? 'การรับรองว่าข้อมูลสำคัญจะถูกเข้าถึงได้ เฉพาะผู้ที่ได้รับอนุญาตเท่านั้น'
+    : 'Ensuring sensitive information is accessible ONLY to authorized individuals, entities, or processes.');
+  const goldenRule = element(doc, 'div', 'cia-golden-rule', isThai
+    ? '⚠️ กฎสำคัญในข้อสอบ: การละเมิดเกิดขึ้นทันทีที่มีการเปิดดูโดยไม่ได้รับอนุญาต แม้ข้อมูลจะไม่ถูกดัดแปลงแม้แต่ไบต์เดียว!'
+    : '⚠️ Critical Exam Rule: A breach occurs whenever unauthorized viewing takes place — even if 0 bytes are altered or deleted!');
+  defBox.append(defBadge, defText, goldenRule);
+  leftCol.append(defBox);
+
+  // 3 Defense Layers List
+  const layersList = element(doc, 'div', 'cia-layers-list');
+  const layers = [
+    {
+      num: '1', title: { en: 'Cryptographic Encryption', th: 'การเข้ารหัสข้อมูล' },
+      detail: { en: 'AES-256 for data at rest; TLS 1.3 for data in transit across networks.', th: 'AES-256 สำหรับข้อมูลที่จัดเก็บ และ TLS 1.3 สำหรับข้อมูลส่งผ่านเครือข่าย' }
+    },
+    {
+      num: '2', title: { en: 'Granular Access Controls', th: 'การควบคุมสิทธิ์อย่างละเอียด' },
+      detail: { en: 'Enforce Principle of Least Privilege and Role-Based Access Control (RBAC).', th: 'บังคับใช้สิทธิ์เท่าที่จำเป็น (Least Privilege) และตามบทบาท (RBAC)' }
+    },
+    {
+      num: '3', title: { en: 'Administrative Governance', th: 'นโยบายการบริหาร' },
+      detail: { en: 'Data classification schemes, clean desk policies, and Non-Disclosure Agreements (NDAs).', th: 'การจัดชั้นความลับ นโยบายจัดโต๊ะทำงาน และสัญญา NDA' }
+    }
+  ];
+
+  for (const l of layers) {
+    const item = element(doc, 'div', 'cia-layer-item');
+    const badge = element(doc, 'span', 'cia-layer-badge', l.num);
+    const textGroup = element(doc, 'div', 'cia-layer-text');
+    const title = element(doc, 'strong', 'cia-layer-title', l.title[isThai ? 'th' : 'en']);
+    const detail = element(doc, 'span', 'cia-layer-desc', l.detail[isThai ? 'th' : 'en']);
+    textGroup.append(title, detail);
+    item.append(badge, textGroup);
+    layersList.append(item);
+  }
+  leftCol.append(layersList);
+  split.append(leftCol);
+
+  // Right Column: Vector Artwork & Scenario Diagnostic
+  const rightCol = element(doc, 'div', 'cia-split-col');
+
+  // Vector Artwork
+  const artCard = element(doc, 'div', 'cia-visual-card');
+  const artImg = element(doc, 'img', 'cia-vector-art');
+  artImg.setAttribute('src', new URL('../../../assets/learning/cia-confidentiality-layers.svg', import.meta.url).href);
+  artImg.setAttribute('alt', 'Confidentiality defense layers');
+  artImg.setAttribute('aria-hidden', 'true');
+  artCard.append(artImg);
+  rightCol.append(artCard);
+
+  // Scenario Case Box
+  const scenarioCard = element(doc, 'div', 'cia-scenario-card');
+  const scHead = element(doc, 'div', 'cia-scenario-header');
+  const scBadge = element(doc, 'span', 'cia-scenario-tag', isThai ? 'สถานการณ์ตัวอย่าง' : 'ENTERPRISE SCENARIO');
+  const scTitle = element(doc, 'h4', 'cia-scenario-title', isThai ? 'กรณีเปิดอ่านไฟล์เงินเดือนผู้บริหาร' : 'Executive Salary Spreadsheet Incident');
+  scHead.append(scBadge, scTitle);
+
+  const scText = element(doc, 'p', 'cia-scenario-narrative', isThai
+    ? 'พนักงานฝึกงานเปิดอ่านไฟล์เงินเดือนของผู้บริหารในเครือข่ายที่ไม่ได้เข้ารหัส แม้ไม่มีการแก้ตัวเลขใด ๆ เลย แต่ Confidentiality ถูกละเมิดทันทีเพราะผู้ไม่มีสิทธิ์ได้มองเห็นข้อมูลลับ'
+    : 'An unauthorized intern opens an unencrypted network spreadsheet containing executive compensation and views everyone\'s salaries. Because restricted data was viewed by someone without need-to-know, Confidentiality was violated—even though no payroll numbers were modified.');
+
+  const scVerdict = element(doc, 'div', 'cia-diagnostic-verdict tone-blue');
+  scVerdict.innerHTML = isThai
+    ? '<strong>ผลวินิจฉัยข้อสอบ:</strong> การแอบดูข้อมูลลับโดยไม่มีสิทธิ์ถือเป็นการละเมิดความลับโดยสมบูรณ์ ไม่จำเป็นต้องมีการแก้ไขตัวเลขใด ๆ'
+    : '<strong>Exam Diagnostic:</strong> Viewing restricted data without authorization is a full breach. Unauthorized modification is NOT required to violate Confidentiality.';
+
+  scenarioCard.append(scHead, scText, scVerdict);
+  rightCol.append(scenarioCard);
+
+  split.append(rightCol);
+  deck.append(split);
+
+  host.append(deck);
+  return { destroy() {} };
+}
+
+/** Slide 4: Integrity Deep Dive */
+export function renderIntegrity(host, { slide, language }) {
+  const doc = host.ownerDocument;
+  const isThai = language === 'th';
+
+  const deck = element(doc, 'div', 'cia-presentation cia-concept-presentation cia-integrity-slide');
+  deck.setAttribute('lang', isThai ? 'th' : 'en');
+
+  // Header
+  const header = element(doc, 'header', 'cia-pres-header');
+  const eyebrow = element(doc, 'span', 'cia-pres-eyebrow', isThai ? 'เสาหลักที่ 2 · INTEGRITY' : 'PILLAR 2 · INTEGRITY');
+  const headline = element(doc, 'h3', 'cia-pres-title', isThai
+    ? 'Integrity: การป้องกันการแก้ไขดัดแปลงข้อมูลโดยไม่ได้รับอนุญาต'
+    : 'Integrity: Protecting Against Unauthorized Modification');
+  header.append(eyebrow, headline);
+  deck.append(header);
+
+  // Two-column split layout
+  const split = element(doc, 'div', 'cia-split-grid');
+
+  // Left Column: Definition, SQ-13 Distinction, and Safeguards
+  const leftCol = element(doc, 'div', 'cia-split-col');
+
+  const defBox = element(doc, 'div', 'cia-callout-card tone-green');
+  const defBadge = element(doc, 'span', 'cia-card-kicker', isThai ? 'คำจำกัดความหลัก' : 'CORE DEFINITION');
+  const defText = element(doc, 'p', 'cia-card-text', isThai
+    ? 'การรับรองว่าข้อมูลและระบบมีความถูกต้อง ครบถ้วน สมบูรณ์ และปลอดภัยจากการถูกแก้ไข ดัดแปลง แทรกแซง หรือลบทำลายโดยไม่ได้รับอนุญาตตลอดวงจรชีวิต'
+    : 'Ensuring that information and systems remain accurate, complete, and protected against unauthorized modification, insertion, or deletion throughout their entire lifecycle.');
+
+  const sq13Box = element(doc, 'div', 'cia-golden-rule tone-green', isThai
+    ? '🎯 จุดเน้นข้อสอบ (SQ-13): การดัดแปลงหรือแก้ไขข้อมูลเป็นความเสียหายต่อ Integrity โดยตรง แม้ผู้โจมตีจะมองเห็นข้อมูลก่อน แต่การเปลี่ยนแปลงค่าทำลายความถูกต้องน่าเชื่อถือของข้อมูล'
+    : '🎯 Exam Distinction (SQ-13): Altering or tampering with data is STRICTLY an Integrity violation. While an attacker might view data beforehand, changing values directly destroys data trustworthiness.');
+  defBox.append(defBadge, defText, sq13Box);
+  leftCol.append(defBox);
+
+  // 3 Verification Mechanisms
+  const layersList = element(doc, 'div', 'cia-layers-list');
+  const safeguards = [
+    {
+      num: '1', title: { en: 'Cryptographic Hashes (SHA-256)', th: 'การแฮชทางรหัสลับ (SHA-256)' },
+      detail: { en: 'Generate unique mathematical checksums to verify that data has not changed in transit or storage.', th: 'สร้างค่าตรวจสอบเฉพาะเพื่อพิสูจน์ว่าข้อมูลไม่มีการเปลี่ยนแปลงระหว่างส่งหรือจัดเก็บ' }
+    },
+    {
+      num: '2', title: { en: 'Digital Signatures (Non-Repudiation)', th: 'ลายมือชื่อดิจิทัล (Non-Repudiation)' },
+      detail: { en: 'Combine asymmetric cryptography and hashing to provide authentication, integrity, and non-repudiation.', th: 'รวมกุญแจอสมมาตรและการแฮช เพื่อยืนยันตัวตน ตรวจสอบความถูกต้อง และไม่สามารถปฏิเสธความรับผิดชอบ' }
+    },
+    {
+      num: '3', title: { en: 'File Integrity Monitoring (FIM)', th: 'ระบบตรวจสอบความสมบูรณ์ของไฟล์ (FIM)' },
+      detail: { en: 'Continuously track critical operating system files and alert administrators to unauthorized changes.', th: 'ตรวจติดตามไฟล์ระบบสำคัญและแจ้งเตือนเมื่อมีการเปลี่ยนแปลงที่ไม่ได้รับอนุญาต' }
+    }
+  ];
+
+  for (const s of safeguards) {
+    const item = element(doc, 'div', 'cia-layer-item tone-green');
+    const badge = element(doc, 'span', 'cia-layer-badge', s.num);
+    const textGroup = element(doc, 'div', 'cia-layer-text');
+    const title = element(doc, 'strong', 'cia-layer-title', s.title[isThai ? 'th' : 'en']);
+    const detail = element(doc, 'span', 'cia-layer-desc', s.detail[isThai ? 'th' : 'en']);
+    textGroup.append(title, detail);
+    item.append(badge, textGroup);
+    layersList.append(item);
+  }
+  leftCol.append(layersList);
+  split.append(leftCol);
+
+  // Right Column: Hash Vector Art & Wire Transfer Scenario
+  const rightCol = element(doc, 'div', 'cia-split-col');
+
+  const artCard = element(doc, 'div', 'cia-visual-card');
+  const artImg = element(doc, 'img', 'cia-vector-art');
+  artImg.setAttribute('src', new URL('../../../assets/learning/cia-integrity-hash.svg', import.meta.url).href);
+  artImg.setAttribute('alt', 'Integrity hash checksum comparison');
+  artImg.setAttribute('aria-hidden', 'true');
+  artCard.append(artImg);
+  rightCol.append(artCard);
+
+  // Scenario Case Box
+  const scenarioCard = element(doc, 'div', 'cia-scenario-card');
+  const scHead = element(doc, 'div', 'cia-scenario-header');
+  const scBadge = element(doc, 'span', 'cia-scenario-tag tone-green', isThai ? 'สถานการณ์ตัวอย่าง' : 'ENTERPRISE SCENARIO');
+  const scTitle = element(doc, 'h4', 'cia-scenario-title', isThai ? 'กรณีดัดแปลงคำสั่งโอนเงินทางอิเล็กทรอนิกส์' : 'Electronic Wire Transfer Tampering Incident');
+  scHead.append(scBadge, scTitle);
+
+  const scText = element(doc, 'p', 'cia-scenario-narrative', isThai
+    ? 'ผู้โจมตีดักจับคำสั่งโอนเงินแล้วแก้ไขหมายเลขบัญชีธนาคารปลายทาง ธนาคารประมวลผลคำสั่งตามเวลาปกติ (ระบบไม่ล่ม) แต่เงินถูกโอนเข้าบัญชีคนร้าย ความถูกต้องของข้อมูลถูกทำลายลงอย่างสิ้นเชิง ซึ่งเป็นความเสียหายต่อ Integrity โดยตรง'
+    : 'An attacker intercepts an electronic wire transfer instruction and alters the beneficiary bank routing number. The bank executes payment on schedule, but funds transfer into the criminal\'s account. Accuracy and trust in transaction data failed completely — a direct Integrity compromise.');
+
+  const scVerdict = element(doc, 'div', 'cia-diagnostic-verdict tone-green');
+  scVerdict.innerHTML = isThai
+    ? '<strong>กับดักข้อสอบที่ต้องระวัง:</strong> อย่าสับสนระหว่างการเปิดเผยกับการดัดแปลง เมื่อใดก็ตามที่ข้อมูลถูกเปลี่ยนค่า เสาหลักที่ถูกละเมิดคือ Integrity เสมอ!'
+    : '<strong>Common Exam Trap:</strong> Do not confuse alteration with disclosure. Altering data is strictly an Integrity violation (SQ-13), even if an attacker viewed it first.';
+
+  scenarioCard.append(scHead, scText, scVerdict);
+  rightCol.append(scenarioCard);
+
+  split.append(rightCol);
+  deck.append(split);
+
+  host.append(deck);
+  return { destroy() {} };
+}
+
+/** Slide 5: Availability Deep Dive */
+export function renderAvailability(host, { slide, language }) {
+  const doc = host.ownerDocument;
+  const isThai = language === 'th';
+
+  const deck = element(doc, 'div', 'cia-presentation cia-concept-presentation cia-availability-slide');
+  deck.setAttribute('lang', isThai ? 'th' : 'en');
+
+  // Header
+  const header = element(doc, 'header', 'cia-pres-header');
+  const eyebrow = element(doc, 'span', 'cia-pres-eyebrow', isThai ? 'เสาหลักที่ 3 · AVAILABILITY' : 'PILLAR 3 · AVAILABILITY');
+  const headline = element(doc, 'h3', 'cia-pres-title', isThai
+    ? 'Availability: การรับรองความพร้อมใช้งานอย่างต่อเนื่องและทันท่วงที'
+    : 'Availability: Ensuring Dependable, Timely Access');
+  header.append(eyebrow, headline);
+  deck.append(header);
+
+  // Two-column split layout
+  const split = element(doc, 'div', 'cia-split-grid');
+
+  // Left Column: Definition & Eliminating SPOFs
+  const leftCol = element(doc, 'div', 'cia-split-col');
+
+  const defBox = element(doc, 'div', 'cia-callout-card tone-amber');
+  const defBadge = element(doc, 'span', 'cia-card-kicker', isThai ? 'คำจำกัดความหลัก' : 'CORE DEFINITION');
+  const defText = element(doc, 'p', 'cia-card-text', isThai
+    ? 'การรับรองว่าผู้ใช้ที่ได้รับอนุญาตจะสามารถเข้าถึงข้อมูลสำคัญ แอปพลิเคชัน และโครงสร้างพื้นฐานได้อย่างรวดเร็วและต่อเนื่องเมื่อจำเป็นต่อการทำงาน'
+    : 'Ensuring that authorized users have prompt, dependable access to vital information, business applications, and infrastructure whenever required for operations.');
+
+  const axiomBox = element(doc, 'div', 'cia-golden-rule tone-amber', isThai
+    ? '💡 สัจพจน์ทางธุรกิจ: ข้อมูลที่ถูกเข้ารหัสไว้อย่างสมบูรณ์แบบแต่ไม่สามารถเปิดใช้งานได้ ย่อมไม่มีมูลค่าต่อธุรกิจเลย!'
+    : '💡 Core Business Principle: Data that is perfectly encrypted but inaccessible when needed provides zero business value!');
+  defBox.append(defBadge, defText, axiomBox);
+  leftCol.append(defBox);
+
+  // 3 Lines of Defense against SPOF
+  const layersList = element(doc, 'div', 'cia-layers-list');
+  const safeguards = [
+    {
+      num: '1', title: { en: 'Fault Tolerance & Redundancy', th: 'การทนต่อความเสียหายและระบบสำรอง' },
+      detail: { en: 'Dual power supplies, redundant network interfaces, RAID storage arrays, and load-balanced web servers.', th: 'แหล่งจ่ายไฟคู่ การเชื่อมต่อเครือข่ายสำรอง ฮาร์ดดิสก์ RAID และเซิร์ฟเวอร์แบบกระจายโหลด' }
+    },
+    {
+      num: '2', title: { en: 'Environmental Resilience', th: 'ความยืดหยุ่นทางสภาพแวดล้อม' },
+      detail: { en: 'Uninterruptible Power Supplies (UPS), on-site backup generators, and data center fire suppression.', th: 'เครื่องสำรองไฟฉุกเฉิน (UPS) เครื่องกำเนิดไฟฟ้าสำรอง และระบบระงับอัคคีภัยในศูนย์ข้อมูล' }
+    },
+    {
+      num: '3', title: { en: 'Disaster Recovery & Defense', th: 'การกู้คืนระบบและการป้องกัน' },
+      detail: { en: 'Tested off-site backups, alternate data centers (hot/warm sites), and DDoS traffic scrubbing centers.', th: 'การสำรองข้อมูลนอกสถานที่ ศูนย์สำรองข้อมูล และระบบกรองทราฟฟิกป้องกัน DDoS' }
+    }
+  ];
+
+  for (const s of safeguards) {
+    const item = element(doc, 'div', 'cia-layer-item tone-amber');
+    const badge = element(doc, 'span', 'cia-layer-badge', s.num);
+    const textGroup = element(doc, 'div', 'cia-layer-text');
+    const title = element(doc, 'strong', 'cia-layer-title', s.title[isThai ? 'th' : 'en']);
+    const detail = element(doc, 'span', 'cia-layer-desc', s.detail[isThai ? 'th' : 'en']);
+    textGroup.append(title, detail);
+    item.append(badge, textGroup);
+    layersList.append(item);
+  }
+  leftCol.append(layersList);
+  split.append(leftCol);
+
+  // Right Column: Resilient Architecture Art & Hospital ER Scenario
+  const rightCol = element(doc, 'div', 'cia-split-col');
+
+  const artCard = element(doc, 'div', 'cia-visual-card');
+  const artImg = element(doc, 'img', 'cia-vector-art');
+  artImg.setAttribute('src', new URL('../../../assets/learning/cia-availability-architecture.svg', import.meta.url).href);
+  artImg.setAttribute('alt', 'Availability resilient architecture and DDoS mitigation');
+  artImg.setAttribute('aria-hidden', 'true');
+  artCard.append(artImg);
+  rightCol.append(artCard);
+
+  // Scenario Case Box
+  const scenarioCard = element(doc, 'div', 'cia-scenario-card');
+  const scHead = element(doc, 'div', 'cia-scenario-header');
+  const scBadge = element(doc, 'span', 'cia-scenario-tag tone-amber', isThai ? 'สถานการณ์ตัวอย่าง' : 'ENTERPRISE SCENARIO');
+  const scTitle = element(doc, 'h4', 'cia-scenario-title', isThai ? 'กรณีการโจมตี DDoS ถล่มพอร์ทัลห้องฉุกเฉิน' : 'Hospital Clinical Portal DDoS Flood');
+  scHead.append(scBadge, scTitle);
+
+  const scText = element(doc, 'p', 'cia-scenario-narrative', isThai
+    ? 'การโจมตี DDoS ส่งทราฟฟิกขยะหลายล้านคำขอต่อวินาทีเข้าถล่มพอร์ทัลของโรงพยาบาลจนเครือข่ายล่ม แพทย์ห้องฉุกเฉินไม่สามารถเปิดดูประวัติการแพ้ยาของผู้ป่วยก่อนให้ยาได้ ข้อมูลไม่ได้รั่วไหลหรือถูกแก้ไข แต่ Availability ล้มเหลวและเป็นอันตรายต่อชีวิต'
+    : 'A massive DDoS attack floods a hospital\'s clinical portal with millions of junk requests per second, taking the network offline. Emergency room doctors cannot access patient allergy records before administering medications. No data was disclosed or altered, but Availability failed with life-critical danger.');
+
+  const scVerdict = element(doc, 'div', 'cia-diagnostic-verdict tone-amber');
+  scVerdict.innerHTML = isThai
+    ? '<strong>กับดักข้อสอบที่ต้องระวัง:</strong> การสำรองข้อมูล (Backups) ช่วยกู้คืนความพร้อมใช้งาน แต่ไม่ได้ช่วยรักษาความลับของข้อมูล!'
+    : '<strong>Common Exam Trap:</strong> Backups restore availability, but backups alone do not keep data secret.';
+
+  scenarioCard.append(scHead, scText, scVerdict);
+  rightCol.append(scenarioCard);
+
+  split.append(rightCol);
+  deck.append(split);
+
+  host.append(deck);
+  return { destroy() {} };
+}
+
+/** Slide 6: Compound Incident Flow */
+export function renderIncidentFlow(host, { slide, language }) {
+  const doc = host.ownerDocument;
+  const isThai = language === 'th';
+  const visual = slide.visual || {};
+
+  const deck = element(doc, 'div', 'cia-presentation cia-incident-presentation learning-incident-deck');
+  deck.setAttribute('lang', isThai ? 'th' : 'en');
+
+  // Top header: Lead text and case study title with disclaimer note
+  const header = element(doc, 'div', 'incident-header-block');
+  const eyebrow = element(doc, 'span', 'cia-pres-eyebrow', isThai ? 'การวิเคราะห์การโจมตีแบบลูกโซ่' : 'COMPOUND ATTACK PROGRESSION');
+  const headline = element(doc, 'h3', 'cia-pres-title', slide.title[isThai ? 'th' : 'en']);
+  header.append(eyebrow, headline);
+
+  if (visual.lead) {
+    const lead = localize(element(doc, 'p', 'incident-lead-text'), visual.lead, language);
+    header.append(lead);
+  }
+
+  const caseBar = element(doc, 'div', 'incident-case-bar');
+  if (visual.caseTitle) {
+    const title = localize(element(doc, 'h4', 'incident-case-title'), visual.caseTitle, language);
+    caseBar.append(title);
+  }
+  if (visual.note) {
+    const note = localize(element(doc, 'span', 'incident-note-badge'), visual.note, language);
+    caseBar.append(note);
+  }
+  header.append(caseBar);
+  deck.append(header);
+
+  // Horizontal Timeline Axis Track with progression indicators
+  const timelineAxis = element(doc, 'div', 'incident-timeline-track');
+  const axisLine = element(doc, 'div', 'timeline-track-line');
+  axisLine.setAttribute('aria-hidden', 'true');
+  timelineAxis.append(axisLine);
+  deck.append(timelineAxis);
+
+  // Stages row with connector arrows
+  const stagesRow = element(doc, 'div', 'incident-stages-row');
+  const stages = visual.stages || [];
+  const phaseTimestamps = [
+    { en: 'T₀ · Infiltration', th: 'T₀ · เริ่มต้นบุกรุก' },
+    { en: 'T + 4h · Lockout', th: 'T + 4 ชม. · ระบบหยุดชะงัก' },
+    { en: 'T + 24h · Tampering', th: 'T + 24 ชม. · ดัดแปลงข้อมูล' }
+  ];
+
+  stages.forEach((stage, index) => {
+    const card = element(doc, 'article', `incident-stage-card tone-${stage.tone || 'blue'}`);
+
+    // Timeline phase header with chronological marker
+    const cardHead = element(doc, 'div', 'stage-card-header');
+    const phaseBadge = element(doc, 'span', 'stage-phase-badge', `${stage.symbol || index + 1}`);
+    const timeTag = element(doc, 'span', 'stage-time-tag', isThai ? phaseTimestamps[index]?.th : phaseTimestamps[index]?.en);
+    const label = localize(element(doc, 'h4', 'stage-label'), stage.label, language);
+    cardHead.append(phaseBadge, timeTag, label);
+
+    const eventBox = element(doc, 'div', 'stage-event-box');
+    const eventText = localize(element(doc, 'p', 'stage-event-text'), stage.event, language);
+    eventBox.append(eventText);
+
+    const impactBox = element(doc, 'div', 'stage-impact-box');
+    const impactHeader = element(doc, 'div', 'stage-impact-header');
+    const impactTag = element(doc, 'span', 'stage-impact-tag', isThai ? 'ผลกระทบหลัก:' : 'Harm:');
+    const pillarName = stage.pillar?.en || '';
+    const pillarObj = {
+      en: pillarName,
+      th: `${pillarName} (${stage.pillar?.th || ''})`
+    };
+    const pillarBadge = localize(element(doc, 'span', 'stage-pillar-badge'), pillarObj, language);
+    impactHeader.append(impactTag, pillarBadge);
+
+    const impactText = localize(element(doc, 'p', 'stage-impact-text'), stage.impact, language);
+    impactBox.append(impactHeader, impactText);
+
+    card.append(cardHead, eventBox, impactBox);
+    stagesRow.append(card);
+
+    if (index < stages.length - 1) {
+      const connector = element(doc, 'div', 'incident-connector');
+      const arrow = element(doc, 'span', 'connector-arrow', '➔');
+      const flowLabel = element(doc, 'span', 'connector-flow-text', index === 0 ? 'Cascade' : 'Escalation');
+      flowLabel.setAttribute('aria-hidden', 'true');
+      connector.append(arrow, flowLabel);
+      connector.setAttribute('aria-hidden', 'true');
+      stagesRow.append(connector);
+    }
+  });
+  deck.append(stagesRow);
+
+  // Exam insight takeaway
+  if (visual.takeaway) {
+    const takeaway = element(doc, 'aside', 'incident-takeaway-bar');
+    const icon = element(doc, 'span', 'incident-takeaway-icon', '⚡');
+    const takeawayText = localize(element(doc, 'p', 'incident-takeaway-text'), visual.takeaway, language);
+    takeaway.append(icon, takeawayText);
+    deck.append(takeaway);
+  }
+
+  host.append(deck);
+  return { destroy() {} };
+}
+
+/** Slide 7: Scenario Investigation Presentation (Redesigned with Ledger Evidence) */
+export function renderScenarioDecision(host, { slide, language, signal, interactionState = {} }) {
+  const doc = host.ownerDocument;
+  const isThai = language === 'th';
+  const visual = slide.visual || {};
+
+  const deck = element(doc, 'div', 'cia-presentation cia-scenario-presentation learning-scenario-deck');
+  deck.setAttribute('lang', isThai ? 'th' : 'en');
+
+  let revealed = interactionState.revealed === true;
+  let selectedKey = interactionState.selectedKey || null;
+
+  // Header Zone
+  const header = element(doc, 'header', 'cia-pres-header');
+  const eyebrow = element(doc, 'span', 'cia-pres-eyebrow', isThai ? 'การสืบสวนสถานการณ์ความมั่นคงปลอดภัย' : 'SCENARIO INVESTIGATION & REASONING');
+  const headline = element(doc, 'h3', 'cia-pres-title', slide.title[isThai ? 'th' : 'en']);
+  header.append(eyebrow, headline);
+  deck.append(header);
+
+  // Investigation Dossier Card & Before/After Ledger Evidence
+  const dossier = element(doc, 'article', 'scenario-dossier-card');
+  const dossierHead = element(doc, 'div', 'scenario-dossier-header');
+  const badge = element(doc, 'span', 'scenario-dossier-badge', isThai ? 'กรณีศึกษา: การปลอมแปลงสต็อกสินค้า' : 'Enterprise Incident: Inventory Ledger Falsification');
+  dossierHead.append(badge);
+
+  const narrative = localize(element(doc, 'p', 'scenario-narrative-text'), visual.scenario, language);
+  dossier.append(dossierHead, narrative);
+
+  // Visual Evidence Table: Before & After Ledger Modification
+  const evidenceBox = element(doc, 'div', 'scenario-evidence-box');
+  const evTitle = element(doc, 'div', 'evidence-box-title', isThai ? 'หลักฐานการตรวจสอบฐานข้อมูล (Audit Log Records):' : 'Database Forensic Audit Log:');
+  const evTable = element(doc, 'div', 'evidence-records-table');
+
+  evTable.innerHTML = `
+    <div class="evidence-row header-row">
+      <span>${isThai ? 'รหัสทรัพย์สิน' : 'Asset ID'}</span>
+      <span>${isThai ? 'รายการ' : 'Description'}</span>
+      <span>${isThai ? 'สถานะเดิม' : 'Original Status'}</span>
+      <span>${isThai ? 'สถานะหลังแก้ไข' : 'Tampered Status'}</span>
+      <span>${isThai ? 'สถานะเซิร์ฟเวอร์' : 'System Uptime'}</span>
+    </div>
+    <div class="evidence-row data-row">
+      <span class="asset-code">LT-401..450</span>
+      <span>${isThai ? 'แล็ปท็อปประสิทธิภาพสูง (50 เครื่อง)' : 'High-End Laptops (50 Units)'}</span>
+      <span class="status-orig">✓ IN STOCK (Active)</span>
+      <span class="status-tampered">⚠️ DEFECTIVE / WRITTEN OFF</span>
+      <span class="status-uptime">100% Online (0s Outage)</span>
+    </div>
+  `;
+  evidenceBox.append(evTitle, evTable);
+  dossier.append(evidenceBox);
+  deck.append(dossier);
+
+  // Diagnostic Prompt Box
+  const promptBox = element(doc, 'div', 'scenario-prompt-box');
+  const promptText = localize(element(doc, 'p', 'scenario-prompt-text'), visual.prompt, language);
+  promptBox.append(promptText);
+  deck.append(promptBox);
+
+  // Interactive decision options grid (Compact Horizontal Row)
+  const optionsGrid = element(doc, 'div', 'scenario-options-grid');
+  const optionCards = [];
+
+  for (const opt of visual.options || []) {
+    const card = element(doc, 'div', `scenario-option-card tone-${opt.tone || 'slate'}`);
+    card.setAttribute('data-slide-interactive', '');
+    card.setAttribute('role', 'button');
+    card.tabIndex = 0;
+    card.setAttribute('aria-pressed', 'false');
+
+    const topRow = element(doc, 'div', 'option-top-row');
+    const symbolBadge = element(doc, 'span', 'option-symbol-badge', opt.symbol || '');
+    const label = localize(element(doc, 'span', 'option-label-text'), opt.label, language);
+    const verdict = localize(element(doc, 'span', 'option-verdict-badge'), opt.verdict, language);
+    verdict.hidden = true;
+    topRow.append(symbolBadge, label, verdict);
+
+    const reasonBox = element(doc, 'div', 'option-reason-box');
+    const reasonText = localize(element(doc, 'p', 'option-reason-text'), opt.reason, language);
+    reasonBox.append(reasonText);
+    reasonBox.hidden = true;
+
+    card.append(topRow, reasonBox);
+
+    const onSelect = () => {
+      selectedKey = opt.key;
+      revealed = true;
+      updateCards();
+    };
+
+    card.addEventListener('click', onSelect, { signal });
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        onSelect();
+      }
+    }, { signal });
+
+    optionCards.push({ card, opt, verdict, reasonBox });
+    optionsGrid.append(card);
+  }
+  deck.append(optionsGrid);
+
+  // Action bar with reveal button
+  const actionBar = element(doc, 'div', 'scenario-action-bar');
+  const revealBtn = element(doc, 'button', 'btn btn-secondary scenario-reveal-btn');
+  revealBtn.type = 'button';
+  revealBtn.setAttribute('data-slide-interactive', '');
+
+  function updateCards() {
+    interactionState.revealed = revealed;
+    interactionState.selectedKey = selectedKey;
+    for (const item of optionCards) {
+      const isSelected = item.opt.key === selectedKey;
+      const isCorrect = item.opt.correct === true;
+
+      item.card.classList.toggle('is-selected', isSelected);
+      item.card.setAttribute('aria-pressed', String(isSelected));
+
+      if (revealed) {
+        item.card.classList.toggle('is-correct', isCorrect);
+        item.card.classList.toggle('is-incorrect', !isCorrect);
+        item.verdict.hidden = false;
+        item.reasonBox.hidden = false;
+      } else {
+        item.card.classList.remove('is-correct', 'is-incorrect');
+        item.verdict.hidden = true;
+        item.reasonBox.hidden = true;
+      }
+    }
+    const btnLabel = revealed
+      ? pair('Hide Analysis', 'ซ่อนการวิเคราะห์')
+      : pair('Reveal Expert Analysis', 'แสดงการวิเคราะห์ของผู้เชี่ยวชาญ');
+    localize(revealBtn, btnLabel, 'en');
+  }
+
+  revealBtn.addEventListener('click', () => {
+    revealed = !revealed;
+    updateCards();
+  }, { signal });
+
+  updateCards();
+  actionBar.append(revealBtn);
+  deck.append(actionBar);
+
+  host.append(deck);
+  return { destroy() {} };
+}
+
+/** Slide 8: Key Takeaways & Exam Quick-Reference Synthesis Matrix */
+export function renderSynthesisMatrix(host, { slide, language }) {
+  const doc = host.ownerDocument;
+  const isThai = language === 'th';
+
+  const deck = element(doc, 'div', 'cia-presentation cia-takeaways-presentation cia-matrix-slide');
+  deck.setAttribute('lang', isThai ? 'th' : 'en');
+
+  // Header Zone
+  const header = element(doc, 'header', 'cia-pres-header');
+  const eyebrow = element(doc, 'span', 'cia-pres-eyebrow', isThai ? 'สรุปประเด็นสำคัญสำหรับเตรียมสอบ' : 'EXAM SYNTHESIS & QUICK-REFERENCE');
+  const headline = element(doc, 'h3', 'cia-pres-title', slide.title[isThai ? 'th' : 'en']);
+  const subhead = element(doc, 'p', 'cia-pres-subtitle', isThai
+    ? 'สามเหลี่ยม CIA คือรากฐานสำคัญที่สุดสำหรับการวิเคราะห์ความเสี่ยงและการออกแบบมาตรการความปลอดภัย จดจำคำสำคัญในข้อสอบ มาตรการหลัก และกับดักที่พบบ่อยให้แม่นยำ'
+    : 'The CIA Triad is the touchstone for cybersecurity risk analysis and control design. Master these diagnostic indicators, primary safeguards, and common exam traps.');
+  header.append(eyebrow, headline, subhead);
+  deck.append(header);
+
+  // Matrix Table Container
+  const matrixWrap = element(doc, 'div', 'cia-matrix-wrapper');
+  const table = element(doc, 'table', 'cia-synthesis-table');
+
+  const thead = element(doc, 'thead');
+  const headRow = element(doc, 'tr');
+  const headers = [
+    { en: 'Security Goal', th: 'เป้าหมายความปลอดภัย' },
+    { en: 'Exam Question Keywords', th: 'คำสำคัญในโจทย์ข้อสอบ' },
+    { en: 'Primary Safeguards', th: 'มาตรการป้องกันหลัก' },
+    { en: 'Common Exam Trap to Avoid', th: 'กับดักข้อสอบที่ต้องระวัง' }
+  ];
+  for (const h of headers) {
+    const th = element(doc, 'th', '', h[isThai ? 'th' : 'en']);
+    th.setAttribute('scope', 'col');
+    headRow.append(th);
+  }
+  thead.append(headRow);
+  table.append(thead);
+
+  const tbody = element(doc, 'tbody');
+  const rows = [
+    {
+      tone: 'blue', symbol: 'C',
+      goal: { en: 'Confidentiality', th: 'Confidentiality (การรักษาความลับ)' },
+      keywords: {
+        en: ['reading', 'viewing', 'snooping', 'disclosing', 'exfiltrating', 'intercepting'],
+        th: ['แอบอ่าน', 'แอบดู', 'เปิดเผยข้อมูล', 'ขโมยข้อมูล', 'ดักจับข้อมูล']
+      },
+      safeguards: {
+        en: 'Encryption (AES-256, TLS 1.3), ACLs, Need-to-know, Data Classification schemes.',
+        th: 'การเข้ารหัสข้อมูล (AES, TLS), สิทธิ์ตามหน้าที่ (ACLs), การจัดชั้นความลับ'
+      },
+      trap: {
+        en: '⚠️ Trap: Believing encryption prevents deletion. Encryption protects secrecy only!',
+        th: '⚠️ กับดัก: คิดว่าการเข้ารหัสช่วยกันการลบข้อมูล (การเข้ารหัสช่วยแค่เรื่องความลับ)'
+      }
+    },
+    {
+      tone: 'green', symbol: 'I',
+      goal: { en: 'Integrity', th: 'Integrity (ความถูกต้องครบถ้วน)' },
+      keywords: {
+        en: ['modifying', 'altering', 'tampering', 'forging', 'deleting', 'corrupting'],
+        th: ['แก้ไข', 'ดัดแปลง', 'ปลอมแปลง', 'ลบทำลาย', 'ทำให้ข้อมูลคลาดเคลื่อน']
+      },
+      safeguards: {
+        en: 'Cryptographic Hashes (SHA-256), Digital Signatures, FIM, Change Control procedures.',
+        th: 'ฟังก์ชันแฮช (SHA-256), ลายมือชื่อดิจิทัล, การตรวจสอบความสมบูรณ์ของไฟล์ (FIM)'
+      },
+      trap: {
+        en: '⚠️ Trap: Confusing alteration with disclosure. Altering data is strictly Integrity (SQ-13)!',
+        th: '⚠️ กับดัก: สับสนระหว่างการเปิดเผยกับการแก้ไข การดัดแปลงข้อมูลคือ Integrity เสมอ (SQ-13)'
+      }
+    },
+    {
+      tone: 'amber', symbol: 'A',
+      goal: { en: 'Availability', th: 'Availability (ความพร้อมใช้งาน)' },
+      keywords: {
+        en: ['downtime', 'outage', 'inaccessible', 'denial of service', 'blackout', 'crash'],
+        th: ['ระบบล่ม', 'เข้าถึงไม่ได้', 'ระบบขัดข้อง', 'ไฟดับ', 'หยุดทำงาน']
+      },
+      safeguards: {
+        en: 'Redundancy, Clustering, UPS & generators, Backups, DR alternate sites, DDoS defense.',
+        th: 'ระบบสำรอง, คลัสเตอร์, เครื่องสำรองไฟ, แบ็กอัป, แผนกู้ภัยพิบัติ, ระบบกรอง DDoS'
+      },
+      trap: {
+        en: '⚠️ Trap: Backups restore availability, but backups alone do not keep data secret.',
+        th: '⚠️ กับดัก: การสำรองข้อมูลช่วยกู้คืนความพร้อมใช้งาน แต่ไม่ได้ช่วยรักษาความลับ'
+      }
+    }
+  ];
+
+  for (const r of rows) {
+    const tr = element(doc, 'tr', `matrix-row tone-${r.tone}`);
+
+    // Col 1: Goal
+    const tdGoal = element(doc, 'td', 'matrix-cell-goal');
+    const badge = element(doc, 'span', 'matrix-pillar-badge', r.symbol);
+    const goalText = element(doc, 'strong', 'matrix-goal-name', r.goal[isThai ? 'th' : 'en']);
+    tdGoal.append(badge, goalText);
+
+    // Col 2: Keywords
+    const tdKey = element(doc, 'td', 'matrix-cell-keywords');
+    const kwWrap = element(doc, 'div', 'matrix-kw-chips');
+    const kwList = isThai ? r.keywords.th : r.keywords.en;
+    for (const kw of kwList) {
+      kwWrap.append(element(doc, 'span', 'matrix-kw-chip', kw));
+    }
+    tdKey.append(kwWrap);
+
+    // Col 3: Safeguards
+    const tdSafe = element(doc, 'td', 'matrix-cell-safeguards', r.safeguards[isThai ? 'th' : 'en']);
+
+    // Col 4: Trap
+    const tdTrap = element(doc, 'td', 'matrix-cell-trap');
+    const trapText = element(doc, 'span', 'matrix-trap-alert', r.trap[isThai ? 'th' : 'en']);
+    tdTrap.append(trapText);
+
+    tr.append(tdGoal, tdKey, tdSafe, tdTrap);
+    tbody.append(tr);
+  }
+  table.append(tbody);
+  matrixWrap.append(table);
+  deck.append(matrixWrap);
+
+  // References Footer Strip
+  const footer = element(doc, 'footer', 'cia-matrix-footer');
+  const scopeTag = element(doc, 'span', 'matrix-footer-tag', isThai
+    ? 'ขอบเขตทางการ: ISC2 Certified in Cybersecurity (CC) 2026 · โดเมน 1 (1.1)'
+    : 'Official Scope: ISC2 Certified in Cybersecurity (CC) 2026 · Domain 1 (1.1)');
+  const refTag = element(doc, 'span', 'matrix-footer-refs', 'NIST FIPS PUB 199 (Sec. 3) · NIST SP 800-61 Rev. 2 (Sec. 2)');
+  footer.append(scopeTag, refTag);
+  deck.append(footer);
+
+  host.append(deck);
+  return { destroy() {} };
+}

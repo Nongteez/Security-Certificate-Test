@@ -1,17 +1,25 @@
 import { element, button, languageControls } from './learning/dom.js';
 import { buildLearningCourseModel } from '../core/learning-course.js';
+import { createThemeToggleButton } from './components/theme-toggle.js';
 
 export function renderLearningCenter(container, { catalog, course = buildLearningCourseModel({ catalog }), language = 'en', focusId, onBack = () => {}, onLanguage = () => {}, onDomain = () => {}, onLaunch = () => {} }) {
   const doc = container.ownerDocument, abort = new AbortController(), signal = abort.signal;
   const root = element(doc, 'section', 'learning-screen learning-course-screen');
-  const header = element(doc, 'header', 'learning-course-nav');
-  header.append(button(doc, '← Back to Versions', 'en', onBack, signal, 'learning-back-link'), languageControls(doc, language, onLanguage, signal));
+  const header = element(doc, 'header', 'start-top-bar learning-course-nav');
+  const back = button(doc, '← Back to Versions', 'en', onBack, signal, 'btn btn-secondary btn-back-home');
+  back.id = 'btn-learning-back';
+  const actions = element(doc, 'div', 'start-top-actions');
+  actions.append(
+    languageControls(doc, language, onLanguage, signal),
+    createThemeToggleButton(doc, 'learning-theme-toggle', null, signal)
+  );
+  header.append(back, actions);
   const intro = element(doc, 'div', 'learning-course-heading');
   intro.append(element(doc, 'p', 'learning-eyebrow', 'ISC2 CERTIFIED IN CYBERSECURITY · 2026'), element(doc, 'h1', '', 'Learning Center'), element(doc, 'p', 'learning-course-description', 'Build your understanding through visual explanations, realistic scenarios, and structured lessons.'));
   intro.querySelector('h1').tabIndex = -1;
   root.append(header, intro);
-  const continueRegion = element(doc, 'section', 'learning-continue');
   if (course.resume) {
+    const continueRegion = element(doc, 'section', 'learning-continue');
     const { lesson, summary, progress } = course.resume;
     const ordered = lesson.slideOrder || lesson.slides.map(s => s.id);
     const context = element(doc, 'div', 'learning-continue-copy');
@@ -20,27 +28,33 @@ export function renderLearningCenter(container, { catalog, course = buildLearnin
       element(doc, 'p', 'learning-progress-label', `${progress.visitedSlideIds.length} of ${ordered.length} slides viewed`));
     const resume = button(doc, 'Resume Lesson →', 'en', () => onLaunch(summary.id, 'resume'), signal, 'btn btn-primary'); resume.setAttribute('data-action', 'continue-learning');
     continueRegion.append(context, resume);
-  } else {
-    continueRegion.classList.add('learning-start-intro');
-    continueRegion.append(element(doc, 'h2', '', course.total && course.completed === course.total ? 'Ready for another look?' : 'Your learning path starts here'),
-      element(doc, 'p', '', course.pending ? 'Checking lesson availability…' : course.failed ? 'Some lesson availability could not be checked. You can explore the domains below.' : course.total && course.completed === course.total ? 'You have completed all currently available lessons. Open a domain to review what you learned.' : 'Choose a domain below to explore its objectives and available lessons.'));
+    root.append(continueRegion);
   }
-  root.append(continueRegion);
   const sectionHead = element(doc, 'div', 'learning-section-heading'); sectionHead.append(element(doc, 'h2', '', 'Explore Domains'));
   if (!course.pending && course.total) sectionHead.append(element(doc, 'p', 'learning-progress-label', `${course.completed} of ${course.total} available lessons completed`));
   root.append(sectionHead);
   const grid = element(doc, 'div', 'learning-domain-grid');
   for (const d of course.domains) {
-    const card = element(doc, 'article', 'learning-domain-card'), top = element(doc, 'div', 'learning-domain-card-meta');
-    top.append(element(doc, 'span', 'learning-domain-index', String(d.id).padStart(2, '0')), element(doc, 'span', 'learning-weight', `${d.weight} exam weight`));
+    const card = element(doc, 'article', 'learning-domain-card');
+    card.id = `learning-domain-${d.id}`;
+    card.setAttribute('data-domain-id', String(d.id));
+    card.setAttribute('role', 'button');
+    card.tabIndex = 0;
+    card.setAttribute('aria-label', `Domain ${d.id}: ${d.name.en}`);
+    card.addEventListener('click', () => onDomain(d.id), { signal });
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        onDomain(d.id);
+      }
+    }, { signal });
+
+    const top = element(doc, 'div', 'learning-domain-card-meta');
+    top.append(element(doc, 'span', 'learning-domain-index', `Domain ${d.id}`), element(doc, 'span', 'learning-weight', `${d.weight} exam weight`));
     card.append(top, element(doc, 'h3', '', d.name.en), element(doc, 'p', 'learning-domain-description', d.introduction));
-    const status = d.pending ? 'Checking availability…' : d.total ? `${d.total} ${d.total === 1 ? 'lesson' : 'lessons'} available` : d.failed ? 'Availability could not be checked' : 'Coming Soon';
-    card.append(element(doc, 'p', `learning-course-status ${d.total ? 'is-available' : ''}`, status));
-    if (d.total && !d.pending) card.append(element(doc, 'p', 'learning-progress-label', `${d.completed} of ${d.total} available lessons completed`));
-    const action = button(doc, 'Explore Domain →', 'en', () => onDomain(d.id), signal, 'learning-domain-link');
-    action.id = `learning-domain-${d.id}`; action.setAttribute('data-domain-id', d.id); action.setAttribute('aria-label', `Explore Domain ${d.id}: ${d.name.en}`); card.append(action); grid.append(card);
+    grid.append(card);
   }
-  root.append(grid, element(doc, 'p', 'learning-coverage-note', 'More lessons are being prepared. Progress reflects available lessons, not full exam readiness.'));
+  root.append(grid);
   container.replaceChildren(root);
   (focusId && root.querySelector(`#${focusId}`) || intro.querySelector('h1')).focus({ preventScroll: !!focusId });
   return () => abort.abort();
