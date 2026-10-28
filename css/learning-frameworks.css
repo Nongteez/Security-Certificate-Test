@@ -1,0 +1,54 @@
+/* Lesson 9 only. Existing Viewer owns stage sizing, reading fallback and fullscreen. */
+.learning-viewer .learning-slide.learning-frameworks-slide {container-type:inline-size;padding:0;background:#fff;color:#152d47;overflow:visible;}
+.learning-viewer .learning-frameworks-slide > .learning-slide-body {display:flex;height:100%;min-height:0;gap:0;}
+.learning-frameworks-slide .fw-scene {display:grid;grid-template-rows:auto minmax(0,1fr) auto;width:100%;height:100%;box-sizing:border-box;padding:2.25cqw 3.4cqw;gap:1.3cqw;background:#fff;}
+.learning-frameworks-slide .fw-header,.learning-frameworks-slide .fw-main {min-width:0;min-height:0;}
+.learning-viewer .learning-frameworks-slide p.fw-kicker {margin:0 0 .5cqw;color:#456c96;font-size:clamp(16px,1.1cqw,20px);line-height:1.3;letter-spacing:.1em;font-weight:600;}
+.learning-frameworks-slide .fw-title {font-size:clamp(30px,2.7cqw,49px);line-height:1.35;letter-spacing:-.025em;margin:0;color:#152d47;}
+.learning-viewer .learning-frameworks-slide p.fw-lead {font-size:clamp(20px,1.7cqw,30px);line-height:1.5;margin:.65cqw 0 0;color:#4b6279;}
+.learning-frameworks-slide .fw-footer {border-top:1px solid #cbdbe8;padding-top:1cqw;font-size:clamp(19px,1.55cqw,28px);line-height:1.5;color:#244b70;}
+.learning-frameworks-slide .fw-term {font-size:clamp(23px,1.95cqw,35px);line-height:1.4;margin:0;color:#183e67;}
+.learning-viewer .learning-frameworks-slide p.fw-copy {font-size:clamp(21px,1.75cqw,32px);line-height:1.5;margin:.5cqw 0;color:#24445f;}
+.learning-viewer .learning-frameworks-slide p.fw-note {font-size:clamp(19px,1.5cqw,27px);line-height:1.5;margin:.4cqw 0 0;color:#52667b;}
+.learning-frameworks-slide svg.fw-art {width:7cqw;height:7cqw;max-height:none;flex:none;color:#387bb9;}
+.learning-frameworks-slide .fw-index {color:#8aabc5;font-size:2cqw;white-space:nowrap;}
+.learning-frameworks-slide .fw-structure .fw-main {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3.3cqw;align-items:center;}
+.learning-frameworks-slide .fw-bridge-step {position:relative;border-bottom:4px solid #a7c3d9;padding:1.4cqw 0;}
+.learning-frameworks-slide .fw-bridge-step > .fw-index {position:absolute;right:0;top:1.4cqw;font-size:3cqw;}
+.learning-frameworks-slide .fw-arrow {position:absolute;right:-2.7cqw;top:5cqw;font-size:3cqw;color:#7fa4c1;}
+.learning-frameworks-slide .fw-outcomes .fw-main,.learning-frameworks-slide .fw-standard .fw-main {display:grid;grid-template-columns:1fr 5cqw 1fr;gap:2.5cqw;align-items:center;}
+.learning-frameworks-slide .fw-outcome,.learning-frameworks-slide .fw-local {border-top:3px solid #a7c3d9;padding-top:1.2cqw;}
+.learning-frameworks-slide .fw-local {border-color:#23867e;}
+.learning-frameworks-slide .fw-flow-arrow {font-size:4cqw;text-align:center;color:#7fa4c1;}
+.learning-frameworks-slide .fw-isms .fw-main {display:grid;grid-template-columns:1fr 21cqw 1fr;gap:2.4cqw;align-items:center;}
+.learning-frameworks-slide .fw-isms-centre {text-align:center;border:3px solid #b5ccdf;border-radius:50%;width:21cqw;min-height:21cqw;display:flex;flex-direction:column;align-items:center;justify-content:center;box-sizing:border-box;padding:1.5cqw;}
+.learning-frameworks-slide .fw-isms-centre > .fw-art {width:5.5cqw;height:5.5cqw;}
+.learning-frameworks-slide .fw-establish,.learning-frameworks-slide .fw-improve {border-bottom:3px solid #a7c3d9;padding-bottom:1cqw;}
+.learning-frameworks-slide .fw-safeguards .fw-main {display:grid;grid-template-rows:repeat(3,1fr);gap:.8cqw;align-items:center;}
+.learning-frameworks-slide .fw-safeguard {display:grid;grid-template-columns:2cqw 5cqw 17cqw minmax(0,1fr);column-gap:1.5cqw;align-items:center;border-top:1px solid #b8cddd;padding:.7cqw 0;}
+.learning-frameworks-slide .fw-safeguard > .fw-index,.learning-frameworks-slide .fw-safeguard > .fw-art,.learning-frameworks-slide .fw-safeguard > .fw-term {grid-row:1/3;}
+.learning-frameworks-slide .fw-safeguard > .fw-art {width:5cqw;height:5cqw;}
+.learning-frameworks-slide .fw-policy .fw-main {display:grid;grid-template-columns:1.4fr 1fr;gap:5cqw;align-items:center;}
+.learning-frameworks-slide .fw-policy-statement {border-left:6px solid #387bb9;padding:1.2cqw 2cqw;}
+.learning-frameworks-slide .fw-policy-statement > .fw-copy {font-size:clamp(25px,2.3cqw,41px);}
+.learning-frameworks-slide .fw-policy-authority {border-top:2px solid #a7c3d9;padding-top:1cqw;}
+.learning-frameworks-slide .fw-required {border:2px solid #80a9c8;padding:1.5cqw;background:#f7fbfe;}
+.learning-frameworks-slide .fw-procedure .fw-main {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3.5cqw;align-items:center;}
+.learning-frameworks-slide .fw-procedure-step {position:relative;border-top:3px solid #a7c3d9;padding-top:1.2cqw;}
+.learning-frameworks-slide .fw-number {display:inline-flex;align-items:center;justify-content:center;border:2px solid #729cbc;border-radius:50%;width:5cqw;height:5cqw;font-size:2.8cqw;color:#387bb9;margin-bottom:1cqw;}
+.learning-frameworks-slide .fw-procedure-step > .fw-arrow {top:2cqw;}
+.learning-frameworks-slide .fw-guideline .fw-main {display:grid;grid-template-columns:1fr 1fr;gap:5cqw;align-items:center;}
+.learning-frameworks-slide .fw-boundary {border-left:5px solid #387bb9;padding-left:2cqw;}
+.learning-frameworks-slide .fw-guidance {border-left:3px dashed #23867e;padding-left:2cqw;}
+.learning-frameworks-slide .fw-classify .fw-main {display:grid;grid-template-columns:27cqw minmax(0,1fr);gap:5cqw;align-items:center;}
+.learning-frameworks-slide .fw-choices {display:grid;grid-template-columns:1fr 1fr;gap:1.3cqw;}
+.learning-frameworks-slide .fw-choice {font-family:inherit;font-size:clamp(19px,1.6cqw,29px);line-height:1.45;min-height:52px;padding:1.2cqw .8cqw;background:#fff;color:#205787;border:1px solid #8fb1cb;border-radius:4px;cursor:pointer;}
+.learning-frameworks-slide .fw-choice[aria-pressed="true"] {border:2px solid #217b74;background:#f2faf8;}
+.learning-frameworks-slide .fw-choice:focus-visible {outline:3px solid #168378;outline-offset:3px;}
+.learning-frameworks-slide .fw-feedback {border-left:4px solid #a7c3d9;padding:1cqw 1.8cqw;min-height:17cqw;}
+.learning-frameworks-slide .fw-feedback.is-correct {border-color:#23867e;}
+.learning-frameworks-slide .fw-connect .fw-main {display:grid;grid-template-columns:21cqw minmax(0,1fr);gap:3cqw;align-items:center;}
+.learning-frameworks-slide .fw-document-spine > .fw-art {height:12cqw;width:12cqw;}
+.learning-frameworks-slide .fw-chain {display:grid;gap:1cqw;}
+.learning-frameworks-slide .fw-chain-item {position:relative;border-left:3px solid #a7c3d9;padding-left:3cqw;}
+.learning-frameworks-slide .fw-chain-item > .fw-index {position:absolute;left:.7cqw;top:0;}

@@ -1,0 +1,166 @@
+✖ registry has exactly three ordered entries and a typed, unavailable CC vocabulary without counts or loaders (2.0681ms)
+✖ vocabulary cannot load exam config/questions or change selected exam through direct calls (1.5775ms)
+✖ screen uses the existing three-card grid, all three info buttons and two disabled actions (0.3863ms)
+✔ vocabulary dialog has the six specified sections, seven facts and five intended domains (2.0446ms)
+✖ new card and full dialog content support EN, TH and EN+TH (3.6766ms)
+✔ vocabulary reuses focus, Tab, Escape, backdrop and scroll-restoration behavior (0.4949ms)
+✖ existing registry entries, exam dialogs, protected core/screens/styles and question banks remain unchanged (2.0013ms)
+--- Test 1: Entry Count and Integrity ---
+PASS: All 313 entries intact (110 + 101 + 102).
+--- Test 2: Source Code Elements & Markup ---
+PASS: All required UI controls and state variables present in screen-vocabulary.js.
+--- Test 3: CSS Stylesheet Integration ---
+PASS: CSS rules verified and user uncommitted change preserved.
+--- Test 4: Multi-Select Filtering Logic Simulation ---
+PASS: All multi-select OR and cross-filter AND combinations pass.
+--- Test 5: Incompatible Objective Pruning Logic ---
+PASS: Pruning logic verified for all domain transitions.
+
+=============================================
+ALL VOCABULARY FILTER REDESIGN TESTS PASSED!
+=============================================
+✔ tools\verify-vocabulary-filter.mjs (83.5456ms)
+✔ 1. Study Cards: FULL FORM: label removed while full-form value is preserved (2.5715ms)
+✔ 2. Vocabulary Detail Modal & Flashcards: Full Form labels strictly preserved (0.6452ms)
+✔ 3. Data Integrity: all 313 vocabulary entries remain intact (8.2082ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 6
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 157.1939
+
+✖ failing tests:
+
+test at tools\verify-exam-vocabulary.mjs:37:1
+✖ registry has exactly three ordered entries and a typed, unavailable CC vocabulary without counts or loaders (2.0681ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '2026',
+      'next-bank',
+      'isc2-cc-vocabulary',
+  +   'isc2-cc-learning-slides'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:38:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '2026', 'next-bank', 'isc2-cc-vocabulary', 'isc2-cc-learning-slides' ],
+    expected: [ '2026', 'next-bank', 'isc2-cc-vocabulary' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-exam-vocabulary.mjs:50:1
+✖ vocabulary cannot load exam config/questions or change selected exam through direct calls (1.5775ms)
+  AssertionError [ERR_ASSERTION]: Vocabulary must not select an exam
+      at root.root (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:31:51)
+      at Object.click (file:///D:/_Coding/SEC-CERT-TEST/js/ui/screen-versions.js:219:15)
+      at click (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:34:49)
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:58:9)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at tools\verify-exam-vocabulary.mjs:61:1
+✖ screen uses the existing three-card grid, all three info buttons and two disabled actions (0.3863ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  4 !== 3
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:63:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 4,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-exam-vocabulary.mjs:96:1
+✖ new card and full dialog content support EN, TH and EN+TH (3.6766ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(f.root.innerHTML.includes(expected))
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:101:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\verify-exam-vocabulary.mjs:136:1
+✖ existing registry entries, exam dialogs, protected core/screens/styles and question banks remain unchanged (2.0013ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        badge: '2026 Exam Outline',
+        certificationId: 'isc2-cc',
+        description: '583 practice questions based on the previous ISC2 CC exam domain structure.',
+  ...
+      {
+  +     badge: '2026 Exam Outline',
+        certificationId: 'isc2-cc',
+  +     description: 'Updated exam domains effective September 1, 2026, including AI security concepts. Domain 1, Domain 2 and Domain 3 practice available.',
+  +     domainMetadataReference: './certs/isc2/cc/versions/next-bank/exam.config.js',
+  +     examConfigReference: './certs/isc2/cc/versions/next-bank/exam.config.js',
+  -     description: 'Updated exam domains effective September 1, 2026, including AI security concepts.',
+  -     domainMetadataReference: null,
+  -     examConfigReference: null,
+        id: 'next-bank',
+  +     questionBankReference: './certs/isc2/cc/versions/next-bank/questions/',
+  +     questionCount: 86,
+  +     status: 'available',
+  +     title: 'ISC2 CC 2026 — Exam Outline'
+  -     questionBankReference: null,
+  -     status: 'coming-soon',
+  -     title: 'ISC2 CC — 2026 Exam Outline'
+      }
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:138:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { id: '2026', certificationId: 'isc2-cc', title: 'ISC2 CC — Pre-2026 Exam Outline', description: '583 practice questions based on the previous ISC2 CC exam domain structure.', badge: '2026 Exam Outline', status: 'available', questionCount: 583, examConfigReference: './certs/isc2/cc/versions/2026/exam.config.js', domainMetadataReference: './certs/isc2/cc/versions/2026/exam.config.js', questionBankReference: './certs/isc2/cc/versions/2026/questions/' }, { id: 'next-bank', certificationId: 'isc2-cc', title: 'ISC2 CC 2026 — Exam Outline', description: 'Updated exam domains effective September 1, 2026, including AI security concepts. Domain 1, Domain 2 and Domain 3 practice available.', badge: '2026 Exam Outline', status: 'available', questionCount: 86, examConfigReference: './certs/isc2/cc/versions/next-bank/exam.config.js', domainMetadataReference: './certs/isc2/cc/versions/next-bank/exam.config.js', questionBankReference: './certs/isc2/cc/versions/next-bank/questions/' } ],
+    expected: [ { id: '2026', certificationId: 'isc2-cc', title: 'ISC2 CC — Pre-2026 Exam Outline', description: '583 practice questions based on the previous ISC2 CC exam domain structure.', badge: '2026 Exam Outline', status: 'available', questionCount: 583, examConfigReference: './certs/isc2/cc/versions/2026/exam.config.js', domainMetadataReference: './certs/isc2/cc/versions/2026/exam.config.js', questionBankReference: './certs/isc2/cc/versions/2026/questions/' }, { id: 'next-bank', certificationId: 'isc2-cc', title: 'ISC2 CC — 2026 Exam Outline', description: 'Updated exam domains effective September 1, 2026, including AI security concepts.', status: 'coming-soon', examConfigReference: null, domainMetadataReference: null, questionBankReference: null } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

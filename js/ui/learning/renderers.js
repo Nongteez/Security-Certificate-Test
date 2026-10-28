@@ -1,3 +1,9 @@
+import {hasProfessionalConductPresentation,renderProfessionalConductPresentation} from './professional-conduct-presentations.js';
+import {hasControlFunctionsPresentation,renderControlFunctionsPresentation} from './control-functions-presentations.js';
+import {hasControlCategoriesPresentation,renderControlCategoriesPresentation} from './control-categories-presentations.js';
+import {hasFrameworksPresentation,renderFrameworksPresentation} from './frameworks-presentations.js';
+import {hasGovernancePresentation,renderGovernancePresentation} from './governance-presentations.js';
+import {hasRiskResponsePresentation,renderRiskResponsePresentation} from './risk-response-presentations.js';
 import {hasAssessmentPresentation,renderAssessmentPresentation} from './assessment-presentations.js';
 import {hasRiskFoundationsPresentation,renderRiskFoundationsPresentation} from './risk-foundations-presentations.js';
 import { hasPrivacyPresentation, renderPrivacyPresentation } from './privacy-presentations.js';
@@ -74,6 +80,18 @@ export function renderSlide(host, context) {
   const privacy = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasPrivacyPresentation(context);
   const risk = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasRiskFoundationsPresentation(context);
   const assessment = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasAssessmentPresentation(context);
+  const response = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasRiskResponsePresentation(context);
+  const governance = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasGovernancePresentation(context);
+  const frameworks = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasFrameworksPresentation(context);
+  const categories = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasControlCategoriesPresentation(context);
+  const functions = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasControlFunctionsPresentation(context);
+  const conduct = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasProfessionalConductPresentation(context);
+  host.classList.toggle('learning-conduct-slide', Boolean(conduct));
+  host.classList.toggle('learning-functions-slide', Boolean(functions));
+  host.classList.toggle('learning-categories-slide', Boolean(categories));
+  host.classList.toggle('learning-frameworks-slide', Boolean(frameworks));
+  host.classList.toggle('learning-governance-slide', Boolean(governance));
+  host.classList.toggle('learning-response-slide', Boolean(response));
   host.classList.toggle('learning-assessment-slide', Boolean(assessment));
   host.classList.toggle('learning-risk-slide', Boolean(risk));
   host.classList.toggle('learning-privacy-slide', Boolean(privacy));
@@ -81,7 +99,7 @@ export function renderSlide(host, context) {
   host.classList.toggle('learning-aaa-slide', Boolean(aaa));
   if (cia) host.classList.add('learning-cia-slide'); else if (host.classList.contains('learning-cia-slide')) host.classList.remove('learning-cia-slide');
   host.classList.toggle('learning-editorial-slide', Boolean(editorial));
-  if (editorial || cia || aaa || nr || privacy || risk || assessment) heading.classList.add('learning-sr-only');
+  if (editorial || cia || aaa || nr || privacy || risk || assessment || response || governance || frameworks || categories || functions || conduct) heading.classList.add('learning-sr-only');
   const body = element(host.ownerDocument, 'div', 'learning-slide-body');
   body.setAttribute('data-layout', context.slide.layoutId || 'default');
   host.append(body);
@@ -104,6 +122,18 @@ export function renderSlide(host, context) {
     const handle = renderRiskFoundationsPresentation(body, args); cleanup = () => handle?.destroy?.();
   } else if (assessment) {
     const handle = renderAssessmentPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (response) {
+    const handle = renderRiskResponsePresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (conduct) {
+    const handle = renderProfessionalConductPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (functions) {
+    const handle = renderControlFunctionsPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (categories) {
+    const handle = renderControlCategoriesPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (frameworks) {
+    const handle = renderFrameworksPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (governance) {
+    const handle = renderGovernancePresentation(body, args); cleanup = () => handle?.destroy?.();
   } else if (context.mode !== 'reading') {
     if (context.slide.rendererId === 'pillars') {
       const handle = renderPillars(body, args); cleanup = () => handle?.destroy?.();

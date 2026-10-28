@@ -26,7 +26,8 @@ assert.ok(screenCode.includes('data-obj-check='), 'Objective checkboxes must exi
 assert.ok(screenCode.includes('btn-clear-categories'), 'Clear categories link must exist');
 assert.ok(screenCode.includes('btn-clear-objectives'), 'Clear objectives link must exist');
 assert.ok(screenCode.includes('btn-reset-filters'), 'Reset filters button must exist');
-assert.ok(screenCode.includes('Domain 4 — Coming Soon'), 'Domain 4 Coming Soon disabled option must exist');
+const d4Option = screenCode.match(/<option value="4"[^>]*>[^<]*<\/option>/)?.[0];
+assert.ok(d4Option && !/\bdisabled\b/.test(d4Option), 'Domain 4 option is registered and enabled');
 assert.ok(screenCode.includes('Domain 5 — Coming Soon'), 'Domain 5 Coming Soon disabled option must exist');
 assert.ok(screenCode.includes('selectedCategories = new Set()'), 'selectedCategories must be a Set');
 assert.ok(screenCode.includes('selectedObjectives = new Set()'), 'selectedObjectives must be a Set');

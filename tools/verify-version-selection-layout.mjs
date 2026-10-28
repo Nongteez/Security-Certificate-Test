@@ -158,12 +158,14 @@ test('6. HTML Card Content & Action Labels: All 4 cards intact with exact labels
   // 2026 card
   assert.ok(cards[1].includes('ISC2 CC 2026 — Exam Outline') || cards[1].includes('ISC2 CC — 2026 Exam Outline'));
   assert.ok(cards[1].includes('Select →'));
-  assert.ok(cards[1].includes('86 Questions'));
+  const updatedBank = versions.find(v => v.id === 'next-bank');
+  assert.ok(cards[1].includes(`${updatedBank.questionCount} Questions`), 'Updated card renders the registered bank count');
 
   // Vocabulary card
   assert.ok(cards[2].includes('ISC2 CC — Exam Vocabulary'));
   assert.ok(cards[2].includes('Select →'));
-  assert.ok(cards[2].includes('313 Terms'));
+  const vocabulary = versions.find(v => v.id === 'isc2-cc-vocabulary');
+  assert.ok(cards[2].includes(`${vocabulary.vocabularyCount} Terms`), 'Vocabulary card renders the registered total');
 
   // Learning Slides card (4th card in 2nd row)
   assert.ok(cards[3].includes('ISC2 CC 2026 — Update Slides') || cards[3].includes('ISC2 CC 2026 Update — Slides'));

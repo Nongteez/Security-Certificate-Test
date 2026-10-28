@@ -1,0 +1,57 @@
+/* Lesson 10 only. Viewer retains stage, reading fallback and fullscreen ownership. */
+.learning-viewer .learning-slide.learning-categories-slide {container-type:inline-size;padding:0;background:#fff;color:#152d47;overflow:visible;}
+.learning-viewer .learning-categories-slide > .learning-slide-body {display:flex;height:100%;min-height:0;gap:0;}
+.learning-categories-slide .ct-scene {display:grid;grid-template-rows:auto minmax(0,1fr) auto;width:100%;height:100%;box-sizing:border-box;padding:2.25cqw 3.4cqw;gap:1.3cqw;background:#fff;}
+.learning-categories-slide .ct-header,.learning-categories-slide .ct-main {min-width:0;min-height:0;}
+.learning-viewer .learning-categories-slide p.ct-kicker {margin:0 0 .5cqw;color:#456c96;font-size:clamp(16px,1.1cqw,20px);line-height:1.3;letter-spacing:.1em;font-weight:600;}
+.learning-categories-slide .ct-title {font-size:clamp(30px,2.7cqw,49px);line-height:1.35;letter-spacing:-.025em;margin:0;color:#152d47;}
+.learning-viewer .learning-categories-slide p.ct-lead {font-size:clamp(20px,1.7cqw,30px);line-height:1.5;margin:.65cqw 0 0;color:#4b6279;}
+.learning-categories-slide .ct-footer {border-top:1px solid #cbdbe8;padding-top:1cqw;font-size:clamp(19px,1.55cqw,28px);line-height:1.5;color:#244b70;}
+.learning-categories-slide .ct-term {font-size:clamp(23px,1.95cqw,35px);line-height:1.4;margin:0;color:#183e67;}
+.learning-viewer .learning-categories-slide p.ct-copy {font-size:clamp(21px,1.75cqw,32px);line-height:1.5;margin:.5cqw 0;color:#24445f;}
+.learning-viewer .learning-categories-slide p.ct-note {font-size:clamp(19px,1.5cqw,27px);line-height:1.5;margin:.4cqw 0 0;color:#52667b;}
+.learning-categories-slide svg.ct-art {width:7cqw;height:7cqw;max-height:none;flex:none;color:#387bb9;}
+.learning-categories-slide .ct-number {color:#8aabc5;font-size:2cqw;white-space:nowrap;}
+.learning-categories-slide .ct-axes .ct-main {display:grid;grid-template-columns:1fr 6cqw 1fr;gap:2.5cqw;align-items:center;}
+.learning-categories-slide .ct-axis-category,.learning-categories-slide .ct-axis-function {border-top:3px solid #a7c3d9;padding-top:1.3cqw;}
+.learning-categories-slide .ct-axis-function {border-color:#23867e;}
+.learning-categories-slide .ct-axis-divider {font-size:5cqw;text-align:center;color:#7fa4c1;}
+.learning-categories-slide .ct-technical .ct-main {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3.4cqw;align-items:center;}
+.learning-categories-slide .ct-enforcement-step {position:relative;border-bottom:3px solid #a7c3d9;padding-bottom:1.5cqw;}
+.learning-categories-slide .ct-enforcement-step > .ct-number {position:absolute;right:0;top:0;font-size:3cqw;}
+.learning-categories-slide .ct-arrow {position:absolute;right:-2.8cqw;top:5cqw;font-size:3cqw;color:#7fa4c1;}
+.learning-categories-slide .ct-administrative .ct-main {display:grid;grid-template-rows:repeat(3,1fr);gap:.7cqw;align-items:center;}
+.learning-categories-slide .ct-process {display:grid;grid-template-columns:2cqw 5cqw 21cqw minmax(0,1fr);column-gap:1.5cqw;align-items:center;border-top:1px solid #b8cddd;padding:.6cqw 0;}
+.learning-categories-slide .ct-process > .ct-number,.learning-categories-slide .ct-process > .ct-art,.learning-categories-slide .ct-process > .ct-term {grid-row:1/3;}
+.learning-categories-slide .ct-process > .ct-art {width:5cqw;height:5cqw;}
+.learning-categories-slide .ct-physical .ct-main {display:grid;grid-template-columns:27cqw minmax(0,1fr);gap:4cqw;align-items:center;}
+.learning-categories-slide .ct-site {text-align:center;border:2px solid #b4cede;padding:1.2cqw;}
+.learning-categories-slide .ct-site > .ct-art {width:20cqw;height:20cqw;}
+.learning-viewer .learning-categories-slide p.ct-site-caption {font-size:clamp(19px,1.4cqw,26px);line-height:1.5;margin:.5cqw 0;color:#496b89;}
+.learning-categories-slide .ct-site-notes {display:grid;gap:1.5cqw;}
+.learning-categories-slide .ct-site-callout {display:grid;grid-template-columns:5cqw minmax(0,1fr);gap:.4cqw 1cqw;border-left:3px solid #a7c3d9;padding-left:1.3cqw;}
+.learning-categories-slide .ct-site-callout > .ct-art {width:5cqw;height:5cqw;grid-row:1/4;}
+.learning-categories-slide .ct-labels .ct-main {display:grid;grid-template-columns:30cqw minmax(0,1fr);gap:4cqw;align-items:center;}
+.learning-categories-slide .ct-umbrella {border-right:4px solid #90b4d0;padding-right:2.5cqw;}
+.learning-categories-slide .ct-umbrella > .ct-art {width:11cqw;height:11cqw;}
+.learning-categories-slide .ct-label-branches {display:grid;gap:2cqw;}
+.learning-categories-slide .ct-label-branch {border-bottom:2px solid #b4cede;padding-bottom:1cqw;}
+.learning-categories-slide .ct-label-branch > .ct-art {float:right;width:5cqw;height:5cqw;margin-left:1cqw;}
+.learning-categories-slide .ct-together .ct-main {display:grid;grid-template-rows:auto 1fr;gap:1.3cqw;}
+.learning-categories-slide .ct-shared-goal {display:flex;gap:1.5cqw;align-items:center;justify-content:center;border-bottom:2px solid #a7c3d9;padding-bottom:1cqw;}
+.learning-categories-slide .ct-shared-goal > .ct-art {width:4cqw;height:4cqw;}
+.learning-categories-slide .ct-control-paths {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3cqw;align-items:center;}
+.learning-categories-slide .ct-control-path {border-left:3px solid #b4cede;padding-left:1.3cqw;}
+.learning-categories-slide .ct-control-path > .ct-art {width:5.5cqw;height:5.5cqw;}
+.learning-categories-slide .ct-classify .ct-main {display:grid;grid-template-columns:28cqw minmax(0,1fr);gap:4cqw;align-items:center;}
+.learning-categories-slide .ct-choices {display:flex;flex-direction:column;gap:1.3cqw;}
+.learning-categories-slide .ct-choice {font-family:inherit;font-size:clamp(19px,1.6cqw,29px);line-height:1.45;min-height:52px;padding:1cqw 1.2cqw;background:#fff;color:#205787;border:1px solid #8fb1cb;border-radius:4px;cursor:pointer;text-align:left;}
+.learning-categories-slide .ct-choice[aria-pressed="true"] {border:2px solid #217b74;background:#f2faf8;}
+.learning-categories-slide .ct-choice:focus-visible {outline:3px solid #168378;outline-offset:3px;}
+.learning-categories-slide .ct-feedback {border-left:4px solid #a7c3d9;padding:1cqw 1.8cqw;min-height:17cqw;}
+.learning-categories-slide .ct-feedback.is-correct {border-color:#23867e;}
+.learning-categories-slide .ct-decision .ct-main {display:grid;grid-template-columns:21cqw minmax(0,1fr);gap:3cqw;align-items:center;}
+.learning-categories-slide .ct-decision-key > .ct-art {height:12cqw;width:12cqw;}
+.learning-categories-slide .ct-decision-record {display:grid;gap:1cqw;}
+.learning-categories-slide .ct-decision-item {position:relative;border-left:3px solid #a7c3d9;padding-left:3cqw;}
+.learning-categories-slide .ct-decision-item > .ct-number {position:absolute;left:.7cqw;top:0;}

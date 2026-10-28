@@ -1,7 +1,7 @@
 /**
  * Exam version configuration for ISC2 CC (2026 Outline - next-bank).
- * Contains Domain 1-3 practice questions. Domains 4-5 are pending.
- * Domain 3 independent human academic and bilingual approval remains pending.
+ * Contains Domain 1-4 practice questions. Domain 5 is pending.
+ * Domain 3/4 independent human academic and bilingual review is not claimed.
  */
 const config = {
   version: "next-bank",
@@ -10,8 +10,8 @@ const config = {
   defaultLanguage: "en",
   passingPercentage: 70,
   secondsPerQuestion: 90,
-  defaultQuestionCount: 86,
-  totalQuestions: 86,
+  defaultQuestionCount: 119,
+  totalQuestions: 119,
   domains: [
     {
       id: 1,
@@ -80,10 +80,10 @@ const config = {
       },
       weight: 0.213,
       weightPercentage: 21.3,
-      questionCount: 0,
-      questionThCount: 0,
+      questionCount: 33,
+      questionThCount: 33,
       questionFile: "./questions/domain-4.js",
-      available: false
+      available: true
     },
     {
       id: 5,

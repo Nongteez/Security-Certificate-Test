@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { loadVocabularyData } from '../js/core/vocabulary-loader.js';
 import versions from '../data/exam-versions.js';
+import { loadExamConfig, loadQuestionsForDomains } from '../js/core/question-loader.js';
 
 const vocabDir = 'content/isc2-cc-2026/vocabulary';
 const d1Path = path.join(vocabDir, 'domain-1.json');
@@ -204,19 +205,21 @@ test('8. Vocabulary Loader correctly loads Domain 1, 2, 3 and All domains', asyn
   assert.equal(d3.entries.length, 102, 'D3 has 102 entries');
 
   const all = await loadVocabularyData('all');
+  const d4 = JSON.parse(fs.readFileSync(path.join(vocabDir, 'domain-4.json'), 'utf8'));
+  const expectedTotal = 313 + d4.entries.length;
   assert.equal(all.domain_id, 'all', 'Combined dataset loaded');
-  assert.equal(all.total_entries, 313, 'Combined total is 313');
-  assert.equal(all.entries.length, 313, 'Combined entries length is 313');
+  assert.equal(all.total_entries, expectedTotal, 'Combined total includes the preserved D1-D3 pool and D4');
+  assert.equal(all.entries.length, expectedTotal, 'Combined entries match the domain datasets');
 });
 
-test('9. Exam versions registry updated with 313 vocabularyCount', () => {
+test('9. Vocabulary registry count matches all loaded domains', async () => {
   const vocabEntry = versions.find(v => v.id === 'isc2-cc-vocabulary');
   assert.ok(vocabEntry, 'Vocabulary entry exists in exam-versions.js');
   assert.equal(vocabEntry.status, 'available', 'Status is available');
-  assert.equal(vocabEntry.vocabularyCount, 313, 'vocabularyCount is updated to 313');
+  assert.equal(vocabEntry.vocabularyCount, (await loadVocabularyData('all')).entries.length, 'vocabularyCount matches loaded data');
 });
 
-test('10. Question banks (86 2026 Qs + 583 legacy Qs) and D1/D2 vocabulary remain intact', () => {
+test('10. Existing question banks and D1/D2 vocabulary remain intact as later domains are added', async () => {
   // Domain 1: 24 Qs (Q584–Q607)
   const d1Questions = fs.readFileSync('data/certs/isc2/cc/versions/next-bank/questions/domain-1.js', 'utf8');
   assert.ok(d1Questions.includes('"id": 584'), 'Q584 exists in D1 bank');
@@ -232,9 +235,14 @@ test('10. Question banks (86 2026 Qs + 583 legacy Qs) and D1/D2 vocabulary remai
   assert.ok(d3Questions.includes('"id": 647'), 'Q647 exists in D3 bank');
   assert.ok(d3Questions.includes('"id": 669'), 'Q669 exists in D3 bank');
 
-  // Total 2026 questions = 86
-  const nextBankConfig = fs.readFileSync('data/certs/isc2/cc/versions/next-bank/exam.config.js', 'utf8');
-  assert.ok(nextBankConfig.includes('totalQuestions: 86'), 'next-bank totalQuestions is 86');
+  // Later domains may extend the bank without changing the protected D1-D3 pools.
+  const nextBankConfig = await loadExamConfig('isc2', 'cc', 'next-bank');
+  assert.ok(nextBankConfig, 'Updated config resolves through the real loader');
+  const loadedBank = await loadQuestionsForDomains({vendorId:'isc2', certId:'cc', version:'next-bank', domainIds:[1,2,3,4,5]});
+  assert.deepEqual([loadedBank[1].length, loadedBank[2].length, loadedBank[3].length], [24,39,23]);
+  const loadedTotal = Object.values(loadedBank).flat().length;
+  assert.equal(nextBankConfig.totalQuestions, loadedTotal, 'Config counts all available domains');
+  assert.equal(versions.find(v => v.id === 'next-bank').questionCount, loadedTotal, 'Registry count matches loaded content');
 
   // Legacy bank = 583 questions
   const legacyConfig = fs.readFileSync('data/certs/isc2/cc/versions/2026/exam.config.js', 'utf8');

@@ -16,10 +16,10 @@ const versions = [
     id: 'next-bank', // Provisional stable bank ID, not an official outline/date.
     certificationId: 'isc2-cc',
     title: 'ISC2 CC 2026 — Exam Outline',
-    description: 'Updated exam domains effective September 1, 2026, including AI security concepts. Domain 1, Domain 2 and Domain 3 practice available.',
+    description: 'Updated exam domains effective September 1, 2026, including AI security concepts. Domain 1, Domain 2, Domain 3 and Domain 4 practice available.',
     badge: '2026 Exam Outline',
     status: 'available',
-    questionCount: 86,
+    questionCount: 119,
     examConfigReference: './certs/isc2/cc/versions/next-bank/exam.config.js',
     domainMetadataReference: './certs/isc2/cc/versions/next-bank/exam.config.js',
     questionBankReference: './certs/isc2/cc/versions/next-bank/questions/'
@@ -32,7 +32,7 @@ const versions = [
     description: 'Learn and practice essential cybersecurity terminology for the ISC2 Certified in Cybersecurity (CC) exam.',
     descriptionTh: 'เรียนรู้และฝึกคำศัพท์สำคัญสำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC)',
     status: 'available',
-    vocabularyCount: 313
+    vocabularyCount: 403
   },
   {
     id: 'isc2-cc-learning-slides',

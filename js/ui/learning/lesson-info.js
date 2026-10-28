@@ -70,16 +70,22 @@ export function renderLessonInfo(host, { lesson, language = 'en', onClose = () =
     explanation.append(body); panel.append(explanation);
   }
 
-  if (['lesson-d1-01-cia-triad','lesson-d1-02-aaa-mfa','lesson-d1-03-non-repudiation','lesson-d1-04-privacy','lesson-d1-05-risk-foundations','lesson-d1-06-assessment'].includes(lesson.id)) {
+  if (['lesson-d1-01-cia-triad','lesson-d1-02-aaa-mfa','lesson-d1-03-non-repudiation','lesson-d1-04-privacy','lesson-d1-05-risk-foundations','lesson-d1-06-assessment','lesson-d1-07-risk-response','lesson-d1-08-governance','lesson-d1-09-frameworks','lesson-d1-10-control-categories','lesson-d1-11-control-functions','lesson-d1-12-professional-conduct'].includes(lesson.id)) {
     const isAaa = lesson.id === 'lesson-d1-02-aaa-mfa';
+    const isConduct = lesson.id === 'lesson-d1-12-professional-conduct';
+    const isFunctions = lesson.id === 'lesson-d1-11-control-functions';
+    const isCategories = lesson.id === 'lesson-d1-10-control-categories';
+    const isFrameworks = lesson.id === 'lesson-d1-09-frameworks';
+    const isGovernance = lesson.id === 'lesson-d1-08-governance';
+    const isResponse = lesson.id === 'lesson-d1-07-risk-response';
     const isAssessment = lesson.id === 'lesson-d1-06-assessment';
     const isRisk = lesson.id === 'lesson-d1-05-risk-foundations';
     const isPrivacy = lesson.id === 'lesson-d1-04-privacy';
     const isNr = lesson.id === 'lesson-d1-03-non-repudiation';
     const explanations = element(doc, 'details', `learning-info-source-explanations${isAaa ? ' learning-info-aaa-explanations' : ''}`);
-    explanations.append(element(doc, 'summary', 'learning-info-details-summary', (isPrivacy || isRisk || isAssessment) ? 'Slides 1–8 — Full explanations' : isNr ? 'Slides 1–6 — Full explanations' : isAaa ? 'Slides 1–7 — Full explanations' : 'Slides 2–8 — Full explanations'));
+    explanations.append(element(doc, 'summary', 'learning-info-details-summary', isConduct ? 'Slides 1–10 — Full explanations' : isFunctions ? 'Slides 1–9 — Full explanations' : isCategories ? 'Slides 1–8 — Full explanations' : isFrameworks ? 'Slides 1–10 — Full explanations' : isGovernance ? 'Slides 1–9 — Full explanations' : isResponse ? 'Slides 1–10 — Full explanations' : (isPrivacy || isRisk || isAssessment) ? 'Slides 1–8 — Full explanations' : isNr ? 'Slides 1–6 — Full explanations' : isAaa ? 'Slides 1–7 — Full explanations' : 'Slides 2–8 — Full explanations'));
     for (const [index, slide] of (lesson.slides || []).entries()) {
-      if (index === 0 && !isAaa && !isNr && !isPrivacy && !isRisk && !isAssessment) continue;
+      if (index === 0 && !isAaa && !isNr && !isPrivacy && !isRisk && !isAssessment && !isResponse && !isGovernance && !isFrameworks && !isCategories && !isFunctions && !isConduct) continue;
       const detail = element(doc, 'details', 'learning-info-slide-explanation');
       detail.append(element(doc, 'summary', 'learning-info-details-summary', `Slide ${index + 1} — ${slide.title.en}`));
       const content = element(doc, 'div', 'learning-info-details-body'); content.setAttribute('data-explanation-slide', slide.id);

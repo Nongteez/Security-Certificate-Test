@@ -1,0 +1,98 @@
+✖ F02: hash evidence requires a trusted reference and does not identify an author (1.1134ms)
+✖ F03/F04: CIA consequences are contextual and authenticated encryption is acknowledged (0.2442ms)
+✖ F05: every scenario branch exposes the insider qualification without changing the supported answer (2.3567ms)
+✖ F06: signature qualifications agree in TH/EN, including compromised keys and certificate trust (0.2022ms)
+✔ all corrected full explanations survive both reading and Info routes without dropped qualifiers (7.4847ms)
+✔ CIA revision preserves saved IDs and independent entries through store reload (6.9755ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 2
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 205.5484
+
+✖ failing tests:
+
+test at tools\verify-learning-academic-remediation.mjs:14:1
+✖ F02: hash evidence requires a trusted reference and does not identify an author (1.1134ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /trusted reference/. Input:
+  
+  'Cryptographic Hashes (e.g., SHA-256): Generate unique mathematical checksums to verify that data has not changed in transit or storage.'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-academic-remediation.mjs:16:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Cryptographic Hashes (e.g., SHA-256): Generate unique mathematical checksums to verify that data has not changed in transit or storage.',
+    expected: /trusted reference/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-learning-academic-remediation.mjs:19:1
+✖ F03/F04: CIA consequences are contextual and authenticated encryption is acknowledged (0.2442ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /authenticated encryption/i. Input:
+  
+  'Trap: Believing encryption prevents deletion (encryption protects secrecy only).'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-academic-remediation.mjs:20:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Trap: Believing encryption prevents deletion (encryption protects secrecy only).',
+    expected: /authenticated encryption/i,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-learning-academic-remediation.mjs:23:1
+✖ F05: every scenario branch exposes the insider qualification without changing the supported answer (2.3567ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Insiders can also/. Input:
+  
+  'No confidential information was leaked or viewed by unauthorized outsiders; secrecy was not the target.'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-academic-remediation.mjs:28:67)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'No confidential information was leaked or viewed by unauthorized outsiders; secrecy was not the target.',
+    expected: /Insiders can also/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-learning-academic-remediation.mjs:31:1
+✖ F06: signature qualifications agree in TH/EN, including compromised keys and certificate trust (0.2022ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /identity.*key/i. Input:
+  
+  'Digital Signatures: Combine asymmetric cryptography and hashing to provide authentication, integrity verification, and non-repudiation.'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-academic-remediation.mjs:32:46)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Digital Signatures: Combine asymmetric cryptography and hashing to provide authentication, integrity verification, and non-repudiation.',
+    expected: /identity.*key/i,
+    operator: 'match',
+    diff: 'simple'
+  }

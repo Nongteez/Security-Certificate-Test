@@ -1,0 +1,4062 @@
+{
+  "domain_id": 4,
+  "domain_name": "Networking and Cloud Security Concepts",
+  "version": "2026",
+  "total_entries": 90,
+  "last_updated": "2026-10-28",
+  "categories_summary": {
+    "core_term": 38,
+    "acronym": 36,
+    "confusing_term": 9,
+    "scenario_vocabulary": 7,
+    "exam_language": 0
+  },
+  "entries": [
+    {
+      "id": "VOC-CC26-D4-001",
+      "term": "OSI Model",
+      "acronym": "OSI",
+      "full_form": "Open Systems Interconnection",
+      "thai_meaning": "แบบจำลองอ้างอิงการเชื่อมต่อระบบเปิด",
+      "definition_en": "A seven-layer reference model that separates communication functions from physical signaling through application services. It is a reasoning framework, not a requirement for seven separate protocol headers.",
+      "explanation_th": "OSI แบ่งหน้าที่การสื่อสารเป็นเจ็ดชั้น ตั้งแต่สัญญาณกายภาพถึงบริการระดับแอป ใช้ช่วยอธิบายและวิเคราะห์ปัญหา แต่ไม่ได้กำหนดว่า Protocol จริงต้องเพิ่ม Header เจ็ดชุด หรือว่า Protocol หนึ่งต้องมีตำแหน่งตายตัวในทุกแบบจำลอง",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Name the model before comparing layers; use symptoms to narrow investigation rather than prove a unique root cause.",
+      "exam_relevance_th": "ระบุแบบจำลองก่อนเทียบชั้น ใช้อาการช่วยจำกัดการตรวจ ไม่ใช่พิสูจน์สาเหตุเดียว",
+      "example_en": "A technician separates a disconnected cable problem from a routing problem by identifying the relevant functions.",
+      "example_th": "ช่างแยกปัญหาสายหลุดออกจากปัญหา Routing โดยระบุหน้าที่ที่เกี่ยวข้อง",
+      "confused_with": [
+        "TCP/IP Model"
+      ],
+      "keywords": [
+        "OSI Model",
+        "layers",
+        "encapsulation"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-001",
+          "locator": "KNOW-D4-001",
+          "concept_id": "KNOW-D4-001"
+        },
+        {
+          "source_id": "R03",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r03",
+          "concept_id": "KNOW-D4-001"
+        },
+        {
+          "source_id": "R36",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r36",
+          "concept_id": "KNOW-D4-001"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-002",
+      "term": "TCP/IP Model",
+      "acronym": "TCP/IP",
+      "full_form": "Transmission Control Protocol/Internet Protocol",
+      "thai_meaning": "แบบจำลองชุดโพรโทคอลอินเทอร์เน็ต",
+      "definition_en": "A model of Internet communication commonly described using application, transport, internet and link layers. Its functional groupings and layer numbers need not match OSI one for one.",
+      "explanation_th": "แบบจำลอง TCP/IP ที่ใช้เรียนทั่วไปมี Application, Transport, Internet และ Link แต่ละชั้นจัดกลุ่มหน้าที่ต่างจาก OSI เลขชั้นจึงไม่ต้องตรงกัน การเทียบแบบจำลองช่วยเข้าใจหน้าที่ ไม่ใช่เปลี่ยนการทำงานของ Protocol จริง",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Compare functions within the named model; do not infer an error merely from different layer numbers.",
+      "exam_relevance_th": "เปรียบเทียบหน้าที่ภายในแบบจำลองที่ระบุ อย่าสรุปว่าผิดเพียงเพราะเลขชั้นต่างกัน",
+      "example_en": "A diagram places IP forwarding in the Internet layer while an OSI diagram describes the corresponding network-layer function.",
+      "example_th": "แผนภาพหนึ่งวางการส่งต่อ IP ใน Internet Layer ส่วนแผนภาพ OSI อธิบายหน้าที่ที่เทียบกันใน Network Layer",
+      "confused_with": [
+        "OSI Model"
+      ],
+      "keywords": [
+        "TCP/IP Model",
+        "Internet model",
+        "link layer"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-001",
+          "locator": "KNOW-D4-001",
+          "concept_id": "KNOW-D4-001"
+        },
+        {
+          "source_id": "R03",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r03",
+          "concept_id": "KNOW-D4-001"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-003",
+      "term": "Encapsulation",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การห่อหุ้มข้อมูลตามโพรโทคอล",
+      "definition_en": "The process of carrying higher-layer data inside the data units of lower-layer protocols, with the control information those protocols require.",
+      "explanation_th": "Encapsulation คือการนำข้อมูลชั้นบนไปบรรจุในหน่วยข้อมูลของ Protocol ชั้นล่าง พร้อมข้อมูลควบคุมที่ Protocol นั้นต้องใช้ เช่น ข้อมูลแอปอยู่ใน TCP/IP แล้วอยู่ใน Link Frame ไม่ได้หมายความว่าทุกชั้นของแบบจำลองต้องมี Header แยกเสมอ",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish model functions from actual packet structures; encapsulation alone does not imply encryption.",
+      "exam_relevance_th": "แยกหน้าที่ในแบบจำลองจากโครงสร้าง Packet จริง การห่อหุ้มข้อมูลไม่ได้แปลว่าเข้ารหัส",
+      "example_en": "A capture shows application bytes carried by TCP, IP and an Ethernet frame on a local link.",
+      "example_th": "ข้อมูลที่จับได้แสดง Byte ของแอปถูกส่งผ่าน TCP, IP และ Ethernet Frame บน Link ภายใน",
+      "confused_with": [
+        "Encryption"
+      ],
+      "keywords": [
+        "Encapsulation",
+        "packet",
+        "frame",
+        "header"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-001",
+          "locator": "KNOW-D4-001",
+          "concept_id": "KNOW-D4-001"
+        },
+        {
+          "source_id": "R03",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r03",
+          "concept_id": "KNOW-D4-001"
+        },
+        {
+          "source_id": "R36",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r36",
+          "concept_id": "KNOW-D4-001"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-004",
+      "term": "Transmission Control Protocol",
+      "acronym": "TCP",
+      "full_form": "Transmission Control Protocol",
+      "thai_meaning": "โพรโทคอลส่งข้อมูลแบบสตรีมที่เรียงลำดับและเชื่อถือได้",
+      "definition_en": "A transport protocol providing a reliable, ordered byte stream using mechanisms such as sequence tracking and retransmission. It does not itself encrypt application data.",
+      "explanation_th": "TCP ให้ Byte Stream ที่เรียงลำดับและเชื่อถือได้ โดยติดตามลำดับและส่งข้อมูลที่สูญหายซ้ำ ความเชื่อถือได้ระดับ Transport ไม่ใช่ Confidentiality หรือการรับประกันว่าแอปทำงานสำเร็จเมื่อเครือข่ายขัดข้อง",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Match reliability and ordering to the requirement, then assess encryption and application authorization separately.",
+      "exam_relevance_th": "จับคู่ความเชื่อถือได้และลำดับกับความต้องการ แล้วประเมินการเข้ารหัสและสิทธิ์ของแอปแยกต่างหาก",
+      "example_en": "A transfer retransmits a lost segment, but its unencrypted application payload remains readable in a capture.",
+      "example_th": "การส่งข้อมูลส่ง Segment ที่สูญหายซ้ำ แต่ยังอ่าน Payload ของแอปที่ไม่เข้ารหัสจากข้อมูลจับ Packet ได้",
+      "confused_with": [
+        "User Datagram Protocol",
+        "Transport Layer Security"
+      ],
+      "keywords": [
+        "Transmission Control Protocol",
+        "transport",
+        "retransmission",
+        "reliability"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-002",
+          "locator": "KNOW-D4-002",
+          "concept_id": "KNOW-D4-002"
+        },
+        {
+          "source_id": "R04",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r04",
+          "concept_id": "KNOW-D4-002"
+        },
+        {
+          "source_id": "R33",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r33",
+          "concept_id": "KNOW-D4-002"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-005",
+      "term": "User Datagram Protocol",
+      "acronym": "UDP",
+      "full_form": "User Datagram Protocol",
+      "thai_meaning": "โพรโทคอลส่งดาตาแกรมโดยไม่รับประกันการส่งถึงในตัว",
+      "definition_en": "A transport protocol that carries datagrams without native guarantees of delivery or ordering. Applications may supply additional reliability mechanisms.",
+      "explanation_th": "UDP ส่ง Datagram โดยไม่มีกลไกรับประกันการส่งถึงและลำดับในตัว แอปอาจเพิ่มกลไกเองได้ Overhead ที่น้อยกว่าไม่ได้รับประกันว่าทุกแอปจะเร็วกว่า TCP และ UDP ไม่ได้เข้ารหัสข้อมูลให้โดยอัตโนมัติ",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Separate native transport behavior from mechanisms added by the application; avoid universal speed or security claims.",
+      "exam_relevance_th": "แยกพฤติกรรมของ Transport ในตัวจากกลไกที่แอปเพิ่ม และหลีกเลี่ยงข้อสรุปเหมารวมเรื่องความเร็วหรือความปลอดภัย",
+      "example_en": "A real-time application tolerates some loss and implements its own handling of late datagrams.",
+      "example_th": "แอปแบบ Real-time ยอมรับข้อมูลสูญหายบางส่วนและมีกลไกจัดการ Datagram ที่มาช้าเอง",
+      "confused_with": [
+        "Transmission Control Protocol"
+      ],
+      "keywords": [
+        "User Datagram Protocol",
+        "datagram",
+        "transport",
+        "latency"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-002",
+          "locator": "KNOW-D4-002",
+          "concept_id": "KNOW-D4-002"
+        },
+        {
+          "source_id": "R05",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r05",
+          "concept_id": "KNOW-D4-002"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-006",
+      "term": "Internet Protocol Version 4",
+      "acronym": "IPv4",
+      "full_form": "Internet Protocol Version 4",
+      "thai_meaning": "โพรโทคอลอินเทอร์เน็ตรุ่นที่ 4",
+      "definition_en": "An Internet-layer protocol using 32-bit addresses, commonly written as four dotted-decimal octets. Address allocation and special-use restrictions limit ordinary address use.",
+      "explanation_th": "IPv4 ใช้ที่อยู่ 32 บิต มักเขียนเป็นเลขฐานสิบสี่ชุดคั่นจุด จำนวนค่าที่เป็นไปได้รวมการใช้งานพิเศษ จึงไม่ใช่ทุกค่าที่ใช้กับ Host ทั่วไปได้ การใช้ Private Address หรือ NAT ไม่ทดแทนการเข้ารหัสและนโยบายสิทธิ์",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish address format and conservation from security controls; avoid treating old class boundaries as modern allocation rules.",
+      "exam_relevance_th": "แยกรูปแบบและการประหยัดที่อยู่ออกจากมาตรการความปลอดภัย และอย่าใช้ขอบเขต Class เก่าเป็นกฎจัดสรรปัจจุบัน",
+      "example_en": "An organization uses private IPv4 addresses internally and a separate firewall policy to restrict server access.",
+      "example_th": "องค์กรใช้ Private IPv4 ภายในและใช้นโยบาย Firewall แยกเพื่อจำกัดการเข้าถึงเซิร์ฟเวอร์",
+      "confused_with": [
+        "Internet Protocol Version 6"
+      ],
+      "keywords": [
+        "Internet Protocol Version 4",
+        "32-bit",
+        "private address"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-003",
+          "locator": "KNOW-D4-003",
+          "concept_id": "KNOW-D4-003"
+        },
+        {
+          "source_id": "R09",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r09",
+          "concept_id": "KNOW-D4-003"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-003"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-007",
+      "term": "Internet Protocol Version 6",
+      "acronym": "IPv6",
+      "full_form": "Internet Protocol Version 6",
+      "thai_meaning": "โพรโทคอลอินเทอร์เน็ตรุ่นที่ 6",
+      "definition_en": "An Internet-layer protocol using 128-bit addresses. A full ordinary hexadecimal address has eight 16-bit pieces, with rules allowing zero compression.",
+      "explanation_th": "IPv6 ใช้ที่อยู่ 128 บิต รูปแบบฐานสิบหกเต็มทั่วไปมีแปดกลุ่ม กลุ่มละ 16 บิต และย่อศูนย์ได้ พื้นที่ที่อยู่มากขึ้นไม่ได้ทำให้ทราฟฟิกเข้ารหัสหรือได้รับอนุญาตโดยอัตโนมัติ ต้องควบคุมเส้นทาง IPv6 ที่เปิดใช้งานด้วย",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Do not infer a malformed address from fewer visible groups after valid compression, or infer encryption from the address version.",
+      "exam_relevance_th": "อย่าสรุปว่าที่อยู่ผิดเพราะเห็นกลุ่มน้อยลงเมื่อย่อถูกต้อง และอย่าสรุปว่าเข้ารหัสจากรุ่นของ IP",
+      "example_en": "A security review tests IPv6 access separately after finding that only IPv4 restrictions were configured.",
+      "example_th": "การทบทวนความปลอดภัยทดสอบ IPv6 แยกเมื่อพบว่าตั้งข้อจำกัดไว้เฉพาะ IPv4",
+      "confused_with": [
+        "Internet Protocol Version 4",
+        "IPsec"
+      ],
+      "keywords": [
+        "Internet Protocol Version 6",
+        "128-bit",
+        "zero compression",
+        "dual stack"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-003",
+          "locator": "KNOW-D4-003",
+          "concept_id": "KNOW-D4-003"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-004",
+          "locator": "KNOW-D4-004",
+          "concept_id": "KNOW-D4-004"
+        },
+        {
+          "source_id": "R07",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r07",
+          "concept_id": "KNOW-D4-003"
+        },
+        {
+          "source_id": "R06",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r06",
+          "concept_id": "KNOW-D4-003"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-008",
+      "term": "Classless Inter-Domain Routing",
+      "acronym": "CIDR",
+      "full_form": "Classless Inter-Domain Routing",
+      "thai_meaning": "การกำหนดเครือข่ายด้วยความยาวพรีฟิกซ์แทนคลาสเดิม",
+      "definition_en": "A classless approach to IP address allocation and routing that expresses network prefixes by length rather than relying on historical address classes.",
+      "explanation_th": "CIDR ใช้ความยาว Prefix อธิบายขอบเขตเครือข่ายแทนการยึด Class A/B/C เดิม ช่วยจัดสรรและรวมเส้นทางได้ยืดหยุ่น แต่ Prefix ไม่ได้เป็นนโยบายควบคุมสิทธิ์ในตัว",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Recognize prefix-based reasoning without requiring advanced subnet calculations; addressing boundaries do not prove least privilege.",
+      "exam_relevance_th": "เข้าใจการอธิบายด้วย Prefix โดยไม่ต้องคำนวณ Subnet ขั้นสูง และอย่าถือว่าขอบเขตที่อยู่พิสูจน์สิทธิ์ขั้นต่ำ",
+      "example_en": "An administrator records an address range with a prefix length instead of labeling it solely as Class C.",
+      "example_th": "ผู้ดูแลบันทึกช่วงที่อยู่พร้อมความยาว Prefix แทนการระบุเพียงว่าเป็น Class C",
+      "confused_with": [
+        "Network Segmentation"
+      ],
+      "keywords": [
+        "Classless Inter-Domain Routing",
+        "prefix",
+        "address allocation"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-003",
+          "locator": "KNOW-D4-003",
+          "concept_id": "KNOW-D4-003"
+        },
+        {
+          "source_id": "R09",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r09",
+          "concept_id": "KNOW-D4-003"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-009",
+      "term": "Network Address Translation",
+      "acronym": "NAT",
+      "full_form": "Network Address Translation",
+      "thai_meaning": "การแปลที่อยู่เครือข่าย",
+      "definition_en": "A mechanism that translates network addressing information between address domains. IPv4 address sharing is a common use, but translation is not encryption or a complete access policy.",
+      "explanation_th": "NAT แปลข้อมูลที่อยู่ระหว่างขอบเขตที่อยู่ การใช้ร่วม Public IPv4 เป็นตัวอย่างที่พบบ่อย แต่ NAT ไม่ใช่การเข้ารหัสหรือการกำหนดสิทธิ์ครบถ้วน การแปลยังอาจใช้เพื่อให้ต่างรุ่น IP ทำงานร่วมกันได้",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish address conservation or interoperability from confidentiality and authorization; do not assume translation is forbidden with IPv6.",
+      "exam_relevance_th": "แยกการประหยัดที่อยู่หรือทำงานร่วมกันออกจาก Confidentiality และ Authorization และอย่าสรุปว่า IPv6 ห้ามมีการแปล",
+      "example_en": "Several internal clients share a public IPv4 address while firewall rules independently restrict permitted services.",
+      "example_th": "Client ภายในหลายเครื่องใช้ Public IPv4 ร่วมกัน ขณะที่กฎ Firewall จำกัดบริการที่อนุญาตแยกต่างหาก",
+      "confused_with": [
+        "Encryption",
+        "Virtual Private Network"
+      ],
+      "keywords": [
+        "Network Address Translation",
+        "address sharing",
+        "NAT64"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-003",
+          "locator": "KNOW-D4-003",
+          "concept_id": "KNOW-D4-003"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-004",
+          "locator": "KNOW-D4-004",
+          "concept_id": "KNOW-D4-004"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-003"
+        },
+        {
+          "source_id": "R11",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r11",
+          "concept_id": "KNOW-D4-003"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-010",
+      "term": "Dual Stack",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การใช้ IPv4 และ IPv6 ควบคู่กัน",
+      "definition_en": "An arrangement in which a host or network supports both IPv4 and IPv6 protocol operation. It is distinct from translating between the two address families.",
+      "explanation_th": "Dual Stack รองรับการทำงานทั้ง IPv4 และ IPv6 ในระบบเดียวกัน ไม่ได้หมายความว่าแปลทุก Packet ระหว่างสองรุ่นโดยอัตโนมัติ ต้องตรวจการกรองและการติดตามทั้งสองเส้นทางที่เปิดอยู่",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Treat parallel protocol paths as separate enforcement surfaces; dual stack is one coexistence option, not the only transition mechanism.",
+      "exam_relevance_th": "พิจารณาเส้นทางของสอง Protocol เป็นจุดบังคับใช้นโยบายที่ต้องตรวจแยก Dual Stack เป็นทางเลือกหนึ่ง ไม่ใช่กลไกเปลี่ยนผ่านเพียงแบบเดียว",
+      "example_en": "A server accepts both address families, so an approved test checks that both enforce the same access requirement.",
+      "example_th": "เซิร์ฟเวอร์รับทั้งสอง Address Family การทดสอบที่อนุมัติจึงตรวจว่าทั้งสองบังคับข้อกำหนดสิทธิ์เดียวกัน",
+      "confused_with": [
+        "Network Address Translation"
+      ],
+      "keywords": [
+        "Dual Stack",
+        "IPv4",
+        "IPv6",
+        "coexistence"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-004",
+          "locator": "KNOW-D4-004",
+          "concept_id": "KNOW-D4-004"
+        },
+        {
+          "source_id": "R10",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r10",
+          "concept_id": "KNOW-D4-004"
+        },
+        {
+          "source_id": "R11",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r11",
+          "concept_id": "KNOW-D4-004"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-011",
+      "term": "IPsec",
+      "acronym": "IPsec",
+      "full_form": "Internet Protocol Security",
+      "thai_meaning": "ชุดกลไกความปลอดภัยของ IP",
+      "definition_en": "A set of IP-layer security mechanisms that can authenticate and protect traffic according to the selected design and configuration. Implementation support is distinct from actual use.",
+      "explanation_th": "IPsec เป็นชุดกลไกป้องกันระดับ IP ซึ่งอาจใช้ยืนยันและปกป้องทราฟฟิกตามแบบกับการตั้งค่า การที่อุปกรณ์รองรับไม่ได้ยืนยันว่าการเชื่อมต่อหนึ่งเปิดใช้แล้ว และ IPv6 ไม่ได้เข้ารหัสทุกทราฟฟิกเอง",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Separate support requirements, deployment and connection protection; avoid treating IPv6 as automatic authenticated encryption.",
+      "exam_relevance_th": "แยกข้อกำหนดการรองรับ การนำไปใช้ และการป้องกันการเชื่อมต่อ อย่าถือว่า IPv6 คือการยืนยันและเข้ารหัสอัตโนมัติ",
+      "example_en": "An engineer verifies the configured protection on a connection rather than assuming IPv6 capability proves IPsec use.",
+      "example_th": "วิศวกรตรวจการป้องกันที่ตั้งไว้บนการเชื่อมต่อ แทนการถือว่าการรองรับ IPv6 พิสูจน์ว่าใช้ IPsec",
+      "confused_with": [
+        "Internet Protocol Version 6",
+        "Virtual Private Network"
+      ],
+      "keywords": [
+        "IPsec",
+        "IP-layer protection",
+        "support versus use"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-004",
+          "locator": "KNOW-D4-004",
+          "concept_id": "KNOW-D4-004"
+        },
+        {
+          "source_id": "R06",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r06",
+          "concept_id": "KNOW-D4-004"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-012",
+      "term": "Virtual Private Network",
+      "acronym": "VPN",
+      "full_form": "Virtual Private Network",
+      "thai_meaning": "เครือข่ายส่วนตัวเสมือน",
+      "definition_en": "A mechanism for protected connectivity over an untrusted network, using security appropriate to its design. Protection applies to the traffic and endpoints included in the configured tunnel.",
+      "explanation_th": "VPN สร้างการเชื่อมต่อที่ป้องกันผ่านเครือข่ายไม่น่าเชื่อถือตามแบบที่เลือก ต้องระบุปลาย Tunnel และทราฟฟิกที่ครอบคลุม ไม่ได้แก้เครื่องที่ถูกยึดหรือให้สิทธิ์ทุกแอปโดยอัตโนมัติ",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish protected reachability from resource authorization, and check where tunnel protection ends.",
+      "exam_relevance_th": "แยกเส้นทางที่ป้องกันออกจากสิทธิ์เข้าทรัพยากร และตรวจว่าการป้องกันของ Tunnel สิ้นสุดที่ใด",
+      "example_en": "A remote worker uses an approved VPN to the corporate gateway and still needs permission for the payroll application.",
+      "example_th": "พนักงานระยะไกลใช้ VPN ที่อนุมัติถึง Gateway องค์กร แต่ยังต้องมีสิทธิ์ใช้แอปเงินเดือน",
+      "confused_with": [
+        "Firewall",
+        "Authorization"
+      ],
+      "keywords": [
+        "Virtual Private Network",
+        "remote access",
+        "site-to-site",
+        "tunnel"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-005",
+          "locator": "KNOW-D4-005",
+          "concept_id": "KNOW-D4-005"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-005"
+        },
+        {
+          "source_id": "R06",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r06",
+          "concept_id": "KNOW-D4-005"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-013",
+      "term": "Tunnel Termination",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "จุดสิ้นสุดการป้องกันของทันเนล",
+      "definition_en": "The endpoint at which a tunnel is processed and its carried traffic leaves that tunnel. Any onward path needs protection appropriate to its own requirements.",
+      "explanation_th": "จุดสิ้นสุด Tunnel คือจุดที่รับประมวลผล Tunnel และส่งทราฟฟิกออกไปยังเส้นทางถัดไป การป้องกันเดิมไม่ได้ต่อไปถึงปลายแอปเสมอ ต้องประเมินแต่ละช่วงตามข้อกำหนดข้อมูล",
+      "category": "scenario_vocabulary",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Identify the protected segment before concluding that communication is confidential along the entire path.",
+      "exam_relevance_th": "ระบุช่วงที่ได้รับการป้องกันก่อนสรุปว่าการสื่อสารตลอดเส้นทางรักษาความลับแล้ว",
+      "example_en": "A VPN ends at a gateway; a separate protected channel secures the onward connection to a sensitive server.",
+      "example_th": "VPN สิ้นสุดที่ Gateway และมีช่องทางป้องกันอีกส่วนสำหรับการเชื่อมต่อถัดไปถึงเซิร์ฟเวอร์สำคัญ",
+      "confused_with": [
+        "End-to-End Protection"
+      ],
+      "keywords": [
+        "Tunnel Termination",
+        "VPN endpoint",
+        "protection boundary"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-005",
+          "locator": "KNOW-D4-005",
+          "concept_id": "KNOW-D4-005"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-005"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-014",
+      "term": "Switch",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "อุปกรณ์ส่งต่อเฟรมภายในเครือข่าย",
+      "definition_en": "A basic network device that forwards link-layer frames using learned addressing information. A multifunction device may also provide routing or security features.",
+      "explanation_th": "Switch พื้นฐานส่ง Frame ระดับ Link ตามข้อมูลที่อยู่ที่เรียนรู้ เช่น MAC Address หน้าที่นี้ต่างจากการ Route IP ข้ามเครือข่าย อุปกรณ์จริงอาจรวมหลายหน้าที่ จึงไม่ควรตัดสินความสามารถทั้งหมดจากชื่ออย่างเดียว",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Separate ordinary Layer 2 forwarding from routing and policy enforcement; confirm the capabilities stated in the scenario.",
+      "exam_relevance_th": "แยกการส่งต่อ Layer 2 ทั่วไปออกจาก Routing และการบังคับนโยบาย พร้อมดูความสามารถที่สถานการณ์ระบุ",
+      "example_en": "A switch forwards a workstation frame to the appropriate local port using its learned address table.",
+      "example_th": "Switch ส่ง Frame ของเครื่องทำงานไปยัง Port ภายในที่เหมาะสมตามตารางที่อยู่ที่เรียนรู้",
+      "confused_with": [
+        "Router",
+        "Access Point"
+      ],
+      "keywords": [
+        "Switch",
+        "frame",
+        "MAC address",
+        "Layer 2"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R03",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r03",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-015",
+      "term": "Router",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "อุปกรณ์ส่งต่อ IP ระหว่างเครือข่าย",
+      "definition_en": "A device or function that forwards IP packets between networks according to routing information. Reachability supplied by routing does not itself grant unrestricted access.",
+      "explanation_th": "Router ส่ง IP Packet ระหว่างเครือข่ายตามข้อมูลเส้นทาง การมีเส้นทางทำให้ติดต่อได้ แต่ไม่ได้กำหนดว่าการติดต่อทุกแบบได้รับอนุญาต ต้องมีนโยบายและกลไกบังคับตามที่ต้องการ",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish route availability from permission; a routed boundary may need filtering to meet the security requirement.",
+      "exam_relevance_th": "แยกการมีเส้นทางออกจากการมีสิทธิ์ ขอบเขต Routing อาจต้องกรองทราฟฟิกเพื่อทำตามข้อกำหนดความปลอดภัย",
+      "example_en": "Routing connects two VLANs, while a separate rule restricts the services allowed between them.",
+      "example_th": "Routing เชื่อม VLAN สองชุด ขณะที่กฎอีกส่วนจำกัดบริการที่ให้ผ่านระหว่างกัน",
+      "confused_with": [
+        "Switch",
+        "Firewall"
+      ],
+      "keywords": [
+        "Router",
+        "IP forwarding",
+        "Layer 3",
+        "inter-VLAN"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-013",
+          "locator": "KNOW-D4-013",
+          "concept_id": "KNOW-D4-013"
+        },
+        {
+          "source_id": "R03",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r03",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R31",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r31",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-016",
+      "term": "Access Point",
+      "acronym": "AP",
+      "full_form": "Access Point",
+      "thai_meaning": "จุดเชื่อมต่อเครือข่ายไร้สาย",
+      "definition_en": "A device or function that provides wireless access to a network. Its authentication, encryption and management configuration affect the protection of that access.",
+      "explanation_th": "Access Point ให้การเชื่อมต่อไร้สายเข้าสู่เครือข่าย ต้องดูการยืนยันตัวตน การเข้ารหัสและการบริหารที่ตั้งไว้จริง ชื่อเครือข่ายที่คุ้นเคยหรือรุ่นความเร็วไม่ได้ยืนยันว่าจุดเชื่อมต่อนั้นได้รับอนุมัติหรือปลอดภัย",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Identify wireless access separately from routing and evaluate actual protection rather than the device label.",
+      "exam_relevance_th": "แยกหน้าที่ให้การเข้าถึงไร้สายจาก Routing และประเมินการป้องกันจริงแทนการดูชื่ออุปกรณ์",
+      "example_en": "A company provisions managed access points with approved security modes and supported firmware.",
+      "example_th": "องค์กรติดตั้ง Access Point ที่บริหารจัดการด้วยโหมดความปลอดภัยที่อนุมัติและ Firmware ที่ยังสนับสนุน",
+      "confused_with": [
+        "Router",
+        "Switch"
+      ],
+      "keywords": [
+        "Access Point",
+        "wireless",
+        "Wi-Fi"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-008",
+          "locator": "KNOW-D4-008",
+          "concept_id": "KNOW-D4-008"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R17",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r17",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-017",
+      "term": "Network Port",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "หมายเลขระบุปลายการสื่อสารระดับทรานสปอร์ต",
+      "definition_en": "A numeric TCP or UDP endpoint identifier used with addressing and transport information to distinguish communication endpoints. A registered number does not prove which service is actually running.",
+      "explanation_th": "Port ของ TCP/UDP เป็นค่าตัวเลขที่ใช้ร่วมกับที่อยู่และ Transport เพื่อแยกปลายการสื่อสาร มีค่าตั้งแต่ 0 ถึง 65535 รวมค่าพิเศษ หมายเลขที่จดทะเบียนเป็นเบาะแส ไม่ยืนยันตัวบริการ ความปลอดภัย หรือการบุกรุกสำเร็จ",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Use source, destination, transport and service context together; distinguish a listening service from a demonstrated vulnerability.",
+      "exam_relevance_th": "ใช้บริบทต้นทาง ปลายทาง Transport และบริการร่วมกัน และแยกการเปิดบริการออกจากช่องโหว่ที่มีหลักฐาน",
+      "example_en": "An inventory team checks the listening process and approved purpose before accepting a scanner label based on a port number.",
+      "example_th": "ทีมสำรวจตรวจ Process ที่เปิดรับและวัตถุประสงค์ที่อนุมัติก่อนเชื่อป้ายบริการที่เครื่องมือเดาจากเลข Port",
+      "confused_with": [
+        "VLAN Identifier"
+      ],
+      "keywords": [
+        "Network Port",
+        "TCP",
+        "UDP",
+        "service",
+        "source port",
+        "destination port"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R08",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r08",
+          "concept_id": "KNOW-D4-007"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-018",
+      "term": "Ephemeral Port",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "พอร์ตชั่วคราวที่จัดสรรให้การสื่อสาร",
+      "definition_en": "A port temporarily selected for an endpoint, often a client initiating a connection. The operating system or application determines the actual selection range.",
+      "explanation_th": "Ephemeral Port เป็น Port ที่เลือกใช้ชั่วคราว เช่น Source Port ของ Client ช่วงที่ใช้จริงขึ้นกับ OS หรือแอป จึงไม่ควรถือว่าทุกระบบต้องใช้ช่วง Dynamic/Private ในทะเบียนเหมือนกัน และไม่ต้องเปิดทุก Port หมายเลขสูงขาเข้าเพียงเพื่อรับการตอบกลับ",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish registry ranges from implementation settings and established replies from unrelated inbound initiations.",
+      "exam_relevance_th": "แยกช่วงทะเบียนจากการตั้งค่าระบบ และแยกข้อมูลตอบกลับของการเชื่อมต่อจากการเริ่มขาเข้าอื่น",
+      "example_en": "A client uses a temporary source port, and a stateful firewall recognizes the matching server reply.",
+      "example_th": "Client ใช้ Source Port ชั่วคราว และ Stateful Firewall ระบุข้อมูลตอบกลับที่ตรงกันจากเซิร์ฟเวอร์ได้",
+      "confused_with": [
+        "Network Port"
+      ],
+      "keywords": [
+        "Ephemeral Port",
+        "dynamic port",
+        "client source port"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R08",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r08",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R35",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r35",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-007"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-019",
+      "term": "Domain Name System",
+      "acronym": "DNS",
+      "full_form": "Domain Name System",
+      "thai_meaning": "ระบบชื่อโดเมน",
+      "definition_en": "A distributed naming system that associates domain names with resource information, including host addresses. Successful name resolution does not itself authorize access to the named service.",
+      "explanation_th": "DNS เป็นระบบชื่อแบบกระจายที่เชื่อมชื่อโดเมนกับข้อมูลทรัพยากร เช่น ที่อยู่ Host การแปลงชื่อสำเร็จไม่ได้ยืนยันว่าผู้ใช้มีสิทธิ์ใช้บริการนั้น และการลบชื่ออย่างเดียวไม่ได้บังคับนโยบายต่อผู้ที่รู้ที่อยู่แล้ว",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Separate naming, routing and authorization; a familiar name or successful lookup is not evidence that a request is permitted.",
+      "exam_relevance_th": "แยกการตั้งชื่อ Routing และ Authorization ชื่อที่คุ้นเคยหรือค้นชื่อสำเร็จไม่ใช่หลักฐานว่าคำขอได้รับอนุญาต",
+      "example_en": "A workstation resolves an internal service name, then the firewall and application enforce their separate access rules.",
+      "example_th": "เครื่องทำงานค้นที่อยู่จากชื่อบริการภายใน แล้ว Firewall กับแอปบังคับกฎเข้าถึงของตนแยกกัน",
+      "confused_with": [
+        "IP Address"
+      ],
+      "keywords": [
+        "Domain Name System",
+        "name resolution",
+        "service name"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R08",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r08",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "RFC1034",
+          "locator": "https://datatracker.ietf.org/doc/html/rfc1034#section-2.4",
+          "concept_id": "KNOW-D4-007"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-020",
+      "term": "Hypertext Transfer Protocol",
+      "acronym": "HTTP",
+      "full_form": "Hypertext Transfer Protocol",
+      "thai_meaning": "โพรโทคอลสื่อสารคำขอและการตอบกลับของเว็บ",
+      "definition_en": "An application-level protocol family for exchanging requests and responses. A plain http connection does not itself provide TLS protection.",
+      "explanation_th": "HTTP เป็นตระกูล Protocol ระดับแอปสำหรับแลกเปลี่ยนคำขอและการตอบกลับของเว็บ ยังเป็นพื้นฐานของการสื่อสารเว็บ การใช้ http แบบไม่ป้องกันไม่ได้ให้ TLS จึงต้องแยกชื่อ Protocol ออกจากการป้องกันช่องทาง",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish HTTP semantics from protected transport; do not conclude that the HTTP protocol family is obsolete.",
+      "exam_relevance_th": "แยกความหมายการสื่อสาร HTTP จาก Transport ที่ป้องกัน และอย่าสรุปว่าตระกูล HTTP เลิกใช้แล้ว",
+      "example_en": "A team replaces an unprotected web connection with an approved HTTPS connection for sensitive data.",
+      "example_th": "ทีมเปลี่ยนการเชื่อมเว็บที่ไม่ป้องกันเป็น HTTPS ที่อนุมัติสำหรับข้อมูลสำคัญ",
+      "confused_with": [
+        "HTTPS"
+      ],
+      "keywords": [
+        "Hypertext Transfer Protocol",
+        "web",
+        "application protocol",
+        "http scheme"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R21",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r21",
+          "concept_id": "KNOW-D4-007"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-021",
+      "term": "HTTPS",
+      "acronym": "HTTPS",
+      "full_form": "Hypertext Transfer Protocol Secure",
+      "thai_meaning": "การสื่อสาร HTTP ผ่านช่องทางที่ป้องกัน",
+      "definition_en": "HTTP communication using an authenticated, protected connection under the https scheme. Channel protection does not certify that application content or authorization is safe.",
+      "explanation_th": "HTTPS ใช้ HTTP ผ่านการเชื่อมต่อที่ยืนยันและป้องกันตาม https scheme ช่วยปกป้องช่องทาง แต่ไม่ได้ยืนยันว่าเนื้อหา แอป สิทธิ์ หรือ Endpoint ปลอดภัยทั้งหมด และเลข Port อย่างเดียวไม่พิสูจน์ว่าเป็น HTTPS จริง",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Assess secure-channel status separately from application safety; do not identify a trusted service from port 443 alone.",
+      "exam_relevance_th": "ประเมินการป้องกันช่องทางแยกจากความปลอดภัยของแอป และอย่าเชื่อถือบริการจากเลข 443 อย่างเดียว",
+      "example_en": "A customer portal uses HTTPS and still validates which account may read each customer record.",
+      "example_th": "Portal ลูกค้าใช้ HTTPS และยังตรวจว่าบัญชีใดอ่านข้อมูลลูกค้าแต่ละรายการได้",
+      "confused_with": [
+        "Hypertext Transfer Protocol",
+        "Transport Layer Security"
+      ],
+      "keywords": [
+        "HTTPS",
+        "https scheme",
+        "protected web connection"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R21",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r21",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R33",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r33",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R08",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r08",
+          "concept_id": "KNOW-D4-007"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-022",
+      "term": "Transport Layer Security",
+      "acronym": "TLS",
+      "full_form": "Transport Layer Security",
+      "thai_meaning": "โพรโทคอลสร้างช่องทางสื่อสารที่ป้องกัน",
+      "definition_en": "A protocol for a secure channel with confidentiality and integrity, with authentication according to the negotiated configuration. It does not determine application permissions.",
+      "explanation_th": "TLS สร้างช่องทางที่รักษาความลับและความครบถ้วน พร้อมการยืนยันตามการตั้งค่าที่เจรจา ไม่ได้กำหนดสิทธิ์ของคำขอในแอป และไม่ควรบังคับให้ TLS มีชั้น OSI เดียวที่ต้องตอบในทุกบริบท",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish secure-channel properties from TCP reliability and application authorization; use the stated model and configuration.",
+      "exam_relevance_th": "แยกคุณสมบัติช่องทางปลอดภัยจากความเชื่อถือได้ของ TCP และสิทธิ์ของแอป โดยดูแบบจำลองกับการตั้งค่าที่ระบุ",
+      "example_en": "An application uses a protected TLS connection while its own access checks decide which files a user may retrieve.",
+      "example_th": "แอปใช้การเชื่อมต่อ TLS ที่ป้องกัน ขณะที่การตรวจสิทธิ์ของแอปตัดสินว่าผู้ใช้เรียกไฟล์ใดได้",
+      "confused_with": [
+        "Transmission Control Protocol",
+        "HTTPS"
+      ],
+      "keywords": [
+        "Transport Layer Security",
+        "secure channel",
+        "confidentiality",
+        "integrity"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-001",
+          "locator": "KNOW-D4-001",
+          "concept_id": "KNOW-D4-001"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-002",
+          "locator": "KNOW-D4-002",
+          "concept_id": "KNOW-D4-002"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R33",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r33",
+          "concept_id": "KNOW-D4-001"
+        },
+        {
+          "source_id": "R21",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r21",
+          "concept_id": "KNOW-D4-001"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-023",
+      "term": "Secure Shell",
+      "acronym": "SSH",
+      "full_form": "Secure Shell",
+      "thai_meaning": "โพรโทคอลสื่อสารระยะไกลแบบป้องกัน",
+      "definition_en": "A protocol suite for secure remote login and related network services over an insecure network. It supplies transport protection and authentication mechanisms rather than granting unrestricted resource rights.",
+      "explanation_th": "SSH ใช้สำหรับ Login ระยะไกลและบริการเครือข่ายที่เกี่ยวข้องผ่านเครือข่ายไม่น่าเชื่อถือ มีกลไกป้องกัน Transport และยืนยันตัวตน แต่ผู้ดูแลยังต้องตรวจปลายทาง กำหนดสิทธิ์และดูแล Endpoint",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Recognize protected remote administration while retaining endpoint and access-control duties; a port number alone is insufficient evidence.",
+      "exam_relevance_th": "รู้จักการบริหารระยะไกลที่ป้องกันโดยยังคงหน้าที่ Endpoint และการควบคุมสิทธิ์ เลข Port อย่างเดียวไม่ใช่หลักฐานเพียงพอ",
+      "example_en": "An administrator uses an approved SSH service and a restricted account for authorized maintenance.",
+      "example_th": "ผู้ดูแลใช้บริการ SSH ที่อนุมัติพร้อมบัญชีจำกัดสิทธิ์เพื่อบำรุงรักษาที่ได้รับอนุญาต",
+      "confused_with": [
+        "Remote Desktop Protocol",
+        "SSH File Transfer Protocol"
+      ],
+      "keywords": [
+        "Secure Shell",
+        "remote login",
+        "administration"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "RFC4251",
+          "locator": "https://www.rfc-editor.org/rfc/rfc4251.html#section-1",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R08",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r08",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R20",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r20",
+          "concept_id": "KNOW-D4-007"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-024",
+      "term": "SSH File Transfer Protocol",
+      "acronym": "SFTP",
+      "full_form": "SSH File Transfer Protocol",
+      "thai_meaning": "โพรโทคอลส่งไฟล์ผ่าน SSH",
+      "definition_en": "A file-transfer protocol commonly used over SSH transport. It is a different protocol from FTP protected with TLS.",
+      "explanation_th": "SFTP ใช้ส่งไฟล์ผ่าน SSH ในการใช้งานที่กล่าวถึง ต่างจาก FTPS ที่ใช้ FTP กับ TLS ชื่อหรือวัตถุประสงค์ที่คล้ายกันไม่ได้ทำให้ Client สื่อสารแทนกันได้ ต้องเลือกให้ตรงกับบริการและการป้องกันที่อนุมัติ",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Match the actual file-transfer protocol, not just the destination port or the word secure.",
+      "exam_relevance_th": "จับคู่ Protocol ส่งไฟล์ที่ใช้จริง ไม่ใช่ดูเพียง Destination Port หรือคำว่าปลอดภัย",
+      "example_en": "A supplier requires SFTP, so the team selects a client supporting its SSH-based file-transfer service.",
+      "example_th": "ผู้จัดหากำหนดให้ใช้ SFTP ทีมจึงเลือก Client ที่รองรับบริการส่งไฟล์ผ่าน SSH นั้น",
+      "confused_with": [
+        "FTPS"
+      ],
+      "keywords": [
+        "SSH File Transfer Protocol",
+        "file transfer",
+        "SSH"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R20",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r20",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "SFTP-NAME",
+          "locator": "https://datatracker.ietf.org/doc/html/draft-ietf-secsh-filexfer-13",
+          "concept_id": "KNOW-D4-007"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-025",
+      "term": "FTPS",
+      "acronym": "FTPS",
+      "full_form": "File Transfer Protocol over Transport Layer Security",
+      "thai_meaning": "การใช้ FTP พร้อมการป้องกันด้วย TLS",
+      "definition_en": "FTP with TLS protection negotiated or configured for its connections. Control-channel TLS negotiation alone does not establish that file-data connections are protected.",
+      "explanation_th": "FTPS คือการใช้ FTP พร้อม TLS ต้องดูการตั้งค่าของทั้ง Control และ Data Connection การเจรจา TLS บน Control อย่างเดียวไม่ยืนยันว่าข้อมูลไฟล์เข้ารหัสแล้ว และ FTPS ไม่ใช่ SFTP",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish FTPS from SFTP and confirm the protection required for the actual connections; do not assume only one port arrangement.",
+      "exam_relevance_th": "แยก FTPS จาก SFTP และตรวจการป้องกันที่ต้องใช้กับการเชื่อมต่อจริง อย่าสรุปว่ามีรูปแบบ Port ได้แบบเดียว",
+      "example_en": "A team verifies both control and file-data protection in its approved FTPS configuration before transferring sensitive files.",
+      "example_th": "ทีมตรวจการป้องกันทั้ง Control และข้อมูลไฟล์ในการตั้งค่า FTPS ที่อนุมัติก่อนส่งไฟล์สำคัญ",
+      "confused_with": [
+        "SSH File Transfer Protocol"
+      ],
+      "keywords": [
+        "FTPS",
+        "FTP over TLS",
+        "control connection",
+        "data connection"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R19",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r19",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R08",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r08",
+          "concept_id": "KNOW-D4-007"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-026",
+      "term": "Remote Desktop Protocol",
+      "acronym": "RDP",
+      "full_form": "Remote Desktop Protocol",
+      "thai_meaning": "โพรโทคอลเข้าถึงเดสก์ท็อประยะไกล",
+      "definition_en": "A protocol for remote interaction with desktops or applications. Authorized exposure, authentication and connection protection remain configuration and policy concerns.",
+      "explanation_th": "RDP ให้โต้ตอบกับ Desktop หรือแอประยะไกล ต้องจำกัดการเปิดบริการ ตรวจตัวตนและใช้การป้องกันตามนโยบาย ค่า Port ที่ใช้ตามปกติไม่ยืนยันว่าบริการได้รับอนุญาตหรือปลอดภัย",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Reason about business need and permitted access rather than infer service identity or compromise from a listening port.",
+      "exam_relevance_th": "พิจารณาความจำเป็นและการเข้าถึงที่อนุญาต แทนสรุปตัวบริการหรือการบุกรุกจาก Port ที่เปิดรับ",
+      "example_en": "An organization limits remote desktop access to approved management paths instead of exposing it to unrelated networks.",
+      "example_th": "องค์กรจำกัด Remote Desktop ไว้บนเส้นทางบริหารที่อนุมัติแทนเปิดให้เครือข่ายที่ไม่เกี่ยวข้อง",
+      "confused_with": [
+        "Secure Shell"
+      ],
+      "keywords": [
+        "Remote Desktop Protocol",
+        "remote desktop",
+        "management access"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R08",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r08",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "MS-RDS",
+          "locator": "https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/overview",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-007"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-027",
+      "term": "Packet Filtering",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การกรองตามข้อมูลในแพ็กเก็ต",
+      "definition_en": "Policy enforcement based on packet fields such as addresses, transport protocol and ports. A basic stateless filter evaluates packets without tracking a connection history.",
+      "explanation_th": "Packet Filtering ใช้ข้อมูล เช่น ที่อยู่ Transport และ Port เพื่อตัดสินตามนโยบาย ตัวกรองแบบ Stateless พื้นฐานไม่ติดตามประวัติการเชื่อมต่อ จึงต้องพิจารณาทางตอบกลับตามความสามารถจริง และไม่ยืนยันว่าเนื้อหาแอปปลอดภัย",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Use the stated fields, direction and rule semantics; distinguish basic filtering from state and application inspection.",
+      "exam_relevance_th": "ใช้ข้อมูล ทิศทางและความหมายกฎตามที่ระบุ และแยกการกรองพื้นฐานจากการตรวจ State กับแอป",
+      "example_en": "A network rule permits only a named source to a specified destination service.",
+      "example_th": "กฎเครือข่ายอนุญาตเฉพาะต้นทางที่ระบุไปยังบริการปลายทางที่กำหนด",
+      "confused_with": [
+        "Stateful Inspection",
+        "Application-Aware Filtering"
+      ],
+      "keywords": [
+        "Packet Filtering",
+        "stateless",
+        "address",
+        "port",
+        "ACL"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-028",
+      "term": "Stateful Inspection",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การตรวจกรองโดยติดตามสถานะการสื่อสาร",
+      "definition_en": "Filtering that uses tracked communication state in addition to packet information. A reply matching permitted state is different from a new unsolicited initiation.",
+      "explanation_th": "Stateful Inspection ติดตามสถานะการสื่อสารประกอบการกรอง จึงแยกข้อมูลตอบกลับที่ตรงกับการเชื่อมต่อที่อนุญาตออกจากการเริ่มใหม่ได้ การติดตาม TCP กับ UDP อาจต่างกัน และ State ไม่ได้พิสูจน์สิทธิ์ทุกคำขอของแอป",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Interpret the exact source/destination relationship and tracked state; do not open all high ports to permit replies.",
+      "exam_relevance_th": "ตีความคู่ต้นทาง/ปลายทางกับ State ให้ตรง อย่าเปิด Port หมายเลขสูงทั้งหมดเพียงเพื่อรับข้อมูลตอบกลับ",
+      "example_en": "A firewall permits a matching web reply but denies an unrelated new inbound connection to the client.",
+      "example_th": "Firewall อนุญาตข้อมูลตอบกลับเว็บที่ตรงกัน แต่ปฏิเสธการเริ่มเชื่อมต่อขาเข้าอื่นถึง Client",
+      "confused_with": [
+        "Packet Filtering"
+      ],
+      "keywords": [
+        "Stateful Inspection",
+        "connection state",
+        "established reply"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R08",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r08",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-029",
+      "term": "Application-Aware Filtering",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การกรองโดยใช้บริบทระดับแอปพลิเคชัน",
+      "definition_en": "Inspection that uses application-protocol context beyond simple address or port labels. Its effectiveness depends on the product, configuration and visibility into traffic.",
+      "explanation_th": "การกรองแบบนี้ใช้บริบท Protocol ระดับแอปมากกว่าที่อยู่หรือเลข Port ความสามารถขึ้นกับอุปกรณ์ การตั้งค่าและสิ่งที่มองเห็น เนื้อหาเข้ารหัสอาจตรวจไม่ได้หากไม่มีแบบตรวจที่ได้รับอนุมัติ และการอนุญาตทราฟฟิกไม่ยืนยันว่าแอปปลอดภัยทั้งหมด",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Choose inspection appropriate to the required assurance, and respect encrypted-content and application-authorization limits.",
+      "exam_relevance_th": "เลือกการตรวจให้ตรงกับสิ่งที่ต้องประเมิน และคำนึงถึงข้อจำกัดเนื้อหาเข้ารหัสกับสิทธิ์ของแอป",
+      "example_en": "A gateway recognizes an unexpected application protocol on an otherwise permitted service port.",
+      "example_th": "Gateway พบ Protocol แอปที่ไม่คาดหมายบน Port บริการที่อนุญาตอยู่",
+      "confused_with": [
+        "Packet Filtering",
+        "Stateful Inspection"
+      ],
+      "keywords": [
+        "Application-Aware Filtering",
+        "application inspection",
+        "visibility",
+        "protocol"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R33",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r33",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-030",
+      "term": "Web Application Firewall",
+      "acronym": "WAF",
+      "full_form": "Web Application Firewall",
+      "thai_meaning": "ไฟร์วอลล์สำหรับทราฟฟิกเว็บแอปพลิเคชัน",
+      "definition_en": "A firewall focused on web-application traffic and related policy checks. It complements rather than replaces secure application design and authorization.",
+      "explanation_th": "WAF เน้นตรวจและบังคับนโยบายต่อทราฟฟิก Web Application เป็นมาตรการเสริมการออกแบบแอปและการกำหนดสิทธิ์ ไม่ได้ทำให้ทุกคำขอปลอดภัยหรือแก้ข้อบกพร่องของแอปทั้งหมดโดยอัตโนมัติ",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish web-focused protection from general packet filtering and from the application logic it cannot replace.",
+      "exam_relevance_th": "แยกการป้องกันเฉพาะเว็บจากการกรอง Packet ทั่วไป และจาก Logic แอปที่ WAF ทดแทนไม่ได้",
+      "example_en": "A portal uses a WAF for web-traffic checks while the application still enforces per-customer record permissions.",
+      "example_th": "Portal ใช้ WAF ตรวจทราฟฟิกเว็บ ขณะที่แอปยังบังคับสิทธิ์ข้อมูลแยกตามลูกค้า",
+      "confused_with": [
+        "Firewall",
+        "Application-Aware Filtering"
+      ],
+      "keywords": [
+        "Web Application Firewall",
+        "web application",
+        "HTTP"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-031",
+      "term": "Intrusion Detection System",
+      "acronym": "IDS",
+      "full_form": "Intrusion Detection System",
+      "thai_meaning": "ระบบตรวจจับการบุกรุก",
+      "definition_en": "A system that monitors activity and identifies potential intrusions for analysis or reporting. Detection does not inherently mean that the activity was blocked.",
+      "explanation_th": "IDS ติดตามกิจกรรมและระบุสิ่งที่อาจเป็นการบุกรุกเพื่อวิเคราะห์หรือรายงาน การตรวจพบไม่ได้แปลว่าป้องกันหรือ Block แล้ว ต้องดูบทบาทและการตั้งค่าจริง และการแจ้งเตือนไม่ใช่หลักฐานยืนยันทุกกรณี",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish observing/reporting from configured prevention, and evaluate alerts with context and visibility limits.",
+      "exam_relevance_th": "แยกการสังเกต/รายงานจากการป้องกันตามที่ตั้งค่า และประเมิน Alert พร้อมบริบทกับข้อจำกัดการมองเห็น",
+      "example_en": "An IDS reports an unusual connection for analyst review while a separate control enforces network restrictions.",
+      "example_th": "IDS รายงานการเชื่อมต่อผิดปกติให้นักวิเคราะห์ทบทวน ส่วนอีกมาตรการบังคับข้อจำกัดเครือข่าย",
+      "confused_with": [
+        "Intrusion Prevention System"
+      ],
+      "keywords": [
+        "Intrusion Detection System",
+        "detection",
+        "alert",
+        "monitoring"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R32",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r32",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-032",
+      "term": "Intrusion Prevention System",
+      "acronym": "IPS",
+      "full_form": "Intrusion Prevention System",
+      "thai_meaning": "ระบบป้องกันการบุกรุก",
+      "definition_en": "A system capable of detecting suspicious activity and taking configured prevention actions. Its actual blocking behavior depends on deployment and policy.",
+      "explanation_th": "IPS ตรวจจับกิจกรรมที่น่าสงสัยและอาจดำเนินการป้องกันตามการตั้งค่า เช่น ปฏิเสธทราฟฟิก ต้องระบุวิธี Deploy และนโยบาย ไม่ควรสรุปจากชื่อผลิตภัณฑ์ว่าจะ Block ทุกภัยได้หรือไม่มีการแจ้งผิด",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Select prevention only when the capability, configured action and authority match the scenario; detection accuracy still has limits.",
+      "exam_relevance_th": "เลือกการป้องกันเมื่อความสามารถ การกระทำที่ตั้งไว้และอำนาจอนุญาตตรงกับสถานการณ์ โดยการตรวจจับยังมีข้อจำกัด",
+      "example_en": "A team enables an approved blocking rule after testing its effect on legitimate application traffic.",
+      "example_th": "ทีมเปิดกฎ Block ที่อนุมัติหลังทดสอบผลต่อทราฟฟิกแอปที่ถูกต้อง",
+      "confused_with": [
+        "Intrusion Detection System"
+      ],
+      "keywords": [
+        "Intrusion Prevention System",
+        "prevention",
+        "blocking",
+        "policy"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R32",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r32",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-033",
+      "term": "Signature-Based Detection",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การตรวจจับโดยเทียบรูปแบบที่รู้จัก",
+      "definition_en": "Detection that compares observed activity with known patterns associated with threats or other events. A missing match does not establish that activity is harmless.",
+      "explanation_th": "การตรวจแบบ Signature เทียบกิจกรรมกับรูปแบบที่รู้จัก การไม่ตรงไม่ได้พิสูจน์ว่าปลอดภัยหรือได้รับอนุญาต และการตรงอาจยังต้องวิเคราะห์บริบท วิธีนี้เสริมการตรวจพฤติกรรมได้แต่ไม่ใช่กลไกเดียวในการตรวจภัย",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Separate recognition of known patterns from authorization and from behavioral deviation; no match is not proof of no threat.",
+      "exam_relevance_th": "แยกการรู้จักรูปแบบออกจากการมีสิทธิ์และความเบี่ยงเบนของพฤติกรรม การไม่ตรงไม่ใช่ข้อพิสูจน์ว่าไม่มีภัย",
+      "example_en": "A sensor finds no known signature in a transfer, but an analyst still reviews its unexpected destination.",
+      "example_th": "Sensor ไม่พบ Signature ที่รู้จักในการส่งข้อมูล แต่นักวิเคราะห์ยังทบทวนปลายทางที่ไม่คาดหมาย",
+      "confused_with": [
+        "Anomaly-Based Detection"
+      ],
+      "keywords": [
+        "Signature-Based Detection",
+        "known pattern",
+        "signature matching"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-022",
+          "locator": "KNOW-D4-022",
+          "concept_id": "KNOW-D4-022"
+        },
+        {
+          "source_id": "R32",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r32",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-034",
+      "term": "Anomaly-Based Detection",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การตรวจจับความเบี่ยงเบนจากพฤติกรรมที่คาดหมาย",
+      "definition_en": "Detection that identifies activity differing from an expected baseline or model. A deviation can reflect either legitimate change or malicious activity; not every implementation uses machine learning.",
+      "explanation_th": "การตรวจ Anomaly ระบุกิจกรรมที่ต่างจากค่าฐานหรือแบบจำลองที่คาดหมาย อาจเกิดจากการเปลี่ยนงานที่ถูกต้องหรือการโจมตี ต้องพิจารณาบริบท ไม่ใช่ทุกระบบใช้ Machine Learning หรือยืนยันการบุกรุกได้จาก Alert เดียว",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish unusual from malicious and behavior-based detection from a known-signature match.",
+      "exam_relevance_th": "แยกสิ่งผิดปกติออกจากสิ่งเป็นอันตราย และแยกการตรวจพฤติกรรมจากการตรง Signature ที่รู้จัก",
+      "example_en": "A scheduled migration changes network traffic volume, causing a baseline alert that requires contextual review.",
+      "example_th": "การย้ายระบบตามแผนเปลี่ยนปริมาณทราฟฟิกจนเกิด Alert จากค่าฐาน ซึ่งต้องทบทวนตามบริบท",
+      "confused_with": [
+        "Signature-Based Detection",
+        "Anomalous Sign-In Detection"
+      ],
+      "keywords": [
+        "Anomaly-Based Detection",
+        "baseline",
+        "behavior",
+        "machine learning"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-022",
+          "locator": "KNOW-D4-022",
+          "concept_id": "KNOW-D4-022"
+        },
+        {
+          "source_id": "R32",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r32",
+          "concept_id": "KNOW-D4-022"
+        },
+        {
+          "source_id": "R02",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r02",
+          "concept_id": "KNOW-D4-022"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-035",
+      "term": "False Positive",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ผลแจ้งเตือนภัยทั้งที่กิจกรรมนั้นไม่ใช่ภัยตามที่ระบุ",
+      "definition_en": "A detection result that incorrectly identifies benign activity as malicious or otherwise meeting the detector’s threat condition.",
+      "explanation_th": "False Positive คือระบบระบุว่ากิจกรรมเป็นภัยตามเงื่อนไขที่ตรวจ ทั้งที่จริงไม่ใช่ ไม่ได้หมายความว่าควรละเลย Alert ทุกครั้ง ต้องใช้หลักฐานบริบทก่อนจัดประเภทและปรับกฎตามอำนาจที่มี",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Check whether the activity actually meets the threat condition; compare this unnecessary alert with a missed real threat.",
+      "exam_relevance_th": "ตรวจว่ากิจกรรมเป็นภัยตามเงื่อนไขจริงหรือไม่ และเทียบ Alert เกินกับภัยจริงที่ตรวจไม่พบ",
+      "example_en": "A permitted maintenance scan triggers a threat rule and is confirmed as benign during review.",
+      "example_th": "การ Scan บำรุงรักษาที่อนุญาตกระตุ้นกฎภัย และการทบทวนยืนยันว่าเป็นกิจกรรมปกติ",
+      "confused_with": [
+        "False Negative"
+      ],
+      "keywords": [
+        "False Positive",
+        "detection error",
+        "benign activity"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R32",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r32",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-036",
+      "term": "False Negative",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ผลที่ระบบตรวจไม่พบภัยซึ่งเกิดขึ้นจริง",
+      "definition_en": "A detection result in which malicious activity is not identified when it should meet the detector’s threat condition.",
+      "explanation_th": "False Negative คือมีกิจกรรมเป็นภัยจริงแต่ระบบไม่ระบุว่าเป็นภัยตามที่ควรตรวจได้ จึงไม่อาจถือว่าการไม่มี Alert พิสูจน์ว่าปลอดภัย การมองเห็นข้อมูลและความสามารถตรวจมีข้อจำกัด",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish a missed threat from an incorrect alert; consider coverage and visibility before trusting silence.",
+      "exam_relevance_th": "แยกภัยที่พลาดตรวจจาก Alert ผิด และพิจารณาความครอบคลุมกับการมองเห็นก่อนเชื่อการไม่มีแจ้งเตือน",
+      "example_en": "A confirmed malicious transfer was absent from alerts because the sensor lacked the required visibility.",
+      "example_th": "การส่งข้อมูลที่ยืนยันว่าเป็นอันตรายไม่ปรากฏใน Alert เพราะ Sensor มองไม่เห็นข้อมูลที่ต้องใช้ตรวจ",
+      "confused_with": [
+        "False Positive"
+      ],
+      "keywords": [
+        "False Negative",
+        "missed detection",
+        "visibility"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R32",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r32",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-037",
+      "term": "Wi-Fi",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "เทคโนโลยีเครือข่ายไร้สายสำหรับการเชื่อมต่อในพื้นที่",
+      "definition_en": "Wireless networking commonly used for local connectivity through compatible clients and access points. Its generation or advertised rate does not establish the configured security mode.",
+      "explanation_th": "Wi-Fi ใช้เชื่อมต่อเครือข่ายไร้สายในพื้นที่ผ่าน Client และ Access Point ที่รองรับ รุ่นหรือความเร็วที่โฆษณาไม่ได้ยืนยันวิธียืนยันตัวตนและการเข้ารหัส ต้องดูโหมด ความเข้ากันได้และการดูแลจริง",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Assess supported configuration rather than infer protection from a Wi-Fi generation, a hidden name or a throughput claim.",
+      "exam_relevance_th": "ประเมินการตั้งค่าที่รองรับ แทนสรุปการป้องกันจากรุ่น Wi-Fi การซ่อนชื่อ หรือคำโฆษณาความเร็ว",
+      "example_en": "A new access point still needs its approved authentication and encryption settings verified before deployment.",
+      "example_th": "Access Point ใหม่ยังต้องตรวจการยืนยันตัวตนและเข้ารหัสที่อนุมัติก่อนใช้งานจริง",
+      "confused_with": [
+        "Wi-Fi Protected Access 3",
+        "Bluetooth"
+      ],
+      "keywords": [
+        "Wi-Fi",
+        "wireless LAN",
+        "WLAN",
+        "access point"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-008",
+          "locator": "KNOW-D4-008",
+          "concept_id": "KNOW-D4-008"
+        },
+        {
+          "source_id": "R17",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r17",
+          "concept_id": "KNOW-D4-008"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-038",
+      "term": "Service Set Identifier",
+      "acronym": "SSID",
+      "full_form": "Service Set Identifier",
+      "thai_meaning": "ชื่อระบุเครือข่าย Wi-Fi",
+      "definition_en": "A network identifier used to distinguish a Wi-Fi service set. Recognizing or hiding this name does not authenticate the network or encrypt communication.",
+      "explanation_th": "SSID ใช้ระบุเครือข่าย Wi-Fi แต่ชื่อที่คุ้นเคยไม่ได้ยืนยันว่าเป็นเครือข่ายที่องค์กรอนุมัติ การซ่อนชื่อไม่ได้ทำให้ตรวจพบไม่ได้หรือทดแทนการยืนยันตัวตนและการเข้ารหัส",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Separate a network name and its visibility from trustworthy authentication and connection protection.",
+      "exam_relevance_th": "แยกชื่อเครือข่ายกับการมองเห็นออกจากการยืนยันตัวตนที่เชื่อถือได้และการป้องกันการเชื่อมต่อ",
+      "example_en": "Staff use an approved wireless profile instead of joining solely because an SSID looks familiar.",
+      "example_th": "เจ้าหน้าที่ใช้ Wireless Profile ที่อนุมัติ แทนเข้าร่วมเพียงเพราะ SSID ดูคุ้นเคย",
+      "confused_with": [
+        "Authentication"
+      ],
+      "keywords": [
+        "Service Set Identifier",
+        "network name",
+        "hidden network"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-008",
+          "locator": "KNOW-D4-008",
+          "concept_id": "KNOW-D4-008"
+        },
+        {
+          "source_id": "R17",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r17",
+          "concept_id": "KNOW-D4-008"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-039",
+      "term": "Wi-Fi Protected Access 2",
+      "acronym": "WPA2",
+      "full_form": "Wi-Fi Protected Access 2",
+      "thai_meaning": "ชุดความปลอดภัย Wi-Fi รุ่นที่ 2",
+      "definition_en": "A Wi-Fi security generation with different authentication modes and implementation options. Suitability depends on supported configuration, credentials and organizational policy.",
+      "explanation_th": "WPA2 เป็นชุดความปลอดภัย Wi-Fi ซึ่งมีโหมดและตัวเลือกการยืนยันตัวตนต่างกัน ต้องดูการตั้งค่าที่รองรับ รหัสหรือข้อมูลยืนยัน และนโยบาย ไม่ใช่ถือว่าคำว่า WPA2 ทำให้ทุกการตั้งค่าปลอดภัยเท่ากัน",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Evaluate explicit compatibility requirements without removing protection from the wider network; distinguish personal and enterprise configuration.",
+      "exam_relevance_th": "ประเมินข้อจำกัดความเข้ากันได้ที่ระบุโดยไม่ยกเลิกการป้องกันเครือข่ายหลัก และแยกการตั้งค่า Personal จาก Enterprise",
+      "example_en": "An approved legacy scanner uses a supported WPA2 configuration on a restricted network with only necessary destinations.",
+      "example_th": "เครื่องสแกนเก่าที่อนุมัติใช้ WPA2 แบบที่รองรับบนเครือข่ายจำกัดให้เข้าปลายทางจำเป็นเท่านั้น",
+      "confused_with": [
+        "Wi-Fi Protected Access 3"
+      ],
+      "keywords": [
+        "Wi-Fi Protected Access 2",
+        "wireless security",
+        "compatibility"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-008",
+          "locator": "KNOW-D4-008",
+          "concept_id": "KNOW-D4-008"
+        },
+        {
+          "source_id": "R17",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r17",
+          "concept_id": "KNOW-D4-008"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-040",
+      "term": "Wi-Fi Protected Access 3",
+      "acronym": "WPA3",
+      "full_form": "Wi-Fi Protected Access 3",
+      "thai_meaning": "ชุดความปลอดภัย Wi-Fi รุ่นที่ 3",
+      "definition_en": "A Wi-Fi security generation offering stronger protection options than older modes. Actual protection still depends on device support, chosen mode, credentials and maintained implementations.",
+      "explanation_th": "WPA3 มีตัวเลือกป้องกันที่พัฒนาจากโหมดเก่า แต่ผลจริงขึ้นกับอุปกรณ์ โหมด ข้อมูลยืนยันตัวตนและการอัปเดต โหมดรองรับอุปกรณ์เก่าอาจให้การป้องกันต่างกัน จึงไม่ใช่คำรับประกันว่าถูกโจมตีไม่ได้",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Prefer the approved strong supported mode under stated constraints, not an invulnerability claim or an assumption about every client.",
+      "exam_relevance_th": "เลือกโหมดที่แข็งแกร่ง รองรับและอนุมัติตามข้อจำกัด ไม่ใช่อาศัยคำรับประกันหรือสรุปเหมารวมถึง Client ทุกตัว",
+      "example_en": "A company retains supported WPA3 settings for workstations while separately reviewing a documented legacy-device exception.",
+      "example_th": "องค์กรคง WPA3 ที่รองรับสำหรับเครื่องทำงาน และทบทวนข้อยกเว้นอุปกรณ์เก่าที่บันทึกไว้แยกกัน",
+      "confused_with": [
+        "Wi-Fi Protected Access 2",
+        "Wi-Fi"
+      ],
+      "keywords": [
+        "Wi-Fi Protected Access 3",
+        "wireless security",
+        "transition mode"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-008",
+          "locator": "KNOW-D4-008",
+          "concept_id": "KNOW-D4-008"
+        },
+        {
+          "source_id": "R17",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r17",
+          "concept_id": "KNOW-D4-008"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-041",
+      "term": "MAC Address",
+      "acronym": "MAC",
+      "full_form": "Media Access Control",
+      "thai_meaning": "ที่อยู่ระบุอินเทอร์เฟซระดับลิงก์",
+      "definition_en": "A media-access-control identifier associated with a link-layer network interface. Observing an allowed address is not cryptographic proof of device or user identity.",
+      "explanation_th": "MAC Address เป็นตัวระบุอินเทอร์เฟซระดับ Link ใช้กับการส่ง Frame บนเครือข่าย เช่น Ethernet และ Wi-Fi การเห็นค่าที่อยู่ในรายชื่ออนุญาตไม่ใช่การยืนยันตัวตนเชิงเข้ารหัส และ MAC ในบริบทนี้ไม่ใช่ Mandatory Access Control",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Resolve the acronym from context: Media Access Control addressing differs from the IAM model called Mandatory Access Control.",
+      "exam_relevance_th": "ตีความตัวย่อตามบริบท ที่อยู่ Media Access Control ต่างจากแบบจำลอง IAM ที่ชื่อ Mandatory Access Control",
+      "example_en": "A wireless review treats a matching MAC address as an identifier while separately checking approved authentication.",
+      "example_th": "การทบทวนไร้สายถือ MAC ที่ตรงกันเป็นตัวระบุ และตรวจการยืนยันตัวตนที่อนุมัติแยกต่างหาก",
+      "confused_with": [
+        "Mandatory Access Control",
+        "IP Address"
+      ],
+      "keywords": [
+        "MAC Address",
+        "link-layer address",
+        "interface identifier"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-008",
+          "locator": "KNOW-D4-008",
+          "concept_id": "KNOW-D4-008"
+        },
+        {
+          "source_id": "R17",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r17",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R03",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r03",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-042",
+      "term": "MAC Filtering",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การกรองตามที่อยู่ MAC",
+      "definition_en": "A rule that permits or rejects devices based on their presented MAC addresses. It is not a replacement for cryptographic authentication or encryption.",
+      "explanation_th": "MAC Filtering ใช้ที่อยู่ MAC ที่อุปกรณ์แสดงเพื่อตัดสินอนุญาตหรือปฏิเสธ ที่อยู่อาจถูกสังเกตหรือคัดลอกได้ จึงไม่ควรใช้แทนการยืนยันตัวตนและการเข้ารหัสที่เหมาะสม",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish identifier filtering from identity assurance; allowlist membership does not prove who controls the device.",
+      "exam_relevance_th": "แยกการกรองตัวระบุจากความเชื่อมั่นตัวตน การอยู่ในรายชื่อไม่พิสูจน์ว่าใครควบคุมอุปกรณ์",
+      "example_en": "An organization retains its approved wireless security mode rather than rely only on a MAC allowlist.",
+      "example_th": "องค์กรคงโหมดความปลอดภัยไร้สายที่อนุมัติ แทนการพึ่งรายชื่อ MAC ที่อนุญาตเพียงอย่างเดียว",
+      "confused_with": [
+        "Authentication",
+        "MAC Address"
+      ],
+      "keywords": [
+        "MAC Filtering",
+        "MAC allowlist",
+        "wireless access"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-008",
+          "locator": "KNOW-D4-008",
+          "concept_id": "KNOW-D4-008"
+        },
+        {
+          "source_id": "R17",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r17",
+          "concept_id": "KNOW-D4-008"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-043",
+      "term": "Bluetooth",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "เทคโนโลยีเชื่อมต่ออุปกรณ์ไร้สายในระยะใกล้",
+      "definition_en": "A wireless technology for connecting devices such as peripherals and sensors. Available security depends on device capabilities, association methods and configuration, not proximity alone.",
+      "explanation_th": "Bluetooth เชื่อมอุปกรณ์ไร้สาย เช่น Peripheral และ Sensor การอยู่ใกล้ไม่ได้ทำให้เชื่อถือได้ การป้องกันขึ้นกับความสามารถ วิธีจับคู่และการตั้งค่า ต้องเลือกอุปกรณ์ที่อนุมัติ ลดบริการไม่จำเป็นและดูแลซอฟต์แวร์",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Separate discovery, pairing, encryption and service permission; do not assume every Bluetooth version has identical properties.",
+      "exam_relevance_th": "แยกการค้นพบ การจับคู่ การเข้ารหัสและสิทธิ์บริการ และอย่าสรุปว่า Bluetooth ทุกรุ่นมีคุณสมบัติเหมือนกัน",
+      "example_en": "Staff verify the intended approved scanner before pairing it with a managed workstation.",
+      "example_th": "เจ้าหน้าที่ตรวจว่าเป็นเครื่องสแกนที่ต้องการและได้รับอนุมัติก่อนจับคู่กับเครื่องทำงานที่บริหารจัดการ",
+      "confused_with": [
+        "Wi-Fi"
+      ],
+      "keywords": [
+        "Bluetooth",
+        "peripheral",
+        "wireless",
+        "peer"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-009",
+          "locator": "KNOW-D4-009",
+          "concept_id": "KNOW-D4-009"
+        },
+        {
+          "source_id": "R29",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r29",
+          "concept_id": "KNOW-D4-009"
+        },
+        {
+          "source_id": "R30",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r30",
+          "concept_id": "KNOW-D4-009"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-044",
+      "term": "Bluetooth Pairing",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การจับคู่เพื่อสร้างความสัมพันธ์ด้านกุญแจของ Bluetooth",
+      "definition_en": "A process that establishes security information for Bluetooth peers to communicate. The selected method determines the authentication assurance provided during association.",
+      "explanation_th": "การจับคู่สร้างข้อมูลความปลอดภัยระหว่างอุปกรณ์ Bluetooth โดยระดับการยืนยันระหว่างจับคู่ขึ้นกับวิธีที่ใช้ การจับคู่ไม่ได้ยืนยันบุคคลหรือให้สิทธิ์ทุกแอป และการเก็บความสัมพันธ์ไว้ต้องทบทวนเมื่อหมดความจำเป็น",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Match the method to the required peer assurance; changing discovery settings does not remove an existing pairing.",
+      "exam_relevance_th": "เลือกวิธีให้ตรงกับการยืนยันอุปกรณ์ที่ต้องการ การเปลี่ยนการเปิดให้ค้นพบไม่ได้ลบการจับคู่เดิม",
+      "example_en": "A device-management procedure removes a stored pairing when a peripheral is transferred outside the organization.",
+      "example_th": "ขั้นตอนจัดการอุปกรณ์ลบการจับคู่ที่เก็บไว้เมื่อส่งต่อ Peripheral ออกนอกองค์กร",
+      "confused_with": [
+        "Authenticated Pairing",
+        "Authorization"
+      ],
+      "keywords": [
+        "Bluetooth Pairing",
+        "pairing keys",
+        "stored association"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-009",
+          "locator": "KNOW-D4-009",
+          "concept_id": "KNOW-D4-009"
+        },
+        {
+          "source_id": "R29",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r29",
+          "concept_id": "KNOW-D4-009"
+        },
+        {
+          "source_id": "R30",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r30",
+          "concept_id": "KNOW-D4-009"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-045",
+      "term": "Authenticated Pairing",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การจับคู่ที่ให้การยืนยันอุปกรณ์คู่สื่อสาร",
+      "definition_en": "A pairing method that provides authentication assurance for the intended peer according to its supported procedure. Encryption after pairing is not by itself evidence that association was authenticated.",
+      "explanation_th": "Authenticated Pairing ให้การยืนยันว่าเป็นอุปกรณ์ที่ต้องการตามขั้นตอนที่วิธีนั้นรองรับ เช่น การตรวจค่าที่แสดงเปรียบเทียบ การเข้ารหัสหลังจับคู่เพียงอย่างเดียวไม่ได้พิสูจน์ว่ายืนยันอุปกรณ์ระหว่างจับคู่แล้ว ต้องดูความสามารถและทำขั้นตอนจริง",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish authenticated association from encrypted traffic and familiar device names; use only the stated method capabilities.",
+      "exam_relevance_th": "แยกการจับคู่ที่ยืนยันจากทราฟฟิกเข้ารหัสและชื่ออุปกรณ์ที่คุ้นเคย โดยใช้คุณสมบัติวิธีที่ระบุเท่านั้น",
+      "example_en": "When both approved devices support numeric comparison, staff check matching values under the pairing procedure.",
+      "example_th": "เมื่ออุปกรณ์ที่อนุมัติทั้งสองรองรับ Numeric Comparison เจ้าหน้าที่ตรวจว่าค่าตรงกันตามขั้นตอนจับคู่",
+      "confused_with": [
+        "Bluetooth Pairing",
+        "Just Works Pairing"
+      ],
+      "keywords": [
+        "Authenticated Pairing",
+        "peer verification",
+        "numeric comparison"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-009",
+          "locator": "KNOW-D4-009",
+          "concept_id": "KNOW-D4-009"
+        },
+        {
+          "source_id": "R29",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r29",
+          "concept_id": "KNOW-D4-009"
+        },
+        {
+          "source_id": "R30",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r30",
+          "concept_id": "KNOW-D4-009"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-046",
+      "term": "Just Works Pairing",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "วิธีจับคู่แบบ Just Works ที่มีข้อจำกัดการยืนยันคู่สื่อสาร",
+      "definition_en": "In the Bluetooth methods covered by the cited NIST guide, a pairing approach that lacks man-in-the-middle protection during association. Subsequent encryption does not add that missing pairing assurance.",
+      "explanation_th": "ในวิธี Bluetooth ที่คู่มือ NIST ฉบับอ้างอิงครอบคลุมถึงรุ่น 4.2 Just Works ไม่ให้การป้องกัน MITM ระหว่างจับคู่ การเข้ารหัสภายหลังไม่ได้เพิ่มการยืนยันที่ขาดไป ต้องดูวิธีและความสามารถอุปกรณ์ ไม่ขยายรายละเอียดรุ่นเก่าเป็นกฎของทุกรุ่นในอนาคต",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Reason from the explicitly supported method and requirement; do not equate encrypted Bluetooth with authenticated pairing.",
+      "exam_relevance_th": "ใช้วิธีที่รองรับและข้อกำหนดที่ระบุเป็นฐาน อย่าถือว่า Bluetooth ที่เข้ารหัสเท่ากับจับคู่แบบยืนยันตัวตน",
+      "example_en": "A pairing review rejects Just Works where the stated devices and policy require authenticated peer verification.",
+      "example_th": "การทบทวนไม่เลือก Just Works เมื่ออุปกรณ์และนโยบายที่ระบุจำเป็นต้องตรวจยืนยันคู่สื่อสาร",
+      "confused_with": [
+        "Authenticated Pairing"
+      ],
+      "keywords": [
+        "Just Works Pairing",
+        "Bluetooth",
+        "association",
+        "MITM"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-009",
+          "locator": "KNOW-D4-009",
+          "concept_id": "KNOW-D4-009"
+        },
+        {
+          "source_id": "R29",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r29",
+          "concept_id": "KNOW-D4-009"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-047",
+      "term": "Embedded System",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ระบบประมวลผลที่ฝังเพื่อหน้าที่เฉพาะ",
+      "definition_en": "A computing system built into a device to perform dedicated functions. Resource limits, long operating life and update constraints may affect its security management.",
+      "explanation_th": "Embedded System ฝังอยู่ในอุปกรณ์เพื่อทำหน้าที่เฉพาะ อาจมีทรัพยากรจำกัด อายุใช้งานยาวและอัปเดตยาก บางระบบไม่เชื่อมเครือข่าย จึงไม่ใช่ทุก Embedded System เป็น IoT หรือเป็นระบบควบคุมอุตสาหกรรม",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Assess actual connectivity, function and maintenance limits rather than assume workstation security procedures apply unchanged.",
+      "exam_relevance_th": "ประเมินการเชื่อมต่อ หน้าที่และข้อจำกัดบำรุงรักษาจริง แทนสรุปว่าใช้ขั้นตอนของเครื่องทำงานได้โดยไม่เปลี่ยน",
+      "example_en": "A dedicated access controller requires a supported update method compatible with its hardware and operating role.",
+      "example_th": "ตัวควบคุมการเข้าออกเฉพาะงานต้องใช้วิธีอัปเดตที่ยังรองรับและเข้ากับ Hardware กับบทบาทใช้งาน",
+      "confused_with": [
+        "Internet of Things",
+        "Industrial Control System"
+      ],
+      "keywords": [
+        "Embedded System",
+        "dedicated function",
+        "constrained device"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-010",
+          "locator": "KNOW-D4-010",
+          "concept_id": "KNOW-D4-010"
+        },
+        {
+          "source_id": "R31",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r31",
+          "concept_id": "KNOW-D4-010"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-048",
+      "term": "Industrial Control System",
+      "acronym": "ICS",
+      "full_form": "Industrial Control System",
+      "thai_meaning": "ระบบควบคุมกระบวนการอุตสาหกรรม",
+      "definition_en": "A system that monitors or controls physical processes. Safety, predictable operation and availability influence security changes as well as information protection.",
+      "explanation_th": "ICS ตรวจหรือควบคุมกระบวนการทางกายภาพ การโจมตีหรือเปลี่ยนระบบไม่เหมาะสมอาจกระทบคนและกระบวนการ ไม่ใช่เพียงข้อมูล การ Patch จึงต้องดูอำนาจ ความเข้ากันได้ การทดสอบ ช่วงบำรุงรักษาและการกู้คืนตามบริบท",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Balance the stated safety and operational constraints; neither immediate restart regardless of harm nor never patching is a universal rule.",
+      "exam_relevance_th": "คำนึงถึงความปลอดภัยและข้อจำกัดปฏิบัติการที่ระบุ ไม่มีหลักสากลให้ Restart ทันทีโดยไม่สนผลหรือไม่ Patch เลย",
+      "example_en": "A plant schedules a tested controller update during an approved safe window while restricting unnecessary network access meanwhile.",
+      "example_th": "โรงงานนัดอัปเดต Controller ที่ทดสอบแล้วในช่วงปลอดภัยที่อนุมัติ พร้อมจำกัดเครือข่ายที่ไม่จำเป็นระหว่างรอ",
+      "confused_with": [
+        "Internet of Things",
+        "Embedded System"
+      ],
+      "keywords": [
+        "Industrial Control System",
+        "physical process",
+        "OT",
+        "safety"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-010",
+          "locator": "KNOW-D4-010",
+          "concept_id": "KNOW-D4-010"
+        },
+        {
+          "source_id": "R31",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r31",
+          "concept_id": "KNOW-D4-010"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-049",
+      "term": "Internet of Things",
+      "acronym": "IoT",
+      "full_form": "Internet of Things",
+      "thai_meaning": "เครือข่ายอุปกรณ์กายภาพที่แลกเปลี่ยนข้อมูล",
+      "definition_en": "Physical devices with network connectivity that exchange data, such as sensors and cameras. Dedicated functions and limited maintenance capabilities can create distinctive security needs.",
+      "explanation_th": "IoT รวมอุปกรณ์กายภาพที่เชื่อมเครือข่ายเพื่อแลกเปลี่ยนข้อมูล เช่น กล้องและ Sensor ต้องดูบัญชีทรัพย์สิน รหัสเริ่มต้น Firmware ที่รองรับ บริการจำเป็นและแผนเปลี่ยนทดแทน การจำกัดเครือข่ายไม่ได้แก้ Firmware ที่มีช่องโหว่เอง",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Preserve necessary operating and maintenance flows while reducing exposure; IoT, embedded and industrial are overlapping properties, not synonyms.",
+      "exam_relevance_th": "คงเส้นทางงานและบำรุงรักษาที่จำเป็นพร้อมลดการเปิดเผย IoT, Embedded และ Industrial ซ้อนทับกันได้แต่ไม่ใช่คำเดียวกัน",
+      "example_en": "A camera may reach its recorder and approved update service but is denied unrelated finance-server access.",
+      "example_th": "กล้องเข้าถึง Recorder และบริการอัปเดตที่อนุมัติได้ แต่ถูกห้ามเข้าถึงเซิร์ฟเวอร์การเงินที่ไม่เกี่ยวข้อง",
+      "confused_with": [
+        "Embedded System",
+        "Industrial Control System"
+      ],
+      "keywords": [
+        "Internet of Things",
+        "connected device",
+        "sensor",
+        "camera",
+        "lifecycle"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-011",
+          "locator": "KNOW-D4-011",
+          "concept_id": "KNOW-D4-011"
+        },
+        {
+          "source_id": "R34",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r34",
+          "concept_id": "KNOW-D4-011"
+        },
+        {
+          "source_id": "R31",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r31",
+          "concept_id": "KNOW-D4-011"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-050",
+      "term": "TCP vs. UDP",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ความแตกต่างของพฤติกรรม TCP และ UDP",
+      "definition_en": "TCP supplies a reliable ordered byte stream; UDP supplies datagrams without its own delivery or ordering guarantee. Neither native transport choice by itself establishes confidential application communication.",
+      "explanation_th": "TCP ให้ Byte Stream ที่เรียงลำดับและเชื่อถือได้ ส่วน UDP ส่ง Datagram โดยไม่รับประกันการส่งถึงหรือลำดับในตัว แอปอาจเสริมกลไกเอง การเลือก Transport อย่างเดียวไม่ได้ทำให้ข้อมูลเป็นความลับ และ Overhead ต่ำไม่รับประกันความเร็วแอป",
+      "category": "confusing_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Choose from stated behavior requirements rather than a universal fast/slow or secure/insecure ranking.",
+      "exam_relevance_th": "เลือกจากพฤติกรรมที่งานต้องการ แทนการจัดอันดับเร็ว/ช้าหรือปลอดภัย/ไม่ปลอดภัยแบบเหมารวม",
+      "example_en": "A design review separately considers a stream-transfer requirement, latency tolerance and the need for an encrypted channel.",
+      "example_th": "การทบทวนแบบพิจารณาความต้องการส่ง Stream ความยอมรับความหน่วงและความจำเป็นช่องทางเข้ารหัสแยกกัน",
+      "confused_with": [
+        "Transmission Control Protocol",
+        "User Datagram Protocol"
+      ],
+      "keywords": [
+        "TCP vs. UDP",
+        "transport comparison",
+        "reliability",
+        "ordering"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-002",
+          "locator": "KNOW-D4-002",
+          "concept_id": "KNOW-D4-002"
+        },
+        {
+          "source_id": "R04",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r04",
+          "concept_id": "KNOW-D4-002"
+        },
+        {
+          "source_id": "R05",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r05",
+          "concept_id": "KNOW-D4-002"
+        },
+        {
+          "source_id": "R33",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r33",
+          "concept_id": "KNOW-D4-002"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-051",
+      "term": "SFTP vs. FTPS",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ความแตกต่างของการส่งไฟล์ผ่าน SSH กับ FTP ที่ใช้ TLS",
+      "definition_en": "SFTP uses an SSH-based file-transfer protocol in the cited implementation; FTPS uses FTP with TLS. They require compatible clients and are not interchangeable merely by changing a port.",
+      "explanation_th": "SFTP ใช้ Protocol ส่งไฟล์ผ่าน SSH ในการใช้งานที่อ้างอิง ส่วน FTPS ใช้ FTP พร้อม TLS ต้องใช้ Client ให้ตรง Protocol การเปลี่ยน Port ไม่แปลงให้สื่อสารแทนกัน และ FTPS ต้องตรวจการป้องกัน Data Connection ตามที่ต้องการด้วย",
+      "category": "confusing_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Use the actual protocol and configured connection protection as evidence, rather than treating both secure-transfer labels as identical.",
+      "exam_relevance_th": "ใช้ Protocol จริงและการป้องกันการเชื่อมต่อที่ตั้งไว้เป็นหลักฐาน แทนถือว่าป้ายส่งไฟล์ปลอดภัยทั้งสองเหมือนกัน",
+      "example_en": "A team diagnoses a failed connection by checking whether the endpoint expects SSH file transfer or FTP/TLS negotiation.",
+      "example_th": "ทีมวิเคราะห์การเชื่อมต่อไม่สำเร็จโดยตรวจว่าปลายทางต้องการส่งไฟล์ผ่าน SSH หรือเจรจา FTP/TLS",
+      "confused_with": [
+        "SSH File Transfer Protocol",
+        "FTPS"
+      ],
+      "keywords": [
+        "SFTP vs. FTPS",
+        "file transfer compatibility"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-007",
+          "locator": "KNOW-D4-007",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R20",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r20",
+          "concept_id": "KNOW-D4-007"
+        },
+        {
+          "source_id": "R19",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r19",
+          "concept_id": "KNOW-D4-007"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-052",
+      "term": "IDS vs. IPS",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ความแตกต่างของบทบาทตรวจจับกับป้องกันการบุกรุก",
+      "definition_en": "IDS emphasizes identifying and reporting potential intrusions; IPS can additionally apply configured prevention. Product capability, placement and enabled policy determine the actual behavior.",
+      "explanation_th": "IDS เน้นระบุและรายงานสิ่งที่อาจเป็นการบุกรุก ส่วน IPS อาจป้องกันตามที่ตั้งค่า ต้องดูความสามารถ ตำแหน่งและนโยบายจริง ไม่ใช่สรุปว่า Alert ถูก Block แล้วจากชื่อหรือมีเครื่องมือใดเครื่องมือหนึ่ง",
+      "category": "confusing_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Identify the required action and stated configuration, including false-positive impact, rather than choose a product name alone.",
+      "exam_relevance_th": "ระบุการกระทำที่ต้องการกับการตั้งค่าที่ระบุ รวมผลจาก False Positive แทนการเลือกจากชื่อผลิตภัณฑ์อย่างเดียว",
+      "example_en": "A monitoring-only deployment reports a threat; an approved prevention deployment may reject matching traffic.",
+      "example_th": "การ Deploy แบบติดตามอย่างเดียวรายงานภัย ส่วนแบบป้องกันที่อนุมัติอาจปฏิเสธทราฟฟิกที่ตรงกฎ",
+      "confused_with": [
+        "Intrusion Detection System",
+        "Intrusion Prevention System"
+      ],
+      "keywords": [
+        "IDS vs. IPS",
+        "alert versus block",
+        "detection versus prevention"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "R32",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r32",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-053",
+      "term": "Wi-Fi Generation vs. Security Mode",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ความแตกต่างของรุ่น Wi-Fi กับโหมดความปลอดภัย",
+      "definition_en": "A Wi-Fi generation describes networking capabilities, whereas a security mode describes authentication and protection choices. One label does not establish the other configuration.",
+      "explanation_th": "รุ่น Wi-Fi อธิบายความสามารถเครือข่าย ส่วนโหมดความปลอดภัยอธิบายวิธียืนยันตัวตนและป้องกัน การระบุรุ่นใหม่ไม่ได้พิสูจน์ว่าเปิด WPA3 หรือกำหนดสิทธิ์ถูกต้อง และอัตราตามทฤษฎีไม่ใช่ผลรับส่งจริง",
+      "category": "confusing_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Separate capability, configured protection and achieved performance; exact generation-rate rankings are outside the accepted baseline.",
+      "exam_relevance_th": "แยกความสามารถ การป้องกันที่ตั้งไว้และประสิทธิภาพจริง การจัดอันดับตัวเลขความเร็วแต่ละรุ่นอยู่นอกฐานความรู้ที่ยอมรับ",
+      "example_en": "A procurement check asks for actual security settings instead of accepting an advertised generation as proof of protection.",
+      "example_th": "การตรวจจัดซื้อขอการตั้งค่าความปลอดภัยจริง แทนยอมรับรุ่นที่โฆษณาเป็นข้อพิสูจน์การป้องกัน",
+      "confused_with": [
+        "Wi-Fi",
+        "Wi-Fi Protected Access 3"
+      ],
+      "keywords": [
+        "Wi-Fi Generation vs. Security Mode",
+        "wireless capability",
+        "security configuration"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-008",
+          "locator": "KNOW-D4-008",
+          "concept_id": "KNOW-D4-008"
+        },
+        {
+          "source_id": "R17",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r17",
+          "concept_id": "KNOW-D4-008"
+        },
+        {
+          "source_id": "R18",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r18",
+          "concept_id": "KNOW-D4-008"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-054",
+      "term": "Pairing vs. Service Authorization",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ความแตกต่างของการจับคู่กับสิทธิ์ใช้บริการ",
+      "definition_en": "Bluetooth pairing establishes security information between peers; service authorization determines what a peer may do. Establishing the association does not grant every application permission.",
+      "explanation_th": "การจับคู่ Bluetooth สร้างข้อมูลความปลอดภัยระหว่างอุปกรณ์ ส่วน Service Authorization กำหนดว่าให้ทำสิ่งใดได้ การจับคู่สำเร็จไม่ได้หมายความว่าใช้ได้ทุกแอปหรือยืนยันตัวบุคคลแล้ว ต้องแยกความสัมพันธ์จากสิทธิ์งาน",
+      "category": "confusing_term",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Distinguish establishing a protected relationship from granting a specific service permission; use the stated application controls.",
+      "exam_relevance_th": "แยกการสร้างความสัมพันธ์ที่ป้องกันจากการให้สิทธิ์บริการเฉพาะ และพิจารณามาตรการแอปที่ระบุ",
+      "example_en": "A paired scanner is permitted to submit scans but is not thereby authorized to access unrelated application data.",
+      "example_th": "เครื่องสแกนที่จับคู่แล้วส่งงาน Scan ได้ แต่ไม่ได้มีสิทธิ์อ่านข้อมูลแอปอื่นเพียงเพราะจับคู่สำเร็จ",
+      "confused_with": [
+        "Bluetooth Pairing",
+        "Authorization"
+      ],
+      "keywords": [
+        "Pairing vs. Service Authorization",
+        "Bluetooth",
+        "service permission"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-009",
+          "locator": "KNOW-D4-009",
+          "concept_id": "KNOW-D4-009"
+        },
+        {
+          "source_id": "R29",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r29",
+          "concept_id": "KNOW-D4-009"
+        },
+        {
+          "source_id": "R30",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r30",
+          "concept_id": "KNOW-D4-009"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-055",
+      "term": "AI-Assisted Network Monitoring",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การติดตามเครือข่ายโดยมี AI ช่วยวิเคราะห์",
+      "definition_en": "Use of learning-assisted analysis to help identify unusual network behavior beyond known signatures. Its output supports contextual monitoring and reporting, not automatic proof of compromise.",
+      "explanation_th": "AI ช่วยวิเคราะห์พฤติกรรมเครือข่ายเพื่อพบสิ่งผิดปกติเกิน Signature ที่รู้จัก เช่น ทราฟฟิกจากอุปกรณ์ไร้สายหรือ Embedded เจ้าหน้าที่ใช้ผลพร้อมบริบทเพื่อติดตามและรายงาน ยังมีการแจ้งผิดหรือพลาด และไม่ใช่ทุก Anomaly Detector ใช้ AI",
+      "category": "scenario_vocabulary",
+      "domain": 4,
+      "objective": "4.1",
+      "exam_relevance": "Apply the official foundational AI context to network paths and alert interpretation, without introducing model-training engineering.",
+      "exam_relevance_th": "ใช้บริบท AI ระดับพื้นฐานตามขอบเขตทางการกับเส้นทางเครือข่ายและการตีความ Alert โดยไม่เพิ่มวิศวกรรมฝึก Model",
+      "example_en": "A learning-based monitor flags a sensor transfer to a new destination for review alongside approved operational changes.",
+      "example_th": "เครื่องมือติดตามแบบเรียนรู้แจ้งการส่งข้อมูลของ Sensor ไปปลายทางใหม่ให้ทบทวนเทียบกับการเปลี่ยนงานที่อนุมัติ",
+      "confused_with": [
+        "Anomaly-Based Detection",
+        "Anomalous Sign-In Detection"
+      ],
+      "keywords": [
+        "AI-Assisted Network Monitoring",
+        "AI",
+        "network behavior",
+        "wireless",
+        "embedded"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-022",
+          "locator": "KNOW-D4-022",
+          "concept_id": "KNOW-D4-022"
+        },
+        {
+          "source_id": "R02",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r02",
+          "concept_id": "KNOW-D4-022"
+        },
+        {
+          "source_id": "R32",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r32",
+          "concept_id": "KNOW-D4-022"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-056",
+      "term": "Network Segmentation",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การแบ่งเครือข่ายเพื่อควบคุมการสื่อสาร",
+      "definition_en": "Creating network boundaries that enable control of communication between groups of systems. Effective policy can reduce exposure and potential lateral spread without guaranteeing complete containment.",
+      "explanation_th": "Network Segmentation แบ่งกลุ่มและสร้างขอบเขตให้ควบคุมการสื่อสารได้ นโยบายที่มีผลจริงลดการเปิดเผยและโอกาสแพร่การโจมตี แต่เส้นทางจำเป็นยังอาจพาการโจมตีผ่านได้ การแบ่งชื่อหรือกลุ่มอย่างเดียวไม่รับประกันการแยกที่ปลอดภัย",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Identify permitted paths and enforcement points rather than infer security from different segments or labels.",
+      "exam_relevance_th": "ระบุเส้นทางที่อนุญาตและจุดบังคับใช้ แทนสรุปความปลอดภัยจากการอยู่คนละ Segment หรือชื่อเรียก",
+      "example_en": "Guest clients are separated from finance services, with approved rules restricting the routed communication between them.",
+      "example_th": "Guest Client แยกจากบริการการเงิน โดยกฎที่อนุมัติจำกัดการสื่อสารผ่าน Routing ระหว่างกัน",
+      "confused_with": [
+        "Virtual Local Area Network",
+        "Micro-Segmentation"
+      ],
+      "keywords": [
+        "Network Segmentation",
+        "containment",
+        "communication boundary"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-012",
+          "locator": "KNOW-D4-012",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R31",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r31",
+          "concept_id": "KNOW-D4-012"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-057",
+      "term": "Firewall Zone",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "โซนเครือข่ายสำหรับกำหนดนโยบายไฟร์วอลล์",
+      "definition_en": "A logical grouping of interfaces, systems or traffic used to apply firewall policy between security areas. The zone name does not itself grant trust or define the effective rules.",
+      "explanation_th": "Firewall Zone รวม Interface ระบบหรือทราฟฟิกเพื่อกำหนดนโยบายระหว่างพื้นที่ ต้องดูว่ากฎอนุญาตอะไรจริง ชื่อ Inside หรือ Trusted เป็นป้ายในแบบเครือข่าย ไม่ใช่การให้สิทธิ์ทุกเครื่องหรือทุกบริการ",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Read direction and allowed services at each boundary; an inside-zone label is not resource authorization.",
+      "exam_relevance_th": "อ่านทิศทางกับบริการที่อนุญาตที่แต่ละขอบเขต ชื่อ Zone ภายในไม่ใช่สิทธิ์เข้าทรัพยากร",
+      "example_en": "A firewall separates guest, server and management zones with different approved service rules.",
+      "example_th": "Firewall แยก Zone ของ Guest, Server และ Management พร้อมกฎบริการที่อนุมัติต่างกัน",
+      "confused_with": [
+        "Demilitarized Zone",
+        "Trust Boundary"
+      ],
+      "keywords": [
+        "Firewall Zone",
+        "inside zone",
+        "policy boundary"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-012",
+          "locator": "KNOW-D4-012",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R15",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r15",
+          "concept_id": "KNOW-D4-012"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-058",
+      "term": "Demilitarized Zone",
+      "acronym": "DMZ",
+      "full_form": "Demilitarized Zone",
+      "thai_meaning": "โซนแยกบริการที่เปิดให้ภายนอกเข้าถึง",
+      "definition_en": "A network zone separating public-facing services from internal resources through defined policy boundaries. Designs may use one multi-interface firewall or multiple firewalls.",
+      "explanation_th": "DMZ แยกบริการที่ให้ภายนอกใช้จากทรัพยากรภายในผ่านขอบเขตและกฎที่กำหนด ใช้ Firewall หลาย Interface ตัวเดียวหรือหลายตัวได้ จำนวนเครื่องไม่ยืนยันความปลอดภัยหรือ Availability ต้องตรวจเส้นทางจริง",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Judge isolation and required service paths, not a mandatory appliance count or an assumption that the DMZ has unrestricted inside access.",
+      "exam_relevance_th": "ประเมินการแยกกับเส้นทางจำเป็น ไม่ใช่จำนวนอุปกรณ์ตายตัวหรือสรุปว่า DMZ เข้าภายในได้ไม่จำกัด",
+      "example_en": "Public web access reaches a DMZ service, while new direct Internet connections to the internal database are denied.",
+      "example_th": "ผู้ใช้เว็บภายนอกเข้าบริการใน DMZ ได้ แต่การเริ่มเชื่อมตรงจาก Internet ไปฐานข้อมูลภายในถูกปฏิเสธ",
+      "confused_with": [
+        "Firewall Zone"
+      ],
+      "keywords": [
+        "Demilitarized Zone",
+        "public-facing service",
+        "internal resources"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-012",
+          "locator": "KNOW-D4-012",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-012"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-059",
+      "term": "Virtual Local Area Network",
+      "acronym": "VLAN",
+      "full_form": "Virtual Local Area Network",
+      "thai_meaning": "เครือข่ายท้องถิ่นเสมือนที่แยกบรอดคาสต์โดเมน",
+      "definition_en": "A logical separation of Layer 2 broadcast domains on capable network infrastructure. Communication between VLANs requires appropriate forwarding and policy enforcement.",
+      "explanation_th": "VLAN แยก Broadcast Domain ระดับ Layer 2 เชิง Logical บนอุปกรณ์ที่รองรับ การติดต่อข้าม VLAN โดยทั่วไปต้องส่งต่อระดับ Layer 3 และใช้นโยบายจำกัด เลข VLAN อยู่คนละระบบกับเลข Port และการอยู่คนละ VLAN ไม่พิสูจน์สิทธิ์ขั้นต่ำ",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Distinguish broadcast separation from an enforced access policy; examine permitted inter-VLAN paths.",
+      "exam_relevance_th": "แยกการแยก Broadcast ออกจากนโยบายสิทธิ์ที่บังคับจริง และตรวจเส้นทางข้าม VLAN ที่อนุญาต",
+      "example_en": "Guest and server VLANs remain separated at Layer 2, while a routed rule limits access between them.",
+      "example_th": "VLAN ของ Guest และ Server แยกกันที่ Layer 2 และมีกฎบนเส้นทาง Routing จำกัดการเข้าถึงระหว่างกัน",
+      "confused_with": [
+        "Network Segmentation",
+        "Network Port"
+      ],
+      "keywords": [
+        "Virtual Local Area Network",
+        "Layer 2",
+        "broadcast domain",
+        "802.1Q"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-013",
+          "locator": "KNOW-D4-013",
+          "concept_id": "KNOW-D4-013"
+        },
+        {
+          "source_id": "R12",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r12",
+          "concept_id": "KNOW-D4-013"
+        },
+        {
+          "source_id": "R13",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r13",
+          "concept_id": "KNOW-D4-013"
+        },
+        {
+          "source_id": "R31",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r31",
+          "concept_id": "KNOW-D4-013"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-060",
+      "term": "Micro-Segmentation",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การแบ่งและบังคับนโยบายละเอียดระดับเวิร์กโหลด",
+      "definition_en": "Applying granular communication policies around workloads or small groups rather than allowing broad peer reachability. Endpoint agents, host firewalls and other capable mechanisms can provide enforcement.",
+      "explanation_th": "Micro-Segmentation ใช้นโยบายละเอียดรอบ Workload หรือกลุ่มเล็ก อาจใช้ Host Agent, Host Firewall หรือกลไกที่รองรับอื่น ไม่ได้บังคับว่าต้องซื้อ SDN หรือ NGFW เท่านั้น และการกรองตาม IP ไม่ได้พิสูจน์ตัวตน Workload ครบถ้วน",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Select the required granularity, identity assurance and available enforcement instead of relying on a product category.",
+      "exam_relevance_th": "เลือกความละเอียด ความเชื่อมั่นตัวตนและกลไกบังคับที่ต้องใช้ แทนพึ่งชื่อประเภทผลิตภัณฑ์",
+      "example_en": "Managed host rules allow an application workload to reach its required database service but deny unnecessary peer access.",
+      "example_th": "กฎ Host ที่บริหารจัดการให้ Workload แอปเข้าบริการฐานข้อมูลที่จำเป็นและปฏิเสธ Peer ที่ไม่ต้องใช้",
+      "confused_with": [
+        "Virtual Local Area Network",
+        "Workload Identity"
+      ],
+      "keywords": [
+        "Micro-Segmentation",
+        "workload policy",
+        "host firewall",
+        "granular control"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-014",
+          "locator": "KNOW-D4-014",
+          "concept_id": "KNOW-D4-014"
+        },
+        {
+          "source_id": "R15",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r15",
+          "concept_id": "KNOW-D4-014"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-061",
+      "term": "Zero Trust",
+      "acronym": "ZT",
+      "full_form": "Zero Trust",
+      "thai_meaning": "หลักการไม่ให้ความเชื่อถือโดยปริยายจากตำแหน่งเครือข่าย",
+      "definition_en": "Security principles that do not grant implicit trust solely from network location or ownership. Access decisions evaluate the requester, device, resource and relevant context under policy.",
+      "explanation_th": "Zero Trust ไม่ให้ความเชื่อถืออัตโนมัติเพียงเพราะอยู่ภายในหรือใช้อุปกรณ์องค์กร ต้องประเมินผู้ร้องขอ อุปกรณ์ ทรัพยากรและบริบทตามนโยบาย ใช้ร่วมกับ VPN และ Firewall ได้ ไม่ได้ให้คน Login ใหม่ทุก Packet หรือให้ถอดการป้องกันเครือข่าย",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Separate reachability from resource access; retained perimeter controls can complement explicit resource decisions.",
+      "exam_relevance_th": "แยกการติดต่อถึงออกจากสิทธิ์ทรัพยากร มาตรการขอบเครือข่ายที่คงไว้ช่วยเสริมการตัดสินสิทธิ์อย่างชัดเจนได้",
+      "example_en": "A valid VPN connection supplies a path, while a resource policy separately checks whether the requested session is permitted.",
+      "example_th": "VPN ที่เชื่อมต่อถูกต้องให้เส้นทาง ส่วนกฎทรัพยากรตรวจแยกว่ามีสิทธิ์สร้าง Session ที่ร้องขอหรือไม่",
+      "confused_with": [
+        "Virtual Private Network",
+        "Network Segmentation",
+        "Authorization"
+      ],
+      "keywords": [
+        "Zero Trust",
+        "implicit trust",
+        "resource session"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-016",
+          "locator": "KNOW-D4-016",
+          "concept_id": "KNOW-D4-016"
+        },
+        {
+          "source_id": "R15",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r15",
+          "concept_id": "KNOW-D4-016"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-062",
+      "term": "Trust Boundary",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ขอบเขตที่ต้องประเมินและบังคับนโยบายความปลอดภัย",
+      "definition_en": "A boundary across which security assumptions, control or policy differ. Communication crossing it requires the appropriate checks rather than trust inferred from a zone label.",
+      "explanation_th": "Trust Boundary คือขอบเขตที่สมมติฐาน การควบคุมหรือนโยบายความปลอดภัยต่างกัน การข้ามต้องผ่านการตรวจและบังคับที่เหมาะสม ไม่ใช่ถือว่าอีกฝั่งได้รับสิทธิ์ทั้งหมดเพราะชื่อ Trusted หรือเป็นเครือข่ายภายใน",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Identify what changes at the boundary and where controls act; a diagram line alone is not effective enforcement.",
+      "exam_relevance_th": "ระบุว่าสิ่งใดเปลี่ยนที่ขอบเขตและมาตรการทำงานตรงไหน เส้นในแผนภาพอย่างเดียวไม่ใช่การบังคับที่มีผล",
+      "example_en": "A management path crossing into a server zone permits only the approved administrative service and identities.",
+      "example_th": "เส้นทางบริหารที่ข้ามเข้า Server Zone อนุญาตเฉพาะบริการและตัวตนผู้บริหารที่อนุมัติ",
+      "confused_with": [
+        "Firewall Zone",
+        "Zero Trust"
+      ],
+      "keywords": [
+        "Trust Boundary",
+        "policy boundary",
+        "enforcement point"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-012",
+          "locator": "KNOW-D4-012",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-016",
+          "locator": "KNOW-D4-016",
+          "concept_id": "KNOW-D4-016"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R15",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r15",
+          "concept_id": "KNOW-D4-012"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-063",
+      "term": "Lateral Movement",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การเคลื่อนต่อไปยังระบบอื่นหลังได้จุดเข้าถึง",
+      "definition_en": "Movement from an accessed or compromised system toward other resources. Restricting unnecessary communication can limit opportunities, but necessary allowed paths still require protection.",
+      "explanation_th": "Lateral Movement คือการเคลื่อนจากระบบที่เข้าถึงหรือยึดได้ไปยังทรัพยากรอื่น การจำกัดการสื่อสารที่ไม่จำเป็นช่วยลดโอกาส แต่เส้นทางงานที่อนุญาตยังต้องมีการป้องกัน จึงไม่รับประกันว่าโจมตีข้าม Segment ไม่ได้",
+      "category": "scenario_vocabulary",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Relate containment to actual permitted paths; distinguish reducing spread opportunities from repairing the original compromise.",
+      "exam_relevance_th": "เชื่อมการจำกัดการแพร่กับเส้นทางที่อนุญาตจริง และแยกการลดโอกาสเคลื่อนต่อจากการแก้เครื่องที่ถูกยึด",
+      "example_en": "A compromised workstation cannot initiate unrelated database connections because the segment policy denies that path.",
+      "example_th": "เครื่องทำงานที่ถูกยึดเริ่มเชื่อมฐานข้อมูลที่ไม่เกี่ยวไม่ได้ เพราะนโยบาย Segment ปฏิเสธเส้นทางนั้น",
+      "confused_with": [
+        "Blast Radius"
+      ],
+      "keywords": [
+        "Lateral Movement",
+        "lateral spread",
+        "containment",
+        "peer reachability"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-012",
+          "locator": "KNOW-D4-012",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R31",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r31",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-012"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-064",
+      "term": "Default Deny",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "นโยบายปฏิเสธสิ่งที่ไม่ได้อนุญาตไว้",
+      "definition_en": "A policy approach in which communication is denied unless it satisfies an explicit permission. Required traffic and response handling must be defined for the actual enforcement mechanism.",
+      "explanation_th": "Default Deny ปฏิเสธการสื่อสารที่ไม่ตรงสิ่งที่อนุญาตไว้ ต้องกำหนดงานที่จำเป็น ทิศทางและข้อมูลตอบกลับให้ตรงกับกลไกจริง ไม่ได้หมายความว่าต้องปิดงานที่ถูกต้องทั้งหมดหรือว่า Rule Order เหมือนกันทุกผลิตภัณฑ์",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Interpret explicit permits together with state, direction and precedence; verify both allowed and denied flows.",
+      "exam_relevance_th": "ตีความสิ่งที่อนุญาตร่วมกับ State ทิศทางและลำดับความสำคัญ พร้อมทดสอบทั้งสิ่งที่ผ่านและถูกปฏิเสธ",
+      "example_en": "A zone policy permits approved web and management flows, then denies other new connections.",
+      "example_th": "นโยบาย Zone อนุญาตทราฟฟิกเว็บและการบริหารที่อนุมัติ แล้วปฏิเสธการเริ่มเชื่อมต่ออื่น",
+      "confused_with": [
+        "Access Control List"
+      ],
+      "keywords": [
+        "Default Deny",
+        "deny by default",
+        "explicit permit"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-006",
+          "locator": "KNOW-D4-006",
+          "concept_id": "KNOW-D4-006"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-012",
+          "locator": "KNOW-D4-012",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-006"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-065",
+      "term": "Permitted Traffic Flow",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "เส้นทางการสื่อสารที่นโยบายอนุญาต",
+      "definition_en": "A communication path allowed for a stated operational purpose under specified source, destination, service and policy conditions. Permission to communicate does not prove every carried request is safe.",
+      "explanation_th": "Permitted Flow คือเส้นทางที่อนุญาตตามงาน ต้นทาง ปลายทาง บริการและเงื่อนไขที่กำหนด การผ่านเครือข่ายได้ไม่ได้ยืนยันสิทธิ์หรือความปลอดภัยของทุกคำขอในแอป ต้องคงมาตรการของแอปและข้อมูลด้วย",
+      "category": "scenario_vocabulary",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Evaluate residual risk on required paths rather than assume segmentation makes authorized network traffic harmless.",
+      "exam_relevance_th": "ประเมินความเสี่ยงที่เหลือบนเส้นทางจำเป็น แทนสรุปว่า Segmentation ทำให้ทราฟฟิกที่ผ่านนโยบายปลอดภัยทั้งหมด",
+      "example_en": "A web workload can call one application service, while the application still checks each requested operation.",
+      "example_th": "Web Workload เรียกบริการแอปหนึ่งรายการได้ แต่แอปยังตรวจการกระทำที่ร้องขอแต่ละครั้ง",
+      "confused_with": [
+        "Authorization"
+      ],
+      "keywords": [
+        "Permitted Traffic Flow",
+        "allowed path",
+        "residual risk"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-012",
+          "locator": "KNOW-D4-012",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-015",
+          "locator": "KNOW-D4-015",
+          "concept_id": "KNOW-D4-015"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R31",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r31",
+          "concept_id": "KNOW-D4-012"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-066",
+      "term": "Common Dependency",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ส่วนพึ่งพาร่วมของมาตรการหลายชั้น",
+      "definition_en": "A component, service or administrative path on which multiple controls rely. Its failure or compromise can weaken several layers together, depending on the design.",
+      "explanation_th": "Common Dependency คือส่วนที่มาตรการหลายตัวพึ่งร่วม เช่น Console หรือข้อมูลยืนยันตัวตนที่ควบคุมทุกชั้น หากส่วนนั้นล้มเหลวหรือถูกยึดอาจกระทบหลายชั้นพร้อมกัน เป็นการวิเคราะห์แบบเครือข่าย ไม่ใช่ข้อสรุปว่าเครื่องมือหลายตัวต้องล้มพร้อมกันเสมอ",
+      "category": "scenario_vocabulary",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Inspect shared administration and supporting services instead of inferring independent protection from the number of tools.",
+      "exam_relevance_th": "ตรวจการบริหารและบริการพื้นฐานที่ใช้ร่วม แทนสรุปว่าป้องกันอย่างอิสระจากจำนวนเครื่องมือ",
+      "example_en": "A review finds that one unrestricted management account can disable both traffic enforcement and monitoring.",
+      "example_th": "การทบทวนพบว่าบัญชีบริหารที่ไม่จำกัดสิทธิ์ชุดเดียวปิดได้ทั้งการบังคับทราฟฟิกและการติดตาม",
+      "confused_with": [
+        "Defense in Depth (Layered Defense)",
+        "Redundancy"
+      ],
+      "keywords": [
+        "Common Dependency",
+        "shared failure",
+        "administrative dependency"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-015",
+          "locator": "KNOW-D4-015",
+          "concept_id": "KNOW-D4-015"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-015"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-067",
+      "term": "Inter-VLAN Routing",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การส่งต่อทราฟฟิกระหว่าง VLAN",
+      "definition_en": "Layer 3 forwarding that enables communication between VLANs. The forwarding policy determines which inter-VLAN paths and services are allowed.",
+      "explanation_th": "Inter-VLAN Routing ให้ VLAN ติดต่อกันด้วยการส่งต่อระดับ Layer 3 หากอนุญาตกว้าง การแยก Broadcast ระดับ Layer 2 ก็ยังไม่ทำตามสิทธิ์ที่ต้องการ ต้องจำกัดและทดสอบเส้นทางตามงานจริง",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Locate the permissive routed path when different VLANs remain overconnected; renumbering a VLAN does not fix its access rules.",
+      "exam_relevance_th": "หาเส้นทาง Routing ที่เปิดกว้างเมื่อคนละ VLAN ยังติดต่อเกินสิทธิ์ การเปลี่ยนเลข VLAN ไม่แก้กฎเข้าถึง",
+      "example_en": "An approved routing policy allows a support service between VLANs but denies guest access to payroll.",
+      "example_th": "นโยบาย Routing ที่อนุมัติให้บริการ Support ข้าม VLAN แต่ปฏิเสธ Guest ไปยังระบบเงินเดือน",
+      "confused_with": [
+        "Virtual Local Area Network",
+        "Network Segmentation"
+      ],
+      "keywords": [
+        "Inter-VLAN Routing",
+        "Layer 3",
+        "routed policy"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-013",
+          "locator": "KNOW-D4-013",
+          "concept_id": "KNOW-D4-013"
+        },
+        {
+          "source_id": "R31",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r31",
+          "concept_id": "KNOW-D4-013"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-013"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-068",
+      "term": "Segmentation vs. Access Control",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ความแตกต่างของการแบ่งกลุ่มกับการบังคับสิทธิ์",
+      "definition_en": "Segmentation creates communication boundaries; access controls enforce which interactions are permitted. A separated group can remain overexposed through permissive routes or resource permissions.",
+      "explanation_th": "Segmentation สร้างขอบเขตการสื่อสาร ส่วน Access Control บังคับว่าให้ติดต่อหรือทำอะไรได้ กลุ่มที่แยกแล้วอาจยังเปิดเกินสิทธิ์จาก Routing หรือ Permission ที่กว้าง จึงต้องประเมินทั้งโครงสร้างและการบังคับจริง",
+      "category": "confusing_term",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Do not treat membership, naming or address separation as proof of least-privilege enforcement.",
+      "exam_relevance_th": "อย่าถือว่าสมาชิกกลุ่ม ชื่อเรียกหรือการแยกที่อยู่พิสูจน์การบังคับสิทธิ์ขั้นต่ำ",
+      "example_en": "Two VLANs have distinct broadcast domains, but a permit-all routing rule still exposes the server service.",
+      "example_th": "VLAN สองชุดแยก Broadcast Domain แล้ว แต่กฎ Routing ที่อนุญาตทั้งหมดยังเปิดให้เข้าบริการเซิร์ฟเวอร์",
+      "confused_with": [
+        "Network Segmentation",
+        "Access Control List",
+        "Authorization"
+      ],
+      "keywords": [
+        "Segmentation vs. Access Control",
+        "separation versus permission"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-012",
+          "locator": "KNOW-D4-012",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-013",
+          "locator": "KNOW-D4-013",
+          "concept_id": "KNOW-D4-013"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-016",
+          "locator": "KNOW-D4-016",
+          "concept_id": "KNOW-D4-016"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R31",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r31",
+          "concept_id": "KNOW-D4-012"
+        },
+        {
+          "source_id": "R15",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r15",
+          "concept_id": "KNOW-D4-012"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-069",
+      "term": "Development/Production Isolation",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การแยกงานพัฒนาจากทรัพยากรใช้งานจริง",
+      "definition_en": "Network and resource controls that restrict development workloads from sensitive production resources according to policy. Approved connectivity may remain without granting prohibited data access.",
+      "explanation_th": "การแยก Development/Production ใช้มาตรการเครือข่ายและทรัพยากรจำกัดงานพัฒนาจาก Production สำคัญตามนโยบาย ในบริบท AI ต้องดูทั้งเส้นทางและสิทธิ์ชุดข้อมูล การมีตัวตนพัฒนาที่ถูกต้องไม่ได้ให้สิทธิ์ข้อมูล Production ทุกอย่าง",
+      "category": "scenario_vocabulary",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Verify effective isolation and dataset permissions rather than zone names alone; preserve only the access explicitly required.",
+      "exam_relevance_th": "ตรวจการแยกและสิทธิ์ชุดข้อมูลที่มีผลจริง แทนดูเพียงชื่อ Zone และคงเฉพาะสิทธิ์ที่จำเป็นตามที่ระบุ",
+      "example_en": "An AI development service can reach an approved dataset gateway while its roles deny reads of restricted production datasets.",
+      "example_th": "บริการพัฒนา AI เข้าถึง Dataset Gateway ที่อนุมัติได้ แต่ Role ปฏิเสธการอ่านชุดข้อมูล Production ที่จำกัด",
+      "confused_with": [
+        "Workload Identity",
+        "Zero Trust"
+      ],
+      "keywords": [
+        "Development/Production Isolation",
+        "AI development",
+        "production data",
+        "isolation"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-023",
+          "locator": "KNOW-D4-023",
+          "concept_id": "KNOW-D4-023"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-024",
+          "locator": "KNOW-D4-024",
+          "concept_id": "KNOW-D4-024"
+        },
+        {
+          "source_id": "R02",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r02",
+          "concept_id": "KNOW-D4-023"
+        },
+        {
+          "source_id": "R15",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r15",
+          "concept_id": "KNOW-D4-023"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-023"
+        }
+      ],
+      "source_status": "supplemental",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-070",
+      "term": "Defense in Depth vs. High Availability",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ความแตกต่างของการป้องกันหลายชั้นกับการคงบริการพร้อมใช้",
+      "definition_en": "Defense in depth combines complementary safeguards; high availability addresses continued service through suitable resilience design. Layer count alone proves neither independent failures nor uninterrupted service.",
+      "explanation_th": "Defense in Depth ใช้มาตรการเสริมกันหลายชั้น ส่วน High Availability มุ่งให้บริการพร้อมใช้ด้วยการออกแบบที่เหมาะสม การมีหลายชั้นไม่ได้พิสูจน์ว่าล้มเหลวอิสระ ไม่มีจุดพึ่งร่วม หรือบริการไม่หยุด ต้องประเมินการสำรองและความพึ่งพาแยกกัน",
+      "category": "confusing_term",
+      "domain": 4,
+      "objective": "4.2",
+      "exam_relevance": "Use the stated threat or failure goal; do not select extra security layers as automatic evidence of availability.",
+      "exam_relevance_th": "ดูเป้าหมายเรื่องภัยหรือความล้มเหลวที่ระบุ อย่าเลือกการเพิ่มชั้นป้องกันเป็นหลักฐาน Availability โดยอัตโนมัติ",
+      "example_en": "A service has layered defenses, but both network appliances still depend on one power circuit.",
+      "example_th": "บริการมีการป้องกันหลายชั้น แต่อุปกรณ์เครือข่ายทั้งสองยังพึ่งวงจรไฟฟ้าชุดเดียว",
+      "confused_with": [
+        "Defense in Depth (Layered Defense)",
+        "Redundancy",
+        "Common Dependency"
+      ],
+      "keywords": [
+        "Defense in Depth vs. High Availability",
+        "layering",
+        "high availability",
+        "HA"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-015",
+          "locator": "KNOW-D4-015",
+          "concept_id": "KNOW-D4-015"
+        },
+        {
+          "source_id": "R14",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r14",
+          "concept_id": "KNOW-D4-015"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-071",
+      "term": "Cloud Computing",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "รูปแบบบริการทรัพยากรคอมพิวเตอร์ผ่านเครือข่ายตามความต้องการ",
+      "definition_en": "A model for obtaining configurable computing resources over a network from a shared pool with rapid provisioning and release. Its defining characteristics are distinct from particular pricing or deployment choices.",
+      "explanation_th": "Cloud Computing ให้ใช้ทรัพยากรที่ปรับตั้งได้ผ่านเครือข่ายจาก Pool ร่วม โดยจัดเตรียมและคืนทรัพยากรได้รวดเร็ว ต้องดูคุณลักษณะของบริการ ไม่ใช่ถือว่า Virtual Machine ที่ฝากไว้ทุกแบบเป็น Cloud หรือว่าชื่อ Cloud กำหนดราคากับสิทธิ์ให้แล้ว",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Recognize the characteristic being described, then separately identify service abstraction, deployment and retained security duties.",
+      "exam_relevance_th": "ระบุคุณลักษณะที่สถานการณ์อธิบาย แล้วแยก Service Model, Deployment และหน้าที่ความปลอดภัยที่ยังมี",
+      "example_en": "A service provides self-service provisioning, adjustable capacity and usage visibility under an approved account.",
+      "example_th": "บริการให้จัดเตรียมเอง ปรับความจุและเห็นข้อมูลการใช้ภายใต้บัญชีที่อนุมัติ",
+      "confused_with": [
+        "Virtualization",
+        "Cloud Service Provider"
+      ],
+      "keywords": [
+        "Cloud Computing",
+        "cloud characteristics",
+        "shared pool"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-017",
+          "locator": "KNOW-D4-017",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-017"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-072",
+      "term": "On-Demand Self-Service",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การจัดเตรียมทรัพยากรด้วยตนเองตามความต้องการ",
+      "definition_en": "A cloud characteristic allowing a consumer to provision capabilities without a person at the provider manually handling each request. It does not remove approval or entitlement requirements.",
+      "explanation_th": "On-Demand Self-Service ให้ผู้ใช้จัดเตรียมความสามารถได้โดยไม่ต้องให้เจ้าหน้าที่ผู้ให้บริการดำเนินการทุกคำขอ ยังต้องมีสิทธิ์ ข้อจำกัดและนโยบายอนุมัติ จึงไม่ใช่การขออะไรก็ได้โดยไม่มีการควบคุม",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Distinguish automated provisioning interaction from capacity scaling or public authorization.",
+      "exam_relevance_th": "แยกขั้นตอนจัดเตรียมอัตโนมัติจากการขยายความจุและการให้สิทธิ์แก่สาธารณะ",
+      "example_en": "An authorized team creates a permitted test environment through a portal without opening a provider support ticket.",
+      "example_th": "ทีมที่มีสิทธิ์สร้างสภาพแวดล้อมทดสอบที่อนุญาตผ่าน Portal โดยไม่ต้องส่ง Ticket ให้ผู้ให้บริการจัดเตรียมทุกครั้ง",
+      "confused_with": [
+        "Rapid Elasticity",
+        "Broad Network Access"
+      ],
+      "keywords": [
+        "On-Demand Self-Service",
+        "provisioning",
+        "portal",
+        "self-service"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-017",
+          "locator": "KNOW-D4-017",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-017"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-073",
+      "term": "Broad Network Access",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การเข้าถึงผ่านกลไกเครือข่ายและอุปกรณ์ลูกข่ายมาตรฐาน",
+      "definition_en": "A cloud characteristic describing network availability through standard mechanisms usable by different client platforms. It does not require unrestricted public access to customer resources.",
+      "explanation_th": "Broad Network Access หมายถึงการให้เข้าถึงความสามารถผ่านกลไกเครือข่ายมาตรฐานที่ Client หลายแบบใช้ได้ ไม่ได้บังคับให้เปิดข้อมูลหรืออนุญาตทุกเครือข่าย ลูกค้ายังต้องกำหนดการยืนยันตัวตนและสิทธิ์ตามบริการ",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Separate availability of an access mechanism from authorization to a specific service or dataset.",
+      "exam_relevance_th": "แยกการมีกลไกเข้าถึงออกจากสิทธิ์ใช้บริการหรือชุดข้อมูลเฉพาะ",
+      "example_en": "Approved laptops and tablets use the same cloud service while access policies restrict who may read its data.",
+      "example_th": "Laptop และ Tablet ที่อนุมัติใช้บริการ Cloud เดียวกัน ขณะที่นโยบายจำกัดผู้มีสิทธิ์อ่านข้อมูล",
+      "confused_with": [
+        "Public Cloud",
+        "Authorization"
+      ],
+      "keywords": [
+        "Broad Network Access",
+        "standard network mechanisms",
+        "client platforms"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-017",
+          "locator": "KNOW-D4-017",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-020",
+          "locator": "KNOW-D4-020",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-017"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-074",
+      "term": "Resource Pooling",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การจัดสรรทรัพยากรจากกลุ่มร่วม",
+      "definition_en": "A cloud characteristic in which provider resources serve multiple consumers and are assigned or reassigned according to demand. Sharing does not establish that every tenant configuration is secure.",
+      "explanation_th": "Resource Pooling ใช้กลุ่มทรัพยากรเพื่อบริการผู้ใช้หลายรายและจัดสรรใหม่ตามความต้องการ การใช้ร่วมไม่ได้แปลว่าข้อมูลเปิดสาธารณะหรือว่าแยก Tenant ปลอดภัยทุกด้าน ยังต้องมีมาตรการแยกและสิทธิ์ที่เหมาะสม",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Identify shared allocation rather than infer public data, fixed hardware ownership or guaranteed isolation.",
+      "exam_relevance_th": "ระบุการจัดสรรร่วม แทนสรุปว่าข้อมูลเป็นสาธารณะ ลูกค้าเป็นเจ้าของ Hardware ตายตัว หรือรับประกันการแยก",
+      "example_en": "A provider allocates shared infrastructure to several customers while their tenant policies separately govern data access.",
+      "example_th": "ผู้ให้บริการจัดสรร Infrastructure ร่วมแก่ลูกค้าหลายราย โดยนโยบาย Tenant ของแต่ละรายควบคุมสิทธิ์ข้อมูลแยกกัน",
+      "confused_with": [
+        "Community Cloud",
+        "Rapid Elasticity"
+      ],
+      "keywords": [
+        "Resource Pooling",
+        "shared resources",
+        "multi-tenant",
+        "allocation"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-017",
+          "locator": "KNOW-D4-017",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-020",
+          "locator": "KNOW-D4-020",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "R22",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r22",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-017"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-075",
+      "term": "Rapid Elasticity",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การเพิ่มและคืนความจุได้รวดเร็วตามความต้องการ",
+      "definition_en": "A cloud characteristic in which capabilities can expand and contract rapidly to match demand, sometimes automatically. Actual capacity, policy and service limits still apply.",
+      "explanation_th": "Rapid Elasticity ให้เพิ่มและลดความจุตามงานได้รวดเร็ว บางบริการทำอัตโนมัติได้ แต่ยังมีขีดจำกัดความจุ สิทธิ์และบริการ ไม่ใช่ทรัพยากรไร้ขีดจำกัดหรือกลไก Backup/Recovery ในตัว",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Distinguish capacity response from self-service requests, resource pooling and recovery after data loss.",
+      "exam_relevance_th": "แยกการปรับความจุจากการร้องขอแบบ Self-Service, Resource Pooling และการกู้คืนหลังข้อมูลสูญหาย",
+      "example_en": "An approved workload adds processing capacity during a surge and releases it when demand falls.",
+      "example_th": "Workload ที่อนุมัติเพิ่มความจุประมวลผลเมื่อโหลดสูงและคืนความจุเมื่อความต้องการลดลง",
+      "confused_with": [
+        "On-Demand Self-Service",
+        "Resource Pooling",
+        "Redundancy"
+      ],
+      "keywords": [
+        "Rapid Elasticity",
+        "scaling",
+        "capacity",
+        "demand"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-017",
+          "locator": "KNOW-D4-017",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-017"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-076",
+      "term": "Measured Service",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การวัด ควบคุมและรายงานการใช้ทรัพยากร",
+      "definition_en": "A cloud characteristic providing monitoring, control and reporting of resource use. Metering supports visibility but does not impose one billing formula.",
+      "explanation_th": "Measured Service วัด ควบคุมและรายงานการใช้ทรัพยากรเพื่อให้ผู้ใช้กับผู้ให้บริการเห็นข้อมูล ไม่ได้บังคับให้คิดเงินจากเวลารันอย่างเดียว หรือห้ามมีค่าคำขอ ข้อผูกพันหรือเงื่อนไขอื่น ต้องตรวจ Plan จริงแยก",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Distinguish evidence of measurement from commercial terms; a usage report does not determine the whole invoice.",
+      "exam_relevance_th": "แยกหลักฐานการวัดจากเงื่อนไขการค้า รายงานการใช้ไม่ได้กำหนดใบเรียกเก็บทั้งหมด",
+      "example_en": "A team reviews usage reports and separately checks the service agreement to understand its charges.",
+      "example_th": "ทีมทบทวนรายงานการใช้และตรวจข้อตกลงบริการแยกเพื่อเข้าใจค่าใช้จ่าย",
+      "confused_with": [
+        "Rapid Elasticity"
+      ],
+      "keywords": [
+        "Measured Service",
+        "metering",
+        "usage report",
+        "billing limits"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-017",
+          "locator": "KNOW-D4-017",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "R27",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r27",
+          "concept_id": "KNOW-D4-017"
+        },
+        {
+          "source_id": "R28",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r28",
+          "concept_id": "KNOW-D4-017"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-077",
+      "term": "Infrastructure as a Service",
+      "acronym": "IaaS",
+      "full_form": "Infrastructure as a Service",
+      "thai_meaning": "บริการโครงสร้างพื้นฐานคอมพิวเตอร์",
+      "definition_en": "A cloud service model providing fundamental resources on which the consumer can deploy operating systems and software. In ordinary hosted VM use, guest-OS and application duties remain with the customer.",
+      "explanation_th": "IaaS ให้ทรัพยากรพื้นฐานเพื่อให้ลูกค้ารัน OS และซอฟต์แวร์ เช่น VM ที่ลูกค้าบริหาร Guest OS ผู้ให้บริการดูแลพื้นฐานตามข้อตกลง แต่การตั้งค่า แอป ข้อมูลและสิทธิ์ของลูกค้ายังต้องดูแล ไม่แบ่งหน้าที่จากสถานที่ตั้งอย่างเดียว",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Locate the affected component before assigning a duty; a provider host patch is not proof of guest remediation.",
+      "exam_relevance_th": "ระบุส่วนประกอบที่มีปัญหาก่อนแบ่งหน้าที่ Patch Host ของผู้ให้บริการไม่พิสูจน์ว่าแก้ Guest แล้ว",
+      "example_en": "A customer patches its guest OS while the provider maintains the underlying virtualization and hardware under the agreement.",
+      "example_th": "ลูกค้า Patch Guest OS ส่วนผู้ให้บริการดูแล Virtualization และ Hardware ด้านล่างตามข้อตกลง",
+      "confused_with": [
+        "Platform as a Service",
+        "Software as a Service"
+      ],
+      "keywords": [
+        "Infrastructure as a Service",
+        "VM",
+        "guest OS",
+        "service model"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-018",
+          "locator": "KNOW-D4-018",
+          "concept_id": "KNOW-D4-018"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-020",
+          "locator": "KNOW-D4-020",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-018"
+        },
+        {
+          "source_id": "R22",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r22",
+          "concept_id": "KNOW-D4-018"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-018"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-078",
+      "term": "Platform as a Service",
+      "acronym": "PaaS",
+      "full_form": "Platform as a Service",
+      "thai_meaning": "บริการแพลตฟอร์มสำหรับพัฒนาและรันแอป",
+      "definition_en": "A cloud service model providing a managed platform on which customers deploy applications. More platform operation is transferred than in ordinary IaaS, while customer code, data and access duties remain.",
+      "explanation_th": "PaaS ให้ Platform ที่ผู้ให้บริการบริหารเพื่อให้ลูกค้า Deploy แอป โอนงานพื้นฐานมากกว่า IaaS ทั่วไป แต่ลูกค้ายังดูแล Code ข้อมูลและสิทธิ์ ต้องดูขอบเขตบริการจริง ไม่สรุปว่าทุก Runtime หรือ Dependency ถูก Patch แทนทั้งหมด",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Remap control evidence after a service-model change without discarding retained application and data responsibilities.",
+      "exam_relevance_th": "ปรับหลักฐานมาตรการตามขอบเขตใหม่เมื่อเปลี่ยน Service Model โดยไม่ละทิ้งหน้าที่แอปและข้อมูลที่ยังมี",
+      "example_en": "A team moves to a managed application platform and retains code testing and tenant access reviews.",
+      "example_th": "ทีมย้ายไป Managed Application Platform และยังทดสอบ Code กับทบทวนสิทธิ์ Tenant",
+      "confused_with": [
+        "Infrastructure as a Service",
+        "Software as a Service"
+      ],
+      "keywords": [
+        "Platform as a Service",
+        "managed platform",
+        "customer code"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-018",
+          "locator": "KNOW-D4-018",
+          "concept_id": "KNOW-D4-018"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-020",
+          "locator": "KNOW-D4-020",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-018"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-018"
+        },
+        {
+          "source_id": "R24",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r24",
+          "concept_id": "KNOW-D4-018"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-079",
+      "term": "Software as a Service",
+      "acronym": "SaaS",
+      "full_form": "Software as a Service",
+      "thai_meaning": "บริการแอปพลิเคชันพร้อมใช้",
+      "definition_en": "A cloud service model in which consumers use the provider’s application, with permitted user or tenant configuration. It does not transfer all data, identity and access responsibilities to the provider.",
+      "explanation_th": "SaaS ให้ใช้แอปของผู้ให้บริการพร้อมการตั้งค่าผู้ใช้หรือ Tenant ที่บริการเปิดให้ ลูกค้ายังต้องดูข้อมูล ตัวตน การแชร์และสิทธิ์ การไม่บริหาร OS เองไม่ได้แปลว่าไม่มีหน้าที่ความปลอดภัย",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Distinguish consuming an application from owning its tenant settings; browser access alone does not identify every service model.",
+      "exam_relevance_th": "แยกการใช้แอปจากการรับผิดชอบการตั้งค่า Tenant และอย่าใช้การเข้าผ่าน Browser อย่างเดียวระบุทุก Service Model",
+      "example_en": "An organization uses a managed document application and configures which external collaborators may read each collection.",
+      "example_th": "องค์กรใช้แอปเอกสารที่บริหารให้และตั้งว่าผู้ร่วมงานภายนอกรายใดอ่านเอกสารแต่ละกลุ่มได้",
+      "confused_with": [
+        "Platform as a Service",
+        "Infrastructure as a Service"
+      ],
+      "keywords": [
+        "Software as a Service",
+        "provider application",
+        "tenant settings"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-018",
+          "locator": "KNOW-D4-018",
+          "concept_id": "KNOW-D4-018"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-020",
+          "locator": "KNOW-D4-020",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-018"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-018"
+        },
+        {
+          "source_id": "R24",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r24",
+          "concept_id": "KNOW-D4-018"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-080",
+      "term": "Public Cloud",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "คลาวด์ที่เปิดให้สาธารณชนเลือกใช้บริการ",
+      "definition_en": "Cloud infrastructure provisioned for open use by the general public. This deployment definition does not mean that every customer’s data is publicly readable.",
+      "explanation_th": "Public Cloud จัด Infrastructure ให้สาธารณชนเลือกใช้บริการ ไม่ได้แปลว่าข้อมูลลูกค้าเปิดให้อ่านทุกคน ความเหมาะสมกับข้อมูลหรือกฎระเบียบต้องดูการตั้งค่า ข้อกำหนดและหลักฐาน ไม่ตัดสินจากคำว่า Public เพียงอย่างเดียว",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Separate who may obtain the service from who may read a resource; avoid universal legal or security rankings.",
+      "exam_relevance_th": "แยกผู้ที่เลือกใช้บริการได้ออกจากผู้มีสิทธิ์อ่านทรัพยากร และหลีกเลี่ยงการจัดอันดับกฎหมายหรือความปลอดภัยแบบเหมารวม",
+      "example_en": "A public-cloud customer restricts a confidential dataset to an approved application role.",
+      "example_th": "ลูกค้า Public Cloud จำกัดชุดข้อมูลลับให้เฉพาะ Role แอปที่อนุมัติ",
+      "confused_with": [
+        "Private Cloud",
+        "Broad Network Access"
+      ],
+      "keywords": [
+        "Public Cloud",
+        "deployment model",
+        "public use"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-019",
+          "locator": "KNOW-D4-019",
+          "concept_id": "KNOW-D4-019"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-019"
+        },
+        {
+          "source_id": "R24",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r24",
+          "concept_id": "KNOW-D4-019"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-081",
+      "term": "Private Cloud",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "คลาวด์สำหรับใช้เฉพาะองค์กร",
+      "definition_en": "Cloud infrastructure provisioned for exclusive use by one organization. It may be on or off premises and operated or owned by the organization, a third party or a combination.",
+      "explanation_th": "Private Cloud ให้ใช้งานเฉพาะองค์กรเดียว แต่อยู่ภายในหรือภายนอกได้ และมีองค์กร บุคคลที่สามหรือร่วมกันเป็นเจ้าของ/ผู้ดำเนินการได้ ความเป็น Private ไม่ยืนยันการตั้งค่าปลอดภัยหรือ Compliance โดยอัตโนมัติ",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Use exclusivity rather than hardware ownership or location to identify the model; assess controls and suitability separately.",
+      "exam_relevance_th": "ใช้การให้เฉพาะองค์กรระบุรูปแบบ แทนการดูเจ้าของ Hardware หรือสถานที่ แล้วประเมินมาตรการกับความเหมาะสมแยก",
+      "example_en": "A third party operates an off-premises private cloud exclusively for one organization under its agreement.",
+      "example_th": "บุคคลที่สามดูแล Private Cloud นอกสถานที่ให้เฉพาะองค์กรเดียวตามข้อตกลง",
+      "confused_with": [
+        "Public Cloud",
+        "Community Cloud"
+      ],
+      "keywords": [
+        "Private Cloud",
+        "exclusive use",
+        "off premises"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-019",
+          "locator": "KNOW-D4-019",
+          "concept_id": "KNOW-D4-019"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-019"
+        },
+        {
+          "source_id": "R24",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r24",
+          "concept_id": "KNOW-D4-019"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-082",
+      "term": "Community Cloud",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "คลาวด์สำหรับชุมชนองค์กรที่มีข้อกำหนดร่วม",
+      "definition_en": "Cloud infrastructure for the exclusive use of a defined community of organizations with shared concerns such as mission or security requirements. It differs from generic sharing among unrelated public-cloud customers.",
+      "explanation_th": "Community Cloud ให้ชุมชนองค์กรที่กำหนดและมีประเด็นร่วม เช่น ภารกิจหรือข้อกำหนดความปลอดภัย ใช้โดยเฉพาะ ไม่ใช่เรียกทุก Public Cloud ที่มีลูกค้าหลายรายว่า Community และชื่อไม่ได้รับประกันว่าผ่านกฎระเบียบแล้ว",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Identify the defined community and shared concerns, not merely multiple tenants on pooled infrastructure.",
+      "exam_relevance_th": "ระบุชุมชนที่กำหนดกับประเด็นร่วม ไม่ใช่เพียงเห็น Tenant หลายรายบน Infrastructure ร่วม",
+      "example_en": "Participating research institutions share a cloud arranged around their common governance and security needs.",
+      "example_th": "สถาบันวิจัยสมาชิกใช้ Cloud ร่วมที่จัดตามความต้องการกำกับดูแลและความปลอดภัยร่วมกัน",
+      "confused_with": [
+        "Resource Pooling",
+        "Private Cloud",
+        "Public Cloud"
+      ],
+      "keywords": [
+        "Community Cloud",
+        "defined community",
+        "shared concerns"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-019",
+          "locator": "KNOW-D4-019",
+          "concept_id": "KNOW-D4-019"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-019"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-083",
+      "term": "Hybrid Cloud",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การเชื่อมคลาวด์ที่แยกกันให้ทำงานและย้ายงานร่วมกัน",
+      "definition_en": "A composition of distinct cloud infrastructures linked by technology enabling data or application portability. It can combine private, community or public infrastructures, not only a public/private pair.",
+      "explanation_th": "Hybrid Cloud รวม Cloud Infrastructure ที่ยังแยกกันแต่เชื่อมด้วยเทคโนโลยีให้ย้ายข้อมูลหรือแอปได้ อาจประกอบด้วย Private, Community หรือ Public การใช้ Public กับ Private เป็นตัวอย่างที่พบบ่อย ไม่ใช่นิยามเดียว และการใช้บริการสองแห่งที่ไม่เชื่อมกันไม่พอ",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Look for distinct infrastructures plus relevant integration; distinguish this deployment composition from provider count.",
+      "exam_relevance_th": "มองหา Infrastructure ที่แยกกันพร้อมการเชื่อมที่เกี่ยวข้อง และแยกองค์ประกอบ Deployment นี้จากจำนวนผู้ให้บริการ",
+      "example_en": "An organization integrates its private cloud with a community cloud so approved research workloads can move between them.",
+      "example_th": "องค์กรเชื่อม Private Cloud กับ Community Cloud เพื่อย้าย Workload วิจัยที่อนุมัติระหว่างกัน",
+      "confused_with": [
+        "Multi-Cloud",
+        "Public Cloud",
+        "Private Cloud"
+      ],
+      "keywords": [
+        "Hybrid Cloud",
+        "integration",
+        "portability",
+        "deployment composition"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-019",
+          "locator": "KNOW-D4-019",
+          "concept_id": "KNOW-D4-019"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-019"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-084",
+      "term": "Shared Responsibility Model",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "แบบจำลองแบ่งหน้าที่ความปลอดภัยระหว่างผู้ใช้บริการกับผู้ให้บริการ",
+      "definition_en": "Allocation of security duties between provider and customer according to the service, component, configuration and agreement. It is not an equal division of every task or a transfer of all customer risk.",
+      "explanation_th": "Shared Responsibility แบ่งหน้าที่ตามบริการ ส่วนประกอบ การตั้งค่าและข้อตกลง ไม่ใช่คนละครึ่งทุกงานหรือโอนความเสี่ยงทั้งหมด แม้บริการ AI ดูแล Compute ให้ ลูกค้ายังต้องดูหน้าที่ข้อมูล ตัวตน Code และสิทธิ์ที่ตนควบคุม",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Name the affected component and control owner before assigning a duty; AI or managed-service labels do not erase customer obligations.",
+      "exam_relevance_th": "ระบุส่วนประกอบและผู้ควบคุมมาตรการก่อนแบ่งหน้าที่ ป้าย AI หรือ Managed Service ไม่ลบหน้าที่ลูกค้า",
+      "example_en": "A managed AI platform maintains compute while the customer configures which roles may read its approved datasets.",
+      "example_th": "Platform AI ที่บริหารให้ดูแล Compute ส่วนลูกค้าตั้งว่า Role ใดอ่านชุดข้อมูลที่อนุมัติได้",
+      "confused_with": [
+        "Cloud Service Provider",
+        "Provider-Managed vs. Customer-Configured Controls"
+      ],
+      "keywords": [
+        "Shared Responsibility Model",
+        "shared security model",
+        "AI workload",
+        "roles and responsibilities"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-020",
+          "locator": "KNOW-D4-020",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-024",
+          "locator": "KNOW-D4-024",
+          "concept_id": "KNOW-D4-024"
+        },
+        {
+          "source_id": "R22",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r22",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R24",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r24",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R02",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r02",
+          "concept_id": "KNOW-D4-020"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-085",
+      "term": "Cloud Service Provider",
+      "acronym": "CSP",
+      "full_form": "Cloud Service Provider",
+      "thai_meaning": "ผู้ให้บริการคลาวด์",
+      "definition_en": "An entity supplying cloud services to consumers. Its security duties depend on the offered service and agreement, rather than a universal promise to manage every customer control.",
+      "explanation_th": "CSP เป็นผู้ให้บริการ Cloud โดยหน้าที่ขึ้นกับบริการและข้อตกลง ไม่ใช่รับผิดชอบทุกมาตรการของลูกค้าเสมอ ในตัวอย่าง Public Cloud อาจดูแล Physical Infrastructure ขณะที่ลูกค้าดูแลกฎ Tenant และสิทธิ์ข้อมูล",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Avoid allocating a duty from the provider’s name alone; inspect the actual service boundary and configurable controls.",
+      "exam_relevance_th": "อย่าแบ่งหน้าที่จากชื่อผู้ให้บริการอย่างเดียว ให้ดูขอบเขตบริการจริงและมาตรการที่ตั้งค่าได้",
+      "example_en": "A provider supplies infrastructure assurance while the customer reviews its own permitted inbound services.",
+      "example_th": "ผู้ให้บริการให้หลักฐานการป้องกัน Infrastructure ส่วนลูกค้าทบทวนบริการขาเข้าที่ตนอนุญาต",
+      "confused_with": [
+        "Shared Responsibility Model"
+      ],
+      "keywords": [
+        "Cloud Service Provider",
+        "provider duties",
+        "service boundary"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-020",
+          "locator": "KNOW-D4-020",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R22",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r22",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R24",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r24",
+          "concept_id": "KNOW-D4-020"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-086",
+      "term": "Tenant Configuration",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การตั้งค่าคลาวด์ในขอบเขตผู้ใช้บริการ",
+      "definition_en": "Settings available within a customer’s cloud-service context, such as access, sharing or tenant network rules. Available controls and ownership depend on the service.",
+      "explanation_th": "Tenant Configuration คือการตั้งค่าที่เปิดให้ใช้ในขอบเขตบริการของลูกค้า เช่น สิทธิ์ การแชร์หรือกฎเครือข่าย ต้องดูความสามารถกับผู้ควบคุมจริง การเข้ารหัสที่ผู้ให้บริการเปิดให้อยู่แล้วไม่ได้แก้การแชร์กว้างเกินไป",
+      "category": "scenario_vocabulary",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Identify the specific configurable exposure and validate effective access rather than reclassify the cloud deployment to fix a setting.",
+      "exam_relevance_th": "ระบุการเปิดเผยจากการตั้งค่าเฉพาะและตรวจสิทธิ์ที่มีผลจริง แทนเปลี่ยนชื่อ Deployment เพื่อแก้ค่าที่ผิด",
+      "example_en": "An administrator removes anonymous dataset reads from a customer-controlled policy and verifies approved readers still have access.",
+      "example_th": "ผู้ดูแลถอนสิทธิ์อ่านชุดข้อมูลแบบไม่ยืนยันตัวตนจากนโยบายลูกค้า และตรวจว่าผู้อ่านที่อนุมัติยังใช้ได้",
+      "confused_with": [
+        "Public Cloud",
+        "Shared Responsibility Model"
+      ],
+      "keywords": [
+        "Tenant Configuration",
+        "tenant settings",
+        "data sharing",
+        "default encryption"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-020",
+          "locator": "KNOW-D4-020",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R22",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r22",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R25",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r25",
+          "concept_id": "KNOW-D4-020"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-087",
+      "term": "Function as a Service",
+      "acronym": "FaaS",
+      "full_form": "Function as a Service",
+      "thai_meaning": "บริการรันฟังก์ชันตามเหตุการณ์โดยซ่อนงานบริหารเซิร์ฟเวอร์",
+      "definition_en": "A service approach that runs event-triggered functions with server management abstracted from the customer. Customer code, dependencies, access and some runtime lifecycle duties remain.",
+      "explanation_th": "FaaS รัน Function ตาม Event โดยซ่อนงานบริหาร Server แต่ไม่ได้แปลว่าไม่มี Server หรือไม่มีหน้าที่ ลูกค้ายังดู Code, Dependency, สิทธิ์และงาน Runtime บางส่วนตามบริการ ส่วนราคาขึ้นกับ Plan ไม่ใช่เวลารันอย่างเดียว",
+      "category": "acronym",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Treat FaaS as supporting service context, not NIST’s fourth base model; inspect retained duties and actual billing terms.",
+      "exam_relevance_th": "ใช้ FaaS เป็นบริบทบริการเสริม ไม่ใช่แบบพื้นฐานที่สี่ของ NIST และตรวจหน้าที่ที่ยังมีพร้อมเงื่อนไขคิดค่าบริการจริง",
+      "example_en": "A function-service customer updates and redeploys a supplied image when its bundled dependency needs a supported fix.",
+      "example_th": "ลูกค้าบริการ Function อัปเดตและ Redeploy Image ที่จัดหาเมื่อ Dependency ภายในต้องแก้ด้วยวิธีที่รองรับ",
+      "confused_with": [
+        "Platform as a Service",
+        "Software as a Service"
+      ],
+      "keywords": [
+        "Function as a Service",
+        "serverless",
+        "function",
+        "runtime lifecycle"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-021",
+          "locator": "KNOW-D4-021",
+          "concept_id": "KNOW-D4-021"
+        },
+        {
+          "source_id": "R24",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r24",
+          "concept_id": "KNOW-D4-021"
+        },
+        {
+          "source_id": "R26",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r26",
+          "concept_id": "KNOW-D4-021"
+        },
+        {
+          "source_id": "R27",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r27",
+          "concept_id": "KNOW-D4-021"
+        },
+        {
+          "source_id": "R28",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r28",
+          "concept_id": "KNOW-D4-021"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-021"
+        }
+      ],
+      "source_status": "source_supported",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-088",
+      "term": "Multi-Cloud",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "การใช้บริการจากผู้ให้บริการคลาวด์หลายราย",
+      "definition_en": "Use of multiple cloud providers in the course’s terminology. It may coexist with hybrid cloud, but provider count alone establishes neither portability nor recovery capability.",
+      "explanation_th": "Multi-Cloud ในบทเรียนหมายถึงใช้ผู้ให้บริการหลายราย อาจซ้อนกับ Hybrid ได้ แต่จำนวนรายไม่พิสูจน์ว่าเคลื่อนย้ายหรือกู้คืนได้จริง ต้องดูข้อมูล ตัวตน เส้นทางและการทดสอบ และไม่ใช่ Deployment แบบที่ห้าของ NIST",
+      "category": "core_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Assess dependencies and tested recovery rather than infer resilience or a new NIST deployment category from multiple providers.",
+      "exam_relevance_th": "ประเมินความพึ่งพาและการกู้คืนที่ทดสอบ แทนสรุปความทนทานหรือเพิ่มประเภท Deployment ของ NIST จากจำนวนผู้ให้บริการ",
+      "example_en": "Two providers still depend on one identity service, so an outage test examines whether the second deployment can operate independently.",
+      "example_th": "ผู้ให้บริการสองรายยังพึ่ง Identity Service เดียว การทดสอบจึงตรวจว่า Deployment ที่สองทำงานได้เมื่อส่วนนั้นหยุดหรือไม่",
+      "confused_with": [
+        "Hybrid Cloud",
+        "Redundancy"
+      ],
+      "keywords": [
+        "Multi-Cloud",
+        "multiple providers",
+        "portability",
+        "shared dependency"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-021",
+          "locator": "KNOW-D4-021",
+          "concept_id": "KNOW-D4-021"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-021"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-089",
+      "term": "Service Model vs. Deployment Model",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ความแตกต่างของระดับบริการกับรูปแบบจัดใช้คลาวด์",
+      "definition_en": "Service models describe supplied capabilities and control boundaries; deployment models describe the intended use and composition of cloud infrastructure. They answer different questions.",
+      "explanation_th": "Service Model เช่น IaaS/PaaS/SaaS อธิบายสิ่งที่ให้ใช้และขอบเขตควบคุม ส่วน Deployment เช่น Public/Private/Community/Hybrid อธิบายผู้ใช้ที่ตั้งใจและองค์ประกอบ Infrastructure เป็นคนละมิติ ไม่ควรใช้ชื่อด้านหนึ่งแทนอีกด้านหรือแบ่งทุกหน้าที่จากชื่อเดียว",
+      "category": "confusing_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Identify the dimension described before selecting a model; neither taxonomy by itself proves compliant configuration.",
+      "exam_relevance_th": "ระบุมิติที่สถานการณ์อธิบายก่อนเลือกแบบจำลอง และอย่าถือว่าชื่อจากระบบแบ่งใดพิสูจน์การตั้งค่าที่ผ่านข้อกำหนด",
+      "example_en": "A service review records its application-platform boundary separately from whether the infrastructure is for exclusive organizational use.",
+      "example_th": "การทบทวนระบุขอบเขต Application Platform แยกจากการที่ Infrastructure ให้ใช้เฉพาะองค์กรหรือไม่",
+      "confused_with": [
+        "Infrastructure as a Service",
+        "Public Cloud",
+        "Private Cloud"
+      ],
+      "keywords": [
+        "Service Model vs. Deployment Model",
+        "cloud taxonomy",
+        "control boundary",
+        "exclusive use"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-018",
+          "locator": "KNOW-D4-018",
+          "concept_id": "KNOW-D4-018"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-019",
+          "locator": "KNOW-D4-019",
+          "concept_id": "KNOW-D4-019"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-020",
+          "locator": "KNOW-D4-020",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R16",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r16",
+          "concept_id": "KNOW-D4-018"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-018"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    },
+    {
+      "id": "VOC-CC26-D4-090",
+      "term": "Provider-Managed vs. Customer-Configured Controls",
+      "acronym": null,
+      "full_form": null,
+      "thai_meaning": "ความแตกต่างของกลไกที่ผู้ให้บริการดูแลกับการตั้งค่าที่ลูกค้ากำหนด",
+      "definition_en": "A provider may operate a security mechanism while the customer determines relevant access or configuration choices. Managing the mechanism does not necessarily define the customer’s policy.",
+      "explanation_th": "ผู้ให้บริการอาจดูแลกลไก เช่น การเข้ารหัส Storage ขณะที่ลูกค้ากำหนดสิทธิ์หรือการตั้งค่าที่เกี่ยวข้อง การทำงานของกลไกไม่ได้กำหนดนโยบายข้อมูลแทนลูกค้าเสมอ ต้องระบุส่วนควบคุมตามบริการจริง",
+      "category": "confusing_term",
+      "domain": 4,
+      "objective": "4.3",
+      "exam_relevance": "Distinguish mechanism operation from policy configuration; check both instead of assuming a managed service resolves every exposure.",
+      "exam_relevance_th": "แยกการดูแลกลไกจากการตั้งนโยบาย และตรวจทั้งสองแทนสรุปว่า Managed Service แก้การเปิดเผยทุกอย่างแล้ว",
+      "example_en": "Default storage encryption works as documented, but the customer still corrects a role that permits excessive dataset access.",
+      "example_th": "การเข้ารหัส Storage โดยปริยายทำงานตามเอกสาร แต่ลูกค้ายังต้องแก้ Role ที่ให้เข้าชุดข้อมูลเกินจำเป็น",
+      "confused_with": [
+        "Shared Responsibility Model",
+        "Tenant Configuration"
+      ],
+      "keywords": [
+        "Provider-Managed vs. Customer-Configured Controls",
+        "control ownership",
+        "customer settings",
+        "managed service",
+        "AI workload"
+      ],
+      "sources": [
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-020",
+          "locator": "KNOW-D4-020",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "ISC2-CC-2026-D4-KNOW-024",
+          "locator": "KNOW-D4-024",
+          "concept_id": "KNOW-D4-024"
+        },
+        {
+          "source_id": "R22",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r22",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R23",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r23",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R25",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r25",
+          "concept_id": "KNOW-D4-020"
+        },
+        {
+          "source_id": "R02",
+          "locator": "docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#r02",
+          "concept_id": "KNOW-D4-020"
+        }
+      ],
+      "source_status": "editorial_synthesis",
+      "review_status": "needs_human_review"
+    }
+  ]
+}

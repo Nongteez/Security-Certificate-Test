@@ -1,3 +1,4 @@
+// CIA revision 2: authorized D1-F02–F06 corrections; unchanged-field lock is in verify-learning-academic-remediation.mjs.
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import fs from 'node:fs';
@@ -35,5 +36,5 @@ test('the existing mobile reading policy can show the responsive editorial conte
 });
 test('Lesson Info exposes the exact full Slide 1 explanation in either language without changing source data',()=>{
  for(const language of ['th','en']){const doc=new TestDocument(),host=doc.createElement('div');doc.body.append(host);const h=renderLessonInfo(host,{lesson,language});const explanation=host.querySelector('.learning-info-intro-explanation');assert.ok(explanation);for(const b of slide.blocks){if(b.kind==='text')assert.ok(text(explanation).includes(b.text[language]));if(b.kind==='list')for(const item of b.items)assert.ok(text(explanation).includes(item[language]));}h.destroy();}
- assert.equal(crypto.createHash('sha256').update(fs.readFileSync(lessonPath)).digest('hex'),'034d8ae332ddcb5b3669823f50bca6e8f9122926f2f698a331db50b385cd9a55');
+ assert.equal(crypto.createHash('sha256').update(fs.readFileSync(lessonPath)).digest('hex'),'8d5fcb593b5278eb4845fdb6f1d577dbb09da73aeb3fa2d3599334dbe559000d');
 });

@@ -69,6 +69,9 @@ const OBJECTIVES_MAP = [
   { id: '2.4', domain: '2', label: '2.4 Security Metrics & Reporting' },
   { id: '3.1', domain: '3', label: '3.1 Identity Lifecycle' },
   { id: '3.2', domain: '3', label: '3.2 Access Controls' },
+  { id: '4.1', domain: '4', label: '4.1 Network Security' },
+  { id: '4.2', domain: '4', label: '4.2 Network Security Architecture' },
+  { id: '4.3', domain: '4', label: '4.3 Cloud Security' },
   { id: 'exam_strategy', domain: 'all', label: 'Exam Strategy' }
 ];
 
@@ -152,7 +155,7 @@ export async function renderVocabularyScreen(container, onBack) {
   // Local state
   let currentTab = 'cards'; // 'cards' | 'flashcards'
   let searchQuery = '';
-  let selectedDomain = 'all'; // 'all' | '1' | '2' | '3'
+  let selectedDomain = 'all'; // 'all' | '1' | '2' | '3' | '4'
   const selectedCategories = new Set(); // Multi-select Set (empty = no restriction)
   const selectedObjectives = new Set(); // Multi-select Set (empty = no restriction)
   let isFiltersExpanded = false; // Collapsed by default
@@ -251,7 +254,8 @@ export async function renderVocabularyScreen(container, onBack) {
       all: totalCount,
       1: allEntries.filter(e => String(e.domain) === '1').length,
       2: allEntries.filter(e => String(e.domain) === '2').length,
-      3: allEntries.filter(e => String(e.domain) === '3').length
+      3: allEntries.filter(e => String(e.domain) === '3').length,
+      4: allEntries.filter(e => String(e.domain) === '4').length
     };
 
     // Boundary check for flashcardIndex
@@ -270,13 +274,15 @@ export async function renderVocabularyScreen(container, onBack) {
       : OBJECTIVES_MAP.filter(obj => obj.domain === selectedDomain || obj.id === 'exam_strategy');
 
     // Domain hero badge label
-    let domainBadgeLabel = 'All Domains (D1, D2 & D3)';
+    let domainBadgeLabel = 'All Domains (D1, D2, D3 & D4)';
     if (selectedDomain === '1') {
       domainBadgeLabel = 'Domain 1 · Security Principles';
     } else if (selectedDomain === '2') {
       domainBadgeLabel = 'Domain 2 · Security Governance';
     } else if (selectedDomain === '3') {
       domainBadgeLabel = 'Domain 3 · IAM Concepts';
+    } else if (selectedDomain === '4') {
+      domainBadgeLabel = 'Domain 4 · Network & Cloud Security';
     }
 
     container.innerHTML = `
@@ -327,7 +333,7 @@ export async function renderVocabularyScreen(container, onBack) {
                   <option value="1" ${selectedDomain === '1' ? 'selected' : ''}>Domain 1 (${domainCounts['1']})</option>
                   <option value="2" ${selectedDomain === '2' ? 'selected' : ''}>Domain 2 (${domainCounts['2']})</option>
                   <option value="3" ${selectedDomain === '3' ? 'selected' : ''}>Domain 3 (${domainCounts['3']})</option>
-                  <option value="4" disabled>Domain 4 — Coming Soon</option>
+                  <option value="4" ${selectedDomain === '4' ? 'selected' : ''}>Domain 4 (${domainCounts['4']})</option>
                   <option value="5" disabled>Domain 5 — Coming Soon</option>
                 </select>
               </div>

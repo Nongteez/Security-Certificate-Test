@@ -372,7 +372,7 @@ test('Domain Overview: official Objectives render in order, first available sele
     assert.equal(row1.getAttribute('aria-checked'), 'true');
     assert.equal(row1.tabIndex, 0);
 
-    // 3. This CIA-only loader fails published 1.2 identity validation; empty 1.3–1.5 remain Coming Soon.
+    // 3. This CIA-only loader fails identity validation for all published 1.2–1.5 lessons.
     for (let i = 1; i < 5; i++) {
       const row = rows[i];
       assert.ok(row.classList.contains('is-unavailable'), `Row ${expectedCodes[i]} must be marked unavailable`);
@@ -382,7 +382,7 @@ test('Domain Overview: official Objectives render in order, first available sele
       assert.equal(row.tabIndex, -1);
       const badge = row.querySelector('.objective-status-badge');
       assert.ok(badge, `Row ${expectedCodes[i]} must have status badge`);
-      assert.equal(badge.textContent.trim(), i === 1 ? 'Availability could not be checked' : 'Coming Soon');
+      assert.equal(badge.textContent.trim(), 'Availability could not be checked');
 
       // Attempting to click an unavailable objective does not select it
       fire(row, 'click');

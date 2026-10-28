@@ -123,3 +123,27 @@ To maintain absolute academic integrity, these terms are cataloged here with the
 1. Keep these supplemental candidates clearly labeled in this standalone document.
 2. When expanding the vocabulary JSON database for full curriculum coverage in Phase 2/3, integrate these items under the `"source_status": "supplemental"` flag.
 3. Include these terms in flashcards and quizzes, explicitly noting their source provenance.
+
+
+## Task 58 — Integrated Domain 4 supplemental provenance (2026-10-28)
+
+These 16 entries are integrated in [domain-4.json](domain-4.json), not unverified technical proposals. The label supplemental distinguishes teaching supplied by Task 56 from the original lecture. Definitions, bilingual examples and guidance are stored once in the JSON; [domain-4-review.md](domain-4-review.md) records assistant review and integration results. Formal/native-Thai human sign-off is not claimed. Rxx identifiers resolve in the [primary evidence catalog](../../../docs/plans/isc2-cc-2026/domain-4-findings-resolution-register.md#primary-evidence-catalog). No disputed or excluded claim supports an entry.
+
+| Entry | Concept | Official objective | Canonical knowledge | Primary references |
+| --- | --- | --- | --- | --- |
+| VOC-CC26-D4-028 | Stateful Inspection | 4.1 | KNOW-D4-006,KNOW-D4-007 | R14,R08 |
+| VOC-CC26-D4-029 | Application-Aware Filtering | 4.1 | KNOW-D4-006 | R14,R33 |
+| VOC-CC26-D4-030 | Web Application Firewall | 4.1 | KNOW-D4-006 | R14 |
+| VOC-CC26-D4-031 | Intrusion Detection System | 4.1 | KNOW-D4-006 | R32 |
+| VOC-CC26-D4-032 | Intrusion Prevention System | 4.1 | KNOW-D4-006 | R32 |
+| VOC-CC26-D4-033 | Signature-Based Detection | 4.1 | KNOW-D4-006,KNOW-D4-022 | R32 |
+| VOC-CC26-D4-034 | Anomaly-Based Detection | 4.1 | KNOW-D4-022 | R32,R02 |
+| VOC-CC26-D4-035 | False Positive | 4.1 | KNOW-D4-006 | R32 |
+| VOC-CC26-D4-036 | False Negative | 4.1 | KNOW-D4-006 | R32 |
+| VOC-CC26-D4-043 | Bluetooth | 4.1 | KNOW-D4-009 | R29,R30 |
+| VOC-CC26-D4-044 | Bluetooth Pairing | 4.1 | KNOW-D4-009 | R29,R30 |
+| VOC-CC26-D4-045 | Authenticated Pairing | 4.1 | KNOW-D4-009 | R29,R30 |
+| VOC-CC26-D4-046 | Just Works Pairing | 4.1 | KNOW-D4-009 | R29 |
+| VOC-CC26-D4-055 | AI-Assisted Network Monitoring | 4.1 | KNOW-D4-022 | R02,R32 |
+| VOC-CC26-D4-064 | Default Deny | 4.2 | KNOW-D4-006,KNOW-D4-012 | R14 |
+| VOC-CC26-D4-069 | Development/Production Isolation | 4.2 | KNOW-D4-023,KNOW-D4-024 | R02,R15,R23 |

@@ -8,7 +8,7 @@
     "1.1"
   ],
   "status": "published",
-  "revision": "1",
+  "revision": "2",
   "title": {
     "en": "The CIA Triad: Core Information Security Goals",
     "th": "สามเหลี่ยม CIA: เสาหลักแห่งเป้าหมายความมั่นคงปลอดภัยสารสนเทศ"
@@ -38,17 +38,17 @@
     }
   ],
   "review": {
-    "reviewedRevision": "1",
-    "evidencePath": "docs/reviews/domain-1-curriculum-academic-qa-review.md",
+    "reviewedRevision": "2",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-1-remediation-phase-1.md",
     "technical": {
       "status": "approved",
-      "reviewer": "Domain 1 Academic QA Audit (Task 58)",
-      "reviewedAt": "2026-10-24"
+      "reviewer": "Codex Phase 1 assistant technical review; human acceptance pending",
+      "reviewedAt": "2026-10-28"
     },
     "bilingual": {
       "status": "approved",
-      "reviewer": "Domain 1 Bilingual QA Audit (Task 58)",
-      "reviewedAt": "2026-10-24"
+      "reviewer": "Codex Phase 1 assistant bilingual review; human acceptance pending",
+      "reviewedAt": "2026-10-28"
     },
     "rights": {
       "status": "approved",
@@ -84,6 +84,34 @@
       "authority": "editorial",
       "locator": "Section 4 & Section 5: Pilot Storyboard and Academic Discrepancies",
       "repositoryPath": "docs/plans/isc2-cc-2026/domain-1-learning-slides-curriculum-plan.md"
+    },
+    {
+      "id": "nist-fips-180-4",
+      "title": "NIST FIPS 180-4: Secure Hash Standard",
+      "authority": "technical-primary",
+      "locator": "Introductory explanation: message digests and computational resistance, not absolute uniqueness",
+      "url": "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf"
+    },
+    {
+      "id": "nist-fips-186-5",
+      "title": "NIST FIPS 186-5: Digital Signature Standard",
+      "authority": "technical-primary",
+      "locator": "Introduction and Sections 3, 6: signatures, assurances and key protection",
+      "url": "https://csrc.nist.gov/pubs/fips/186-5/final"
+    },
+    {
+      "id": "nist-sp-800-57p1r5",
+      "title": "NIST SP 800-57 Part 1 Rev.5: Recommendation for Key Management",
+      "authority": "technical-primary",
+      "locator": "Sections 4.2.4, 5.2: non-repudiation and protection of keying material",
+      "url": "https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final"
+    },
+    {
+      "id": "nist-sp-800-38d",
+      "title": "NIST SP 800-38D: Galois/Counter Mode (GCM) and GMAC",
+      "authority": "technical-primary",
+      "locator": "Abstract and Section 5: authenticated encryption",
+      "url": "https://csrc.nist.gov/pubs/sp/800/38/d/final"
     }
   ],
   "assets": [],
@@ -98,7 +126,7 @@
       },
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       },
       "referenceIds": [
         "isc2-cc-outline-2026",
@@ -148,7 +176,7 @@
       },
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       },
       "referenceIds": [
         "isc2-cc-outline-2026",
@@ -225,7 +253,7 @@
       },
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       },
       "referenceIds": [
         "isc2-cc-outline-2026",
@@ -276,12 +304,15 @@
       },
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       },
       "referenceIds": [
         "isc2-cc-outline-2026",
         "nist-fips-199",
-        "project-d1-curriculum-plan"
+        "project-d1-curriculum-plan",
+        "nist-fips-180-4",
+        "nist-fips-186-5",
+        "nist-sp-800-57p1r5"
       ],
       "blocks": [
         {
@@ -294,20 +325,20 @@
         {
           "kind": "text",
           "text": {
-            "en": "Exam Distinction (SQ-13): Altering or tampering with data is strictly an Integrity violation. While an attacker might view data beforehand, the act of changing values directly compromises the trustworthiness of the data—which is the domain of Integrity.",
-            "th": "จุดเน้นสำหรับข้อสอบ (SQ-13): การดัดแปลงหรือแก้ไขข้อมูลเป็นความเสียหายต่อ Integrity โดยตรง แม้ผู้โจมตีจะมองเห็นข้อมูลก่อน แต่การเปลี่ยนแปลงค่าทำให้ความถูกต้องน่าเชื่อถือของข้อมูลถูกทำลาย"
+            "en": "Unauthorized alteration directly harms Integrity. The same event can also disrupt Availability or accompany unauthorized disclosure; identify the specific act or consequence described, rather than assuming only one CIA goal can be harmed.",
+            "th": "การแก้ไขข้อมูลโดยไม่ได้รับอนุญาตกระทบ Integrity โดยตรง เหตุเดียวกันอาจกระทบ Availability หรือเกิดร่วมกับการเปิดเผยข้อมูลโดยไม่มีสิทธิ์ได้ ให้ดูการกระทำหรือผลกระทบที่โจทย์ระบุ ไม่ใช่สรุปว่าเหตุหนึ่งกระทบ CIA ได้เพียงด้านเดียว"
           }
         },
         {
           "kind": "list",
           "items": [
             {
-              "en": "Cryptographic Hashes (e.g., SHA-256): Generate unique mathematical checksums to verify that data has not changed in transit or storage.",
-              "th": "การแฮชทางรหัสลับ (เช่น SHA-256): สร้างค่าตรวจสอบเฉพาะเพื่อพิสูจน์ว่าข้อมูลไม่มีการเปลี่ยนแปลงระหว่างส่งหรือจัดเก็บ"
+              "en": "Cryptographic hashes (e.g., SHA-256) produce a fixed-length digest. Compare it with a protected, trusted reference to help detect changes; a matching digest is not absolute proof that data is unchanged. If an attacker replaces both the file and its digest, comparing them may miss the substitution. A hash alone does not establish authenticity, authorship or non-repudiation. Evidence reliability also depends on provenance, custody and trustworthy verification procedures.",
+              "th": "Cryptographic Hash (เช่น SHA-256) สร้างค่า Hash ที่มีความยาวคงที่ ใช้เทียบกับค่าอ้างอิงที่เชื่อถือได้และได้รับการปกป้องเพื่อช่วยตรวจพบการเปลี่ยนแปลง ค่า Hash ที่ตรงกันไม่ใช่ข้อพิสูจน์เด็ดขาดว่าข้อมูลไม่เปลี่ยน ถ้าผู้โจมตีเปลี่ยนทั้งไฟล์และค่า Hash การเทียบคู่นั้นอาจไม่พบการสับเปลี่ยน Hash เพียงอย่างเดียวไม่ยืนยัน Authenticity, Authorship หรือ Non-repudiation หลักฐานจะน่าเชื่อถือแค่ไหนยังขึ้นกับที่มา การเก็บรักษาและส่งต่อหลักฐาน และขั้นตอนตรวจสอบที่เชื่อถือได้"
             },
             {
-              "en": "Digital Signatures: Combine asymmetric cryptography and hashing to provide authentication, integrity verification, and non-repudiation.",
-              "th": "ลายมือชื่อดิจิทัล: รวมวิทยาการรหัสลับแบบกุญแจอสมมาตรและการแฮช เพื่อยืนยันตัวตน ตรวจสอบความถูกต้อง และไม่สามารถปฏิเสธความรับผิดชอบ"
+              "en": "Digital signatures support signed-data Integrity and origin authentication, and can support Non-repudiation. Their evidentiary strength depends on identity-to-key binding, private-key protection, certificate trust when certificates are used, and supporting procedures. Compromised or poorly controlled signing keys weaken attribution. A valid signature alone does not establish the human actor, intent or automatic legal liability.",
+              "th": "Digital signature ช่วยตรวจสอบ Integrity และแหล่งที่มาของข้อมูลที่ลงนาม และสนับสนุน Non-repudiation ได้ ความน่าเชื่อถือขึ้นกับการผูกตัวตนกับ Key การปกป้อง Private key ความน่าเชื่อถือของ Certificate เมื่อใช้งาน และขั้นตอนประกอบ หาก Signing key ถูกยึดหรือควบคุมไม่ดี ข้อสรุปว่าใครลงนามก็อ่อนลง Signature ที่ตรวจผ่านเพียงอย่างเดียวไม่ได้ชี้ขาดบุคคลผู้กระทำ เจตนา หรือความรับผิดทางกฎหมายโดยอัตโนมัติ"
             },
             {
               "en": "File Integrity Monitoring (FIM): Continuously track critical operating system files and alert administrators to unauthorized changes.",
@@ -334,7 +365,7 @@
       },
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       },
       "referenceIds": [
         "isc2-cc-outline-2026",
@@ -385,7 +416,7 @@
       },
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       },
       "referenceIds": [
         "isc2-cc-outline-2026",
@@ -486,7 +517,7 @@
       },
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       },
       "referenceIds": [
         "isc2-cc-outline-2026",
@@ -517,8 +548,8 @@
               "th": "ไม่ใช่การละเมิดหลัก"
             },
             "reason": {
-              "en": "No confidential information was leaked or viewed by unauthorized outsiders; secrecy was not the target.",
-              "th": "ไม่มีข้อมูลความลับรั่วไหลสู่ภายนอก การเปิดเผยข้อมูลลับไม่ใช่เป้าหมายของการโจมตีนี้"
+              "en": "The facts establish falsification, not unauthorized disclosure. Insiders can also breach confidentiality.",
+              "th": "ข้อเท็จจริงนี้ยืนยันการปลอมข้อมูล ไม่ได้ระบุการเปิดเผยโดยไม่มีสิทธิ์ คนภายในก็ละเมิด Confidentiality ได้"
             }
           },
           {
@@ -570,13 +601,14 @@
       },
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       },
       "referenceIds": [
         "isc2-cc-outline-2026",
         "nist-fips-199",
         "nist-sp-800-61r2",
-        "project-d1-curriculum-plan"
+        "project-d1-curriculum-plan",
+        "nist-sp-800-38d"
       ],
       "blocks": [
         {
@@ -625,8 +657,8 @@
                 "th": "การเข้ารหัสข้อมูล, การควบคุมสิทธิ์ (ACLs), การจัดชั้นความลับ"
               },
               {
-                "en": "Trap: Believing encryption prevents deletion (encryption protects secrecy only).",
-                "th": "กับดัก: คิดว่าการเข้ารหัสช่วยกันการลบข้อมูล (การเข้ารหัสช่วยแค่เรื่องความลับ)"
+                "en": "Encryption alone does not stop deletion; authenticated encryption can also detect unauthorized changes.",
+                "th": "Encryption เพียงอย่างเดียวไม่หยุดการลบข้อมูล ส่วน Authenticated encryption ช่วยตรวจพบการแก้ไขโดยไม่ได้รับอนุญาตได้ด้วย"
               }
             ],
             [
@@ -643,8 +675,8 @@
                 "th": "ฟังก์ชันแฮช, ลายมือชื่อดิจิทัล, การตรวจสอบความสมบูรณ์ไฟล์ (FIM)"
               },
               {
-                "en": "Trap: Confusing alteration with disclosure. Altering data is strictly Integrity (SQ-13).",
-                "th": "กับดัก: สับสนระหว่างการเปิดเผยกับการแก้ไข การดัดแปลงข้อมูลคือ Integrity เสมอ"
+                "en": "Alteration directly harms Integrity; assess any additional CIA effects from the stated facts.",
+                "th": "การดัดแปลงกระทบ Integrity โดยตรง ส่วนผลต่อ CIA ด้านอื่นต้องพิจารณาจากข้อเท็จจริงที่ระบุ"
               }
             ],
             [
