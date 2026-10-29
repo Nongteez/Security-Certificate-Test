@@ -1,0 +1,234 @@
+## slide-01-orientation (text/hero-intro)
+slide.title EN: Why Do We Secure Information?
+slide.title TH: ทำไมเราจึงต้องรักษาความมั่นคงปลอดภัยของข้อมูล?
+slide.blocks.0.text EN: Information security is not about merely installing firewalls or blocking users from doing their jobs. Its true purpose is to protect an organization's critical assets so the business can achieve its mission safely and sustainably.
+slide.blocks.0.text TH: ความมั่นคงปลอดภัยสารสนเทศไม่ใช่เพียงการติดตั้งไฟร์วอลล์หรือการขัดขวางการทำงานของผู้ใช้ เป้าหมายที่แท้จริงคือการปกป้องทรัพย์สินสำคัญขององค์กร เพื่อให้ธุรกิจสามารถดำเนินงานได้อย่างปลอดภัยและบรรลุพันธกิจอย่างยั่งยืน
+slide.blocks.1.items.0 EN: Confidentiality (การรักษาความลับ): Ensuring sensitive data is protected against unauthorized viewing or disclosure.
+slide.blocks.1.items.0 TH: Confidentiality (การรักษาความลับ): ปกป้องข้อมูลสำคัญไม่ให้ถูกเปิดเผยหรือถูกมองเห็นโดยผู้ไม่มีสิทธิ์
+slide.blocks.1.items.1 EN: Integrity (ความถูกต้องครบถ้วน): Protecting data and systems against unauthorized modification, tampering, or destruction.
+slide.blocks.1.items.1 TH: Integrity (ความถูกต้องครบถ้วน): ปกป้องข้อมูลและระบบจากการถูกแก้ไข ดัดแปลง หรือทำลายโดยไม่ได้รับอนุญาต
+slide.blocks.1.items.2 EN: Availability (ความพร้อมใช้งาน): Ensuring timely, dependable access to critical systems and data for authorized users when needed.
+slide.blocks.1.items.2 TH: Availability (ความพร้อมใช้งาน): รับรองว่าระบบและข้อมูลพร้อมให้ผู้มีสิทธิ์เข้าถึงและใช้งานได้ในเวลาที่จำเป็น
+slide.blocks.2.text EN: Core Principle: Every security control you study in the ISC2 curriculum exists to uphold one or more of these three fundamental pillars.
+slide.blocks.2.text TH: หลักการสำคัญ: มาตรการควบคุมความปลอดภัยทุกประการในหลักสูตร ISC2 มีขึ้นเพื่อสนับสนุนเสาหลัก 3 ประการนี้
+
+## slide-02-cia-overview (pillars/pillars)
+slide.title EN: The Three Pillars of Information Security
+slide.title TH: 3 เสาหลักแห่งความมั่นคงปลอดภัยสารสนเทศ
+slide.visual.pillars.0.term EN: Confidentiality
+slide.visual.pillars.0.term TH: การรักษาความลับ
+slide.visual.pillars.0.question EN: Who can see the sensitive data?
+slide.visual.pillars.0.question TH: ใครมีสิทธิ์มองเห็นข้อมูลลับบ้าง?
+slide.visual.pillars.0.summary EN: Prevent unauthorized disclosure through encryption, ACLs, and MFA.
+slide.visual.pillars.0.summary TH: ป้องกันการเปิดเผยข้อมูลโดยมิชอบ ด้วยการเข้ารหัส ACLs และ MFA
+slide.visual.pillars.1.term EN: Integrity
+slide.visual.pillars.1.term TH: ความถูกต้องครบถ้วน
+slide.visual.pillars.1.question EN: Can we trust and rely on the data?
+slide.visual.pillars.1.question TH: ข้อมูลถูกต้องแม่นยำและเชื่อถือได้หรือไม่?
+slide.visual.pillars.1.summary EN: Protect data from unauthorized modification, tampering, or deletion.
+slide.visual.pillars.1.summary TH: ป้องกันการแก้ไข ดัดแปลง หรือทำลายข้อมูล ด้วยแฮชและลายมือชื่อดิจิทัล
+slide.visual.pillars.2.term EN: Availability
+slide.visual.pillars.2.term TH: ความพร้อมใช้งาน
+slide.visual.pillars.2.question EN: Can authorized users reach systems?
+slide.visual.pillars.2.question TH: ผู้มีสิทธิ์เข้าถึงระบบได้เมื่อจำเป็นหรือไม่?
+slide.visual.pillars.2.summary EN: Ensure timely, dependable access via redundancy, backups, and DR plans.
+slide.visual.pillars.2.summary TH: รับรองการเข้าถึงอย่างต่อเนื่อง ด้วยระบบสำรอง แบ็กอัป และแผนกู้คืน
+slide.visual.takeaway EN: Security controls work together: strong encryption cannot help if systems are down or records are tampered with.
+slide.visual.takeaway TH: มาตรการความปลอดภัยต้องทำงานร่วมกัน การเข้ารหัสที่ดีจะไร้ผลหากระบบล่ม หรือข้อมูลถูกแก้ไขทำลาย
+
+## slide-03-confidentiality (text/concept-split)
+slide.title EN: Confidentiality: Protecting Against Unauthorized Disclosure
+slide.title TH: Confidentiality: การป้องกันการเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต
+slide.blocks.0.text EN: Definition: Confidentiality ensures that sensitive information is accessible ONLY to authorized individuals, entities, or processes. A breach occurs whenever unauthorized viewing takes place—even if no data is altered, deleted, or harmed.
+slide.blocks.0.text TH: คำจำกัดความ: Confidentiality คือการรับรองว่าข้อมูลสำคัญจะถูกเข้าถึงได้ เฉพาะผู้ที่ได้รับอนุญาตเท่านั้น การละเมิดความลับเกิดขึ้นทันทีที่มีการเปิดอ่านข้อมูลโดยไม่ได้รับอนุญาต แม้ข้อมูลนั้นจะไม่ถูกแก้ไขหรือลบทำลายเลยก็ตาม
+slide.blocks.1.items.0 EN: Cryptographic Encryption: AES-256 for data at rest; TLS 1.3 for data in transit across networks.
+slide.blocks.1.items.0 TH: การเข้ารหัสข้อมูล: เช่น AES-256 สำหรับข้อมูลที่จัดเก็บ และ TLS 1.3 สำหรับข้อมูลที่ส่งผ่านเครือข่าย
+slide.blocks.1.items.1 EN: Granular Access Controls: Enforce the Principle of Least Privilege and Role-Based Access Control (RBAC).
+slide.blocks.1.items.1 TH: การควบคุมสิทธิ์อย่างละเอียด: บังคับใช้หลักการให้สิทธิ์เท่าที่จำเป็น (Least Privilege) และตามบทบาทหน้าที่ (RBAC)
+slide.blocks.1.items.2 EN: Administrative Policies: Clear Data Classification schemes, clean desk policies, and Non-Disclosure Agreements (NDAs).
+slide.blocks.1.items.2 TH: นโยบายการบริหาร: การจัดชั้นความลับของข้อมูล นโยบายจัดโต๊ะทำงานให้ปลอดเอกสาร และสัญญาการไม่เปิดเผยความลับ
+slide.blocks.2.text EN: Enterprise Scenario: An unauthorized intern opens an unencrypted network spreadsheet containing executive compensation details and views everyone's salaries. Because restricted data was viewed by someone without need-to-know, Confidentiality was violated—even though no payroll numbers were modified.
+slide.blocks.2.text TH: สถานการณ์ตัวอย่าง: พนักงานฝึกงานเปิดอ่านไฟล์เงินเดือนของผู้บริหารในเครือข่ายที่ไม่ได้เข้ารหัสไว้ แม้ไม่มีการแก้ตัวเลขใด ๆ เลย แต่ Confidentiality ถูกละเมิดอย่างร้ายแรง เพราะผู้ไม่มีสิทธิ์ได้มองเห็นข้อมูลลับขององค์กร
+
+## slide-04-integrity (text/concept-split)
+slide.title EN: Integrity: Protecting Against Unauthorized Modification
+slide.title TH: Integrity: การป้องกันการแก้ไขดัดแปลงข้อมูลโดยไม่ได้รับอนุญาต
+slide.blocks.0.text EN: Definition: Integrity ensures that information and systems remain accurate, complete, and protected against unauthorized modification, insertion, or deletion throughout their entire lifecycle.
+slide.blocks.0.text TH: คำจำกัดความ: Integrity คือการรับรองว่าข้อมูลและระบบมีความถูกต้อง ครบถ้วน สมบูรณ์ และปลอดภัยจากการถูกแก้ไข ดัดแปลง แทรกแซง หรือลบทำลายโดยไม่ได้รับอนุญาตตลอดวงจรชีวิตของข้อมูล
+slide.blocks.1.text EN: Unauthorized alteration directly harms Integrity. The same event can also disrupt Availability or accompany unauthorized disclosure; identify the specific act or consequence described, rather than assuming only one CIA goal can be harmed.
+slide.blocks.1.text TH: การแก้ไขข้อมูลโดยไม่ได้รับอนุญาตกระทบ Integrity โดยตรง เหตุเดียวกันอาจกระทบ Availability หรือเกิดร่วมกับการเปิดเผยข้อมูลโดยไม่มีสิทธิ์ได้ ให้ดูการกระทำหรือผลกระทบที่โจทย์ระบุ ไม่ใช่สรุปว่าเหตุหนึ่งกระทบ CIA ได้เพียงด้านเดียว
+slide.blocks.2.items.0 EN: Cryptographic hashes (e.g., SHA-256) produce a fixed-length digest. Compare it with a protected, trusted reference to help detect changes; a matching digest is not absolute proof that data is unchanged. If an attacker replaces both the file and its digest, comparing them may miss the substitution. A hash alone does not establish authenticity, authorship or non-repudiation. Evidence reliability also depends on provenance, custody and trustworthy verification procedures.
+slide.blocks.2.items.0 TH: Cryptographic Hash (เช่น SHA-256) สร้างค่า Hash ที่มีความยาวคงที่ ใช้เทียบกับค่าอ้างอิงที่เชื่อถือได้และได้รับการปกป้องเพื่อช่วยตรวจพบการเปลี่ยนแปลง ค่า Hash ที่ตรงกันไม่ใช่ข้อพิสูจน์เด็ดขาดว่าข้อมูลไม่เปลี่ยน ถ้าผู้โจมตีเปลี่ยนทั้งไฟล์และค่า Hash การเทียบคู่นั้นอาจไม่พบการสับเปลี่ยน Hash เพียงอย่างเดียวไม่ยืนยัน Authenticity, Authorship หรือ Non-repudiation หลักฐานจะน่าเชื่อถือแค่ไหนยังขึ้นกับที่มา การเก็บรักษาและส่งต่อหลักฐาน และขั้นตอนตรวจสอบที่เชื่อถือได้
+slide.blocks.2.items.1 EN: Digital signatures support signed-data Integrity and origin authentication, and can support Non-repudiation. Their evidentiary strength depends on identity-to-key binding, private-key protection, certificate trust when certificates are used, and supporting procedures. Compromised or poorly controlled signing keys weaken attribution. A valid signature alone does not establish the human actor, intent or automatic legal liability.
+slide.blocks.2.items.1 TH: Digital signature ช่วยตรวจสอบ Integrity และแหล่งที่มาของข้อมูลที่ลงนาม และสนับสนุน Non-repudiation ได้ ความน่าเชื่อถือขึ้นกับการผูกตัวตนกับ Key การปกป้อง Private key ความน่าเชื่อถือของ Certificate เมื่อใช้งาน และขั้นตอนประกอบ หาก Signing key ถูกยึดหรือควบคุมไม่ดี ข้อสรุปว่าใครลงนามก็อ่อนลง Signature ที่ตรวจผ่านเพียงอย่างเดียวไม่ได้ชี้ขาดบุคคลผู้กระทำ เจตนา หรือความรับผิดทางกฎหมายโดยอัตโนมัติ
+slide.blocks.2.items.2 EN: File Integrity Monitoring (FIM): Continuously track critical operating system files and alert administrators to unauthorized changes.
+slide.blocks.2.items.2 TH: ระบบตรวจสอบความสมบูรณ์ของไฟล์ (FIM): ตรวจติดตามไฟล์ระบบสำคัญและแจ้งเตือนเมื่อมีการเปลี่ยนแปลงที่ไม่ได้รับอนุญาต
+slide.blocks.3.text EN: Enterprise Scenario: An attacker intercepts an electronic wire transfer instruction and alters the beneficiary bank routing number. The bank executes the payment on schedule, but funds transfer into the criminal's account. The accuracy and trust in transaction data failed completely—a direct Integrity compromise.
+slide.blocks.3.text TH: สถานการณ์ตัวอย่าง: ผู้โจมตีดักจับคำสั่งโอนเงินทางอิเล็กทรอนิกส์แล้วแก้ไขหมายเลขบัญชีธนาคารปลายทาง ธนาคารประมวลผลคำสั่งตามเวลาปกติ แต่เงินถูกโอนเข้าบัญชีคนร้าย ความถูกต้องและความน่าเชื่อถือของคำสั่งโอนเงินถูกทำลายลงอย่างสิ้นเชิง ซึ่งเป็นความเสียหายต่อ Integrity โดยตรง
+
+## slide-05-availability (text/concept-split)
+slide.title EN: Availability: Ensuring Dependable, Timely Access
+slide.title TH: Availability: การรับรองความพร้อมใช้งานอย่างต่อเนื่องและทันท่วงที
+slide.blocks.0.text EN: Definition: Availability ensures that authorized users have prompt, dependable access to vital information, business applications, and infrastructure whenever required for operations. Data that is perfectly encrypted but inaccessible when needed provides zero business value.
+slide.blocks.0.text TH: คำจำกัดความ: Availability คือการรับรองว่าผู้ใช้ที่ได้รับอนุญาตจะสามารถเข้าถึงข้อมูลสำคัญ แอปพลิเคชัน และโครงสร้างพื้นฐานได้อย่างรวดเร็วและต่อเนื่องเมื่อจำเป็นต่อการทำงาน ข้อมูลที่ถูกเข้ารหัสไว้อย่างสมบูรณ์แบบแต่ไม่สามารถเปิดใช้งานได้ ย่อมไม่มีมูลค่าต่อธุรกิจเลย
+slide.blocks.1.items.0 EN: Fault Tolerance & Redundancy: Dual power supplies, redundant network interfaces, RAID storage arrays, and load-balanced web servers.
+slide.blocks.1.items.0 TH: การทนต่อความเสียหายและระบบสำรอง: แหล่งจ่ายไฟคู่ การเชื่อมต่อเครือข่ายสำรอง ฮาร์ดดิสก์แบบ RAID และเซิร์ฟเวอร์แบบกระจายโหลด
+slide.blocks.1.items.1 EN: Environmental Resilience: Uninterruptible Power Supplies (UPS), on-site backup generators, and fire suppression systems in data centers.
+slide.blocks.1.items.1 TH: ความยืดหยุ่นทางสภาพแวดล้อม: เครื่องสำรองไฟฉุกเฉิน (UPS) เครื่องกำเนิดไฟฟ้าสำรอง และระบบระงับอัคคีภัยในศูนย์ข้อมูล
+slide.blocks.1.items.2 EN: Disaster Recovery & Defense: Tested off-site backups, alternate data centers (hot/warm sites), and DDoS traffic mitigation scrubbing centers.
+slide.blocks.1.items.2 TH: Disaster Recovery และการป้องกัน: ข้อมูลสำรองนอกสถานที่ที่ทดสอบการกู้คืนแล้ว ศูนย์ข้อมูลสำรองแบบ Hot/Warm site และศูนย์กรอง Traffic เพื่อลดผลกระทบจาก DDoS
+slide.blocks.2.text EN: Enterprise Scenario: A massive Distributed Denial of Service (DDoS) attack floods a hospital's clinical portal with millions of junk requests per second, taking the network offline. Emergency room doctors cannot access patient allergy records before administering medications. No data was disclosed or altered, but Availability failed with life-critical danger.
+slide.blocks.2.text TH: สถานการณ์ตัวอย่าง: การโจมตีแบบ DDoS ส่งทราฟฟิกขยะหลายล้านคำขอต่อวินาทีเข้าถล่มพอร์ทัลของโรงพยาบาลจนเครือข่ายล่ม แพทย์ห้องฉุกเฉินไม่สามารถเปิดดูประวัติการแพ้ยาของผู้ป่วยก่อนให้ยาได้ ข้อมูลไม่ได้รั่วไหลหรือถูกดัดแปลง แต่ Availability ล้มเหลวและก่อให้เกิดอันตรายร้ายแรงต่อชีวิต
+
+## slide-06-compound-impact (incident-flow/incident-flow)
+slide.title EN: Real-World Complexity: Compound Impacts Across the Triad
+slide.title TH: โลกความเป็นจริง: เหตุการณ์เดียวที่ส่งผลกระทบต่อเนื่องหลายด้าน
+slide.visual.lead EN: Attacks rarely hit one pillar in isolation. A complex intrusion can cascade across all three security goals.
+slide.visual.lead TH: การโจมตีจริงมักไม่กระทบเพียงเสาหลักเดียว เหตุบุกรุกที่ซับซ้อนมักส่งผลกระทบต่อเนื่องครบทั้งสามด้าน
+slide.visual.caseTitle EN: Hospital Ransomware Incident: Cascading Impact Sequence
+slide.visual.caseTitle TH: กรณีศึกษามัลแวร์เรียกค่าไถ่ในโรงพยาบาล: ลำดับผลกระทบลูกโซ่
+slide.visual.note EN: Illustrative sequence only; attack progression varies by threat actor.
+slide.visual.note TH: ลำดับตัวอย่างเพื่อการเรียนรู้ การโจมตีจริงอาจมีลำดับแตกต่างกัน
+slide.visual.stages.0.label EN: Exfiltration
+slide.visual.stages.0.label TH: ขโมยข้อมูล
+slide.visual.stages.0.event EN: Attackers covertly copy patient health records to external servers.
+slide.visual.stages.0.event TH: ผู้โจมตีแอบคัดลอกเวชระเบียนผู้ป่วยออกไปภายนอกองค์กร
+slide.visual.stages.0.pillar EN: Confidentiality
+slide.visual.stages.0.pillar TH: การรักษาความลับ
+slide.visual.stages.0.impact EN: Direct breach of secrecy and private patient confidentiality.
+slide.visual.stages.0.impact TH: ละเมิดการรักษาความลับโดยตรง ข้อมูลส่วนบุคคลถูกเปิดเผย
+slide.visual.stages.1.label EN: Lockout
+slide.visual.stages.1.label TH: ล็อกระบบ
+slide.visual.stages.1.event EN: Ransomware encrypts databases, locking doctors out of records.
+slide.visual.stages.1.event TH: มัลแวร์เข้ารหัสฐานข้อมูล ทำให้แพทย์เปิดดูประวัติไม่ได้
+slide.visual.stages.1.pillar EN: Availability
+slide.visual.stages.1.pillar TH: ความพร้อมใช้งาน
+slide.visual.stages.1.impact EN: Critical care is blocked because staff cannot access systems.
+slide.visual.stages.1.impact TH: กระทบความพร้อมใช้งาน เจ้าหน้าที่ไม่สามารถเข้าใช้งานระบบได้
+slide.visual.stages.2.label EN: Corruption
+slide.visual.stages.2.label TH: ข้อมูลเสียหาย
+slide.visual.stages.2.event EN: Partial decryption corrupts medical charts and dosage entries.
+slide.visual.stages.2.event TH: การถอดรหัสที่ไม่สมบูรณ์ทำลายข้อมูลยาและการรักษา
+slide.visual.stages.2.pillar EN: Integrity
+slide.visual.stages.2.pillar TH: ความถูกต้องครบถ้วน
+slide.visual.stages.2.impact EN: Medical data is inaccurate and cannot be trusted for dosing.
+slide.visual.stages.2.impact TH: ทำลายความถูกต้องครบถ้วน ข้อมูลคลาดเคลื่อนจนใช้รักษาไม่ได้
+slide.visual.takeaway EN: Exam Insight: Identify which specific phase or harm the question asks about before picking the primary CIA pillar.
+slide.visual.takeaway TH: เทคนิคข้อสอบ: พิจารณาให้ชัดเจนว่าโจทย์กำลังถามถึงความเสียหายในขั้นตอนใด หรือมุ่งเน้นผลกระทบเรื่องใด
+
+## slide-07-scenario-reflection (scenario-decision/scenario-decision)
+slide.title EN: Scenario Reflection: Which Principle Is Violated?
+slide.title TH: ทดสอบความเข้าใจ: หลักการใดถูกละเมิดโดยตรง?
+slide.visual.scenario EN: A disgruntled database administrator modifies the inventory ledger, secretly marking 50 high-end laptops as 'defective and written off' so an accomplice can steal them from the warehouse. The server suffered zero downtime, and no private data was disclosed outside the company.
+slide.visual.scenario TH: ผู้ดูแลระบบฐานข้อมูลแอบแก้ไขตารางสต็อกสินค้า โดยเปลี่ยนสถานะแล็ปท็อป 50 เครื่องเป็น 'ชำรุดและตัดจำหน่าย' เพื่อให้ผู้สมรู้ร่วมคิดขโมยออกจากคลัง เซิร์ฟเวอร์ยังทำงานปกติโดยไม่หยุดชะงัก และไม่มีข้อมูลความลับรั่วไหลออกสู่ภายนอก
+slide.visual.prompt EN: Which CIA Triad security goal has been directly violated by the administrator's malicious action?
+slide.visual.prompt TH: การกระทำของผู้ดูแลระบบดังกล่าว ละเมิดเป้าหมายความปลอดภัยข้อใดใน CIA Triad โดยตรงที่สุด?
+slide.visual.options.0.label EN: Confidentiality
+slide.visual.options.0.label TH: การรักษาความลับ
+slide.visual.options.0.verdict EN: Not Primary Harm
+slide.visual.options.0.verdict TH: ไม่ใช่การละเมิดหลัก
+slide.visual.options.0.reason EN: The facts establish falsification, not unauthorized disclosure. Insiders can also breach confidentiality.
+slide.visual.options.0.reason TH: ข้อเท็จจริงนี้ยืนยันการปลอมข้อมูล ไม่ได้ระบุการเปิดเผยโดยไม่มีสิทธิ์ คนภายในก็ละเมิด Confidentiality ได้
+slide.visual.options.1.label EN: Integrity
+slide.visual.options.1.label TH: ความถูกต้องครบถ้วน
+slide.visual.options.1.verdict EN: Directly Violated
+slide.visual.options.1.verdict TH: ถูกละเมิดโดยตรง
+slide.visual.options.1.reason EN: The inventory ledger was falsified without authorization, making business records inaccurate and untrusted.
+slide.visual.options.1.reason TH: ข้อมูลสต็อกสินค้าถูกดัดแปลงแก้ไขโดยมิชอบ ทำให้ข้อมูลในระบบคลาดเคลื่อนและไม่สามารถเชื่อถือได้
+slide.visual.options.2.label EN: Availability
+slide.visual.options.2.label TH: ความพร้อมใช้งาน
+slide.visual.options.2.verdict EN: Unimpaired
+slide.visual.options.2.verdict TH: ระบบไม่ได้รับผลกระทบ
+slide.visual.options.2.reason EN: The database remained fully operational and accessible to authorized staff throughout the entire incident.
+slide.visual.options.2.reason TH: เซิร์ฟเวอร์ฐานข้อมูลยังคงเปิดทำงานและตอบสนองการใช้งานของผู้มีสิทธิ์ได้ตามปกติตลอดเวลา
+
+## slide-08-takeaways (comparison/summary-grid)
+slide.title EN: Key Takeaways & Exam Quick-Reference
+slide.title TH: สรุปประเด็นสำคัญและตารางช่วยจำสำหรับเตรียมสอบ
+slide.blocks.0.text EN: The CIA Triad is the touchstone for cybersecurity risk analysis and control design. Master these diagnostic indicators, primary safeguards, and common exam traps.
+slide.blocks.0.text TH: สามเหลี่ยม CIA คือรากฐานสำคัญที่สุดสำหรับการวิเคราะห์ความเสี่ยงและการออกแบบมาตรการความปลอดภัย จดจำคำสำคัญในข้อสอบ มาตรการหลัก และกับดักที่พบบ่อยให้แม่นยำ
+slide.blocks.1.caption EN: CIA Triad Exam Synthesis Matrix
+slide.blocks.1.caption TH: ตารางสังเคราะห์ CIA Triad สำหรับเตรียมสอบ
+slide.blocks.1.columns.0 EN: Security Goal
+slide.blocks.1.columns.0 TH: เป้าหมายความปลอดภัย
+slide.blocks.1.columns.1 EN: Exam Question Keywords
+slide.blocks.1.columns.1 TH: คำสำคัญในโจทย์ข้อสอบ
+slide.blocks.1.columns.2 EN: Primary Safeguards
+slide.blocks.1.columns.2 TH: มาตรการป้องกันหลัก
+slide.blocks.1.columns.3 EN: Common Exam Trap to Avoid
+slide.blocks.1.columns.3 TH: กับดักข้อสอบที่ต้องระวัง
+slide.blocks.1.rows.0.0 EN: Confidentiality
+slide.blocks.1.rows.0.0 TH: Confidentiality (การรักษาความลับ)
+slide.blocks.1.rows.0.1 EN: Reading, viewing, snooping, disclosing, exfiltrating, intercepting.
+slide.blocks.1.rows.0.1 TH: แอบอ่าน, แอบดู, เปิดเผย, ขโมยข้อมูล, ดักจับข้อมูล
+slide.blocks.1.rows.0.2 EN: Encryption (AES, TLS), ACLs, Need-to-know, Data Classification.
+slide.blocks.1.rows.0.2 TH: การเข้ารหัสข้อมูล, การควบคุมสิทธิ์ (ACLs), การจัดชั้นความลับ
+slide.blocks.1.rows.0.3 EN: Encryption alone does not stop deletion; authenticated encryption can also detect unauthorized changes.
+slide.blocks.1.rows.0.3 TH: Encryption เพียงอย่างเดียวไม่หยุดการลบข้อมูล ส่วน Authenticated encryption ช่วยตรวจพบการแก้ไขโดยไม่ได้รับอนุญาตได้ด้วย
+slide.blocks.1.rows.1.0 EN: Integrity
+slide.blocks.1.rows.1.0 TH: Integrity (ความถูกต้องครบถ้วน)
+slide.blocks.1.rows.1.1 EN: Modifying, altering, tampering, forging, deleting, corrupting.
+slide.blocks.1.rows.1.1 TH: แก้ไข, ดัดแปลง, ปลอมแปลง, ลบทำลาย, ทำให้ข้อมูลคลาดเคลื่อน
+slide.blocks.1.rows.1.2 EN: Cryptographic Hashes (SHA-256), Digital Signatures, FIM, Change Control.
+slide.blocks.1.rows.1.2 TH: ฟังก์ชันแฮช, ลายมือชื่อดิจิทัล, การตรวจสอบความสมบูรณ์ไฟล์ (FIM)
+slide.blocks.1.rows.1.3 EN: Alteration directly harms Integrity; assess any additional CIA effects from the stated facts.
+slide.blocks.1.rows.1.3 TH: การดัดแปลงกระทบ Integrity โดยตรง ส่วนผลต่อ CIA ด้านอื่นต้องพิจารณาจากข้อเท็จจริงที่ระบุ
+slide.blocks.1.rows.2.0 EN: Availability
+slide.blocks.1.rows.2.0 TH: Availability (ความพร้อมใช้งาน)
+slide.blocks.1.rows.2.1 EN: Downtime, outage, inaccessible, denial of service, blackout, crash.
+slide.blocks.1.rows.2.1 TH: ระบบล่ม, เข้าถึงไม่ได้, ขัดข้อง, ไฟดับ, หยุดทำงาน
+slide.blocks.1.rows.2.2 EN: Redundancy, Clustering, UPS generators, Backups, DR sites, DDoS defense.
+slide.blocks.1.rows.2.2 TH: ระบบสำรอง, คลัสเตอร์, เครื่องสำรองไฟ, แบ็กอัป, แผนกู้ภัยพิบัติ
+slide.blocks.1.rows.2.3 EN: Trap: Backups restore availability, but backups alone do not keep data secret.
+slide.blocks.1.rows.2.3 TH: กับดัก: การสำรองข้อมูลช่วยกู้ความพร้อมใช้งาน แต่ไม่ได้ช่วยรักษาความลับ
+slide.blocks.2.items.0 EN: Official Scope: ISC2 Certified in Cybersecurity (CC) Exam Outline (2026), Domain 1, Objective 1.1.
+slide.blocks.2.items.0 TH: ขอบเขตทางการ: ข้อกำหนดการสอบ ISC2 Certified in Cybersecurity (CC) ปี 2026, โดเมน 1, หัวข้อย่อย 1.1
+slide.blocks.2.items.1 EN: Authoritative Reference: NIST FIPS PUB 199 (Standards for Security Categorization), Section 3.
+slide.blocks.2.items.1 TH: มาตรฐานอ้างอิงหลัก: NIST FIPS PUB 199 (มาตรฐานการจัดหมวดหมู่ความมั่นคงปลอดภัย), หัวข้อที่ 3
+slide.blocks.2.items.2 EN: Historical context: NIST SP 800-61 Rev. 2, Section 3.2.6, discusses incident impacts. Withdrawn April 3, 2025; superseded by Rev. 3. The hospital sequence is an authored illustration, not a NIST case study or current response procedure.
+slide.blocks.2.items.2 TH: บริบทเชิงประวัติศาสตร์: NIST SP 800-61 Rev. 2 หัวข้อ 3.2.6 กล่าวถึงผลกระทบของเหตุการณ์ ถอนแล้วเมื่อ 3 เมษายน 2025 และมี Rev. 3 แทน ลำดับเหตุในโรงพยาบาลเป็นตัวอย่างแต่งขึ้นเพื่อเรียน ไม่ใช่กรณีศึกษาของ NIST หรือขั้นตอนรับมือปัจจุบัน
+
+## slide-09-ai-training-integrity (incident-flow/incident-flow)
+slide.title EN: Poisoned data can teach an AI the wrong lesson.
+slide.title TH: ข้อมูลที่ถูกวางยา อาจสอนให้ AI เรียนรู้ผิด
+slide.visual.lead EN: Model poisoning can start with malicious changes to training data.
+slide.visual.lead TH: Model poisoning อาจเริ่มจากการแก้ Training data โดยมุ่งร้าย
+slide.visual.caseTitle EN: Ticket AI: urgent examples are relabeled as routine
+slide.visual.caseTitle TH: Ticket AI: เปลี่ยน Label งานเร่งด่วนเป็นงานทั่วไป
+slide.visual.note EN: Training-data privacy: Lesson 4. AI control mix: Lesson 10.
+slide.visual.note TH: Privacy ของ Training data: บท 4 · AI control mix: บท 10
+slide.visual.takeaway EN: Restrict writes; review provenance, trusted versions and results. A matching hash does not establish training quality.
+slide.visual.takeaway TH: จำกัดการแก้ข้อมูล ตรวจที่มา ฉบับที่เชื่อถือได้ และผลลัพธ์ Hash ที่ตรงกันไม่ได้ยืนยันคุณภาพ Training data
+slide.visual.stages.0.label EN: Training labels
+slide.visual.stages.0.label TH: Training labels
+slide.visual.stages.0.event EN: An attacker relabels urgent tickets as routine.
+slide.visual.stages.0.event TH: ผู้โจมตีเปลี่ยน Label ของ Ticket เร่งด่วนเป็นงานทั่วไป
+slide.visual.stages.0.pillar EN: Data integrity
+slide.visual.stages.0.pillar TH: Data integrity
+slide.visual.stages.0.impact EN: The training examples now teach the wrong priority.
+slide.visual.stages.0.impact TH: ตัวอย่างสำหรับฝึกสอนให้จัดลำดับผิด
+slide.visual.stages.1.label EN: Model learns
+slide.visual.stages.1.label TH: Model เรียนรู้
+slide.visual.stages.1.event EN: Retraining may teach misleading relationships.
+slide.visual.stages.1.event TH: เมื่อฝึกใหม่ Model อาจเรียนรู้ความสัมพันธ์ที่บิดเบือน
+slide.visual.stages.1.pillar EN: Model integrity
+slide.visual.stages.1.pillar TH: Model integrity
+slide.visual.stages.1.impact EN: Future urgent requests may receive low priority.
+slide.visual.stages.1.impact TH: คำขอเร่งด่วนครั้งต่อไปอาจได้ Priority ต่ำ
+slide.visual.stages.2.label EN: Service stays online
+slide.visual.stages.2.label TH: บริการยัง Online
+slide.visual.stages.2.event EN: The service can keep running while its results become unreliable.
+slide.visual.stages.2.event TH: บริการอาจยังทำงาน แต่ผลลัพธ์ไม่น่าเชื่อถือ
+slide.visual.stages.2.pillar EN: Integrity
+slide.visual.stages.2.pillar TH: Integrity
+slide.visual.stages.2.impact EN: Being available does not make an AI result trustworthy.
+slide.visual.stages.2.impact TH: Availability ไม่ได้แปลว่าผลของ AI เชื่อถือได้
+slide.blocks.2.items.0 EN: 1. Training labels: An attacker relabels urgent tickets as routine. Impact on Data integrity: The training examples now teach the wrong priority.
+slide.blocks.2.items.0 TH: 1. Training labels: ผู้โจมตีเปลี่ยน Label ของ Ticket เร่งด่วนเป็นงานทั่วไป ผลกระทบต่อ Data integrity (Data integrity): ตัวอย่างสำหรับฝึกสอนให้จัดลำดับผิด
+slide.blocks.2.items.1 EN: 2. Model learns: Retraining may teach misleading relationships. Impact on Model integrity: Future urgent requests may receive low priority.
+slide.blocks.2.items.1 TH: 2. Model เรียนรู้: เมื่อฝึกใหม่ Model อาจเรียนรู้ความสัมพันธ์ที่บิดเบือน ผลกระทบต่อ Model integrity (Model integrity): คำขอเร่งด่วนครั้งต่อไปอาจได้ Priority ต่ำ
+slide.blocks.2.items.2 EN: 3. Service stays online: The service can keep running while its results become unreliable. Impact on Integrity: Being available does not make an AI result trustworthy.
+slide.blocks.2.items.2 TH: 3. บริการยัง Online: บริการอาจยังทำงาน แต่ผลลัพธ์ไม่น่าเชื่อถือ ผลกระทบต่อ Integrity (Integrity): Availability ไม่ได้แปลว่าผลของ AI เชื่อถือได้
+slide.blocks.5.text EN: Data poisoning is deliberate manipulation of data used to train a model so that its learned behavior is corrupted. In this authored ticket-triage example, an attacker changes labels from urgent to routine before retraining. The model may learn misleading relationships and route future urgent tickets to a low-priority queue. This directly threatens Integrity even if the service remains available; an ordinary prediction error alone does not establish an attack. Restrict dataset write access, review who changed which examples and why, retain provenance and trusted versions, and test model results against independently reviewed cases before approval and after material changes. A matching hash helps compare bytes with a protected trusted reference; it does not establish training quality, accuracy or fairness. Confidentiality still requires authorized use and protection of the tickets; Availability still requires dependable authorized access. Lesson 4 covers training-data privacy, Lesson 10 applies the three control categories, and Lesson 12 connects adoption to risk and professional duties. These measures reduce risk rather than guarantee prevention.
+slide.blocks.5.text TH: Data poisoning คือการจงใจดัดแปลงข้อมูลที่ใช้ฝึก Model เพื่อให้พฤติกรรมที่เรียนรู้บิดเบือน ตัวอย่าง Ticket triage ที่แต่งขึ้นนี้ ผู้โจมตีเปลี่ยน Label จากงานเร่งด่วนเป็นงานทั่วไปก่อนฝึกใหม่ Model อาจเรียนรู้ความสัมพันธ์ผิดและส่ง Ticket เร่งด่วนในอนาคตไปคิว Priority ต่ำ จึงกระทบ Integrity แม้บริการยังพร้อมใช้งาน แต่การทำนายผิดธรรมดาเพียงครั้งเดียวไม่ได้ยืนยันว่าถูกโจมตี ควรจำกัดผู้แก้ Dataset ตรวจว่าใครเปลี่ยนตัวอย่างใดและเพราะอะไร เก็บที่มาและฉบับที่เชื่อถือได้ และทดสอบผลกับกรณีที่ตรวจแยกอย่างรอบคอบก่อนอนุมัติและหลังเปลี่ยนสำคัญ Hash ที่ตรงกันช่วยเทียบ Bytes กับค่าอ้างอิงที่เชื่อถือได้และได้รับการปกป้อง แต่ไม่ได้ยืนยันคุณภาพ Training data ความแม่นยำ หรือความเป็นธรรม Confidentiality ยังต้องควบคุมการใช้และปกป้องข้อมูล Ticket ส่วน Availability ยังต้องให้ผู้มีสิทธิ์เข้าใช้ได้อย่างต่อเนื่อง บท 4 สอน Privacy ของ Training data บท 10 ประยุกต์ Controls ทั้งสามประเภท และบท 12 เชื่อมการนำ AI มาใช้กับ Risk และหน้าที่วิชาชีพ มาตรการเหล่านี้ลด Risk ไม่ได้รับประกันว่าจะป้องกันได้ทุกกรณี
+

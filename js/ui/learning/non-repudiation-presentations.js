@@ -1,5 +1,5 @@
 import {element,localize} from './dom.js';
-const ids=new Map([['slide-01-disputed-action','dispute'],['slide-02-different-questions','questions'],['slide-03-sign-and-verify','keys'],['slide-04-altered-copy','alteration'],['slide-05-evidence-conditions','conditions'],['slide-06-evaluate-the-claim','case']]);
+const ids=new Map([['slide-01-disputed-action','dispute'],['slide-02-different-questions','questions'],['slide-03-sign-and-verify','keys'],['slide-04-altered-copy','alteration'],['slide-05-evidence-conditions','conditions'],['slide-06-evaluate-the-claim','case'],['slide-07-ai-action-evidence','case']]);
 export function hasNonRepudiationPresentation({lesson,slide}) {
  const kind=ids.get(slide?.id),blocks=slide?.blocks,expected={dispute:3,questions:3,keys:2,alteration:3,conditions:4,case:3};
  return lesson?.id==='lesson-d1-03-non-repudiation'&&!!kind&&blocks?.length===4&&[0,2,3].every(i=>blocks[i]?.kind==='text')&&blocks[1]?.kind==='table'&&blocks[1].rows?.length===expected[kind]&&blocks[1].rows.every(row=>Array.isArray(row)&&row.length===3);

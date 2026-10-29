@@ -1,0 +1,1408 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d2-04-disaster-recovery-drp",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 2,
+  "primaryObjectiveId": "2.2",
+  "objectiveIds": [
+    "2.2"
+  ],
+  "revision": "1",
+  "status": "in-preparation",
+  "title": {
+    "en": "Disaster Recovery, RTO/RPO & Recovery Strategies",
+    "th": "การกู้คืนจากภัยพิบัติ (DR/DRP) ค่า RTO/RPO และกลยุทธ์การกู้คืนระบบ"
+  },
+  "synopsis": {
+    "en": "Master Disaster Recovery (DR) definitions, purposes, and concepts, understand the five strategic benefits with bounded regulatory examples, distinguish RTO from RPO across worked timelines, compare cloud/off-site backups and Hot, Warm, and Cold sites, apply DRP testing and coordination, and contrast BC vs. DR across all seven dimensions.",
+    "th": "เข้าใจนิยาม วัตถุประสงค์ และแนวคิดหลักของ Disaster Recovery (DR) วิเคราะห์ประโยชน์ 5 ด้านพร้อมขอบเขตข้อกำหนดทางกฎหมาย แยกความต่างระหว่าง RTO กับ RPO ผ่านเส้นเวลาและตัวอย่างคำนวณจริง เปรียบเทียบการสำรองข้อมูลบนคลาวด์/นอกสถานที่ และศูนย์สำรองแบบ Hot, Warm และ Cold Site ตลอดจนการทดสอบแผน DRP และตารางเปรียบเทียบ BC กับ DR ครบทั้ง 7 มิติ"
+  },
+  "outcomes": [
+    {
+      "en": "Define Disaster Recovery (DR) and a Disaster Recovery Plan (DRP), explain how DRP supports the broader Business Continuity Plan (BCP), and identify the five strategic benefits of DR while keeping GDPR/HIPAA within their proper illustrative bounds.",
+      "th": "นิยาม Disaster Recovery (DR) และแผนกู้คืนจากภัยพิบัติ (DRP) อธิบายความเชื่อมโยงที่ DRP สนับสนุนแผนความต่อเนื่องทางธุรกิจ (BCP) และระบุประโยชน์ 5 ด้านของ DR โดยเข้าใจขอบเขตของการยกตัวอย่างกฎหมายอย่าง GDPR และ HIPAA อย่างถูกต้อง"
+    },
+    {
+      "en": "Distinguish Recovery Time Objective (RTO, maximum acceptable downtime) from Recovery Point Objective (RPO, maximum acceptable data loss in time) using directional timelines and worked outage calculations, while recognizing that targets are not guarantees.",
+      "th": "แยกความแตกต่างระหว่าง Recovery Time Objective (RTO ระยะเวลาหยุดทำงานสูงสุดที่ยอมรับได้) กับ Recovery Point Objective (RPO ระยะเวลาของข้อมูลย้อนหลังสูงสุดที่ยอมรับการสูญเสียได้) ผ่านเส้นเวลาและการคำนวณจริง พร้อมตระหนักว่าค่าเป้าหมายไม่ใช่การรับประกันผลลัพธ์"
+    },
+    {
+      "en": "Evaluate backup and restoration strategies (cloud backups and off-site storage) and compare Hot Sites, Warm Sites, and Cold Sites across readiness, restoration speed, and cost trade-offs.",
+      "th": "ประเมินกลยุทธ์การสำรองและกู้คืนข้อมูล (Cloud Backups และ Off-site Storage) และเปรียบเทียบศูนย์สำรองแบบ Hot Site, Warm Site และ Cold Site ในมิติของความพร้อม ระยะเวลาเตรียมการ และต้นทุน"
+    },
+    {
+      "en": "Explain why regular DRP testing and drills, clear IT/business recovery priorities, and role coordination are essential, and master the seven-dimension comparison between Business Continuity (BC) and Disaster Recovery (DR).",
+      "th": "อธิบายความสำคัญของการซ้อมแผนและทดสอบ (Testing and Drills) การจัดลำดับกู้คืนระบบ และการประสานงานระหว่างทีม พร้อมเปรียบเทียบความแตกต่างระหว่าง Business Continuity (BC) กับ Disaster Recovery (DR) ครบทั้ง 7 มิติ"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Domain 2 Lesson 3 (Business Continuity, Redundancy & BCP) and Domain 1 availability concepts.",
+      "th": "แนะนำให้เรียนต่อจาก Domain 2 บทที่ 3 (ความต่อเนื่องทางธุรกิจ ความซ้ำซ้อนของทรัพยากร และแผน BCP) และทบทวนแนวคิดเรื่อง Availability จาก Domain 1"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-01-dr-definition-purposes-drp",
+      "title": {
+        "en": "Disaster Recovery (DR) restores IT systems and data as a critical part of Business Continuity.",
+        "th": "Disaster Recovery (DR) มุ่งกู้คืนระบบ IT และข้อมูล โดยเป็นส่วนสำคัญที่สนับสนุน Business Continuity"
+      },
+      "rendererId": "diagram",
+      "layoutId": "dr-nested-scope-foundations",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Disaster Recovery (DR) is a set of policies, tools, and procedures designed to restore IT infrastructure, systems, and data after a disaster or major disruption—operating through a documented Disaster Recovery Plan (DRP) inside the broader Business Continuity umbrella.",
+            "th": "Disaster Recovery (DR) คือชุดของนโยบาย เครื่องมือ และขั้นตอนที่ออกแบบมาเพื่อกู้คืนโครงสร้างพื้นฐาน ระบบ และข้อมูลด้าน IT หลังเกิดภัยพิบัติหรือเหตุหยุดชะงักรุนแรง โดยขับเคลื่อนผ่านเอกสารแผนกู้คืนจากภัยพิบัติ (DRP) ซึ่งเป็นองค์ประกอบสำคัญภายใต้ร่มใหญ่ของ Business Continuity (BC)"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Disaster Recovery (DR) definition, core purposes, three key concepts (S16), and the BC/BCP vs. DR/DRP relationship",
+            "th": "นิยาม วัตถุประสงค์ แนวคิดหลัก 3 ข้อของ Disaster Recovery (S16) และความสัมพันธ์ระหว่าง BC/BCP กับ DR/DRP"
+          },
+          "columns": [
+            {
+              "en": "DR Dimension (S16)",
+              "th": "มิติของ Disaster Recovery (S16)"
+            },
+            {
+              "en": "Core Source Definition & Elements",
+              "th": "นิยามและองค์ประกอบตามต้นฉบับ"
+            },
+            {
+              "en": "Governance & Exam Distinction",
+              "th": "จุดเน้นด้านการกำกับดูแลและการสอบ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Definition of Disaster Recovery (DR)",
+                "th": "นิยามของ Disaster Recovery (DR)"
+              },
+              {
+                "en": "A set of policies, tools, and procedures designed to restore IT infrastructure, systems, and data after a disaster or major disruption.",
+                "th": "ชุดของนโยบาย เครื่องมือ และขั้นตอนปฏิบัติที่ออกแบบมาเพื่อกู้คืนโครงสร้างพื้นฐานทางเทคโนโลยี ระบบงาน และข้อมูลหลังเกิดภัยพิบัติหรือเหตุรบกวนสำคัญ"
+              },
+              {
+                "en": "Focuses specifically on restoring disrupted technical capabilities (servers, databases, applications, networks, data).",
+                "th": "มุ่งเน้นเฉพาะการฟื้นฟูขีดความสามารถด้านเทคนิคและ IT เช่น เซิร์ฟเวอร์ ฐานข้อมูล แอปพลิเคชัน เครือข่าย และข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "Core Purposes of DR (S16)",
+                "th": "วัตถุประสงค์หลักของ DR (S16)"
+              },
+              {
+                "en": "(1) Minimize downtime and ensure rapid system recovery; (2) Restore critical IT operations after an incident; (3) Protect data integrity and prevent loss; (4) Support business continuity by ensuring technology resilience.",
+                "th": "(1) ลดระยะเวลาที่ระบบหยุดทำงาน (Minimize downtime) และกู้คืนระบบอย่างรวดเร็ว (2) กู้คืนงาน IT สำคัญหลังเกิดเหตุ (3) ปกป้องความถูกต้องครบถ้วนของข้อมูลและป้องกันการสูญหาย (4) สนับสนุนความต่อเนื่องทางธุรกิจด้วยความยืดหยุ่นของเทคโนโลยี"
+              },
+              {
+                "en": "Domain 2.md §8.2 unpacks these into 5 operational goals linking technical recovery speed and data integrity directly to business survival.",
+                "th": "ในสรุปบทเรียน §8.2 ได้จำแนกเป็น 5 เป้าหมายย่อยที่เชื่อมโยงความเร็วในการกู้ระบบและความครบถ้วนของข้อมูลเข้ากับการอยู่รอดของธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Three Key Concepts (S16)",
+                "th": "แนวคิดหลัก 3 ประการ (S16)"
+              },
+              {
+                "en": "(1) IT-focused recovery; (2) Data and system restoration; (3) A critical part of overall Business Continuity (BC).",
+                "th": "(1) การฟื้นฟูที่มุ่งเน้นด้าน IT (IT-focused recovery) (2) การกู้คืนข้อมูลและระบบ (Data and system restoration) (3) เป็นส่วนสำคัญของ Business Continuity ภาพรวม (A critical part of overall BC)"
+              },
+              {
+                "en": "Never treat DR as separate from or equal in scope to BC: DR is the technical engine inside the broader BC umbrella (DR ⊂ BC).",
+                "th": "ห้ามมองว่า DR แยกขาดจาก BC หรือมีขอบเขตเท่ากัน เพราะ DR คือกลไกด้านเทคนิคที่เป็นส่วนย่อยภายใต้ร่มใหญ่ของ BC (DR ⊂ BC)"
+              }
+            ],
+            [
+              {
+                "en": "BC / BCP vs. DR / DRP",
+                "th": "ความต่างระหว่าง BC / BCP กับ DR / DRP"
+              },
+              {
+                "en": "BC = organizational continuity capability; BCP = documented business continuity plan; DR = IT recovery capability/process; DRP = documented IT disaster recovery plan.",
+                "th": "BC = ความสามารถในการดำเนินธุรกิจต่อเนื่อง; BCP = เอกสารแผนความต่อเนื่องทางธุรกิจ; DR = กระบวนการ/ความสามารถกู้คืนด้าน IT; DRP = เอกสารแผนกู้คืนระบบ IT"
+              },
+              {
+                "en": "If an exam question asks how to restore servers, databases, or networks, choose DR/DRP; if it asks how to keep the whole business running, choose BC/BCP.",
+                "th": "หากโจทย์ถามเรื่องการกู้คืนเซิร์ฟเวอร์ ฐานข้อมูล หรือเครือข่าย ให้เลือก DR/DRP แต่หากถามเรื่องการประคองการดำเนินงานของธุรกิจให้เดินต่อ ให้เลือก BC/BCP"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Course slide S16 (the clean uncropped capture of S15–S16) defines Disaster Recovery (DR) as a set of policies, tools, and procedures designed to restore IT infrastructure, systems, and data after a disaster or major disruption. On S16, the instructor even draws nested arcs around 'IT' to emphasize that Business Continuity (BC) is the large organizational umbrella, while Disaster Recovery (DR) is the specialized IT-focused recovery component nested inside it (T:L44–49). Notice the four-term governance hierarchy from Domain 2.md §24.1: Business Continuity (BC) is the organization-wide capability to keep operations running, documented in the Business Continuity Plan (BCP); Disaster Recovery (DR) is the technical capability to restore disrupted IT systems and data, documented in the Disaster Recovery Plan (DRP).",
+            "th": "สไลด์ต้นฉบับ S16 (ซึ่งเป็นภาพที่สมบูรณ์และไม่ถูกแถบเครื่องเล่นบังเหมือน S15) ได้ให้นิยามของ Disaster Recovery (DR) ว่าเป็นชุดของนโยบาย เครื่องมือ และขั้นตอนที่ออกแบบมาเพื่อกู้คืนโครงสร้างพื้นฐาน ระบบ และข้อมูลด้าน IT หลังจากเกิดภัยพิบัติหรือเหตุหยุดชะงักรุนแรง ในภาพสไลด์ S16 ผู้สอนได้วาดเส้นโค้งซ้อนกันเหนือคำว่า 'IT' เพื่อเน้นย้ำว่า Business Continuity (BC) คือร่มคันใหญ่ระดับองค์กร ในขณะที่ Disaster Recovery (DR) เป็นแผนย่อยที่มุ่งเน้นเฉพาะการฟื้นฟูระบบ IT ภายในร่มใหญ่นั้น (T:L44–49) ผู้เรียนควรจำคู่คำสำคัญทั้ง 4 คำตามตาราง §24.1 ให้แม่นยำ ได้แก่ BC (ความสามารถในการประคองธุรกิจ) คู่กับ BCP (เอกสารแผนธุรกิจ) และ DR (ความสามารถในการกู้คืนระบบ IT) คู่กับ DRP (เอกสารแผนกู้คืนด้าน IT)"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Purposes of DR (S16 & Domain 2.md §8.2): Minimize downtime, ensure rapid system recovery, restore critical IT operations after an incident, protect data integrity and prevent loss, and support business continuity by ensuring technology resilience.",
+              "th": "วัตถุประสงค์หลักของ DR (S16 และ §8.2): ลดเวลาที่ระบบหยุดทำงาน (Downtime) ทำให้ระบบฟื้นตัวได้อย่างรวดเร็ว กู้คืนงาน IT สำคัญหลังเหตุการณ์ ปกป้องความถูกต้องครบถ้วนของข้อมูลไม่ให้สูญหาย และสนับสนุนความต่อเนื่องของธุรกิจ"
+            },
+            {
+              "en": "Three Key Concepts (S16): DR is (1) IT-focused recovery, centered on (2) data and system restoration, and serves as (3) a critical part of overall Business Continuity (DR ⊂ BC).",
+              "th": "แนวคิดหลัก 3 ข้อบนสไลด์ S16: DR คือ (1) การกู้คืนที่เน้นด้าน IT (2) การกู้คืนข้อมูลและระบบ และ (3) เป็นส่วนสำคัญของ Business Continuity ในภาพรวม (DR ⊂ BC)"
+            },
+            {
+              "en": "DR vs. DRP & BC vs. BCP Distinction: DR is the recovery discipline/capability, whereas the DRP is the written plan detailing recovery objectives, backup restoration methods, alternate IT sites, and testing procedures.",
+              "th": "การแยกแยะ DR vs. DRP: DR คือความสามารถหรือกระบวนการกู้คืนระบบ IT ส่วน DRP คือเอกสารแผนที่ระบุเป้าหมายการกู้คืน ขั้นตอนการดึงข้อมูลสำรอง ศูนย์สำรอง และการซ้อมแผนอย่างเป็นรูปธรรม"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Key Takeaway: Disaster Recovery (DR) restores IT infrastructure, systems, and data after a disruption—functioning through a documented DRP as a critical technical subset of Business Continuity (DR ⊂ BC).",
+            "th": "สรุปประเด็นสำคัญ: Disaster Recovery (DR) มุ่งเน้นการกู้คืนโครงสร้างพื้นฐาน ระบบ และข้อมูลด้าน IT หลังเกิดเหตุหยุดชะงัก โดยทำงานผ่านเอกสารแผน DRP ในฐานะส่วนประกอบย่อยที่สำคัญของ Business Continuity (DR ⊂ BC)"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-34-r1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-02-dr-importance-and-compliance-bounds",
+      "title": {
+        "en": "Five strategic benefits explain why Disaster Recovery matters across operations and compliance.",
+        "th": "ประโยชน์เชิงกลยุทธ์ 5 ประการที่อธิบายความสำคัญของ Disaster Recovery ต่อการดำเนินงานและข้อกำหนด"
+      },
+      "rendererId": "comparison",
+      "layoutId": "dr-strategic-benefits-bounds",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Effective Disaster Recovery minimizes downtime, protects data integrity, supports applicable compliance obligations (with laws such as GDPR and HIPAA cited as illustrative examples), reduces financial losses, and enhances customer trust.",
+            "th": "การทำ Disaster Recovery ที่มีประสิทธิผลช่วยลดระยะเวลาหยุดชะงัก ปกป้องความถูกต้องครบถ้วนของข้อมูล สนับสนุนการปฏิบัติตามข้อกำหนดที่เกี่ยวข้อง (โดยสไลด์ยก GDPR และ HIPAA เป็นตัวอย่างประกอบ) ลดความสูญเสียทางการเงิน และสร้างความเชื่อมั่นให้แก่ลูกค้า"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "All five Importance of Disaster Recovery points from course slide S17 with the D2-Q04 regulatory boundary",
+            "th": "ความสำคัญ 5 ประการของ Disaster Recovery จากสไลด์ต้นฉบับ S17 พร้อมข้อควรระวังด้านขอบเขตกฎหมาย (D2-Q04)"
+          },
+          "columns": [
+            {
+              "en": "Importance Pillar (S17)",
+              "th": "ความสำคัญของ DR (S17)"
+            },
+            {
+              "en": "Operational & Security Benefit",
+              "th": "ประโยชน์ด้านปฏิบัติการและความมั่นคงปลอดภัย"
+            },
+            {
+              "en": "Governance Context & Guardrail",
+              "th": "บริบทด้านการกำกับดูแลและข้อควรระวัง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "1. Minimizes Downtime",
+                "th": "1. Minimizes Downtime (ลดเวลาที่ระบบหยุดทำงาน)"
+              },
+              {
+                "en": "Ensures IT systems are restored quickly after an incident, reducing operational disruptions across dependent workflows.",
+                "th": "ช่วยให้ระบบ IT ได้รับการกู้คืนอย่างรวดเร็วหลังเกิดเหตุ ลดการหยุดชะงักของกระบวนการทำงานที่ต้องพึ่งพาระบบเหล่านั้น"
+              },
+              {
+                "en": "Speeds the transition from emergency fallback procedures back to normal digital operations.",
+                "th": "ช่วยให้องค์กรเปลี่ยนผ่านจากขั้นตอนทำงานสำรองฉุกเฉินกลับสู่โหมดการทำงานปกติได้เร็วขึ้น"
+              }
+            ],
+            [
+              {
+                "en": "2. Protects Data Integrity",
+                "th": "2. Protects Data Integrity (ปกป้องความถูกต้องครบถ้วนของข้อมูล)"
+              },
+              {
+                "en": "Prevents permanent data loss and ensures data is recoverable to a specific, known-good point in time.",
+                "th": "ป้องกันการสูญหายถาวรของข้อมูล และทำให้มั่นใจว่าสามารถกู้คืนข้อมูลกลับไปยังจุดเวลาที่ถูกต้องและเชื่อถือได้"
+              },
+              {
+                "en": "Requires verified, uncorrupted backups so ransomware or hardware crashes do not destroy historical records.",
+                "th": "อาศัยข้อมูลสำรองที่ตรวจสอบแล้วว่าไม่เสียหาย เพื่อไม่ให้เหตุ Ransomware หรือฮาร์ดแวร์พังทำลายข้อมูลสำคัญ"
+              }
+            ],
+            [
+              {
+                "en": "3. Supports Compliance (Bounded per D2-Q04)",
+                "th": "3. Supports Compliance (สนับสนุนการปฏิบัติตามข้อกำหนด — ขอบเขต D2-Q04)"
+              },
+              {
+                "en": "Helps organizations meet regulatory or contractual resilience obligations where applicable (S17 cites GDPR for PII and HIPAA for PHI as illustrative examples).",
+                "th": "ช่วยให้องค์กรปฏิบัติตามข้อกำหนดทางกฎหมายหรือสัญญาที่เกี่ยวข้อง (สไลด์ S17 ยกตัวอย่าง GDPR สำหรับข้อมูล PII และ HIPAA สำหรับข้อมูลสุขภาพ PHI)"
+              },
+              {
+                "en": "Academic Guardrail (D2-Q04): GDPR and HIPAA are context-specific examples; laws do not mandate one identical DRP template for every organization worldwide.",
+                "th": "ข้อควรระวังทางวิชาการ (D2-Q04): GDPR และ HIPAA เป็นเพียงตัวอย่างตามบริบท ไม่ควรตีความว่าทุกองค์กรทั่วโลกต้องใช้แผน DRP รูปแบบเดียวกันตามกฎหมายเดียว"
+              }
+            ],
+            [
+              {
+                "en": "4. Reduces Financial Losses",
+                "th": "4. Reduces Financial Losses (ลดความสูญเสียทางการเงิน)"
+              },
+              {
+                "en": "Extended IT downtime can cost businesses significant revenue, productivity, and SLA penalties; DR helps mitigate those losses.",
+                "th": "การที่ระบบล่มเป็นเวลานานทำให้ธุรกิจสูญเสียรายได้ ประสิทธิภาพการทำงาน และอาจถูกปรับตามสัญญา SLA ซึ่ง DR ช่วยบรรเทาความเสียหายเหล่านี้"
+              },
+              {
+                "en": "Connects technical restoration capability directly to financial risk reduction in the enterprise Risk Register.",
+                "th": "เชื่อมโยงความสามารถในการกู้คืนทางเทคนิคเข้ากับการลดผลกระทบทางการเงินใน Risk Register ขององค์กร"
+              }
+            ],
+            [
+              {
+                "en": "5. Enhances Customer Trust",
+                "th": "5. Enhances Customer Trust (เสริมสร้างความเชื่อมั่นของลูกค้า)"
+              },
+              {
+                "en": "Maintains customer confidence and organizational reputation by ensuring reliable service availability and data stewardship.",
+                "th": "รักษาความไว้วางใจของลูกค้าและชื่อเสียงขององค์กร ด้วยการส่งมอบบริการที่เชื่อถือได้และดูแลข้อมูลให้ปลอดภัยแม้เกิดวิกฤต"
+              },
+              {
+                "en": "Customers trust organizations that recover cleanly and transparently rather than losing transactions or records.",
+                "th": "ลูกค้าย่อมเชื่อมั่นในองค์กรที่สามารถฟื้นฟูบริการและปกป้องข้อมูลธุรกรรมได้อย่างเป็นระบบเมื่อเกิดเหตุไม่คาดฝัน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Course slide S17 ('Importance of Disaster Recovery') presents five reasons why organizations invest in Disaster Recovery: (1) Minimizes Downtime, (2) Protects Data Integrity, (3) Supports Compliance, (4) Reduces Financial Losses, and (5) Enhances Customer Trust. On S17 and in the transcript (T:L50–52), the instructor annotates 'PII' next to GDPR and 'PHI' next to HIPAA under Supports Compliance. As documented in Domain 2.md §8.4 (L234) and academic guardrail D2-Q04, learners should treat GDPR (European Union data protection) and HIPAA (U.S. healthcare privacy/security) as illustrative examples of sector- or jurisdiction-specific regulations that require protecting sensitive data availability and recoverability—not as a universal mandate forcing every organization to adopt an identical DR plan.",
+            "th": "สไลด์ต้นฉบับ S17 ('Importance of Disaster Recovery') สรุปเหตุผลสำคัญ 5 ประการที่องค์กรต้องให้ความสำคัญกับ Disaster Recovery ได้แก่ (1) Minimizes Downtime ลดเวลาที่ระบบหยุดทำงาน (2) Protects Data Integrity ปกป้องความถูกต้องครบถ้วนของข้อมูล (3) Supports Compliance สนับสนุนการปฏิบัติตามข้อกำหนด (4) Reduces Financial Losses ลดความสูญเสียทางการเงิน และ (5) Enhances Customer Trust เพิ่มความเชื่อมั่นของลูกค้า ในสไลด์ S17 และคำบรรยาย (T:L50–52) ผู้สอนได้เขียนกำกับคำว่า 'PII' คู่กับ GDPR และ 'PHI' คู่กับ HIPAA ในหัวข้อการปฏิบัติตามข้อกำหนด ทั้งนี้ ตามที่ระบุไว้ใน Domain 2.md §8.4 (บรรทัด 234) และเกณฑ์ควบคุมคุณภาพทางวิชาการ D2-Q04 ผู้เรียนต้องเข้าใจว่า GDPR และ HIPAA เป็นเพียงตัวอย่างประกอบของข้อกำหนดเฉพาะเขตอำนาจรัฐหรือกลุ่มอุตสาหกรรมที่เกี่ยวข้องกับข้อมูลสำคัญเท่านั้น ไม่ใช่ข้อบังคับสากลที่กำหนดให้ทุกองค์กรต้องมีแผน DRP รูปแบบเดียวกันทั้งหมด"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Operational & Data Resilience (#1 Minimizes Downtime, #2 Protects Data Integrity): Rapidly restoring systems while recovering clean data to a specific point in time prevents an IT incident from becoming permanent business damage.",
+              "th": "ความยืดหยุ่นด้านปฏิบัติการและข้อมูล (#1 Minimizes Downtime, #2 Protects Data Integrity): การกู้คืนระบบอย่างรวดเร็วควบคู่กับการกู้ข้อมูลกลับไปยังจุดเวลาที่ถูกต้องช่วยป้องกันไม่ให้เหตุขัดข้องทางเทคนิคกลายเป็นความเสียหายถาวร"
+            },
+            {
+              "en": "Bounded Compliance Context (#3 Supports Compliance — D2-Q04): Applicable laws, sector regulations (such as GDPR or HIPAA where relevant), and customer contracts may require resilience controls, but exact DRP requirements depend on organizational context.",
+              "th": "ขอบเขตด้านการปฏิบัติตามกฎระเบียบ (#3 Supports Compliance — D2-Q04): กฎหมายเฉพาะด้าน (เช่น GDPR หรือ HIPAA ในบริบทที่เกี่ยวข้อง) และสัญญาบริการอาจกำหนดให้ต้องมีมาตรการฟื้นฟูข้อมูล แต่รายละเอียดของแผน DRP ย่อมขึ้นอยู่กับบริบทของแต่ละองค์กร"
+            },
+            {
+              "en": "Business Value (#4 Reduces Financial Losses, #5 Enhances Customer Trust): Containing outage duration directly protects revenue and preserves customer confidence in the organization's reliability.",
+              "th": "คุณค่าเชิงธุรกิจ (#4 Reduces Financial Losses, #5 Enhances Customer Trust): การจำกัดระยะเวลาที่ระบบล่มช่วยลดการสูญเสียรายได้และรักษาความเชื่อมั่นของลูกค้าที่มีต่อเสถียรภาพขององค์กร"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Key Takeaway: Disaster Recovery minimizes downtime, protects data integrity, supports applicable compliance (with GDPR/HIPAA as context-specific examples), reduces financial losses, and strengthens customer trust.",
+            "th": "สรุปประเด็นสำคัญ: Disaster Recovery ช่วยลด Downtime ปกป้อง Data Integrity สนับสนุน Compliance ที่เกี่ยวข้อง (โดย GDPR/HIPAA เป็นตัวอย่างตามบริบท) ลดความสูญเสียทางการเงิน และเสริมสร้างความเชื่อมั่นของลูกค้า"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-03-rto-and-rpo-timeline",
+      "title": {
+        "en": "DRP recovery objectives: distinguishing RPO (backward data loss) from RTO (forward downtime).",
+        "th": "เป้าหมายการกู้คืนในแผน DRP: การแยกแยะ RPO (ข้อมูลสูญหายย้อนหลัง) กับ RTO (เวลาหยุดทำงานไปข้างหน้า)"
+      },
+      "rendererId": "diagram",
+      "layoutId": "rto-rpo-directional-timeline",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The first two components of a Disaster Recovery Plan (S18) define its recovery targets: Recovery Point Objective (RPO) measures maximum acceptable data loss backward in time, while Recovery Time Objective (RTO) measures maximum acceptable downtime forward in time.",
+            "th": "องค์ประกอบ 2 ข้อแรกของแผน DRP (S18) คือการกำหนดเป้าหมายการกู้คืน ได้แก่ Recovery Point Objective (RPO) ซึ่งวัดช่วงเวลาของข้อมูลสูญหายย้อนหลังสูงสุดที่ยอมรับได้ และ Recovery Time Objective (RTO) ซึ่งวัดระยะเวลาที่ระบบหยุดทำงานสูงสุดที่ยอมรับได้นับจากจุดเกิดเหตุไปจนกู้ระบบสำเร็จ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Timeline semantics and exam distinctions for Recovery Point Objective (RPO) and Recovery Time Objective (RTO)",
+            "th": "ความหมายบนเส้นเวลาและจุดสังเกตในการสอบของค่า Recovery Point Objective (RPO) และ Recovery Time Objective (RTO)"
+          },
+          "columns": [
+            {
+              "en": "Recovery Metric / Concept",
+              "th": "ตัวชี้วัด / แนวคิดการกู้คืน"
+            },
+            {
+              "en": "Formal Definition & Timeline Direction",
+              "th": "นิยามทางการและทิศทางบนเส้นเวลา"
+            },
+            {
+              "en": "Diagnostic Question & Governance Rule",
+              "th": "คำถามช่วยจำและหลักการกำกับดูแล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Recovery Point Objective (RPO)",
+                "th": "Recovery Point Objective (RPO)"
+              },
+              {
+                "en": "The targeted maximum acceptable period of data loss measured in time—looking BACKWARD from the disruption to the last valid recoverable backup point.",
+                "th": "ระยะเวลาของข้อมูลย้อนหลังสูงสุดที่องค์กรยอมรับว่าจะสูญเสียได้ โดยวัดย้อนกลับ (Backward) จากจุดเกิดเหตุไปยังจุดสำรองข้อมูลล่าสุดที่ใช้กู้คืนได้จริง"
+              },
+              {
+                "en": "Question: 'How much recent data (measured in time) can we afford to lose?' Drives backup and replication frequency.",
+                "th": "คำถามจำ: 'ยอมเสียข้อมูลย้อนหลังได้ไม่เกินกี่นาที/ชั่วโมง?' ใช้เป็นเกณฑ์กำหนดความถี่ในการทำ Backup หรือ Replication"
+              }
+            ],
+            [
+              {
+                "en": "Recovery Time Objective (RTO)",
+                "th": "Recovery Time Objective (RTO)"
+              },
+              {
+                "en": "The targeted maximum acceptable downtime for an IT system or service—looking FORWARD from the disruption until service restoration.",
+                "th": "ระยะเวลาสูงสุดที่ยอมรับได้ว่าระบบ IT หรือบริการจะหยุดทำงาน โดยวัดไปข้างหน้า (Forward) จากจุดเกิดเหตุจนถึงจุดที่กู้ระบบกลับมาใช้งานได้ตามเป้าหมาย"
+              },
+              {
+                "en": "Question: 'How long can the system stay down before impact becomes unacceptable?' Drives recovery site and failover design.",
+                "th": "คำถามจำ: 'ระบบหยุดทำงานได้นานที่สุดเท่าไร?' ใช้เป็นเกณฑ์เลือกประเภทศูนย์สำรองและกลไกการสลับระบบ (Failover)"
+              }
+            ],
+            [
+              {
+                "en": "Data Loss Window vs. Downtime Window",
+                "th": "ช่วงข้อมูลสูญหาย vs. ช่วงระบบหยุดทำงาน"
+              },
+              {
+                "en": "Both RPO and RTO are expressed in units of time (minutes/hours), which is why exam candidates often confuse them—but RPO is about DATA age, whereas RTO is about SERVICE outage duration.",
+                "th": "ทั้ง RPO และ RTO ต่างมีหน่วยเป็นเวลา (นาที/ชั่วโมง) จึงมักทำให้ผู้สอบสับสน แต่ RPO คืออายุของข้อมูลที่หายไป ส่วน RTO คือระยะเวลาที่บริการล่ม"
+              },
+              {
+                "en": "Memory Cue: RPO → POINT in time of data backup; RTO → TIME to restore system operation.",
+                "th": "จุดจำ: RPO → POINT (จุดเวลาของข้อมูลย้อนหลัง); RTO → TIME (เวลาที่ใช้กู้คืนระบบให้กลับมาทำงาน)"
+              }
+            ],
+            [
+              {
+                "en": "Targets vs. Guaranteed Performance",
+                "th": "ค่าเป้าหมาย vs. ผลลัพธ์จริงในการกู้คืน"
+              },
+              {
+                "en": "RTO and RPO are planning objectives (targets), not automatic guarantees; actual recovery depends on verified backups, site readiness, and tested procedures.",
+                "th": "ค่า RTO และ RPO เป็นเป้าหมายในการวางแผน (Objectives/Targets) ไม่ใช่การรับประกันว่าจะทำได้จริงอัตโนมัติ ความสำเร็จจริงขึ้นอยู่กับความพร้อมของระบบและการซ้อมแผน"
+              },
+              {
+                "en": "Scheduling hourly backups alone does not guarantee a 1-hour RPO if backup jobs fail silently or cannot be restored.",
+                "th": "การตั้งเวลา Backup ทุกชั่วโมงไม่ได้รับประกันว่าจะบรรลุ RPO 1 ชั่วโมงเสมอไป หากรันงานสำรองล้มเหลวหรือนำไฟล์มากู้คืนจริงไม่ได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Course slide S18 ('Components of Disaster Recovery Plan (DRP)') lists five core DRP components, starting with Recovery Time Objective (RTO) and Recovery Point Objective (RPO). Because both metrics are measured in units of time (such as 15 minutes, 30 minutes, or 2 hours), distinguishing them is one of the highest-yield skills on the ISC2 CC exam. On a timeline centered at the moment of disruption, RPO looks backward to the last valid recoverable data point (the maximum acceptable period of data loss measured in time), while RTO looks forward from the disruption to the point where the IT system or service is restored (the maximum acceptable downtime). Importantly, Domain 2.md §9.3 (L265) emphasizes that both RTO and RPO are recovery targets—achieving them in a real crisis requires verified backups, appropriate infrastructure, and regular testing.",
+            "th": "สไลด์ต้นฉบับ S18 ('Components of Disaster Recovery Plan (DRP)') เริ่มต้นองค์ประกอบของแผน DRP ด้วยตัวชี้วัดสำคัญ 2 ตัว คือ Recovery Time Objective (RTO) และ Recovery Point Objective (RPO) เนื่องจากค่าทั้งสองต่างวัดผลเป็นหน่วยของเวลาเหมือนกัน (เช่น 15 นาที 30 นาที หรือ 2 ชั่วโมง) การแยกแยะสองคำนี้จึงเป็นประเด็นที่ข้อสอบ ISC2 CC นำมาออกบ่อยที่สุด หากเราวางจุดเกิดเหตุหยุดชะงักไว้ตรงกลางเส้นเวลา ค่า RPO จะวัดย้อนกลับไปข้างหลัง (Backward) จนถึงจุดสำรองข้อมูลล่าสุดที่สมบูรณ์ เพื่อบอกว่าองค์กรยอมสูญเสียข้อมูลย้อนหลังได้ไม่เกินกี่นาทีหรือกี่ชั่วโมง ในขณะที่ค่า RTO จะวัดเดินหน้าไปข้างหน้า (Forward) นับจากจุดเกิดเหตุไปจนถึงจุดที่กู้คืนระบบกลับมาให้บริการได้ เพื่อบอกว่าระบบหยุดทำงานได้นานสูงสุดเท่าไร นอกจากนี้ Domain 2.md §9.3 (บรรทัด 265) ยังเน้นย้ำว่าทั้ง RTO และ RPO เป็นค่าเป้าหมายในการวางแผน ไม่ใช่การรับประกันผลลัพธ์อัตโนมัติ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "RPO (Recovery Point Objective — Backward Data Window): Defines the maximum acceptable age of lost data between the last good backup/replication point and the disruption.",
+              "th": "RPO (Recovery Point Objective — ช่วงเวลาข้อมูลสูญหายย้อนหลัง): กำหนดเพดานสูงสุดของข้อมูลที่ยอมให้สูญหายได้ วัดจากจุด Backup ล่าสุดที่ใช้งานได้มาจนถึงเวลาที่ระบบล่ม"
+            },
+            {
+              "en": "RTO (Recovery Time Objective — Forward Downtime Window): Defines the maximum acceptable duration the IT system or application can remain unavailable after the disruption.",
+              "th": "RTO (Recovery Time Objective — ช่วงเวลาที่ระบบหยุดทำงานไปข้างหน้า): กำหนดเพดานเวลาสูงสุดที่ยอมให้ระบบหรือแอปพลิเคชันหยุดให้บริการนับตั้งแต่วินาทีที่เกิดเหตุจนกู้คืนเสร็จ"
+            },
+            {
+              "en": "Why Backup Frequency Alone Does Not Guarantee RPO: If backups are scheduled every 30 minutes but replication lags, media is corrupted, or encryption keys are unavailable, actual data loss will exceed the target RPO.",
+              "th": "เหตุผลที่ความถี่ของการ Backup อย่างเดียวไม่รับประกัน RPO: แม้จะตั้งเวลาสำรองข้อมูลทุก 30 นาที แต่หากการซิงก์ข้อมูลล่าช้า ไฟล์สำรองเสียหาย หรือไม่เคยทดสอบกู้คืน ข้อมูลที่สูญเสียจริงย่อมเกินกว่าเป้าหมาย RPO ที่ตั้งไว้"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Key Takeaway: RPO looks backward to bound acceptable data loss in time ('Point of data'); RTO looks forward to bound acceptable system downtime ('Time to recover').",
+            "th": "สรุปประเด็นสำคัญ: RPO มองย้อนหลังเพื่อจำกัดช่วงเวลาของข้อมูลที่สูญหาย ('Point of Data') ส่วน RTO มองไปข้างหน้าเพื่อจำกัดระยะเวลาที่ระบบหยุดทำงาน ('Time to Recover')"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-34-r1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-04-worked-recovery-target-examples",
+      "title": {
+        "en": "Worked RTO and RPO calculations: evaluating outage timelines and target breaches.",
+        "th": "ตัวอย่างการคำนวณค่า RTO และ RPO จากสถานการณ์จริง: การวิเคราะห์เส้นเวลาและกรณีเกินเป้าหมาย"
+      },
+      "rendererId": "comparison",
+      "layoutId": "worked-outage-target-analysis",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Illustrative numerical examples make RTO and RPO concrete: whether analyzing the 17:00 outage in Domain 2.md (§9.3) or the instructor's annotated 4:00 PM–5:20 PM database scenario on S18, compare actual data loss against RPO and actual downtime against RTO.",
+            "th": "ตัวอย่างตัวเลขจำลองช่วยให้เข้าใจค่า RTO และ RPO ได้อย่างเป็นรูปธรรม ไม่ว่าจะเป็นกรณีระบบล่มเวลา 17:00 ในเอกสารสรุป (§9.3) หรือตัวอย่างฐานข้อมูลช่วงเวลา 4:00 PM–5:20 PM ที่ผู้สอนเขียนบนสไลด์ S18 โดยเราต้องเปรียบเทียบข้อมูลที่หายจริงกับค่า RPO และเวลาที่ระบบล่มจริงกับค่า RTO"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Illustrative worked RTO/RPO calculations from Domain 2.md (§9.3) and course slide S18 / transcript (T:L55–60)",
+            "th": "ตารางเปรียบเทียบตัวอย่างการคำนวณค่า RTO และ RPO จากเอกสารสรุป (§9.3) และภาพเขียนบนสไลด์ S18 / คำบรรยาย (T:L55–60)"
+          },
+          "columns": [
+            {
+              "en": "Illustrative Case",
+              "th": "กรณีตัวอย่างเพื่อความเข้าใจ"
+            },
+            {
+              "en": "Timeline Timestamps & Targets",
+              "th": "จุดเวลาบนเส้นเวลาและค่าเป้าหมาย"
+            },
+            {
+              "en": "RPO & RTO Calculation Result",
+              "th": "ผลการวิเคราะห์ค่า RPO และ RTO"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Case A: 17:00 Outage Target (Domain 2.md §9.3)",
+                "th": "กรณี A: ระบบล่มเวลา 17:00 (Domain 2.md §9.3)"
+              },
+              {
+                "en": "Disruption occurs at 17:00. Organization sets RPO = 30 minutes and RTO = 1 hour for the affected critical system.",
+                "th": "เกิดเหตุระบบล่มเวลา 17:00 โดยองค์กรกำหนดเป้าหมาย RPO = 30 นาที และ RTO = 1 ชั่วโมง สำหรับระบบสำคัญดังกล่าว"
+              },
+              {
+                "en": "To meet RPO (30 min), recoverable data must be no older than 16:30. To meet RTO (1 hr), the system must be restored by 18:00.",
+                "th": "เพื่อให้บรรลุ RPO (30 นาที) ข้อมูลที่กู้คืนต้องไม่เก่ากว่าเวลา 16:30 และเพื่อให้บรรลุ RTO (1 ชั่วโมง) ต้องกู้ระบบกลับมาภายในเวลา 18:00"
+              }
+            ],
+            [
+              {
+                "en": "Case B1: 4:30 PM Crash with Hourly Backup (S18 / T:L57–59)",
+                "th": "กรณี B1: ระบบล่มเวลา 4:30 PM เมื่อสำรองข้อมูลทุก 1 ชั่วโมง (S18 / T:L57–59)"
+              },
+              {
+                "en": "Critical customer database has RPO ≤ 1 hour (backups at 4:00 PM and 5:00 PM). A crash occurs at 4:30 PM.",
+                "th": "ฐานข้อมูลลูกค้าสำคัญกำหนด RPO ≤ 1 ชั่วโมง (ตั้งเวลา Backup ที่ 4:00 PM และ 5:00 PM) แล้วเกิดเหตุล่มเวลา 4:30 PM"
+              },
+              {
+                "en": "Restoring the 4:00 PM backup results in 30 minutes of data loss (4:00–4:30 PM), which satisfies the ≤ 1 hour RPO target.",
+                "th": "การกู้คืนจากชุดข้อมูลเวลา 4:00 PM ทำให้สูญเสียข้อมูลไป 30 นาที (ช่วง 4:00–4:30 PM) ซึ่งยังอยู่ในเกณฑ์เป้าหมาย RPO ≤ 1 ชั่วโมง"
+              }
+            ],
+            [
+              {
+                "en": "Case B2: 5:20 PM Crash After 5:00 PM Backup (S18 / T:L59–60)",
+                "th": "กรณี B2: ระบบล่มเวลา 5:20 PM หลังสำรองข้อมูลรอบ 5:00 PM (S18 / T:L59–60)"
+              },
+              {
+                "en": "Fresh backup completes at 5:00 PM. A subsequent failure occurs at 5:20 PM.",
+                "th": "ระบบทำการสำรองข้อมูลรอบใหม่เสร็จเมื่อเวลา 5:00 PM ต่อมาเกิดเหตุขัดข้องขึ้นในเวลา 5:20 PM"
+              },
+              {
+                "en": "Restoring the 5:00 PM backup yields 20 minutes of data loss (5:00–5:20 PM); on S18, if a 30-min RTO target at 5:00 PM slips to 5:20 PM, that 20-min delay represents an RTO target breach.",
+                "th": "การกู้ข้อมูลจากจุดเวลา 5:00 PM ทำให้เกิดการสูญเสียข้อมูล 20 นาที (5:00–5:20 PM) หรือในอีกมุมของรอยเขียนบน S18 หากเป้าหมายกู้ระบบคือ 5:00 PM แต่กู้เสร็จจริง 5:20 PM จะถือว่าล่าช้าเกิน RTO ไป 20 นาที"
+              }
+            ],
+            [
+              {
+                "en": "Review Question Pattern (Domain 2.md §25 Q2 & Q3)",
+                "th": "รูปแบบโจทย์ทบทวนสำหรับการสอบ (Domain 2.md §25 Q2 & Q3)"
+              },
+              {
+                "en": "Q2: 'A database crashes and must be restored within 2 hours.' Q3: 'The organization can tolerate losing at most 15 minutes of data.'",
+                "th": "โจทย์ Q2: 'ฐานข้อมูลล่มและต้องกู้คืนภายใน 2 ชั่วโมง' โจทย์ Q3: 'องค์กรยอมสูญเสียข้อมูลย้อนหลังได้ไม่เกิน 15 นาที'"
+              },
+              {
+                "en": "2 hours of maximum downtime = RTO (Q2); 15 minutes of maximum acceptable data loss = RPO (Q3). Both numbers are illustrative organizational targets.",
+                "th": "เวลาหยุดระบบสูงสุด 2 ชั่วโมง = RTO (Q2) ส่วนเวลาข้อมูลสูญหายย้อนหลังสูงสุด 15 นาที = RPO (Q3) โดยตัวเลขเหล่านี้เป็นค่าเป้าหมายที่องค์กรกำหนดตามความสำคัญของระบบ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Let us verify both numerical examples from the course materials so there is zero ambiguity. First, in Domain 2.md §9.3 (L258–266), suppose a critical system fails at 17:00 with an RTO of 1 hour and an RPO of 30 minutes: the team must restore the system no later than 18:00 (17:00 + 1 hour RTO) using a valid backup captured no earlier than 16:30 (17:00 − 30 minutes RPO). Second, on course slide S18 and in the lecture transcript (T:L55–60), the instructor writes 'ERP = 1 hr' next to RTO and sketches a database timeline with marks at '4 PM', '30', '4:30', '5 PM', '20', and '5:20': if an RPO of 1 hour drives backups at 4:00 PM and 5:00 PM, an outage at 4:30 PM loses 30 minutes of data (since the 4:00 PM backup), and an outage at 5:20 PM loses 20 minutes of data (since the 5:00 PM backup). Remember that these numbers are illustrative examples—each organization sets its own RTO and RPO targets based on its Business Impact Analysis (BIA).",
+            "th": "เรามาตรวจสอบตัวอย่างการคำนวณทั้งสองชุดจากเอกสารต้นฉบับเพื่อให้เกิดความชัดเจนสูงสุด ตัวอย่างแรกจาก Domain 2.md §9.3 (บรรทัด 258–266) สมมติว่าระบบล่มเมื่อเวลา 17:00 โดยองค์กรกำหนดค่า RTO = 1 ชั่วโมง และ RPO = 30 นาที หมายความว่าทีมงานตั้งเป้ากู้ระบบให้กลับมาใช้งานได้ไม่เกินเวลา 18:00 (17:00 บวก RTO 1 ชั่วโมง) และต้องกู้ข้อมูลจากจุดสำรองข้อมูลที่ไม่เก่าไปกว่าเวลา 16:30 (17:00 ลบ RPO 30 นาที) ตัวอย่างที่สองจากรอยปากกาบนสไลด์ S18 และคำบรรยาย (T:L55–60) ผู้สอนเขียน 'ERP = 1 hr' คู่กับ RTO และวาดเส้นเวลาของฐานข้อมูลที่มีจุดเวลา '4 PM', '30', '4:30', '5 PM', '20' และ '5:20' เพื่ออธิบายว่าหากกำหนดความถี่การสำรองข้อมูลทุก 1 ชั่วโมง (4:00 PM และ 5:00 PM) เมื่อเกิดเหตุล่มตอน 4:30 PM จะสูญเสียข้อมูลย้อนหลัง 30 นาที และหากเกิดเหตุตอน 5:20 PM หลังสำรองข้อมูลรอบ 5:00 PM แล้ว จะสูญเสียข้อมูลย้อนหลัง 20 นาที ทั้งนี้ ตัวเลขทั้งหมดเป็นเพียงตัวอย่างประกอบการเรียนรู้ โดยแต่ละองค์กรจะกำหนดค่า RTO และ RPO ตามผลวิเคราะห์ BIA ของตนเอง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Step-by-Step Calculation Rule: Start at the Outage Timestamp (T0). Subtract RPO (T0 − RPO) to find the earliest acceptable backup timestamp; add RTO (T0 + RTO) to find the latest acceptable restoration timestamp.",
+              "th": "สูตรการคำนวณอย่างเป็นขั้นตอน: เริ่มที่เวลาเกิดเหตุ (T0) นำค่า RPO ไปลบย้อนหลัง (T0 − RPO) เพื่อหาจุดเวลาสำรองข้อมูลที่เก่าที่สุดที่ยอมรับได้ และนำค่า RTO ไปบวกไปข้างหน้า (T0 + RTO) เพื่อหาเวลาสิ้นสุดที่ต้องกู้ระบบให้เสร็จ"
+            },
+            {
+              "en": "Evaluating Target Achievement vs. Breach: If T0 = 17:00, RPO = 30m, and the last usable backup is from 16:00 (60m data loss), RPO was breached by 30 minutes even if the server comes back online within the 1-hour RTO.",
+              "th": "การประเมินว่าผ่านเกณฑ์หรือเกินเป้าหมาย: หากเกิดเหตุเวลา 17:00 (RPO = 30 นาที) แต่ไฟล์สำรองล่าสุดที่ใช้ได้คือเวลา 16:00 (ข้อมูลหาย 60 นาที) แปลว่าตกเกณฑ์ RPO ไป 30 นาที แม้ว่าจะกู้เซิร์ฟเวอร์กลับมาทันภายใน RTO 1 ชั่วโมงก็ตาม"
+            },
+            {
+              "en": "Illustrative Nature Guardrail: Never memorize '1 hour' or '30 minutes' as universal legal mandates—they are illustrative scenarios used to test whether you can separate downtime duration (RTO) from data-loss age (RPO).",
+              "th": "ข้อควรระวังในการสอบ: ห้ามท่องจำว่า RTO ต้องเป็น 1 ชั่วโมง หรือ RPO ต้องเป็น 30 นาทีเสมอไป เพราะตัวเลขในโจทย์เป็นเพียงตัวอย่างสมมติเพื่อวัดว่าผู้สอบแยกแยะเรื่องเวลาที่ระบบล่ม (RTO) ออกจากอายุข้อมูลที่สูญหาย (RPO) ได้หรือไม่"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Key Takeaway: At outage time T0 = 17:00, RPO = 30 min requires recoverable data from ≥ 16:30, and RTO = 1 hr requires service restoration by ≤ 18:00.",
+            "th": "สรุปประเด็นสำคัญ: เมื่อระบบล่มเวลา 17:00 เป้าหมาย RPO = 30 นาทีบังคับให้จุดกู้ข้อมูลต้องไม่เก่ากว่า 16:30 และเป้าหมาย RTO = 1 ชั่วโมงบังคับให้ต้องกู้ระบบกลับมาภายในไม่เกิน 18:00"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-05-backup-and-restoration-strategies",
+      "title": {
+        "en": "DRP backup and recovery strategies: protecting data with cloud and off-site storage.",
+        "th": "กลยุทธ์การสำรองและกู้คืนข้อมูลในแผน DRP: การปกป้องข้อมูลด้วย Cloud Backups และ Off-site Storage"
+      },
+      "rendererId": "comparison",
+      "layoutId": "backup-offsite-resilience-architecture",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The third DRP component on S18—Backup and Recovery Strategies—defines the methods for backing up and restoring data (such as cloud backups and off-site storage) so a physical disaster or ransomware event at the primary site cannot destroy both production systems and their backups.",
+            "th": "องค์ประกอบที่ 3 ของแผน DRP บนสไลด์ S18 คือ Backup and Recovery Strategies ซึ่งกำหนดวิธีการสำรองและกู้คืนข้อมูล (เช่น Cloud backups และ Off-site storage) เพื่อไม่ให้ภัยพิบัติทางกายภาพหรือเหตุโจมตีที่ศูนย์หลักทำลายทั้งระบบใช้งานจริงและข้อมูลสำรองไปพร้อมกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Comparison of on-site backups, cloud backups, and off-site storage in a Disaster Recovery Plan (S18, Domain 2.md §9.4)",
+            "th": "การเปรียบเทียบการสำรองข้อมูลไว้ที่จุดหลัก (On-site) การสำรองบนคลาวด์ (Cloud Backups) และการเก็บแยกนอกสถานที่ (Off-site Storage) ตามสไลด์ S18 และ §9.4"
+          },
+          "columns": [
+            {
+              "en": "Backup Strategy / Architecture",
+              "th": "กลยุทธ์และรูปแบบการเก็บข้อมูลสำรอง"
+            },
+            {
+              "en": "Operational Characteristics",
+              "th": "คุณลักษณะเชิงปฏิบัติการ"
+            },
+            {
+              "en": "Disaster Survival & DRP Role",
+              "th": "ความอยู่รอดเมื่อเกิดภัยพิบัติและบทบาทใน DRP"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "On-Site Only Backup (Single-Site Risk)",
+                "th": "On-Site Only Backup (สำรองไว้ที่สถานที่หลักจุดเดียว)"
+              },
+              {
+                "en": "Stores backup copies in the same building or local server room as the primary production database.",
+                "th": "จัดเก็บสำเนาข้อมูลสำรองไว้ในอาคารเดียวกันหรือห้องเซิร์ฟเวอร์เดียวกับฐานข้อมูลหลักที่ใช้งานอยู่"
+              },
+              {
+                "en": "Fast for minor local file recovery, but useless in a site-wide earthquake, fire, flood, or network-wide ransomware encryption (T:L61–63).",
+                "th": "กู้ไฟล์ย่อยได้เร็วในภาวะปกติ แต่ไร้ผลเมื่อเกิดแผ่นดินไหว เพลิงไหม้ น้ำท่วมอาคารหลัก หรือถูก Ransomware เข้ารหัสทั้งเครือข่าย (T:L61–63)"
+              }
+            ],
+            [
+              {
+                "en": "Cloud Backups (S18)",
+                "th": "Cloud Backups (การสำรองข้อมูลบนระบบคลาวด์ — S18)"
+              },
+              {
+                "en": "Replicates or transfers encrypted backup snapshots to geographically separated cloud storage infrastructure.",
+                "th": "ส่งสำเนาข้อมูลสำรองที่เข้ารหัสไปจัดเก็บบนโครงสร้างพื้นฐานระบบคลาวด์ที่แยกพื้นที่ทางภูมิศาสตร์ออกจากสถานที่หลัก"
+              },
+              {
+                "en": "Survives local physical disasters, scales elastically, and enables restoration to alternate cloud or recovery environments.",
+                "th": "รอดพ้นจากภัยพิบัติในพื้นที่หลัก ขยายขนาดได้ยืดหยุ่น และช่วยให้กู้คืนข้อมูลไปยังระบบคลาวด์หรือศูนย์สำรองได้สะดวก"
+              }
+            ],
+            [
+              {
+                "en": "Off-Site Storage (S18 / D2-Q01)",
+                "th": "Off-Site Storage (การเก็บข้อมูลสำรองแยกนอกสถานที่ — S18)"
+              },
+              {
+                "en": "Preserves backup media or replicated storage arrays at a physically separate facility isolated from the primary location.",
+                "th": "จัดเก็บสื่อสำรองข้อมูลหรือระบบจัดเก็บข้อมูลไว้ในสถานที่ตั้งอื่นซึ่งแยกขาดจากอาคารสำนักงานใหญ่ทางกายภาพ"
+              },
+              {
+                "en": "Eliminates single-site destruction risk; ensures data remains recoverable even if the primary data center is completely lost.",
+                "th": "ขจัดความเสี่ยงจากการสูญเสียศูนย์ข้อมูลหลักทั้งอาคาร ทำให้มั่นใจว่ายังมีสำเนาข้อมูลปลอดภัยสำหรับการกู้คืนตามค่า RPO"
+              }
+            ],
+            [
+              {
+                "en": "Restoration Verification Imperative",
+                "th": "ความจำเป็นในการตรวจสอบการกู้คืน (Restoration)"
+              },
+              {
+                "en": "DRP procedures must document not only how backups are taken, but also how data, configurations, and integrity are restored and verified.",
+                "th": "แผน DRP ต้องไม่ได้ระบุแค่วิธีทำ Backup เท่านั้น แต่ต้องระบุขั้นตอนการนำข้อมูลกลับมาติดตั้งใหม่ (Restore) และการตรวจสอบความถูกต้องของข้อมูล"
+              },
+              {
+                "en": "Having a backup copy alone never proves recovery will succeed within RTO/RPO unless restoration procedures are tested (Domain 2.md §9.4).",
+                "th": "การมีไฟล์ Backup อย่างเดียวไม่ได้พิสูจน์ว่าจะกู้คืนได้สำเร็จทันตาม RTO/RPO จนกว่าจะมีการทดสอบขั้นตอนการกู้คืนจริง (§9.4)"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Course slide S18 defines the third DRP component as 'Backup and Recovery Strategies: Methods for backing up and restoring data (e.g., cloud backups, off-site storage).' (Note: In the raw transcript T:L61, automatic speech recognition misheard 'off-site storage' as 'offsite stitch'—remediated under D2-Q01 to the exact S18 slide text 'off-site storage'.) In the lecture (T:L61–63), the instructor explains why backup location is a governance and redundancy decision: if an organization backs up its on-premises database in the exact same primary building and an earthquake or fire destroys that facility, both the primary running system and the backup copy are destroyed together. By combining local recovery speed with Cloud Backups or Off-site Storage, and aligning backup frequency with the required RPO and RTO, organizations ensure data survives site-level disasters.",
+            "th": "สไลด์ต้นฉบับ S18 ได้ระบุองค์ประกอบที่ 3 ของแผน DRP คือ 'Backup and Recovery Strategies: Methods for backing up and restoring data (e.g., cloud backups, off-site storage)' (หมายเหตุ: ในไฟล์ถอดเสียง T:L61 ระบบแปลงเสียงพูดคลาดเคลื่อนเป็นคำอื่น ซึ่งได้รับการตรวจสอบและแก้ไขตามเกณฑ์ D2-Q01 ให้ใช้คำที่ถูกต้องตามสไลด์ S18 คือ 'off-site storage') ในคำบรรยาย (T:L61–63) ผู้สอนได้อธิบายเหตุผลสำคัญว่าทำไมสถานที่เก็บข้อมูลสำรองจึงเป็นเรื่องของ Redundancy และการกำกับดูแล: หากองค์กรมีฐานข้อมูลอยู่ที่สำนักงานใหญ่และเก็บไฟล์สำรองไว้ในอาคารเดียวกัน เมื่อเกิดภัยธรรมชาติอย่างแผ่นดินไหวหรือเพลิงไหม้ ทั้งระบบหลักที่กำลังรันอยู่และไฟล์ Backup จะถูกทำลายไปพร้อมกันทั้งหมด การเลือกใช้ Cloud backups หรือ Off-site storage ที่แยกพื้นที่ออกไปโดยกำหนดความถี่ให้สอดคล้องกับค่า RPO และ RTO จึงเป็นหัวใจสำคัญที่ทำให้กู้คืนข้อมูลได้จริง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Why On-Site Backups Alone Fail Disaster Recovery (T:L61–63): A single physical catastrophe or network-wide ransomware outbreak can wipe out both primary servers and co-located backups simultaneously.",
+              "th": "ทำไมการเก็บ Backup ไว้ที่จุดหลักเพียงแห่งเดียวจึงไม่เพียงพอสำหรับ DR (T:L61–63): เพราะภัยพิบัติทางกายภาพหรือการโจมตีในเครือข่ายเดียวกันสามารถทำลายทั้งเซิร์ฟเวอร์หลักและข้อมูลสำรองในที่เดียวกันได้พร้อมกัน"
+            },
+            {
+              "en": "Cloud Backups & Off-Site Storage (S18): Geographic and logical separation ensures that a clean, survivable copy of critical data and system configurations remains available after a primary site outage.",
+              "th": "Cloud Backups และ Off-Site Storage (S18): การแยกสถานที่จัดเก็บทั้งทางกายภาพและทางตรรกะช่วยให้องค์กรมีสำเนาข้อมูลและการตั้งค่าระบบที่ปลอดภัยเหลืออยู่เสมอแม้ศูนย์หลักจะได้รับความเสียหาย"
+            },
+            {
+              "en": "Linking Backup Strategy to RPO & RTO: RPO dictates how frequently changes must be captured or replicated off-site, while RTO dictates how rapidly those backup images can be restored into working systems.",
+              "th": "ความเชื่อมโยงระหว่างกลยุทธ์ Backup กับค่า RPO และ RTO: ค่า RPO เป็นตัวกำหนดว่าต้องสำรองหรือซิงก์ข้อมูลไปเก็บนอกสถานที่บ่อยเพียงใด ส่วนค่า RTO เป็นตัวกำหนดว่าวิธีดึงข้อมูลกลับมาติดตั้งใหม่ต้องทำได้เร็วแค่ไหน"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Key Takeaway: Cloud backups and off-site storage prevent a single site disaster from destroying both live systems and backup copies, but restoration must be verified to meet RPO and RTO.",
+            "th": "สรุปประเด็นสำคัญ: Cloud backups และ Off-site storage ช่วยป้องกันไม่ให้ภัยพิบัติที่จุดหลักทำลายทั้งระบบงานจริงและสำเนาข้อมูลสำรองไปพร้อมกัน แต่ต้องมีการทดสอบการกู้คืนเพื่อให้มั่นใจว่าทำได้ตาม RPO และ RTO"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-34-r1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-06-dr-sites-hot-warm-cold",
+      "title": {
+        "en": "Disaster Recovery Sites: comparing Hot, Warm, and Cold Sites across readiness, speed, and cost.",
+        "th": "ศูนย์สำรองเพื่อกู้คืนระบบ (DR Sites): เปรียบเทียบ Hot Site, Warm Site และ Cold Site ในมิติความพร้อม เวลา และต้นทุน"
+      },
+      "rendererId": "comparison",
+      "layoutId": "recovery-sites-spectrum",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The fourth DRP component on S18—Disaster Recovery Sites—provides alternate locations for restoring IT operations (hot sites, warm sites, cold sites), balancing infrastructure readiness and recovery speed against ongoing cost.",
+            "th": "องค์ประกอบที่ 4 ของแผน DRP บนสไลด์ S18 คือ Disaster Recovery Sites หรือสถานที่สำรองสำหรับการกู้คืนระบบปฏิบัติการด้าน IT (ได้แก่ Hot site, Warm site และ Cold site) ซึ่งองค์กรต้องเลือกให้สมดุลระหว่างระดับความพร้อม ความเร็วในการกู้คืน และต้นทุน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Comparison of Hot Site, Warm Site, and Cold Site recovery strategies (S18, Domain 2.md §9.5, T:L63–66)",
+            "th": "ตารางเปรียบเทียบศูนย์สำรองแบบ Hot Site, Warm Site และ Cold Site (ตามสไลด์ S18, Domain 2.md §9.5 และคำบรรยาย T:L63–66)"
+          },
+          "columns": [
+            {
+              "en": "Recovery Site Type (S18)",
+              "th": "ประเภทศูนย์สำรอง (DR Site — S18)"
+            },
+            {
+              "en": "Infrastructure & Data Readiness",
+              "th": "ความพร้อมของโครงสร้างพื้นฐานและข้อมูล"
+            },
+            {
+              "en": "Transition Speed, Cost & RTO Alignment",
+              "th": "ความเร็วในการสลับใช้งาน ต้นทุน และความสอดคล้องกับ RTO"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Hot Site",
+                "th": "Hot Site (ศูนย์สำรองพร้อมใช้งานทันที)"
+              },
+              {
+                "en": "Fully equipped alternate facility with IT systems, networks, applications, and near-real-time or up-to-date backups already intact.",
+                "th": "ศูนย์สำรองที่ติดตั้งระบบ IT เครือข่าย แอปพลิเคชัน และซิงก์ข้อมูลสำรองเตรียมพร้อมไว้ครบถ้วนแทบตลอดเวลา"
+              },
+              {
+                "en": "Fastest transition (typically minutes to hours in the instructor's example) and supports stringent RTOs, but carries the highest ongoing cost.",
+                "th": "สลับใช้งานได้เร็วที่สุด (ตามคำบรรยายคือระดับนาทีถึงชั่วโมง) รองรับงานที่ต้องการ RTO ต่ำมาก แต่มีต้นทุนการดูแลรักษาสูงที่สุด"
+              }
+            ],
+            [
+              {
+                "en": "Warm Site",
+                "th": "Warm Site (ศูนย์สำรองกึ่งพร้อมใช้งาน)"
+              },
+              {
+                "en": "Partially equipped site with power, HVAC, cabling, connectivity, and some core IT hardware, but requires loading current data/configs.",
+                "th": "ศูนย์สำรองที่มีโครงสร้างพื้นฐาน ระบบไฟ ระบบปรับอากาศ สายสัญญาณ และอุปกรณ์ IT บางส่วนพร้อมอยู่แล้ว แต่ต้องติดตั้งหรือดึงข้อมูลล่าสุดเพิ่ม"
+              },
+              {
+                "en": "Moderate transition time (typically several hours to days in the lecture) and moderate cost—suited for intermediate recovery targets.",
+                "th": "ใช้เวลาเตรียมการปานกลาง (ตามคำบรรยายคือหลายชั่วโมงถึงระดับวัน) และมีต้นทุนปานกลาง เหมาะกับระบบที่มีค่า RTO ระดับกลาง"
+              }
+            ],
+            [
+              {
+                "en": "Cold Site",
+                "th": "Cold Site (ศูนย์สำรองระดับโครงสร้างพื้นฐานขั้นต้น)"
+              },
+              {
+                "en": "Basic facility space (rooms, power, cooling shells) without pre-installed active servers, storage arrays, or loaded data.",
+                "th": "สถานที่สำรองที่มีเพียงพื้นที่อาคารและระบบสาธารณูปโภคขั้นต้น แต่ยังไม่มีการติดตั้งเซิร์ฟเวอร์ ระบบจัดเก็บข้อมูล หรือซอฟต์แวร์ไว้ล่วงหน้า"
+              },
+              {
+                "en": "Slowest transition (typically days to weeks to procure, install, and restore) with the lowest standing cost—cannot meet tight RTOs.",
+                "th": "ใช้เวลาฟื้นฟูนานที่สุด (ตามคำบรรยายคือระดับหลายวันถึงหลายสัปดาห์เพื่อติดตั้งอุปกรณ์ใหม่) มีต้นทุนคงที่ต่ำสุด แต่ไม่เหมาะกับงานที่ต้องการ RTO เร่งด่วน"
+              }
+            ],
+            [
+              {
+                "en": "Implementation & Dependency Reality",
+                "th": "ข้อเท็จจริงด้านการนำไปใช้และปัจจัยพึ่งพา"
+              },
+              {
+                "en": "Actual failover speed depends on network routing, DNS cutover, software licensing, trained staff, vendor SLAs, and regular testing.",
+                "th": "ความเร็วในการสลับระบบจริงขึ้นอยู่กับการตั้งค่าเครือข่าย DNS สิทธิ์การใช้งานซอฟต์แวร์ ความชำนาญของทีมงาน สัญญา SLA และผลจากการซ้อมแผน"
+              },
+              {
+                "en": "Relative timeframes ('minutes/hours' vs. 'days/weeks') are general operational ranges, not fixed guarantees without tested automation.",
+                "th": "กรอบเวลาเปรียบเทียบ (เช่น นาที/ชั่วโมง เทียบกับ วัน/สัปดาห์) เป็นเกณฑ์โดยทั่วไปตามทฤษฎี ไม่ใช่ตัวเลขตายตัวหากไม่เคยทดสอบจริง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Course slide S18 introduces the fourth DRP component: 'Disaster Recovery Sites: Alternate locations for restoring IT operations (e.g., hot sites, warm sites, cold sites).' As noted in Domain 2.md §9.5 (L276–291) and explained in the lecture transcript (T:L63–66), these three site models represent a spectrum of readiness, restoration speed, and cost. A Hot Site has IT systems, networks, and backups already in place so operations can be restored fastest (described by the instructor as minutes to hours), making it appropriate for mission-critical systems with tight RTOs—at the highest cost. A Warm Site has facilities, cabling, HVAC, and partial hardware ready, requiring moderate setup time (hours to days) and moderate cost. A Cold Site provides space and basic utilities without active IT infrastructure, taking the longest time to bring online (days to weeks) while costing the least to maintain.",
+            "th": "สไลด์ต้นฉบับ S18 ได้ระบุองค์ประกอบที่ 4 ของแผน DRP คือ 'Disaster Recovery Sites: Alternate locations for restoring IT operations (e.g., hot sites, warm sites, cold sites)' ทั้งนี้ ตามที่สรุปไว้ใน Domain 2.md §9.5 (บรรทัด 276–291) และในคำบรรยายของผู้สอน (T:L63–66) ศูนย์สำรองทั้ง 3 ประเภทนี้สะท้อนการแลกเปลี่ยน (Trade-off) ระหว่างระดับความพร้อม ความเร็วในการกู้คืนระบบ และงบประมาณ โดย Hot Site มีระบบ IT และข้อมูลสำรองเตรียมพร้อมไว้มากที่สุด จึงกู้คืนได้เร็วที่สุด (ผู้สอนยกตัวอย่างกรอบเวลาไว้ที่ระดับนาทีถึงชั่วโมง) เหมาะกับงานสำคัญยิ่งยวดที่มีค่า RTO สั้นมากแต่แลกมาด้วยค่าใช้จ่ายที่สูงที่สุด ส่วน Warm Site มีระบบสายสัญญาณ ระบบปรับอากาศ และอุปกรณ์บางส่วนพร้อมอยู่แล้ว แต่ต้องใช้เวลาเตรียมการและดึงข้อมูลเพิ่มเติมในระดับปานกลาง (หลายชั่วโมงถึงวัน) และ Cold Site มีเพียงพื้นที่หรือโครงสร้างพื้นฐานขั้นต้นโดยยังไม่มีอุปกรณ์คอมพิวเตอร์พร้อมใช้งาน จึงใช้เวลาติดตั้งและกู้คืนนานที่สุด (หลายวันถึงสัปดาห์) แต่เสียค่าใช้จ่ายในการดูแลรักษาต่ำที่สุด"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Hot Site (Highest Readiness / Fastest Recovery / Highest Cost): Active or standby infrastructure with synchronized data; chosen when critical systems demand very short RTOs.",
+              "th": "Hot Site (ความพร้อมสูงสุด / กู้คืนเร็วที่สุด / ต้นทุนสูงสุด): มีระบบและทรัพยากรเตรียมพร้อมไว้ครบถ้วน เหมาะกับระบบหลักที่ธุรกิจยอมให้หยุดทำงานได้น้อยมาก (RTO สั้น)"
+            },
+            {
+              "en": "Warm Site (Partial Readiness / Moderate Recovery / Balanced Cost): Pre-wired facility with baseline hardware that requires loading recent backups and configurations before taking production traffic.",
+              "th": "Warm Site (มีทรัพยากรบางส่วน / เวลาเตรียมการปานกลาง / ต้นทุนสมดุล): มีโครงสร้างพื้นฐานและอุปกรณ์บางส่วนพร้อม แต่ต้องนำข้อมูลสำรองล่าสุดมาติดตั้งเพิ่มเติมก่อนเปิดใช้งาน"
+            },
+            {
+              "en": "Cold Site (Basic Space Only / Slowest Recovery / Lowest Standing Cost): Unpopulated facility space; cannot satisfy a 1-hour or same-day RTO because hardware and software must still be delivered and configured.",
+              "th": "Cold Site (มีเฉพาะพื้นที่ขั้นต้น / กู้คืนช้าที่สุด / ต้นทุนคงที่ต่ำสุด): ยังไม่มีเซิร์ฟเวอร์ติดตั้งไว้ล่วงหน้า จึงไม่สามารถตอบโจทย์ระบบที่ต้องการ RTO ระดับชั่วโมงหรือภายในวันเดียวได้"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Key Takeaway: Hot Sites recover fastest at highest cost, Warm Sites balance partial readiness and moderate recovery time, and Cold Sites cost least upfront but take longest to restore.",
+            "th": "สรุปประเด็นสำคัญ: Hot Site พร้อมมากที่สุดและกู้คืนเร็วที่สุดแต่ต้นทุนสูงสุด, Warm Site มีความพร้อมและระยะเวลาเตรียมการระดับปานกลาง, ส่วน Cold Site ประหยัดงบคงที่ที่สุดแต่ใช้เวลาติดตั้งและกู้คืนนานที่สุด"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-34-r1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-07-drp-testing-and-coordination",
+      "title": {
+        "en": "DRP lifecycle execution, regular testing and drills, and recovery coordination.",
+        "th": "วงจรการปฏิบัติการตามแผน DRP การทดสอบและซ้อมแผนอย่างสม่ำเสมอ และการประสานงานกู้คืน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "drp-lifecycle-drills-coordination",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The fifth DRP component on S18—Testing and Drills—ensures regular testing of the DR plan to verify effectiveness: possessing a written DRP never guarantees recovery unless backups, priority order, and team coordination are validated before a crisis.",
+            "th": "องค์ประกอบที่ 5 ของแผน DRP บนสไลด์ S18 คือ Testing and Drills หรือการทดสอบและซ้อมแผนอย่างสม่ำเสมอเพื่อให้มั่นใจว่าแผนมีประสิทธิผลใช้งานได้จริง เพราะการมีเพียงเอกสารแผน DRP ไม่ได้รับประกันว่าจะกู้ระบบสำเร็จหากไม่เคยทดสอบข้อมูลสำรอง ลำดับการกู้คืน และการประสานงานล่วงหน้า"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "DRP lifecycle stages, Testing and Drills (S18, Domain 2.md §9.6), and coordinated recovery priorities",
+            "th": "วงจรการทำงานของแผน DRP การทดสอบและซ้อมแผน (S18, Domain 2.md §9.6) และการประสานงานตามลำดับความสำคัญ"
+          },
+          "columns": [
+            {
+              "en": "DRP Lifecycle & Governance Element",
+              "th": "ขั้นตอนและองค์ประกอบการบริหารแผน DRP"
+            },
+            {
+              "en": "Operational Activity",
+              "th": "กิจกรรมเชิงปฏิบัติการ"
+            },
+            {
+              "en": "Why It Matters for Real Recovery",
+              "th": "ความสำคัญต่อความสำเร็จในการกู้คืนจริง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "1. Plan & Align Priorities (BIA → DRP)",
+                "th": "1. การวางแผนและจัดลำดับระบบตามผล BIA"
+              },
+              {
+                "en": "Use Business Impact Analysis (BIA) results (S19) to establish IT recovery priorities—ranking critical databases, authentication, and core apps ahead of non-critical systems.",
+                "th": "นำผลวิเคราะห์จาก BIA (ตามตาราง S19) มากำหนดลำดับความสำคัญในการกู้คืนระบบ IT โดยฟื้นฟูฐานข้อมูลหลัก ระบบยืนยันตัวตน และแอปพลิเคชันสำคัญก่อนระบบทั่วไป"
+              },
+              {
+                "en": "Prevents engineering teams from wasting scarce outage time restoring test servers while core customer services remain offline.",
+                "th": "ป้องกันไม่ให้ทีมวิศวกรเสียเวลาอันมีค่าในยามวิกฤตไปกู้เซิร์ฟเวอร์ทดสอบก่อนระบบให้บริการลูกค้าหลัก"
+              }
+            ],
+            [
+              {
+                "en": "2. Execute & Coordinate Response",
+                "th": "2. การปฏิบัติการกู้คืนและการประสานงาน"
+              },
+              {
+                "en": "Coordinate IT recovery engineers, security containment, management authorization, and stakeholder communications as systems are restored from clean backups.",
+                "th": "ประสานงานร่วมกันระหว่างทีมกู้คืนระบบ IT ทีมความมั่นคงปลอดภัย ผู้บริหารที่อนุมัติการสลับระบบ และทีมสื่อสารผู้เกี่ยวข้องขณะดึงระบบกลับจากข้อมูลสำรองที่ปลอดภัย"
+              },
+              {
+                "en": "Ensures threats are contained before restoration so malware or corrupted states are not re-introduced into the recovery site.",
+                "th": "ช่วยให้มั่นใจว่าภัยคุกคามถูกจำกัดวงแล้วก่อนกู้ระบบ เพื่อไม่ให้นำมัลแวร์หรือข้อมูลที่เสียหายกลับเข้ามาในศูนย์สำรอง"
+              }
+            ],
+            [
+              {
+                "en": "3. Testing and Drills (S18 Component #5)",
+                "th": "3. Testing and Drills (การทดสอบและซ้อมแผน — S18 ข้อ 5)"
+              },
+              {
+                "en": "Conduct regular testing and drills of the DR plan (tabletop walkthroughs, backup restoration tests, and failover simulations) to measure DR strategy effectiveness (T:L65–67).",
+                "th": "ดำเนินการทดสอบและซ้อมแผน DR อย่างสม่ำเสมอ ทั้งการทบทวนแผน การทดสอบดึงไฟล์ Backup มากู้คืนจริง และการจำลองการสลับไปศูนย์สำรองเพื่อวัดประสิทธิผลของกลยุทธ์ (T:L65–67)"
+              },
+              {
+                "en": "Verifies that backups are actually restorable, failover scripts work, and personnel know their exact steps under pressure.",
+                "th": "ช่วยพิสูจน์ว่าไฟล์ Backup กู้คืนได้จริง สคริปต์สลับระบบทำงานได้ และบุคลากรเข้าใจขั้นตอนปฏิบัติของตนเมื่อเกิดเหตุ"
+              }
+            ],
+            [
+              {
+                "en": "4. Validate & Continually Improve",
+                "th": "4. การตรวจสอบความถูกต้องและปรับปรุงแผนต่อเนื่อง"
+              },
+              {
+                "en": "Verify data integrity after restoration, measure actual recovery duration/data loss against RTO/RPO targets, and update the DRP as systems change.",
+                "th": "ตรวจสอบความครบถ้วนถูกต้องของข้อมูลหลังกู้คืน วัดผลเวลาที่ใช้จริงเทียบกับเป้าหมาย RTO/RPO และปรับปรุงเอกสารแผน DRP ให้ทันสมัยเมื่อระบบเปลี่ยนแปลง"
+              },
+              {
+                "en": "Closes gaps discovered during drills or incidents so an outdated DRP does not fail during the next disruption.",
+                "th": "ปิดช่องโหว่ที่พบจากการซ้อมหรือเหตุการณ์จริง เพื่อไม่ให้แผน DRP ล้าสมัยจนใช้งานไม่ได้ในอนาคต"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The fifth component on course slide S18 is 'Testing and Drills: Regular testing of the DR plan to ensure effectiveness.' In the lecture transcript (T:L65–67) and Domain 2.md §9.6 (L292–297), the instructor stresses that writing a Disaster Recovery Plan or scheduling automated backups is never the end of governance. Without regular testing and drills, organizations only discover during an actual crisis that backup tapes or cloud snapshots are corrupted, missing encryption keys, lacking dependency order, or unable to meet the target RTO. Effective DRP governance follows a complete lifecycle: (1) Planning IT recovery priorities from BIA results (S19), (2) Executing coordinated containment, restoration, and stakeholder communication, (3) Validating restorable backups and failover readiness through regular Testing and Drills, and (4) Updating the DRP whenever infrastructure or business priorities evolve.",
+            "th": "องค์ประกอบข้อที่ 5 บนสไลด์ต้นฉบับ S18 คือ 'Testing and Drills: Regular testing of the DR plan to ensure effectiveness' หรือการทดสอบและซ้อมแผน DR อย่างสม่ำเสมอเพื่อให้มั่นใจว่าแผนมีประสิทธิผล ในคำบรรยายของผู้สอน (T:L65–67) และสรุปบทเรียน Domain 2.md §9.6 (บรรทัด 292–297) ได้เน้นย้ำหลักการสำคัญสำหรับการสอบว่า การเขียนเอกสารแผน DRP หรือการตั้งเวลาสำรองข้อมูลอัตโนมัติไม่ใช่จุดสิ้นสุดของการกำกับดูแล หากองค์กรไม่เคยทำการทดสอบและซ้อมแผน (Testing and Drills) องค์กรอาจเพิ่งค้นพบในวันที่เกิดวิกฤตจริงว่าไฟล์สำรองข้อมูลเสียหาย ขาดกุญแจถอดรหัส เรียงลำดับการกู้คืนระบบผิดพลาด หรือใช้เวลากู้คืนจริงนานเกินกว่าเป้าหมาย RTO การบริหารแผน DRP ที่สมบูรณ์จึงต้องเชื่อมโยงตั้งแต่การจัดลำดับระบบตามผล BIA (S19) การประสานงานระหว่างทีมขณะกู้คืน การซ้อมแผนเพื่อพิสูจน์ว่ากู้คืนได้จริง ไปจนถึงการปรับปรุงแผนอย่างต่อเนื่อง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "All 5 S18 DRP Components in One View: (1) Recovery Time Objective (RTO), (2) Recovery Point Objective (RPO), (3) Backup and Recovery Strategies, (4) Disaster Recovery Sites, and (5) Testing and Drills.",
+              "th": "ทบทวนครบทั้ง 5 องค์ประกอบของ DRP บนสไลด์ S18: (1) Recovery Time Objective (RTO) (2) Recovery Point Objective (RPO) (3) Backup and Recovery Strategies (4) Disaster Recovery Sites และ (5) Testing and Drills"
+            },
+            {
+              "en": "Why Testing and Drills Are Mandatory (Domain 2.md §9.6): A DRP that exists only on paper gives false confidence; drills verify that backups are restorable and that RTO/RPO targets are achievable in practice.",
+              "th": "เหตุผลที่ต้องมีการทำ Testing and Drills (§9.6): แผน DRP ที่อยู่แค่บนกระดาษอาจสร้างความมั่นใจที่ผิดพลาด การซ้อมแผนช่วยพิสูจน์ว่าข้อมูลสำรองนำมากู้คืนได้จริงและทำได้ทันตามเป้าหมาย RTO/RPO"
+            },
+            {
+              "en": "Coordinating Technical & Business Priorities: IT Recovery Engineers, Security Teams, Management, and Communications Teams must follow BIA-derived recovery priorities so critical dependencies (such as identity and core databases) come online first.",
+              "th": "การประสานงานและจัดลำดับความสำคัญ: ทีมกู้คืน IT ทีมความมั่นคงปลอดภัย ผู้บริหาร และทีมสื่อสารต้องทำงานสอดประสานกันตามลำดับความสำคัญที่ได้จาก BIA โดยกู้ระบบพื้นฐานที่จำเป็น (เช่น ระบบยืนยันตัวตนและฐานข้อมูลหลัก) ขึ้นมาก่อน"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Key Takeaway: A written DRP or unverified backup never guarantees recovery—regular Testing and Drills validate that people, sites, and backups can actually achieve RTO and RPO targets.",
+            "th": "สรุปประเด็นสำคัญ: การมีเพียงเอกสารแผน DRP หรือไฟล์สำรองที่ไม่เคยตรวจสอบไม่ได้รับประกันความสำเร็จ จึงต้องมีการทำ Testing and Drills อย่างสม่ำเสมอเพื่อพิสูจน์ว่ากู้คืนระบบได้จริงตามเป้าหมาย RTO และ RPO"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-34-r1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-08-bc-vs-dr-seven-dimensions",
+      "title": {
+        "en": "Complete 7-dimension comparison: Business Continuity (BC) vs. Disaster Recovery (DR).",
+        "th": "ตารางเปรียบเทียบครบ 7 มิติ: Business Continuity (BC) เทียบกับ Disaster Recovery (DR)"
+      },
+      "rendererId": "comparison",
+      "layoutId": "bc-vs-dr-master-matrix",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Course slide S19 synthesizes Objective 2.2 into a seven-row comparison between Business Continuity (BC) and Disaster Recovery (DR)—contrasting primary focus, scope, examples, key planning documents, BIA usage, recovery metrics, and overall relationship.",
+            "th": "สไลด์ต้นฉบับ S19 สรุปหัวใจของ Objective 2.2 ออกเป็นตารางเปรียบเทียบ 7 มิติระหว่าง Business Continuity (BC) กับ Disaster Recovery (DR) ครอบคลุมทั้งจุดเน้นหลัก ขอบเขต ตัวอย่าง เอกสารแผน บทบาทของ BIA ตัวชี้วัดการกู้คืน และความสัมพันธ์ในภาพรวม"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Exact seven-row Business Continuity (BC) vs. Disaster Recovery (DR) comparison table from course slide S19 (Domain 2.md §10)",
+            "th": "ตารางเปรียบเทียบ Business Continuity (BC) กับ Disaster Recovery (DR) ครบทั้ง 7 แถวตามสไลด์ต้นฉบับ S19 (Domain 2.md §10)"
+          },
+          "columns": [
+            {
+              "en": "Aspect (S19)",
+              "th": "มิติเปรียบเทียบ (S19)"
+            },
+            {
+              "en": "Business Continuity (BC)",
+              "th": "Business Continuity (BC)"
+            },
+            {
+              "en": "Disaster Recovery (DR)",
+              "th": "Disaster Recovery (DR)"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "1. Primary Focus",
+                "th": "1. Primary Focus (จุดเน้นหลัก)"
+              },
+              {
+                "en": "Keeping the business operating during a disruption.",
+                "th": "การทำให้ธุรกิจยังคงดำเนินงานต่อไปได้ในระหว่างเกิดเหตุหยุดชะงัก (Keeping the business operating during a disruption)"
+              },
+              {
+                "en": "Restoring IT systems and infrastructure after a disruption.",
+                "th": "การกู้คืนระบบและโครงสร้างพื้นฐานด้าน IT หลังจากเกิดเหตุหยุดชะงัก (Restoring IT systems and infrastructure after a disruption)"
+              }
+            ],
+            [
+              {
+                "en": "2. Scope",
+                "th": "2. Scope (ขอบเขต)"
+              },
+              {
+                "en": "Broad — includes people, processes, facilities, suppliers, and technology.",
+                "th": "กว้าง (Broad) — ครอบคลุมทั้งบุคลากร กระบวนการ อาคารสถานที่ ซัพพลายเออร์ และเทคโนโลยี"
+              },
+              {
+                "en": "Primarily focused on IT systems, applications, networks, and data.",
+                "th": "มุ่งเน้นเฉพาะด้าน IT เป็นหลัก ได้แก่ ระบบ แอปพลิเคชัน เครือข่าย และข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "3. Examples",
+                "th": "3. Examples (ตัวอย่างการปฏิบัติ)"
+              },
+              {
+                "en": "Alternate work locations, manual processes, backup personnel.",
+                "th": "สถานที่ทำงานสำรอง (Alternate work locations) ขั้นตอนทำงานแบบ Manual และบุคลากรสำรอง (Backup personnel)"
+              },
+              {
+                "en": "Restoring servers, databases, applications, and network services.",
+                "th": "การกู้คืนเซิร์ฟเวอร์ (Servers) ฐานข้อมูล (Databases) แอปพลิเคชัน และบริการเครือข่าย"
+              }
+            ],
+            [
+              {
+                "en": "4. Key Planning Document",
+                "th": "4. Key Planning Document (เอกสารแผนหลัก)"
+              },
+              {
+                "en": "Business Continuity Plan (BCP).",
+                "th": "Business Continuity Plan (BCP — แผนความต่อเนื่องทางธุรกิจ)"
+              },
+              {
+                "en": "Disaster Recovery Plan (DRP).",
+                "th": "Disaster Recovery Plan (DRP — แผนกู้คืนจากภัยพิบัติ)"
+              }
+            ],
+            [
+              {
+                "en": "5. Business Impact Analysis (BIA)",
+                "th": "5. Business Impact Analysis (BIA)"
+              },
+              {
+                "en": "Identifies critical business functions and priorities.",
+                "th": "ใช้ระบุฟังก์ชันงานธุรกิจที่สำคัญและจัดลำดับความสำคัญ (Identifies critical business functions and priorities)"
+              },
+              {
+                "en": "Uses BIA results to establish IT recovery priorities.",
+                "th": "นำผลลัพธ์จาก BIA มาใช้กำหนดลำดับความสำคัญในการกู้คืนระบบ IT (Uses BIA results to establish IT recovery priorities)"
+              }
+            ],
+            [
+              {
+                "en": "6. Recovery Metrics",
+                "th": "6. Recovery Metrics (ตัวชี้วัดการฟื้นฟู)"
+              },
+              {
+                "en": "May include RTO and business recovery requirements.",
+                "th": "อาจรวมถึงค่า RTO และความต้องการในการฟื้นฟูการดำเนินงานของธุรกิจ"
+              },
+              {
+                "en": "Heavily relies on RTO and RPO.",
+                "th": "พึ่งพาตัวชี้วัด RTO และ RPO เป็นหลักอย่างเข้มข้น (Heavily relies on RTO and RPO)"
+              }
+            ],
+            [
+              {
+                "en": "7. Relationship",
+                "th": "7. Relationship (ความสัมพันธ์)"
+              },
+              {
+                "en": "Broader concept (the overarching organizational umbrella).",
+                "th": "เป็นแนวคิดที่กว้างกว่า (Broader concept — ร่มใหญ่ระดับองค์กร)"
+              },
+              {
+                "en": "Component of business continuity (DR ⊂ BC).",
+                "th": "เป็นส่วนประกอบหนึ่งของ Business Continuity (Component of business continuity: DR ⊂ BC)"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Course slide S19 ('Business Continuity vs Disaster Recovery') is the definitive side-by-side synthesis for Objective 2.2 (Domain 2.md §10, L298–318; T:L67–72). Instead of forcing an artificial diagram onto what is inherently a structured 7-row comparison matrix, mastering these exact seven rows gives you instant precision on ISC2 CC exam questions: (1) Primary Focus (keeping business operating during a disruption vs. restoring IT systems and infrastructure after a disruption), (2) Scope (Broad: people, processes, facilities, suppliers, technology vs. IT systems, applications, networks, data), (3) Examples (alternate work locations, manual processes, backup personnel vs. restoring servers, databases, applications, network services), (4) Key Planning Document (BCP vs. DRP), (5) Business Impact Analysis (identifies critical business functions/priorities vs. uses BIA results to establish IT recovery priorities), (6) Recovery Metrics (may include RTO and business recovery requirements vs. heavily relies on RTO and RPO), and (7) Relationship (broader concept vs. component of business continuity).",
+            "th": "สไลด์ต้นฉบับ S19 ('Business Continuity vs Disaster Recovery') คือตารางสรุปเปรียบเทียบที่สมบูรณ์ที่สุดของ Objective 2.2 (Domain 2.md §10 บรรทัด 298–318 และคำบรรยาย T:L67–72) การทำความเข้าใจตารางเปรียบเทียบทั้ง 7 แถวนี้โดยตรงจะช่วยให้ผู้เรียนแยกแยะโจทย์ข้อสอบ ISC2 CC ได้อย่างแม่นยำทันที ได้แก่ (1) Primary Focus (ประคองธุรกิจให้ดำเนินต่อระหว่างเกิดเหตุ vs. กู้คืนระบบและโครงสร้างพื้นฐาน IT หลังเกิดเหตุ) (2) Scope (กว้างครอบคลุมคน กระบวนการ อาคาร ซัพพลายเออร์ เทคโนโลยี vs. เน้นระบบ IT แอปพลิเคชัน เครือข่าย และข้อมูล) (3) Examples (สถานที่ทำงานสำรอง ขั้นตอน Manual บุคลากรสำรอง vs. กู้เซิร์ฟเวอร์ ฐานข้อมูล แอปพลิเคชัน และเครือข่าย) (4) Key Planning Document (แผน BCP vs. แผน DRP) (5) Business Impact Analysis (ใช้ระบุฟังก์ชันธุรกิจสำคัญและลำดับความสำคัญ vs. นำผล BIA มาจัดลำดับการกู้คืน IT) (6) Recovery Metrics (อาจรวม RTO และความต้องการฟื้นฟูธุรกิจ vs. พึ่งพา RTO และ RPO เป็นหลัก) และ (7) Relationship (แนวคิดที่กว้างกว่า vs. เป็นส่วนประกอบหนึ่งของ BC)"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "How BC and DR Work Together in Real Time: When a disaster strikes, BC activates immediately to keep customer service running (via alternate sites and manual workarounds) while DR works in parallel to restore servers, databases, and networks.",
+              "th": "การทำงานร่วมกันของ BC และ DR ในสถานการณ์จริง: เมื่อเกิดเหตุวิกฤต ฝั่ง BC จะเริ่มทำงานทันทีเพื่อประคองการบริการลูกค้า (ผ่านสาขาสำรองหรือขั้นตอน Manual) ในขณะที่ฝั่ง DR ทำงานคู่ขนานเพื่อกู้คืนเซิร์ฟเวอร์ ฐานข้อมูล และเครือข่ายให้กลับมาออนไลน์"
+            },
+            {
+              "en": "Four Essential Exam Pairs (Domain 2.md §24.1): (1) BC vs. BCP (capability vs. plan), (2) DR vs. DRP (IT recovery process vs. IT recovery plan), (3) BC vs. DR (whole business vs. IT subset), and (4) RTO vs. RPO (downtime vs. data loss).",
+              "th": "4 คู่คำศัพท์สำคัญที่ต้องแยกให้ขาดในห้องสอบ (§24.1): (1) BC vs. BCP (ความสามารถ vs. แผนธุรกิจ) (2) DR vs. DRP (การกู้คืน IT vs. แผนกู้คืน IT) (3) BC vs. DR (ระดับธุรกิจทั้งหมด vs. ส่วนย่อยด้าน IT) และ (4) RTO vs. RPO (เวลาหยุดระบบ vs. เวลาข้อมูลสูญหาย)"
+            },
+            {
+              "en": "Rapid Diagnostic Rule (Domain 2.md §10 L312–317): 'Have staff answer customer calls from a backup branch' → BC/BCP; 'Restore the database and network so the application comes back online' → DR/DRP.",
+              "th": "เกณฑ์ช่วยตัดตัวเลือกอย่างรวดเร็ว (§10 บรรทัด 312–317): 'เปิดให้พนักงานรับสายลูกค้าจากสาขาสำรอง' → เลือก BC/BCP; 'กู้คืน Database และ Network เพื่อให้ระบบกลับมาใช้งานได้' → เลือก DR/DRP"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Key Takeaway: BC is the broader business continuity umbrella (BCP, people/processes/sites); DR is the technical IT restoration component inside it (DRP, servers/databases/networks, RTO & RPO).",
+            "th": "สรุปประเด็นสำคัญ: BC คือร่มใหญ่ระดับธุรกิจทั้งหมด (แผน BCP ครอบคลุมคน กระบวนการ สถานที่) ส่วน DR คือองค์ประกอบย่อยด้านการกู้คืนระบบ IT ภายในร่มนั้น (แผน DRP เน้นเซิร์ฟเวอร์ ฐานข้อมูล เครือข่าย และค่า RTO/RPO)"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-09-disaster-recovery-scenario",
+      "title": {
+        "en": "Scenario: Applying RTO, RPO, and Disaster Recovery Strategies After an Outage",
+        "th": "สถานการณ์ฝึกคิด: การประยุกต์ใช้ค่า RTO, RPO และกลยุทธ์การกู้คืนระบบหลังเกิดเหตุหยุดชะงัก"
+      },
+      "rendererId": "interactive",
+      "layoutId": "disaster-recovery-decision-scenario",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Scenario: Your organization's core order-processing database crashes at 17:00 due to a storage failure at the primary data center. Business Impact Analysis (BIA) sets a maximum acceptable data loss of 30 minutes and a maximum acceptable downtime of 1 hour. Which Disaster Recovery analysis and strategy is MOST appropriate?",
+            "th": "สถานการณ์จำลอง: ระบบฐานข้อมูลประมวลผลคำสั่งซื้อหลักขององค์กรล่มเมื่อเวลา 17:00 จากเหตุระบบจัดเก็บข้อมูลที่ศูนย์ข้อมูลหลักเสียหาย โดยผลวิเคราะห์ BIA กำหนดเพดานการสูญเสียข้อมูลย้อนหลังสูงสุดที่ยอมรับได้ไม่เกิน 30 นาที และระยะเวลาที่ระบบหยุดทำงานสูงสุดที่ยอมรับได้ไม่เกิน 1 ชั่วโมง ข้อใดวิเคราะห์ค่าเป้าหมายและเลือกกลยุทธ์ DRP ได้เหมาะสมที่สุด?"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Decision matrix for evaluating RTO/RPO calculations, backup locations, recovery sites, and DRP testing",
+            "th": "ตารางวิเคราะห์ตัวเลือกการตัดสินใจเรื่องการคำนวณค่า RTO/RPO การเก็บข้อมูลสำรอง ศูนย์สำรอง และการซ้อมแผน DRP"
+          },
+          "columns": [
+            {
+              "en": "Option",
+              "th": "ตัวเลือก"
+            },
+            {
+              "en": "Candidate DRP Analysis & Strategy",
+              "th": "แนวทางการวิเคราะห์และกลยุทธ์ DRP ที่เสนอ"
+            },
+            {
+              "en": "Technical & Governance Evaluation",
+              "th": "ผลการวิเคราะห์ตามหลัก Disaster Recovery (DRP)"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Option A",
+                "th": "ตัวเลือก A"
+              },
+              {
+                "en": "Classify the 30-minute data-loss limit as RTO and the 1-hour downtime limit as RPO, and procure servers for an unpopulated Cold Site.",
+                "th": "ระบุว่าเพดานข้อมูลสูญหาย 30 นาทีคือค่า RTO และเวลาหยุดทำงาน 1 ชั่วโมงคือค่า RPO พร้อมเริ่มสั่งซื้อเซิร์ฟเวอร์มาติดตั้งใหม่ที่ศูนย์สำรองแบบ Cold Site"
+              },
+              {
+                "en": "Distractor — Reverses the definitions of RTO and RPO, and selects an unequipped Cold Site (days/weeks setup) that cannot meet a 1-hour recovery target.",
+                "th": "ตัวลวง — สลับนิยามของ RTO กับ RPO และเลือกใช้ Cold Site ซึ่งต้องใช้เวลาติดตั้งหลายวันหรือหลายสัปดาห์ จึงไม่สามารถกู้ระบบให้ทันภายใน 1 ชั่วโมงได้"
+              }
+            ],
+            [
+              {
+                "en": "Option B",
+                "th": "ตัวเลือก B"
+              },
+              {
+                "en": "Keep all database backups only in the primary server room for speed, and skip DR drills since daily backup jobs are scheduled.",
+                "th": "เก็บสำเนาข้อมูลสำรองทั้งหมดไว้ในห้องเซิร์ฟเวอร์หลักเพียงจุดเดียวเพื่อให้ดึงข้อมูลเร็ว และไม่ต้องซ้อมแผน DR เพราะตั้งเวลาสำรองข้อมูลรายวันไว้แล้ว"
+              },
+              {
+                "en": "Distractor — Co-locating backups at the primary site creates a single-site failure risk, daily backups violate a 30-minute RPO, and untested plans fail.",
+                "th": "ตัวลวง — การเก็บ Backup ไว้ที่จุดหลักเพียงแห่งเดียวเสี่ยงต่อการสูญเสียพร้อมกัน การสำรองรายวันไม่ผ่านเกณฑ์ RPO 30 นาที และการไม่ซ้อมแผนทำให้ไม่มั่นใจว่ากู้คืนได้จริง"
+              }
+            ],
+            [
+              {
+                "en": "Option C",
+                "th": "ตัวเลือก C"
+              },
+              {
+                "en": "Set RPO = 30 min (data ≥ 16:30) and RTO = 1 hr (restore ≤ 18:00), using off-site/cloud replication, a ready Hot/Warm site, and DRP drills.",
+                "th": "ระบุ RPO = 30 นาที (ข้อมูลไม่เก่ากว่า 16:30) และ RTO = 1 ชั่วโมง (กู้เสร็จไม่เกิน 18:00) โดยใช้ข้อมูลสำรองนอกสถานที่/คลาวด์ ศูนย์สำรองที่พร้อม และซ้อมแผน DRP"
+              },
+              {
+                "en": "Recommended — Accurately maps RPO (30m backward to 16:30) and RTO (1h forward to 18:00), pairs off-site/cloud backups with a ready recovery site, and validates via drills.",
+                "th": "ตัวเลือกที่ถูกต้อง — แยกแยะและคำนวณ RPO (ย้อนกลับไป 16:30) กับ RTO (เดินหน้าไป 18:00) ได้แม่นยำ ผสานการเก็บข้อมูลสำรองนอกสถานที่/คลาวด์เข้ากับศูนย์สำรองที่พร้อมและการซ้อมแผนจริง"
+              }
+            ],
+            [
+              {
+                "en": "Option D",
+                "th": "ตัวเลือก D"
+              },
+              {
+                "en": "Restore non-critical internal test and archive servers first, then rebuild the order database next week without notifying stakeholders.",
+                "th": "เร่งกู้คืนเซิร์ฟเวอร์ทดสอบภายในและระบบคลังเอกสารเก่าขึ้นมาก่อน แล้วค่อยกู้ฐานข้อมูลคำสั่งซื้อหลักในสัปดาห์หน้าโดยไม่ต้องแจ้งผู้เกี่ยวข้อง"
+              },
+              {
+                "en": "Distractor — Violates BIA-driven IT recovery priorities, breaches the 1-hour RTO by delaying critical database recovery, and omits stakeholder coordination.",
+                "th": "ตัวลวง — ขัดต่อหลักการจัดลำดับการกู้คืนระบบ IT ตามผล BIA ทำให้ละเมิดเป้าหมาย RTO 1 ชั่วโมงอย่างรุนแรง และขาดการประสานงานแจ้งผู้เกี่ยวข้อง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This scenario synthesizes the core Disaster Recovery concepts from Domain 2.md (§8–§10, §24, and §25 Q2–Q3) and course slides S16–S19. When the order-processing database fails at 17:00, the 30-minute maximum acceptable data loss is the Recovery Point Objective (RPO)—requiring a valid backup or replicated state captured no earlier than 16:30. The 1-hour maximum acceptable downtime is the Recovery Time Objective (RTO)—requiring service restoration no later than 18:00. Option A reverses RTO and RPO and relies on a Cold Site that takes days or weeks to provision. Option B leaves backups vulnerable at the primary site, uses a 24-hour backup schedule that cannot meet a 30-minute RPO, and skips DR testing. Option D ignores BIA-driven IT recovery priorities. Option C is the only sound choice because it correctly calculates RPO (≥ 16:30) and RTO (≤ 18:00) and supports those targets with off-site/cloud replication, an appropriately ready recovery site, and regular DRP testing and drills.",
+            "th": "สถานการณ์จำลองนี้บูรณาการแนวคิดหลักของ Disaster Recovery จากเอกสารสรุป Domain 2.md (§8–§10, §24 และโจทย์ทบทวน §25 Q2–Q3) ตลอดจนสไลด์ต้นฉบับ S16–S19 เมื่อฐานข้อมูลคำสั่งซื้อหลักล่มลงในเวลา 17:00 เพดานการสูญเสียข้อมูลย้อนหลังสูงสุด 30 นาทีคือค่า Recovery Point Objective (RPO) ซึ่งหมายความว่าต้องกู้ข้อมูลจากจุดสำรองที่ไม่เก่ากว่าเวลา 16:30 ส่วนเพดานเวลาที่ระบบหยุดทำงานสูงสุด 1 ชั่วโมงคือค่า Recovery Time Objective (RTO) ซึ่งหมายความว่าต้องกู้ระบบให้กลับมาใช้งานได้ไม่เกินเวลา 18:00 ตัวเลือก A ผิดเพราะสลับความหมายของ RTO กับ RPO และเลือกใช้ Cold Site ที่ต้องใช้เวลาติดตั้งหลายวันจนไม่ทันกรอบเวลา 1 ชั่วโมง ตัวเลือก B ผิดเพราะเก็บข้อมูลสำรองไว้ที่ห้องเซิร์ฟเวอร์หลักเพียงจุดเดียว สำรองข้อมูลแค่วันละครั้งซึ่งไม่รองรับ RPO 30 นาที และไม่ทำการซ้อมแผน ส่วนตัวเลือก D ผิดเพราะกู้ระบบที่ไม่สำคัญก่อนงานหลักตามผล BIA ดังนั้น ตัวเลือก C จึงถูกต้องที่สุดเพราะคำนวณทั้ง RPO และ RTO ได้ตรงตามหลักวิชาการ พร้อมเลือกใช้การสำรองข้อมูลนอกสถานที่/คลาวด์ ศูนย์สำรองที่มีความพร้อม และการซ้อมแผน DRP อย่างสม่ำเสมอ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Why Option C Succeeds: Correctly identifies RPO = 30 min (backup ≥ 16:30) and RTO = 1 hr (restoration ≤ 18:00), backed by off-site/cloud data protection, high-readiness recovery infrastructure, and tested DRP procedures.",
+              "th": "เหตุผลที่ตัวเลือก C ถูกต้อง: แยกแยะและคำนวณค่า RPO = 30 นาที (ข้อมูลไม่เก่ากว่า 16:30) และ RTO = 1 ชั่วโมง (กู้ระบบเสร็จไม่เกิน 18:00) ได้ถูกต้อง พร้อมจับคู่กับระบบสำรองข้อมูลนอกสถานที่/คลาวด์ ศูนย์สำรองที่พร้อมใช้งาน และการซ้อมแผน DRP"
+            },
+            {
+              "en": "Why Option A Fails (Classic Exam Trap): Swaps RTO (downtime) with RPO (data loss) and pairs a 1-hour RTO with a Cold Site that has no pre-installed servers.",
+              "th": "เหตุผลที่ตัวเลือก A ผิด (กับดักข้อสอบยอดนิยม): สลับความหมายระหว่าง RTO (เวลาหยุดทำงาน) กับ RPO (ข้อมูลสูญหาย) และนำเป้าหมาย RTO 1 ชั่วโมงไปผูกกับ Cold Site ที่ยังไม่มีอุปกรณ์ติดตั้งไว้"
+            },
+            {
+              "en": "Why Options B & D Fail: Option B ignores off-site survival, RPO frequency, and DRP testing; Option D ignores BIA-driven IT system recovery priorities.",
+              "th": "เหตุผลที่ตัวเลือก B และ D ผิด: ตัวเลือก B ละเลยการแยกสถานที่เก็บ Backup และการซ้อมแผน ส่วนตัวเลือก D ไม่จัดลำดับการกู้คืนระบบ IT ตามผลวิเคราะห์ BIA"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Objective 2.2 Summary: BC & BCP keep the whole business running → DR & DRP restore IT systems and data → RPO bounds backward data loss & RTO bounds forward downtime → Cloud/Off-site backups, Hot/Warm/Cold sites, and regular drills make recovery real.",
+            "th": "บทสรุป Objective 2.2: BC และแผน BCP ช่วยประคองธุรกิจทั้งองค์กรให้เดินต่อ → DR และแผน DRP มุ่งกู้คืนระบบ IT และข้อมูล → RPO จำกัดเวลาข้อมูลสูญหายย้อนหลังและ RTO จำกัดเวลาหยุดทำงานไปข้างหน้า → Cloud/Off-site Backups, ศูนย์สำรอง Hot/Warm/Cold Site และการซ้อมแผนสม่ำเสมอทำให้กู้คืนได้จริง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-34-r1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "isc2-cc-2026-outline",
+      "title": "ISC2 Certified in Cybersecurity (CC) Exam Outline — Effective September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain 2: Security Governance (17.3%) — Objective 2.2: Understand Redundancy.",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "d2-master-notes",
+      "title": "Domain 2 — Security Governance: Complete Study Notes (Domain 2.md)",
+      "authority": "course",
+      "locator": "§8 (L204–235) Disaster Recovery definition, 5 purposes, 3 concepts, 5 importance points & GDPR/HIPAA note; §9 (L236–297) DRP components (RTO, RPO, 17:00 timeline, Cloud/Off-site backups, Hot/Warm/Cold sites, Testing & Drills); §10 (L298–318) 7-row BC vs. DR table; §24.1–24.2 (L593–612) & §25 Q2–Q3 (L661–665).",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/Domain 2.md"
+    },
+    {
+      "id": "d2-summary-notes",
+      "title": "Domain 2 Rapid Summary Notes (D2 sum.md)",
+      "authority": "course",
+      "locator": "Lines 204–306: Disaster Recovery (DR), BC vs. DR, RTO and RPO memory cues, and DRP components (Hot, Warm, Cold sites & Testing/Drills).",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/D2 sum.md"
+    },
+    {
+      "id": "d2-course-transcript",
+      "title": "Domain 2 Instructor Lecture Transcript & Course Slides S15–S19 (DOMAIN 2.txt)",
+      "authority": "course",
+      "locator": "Lines 43–72; Slide captures S15–S16 (DR definition, purposes, key concepts), S17 (5 importance points + bounded D2-Q04 GDPR/HIPAA), S18 (5 DRP components + 4:00/4:30/5:00/5:20 timeline + D2-Q01 off-site storage), and S19 (7-row BC vs. DR comparison).",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/DOMAIN 2.txt"
+    },
+    {
+      "id": "nist-sp-800-34-r1",
+      "title": "NIST SP 800-34 Rev. 1 — Contingency Planning Guide for Federal Information Systems",
+      "authority": "technical-primary",
+      "locator": "Sections 3.2–3.4: Recovery Time Objective (RTO), Recovery Point Objective (RPO), backup/alternate site recovery strategies, and contingency plan testing, training, and exercises.",
+      "url": "https://csrc.nist.gov/pubs/sp/800/34/r1/final"
+    }
+  ],
+  "assets": [],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/lesson-d2-04-disaster-recovery-drp-implementation.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Antigravity — Domain 2 Lesson 4 technical self-review; user review pending",
+      "reviewedAt": "2026-10-28"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Antigravity — Domain 2 Lesson 4 bilingual TH/EN self-review; user review pending",
+      "reviewedAt": "2026-10-28"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Antigravity — original authored HTML/CSS/SVG & verified source provenance; user review pending",
+      "reviewedAt": "2026-10-28"
+    }
+  }
+}
+

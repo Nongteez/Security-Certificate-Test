@@ -1,0 +1,98 @@
+✖ F07–F09 match the eight reviewed bilingual/reference replacements exactly (4.2057ms)
+✖ backup restoration, factual lesson pointers and historical incident-reference limits remain explicit (0.8871ms)
+✖ corrected explanations are fully exposed through Reading and Info in TH and EN (6.7693ms)
+✖ pale Info definition/scenario boxes declare a scoped readable foreground (2.0634ms)
+✔ the entire current multi-domain catalog loads unique, reviewed, correctly mapped lesson files (6.8497ms)
+✔ all existing slide IDs/order and independent V1 saved positions survive revised content (7.1361ms)
+✔ every educational field outside the exact authorized replacements preserves the pre-edit 103-slide baseline (11.909ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 3
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 334.3872
+
+✖ failing tests:
+
+test at tools\verify-learning-final-signoff.mjs:15:1
+✖ F07–F09 match the eight reviewed bilingual/reference replacements exactly (4.2057ms)
+  AssertionError [ERR_ASSERTION]: lesson-d1-01-cia-triad slides.4.blocks.1.items.2
+  + actual - expected
+  
+    {
+      en: 'Disaster Recovery & Defense: Tested off-site backups, alternate data centers (hot/warm sites), and DDoS traffic mitigation scrubbing centers.',
+  +   th: 'การกู้คืนระบบและการป้องกัน: การสำรองข้อมูลนอกสถานที่ ศูนย์สำรองข้อมูล และระบบกรองทราฟฟิกป้องกันการโจมตีแบบ DDoS'
+  -   th: 'Disaster Recovery และการป้องกัน: ข้อมูลสำรองนอกสถานที่ที่ทดสอบการกู้คืนแล้ว ศูนย์ข้อมูลสำรองแบบ Hot/Warm site และศูนย์กรอง Traffic เพื่อลดผลกระทบจาก DDoS'
+    }
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-final-signoff.mjs:17:47)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { en: 'Disaster Recovery & Defense: Tested off-site backups, alternate data centers (hot/warm sites), and DDoS traffic mitigation scrubbing centers.', th: 'การกู้คืนระบบและการป้องกัน: การสำรองข้อมูลนอกสถานที่ ศูนย์สำรองข้อมูล และระบบกรองทราฟฟิกป้องกันการโจมตีแบบ DDoS' },
+    expected: { en: 'Disaster Recovery & Defense: Tested off-site backups, alternate data centers (hot/warm sites), and DDoS traffic mitigation scrubbing centers.', th: 'Disaster Recovery และการป้องกัน: ข้อมูลสำรองนอกสถานที่ที่ทดสอบการกู้คืนแล้ว ศูนย์ข้อมูลสำรองแบบ Hot/Warm site และศูนย์กรอง Traffic เพื่อลดผลกระทบจาก DDoS' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-learning-final-signoff.mjs:19:1
+✖ backup restoration, factual lesson pointers and historical incident-reference limits remain explicit (0.8871ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /นอกสถานที่.*ทดสอบการกู้คืนแล้ว/. Input:
+  
+  'การกู้คืนระบบและการป้องกัน: การสำรองข้อมูลนอกสถานที่ ศูนย์สำรองข้อมูล และระบบกรองทราฟฟิกป้องกันการโจมตีแบบ DDoS'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-final-signoff.mjs:20:143)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'การกู้คืนระบบและการป้องกัน: การสำรองข้อมูลนอกสถานที่ ศูนย์สำรองข้อมูล และระบบกรองทราฟฟิกป้องกันการโจมตีแบบ DDoS',
+    expected: /นอกสถานที่.*ทดสอบการกู้คืนแล้ว/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-learning-final-signoff.mjs:26:1
+✖ corrected explanations are fully exposed through Reading and Info in TH and EN (6.7693ms)
+  AssertionError [ERR_ASSERTION]: slide-10-connect-and-review
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-final-signoff.mjs:30:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\verify-learning-final-signoff.mjs:33:1
+✖ pale Info definition/scenario boxes declare a scoped readable foreground (2.0634ms)
+  AssertionError [ERR_ASSERTION]: Missing targeted contrast rule
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-final-signoff.mjs:35:99)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

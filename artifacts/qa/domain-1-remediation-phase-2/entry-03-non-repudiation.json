@@ -1,0 +1,744 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d1-03-non-repudiation",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 1,
+  "primaryObjectiveId": "1.1",
+  "objectiveIds": [
+    "1.1"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Non-repudiation & Trustworthy Evidence",
+    "th": "Non-repudiation และหลักฐานที่น่าเชื่อถือ"
+  },
+  "synopsis": {
+    "en": "Explain how signatures and well-managed evidence support review of disputed actions—and what they cannot prove alone.",
+    "th": "เรียนรู้ว่าลายเซ็นและการจัดการหลักฐานช่วยตรวจการกระทำที่ถูกโต้แย้งอย่างไร พร้อมข้อจำกัด"
+  },
+  "outcomes": [
+    {
+      "en": "Distinguish non-repudiation from authentication, accounting and accountability.",
+      "th": "แยก Non-repudiation จาก Authentication, Accounting และ Accountability"
+    },
+    {
+      "en": "Explain private-key signing and public-key verification without confusing signatures with encryption.",
+      "th": "อธิบายการลงนามด้วย Private key และตรวจด้วย Public key โดยไม่สับสนกับ Encryption"
+    },
+    {
+      "en": "Recognize changed content and evaluate identity, custody, time and record assumptions.",
+      "th": "จำแนกข้อมูลที่เปลี่ยนแปลงและประเมินเงื่อนไขด้านตัวตน กุญแจ เวลา และบันทึก"
+    },
+    {
+      "en": "Draw bounded conclusions from evidence in an original disputed-order scenario.",
+      "th": "สรุปจากหลักฐานอย่างมีขอบเขตในสถานการณ์คำสั่งซื้อที่ถูกโต้แย้ง"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: CIA Triad and Identification, AAA & MFA.",
+      "th": "แนะนำให้เรียน CIA Triad และ Identification, AAA & MFA ก่อน"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-01-disputed-action",
+      "title": {
+        "en": "When an action is disputed, evidence matters.",
+        "th": "เมื่อการกระทำถูกโต้แย้ง หลักฐานจึงสำคัญ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "nr-dispute",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Non-repudiation uses verifiable evidence of data origin and integrity.",
+            "th": "Non-repudiation อาศัยหลักฐานที่ตรวจสอบแหล่งที่มาและความถูกต้องของข้อมูลได้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Learning comparison",
+            "th": "ตารางประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Evidence",
+              "th": "หลักฐาน"
+            },
+            {
+              "en": "Meaning",
+              "th": "ความหมาย"
+            },
+            {
+              "en": "Limit",
+              "th": "ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Nara",
+                "th": "Nara"
+              },
+              {
+                "en": "Sends a signed order",
+                "th": "ส่งคำสั่งซื้อที่ลงนามดิจิทัล"
+              },
+              {
+                "en": "Claimed signer",
+                "th": "ผู้ลงนามที่อ้างถึง"
+              }
+            ],
+            [
+              {
+                "en": "Order PO-208",
+                "th": "คำสั่งซื้อ PO-208"
+              },
+              {
+                "en": "Contains verifiable evidence",
+                "th": "มีหลักฐานที่ตรวจสอบได้"
+              },
+              {
+                "en": "Keep the signed version",
+                "th": "เก็บฉบับที่ลงนามไว้"
+              }
+            ],
+            [
+              {
+                "en": "Supplier",
+                "th": "ผู้จัดส่ง"
+              },
+              {
+                "en": "Can present evidence for review",
+                "th": "นำหลักฐานมาตรวจสอบได้"
+              },
+              {
+                "en": "Not proof of delivery by itself",
+                "th": "ไม่ได้พิสูจน์การส่งถึงด้วยตัวเอง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The course notes describe non-repudiation as reliable evidence that helps resist denial of a verifiable action, with digital signatures and appropriate key and evidence management. Imagine Nara later disputes sending a purchase order. A retained signed order can support an independent review of its origin and integrity. This differs from simply trusting the supplier’s assertion. The evidence does not make disputes impossible, prove delivery by itself, or guarantee a particular legal outcome. This is an original learning scenario, not an actual ISC2 exam item. The summary notes supply integrity/signature context; the explicit non-repudiation definition comes from the course notes.",
+            "th": "บันทึกการเรียนอธิบาย Non-repudiation ว่าเป็นหลักฐานที่น่าเชื่อถือเพื่อช่วยต้านการปฏิเสธการกระทำที่ตรวจพิสูจน์ได้ โดยใช้ Digital signature พร้อมการจัดการกุญแจและหลักฐานที่เหมาะสม สมมติว่า Nara โต้แย้งภายหลังว่าไม่ได้ส่งคำสั่งซื้อ ฉบับที่ลงนามและเก็บไว้อาจช่วยให้ตรวจสอบแหล่งที่มาและความถูกต้องของข้อมูลได้โดยไม่ต้องเชื่อคำกล่าวของผู้จัดส่งเพียงฝ่ายเดียว หลักฐานไม่ได้ทำให้การโต้แย้งเป็นไปไม่ได้ ไม่ได้พิสูจน์การส่งถึงด้วยตัวเอง และไม่รับประกันผลทางกฎหมาย ตัวอย่างนี้แต่งขึ้นเพื่อการเรียน ไม่ใช่ข้อสอบจริงของ ISC2 เอกสารสรุปให้บริบทเรื่อง Integrity และลายเซ็น ส่วนคำนิยาม Non-repudiation โดยตรงมาจากบันทึกการเรียน"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Evidence can support a conclusion. It does not remove the need to evaluate it.",
+            "th": "หลักฐานช่วยสนับสนุนข้อสรุป แต่ยังต้องประเมินความน่าเชื่อถือ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-b",
+        "nist-signatures",
+        "notes-a",
+        "isc2-outline"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-02-different-questions",
+      "title": {
+        "en": "A login, a log and a signature answer different questions.",
+        "th": "การเข้าสู่ระบบ Log และลายเซ็น ตอบคนละคำถาม"
+      },
+      "rendererId": "comparison",
+      "layoutId": "nr-questions",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Separate identity verification, recorded activity and evidence of a signed action.",
+            "th": "แยกการยืนยันตัวตน บันทึกกิจกรรม และหลักฐานของการลงนาม"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Learning comparison",
+            "th": "ตารางประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Evidence",
+              "th": "หลักฐาน"
+            },
+            {
+              "en": "Meaning",
+              "th": "ความหมาย"
+            },
+            {
+              "en": "Limit",
+              "th": "ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Authentication",
+                "th": "Authentication"
+              },
+              {
+                "en": "Was the identity claim verified?",
+                "th": "ตรวจคำกล่าวอ้างตัวตนแล้วหรือไม่"
+              },
+              {
+                "en": "A login is not evidence of every later action.",
+                "th": "การเข้าสู่ระบบไม่ใช่หลักฐานของทุกกิจกรรมภายหลัง"
+              }
+            ],
+            [
+              {
+                "en": "Accounting / audit trail",
+                "th": "Accounting / Audit trail"
+              },
+              {
+                "en": "Which activity was recorded?",
+                "th": "บันทึกกิจกรรมอะไรไว้"
+              },
+              {
+                "en": "Account attribution needs trustworthy records.",
+                "th": "การโยงกับบัญชีต้องมีบันทึกที่เชื่อถือได้"
+              }
+            ],
+            [
+              {
+                "en": "Non-repudiation",
+                "th": "Non-repudiation"
+              },
+              {
+                "en": "Can origin and integrity be verified later?",
+                "th": "ตรวจแหล่งที่มาและความถูกต้องภายหลังได้หรือไม่"
+              },
+              {
+                "en": "Assess the evidence and its assumptions.",
+                "th": "ประเมินหลักฐานและเงื่อนไขที่เกี่ยวข้อง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Authentication verifies an identity claim at a point in an interaction. Accounting records activity, while auditing examines records. Accountability connects an entity with actions for which it can be held responsible. Non-repudiation concerns evidence that can withstand a later denial of origin or action. These ideas support each other but are not interchangeable. A log stating that Nara approved an order can help an investigation; it is not automatically conclusive evidence that Nara personally acted. Shared or compromised accounts, editable records and missing context can weaken that inference. Preserve the user notes’ distinction between authentication now and evidence later, without treating every activity record as a non-repudiation service.",
+            "th": "Authentication ตรวจคำกล่าวอ้างตัวตน ณ จุดหนึ่งของการโต้ตอบ Accounting บันทึกกิจกรรม ส่วน Auditing ตรวจพิจารณาบันทึกเหล่านั้น Accountability เชื่อมโยงบุคคลหรือระบบกับการกระทำที่ต้องรับผิดชอบ ขณะที่ Non-repudiation มุ่งหลักฐานที่ใช้ตอบการปฏิเสธแหล่งที่มาหรือการกระทำภายหลัง แนวคิดเหล่านี้สนับสนุนกันแต่ใช้แทนกันไม่ได้ Log ที่ระบุว่า Nara อนุมัติคำสั่งซื้อช่วยการสืบสวนได้ แต่ไม่ใช่หลักฐานชี้ขาดอัตโนมัติว่า Nara ลงมือเอง บัญชีที่ใช้ร่วมกันหรือถูกยึด บันทึกที่แก้ไขได้ และบริบทที่ขาดหายทำให้ข้อสรุปอ่อนลง จึงคงความแตกต่างในบันทึกของผู้ใช้ระหว่างการยืนยันตัวตนตอนใช้งานกับหลักฐานภายหลัง โดยไม่เหมารวมว่าบันทึกกิจกรรมทุกชิ้นเป็นบริการ Non-repudiation"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Accounting records activity. Non-repudiation needs evidence that can be evaluated.",
+            "th": "Accounting บันทึกกิจกรรม ส่วน Non-repudiation ต้องมีหลักฐานที่ประเมินได้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-a",
+        "notes-b",
+        "nist-nr"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-03-sign-and-verify",
+      "title": {
+        "en": "Sign privately. Verify with a trusted public key.",
+        "th": "ลงนามด้วยกุญแจส่วนตัว ตรวจด้วยกุญแจสาธารณะที่เชื่อถือได้"
+      },
+      "rendererId": "comparison",
+      "layoutId": "nr-keys",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The private and public keys have different roles.",
+            "th": "Private key และ Public key ทำหน้าที่ต่างกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Learning comparison",
+            "th": "ตารางประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Evidence",
+              "th": "หลักฐาน"
+            },
+            {
+              "en": "Meaning",
+              "th": "ความหมาย"
+            },
+            {
+              "en": "Limit",
+              "th": "ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Signing",
+                "th": "การลงนาม"
+              },
+              {
+                "en": "Order + private key → digital signature",
+                "th": "คำสั่งซื้อ + Private key → Digital signature"
+              },
+              {
+                "en": "Protect the private key.",
+                "th": "ปกป้อง Private key"
+              }
+            ],
+            [
+              {
+                "en": "Verification",
+                "th": "การตรวจลายเซ็น"
+              },
+              {
+                "en": "Order + signature + public key → result",
+                "th": "คำสั่งซื้อ + ลายเซ็น + Public key → ผลตรวจ"
+              },
+              {
+                "en": "Trust the key-to-identity binding.",
+                "th": "ตรวจความน่าเชื่อถือของการผูกกุญแจกับตัวตน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A digital signature algorithm uses the signer’s private key to generate a signature over data. A verifier uses the corresponding public key, the signed data and the signature to check the result. A successful verification supports integrity and origin under the scheme’s assumptions. It does not by itself establish that an arbitrary public key belongs to Nara; a trustworthy identity-to-key association is also needed, commonly supported by a validated certificate and its trust chain. Signing is not a generic instruction to encrypt with a private key, and a signature alone does not hide the document. Algorithm mathematics and certificate administration are outside this beginner lesson. A scanned or pasted handwritten signature is not the cryptographic digital signature described here.",
+            "th": "อัลกอริทึม Digital signature ใช้ Private key ของผู้ลงนามสร้างลายเซ็นเหนือข้อมูล ผู้ตรวจใช้ Public key ที่คู่กันร่วมกับข้อมูลและลายเซ็นเพื่อตรวจผล การตรวจสำเร็จสนับสนุนความถูกต้องและแหล่งที่มาภายใต้เงื่อนไขของระบบ แต่ไม่ได้ยืนยันด้วยตัวเองว่า Public key ใด ๆ เป็นของ Nara ต้องมีการผูกตัวตนกับกุญแจที่เชื่อถือได้ด้วย โดยมักอาศัย Certificate และสายความเชื่อถือที่ตรวจสอบแล้ว การลงนามไม่ใช่คำสั่งทั่วไปว่าให้เข้ารหัสด้วยกุญแจส่วนตัว และลายเซ็นเพียงอย่างเดียวไม่ได้ซ่อนเนื้อหาเอกสาร บทเรียนพื้นฐานนี้ไม่ลงรายละเอียดคณิตศาสตร์อัลกอริทึมหรือการดูแล Certificate ภาพสแกนหรือลายเซ็นลายมือที่นำมาแปะไม่ใช่ Digital signature แบบเข้ารหัสที่อธิบายในบทเรียนนี้"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A digital signature supports integrity and origin—not secrecy by itself.",
+            "th": "Digital signature สนับสนุน Integrity และแหล่งที่มา ไม่ได้รักษาความลับด้วยตัวเอง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-b",
+        "nist-signatures"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-04-altered-copy",
+      "title": {
+        "en": "A copied signature does not validate changed content.",
+        "th": "คัดลอกลายเซ็นเดิม ไม่ได้ทำให้ข้อมูลที่แก้ไขผ่านการตรวจ"
+      },
+      "rendererId": "interactive",
+      "layoutId": "nr-alteration",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Compare a signed order with the received copy. This is an illustrative model.",
+            "th": "เปรียบเทียบฉบับที่ลงนามกับฉบับที่ได้รับ ภาพนี้เป็นแบบจำลองเพื่อการเรียน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Learning comparison",
+            "th": "ตารางประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Evidence",
+              "th": "หลักฐาน"
+            },
+            {
+              "en": "Meaning",
+              "th": "ความหมาย"
+            },
+            {
+              "en": "Limit",
+              "th": "ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Original order",
+                "th": "ฉบับที่ลงนาม"
+              },
+              {
+                "en": "10 laptops",
+                "th": "แล็ปท็อป 10 เครื่อง"
+              },
+              {
+                "en": "Original signature",
+                "th": "ลายเซ็นเดิม"
+              }
+            ],
+            [
+              {
+                "en": "Unchanged copy",
+                "th": "ฉบับไม่เปลี่ยนแปลง"
+              },
+              {
+                "en": "10 laptops",
+                "th": "แล็ปท็อป 10 เครื่อง"
+              },
+              {
+                "en": "Matches",
+                "th": "ตรงกับข้อมูลที่ลงนาม"
+              }
+            ],
+            [
+              {
+                "en": "Altered copy",
+                "th": "ฉบับถูกแก้ไข"
+              },
+              {
+                "en": "20 laptops",
+                "th": "แล็ปท็อป 20 เครื่อง"
+              },
+              {
+                "en": "Does not match",
+                "th": "ไม่ตรงกับข้อมูลที่ลงนาม"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A signature binds to the data that was actually signed. In this illustration, the original order requests ten laptops. The unchanged copy is checked using the original signature and the trusted corresponding public key. Changing the quantity to twenty while carrying over that same signature does not preserve a valid match for the changed content. A failed check is a reason to investigate the data, signature, key and verification process; it does not identify who changed the document. The control below switches between two authored illustrations. It performs no real cryptographic signing, hashing or verification and is not a production security tool.",
+            "th": "ลายเซ็นผูกกับข้อมูลที่ลงนามจริง ในภาพตัวอย่าง คำสั่งซื้อต้นฉบับระบุแล็ปท็อปสิบเครื่อง ฉบับที่ไม่เปลี่ยนแปลงถูกตรวจด้วยลายเซ็นเดิมและ Public key คู่กันที่เชื่อถือได้ หากแก้จำนวนเป็นยี่สิบเครื่องแต่ยังใช้ลายเซ็นเดิม ข้อมูลที่เปลี่ยนแล้วจะไม่คงผลการตรวจที่ตรงกับลายเซ็นนั้น การตรวจไม่ผ่านเป็นเหตุให้ตรวจสอบข้อมูล ลายเซ็น กุญแจ และกระบวนการตรวจ ไม่ได้บอกว่าใครเป็นผู้แก้ไข ปุ่มด้านล่างสลับภาพตัวอย่างที่แต่งขึ้นสองแบบเท่านั้น ไม่ได้ลงนาม คำนวณ Hash หรือตรวจลายเซ็นด้วยการเข้ารหัสจริง และไม่ใช่เครื่องมือความปลอดภัยสำหรับใช้งานจริง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A failed verification signals a problem to investigate; it does not name an attacker.",
+            "th": "ตรวจลายเซ็นไม่ผ่าน ต้องสืบหาสาเหตุ ไม่ได้ระบุตัวผู้โจมตี"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-b",
+        "nist-signatures"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-05-evidence-conditions",
+      "title": {
+        "en": "Good evidence needs more than mathematics.",
+        "th": "หลักฐานที่ดี ต้องมีมากกว่าผลคำนวณ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "nr-conditions",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A signature result is only one part of the evidence.",
+            "th": "ผลตรวจลายเซ็นเป็นเพียงส่วนหนึ่งของหลักฐาน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Learning comparison",
+            "th": "ตารางประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Evidence",
+              "th": "หลักฐาน"
+            },
+            {
+              "en": "Meaning",
+              "th": "ความหมาย"
+            },
+            {
+              "en": "Limit",
+              "th": "ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Identity binding",
+                "th": "การผูกตัวตน"
+              },
+              {
+                "en": "Is this really the signer’s public key?",
+                "th": "Public key นี้เป็นของผู้ลงนามจริงหรือไม่"
+              },
+              {
+                "en": "Validate the association.",
+                "th": "ตรวจความสัมพันธ์ให้เชื่อถือได้"
+              }
+            ],
+            [
+              {
+                "en": "Key custody",
+                "th": "การควบคุมกุญแจ"
+              },
+              {
+                "en": "Who could use the private key?",
+                "th": "ใครสามารถใช้ Private key ได้บ้าง"
+              },
+              {
+                "en": "Investigate compromise or sharing.",
+                "th": "ตรวจการรั่วไหลหรือใช้ร่วมกัน"
+              }
+            ],
+            [
+              {
+                "en": "Time evidence",
+                "th": "หลักฐานด้านเวลา"
+              },
+              {
+                "en": "What time can the evidence support?",
+                "th": "หลักฐานรองรับข้อสรุปเรื่องเวลาใด"
+              },
+              {
+                "en": "A typed date is not a trusted timestamp.",
+                "th": "วันที่ที่พิมพ์ไว้ไม่ใช่ Trusted timestamp"
+              }
+            ],
+            [
+              {
+                "en": "Protected records",
+                "th": "บันทึกที่ปกป้องไว้"
+              },
+              {
+                "en": "Can the signed data and context be reviewed?",
+                "th": "ทบทวนข้อมูลที่ลงนามและบริบทได้หรือไม่"
+              },
+              {
+                "en": "Preserve originals and relevant records.",
+                "th": "เก็บต้นฉบับและบันทึกที่เกี่ยวข้อง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The course notes explicitly qualify digital signatures with appropriate key and evidence management. Examine the identity-to-key association, control of the private key, relevant time evidence and preservation of the original signed data and records. If a signing key was shared or compromised, successful verification does not by itself settle who used it. Likewise, a date typed on a document or an ordinary local clock is not automatically a trustworthy timestamp. Context and protected records help reviewers evaluate the claim. This lesson teaches evidence reasoning, not a universal legal admissibility checklist; rules, trust services and procedures depend on the system and applicable requirements.",
+            "th": "บันทึกการเรียนกำกับการใช้ Digital signature ไว้ด้วยการจัดการกุญแจและหลักฐานที่เหมาะสม จึงต้องพิจารณาการผูกตัวตนกับกุญแจ การควบคุม Private key หลักฐานด้านเวลาที่เกี่ยวข้อง และการรักษาข้อมูลฉบับที่ลงนามพร้อมบันทึก หากมีการแบ่งใช้หรือกุญแจรั่วไหล การตรวจสำเร็จเพียงอย่างเดียวไม่ชี้ขาดว่าใครใช้กุญแจ เช่นเดียวกับวันที่ที่พิมพ์บนเอกสารหรือนาฬิกาท้องถิ่นทั่วไป ซึ่งไม่กลายเป็น Trusted timestamp โดยอัตโนมัติ บริบทและบันทึกที่ปกป้องไว้ช่วยให้ผู้ตรวจประเมินคำกล่าวอ้างได้ บทเรียนนี้สอนการให้เหตุผลจากหลักฐาน ไม่ใช่เช็กลิสต์การรับฟังหลักฐานทางกฎหมายที่ใช้ได้ทุกกรณี กฎ บริการความเชื่อถือ และขั้นตอนขึ้นอยู่กับระบบและข้อกำหนดที่เกี่ยวข้อง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Successful verification is not automatic proof of the human actor, intent or delivery.",
+            "th": "ตรวจสำเร็จ ไม่ได้พิสูจน์บุคคล เจตนา หรือการส่งถึงโดยอัตโนมัติ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-b",
+        "nist-signatures",
+        "nist-keys"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-06-evaluate-the-claim",
+      "title": {
+        "en": "Which conclusion does the evidence support?",
+        "th": "หลักฐานรองรับข้อสรุปใดได้บ้าง"
+      },
+      "rendererId": "comparison",
+      "layoutId": "nr-case",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Nara disputes an order. Evaluate the evidence before choosing a conclusion.",
+            "th": "Nara โต้แย้งคำสั่งซื้อ ประเมินหลักฐานก่อนเลือกข้อสรุป"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Learning comparison",
+            "th": "ตารางประกอบการเรียน"
+          },
+          "columns": [
+            {
+              "en": "Evidence",
+              "th": "หลักฐาน"
+            },
+            {
+              "en": "Meaning",
+              "th": "ความหมาย"
+            },
+            {
+              "en": "Limit",
+              "th": "ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A login record",
+                "th": "บันทึกการเข้าสู่ระบบ"
+              },
+              {
+                "en": "Supports an account-access event",
+                "th": "สนับสนุนว่าเกิดเหตุเข้าถึงบัญชี"
+              },
+              {
+                "en": "Not every later action",
+                "th": "ไม่ใช่ทุกการกระทำภายหลัง"
+              }
+            ],
+            [
+              {
+                "en": "Signed original verifies",
+                "th": "ต้นฉบับลงนามตรวจผ่าน"
+              },
+              {
+                "en": "Supports signed data integrity and key origin",
+                "th": "สนับสนุนความถูกต้องและแหล่งกุญแจของข้อมูลที่ลงนาม"
+              },
+              {
+                "en": "Check identity binding and key custody",
+                "th": "ตรวจการผูกตัวตนและการควบคุมกุญแจ"
+              }
+            ],
+            [
+              {
+                "en": "Received copy was changed",
+                "th": "ฉบับที่ได้รับเปลี่ยนไป"
+              },
+              {
+                "en": "Original signature does not validate the change",
+                "th": "ลายเซ็นเดิมไม่รับรองการเปลี่ยนแปลง"
+              },
+              {
+                "en": "Investigate; do not assume who changed it",
+                "th": "สืบสวน อย่าเหมาว่าใครเป็นผู้แก้ไข"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Start with the specific claim: is the question about account access, the content of a signed order, the person who acted, or receipt of the order? A login record and a verified original signature support different conclusions. If the received copy was altered, keep both versions and evaluate the original signature against the correct data and trusted public key. Then examine identity binding, key custody and supporting records before attributing the action to a person. Do not infer confidentiality, guaranteed delivery, intent or legal enforceability merely from a signature result. The original six-slide sequence develops the notes’ authentication-versus-later-evidence distinction without repeating the full AAA lesson.",
+            "th": "เริ่มจากคำกล่าวอ้างเฉพาะที่ต้องตรวจสอบว่าโจทย์ถามเรื่องการเข้าถึงบัญชี เนื้อหาคำสั่งซื้อที่ลงนาม บุคคลผู้กระทำ หรือการได้รับคำสั่งซื้อ บันทึกเข้าสู่ระบบกับลายเซ็นต้นฉบับที่ตรวจผ่านรองรับคนละข้อสรุป หากฉบับที่ได้รับถูกแก้ไข ให้เก็บทั้งสองฉบับและตรวจลายเซ็นเดิมกับข้อมูลที่ถูกฉบับและ Public key ที่เชื่อถือได้ จากนั้นจึงพิจารณาการผูกตัวตน การควบคุมกุญแจ และบันทึกสนับสนุนก่อนโยงการกระทำกับบุคคล อย่าสรุปว่าข้อมูลเป็นความลับ ส่งถึงแน่นอน มีเจตนาใด หรือมีผลบังคับทางกฎหมายจากผลตรวจลายเซ็นอย่างเดียว ลำดับหกสไลด์นี้พัฒนาความแตกต่างระหว่างการยืนยันตัวตนกับหลักฐานภายหลังตามบันทึก โดยไม่สอน AAA ทั้งบทซ้ำ"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Preserve the evidence. Verify the claim. State the limits.",
+            "th": "เก็บหลักฐาน ตรวจคำกล่าวอ้าง ระบุข้อจำกัด"
+          }
+        }
+      ],
+      "referenceIds": [
+        "notes-b",
+        "nist-signatures"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC Exam Outline — September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain 1, Objective 1.1 — Non-repudiation",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "notes-a",
+      "title": "User Domain 1 Summary (Source A)",
+      "authority": "course",
+      "locator": "§2 signatures/integrity; §6 accounting. No dedicated non-repudiation definition.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/D1 sum.md"
+    },
+    {
+      "id": "notes-b",
+      "title": "User Domain 1 Course Notes (Source B)",
+      "authority": "course",
+      "locator": "§4.1 non-repudiation and key/evidence qualification; §§2.2, 4.3, 10, 12 distinctions.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/Domain 1.md"
+    },
+    {
+      "id": "nist-nr",
+      "title": "NIST glossary — non-repudiation",
+      "authority": "technical-primary",
+      "locator": "Definition sourced from FIPS 186-5; assurance of integrity/origin verifiable by a third party.",
+      "url": "https://csrc.nist.gov/glossary/term/non_repudiation"
+    },
+    {
+      "id": "nist-signatures",
+      "title": "NIST FIPS 186-5 — Digital Signature Standard",
+      "authority": "technical-primary",
+      "locator": "Introductory explanation, definitions and §3; key roles, integrity, origin, assurances.",
+      "url": "https://csrc.nist.gov/pubs/fips/186-5/final"
+    },
+    {
+      "id": "nist-keys",
+      "title": "NIST SP 800-57 Part 1 Rev.5 — Key Management",
+      "authority": "technical-primary",
+      "locator": "Key protection, compromise and assurance context; supplemental to the user notes.",
+      "url": "https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final"
+    }
+  ],
+  "assets": [],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/lesson-d1-03-non-repudiation-implementation.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — technical self-review; user review pending",
+      "reviewedAt": "2026-10-26"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — bilingual self-review; user review pending",
+      "reviewedAt": "2026-10-26"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — rights self-review; user review pending",
+      "reviewedAt": "2026-10-26"
+    }
+  }
+}

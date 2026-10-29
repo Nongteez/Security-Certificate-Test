@@ -1,3 +1,7 @@
+import { hasDisasterRecoveryDrpPresentation, renderDisasterRecoveryDrpPresentation } from './disaster-recovery-drp-presentations.js';
+import { hasBusinessContinuityBcpPresentation, renderBusinessContinuityBcpPresentation } from './business-continuity-bcp-presentations.js';
+import { hasGrcToolsRiskRegisterPresentation, renderGrcToolsRiskRegisterPresentation } from './grc-tools-risk-register-presentations.js';
+import { hasGrcFoundationsPresentation, renderGrcFoundationsPresentation } from './grc-foundations-presentations.js';
 import {hasProfessionalConductPresentation,renderProfessionalConductPresentation} from './professional-conduct-presentations.js';
 import {hasControlFunctionsPresentation,renderControlFunctionsPresentation} from './control-functions-presentations.js';
 import {hasControlCategoriesPresentation,renderControlCategoriesPresentation} from './control-categories-presentations.js';
@@ -86,6 +90,14 @@ export function renderSlide(host, context) {
   const categories = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasControlCategoriesPresentation(context);
   const functions = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasControlFunctionsPresentation(context);
   const conduct = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasProfessionalConductPresentation(context);
+  const grcFoundations = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasGrcFoundationsPresentation(context);
+  const grcTools = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasGrcToolsRiskRegisterPresentation(context);
+  const bcBcp = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasBusinessContinuityBcpPresentation(context);
+  const drDrp = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasDisasterRecoveryDrpPresentation(context);
+  host.classList.toggle('learning-dr-drp-slide', Boolean(drDrp));
+  host.classList.toggle('learning-bc-bcp-slide', Boolean(bcBcp));
+  host.classList.toggle('learning-grc-tools-slide', Boolean(grcTools));
+  host.classList.toggle('learning-grc-foundations-slide', Boolean(grcFoundations));
   host.classList.toggle('learning-conduct-slide', Boolean(conduct));
   host.classList.toggle('learning-functions-slide', Boolean(functions));
   host.classList.toggle('learning-categories-slide', Boolean(categories));
@@ -99,7 +111,7 @@ export function renderSlide(host, context) {
   host.classList.toggle('learning-aaa-slide', Boolean(aaa));
   if (cia) host.classList.add('learning-cia-slide'); else if (host.classList.contains('learning-cia-slide')) host.classList.remove('learning-cia-slide');
   host.classList.toggle('learning-editorial-slide', Boolean(editorial));
-  if (editorial || cia || aaa || nr || privacy || risk || assessment || response || governance || frameworks || categories || functions || conduct) heading.classList.add('learning-sr-only');
+  if (editorial || cia || aaa || nr || privacy || risk || assessment || response || governance || frameworks || categories || functions || conduct || grcFoundations || grcTools || bcBcp || drDrp) heading.classList.add('learning-sr-only');
   const body = element(host.ownerDocument, 'div', 'learning-slide-body');
   body.setAttribute('data-layout', context.slide.layoutId || 'default');
   host.append(body);
@@ -134,6 +146,14 @@ export function renderSlide(host, context) {
     const handle = renderFrameworksPresentation(body, args); cleanup = () => handle?.destroy?.();
   } else if (governance) {
     const handle = renderGovernancePresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (grcFoundations) {
+    const handle = renderGrcFoundationsPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (grcTools) {
+    const handle = renderGrcToolsRiskRegisterPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (bcBcp) {
+    const handle = renderBusinessContinuityBcpPresentation(body, args); cleanup = () => handle?.destroy?.();
+  } else if (drDrp) {
+    const handle = renderDisasterRecoveryDrpPresentation(body, args); cleanup = () => handle?.destroy?.();
   } else if (context.mode !== 'reading') {
     if (context.slide.rendererId === 'pillars') {
       const handle = renderPillars(body, args); cleanup = () => handle?.destroy?.();

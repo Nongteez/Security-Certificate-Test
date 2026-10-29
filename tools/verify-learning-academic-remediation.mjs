@@ -1,3 +1,4 @@
+import {withOriginalFinalFields} from './fixtures/learning/final-remediation.mjs';
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import fs from 'node:fs';
@@ -45,16 +46,19 @@ test('all corrected full explanations survive both reading and Info routes witho
 });
 test('CIA revision preserves saved IDs and independent entries through store reload',()=>{
  const lessons=fs.readdirSync(new URL('lessons/',base)).map(f=>JSON.parse(fs.readFileSync(new URL('lessons/'+f,base))));
- let raw=JSON.stringify({schemaVersion:1,lessons:Object.fromEntries(lessons.map(l=>[l.id,{lessonId:l.id,contentRevision:'1',lastSlideId:l.slides.at(-2).id,visitedSlideIds:l.slides.slice(0,-1).map(s=>s.id),status:'in-progress',completedAt:null,updatedAt:'2026-10-27T00:00:00.000Z',language:'th'}]))});
+ let raw=JSON.stringify({schemaVersion:1,lessons:Object.fromEntries(lessons.map(l=>[l.id,{lessonId:l.id,contentRevision:'1',lastSlideId:l.id===lesson.id?scenario.id:l.slides.at(-2).id,visitedSlideIds:l.slides.slice(0,-1).map(s=>s.id),status:'in-progress',completedAt:null,updatedAt:'2026-10-27T00:00:00.000Z',language:'th'}]))});
  const storage={getItem:k=>{assert.equal(k,LEARNING_PROGRESS_KEY);return raw;},setItem:(k,v)=>{assert.equal(k,LEARNING_PROGRESS_KEY);raw=v;}};
  const before=JSON.parse(raw),store=createProgressStore(storage),saved=store.read(lesson);assert.equal(saved.lastSlideId,scenario.id);assert.deepEqual(saved.visitedSlideIds,before.lessons[lesson.id].visitedSlideIds);
  store.save(lesson,visitSlide(lesson,saved,scenario.id,'en'));const reloaded=createProgressStore(storage);assert.equal(reloaded.read(lesson).lastSlideId,scenario.id);
  for(const l of lessons.filter(l=>l.id!==lesson.id))assert.deepEqual(reloaded.summary(l.id),before.lessons[l.id]);
 });
 test('all CIA fields outside the six authorized pairs and publication bookkeeping remain unchanged',()=>{
- const l=structuredClone(lesson);delete l.revision;
+ const l=withOriginalFinalFields(lesson);delete l.revision;
  for(const k of ['reviewedRevision','evidencePath','technical','bilingual'])delete l.review[k];
- const added=['nist-fips-180-4','nist-fips-186-5','nist-sp-800-57p1r5','nist-sp-800-38d'];
+ const added=['nist-fips-180-4','nist-fips-186-5','nist-sp-800-57p1r5','nist-sp-800-38d','ref-ai-outline','ref-ai-poisoning'];
+ // Phase 2 appends one authorized AI application; this lock continues to protect the original eight slides.
+ l.slides=l.slides.filter(s=>s.id!=='slide-09-ai-training-integrity');
+ if(l.slideOrder)l.slideOrder=l.slideOrder.filter(id=>id!=='slide-09-ai-training-integrity');
  l.references=l.references.filter(r=>!added.includes(r.id));
  for(const s of l.slides){delete s.review.reviewedRevision;s.referenceIds=s.referenceIds.filter(id=>!added.includes(id));}
  l.slides[3].blocks[1].text=null;l.slides[3].blocks[2].items[0]=null;l.slides[3].blocks[2].items[1]=null;

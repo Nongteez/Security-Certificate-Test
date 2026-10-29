@@ -1,0 +1,233 @@
+## slide-01-aaa-map (diagram/aaa-map)
+EN: One request. Three security functions.
+TH: คำขอเดียว สามหน้าที่ด้านความปลอดภัย
+EN: CIA defines security goals. AAA helps manage and trace access.
+TH: CIA กำหนดเป้าหมายความปลอดภัย ส่วน AAA ช่วยจัดการและติดตามการเข้าถึง
+EN: The questions behind AAA
+TH: คำถามเบื้องหลัง AAA
+EN: Function
+TH: หน้าที่
+EN: Question
+TH: คำถาม
+EN: In a procurement portal
+TH: ในระบบจัดซื้อ
+BOTH: Authentication
+EN: Is this the claimed identity?
+TH: เป็นตัวตนที่อ้างจริงหรือไม่
+EN: Verify the employee’s credential.
+TH: ตรวจสอบหลักฐานยืนยันตัวตนของพนักงาน
+BOTH: Authorization
+EN: Is this action permitted?
+TH: อนุญาตให้ทำสิ่งนี้หรือไม่
+EN: Check whether this account may approve an order.
+TH: ตรวจสิทธิ์อนุมัติคำสั่งซื้อของบัญชีนี้
+BOTH: Accounting
+EN: What activity was recorded?
+TH: บันทึกกิจกรรมอะไรไว้บ้าง
+EN: Record the request and its outcome.
+TH: บันทึกคำขอและผลลัพธ์
+EN: Authentication checks evidence associated with a claimed identity. Authorization evaluates permissions for a resource or action. Accounting records activity and usage so it can be traced and reviewed. These functions complement the CIA security goals; they do not replace them. In the portal example, a user may authenticate successfully, be denied an approval action, and still have that denial recorded. AAA is a functional model, not a claim that every system implements a single fixed sequence. Failed authentication attempts can also be logged. The portal is an original teaching example, not an ISC2 exam question.
+TH: Authentication ตรวจหลักฐานที่ผูกกับตัวตนที่อ้าง Authorization ประเมินสิทธิ์ต่อทรัพยากรหรือการกระทำ ส่วน Accounting บันทึกกิจกรรมและการใช้งานเพื่อให้ติดตามและทบทวนได้ หน้าที่เหล่านี้สนับสนุนเป้าหมาย CIA ไม่ได้มาแทน CIA ในตัวอย่างระบบจัดซื้อ ผู้ใช้อาจยืนยันตัวตนสำเร็จ แต่ถูกปฏิเสธการอนุมัติคำสั่งซื้อ และระบบยังบันทึกการปฏิเสธนั้นได้ AAA เป็นแบบจำลองหน้าที่ ไม่ใช่ข้อกำหนดว่าทุกระบบต้องทำตามลำดับตายตัว ความพยายามยืนยันตัวตนที่ล้มเหลวก็บันทึกได้ ตัวอย่างนี้แต่งขึ้นเพื่อการเรียน ไม่ใช่ข้อสอบจริงของ ISC2
+EN: Verified identity ≠ unlimited permission. Recorded activity ≠ proof of the human actor.
+TH: ยืนยันตัวตนแล้ว ≠ มีสิทธิ์ทุกอย่าง บันทึกกิจกรรมแล้ว ≠ พิสูจน์บุคคลผู้กระทำ
+
+## slide-02-claim-and-proof (diagram/aaa-identity)
+EN: A name is a claim. Verification needs evidence.
+TH: ชื่อคือคำกล่าวอ้าง ต้องมีหลักฐานเพื่อยืนยัน
+EN: Identification says who. Authentication checks the claim.
+TH: Identification ระบุว่าเป็นใคร ส่วน Authentication ตรวจสอบคำกล่าวอ้างนั้น
+EN: Claim and verification
+TH: การอ้างและการยืนยันตัวตน
+EN: Step
+TH: ขั้นตอน
+EN: Example
+TH: ตัวอย่าง
+EN: Meaning
+TH: ความหมาย
+BOTH: Identification
+EN: Employee ID: Nara
+TH: รหัสพนักงาน: Nara
+EN: Selects the account being claimed.
+TH: ระบุบัญชีที่กำลังอ้างว่าเป็นเจ้าของ
+BOTH: Authentication
+EN: Credential challenge
+TH: ตรวจหลักฐานยืนยันตัวตน
+EN: Checks control of an associated authenticator.
+TH: ตรวจว่าควบคุมเครื่องมือยืนยันตัวตนที่ผูกไว้ได้
+EN: Result
+TH: ผลลัพธ์
+EN: Authenticated session
+TH: เซสชันที่ยืนยันตัวตนแล้ว
+EN: Permission checks still apply.
+TH: ยังต้องตรวจสิทธิ์การใช้งาน
+EN: Typing a username or presenting an employee identifier is identification: it tells the system which identity is claimed. That identifier is not itself a secret authentication factor. Authentication then verifies evidence, such as control of a password or a registered security key associated with the account. A successful check gives assurance about the digital identity within the method’s limits; it does not make stolen credentials impossible or prove every later action was performed by the account owner. In this example, Nara is a fictional employee identifier. Authentication and authorization answer different questions even when one sign-in interface hides the distinction.
+TH: การพิมพ์ชื่อผู้ใช้หรือแสดงรหัสพนักงานคือ Identification ซึ่งบอกระบบว่ากำลังอ้างตัวตนใด รหัสดังกล่าวไม่ใช่ปัจจัยลับที่ใช้ยืนยันตัวตนด้วยตัวเอง จากนั้น Authentication จะตรวจหลักฐาน เช่น การควบคุมรหัสผ่านหรือ Security key ที่ลงทะเบียนผูกกับบัญชี การตรวจสำเร็จให้ความเชื่อมั่นต่อตัวตนดิจิทัลภายในข้อจำกัดของวิธีนั้น ไม่ได้ทำให้การขโมยข้อมูลยืนยันตัวตนเป็นไปไม่ได้ และไม่ได้พิสูจน์ว่าทุกกิจกรรมภายหลังทำโดยเจ้าของบัญชี ตัวอย่าง Nara เป็นรหัสพนักงานสมมติ Authentication กับ Authorization ตอบคนละคำถาม แม้หน้าลงชื่อเข้าใช้จะรวมขั้นตอนไว้ด้วยกัน
+EN: Username + password: the username identifies; the password is a knowledge factor.
+TH: Username + Password: ชื่อผู้ใช้ระบุตัวตน ส่วนรหัสผ่านเป็นปัจจัยความรู้
+
+## slide-03-permission-boundary (comparison/aaa-permission)
+EN: Signed in does not mean allowed.
+TH: เข้าสู่ระบบแล้ว ไม่ได้แปลว่าทำได้ทุกอย่าง
+EN: The same authenticated account can receive different access decisions.
+TH: บัญชีที่ยืนยันตัวตนแล้วบัญชีเดียวกัน อาจได้รับผลการตรวจสิทธิ์ต่างกัน
+EN: One account, two permissions
+TH: หนึ่งบัญชี สองสิทธิ์การใช้งาน
+EN: Account
+TH: บัญชี
+EN: Requested action
+TH: การกระทำที่ร้องขอ
+EN: Policy decision
+TH: ผลตามนโยบาย
+EN: Nara · signed in
+TH: Nara · ยืนยันตัวตนแล้ว
+EN: View purchase orders
+TH: ดูคำสั่งซื้อ
+EN: Allowed
+TH: อนุญาต
+EN: Approve a purchase order
+TH: อนุมัติคำสั่งซื้อ
+EN: Denied
+TH: ปฏิเสธ
+EN: Authorization determines whether a subject may perform a particular action on a particular resource. Successful authentication does not grant all permissions. In this fictional portal, the policy lets Nara view orders but not approve them; both decisions can be correct while the identity check remains successful. A denial after sign-in may therefore reflect an authorization boundary rather than a wrong password. The distinction is conceptual here: configuring roles, access-control models, least privilege and separation of duties are deeper Domain 3 topics, not the scope of this lesson. Anonymous or other special access patterns mean authentication is not a universal prerequisite for every possible authorization decision.
+TH: Authorization ตัดสินว่าผู้ร้องขอมีสิทธิ์ทำการกระทำหนึ่งต่อทรัพยากรหนึ่งหรือไม่ การผ่าน Authentication ไม่ได้ให้สิทธิ์ทั้งหมด ในระบบสมมตินี้ นโยบายให้ Nara ดูคำสั่งซื้อได้ แต่อนุมัติไม่ได้ ผลทั้งสองถูกต้องได้โดยที่การยืนยันตัวตนยังสำเร็จอยู่ การถูกปฏิเสธหลังเข้าสู่ระบบจึงอาจเกิดจากขอบเขตสิทธิ์ ไม่ใช่รหัสผ่านผิด บทเรียนนี้สอนความแตกต่างเชิงแนวคิดเท่านั้น การตั้งค่า Role แบบจำลองการควบคุมการเข้าถึง Least privilege และ Separation of duties เป็นเนื้อหาเชิงลึกของ Domain 3 ส่วนการเข้าถึงแบบไม่ระบุตัวตนหรือรูปแบบพิเศษอื่นทำให้ Authentication ไม่ใช่เงื่อนไขก่อนหน้าที่ตายตัวสำหรับ Authorization ทุกกรณี
+EN: Ask which action is permitted—not just whether the login succeeded.
+TH: ถามว่ามีสิทธิ์ทำอะไร ไม่ใช่ดูแค่ว่าเข้าสู่ระบบสำเร็จหรือไม่
+
+## slide-04-activity-trail (comparison/aaa-accounting)
+EN: Leave a trail that can be reviewed.
+TH: บันทึกร่องรอย เพื่อให้ตรวจสอบย้อนหลังได้
+EN: Accounting records access, actions and outcomes.
+TH: Accounting บันทึกการเข้าถึง การกระทำ และผลลัพธ์
+EN: Illustrative portal event journal
+TH: ตัวอย่างบันทึกเหตุการณ์ในระบบจัดซื้อ
+EN: Event
+TH: เหตุการณ์
+EN: Account
+TH: บัญชี
+EN: Action
+TH: การกระทำ
+EN: Outcome
+TH: ผลลัพธ์
+BOTH: 01
+BOTH: Nara
+EN: Sign in
+TH: เข้าสู่ระบบ
+EN: Success
+TH: สำเร็จ
+BOTH: 02
+EN: View order PO-104
+TH: ดูคำสั่งซื้อ PO-104
+EN: Allowed
+TH: อนุญาต
+BOTH: 03
+EN: Approve order PO-104
+TH: อนุมัติคำสั่งซื้อ PO-104
+EN: Denied
+TH: ปฏิเสธ
+EN: Accounting tracks and records activity or resource usage. Relevant records can identify the account, attempted action, target resource, time and result. The simplified journal shows that a denied action is worth recording as well as successful access. Actual systems need appropriate collection and protection of records; this illustration does not claim every action is always logged. Auditing is the later examination of such evidence, not a universal synonym for generating it. A record attributed to an account does not alone establish which human used it, especially if credentials were shared or stolen. Accounting supports accountability; non-repudiation needs separate treatment and is not guaranteed by a log entry.
+TH: Accounting คือการติดตามและบันทึกกิจกรรมหรือการใช้ทรัพยากร ข้อมูลที่เกี่ยวข้องอาจระบุบัญชี การกระทำที่พยายามทำ ทรัพยากรเป้าหมาย เวลา และผลลัพธ์ ตัวอย่างย่อนี้แสดงว่าการกระทำที่ถูกปฏิเสธก็มีคุณค่าต่อการบันทึกเช่นเดียวกับการเข้าถึงสำเร็จ ระบบจริงต้องเก็บและปกป้องบันทึกอย่างเหมาะสม ภาพนี้ไม่ได้อ้างว่าทุกกิจกรรมถูกบันทึกเสมอ Auditing คือการตรวจพิจารณาหลักฐานเหล่านั้นภายหลัง ไม่ใช่คำที่ใช้แทนการสร้างบันทึกได้ทุกบริบท บันทึกที่ระบุบัญชีเพียงอย่างเดียวไม่พิสูจน์ว่ามนุษย์คนใดใช้งาน โดยเฉพาะเมื่อมีการใช้ข้อมูลยืนยันตัวตนร่วมกันหรือถูกขโมย Accounting สนับสนุน Accountability แต่ไม่ได้รับประกัน Non-repudiation ซึ่งต้องเรียนแยกต่างหาก
+EN: Recording an action does not authorize it or prevent it.
+TH: การบันทึกการกระทำ ไม่ได้ให้สิทธิ์หรือป้องกันการกระทำนั้น
+
+## slide-05-factor-families (diagram/aaa-factors)
+EN: Different evidence. Different factor types.
+TH: หลักฐานต่างชนิด ปัจจัยต่างประเภท
+EN: Classify the evidence—not the number of screens or devices.
+TH: จำแนกจากหลักฐาน ไม่ใช่จำนวนหน้าจอหรืออุปกรณ์
+EN: Authentication factor families
+TH: ประเภทปัจจัยยืนยันตัวตน
+EN: Factor
+TH: ปัจจัย
+EN: Evidence
+TH: หลักฐาน
+EN: Example
+TH: ตัวอย่าง
+BOTH: Knowledge
+EN: Something you know
+TH: สิ่งที่คุณรู้
+EN: Password or PIN
+TH: รหัสผ่าน หรือ PIN
+BOTH: Possession
+EN: Something you have
+TH: สิ่งที่คุณมี
+EN: Registered security key
+TH: Security key ที่ลงทะเบียนไว้
+BOTH: Inherence
+EN: Something you are
+TH: สิ่งที่เป็นลักษณะของคุณ
+EN: Fingerprint comparison
+TH: การเปรียบเทียบลายนิ้วมือ
+EN: A knowledge factor uses a secret the claimant knows, such as a password or PIN. A possession factor demonstrates control of an authenticator, such as a registered hardware security key; simply carrying an unrelated object is not authentication evidence. An inherence factor uses a biometric characteristic such as a fingerprint. For NIST digital authentication, a biometric is not a standalone authenticator: it is used with a physical authenticator, for example to activate a security key. That combines possession with inherence. Possession can be compromised without physically stealing a device, and biometrics are neither unforgeable nor a guarantee of correct identification. Factor choice reduces particular risks; it does not remove all risk.
+TH: Knowledge factor ใช้ความลับที่ผู้ร้องขอรู้ เช่น รหัสผ่านหรือ PIN ส่วน Possession factor แสดงการควบคุมเครื่องมือยืนยันตัวตน เช่น Hardware security key ที่ลงทะเบียนไว้ การพกสิ่งของที่ไม่เกี่ยวข้องไม่ใช่หลักฐานยืนยันตัวตน Inherence factor ใช้ลักษณะทางชีวมิติ เช่น ลายนิ้วมือ สำหรับการยืนยันตัวตนดิจิทัลตาม NIST ชีวมิติไม่ใช่เครื่องมือยืนยันตัวตนที่ใช้เดี่ยว ๆ แต่ใช้ร่วมกับเครื่องมือทางกายภาพ เช่น ใช้ลายนิ้วมือเปิดใช้งาน Security key จึงรวม Possession กับ Inherence เข้าด้วยกัน ปัจจัยสิ่งที่มีอาจถูกโจมตีได้โดยไม่ต้องขโมยอุปกรณ์จริง และชีวมิติไม่ได้ปลอมแปลงไม่ได้หรือรับประกันการระบุตัวตนถูกต้องเสมอ การเลือกปัจจัยช่วยลดความเสี่ยงบางแบบ ไม่ได้ขจัดความเสี่ยงทั้งหมด
+EN: MFA requires at least two distinct factor types. 2FA is the two-factor case.
+TH: MFA ต้องใช้ปัจจัยต่างประเภทอย่างน้อยสองประเภท ส่วน 2FA คือกรณีสองปัจจัย
+
+## slide-06-mfa-or-more-steps (comparison/aaa-combinations)
+EN: More steps do not always mean MFA.
+TH: หลายขั้นตอน ไม่ได้แปลว่าเป็น MFA เสมอไป
+EN: Count independent factor types, then separate context from evidence.
+TH: นับปัจจัยต่างประเภท แล้วแยกบริบทออกจากหลักฐานยืนยันตัวตน
+EN: Distinguish a factor combination from an extra check
+TH: แยกการรวมปัจจัยออกจากการตรวจเพิ่มเติม
+EN: Combination
+TH: สิ่งที่ใช้ร่วมกัน
+EN: Interpretation
+TH: การตีความ
+EN: Reason
+TH: เหตุผล
+EN: Password + PIN
+TH: รหัสผ่าน + PIN
+EN: Not MFA
+TH: ไม่ใช่ MFA
+EN: Knowledge + knowledge
+TH: Knowledge + Knowledge
+EN: Password + registered security key
+TH: รหัสผ่าน + Security key ที่ลงทะเบียน
+EN: MFA
+TH: เป็น MFA
+EN: Knowledge + possession
+TH: Knowledge + Possession
+EN: Password + office IP check
+TH: รหัสผ่าน + ตรวจ IP สำนักงาน
+EN: Not MFA by this combination alone
+TH: แค่นี้ยังไม่ใช่ MFA
+EN: One factor + location context
+TH: หนึ่งปัจจัย + บริบทตำแหน่ง
+EN: A password followed by a PIN remains knowledge-only even if two screens are involved. A password plus a successful challenge to a registered security key combines knowledge and possession and can provide MFA. The system must actually verify the factors; merely owning a key is insufficient. Location, IP address and device signals can inform risk-based access decisions, but an office IP is not a second independent authentication factor in this lesson’s three-category model. One physical device can support multiple factors, such as a security key requiring a biometric activation step. Conversely, multiple devices do not automatically mean multiple factor types. MFA reduces the risk from a compromised single factor; it does not promise immunity to phishing or session theft.
+TH: รหัสผ่านตามด้วย PIN ยังเป็นปัจจัยความรู้เพียงประเภทเดียว แม้จะมีสองหน้าจอ รหัสผ่านร่วมกับการตอบ Challenge สำเร็จจาก Security key ที่ลงทะเบียนผูกกับบัญชีรวม Knowledge กับ Possession และเป็น MFA ได้ ระบบต้องตรวจปัจจัยจริง การมี Security key อยู่เฉย ๆ ไม่พอ ตำแหน่ง IP address และสัญญาณอุปกรณ์อาจใช้ประกอบการตัดสินความเสี่ยงในการเข้าถึง แต่ IP สำนักงานไม่ใช่ปัจจัยยืนยันตัวตนอิสระประเภทที่สองตามแบบจำลองสามประเภทในบทเรียนนี้ อุปกรณ์จริงหนึ่งชิ้นอาจรองรับหลายปัจจัย เช่น Security key ที่ต้องใช้ชีวมิติเปิดใช้งาน ในทางกลับกัน หลายอุปกรณ์ไม่ได้แปลว่ามีปัจจัยต่างประเภทโดยอัตโนมัติ MFA ลดความเสี่ยงจากปัจจัยเดียวที่ถูกโจมตี แต่ไม่รับประกันว่าจะต้านทาน Phishing หรือการขโมยเซสชันได้ทั้งหมด
+EN: Two secrets ≠ two factors. A location rule can add protection without being MFA.
+TH: สองความลับ ≠ สองปัจจัย กฎตำแหน่งเพิ่มการป้องกันได้ โดยไม่จำเป็นต้องเป็น MFA
+
+## slide-07-access-case (interactive/aaa-case)
+EN: The login worked. Why was approval denied?
+TH: เข้าสู่ระบบสำเร็จ ทำไมจึงอนุมัติไม่ได้
+EN: Authentication succeeded. Approval was denied. The attempt was recorded.
+TH: ยืนยันตัวตนสำเร็จ แต่อนุมัติไม่ได้ และระบบบันทึกความพยายามไว้
+EN: Original teaching scenario — not an official exam question
+TH: สถานการณ์เพื่อการเรียน ไม่ใช่ข้อสอบจริง
+EN: Observation
+TH: สิ่งที่สังเกต
+EN: Function
+TH: หน้าที่
+EN: Interpretation
+TH: การตีความ
+EN: Password + security key verified
+TH: ตรวจรหัสผ่าน + Security key สำเร็จ
+BOTH: Authentication
+EN: Knowledge + possession: MFA
+TH: Knowledge + Possession: MFA
+EN: Order approval denied
+TH: ปฏิเสธการอนุมัติคำสั่งซื้อ
+BOTH: Authorization
+EN: The action is outside this account’s permission.
+TH: การกระทำนี้อยู่นอกสิทธิ์ของบัญชี
+EN: Attempt and result recorded
+TH: บันทึกความพยายามและผลลัพธ์
+BOTH: Accounting
+EN: The record supports later review.
+TH: บันทึกช่วยให้ตรวจสอบย้อนหลังได้
+EN: The successful credential checks indicate authentication, using knowledge and possession in this scenario. The later denial concerns authorization: the account is not permitted to approve this order. It does not undo the earlier identity check. Recording the denied attempt is accounting. To analyze a similar question, identify the specific action or evidence being described rather than treating the whole incident as one AAA function. Do not infer that MFA grants permissions, that logging blocks the request, or that a log proves Nara personally performed the action. A real investigation would need evidence beyond this simplified scenario. Non-repudiation and privacy remain separate topics for later lessons.
+TH: การตรวจหลักฐานสำเร็จแสดงถึง Authentication โดยใช้ Knowledge กับ Possession ในสถานการณ์นี้ ส่วนการปฏิเสธภายหลังเกี่ยวกับ Authorization เพราะบัญชีไม่มีสิทธิ์อนุมัติคำสั่งซื้อนี้ ไม่ได้ทำให้ผลการยืนยันตัวตนก่อนหน้ากลายเป็นล้มเหลว การบันทึกความพยายามที่ถูกปฏิเสธคือ Accounting เมื่อต้องวิเคราะห์สถานการณ์ลักษณะนี้ ให้ระบุการกระทำหรือหลักฐานเฉพาะที่ถาม ไม่ใช่เหมารวมเหตุการณ์ทั้งหมดเป็นหน้าที่ AAA เพียงอย่างเดียว อย่าอนุมานว่า MFA ให้สิทธิ์ใช้งาน การบันทึกเป็นตัวบล็อกคำขอ หรือ Log พิสูจน์ว่า Nara เป็นผู้ทำด้วยตนเอง การสืบสวนจริงต้องมีหลักฐานมากกว่าสถานการณ์ย่อนี้ Non-repudiation และ Privacy ยังเป็นหัวข้อแยกสำหรับบทเรียนถัดไป
+EN: Check identity. Evaluate permission. Record activity. Keep the questions separate.
+TH: ตรวจตัวตน ประเมินสิทธิ์ บันทึกกิจกรรม แยกคำถามให้ชัดเจน
+

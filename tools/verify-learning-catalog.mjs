@@ -10,7 +10,7 @@ test('public catalog has five correct Domains, all official objectives and four 
   const c = catalog(); assert.equal(core.validateCatalog(c).valid, true);
   assert.deepEqual(c.domains.map(d => d.objectives.length), [5, 4, 2, 3, 5]);
   const published = core.publishedLessons(c);
-  assert.deepEqual(published.map(l => l.id), ['lesson-d1-01-cia-triad', 'lesson-d1-02-aaa-mfa', 'lesson-d1-03-non-repudiation', 'lesson-d1-04-privacy', 'lesson-d1-05-risk-foundations', 'lesson-d1-06-assessment', 'lesson-d1-07-risk-response', 'lesson-d1-08-governance','lesson-d1-09-frameworks','lesson-d1-10-control-categories','lesson-d1-11-control-functions','lesson-d1-12-professional-conduct']);
+  assert.deepEqual(published.filter(l => l.domainId === 1).map(l => l.id), ['lesson-d1-01-cia-triad', 'lesson-d1-02-aaa-mfa', 'lesson-d1-03-non-repudiation', 'lesson-d1-04-privacy', 'lesson-d1-05-risk-foundations', 'lesson-d1-06-assessment', 'lesson-d1-07-risk-response', 'lesson-d1-08-governance','lesson-d1-09-frameworks','lesson-d1-10-control-categories','lesson-d1-11-control-functions','lesson-d1-12-professional-conduct']);
   for (const summary of published) {
     const body = JSON.parse(fs.readFileSync(new URL(`../content/isc2-cc-2026/learning/published/${summary.lessonPath}`, import.meta.url), 'utf8'));
     assert.equal(core.validateLesson(body).valid, true, summary.id);
@@ -24,7 +24,8 @@ test('public catalog has five correct Domains, all official objectives and four 
   const lessonValidation = core.validateLesson(lessonData);
   assert.equal(lessonValidation.valid, true, `Lesson errors: ${lessonValidation.errors?.join('; ')}`);
   assert.equal(lessonValidation.errors.length, 0);
-  assert.equal(lessonData.slides.length, 8, 'CIA Triad pilot must have exactly 8 slides');
+  assert.equal(lessonData.slides.length, 9, 'CIA keeps eight original slides plus the reviewed AI application');
+  assert.equal(lessonData.slides.at(-1).id, 'slide-09-ai-training-integrity');
 });
 test('duplicates, cross-domain relations, invalid statuses and unsafe lesson paths cannot publish', () => {
   for (const mutate of [c => c.domains.push(c.domains[0]), c => c.domains[0].objectives[0].lessons.push(c.domains[0].objectives[0].lessons[0]), c => c.domains[0].objectives[0].lessons[0].objectiveIds = ['2.1'], c => c.domains[0].objectives[0].lessons[0].status = 'available', c => c.domains[0].objectives[0].lessons[0].lessonPath = '../tools/fixture.json', c => c.domains[0].objectives[1].relatedLessonIds.push('missing')]) {

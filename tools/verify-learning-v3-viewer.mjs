@@ -10,7 +10,7 @@ test('one toolbar replaces permanent filmstrip/select with a closed-by-default S
  const {root,h}=mount();try{assert.equal(root.querySelectorAll('.learning-toolbar').length,1);assert.equal(!!root.querySelector('select'),false);assert.equal(!!root.querySelector('.learning-filmstrip'),false);assert.equal(!!root.querySelector('[role="dialog"]'),false);assert.ok(root.querySelector('[data-action="slides"]'));assert.equal(root.classList.contains('learning-viewer-host'),true);}finally{h.destroy();assert.equal(root.classList.contains('learning-viewer-host'),false);}
 });
 test('Slides offers bounded accessible previews, selects a specific slide, closes and preserves focus',()=>{
- const {root,doc,h}=mount();try{const open=root.querySelector('[data-action="slides"]');assert.ok(open);open.focus();fire(open,'click');const dialog=root.querySelector('[role="dialog"]');assert.ok(dialog);assert.equal(dialog.querySelectorAll('[data-slide-id]').length,8);assert.ok(dialog.querySelector('[aria-current="true"]'));const target=dialog.querySelector('[data-slide-id="slide-06-compound-impact"]');fire(target,'click');assert.equal(h.currentSlideId,'slide-06-compound-impact');assert.equal(root.querySelector('[role="dialog"]'),null);assert.ok(root.contains(doc.activeElement));}finally{h.destroy();}
+ const {root,doc,h}=mount();try{const open=root.querySelector('[data-action="slides"]');assert.ok(open);open.focus();fire(open,'click');const dialog=root.querySelector('[role="dialog"]');assert.ok(dialog);assert.equal(dialog.querySelectorAll('[data-slide-id]').length,lesson.slides.length);assert.ok(dialog.querySelector('[aria-current="true"]'));const target=dialog.querySelector('[data-slide-id="slide-06-compound-impact"]');fire(target,'click');assert.equal(h.currentSlideId,'slide-06-compound-impact');assert.equal(root.querySelector('[role="dialog"]'),null);assert.ok(root.contains(doc.activeElement));}finally{h.destroy();}
 });
 test('long decks overview navigates to End without mounting hundreds of live previews',()=>{
  const l=structuredClone(lesson);l.slides=Array.from({length:500},(_,i)=>({...l.slides[i%8],id:`slide-${i}`}));const{root,h}=mount(l);try{const open=root.querySelector('[data-action="slides"]');assert.ok(open);fire(open,'click');let dialog=root.querySelector('[role="dialog"]');assert.ok(dialog.querySelectorAll('[data-slide-id]').length<=25);fire(dialog,'keydown',{key:'End',target:dialog.querySelector('[data-slide-id]')});const last=dialog.querySelector('[data-slide-id="slide-499"]');assert.ok(last);fire(last,'click');assert.equal(h.currentSlideId,'slide-499');}finally{h.destroy();}
@@ -64,7 +64,7 @@ test('three-zone toolbar layout has distinct left context, centered navigation, 
     const counter = center.querySelector('.learning-counter');
     assert.ok(prev && next && counter);
     assert.equal(prev.disabled, true, 'Previous disabled on first slide');
-    assert.equal(counter.textContent, '1 / 8');
+    assert.equal(counter.textContent, `1 / ${lesson.slides.length}`);
 
     // Right zone: Presentation Tools
     const right = toolbar.querySelector('.viewer-zone-right');

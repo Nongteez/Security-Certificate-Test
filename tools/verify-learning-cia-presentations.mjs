@@ -1,4 +1,4 @@
-// CIA revision 2: authorized D1-F02–F06 corrections; unchanged-field lock is in verify-learning-academic-remediation.mjs.
+// CIA revision 4: authorized final F07/F09 corrections; exact fields are tested in verify-learning-final-signoff.mjs. Phase1 and original-slide locks remain in verify-learning-academic-remediation.mjs and verify-learning-ai-applications.mjs.
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import fs from 'node:fs';
@@ -24,4 +24,4 @@ test('unanswered investigation does not mark any choice correct or incorrect',()
 test('the entire recap source matrix remains available in Lesson Info in both languages',()=>{
  for(const language of ['th','en']){const doc=new TestDocument(),host=doc.createElement('div');doc.body.append(host);const h=renderLessonInfo(host,{lesson,language});const content=host.querySelector('[data-explanation-slide="slide-08-takeaways"]'),table=lesson.slides[7].blocks.find(b=>b.kind==='table');for(const cell of [...table.columns,...table.rows.flat()])assert.ok(text(content).includes(cell[language]));h.destroy();}
 });
-test('reviewed Phase 1 revision 2 bytes remain unchanged',()=>assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex'),'8d5fcb593b5278eb4845fdb6f1d577dbb09da73aeb3fa2d3599334dbe559000d'));
+test('reviewed final revision 4 bytes remain unchanged',()=>assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex'),'87ded3584b7e5d0b6cd99cd299dff102b9d32feffdc5519d7c36fec8a17200bf'));

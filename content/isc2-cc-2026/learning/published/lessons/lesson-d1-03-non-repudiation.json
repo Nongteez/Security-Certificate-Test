@@ -7,7 +7,7 @@
   "objectiveIds": [
     "1.1"
   ],
-  "revision": "1",
+  "revision": "2",
   "status": "published",
   "title": {
     "en": "Non-repudiation & Trustworthy Evidence",
@@ -146,7 +146,7 @@
       ],
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       }
     },
     {
@@ -252,7 +252,7 @@
       ],
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       }
     },
     {
@@ -343,7 +343,7 @@
       ],
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       }
     },
     {
@@ -448,7 +448,7 @@
       ],
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       }
     },
     {
@@ -568,7 +568,7 @@
       ],
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
       }
     },
     {
@@ -673,7 +673,113 @@
       ],
       "review": {
         "status": "approved",
-        "reviewedRevision": "1"
+        "reviewedRevision": "2"
+      }
+    },
+    {
+      "id": "slide-07-ai-action-evidence",
+      "rendererId": "comparison",
+      "layoutId": "nr-case",
+      "title": {
+        "en": "Trace the AI action. Then evaluate the evidence.",
+        "th": "ติดตามการกระทำของ AI แล้วประเมินหลักฐาน"
+      },
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A ticket AI updates T-104 under its own service identity.",
+            "th": "Ticket AI แก้ T-104 โดยใช้ Service identity ของตนเอง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "One automated action through AAA",
+            "th": "ติดตามการกระทำอัตโนมัติหนึ่งครั้งผ่าน AAA"
+          },
+          "columns": [
+            {
+              "en": "Function",
+              "th": "หน้าที่"
+            },
+            {
+              "en": "Action or record",
+              "th": "การกระทำหรือบันทึก"
+            },
+            {
+              "en": "Boundary",
+              "th": "ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Authentication",
+                "th": "Authentication"
+              },
+              {
+                "en": "Verify the triage-bot credential",
+                "th": "ตรวจ Credential ของ triage-bot"
+              },
+              {
+                "en": "Service identity is not a named human",
+                "th": "ตัวตนบริการไม่ใช่มนุษย์คนใดคนหนึ่ง"
+              }
+            ],
+            [
+              {
+                "en": "Authorization",
+                "th": "Authorization"
+              },
+              {
+                "en": "Set T-104 priority; no billing edits",
+                "th": "ตั้ง Priority ของ T-104; ห้ามแก้ Billing"
+              },
+              {
+                "en": "A valid credential does not grant every action",
+                "th": "Credential ถูกต้องไม่ได้ให้สิทธิ์ทุกอย่าง"
+              }
+            ],
+            [
+              {
+                "en": "Accounting",
+                "th": "Accounting"
+              },
+              {
+                "en": "evt-204 · triage-bot → T-104 · set priority",
+                "th": "evt-204 · triage-bot → T-104 · ตั้ง Priority"
+              },
+              {
+                "en": "09:42Z · success · protected log",
+                "th": "09:42Z · สำเร็จ · ปกป้อง Log"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Apply the AAA distinctions from Lesson 2 to the ticket AI introduced in Lesson 1. Register a service identity and verify its credential (Authentication). Check permission for the specific resource and action (Authorization): this example allows a priority update on T-104, not a billing change. Protect the event record (Accounting), including the service identity, action, target, time and result; record denied attempts as appropriate too. Keep relevant configuration/model versions and any required approval evidence so a reviewer can reconstruct the context. The owner and approving people remain responsible for the authorized deployment and oversight; a service identity does not identify which human intended each action. If a protected action record is digitally signed, verification can support its integrity and signing-key origin, and can support Non-repudiation with trustworthy identity-to-key binding, key custody, certificate trust when used and surrounding evidence. Shared or compromised credentials/keys weaken attribution. A log or valid service signature alone does not prove human intent, actual approval or legal liability. Human-assisted recommendations also need a record of the eventual authorized action; merely generating a suggestion is different from executing it. Logs themselves need access and retention controls; do not record unnecessary sensitive ticket content.",
+            "th": "นำ AAA จากบท 2 มาใช้กับ Ticket AI ในบท 1 ลงทะเบียน Service identity และตรวจ Credential (Authentication) ตรวจ Permission สำหรับ Resource และ Action เฉพาะ (Authorization) ตัวอย่างนี้อนุญาตให้ตั้ง Priority ของ T-104 ไม่ใช่แก้ Billing ปกป้อง Event record (Accounting) ให้มีตัวตนบริการ การกระทำ เป้าหมาย เวลา และผลลัพธ์ รวมทั้งบันทึกความพยายามที่ถูกปฏิเสธตามความเหมาะสม เก็บ Model/Configuration version และหลักฐานการอนุมัติที่จำเป็นเพื่อให้ผู้ทบทวนเชื่อมบริบทได้ ผู้รับผิดชอบและผู้อนุมัติยังมีหน้าที่ดูแลการนำมาใช้ตามอำนาจ Service identity ไม่ได้ระบุว่ามนุษย์คนใดตั้งใจทำทุก Action หากลง Digital signature บน Action record การตรวจผ่านช่วยสนับสนุน Integrity และแหล่ง Signing key และสนับสนุน Non-repudiation ได้เมื่อการผูกตัวตนกับ Key การควบคุม Key ความน่าเชื่อถือของ Certificate เมื่อใช้ และหลักฐานประกอบเชื่อถือได้ การใช้ Credential/Key ร่วมกันหรือถูกยึดทำให้การระบุผู้กระทำอ่อนลง Log หรือ Signature ของบริการที่ตรวจผ่านเพียงอย่างเดียวไม่พิสูจน์เจตนา การอนุมัติจริง หรือความรับผิดทางกฎหมายของมนุษย์ กรณี AI แนะนำให้คนตัดสินใจก็ต้องเก็บร่องรอยของ Action ที่ผู้มีอำนาจทำจริง การสร้างคำแนะนำต่างจากการลงมือทำ Log เองต้องมีการควบคุมสิทธิ์และระยะเก็บ ไม่บันทึกเนื้อหา Ticket อ่อนไหวเกินจำเป็น"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A service signature supports data/key origin—not human intent or approval.",
+            "th": "Signature ของบริการสนับสนุนข้อมูลและที่มาของ Key ไม่ได้พิสูจน์เจตนาหรือการอนุมัติของคน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-ai-outline",
+        "notes-b",
+        "nist-signatures"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
       }
     }
   ],
@@ -719,21 +825,28 @@
       "authority": "technical-primary",
       "locator": "Key protection, compromise and assurance context; supplemental to the user notes.",
       "url": "https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final"
+    },
+    {
+      "id": "ref-ai-outline",
+      "title": "ISC2 CC 2026 outline — Domain 1 AI application guidance",
+      "authority": "official-scope",
+      "locator": "How is AI Security Incorporated into the CC Domains? — Domain 1",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
     }
   ],
   "assets": [],
   "review": {
-    "reviewedRevision": "1",
-    "evidencePath": "docs/plans/isc2-cc-2026/lesson-d1-03-non-repudiation-implementation.md",
+    "reviewedRevision": "2",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-1-remediation-phase-2.md",
     "technical": {
       "status": "approved",
-      "reviewer": "Codex — technical self-review; user review pending",
-      "reviewedAt": "2026-10-26"
+      "reviewer": "Codex D1-F01 assistant technical review; human acceptance pending",
+      "reviewedAt": "2026-10-28"
     },
     "bilingual": {
       "status": "approved",
-      "reviewer": "Codex — bilingual self-review; user review pending",
-      "reviewedAt": "2026-10-26"
+      "reviewer": "Codex D1-F01 assistant bilingual review; human acceptance pending",
+      "reviewedAt": "2026-10-28"
     },
     "rights": {
       "status": "approved",

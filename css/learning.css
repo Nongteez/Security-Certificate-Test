@@ -732,6 +732,13 @@ html[data-theme="light"] .learning-screen .learning-info-panel::-webkit-scrollba
   box-shadow: 0 2px 5px rgba(217, 119, 6, 0.05);
 }
 
+/* Info explanation contrast: pale authored boxes need their own foreground,
+   because Info reading hosts inherit the themed modal rather than the slide canvas. */
+.learning-screen .learning-info-panel [data-layout="concept-split"] .learning-slide-body > p:is(:first-of-type, :last-of-type),
+.learning-screen .learning-info-panel [data-layout="scenario-reveal"] .learning-slide-body > p:first-of-type {
+  color: #0f172a;
+}
+
 /* Layout 4: Scenario Flow & Cascade (Slide 6) */
 [data-layout="scenario-flow"] .learning-diagram {
   margin: 12px 0;

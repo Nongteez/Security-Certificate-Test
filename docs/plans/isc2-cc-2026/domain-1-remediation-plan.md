@@ -1,6 +1,6 @@
 # Domain 1 — targeted academic remediation plan
 
-Date: 2026-10-28. State: **proposal only; no remediation authorized or performed**. Production baseline:12 lessons /101 slides. Final acceptance recommendation: **Requires Targeted Remediation**.
+Date: 2026-10-28. State: **Phases 1 and 2 implemented and targeted verification complete; human academic/bilingual acceptance pending.** D1-F01–F06 are resolved in introductory content; F07–F09 remain open. Verified Phase2 status below supersedes the historical proposal and earlier stop language. Production:12 Domain1 lessons /103 slides, preserving all101 original IDs. Domain1 final approval remains pending.
 
 Read with the [nine-finding academic register](domain-1-final-academic-audit.md), [official coverage matrix](domain-1-2026-coverage-matrix.md) and [exact bilingual replacements](domain-1-bilingual-audit.md). Counts are shared across all four reports: **0 Critical /2 High /4 Medium /3 Low**, nine unique findings. The two material bilingual qualifications and one minor omission are included in those counts.
 
@@ -65,3 +65,26 @@ Expected scope: one bounded CIA correction pass, several short applied examples 
 The first two High findings block final acceptance today. Medium CIA reasoning and translation conflicts must also close; Low issues can be handled in the same narrow review. After closure and actual verification, the appropriate next recommendation can become Ready for Human Acceptance. The present decision remains **Requires Targeted Remediation**.
 
 **Stop after this audit. Do not implement this plan, update the roadmap/tracker, create Lesson13 or start Domain2 without a separate user instruction.**
+
+
+## Verified Phase 1 outcome — 2026-10-28
+
+The user authorized D1-F02–F06 only, then authorized resuming their final verification. Those five findings are corrected in CIA slides4/7/8, including full bilingual explanations, scenario feedback and one trusted-Hash footer. Existing layouts and the other eleven Domain1 lessons are unchanged. See the [complete Phase1 report](domain-1-remediation-phase-1.md) for exact before/after pairs, primary sources, preservation and screenshot evidence.
+
+- D1-F02 High and D1-F03–F06 Medium: implemented and targeted desktop-verified; human academic/bilingual acceptance pending.
+- D1-F01 High: intentionally open/deferred to Phase2; AI applications were not expanded. This remains a final Domain1 acceptance blocker.
+- D1-F07–F09 Low: deferred, with their original content preserved.
+- Separate existing Dark Theme Lesson Info contrast issue: observed, documented and explicitly deferred; no UI fix or new academic finding ID.
+- Original expanded verification passed177/177. Current resume run is163pass/14fail because unrelated Domain2 work now adds four published lessons and invalidates global twelve-lesson/last-lesson assumptions. Direct remediation/CIA/intro/progress/AAA subset30/30 passes; five historical Vocabulary failures remain unchanged. No unrelated test expectations or Domain2 files were edited.
+- Targeted matrix complete:12presentation,12reading,12Info cases and12scenario feedback states across1920×1080/1366×768 TH/EN; valid saved evidence reused. Browser reload/direct CIA7/8 Resume and independent AAA2/7/evidence3/6 positions verified using the production Phase1 snapshot. Current16-lesson integration is not browser-certified.
+
+Phase1 is ready for scoped human review with the current-suite limitation disclosed. Domain1 remains **Requires Targeted Remediation / final human approval pending**, not fully complete. No authorization is inferred to start Phase2, fix deferred findings or change Domain2.
+
+
+## Verified Phase 2 status — 2026-10-28
+
+D1-F01 is resolved for introductory teaching, assistant self-reviewed: new L01/9 model-poisoning Integrity chain and L03/7 automated-action AAA/evidence case; targeted L10/6 control-mix and L12/10 adoption/accountability extensions. L04 training privacy and L08 AI-GRC remain unchanged. All six AI application areas from the original matrix now have concrete explanatory evidence; the new cases apply the official 2026 guidance without inventing numbered objectives or guarantees. See [Phase2 report](domain-1-remediation-phase-2.md) for source mapping, exact files and limitations.
+
+48/48 direct checks and20/20 selected Domain2 academic/rendering checks pass. The expanded185-check run passes171 with the same14 global-catalog expectation failures present at entry; five historical Vocabulary failures remain separate. Actual targeted browser inspection passed16 presentation,16 Reading and16 Info cases at1920×1080/1366×768 TH/EN; reload/direct Resume and four independent lesson positions passed. No new regressions found. Entry protection:1,752files,1,733 unchanged,19 scoped modifications,zero missing; Domain2 bytes/catalog outside D1, all101 old IDs and99 unaffected slide educational fields preserved.
+
+F02–F06 remain resolved by Phase1; F07–F09 and the dark-theme Lesson Info contrast issue remain deferred. Human academic/bilingual acceptance and final Domain1 approval are pending. No Lesson13, additional findings, Domain2 implementation or unrelated UI work is authorized by this completion. Stop for human review.

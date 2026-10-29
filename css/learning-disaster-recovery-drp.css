@@ -1,0 +1,1340 @@
+/* Domain 2 Lesson 4 (lesson-d2-04-disaster-recovery-drp) scoped presentation styles. */
+.learning-viewer .learning-slide.learning-dr-drp-slide {
+  container-type: inline-size;
+  padding: 0;
+  background: #ffffff;
+  color: #0f172a;
+  overflow: visible;
+}
+
+.learning-viewer .learning-dr-drp-slide > .learning-slide-body {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  gap: 0;
+}
+
+.learning-dr-drp-slide .drp-presentation {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 1.3cqw 2.15cqw;
+  gap: 0.68cqw;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.learning-dr-drp-slide .drp-header,
+.learning-dr-drp-slide .drp-canvas,
+.learning-dr-drp-slide .drp-footer {
+  min-width: 0;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85cqw;
+  margin-bottom: 0.18cqw;
+}
+
+.learning-dr-drp-slide .drp-eyebrow {
+  color: #1d4ed8;
+  font-size: clamp(10.5px, 0.82cqw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.learning-dr-drp-slide .drp-domain-pill {
+  padding: 0.14cqw 0.6cqw;
+  border-radius: 999px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  font-size: clamp(10.5px, 0.8cqw, 14.5px);
+  font-weight: 700;
+}
+
+.learning-dr-drp-slide .drp-title {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(17.5px, 1.68cqw, 30px);
+  line-height: 1.22;
+  letter-spacing: -0.016em;
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-lead {
+  margin: 0.2cqw 0 0;
+  color: #334155;
+  font-size: clamp(11.8px, 0.96cqw, 17px);
+  line-height: 1.34;
+}
+
+.learning-dr-drp-slide .drp-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75cqw;
+  border-top: 1px solid #cbd5e1;
+  padding-top: 0.45cqw;
+}
+
+.learning-dr-drp-slide .drp-footer-badge {
+  flex: none;
+  padding: 0.18cqw 0.6cqw;
+  border-radius: 6px;
+  background: #1e3a8a;
+  color: #ffffff;
+  font-size: clamp(9.5px, 0.74cqw, 13.5px);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-footer-text {
+  margin: 0;
+  color: #1e3a8a;
+  font-size: clamp(11.2px, 0.92cqw, 16.5px);
+  line-height: 1.32;
+  font-weight: 600;
+}
+
+/* Shared Badges & Tags */
+.learning-dr-drp-slide .drp-tag,
+.learning-dr-drp-slide .drp-ring-badge,
+.learning-dr-drp-slide .drp-direction-pill,
+.learning-dr-drp-slide .drp-case-badge,
+.learning-dr-drp-slide .drp-guardrail-pill,
+.learning-dr-drp-slide .drp-site-tier-badge,
+.learning-dr-drp-slide .drp-drill-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.14cqw 0.56cqw;
+  font-size: clamp(9.5px, 0.72cqw, 13px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.learning-dr-drp-slide .drp-tag.is-blue,
+.learning-dr-drp-slide .drp-ring-badge.is-dr,
+.learning-dr-drp-slide .drp-direction-pill.is-rto {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.learning-dr-drp-slide .drp-tag.is-indigo,
+.learning-dr-drp-slide .drp-ring-badge.is-bc {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.learning-dr-drp-slide .drp-tag.is-teal {
+  background: #ccfbf1;
+  color: #0f766e;
+}
+
+.learning-dr-drp-slide .drp-tag.is-amber,
+.learning-dr-drp-slide .drp-direction-pill.is-rpo,
+.learning-dr-drp-slide .drp-case-badge.is-amber,
+.learning-dr-drp-slide .drp-guardrail-pill {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.learning-dr-drp-slide .drp-tag.is-emerald,
+.learning-dr-drp-slide .drp-case-badge.is-emerald {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.learning-dr-drp-slide .drp-tag.is-danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* ==========================================================================
+   Slide 1: DR Definition, Purposes, 3 Key Concepts (S16) & BC/BCP vs. DR/DRP
+   ========================================================================== */
+.learning-dr-drp-slide .drp-scope-layout {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0.65cqw;
+}
+
+.learning-dr-drp-slide .drp-outer-bc-ring {
+  background: #f8fafc;
+  border: 2px dashed #6366f1;
+  border-radius: 12px;
+  padding: 0.55cqw 0.85cqw;
+  display: grid;
+  gap: 0.45cqw;
+}
+
+.learning-dr-drp-slide .drp-ring-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6cqw;
+  flex-wrap: wrap;
+}
+
+.learning-dr-drp-slide .drp-ring-caption {
+  color: #4338ca;
+  font-size: clamp(10.5px, 0.82cqw, 14.5px);
+  font-weight: 700;
+}
+
+.learning-dr-drp-slide .drp-inner-dr-core {
+  background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%);
+  border: 2px solid #2563eb;
+  border-radius: 10px;
+  padding: 0.58cqw 0.85cqw;
+  display: grid;
+  gap: 0.42cqw;
+}
+
+.learning-dr-drp-slide .drp-core-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6cqw;
+  flex-wrap: wrap;
+}
+
+.learning-dr-drp-slide .drp-subset-formula {
+  padding: 0.14cqw 0.55cqw;
+  border-radius: 6px;
+  background: #1e3a8a;
+  color: #ffffff;
+  font-size: clamp(10.5px, 0.82cqw, 14.5px);
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-core-def {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(11.8px, 0.96cqw, 17px);
+  line-height: 1.32;
+  font-weight: 700;
+}
+
+.learning-dr-drp-slide .drp-concept-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5cqw;
+}
+
+.learning-dr-drp-slide .drp-concept-chip {
+  background: #ffffff;
+  border: 1px solid #93c5fd;
+  border-radius: 8px;
+  padding: 0.32cqw 0.6cqw;
+  display: flex;
+  align-items: center;
+  gap: 0.42cqw;
+}
+
+.learning-dr-drp-slide .drp-concept-code {
+  padding: 0.1cqw 0.4cqw;
+  border-radius: 5px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: clamp(9.5px, 0.72cqw, 13px);
+  font-weight: 800;
+}
+
+.learning-dr-drp-slide .drp-concept-text {
+  color: #0f172a;
+  font-size: clamp(10.8px, 0.86cqw, 15.5px);
+  font-weight: 700;
+}
+
+.learning-dr-drp-slide .drp-scope-lower-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65cqw;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-panel-card {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.62cqw 0.85cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.35cqw;
+}
+
+.learning-dr-drp-slide .drp-panel-card.is-purposes {
+  border-top: 3px solid #2563eb;
+}
+
+.learning-dr-drp-slide .drp-panel-card.is-distinction {
+  border-top: 3px solid #4f46e5;
+}
+
+.learning-dr-drp-slide .drp-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5cqw;
+  flex-wrap: wrap;
+}
+
+.learning-dr-drp-slide .drp-panel-title {
+  color: #0f172a;
+  font-size: clamp(12px, 0.98cqw, 17.5px);
+  font-weight: 800;
+}
+
+.learning-dr-drp-slide .drp-compact-list {
+  margin: 0;
+  padding-left: 1.15cqw;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25cqw 0.65cqw;
+}
+
+.learning-dr-drp-slide .drp-compact-list li {
+  color: #0f172a;
+  font-size: clamp(11px, 0.88cqw, 16px);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-panel-body {
+  margin: 0;
+  color: #1e293b;
+  font-size: clamp(11.2px, 0.9cqw, 16px);
+  line-height: 1.34;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-panel-note {
+  margin: 0;
+  color: #334155;
+  font-size: clamp(10.8px, 0.86cqw, 15.2px);
+  line-height: 1.3;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  padding: 0.34cqw 0.58cqw;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-panel-note.is-highlight {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #312e81;
+  font-weight: 600;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-panel-subnote {
+  margin: 0;
+  color: #475569;
+  font-size: clamp(10.5px, 0.84cqw, 14.8px);
+  line-height: 1.28;
+}
+
+/* ==========================================================================
+   Slide 2: 5 Strategic Benefits of DR (S17) + Bounded Compliance Guardrail
+   ========================================================================== */
+.learning-dr-drp-slide .drp-benefits-layout {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 0.65cqw;
+}
+
+.learning-dr-drp-slide .drp-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.55cqw;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-benefit-card {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-top: 3px solid #2563eb;
+  border-radius: 10px;
+  padding: 0.65cqw 0.72cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.4cqw;
+}
+
+.learning-dr-drp-slide .drp-benefit-card.is-teal { border-top-color: #0d9488; }
+.learning-dr-drp-slide .drp-benefit-card.is-amber { border-top-color: #d97706; background: #fffbeb; }
+.learning-dr-drp-slide .drp-benefit-card.is-indigo { border-top-color: #4f46e5; }
+.learning-dr-drp-slide .drp-benefit-card.is-emerald { border-top-color: #16a34a; }
+
+.learning-dr-drp-slide .drp-benefit-top {
+  display: grid;
+  gap: 0.24cqw;
+}
+
+.learning-dr-drp-slide .drp-benefit-code {
+  color: #1d4ed8;
+  font-size: clamp(9.5px, 0.72cqw, 13px);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.learning-dr-drp-slide .drp-benefit-title {
+  color: #0f172a;
+  font-size: clamp(12px, 0.96cqw, 17px);
+  line-height: 1.26;
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-benefit-desc {
+  margin: 0;
+  color: #1e293b;
+  font-size: clamp(10.8px, 0.86cqw, 15.2px);
+  line-height: 1.32;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-benefit-impact {
+  margin: 0;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  padding: 0.36cqw 0.52cqw;
+  color: #334155;
+  font-size: clamp(10.4px, 0.82cqw, 14.5px);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.learning-dr-drp-slide .drp-compliance-guardrail {
+  background: linear-gradient(90deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1px solid #f59e0b;
+  border-left: 4px solid #d97706;
+  border-radius: 10px;
+  padding: 0.55cqw 0.85cqw;
+  display: grid;
+  grid-template-columns: 28% minmax(0, 1fr);
+  align-items: center;
+  gap: 0.8cqw;
+}
+
+.learning-dr-drp-slide .drp-guardrail-badge-col {
+  display: grid;
+  gap: 0.22cqw;
+}
+
+.learning-dr-drp-slide .drp-guardrail-heading {
+  color: #78350f;
+  font-size: clamp(11.2px, 0.9cqw, 16px);
+  line-height: 1.26;
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-guardrail-copy {
+  margin: 0;
+  color: #78350f;
+  font-size: clamp(10.8px, 0.86cqw, 15.2px);
+  line-height: 1.32;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Slide 3: RTO vs. RPO Directional Timeline (S18)
+   ========================================================================== */
+.learning-dr-drp-slide .drp-timeline-layout {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0.65cqw;
+}
+
+.learning-dr-drp-slide .drp-timeline-board {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 0.65cqw 0.85cqw;
+}
+
+.learning-dr-drp-slide .drp-timeline-axis-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0.65cqw;
+}
+
+.learning-dr-drp-slide .drp-timeline-zone {
+  border-radius: 10px;
+  padding: 0.58cqw 0.78cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.35cqw;
+}
+
+.learning-dr-drp-slide .drp-timeline-zone.is-rpo {
+  background: #fffbeb;
+  border: 2px solid #f59e0b;
+}
+
+.learning-dr-drp-slide .drp-timeline-zone.is-rto {
+  background: #eff6ff;
+  border: 2px solid #2563eb;
+}
+
+.learning-dr-drp-slide .drp-zone-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45cqw;
+  flex-wrap: wrap;
+}
+
+.learning-dr-drp-slide .drp-zone-metric {
+  color: #0f172a;
+  font-size: clamp(12.2px, 0.98cqw, 17.5px);
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-zone-formula {
+  margin: 0;
+  background: #ffffff;
+  border-radius: 7px;
+  padding: 0.36cqw 0.58cqw;
+  color: #0f172a;
+  font-size: clamp(11px, 0.88cqw, 15.8px);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-zone-driver {
+  margin: 0;
+  color: #334155;
+  font-size: clamp(10.6px, 0.84cqw, 15px);
+  line-height: 1.3;
+}
+
+.learning-dr-drp-slide .drp-timeline-pivot {
+  background: #fef2f2;
+  border: 2px solid #dc2626;
+  border-radius: 10px;
+  padding: 0.55cqw 0.72cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.2cqw;
+  max-width: 15cqw;
+}
+
+.learning-dr-drp-slide .drp-pivot-icon {
+  font-size: clamp(16px, 1.35cqw, 24px);
+}
+
+.learning-dr-drp-slide .drp-pivot-title {
+  color: #991b1b;
+  font-size: clamp(11.2px, 0.9cqw, 16px);
+  font-weight: 800;
+}
+
+.learning-dr-drp-slide .drp-pivot-sub {
+  color: #b91c1c;
+  font-size: clamp(9.8px, 0.76cqw, 13.5px);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.learning-dr-drp-slide .drp-metric-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65cqw;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-metric-card {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.62cqw 0.78cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.35cqw;
+}
+
+.learning-dr-drp-slide .drp-metric-card.is-rpo { border-top: 3px solid #d97706; }
+.learning-dr-drp-slide .drp-metric-card.is-rto { border-top: 3px solid #2563eb; }
+.learning-dr-drp-slide .drp-metric-card.is-reality { border-top: 3px solid #4f46e5; }
+
+.learning-dr-drp-slide .drp-card-heading {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(12px, 0.96cqw, 17px);
+  line-height: 1.26;
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-card-body {
+  margin: 0;
+  color: #1e293b;
+  font-size: clamp(10.8px, 0.86cqw, 15.2px);
+  line-height: 1.32;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-card-sub {
+  margin: 0;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 7px;
+  padding: 0.32cqw 0.52cqw;
+  color: #312e81;
+  font-size: clamp(10.4px, 0.82cqw, 14.5px);
+  line-height: 1.28;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Slide 4: Worked Recovery Target Examples (16:30/17:00/18:00 & S18 4:00/4:30/5:00/5:20)
+   ========================================================================== */
+.learning-dr-drp-slide .drp-worked-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-worked-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7cqw;
+  height: 100%;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-worked-case {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 0.65cqw 0.85cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.48cqw;
+}
+
+.learning-dr-drp-slide .drp-worked-case.is-case-a { border-top: 3px solid #16a34a; }
+.learning-dr-drp-slide .drp-worked-case.is-case-b { border-top: 3px solid #d97706; }
+
+.learning-dr-drp-slide .drp-case-banner {
+  display: grid;
+  gap: 0.22cqw;
+}
+
+.learning-dr-drp-slide .drp-case-title {
+  color: #0f172a;
+  font-size: clamp(12.2px, 0.98cqw, 17.5px);
+  line-height: 1.26;
+  font-weight: 800;
+}
+
+.learning-dr-drp-slide .drp-clock-strip {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  padding: 0.45cqw 0.65cqw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4cqw;
+}
+
+.learning-dr-drp-slide .drp-clock-node {
+  display: grid;
+  gap: 0.12cqw;
+  text-align: center;
+  padding: 0.26cqw 0.48cqw;
+  border-radius: 7px;
+}
+
+.learning-dr-drp-slide .drp-clock-node.is-rpo { background: #fef3c7; color: #92400e; }
+.learning-dr-drp-slide .drp-clock-node.is-crash { background: #fee2e2; color: #991b1b; }
+.learning-dr-drp-slide .drp-clock-node.is-rto { background: #dcfce7; color: #166534; }
+.learning-dr-drp-slide .drp-clock-node.is-breach { background: #ffedd5; color: #9a3412; }
+
+.learning-dr-drp-slide .drp-clock-time {
+  font-size: clamp(12.5px, 1.02cqw, 18px);
+  font-weight: 800;
+}
+
+.learning-dr-drp-slide .drp-clock-label {
+  font-size: clamp(9.5px, 0.74cqw, 13px);
+  font-weight: 700;
+}
+
+.learning-dr-drp-slide .drp-clock-arrow {
+  color: #475569;
+  font-size: clamp(10.5px, 0.82cqw, 14.5px);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.learning-dr-drp-slide .drp-case-rows {
+  display: grid;
+  gap: 0.42cqw;
+}
+
+.learning-dr-drp-slide .drp-case-row {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.45cqw 0.65cqw;
+  display: grid;
+  gap: 0.18cqw;
+}
+
+.learning-dr-drp-slide .drp-case-row strong {
+  color: #0f172a;
+  font-size: clamp(11.2px, 0.9cqw, 16px);
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide .drp-case-row p {
+  margin: 0;
+  color: #334155;
+  font-size: clamp(10.6px, 0.84cqw, 15px);
+  line-height: 1.32;
+}
+
+/* ==========================================================================
+   Slide 5: Backup & Recovery Strategies (Cloud Backups & Off-site Storage)
+   ========================================================================== */
+.learning-dr-drp-slide .drp-backup-layout {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 0.65cqw;
+}
+
+.learning-dr-drp-slide .drp-backup-flow-banner {
+  display: grid;
+  grid-template-columns: 27% 21% minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0.65cqw;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-site-box.is-primary-hazard {
+  background: #fef2f2;
+  border: 2px solid #fca5a5;
+  border-radius: 12px;
+  padding: 0.68cqw 0.82cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.4cqw;
+}
+
+.learning-dr-drp-slide .drp-replication-bridge {
+  background: #f8fafc;
+  border: 1px dashed #64748b;
+  border-radius: 12px;
+  padding: 0.6cqw 0.68cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.42cqw;
+}
+
+.learning-dr-drp-slide .drp-bridge-pill {
+  padding: 0.16cqw 0.55cqw;
+  border-radius: 999px;
+  background: #1e3a8a;
+  color: #ffffff;
+  font-size: clamp(9.5px, 0.72cqw, 13px);
+  font-weight: 800;
+}
+
+.learning-dr-drp-slide .drp-bridge-arrows {
+  color: #2563eb;
+  font-size: clamp(10.8px, 0.86cqw, 15px);
+  font-weight: 800;
+}
+
+.learning-dr-drp-slide .drp-bridge-sub {
+  color: #334155;
+  font-size: clamp(10.2px, 0.8cqw, 14.2px);
+  line-height: 1.28;
+  font-weight: 700;
+}
+
+.learning-dr-drp-slide .drp-offsite-targets {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 0.55cqw;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-target-card {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.55cqw 0.78cqw;
+  display: grid;
+  gap: 0.24cqw;
+}
+
+.learning-dr-drp-slide .drp-target-card.is-cloud { border-left: 4px solid #2563eb; }
+.learning-dr-drp-slide .drp-target-card.is-offsite { border-left: 4px solid #0d9488; }
+
+.learning-dr-drp-slide .drp-box-title {
+  color: #0f172a;
+  font-size: clamp(12px, 0.96cqw, 17px);
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-box-desc {
+  margin: 0;
+  color: #1e293b;
+  font-size: clamp(10.8px, 0.86cqw, 15.2px);
+  line-height: 1.3;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-box-note {
+  margin: 0;
+  color: #0f766e;
+  font-size: clamp(10.4px, 0.82cqw, 14.5px);
+  line-height: 1.28;
+  font-weight: 700;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-box-hazard-note {
+  margin: 0;
+  background: #ffffff;
+  border: 1px solid #fecaca;
+  border-radius: 7px;
+  padding: 0.35cqw 0.55cqw;
+  color: #991b1b;
+  font-size: clamp(10.4px, 0.82cqw, 14.5px);
+  line-height: 1.28;
+  font-weight: 600;
+}
+
+.learning-dr-drp-slide .drp-verification-strip {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 10px;
+  padding: 0.52cqw 0.85cqw;
+  display: grid;
+  grid-template-columns: 27% minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75cqw;
+}
+
+.learning-dr-drp-slide .drp-verify-left {
+  display: grid;
+  gap: 0.2cqw;
+}
+
+.learning-dr-drp-slide .drp-verify-left strong {
+  color: #14532d;
+  font-size: clamp(11.4px, 0.92cqw, 16px);
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-verify-body {
+  margin: 0;
+  color: #166534;
+  font-size: clamp(10.8px, 0.86cqw, 15.2px);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Slide 6: Disaster Recovery Sites (Hot Site, Warm Site, Cold Site — S18)
+   ========================================================================== */
+.learning-dr-drp-slide .drp-sites-layout {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 0.65cqw;
+}
+
+.learning-dr-drp-slide .drp-sites-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65cqw;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-site-tier-card {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 0.65cqw 0.82cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.42cqw;
+}
+
+.learning-dr-drp-slide .drp-site-tier-card.is-hot {
+  border-top: 4px solid #dc2626;
+  background: linear-gradient(180deg, #fff1f2 0%, #f8fafc 42%);
+}
+
+.learning-dr-drp-slide .drp-site-tier-card.is-warm {
+  border-top: 4px solid #d97706;
+  background: linear-gradient(180deg, #fffbeb 0%, #f8fafc 42%);
+}
+
+.learning-dr-drp-slide .drp-site-tier-card.is-cold {
+  border-top: 4px solid #0284c7;
+  background: linear-gradient(180deg, #f0f9ff 0%, #f8fafc 42%);
+}
+
+.learning-dr-drp-slide .drp-site-tier-card.is-hot .drp-site-tier-badge { background: #fee2e2; color: #991b1b; }
+.learning-dr-drp-slide .drp-site-tier-card.is-warm .drp-site-tier-badge { background: #fef3c7; color: #92400e; }
+.learning-dr-drp-slide .drp-site-tier-card.is-cold .drp-site-tier-badge { background: #e0f2fe; color: #075985; }
+
+.learning-dr-drp-slide .drp-site-tier-top {
+  display: grid;
+  gap: 0.25cqw;
+}
+
+.learning-dr-drp-slide .drp-site-tier-title {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(13px, 1.05cqw, 18.5px);
+  font-weight: 800;
+}
+
+.learning-dr-drp-slide .drp-site-meter-group {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.38cqw 0.55cqw;
+  display: grid;
+  gap: 0.22cqw;
+}
+
+.learning-dr-drp-slide .drp-site-meter-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: clamp(10.2px, 0.8cqw, 14.2px);
+  color: #334155;
+  font-weight: 700;
+}
+
+.learning-dr-drp-slide .drp-site-meter-track {
+  height: 0.45cqw;
+  min-height: 6px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.learning-dr-drp-slide .drp-site-tier-card.is-hot .drp-site-meter-fill { height: 100%; background: #dc2626; }
+.learning-dr-drp-slide .drp-site-tier-card.is-warm .drp-site-meter-fill { height: 100%; background: #d97706; }
+.learning-dr-drp-slide .drp-site-tier-card.is-cold .drp-site-meter-fill { height: 100%; background: #0284c7; }
+
+.learning-viewer .learning-dr-drp-slide p.drp-site-tier-desc {
+  margin: 0;
+  color: #1e293b;
+  font-size: clamp(10.8px, 0.86cqw, 15.2px);
+  line-height: 1.32;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-site-tier-fit {
+  margin: 0;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  padding: 0.36cqw 0.55cqw;
+  color: #334155;
+  font-size: clamp(10.4px, 0.82cqw, 14.5px);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.learning-dr-drp-slide .drp-sites-dependency-bar {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
+  padding: 0.48cqw 0.82cqw;
+  display: flex;
+  align-items: center;
+  gap: 0.65cqw;
+}
+
+.learning-dr-drp-slide .drp-sites-dependency-bar strong {
+  flex: none;
+  color: #1e1b4b;
+  font-size: clamp(11px, 0.88cqw, 15.5px);
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide .drp-sites-dependency-bar p {
+  margin: 0;
+  color: #312e81;
+  font-size: clamp(10.6px, 0.84cqw, 14.8px);
+  line-height: 1.28;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Slide 7: DRP Testing, Drills & Recovery Coordination (S18)
+   ========================================================================== */
+.learning-dr-drp-slide .drp-drills-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-drills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 0.65cqw;
+  height: 100%;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-drill-card {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-top: 3px solid #2563eb;
+  border-radius: 12px;
+  padding: 0.65cqw 0.85cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.38cqw;
+}
+
+.learning-dr-drp-slide .drp-drill-card.is-teal { border-top-color: #0d9488; }
+.learning-dr-drp-slide .drp-drill-card.is-indigo { border-top-color: #4f46e5; }
+.learning-dr-drp-slide .drp-drill-card.is-emerald { border-top-color: #16a34a; }
+
+.learning-dr-drp-slide .drp-drill-head {
+  display: grid;
+  gap: 0.22cqw;
+}
+
+.learning-dr-drp-slide .drp-drill-badge {
+  align-self: flex-start;
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.learning-dr-drp-slide .drp-drill-title {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(12.2px, 0.98cqw, 17.5px);
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-drill-practice {
+  margin: 0;
+  color: #1e293b;
+  font-size: clamp(11px, 0.88cqw, 15.6px);
+  line-height: 1.32;
+}
+
+.learning-dr-drp-slide .drp-drill-outcome {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.38cqw 0.6cqw;
+  display: grid;
+  gap: 0.14cqw;
+}
+
+.learning-dr-drp-slide .drp-outcome-label {
+  color: #1d4ed8;
+  font-size: clamp(9.8px, 0.76cqw, 13.5px);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.learning-viewer .learning-dr-drp-slide .drp-drill-outcome p {
+  margin: 0;
+  color: #334155;
+  font-size: clamp(10.6px, 0.84cqw, 15px);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Slide 8: 7-Row Business Continuity (BC) vs. Disaster Recovery (DR) Table (S19)
+   ========================================================================== */
+.learning-dr-drp-slide .drp-matrix-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-matrix-container {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  border: 1px solid #cbd5e1;
+  border-radius: 11px;
+  overflow: hidden;
+  height: 100%;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-matrix-head {
+  display: grid;
+  grid-template-columns: 22% 39% 39%;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: clamp(10.8px, 0.86cqw, 15.5px);
+  font-weight: 800;
+}
+
+.learning-dr-drp-slide .drp-matrix-col-head {
+  padding: 0.38cqw 0.72cqw;
+}
+
+.learning-dr-drp-slide .drp-matrix-col-head.is-bc {
+  background: #1e3a8a;
+}
+
+.learning-dr-drp-slide .drp-matrix-col-head.is-dr {
+  background: #0f766e;
+}
+
+.learning-dr-drp-slide .drp-matrix-body {
+  display: grid;
+  grid-template-rows: repeat(7, minmax(0, 1fr));
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-matrix-row {
+  display: grid;
+  grid-template-columns: 22% 39% 39%;
+  border-top: 1px solid #e2e8f0;
+  align-items: center;
+}
+
+.learning-dr-drp-slide .drp-matrix-row:nth-child(even) {
+  background: #f8fafc;
+}
+
+.learning-dr-drp-slide .drp-matrix-row:nth-child(odd) {
+  background: #ffffff;
+}
+
+.learning-dr-drp-slide .drp-matrix-cell {
+  padding: 0.28cqw 0.72cqw;
+  font-size: clamp(10.4px, 0.82cqw, 14.8px);
+  line-height: 1.26;
+  color: #1e293b;
+}
+
+.learning-dr-drp-slide .drp-matrix-cell.is-aspect {
+  display: flex;
+  align-items: center;
+  gap: 0.42cqw;
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.learning-dr-drp-slide .drp-row-index {
+  flex: none;
+  padding: 0.08cqw 0.36cqw;
+  border-radius: 5px;
+  background: #dbeafe;
+  color: #1e40af;
+  font-size: clamp(9.2px, 0.7cqw, 12.5px);
+  font-weight: 800;
+}
+
+.learning-dr-drp-slide .drp-matrix-cell.is-bc {
+  border-left: 1px solid #e2e8f0;
+  font-weight: 600;
+}
+
+.learning-dr-drp-slide .drp-matrix-cell.is-dr {
+  border-left: 1px solid #e2e8f0;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Slide 9: Interactive Disaster Recovery Decision Scenario
+   ========================================================================== */
+.learning-dr-drp-slide .drp-scenario-layout {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 0.55cqw;
+}
+
+.learning-dr-drp-slide .drp-scenario-context-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55cqw;
+}
+
+.learning-dr-drp-slide .drp-context-chip {
+  border-radius: 9px;
+  padding: 0.36cqw 0.65cqw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45cqw;
+  font-size: clamp(10.5px, 0.84cqw, 15px);
+}
+
+.learning-dr-drp-slide .drp-context-chip.is-incident {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.learning-dr-drp-slide .drp-context-chip.is-rpo {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+}
+
+.learning-dr-drp-slide .drp-context-chip.is-rto {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+}
+
+.learning-dr-drp-slide .drp-chip-label {
+  font-size: clamp(9.5px, 0.72cqw, 13px);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.learning-dr-drp-slide .drp-scenario-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 0.58cqw;
+  min-height: 0;
+}
+
+.learning-dr-drp-slide .drp-choice-btn {
+  appearance: none;
+  text-align: left;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.55cqw 0.78cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.28cqw;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.learning-dr-drp-slide .drp-choice-btn:hover {
+  border-color: #2563eb;
+  background: #f8fafc;
+}
+
+.learning-dr-drp-slide .drp-choice-btn.is-recommended {
+  border-color: #16a34a;
+  background: #f0fdf4;
+}
+
+.learning-dr-drp-slide .drp-choice-btn.is-distractor {
+  border-color: #d97706;
+  background: #fffbeb;
+}
+
+.learning-dr-drp-slide .drp-choice-letter {
+  display: inline-flex;
+  padding: 0.12cqw 0.5cqw;
+  border-radius: 6px;
+  background: #1e3a8a;
+  color: #ffffff;
+  font-size: clamp(10px, 0.78cqw, 14px);
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-choice-copy {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(11px, 0.88cqw, 15.8px);
+  line-height: 1.32;
+  font-weight: 600;
+}
+
+.learning-dr-drp-slide .drp-scenario-prompt {
+  background: #f1f5f9;
+  border: 1px dashed #94a3b8;
+  border-radius: 9px;
+  padding: 0.45cqw 0.78cqw;
+  display: flex;
+  align-items: center;
+  gap: 0.65cqw;
+}
+
+.learning-dr-drp-slide .drp-prompt-badge {
+  flex: none;
+  padding: 0.14cqw 0.52cqw;
+  border-radius: 6px;
+  background: #334155;
+  color: #ffffff;
+  font-size: clamp(9.5px, 0.72cqw, 13px);
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide .drp-scenario-prompt p {
+  margin: 0;
+  color: #334155;
+  font-size: clamp(10.8px, 0.86cqw, 15.2px);
+  font-weight: 600;
+}
+
+.learning-dr-drp-slide .drp-scenario-feedback {
+  border-radius: 9px;
+  padding: 0.48cqw 0.78cqw;
+  display: grid;
+  gap: 0.2cqw;
+}
+
+.learning-dr-drp-slide .drp-scenario-feedback.is-recommended {
+  background: #dcfce7;
+  border: 1px solid #86efac;
+}
+
+.learning-dr-drp-slide .drp-scenario-feedback.is-distractor {
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+}
+
+.learning-dr-drp-slide .drp-feedback-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55cqw;
+  font-size: clamp(11px, 0.88cqw, 15.5px);
+}
+
+.learning-dr-drp-slide .drp-feedback-badge {
+  padding: 0.12cqw 0.48cqw;
+  border-radius: 6px;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: clamp(9.5px, 0.72cqw, 13px);
+  font-weight: 800;
+}
+
+.learning-viewer .learning-dr-drp-slide p.drp-feedback-text {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(10.8px, 0.86cqw, 15.2px);
+  line-height: 1.3;
+  font-weight: 600;
+}

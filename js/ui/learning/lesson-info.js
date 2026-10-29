@@ -83,7 +83,7 @@ export function renderLessonInfo(host, { lesson, language = 'en', onClose = () =
     const isPrivacy = lesson.id === 'lesson-d1-04-privacy';
     const isNr = lesson.id === 'lesson-d1-03-non-repudiation';
     const explanations = element(doc, 'details', `learning-info-source-explanations${isAaa ? ' learning-info-aaa-explanations' : ''}`);
-    explanations.append(element(doc, 'summary', 'learning-info-details-summary', isConduct ? 'Slides 1–10 — Full explanations' : isFunctions ? 'Slides 1–9 — Full explanations' : isCategories ? 'Slides 1–8 — Full explanations' : isFrameworks ? 'Slides 1–10 — Full explanations' : isGovernance ? 'Slides 1–9 — Full explanations' : isResponse ? 'Slides 1–10 — Full explanations' : (isPrivacy || isRisk || isAssessment) ? 'Slides 1–8 — Full explanations' : isNr ? 'Slides 1–6 — Full explanations' : isAaa ? 'Slides 1–7 — Full explanations' : 'Slides 2–8 — Full explanations'));
+    explanations.append(element(doc, 'summary', 'learning-info-details-summary', isConduct ? 'Slides 1–10 — Full explanations' : isFunctions ? 'Slides 1–9 — Full explanations' : isCategories ? 'Slides 1–8 — Full explanations' : isFrameworks ? 'Slides 1–10 — Full explanations' : isGovernance ? 'Slides 1–9 — Full explanations' : isResponse ? 'Slides 1–10 — Full explanations' : (isPrivacy || isRisk || isAssessment) ? 'Slides 1–8 — Full explanations' : isNr ? `Slides 1–${lesson.slides.length} — Full explanations` : isAaa ? 'Slides 1–7 — Full explanations' : `Slides 2–${lesson.slides.length} — Full explanations`));
     for (const [index, slide] of (lesson.slides || []).entries()) {
       if (index === 0 && !isAaa && !isNr && !isPrivacy && !isRisk && !isAssessment && !isResponse && !isGovernance && !isFrameworks && !isCategories && !isFunctions && !isConduct) continue;
       const detail = element(doc, 'details', 'learning-info-slide-explanation');
@@ -93,6 +93,18 @@ export function renderLessonInfo(host, { lesson, language = 'en', onClose = () =
       detail.append(content); explanations.append(detail);
     }
     panel.append(explanations);
+  }
+  if (lesson.domainId === 2 && Array.isArray(lesson.slides) && lesson.slides.length > 0) {
+    const d2Explanations = element(doc, 'details', 'learning-info-source-explanations');
+    d2Explanations.append(element(doc, 'summary', 'learning-info-details-summary', `Slides 1–${lesson.slides.length} — Full explanations`));
+    for (const [index, slide] of lesson.slides.entries()) {
+      const detail = element(doc, 'details', 'learning-info-slide-explanation');
+      detail.append(element(doc, 'summary', 'learning-info-details-summary', `Slide ${index + 1} — ${slide.title.en}`));
+      const content = element(doc, 'div', 'learning-info-details-body'); content.setAttribute('data-explanation-slide', slide.id);
+      explanationHandles.push(renderSlide(content, { lesson, slide, language, mode: 'reading' }));
+      detail.append(content); d2Explanations.append(detail);
+    }
+    panel.append(d2Explanations);
   }
 
   // 4. Collapsible Details: "References & lesson details" (collapsed by default)

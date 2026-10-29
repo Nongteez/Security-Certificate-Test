@@ -1,0 +1,722 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d1-01-cia-triad",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 1,
+  "primaryObjectiveId": "1.1",
+  "objectiveIds": [
+    "1.1"
+  ],
+  "status": "published",
+  "revision": "2",
+  "title": {
+    "en": "The CIA Triad: Core Information Security Goals",
+    "th": "สามเหลี่ยม CIA: เสาหลักแห่งเป้าหมายความมั่นคงปลอดภัยสารสนเทศ"
+  },
+  "synopsis": {
+    "en": "Master the three foundational pillars of information security: Confidentiality, Integrity, and Availability. Learn to diagnose security impacts through real-world enterprise scenarios.",
+    "th": "เรียนรู้ 3 เสาหลักพื้นฐานของความมั่นคงปลอดภัยสารสนเทศ ได้แก่ การรักษาความลับ (Confidentiality), ความถูกต้องครบถ้วน (Integrity) และความพร้อมใช้งาน (Availability) พร้อมฝึกวิเคราะห์ผลกระทบจากสถานการณ์จำลองจริง"
+  },
+  "outcomes": [
+    {
+      "en": "Distinguish clearly between Confidentiality, Integrity, and Availability.",
+      "th": "จำแนกความแตกต่างระหว่างการรักษาความลับ ความถูกต้องครบถ้วน และความพร้อมใช้งานได้อย่างชัดเจน"
+    },
+    {
+      "en": "Identify real-world violations and appropriate safeguards for each CIA pillar.",
+      "th": "ระบุการละเมิดในโลกความเป็นจริงและมาตรการป้องกันที่เหมาะสมสำหรับแต่ละเสาหลักของ CIA"
+    },
+    {
+      "en": "Analyze compound security incidents to pinpoint the primary security principle affected.",
+      "th": "วิเคราะห์เหตุการณ์ความปลอดภัยที่มีผลกระทบผสมผสานเพื่อระบุหลักการความปลอดภัยที่ได้รับผลกระทบหลัก"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "No prerequisites required. This is the introductory foundation lesson for Domain 1.",
+      "th": "ไม่จำเป็นต้องมีความรู้พื้นฐานมาก่อน นี่คือบทเรียนพื้นฐานเริ่มต้นสำหรับโดเมนที่ 1"
+    }
+  ],
+  "review": {
+    "reviewedRevision": "2",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-1-remediation-phase-1.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex Phase 1 assistant technical review; human acceptance pending",
+      "reviewedAt": "2026-10-28"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex Phase 1 assistant bilingual review; human acceptance pending",
+      "reviewedAt": "2026-10-28"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "SEC CERT TEST Editorial Rights Review",
+      "reviewedAt": "2026-10-24"
+    }
+  },
+  "references": [
+    {
+      "id": "isc2-cc-outline-2026",
+      "title": "ISC2 Certified in Cybersecurity (CC) Exam Outline (2026)",
+      "authority": "official-scope",
+      "locator": "Domain 1, Objective 1.1: Understand cybersecurity concepts (CIA Triad)",
+      "repositoryPath": "docs/plans/isc2-cc-2026/domain-1-learning-slides-curriculum-plan.md"
+    },
+    {
+      "id": "nist-fips-199",
+      "title": "NIST FIPS PUB 199: Standards for Security Categorization of Federal Information and Information Systems",
+      "authority": "technical-primary",
+      "locator": "Section 3: Security Objectives (Confidentiality, Integrity, Availability)",
+      "url": "https://csrc.nist.gov/publications/detail/fips/199/final"
+    },
+    {
+      "id": "nist-sp-800-61r2",
+      "title": "NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide",
+      "authority": "technical-primary",
+      "locator": "Section 2: Incident Categorization & Impact Assessment",
+      "url": "https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final"
+    },
+    {
+      "id": "project-d1-curriculum-plan",
+      "title": "SEC CERT TEST Domain 1 Learning Slides Curriculum Plan & Discrepancy Resolutions",
+      "authority": "editorial",
+      "locator": "Section 4 & Section 5: Pilot Storyboard and Academic Discrepancies",
+      "repositoryPath": "docs/plans/isc2-cc-2026/domain-1-learning-slides-curriculum-plan.md"
+    },
+    {
+      "id": "nist-fips-180-4",
+      "title": "NIST FIPS 180-4: Secure Hash Standard",
+      "authority": "technical-primary",
+      "locator": "Introductory explanation: message digests and computational resistance, not absolute uniqueness",
+      "url": "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf"
+    },
+    {
+      "id": "nist-fips-186-5",
+      "title": "NIST FIPS 186-5: Digital Signature Standard",
+      "authority": "technical-primary",
+      "locator": "Introduction and Sections 3, 6: signatures, assurances and key protection",
+      "url": "https://csrc.nist.gov/pubs/fips/186-5/final"
+    },
+    {
+      "id": "nist-sp-800-57p1r5",
+      "title": "NIST SP 800-57 Part 1 Rev.5: Recommendation for Key Management",
+      "authority": "technical-primary",
+      "locator": "Sections 4.2.4, 5.2: non-repudiation and protection of keying material",
+      "url": "https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final"
+    },
+    {
+      "id": "nist-sp-800-38d",
+      "title": "NIST SP 800-38D: Galois/Counter Mode (GCM) and GMAC",
+      "authority": "technical-primary",
+      "locator": "Abstract and Section 5: authenticated encryption",
+      "url": "https://csrc.nist.gov/pubs/sp/800/38/d/final"
+    }
+  ],
+  "assets": [],
+  "slides": [
+    {
+      "id": "slide-01-orientation",
+      "rendererId": "text",
+      "layoutId": "hero-intro",
+      "title": {
+        "en": "Why Do We Secure Information?",
+        "th": "ทำไมเราจึงต้องรักษาความมั่นคงปลอดภัยของข้อมูล?"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      },
+      "referenceIds": [
+        "isc2-cc-outline-2026",
+        "project-d1-curriculum-plan"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Information security is not about merely installing firewalls or blocking users from doing their jobs. Its true purpose is to protect an organization's critical assets so the business can achieve its mission safely and sustainably.",
+            "th": "ความมั่นคงปลอดภัยสารสนเทศไม่ใช่เพียงการติดตั้งไฟร์วอลล์หรือการขัดขวางการทำงานของผู้ใช้ เป้าหมายที่แท้จริงคือการปกป้องทรัพย์สินสำคัญขององค์กร เพื่อให้ธุรกิจสามารถดำเนินงานได้อย่างปลอดภัยและบรรลุพันธกิจอย่างยั่งยืน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Confidentiality (การรักษาความลับ): Ensuring sensitive data is protected against unauthorized viewing or disclosure.",
+              "th": "Confidentiality (การรักษาความลับ): ปกป้องข้อมูลสำคัญไม่ให้ถูกเปิดเผยหรือถูกมองเห็นโดยผู้ไม่มีสิทธิ์"
+            },
+            {
+              "en": "Integrity (ความถูกต้องครบถ้วน): Protecting data and systems against unauthorized modification, tampering, or destruction.",
+              "th": "Integrity (ความถูกต้องครบถ้วน): ปกป้องข้อมูลและระบบจากการถูกแก้ไข ดัดแปลง หรือทำลายโดยไม่ได้รับอนุญาต"
+            },
+            {
+              "en": "Availability (ความพร้อมใช้งาน): Ensuring timely, dependable access to critical systems and data for authorized users when needed.",
+              "th": "Availability (ความพร้อมใช้งาน): รับรองว่าระบบและข้อมูลพร้อมให้ผู้มีสิทธิ์เข้าถึงและใช้งานได้ในเวลาที่จำเป็น"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Core Principle: Every security control you study in the ISC2 curriculum exists to uphold one or more of these three fundamental pillars.",
+            "th": "หลักการสำคัญ: มาตรการควบคุมความปลอดภัยทุกประการในหลักสูตร ISC2 มีขึ้นเพื่อสนับสนุนเสาหลัก 3 ประการนี้"
+          }
+        }
+      ]
+    },
+    {
+      "id": "slide-02-cia-overview",
+      "rendererId": "pillars",
+      "layoutId": "pillars",
+      "title": {
+        "en": "The Three Pillars of Information Security",
+        "th": "3 เสาหลักแห่งความมั่นคงปลอดภัยสารสนเทศ"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      },
+      "referenceIds": [
+        "isc2-cc-outline-2026",
+        "nist-fips-199",
+        "project-d1-curriculum-plan"
+      ],
+      "visual": {
+        "pillars": [
+          {
+            "key": "confidentiality",
+            "tone": "blue",
+            "symbol": "C",
+            "term": {
+              "en": "Confidentiality",
+              "th": "การรักษาความลับ"
+            },
+            "question": {
+              "en": "Who can see the sensitive data?",
+              "th": "ใครมีสิทธิ์มองเห็นข้อมูลลับบ้าง?"
+            },
+            "summary": {
+              "en": "Prevent unauthorized disclosure through encryption, ACLs, and MFA.",
+              "th": "ป้องกันการเปิดเผยข้อมูลโดยมิชอบ ด้วยการเข้ารหัส ACLs และ MFA"
+            }
+          },
+          {
+            "key": "integrity",
+            "tone": "green",
+            "symbol": "I",
+            "term": {
+              "en": "Integrity",
+              "th": "ความถูกต้องครบถ้วน"
+            },
+            "question": {
+              "en": "Can we trust and rely on the data?",
+              "th": "ข้อมูลถูกต้องแม่นยำและเชื่อถือได้หรือไม่?"
+            },
+            "summary": {
+              "en": "Protect data from unauthorized modification, tampering, or deletion.",
+              "th": "ป้องกันการแก้ไข ดัดแปลง หรือทำลายข้อมูล ด้วยแฮชและลายมือชื่อดิจิทัล"
+            }
+          },
+          {
+            "key": "availability",
+            "tone": "amber",
+            "symbol": "A",
+            "term": {
+              "en": "Availability",
+              "th": "ความพร้อมใช้งาน"
+            },
+            "question": {
+              "en": "Can authorized users reach systems?",
+              "th": "ผู้มีสิทธิ์เข้าถึงระบบได้เมื่อจำเป็นหรือไม่?"
+            },
+            "summary": {
+              "en": "Ensure timely, dependable access via redundancy, backups, and DR plans.",
+              "th": "รับรองการเข้าถึงอย่างต่อเนื่อง ด้วยระบบสำรอง แบ็กอัป และแผนกู้คืน"
+            }
+          }
+        ],
+        "takeaway": {
+          "en": "Security controls work together: strong encryption cannot help if systems are down or records are tampered with.",
+          "th": "มาตรการความปลอดภัยต้องทำงานร่วมกัน การเข้ารหัสที่ดีจะไร้ผลหากระบบล่ม หรือข้อมูลถูกแก้ไขทำลาย"
+        }
+      }
+    },
+    {
+      "id": "slide-03-confidentiality",
+      "rendererId": "text",
+      "layoutId": "concept-split",
+      "title": {
+        "en": "Confidentiality: Protecting Against Unauthorized Disclosure",
+        "th": "Confidentiality: การป้องกันการเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      },
+      "referenceIds": [
+        "isc2-cc-outline-2026",
+        "nist-fips-199",
+        "project-d1-curriculum-plan"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Definition: Confidentiality ensures that sensitive information is accessible ONLY to authorized individuals, entities, or processes. A breach occurs whenever unauthorized viewing takes place—even if no data is altered, deleted, or harmed.",
+            "th": "คำจำกัดความ: Confidentiality คือการรับรองว่าข้อมูลสำคัญจะถูกเข้าถึงได้ เฉพาะผู้ที่ได้รับอนุญาตเท่านั้น การละเมิดความลับเกิดขึ้นทันทีที่มีการเปิดอ่านข้อมูลโดยไม่ได้รับอนุญาต แม้ข้อมูลนั้นจะไม่ถูกแก้ไขหรือลบทำลายเลยก็ตาม"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Cryptographic Encryption: AES-256 for data at rest; TLS 1.3 for data in transit across networks.",
+              "th": "การเข้ารหัสข้อมูล: เช่น AES-256 สำหรับข้อมูลที่จัดเก็บ และ TLS 1.3 สำหรับข้อมูลที่ส่งผ่านเครือข่าย"
+            },
+            {
+              "en": "Granular Access Controls: Enforce the Principle of Least Privilege and Role-Based Access Control (RBAC).",
+              "th": "การควบคุมสิทธิ์อย่างละเอียด: บังคับใช้หลักการให้สิทธิ์เท่าที่จำเป็น (Least Privilege) และตามบทบาทหน้าที่ (RBAC)"
+            },
+            {
+              "en": "Administrative Policies: Clear Data Classification schemes, clean desk policies, and Non-Disclosure Agreements (NDAs).",
+              "th": "นโยบายการบริหาร: การจัดชั้นความลับของข้อมูล นโยบายจัดโต๊ะทำงานให้ปลอดเอกสาร และสัญญาการไม่เปิดเผยความลับ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Enterprise Scenario: An unauthorized intern opens an unencrypted network spreadsheet containing executive compensation details and views everyone's salaries. Because restricted data was viewed by someone without need-to-know, Confidentiality was violated—even though no payroll numbers were modified.",
+            "th": "สถานการณ์ตัวอย่าง: พนักงานฝึกงานเปิดอ่านไฟล์เงินเดือนของผู้บริหารในเครือข่ายที่ไม่ได้เข้ารหัสไว้ แม้ไม่มีการแก้ตัวเลขใด ๆ เลย แต่ Confidentiality ถูกละเมิดอย่างร้ายแรง เพราะผู้ไม่มีสิทธิ์ได้มองเห็นข้อมูลลับขององค์กร"
+          }
+        }
+      ]
+    },
+    {
+      "id": "slide-04-integrity",
+      "rendererId": "text",
+      "layoutId": "concept-split",
+      "title": {
+        "en": "Integrity: Protecting Against Unauthorized Modification",
+        "th": "Integrity: การป้องกันการแก้ไขดัดแปลงข้อมูลโดยไม่ได้รับอนุญาต"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      },
+      "referenceIds": [
+        "isc2-cc-outline-2026",
+        "nist-fips-199",
+        "project-d1-curriculum-plan",
+        "nist-fips-180-4",
+        "nist-fips-186-5",
+        "nist-sp-800-57p1r5"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Definition: Integrity ensures that information and systems remain accurate, complete, and protected against unauthorized modification, insertion, or deletion throughout their entire lifecycle.",
+            "th": "คำจำกัดความ: Integrity คือการรับรองว่าข้อมูลและระบบมีความถูกต้อง ครบถ้วน สมบูรณ์ และปลอดภัยจากการถูกแก้ไข ดัดแปลง แทรกแซง หรือลบทำลายโดยไม่ได้รับอนุญาตตลอดวงจรชีวิตของข้อมูล"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Unauthorized alteration directly harms Integrity. The same event can also disrupt Availability or accompany unauthorized disclosure; identify the specific act or consequence described, rather than assuming only one CIA goal can be harmed.",
+            "th": "การแก้ไขข้อมูลโดยไม่ได้รับอนุญาตกระทบ Integrity โดยตรง เหตุเดียวกันอาจกระทบ Availability หรือเกิดร่วมกับการเปิดเผยข้อมูลโดยไม่มีสิทธิ์ได้ ให้ดูการกระทำหรือผลกระทบที่โจทย์ระบุ ไม่ใช่สรุปว่าเหตุหนึ่งกระทบ CIA ได้เพียงด้านเดียว"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Cryptographic hashes (e.g., SHA-256) produce a fixed-length digest. Compare it with a protected, trusted reference to help detect changes; a matching digest is not absolute proof that data is unchanged. If an attacker replaces both the file and its digest, comparing them may miss the substitution. A hash alone does not establish authenticity, authorship or non-repudiation. Evidence reliability also depends on provenance, custody and trustworthy verification procedures.",
+              "th": "Cryptographic Hash (เช่น SHA-256) สร้างค่า Hash ที่มีความยาวคงที่ ใช้เทียบกับค่าอ้างอิงที่เชื่อถือได้และได้รับการปกป้องเพื่อช่วยตรวจพบการเปลี่ยนแปลง ค่า Hash ที่ตรงกันไม่ใช่ข้อพิสูจน์เด็ดขาดว่าข้อมูลไม่เปลี่ยน ถ้าผู้โจมตีเปลี่ยนทั้งไฟล์และค่า Hash การเทียบคู่นั้นอาจไม่พบการสับเปลี่ยน Hash เพียงอย่างเดียวไม่ยืนยัน Authenticity, Authorship หรือ Non-repudiation หลักฐานจะน่าเชื่อถือแค่ไหนยังขึ้นกับที่มา การเก็บรักษาและส่งต่อหลักฐาน และขั้นตอนตรวจสอบที่เชื่อถือได้"
+            },
+            {
+              "en": "Digital signatures support signed-data Integrity and origin authentication, and can support Non-repudiation. Their evidentiary strength depends on identity-to-key binding, private-key protection, certificate trust when certificates are used, and supporting procedures. Compromised or poorly controlled signing keys weaken attribution. A valid signature alone does not establish the human actor, intent or automatic legal liability.",
+              "th": "Digital signature ช่วยตรวจสอบ Integrity และแหล่งที่มาของข้อมูลที่ลงนาม และสนับสนุน Non-repudiation ได้ ความน่าเชื่อถือขึ้นกับการผูกตัวตนกับ Key การปกป้อง Private key ความน่าเชื่อถือของ Certificate เมื่อใช้งาน และขั้นตอนประกอบ หาก Signing key ถูกยึดหรือควบคุมไม่ดี ข้อสรุปว่าใครลงนามก็อ่อนลง Signature ที่ตรวจผ่านเพียงอย่างเดียวไม่ได้ชี้ขาดบุคคลผู้กระทำ เจตนา หรือความรับผิดทางกฎหมายโดยอัตโนมัติ"
+            },
+            {
+              "en": "File Integrity Monitoring (FIM): Continuously track critical operating system files and alert administrators to unauthorized changes.",
+              "th": "ระบบตรวจสอบความสมบูรณ์ของไฟล์ (FIM): ตรวจติดตามไฟล์ระบบสำคัญและแจ้งเตือนเมื่อมีการเปลี่ยนแปลงที่ไม่ได้รับอนุญาต"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Enterprise Scenario: An attacker intercepts an electronic wire transfer instruction and alters the beneficiary bank routing number. The bank executes the payment on schedule, but funds transfer into the criminal's account. The accuracy and trust in transaction data failed completely—a direct Integrity compromise.",
+            "th": "สถานการณ์ตัวอย่าง: ผู้โจมตีดักจับคำสั่งโอนเงินทางอิเล็กทรอนิกส์แล้วแก้ไขหมายเลขบัญชีธนาคารปลายทาง ธนาคารประมวลผลคำสั่งตามเวลาปกติ แต่เงินถูกโอนเข้าบัญชีคนร้าย ความถูกต้องและความน่าเชื่อถือของคำสั่งโอนเงินถูกทำลายลงอย่างสิ้นเชิง ซึ่งเป็นความเสียหายต่อ Integrity โดยตรง"
+          }
+        }
+      ]
+    },
+    {
+      "id": "slide-05-availability",
+      "rendererId": "text",
+      "layoutId": "concept-split",
+      "title": {
+        "en": "Availability: Ensuring Dependable, Timely Access",
+        "th": "Availability: การรับรองความพร้อมใช้งานอย่างต่อเนื่องและทันท่วงที"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      },
+      "referenceIds": [
+        "isc2-cc-outline-2026",
+        "nist-fips-199",
+        "project-d1-curriculum-plan"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Definition: Availability ensures that authorized users have prompt, dependable access to vital information, business applications, and infrastructure whenever required for operations. Data that is perfectly encrypted but inaccessible when needed provides zero business value.",
+            "th": "คำจำกัดความ: Availability คือการรับรองว่าผู้ใช้ที่ได้รับอนุญาตจะสามารถเข้าถึงข้อมูลสำคัญ แอปพลิเคชัน และโครงสร้างพื้นฐานได้อย่างรวดเร็วและต่อเนื่องเมื่อจำเป็นต่อการทำงาน ข้อมูลที่ถูกเข้ารหัสไว้อย่างสมบูรณ์แบบแต่ไม่สามารถเปิดใช้งานได้ ย่อมไม่มีมูลค่าต่อธุรกิจเลย"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Fault Tolerance & Redundancy: Dual power supplies, redundant network interfaces, RAID storage arrays, and load-balanced web servers.",
+              "th": "การทนต่อความเสียหายและระบบสำรอง: แหล่งจ่ายไฟคู่ การเชื่อมต่อเครือข่ายสำรอง ฮาร์ดดิสก์แบบ RAID และเซิร์ฟเวอร์แบบกระจายโหลด"
+            },
+            {
+              "en": "Environmental Resilience: Uninterruptible Power Supplies (UPS), on-site backup generators, and fire suppression systems in data centers.",
+              "th": "ความยืดหยุ่นทางสภาพแวดล้อม: เครื่องสำรองไฟฉุกเฉิน (UPS) เครื่องกำเนิดไฟฟ้าสำรอง และระบบระงับอัคคีภัยในศูนย์ข้อมูล"
+            },
+            {
+              "en": "Disaster Recovery & Defense: Tested off-site backups, alternate data centers (hot/warm sites), and DDoS traffic mitigation scrubbing centers.",
+              "th": "การกู้คืนระบบและการป้องกัน: การสำรองข้อมูลนอกสถานที่ ศูนย์สำรองข้อมูล และระบบกรองทราฟฟิกป้องกันการโจมตีแบบ DDoS"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Enterprise Scenario: A massive Distributed Denial of Service (DDoS) attack floods a hospital's clinical portal with millions of junk requests per second, taking the network offline. Emergency room doctors cannot access patient allergy records before administering medications. No data was disclosed or altered, but Availability failed with life-critical danger.",
+            "th": "สถานการณ์ตัวอย่าง: การโจมตีแบบ DDoS ส่งทราฟฟิกขยะหลายล้านคำขอต่อวินาทีเข้าถล่มพอร์ทัลของโรงพยาบาลจนเครือข่ายล่ม แพทย์ห้องฉุกเฉินไม่สามารถเปิดดูประวัติการแพ้ยาของผู้ป่วยก่อนให้ยาได้ ข้อมูลไม่ได้รั่วไหลหรือถูกดัดแปลง แต่ Availability ล้มเหลวและก่อให้เกิดอันตรายร้ายแรงต่อชีวิต"
+          }
+        }
+      ]
+    },
+    {
+      "id": "slide-06-compound-impact",
+      "rendererId": "incident-flow",
+      "layoutId": "incident-flow",
+      "title": {
+        "en": "Real-World Complexity: Compound Impacts Across the Triad",
+        "th": "โลกความเป็นจริง: เหตุการณ์เดียวที่ส่งผลกระทบต่อเนื่องหลายด้าน"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      },
+      "referenceIds": [
+        "isc2-cc-outline-2026",
+        "nist-sp-800-61r2",
+        "project-d1-curriculum-plan"
+      ],
+      "visual": {
+        "lead": {
+          "en": "Attacks rarely hit one pillar in isolation. A complex intrusion can cascade across all three security goals.",
+          "th": "การโจมตีจริงมักไม่กระทบเพียงเสาหลักเดียว เหตุบุกรุกที่ซับซ้อนมักส่งผลกระทบต่อเนื่องครบทั้งสามด้าน"
+        },
+        "caseTitle": {
+          "en": "Hospital Ransomware Incident: Cascading Impact Sequence",
+          "th": "กรณีศึกษามัลแวร์เรียกค่าไถ่ในโรงพยาบาล: ลำดับผลกระทบลูกโซ่"
+        },
+        "note": {
+          "en": "Illustrative sequence only; attack progression varies by threat actor.",
+          "th": "ลำดับตัวอย่างเพื่อการเรียนรู้ การโจมตีจริงอาจมีลำดับแตกต่างกัน"
+        },
+        "stages": [
+          {
+            "key": "exfiltration",
+            "tone": "blue",
+            "symbol": "1",
+            "label": {
+              "en": "Exfiltration",
+              "th": "ขโมยข้อมูล"
+            },
+            "event": {
+              "en": "Attackers covertly copy patient health records to external servers.",
+              "th": "ผู้โจมตีแอบคัดลอกเวชระเบียนผู้ป่วยออกไปภายนอกองค์กร"
+            },
+            "pillar": {
+              "en": "Confidentiality",
+              "th": "การรักษาความลับ"
+            },
+            "impact": {
+              "en": "Direct breach of secrecy and private patient confidentiality.",
+              "th": "ละเมิดการรักษาความลับโดยตรง ข้อมูลส่วนบุคคลถูกเปิดเผย"
+            }
+          },
+          {
+            "key": "lockout",
+            "tone": "amber",
+            "symbol": "2",
+            "label": {
+              "en": "Lockout",
+              "th": "ล็อกระบบ"
+            },
+            "event": {
+              "en": "Ransomware encrypts databases, locking doctors out of records.",
+              "th": "มัลแวร์เข้ารหัสฐานข้อมูล ทำให้แพทย์เปิดดูประวัติไม่ได้"
+            },
+            "pillar": {
+              "en": "Availability",
+              "th": "ความพร้อมใช้งาน"
+            },
+            "impact": {
+              "en": "Critical care is blocked because staff cannot access systems.",
+              "th": "กระทบความพร้อมใช้งาน เจ้าหน้าที่ไม่สามารถเข้าใช้งานระบบได้"
+            }
+          },
+          {
+            "key": "corruption",
+            "tone": "green",
+            "symbol": "3",
+            "label": {
+              "en": "Corruption",
+              "th": "ข้อมูลเสียหาย"
+            },
+            "event": {
+              "en": "Partial decryption corrupts medical charts and dosage entries.",
+              "th": "การถอดรหัสที่ไม่สมบูรณ์ทำลายข้อมูลยาและการรักษา"
+            },
+            "pillar": {
+              "en": "Integrity",
+              "th": "ความถูกต้องครบถ้วน"
+            },
+            "impact": {
+              "en": "Medical data is inaccurate and cannot be trusted for dosing.",
+              "th": "ทำลายความถูกต้องครบถ้วน ข้อมูลคลาดเคลื่อนจนใช้รักษาไม่ได้"
+            }
+          }
+        ],
+        "takeaway": {
+          "en": "Exam Insight: Identify which specific phase or harm the question asks about before picking the primary CIA pillar.",
+          "th": "เทคนิคข้อสอบ: พิจารณาให้ชัดเจนว่าโจทย์กำลังถามถึงความเสียหายในขั้นตอนใด หรือมุ่งเน้นผลกระทบเรื่องใด"
+        }
+      }
+    },
+    {
+      "id": "slide-07-scenario-reflection",
+      "rendererId": "scenario-decision",
+      "layoutId": "scenario-decision",
+      "title": {
+        "en": "Scenario Reflection: Which Principle Is Violated?",
+        "th": "ทดสอบความเข้าใจ: หลักการใดถูกละเมิดโดยตรง?"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      },
+      "referenceIds": [
+        "isc2-cc-outline-2026",
+        "nist-fips-199",
+        "project-d1-curriculum-plan"
+      ],
+      "visual": {
+        "scenario": {
+          "en": "A disgruntled database administrator modifies the inventory ledger, secretly marking 50 high-end laptops as 'defective and written off' so an accomplice can steal them from the warehouse. The server suffered zero downtime, and no private data was disclosed outside the company.",
+          "th": "ผู้ดูแลระบบฐานข้อมูลแอบแก้ไขตารางสต็อกสินค้า โดยเปลี่ยนสถานะแล็ปท็อป 50 เครื่องเป็น 'ชำรุดและตัดจำหน่าย' เพื่อให้ผู้สมรู้ร่วมคิดขโมยออกจากคลัง เซิร์ฟเวอร์ยังทำงานปกติโดยไม่หยุดชะงัก และไม่มีข้อมูลความลับรั่วไหลออกสู่ภายนอก"
+        },
+        "prompt": {
+          "en": "Which CIA Triad security goal has been directly violated by the administrator's malicious action?",
+          "th": "การกระทำของผู้ดูแลระบบดังกล่าว ละเมิดเป้าหมายความปลอดภัยข้อใดใน CIA Triad โดยตรงที่สุด?"
+        },
+        "options": [
+          {
+            "key": "confidentiality",
+            "tone": "blue",
+            "symbol": "C",
+            "correct": false,
+            "label": {
+              "en": "Confidentiality",
+              "th": "การรักษาความลับ"
+            },
+            "verdict": {
+              "en": "Not Primary Harm",
+              "th": "ไม่ใช่การละเมิดหลัก"
+            },
+            "reason": {
+              "en": "The facts establish falsification, not unauthorized disclosure. Insiders can also breach confidentiality.",
+              "th": "ข้อเท็จจริงนี้ยืนยันการปลอมข้อมูล ไม่ได้ระบุการเปิดเผยโดยไม่มีสิทธิ์ คนภายในก็ละเมิด Confidentiality ได้"
+            }
+          },
+          {
+            "key": "integrity",
+            "tone": "green",
+            "symbol": "I",
+            "correct": true,
+            "label": {
+              "en": "Integrity",
+              "th": "ความถูกต้องครบถ้วน"
+            },
+            "verdict": {
+              "en": "Directly Violated",
+              "th": "ถูกละเมิดโดยตรง"
+            },
+            "reason": {
+              "en": "The inventory ledger was falsified without authorization, making business records inaccurate and untrusted.",
+              "th": "ข้อมูลสต็อกสินค้าถูกดัดแปลงแก้ไขโดยมิชอบ ทำให้ข้อมูลในระบบคลาดเคลื่อนและไม่สามารถเชื่อถือได้"
+            }
+          },
+          {
+            "key": "availability",
+            "tone": "amber",
+            "symbol": "A",
+            "correct": false,
+            "label": {
+              "en": "Availability",
+              "th": "ความพร้อมใช้งาน"
+            },
+            "verdict": {
+              "en": "Unimpaired",
+              "th": "ระบบไม่ได้รับผลกระทบ"
+            },
+            "reason": {
+              "en": "The database remained fully operational and accessible to authorized staff throughout the entire incident.",
+              "th": "เซิร์ฟเวอร์ฐานข้อมูลยังคงเปิดทำงานและตอบสนองการใช้งานของผู้มีสิทธิ์ได้ตามปกติตลอดเวลา"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "slide-08-takeaways",
+      "rendererId": "comparison",
+      "layoutId": "summary-grid",
+      "title": {
+        "en": "Key Takeaways & Exam Quick-Reference",
+        "th": "สรุปประเด็นสำคัญและตารางช่วยจำสำหรับเตรียมสอบ"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      },
+      "referenceIds": [
+        "isc2-cc-outline-2026",
+        "nist-fips-199",
+        "nist-sp-800-61r2",
+        "project-d1-curriculum-plan",
+        "nist-sp-800-38d"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The CIA Triad is the touchstone for cybersecurity risk analysis and control design. Master these diagnostic indicators, primary safeguards, and common exam traps.",
+            "th": "สามเหลี่ยม CIA คือรากฐานสำคัญที่สุดสำหรับการวิเคราะห์ความเสี่ยงและการออกแบบมาตรการความปลอดภัย จดจำคำสำคัญในข้อสอบ มาตรการหลัก และกับดักที่พบบ่อยให้แม่นยำ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "CIA Triad Exam Synthesis Matrix",
+            "th": "ตารางสังเคราะห์ CIA Triad สำหรับเตรียมสอบ"
+          },
+          "columns": [
+            {
+              "en": "Security Goal",
+              "th": "เป้าหมายความปลอดภัย"
+            },
+            {
+              "en": "Exam Question Keywords",
+              "th": "คำสำคัญในโจทย์ข้อสอบ"
+            },
+            {
+              "en": "Primary Safeguards",
+              "th": "มาตรการป้องกันหลัก"
+            },
+            {
+              "en": "Common Exam Trap to Avoid",
+              "th": "กับดักข้อสอบที่ต้องระวัง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Confidentiality",
+                "th": "Confidentiality (การรักษาความลับ)"
+              },
+              {
+                "en": "Reading, viewing, snooping, disclosing, exfiltrating, intercepting.",
+                "th": "แอบอ่าน, แอบดู, เปิดเผย, ขโมยข้อมูล, ดักจับข้อมูล"
+              },
+              {
+                "en": "Encryption (AES, TLS), ACLs, Need-to-know, Data Classification.",
+                "th": "การเข้ารหัสข้อมูล, การควบคุมสิทธิ์ (ACLs), การจัดชั้นความลับ"
+              },
+              {
+                "en": "Encryption alone does not stop deletion; authenticated encryption can also detect unauthorized changes.",
+                "th": "Encryption เพียงอย่างเดียวไม่หยุดการลบข้อมูล ส่วน Authenticated encryption ช่วยตรวจพบการแก้ไขโดยไม่ได้รับอนุญาตได้ด้วย"
+              }
+            ],
+            [
+              {
+                "en": "Integrity",
+                "th": "Integrity (ความถูกต้องครบถ้วน)"
+              },
+              {
+                "en": "Modifying, altering, tampering, forging, deleting, corrupting.",
+                "th": "แก้ไข, ดัดแปลง, ปลอมแปลง, ลบทำลาย, ทำให้ข้อมูลคลาดเคลื่อน"
+              },
+              {
+                "en": "Cryptographic Hashes (SHA-256), Digital Signatures, FIM, Change Control.",
+                "th": "ฟังก์ชันแฮช, ลายมือชื่อดิจิทัล, การตรวจสอบความสมบูรณ์ไฟล์ (FIM)"
+              },
+              {
+                "en": "Alteration directly harms Integrity; assess any additional CIA effects from the stated facts.",
+                "th": "การดัดแปลงกระทบ Integrity โดยตรง ส่วนผลต่อ CIA ด้านอื่นต้องพิจารณาจากข้อเท็จจริงที่ระบุ"
+              }
+            ],
+            [
+              {
+                "en": "Availability",
+                "th": "Availability (ความพร้อมใช้งาน)"
+              },
+              {
+                "en": "Downtime, outage, inaccessible, denial of service, blackout, crash.",
+                "th": "ระบบล่ม, เข้าถึงไม่ได้, ขัดข้อง, ไฟดับ, หยุดทำงาน"
+              },
+              {
+                "en": "Redundancy, Clustering, UPS generators, Backups, DR sites, DDoS defense.",
+                "th": "ระบบสำรอง, คลัสเตอร์, เครื่องสำรองไฟ, แบ็กอัป, แผนกู้ภัยพิบัติ"
+              },
+              {
+                "en": "Trap: Backups restore availability, but backups alone do not keep data secret.",
+                "th": "กับดัก: การสำรองข้อมูลช่วยกู้ความพร้อมใช้งาน แต่ไม่ได้ช่วยรักษาความลับ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Official Scope: ISC2 Certified in Cybersecurity (CC) Exam Outline (2026), Domain 1, Objective 1.1.",
+              "th": "ขอบเขตทางการ: ข้อกำหนดการสอบ ISC2 Certified in Cybersecurity (CC) ปี 2026, โดเมน 1, หัวข้อย่อย 1.1"
+            },
+            {
+              "en": "Authoritative Reference: NIST FIPS PUB 199 (Standards for Security Categorization), Section 3.",
+              "th": "มาตรฐานอ้างอิงหลัก: NIST FIPS PUB 199 (มาตรฐานการจัดหมวดหมู่ความมั่นคงปลอดภัย), หัวข้อที่ 3"
+            },
+            {
+              "en": "Authoritative Reference: NIST SP 800-61 Rev. 2 (Computer Security Incident Handling Guide), Section 2.",
+              "th": "คู่มือปฏิบัติการอ้างอิง: NIST SP 800-61 Rev. 2 (แนวทางการรับมือเหตุการณ์ความมั่นคงปลอดภัยคอมพิวเตอร์), หัวข้อที่ 2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
