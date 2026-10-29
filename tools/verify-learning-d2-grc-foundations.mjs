@@ -194,11 +194,11 @@ test('4. Six distinct custom visual compositions render in TH/EN, use scoped CSS
 
   const lesson = readJson(LESSON_PATH);
   const expectedCompositions = [
-    'grc-roof-cycle',
-    'purpose-clusters',
-    'benefits-vs-failures',
-    'framework-selector',
-    'dual-distinctions',
+    'business-map',
+    'evidence-reuse',
+    'breakdown-remedy',
+    'framework-match',
+    'direction-assurance',
     'applied-scenario'
   ];
 
@@ -231,19 +231,31 @@ test('4. Six distinct custom visual compositions render in TH/EN, use scoped CSS
     assert.deepEqual(seen, expectedCompositions, 'All 6 slides must use distinct visual compositions');
   }
 
-  // Verify Slide 2 renders all 7 purposes and Slide 3 renders all 7 benefits + 4 failures on the visual canvas
+  // The approved instructional redesign uses a concrete coordination example and
+  // four breakdown/remedy rows. Full source-list coverage belongs in Reading/Info.
   {
     const doc = new TestDocument();
     const host = doc.createElement('div');
     const h2 = mod.renderGrcFoundationsPresentation(host, { lesson, slide: lesson.slides[1], language: 'en', interactionState: {} });
-    assert.equal(host.querySelectorAll('[data-grc-purpose-item]').length, 7, 'Slide 2 visual must render all 7 purposes');
+    assert.match(nodeText(host), /access.review/i, 'Slide 2 must teach coordination through the access-review example');
+    assert.doesNotMatch(nodeText(host), /3 lenses|#\d/, 'The rejected artificial taxonomy must not be presented');
     h2.destroy();
 
     host.replaceChildren();
     const h3 = mod.renderGrcFoundationsPresentation(host, { lesson, slide: lesson.slides[2], language: 'en', interactionState: {} });
-    assert.equal(host.querySelectorAll('[data-grc-benefit-item]').length, 7, 'Slide 3 visual must render all 7 benefits');
-    assert.equal(host.querySelectorAll('[data-grc-failure-item]').length, 4, 'Slide 3 visual must render all 4 failure modes');
+    assert.equal(host.querySelectorAll('[data-grc-breakdown]').length, 4, 'Slide 3 must compare four concrete breakdowns and remedies');
     h3.destroy();
+    assert.equal(lesson.slides[1].blocks[1].rows.length, 7);
+    assert.equal(lesson.slides[2].blocks[1].rows.length, 11);
+    for (const language of ['th', 'en']) {
+      for (const slide of [lesson.slides[1], lesson.slides[2]]) {
+        const reading = renderSlide(host, { lesson, slide, language, mode: 'reading' });
+        for (const row of slide.blocks[1].rows) {
+          for (const pair of row) assert.ok(nodeText(host).includes(pair[language]), 'Every original purpose, benefit/failure and explanation remains readable');
+        }
+        reading.destroy();
+      }
+    }
   }
 
   // Verify fail-safe guard when slide block structure is altered

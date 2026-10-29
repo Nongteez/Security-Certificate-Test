@@ -160,7 +160,7 @@ test('2. Mandatory source accuracy: all 6 GRC tool capabilities (S08), all 11 Ri
     assert.match(s5Text, new RegExp(term, 'i'), `Slide 5 must preserve S10 worked example value: ${term}`);
   }
 
-  // Slide 6: Inherent Risk -> Controls -> Residual Risk (> 0 after mitigation vs avoidance D2-Q06) & Risk Owner accountability
+  // Slide 6: Explicit inherent baseline -> verified controls -> reassessed remaining risk; qualified zero-risk warning and owner accountability
   const s6Text = JSON.stringify(s6);
   for (const term of ['Inherent', 'Residual', 'zero', 'Avoid', 'Risk Owner', 'accountab']) {
     assert.match(s6Text, new RegExp(term, 'i'), `Slide 6 must explain ${term}`);
@@ -230,12 +230,12 @@ test('4. Seven purposeful custom visual compositions render via renderSlide in T
 
   const lesson = readJson(PUBLISHED_PATH);
   const expectedCompositions = [
-    'platform-vs-spreadsheets',
-    'capability-workflow-hub',
-    'register-schema-blueprint',
-    'scoring-and-responses',
-    'ransomware-register-record',
-    'residual-ownership-pipeline',
+    'shared-work-record',
+    'connected-capabilities',
+    'assessment-to-register',
+    'scoring-decision',
+    'ransomware-control-effects',
+    'reassess-remaining-risk',
     'register-triage-scenario'
   ];
 
@@ -271,7 +271,7 @@ test('4. Seven purposeful custom visual compositions render via renderSlide in T
     assert.deepEqual(seen, expectedCompositions, 'All 7 slides must render distinct visual compositions');
   }
 
-  // Verify Slide 2 renders all 6 capabilities, Slide 3 renders all 11 fields, and Slide 5 renders all 6 worked fields + 4 controls
+  // Teach a readable record on the canvas; retain the complete source dictionary in Reading.
   {
     const doc = new TestDocument();
     const host = doc.createElement('article');
@@ -282,13 +282,23 @@ test('4. Seven purposeful custom visual compositions render via renderSlide in T
     h2.destroy();
 
     const h3 = renderSlide(host, { lesson, slide: lesson.slides[2], language: 'en', mode: 'presentation', interactionState: {} });
-    assert.equal(host.querySelectorAll('[data-grt-field]').length, 11, 'Slide 3 visual must render all 11 S09 Risk Register fields');
+    assert.ok(host.querySelector('[data-grt-register-example]'), 'Slide 3 must show a readable risk record');
+    assert.match(nodeText(host), /Risk Assessment/);
+    assert.match(nodeText(host), /IT Manager/);
+    assert.equal(host.querySelectorAll('[data-grt-field]').length, 0, 'Do not restore eleven equal mini-fields');
     h3.destroy();
 
     const h5 = renderSlide(host, { lesson, slide: lesson.slides[4], language: 'en', mode: 'presentation', interactionState: {} });
-    assert.equal(host.querySelectorAll('[data-grt-worked-field]').length, 6, 'Slide 5 visual must render all 6 S10 worked fields');
+    for (const term of ['Ransomware', 'High / High', 'IT Manager', 'Mitigation']) assert.ok(nodeText(host).includes(term), `Worked source record must retain ${term}`);
     assert.equal(host.querySelectorAll('[data-grt-control-item]').length, 4, 'Slide 5 visual must render all 4 S10 controls');
     h5.destroy();
+    for (const language of ['en', 'th']) {
+      for (const i of [1, 2, 4]) {
+        const reading = renderSlide(host, {lesson, slide: lesson.slides[i], language, mode: 'reading'});
+        for (const row of lesson.slides[i].blocks[1].rows) for (const pair of row) assert.ok(nodeText(host).includes(pair[language]), 'Every source capability, field and worked value remains readable');
+        reading.destroy();
+      }
+    }
   }
 
   // Verify fail-safe guard when slide block structure is altered
@@ -328,7 +338,7 @@ test('5. Interactive Risk Register scenario (Slide 7) supports 4 choices, TH/EN 
   assert.equal(host.querySelector('[data-grt-scenario-feedback]')?.getAttribute('data-grt-outcome'), 'distractor');
   assert.match(nodeText(host.querySelector('[data-grt-scenario-feedback]')), /Residual|zero/i);
 
-  // Recommended Option 2 (centralize in Risk Register with IT Manager owner, Mitigation controls, and Residual Risk > 0)
+  // Recommended Option 2: owned Risk Register, tracked mitigation and evidence-based remaining-risk review
   fire(choiceBtn(2), 'click');
   assert.equal(interactionState.choice, 2);
   assert.equal(choiceBtn(2).getAttribute('aria-pressed'), 'true');

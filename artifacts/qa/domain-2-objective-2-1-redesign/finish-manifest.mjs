@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+const root='artifacts/qa/domain-2-objective-2-1-redesign',self=root+'/artifact-manifest.json';
+const hash=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const walk=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(d,e.name)):[path.join(d,e.name).replaceAll('\\','/')]);
+const modifiedExisting=['js/ui/learning/grc-foundations-presentations.js','css/learning-grc-foundations.css','content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json','content/isc2-cc-2026/learning/staged/lessons/lesson-d2-01-grc-foundations.json','tools/verify-learning-d2-grc-foundations.mjs','docs/plans/task.md'];
+const createdSourceAndReport=['tools/verify-learning-d2-objective21-redesign.mjs','docs/plans/isc2-cc-2026/domain-2-objective-2-1-redesign.md'];
+const record=p=>({path:p,bytes:fs.statSync(p).size,sha256:hash(p)});
+const artifacts=walk(root).filter(p=>p!==self).sort().map(record);
+fs.writeFileSync(self,JSON.stringify({modifiedExisting:modifiedExisting.map(record),createdSourceAndReport:createdSourceAndReport.map(record),artifacts},null,2)+'\n');
+console.log({modifiedExisting:modifiedExisting.length,createdSourceAndReport:createdSourceAndReport.length,artifacts:artifacts.length});

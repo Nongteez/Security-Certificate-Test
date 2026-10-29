@@ -1,6 +1,6 @@
 # Domain 1 — Evidence-based Learning Roadmap
 
-Date: 2026-10-28 · Status: all twelve planned lessons implemented and desktop-verified; latest execution authorizes Lesson 12 and a preliminary coverage check only. Final Domain 1 academic/bilingual approval remains pending. Domain → Objective → multiple Lessons → Slides remains the architecture. This document supersedes older curriculum estimates where they conflict with the current official boundaries; it does not authorize the rest of the roadmap.
+Date: 2026-10-29 · Latest status: **Ready for Human Acceptance** after final scoped remediation/verification.12 lessons/103 bilingual slides; F01–F09 resolved in introductory content. Implementation and assistant audit complete; final human academic/bilingual/visual approval remains pending. Historical sections below retain their original scope and are superseded by the final status section.
 
 ## Source review and scope
 
@@ -219,3 +219,12 @@ Latest verified status supersedes the historical AI-gap/stop statements above: *
 48/48 direct checks and20/20 selected Domain2 checks pass. The expanded command is171/185, with the same14 outdated global-catalog expectations as entry; historical Vocabulary remains6/11. Actual desktop QA:16 presentation +16 Reading +16 Info cases across two sizes/two languages, plus reload/direct Resume and four independent positions. Existing V1 storage/schema is preserved; revised lessons reopen through existing revision behavior, retaining valid IDs and visited positions. No Domain2 files or catalog entries were modified.
 
 F02–F06 remain resolved; **F07–F09 remain open**. Dark-theme Info contrast and broader catalog-test maintenance remain deferred. Human academic/bilingual review and final Domain1 approval remain pending. No new lesson or Domain2 work was undertaken. Stop after Phase2 for review.
+
+
+## Domain 1 final readiness — 2026-10-29
+
+[Final sign-off report](domain-1-final-signoff-report.md) supersedes the historical open F07–F09, contrast and catalog-test limitations above. All17 official introductory bullet topics and six AI applications are assessed Complete by assistant self-review, with supplemental MFA/formulas/functions kept separate from official categories/objectives.12 lessons/103 slides and all101 original IDs/order are preserved; no further slides or lessons were added by final remediation.
+
+Expanded checks192/192, selected Domain2 checks20/20, complete bilingual render/feedback sweep,48 changed-explanation desktop cases, four footer cases, eight theme measurements and independent reload/direct Resume pass. Domain2/shared work and protected banks/Quiz/Vocabulary retain entry bytes; Vocabulary separately remains6/11 with the same five historical failures. No new regression was found in the tested scope.
+
+**Human Acceptance Pending; not Fully Accepted.** Final review must include academic and fluent Thai judgment, screenshot acceptance and disclosed platform limits. No Domain2 or further curriculum implementation is started or authorized here. Stop for user review.

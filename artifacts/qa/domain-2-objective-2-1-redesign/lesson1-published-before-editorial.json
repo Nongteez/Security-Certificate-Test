@@ -1,0 +1,1078 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d2-01-grc-foundations",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 2,
+  "primaryObjectiveId": "2.1",
+  "objectiveIds": [
+    "2.1"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "GRC Foundations, Frameworks & Business Alignment",
+    "th": "พื้นฐาน GRC กรอบมาตรฐาน และการจัดแนวให้สอดคล้องกับเป้าหมายธุรกิจ"
+  },
+  "synopsis": {
+    "en": "Understand how Governance, Risk Management, and Compliance work as a coordinated system, examine all seven purposes and seven benefits of GRC, compare NIST CSF, ISO/IEC 27001, and COBIT, and apply GRC decision distinctions in practice.",
+    "th": "เข้าใจการทำงานร่วมกันของ Governance, Risk Management และ Compliance อย่างเป็นระบบ เรียนรู้วัตถุประสงค์ทั้ง 7 ข้อและประโยชน์ 7 ข้อของ GRC เปรียบเทียบ NIST CSF, ISO/IEC 27001 และ COBIT พร้อมฝึกตัดสินใจเชิงประยุกต์"
+  },
+  "outcomes": [
+    {
+      "en": "Explain Governance, Risk Management, and Compliance (GRC) as an integrated approach aligning security decisions with business objectives.",
+      "th": "อธิบาย Governance, Risk Management และ Compliance (GRC) ในฐานะแนวทางบูรณาการที่เชื่อมการตัดสินใจด้านความปลอดภัยเข้ากับ Business Objectives"
+    },
+    {
+      "en": "Organize all seven source-supported purposes of GRC and contrast the seven benefits of effective GRC with the four failure modes when GRC is absent.",
+      "th": "จำแนกวัตถุประสงค์หลักทั้ง 7 ข้อของ GRC และเปรียบเทียบประโยชน์ 7 ข้อเมื่อมี GRC ที่มีประสิทธิผลกับผลเสีย 4 ประการเมื่อขาด GRC"
+    },
+    {
+      "en": "Select appropriately among NIST CSF (including CSF 2.0 Govern), ISO/IEC 27001 (ISMS), and COBIT while distinguishing frameworks, standards, and laws.",
+      "th": "เลือกใช้ NIST CSF (รวมถึงฟังก์ชัน Govern ใน CSF 2.0), ISO/IEC 27001 (ISMS) และ COBIT ได้เหมาะกับบริบท พร้อมแยกแยะ Framework, Standard และกฎหมายออกจากกัน"
+    },
+    {
+      "en": "Distinguish Governance from Management and Risk Management from Compliance in realistic organizational decisions.",
+      "th": "แยกความแตกต่างระหว่าง Governance กับ Management และระหว่าง Risk Management กับ Compliance ในการตัดสินใจระดับองค์กร"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Domain 1 foundations in CIA Triad, risk management lifecycle, and applicable requirements; no prior GRC experience required.",
+      "th": "แนะนำให้ทบทวนพื้นฐาน CIA Triad วงจรการบริหารความเสี่ยง และข้อกำหนดที่ใช้บังคับจาก Domain 1 โดยไม่จำเป็นต้องมีประสบการณ์งาน GRC มาก่อน"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-01-grc-foundations",
+      "title": {
+        "en": "GRC connects Governance, Risk, and Compliance to business objectives.",
+        "th": "GRC ประสาน Governance, Risk และ Compliance ให้สอดคล้องกับเป้าหมายธุรกิจ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "grc-roof-cycle",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Cybersecurity is not a standalone technical silo—GRC provides an integrated approach to align security decisions with business objectives, risk, and obligations.",
+            "th": "งาน Cybersecurity ไม่ได้แยกตัวเป็นเพียงเรื่องเทคนิค แต่ใช้ GRC เป็นแนวทางบูรณาการเพื่อให้การตัดสินใจสอดคล้องกับ Business Objectives ความเสี่ยง และข้อกำหนด"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "The three connected components of GRC and their organizational roles",
+            "th": "องค์ประกอบทั้งสามของ GRC และบทบาทหน้าที่ที่เชื่อมโยงกันในองค์กร"
+          },
+          "columns": [
+            {
+              "en": "GRC Component",
+              "th": "องค์ประกอบ GRC"
+            },
+            {
+              "en": "Core Organizational Role",
+              "th": "บทบาทหลักในองค์กร"
+            },
+            {
+              "en": "Connected MFA Example",
+              "th": "ตัวอย่างการเชื่อมโยงเรื่อง MFA"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Governance",
+                "th": "Governance (การกำกับดูแล)"
+              },
+              {
+                "en": "Provides direction, oversight, and accountability so security supports business objectives.",
+                "th": "กำหนด Direction, Oversight และ Accountability เพื่อให้แนวทางความปลอดภัยสนับสนุนเป้าหมายธุรกิจ"
+              },
+              {
+                "en": "Leadership mandates MFA across critical systems and assigns accountable policy owners.",
+                "th": "ผู้บริหารกำหนดนโยบายบังคับใช้ MFA กับระบบสำคัญ และระบุผู้รับผิดชอบกำกับดูแลชัดเจน"
+              }
+            ],
+            [
+              {
+                "en": "Risk Management",
+                "th": "Risk (การบริหารความเสี่ยง)"
+              },
+              {
+                "en": "Identifies, assesses, and manages risks that could affect organizational objectives and assets.",
+                "th": "ทำหน้าที่ Identify, Assess และ Manage Risk ที่อาจกระทบเป้าหมายและ Assets ขององค์กร"
+              },
+              {
+                "en": "Teams evaluate exposure from privileged accounts lacking MFA and prioritize remediation.",
+                "th": "ประเมินความเสี่ยงจากบัญชีสิทธิ์สูงที่ยังไม่มี MFA และจัดลำดับความสำคัญในการลดความเสี่ยง"
+              }
+            ],
+            [
+              {
+                "en": "Compliance",
+                "th": "Compliance (การปฏิบัติตามข้อกำหนด)"
+              },
+              {
+                "en": "Ensures operations meet applicable laws, regulations, standards, policies, and contractual requirements.",
+                "th": "ดูแลให้การดำเนินงานสอดคล้องกับ Laws, Regulations, Standards, Policies และสัญญาที่เกี่ยวข้อง"
+              },
+              {
+                "en": "Auditors verify MFA enforcement and access handling against applicable rules and contracts.",
+                "th": "ตรวจสอบหลักฐานการบังคับใช้ MFA และการจัดการข้อมูลให้ตรงตามข้อกำหนดที่ใช้บังคับจริง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "In the September 2026 ISC2 CC outline, Domain 2 shifts from legacy BC/DR/IR to Security Governance (17.3% exam weight), opening with Objective 2.1: Plan Governance, Risk, and Compliance (GRC). Course slides S01 and S02 define GRC as a structured, integrated, and coordinated approach organizations use to manage cybersecurity alongside business requirements. Deploying technical controls such as firewalls, EDR, or MFA without GRC leaves fundamental questions unanswered: Which business services matter most? Who has authority to accept or mitigate risk? Which legal, regulatory, standard, policy, or contractual requirements actually apply? Governance sets direction, oversight, and accountability; Risk Management identifies and treats threats to organizational objectives; and Compliance verifies adherence to applicable obligations.",
+            "th": "ในโครงสร้างข้อสอบ ISC2 CC ที่เริ่มใช้ 1 กันยายน 2026 หัวข้อ Domain 2 ปรับเป็น Security Governance ด้วยน้ำหนัก 17.3% โดยเริ่มที่ Objective 2.1 เรื่องการวางแผน GRC สไลด์ S01 และ S02 นิยาม GRC ว่าเป็นแนวทางที่มีโครงสร้างและประสานงานกัน (structured and coordinated approach) เพื่อบริหาร Cybersecurity คู่กับความต้องการทางธุรกิจ หากองค์กรซื้อเครื่องมือเทคนิคอย่าง Firewall, EDR หรือ MFA โดยไม่มี GRC จะตอบคำถามสำคัญไม่ได้ว่า บริการธุรกิจใดสำคัญที่สุด ใครมีอำนาจตัดสินใจรับหรือลดความเสี่ยง และข้อกำหนดใดใช้บังคับจริง Governance จึงทำหน้าที่กำหนดทิศทาง การกำกับดูแล และความรับผิดชอบ (Direction + Oversight + Accountability) ส่วน Risk จัดการความเสี่ยงต่อเป้าหมายองค์กร และ Compliance ดูแลให้ปฏิบัติตาม Laws, Regulations, Standards, Policies และ Contractual Requirements อย่างครบถ้วน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Business Alignment Principle (S02): Every security initiative should support organizational objectives rather than operating as an isolated technical project.",
+              "th": "หลักการจัดแนวตามธุรกิจ (Business Alignment จาก S02): ทุกโครงการด้านความปลอดภัยควรออกแบบมาเพื่อสนับสนุนเป้าหมายขององค์กร ไม่ใช่ทำแยกส่วนเป็นงานเทคนิคโดด ๆ"
+            },
+            {
+              "en": "Five Compliance Sources (S02 & D2 sum.md): Compliance covers external laws and regulations as well as industry standards, internal policies, and contractual commitments.",
+              "th": "แหล่งข้อกำหนดด้าน Compliance ทั้ง 5 ประเภท (S02 และ D2 sum.md): ครอบคลุมทั้ง Laws, Regulations, Standards, Internal Policies และ Contractual Requirements"
+            },
+            {
+              "en": "ISC2 Exam Memory Cue: GRC is neither a single software product nor paperwork for its own sake—it is the coordinated discipline connecting direction (G), exposure decisions (R), and obligation assurance (C).",
+              "th": "จุดจำสำหรับการสอบ ISC2 CC: GRC ไม่ใช่ชื่อโปรแกรมซอฟต์แวร์ตัวเดียวและไม่ใช่แค่การทำเอกสาร แต่คือการประสานทิศทาง (Governance) การจัดการความเสี่ยง (Risk) และการทำตามข้อกำหนด (Compliance) เข้าด้วยกัน"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Governance sets direction & accountability → Risk manages exposure → Compliance verifies obligations → All three align with business objectives.",
+            "th": "Governance กำหนดทิศทางและผู้รับผิดชอบ → Risk จัดการความเสี่ยง → Compliance ตรวจความสอดคล้องข้อกำหนด → ทั้งหมดมุ่งสู่เป้าหมายธุรกิจเดียวกัน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-02-purpose-of-grc",
+      "title": {
+        "en": "The seven purposes of GRC turn scattered controls into a coordinated program.",
+        "th": "วัตถุประสงค์ทั้ง 7 ข้อของ GRC เปลี่ยนงานที่กระจัดกระจายให้เป็นระบบที่ประสานกัน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "purpose-clusters",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The primary purpose of GRC is to provide a structured and coordinated approach across seven connected organizational goals.",
+            "th": "จุดประสงค์หลักของ GRC คือการสร้างแนวทางที่มีโครงสร้างและประสานงานกัน (structured and coordinated approach) ครอบคลุมเป้าหมายสำคัญ 7 ประการ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "All seven source-supported purposes of GRC grouped for operational comprehension",
+            "th": "วัตถุประสงค์หลักทั้ง 7 ข้อของ GRC จากสไลด์ต้นฉบับ จัดกลุ่มเพื่อความเข้าใจเชิงปฏิบัติการ"
+          },
+          "columns": [
+            {
+              "en": "Functional Cluster",
+              "th": "กลุ่มหน้าที่หลัก"
+            },
+            {
+              "en": "Purpose of GRC (S05)",
+              "th": "วัตถุประสงค์ของ GRC (ตามสไลด์ S05)"
+            },
+            {
+              "en": "How It Helps the Organization",
+              "th": "ผลที่ช่วยองค์กรในทางปฏิบัติ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Strategy & Decisions",
+                "th": "ทิศทางและการตัดสินใจ"
+              },
+              {
+                "en": "1. Align cybersecurity with business objectives",
+                "th": "1. Align cybersecurity with business objectives"
+              },
+              {
+                "en": "Directs security budgets and priorities toward services essential to the mission.",
+                "th": "ทำให้งบประมาณและแผนงานความปลอดภัยมุ่งปกป้องบริการที่สำคัญต่อเป้าหมายธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Risk & Control Unity",
+                "th": "ความเสี่ยงและมาตรฐานควบคุม"
+              },
+              {
+                "en": "2. Identify and manage risks",
+                "th": "2. Identify and manage risks"
+              },
+              {
+                "en": "Uncovers threats and vulnerabilities systematically before they disrupt operations.",
+                "th": "ช่วยให้มองเห็นและบริหารจัดการความเสี่ยงอย่างเป็นระบบก่อนเกิดเหตุเสียหาย"
+              }
+            ],
+            [
+              {
+                "en": "Obligations & Efficiency",
+                "th": "ข้อบังคับและลดงานซ้ำซ้อน"
+              },
+              {
+                "en": "3. Meet legal and regulatory obligations",
+                "th": "3. Meet legal and regulatory obligations"
+              },
+              {
+                "en": "Tracks statutory, regulatory, and cross-border duties where the organization operates.",
+                "th": "ช่วยให้ปฏิบัติตามกฎหมายและข้อบังคับของหน่วยงานกำกับดูแลในพื้นที่ที่ดำเนินธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Risk & Control Unity",
+                "th": "ความเสี่ยงและมาตรฐานควบคุม"
+              },
+              {
+                "en": "4. Establish consistent policies and controls",
+                "th": "4. Establish consistent policies and controls"
+              },
+              {
+                "en": "Replaces ad-hoc departmental habits with coherent organization-wide baselines.",
+                "th": "สร้าง Policies และ Controls ที่เป็นมาตรฐานสอดคล้องกันทั้งองค์กร ไม่ต่างคนต่างทำ"
+              }
+            ],
+            [
+              {
+                "en": "Risk & Control Unity",
+                "th": "ความเสี่ยงและมาตรฐานควบคุม"
+              },
+              {
+                "en": "5. Improve accountability",
+                "th": "5. Improve accountability"
+              },
+              {
+                "en": "Assigns clear ownership for policies, risk decisions, and control performance.",
+                "th": "กำหนดผู้รับผิดชอบ (Accountability) ต่อการตัดสินใจและมาตรการควบคุมให้ชัดเจน"
+              }
+            ],
+            [
+              {
+                "en": "Strategy & Decisions",
+                "th": "ทิศทางและการตัดสินใจ"
+              },
+              {
+                "en": "6. Support informed decision-making",
+                "th": "6. Support informed decision-making"
+              },
+              {
+                "en": "Gives executives accurate risk and compliance context when weighing trade-offs.",
+                "th": "นำข้อมูลความเสี่ยงและสถานะการควบคุมมาประกอบการตัดสินใจของผู้บริหารอย่างมีหลักฐาน"
+              }
+            ],
+            [
+              {
+                "en": "Obligations & Efficiency",
+                "th": "ข้อบังคับและลดงานซ้ำซ้อน"
+              },
+              {
+                "en": "7. Reduce duplication of security and compliance efforts",
+                "th": "7. Reduce duplication of security and compliance efforts"
+              },
+              {
+                "en": "Maps one shared control and evidence set across multiple audits and teams.",
+                "th": "ลดการทำงานซ้ำซ้อน เช่น ไม่ต้องเก็บหลักฐานเรื่องเดียวกันแยกกันหลายทีมเพื่อส่งผู้ตรวจหลายชุด"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Slide S05 (the cleanest uncropped capture of the S03–S05 sequence) and Domain 2.md §2.2 present seven specific purposes of GRC. Rather than memorizing seven disconnected bullets, grouping them into three operational lenses clarifies how GRC works day to day: (1) Strategy & Decisions aligns cybersecurity with business objectives (#1) and equips leaders for informed decision-making (#6); (2) Risk & Control Unity identifies and manages risks (#2), establishes consistent policies and controls across business units (#4), and improves accountability (#5); and (3) Obligations & Efficiency ensures the organization meets legal and regulatory obligations (#3) while reducing duplication of security and compliance efforts (#7) when multiple frameworks or regulators ask for similar access-control or logging evidence.",
+            "th": "สไลด์ S05 และสรุปใน Domain 2.md หัวข้อ 2.2 ระบุวัตถุประสงค์ของ GRC ไว้ครบ 7 ข้อ การจัดกลุ่มออกเป็น 3 มุมมองช่วยให้เห็นภาพการนำไปใช้จริงได้ชัดเจนกว่าการท่องจำเรียงข้อ ได้แก่ (1) ด้านทิศทางและการตัดสินใจ คือการจัดให้ Cybersecurity สอดคล้องกับ Business Objectives (#1) และสนับสนุน Informed Decision-Making ด้วยข้อมูลจริง (#6) (2) ด้านเอกภาพของการควบคุมและความเสี่ยง คือการ Identify and Manage Risks (#2) การวาง Policies และ Controls ให้สอดคล้องกันทั้งองค์กร (#4) และการเพิ่ม Accountability ให้รู้ว่าใครเป็นเจ้าของเรื่อง (#5) และ (3) ด้านข้อบังคับและประสิทธิภาพ คือการปฏิบัติตามกฎหมายและข้อบังคับ (#3) ควบคู่กับการลดงานซ้ำซ้อนของทีม Security และ Compliance (#7) เมื่อหลายมาตรฐานต้องการตรวจหลักฐานชุดเดียวกัน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Real-World Duplication Example (#7): Without GRC coordination, cloud engineering might answer three separate access-review audits for legal, internal audit, and a bank partner from scratch instead of mapping one verified access control review to all three.",
+              "th": "ตัวอย่างการลดงานซ้ำซ้อนจริง (ข้อ #7): หากไม่มี GRC ทีมวิศวกรอาจต้องรวบรวมหลักฐานตรวจทานสิทธิ์ผู้ใช้แยกกัน 3 รอบส่งให้ทีมกฎหมาย ผู้ตรวจสอบภายใน และคู่ค้าธนาคาร แทนที่จะใช้หลักฐานจาก Control เดียวกันอ้างอิงร่วมกัน"
+            },
+            {
+              "en": "Why Consistency (#4) & Accountability (#5) Belong Together: Even a well-written security policy fails if one branch enforces it strictly, another ignores it, and neither has a designated owner answerable for gaps.",
+              "th": "เหตุผลที่ความสอดคล้อง (#4) ต้องคู่กับ Accountability (#5): แม้นโยบายจะเขียนไว้ดีเพียงใด หากแต่ละแผนกนำไปใช้ไม่เหมือนกันและไม่มีผู้รับผิดชอบหลักที่ต้องตอบคำถามเมื่อเกิดช่องโหว่ มาตรการนั้นก็จะล้มเหลว"
+            },
+            {
+              "en": "ISC2 Exam Cue: Look for phrases such as 'structured and coordinated approach', 'align security with business objectives', and 'reduce duplicated compliance effort' when identifying the purpose of GRC.",
+              "th": "คีย์เวิร์ดสำคัญในการสอบ ISC2 CC: เมื่อโจทย์ถามถึงจุดประสงค์หลักของ GRC ให้สังเกตคำว่า structured and coordinated approach, align with business objectives และการลดความซ้ำซ้อนของงานตรวจประเมิน"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "7 Purposes in 3 lenses: Business & Informed Decisions (#1, #6) · Risk, Consistent Controls & Accountability (#2, #4, #5) · Legal Compliance & Less Duplication (#3, #7).",
+            "th": "สรุป 7 วัตถุประสงค์ใน 3 แกน: สอดคล้องธุรกิจและตัดสินใจด้วยข้อมูล (#1, #6) · จัดการความเสี่ยง มาตรฐานเดียว และมีผู้รับผิดชอบ (#2, #4, #5) · ทำตามกฎหมายและลดงานซ้ำซ้อน (#3, #7)"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-03-importance-of-grc",
+      "title": {
+        "en": "Effective GRC builds resilience—while absent GRC leaves blind spots and violations.",
+        "th": "GRC ที่มีประสิทธิผลช่วยสร้างความทนทานให้ธุรกิจ แต่หากขาด GRC จะเกิดจุดบอดและการละเมิดกฎ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "benefits-vs-failures",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Comparing an organization with effective GRC against one operating without it reveals seven concrete benefits versus four recurring failure modes.",
+            "th": "การเปรียบเทียบองค์กรที่มี GRC ที่มีประสิทธิผลกับองค์กรที่ขาด GRC ช่วยให้เห็นความต่างระหว่างประโยชน์หลัก 7 ข้อ กับความล้มเหลวที่พบบ่อย 4 รูปแบบ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Seven organizational benefits of effective GRC contrasted with four failure modes without GRC (S06)",
+            "th": "เปรียบเทียบประโยชน์ 7 ข้อเมื่อมี GRC ที่ดี กับผลกระทบเชิงลบ 4 ข้อเมื่อไม่มี GRC (ตามสไลด์ S06)"
+          },
+          "columns": [
+            {
+              "en": "Program State",
+              "th": "สถานะของ GRC"
+            },
+            {
+              "en": "Organizational Outcome (S06)",
+              "th": "ผลลัพธ์ที่เกิดขึ้นกับองค์กร (S06)"
+            },
+            {
+              "en": "Governance Mechanism",
+              "th": "กลไกที่ทำให้เกิดขึ้น"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Effective GRC",
+                "th": "เมื่อมี GRC ที่มีประสิทธิผล"
+              },
+              {
+                "en": "Reduce cybersecurity and business risks",
+                "th": "Reduce cybersecurity and business risks (ลดความเสี่ยงไซเบอร์และธุรกิจ)"
+              },
+              {
+                "en": "Proactive risk identification and treatment lower incident likelihood and business impact.",
+                "th": "การระบุและจัดการความเสี่ยงเชิงรุกช่วยลดโอกาสเกิดเหตุและผลกระทบต่อธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Effective GRC",
+                "th": "เมื่อมี GRC ที่มีประสิทธิผล"
+              },
+              {
+                "en": "Protect critical information and assets",
+                "th": "Protect critical information and assets (ปกป้องข้อมูลและทรัพย์สินสำคัญ)"
+              },
+              {
+                "en": "Controls are prioritized around high-value data, infrastructure, and core services.",
+                "th": "จัดลำดับมาตรการป้องกันให้ครอบคลุมข้อมูลสำคัญและระบบหลักขององค์กร"
+              }
+            ],
+            [
+              {
+                "en": "Effective GRC",
+                "th": "เมื่อมี GRC ที่มีประสิทธิผล"
+              },
+              {
+                "en": "Meet regulatory requirements",
+                "th": "Meet regulatory requirements (ปฏิบัติตามข้อกำหนดกำกับดูแล)"
+              },
+              {
+                "en": "Applicable obligations are mapped to owned controls and verifiable evidence.",
+                "th": "เชื่อมโยงข้อกำหนดที่เกี่ยวข้องเข้ากับ Controls ที่มีผู้ดูแลและมีหลักฐานตรวจสอบได้"
+              }
+            ],
+            [
+              {
+                "en": "Effective GRC",
+                "th": "เมื่อมี GRC ที่มีประสิทธิผล"
+              },
+              {
+                "en": "Avoid or reduce financial penalties",
+                "th": "Avoid or reduce financial penalties (หลีกเลี่ยงหรือลดค่าปรับทางการเงิน)"
+              },
+              {
+                "en": "Timely compliance and documented due care reduce regulatory fines and breach losses.",
+                "th": "การปฏิบัติตามกฎอย่างครบถ้วนและมีหลักฐานความใส่ใจช่วยลดโอกาสถูกปรับและลดความเสียหาย"
+              }
+            ],
+            [
+              {
+                "en": "Effective GRC",
+                "th": "เมื่อมี GRC ที่มีประสิทธิผล"
+              },
+              {
+                "en": "Improve decision-making",
+                "th": "Improve decision-making (ยกระดับการตัดสินใจของผู้บริหาร)"
+              },
+              {
+                "en": "Leadership allocates resources using transparent risk ratings and compliance status.",
+                "th": "ผู้บริหารจัดสรรงบประมาณและทรัพยากรจากข้อมูลความเสี่ยงและสถานะจริง"
+              }
+            ],
+            [
+              {
+                "en": "Effective GRC",
+                "th": "เมื่อมี GRC ที่มีประสิทธิผล"
+              },
+              {
+                "en": "Establish clear accountability",
+                "th": "Establish clear accountability (กำหนดผู้รับผิดชอบได้ชัดเจน)"
+              },
+              {
+                "en": "Named owners answer for policy enforcement, risk acceptance, and remediation.",
+                "th": "ทุกนโยบายและการตัดสินใจด้านความเสี่ยงมีเจ้าของเรื่องที่รับผิดชอบชัดเจน"
+              }
+            ],
+            [
+              {
+                "en": "Effective GRC",
+                "th": "เมื่อมี GRC ที่มีประสิทธิผล"
+              },
+              {
+                "en": "Improve organizational resilience",
+                "th": "Improve organizational resilience (เพิ่มความทนทานและการฟื้นตัวขององค์กร)"
+              },
+              {
+                "en": "Coordinated governance and risk planning help the enterprise withstand and recover from disruptions.",
+                "th": "ช่วยให้องค์กรรับมือ ปรับตัว และฟื้นตัวจากเหตุหยุดชะงักได้อย่างมั่นคง"
+              }
+            ],
+            [
+              {
+                "en": "Without Effective GRC",
+                "th": "หากขาด GRC ที่ดี"
+              },
+              {
+                "en": "Inconsistent security practices",
+                "th": "Inconsistent security practices (แนวปฏิบัติไม่สอดคล้องกัน)"
+              },
+              {
+                "en": "Departments apply conflicting rules, leaving weak links across shared networks.",
+                "th": "แต่ละทีมตั้งกฎกันเองจนเกิดช่องว่างด้านความปลอดภัยในระบบที่เชื่อมต่อถึงกัน"
+              }
+            ],
+            [
+              {
+                "en": "Without Effective GRC",
+                "th": "หากขาด GRC ที่ดี"
+              },
+              {
+                "en": "Unidentified risks",
+                "th": "Unidentified risks (ความเสี่ยงไม่ถูกระบุและกลายเป็นจุดบอด)"
+              },
+              {
+                "en": "Shadow systems, vendor exposures, and unowned threats go unnoticed until an incident strikes.",
+                "th": "ระบบแฝง ความเสี่ยงจากคู่ค้า หรือจุดอ่อนสำคัญไม่ถูกค้นพบจนกว่าจะเกิดเหตุโจมตีจริง"
+              }
+            ],
+            [
+              {
+                "en": "Without Effective GRC",
+                "th": "หากขาด GRC ที่ดี"
+              },
+              {
+                "en": "Compliance violations",
+                "th": "Compliance violations (เกิดการละเมิดข้อกำหนดและกฎหมาย)"
+              },
+              {
+                "en": "Missed legal or contractual duties expose the organization to sanctions, lawsuits, and lost trust.",
+                "th": "พลาดข้อบังคับตามกฎหมายหรือสัญญา เสี่ยงต่อบทลงโทษ ค่าปรับ และเสียความเชื่อมั่น"
+              }
+            ],
+            [
+              {
+                "en": "Without Effective GRC",
+                "th": "หากขาด GRC ที่ดี"
+              },
+              {
+                "en": "Poor accountability",
+                "th": "Poor accountability (ความรับผิดชอบคลุมเครือ ไร้เจ้าภาพ)"
+              },
+              {
+                "en": "No clear owner takes responsibility for fixing control gaps or approving risk exceptions.",
+                "th": "ไม่มีผู้รับผิดชอบชัดเจนเมื่อพบช่องโหว่หรือเมื่อต้องตัดสินใจอนุมัติข้อยกเว้นความเสี่ยง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Slide S06 and Domain 2.md §2.3 highlight why GRC is a strategic business enabler rather than administrative overhead. Notice on S06 how the instructor explicitly connects specific outcomes back to the GRC triad: reducing cybersecurity and business risks flows from the Risk component, meeting regulatory requirements and avoiding or reducing financial penalties flow from Compliance, and improved decision-making and clear accountability flow from Governance—together producing organizational resilience (the ability to anticipate, withstand, and recover from adverse events, bridging Objective 2.1 to Objective 2.2). Conversely, when effective GRC is absent, organizations suffer four predictable breakdowns: inconsistent security practices across teams, unidentified risks hiding in blind spots, compliance violations, and poor accountability when incidents or audit findings occur.",
+            "th": "สไลด์ S06 และ Domain 2.md หัวข้อ 2.3 ชี้ให้เห็นว่าทำไม GRC จึงเป็นกลไกสนับสนุนความอยู่รอดของธุรกิจ ไม่ใช่แค่ภาระงานเอกสาร ในภาพสไลด์ S06 ผู้สอนโยงลูกศรให้เห็นชัดเจนว่าการลดความเสี่ยงไซเบอร์และธุรกิจเกิดจากมิติ Risk การปฏิบัติตามกฎระเบียบและหลีกเลี่ยงหรือลดค่าปรับทางการเงินเกิดจากมิติ Compliance ส่วนการตัดสินใจที่ดีขึ้นและ Accountability ที่ชัดเจนเกิดจากมิติ Governance ซึ่งเมื่อทำงานร่วมกันจะยกระดับ Organizational Resilience หรือความสามารถขององค์กรในการรับมือและฟื้นตัวจากเหตุรบกวน (เชื่อมต่อไปยังเรื่อง BC/DR ใน Objective 2.2) ในทางตรงกันข้าม หากไม่มี GRC ที่ดี องค์กรจะเผชิญปัญหาหลัก 4 ข้อทันที ได้แก่ แนวปฏิบัติที่ไม่สอดคล้องกัน ความเสี่ยงที่ไม่ถูกค้นพบ การละเมิดข้อกำหนด และความรับผิดชอบที่คลุมเครือไร้เจ้าภาพ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Financial Penalties Nuance (S06): Notice the wording 'avoid or reduce financial penalties'—effective GRC cannot guarantee zero incidents, but documented governance and compliance substantially prevent violations and mitigate regulatory enforcement exposure.",
+              "th": "ข้อสังเกตคำว่า Avoid or Reduce Financial Penalties (S06): สไลด์ใช้คำว่าหลีกเลี่ยงหรือลดค่าปรับ เพราะแม้ไม่มีระบบใดรับประกันว่าจะไม่เกิดเหตุเลย แต่การมี GRC และหลักฐานการดูแลตามมาตรฐานช่วยป้องกันการทำผิดกฎและลดความรุนแรงของบทลงโทษได้อย่างมาก"
+            },
+            {
+              "en": "Organizational Resilience Connection: Resilience is not achieved by backup servers alone; it begins with GRC clarity about critical assets, risk appetite, and accountable decision-makers.",
+              "th": "ความเชื่อมโยงสู่ Organizational Resilience: ความทนทานขององค์กรไม่ได้เกิดจากการมีเซิร์ฟเวอร์สำรองเพียงอย่างเดียว แต่เริ่มจาก GRC ที่ระบุชัดเจนว่าทรัพย์สินใดสำคัญ ยอมรับความเสี่ยงได้แค่ไหน และใครมีอำนาจสั่งการ"
+            },
+            {
+              "en": "Diagnostic Exam Pattern: If a scenario describes different branches using conflicting security rules and blaming each other after an audit failure, recognize these as symptoms of missing GRC (inconsistent practices + poor accountability).",
+              "th": "แนวทางวิเคราะห์โจทย์สอบ: หากโจทย์กล่าวถึงหลายแผนกตั้งค่าความปลอดภัยขัดแย้งกันและเกี่ยงความรับผิดชอบเมื่อตรวจไม่ผ่าน ให้ระบุได้ทันทีว่าเป็นอาการของการขาด GRC ที่มีประสิทธิผล (Inconsistent security practices และ Poor accountability)"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "With effective GRC: lower risk, protected assets, regulatory alignment, fewer penalties, clear accountability & resilience · Without GRC: inconsistency, blind risks, violations & blame.",
+            "th": "เมื่อมี GRC ที่ดี: ลดความเสี่ยง ปกป้อง Assets ทำตามกฎ ลดค่าปรับ มีผู้รับผิดชอบชัด และเพิ่ม Resilience · เมื่อขาด GRC: มาตรฐานมั่ว จุดบอดความเสี่ยง ผิดกฎ และไร้เจ้าภาพ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-04-grc-frameworks",
+      "title": {
+        "en": "Frameworks and standards structure GRC—each serving a distinct governance purpose.",
+        "th": "Frameworks และ Standards ช่วยจัดโครงสร้างงาน GRC โดยมีจุดเน้นที่แตกต่างกันชัดเจน"
+      },
+      "rendererId": "comparison",
+      "layoutId": "framework-selector",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Organizations use established frameworks and standards—such as NIST CSF, ISO/IEC 27001, and COBIT—to structure GRC activities without reinventing controls from scratch.",
+            "th": "องค์กรใช้ Frameworks และ Standards ที่ได้รับการยอมรับ เช่น NIST CSF, ISO/IEC 27001 และ COBIT เพื่อจัดโครงสร้างกิจกรรม GRC อย่างเป็นระบบโดยไม่ต้องคิดค้นใหม่ทั้งหมด"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Comparison of NIST CSF, ISO/IEC 27001, COBIT, and the boundary between frameworks, standards, and laws (S07)",
+            "th": "ตารางเปรียบเทียบ NIST CSF, ISO/IEC 27001, COBIT และขอบเขตความต่างระหว่าง Framework, Standard และกฎหมาย (S07)"
+          },
+          "columns": [
+            {
+              "en": "Model or Boundary",
+              "th": "กรอบมาตรฐาน / ขอบเขต"
+            },
+            {
+              "en": "Primary Focus (S07)",
+              "th": "จุดเน้นหลักตามสไลด์ S07"
+            },
+            {
+              "en": "When & How Organizations Use It",
+              "th": "การเลือกนำไปใช้ให้เหมาะกับบริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "NIST Cybersecurity Framework (CSF)",
+                "th": "NIST Cybersecurity Framework (CSF)"
+              },
+              {
+                "en": "Provides a voluntary framework for managing and reducing cybersecurity risk.",
+                "th": "กรอบแนวทางสำหรับบริหารและลดความเสี่ยงด้าน Cybersecurity (Managing & Reducing Cybersecurity Risk)"
+              },
+              {
+                "en": "Select when structuring risk-based cybersecurity outcomes and aligning governance with risk reduction.",
+                "th": "เลือกใช้เมื่อต้องการกรอบผลลัพธ์เพื่อบริหารและลดความเสี่ยงไซเบอร์อย่างเป็นลำดับขั้น"
+              }
+            ],
+            [
+              {
+                "en": "ISO/IEC 27001",
+                "th": "ISO/IEC 27001"
+              },
+              {
+                "en": "Provides requirements for establishing and continually improving an Information Security Management System (ISMS).",
+                "th": "มาตรฐานสากลที่กำหนด Requirements สำหรับจัดตั้งและปรับปรุง ISMS อย่างต่อเนื่อง"
+              },
+              {
+                "en": "Select when building a formal, auditable ISMS (adopted voluntarily or to satisfy client/contract expectations).",
+                "th": "เลือกใช้เมื่อต้องการสร้างระบบบริหารความมั่นคงปลอดภัยสารสนเทศ (ISMS) และพัฒนาต่อเนื่อง"
+              }
+            ],
+            [
+              {
+                "en": "COBIT",
+                "th": "COBIT"
+              },
+              {
+                "en": "Provides a framework for the governance and management of enterprise IT.",
+                "th": "กรอบสำหรับการกำกับดูแลและบริหารจัดการ Enterprise IT (Governance & Management of Enterprise IT)"
+              },
+              {
+                "en": "Select when aligning enterprise-wide IT governance, IT investments, and operational controls with business goals.",
+                "th": "เลือกใช้เมื่อต้องการเชื่อมการกำกับดูแลและการจัดการระบบ IT ทั้งองค์กรให้สอดคล้องเป้าหมายธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Frameworks ≠ Standards ≠ Laws",
+                "th": "ขอบเขตสำคัญ: Framework ≠ Standard ≠ Law"
+              },
+              {
+                "en": "Visual examples on S07 (GDPR, HIPAA, SOX, PCI DSS, CMMC) represent distinct legal, regulatory, and contractual regimes.",
+                "th": "ชื่อในภาพประกอบ S07 (GDPR, HIPAA, SOX, PCI DSS, CMMC) มีสถานะต่างกันทั้งกฎหมาย มาตรฐานสัญญา และกรอบเฉพาะด้าน"
+              },
+              {
+                "en": "Never treat them as interchangeable—laws impose statutory duties, standards specify requirements, and frameworks guide structure.",
+                "th": "ห้ามเหมารวมว่าเป็นสิ่งเดียวกัน ต้องแยกแยะกฎหมายบังคับ ข้อกำหนดตามสัญญา และกรอบแนวทางออกจากกันเสมอ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Slide S07 and Domain 2.md §3 introduce three foundational GRC references—NIST CSF, ISO/IEC 27001, and COBIT (Control Objectives for Information and Related Technologies). Keep three academic distinctions sharp. First, frameworks, standards, and laws are not interchangeable: GDPR (EU data protection regulation), HIPAA (U.S. healthcare privacy/security law), and SOX (U.S. financial reporting law) are statutory/regulatory mandates for scoped organizations, whereas PCI DSS is a payment-card contractual standard and CMMC is a defense supply-chain model. Second, ISO/IEC 27001 specifies requirements for establishing, implementing, maintaining, and continually improving an ISMS, but ISO/IEC 27001 certification is voluntary unless required by a specific contract or regulator—it is not universally mandatory by law. Third (Verified Supplement — NIST CSF 2.0): NIST CSF 2.0 elevates 'Govern (GV)' as a cross-cutting sixth function alongside Identify, Protect, Detect, Respond, and Recover, establishing organizational context, risk management strategy, roles, policies, and oversight. Verified Supplement (2026 Emerging-Tech Context): Organizations also apply these same GRC frameworks—such as NIST CSF 2.0 Govern and ISO/IEC 27001 risk controls—when reviewing emerging technologies like AI tools so data handling, accountability, and legal obligations are evaluated before deployment.",
+            "th": "สไลด์ S07 และ Domain 2.md หัวข้อ 3 แนะนำเสาหลัก 3 ตัว ได้แก่ NIST CSF, ISO/IEC 27001 และ COBIT (Control Objectives for Information and Related Technologies) มีหลักวิชาการสำคัญ 3 ข้อที่ต้องแม่นยำ ข้อแรก Framework, Standard และ Law ไม่ใช่คำที่ใช้แทนกันได้ ชื่อที่ปรากฏในวงกลมภาพประกอบ S07 อย่าง GDPR, HIPAA และ SOX เป็นกฎหมายหรือข้อบังคับตามขอบเขตที่กฎหมายกำหนด ส่วน PCI DSS เป็นมาตรฐานตามสัญญาบัตรชำระเงิน และ CMMC เป็นกรอบข้อกำหนดคู่ค้ากลาโหม ข้อสอง ISO/IEC 27001 กำหนดข้อกำหนดในการสร้างและปรับปรุงระบบ ISMS อย่างต่อเนื่อง แต่การขอใบรับรอง ISO/IEC 27001 เป็นความสมัครใจ (voluntary) เว้นแต่คู่สัญญาหรือหน่วยงานกำกับเฉพาะด้านจะกำหนด ไม่ใช่กฎหมายบังคับทุกองค์กรทั่วโลก ข้อสาม (เพิ่มเติมเพื่อความเข้าใจ — Verified Supplement ตาม NIST CSF 2.0): ใน NIST CSF 2.0 ได้เพิ่มฟังก์ชัน Govern (GV) เป็นแกนกลางร่วมกับ Identify, Protect, Detect, Respond และ Recover เพื่อเน้นการกำหนดบริบทองค์กร กลยุทธ์ความเสี่ยง บทบาทหน้าที่ นโยบาย และการกำกับติดตาม เพิ่มเติมเพื่อความเข้าใจ (บริบทเทคโนโลยีเกิดใหม่ปี 2026): องค์กรยังสามารถใช้โครงสร้าง GRC เดิมอย่างฟังก์ชัน Govern ของ NIST CSF 2.0 และกระบวนการประเมินความเสี่ยงใน ISMS เพื่อกำกับดูแลการนำเทคโนโลยีใหม่อย่าง AI มาใช้ ให้ชัดเจนทั้งผู้รับผิดชอบและข้อกำหนดก่อนใช้งานจริง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Rapid ISC2 Exam Selector (Domain 2.md §3 & §24.2): 'Manage and reduce cybersecurity risk' → NIST CSF | 'Establish and continually improve an ISMS' → ISO/IEC 27001 | 'Governance and management of enterprise IT' → COBIT.",
+              "th": "สูตรจำแยกเร็วสำหรับสอบ ISC2 CC (Domain 2.md ข้อ 3 และ 24.2): เน้นบริหารและลด Cybersecurity Risk → NIST CSF | เน้นสร้างและพัฒนา ISMS อย่างต่อเนื่อง → ISO/IEC 27001 | เน้นกำกับดูแลและบริหาร Enterprise IT → COBIT"
+            },
+            {
+              "en": "Verified Supplement — NIST CSF 2.0 Govern (GV) Function: Govern sits at the center of CSF 2.0 to inform how an organization achieves and prioritizes the other five outcomes (Identify, Protect, Detect, Respond, Recover) in line with enterprise risk strategy.",
+              "th": "เพิ่มเติมเพื่อความเข้าใจ — ฟังก์ชัน Govern (GV) ใน NIST CSF 2.0: ทำหน้าที่เป็นแกนกลางที่กำหนดทิศทาง นโยบาย บทบาท และการกำกับดูแล เพื่อชี้นำการทำงานของอีก 5 ฟังก์ชัน (Identify, Protect, Detect, Respond, Recover)"
+            },
+            {
+              "en": "ISO/IEC 27001 Scope Guardrail: Adopting ISO/IEC 27001 internalizes systematic ISMS governance and continual improvement; external certification is an optional assurance step driven by business strategy or customer contracts, never an automatic global legal mandate.",
+              "th": "ข้อควรระวังเรื่อง ISO/IEC 27001: มาตรฐานนี้ใช้สร้างระบบ ISMS ที่มีวงจรปรับปรุงต่อเนื่อง ส่วนการตรวจประเมินเพื่อขอใบรับรองจากภายนอกเป็นการตัดสินใจเชิงธุรกิจหรือข้อตกลงคู่ค้า ไม่ใช่ข้อบังคับทางกฎหมายสากลสำหรับทุกบริษัท"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Quick match: NIST CSF = Cybersecurity Risk (with CSF 2.0 Govern) · ISO/IEC 27001 = Continual ISMS · COBIT = Enterprise IT Governance & Management.",
+            "th": "จำสั้นและแม่น: NIST CSF = บริหาร Cybersecurity Risk (มี Govern เป็นแกน) · ISO/IEC 27001 = สร้างและพัฒนา ISMS · COBIT = กำกับและบริหาร Enterprise IT"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-csf-2-0",
+        "iso-iec-27001",
+        "isaca-cobit"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-05-grc-distinctions",
+      "title": {
+        "en": "Separate Governance from Management—and Risk Management from Compliance.",
+        "th": "แยกบทบาท Governance ออกจาก Management และแยก Risk Management ออกจาก Compliance"
+      },
+      "rendererId": "comparison",
+      "layoutId": "dual-distinctions",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Clear security decisions depend on knowing who sets direction versus who executes operations—and why meeting a rule checklist never guarantees low risk.",
+            "th": "การตัดสินใจด้านความปลอดภัยที่แม่นยำต้องแยกให้ออกว่าใครเป็นผู้กำหนดทิศทางเทียบกับผู้ลงมือปฏิบัติ และเข้าใจว่าทำไมการผ่านเกณฑ์ตรวจตามกฎจึงไม่ได้แปลว่าความเสี่ยงหมดไป"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Decision boundaries between Governance vs. Management and Risk Management vs. Compliance",
+            "th": "ตารางเปรียบเทียบขอบเขตการตัดสินใจระหว่าง Governance กับ Management และระหว่าง Risk Management กับ Compliance"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิดหลัก"
+            },
+            {
+              "en": "Decision Responsibility",
+              "th": "หน้าที่และความรับผิดชอบในการตัดสินใจ"
+            },
+            {
+              "en": "Boundary & Exam Distinction",
+              "th": "ขอบเขตและจุดสังเกตในการสอบ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Governance",
+                "th": "Governance (การกำกับดูแล)"
+              },
+              {
+                "en": "Sets strategic direction, policy authority, risk appetite, oversight, and accountability.",
+                "th": "กำหนดทิศทางเชิงกลยุทธ์ นโยบาย กรอบความเสี่ยงที่ยอมรับได้ การกำกับติดตาม และผู้รับผิดชอบหลัก"
+              },
+              {
+                "en": "Answers 'What must be achieved and who is accountable?'—evaluates evidence rather than running daily tools.",
+                "th": "ตอบคำถามว่า 'ต้องบรรลุเป้าหมายใดและใครรับผิดชอบ' โดยทบทวนหลักฐาน ไม่ใช่ลงมือตั้งค่าระบบรายวันเอง"
+              }
+            ],
+            [
+              {
+                "en": "Management",
+                "th": "Management (การบริหารจัดการ)"
+              },
+              {
+                "en": "Plans budgets and staffing, implements controls, executes daily operations, and reports performance back.",
+                "th": "วางแผนทรัพยากร นำแนวทางไปติดตั้ง Controls บริหารงานปฏิบัติการรายวัน และรายงานผลกลับสู่ผู้กำกับดูแล"
+              },
+              {
+                "en": "Answers 'How do we execute the approved direction?'—turns governance intent into operational reality.",
+                "th": "ตอบคำถามว่า 'จะนำทิศทางนั้นไปปฏิบัติจริงอย่างไร' โดยเปลี่ยนนโยบายให้เป็นกระบวนการทำงานจริง"
+              }
+            ],
+            [
+              {
+                "en": "Risk Management",
+                "th": "Risk Management (การบริหารความเสี่ยง)"
+              },
+              {
+                "en": "Continuously identifies, assesses, prioritizes, and treats threats and vulnerabilities to assets.",
+                "th": "ระบุ วิเคราะห์ จัดลำดับ และจัดการภัยคุกคามกับช่องโหว่ที่อาจสร้างความเสียหายต่อองค์กรอย่างต่อเนื่อง"
+              },
+              {
+                "en": "Context-driven and dynamic—addresses emerging threats even before regulations catch up.",
+                "th": "ขับเคลื่อนตามบริบทภัยคุกคามจริงที่เปลี่ยนแปลงตลอดเวลา แม้เรื่องนั้นจะยังไม่มีกฎหมายเขียนบังคับไว้"
+              }
+            ],
+            [
+              {
+                "en": "Compliance",
+                "th": "Compliance (การปฏิบัติตามข้อกำหนด)"
+              },
+              {
+                "en": "Demonstrates conformance to applicable laws, regulations, standards, internal policies, and contracts.",
+                "th": "พิสูจน์ว่าการดำเนินงานเป็นไปตาม Laws, Regulations, Standards, Policies และสัญญาที่ใช้บังคับ"
+              },
+              {
+                "en": "Compliant ≠ Secure: passing a baseline audit does not guarantee protection against all active risks.",
+                "th": "Compliant ≠ Secure: การตรวจผ่านเกณฑ์ขั้นต่ำตามข้อกำหนดไม่ได้แปลว่าองค์กรปลอดภัยจากความเสี่ยงทั้งหมด"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Two distinctions recur throughout ISC2 governance questions and COBIT/NIST principles. First, Governance vs. Management: Governance is the board and executive function that establishes direction, defines policy expectations, assigns accountability, and exercises oversight ('Governance กำหนดทิศทางและความรับผิดชอบ'), whereas Management plans, builds, runs, and monitors day-to-day activities to achieve that direction ('ส่วน Management นำแนวทางนั้นไปปฏิบัติจริง'), sending operational evidence back for oversight review. Second, Risk Management vs. Compliance: Compliance proves adherence to a defined set of external or internal rules at a given scope, whereas Risk Management evaluates actual threat and vulnerability exposure across the organization. Treating compliance as a substitute for risk management creates dangerous blind spots whenever attackers exploit systems or workflows outside the audit checklist.",
+            "th": "ความแตกต่าง 2 คู่สำคัญที่ออกสอบบ่อยในสาย Security Governance และสอดคล้องกับแนวคิด COBIT/NIST คือ คู่แรกระหว่าง Governance กับ Management โดย Governance กำหนดทิศทางและความรับผิดชอบ (Direction, Oversight & Accountability) ในระดับผู้บริหารเพื่อชี้ว่าองค์กรต้องการความมั่นคงปลอดภัยในระดับใด ส่วน Management นำแนวทางนั้นไปปฏิบัติจริงผ่านการจัดสรรคน งบประมาณ กระบวนการ และมาตรการควบคุมรายวัน พร้อมส่งหลักฐานผลลัพธ์กลับมาให้ทบทวน คู่ที่สองคือ Risk Management กับ Compliance โดย Compliance มุ่งพิสูจน์ว่าองค์กรทำตามกฎระเบียบ มาตรฐาน หรือสัญญาที่เกี่ยวข้องครบถ้วน แต่ Risk Management มุ่งประเมินและลดโอกาสเกิดความเสียหายจากภัยคุกคามจริง การทำเพียงให้ผ่านเกณฑ์ตรวจประเมิน (Check-the-box Compliance) จึงไม่สามารถทดแทนการบริหารความเสี่ยงได้ เพราะภัยคุกคามใหม่อาจเกิดนอกขอบเขตรายการตรวจเสมอ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Governance ↔ Management Feedback Loop: Governance sends policy direction and risk tolerances forward to Management; Management returns performance metrics, risk registers, and audit evidence back to Governance.",
+              "th": "วงจรเชื่อมระหว่าง Governance กับ Management: ฝั่ง Governance ส่งทิศทาง นโยบาย และขอบเขตความเสี่ยงที่ยอมรับได้ลงมา ส่วนฝั่ง Management นำไปปฏิบัติแล้วส่งข้อมูลตัวชี้วัดและหลักฐานกลับขึ้นไปให้กำกับติดตาม"
+            },
+            {
+              "en": "Why 'Compliant ≠ Secure' Matters in Practice: A retailer might pass an annual card-data audit for one payment subnet (Compliance) while leaving an unmonitored corporate VPN vulnerable to credential theft and ransomware (unmanaged Risk).",
+              "th": "ตัวอย่างจริงของคำว่า Compliant ≠ Secure: บริษัทอาจผ่านการตรวจมาตรฐานระบบรับชำระเงินในเครือข่ายย่อยหนึ่ง แต่ยังมี VPN พนักงานที่ไม่ได้เปิด MFA จนถูกขโมยรหัสผ่านและติด Ransomware ได้หากขาดการทำ Risk Management ภาพรวม"
+            },
+            {
+              "en": "Decision Ownership Check: Technical teams recommend and implement controls (Management), but accepting significant residual business risk or approving enterprise policy belongs to accountable leadership (Governance).",
+              "th": "การแยกอำนาจตัดสินใจ: ทีมเทคนิคและผู้จัดการเป็นผู้นำเสนอและติดตั้งมาตรการควบคุม (Management) แต่การอนุมัตินโยบายระดับองค์กรหรือการยอมรับความเสี่ยงสำคัญทางธุรกิจเป็นบทบาทของผู้มีอำนาจกำกับดูแล (Governance)"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Governance directs & oversees ('What & Who') ↔ Management executes ('How') · Compliance meets rules ≠ Risk Management reduces real exposure.",
+            "th": "Governance กำหนดทิศทางและกำกับดูแล ↔ Management นำไปปฏิบัติจริง · Compliance ทำตามข้อกำหนด ≠ Risk Management ลดความเสี่ยงจริง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "nist-csf-2-0",
+        "isaca-cobit"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-06-applied-grc-scenario",
+      "title": {
+        "en": "Applied Scenario: Structuring GRC for a Growing B2B Payment Platform",
+        "th": "สถานการณ์ประยุกต์: การวางระบบ GRC ให้แพลตฟอร์มชำระเงิน B2B ที่กำลังเติบโต"
+      },
+      "rendererId": "interactive",
+      "layoutId": "applied-scenario",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Scenario: NovaPay is expanding its B2B payroll and payment platform to enterprise banks. Right now, product squads buy security tools independently with conflicting rules, three teams answer client security questionnaires from separate spreadsheets, and bank prospects ask how NovaPay governs risk and maintains an ISMS. Which first step best applies GRC principles?",
+            "th": "สถานการณ์: บริษัท NovaPay กำลังขยายบริการระบบจ่ายเงินเดือนและชำระเงิน B2B ไปยังลูกค้ากลุ่มธนาคาร ปัจจุบันแต่ละทีมซื้อเครื่องมือความปลอดภัยแยกกันและตั้งกฎไม่ตรงกัน มี 3 แผนกตอบแบบสอบถามลูกค้าด้วยไฟล์ตารางคนละชุด และลูกค้าธนาคารต้องการเห็นระบบกำกับดูแลความเสี่ยงและการจัดการ ISMS ที่ชัดเจน ผู้บริหารควรเลือกแนวทางใดเป็นลำดับแรกตามหลัก GRC?"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Evaluation of four candidate organizational responses for NovaPay",
+            "th": "การวิเคราะห์ตัวเลือกการตัดสินใจทั้ง 4 แนวทางสำหรับสถานการณ์ของ NovaPay"
+          },
+          "columns": [
+            {
+              "en": "Candidate Decision",
+              "th": "ตัวเลือกการตัดสินใจ"
+            },
+            {
+              "en": "Proposed Action",
+              "th": "แนวทางที่เสนอให้ดำเนินการ"
+            },
+            {
+              "en": "GRC Principle Rationale",
+              "th": "เหตุผลวิเคราะห์ตามหลักการ GRC"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Option A — Tool-First Decentralization",
+                "th": "ตัวเลือก A — ซื้อเครื่องมือเพิ่มและแยกกันตั้งกฎตามทีม"
+              },
+              {
+                "en": "Buy additional endpoint and firewall tools immediately and let each product squad set its own security rules.",
+                "th": "สั่งซื้อเครื่องมือ Endpoint และ Firewall เพิ่มทันที แล้วให้แต่ละทีมพัฒนาตั้งกฎความปลอดภัยแยกกันเองเพื่อความคล่องตัว"
+              },
+              {
+                "en": "Less suitable: Buying tools without Governance direction, consistent policies, or clear accountability repeats the S06 failure modes of inconsistent practices and duplicated effort.",
+                "th": "ไม่เหมาะสม: การซื้อเครื่องมือเทคนิคเพิ่มโดยไม่มี Governance กำหนดทิศทาง นโยบายกลาง และผู้รับผิดชอบที่ชัดเจน จะซ้ำเติมปัญหาแนวปฏิบัติไม่สอดคล้องกันและไม่ตอบโจทย์ความต้องการด้าน ISMS ของลูกค้า"
+              }
+            ],
+            [
+              {
+                "en": "Option B — Misclassify ISO 27001 as Universal Law",
+                "th": "ตัวเลือก B — ประกาศว่า ISO/IEC 27001 เป็นกฎหมายบังคับทุกบริษัทและหยุดงานทั้งหมด"
+              },
+              {
+                "en": "Announce that ISO/IEC 27001 certification is a universal statutory law and halt all platform operations until certified.",
+                "th": "ประกาศว่าใบรับรอง ISO/IEC 27001 เป็นกฎหมายบังคับสำหรับทุกบริษัท และสั่งระงับการให้บริการทั้งหมดจนกว่าจะสอบผ่านใบรับรอง"
+              },
+              {
+                "en": "Less suitable: ISO/IEC 27001 is a voluntary international ISMS standard (driven here by business and client assurance, not universal criminal/statutory law), and halting business operations contradicts aligning security with business objectives.",
+                "th": "ไม่เหมาะสม: ISO/IEC 27001 เป็นมาตรฐานสากลด้าน ISMS ที่นำมาใช้ตามความต้องการทางธุรกิจหรือข้อตกลงลูกค้า ไม่ใช่กฎหมายบังคับสากลทุกองค์กร และการสั่งหยุดธุรกิจทั้งหมดขัดกับวัตถุประสงค์ข้อแรกของ GRC เรื่องการจัดแนวให้สอดคล้องกับ Business Objectives"
+              }
+            ],
+            [
+              {
+                "en": "Option C — Coordinated GRC Charter, Risk Alignment & ISMS Structure",
+                "th": "ตัวเลือก C — วางโครงสร้าง Governance ประสานงาน Risk/Compliance และจัดระบบด้วย ISMS + NIST CSF"
+              },
+              {
+                "en": "Establish executive Governance direction and accountable owners, map applicable legal/contractual requirements and key risks, and use ISO/IEC 27001 (ISMS) with NIST CSF risk outcomes to unify policies, controls, and shared audit evidence.",
+                "th": "กำหนดทิศทางและผู้รับผิดชอบผ่าน Governance รวบรวมความเสี่ยงหลักและข้อกำหนดที่ใช้บังคับจริง แล้วใช้แนวทาง ISO/IEC 27001 (ISMS) ร่วมกับกรอบความเสี่ยง NIST CSF เพื่อสร้าง Policies, Controls และหลักฐานกลางชุดเดียว"
+              },
+              {
+                "en": "Recommended GRC decision: Integrates Governance (direction, oversight, accountability), Risk Management, and applicable Compliance; uses ISO/IEC 27001 appropriately for an ISMS and NIST CSF for risk reduction; aligns with bank business goals and eliminates duplicated questionnaires.",
+                "th": "ทางเลือกที่เหมาะสมที่สุดตามหลัก GRC: เชื่อม Governance (ทิศทาง การกำกับดูแล และผู้รับผิดชอบ) เข้ากับ Risk และ Compliance ที่เกี่ยวข้องจริง เลือกใช้ ISO/IEC 27001 เพื่อสร้างระบบ ISMS อย่างต่อเนื่องควบคู่กับ NIST CSF เพื่อลดความเสี่ยง ช่วยตอบโจทย์เป้าหมายธุรกิจและลดงานตอบแบบสอบถามที่ซ้ำซ้อน"
+              }
+            ],
+            [
+              {
+                "en": "Option D — One-Time IT Checklist",
+                "th": "ตัวเลือก D — ให้ฝ่ายปฏิบัติการ IT ทำรายการตรวจครั้งเดียวแล้วถือว่าไร้ความเสี่ยง"
+              },
+              {
+                "en": "Ask IT operations to fill out a one-time compliance checklist so leadership can treat cybersecurity risk as permanently eliminated.",
+                "th": "มอบหมายให้ฝ่าย IT กรอกรายการตรวจ Compliance ครั้งเดียวให้ครบ เพื่อถือว่าความเสี่ยงไซเบอร์ถูกกำจัดหมดสิ้นโดยไม่ต้องทบทวนอีก"
+              },
+              {
+                "en": "Less suitable: Confuses operational IT tasks with executive Governance accountability and falls into the 'Compliant ≠ Secure' trap—a one-time checklist neither eliminates evolving risks nor sustains continual ISMS improvement.",
+                "th": "ไม่เหมาะสม: สับสนบทบาทงานปฏิบัติการรายวันกับความรับผิดชอบด้าน Governance ของผู้บริหาร และติดกับดัก Compliant ≠ Secure เพราะการตรวจตามรายการเพียงครั้งเดียวไม่ช่วยขจัดความเสี่ยงที่เปลี่ยนแปลงตลอดเวลาและขาดการปรับปรุงต่อเนื่อง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This authored enterprise case brings together every Objective 2.1 concept from Lesson 1. NovaPay exhibits classic symptoms of operating without coordinated GRC: fragmented squad rules (inconsistent security practices), scattered client questionnaires (duplication of security and compliance efforts), and unclear executive ownership (poor accountability). Option C succeeds because leadership first establishes Governance direction, oversight, and accountability linked to the business goal of winning enterprise bank trust, coordinates Risk Management with genuinely applicable Compliance duties (banking contracts and data regulations), and uses ISO/IEC 27001 for systematic ISMS establishment alongside NIST CSF risk management outcomes—turning three conflicting spreadsheet workflows into one coherent, reusable control and evidence baseline.",
+            "th": "กรณีศึกษาจำลองของบริษัท NovaPay นี้รวบรวมแนวคิดสำคัญทั้งหมดของ Objective 2.1 ในบทที่ 1 เข้าไว้ด้วยกัน จะเห็นว่าบริษัทกำลังเผชิญอาการคลาสสิกของการเติบโตโดยขาด GRC ที่ประสานกัน ทั้งการตั้งกฎแยกกันตามทีม (Inconsistent security practices) การตอบแบบสอบถามซ้ำซ้อนกัน 3 แผนก (Duplication of efforts) และการขาดเจ้าภาพระดับบริหาร (Poor accountability) ตัวเลือก C จึงถูกต้องที่สุด เพราะเริ่มจากการวาง Governance เพื่อกำหนดทิศทางและผู้รับผิดชอบให้สอดคล้องกับเป้าหมายธุรกิจที่ต้องการขยายฐานลูกค้าธนาคาร ประสานการประเมินความเสี่ยง (Risk) เข้ากับข้อกำหนดและสัญญาที่ใช้บังคับจริง (Compliance) และเลือกใช้ ISO/IEC 27001 ในการวางระบบ ISMS ร่วมกับกรอบลดความเสี่ยงของ NIST CSF อย่างถูกบทบาท"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Why Option A Fails: More tools without unified policy or ownership increase complexity without solving governance inconsistency.",
+              "th": "เหตุผลที่ตัวเลือก A ไม่ตอบโจทย์: การซื้อเครื่องมือเพิ่มโดยไม่มีนโยบายกลางและผู้รับผิดชอบยิ่งเพิ่มความซับซ้อนและแก้ปัญหาความไม่สอดคล้องไม่ได้"
+            },
+            {
+              "en": "Why Option B Fails: Confuses an international standard (ISO/IEC 27001) with statutory legislation and sacrifices business continuity/objectives instead of supporting them.",
+              "th": "เหตุผลที่ตัวเลือก B ไม่ตอบโจทย์: เข้าใจผิดว่ามาตรฐานสากล ISO/IEC 27001 เป็นกฎหมายบังคับทุกบริษัท และสั่งหยุดธุรกิจแทนที่จะจัดแนวความปลอดภัยให้เกื้อหนุนธุรกิจ"
+            },
+            {
+              "en": "Why Option D Fails: Delegates governance oversight entirely to IT operations and assumes a static checklist eliminates dynamic risk (violating both Governance vs. Management and Risk vs. Compliance).",
+              "th": "เหตุผลที่ตัวเลือก D ไม่ตอบโจทย์: โยนหน้าที่การกำกับดูแลให้ฝ่ายปฏิบัติการ IT เพียงลำพัง และเข้าใจผิดว่าการผ่าน Checklist ครั้งเดียวทำให้ความเสี่ยงเป็นศูนย์"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Lesson 1 Takeaway: Start with Governance direction & ownership → Coordinate Risk & applicable Compliance → Structure with the right framework (NIST CSF / ISO 27001 / COBIT).",
+            "th": "บทสรุป Lesson 1: เริ่มจากทิศทางและผู้รับผิดชอบ (Governance) → ประสานการจัดการความเสี่ยงและข้อกำหนดที่ใช้จริง (Risk & Compliance) → จัดโครงสร้างด้วยกรอบมาตรฐานที่ตรงวัตถุประสงค์"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-csf-2-0",
+        "iso-iec-27001",
+        "isaca-cobit"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "isc2-cc-2026-outline",
+      "title": "ISC2 Certified in Cybersecurity (CC) Exam Outline — Effective September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain 2: Security Governance (17.3%) — Objective 2.1: Plan Governance, Risk, and Compliance (GRC).",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "d2-master-notes",
+      "title": "Domain 2 — Security Governance: Complete Study Notes (Domain 2.md)",
+      "authority": "course",
+      "locator": "§§1–3 (L41–106) GRC definitions, 7 purposes, 7 benefits vs. 4 failure modes, NIST CSF / ISO 27001 / COBIT & legal-example boundary; §§24–25 (L585–672) exam comparisons.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/Domain 2.md"
+    },
+    {
+      "id": "d2-summary-notes",
+      "title": "Domain 2 Rapid Summary Notes (D2 sum.md)",
+      "authority": "course",
+      "locator": "§2.1 (L9–99) GRC keywords, 5 compliance obligation types, 7 purposes, and framework memory cues.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/D2 sum.md"
+    },
+    {
+      "id": "d2-course-transcript",
+      "title": "Domain 2 Instructor Lecture Transcript & Course Slides S01–S07 (DOMAIN 2.txt)",
+      "authority": "course",
+      "locator": "Lines 1–23 & Slide captures S01, S02, S05, S06, S07 (with D2-Q01 ASR remediation for 'COBIT' on line 21).",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/DOMAIN 2.txt"
+    },
+    {
+      "id": "nist-csf-2-0",
+      "title": "NIST Cybersecurity Framework (CSF) 2.0",
+      "authority": "technical-primary",
+      "locator": "Cross-cutting Govern (GV) function alongside Identify, Protect, Detect, Respond, and Recover for cybersecurity risk governance.",
+      "url": "https://www.nist.gov/cyberframework"
+    },
+    {
+      "id": "iso-iec-27001",
+      "title": "ISO/IEC 27001 — Information Security Management Systems",
+      "authority": "technical-primary",
+      "locator": "Requirements for establishing, implementing, maintaining, and continually improving an ISMS; voluntary certification model.",
+      "url": "https://www.iso.org/isoiec-27001-information-security.html"
+    },
+    {
+      "id": "isaca-cobit",
+      "title": "ISACA COBIT — Governance and Management Objectives",
+      "authority": "technical-primary",
+      "locator": "Enterprise IT governance and management framework; governance (evaluate, direct, monitor) vs. management (plan, build, run, monitor) distinction.",
+      "url": "https://www.isaca.org/resources/cobit"
+    }
+  ],
+  "assets": [],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/lesson-d2-01-grc-foundations-implementation.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Antigravity — Domain 2 Lesson 1 technical self-review; user review pending",
+      "reviewedAt": "2026-10-28"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Antigravity — Domain 2 Lesson 1 bilingual TH/EN self-review; user review pending",
+      "reviewedAt": "2026-10-28"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Antigravity — original authored HTML/CSS/SVG & verified source provenance; user review pending",
+      "reviewedAt": "2026-10-28"
+    }
+  }
+}

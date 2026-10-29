@@ -1,0 +1,46 @@
+✔ course shows five weighted domains and only genuinely validated lessons in totals (7.6264ms)
+✔ resume preserves saved slide and counts actual visits without mutating V1 data (2.5553ms)
+✔ unavailable and pending lesson bodies never expose resume or fabricated completion totals (0.3778ms)
+✔ stale saved slide falls back to first authored slide and unpublished records remain unlaunched (0.7625ms)
+✔ completed lessons remain completed and offer review rather than a false continue action (1.6831ms)
+✔ related objectives do not duplicate available lessons or domain completion (1.4729ms)
+✔ newest valid progress timestamp wins and malformed dates cannot steal Continue Learning (2.388ms)
+✔ wrong revision or malformed published body is unavailable even when availability was claimed (0.5078ms)
+✔ visits use IDs, clamp invalid positions and require all slides plus explicit acknowledgement (6.6828ms)
+✔ corrupt storage is preserved and memory fallback remains usable without touching quiz data (0.5923ms)
+✔ normal persistence validates unsupported schemas, handles quota errors and isolates lesson IDs (1.8711ms)
+✔ new and deleted-position readers start at the first authored slideOrder entry (0.3258ms)
+✔ stage fits the three approved desktop viewports without the old app width cap (1.4338ms)
+✔ mobile uses readable flow and fullscreen accounts for its accessible control dock (1.4533ms)
+✔ visible status messages reserve their height and extra gap without overrunning the viewport (0.2561ms)
+✔ overflow fallback waits for font readiness and stable measurements (2.8618ms)
+✔ fitting content remains a presentation and unmeasured/narrow constrained boxes do not trigger false fallback (1.5226ms)
+✔ late renderer completion and measurements cannot change a disposed stage (0.5331ms)
+✔ expanding slide content triggers a new fit check even when the fixed stage box does not resize (0.4133ms)
+✔ the fallback notice cannot cause a fit/reading oscillation on the same viewport and content (0.3894ms)
+✔ one toolbar replaces permanent filmstrip/select with a closed-by-default Slides overview (9.8993ms)
+✔ Slides offers bounded accessible previews, selects a specific slide, closes and preserves focus (5.2714ms)
+✔ long decks overview navigates to End without mounting hundreds of live previews (4.4664ms)
+✔ fullscreen exit restores the exact scenario selection without rebuilding its DOM (1.9953ms)
+✔ scenario state survives language and Text View transitions, without writing interaction data into progress (4.2525ms)
+✔ controls stay English, slide educational text stays bilingual, and only explicit completion finishes (4.4698ms)
+✔ three-zone toolbar layout has distinct left context, centered navigation, and right presentation tools (1.8375ms)
+✔ presentation CSS defines three-zone grid, deep slate theme tokens, and responsive dock (1.6361ms)
+✔ layout architecture: toolbar and workspace are strictly siblings, preventing canvas overlap (4.1073ms)
+✔ Gate B corrections: TH | EN language toggle, mobile touch targets, and natural mobile slide height (5.3019ms)
+✔ slide controller clamps, preserves ID, and maps legacy both and invalid language values to Thai (1.1875ms)
+✔ navigation ignores controls, modifiers, selected text and wheel, while Shift < and > work (0.9568ms)
+✔ fullscreen follows browser events, rejected requests leave normal mode, and dispose removes listeners (1.1859ms)
+✔ mounted viewer offers distinct optional previews, supports language controls and cleans up after leaving (8.8655ms)
+✔ large decks mount bounded optional previews while direct slide navigation and active item still work (3.4986ms)
+✔ finishing the final unvisited slide immediately enables acknowledgement without another navigation (2.6583ms)
+✔ fullscreen half-click navigation excludes a revealed control and preserves position after browser exit (1.8718ms)
+✔ language switching keeps keyboard focus on the same live language control (2.1585ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 368.1722

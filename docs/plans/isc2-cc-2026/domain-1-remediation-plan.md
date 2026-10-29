@@ -1,6 +1,6 @@
 # Domain 1 — targeted academic remediation plan
 
-Date: 2026-10-28. State: **Phases 1 and 2 implemented and targeted verification complete; human academic/bilingual acceptance pending.** D1-F01–F06 are resolved in introductory content; F07–F09 remain open. Verified Phase2 status below supersedes the historical proposal and earlier stop language. Production:12 Domain1 lessons /103 slides, preserving all101 original IDs. Domain1 final approval remains pending.
+Date: 2026-10-29. Latest state: **F01–F09 resolved and final targeted verification complete; Ready for Human Acceptance. Human Acceptance Pending, not Fully Accepted.** Domain1:12 lessons/103 slides; all101 original IDs preserved. The final status below supersedes historical proposals and open/deferred statements.
 
 Read with the [nine-finding academic register](domain-1-final-academic-audit.md), [official coverage matrix](domain-1-2026-coverage-matrix.md) and [exact bilingual replacements](domain-1-bilingual-audit.md). Counts are shared across all four reports: **0 Critical /2 High /4 Medium /3 Low**, nine unique findings. The two material bilingual qualifications and one minor omission are included in those counts.
 
@@ -88,3 +88,12 @@ D1-F01 is resolved for introductory teaching, assistant self-reviewed: new L01/9
 48/48 direct checks and20/20 selected Domain2 academic/rendering checks pass. The expanded185-check run passes171 with the same14 global-catalog expectation failures present at entry; five historical Vocabulary failures remain separate. Actual targeted browser inspection passed16 presentation,16 Reading and16 Info cases at1920×1080/1366×768 TH/EN; reload/direct Resume and four independent lesson positions passed. No new regressions found. Entry protection:1,752files,1,733 unchanged,19 scoped modifications,zero missing; Domain2 bytes/catalog outside D1, all101 old IDs and99 unaffected slide educational fields preserved.
 
 F02–F06 remain resolved by Phase1; F07–F09 and the dark-theme Lesson Info contrast issue remain deferred. Human academic/bilingual acceptance and final Domain1 approval are pending. No Lesson13, additional findings, Domain2 implementation or unrelated UI work is authorized by this completion. Stop for human review.
+
+
+## Final remediation and verification — 2026-10-29
+
+See [final sign-off report](domain-1-final-signoff-report.md) for the current closure register, exact files, source review,17-topic/six-AI-application judgments and human checklist. F07 restores tested off-site recovery in Thai; F08 replaces obsolete delivery prose with published-lesson pointers; F09 explicitly qualifies Rev2 as historical/withdrawn/superseded and corrects its original locator. F01–F06 remain resolved with their evidence preserved. The scoped Info foreground fix includes the recap table/reference boxes missed by the initial fix and discovered during continuation QA.
+
+Fresh expanded checks192/192 and selected Domain2 checks20/20 pass. The full103-slide TH/EN Node render/content/interaction sweep passes; all48 changed-explanation desktop cases and four revised-footer presentation cases are inspected, with prior unchanged evidence reused. Eight computed contrast cases, live feedback, direct Resume/reload and independent positions pass. The same five historical Vocabulary failures remain; no Domain2/bank/Vocabulary/Quiz work was changed. No material new regression remains in tested scope.
+
+Implementation, automated verification, assistant academic/bilingual audit and scoped desktop QA are complete. **Human acceptance remains pending.** Native fullscreen, other browser/device/assistive technology and independent academic/fluent-Thai approval remain limitations, not fabricated completed checks. Stop after this report; do not start another lesson or Domain2.

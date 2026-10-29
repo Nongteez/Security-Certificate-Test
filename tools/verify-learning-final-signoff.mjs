@@ -30,12 +30,13 @@ test('corrected explanations are fully exposed through Reading and Info in TH an
   assert.ok(text(host).includes(c.after[lang]),slide.id);assert.ok(text(info.querySelector(`[data-explanation-slide="${slide.id}"]`)).includes(c.after[lang]),slide.id);h.destroy();ih.destroy();
  }
 });
-test('pale Info definition/scenario boxes declare a scoped readable foreground',()=>{
+test('pale Info definition, scenario and recap boxes declare a scoped readable foreground',()=>{
  const css=fs.readFileSync('css/learning.css','utf8');
  const rule=css.match(/\/\* Info explanation contrast:[\s\S]*?\*\/\s*([^{}]+)\{([^}]+)\}/);assert.ok(rule,'Missing targeted contrast rule');
  assert.match(rule[1],/\.learning-screen \.learning-info-panel \[data-layout="concept-split"\]/);assert.match(rule[1],/\.learning-screen \.learning-info-panel \[data-layout="scenario-reveal"\]/);assert.match(rule[2],/color:\s*#0f172a\s*;/);
+ for(const selector of ['[data-layout="summary-grid"] .learning-table-scroll','[data-layout="summary-grid"] .learning-slide-body > ul > li'])assert.ok(rule[1].includes(selector),selector+' must not inherit a pale modal foreground');
  const luminance=hex=>{const rgb=hex.match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722;};
- for(const bg of ['f8fafc','fffbeb'])assert.ok((luminance(bg)+.05)/(luminance('0f172a')+.05)>=4.5);
+ for(const bg of ['ffffff','f8fafc','fffbeb'])assert.ok((luminance(bg)+.05)/(luminance('0f172a')+.05)>=4.5);
 });
 test('the entire current multi-domain catalog loads unique, reviewed, correctly mapped lesson files',()=>{
  assert.equal(validateCatalog(catalog).valid,true);assert.equal(d1.length,12);assert.equal(d1.reduce((n,l)=>n+l.slides.length,0),103);assert.ok(all.some(l=>l.domainId===2));assert.equal(new Set(all.map(l=>l.id)).size,all.length);
