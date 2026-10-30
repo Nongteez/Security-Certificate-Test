@@ -1,0 +1,248 @@
+/**
+ * Reusable Structured Content Components for Reading Notes
+ *
+ * Provides guaranteed-balanced, single-level sibling card renderers:
+ * - MFA Authentication Factors (Section 1.1.4)
+ * - Risk Treatment Strategies (Section 1.2.4)
+ * - Security Control Categories (Section 1.4.1)
+ *
+ * Guarantees:
+ * - Zero unclosed tags
+ * - Zero nested containers
+ * - Full reading-width responsive layout (no multi-column squishing)
+ * - Cohesive theme-driven typography and monochromatic blue accents
+ */
+
+function escapeHtml(text) {
+  if (!text) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// -----------------------------------------------------------------------------
+// 1. Multi-Factor Authentication (MFA) Factors Data & Renderer
+// -----------------------------------------------------------------------------
+export const mfaFactorsData = [
+  {
+    id: 'know',
+    factorNum: '01',
+    name: 'Something You Know',
+    subtitle: 'สิ่งที่คุณรู้ (Knowledge)',
+    iconSvg: '<path d="M21 2l-2 2m-2-2l-4 4-2-2-4 4 2 2-6 6a2.83 2.83 0 0 1-4-4l6-6-2-2 4-4 2 2 4-4z"></path>',
+    desc: 'ข้อมูลหรือความลับที่อยู่ในสมองของผู้ใช้',
+    examples: 'Password, PIN, Passphrase, คำถามกันลืม (Security Questions)',
+    weaknesses: 'เสี่ยงต่อการถูกเดา (Brute Force), แอบดู (Shoulder Surfing), หรือ Phishing'
+  },
+  {
+    id: 'have',
+    factorNum: '02',
+    name: 'Something You Have',
+    subtitle: 'สิ่งที่คุณมี (Possession)',
+    iconSvg: '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line>',
+    desc: 'วัตถุทางกายภาพที่ผู้ใช้เป็นผู้ครอบครองจริง',
+    examples: 'Smart Card, Hardware Token (RSA SecurID), FIDO2 Security Key (YubiKey), สมาร์ตโฟนรับ Authenticator App / SMS OTP',
+    weaknesses: null
+  },
+  {
+    id: 'are',
+    factorNum: '03',
+    name: 'Something You Are',
+    subtitle: 'สิ่งที่คุณเป็น (Inherence / ชีวมิติ)',
+    iconSvg: '<path d="M12 12c0-3 2.5-5.5 5.5-5.5S23 9 23 12"></path><path d="M12 12c0 3-2.5 5.5-5.5 5.5S1 15 1 12"></path><path d="M12 2a10 10 0 0 0-10 10"></path><path d="M12 22a10 10 0 0 0 10-10"></path>',
+    desc: 'คุณลักษณะทางชีวภาพหรือสรีรวิทยาเฉพาะบุคคล (Biometrics)',
+    examples: 'ลายนิ้วมือ (Fingerprint), สแกนใบหน้า (Face Recognition), สแกนม่านตา (Iris Scan), ลายเสียง (Voiceprint)',
+    weaknesses: null
+  },
+  {
+    id: 'where',
+    factorNum: '04',
+    name: 'Somewhere You Are',
+    subtitle: 'สถานที่ที่คุณอยู่ (Location Context)',
+    iconSvg: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>',
+    desc: 'บริบททางภูมิศาสตร์หรือตำแหน่งเครือข่ายที่ตรวจสอบได้',
+    examples: 'พิกัด GPS, IP Geolocation, การล็อกอินจากเครือข่ายสำนักงาน (Corporate IP Subnet)',
+    note: 'เป็นปัจจัยแวดล้อมเสริม (Contextual Factor)'
+  }
+];
+
+export function renderMfaCard(factor, inlineParser = (t) => t) {
+  const weaknessesHtml = factor.weaknesses
+    ? `<div class="reading-detail-row"><strong>จุดอ่อน:</strong> ${inlineParser(factor.weaknesses)}</div>`
+    : '';
+  const noteHtml = factor.note
+    ? `<div class="reading-detail-row reading-detail-note"><strong>หมายเหตุ:</strong> ${inlineParser(factor.note)}</div>`
+    : '';
+
+  return [
+    `<div class="reading-concept-item reading-concept-card reading-mfa-item" data-factor="${escapeHtml(factor.id)}">`,
+    `  <div class="reading-concept-header reading-mfa-header">`,
+    `    <div class="reading-concept-icon reading-mfa-icon" aria-hidden="true">`,
+    `      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${factor.iconSvg}</svg>`,
+    `    </div>`,
+    `    <span class="reading-concept-num reading-mfa-num">${escapeHtml(factor.factorNum)}</span>`,
+    `    <div class="reading-concept-title-group reading-mfa-title-group">`,
+    `      <h4 class="reading-concept-title reading-mfa-title">${escapeHtml(factor.name)}</h4>`,
+    `      <span class="reading-concept-subtitle reading-mfa-subtitle">${escapeHtml(factor.subtitle)}</span>`,
+    `    </div>`,
+    `  </div>`,
+    `  <p class="reading-concept-desc">${inlineParser(factor.desc)}</p>`,
+    `  <div class="reading-concept-details">`,
+    `    <div class="reading-detail-row"><strong>ตัวอย่าง:</strong> ${inlineParser(factor.examples)}</div>`,
+    weaknessesHtml ? `    ${weaknessesHtml}` : '',
+    noteHtml ? `    ${noteHtml}` : '',
+    `  </div>`,
+    `</div>`
+  ].filter(Boolean).join('\n');
+}
+
+export function renderMfaSection(factors = mfaFactorsData, inlineParser = (t) => t) {
+  return [
+    `<div class="reading-concept-grid reading-mfa-stack">`,
+    factors.map(f => renderMfaCard(f, inlineParser)).join('\n'),
+    `</div>`
+  ].join('\n');
+}
+
+// -----------------------------------------------------------------------------
+// 2. Risk Treatment (The 4 Responses) Data & Renderer
+// -----------------------------------------------------------------------------
+export const riskTreatmentsData = [
+  {
+    id: 'avoid',
+    treatmentNum: '01',
+    name: 'Risk Avoidance (การหลีกเลี่ยงความเสี่ยง)',
+    badge: 'Stop Doing It',
+    desc: 'ยกเลิกกิจกรรม ยุติการใช้ระบบ หรือเปลี่ยนแนวทางใหม่ทั้งหมด เพื่อกำจัดความเสี่ยงนั้นให้หมดสิ้นไปโดยสิ้นเชิง (Eliminate Risk completely)',
+    example: 'ยกเลิกการให้บริการในประเทศหรือพื้นที่ที่มีความเสี่ยงสงครามหรือภัยคุกคามไซเบอร์สูงมาก หรือหยุดใช้งานซอฟต์แวร์ของผู้จำหน่ายที่มีช่องโหว่ร้ายแรงและไม่ยอมออก Patch',
+    keywords: 'Eliminate, Terminate, Drop, Cancel activity, Stop service'
+  },
+  {
+    id: 'mitigate',
+    treatmentNum: '02',
+    name: 'Risk Mitigation (การลดความเสี่ยง)',
+    badge: 'Reduce Risk',
+    desc: 'การติดตั้งและบังคับใช้มาตรการควบคุมความปลอดภัย (Controls / Safeguards) เพื่อลดโอกาสเกิด (Likelihood) หรือลดขนาดผลกระทบ (Impact) ให้อยู่ในระดับที่องค์กรยอมรับได้',
+    example: 'ติดตั้ง Next-Gen Firewall, บังคับใช้ MFA ทุกการเข้าสู่ระบบ, ติดตั้ง Antivirus/EDR บนเครื่องผู้ใช้, อุดช่องโหว่ระบบ (Patch Management) อย่างสม่ำเสมอ',
+    keywords: 'Implement safeguards, Controls, Reduce, Lower likelihood/impact'
+  },
+  {
+    id: 'transfer',
+    treatmentNum: '03',
+    name: 'Risk Transfer / Sharing (การโอนความเสี่ยง)',
+    badge: 'Shift Financial Burden',
+    desc: 'การถ่ายโอนหรือแบ่งเบาภาระผลกระทบ (โดยเฉพาะความเสียหายทางการเงิน) ไปยังบุคคลภายนอก เช่น การทำประกันภัย หรือการทำสัญญาจ้างบริการ',
+    example: 'การซื้อกรมธรรม์ประกันภัยไซเบอร์ (Cyber Insurance) เพื่อชดเชยค่าสินไหม หรือการทำสัญญากับ Cloud Provider / MSSP พร้อมข้อตกลงระดับการให้บริการ (SLA)',
+    keywords: 'Cyber Insurance, Warranty, Third-party contract, Financial shift'
+  },
+  {
+    id: 'accept',
+    treatmentNum: '04',
+    name: 'Risk Acceptance (การยอมรับความเสี่ยง)',
+    badge: 'Live With It',
+    desc: 'รับรู้และยินยอมรับความเสี่ยงนั้นไว้โดยไม่ติดตั้งมาตรการควบคุมเพิ่มเติม มักใช้เมื่อระดับความเสี่ยงต่ำมาก หรือต้นทุนในการป้องกันสูงกว่ามูลค่าความเสียหาย (Safeguard Cost > ALE)',
+    example: 'เซิร์ฟเวอร์ทดสอบภายในไม่มีข้อมูลสำคัญและมี ALE เพียง \\$50/ปี หากซื้ออุปกรณ์ป้องกันราคา \\$2,000/ปี จึงไม่คุ้มค่า ผู้บริหารจึงลงนามอนุมัติรับความเสี่ยงอย่างเป็นทางการ',
+    keywords: 'Acknowledge, Retain, Tolerate, Formal executive sign-off, Low risk'
+  }
+];
+
+export function renderRiskTreatmentCard(treatment, inlineParser = (t) => t) {
+  return [
+    `<div class="reading-treatment-item reading-response-card ${escapeHtml(treatment.id)}" data-treatment="${escapeHtml(treatment.id)}">`,
+    `  <div class="reading-treatment-header">`,
+    `    <div class="reading-treatment-title-group">`,
+    `      <span class="reading-treatment-num">${escapeHtml(treatment.treatmentNum)}</span>`,
+    `      <h4 class="reading-treatment-title">${escapeHtml(treatment.name)}</h4>`,
+    `    </div>`,
+    `    <span class="reading-treatment-badge">${escapeHtml(treatment.badge)}</span>`,
+    `  </div>`,
+    `  <p class="reading-treatment-desc">${inlineParser(treatment.desc)}</p>`,
+    `  <div class="reading-treatment-details">`,
+    `    <div class="reading-detail-row"><strong>ตัวอย่างในโลกจริง:</strong> ${inlineParser(treatment.example)}</div>`,
+    `    <div class="reading-detail-row reading-treatment-keywords"><strong>คีย์เวิร์ดในข้อสอบ:</strong> <em>${escapeHtml(treatment.keywords)}</em></div>`,
+    `  </div>`,
+    `</div>`
+  ].join('\n');
+}
+
+export function renderRiskTreatmentSection(treatments = riskTreatmentsData, inlineParser = (t) => t) {
+  return [
+    `<div class="reading-response-grid reading-treatment-stack">`,
+    treatments.map(t => renderRiskTreatmentCard(t, inlineParser)).join('\n'),
+    `</div>`
+  ].join('\n');
+}
+
+// -----------------------------------------------------------------------------
+// 3. Security Control Categories Data & Renderer
+// -----------------------------------------------------------------------------
+export const controlCategoriesData = [
+  {
+    id: 'technical',
+    catNum: '01',
+    name: 'Technical (Logical) Controls',
+    subtitle: 'มาตรการทางเทคนิค / ลอจิคัล',
+    iconSvg: '<polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line>',
+    desc: 'ใช้เทคโนโลยี ซอฟต์แวร์ อุปกรณ์ฮาร์ดแวร์ หรือการตั้งค่าระบบเพื่อควบคุมการเข้าถึงและปกป้องระบบคอมพิวเตอร์',
+    examples: 'Firewalls, IPS, Access Control Lists (ACLs), Data Encryption, Antivirus/EDR, ระบบ Password & MFA'
+  },
+  {
+    id: 'managerial',
+    catNum: '02',
+    name: 'Managerial (Administrative) Controls',
+    subtitle: 'มาตรการเชิงบริหารจัดการ',
+    iconSvg: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>',
+    desc: 'นโยบาย กฎระเบียบ การวางแผนเชิงยุทธศาสตร์ และการกำกับดูแลของฝ่ายบริหารเพื่อควบคุมพฤติกรรมองค์กร',
+    examples: 'Information Security Policies, การประเมินความเสี่ยง (Risk Assessment), การตรวจประวัติพนักงาน (Background Checks), การจัดชั้นความลับข้อมูล, การแบ่งแยกหน้าที่ (Separation of Duties)'
+  },
+  {
+    id: 'operational',
+    catNum: '03',
+    name: 'Operational Controls',
+    subtitle: 'มาตรการเชิงปฏิบัติการ',
+    iconSvg: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>',
+    desc: 'กระบวนการ ขั้นตอนการทำงาน และกิจวัตรประจำวันที่ดำเนินการโดย <strong>คน (People & Daily Processes)</strong>',
+    examples: 'การอบรม Security Awareness Training, ขั้นตอนการทำ Backup & Recovery, การบริหารการเปลี่ยนแปลง (Change Management), การทำลายสื่อบันทึกข้อมูล'
+  },
+  {
+    id: 'physical',
+    catNum: '04',
+    name: 'Physical Controls',
+    subtitle: 'มาตรการทางกายภาพ',
+    iconSvg: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>',
+    desc: 'สิ่งกีดขวาง โครงสร้าง และอุปกรณ์ทางกายภาพที่จับต้องได้ เพื่อปกป้องอาคาร สถานที่ ทรัพย์สิน และบุคลากร',
+    examples: 'ประตูนิรภัย ล็อคประตู รั้วกั้น (Fences), รปภ. (Guards), กล้องวงจรปิด (CCTV), ประตูกลักกันคนเดินตาม (Mantraps), สัญญาณเตือนภัย (Alarms)'
+  }
+];
+
+export function renderControlCategoryCard(cat, inlineParser = (t) => t) {
+  return [
+    `<div class="reading-concept-item reading-concept-card reading-category-item" data-category="${escapeHtml(cat.id)}">`,
+    `  <div class="reading-concept-header">`,
+    `    <div class="reading-concept-icon" aria-hidden="true">`,
+    `      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${cat.iconSvg}</svg>`,
+    `    </div>`,
+    `    <div class="reading-concept-title-group">`,
+    `      <span class="reading-concept-num">${escapeHtml(cat.catNum)}</span>`,
+    `      <h4 class="reading-concept-title">${escapeHtml(cat.name)}</h4>`,
+    `      <span class="reading-concept-subtitle">${escapeHtml(cat.subtitle)}</span>`,
+    `    </div>`,
+    `  </div>`,
+    `  <p class="reading-concept-desc">${inlineParser(cat.desc)}</p>`,
+    `  <div class="reading-concept-details">`,
+    `    <div class="reading-detail-row"><strong>ตัวอย่าง:</strong> ${inlineParser(cat.examples)}</div>`,
+    `  </div>`,
+    `</div>`
+  ].join('\n');
+}
+
+export function renderControlCategorySection(categories = controlCategoriesData, inlineParser = (t) => t) {
+  return [
+    `<div class="reading-concept-grid reading-category-stack">`,
+    categories.map(c => renderControlCategoryCard(c, inlineParser)).join('\n'),
+    `</div>`
+  ].join('\n');
+}

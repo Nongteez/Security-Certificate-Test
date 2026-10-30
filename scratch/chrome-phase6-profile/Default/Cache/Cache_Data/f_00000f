@@ -1,0 +1,572 @@
+/**
+ * Lightweight, safe Vanilla Markdown Parser for Reading Notes.
+ *
+ * Supports:
+ * - Headings (H1–H4) with automatic or pre-defined ID anchors
+ * - Paragraphs with Thai-English word wrapping
+ * - Fenced code blocks with HTML escaping
+ * - Blockquotes (including nested lines)
+ * - Markdown tables with header and alignment support
+ * - Unordered, ordered, and nested lists
+ * - Math notation ($...$ and $$...$$) styled cleanly
+ * - Inline formatting: bold, italic, code, links
+ * - Safe HTML passthrough for structural anchors (<section>, <div>)
+ * - Structured Scenario Blocks (:::scenario ... :::) via scenario-component
+ */
+
+import { renderInlineMath, renderBlockMath } from './math-renderer.js';
+import { diagrams } from './diagram-generator.js';
+import { parseScenarioBlock, renderScenarioCard } from './scenario-component.js';
+import {
+  mfaFactorsData,
+  renderMfaSection,
+  riskTreatmentsData,
+  renderRiskTreatmentSection,
+  controlCategoriesData,
+  renderControlCategorySection
+} from './content-components.js';
+
+const VALID_HTML_TAG_REGEX = /^<\/?(?:section|div|svg|g|path|circle|rect|line|polyline|polygon|text|aside|header|footer|main|article|p|span|strong|em|b|i|br|small|h[1-6]|ul|ol|li|table|thead|tbody|tfoot|tr|th|td|blockquote|pre|code)(?:\s+[^>]*)?>/i;
+
+function escapeHtml(text) {
+  if (!text) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+export function parseInline(text) {
+  if (!text) return '';
+
+  let html = text;
+
+  // Remove any inline HTML comments first so they never leak as visible text
+  html = html.replace(/<!--[\s\S]*?-->/g, '');
+
+  // Protect code spans first
+  const codeSpans = [];
+  html = html.replace(/`([^`]+)`/g, (match, code) => {
+    const placeholder = `__CODE_SPAN_${codeSpans.length}__`;
+    codeSpans.push(`<code>${escapeHtml(code)}</code>`);
+    return placeholder;
+  });
+
+  // Protect all valid structural and inline HTML tags so they are NEVER corrupted by bracket escaping
+  const safeTags = [];
+  html = html.replace(/<\/?([a-zA-Z0-9\-]+)(?:\s+[^>]*)?>/gi, (tag, tagName) => {
+    const lower = tagName.toLowerCase();
+    if (/^(section|div|svg|g|path|circle|rect|line|polyline|polygon|text|aside|header|footer|main|article|p|span|strong|em|b|i|br|small|var|kbd|code|pre|h[1-6]|ul|ol|li|table|thead|tbody|tfoot|tr|th|td|blockquote|a)$/.test(lower)) {
+      const placeholder = `__SAFE_TAG_${safeTags.length}__`;
+      safeTags.push(tag);
+      return placeholder;
+    }
+    return tag;
+  });
+
+  // Escape any remaining raw / unsafe HTML brackets to prevent XSS / script injection
+  html = html.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  // Protect literal currency amounts ($50, $2,000, $10,000, etc.) so they are not hijacked into KaTeX
+  const currencies = [];
+  html = html.replace(/(?<=\s|^|\()(?<!\\)\$(\d[\d,]*(?:\.\d+)?(?:\/[^\s.,)]+)?)/g, (match, amount) => {
+    const placeholder = `__CURRENCY_${currencies.length}__`;
+    currencies.push(`$${amount}`);
+    return placeholder;
+  });
+
+  // Math inline: $...$ with support for escaped dollars (\$ inside math or text)
+  html = html.replace(/(?<!\\)\$((?:\\\$|[^$])+?)(?<!\\)\$/g, (match, math) => {
+    return renderInlineMath(math);
+  });
+
+  // Restore currencies
+  currencies.forEach((c, idx) => {
+    html = html.replace(`__CURRENCY_${idx}__`, c);
+  });
+
+  // Unescape literal \$ outside math mode
+  html = html.replace(/\\(\$)/g, '$1');
+
+  // Bold & Italic: ***text***
+  html = html.replace(/\*\*\*([^*]+)\*\*\*/g, '<strong><em>$1</em></strong>');
+
+  // Bold: **text**
+  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+  // Italic: *text* (ensure not part of math or list)
+  html = html.replace(/(^|[^*])\*([^*]+)\*/g, '$1<em>$2</em>');
+
+  // Links: [text](url) - strictly validate url protocols (http, https, #)
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, label, href) => {
+    const cleanHref = href.trim();
+    if (/^(https?:\/\/|#|\.\/)/i.test(cleanHref)) {
+      const isExternal = /^https?:\/\//i.test(cleanHref);
+      const attrs = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+      return `<a href="${escapeHtml(cleanHref)}"${attrs}>${label}</a>`;
+    }
+    return label;
+  });
+
+  // Restore safe inline tags
+  safeTags.forEach((tag, idx) => {
+    html = html.replace(`__SAFE_TAG_${idx}__`, tag);
+  });
+
+  // Restore code spans
+  codeSpans.forEach((span, idx) => {
+    html = html.replace(`__CODE_SPAN_${idx}__`, span);
+  });
+
+  return html;
+}
+
+function renderBlockquoteContent(quoteLines) {
+  const chunks = [];
+  let currentList = null;
+  let currentPara = [];
+
+  function flushPara() {
+    if (currentPara.length > 0) {
+      chunks.push(`<p>${currentPara.map(parseInline).join('<br>')}</p>`);
+      currentPara = [];
+    }
+  }
+
+  function flushList() {
+    if (currentList) {
+      chunks.push(`<${currentList.tag} class="reading-blockquote-list">${currentList.items.map(it => `<li>${parseInline(it)}</li>`).join('')}</${currentList.tag}>`);
+      currentList = null;
+    }
+  }
+
+  for (const line of quoteLines) {
+    const trimmedLine = line.trim();
+    if (!trimmedLine) {
+      flushPara();
+      flushList();
+      continue;
+    }
+
+    const bulletMatch = trimmedLine.match(/^[-*•]\s+(.+)$/);
+    const numMatch = trimmedLine.match(/^(\d+)\.\s+(.+)$/);
+
+    if (bulletMatch) {
+      flushPara();
+      if (!currentList || currentList.tag !== 'ul') {
+        flushList();
+        currentList = { tag: 'ul', items: [] };
+      }
+      currentList.items.push(bulletMatch[1]);
+    } else if (numMatch) {
+      flushPara();
+      if (!currentList || currentList.tag !== 'ol') {
+        flushList();
+        currentList = { tag: 'ol', items: [] };
+      }
+      currentList.items.push(numMatch[2]);
+    } else {
+      flushList();
+      currentPara.push(trimmedLine);
+    }
+  }
+
+  flushPara();
+  flushList();
+
+  return chunks.length > 0 ? chunks.join('\n') : '<p></p>';
+}
+
+function renderListTree(listLines, parseInline) {
+  const root = { type: 'root', children: [] };
+  const stack = [{ node: root, indent: -1 }];
+
+  for (let idx = 0; idx < listLines.length; idx++) {
+    const rawLine = listLines[idx];
+    const match = rawLine.match(/^(\s*)([*+-]|\d+\.)\s+(.+)$/);
+    if (match) {
+      const indent = match[1].length;
+      const isOrdered = /^\d+\./.test(match[2]);
+      const text = match[3];
+
+      while (stack.length > 1 && indent <= stack[stack.length - 1].indent) {
+        stack.pop();
+      }
+
+      const parent = stack[stack.length - 1].node;
+      const itemNode = {
+        isOrdered,
+        text: parseInline(text),
+        children: []
+      };
+
+      if (!parent.listType) {
+        parent.listType = isOrdered ? 'ol' : 'ul';
+      }
+
+      parent.children.push(itemNode);
+      stack.push({ node: itemNode, indent });
+    } else if (/^\s{2,}/.test(rawLine) && stack.length > 1) {
+      const currentItem = stack[stack.length - 1].node;
+      currentItem.text += '<br>' + parseInline(rawLine.trim());
+    }
+  }
+
+  function serialize(node) {
+    if (!node.children || node.children.length === 0) return '';
+    const tag = node.listType || (node.children[0].isOrdered ? 'ol' : 'ul');
+    const itemsHtml = node.children.map(item => {
+      const subHtml = serialize(item);
+      return `<li>${item.text}${subHtml}</li>`;
+    }).join('');
+    return `<${tag}>${itemsHtml}</${tag}>`;
+  }
+
+  return serialize(root);
+}
+
+/**
+ * Formats bilingual terminology table cells where an English technical term
+ * is followed by its Thai translation in parentheses into a stacked 2-line layout.
+ *
+ * Requirements:
+ * 1. English technical term on the first line in bold (<strong>).
+ * 2. Thai translation, including parentheses, on the second line in semibold.
+ * 3. Narrowly scoped to pure term cells, protecting definitions, examples, and math.
+ */
+export function formatBilingualTermCell(rawCell) {
+  if (!rawCell) return null;
+  const trimmed = rawCell.trim();
+
+  const regex = /^(?:\*\*\s*([A-Za-z0-9\s\/\-_–—.]+?)\s*\(([\u0E00-\u0E7F\s\/\-_–—.]+?)\)\s*\*\*|\*\*\s*([A-Za-z0-9\s\/\-_–—.]+?)\s*\*\*\s*\(([\u0E00-\u0E7F\s\/\-_–—.]+?)\)|([A-Za-z0-9\s\/\-_–—.]+?)\s*\(([\u0E00-\u0E7F\s\/\-_–—.]+?)\))$/;
+
+  const match = trimmed.match(regex);
+  if (!match) return null;
+
+  const en = (match[1] || match[3] || match[5]).trim();
+  const th = (match[2] || match[4] || match[6]).trim();
+
+  // Guard: en must contain at least one Latin letter, th must contain at least one Thai letter
+  if (!/[A-Za-z]/.test(en)) return null;
+  if (!/[\u0E00-\u0E7F]/.test(th)) return null;
+
+  return `<div class="reading-bilingual-term"><span class="reading-term-en"><strong>${escapeHtml(en)}</strong></span><span class="reading-term-th">(${escapeHtml(th)})</span></div>`;
+}
+
+export function parseMarkdown(markdown) {
+  if (!markdown) return '';
+
+  // Globally strip all HTML comments before line processing
+  const cleanMarkdown = markdown.replace(/<!--[\s\S]*?-->/g, '');
+  const lines = cleanMarkdown.replace(/\r\n/g, '\n').split('\n');
+  const result = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // HTML Comments fallback guard: Ignore any remaining orphaned comment delimiters
+    if (trimmed.startsWith('<!--')) {
+      while (i < lines.length && !lines[i].includes('-->')) {
+        i++;
+      }
+      i++; // Skip line containing -->
+      continue;
+    }
+
+    // Raw script / iframe tag injection prevention
+    if (/<(script|iframe|object|embed)\b/i.test(trimmed)) {
+      result.push(`<p>${escapeHtml(trimmed)}</p>`);
+      i++;
+      continue;
+    }
+
+    // Structured Scenario Block: :::scenario ... :::
+    if (trimmed.startsWith(':::scenario')) {
+      const scenarioLines = [];
+      i++;
+      while (i < lines.length && !lines[i].trim().startsWith(':::')) {
+        scenarioLines.push(lines[i]);
+        i++;
+      }
+      if (i < lines.length && lines[i].trim().startsWith(':::')) {
+        i++; // Skip closing :::
+      }
+      const parsedData = parseScenarioBlock(scenarioLines);
+      result.push(renderScenarioCard(parsedData, parseInline));
+      continue;
+    }
+
+    // Structured MFA Factors Block: :::mfa-factors ... :::
+    if (trimmed === ':::mfa-factors' || trimmed.startsWith(':::mfa-factors')) {
+      i++;
+      while (i < lines.length && !lines[i].trim().startsWith(':::')) {
+        i++;
+      }
+      if (i < lines.length && lines[i].trim().startsWith(':::')) {
+        i++;
+      }
+      result.push(renderMfaSection(mfaFactorsData, parseInline));
+      continue;
+    }
+
+    // Structured Risk Treatment Block: :::risk-treatment ... :::
+    if (trimmed === ':::risk-treatment' || trimmed.startsWith(':::risk-treatment')) {
+      i++;
+      while (i < lines.length && !lines[i].trim().startsWith(':::')) {
+        i++;
+      }
+      if (i < lines.length && lines[i].trim().startsWith(':::')) {
+        i++;
+      }
+      result.push(renderRiskTreatmentSection(riskTreatmentsData, parseInline));
+      continue;
+    }
+
+    // Structured Control Categories Block: :::control-categories ... :::
+    if (trimmed === ':::control-categories' || trimmed.startsWith(':::control-categories')) {
+      i++;
+      while (i < lines.length && !lines[i].trim().startsWith(':::')) {
+        i++;
+      }
+      if (i < lines.length && lines[i].trim().startsWith(':::')) {
+        i++;
+      }
+      result.push(renderControlCategorySection(controlCategoriesData, parseInline));
+      continue;
+    }
+
+    // Semantic Diagram Annotation (<div class="reading-semantic-diagram" data-diagram="..."></div>)
+    const diagMatch = trimmed.match(/^<div\s+class="reading-semantic-diagram"\s+data-diagram="([^"]+)"[^>]*><\/div>$/i);
+    if (diagMatch) {
+      const diagKey = diagMatch[1];
+      if (diagrams[diagKey]) {
+        result.push(diagrams[diagKey].trim());
+      } else {
+        result.push(trimmed);
+      }
+      i++;
+      continue;
+    }
+
+    // Safe structural HTML & SVG tags
+    if (VALID_HTML_TAG_REGEX.test(trimmed) || /^<div\s+id="[^"]+"\s+class="[^"]+"><\/div>\s*$/i.test(trimmed)) {
+      // If the HTML line contains inline math $...$, render math
+      let processed = trimmed;
+      if (processed.includes('$')) {
+        processed = processed.replace(/(?<!\\)\$((?:\\\$|[^$])+?)(?<!\\)\$/g, (match, math) => {
+          return renderInlineMath(math);
+        });
+      }
+      result.push(processed);
+      i++;
+      continue;
+    }
+
+    // Fenced Code Block: ```...```
+    if (trimmed.startsWith('```')) {
+      const lang = trimmed.slice(3).trim() || 'text';
+      const codeLines = [];
+      i++;
+      while (i < lines.length && !lines[i].trim().startsWith('```')) {
+        codeLines.push(lines[i]);
+        i++;
+      }
+      i++; // Skip closing ```
+      result.push(`<pre class="reading-code-block"><code class="language-${escapeHtml(lang)}">${escapeHtml(codeLines.join('\n'))}</code></pre>`);
+      continue;
+    }
+
+    // Math display block: $$...$$
+    if (trimmed.startsWith('$$')) {
+      let mathContent = '';
+      if (trimmed.endsWith('$$') && trimmed.length > 4) {
+        mathContent = trimmed.slice(2, -2).trim();
+        i++;
+      } else {
+        const mathLines = [trimmed.slice(2)];
+        i++;
+        while (i < lines.length && !lines[i].trim().endsWith('$$')) {
+          mathLines.push(lines[i]);
+          i++;
+        }
+        if (i < lines.length) {
+          mathLines.push(lines[i].trim().replace(/\$\$$/, ''));
+          i++;
+        }
+        mathContent = mathLines.join(' ').trim();
+      }
+      result.push(renderBlockMath(mathContent));
+      continue;
+    }
+
+    // Horizontal Rule: --- or ***
+    if (/^(\-{3,}|\*{3,})$/.test(trimmed)) {
+      result.push('<hr class="reading-divider">');
+      i++;
+      continue;
+    }
+
+    // Headings: #, ##, ###, #### with optional {#id} anchor
+    const headingMatch = line.match(/^(#{1,4})\s+(.+)$/);
+    if (headingMatch) {
+      const level = headingMatch[1].length;
+      let headingText = headingMatch[2].trim();
+      let customId = '';
+      const anchorMatch = headingText.match(/\s+\{#([a-zA-Z0-9_\-]+)\}\s*$/);
+      if (anchorMatch) {
+        customId = anchorMatch[1];
+        headingText = headingText.slice(0, anchorMatch.index).trim();
+      }
+      const idAttr = customId ? ` id="${escapeHtml(customId)}"` : '';
+      result.push(`<h${level}${idAttr}>${parseInline(headingText)}</h${level}>`);
+      i++;
+      continue;
+    }
+
+    // Blockquote: > text
+    if (trimmed.startsWith('>')) {
+      const quoteLines = [];
+      while (i < lines.length && lines[i].trim().startsWith('>')) {
+        quoteLines.push(lines[i].trim().replace(/^>\s?/, ''));
+        i++;
+      }
+      result.push(`<blockquote class="reading-blockquote">${renderBlockquoteContent(quoteLines)}</blockquote>`);
+      continue;
+    }
+
+    // Markdown Table: line starting with |
+    if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+      const tableLines = [];
+      while (i < lines.length && lines[i].trim().startsWith('|') && lines[i].trim().endsWith('|')) {
+        tableLines.push(lines[i].trim());
+        i++;
+      }
+      if (tableLines.length >= 2) {
+        const headerCells = tableLines[0]
+          .slice(1, -1)
+          .split('|')
+          .map(c => parseInline(c.trim()));
+        
+        // Skip separator line (tableLines[1])
+        const bodyRows = tableLines.slice(2).map(rowLine => {
+          return rowLine
+            .slice(1, -1)
+            .split('|')
+            .map(c => c.trim());
+        });
+
+        let tableHtml = '<div class="reading-table-wrapper"><table class="reading-table"><thead><tr>';
+        headerCells.forEach(th => {
+          tableHtml += `<th scope="col">${th}</th>`;
+        });
+        tableHtml += '</tr></thead><tbody>';
+        bodyRows.forEach(row => {
+          tableHtml += '<tr>';
+          row.forEach(cell => {
+            const bilingualHtml = formatBilingualTermCell(cell);
+            if (bilingualHtml) {
+              tableHtml += `<td>${bilingualHtml}</td>`;
+            } else {
+              tableHtml += `<td>${parseInline(cell)}</td>`;
+            }
+          });
+          tableHtml += '</tr>';
+        });
+        tableHtml += '</tbody></table></div>';
+        result.push(tableHtml);
+        continue;
+      }
+    }
+
+    // Lists: Unordered (- or *) or Ordered (1.)
+    if (/^\s*([*+-]|\d+\.)\s+/.test(line)) {
+      const listLines = [];
+
+      while (i < lines.length) {
+        const currentLine = lines[i];
+        const trimmedLine = currentLine.trim();
+        if (trimmedLine === '') {
+          // Lookahead across blank lines to preserve loose lists
+          let nextIdx = i + 1;
+          while (nextIdx < lines.length && lines[nextIdx].trim() === '') {
+            nextIdx++;
+          }
+          if (nextIdx < lines.length) {
+            const nextLine = lines[nextIdx];
+            const nextTrimmed = nextLine.trim();
+            // Stop if next line is a structural block, heading, table, directive, or callout
+            if (nextTrimmed.startsWith('```') ||
+                nextTrimmed.startsWith('$$') ||
+                nextTrimmed.startsWith('<') ||
+                nextTrimmed.startsWith('#') ||
+                nextTrimmed.startsWith('|') ||
+                nextTrimmed.startsWith(':::')) {
+              break;
+            }
+            // Check if next non-blank line is another list item or indented sub-line
+            if (/^\s*([*+-]|\d+\.)\s+/.test(nextLine) || /^\s{2,}/.test(nextLine)) {
+              i = nextIdx;
+              continue;
+            }
+          }
+          break;
+        }
+        // Do not absorb nested code blocks, math, structural HTML, headings, tables, or directives
+        if (trimmedLine.startsWith('```') ||
+            trimmedLine.startsWith('$$') ||
+            trimmedLine.startsWith('<') ||
+            trimmedLine.startsWith('#') ||
+            trimmedLine.startsWith('|') ||
+            trimmedLine.startsWith(':::')) {
+          break;
+        }
+
+        if (/^\s*([*+-]|\d+\.)\s+/.test(currentLine) || /^\s{2,}/.test(currentLine)) {
+          listLines.push(currentLine);
+          i++;
+        } else {
+          break;
+        }
+      }
+      if (listLines.length > 0) {
+        result.push(renderListTree(listLines, parseInline));
+      }
+      continue;
+    }
+
+    // Blank lines
+    if (trimmed === '') {
+      i++;
+      continue;
+    }
+
+    // Regular Paragraph
+    const paraLines = [];
+    while (i < lines.length) {
+      const curTrimmed = lines[i].trim();
+      if (curTrimmed === '') break;
+      if (curTrimmed.startsWith('<!--')) break;
+      if (curTrimmed.startsWith('#')) break;
+      if (curTrimmed.startsWith('```')) break;
+      if (curTrimmed.startsWith('$$')) break;
+      if (curTrimmed.startsWith('>')) break;
+      if (curTrimmed.startsWith('|')) break;
+      if (curTrimmed.startsWith(':::')) break;
+      if (/^\s*([*+-]|\d+\.)\s+/.test(lines[i])) break;
+      if (VALID_HTML_TAG_REGEX.test(curTrimmed)) break;
+      if (/^(\-{3,}|\*{3,})$/.test(curTrimmed)) break;
+
+      paraLines.push(curTrimmed);
+      i++;
+    }
+    if (paraLines.length > 0) {
+      result.push(`<p>${parseInline(paraLines.join(' '))}</p>`);
+    }
+  }
+
+  return result.join('\n');
+}

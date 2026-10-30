@@ -405,6 +405,12 @@
   gap: 2px;
 }
 
+.reading-nav [hidden],
+.reading-nav-topics[hidden],
+.reading-nav-sub-tree[hidden] {
+  display: none !important;
+}
+
 .reading-nav-topic-item {
   padding: 1px 0;
 }
@@ -1056,6 +1062,20 @@ ol + blockquote {
   font-weight: 400;
 }
 
+.reading-math-formula {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 600px) {
+  .reading-math-formula {
+    white-space: normal;
+    word-break: break-word;
+  }
+}
+
 /* ===== Technical Formula Cards ===== */
 .reading-formula-card {
   margin: 24px 0;
@@ -1171,8 +1191,16 @@ ol + blockquote {
   display: block;
 }
 
-.reading-diagram-card[data-diagram="controlTimeline"] .reading-diagram-svg,
 .reading-diagram-card[data-diagram="documentHierarchy"] .reading-diagram-svg {
+  max-width: 860px;
+  width: 100%;
+}
+
+.reading-diagram-card[data-diagram="controlTimeline"] .reading-diagram-svg,
+.reading-diagram-card[data-diagram="grcAlignment"] .reading-diagram-svg,
+.reading-diagram-card[data-diagram="bcVsDrScope"] .reading-diagram-svg,
+.reading-diagram-card[data-diagram="rtoRpoTimeline"] .reading-diagram-svg,
+.reading-diagram-card[data-diagram="effectivenessHierarchy"] .reading-diagram-svg {
   max-width: 860px;
   width: 100%;
 }
@@ -1374,6 +1402,199 @@ ol + blockquote {
   font-family: 'Noto Sans Thai', sans-serif;
   font-size: 11px;
   fill: var(--text-dim);
+}
+
+.diag-text-action {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  fill: #93c5fd;
+}
+
+.diag-action-amber {
+  fill: #fbbf24;
+}
+
+[data-theme="light"] .diag-text-action,
+.light-theme .diag-text-action {
+  fill: #1d4ed8;
+}
+
+[data-theme="light"] .diag-action-amber,
+.light-theme .diag-action-amber {
+  fill: #b45309;
+}
+
+/* Access Control Models (3.2.8) Dedicated High-Contrast Labels */
+.diag-label-dac { fill: #93c5fd; }
+.diag-label-mac { fill: #fca5a5; }
+.diag-label-rbac { fill: #6ee7b7; }
+.diag-label-abac { fill: #c4b5fd; }
+
+[data-theme="light"] .diag-label-dac, .light-theme .diag-label-dac { fill: #1d4ed8; }
+[data-theme="light"] .diag-label-mac, .light-theme .diag-label-mac { fill: #b91c1c; }
+[data-theme="light"] .diag-label-rbac, .light-theme .diag-label-rbac { fill: #047857; }
+[data-theme="light"] .diag-label-abac, .light-theme .diag-label-abac { fill: #6d28d9; }
+
+/* Domain 2 Diagram High-Contrast Secondary Text (D2-R03) */
+[data-diagram="grcAlignment"] .diag-text-sub,
+[data-diagram="bcVsDrScope"] .diag-text-sub,
+[data-diagram="rtoRpoTimeline"] .diag-text-sub,
+[data-diagram="effectivenessHierarchy"] .diag-text-sub {
+  font-weight: 500;
+}
+
+[data-theme="light"] [data-diagram="grcAlignment"] .diag-text-sub,
+[data-theme="light"] [data-diagram="bcVsDrScope"] .diag-text-sub,
+[data-theme="light"] [data-diagram="rtoRpoTimeline"] .diag-text-sub,
+[data-theme="light"] [data-diagram="effectivenessHierarchy"] .diag-text-sub,
+.light-theme [data-diagram="grcAlignment"] .diag-text-sub,
+.light-theme [data-diagram="bcVsDrScope"] .diag-text-sub,
+.light-theme [data-diagram="rtoRpoTimeline"] .diag-text-sub,
+.light-theme [data-diagram="effectivenessHierarchy"] .diag-text-sub {
+  fill: #334155;
+}
+
+[data-theme="dark"] [data-diagram="grcAlignment"] .diag-text-sub,
+[data-theme="dark"] [data-diagram="bcVsDrScope"] .diag-text-sub,
+[data-theme="dark"] [data-diagram="rtoRpoTimeline"] .diag-text-sub,
+[data-theme="dark"] [data-diagram="effectivenessHierarchy"] .diag-text-sub,
+.dark-theme [data-diagram="grcAlignment"] .diag-text-sub,
+.dark-theme [data-diagram="bcVsDrScope"] .diag-text-sub,
+.dark-theme [data-diagram="rtoRpoTimeline"] .diag-text-sub,
+.dark-theme [data-diagram="effectivenessHierarchy"] .diag-text-sub {
+  fill: #e2e8f0;
+}
+
+/* Domain 2 Diagram High-Contrast Labels (D2-R03) */
+[data-diagram="grcAlignment"] .diag-text-label,
+[data-diagram="bcVsDrScope"] .diag-text-label,
+[data-diagram="rtoRpoTimeline"] .diag-text-label,
+[data-diagram="effectivenessHierarchy"] .diag-text-label {
+  font-weight: 500;
+}
+
+[data-theme="light"] [data-diagram="grcAlignment"] .diag-text-label,
+[data-theme="light"] [data-diagram="bcVsDrScope"] .diag-text-label,
+[data-theme="light"] [data-diagram="rtoRpoTimeline"] .diag-text-label,
+[data-theme="light"] [data-diagram="effectivenessHierarchy"] .diag-text-label,
+.light-theme [data-diagram="grcAlignment"] .diag-text-label,
+.light-theme [data-diagram="bcVsDrScope"] .diag-text-label,
+.light-theme [data-diagram="rtoRpoTimeline"] .diag-text-label,
+.light-theme [data-diagram="effectivenessHierarchy"] .diag-text-label {
+  fill: #475569;
+}
+
+[data-theme="dark"] [data-diagram="grcAlignment"] .diag-text-label,
+[data-theme="dark"] [data-diagram="bcVsDrScope"] .diag-text-label,
+[data-theme="dark"] [data-diagram="rtoRpoTimeline"] .diag-text-label,
+[data-theme="dark"] [data-diagram="effectivenessHierarchy"] .diag-text-label,
+.dark-theme [data-diagram="grcAlignment"] .diag-text-label,
+.dark-theme [data-diagram="bcVsDrScope"] .diag-text-label,
+.dark-theme [data-diagram="rtoRpoTimeline"] .diag-text-label,
+.dark-theme [data-diagram="effectivenessHierarchy"] .diag-text-label {
+  fill: #cbd5e1;
+}
+
+/* BC vs DR Redesigned Diagram Elements */
+.diag-scope-badge-bc {
+  fill: var(--panel-2);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.diag-scope-badge-bc-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  fill: var(--text-dim);
+}
+
+.diag-scope-badge-dr {
+  stroke-width: 1;
+}
+
+[data-theme="light"] .diag-scope-badge-dr,
+.light-theme .diag-scope-badge-dr {
+  fill: #dbeafe;
+  stroke: #bfdbfe;
+}
+
+[data-theme="dark"] .diag-scope-badge-dr,
+.dark-theme .diag-scope-badge-dr {
+  fill: #1e3a8a;
+  stroke: #3b82f6;
+}
+
+.diag-scope-badge-dr-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+[data-theme="light"] .diag-scope-badge-dr-text,
+.light-theme .diag-scope-badge-dr-text {
+  fill: #1e40af;
+}
+
+[data-theme="dark"] .diag-scope-badge-dr-text,
+.dark-theme .diag-scope-badge-dr-text {
+  fill: #ffffff;
+}
+
+.diag-scope-pill-rect {
+  fill: var(--panel);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.diag-scope-pill-text {
+  font-family: 'Noto Sans Thai', 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--text);
+}
+
+.diag-examples-rect {
+  fill: var(--panel-2);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.diag-examples-hdr {
+  font-family: 'JetBrains Mono', 'Space Grotesk', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+[data-theme="light"] .diag-examples-hdr,
+.light-theme .diag-examples-hdr {
+  fill: #1e40af;
+}
+
+[data-theme="dark"] .diag-examples-hdr,
+.dark-theme .diag-examples-hdr {
+  fill: #93c5fd;
+}
+
+.diag-examples-item {
+  font-family: 'Noto Sans Thai', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+[data-theme="light"] .diag-examples-item,
+.light-theme .diag-examples-item {
+  fill: #334155;
+}
+
+[data-theme="dark"] .diag-examples-item,
+.dark-theme .diag-examples-item {
+  fill: #cbd5e1;
 }
 
 .diag-arrow {
@@ -1650,6 +1871,822 @@ ol + blockquote {
   fill: var(--blue);
 }
 
+/* ===== Responsive Dual Presentation for Diagrams ===== */
+.reading-diag-desktop {
+  display: flex;
+  width: 100%;
+}
+
+.reading-diag-mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .reading-diag-desktop {
+    display: none !important;
+  }
+
+  .reading-diag-mobile {
+    display: flex !important;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .reading-diagram-card {
+    padding: 16px 14px;
+    margin: 20px 0;
+  }
+}
+
+/* --- Mobile Diagram Generic Elements --- */
+.reading-mob-banner {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reading-mob-banner-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #93c5fd;
+}
+
+.reading-mob-banner-text {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* --- Diagram 1: GRC Alignment --- */
+.reading-mob-grc-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reading-mob-card-grc {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 3.5px solid var(--blue);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reading-mob-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reading-mob-num-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--blue-bg);
+  color: #93c5fd;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(147, 197, 253, 0.35);
+  flex-shrink: 0;
+}
+
+.reading-mob-head-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reading-mob-card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.reading-mob-card-subtitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.reading-mob-card-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+}
+
+.reading-mob-card-pill {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #93c5fd;
+  background: var(--blue-bg);
+  display: inline-block;
+  align-self: flex-start;
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(147, 197, 253, 0.25);
+}
+
+.reading-mob-arrow-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #93c5fd;
+  margin: -2px 0;
+  opacity: 0.85;
+}
+
+/* --- Diagram 2: BC vs DR Scope Hierarchy --- */
+.reading-mob-scope-outer {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reading-mob-scope-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reading-mob-scope-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.reading-mob-tag-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: #cbd5e1;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.reading-mob-pill-accent {
+  background: var(--blue-bg);
+  border-color: rgba(147, 197, 253, 0.35);
+  color: #93c5fd;
+}
+
+.reading-mob-relation-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--blue-bg);
+  color: #93c5fd;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(147, 197, 253, 0.25);
+}
+
+.reading-mob-relation-accent {
+  font-weight: 700;
+}
+
+.reading-mob-scope-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.reading-mob-scope-sub {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.reading-mob-scope-goal {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+}
+
+.reading-mob-scope-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.reading-mob-tag-item {
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Inner Nested Scope (DR) */
+.reading-mob-scope-inner {
+  background: var(--panel);
+  border: 1.5px solid var(--blue);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.reading-mob-inner-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reading-mob-inner-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.reading-mob-inner-sub {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.reading-mob-inner-goal {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+}
+
+.reading-mob-inner-examples {
+  background: var(--panel-2);
+  border-left: 2.5px solid var(--blue);
+  border-radius: 4px;
+  padding: 8px 10px;
+}
+
+.reading-mob-examples-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #93c5fd;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.reading-mob-examples-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+  margin: 0;
+}
+
+.reading-mob-examples-list {
+  margin: 6px 0 0 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.reading-mob-examples-list li {
+  margin: 0;
+}
+
+/* --- Diagram 3: RTO vs RPO Timeline --- */
+.reading-mob-timeline-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.reading-mob-metric-box {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.reading-metric-rpo {
+  border-left: 3.5px solid var(--blue);
+}
+
+.reading-metric-rto {
+  border-left: 3.5px solid #10b981;
+}
+
+.reading-mob-metric-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.reading-metric-rpo .reading-mob-metric-tag {
+  color: #93c5fd;
+}
+
+.reading-metric-rto .reading-mob-metric-tag {
+  color: #34d399;
+}
+
+.reading-mob-metric-val {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.reading-mob-metric-detail {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.reading-mob-timeline-stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 4px;
+}
+
+.reading-mob-step-card {
+  display: flex;
+  gap: 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  align-items: flex-start;
+}
+
+.reading-mob-time-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+  flex-shrink: 0;
+}
+
+.reading-mob-time-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.reading-mob-time-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 6px;
+}
+
+.reading-dot-blue { background: var(--blue); }
+.reading-dot-red { background: #ef4444; }
+.reading-dot-green { background: #10b981; }
+
+.reading-mob-time-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.reading-mob-step-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.reading-badge-blue { color: #93c5fd; }
+.reading-badge-red { color: #f87171; }
+.reading-badge-green { color: #34d399; }
+
+.reading-mob-step-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.reading-title-red { color: #f87171; }
+.reading-title-green { color: #34d399; }
+
+.reading-mob-step-desc {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.reading-mob-step-metric-hint {
+  font-size: 12px;
+  font-weight: 600;
+  color: #93c5fd;
+  margin-top: 2px;
+}
+
+.reading-hint-green { color: #34d399; }
+
+.reading-step-disaster {
+  border-color: rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.04);
+}
+
+.reading-tag-red {
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+.reading-step-restored {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.04);
+}
+
+.reading-tag-green {
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
+}
+
+.reading-mob-step-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 0;
+  gap: 8px;
+  width: 100%;
+}
+
+.reading-mob-connector-line {
+  flex: 1;
+  height: 1px;
+}
+
+.reading-connector-blue { background: rgba(58, 134, 255, 0.35); }
+.reading-connector-green { background: rgba(16, 185, 129, 0.35); }
+.reading-connector-amber { background: rgba(245, 158, 11, 0.35); }
+.reading-connector-purple { background: rgba(139, 92, 246, 0.35); }
+.reading-connector-red { background: rgba(239, 68, 68, 0.35); }
+
+.reading-mob-connector-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 10px;
+  text-align: center;
+  white-space: normal;
+  max-width: 90%;
+  line-height: 1.35;
+}
+
+.reading-pill-blue {
+  background: var(--blue-bg);
+  color: #93c5fd;
+  border: 1px solid rgba(147, 197, 253, 0.3);
+}
+
+.reading-pill-green {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.reading-pill-amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.reading-pill-purple {
+  background: rgba(139, 92, 246, 0.12);
+  color: #c084fc;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.reading-pill-red {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+[data-theme="light"] .reading-pill-blue,
+.light-theme .reading-pill-blue {
+  color: #1d4ed8;
+}
+
+[data-theme="light"] .reading-pill-green,
+.light-theme .reading-pill-green {
+  color: #047857;
+}
+
+[data-theme="light"] .reading-pill-amber,
+.light-theme .reading-pill-amber {
+  color: #b45309;
+}
+
+[data-theme="light"] .reading-pill-purple,
+.light-theme .reading-pill-purple {
+  color: #6d28d9;
+}
+
+[data-theme="light"] .reading-pill-red,
+.light-theme .reading-pill-red {
+  color: #b91c1c;
+}
+
+/* --- Diagram 4: Measurement Hierarchy Stack --- */
+.reading-mob-stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reading-mob-tier-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reading-tier-report,
+.reading-tier-scorecard,
+.reading-tier-dashboard,
+.reading-tier-kpi,
+.reading-tier-4,
+.reading-tier-3,
+.reading-tier-2 {
+  border-left: 3.5px solid var(--line-hover);
+}
+
+.reading-tier-kri,
+.reading-tier-amber {
+  border-left: 3.5px solid #f59e0b;
+}
+
+.reading-tier-green {
+  border-left: 3.5px solid #10b981;
+}
+
+.reading-tier-purple {
+  border-left: 3.5px solid #8b5cf6;
+}
+
+.reading-tier-red {
+  border-left: 3.5px solid #ef4444;
+}
+
+.reading-tier-blue,
+.reading-tier-foundation {
+  border-left: 3.5px solid var(--blue);
+  background: var(--panel-2);
+}
+
+.reading-mob-icon {
+  width: 18px;
+  height: 18px;
+  stroke: var(--blue, #3b82f6);
+  flex-shrink: 0;
+}
+
+.reading-icon-amber {
+  stroke: #f59e0b !important;
+}
+
+.reading-icon-blue {
+  stroke: var(--blue, #3b82f6) !important;
+}
+
+[data-theme="light"] .reading-mob-icon,
+.light-theme .reading-mob-icon {
+  stroke: #2563eb;
+}
+
+[data-theme="light"] .reading-icon-amber,
+.light-theme .reading-icon-amber {
+  stroke: #d97706 !important;
+}
+
+.reading-mob-tier-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reading-mob-tier-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #cbd5e1;
+  flex-shrink: 0;
+  text-align: center;
+  min-width: 32px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 360px) {
+  .reading-mob-tier-num {
+    font-size: 11px;
+    padding: 2px 5px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.reading-tier-num-base {
+  background: var(--blue-bg);
+  color: #93c5fd;
+  border-color: rgba(147, 197, 253, 0.35);
+}
+
+.reading-mob-tier-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reading-mob-tier-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.reading-mob-tier-action {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.reading-mob-tier-level {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.reading-level-base {
+  color: #93c5fd;
+}
+
+.reading-mob-tier-desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text);
+  margin: 0;
+}
+
+.reading-mob-tier-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.reading-mob-sub-item {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reading-mob-sub-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.reading-mob-sub-desc {
+  font-size: 13px;
+  line-height: 1.45;
+  color: #cbd5e1;
+}
+
+/* Light Theme Contrast Refinements */
+[data-theme="light"] .reading-mob-banner-tag,
+.light-theme .reading-mob-banner-tag,
+[data-theme="light"] .reading-mob-num-badge,
+.light-theme .reading-mob-num-badge,
+[data-theme="light"] .reading-mob-card-pill,
+.light-theme .reading-mob-card-pill,
+[data-theme="light"] .reading-mob-pill-accent,
+.light-theme .reading-mob-pill-accent,
+[data-theme="light"] .reading-mob-relation-badge,
+.light-theme .reading-mob-relation-badge,
+[data-theme="light"] .reading-mob-examples-label,
+.light-theme .reading-mob-examples-label,
+[data-theme="light"] .reading-metric-rpo .reading-mob-metric-tag,
+.light-theme .reading-metric-rpo .reading-mob-metric-tag,
+[data-theme="light"] .reading-badge-blue,
+.light-theme .reading-badge-blue,
+[data-theme="light"] .reading-mob-step-metric-hint,
+.light-theme .reading-mob-step-metric-hint,
+[data-theme="light"] .reading-pill-blue,
+.light-theme .reading-pill-blue,
+[data-theme="light"] .reading-tier-num-base,
+.light-theme .reading-tier-num-base,
+[data-theme="light"] .reading-level-base,
+.light-theme .reading-level-base,
+[data-theme="light"] .reading-mob-arrow-down,
+.light-theme .reading-mob-arrow-down {
+  color: #1e40af;
+}
+
+[data-theme="light"] .reading-metric-rto .reading-mob-metric-tag,
+.light-theme .reading-metric-rto .reading-mob-metric-tag,
+[data-theme="light"] .reading-badge-green,
+.light-theme .reading-badge-green,
+[data-theme="light"] .reading-title-green,
+.light-theme .reading-title-green,
+[data-theme="light"] .reading-hint-green,
+.light-theme .reading-hint-green,
+[data-theme="light"] .reading-tag-green,
+.light-theme .reading-tag-green,
+[data-theme="light"] .reading-pill-green,
+.light-theme .reading-pill-green {
+  color: #047857;
+}
+
+[data-theme="light"] .reading-badge-red,
+.light-theme .reading-badge-red,
+[data-theme="light"] .reading-title-red,
+.light-theme .reading-title-red,
+[data-theme="light"] .reading-tag-red,
+.light-theme .reading-tag-red {
+  color: #b91c1c;
+}
+
+[data-theme="light"] .reading-mob-tag-pill,
+.light-theme .reading-mob-tag-pill,
+[data-theme="light"] .reading-mob-tier-num,
+.light-theme .reading-mob-tier-num,
+[data-theme="light"] .reading-mob-tier-action,
+.light-theme .reading-mob-tier-action,
+[data-theme="light"] .reading-mob-sub-desc,
+.light-theme .reading-mob-sub-desc,
+[data-theme="light"] .reading-mob-tier-level,
+.light-theme .reading-mob-tier-level {
+  color: #334155;
+}
+
 /* ===== Review Scenario Cards ===== */
 .reading-scenario-card {
   margin: 20px 0;
@@ -1893,6 +2930,86 @@ ol + blockquote {
 .reading-diagram-card[data-diagram="documentHierarchy"] + .reading-table-wrapper .reading-table td:nth-child(4) {
   width: 30%;
   min-width: 200px;
+}
+
+/* ===== GRC Frameworks and Standards Comparison Table (Section 2.1.4) ===== */
+.reading-table-grc-frameworks-wrapper {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.reading-table-grc-frameworks-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.reading-table-grc-frameworks-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.reading-table-grc-frameworks-wrapper::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 3px;
+}
+
+.reading-table-grc-frameworks {
+  width: 100%;
+  min-width: 780px;
+  table-layout: fixed;
+}
+
+/* Col 1: Framework / Standard */
+.reading-table-grc-frameworks th:nth-child(1),
+.reading-table-grc-frameworks td:nth-child(1) {
+  width: 20%;
+  min-width: 160px;
+}
+
+/* Col 2: จุดเน้นหลัก (Primary Focus) */
+.reading-table-grc-frameworks th:nth-child(2),
+.reading-table-grc-frameworks td:nth-child(2) {
+  width: 24%;
+  min-width: 180px;
+}
+
+/* Col 3: ขอบเขตและการนำไปใช้ */
+.reading-table-grc-frameworks th:nth-child(3),
+.reading-table-grc-frameworks td:nth-child(3) {
+  width: 32%;
+  min-width: 240px;
+}
+
+/* Col 4: คำจำสั้นสำหรับสอบ */
+.reading-table-grc-frameworks th:nth-child(4),
+.reading-table-grc-frameworks td:nth-child(4),
+.reading-table-grc-frameworks th.reading-col-exam-keyword,
+.reading-table-grc-frameworks td.reading-col-exam-keyword {
+  width: 24%;
+  min-width: 200px;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+.reading-table-grc-frameworks td:nth-child(4) strong,
+.reading-table-grc-frameworks td.reading-col-exam-keyword strong {
+  display: inline-block;
+  color: var(--blue);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  white-space: nowrap;
+}
+
+/* High contrast theme support */
+[data-theme="light"] .reading-table-grc-frameworks td:nth-child(4) strong,
+[data-theme="light"] .reading-table-grc-frameworks td.reading-col-exam-keyword strong,
+.light-theme .reading-table-grc-frameworks td:nth-child(4) strong,
+.light-theme .reading-table-grc-frameworks td.reading-col-exam-keyword strong {
+  color: #1d4ed8;
 }
 
 .reading-table-note {
@@ -2252,9 +3369,22 @@ ol + blockquote {
 /* 3. Distinction Grid & Paired Comparison Cards */
 .reading-distinction-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   gap: 1.25rem;
   margin: 1.5rem 0 2rem;
+}
+
+@media (max-width: 480px) {
+  .reading-distinction-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .reading-distinction-card {
+    padding: 1rem 1rem;
+  }
 }
 
 .reading-distinction-card {

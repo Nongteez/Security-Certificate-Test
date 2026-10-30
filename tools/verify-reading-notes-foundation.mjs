@@ -243,6 +243,11 @@ runTest('Domain Navigation — Selection switches domain; Chevron toggles expand
 runTest('Main Reading Area — Quiet unpublished message without heavy cards, illustrations, or badges', () => {
   const { container, restore } = createVocabularyDOM();
   try {
+    state.reading = {
+      selectedDomainId: 5,
+      sidebarCollapsed: false,
+      expandedDomains: [5]
+    };
     renderReadingScreen(container, () => {});
 
     // Verify quiet message

@@ -1,0 +1,195 @@
+✔ public catalog has five correct Domains, all official objectives and four reviewed Objective 1.1 lessons and three Objective 1.2 lessons plus two Objective 1.3 lessons and two Objective 1.4 lessons plus one Objective 1.5 lesson (69.5474ms)
+✔ duplicates, cross-domain relations, invalid statuses and unsafe lesson paths cannot publish (9.8091ms)
+✔ draft omissions are warnings; published missing Thai, unsupported renderer, duplicate/order and asset failures are errors (2.27ms)
+✔ public loader refuses fixtures/unpublished IDs before fetching and validates fetched identity/review (4.3544ms)
+✔ availability is based on successfully loaded reviewed content, never registry status alone (21.9631ms)
+✔ asset traversal, executable URLs and incomplete alternative descriptions are rejected (0.8404ms)
+✔ non-string source URLs cannot pass published validation and crash the overview (0.3872ms)
+✔ unpausable GIFs cannot publish through the ordinary image adapter (0.2889ms)
+✔ malformed nested objects produce validation errors instead of crashing the validator (2.878ms)
+✔ course shows five weighted domains and only genuinely validated lessons in totals (9.1483ms)
+✔ resume preserves saved slide and counts actual visits without mutating V1 data (5.8602ms)
+✔ unavailable and pending lesson bodies never expose resume or fabricated completion totals (1.06ms)
+✔ stale saved slide falls back to first authored slide and unpublished records remain unlaunched (1.6646ms)
+✔ completed lessons remain completed and offer review rather than a false continue action (1.5036ms)
+✔ related objectives do not duplicate available lessons or domain completion (2.1749ms)
+✔ newest valid progress timestamp wins and malformed dates cannot steal Continue Learning (3.9009ms)
+✔ wrong revision or malformed published body is unavailable even when availability was claimed (0.6139ms)
+✔ complete Domain2 publishes eight unique reviewed lessons, 55 slides and every official objective (4.9968ms)
+✔ all four objective selectors launch both actual lessons directly at their independent saved slide (168.4969ms)
+✔ new custom host classes clear on Reading, another lesson and malformed data; stale scenario controls cannot mutate state (12.8225ms)
+✖ original lesson IDs/order/revisions, protected catalog branches and Lesson1–2 summaries match the task-entry snapshot (9.3038ms)
+✖ protected entry file hashes preserve Domain1, Lessons1–2, Quiz, Vocabulary, banks, progress/schema and original sources (682.9754ms)
+✔ source scorecard discrepancy remains explicit, unscored and equivalent in TH/EN, with no inferred count or hidden percentage (1.2712ms)
+✔ domain route is learning-only and leaves active quiz identity untouched (3.0293ms)
+✔ Center cards open a dedicated Domain and Start opens first slide directly, then Back restores lesson focus (32.8187ms)
+✔ Continue Learning and legacy Lesson Contents route resume the saved slide without a second launch (9.2831ms)
+✔ empty Domain has official objectives and no invented Start actions; failed lesson offers no resume (3.9948ms)
+✔ Lesson Info preserves outcomes and sources, closes with Escape and restores focus without progress writes (7.0945ms)
+✔ viewer chrome stays English in all modes and Info opens without visiting another slide (17.4215ms)
+✔ scenario control labels stay English and opening Info preserves a live selection (4.0606ms)
+✔ availability refresh preserves keyboard focus and current page scroll (14.8079ms)
+✔ Domain cards are fully clickable, keyboard-accessible via Enter, contain no Explore Domain link, and navigate all five domains (9.0237ms)
+✔ Learning Center Back button visually matches Version Selection with btn btn-secondary btn-back-home and navigates to versions (2.6776ms)
+✔ Learning Center handles all four expected states without completed-lesson placeholder (19.2655ms)
+✔ Learning Center Domain cards display only essential metadata and no availability/completion status text (5.1178ms)
+✔ Learning Center Domain cards use compact horizontal landscape layout without aspect-ratio constraints (1.7876ms)
+✔ Learning Center Domain cards feature soft blue glow hover and focus-visible styling (1.1266ms)
+✔ Learning Slides screens (Center, Domain, Viewer) unify header with Version Selection and include Theme Toggle (10.5085ms)
+✔ Domain Overview: official Objectives render in order, first available selected by default, radio semantics and Coming Soon for unavailable (2.5372ms)
+✔ Domain Overview: selecting an Objective does not immediately navigate, and bottom button navigates directly (4.299ms)
+✔ Domain Overview: bottom button always displays Start Learning across not-started, in-progress, and completed states (10.0073ms)
+✔ Domain Overview: multi-lesson objective resolution preserves independent progress and picks the correct lesson (0.9505ms)
+✔ Domain Overview: keyboard navigation (ArrowDown, ArrowUp, Space, Enter) and focus restoration (9.5631ms)
+✔ Domain Overview: EN, TH, and EN+TH content rendering and Theme styling compatibility (5.2007ms)
+✔ Task 72R: Lesson Info modal visual correction, What you'll learn, collapsed details, themed scrollbars (13.3802ms)
+✔ visits use IDs, clamp invalid positions and require all slides plus explicit acknowledgement (10.5962ms)
+✔ corrupt storage is preserved and memory fallback remains usable without touching quiz data (0.8337ms)
+✔ normal persistence validates unsupported schemas, handles quota errors and isolates lesson IDs (1.769ms)
+✔ new and deleted-position readers start at the first authored slideOrder entry (0.9547ms)
+✔ stage fits the three approved desktop viewports without the old app width cap (2.1134ms)
+✔ mobile uses readable flow and fullscreen accounts for its accessible control dock (1.5533ms)
+✔ visible status messages reserve their height and extra gap without overrunning the viewport (0.2934ms)
+✔ overflow fallback waits for font readiness and stable measurements (3.868ms)
+✔ fitting content remains a presentation and unmeasured/narrow constrained boxes do not trigger false fallback (2.4503ms)
+✔ late renderer completion and measurements cannot change a disposed stage (1.3934ms)
+✔ expanding slide content triggers a new fit check even when the fixed stage box does not resize (1.2533ms)
+✔ the fallback notice cannot cause a fit/reading oscillation on the same viewport and content (1.1847ms)
+✔ one toolbar replaces permanent filmstrip/select with a closed-by-default Slides overview (17.6575ms)
+✔ Slides offers bounded accessible previews, selects a specific slide, closes and preserves focus (8.6354ms)
+✔ long decks overview navigates to End without mounting hundreds of live previews (6.8406ms)
+✔ fullscreen exit restores the exact scenario selection without rebuilding its DOM (4.1695ms)
+✔ scenario state survives language and Text View transitions, without writing interaction data into progress (7.6386ms)
+✔ controls stay English, slide educational text stays bilingual, and only explicit completion finishes (6.4711ms)
+✔ three-zone toolbar layout has distinct left context, centered navigation, and right presentation tools (3.9526ms)
+✔ presentation CSS defines three-zone grid, deep slate theme tokens, and responsive dock (2.3803ms)
+✔ layout architecture: toolbar and workspace are strictly siblings, preventing canvas overlap (4.8088ms)
+✔ Gate B corrections: TH | EN language toggle, mobile touch targets, and natural mobile slide height (5.3442ms)
+✔ slide controller clamps, preserves ID, and maps legacy both and invalid language values to Thai (2.6355ms)
+✔ navigation ignores controls, modifiers, selected text and wheel, while Shift < and > work (1.2496ms)
+✔ fullscreen follows browser events, rejected requests leave normal mode, and dispose removes listeners (5.9273ms)
+✔ mounted viewer offers distinct optional previews, supports language controls and cleans up after leaving (23.2375ms)
+✔ large decks mount bounded optional previews while direct slide navigation and active item still work (4.8984ms)
+✔ finishing the final unvisited slide immediately enables acknowledgement without another navigation (3.3147ms)
+✔ fullscreen half-click navigation excludes a revealed control and preserves position after browser exit (5.2794ms)
+✔ language switching keeps keyboard focus on the same live language control (2.0688ms)
+ℹ tests 75
+ℹ suites 0
+ℹ pass 73
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1382.76
+
+✖ failing tests:
+
+test at tools\verify-learning-d2-completion.mjs:56:1
+✖ original lesson IDs/order/revisions, protected catalog branches and Lesson1–2 summaries match the task-entry snapshot (9.3038ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        id: 1,
+        name: {
+          en: 'Security Principles',
+  ...
+            id: '3.1',
+  +         lessons: [
+  +           {
+  +             domainId: 3,
+  +             id: 'lesson-d3-01-roles-provisioning',
+  +             lessonPath: 'lessons/lesson-d3-01-roles-provisioning.json',
+  +             objectiveIds: [
+  +               '3.1'
+  +             ],
+  +             primaryObjectiveId: '3.1',
+  +             revision: '1',
+  +             status: 'published',
+  +             synopsis: {
+  +               en: 'Connect responsibilities to approved access, provision it correctly and verify the result for people and automated workloads.',
+  +               th: 'เชื่อมหน้าที่กับสิทธิ์ที่อนุมัติ จัดเตรียมและตรวจผลให้ถูกต้องสำหรับคนและระบบงานอัตโนมัติ'
+  +             },
+  +             title: {
+  +               en: 'Roles & Authorized Provisioning',
+  +               th: 'บทบาทและการจัดเตรียมสิทธิ์ที่ได้รับอนุมัติ'
+  +             }
+  +           },
+  +           {
+  +             domainId: 3,
+  +             id: 'lesson-d3-02-review-deprovisioning',
+  +             lessonPath: 'lessons/lesson-d3-02-review-deprovisioning.json',
+  +             objectiveIds: [
+  +               '3.1'
+  +             ],
+  +             primaryObjectiveId: '3.1',
+  +             revision: '1',
+  +             status: 'published',
+  +             synopsis: {
+  +               en: 'Reassess changing needs, distinguish activity from ownership and verify authorized access withdrawal for people and workloads.',
+  +               th: 'ทบทวนความจำเป็นที่เปลี่ยน แยกการใช้งานจากความรับผิดชอบ และตรวจผลการถอนสิทธิ์ของคนและระบบงาน'
+  +             },
+  +             title: {
+  +               en: 'Access Reviews, Changes & Deprovisioning',
+  +               th: 'ทบทวน ปรับ และถอนสิทธิ์ตลอดวงจรชีวิต'
+  +             }
+  +           }
+  +         ],
+  -         lessons: [],
+            relatedLessonIds: [],
+  +         status: 'published',
+  -         status: 'coming-soon',
+            title: {
+              en: 'Understand identity life cycle management',
+              th: 'เข้าใจการจัดการวงจรชีวิตของตัวตน'
+            }
+          },
+  ...
+        ],
+  +     status: 'published'
+  -     status: 'coming-soon'
+      },
+      {
+        id: 4,
+        name: {
+          en: 'Networking and Cloud Security Concepts',
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-d2-completion.mjs:57:52)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { id: 1, name: [Object], status: 'published', objectives: [Array] }, { id: 3, name: [Object], status: 'published', objectives: [Array] }, { id: 4, name: [Object], status: 'coming-soon', objectives: [Array] }, { id: 5, name: [Object], status: 'coming-soon', objectives: [Array] } ],
+    expected: [ { id: 1, name: [Object], status: 'published', objectives: [Array] }, { id: 3, name: [Object], status: 'coming-soon', objectives: [Array] }, { id: 4, name: [Object], status: 'coming-soon', objectives: [Array] }, { id: 5, name: [Object], status: 'coming-soon', objectives: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-learning-d2-completion.mjs:62:1
+✖ protected entry file hashes preserve Domain1, Lessons1–2, Quiz, Vocabulary, banks, progress/schema and original sources (682.9754ms)
+  AssertionError [ERR_ASSERTION]: js/ui/learning/lesson-info.js
+  + actual - expected
+  
+  + '5cf237f93d992e02233bc6e5df80f8b7ea842a56a53a02803c6f73f0f9cfa08d'
+  - 'c26ef09e7014508a50721e5bf235051e4245be12b1ebbc484a6cc4759d73b7c2'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-d2-completion.mjs:64:99)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '5cf237f93d992e02233bc6e5df80f8b7ea842a56a53a02803c6f73f0f9cfa08d',
+    expected: 'c26ef09e7014508a50721e5bf235051e4245be12b1ebbc484a6cc4759d73b7c2',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

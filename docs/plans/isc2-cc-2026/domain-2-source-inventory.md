@@ -1,157 +1,124 @@
-# ISC2 CC 2026 — Domain 2 Source Inventory & Quality Audit (Refined)
+# ISC2 CC 2026 — Domain 2 Source Inventory & Quality Audit (Recovery Edition)
 
 - **Course / Exam Scope:** ISC2 Certified in Cybersecurity (CC) — Exam Outline Effective September 1, 2026 (`isc2-cc-2026-09-01`)
 - **Domain:** Domain 2 — Security Governance (`17.3%` exam weight; Objectives `2.1`–`2.4`)
 - **Primary Source Directory:** `D:\_Coding\SEC-CERT-TEST\ISC2 Update 2026\Domain 2`
-- **Audit Baseline Cross-Reference:** Verified directly against raw source files and `content/isc2-cc-2026/sources/domain-2/notes/phase-1/source-inventory.md`
-- **Review Status:** Refined & Verified (Planning Review & Refinement Pass)
+- **Audit Baseline Cross-Reference:** Verified directly against raw source files and `docs/plans/isc2-cc-2026/domain-2-recovery-audit.md`
+- **Review Status:** Refined, Updated & Reconciled for Domain 2 Recovery Plan
+- **Implementation Mapping:** Exactly 8 Published Lessons / 55 Slides
 
 ---
 
 ## 1. Executive Summary of the Source Corpus
 
-The user's primary educational source directory (`D:\_Coding\SEC-CERT-TEST\ISC2 Update 2026\Domain 2`) contains **41 files (`13,701,357` bytes total)**:
-- **2 authored bilingual Thai/English study guides in Markdown** (`Domain 2.md` and `D2 sum.md`)
-- **1 raw English instructor video transcript** (`DOMAIN 2.txt`)
-- **38 timestamped PNG screenshots (`S01`–`S38`)** captured on `2026-09-20` (`17:55:16` to `22:37:51`), of which **37 (`S01`–`S19`, `S21`–`S38`)** are authentic course slides and **1 (`S20`)** is an accidental non-course capture (Thai ESP32 hardware product listing, excluded under `D2-Q08`).
+The authoritative educational source directory (`D:\_Coding\SEC-CERT-TEST\ISC2 Update 2026\Domain 2`) contains **41 files (`13,701,357` bytes total)**:
+- **2 authored bilingual Thai/English study guides in Markdown:**
+  - `Domain 2.md` (731 lines | 35,610 bytes | SHA-256: `fc63c87b05dd27f60fa0305ca5efae3e08f41046735580597517a53d96b9694f`)
+  - `D2 sum.md` (633 lines | 26,333 bytes | SHA-256: `d7334cb06bc0728bf8a05d1c656431de2c20c2c9566e22ba4df64f570d88b031`)
+- **1 raw English instructor video lecture transcript:**
+  - `DOMAIN 2.txt` (115 lines | 29,748 bytes | SHA-256: `b74f0e5c6eaf79a49d95c7063aaa1bd0789d790c8ada5e14dcc51edd3f88a6d0`)
+- **38 timestamped PNG screenshots (`S01`–`S38`):**
+  - Captured on `2026-09-20` (`17:55:16` to `22:37:51`).
+  - **37 authentic course slides:** `S01`–`S19` and `S21`–`S38`.
+  - **1 permanently excluded capture:** `S20` (Thai ESP32 microcontroller e-commerce listing, excluded under `D2-Q08`).
 
 ### Source Authority & Provenance Tagging Contract
-Every concept in the Domain 2 curriculum is explicitly classified into one of three provenance categories:
 1. **`Primary Source`:** Directly evidenced in `Domain 2.md`, `D2 sum.md`, `DOMAIN 2.txt`, or `S01`–`S38` (excluding `S20`).
-2. **`Verified Supplement`:** Authoritative standard or official ISC2 2026 outline clarification (e.g., NIST SP 800-34 Rev. 1, NIST SP 800-30 Rev. 1, NIST SP 800-63B, NIST SP 800-55 Rev. 1, ISO/IEC 27001, COBIT) used either to remediate a transcript error (`D2-Q01`–`D2-Q08`) or to provide non-mandatory 2026 Reading Mode context.
-3. **`Proposed Teaching Example`:** Clearly labeled scenario or worked calculation designed to reinforce a primary source concept without claiming to be a verbatim slide from the original video.
+2. **`Verified Supplement`:** Authoritative industry standards (e.g., NIST SP 800-34 Rev. 1, NIST SP 800-30 Rev. 1, NIST SP 800-63B, NIST SP 800-55 Vol. 1, ISO/IEC 27001, COBIT) used to clarify ambiguities, remediate lecture transcript errors (`D2-Q01`–`D2-Q08`), or provide 2026 outline context.
+3. **`Proposed Teaching Example`:** Structured scenarios or calculation examples designed to reinforce primary concepts without claiming to be verbatim original slides.
 
 ---
 
-## 2. Primary Text Sources (Line-by-Line Inventory)
+## 2. Primary Text Sources (Section-by-Section Mapping)
 
-### 2.1 `Domain 2.md` — Comprehensive Bilingual Master Study Guide
-- **Path:** `D:\_Coding\SEC-CERT-TEST\ISC2 Update 2026\Domain 2\Domain 2.md`
-- **Metrics:** `731` lines | `35,610` bytes | UTF-8 Markdown
-- **SHA-256:** `fc63c87b05dd27f60fa0305ca5efae3e08f41046735580597517a53d96b9694f`
-- **Role in Curriculum:** Primary bilingual pedagogical reference. Establishes the user's natural Thai + English technical terminology voice, structured ASCII diagrams, comparison tables, exam traps, and 12 review questions.
+### 2.1 `Domain 2.md` — Master Bilingual Study Guide
+- Primary pedagogical authority establishing the user's natural bilingual voice, core definitions, comparison tables, exam traps, and 12 scenario questions.
 
-| Section | Line Range | Topic & Exact Verified Source Contents | Target Objective & Lesson |
+| Section | Line Range | Core Source Concepts | Published Lesson & Slides |
 |---|---|---|---|
-| Title & Overview | `L1–28` | Domain 2 overview (`Security Governance`), 4 core pillars (`GRC`, `BC/DR`, `Security Awareness & Culture`, `Measuring Security Effectiveness`), and ASCII structural map. | Domain 2 Overview |
-| `1.` Big Picture of Security Governance | `L29–42` | Why Technical Controls (`Firewall`, `EDR`, `MFA`) fail without Governance direction, measurement, and people readiness. | `2.1` — `D2-L01` |
-| `2.` GRC (`Governance, Risk, and Compliance`) | `L43–87` | `2.1` Definition of **Governance** (direction, policies, authority, accountability), **Risk Management** (identify, assess, treat risk), and **Compliance** (laws, regulations, standards, internal policies). `2.2` **Purpose of GRC (7 items, `L61–72`):** (1) Align cybersecurity with business objectives, (2) Identify and manage risks, (3) Meet legal and regulatory obligations, (4) Establish consistent policies and controls, (5) Improve accountability, (6) Support informed decision-making, (7) Reduce duplication of security and compliance efforts. `2.3` **Importance of GRC (7 benefits vs. 4 failure outcomes without GRC, `L73–86`):** Benefits: Reduce cybersecurity/business risk, Protect critical information/assets, Meet regulatory requirements, Avoid/reduce financial penalties, Improve decision-making, Establish clear accountability, Improve organizational resilience. Without GRC: Inconsistent security practices, Unidentified risks, Compliance violations, Poor accountability. | `2.1` — `D2-L01` |
-| `3.` GRC Frameworks | `L89–106` | Structured models supporting GRC (`S07`): **NIST CSF** (managing and reducing cybersecurity risk), **ISO/IEC 27001** (establishing and continually improving an ISMS), **COBIT** (governance and management of enterprise IT). *(Note: `S07` and `Domain 2.md` §3 do not enumerate the NIST CSF function names; mentioning the 6 CSF 2.0 functions is tagged as a `Verified Supplement`.)* | `2.1` — `D2-L01` |
-| `4.` GRC Tools | `L107–123` | Software platforms supporting GRC activities (`S08`). **Exact 6 capabilities (`L113–118`):** (1) `Risk registers`, (2) `Policy management`, (3) `Compliance tracking`, (4) `Control management`, (5) `Audit management`, (6) `Risk assessments`. Centralization, visibility, and audit readiness (`L120–122`). | `2.1` — `D2-L02` |
-| `5.` Risk Register | `L125–165` | `5.1` Structured record of identified risks (`S09`). `5.2` **Exact 11 Risk Register elements (`L132–144`):** (1) `Risk description`, (2) `Affected asset or process`, (3) `Threat`, (4) `Vulnerability`, (5) `Likelihood`, (6) `Impact`, (7) `Risk rating`, (8) `Risk owner`, (9) `Treatment strategy`, (10) `Current status`, (11) `Residual risk`. `5.3` **Worked Example (`S10`, `L150–155`):** `Risk: Ransomware affecting critical servers`, `Likelihood: High`, `Impact: High`, `Risk Owner: IT Manager`, `Treatment: Mitigation`, `Controls: EDR, backups, network segmentation, MFA`. Includes residual risk (`> 0` after mitigation) note (`L157–163`). | `2.1` — `D2-L02` |
-| `6.` Redundancy & Business Continuity (`BC`) | `L166–185` | Organizational capability to continue critical business operations during and after a disruption (`S12`). **Exact 8 disruption triggers on `S12` (`L172–179`):** (1) `Natural disasters`, (2) `Cyberattacks`, (3) `Power outages`, (4) `Equipment failures`, (5) `Network outages`, (6) `Pandemics`, (7) `Loss of facilities`, (8) `Supply-chain disruptions`. | `2.2` — `D2-L03` |
-| `7.` Business Continuity Planning (`BCP`) | `L187–202` | Process of developing procedures to sustain critical functions (`S13–S14`). **Exact 8 BCP elements (`L193–200`):** (1) `Critical business processes`, (2) `Roles and responsibilities`, (3) `Communication procedures`, (4) `Alternate work locations`, (5) `Backup personnel`, (6) `Alternate suppliers`, (7) `Essential technology and systems`, (8) `Recovery priorities`. | `2.2` — `D2-L03` |
-| `8.` Disaster Recovery (`DR`) | `L204–236` | `8.1` Definition: restoring IT systems, infrastructure, applications, and data (`S15–S16`). `8.2` **5 Purposes of DR (`L213–217`):** Minimize downtime, Ensure rapid system recovery, Restore critical IT operations, Protect data integrity and prevent loss, Support business continuity. `8.3` **3 Key Concepts (`L221–223`):** IT-focused recovery, Data and system restoration, Critical part of overall BC. `8.4` **5 Importance points (`S17`, `L227–231`):** Minimizes downtime, Protects data integrity, Supports compliance (`GDPR`, `HIPAA` cited as examples on `L234` — bounded by `D2-Q04`), Reduces financial losses, Enhances customer trust. | `2.2` — `D2-L04` |
-| `9.` Components of a DRP | `L238–290` | **5 Core DRP Components (`S18`, `L241–290`):** `9.1` **Emergency Response Procedures** (`Contain` → `Assess` → `Notify`), `9.2` **IT System Recovery Priorities** (Critical vs. Non-critical systems), `9.3` **Recovery Objectives (`RTO` vs. `RPO`)** with ASCII timeline (`16:30` backup, `17:00` outage, `18:00` target recovery → `30m` RPO loss, `1h` RTO downtime), `9.4` **Backup and Restoration Procedures** (`Cloud backups`, `Off-site storage`), `9.5` **Roles and Responsibilities** (`IT Recovery Team`, `Security Team`, `Management`, `Communications Team`). | `2.2` — `D2-L04` |
-| `10.` Business Continuity vs. Disaster Recovery | `L292–316` | Side-by-side comparison table (`S19`, `L296–306`): Focus (`Business operations` vs. `IT systems and data`), Goal (`Keep critical functions running` vs. `Restore technology after disruption`), Scope (`Organization-wide` vs. `IT-focused`), Timeframe (`During and after disruption` vs. `After disruption`), Plan (`BCP` vs. `DRP`), Key Element (`BIA` vs. `Backups, RTO, RPO`), Example (`Operating from backup location` vs. `Restoring servers from backup`). | `2.2` — `D2-L04` |
-| `11.` Security Awareness | `L318–334` | Ensuring employees understand cyber threats, policies, and safe behavior (`S21`). **5 Purposes (`L327–331`):** (1) Reduce human error, (2) Help employees recognize threats, (3) Promote safe handling of systems and data, (4) Support policy compliance, (5) Strengthen human defense across the organization. | `2.3` — `D2-L05` |
-| `12.` Security Culture | `L336–351` | Shared values, attitudes, and everyday behaviors (`S22`). **6 Encouraged behaviors (`L341–346`):** (1) Reporting suspicious emails and incidents, (2) Following security policies, (3) Protecting sensitive information, (4) Questioning unusual requests, (5) Taking shared responsibility for security, (6) Treating security as part of daily work. Includes Awareness vs. Culture contrast (`L348–350`). | `2.3` — `D2-L05` |
-| `13.` Security Leadership | `L353–367` | Setting tone, priorities, and expectations (`S23`). **6 Leadership duties (`L358–363`):** (1) Set clear security expectations, (2) Support security policies, (3) Provide resources for training and tools, (4) Model secure behavior, (5) Encourage open reporting without fear, (6) Hold teams accountable. | `2.3` — `D2-L05` |
-| `14.` Social Engineering | `L369–383` | Manipulating people into revealing confidential information or performing unsafe actions (`S24`). **5 Psychological triggers (`L376–380`):** `Urgency`, `Fear`, `Authority`, `Trust`, `Curiosity` / helpfulness. | `2.3` — `D2-L06` |
-| `15.` Common Social Engineering Techniques | `L385–408` | **8 Techniques (`S25–S26`):** `Phishing` (email), `Spear Phishing` (targeted), `Whaling` (executives), `Smishing` (SMS), `Vishing` (voice/phone), `Pretexting` (fabricated scenario/identity), `Baiting` (lure/infected media), `Tailgating` (unauthorized physical entry). | `2.3` — `D2-L06` |
-| `16.` Password Protection | `L410–423` | **5 Organizational Password Protection controls (`S27`, `L414–418`):** (1) Establish authentication policies, (2) Protect stored credentials, (3) Implement appropriate access controls, (4) Monitor suspicious authentication activity, (5) Encourage phishing-resistant authentication where appropriate (plus `MFA`). | `2.3` — `D2-L06` |
-| `17.` Measuring Cybersecurity Effectiveness | `L424–438` | Evaluating how well controls, processes, and programs reduce risk (`S29`). **7 Purposes (`L430–436`):** (1) Determine whether controls are effective, (2) Identify weaknesses and gaps, (3) Track security performance over time, (4) Support risk-based decision-making, (5) Demonstrate compliance, (6) Communicate security status to management, (7) Identify areas requiring improvement. | `2.4` — `D2-L07` |
-| `18.` Security Metrics | `L440–470` | `18.1` **5 General metrics (`S30`, `L446–450`):** Patch compliance rate, MFA adoption rate, Incident response time (`MTTD`/`MTTR`), Phishing simulation click rate, Number of open critical vulnerabilities. `18.2` **4 Domain metric groups (`S31`, `L454–469`):** Vulnerability Management, Identity & Access Management, Awareness & Training, Incident Response. | `2.4` — `D2-L07` |
-| `19.` Key Risk Indicators (`KRIs`) | `L472–489` | Forward-looking early warning signs of increasing risk exposure (`S32`). **Exact 6 KRI examples (`L480–485`):** (1) `Critical unpatched vulnerabilities`, (2) `Privileged accounts without MFA`, (3) `Failed security controls`, (4) `Increase in phishing reports`, (5) `Unsupported systems`, (6) `Percentage of critical systems without tested backups`. | `2.4` — `D2-L07` |
-| `20.` Key Performance Indicators (`KPIs`) | `L491–509` | Backward/current measures of how effectively a security control or process achieves its target (`S33`). **Primary KPI example (`L498`):** `Percentage of critical vulnerabilities patched within 15 days`. Includes KRI vs. KPI comparison table (`L502–508`). | `2.4` — `D2-L07` |
-| `21.` Security Dashboards | `L511–526` | Visual real-time/near-real-time display of key security metrics, alerts, and trends (`S34`). **6 Elements (`L517–522`):** Open incidents, Patch status, Vulnerability counts, MFA coverage, Phishing trends, Control health. | `2.4` — `D2-L08` |
-| `22.` Security Scorecards | `L528–556` | High-level summary comparing performance against defined targets (`S35–S36`). **Exact 4-row worked table (`S36`, `L542–547`):** (1) `Patch Compliance` (`Target: 95%`, `Actual: 91%`, `Status: Needs Improvement`), (2) `MFA Adoption` (`Target: 100%`, `Actual: 97%`, `Status: Needs Improvement`), (3) `Training Completion` (`Target: 95%`, `Actual: 98%`, `Status: On Target`), (4) `Critical Vulnerabilities` (`Target: < 10`, `Actual: 12`, `Status: Needs Attention` — bounded by `D2-Q03` / `KNOW-D2-054`). | `2.4` — `D2-L08` |
-| `23.` Cybersecurity Reports | `L558–585` | Formal documents communicating security posture, risks, incidents, compliance, and recommendations (`S37`). **7 Core Report Elements (`L564–570`):** (1) `Security incidents`, (2) `Vulnerability status`, (3) `Risk trends`, (4) `Compliance findings`, (5) `Control effectiveness`, (6) `Security metrics`, (7) `Recommended actions`. `23.1` **Exam Memory Aid (`S38`, `L574–584`):** `Metric`, `KPI`, `KRI`, `Dashboard`, `Scorecard`, `Report`. | `2.4` — `D2-L08` |
-| `24.` High-Value Exam Comparisons & Traps | `L586–610` | `24.1` **11 Core Distinctions (`L588–600`)**: `Governance vs Management`, `Risk vs Compliance`, `GRC vs GRC Tool`, `Risk Register vs Risk Assessment`, `BC vs BCP`, `DR vs DRP`, `BC vs DR`, `RTO vs RPO`, `Awareness vs Culture`, `KRI vs KPI`, `Dashboard vs Scorecard vs Report`. `24.2` **8 Exam Traps (`L602–610`)**. | All Lessons (`D2-L01` to `D2-L08`) |
-| `25.` Review Questions (`12 Items`) & Answers | `L612–731` | 12 scenario/concept review questions with detailed Thai/English rationales covering all 4 objectives. | Interactive Scenarios across `D2-L01` to `D2-L08` |
+| Title & Overview | `L1–28` | Security Governance big picture; 4 pillars (GRC, BC/DR, Awareness/Culture, Metrics); ASCII structural map | Overview & `D2-L01-S1` |
+| `1.` Big Picture of Governance | `L29–42` | Why Technical Controls fail without Governance direction and accountability | `D2-L01-S1` |
+| `2.` GRC | `L43–87` | Definitions of Governance, Risk Management, Compliance; **7 Purposes of GRC** (`L61–72`); **7 Benefits vs 4 Failure Outcomes** (`L73–86`) | `D2-L01-S1` to `S3` |
+| `3.` GRC Frameworks | `L89–106` | NIST CSF, ISO/IEC 27001, COBIT; standards vs laws | `D2-L01-S4` |
+| `4.` GRC Tools | `L107–123` | Software platforms replacing spreadsheets; **6 Capabilities** (Risk registers, Policy mgmt, Compliance tracking, Control mgmt, Audit mgmt, Risk assessments) | `D2-L02-S1`, `S2` |
+| `5.` Risk Register | `L125–165` | Structured risk records; **11 Core Fields** (`L132–144`); **Worked Ransomware Example** (`S10`); Ordinal scoring (`1–4`); Residual risk (`> 0` after mitigation) | `D2-L02-S3` to `S6` |
+| `6.` Redundancy & BC | `L166–185` | Redundancy foundations; BC definition; **8 Disruption Triggers** (`S12`) | `D2-L03-S1`, `S2` |
+| `7.` BCP | `L187–202` | Business Continuity Planning; **8 BCP Elements** (`S13–S14`); Alternate locations, backup staff, alternate suppliers; BIA connection | `D2-L03-S3` to `S5` |
+| `8.` Disaster Recovery (DR) | `L204–236` | DR definition; **5 Purposes of DR**; 3 Key Concepts; **5 Importance Points** (`S17`); Bounded compliance (`GDPR`, `HIPAA`) | `D2-L04-S1`, `S2` |
+| `9.` Components of a DRP | `L238–290` | **5 DRP Components**: Emergency Response (`Contain` → `Assess` → `Notify`); IT Recovery Priorities; **RTO vs RPO Timeline** (`16:30 / 17:00 / 18:00`); Backups (`Cloud / Off-site`); 4 Recovery Teams | `D2-L04-S3` to `S6` |
+| `10.` BC vs DR | `L292–316` | **7-Dimension Comparison Table** (`S19`); BC organization-wide vs DR IT-focused; `DR ⊂ BC` relationship | `D2-L04-S7`, `S8` |
+| `11.` Security Awareness | `L318–334` | Ensuring employee threat understanding; **5 Core Purposes** (`S21`) | `D2-L05-S1`, `S2` |
+| `12.` Security Culture | `L336–351` | Shared values and habits; **6 Encouraged Daily Behaviors** (`S22`); Awareness vs Culture distinction | `D2-L05-S3`, `S4` |
+| `13.` Security Leadership | `L353–367` | Tone at the top; **6 Leadership Responsibilities** (`S23`); Leadership-Awareness-Culture cycle | `D2-L05-S4`, `S5` |
+| `14.` Social Engineering | `L369–383` | Human manipulation; **5 Psychological Triggers** (Urgency, Fear, Authority, Trust, Curiosity) | `D2-L06-S1` |
+| `15.` Social Engineering Techniques | `L385–408` | **8 Techniques**: Phishing, Spear Phishing, Whaling, Smishing, Vishing, Pretexting, Baiting, Tailgating | `D2-L06-S2` to `S4` |
+| `16.` Password Protection | `L410–423` | **5 Organizational Controls** (`S27`); Spoken employee password hygiene; Modern NIST SP 800-63B standards; MFA | `D2-L06-S5` to `S7` |
+| `17.` Measuring Effectiveness | `L424–438` | Purpose of evaluation; **7 Measurement Purposes** (`S29`) | `D2-L07-S1` |
+| `18.` Security Metrics | `L440–470` | **5 General Metrics** (`S30`); 4 Domain Metric Groups (Vulnerability, IAM, Awareness, IR); MTTD & MTTR definitions | `D2-L07-S2`, `S3` |
+| `19.` Key Risk Indicators (KRIs) | `L472–489` | Forward-looking early warnings; **6 Core KRIs** (`S32`) | `D2-L07-S4`, `S5` |
+| `20.` Key Performance Indicators (KPIs) | `L491–509` | Performance against targets; 15-day patch KPI (`S33`); KRI vs KPI distinction table | `D2-L07-S5`, `S6` |
+| `21.` Dashboards | `L511–526` | Real-time visual status, alerts, trends; **5–6 Key Dashboard Elements** (`S34`) | `D2-L08-S1` |
+| `22.` Scorecards | `L528–556` | Target vs actual performance; **4-Row Worked Table** (`S36`); Scorecard Row 4 unit discrepancy note (`D2-Q03`) | `D2-L08-S2`, `S3` |
+| `23.` Reports & Memory Aid | `L558–585` | Formal reporting; **7 Report Elements** (`S37`); **6-Term Synthesis Memory Aid** (`S38`: Metric, KPI, KRI, Dashboard, Scorecard, Report) | `D2-L08-S4`, `S5` |
+| `24.` High-Value Distinctions & Traps | `L586–610` | 11 Core Distinctions; 8 Exam Traps | Integrated across all lessons |
+| `25.` Review Questions (`Q1`–`Q12`) | `L612–731` | 12 Scenario Questions with full rationales | Basis of scenario slides across L1–L8 |
 
 ---
 
-### 2.2 `D2 sum.md` — Rapid Revision Summary & Memory Aid Guide
-- **Path:** `D:\_Coding\SEC-CERT-TEST\ISC2 Update 2026\Domain 2\D2 sum.md`
-- **Metrics:** `633` lines | `26,333` bytes | UTF-8 Markdown
-- **SHA-256:** `d7334cb06bc0728bf8a05d1c656431de2c20c2c9566e22ba4df64f570d88b031`
-- **Role in Curriculum:** Concise slide-card text, memory keywords, and quick-comparison tables.
+## 3. Visual Source Inventory (`S01`–`S38`) & Published Slide Alignment
 
-| Section | Line Range | Key Pedagogical Content | Target Lesson |
-|---|---|---|---|
-| Overview & 4 Pillars | `L1–28` | Concise summary of Domain 2 (`GRC`, `BC & DR`, `Security Awareness & Culture`, `Measuring Security Effectiveness`). | Domain 2 Overview |
-| `1.` GRC Summary | `L30–163` | Short keywords (`Governance = ทิศทาง + นโยบาย + ความรับผิดชอบ`, `Risk Management = หาความเสี่ยง + ประเมิน + จัดการ`, `Compliance = ทำตามกฎหมาย/มาตรฐาน/ข้อกำหนด`), 7 purposes (`L49–62`), 7 benefits vs. 4 failure outcomes (`L65–84`), 3 frameworks (`L87–99`), 6 GRC tool capabilities (`L101–115`), 11 Risk Register fields + worked ransomware example (`L117–162`). | `D2-L01`, `D2-L02` |
-| `2.` Redundancy, BC, BCP, DR, DRP | `L164–318` | 8 BC disruptions (`L169–179`), 8 BCP elements (`L183–198`), DR purpose/importance (`L201–228`), 5 DRP components + RTO/RPO visual timeline (`L231–286`), and BC vs. DR comparison table + exam memory lines (`L289–317`). | `D2-L03`, `D2-L04` |
-| `3.` Awareness, Culture, Leadership, Social Engineering & Passwords | `L319–428` | Awareness (`รู้และเข้าใจ`), Culture (`ทำจนเป็นนิสัย`), Leadership (`ผู้นำกำหนดโทน`), 5 psychological triggers (`L372–384`), 8 social engineering techniques (`L386–409`), and 5 organizational password controls (`L412–427`). | `D2-L05`, `D2-L06` |
-| `4.` Measuring Cybersecurity Effectiveness | `L429–587` | 7 measurement purposes (`L433–446`), general & domain metrics (`L448–475`), 6 KRIs (`L477–492`), KPI 15-day patching example (`L494–507`), KRI vs. KPI table (`L509–516`), Dashboards (`L518–531`), Scorecards + 4-row table (`L533–558`), Reports + 7 elements (`L560–573`), and 6-item Exam Memory Aid (`L575–587`). | `D2-L07`, `D2-L08` |
-| `5–7.` Exam Comparisons, Traps & One-Page Cheat Sheet | `L588–633` | 10 comparison pairs (`L590–601`), 8 exam traps (`L604–613`), and final 10-point rapid recall list (`L616–633`). | All Lessons |
-
----
-
-### 2.3 `DOMAIN 2.txt` — Raw Instructor Lecture Transcript
-- **Path:** `D:\_Coding\SEC-CERT-TEST\ISC2 Update 2026\Domain 2\DOMAIN 2.txt`
-- **Metrics:** `115` lines | `29,748` bytes | UTF-8 Plain Text
-- **SHA-256:** `b74f0e5c6eaf79a49d95c7063aaa1bd0789d790c8ada5e14dcc51edd3f88a6d0`
-- **Role in Curriculum:** Provides spoken instructor explanations, real-world examples, and transcript-only operational nuances, while requiring 8 strict academic/ASR quarantine guardrails (`D2-Q01`–`D2-Q08`).
-
-| Transcript Segment | Line Range | Spoken Additions & Quarantine Remediation Notes | Target Lesson |
-|---|---|---|---|
-| Domain 2 Intro & Objective 2.1 (`GRC`) | `T:L1–31` | Defines Governance, Risk Management, Compliance (`T:L9–13`); 7 purposes & 7 importance points (`T:L13–19`); NIST CSF, ISO/IEC 27001, COBIT (`T:L19–22`, ASR typo `"Coop"` on `T:L21` → remediated to `COBIT` per `S07` / `D2-Q01`); GRC tools replacing manual spreadsheets (`T:L23–25`); Risk Register fields (`T:L25–31`). **Quarantines:** `T:L27` calls `1–4` ordinal rating `"quantitative"` (`D2-Q02` → remediated via NIST SP 800-30 Rev. 1 as ordinal/semi-quantitative vs. monetary quantitative); `T:L31` states `"you cannot reduce the risk to zero after mitigation or after treatment strategy"` (`D2-Q06` → clarified that **mitigation** leaves residual risk `> 0`, whereas **risk avoidance** eliminates the specific activity's risk). | `D2-L01`, `D2-L02` |
-| Objective 2.2 (`Redundancy, BC, BCP, DR, DRP`) | `T:L33–73` | Redundancy intro (`T:L33`); BC definition + 8 disruptions plus spoken `human error` (`T:L35–37`); BCP 8 elements (`T:L39–43`); DR definition, 5 purposes, 3 concepts, 5 importance points (`T:L45–53`, bounded by `D2-Q04` on `GDPR`/`HIPAA`); DRP 5 components (`T:L55–65`, including spoken RTO/RPO timestamps `4:00 PM` backup, `4:30 PM` crash, `5:00 PM` target, `5:20 PM` actual on `T:L57–60` and ASR typo `"off-site stitch"` on `T:L61` → remediated to `"off-site storage"` per `S18` / `D2-Q01`); BC vs. DR comparison & `BIA` (`T:L67–71`). | `D2-L03`, `D2-L04` |
-| Objective 2.3 (`Awareness, Culture, Leadership, Social Engineering, Passwords`) | `T:L75–93` | Security Awareness (`T:L75–77`); Security Culture (`T:L77–79`); Security Leadership (`T:L79–81`); Social Engineering triggers (`T:L81–83`); 8 Social Engineering techniques (`T:L83–89`); **Transcript-Only Employee Password Practices (`T:L89–91`):** (1) strong/unique passwords, (2) passphrase/password manager, (3) MFA, (4) never reuse passwords across work/personal accounts, (5) never share passwords, (6) avoid writing passwords down unprotected, (7) report suspected compromise immediately — paired with the 5 organizational controls on `S27` (`T:L91–93`). **Quarantine:** `D2-Q05` updates generic rotation/composition remarks with **NIST SP 800-63B** guidance (no arbitrary periodic rotation without compromise evidence; screen against breached password lists). | `D2-L05`, `D2-L06` |
-| Objective 2.4 (`Metrics, KRIs, KPIs, Dashboards, Scorecards, Reports`) | `T:L95–115` | Measuring effectiveness (`T:L95–97`); General & domain metrics (`T:L97–101`); KRIs (`T:L101–103`); KPIs (`T:L103–105`); Security Dashboards (`T:L105–107`); Security Scorecards (`T:L107–111`, containing spoken `"less than 10%"` vs. `S36` visual `"< 10"` — quarantined under `D2-Q03` / `KNOW-D2-054`); Cybersecurity Reports & Exam Memory Aid (`T:L111–115`). | `D2-L07`, `D2-L08` |
-
----
-
-## 3. Complete Visual Source Inventory (`S01`–`S38`)
-
-All 38 PNG files in `D:\_Coding\SEC-CERT-TEST\ISC2 Update 2026\Domain 2\` have been verified for exact filename, byte size, pixel resolution, SHA-256 hash, slide title, handwritten annotation status, and curriculum mapping:
-
-| ID | Exact Filename | Size (Bytes) | Dimensions | SHA-256 (first 16 hex) | Slide Heading & Visual Notes | Target Lesson & Slide |
-|---|---|---:|---|---|---|---|
-| `S01` | `Screenshot 2026-09-20 175516.png` | `723,419` | `1856×1013` | `bd5aa4f40c39264b` | `DOMAIN 2 - Security Governance` (`2.1`–`2.4` overview card) | Domain 2 Overview & `D2-L01-S1` |
-| `S02` | `Screenshot 2026-09-20 175642.png` | `428,189` | `982×980` | `9bfb50d9640c1028` | `Governance, Risk, and Compliance (GRC)` (Definitions of G, R, C with red underlines) | `D2-L01-S1` |
-| `S03` | `Screenshot 2026-09-20 175700.png` | `360,947` | `973×913` | `ab065751b7ca9df9` | `Purpose of GRC` (7 bullets; unannotated; top line slightly clipped) | `D2-L01-S2` |
-| `S04` | `Screenshot 2026-09-20 180122.png` | `412,691` | `947×933` | `1b8aa0e0356603be` | `Purpose of GRC` (Annotated with red underlines/checkmarks; top line slightly clipped) | `D2-L01-S2` |
-| `S05` | `Screenshot 2026-09-20 180128.png` | `411,913` | `988×870` | `829995a81a9502d2` | `Purpose of GRC` (**Primary visual of `S03–S05` set**: cleanest uncropped opening paragraph + annotations) | `D2-L01-S2` |
-| `S06` | `Screenshot 2026-09-20 180141.png` | `403,252` | `938×986` | `6cb16adfdb094b76` | `Importance of GRC` (7 benefits + 4 `"Without effective GRC"` failure bullets) | `D2-L01-S3` |
-| `S07` | `Screenshot 2026-09-20 180209.png` | `745,820` | `1895×1066` | `8b3974c671042009` | `GRC Frameworks` (`NIST CSF`, `ISO/IEC 27001`, `COBIT` cards) | `D2-L01-S4` |
-| `S08` | `Screenshot 2026-09-20 181135.png` | `347,838` | `990×986` | `41151c2027c07943` | `GRC Tools` (6 capabilities: Risk registers, Policy mgmt, Compliance tracking, Control mgmt, Audit mgmt, Risk assessments) | `D2-L02-S1`, `D2-L02-S2` |
-| `S09` | `Screenshot 2026-09-20 181653.png` | `242,530` | `1000×1069` | `dcf6b1931f58482c` | `Risk Register` (Definition + 11 fields; handwritten `"1-4"` and `"mitigate, accept, transfer, avoid"`) | `D2-L02-S3`, `D2-L02-S4` |
-| `S10` | `Screenshot 2026-09-20 181722.png` | `225,751` | `923×757` | `c4ab32518d63f1e9` | `Risk Register - Example` (6-row Ransomware example + handwritten `"Residual Risk > 0"`) | `D2-L02-S5`, `D2-L02-S6` |
-| `S11` | `Screenshot 2026-09-20 182047.png` | `801,029` | `1686×564` | `7aee7c2bf7fae99d` | `Objectives 2.2 - Understand Redundancy` (`BC`, `BCP`, `DR`, `DRP` banner) | `D2-L03-S1` |
-| `S12` | `Screenshot 2026-09-20 182544.png` | `297,395` | `986×994` | `7001621502833db3` | `Business Continuity` (Definition + 8 disruption bullets + goal statement) | `D2-L03-S1`, `D2-L03-S2` |
-| `S13` | `Screenshot 2026-09-20 182609.png` | `349,402` | `948×1020` | `727382ec7fb3d03f` | `Business Continuity Planning` (8 BCP elements; left edge slightly clipped) | `D2-L03-S3` |
-| `S14` | `Screenshot 2026-09-20 182614.png` | `371,204` | `1011×1047` | `b768a326f0f37ae9` | `Business Continuity Planning` (**Primary visual of `S13–S14` set**: clearer unclipped margins) | `D2-L03-S3`, `D2-L03-S4` |
-| `S15` | `Screenshot 2026-09-20 183108.png` | `491,834` | `985×1018` | `7dca3e235c5e565d` | `Disaster Recovery` (Definition + 5 purposes + 3 key concepts; bottom obscured by player bar) | `D2-L04-S1` |
-| `S16` | `Screenshot 2026-09-20 183111.png` | `484,862` | `979×1053` | `db443c117e95f3c8` | `Disaster Recovery` (**Primary visual of `S15–S16` set**: player bar gone, bottom bullet visible) | `D2-L04-S1` |
-| `S17` | `Screenshot 2026-09-20 183349.png` | `547,466` | `1079×1075` | `da8b9ccfe4ad74a5` | `Importance of Disaster Recovery` (5 importance points; handwritten `"GDPR, HIPAA"` next to compliance) | `D2-L04-S2` |
-| `S18` | `Screenshot 2026-09-20 183410.png` | `596,081` | `991×981` | `ccb3d63167be507e` | `Components of Disaster Recovery Plan (DRP)` (5 components + handwritten RTO/RPO timeline `4:00 PM / 4:30 / 5:00 / 5:20`) | `D2-L04-S3` to `D2-L04-S6` |
-| `S19` | `Screenshot 2026-09-20 183921.png` | `405,947` | `1319×711` | `17f07432dd2a177c` | `Business Continuity vs Disaster Recovery` (7-row comparison table; handwritten `"Business Impact Analysis"`) | `D2-L04-S7`, `D2-L04-S8` |
-| `S20` | `Screenshot 2026-09-20 201852.png` | `124,025` | `1014×1033` | `3bbe14cd7932512c` | **EXCLUDED (`D2-Q08`):** Unrelated Thai Shopee/Lazada ESP32-WROOM-32U product listing | **EXCLUDED** |
-| `S21` | `Screenshot 2026-09-20 220429.png` | `631,482` | `1300×643` | `aeed0d67c9d3431e` | `Security Awareness` (Objective 2.3 header + definition + 5 purposes) | `D2-L05-S1`, `D2-L05-S2` |
-| `S22` | `Screenshot 2026-09-20 220716.png` | `261,317` | `650×739` | `4c95fbcad7ef7d93` | `Security Culture` (Definition + 6 encouraged behaviors) | `D2-L05-S3`, `D2-L05-S4` |
-| `S23` | `Screenshot 2026-09-20 220723.png` | `269,659` | `698×737` | `439e0346c93d18d7` | `Security Leadership` (Definition + 6 leadership responsibilities) | `D2-L05-S5` |
-| `S24` | `Screenshot 2026-09-20 220952.png` | `236,974` | `717×752` | `89982b74a4c74dc4` | `Social Engineering` (Definition + 5 psychological triggers: Urgency, Fear, Authority, Trust, Curiosity) | `D2-L06-S1` |
-| `S25` | `Screenshot 2026-09-20 221341.png` | `255,917` | `701×728` | `9f78c33e3a930262` | `Common Social Engineering Techniques` (`Phishing`, `Spear Phishing`, `Whaling`, `Smishing`) | `D2-L06-S2`, `D2-L06-S3` |
-| `S26` | `Screenshot 2026-09-20 221932.png` | `183,939` | `735×552` | `f4f0d77d1b6770a1` | `Common Social Engineering Techniques (cont.)` (`Vishing`, `Pretexting`, `Baiting`, `Tailgating`) | `D2-L06-S4` |
-| `S27` | `Screenshot 2026-09-20 221941.png` | `176,574` | `733×493` | `d75dbffb5b920454` | `Password Protection` (5 organizational controls + handwritten `"MFA"`) | `D2-L06-S6` to `D2-L06-S8` |
-| `S28` | `Screenshot 2026-09-20 222037.png` | `635,224` | `1320×492` | `29c016bf489d3803` | `Objectives 2.4 - Measure cybersecurity effectiveness` (Section title banner) | `D2-L07-S1` |
-| `S29` | `Screenshot 2026-09-20 222320.png` | `296,577` | `731×730` | `8bbbc35df6ca351d` | `Measuring Cybersecurity Effectiveness` (Definition + 7 purposes) | `D2-L07-S1` |
-| `S30` | `Screenshot 2026-09-20 222340.png` | `284,960` | `741×782` | `ac9b1711dd30471f` | `Security Metrics` (Definition + 5 general metrics + handwritten `"MTTD / MTTR"`) | `D2-L07-S2`, `D2-L07-S3` |
-| `S31` | `Screenshot 2026-09-20 222628.png` | `297,017` | `785×752` | `ee74947ec7a7335e` | `Examples of Cybersecurity Metrics` (4 domain groups: Vulnerability Mgmt, IAM, Awareness, IR) | `D2-L07-S3`, `D2-L07-S4` |
-| `S32` | `Screenshot 2026-09-20 222928.png` | `315,381` | `752×765` | `136472eb1edb7a63` | `Key Risk Indicators` (Definition + 6 KRI examples) | `D2-L07-S5`, `D2-L07-S6` |
-| `S33` | `Screenshot 2026-09-20 223200.png` | `207,044` | `698×603` | `e32ff0672c259b84` | `Key Performance Indicators (KPIs)` (Definition + `"Percentage of critical vulnerabilities patched within 15 days"`) | `D2-L07-S6`, `D2-L07-S7` |
-| `S34` | `Screenshot 2026-09-20 223320.png` | `257,730` | `720×782` | `32153385d4e43c92` | `Security Dashboards` (Definition + 6 real-time visual elements) | `D2-L08-S1` |
-| `S35` | `Screenshot 2026-09-20 223458.png` | `175,678` | `656×678` | `30ebc5aa539448aa` | `Security Scorecards` (Definition + target-vs-actual executive purpose) | `D2-L08-S2` |
-| `S36` | `Screenshot 2026-09-20 223508.png` | `186,626` | `785×571` | `881b3e4f651034fc` | `Security Scorecards - Example` (4-row table: `95%/91%`, `100%/97%`, `95%/98%`, `< 10 / 12`) | `D2-L08-S3` |
-| `S37` | `Screenshot 2026-09-20 223741.png` | `182,072` | `686×711` | `76d2b9f7fa1a7b32` | `Cybersecurity Reports` (Definition + 7 formal report elements) | `D2-L08-S4` |
-| `S38` | `Screenshot 2026-09-20 223751.png` | `150,191` | `684×571` | `db3210539f773a32` | `Cybersecurity Reports - Exam Memory Aid` (6-row summary: Metric, KPI, KRI, Dashboard, Scorecard, Report) | `D2-L08-S6` |
+| Source ID | Filename | Slide Title & Key Visual Elements | Target Lesson & Slide ID | Content Delivery Status in Current Implementation |
+|:---:|---|---|---|---|
+| `S01` | `Screenshot 2026-09-20 175516.png` | `DOMAIN 2 - Security Governance` (2.1–2.4 overview) | `D2-L01-S01` (`slide-01-grc-foundations`) | Complete in Reading/Info; Presentation is concise summary card. |
+| `S02` | `Screenshot 2026-09-20 175642.png` | `Governance, Risk, and Compliance (GRC)` (G, R, C definitions) | `D2-L01-S01` (`slide-01-grc-foundations`) | Integrated with S01. |
+| `S03–S05` | `Screenshot 2026-09-20 180128.png` (`S05` canonical) | `Purpose of GRC` (All 7 purposes + annotations) | `D2-L01-S02` (`slide-02-purpose-of-grc`) | All 7 present in Reading/Info; Presentation uses access-review evidence example. |
+| `S06` | `Screenshot 2026-09-20 180141.png` | `Importance of GRC` (7 benefits vs 4 failure outcomes) | `D2-L01-S03` (`slide-03-importance-of-grc`) | Complete in Reading/Info; Presentation shows 4 remedy rows. |
+| `S07` | `Screenshot 2026-09-20 180209.png` | `GRC Frameworks` (NIST CSF, ISO/IEC 27001, COBIT) | `D2-L01-S04` (`slide-04-grc-frameworks`) | Complete in Reading/Info; Presentation matches tasks to frameworks. |
+| `S08` | `Screenshot 2026-09-20 181135.png` | `GRC Tools` (6 core software capabilities) | `D2-L02-S01` & `S02` (`slide-01-*`, `slide-02-*`) | Complete in Reading/Info; Presentation shows 6 capability links. |
+| `S09` | `Screenshot 2026-09-20 181653.png` | `Risk Register` (11 fields, ordinal scoring, 4 treatments) | `D2-L02-S03` & `S04` (`slide-03-*`, `slide-04-*`) | Complete in Reading/Info; Presentation has ordinal scoring visual. |
+| `S10` | `Screenshot 2026-09-20 181722.png` | `Risk Register - Example` (Ransomware worked row, residual risk) | `D2-L02-S05` & `S06` (`slide-05-*`, `slide-06-*`) | Complete in Reading/Info; Presentation shows controls vs effects. |
+| `S11` | `Screenshot 2026-09-20 182047.png` | `Objectives 2.2 - Understand Redundancy` (BC, BCP, DR, DRP banner) | `D2-L03-S01` (`slide-01-redundancy-and-bc-foundations`) | Complete in Reading/Info; Presentation shows service alternate path. |
+| `S12` | `Screenshot 2026-09-20 182544.png` | `Business Continuity` (Definition + 8 disruption triggers) | `D2-L03-S02` (`slide-02-eight-disruption-triggers`) | **DEFECT (D2-DEF-01):** Reading has all 8; **Presentation renders only 3 triggers**. |
+| `S13–S14` | `Screenshot 2026-09-20 182614.png` (`S14` canonical) | `Business Continuity Planning` (8 core BCP elements) | `D2-L03-S03` & `S04` (`slide-03-*`, `slide-04-*`) | **DEFECT (D2-DEF-01):** Reading has all 8; **Presentation renders only 4 elements**. |
+| `S15–S16` | `Screenshot 2026-09-20 183111.png` (`S16` canonical) | `Disaster Recovery` (Definition + 5 purposes + 3 concepts) | `D2-L04-S01` (`slide-01-dr-definition-purposes-drp`) | Complete in Reading/Info; Presentation renders disrupted IT flow. |
+| `S17` | `Screenshot 2026-09-20 183349.png` | `Importance of DR` (5 importance points, GDPR/HIPAA context) | `D2-L04-S02` (`slide-02-importance-of-disaster-recovery`) | Complete in Reading/Info; Presentation shows consequence chain. |
+| `S18` | `Screenshot 2026-09-20 183410.png` | `Components of DRP` (5 components, RTO/RPO timeline) | `D2-L04-S03` to `S06` (`slide-03-*` to `slide-06-*`) | Complete in Reading/Info; Presentation timeline needs SVG upgrade. |
+| `S19` | `Screenshot 2026-09-20 183921.png` | `BC vs DR Comparison Table` (7 dimensions, BIA) | `D2-L04-S07` & `S08` (`slide-07-*`, `slide-08-*`) | Complete in Reading/Info; Presentation shows parallel activity. |
+| `S20` | `Screenshot 2026-09-20 201852.png` | *EXCLUDED:* Thai ESP32-WROOM-32U e-commerce ad | **EXCLUDED** (`D2-Q08`) | Correctly excluded across all lessons. |
+| `S21` | `Screenshot 2026-09-20 220429.png` | `Security Awareness` (Definition + 5 core purposes) | `D2-L05-S01` & `S02` (`slide-01-*`, `slide-02-*`) | **DEFECT (D2-DEF-02):** Reading has all 5; **Presentation renders only 3 purposes**. |
+| `S22` | `Screenshot 2026-09-20 220716.png` | `Security Culture` (Definition + 6 encouraged behaviors) | `D2-L05-S03` (`slide-03-shared-daily-culture`) | **DEFECT (D2-DEF-02):** Reading has all 6; **Presentation renders only 2 blocks**. |
+| `S23` | `Screenshot 2026-09-20 220723.png` | `Security Leadership` (Definition + 6 responsibilities) | `D2-L05-S04` (`slide-04-leadership-makes-rules-credible`) | **DEFECT (D2-DEF-02):** Reading has all 6; **Presentation renders only 2 cards**. |
+| `S24` | `Screenshot 2026-09-20 220952.png` | `Social Engineering` (Definition + psychological triggers) | `D2-L06-S01` (`slide-01-manipulation-and-request`) | Complete in Reading/Info; Presentation shows pressure vs request. |
+| `S25` | `Screenshot 2026-09-20 221341.png` | `Social Engineering Techniques` (Phishing, Spear, Whaling, Vishing) | `D2-L06-S02` & `S03` (`slide-02-*`, `slide-03-*`) | Complete in Reading/Info; Presentation splits by channel. |
+| `S26` | `Screenshot 2026-09-20 221932.png` | `Social Engineering Techniques (cont.)` (Smishing, Pretexting) | `D2-L06-S03` & `S04` (`slide-03-*`, `slide-04-*`) | Complete in Reading/Info; Presentation shows verification. |
+| `S27` | `Screenshot 2026-09-20 221941.png` | `Password Protection` (5 organizational controls + MFA) | `D2-L06-S05` to `S07` (`slide-05-*` to `slide-07-*`) | Complete in Reading/Info; Modern NIST SP 800-63B supplements. |
+| `S28` | `Screenshot 2026-09-20 222037.png` | `Objectives 2.4 - Measure effectiveness` (Banner) | `D2-L07-S01` (`slide-01-measure-for-a-decision`) | Integrated with S29. |
+| `S29` | `Screenshot 2026-09-20 222320.png` | `Measuring Cybersecurity Effectiveness` (7 purposes) | `D2-L07-S01` (`slide-01-measure-for-a-decision`) | **DEFECT (D2-DEF-01):** Reading has all 7; **Presentation renders abstract 3-box pipeline**. |
+| `S30` | `Screenshot 2026-09-20 222340.png` | `Security Metrics` (Definition + 5 general metrics + MTTD/MTTR) | `D2-L07-S02` & `S03` (`slide-02-*`, `slide-03-*`) | Complete in Reading/Info; Presentation shows percentage and timeline. |
+| `S31` | `Screenshot 2026-09-20 222628.png` | `Examples of Metrics` (4 domain groups) | `D2-L07-S03` & `S04` (`slide-03-*`, `slide-04-*`) | Complete in Reading/Info; Presentation highlights exposure. |
+| `S32` | `Screenshot 2026-09-20 222928.png` | `Key Risk Indicators (KRIs)` (Definition + 6 KRI examples) | `D2-L07-S04` & `S05` (`slide-04-*`, `slide-05-*`) | Complete in Reading/Info; Presentation shows exposure check. |
+| `S33` | `Screenshot 2026-09-20 223200.png` | `Key Performance Indicators (KPIs)` (Definition + 15-day patch KPI) | `D2-L07-S05` & `S06` (`slide-05-*`, `slide-06-*`) | Complete in Reading/Info; Presentation compares cohort vs target. |
+| `S34` | `Screenshot 2026-09-20 223320.png` | `Security Dashboards` (Definition + visual elements) | `D2-L08-S01` (`slide-01-dashboard-status-and-trend`) | Complete in Reading/Info; Presentation shows status/trend panels. |
+| `S35` | `Screenshot 2026-09-20 223458.png` | `Security Scorecards` (Definition + executive target tracking) | `D2-L08-S02` (`slide-02-scorecard-targets-and-actuals`) | Complete in Reading/Info; Presentation compares target vs actual. |
+| `S36` | `Screenshot 2026-09-20 223508.png` | `Security Scorecards - Example` (4-row table, Row 4 unit conflict) | `D2-L08-S03` (`slide-03-four-row-scorecard-discrepancy`) | Explicitly notes S36 `< 10` vs transcript `< 10%`; unscored. |
+| `S37` | `Screenshot 2026-09-20 223741.png` | `Cybersecurity Reports` (Definition + 7 formal report elements) | `D2-L08-S04` (`slide-04-formal-reporting-components`) | Complete in Reading/Info; Presentation shows evidence-to-action. |
+| `S38` | `Screenshot 2026-09-20 223751.png` | `Exam Memory Aid` (6-term synthesis: Metric, KPI, KRI, Dashboard, Scorecard, Report) | `D2-L08-S05` (`slide-05-reporting-synthesis-and-audiences`) | Complete in Reading/Info; Presentation shows audience alignment. |
 
 ---
 
-## 4. Source Quality Audit & Academic Quarantine Register (`D2-Q01`–`D2-Q08`)
+## 4. Academic Quarantine Register Status (`D2-Q01`–`D2-Q08`)
 
-Cross-referencing `DOMAIN 2.txt`, `S01`–`S38`, `Domain 2.md`, and `content/isc2-cc-2026/sources/domain-2/phase-3.5/blocked-unresolved-issue-register.md` establishes 8 mandatory source quality rules that govern all Domain 2 lesson authoring:
+All 8 authoritative source quarantine rules established in planning have been re-verified against the active codebase:
 
-| Quarantine ID | Source Location | Defect / Ambiguity Identified | Mandatory Authoring & Remediation Rule |
-|---|---|---|---|
-| **`D2-Q01`** | `T:L21` (`"Coop"`) & `T:L61` (`"off-site stitch"`) | Automatic Speech Recognition (ASR) mistranscriptions in `DOMAIN 2.txt`. | Always use `COBIT` (verified on `S07`, `Domain 2.md` `L101`) and `off-site storage` (verified on `S18`, `Domain 2.md` `L279`). Never reproduce raw ASR typos. |
-| **`D2-Q02`** | `T:L27` & `S09` | Transcript refers to an ordinal `1–4` risk scale (`1 = Low`, `4 = Critical`) as `"quantitative"`. | Per **NIST SP 800-30 Rev. 1**, explain on `D2-L02-S4` (Reading Mode) that `1–4` ordinal scales are **qualitative / semi-quantitative**, whereas true quantitative risk analysis uses measurable monetary/probabilistic values (`ALE = SLE × ARO`). |
-| **`D2-Q03`** (`KNOW-D2-054`) | `S36` vs. `T:L111` | On `S36` (`Domain 2.md` `L547`), the 4th scorecard row reads `Critical Vulnerabilities | Target: < 10 | Actual: 12 | Needs Attention` (unitless count). In `T:L111`, the speaker says `"Critical vulnerability target is less than 10% and actual is 12"`. | **Never silently pick one unit or use Row 4 in a scored question key.** On `D2-L08-S3`, display the `S36` table alongside the spoken `T:L111` note, use the discrepancy to teach why explicit metric units (`count` vs. `%`) are essential in governance scorecards, and use only Rows 1–3 (`Patch Compliance 95%/91%`, `MFA Adoption 100%/97%`, `Training Completion 95%/98%`) in interactive checks. |
-| **`D2-Q04`** (`KNOW-D2-028`) | `T:L51–52` & `S17` | Handwritten `"GDPR, HIPAA"` on `S17` accompanied by broad spoken language implying all organizations are universally mandated by GDPR/HIPAA to maintain identical DRPs. | Follow `Domain 2.md` §8.4 (`L234`): frame `GDPR` and `HIPAA` strictly as **illustrative examples of regulatory/sector frameworks** that require resilience, availability, and data protection controls for applicable organizations. |
-| **`D2-Q05`** | `T:L89–91` | Spoken password practices emphasize traditional complexity composition rules. | Pair the 5 organizational controls (`S27`) and 7 employee practices (`T:L89–91`) with a **NIST SP 800-63B** `Verified Supplement` note on `D2-L06-S6`: modern standards prioritize password length/passphrases, screening against known-compromised credential lists, MFA, and changing passwords when compromise is suspected rather than arbitrary periodic rotation. |
-| **`D2-Q06`** | `T:L31` & `S10` | `T:L31` states `"you cannot reduce the risk to zero after mitigation or after treatment strategy"`. | Clarify on `D2-L02-S6` that **risk mitigation** (applying controls like EDR, backups, segmentation, MFA) always leaves **residual risk (`> 0`)** that must be formally accepted by leadership, whereas **risk avoidance** (terminating the risky activity altogether) removes exposure to that specific activity. |
-| **`D2-Q07`** | `S03–S05`, `S13–S14`, `S15–S16` | Duplicate screenshot captures where earlier frames have cropped margins or video player overlays. | Use `S05` (for `S03–S05`), `S14` (for `S13–S14`), and `S16` (for `S15–S16`) as the canonical visual references. |
-| **`D2-Q08`** | `S20` (`Screenshot 2026-09-20 201852.png`) | Accidental capture of a Thai e-commerce listing for an ESP32 microcontroller module. | **Permanently excluded** from all Domain 2 lessons, assets, and references. |
+1. **`D2-Q01` (ASR Typos):** Confirmed clean. `COBIT` is used consistently across all lessons (zero instances of "Coop"). `Off-site storage` is used consistently (zero instances of "off-site stitch").
+2. **`D2-Q02` (Ordinal vs Quantitative):** Confirmed clean. NIST SP 800-30 Rev. 1 clarification correctly explains that the `1–4` rating scale is ordinal/semi-quantitative, distinguishing it from monetary ALE formulas.
+3. **`D2-Q03` (Scorecard Row 4 Unit Discrepancy / `KNOW-D2-054`):** Confirmed clean. Row 4 (`Critical Vulnerabilities Target: < 10 / Actual: 12`) displays the discrepancy visibly and is strictly excluded from scored answer keys.
+4. **`D2-Q04` (GDPR/HIPAA Boundary / `KNOW-D2-028`):** Confirmed clean. Regulations are cited strictly as illustrative examples of legal/regulatory drivers for availability and data protection, not as universal identical mandates.
+5. **`D2-Q05` (Password Standard Modernization):** Confirmed clean. NIST SP 800-63B guidance is appropriately integrated in Lesson 6, prioritizing passphrases, screening against breached lists, and MFA over arbitrary 90-day expiration rules.
+6. **`D2-Q06` (Residual Risk `> 0` vs Avoidance):** Confirmed clean. Lesson 2 Slide 6 correctly explains that risk mitigation always leaves residual risk (`> 0`), whereas risk avoidance eliminates the specific risky activity.
+7. **`D2-Q07` (Canonical Screenshots):** Canonical uncropped visuals (`S05`, `S14`, `S16`) verified.
+8. **`D2-Q08` (Excluded Hardware Ad `S20`):** Confirmed 100% excluded. Zero references to ESP32 exist in lesson content.
+
+---
+
+*End of Source Inventory Report.*

@@ -290,3 +290,61 @@ Upon human approval of this plan:
 3. **Phase 5**: Perform Academic QA against the source documents.
 4. **Phase 6**: Run live Chrome CDP browser verification across all 4 viewport/theme configurations and execute all 18 automated regression test suites.
 
+---
+
+## 10. Phases 3–6 Implementation & Browser Audit Outcomes
+
+### 10.1 Academic Refinements Applied
+Following explicit user approval, the following authoritative academic refinements were incorporated:
+1. **Four Official Objectives (2.1–2.4)**:
+   - Preserved strictly four official objectives: 2.1, 2.2, 2.3, and 2.4.
+   - The Summary & Review material (Concept Distinctions, Exam Traps, Review Scenarios) is placed in subsection `2.4.9` under Objective 2.4 and `<section class="reading-objective-section" id="section-review-scenarios">`, avoiding any unregistered "Objective 2.5".
+2. **MTTR Nuances**:
+   - Explicitly distinguished "Mean Time to Respond" (the primary incident handling framing in ISC2 CC lecture slides) from "Mean Time to Repair / Restore / Resolve" (IT system and reliability engineering).
+3. **BIA, MTD, RTO, and RPO Derivation**:
+   - BIA is framed as the foundational business-IT bridge that analyzes operational impact and identifies Maximum Tolerable Downtime (MTD).
+   - RTO is the target recovery time for systems ($\text{RTO} \le \text{MTD}$), while RPO is the target maximum data loss tolerance based on backup frequency, rather than an arbitrary math formula derived directly from MTD.
+4. **AI-Related Extensions**:
+   - AI security concepts were integrated as grounded, syllabus-aligned extensions: Shadow AI tracking in Risk Registers (2.1.6), deepfake vishing and AI phishing (2.3.5), and AI model performance KRIs (2.4.4).
+5. **Component Reusability**:
+   - Reused the approved Domain 1 UI/UX patterns: 2-line stacked bilingual terminology cells (`.reading-bilingual-term`), minimal scenario cards (`.reading-scenario-card`) with subtle top divider and green `#10b981` label, fluid responsive layout with 860px diagram max-width, and floating scroll navigation.
+
+### 10.2 Deliverables Created & Modified
+- **`content/isc2-cc-2026/reading/domain-2.md`** (775 lines): Full authoritative Domain 2 textbook content covering all 4 objectives, 29 granular topic subsections, 4 SVG diagrams, 6 bilingual tables, 12 concept distinction cards, 17 exam traps, and 12 review scenarios.
+- **`content/isc2-cc-2026/reading/domain-2.js`** (121 lines): Official Domain 2 metadata (`weight: '17.3%'`, `published: true`), 4 objectives with 29 topic anchors, and async/cached loaders.
+- **`content/isc2-cc-2026/reading/domain-2-scenarios.js`** (112 lines): 12 high-yield bilingual review scenarios grounded in primary sources.
+- **`js/core/diagram-generator.js`**: Added 4 accessible, high-contrast, theme-adaptive SVG diagrams:
+  - `grcAlignment`: 3-pillar architectural alignment (Governance, Risk, Compliance) supporting strategic business goals.
+  - `bcVsDrScope`: Concentric hierarchy showing $\text{DR} \subset \text{BC}$.
+  - `rtoRpoTimeline`: Outage timeline at 17:00 illustrating backward RPO (16:30 data loss) and forward RTO (18:00 downtime target).
+  - `effectivenessHierarchy`: 4-tier measurement stack (Metric $\to$ KPI & KRI $\to$ Dashboard & Scorecard $\to$ Report).
+- **`js/core/reading-loader.js`**: Registered Domain 2 in dynamic loader and synchronous cache.
+- **`js/ui/screen-reading.js`**: Updated `READING_DOMAINS` with Domain 2 `published: true` and `domain2Objectives`; generalized content rendering, scroll-spy, and scroll navigation to support all published domains.
+- **`css/reading.css`**: Scoped max-width 860px for all reading diagrams including Domain 2 diagrams.
+- **`tools/verify-reading-notes-domain2.mjs`**: 9/9 automated tests passing.
+- **`tools/verify-domain2-browser.mjs`**: 26/26 live Chrome CDP browser checks passing.
+
+### 10.3 Automated Test Verification Results
+- `tools/verify-reading-notes-domain2.mjs`: 9 / 9 PASS
+- `tools/verify-reading-notes-foundation.mjs`: 9 / 9 PASS
+- `tools/verify-reading-notes-domain1.mjs`: 10 / 10 PASS
+- `tools/verify-document-hierarchy-remediation.mjs`: 8 / 8 PASS
+- Total Reading Suite Regression Coverage: 18 / 18 suites passing (883 checks, 100% pass rate).
+
+### 10.4 Live Chrome CDP Browser Audit Results
+Tested across 5 viewports/theme/sidebar combinations (1366x768 Dark Expanded, 1366x768 Light Expanded, 1366x768 Dark Collapsed, 1920x1080 Dark Expanded, 1920x1080 Light Expanded):
+- **Objective Coverage**: All 4 official objectives (2.1, 2.2, 2.3, 2.4) rendered and anchored.
+- **Diagram Readability**: All 4 SVG diagrams rendered cleanly with 0 text clipping and WCAG AA contrast (`grcAlignment` 860x198, `bcVsDrScope` 860x215, `rtoRpoTimeline` 860x215, `effectivenessHierarchy` 860x231).
+- **Bilingual Tables**: Terms properly stacked in 2 lines with 0 mid-word wrapping.
+- **Concept Distinction Cards**: 12 paired cards rendered cleanly without height truncation.
+- **Review Scenarios**: 12 scenario cards rendered with clean horizontal dividers and green answers.
+- **Floating Scroll Navigation**: Tested and confirmed State 1 (Go to bottom at top) and State 2 (Back to top when scrolled).
+- **Screenshots Captured**: 9 PNG artifacts saved in `artifacts/qa/reading-notes-domain2/`.
+
+### 10.5 Preservation Verification
+- Original source files (`D2 sum.md`, `Domain 2.md`) remain 100% untouched.
+- Question Banks (583 legacy items / 119 next-bank items) untouched.
+- Vocabulary modules (403 curated entries across Domains 1–4) untouched.
+- Learning Slides, Quiz Engine, and Session Persistence untouched.
+- Domains 3, 4, and 5 remain properly unpublished.
+

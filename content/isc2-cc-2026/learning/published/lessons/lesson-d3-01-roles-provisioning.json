@@ -1,0 +1,1098 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d3-01-roles-provisioning",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 3,
+  "primaryObjectiveId": "3.1",
+  "objectiveIds": [
+    "3.1"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Roles & Authorized Provisioning",
+    "th": "บทบาทและการจัดเตรียมสิทธิ์ที่ได้รับอนุมัติ"
+  },
+  "synopsis": {
+    "en": "Connect responsibilities to approved access, provision it correctly and verify the result for people and automated workloads.",
+    "th": "เชื่อมหน้าที่กับสิทธิ์ที่อนุมัติ จัดเตรียมและตรวจผลให้ถูกต้องสำหรับคนและระบบงานอัตโนมัติ"
+  },
+  "outcomes": [
+    {
+      "en": "Distinguish roles, accounts, identifiers and authenticators.",
+      "th": "แยก Role, Account, Identifier และ Authenticator"
+    },
+    {
+      "en": "Explain request, approval and provisioning responsibilities under stated policy.",
+      "th": "อธิบายหน้าที่ขอ อนุมัติ และจัดเตรียมสิทธิ์ตามนโยบาย"
+    },
+    {
+      "en": "Compare approved access with the effective grant, including an owned bot.",
+      "th": "เทียบสิทธิ์ที่อนุมัติกับสิทธิ์จริง รวมถึง Bot ที่มีผู้รับผิดชอบ"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Domain 1 identification, AAA and MFA basics; ordinary account and file concepts.",
+      "th": "แนะนำพื้นฐาน Identification, AAA และ MFA จาก Domain 1 รวมถึงแนวคิดบัญชีและไฟล์ทั่วไป"
+    }
+  ],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC Exam Outline — effective September 1, 2026",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Domain 3, Objective 3.1 roles definition/provision; checked 2026-10-30."
+    },
+    {
+      "id": "isc2-ai-application",
+      "title": "ISC2 CC — Domain 3 AI application guidance",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Domain 3 AI section: bot/service-account lifecycle; explicit supplement."
+    },
+    {
+      "id": "d3-notes",
+      "title": "Domain 3.md — user study notes",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 3/Domain 3.md",
+      "locator": "Sections 1–4 and 20. S02/S03, transcript 00:01:23–00:04:51 corroboration; identifiers and workflow qualified in audit."
+    },
+    {
+      "id": "d3-summary",
+      "title": "D3 sum.md — user summary",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 3/D3 sum.md",
+      "locator": "Topics 1–2, roles and provisioning."
+    },
+    {
+      "id": "nist-identity",
+      "title": "NIST SP 800-63-4 — Digital Identity Guidelines",
+      "authority": "technical-primary",
+      "url": "https://pages.nist.gov/800-63-4/sp800-63.html",
+      "locator": "Introduction, identity model/glossary. Contextual identities, proofing and authenticators; supplementary, not universal enterprise workflow."
+    },
+    {
+      "id": "nist-account-management",
+      "title": "NIST SP 800-171r3 — account management and access enforcement",
+      "authority": "technical-primary",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/800-171r3/NIST.SP.800-171r3.html",
+      "locator": "03.01.01/02; authorized account/permission management. CUI applicability is not generalized to every organization."
+    },
+    {
+      "id": "service-account-governance",
+      "title": "Microsoft — Governing service accounts",
+      "authority": "technical-primary",
+      "url": "https://learn.microsoft.com/en-us/entra/architecture/govern-service-accounts",
+      "locator": "Planning: owner, purpose, permissions, dependencies and lifetime. Vendor-specific choices are not mandatory CC syllabus."
+    }
+  ],
+  "assets": [],
+  "slides": [
+    {
+      "id": "slide-d3-01-01-role-to-task",
+      "title": {
+        "en": "Start with the work, then justify the access.",
+        "th": "เริ่มจากหน้าที่ แล้วจึงกำหนดสิทธิ์ที่จำเป็น"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A role links a job function to the access needed for that work.",
+            "th": "Role เชื่อมหน้าที่งานกับสิทธิ์ที่จำเป็นต่อการทำงานนั้น"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Examples and reasoning",
+            "th": "ตัวอย่างและเหตุผลประกอบ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Human Resources Manager",
+                "th": "ผู้จัดการ Human Resources"
+              },
+              {
+                "en": "HR systems / employee records",
+                "th": "ระบบ HR / ข้อมูลพนักงาน"
+              },
+              {
+                "en": "Scope depends on assigned responsibilities.",
+                "th": "ขอบเขตขึ้นกับหน้าที่ที่ได้รับมอบหมาย"
+              }
+            ],
+            [
+              {
+                "en": "Network Administrator",
+                "th": "ผู้ดูแล Network"
+              },
+              {
+                "en": "Network management",
+                "th": "จัดการระบบ Network"
+              },
+              {
+                "en": "Administrative access must be authorized for the task.",
+                "th": "ต้องอนุมัติสิทธิ์ดูแลระบบให้สอดคล้องกับงาน"
+              }
+            ],
+            [
+              {
+                "en": "Database Administrator",
+                "th": "ผู้ดูแล Database"
+              },
+              {
+                "en": "Database management",
+                "th": "จัดการ Database"
+              },
+              {
+                "en": "A title alone does not grant every database permission.",
+                "th": "ชื่อตำแหน่งอย่างเดียวไม่ได้ให้สิทธิ์ทุกอย่างใน Database"
+              }
+            ],
+            [
+              {
+                "en": "Security Analyst",
+                "th": "นักวิเคราะห์ Security"
+              },
+              {
+                "en": "Security systems",
+                "th": "ระบบที่ใช้วิเคราะห์ Security"
+              },
+              {
+                "en": "Use the systems and actions required for the assignment.",
+                "th": "ให้ใช้ระบบและทำรายการตามที่จำเป็นต่อภารกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Finance Employee",
+                "th": "พนักงาน Finance"
+              },
+              {
+                "en": "Accounting / finance systems",
+                "th": "ระบบ Accounting / Finance"
+              },
+              {
+                "en": "Network administration is outside this reporting task.",
+                "th": "สิทธิ์ดูแล Network อยู่นอกงานจัดทำรายงานในตัวอย่างนี้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Define what a person is responsible for before deciding which resources and actions the work requires. A role describes a function, a permission authorizes an action such as reading or modifying a resource, and effective access is what the configured system actually allows. In this example a Finance employee reads a monthly accounting report; changing payroll or administering the network is outside that assigned task. This does not mean a Finance employee can never perform separately authorized administrative work. The five source examples illustrate responsibilities, not universal permission bundles. A job title or copied colleague account is not sufficient evidence of an appropriate grant.",
+            "th": "กำหนดก่อนว่าบุคคลนั้นรับผิดชอบงานใด แล้วจึงพิจารณาทรัพยากรและการกระทำที่งานต้องใช้ Role อธิบายหน้าที่ ส่วน Permission คือสิทธิ์ทำรายการ เช่น อ่านหรือแก้ไขข้อมูล และ Effective access คือสิทธิ์ที่ระบบอนุญาตให้ใช้ได้จริง ในตัวอย่างนี้พนักงาน Finance อ่านรายงาน Accounting รายเดือน การแก้ Payroll หรือดูแล Network จึงอยู่นอกหน้าที่ที่ระบุ ไม่ได้หมายความว่าพนักงาน Finance จะทำงานดูแลระบบที่ได้รับอนุมัติแยกต่างหากไม่ได้ ตัวอย่างห้าตำแหน่งจากต้นฉบับใช้แสดงความสัมพันธ์กับงาน ไม่ใช่ชุดสิทธิ์สากล ชื่อตำแหน่งหรือบัญชีของเพื่อนร่วมงานเพียงอย่างเดียวจึงไม่ยืนยันว่าสิทธิ์เหมาะสม"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Name the task and resource.",
+              "th": "ระบุงานและทรัพยากรที่ต้องใช้"
+            },
+            {
+              "en": "Specify the permitted action.",
+              "th": "ระบุการกระทำที่อนุญาต"
+            },
+            {
+              "en": "Check the actual grant, not only the role label.",
+              "th": "ตรวจสิทธิ์จริง ไม่ใช่ดูเพียงชื่อ Role"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Example: read the monthly report; no payroll changes or network administration for this task.",
+            "th": "ตัวอย่าง: อ่านรายงานรายเดือน โดยไม่แก้ Payroll หรือดูแล Network สำหรับงานนี้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "d3-summary",
+        "isc2-outline"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-01-02-identity-account-identifier",
+      "title": {
+        "en": "One person can use more than one account.",
+        "th": "คนเดียวอาจใช้ได้หลายบัญชี"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Identity, account, identifier and authenticator describe different things.",
+            "th": "Identity, Account, Identifier และ Authenticator เป็นคนละแนวคิด"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Examples and reasoning",
+            "th": "ตัวอย่างและเหตุผลประกอบ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Digital identity",
+                "th": "ตัวตนดิจิทัล"
+              },
+              {
+                "en": "A representation in a defined service context",
+                "th": "ข้อมูลที่ใช้แทนตัวตนในบริบทของบริการ"
+              },
+              {
+                "en": "It is not simply the username string.",
+                "th": "ไม่ได้หมายถึงข้อความ Username เพียงอย่างเดียว"
+              }
+            ],
+            [
+              {
+                "en": "Account",
+                "th": "บัญชีในระบบ"
+              },
+              {
+                "en": "A managed record used to access a service",
+                "th": "ระเบียนบัญชีที่จัดการเพื่อใช้บริการ"
+              },
+              {
+                "en": "One person may hold ordinary and administrative accounts.",
+                "th": "คนเดียวอาจมีทั้งบัญชีทั่วไปและบัญชีดูแลระบบ"
+              }
+            ],
+            [
+              {
+                "en": "Identifier",
+                "th": "ตัวระบุบัญชี"
+              },
+              {
+                "en": "For example, mina.siri",
+                "th": "เช่น mina.siri"
+              },
+              {
+                "en": "A username identifies; knowing it does not prove control.",
+                "th": "Username ใช้ระบุบัญชี การรู้ชื่อไม่ได้พิสูจน์ว่าควบคุมบัญชีได้"
+              }
+            ],
+            [
+              {
+                "en": "Authenticator",
+                "th": "สิ่งที่ใช้ยืนยันตัวตน"
+              },
+              {
+                "en": "For example, a bound security key",
+                "th": "เช่น Security key ที่ผูกกับบัญชี"
+              },
+              {
+                "en": "It provides evidence for authentication, not blanket authorization.",
+                "th": "ใช้เป็นหลักฐานยืนยันตัวตน ไม่ใช่อนุญาตให้ทำทุกอย่าง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A digital identity represents a subject in a particular service context; an account is a managed record through which access is provided. An identifier distinguishes that record, while an authenticator helps demonstrate control during authentication. For example, one person may use multiple accounts: Mina has mina.siri for ordinary work and mina.siri.admin for separately authorized maintenance. This is an illustrative mapping, not a universal one-to-one identity/account rule. Before enrollment, identity proofing may establish confidence in who the applicant is according to the service risk and policy; later authentication checks control of a bound authenticator. Not every service requires real-world identity proofing. A public username is not a secret authentication factor, and two accounts held by the same person do not create two independent approvers.",
+            "th": "Digital identity คือข้อมูลที่ใช้แทนผู้ใช้งานในบริบทของบริการหนึ่ง ส่วน Account คือระเบียนบัญชีที่จัดการเพื่อให้เข้าถึงบริการ Identifier ใช้แยกระเบียนนั้นออกจากบัญชีอื่น และ Authenticator ช่วยแสดงหลักฐานว่าผู้ใช้งานควบคุมสิ่งที่ผูกกับบัญชีได้ ตัวอย่างเช่น คนเดียวอาจมีหลายบัญชี: Mina ใช้ mina.siri สำหรับงานทั่วไป และ mina.siri.admin สำหรับงานดูแลระบบที่อนุมัติแยกไว้ ความสัมพันธ์นี้เป็นตัวอย่าง ไม่ใช่กฎว่า Identity ต้องตรงกับ Account แบบหนึ่งต่อหนึ่งเสมอ ก่อนลงทะเบียน Identity proofing อาจตรวจว่าเป็นบุคคลที่อ้างจริงตามความเสี่ยงและนโยบายของบริการ ส่วน Authentication ภายหลังตรวจการควบคุม Authenticator ที่ผูกไว้ ไม่ใช่ทุกบริการต้องพิสูจน์ชื่อจริง Username ที่เปิดเผยได้ไม่ใช่ปัจจัยลับ และสองบัญชีที่คนเดียวควบคุมไม่ได้สร้างผู้อนุมัติอิสระสองคน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identifier: which account is claimed?",
+              "th": "Identifier: กำลังอ้างบัญชีใด?"
+            },
+            {
+              "en": "Authentication: what evidence supports control?",
+              "th": "Authentication: มีหลักฐานใดว่าควบคุมบัญชีได้?"
+            },
+            {
+              "en": "Authorization: which action is permitted?",
+              "th": "Authorization: อนุญาตให้ทำรายการใด?"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Different accounts can limit exposure; they do not turn one person into independent decision makers.",
+            "th": "การแยกบัญชีช่วยจำกัดการใช้งาน แต่ไม่ได้ทำให้คนเดียวกลายเป็นผู้ตัดสินใจอิสระหลายคน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "nist-identity"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-01-03-authorize-before-assignment",
+      "title": {
+        "en": "Approval and implementation have different responsibilities.",
+        "th": "การอนุมัติกับการตั้งค่าสิทธิ์มีหน้าที่ต่างกัน"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "This onboarding example uses a request, designated approval and implementation.",
+            "th": "ตัวอย่างรับพนักงานใหม่นี้ใช้คำขอ การอนุมัติตามอำนาจ และการตั้งค่าสิทธิ์"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Examples and reasoning",
+            "th": "ตัวอย่างและเหตุผลประกอบ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Requester",
+                "th": "ผู้ขอสิทธิ์"
+              },
+              {
+                "en": "States task, resource and needed actions",
+                "th": "ระบุงาน ทรัพยากร และรายการที่ต้องทำ"
+              },
+              {
+                "en": "A request alone is not authorization.",
+                "th": "คำขอเพียงอย่างเดียวยังไม่ใช่การอนุมัติ"
+              }
+            ],
+            [
+              {
+                "en": "Designated approver",
+                "th": "ผู้มีอำนาจอนุมัติตามนโยบาย"
+              },
+              {
+                "en": "Checks need and authorizes scope",
+                "th": "ตรวจความจำเป็นและอนุมัติขอบเขต"
+              },
+              {
+                "en": "Authority comes from the stated policy.",
+                "th": "อำนาจมาจากนโยบายที่กำหนด"
+              }
+            ],
+            [
+              {
+                "en": "Provisioner",
+                "th": "ผู้จัดเตรียมบัญชีและสิทธิ์"
+              },
+              {
+                "en": "Implements and verifies the approved grant",
+                "th": "ตั้งค่าและตรวจผลตามสิทธิ์ที่อนุมัติ"
+              },
+              {
+                "en": "Technical ability to grant is not authority to approve any request.",
+                "th": "ทำรายการให้สิทธิ์ได้ ไม่ได้แปลว่ามีอำนาจอนุมัติทุกคำขอ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "In this example, the requester describes the reporting task and required resource. The policy-designated approver checks business need and authorizes a specific scope; the provisioner configures that grant and checks the result. A manager, resource owner or another delegated authority may approve according to local policy. These are responsibilities, not a universal requirement for three products, three people or a new handwritten form every time. An established policy may authorize automated standard provisioning when its conditions are met, with accountable ownership and evidence of the action. An administrator who can change permissions is not automatically authorized to approve any scope. Urgency does not, by itself, establish approval authority or justify copying an administrator role.",
+            "th": "ในตัวอย่างนี้ผู้ขอระบุงานจัดทำรายงานและทรัพยากรที่ต้องใช้ ผู้มีอำนาจตามนโยบายตรวจความจำเป็นทางธุรกิจและอนุมัติขอบเขตที่ชัดเจน จากนั้นผู้จัดเตรียมสิทธิ์ตั้งค่าและตรวจผล ผู้อนุมัติอาจเป็นผู้จัดการ เจ้าของทรัพยากร หรือผู้รับมอบอำนาจอื่นตามนโยบายองค์กร นี่คือการแยกหน้าที่รับผิดชอบ ไม่ใช่ข้อกำหนดสากลว่าต้องมีสามผลิตภัณฑ์ สามคน หรือแบบฟอร์มเขียนมือใหม่ทุกครั้ง นโยบายอาจอนุมัติกระบวนการอัตโนมัติสำหรับสิทธิ์มาตรฐานเมื่อครบเงื่อนไข โดยยังมีผู้รับผิดชอบและหลักฐานการดำเนินการ ผู้ดูแลระบบที่แก้ Permission ได้จึงไม่ได้มีอำนาจอนุมัติทุกขอบเขตโดยอัตโนมัติ ความเร่งด่วนเพียงอย่างเดียวไม่ได้ให้อำนาจอนุมัติหรือทำให้การคัดลอก Role ของ Administrator เหมาะสม"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Declare the responsibility and authority.",
+              "th": "ระบุหน้าที่และอำนาจให้ชัด"
+            },
+            {
+              "en": "Approve a defined scope, not unlimited access.",
+              "th": "อนุมัติขอบเขตที่ชัด ไม่ใช่ให้สิทธิ์ไม่จำกัด"
+            },
+            {
+              "en": "Keep evidence even when provisioning is automated.",
+              "th": "เก็บหลักฐานแม้จัดเตรียมสิทธิ์แบบอัตโนมัติ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Policy determines the workflow. This is one example, not a universal sequence.",
+            "th": "นโยบายเป็นตัวกำหนดกระบวนการ นี่เป็นเพียงตัวอย่าง ไม่ใช่ลำดับสากล"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "d3-summary",
+        "nist-account-management"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-01-04-provision-approved-access",
+      "title": {
+        "en": "Provision the approved ability to work.",
+        "th": "จัดเตรียมสิทธิ์ให้ทำงานได้ตามที่อนุมัติ"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Creating a login is only part of provisioning.",
+            "th": "การสร้าง Login เป็นเพียงส่วนหนึ่งของ Provisioning"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Examples and reasoning",
+            "th": "ตัวอย่างและเหตุผลประกอบ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Creating a User Account",
+                "th": "สร้างบัญชีผู้ใช้"
+              },
+              {
+                "en": "Create the managed account record",
+                "th": "สร้างระเบียนบัญชีในระบบ"
+              },
+              {
+                "en": "Account creation alone does not establish appropriate access.",
+                "th": "สร้างบัญชีแล้วไม่ได้แปลว่าสิทธิ์เหมาะสมแล้ว"
+              }
+            ],
+            [
+              {
+                "en": "Assigning a Unique Identity",
+                "th": "กำหนดตัวตนที่แยกได้ชัด"
+              },
+              {
+                "en": "Link the account to the correct subject and identifier",
+                "th": "เชื่อมบัญชีกับผู้ใช้งานและตัวระบุที่ถูกต้อง"
+              },
+              {
+                "en": "Uniqueness is contextual, not one account per person everywhere.",
+                "th": "ความไม่ซ้ำขึ้นกับบริบท ไม่ใช่คนละบัญชีเดียวทั่วทุกระบบ"
+              }
+            ],
+            [
+              {
+                "en": "Assigning Roles",
+                "th": "มอบบทบาท"
+              },
+              {
+                "en": "Assign the approved work role",
+                "th": "มอบ Role สำหรับหน้าที่ที่อนุมัติ"
+              },
+              {
+                "en": "Do not copy every role from a senior colleague.",
+                "th": "ไม่คัดลอกทุก Role จากเพื่อนร่วมงานอาวุโส"
+              }
+            ],
+            [
+              {
+                "en": "Granting Permissions",
+                "th": "มอบสิทธิ์การกระทำ"
+              },
+              {
+                "en": "Configure read access for the specified report",
+                "th": "ตั้งค่าสิทธิ์อ่านรายงานที่ระบุ"
+              },
+              {
+                "en": "Check actual permissions against approved scope.",
+                "th": "ตรวจสิทธิ์จริงเทียบขอบเขตที่อนุมัติ"
+              }
+            ],
+            [
+              {
+                "en": "Providing Access to Applications",
+                "th": "ให้ใช้แอปที่จำเป็น"
+              },
+              {
+                "en": "Enable the required accounting application",
+                "th": "ให้เข้าถึงแอป Accounting ที่จำเป็น"
+              },
+              {
+                "en": "A central account may not configure each application automatically.",
+                "th": "บัญชีกลางอาจไม่ได้ตั้งค่าทุกแอปให้อัตโนมัติ"
+              }
+            ],
+            [
+              {
+                "en": "Issuing Authentication Credentials",
+                "th": "ออกสิ่งที่ใช้ยืนยันตัวตน"
+              },
+              {
+                "en": "Bind and deliver the approved authentication method safely",
+                "th": "ผูกและส่งมอบวิธียืนยันตัวตนที่อนุมัติอย่างปลอดภัย"
+              },
+              {
+                "en": "Authentication does not grant every application permission.",
+                "th": "ยืนยันตัวตนได้ไม่ได้แปลว่ามีทุกสิทธิ์ในแอป"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Provisioning establishes an identity/account and the approved access needed for work. The source lists six possible activities: creating an account, assigning a unique identity, assigning roles, granting permissions, providing application access and issuing authentication credentials. Here a verified onboarding record is linked to a Finance account; the approved reporting role and report-read permission are configured, the accounting application is enabled and the authorized authenticator is issued or bound. Exact steps and their order depend on the environment and authorized workflow. Existing identities or accounts may be reused under policy. Neither creating the account nor selecting a role automatically guarantees appropriate authorization or least privilege: the effective grant still needs checking against the approved task.",
+            "th": "Provisioning คือการจัดเตรียม Identity/Account และสิทธิ์ที่ได้รับอนุมัติเพื่อให้ทำงานได้ ต้นฉบับระบุกิจกรรมที่อาจเกี่ยวข้องหกอย่าง ได้แก่ สร้างบัญชี กำหนดตัวตนที่แยกได้ มอบ Role มอบ Permission ให้ใช้แอปที่จำเป็น และออกสิ่งที่ใช้ยืนยันตัวตน ในตัวอย่างนี้เชื่อมข้อมูลรับเข้าที่ตรวจแล้วกับบัญชี Finance ตั้ง Role สำหรับรายงานและสิทธิ์อ่านรายงาน เปิดให้ใช้แอป Accounting แล้วออกหรือผูก Authenticator ตามที่อนุมัติ ขั้นตอนและลำดับจริงขึ้นกับระบบและกระบวนการที่ได้รับอนุญาต บางกรณีอาจใช้ Identity หรือบัญชีเดิมตามนโยบาย การสร้างบัญชีหรือเลือก Role ไม่ได้รับประกันว่าสิทธิ์เหมาะสมหรือเป็น Least privilege โดยอัตโนมัติ ยังต้องตรวจสิทธิ์ที่มีผลจริงเทียบกับงานและขอบเขตที่อนุมัติ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Link the correct subject to the account.",
+              "th": "เชื่อมบัญชีกับผู้ใช้งานที่ถูกต้อง"
+            },
+            {
+              "en": "Configure approved roles, permissions and apps.",
+              "th": "ตั้ง Role, Permission และแอปตามที่อนุมัติ"
+            },
+            {
+              "en": "Bind authentication safely and verify access.",
+              "th": "ผูกการยืนยันตัวตนอย่างปลอดภัยและตรวจผลสิทธิ์"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "These activities are not six mandatory steps in a fixed order for every organization.",
+            "th": "กิจกรรมเหล่านี้ไม่ใช่หกขั้นตอนบังคับที่ทุกองค์กรต้องทำตามลำดับเดียวกัน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "d3-summary",
+        "nist-account-management"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-01-05-verify-the-grant",
+      "title": {
+        "en": "Compare approved scope with effective access.",
+        "th": "เทียบสิทธิ์ที่อนุมัติกับสิทธิ์ที่ใช้ได้จริง"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A completed ticket is not proof that the system enforces the right permissions.",
+            "th": "ปิด Ticket แล้วไม่ได้ยืนยันว่าระบบบังคับใช้สิทธิ์ได้ถูกต้อง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Examples and reasoning",
+            "th": "ตัวอย่างและเหตุผลประกอบ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Read monthly report",
+                "th": "อ่านรายงานรายเดือน"
+              },
+              {
+                "en": "Approved: allow · Observed: allow",
+                "th": "อนุมัติ: ให้ใช้ · ผลจริง: ใช้ได้"
+              },
+              {
+                "en": "Matches this reporting task.",
+                "th": "ตรงกับงานจัดทำรายงานนี้"
+              }
+            ],
+            [
+              {
+                "en": "Change payroll",
+                "th": "แก้ไข Payroll"
+              },
+              {
+                "en": "Approved: deny · Observed: allow",
+                "th": "อนุมัติ: ไม่ให้ใช้ · ผลจริง: ใช้ได้"
+              },
+              {
+                "en": "Remove the unintended grant and recheck.",
+                "th": "ถอนสิทธิ์ที่เกินขอบเขตแล้วตรวจซ้ำ"
+              }
+            ],
+            [
+              {
+                "en": "Administer settings",
+                "th": "ดูแลการตั้งค่าระบบ"
+              },
+              {
+                "en": "Approved: deny · Observed: deny",
+                "th": "อนุมัติ: ไม่ให้ใช้ · ผลจริง: ใช้ไม่ได้"
+              },
+              {
+                "en": "The stated restriction is enforced.",
+                "th": "ระบบบังคับใช้ข้อจำกัดที่ระบุได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This authored example compares an approved permission set with effective access observed in the application. The new assistant should read the monthly report but should not change payroll or administer settings. Reading works and administration is denied, but payroll changes unexpectedly remain allowed. The authorized provisioner should investigate and remove the unintended grant using the established process, then verify both permitted work and denied actions. A successful login, a Finance role label or a signed approval ticket does not prove that the resulting configuration matches the task. Use appropriate authorized checks and preserve evidence of the comparison and correction. This example declares its results; it does not assume a universal operating-system allow/deny precedence rule.",
+            "th": "ตัวอย่างที่แต่งเพื่อการเรียนนี้เปรียบเทียบชุดสิทธิ์ที่อนุมัติกับ Effective access ที่ตรวจพบในแอป ผู้ช่วยใหม่ควรอ่านรายงานรายเดือนได้ แต่ไม่ควรแก้ Payroll หรือดูแลการตั้งค่าระบบ ผลตรวจพบว่าอ่านรายงานได้และถูกปฏิเสธงานดูแลระบบตามที่กำหนด แต่ยังแก้ Payroll ได้โดยไม่ตั้งใจ ผู้จัดเตรียมสิทธิ์ที่มีอำนาจควรหาสาเหตุและถอนสิทธิ์ที่เกินตามกระบวนการ แล้วตรวจซ้ำทั้งงานที่ควรทำได้และรายการที่ควรถูกปฏิเสธ Login สำเร็จ ชื่อ Finance role หรือ Ticket ที่มีลายเซ็นอนุมัติ ไม่ได้พิสูจน์ว่าการตั้งค่าจริงตรงกับงาน ควรใช้การตรวจที่ได้รับอนุญาตและเก็บหลักฐานการเทียบและแก้ไข ตัวอย่างนี้ระบุผลตรวจไว้ชัด ไม่ได้สมมติกฎ Allow/Deny ของทุกระบบปฏิบัติการ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Test allowed work as well as restricted actions.",
+              "th": "ตรวจทั้งงานที่อนุญาตและรายการที่จำกัด"
+            },
+            {
+              "en": "Investigate and correct unintended grants.",
+              "th": "หาสาเหตุและแก้สิทธิ์ที่เกินขอบเขต"
+            },
+            {
+              "en": "Keep evidence of the final verified state.",
+              "th": "เก็บหลักฐานของสิทธิ์หลังตรวจยืนยัน"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Verify the system result; do not infer it from the role name.",
+            "th": "ตรวจผลที่ระบบอนุญาตจริง อย่าอนุมานจากชื่อ Role"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "nist-account-management"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-01-06-own-the-reporting-bot",
+      "title": {
+        "en": "Automation still needs an accountable owner.",
+        "th": "ระบบอัตโนมัติก็ต้องมีผู้รับผิดชอบ"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Give the reporting bot a purpose, an owner and approved access.",
+            "th": "กำหนดวัตถุประสงค์ ผู้รับผิดชอบ และสิทธิ์ที่อนุมัติให้ Reporting bot"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Examples and reasoning",
+            "th": "ตัวอย่างและเหตุผลประกอบ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Owner",
+                "th": "ผู้รับผิดชอบ"
+              },
+              {
+                "en": "Finance automation team",
+                "th": "ทีม Finance automation"
+              },
+              {
+                "en": "A named team is accountable for the identity.",
+                "th": "ระบุทีมที่รับผิดชอบ Identity นี้"
+              }
+            ],
+            [
+              {
+                "en": "Purpose",
+                "th": "วัตถุประสงค์"
+              },
+              {
+                "en": "Read the monthly accounting report",
+                "th": "อ่านรายงาน Accounting รายเดือน"
+              },
+              {
+                "en": "Tie the identity to the actual workload.",
+                "th": "ผูก Identity กับภาระงานที่ใช้จริง"
+              }
+            ],
+            [
+              {
+                "en": "Approved access",
+                "th": "สิทธิ์ที่อนุมัติ"
+              },
+              {
+                "en": "Read only the specified report source",
+                "th": "อ่านได้เฉพาะแหล่งรายงานที่ระบุ"
+              },
+              {
+                "en": "No payroll changes or unrelated administrator role.",
+                "th": "ไม่ให้แก้ Payroll หรือมี Role ดูแลระบบที่ไม่เกี่ยวข้อง"
+              }
+            ],
+            [
+              {
+                "en": "Authentication",
+                "th": "การยืนยันตัวตน"
+              },
+              {
+                "en": "Protect workload-appropriate authentication material",
+                "th": "ปกป้องสิ่งที่ใช้ยืนยันตัวตนให้เหมาะกับระบบงาน"
+              },
+              {
+                "en": "Do not borrow a departing employee’s credentials.",
+                "th": "ไม่ยืม Credential ของพนักงานที่กำลังออก"
+              }
+            ],
+            [
+              {
+                "en": "Ongoing responsibility",
+                "th": "ความรับผิดชอบต่อเนื่อง"
+              },
+              {
+                "en": "Record dependencies and arrange review/retirement",
+                "th": "บันทึกระบบที่พึ่งพาและกำหนดผู้ดูแลการทบทวน/เลิกใช้"
+              },
+              {
+                "en": "Detailed review and removal belong to the next lesson.",
+                "th": "ขั้นตอนทบทวนและถอนสิทธิ์โดยละเอียดอยู่บทถัดไป"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A non-human identity represents an automated workload such as a reporting bot or service. Its owner remains an accountable person or team: record the owner and purpose before granting access. For this example the Finance automation team owns a bot that reads one accounting report source; it does not need payroll modification or unrelated administrative capability. Use an authorized authentication method appropriate to the workload and protect its authentication material rather than borrowing a human employee’s credentials. Do not assume every bot uses a password or can answer a human interactive MFA prompt. Record dependencies and responsibility for later review and retirement without teaching the full removal process here. This is an explicit supplement from official ISC2 AI application guidance and primary service-account governance, not a claim that the supplied provisioning screenshot teaches all these details.",
+            "th": "Non-human identity ใช้แทนระบบงานอัตโนมัติ เช่น Reporting bot หรือบริการ โดยยังมีบุคคลหรือทีมเป็นผู้รับผิดชอบ ต้องบันทึกผู้รับผิดชอบและวัตถุประสงค์ก่อนให้สิทธิ์ ในตัวอย่างนี้ทีม Finance automation ดูแล Bot ที่อ่านแหล่งรายงาน Accounting เพียงแห่งเดียว จึงไม่ต้องแก้ Payroll หรือมีสิทธิ์ดูแลระบบอื่น ใช้วิธียืนยันตัวตนที่ได้รับอนุมัติและเหมาะกับภาระงาน พร้อมปกป้องสิ่งที่ใช้ยืนยันตัวตน แทนการยืม Credential ของพนักงาน ไม่ควรสมมติว่า Bot ทุกตัวใช้ Password หรือตอบ MFA แบบโต้ตอบกับมนุษย์ได้ บันทึกระบบที่พึ่งพาและผู้ดูแลการทบทวน/เลิกใช้ไว้ โดยยังไม่ลงรายละเอียดกระบวนการถอนสิทธิ์ในบทนี้ เนื้อหานี้เสริมจากแนวทาง AI ของ ISC2 และแหล่งปฐมภูมิเรื่อง Service account ไม่ได้อ้างว่าสไลด์ Provisioning ต้นฉบับสอนรายละเอียดทั้งหมดนี้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "A bot is not its own accountable owner.",
+              "th": "Bot ไม่ใช่ผู้รับผิดชอบตัวเอง"
+            },
+            {
+              "en": "Approve access for the declared purpose.",
+              "th": "อนุมัติสิทธิ์ตามวัตถุประสงค์ที่ระบุ"
+            },
+            {
+              "en": "Automation does not remove accountability.",
+              "th": "ระบบอัตโนมัติไม่ได้ทำให้ความรับผิดชอบหายไป"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Owned by the Finance automation team · read-only reporting purpose.",
+            "th": "ผู้รับผิดชอบคือทีม Finance automation · มีหน้าที่อ่านรายงานเท่านั้น"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-ai-application",
+        "service-account-governance",
+        "d3-notes"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-01-07-urgent-access-decision",
+      "title": {
+        "en": "Urgency does not establish approval authority.",
+        "th": "งานเร่งด่วนไม่ได้ให้อำนาจอนุมัติสิทธิ์"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A new payroll assistant needs read-only reporting today. Approval is incomplete; you administer accounts but cannot approve access.",
+            "th": "ผู้ช่วย Payroll ใหม่ต้องอ่านรายงานวันนี้ แต่ยังอนุมัติไม่ครบ คุณดูแลบัญชีได้แต่ไม่มีอำนาจอนุมัติสิทธิ์"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Examples and reasoning",
+            "th": "ตัวอย่างและเหตุผลประกอบ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Copy administrator rights",
+                "th": "คัดลอกสิทธิ์ Administrator"
+              },
+              {
+                "en": "Copy the senior colleague’s full role.",
+                "th": "คัดลอก Role ทั้งหมดของพนักงานอาวุโส"
+              },
+              {
+                "en": "That role exceeds the stated reporting task and has not been approved for this assistant. Convenience does not establish need or authority.",
+                "th": "Role นั้นเกินงานอ่านรายงานและยังไม่ได้อนุมัติให้ผู้ช่วยรายนี้ ความสะดวกไม่ได้ยืนยันความจำเป็นหรืออำนาจ"
+              }
+            ],
+            [
+              {
+                "en": "Treat login as approval",
+                "th": "ถือว่า Login ได้คืออนุมัติแล้ว"
+              },
+              {
+                "en": "Create the login and treat successful sign-in as approval.",
+                "th": "สร้าง Login แล้วถือว่ายืนยันตัวตนสำเร็จคืออนุมัติสิทธิ์"
+              },
+              {
+                "en": "A working account proves neither permission scope nor approval. Authentication and authorization answer different questions.",
+                "th": "บัญชีที่ใช้ได้ไม่ยืนยันขอบเขตสิทธิ์หรือการอนุมัติ Authentication กับ Authorization ตอบคนละคำถาม"
+              }
+            ],
+            [
+              {
+                "en": "Obtain and implement authorized scope",
+                "th": "ขออนุมัติแล้วตั้งค่าตามขอบเขต"
+              },
+              {
+                "en": "Seek designated approval; grant and verify report-read access.",
+                "th": "ขอผู้มีอำนาจอนุมัติ ให้สิทธิ์อ่านรายงาน แล้วตรวจผล"
+              },
+              {
+                "en": "Under the stated policy you cannot approve the request. Obtain designated approval for the reporting task, implement that scope and verify effective access.",
+                "th": "ตามนโยบายที่ระบุ คุณอนุมัติคำขอนี้เองไม่ได้ ให้ขอผู้มีอำนาจอนุมัติงานอ่านรายงาน ตั้งค่าตามขอบเขตนั้น แล้วตรวจสิทธิ์ที่ใช้ได้จริง"
+              }
+            ],
+            [
+              {
+                "en": "Grant broad temporary access",
+                "th": "ให้สิทธิ์ชั่วคราวแบบกว้าง"
+              },
+              {
+                "en": "Grant all finance apps and review later.",
+                "th": "ให้ใช้ทุกแอป Finance แล้วค่อยทบทวนภายหลัง"
+              },
+              {
+                "en": "A temporary label does not justify unapproved scope. This scenario provides no emergency exception authorizing broad access; follow the stated approval process.",
+                "th": "การเรียกว่าชั่วคราวไม่ได้ทำให้ขอบเขตที่ยังไม่อนุมัติเหมาะสม โจทย์นี้ไม่ได้ให้ข้อยกเว้นฉุกเฉินสำหรับสิทธิ์กว้าง จึงต้องทำตามกระบวนการอนุมัติที่ระบุ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This authored learning scenario specifies both the work and your authority. The new payroll assistant needs read-only reporting today; the required approval is incomplete, and you may administer accounts but may not approve the request. A colleague suggests copying a senior administrator role. The best supported action is to obtain the designated approval for the defined reporting scope, implement the authorized role/permissions and verify effective access. Neither successful authentication, convenience, temporary wording nor urgency substitutes for that authority. An organization may have a separately authorized emergency process, but this scenario does not grant such an exception. All four alternatives and their reasons are available in the table, so Reading and Lesson Info support independent study as well as the interactive canvas.",
+            "th": "สถานการณ์ที่แต่งเพื่อการเรียนนี้ระบุทั้งงานและอำนาจของคุณ ผู้ช่วย Payroll ใหม่ต้องอ่านรายงานวันนี้ แต่ยังอนุมัติไม่ครบ และคุณมีสิทธิ์ดูแลบัญชีโดยไม่มีอำนาจอนุมัติคำขอ เพื่อนร่วมงานเสนอให้คัดลอก Role ของ Administrator อาวุโส แนวทางที่มีเหตุผลรองรับคือขอผู้มีอำนาจอนุมัติขอบเขตงานอ่านรายงาน ตั้ง Role/Permission ตามที่อนุมัติ แล้วตรวจ Effective access การยืนยันตัวตนสำเร็จ ความสะดวก คำว่าชั่วคราว หรือความเร่งด่วน ไม่ได้ทดแทนอำนาจอนุมัติ องค์กรอาจมีกระบวนการฉุกเฉินที่ให้อำนาจแยกต่างหาก แต่โจทย์นี้ไม่ได้ให้ข้อยกเว้นนั้น ตารางอธิบายเหตุผลของทั้งสี่ทางเลือกไว้ครบ เพื่อให้เรียนด้วยตนเองผ่าน Reading และ Lesson Info ได้เช่นเดียวกับหน้าโต้ตอบ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "The needed action is read-only reporting.",
+              "th": "งานที่ต้องใช้คืออ่านรายงานเท่านั้น"
+            },
+            {
+              "en": "Approval is not yet complete.",
+              "th": "การอนุมัติยังไม่ครบ"
+            },
+            {
+              "en": "Your technical capability is not approval authority.",
+              "th": "ความสามารถในการตั้งค่าของคุณไม่ใช่อำนาจอนุมัติ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Choose an action, read its reason, and use Reset to reconsider.",
+            "th": "เลือกแนวทาง อ่านเหตุผล และใช้ Reset เมื่อต้องการพิจารณาใหม่"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "d3-summary",
+        "nist-account-management"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-3-lesson-1-implementation-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — assistant review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — assistant review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — assistant review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    }
+  }
+}

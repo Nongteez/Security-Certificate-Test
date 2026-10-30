@@ -1,0 +1,1248 @@
+TAP version 13
+# Subtest: public catalog has five correct Domains, all official objectives and four reviewed Objective 1.1 lessons and three Objective 1.2 lessons plus two Objective 1.3 lessons and two Objective 1.4 lessons plus one Objective 1.5 lesson
+ok 1 - public catalog has five correct Domains, all official objectives and four reviewed Objective 1.1 lessons and three Objective 1.2 lessons plus two Objective 1.3 lessons and two Objective 1.4 lessons plus one Objective 1.5 lesson
+  ---
+  duration_ms: 45.2385
+  type: 'test'
+  ...
+# Subtest: duplicates, cross-domain relations, invalid statuses and unsafe lesson paths cannot publish
+ok 2 - duplicates, cross-domain relations, invalid statuses and unsafe lesson paths cannot publish
+  ---
+  duration_ms: 8.6193
+  type: 'test'
+  ...
+# Subtest: draft omissions are warnings; published missing Thai, unsupported renderer, duplicate/order and asset failures are errors
+ok 3 - draft omissions are warnings; published missing Thai, unsupported renderer, duplicate/order and asset failures are errors
+  ---
+  duration_ms: 2.2088
+  type: 'test'
+  ...
+# Subtest: public loader refuses fixtures/unpublished IDs before fetching and validates fetched identity/review
+ok 4 - public loader refuses fixtures/unpublished IDs before fetching and validates fetched identity/review
+  ---
+  duration_ms: 4.0195
+  type: 'test'
+  ...
+# Subtest: availability is based on successfully loaded reviewed content, never registry status alone
+ok 5 - availability is based on successfully loaded reviewed content, never registry status alone
+  ---
+  duration_ms: 16.9392
+  type: 'test'
+  ...
+# Subtest: asset traversal, executable URLs and incomplete alternative descriptions are rejected
+ok 6 - asset traversal, executable URLs and incomplete alternative descriptions are rejected
+  ---
+  duration_ms: 1.3981
+  type: 'test'
+  ...
+# Subtest: non-string source URLs cannot pass published validation and crash the overview
+ok 7 - non-string source URLs cannot pass published validation and crash the overview
+  ---
+  duration_ms: 0.4119
+  type: 'test'
+  ...
+# Subtest: unpausable GIFs cannot publish through the ordinary image adapter
+ok 8 - unpausable GIFs cannot publish through the ordinary image adapter
+  ---
+  duration_ms: 0.2644
+  type: 'test'
+  ...
+# Subtest: malformed nested objects produce validation errors instead of crashing the validator
+ok 9 - malformed nested objects produce validation errors instead of crashing the validator
+  ---
+  duration_ms: 2.8766
+  type: 'test'
+  ...
+# Subtest: course shows five weighted domains and only genuinely validated lessons in totals
+ok 10 - course shows five weighted domains and only genuinely validated lessons in totals
+  ---
+  duration_ms: 8.2763
+  type: 'test'
+  ...
+# Subtest: resume preserves saved slide and counts actual visits without mutating V1 data
+ok 11 - resume preserves saved slide and counts actual visits without mutating V1 data
+  ---
+  duration_ms: 5.4006
+  type: 'test'
+  ...
+# Subtest: unavailable and pending lesson bodies never expose resume or fabricated completion totals
+ok 12 - unavailable and pending lesson bodies never expose resume or fabricated completion totals
+  ---
+  duration_ms: 0.7978
+  type: 'test'
+  ...
+# Subtest: stale saved slide falls back to first authored slide and unpublished records remain unlaunched
+ok 13 - stale saved slide falls back to first authored slide and unpublished records remain unlaunched
+  ---
+  duration_ms: 0.9193
+  type: 'test'
+  ...
+# Subtest: completed lessons remain completed and offer review rather than a false continue action
+ok 14 - completed lessons remain completed and offer review rather than a false continue action
+  ---
+  duration_ms: 1.716
+  type: 'test'
+  ...
+# Subtest: related objectives do not duplicate available lessons or domain completion
+ok 15 - related objectives do not duplicate available lessons or domain completion
+  ---
+  duration_ms: 2.8018
+  type: 'test'
+  ...
+# Subtest: newest valid progress timestamp wins and malformed dates cannot steal Continue Learning
+ok 16 - newest valid progress timestamp wins and malformed dates cannot steal Continue Learning
+  ---
+  duration_ms: 3.9558
+  type: 'test'
+  ...
+# Subtest: wrong revision or malformed published body is unavailable even when availability was claimed
+ok 17 - wrong revision or malformed published body is unavailable even when availability was claimed
+  ---
+  duration_ms: 0.4635
+  type: 'test'
+  ...
+# Subtest: complete Domain2 publishes eight unique reviewed lessons, 55 slides and every official objective
+ok 18 - complete Domain2 publishes eight unique reviewed lessons, 55 slides and every official objective
+  ---
+  duration_ms: 5.8632
+  type: 'test'
+  ...
+# Subtest: all four objective selectors launch both actual lessons directly at their independent saved slide
+ok 19 - all four objective selectors launch both actual lessons directly at their independent saved slide
+  ---
+  duration_ms: 134.8381
+  type: 'test'
+  ...
+# Subtest: new custom host classes clear on Reading, another lesson and malformed data; stale scenario controls cannot mutate state
+ok 20 - new custom host classes clear on Reading, another lesson and malformed data; stale scenario controls cannot mutate state
+  ---
+  duration_ms: 7.1861
+  type: 'test'
+  ...
+# Subtest: original lesson IDs/order/revisions, protected catalog branches and Lesson1–2 summaries match the task-entry snapshot
+not ok 21 - original lesson IDs/order/revisions, protected catalog branches and Lesson1–2 summaries match the task-entry snapshot
+  ---
+  duration_ms: 9.898
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-learning-d2-completion.mjs:56:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      [
+        {
+          id: 1,
+          name: {
+            en: 'Security Principles',
+    ...
+              id: '3.1',
+    +         lessons: [
+    +           {
+    +             domainId: 3,
+    +             id: 'lesson-d3-01-roles-provisioning',
+    +             lessonPath: 'lessons/lesson-d3-01-roles-provisioning.json',
+    +             objectiveIds: [
+    +               '3.1'
+    +             ],
+    +             primaryObjectiveId: '3.1',
+    +             revision: '1',
+    +             status: 'published',
+    +             synopsis: {
+    +               en: 'Connect responsibilities to approved access, provision it correctly and verify the result for people and automated workloads.',
+    +               th: 'เชื่อมหน้าที่กับสิทธิ์ที่อนุมัติ จัดเตรียมและตรวจผลให้ถูกต้องสำหรับคนและระบบงานอัตโนมัติ'
+    +             },
+    +             title: {
+    +               en: 'Roles & Authorized Provisioning',
+    +               th: 'บทบาทและการจัดเตรียมสิทธิ์ที่ได้รับอนุมัติ'
+    +             }
+    +           },
+    +           {
+    +             domainId: 3,
+    +             id: 'lesson-d3-02-review-deprovisioning',
+    +             lessonPath: 'lessons/lesson-d3-02-review-deprovisioning.json',
+    +             objectiveIds: [
+    +               '3.1'
+    +             ],
+    +             primaryObjectiveId: '3.1',
+    +             revision: '1',
+    +             status: 'published',
+    +             synopsis: {
+    +               en: 'Reassess changing needs, distinguish activity from ownership and verify authorized access withdrawal for people and workloads.',
+    +               th: 'ทบทวนความจำเป็นที่เปลี่ยน แยกการใช้งานจากความรับผิดชอบ และตรวจผลการถอนสิทธิ์ของคนและระบบงาน'
+    +             },
+    +             title: {
+    +               en: 'Access Reviews, Changes & Deprovisioning',
+    +               th: 'ทบทวน ปรับ และถอนสิทธิ์ตลอดวงจรชีวิต'
+    +             }
+    +           }
+    +         ],
+    -         lessons: [],
+              relatedLessonIds: [],
+    +         status: 'published',
+    -         status: 'coming-soon',
+              title: {
+                en: 'Understand identity life cycle management',
+                th: 'เข้าใจการจัดการวงจรชีวิตของตัวตน'
+              }
+            },
+    ...
+          ],
+    +     status: 'published'
+    -     status: 'coming-soon'
+        },
+        {
+          id: 4,
+          name: {
+            en: 'Networking and Cloud Security Concepts',
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      id: 1
+      name:
+        en: 'Security Principles'
+        th: 'หลักการความปลอดภัย'
+      status: 'published'
+      objectives:
+        0:
+          id: '1.1'
+          title:
+            en: 'Understand cybersecurity concepts'
+            th: 'เข้าใจแนวคิดด้านความมั่นคงปลอดภัยไซเบอร์'
+          status: 'published'
+          lessons:
+            0:
+              id: 'lesson-d1-01-cia-triad'
+              domainId: 1
+              primaryObjectiveId: '1.1'
+              objectiveIds:
+                0: '1.1'
+              title:
+                en: 'The CIA Triad: Core Information Security Goals'
+                th: 'สามเหลี่ยม CIA: เสาหลักแห่งเป้าหมายความมั่นคงปลอดภัยสารสนเทศ'
+              synopsis:
+                en: 'Master the three foundational pillars of information security: Confidentiality, Integrity, and Availability. Learn to diagnose security impacts through real-world enterprise scenarios.'
+                th: 'เรียนรู้ 3 เสาหลักพื้นฐานของความมั่นคงปลอดภัยสารสนเทศ ได้แก่ การรักษาความลับ (Confidentiality), ความถูกต้องครบถ้วน (Integrity) และความพร้อมใช้งาน (Availability) พร้อมฝึกวิเคราะห์ผลกระทบจากสถานการณ์จำลองจริง'
+              status: 'published'
+              revision: '4'
+              lessonPath: 'lessons/lesson-d1-01-cia-triad.json'
+            1:
+              id: 'lesson-d1-02-aaa-mfa'
+              domainId: 1
+              primaryObjectiveId: '1.1'
+              objectiveIds:
+                0: '1.1'
+              title:
+                en: 'Identification, AAA & Multi-Factor Authentication'
+                th: 'การระบุตัวตน AAA และ Multi-Factor Authentication'
+              synopsis:
+                en: 'Separate identity claims, credential verification, permissions and activity records. Recognize genuine MFA through a procurement access story.'
+                th: 'แยกการอ้างตัวตน การตรวจหลักฐาน สิทธิ์ และบันทึกกิจกรรม พร้อมจำแนก MFA ผ่านสถานการณ์ระบบจัดซื้อ'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-02-aaa-mfa.json'
+            2:
+              id: 'lesson-d1-03-non-repudiation'
+              domainId: 1
+              primaryObjectiveId: '1.1'
+              objectiveIds:
+                0: '1.1'
+              title:
+                en: 'Non-repudiation & Trustworthy Evidence'
+                th: 'Non-repudiation และหลักฐานที่น่าเชื่อถือ'
+              synopsis:
+                en: 'Explain how signatures and well-managed evidence support review of disputed actions—and what they cannot prove alone.'
+                th: 'เรียนรู้ว่าลายเซ็นและการจัดการหลักฐานช่วยตรวจการกระทำที่ถูกโต้แย้งอย่างไร พร้อมข้อจำกัด'
+              status: 'published'
+              revision: '2'
+              lessonPath: 'lessons/lesson-d1-03-non-repudiation.json'
+            3:
+              id: 'lesson-d1-04-privacy'
+              domainId: 1
+              primaryObjectiveId: '1.1'
+              objectiveIds:
+                0: '1.1'
+              title:
+                en: 'Privacy & Personal Data'
+                th: 'Privacy และข้อมูลส่วนบุคคล'
+              synopsis:
+                en: 'Make responsible decisions about personal data—from purpose and roles to inventory, retention and erasure.'
+                th: 'ตัดสินใจจัดการข้อมูลส่วนบุคคล ตั้งแต่วัตถุประสงค์และบทบาท จนถึง Inventory, Retention และการลบ'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-04-privacy.json'
+          relatedLessonIds:
+        1:
+          id: '1.2'
+          title:
+            en: 'Understand risk management concepts'
+            th: 'เข้าใจแนวคิดการบริหารความเสี่ยง'
+          status: 'published'
+          lessons:
+            0:
+              id: 'lesson-d1-05-risk-foundations'
+              domainId: 1
+              primaryObjectiveId: '1.2'
+              objectiveIds:
+                0: '1.2'
+              title:
+                en: 'Risk Foundations & Lifecycle'
+                th: 'พื้นฐาน Risk และวงจรการบริหารความเสี่ยง'
+              synopsis:
+                en: 'Connect assets, threats, weaknesses, likelihood and consequences, then follow risk through an ongoing decision cycle.'
+                th: 'เชื่อม Asset ภัย จุดอ่อน โอกาสและผลกระทบ แล้วติดตาม Risk ผ่านวงจรตัดสินใจที่ทบทวนต่อเนื่อง'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-05-risk-foundations.json'
+            1:
+              id: 'lesson-d1-06-assessment'
+              domainId: 1
+              primaryObjectiveId: '1.2'
+              objectiveIds:
+                0: '1.2'
+              title:
+                en: 'Assessment & Prioritization'
+                th: 'การประเมินและจัดลำดับความเสี่ยง'
+              synopsis:
+                en: 'Compare assessment methods, work through single and annual loss estimates, and prioritize without hiding uncertainty.'
+                th: 'เปรียบเทียบวิธีประเมิน คำนวณความเสียหายต่อครั้งและต่อปี และจัดลำดับโดยไม่ซ่อนความไม่แน่นอน'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-06-assessment.json'
+            2:
+              id: 'lesson-d1-07-risk-response'
+              domainId: 1
+              primaryObjectiveId: '1.2'
+              objectiveIds:
+                0: '1.2'
+              title:
+                en: 'Respond, Review & Communicate Risk'
+                th: 'ตอบสนอง ทบทวน และสื่อสาร Risk'
+              synopsis:
+                en: 'Choose and justify risk responses, review what remains and make decisions traceable.'
+                th: 'เลือกและให้เหตุผลของวิธีตอบสนอง ทบทวน Risk ที่เหลือ และบันทึกการตัดสินใจให้ติดตามได้'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-07-risk-response.json'
+          relatedLessonIds:
+        2:
+          id: '1.3'
+          title:
+            en: 'Understand governance concepts'
+            th: 'เข้าใจแนวคิดการกำกับดูแล'
+          status: 'published'
+          lessons:
+            0:
+              id: 'lesson-d1-08-governance'
+              domainId: 1
+              primaryObjectiveId: '1.3'
+              objectiveIds:
+                0: '1.3'
+              title:
+                en: 'Governance & Applicable Requirements'
+                th: 'Governance และข้อกำหนดที่ใช้กับองค์กร'
+              synopsis:
+                en: 'Connect security direction, oversight and accountability to the requirements that actually apply.'
+                th: 'เชื่อมทิศทาง การกำกับติดตาม และความรับผิดชอบด้านความปลอดภัยกับข้อกำหนดที่ใช้จริง'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-08-governance.json'
+            1:
+              id: 'lesson-d1-09-frameworks'
+              domainId: 1
+              primaryObjectiveId: '1.3'
+              objectiveIds:
+                0: '1.3'
+              title:
+                en: 'Frameworks & Security Documents'
+                th: 'Frameworks และเอกสารความปลอดภัย'
+              synopsis:
+                en: 'Connect security frameworks and standards to policy, requirements, procedures and useful guidance.'
+                th: 'เชื่อม Frameworks และมาตรฐานกับนโยบาย ข้อกำหนด ขั้นตอน และคำแนะนำ'
+              status: 'published'
+              revision: '2'
+              lessonPath: 'lessons/lesson-d1-09-frameworks.json'
+          relatedLessonIds:
+        3:
+          id: '1.4'
+          title:
+            en: 'Understand cybersecurity controls'
+            th: 'เข้าใจมาตรการควบคุมความปลอดภัยไซเบอร์'
+          status: 'published'
+          lessons:
+            0:
+              id: 'lesson-d1-10-control-categories'
+              domainId: 1
+              primaryObjectiveId: '1.4'
+              objectiveIds:
+                0: '1.4'
+              title:
+                en: 'Control Categories'
+                th: 'ประเภทของมาตรการความปลอดภัย'
+              synopsis:
+                en: 'Distinguish technical, administrative and physical controls by mechanism and apply them together.'
+                th: 'แยก Technical, Administrative และ Physical ตามกลไก และใช้ร่วมกันให้เหมาะสม'
+              status: 'published'
+              revision: '3'
+              lessonPath: 'lessons/lesson-d1-10-control-categories.json'
+            1:
+              id: 'lesson-d1-11-control-functions'
+              domainId: 1
+              primaryObjectiveId: '1.4'
+              objectiveIds:
+                0: '1.4'
+              title:
+                en: 'What Is the Control Doing?'
+                th: 'Control นี้ทำหน้าที่อะไร?'
+              synopsis:
+                en: 'Explain security-control functions, their limits and overlap through contextual examples.'
+                th: 'อธิบายหน้าที่ ข้อจำกัด และส่วนทับซ้อนของ Controls จากบริบท'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-11-control-functions.json'
+          relatedLessonIds:
+        4:
+          id: '1.5'
+          title:
+            en: 'Maintain professional and ethical conduct'
+            th: 'รักษาการปฏิบัติตนตามวิชาชีพและจริยธรรม'
+          status: 'published'
+          lessons:
+            0:
+              id: 'lesson-d1-12-professional-conduct'
+              domainId: 1
+              primaryObjectiveId: '1.5'
+              objectiveIds:
+                0: '1.5'
+              title:
+                en: 'Professional Conduct & Ethical Decisions'
+                th: 'ความประพฤติวิชาชีพและการตัดสินใจเชิงจริยธรรม'
+              synopsis:
+                en: 'Apply professional boundaries, due care, due diligence and the four ISC2 canons to responsible decisions.'
+                th: 'ใช้ขอบเขตวิชาชีพ Due Care, Due Diligence และหลัก ISC2 สี่ข้อในการตัดสินใจที่รับผิดชอบ'
+              status: 'published'
+              revision: '2'
+              lessonPath: 'lessons/lesson-d1-12-professional-conduct.json'
+          relatedLessonIds:
+    1:
+      id: 3
+      name:
+        en: 'Identity and Access Management (IAM) Concepts'
+        th: 'แนวคิดการจัดการตัวตนและการเข้าถึง (IAM)'
+      status: 'coming-soon'
+      objectives:
+        0:
+          id: '3.1'
+          title:
+            en: 'Understand identity life cycle management'
+            th: 'เข้าใจการจัดการวงจรชีวิตของตัวตน'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        1:
+          id: '3.2'
+          title:
+            en: 'Understand logical access controls'
+            th: 'เข้าใจการควบคุมการเข้าถึงเชิงตรรกะ'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+    2:
+      id: 4
+      name:
+        en: 'Networking and Cloud Security Concepts'
+        th: 'แนวคิดความปลอดภัยของเครือข่ายและคลาวด์'
+      status: 'coming-soon'
+      objectives:
+        0:
+          id: '4.1'
+          title:
+            en: 'Understand network security'
+            th: 'เข้าใจความปลอดภัยของเครือข่าย'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        1:
+          id: '4.2'
+          title:
+            en: 'Understand network security architecture'
+            th: 'เข้าใจสถาปัตยกรรมความปลอดภัยของเครือข่าย'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        2:
+          id: '4.3'
+          title:
+            en: 'Understand cloud security'
+            th: 'เข้าใจความปลอดภัยของคลาวด์'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+    3:
+      id: 5
+      name:
+        en: 'Security Operations and Incident Response'
+        th: 'การปฏิบัติการด้านความปลอดภัยและการตอบสนองต่อเหตุการณ์'
+      status: 'coming-soon'
+      objectives:
+        0:
+          id: '5.1'
+          title:
+            en: 'Understand data security'
+            th: 'เข้าใจความปลอดภัยของข้อมูล'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        1:
+          id: '5.2'
+          title:
+            en: 'Understand security operations'
+            th: 'เข้าใจการปฏิบัติการด้านความปลอดภัย'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        2:
+          id: '5.3'
+          title:
+            en: 'Understand Incident Response (IR)'
+            th: 'เข้าใจการตอบสนองต่อเหตุการณ์ (IR)'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        3:
+          id: '5.4'
+          title:
+            en: 'Understand asset protection'
+            th: 'เข้าใจการปกป้องทรัพย์สิน'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        4:
+          id: '5.5'
+          title:
+            en: 'Understand security testing'
+            th: 'เข้าใจการทดสอบความปลอดภัย'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+  actual:
+    0:
+      id: 1
+      name:
+        en: 'Security Principles'
+        th: 'หลักการความปลอดภัย'
+      status: 'published'
+      objectives:
+        0:
+          id: '1.1'
+          title:
+            en: 'Understand cybersecurity concepts'
+            th: 'เข้าใจแนวคิดด้านความมั่นคงปลอดภัยไซเบอร์'
+          status: 'published'
+          lessons:
+            0:
+              id: 'lesson-d1-01-cia-triad'
+              domainId: 1
+              primaryObjectiveId: '1.1'
+              objectiveIds:
+                0: '1.1'
+              title:
+                en: 'The CIA Triad: Core Information Security Goals'
+                th: 'สามเหลี่ยม CIA: เสาหลักแห่งเป้าหมายความมั่นคงปลอดภัยสารสนเทศ'
+              synopsis:
+                en: 'Master the three foundational pillars of information security: Confidentiality, Integrity, and Availability. Learn to diagnose security impacts through real-world enterprise scenarios.'
+                th: 'เรียนรู้ 3 เสาหลักพื้นฐานของความมั่นคงปลอดภัยสารสนเทศ ได้แก่ การรักษาความลับ (Confidentiality), ความถูกต้องครบถ้วน (Integrity) และความพร้อมใช้งาน (Availability) พร้อมฝึกวิเคราะห์ผลกระทบจากสถานการณ์จำลองจริง'
+              status: 'published'
+              revision: '4'
+              lessonPath: 'lessons/lesson-d1-01-cia-triad.json'
+            1:
+              id: 'lesson-d1-02-aaa-mfa'
+              domainId: 1
+              primaryObjectiveId: '1.1'
+              objectiveIds:
+                0: '1.1'
+              title:
+                en: 'Identification, AAA & Multi-Factor Authentication'
+                th: 'การระบุตัวตน AAA และ Multi-Factor Authentication'
+              synopsis:
+                en: 'Separate identity claims, credential verification, permissions and activity records. Recognize genuine MFA through a procurement access story.'
+                th: 'แยกการอ้างตัวตน การตรวจหลักฐาน สิทธิ์ และบันทึกกิจกรรม พร้อมจำแนก MFA ผ่านสถานการณ์ระบบจัดซื้อ'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-02-aaa-mfa.json'
+            2:
+              id: 'lesson-d1-03-non-repudiation'
+              domainId: 1
+              primaryObjectiveId: '1.1'
+              objectiveIds:
+                0: '1.1'
+              title:
+                en: 'Non-repudiation & Trustworthy Evidence'
+                th: 'Non-repudiation และหลักฐานที่น่าเชื่อถือ'
+              synopsis:
+                en: 'Explain how signatures and well-managed evidence support review of disputed actions—and what they cannot prove alone.'
+                th: 'เรียนรู้ว่าลายเซ็นและการจัดการหลักฐานช่วยตรวจการกระทำที่ถูกโต้แย้งอย่างไร พร้อมข้อจำกัด'
+              status: 'published'
+              revision: '2'
+              lessonPath: 'lessons/lesson-d1-03-non-repudiation.json'
+            3:
+              id: 'lesson-d1-04-privacy'
+              domainId: 1
+              primaryObjectiveId: '1.1'
+              objectiveIds:
+                0: '1.1'
+              title:
+                en: 'Privacy & Personal Data'
+                th: 'Privacy และข้อมูลส่วนบุคคล'
+              synopsis:
+                en: 'Make responsible decisions about personal data—from purpose and roles to inventory, retention and erasure.'
+                th: 'ตัดสินใจจัดการข้อมูลส่วนบุคคล ตั้งแต่วัตถุประสงค์และบทบาท จนถึง Inventory, Retention และการลบ'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-04-privacy.json'
+          relatedLessonIds:
+        1:
+          id: '1.2'
+          title:
+            en: 'Understand risk management concepts'
+            th: 'เข้าใจแนวคิดการบริหารความเสี่ยง'
+          status: 'published'
+          lessons:
+            0:
+              id: 'lesson-d1-05-risk-foundations'
+              domainId: 1
+              primaryObjectiveId: '1.2'
+              objectiveIds:
+                0: '1.2'
+              title:
+                en: 'Risk Foundations & Lifecycle'
+                th: 'พื้นฐาน Risk และวงจรการบริหารความเสี่ยง'
+              synopsis:
+                en: 'Connect assets, threats, weaknesses, likelihood and consequences, then follow risk through an ongoing decision cycle.'
+                th: 'เชื่อม Asset ภัย จุดอ่อน โอกาสและผลกระทบ แล้วติดตาม Risk ผ่านวงจรตัดสินใจที่ทบทวนต่อเนื่อง'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-05-risk-foundations.json'
+            1:
+              id: 'lesson-d1-06-assessment'
+              domainId: 1
+              primaryObjectiveId: '1.2'
+              objectiveIds:
+                0: '1.2'
+              title:
+                en: 'Assessment & Prioritization'
+                th: 'การประเมินและจัดลำดับความเสี่ยง'
+              synopsis:
+                en: 'Compare assessment methods, work through single and annual loss estimates, and prioritize without hiding uncertainty.'
+                th: 'เปรียบเทียบวิธีประเมิน คำนวณความเสียหายต่อครั้งและต่อปี และจัดลำดับโดยไม่ซ่อนความไม่แน่นอน'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-06-assessment.json'
+            2:
+              id: 'lesson-d1-07-risk-response'
+              domainId: 1
+              primaryObjectiveId: '1.2'
+              objectiveIds:
+                0: '1.2'
+              title:
+                en: 'Respond, Review & Communicate Risk'
+                th: 'ตอบสนอง ทบทวน และสื่อสาร Risk'
+              synopsis:
+                en: 'Choose and justify risk responses, review what remains and make decisions traceable.'
+                th: 'เลือกและให้เหตุผลของวิธีตอบสนอง ทบทวน Risk ที่เหลือ และบันทึกการตัดสินใจให้ติดตามได้'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-07-risk-response.json'
+          relatedLessonIds:
+        2:
+          id: '1.3'
+          title:
+            en: 'Understand governance concepts'
+            th: 'เข้าใจแนวคิดการกำกับดูแล'
+          status: 'published'
+          lessons:
+            0:
+              id: 'lesson-d1-08-governance'
+              domainId: 1
+              primaryObjectiveId: '1.3'
+              objectiveIds:
+                0: '1.3'
+              title:
+                en: 'Governance & Applicable Requirements'
+                th: 'Governance และข้อกำหนดที่ใช้กับองค์กร'
+              synopsis:
+                en: 'Connect security direction, oversight and accountability to the requirements that actually apply.'
+                th: 'เชื่อมทิศทาง การกำกับติดตาม และความรับผิดชอบด้านความปลอดภัยกับข้อกำหนดที่ใช้จริง'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-08-governance.json'
+            1:
+              id: 'lesson-d1-09-frameworks'
+              domainId: 1
+              primaryObjectiveId: '1.3'
+              objectiveIds:
+                0: '1.3'
+              title:
+                en: 'Frameworks & Security Documents'
+                th: 'Frameworks และเอกสารความปลอดภัย'
+              synopsis:
+                en: 'Connect security frameworks and standards to policy, requirements, procedures and useful guidance.'
+                th: 'เชื่อม Frameworks และมาตรฐานกับนโยบาย ข้อกำหนด ขั้นตอน และคำแนะนำ'
+              status: 'published'
+              revision: '2'
+              lessonPath: 'lessons/lesson-d1-09-frameworks.json'
+          relatedLessonIds:
+        3:
+          id: '1.4'
+          title:
+            en: 'Understand cybersecurity controls'
+            th: 'เข้าใจมาตรการควบคุมความปลอดภัยไซเบอร์'
+          status: 'published'
+          lessons:
+            0:
+              id: 'lesson-d1-10-control-categories'
+              domainId: 1
+              primaryObjectiveId: '1.4'
+              objectiveIds:
+                0: '1.4'
+              title:
+                en: 'Control Categories'
+                th: 'ประเภทของมาตรการความปลอดภัย'
+              synopsis:
+                en: 'Distinguish technical, administrative and physical controls by mechanism and apply them together.'
+                th: 'แยก Technical, Administrative และ Physical ตามกลไก และใช้ร่วมกันให้เหมาะสม'
+              status: 'published'
+              revision: '3'
+              lessonPath: 'lessons/lesson-d1-10-control-categories.json'
+            1:
+              id: 'lesson-d1-11-control-functions'
+              domainId: 1
+              primaryObjectiveId: '1.4'
+              objectiveIds:
+                0: '1.4'
+              title:
+                en: 'What Is the Control Doing?'
+                th: 'Control นี้ทำหน้าที่อะไร?'
+              synopsis:
+                en: 'Explain security-control functions, their limits and overlap through contextual examples.'
+                th: 'อธิบายหน้าที่ ข้อจำกัด และส่วนทับซ้อนของ Controls จากบริบท'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d1-11-control-functions.json'
+          relatedLessonIds:
+        4:
+          id: '1.5'
+          title:
+            en: 'Maintain professional and ethical conduct'
+            th: 'รักษาการปฏิบัติตนตามวิชาชีพและจริยธรรม'
+          status: 'published'
+          lessons:
+            0:
+              id: 'lesson-d1-12-professional-conduct'
+              domainId: 1
+              primaryObjectiveId: '1.5'
+              objectiveIds:
+                0: '1.5'
+              title:
+                en: 'Professional Conduct & Ethical Decisions'
+                th: 'ความประพฤติวิชาชีพและการตัดสินใจเชิงจริยธรรม'
+              synopsis:
+                en: 'Apply professional boundaries, due care, due diligence and the four ISC2 canons to responsible decisions.'
+                th: 'ใช้ขอบเขตวิชาชีพ Due Care, Due Diligence และหลัก ISC2 สี่ข้อในการตัดสินใจที่รับผิดชอบ'
+              status: 'published'
+              revision: '2'
+              lessonPath: 'lessons/lesson-d1-12-professional-conduct.json'
+          relatedLessonIds:
+    1:
+      id: 3
+      name:
+        en: 'Identity and Access Management (IAM) Concepts'
+        th: 'แนวคิดการจัดการตัวตนและการเข้าถึง (IAM)'
+      status: 'published'
+      objectives:
+        0:
+          id: '3.1'
+          title:
+            en: 'Understand identity life cycle management'
+            th: 'เข้าใจการจัดการวงจรชีวิตของตัวตน'
+          status: 'published'
+          lessons:
+            0:
+              id: 'lesson-d3-01-roles-provisioning'
+              domainId: 3
+              primaryObjectiveId: '3.1'
+              objectiveIds:
+                0: '3.1'
+              title:
+                en: 'Roles & Authorized Provisioning'
+                th: 'บทบาทและการจัดเตรียมสิทธิ์ที่ได้รับอนุมัติ'
+              synopsis:
+                en: 'Connect responsibilities to approved access, provision it correctly and verify the result for people and automated workloads.'
+                th: 'เชื่อมหน้าที่กับสิทธิ์ที่อนุมัติ จัดเตรียมและตรวจผลให้ถูกต้องสำหรับคนและระบบงานอัตโนมัติ'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d3-01-roles-provisioning.json'
+            1:
+              id: 'lesson-d3-02-review-deprovisioning'
+              domainId: 3
+              primaryObjectiveId: '3.1'
+              objectiveIds:
+                0: '3.1'
+              title:
+                en: 'Access Reviews, Changes & Deprovisioning'
+                th: 'ทบทวน ปรับ และถอนสิทธิ์ตลอดวงจรชีวิต'
+              synopsis:
+                en: 'Reassess changing needs, distinguish activity from ownership and verify authorized access withdrawal for people and workloads.'
+                th: 'ทบทวนความจำเป็นที่เปลี่ยน แยกการใช้งานจากความรับผิดชอบ และตรวจผลการถอนสิทธิ์ของคนและระบบงาน'
+              status: 'published'
+              revision: '1'
+              lessonPath: 'lessons/lesson-d3-02-review-deprovisioning.json'
+          relatedLessonIds:
+        1:
+          id: '3.2'
+          title:
+            en: 'Understand logical access controls'
+            th: 'เข้าใจการควบคุมการเข้าถึงเชิงตรรกะ'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+    2:
+      id: 4
+      name:
+        en: 'Networking and Cloud Security Concepts'
+        th: 'แนวคิดความปลอดภัยของเครือข่ายและคลาวด์'
+      status: 'coming-soon'
+      objectives:
+        0:
+          id: '4.1'
+          title:
+            en: 'Understand network security'
+            th: 'เข้าใจความปลอดภัยของเครือข่าย'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        1:
+          id: '4.2'
+          title:
+            en: 'Understand network security architecture'
+            th: 'เข้าใจสถาปัตยกรรมความปลอดภัยของเครือข่าย'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        2:
+          id: '4.3'
+          title:
+            en: 'Understand cloud security'
+            th: 'เข้าใจความปลอดภัยของคลาวด์'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+    3:
+      id: 5
+      name:
+        en: 'Security Operations and Incident Response'
+        th: 'การปฏิบัติการด้านความปลอดภัยและการตอบสนองต่อเหตุการณ์'
+      status: 'coming-soon'
+      objectives:
+        0:
+          id: '5.1'
+          title:
+            en: 'Understand data security'
+            th: 'เข้าใจความปลอดภัยของข้อมูล'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        1:
+          id: '5.2'
+          title:
+            en: 'Understand security operations'
+            th: 'เข้าใจการปฏิบัติการด้านความปลอดภัย'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        2:
+          id: '5.3'
+          title:
+            en: 'Understand Incident Response (IR)'
+            th: 'เข้าใจการตอบสนองต่อเหตุการณ์ (IR)'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        3:
+          id: '5.4'
+          title:
+            en: 'Understand asset protection'
+            th: 'เข้าใจการปกป้องทรัพย์สิน'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+        4:
+          id: '5.5'
+          title:
+            en: 'Understand security testing'
+            th: 'เข้าใจการทดสอบความปลอดภัย'
+          status: 'coming-soon'
+          lessons:
+          relatedLessonIds:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-d2-completion.mjs:57:52)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: protected entry file hashes preserve Domain1, Lessons1–2, Quiz, Vocabulary, banks, progress/schema and original sources
+not ok 22 - protected entry file hashes preserve Domain1, Lessons1–2, Quiz, Vocabulary, banks, progress/schema and original sources
+  ---
+  duration_ms: 131.0768
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-learning-d2-completion.mjs:62:1'
+  failureType: 'testCodeFailure'
+  error: 'ISC2 Update 2026/Domain 4/D3 sum.md'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-learning-d2-completion.mjs:64:63)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: source scorecard discrepancy remains explicit, unscored and equivalent in TH/EN, with no inferred count or hidden percentage
+ok 23 - source scorecard discrepancy remains explicit, unscored and equivalent in TH/EN, with no inferred count or hidden percentage
+  ---
+  duration_ms: 1.2491
+  type: 'test'
+  ...
+# Subtest: domain route is learning-only and leaves active quiz identity untouched
+ok 24 - domain route is learning-only and leaves active quiz identity untouched
+  ---
+  duration_ms: 2.0474
+  type: 'test'
+  ...
+# Subtest: Center cards open a dedicated Domain and Start opens first slide directly, then Back restores lesson focus
+ok 25 - Center cards open a dedicated Domain and Start opens first slide directly, then Back restores lesson focus
+  ---
+  duration_ms: 25.6499
+  type: 'test'
+  ...
+# Subtest: Continue Learning and legacy Lesson Contents route resume the saved slide without a second launch
+ok 26 - Continue Learning and legacy Lesson Contents route resume the saved slide without a second launch
+  ---
+  duration_ms: 9.2764
+  type: 'test'
+  ...
+# Subtest: empty Domain has official objectives and no invented Start actions; failed lesson offers no resume
+ok 27 - empty Domain has official objectives and no invented Start actions; failed lesson offers no resume
+  ---
+  duration_ms: 5.6414
+  type: 'test'
+  ...
+# Subtest: Lesson Info preserves outcomes and sources, closes with Escape and restores focus without progress writes
+ok 28 - Lesson Info preserves outcomes and sources, closes with Escape and restores focus without progress writes
+  ---
+  duration_ms: 7.5174
+  type: 'test'
+  ...
+# Subtest: viewer chrome stays English in all modes and Info opens without visiting another slide
+ok 29 - viewer chrome stays English in all modes and Info opens without visiting another slide
+  ---
+  duration_ms: 16.1131
+  type: 'test'
+  ...
+# Subtest: scenario control labels stay English and opening Info preserves a live selection
+ok 30 - scenario control labels stay English and opening Info preserves a live selection
+  ---
+  duration_ms: 3.9685
+  type: 'test'
+  ...
+# Subtest: availability refresh preserves keyboard focus and current page scroll
+ok 31 - availability refresh preserves keyboard focus and current page scroll
+  ---
+  duration_ms: 14.9198
+  type: 'test'
+  ...
+# Subtest: Domain cards are fully clickable, keyboard-accessible via Enter, contain no Explore Domain link, and navigate all five domains
+ok 32 - Domain cards are fully clickable, keyboard-accessible via Enter, contain no Explore Domain link, and navigate all five domains
+  ---
+  duration_ms: 7.4015
+  type: 'test'
+  ...
+# Subtest: Learning Center Back button visually matches Version Selection with btn btn-secondary btn-back-home and navigates to versions
+ok 33 - Learning Center Back button visually matches Version Selection with btn btn-secondary btn-back-home and navigates to versions
+  ---
+  duration_ms: 2.4532
+  type: 'test'
+  ...
+# Subtest: Learning Center handles all four expected states without completed-lesson placeholder
+ok 34 - Learning Center handles all four expected states without completed-lesson placeholder
+  ---
+  duration_ms: 14.0019
+  type: 'test'
+  ...
+# Subtest: Learning Center Domain cards display only essential metadata and no availability/completion status text
+ok 35 - Learning Center Domain cards display only essential metadata and no availability/completion status text
+  ---
+  duration_ms: 2.3219
+  type: 'test'
+  ...
+# Subtest: Learning Center Domain cards use compact horizontal landscape layout without aspect-ratio constraints
+ok 36 - Learning Center Domain cards use compact horizontal landscape layout without aspect-ratio constraints
+  ---
+  duration_ms: 1.0927
+  type: 'test'
+  ...
+# Subtest: Learning Center Domain cards feature soft blue glow hover and focus-visible styling
+ok 37 - Learning Center Domain cards feature soft blue glow hover and focus-visible styling
+  ---
+  duration_ms: 1.1872
+  type: 'test'
+  ...
+# Subtest: Learning Slides screens (Center, Domain, Viewer) unify header with Version Selection and include Theme Toggle
+ok 38 - Learning Slides screens (Center, Domain, Viewer) unify header with Version Selection and include Theme Toggle
+  ---
+  duration_ms: 6.0475
+  type: 'test'
+  ...
+# Subtest: Domain Overview: official Objectives render in order, first available selected by default, radio semantics and Coming Soon for unavailable
+ok 39 - Domain Overview: official Objectives render in order, first available selected by default, radio semantics and Coming Soon for unavailable
+  ---
+  duration_ms: 0.9531
+  type: 'test'
+  ...
+# Subtest: Domain Overview: selecting an Objective does not immediately navigate, and bottom button navigates directly
+ok 40 - Domain Overview: selecting an Objective does not immediately navigate, and bottom button navigates directly
+  ---
+  duration_ms: 2.5513
+  type: 'test'
+  ...
+# Subtest: Domain Overview: bottom button always displays Start Learning across not-started, in-progress, and completed states
+ok 41 - Domain Overview: bottom button always displays Start Learning across not-started, in-progress, and completed states
+  ---
+  duration_ms: 4.9964
+  type: 'test'
+  ...
+# Subtest: Domain Overview: multi-lesson objective resolution preserves independent progress and picks the correct lesson
+ok 42 - Domain Overview: multi-lesson objective resolution preserves independent progress and picks the correct lesson
+  ---
+  duration_ms: 0.8853
+  type: 'test'
+  ...
+# Subtest: Domain Overview: keyboard navigation (ArrowDown, ArrowUp, Space, Enter) and focus restoration
+ok 43 - Domain Overview: keyboard navigation (ArrowDown, ArrowUp, Space, Enter) and focus restoration
+  ---
+  duration_ms: 5.8796
+  type: 'test'
+  ...
+# Subtest: Domain Overview: EN, TH, and EN+TH content rendering and Theme styling compatibility
+ok 44 - Domain Overview: EN, TH, and EN+TH content rendering and Theme styling compatibility
+  ---
+  duration_ms: 4.4837
+  type: 'test'
+  ...
+# Subtest: Task 72R: Lesson Info modal visual correction, What you'll learn, collapsed details, themed scrollbars
+ok 45 - Task 72R: Lesson Info modal visual correction, What you'll learn, collapsed details, themed scrollbars
+  ---
+  duration_ms: 8.5559
+  type: 'test'
+  ...
+# Subtest: visits use IDs, clamp invalid positions and require all slides plus explicit acknowledgement
+ok 46 - visits use IDs, clamp invalid positions and require all slides plus explicit acknowledgement
+  ---
+  duration_ms: 8.8395
+  type: 'test'
+  ...
+# Subtest: corrupt storage is preserved and memory fallback remains usable without touching quiz data
+ok 47 - corrupt storage is preserved and memory fallback remains usable without touching quiz data
+  ---
+  duration_ms: 0.9151
+  type: 'test'
+  ...
+# Subtest: normal persistence validates unsupported schemas, handles quota errors and isolates lesson IDs
+ok 48 - normal persistence validates unsupported schemas, handles quota errors and isolates lesson IDs
+  ---
+  duration_ms: 1.7369
+  type: 'test'
+  ...
+# Subtest: new and deleted-position readers start at the first authored slideOrder entry
+ok 49 - new and deleted-position readers start at the first authored slideOrder entry
+  ---
+  duration_ms: 0.3242
+  type: 'test'
+  ...
+# Subtest: stage fits the three approved desktop viewports without the old app width cap
+ok 50 - stage fits the three approved desktop viewports without the old app width cap
+  ---
+  duration_ms: 2.7482
+  type: 'test'
+  ...
+# Subtest: mobile uses readable flow and fullscreen accounts for its accessible control dock
+ok 51 - mobile uses readable flow and fullscreen accounts for its accessible control dock
+  ---
+  duration_ms: 3.0856
+  type: 'test'
+  ...
+# Subtest: visible status messages reserve their height and extra gap without overrunning the viewport
+ok 52 - visible status messages reserve their height and extra gap without overrunning the viewport
+  ---
+  duration_ms: 0.3317
+  type: 'test'
+  ...
+# Subtest: overflow fallback waits for font readiness and stable measurements
+ok 53 - overflow fallback waits for font readiness and stable measurements
+  ---
+  duration_ms: 3.825
+  type: 'test'
+  ...
+# Subtest: fitting content remains a presentation and unmeasured/narrow constrained boxes do not trigger false fallback
+ok 54 - fitting content remains a presentation and unmeasured/narrow constrained boxes do not trigger false fallback
+  ---
+  duration_ms: 1.4924
+  type: 'test'
+  ...
+# Subtest: late renderer completion and measurements cannot change a disposed stage
+ok 55 - late renderer completion and measurements cannot change a disposed stage
+  ---
+  duration_ms: 0.9001
+  type: 'test'
+  ...
+# Subtest: expanding slide content triggers a new fit check even when the fixed stage box does not resize
+ok 56 - expanding slide content triggers a new fit check even when the fixed stage box does not resize
+  ---
+  duration_ms: 1.3424
+  type: 'test'
+  ...
+# Subtest: the fallback notice cannot cause a fit/reading oscillation on the same viewport and content
+ok 57 - the fallback notice cannot cause a fit/reading oscillation on the same viewport and content
+  ---
+  duration_ms: 1.0133
+  type: 'test'
+  ...
+# Subtest: one toolbar replaces permanent filmstrip/select with a closed-by-default Slides overview
+ok 58 - one toolbar replaces permanent filmstrip/select with a closed-by-default Slides overview
+  ---
+  duration_ms: 13.2255
+  type: 'test'
+  ...
+# Subtest: Slides offers bounded accessible previews, selects a specific slide, closes and preserves focus
+ok 59 - Slides offers bounded accessible previews, selects a specific slide, closes and preserves focus
+  ---
+  duration_ms: 7.5368
+  type: 'test'
+  ...
+# Subtest: long decks overview navigates to End without mounting hundreds of live previews
+ok 60 - long decks overview navigates to End without mounting hundreds of live previews
+  ---
+  duration_ms: 5.9347
+  type: 'test'
+  ...
+# Subtest: fullscreen exit restores the exact scenario selection without rebuilding its DOM
+ok 61 - fullscreen exit restores the exact scenario selection without rebuilding its DOM
+  ---
+  duration_ms: 4.5822
+  type: 'test'
+  ...
+# Subtest: scenario state survives language and Text View transitions, without writing interaction data into progress
+ok 62 - scenario state survives language and Text View transitions, without writing interaction data into progress
+  ---
+  duration_ms: 5.5412
+  type: 'test'
+  ...
+# Subtest: controls stay English, slide educational text stays bilingual, and only explicit completion finishes
+ok 63 - controls stay English, slide educational text stays bilingual, and only explicit completion finishes
+  ---
+  duration_ms: 7.4933
+  type: 'test'
+  ...
+# Subtest: three-zone toolbar layout has distinct left context, centered navigation, and right presentation tools
+ok 64 - three-zone toolbar layout has distinct left context, centered navigation, and right presentation tools
+  ---
+  duration_ms: 3.2922
+  type: 'test'
+  ...
+# Subtest: presentation CSS defines three-zone grid, deep slate theme tokens, and responsive dock
+ok 65 - presentation CSS defines three-zone grid, deep slate theme tokens, and responsive dock
+  ---
+  duration_ms: 1.885
+  type: 'test'
+  ...
+# Subtest: layout architecture: toolbar and workspace are strictly siblings, preventing canvas overlap
+ok 66 - layout architecture: toolbar and workspace are strictly siblings, preventing canvas overlap
+  ---
+  duration_ms: 3.7096
+  type: 'test'
+  ...
+# Subtest: Gate B corrections: TH | EN language toggle, mobile touch targets, and natural mobile slide height
+ok 67 - Gate B corrections: TH | EN language toggle, mobile touch targets, and natural mobile slide height
+  ---
+  duration_ms: 2.7723
+  type: 'test'
+  ...
+# Subtest: slide controller clamps, preserves ID, and maps legacy both and invalid language values to Thai
+ok 68 - slide controller clamps, preserves ID, and maps legacy both and invalid language values to Thai
+  ---
+  duration_ms: 1.8511
+  type: 'test'
+  ...
+# Subtest: navigation ignores controls, modifiers, selected text and wheel, while Shift < and > work
+ok 69 - navigation ignores controls, modifiers, selected text and wheel, while Shift < and > work
+  ---
+  duration_ms: 1.0529
+  type: 'test'
+  ...
+# Subtest: fullscreen follows browser events, rejected requests leave normal mode, and dispose removes listeners
+ok 70 - fullscreen follows browser events, rejected requests leave normal mode, and dispose removes listeners
+  ---
+  duration_ms: 2.1539
+  type: 'test'
+  ...
+# Subtest: mounted viewer offers distinct optional previews, supports language controls and cleans up after leaving
+ok 71 - mounted viewer offers distinct optional previews, supports language controls and cleans up after leaving
+  ---
+  duration_ms: 21.9729
+  type: 'test'
+  ...
+# Subtest: large decks mount bounded optional previews while direct slide navigation and active item still work
+ok 72 - large decks mount bounded optional previews while direct slide navigation and active item still work
+  ---
+  duration_ms: 5.7468
+  type: 'test'
+  ...
+# Subtest: finishing the final unvisited slide immediately enables acknowledgement without another navigation
+ok 73 - finishing the final unvisited slide immediately enables acknowledgement without another navigation
+  ---
+  duration_ms: 2.9766
+  type: 'test'
+  ...
+# Subtest: fullscreen half-click navigation excludes a revealed control and preserves position after browser exit
+ok 74 - fullscreen half-click navigation excludes a revealed control and preserves position after browser exit
+  ---
+  duration_ms: 4.0019
+  type: 'test'
+  ...
+# Subtest: language switching keeps keyboard focus on the same live language control
+ok 75 - language switching keeps keyboard focus on the same live language control
+  ---
+  duration_ms: 1.1635
+  type: 'test'
+  ...
+1..75
+# tests 75
+# suites 0
+# pass 73
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 706.4251

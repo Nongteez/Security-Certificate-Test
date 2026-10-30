@@ -1,0 +1,1003 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d3-03-iam-frameworks-tools",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 3,
+  "primaryObjectiveId": "3.1",
+  "objectiveIds": [
+    "3.1"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "IAM Frameworks & Tool Responsibilities",
+    "th": "กรอบแนวทางและหน้าที่ของเครื่องมือ IAM"
+  },
+  "synopsis": {
+    "en": "Connect identity guidance, directory data, trusted authentication and application access without confusing their responsibilities.",
+    "th": "เชื่อมแนวทาง Identity ข้อมูล Directory การยืนยันตัวตนที่เชื่อถือได้ และสิทธิ์ในแอป โดยแยกหน้าที่ของแต่ละส่วน"
+  },
+  "outcomes": [
+    {
+      "en": "Distinguish digital-identity guidance from broader risk outcomes and configured software.",
+      "th": "แยกแนวทาง Digital identity จากผลลัพธ์การจัดการความเสี่ยงและซอฟต์แวร์ที่ตั้งค่าใช้งาน"
+    },
+    {
+      "en": "Explain directory, IdP, governance and enforcement responsibilities using a concrete request.",
+      "th": "อธิบายหน้าที่ Directory, IdP การกำกับ และการบังคับใช้สิทธิ์ผ่านคำขอที่ชัดเจน"
+    },
+    {
+      "en": "Explain why SSO and automation still require application rules and verification.",
+      "th": "อธิบายว่าเหตุใด SSO และระบบอัตโนมัติยังต้องใช้นโยบายของแอปและการตรวจผล"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Domain 3 Lessons 1–2 and the Domain 1 framework/authentication foundations.",
+      "th": "แนะนำ Domain 3 Lessons 1–2 และพื้นฐาน Framework/Authentication จาก Domain 1"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 Exam Outline",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Objective 3.1 frameworks and tools; Domain 3 automated-identity application guidance; checked 2026-10-30."
+    },
+    {
+      "id": "d3-notes",
+      "title": "Domain 3.md — user study notes",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 3/Domain 3.md",
+      "locator": "Sections 7–8, S07–S08, transcript blocks 00:08:56 / 00:09:43 / 00:10:22."
+    },
+    {
+      "id": "d3-summary",
+      "title": "D3 sum.md — user summary",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 3/D3 sum.md",
+      "locator": "Topics 5–6; seven capabilities and three technology categories."
+    },
+    {
+      "id": "nist-identity",
+      "title": "NIST SP 800-63-4 — Digital Identity Guidelines",
+      "authority": "technical-primary",
+      "url": "https://pages.nist.gov/800-63-4/sp800-63.html",
+      "locator": "Introduction and digital identity model; proofing/authentication/federation. Supplement, not universal enterprise authorization law."
+    },
+    {
+      "id": "nist-federation",
+      "title": "NIST SP 800-63C-4 — Federation and Assertions",
+      "authority": "technical-primary",
+      "url": "https://pages.nist.gov/800-63-4/sp800-63c.html",
+      "locator": "Introduction, assertions/intended relying party and §4.7 independent sessions. No protocol-configuration syllabus."
+    },
+    {
+      "id": "nist-csf",
+      "title": "NIST Cybersecurity Framework 2.0",
+      "authority": "technical-primary",
+      "url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+      "locator": "Abstract; PR.AA-01 / PR.AA-05. Outcomes do not prescribe implementation."
+    },
+    {
+      "id": "ldap-protocol",
+      "title": "IETF RFC 4511 — Lightweight Directory Access Protocol (LDAP)",
+      "authority": "technical-primary",
+      "url": "https://www.rfc-editor.org/rfc/rfc4511",
+      "locator": "Abstract: LDAP provides access to distributed directory services. Optional protocol-versus-service clarification only; no protocol mechanics taught."
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d3-03-01-guidance-is-not-software",
+      "title": {
+        "en": "Guidance shapes the design; tools carry it out.",
+        "th": "แนวทางช่วยออกแบบ เครื่องมือทำตามที่กำหนด"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "NIST digital-identity guidance and CSF answer different questions. Neither configures your applications.",
+            "th": "แนวทาง Digital identity ของ NIST กับ CSF ตอบคนละคำถาม และไม่ได้ตั้งค่าแอปให้เอง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Responsibilities and their limits",
+            "th": "หน้าที่และขอบเขตของแต่ละส่วน"
+          },
+          "columns": [
+            {
+              "en": "Responsibility",
+              "th": "หน้าที่"
+            },
+            {
+              "en": "What it supplies",
+              "th": "สิ่งที่ให้"
+            },
+            {
+              "en": "Boundary / implication",
+              "th": "ขอบเขต / ความหมาย"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "NIST SP 800-63",
+                "th": "NIST SP 800-63: แนวทาง Identity"
+              },
+              {
+                "en": "Digital identity: proofing, authentication, federation",
+                "th": "Digital identity: Proofing, Authentication และ Federation"
+              },
+              {
+                "en": "Design appropriate identity services; not a complete enterprise authorization system.",
+                "th": "ออกแบบบริการ Identity ที่เหมาะสม ไม่ใช่ระบบอนุมัติสิทธิ์ขององค์กรทั้งหมด"
+              }
+            ],
+            [
+              {
+                "en": "NIST CSF",
+                "th": "NIST CSF: กรอบความเสี่ยง"
+              },
+              {
+                "en": "Broader cybersecurity risk-management outcomes",
+                "th": "ผลลัพธ์การจัดการความเสี่ยง Cybersecurity ในภาพรวม"
+              },
+              {
+                "en": "Choose and implement practices to achieve outcomes; the framework is not software.",
+                "th": "เลือกและลงมือใช้แนวปฏิบัติเพื่อให้ได้ผลลัพธ์ ตัว Framework ไม่ใช่ซอฟต์แวร์"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The source names two useful kinds of guidance. NIST SP 800-63 addresses digital identity, including identity proofing, authentication and federation. Proofing concerns confidence in a claimed real-world identity when needed; authentication concerns control of an authenticator; federation lets a relying service use verifiable authentication information from an identity provider. CSF provides broader cybersecurity risk-management outcomes, including managed identities and reviewed, enforced access. The checked versions are SP 800-63-4 and CSF 2.0; version numbers are technical context, not a new exam memorization requirement. Neither publication creates accounts, approves a particular employee’s access or configures an application. Organizations choose responsibilities, suitable tools, policy and implementation, then assess the result. These references have their own scopes; do not treat federal digital-identity guidance as a universal legal requirement for every enterprise account.",
+            "th": "ต้นฉบับยกแนวทางสองกลุ่มที่มีจุดเน้นต่างกัน NIST SP 800-63 กล่าวถึง Digital identity รวมถึง Identity Proofing, Authentication และ Federation โดย Proofing พิจารณาความเชื่อมั่นต่อบุคคลจริงที่อ้างถึงเมื่อจำเป็น Authentication ตรวจการควบคุมสิ่งยืนยันตัวตน และ Federation ให้บริการปลายทางใช้ข้อมูลยืนยันตัวตนที่ตรวจสอบได้จาก IdP ส่วน CSF ให้ผลลัพธ์ด้านการจัดการความเสี่ยง Cybersecurity ในภาพรวม รวมการจัดการ Identity และสิทธิ์ที่ทบทวนและบังคับใช้ ฉบับที่ตรวจคือ SP 800-63-4 และ CSF 2.0 หมายเลขฉบับเป็นบริบททางเทคนิค ไม่ใช่ข้อท่องจำเพิ่มสำหรับสอบ เอกสารทั้งสองไม่ได้สร้างบัญชี อนุมัติสิทธิ์ให้พนักงานรายใด หรือตั้งค่าแอปให้เอง องค์กรยังต้องกำหนดหน้าที่ เลือกเครื่องมือ นโยบาย และลงมือใช้แล้วประเมินผล แหล่งอ้างอิงแต่ละฉบับมีขอบเขตของตน ไม่ควรตีความแนวทาง Digital identity ของภาครัฐเป็นข้อกฎหมายสากลสำหรับทุกบัญชีในองค์กร"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Use guidance to define the desired outcome.",
+              "th": "ใช้แนวทางกำหนดผลลัพธ์ที่ต้องการ"
+            },
+            {
+              "en": "Assign responsibility and configure suitable tools.",
+              "th": "มอบหมายผู้รับผิดชอบและตั้งค่าเครื่องมือที่เหมาะสม"
+            },
+            {
+              "en": "Verify the implemented result.",
+              "th": "ตรวจผลที่นำไปใช้จริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A framework document is not an IAM product.",
+            "th": "เอกสาร Framework ไม่ใช่ผลิตภัณฑ์ IAM"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-identity",
+        "nist-csf"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-03-02-directory-records",
+      "title": {
+        "en": "A directory supplies records, not every access decision.",
+        "th": "Directory ให้ข้อมูล ไม่ได้ตัดสินสิทธิ์ทุกอย่างแทนแอป"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An application may look up an account and its groups; those records still need policy and interpretation.",
+            "th": "แอปอาจค้นบัญชีและสมาชิกกลุ่ม แต่ยังต้องตีความข้อมูลนั้นตามนโยบาย"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Responsibilities and their limits",
+            "th": "หน้าที่และขอบเขตของแต่ละส่วน"
+          },
+          "columns": [
+            {
+              "en": "Responsibility",
+              "th": "หน้าที่"
+            },
+            {
+              "en": "What it supplies",
+              "th": "สิ่งที่ให้"
+            },
+            {
+              "en": "Boundary / implication",
+              "th": "ขอบเขต / ความหมาย"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "User Account Management",
+                "th": "User Account Management: จัดการบัญชี"
+              },
+              {
+                "en": "Maintain account records and status",
+                "th": "ดูแลระเบียนและสถานะบัญชี"
+              },
+              {
+                "en": "A record represents an account in a system, not the whole person.",
+                "th": "ระเบียนแทนบัญชีในระบบ ไม่ใช่ตัวบุคคลทั้งหมด"
+              }
+            ],
+            [
+              {
+                "en": "Authentication",
+                "th": "Authentication: ยืนยันตัวตน"
+              },
+              {
+                "en": "Verify control of an authenticator",
+                "th": "ตรวจการควบคุมสิ่งยืนยันตัวตน"
+              },
+              {
+                "en": "Knowing an account exists is not proof of control.",
+                "th": "รู้ว่ามีบัญชี ไม่ใช่หลักฐานว่าควบคุมบัญชีได้"
+              }
+            ],
+            [
+              {
+                "en": "Authorization",
+                "th": "Authorization: อนุญาตการกระทำ"
+              },
+              {
+                "en": "Decide allowed actions on resources",
+                "th": "ตัดสินการกระทำที่อนุญาตต่อทรัพยากร"
+              },
+              {
+                "en": "A valid sign-in does not allow every action.",
+                "th": "ลงชื่อเข้าใช้ได้ ไม่ได้แปลว่าทำได้ทุกอย่าง"
+              }
+            ],
+            [
+              {
+                "en": "Role Management",
+                "th": "Role Management: จัดการบทบาท"
+              },
+              {
+                "en": "Maintain role assignments and permissions",
+                "th": "ดูแลบทบาทที่มอบหมายและสิทธิ์"
+              },
+              {
+                "en": "A job label alone does not configure application rights.",
+                "th": "ชื่อตำแหน่งอย่างเดียวไม่ได้ตั้งค่าสิทธิ์ในแอป"
+              }
+            ],
+            [
+              {
+                "en": "Access Provisioning",
+                "th": "Access Provisioning: จัดเตรียมสิทธิ์"
+              },
+              {
+                "en": "Establish approved account and access settings",
+                "th": "จัดเตรียมบัญชีและสิทธิ์ตามที่อนุมัติ"
+              },
+              {
+                "en": "Apply the approved scope to relevant systems.",
+                "th": "นำขอบเขตที่อนุมัติไปใช้ในระบบที่เกี่ยวข้อง"
+              }
+            ],
+            [
+              {
+                "en": "Access Reviews",
+                "th": "Access Reviews: ทบทวนสิทธิ์"
+              },
+              {
+                "en": "Reassess continuing need",
+                "th": "ทบทวนความจำเป็นที่ยังมี"
+              },
+              {
+                "en": "A group list supports review but does not perform the whole review.",
+                "th": "รายชื่อกลุ่มช่วยทบทวน แต่ไม่ใช่การทบทวนครบวงจร"
+              }
+            ],
+            [
+              {
+                "en": "Deprovisioning",
+                "th": "Deprovisioning: ถอนสิทธิ์"
+              },
+              {
+                "en": "Withdraw access no longer justified",
+                "th": "ถอนสิทธิ์ที่หมดความจำเป็น"
+              },
+              {
+                "en": "Confirm the relevant downstream result.",
+                "th": "ยืนยันผลในระบบปลายทางที่เกี่ยวข้อง"
+              }
+            ],
+            [
+              {
+                "en": "Directory Services",
+                "th": "Directory Services: บริการข้อมูลบัญชี"
+              },
+              {
+                "en": "Store and manage structured account/group information",
+                "th": "เก็บและจัดการข้อมูลบัญชีและกลุ่มอย่างมีโครงสร้าง"
+              },
+              {
+                "en": "A directory record can be linked to a separate application account.",
+                "th": "ระเบียน Directory อาจเชื่อมกับบัญชีอีกชุดในแอป"
+              }
+            ],
+            [
+              {
+                "en": "Identity Providers (IdPs)",
+                "th": "Identity Providers (IdPs): บริการ Identity"
+              },
+              {
+                "en": "Provide verifiable authentication information to relying apps",
+                "th": "ให้ข้อมูลยืนยันตัวตนที่แอปปลายทางตรวจได้"
+              },
+              {
+                "en": "Not merely a list of usernames.",
+                "th": "ไม่ใช่เพียงรายชื่อ Username"
+              }
+            ],
+            [
+              {
+                "en": "Access Management Platforms",
+                "th": "Access Management Platforms: จัดการสิทธิ์"
+              },
+              {
+                "en": "Support configured access-management responsibilities",
+                "th": "รองรับหน้าที่จัดการ Access ตามที่ตั้งค่า"
+              },
+              {
+                "en": "Products can combine functions; integration and policy still matter.",
+                "th": "ผลิตภัณฑ์อาจรวมหลายหน้าที่ แต่ยังต้องมีการเชื่อมต่อและนโยบาย"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The source lists seven IAM capabilities and three common technology categories, retained in the table. These are responsibilities, not ten mandatory separate products. A directory stores structured records such as an account identifier, status and group membership. An application may query that directory or maintain its own linked account and permissions; the two records are not automatically identical. In this authored example, account mina.siri belongs to ReportReaders. The application looks up that membership, but must still interpret it under its configured rules before allowing report reading. A record lookup does not authenticate whoever presents a username. LDAP is a directory-access protocol, not itself a directory service or a required product; protocol mechanics are outside this lesson. A combined platform may offer directory, IdP and access-management functions. Evaluate the function and integration, not the brand or an assumption that one central repository controls every app.",
+            "th": "ต้นฉบับระบุความสามารถ IAM เจ็ดอย่างและเทคโนโลยีสามกลุ่ม ซึ่งเก็บครบในตาราง สิ่งเหล่านี้คือหน้าที่ ไม่ใช่ข้อบังคับให้ซื้อสิบผลิตภัณฑ์แยกกัน Directory เก็บข้อมูลอย่างมีโครงสร้าง เช่น ตัวระบุบัญชี สถานะ และสมาชิกกลุ่ม แอปอาจค้นข้อมูลจาก Directory หรือมีบัญชีและสิทธิ์ของตนที่เชื่อมกันอยู่ ระเบียนสองฝั่งไม่ได้เหมือนกันโดยอัตโนมัติ ในตัวอย่างที่แต่งนี้ บัญชี mina.siri อยู่ในกลุ่ม ReportReaders แอปค้นสมาชิกกลุ่มได้ แต่ต้องตีความตามกฎที่ตั้งไว้ก่อนอนุญาตให้อ่านรายงาน การค้นระเบียนไม่ได้ยืนยันว่าใครก็ตามที่กรอก Username ควบคุมบัญชีได้ LDAP เป็น Protocol สำหรับเข้าถึง Directory ไม่ใช่ตัวบริการ Directory หรือผลิตภัณฑ์ที่ต้องใช้ รายละเอียด Protocol อยู่นอกบทนี้ แพลตฟอร์มเดียวอาจรวม Directory, IdP และการจัดการ Access จึงควรพิจารณาหน้าที่และการเชื่อมต่อ ไม่ใช่ชื่อยี่ห้อหรือสมมติว่าคลังข้อมูลกลางควบคุมทุกแอปได้เอง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Records describe accounts and groups.",
+              "th": "ระเบียนอธิบายบัญชีและกลุ่ม"
+            },
+            {
+              "en": "Apps may keep separate linked accounts.",
+              "th": "แอปอาจมีบัญชีของตนที่เชื่อมกัน"
+            },
+            {
+              "en": "Verify how the application uses the data.",
+              "th": "ตรวจว่าแอปนำข้อมูลไปใช้อย่างไร"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "One platform may perform several responsibilities.",
+            "th": "แพลตฟอร์มเดียวอาจทำหลายหน้าที่"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-identity",
+        "nist-federation",
+        "ldap-protocol"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-03-03-idp-to-application",
+      "title": {
+        "en": "An IdP supplies evidence; the application checks access.",
+        "th": "IdP ส่งหลักฐาน แอปตรวจสิทธิ์ของคำขอ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "In this federated sign-in, the application relies on the IdP’s verifiable authentication statement.",
+            "th": "ในการลงชื่อเข้าใช้แบบ Federation นี้ แอปอาศัยข้อมูลยืนยันตัวตนจาก IdP ที่ตรวจสอบได้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Responsibilities and their limits",
+            "th": "หน้าที่และขอบเขตของแต่ละส่วน"
+          },
+          "columns": [
+            {
+              "en": "Responsibility",
+              "th": "หน้าที่"
+            },
+            {
+              "en": "What it supplies",
+              "th": "สิ่งที่ให้"
+            },
+            {
+              "en": "Boundary / implication",
+              "th": "ขอบเขต / ความหมาย"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Authenticate at IdP",
+                "th": "ยืนยันตัวตนที่ IdP"
+              },
+              {
+                "en": "Verify control of the bound authenticator",
+                "th": "ตรวจการควบคุมสิ่งยืนยันตัวตนที่ผูกไว้"
+              },
+              {
+                "en": "A username alone is not sufficient evidence.",
+                "th": "Username อย่างเดียวไม่ใช่หลักฐานที่เพียงพอ"
+              }
+            ],
+            [
+              {
+                "en": "Issue assertion",
+                "th": "ออก Assertion"
+              },
+              {
+                "en": "Verifiable statement for the relying application",
+                "th": "ข้อมูลยืนยันที่แอปปลายทางตรวจสอบได้"
+              },
+              {
+                "en": "It is intended for the stated relying party, not every service.",
+                "th": "มีปลายทางที่กำหนด ไม่ใช่ใช้ได้กับทุกบริการ"
+              }
+            ],
+            [
+              {
+                "en": "Validate at application",
+                "th": "ตรวจที่แอป"
+              },
+              {
+                "en": "Check the assertion under the established trust",
+                "th": "ตรวจ Assertion ตามความเชื่อถือที่ตกลงไว้"
+              },
+              {
+                "en": "Do not trust arbitrary supplied identity data.",
+                "th": "ไม่เชื่อข้อมูล Identity ที่ส่งมาโดยไม่มีการตรวจ"
+              }
+            ],
+            [
+              {
+                "en": "Evaluate the request",
+                "th": "ประเมินคำขอ"
+              },
+              {
+                "en": "Apply the rule for this action and resource",
+                "th": "ใช้กฎกับการกระทำและทรัพยากรนี้"
+              },
+              {
+                "en": "Authentication is not blanket authorization.",
+                "th": "การยืนยันตัวตนไม่ใช่การอนุญาตทุกอย่าง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "In this common federation arrangement, the identity provider authenticates the subscriber and issues an assertion: a verifiable statement about that subscriber account to an intended relying application. The relying party validates the assertion under the established trust and relevant checks before establishing its authenticated session. An assertion is not simply a password or an arbitrary username copied from a directory. It conveys authentication information and may convey permitted attributes; it does not automatically grant every application function. The application must apply the authorization rules for the requested resource and action, using its configuration and any relevant policy services. One product may implement more than one of these responsibilities. This introductory flow illustrates roles rather than prescribing a network protocol or a universal product topology. Proofing a person during enrollment, authenticating a sign-in and authorizing report modification answer different questions.",
+            "th": "ในรูปแบบ Federation ที่ใช้เป็นตัวอย่างนี้ Identity provider ยืนยันตัวตนผู้ใช้แล้วออก Assertion คือข้อมูลเกี่ยวกับบัญชีนั้นที่แอปปลายทางตามที่กำหนดตรวจสอบได้ Relying party หรือแอปที่อาศัยข้อมูลนี้ต้องตรวจ Assertion ตามความเชื่อถือและเงื่อนไขที่เกี่ยวข้องก่อนตั้ง Session ที่ยืนยันตัวตนแล้ว Assertion ไม่ใช่เพียง Password หรือ Username ที่คัดจาก Directory ข้อมูลนี้สื่อการยืนยันตัวตนและอาจมีคุณลักษณะที่อนุญาตให้ส่งต่อ แต่ไม่ได้ให้ใช้ทุกความสามารถในแอป แอปยังต้องใช้กฎ Authorization สำหรับทรัพยากรและการกระทำที่ขอ โดยอาศัยการตั้งค่าและบริการนโยบายที่เกี่ยวข้อง ผลิตภัณฑ์เดียวอาจทำมากกว่าหนึ่งหน้าที่ แผนภาพนี้แนะนำบทบาท ไม่ได้บังคับ Protocol หรือโครงสร้างผลิตภัณฑ์แบบเดียว การพิสูจน์บุคคลตอนลงทะเบียน การยืนยันตัวตนเมื่อลงชื่อเข้าใช้ และการอนุญาตแก้รายงานจึงเป็นคนละคำถาม"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "The IdP authenticates in this stated flow.",
+              "th": "IdP ยืนยันตัวตนในรูปแบบที่ระบุนี้"
+            },
+            {
+              "en": "The application validates the intended assertion.",
+              "th": "แอปตรวจ Assertion ที่ส่งถึงตน"
+            },
+            {
+              "en": "The requested action still needs authorization.",
+              "th": "การกระทำที่ขอยังต้องผ่าน Authorization"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Roles shown here can coexist in one product.",
+            "th": "หน้าที่ในภาพอาจอยู่ในผลิตภัณฑ์เดียวกัน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-identity",
+        "nist-federation"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-03-04-governance-and-enforcement",
+      "title": {
+        "en": "Governance decides the grant; enforcement applies the rule.",
+        "th": "การกำกับตัดสินสิทธิ์ การบังคับใช้ตรวจคำขอ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Policy, configured rights and the observed application result must connect.",
+            "th": "นโยบาย สิทธิ์ที่ตั้งค่า และผลที่พบในแอปต้องเชื่อมกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Responsibilities and their limits",
+            "th": "หน้าที่และขอบเขตของแต่ละส่วน"
+          },
+          "columns": [
+            {
+              "en": "Responsibility",
+              "th": "หน้าที่"
+            },
+            {
+              "en": "What it supplies",
+              "th": "สิ่งที่ให้"
+            },
+            {
+              "en": "Boundary / implication",
+              "th": "ขอบเขต / ความหมาย"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Governance and administration",
+                "th": "การกำกับและบริหารสิทธิ์"
+              },
+              {
+                "en": "Define accountable approval, roles and review",
+                "th": "กำหนดผู้อนุมัติ บทบาท และการทบทวนที่รับผิดชอบได้"
+              },
+              {
+                "en": "An access owner is responsible for the decision; the user need not be that owner.",
+                "th": "ผู้รับผิดชอบสิทธิ์ดูแลการตัดสินใจ ผู้ใช้ไม่จำเป็นต้องเป็นผู้รับผิดชอบนั้น"
+              }
+            ],
+            [
+              {
+                "en": "Implementation / automation",
+                "th": "การนำไปใช้ / ระบบอัตโนมัติ"
+              },
+              {
+                "en": "Apply approved settings through supported integration",
+                "th": "ปรับค่าที่อนุมัติผ่านการเชื่อมต่อที่รองรับ"
+              },
+              {
+                "en": "A successful job status is evidence, not a guarantee of every downstream result.",
+                "th": "สถานะงานสำเร็จเป็นหลักฐาน ไม่ใช่การรับประกันผลทุกระบบปลายทาง"
+              }
+            ],
+            [
+              {
+                "en": "Runtime enforcement",
+                "th": "การบังคับใช้เมื่อมีคำขอ"
+              },
+              {
+                "en": "Allow report read; deny report edit under this rule",
+                "th": "อนุญาตอ่านและปฏิเสธแก้รายงานตามกฎนี้"
+              },
+              {
+                "en": "The application or its policy service must apply the configured decision.",
+                "th": "แอปหรือบริการนโยบายต้องนำผลที่กำหนดไปบังคับใช้"
+              }
+            ],
+            [
+              {
+                "en": "Accountability and verification",
+                "th": "ความรับผิดชอบและการตรวจยืนยัน"
+              },
+              {
+                "en": "Connect approval, applied change and observed access",
+                "th": "เชื่อมการอนุมัติ การปรับจริง และสิทธิ์ที่ตรวจพบ"
+              },
+              {
+                "en": "Logs and messages need context; they do not prove all controls succeeded.",
+                "th": "Log และข้อความต้องมีบริบท ไม่ได้พิสูจน์ว่าทุก Control สำเร็จ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Governance establishes who is accountable for access decisions and how need, approval and review are managed. Administration translates those decisions into account, role and application settings. Runtime enforcement applies the policy to an actual request: in this declared example, report reading is allowed and editing is denied. These are complementary responsibilities, not necessarily separate products. The account user may exercise approved access while another person or team owns its business purpose and review; a workload identity likewise needs accountable ownership, as Lessons 1–2 explain. Authorized automation can connect identity-source events to downstream changes, but automation does not guarantee that every integration or application enforced the result. Keep evidence connecting the decision, the configured change and the observed permitted/denied actions. A directory synchronization success or central status change alone is not proof that every application session was revoked; use Lesson 2’s removal verification rather than repeat its workflow here.",
+            "th": "การกำกับกำหนดว่าใครรับผิดชอบการตัดสินสิทธิ์ และจัดการความจำเป็น การอนุมัติ และการทบทวนอย่างไร การบริหารนำผลตัดสินไปตั้งค่าบัญชี Role และแอป ส่วนการบังคับใช้ตรวจคำขอจริง ในตัวอย่างที่ประกาศกฎไว้ อนุญาตอ่านรายงานแต่ปฏิเสธแก้ไข ทั้งหมดเป็นหน้าที่ที่เสริมกัน ไม่จำเป็นต้องเป็นคนละผลิตภัณฑ์ ผู้ใช้บัญชีอาจใช้สิทธิ์ที่อนุมัติ โดยมีอีกคนหรือทีมรับผิดชอบวัตถุประสงค์ทางธุรกิจและการทบทวน บัญชีระบบงานก็ต้องมีผู้รับผิดชอบตามที่ Lessons 1–2 อธิบาย ระบบอัตโนมัติที่ได้รับอนุญาตช่วยเชื่อมเหตุการณ์จากแหล่ง Identity ไปปรับระบบปลายทางได้ แต่ข้อความว่างานอัตโนมัติสำเร็จไม่ได้รับประกันว่าทุกการเชื่อมต่อหรือแอปบังคับใช้ผลแล้ว ควรเก็บหลักฐานเชื่อมการตัดสินใจ การตั้งค่าที่ปรับ และการกระทำที่ตรวจว่าอนุญาตหรือปฏิเสธ การซิงก์ Directory สำเร็จหรือเปลี่ยนสถานะกลางเพียงอย่างเดียวไม่ได้พิสูจน์ว่า Session ทุกแอปถูกเพิกถอนแล้ว ให้ใช้การตรวจผลการถอนใน Lesson 2 โดยไม่ต้องเรียนขั้นตอนเดิมซ้ำทั้งชุดในบทนี้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Who is accountable for the access decision?",
+              "th": "ใครรับผิดชอบการตัดสินสิทธิ์?"
+            },
+            {
+              "en": "Which settings implement that decision?",
+              "th": "ค่าใดนำผลตัดสินไปใช้?"
+            },
+            {
+              "en": "What does the application actually permit?",
+              "th": "แอปอนุญาตอะไรได้จริง?"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A recorded decision and an enforced outcome are different kinds of evidence.",
+            "th": "บันทึกผลตัดสินกับผลบังคับใช้เป็นหลักฐานคนละอย่าง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-csf",
+        "nist-federation"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-03-05-sso-with-access-boundaries",
+      "title": {
+        "en": "One sign-in can support apps with different permissions.",
+        "th": "ลงชื่อเข้าใช้ครั้งเดียว แต่สิทธิ์แต่ละแอปต่างกันได้"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Declared policy: Mina may read reports; payroll administration is not approved.",
+            "th": "นโยบายตัวอย่าง: Mina อ่านรายงานได้ แต่ไม่ได้รับอนุมัติให้ดูแล Payroll"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Responsibilities and their limits",
+            "th": "หน้าที่และขอบเขตของแต่ละส่วน"
+          },
+          "columns": [
+            {
+              "en": "Responsibility",
+              "th": "หน้าที่"
+            },
+            {
+              "en": "What it supplies",
+              "th": "สิ่งที่ให้"
+            },
+            {
+              "en": "Boundary / implication",
+              "th": "ขอบเขต / ความหมาย"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "IdP sign-in",
+                "th": "ลงชื่อเข้าใช้ที่ IdP"
+              },
+              {
+                "en": "An authenticated session supports federation transactions",
+                "th": "Session ที่ยืนยันตัวตนแล้วรองรับการส่งข้อมูล Federation"
+              },
+              {
+                "en": "SSO reduces repeated sign-ins; it is not universal permission.",
+                "th": "SSO ลดการลงชื่อซ้ำ ไม่ใช่สิทธิ์ใช้ทุกอย่าง"
+              }
+            ],
+            [
+              {
+                "en": "Reporting application",
+                "th": "แอปรายงาน"
+              },
+              {
+                "en": "Assertion intended for reporting → validate → allow report read",
+                "th": "Assertion สำหรับแอปรายงาน → ตรวจ → อนุญาตอ่าน"
+              },
+              {
+                "en": "Allowed because this action is approved under the stated rule.",
+                "th": "อนุญาตเพราะการกระทำนี้ได้รับอนุมัติตามกฎที่ระบุ"
+              }
+            ],
+            [
+              {
+                "en": "Payroll application",
+                "th": "แอป Payroll"
+              },
+              {
+                "en": "Assertion intended for payroll → validate → deny administration",
+                "th": "Assertion สำหรับ Payroll → ตรวจ → ปฏิเสธการดูแลระบบ"
+              },
+              {
+                "en": "Authentication does not create the missing administration grant.",
+                "th": "การยืนยันตัวตนไม่ได้สร้างสิทธิ์ดูแลระบบที่ไม่มี"
+              }
+            ],
+            [
+              {
+                "en": "Separate application sessions",
+                "th": "Session ของแต่ละแอป"
+              },
+              {
+                "en": "Manage sessions through the supported integration",
+                "th": "จัดการ Session ด้วยการเชื่อมต่อที่รองรับ"
+              },
+              {
+                "en": "Central sign-out does not necessarily end every independently managed session.",
+                "th": "ออกจากระบบกลางไม่ได้แปลว่า Session ที่แยกจัดการทุกตัวจบด้วย"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Single Sign-On reduces the need to repeat authentication at each participating application. In this authored example an IdP session supports separate federation transactions for reporting and payroll. Each application receives an assertion intended for that relying party and validates it; this is not one universal credential to copy into unrelated services. The report-read request is permitted by the stated rule, while payroll administration remains denied because Mina lacks that approved permission. Successful authentication at payroll would not change that authorization result. Federation concerns the trust and exchange of verifiable authentication information; SSO describes the reduced repeated sign-in experience. Integrations and policy determine the actual behavior. Applications may manage independent sessions, and central sign-out does not necessarily terminate them all; supported coordination can exist. Lesson 2 explains withdrawal verification. No SAML/OIDC message sequence, universal logout promise or vendor installation requirement is introduced here.",
+            "th": "Single Sign-On ช่วยลดการยืนยันตัวตนซ้ำในแอปที่ร่วมระบบ ในตัวอย่างที่แต่งนี้ Session ที่ IdP รองรับการส่งข้อมูล Federation แยกสำหรับแอปรายงานและ Payroll แต่ละแอปรับ Assertion ที่ส่งถึงตนแล้วตรวจสอบ ไม่ใช่ข้อมูลรับรองสากลก้อนเดียวให้คัดไปใช้กับบริการอื่น คำขออ่านรายงานได้รับอนุญาตตามกฎที่ระบุ แต่คำขอดูแล Payroll ถูกปฏิเสธเพราะ Mina ไม่มีสิทธิ์นั้นที่อนุมัติไว้ แม้ยืนยันตัวตนที่ Payroll สำเร็จก็ไม่ได้เปลี่ยนผล Authorization นี้ Federation เกี่ยวกับความเชื่อถือและการแลกข้อมูลยืนยันตัวตนที่ตรวจได้ ส่วน SSO อธิบายประสบการณ์ที่ลดการลงชื่อซ้ำ พฤติกรรมจริงขึ้นกับการเชื่อมต่อและนโยบาย แอปอาจมี Session ที่จัดการแยกกัน และออกจากระบบกลางไม่ได้แปลว่าทุก Session ต้องจบด้วยเสมอ แม้บางระบบรองรับการประสานยุติ Session ได้ Lesson 2 อธิบายการตรวจผลการถอนแล้ว บทนี้ไม่เพิ่มลำดับข้อความ SAML/OIDC คำรับประกัน Logout ทุกระบบ หรือข้อบังคับให้ติดตั้งผลิตภัณฑ์ใด"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Use a separate intended assertion for each app.",
+              "th": "ใช้ Assertion ที่มีแอปปลายทางตามที่กำหนด"
+            },
+            {
+              "en": "Validate authentication and evaluate permission.",
+              "th": "ตรวจข้อมูลยืนยันตัวตนและประเมินสิทธิ์"
+            },
+            {
+              "en": "Verify session behavior instead of assuming it.",
+              "th": "ตรวจพฤติกรรม Session แทนการสมมติ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Fewer sign-ins ≠ unrestricted access or guaranteed global logout.",
+            "th": "ลงชื่อน้อยลง ≠ สิทธิ์ทุกอย่างหรือรับประกัน Logout ทุกระบบ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-federation"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-03-06-tool-responsibility-decision",
+      "title": {
+        "en": "Choose the function that supplies the evidence you need.",
+        "th": "เลือกหน้าที่ที่ให้หลักฐานตรงกับสิ่งที่ต้องใช้"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A federated reporting app needs verifiable sign-in information for this user. It already has its access rules.",
+            "th": "แอปรายงานแบบ Federation ต้องการข้อมูลยืนยันการลงชื่อเข้าใช้ของผู้ใช้นี้ที่ตรวจได้ และมีกฎสิทธิ์ของตนอยู่แล้ว"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Responsibilities and their limits",
+            "th": "หน้าที่และขอบเขตของแต่ละส่วน"
+          },
+          "columns": [
+            {
+              "en": "Responsibility",
+              "th": "หน้าที่"
+            },
+            {
+              "en": "What it supplies",
+              "th": "สิ่งที่ให้"
+            },
+            {
+              "en": "Boundary / implication",
+              "th": "ขอบเขต / ความหมาย"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Framework guidance",
+                "th": "แนวทาง Framework"
+              },
+              {
+                "en": "Use a NIST framework document as the sign-in evidence.",
+                "th": "ใช้เอกสาร Framework ของ NIST เป็นหลักฐานการลงชื่อ"
+              },
+              {
+                "en": "Guidance helps design the service; it does not attest to this sign-in event.",
+                "th": "แนวทางช่วยออกแบบบริการ แต่ไม่ได้รับรองเหตุการณ์ลงชื่อครั้งนี้"
+              }
+            ],
+            [
+              {
+                "en": "Directory lookup",
+                "th": "ค้นระเบียน Directory"
+              },
+              {
+                "en": "Accept the username’s presence in a directory as proof.",
+                "th": "ยอมรับว่ามี Username ใน Directory เป็นหลักฐาน"
+              },
+              {
+                "en": "A record’s existence does not prove that this requester authenticated.",
+                "th": "มีระเบียนไม่ได้พิสูจน์ว่าผู้ขอนี้ผ่านการยืนยันตัวตน"
+              }
+            ],
+            [
+              {
+                "en": "Identity provider responsibility",
+                "th": "หน้าที่ของ Identity provider"
+              },
+              {
+                "en": "Use an IdP assertion intended for this app and validate it.",
+                "th": "ใช้ Assertion จาก IdP ที่ส่งถึงแอปนี้แล้วตรวจสอบ"
+              },
+              {
+                "en": "The IdP supplies verifiable authentication information. The app must validate it and still apply its access rules.",
+                "th": "IdP ให้ข้อมูลยืนยันตัวตนที่ตรวจได้ แอปต้องตรวจข้อมูลนั้นและยังต้องใช้กฎสิทธิ์ของตน"
+              }
+            ],
+            [
+              {
+                "en": "Access review decision",
+                "th": "ผลทบทวนสิทธิ์"
+              },
+              {
+                "en": "Treat an approved access-review record as current sign-in proof.",
+                "th": "ถือบันทึก Review ที่อนุมัติสิทธิ์เป็นหลักฐานการลงชื่อครั้งนี้"
+              },
+              {
+                "en": "A review establishes continuing need or a decision, not proof of this authentication event.",
+                "th": "Review บอกความจำเป็นหรือผลตัดสินสิทธิ์ ไม่ใช่หลักฐาน Authentication ครั้งนี้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This authored scenario states that the reporting application uses federation and already has authorization rules. Its immediate need is verifiable authentication information about the current user. The IdP responsibility supplies an assertion intended for this application; the application must validate it under the established trust before relying on it and must still apply its own access rules. A framework document describes practice rather than this sign-in event. A directory record shows account data but does not prove the current requester authenticated. An approved access review concerns entitlement need and cannot replace authentication evidence. These choices compare responsibilities, not four brands or necessarily four separate products. A combined platform may supply the directory, IdP and governance functions, but the application still needs the correct evidence and checks. All four reasons are available in Reading and Info. Select a choice to inspect its reasoning, then Reset to reconsider.",
+            "th": "สถานการณ์ที่แต่งนี้ระบุว่าแอปรายงานใช้ Federation และมีกฎ Authorization อยู่แล้ว สิ่งที่ต้องการตอนนี้คือข้อมูลยืนยันตัวตนของผู้ใช้ปัจจุบันที่ตรวจสอบได้ หน้าที่ของ IdP คือให้ Assertion ที่ส่งถึงแอปนี้ แอปต้องตรวจตามความเชื่อถือที่กำหนดก่อนนำไปใช้ และยังต้องบังคับใช้กฎสิทธิ์ของตน เอกสาร Framework อธิบายแนวปฏิบัติ ไม่ได้บอกเหตุการณ์ลงชื่อครั้งนี้ ระเบียน Directory แสดงข้อมูลบัญชี แต่ไม่ได้พิสูจน์ว่าผู้ขอปัจจุบันยืนยันตัวตนแล้ว ส่วนผล Review ที่อนุมัติเป็นเรื่องความจำเป็นของสิทธิ์ ไม่อาจแทนหลักฐาน Authentication ตัวเลือกเหล่านี้เทียบหน้าที่ ไม่ใช่สี่ยี่ห้อหรือสี่ผลิตภัณฑ์ที่ต้องแยกกัน แพลตฟอร์มเดียวอาจมี Directory, IdP และการกำกับสิทธิ์ แต่แอปยังต้องใช้หลักฐานและการตรวจที่ตรงหน้าที่ Reading และ Info มีเหตุผลครบทั้งสี่ข้อ เลือกเพื่ออ่านเหตุผลแล้วใช้ Reset เมื่อจะพิจารณาใหม่"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the evidence needed now.",
+              "th": "ระบุหลักฐานที่ต้องใช้ตอนนี้"
+            },
+            {
+              "en": "Choose a responsibility, not a brand.",
+              "th": "เลือกหน้าที่ ไม่ใช่ยี่ห้อ"
+            },
+            {
+              "en": "Authentication evidence does not replace authorization.",
+              "th": "หลักฐาน Authentication ไม่ได้แทน Authorization"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "An authored function-choice scenario; no vendor requirement.",
+            "th": "สถานการณ์แต่งเพื่อเลือกหน้าที่ ไม่บังคับผู้ขาย"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-federation",
+        "nist-csf"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-3-lesson-3-implementation-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — assistant technical/editorial review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — assistant technical/editorial review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — assistant technical/editorial review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    }
+  }
+}

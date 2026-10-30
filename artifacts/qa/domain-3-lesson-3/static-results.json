@@ -1,0 +1,43 @@
+[
+  {
+    "command": [
+      "node",
+      "--check",
+      "js/ui/learning/iam-frameworks-tools-presentations.js"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "node",
+      "--check",
+      "tools/verify-learning-d3-frameworks-tools.mjs"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "node",
+      "--check",
+      "tools/verify-learning-d3-integration.mjs"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "--",
+      "index.html",
+      "js/ui/learning/renderers.js",
+      "js/ui/learning/lesson-info.js",
+      "content/isc2-cc-2026/learning/published/catalog.json"
+    ],
+    "exit": 0,
+    "output": "warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it\n"
+  }
+]

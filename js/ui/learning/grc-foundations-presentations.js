@@ -38,9 +38,9 @@ const HEADINGS = {
 
 const CHOICES = [
  pair('Buy more tools; let each team set its own rules.','ซื้อเครื่องมือเพิ่ม แล้วให้แต่ละทีมตั้งกฎเอง'),
- pair('Treat ISO certification as universal law; stop operating until certified.','ถือว่า ISO certification เป็นกฎหมายบังคับทุกบริษัท แล้วหยุดบริการจนกว่าจะได้ใบรับรอง'),
+ pair('Enforce endpoint security tools before setting governance policies.','บังคับติดตั้ง Endpoint Tools ก่อนกำหนดนโยบายกำกับดูแล'),
  pair('Set shared direction and owners; align risks, obligations and ISMS work.','กำหนดทิศทางและเจ้าภาพร่วมกัน แล้วประสาน Risk ข้อกำหนด และงาน ISMS'),
- pair('Complete one IT checklist; declare the risk permanently eliminated.','ให้ IT ทำ Checklist ครั้งเดียว แล้วถือว่าไม่มี Risk อีกต่อไป')
+ pair('Pass one compliance audit; treat risk as permanently eliminated.','ตรวจผ่าน Compliance ครั้งเดียว แล้วถือว่าไร้ความเสี่ยงถาวร')
 ];
 
 const TOOL_FIRST_REASON=pair(
@@ -76,22 +76,41 @@ export function renderGrcFoundationsPresentation(host,context) {
   map.append(goal,roles);main.append(map);
   note(pair('GRC connects these perspectives; they inform the same business decision.','GRC เชื่อมทั้งสามด้าน เพื่อใช้ตัดสินใจเรื่องธุรกิจเดียวกัน'));
  } else if(kind==='evidence-reuse') {
+  const container=element(doc,'div','grf-evidence-container');
+  const purposesStrip=element(doc,'div','grf-purposes-strip');
+  const pHeader=element(doc,'h4','grf-strip-title');
+  localize(pHeader,pair('7 Connected Purposes of GRC','7 วัตถุประสงค์หลักที่ประสานกันของ GRC'),language);
+  const pList=element(doc,'div','grf-purposes-pills');
+  const purposes=[
+    pair('1. Align with business goals','1. จัดแนวกับเป้าหมายธุรกิจ'),
+    pair('2. Identify & manage risks','2. ชี้และจัดการความเสี่ยง'),
+    pair('3. Meet legal obligations','3. ปฏิบัติตามกฎหมาย/เกณฑ์'),
+    pair('4. Consistent policies & controls','4. นโยบายและมาตรการร่วม'),
+    pair('5. Improve accountability','5. ความรับผิดชอบชัดเจน'),
+    pair('6. Informed decision-making','6. ตัดสินใจอย่างมีข้อมูล'),
+    pair('7. Reduce duplicated effort','7. ลดการทำงานซ้ำซ้อน')
+  ];
+  for(const p of purposes){const pill=element(doc,'span','grf-purpose-pill');localize(pill,p,language);pList.append(pill);}
+  purposesStrip.append(pHeader,pList);
+
   const compare=element(doc,'div','grf-review-comparison');
   const before=element(doc,'section','grf-separate');
-  before.append(put('h4','grf-term',pair('Separate requests','ต่างทีมต่างขอหลักฐาน')));
+  before.append(put('h4','grf-term',pair('Separate requests (Fragmented)','การขอหลักฐานแบบแยกส่วน')));
   const copies=element(doc,'div','grf-separate-reviews');
   for(const team of [pair('Security team','ทีม Security'),pair('Internal audit','ผู้ตรวจสอบภายใน'),pair('Bank partner','คู่ค้าธนาคาร')]){
    const row=element(doc,'div','grf-review-copy');row.append(put('strong','grf-copy',team),put('p','grf-note',pair('Collect another access review.','รวบรวม Access review อีกชุด')));copies.append(row);
   }
-  before.append(copies,put('p','grf-copy',pair('Repeated work. Conflicting copies.','ทำงานซ้ำ และเสี่ยงได้ข้อมูลคนละชุด')));
+  before.append(copies,put('p','grf-copy',pair('Repeated work · Inconsistent data','เกิดงานซ้ำซ้อน และเสี่ยงได้ข้อมูลที่ไม่ตรงกัน')));
   const after=element(doc,'section','grf-shared');
-  after.append(put('h4','grf-term',pair('A coordinated access review','ทบทวนสิทธิ์อย่างประสานกัน')));
+  after.append(put('h4','grf-term',pair('Coordinated access review','การทบทวนสิทธิ์ที่ประสานงานร่วมกัน')));
   const record=element(doc,'div','grf-evidence-record');
   record.append(put('h5','grf-record-title',pair('Shared access-review evidence','หลักฐาน Access review ชุดเดียวกัน')),
    put('p','grf-copy',pair('One consistent policy. A named owner. Verified results.','ใช้นโยบายเดียวกัน มีเจ้าของงาน และตรวจผลแล้ว')));
-  after.append(record,put('p','grf-copy',pair('Reuse the relevant evidence across teams and obligations.','นำหลักฐานที่เกี่ยวข้องไปใช้ร่วมกันระหว่างทีมและข้อกำหนด')));
-  compare.append(before,arrow(),after);main.append(compare);
-  note(pair('The purpose is coordinated decisions and less duplication—not more paperwork.','จุดประสงค์คือประสานการตัดสินใจและลดงานซ้ำ ไม่ใช่เพิ่มเอกสาร'));
+  after.append(record,put('p','grf-copy',pair('Reuse relevant evidence across all teams and obligations.','นำหลักฐานที่เกี่ยวข้องไปใช้ร่วมกันระหว่างทีมและข้อกำหนด')));
+  compare.append(before,arrow(),after);
+  container.append(purposesStrip,compare);
+  main.append(container);
+  note(pair('The primary purpose of GRC is coordinated decisions and less duplication—not more paperwork.','จุดประสงค์หลักคือประสานการตัดสินใจและลดงานซ้ำซ้อน ไม่ใช่เพิ่มภาระเอกสาร'));
  } else if(kind==='breakdown-remedy') {
   const table=element(doc,'div','grf-remedy-table');
   const head=element(doc,'div','grf-remedy-head');head.append(put('h4','grf-term',pair('Without coordination','เมื่อขาดการประสานงาน')),put('h4','grf-term',pair('With effective GRC','เมื่อมี GRC ที่ทำงานได้ผล')));table.append(head);

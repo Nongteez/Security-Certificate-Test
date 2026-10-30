@@ -1,0 +1,36 @@
+import fs from 'node:fs';
+const qa='artifacts/qa/domain-3-lesson-3',key='sec_cert_learning_progress_v1',id='lesson-d3-03-iam-frameworks-tools';
+export async function checkNavigation({send,evaluate,screenshot,sleep}){
+ const click=async s=>{const found=await evaluate(`(()=>{const n=document.querySelector(${JSON.stringify(s)});if(!n)return false;n.focus();n.click();return true;})()`);if(!found)throw Error('Missing UI '+s);await sleep(280);};
+ const press=async(key,code,vk)=>{await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode:vk});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode:vk});await sleep(180);};
+ const saved=()=>evaluate(`JSON.parse(localStorage.getItem('${key}'))`);
+ const toCenter=async()=>{await click('[data-action="back-domain"]');await click('#btn-domain-back');};
+ const launch=async(domain,lessonId)=>{await click(`#learning-domain-${domain}`);if(await evaluate(`!!document.querySelector('#learning-objective-lesson')`))await evaluate(`(()=>{const s=document.querySelector('#learning-objective-lesson');s.value='${lessonId}';s.dispatchEvent(new Event('change',{bubbles:true}));})()`);await click('#btn-start-learning');};
+ if(await evaluate(`document.querySelector('[data-view]').getAttribute('data-view')==='reading'`))await click('[data-action="reading"]');
+ await toCenter();await launch(1,'lesson-d1-01-cia-triad');await click('[data-action="next"]');await click('[data-action="next"]');await toCenter();
+ await launch(2,'lesson-d2-01-grc-foundations');await click('[data-action="next"]');await toCenter();
+ const before=await saved();await launch(3,'lesson-d3-01-roles-provisioning');await click('[data-action="next"]');await click('[data-action="next"]');await toCenter();const lesson1Before=(await saved()).lessons['lesson-d3-01-roles-provisioning'];await launch(3,'lesson-d3-02-review-deprovisioning');for(let i=0;i<3;i++)await click('[data-action="next"]');await toCenter();const lesson2Before=(await saved()).lessons['lesson-d3-02-review-deprovisioning'];await launch(3,id);await click('[data-action="slides"]');await click('[data-slide-id="slide-d3-03-05-sso-with-access-boundaries"]');
+ await evaluate(`document.querySelector('.presentation-workspace').focus()`);await press('ArrowLeft','ArrowLeft',37);
+ const left=(await saved()).lessons[id].lastSlideId;if(left!=='slide-d3-03-04-governance-and-enforcement')throw Error('Keyboard left failed');
+ await press('ArrowRight','ArrowRight',39);const position=(await saved()).lessons[id].lastSlideId;
+ if(position!=='slide-d3-03-05-sso-with-access-boundaries')throw Error('Keyboard right failed');
+ await screenshot('before-reload-S5.png');const preReload=await saved();
+ await send('Page.reload',{ignoreCache:true});await sleep(600);
+ await evaluate(`[...document.querySelectorAll('button')].find(x=>x.innerText.includes('Open Certification')).click()`);await sleep(200);
+ await evaluate(`[...document.querySelectorAll('button')].find(x=>x.innerText.includes('Learning →')).click()`);await sleep(550);
+ await screenshot('continue-learning-after-reload.png');await click('[data-action="continue-learning"]');
+ const resumed=await evaluate(`document.querySelector('[data-iam-frameworks-composition]')?.getAttribute('data-iam-frameworks-composition')`);
+ if(resumed!=='sso-with-access-boundaries')throw Error('Resume did not open saved slide directly');
+ const after=await saved(),others=['lesson-d1-01-cia-triad','lesson-d2-01-grc-foundations'];
+ for(const other of others)if(JSON.stringify(after.lessons[other])!==JSON.stringify(before.lessons[other]))throw Error('Other lesson progress changed '+other);
+ if(JSON.stringify(after.lessons['lesson-d3-01-roles-provisioning'])!==JSON.stringify(lesson1Before))throw Error('Lesson 1 progress changed');if(JSON.stringify(after.lessons['lesson-d3-02-review-deprovisioning'])!==JSON.stringify(lesson2Before))throw Error('Lesson 2 progress changed');if(after.schemaVersion!==1)throw Error('Progress schema changed');
+ await screenshot('resumed-S5.png');await click('[data-action="lesson-info"]');await press('Escape','Escape',27);
+ const infoEscape=await evaluate(`!document.querySelector('.learning-info-overlay')&&document.activeElement.getAttribute('data-action')==='lesson-info'`);
+ if(!infoEscape)throw Error('Info Escape/focus failed');
+ await click('[data-action="back-domain"]');const objective=await evaluate(`({selected:document.querySelector('#learning-objective-3-1').getAttribute('aria-checked'),later:document.querySelector('#learning-objective-3-2').getAttribute('aria-disabled'),lesson:document.querySelector('#btn-start-learning').getAttribute('data-lesson-id')})`);
+ await screenshot('domain-after-resume.png');await click('#btn-start-learning');
+ const directDomainResume=await evaluate(`document.querySelector('[data-iam-frameworks-composition]')?.getAttribute('data-iam-frameworks-composition')`);
+ if(directDomainResume!=='sso-with-access-boundaries')throw Error('Domain Start did not resume directly');
+ const result={lesson2Before,lesson2After:after.lessons['lesson-d3-02-review-deprovisioning'],lesson1Before,lesson1After:after.lessons['lesson-d3-01-roles-provisioning'],keyboardLeft:left,keyboardRight:position,preReload,afterReload:after,independentLessonIds:others,centerResume:resumed,directDomainResume,infoEscape,objective};
+ fs.writeFileSync(`${qa}/navigation-progress.json`,JSON.stringify(result,null,2));return result;
+}

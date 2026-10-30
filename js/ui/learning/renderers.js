@@ -1,3 +1,7 @@
+import {hasDomain3LogicalPresentation,renderDomain3LogicalPresentation} from './domain3-logical-presentations.js';
+import {hasIamFrameworksToolsPresentation,renderIamFrameworksToolsPresentation} from './iam-frameworks-tools-presentations.js';
+import {hasIamReviewDeprovisioningPresentation,renderIamReviewDeprovisioningPresentation} from './iam-review-deprovisioning-presentations.js';
+import {hasIamRolesProvisioningPresentation,renderIamRolesProvisioningPresentation} from './iam-roles-provisioning-presentations.js';
 import {hasSecurityReportingPresentation,renderSecurityReportingPresentation} from './security-reporting-presentations.js';
 import {hasSecurityMetricsPresentation,renderSecurityMetricsPresentation} from './security-metrics-presentations.js';
 import {hasSocialPasswordsPresentation,renderSocialPasswordsPresentation} from './social-engineering-passwords-presentations.js';
@@ -80,6 +84,18 @@ export function renderSlide(host, context) {
   host.setAttribute('data-layout', context.slide.layoutId || 'default');
   host.setAttribute('data-renderer', context.slide.rendererId || 'text');
   const heading = localize(element(host.ownerDocument, 'h2', 'learning-slide-title'), context.slide.title, context.language); host.append(heading);
+  const d3Logical = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasDomain3LogicalPresentation(context);
+  host.classList.toggle('learning-d3-logical-slide',Boolean(d3Logical));
+  if (d3Logical) heading.classList.add('learning-sr-only');
+  const iamFrameworks = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasIamFrameworksToolsPresentation(context);
+  host.classList.toggle('learning-iam-frameworks-slide',Boolean(iamFrameworks));
+  if (iamFrameworks) heading.classList.add('learning-sr-only');
+  const iamReview = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasIamReviewDeprovisioningPresentation(context);
+  host.classList.toggle('learning-iam-review-slide',Boolean(iamReview));
+  if (iamReview) heading.classList.add('learning-sr-only');
+  const iamProvisioning = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasIamRolesProvisioningPresentation(context);
+  host.classList.toggle('learning-iam-provisioning-slide',Boolean(iamProvisioning));
+  if (iamProvisioning) heading.classList.add('learning-sr-only');
   const isIntro = context.slide.layoutId === 'hero-intro' || context.slide.rendererId === 'hero-intro';
   const editorial = isIntro && (context.mode !== 'reading' || host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches);
   const cia = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasCiaPresentation(context);
@@ -135,7 +151,15 @@ export function renderSlide(host, context) {
   const fallback = () => { if (!abort.signal.aborted) { body.replaceChildren(); blocks(body, { ...args, slide: getSemanticSlide(), mode: 'reading' }); } };
   const custom = registry.get(context.slide.rendererId);
 
-  if (d2SecurityReporting) {
+  if (d3Logical) {
+    const handle=renderDomain3LogicalPresentation(body,args); cleanup=()=>handle?.destroy?.();
+  } else if (iamFrameworks) {
+    const handle=renderIamFrameworksToolsPresentation(body,args); cleanup=()=>handle?.destroy?.();
+  } else if (iamReview) {
+    const handle=renderIamReviewDeprovisioningPresentation(body,args); cleanup=()=>handle?.destroy?.();
+  } else if (iamProvisioning) {
+    const handle=renderIamRolesProvisioningPresentation(body,args); cleanup=()=>handle?.destroy?.();
+  } else if (d2SecurityReporting) {
     const handle=renderSecurityReportingPresentation(body,args); cleanup=()=>handle?.destroy?.();
   } else if (d2SecurityMetrics) {
     const handle=renderSecurityMetricsPresentation(body,args); cleanup=()=>handle?.destroy?.();

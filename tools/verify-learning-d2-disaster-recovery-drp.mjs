@@ -363,7 +363,7 @@ test('6. Catalog publication, Objective 2.2 Lesson 3 & Lesson 4 selector, indepe
   assert.equal(validateCatalog(catalog).valid, true);
 
   const d2 = catalog.domains.find(d => d.id === 2);
-  assert.equal(d2.status, 'in-preparation', 'Domain 2 curriculum remains in-preparation while Objectives 2.3-2.4 are Coming Soon');
+  assert.equal(d2.status, 'published', 'All four Domain 2 objectives have reviewed published lessons');
   const [obj21, obj22, obj23, obj24] = d2.objectives;
   assert.equal(obj21.lessons.length, 2);
   assert.equal(obj22.lessons.length, 2);
@@ -372,8 +372,10 @@ test('6. Catalog publication, Objective 2.2 Lesson 3 & Lesson 4 selector, indepe
   assert.equal(obj22.lessons[1].id, 'lesson-d2-04-disaster-recovery-drp');
   assert.equal(obj22.lessons[1].status, 'published');
   assert.equal(obj22.lessons[1].lessonPath, 'lessons/lesson-d2-04-disaster-recovery-drp.json');
-  assert.equal(obj23.status, 'coming-soon');
-  assert.equal(obj24.status, 'coming-soon');
+  assert.equal(obj23.status, 'published');
+  assert.equal(obj23.lessons.filter(l=>l.status==='published').length, 2);
+  assert.equal(obj24.status, 'published');
+  assert.equal(obj24.lessons.filter(l=>l.status==='published').length, 2);
 
   const { loadCatalog, loadLesson } = createDiskLoaders();
   const storage = createMemoryStorage();

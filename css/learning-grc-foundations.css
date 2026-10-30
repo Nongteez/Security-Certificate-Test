@@ -3,7 +3,7 @@
  container-type:inline-size; padding:0; background:#fff; color:#152d47; overflow:visible;
 }
 .learning-viewer .learning-grc-foundations-slide > .learning-slide-body {display:flex;height:100%;min-height:0;gap:0;}
-.learning-grc-foundations-slide .grf-scene {box-sizing:border-box;display:grid;grid-template-rows:auto minmax(0,1fr);width:100%;height:100%;padding:3.3cqw 4.2cqw;gap:2.2cqw;background:#fff;color:#152d47;}
+.learning-grc-foundations-slide .grf-scene {box-sizing:border-box;display:grid;grid-template-rows:auto minmax(0,1fr);width:100%;max-width:var(--d2-canvas-max-width, 1400px);margin:0 auto;height:100%;padding:3.3cqw 4.2cqw;gap:2.2cqw;background:#fff;color:#152d47;}
 .learning-grc-foundations-slide .grf-scene * {box-sizing:border-box;}
 .learning-grc-foundations-slide .grf-header,.learning-grc-foundations-slide .grf-main {min-width:0;min-height:0;}
 .learning-grc-foundations-slide .grf-title {margin:0;color:#11263b;font-size:clamp(30px,3.1cqw,55px);font-weight:750;line-height:1.25;letter-spacing:-.025em;}
@@ -23,8 +23,13 @@
 .learning-grc-foundations-slide .grf-role {position:relative;}
 .learning-grc-foundations-slide .grf-role::before {content:'';position:absolute;left:-3cqw;top:1.3cqw;width:2.1cqw;border-top:2px solid #a7c1da;}
 .learning-grc-foundations-slide .grf-goal::after {content:'';position:absolute;right:-5cqw;top:50%;width:5cqw;border-top:2px solid #a7c1da;}
-/* One concrete coordination example replaces seven dense list items and an invented taxonomy. */
-.learning-grc-foundations-slide .grf-review-comparison {display:grid;grid-template-columns:1fr .14fr 1.05fr;gap:2cqw;align-items:center;flex:1;}
+/* Slide 2: 7 purposes strip + concrete coordination evidence */
+.learning-grc-foundations-slide .grf-evidence-container {display:flex;flex-direction:column;gap:1.6cqw;flex:1;justify-content:center;}
+.learning-grc-foundations-slide .grf-purposes-strip {background:#f0f7fe;border:1px solid #bfdbfe;border-radius:6px;padding:1.1cqw 1.5cqw;}
+.learning-grc-foundations-slide .grf-strip-title {margin:0 0 .7cqw;color:#1e40af;font-size:clamp(16px,1.4cqw,24px);font-weight:700;line-height:1.3;}
+.learning-grc-foundations-slide .grf-purposes-pills {display:flex;flex-wrap:wrap;gap:.6cqw;}
+.learning-grc-foundations-slide .grf-purpose-pill {background:#ffffff;border:1px solid #93c5fd;color:#1e3a8a;border-radius:4px;padding:.4cqw .9cqw;font-size:clamp(13px,1.05cqw,17px);font-weight:600;line-height:1.35;box-shadow:0 1px 3px rgba(30,58,138,0.06);}
+.learning-grc-foundations-slide .grf-review-comparison {display:grid;grid-template-columns:1fr .14fr 1.05fr;gap:2cqw;align-items:center;}
 .learning-grc-foundations-slide :is(.grf-separate,.grf-shared) {display:flex;flex-direction:column;gap:1.3cqw;}
 .learning-grc-foundations-slide .grf-separate-reviews {display:grid;gap:.7cqw;}
 .learning-grc-foundations-slide .grf-review-copy {border-left:2px solid #c7d2df;padding:.7cqw 1.2cqw;}

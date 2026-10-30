@@ -14,7 +14,12 @@ export function hasGrcToolsRiskRegisterPresentation({lesson,slide}={}){
  return Boolean(lesson?.id===LESSON_ID&&spec&&b?.length===5&&b[0]?.kind==='text'&&b[1]?.kind==='table'&&b[2]?.kind==='text'&&b[3]?.kind==='list'&&b[4]?.kind==='text'&&b[1].columns?.length===spec[2]&&Array.isArray(b[1].rows)&&b[1].rows.length===spec[1]&&b[1].rows.every(r=>Array.isArray(r)&&r.length===spec[2]));
 }
 const pair=(en,th)=>({en,th});
-const CHOICES=[pair('Keep the finding in separate team spreadsheets.','เก็บผลประเมินไว้ใน Spreadsheet แยกตามทีม'),pair('Install controls; delete the record as zero risk.','ติดตั้ง Controls แล้วลบรายการเพราะถือว่า Risk เป็นศูนย์'),pair('Record the risk, name the IT Manager and track treatment plus remaining risk.','บันทึก Risk ระบุ IT Manager เป็น Owner และติดตามแผนกับความเสี่ยงคงเหลือ'),pair('Report 4 × 4 as $16,000; make the owner configure every control alone.','รายงาน 4 × 4 เป็นเงิน 16,000 ดอลลาร์ แล้วให้ Owner ตั้งค่าทุก Control คนเดียว')];
+const CHOICES=[
+  pair('Keep the finding in separate team spreadsheets.','เก็บผลประเมินไว้ใน Spreadsheet แยกตามทีม'),
+  pair('Install controls; delete the record as zero risk.','ติดตั้ง Controls แล้วลบรายการเพราะถือว่า Risk เป็นศูนย์'),
+  pair('Record the risk, name the IT Manager and track treatment plus remaining risk.','บันทึก Risk ระบุ IT Manager เป็น Owner และติดตามแผนกับความเสี่ยงคงเหลือ'),
+  pair('Transfer risk via cyber insurance; close the register entry.','ถ่ายโอนความเสี่ยงด้วยประกันภัย แล้วปิดรายการใน Register')
+];
 
 export function renderGrcToolsRiskRegisterPresentation(host,context={}){
  const {slide}=context,doc=host.ownerDocument,[kind]=SCENES.get(slide.id),language=context.language==='th'?'th':'en';
@@ -27,7 +32,7 @@ export function renderGrcToolsRiskRegisterPresentation(host,context={}){
  const field=(label,value)=>{const r=element(doc,'div','grt-record-field');r.append(put('dt','grt-field-label',label),put('dd','grt-field-value',value));return r;};
  if(kind==='shared-work-record'){
   const flow=element(doc,'div','grt-work-flow'),copies=element(doc,'section','grt-working-copies');
-  copies.append(put('h4','grt-term',pair('Separate working copies','ไฟล์ทำงานแยกส่วน')));
+  copies.append(put('h4','grt-term',pair('Separate working copies','เอกสารการทำงานที่กระจัดกระจาย')));
   for(const copy of [pair('Policy versions','เวอร์ชันนโยบาย'),pair('Control status','สถานะ Controls'),pair('Audit evidence','หลักฐาน Audit')])copies.append(put('p','grt-paper-copy',copy));
   copies.append(put('p','grt-note',pair('Which copy is current? Who follows up?','ชุดไหนเป็นปัจจุบัน และใครต้องติดตามต่อ?')));
   const record=element(doc,'section','grt-owned-record');record.append(put('h4','grt-record-title',pair('Privileged access review','การทบทวนสิทธิ์สูง')));

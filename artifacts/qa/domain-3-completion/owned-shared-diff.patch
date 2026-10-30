@@ -1,0 +1,147 @@
+--- ENTRY/index.html
++++ CURRENT/index.html
+@@ -47,6 +47,7 @@
+     <link rel="stylesheet" href="./css/learning-iam-roles-provisioning.css">
+     <link rel="stylesheet" href="./css/learning-iam-review-deprovisioning.css">
+     <link rel="stylesheet" href="./css/learning-iam-frameworks-tools.css">
++    <link rel="stylesheet" href="./css/learning-domain3-lesson-shell.css">
+     <link rel="stylesheet" href="./css/learning-social-passwords.css">
+   <link rel="stylesheet" href="./css/learning-security-awareness.css">
+     <link rel="stylesheet" href="./css/learning-business-continuity-bcp.css">
+--- ENTRY/js/ui/learning/lesson-info.js
++++ CURRENT/js/ui/learning/lesson-info.js
+@@ -95,7 +95,7 @@
+     panel.append(explanations);
+   }
+   // Limit Domain 3 explanations to its reviewed lessons; preserve existing D1/D2 paths.
+-  if ((lesson.domainId === 2 || (lesson.domainId === 3 && ['lesson-d3-01-roles-provisioning','lesson-d3-02-review-deprovisioning','lesson-d3-03-iam-frameworks-tools'].includes(lesson.id))) && Array.isArray(lesson.slides) && lesson.slides.length > 0) {
++  if ((lesson.domainId === 2 || (lesson.domainId === 3 && ['lesson-d3-01-roles-provisioning','lesson-d3-02-review-deprovisioning','lesson-d3-03-iam-frameworks-tools','lesson-d3-06-mfa-authentication-signals','lesson-d3-05-access-control-models','lesson-d3-04-least-privilege-sod'].includes(lesson.id))) && Array.isArray(lesson.slides) && lesson.slides.length > 0) {
+     const d2Explanations = element(doc, 'details', 'learning-info-source-explanations');
+     d2Explanations.append(element(doc, 'summary', 'learning-info-details-summary', `Slides 1–${lesson.slides.length} — Full explanations`));
+     for (const [index, slide] of lesson.slides.entries()) {
+--- ENTRY/js/ui/learning/renderers.js
++++ CURRENT/js/ui/learning/renderers.js
+@@ -1,3 +1,4 @@
++import {hasDomain3LogicalPresentation,renderDomain3LogicalPresentation} from './domain3-logical-presentations.js';
+ import {hasIamFrameworksToolsPresentation,renderIamFrameworksToolsPresentation} from './iam-frameworks-tools-presentations.js';
+ import {hasIamReviewDeprovisioningPresentation,renderIamReviewDeprovisioningPresentation} from './iam-review-deprovisioning-presentations.js';
+ import {hasIamRolesProvisioningPresentation,renderIamRolesProvisioningPresentation} from './iam-roles-provisioning-presentations.js';
+@@ -83,6 +84,9 @@
+   host.setAttribute('data-layout', context.slide.layoutId || 'default');
+   host.setAttribute('data-renderer', context.slide.rendererId || 'text');
+   const heading = localize(element(host.ownerDocument, 'h2', 'learning-slide-title'), context.slide.title, context.language); host.append(heading);
++  const d3Logical = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasDomain3LogicalPresentation(context);
++  host.classList.toggle('learning-d3-logical-slide',Boolean(d3Logical));
++  if (d3Logical) heading.classList.add('learning-sr-only');
+   const iamFrameworks = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasIamFrameworksToolsPresentation(context);
+   host.classList.toggle('learning-iam-frameworks-slide',Boolean(iamFrameworks));
+   if (iamFrameworks) heading.classList.add('learning-sr-only');
+@@ -147,7 +151,9 @@
+   const fallback = () => { if (!abort.signal.aborted) { body.replaceChildren(); blocks(body, { ...args, slide: getSemanticSlide(), mode: 'reading' }); } };
+   const custom = registry.get(context.slide.rendererId);
+ 
+-  if (iamFrameworks) {
++  if (d3Logical) {
++    const handle=renderDomain3LogicalPresentation(body,args); cleanup=()=>handle?.destroy?.();
++  } else if (iamFrameworks) {
+     const handle=renderIamFrameworksToolsPresentation(body,args); cleanup=()=>handle?.destroy?.();
+   } else if (iamReview) {
+     const handle=renderIamReviewDeprovisioningPresentation(body,args); cleanup=()=>handle?.destroy?.();
+--- ENTRY/docs/plans/task.md
++++ CURRENT/docs/plans/task.md
+@@ -175,7 +175,8 @@
+ | 140. Domain 2 Learning Slides: New Agent Handoff, Full Audit & Recovery Plan | Completed | Comprehensive audit of Domain 2 Learning Slides (8 published lessons / 55 slides), source reconciliation against S01–S38, D2 sum.md & Domain 2.md, bilingual accuracy review, visual/UX inspection (1920x1080 and 1366x768), architecture risks, and 5 recovery deliverables completed under docs/plans/isc2-cc-2026/: domain-2-recovery-audit.md, domain-2-source-inventory.md, domain-2-2026-coverage-matrix.md, domain-2-recovery-plan.md, domain-2-visual-quality-review.md. Strictly AUDIT & PLAN ONLY; zero production code modified. Ready for human authorization of Task 141. |
+ | 141. Domain 2 Learning Slides: Visual Design System & Objective 2.1 Production Redesign (Lessons 1 & 2) | Paused — Task 142 Active | Implementing calibrated layout tokens; paused to execute Task 142 audit without cross-contamination. |
+ | 142. Complete Reading Notes Audit (Domains 1–4) & Consolidated Bug Backlog | Reading Notes Domains 1–4 Audit Complete — Bug Backlog Ready for Human Review. | Comprehensive evidence-based audit of Reading Notes across Domains 1–4: safe baseline verified (commit b7412a1, untracked/Task 141 preserved); inventoried 94 subsections, 24 diagrams, 22 tables, 46 cards, 44 scenarios; 16/16 academic checkpoints verified against D1–D4 sources; real Chrome CDP audited 56 configurations (7 viewports x 2 themes x 4 domains, 0px overflow); H01–H14 evaluated; identified 19 prioritized bugs (0 P0, 3 P1, 9 P2, 7 P3) logged in [Bug Register](isc2-cc-2026/reading-notes-domains-1-4-bug-register.md) and 6-workstream [Remediation Backlog](isc2-cc-2026/reading-notes-domains-1-4-remediation-backlog.md); 20 visual artifacts and manifest saved to artifacts/qa/reading-notes-domains-1-4-audit/. AUDIT ONLY. Full report at [reading-notes-domains-1-4-full-audit.md](isc2-cc-2026/reading-notes-domains-1-4-full-audit.md). |
+-| 143. Reading Notes Progress Persistence, Resume & Deep Link Remediation | In Progress | Implementing production-quality remediation for RN-SHARED-001 (sec_cert_reading_progress_v1 localStorage persistence, last-read location, per-domain resume) and RN-SHARED-002 (deep-link routing on cold start and reload). Strictly preserving Learning Slides, Quiz, Vocab, and educational Markdown. |
++| 143. Reading Notes Progress Persistence, Resume & Deep Link Remediation | Completed | Remediated RN-SHARED-001 (sec_cert_reading_progress_v1 localStorage persistence, per-domain resume, scroll offset memory) and RN-SHARED-002 (deep-link routing on cold start, reload, and Back/Forward history navigation). Verified with 20/20 unit tests in verify-reading-persistence.mjs, 33/33 Chrome CDP browser QA checks in audit-task143-browser.mjs (16 screenshots in artifacts/qa/reading-notes-task-143/), and 118/118 regression tests passing. Zero changes to Learning Slides, Quiz, Vocab, or educational Markdown. |
++| 144. Reading Notes Domain 1–2 Mobile Diagram Remediation | In Progress | Remediating RN-D1-001 (12 Domain 1 diagrams) and RN-D2-001 (3 Domain 2 diagrams) with responsive dual-presentation architecture (desktop SVG wrapped in .reading-diagram-desktop-wrap and accessible mobile HTML card stacks in .reading-mob-tier-stack). Strictly preserving desktop quality, bilingual parity, Task 143 persistence/routing, and zero changes to Learning Slides, Quiz, or Vocab. |
+ | D3-LS-02. Domain 3 Learning Slides — Verify Lesson 1 and Implement Lesson 2 | In Progress — Lesson 1 verified, Lesson 2 authoring | Lesson 1 code/content hashes match its delivery, 36/36 checks pass, and 84 browser cases/16 feedback states are evidenced. Preserve it unchanged. Implement only approved Lesson 2, then verify eight TH/EN slides, all modes, progress and desktop Chrome. |
+ ## Task 57 — Domain 4 question-bank implementation (2026-10-28)
+ 
+@@ -187,3 +188,5 @@
+ Completed and resumed from the existing authored JSON without regenerating the 90 entries: VOC-CC26-D4-001..090 (4.1:55, 4.2:15, 4.3:20). Total vocabulary is 403, retaining all 313 D1-D3 entries. Author and fresh assistant reviews checked technical accuracy, all bilingual guidance/examples, acronym expansions, source mappings and duplicates; corrected the concise Thai meaning of Network Port. Registered D4 in the existing loader, domain/objective filters and vocabulary count without changing rendering algorithms or CSS. The new Node test consumes all 90 detail modals and exercises Study Cards, Flashcards, filters, EN/Thai search, counts, navigation and shuffle/reset. Final full non-browser inventory: 44 successful scripts of 55, the same 11 baseline failures and no new failing scripts; updated three stale count/availability assertions. Questions (119 updated/583 legacy), old vocabulary, original sources, styling, learning slides and unrelated changes are preservation boundaries. Formal/native-Thai human approval and browser verification are not claimed. See [D4 vocabulary academic/integration review](../../content/isc2-cc-2026/vocabulary/domain-4-review.md) for exact files, preservation and test results.
+ 
+ | D3-LS-03. Domain 3 Lesson 3 and Objective 3.1 Coverage Gate | Implemented & Verified — Human Review Pending | Published six bilingual framework/tool slides; Objective 3.1 planned coverage verified across 3 lessons / 21 slides. Chrome: 72 mode cases, 16 feedback states, 24 Reading scroll ends; independent L1–L3 Resume verified. 113/113 focused/gate checks; full relevant suite 314/321 with seven historical/global exceptions. Concurrent D2 changes preserved and reported. Stop before 3.2. |
++
++| D3-FINISH. Complete Domain 3 Learning Slides | Implemented & Verified - Human Review Pending | Published L04-L06 (21 new bilingual slides); Domain 3 now 6 lessons / 42 slides, both objectives available. 8 official bullets + 2 application clusters mapped. 222/222 focused checks; full relevant suite 427/435 with 7 entry exceptions + obsolete 3.2-unavailable gate. Fresh Chrome 252 mode cases, 48 feedback states, 84 scroll ends, 12 interaction/fullscreen sets; preserved earlier QA reused for L01-L03. Six-lesson reload/direct Resume and Center Continue verified. Protected hashes match; concurrent Reading Notes work preserved. See Domain 3 completion report/final coverage matrix. Stop before Domain 4; human acceptance pending. |
+--- ENTRY/content/isc2-cc-2026/learning/published/catalog.json
++++ CURRENT/content/isc2-cc-2026/learning/published/catalog.json
+@@ -2,7 +2,7 @@
+   "schemaVersion": 1,
+   "certificationId": "isc2-cc",
+   "outlineId": "isc2-cc-2026-09-01",
+-  "revision": "26",
++  "revision": "29",
+   "domains": [
+     {
+       "id": 1,
+@@ -585,8 +585,66 @@
+             "en": "Understand logical access controls",
+             "th": "เข้าใจการควบคุมการเข้าถึงเชิงตรรกะ"
+           },
+-          "status": "coming-soon",
+-          "lessons": [],
++          "status": "published",
++          "lessons": [
++            {
++              "id": "lesson-d3-04-least-privilege-sod",
++              "domainId": 3,
++              "primaryObjectiveId": "3.2",
++              "objectiveIds": [
++                "3.2"
++              ],
++              "title": {
++                "en": "Least Privilege & Separation of Duties",
++                "th": "สิทธิ์เท่าที่จำเป็นและการแบ่งแยกหน้าที่"
++              },
++              "synopsis": {
++                "en": "Grant enough access for the task and separate incompatible authority, including automated work.",
++                "th": "ให้สิทธิ์พอทำงานและแยกอำนาจที่ขัดกัน รวมถึงงานอัตโนมัติ"
++              },
++              "status": "published",
++              "revision": "1",
++              "lessonPath": "lessons/lesson-d3-04-least-privilege-sod.json"
++            },
++            {
++              "id": "lesson-d3-05-access-control-models",
++              "domainId": 3,
++              "primaryObjectiveId": "3.2",
++              "objectiveIds": [
++                "3.2"
++              ],
++              "title": {
++                "en": "Choosing and Applying Access-Control Models",
++                "th": "เลือกและใช้แบบจำลองควบคุมการเข้าถึง"
++              },
++              "synopsis": {
++                "en": "Compare owner discretion, mandatory policy, role reuse and attribute-based decisions using explicit requests.",
++                "th": "เทียบดุลยพินิจเจ้าของ นโยบายบังคับ Role และ Attributes ผ่านคำขอที่ระบุชัด"
++              },
++              "status": "published",
++              "revision": "1",
++              "lessonPath": "lessons/lesson-d3-05-access-control-models.json"
++            },
++            {
++              "id": "lesson-d3-06-mfa-authentication-signals",
++              "domainId": 3,
++              "primaryObjectiveId": "3.2",
++              "objectiveIds": [
++                "3.2"
++              ],
++              "title": {
++                "en": "MFA & Authentication Risk Signals",
++                "th": "MFA และสัญญาณความเสี่ยงในการยืนยันตัวตน"
++              },
++              "synopsis": {
++                "en": "Apply MFA foundations and assess anomalous login evidence without confusing signals, factors and permissions.",
++                "th": "ใช้พื้นฐาน MFA และประเมินหลักฐาน Login ผิดปกติ โดยแยกสัญญาณ ปัจจัย และสิทธิ์"
++              },
++              "status": "published",
++              "revision": "1",
++              "lessonPath": "lessons/lesson-d3-06-mfa-authentication-signals.json"
++            }
++          ],
+           "relatedLessonIds": []
+         }
+       ]

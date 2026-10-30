@@ -1,0 +1,30 @@
+from pathlib import Path
+import json,copy
+QA=Path('artifacts/qa/domain-3-completion')
+IDS=json.loads((QA/'approved-slide-ids.json').read_text())
+NAMES={4:('least-privilege-sod','Least Privilege & Separation of Duties','สิทธิ์เท่าที่จำเป็นและการแบ่งแยกหน้าที่','LeastPrivilegeSod'),5:('access-control-models','Choosing and Applying Access-Control Models','เลือกและใช้แบบจำลองควบคุมการเข้าถึง','AccessControlModels'),6:('mfa-authentication-signals','MFA & Authentication Risk Signals','MFA และสัญญาณความเสี่ยงในการยืนยันตัวตน','MfaAuthenticationSignals')}
+def pair(en,th):return {'en':en,'th':th}
+def rows(*a):return [[pair(*x) for x in r] for r in a]
+def ref(id,title,url,locator):return dict(id=id,title=title,url=url,authority='technical-primary',locator=locator)
+REFS={
+ 'nist-access':ref('nist-access','NIST SP 800-171r3','https://nvlpubs.nist.gov/nistpubs/SpecialPublications/800-171r3/NIST.SP.800-171r3.html','03.01.04–06: separation of incompatible duties, minimum necessary access and privileged work. Federal CUI applicability is not generalized.'),
+ 'nist-dac':ref('nist-dac','NIST glossary — Discretionary Access Control','https://csrc.nist.gov/glossary/term/discretionary_access_control','Owner/authorized-controller discretion; software still enforces configured permissions.'),
+ 'nist-mac':ref('nist-mac','NIST glossary — Mandatory Access Control','https://csrc.nist.gov/glossary/term/mandatory_access_control','Mandatory policy and ordinary-owner override boundary; not a universal security ranking.'),
+ 'nist-rbac':ref('nist-rbac','NIST RBAC FAQ','https://csrc.nist.gov/projects/role-based-access-control/faqs','Role assignment, permissions, activation and constraints; not identical total rights from one shared role.'),
+ 'nist-abac':ref('nist-abac','NIST SP 800-162','https://csrc.nist.gov/pubs/sp/800/162/upd2/final','Abstract: subject/object/requested-operation and environment attributes evaluated against policy. Technical supplement to N §16.'),
+ 'us-classified':ref('us-classified','US Executive Order 13526','https://www.archives.gov/isoo/policy-documents/cnsi-eo.html','§4.1(a): eligibility, nondisclosure agreement and need-to-know; scoped US classified example, not all MAC systems.'),
+ 'nist-authentication':ref('nist-authentication','NIST SP 800-63B-4','https://pages.nist.gov/800-63-4/sp800-63b.html','Introduction, factor/authenticator types, multi-factor cryptographic activation and §5.3 session monitoring/privacy. No assurance-level memorization or universal response thresholds.'),
+ 'service-account-governance':ref('service-account-governance','Microsoft — Governing service accounts','https://learn.microsoft.com/en-us/entra/architecture/govern-service-accounts','Accountable owner, purpose, privileges and dependencies; vendor configuration excluded.')}
+def lesson(number,synopsis,outcomes,source,refids):
+ slug,en,th,_=NAMES[number];base=json.loads(Path('content/isc2-cc-2026/learning/published/lessons/lesson-d3-03-iam-frameworks-tools.json').read_text(encoding='utf-8'))
+ l={**base,'id':f'lesson-d3-{number:02}-{slug}','primaryObjectiveId':'3.2','objectiveIds':['3.2'],'title':pair(en,th),'synopsis':pair(*synopsis),'outcomes':[pair(*p) for p in outcomes],'prerequisites':[pair('Recommended: Domain 3 Lessons 1–3; Domain 1 authentication and trustworthy-evidence foundations.','แนะนำ Domain 3 Lessons 1–3 และพื้นฐาน Authentication/หลักฐานที่น่าเชื่อถือจาก Domain 1')],'slides':[]}
+ l['references']=[dict(id='isc2-outline',title='ISC2 CC September 2026 Exam Outline',authority='official-scope',url='https://www.isc2.org/certifications/cc/cc-certification-exam-outline',locator='Objective 3.2 plus separate official AI application guidance; checked 2026-10-30.'),dict(id='d3-notes',title='Domain 3.md — user study notes',authority='course',repositoryPath='ISC2 Update 2026/Domain 3/Domain 3.md',locator=source),dict(id='d3-summary',title='D3 sum.md — user summary',authority='course',repositoryPath='ISC2 Update 2026/Domain 3/D3 sum.md',locator=source)]+[REFS[r] for r in refids]
+ l['review']=copy.deepcopy(base['review']);l['review']['evidencePath']='docs/plans/isc2-cc-2026/domain-3-completion-report.md';return l
+def add(l,title,lead,rs,detail,points,foot,refids):
+ number=l['id'].split('-')[2];i=len(l['slides']);l['slides'].append({'id':IDS[number][i],'title':pair(*title),'rendererId':'interactive' if i==len(IDS[number])-1 else 'diagram','layoutId':'default','blocks':[{'kind':'text','text':pair(*lead)},{'kind':'table','caption':pair('Conditions, decisions and boundaries','เงื่อนไข การตัดสินใจ และขอบเขต'),'columns':[pair('Context','บริบท'),pair('Action / meaning','การกระทำ / ความหมาย'),pair('Reason / limit','เหตุผล / ข้อจำกัด')],'rows':rs},{'kind':'text','text':pair(*detail)},{'kind':'list','items':[pair(*p) for p in points]},{'kind':'text','text':pair(*foot)}],'referenceIds':['isc2-outline','d3-notes','d3-summary']+refids,'review':{'status':'approved','reviewedRevision':'1'}})
+def publish(l):
+ for folder,status in [('staged','in-preparation'),('published','published')]:
+  p=Path(f'content/isc2-cc-2026/learning/{folder}/lessons/'+l['id']+'.json');assert not p.exists();p.write_text(json.dumps({**l,'status':status},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+ p=Path('content/isc2-cc-2026/learning/published/catalog.json');c=json.loads(p.read_text(encoding='utf-8'));o=next(d for d in c['domains'] if d['id']==3)['objectives'][1]
+ summary={k:l[k] for k in ['id','domainId','primaryObjectiveId','objectiveIds','title','synopsis','status','revision']};summary['lessonPath']='lessons/'+l['id']+'.json';assert not any(x['id']==l['id'] for x in o['lessons']);o['lessons'].append(summary);o['status']='published';c['revision']=str(int(c['revision'])+1);p.write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+ p=Path('js/ui/learning/lesson-info.js');s=p.read_text(encoding='utf-8');needle="'lesson-d3-03-iam-frameworks-tools'";assert needle in s;s=s.replace(needle,needle+",'"+l['id']+"'",1);p.write_text(s,encoding='utf-8')

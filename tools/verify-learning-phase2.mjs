@@ -10,13 +10,13 @@ const infoAPI = await import('../js/ui/learning/lesson-info.js').catch(() => ({}
 const catalog = JSON.parse(fs.readFileSync(new URL('../content/isc2-cc-2026/learning/published/catalog.json', import.meta.url)));
 const lesson = JSON.parse(fs.readFileSync(new URL('../content/isc2-cc-2026/learning/published/lessons/lesson-d1-01-cia-triad.json', import.meta.url)));
 const text = node => [node.textContent || '', ...node.children.map(text)].join(' ');
-function harness({ language = 'both', records = {}, loadLesson = async () => lesson } = {}) {
+function harness({ language = 'both', records = {}, loadLesson = async () => lesson, routeCatalog = catalog } = {}) {
   const doc = new TestDocument(), root = doc.createElement('div'); doc.body.append(root);
   const map = new Map([['sec_cert_learning_progress_v1', JSON.stringify({ schemaVersion: 1, lessons: records })], ['sec_cert_active_session_v1', 'protected-quiz']]);
   const store = createProgressStore({ getItem: k => map.get(k), setItem: (k, v) => map.set(k, v) });
   let active;
   state.setup.language = language; state.learning = { domainId: null, objectiveId: null, lessonId: null, slideId: null };
-  const render = () => { disposeLearningRoute(); active = renderLearningRoute(root, render, { loadCatalog: async () => catalog, loadLesson, progressStore: store, lessonCache: new Map() }); };
+  const render = () => { disposeLearningRoute(); active = renderLearningRoute(root, render, { loadCatalog: async () => routeCatalog, loadLesson, progressStore: store, lessonCache: new Map() }); };
   return { doc, root, map, store, async open(screen, selection = {}) { selectLearningScreen(screen, selection); render(); assert.ok(active.ready, 'route exposes completion of its asynchronous mount'); await active.ready; }, async settle() { await active.ready; }, destroy() { disposeLearningRoute(); }, text: () => text(root) };
 }
 test('domain route is learning-only and leaves active quiz identity untouched', () => {
@@ -45,7 +45,12 @@ test('Continue Learning and legacy Lesson Contents route resume the saved slide 
   } finally { h.destroy(); }
 });
 test('empty Domain has official objectives and no invented Start actions; failed lesson offers no resume', async () => {
-  const h = harness({ loadLesson: async () => { throw Error('offline'); } }); try {
+  // This is deliberately an empty-domain fixture, independent of live publication growth.
+  const routeCatalog = structuredClone(catalog);
+  for (const objective of routeCatalog.domains.find(d => d.id === 2).objectives) {
+    objective.status = 'coming-soon'; objective.lessons = []; objective.relatedLessonIds = [];
+  }
+  const h = harness({ routeCatalog, loadLesson: async () => { throw Error('offline'); } }); try {
     await h.open('learning-domain', { domainId: 2 }); assert.equal(h.root.querySelectorAll('.learning-objective').length, 4); assert.equal(h.root.querySelectorAll('[data-lesson-id]').length, 0);
     assert.match(h.text(), /Coming Soon/);
     await h.open('learning-domain', { domainId: 1 }); assert.equal(h.root.querySelectorAll('[data-lesson-id]').length, 0); assert.match(h.text(), /could not be checked/i);

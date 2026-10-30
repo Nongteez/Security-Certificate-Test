@@ -6,7 +6,7 @@
 
 **Architecture:** Retain current static JS/CSS/JSON, five semantic Reading/Info blocks, lesson/slide IDs and V1 progress. Recompose existing L3/L4 with their existing module exports/classes. New L5–L8 use the established per-lesson custom-presentation pattern and trusted renderer dispatch; only necessary additive dispatch/CSS imports and D2 catalog publication are authorized shared edits. A private D2 lesson shell may share DOM heading/scenario lifecycle and scoped typography, never generic content grids or a new schema/framework. Protected D1/L1/L2 and concurrent Reading Notes remain read-only.
 
-**Tech Stack:** Native JS/CSS/JSON, Node test runner/current DOM fixture, in-app browser, bounded loopback preview, existing Python/Pillow for screenshot evidence; no dependencies added.
+**Tech Stack:** Native JS/CSS/JSON, Node test runner/current DOM fixture, in-app browser, bounded loopback preview, existing Python and PowerShell/System.Drawing for screenshot evidence; no dependencies added.
 
 User explicitly authorized all phases and established the visual direction; proceed through final QA without redundant design/implementation approvals, worktree relocation, commits or pushes. Current dirty workspace is authoritative. No subagents. Only this task's new tracker row107 changes; preserve concurrent rows105/106 and exact other tracker bytes.
 
@@ -35,3 +35,6 @@ Selected: concept-specific examples and diagrams with full supporting semantic e
 7. Final: all8 D2 lessons published and4 objectives mapped; strict D1/L1/L2 entry hashes; protect both banks/Vocabulary/Quiz/concurrent files; IDs/schema/progress; catalog data-driven checks and all relevant regressions with baseline exceptions separated; current-source preview parity; finish new report/append roadmap and coverage status only; tracker; exact file/evidence manifest; human acceptance checklist. Stop.
 
 For each lesson: source-grounded bilingual semantic review → red focused tests → implementation → Node/structural checks → production Viewer screenshots at1366×768/1920×1080 TH/EN → all Reading/Info/feedback → independent selection/keyboard/reload/direct Resume → spec compliance then quality review. Do not start the next lesson with unresolved critical defects or unsupported source gaps. Preserve evidence and report browser limitations rather than repeated uncontrolled retries. No mobile/tablet or unrelated redesign.
+
+
+Final status: all six sequential lesson gates implemented/verified; see the completion report for actual55-slide inventory, test exceptions and final browser-refresh limitation. Human acceptance pending. No commit/push performed by this agent.

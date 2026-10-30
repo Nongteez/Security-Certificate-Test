@@ -14,7 +14,11 @@
 import { state } from '../core/state.js';
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
 import { loadDomainReading, getDomainReadingCached } from '../core/reading-loader.js';
+import { getReadingProgressStore, loadReadingProgress, saveReadingLocation } from '../core/reading-progress.js';
 import { domain1Objectives } from '../../content/isc2-cc-2026/reading/domain-1.js';
+import { domain2Objectives, domain2Review } from '../../content/isc2-cc-2026/reading/domain-2.js';
+import { domain3Objectives, domain3Review } from '../../content/isc2-cc-2026/reading/domain-3.js';
+import { domain4Objectives, domain4Review } from '../../content/isc2-cc-2026/reading/domain-4.js';
 
 export const READING_DOMAINS = [
   {
@@ -30,36 +34,27 @@ export const READING_DOMAINS = [
     title: 'Domain 2: Security Governance',
     shortTitle: 'Security Governance',
     weight: '17.3%',
-    published: false,
-    objectives: [
-      { id: '2.1', title: '2.1 Plan Governance, Risk, and Compliance (GRC)' },
-      { id: '2.2', title: '2.2 Understand redundancy' },
-      { id: '2.3', title: '2.3 Understand security awareness' },
-      { id: '2.4', title: '2.4 Measure cybersecurity effectiveness' }
-    ]
+    published: true,
+    objectives: domain2Objectives,
+    review: domain2Review
   },
   {
     id: 3,
     title: 'Domain 3: Access Controls',
     shortTitle: 'Access Controls',
     weight: '20%',
-    published: false,
-    objectives: [
-      { id: '3.1', title: '3.1 Understand identity life cycle management' },
-      { id: '3.2', title: '3.2 Understand logical access controls' }
-    ]
+    published: true,
+    objectives: domain3Objectives,
+    review: domain3Review
   },
   {
     id: 4,
     title: 'Domain 4: Network Security',
     shortTitle: 'Network Security',
     weight: '21.3%',
-    published: false,
-    objectives: [
-      { id: '4.1', title: '4.1 Understand network security' },
-      { id: '4.2', title: '4.2 Understand network security architecture' },
-      { id: '4.3', title: '4.3 Understand cloud security' }
-    ]
+    published: true,
+    objectives: domain4Objectives,
+    review: domain4Review
   },
   {
     id: 5,
@@ -93,23 +88,108 @@ function escapeHtml(value) {
  * @param {Function} onBack - Callback when user navigates back to exam versions
  */
 export function renderReadingScreen(container, onBack) {
+  const allDomainObjectiveIds = READING_DOMAINS.flatMap(d => (d.objectives || []).map(o => o.id));
+  const progress = loadReadingProgress();
+
   if (!state.reading) {
     state.reading = {
-      selectedDomainId: 1,
+      selectedDomainId: progress.lastDomainId || 1,
       sidebarCollapsed: false,
-      expandedDomains: [1],
-      expandedObjectives: ['1.1', '1.2', '1.3', '1.4', '1.5']
+      expandedDomains: [progress.lastDomainId || 1],
+      expandedObjectives: allDomainObjectiveIds,
+      targetAnchorId: progress.lastTopicId || null,
+      targetScrollY: progress.lastScrollY || 0,
+      _hasRestoredProgress: true
     };
+  } else if (!state.reading._hasRestoredProgress) {
+    if (!state.reading.targetAnchorId && (!state.reading.selectedDomainId || state.reading.selectedDomainId === 1)) {
+      state.reading.selectedDomainId = progress.lastDomainId || 1;
+      const dProg = progress.domains?.[state.reading.selectedDomainId];
+      state.reading.targetAnchorId = dProg?.lastTopicId || null;
+      state.reading.targetScrollY = dProg?.lastScrollY || 0;
+    }
+    state.reading._hasRestoredProgress = true;
   }
 
   let selectedDomainId = state.reading.selectedDomainId || 1;
-  const expandedDomainSet = new Set(state.reading.expandedDomains || [1]);
-  const expandedObjSet = new Set(state.reading.expandedObjectives || ['1.1', '1.2', '1.3', '1.4', '1.5']);
+  const expandedDomainSet = new Set(state.reading.expandedDomains || [selectedDomainId]);
+  const expandedObjSet = new Set(state.reading.expandedObjectives || allDomainObjectiveIds);
+  expandedDomainSet.add(selectedDomainId);
+
+  // Target anchor & scroll offset to restore
+  let initialAnchor = state.reading.targetAnchorId || null;
+  let initialScrollY = state.reading.targetScrollY || 0;
+  state.reading.targetAnchorId = null;
+  state.reading.targetScrollY = null;
+
+  // Auto-expand domain and objective if initialAnchor belongs to one
+  if (initialAnchor) {
+    const objMatch = initialAnchor.match(/^(?:topic|obj)-(\d+)-(\d+)/);
+    if (objMatch) {
+      expandedDomainSet.add(parseInt(objMatch[1], 10));
+      expandedObjSet.add(`${objMatch[1]}.${objMatch[2]}`);
+    }
+  }
+
   let sidebarCollapsed = !!state.reading.sidebarCollapsed;
   let mobileSidebarOpen = false;
   let scrollSpyObserver = null;
   let scrollNavCleanup = null;
   let updateScrollNavState = null;
+  let activeScrollSpyTopicId = initialAnchor;
+  let saveDebounceTimer = null;
+  let scrollDebounceTimer = null;
+
+  function getCurrentScrollY() {
+    const pane = container.querySelector('#reading-content-pane');
+    if (pane && pane.scrollTop > 0) return pane.scrollTop;
+    if (typeof window !== 'undefined' && window.scrollY > 0) return window.scrollY;
+    const docEl = typeof document !== 'undefined' ? document.documentElement : null;
+    return docEl ? docEl.scrollTop : 0;
+  }
+
+  function restoreLocation(anchorId = null, scrollY = 0) {
+    const doRestore = () => {
+      if (anchorId) {
+        const targetEl = document.getElementById(anchorId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'auto' });
+          activeScrollSpyTopicId = anchorId;
+          container.querySelectorAll('.reading-nav-topic-link, .reading-nav-objective-link').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === `#${anchorId}`) {
+              link.classList.add('active');
+            } else if (link.getAttribute('data-scroll-to') !== anchorId) {
+              link.classList.remove('active');
+            }
+          });
+          if (typeof window !== 'undefined' && window.location.hash !== `#${anchorId}` && history.replaceState) {
+            history.replaceState(null, '', `#${anchorId}`);
+          }
+          return;
+        }
+      }
+      if (scrollY && scrollY > 0) {
+        const pane = container.querySelector('#reading-content-pane');
+        if (pane && pane.scrollHeight > pane.clientHeight) {
+          pane.scrollTop = scrollY;
+        }
+        if (typeof window !== 'undefined') {
+          window.scrollTo({ top: scrollY, behavior: 'auto' });
+        }
+      }
+    };
+
+    if (typeof requestAnimationFrame !== 'undefined') {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          doRestore();
+        });
+      });
+    } else {
+      doRestore();
+    }
+  }
 
   function getActiveDomain() {
     return READING_DOMAINS.find(d => d.id === selectedDomainId) || READING_DOMAINS[0];
@@ -171,6 +251,20 @@ export function renderReadingScreen(container, onBack) {
                   </li>
                 `;
               }).join('')}
+              ${domain.review ? `
+                <li class="reading-nav-objective-item reading-nav-review-item">
+                  <div class="reading-nav-objective-row">
+                    <span class="reading-obj-bullet"></span>
+                    ${isActive ? `
+                      <a href="#${escapeHtml(domain.review.anchorId || domain.review.id)}" class="reading-nav-objective-link reading-nav-review-link" data-scroll-to="${escapeHtml(domain.review.anchorId || domain.review.id)}">
+                        <span class="reading-nav-objective-title">${escapeHtml(domain.review.title)}</span>
+                      </a>
+                    ` : `
+                      <span class="reading-nav-objective-title reading-nav-objective-static">${escapeHtml(domain.review.title)}</span>
+                    `}
+                  </div>
+                </li>
+              ` : ''}
             </ul>
           </div>
         </div>
@@ -179,11 +273,11 @@ export function renderReadingScreen(container, onBack) {
   }
 
   function renderArticleContent(domain) {
-    if (domain.id === 1 && domain.published) {
-      const cached = getDomainReadingCached(1);
+    if (domain.published) {
+      const cached = getDomainReadingCached(domain.id);
       if (cached) {
         return `
-          <article class="reading-article" data-domain-id="1">
+          <article class="reading-article" data-domain-id="${domain.id}">
             <header class="reading-article-header">
               <div class="reading-eyebrow">ISC2 CC 2026 · Domain ${domain.id} · Exam Weight ${escapeHtml(domain.weight)}</div>
               <h1 class="reading-article-title">${escapeHtml(domain.title)}</h1>
@@ -195,21 +289,21 @@ export function renderReadingScreen(container, onBack) {
         `;
       }
       return `
-        <article class="reading-article" data-domain-id="1">
+        <article class="reading-article" data-domain-id="${domain.id}">
           <header class="reading-article-header">
             <div class="reading-eyebrow">ISC2 CC 2026 · Domain ${domain.id} · Exam Weight ${escapeHtml(domain.weight)}</div>
             <h1 class="reading-article-title">${escapeHtml(domain.title)}</h1>
           </header>
           <div class="reading-body reading-article-markdown">
             <div class="reading-unpublished-note">
-              <p class="reading-unpublished-text">Loading Domain 1 reading notes...</p>
+              <p class="reading-unpublished-text">Loading Domain ${domain.id} reading notes...</p>
             </div>
           </div>
         </article>
       `;
     }
 
-    // Domains 2-5
+    // Unpublished Domains (3-5)
     return `
       <article class="reading-article" data-domain-id="${domain.id}">
         <header class="reading-article-header">
@@ -288,23 +382,26 @@ export function renderReadingScreen(container, onBack) {
     setupScrollSpy();
     initScrollNavigation();
 
-    if (activeDomain.id === 1 && !getDomainReadingCached(1)) {
-      loadDomainReading(1).then(() => {
-        if (selectedDomainId === 1) {
+    if (activeDomain.published && !getDomainReadingCached(activeDomain.id)) {
+      loadDomainReading(activeDomain.id).then(() => {
+        if (selectedDomainId === activeDomain.id) {
           const pane = container.querySelector('#reading-content-pane');
           if (pane) {
             pane.innerHTML = renderArticleContent(activeDomain);
           }
           setupScrollSpy();
           if (updateScrollNavState) updateScrollNavState();
+          restoreLocation(initialAnchor, initialScrollY);
         }
       }).catch(err => {
-        console.error('Failed to load Domain 1 notes:', err);
+        console.error(`Failed to load Domain ${activeDomain.id} notes:`, err);
       });
+    } else {
+      restoreLocation(initialAnchor, initialScrollY);
     }
   }
 
-  function updateContentOnly() {
+  function updateContentOnly(targetAnchor = null, targetY = 0) {
     const activeDomain = getActiveDomain();
     const pane = container.querySelector('#reading-content-pane');
     if (pane) {
@@ -322,19 +419,22 @@ export function renderReadingScreen(container, onBack) {
     setupScrollSpy();
     if (updateScrollNavState) updateScrollNavState();
 
-    if (activeDomain.id === 1 && !getDomainReadingCached(1)) {
-      loadDomainReading(1).then(() => {
-        if (selectedDomainId === 1) {
+    if (activeDomain.published && !getDomainReadingCached(activeDomain.id)) {
+      loadDomainReading(activeDomain.id).then(() => {
+        if (selectedDomainId === activeDomain.id) {
           const freshPane = container.querySelector('#reading-content-pane');
           if (freshPane) {
             freshPane.innerHTML = renderArticleContent(activeDomain);
           }
           setupScrollSpy();
           if (updateScrollNavState) updateScrollNavState();
+          restoreLocation(targetAnchor, targetY);
         }
       }).catch(err => {
-        console.error('Failed to load Domain 1 notes:', err);
+        console.error(`Failed to load Domain ${activeDomain.id} notes:`, err);
       });
+    } else {
+      restoreLocation(targetAnchor, targetY);
     }
   }
 
@@ -344,7 +444,8 @@ export function renderReadingScreen(container, onBack) {
       scrollSpyObserver = null;
     }
 
-    if (selectedDomainId !== 1) return;
+    const activeDomain = getActiveDomain();
+    if (!activeDomain || !activeDomain.published) return;
     if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') return;
 
     const anchors = container.querySelectorAll('.reading-topic-anchor, .reading-objective-section');
@@ -354,6 +455,7 @@ export function renderReadingScreen(container, onBack) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
+          activeScrollSpyTopicId = id;
           // Highlight active topic or objective link in sidebar
           container.querySelectorAll('.reading-nav-topic-link, .reading-nav-objective-link').forEach(link => {
             const href = link.getAttribute('href');
@@ -363,6 +465,19 @@ export function renderReadingScreen(container, onBack) {
               link.classList.remove('active');
             }
           });
+
+          // Debounced progress saving & URL hash update without duplicate history entry
+          if (saveDebounceTimer) clearTimeout(saveDebounceTimer);
+          saveDebounceTimer = setTimeout(() => {
+            saveReadingLocation({
+              domainId: selectedDomainId,
+              topicId: id,
+              scrollY: getCurrentScrollY()
+            });
+            if (typeof history !== 'undefined' && history.replaceState) {
+              history.replaceState(null, '', `#${id}`);
+            }
+          }, 250);
         }
       });
     }, {
@@ -380,16 +495,57 @@ export function renderReadingScreen(container, onBack) {
         e.stopPropagation();
         const dId = parseInt(btn.getAttribute('data-select-domain'), 10);
         if (selectedDomainId !== dId) {
+          // 1. Save current domain's location before switching
+          saveReadingLocation({
+            domainId: selectedDomainId,
+            topicId: activeScrollSpyTopicId || null,
+            scrollY: getCurrentScrollY()
+          });
+
+          // 2. Switch to new domain
           selectedDomainId = dId;
           state.reading.selectedDomainId = dId;
+
           // Auto-expand newly selected domain
           expandedDomainSet.add(dId);
           state.reading.expandedDomains = Array.from(expandedDomainSet);
+          // Auto-expand newly selected domain's objectives if not already tracked
+          const targetDomain = READING_DOMAINS.find(d => d.id === dId);
+          if (targetDomain?.objectives) {
+            targetDomain.objectives.forEach(obj => expandedObjSet.add(obj.id));
+            state.reading.expandedObjectives = Array.from(expandedObjSet);
+          }
           if (mobileSidebarOpen) {
             mobileSidebarOpen = false;
             container.querySelector('#reading-layout')?.classList.remove('mobile-sidebar-open');
           }
-          updateContentOnly();
+
+          // 3. Look up target domain saved location
+          const targetProgress = getReadingProgressStore().getDomainProgress(dId);
+          const targetAnchor = targetProgress?.lastTopicId || null;
+          const targetY = targetProgress?.lastScrollY || 0;
+          activeScrollSpyTopicId = targetAnchor;
+
+          // Save newly active domain immediately
+          saveReadingLocation({
+            domainId: dId,
+            topicId: targetAnchor,
+            scrollY: targetY
+          });
+
+          // 4. Update URL without duplicate history entries
+          if (targetAnchor) {
+            if (typeof history !== 'undefined' && history.replaceState) {
+              history.replaceState(null, '', `#${targetAnchor}`);
+            }
+          } else {
+            if (typeof history !== 'undefined' && history.replaceState) {
+              history.replaceState(null, '', `#/reading/domain-${dId}`);
+            }
+          }
+
+          // 5. Update content and restore target location
+          updateContentOnly(targetAnchor, targetY);
         }
       });
     });
@@ -460,13 +616,19 @@ export function renderReadingScreen(container, onBack) {
     container.querySelectorAll('[data-scroll-to]').forEach(link => {
       link.addEventListener('click', (e) => {
         const targetId = link.getAttribute('data-scroll-to');
-        const targetEl = container.querySelector(`#${targetId}`);
+        const targetEl = document.getElementById(targetId) || container.querySelector(`#${targetId}`);
         if (targetEl) {
           e.preventDefault();
           targetEl.scrollIntoView({ behavior: 'smooth' });
-          if (history.pushState) {
+          if (typeof history !== 'undefined' && history.pushState) {
             history.pushState(null, '', `#${targetId}`);
           }
+          activeScrollSpyTopicId = targetId;
+          saveReadingLocation({
+            domainId: selectedDomainId,
+            topicId: targetId,
+            scrollY: getCurrentScrollY()
+          });
           if (mobileSidebarOpen) {
             mobileSidebarOpen = false;
             container.querySelector('#reading-layout')?.classList.remove('mobile-sidebar-open');
@@ -486,6 +648,21 @@ export function renderReadingScreen(container, onBack) {
         scrollNavCleanup();
         scrollNavCleanup = null;
       }
+      if (saveDebounceTimer) clearTimeout(saveDebounceTimer);
+      if (scrollDebounceTimer) clearTimeout(scrollDebounceTimer);
+
+      // Save current position before exiting
+      saveReadingLocation({
+        domainId: selectedDomainId,
+        topicId: activeScrollSpyTopicId || null,
+        scrollY: getCurrentScrollY()
+      });
+
+      // Clean up URL hash so back button doesn't trap user in reading route
+      if (typeof history !== 'undefined' && history.replaceState) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+
       onBack();
     });
 
@@ -643,6 +820,16 @@ export function renderReadingScreen(container, onBack) {
         }
         ticking = true;
       }
+
+      // Debounce saving scroll offset to storage
+      if (scrollDebounceTimer) clearTimeout(scrollDebounceTimer);
+      scrollDebounceTimer = setTimeout(() => {
+        saveReadingLocation({
+          domainId: selectedDomainId,
+          topicId: activeScrollSpyTopicId || null,
+          scrollY: getCurrentScrollY()
+        });
+      }, 300);
     }
 
     const currentTarget = getScrollTargetInfo();
@@ -667,6 +854,8 @@ export function renderReadingScreen(container, onBack) {
     updateNav();
 
     scrollNavCleanup = () => {
+      if (saveDebounceTimer) clearTimeout(saveDebounceTimer);
+      if (scrollDebounceTimer) clearTimeout(scrollDebounceTimer);
       scrollNavBtn.removeEventListener('click', handleClick);
       if (eventTarget) {
         eventTarget.removeEventListener('scroll', onScroll);

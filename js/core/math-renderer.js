@@ -46,14 +46,17 @@ export function formatSemanticMath(latex, isDisplay = false) {
 
   // Parse standard math operators
   math = math.replace(/\\times/g, '<span class="math-operator">&times;</span>');
+  math = math.replace(/\\div/g, '<span class="math-operator">&divide;</span>');
   math = math.replace(/\\to/g, '<span class="math-arrow">&rarr;</span>');
   math = math.replace(/\\approx/g, '<span class="math-operator">&asymp;</span>');
   math = math.replace(/\\neq/g, '<span class="math-operator">&ne;</span>');
   math = math.replace(/\\le(q)?/g, '<span class="math-operator">&le;</span>');
   math = math.replace(/\\ge(q)?/g, '<span class="math-operator">&ge;</span>');
+  math = math.replace(/\\subset\b/g, '<span class="math-operator">&sub;</span>');
+  math = math.replace(/\\subseteq\b/g, '<span class="math-operator">&sube;</span>');
 
   // Wrap variables in semantic variable tags where appropriate
-  math = math.replace(/\b(AV|EF|SLE|ARO|ALE|Risk|Likelihood|Impact)\b/g, (match) => {
+  math = math.replace(/\b(AV|EF|SLE|ARO|ALE|Risk|Likelihood|Impact|RTO|RPO|MTD|MTTD|MTTR|KPI|KRI)\b/g, (match) => {
     return `<var class="math-var">${match}</var>`;
   });
 

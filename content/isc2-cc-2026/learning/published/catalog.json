@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "certificationId": "isc2-cc",
   "outlineId": "isc2-cc-2026-09-01",
-  "revision": "23",
+  "revision": "29",
   "domains": [
     {
       "id": 1,
@@ -303,7 +303,7 @@
         "en": "Security Governance",
         "th": "การกำกับดูแลด้านความปลอดภัย"
       },
-      "status": "in-preparation",
+      "status": "published",
       "objectives": [
         {
           "id": "2.1",
@@ -311,7 +311,7 @@
             "en": "Plan Governance, Risk, and Compliance (GRC)",
             "th": "วางแผนการกำกับดูแล ความเสี่ยง และการปฏิบัติตามข้อกำหนด (GRC)"
           },
-          "status": "in-preparation",
+          "status": "published",
           "lessons": [
             {
               "id": "lesson-d2-01-grc-foundations",
@@ -360,7 +360,7 @@
             "en": "Understand redundancy",
             "th": "เข้าใจการจัดให้มีระบบหรือทรัพยากรสำรอง"
           },
-          "status": "in-preparation",
+          "status": "published",
           "lessons": [
             {
               "id": "lesson-d2-03-business-continuity-bcp",
@@ -409,7 +409,7 @@
             "en": "Understand security awareness",
             "th": "เข้าใจความตระหนักด้านความปลอดภัย"
           },
-          "status": "in-preparation",
+          "status": "published",
           "lessons": [
             {
               "id": "lesson-d2-05-security-awareness-culture-leadership",
@@ -458,7 +458,7 @@
             "en": "Measure cybersecurity effectiveness",
             "th": "วัดประสิทธิผลของความปลอดภัยไซเบอร์"
           },
-          "status": "in-preparation",
+          "status": "published",
           "lessons": [
             {
               "id": "lesson-d2-07-security-metrics-kpi-kri",
@@ -509,7 +509,7 @@
         "en": "Identity and Access Management (IAM) Concepts",
         "th": "แนวคิดการจัดการตัวตนและการเข้าถึง (IAM)"
       },
-      "status": "coming-soon",
+      "status": "published",
       "objectives": [
         {
           "id": "3.1",
@@ -517,8 +517,66 @@
             "en": "Understand identity life cycle management",
             "th": "เข้าใจการจัดการวงจรชีวิตของตัวตน"
           },
-          "status": "coming-soon",
-          "lessons": [],
+          "status": "published",
+          "lessons": [
+            {
+              "id": "lesson-d3-01-roles-provisioning",
+              "domainId": 3,
+              "primaryObjectiveId": "3.1",
+              "objectiveIds": [
+                "3.1"
+              ],
+              "title": {
+                "en": "Roles & Authorized Provisioning",
+                "th": "บทบาทและการจัดเตรียมสิทธิ์ที่ได้รับอนุมัติ"
+              },
+              "synopsis": {
+                "en": "Connect responsibilities to approved access, provision it correctly and verify the result for people and automated workloads.",
+                "th": "เชื่อมหน้าที่กับสิทธิ์ที่อนุมัติ จัดเตรียมและตรวจผลให้ถูกต้องสำหรับคนและระบบงานอัตโนมัติ"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d3-01-roles-provisioning.json"
+            },
+            {
+              "id": "lesson-d3-02-review-deprovisioning",
+              "domainId": 3,
+              "primaryObjectiveId": "3.1",
+              "objectiveIds": [
+                "3.1"
+              ],
+              "title": {
+                "en": "Access Reviews, Changes & Deprovisioning",
+                "th": "ทบทวน ปรับ และถอนสิทธิ์ตลอดวงจรชีวิต"
+              },
+              "synopsis": {
+                "en": "Reassess changing needs, distinguish activity from ownership and verify authorized access withdrawal for people and workloads.",
+                "th": "ทบทวนความจำเป็นที่เปลี่ยน แยกการใช้งานจากความรับผิดชอบ และตรวจผลการถอนสิทธิ์ของคนและระบบงาน"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d3-02-review-deprovisioning.json"
+            },
+            {
+              "id": "lesson-d3-03-iam-frameworks-tools",
+              "domainId": 3,
+              "primaryObjectiveId": "3.1",
+              "objectiveIds": [
+                "3.1"
+              ],
+              "title": {
+                "en": "IAM Frameworks & Tool Responsibilities",
+                "th": "กรอบแนวทางและหน้าที่ของเครื่องมือ IAM"
+              },
+              "synopsis": {
+                "en": "Connect identity guidance, directory data, trusted authentication and application access without confusing their responsibilities.",
+                "th": "เชื่อมแนวทาง Identity ข้อมูล Directory การยืนยันตัวตนที่เชื่อถือได้ และสิทธิ์ในแอป โดยแยกหน้าที่ของแต่ละส่วน"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d3-03-iam-frameworks-tools.json"
+            }
+          ],
           "relatedLessonIds": []
         },
         {
@@ -527,8 +585,66 @@
             "en": "Understand logical access controls",
             "th": "เข้าใจการควบคุมการเข้าถึงเชิงตรรกะ"
           },
-          "status": "coming-soon",
-          "lessons": [],
+          "status": "published",
+          "lessons": [
+            {
+              "id": "lesson-d3-04-least-privilege-sod",
+              "domainId": 3,
+              "primaryObjectiveId": "3.2",
+              "objectiveIds": [
+                "3.2"
+              ],
+              "title": {
+                "en": "Least Privilege & Separation of Duties",
+                "th": "สิทธิ์เท่าที่จำเป็นและการแบ่งแยกหน้าที่"
+              },
+              "synopsis": {
+                "en": "Grant enough access for the task and separate incompatible authority, including automated work.",
+                "th": "ให้สิทธิ์พอทำงานและแยกอำนาจที่ขัดกัน รวมถึงงานอัตโนมัติ"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d3-04-least-privilege-sod.json"
+            },
+            {
+              "id": "lesson-d3-05-access-control-models",
+              "domainId": 3,
+              "primaryObjectiveId": "3.2",
+              "objectiveIds": [
+                "3.2"
+              ],
+              "title": {
+                "en": "Choosing and Applying Access-Control Models",
+                "th": "เลือกและใช้แบบจำลองควบคุมการเข้าถึง"
+              },
+              "synopsis": {
+                "en": "Compare owner discretion, mandatory policy, role reuse and attribute-based decisions using explicit requests.",
+                "th": "เทียบดุลยพินิจเจ้าของ นโยบายบังคับ Role และ Attributes ผ่านคำขอที่ระบุชัด"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d3-05-access-control-models.json"
+            },
+            {
+              "id": "lesson-d3-06-mfa-authentication-signals",
+              "domainId": 3,
+              "primaryObjectiveId": "3.2",
+              "objectiveIds": [
+                "3.2"
+              ],
+              "title": {
+                "en": "MFA & Authentication Risk Signals",
+                "th": "MFA และสัญญาณความเสี่ยงในการยืนยันตัวตน"
+              },
+              "synopsis": {
+                "en": "Apply MFA foundations and assess anomalous login evidence without confusing signals, factors and permissions.",
+                "th": "ใช้พื้นฐาน MFA และประเมินหลักฐาน Login ผิดปกติ โดยแยกสัญญาณ ปัจจัย และสิทธิ์"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d3-06-mfa-authentication-signals.json"
+            }
+          ],
           "relatedLessonIds": []
         }
       ]

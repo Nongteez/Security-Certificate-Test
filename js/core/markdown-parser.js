@@ -43,6 +43,9 @@ export function parseInline(text) {
 
   let html = text;
 
+  // Remove any inline HTML comments first so they never leak as visible text
+  html = html.replace(/<!--[\s\S]*?-->/g, '');
+
   // Protect code spans first
   const codeSpans = [];
   html = html.replace(/`([^`]+)`/g, (match, code) => {
@@ -255,13 +258,24 @@ export function formatBilingualTermCell(rawCell) {
 export function parseMarkdown(markdown) {
   if (!markdown) return '';
 
-  const lines = markdown.replace(/\r\n/g, '\n').split('\n');
+  // Globally strip all HTML comments before line processing
+  const cleanMarkdown = markdown.replace(/<!--[\s\S]*?-->/g, '');
+  const lines = cleanMarkdown.replace(/\r\n/g, '\n').split('\n');
   const result = [];
   let i = 0;
 
   while (i < lines.length) {
     const line = lines[i];
     const trimmed = line.trim();
+
+    // HTML Comments fallback guard: Ignore any remaining orphaned comment delimiters
+    if (trimmed.startsWith('<!--')) {
+      while (i < lines.length && !lines[i].includes('-->')) {
+        i++;
+      }
+      i++; // Skip line containing -->
+      continue;
+    }
 
     // Raw script / iframe tag injection prevention
     if (/<(script|iframe|object|embed)\b/i.test(trimmed)) {
@@ -445,19 +459,30 @@ export function parseMarkdown(markdown) {
             .map(c => c.trim());
         });
 
-        let tableHtml = '<div class="reading-table-wrapper"><table class="reading-table"><thead><tr>';
-        headerCells.forEach(th => {
-          tableHtml += `<th scope="col">${th}</th>`;
+        const isGrcFrameworksTable = tableLines[0].includes('คำจำสั้นสำหรับสอบ') && tableLines[0].includes('Framework / Standard');
+        const wrapperClass = isGrcFrameworksTable
+          ? 'reading-table-wrapper reading-table-grc-frameworks-wrapper'
+          : 'reading-table-wrapper';
+        const tableClass = isGrcFrameworksTable
+          ? 'reading-table reading-table-grc-frameworks'
+          : 'reading-table';
+        const dataAttr = isGrcFrameworksTable ? ' data-table="grc-frameworks"' : '';
+
+        let tableHtml = `<div class="${wrapperClass}"${dataAttr}><table class="${tableClass}"${dataAttr}><thead><tr>`;
+        headerCells.forEach((th, thIdx) => {
+          const colClass = (isGrcFrameworksTable && thIdx === 3) ? ' class="reading-col-exam-keyword"' : '';
+          tableHtml += `<th scope="col"${colClass}>${th}</th>`;
         });
         tableHtml += '</tr></thead><tbody>';
         bodyRows.forEach(row => {
           tableHtml += '<tr>';
-          row.forEach(cell => {
+          row.forEach((cell, cellIdx) => {
+            const cellClass = (isGrcFrameworksTable && cellIdx === 3) ? ' class="reading-col-exam-keyword"' : '';
             const bilingualHtml = formatBilingualTermCell(cell);
             if (bilingualHtml) {
-              tableHtml += `<td>${bilingualHtml}</td>`;
+              tableHtml += `<td${cellClass}>${bilingualHtml}</td>`;
             } else {
-              tableHtml += `<td>${parseInline(cell)}</td>`;
+              tableHtml += `<td${cellClass}>${parseInline(cell)}</td>`;
             }
           });
           tableHtml += '</tr>';
@@ -475,7 +500,32 @@ export function parseMarkdown(markdown) {
       while (i < lines.length) {
         const currentLine = lines[i];
         const trimmedLine = currentLine.trim();
-        if (trimmedLine === '') break;
+        if (trimmedLine === '') {
+          // Lookahead across blank lines to preserve loose lists
+          let nextIdx = i + 1;
+          while (nextIdx < lines.length && lines[nextIdx].trim() === '') {
+            nextIdx++;
+          }
+          if (nextIdx < lines.length) {
+            const nextLine = lines[nextIdx];
+            const nextTrimmed = nextLine.trim();
+            // Stop if next line is a structural block, heading, table, directive, or callout
+            if (nextTrimmed.startsWith('```') ||
+                nextTrimmed.startsWith('$$') ||
+                nextTrimmed.startsWith('<') ||
+                nextTrimmed.startsWith('#') ||
+                nextTrimmed.startsWith('|') ||
+                nextTrimmed.startsWith(':::')) {
+              break;
+            }
+            // Check if next non-blank line is another list item or indented sub-line
+            if (/^\s*([*+-]|\d+\.)\s+/.test(nextLine) || /^\s{2,}/.test(nextLine)) {
+              i = nextIdx;
+              continue;
+            }
+          }
+          break;
+        }
         // Do not absorb nested code blocks, math, structural HTML, headings, tables, or directives
         if (trimmedLine.startsWith('```') ||
             trimmedLine.startsWith('$$') ||
@@ -510,6 +560,7 @@ export function parseMarkdown(markdown) {
     while (i < lines.length) {
       const curTrimmed = lines[i].trim();
       if (curTrimmed === '') break;
+      if (curTrimmed.startsWith('<!--')) break;
       if (curTrimmed.startsWith('#')) break;
       if (curTrimmed.startsWith('```')) break;
       if (curTrimmed.startsWith('$$')) break;

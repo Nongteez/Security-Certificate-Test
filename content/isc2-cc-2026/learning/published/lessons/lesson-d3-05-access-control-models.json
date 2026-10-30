@@ -1,0 +1,1130 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d3-05-access-control-models",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 3,
+  "primaryObjectiveId": "3.2",
+  "objectiveIds": [
+    "3.2"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Choosing and Applying Access-Control Models",
+    "th": "เลือกและใช้แบบจำลองควบคุมการเข้าถึง"
+  },
+  "synopsis": {
+    "en": "Compare owner discretion, mandatory policy, role reuse and attribute-based decisions using explicit requests.",
+    "th": "เทียบดุลยพินิจเจ้าของ นโยบายบังคับ Role และ Attributes ผ่านคำขอที่ระบุชัด"
+  },
+  "outcomes": [
+    {
+      "en": "Explain the policy basis of DAC, MAC, RBAC and ABAC.",
+      "th": "อธิบายหลักตัดสินสิทธิ์ของ DAC, MAC, RBAC และ ABAC"
+    },
+    {
+      "en": "Apply model conditions without assuming a universal security ranking.",
+      "th": "ใช้เงื่อนไขของโมเดลโดยไม่จัดอันดับความปลอดภัยแบบสากล"
+    },
+    {
+      "en": "Distinguish policy authority from effective enforcement.",
+      "th": "แยกผู้มีอำนาจกำหนดนโยบายจากการบังคับใช้จริง"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Domain 3 Lessons 1–3; Domain 1 authentication and trustworthy-evidence foundations.",
+      "th": "แนะนำ Domain 3 Lessons 1–3 และพื้นฐาน Authentication/หลักฐานที่น่าเชื่อถือจาก Domain 1"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 Exam Outline",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Objective 3.2 plus separate official AI application guidance; checked 2026-10-30."
+    },
+    {
+      "id": "d3-notes",
+      "title": "Domain 3.md — user study notes",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 3/Domain 3.md",
+      "locator": "N §§10/12–17; U topics9–13; S14–S17; ABAC detail is in N/U, not an invented extra capture."
+    },
+    {
+      "id": "d3-summary",
+      "title": "D3 sum.md — user summary",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 3/D3 sum.md",
+      "locator": "N §§10/12–17; U topics9–13; S14–S17; ABAC detail is in N/U, not an invented extra capture."
+    },
+    {
+      "id": "nist-dac",
+      "title": "NIST glossary — Discretionary Access Control",
+      "url": "https://csrc.nist.gov/glossary/term/discretionary_access_control",
+      "authority": "technical-primary",
+      "locator": "Owner/authorized-controller discretion; software still enforces configured permissions."
+    },
+    {
+      "id": "nist-mac",
+      "title": "NIST glossary — Mandatory Access Control",
+      "url": "https://csrc.nist.gov/glossary/term/mandatory_access_control",
+      "authority": "technical-primary",
+      "locator": "Mandatory policy and ordinary-owner override boundary; not a universal security ranking."
+    },
+    {
+      "id": "nist-rbac",
+      "title": "NIST RBAC FAQ",
+      "url": "https://csrc.nist.gov/projects/role-based-access-control/faqs",
+      "authority": "technical-primary",
+      "locator": "Role assignment, permissions, activation and constraints; not identical total rights from one shared role."
+    },
+    {
+      "id": "nist-abac",
+      "title": "NIST SP 800-162",
+      "url": "https://csrc.nist.gov/pubs/sp/800/162/upd2/final",
+      "authority": "technical-primary",
+      "locator": "Abstract: subject/object/requested-operation and environment attributes evaluated against policy. Technical supplement to N §16."
+    },
+    {
+      "id": "us-classified",
+      "title": "US Executive Order 13526",
+      "url": "https://www.archives.gov/isoo/policy-documents/cnsi-eo.html",
+      "authority": "technical-primary",
+      "locator": "§4.1(a): eligibility, nondisclosure agreement and need-to-know; scoped US classified example, not all MAC systems."
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d3-05-01-request-policy-enforcement",
+      "title": {
+        "en": "A model explains the rule; enforcement applies it.",
+        "th": "โมเดลอธิบายกฎ การบังคับใช้นำกฎไปตรวจคำขอ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Declared request: Mina reads the assigned report. The application evaluates the stated policy.",
+            "th": "คำขอตัวอย่าง: Mina อ่านรายงานที่รับผิดชอบ แอปประเมินนโยบายที่ระบุ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Subject",
+                "th": "ผู้ขอใช้"
+              },
+              {
+                "en": "Mina requests report read",
+                "th": "Mina ขออ่านรายงาน"
+              },
+              {
+                "en": "Identify the actor and requested action",
+                "th": "ระบุผู้ขอและการกระทำ"
+              }
+            ],
+            [
+              {
+                "en": "Resource",
+                "th": "ทรัพยากร"
+              },
+              {
+                "en": "Assigned accounting report",
+                "th": "รายงานบัญชีที่รับผิดชอบ"
+              },
+              {
+                "en": "Scope the information involved",
+                "th": "ระบุขอบเขตข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "Policy decision",
+                "th": "ผลตัดสินนโยบาย"
+              },
+              {
+                "en": "Allow this approved read; deny unapproved edit",
+                "th": "อนุญาตอ่านที่อนุมัติ ปฏิเสธแก้ที่ไม่ได้อนุมัติ"
+              },
+              {
+                "en": "Enforce the decision in the system",
+                "th": "นำผลไปบังคับใช้ในระบบ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Logical access controls govern access to systems, applications, data and other digital resources. An access-control model describes the basis or authority used to decide who may perform which action on which resource under stated conditions. The source purposes include consistent access decisions, enforcement of security policies, support for least privilege and protection of sensitive information. A model name alone does not implement any of these outcomes. The system must evaluate and enforce the policy for the actual request. Here Mina’s report-read request is permitted by the declared rule, while editing is not approved. Physical controls protect entry to places and are a useful contrast, not an extra Domain 3 objective. The four source models are taught as supported elaborations of the broad official models requirement; selecting a name does not guarantee correct configuration. The requesting subject can also be a service or bot identity. Under a declared RBAC policy, a reporting bot can receive only a report-reader role; under ABAC, the application can evaluate its service identity, the requested read and resource attributes against policy. Automation does not bypass the chosen model or acquire human authority by itself.",
+            "th": "Logical access controls ควบคุมการเข้าถึงระบบ แอป ข้อมูล และทรัพยากรดิจิทัลอื่น โมเดลควบคุมการเข้าถึงอธิบายหลักหรืออำนาจที่ใช้ตัดสินว่าใครทำอะไรกับทรัพยากรใดได้ภายใต้เงื่อนไขที่ระบุ ต้นฉบับกล่าวถึงการตัดสินสิทธิ์อย่างสม่ำเสมอ การบังคับ Security policies การรองรับ Least privilege และการปกป้องข้อมูลสำคัญ ชื่อโมเดลอย่างเดียวไม่ทำให้ผลลัพธ์เหล่านี้เกิดขึ้น ระบบต้องประเมินและบังคับนโยบายกับคำขอจริง ในตัวอย่างนี้ Mina อ่านรายงานได้ตามกฎที่ประกาศ แต่ไม่ได้อนุมัติให้แก้ไข ส่วน Physical controls ควบคุมการเข้าพื้นที่ ใช้เพื่อเทียบความหมาย ไม่ใช่เพิ่ม Objective ของ Domain 3 โมเดลสี่แบบจากแหล่งเรียนเป็นรายละเอียดที่รองรับหัวข้อ Models กว้าง ๆ ของ Outline การเลือกชื่อไม่ได้รับประกันว่าตั้งค่าถูกแล้ว ผู้ขออาจเป็น service identity หรือ bot ได้เช่นกัน ภายใต้ RBAC ที่กำหนดไว้ reporting bot อาจได้รับเพียง role สำหรับอ่านรายงาน ส่วน ABAC ให้แอปประเมิน service identity การขออ่าน และ attributes ของทรัพยากรตามนโยบาย การทำงานอัตโนมัติไม่ได้ข้ามโมเดลที่เลือกหรือได้รับอำนาจของมนุษย์ขึ้นมาเอง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "State subject, resource and action.",
+              "th": "ระบุผู้ขอ ทรัพยากร และการกระทำ"
+            },
+            {
+              "en": "Identify the decision basis.",
+              "th": "ระบุหลักที่ใช้ตัดสิน"
+            },
+            {
+              "en": "Check the enforced result.",
+              "th": "ตรวจผลที่บังคับจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Policy documentation is not enforcement by itself.",
+            "th": "เอกสารนโยบายอย่างเดียวไม่ใช่การบังคับใช้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-abac"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-05-02-dac-authorized-owner",
+      "title": {
+        "en": "DAC delegates access-setting discretion to an authorized owner.",
+        "th": "DAC ให้อำนาจเจ้าของที่ได้รับอนุญาตกำหนดสิทธิ์"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The file owner chooses these grants; the system still enforces them.",
+            "th": "เจ้าของไฟล์เลือกสิทธิ์ตามตัวอย่าง ระบบยังต้องบังคับสิทธิ์เหล่านี้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "User A",
+                "th": "ผู้ใช้ A"
+              },
+              {
+                "en": "Read",
+                "th": "อ่าน"
+              },
+              {
+                "en": "Owner grants read only",
+                "th": "เจ้าของให้เฉพาะอ่าน"
+              }
+            ],
+            [
+              {
+                "en": "User B",
+                "th": "ผู้ใช้ B"
+              },
+              {
+                "en": "Read and write",
+                "th": "อ่านและเขียน"
+              },
+              {
+                "en": "Owner grants both actions",
+                "th": "เจ้าของให้ทั้งสองการกระทำ"
+              }
+            ],
+            [
+              {
+                "en": "User C",
+                "th": "ผู้ใช้ C"
+              },
+              {
+                "en": "No access",
+                "th": "ไม่มีสิทธิ์"
+              },
+              {
+                "en": "System must deny access",
+                "th": "ระบบต้องปฏิเสธเข้าถึง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Discretionary Access Control allows an object’s owner or another authorized controller discretion over who receives access and which permissions they receive. In this authored file example, A receives read, B read/write and C no access. Owner discretion describes policy-setting authority; it does not mean the absence of software enforcement or unlimited freedom to bypass every organizational rule. The system must apply the grants and denials. The source’s flexibility and ease-of-sharing benefit comes with the risk that an owner grants excessive access. Suitability depends on requirements and configuration, so do not rank DAC as universally inferior to another model. Familiar file-sharing or operating-system examples illustrate the idea without claiming that a particular operating system supports only DAC.",
+            "th": "Discretionary Access Control ให้เจ้าของทรัพยากรหรือผู้ควบคุมที่ได้รับอนุญาตใช้ดุลยพินิจกำหนดว่าใครได้รับสิทธิ์ใด ในตัวอย่างไฟล์ที่แต่งนี้ A อ่านได้ B อ่านและเขียนได้ ส่วน C ไม่มีสิทธิ์ ดุลยพินิจเจ้าของอธิบายอำนาจกำหนดนโยบาย ไม่ได้แปลว่าไม่มีการบังคับใช้ด้วยซอฟต์แวร์หรือเลี่ยงกฎองค์กรทุกอย่างได้ ระบบยังต้องใช้ผลอนุญาตและปฏิเสธจริง ประโยชน์เรื่องความยืดหยุ่นและแบ่งปันสะดวกจากต้นฉบับมาพร้อมความเสี่ยงที่เจ้าของให้สิทธิ์เกินความจำเป็น ความเหมาะสมขึ้นกับข้อกำหนดและการตั้งค่า จึงไม่ควรจัดว่า DAC ด้อยกว่าแบบอื่นเสมอ ตัวอย่างแบ่งปันไฟล์หรือระบบปฏิบัติการที่คุ้นเคยใช้ช่วยอธิบายได้ แต่ไม่อ้างว่าระบบปฏิบัติการนั้นรองรับเฉพาะ DAC"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Who is authorized to set this grant?",
+              "th": "ใครมีอำนาจกำหนดสิทธิ์นี้?"
+            },
+            {
+              "en": "Which action does the grant permit?",
+              "th": "สิทธิ์อนุญาตการกระทำใด?"
+            },
+            {
+              "en": "Verify system enforcement.",
+              "th": "ตรวจการบังคับใช้ของระบบ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Owner discretion and software enforcement can coexist.",
+            "th": "ดุลยพินิจเจ้าของกับการบังคับใช้โดยระบบอยู่ร่วมกันได้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-dac"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-05-03-mac-central-policy",
+      "title": {
+        "en": "MAC applies mandatory policy that ordinary owners cannot override.",
+        "th": "MAC บังคับนโยบายที่เจ้าของทั่วไปเปลี่ยนข้ามไม่ได้"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A labeled document is checked against central policy and the subject’s applicable conditions.",
+            "th": "ตรวจเอกสารที่มี Label ตามนโยบายกลางและเงื่อนไขที่เกี่ยวกับผู้ขอ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Document label",
+                "th": "Label เอกสาร"
+              },
+              {
+                "en": "Classified Project A information",
+                "th": "ข้อมูลลับ Project A"
+              },
+              {
+                "en": "Use the applicable mandatory rule",
+                "th": "ใช้กฎบังคับที่เกี่ยวข้อง"
+              }
+            ],
+            [
+              {
+                "en": "Subject conditions",
+                "th": "เงื่อนไขผู้ขอ"
+              },
+              {
+                "en": "Required eligibility and information need",
+                "th": "คุณสมบัติและความจำเป็นต้องรู้ที่กำหนด"
+              },
+              {
+                "en": "Clearance alone is not a blanket grant",
+                "th": "Clearance อย่างเดียวไม่ใช่สิทธิ์ทุกเรื่อง"
+              }
+            ],
+            [
+              {
+                "en": "Ordinary owner sharing",
+                "th": "การแชร์โดยเจ้าของทั่วไป"
+              },
+              {
+                "en": "Cannot override this mandatory boundary",
+                "th": "ข้ามขอบเขตบังคับนี้ไม่ได้"
+              },
+              {
+                "en": "Authorized administration remains possible",
+                "th": "ยังมีการบริหารตามอำนาจได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Mandatory Access Control bases access on an enforced central policy, commonly illustrated with security labels and subject authorization. An ordinary resource owner cannot override the mandatory rule simply by sharing a file. This does not mean labels are immutable or that authorized administrators can never change policy through the approved process. The source uses Confidential, Secret and Top Secret as a classified-information example. For the scoped US example, Executive Order 13526 §4.1(a) includes favorable eligibility determination, an approved nondisclosure agreement and a need to know the information; clearance alone is not permission to every project. These are not asserted as identical rules in every country or every MAC system. Mandatory controls can support strict organizational requirements but can be complex and less flexible to administer. Their label does not make a system universally more secure regardless of configuration.",
+            "th": "Mandatory Access Control ตัดสินสิทธิ์ตามนโยบายกลางที่บังคับใช้ โดยมักยกตัวอย่าง Label ข้อมูลและสิทธิ์ของผู้ขอ เจ้าของทรัพยากรทั่วไปเปลี่ยนข้ามกฎบังคับเพียงกดแชร์ไฟล์ไม่ได้ แต่ไม่ได้แปลว่า Label เปลี่ยนไม่ได้ตลอดไปหรือผู้ดูแลที่มีอำนาจจะปรับนโยบายตามกระบวนการไม่ได้ ต้นฉบับใช้ Confidential, Secret และ Top Secret เป็นตัวอย่างข้อมูลลับ สำหรับกรณีสหรัฐฯ ที่จำกัดขอบเขตไว้ Executive Order 13526 §4.1(a) มีทั้งการพิจารณาคุณสมบัติที่ผ่าน ข้อตกลงไม่เปิดเผยข้อมูลที่อนุมัติ และความจำเป็นต้องรู้ข้อมูลนั้น Clearance อย่างเดียวจึงไม่ให้สิทธิ์ทุกโครงการ ไม่ได้อ้างว่าทุกประเทศหรือทุกระบบ MAC ใช้กฎเหมือนกันทั้งหมด การควบคุมบังคับช่วยรองรับข้อกำหนดองค์กรที่เข้มงวด แต่บริหารซับซ้อนและยืดหยุ่นน้อยได้ ชื่อโมเดลไม่ได้ทำให้ระบบปลอดภัยกว่าเสมอโดยไม่ขึ้นกับการตั้งค่า"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Check the mandatory rule and relevant conditions.",
+              "th": "ตรวจนโยบายบังคับและเงื่อนไขที่เกี่ยวข้อง"
+            },
+            {
+              "en": "Ordinary owners cannot override that rule.",
+              "th": "เจ้าของทั่วไปข้ามกฎนั้นไม่ได้"
+            },
+            {
+              "en": "Keep the classified example’s jurisdiction clear.",
+              "th": "ระบุขอบเขตประเทศของตัวอย่างข้อมูลลับ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A clearance label alone does not authorize every document.",
+            "th": "Clearance อย่างเดียวไม่อนุญาตให้อ่านเอกสารทุกฉบับ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-mac",
+        "us-classified"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-05-04-rbac-role-permission-reuse",
+      "title": {
+        "en": "RBAC reuses role-permission assignments.",
+        "th": "RBAC ใช้ชุดสิทธิ์ของ Role ร่วมกัน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Assign authorized roles to users instead of configuring the same grant repeatedly.",
+            "th": "มอบ Role ที่อนุมัติแก่ผู้ใช้ แทนการตั้งสิทธิ์แบบเดิมซ้ำรายคน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Alice, Bob, Charlie",
+                "th": "Alice, Bob, Charlie: ผู้ใช้"
+              },
+              {
+                "en": "Finance Reader role",
+                "th": "บทบาท Finance Reader"
+              },
+              {
+                "en": "Read accounting reports under this assignment",
+                "th": "อ่านรายงานบัญชีตามการมอบหมายนี้"
+              }
+            ],
+            [
+              {
+                "en": "HR staff",
+                "th": "เจ้าหน้าที่ HR"
+              },
+              {
+                "en": "HR Records role",
+                "th": "บทบาท HR Records"
+              },
+              {
+                "en": "Access the approved employee records",
+                "th": "เข้าถึงข้อมูลพนักงานที่อนุมัติ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Role-Based Access Control associates permissions with roles and assigns authorized roles to users. Here three Finance users receive report-reading permission through the same Finance Reader role; a separate HR role concerns employee records. The source also gives IT staff/system configuration as a job-related example. Reuse can simplify management, improve scalability and make the permissions supplied by a role consistent across assignments. It does not guarantee that every user has identical total access, nor that every role is well designed. An overbroad role can violate least privilege, and combinations can create incompatible authority. Additional roles, activation and constraints can affect effective rights. Defining RBAC as purely static versus ABAC as dynamic misses the actual decision basis. This slide teaches assignment mechanics rather than repeating Lesson 1’s role-definition workflow.",
+            "th": "Role-Based Access Control ผูก Permission กับ Role แล้วมอบ Role ที่ได้รับอนุญาตแก่ผู้ใช้ ตัวอย่างนี้ผู้ใช้ Finance สามคนได้สิทธิ์อ่านรายงานผ่าน Finance Reader เดียวกัน ส่วน HR Records เป็นบทบาทแยกสำหรับข้อมูลพนักงาน ต้นฉบับยังยก IT staff กับการตั้งค่าระบบเป็นตัวอย่างตามหน้าที่ การใช้ชุดสิทธิ์ซ้ำช่วยให้บริหารง่าย รองรับจำนวนผู้ใช้ และให้สิทธิ์ที่มาจาก Role เดียวกันสม่ำเสมอ แต่ไม่ได้รับประกันว่าสิทธิ์รวมของทุกคนเหมือนกัน หรือทุก Role ออกแบบดี Role ที่กว้างเกินอาจขัด Least privilege และการรวม Role อาจทำให้อำนาจขัดกัน บทบาทเพิ่มเติม การเปิดใช้ และข้อจำกัดส่งผลต่อสิทธิ์จริงได้ การนิยาม RBAC ว่านิ่งเสมอเทียบ ABAC ว่าเปลี่ยนแปลงเสมอจึงไม่ใช่หลักตัดสินที่แท้จริง สไลด์นี้สอนกลไกการมอบสิทธิ์ ไม่เรียนกระบวนการกำหนดหน้าที่ของ Lesson 1 ซ้ำทั้งชุด"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Define role permissions deliberately.",
+              "th": "กำหนดสิทธิ์ Role อย่างรอบคอบ"
+            },
+            {
+              "en": "Assign roles through authorized processes.",
+              "th": "มอบ Role ผ่านกระบวนการที่มีอำนาจ"
+            },
+            {
+              "en": "Check effective combinations and constraints.",
+              "th": "ตรวจการรวมสิทธิ์และข้อจำกัดที่มีผลจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Role reuse helps consistency; it does not guarantee correct scope.",
+            "th": "การใช้ Role ซ้ำช่วยความสม่ำเสมอ แต่ไม่รับประกันขอบเขตที่ถูกต้อง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-rbac"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-05-05-abac-evaluate-the-request",
+      "title": {
+        "en": "ABAC evaluates the attributes of this request against policy.",
+        "th": "ABAC เทียบ Attributes ของคำขอนี้กับนโยบาย"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Declared rule: Finance may read this report on a company device during working hours; missing required data means deny in this example.",
+            "th": "กฎตัวอย่าง: Finance อ่านรายงานนี้ได้จากเครื่ององค์กรในเวลางาน ถ้าข้อมูลที่กฎต้องใช้ขาด ให้ปฏิเสธในตัวอย่างนี้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Subject",
+                "th": "ผู้ขอ"
+              },
+              {
+                "en": "Department: Finance",
+                "th": "แผนก: Finance"
+              },
+              {
+                "en": "Required department matches",
+                "th": "ตรงแผนกที่กำหนด"
+              }
+            ],
+            [
+              {
+                "en": "Resource + operation",
+                "th": "ทรัพยากร + การกระทำ"
+              },
+              {
+                "en": "Accounting report: read",
+                "th": "รายงานบัญชี: อ่าน"
+              },
+              {
+                "en": "A read rule does not approve editing",
+                "th": "กฎอ่านไม่ได้อนุมัติการแก้ไข"
+              }
+            ],
+            [
+              {
+                "en": "Device",
+                "th": "อุปกรณ์"
+              },
+              {
+                "en": "Company-managed device",
+                "th": "อุปกรณ์ที่องค์กรดูแล"
+              },
+              {
+                "en": "Use trustworthy device attributes",
+                "th": "ใช้ข้อมูลคุณลักษณะอุปกรณ์ที่เชื่อถือได้"
+              }
+            ],
+            [
+              {
+                "en": "Environment",
+                "th": "สภาพแวดล้อม"
+              },
+              {
+                "en": "Within working hours",
+                "th": "อยู่ในเวลางาน"
+              },
+              {
+                "en": "All required conditions must hold here",
+                "th": "ทุกเงื่อนไขที่กำหนดต้องผ่านในกรณีนี้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Attribute-Based Access Control evaluates relevant attributes of the subject, resource, requested operation and sometimes environment against policy. Relevant attributes include department/job information, resource type/sensitivity, time/location and device properties. This authored rule makes the resource and read operation explicit, not just the user’s department. All required conditions are assumed known and satisfied in the pictured request. For this example only, a missing or failed required condition means deny; handling unknown data must be defined by the actual policy rather than assumed for every implementation. Device information can be represented through relevant subject or context attributes without imposing a new mandatory taxonomy. A role can also be an attribute, so role/context mechanisms can be combined. A time condition alone does not prove a system is an exclusively ABAC implementation.",
+            "th": "Attribute-Based Access Control เทียบคุณลักษณะของผู้ขอ ทรัพยากร การกระทำที่ขอ และบางกรณีสภาพแวดล้อมกับนโยบาย Attributes ที่เกี่ยวข้องมีแผนก/ข้อมูลงาน ประเภท/ความสำคัญของทรัพยากร เวลา/สถานที่ และคุณสมบัติอุปกรณ์ กฎที่แต่งนี้ระบุทรัพยากรและการอ่านให้ชัด ไม่ดูเพียงแผนกผู้ใช้ ภาพสมมติว่าข้อมูลที่ต้องใช้มีครบและทุกเงื่อนไขผ่าน เฉพาะตัวอย่างนี้ ถ้าเงื่อนไขที่กำหนดไม่ผ่านหรือข้อมูลขาด ให้ปฏิเสธ การจัดการข้อมูลไม่ทราบต้องกำหนดในนโยบายจริง ไม่สมมติแทนทุกระบบ ข้อมูล Device อาจแทนด้วย Attributes ของผู้ขอหรือบริบทที่เกี่ยวข้องได้ โดยไม่สร้างหมวดบังคับใหม่ Role เองก็เป็น Attribute ได้ จึงรวมกลไก Role กับบริบทได้ เงื่อนไขเวลาอย่างเดียวไม่ได้พิสูจน์ว่าระบบใช้ ABAC ล้วน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Include the requested operation.",
+              "th": "ระบุการกระทำที่ขอด้วย"
+            },
+            {
+              "en": "Evaluate trustworthy, relevant attributes.",
+              "th": "ประเมิน Attributes ที่เกี่ยวข้องและเชื่อถือได้"
+            },
+            {
+              "en": "State how missing data is handled.",
+              "th": "ระบุวิธีจัดการข้อมูลที่ขาด"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Model combinations are possible; evaluate the stated policy.",
+            "th": "โมเดลใช้ร่วมกันได้ ให้ประเมินนโยบายที่ระบุ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-abac"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-05-06-effective-role-combinations",
+      "title": {
+        "en": "A shared role does not prove identical total rights.",
+        "th": "มี Role ร่วมกัน ไม่ได้พิสูจน์ว่าสิทธิ์รวมเหมือนกัน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Declared assignments: both users are Report Readers; only Dara also has approved maintenance rights.",
+            "th": "การมอบหมายตัวอย่าง: ทั้งคู่เป็น Report Reader แต่มีเฉพาะ Dara ที่ได้รับสิทธิ์ Maintenance เพิ่ม"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Mina",
+                "th": "Mina: ผู้ใช้"
+              },
+              {
+                "en": "Report Reader",
+                "th": "บทบาทอ่านรายงาน"
+              },
+              {
+                "en": "Read assigned reports",
+                "th": "อ่านรายงานที่รับผิดชอบ"
+              }
+            ],
+            [
+              {
+                "en": "Dara",
+                "th": "Dara: ผู้ใช้"
+              },
+              {
+                "en": "Report Reader + Maintenance",
+                "th": "บทบาทอ่านรายงาน + Maintenance"
+              },
+              {
+                "en": "Read reports and perform the specified maintenance",
+                "th": "อ่านรายงานและทำ Maintenance ที่ระบุ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The shared Report Reader role supplies the same stated report-read permission in both assignments. Dara’s additional authorized Maintenance role supplies a different capability, so their total effective access can differ. The illustrated result follows the declared assignments, not a claim about universal allow/deny precedence. Real systems may also have role hierarchies, activation rules and constraints affecting which permissions can be used together. Review those combinations and actual enforcement, especially where incompatible authority could undermine separation of duties. A role name or a single shared group is therefore not enough to conclude that two people have identical total rights. This qualification refines the source’s consistency benefit without discarding the useful role-permission reuse principle.",
+            "th": "Report Reader ที่ใช้ร่วมกันให้สิทธิ์อ่านรายงานตามที่ระบุเหมือนกันในสองการมอบหมาย แต่ Dara มี Maintenance ที่อนุมัติเพิ่ม จึงอาจมีสิทธิ์รวมต่างจาก Mina ผลในภาพเป็นไปตามการมอบหมายที่ประกาศ ไม่ใช่กฎสากลว่าสิทธิ์อนุญาตหรือปฏิเสธฝ่ายใดชนะ ระบบจริงอาจมีลำดับ Role กฎเปิดใช้ และข้อจำกัดว่าความสามารถใดใช้ร่วมกันได้ ควรทบทวนการรวมสิทธิ์และการบังคับจริง โดยเฉพาะอำนาจขัดกันที่ทำให้ SoD ล้มเหลว ชื่อ Role หรือกลุ่มที่ร่วมกันเพียงกลุ่มเดียวจึงไม่เพียงพอจะสรุปว่าสองคนมีสิทธิ์รวมเหมือนกัน ข้อจำกัดนี้ทำให้ประโยชน์ด้านความสม่ำเสมอจากต้นฉบับแม่นยำขึ้น โดยไม่ทิ้งหลักการใช้ชุดสิทธิ์ของ Role ซ้ำที่ยังมีประโยชน์"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Separate the shared grant from total rights.",
+              "th": "แยกสิทธิ์ร่วมออกจากสิทธิ์รวม"
+            },
+            {
+              "en": "Consider additional roles and activation.",
+              "th": "พิจารณา Role เพิ่มและการเปิดใช้"
+            },
+            {
+              "en": "Check constraints and actual enforcement.",
+              "th": "ตรวจข้อจำกัดและการบังคับจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Results are for these stated assignments, not a universal precedence rule.",
+            "th": "ผลนี้สำหรับการมอบหมายที่ระบุ ไม่ใช่กฎลำดับสิทธิ์สากล"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-rbac"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-05-07-choose-by-policy-requirement",
+      "title": {
+        "en": "Choose by policy requirements, not a security ranking.",
+        "th": "เลือกตามข้อกำหนดนโยบาย ไม่ใช่อันดับความปลอดภัย"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Compare the decision basis for access to the same report.",
+            "th": "เทียบหลักตัดสินการเข้าถึงรายงานเดียวกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "DAC",
+                "th": "DAC: ดุลยพินิจ"
+              },
+              {
+                "en": "Authorized owner grants report read",
+                "th": "เจ้าของที่มีอำนาจให้สิทธิ์อ่าน"
+              },
+              {
+                "en": "Flexible sharing; overgranting remains a risk",
+                "th": "แชร์ยืดหยุ่น แต่ยังเสี่ยงให้เกินจำเป็น"
+              }
+            ],
+            [
+              {
+                "en": "MAC",
+                "th": "MAC: นโยบายบังคับ"
+              },
+              {
+                "en": "Mandatory label/policy limits access",
+                "th": "Label/นโยบายบังคับจำกัดสิทธิ์"
+              },
+              {
+                "en": "Ordinary owner cannot override; administration may be complex",
+                "th": "เจ้าของทั่วไปข้ามไม่ได้ บริหารอาจซับซ้อน"
+              }
+            ],
+            [
+              {
+                "en": "RBAC",
+                "th": "RBAC: บทบาท"
+              },
+              {
+                "en": "Assigned report-reader role supplies read",
+                "th": "Role อ่านรายงานที่มอบหมายให้สิทธิ์อ่าน"
+              },
+              {
+                "en": "Reuse and scale; poor role design can overgrant",
+                "th": "ใช้ซ้ำรองรับผู้ใช้มาก แต่ออกแบบไม่ดีอาจให้เกิน"
+              }
+            ],
+            [
+              {
+                "en": "ABAC",
+                "th": "ABAC: คุณลักษณะ"
+              },
+              {
+                "en": "Request attributes satisfy the report policy",
+                "th": "Attributes ของคำขอผ่านนโยบายรายงาน"
+              },
+              {
+                "en": "Define relevant conditions and data handling",
+                "th": "ต้องกำหนดเงื่อนไขและวิธีจัดการข้อมูล"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The source compares owner discretion, central mandatory labels/policy, roles and attributes. The deciding question is which authority or basis the requirement actually specifies for the requested resource and action. DAC can support delegated sharing; MAC restricts ordinary owner overrides; RBAC reuses role permissions; ABAC evaluates attributes against policy. None of these names alone guarantees secure implementation. Their mechanisms can coexist in a system, and central enforcement can support more than one model. Preserve the source’s qualified tradeoffs: flexibility versus excessive grants, mandatory restrictions versus administration complexity, and scalable roles versus poor role design. ABAC also needs trustworthy relevant attributes and defined handling of missing data. Industry labels such as bank or military are not sufficient reasoning by themselves.",
+            "th": "ต้นฉบับเทียบดุลยพินิจเจ้าของ นโยบาย/Label บังคับ Role และ Attributes คำถามตัดสินคือข้อกำหนดระบุอำนาจหรือหลักใดสำหรับทรัพยากรและการกระทำที่ขอ DAC รองรับการแชร์ที่มอบอำนาจ MAC จำกัดการเปลี่ยนข้ามโดยเจ้าของทั่วไป RBAC ใช้สิทธิ์ของ Role ซ้ำ และ ABAC ประเมิน Attributes ตามนโยบาย ไม่มีชื่อใดรับประกันการนำไปใช้ที่ปลอดภัย กลไกเหล่านี้อยู่ร่วมกันในระบบได้ และการบังคับจากส่วนกลางก็รองรับได้มากกว่าหนึ่งโมเดล คงข้อแลกเปลี่ยนที่มีขอบเขตจากต้นฉบับ คือความยืดหยุ่นกับการให้สิทธิ์เกิน ข้อบังคับกับความซับซ้อนในการบริหาร และ Role ที่ขยายจำนวนผู้ใช้ได้กับการออกแบบที่ไม่ดี ABAC ยังต้องใช้ Attributes ที่เกี่ยวข้องและน่าเชื่อถือ พร้อมกำหนดวิธีจัดการข้อมูลที่ขาด คำว่าองค์กรธนาคารหรือทหารอย่างเดียวไม่พอใช้เป็นเหตุผลเลือก"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify who or what sets the decision basis.",
+              "th": "ระบุใครหรืออะไรเป็นหลักตัดสิน"
+            },
+            {
+              "en": "Apply the actual requirement.",
+              "th": "ใช้ข้อกำหนดจริง"
+            },
+            {
+              "en": "Keep implementation and coexistence in view.",
+              "th": "คำนึงถึงการนำไปใช้และการใช้ร่วมกัน"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A model is not a universal security score.",
+            "th": "โมเดลไม่ใช่คะแนนความปลอดภัยสากล"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-dac",
+        "nist-mac",
+        "nist-rbac",
+        "nist-abac"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-05-08-mandatory-policy-decision",
+      "title": {
+        "en": "Which model matches a mandatory owner-override boundary?",
+        "th": "โมเดลใดตรงกับข้อบังคับที่เจ้าของข้ามไม่ได้?"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Declared requirement: central document-label policy must apply even when an ordinary owner wants to share more widely.",
+            "th": "ข้อกำหนดตัวอย่าง: ต้องใช้กฎ Label เอกสารจากส่วนกลาง แม้เจ้าของทั่วไปอยากแชร์กว้างขึ้น"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Owner sharing",
+                "th": "การแชร์โดยเจ้าของ"
+              },
+              {
+                "en": "Let the file owner choose every recipient.",
+                "th": "ให้เจ้าของไฟล์เลือกผู้รับทั้งหมด"
+              },
+              {
+                "en": "This describes delegated discretion, not the mandatory override restriction in the requirement.",
+                "th": "อธิบายดุลยพินิจที่มอบให้ ไม่ใช่ข้อบังคับห้ามข้ามที่โจทย์กำหนด"
+              }
+            ],
+            [
+              {
+                "en": "Job-role reuse",
+                "th": "การใช้ Role ซ้ำ"
+              },
+              {
+                "en": "Use job roles as the decisive basis.",
+                "th": "ใช้ Role งานเป็นหลักตัดสิน"
+              },
+              {
+                "en": "Role reuse alone does not establish the stated mandatory label and ordinary-owner boundary.",
+                "th": "ใช้ Role ซ้ำอย่างเดียวไม่ได้กำหนด Label บังคับกับขอบเขตเจ้าของตามโจทย์"
+              }
+            ],
+            [
+              {
+                "en": "Mandatory policy",
+                "th": "นโยบายบังคับ"
+              },
+              {
+                "en": "Apply MAC with the stated label policy and owner-override restriction.",
+                "th": "ใช้ MAC ตามนโยบาย Label และข้อห้ามเจ้าของข้ามกฎที่ระบุ"
+              },
+              {
+                "en": "MAC matches this mandatory authority boundary. Correct policy configuration and enforcement are still required.",
+                "th": "MAC ตรงกับขอบเขตอำนาจบังคับนี้ แต่ยังต้องตั้งค่าและบังคับนโยบายให้ถูก"
+              }
+            ],
+            [
+              {
+                "en": "Context rule only",
+                "th": "ใช้บริบทอย่างเดียว"
+              },
+              {
+                "en": "Replace the requirement with device and time conditions.",
+                "th": "แทนข้อกำหนดด้วยเงื่อนไข Device และเวลา"
+              },
+              {
+                "en": "Those conditions can be useful, but do not replace the specifically required mandatory label policy.",
+                "th": "เงื่อนไขนั้นมีประโยชน์ได้ แต่ไม่แทนนโยบาย Label บังคับที่โจทย์ต้องการ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This authored case asks for a particular policy authority, not the strongest-sounding label. The requirement is mandatory central document-label policy that ordinary owners cannot override. MAC is the supported model description for that requirement. DAC-style owner sharing, role-permission reuse or a rule based only on device/time describes a different decision basis and does not by itself fulfill the stated boundary. A real system may combine mechanisms; that does not remove the mandatory condition specified here. Choosing MAC still requires correct configuration, relevant subject/resource conditions and effective enforcement. The scenario does not imply clearance alone grants every document, nor that MAC is universally superior. All four reasons are provided in Reading and Info as well as the interactive slide.",
+            "th": "กรณีที่แต่งนี้ถามอำนาจของนโยบายเฉพาะ ไม่ได้ถามชื่อที่ฟังดูเข้มงวดที่สุด ข้อกำหนดคือนโยบาย Label เอกสารบังคับจากส่วนกลางที่เจ้าของทั่วไปเปลี่ยนข้ามไม่ได้ MAC จึงตรงกับคำอธิบายโมเดลที่ต้องการ การแชร์แบบเจ้าของ การใช้สิทธิ์ Role ซ้ำ หรือกฎที่ดู Device/เวลาอย่างเดียวเป็นหลักตัดสินต่างแบบ และไม่ตอบขอบเขตนั้นด้วยตนเอง ระบบจริงรวมกลไกกันได้ แต่ไม่ได้ลบเงื่อนไขบังคับที่ระบุ การเลือก MAC ยังต้องมีการตั้งค่าที่ถูก เงื่อนไขผู้ขอ/ทรัพยากรที่เกี่ยวข้อง และการบังคับใช้จริง สถานการณ์ไม่ได้สื่อว่า Clearance อย่างเดียวอ่านเอกสารทุกอย่างได้ หรือ MAC เหนือกว่าทุกกรณี Reading และ Info มีเหตุผลครบทั้งสี่ทางเลือกเช่นเดียวกับสไลด์โต้ตอบ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Use the declared authority requirement.",
+              "th": "ใช้ข้อกำหนดอำนาจที่ประกาศ"
+            },
+            {
+              "en": "Explain the selected basis.",
+              "th": "อธิบายหลักที่เลือก"
+            },
+            {
+              "en": "Retain enforcement and qualification checks.",
+              "th": "ยังต้องตรวจการบังคับใช้และเงื่อนไข"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "An authored policy case, not an industry-keyword shortcut.",
+            "th": "กรณีนโยบายที่แต่ง ไม่ใช่เลือกจากคำใบ้อุตสาหกรรม"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-mac"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-3-completion-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — assistant technical/editorial review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — assistant technical/editorial review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — assistant technical/editorial review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    }
+  }
+}

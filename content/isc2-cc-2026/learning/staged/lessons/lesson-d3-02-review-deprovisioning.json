@@ -1,0 +1,1272 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d3-02-review-deprovisioning",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 3,
+  "primaryObjectiveId": "3.1",
+  "objectiveIds": [
+    "3.1"
+  ],
+  "revision": "1",
+  "status": "in-preparation",
+  "title": {
+    "en": "Access Reviews, Changes & Deprovisioning",
+    "th": "ทบทวน ปรับ และถอนสิทธิ์ตลอดวงจรชีวิต"
+  },
+  "synopsis": {
+    "en": "Reassess changing needs, distinguish activity from ownership and verify authorized access withdrawal for people and workloads.",
+    "th": "ทบทวนความจำเป็นที่เปลี่ยน แยกการใช้งานจากความรับผิดชอบ และตรวจผลการถอนสิทธิ์ของคนและระบบงาน"
+  },
+  "outcomes": [
+    {
+      "en": "Explain review findings and respond to role changes without accumulating unjustified rights.",
+      "th": "อธิบายสิ่งที่ Review ตรวจพบและปรับเมื่อย้ายงานโดยไม่สะสมสิทธิ์ที่ไม่จำเป็น"
+    },
+    {
+      "en": "Distinguish inactivity, missing accountability, review decisions and applied changes.",
+      "th": "แยกการไม่ใช้งาน การขาดผู้รับผิดชอบ ผลทบทวน และการปรับสิทธิ์จริง"
+    },
+    {
+      "en": "Complete authorized withdrawal, verify remaining paths and retain required evidence.",
+      "th": "ถอนตามอำนาจให้ครบ ตรวจช่องทางที่เหลือ และเก็บหลักฐานที่จำเป็น"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Domain 3 Lesson 1 roles/provisioning and ordinary account/application access concepts.",
+      "th": "แนะนำให้เรียน Domain 3 Lesson 1 เรื่อง Role/Provisioning และพื้นฐานบัญชี/การเข้าถึงแอป"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 Exam Outline",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Objective 3.1 review/deprovision; checked 2026-10-30."
+    },
+    {
+      "id": "isc2-ai-application",
+      "title": "ISC2 Domain 3 AI application guidance",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Automated identity lifecycle; explicit supplement."
+    },
+    {
+      "id": "d3-notes",
+      "title": "Domain 3.md — user study notes",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 3/Domain 3.md",
+      "locator": "Sections 5–6, S04–S06 and transcript review/deprovisioning. Original six findings/four triggers/four actions retained with audit corrections."
+    },
+    {
+      "id": "d3-summary",
+      "title": "D3 sum.md — user summary",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 3/D3 sum.md",
+      "locator": "Topics 3–4, access review and deprovisioning."
+    },
+    {
+      "id": "identity-lifecycle",
+      "title": "Federal Identity Lifecycle Management Playbook",
+      "authority": "technical-primary",
+      "url": "https://www.idmanagement.gov/playbooks/ilm/",
+      "locator": "Modification, revocation, account retirement/archiving and orphan account discussion; accessed 2026-10-30. Federal deadlines, assurance levels and automation guarantees are not generalized."
+    },
+    {
+      "id": "nist-federation",
+      "title": "NIST SP 800-63C-4 — Federation and Assertions",
+      "authority": "technical-primary",
+      "url": "https://pages.nist.gov/800-63-4/sp800-63c.html",
+      "locator": "Section 4.7, independently managed IdP/RP sessions and supported end-session coordination. Supplementary technical explanation."
+    },
+    {
+      "id": "nist-csf",
+      "title": "NIST Cybersecurity Framework 2.0",
+      "authority": "technical-primary",
+      "url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+      "locator": "PR.AA-05: permissions/entitlements defined, managed, enforced and reviewed; outcome guidance, not implementation software."
+    },
+    {
+      "id": "service-account-governance",
+      "title": "Microsoft — Governing service accounts",
+      "authority": "technical-primary",
+      "url": "https://learn.microsoft.com/en-us/entra/architecture/govern-service-accounts",
+      "locator": "Owner, purpose, permissions, dependencies, reviews and deprovisioning; vendor-specific configuration is excluded."
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d3-02-01-mover-before-after",
+      "title": {
+        "en": "A new role does not justify keeping every old permission.",
+        "th": "ย้ายหน้าที่แล้ว ไม่ได้แปลว่าควรเก็บทุกสิทธิ์เดิม"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A Finance employee moves to IT; reporting access still remains six months later.",
+            "th": "พนักงาน Finance ย้ายไป IT แต่หกเดือนต่อมายังใช้สิทธิ์อ่านรายงานการเงินเดิมได้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Evidence, decisions and their limits",
+            "th": "หลักฐาน การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Concept / condition",
+              "th": "แนวคิด / เงื่อนไข"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / distinction",
+              "th": "เหตุผล / ข้อแตกต่าง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Excessive Permissions",
+                "th": "สิทธิ์มากเกินความจำเป็น"
+              },
+              {
+                "en": "Access exceeds current work requirements.",
+                "th": "สิทธิ์เกินกว่าที่งานปัจจุบันต้องใช้"
+              },
+              {
+                "en": "Review the actual task and effective rights.",
+                "th": "เทียบงานจริงกับสิทธิ์ที่ใช้ได้จริง"
+              }
+            ],
+            [
+              {
+                "en": "Unused Accounts",
+                "th": "บัญชีที่ไม่ได้ใช้งาน"
+              },
+              {
+                "en": "No use observed within the defined context.",
+                "th": "ไม่พบการใช้ในช่วงหรือบริบทที่กำหนด"
+              },
+              {
+                "en": "Inactivity alone does not establish missing ownership.",
+                "th": "การไม่ใช้งานเพียงอย่างเดียวไม่ได้ยืนยันว่าขาดผู้รับผิดชอบ"
+              }
+            ],
+            [
+              {
+                "en": "Inappropriate Access",
+                "th": "สิทธิ์ไม่เหมาะสม"
+              },
+              {
+                "en": "A resource or action does not fit the assigned responsibility.",
+                "th": "ทรัพยากรหรือรายการที่ให้ใช้ไม่สอดคล้องกับหน้าที่"
+              },
+              {
+                "en": "Not every inappropriate grant is simply a large number of permissions.",
+                "th": "สิทธิ์ไม่เหมาะสมไม่ได้หมายถึงมีจำนวนสิทธิ์มากเสมอไป"
+              }
+            ],
+            [
+              {
+                "en": "Role Changes",
+                "th": "หน้าที่เปลี่ยน"
+              },
+              {
+                "en": "Access may not yet reflect the new assignment.",
+                "th": "สิทธิ์อาจยังไม่สอดคล้องกับงานใหม่"
+              },
+              {
+                "en": "Reassess additions and removals.",
+                "th": "พิจารณาทั้งสิทธิ์ที่ควรเพิ่มและถอน"
+              }
+            ],
+            [
+              {
+                "en": "Privilege Accumulation",
+                "th": "สิทธิ์เก่าสะสม"
+              },
+              {
+                "en": "New grants are added while unnecessary old rights remain.",
+                "th": "เพิ่มสิทธิ์ใหม่แต่ยังเก็บสิทธิ์เดิมที่หมดความจำเป็น"
+              },
+              {
+                "en": "Retain old rights only when current need is justified.",
+                "th": "เก็บสิทธิ์เดิมได้เมื่อมีเหตุผลรองรับความจำเป็นปัจจุบัน"
+              }
+            ],
+            [
+              {
+                "en": "Orphaned Accounts",
+                "th": "บัญชีที่ขาดผู้รับผิดชอบที่เหมาะสม"
+              },
+              {
+                "en": "An account lacks appropriate ownership, governance or identity linkage.",
+                "th": "บัญชีขาดผู้รับผิดชอบ การกำกับ หรือการเชื่อมกับ Identity ที่เหมาะสม"
+              },
+              {
+                "en": "A known employee with stale rights is not necessarily an orphaned identity.",
+                "th": "พนักงานที่ระบุตัวได้แต่สิทธิ์ค้าง ไม่จำเป็นต้องเป็น Identity ที่ขาดผู้รับผิดชอบ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "When work changes, compare the access actually held with the current assignment. In the source example a Finance employee moved to IT six months ago but still reaches the Financial Reporting System. If that reporting access is no longer justified, an authorized change should remove it while enabling the IT work that is now needed. Adding the new role without reassessing the old grant can accumulate unnecessary privileges. Some previous access may remain legitimately justified by continuing duties; do not remove everything merely because a job title changed. The source identifies six review findings, retained in the table. This example concerns stale permissions, not automatic proof of an orphaned identity or an incident. The six-month delay describes what happened, not a recommended review interval.",
+            "th": "เมื่อหน้าที่เปลี่ยน ให้เทียบสิทธิ์ที่ใช้ได้จริงกับงานปัจจุบัน ตัวอย่างต้นฉบับคือพนักงานย้ายจาก Finance ไป IT มาหกเดือน แต่ยังเข้า Financial Reporting System ได้ หากไม่มีความจำเป็นใช้รายงานนั้นแล้ว ผู้มีอำนาจควรปรับถอนสิทธิ์เดิม พร้อมให้สิทธิ์ที่งาน IT ต้องใช้ การเพิ่ม Role ใหม่โดยไม่ทบทวนสิทธิ์เก่าทำให้สิทธิ์ที่ไม่จำเป็นสะสมได้ บางสิทธิ์เดิมอาจยังมีเหตุผลรองรับจากหน้าที่ที่ทำต่อ จึงไม่ควรถอนทุกอย่างเพียงเพราะชื่อตำแหน่งเปลี่ยน ตารางเก็บสิ่งที่ต้นฉบับระบุว่าการ Review ตรวจพบได้ทั้งหกอย่าง ตัวอย่างนี้เป็นปัญหาสิทธิ์ค้าง ไม่ใช่หลักฐานอัตโนมัติว่า Identity ขาดผู้รับผิดชอบหรือเกิด Incident แล้ว ส่วนหกเดือนเป็นเวลาที่ผ่านไปในเรื่อง ไม่ใช่คำแนะนำให้รอทบทวนตามช่วงนั้น"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Compare duties with effective access.",
+              "th": "เทียบหน้าที่กับสิทธิ์ที่มีผลจริง"
+            },
+            {
+              "en": "Remove unjustified rights; retain justified work access.",
+              "th": "ถอนสิทธิ์ที่หมดความจำเป็น และคงสิทธิ์ที่งานยังต้องใช้"
+            },
+            {
+              "en": "Record the decision and verify the change.",
+              "th": "บันทึกผลตัดสินใจและตรวจผลการปรับสิทธิ์"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Finance reporting is outside the new task in this example; other continuing duties may differ.",
+            "th": "ตัวอย่างนี้งานใหม่ไม่ต้องอ่านรายงาน Finance แต่หน้าที่ที่ทำต่อในกรณีอื่นอาจต่างกัน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "d3-summary",
+        "identity-lifecycle"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-02-02-review-apply-verify",
+      "title": {
+        "en": "A review decision must become a verified access change.",
+        "th": "ผลทบทวนต้องนำไปสู่การปรับสิทธิ์ที่ตรวจยืนยันได้"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A rejected entitlement in a spreadsheet is not the same as revoked access.",
+            "th": "การระบุว่าไม่อนุมัติสิทธิ์ใน Spreadsheet ยังไม่เท่ากับถอนสิทธิ์ในระบบ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Evidence, decisions and their limits",
+            "th": "หลักฐาน การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Concept / condition",
+              "th": "แนวคิด / เงื่อนไข"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / distinction",
+              "th": "เหตุผล / ข้อแตกต่าง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Evidence and current need",
+                "th": "หลักฐานและความจำเป็นปัจจุบัน"
+              },
+              {
+                "en": "Compare entitlements with role, project and contract need.",
+                "th": "เทียบสิทธิ์กับหน้าที่ โครงการ และความจำเป็นตามสัญญา"
+              },
+              {
+                "en": "Use trustworthy, current records and an accountable reviewer.",
+                "th": "ใช้ข้อมูลปัจจุบันที่เชื่อถือได้และมีผู้ทบทวนรับผิดชอบ"
+              }
+            ],
+            [
+              {
+                "en": "Authorized decision",
+                "th": "การตัดสินใจตามอำนาจ"
+              },
+              {
+                "en": "Retain, change or remove access with a reason.",
+                "th": "คง ปรับ หรือถอนสิทธิ์พร้อมเหตุผล"
+              },
+              {
+                "en": "Retaining justified access can be a valid result.",
+                "th": "การคงสิทธิ์ที่ยังจำเป็นเป็นผลทบทวนที่ถูกต้องได้"
+              }
+            ],
+            [
+              {
+                "en": "Apply the decision",
+                "th": "นำผลไปดำเนินการ"
+              },
+              {
+                "en": "Responsible administrators or authorized automation update the grant.",
+                "th": "ผู้ดูแลหรือระบบอัตโนมัติที่ได้รับอนุญาตปรับสิทธิ์"
+              },
+              {
+                "en": "A signed review alone does not reconfigure an application.",
+                "th": "ลงนามผลทบทวนอย่างเดียวไม่ได้เปลี่ยนสิทธิ์ในแอป"
+              }
+            ],
+            [
+              {
+                "en": "Verify and record",
+                "th": "ตรวจผลและบันทึก"
+              },
+              {
+                "en": "Check the intended allowed and denied actions.",
+                "th": "ตรวจทั้งรายการที่ควรทำได้และควรถูกปฏิเสธ"
+              },
+              {
+                "en": "Keep evidence of decision, implementation and result.",
+                "th": "เก็บหลักฐานการตัดสินใจ การลงมือปรับ และผลตรวจ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "An access review evaluates whether existing entitlements remain justified. A designated reviewer considers current responsibilities and reliable entitlement information, then records an authorized retain, change or remove decision with a reason. The responsible administrator or authorized automation must apply that decision to the relevant system. Verification then checks whether effective access matches the approved result, including work that should remain possible. For example, marking obsolete reporting access as rejected in a spreadsheet does not prove the reporting application now denies it. Keep records that connect the reviewer, decision, implementation and verification. Automated completion messages are evidence to assess, not a guarantee that every downstream system changed successfully. A review may legitimately retain access; success is justified, enforced access rather than removal of the largest number of rights.",
+            "th": "Access review ประเมินว่าสิทธิ์ที่มีอยู่ยังมีเหตุผลรองรับหรือไม่ ผู้ทบทวนที่มีหน้าที่ตามนโยบายพิจารณางานปัจจุบันและข้อมูลสิทธิ์ที่เชื่อถือได้ แล้วบันทึกว่าจะคง ปรับ หรือถอนสิทธิ์พร้อมเหตุผล จากนั้นผู้ดูแลหรือระบบอัตโนมัติที่ได้รับอนุญาตต้องนำผลไปปรับในระบบที่เกี่ยวข้อง และตรวจว่า Effective access ตรงกับผลที่อนุมัติ รวมถึงงานที่ยังควรทำได้ ตัวอย่างเช่น การทำเครื่องหมายไม่อนุมัติสิทธิ์รายงานเดิมใน Spreadsheet ไม่ได้พิสูจน์ว่าแอปรายงานปฏิเสธสิทธิ์นั้นแล้ว ควรเก็บข้อมูลที่เชื่อมผู้ทบทวน ผลตัดสินใจ การลงมือปรับ และการตรวจยืนยัน ข้อความว่างานอัตโนมัติเสร็จแล้วเป็นหลักฐานที่ต้องพิจารณา ไม่ใช่การรับประกันว่าทุกระบบปลายทางเปลี่ยนสำเร็จ การ Review อาจคงสิทธิ์ไว้ได้ เป้าหมายคือสิทธิ์ที่มีเหตุผลและถูกบังคับใช้จริง ไม่ใช่ถอนให้ได้จำนวนมากที่สุด"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "A decision needs an authorized owner.",
+              "th": "ผลตัดสินใจต้องมีผู้รับผิดชอบตามอำนาจ"
+            },
+            {
+              "en": "Applying and verifying are distinct responsibilities.",
+              "th": "การปรับสิทธิ์กับการตรวจผลเป็นคนละหน้าที่"
+            },
+            {
+              "en": "Record justified retention as well as removal.",
+              "th": "บันทึกเหตุผลทั้งการคงและถอนสิทธิ์"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Review → authorized decision → implementation → verification is this illustrative workflow.",
+            "th": "ทบทวน → ตัดสินใจตามอำนาจ → ปรับสิทธิ์ → ตรวจผล เป็นกระบวนการตัวอย่างนี้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "identity-lifecycle",
+        "nist-csf"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-02-03-activity-and-ownership",
+      "title": {
+        "en": "Usage and ownership answer different questions.",
+        "th": "การใช้งานกับผู้รับผิดชอบเป็นคนละคำถาม"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An active account can be unmanaged; an unused account can still have a justified owner.",
+            "th": "บัญชีที่ใช้งานอยู่อาจขาดการกำกับ ส่วนบัญชีที่ไม่ได้ใช้อาจยังมีผู้รับผิดชอบและเหตุผลรองรับ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Evidence, decisions and their limits",
+            "th": "หลักฐาน การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Concept / condition",
+              "th": "แนวคิด / เงื่อนไข"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / distinction",
+              "th": "เหตุผล / ข้อแตกต่าง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Recent use / accountable owner",
+                "th": "มีการใช้ / มีผู้รับผิดชอบ"
+              },
+              {
+                "en": "An owned production service account runs its approved job.",
+                "th": "Service account มีทีมดูแลและทำงานที่อนุมัติอยู่"
+              },
+              {
+                "en": "Activity does not remove the need to review access.",
+                "th": "มีการใช้ก็ยังต้องทบทวนความเหมาะสมของสิทธิ์"
+              }
+            ],
+            [
+              {
+                "en": "No recent use / accountable owner",
+                "th": "ไม่พบการใช้ระยะนี้ / มีผู้รับผิดชอบ"
+              },
+              {
+                "en": "An approved recovery account is rarely needed.",
+                "th": "บัญชีกู้คืนที่อนุมัติไว้อาจแทบไม่ได้ใช้"
+              },
+              {
+                "en": "Validate its need and safeguards; inactivity is not automatic orphaning.",
+                "th": "ตรวจความจำเป็นและการป้องกัน การไม่ใช้งานไม่ได้แปลว่าขาดผู้รับผิดชอบทันที"
+              }
+            ],
+            [
+              {
+                "en": "Recent use / missing accountability",
+                "th": "มีการใช้ / ขาดผู้รับผิดชอบ"
+              },
+              {
+                "en": "An old automated job still runs but no responsible owner is known.",
+                "th": "งานอัตโนมัติเก่ายังรัน แต่ไม่ทราบผู้รับผิดชอบที่เหมาะสม"
+              },
+              {
+                "en": "Investigate identity linkage, purpose and dependencies.",
+                "th": "ตรวจการเชื่อม Identity วัตถุประสงค์ และระบบที่พึ่งพา"
+              }
+            ],
+            [
+              {
+                "en": "No recent use / missing accountability",
+                "th": "ไม่พบการใช้ระยะนี้ / ขาดผู้รับผิดชอบ"
+              },
+              {
+                "en": "A leftover account has neither a known owner nor recent activity.",
+                "th": "บัญชีตกค้างไม่มีทั้งผู้รับผิดชอบที่ทราบและการใช้ในระยะนี้"
+              },
+              {
+                "en": "Use authorized investigation and remediation, not blind record deletion.",
+                "th": "ตรวจและแก้ตามอำนาจ ไม่ลบระเบียนโดยไม่พิจารณา"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Activity and accountable ownership are independent dimensions, not a two-level risk score. Dormant or unused describes observed activity relative to a defined policy or context; orphaned describes missing appropriate ownership, governance or linkage to a current identity. These conditions can coexist, and an actively used service account can still be orphaned. Conversely, a rarely used recovery account may have a valid accountable owner and continuing approved purpose. Review purpose, responsible identity, permissions and dependencies before deciding what to retain or remove under policy. Do not define inactive accounts as necessarily owned, infer ownership from a successful login or delete every unused record automatically. The four examples in the table illustrate the independent questions; they do not set a universal inactivity threshold or guarantee that any cell is safe.",
+            "th": "การใช้งานกับความรับผิดชอบเป็นคนละคำถาม ไม่ใช่ตารางคะแนนความเสี่ยงสองระดับ Dormant หรือ Unused อธิบายการใช้ที่สังเกตได้เทียบกับนโยบายหรือบริบทที่กำหนด ส่วน Orphaned อธิบายการขาดผู้รับผิดชอบ การกำกับ หรือการเชื่อมกับ Identity ปัจจุบันที่เหมาะสม ทั้งสองสภาพเกิดร่วมกันได้ และ Service account ที่ยังมีงานใช้อยู่ก็อาจขาดผู้รับผิดชอบได้ ในทางกลับกัน บัญชีกู้คืนที่แทบไม่ได้ใช้อาจยังมีผู้รับผิดชอบและวัตถุประสงค์ที่อนุมัติ ควรตรวจวัตถุประสงค์ ผู้รับผิดชอบ สิทธิ์ และระบบที่พึ่งพา ก่อนตัดสินใจคงหรือถอนตามนโยบาย อย่านิยามว่าบัญชีไม่เคลื่อนไหวต้องมีเจ้าของเสมอ อย่าอนุมานว่ามีผู้รับผิดชอบเพียงเพราะ Login ได้ และอย่าลบทุกระเบียนที่ไม่ได้ใช้โดยอัตโนมัติ ตัวอย่างทั้งสี่แสดงคำถามที่เป็นอิสระต่อกัน ไม่ได้กำหนดช่วงเวลาไม่ใช้งานสากลหรือรับประกันว่าช่องใดปลอดภัย"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Usage: is the account being used?",
+              "th": "การใช้งาน: มีการใช้บัญชีหรือไม่?"
+            },
+            {
+              "en": "Accountability: who is responsible, and for what purpose?",
+              "th": "ความรับผิดชอบ: ใครดูแล และใช้เพื่ออะไร?"
+            },
+            {
+              "en": "Validate need and dependencies before remediation.",
+              "th": "ตรวจความจำเป็นและระบบที่พึ่งพาก่อนแก้ไข"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Do not confuse “unused” with “unowned.”",
+            "th": "อย่าสับสนระหว่าง “ไม่ได้ใช้งาน” กับ “ขาดผู้รับผิดชอบ”"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "d3-summary",
+        "identity-lifecycle"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-02-04-review-at-the-change",
+      "title": {
+        "en": "Scheduled reviews do not replace change-triggered reassessment.",
+        "th": "การทบทวนตามรอบไม่ทดแทนการตรวจเมื่อหน้าที่เปลี่ยน"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Routine review and event-triggered review complement each other.",
+            "th": "การทบทวนตามรอบและเมื่อมีเหตุเปลี่ยนแปลงช่วยเสริมกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Evidence, decisions and their limits",
+            "th": "หลักฐาน การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Concept / condition",
+              "th": "แนวคิด / เงื่อนไข"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / distinction",
+              "th": "เหตุผล / ข้อแตกต่าง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Routine review",
+                "th": "ทบทวนตามรอบ"
+              },
+              {
+                "en": "Use the organization’s policy and risk-based cadence.",
+                "th": "ใช้รอบตามนโยบายและความเสี่ยงขององค์กร"
+              },
+              {
+                "en": "A calendar entry alone does not enforce access.",
+                "th": "การมีรอบในปฏิทินอย่างเดียวไม่ได้บังคับใช้สิทธิ์"
+              }
+            ],
+            [
+              {
+                "en": "Change-triggered reassessment",
+                "th": "ตรวจเมื่อมีเหตุเปลี่ยนแปลง"
+              },
+              {
+                "en": "Reassess changed duties, projects or contract need.",
+                "th": "ตรวจเมื่อหน้าที่ โครงการ หรือความจำเป็นตามสัญญาเปลี่ยน"
+              },
+              {
+                "en": "Do not leave known unjustified rights until the next scheduled review.",
+                "th": "อย่าปล่อยสิทธิ์ที่รู้ว่าหมดความจำเป็นไว้จนถึงรอบถัดไป"
+              }
+            ],
+            [
+              {
+                "en": "Source example: six months later",
+                "th": "ตัวอย่างต้นฉบับ: ผ่านไปหกเดือน"
+              },
+              {
+                "en": "Finance access remained after the employee moved to IT.",
+                "th": "พนักงานย้ายไป IT แต่สิทธิ์ Finance ยังอยู่"
+              },
+              {
+                "en": "Elapsed story time, not the required review frequency.",
+                "th": "เวลาที่ผ่านไปในเรื่อง ไม่ใช่ความถี่ที่ต้องทบทวน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Periodic reviews can discover changes or inappropriate access that were missed, but they do not replace authorized action when a relevant event is known. A new role, changed project assignment or ended contract can require reassessment and adjustment according to policy and risk. Record the trigger, current need, decision and verified result. The six months in the Finance-to-IT source example is elapsed time, not a review schedule recommendation. The course does not prescribe that all organizations review every ninety days or wait for certainty of harm before removing known unjustified rights. Automated event feeds can help initiate the process, but an HR status change or calendar reminder alone does not prove the applications have enforced the required change.",
+            "th": "การทบทวนตามรอบช่วยค้นหาการเปลี่ยนแปลงหรือสิทธิ์ไม่เหมาะสมที่อาจตกหล่น แต่ไม่ได้ทดแทนการดำเนินการตามอำนาจเมื่อทราบเหตุที่เกี่ยวข้องแล้ว การเปลี่ยน Role งานโครงการ หรือการสิ้นสุดสัญญาอาจต้องตรวจและปรับสิทธิ์ตามนโยบายและความเสี่ยง ควรบันทึกเหตุ ความจำเป็นปัจจุบัน ผลตัดสินใจ และผลตรวจยืนยัน เวลาหกเดือนในตัวอย่าง Finance ย้ายไป IT ไม่ใช่คำแนะนำเรื่องรอบ Review บทเรียนนี้ไม่ได้กำหนดให้ทุกองค์กรทบทวนทุกเก้าสิบวัน หรือรอให้มั่นใจว่าจะเกิดความเสียหายก่อนถอนสิทธิ์ที่รู้ว่าหมดความจำเป็นแล้ว ข้อมูลเหตุเปลี่ยนแปลงอัตโนมัติช่วยเริ่มกระบวนการได้ แต่การเปลี่ยนสถานะใน HR หรือข้อความเตือนจากปฏิทินเพียงอย่างเดียวไม่ได้พิสูจน์ว่าแอปต่าง ๆ ปรับสิทธิ์สำเร็จ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Use policy-defined routine reviews.",
+              "th": "ทบทวนตามรอบที่นโยบายกำหนด"
+            },
+            {
+              "en": "Respond to relevant changes without waiting for that calendar date.",
+              "th": "จัดการเหตุเปลี่ยนแปลงที่เกี่ยวข้องโดยไม่รอวันในปฏิทิน"
+            },
+            {
+              "en": "Verify the enforced result.",
+              "th": "ตรวจผลที่ระบบบังคับใช้จริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Review cadence is contextual; the six-month story is not a standard.",
+            "th": "รอบทบทวนขึ้นกับบริบท เรื่องที่ผ่านมาหกเดือนไม่ใช่มาตรฐาน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "d3-summary",
+        "identity-lifecycle"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-02-05-withdraw-without-erasing-history",
+      "title": {
+        "en": "Withdraw access without erasing required evidence.",
+        "th": "ถอนสิทธิ์ โดยไม่ทำลายหลักฐานที่ต้องเก็บ"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Deprovisioning removes or disables unneeded access; record retention is a separate decision.",
+            "th": "Deprovisioning ถอนหรือระงับสิทธิ์ที่หมดความจำเป็น ส่วนการเก็บระเบียนเป็นอีกเรื่องหนึ่ง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Evidence, decisions and their limits",
+            "th": "หลักฐาน การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Concept / condition",
+              "th": "แนวคิด / เงื่อนไข"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / distinction",
+              "th": "เหตุผล / ข้อแตกต่าง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Employee Termination",
+                "th": "ถูกเลิกจ้าง"
+              },
+              {
+                "en": "A departure can trigger access withdrawal.",
+                "th": "การสิ้นสุดการจ้างอาจทำให้ต้องถอนสิทธิ์"
+              },
+              {
+                "en": "Coordinate authorized timing and verification under policy.",
+                "th": "ประสานเวลาและการตรวจผลตามนโยบายและอำนาจ"
+              }
+            ],
+            [
+              {
+                "en": "Employee Resignation",
+                "th": "ลาออก"
+              },
+              {
+                "en": "Reassess and withdraw access that should not continue.",
+                "th": "ตรวจและถอนสิทธิ์ที่ไม่ควรใช้ต่อ"
+              },
+              {
+                "en": "Do not retain unjustified access merely because departure is voluntary.",
+                "th": "การออกโดยสมัครใจไม่ได้ทำให้เก็บสิทธิ์ที่ไม่จำเป็นไว้ได้"
+              }
+            ],
+            [
+              {
+                "en": "Role Change",
+                "th": "เปลี่ยนบทบาท"
+              },
+              {
+                "en": "Remove only rights that are no longer justified.",
+                "th": "ถอนสิทธิ์ส่วนที่หมดความจำเป็น"
+              },
+              {
+                "en": "An employee may still need an ordinary account for the new work.",
+                "th": "พนักงานอาจยังต้องใช้บัญชีทั่วไปเพื่อทำงานใหม่"
+              }
+            ],
+            [
+              {
+                "en": "Contract Expiration",
+                "th": "หมดสัญญา"
+              },
+              {
+                "en": "End the access authorized for that contract.",
+                "th": "ยุติสิทธิ์ที่ให้สำหรับสัญญานั้น"
+              },
+              {
+                "en": "A contractor end date must reach the relevant access systems.",
+                "th": "วันสิ้นสุดสัญญาต้องนำไปดำเนินการในระบบที่เกี่ยวข้อง"
+              }
+            ],
+            [
+              {
+                "en": "Disabling User Account",
+                "th": "ระงับบัญชีผู้ใช้"
+              },
+              {
+                "en": "Prevent further use of the relevant account.",
+                "th": "ป้องกันการใช้บัญชีที่เกี่ยวข้องต่อ"
+              },
+              {
+                "en": "Disabling is not the same as deleting every identity record.",
+                "th": "ระงับบัญชีไม่เท่ากับลบทุกระเบียนของ Identity"
+              }
+            ],
+            [
+              {
+                "en": "Revoking Application Access",
+                "th": "ถอนสิทธิ์แอปพลิเคชัน"
+              },
+              {
+                "en": "Withdraw the relevant application rights.",
+                "th": "ถอนสิทธิ์ในแอปที่เกี่ยวข้อง"
+              },
+              {
+                "en": "Check downstream application grants and sessions.",
+                "th": "ตรวจสิทธิ์และ Session ในแอปปลายทาง"
+              }
+            ],
+            [
+              {
+                "en": "Removing Group Memberships",
+                "th": "ถอดสมาชิกกลุ่ม"
+              },
+              {
+                "en": "Remove group memberships no longer required.",
+                "th": "ถอดสมาชิกกลุ่มที่ไม่จำเป็นแล้ว"
+              },
+              {
+                "en": "Verify which effective rights changed.",
+                "th": "ตรวจว่าสิทธิ์ที่มีผลจริงเปลี่ยนอย่างไร"
+              }
+            ],
+            [
+              {
+                "en": "Revoking Privileged Access",
+                "th": "ถอนสิทธิ์ระดับสูง"
+              },
+              {
+                "en": "Remove obsolete administrative capability.",
+                "th": "ถอนความสามารถดูแลระบบที่ไม่จำเป็นแล้ว"
+              },
+              {
+                "en": "A move may withdraw admin rights while ordinary work continues.",
+                "th": "การย้ายงานอาจถอนสิทธิ์ Admin โดยยังทำงานทั่วไปต่อได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Deprovisioning removes or disables access when it is no longer justified. The source names four triggers and four possible activities, retained in the table; these are not eight universal sequential steps. The extent of removal depends on the event: an ended contract may require full withdrawal, while a role change may remove network administration but retain an ordinary employee account. Act with authorized timing according to policy and verify relevant accounts, applications, memberships, privileged rights and access paths. Access revocation is distinct from deleting a digital identity record or destroying audit history. Preserve required authorization and activity evidence under applicable retention and privacy policy; later archive or deletion decisions must follow those requirements. Neither a disabled-account flag nor an updated HR status is sufficient proof that all relevant access has ended.",
+            "th": "Deprovisioning ถอนหรือระงับ Access เมื่อไม่มีเหตุผลให้ใช้ต่อ ต้นฉบับระบุเหตุสี่อย่างและกิจกรรมที่อาจทำสี่อย่างซึ่งเก็บไว้ครบในตาราง ไม่ใช่แปดขั้นตอนเรียงลำดับที่ทุกองค์กรต้องทำเหมือนกัน ขอบเขตขึ้นกับเหตุ เช่น หมดสัญญาอาจต้องถอนสิทธิ์ทั้งหมดที่ให้ตามสัญญา ขณะที่ย้ายหน้าที่อาจถอน Network admin แต่ยังคงบัญชีพนักงานทั่วไปไว้ ให้ดำเนินการตามเวลาและอำนาจที่นโยบายกำหนด แล้วตรวจบัญชี แอป สมาชิกกลุ่ม สิทธิ์ระดับสูง และช่องทางเข้าถึงที่เกี่ยวข้อง การถอน Access ต่างจากการลบระเบียนตัวตนหรือทำลายประวัติ Audit ควรเก็บหลักฐานอนุมัติและกิจกรรมตามข้อกำหนดการเก็บรักษาและ Privacy ส่วนการ Archive หรือลบภายหลังต้องเป็นไปตามข้อกำหนดนั้น สถานะว่าบัญชีถูกระงับหรือข้อมูล HR เปลี่ยนแล้วอย่างเดียวจึงไม่พอยืนยันว่าการเข้าถึงทั้งหมดที่เกี่ยวข้องสิ้นสุดลง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Remove access according to the actual event and authority.",
+              "th": "ถอนตามเหตุจริงและอำนาจที่กำหนด"
+            },
+            {
+              "en": "Verify relevant access paths, not just the HR record.",
+              "th": "ตรวจช่องทางเข้าถึงที่เกี่ยวข้อง ไม่ใช่ดูเฉพาะระเบียน HR"
+            },
+            {
+              "en": "Retain required evidence under policy.",
+              "th": "เก็บหลักฐานที่จำเป็นตามนโยบาย"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Disable access ≠ delete all records.",
+            "th": "ระงับสิทธิ์ ≠ ลบทุกระเบียน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "d3-summary",
+        "identity-lifecycle"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-02-06-central-and-application-sessions",
+      "title": {
+        "en": "A central disable does not prove every app session has ended.",
+        "th": "ระงับบัญชีกลางแล้ว ไม่ได้ยืนยันว่าทุก Session ในแอปสิ้นสุดลง"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "In this observed case, an application still accepts a previously established session.",
+            "th": "ในกรณีที่ตรวจพบนี้ แอปยังยอมให้ใช้ Session ที่เริ่มไว้ก่อนหน้า"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Evidence, decisions and their limits",
+            "th": "หลักฐาน การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Concept / condition",
+              "th": "แนวคิด / เงื่อนไข"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / distinction",
+              "th": "เหตุผล / ข้อแตกต่าง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Central identity disabled",
+                "th": "บัญชีกลางถูกระงับ"
+              },
+              {
+                "en": "The central control records the account change.",
+                "th": "ระบบกลางบันทึกการเปลี่ยนสถานะบัญชี"
+              },
+              {
+                "en": "Do not infer the state of every separately managed session.",
+                "th": "อย่าอนุมานสถานะของทุก Session ที่จัดการแยกต่างหาก"
+              }
+            ],
+            [
+              {
+                "en": "Existing application session",
+                "th": "Session เดิมในแอป"
+              },
+              {
+                "en": "The application may manage its session independently.",
+                "th": "แอปอาจจัดการ Session ของตนแยกต่างหาก"
+              },
+              {
+                "en": "Supported coordination can exist; behavior is not identical everywhere.",
+                "th": "อาจมีกลไกประสานการยุติ Session แต่แต่ละระบบไม่ได้ทำงานเหมือนกันทั้งหมด"
+              }
+            ],
+            [
+              {
+                "en": "Supported withdrawal and verification",
+                "th": "ถอนและตรวจผลด้วยกลไกที่ระบบรองรับ"
+              },
+              {
+                "en": "Terminate or revoke the relevant session/grant and test denial.",
+                "th": "ยุติหรือเพิกถอน Session/สิทธิ์ที่เกี่ยวข้อง แล้วตรวจว่าถูกปฏิเสธ"
+              },
+              {
+                "en": "Check relevant authentication material and remaining access paths too.",
+                "th": "ตรวจสิ่งที่ใช้ยืนยันตัวตนและช่องทางที่ยังเหลือด้วย"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "An application can manage its authenticated session separately from the central identity service. NIST SP 800-63C-4 explains that ending the identity-provider session does not necessarily terminate sessions at relying applications; supported end-session signaling may coordinate them. Likewise, a central account change is not proof that all previously issued sessions or other access paths are gone. This slide describes an observed residual session, not a rule that central disablement always fails. An authorized administrator should use supported withdrawal mechanisms for relevant application grants, sessions and authentication material, then verify the intended denial. Product capabilities and timing vary; do not promise instant global revocation or treat clearing a local browser screen as server-side termination. Protocol configuration and full tool architecture remain outside this lesson.",
+            "th": "แอปอาจจัดการ Session ที่ยืนยันตัวตนแล้วแยกจากบริการ Identity กลาง NIST SP 800-63C-4 อธิบายว่าการยุติ Session ที่ Identity provider ไม่จำเป็นต้องยุติ Session ในแอปที่อาศัยข้อมูลนั้นด้วย แม้บางระบบจะส่งสัญญาณประสานการยุติได้ เช่นเดียวกัน การเปลี่ยนสถานะบัญชีกลางไม่ได้ยืนยันว่า Session ที่ออกไว้หรือช่องทางเข้าถึงอื่นหมดไปแล้ว สไลด์นี้ระบุกรณีที่ตรวจพบ Session ค้าง ไม่ใช่กฎว่าระงับบัญชีกลางแล้วต้องล้มเหลวเสมอ ผู้ดูแลที่มีอำนาจควรใช้กลไกที่ระบบรองรับเพื่อถอนสิทธิ์ ยุติ Session และจัดการสิ่งที่ใช้ยืนยันตัวตนที่เกี่ยวข้อง แล้วตรวจว่าถูกปฏิเสธตามที่ต้องการ ความสามารถและเวลาที่มีผลแตกต่างกัน จึงไม่ควรรับประกันว่าจะเพิกถอนพร้อมกันทันทีทุกระบบ หรือถือว่าปิดหน้าบราวเซอร์แล้วเท่ากับยุติ Session ที่เซิร์ฟเวอร์ รายละเอียดตั้งค่า Protocol และสถาปัตยกรรมเครื่องมือไม่อยู่ในบทนี้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Separate sessions may need coordinated withdrawal.",
+              "th": "Session ที่แยกกันอาจต้องประสานการเพิกถอน"
+            },
+            {
+              "en": "Use the actual system’s supported controls.",
+              "th": "ใช้ Control ที่ระบบจริงรองรับ"
+            },
+            {
+              "en": "Verify the intended access denial.",
+              "th": "ตรวจว่าปฏิเสธการเข้าถึงได้ตามที่ต้องการ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Check the application result; do not infer it from one central switch.",
+            "th": "ตรวจผลที่แอป อย่าอนุมานจากสวิตช์กลางเพียงจุดเดียว"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "nist-federation"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-02-07-retire-a-workload-identity",
+      "title": {
+        "en": "A retired workload should not leave active, unjustified access.",
+        "th": "เลิกใช้ระบบงานแล้ว ไม่ควรทิ้งสิทธิ์ที่หมดความจำเป็นไว้"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Review the bot’s purpose, responsible owner and dependencies before completing retirement.",
+            "th": "ตรวจวัตถุประสงค์ ผู้รับผิดชอบ และระบบที่พึ่งพา Bot ก่อนดำเนินการเลิกใช้ให้ครบ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Evidence, decisions and their limits",
+            "th": "หลักฐาน การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Concept / condition",
+              "th": "แนวคิด / เงื่อนไข"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / distinction",
+              "th": "เหตุผล / ข้อแตกต่าง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Purpose and owner",
+                "th": "วัตถุประสงค์และผู้รับผิดชอบ"
+              },
+              {
+                "en": "The monthly reporting job has been retired.",
+                "th": "งานรายงานรายเดือนนี้เลิกใช้แล้ว"
+              },
+              {
+                "en": "The responsible team must account for remaining identity use.",
+                "th": "ทีมที่รับผิดชอบต้องอธิบายการใช้ Identity ที่ยังเหลือ"
+              }
+            ],
+            [
+              {
+                "en": "Dependencies",
+                "th": "ระบบที่พึ่งพา"
+              },
+              {
+                "en": "Check which approved jobs still depend on the account or authentication material.",
+                "th": "ตรวจว่างานที่อนุมัติใดยังพึ่งบัญชีหรือสิ่งที่ใช้ยืนยันตัวตนนี้"
+              },
+              {
+                "en": "Plan authorized continuity changes without retaining unjustified access indefinitely.",
+                "th": "วางแผนปรับเพื่อความต่อเนื่องตามอำนาจ ไม่ปล่อยสิทธิ์ที่ไร้เหตุผลไว้อย่างไม่มีกำหนด"
+              }
+            ],
+            [
+              {
+                "en": "Withdraw obsolete access",
+                "th": "ถอนสิทธิ์ที่หมดความจำเป็น"
+              },
+              {
+                "en": "Remove obsolete grants and retire relevant authentication material.",
+                "th": "ถอนสิทธิ์ที่เลิกใช้และจัดการสิ่งที่ใช้ยืนยันตัวตนที่เกี่ยวข้อง"
+              },
+              {
+                "en": "Use methods appropriate to the workload, not a universal human MFA prompt.",
+                "th": "ใช้วิธีที่เหมาะกับระบบงาน ไม่สมมติว่าต้องตอบ MFA แบบมนุษย์ทุกกรณี"
+              }
+            ],
+            [
+              {
+                "en": "Verify and record",
+                "th": "ตรวจผลและบันทึก"
+              },
+              {
+                "en": "Check that no unjustified access path remains.",
+                "th": "ตรวจว่าไม่เหลือช่องทางที่หมดความจำเป็น"
+              },
+              {
+                "en": "Keep accountable retirement evidence under retention policy.",
+                "th": "เก็บหลักฐานเลิกใช้ที่ระบุผู้รับผิดชอบตามนโยบายเก็บรักษา"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Service accounts and bots need lifecycle governance even when they do not appear as employees in an HR departure list. When the reporting workload is retired, the accountable team should review the purpose, current usage and dependencies of its identity. Coordinate any justified service transition, withdraw obsolete permissions and retire relevant authentication material using the supported process, then verify no unjustified access path remains. Dependency analysis prevents avoidable disruption; it is not permission to keep an unmanaged privileged identity indefinitely. A change of human owner is also a reason to reassess responsibility, not automatically proof that the workload itself must end. Record the authorized action and result under retention policy. This is explicit official AI/service-account application guidance, without prescribing a vendor or a password-only authentication model.",
+            "th": "Service account และ Bot ต้องมีการกำกับตลอดวงจรชีวิต แม้ไม่ได้อยู่ในรายชื่อพนักงานออกจากงานของ HR เมื่องานรายงานนี้เลิกใช้ ทีมที่รับผิดชอบควรตรวจวัตถุประสงค์ การใช้ปัจจุบัน และระบบที่พึ่ง Identity นี้ ประสานการเปลี่ยนผ่านของบริการที่ยังมีเหตุผลรองรับ ถอน Permission ที่เลิกใช้ และจัดการสิ่งที่ใช้ยืนยันตัวตนตามกลไกที่รองรับ แล้วตรวจว่าไม่เหลือช่องทางเข้าถึงที่หมดความจำเป็น การวิเคราะห์ระบบที่พึ่งพาช่วยลดการหยุดชะงักที่เลี่ยงได้ แต่ไม่ได้อนุญาตให้ปล่อย Identity สิทธิ์สูงที่ขาดการกำกับไว้อย่างไม่มีกำหนด การเปลี่ยนผู้ดูแลมนุษย์เป็นเหตุให้ทบทวนความรับผิดชอบด้วย ไม่ได้พิสูจน์ว่างานอัตโนมัติต้องยุติเสมอ ให้บันทึกการดำเนินการตามอำนาจและผลตรวจตามนโยบายเก็บรักษา นี่คือการประยุกต์กับ AI/Service account จากแหล่งที่ระบุ ไม่ได้กำหนดผู้ขายหรือบังคับให้ทุกงานใช้ Password"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Workload purpose can end independently of employment.",
+              "th": "ระบบงานอาจสิ้นสุดโดยไม่เกี่ยวกับการจ้างงาน"
+            },
+            {
+              "en": "Dependencies require coordinated, authorized changes.",
+              "th": "ระบบที่พึ่งพาต้องปรับอย่างประสานกันตามอำนาจ"
+            },
+            {
+              "en": "Verify retirement and retain required evidence.",
+              "th": "ตรวจผลการเลิกใช้และเก็บหลักฐานที่จำเป็น"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Service continuity needs an accountable plan, not indefinite orphaned access.",
+            "th": "ความต่อเนื่องต้องมีแผนและผู้รับผิดชอบ ไม่ใช่ปล่อยสิทธิ์ที่ขาดการกำกับไว้ไม่มีกำหนด"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-ai-application",
+        "service-account-governance",
+        "identity-lifecycle"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-02-08-complete-offboarding-decision",
+      "title": {
+        "en": "Finish the withdrawal, then verify the result.",
+        "th": "ถอนสิทธิ์ให้ครบ แล้วตรวจผล"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The contractor’s authorized end date has passed. The central account is disabled, but its old app session still works. You are authorized to complete removal now.",
+            "th": "สัญญาสิ้นสุดแล้ว บัญชีกลางถูกระงับ แต่ Session เดิมในแอปยังใช้ได้ คุณมีอำนาจดำเนินการถอนสิทธิ์ให้ครบได้ทันที"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Evidence, decisions and their limits",
+            "th": "หลักฐาน การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Concept / condition",
+              "th": "แนวคิด / เงื่อนไข"
+            },
+            {
+              "en": "Application",
+              "th": "การนำไปใช้"
+            },
+            {
+              "en": "Reason / distinction",
+              "th": "เหตุผล / ข้อแตกต่าง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Assume central disablement is enough",
+                "th": "ถือว่าระงับบัญชีกลางก็เพียงพอ"
+              },
+              {
+                "en": "Close the ticket because the central account is disabled.",
+                "th": "ปิด Ticket เพราะบัญชีกลางถูกระงับแล้ว"
+              },
+              {
+                "en": "The observed application session contradicts complete withdrawal. A central status alone does not prove the intended denial at the application.",
+                "th": "Session ในแอปที่ยังใช้ได้แสดงว่ายังถอนสิทธิ์ไม่ครบ สถานะบัญชีกลางอย่างเดียวไม่พิสูจน์ว่าแอปปฏิเสธการเข้าถึงแล้ว"
+              }
+            ],
+            [
+              {
+                "en": "Erase the identity history",
+                "th": "ลบประวัติ Identity ทั้งหมด"
+              },
+              {
+                "en": "Delete all identity and audit records to make a clean exit.",
+                "th": "ลบระเบียน Identity และ Audit ทั้งหมดให้หมดร่องรอย"
+              },
+              {
+                "en": "Destroying required evidence does not establish session revocation. Withdrawal and record retention are separate obligations under the stated policy.",
+                "th": "ทำลายหลักฐานที่ต้องเก็บไม่ได้ยืนยันว่าเพิกถอน Session แล้ว การถอนสิทธิ์กับการเก็บระเบียนเป็นคนละหน้าที่ตามนโยบาย"
+              }
+            ],
+            [
+              {
+                "en": "Complete and verify authorized removal",
+                "th": "ดำเนินการถอนและตรวจผลตามอำนาจ"
+              },
+              {
+                "en": "Revoke remaining app access/session; verify denial and retain required evidence.",
+                "th": "ถอนสิทธิ์/Session ที่ยังเหลือ ตรวจว่าถูกปฏิเสธ และเก็บหลักฐานที่จำเป็น"
+              },
+              {
+                "en": "The contract has ended and you have removal authority. Use supported application controls, check other relevant access paths and verify the intended denial while retaining required records.",
+                "th": "สัญญาสิ้นสุดแล้วและคุณมีอำนาจถอนสิทธิ์ ใช้ Control ของแอปที่รองรับ ตรวจช่องทางที่เกี่ยวข้องอื่น และยืนยันว่าถูกปฏิเสธ โดยยังเก็บระเบียนที่จำเป็น"
+              }
+            ],
+            [
+              {
+                "en": "Wait for the next scheduled review",
+                "th": "รอทบทวนตามรอบถัดไป"
+              },
+              {
+                "en": "Leave the session until the next periodic review.",
+                "th": "ปล่อย Session ไว้จนถึงรอบ Review ถัดไป"
+              },
+              {
+                "en": "A known contract end and observed residual access require the authorized action stated here. A future calendar review does not justify delaying it.",
+                "th": "โจทย์ระบุว่าสัญญาจบและยังเข้าถึงได้ จึงต้องดำเนินการตามอำนาจที่ให้ไว้ รอบในปฏิทินภายหน้าไม่ใช่เหตุให้เลื่อนการถอนนี้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This authored scenario gives an authorized administrator a confirmed contractor end date and direct evidence that an existing application session remains usable after central disablement. Under the stated policy the administrator may complete withdrawal now. The supported action is to revoke the residual application access or session through appropriate controls, check other relevant access paths, verify the intended denial and retain required evidence. Do not declare success from the HR or central-account flag, destroy audit history or wait for the next routine review despite the known end of authorization. The example does not promise that every product supports identical revocation or immediate global propagation; an administrator must use the supported process and verify its result. All four reasons are available in Reading and Info as well as the interactive presentation.",
+            "th": "สถานการณ์ที่แต่งเพื่อการเรียนนี้ให้ข้อมูลวันสิ้นสุดสัญญาที่แน่นอนและหลักฐานว่า Session เดิมในแอปยังใช้ได้หลังระงับบัญชีกลาง โดยผู้ดูแลมีอำนาจดำเนินการถอนสิทธิ์ให้ครบได้แล้วตามนโยบาย แนวทางที่มีเหตุผลรองรับคือใช้ Control ที่เหมาะสมถอนสิทธิ์หรือ Session ที่ยังเหลือในแอป ตรวจช่องทางเข้าถึงอื่นที่เกี่ยวข้อง ยืนยันผลว่าถูกปฏิเสธ และเก็บหลักฐานที่จำเป็น ไม่ควรประกาศว่าสำเร็จจากสถานะ HR หรือบัญชีกลาง ไม่ควรทำลายประวัติ Audit หรือรอรอบ Review ทั้งที่ทราบว่าสิ้นสุดอำนาจใช้สิทธิ์แล้ว ตัวอย่างนี้ไม่ได้รับประกันว่าทุกผลิตภัณฑ์เพิกถอนได้เหมือนกันหรือส่งผลพร้อมกันทันทีทุกระบบ ผู้ดูแลต้องใช้กระบวนการที่รองรับและตรวจผลจริง Reading และ Info มีเหตุผลครบทั้งสี่ทางเลือกเช่นเดียวกับหน้าโต้ตอบ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Authority has ended and removal is authorized.",
+              "th": "สิทธิ์ตามสัญญาสิ้นสุดแล้ว และมีอำนาจถอน"
+            },
+            {
+              "en": "The working app session is evidence of a remaining path.",
+              "th": "Session ที่ยังใช้ได้เป็นหลักฐานว่ามีช่องทางเหลือ"
+            },
+            {
+              "en": "Verification and record retention both matter.",
+              "th": "ต้องตรวจผลและเก็บระเบียนที่จำเป็นควบคู่กัน"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Choose an action and review the reason. Reset lets you reconsider.",
+            "th": "เลือกแนวทางและอ่านเหตุผล ใช้ Reset เมื่อต้องการพิจารณาใหม่"
+          }
+        }
+      ],
+      "referenceIds": [
+        "d3-notes",
+        "d3-summary",
+        "nist-federation",
+        "identity-lifecycle"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-3-lesson-2-implementation-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — assistant review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — assistant review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — assistant review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    }
+  }
+}

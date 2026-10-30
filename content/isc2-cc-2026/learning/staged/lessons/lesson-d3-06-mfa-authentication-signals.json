@@ -1,0 +1,850 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d3-06-mfa-authentication-signals",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 3,
+  "primaryObjectiveId": "3.2",
+  "objectiveIds": [
+    "3.2"
+  ],
+  "revision": "1",
+  "status": "in-preparation",
+  "title": {
+    "en": "MFA & Authentication Risk Signals",
+    "th": "MFA และสัญญาณความเสี่ยงในการยืนยันตัวตน"
+  },
+  "synopsis": {
+    "en": "Apply MFA foundations and assess anomalous login evidence without confusing signals, factors and permissions.",
+    "th": "ใช้พื้นฐาน MFA และประเมินหลักฐาน Login ผิดปกติ โดยแยกสัญญาณ ปัจจัย และสิทธิ์"
+  },
+  "outcomes": [
+    {
+      "en": "Distinguish authentication factors from prompts, devices and context signals.",
+      "th": "แยกประเภทปัจจัย Authentication จากจำนวนหน้าจอ อุปกรณ์ และสัญญาณบริบท"
+    },
+    {
+      "en": "Interpret impossible-travel observations with uncertainty and corroboration.",
+      "th": "ตีความข้อมูลเดินทางไม่น่าเป็นไปได้โดยคำนึงถึงความไม่แน่นอนและหลักฐานประกอบ"
+    },
+    {
+      "en": "Choose a policy-authorized response without granting extra access.",
+      "th": "เลือกการตอบสนองตามอำนาจและนโยบายโดยไม่เพิ่มสิทธิ์เกิน"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Domain 3 Lessons 1–3; Domain 1 authentication and trustworthy-evidence foundations.",
+      "th": "แนะนำ Domain 3 Lessons 1–3 และพื้นฐาน Authentication/หลักฐานที่น่าเชื่อถือจาก Domain 1"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 Exam Outline",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Objective 3.2 plus separate official AI application guidance; checked 2026-10-30."
+    },
+    {
+      "id": "d3-notes",
+      "title": "Domain 3.md — user study notes",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 3/Domain 3.md",
+      "locator": "N §8 names authentication; D1 authentication/evidence are prerequisites. Detailed MFA/risk context is an explicit official ISC2 AI application / NIST63B supplement, not S08 lecture content."
+    },
+    {
+      "id": "d3-summary",
+      "title": "D3 sum.md — user summary",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 3/D3 sum.md",
+      "locator": "N §8 names authentication; D1 authentication/evidence are prerequisites. Detailed MFA/risk context is an explicit official ISC2 AI application / NIST63B supplement, not S08 lecture content."
+    },
+    {
+      "id": "nist-authentication",
+      "title": "NIST SP 800-63B-4",
+      "url": "https://pages.nist.gov/800-63-4/sp800-63b.html",
+      "authority": "technical-primary",
+      "locator": "Introduction, factor/authenticator types, multi-factor cryptographic activation and §5.3 session monitoring/privacy. No assurance-level memorization or universal response thresholds."
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d3-06-01-authenticated-but-not-authorized",
+      "title": {
+        "en": "Successful MFA does not expand the permission boundary.",
+        "th": "ผ่าน MFA ไม่ได้ทำให้ขอบเขตสิทธิ์เพิ่มขึ้น"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Declared analyst access: read the assigned report; payroll administration is not approved.",
+            "th": "สิทธิ์ Analyst ในตัวอย่าง: อ่านรายงานที่รับผิดชอบได้ ไม่ได้อนุมัติให้ดูแล Payroll"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Read assigned report",
+                "th": "อ่านรายงานที่รับผิดชอบ"
+              },
+              {
+                "en": "Authenticated and authorized for this action",
+                "th": "ยืนยันตัวตนและได้รับอนุญาตการกระทำนี้"
+              },
+              {
+                "en": "Allow under the stated policy",
+                "th": "อนุญาตตามนโยบายที่ระบุ"
+              }
+            ],
+            [
+              {
+                "en": "Administer payroll",
+                "th": "ดูแลระบบ Payroll"
+              },
+              {
+                "en": "Authenticated but not authorized for this action",
+                "th": "ยืนยันตัวตนแล้ว แต่ไม่ได้รับอนุญาตการกระทำนี้"
+              },
+              {
+                "en": "Deny the unapproved request",
+                "th": "ปฏิเสธคำขอที่ไม่ได้อนุมัติ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Authentication provides evidence that a claimant controls the required authenticator or authenticators associated with an account. Stronger authentication can improve confidence in that event; it does not decide every application permission. In this declared case the analyst may read an assigned report but not administer payroll, even after successful MFA. Authorization evaluates the requested action and resource under the applicable rules. A claimed username is an identifier, not an independent secret factor. Accountability requires responsibility and trustworthy activity records with context, not merely a permission label or a successful login. Domain 1 and Lesson 3 provide the deeper AAA/evidence and IdP/application foundations; this slide applies that prerequisite to the current access boundary rather than rebuilding the entire authentication course.",
+            "th": "Authentication ให้หลักฐานว่าผู้ขอควบคุมสิ่งยืนยันตัวตนที่กำหนดซึ่งผูกกับบัญชีได้ การยืนยันที่เข้มแข็งขึ้นช่วยเพิ่มความเชื่อมั่นต่อเหตุการณ์นั้น แต่ไม่ได้ตัดสินสิทธิ์ทุกอย่างในแอป ในตัวอย่างที่ประกาศ Analyst อ่านรายงานที่รับผิดชอบได้ แต่ดูแล Payroll ไม่ได้ แม้ผ่าน MFA แล้ว Authorization ประเมินการกระทำและทรัพยากรที่ขอตามกฎที่เกี่ยวข้อง Username ที่อ้างเป็นตัวระบุ ไม่ใช่ปัจจัยลับอีกประเภท ความรับผิดชอบและการตรวจสอบย้อนกลับต้องมีผู้รับผิดชอบกับบันทึกกิจกรรมที่เชื่อถือได้พร้อมบริบท ไม่ใช่เพียงชื่อสิทธิ์หรือ Login สำเร็จ Domain 1 และ Lesson 3 ให้พื้นฐาน AAA/หลักฐานและบทบาท IdP/แอปไว้แล้ว สไลด์นี้ประยุกต์กับขอบเขตสิทธิ์ปัจจุบัน ไม่สร้างบท Authentication เดิมซ้ำทั้งหมด"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Authentication asks about authenticator control.",
+              "th": "Authentication ถามการควบคุมสิ่งยืนยันตัวตน"
+            },
+            {
+              "en": "Authorization checks the requested action.",
+              "th": "Authorization ตรวจการกระทำที่ขอ"
+            },
+            {
+              "en": "Keep evidence and accountability distinct.",
+              "th": "แยกหลักฐานและความรับผิดชอบให้ชัด"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A stronger sign-in is not a larger grant.",
+            "th": "การลงชื่อที่เข้มแข็งขึ้นไม่ใช่การเพิ่มสิทธิ์"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-authentication"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-06-02-factor-types-not-screens",
+      "title": {
+        "en": "Count factor types, not screens or devices.",
+        "th": "นับประเภทปัจจัย ไม่ใช่จำนวนหน้าจอหรืออุปกรณ์"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Compare two knowledge secrets with a cryptographic key that requires verified local PIN activation for its authentication use.",
+            "th": "เทียบความลับประเภทความรู้สองชุด กับกุญแจเข้ารหัสที่ต้องตรวจ PIN ภายในก่อนใช้ยืนยันตัวตน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Password + PIN",
+                "th": "Password + PIN: ความลับสองชุด"
+              },
+              {
+                "en": "Knowledge + knowledge",
+                "th": "ประเภทความรู้ + ความรู้"
+              },
+              {
+                "en": "Two secrets of one type are not distinct-factor MFA",
+                "th": "ความลับประเภทเดียวสองชุดไม่ใช่ MFA ต่างประเภท"
+              }
+            ],
+            [
+              {
+                "en": "Key requiring local PIN",
+                "th": "กุญแจที่ต้องใช้ PIN ภายใน"
+              },
+              {
+                "en": "Possession + knowledge in this configured method",
+                "th": "ประเภทครอบครอง + ความรู้ในวิธีที่ตั้งค่านี้"
+              },
+              {
+                "en": "The activation and protocol must actually require both",
+                "th": "กลไกเปิดใช้และ Protocol ต้องกำหนดให้ใช้ทั้งสองจริง"
+              }
+            ],
+            [
+              {
+                "en": "Knowledge",
+                "th": "ประเภทความรู้"
+              },
+              {
+                "en": "Something you know",
+                "th": "สิ่งที่คุณรู้"
+              },
+              {
+                "en": "A password or PIN is not a new category each time",
+                "th": "Password หรือ PIN ไม่ได้เป็นประเภทใหม่ทุกชุด"
+              }
+            ],
+            [
+              {
+                "en": "Possession",
+                "th": "ประเภทครอบครอง"
+              },
+              {
+                "en": "Something you have",
+                "th": "สิ่งที่คุณครอบครอง"
+              },
+              {
+                "en": "Verify control of the authenticator, not a device count",
+                "th": "ตรวจการควบคุมสิ่งยืนยันตัวตน ไม่ใช่นับอุปกรณ์"
+              }
+            ],
+            [
+              {
+                "en": "Inherence",
+                "th": "ประเภทลักษณะบุคคล"
+              },
+              {
+                "en": "Something you are",
+                "th": "ลักษณะที่เป็นตัวคุณ"
+              },
+              {
+                "en": "A biometric comparison is not infallible or a standalone authenticator in NIST’s model",
+                "th": "การเทียบ Biometric ผิดพลาดได้ และไม่ใช่ Authenticator เดี่ยวตามโมเดล NIST"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "MFA uses more than one distinct factor type: knowledge, possession and inherence. Password and PIN are both knowledge, so two such prompts do not establish distinct-factor MFA. In the contrasted configured method, a cryptographic authenticator proves possession/control of a key and requires verified local PIN activation as a second factor. A single device can therefore support a multi-factor method; two devices or two screens are not the definition. Do not claim every security key, passkey or cryptographic configuration automatically provides MFA. The actual activation and authentication mechanism matter. A biometric comparison may activate a physical authenticator in the NIST treatment; a biometric trait is not an invulnerable secret or a standalone authenticator by itself there. Location and AI risk scores are contextual evidence, not a fourth independent factor. Detailed password policy remains in the earlier read-only lessons.",
+            "th": "MFA ใช้ปัจจัยมากกว่าหนึ่งประเภทที่ต่างกัน ได้แก่ Knowledge ความรู้ Possession การครอบครอง และ Inherence ลักษณะบุคคล Password กับ PIN อยู่ประเภทความรู้เหมือนกัน จึงไม่เป็น MFA ต่างประเภทเพียงเพราะถามสองครั้ง วิธีที่ตั้งค่าในอีกตัวอย่างใช้ Cryptographic authenticator พิสูจน์การครอบครอง/ควบคุมกุญแจ และต้องตรวจ PIN ภายในเพื่อเปิดใช้เป็นปัจจัยที่สอง อุปกรณ์เดียวจึงรองรับวิธีหลายปัจจัยได้ จำนวนสองอุปกรณ์หรือสองหน้าจอไม่ใช่นิยาม ไม่ควรอ้างว่า Security key, Passkey หรือการตั้งค่าเข้ารหัสทุกแบบเป็น MFA อัตโนมัติ ต้องดูวิธีเปิดใช้และ Authentication ที่ใช้จริง การเทียบ Biometric อาจใช้เปิด Physical authenticator ตามแนวทาง NIST แต่ลักษณะ Biometric ไม่ใช่ความลับที่ไม่มีวันถูกเลียนแบบ และไม่ใช่ Authenticator เดี่ยวด้วยตัวเองตามแนวทางนั้น Location กับคะแนนเสี่ยง AI เป็นข้อมูลบริบท ไม่ใช่ปัจจัยอิสระประเภทที่สี่ รายละเอียดนโยบาย Password ยังคงอยู่ในบทก่อนที่ไม่แก้ไข"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the factor types actually required.",
+              "th": "ระบุประเภทปัจจัยที่ถูกกำหนดให้ใช้จริง"
+            },
+            {
+              "en": "Check the configured authentication mechanism.",
+              "th": "ตรวจกลไก Authentication ที่ตั้งไว้"
+            },
+            {
+              "en": "Do not count location or AI as an extra factor.",
+              "th": "ไม่นับ Location หรือ AI เป็นปัจจัยเพิ่ม"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This configured key requires activation; not every key method is MFA.",
+            "th": "กุญแจในตัวอย่างต้องผ่านการเปิดใช้ ไม่ใช่กุญแจทุกวิธีจะเป็น MFA"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-authentication"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-06-03-risk-context-not-a-factor",
+      "title": {
+        "en": "A risk signal can trigger checks without becoming a factor.",
+        "th": "สัญญาณเสี่ยงนำไปตรวจเพิ่มได้ โดยไม่กลายเป็นปัจจัย"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An unfamiliar device or reported location changes the context, not the permission grant.",
+            "th": "อุปกรณ์หรือ Location ที่รายงานว่าไม่คุ้นเคยเปลี่ยนบริบท ไม่ใช่เพิ่มสิทธิ์"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Observed context",
+                "th": "บริบทที่สังเกต"
+              },
+              {
+                "en": "Device, location, timing or behavior",
+                "th": "Device, Location, เวลา หรือพฤติกรรม"
+              },
+              {
+                "en": "Data can be incomplete or misleading",
+                "th": "ข้อมูลอาจไม่ครบหรือชวนให้เข้าใจผิด"
+              }
+            ],
+            [
+              {
+                "en": "Risk assessment",
+                "th": "การประเมินความเสี่ยง"
+              },
+              {
+                "en": "Correlate relevant signals and policy",
+                "th": "พิจารณาสัญญาณที่เกี่ยวข้องร่วมกับนโยบาย"
+              },
+              {
+                "en": "AI pattern detection is not a verdict",
+                "th": "AI ตรวจรูปแบบได้ แต่ไม่ใช่คำตัดสิน"
+              }
+            ],
+            [
+              {
+                "en": "Possible additional check",
+                "th": "การตรวจเพิ่มที่อาจใช้"
+              },
+              {
+                "en": "Reauthenticate or follow an authorized response",
+                "th": "ยืนยันตัวตนใหม่หรือทำตามการตอบสนองที่มีอำนาจ"
+              },
+              {
+                "en": "A signal does not substitute for an authentication factor",
+                "th": "สัญญาณไม่ใช้แทนปัจจัย Authentication"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Behavioral analysis, potentially assisted by AI, can compare timing, device, network and usage patterns to identify observations needing attention. A high-risk signal is not itself proof of authenticator control or an additional independent MFA factor. It can inform policy-authorized reauthentication, session restriction or escalation. False positives and legitimate changes are possible, so assess relevant corroborating evidence rather than declare theft from a score. Monitoring also has privacy implications: collection, retention and use of behavioral or location information need appropriate purpose, safeguards and policy. Do not introduce a universal risk-score threshold or assume that analytics authorizes additional application actions.",
+            "th": "การวิเคราะห์พฤติกรรมซึ่งอาจใช้ AI ช่วยเทียบรูปแบบเวลา อุปกรณ์ เครือข่าย และการใช้งาน เพื่อพบสิ่งที่ต้องสนใจ สัญญาณเสี่ยงสูงไม่ได้พิสูจน์การควบคุมสิ่งยืนยันตัวตน และไม่ใช่ปัจจัย MFA อิสระเพิ่มขึ้น แต่อาจใช้ประกอบการยืนยันใหม่ จำกัด Session หรือส่งต่อตามอำนาจและนโยบายได้ มี False positive และความเปลี่ยนแปลงที่ชอบด้วยเหตุผลได้ จึงควรพิจารณาหลักฐานที่เกี่ยวข้องประกอบ แทนตัดสินว่าถูกขโมยจากคะแนนอย่างเดียว การติดตามยังมีผลต่อ Privacy การเก็บ ระยะเก็บ และใช้ข้อมูลพฤติกรรม/Location ต้องมีวัตถุประสงค์ การปกป้อง และนโยบายที่เหมาะสม ไม่กำหนดคะแนนเสี่ยงสากลหรือถือว่า Analytics อนุมัติการกระทำเพิ่มในแอป"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Treat context as evidence to assess.",
+              "th": "ใช้บริบทเป็นหลักฐานที่ต้องประเมิน"
+            },
+            {
+              "en": "Keep factor proof separate.",
+              "th": "แยกหลักฐานปัจจัย Authentication"
+            },
+            {
+              "en": "Consider accuracy and privacy limits.",
+              "th": "พิจารณาข้อจำกัดความแม่นยำและ Privacy"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Risk context supports a decision; it does not replace authentication.",
+            "th": "บริบทเสี่ยงช่วยตัดสินใจ ไม่ได้แทน Authentication"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-authentication"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-06-04-implausible-login-evidence",
+      "title": {
+        "en": "Two distant login observations are a signal, not a verdict.",
+        "th": "ข้อมูล Login ห่างไกลสองจุดเป็นสัญญาณ ไม่ใช่คำตัดสิน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Authored observations for the same account; locations are reported from IP data, not verified physical presence.",
+            "th": "ข้อมูลที่แต่งสำหรับบัญชีเดียวกัน Location มาจาก IP ไม่ใช่ยืนยันว่าคนอยู่ที่นั่นจริง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "10:00 UTC",
+                "th": "10:00 UTC: เหตุการณ์แรก"
+              },
+              {
+                "en": "IP-geolocation: London",
+                "th": "ตำแหน่งจาก IP: London"
+              },
+              {
+                "en": "Reported network location only",
+                "th": "เป็น Location ของเครือข่ายที่รายงาน"
+              }
+            ],
+            [
+              {
+                "en": "10:15 UTC",
+                "th": "10:15 UTC: เหตุการณ์ถัดมา"
+              },
+              {
+                "en": "IP-geolocation: Bangkok",
+                "th": "ตำแหน่งจาก IP: Bangkok"
+              },
+              {
+                "en": "Fifteen minutes later on the same time basis",
+                "th": "ผ่านไปสิบห้านาทีบนฐานเวลาเดียวกัน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This authored timeline normalizes both observations to UTC: one account is associated with reported London IP-geolocation at 10:00 and Bangkok at 10:15. The short interval and distant reported locations warrant assessment, but do not establish the person’s actual physical travel, certain account theft or the identity of an attacker. VPN/proxy routing, geolocation errors, legitimate concurrent activity or other context can affect interpretation. Check relevant session, device, authentication and activity records through authorized procedures and privacy safeguards. The example does not define a universal travel-speed formula or automatic breach threshold. Preserve the original observations and their timestamps; do not turn a plausible anomaly into a conclusive accusation. The purpose is to reason about the evidence and follow policy, not calculate an invented exam rule.",
+            "th": "เส้นเวลาที่แต่งนี้ใช้ UTC เหมือนกันทั้งสองเหตุการณ์ บัญชีเดียวมี IP-geolocation ที่รายงานว่า London เวลา 10:00 และ Bangkok เวลา 10:15 ช่วงเวลาสั้นกับ Location ที่ห่างกันควรได้รับการประเมิน แต่ไม่ได้พิสูจน์ว่าบุคคลเดินทางจริง ถูกขโมยบัญชีแน่นอน หรือผู้โจมตีคือใคร VPN/Proxy routing ความผิดพลาดของ Geolocation การใช้งานพร้อมกันที่มีเหตุผล หรือบริบทอื่นอาจเปลี่ยนการตีความ ควรตรวจข้อมูล Session, Device, Authentication และกิจกรรมที่เกี่ยวข้องตามกระบวนการที่มีอำนาจและการคุ้มครอง Privacy ตัวอย่างไม่ได้กำหนดสูตรความเร็วเดินทางหรือเกณฑ์ Breach อัตโนมัติสากล เก็บข้อมูลต้นทางและเวลาไว้ ไม่เปลี่ยนความผิดปกติที่เป็นไปได้ให้กลายเป็นข้อกล่าวหาสรุป จุดประสงค์คือใช้เหตุผลกับหลักฐานและทำตามนโยบาย ไม่คำนวณกฎสอบที่สร้างขึ้น"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Use one normalized time basis.",
+              "th": "ใช้ฐานเวลาเดียวกัน"
+            },
+            {
+              "en": "Distinguish reported IP location from physical presence.",
+              "th": "แยก Location จาก IP กับการอยู่จริง"
+            },
+            {
+              "en": "Corroborate before drawing a conclusion.",
+              "th": "ใช้หลักฐานประกอบก่อนสรุป"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "An implausible-travel alert is not proof of a particular attacker.",
+            "th": "แจ้งเตือนการเดินทางไม่น่าเป็นไปได้ไม่ได้พิสูจน์ตัวผู้โจมตี"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-authentication"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-06-05-proportionate-authorized-response",
+      "title": {
+        "en": "Respond within policy, evidence and your authority.",
+        "th": "ตอบสนองตามนโยบาย หลักฐาน และอำนาจของคุณ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use contextual assessment to choose supported action; urgent policy conditions can require containment now.",
+            "th": "ใช้การประเมินบริบทเลือกการดำเนินการที่รองรับ เงื่อนไขเร่งด่วนตามนโยบายอาจให้ควบคุมทันที"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Observe",
+                "th": "สังเกต"
+              },
+              {
+                "en": "Preserve relevant sign-in and session evidence",
+                "th": "เก็บหลักฐาน Login และ Session ที่เกี่ยวข้อง"
+              },
+              {
+                "en": "Respect collection and retention policy",
+                "th": "เคารพนโยบายเก็บและคงข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "Corroborate and assess",
+                "th": "ตรวจประกอบและประเมิน"
+              },
+              {
+                "en": "Compare context with the applicable policy",
+                "th": "เทียบบริบทกับนโยบายที่เกี่ยวข้อง"
+              },
+              {
+                "en": "Uncertainty is not a reason to ignore the alert",
+                "th": "ความไม่แน่นอนไม่ใช่เหตุให้ละเลย"
+              }
+            ],
+            [
+              {
+                "en": "Authorized response",
+                "th": "ตอบสนองตามอำนาจ"
+              },
+              {
+                "en": "Additional verification, session restriction or escalation",
+                "th": "ยืนยันเพิ่ม จำกัด Session หรือส่งต่อ"
+              },
+              {
+                "en": "Use the supported process and stated authority",
+                "th": "ใช้กระบวนการที่รองรับและอำนาจที่ระบุ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the evidence and the applicable policy to decide what action you are authorized to take. NIST’s session-monitoring discussion identifies reauthentication, session termination or notification of appropriate support personnel as possible responses to potential fraud. These are possible actions, not a single universal always-first sequence. Urgent policy-authorized containment may occur before a full investigation; do not delay action when the stated conditions require it. Conversely, one uncertain signal does not justify unsupported permanent account deletion or destruction of records. Preserve relevant evidence, consider privacy and follow the organization’s authority and escalation arrangements. Confirm the supported action’s result where relevant. This is a foundational authentication-risk application, not a complete incident-response playbook or a mandate for every entry-level learner to administer every system.",
+            "th": "ใช้หลักฐานและนโยบายที่เกี่ยวข้องตัดสินว่าคุณมีอำนาจทำอะไรได้ NIST กล่าวถึงการยืนยันตัวตนใหม่ ยุติ Session หรือแจ้งผู้สนับสนุนที่เหมาะสมเป็นแนวทางที่อาจใช้เมื่อพบความเสี่ยงทุจริต สิ่งเหล่านี้เป็นทางเลือก ไม่ใช่ลำดับที่ต้องเริ่มแบบเดียวเสมอ การควบคุมเร่งด่วนที่นโยบายให้อำนาจอาจทำก่อนสอบสวนครบได้ จึงไม่ควรชะลอเมื่อเงื่อนไขกำหนดให้ทำทันที ในอีกด้าน สัญญาณที่ยังไม่แน่นอนจุดเดียวไม่ได้รองรับการลบบัญชีถาวรหรือทำลายบันทึกโดยไม่มีอำนาจ ควรเก็บหลักฐานที่เกี่ยวข้อง คำนึงถึง Privacy และทำตามอำนาจ/การส่งต่อขององค์กร ตรวจผลการดำเนินการที่ระบบรองรับเมื่อเกี่ยวข้อง นี่คือการประยุกต์ความเสี่ยง Authentication ระดับพื้นฐาน ไม่ใช่ Incident-response playbook ครบชุด หรือบังคับว่าผู้เริ่มต้นทุกคนต้องดูแลทุกระบบเอง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Use the stated authority and conditions.",
+              "th": "ใช้อำนาจและเงื่อนไขที่ระบุ"
+            },
+            {
+              "en": "Preserve relevant evidence and privacy.",
+              "th": "คงหลักฐานที่เกี่ยวข้องและ Privacy"
+            },
+            {
+              "en": "Apply urgent containment when required by policy.",
+              "th": "ควบคุมเร่งด่วนเมื่อเข้าเงื่อนไขนโยบาย"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This is conditional guidance, not a rigid always-first response.",
+            "th": "เป็นแนวทางตามเงื่อนไข ไม่ใช่ลำดับเริ่มต้นตายตัว"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-authentication"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d3-06-06-anomalous-login-decision",
+      "title": {
+        "en": "Use the anomaly to support an authorized decision.",
+        "th": "ใช้ความผิดปกติประกอบการตัดสินตามอำนาจ"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An analyst sees the two IP-location observations. Policy requires assessment and escalation, with urgent session controls when its conditions are met.",
+            "th": "Analyst พบข้อมูล IP-location สองเหตุการณ์ นโยบายให้ประเมินและส่งต่อ พร้อมควบคุม Session เร่งด่วนเมื่อเข้าเงื่อนไข"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conditions, decisions and boundaries",
+            "th": "เงื่อนไข การตัดสินใจ และขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Context",
+              "th": "บริบท"
+            },
+            {
+              "en": "Action / meaning",
+              "th": "การกระทำ / ความหมาย"
+            },
+            {
+              "en": "Reason / limit",
+              "th": "เหตุผล / ข้อจำกัด"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Ignore because MFA succeeded",
+                "th": "ละเลยเพราะผ่าน MFA"
+              },
+              {
+                "en": "Ignore the alert; MFA proves nothing can be wrong.",
+                "th": "ไม่สนแจ้งเตือน เพราะ MFA พิสูจน์ว่าไม่มีอะไรผิด"
+              },
+              {
+                "en": "Successful authentication does not eliminate fraud risk or the need to assess the new evidence.",
+                "th": "Authentication สำเร็จไม่ได้กำจัดความเสี่ยงหรือความจำเป็นต้องประเมินหลักฐานใหม่"
+              }
+            ],
+            [
+              {
+                "en": "Declare certainty and delete",
+                "th": "สรุปแน่นอนแล้วลบ"
+              },
+              {
+                "en": "Declare theft and permanently delete the account and logs.",
+                "th": "สรุปว่าถูกขโมยแล้วลบบัญชีกับ Log ถาวร"
+              },
+              {
+                "en": "The signal is not a conclusive verdict and does not authorize destructive deletion or loss of evidence.",
+                "th": "สัญญาณไม่ใช่คำตัดสินแน่นอน และไม่ให้อำนาจลบทำลายหรือสูญเสียหลักฐาน"
+              }
+            ],
+            [
+              {
+                "en": "Assess and follow authorized response",
+                "th": "ประเมินแล้วตอบสนองตามอำนาจ"
+              },
+              {
+                "en": "Corroborate, preserve evidence and follow policy; apply urgent controls if required.",
+                "th": "ตรวจประกอบ เก็บหลักฐาน และทำตามนโยบาย ควบคุมเร่งด่วนถ้ากำหนด"
+              },
+              {
+                "en": "This uses the evidence without claiming certainty, respects authority and permits urgent policy-required containment.",
+                "th": "ใช้หลักฐานโดยไม่สรุปแน่นอนเกินจริง เคารพอำนาจ และยังควบคุมเร่งด่วนตามนโยบายได้"
+              }
+            ],
+            [
+              {
+                "en": "Treat analytics as a factor and grant",
+                "th": "ถือ Analytics เป็นปัจจัยแล้วเพิ่มสิทธิ์"
+              },
+              {
+                "en": "Count the AI score as another MFA factor and grant more access.",
+                "th": "นับคะแนน AI เป็นปัจจัย MFA เพิ่มแล้วให้สิทธิ์มากขึ้น"
+              },
+              {
+                "en": "Risk context is not an independent factor, and authentication or analytics does not approve extra permissions.",
+                "th": "บริบทเสี่ยงไม่ใช่ปัจจัยอิสระ และ Authentication/Analytics ไม่อนุมัติสิทธิ์เพิ่ม"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This authored case gives the analyst uncertain IP-location observations and a stated policy/authority boundary. The supported choice corroborates relevant evidence, preserves the records and follows the authorized response and escalation process, including urgent session controls if the stated conditions require them. It neither ignores the signal nor turns it into certain theft. Successful MFA does not remove every risk. Permanent deletion of the account and logs is not justified by the observation or this analyst’s stated authority. AI scoring is contextual evidence rather than a new independent authentication factor, and cannot authorize broader resource permissions. The decision is conditional on the declared policy; it does not prescribe one action for all alerts or forbid immediate authorized containment. All alternative reasons are available in Reading and Info.",
+            "th": "กรณีที่แต่งนี้ให้ Analyst มีข้อมูล IP-location ที่ยังไม่แน่นอนกับขอบเขตนโยบาย/อำนาจที่ระบุ ทางเลือกที่รองรับคือใช้หลักฐานที่เกี่ยวข้องตรวจประกอบ เก็บบันทึก และทำตามกระบวนการตอบสนอง/ส่งต่อที่มีอำนาจ รวมการควบคุม Session เร่งด่วนถ้าเข้าเงื่อนไขที่ประกาศ ไม่ละเลยสัญญาณและไม่ยกระดับเป็นข้อสรุปว่าถูกขโมยแน่นอน MFA สำเร็จไม่ได้ลบความเสี่ยงทุกอย่าง ข้อมูลนี้กับอำนาจของ Analyst ตามโจทย์ไม่รองรับการลบบัญชีและ Log ถาวร คะแนน AI เป็นข้อมูลบริบท ไม่ใช่ปัจจัย Authentication อิสระใหม่ และไม่อนุมัติสิทธิ์ทรัพยากรให้กว้างขึ้น การตัดสินขึ้นกับนโยบายที่ระบุ ไม่กำหนดคำตอบสนองเดียวสำหรับทุก Alert หรือห้ามการควบคุมทันทีที่ได้รับอนุญาต Reading และ Info มีเหตุผลของทุกทางเลือกครบ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Treat the observation as evidence, not certainty.",
+              "th": "ถือสิ่งที่พบเป็นหลักฐาน ไม่ใช่ความแน่นอน"
+            },
+            {
+              "en": "Follow the declared policy and authority.",
+              "th": "ทำตามนโยบายและอำนาจที่ประกาศ"
+            },
+            {
+              "en": "Keep factors, signals and permissions separate.",
+              "th": "แยกปัจจัย สัญญาณ และสิทธิ์"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The scenario is authored teaching, not a real incident or exam item.",
+            "th": "สถานการณ์แต่งเพื่อเรียน ไม่ใช่เหตุการณ์จริงหรือข้อสอบ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d3-notes",
+        "d3-summary",
+        "nist-authentication"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-3-completion-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — assistant technical/editorial review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — assistant technical/editorial review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — assistant technical/editorial review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    }
+  }
+}

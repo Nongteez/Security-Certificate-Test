@@ -210,10 +210,10 @@ await runAsyncTest('Reading Loader — Loads Domain 1 data and caches rendered o
   assert.ok(cached, 'Cache must return populated object after load');
   assert.equal(cached.renderedHtml, loaded.renderedHtml);
 
-  // Test Domain 2-5 placeholder
-  const d2 = await loadDomainReading(2);
-  assert.equal(d2.id, 2);
-  assert.equal(d2.published, false);
+  // Test Domain 5 placeholder
+  const d5 = await loadDomainReading(5);
+  assert.equal(d5.id, 5);
+  assert.equal(d5.published, false);
 });
 
 // -------------------------------------------------------------
@@ -332,12 +332,12 @@ runTest('UI Shell Integration — Synchronous mount, independent toggles & scrol
 });
 
 // -------------------------------------------------------------
-// Test 9: Domains 2–5 Quiet Unpublished Presentation
+// Test 9: Domain 5 Quiet Unpublished Presentation
 // -------------------------------------------------------------
-runTest('Unpublished Domains — Domains 2–5 show minimal coming soon notice', () => {
+runTest('Unpublished Domains — Domain 5 shows minimal coming soon notice', () => {
   const { container, restore } = createVocabularyDOM();
   try {
-    [2, 3, 4, 5].forEach(domainId => {
+    [5].forEach(domainId => {
       state.reading = {
         selectedDomainId: domainId,
         sidebarCollapsed: false,

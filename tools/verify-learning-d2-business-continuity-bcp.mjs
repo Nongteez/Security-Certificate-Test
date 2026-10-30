@@ -335,23 +335,25 @@ test('5. Interactive Continuity Decision Scenario (Slide 6) supports 4 choices, 
   assert.equal(interactionState.choice, 1, 'Destroyed scenario must not mutate state');
 });
 
-test('6. Catalog publication, Objective 2.2 activation with Lesson 3 published & Lesson 4 coming-soon, independent progress/Resume, and strict Domain 1 + Lessons 1-2 preservation', async () => {
+test('6. Catalog publication, Objective 2.2 activation with both lessons published, independent progress/Resume, and strict Domain 1 + Lessons 1-2 preservation', async () => {
   const catalog = readJson(CATALOG_PATH);
   assert.equal(validateCatalog(catalog).valid, true);
 
   const d2 = catalog.domains.find(d => d.id === 2);
-  assert.equal(d2.status, 'in-preparation', 'Domain 2 curriculum remains in-preparation while Objectives 2.3-2.4 and Lesson 4 are Coming Soon');
+  assert.equal(d2.status, 'published', 'All four Domain 2 objectives have reviewed published lessons');
   const [obj21, obj22, obj23, obj24] = d2.objectives;
   assert.equal(obj21.lessons.length, 2);
-  assert.equal(obj22.status, 'in-preparation', 'Objective 2.2 is in-preparation with Lesson 3 published and Lesson 4 coming-soon');
+  assert.equal(obj22.status, 'published');
   assert.equal(obj22.lessons.length, 2);
   assert.equal(obj22.lessons[0].id, 'lesson-d2-03-business-continuity-bcp');
   assert.equal(obj22.lessons[0].status, 'published');
   assert.equal(obj22.lessons[0].lessonPath, 'lessons/lesson-d2-03-business-continuity-bcp.json');
   assert.equal(obj22.lessons[1].id, 'lesson-d2-04-disaster-recovery-drp');
-  assert.ok(['coming-soon', 'published'].includes(obj22.lessons[1].status));
-  assert.equal(obj23.status, 'coming-soon');
-  assert.equal(obj24.status, 'coming-soon');
+  assert.equal(obj22.lessons[1].status, 'published');
+  assert.equal(obj23.status, 'published');
+  assert.equal(obj23.lessons.filter(l=>l.status==='published').length, 2);
+  assert.equal(obj24.status, 'published');
+  assert.equal(obj24.lessons.filter(l=>l.status==='published').length, 2);
 
   const { loadCatalog, loadLesson } = createDiskLoaders();
   const storage = createMemoryStorage();
@@ -374,8 +376,8 @@ test('6. Catalog publication, Objective 2.2 activation with Lesson 3 published &
 
   assert.equal(obj21Row.classList.contains('is-available'), true);
   assert.equal(obj22Row.classList.contains('is-available'), true, 'Objective 2.2 must now be selectable');
-  assert.equal(obj23Row.classList.contains('is-unavailable'), true);
-  assert.equal(obj24Row.classList.contains('is-unavailable'), true);
+  assert.equal(obj23Row.classList.contains('is-available'), true);
+  assert.equal(obj24Row.classList.contains('is-available'), true);
 
   // Select Objective 2.2 and click Start Learning -> launches Lesson 3
   fire(obj22Row, 'click');

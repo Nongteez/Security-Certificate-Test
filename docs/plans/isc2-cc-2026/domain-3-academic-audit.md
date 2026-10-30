@@ -1,0 +1,79 @@
+# Domain 3 Learning Slides — Academic and Bilingual Planning Audit
+
+Date:2026-10-30. **Planning audit complete; implementation and human academic acceptance not performed.** Originals, Vocabulary, banks and Domains 1–2 remain read-only. Evidence codes and checked primary URLs are defined in the [source inventory](domain-3-source-inventory.md); the [coverage matrix](domain-3-2026-coverage-matrix.md) separates eight numbered-outline requirements from official application guidance and supporting teaching.
+
+## Method and overall finding
+
+Read the complete N/U teaching notes and supplied T, inspected all 17 PNGs, reviewed the existing source audit/25-entry bilingual map/question-review record, and checked the secondary terminology corpus for scope, evidence and overstatement risks. Rechecked the dated ISC2 outline/PDF and the primary technical passages used below. Previous assistant APPROVED/READY labels are historical evidence, not independent human sign-off.
+
+The current notes-inclusive corpus can support both official objectives. The raw lecture had thin tool distinctions and name-only ABAC; N§16/U topic 13 now explain ABAC, so calling ABAC wholly absent would be inaccurate. Official automated-identity and authentication-monitoring applications still require explicitly identified supplementation to N/U. Their foundational explanations are available in K and freshly checked primary sources. No unsupported original claim is needed to build the plan.
+
+## Findings and required authoring dispositions
+
+Priority describes consequence **if reused in a slide**, not a production defect fixed by this task. Status “resolved in plan” means an accepted replacement/ownership is specified; no existing source or lesson was edited.
+
+| ID / priority | Evidence and issue | Correct interpretation / authoring rule | Disposition and future lesson |
+|---|---|---|---|
+|D3-A01 /High|Task legacy title;V header 19.8%; some webpage introductory names are old|Use current 2026 IAM domain,20%,two objectives. Do not invent later 3.3 or physical-access objective|Resolved in plan;all docs/O-PDF|
+|D3-A02 /High|T@00:04:11 equates identity with username;00:04:51 defines all credentials as username/password|A context-specific identity, managed account, identifier and authenticator differ. A username is not a secret factor. Use N§§1/4 with K001/002 and R63|L01 S02;qualified Reading terminology|
+|D3-A03 /Medium|T calls provisioning the first IAM step;V098 says owner approval is always FIRST|Prerequisites and authorized process stage must be stated. Role/need/approval can precede account creation; approved standard workflows need not repeat a manual approval at every action|L01 S03–S05/S07;no universal FIRST claims|
+|D3-A04 /High|T@00:06:53 equates orphaned with unused accounts;V083 first defines inactivity as necessarily owned, then calls dimensions independent|Activity and ownership are independent. An inactive account can be orphaned; an active service account can be unmanaged. A mover with stale rights is not necessarily an orphaned identity|L02 S01/S03;R-ILM,K005/007|
+|D3-A05 /Medium|T@00:06:16 implies unused accounts should simply be deleted;N§6 correctly distinguishes access removal|Investigate purpose/owner/dependencies under policy. Rare emergency accounts can have justified continuing need. Access withdrawal differs from record deletion/retention|L02 S03/S05–S07;no numeric inactivity threshold|
+|D3-A06 /High|S04 transfer example is six months old; periodic-only interpretation can defer required adjustment|Reassess on role changes and at policy/risk-based intervals. Six months is the source story's elapsed time, not a recommended review cadence|L02 S01/S02/S04;R-ILM|
+|D3-A07 /High|Checking a review form or disabling one central account can be mistaken for completed remediation|Apply and verify approved changes across relevant apps/entitlements/sessions. R63C§4.7 supports independent sessions; no guarantee that one disable ends everything or any revocation is instantaneous everywhere|L02 S02/S06/S08;L03 explains federation roles|
+|D3-A08 /High|T@00:12:40/00:13:21 infers actions beyond intended privileges cannot be attributed to that account|PoLP reduces permissions/exposure, not all harm or attribution uncertainty. Actual activity evidence is needed. Do not claim a permission list proves innocence or a log proves complete accountability|L04 S01/Reading;D1 evidence prerequisite retained|
+|D3-A09 /High|S11 “prevent fraud”;T@00:16:12 says all three participants must collude|SoD separates incompatible authority and reduces unilateral abuse. Collusion, configuration failures and bypass remain possible; required actors depend on workflow|L04 S04–S07;R-171§03.01.04|
+|D3-A10 /High|S12/S13 text combines approval/payment under employeeB; picture shows request/approval/payment across three people|Original intended allocation cannot be proved. Do not copy exact headcount/diagram as a universal rule. Author a declared initiator/approver conflict and show actual permissions blocking self-approval|Quarantined original;K-C07 remains unresolved;replacement L04 S04/S05|
+|D3-A11 /High|S15/T say owner discretion “rather than enforced” centrally;S15/16 imply DAC inferior/MAC always stronger|Distinguish who can set policy from software enforcement. Both models require enforcement; suitability depends on requirements and configuration, not an absolute ranking|L05 S01–S03/S07;R-DAC/R-MAC|
+|D3-A12 /High|S16/T suggest appropriate clearance alone grants classified access;“users cannot change permissions” can be overbroad|Ordinary owners cannot override mandatory policy; authorized administration exists. In the US classified example, eligibility,NDA and need-to-know apply. Do not generalize US labels/legal conditions to all MAC systems|L05 S03;R-US§4.1(a) Reading;R-MAC|
+|D3-A13 /Medium|T@00:21:43 implies one shared role guarantees identical total rights;V calls RBAC purely static|Role-permission reuse helps consistency. Additional roles, activation and constraints can change effective rights; role design can violate PoLP/SoD. Do not teach “static versus dynamic” as the defining distinction|L05 S04/S06;R-RBAC|
+|D3-A14 /Medium|A's raw-source ABAC gap is sometimes applied to today's complete source set;V087 says ABAC required for any contextual rule|ABAC is substantively explained in N/U. Refine with requested action and policy evaluation. Context controls can combine with roles; avoid declaring models mutually exclusive or every time-based rule proof of a pure model|L05 S05–S07;R-ABAC,K022|
+|D3-A15 /Medium|S07/08 name guidance/tools;V treats LDAP as a directory in one comparison|Guidance is not software; directory data, IdP assertions, governance workflow and runtime enforcement are distinct responsibilities that may coexist in one product. LDAP is a protocol, not itself a directory service. Omit protocol mechanics by default|L03 S01–S06;N§§7/8,R63/R63C/R-CSF|
+|D3-A16 /High|MFA/AI behavioral applications not developed in N/U;V attributes them to S08; a separate Reading Notes design document lists location as a factor|Use O-AI and R63B explicitly. Knowledge/possession/inherence are the factor categories; location/risk scoring is contextual evidence, not a fourth independent factor. Biometrics are not an invulnerable standalone authenticator. Strong authentication does not grant permissions|L06 S01–S06;do not modify D1/Reading Notes to resolve their prose|
+|D3-A17 /High|Human-only examples omit bot lifecycle;V mandates automated password rotation for every service account|Assign workload owner/purpose/scope/review/retirement and protect authentication appropriate to the workload. Do not force human interactive MFA, a password-only method, universal rotation schedule or vendor-specific product into all cases|L01 S06,L02 S07,L04 S06;O-AI,R-SVC|
+|D3-A18 /High|Anomaly/impossible-travel signal can be presented as certain compromise or proof for automatic deletion|Assess contextual evidence and follow authorized response/escalation. Legitimate routing/geolocation effects are possible. Analytics can inform additional checks but does not replace MFA or decision authority|L06 S03–S06;R63B§5.3|
+|D3-A19 /Medium|V lists 102 “100% verified” entries, nonexistent S18–S34, unsupported heavy/frequent/high-probability exam claims, broad automatic/PAM guarantees|Do not inherit its completeness/frequency assertions or claim sources teach all listed technology details. “Fixed labels,” “unbypassable,” “PAM eliminates passwords,” and hardware-only FIDO explanations require independent qualification or exclusion|Quarantine as teaching claims;no Vocabulary edits;core lessons use N/U and primary evidence|
+|D3-A20 /Medium|Q historical 86-bank total/125-item threshold and balanced keys “completely prevent” guessing bias;A/K histories predate current sources|Report historical provenance honestly; banks are assessment references, not syllabus authority. Balanced answer distribution cannot prove pedagogical/psychometric quality. Avoid copying question stems/options/keys into presentations|No bank changes;new teaching decisions declared editorial|
+|D3-A21 /High architecture|Old D2 architecture plan uses invented/stale fields/paths/counts and implies content revision resets progress|Actual contracts use `id`, `revision`, `rendererId`, `synopsis`, semantic `text/columns/rows`;158 existing slides. Reconciliation retains valid last/visited IDs and may invalidate completion on revision change. Current Info supports D1 allowlist/D2 only|Readiness records exact current interfaces;no engine or D2 edits in planning|
+
+No source contains enough evidence to resolve the instructor's intended financial workflow or establish original-course provenance/completeness. Those two historical questions remain open; authoring does not depend on answering them. No required concept lacks a primary-supported teaching path after the additions below. Human reviewers must still approve wording, composition and supplement boundaries before future implementation.
+
+## Substantive additions beyond the user's N/U notes
+
+Every row is an explicit addition or qualification, not a claim that the user notes already teach it. These do not create extra official subtopics.
+
+| Addition | Justification / authority | Required depth / destination |
+|---|---|---|
+|Identity/account/identifier/authenticator boundaries and proofing versus login|Correct T shorthand;NIST R63,K001/002/015|Short onboarding bridge plus Reading;L01 S02. No assurance-level or federal identity-proofing requirement for every account|
+|Designated approver/implementer/reviewer; applied review decisions|Make lifecycle usable;R-171 account management,R-ILM,K003–006|Declared organization-specific workflow;L01 S03/L02 S02. Do not equate all approval with a single person's job title|
+|Independent activity/ownership and access-removal verification|Correct original confusion;R-ILM,R63C,K007–009|Concrete state/evidence examples;L02 S03/S06. No universal deadline or guarantee of immediate global revocation|
+|Directory/IdP/governance/enforcement/SSO responsibility distinctions|Expand source's named tools at foundational depth;R63C/R-CSF,K010–013|One request flow and one governance loop;L03. No protocol internals, product installation or SSO-as-blanket-permission|
+|Non-human identity lifecycle and bot SoD|O-AI official context plusR-SVC,K014/017|Owned/scoped reporting bot and no-self-approval application;L01/L02/L04. No human-MFA fiction or prescribed vendor|
+|PoLP attribution limits, collusion limits, clearance/need-to-know conditions and role combinations|Correct absolute claims;R-171/R-US/R-RBAC,K016–021|Bounded illustrative rights and workflow;L04/L05. Existing original errors need not be repeated verbatim on the canvas|
+|ABAC requested action and role/context overlap|Refine N§16;R-ABAC,K022|Department/device/time policy includes resource and operation;L05. No invented missing lecture capture|
+|Applied MFA, risk evidence and anomalous-sign-in response|O-AI official context,R63B,K023–025|One-device multi-factor can be a qualified example;no “every key is MFA,” no location/AI factor;L06. Avoid full D1/D2 authentication/password repetition|
+|New scenarios and simple diagrams|Instructional application of supported concepts|Clearly authored, not ISC2 exam items or recovered lecture figures. Each scenario declares authority/process stage, supports one defensible decision and explains all alternatives|
+
+## Distinctions without artificial taxonomies
+
+| Learner confusion | Teaching decision |
+|---|---|
+|Identification / authentication / authorization|A claimed identifier, proof of authenticator control and permission for a requested action answer different questions. Use a compact D1 prerequisite bridge in L01/L06, not three standalone lessons.|
+|Authorization / accountability|Permission is a decision; responsibility/traceability needs records and context. Keep deeper evidence instruction in D1L03 and log operations in Domain 5.|
+|Physical / logical access|One supporting contrast clarifies digital resources. No physical-safeguard syllabus imported from older CC versions.|
+|DAC / MAC / RBAC / ABAC|Compare the stated basis/authority for decisions with one shared resource/action. Four isolated slogan cards are insufficient; models may coexist.|
+|PoLP / need-to-know|Related constraints: minimum necessary permissions and justified access to particular information. Do not claim PoLP only concerns operations or need-to-know only classified systems.|
+|SoD / privileged access|SoD concerns incompatible authority; privileged access concerns elevated capability. Separate admin/user accounts controlled by the same person do not by themselves separate incompatible duties between independent actors.|
+|Policy / enforcement|A documented read-only decision must be implemented and checked; signing a form does not change effective access. Same supported concept appears as governance in L02 and request enforcement in L05, not duplicate full explanations.|
+
+## Bilingual editorial standard
+
+Use natural Thai with the user's English technical vocabulary: “ให้สิทธิ์เท่าที่จำเป็นต่อหน้าที่”, “ทบทวนสิทธิ์”, “ถอนสิทธิ์ที่ไม่จำเป็น”, “บัญชีที่ขาดผู้รับผิดชอบ”, “แบ่งแยกหน้าที่ที่ขัดกัน”. Keep `Role`, `Permission`, `Provisioning`, `IdP`, `PoLP`, `SoD`, `DAC/MAC/RBAC/ABAC` where helpful. Explain once, then use consistent terms rather than forced Thai-only labels. User notes use both Segregation/Separation of Duties; teach their synonymy here while preserving the outline's Separation wording.
+
+For every EN/TH pair, compare actor, authority, action/resource, condition, certainty, timing and reason. Translate “can reduce” as “ช่วยลด”, not “ป้องกันได้ทั้งหมด”; retain “according to stated policy” in both languages. Complete Reading/Info and each feedback rationale must carry the same limitations as the concise canvas. UI navigation/controls remain English; educational scenario labels and feedback may localize. No production translation approval is claimed before text is authored.
+
+Do not reuse V's unsupported exam-frequency or always-FIRST prose, its overbroad biometric/cryptographic-key statements, or another feature's “Certified” document label as proof of technical correctness. No exams are predicted. Primary claims/conditions must be reviewed again if standards or official scope change before implementation.
+
+## Audit acceptance recommendation
+
+**Ready for human review of the planning package.** Adopt the documented corrections/supplement ledger and the six-lesson proposal; require an explicit implementation authorization afterward. No unresolved source-history issue blocks this bounded plan because disputed claims are excluded. No Domain 3 slide, schema review, browser QA or final educational acceptance has been performed by this planning task.
