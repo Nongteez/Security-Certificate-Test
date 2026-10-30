@@ -223,14 +223,14 @@ test('4. Nine purposeful custom visual compositions render via renderSlide in TH
 
   const lesson = readJson(PUBLISHED_PATH);
   const expectedCompositions = [
-    'dr-nested-scope-foundations',
-    'dr-strategic-benefits-bounds',
+    'dr-service-restoration',
+    'dr-business-impact',
     'rto-rpo-directional-timeline',
-    'worked-outage-target-analysis',
-    'backup-offsite-resilience-architecture',
-    'recovery-sites-spectrum',
-    'drp-lifecycle-drills-coordination',
-    'bc-vs-dr-master-matrix',
+    'target-and-observed-data',
+    'backup-restoration-path',
+    'recovery-site-preparation',
+    'exercise-measure-correct',
+    'parallel-bc-dr-response',
     'disaster-recovery-decision-scenario'
   ];
 
@@ -273,7 +273,7 @@ test('4. Nine purposeful custom visual compositions render via renderSlide in TH
     doc.body.append(host);
 
     const h2 = renderSlide(host, { lesson, slide: lesson.slides[1], language: 'en', mode: 'presentation', interactionState: {} });
-    assert.equal(host.querySelectorAll('[data-drp-benefit]').length, 5, 'Slide 2 visual must render all 5 S17 importance points');
+    assert.ok(host.querySelector('.d2d-impact'), 'Slide2 shows the business-impact relationship; all five source benefits remain in Reading');
     h2.destroy();
 
     const h3 = renderSlide(host, { lesson, slide: lesson.slides[2], language: 'en', mode: 'presentation', interactionState: {} });
@@ -285,7 +285,11 @@ test('4. Nine purposeful custom visual compositions render via renderSlide in TH
     h6.destroy();
 
     const h8 = renderSlide(host, { lesson, slide: lesson.slides[7], language: 'en', mode: 'presentation', interactionState: {} });
-    assert.equal(host.querySelectorAll('[data-drp-comparison-row]').length, 7, 'Slide 8 visual must render all 7 S19 BC vs DR comparison rows');
+    assert.ok(host.querySelector('.d2d-parallel'), 'Slide8 shows simultaneous BC/DR actions');
+    h8.destroy();
+    const read=renderSlide(host,{lesson,slide:lesson.slides[7],language:'en',mode:'reading'});
+    for(const row of lesson.slides[7].blocks[1].rows)for(const cell of row)assert.ok(nodeText(host).includes(cell.en));
+    read.destroy();
     h8.destroy();
   }
 

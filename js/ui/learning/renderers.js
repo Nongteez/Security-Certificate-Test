@@ -1,3 +1,7 @@
+import {hasSecurityReportingPresentation,renderSecurityReportingPresentation} from './security-reporting-presentations.js';
+import {hasSecurityMetricsPresentation,renderSecurityMetricsPresentation} from './security-metrics-presentations.js';
+import {hasSocialPasswordsPresentation,renderSocialPasswordsPresentation} from './social-engineering-passwords-presentations.js';
+import {hasSecurityAwarenessPresentation,renderSecurityAwarenessPresentation} from './security-awareness-presentations.js';
 import { hasDisasterRecoveryDrpPresentation, renderDisasterRecoveryDrpPresentation } from './disaster-recovery-drp-presentations.js';
 import { hasBusinessContinuityBcpPresentation, renderBusinessContinuityBcpPresentation } from './business-continuity-bcp-presentations.js';
 import { hasGrcToolsRiskRegisterPresentation, renderGrcToolsRiskRegisterPresentation } from './grc-tools-risk-register-presentations.js';
@@ -94,6 +98,14 @@ export function renderSlide(host, context) {
   const grcTools = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasGrcToolsRiskRegisterPresentation(context);
   const bcBcp = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasBusinessContinuityBcpPresentation(context);
   const drDrp = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasDisasterRecoveryDrpPresentation(context);
+  const d2SecurityAwareness = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasSecurityAwarenessPresentation(context);
+  host.classList.toggle('learning-security-awareness-slide', Boolean(d2SecurityAwareness));
+  const d2SocialPasswords = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasSocialPasswordsPresentation(context);
+  host.classList.toggle('learning-social-passwords-slide', Boolean(d2SocialPasswords));
+  const d2SecurityMetrics = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasSecurityMetricsPresentation(context);
+  host.classList.toggle('learning-security-metrics-slide', Boolean(d2SecurityMetrics));
+  const d2SecurityReporting = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasSecurityReportingPresentation(context);
+  host.classList.toggle('learning-security-reporting-slide', Boolean(d2SecurityReporting));
   host.classList.toggle('learning-dr-drp-slide', Boolean(drDrp));
   host.classList.toggle('learning-bc-bcp-slide', Boolean(bcBcp));
   host.classList.toggle('learning-grc-tools-slide', Boolean(grcTools));
@@ -111,7 +123,10 @@ export function renderSlide(host, context) {
   host.classList.toggle('learning-aaa-slide', Boolean(aaa));
   if (cia) host.classList.add('learning-cia-slide'); else if (host.classList.contains('learning-cia-slide')) host.classList.remove('learning-cia-slide');
   host.classList.toggle('learning-editorial-slide', Boolean(editorial));
-  if (editorial || cia || aaa || nr || privacy || risk || assessment || response || governance || frameworks || categories || functions || conduct || grcFoundations || grcTools || bcBcp || drDrp) heading.classList.add('learning-sr-only');
+  if (d2SecurityAwareness || editorial || cia || aaa || nr || privacy || risk || assessment || response || governance || frameworks || categories || functions || conduct || grcFoundations || grcTools || bcBcp || drDrp) heading.classList.add('learning-sr-only');
+  if (d2SocialPasswords) heading.classList.add('learning-sr-only');
+  if (d2SecurityMetrics) heading.classList.add('learning-sr-only');
+  if (d2SecurityReporting) heading.classList.add('learning-sr-only');
   const body = element(host.ownerDocument, 'div', 'learning-slide-body');
   body.setAttribute('data-layout', context.slide.layoutId || 'default');
   host.append(body);
@@ -120,7 +135,15 @@ export function renderSlide(host, context) {
   const fallback = () => { if (!abort.signal.aborted) { body.replaceChildren(); blocks(body, { ...args, slide: getSemanticSlide(), mode: 'reading' }); } };
   const custom = registry.get(context.slide.rendererId);
 
-  if (editorial) {
+  if (d2SecurityReporting) {
+    const handle=renderSecurityReportingPresentation(body,args); cleanup=()=>handle?.destroy?.();
+  } else if (d2SecurityMetrics) {
+    const handle=renderSecurityMetricsPresentation(body,args); cleanup=()=>handle?.destroy?.();
+  } else if (d2SocialPasswords) {
+    const handle=renderSocialPasswordsPresentation(body,args); cleanup=()=>handle?.destroy?.();
+  } else if (d2SecurityAwareness) {
+    const handle=renderSecurityAwarenessPresentation(body,args); cleanup=()=>handle?.destroy?.();
+  } else if (editorial) {
     const handle = renderEditorialIntro(body, args); cleanup = () => handle?.destroy?.();
   } else if (cia) {
     const handle = renderCiaPresentation(body, args); cleanup = () => handle?.destroy?.();

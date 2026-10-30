@@ -1,0 +1,81 @@
+- navigation "Presentation controls":
+  - button "Back to Domain":
+  - generic "Disaster Recovery, RTO/RPO & Recovery Strategies":
+    - generic: DOMAIN 2 · OBJECTIVE 2.2
+    - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=1]
+  - group "Slide navigation":
+    - button "Previous slide":
+      - generic: ‹
+    - generic: 7 / 9
+    - button "Next slide":
+      - generic: ›
+  - group "Content language":
+    - button "TH":
+      - generic: TH
+    - button "EN" [pressed]:
+      - generic: EN
+  - button "Slides":
+    - generic: Slides
+  - button "Lesson Info":
+    - generic: Info
+  - button "Keyboard shortcuts":
+  - button "Fullscreen":
+    - generic: ⛶
+  - button "Toggle theme":
+- region "Exercise the plan, measure, then correct the gaps. (7/9)":
+  - article:
+    - heading "Exercise the plan, measure, then correct the gaps." [level=2]:
+      - generic: Exercise the plan, measure, then correct the gaps.
+    - paragraph:
+      - generic: A scheduled backup or written DRP does not demonstrate a recoverable service.
+    - table "DRP lifecycle stages, Testing and Drills (S18, Domain 2.md §9.6), and coordinated recovery priorities":
+      - caption:
+        - generic: DRP lifecycle stages, Testing and Drills (S18, Domain 2.md §9.6), and coordinated recovery priorities
+      - rowgroup:
+        - row "DRP Lifecycle & Governance Element Operational Activity Why It Matters for Real Recovery":
+          - columnheader "DRP Lifecycle & Governance Element":
+            - generic: DRP Lifecycle & Governance Element
+          - columnheader "Operational Activity":
+            - generic: Operational Activity
+          - columnheader "Why It Matters for Real Recovery":
+            - generic: Why It Matters for Real Recovery
+      - rowgroup:
+        - row "Plan & Align Priorities (BIA → DRP) Use Business Impact Analysis (BIA) results (S19) to establish IT recovery priorities—ranking critical databases, authentication, and core apps ahead of non-critical systems. Prevents engineering teams from wasting scarce outage time restoring test servers while core customer services remain offline.":
+          - cell "Plan & Align Priorities (BIA → DRP)":
+            - generic: Plan & Align Priorities (BIA → DRP)
+          - cell "Use Business Impact Analysis (BIA) results (S19) to establish IT recovery priorities—ranking critical databases, authentication, and core apps ahead of non-critical systems.":
+            - generic: Use Business Impact Analysis (BIA) results (S19) to establish IT recovery priorities—ranking critical databases, authentication, and core apps ahead of non-critical systems.
+          - cell "Prevents engineering teams from wasting scarce outage time restoring test servers while core customer services remain offline.":
+            - generic: Prevents engineering teams from wasting scarce outage time restoring test servers while core customer services remain offline.
+        - row "Execute & Coordinate Response Coordinate IT recovery engineers, security containment, management authorization, and stakeholder communications as systems are restored from clean backups. Ensures threats are contained before restoration so malware or corrupted states are not re-introduced into the recovery site.":
+          - cell "Execute & Coordinate Response":
+            - generic: Execute & Coordinate Response
+          - cell "Coordinate IT recovery engineers, security containment, management authorization, and stakeholder communications as systems are restored from clean backups.":
+            - generic: Coordinate IT recovery engineers, security containment, management authorization, and stakeholder communications as systems are restored from clean backups.
+          - cell "Ensures threats are contained before restoration so malware or corrupted states are not re-introduced into the recovery site.":
+            - generic: Ensures threats are contained before restoration so malware or corrupted states are not re-introduced into the recovery site.
+        - 'row "Testing and Drills (S18 Component #5) Conduct regular testing and drills of the DR plan (tabletop walkthroughs, backup restoration tests, and failover simulations) to measure DR strategy effectiveness (T:L65–67). Verifies that backups are actually restorable, failover scripts work, and personnel know their exact steps under pressure."':
+          - 'cell "Testing and Drills (S18 Component #5)"':
+            - generic: "Testing and Drills (S18 Component #5)"
+          - cell "Conduct regular testing and drills of the DR plan (tabletop walkthroughs, backup restoration tests, and failover simulations) to measure DR strategy effectiveness (T:L65–67).":
+            - generic: Conduct regular testing and drills of the DR plan (tabletop walkthroughs, backup restoration tests, and failover simulations) to measure DR strategy effectiveness (T:L65–67).
+          - cell "Verifies that backups are actually restorable, failover scripts work, and personnel know their exact steps under pressure.":
+            - generic: Verifies that backups are actually restorable, failover scripts work, and personnel know their exact steps under pressure.
+        - row "Validate & Continually Improve Verify data integrity after restoration, measure actual recovery duration/data loss against RTO/RPO targets, and update the DRP as systems change. Closes gaps discovered during drills or incidents so an outdated DRP does not fail during the next disruption.":
+          - cell "Validate & Continually Improve":
+            - generic: Validate & Continually Improve
+          - cell "Verify data integrity after restoration, measure actual recovery duration/data loss against RTO/RPO targets, and update the DRP as systems change.":
+            - generic: Verify data integrity after restoration, measure actual recovery duration/data loss against RTO/RPO targets, and update the DRP as systems change.
+          - cell "Closes gaps discovered during drills or incidents so an outdated DRP does not fail during the next disruption.":
+            - generic: Closes gaps discovered during drills or incidents so an outdated DRP does not fail during the next disruption.
+    - paragraph:
+      - generic: Regular testing of the DR plan checks whether recovery arrangements still work. The DRP should document objectives, backup/recovery strategies, recovery sites and testing, supported by named responsibilities, authorization, contacts and dependency-aware procedures. Tabletop walkthroughs can reveal coordination gaps; restoration and failover exercises test technical recovery. Record the last usable data point and the time a validated service returns, then compare observed results with RPO and RTO. Assign owners to shortcomings, update procedures, train staff and retest after material changes. Coordinate with incident containment to avoid restoring compromised states, and communicate business priorities and service status through agreed channels.
+    - list:
+      - generic: "All 5 S18 DRP Components in One View: (1) Recovery Time Objective (RTO), (2) Recovery Point Objective (RPO), (3) Backup and Recovery Strategies, (4) Disaster Recovery Sites, and (5) Testing and Drills."
+      - generic: "Why Testing and Drills Are Mandatory (Domain 2.md §9.6): A DRP that exists only on paper gives false confidence; drills verify that backups are restorable and that RTO/RPO targets are achievable in practice."
+      - generic: "Coordinating Technical & Business Priorities: IT Recovery Engineers, Security Teams, Management, and Communications Teams must follow BIA-derived recovery priorities so critical dependencies (such as identity and core databases) come online first."
+    - paragraph:
+      - generic: "Key Takeaway: A written DRP or unverified backup never guarantees recovery—regular Testing and Drills validate that people, sites, and backups can actually achieve RTO and RPO targets."
+  - button "Toggle reading layout" [active]:
+    - generic: Toggle reading layout
+- paragraph: Exercise the plan, measure, then correct the gaps. (7/9)

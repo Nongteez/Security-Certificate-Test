@@ -1,0 +1,124 @@
+- navigation "Presentation controls":
+  - button "Back to Domain":
+  - generic "Business Continuity, Redundancy & BCP":
+    - generic: DOMAIN 2 · OBJECTIVE 2.2
+    - heading "Business Continuity, Redundancy & BCP" [level=1]
+  - group "Slide navigation":
+    - button "Previous slide":
+      - generic: ‹
+    - generic: 6 / 6
+    - button "Finish Lesson":
+      - generic: Finish Lesson
+  - group "Content language":
+    - button "TH":
+      - generic: TH
+    - button "EN" [pressed]:
+      - generic: EN
+  - button "Slides":
+    - generic: Slides
+  - button "Lesson Info":
+    - generic: Info
+  - button "Keyboard shortcuts":
+  - button "Fullscreen":
+    - generic: ⛶
+  - button "Toggle theme":
+- region "How can customer operations continue safely? (6/6)":
+  - article:
+    - heading "How can customer operations continue safely?" [level=2]:
+      - generic: How can customer operations continue safely?
+    - heading "How can customer operations continue safely?" [level=3]:
+      - generic: How can customer operations continue safely?
+    - paragraph:
+      - generic: A regional flood closes headquarters, cuts its ISP link and leaves the operations manager unreachable. Customer support and order fulfillment are needed today.
+    - group "Scenario decision options":
+      - button "Wait for headquarters and its ISP to recover.":
+        - generic: A
+        - generic: Wait for headquarters and its ISP to recover.
+      - button "Activate the BCP using prepared alternatives and recovery priorities.":
+        - generic: B
+        - generic: Activate the BCP using prepared alternatives and recovery priorities.
+      - button "Check nightly backups; wait for server restoration next week.":
+        - generic: C
+        - generic: Check nightly backups; wait for server restoration next week.
+      - button "Restore every service at once, including test and archive systems." [pressed]:
+        - generic: D
+        - generic: Restore every service at once, including test and archive systems.
+    - heading "Consider what is missing" [level=4]:
+      - generic: Consider what is missing
+    - paragraph:
+      - generic: Restoring every system simultaneously can exhaust limited recovery capacity. Use business impact and dependencies to choose priorities.
+  - button "Toggle reading layout":
+    - generic: Toggle reading layout
+- paragraph: How can customer operations continue safely? (6/6)
+- dialog "Lesson Info":
+  - heading "Lesson Info" [level=2]
+  - button "Close": ✕
+  - paragraph: OBJECTIVE 2.2
+  - heading "Business Continuity, Redundancy & BCP" [level=3]:
+    - generic: Business Continuity, Redundancy & BCP
+  - heading "What you'll learn" [level=4]
+  - list:
+    - generic: Define Business Continuity (BC) as the organizational ability to continue critical business operations during and after a disruption, explain how Redundancy reduces specified Single Points of Failure (SPOFs), subject to shared dependencies and tested capacity, and distinguish Redundancy from Backup.
+    - generic: Identify all eight source-defined disruption triggers—natural disasters, cyberattacks, power outages, equipment failures, network outages, pandemics, loss of facilities, and supply-chain disruptions—plus human error, and connect them to continuity goals.
+    - generic: Distinguish Business Continuity (capability/goal) from a Business Continuity Plan (BCP, documented plan) and master all eight core BCP elements, including alternate work locations, backup personnel, and alternate suppliers.
+    - generic: Explain how Business Impact Analysis (BIA) identifies critical business functions and recovery priorities, and distinguish the whole-business scope of BCP from the IT restoration scope of a Disaster Recovery Plan (DRP).
+  - generic "Slides 1–6 — Full explanations"
+  - generic "Slide 1 — Keep the critical service running." [active]
+  - heading "Keep the critical service running." [level=2]:
+    - generic: Keep the critical service running.
+  - paragraph:
+    - generic: Business Continuity keeps essential work going. Prepared alternate capacity helps when a primary resource fails.
+  - 'table "Core definitions and exam distinctions: Business Continuity (BC), Redundancy (eliminating SPOFs), and Backup"':
+    - caption:
+      - generic: "Core definitions and exam distinctions: Business Continuity (BC), Redundancy (eliminating SPOFs), and Backup"
+    - rowgroup:
+      - row "Concept Operational Meaning Scope & Exam Distinction":
+        - columnheader "Concept":
+          - generic: Concept
+        - columnheader "Operational Meaning":
+          - generic: Operational Meaning
+        - columnheader "Scope & Exam Distinction":
+          - generic: Scope & Exam Distinction
+    - rowgroup:
+      - 'row "Business Continuity (BC) The organization''s ability to continue critical business operations during and after a disruption so essential services do not halt. Whole-business capability covering people, processes, facilities, suppliers, and technology—remember: BC = Keep the business running."':
+        - cell "Business Continuity (BC)":
+          - generic: Business Continuity (BC)
+        - cell "The organization's ability to continue critical business operations during and after a disruption so essential services do not halt.":
+          - generic: The organization's ability to continue critical business operations during and after a disruption so essential services do not halt.
+        - 'cell "Whole-business capability covering people, processes, facilities, suppliers, and technology—remember: BC = Keep the business running."':
+          - generic: "Whole-business capability covering people, processes, facilities, suppliers, and technology—remember: BC = Keep the business running."
+      - row "Redundancy (Objective 2.2) Provide alternate capacity, components, pathways, locations, staff or suppliers for a specified failure. Reduces a single point of failure when independence, capacity and failover have been verified; does not replace data recovery.":
+        - cell "Redundancy (Objective 2.2)":
+          - generic: Redundancy (Objective 2.2)
+        - cell "Provide alternate capacity, components, pathways, locations, staff or suppliers for a specified failure.":
+          - generic: Provide alternate capacity, components, pathways, locations, staff or suppliers for a specified failure.
+        - cell "Reduces a single point of failure when independence, capacity and failover have been verified; does not replace data recovery.":
+          - generic: Reduces a single point of failure when independence, capacity and failover have been verified; does not replace data recovery.
+      - row "Backup (Data Copy) Preserving recoverable copies of data and system configurations so corrupted, deleted, or encrypted information can be restored. Protects data recoverability after loss, but a backup copy alone does not provide immediate operational continuity or alternate workspaces.":
+        - cell "Backup (Data Copy)":
+          - generic: Backup (Data Copy)
+        - cell "Preserving recoverable copies of data and system configurations so corrupted, deleted, or encrypted information can be restored.":
+          - generic: Preserving recoverable copies of data and system configurations so corrupted, deleted, or encrypted information can be restored.
+        - cell "Protects data recoverability after loss, but a backup copy alone does not provide immediate operational continuity or alternate workspaces.":
+          - generic: Protects data recoverability after loss, but a backup copy alone does not provide immediate operational continuity or alternate workspaces.
+      - row "Why Neither Alone Is Enough Redundant servers cannot undo corrupted data replicated across nodes, and offline backups cannot staff a customer desk when headquarters closes. Resilience combines alternate operational capacity, recoverable backups and coordinated continuity procedures.":
+        - cell "Why Neither Alone Is Enough":
+          - generic: Why Neither Alone Is Enough
+        - cell "Redundant servers cannot undo corrupted data replicated across nodes, and offline backups cannot staff a customer desk when headquarters closes.":
+          - generic: Redundant servers cannot undo corrupted data replicated across nodes, and offline backups cannot staff a customer desk when headquarters closes.
+        - cell "Resilience combines alternate operational capacity, recoverable backups and coordinated continuity procedures.":
+          - generic: Resilience combines alternate operational capacity, recoverable backups and coordinated continuity procedures.
+  - paragraph:
+    - generic: Business Continuity (BC) is the organizational capability to sustain critical business operations during and after a disruption. It can include a safe reduced service level or an approved temporary process, rather than an assurance that nothing ever stops. Redundancy provides alternate components, links, locations, people or suppliers for a specified failure. It reduces dependence on a single point only when the alternate is usable, sufficiently independent and capable of the required workload. Shared power, a shared provider or the same regional flood can disable both resources. Backups preserve recoverable data and configurations; redundant copies can replicate corruption, while a stored backup alone cannot staff an operating service. A documented BCP coordinates people, procedures, communications and recovery. Exercise the arrangements and assess the remaining dependencies.
+  - list:
+    - generic: BC coordinates people, procedures, facilities, suppliers and technology around the critical service.
+    - generic: An alternate reduces a specified dependency; test independence, access and required capacity.
+    - generic: A backup preserves recoverable data; it does not by itself deliver a working business service.
+  - paragraph:
+    - generic: Prepare an alternate, test the dependencies and keep recoverable data.
+  - generic "Slide 2 — Different disruptions can stop the same service."
+  - generic "Slide 3 — A BCP turns intentions into usable instructions."
+  - generic "Slide 4 — Check what the alternate depends on."
+  - generic "Slide 5 — Recover the dependencies that the business needs."
+  - generic "Slide 6 — How can customer operations continue safely?"
+  - generic "References & lesson details"

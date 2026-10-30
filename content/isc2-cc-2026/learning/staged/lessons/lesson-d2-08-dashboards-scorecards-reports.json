@@ -1,0 +1,1027 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d2-08-dashboards-scorecards-reports",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 2,
+  "primaryObjectiveId": "2.4",
+  "objectiveIds": [
+    "2.4"
+  ],
+  "revision": "1",
+  "status": "in-preparation",
+  "title": {
+    "en": "Dashboards, Scorecards & Reports",
+    "th": "Dashboard, Scorecard และ Report"
+  },
+  "synopsis": {
+    "en": "Turn defined evidence into visual status, target comparisons and accountable recommendations.",
+    "th": "เปลี่ยนหลักฐานที่กำหนดชัดเป็นภาพสถานะ ผลเทียบเป้า และข้อเสนอที่มีผู้รับผิดชอบ"
+  },
+  "outcomes": [
+    {
+      "en": "Distinguish dashboards, scorecards and reports by the question they answer.",
+      "th": "แยก Dashboard, Scorecard และ Report ตามคำถามที่ตอบ"
+    },
+    {
+      "en": "Read the source scorecard and communicate uncertainty, including its unit discrepancy.",
+      "th": "อ่าน Scorecard ต้นฉบับและสื่อสารความไม่แน่นอน รวมหน่วยที่ขัดกัน"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: previous Domain 2 lessons.",
+      "th": "แนะนำให้ทบทวนบทก่อนหน้าของ Domain 2"
+    }
+  ],
+  "references": [
+    {
+      "id": "isc2-cc-2026-outline",
+      "title": "ISC2 CC Exam Outline — effective September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain2 Objective2.4; checked2026-10-30.",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "d2-master",
+      "title": "Domain 2.md",
+      "authority": "course",
+      "locator": "Actual S34–S38; notes§§21–23; summary Dashboard/Scorecard/Report; transcriptL105–115. Q10 Scorecard, Q11 Dashboard, Q12 Report. S36 row4 units conflict with narration: explicitly unscored. Official AI KRIs in dashboards/reports supplement.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/Domain 2.md"
+    },
+    {
+      "id": "d2-summary",
+      "title": "D2 sum.md",
+      "authority": "course",
+      "locator": "Actual S34–S38; notes§§21–23; summary Dashboard/Scorecard/Report; transcriptL105–115. Q10 Scorecard, Q11 Dashboard, Q12 Report. S36 row4 units conflict with narration: explicitly unscored. Official AI KRIs in dashboards/reports supplement.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/D2 sum.md"
+    },
+    {
+      "id": "d2-transcript",
+      "title": "DOMAIN 2.txt",
+      "authority": "course",
+      "locator": "Actual S34–S38; notes§§21–23; summary Dashboard/Scorecard/Report; transcriptL105–115. Q10 Scorecard, Q11 Dashboard, Q12 Report. S36 row4 units conflict with narration: explicitly unscored. Official AI KRIs in dashboards/reports supplement.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/DOMAIN 2.txt"
+    },
+    {
+      "id": "nist-sp-800-55v1",
+      "title": "NIST SP800-55 Volume1 — Identifying and Selecting Measures",
+      "authority": "technical-primary",
+      "url": "https://csrc.nist.gov/pubs/sp/800/55/v1/final",
+      "locator": "§3.1 measurement documentation and data-quality context; supplementary."
+    }
+  ],
+  "assets": [],
+  "slides": [
+    {
+      "id": "slide-01-dashboard-status-and-trend",
+      "title": {
+        "en": "A dashboard makes status and trends visible.",
+        "th": "Dashboard ช่วยให้เห็นสถานะและแนวโน้ม"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Choose visual evidence that answers a security question, with a date and a defined scope.",
+            "th": "เลือกภาพหลักฐานที่ตอบคำถาม Security พร้อมวันวัดและขอบเขตชัดเจน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Current security status",
+                "th": "สถานะ Security ปัจจุบัน"
+              },
+              {
+                "en": "Visualize relevant measures",
+                "th": "แสดงตัววัดที่เกี่ยวข้องเป็นภาพ"
+              },
+              {
+                "en": "State the source, population and update time.",
+                "th": "ระบุแหล่งข้อมูล ประชากร และเวลาปรับข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "Security incidents",
+                "th": "Security incidents"
+              },
+              {
+                "en": "Visualize relevant measures",
+                "th": "แสดงตัววัดที่เกี่ยวข้องเป็นภาพ"
+              },
+              {
+                "en": "State the source, population and update time.",
+                "th": "ระบุแหล่งข้อมูล ประชากร และเวลาปรับข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "Vulnerability levels",
+                "th": "ระดับช่องโหว่"
+              },
+              {
+                "en": "Visualize relevant measures",
+                "th": "แสดงตัววัดที่เกี่ยวข้องเป็นภาพ"
+              },
+              {
+                "en": "State the source, population and update time.",
+                "th": "ระบุแหล่งข้อมูล ประชากร และเวลาปรับข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "Patch compliance",
+                "th": "Patch compliance"
+              },
+              {
+                "en": "Visualize relevant measures",
+                "th": "แสดงตัววัดที่เกี่ยวข้องเป็นภาพ"
+              },
+              {
+                "en": "State the source, population and update time.",
+                "th": "ระบุแหล่งข้อมูล ประชากร และเวลาปรับข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "Risk trends",
+                "th": "แนวโน้มความเสี่ยง"
+              },
+              {
+                "en": "Visualize relevant measures",
+                "th": "แสดงตัววัดที่เกี่ยวข้องเป็นภาพ"
+              },
+              {
+                "en": "State the source, population and update time.",
+                "th": "ระบุแหล่งข้อมูล ประชากร และเวลาปรับข้อมูล"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A security dashboard provides a visual representation of cybersecurity information and metrics. The source lists current security status, security incidents, vulnerability levels, patch compliance and risk trends, using charts, graphs, tables or trend indicators. An authored example shows overdue critical findings decreasing from 12 to 8 to 5 across three equal reporting periods; this is a count, not a percentage, and does not alone prove lower overall risk. Define the cohort and investigate missing coverage or changed definitions before interpreting it. A dashboard is not necessarily real time: display its update time and data limitations. For the official AI application, a model-drift KRI can appear alongside other measures, with the model/version, reference population, observation window and responsible reviewer identified. A drift signal prompts validation; it is not automatic proof of an attack or failure.",
+            "th": "Security dashboard แสดงข้อมูลและ Metric ด้าน Cybersecurity เป็นภาพ ต้นฉบับระบุสถานะปัจจุบัน Incident ระดับช่องโหว่ Patch compliance และแนวโน้มความเสี่ยง โดยอาจใช้ Chart, Graph, Table หรือ Trend indicator ตัวอย่างแต่งแสดงรายการ Critical เกินกำหนดลดจาก 12 เป็น 8 เป็น 5 ในสามงวดเท่ากัน ค่านี้เป็นจำนวน ไม่ใช่เปอร์เซ็นต์ และไม่ได้พิสูจน์ว่าความเสี่ยงรวมลด ต้องกำหนดกลุ่มรายการ ตรวจความครอบคลุมที่หายหรือคำนิยามที่เปลี่ยนก่อนตีความ Dashboard ไม่จำเป็นต้องเป็น Real time ให้แสดงเวลาอัปเดตกับข้อจำกัดข้อมูล ตาม AI application ใน Outline อาจแสดง Model-drift KRI ร่วมกับตัววัดอื่น โดยระบุ Model/Version ประชากรอ้างอิง ช่วงสังเกต และผู้ทบทวน สัญญาณ Drift ให้ตรวจสอบ ไม่ใช่หลักฐานอัตโนมัติว่าโจมตีหรือระบบล้มเหลว"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Use a chart, graph, table or trend indicator that supports the question.",
+              "th": "ใช้ Chart, Graph, Table หรือ Trend indicator ให้ตอบคำถาม"
+            },
+            {
+              "en": "Keep units, periods and definitions consistent before comparing.",
+              "th": "ใช้หน่วย งวด และคำนิยามสอดคล้องก่อนเทียบ"
+            },
+            {
+              "en": "Show missing or stale data rather than implying a healthy state.",
+              "th": "แสดงข้อมูลที่หายหรือล้าสมัย ไม่สื่อว่าปลอดภัยโดยปริยาย"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Visible information still needs interpretation.",
+            "th": "เห็นข้อมูลแล้วก็ยังต้องตีความ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-02-scorecard-against-target",
+      "title": {
+        "en": "A scorecard compares actual performance with a target.",
+        "th": "Scorecard เทียบผลงานจริงกับเป้าหมาย"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Source example: Patch Compliance — target 95%, actual 91%, Needs Improvement.",
+            "th": "ตัวอย่างต้นฉบับ: Patch Compliance — เป้า 95% ผลจริง 91% ต้องปรับปรุง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Compare actual performance against targets",
+                "th": "เทียบผลงานจริงกับเป้าหมาย"
+              },
+              {
+                "en": "Use a predefined objective and consistent evidence",
+                "th": "ใช้เป้าหมายที่กำหนดก่อนและหลักฐานสอดคล้อง"
+              },
+              {
+                "en": "A favourable status is not a complete risk assessment.",
+                "th": "สถานะที่ดีไม่ใช่การประเมินความเสี่ยงทั้งหมด"
+              }
+            ],
+            [
+              {
+                "en": "Track progress",
+                "th": "ติดตามความคืบหน้า"
+              },
+              {
+                "en": "Use a predefined objective and consistent evidence",
+                "th": "ใช้เป้าหมายที่กำหนดก่อนและหลักฐานสอดคล้อง"
+              },
+              {
+                "en": "A favourable status is not a complete risk assessment.",
+                "th": "สถานะที่ดีไม่ใช่การประเมินความเสี่ยงทั้งหมด"
+              }
+            ],
+            [
+              {
+                "en": "Identify areas of concern",
+                "th": "ระบุจุดที่น่ากังวล"
+              },
+              {
+                "en": "Use a predefined objective and consistent evidence",
+                "th": "ใช้เป้าหมายที่กำหนดก่อนและหลักฐานสอดคล้อง"
+              },
+              {
+                "en": "A favourable status is not a complete risk assessment.",
+                "th": "สถานะที่ดีไม่ใช่การประเมินความเสี่ยงทั้งหมด"
+              }
+            ],
+            [
+              {
+                "en": "Communicate performance to management",
+                "th": "สื่อสารผลงานให้ผู้บริหาร"
+              },
+              {
+                "en": "Use a predefined objective and consistent evidence",
+                "th": "ใช้เป้าหมายที่กำหนดก่อนและหลักฐานสอดคล้อง"
+              },
+              {
+                "en": "A favourable status is not a complete risk assessment.",
+                "th": "สถานะที่ดีไม่ใช่การประเมินความเสี่ยงทั้งหมด"
+              }
+            ],
+            [
+              {
+                "en": "Support accountability",
+                "th": "สนับสนุน Accountability"
+              },
+              {
+                "en": "Use a predefined objective and consistent evidence",
+                "th": "ใช้เป้าหมายที่กำหนดก่อนและหลักฐานสอดคล้อง"
+              },
+              {
+                "en": "A favourable status is not a complete risk assessment.",
+                "th": "สถานะที่ดีไม่ใช่การประเมินความเสี่ยงทั้งหมด"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A security scorecard summarizes performance against predefined objectives or targets. It helps compare actual performance, track progress, identify concerns, communicate to management and support accountability. In the course example, patch compliance has a target of 95% and actual 91%, so it needs improvement against that target: a gap of 4 percentage points, not 4% relative change. These are illustrative organizational values, not ISC 2 requirements or universal thresholds. The target and actual must refer to the same measure, period and population; show the owner and follow-up so a status can lead to action. A scorecard may use colours but should also provide explicit text. Meeting one target does not establish that every critical asset is protected or that residual risk is acceptable.",
+            "th": "Security scorecard สรุปผลงานเทียบวัตถุประสงค์หรือเป้าที่กำหนดไว้ ช่วยเทียบผลจริง ติดตามความคืบหน้า หาจุดกังวล สื่อสารผู้บริหาร และสนับสนุน Accountability ตัวอย่างคอร์สให้ Patch compliance เป้า 95% ผลจริง 91% จึงต้องปรับปรุงเทียบเป้านี้ ช่องว่างคือ 4 Percentage points ไม่ใช่การเปลี่ยนสัมพัทธ์ 4% ค่าเหล่านี้เป็นตัวอย่างองค์กร ไม่ใช่ข้อกำหนด ISC2 หรือเกณฑ์สากล เป้ากับผลจริงต้องใช้ตัววัด งวด และประชากรเดียวกัน ควรระบุเจ้าของกับการติดตามเพื่อให้สถานะนำไปสู่การลงมือ Scorecard อาจใช้สีแต่ต้องมีข้อความชัดด้วย ผ่านเป้าหนึ่งไม่ได้ยืนยันว่าทุก Critical asset ป้องกันครบหรือ Residual risk ยอมรับได้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Set the objective before judging the actual result.",
+              "th": "กำหนดเป้าก่อนตัดสินผลจริง"
+            },
+            {
+              "en": "Use units and populations that can be compared.",
+              "th": "ใช้หน่วยกับประชากรที่เทียบกันได้"
+            },
+            {
+              "en": "Make the concern and follow-up responsibility explicit.",
+              "th": "บอกจุดกังวลกับผู้รับผิดชอบติดตามให้ชัด"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Target 95% − actual 91% =4 percentage points below target.",
+            "th": "เป้า 95% − ผลจริง 91% = ต่ำกว่าเป้า 4 Percentage points"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-03-source-scorecard-and-units",
+      "title": {
+        "en": "Read the comparison—and check the units.",
+        "th": "อ่านผลเทียบเป้า และตรวจหน่วยด้วย"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The source has three clear percentage comparisons and one row with conflicting units.",
+            "th": "ต้นฉบับมีสามแถวเปอร์เซ็นต์ที่ชัด และหนึ่งแถวที่หน่วยขัดกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Patch Compliance",
+                "th": "Patch Compliance"
+              },
+              {
+                "en": "Target 95% · Actual 91%",
+                "th": "เป้า 95% · ผลจริง 91%"
+              },
+              {
+                "en": "Needs Improvement",
+                "th": "ต้องปรับปรุง"
+              }
+            ],
+            [
+              {
+                "en": "MFA Adoption",
+                "th": "MFA Adoption"
+              },
+              {
+                "en": "Target 100% · Actual 97%",
+                "th": "เป้า 100% · ผลจริง 97%"
+              },
+              {
+                "en": "Needs Improvement",
+                "th": "ต้องปรับปรุง"
+              }
+            ],
+            [
+              {
+                "en": "Training Completion",
+                "th": "Training Completion"
+              },
+              {
+                "en": "Target 95% · Actual 98%",
+                "th": "เป้า 95% · ผลจริง 98%"
+              },
+              {
+                "en": "On Target",
+                "th": "ผ่านเป้า"
+              }
+            ],
+            [
+              {
+                "en": "Critical Vulnerabilities",
+                "th": "Critical Vulnerabilities"
+              },
+              {
+                "en": "Image: target<10 · actual 12 · units unstated",
+                "th": "ภาพ: เป้า <10 · ผลจริง 12 · ไม่ระบุหน่วย"
+              },
+              {
+                "en": "Source status: Needs Attention. Unit discrepancy: narration says<10%; unscored pending clarification.",
+                "th": "สถานะในภาพ: Needs Attention หน่วยขัดกัน: ผู้บรรยายพูด <10% ไม่ใช้ให้คะแนน รอคำชี้แจง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The original scorecard contains four rows. Patch Compliance 95%/91% and MFA Adoption 100%/97% need improvement; Training Completion 95%/98% meets the target. Critical Vulnerabilities appears as target<10, actual 12 and Needs Attention in the image, but the narration describes the target as less than 10%. This unit discrepancy is retained explicitly rather than silently choosing count or percentage. The fourth row is unscored and cannot support a reliable quantitative decision until the metric owner confirms units, population, time window and intended threshold. The first three rows are course illustrations, not universal policies. Higher can be better for these completion/adoption rates, while other measures may have lower-is-better or range-based objectives; always read the definition.",
+            "th": "Scorecard เดิมมีสี่แถว Patch Compliance 95%/91% และ MFA Adoption 100%/97% ต้องปรับปรุง ส่วน Training Completion 95%/98% ผ่านเป้า แถว Critical Vulnerabilities ในภาพเป็นเป้า <10 ผลจริง 12 และ Needs Attention แต่เสียงบรรยายบอกเป้าน้อยกว่า 10% จึงเก็บความขัดกันของหน่วยไว้อย่างชัด ไม่เลือกเองว่าเป็นจำนวนหรือเปอร์เซ็นต์ แถวสี่ไม่ใช้ให้คะแนน และยังใช้ตัดสินเชิงปริมาณอย่างเชื่อถือไม่ได้จนเจ้าของ Metric ยืนยันหน่วย ประชากร ช่วงเวลา และเกณฑ์ที่ตั้งใจ สามแถวแรกก็เป็นตัวอย่างคอร์ส ไม่ใช่นโยบายสากล อัตราเรียนครบหรือใช้ MFA เหล่านี้ยิ่งสูงยิ่งดี แต่ตัววัดอื่นอาจยิ่งต่ำยิ่งดีหรือมีช่วงเป้า ต้องอ่านคำนิยามเสมอ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Use the first three rows for unambiguous comparisons.",
+              "th": "ใช้สามแถวแรกเพื่อเทียบที่ชัดเจน"
+            },
+            {
+              "en": "Do not infer the missing unit in the fourth source row.",
+              "th": "อย่าอนุมานหน่วยที่ขาดในแถวสี่"
+            },
+            {
+              "en": "Ask the metric owner to clarify before scoring or deciding.",
+              "th": "ถามเจ้าของ Metric ให้ชัดก่อนให้คะแนนหรือตัดสินใจ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Unclear units are a data-quality finding, not permission to guess.",
+            "th": "หน่วยไม่ชัดคือข้อพบด้านคุณภาพข้อมูล ไม่ใช่ให้เดา"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-04-report-evidence-to-action",
+      "title": {
+        "en": "A report explains the evidence and the action needed.",
+        "th": "Report อธิบายหลักฐานและสิ่งที่ต้องทำ"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Communicate detailed security activities, risks, performance or compliance to a defined audience.",
+            "th": "สื่อสารรายละเอียดกิจกรรม ความเสี่ยง ผลงาน หรือ Compliance ให้ผู้รับที่กำหนด"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Security incidents",
+                "th": "Security incidents"
+              },
+              {
+                "en": "Explain relevant evidence and business meaning",
+                "th": "อธิบายหลักฐานที่เกี่ยวข้องและความหมายต่อธุรกิจ"
+              },
+              {
+                "en": "Distinguish an observed fact from an interpretation or recommendation.",
+                "th": "แยกสิ่งที่สังเกตจริงออกจากการตีความหรือข้อเสนอ"
+              }
+            ],
+            [
+              {
+                "en": "Vulnerability status",
+                "th": "สถานะช่องโหว่"
+              },
+              {
+                "en": "Explain relevant evidence and business meaning",
+                "th": "อธิบายหลักฐานที่เกี่ยวข้องและความหมายต่อธุรกิจ"
+              },
+              {
+                "en": "Distinguish an observed fact from an interpretation or recommendation.",
+                "th": "แยกสิ่งที่สังเกตจริงออกจากการตีความหรือข้อเสนอ"
+              }
+            ],
+            [
+              {
+                "en": "Risk trends",
+                "th": "แนวโน้มความเสี่ยง"
+              },
+              {
+                "en": "Explain relevant evidence and business meaning",
+                "th": "อธิบายหลักฐานที่เกี่ยวข้องและความหมายต่อธุรกิจ"
+              },
+              {
+                "en": "Distinguish an observed fact from an interpretation or recommendation.",
+                "th": "แยกสิ่งที่สังเกตจริงออกจากการตีความหรือข้อเสนอ"
+              }
+            ],
+            [
+              {
+                "en": "Compliance findings",
+                "th": "ข้อพบ Compliance"
+              },
+              {
+                "en": "Explain relevant evidence and business meaning",
+                "th": "อธิบายหลักฐานที่เกี่ยวข้องและความหมายต่อธุรกิจ"
+              },
+              {
+                "en": "Distinguish an observed fact from an interpretation or recommendation.",
+                "th": "แยกสิ่งที่สังเกตจริงออกจากการตีความหรือข้อเสนอ"
+              }
+            ],
+            [
+              {
+                "en": "Control effectiveness",
+                "th": "ผลของ Control"
+              },
+              {
+                "en": "Explain relevant evidence and business meaning",
+                "th": "อธิบายหลักฐานที่เกี่ยวข้องและความหมายต่อธุรกิจ"
+              },
+              {
+                "en": "Distinguish an observed fact from an interpretation or recommendation.",
+                "th": "แยกสิ่งที่สังเกตจริงออกจากการตีความหรือข้อเสนอ"
+              }
+            ],
+            [
+              {
+                "en": "Security metrics",
+                "th": "Security metrics"
+              },
+              {
+                "en": "Explain relevant evidence and business meaning",
+                "th": "อธิบายหลักฐานที่เกี่ยวข้องและความหมายต่อธุรกิจ"
+              },
+              {
+                "en": "Distinguish an observed fact from an interpretation or recommendation.",
+                "th": "แยกสิ่งที่สังเกตจริงออกจากการตีความหรือข้อเสนอ"
+              }
+            ],
+            [
+              {
+                "en": "Recommended actions",
+                "th": "แนวทางที่แนะนำ"
+              },
+              {
+                "en": "Explain relevant evidence and business meaning",
+                "th": "อธิบายหลักฐานที่เกี่ยวข้องและความหมายต่อธุรกิจ"
+              },
+              {
+                "en": "Distinguish an observed fact from an interpretation or recommendation.",
+                "th": "แยกสิ่งที่สังเกตจริงออกจากการตีความหรือข้อเสนอ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Cybersecurity reports provide detailed information about activities, risks, performance or compliance. The source lists seven possible topics: incidents, vulnerability status, risk trends, compliance findings, control effectiveness, security metrics and recommended actions. An authored example starts with patch compliance 91% against a95% target, states the scope and unknown critical-system coverage, explains possible business exposure, then recommends validating coverage and assigning remediation owners and due dates. A report should distinguish facts, limitations, interpretations and proposed actions; it should not invent a cause from a single rate. For official AI-related reporting, explain a model-drift KRI with the model/version, baseline, window, validation evidence and responsible owner. A changed indicator warrants review and may have several causes; human decision authority and evidence remain necessary.",
+            "th": "Cybersecurity report ให้รายละเอียดกิจกรรม ความเสี่ยง ผลงาน หรือ Compliance ต้นฉบับให้เจ็ดหัวข้อที่อาจมี ได้แก่ Incident สถานะช่องโหว่ แนวโน้มความเสี่ยง ข้อพบ Compliance ผล Control, Security metrics และแนวทางแนะนำ ตัวอย่างแต่งเริ่มจาก Patch compliance 91% เทียบเป้า 95% บอกขอบเขตกับความครอบคลุม Critical systems ที่ยังไม่ทราบ อธิบายความเสี่ยงต่อธุรกิจที่อาจมี แล้วแนะนำให้ตรวจความครอบคลุมและมอบหมายเจ้าของแก้ไขพร้อมกำหนดเวลา Report ควรแยกข้อเท็จจริง ข้อจำกัด การตีความ และข้อเสนอ ไม่สร้างสาเหตุจากอัตราเดียว สำหรับรายงาน AI ตาม Outline ให้อธิบาย Model-drift KRI พร้อม Model/Version, Baseline, Window หลักฐานตรวจสอบ และเจ้าของ ตัวชี้วัดเปลี่ยนควรทบทวนและอาจมีหลายสาเหตุ ยังต้องมีหลักฐานกับผู้มีอำนาจตัดสินใจ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "State scope, period, evidence sources and limitations.",
+              "th": "ระบุขอบเขต งวด แหล่งหลักฐาน และข้อจำกัด"
+            },
+            {
+              "en": "Explain the business implication without overstating certainty.",
+              "th": "อธิบายผลต่อธุรกิจโดยไม่กล่าวมั่นใจเกินหลักฐาน"
+            },
+            {
+              "en": "Recommend a responsible action, owner and follow-up.",
+              "th": "แนะนำการลงมือ ผู้รับผิดชอบ และการติดตาม"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Evidence → interpretation with limits → recommended action.",
+            "th": "หลักฐาน → ตีความพร้อมข้อจำกัด → แนวทางแนะนำ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-05-audience-and-decision",
+      "title": {
+        "en": "Choose the view for the question being asked.",
+        "th": "เลือกมุมมองให้ตรงกับคำถาม"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The same evidence can support a dashboard, a scorecard and a report for different purposes.",
+            "th": "หลักฐานเดียวกันอาจใช้ใน Dashboard, Scorecard และ Report เพื่อคนละจุดมุ่งหมาย"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Metric → Measure",
+                "th": "Metric → วัด"
+              },
+              {
+                "en": "Use the term according to its purpose",
+                "th": "ใช้คำตามจุดมุ่งหมาย"
+              },
+              {
+                "en": "These roles can appear together in one product.",
+                "th": "บทบาทเหล่านี้อาจอยู่ร่วมในผลิตภัณฑ์เดียว"
+              }
+            ],
+            [
+              {
+                "en": "KPI → Performance",
+                "th": "KPI → ผลงาน"
+              },
+              {
+                "en": "Use the term according to its purpose",
+                "th": "ใช้คำตามจุดมุ่งหมาย"
+              },
+              {
+                "en": "These roles can appear together in one product.",
+                "th": "บทบาทเหล่านี้อาจอยู่ร่วมในผลิตภัณฑ์เดียว"
+              }
+            ],
+            [
+              {
+                "en": "KRI → Risk",
+                "th": "KRI → ความเสี่ยง"
+              },
+              {
+                "en": "Use the term according to its purpose",
+                "th": "ใช้คำตามจุดมุ่งหมาย"
+              },
+              {
+                "en": "These roles can appear together in one product.",
+                "th": "บทบาทเหล่านี้อาจอยู่ร่วมในผลิตภัณฑ์เดียว"
+              }
+            ],
+            [
+              {
+                "en": "Dashboard → Visualize",
+                "th": "Dashboard → แสดงเป็นภาพ"
+              },
+              {
+                "en": "Use the term according to its purpose",
+                "th": "ใช้คำตามจุดมุ่งหมาย"
+              },
+              {
+                "en": "These roles can appear together in one product.",
+                "th": "บทบาทเหล่านี้อาจอยู่ร่วมในผลิตภัณฑ์เดียว"
+              }
+            ],
+            [
+              {
+                "en": "Scorecard → Compare against targets",
+                "th": "Scorecard → เทียบเป้า"
+              },
+              {
+                "en": "Use the term according to its purpose",
+                "th": "ใช้คำตามจุดมุ่งหมาย"
+              },
+              {
+                "en": "These roles can appear together in one product.",
+                "th": "บทบาทเหล่านี้อาจอยู่ร่วมในผลิตภัณฑ์เดียว"
+              }
+            ],
+            [
+              {
+                "en": "Report → Communicate",
+                "th": "Report → สื่อสาร"
+              },
+              {
+                "en": "Use the term according to its purpose",
+                "th": "ใช้คำตามจุดมุ่งหมาย"
+              },
+              {
+                "en": "These roles can appear together in one product.",
+                "th": "บทบาทเหล่านี้อาจอยู่ร่วมในผลิตภัณฑ์เดียว"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The source synthesis is Metric→Measure, KPI→Performance, KRI→Risk, Dashboard→Visualize, Scorecard→Compare against targets and Report→Communicate. These are helpful roles, not mutually exclusive software categories. An analyst may need a dashboard to see status and trends, a manager a scorecard to compare actuals with objectives, and a decision-maker a report explaining evidence, risk implications and recommended actions. Choose information based on the question and audience rather than job title alone; a manager can also use a dashboard and a report can include a scorecard. Keep the underlying definitions, units and observation period consistent across views, disclose uncertainty and restrict sensitive detail to authorized recipients. A concise visual view must not conceal a critical exception.",
+            "th": "ต้นฉบับสรุป Metric→Measure, KPI→Performance, KRI→Risk, Dashboard→Visualize, Scorecard→Compare against targets และ Report→Communicate คำเหล่านี้ช่วยจำบทบาท ไม่ใช่ประเภท Software ที่แยกขาดกัน นักวิเคราะห์อาจต้องการ Dashboard ดูสถานะ/แนวโน้ม ผู้จัดการใช้ Scorecard เทียบเป้า และผู้ตัดสินใจใช้ Report อธิบายหลักฐาน ผลด้านความเสี่ยง และแนวทางแนะนำ ให้เลือกตามคำถามกับผู้รับ ไม่ใช่ตำแหน่งงานอย่างเดียว ผู้จัดการก็ใช้ Dashboard ได้ และ Report อาจมี Scorecard ต้องให้คำนิยาม หน่วย และงวดสอดคล้องกันทุกมุมมอง เปิดเผยความไม่แน่นอน และจำกัดข้อมูลอ่อนไหวตามผู้มีสิทธิ์ มุมมองภาพที่กระชับต้องไม่ซ่อนข้อยกเว้นสำคัญ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Ask whether the need is status, comparison or explanation.",
+              "th": "ถามว่าต้องการสถานะ ผลเทียบ หรือคำอธิบาย"
+            },
+            {
+              "en": "Use consistent evidence across the different views.",
+              "th": "ใช้หลักฐานสอดคล้องกันทุกมุมมอง"
+            },
+            {
+              "en": "Make the next decision and responsibility visible.",
+              "th": "ให้เห็นสิ่งที่จะตัดสินใจและความรับผิดชอบ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Purpose determines the view; evidence supports the decision.",
+            "th": "จุดมุ่งหมายกำหนดมุมมอง หลักฐานสนับสนุนการตัดสินใจ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-06-reporting-decision",
+      "title": {
+        "en": "Management asks: are we on target, and what should happen next?",
+        "th": "ผู้บริหารถาม: ถึงเป้าหรือยัง และควรทำอะไรต่อ?"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the clear source patch row: target 95%, actual 91%. Some critical-system coverage is not yet confirmed.",
+            "th": "ใช้แถว Patch ที่ชัด: เป้า 95% ผลจริง 91% และยังยืนยันความครอบคลุมระบบสำคัญบางส่วนไม่ได้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "A"
+              },
+              {
+                "en": "Show a dashboard and declare the 95% target met.",
+                "th": "แสดง Dashboard แล้วประกาศว่าผ่านเป้า 95%"
+              },
+              {
+                "en": "The actual 91% is below the stated 95% target. Visualization does not change the comparison or prove a cause.",
+                "th": "ผลจริง 91% ต่ำกว่าเป้า 95% การแสดงเป็นภาพไม่เปลี่ยนผลเทียบหรือพิสูจน์สาเหตุ"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "B"
+              },
+              {
+                "en": "Show the target gap, then explain evidence and propose owner-led follow-up.",
+                "th": "แสดงช่องว่างเป้า แล้วอธิบายหลักฐานและเสนอเจ้าของติดตาม"
+              },
+              {
+                "en": "Use a scorecard for 91% versus 95%, then a report to explain scope, limits, business implications and proposed actions with owners. Do not infer an unproven cause.",
+                "th": "ใช้ Scorecard เทียบ 91% กับ 95% แล้วใช้ Report อธิบายขอบเขต ข้อจำกัด ผลต่อธุรกิจ และข้อเสนอพร้อมเจ้าของ อย่าสรุปสาเหตุที่ยังไม่พิสูจน์"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "C"
+              },
+              {
+                "en": "Score the ambiguous vulnerability row as a count without checking.",
+                "th": "ให้คะแนนแถวช่องโหว่ที่หน่วยขัดกันว่าเป็นจำนวนโดยไม่ตรวจ"
+              },
+              {
+                "en": "The image and narration disagree about units. Keep that row unscored until the definition is clarified.",
+                "th": "ภาพกับเสียงบรรยายหน่วยไม่ตรงกัน ต้องไม่ใช้แถวนั้นให้คะแนนจนคำนิยามชัด"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "D"
+              },
+              {
+                "en": "Hide unknown coverage so the overall status looks healthy.",
+                "th": "ซ่อนความครอบคลุมที่ไม่ทราบให้ภาพรวมดูดี"
+              },
+              {
+                "en": "Unknown coverage is a limitation to report and investigate. Concealing it undermines the decision and accountability.",
+                "th": "ความครอบคลุมที่ไม่ทราบเป็นข้อจำกัดที่ต้องรายงานและตรวจ การซ่อนทำลายการตัดสินใจและ Accountability"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This authored scenario applies the source patch-compliance comparison rather than the ambiguous fourth row. The actual 91% is 4 percentage points below 95%. A scorecard answers whether the stated target is met, while a report can explain scope, evidence quality, business implications and recommended follow-up. A dashboard may help visualize the same information, but cannot establish a cause or remove an unknown. Recommend validating critical-system coverage and assigning owners to investigate and remediate with a follow-up date. Do not invent organizational risk acceptance, universal thresholds or an automatic breach conclusion. The fourth source row remains unscored pending clarification of units.",
+            "th": "สถานการณ์แต่งนี้ใช้ผลเทียบ Patch compliance จากต้นฉบับ ไม่ใช้แถวสี่ที่หน่วยขัดกัน ผลจริง 91% ต่ำกว่า 95% อยู่ 4 Percentage points Scorecard ตอบว่าผ่านเป้าที่ระบุหรือไม่ ส่วน Report อธิบายขอบเขต คุณภาพหลักฐาน ผลต่อธุรกิจ และแนวทางติดตามได้ Dashboard อาจช่วยแสดงข้อมูลเดียวกันเป็นภาพ แต่พิสูจน์สาเหตุหรือทำให้สิ่งไม่ทราบหายไปไม่ได้ ควรตรวจความครอบคลุมระบบสำคัญ แล้วมอบหมายเจ้าของตรวจ/แก้ไขพร้อมวันติดตาม ไม่สร้างข้อสรุปว่าองค์กรยอมรับความเสี่ยง เกณฑ์สากล หรือเกิด Breach อัตโนมัติ แถวสี่ต้นฉบับยังไม่ให้คะแนนจนยืนยันหน่วย"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Compare actual with the stated target accurately.",
+              "th": "เทียบผลจริงกับเป้าที่ระบุให้ถูก"
+            },
+            {
+              "en": "Communicate unknowns and avoid unsupported causal claims.",
+              "th": "สื่อสารสิ่งไม่ทราบ ไม่อ้างสาเหตุเกินหลักฐาน"
+            },
+            {
+              "en": "Recommend accountable follow-up rather than a favourable colour.",
+              "th": "เสนอการติดตามที่มีเจ้าของ ไม่ใช่แค่สีที่ดูดี"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Make the comparison clear and the follow-up actionable.",
+            "th": "ทำผลเทียบให้ชัด และให้ข้อเสนอนำไปทำต่อได้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-2-completion-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — source/bilingual self-review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — source/bilingual self-review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — source/bilingual self-review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    }
+  }
+}

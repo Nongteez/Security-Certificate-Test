@@ -1,0 +1,1032 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d1-08-governance",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 1,
+  "primaryObjectiveId": "1.3",
+  "objectiveIds": [
+    "1.3"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Governance & Applicable Requirements",
+    "th": "Governance และข้อกำหนดที่ใช้กับองค์กร"
+  },
+  "synopsis": {
+    "en": "Connect security direction, oversight and accountability to the requirements that actually apply.",
+    "th": "เชื่อมทิศทาง การกำกับติดตาม และความรับผิดชอบด้านความปลอดภัยกับข้อกำหนดที่ใช้จริง"
+  },
+  "outcomes": [
+    {
+      "en": "Explain how governance aligns security with organisational purpose and assigns accountability.",
+      "th": "อธิบายว่า Governance เชื่อมความปลอดภัยกับเป้าหมายองค์กรและกำหนดความรับผิดชอบอย่างไร"
+    },
+    {
+      "en": "Distinguish laws and regulations from contractual standards and internal direction.",
+      "th": "แยกกฎหมายและข้อบังคับออกจากมาตรฐานตามสัญญาและทิศทางภายใน"
+    },
+    {
+      "en": "Identify facts needed to assess applicability and correctly bound GDPR, HIPAA and PCI DSS examples.",
+      "th": "ระบุข้อมูลที่ต้องใช้ตรวจ Applicability และอธิบายขอบเขตตัวอย่าง GDPR, HIPAA และ PCI DSS อย่างถูกต้อง"
+    },
+    {
+      "en": "Separate compliance evidence from overall security and route a proposed AI use through accountable review.",
+      "th": "แยกหลักฐาน Compliance ออกจากความปลอดภัยโดยรวม และส่งกรณีใช้ AI ให้ทบทวนอย่างมีผู้รับผิดชอบ"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Privacy & Personal Data and the risk-management lessons; no legal background required.",
+      "th": "แนะนำบท Privacy และการบริหาร Risk โดยไม่ต้องมีพื้นฐานกฎหมาย"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-01-govern-security",
+      "title": {
+        "en": "Governance gives security a direction.",
+        "th": "Governance กำหนดทิศทางให้ความปลอดภัย"
+      },
+      "rendererId": "comparison",
+      "layoutId": "governance-direction",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Security decisions should support the organisation’s purpose.",
+            "th": "การตัดสินใจด้านความปลอดภัยควรสนับสนุนเป้าหมายองค์กร"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Direction",
+                "th": "ทิศทาง"
+              },
+              {
+                "en": "What must security achieve?",
+                "th": "ความปลอดภัยต้องช่วยให้ได้อะไร?"
+              },
+              {
+                "en": "Connect protection to business objectives.",
+                "th": "เชื่อมการปกป้องกับเป้าหมายธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Oversight",
+                "th": "การกำกับติดตาม"
+              },
+              {
+                "en": "Is the approach working?",
+                "th": "แนวทางที่เลือกได้ผลหรือไม่?"
+              },
+              {
+                "en": "Review evidence and significant gaps.",
+                "th": "ทบทวนหลักฐานและช่องว่างสำคัญ"
+              }
+            ],
+            [
+              {
+                "en": "Accountability",
+                "th": "ความรับผิดชอบ"
+              },
+              {
+                "en": "Who must answer for the decision?",
+                "th": "ใครต้องรับผิดชอบการตัดสินใจ?"
+              },
+              {
+                "en": "Make authority and ownership explicit.",
+                "th": "ระบุอำนาจและเจ้าของเรื่องให้ชัด"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §25 describes governance as direction, oversight and accountability, aligning security with business objectives, requirements, policies, risk and assets. B §7 adds assigned responsibility and monitoring. Governance sets expectations for how security supports the organisation, who has authority and how results are reviewed; it is not simply the purchase or configuration of security tools. In an authored clinic example, protecting appointment availability and personal data supports reliable care. Leaders need evidence that the chosen approach meets that purpose, not only a count of installed products. Accountability means being answerable for assigned decisions and results; it complements, but is not identical to, the technical activity logs in the earlier AAA lesson. Responsibilities and governance structures vary by organisation.",
+            "th": "A §25 อธิบาย Governance เป็นทิศทาง การกำกับติดตาม และความรับผิดชอบ โดยเชื่อมความปลอดภัยกับเป้าหมายธุรกิจ ข้อกำหนด นโยบาย Risk และ Asset ส่วน B §7 เพิ่มผู้รับผิดชอบและการติดตาม Governance กำหนดความคาดหวังว่าความปลอดภัยช่วยองค์กรอย่างไร ใครมีอำนาจ และทบทวนผลอย่างไร ไม่ใช่เพียงซื้อหรือตั้งค่าเครื่องมือ ในกรณีคลินิกแต่งขึ้น การรักษาบริการจองและข้อมูลส่วนบุคคลช่วยให้บริการดูแลคนไข้เชื่อถือได้ ผู้กำกับดูแลต้องการหลักฐานว่าวิธีที่เลือกตอบเป้าหมาย ไม่ใช่แค่จำนวนผลิตภัณฑ์ที่ติดตั้ง Accountability คือการตอบได้ต่อหน้าที่ การตัดสินใจ และผลที่ได้รับมอบหมาย จึงเกี่ยวข้องแต่ไม่ใช่สิ่งเดียวกับ Log กิจกรรมในบท AAA โครงสร้างและหน้าที่อาจต่างกันตามองค์กร"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Purpose → decisions → evidence → review.",
+            "th": "เป้าหมาย → การตัดสินใจ → หลักฐาน → ทบทวน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "notes-a",
+        "notes-b",
+        "nist-govern"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-02-govern-and-manage",
+      "title": {
+        "en": "Governing and managing have different jobs.",
+        "th": "การกำกับดูแลกับการบริหารงานมีหน้าที่ต่างกัน"
+      },
+      "rendererId": "comparison",
+      "layoutId": "governance-roles",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Direction flows toward implementation; evidence flows back for oversight.",
+            "th": "ส่งทิศทางไปสู่การลงมือทำ แล้วส่งหลักฐานกลับให้กำกับติดตาม"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Governance",
+                "th": "การกำกับดูแล"
+              },
+              {
+                "en": "Set expectations, decision authority and oversight.",
+                "th": "กำหนดความคาดหวัง อำนาจตัดสินใจ และการติดตาม"
+              },
+              {
+                "en": "Ask whether security supports agreed objectives.",
+                "th": "ถามว่าความปลอดภัยตอบเป้าหมายที่ตกลงหรือไม่"
+              }
+            ],
+            [
+              {
+                "en": "Management / operations",
+                "th": "การบริหารและปฏิบัติงาน"
+              },
+              {
+                "en": "Plan, resource, implement and report.",
+                "th": "วางแผน จัดทรัพยากร ลงมือทำ และรายงาน"
+              },
+              {
+                "en": "Show results, constraints and decisions needed.",
+                "th": "แสดงผล ข้อจำกัด และเรื่องที่ต้องตัดสินใจ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §25 explicitly distinguishes governance from configuring every firewall. In this teaching model, the governing role sets direction, decision authority and oversight, while management organises implementation and operations perform assigned work. A clinic might set the objective that only authorised staff use appointment records; managers assign resources and access-review work; operators configure controls and provide evidence. Evidence and exceptions return to appropriate decision makers. This is a distinction between functions, not a claim that every organisation must use the same job titles, board structure or reporting chain. One person may perform several roles, but assignments and authority should remain clear. Delegating a task should not leave ownership, escalation or oversight undefined. Detailed governance-program frameworks are outside this beginner unit.",
+            "th": "A §25 แยก Governance ออกจากการตั้งค่า Firewall ทุกตัว แบบจำลองสอนนี้ให้บทบาทกำกับดูแลกำหนดทิศทาง อำนาจตัดสินใจ และการติดตาม ฝ่ายบริหารจัดการให้เกิดผล ส่วนผู้ปฏิบัติทำงานที่ได้รับมอบหมาย คลินิกอาจตั้งเป้าว่าเฉพาะเจ้าหน้าที่มีสิทธิ์จึงใช้ข้อมูลจองได้ ผู้บริหารงานจัดทรัพยากรและงานทบทวนสิทธิ์ ผู้ปฏิบัติตั้ง Control และส่งหลักฐาน ผลและข้อยกเว้นต้องกลับถึงผู้ตัดสินใจที่เหมาะสม นี่แยกหน้าที่ ไม่ได้กำหนดว่าทุกองค์กรต้องมีชื่อตำแหน่ง คณะกรรมการ หรือสายรายงานแบบเดียว คนหนึ่งอาจทำหลายบทบาท แต่ต้องระบุหน้าที่และอำนาจชัด การมอบงานไม่ควรทิ้งเจ้าของเรื่อง การเสนอปัญหา หรือการกำกับติดตามให้ว่าง ส่วนกรอบสร้างโครงการ Governance โดยละเอียดอยู่นอกบทเบื้องต้นนี้"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Assign the work—and retain clear ownership and oversight.",
+            "th": "มอบหมายงาน พร้อมระบุเจ้าของเรื่องและผู้กำกับติดตาม"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "notes-a",
+        "notes-b",
+        "nist-govern"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-03-sources-of-obligations",
+      "title": {
+        "en": "Ask where the requirement comes from.",
+        "th": "ถามก่อนว่าข้อกำหนดมาจากไหน"
+      },
+      "rendererId": "comparison",
+      "layoutId": "governance-obligations",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Legal duties and contractual duties can both matter—but have different sources.",
+            "th": "หน้าที่ตามกฎหมายและตามสัญญาสำคัญทั้งคู่ แต่มีที่มาต่างกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Law / regulation",
+                "th": "กฎหมาย / ข้อบังคับ"
+              },
+              {
+                "en": "Public legal authority establishes obligations.",
+                "th": "อำนาจตามกฎหมายกำหนดหน้าที่"
+              },
+              {
+                "en": "Check jurisdiction, scope and relevant duties.",
+                "th": "ตรวจเขตอำนาจ ขอบเขต และหน้าที่ที่เกี่ยวข้อง"
+              }
+            ],
+            [
+              {
+                "en": "Contract / industry standard",
+                "th": "สัญญา / มาตรฐานอุตสาหกรรม"
+              },
+              {
+                "en": "An agreement may require a security standard.",
+                "th": "ข้อตกลงอาจกำหนดให้ทำตามมาตรฐาน"
+              },
+              {
+                "en": "PCI DSS is not itself a statute.",
+                "th": "PCI DSS ไม่ใช่ตัวบทกฎหมายในตัวเอง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §26 calls laws and regulations legally enforceable requirements and lists GDPR, HIPAA and PCI DSS as examples of requirements to investigate. B §7.2 includes regulations, requirements and contracts in compliance. They must not all be labelled legislation: GDPR is an EU regulation; HIPAA is a US law with implementing rules; PCI DSS is an industry security standard. Contractual obligations can require compliance with a standard. A standard may also be incorporated into a legal requirement, so categories can interact; its title alone does not establish the source of obligation for a particular organisation. Internal direction should be consistent with applicable external duties, and a local approval does not automatically waive them. L09 will teach framework, policy, standard, procedure and guideline distinctions in depth.",
+            "th": "A §26 เรียกกฎหมายและข้อบังคับว่าเป็นข้อกำหนดที่บังคับตามกฎหมายได้ และยก GDPR, HIPAA และ PCI DSS ให้ตรวจว่าเกี่ยวข้องหรือไม่ B §7.2 รวมข้อบังคับ ข้อกำหนด และสัญญาใน Compliance แต่ห้ามเรียกทั้งหมดว่ากฎหมาย GDPR เป็น Regulation ของ EU ส่วน HIPAA เป็นกฎหมายสหรัฐฯ ที่มี Rules ใช้บังคับ และ PCI DSS เป็นมาตรฐานความปลอดภัยอุตสาหกรรม สัญญาอาจกำหนดให้ปฏิบัติตามมาตรฐาน และกฎหมายอาจนำมาตรฐานมาอ้างบังคับ หมวดเหล่านี้จึงเกี่ยวกันได้ ชื่อมาตรฐานอย่างเดียวไม่ได้บอกแหล่งหน้าที่ขององค์กรหนึ่ง ทิศทางภายในควรสอดคล้องหน้าที่ภายนอกที่ใช้บังคับ และการอนุมัติภายในไม่ได้ยกเว้นหน้าที่เหล่านั้นโดยอัตโนมัติ บท L09 จะอธิบาย Framework, Policy, Standard, Procedure และ Guideline โดยละเอียด"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Identify the issuer and the basis that makes it binding.",
+            "th": "ระบุผู้กำหนดและฐานที่ทำให้ต้องปฏิบัติตาม"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "notes-a",
+        "notes-b",
+        "pci-standard"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-04-establish-applicability",
+      "title": {
+        "en": "Applicability depends on facts—not a logo.",
+        "th": "Applicability ต้องดูข้อเท็จจริง ไม่ใช่ตรารับรอง"
+      },
+      "rendererId": "comparison",
+      "layoutId": "governance-scope",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Identify the organisation, activity, data and relevant jurisdiction.",
+            "th": "ระบุองค์กร กิจกรรม ข้อมูล และเขตอำนาจที่เกี่ยวข้อง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Location and reach",
+                "th": "ที่ตั้งและขอบเขตถึง"
+              },
+              {
+                "en": "Where is the organisation operating or targeting services?",
+                "th": "องค์กรดำเนินงานหรือมุ่งให้บริการที่ใด?"
+              },
+              {
+                "en": "Being online alone is not a complete scope test.",
+                "th": "ออนไลน์อย่างเดียวไม่ได้ตอบขอบเขตครบ"
+              }
+            ],
+            [
+              {
+                "en": "Role and activity",
+                "th": "บทบาทและกิจกรรม"
+              },
+              {
+                "en": "What service is provided, and for whom?",
+                "th": "ให้บริการอะไร และทำให้ใคร?"
+              },
+              {
+                "en": "Sector and entity roles can change obligations.",
+                "th": "อุตสาหกรรมและบทบาทองค์กรอาจเปลี่ยนหน้าที่"
+              }
+            ],
+            [
+              {
+                "en": "Data and agreements",
+                "th": "ข้อมูลและข้อตกลง"
+              },
+              {
+                "en": "What data flows, and what has been agreed?",
+                "th": "มีข้อมูลใดไหลไปไหน และตกลงอะไรไว้?"
+              },
+              {
+                "en": "Record evidence, uncertainties and the reviewer.",
+                "th": "บันทึกหลักฐาน สิ่งที่ไม่แน่ใจ และผู้ทบทวน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §26 lists industry, geography, data type, services and government requirements as applicability factors. Start with an inventory of relevant activities and data flows, entity roles, jurisdictions and agreements, then check the actual current scope of each candidate requirement. A website, cloud location, customer nationality or vendor badge alone is not a universal answer. More than one legal or contractual requirement may apply at once. Document why a requirement applies or does not apply, the evidence used and unresolved questions. If facts or interpretation are uncertain, seek review from the appropriate legal, privacy, compliance or contract specialist rather than declaring compliance or exemption from a keyword. Revisit the conclusion when the service, data flow, contract or requirement changes. This is a reasoning process, not a legal determination for a real organisation.",
+            "th": "A §26 ระบุอุตสาหกรรม ที่ตั้ง ประเภทข้อมูล บริการ และข้อกำหนดรัฐเป็นปัจจัย Applicability ให้เริ่มจากกิจกรรมและทางไหลข้อมูล บทบาท เขตอำนาจ และข้อตกลง แล้วตรวจขอบเขตปัจจุบันของแต่ละข้อกำหนดจริง เว็บไซต์ ที่ตั้ง Cloud สัญชาติลูกค้า หรือตราผู้ขายอย่างเดียวไม่ใช่คำตอบสากล อาจมีหน้าที่ตามกฎหมายหรือสัญญาหลายเรื่องใช้พร้อมกัน บันทึกเหตุผลว่าใช้หรือไม่ใช้ข้อใด หลักฐาน และคำถามที่ยังค้าง หากข้อมูลหรือการตีความไม่แน่ชัดให้ผู้เหมาะสมด้านกฎหมาย Privacy Compliance หรือสัญญาทบทวน แทนการตัดสินว่าผ่านหรือได้รับยกเว้นจากคำเดียว ต้องทบทวนเมื่อบริการ ทางไหลข้อมูล สัญญา หรือข้อกำหนดเปลี่ยน นี่เป็นวิธีคิด ไม่ใช่คำวินิจฉัยกฎหมายสำหรับองค์กรจริง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A scope conclusion needs evidence and a reason.",
+            "th": "ข้อสรุปขอบเขตต้องมีหลักฐานและเหตุผล"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "notes-a",
+        "notes-b",
+        "nist-govern"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-05-bound-the-legal-examples",
+      "title": {
+        "en": "GDPR and HIPAA have defined scopes.",
+        "th": "GDPR และ HIPAA มีขอบเขตที่กำหนดไว้"
+      },
+      "rendererId": "comparison",
+      "layoutId": "governance-examples",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The notes give examples—not a rule that every organisation follows every law.",
+            "th": "โน้ตยกตัวอย่าง ไม่ได้แปลว่าทุกองค์กรอยู่ใต้กฎหมายทุกฉบับ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "GDPR",
+                "th": "GDPR"
+              },
+              {
+                "en": "Personal-data processing within its scope",
+                "th": "การประมวลผลข้อมูลส่วนบุคคลในขอบเขต"
+              },
+              {
+                "en": "Establishment, targeting or monitoring can matter.",
+                "th": "ที่ตั้ง การมุ่งให้บริการ หรือติดตามพฤติกรรมมีผล"
+              }
+            ],
+            [
+              {
+                "en": "HIPAA",
+                "th": "HIPAA"
+              },
+              {
+                "en": "US covered entities and business associates",
+                "th": "Covered Entities และ Business Associates ตามกฎหมายสหรัฐฯ"
+              },
+              {
+                "en": "Not every organisation holding health data.",
+                "th": "ไม่ใช่ทุกองค์กรที่มีข้อมูลสุขภาพ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §26 identifies GDPR as personal-data/privacy law in its legal scope and HIPAA as protection for certain US health information. EDPB guidance explains that EU/EEA establishment and relevant offering of goods/services or monitoring of people there can matter for GDPR scope, including some processing by organisations outside the EEA. Citizenship alone is not the test; this short example is not the full territorial or material-scope analysis. HHS states that HIPAA Rules apply to covered entities and business associates, and not to an entity merely because it holds health-related data. The entity’s role, activities and protected information must be examined. These examples explain why scope matters; they do not decide an actual clinic’s status. L04 already teaches personal-data handling, so this slide focuses on applicability rather than repeating retention or erasure rules.",
+            "th": "A §26 ยก GDPR เกี่ยวกับข้อมูลส่วนบุคคลในขอบเขตกฎหมาย และ HIPAA เกี่ยวกับข้อมูลสุขภาพบางประเภทในสหรัฐฯ EDPB อธิบายว่าการตั้งองค์กรใน EU/EEA และการเสนอสินค้าบริการหรือติดตามพฤติกรรมคนที่อยู่ที่นั่นอาจมีผลต่อขอบเขต GDPR รวมการประมวลผลบางกรณีขององค์กรนอก EEA สัญชาติอย่างเดียวไม่ใช่เกณฑ์ ตัวอย่างสั้นนี้ไม่ใช่การวิเคราะห์ขอบเขตเชิงพื้นที่และเนื้อหาครบทั้งหมด HHS ระบุว่า HIPAA Rules ใช้กับ Covered Entities และ Business Associates ไม่ใช่แค่มีข้อมูลเกี่ยวกับสุขภาพก็เข้าเกณฑ์ ต้องดูบทบาท กิจกรรม และข้อมูลที่อยู่ในขอบเขต ตัวอย่างนี้อธิบายว่าทำไมต้องตรวจ ไม่ได้ตัดสินสถานะของคลินิกจริง L04 สอนการจัดการข้อมูลส่วนบุคคลแล้ว สไลด์นี้จึงเน้น Applicability ไม่สอน Retention หรือสิทธิลบซ้ำ"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Match the rule’s scope to the actual facts.",
+            "th": "เทียบขอบเขตของกฎกับข้อเท็จจริง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "notes-a",
+        "notes-b",
+        "edpb-scope",
+        "hhs-scope"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-06-payment-card-requirements",
+      "title": {
+        "en": "Outsourcing payments does not erase every duty.",
+        "th": "จ้างภายนอกทำการจ่ายเงิน ไม่ได้ลบทุกหน้าที่"
+      },
+      "rendererId": "comparison",
+      "layoutId": "governance-payment",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "PCI DSS is a payment-data security standard—not legislation.",
+            "th": "PCI DSS เป็นมาตรฐานความปลอดภัยข้อมูลการชำระเงิน ไม่ใช่กฎหมาย"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Data and environment",
+                "th": "ข้อมูลและสภาพแวดล้อม"
+              },
+              {
+                "en": "Store, process, transmit—or affect card-data security",
+                "th": "เก็บ ประมวลผล ส่งผ่าน หรือกระทบความปลอดภัยข้อมูลบัตร"
+              },
+              {
+                "en": "Determine the relevant scope.",
+                "th": "ตรวจขอบเขตที่เกี่ยวข้อง"
+              }
+            ],
+            [
+              {
+                "en": "Service provider",
+                "th": "ผู้ให้บริการ"
+              },
+              {
+                "en": "What is outsourced and which services are covered?",
+                "th": "จ้างทำอะไร และบริการใดอยู่ในขอบเขต?"
+              },
+              {
+                "en": "Check evidence and shared responsibilities.",
+                "th": "ตรวจหลักฐานและหน้าที่ร่วมกัน"
+              }
+            ],
+            [
+              {
+                "en": "Retained obligations",
+                "th": "หน้าที่ที่ยังเหลือ"
+              },
+              {
+                "en": "Confirm responsibilities and required validation.",
+                "th": "ยืนยันหน้าที่และการตรวจยืนยันที่ต้องทำ"
+              },
+              {
+                "en": "Consult the acquirer or payment brand.",
+                "th": "ตรวจร่วมกับ Acquirer หรือ Payment Brand"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "PCI DSS is an industry standard, not legislation in itself. PCI SSC identifies entities storing, processing or transmitting cardholder data or sensitive authentication data, or able to affect the cardholder-data environment, as its audience. Its outsourcing guidance explains that a merchant can retain responsibilities even when a third party handles all payment processing: understand the provider’s covered service, maintain appropriate agreements, check compliance evidence and clarify shared responsibilities. Confirm the applicable compliance and validation requirements with the acquirer, payment brand or other organisation managing the compliance programme. A provider badge does not establish the merchant’s entire status, and no particular questionnaire or certification is prescribed by this slide. These are bounded educational examples from A §26, not instructions for a specific merchant or a claim that a standard is optional whenever it is not a law.",
+            "th": "PCI DSS เป็นมาตรฐานอุตสาหกรรม ไม่ใช่กฎหมายในตัวเอง PCI SSC ระบุกลุ่มที่เก็บ ประมวลผล ส่งข้อมูลบัตรหรือ Sensitive Authentication Data และกลุ่มที่อาจกระทบความปลอดภัยของ Cardholder Data Environment แนวทาง Outsourcing อธิบายว่าร้านค้ายังอาจมีหน้าที่แม้ให้ภายนอกทำการรับชำระทั้งหมด เช่น เข้าใจบริการที่ผู้ให้บริการครอบคลุม มีข้อตกลงเหมาะสม ตรวจหลักฐาน Compliance และระบุหน้าที่ร่วมกัน ยืนยันข้อกำหนดการทำตามและการตรวจยืนยันกับ Acquirer, Payment Brand หรือผู้จัดการ Compliance Programme ตราผู้ให้บริการไม่ได้ยืนยันสถานะทั้งองค์กรของร้านค้า สไลด์นี้ไม่กำหนดแบบสอบถามหรือการรับรองใดให้ทุกคน ตัวอย่างต่อจาก A §26 นี้เป็นการเรียน ไม่ใช่คำสั่งสำหรับร้านค้าจริง และไม่ได้แปลว่ามาตรฐานไม่จำเป็นเพียงเพราะไม่ใช่กฎหมาย"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Check what the provider covers—and what you still own.",
+            "th": "ตรวจว่าผู้ให้บริการครอบคลุมอะไร และเรายังรับผิดชอบอะไร"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "notes-a",
+        "pci-standard",
+        "pci-outsourcing"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-07-compliance-and-security",
+      "title": {
+        "en": "Compliance evidence is not a promise of perfect security.",
+        "th": "หลักฐาน Compliance ไม่ได้รับประกันความปลอดภัยสมบูรณ์"
+      },
+      "rendererId": "comparison",
+      "layoutId": "governance-assurance",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Meet applicable requirements and keep assessing real risk.",
+            "th": "ทำตามข้อกำหนดที่ใช้ และประเมิน Risk จริงต่อไป"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Compliance",
+                "th": "Compliance"
+              },
+              {
+                "en": "Are the applicable requirements met?",
+                "th": "ทำตามข้อกำหนดที่ใช้แล้วหรือไม่?"
+              },
+              {
+                "en": "Evidence has a defined scope and time.",
+                "th": "หลักฐานมีขอบเขตและช่วงเวลา"
+              }
+            ],
+            [
+              {
+                "en": "Security",
+                "th": "Security"
+              },
+              {
+                "en": "Are assets protected against relevant harm?",
+                "th": "Asset ได้รับการปกป้องจากอันตรายที่เกี่ยวข้องหรือไม่?"
+              },
+              {
+                "en": "Threats, controls and context can change.",
+                "th": "ภัย Control และบริบทเปลี่ยนได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "B §7.2 explicitly warns that compliance does not mean perfect security. An assessment may demonstrate that specified requirements were met for a defined scope and period; it is not proof that every asset, future threat or data use is safe. Conversely, buying a strong technical control does not establish compliance with every applicable legal, contractual or procedural duty. Governance needs both requirement evidence and ongoing risk information. In an authored example, last year’s payment assessment does not automatically cover a new AI service receiving customer records. Ask what the evidence actually covers, what has changed and who must review the new use. This distinction does not devalue compliance or allow mandatory obligations to be ignored because a risk seems low. It connects compliance to continued protection rather than treating a certificate as a universal finish line.",
+            "th": "B §7.2 เตือนว่า Compliance ไม่ได้แปลว่าปลอดภัยสมบูรณ์ การประเมินอาจแสดงว่าทำตามข้อกำหนดเฉพาะในขอบเขตและช่วงหนึ่ง ไม่ได้พิสูจน์ว่า Asset ทุกอย่าง ภัยในอนาคต หรือการใช้ข้อมูลทุกแบบปลอดภัย อีกด้านหนึ่ง การซื้อ Control เทคนิคที่แข็งแรงไม่ได้พิสูจน์ว่าทำครบหน้าที่กฎหมาย สัญญา หรือกระบวนการที่เกี่ยวข้อง Governance ต้องใช้ทั้งหลักฐานข้อกำหนดและข้อมูล Risk ต่อเนื่อง ในตัวอย่างแต่งขึ้น ผลประเมินการชำระเงินปีที่แล้วไม่ได้ครอบคลุมบริการ AI ใหม่ที่รับข้อมูลลูกค้าโดยอัตโนมัติ ต้องถามว่าหลักฐานครอบคลุมอะไร เปลี่ยนอะไร และใครต้องทบทวนการใช้ใหม่ จุดแยกนี้ไม่ได้ลดคุณค่า Compliance หรืออนุญาตละเลยข้อกำหนดบังคับเพราะ Risk ดูต่ำ แต่เชื่อมการทำตามกับการปกป้องต่อเนื่อง ไม่ถือใบรับรองเป็นเส้นชัยทุกเรื่อง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A completed assessment is evidence—not a universal exemption.",
+            "th": "ประเมินเสร็จเป็นหลักฐาน ไม่ใช่ข้อยกเว้นครอบจักรวาล"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "notes-a",
+        "notes-b",
+        "nist-govern"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-08-ai-governance-intake",
+      "title": {
+        "en": "The AI demo works. Is that enough to approve it?",
+        "th": "AI สาธิตได้ผล แค่นี้อนุมัติใช้ได้หรือยัง?"
+      },
+      "rendererId": "interactive",
+      "layoutId": "governance-intake",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A clinic proposes sending records to an external AI service; scope and responsibilities are unknown.",
+            "th": "คลินิกเสนอส่งข้อมูลให้ AI ภายนอก แต่ยังไม่ชัดเรื่องขอบเขตและผู้รับผิดชอบ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Approve from the demo",
+                "th": "อนุมัติจากผลสาธิต"
+              },
+              {
+                "en": "A working demo does not establish lawful or authorised data use.",
+                "th": "สาธิตทำงานได้ ไม่ได้ยืนยันว่าใช้ข้อมูลได้ถูกกฎและมีอำนาจ"
+              },
+              {
+                "en": "Technical success is not the full governance decision.",
+                "th": "ความสำเร็จทางเทคนิคไม่ใช่การตัดสินใจ Governance ทั้งหมด"
+              }
+            ],
+            [
+              {
+                "en": "Map facts and responsibilities",
+                "th": "ระบุข้อเท็จจริงและผู้รับผิดชอบ"
+              },
+              {
+                "en": "Identify purpose, data flows, roles and applicable requirements.",
+                "th": "ระบุวัตถุประสงค์ ทางไหลข้อมูล บทบาท และข้อกำหนดที่ใช้"
+              },
+              {
+                "en": "Route evidence to the authorised reviewers before approval.",
+                "th": "ส่งหลักฐานให้ผู้มีอำนาจทบทวนก่อนอนุมัติ"
+              }
+            ],
+            [
+              {
+                "en": "Exempt AI from review",
+                "th": "ยกเว้นการทบทวนเพราะเป็น AI"
+              },
+              {
+                "en": "An AI label does not remove organisational or legal duties.",
+                "th": "ชื่อว่า AI ไม่ได้ลบหน้าที่ตามองค์กรหรือกฎหมาย"
+              },
+              {
+                "en": "Use the same accountable requirement review.",
+                "th": "ใช้การทบทวนข้อกำหนดที่มีผู้รับผิดชอบเช่นกัน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This original teaching scenario applies A §§25–26, B §7.2 and the official outline’s high-level Domain 1 AI governance context. No actual clinic status or legal applicability is asserted. The service works in a demo, but data type, purpose, locations, provider use, contractual responsibilities and approval authority remain unknown. The best next step is to gather those facts, identify candidate requirements, assess the proposed use and obtain review from the appropriate security, privacy, legal and business owners under organisational rules before approval or sending real records. A vendor’s claim or an AI label is not enough. This is not an AI-specific law or a complete AI governance programme. The interaction gives reasoning, not an exam score, and uploads or transmits no records. Broader AI controls, ethics and detailed frameworks remain outside this lesson.",
+            "th": "สถานการณ์แต่งขึ้นนี้ใช้ A §§25–26, B §7.2 และบริบท AI Governance ระดับพื้นฐานของ Domain 1 ใน Outline ทางการ ไม่ได้ยืนยันสถานะคลินิกจริงหรือกฎหมายที่ใช้ การสาธิตทำงานได้แต่ยังไม่รู้ชนิดข้อมูล วัตถุประสงค์ ที่ตั้ง การใช้ข้อมูลโดยผู้ให้บริการ หน้าที่ตามสัญญา และอำนาจอนุมัติ ขั้นต่อไปที่เหมาะสมคือรวบรวมข้อเท็จจริง ระบุข้อกำหนดที่อาจเกี่ยว ประเมินการใช้ และให้ผู้เหมาะสมด้าน Security, Privacy, กฎหมาย และเจ้าของธุรกิจทบทวนตามกติกาองค์กรก่อนอนุมัติหรือส่งข้อมูลจริง คำโฆษณาผู้ขายหรือคำว่า AI อย่างเดียวยังไม่พอ นี่ไม่ใช่กฎหมายเฉพาะ AI หรือโครงการ AI Governance ที่ครบถ้วน ปฏิสัมพันธ์อธิบายเหตุผล ไม่มีคะแนนสอบ และไม่อัปโหลดหรือส่งข้อมูลใด ส่วน Control, Ethics และ Framework โดยละเอียดอยู่นอกบทนี้"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "New technology still needs purpose, scope and accountable decisions.",
+            "th": "เทคโนโลยีใหม่ยังต้องมีวัตถุประสงค์ ขอบเขต และผู้รับผิดชอบ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "notes-a",
+        "notes-b",
+        "nist-govern"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-09-trace-requirements",
+      "title": {
+        "en": "Turn requirements into accountable evidence.",
+        "th": "เชื่อมข้อกำหนดกับงานและหลักฐานที่มีผู้รับผิดชอบ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "governance-trace",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Make the path from source to action and review visible.",
+            "th": "ให้เห็นเส้นทางจากแหล่งข้อกำหนด ไปสู่งาน และการทบทวน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Source and scope",
+                "th": "แหล่งและขอบเขต"
+              },
+              {
+                "en": "Record the current requirement and why it applies.",
+                "th": "บันทึกข้อกำหนดปัจจุบันและเหตุผลที่ใช้"
+              },
+              {
+                "en": "Keep facts and interpretation traceable.",
+                "th": "ติดตามข้อเท็จจริงและการตีความได้"
+              }
+            ],
+            [
+              {
+                "en": "Owner and action",
+                "th": "เจ้าของเรื่องและงาน"
+              },
+              {
+                "en": "Assign responsibility and the required safeguards.",
+                "th": "กำหนดผู้รับผิดชอบและมาตรการที่ต้องทำ"
+              },
+              {
+                "en": "Clarify approval, implementation and evidence.",
+                "th": "แยกผู้อนุมัติ ผู้ทำ และหลักฐานให้ชัด"
+              }
+            ],
+            [
+              {
+                "en": "Evidence and review",
+                "th": "หลักฐานและการทบทวน"
+              },
+              {
+                "en": "Check outcomes, gaps and relevant changes.",
+                "th": "ตรวจผล ช่องว่าง และการเปลี่ยนที่เกี่ยวข้อง"
+              },
+              {
+                "en": "Escalate gaps and update the record.",
+                "th": "เสนอช่องว่างให้ผู้มีอำนาจและปรับบันทึก"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §25 links governance to business goals, laws, policy and risk; B §7.2 distinguishes governance, risk management and compliance. This authored traceability record connects a current authoritative requirement, documented applicability, an accountable owner, actions, evidence and review. For a new service, record the responsible reviewer and outstanding facts rather than marking an unknown item compliant. Implementation teams produce evidence; the designated reviewer checks it against the actual requirement, and significant gaps are escalated. Revisit scope when data, services, providers, agreements or authoritative requirements change. This is an illustrative record, not an ISC2-mandated template or a complete compliance programme. L09 will teach the frameworks and security-document hierarchy needed to organise these activities; Objective 1.3 is not complete from this lesson alone.",
+            "th": "A §25 เชื่อม Governance กับเป้าหมายธุรกิจ กฎหมาย นโยบาย และ Risk ส่วน B §7.2 แยก Governance, Risk Management และ Compliance บันทึกตัวอย่างนี้เชื่อมข้อกำหนดจากแหล่งปัจจุบัน เหตุผล Applicability เจ้าของเรื่อง งาน หลักฐาน และการทบทวน สำหรับบริการใหม่ให้ระบุผู้ทบทวนและข้อมูลค้าง ไม่ติดป้ายว่าผ่านทั้งที่ยังไม่รู้ ผู้ลงมือทำส่งหลักฐาน ผู้ที่ได้รับมอบหมายตรวจเทียบข้อกำหนดจริง และเสนอช่องว่างสำคัญถึงผู้มีอำนาจ ทบทวนขอบเขตเมื่อข้อมูล บริการ ผู้ให้บริการ ข้อตกลง หรือข้อกำหนดจากแหล่งอำนาจเปลี่ยน นี่เป็นบันทึกตัวอย่าง ไม่ใช่แบบฟอร์มที่ ISC2 บังคับหรือโครงการ Compliance ครบถ้วน บท L09 จะสอน Framework และลำดับเอกสารความปลอดภัยที่ช่วยจัดกิจกรรมเหล่านี้ Objective 1.3 จึงยังไม่ครบจากบทนี้บทเดียว"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Source → scope → owner → action → evidence → review.",
+            "th": "แหล่ง → ขอบเขต → เจ้าของเรื่อง → งาน → หลักฐาน → ทบทวน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "notes-a",
+        "notes-b",
+        "nist-govern"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC Exam Outline — September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain1 Objective1.3 governance, regulations/laws; Domain1 AI governance context. Framework/document depth deferred to L09.",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "notes-a",
+      "title": "User Domain 1 Summary (Source A)",
+      "authority": "course",
+      "locator": "§§25–26 governance, business alignment, legally enforceable requirements and applicability examples; §§27–34 reserved for L09.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/D1 sum.md"
+    },
+    {
+      "id": "notes-b",
+      "title": "User Domain 1 Course Notes (Source B)",
+      "authority": "course",
+      "locator": "§7 governance; §7.2 GRC and compliance vs security; §4.2 privacy context; §7.1 reserved for L09.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/Domain 1.md"
+    },
+    {
+      "id": "nist-govern",
+      "title": "NIST Cybersecurity Framework FAQs — governance role",
+      "authority": "technical-primary",
+      "locator": "Why Govern was added: alignment, roles/responsibilities, expectations and legal obligations. Technical corroboration, not a framework lesson.",
+      "url": "https://www.nist.gov/cyberframework/faqs"
+    },
+    {
+      "id": "edpb-scope",
+      "title": "EDPB — Data protection basics",
+      "authority": "technical-primary",
+      "locator": "Does the GDPR apply to your organisation? EU/EEA establishment, targeted services and monitoring; scope is fact-dependent.",
+      "url": "https://www.edpb.europa.eu/sme/learn-the-basics/data-protection-basics_en"
+    },
+    {
+      "id": "hhs-scope",
+      "title": "US HHS — Covered Entities and Business Associates",
+      "authority": "technical-primary",
+      "locator": "HIPAA Rules apply to defined covered entities and business associates, not all health-data holders.",
+      "url": "https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html"
+    },
+    {
+      "id": "pci-standard",
+      "title": "PCI SSC — PCI Data Security Standard",
+      "authority": "technical-primary",
+      "locator": "Purpose, intended audience and compliance-program ownership. Industry standard, distinct from legislation.",
+      "url": "https://www.pcisecuritystandards.org/standards/pci-dss/"
+    },
+    {
+      "id": "pci-outsourcing",
+      "title": "PCI SSC — Outsourcing all payment processing",
+      "authority": "technical-primary",
+      "locator": "Merchant responsibilities, provider scope and shared duties; confirm requirements with compliance-accepting entity.",
+      "url": "https://www.pcisecuritystandards.org/faqs/does-pci-dss-apply-to-merchants-who-outsource-all-payment-processing-operations-and-never-store-process-or-transmit-cardholder-data/"
+    }
+  ],
+  "assets": [],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/lesson-d1-08-implementation.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — technical self-review; user review pending",
+      "reviewedAt": "2026-10-27"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — bilingual self-review; user review pending",
+      "reviewedAt": "2026-10-27"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — rights self-review; user review pending",
+      "reviewedAt": "2026-10-27"
+    }
+  }
+}

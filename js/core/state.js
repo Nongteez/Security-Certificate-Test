@@ -6,10 +6,11 @@
 import { getExamVersions, resolveExamVersion } from '../../data/exam-versions.js';
 
 export const state = {
-  screen: "home", // "home" | "exam-versions" | "cert-start" | "quiz" | "results"
+  screen: "home", // "home" | "exam-versions" | "cert-start" | "quiz" | "results" | "vocabulary" | "reading-notes"
   selectedCertification: null,
   selectedExamVersion: null,
   learning: { domainId: null, objectiveId: null, lessonId: null, slideId: null },
+  reading: { selectedDomainId: 1, sidebarCollapsed: false, expandedDomains: [1] },
 
   // Setup configuration for current certification session
   setup: {

@@ -1,0 +1,1193 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d2-02-grc-tools-risk-register",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 2,
+  "primaryObjectiveId": "2.1",
+  "objectiveIds": [
+    "2.1"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "GRC Tools & Operationalizing the Risk Register",
+    "th": "เครื่องมือ GRC และการนำ Risk Register ไปใช้ปฏิบัติจริง"
+  },
+  "synopsis": {
+    "en": "Understand how GRC software platforms replace fragmented spreadsheets across six core capabilities, master all eleven Risk Register fields, distinguish Risk Assessment from Risk Register, and apply ordinal scoring, the worked ransomware record, residual risk, and risk ownership.",
+    "th": "เข้าใจบทบาทของแพลตฟอร์มซอฟต์แวร์ GRC ที่ช่วยรวมศูนย์งานแทน Spreadsheet แยกส่วน เรียนรู้ความสามารถหลัก 6 ด้าน โครงสร้าง Risk Register ทั้ง 11 ฟิลด์ การแยกความต่างระหว่าง Risk Assessment กับ Risk Register ตลอดจนกรณีศึกษา Ransomware, Residual Risk และความรับผิดชอบของ Risk Owner"
+  },
+  "outcomes": [
+    {
+      "en": "Explain how GRC tools centralize and track governance, risk, and compliance activities across all six source-defined capabilities, and distinguish GRC from a GRC Tool.",
+      "th": "อธิบายวิธีที่ GRC Tools ช่วยรวมศูนย์และติดตามงาน Governance, Risk และ Compliance ผ่านความสามารถหลักทั้ง 6 ด้าน พร้อมแยกความต่างระหว่างแนวคิด GRC กับซอฟต์แวร์ GRC Tool"
+    },
+    {
+      "en": "Define the Risk Register as a documented record of identified organizational risks, distinguish Risk Assessment from Risk Register, and identify the eleven fields illustrated in the course.",
+      "th": "นิยาม Risk Register ในฐานะบันทึกเอกสารของความเสี่ยงองค์กรที่ระบุแล้ว แยกความต่างระหว่าง Risk Assessment กับ Risk Register และระบุข้อมูลสิบเอ็ดรายการที่บทเรียนยกตัวอย่างได้อย่างถูกต้อง"
+    },
+    {
+      "en": "Use likelihood, impact and illustrative ordinal scoring without confusing rank products with precise quantities, and explain four risk response choices.",
+      "th": "ใช้ Likelihood, Impact และตัวอย่างคะแนนลำดับโดยไม่สับสนกับปริมาณที่วัดอย่างแม่นยำ พร้อมอธิบายแนวทางตอบสนอง Risk ทั้งสี่แบบ"
+    },
+    {
+      "en": "Analyze the source ransomware example, distinguish inherent and remaining risk using explicit baselines, and explain evidence-based reassessment and Risk Owner accountability.",
+      "th": "วิเคราะห์ตัวอย่าง Ransomware แยก Inherent Risk กับความเสี่ยงคงเหลือตามสมมติฐานตั้งต้น และอธิบายการประเมินซ้ำจากหลักฐานกับความรับผิดชอบของ Risk Owner"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Domain 2 Lesson 1 (GRC Foundations, Frameworks & Business Alignment) and Domain 1 risk lifecycle concepts.",
+      "th": "แนะนำให้เรียนต่อจาก Domain 2 บทที่ 1 (พื้นฐาน GRC และกรอบมาตรฐาน) และทบทวนแนวคิดวงจรการบริหารความเสี่ยงจาก Domain 1"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-01-grc-tools-platform",
+      "title": {
+        "en": "GRC tools keep shared work visible.",
+        "th": "GRC Tools ช่วยให้เห็นงานและข้อมูลร่วมกัน"
+      },
+      "rendererId": "comparison",
+      "layoutId": "platform-vs-spreadsheets",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A shared record shows the owner, current status and supporting evidence. People remain responsible for decisions.",
+            "th": "ข้อมูลชุดเดียวกันช่วยให้เห็นเจ้าของงาน สถานะ และหลักฐาน ส่วนการตัดสินใจยังเป็นหน้าที่ของคน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Operational transition from fragmented spreadsheets to a centralized GRC platform and the GRC vs. GRC Tool distinction",
+            "th": "การเปลี่ยนผ่านจาก Spreadsheet แยกส่วนสู่แพลตฟอร์ม GRC แบบรวมศูนย์ และความแตกต่างระหว่าง GRC กับ GRC Tool"
+          },
+          "columns": [
+            {
+              "en": "Dimension",
+              "th": "มิติเปรียบเทียบ"
+            },
+            {
+              "en": "Fragmented Spreadsheets / Concept",
+              "th": "การแยกเก็บใน Spreadsheet / แนวคิด"
+            },
+            {
+              "en": "Centralized GRC Platform / Software Role",
+              "th": "แพลตฟอร์ม GRC รวมศูนย์ / บทบาทซอฟต์แวร์"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Managing Requirements & Controls",
+                "th": "การจัดการข้อกำหนดและ Controls"
+              },
+              {
+                "en": "Maintaining hundreds of compliance requirements and controls in separate spreadsheets across teams creates version drift, duplicate effort, and blind spots.",
+                "th": "การแยกเก็บข้อกำหนดด้าน Compliance และมาตรการควบคุมหลายร้อยรายการไว้ใน Spreadsheet คนละไฟล์ทำให้ข้อมูลไม่ตรงกัน งานซ้ำซ้อน และเกิดจุดบอด"
+              },
+              {
+                "en": "A GRC software platform centralizes requirements, policies, risks and controls so teams can use shared records with defined ownership.",
+                "th": "แพลตฟอร์มซอฟต์แวร์ GRC ช่วยรวมข้อกำหนด นโยบาย Risk และ Controls ให้ทีมใช้ข้อมูลร่วมกันโดยมีเจ้าของข้อมูลชัดเจน"
+              }
+            ],
+            [
+              {
+                "en": "Status Tracking & Audit Readiness",
+                "th": "การติดตามสถานะและความพร้อมรับการตรวจ"
+              },
+              {
+                "en": "Manual status updates quickly become outdated, leaving leadership unsure which controls are active, overdue, or missing audit evidence.",
+                "th": "การอัปเดตสถานะด้วยมือล้าสมัยเร็ว ทำให้ผู้บริหารไม่เห็นภาพจริงว่า Control ใดทำงานอยู่ งานใดค้าง หรือยังขาดหลักฐานสำหรับผู้ตรวจสอบ"
+              },
+              {
+                "en": "The platform tracks reported implementation status, ownership and audit evidence. People must validate and update the information.",
+                "th": "ระบบช่วยติดตามสถานะการดำเนินงาน ผู้รับผิดชอบ และหลักฐานที่บันทึกไว้ โดยคนยังต้องตรวจสอบและอัปเดตข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "Exam Distinction: GRC vs. GRC Tool",
+                "th": "จุดแยกสำคัญ: GRC เทียบกับ GRC Tool"
+              },
+              {
+                "en": "GRC is the organizational governance and management approach that aligns direction, risk decisions, and compliance obligations.",
+                "th": "GRC คือแนวทางการบริหารและกำกับดูแลขององค์กรที่เชื่อมโยงทิศทาง การจัดการความเสี่ยง และการปฏิบัติตามข้อกำหนด"
+              },
+              {
+                "en": "A GRC Tool is the supporting software platform used to record, coordinate, and track those GRC activities—buying software alone does not create governance.",
+                "th": "GRC Tool คือแพลตฟอร์มซอฟต์แวร์ที่สนับสนุนการบันทึกและติดตามกิจกรรม GRC การซื้อซอฟต์แวร์เพียงอย่างเดียวไม่สามารถแทนการกำหนดทิศทางและผู้รับผิดชอบได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "GRC tools are software platforms that centralize and track governance, risk and compliance activities. When many teams keep requirements and controls in separate spreadsheets, conflicting copies and outdated status can make follow-up difficult. A shared platform can link policies, risks, control evidence and audit findings, so an owner can see what requires attention. The quality of the record still depends on accurate input, timely updates and evidence that controls work. GRC is the organizational approach; a GRC Tool supports it. Buying a product does not establish authority, accountability or a sound risk decision.",
+            "th": "GRC Tools คือแพลตฟอร์มซอฟต์แวร์ที่ช่วยรวมศูนย์และติดตามกิจกรรม Governance, Risk และ Compliance เมื่อหลายทีมแยกเก็บข้อกำหนดและ Controls ใน Spreadsheet คนละชุด ข้อมูลอาจไม่ตรงกันและสถานะอาจล้าสมัย ทำให้ติดตามงานยาก แพลตฟอร์มกลางช่วยเชื่อม Policies รายการ Risk หลักฐานของ Controls และข้อตรวจพบจาก Audit เพื่อให้เจ้าของงานเห็นสิ่งที่ต้องดำเนินการต่อ อย่างไรก็ตาม คนยังต้องบันทึกข้อมูลให้ถูกต้อง อัปเดตให้ทัน และตรวจว่ามาตรการทำงานได้จริง GRC คือแนวทางบริหารขององค์กร ส่วน GRC Tool เป็นซอฟต์แวร์สนับสนุน การซื้อเครื่องมือไม่ได้สร้างอำนาจตัดสินใจหรือ Accountability ขึ้นมาเอง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Spreadsheet Example from S08: Instead of maintaining hundreds of compliance requirements and controls in separate spreadsheets, a GRC platform centralizes them and tracks their status.",
+              "th": "ตัวอย่างตรงจากสไลด์ S08: แทนที่จะเก็บข้อกำหนดและ Controls หลายร้อยรายการแยกกันในหลาย Spreadsheet แพลตฟอร์ม GRC สามารถรวบรวมไว้ที่ศูนย์กลางและติดตามสถานะได้"
+            },
+            {
+              "en": "Centralize and track: Store related GRC information together and make ownership, status and evidence easy to follow. This is a software capability, not an automatic assurance result.",
+              "th": "Centralize และ Track: รวมข้อมูล GRC ที่เกี่ยวข้องและติดตามเจ้าของงาน สถานะ และหลักฐานได้สะดวกขึ้น เป็นความสามารถของซอฟต์แวร์ ไม่ใช่การรับรองว่าข้อมูลหรือ Controls ถูกต้องโดยอัตโนมัติ"
+            },
+            {
+              "en": "Practical Governance Lesson: A GRC platform amplifies clarity when leadership has already defined policies and accountability, but software alone cannot replace human governance decisions.",
+              "th": "การประยุกต์ใช้จริง: ซอฟต์แวร์ GRC ช่วยเพิ่มความโปร่งใสและลดงานซ้ำซ้อนเมื่อผู้บริหารกำหนดนโยบายและผู้รับผิดชอบไว้ชัดเจนแล้ว แต่ซอฟต์แวร์ไม่สามารถตัดสินใจแทนผู้บริหารได้"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Shared software records support GRC. Clear authority, ownership and reliable evidence make them useful.",
+            "th": "ซอฟต์แวร์ช่วยจัดเก็บข้อมูล GRC ร่วมกัน แต่ต้องมีอำนาจตัดสินใจ เจ้าของงาน และหลักฐานที่เชื่อถือได้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-02-six-grc-tool-capabilities",
+      "title": {
+        "en": "GRC capabilities connect through shared records.",
+        "th": "ความสามารถของ GRC เชื่อมกันผ่านข้อมูลร่วม"
+      },
+      "rendererId": "diagram",
+      "layoutId": "capability-workflow-hub",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The same risk and control information supports assessment, policy, compliance and audit work.",
+            "th": "ข้อมูล Risk และ Controls ชุดเดียวกันนำไปใช้กับงานประเมิน นโยบาย Compliance และ Audit ได้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "GRC tool capabilities and their practical functions",
+            "th": "ความสามารถของ GRC Tools และหน้าที่ในการทำงาน"
+          },
+          "columns": [
+            {
+              "en": "Capability",
+              "th": "ความสามารถ"
+            },
+            {
+              "en": "Operational Function",
+              "th": "หน้าที่ในการทำงานจริง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Risk registers",
+                "th": "Risk registers (ทะเบียนความเสี่ยง)"
+              },
+              {
+                "en": "Maintain a documented, living inventory of identified organizational risks, assigned owners, treatment plans, and residual status.",
+                "th": "เก็บบันทึกและติดตามรายการความเสี่ยงขององค์กรที่ระบุแล้ว พร้อมผู้รับผิดชอบ แนวทางจัดการ และสถานะความเสี่ยงคงเหลือ"
+              }
+            ],
+            [
+              {
+                "en": "Policy management",
+                "th": "Policy management (การจัดการนโยบาย)"
+              },
+              {
+                "en": "Draft, approve, publish, and track review cycles and employee attestations for organizational security policies.",
+                "th": "จัดทำ อนุมัติ เผยแพร่ และติดตามรอบการทบทวนนโยบาย รวมถึงการรับทราบนโยบายของพนักงาน"
+              }
+            ],
+            [
+              {
+                "en": "Compliance tracking",
+                "th": "Compliance tracking (การติดตามการปฏิบัติตามข้อกำหนด)"
+              },
+              {
+                "en": "Monitor ongoing fulfillment of applicable legal, regulatory, standard, and contractual requirements across business units.",
+                "th": "ติดตามสถานะการปฏิบัติตามกฎหมาย ข้อบังคับ มาตรฐาน และสัญญาที่เกี่ยวข้องในแต่ละส่วนงานอย่างต่อเนื่อง"
+              }
+            ],
+            [
+              {
+                "en": "Control management",
+                "th": "Control management (การจัดการมาตรการควบคุม)"
+              },
+              {
+                "en": "Catalog technical, administrative, and physical controls, map each control to risks and requirements, and track operating status.",
+                "th": "จัดทำทะเบียนมาตรการควบคุม เชื่อมโยงแต่ละ Control เข้ากับความเสี่ยงและข้อกำหนด พร้อมติดตามว่ามาตรการยังทำงานได้ผล"
+              }
+            ],
+            [
+              {
+                "en": "Audit management",
+                "th": "Audit management (การจัดการการตรวจสอบ)"
+              },
+              {
+                "en": "Organize audit schedules, collect verification evidence, log audit findings, and track remediation actions to closure.",
+                "th": "บริหารกำหนดการตรวจสอบ รวบรวมหลักฐาน บันทึกข้อตรวจพบ (Findings) และติดตามการแก้ไขจนเสร็จสมบูรณ์"
+              }
+            ],
+            [
+              {
+                "en": "Risk assessments",
+                "th": "Risk assessments (การสนับสนุนการประเมินความเสี่ยง)"
+              },
+              {
+                "en": "Provide structured workflows and templates to identify threats and vulnerabilities and evaluate likelihood and impact.",
+                "th": "สนับสนุนกระบวนการประเมินความเสี่ยงอย่างเป็นระบบ ตั้งแต่วิเคราะห์ภัยคุกคาม จุดอ่อน ไปจนถึงประเมินโอกาสเกิดและผลกระทบ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The six source capabilities use related information rather than forming one mandatory sequence. Risk assessments evaluate threats, vulnerabilities, likelihood and impact; risk registers document the resulting scenarios, owners and responses over time. Policy management maintains approved expectations and review cycles. Control management connects safeguards to risks, policies and applicable requirements. Compliance tracking follows whether obligations are being met, while audit management organizes evidence, findings and corrective actions. Teams may return to any of these activities as conditions change. A tool helps connect the work, but human owners remain responsible for judging the evidence and acting on it.",
+            "th": "ความสามารถทั้งหกด้านใช้ข้อมูลที่เกี่ยวข้องร่วมกัน ไม่ได้เป็นลำดับขั้นที่ทุกองค์กรต้องทำเหมือนกัน Risk assessments ช่วยประเมินภัยคุกคาม จุดอ่อน Likelihood และ Impact ส่วน Risk registers บันทึกสถานการณ์ความเสี่ยง ผู้รับผิดชอบ และแนวทางจัดการเพื่อติดตามต่อ Policy management ดูแลนโยบายที่อนุมัติแล้วและรอบการทบทวน Control management เชื่อมมาตรการเข้ากับ Risk นโยบาย และข้อกำหนดที่เกี่ยวข้อง Compliance tracking ติดตามว่าปฏิบัติตามข้อกำหนดหรือไม่ ขณะที่ Audit management จัดการหลักฐาน Findings และงานแก้ไข ทีมอาจกลับไปทำกิจกรรมใดก็ได้เมื่อบริบทเปลี่ยน เครื่องมือช่วยเชื่อมงาน แต่คนยังต้องตรวจหลักฐานและตัดสินใจ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Assessment and documentation: An assessment evaluates exposure; a register records the scenario, reasoning, owner and follow-up so later reviews can use them.",
+              "th": "การประเมินและการบันทึก: Assessment วิเคราะห์ความเสี่ยง ส่วน Register เก็บสถานการณ์ เหตุผล Owner และงานติดตามไว้ใช้ในการทบทวนครั้งต่อไป"
+            },
+            {
+              "en": "Policies and controls: A policy states expectations; control records show the safeguards selected to support those expectations and address risks.",
+              "th": "Policies และ Controls: นโยบายกำหนดสิ่งที่องค์กรคาดหวัง ส่วนข้อมูล Controls แสดงมาตรการที่เลือกใช้สนับสนุนนโยบายและจัดการ Risk"
+            },
+            {
+              "en": "Evidence reuse: A verified control record may support compliance and audit requests when it matches their scope and requirements. Findings can trigger another assessment or control change.",
+              "th": "การใช้หลักฐานร่วมกัน: ข้อมูล Control ที่ตรวจสอบแล้วอาจใช้ตอบงาน Compliance และ Audit ได้ หากตรงกับขอบเขตและข้อกำหนด Findings อาจทำให้ต้องประเมิน Risk หรือปรับ Controls ใหม่"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Connected records help teams coordinate. The capabilities do not prescribe a fixed workflow.",
+            "th": "ข้อมูลที่เชื่อมกันช่วยประสานงาน ความสามารถเหล่านี้ไม่ได้บังคับลำดับงานตายตัว"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-03-risk-register-anatomy",
+      "title": {
+        "en": "Assess the risk. Keep its record current.",
+        "th": "ประเมิน Risk แล้วติดตามต่อในทะเบียน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "register-schema-blueprint",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A Risk Assessment evaluates exposure. A Risk Register records the findings, decisions and follow-up.",
+            "th": "Risk Assessment วิเคราะห์ความเสี่ยง ส่วน Risk Register บันทึกผล การตัดสินใจ และงานที่ต้องติดตาม"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Eleven fields illustrated in the course Risk Register; organizations adapt the format",
+            "th": "ตัวอย่างข้อมูลสิบเอ็ดรายการใน Risk Register ซึ่งองค์กรปรับรูปแบบให้เหมาะกับงานได้"
+          },
+          "columns": [
+            {
+              "en": "Risk Register field",
+              "th": "ข้อมูลใน Risk Register"
+            },
+            {
+              "en": "Meaning & Purpose",
+              "th": "ความหมายและหน้าที่ของข้อมูล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Risk description",
+                "th": "Risk description (คำอธิบายความเสี่ยง)"
+              },
+              {
+                "en": "Concise statement describing the identified risk event and how it could affect the organization.",
+                "th": "คำอธิบายเหตุการณ์ความเสี่ยงที่ระบุพบและผลที่อาจเกิดขึ้นต่อการดำเนินงานขององค์กร"
+              }
+            ],
+            [
+              {
+                "en": "Affected asset or process",
+                "th": "Affected asset or process (ทรัพย์สินหรือกระบวนการที่ได้รับผลกระทบ)"
+              },
+              {
+                "en": "Specific system, data store, facility, or business process exposed to the risk.",
+                "th": "ระบบ ข้อมูลสำคัญ หรือกระบวนการทางธุรกิจที่จะได้รับผลกระทบหากความเสี่ยงเกิดขึ้นจริง"
+              }
+            ],
+            [
+              {
+                "en": "Threat",
+                "th": "Threat (ภัยคุกคาม)"
+              },
+              {
+                "en": "Potential cause, adversary, or event capable of exploiting a weakness to cause harm.",
+                "th": "แหล่งกำเนิดภัย ผู้ไม่หวังดี หรือเหตุการณ์ที่มีโอกาสเข้ามาใช้ประโยชน์จากจุดอ่อนเพื่อสร้างความเสียหาย"
+              }
+            ],
+            [
+              {
+                "en": "Vulnerability",
+                "th": "Vulnerability (จุดอ่อนหรือช่องโหว่)"
+              },
+              {
+                "en": "Flaw, gap, or missing safeguard in an asset or process that a threat could exploit.",
+                "th": "จุดอ่อน ช่องโหว่ทางเทคนิค หรือช่องว่างในกระบวนการที่ภัยคุกคามอาจนำมาใช้โจมตีได้"
+              }
+            ],
+            [
+              {
+                "en": "Likelihood",
+                "th": "Likelihood (โอกาสที่จะเกิด)"
+              },
+              {
+                "en": "Estimated probability or frequency that the threat will exploit the vulnerability.",
+                "th": "ระดับความเป็นไปได้หรือความถี่ที่ภัยคุกคามจะเข้าใช้จุดอ่อนและเกิดเหตุการณ์ความเสี่ยงขึ้น"
+              }
+            ],
+            [
+              {
+                "en": "Impact",
+                "th": "Impact (ความรุนแรงของผลกระทบ)"
+              },
+              {
+                "en": "Magnitude of operational, financial, legal, or reputational harm if the risk occurs.",
+                "th": "ระดับความรุนแรงของความเสียหายต่อการดำเนินงาน การเงิน กฎหมาย หรือชื่อเสียงหากเกิดเหตุขึ้น"
+              }
+            ],
+            [
+              {
+                "en": "Risk rating",
+                "th": "Risk rating (ระดับความเสี่ยงจากการประเมิน)"
+              },
+              {
+                "en": "Combined priority score or level (such as Low, Medium, High, Critical or 1–4) derived from Likelihood and Impact.",
+                "th": "ระดับความสำคัญของความเสี่ยงที่ได้จากการประเมินร่วมกันระหว่าง Likelihood และ Impact เพื่อใช้จัดลำดับการแก้ไข"
+              }
+            ],
+            [
+              {
+                "en": "Risk owner",
+                "th": "Risk owner (ผู้รับผิดชอบความเสี่ยง)"
+              },
+              {
+                "en": "Named accountable individual or role responsible for ensuring the risk is managed and tracked.",
+                "th": "บุคคลหรือตำแหน่งที่ได้รับมอบหมายให้รับผิดชอบกำกับติดตามให้ความเสี่ยงนั้นได้รับการจัดการอย่างเหมาะสม"
+              }
+            ],
+            [
+              {
+                "en": "Treatment strategy",
+                "th": "Treatment strategy (แนวทางจัดการความเสี่ยง)"
+              },
+              {
+                "en": "Selected response pathway for the risk: Mitigate, Avoid, Transfer, or Accept.",
+                "th": "กลยุทธ์ที่องค์กรเลือกใช้จัดการความเสี่ยง ได้แก่ Mitigate, Avoid, Transfer หรือ Accept"
+              }
+            ],
+            [
+              {
+                "en": "Current status",
+                "th": "Current status (สถานะการจัดการปัจจุบัน)"
+              },
+              {
+                "en": "Live tracking state of the treatment plan (for example: Open, Mitigation in progress, or Mitigated / Under review).",
+                "th": "สถานะความคืบหน้าของการดำเนินการในปัจจุบัน เช่น กำลังดำเนินการลดความเสี่ยง หรือดำเนินการแล้วและอยู่ระหว่างติดตามผล"
+              }
+            ],
+            [
+              {
+                "en": "Residual risk",
+                "th": "Residual risk (ความเสี่ยงที่ยังเหลืออยู่หลังการจัดการ)"
+              },
+              {
+                "en": "Risk remaining after implemented controls or responses; distinguish a planned estimate from a verified assessment of current remaining exposure.",
+                "th": "ความเสี่ยงที่ยังเหลือหลังใช้ Controls หรือแนวทางตอบสนองจริง ต้องแยกค่าคาดการณ์ตามแผนออกจากผลประเมินความเสี่ยงคงเหลือปัจจุบันที่มีหลักฐาน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A Risk Register is a documented record of identified organizational risks. Risk Assessment is the activity that identifies and evaluates exposure; its findings inform the register. For a ransomware scenario, record the affected asset or process, threat and vulnerability so the risk description has a clear cause and consequence. Likelihood, impact and the organization’s rating criteria explain priority. A risk owner and treatment strategy establish accountable follow-through. Current status and residual risk allow later reviews to check progress and remaining exposure. The course illustrates eleven useful fields, not one universally mandated register schema. Keep the record current as evidence, controls and business conditions change.",
+            "th": "Risk Register คือบันทึกเอกสารของความเสี่ยงองค์กรที่ระบุแล้ว ส่วน Risk Assessment คือกิจกรรมที่ช่วยระบุและประเมินความเสี่ยงเพื่อนำผลมาบันทึกในทะเบียน ตัวอย่าง Ransomware ควรระบุ Asset หรือ Process ที่ได้รับผลกระทบ Threat และ Vulnerability เพื่อให้คำอธิบาย Risk บอกสาเหตุและความเสียหายได้ชัดเจน Likelihood, Impact และเกณฑ์จัดระดับขององค์กรช่วยอธิบายลำดับความสำคัญ Risk owner และ Treatment strategy ระบุผู้รับผิดชอบกับแนวทางดำเนินการ ส่วน Current status และ Residual risk ช่วยติดตามความคืบหน้าและสิ่งที่ยังเหลืออยู่ บทเรียนยกตัวอย่างข้อมูลสิบเอ็ดรายการ ไม่ได้กำหนด Schema เดียวที่ทุกองค์กรต้องใช้ และควรอัปเดตเมื่อหลักฐาน Controls หรือบริบทธุรกิจเปลี่ยน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Assessment versus register (Domain 2.md §24.1 and §25 Q4): Evaluation produces findings; the register documents and tracks the risk, decision and accountable owner.",
+              "th": "Assessment กับ Register (Domain 2.md §24.1 และ §25 Q4): การประเมินให้ผลการวิเคราะห์ ส่วนทะเบียนใช้บันทึกและติดตาม Risk การตัดสินใจ และผู้รับผิดชอบ"
+            },
+            {
+              "en": "Describe the scenario: Link the affected asset or process, threat, vulnerability and potential consequence so the response addresses the actual exposure.",
+              "th": "อธิบายสถานการณ์ให้ชัด: เชื่อม Asset หรือ Process, Threat, Vulnerability และผลที่อาจเกิด เพื่อเลือกแนวทางตอบสนองให้ตรงกับความเสี่ยงจริง"
+            },
+            {
+              "en": "Maintain follow-up: Record treatment progress and reassessed remaining risk. An old assessment or a list without an owner does not provide ongoing accountability.",
+              "th": "ติดตามต่อเนื่อง: บันทึกความคืบหน้าของแผนและผลประเมินความเสี่ยงคงเหลือ รายงานประเมินเก่าหรือรายการที่ไม่มี Owner ไม่เพียงพอสำหรับติดตามความรับผิดชอบ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Assessment evaluates. The register preserves an owned, reviewable record of the risk and response.",
+            "th": "Assessment ประเมินความเสี่ยง ส่วน Register เก็บข้อมูล Risk และแนวทางตอบสนองที่มีเจ้าภาพและตรวจทานได้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-30-r1",
+        "nist-ir-8286a-r1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-04-scoring-and-treatment",
+      "title": {
+        "en": "A risk score supports a decision.",
+        "th": "คะแนน Risk ใช้ประกอบการตัดสินใจ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "scoring-and-responses",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use agreed scales to prioritize risk, then choose a response that fits the business context.",
+            "th": "ใช้สเกลที่องค์กรตกลงร่วมกันจัดลำดับ Risk แล้วเลือกแนวทางตอบสนองให้เหมาะกับบริบทธุรกิจ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Risk rating and response choices under organization-defined criteria",
+            "th": "การจัดระดับและเลือกแนวทางตอบสนองตามเกณฑ์ขององค์กร"
+          },
+          "columns": [
+            {
+              "en": "Scoring / Strategy Element",
+              "th": "องค์ประกอบการให้คะแนน / กลยุทธ์"
+            },
+            {
+              "en": "How It Works in Governance",
+              "th": "หลักการทำงานในการกำกับดูแลความเสี่ยง"
+            },
+            {
+              "en": "Decision qualification",
+              "th": "เงื่อนไขประกอบการตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Qualitative & Ordinal Rating (Low–Critical / 1–4)",
+                "th": "การจัดระดับเชิงคุณภาพและลำดับขั้น (Low–Critical / 1–4)"
+              },
+              {
+                "en": "Organizations define scales and rating bands. In an illustrative 1–4 likelihood and impact model, ranks 3 and 4 multiply to 12 priority points.",
+                "th": "องค์กรกำหนดสเกลและเกณฑ์จัดระดับ ตัวอย่างสเกล Likelihood และ Impact แบบ 1–4 ใช้คะแนนลำดับ 3 คูณ 4 ได้ 12 คะแนนสำหรับจัดลำดับงาน"
+              },
+              {
+                "en": "This ordinal / semi-quantitative example is not a universal formula. Priority points are not money or probability; use agreed criteria and record assumptions.",
+                "th": "ตัวอย่างแบบ Ordinal หรือกึ่งปริมาณนี้ไม่ใช่สูตรสากล คะแนนจัดลำดับไม่ใช่ตัวเงินหรือความน่าจะเป็น ต้องใช้เกณฑ์ที่ตกลงร่วมกันและบันทึกสมมติฐาน"
+              }
+            ],
+            [
+              {
+                "en": "Quantitative analysis",
+                "th": "Quantitative analysis (การวิเคราะห์เชิงปริมาณ)"
+              },
+              {
+                "en": "Uses quantities with meaningful units and proportionality, such as event frequency, probability, outage hours or financial loss. Financial analyses may combine SLE, ARO and ALE, with distinct units.",
+                "th": "ใช้ปริมาณที่มีหน่วยและสัดส่วนที่มีความหมาย เช่น ความถี่เหตุการณ์ ความน่าจะเป็น ชั่วโมงที่หยุดระบบ หรือมูลค่าความเสียหาย การวิเคราะห์ด้านการเงินอาจใช้ SLE, ARO และ ALE ซึ่งมีหน่วยต่างกัน"
+              },
+              {
+                "en": "Estimates still have uncertainty. Multiplying rank labels does not create an exact dollar loss figure.",
+                "th": "ค่าประมาณยังมีความไม่แน่นอน การคูณคะแนนลำดับไม่ได้ทำให้ได้ค่าความเสียหายเป็นตัวเงินที่แม่นยำ"
+              }
+            ],
+            [
+              {
+                "en": "Mitigate (Reduce)",
+                "th": "Mitigate (การลดความเสี่ยง)"
+              },
+              {
+                "en": "Implement technical, administrative, or physical controls to reduce the likelihood and/or impact of the risk.",
+                "th": "นำมาตรการควบคุมด้านเทคนิค การบริหาร หรือกายภาพมาใช้ เพื่อลดโอกาสเกิดหรือลดความรุนแรงของผลกระทบ"
+              },
+              {
+                "en": "A possible response when the activity continues; select controls using business needs, risk criteria and evidence of effectiveness.",
+                "th": "เป็นทางเลือกเมื่อยังดำเนินกิจกรรมต่อ โดยเลือก Controls ตามความจำเป็นทางธุรกิจ เกณฑ์ Risk และหลักฐานประสิทธิผล"
+              }
+            ],
+            [
+              {
+                "en": "Avoid",
+                "th": "Avoid (การหลีกเลี่ยงความเสี่ยง)"
+              },
+              {
+                "en": "Stop performing the risky activity, decommission the vulnerable service, or redesign the business process so the risk source is removed.",
+                "th": "ยุติกิจกรรมที่เป็นต้นเหตุของความเสี่ยง ยกเลิกระบบที่ไม่ปลอดภัย หรือเปลี่ยนวิธีทำงานเพื่อไม่ให้ต้องเผชิญความเสี่ยงนั้น"
+              },
+              {
+                "en": "Chosen when potential impact outweighs business benefit and controls cannot make the activity acceptable.",
+                "th": "เลือกใช้เมื่อผลเสียที่อาจเกิดขึ้นสูงเกินกว่าประโยชน์ทางธุรกิจ และการลดความเสี่ยงด้วย Controls ไม่คุ้มค่าหรือไม่เพียงพอ"
+              }
+            ],
+            [
+              {
+                "en": "Transfer (Share)",
+                "th": "Transfer (การโอนหรือแบ่งปันความเสี่ยง)"
+              },
+              {
+                "en": "Allocate agreed consequences or responsibilities to another party through insurance, contracts or shared service arrangements.",
+                "th": "จัดสรรภาระความเสียหายหรือหน้าที่ที่ตกลงกันให้บุคคลอื่น ผ่านประกันภัย สัญญา หรือข้อตกลงใช้บริการร่วม"
+              },
+              {
+                "en": "Coverage and duties depend on the agreement and applicable rules. Retained responsibilities and operational harm do not automatically disappear.",
+                "th": "ความคุ้มครองและหน้าที่ขึ้นกับข้อตกลงและข้อกำหนดที่ใช้จริง ความรับผิดชอบที่องค์กรยังมีและผลกระทบต่อการดำเนินงานไม่ได้หายไปโดยอัตโนมัติ"
+              }
+            ],
+            [
+              {
+                "en": "Accept",
+                "th": "Accept (การยอมรับความเสี่ยง)"
+              },
+              {
+                "en": "An authorized decision-maker acknowledges and retains the assessed risk under agreed criteria, with documented reasons and a review plan.",
+                "th": "ผู้มีอำนาจตัดสินใจรับความเสี่ยงที่ประเมินแล้วไว้ตามเกณฑ์ที่กำหนด พร้อมบันทึกเหตุผลและแผนทบทวน"
+              },
+              {
+                "en": "Acceptance is an informed decision, not neglect. Escalate exceptions through the organization’s authority and risk tolerance rules.",
+                "th": "Acceptance ต้องเป็นการตัดสินใจบนข้อมูล ไม่ใช่ละเลยความเสี่ยง กรณีนอกเกณฑ์ต้องส่งให้ผู้มีอำนาจพิจารณาตามกติกาขององค์กร"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Likelihood and Impact inform priority using scales and rating rules selected by the organization. The transcript’s 1–4 example uses ordinal labels; this can support qualitative or semi-quantitative prioritization, but it is not automatically precise quantitative measurement. For illustration, a four-point likelihood rank of 3 and impact rank of 4 yield 12 priority points under a chosen multiplication rule. The organization defines the bands and response thresholds; another method may combine the same findings differently. Quantitative analysis uses quantities with meaningful units or probabilities and states uncertainty. A rank product is not a dollar estimate. Risk response then considers business needs, risk appetite, authority and evidence: mitigate exposure, avoid the specified activity, transfer or share agreed consequences, or authorize acceptance with follow-up.",
+            "th": "Likelihood และ Impact ใช้ประกอบการจัดลำดับ Risk ตามสเกลและกติกาที่องค์กรเลือก ตัวอย่าง 1–4 ในคำบรรยายเป็นคะแนนลำดับ จึงใช้ช่วยประเมินเชิงคุณภาพหรือกึ่งปริมาณได้ แต่ไม่ได้กลายเป็นการวัดเชิงปริมาณที่แม่นยำโดยอัตโนมัติ ตัวอย่างสมมติใช้สเกลสี่ระดับ โดย Likelihood = 3 และ Impact = 4 คูณกันได้ 12 คะแนนจัดลำดับ องค์กรต้องกำหนดเกณฑ์แบ่งระดับและแนวทางตอบสนองเอง วิธีอื่นอาจรวมผลประเมินเดียวกันต่างออกไป Quantitative analysis ใช้ปริมาณที่มีหน่วยหรือความน่าจะเป็นที่มีความหมายและระบุความไม่แน่นอน คะแนนลำดับที่คูณกันจึงไม่ใช่มูลค่าความเสียหายเป็นตัวเงิน จากนั้นจึงเลือก Mitigate, Avoid, Transfer หรือ Share และ Accept ตามความจำเป็นธุรกิจ Risk Appetite อำนาจตัดสินใจ และหลักฐาน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Illustrative scoring: The example uses 1–4 likelihood/impact scales and a multiplication rule. The result is a priority score, not a mandatory risk band, loss amount or probability.",
+              "th": "ตัวอย่างการให้คะแนน: ใช้สเกล Likelihood และ Impact แบบ 1–4 และกติกาการคูณ ผลที่ได้เป็นคะแนนจัดลำดับ ไม่ใช่ระดับ Risk ที่ทุกองค์กรต้องใช้ จำนวนเงิน หรือความน่าจะเป็น"
+            },
+            {
+              "en": "Mitigate versus Avoid: Mitigate applies safeguards while the activity continues. Avoid stops or changes the specified risky activity; assess any new risks introduced by that change.",
+              "th": "Mitigate กับ Avoid: Mitigate ใช้ Controls ขณะที่กิจกรรมยังดำเนินต่อ ส่วน Avoid หยุดหรือเปลี่ยนกิจกรรมที่เป็นต้นเหตุ และต้องประเมิน Risk ใหม่ที่อาจเกิดจากการเปลี่ยนนั้นด้วย"
+            },
+            {
+              "en": "Transfer or Share versus Accept: Agreements allocate defined consequences or duties; check the limits and retained responsibilities. Acceptance retains assessed risk through an authorized, documented decision and periodic review.",
+              "th": "Transfer หรือ Share กับ Accept: ข้อตกลงจัดสรรภาระหรือหน้าที่ตามที่ระบุ ต้องตรวจข้อจำกัดและความรับผิดชอบที่ยังเหลือ ส่วน Acceptance คือการรับ Risk ที่ประเมินแล้วไว้โดยผู้มีอำนาจ มีบันทึกและทบทวนตามรอบ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use a score to inform judgment. Choose and document the response using organizational risk criteria.",
+            "th": "ใช้คะแนนประกอบการพิจารณา แล้วเลือกและบันทึกแนวทางตอบสนองตามเกณฑ์ Risk ขององค์กร"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-30-r1",
+        "nist-sp-800-39",
+        "nist-risk-definitions"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-05-ransomware-worked-example",
+      "title": {
+        "en": "Match controls to the ransomware scenario.",
+        "th": "เลือก Controls ให้ตรงกับความเสี่ยง Ransomware"
+      },
+      "rendererId": "text",
+      "layoutId": "ransomware-register-record",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "In the course example, critical servers are rated High / High. The IT Manager owns a mitigation plan.",
+            "th": "ตัวอย่างในบทเรียนประเมินเซิร์ฟเวอร์สำคัญไว้ที่ High / High โดยมี IT Manager รับผิดชอบแผน Mitigation"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "The course ransomware example and the role of each recorded field",
+            "th": "ตัวอย่าง Ransomware ในบทเรียนและความหมายของข้อมูลที่บันทึก"
+          },
+          "columns": [
+            {
+              "en": "Field on S10",
+              "th": "ฟิลด์ตามสไลด์ S10"
+            },
+            {
+              "en": "Recorded Value (S10)",
+              "th": "ค่าที่บันทึกในทะเบียน (S10)"
+            },
+            {
+              "en": "Governance & Control Role",
+              "th": "ความหมายและบทบาทในการลดความเสี่ยง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Risk",
+                "th": "Risk (ความเสี่ยงที่ระบุ)"
+              },
+              {
+                "en": "Ransomware affecting critical servers",
+                "th": "Ransomware affecting critical servers (Ransomware กระทบเซิร์ฟเวอร์สำคัญ)"
+              },
+              {
+                "en": "Clearly links the threat event (ransomware encryption/extortion) to the high-value asset (critical servers).",
+                "th": "ระบุชัดเจนทั้งเหตุการณ์ภัยคุกคาม (Ransomware) และทรัพย์สินสำคัญขององค์กรที่จะได้รับผลกระทบ (Critical servers)"
+              }
+            ],
+            [
+              {
+                "en": "Likelihood",
+                "th": "Likelihood (โอกาสที่จะเกิด)"
+              },
+              {
+                "en": "High",
+                "th": "High (สูง)"
+              },
+              {
+                "en": "High is the illustrative assessment in this scenario. Actual likelihood needs evidence about exposure, threats and existing controls.",
+                "th": "High เป็นผลประเมินสมมติในสถานการณ์นี้ Likelihood จริงต้องพิจารณาหลักฐานเรื่องช่องทางเสี่ยง ภัยคุกคาม และ Controls ที่มีอยู่"
+              }
+            ],
+            [
+              {
+                "en": "Impact",
+                "th": "Impact (ความรุนแรงของผลกระทบ)"
+              },
+              {
+                "en": "High",
+                "th": "High (สูง)"
+              },
+              {
+                "en": "If critical servers are encrypted, core business operations stall, recovery costs surge, and sensitive data availability is lost.",
+                "th": "หากเซิร์ฟเวอร์หลักถูกเข้ารหัส ระบบงานสำคัญจะหยุดชะงักทันที เกิดความเสียหายรุนแรงต่อการดำเนินงานและความพร้อมใช้งานของข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "Risk Owner",
+                "th": "Risk Owner (ผู้รับผิดชอบความเสี่ยง)"
+              },
+              {
+                "en": "IT Manager",
+                "th": "IT Manager (ผู้จัดการฝ่าย IT)"
+              },
+              {
+                "en": "Single accountable leader responsible for ensuring server protection controls are deployed, tested, and tracked.",
+                "th": "ผู้รับผิดชอบหลักที่ทำหน้าที่กำกับดูแลให้แผนลดความเสี่ยงบนเซิร์ฟเวอร์สำคัญถูกนำไปปฏิบัติและติดตามผลอย่างต่อเนื่อง"
+              }
+            ],
+            [
+              {
+                "en": "Treatment",
+                "th": "Treatment (แนวทางจัดการความเสี่ยง)"
+              },
+              {
+                "en": "Mitigation",
+                "th": "Mitigation (การลดความเสี่ยง)"
+              },
+              {
+                "en": "Mitigation is the selected response in this example; High / High alone does not dictate every organization’s decision.",
+                "th": "ตัวอย่างนี้เลือก Mitigation แต่ค่า High / High เพียงอย่างเดียวไม่ได้บังคับคำตอบเหมือนกันทุกองค์กร"
+              }
+            ],
+            [
+              {
+                "en": "Controls",
+                "th": "Controls (มาตรการควบคุมที่ใช้)"
+              },
+              {
+                "en": "EDR, backups, network segmentation, MFA",
+                "th": "EDR, backups, network segmentation, MFA"
+              },
+              {
+                "en": "MFA can reduce credential misuse; segmentation can limit spread; EDR supports detection and response; tested, protected backups support restoration.",
+                "th": "MFA ช่วยลดการใช้บัญชีโดยมิชอบ Segmentation ช่วยจำกัดการแพร่กระจาย EDR สนับสนุนการตรวจจับและตอบสนอง ส่วน Backups ที่ป้องกันและทดสอบแล้วช่วยกู้คืน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The source example records ransomware affecting critical servers, High likelihood, High impact, IT Manager ownership, Mitigation and four controls: EDR, backups, network segmentation and MFA. These are illustrative values and a chosen response, not a universal decision rule for every High / High risk. Business needs, risk criteria and authorized judgment determine whether to mitigate, avoid, share or accept exposure. The controls address different mechanisms: MFA can reduce misuse of stolen passwords, segmentation can contain lateral spread, EDR can detect and support response to malicious behavior, and protected backups can support recovery when restores are tested. No individual safeguard guarantees prevention or full recovery. The owner coordinates implementation, evidence and reassessment rather than assuming the installation itself proves success.",
+            "th": "ตัวอย่างต้นฉบับบันทึก Ransomware affecting critical servers โดยประเมิน Likelihood และ Impact เป็น High กำหนด IT Manager เป็น Risk Owner เลือก Mitigation และใช้ EDR, backups, network segmentation กับ MFA ค่าประเมินและแนวทางนี้เป็นตัวอย่าง ไม่ใช่กฎที่บังคับให้ทุก Risk ระดับ High / High ต้องตัดสินใจเหมือนกัน ต้องพิจารณาความจำเป็นธุรกิจ เกณฑ์ Risk และผู้มีอำนาจร่วมด้วย Controls แต่ละตัวจัดการคนละกลไก MFA ช่วยลดการใช้รหัสผ่านที่ขโมยมา Segmentation ช่วยจำกัดการแพร่กระจาย EDR ช่วยตรวจจับและตอบสนอง ส่วน Backups ที่ได้รับการป้องกันและทดสอบ Restore แล้วช่วยกู้คืน ไม่มีมาตรการใดรับประกันว่าจะป้องกันเหตุหรือกู้คืนได้ครบถ้วนเสมอ Owner จึงต้องประสานการนำไปใช้ ตรวจหลักฐาน และประเมินซ้ำ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Likelihood and impact: MFA and EDR can reduce successful compromise; segmentation can limit spread; recoverable backups can reduce recovery impact. Effectiveness depends on design, implementation and testing.",
+              "th": "Likelihood และ Impact: MFA กับ EDR ช่วยลดโอกาสโจมตีสำเร็จ Segmentation ช่วยจำกัดการแพร่กระจาย และ Backups ที่กู้คืนได้ช่วยลดผลกระทบ ทั้งหมดขึ้นกับการออกแบบ การใช้งาน และการทดสอบ"
+            },
+            {
+              "en": "Read the source record: The example links a named risk to its assessed likelihood/impact, accountable owner, selected response and safeguards. The six displayed fields are an example, not a mandatory register template.",
+              "th": "อ่านตัวอย่างให้เห็นความเชื่อมโยง: บันทึกนี้เชื่อมชื่อ Risk ผลประเมิน Likelihood และ Impact, Owner แนวทางตอบสนอง และมาตรการที่ใช้ ข้อมูลหกรายการเป็นตัวอย่าง ไม่ใช่แบบฟอร์มบังคับสำหรับทุกทะเบียน"
+            },
+            {
+              "en": "Defense in depth: These controls complement one another, but backups alone do not prevent data theft, and deploying several controls does not by itself prove that remaining risk is acceptable.",
+              "th": "Defense in Depth: Controls เหล่านี้ทำงานเสริมกัน แต่ Backups อย่างเดียวไม่ได้ป้องกันการขโมยข้อมูล และการติดตั้งหลายมาตรการไม่ได้พิสูจน์เองว่า Risk ที่เหลืออยู่ยอมรับได้"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Record the response, test the controls and reassess their actual effect on the risk.",
+            "th": "บันทึกแนวทางตอบสนอง ทดสอบ Controls และประเมินผลที่เกิดกับ Risk จริง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-06-residual-risk-and-ownership",
+      "title": {
+        "en": "Reassess risk after controls.",
+        "th": "ประเมิน Risk อีกครั้งหลังใช้ Controls"
+      },
+      "rendererId": "diagram",
+      "layoutId": "residual-ownership-pipeline",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Controls aim to reduce exposure. Evidence tells you what remains and what to do next.",
+            "th": "Controls มีเป้าหมายเพื่อลดความเสี่ยง ต้องใช้หลักฐานประเมินว่าเหลืออะไรและควรทำอย่างไรต่อ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Baseline, implemented controls, remaining risk and accountable review",
+            "th": "ความเสี่ยงตั้งต้น Controls ที่ใช้จริง ความเสี่ยงคงเหลือ และผู้รับผิดชอบทบทวน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิดสำคัญ"
+            },
+            {
+              "en": "Definition & Operational Meaning",
+              "th": "นิยามและความหมายเชิงปฏิบัติการ"
+            },
+            {
+              "en": "Assessment qualification",
+              "th": "เงื่อนไขในการประเมิน"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Inherent Risk",
+                "th": "Inherent Risk (ความเสี่ยงตั้งต้น)"
+              },
+              {
+                "en": "Risk in the absence of risk-reducing controls in the stated scenario. State the baseline assumptions explicitly.",
+                "th": "ความเสี่ยงภายใต้สมมติฐานว่ายังไม่มี Controls ที่ใช้ลดความเสี่ยงในสถานการณ์นั้น ต้องระบุสมมติฐานตั้งต้นให้ชัดเจน"
+              },
+              {
+                "en": "Current risk assessed with existing safeguards is not automatically inherent risk. Compare like-for-like scenarios and stated control baselines.",
+                "th": "Current risk ที่ประเมินโดยมี Controls เดิมอยู่แล้วไม่ได้เป็น Inherent Risk โดยอัตโนมัติ ต้องเทียบสถานการณ์และขอบเขต Controls ให้ตรงกัน"
+              }
+            ],
+            [
+              {
+                "en": "Controls Applied (Mitigation)",
+                "th": "Controls Applied (มาตรการควบคุมที่นำมาใช้)"
+              },
+              {
+                "en": "Preventive, detective, and recovery safeguards (EDR, backups, network segmentation, MFA) implemented to reduce likelihood and impact.",
+                "th": "มาตรการป้องกัน ตรวจจับ และกู้คืน (EDR, backups, network segmentation, MFA) ที่นำมาลดโอกาสเกิดและจำกัดความรุนแรงของผลกระทบ"
+              },
+              {
+                "en": "Verify implementation and effectiveness. Planned safeguards and intended reductions are not evidence of achieved results.",
+                "th": "ตรวจการใช้งานและประสิทธิผลจริง Controls ที่ยังอยู่ในแผนและผลที่คาดหวังไม่ได้พิสูจน์ว่าลด Risk ได้แล้ว"
+              }
+            ],
+            [
+              {
+                "en": "Residual risk",
+                "th": "Residual risk (ความเสี่ยงคงเหลือ)"
+              },
+              {
+                "en": "Risk remaining after implemented controls or responses. Reassess using evidence, stated assumptions and uncertainty.",
+                "th": "ความเสี่ยงที่ยังเหลือหลังใช้ Controls หรือแนวทางตอบสนองจริง ต้องประเมินซ้ำจากหลักฐาน สมมติฐาน และความไม่แน่นอน"
+              },
+              {
+                "en": "There is no universal numerical lower bound or subtraction rule for qualitative labels. Installation alone does not justify declaring zero risk or accepting the remaining exposure.",
+                "th": "ไม่ได้มีขอบเขตตัวเลขขั้นต่ำสากลหรือสูตรลบคำจัดระดับเชิงคุณภาพ การติดตั้งอย่างเดียวไม่ใช่เหตุผลให้ประกาศว่า Risk เป็นศูนย์หรือยอมรับสิ่งที่ยังเหลืออยู่"
+              }
+            ],
+            [
+              {
+                "en": "Risk Owner Accountability",
+                "th": "Risk Owner (ความรับผิดชอบของผู้เป็นเจ้าของความเสี่ยง)"
+              },
+              {
+                "en": "The designated role (such as the IT Manager on S10) accountable for ensuring the risk is treated, monitored, and its residual risk formally reviewed.",
+                "th": "ผู้ที่ได้รับมอบหมายให้รับผิดชอบกำกับดูแลให้ความเสี่ยงได้รับการจัดการ ติดตามสถานะ และทบทวนความเสี่ยงคงเหลือ (เช่น IT Manager ใน S10)"
+              },
+              {
+                "en": "Domain 2.md §5.3 Rule: The Risk Owner is accountable for ensuring the risk is managed—this does NOT mean the Risk Owner must personally configure every control alone.",
+                "th": "จุดเน้นสำคัญ (Domain 2.md §5.3): Risk Owner คือผู้รับผิดชอบให้ความเสี่ยงได้รับการจัดการ ไม่ได้หมายความว่าต้องเป็นคนลงมือตั้งค่าทุก Control ด้วยตนเองทั้งหมด"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Inherent Risk describes exposure under an explicit baseline without the risk-reducing controls assumed for that scenario. An assessment with existing safeguards describes current risk; it should not be relabelled inherent without explaining the baseline. After controls are implemented, reassess what remains: Residual Risk. Planned-control estimates are projections until implementation and effectiveness are verified. Do not subtract control names from qualitative risk labels or treat the lecture’s practical zero-risk warning as a universal mathematical bound. A reported zero or negligible rating depends on the scale and evidence; installing EDR, backups, segmentation and MFA does not prove that all relevant exposure is gone. Avoiding a specified activity can remove that source of exposure but may introduce other risks. The Risk Owner coordinates evidence, treatment and review; authorized decision-makers accept or escalate remaining risk under organizational criteria.",
+            "th": "Inherent Risk อธิบายความเสี่ยงตั้งต้นโดยระบุสมมติฐานว่ายังไม่มี Controls ที่ใช้ลดความเสี่ยงในสถานการณ์นั้น หากประเมินโดยมีมาตรการเดิมอยู่แล้ว ผลนั้นเป็น Current risk และไม่ควรเปลี่ยนชื่อเป็น Inherent โดยไม่อธิบาย Baseline หลังนำ Controls มาใช้จริงจึงประเมินสิ่งที่ยังเหลืออยู่เป็น Residual Risk ส่วนผลที่คาดจาก Controls ที่ยังอยู่ในแผนเป็นเพียงค่าประมาณจนกว่าจะตรวจการนำไปใช้และประสิทธิผลแล้ว ไม่ควรนำชื่อ Controls ไปลบออกจากคำจัดระดับ Risk หรือใช้คำเตือนเรื่อง Zero risk ในคำบรรยายเป็นกฎคณิตศาสตร์สากล การรายงานว่าศูนย์หรือน้อยมากขึ้นกับสเกลและหลักฐาน การติดตั้ง EDR, Backups, Segmentation และ MFA ไม่ได้พิสูจน์ว่าความเสี่ยงทุกด้านหมดไป Avoidance อาจตัดความเสี่ยงของกิจกรรมที่ระบุ แต่ต้องดู Risk ใหม่ที่อาจเกิดด้วย Risk Owner ประสานหลักฐาน แผน และการทบทวน ส่วนผู้มีอำนาจพิจารณายอมรับหรือส่งต่อ Risk ที่เหลือตามเกณฑ์องค์กร"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Before and after: State which controls the baseline assumes, then reassess likelihood and impact using evidence. A qualitative comparison is not arithmetic subtraction.",
+              "th": "ก่อนและหลัง: ระบุว่าฐานเปรียบเทียบสมมติมีหรือไม่มี Controls ใด แล้วใช้หลักฐานประเมิน Likelihood และ Impact ใหม่ การเทียบระดับเชิงคุณภาพไม่ใช่การลบเลข"
+            },
+            {
+              "en": "Planned versus achieved: A target residual estimate can inform a plan. Validate the implemented safeguards before recording the achieved remaining risk or treating it as acceptable.",
+              "th": "แผนกับผลจริง: ค่าคาดการณ์ Residual Risk ใช้ประกอบแผนได้ แต่ต้องตรวจ Controls ที่ใช้จริงก่อนบันทึกผลคงเหลือที่เกิดขึ้นหรือถือว่ายอมรับได้แล้ว"
+            },
+            {
+              "en": "Accountability and authority: The Risk Owner follows up with specialist implementers. Acceptance requires the designated decision-maker; the owner role does not automatically grant unlimited authority or require solo technical work.",
+              "th": "ความรับผิดชอบกับอำนาจ: Risk Owner ติดตามงานร่วมกับผู้เชี่ยวชาญ การยอมรับ Risk ต้องผ่านผู้มีอำนาจตามที่กำหนด บทบาท Owner ไม่ได้ให้อำนาจไม่จำกัดและไม่ได้หมายถึงต้องทำงานเทคนิคคนเดียว"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Verify safeguards, reassess remaining risk and document the authorized next decision.",
+            "th": "ตรวจ Controls ประเมิน Risk ที่ยังเหลือ และบันทึกการตัดสินใจครั้งต่อไปโดยผู้มีอำนาจ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-30-r1",
+        "nist-sp-800-39",
+        "nist-risk-definitions"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-07-risk-register-scenario",
+      "title": {
+        "en": "What should Aegis Health record next?",
+        "th": "Aegis Health ควรบันทึกและติดตามอะไรต่อ?"
+      },
+      "rendererId": "interactive",
+      "layoutId": "register-triage-scenario",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An assessment found High / High ransomware risk to billing servers. Teams use separate files; no owner or remaining-risk review is recorded.",
+            "th": "ผลประเมินพบ Risk จาก Ransomware ต่อเซิร์ฟเวอร์เรียกเก็บเงินที่ High / High แต่ทีมยังแยกไฟล์ ไม่มี Owner และไม่ได้บันทึกการทบทวนความเสี่ยงคงเหลือ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Decision options and governance evaluation for the Aegis Health Risk Register scenario",
+            "th": "ตัวเลือกการตัดสินใจและเหตุผลวิเคราะห์ตามหลัก GRC สำหรับสถานการณ์ Aegis Health"
+          },
+          "columns": [
+            {
+              "en": "Option",
+              "th": "ตัวเลือก"
+            },
+            {
+              "en": "Proposed Organizational Action",
+              "th": "แนวทางที่เสนอ"
+            },
+            {
+              "en": "Governance & Risk Register Evaluation",
+              "th": "ผลวิเคราะห์ตามหลัก GRC และ Risk Register"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Option A — Keep Findings Only in Assessment Spreadsheets",
+                "th": "ตัวเลือก A — เก็บผลไว้ในรายงานประเมินและไฟล์ Spreadsheet แยกตามทีม"
+              },
+              {
+                "en": "Leave the ransomware finding inside the one-time Risk Assessment report and let each of the 14 teams track their own controls in separate spreadsheets without naming a single Risk Owner.",
+                "th": "เก็บเรื่องความเสี่ยง Ransomware ไว้ในรายงาน Risk Assessment ครั้งนั้นพอ แล้วให้ทั้ง 14 ทีมอัปเดต Spreadsheet ของตนเองต่อไปโดยไม่ต้องระบุ Risk Owner คนเดียว"
+              },
+              {
+                "en": "Less suitable: A Risk Assessment evaluates exposure. Keeping findings in separate files without an accountable owner does not provide an ongoing Risk Register record of treatment and review.",
+                "th": "ไม่เหมาะสม: Risk Assessment ใช้วิเคราะห์ความเสี่ยง การแยกผลไว้ในหลายไฟล์โดยไม่มี Owner ไม่เพียงพอสำหรับบันทึกและติดตามแผนกับผลทบทวนต่อเนื่องใน Risk Register"
+              }
+            ],
+            [
+              {
+                "en": "Option B — Deploy Controls and Delete the Risk as Zero Residual Risk",
+                "th": "ตัวเลือก B — ติดตั้ง Controls แล้วลบรายการออกจากทะเบียนเพราะถือว่าความเสี่ยงเป็นศูนย์"
+              },
+              {
+                "en": "Install EDR, backups, network segmentation, and MFA on the billing servers, then delete the ransomware entry from the Risk Register because mitigation reduces residual risk to zero.",
+                "th": "สั่งติดตั้ง EDR, backups, network segmentation และ MFA บนเซิร์ฟเวอร์ทันที จากนั้นลบรายการความเสี่ยงนี้ออกจาก Risk Register เพราะถือว่าการทำ Mitigation ทำให้ Residual Risk เป็นศูนย์แล้ว"
+              },
+              {
+                "en": "Less suitable: Installing controls is not verification of zero risk. Test their effectiveness, reassess remaining exposure and update the record. Any closure needs evidence and an authorized decision.",
+                "th": "ไม่เหมาะสม: การติดตั้ง Controls ไม่ได้พิสูจน์ว่า Risk เป็นศูนย์ ต้องทดสอบประสิทธิผล ประเมินความเสี่ยงคงเหลือ และอัปเดตทะเบียน การปิดรายการต้องมีหลักฐานและการตัดสินใจโดยผู้มีอำนาจ"
+              }
+            ],
+            [
+              {
+                "en": "Option C — Record the risk, accountable owner, treatment and reassessment",
+                "th": "ตัวเลือก C — บันทึก Risk ผู้รับผิดชอบ แผนจัดการ และผลประเมินซ้ำ"
+              },
+              {
+                "en": "Use the GRC platform’s Risk Register to record the High / High server ransomware finding, assign the IT Manager as Risk Owner, track mitigation with EDR, backups, network segmentation and MFA, and review current status and assessed remaining risk.",
+                "th": "ใช้ Risk Register ใน GRC Platform บันทึก Ransomware ต่อเซิร์ฟเวอร์ที่ประเมิน High / High กำหนด IT Manager เป็น Risk Owner ติดตามแผน Mitigation ด้วย EDR, backups, network segmentation และ MFA พร้อมทบทวนสถานะกับผลประเมินความเสี่ยงคงเหลือ"
+              },
+              {
+                "en": "Recommended: The Risk Register links the finding to IT Manager accountability, a tracked mitigation plan and a review of remaining risk. It supports follow-up without claiming that installed controls guarantee an outcome.",
+                "th": "เหมาะสม: Risk Register เชื่อมผลประเมินกับ IT Manager ที่รับผิดชอบ แผน Mitigation ที่ติดตามได้ และการทบทวน Residual Risk โดยไม่ถือว่าการติดตั้ง Controls รับประกันผลลัพธ์"
+              }
+            ],
+            [
+              {
+                "en": "Option D — Multiply Ordinal 1–4 Scores as Dollar Loss & Require Solo Owner Configuration",
+                "th": "ตัวเลือก D — นำคะแนนลำดับ 1–4 มาคูณเป็นตัวเงินความเสียหายและให้ Risk Owner ตั้งค่าทุกระบบคนเดียว"
+              },
+              {
+                "en": "Multiply the ordinal 1–4 rating (4 × 4 = $16,000 exact annual loss) as a quantitative financial formula and require the Risk Owner to personally configure every firewall, backup, and MFA setting without specialist engineers.",
+                "th": "นำตัวเลขจัดลำดับ 1–4 มาคูณกัน (4 × 4 = 16,000 ดอลลาร์) เพื่อถือเป็นค่าความเสียหายทางการเงินที่แม่นยำ และบังคับให้ Risk Owner ต้องลงมือตั้งค่า Firewall, Backup และ MFA เองทุกขั้นตอนโดยห้ามให้ทีมวิศวกรช่วย"
+              },
+              {
+                "en": "Less suitable: An ordinal rank product has no currency unit and does not establish an exact financial loss. The Risk Owner is accountable for follow-through and may coordinate specialist engineers rather than configure every control alone.",
+                "th": "ไม่เหมาะสม: ผลคูณคะแนนลำดับไม่มีหน่วยเงิน จึงไม่ใช่มูลค่าความเสียหายทางการเงินที่แม่นยำ Risk Owner รับผิดชอบให้มีการติดตามและประสานผู้เชี่ยวชาญได้ ไม่จำเป็นต้องตั้งค่าทุก Control คนเดียว"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Aegis Health has an assessment finding about ransomware on critical patient-billing servers, but its fourteen teams keep separate working files without clear ownership or a remaining-risk review. The immediate gap is accountable follow-through in a Risk Register. Option C records the finding and its High / High assessment, assigns the IT Manager, tracks the selected mitigation safeguards and updates status with evidence-based reassessment. This uses the source ransomware example without assuming a guaranteed reduction or a fixed positive residual number. Option A leaves ownership and tracking unresolved; B mistakes installation for proof that risk is gone; D confuses ordinal ranks with currency and accountability with solo technical implementation. Domain 2.md §25 Q4 reinforces the documented-record distinction.",
+            "th": "Aegis Health มีผล Risk Assessment เรื่อง Ransomware ต่อเซิร์ฟเวอร์เรียกเก็บเงินแล้ว แต่ทั้งสิบสี่ทีมยังแยกไฟล์ทำงาน ไม่มี Owner ชัดเจนและไม่ได้ทบทวนความเสี่ยงคงเหลือ ช่องว่างเร่งด่วนจึงเป็นการติดตามอย่างมีเจ้าภาพใน Risk Register ตัวเลือก C บันทึกผล High / High มอบหมาย IT Manager ติดตาม Controls ตามแผน Mitigation และอัปเดตสถานะจากผลประเมินซ้ำที่มีหลักฐาน เป็นการใช้ตัวอย่างต้นฉบับโดยไม่รับประกันว่าจะลด Risk ได้เท่าใดหรือบังคับว่าค่าคงเหลือต้องเป็นเลขบวกเสมอ ตัวเลือก A ยังไม่แก้ปัญหาเจ้าภาพและการติดตาม B สับสนการติดตั้งกับหลักฐานว่า Risk หมดไป ส่วน D สับสนคะแนนลำดับกับตัวเงินและคิดว่า Owner ต้องทำเทคนิคเองทั้งหมด คำถาม §25 Q4 ใน Domain 2.md ช่วยย้ำความต่างของเอกสารทะเบียนกับกิจกรรมประเมิน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Why A is insufficient: Assessment findings need an owned record of decisions, treatment and follow-up rather than unrelated working copies.",
+              "th": "เหตุผลที่ A ไม่เพียงพอ: ต้องมีบันทึกผลประเมิน การตัดสินใจ แผน และงานติดตามที่มีเจ้าภาพ ไม่ใช่เพียงไฟล์ทำงานแยกกัน"
+            },
+            {
+              "en": "Why B is insufficient: Control installation does not establish remaining risk or justify deleting the record. Reassess with evidence and apply authorized closure or acceptance criteria.",
+              "th": "เหตุผลที่ B ไม่เพียงพอ: การติดตั้ง Controls ไม่ได้บอกผล Risk ที่เหลือหรือเป็นเหตุผลให้ลบรายการ ต้องประเมินจากหลักฐานและใช้เกณฑ์ปิดรายการหรือยอมรับโดยผู้มีอำนาจ"
+            },
+            {
+              "en": "Why D is insufficient: A ranking score is not an exact monetary loss estimate. The Risk Owner coordinates accountability and may use specialist implementers.",
+              "th": "เหตุผลที่ D ไม่เพียงพอ: คะแนนจัดลำดับไม่ใช่ค่าความเสียหายเป็นเงินที่แม่นยำ Risk Owner กำกับติดตามและให้ผู้เชี่ยวชาญนำ Controls ไปใช้ได้"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "An assessment becomes actionable when its record has an owner, a response and evidence-based review.",
+            "th": "ผลประเมินนำไปจัดการต่อได้เมื่อมีบันทึก Owner แนวทางตอบสนอง และการทบทวนจากหลักฐาน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-30-r1",
+        "nist-sp-800-39",
+        "nist-risk-definitions"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "isc2-cc-2026-outline",
+      "title": "ISC2 Certified in Cybersecurity (CC) Exam Outline — Effective September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain 2: Security Governance (17.3%) — Objective 2.1: Plan Governance, Risk, and Compliance (GRC).",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "d2-master-notes",
+      "title": "Domain 2 — Security Governance: Complete Study Notes (Domain 2.md)",
+      "authority": "course",
+      "locator": "§4 GRC tools and six capabilities; §5 Risk Register, eleven illustrative fields, source ransomware example and ownership; §24.1 distinctions; §25 Q4 (lines667–668) Risk Register question.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/Domain 2.md"
+    },
+    {
+      "id": "d2-summary-notes",
+      "title": "Domain 2 Rapid Summary Notes (D2 sum.md)",
+      "authority": "course",
+      "locator": "Lines 101–153: GRC Tools 6 capabilities, Risk Register 11 fields, and Ransomware worked example.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/D2 sum.md"
+    },
+    {
+      "id": "d2-course-transcript",
+      "title": "Domain 2 Instructor Lecture Transcript & Course Slides S08–S10 (DOMAIN 2.txt)",
+      "authority": "course",
+      "locator": "Lines23–31 and captures S08–S10. Ordinal-score terminology and the practical zero-risk warning are qualified using the technical sources; the lecture warning is not a universal mathematical lower bound.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/DOMAIN 2.txt"
+    },
+    {
+      "id": "nist-sp-800-30-r1",
+      "title": "NIST SP 800-30 Rev. 1 — Guide for Conducting Risk Assessments",
+      "authority": "technical-primary",
+      "locator": "Distinction between qualitative/semi-quantitative ordinal scales (such as 1–4 priority tiers) and quantitative risk assessment metrics, plus residual risk tracking.",
+      "url": "https://csrc.nist.gov/pubs/sp/800/30/r1/final"
+    },
+    {
+      "id": "nist-risk-definitions",
+      "title": "NIST CSRC — Inherent and Residual Risk terminology",
+      "authority": "technical-primary",
+      "locator": "Risk remaining after controls/responses; interpret the stated baseline rather than subtracting qualitative labels.",
+      "url": "https://csrc.nist.gov/glossary/term/residual_risk"
+    },
+    {
+      "id": "nist-sp-800-39",
+      "title": "NIST SP800-39 — Managing Information Security Risk",
+      "authority": "technical-primary",
+      "locator": "§3.3 risk responses, organizational criteria, acceptance authority, sharing and transfer limitations.",
+      "url": "https://csrc.nist.gov/pubs/sp/800/39/final"
+    },
+    {
+      "id": "nist-ir-8286a-r1",
+      "title": "NIST IR8286A Revision1 — Identifying and Estimating Cybersecurity Risk for ERM",
+      "authority": "technical-primary",
+      "locator": "Scenario-based risk registers, likelihood/impact estimates, response and monitoring context.",
+      "url": "https://csrc.nist.gov/pubs/ir/8286/a/r1/final"
+    }
+  ],
+  "assets": [],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-2-lesson-2-redesign.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — Lesson2 instructional redesign self-review; human visual review pending",
+      "reviewedAt": "2026-10-29"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — Lesson2 instructional redesign self-review; human visual review pending",
+      "reviewedAt": "2026-10-29"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Antigravity — original authored HTML/CSS/SVG & verified source provenance; user review pending",
+      "reviewedAt": "2026-10-28"
+    }
+  }
+}

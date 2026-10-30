@@ -1,0 +1,127 @@
+- navigation "Presentation controls":
+  - button "Back to Domain":
+  - generic "Disaster Recovery, RTO/RPO & Recovery Strategies":
+    - generic: DOMAIN 2 · OBJECTIVE 2.2
+    - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=1]
+  - group "Slide navigation":
+    - button "Previous slide":
+      - generic: ‹
+    - generic: 9 / 9
+    - button "Finish Lesson":
+      - generic: Finish Lesson
+  - group "Content language":
+    - button "TH":
+      - generic: TH
+    - button "EN" [pressed]:
+      - generic: EN
+  - button "Slides":
+    - generic: Slides
+  - button "Lesson Info":
+    - generic: Info
+  - button "Keyboard shortcuts":
+  - button "Fullscreen":
+    - generic: ⛶
+  - button "Toggle theme":
+- region "Which recovery plan fits the business targets? (9/9)":
+  - article:
+    - heading "Which recovery plan fits the business targets?" [level=2]:
+      - generic: Which recovery plan fits the business targets?
+    - heading "Which recovery plan fits the business targets?" [level=3]:
+      - generic: Which recovery plan fits the business targets?
+    - paragraph:
+      - generic: "The order database fails at 17:00. Acceptable data loss: 30 min. Downtime target: 1 hour."
+    - group "Scenario decision options":
+      - button "Call data loss RTO; start buying Cold Site servers.":
+        - generic: A
+        - generic: Call data loss RTO; start buying Cold Site servers.
+      - button "Keep daily backups only at the primary site; skip drills.":
+        - generic: B
+        - generic: Keep daily backups only at the primary site; skip drills.
+      - button "RPO 30 min, RTO 1 hour; protected copies and tested recovery capacity.":
+        - generic: C
+        - generic: RPO 30 min, RTO 1 hour; protected copies and tested recovery capacity.
+      - button "Restore test servers first; recover orders next week." [pressed]:
+        - generic: D
+        - generic: Restore test servers first; recover orders next week.
+    - heading "Consider what is missing" [level=4]:
+      - generic: Consider what is missing
+    - paragraph:
+      - generic: Noncritical systems should not displace BIA-driven priorities. Waiting until next week misses the one-hour RTO, and stakeholders need coordinated status updates.
+  - button "Toggle reading layout":
+    - generic: Toggle reading layout
+- paragraph: Which recovery plan fits the business targets? (9/9)
+- dialog "Lesson Info":
+  - heading "Lesson Info" [level=2]
+  - button "Close": ✕
+  - paragraph: OBJECTIVE 2.2
+  - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=3]:
+    - generic: Disaster Recovery, RTO/RPO & Recovery Strategies
+  - heading "What you'll learn" [level=4]
+  - list:
+    - generic: Define Disaster Recovery (DR) and a Disaster Recovery Plan (DRP), explain how DRP supports the broader Business Continuity Plan (BCP), and identify the five strategic benefits of DR while keeping GDPR/HIPAA within their proper illustrative bounds.
+    - generic: Distinguish Recovery Time Objective (RTO, maximum acceptable downtime) from Recovery Point Objective (RPO, maximum acceptable data loss in time) using directional timelines and worked outage calculations, while recognizing that targets are not guarantees.
+    - generic: Evaluate backup and restoration strategies (cloud backups and off-site storage) and compare Hot Sites, Warm Sites, and Cold Sites across readiness, restoration speed, and cost trade-offs.
+    - generic: Explain why regular DRP testing and drills, clear IT/business recovery priorities, and role coordination are essential, and master the seven-dimension comparison between Business Continuity (BC) and Disaster Recovery (DR).
+  - generic "Slides 1–9 — Full explanations"
+  - generic "Slide 1 — Restore a working service, not just a server."
+  - generic "Slide 2 — Recovery reduces the business impact of an outage."
+  - generic "Slide 3 — RPO looks back. RTO sets the recovery-time target." [active]
+  - heading "RPO looks back. RTO sets the recovery-time target." [level=2]:
+    - generic: RPO looks back. RTO sets the recovery-time target.
+  - paragraph:
+    - generic: Both are planning objectives measured in time; neither proves that recovery will succeed.
+  - table "Timeline semantics and exam distinctions for Recovery Point Objective (RPO) and Recovery Time Objective (RTO)":
+    - caption:
+      - generic: Timeline semantics and exam distinctions for Recovery Point Objective (RPO) and Recovery Time Objective (RTO)
+    - rowgroup:
+      - row "Recovery Metric / Concept Formal Definition & Timeline Direction Diagnostic Question & Governance Rule":
+        - columnheader "Recovery Metric / Concept":
+          - generic: Recovery Metric / Concept
+        - columnheader "Formal Definition & Timeline Direction":
+          - generic: Formal Definition & Timeline Direction
+        - columnheader "Diagnostic Question & Governance Rule":
+          - generic: Diagnostic Question & Governance Rule
+    - rowgroup:
+      - 'row "Recovery Point Objective (RPO) The targeted maximum acceptable period of data loss measured in time—looking BACKWARD from the disruption to the last valid recoverable backup point. Question: ''How much recent data (measured in time) can we afford to lose?'' Drives backup and replication frequency."':
+        - cell "Recovery Point Objective (RPO)":
+          - generic: Recovery Point Objective (RPO)
+        - cell "The targeted maximum acceptable period of data loss measured in time—looking BACKWARD from the disruption to the last valid recoverable backup point.":
+          - generic: The targeted maximum acceptable period of data loss measured in time—looking BACKWARD from the disruption to the last valid recoverable backup point.
+        - 'cell "Question: ''How much recent data (measured in time) can we afford to lose?'' Drives backup and replication frequency."':
+          - generic: "Question: 'How much recent data (measured in time) can we afford to lose?' Drives backup and replication frequency."
+      - 'row "Recovery Time Objective (RTO) The targeted maximum acceptable downtime for an IT system or service—looking FORWARD from the disruption until service restoration. Question: ''How long can the system stay down before impact becomes unacceptable?'' Drives recovery site and failover design."':
+        - cell "Recovery Time Objective (RTO)":
+          - generic: Recovery Time Objective (RTO)
+        - cell "The targeted maximum acceptable downtime for an IT system or service—looking FORWARD from the disruption until service restoration.":
+          - generic: The targeted maximum acceptable downtime for an IT system or service—looking FORWARD from the disruption until service restoration.
+        - 'cell "Question: ''How long can the system stay down before impact becomes unacceptable?'' Drives recovery site and failover design."':
+          - generic: "Question: 'How long can the system stay down before impact becomes unacceptable?' Drives recovery site and failover design."
+      - 'row "Data Loss Window vs. Downtime Window Both RPO and RTO are expressed in units of time (minutes/hours), which is why exam candidates often confuse them—but RPO is about DATA age, whereas RTO is about SERVICE outage duration. Memory Cue: RPO → POINT in time of data backup; RTO → TIME to restore system operation."':
+        - cell "Data Loss Window vs. Downtime Window":
+          - generic: Data Loss Window vs. Downtime Window
+        - cell "Both RPO and RTO are expressed in units of time (minutes/hours), which is why exam candidates often confuse them—but RPO is about DATA age, whereas RTO is about SERVICE outage duration.":
+          - generic: Both RPO and RTO are expressed in units of time (minutes/hours), which is why exam candidates often confuse them—but RPO is about DATA age, whereas RTO is about SERVICE outage duration.
+        - 'cell "Memory Cue: RPO → POINT in time of data backup; RTO → TIME to restore system operation."':
+          - generic: "Memory Cue: RPO → POINT in time of data backup; RTO → TIME to restore system operation."
+      - row "Targets vs. Guaranteed Performance RTO and RPO are planning objectives (targets), not automatic guarantees; actual recovery depends on verified backups, site readiness, and tested procedures. Scheduling hourly backups alone does not guarantee a 1-hour RPO if backup jobs fail silently or cannot be restored.":
+        - cell "Targets vs. Guaranteed Performance":
+          - generic: Targets vs. Guaranteed Performance
+        - cell "RTO and RPO are planning objectives (targets), not automatic guarantees; actual recovery depends on verified backups, site readiness, and tested procedures.":
+          - generic: RTO and RPO are planning objectives (targets), not automatic guarantees; actual recovery depends on verified backups, site readiness, and tested procedures.
+        - cell "Scheduling hourly backups alone does not guarantee a 1-hour RPO if backup jobs fail silently or cannot be restored.":
+          - generic: Scheduling hourly backups alone does not guarantee a 1-hour RPO if backup jobs fail silently or cannot be restored.
+  - paragraph:
+    - generic: "Recovery Point Objective (RPO) sets the maximum acceptable period of data loss, expressed in time. From an outage timestamp, subtract RPO to find the earliest acceptable recoverable data point. Recovery Time Objective (RTO) sets the target maximum time for restoring the affected service: add RTO to the outage timestamp to find the target deadline. Actual data loss and observed recovery time are measured results to compare with these objectives. Scheduled backup frequency alone does not prove RPO: failed jobs, replication lag, corrupt data or unavailable keys can make the last usable point older than expected. Test the recovery chain against both objectives."
+  - list:
+    - generic: "RPO (Recovery Point Objective — Backward Data Window): Defines the maximum acceptable age of lost data between the last good backup/replication point and the disruption."
+    - generic: "RTO (Recovery Time Objective — Forward Downtime Window): Defines the maximum acceptable duration the IT system or application can remain unavailable after the disruption."
+    - generic: "Why Backup Frequency Alone Does Not Guarantee RPO: If backups are scheduled every 30 minutes but replication lags, media is corrupted, or encryption keys are unavailable, actual data loss may exceed the target RPO."
+  - paragraph:
+    - generic: "Key Takeaway: RPO looks backward to bound acceptable data loss in time ('Point of data'); RTO looks forward to bound acceptable system downtime ('Time to recover')."
+  - generic "Slide 4 — Separate the target from what actually happened."
+  - generic "Slide 5 — A backup is useful when you can restore it."
+  - generic "Slide 6 — A recovery site still has work to complete."
+  - generic "Slide 7 — Exercise the plan, measure, then correct the gaps."
+  - generic "Slide 8 — Keep the business going while IT recovers."
+  - generic "Slide 9 — Which recovery plan fits the business targets?"
+  - generic "References & lesson details"

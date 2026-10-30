@@ -1,0 +1,1096 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d2-07-security-metrics-kpi-kri",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 2,
+  "primaryObjectiveId": "2.4",
+  "objectiveIds": [
+    "2.4"
+  ],
+  "revision": "1",
+  "status": "in-preparation",
+  "title": {
+    "en": "Security Metrics, KPIs & KRIs",
+    "th": "Security Metrics, KPI และ KRI"
+  },
+  "synopsis": {
+    "en": "Define useful measures, interpret time and percentage metrics, and distinguish performance from risk evidence.",
+    "th": "กำหนด Metric ที่ใช้ได้ ตีความเวลา/เปอร์เซ็นต์ และแยกหลักฐานผลงานจากความเสี่ยง"
+  },
+  "outcomes": [
+    {
+      "en": "Explain the source metrics, applied domains and six KRI examples.",
+      "th": "อธิบาย Metric ตามต้นฉบับ ด้านที่ประยุกต์ และ KRI หกตัวอย่าง"
+    },
+    {
+      "en": "Interpret a defined 15-day patch KPI with scope, data quality and uncertainty.",
+      "th": "ตีความ Patch KPI 15 วัน พร้อมขอบเขต คุณภาพข้อมูล และความไม่แน่นอน"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: previous Domain 2 lessons.",
+      "th": "แนะนำให้ทบทวนบทก่อนหน้าของ Domain 2"
+    }
+  ],
+  "references": [
+    {
+      "id": "isc2-cc-2026-outline",
+      "title": "ISC2 CC Exam Outline — effective September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain2 Objective2.4; checked2026-10-30.",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "d2-master",
+      "title": "Domain 2.md",
+      "authority": "course",
+      "locator": "Actual S29–S33, notes§§17–20, summary metrics and transcript measurement section. Q8 privileged accounts withoutMFA; Q9 15-day patchKPI. Official AI model-drift/KRI supplement.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/Domain 2.md"
+    },
+    {
+      "id": "d2-summary",
+      "title": "D2 sum.md",
+      "authority": "course",
+      "locator": "Actual S29–S33, notes§§17–20, summary metrics and transcript measurement section. Q8 privileged accounts withoutMFA; Q9 15-day patchKPI. Official AI model-drift/KRI supplement.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/D2 sum.md"
+    },
+    {
+      "id": "d2-transcript",
+      "title": "DOMAIN 2.txt",
+      "authority": "course",
+      "locator": "Actual S29–S33, notes§§17–20, summary metrics and transcript measurement section. Q8 privileged accounts withoutMFA; Q9 15-day patchKPI. Official AI model-drift/KRI supplement.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/DOMAIN 2.txt"
+    },
+    {
+      "id": "nist-sp-800-55v1",
+      "title": "NIST SP800-55 Volume1 — Identifying and Selecting Measures",
+      "authority": "technical-primary",
+      "url": "https://csrc.nist.gov/pubs/sp/800/55/v1/final",
+      "locator": "§3.1 documentation/data quality and leading/lagging definitions; supplementary context."
+    }
+  ],
+  "assets": [],
+  "slides": [
+    {
+      "id": "slide-01-measure-for-a-decision",
+      "title": {
+        "en": "Choose the decision before the number.",
+        "th": "เลือกคำถามที่ต้องตัดสินใจก่อนเลือกตัวเลข"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A security metric is a measurable value used to assess an activity, process or control.",
+            "th": "Security metric คือค่าที่วัดได้เพื่อประเมินกิจกรรม กระบวนการ หรือ Control"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Determine whether controls are effective",
+                "th": "ตรวจว่ามาตรการได้ผลหรือไม่"
+              },
+              {
+                "en": "Connect the measure to a specific objective",
+                "th": "เชื่อมสิ่งที่วัดกับเป้าหมายที่ชัด"
+              },
+              {
+                "en": "A number is useful when the audience can interpret and act on it.",
+                "th": "ตัวเลขมีประโยชน์เมื่อผู้รับตีความและนำไปใช้ได้"
+              }
+            ],
+            [
+              {
+                "en": "Identify weaknesses and gaps",
+                "th": "หาจุดอ่อนและช่องว่าง"
+              },
+              {
+                "en": "Connect the measure to a specific objective",
+                "th": "เชื่อมสิ่งที่วัดกับเป้าหมายที่ชัด"
+              },
+              {
+                "en": "A number is useful when the audience can interpret and act on it.",
+                "th": "ตัวเลขมีประโยชน์เมื่อผู้รับตีความและนำไปใช้ได้"
+              }
+            ],
+            [
+              {
+                "en": "Track security performance over time",
+                "th": "ติดตามผลงานตามเวลา"
+              },
+              {
+                "en": "Connect the measure to a specific objective",
+                "th": "เชื่อมสิ่งที่วัดกับเป้าหมายที่ชัด"
+              },
+              {
+                "en": "A number is useful when the audience can interpret and act on it.",
+                "th": "ตัวเลขมีประโยชน์เมื่อผู้รับตีความและนำไปใช้ได้"
+              }
+            ],
+            [
+              {
+                "en": "Support risk-based decision-making",
+                "th": "สนับสนุนการตัดสินใจตามความเสี่ยง"
+              },
+              {
+                "en": "Connect the measure to a specific objective",
+                "th": "เชื่อมสิ่งที่วัดกับเป้าหมายที่ชัด"
+              },
+              {
+                "en": "A number is useful when the audience can interpret and act on it.",
+                "th": "ตัวเลขมีประโยชน์เมื่อผู้รับตีความและนำไปใช้ได้"
+              }
+            ],
+            [
+              {
+                "en": "Demonstrate compliance",
+                "th": "แสดงหลักฐาน Compliance"
+              },
+              {
+                "en": "Connect the measure to a specific objective",
+                "th": "เชื่อมสิ่งที่วัดกับเป้าหมายที่ชัด"
+              },
+              {
+                "en": "A number is useful when the audience can interpret and act on it.",
+                "th": "ตัวเลขมีประโยชน์เมื่อผู้รับตีความและนำไปใช้ได้"
+              }
+            ],
+            [
+              {
+                "en": "Communicate security status to management",
+                "th": "สื่อสารสถานะให้ผู้บริหาร"
+              },
+              {
+                "en": "Connect the measure to a specific objective",
+                "th": "เชื่อมสิ่งที่วัดกับเป้าหมายที่ชัด"
+              },
+              {
+                "en": "A number is useful when the audience can interpret and act on it.",
+                "th": "ตัวเลขมีประโยชน์เมื่อผู้รับตีความและนำไปใช้ได้"
+              }
+            ],
+            [
+              {
+                "en": "Identify areas requiring improvement",
+                "th": "ระบุส่วนที่ต้องปรับปรุง"
+              },
+              {
+                "en": "Connect the measure to a specific objective",
+                "th": "เชื่อมสิ่งที่วัดกับเป้าหมายที่ชัด"
+              },
+              {
+                "en": "A number is useful when the audience can interpret and act on it.",
+                "th": "ตัวเลขมีประโยชน์เมื่อผู้รับตีความและนำไปใช้ได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Measuring and monitoring help determine whether security objectives are being achieved. The source gives seven purposes: assess controls, find weaknesses, track performance, support risk-based decisions, demonstrate compliance, communicate to management and identify improvements. General examples include the number of incidents, number of vulnerabilities, percentage of systems patched, Mean Time to Detect (MTTD) and Mean Time to Respond (MTTR). A useful metric should be relevant, measurable, consistent and meaningful to its audience. Start with the business question, identify suitable evidence and decide who will respond; collecting more numbers alone does not establish effectiveness.",
+            "th": "การวัดและติดตามช่วยดูว่าบรรลุเป้าหมาย Security หรือไม่ ต้นฉบับให้เจ็ดจุดมุ่งหมาย ได้แก่ ประเมิน Control หาจุดอ่อน ติดตามผลงาน สนับสนุนการตัดสินใจตามความเสี่ยง แสดงหลักฐาน Compliance สื่อสารกับผู้บริหาร และหาส่วนปรับปรุง ตัวอย่างทั่วไปคือจำนวน Incident จำนวนช่องโหว่ เปอร์เซ็นต์ระบบที่ Patch, Mean Time to Detect (MTTD) และ Mean Time to Respond (MTTR) Metric ที่ดีควรเกี่ยวข้อง วัดได้ สอดคล้องกัน และมีความหมายต่อผู้รับ ให้เริ่มจากคำถามธุรกิจ เลือกหลักฐานที่เหมาะ และกำหนดใครจะดำเนินการ ไม่ใช่เก็บตัวเลขมากแล้วสรุปว่าได้ผล"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Relevance connects the measure to a control or business question.",
+              "th": "Relevance เชื่อมสิ่งที่วัดกับ Control หรือคำถามธุรกิจ"
+            },
+            {
+              "en": "Consistency enables meaningful comparison over time.",
+              "th": "Consistency ช่วยให้เทียบข้ามเวลาได้มีความหมาย"
+            },
+            {
+              "en": "A named audience and action make the measure useful.",
+              "th": "รู้ผู้รับและการดำเนินการทำให้ Metric ใช้ประโยชน์ได้"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Question → evidence → responsible action.",
+            "th": "คำถาม → หลักฐาน → ผู้รับผิดชอบดำเนินการ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-02-denominator-and-window",
+      "title": {
+        "en": "“90% patched” needs a population and a date.",
+        "th": "“Patch แล้ว 90%” ต้องรู้ว่าจากกลุ่มใดและเมื่อใด"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Illustrative snapshot: 18 of 20 in-scope systems meet the stated patching requirement.",
+            "th": "ตัวอย่าง ณ เวลาที่วัด: 18 จาก 20 ระบบในขอบเขตผ่านข้อกำหนด Patch ที่ระบุ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Numerator",
+                "th": "ตัวเศษ"
+              },
+              {
+                "en": "18 systems meeting the requirement",
+                "th": "18 ระบบที่ผ่านข้อกำหนด"
+              },
+              {
+                "en": "Use verified evidence at the same snapshot date.",
+                "th": "ใช้หลักฐานที่ตรวจสอบ ณ วันเดียวกัน"
+              }
+            ],
+            [
+              {
+                "en": "Denominator",
+                "th": "ตัวส่วน"
+              },
+              {
+                "en": "20 in-scope systems assessed",
+                "th": "20 ระบบในขอบเขตที่ตรวจ"
+              },
+              {
+                "en": "State exclusions and coverage; missing data is not automatically compliant.",
+                "th": "บอกส่วนที่ยกเว้นและความครอบคลุม ข้อมูลหายไม่ได้แปลว่าผ่าน"
+              }
+            ],
+            [
+              {
+                "en": "Result and limits",
+                "th": "ผลและข้อจำกัด"
+              },
+              {
+                "en": "18 / 20 × 100 = 90%",
+                "th": "18 / 20 × 100 = 90%"
+              },
+              {
+                "en": "If the denominator is zero, report no applicable data rather than invent a percentage.",
+                "th": "หากตัวส่วนเป็นศูนย์ ให้รายงานว่าไม่มีข้อมูลที่ใช้คำนวณ ไม่สร้างเปอร์เซ็นต์"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A percentage is a relationship, not a complete conclusion. In this authored example,18 compliant systems divided by 20 assessed in-scope systems gives 90%. Define what compliant means, the population, snapshot date, evidence source and exclusions before comparing periods. If the asset inventory grows or a scanner misses critical systems, a changed percentage may reflect changed coverage rather than improvement. Report unknowns honestly. A zero denominator does not produce a meaningful compliance rate. These measurement details support the source requirements for consistent, relevant and meaningful metrics; they do not introduce an organization-independent target.",
+            "th": "เปอร์เซ็นต์เป็นความสัมพันธ์ ไม่ใช่ข้อสรุปทั้งหมด ตัวอย่างแต่งนี้ใช้ 18 ระบบที่ผ่าน หาร 20 ระบบในขอบเขตที่ตรวจ ได้ 90% ต้องกำหนดว่าผ่านหมายถึงอะไร ประชากร วันวัด แหล่งหลักฐาน และส่วนที่ยกเว้นก่อนเทียบข้ามงวด หาก Inventory เพิ่มหรือ Scanner ไม่พบระบบสำคัญ เปอร์เซ็นต์อาจเปลี่ยนเพราะความครอบคลุม ไม่ใช่ผลงานดีขึ้น ต้องรายงานสิ่งที่ยังไม่ทราบอย่างตรงไปตรงมา ตัวส่วนศูนย์ไม่ให้ Compliance rate ที่มีความหมาย รายละเอียดเหล่านี้ช่วยให้ Metric สอดคล้อง เกี่ยวข้อง และใช้ประโยชน์ได้ ไม่ได้กำหนดเป้าหมายเดียวให้ทุกองค์กร"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Use matching populations and dates for numerator and denominator.",
+              "th": "ใช้ประชากรและวันวัดให้ตรงกันระหว่างตัวเศษกับตัวส่วน"
+            },
+            {
+              "en": "Separate unknown coverage from an observed compliant result.",
+              "th": "แยกข้อมูลครอบคลุมที่ไม่ทราบออกจากผลว่าผ่าน"
+            },
+            {
+              "en": "Document calculation and evidence so another reviewer can reproduce it.",
+              "th": "บันทึกวิธีคำนวณกับหลักฐานให้ผู้ตรวจอื่นทำซ้ำได้"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A rate is only as clear as its definition.",
+            "th": "อัตราชัดเจนได้เมื่อคำนิยามชัด"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-03-detection-and-response-boundaries",
+      "title": {
+        "en": "Define where each response clock starts and stops.",
+        "th": "กำหนดจุดเริ่มและจุดจบของเวลาตอบสนอง"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "MTTD and MTTR are averages over defined events, not guarantees for the next incident.",
+            "th": "MTTD และ MTTR เป็นค่าเฉลี่ยของเหตุที่กำหนด ไม่รับประกันเหตุครั้งหน้า"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Vulnerability Management",
+                "th": "Vulnerability Management"
+              },
+              {
+                "en": "% critical vulnerabilities remediated within the required timeframe",
+                "th": "% ช่องโหว่ Critical ที่แก้ภายในเวลาที่กำหนด"
+              },
+              {
+                "en": "Specify the event scope and evidence used.",
+                "th": "ระบุขอบเขตเหตุและหลักฐานที่ใช้"
+              }
+            ],
+            [
+              {
+                "en": "Incident Response",
+                "th": "Incident Response"
+              },
+              {
+                "en": "Mean Time to Respond",
+                "th": "Mean Time to Respond"
+              },
+              {
+                "en": "Specify the event scope and evidence used.",
+                "th": "ระบุขอบเขตเหตุและหลักฐานที่ใช้"
+              }
+            ],
+            [
+              {
+                "en": "Security Awareness",
+                "th": "Security Awareness"
+              },
+              {
+                "en": "% employees completing awareness training",
+                "th": "% พนักงานที่เรียน Awareness ครบ"
+              },
+              {
+                "en": "Specify the event scope and evidence used.",
+                "th": "ระบุขอบเขตเหตุและหลักฐานที่ใช้"
+              }
+            ],
+            [
+              {
+                "en": "Patch Management",
+                "th": "Patch Management"
+              },
+              {
+                "en": "% systems meeting patch requirements",
+                "th": "% ระบบที่ผ่านข้อกำหนด Patch"
+              },
+              {
+                "en": "Specify the event scope and evidence used.",
+                "th": "ระบุขอบเขตเหตุและหลักฐานที่ใช้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "MTTD means Mean Time to Detect. This course uses MTTR as Mean Time to Respond; other organizations use the acronym differently, so explicitly define it before comparing values. For a local measure, define the incident start, detection and response milestones, then average comparable durations across a stated set of incidents. An average can hide a severe outlier and depends on what was observed or missed. Do not silently redefine response as complete recovery. The source also applies metrics to vulnerability remediation, awareness completion and patching requirements; each needs its own population, timeframe and interpretation.",
+            "th": "MTTD หมายถึง Mean Time to Detect ส่วนบทเรียนนี้ใช้ MTTR ว่า Mean Time to Respond องค์กรอื่นอาจขยายคำต่างกัน จึงต้องกำหนดก่อนเทียบค่า เมื่อสร้างตัววัดภายใน ให้ระบุเวลาเริ่มเหตุ จุดตรวจพบ และจุดตอบสนอง แล้วหาค่าเฉลี่ยช่วงเวลาที่เทียบกันได้จากกลุ่ม Incident ที่ระบุ ค่าเฉลี่ยอาจซ่อนเหตุที่ช้ามาก และขึ้นกับสิ่งที่ตรวจพบหรือพลาด อย่าเปลี่ยนความหมาย Respond เป็นกู้คืนเสร็จทั้งหมดโดยไม่บอก ต้นฉบับยังใช้ Metric กับการแก้ช่องโหว่ การเรียน Awareness และข้อกำหนด Patch ซึ่งแต่ละเรื่องต้องมีประชากร ช่วงเวลา และวิธีตีความของตน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Choose and document the response milestone before collecting durations.",
+              "th": "เลือกและบันทึกจุดตอบสนองก่อนเก็บระยะเวลา"
+            },
+            {
+              "en": "Report the incident population and inspect outliers.",
+              "th": "รายงานกลุ่ม Incident และตรวจเหตุที่ผิดจากกลุ่มมาก"
+            },
+            {
+              "en": "A training-completion metric measures participation, not every secure behaviour.",
+              "th": "ตัววัดเรียนครบวัดการเข้าร่วม ไม่ใช่พฤติกรรมปลอดภัยทุกด้าน"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Compare like definitions and comparable events.",
+            "th": "เทียบคำนิยามเดียวกันและเหตุที่เทียบกันได้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-04-kri-exposure",
+      "title": {
+        "en": "A KRI signals exposure that needs attention.",
+        "th": "KRI ชี้ความเสี่ยงที่ควรติดตาม"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use a risk-related measure to decide where to investigate or act.",
+            "th": "ใช้สิ่งที่วัดซึ่งเกี่ยวกับความเสี่ยง เพื่อเลือกว่าจะตรวจหรือดำเนินการที่ใด"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Critical unpatched vulnerabilities",
+                "th": "ช่องโหว่ Critical ที่ยังไม่ Patch"
+              },
+              {
+                "en": "Exposure remains open",
+                "th": "ยังมีความเสี่ยงเปิดอยู่"
+              },
+              {
+                "en": "Interpret with scope, trend and business impact.",
+                "th": "ตีความพร้อมขอบเขต แนวโน้ม และผลต่อธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Privileged accounts without MFA",
+                "th": "บัญชีสิทธิ์สูงที่ไม่มี MFA"
+              },
+              {
+                "en": "Privileged access may be less protected",
+                "th": "การเข้าถึงสิทธิ์สูงอาจป้องกันไม่พอ"
+              },
+              {
+                "en": "Interpret with scope, trend and business impact.",
+                "th": "ตีความพร้อมขอบเขต แนวโน้ม และผลต่อธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Failed security controls",
+                "th": "Control ที่ทำงานล้มเหลว"
+              },
+              {
+                "en": "Expected protection may be missing",
+                "th": "การป้องกันที่คาดหวังอาจขาด"
+              },
+              {
+                "en": "Interpret with scope, trend and business impact.",
+                "th": "ตีความพร้อมขอบเขต แนวโน้ม และผลต่อธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Increase in phishing reports",
+                "th": "รายงาน Phishing เพิ่ม"
+              },
+              {
+                "en": "Investigate threats and reporting behaviour",
+                "th": "ตรวจทั้งภัยและพฤติกรรมรายงาน"
+              },
+              {
+                "en": "Interpret with scope, trend and business impact.",
+                "th": "ตีความพร้อมขอบเขต แนวโน้ม และผลต่อธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Unsupported systems",
+                "th": "ระบบที่หมดการสนับสนุน"
+              },
+              {
+                "en": "Support and remediation options may be limited",
+                "th": "ทางสนับสนุนและแก้ไขอาจจำกัด"
+              },
+              {
+                "en": "Interpret with scope, trend and business impact.",
+                "th": "ตีความพร้อมขอบเขต แนวโน้ม และผลต่อธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "Critical systems without tested backups",
+                "th": "ระบบสำคัญที่ไม่มี Backup ที่ทดสอบแล้ว"
+              },
+              {
+                "en": "Recoverability is unproven",
+                "th": "ยังไม่พิสูจน์ว่ากู้คืนได้"
+              },
+              {
+                "en": "Interpret with scope, trend and business impact.",
+                "th": "ตีความพร้อมขอบเขต แนวโน้ม และผลต่อธุรกิจ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A Key Risk Indicator (KRI) provides an indication of changing risk so the organization can investigate before a significant loss. The source examples are unpatched critical vulnerabilities, privileged accounts without MFA, failed controls, increased phishing reports, unsupported systems and critical systems without tested backups. A KRI is not a prediction that an incident must occur. For example,more reports may reflect more attacks or improved reporting. The official Domain 2 AI guidance also supports AI-specific KRIs: a defined measure of deteriorating model performance (model drift) may flag an operational concern in a critical service. Select validated measures and escalation criteria in context; no universal numeric threshold is implied.",
+            "th": "Key Risk Indicator (KRI) ให้สัญญาณความเสี่ยงที่เปลี่ยน เพื่อให้องค์กรตรวจสอบก่อนเกิดความเสียหายสำคัญ ตัวอย่างต้นฉบับคือช่องโหว่ Critical ที่ยังไม่ Patch บัญชีสิทธิ์สูงไม่มี MFA, Control ล้มเหลว รายงาน Phishing เพิ่ม ระบบหมด Support และระบบสำคัญไม่มี Backup ที่ทดสอบแล้ว KRI ไม่ได้ทำนายว่าจะต้องเกิดเหตุ เช่น รายงานเพิ่มอาจมาจากโจมตีเพิ่มหรือคนรายงานดีขึ้น แนวทาง AI ของ Domain 2 ยังรองรับ KRI เฉพาะ AI เช่น ตัววัดประสิทธิภาพ Model ที่ลดลงหรือ Model drift อาจเตือนปัญหาการดำเนินงานในบริการสำคัญ ต้องเลือกตัววัดที่ตรวจสอบแล้วและเกณฑ์ส่งต่อให้ตรงบริบท ไม่ได้มีค่าตัวเลขสากล"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "A KRI helps prioritize review; it is not a full risk assessment.",
+              "th": "KRI ช่วยจัดลำดับตรวจ แต่ไม่ใช่ Risk assessment ทั้งหมด"
+            },
+            {
+              "en": "Criticality and compensating safeguards affect interpretation.",
+              "th": "ความสำคัญของระบบและมาตรการชดเชยมีผลต่อการตีความ"
+            },
+            {
+              "en": "AI-specific indicators need an owner, data quality and a response process.",
+              "th": "ตัวชี้วัด AI ต้องมีเจ้าของ คุณภาพข้อมูล และขั้นตอนตอบสนอง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "An indicator starts a question; context supports the answer.",
+            "th": "Indicator เริ่มคำถาม ส่วนบริบทช่วยตอบ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-05-kpi-performance-objective",
+      "title": {
+        "en": "A KPI asks how well we meet a stated objective.",
+        "th": "KPI ถามว่าเราทำได้ตามเป้าหมายเพียงใด"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Source example: percentage of critical vulnerabilities patched within 15 days.",
+            "th": "ตัวอย่างต้นฉบับ: เปอร์เซ็นต์ช่องโหว่ Critical ที่ Patch ภายใน 15 วัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Objective",
+                "th": "เป้าหมาย"
+              },
+              {
+                "en": "Patch critical vulnerabilities within 15 days",
+                "th": "Patch ช่องโหว่ Critical ภายใน 15 วัน"
+              },
+              {
+                "en": "The time limit is the course example, not a universal rule.",
+                "th": "ช่วงเวลานี้เป็นตัวอย่างต้นฉบับ ไม่ใช่กฎสำหรับทุกองค์กร"
+              }
+            ],
+            [
+              {
+                "en": "Illustrative result",
+                "th": "ผลตัวอย่าง"
+              },
+              {
+                "en": "18 of 20 eligible findings met the deadline: 90%",
+                "th": "18 จาก 20 รายการที่เข้าเกณฑ์ทันเวลา: 90%"
+              },
+              {
+                "en": "Use a defined cohort whose 15-day deadlines fall in the reporting period.",
+                "th": "ใช้กลุ่มที่กำหนด โดยเส้นตาย 15 วันอยู่ในงวดรายงาน"
+              }
+            ],
+            [
+              {
+                "en": "Illustrative target",
+                "th": "เป้าหมายตัวอย่าง"
+              },
+              {
+                "en": "95% target → 90% actual → investigate the gap",
+                "th": "เป้า 95% → ผล 90% → ตรวจช่องว่าง"
+              },
+              {
+                "en": "The 95% target is authored for this example; examine overdue critical findings as well.",
+                "th": "เป้า 95% แต่งเพื่ออธิบายตัวอย่าง ต้องดูรายการ Critical เกินกำหนดด้วย"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A Key Performance Indicator (KPI) measures progress toward a specific performance objective. The original example is the percentage of critical vulnerabilities patched within 15 days. For the authored calculation, take a defined cohort of 20 eligible findings with deadlines in the reporting period;18 met their deadlines, so performance is 90%. An illustrative 95% target is not met. Define the cohort so new findings not yet due are not confused with missed deadlines, and do not silently exclude still-open overdue findings. The percentage should lead to investigation and assigned action. It does not alone prove that residual exposure or business risk is acceptable.",
+            "th": "Key Performance Indicator (KPI) วัดความก้าวหน้าต่อเป้าหมายผลงานที่กำหนด ต้นฉบับยกเปอร์เซ็นต์ช่องโหว่ Critical ที่ Patch ภายใน 15 วัน ตัวอย่างคำนวณแต่งใช้กลุ่ม 20 รายการที่เส้นตายอยู่ในงวดรายงาน โดย 18 รายการทันเวลา จึงได้ 90% ซึ่งยังไม่ถึงเป้าตัวอย่าง 95% ต้องกำหนดกลุ่มให้รายการใหม่ที่ยังไม่ถึงเส้นตายไม่ปนกับรายการที่พลาด และไม่ตัดรายการเกินกำหนดที่ยังเปิดออกอย่างเงียบๆ เปอร์เซ็นต์ควรนำไปสู่การตรวจและมอบหมายการแก้ ไม่ได้พิสูจน์ด้วยตัวเองว่าความเสี่ยงที่เหลือยอมรับได้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "KPI focuses on performance against an objective.",
+              "th": "KPI เน้นผลงานเทียบเป้าหมาย"
+            },
+            {
+              "en": "A deadline cohort must include eligible overdue items.",
+              "th": "กลุ่มตามเส้นตายต้องรวมรายการเกินกำหนดที่เข้าเกณฑ์"
+            },
+            {
+              "en": "Pair progress with relevant risk evidence.",
+              "th": "ดูผลงานควบคู่หลักฐานความเสี่ยงที่เกี่ยวข้อง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A better percentage does not settle every risk question.",
+            "th": "เปอร์เซ็นต์ดีขึ้นไม่ได้ตอบความเสี่ยงทุกเรื่อง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-06-interpretation-and-indicator-role",
+      "title": {
+        "en": "More reports can have more than one explanation.",
+        "th": "รายงานเพิ่มอาจอธิบายได้มากกว่าหนึ่งแบบ"
+      },
+      "rendererId": "text",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Interpret a trend before turning it into a conclusion or a score.",
+            "th": "ตีความแนวโน้มก่อนเปลี่ยนเป็นข้อสรุปหรือคะแนน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Observed trend",
+                "th": "แนวโน้มที่วัดได้"
+              },
+              {
+                "en": "Phishing reports rise from 10 to 20",
+                "th": "รายงาน Phishing เพิ่มจาก 10 เป็น 20"
+              },
+              {
+                "en": "Authored equal-period counts; not automatically a change in incident frequency.",
+                "th": "จำนวนตัวอย่างจากงวดยาวเท่ากัน ไม่ได้แปลว่าความถี่ Incident เปลี่ยนทันที"
+              }
+            ],
+            [
+              {
+                "en": "Possible explanations",
+                "th": "คำอธิบายที่เป็นไปได้"
+              },
+              {
+                "en": "More attacks or better reporting",
+                "th": "โจมตีมากขึ้น หรือรายงานดีขึ้น"
+              },
+              {
+                "en": "Check confirmed threats, reporting coverage and changed definitions.",
+                "th": "ตรวจภัยที่ยืนยัน ความครอบคลุมรายงาน และคำนิยามที่เปลี่ยน"
+              }
+            ],
+            [
+              {
+                "en": "Role and timing",
+                "th": "บทบาทกับเวลา"
+              },
+              {
+                "en": "Risk / performance; leading / lagging",
+                "th": "ความเสี่ยง / ผลงาน; Leading / Lagging"
+              },
+              {
+                "en": "KPI/KRI describe intended use; leading/lagging describe temporal relationships. They are not interchangeable classifications.",
+                "th": "KPI/KRI ดูจุดประสงค์การใช้ ส่วน Leading/Lagging ดูความสัมพันธ์ด้านเวลา ไม่ใช่หมวดที่แทนกันตรงๆ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "An observed metric does not explain its own cause. More phishing reports may indicate more suspicious messages, better awareness, easier reporting or a changed reporting scope. Confirm the definitions and look for corroborating evidence before declaring risk higher or lower. Leading indicators concern conditions preceding an outcome; lagging indicators summarize outcomes already observed. This distinction is supplementary context, not a rule equating every KRI with a leading measure and every KPI with a lagging one. A metric’s risk or performance role depends on the question it supports. Use uncertainty and data quality as part of the interpretation rather than hide them in a single green status.",
+            "th": "Metric ที่วัดได้ไม่ได้อธิบายสาเหตุด้วยตัวเอง รายงาน Phishing เพิ่มอาจมาจากข้อความน่าสงสัยมากขึ้น Awareness ดีขึ้น รายงานง่ายขึ้น หรือขอบเขตเปลี่ยน ต้องยืนยันคำนิยามและหาหลักฐานประกอบก่อนสรุปความเสี่ยงสูงหรือต่ำ Leading indicator สนใจเงื่อนไขก่อนผลเกิด ส่วน Lagging indicator สรุปผลที่เกิดแล้ว ความต่างนี้เป็นบริบทเสริม ไม่ใช่กฎจับ KRI ทุกตัวเป็น Leading หรือ KPI ทุกตัวเป็น Lagging บทบาทด้านความเสี่ยงหรือผลงานขึ้นกับคำถามที่ใช้ ต้องแสดงความไม่แน่นอนและคุณภาพข้อมูลในการตีความ แทนซ่อนไว้ในสถานะสีเขียวค่าเดียว"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "A trend is evidence to investigate, not proof of one cause.",
+              "th": "แนวโน้มเป็นหลักฐานให้ตรวจ ไม่ใช่ข้อพิสูจน์สาเหตุเดียว"
+            },
+            {
+              "en": "Changed definitions can invalidate a period-to-period comparison.",
+              "th": "คำนิยามที่เปลี่ยนอาจทำให้เทียบข้ามงวดไม่ได้"
+            },
+            {
+              "en": "Choose measures for the intended decision and audience.",
+              "th": "เลือกสิ่งที่วัดให้ตรงการตัดสินใจและผู้รับ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Interpret the evidence before choosing the response.",
+            "th": "ตีความหลักฐานก่อนเลือกวิธีตอบสนอง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-07-metrics-decision",
+      "title": {
+        "en": "The patch KPI improved, but privileged accounts lack MFA.",
+        "th": "Patch KPI ดีขึ้น แต่บัญชีสิทธิ์สูงยังไม่มี MFA"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "How should the team interpret these two pieces of evidence?",
+            "th": "ทีมควรตีความหลักฐานสองส่วนนี้อย่างไร?"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Concepts and practical reasoning",
+            "th": "แนวคิดและเหตุผลในการปฏิบัติ"
+          },
+          "columns": [
+            {
+              "en": "Concept / action",
+              "th": "แนวคิด / แนวทาง"
+            },
+            {
+              "en": "Meaning / application",
+              "th": "ความหมาย / การใช้"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "A"
+              },
+              {
+                "en": "Declare low risk because the patch KPI improved.",
+                "th": "ประกาศว่าความเสี่ยงต่ำเพราะ Patch KPI ดีขึ้น"
+              },
+              {
+                "en": "Improved performance on one objective does not establish that privileged access or other exposures are acceptable.",
+                "th": "ผลงานดีขึ้นในเป้าหมายเดียวไม่พิสูจน์ว่า Privileged access หรือความเสี่ยงอื่นยอมรับได้"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "B"
+              },
+              {
+                "en": "Rename every measure a KPI and hide exposure counts.",
+                "th": "เปลี่ยนชื่อทุกตัวเป็น KPI แล้วซ่อนจำนวนความเสี่ยง"
+              },
+              {
+                "en": "Changing labels removes useful context rather than fixing the exposed accounts or overdue vulnerabilities.",
+                "th": "เปลี่ยนชื่อทำให้บริบทสำคัญหาย ไม่ได้แก้บัญชีที่เสี่ยงหรือช่องโหว่เกินกำหนด"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "C"
+              },
+              {
+                "en": "Validate the definitions, review critical exposure and assign action owners.",
+                "th": "ตรวจนิยาม ทบทวนความเสี่ยงสำคัญ และมอบหมายคนดำเนินการ"
+              },
+              {
+                "en": "Use both the KPI and the KRI, with consistent scope and business impact. Investigate unprotected privileged accounts and overdue critical findings with responsible owners.",
+                "th": "ใช้ KPI และ KRI ร่วมกันด้วยขอบเขตที่สอดคล้องและผลต่อธุรกิจ ตรวจบัญชีสิทธิ์สูงที่ป้องกันไม่พอกับรายการ Critical เกินกำหนดร่วมกับเจ้าของ"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "D"
+              },
+              {
+                "en": "Assume more phishing reports always mean more successful attacks.",
+                "th": "ถือว่ารายงาน Phishing เพิ่มแปลว่าโจมตีสำเร็จเพิ่มเสมอ"
+              },
+              {
+                "en": "Reports are not confirmed successful incidents. Check threat activity, reporting behaviour and coverage.",
+                "th": "รายงานไม่ใช่ Incident โจมตีสำเร็จที่ยืนยันแล้ว ต้องตรวจภัย พฤติกรรมรายงาน และความครอบคลุม"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This authored decision combines performance and exposure evidence. A patch KPI can improve while a KRI still flags privileged accounts without MFA. Validate the source, population, reporting period and objective before interpretation, then investigate critical exposures with their owners. The KPI answers a performance question; the KRI helps ask a risk question. They should support a responsible action rather than compete for a single favourable status. More phishing reports also need context and are not automatically successful attacks. No fixed percentage establishes acceptable risk for all organizations or replaces the organization’s risk assessment and decision authority.",
+            "th": "สถานการณ์แต่งนี้รวมหลักฐานผลงานกับความเสี่ยง Patch KPI อาจดีขึ้นขณะที่ KRI ยังชี้บัญชีสิทธิ์สูงไม่มี MFA ต้องตรวจแหล่งข้อมูล ประชากร งวดรายงาน และเป้าหมายก่อนตีความ แล้วตรวจความเสี่ยงสำคัญร่วมกับเจ้าของ KPI ตอบเรื่องผลงาน ส่วน KRI ช่วยตั้งคำถามด้านความเสี่ยง ทั้งสองควรสนับสนุนการดำเนินการที่รับผิดชอบ ไม่แข่งกันแสดงสถานะที่ดูดีค่าเดียว รายงาน Phishing เพิ่มก็ต้องมีบริบท ไม่เท่ากับโจมตีสำเร็จเสมอ ไม่มีเปอร์เซ็นต์ตายตัวที่บอกความเสี่ยงยอมรับได้ทุกองค์กรหรือแทน Risk assessment กับผู้มีอำนาจตัดสินใจ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Check data quality before acting on a trend.",
+              "th": "ตรวจคุณภาพข้อมูลก่อนลงมือจากแนวโน้ม"
+            },
+            {
+              "en": "Performance and exposure measures answer different questions.",
+              "th": "ผลงานกับความเสี่ยงตอบคำถามต่างกัน"
+            },
+            {
+              "en": "Assign a responsible owner to investigate and follow up.",
+              "th": "มอบหมายเจ้าของให้ตรวจและติดตาม"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the evidence together to support a decision.",
+            "th": "ใช้หลักฐานร่วมกันเพื่อสนับสนุนการตัดสินใจ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master",
+        "d2-summary",
+        "d2-transcript",
+        "nist-sp-800-55v1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-2-completion-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — source/bilingual self-review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — source/bilingual self-review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — source/bilingual self-review; human acceptance pending",
+      "reviewedAt": "2026-10-30"
+    }
+  }
+}

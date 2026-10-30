@@ -218,11 +218,11 @@ test('4. Six purposeful custom visual compositions render via renderSlide in TH/
 
   const lesson = readJson(PUBLISHED_PATH);
   const expectedCompositions = [
-    'redundancy-continuity-bridge',
-    'disruption-trigger-matrix',
-    'bcp-architecture-blueprint',
-    'operational-redundancy-lanes',
-    'bia-priority-pipeline',
+    'service-alternate-path',
+    'disruption-service-response',
+    'continuity-operating-plan',
+    'independent-alternate-dependencies',
+    'business-impact-dependencies',
     'continuity-response-scenario'
   ];
 
@@ -258,23 +258,16 @@ test('4. Six purposeful custom visual compositions render via renderSlide in TH/
     assert.deepEqual(seen, expectedCompositions, 'All 6 slides must render distinct visual compositions');
   }
 
-  // Verify Slide 2 renders all 8 S12 disruption triggers (+ human error callout), Slide 3 renders all 8 S14 BCP elements, and Slide 4 renders all 4 redundancy lanes
-  {
-    const doc = new TestDocument();
-    const host = doc.createElement('article');
-    doc.body.append(host);
-
-    const h2 = renderSlide(host, { lesson, slide: lesson.slides[1], language: 'en', mode: 'presentation', interactionState: {} });
-    assert.equal(host.querySelectorAll('[data-bcb-trigger]').length, 8, 'Slide 2 visual must render all 8 S12 disruption triggers');
-    h2.destroy();
-
-    const h3 = renderSlide(host, { lesson, slide: lesson.slides[2], language: 'en', mode: 'presentation', interactionState: {} });
-    assert.equal(host.querySelectorAll('[data-bcb-element]').length, 8, 'Slide 3 visual must render all 8 S14 BCP elements');
-    h3.destroy();
-
-    const h4 = renderSlide(host, { lesson, slide: lesson.slides[3], language: 'en', mode: 'presentation', interactionState: {} });
-    assert.equal(host.querySelectorAll('[data-bcb-redundancy-lane]').length, 4, 'Slide 4 visual must render all 4 operational redundancy lanes');
-    h4.destroy();
+  // Full source lists stay in semantic Reading/Info; canvas teaches selected operational relationships.
+  for (const language of ['th','en']) {
+    const doc=new TestDocument(),host=doc.createElement('article');
+    for (const index of [1,2]) {
+      const slide=lesson.slides[index];const h=renderSlide(host,{lesson,slide,language,mode:'reading'});
+      for (const row of slide.blocks[1].rows) for(const cell of row) assert.ok(nodeText(host).includes(cell[language]));
+      h.destroy();
+    }
+    const h=renderSlide(host,{lesson,slide:lesson.slides[3],language,mode:'presentation'});
+    assert.ok(host.querySelector('.d2b-common-cause'));assert.ok(host.querySelector('.d2b-shared-route'));h.destroy();
   }
 
   // Verify fail-safe guard when slide block structure is altered
@@ -312,7 +305,7 @@ test('5. Interactive Continuity Decision Scenario (Slide 6) supports 4 choices, 
   assert.equal(interactionState.choice, 0);
   assert.equal(choiceBtn(0).getAttribute('aria-pressed'), 'true');
   assert.equal(host.querySelector('[data-bcb-scenario-feedback]')?.getAttribute('data-bcb-outcome'), 'distractor');
-  assert.match(nodeText(host.querySelector('[data-bcb-scenario-feedback]')), /Business Continuity|BCP|DRP/i);
+  assert.ok(nodeText(host.querySelector('[data-bcb-scenario-feedback]')).includes(scenarioSlide.blocks[1].rows[0][2].en));
 
   // Recommended Option 1 (activating BCP: alternate work locations, backup personnel, communication procedures, and BIA recovery priorities while DR restores IT)
   fire(choiceBtn(1), 'click');

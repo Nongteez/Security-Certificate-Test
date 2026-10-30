@@ -1,0 +1,1046 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d2-03-business-continuity-bcp",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 2,
+  "primaryObjectiveId": "2.2",
+  "objectiveIds": [
+    "2.2"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Business Continuity, Redundancy & BCP",
+    "th": "ความต่อเนื่องทางธุรกิจ ความซ้ำซ้อนของทรัพยากร (Redundancy) และแผน BCP"
+  },
+  "synopsis": {
+    "en": "Understand how operational redundancy reduces single points of failure, define Business Continuity (BC), recognize all eight source disruption triggers plus human error, distinguish BC from a Business Continuity Plan (BCP) across all eight BCP elements, operationalize alternate work locations, backup personnel, and alternate suppliers, and connect Business Impact Analysis (BIA) to recovery priorities.",
+    "th": "เข้าใจบทบาทของ Redundancy ในการลดจุดล้มเหลวเดี่ยว (Single Point of Failure) นิยาม Business Continuity (BC) วิเคราะห์เหตุหยุดชะงักทั้ง 8 ประเภทพร้อมความผิดพลาดจากคน แยกความต่างระหว่าง BC กับแผน BCP ครบทั้ง 8 องค์ประกอบ นำกลยุทธ์สถานที่สำรอง บุคลากรสำรอง และซัพพลายเออร์สำรองไปใช้จริง และเชื่อมโยงการวิเคราะห์ผลกระทบทางธุรกิจ (BIA) เข้ากับการจัดลำดับความสำคัญในการกู้คืน"
+  },
+  "outcomes": [
+    {
+      "en": "Define Business Continuity (BC) as the organizational ability to continue critical business operations during and after a disruption, explain how Redundancy reduces specified Single Points of Failure (SPOFs), subject to shared dependencies and tested capacity, and distinguish Redundancy from Backup.",
+      "th": "นิยาม Business Continuity (BC) ในฐานะความสามารถขององค์กรในการดำเนินกิจกรรมธุรกิจที่สำคัญต่อไปได้ระหว่างและหลังเกิดเหตุหยุดชะงัก อธิบายการลด Single Point of Failure (SPOF) ด้วย Redundancy และแยกความต่างระหว่าง Redundancy กับ Backup"
+    },
+    {
+      "en": "Identify all eight source-defined disruption triggers—natural disasters, cyberattacks, power outages, equipment failures, network outages, pandemics, loss of facilities, and supply-chain disruptions—plus human error, and connect them to continuity goals.",
+      "th": "ระบุเหตุการณ์หยุดชะงักทั้ง 8 ประเภทตามต้นฉบับ ได้แก่ ภัยธรรมชาติ การโจมตีไซเบอร์ ไฟฟ้าดับ อุปกรณ์เสีย เครือข่ายขัดข้อง โรคระบาด การสูญเสียอาคารสถานที่ และห่วงโซ่อุปทานหยุดชะงัก รวมถึงความผิดพลาดจากคน (Human Error) พร้อมเชื่อมโยงสู่เป้าหมายความต่อเนื่อง"
+    },
+    {
+      "en": "Distinguish Business Continuity (capability/goal) from a Business Continuity Plan (BCP, documented plan) and master all eight core BCP elements, including alternate work locations, backup personnel, and alternate suppliers.",
+      "th": "แยกความแตกต่างระหว่าง Business Continuity (ความสามารถและเป้าหมาย) กับ Business Continuity Plan (BCP เอกสารแผน) และเข้าใจองค์ประกอบหลักทั้ง 8 ข้อของ BCP รวมถึงสถานที่ทำงานสำรอง บุคลากรสำรอง และซัพพลายเออร์สำรอง"
+    },
+    {
+      "en": "Explain how Business Impact Analysis (BIA) identifies critical business functions and recovery priorities, and distinguish the whole-business scope of BCP from the IT restoration scope of a Disaster Recovery Plan (DRP).",
+      "th": "อธิบายบทบาทของ Business Impact Analysis (BIA) ในการระบุกระบวนการธุรกิจที่สำคัญและจัดลำดับความสำคัญในการฟื้นฟู พร้อมแยกขอบเขตระดับองค์กรของ BCP ออกจากแผนกู้คืนระบบ IT (DRP)"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Domain 2 Objective 2.1 lessons (GRC Foundations and GRC Tools & Risk Register) and Domain 1 availability concepts.",
+      "th": "แนะนำให้เรียนต่อจาก Domain 2 Objective 2.1 (พื้นฐาน GRC และเครื่องมือ GRC / Risk Register) และทบทวนแนวคิดเรื่อง Availability จาก Domain 1"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-01-redundancy-and-bc-foundations",
+      "title": {
+        "en": "Keep the critical service running.",
+        "th": "รักษาบริการสำคัญให้เดินต่อ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "redundancy-continuity-bridge",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Business Continuity keeps essential work going. Prepared alternate capacity helps when a primary resource fails.",
+            "th": "Business Continuity ประคองงานจำเป็นให้เดินต่อ โดยเตรียมทรัพยากรหรือช่องทางสำรองเมื่อจุดหลักใช้ไม่ได้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Core definitions and exam distinctions: Business Continuity (BC), Redundancy (eliminating SPOFs), and Backup",
+            "th": "นิยามหลักและจุดเน้นสำหรับการสอบ: Business Continuity (BC), Redundancy (การลดจุดล้มเหลวเดี่ยว) และ Backup"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิดหลัก"
+            },
+            {
+              "en": "Operational Meaning",
+              "th": "ความหมายเชิงปฏิบัติการ"
+            },
+            {
+              "en": "Scope & Exam Distinction",
+              "th": "ขอบเขตและจุดแยกแยะสำคัญ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Business Continuity (BC)",
+                "th": "Business Continuity (BC)"
+              },
+              {
+                "en": "The organization's ability to continue critical business operations during and after a disruption so essential services do not halt.",
+                "th": "ความสามารถขององค์กรในการดำเนินงานหลักที่สำคัญต่อไปได้ทั้งระหว่างและหลังเกิดเหตุหยุดชะงัก เพื่อไม่ให้การบริการหลักต้องหยุดลง"
+              },
+              {
+                "en": "Whole-business capability covering people, processes, facilities, suppliers, and technology—remember: BC = Keep the business running.",
+                "th": "ครอบคลุมทั้งองค์กร ได้แก่ คน กระบวนการ สถานที่ ซัพพลายเออร์ และเทคโนโลยี จุดจำสอบ: BC = ทำให้ธุรกิจเดินหน้าต่อได้"
+              }
+            ],
+            [
+              {
+                "en": "Redundancy (Objective 2.2)",
+                "th": "Redundancy (ความซ้ำซ้อนของทรัพยากร)"
+              },
+              {
+                "en": "Provide alternate capacity, components, pathways, locations, staff or suppliers for a specified failure.",
+                "th": "เตรียมทรัพยากร อุปกรณ์ ช่องทาง สถานที่ คน หรือผู้ให้บริการสำรองสำหรับเหตุขัดข้องที่ระบุ"
+              },
+              {
+                "en": "Reduces a single point of failure when independence, capacity and failover have been verified; does not replace data recovery.",
+                "th": "ช่วยลด Single Point of Failure เมื่อได้ตรวจความเป็นอิสระ กำลังรองรับ และการเปลี่ยนไปใช้ทางสำรองแล้ว แต่ไม่แทนการกู้ข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "Backup (Data Copy)",
+                "th": "Backup (การสำรองข้อมูล)"
+              },
+              {
+                "en": "Preserving recoverable copies of data and system configurations so corrupted, deleted, or encrypted information can be restored.",
+                "th": "การจัดเก็บสำเนาข้อมูลและการตั้งค่าระบบที่สามารถนำมากู้คืนได้เมื่อข้อมูลหลักสูญหาย เสียหาย หรือถูกเข้ารหัส"
+              },
+              {
+                "en": "Protects data recoverability after loss, but a backup copy alone does not provide immediate operational continuity or alternate workspaces.",
+                "th": "คุ้มครองความสามารถในการกู้คืนข้อมูลหลังเกิดความเสียหาย แต่การมีไฟล์ Backup อย่างเดียวไม่ได้ช่วยให้พนักงานมีสถานที่หรือกระบวนการทำงานสำรองทันที"
+              }
+            ],
+            [
+              {
+                "en": "Why Neither Alone Is Enough",
+                "th": "เหตุผลที่ต้องผสานร่วมกัน"
+              },
+              {
+                "en": "Redundant servers cannot undo corrupted data replicated across nodes, and offline backups cannot staff a customer desk when headquarters closes.",
+                "th": "เซิร์ฟเวอร์สำรองไม่ช่วยแก้ปัญหาหากข้อมูลที่ซิงก์ไปเสียหายเหมือนกัน และไฟล์ Backup ไม่ช่วยให้พนักงานรับเรื่องลูกค้าได้เมื่ออาคารหลักถูกปิด"
+              },
+              {
+                "en": "Resilience combines alternate operational capacity, recoverable backups and coordinated continuity procedures.",
+                "th": "ความพร้อมรับเหตุอาศัยกำลังปฏิบัติงานสำรอง Backup ที่กู้คืนได้ และขั้นตอนต่อเนื่องที่ประสานกัน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Business Continuity (BC) is the organizational capability to sustain critical business operations during and after a disruption. It can include a safe reduced service level or an approved temporary process, rather than an assurance that nothing ever stops. Redundancy provides alternate components, links, locations, people or suppliers for a specified failure. It reduces dependence on a single point only when the alternate is usable, sufficiently independent and capable of the required workload. Shared power, a shared provider or the same regional flood can disable both resources. Backups preserve recoverable data and configurations; redundant copies can replicate corruption, while a stored backup alone cannot staff an operating service. A documented BCP coordinates people, procedures, communications and recovery. Exercise the arrangements and assess the remaining dependencies.",
+            "th": "Business Continuity (BC) คือความสามารถขององค์กรในการรักษางานธุรกิจสำคัญระหว่างและหลังเกิดเหตุหยุดชะงัก อาจให้บริการในระดับลดลงหรือใช้ขั้นตอนชั่วคราวที่อนุมัติไว้ ไม่ได้หมายความว่าจะไม่มีงานใดหยุดเลย Redundancy เตรียมอุปกรณ์ ช่องทาง สถานที่ คน หรือผู้ให้บริการสำรองสำหรับเหตุขัดข้องที่ระบุ ช่วยลดการพึ่งพาจุดเดียวได้เมื่อทางสำรองพร้อมใช้ มีความเป็นอิสระเพียงพอ และรองรับงานที่จำเป็นได้ หากยังใช้ไฟฟ้า ผู้ให้บริการ หรือพื้นที่น้ำท่วมเดียวกัน ทั้งสองชุดอาจใช้ไม่ได้พร้อมกัน ส่วน Backup เก็บข้อมูลและ Configuration สำหรับกู้คืน ระบบสำรองที่ทำสำเนาต่อเนื่องอาจคัดลอกข้อมูลเสียตามกัน และไฟล์ Backup ไม่สามารถจัดคนมาบริการลูกค้าเองได้ จึงต้องมี BCP ประสานคน ขั้นตอน การสื่อสาร และการฟื้นฟู พร้อมฝึกทดสอบและตรวจสิ่งที่ยังพึ่งพาร่วมกัน Single Point of Failure (SPOF) ต้องพิจารณาตามขอบเขตและสิ่งที่พึ่งพาร่วมกัน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "BC coordinates people, procedures, facilities, suppliers and technology around the critical service.",
+              "th": "BC ประสานคน ขั้นตอน สถานที่ คู่ค้า และเทคโนโลยีเพื่อรักษาบริการสำคัญ"
+            },
+            {
+              "en": "An alternate reduces a specified dependency; test independence, access and required capacity.",
+              "th": "ทางสำรองลดการพึ่งพาที่ระบุ ต้องทดสอบความเป็นอิสระ สิทธิ์ใช้งาน และกำลังรองรับงาน"
+            },
+            {
+              "en": "A backup preserves recoverable data; it does not by itself deliver a working business service.",
+              "th": "Backup เก็บข้อมูลที่นำมากู้คืนได้ แต่ไม่ได้ให้บริการธุรกิจที่ทำงานได้ด้วยตัวเอง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Prepare an alternate, test the dependencies and keep recoverable data.",
+            "th": "เตรียมทางสำรอง ทดสอบสิ่งที่พึ่งพา และเก็บข้อมูลที่กู้คืนได้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-34-r1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-02-eight-disruption-triggers",
+      "title": {
+        "en": "Different disruptions can stop the same service.",
+        "th": "หลายเหตุหยุดชะงักกระทบบริการเดียวกันได้"
+      },
+      "rendererId": "diagram",
+      "layoutId": "disruption-trigger-matrix",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Start with the interrupted business activity, then choose a workable continuity response.",
+            "th": "ดูว่างานธุรกิจใดหยุด แล้วเลือกวิธีดำเนินงานต่อที่ใช้ได้ในสถานการณ์นั้น"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "All eight source-defined disruption triggers (S12) plus spoken human error and their continuity impact",
+            "th": "เหตุการณ์หยุดชะงักทั้ง 8 ประเภทจากสไลด์ต้นฉบับ (S12) ร่วมกับ Human Error และผลกระทบต่อความต่อเนื่องของธุรกิจ"
+          },
+          "columns": [
+            {
+              "en": "Disruption Trigger",
+              "th": "สาเหตุของการหยุดชะงัก"
+            },
+            {
+              "en": "Category & Operational Example",
+              "th": "หมวดหมู่และตัวอย่างสถานการณ์จริง"
+            },
+            {
+              "en": "Continuity Objective",
+              "th": "เป้าหมายด้านความต่อเนื่อง (BC Goal)"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Natural disasters",
+                "th": "Natural disasters (ภัยธรรมชาติ)"
+              },
+              {
+                "en": "Environmental/Regional hazard — earthquakes, floods, severe storms, or tornadoes impacting regional infrastructure and staff travel.",
+                "th": "ภัยพิบัติทางธรรมชาติและสภาพแวดล้อม เช่น แผ่นดินไหว น้ำท่วม หรือพายุรุนแรงที่กระทบโครงสร้างพื้นฐานและการเดินทางของพนักงาน"
+              },
+              {
+                "en": "Shift critical operations to unaffected alternate work locations and account for staff safety.",
+                "th": "ย้ายการปฏิบัติงานสำคัญไปยังสถานที่ทำงานสำรองที่ปลอดภัยและตรวจสอบความปลอดภัยของบุคลากร"
+              }
+            ],
+            [
+              {
+                "en": "Cyberattacks",
+                "th": "Cyberattacks (การโจมตีไซเบอร์)"
+              },
+              {
+                "en": "Malicious digital disruption — ransomware, DDoS, or destructive malware locking business applications and workstations.",
+                "th": "การโจมตีทางไซเบอร์ เช่น Ransomware, DDoS หรือมัลแวร์ทำลายระบบที่ทำให้แอปพลิเคชันธุรกิจหยุดทำงาน"
+              },
+              {
+                "en": "Activate manual/fallback business workarounds and out-of-band communication while IT isolates and restores systems.",
+                "th": "เปิดใช้ขั้นตอนการทำงานสำรอง (Manual Workarounds) และช่องทางสื่อสารสำรองระหว่างที่ทีม IT กักกันและกู้คืนระบบ"
+              }
+            ],
+            [
+              {
+                "en": "Power outages",
+                "th": "Power outages (ไฟฟ้าดับ)"
+              },
+              {
+                "en": "Utility failure — grid blackouts or substation faults cutting electricity to offices, cooling systems, and local equipment.",
+                "th": "ระบบสาธารณูปโภคไฟฟ้าขัดข้อง ทั้งจากโครงข่ายไฟฟ้าหลักดับหรือหม้อแปลงเสีย ส่งผลให้อาคารและอุปกรณ์หยุดทำงาน"
+              },
+              {
+                "en": "Maintain operations via UPS, backup generators, or relocation to powered alternate sites.",
+                "th": "ประคองการทำงานด้วยเครื่องสำรองไฟ (UPS) เครื่องปั่นไฟสำรอง หรือย้ายงานไปยังสถานที่สำรองที่มีกระแสไฟฟ้า"
+              }
+            ],
+            [
+              {
+                "en": "Equipment failures",
+                "th": "Equipment failures (อุปกรณ์เสีย)"
+              },
+              {
+                "en": "Hardware/mechanical breakdown — failed core switches, storage arrays, HVAC units, or specialized production machinery.",
+                "th": "ความล้มเหลวของฮาร์ดแวร์หรือเครื่องจักร เช่น Core Switch พัง ระบบจัดเก็บข้อมูลเสีย หรือเครื่องจักรสายการผลิตชำรุด"
+              },
+              {
+                "en": "Use tested standby components within their capacity, or approved temporary service arrangements.",
+                "th": "ใช้ส่วนประกอบสำรองที่ทดสอบแล้วภายในกำลังรองรับ หรือแนวทางให้บริการชั่วคราวที่อนุมัติไว้"
+              }
+            ],
+            [
+              {
+                "en": "Network outages",
+                "th": "Network outages (เครือข่ายขัดข้อง)"
+              },
+              {
+                "en": "Connectivity loss — fiber cuts, ISP routing failures, or WAN outages disconnecting branches, cloud apps, and customers.",
+                "th": "การเชื่อมต่อเครือข่ายล่ม เช่น สายไฟเบอร์ขาด ผู้ให้บริการอินเทอร์เน็ต (ISP) ขัดข้อง หรือระบบ WAN ล่ม"
+              },
+              {
+                "en": "Route traffic over secondary ISP/cellular links or execute offline transaction procedures until connectivity returns.",
+                "th": "สลับทราฟฟิกไปยังผู้ให้บริการเครือข่ายสำรอง (Secondary ISP) หรือใช้ขั้นตอนบันทึกงานออฟไลน์ชั่วคราว"
+              }
+            ],
+            [
+              {
+                "en": "Pandemics",
+                "th": "Pandemics (การระบาดใหญ่)"
+              },
+              {
+                "en": "Workforce-wide health crisis — infectious disease outbreaks restricting on-site attendance and reducing available personnel.",
+                "th": "วิกฤตโรคระบาดวงกว้างที่ทำให้พนักงานไม่สามารถเดินทางเข้าสำนักงานได้ตามปกติและทำให้กำลังคนหลักลดลง"
+              },
+              {
+                "en": "Transition workforce to remote work arrangements and rely on cross-trained backup personnel for key roles.",
+                "th": "ปรับรูปแบบสู่การทำงานจากที่บ้าน (Work from Home) และใช้บุคลากรสำรองที่ฝึกข้ามสายงานไว้แล้วมารับช่วงต่อ"
+              }
+            ],
+            [
+              {
+                "en": "Loss of facilities",
+                "th": "Loss of facilities (อาคาร/สถานที่ใช้งานไม่ได้)"
+              },
+              {
+                "en": "Physical site denial — fire, structural damage, hazardous spill, or municipal lockdown preventing access to the primary building.",
+                "th": "การสูญเสียความสามารถในการเข้าใช้อาคารหลัก เช่น เพลิงไหม้ โครงสร้างอาคารเสียหาย หรือการสั่งปิดพื้นที่ฉุกเฉิน"
+              },
+              {
+                "en": "Relocate essential teams to pre-designated alternate work locations so customer-facing operations continue.",
+                "th": "ย้ายทีมงานหลักไปยังสถานที่ทำงานสำรองที่กำหนดไว้ล่วงหน้าเพื่อให้การบริการลูกค้าดำเนินต่อไปได้"
+              }
+            ],
+            [
+              {
+                "en": "Supply-chain disruptions",
+                "th": "Supply-chain disruptions (ห่วงโซ่อุปทานหยุดชะงัก)"
+              },
+              {
+                "en": "A vendor, logistics or upstream supply failure interrupts a critical business workflow.",
+                "th": "ผู้ขาย ระบบขนส่ง หรือผู้จัดหาต้นทางขัดข้องจนกระบวนการธุรกิจสำคัญหยุด"
+              },
+              {
+                "en": "Engage pre-qualified alternate suppliers and enforce resilient operational controls to minimize impact.",
+                "th": "เปลี่ยนไปใช้ซัพพลายเออร์สำรองที่ผ่านการคัดเลือกไว้แล้ว พร้อมใช้มาตรการควบคุมเพื่อลดผลกระทบต่อสายงานหลัก"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Course slide S12 identifies eight disruption examples: natural disasters, cyberattacks, power outages, equipment failures, network outages, pandemics, loss of facilities and supply-chain disruptions. The spoken lecture additionally mentions human error, such as a configuration mistake. These are examples to prepare for, not an exhaustive official threat taxonomy or mutually exclusive groups. One flood can close a building, interrupt power and prevent staff travel at the same time. A ransomware incident may require approved manual operations while security and recovery teams work on the systems. Choose a response that addresses the affected service and constraints; an alternate site is useful only if it is safe, reachable, connected and staffed. A plan must be exercised rather than assumed to work.",
+            "th": "สไลด์ S12 ยกเหตุหยุดชะงักแปดประเภท ได้แก่ ภัยธรรมชาติ Cyberattacks ไฟฟ้าดับ อุปกรณ์เสีย เครือข่ายขัดข้อง Pandemics สถานที่ใช้งานไม่ได้ และ Supply-chain disruptions ในคำบรรยายยังกล่าวถึง Human error เช่น การตั้งค่าระบบผิด รายการนี้เป็นตัวอย่างสำหรับเตรียมพร้อม ไม่ใช่หมวดภัยคุกคามทางการที่ครบทุกเหตุหรือแยกจากกันเด็ดขาด น้ำท่วมครั้งเดียวอาจทำให้อาคาร ไฟฟ้า และการเดินทางของพนักงานมีปัญหาพร้อมกัน ส่วน Ransomware อาจต้องใช้ขั้นตอน Manual ที่อนุมัติไว้ระหว่างทีม Security และทีมกู้คืนจัดการระบบ เลือกวิธีรับมือจากบริการที่ได้รับผลกระทบและข้อจำกัดจริง สถานที่สำรองต้องปลอดภัย เดินทางถึง เชื่อมต่อได้ และมีคนทำงาน ต้องฝึกใช้แผนเพื่อหาข้อจำกัด ไม่ใช่ถือว่ามีเอกสารแล้วจะทำได้แน่นอน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "The eight source examples can overlap; prepare for combined effects rather than invented exclusive categories.",
+              "th": "เหตุแปดประเภทตามต้นฉบับเกิดซ้อนกันได้ เตรียมพร้อมต่อผลกระทบร่วม ไม่ต้องสร้างหมวดแยกเด็ดขาด"
+            },
+            {
+              "en": "Human error is an additional spoken example, such as an incorrect configuration or accidental deletion.",
+              "th": "Human error เป็นตัวอย่างเพิ่มจากคำบรรยาย เช่น ตั้งค่าผิดหรือลบข้อมูลโดยไม่ตั้งใจ"
+            },
+            {
+              "en": "Match an approved fallback to the affected service, workforce safety and available resources.",
+              "th": "เลือกขั้นตอนสำรองที่อนุมัติไว้ให้ตรงกับบริการ ความปลอดภัยของคน และทรัพยากรที่ใช้ได้"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Plan for the business impact, including disruptions that happen together.",
+            "th": "วางแผนจากผลกระทบต่อธุรกิจ รวมถึงหลายเหตุที่เกิดพร้อมกัน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-03-bcp-and-eight-elements",
+      "title": {
+        "en": "A BCP turns intentions into usable instructions.",
+        "th": "BCP เปลี่ยนความตั้งใจเป็นขั้นตอนที่ใช้ได้จริง"
+      },
+      "rendererId": "diagram",
+      "layoutId": "bcp-architecture-blueprint",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The plan names the critical work, responsible people and arrangements to use during disruption.",
+            "th": "แผนระบุงานสำคัญ ผู้รับผิดชอบ และแนวทางที่ต้องใช้เมื่อเกิดเหตุหยุดชะงัก"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "All eight exact Business Continuity Plan (BCP) elements from course slide S14 and the BC vs. BCP distinction",
+            "th": "องค์ประกอบหลักทั้ง 8 ข้อของ Business Continuity Plan (BCP) ตามสไลด์ต้นฉบับ S14 และการแยกความต่างระหว่าง BC กับ BCP"
+          },
+          "columns": [
+            {
+              "en": "BCP Element (S14)",
+              "th": "องค์ประกอบในแผน BCP (S14)"
+            },
+            {
+              "en": "Operational Role in the Plan",
+              "th": "บทบาทเชิงปฏิบัติการในแผน"
+            },
+            {
+              "en": "Continuity Question Answered",
+              "th": "คำถามสำคัญที่องค์ประกอบนี้ตอบ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Critical business processes",
+                "th": "Critical business processes (กระบวนการธุรกิจที่สำคัญ)"
+              },
+              {
+                "en": "Identifies the essential business activities and services that must be sustained during an outage.",
+                "th": "ระบุกระบวนการและกิจกรรมทางธุรกิจที่สำคัญยิ่งยวดซึ่งต้องรักษาให้ดำเนินต่อไปได้เมื่อเกิดเหตุหยุดชะงัก"
+              },
+              {
+                "en": "Which core business operations must keep running first?",
+                "th": "งานหลักใดขององค์กรที่หยุดไม่ได้และต้องรักษาไว้เป็นอันดับแรก?"
+              }
+            ],
+            [
+              {
+                "en": "Roles and responsibilities",
+                "th": "Roles and responsibilities (บทบาทและความรับผิดชอบ)"
+              },
+              {
+                "en": "Assigns clear authority and tasks so every team member knows who activates the plan and executes continuity steps.",
+                "th": "กำหนดอำนาจหน้าที่และผู้รับผิดชอบอย่างชัดเจนว่าใครต้องสั่งการและใครต้องปฏิบัติขั้นตอนใดเมื่อเกิดเหตุ"
+              },
+              {
+                "en": "Who is accountable for each continuity action during the crisis?",
+                "th": "ใครเป็นผู้รับผิดชอบในแต่ละภารกิจเมื่อเกิดภาวะวิกฤต?"
+              }
+            ],
+            [
+              {
+                "en": "Communication procedures",
+                "th": "Communication procedures (ขั้นตอนการสื่อสาร)"
+              },
+              {
+                "en": "Defines how the organization notifies employees, leadership, customers, regulators, and partners when normal channels fail.",
+                "th": "กำหนดแนวทางและช่องทางในการแจ้งเตือนพนักงาน ผู้บริหาร ลูกค้า หน่วยงานกำกับดูแล และผู้เกี่ยวข้อง"
+              },
+              {
+                "en": "How do we reach staff, leadership, and stakeholders during an outage?",
+                "th": "เราจะติดต่อสื่อสารกับทีมงาน ผู้บริหาร และลูกค้าได้อย่างไรเมื่อเกิดเหตุ?"
+              }
+            ],
+            [
+              {
+                "en": "Alternate work locations",
+                "th": "Alternate work locations (สถานที่ทำงานสำรอง)"
+              },
+              {
+                "en": "Specifies backup offices, secondary branch sites, or work-from-home arrangements if the primary facility becomes unusable.",
+                "th": "ระบุอาคารสำรอง สาขาสำรอง หรือแนวทางปฏิบัติงานจากที่บ้าน (Work from Home) เมื่อสถานที่หลักเข้าใช้งานไม่ได้"
+              },
+              {
+                "en": "Where will personnel work if headquarters is closed or damaged?",
+                "th": "พนักงานจะย้ายไปปฏิบัติงานที่ใดหากอาคารหลักถูกปิดหรือเสียหาย?"
+              }
+            ],
+            [
+              {
+                "en": "Backup personnel",
+                "th": "Backup personnel (บุคลากรสำรอง)"
+              },
+              {
+                "en": "Designates cross-trained replacement staff and succession delegates when primary personnel or managers are unavailable.",
+                "th": "กำหนดรายชื่อบุคลากรทดแทนที่ผ่านการฝึกข้ามสายงานไว้แล้ว เมื่อผู้รับผิดชอบหลักไม่สามารถปฏิบัติหน้าที่ได้"
+              },
+              {
+                "en": "Who steps in if key specialists or leaders are unreachable?",
+                "th": "ใครจะทำหน้าที่แทนหากผู้รับผิดชอบหลักเจ็บป่วยหรือติดต่อไม่ได้?"
+              }
+            ],
+            [
+              {
+                "en": "Alternate suppliers",
+                "th": "Alternate suppliers (ซัพพลายเออร์สำรอง)"
+              },
+              {
+                "en": "Lists secondary vendors, carriers, and utility/service providers so a single vendor outage does not halt operations.",
+                "th": "ระบุผู้จัดหาสินค้าหรือผู้ให้บริการสำรอง เช่น ISP หรือคู่ค้าสำรอง เพื่อไม่ให้ธุรกิจชะงักเมื่อผู้ให้บริการหลักล่ม"
+              },
+              {
+                "en": "Which secondary vendor supplies critical inputs if our primary provider fails?",
+                "th": "จะใช้ผู้ให้บริการสำรองรายใดหากซัพพลายเออร์หลักหยุดชะงัก?"
+              }
+            ],
+            [
+              {
+                "en": "Essential technology and systems",
+                "th": "Essential technology and systems (เทคโนโลยีและระบบที่จำเป็น)"
+              },
+              {
+                "en": "Identifies the minimum applications, communications tools, and IT systems required to support critical business workflows.",
+                "th": "ระบุระบบคอมพิวเตอร์ แอปพลิเคชัน และเทคโนโลยีขั้นต่ำที่จำเป็นต้องใช้เพื่อประคองกระบวนการธุรกิจสำคัญ"
+              },
+              {
+                "en": "Which core systems and tools are required to run critical processes?",
+                "th": "ต้องใช้เทคโนโลยีและระบบจำเป็นใดบ้างเพื่อให้งานสำคัญเดินต่อได้?"
+              }
+            ],
+            [
+              {
+                "en": "Recovery priorities",
+                "th": "Recovery priorities (ลำดับความสำคัญในการกู้คืน)"
+              },
+              {
+                "en": "Establishes the exact priority order in which critical business processes and supporting services are restored.",
+                "th": "จัดลำดับความสำคัญก่อน-หลังของกระบวนการธุรกิจที่จะต้องนำกลับมาดำเนินการตามความเร่งด่วน"
+              },
+              {
+                "en": "In what order do we restore processes (1st, 2nd, 3rd) when resources are limited?",
+                "th": "กระบวนการใดสำคัญอันดับ 1, 2 และ 3 ที่ต้องฟื้นฟูตามลำดับ?"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A BCP documents how an organization will continue critical operations during a disruption. BC is the ability to continue important business work; a Business Continuity Plan (BCP) documents how people are to do it. Course slide S14 gives eight useful plan elements, all retained in the table: critical business processes, roles and responsibilities, communication procedures, alternate work locations, backup personnel, alternate suppliers, essential technology and systems, and recovery priorities. They are practical planning considerations, not a universally mandated eight-part template. An instruction needs enough detail to be usable: who may activate it, what service level is needed, where the team works, which tools and contacts remain available, and when the situation must be escalated. Connect the arrangements to the service and exercise them together. A plan can be updated as dependencies, staff and business requirements change.",
+            "th": "BC คือความสามารถในการดำเนินงานธุรกิจสำคัญต่อ ส่วน Business Continuity Plan (BCP) เป็นเอกสารที่บอกว่าคนจะทำอย่างไร สไลด์ S14 ยกองค์ประกอบแปดเรื่อง ซึ่งยังคงอยู่ครบในตาราง ได้แก่ Critical business processes, Roles and responsibilities, Communication procedures, Alternate work locations, Backup personnel, Alternate suppliers, Essential technology and systems และ Recovery priorities เป็นประเด็นที่ใช้วางแผน ไม่ใช่แบบฟอร์มแปดส่วนที่ทุกองค์กรต้องใช้เหมือนกัน ขั้นตอนควรชัดพอให้ปฏิบัติได้ เช่น ใครมีอำนาจใช้แผน ต้องให้บริการระดับใด ทีมทำงานที่ไหน ยังใช้เครื่องมือหรือช่องทางติดต่อใดได้ และเมื่อใดต้องยกระดับการพิจารณา เชื่อมองค์ประกอบเหล่านี้กับบริการที่ต้องรักษา แล้วฝึกทดสอบร่วมกัน ปรับแผนเมื่อระบบที่พึ่งพา บุคลากร หรือความต้องการทางธุรกิจเปลี่ยน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "BC describes the capability; the BCP describes the arrangements and procedures.",
+              "th": "BC บอกความสามารถ ส่วน BCP บอกแนวทางและขั้นตอนที่ต้องใช้"
+            },
+            {
+              "en": "Assign activation authority and responsibilities, then establish workable communication routes.",
+              "th": "กำหนดอำนาจใช้แผนและหน้าที่ แล้วเตรียมช่องทางติดต่อที่ใช้งานได้จริง"
+            },
+            {
+              "en": "Identify critical work, dependencies, alternatives and recovery priorities; exercise their coordination.",
+              "th": "ระบุงานสำคัญ สิ่งที่ต้องพึ่งพา ทางเลือกสำรอง และลำดับฟื้นฟู แล้วฝึกให้ทำงานร่วมกันได้"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A useful plan tells people what to do and how to coordinate.",
+            "th": "แผนที่ใช้ได้จริงบอกคนว่าต้องทำอะไรและประสานกันอย่างไร"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-04-operational-redundancy-strategies",
+      "title": {
+        "en": "Check what the alternate depends on.",
+        "th": "ตรวจว่าทางเลือกสำรองยังพึ่งพาอะไร"
+      },
+      "rendererId": "comparison",
+      "layoutId": "operational-redundancy-lanes",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Two resources can fail together. Location, staff, power, providers and available capacity matter.",
+            "th": "ทรัพยากรสองชุดอาจล้มเหลวพร้อมกัน ต้องดูสถานที่ คน ไฟฟ้า ผู้ให้บริการ และกำลังรองรับงาน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Operational redundancy reduces specified dependencies when alternatives are independent, available and tested.",
+            "th": "Operational redundancy ลดการพึ่งพาที่ระบุ เมื่อทางสำรองเป็นอิสระ พร้อมใช้งาน และผ่านการทดสอบ"
+          },
+          "columns": [
+            {
+              "en": "BCP Redundancy Pillar",
+              "th": "มิติความซ้ำซ้อนในแผน BCP"
+            },
+            {
+              "en": "Single Point of Failure (SPOF) Exposure",
+              "th": "ความเสี่ยงจากจุดล้มเหลวเดี่ยว (SPOF)"
+            },
+            {
+              "en": "Operational Continuity Strategy",
+              "th": "กลยุทธ์ความต่อเนื่องในการปฏิบัติงานจริง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Alternate work locations",
+                "th": "Alternate work locations (สถานที่ทำงานสำรอง)"
+              },
+              {
+                "en": "Relying on a single headquarters building that can be closed by a flood, fire, earthquake, tornado, or power loss.",
+                "th": "การพึ่งพาอาคารสำนักงานใหญ่เพียงแห่งเดียว ซึ่งอาจถูกปิดจากน้ำท่วม เพลิงไหม้ แผ่นดินไหว หรือไฟฟ้าดับ"
+              },
+              {
+                "en": "Pre-arrange a secondary branch office, shared recovery workspace, or secure work-from-home capability so staff keep serving customers.",
+                "th": "เตรียมสาขาสำรอง พื้นที่ทำงานสำรอง หรือระบบ Work from Home ที่ปลอดภัย เพื่อให้พนักงานย้ายไปให้บริการลูกค้าต่อได้ทันที"
+              }
+            ],
+            [
+              {
+                "en": "Backup personnel",
+                "th": "Backup personnel (บุคลากรสำรอง)"
+              },
+              {
+                "en": "Depending on a single IT manager or specialist who may be ill, injured, or unreachable during an emergency.",
+                "th": "การพึ่งพาผู้จัดการ IT หรือผู้เชี่ยวชาญหลักเพียงคนเดียว ซึ่งอาจเจ็บป่วยหรือติดต่อไม่ได้ในยามฉุกเฉิน"
+              },
+              {
+                "en": "Prepare cross-trained deputies, current access and delegated authority; verify availability during exercises.",
+                "th": "เตรียมผู้ทำหน้าที่แทนที่ผ่านการฝึก มีสิทธิ์เข้าถึงและอำนาจมอบหมาย แล้วตรวจความพร้อมระหว่างฝึกแผน"
+              }
+            ],
+            [
+              {
+                "en": "Alternate suppliers",
+                "th": "Alternate suppliers (ซัพพลายเออร์สำรอง)"
+              },
+              {
+                "en": "Contracting with only one Internet Service Provider (ISP), power/utility vendor, or logistics partner.",
+                "th": "การผูกขาดกับผู้ให้บริการอินเทอร์เน็ต (ISP) ผู้ให้บริการพลังงาน หรือผู้จัดส่งสินค้ารายเดียว"
+              },
+              {
+                "en": "Establish secondary ISP circuits, backup utility arrangements, and pre-vetted alternate vendors for critical supplies.",
+                "th": "จัดหาผู้ให้บริการอินเทอร์เน็ตสำรอง (Secondary ISP) แหล่งพลังงานสำรอง และคู่ค้าสำรองที่ผ่านการประเมินไว้ล่วงหน้า"
+              }
+            ],
+            [
+              {
+                "en": "Essential technology & manual processes",
+                "th": "Essential technology & manual processes (เทคโนโลยีจำเป็นและขั้นตอน Manual)"
+              },
+              {
+                "en": "Assuming automated IT applications will always be online with no fallback procedure during a system outage.",
+                "th": "การยึดติดกับระบบอัตโนมัติเพียงอย่างเดียวโดยไม่มีขั้นตอนปฏิบัติงานสำรองเมื่อแอปพลิเคชันหลักล่ม"
+              },
+              {
+                "en": "Prioritize essential technology systems and maintain temporary manual processes (S19) so transactions continue while IT recovers.",
+                "th": "กำหนดระบบเทคโนโลยีจำเป็นขั้นต่ำควบคู่กับขั้นตอนการทำงานแบบ Manual ชั่วคราว (ตามตาราง S19) เพื่อประคองงานระหว่างรอ IT กู้ระบบ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Alternate work locations, backup personnel and alternate suppliers make continuity practical when the primary resources are unavailable. They still need safe access, approved authority, working communications and sufficient capacity. A second office in the same flood zone may share the original exposure. Two internet contracts can depend on the same physical route or upstream carrier. A named deputy may not have current skills, access or availability. Verify these dependencies, train replacement staff and test the alternate under a realistic workload. Essential technology and approved temporary manual processes can support a limited service while recovery continues. Protect sensitive information and reconcile temporary records afterward; moving to paper or a secondary site does not suspend security requirements.",
+            "th": "Alternate work locations, Backup personnel และ Alternate suppliers ช่วยให้นำแผนไปใช้ได้เมื่อทรัพยากรหลักไม่พร้อม แต่ยังต้องเข้าถึงอย่างปลอดภัย มีอำนาจที่อนุมัติไว้ ติดต่อกันได้ และรองรับปริมาณงานที่จำเป็น สำนักงานแห่งที่สองในพื้นที่น้ำท่วมเดียวกันอาจได้รับผลพร้อมกัน สัญญาอินเทอร์เน็ตสองฉบับอาจใช้สายทางกายภาพหรือผู้ให้บริการต้นทางเดียวกัน และผู้รับหน้าที่แทนอาจยังขาดทักษะ สิทธิ์เข้าถึง หรือเวลาพร้อมปฏิบัติงาน จึงต้องตรวจการพึ่งพาเหล่านี้ ฝึกบุคลากร และทดสอบทางสำรองด้วยปริมาณงานที่สมจริง เทคโนโลยีจำเป็นและขั้นตอน Manual ชั่วคราวที่อนุมัติไว้ช่วยประคองบริการระหว่างกู้คืนได้ แต่ต้องปกป้องข้อมูลและตรวจรวมรายการที่บันทึกชั่วคราวภายหลัง การย้ายไปใช้กระดาษหรือสาขาสำรองไม่ได้ยกเว้นข้อกำหนดความปลอดภัย"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Shared flood zones, power or upstream providers can defeat apparently separate resources.",
+              "th": "พื้นที่น้ำท่วม ไฟฟ้า หรือผู้ให้บริการต้นทางร่วมกันอาจทำให้ทรัพยากรที่ดูแยกกันใช้ไม่ได้พร้อมกัน"
+            },
+            {
+              "en": "Replacement personnel need training, current access and appropriate delegated authority.",
+              "th": "ผู้ทำหน้าที่แทนต้องผ่านการฝึก มีสิทธิ์เข้าถึงที่ใช้ได้ และได้รับมอบอำนาจเหมาะสม"
+            },
+            {
+              "en": "Exercise temporary manual processes, protect their records and reconcile them when systems return.",
+              "th": "ฝึกขั้นตอน Manual ชั่วคราว ปกป้องรายการที่บันทึก และตรวจรวมข้อมูลเมื่อระบบกลับมา"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Separate resources are useful when their dependencies can survive the incident.",
+            "th": "ทรัพยากรสำรองจะช่วยได้เมื่อสิ่งที่ต้องพึ่งพายังใช้ได้หลังเกิดเหตุ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-05-bia-and-recovery-priorities",
+      "title": {
+        "en": "Recover the dependencies that the business needs.",
+        "th": "ฟื้นฟูสิ่งที่งานสำคัญต้องพึ่งพา"
+      },
+      "rendererId": "diagram",
+      "layoutId": "bia-priority-pipeline",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Business Impact Analysis connects the impact of interruption to priorities and supporting resources.",
+            "th": "Business Impact Analysis เชื่อมผลกระทบเมื่องานหยุดเข้ากับลำดับการฟื้นฟูและทรัพยากรที่ต้องใช้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "How Business Impact Analysis (BIA) connects critical business functions to BCP recovery priorities and the BCP vs. DRP boundary (S19)",
+            "th": "ความเชื่อมโยงระหว่าง Business Impact Analysis (BIA) การจัดลำดับความสำคัญในการกู้คืน และขอบเขตระหว่างแผน BCP กับ DRP (S19)"
+          },
+          "columns": [
+            {
+              "en": "Continuity Stage / Artifact",
+              "th": "ขั้นตอน / เอกสารแผน"
+            },
+            {
+              "en": "Primary Analytical or Operational Role",
+              "th": "บทบาทหลักในการวิเคราะห์และปฏิบัติการ"
+            },
+            {
+              "en": "How It Connects to Continuity Governance",
+              "th": "ความเชื่อมโยงในการกำกับดูแลความต่อเนื่อง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Business Impact Analysis (BIA)",
+                "th": "Business Impact Analysis (BIA)"
+              },
+              {
+                "en": "Identifies critical business functions, evaluates the impact of disruptions over time, and maps dependencies on people, facilities, suppliers, and systems.",
+                "th": "ระบุฟังก์ชันงานหลักที่สำคัญของธุรกิจ ประเมินผลกระทบเมื่อเกิดการหยุดชะงัก และวิเคราะห์ความพึ่งพาระหว่างคน สถานที่ ซัพพลายเออร์ และระบบงาน"
+              },
+              {
+                "en": "Provides the objective evidence needed to decide which business processes are most critical before writing recovery procedures.",
+                "th": "เป็นจุดตั้งต้นเชิงวิเคราะห์ที่ทำให้องค์กรรู้ว่ากระบวนการใดสำคัญที่สุดก่อนจะกำหนดขั้นตอนการฟื้นฟู"
+              }
+            ],
+            [
+              {
+                "en": "Recovery Priorities in the BCP",
+                "th": "Recovery Priorities ในแผน BCP"
+              },
+              {
+                "en": "Ranks critical business processes in priority order (1st, 2nd, 3rd) so the organization restores highest-impact operations first.",
+                "th": "จัดลำดับความสำคัญของกระบวนการธุรกิจ (อันดับ 1, 2, 3) เพื่อให้องค์กรฟื้นฟูภารกิจที่มีผลกระทบสูงสุดก่อนตามลำดับ"
+              },
+              {
+                "en": "Allocate scarce capacity using business impact and dependencies; verify the agreed temporary service level.",
+                "th": "จัดสรรทรัพยากรจากผลต่อธุรกิจและสิ่งที่ต้องพึ่งพา พร้อมตรวจระดับบริการชั่วคราวที่ตกลงกัน"
+              }
+            ],
+            [
+              {
+                "en": "BCP (Whole-Business Continuity Plan)",
+                "th": "BCP (แผนความต่อเนื่องระดับธุรกิจ)"
+              },
+              {
+                "en": "Documents how the broader organization keeps business operations running across people, processes, facilities, suppliers, and technology.",
+                "th": "บันทึกแนวทางระดับองค์กรในการประคองธุรกิจให้ดำเนินต่อไปได้ ครอบคลุมทั้งคน กระบวนการ สถานที่ ซัพพลายเออร์ และเทคโนโลยี"
+              },
+              {
+                "en": "Acts as the overarching umbrella plan (BC = broader concept) and defines business recovery requirements.",
+                "th": "ทำหน้าที่เป็นแผนร่มใหญ่ (Umbrella Plan) ขององค์กร โดยกำหนดความต้องการในการฟื้นฟูงานด้านธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "DRP (IT Disaster Recovery Plan — Lesson 4)",
+                "th": "DRP (แผนกู้คืนระบบ IT — เรียนเจาะลึกในบทที่ 4)"
+              },
+              {
+                "en": "Uses BIA results as input to establish IT recovery priorities and restore servers, databases, applications, and networks.",
+                "th": "นำผลลัพธ์จาก BIA มาใช้เป็นข้อมูลตั้งต้นเพื่อจัดลำดับการกู้คืนระบบ IT เช่น เซิร์ฟเวอร์ ฐานข้อมูล แอปพลิเคชัน และเครือข่าย"
+              },
+              {
+                "en": "Supports the BCP as the technical IT restoration component (DR ⊂ BC; detailed RTO/RPO timelines are covered in Lesson 4).",
+                "th": "เป็นองค์ประกอบย่อยด้านเทคนิคที่สนับสนุนแผน BCP (DR ⊂ BC โดยรายละเอียดการคำนวณ RTO/RPO จะเรียนเจาะลึกในบทที่ 4)"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Business Impact Analysis (BIA) identifies important business functions, the impact of interruption over time and the resources each function depends on. These findings inform business recovery priorities in the BCP and the supporting IT restoration priorities in a DRP. Priority is based on business consequences and dependencies, not a universal three-tier label or the most expensive server. A lower-profile identity or network service may need restoration before a high-priority application can work. State assumptions, acceptable temporary service levels and resource constraints, and review them with accountable owners. As an official 2026 ISC2 supplement, model drift can also be a BC/DR risk: declining AI performance may disrupt a critical process. Identify the service dependency, monitor evidence and follow approved fallback/recovery procedures; drift does not automatically mean a cyberattack.",
+            "th": "Business Impact Analysis (BIA) ระบุงานธุรกิจสำคัญ ผลกระทบเมื่องานหยุดตามระยะเวลา และทรัพยากรที่แต่ละงานต้องพึ่งพา ผลวิเคราะห์ใช้ประกอบลำดับฟื้นฟูธุรกิจใน BCP และการกู้คืน IT ที่สนับสนุนงานนั้นใน DRP จัดลำดับจากผลต่อธุรกิจและความสัมพันธ์ของระบบ ไม่ใช่ยึด Tier สามระดับแบบสากลหรือเริ่มจาก Server ที่แพงที่สุด ระบบ Identity หรือ Network ที่ดูไม่เด่นอาจต้องกลับมาก่อนแอปพลิเคชันสำคัญจึงจะใช้งานได้ ระบุสมมติฐาน ระดับบริการชั่วคราวที่ยอมรับได้ และข้อจำกัดของทรัพยากร แล้วทบทวนร่วมกับผู้รับผิดชอบ ส่วนเสริมจาก ISC2 ฉบับปี 2026 ระบุว่า Model drift อาจเป็นความเสี่ยงต่อ BC/DR เพราะประสิทธิภาพ AI ที่ลดลงอาจกระทบกระบวนการสำคัญ ต้องรู้ว่าบริการพึ่งพาอะไร ติดตามหลักฐาน และใช้ขั้นตอนสำรองหรือกู้คืนที่อนุมัติไว้ Drift ไม่ได้หมายถึงถูกโจมตีไซเบอร์เสมอไป"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "BIA considers the business impact over time and dependencies before recovery arrangements are selected.",
+              "th": "BIA พิจารณาผลกระทบต่อธุรกิจตามระยะเวลาและสิ่งที่ต้องพึ่งพา ก่อนเลือกวิธีฟื้นฟู"
+            },
+            {
+              "en": "A critical application may need its identity, network, people or supplier dependencies restored first.",
+              "th": "แอปพลิเคชันสำคัญอาจต้องรอ Identity, Network, คน หรือผู้ให้บริการที่สนับสนุนกลับมาก่อน"
+            },
+            {
+              "en": "The BCP keeps business work going; the DRP restores the supporting IT systems and data.",
+              "th": "BCP รักษางานธุรกิจให้ดำเนินต่อ ส่วน DRP กู้คืนระบบ IT และข้อมูลที่สนับสนุนงาน"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Business priorities guide recovery; dependencies determine what must be ready.",
+            "th": "ลำดับธุรกิจนำการฟื้นฟู ส่วนสิ่งที่พึ่งพาบอกว่าอะไรต้องพร้อม"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-34-r1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-06-continuity-decision-scenario",
+      "title": {
+        "en": "How can customer operations continue safely?",
+        "th": "จะให้บริการลูกค้าต่ออย่างปลอดภัยได้อย่างไร?"
+      },
+      "rendererId": "interactive",
+      "layoutId": "continuity-response-scenario",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A regional flood closes headquarters, cuts its ISP link and leaves the operations manager unreachable. Customer support and order fulfillment are needed today.",
+            "th": "น้ำท่วมภูมิภาคทำให้สำนักงานใหญ่และลิงก์ ISP ใช้ไม่ได้ ทั้งยังติดต่อ Operations Manager ไม่ได้ แต่วันนี้ต้องให้บริการลูกค้าและจัดส่งคำสั่งซื้อ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Decision matrix for evaluating continuity and redundancy responses during a multi-factor disruption",
+            "th": "ตารางวิเคราะห์ตัวเลือกการตัดสินใจด้านความต่อเนื่องทางธุรกิจและ Redundancy เมื่อเกิดเหตุหยุดชะงักหลายมิติ"
+          },
+          "columns": [
+            {
+              "en": "Option",
+              "th": "ตัวเลือก"
+            },
+            {
+              "en": "Candidate Action",
+              "th": "แนวทางปฏิบัติที่เสนอ"
+            },
+            {
+              "en": "Governance & Continuity Evaluation",
+              "th": "ผลการวิเคราะห์ตามหลัก Business Continuity"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Option A",
+                "th": "ตัวเลือก A"
+              },
+              {
+                "en": "Suspend all customer operations until floodwaters recede, power returns to headquarters, and the primary ISP link is repaired.",
+                "th": "ระงับการให้บริการลูกค้าและการรับคำสั่งซื้อทั้งหมดไว้ชั่วคราว จนกว่าระดับน้ำจะลด ไฟฟ้าที่สำนักงานใหญ่กลับมาใช้งานได้ และลิงก์ ISP หลักซ่อมเสร็จ"
+              },
+              {
+                "en": "Waiting for headquarters and its ISP leaves the critical service unavailable. Use a safe, authorized continuity arrangement when one is ready.",
+                "th": "การรออาคารและ ISP หลักทำให้บริการสำคัญยังหยุดอยู่ ควรใช้แนวทางต่อเนื่องที่พร้อม ปลอดภัย และได้รับอนุญาต"
+              }
+            ],
+            [
+              {
+                "en": "Option B",
+                "th": "ตัวเลือก B"
+              },
+              {
+                "en": "Activate the BCP: shift staff to alternate work locations, assign backup personnel, use secondary ISP/suppliers, and follow BIA recovery priorities.",
+                "th": "เปิดใช้แผน BCP โดยย้ายทีมงานไปปฏิบัติงานที่สถานที่สำรองหรือทางไกล ให้บุคลากรสำรองรับช่วงสั่งการ ใช้เครือข่าย/ซัพพลายเออร์สำรอง และเดินงานตามลำดับความสำคัญจาก BIA"
+              },
+              {
+                "en": "The BCP coordinates alternate locations, trained backup staff, communications, suppliers and BIA-informed priorities. Check safety, capacity and availability before activation.",
+                "th": "BCP ประสานสถานที่สำรอง คนทำหน้าที่แทนที่ฝึกไว้ การสื่อสาร คู่ค้า และลำดับจาก BIA ต้องตรวจความปลอดภัย กำลังรองรับ และความพร้อมก่อนใช้งาน"
+              }
+            ],
+            [
+              {
+                "en": "Option C",
+                "th": "ตัวเลือก C"
+              },
+              {
+                "en": "Verify that nightly cloud database backups completed and wait for IT engineers to re-image headquarters servers next week.",
+                "th": "ตรวจสอบว่าไฟล์สำรองฐานข้อมูลบนคลาวด์เมื่อคืนทำงานสำเร็จ แล้วรอให้ทีมวิศวกร IT เข้าไปติดตั้งเซิร์ฟเวอร์ที่สำนักงานใหญ่ใหม่ในสัปดาห์หน้า"
+              },
+              {
+                "en": "A stored backup and delayed IT restoration do not provide an operating customer service. Data recovery supports continuity but cannot replace its people and procedures.",
+                "th": "ไฟล์ Backup และการกู้ IT ในภายหลังยังไม่ได้ให้บริการลูกค้าที่ทำงานได้จริง การกู้ข้อมูลสนับสนุนความต่อเนื่อง แต่ไม่แทนคนและขั้นตอนปฏิบัติงาน"
+              }
+            ],
+            [
+              {
+                "en": "Option D",
+                "th": "ตัวเลือก D"
+              },
+              {
+                "en": "Attempt to restore every internal test server, archive tool, and critical business workflow simultaneously without priority ranking.",
+                "th": "สั่งการให้ทุกแผนกเร่งกู้คืนเซิร์ฟเวอร์ทดสอบภายใน ระบบคลังเอกสารเก่า และกระบวนการธุรกิจหลักพร้อมกันทั้งหมดโดยไม่ต้องจัดลำดับก่อนหลัง"
+              },
+              {
+                "en": "Restoring every system simultaneously can exhaust limited recovery capacity. Use business impact and dependencies to choose priorities.",
+                "th": "การกู้ทุกระบบพร้อมกันอาจใช้กำลังกู้คืนที่มีจำกัดจนไม่พอ ต้องใช้ผลต่อธุรกิจและสิ่งที่ต้องพึ่งพาในการจัดลำดับ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The regional-flood scenario asks how critical customer support and order fulfillment can continue today. B is supported because it activates the documented BCP: safe alternate work locations, trained backup personnel, secondary suppliers/connectivity and BIA-informed priorities. Confirm that these arrangements are available outside the same disruption, within their capacity and authorized to use; staff safety comes first. A waits for headquarters and its provider, C relies only on stored backups and delayed IT restoration, and D competes for scarce resources by restoring everything without priorities. Backups and IT restoration remain important, but do not substitute for an operating business process. The actual Domain 2.md review question Q1 reinforces the goal of keeping critical business operations running.",
+            "th": "สถานการณ์น้ำท่วมนี้ถามว่าจะรักษา Customer support และ Order fulfillment ให้ดำเนินต่อวันนี้ได้อย่างไร ตัวเลือก B เหมาะสมเพราะใช้ BCP ที่จัดทำไว้ โดยใช้สถานที่สำรองที่ปลอดภัย คนทำหน้าที่แทนที่ฝึกไว้ ผู้ให้บริการหรือช่องทางสำรอง และลำดับจาก BIA ต้องตรวจว่าทางเลือกเหล่านี้พร้อมใช้นอกเหตุขัดข้องเดียวกัน รองรับงานได้ และมีอำนาจอนุมัติ โดยให้ความปลอดภัยของคนมาก่อน A รออาคารและผู้ให้บริการหลักกลับมา C พึ่งเพียงไฟล์ Backup และการกู้ IT ในภายหลัง ส่วน D แย่งทรัพยากรที่มีจำกัดด้วยการกู้ทุกอย่างโดยไม่จัดลำดับ Backup และการกู้คืน IT ยังจำเป็น แต่ไม่ทดแทนกระบวนการที่ให้บริการจริง คำถามทบทวน Q1 ใน Domain 2.md ฉบับจริงย้ำเป้าหมายการรักษางานธุรกิจสำคัญให้ดำเนินต่อ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "B applies continuity arrangements to people, locations, suppliers and recovery priorities.",
+              "th": "B ใช้แนวทางต่อเนื่องกับคน สถานที่ คู่ค้า และลำดับฟื้นฟู"
+            },
+            {
+              "en": "A waits for the primary resources; C mistakes a stored backup for an operating service.",
+              "th": "A รอทรัพยากรหลักกลับมา ส่วน C สับสนระหว่าง Backup ที่เก็บไว้กับบริการที่ดำเนินงานได้จริง"
+            },
+            {
+              "en": "D ignores business impact and dependencies when allocating limited recovery capacity.",
+              "th": "D ไม่ใช้ผลกระทบและความสัมพันธ์ของงานเพื่อจัดสรรกำลังกู้คืนที่มีจำกัด"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Continue safely using a prepared plan, accountable people and realistic priorities.",
+            "th": "ดำเนินงานต่ออย่างปลอดภัยด้วยแผนที่เตรียมไว้ คนรับผิดชอบ และลำดับที่เหมาะกับสถานการณ์"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-cc-2026-outline",
+        "d2-master-notes",
+        "d2-summary-notes",
+        "d2-course-transcript",
+        "nist-sp-800-34-r1"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "isc2-cc-2026-outline",
+      "title": "ISC2 Certified in Cybersecurity (CC) Exam Outline — Effective September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain2 Objective2.2 BC/DR and official Domain2 AI guidance: model drift as a continuity risk; checked2026-10-30.",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "d2-master-notes",
+      "title": "Domain 2 — Security Governance: Complete Study Notes (Domain 2.md)",
+      "authority": "course",
+      "locator": "Actual §§6–7 BC/BCP and eight examples/elements; §10 BIA/BC/DR; §24 distinctions; §25 Q1 BC. Older roadmap question/line mapping is stale.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/Domain 2.md"
+    },
+    {
+      "id": "d2-summary-notes",
+      "title": "Domain 2 Rapid Summary Notes (D2 sum.md)",
+      "authority": "course",
+      "locator": "Lines 160–202 & 226–255: Business Continuity (BC) 8 disruptions, Business Continuity Plan (BCP) 8 elements, and BC vs. DR scope.",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/D2 sum.md"
+    },
+    {
+      "id": "d2-course-transcript",
+      "title": "Domain 2 Instructor Lecture Transcript & Course Slides S11–S14, S19 (DOMAIN 2.txt)",
+      "authority": "course",
+      "locator": "Lines 33–45 & 67–72; Slide captures S11 (Objective 2.2), S12 (BC & 8 disruptions), S13–S14 (BCP & 8 elements), and S19 (BC vs. DR & BIA).",
+      "repositoryPath": "ISC2 Update 2026/Domain 2/DOMAIN 2.txt"
+    },
+    {
+      "id": "nist-sp-800-34-r1",
+      "title": "NIST SP 800-34 Rev. 1 — Contingency Planning Guide for Federal Information Systems",
+      "authority": "technical-primary",
+      "locator": "Section 3.2 Business Impact Analysis (BIA) process for identifying critical functions, dependencies, and recovery priorities supporting continuity plans.",
+      "url": "https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final"
+    }
+  ],
+  "assets": [],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-2-completion-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — Lesson3 technical self-review; human review pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — Lesson3 bilingual self-review; human review pending",
+      "reviewedAt": "2026-10-30"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Antigravity — original authored HTML/CSS/SVG & verified source provenance; user review pending",
+      "reviewedAt": "2026-10-28"
+    }
+  }
+}

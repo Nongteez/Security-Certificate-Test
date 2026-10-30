@@ -1,0 +1,2 @@
+import {verifyD2Lesson} from './fixtures/learning/domain2-lesson-contract.mjs';
+verifyD2Lesson({id:'lesson-d2-08-dashboards-scorecards-reports',objective:'2.4',count:6,prefix:'reporting',correct:1,terms:[/95%/,/91%/,/100%/,/97%/,/98%/,/Critical Vulnerabilities/,/unit discrepancy/i,/unscored/i,/Recommended actions/,/Control effectiveness/,/model[ -]drift/i,/Metric → Measure/,/KPI → Performance/,/KRI → Risk/],forbidden:[/dashboards always update in real time|a scorecard proves complete security/i]});

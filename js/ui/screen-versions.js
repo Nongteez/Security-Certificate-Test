@@ -117,7 +117,8 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
             ${versions.map(version => {
               const isVocabulary = version.type === 'vocabulary';
               const isLearning = version.type === 'learning';
-              const available = isLearning ? learningAvailability.available : isVocabulary ? (version.status === 'available') : !!resolveExamVersion(cert.id, version.id);
+              const isReading = version.type === 'reading';
+              const available = isLearning ? learningAvailability.available : (isVocabulary || isReading) ? (version.status === 'available') : !!resolveExamVersion(cert.id, version.id);
               const info = information[version.id];
               const viewLabel = info?.viewLabel || informationLabels.view;
               return `<article class="cert-card version-card ${available ? '' : 'cert-card-disabled'}"${isLearning ? ' data-learning-card' : ''}>
@@ -130,7 +131,7 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
                 </div>
                 <div class="cert-card-footer">
                   <span class="status-badge ${available ? 'status-available' : 'status-planned'}${isLearning ? ' learning-entry-status' : ''}">${available ? 'Available' : 'Coming Soon'}</span>
-                  ${isLearning ? `<button type="button" class="btn ${available ? 'btn-primary' : 'btn-secondary btn-disabled'} btn-select-version btn-learning-entry" data-version-id="${version.id}"${available ? '' : ' disabled'}>${available ? 'Learning →' : 'Coming Soon'}</button>` : available ? `<button type="button" class="btn btn-primary btn-select-version" data-version-id="${version.id}">Select →</button>` : '<button type="button" class="btn btn-secondary btn-disabled" disabled>Coming Soon</button>'}
+                  ${isLearning ? `<button type="button" class="btn ${available ? 'btn-primary' : 'btn-secondary btn-disabled'} btn-select-version btn-learning-entry" data-version-id="${version.id}"${available ? '' : ' disabled'}>${available ? 'Learning →' : 'Coming Soon'}</button>` : isReading ? `<button type="button" class="btn ${available ? 'btn-primary' : 'btn-secondary btn-disabled'} btn-select-version btn-reading-entry" data-version-id="${version.id}"${available ? '' : ' disabled'}>${available ? 'Read →' : 'Coming Soon'}</button>` : available ? `<button type="button" class="btn btn-primary btn-select-version" data-version-id="${version.id}">Select →</button>` : '<button type="button" class="btn btn-secondary btn-disabled" disabled>Coming Soon</button>'}
                 </div>
               </article>`;
             }).join('')}
@@ -210,8 +211,9 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
       const targetVersion = versions.find(v => v.id === id);
       if (!targetVersion) return;
       if (targetVersion.type === 'learning' && !learningAvailability.available) return;
-      if (!['vocabulary', 'learning'].includes(targetVersion.type) && !resolveExamVersion(cert.id, id)) return;
+      if (!['vocabulary', 'learning', 'reading'].includes(targetVersion.type) && !resolveExamVersion(cert.id, id)) return;
       if (targetVersion.type === 'vocabulary' && targetVersion.status !== 'available') return;
+      if (targetVersion.type === 'reading' && targetVersion.status !== 'available') return;
       selectionPending = true;
       const controls = [...infoButtons, ...container.querySelectorAll('.lang-btn')];
       controls.forEach(control => { control.disabled = true; });

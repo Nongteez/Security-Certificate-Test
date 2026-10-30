@@ -1,0 +1,1138 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d1-09-frameworks",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 1,
+  "primaryObjectiveId": "1.3",
+  "objectiveIds": [
+    "1.3"
+  ],
+  "revision": "2",
+  "status": "published",
+  "title": {
+    "en": "Frameworks & Security Documents",
+    "th": "Frameworks และเอกสารความปลอดภัย"
+  },
+  "synopsis": {
+    "en": "Connect security frameworks and standards to policy, requirements, procedures and useful guidance.",
+    "th": "เชื่อม Frameworks และมาตรฐานกับนโยบาย ข้อกำหนด ขั้นตอน และคำแนะนำ"
+  },
+  "outcomes": [
+    {
+      "en": "Explain how a framework organises outcomes, gaps and improvement.",
+      "th": "อธิบายว่า Framework จัดผลลัพธ์ ช่องว่าง และการปรับปรุงอย่างไร"
+    },
+    {
+      "en": "Distinguish NIST CSF, ISO/IEC 27001 ISMS requirements and CIS Controls safeguards.",
+      "th": "แยก NIST CSF ข้อกำหนด ISMS ของ ISO/IEC 27001 และ Safeguards ของ CIS Controls"
+    },
+    {
+      "en": "Classify policy, standard, procedure and guideline by purpose and authority.",
+      "th": "แยก Policy, Standard, Procedure และ Guideline ตามหน้าที่และอำนาจ"
+    },
+    {
+      "en": "Connect approved documents to consistent work and evidence without overriding applicable duties.",
+      "th": "เชื่อมเอกสารที่อนุมัติกับงานและหลักฐาน โดยไม่ขัดหน้าที่ที่ใช้"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Governance & Applicable Requirements (Lesson 8).",
+      "th": "แนะนำบท Governance และข้อกำหนดที่ใช้กับองค์กร (Lesson 8)"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-01-framework-structure",
+      "title": {
+        "en": "A framework gives security work a structure.",
+        "th": "Framework ช่วยจัดโครงสร้างงานความปลอดภัย"
+      },
+      "rendererId": "comparison",
+      "layoutId": "frameworks-structure",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use shared outcomes to find gaps and organise improvement.",
+            "th": "ใช้ผลลัพธ์ร่วมกันเพื่อหาช่องว่างและจัดงานปรับปรุง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Current state",
+                "th": "สภาพปัจจุบัน"
+              },
+              {
+                "en": "What is in place today?",
+                "th": "ตอนนี้ทำอะไรอยู่?"
+              },
+              {
+                "en": "Describe the evidence.",
+                "th": "อธิบายด้วยหลักฐาน"
+              }
+            ],
+            [
+              {
+                "en": "Target state",
+                "th": "สภาพเป้าหมาย"
+              },
+              {
+                "en": "What outcomes do we need?",
+                "th": "ต้องการผลลัพธ์ใด?"
+              },
+              {
+                "en": "Use business needs and risk.",
+                "th": "พิจารณาธุรกิจและ Risk"
+              }
+            ],
+            [
+              {
+                "en": "Action plan",
+                "th": "แผนลงมือทำ"
+              },
+              {
+                "en": "Close the important gaps.",
+                "th": "ปิดช่องว่างที่สำคัญ"
+              },
+              {
+                "en": "Assign owners and priorities.",
+                "th": "ระบุผู้รับผิดชอบและลำดับงาน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §27 calls a framework a structured approach for a security programme, gap identification, consistent practices and improvement. It organises what the organisation wants to achieve; it does not configure a firewall or perform the work. In this authored example, a clinic has inconsistent account reviews and wants a repeatable review outcome. It describes its current practices, agrees a target using business needs and risk, then assigns gap-closing actions and checks evidence. NIST CSF Profiles offer a concrete current/target approach; this is an example of using structure, not a universal template that every framework must follow. A framework can help communicate across technical teams and leadership. Choosing or mapping to a framework does not by itself establish legal compliance or prove that controls work.",
+            "th": "A §27 อธิบาย Framework ว่าเป็นโครงสร้างสำหรับสร้างแผนงานความปลอดภัย หาช่องว่าง ทำงานสม่ำเสมอ และปรับปรุง โดยจัดว่าต้องการผลลัพธ์อะไร ไม่ได้ตั้งค่า Firewall หรือลงมือแทนทีม ในตัวอย่างคลินิกแต่งขึ้น การทบทวนบัญชียังไม่สม่ำเสมอ จึงอธิบายสภาพปัจจุบัน กำหนดเป้าหมายตามธุรกิจและ Risk แล้วมอบหมายงานปิดช่องว่างพร้อมตรวจหลักฐาน NIST CSF Profiles เป็นตัวอย่างการเปรียบเทียบปัจจุบันกับเป้าหมาย ไม่ใช่แม่แบบบังคับของทุก Framework โครงสร้างร่วมช่วยให้ทีมเทคนิคสื่อสารกับผู้บริหารได้ การเลือก Framework หรือทำ Mapping เพียงอย่างเดียวไม่ได้พิสูจน์ว่าปฏิบัติตามกฎหมายครบหรือ Control ได้ผล"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Structure guides the work; people still have to implement it.",
+            "th": "โครงสร้างช่วยจัดงาน แต่ยังต้องมีคนลงมือทำ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b",
+        "ref-nist"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      }
+    },
+    {
+      "id": "slide-02-nist-outcomes",
+      "title": {
+        "en": "NIST CSF describes outcomes—not your exact configuration.",
+        "th": "NIST CSF บอกผลลัพธ์ ไม่ได้กำหนดค่าระบบแทนองค์กร"
+      },
+      "rendererId": "comparison",
+      "layoutId": "frameworks-outcomes",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Translate a shared security outcome into local actions and evidence.",
+            "th": "แปลงผลลัพธ์ร่วมเป็นงานและหลักฐานที่เหมาะกับองค์กร"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Framework outcome",
+                "th": "ผลลัพธ์ใน Framework"
+              },
+              {
+                "en": "Access is managed appropriately.",
+                "th": "จัดการการเข้าถึงอย่างเหมาะสม"
+              },
+              {
+                "en": "A shared goal to assess.",
+                "th": "เป้าหมายร่วมที่ใช้ประเมิน"
+              }
+            ],
+            [
+              {
+                "en": "Local implementation",
+                "th": "วิธีทำในองค์กร"
+              },
+              {
+                "en": "Assign owners; approve and review access.",
+                "th": "ระบุเจ้าของ อนุมัติและทบทวนสิทธิ์"
+              },
+              {
+                "en": "Choose methods for this context.",
+                "th": "เลือกวิธีให้เหมาะกับบริบท"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §27 names NIST Cybersecurity Framework as a structural resource. NIST CSF 2.0 organises cybersecurity outcomes through Govern, Identify, Protect, Detect, Respond and Recover. These functions address related activities concurrently; they are not a rule to finish all governance before doing any protection. The Core describes outcomes rather than prescribing one implementation for every organisation. In the authored access example, a team chooses documented approval and review activities appropriate to its systems and risk, and keeps evidence that they occur. Current and Target Profiles can expose gaps and priorities. Knowing the six function names and Profile example is supporting course depth; the official CC Objective 1.3 names frameworks and guidelines without mandating a detailed CSF implementation project. A mapping is a useful connection, not proof of equivalent controls or complete compliance.",
+            "th": "A §27 ยก NIST Cybersecurity Framework เป็นแหล่งโครงสร้าง NIST CSF 2.0 จัดผลลัพธ์เป็น Govern, Identify, Protect, Detect, Respond และ Recover กิจกรรมสัมพันธ์กันและทำควบคู่ได้ ไม่ใช่ต้องทำ Governance ให้เสร็จทั้งหมดก่อนเริ่มปกป้อง Core บอกผลลัพธ์ ไม่ได้บังคับวิธีเดียวกับทุกองค์กร ในตัวอย่างการเข้าถึงแต่งขึ้น ทีมเลือกวิธีอนุมัติและทบทวนสิทธิ์ตามระบบและ Risk พร้อมเก็บหลักฐาน Current และ Target Profiles ช่วยเห็นช่องว่างและจัดลำดับงาน ชื่อหก Functions และตัวอย่าง Profiles เป็นรายละเอียดเสริมเพื่อเข้าใจ ไม่ใช่การอ้างว่า Objective 1.3 บังคับทำโครงการ CSF เต็มรูปแบบ Mapping ช่วยเชื่อมแนวคิด แต่ไม่พิสูจน์ว่า Control เทียบเท่าหรือ Compliance ครบ"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Outcomes are shared; implementation depends on context.",
+            "th": "ผลลัพธ์ใช้ร่วมกันได้ แต่วิธีทำขึ้นกับบริบท"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b",
+        "ref-nist"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      }
+    },
+    {
+      "id": "slide-03-iso-isms",
+      "title": {
+        "en": "ISO/IEC 27001 specifies requirements for an ISMS.",
+        "th": "ISO/IEC 27001 กำหนดข้อกำหนดสำหรับ ISMS"
+      },
+      "rendererId": "comparison",
+      "layoutId": "frameworks-isms",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Manage information security as an ongoing organisational system.",
+            "th": "บริหารความปลอดภัยสารสนเทศเป็นระบบงานต่อเนื่อง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Establish & implement",
+                "th": "จัดตั้งและนำไปใช้"
+              },
+              {
+                "en": "Define scope, risks and responsibilities.",
+                "th": "กำหนดขอบเขต Risk และหน้าที่"
+              },
+              {
+                "en": "People, processes and technology.",
+                "th": "ครอบคลุมคน กระบวนการ เทคโนโลยี"
+              }
+            ],
+            [
+              {
+                "en": "Maintain & improve",
+                "th": "ดูแลและปรับปรุง"
+              },
+              {
+                "en": "Review performance and address gaps.",
+                "th": "ทบทวนผลและแก้ช่องว่าง"
+              },
+              {
+                "en": "An ISMS is more than an IT product.",
+                "th": "ISMS ไม่ใช่แค่ผลิตภัณฑ์ไอที"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §33 identifies ISO as the International Organization for Standardization and ISO/IEC 27001 as an international standard for establishing, implementing, maintaining and continually improving an Information Security Management System (ISMS). It is a requirements standard, not merely the same artifact type as NIST CSF or a single technical product. A §27 groups useful resources broadly under frameworks; retain that relationship while using the precise standard classification here. An ISMS coordinates risk-based decisions, responsibilities, policies, processes and controls. In an authored clinic example, management defines scope and owners, implements agreed safeguards, evaluates results and improves weaknesses. Certification is a separate external assessment of a defined scope; ISO develops standards and does not perform certification. Adoption is not automatically a legal duty for every organisation; applicability can arise through policy, contracts or law. Neither certification nor adoption guarantees no future incident.",
+            "th": "A §33 ระบุ ISO คือ International Organization for Standardization และ ISO/IEC 27001 เป็นมาตรฐานสากลสำหรับจัดตั้ง นำไปใช้ ดูแล และปรับปรุง Information Security Management System (ISMS) ต่อเนื่อง จึงเป็นมาตรฐานข้อกำหนด ไม่ใช่เอกสารชนิดเดียวกับ NIST CSF หรือผลิตภัณฑ์ไอทีชิ้นเดียว A §27 จัดแหล่งเหล่านี้รวมกว้าง ๆ ใต้ Framework แต่ควรเรียกประเภทให้แม่น ISMS เชื่อม Risk หน้าที่ นโยบาย กระบวนการ และ Controls ตัวอย่างคลินิกแต่งขึ้นเริ่มจากขอบเขตและเจ้าของงาน ใช้มาตรการ ประเมินผล แล้วปรับปรุง Certification เป็นการประเมินภายนอกในขอบเขตที่กำหนด ISO พัฒนามาตรฐานแต่ไม่ได้ตรวจรับรองเอง การนำไปใช้ไม่ได้เป็นหน้าที่ตามกฎหมายของทุกองค์กรโดยอัตโนมัติ ต้องดูนโยบาย สัญญา หรือกฎหมาย การใช้มาตรฐานหรือรับรองไม่ได้รับประกันว่าจะไม่มีเหตุอีก"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "ISMS = a managed system, not a purchased security box.",
+            "th": "ISMS คือระบบบริหาร ไม่ใช่ซื้อกล่องความปลอดภัย"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b",
+        "ref-iso",
+        "ref-cert"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      }
+    },
+    {
+      "id": "slide-04-cis-safeguards",
+      "title": {
+        "en": "CIS Controls turns priorities into practical safeguards.",
+        "th": "CIS Controls ช่วยจัดลำดับ Safeguards ที่นำไปทำได้"
+      },
+      "rendererId": "comparison",
+      "layoutId": "frameworks-safeguards",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A prioritized resource still needs local owners and evidence.",
+            "th": "แหล่งลำดับความสำคัญยังต้องมีผู้รับผิดชอบและหลักฐานจริง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Prioritize",
+                "th": "จัดลำดับ"
+              },
+              {
+                "en": "Identify relevant safeguards and gaps.",
+                "th": "เลือก Safeguards และช่องว่างที่เกี่ยวข้อง"
+              },
+              {
+                "en": "Use risk and organisational context.",
+                "th": "อิง Risk และบริบทองค์กร"
+              }
+            ],
+            [
+              {
+                "en": "Implement",
+                "th": "นำไปใช้"
+              },
+              {
+                "en": "Assign work and apply the safeguard.",
+                "th": "มอบหมายงานและใช้มาตรการ"
+              },
+              {
+                "en": "Example: maintain an asset inventory.",
+                "th": "ตัวอย่าง: ดูแลทะเบียน Asset"
+              }
+            ],
+            [
+              {
+                "en": "Verify",
+                "th": "ตรวจผล"
+              },
+              {
+                "en": "Check that the practice operates.",
+                "th": "ตรวจว่างานเกิดขึ้นจริง"
+              },
+              {
+                "en": "Keep evidence and improve gaps.",
+                "th": "เก็บหลักฐานและปรับช่องว่าง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §34 introduces the Center for Internet Security (CIS), a nonprofit organisation, and CIS Controls as prioritized security safeguards for reducing common risks and improving security posture. CIS describes its Controls as prescriptive, prioritized practices. They offer more practical action detail than a high-level outcome alone. In this authored example, the team identifies an inventory gap, assigns an owner to maintain its asset records and checks that new assets are captured. These three teaching steps are not the official names or complete text of CIS safeguards, and this lesson does not reproduce a licensed control catalogue. A mapping to a framework or regulation can help organise evidence but does not automatically satisfy all relevant obligations. ISO/IEC 27001, NIST CSF and CIS Controls can support one programme in different ways; they are not interchangeable certificates or laws. Detailed version-specific safeguard implementation is supplemental and outside this beginner unit.",
+            "th": "A §34 แนะนำ Center for Internet Security (CIS) องค์กรไม่แสวงกำไร และ CIS Controls เป็น Safeguards ที่จัดลำดับเพื่อช่วยลดความเสี่ยงทั่วไปและปรับความปลอดภัย CIS อธิบายว่าเป็นแนวปฏิบัติที่บอกการกระทำและจัดลำดับ จึงให้แนวทางลงมือมากกว่าผลลัพธ์ระดับสูงอย่างเดียว ตัวอย่างแต่งขึ้นคือทีมพบช่องว่างทะเบียน Asset มอบหมายเจ้าของดูแล แล้วตรวจว่าเพิ่ม Asset ใหม่จริง สามขั้นนี้เป็นวิธีอธิบาย ไม่ใช่ชื่อหรือข้อความ Safeguards ทางการครบชุด บทนี้ไม่ได้คัดลอกแค็ตตาล็อก Control ที่มีเงื่อนไขสิทธิ์ Mapping กับ Framework หรือกฎหมายช่วยจัดหลักฐาน แต่ไม่ได้ทำให้ครบทุกหน้าที่โดยอัตโนมัติ ISO/IEC 27001, NIST CSF และ CIS Controls ช่วยแผนงานเดียวกันคนละบทบาท ไม่ใช่ใบรับรองหรือกฎหมายที่ใช้แทนกันได้ รายละเอียด Safeguards เฉพาะเวอร์ชันอยู่นอกบทพื้นฐานนี้"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Prioritized safeguards help action—not automatic compliance.",
+            "th": "Safeguards ช่วยลงมือ ไม่ได้ทำให้ Compliance ครบอัตโนมัติ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b",
+        "ref-cis"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      }
+    },
+    {
+      "id": "slide-05-policy-direction",
+      "title": {
+        "en": "Policy states the organisation’s direction.",
+        "th": "Policy กำหนดทิศทางที่องค์กรต้องการ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "frameworks-policy",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "High-level expectations explain what matters and who is responsible.",
+            "th": "ความคาดหวังระดับสูงบอกสิ่งสำคัญและผู้รับผิดชอบ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Management direction",
+                "th": "ทิศทางจากฝ่ายบริหาร"
+              },
+              {
+                "en": "Protect customer information.",
+                "th": "ปกป้องข้อมูลลูกค้า"
+              },
+              {
+                "en": "What and why—not every configuration.",
+                "th": "บอกอะไรและทำไม ไม่ใช่ค่าระบบทุกตัว"
+              }
+            ],
+            [
+              {
+                "en": "Scope & responsibility",
+                "th": "ขอบเขตและหน้าที่"
+              },
+              {
+                "en": "Identify who follows and owns it.",
+                "th": "ระบุผู้ต้องทำตามและเจ้าของนโยบาย"
+              },
+              {
+                "en": "Approved internal authority.",
+                "th": "มีอำนาจอนุมัติภายในองค์กร"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §29 defines policy as high-level management expectations, requirements and direction; B §7.1 associates it with what and why. It sets security objectives, responsibilities and acceptable behaviour for a defined scope. In the authored customer-data example, management requires protection and assigns accountable roles. Supporting standards provide specific requirements and procedures explain execution. A policy can be mandatory within its approved organisational scope; being internal does not mean optional. It is not the same legal authority as a statute and cannot authorise violating an applicable external duty. Document titles alone do not determine function: a file called Password Policy may include both high-level statements and detailed standards. Read the actual statement, its authority and scope. The diagram is an instructional model; organisations need not use one universal file arrangement.",
+            "th": "A §29 อธิบาย Policy เป็นความคาดหวัง ข้อกำหนด และทิศทางระดับสูงจากฝ่ายบริหาร ส่วน B §7.1 เชื่อมกับอะไรและทำไม โดยระบุเป้าหมาย หน้าที่ และพฤติกรรมที่ยอมรับได้ในขอบเขตที่กำหนด ตัวอย่างข้อมูลลูกค้าแต่งขึ้นคือฝ่ายบริหารกำหนดให้ปกป้องและระบุผู้รับผิดชอบ Standard รองรับข้อกำหนดเฉพาะ ส่วน Procedure บอกวิธีทำ Policy อาจบังคับใช้ภายในขอบเขตที่อนุมัติ คำว่าภายในไม่ได้แปลว่าทางเลือก แต่ไม่ได้มีอำนาจทางกฎหมายเหมือนตัวบท และอนุญาตให้ฝ่าฝืนหน้าที่ภายนอกไม่ได้ ชื่อไฟล์อย่างเดียวตัดสินประเภทไม่ได้ Password Policy อาจรวมทั้งหลักการและข้อกำหนดเฉพาะ ต้องดูข้อความ อำนาจ และขอบเขต แผนภาพนี้ใช้สอน ไม่ได้บังคับว่าทุกองค์กรจัดไฟล์เหมือนกัน"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Classify the statement by purpose—not only its filename.",
+            "th": "ดูหน้าที่ของข้อความ ไม่ใช่ชื่อไฟล์อย่างเดียว"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      }
+    },
+    {
+      "id": "slide-06-standard-requirement",
+      "title": {
+        "en": "A standard makes a requirement specific.",
+        "th": "Standard ทำให้ข้อกำหนดชัดเจนตรวจได้"
+      },
+      "rendererId": "comparison",
+      "layoutId": "frameworks-standard",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An adopted internal standard defines what must be met.",
+            "th": "Standard ภายในที่รับใช้แล้วกำหนดสิ่งที่ต้องทำตาม"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Policy",
+                "th": "Policy"
+              },
+              {
+                "en": "Protect administrative access.",
+                "th": "ปกป้องการเข้าถึงของผู้ดูแล"
+              },
+              {
+                "en": "High-level direction.",
+                "th": "ทิศทางระดับสูง"
+              }
+            ],
+            [
+              {
+                "en": "Internal standard",
+                "th": "Standard ภายใน"
+              },
+              {
+                "en": "All in-scope admin accounts must use MFA.",
+                "th": "บัญชี Admin ในขอบเขตต้องใช้ MFA"
+              },
+              {
+                "en": "A specific required condition.",
+                "th": "เงื่อนไขเฉพาะที่ต้องทำตาม"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §30 and B §7.1 describe an internal standard as a specific mandatory requirement supporting policy: a minimum specification or consistent criterion. The authored organisation requires MFA for all administrative accounts within its stated scope. This is a teaching example, not a universal ISC2 configuration rule or a claim that one factor type solves every access risk. A procedure then describes how to enrol, verify and support that requirement. Distinguish this internal document use of standard from an external international standard such as ISO/IEC 27001. Publishing an external standard does not automatically make it law everywhere; an applicable contract, law or internal adoption may establish an obligation. If the requirement cannot be met, the operator follows the authorised exception/escalation process rather than treating advice as permission to ignore it. An internal exception cannot waive applicable external duties.",
+            "th": "A §30 และ B §7.1 อธิบาย Standard ภายในเป็นข้อกำหนดเฉพาะที่ต้องทำตามเพื่อรองรับ Policy เช่น Specification ขั้นต่ำหรือเกณฑ์ร่วม ตัวอย่างองค์กรแต่งขึ้นกำหนด MFA กับบัญชีผู้ดูแลทั้งหมดในขอบเขต นี่เป็นตัวอย่างสอน ไม่ใช่กฎตั้งค่าที่ ISC2 บังคับทุกองค์กร หรืออ้างว่าปัจจัยแบบเดียวแก้ Risk การเข้าถึงได้หมด Procedure จะอธิบายวิธีลงทะเบียน ตรวจ และสนับสนุนข้อกำหนดนี้ ต้องแยกคำว่า Standard ภายในออกจากมาตรฐานสากลภายนอกอย่าง ISO/IEC 27001 การเผยแพร่มาตรฐานไม่ได้ทำให้เป็นกฎหมายทุกที่โดยอัตโนมัติ สัญญา กฎหมาย หรือการรับใช้ภายในอาจสร้างหน้าที่ ถ้าทำตามไม่ได้ต้องเข้าสู่กระบวนการข้อยกเว้นหรือยกระดับตามอำนาจ ไม่ใช่ใช้คำแนะนำเป็นสิทธิ์ละเลย ข้อยกเว้นภายในไม่ลบหน้าที่ภายนอก"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Specific + required within its adopted scope.",
+            "th": "เฉพาะเจาะจง และต้องทำตามในขอบเขตที่รับใช้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      }
+    },
+    {
+      "id": "slide-07-procedure-steps",
+      "title": {
+        "en": "A procedure makes the work repeatable.",
+        "th": "Procedure ทำให้งานทำซ้ำได้อย่างถูกลำดับ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "frameworks-procedure",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Follow approved steps—do not skip verification to save time.",
+            "th": "ทำตามขั้นตอนที่อนุมัติ อย่าข้ามการตรวจเพื่อความเร็ว"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Verify",
+                "th": "ตรวจสอบ"
+              },
+              {
+                "en": "Confirm identity and reset authority.",
+                "th": "ยืนยันตัวตนและอำนาจให้ Reset"
+              },
+              {
+                "en": "Before changing credentials.",
+                "th": "ก่อนเปลี่ยนข้อมูลยืนยันตัวตน"
+              }
+            ],
+            [
+              {
+                "en": "Perform",
+                "th": "ลงมือ"
+              },
+              {
+                "en": "Use the approved reset workflow.",
+                "th": "ใช้ขั้นตอน Reset ที่อนุมัติ"
+              },
+              {
+                "en": "Apply the required safeguards.",
+                "th": "ใช้มาตรการที่กำหนด"
+              }
+            ],
+            [
+              {
+                "en": "Confirm & record",
+                "th": "ยืนยันและบันทึก"
+              },
+              {
+                "en": "Check the result; document the change.",
+                "th": "ตรวจผลและบันทึกการเปลี่ยน"
+              },
+              {
+                "en": "Keep appropriate evidence.",
+                "th": "เก็บหลักฐานที่เหมาะสม"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §31 calls a procedure detailed step-by-step instructions; B §7.1 links it to how work is performed. Procedures translate policy and standards into repeatable actions, including prerequisites, responsible roles, verification and records. A contains a short reset illustration that lists authentication verification after reset; do not read that sketch as authorisation to reset an unverified requester. This authored safer sequence verifies identity and reset authority before any credential change, follows the approved workflow, then confirms the result and records appropriate evidence. It is a conceptual process, not instructions for a particular IAM product or a universal identity-verification method. A checklist can support a procedure but a vague reminder such as be careful is not a complete operational method. Staff should escalate a conflict or obsolete step through the designated owner instead of bypassing a mandatory safeguard.",
+            "th": "A §31 เรียก Procedure ว่าคำสั่งทีละขั้น ส่วน B §7.1 เชื่อมกับวิธีทำงาน Procedure แปลง Policy และ Standard เป็นงานที่ทำซ้ำได้ โดยมีเงื่อนไขก่อนทำ ผู้รับผิดชอบ การตรวจ และบันทึก ตัวอย่าง Reset แบบย่อใน A วางการตรวจ Authentication ไว้หลัง Reset จึงไม่ควรอ่านว่าอนุญาตให้ Reset ให้ผู้ร้องขอที่ยังไม่ตรวจ ตัวอย่างแต่งขึ้นนี้เรียงอย่างปลอดภัยกว่า: ยืนยันตัวตนและอำนาจก่อนเปลี่ยน Credential ใช้ Workflow ที่อนุมัติ แล้วตรวจผลและบันทึก นี่คือกระบวนการเชิงแนวคิด ไม่ใช่คู่มือ IAM เฉพาะผลิตภัณฑ์หรือวิธียืนยันตัวตนสากล Checklist ช่วย Procedure ได้ แต่คำว่าให้ระวังอย่างเดียวไม่ใช่วิธีทำครบ ถ้าขั้นตอนขัดกันหรือล้าสมัย ควรแจ้งเจ้าของงานตามช่องทาง ไม่ใช่ข้ามมาตรการบังคับ"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Procedure = how to perform and verify the work.",
+            "th": "Procedure คือวิธีทำและตรวจผลของงาน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      }
+    },
+    {
+      "id": "slide-08-guideline-advice",
+      "title": {
+        "en": "Guidelines help people choose a good approach.",
+        "th": "Guideline ช่วยเลือกแนวทางที่เหมาะสม"
+      },
+      "rendererId": "comparison",
+      "layoutId": "frameworks-guideline",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Recommended practice supports judgement within required boundaries.",
+            "th": "คำแนะนำช่วยตัดสินใจภายในขอบเขตที่ต้องทำตาม"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Required boundary",
+                "th": "ขอบเขตบังคับ"
+              },
+              {
+                "en": "Meet the adopted authentication standard.",
+                "th": "ทำตาม Authentication Standard ที่รับใช้"
+              },
+              {
+                "en": "Advice cannot waive this condition.",
+                "th": "คำแนะนำยกเลิกเงื่อนไขนี้ไม่ได้"
+              }
+            ],
+            [
+              {
+                "en": "Guideline",
+                "th": "Guideline"
+              },
+              {
+                "en": "Consider an approved passphrase approach.",
+                "th": "พิจารณาแนวทาง Passphrase ที่อนุญาต"
+              },
+              {
+                "en": "Adapt advice to the allowed context.",
+                "th": "ปรับคำแนะนำให้เหมาะกับบริบทที่อนุญาต"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §28 and B §7.1 describe a guideline as recommended practice or advice: generally advisory, flexible and adaptable. It helps a person choose an approach where judgement is allowed. The authored passphrase example is not a fixed password length or new authentication rule. Recommendations must fit the applicable policy and standard. A guideline does not give an operator permission to ignore an adopted requirement or law. Conversely, calling a document a guideline does not cancel a clause made mandatory by an authoritative adoption or contract; check the actual requirement and scope. Policy supplies direction, a standard sets a specific condition, a procedure sets the steps and a guideline recommends a helpful approach. These are useful functional distinctions, not proof that every organisation stores four separate files. Identify what the statement does and how it becomes applicable.",
+            "th": "A §28 และ B §7.1 อธิบาย Guideline เป็นแนวปฏิบัติแนะนำหรือคำปรึกษา โดยทั่วไปยืดหยุ่นและปรับใช้ได้ ช่วยเลือกวิธีเมื่อมีพื้นที่ให้ใช้ดุลยพินิจ ตัวอย่าง Passphrase แต่งขึ้นไม่ได้กำหนดความยาว Password ตายตัวหรือกฎ Authentication ใหม่ คำแนะนำต้องอยู่ภายใต้ Policy และ Standard ที่ใช้ Guideline ไม่ให้สิทธิ์ละเลยข้อกำหนดที่รับใช้หรือกฎหมาย ในทางกลับกัน การตั้งชื่อไฟล์ว่า Guideline ก็ไม่ลบข้อที่ถูกบังคับผ่านการรับใช้ตามอำนาจหรือสัญญา ต้องตรวจข้อกำหนดและขอบเขต Policy ให้ทิศทาง Standard ให้เงื่อนไขเฉพาะ Procedure ให้ขั้นตอน และ Guideline แนะนำวิธีที่ช่วยได้ นี่คือการแยกหน้าที่ ไม่ได้พิสูจน์ว่าทุกองค์กรต้องมีสี่ไฟล์เสมอ ให้ดูว่าข้อความทำอะไรและใช้บังคับอย่างไร"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Recommended advice operates inside applicable requirements.",
+            "th": "คำแนะนำใช้ได้ภายในข้อกำหนดที่เกี่ยวข้อง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      }
+    },
+    {
+      "id": "slide-09-classify-the-purpose",
+      "title": {
+        "en": "Which document function does this statement serve?",
+        "th": "ข้อความนี้ทำหน้าที่เป็นเอกสารแบบใด?"
+      },
+      "rendererId": "interactive",
+      "layoutId": "frameworks-classify",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "“All in-scope admin accounts must use MFA.” Choose a classification.",
+            "th": "“บัญชี Admin ในขอบเขตทั้งหมดต้องใช้ MFA” เลือกประเภทเพื่อดูเหตุผล"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Policy",
+                "th": "Policy"
+              },
+              {
+                "en": "Policy sets high-level direction.",
+                "th": "Policy กำหนดทิศทางระดับสูง"
+              },
+              {
+                "en": "This statement gives a specific condition.",
+                "th": "แต่ข้อความนี้ให้เงื่อนไขเฉพาะ"
+              }
+            ],
+            [
+              {
+                "en": "Standard",
+                "th": "Standard"
+              },
+              {
+                "en": "A specific mandatory requirement.",
+                "th": "ข้อกำหนดเฉพาะที่ต้องทำตาม"
+              },
+              {
+                "en": "Correct for this adopted internal requirement.",
+                "th": "ตรงกับข้อกำหนดภายในที่รับใช้ในตัวอย่าง"
+              }
+            ],
+            [
+              {
+                "en": "Procedure",
+                "th": "Procedure"
+              },
+              {
+                "en": "Procedure provides ordered steps.",
+                "th": "Procedure ให้ขั้นตอนตามลำดับ"
+              },
+              {
+                "en": "This statement does not describe how to enrol.",
+                "th": "ข้อความนี้ไม่ได้บอกวิธีลงทะเบียน"
+              }
+            ],
+            [
+              {
+                "en": "Guideline",
+                "th": "Guideline"
+              },
+              {
+                "en": "Guideline offers recommended practice.",
+                "th": "Guideline ให้แนวปฏิบัติแนะนำ"
+              },
+              {
+                "en": "“Must” here expresses an adopted requirement.",
+                "th": "คำว่าต้องในที่นี้เป็นข้อกำหนดที่รับใช้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This original non-scored exercise applies A §32 and B §7.1. The organisation has adopted a mandatory MFA requirement for its in-scope administrative accounts. Standard is the best function because the statement specifies a condition that must be met. Policy would give the broader direction to protect privileged access. Procedure would give ordered instructions for enrolment, verification and support. Guideline would recommend an approach where choice is allowed. Do not classify by spotting one keyword alone: read what the statement does, who issued it and its scope. A document titled policy may contain a standard-like clause; this exercise asks for the clause function, not the filename. The feedback explains each choice in both languages and changes no exam score or progress schema. Real implementation requirements still depend on the organisation and applicable obligations.",
+            "th": "แบบฝึกแต่งขึ้นไม่มีคะแนนนี้ประยุกต์ A §32 และ B §7.1 องค์กรรับใช้ข้อกำหนด MFA กับบัญชีผู้ดูแลในขอบเขตแล้ว Standard เป็นหน้าที่ที่ตรงที่สุด เพราะระบุเงื่อนไขเฉพาะที่ต้องทำตาม Policy จะเป็นทิศทางกว้างเพื่อปกป้องสิทธิ์สูง Procedure จะบอกขั้นตอนลงทะเบียน ตรวจ และสนับสนุน ส่วน Guideline แนะนำวิธีเมื่อเลือกได้ อย่าตัดสินด้วย Keyword คำเดียว ต้องอ่านหน้าที่ ผู้กำหนด และขอบเขต เอกสารชื่อ Policy อาจมีข้อแบบ Standard อยู่ แบบฝึกถามหน้าที่ของข้อความ ไม่ใช่ชื่อไฟล์ Feedback อธิบายทุกตัวเลือกทั้งสองภาษา ไม่เปลี่ยนคะแนนสอบหรือโครงสร้าง Progress การใช้จริงยังขึ้นกับองค์กรและหน้าที่ที่เกี่ยวข้อง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Read purpose + authority + scope—not a keyword alone.",
+            "th": "อ่านหน้าที่ อำนาจ และขอบเขต ไม่ใช่คำเดียว"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      }
+    },
+    {
+      "id": "slide-10-connect-and-review",
+      "title": {
+        "en": "Keep direction, requirements and steps aligned.",
+        "th": "ให้ทิศทาง ข้อกำหนด และขั้นตอนสอดคล้องกัน"
+      },
+      "rendererId": "comparison",
+      "layoutId": "frameworks-connect",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "One security outcome needs a coherent set of working documents.",
+            "th": "ผลลัพธ์เดียวต้องมีเอกสารที่เชื่อมกันและใช้ทำงานได้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Decision context",
+              "th": "บริบทตัดสินใจ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Policy → Standard",
+                "th": "Policy → Standard"
+              },
+              {
+                "en": "Protect access → require in-scope MFA.",
+                "th": "ปกป้องการเข้าถึง → กำหนด MFA ในขอบเขต"
+              },
+              {
+                "en": "Direction becomes a specific condition.",
+                "th": "แปลงทิศทางเป็นเงื่อนไขเฉพาะ"
+              }
+            ],
+            [
+              {
+                "en": "Standard → Procedure",
+                "th": "Standard → Procedure"
+              },
+              {
+                "en": "Require MFA → enrol, verify and support it.",
+                "th": "กำหนด MFA → ลงทะเบียน ตรวจ และสนับสนุน"
+              },
+              {
+                "en": "A condition becomes repeatable work.",
+                "th": "แปลงเงื่อนไขเป็นงานที่ทำซ้ำได้"
+              }
+            ],
+            [
+              {
+                "en": "Review & guidance",
+                "th": "ทบทวนและคำแนะนำ"
+              },
+              {
+                "en": "Check evidence and update affected documents.",
+                "th": "ตรวจหลักฐานและปรับเอกสารที่เกี่ยว"
+              },
+              {
+                "en": "Guidelines help; they do not override requirements.",
+                "th": "Guideline ช่วยได้ แต่ไม่ลบข้อกำหนด"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §§27–34 and B §7.1 explain complementary governance resources and document functions. A framework helps organise outcomes and gaps; ISO/IEC 27001 specifies ISMS requirements; CIS Controls offers prioritized safeguards. Locally approved policy, standards and procedures turn direction into work, supported by guidelines and evidence. This authored chain is a teaching model, not a rigid universal hierarchy or claim that an external framework outranks a law. An owner keeps the relevant versions approved, available to the people doing the work and consistent with applicable obligations. If a service or requirement changes, review affected standards, steps, advice and evidence rather than changing one file in isolation. Detailed document-control programmes are supplemental; the core lesson is functional distinction and alignment. Together with L08 applicability and legal/contractual scope, this completes the planned introductory 1.3 teaching for self-audit, subject to human academic and bilingual review. Control categories and functions are taught in Lessons 10–11; professional conduct and ethics follow in Lesson 12.",
+            "th": "A §§27–34 และ B §7.1 อธิบายแหล่ง Governance และหน้าที่เอกสารที่ช่วยกัน Framework จัดผลลัพธ์และช่องว่าง ISO/IEC 27001 กำหนด ISMS ส่วน CIS Controls ให้ Safeguards ที่จัดลำดับ Policy, Standard และ Procedure ที่องค์กรอนุมัติแปลงทิศทางเป็นงาน โดยมี Guideline และหลักฐานสนับสนุน สายงานนี้ใช้สอน ไม่ใช่ลำดับชั้นสากลตายตัวหรืออ้างว่า Framework ภายนอกอยู่เหนือกฎหมาย เจ้าของงานดูแลฉบับที่อนุมัติ ให้ผู้ทำงานเข้าถึง และสอดคล้องกับหน้าที่ที่ใช้ ถ้าบริการหรือข้อกำหนดเปลี่ยน ต้องทบทวน Standard ขั้นตอน คำแนะนำ และหลักฐานที่กระทบ ไม่ใช่แก้ไฟล์เดียว รายละเอียดโครงการควบคุมเอกสารเป็นส่วนเสริม ใจความหลักคือแยกหน้าที่และเชื่อมให้ตรงกัน เมื่อรวม L08 เรื่อง Applicability และกฎหมาย/สัญญาแล้ว ครบแผนสอนพื้นฐาน 1.3 สำหรับ Self-audit แต่ยังต้องให้มนุษย์ทบทวนวิชาการและภาษา บท 10–11 สอนประเภทและหน้าที่ของ Controls ส่วนบท 12 สอนความประพฤติวิชาชีพและ Ethics"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Approved direction → clear requirements → verified work.",
+            "th": "ทิศทางที่อนุมัติ → ข้อกำหนดชัด → งานที่ตรวจผลได้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "ref-outline",
+      "title": "ISC2 CC Exam Outline — September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain 1 Objective 1.3: frameworks/guidelines; policies, standards (ISO/CIS), procedures.",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "ref-a",
+      "title": "User Domain 1 Summary (Source A)",
+      "authority": "course",
+      "locator": "A §§27–34: framework, guideline, policy, standard, procedure, ISO/IEC 27001 and CIS Controls.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/D1 sum.md"
+    },
+    {
+      "id": "ref-b",
+      "title": "User Domain 1 Course Notes (Source B)",
+      "authority": "course",
+      "locator": "B §7.1 document distinctions; §7.2 governance context.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/Domain 1.md"
+    },
+    {
+      "id": "ref-nist",
+      "title": "NIST Cybersecurity Framework FAQs",
+      "authority": "technical-primary",
+      "locator": "CSF 2.0 outcomes, concurrent functions, Current/Target Profiles and adaptable implementation.",
+      "url": "https://www.nist.gov/cyberframework/faqs"
+    },
+    {
+      "id": "ref-iso",
+      "title": "ISO/IEC 27001 — ISMS requirements",
+      "authority": "technical-primary",
+      "locator": "ISMS requirements, risk-based management, maintenance and continual improvement.",
+      "url": "https://www.iso.org/standard/27001"
+    },
+    {
+      "id": "ref-cert",
+      "title": "ISO — Certification",
+      "authority": "technical-primary",
+      "locator": "ISO develops standards; external bodies perform certification.",
+      "url": "https://www.iso.org/certification.html"
+    },
+    {
+      "id": "ref-cis",
+      "title": "CIS Critical Security Controls",
+      "authority": "technical-primary",
+      "locator": "CIS Controls: prioritized prescriptive safeguards and practical security actions.",
+      "url": "https://www.cisecurity.org/controls"
+    }
+  ],
+  "assets": [],
+  "review": {
+    "reviewedRevision": "2",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-1-final-signoff-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex assistant targeted final remediation technical review; human acceptance pending",
+      "reviewedAt": "2026-10-28"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex assistant targeted final remediation bilingual review; human acceptance pending",
+      "reviewedAt": "2026-10-28"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — rights self-review; user review pending",
+      "reviewedAt": "2026-10-27"
+    }
+  },
+  "slideOrder": [
+    "slide-01-framework-structure",
+    "slide-02-nist-outcomes",
+    "slide-03-iso-isms",
+    "slide-04-cis-safeguards",
+    "slide-05-policy-direction",
+    "slide-06-standard-requirement",
+    "slide-07-procedure-steps",
+    "slide-08-guideline-advice",
+    "slide-09-classify-the-purpose",
+    "slide-10-connect-and-review"
+  ]
+}

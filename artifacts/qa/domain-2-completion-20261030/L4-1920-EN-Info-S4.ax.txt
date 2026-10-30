@@ -1,0 +1,127 @@
+- navigation "Presentation controls":
+  - button "Back to Domain":
+  - generic "Disaster Recovery, RTO/RPO & Recovery Strategies":
+    - generic: DOMAIN 2 · OBJECTIVE 2.2
+    - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=1]
+  - group "Slide navigation":
+    - button "Previous slide":
+      - generic: ‹
+    - generic: 9 / 9
+    - button "Finish Lesson":
+      - generic: Finish Lesson
+  - group "Content language":
+    - button "TH":
+      - generic: TH
+    - button "EN" [pressed]:
+      - generic: EN
+  - button "Slides":
+    - generic: Slides
+  - button "Lesson Info":
+    - generic: Info
+  - button "Keyboard shortcuts":
+  - button "Fullscreen":
+    - generic: ⛶
+  - button "Toggle theme":
+- region "Which recovery plan fits the business targets? (9/9)":
+  - article:
+    - heading "Which recovery plan fits the business targets?" [level=2]:
+      - generic: Which recovery plan fits the business targets?
+    - heading "Which recovery plan fits the business targets?" [level=3]:
+      - generic: Which recovery plan fits the business targets?
+    - paragraph:
+      - generic: "The order database fails at 17:00. Acceptable data loss: 30 min. Downtime target: 1 hour."
+    - group "Scenario decision options":
+      - button "Call data loss RTO; start buying Cold Site servers.":
+        - generic: A
+        - generic: Call data loss RTO; start buying Cold Site servers.
+      - button "Keep daily backups only at the primary site; skip drills.":
+        - generic: B
+        - generic: Keep daily backups only at the primary site; skip drills.
+      - button "RPO 30 min, RTO 1 hour; protected copies and tested recovery capacity.":
+        - generic: C
+        - generic: RPO 30 min, RTO 1 hour; protected copies and tested recovery capacity.
+      - button "Restore test servers first; recover orders next week." [pressed]:
+        - generic: D
+        - generic: Restore test servers first; recover orders next week.
+    - heading "Consider what is missing" [level=4]:
+      - generic: Consider what is missing
+    - paragraph:
+      - generic: Noncritical systems should not displace BIA-driven priorities. Waiting until next week misses the one-hour RTO, and stakeholders need coordinated status updates.
+  - button "Toggle reading layout":
+    - generic: Toggle reading layout
+- paragraph: Which recovery plan fits the business targets? (9/9)
+- dialog "Lesson Info":
+  - heading "Lesson Info" [level=2]
+  - button "Close": ✕
+  - paragraph: OBJECTIVE 2.2
+  - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=3]:
+    - generic: Disaster Recovery, RTO/RPO & Recovery Strategies
+  - heading "What you'll learn" [level=4]
+  - list:
+    - generic: Define Disaster Recovery (DR) and a Disaster Recovery Plan (DRP), explain how DRP supports the broader Business Continuity Plan (BCP), and identify the five strategic benefits of DR while keeping GDPR/HIPAA within their proper illustrative bounds.
+    - generic: Distinguish Recovery Time Objective (RTO, maximum acceptable downtime) from Recovery Point Objective (RPO, maximum acceptable data loss in time) using directional timelines and worked outage calculations, while recognizing that targets are not guarantees.
+    - generic: Evaluate backup and restoration strategies (cloud backups and off-site storage) and compare Hot Sites, Warm Sites, and Cold Sites across readiness, restoration speed, and cost trade-offs.
+    - generic: Explain why regular DRP testing and drills, clear IT/business recovery priorities, and role coordination are essential, and master the seven-dimension comparison between Business Continuity (BC) and Disaster Recovery (DR).
+  - generic "Slides 1–9 — Full explanations"
+  - generic "Slide 1 — Restore a working service, not just a server."
+  - generic "Slide 2 — Recovery reduces the business impact of an outage."
+  - generic "Slide 3 — RPO looks back. RTO sets the recovery-time target."
+  - generic "Slide 4 — Separate the target from what actually happened." [active]
+  - heading "Separate the target from what actually happened." [level=2]:
+    - generic: Separate the target from what actually happened.
+  - paragraph:
+    - generic: At a 17:00 outage, RPO = 30 min and RTO = 1 hour define two different boundaries.
+  - table "Illustrative worked RTO/RPO calculations from Domain 2.md (§9.3) and course slide S18 / transcript (T:L55–60)":
+    - caption:
+      - generic: Illustrative worked RTO/RPO calculations from Domain 2.md (§9.3) and course slide S18 / transcript (T:L55–60)
+    - rowgroup:
+      - row "Illustrative Case Timeline Timestamps & Targets RPO & RTO Calculation Result":
+        - columnheader "Illustrative Case":
+          - generic: Illustrative Case
+        - columnheader "Timeline Timestamps & Targets":
+          - generic: Timeline Timestamps & Targets
+        - columnheader "RPO & RTO Calculation Result":
+          - generic: RPO & RTO Calculation Result
+    - rowgroup:
+      - 'row "Case A: 17:00 Outage Target (Domain 2.md §9.3) Disruption occurs at 17:00. Organization sets RPO = 30 minutes and RTO = 1 hour for the affected critical system. To meet RPO (30 min), recoverable data must be no older than 16:30. To meet RTO (1 hr), the system must be restored by 18:00."':
+        - 'cell "Case A: 17:00 Outage Target (Domain 2.md §9.3)"':
+          - generic: "Case A: 17:00 Outage Target (Domain 2.md §9.3)"
+        - cell "Disruption occurs at 17:00. Organization sets RPO = 30 minutes and RTO = 1 hour for the affected critical system.":
+          - generic: Disruption occurs at 17:00. Organization sets RPO = 30 minutes and RTO = 1 hour for the affected critical system.
+        - cell "To meet RPO (30 min), recoverable data must be no older than 16:30. To meet RTO (1 hr), the system must be restored by 18:00.":
+          - generic: To meet RPO (30 min), recoverable data must be no older than 16:30. To meet RTO (1 hr), the system must be restored by 18:00.
+      - 'row "Case B1: 4:30 PM Crash with Hourly Backup (S18 / T:L57–59) Critical customer database has RPO ≤ 1 hour (backups at 4:00 PM and 5:00 PM). A crash occurs at 4:30 PM. Restoring the 4:00 PM backup results in 30 minutes of data loss (4:00–4:30 PM), which satisfies the ≤ 1 hour RPO target."':
+        - 'cell "Case B1: 4:30 PM Crash with Hourly Backup (S18 / T:L57–59)"':
+          - generic: "Case B1: 4:30 PM Crash with Hourly Backup (S18 / T:L57–59)"
+        - cell "Critical customer database has RPO ≤ 1 hour (backups at 4:00 PM and 5:00 PM). A crash occurs at 4:30 PM.":
+          - generic: Critical customer database has RPO ≤ 1 hour (backups at 4:00 PM and 5:00 PM). A crash occurs at 4:30 PM.
+        - cell "Restoring the 4:00 PM backup results in 30 minutes of data loss (4:00–4:30 PM), which satisfies the ≤ 1 hour RPO target.":
+          - generic: Restoring the 4:00 PM backup results in 30 minutes of data loss (4:00–4:30 PM), which satisfies the ≤ 1 hour RPO target.
+      - 'row "Case B2: 5:20 PM Crash After 5:00 PM Backup (S18 / T:L59–60) Fresh backup completes at 5:00 PM. A subsequent failure occurs at 5:20 PM. The 17:00 (5:00 PM) usable backup and 17:20 (5:20 PM) crash imply 20 minutes of data loss. No restoration timestamp is supplied, so observed RTO achievement cannot be determined."':
+        - 'cell "Case B2: 5:20 PM Crash After 5:00 PM Backup (S18 / T:L59–60)"':
+          - generic: "Case B2: 5:20 PM Crash After 5:00 PM Backup (S18 / T:L59–60)"
+        - cell "Fresh backup completes at 5:00 PM. A subsequent failure occurs at 5:20 PM.":
+          - generic: Fresh backup completes at 5:00 PM. A subsequent failure occurs at 5:20 PM.
+        - cell "The 17:00 (5:00 PM) usable backup and 17:20 (5:20 PM) crash imply 20 minutes of data loss. No restoration timestamp is supplied, so observed RTO achievement cannot be determined.":
+          - generic: The 17:00 (5:00 PM) usable backup and 17:20 (5:20 PM) crash imply 20 minutes of data loss. No restoration timestamp is supplied, so observed RTO achievement cannot be determined.
+      - 'row "Review Question Pattern (Domain 2.md §25 Q2 & Q3) Q2: ''A database crashes and must be restored within 2 hours.'' Q3: ''The organization can tolerate losing at most 15 minutes of data.'' 2 hours of maximum downtime = RTO (Q2); 15 minutes of maximum acceptable data loss = RPO (Q3). Both numbers are illustrative organizational targets."':
+        - cell "Review Question Pattern (Domain 2.md §25 Q2 & Q3)":
+          - generic: Review Question Pattern (Domain 2.md §25 Q2 & Q3)
+        - 'cell "Q2: ''A database crashes and must be restored within 2 hours.'' Q3: ''The organization can tolerate losing at most 15 minutes of data.''"':
+          - generic: "Q2: 'A database crashes and must be restored within 2 hours.' Q3: 'The organization can tolerate losing at most 15 minutes of data.'"
+        - cell "2 hours of maximum downtime = RTO (Q2); 15 minutes of maximum acceptable data loss = RPO (Q3). Both numbers are illustrative organizational targets.":
+          - generic: 2 hours of maximum downtime = RTO (Q2); 15 minutes of maximum acceptable data loss = RPO (Q3). Both numbers are illustrative organizational targets.
+  - paragraph:
+    - generic: "For the 17:00 outage, an RPO of 30 minutes requires usable data from 16:30 or later; an RTO of one hour sets an 18:00 restoration deadline. These timestamps are targets, not observations that a backup or restoration actually occurred. The lecture gives two separate observed data-age examples with hourly backups: a 16:30 crash after a 16:00 backup loses 30 minutes; a later 17:20 crash after a 17:00 backup loses 20 minutes. Neither example supplies a service-restoration timestamp, so neither establishes an observed RTO breach. To evaluate a real result, check the last usable data point and the actual service-restoration time separately."
+  - list:
+    - generic: "Step-by-Step Calculation Rule: Start at the Outage Timestamp (T0). Subtract RPO (T0 − RPO) to find the earliest acceptable backup timestamp; add RTO (T0 + RTO) to find the latest acceptable restoration timestamp."
+    - generic: "Evaluating Target Achievement vs. Breach: If T0 = 17:00, RPO = 30m, and the last usable backup is from 16:00 (60m data loss), RPO was breached by 30 minutes even if the server comes back online within the 1-hour RTO."
+    - generic: "Illustrative Nature Guardrail: Never memorize '1 hour' or '30 minutes' as universal legal mandates—they are illustrative scenarios used to test whether you can separate downtime duration (RTO) from data-loss age (RPO)."
+  - paragraph:
+    - generic: "Key Takeaway: At outage time T0 = 17:00, RPO = 30 min requires recoverable data from ≥ 16:30, and RTO = 1 hr requires service restoration by ≤ 18:00."
+  - generic "Slide 5 — A backup is useful when you can restore it."
+  - generic "Slide 6 — A recovery site still has work to complete."
+  - generic "Slide 7 — Exercise the plan, measure, then correct the gaps."
+  - generic "Slide 8 — Keep the business going while IT recovers."
+  - generic "Slide 9 — Which recovery plan fits the business targets?"
+  - generic "References & lesson details"

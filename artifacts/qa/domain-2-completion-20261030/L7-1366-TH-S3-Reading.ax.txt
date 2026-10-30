@@ -1,0 +1,81 @@
+- navigation "Presentation controls":
+  - button "Back to Domain":
+  - generic "Security Metrics, KPIs & KRIs":
+    - generic: DOMAIN 2 · OBJECTIVE 2.4
+    - heading "Security Metrics, KPIs & KRIs" [level=1]
+  - group "Slide navigation":
+    - button "Previous slide":
+      - generic: ‹
+    - generic: 3 / 7
+    - button "Next slide" [active]:
+      - generic: ›
+  - group "Content language":
+    - button "TH" [pressed]:
+      - generic: TH
+    - button "EN":
+      - generic: EN
+  - button "Slides":
+    - generic: Slides
+  - button "Lesson Info":
+    - generic: Info
+  - button "Keyboard shortcuts":
+  - button "Fullscreen":
+    - generic: ⛶
+  - button "Toggle theme":
+- region "Define where each response clock starts and stops. (3/7)":
+  - article:
+    - heading "กำหนดจุดเริ่มและจุดจบของเวลาตอบสนอง" [level=2]:
+      - generic: กำหนดจุดเริ่มและจุดจบของเวลาตอบสนอง
+    - paragraph:
+      - generic: MTTD และ MTTR เป็นค่าเฉลี่ยของเหตุที่กำหนด ไม่รับประกันเหตุครั้งหน้า
+    - table "แนวคิดและเหตุผลในการปฏิบัติ":
+      - caption:
+        - generic: แนวคิดและเหตุผลในการปฏิบัติ
+      - rowgroup:
+        - row "แนวคิด / แนวทาง ความหมาย / การใช้ เหตุผล / ขอบเขต":
+          - columnheader "แนวคิด / แนวทาง":
+            - generic: แนวคิด / แนวทาง
+          - columnheader "ความหมาย / การใช้":
+            - generic: ความหมาย / การใช้
+          - columnheader "เหตุผล / ขอบเขต":
+            - generic: เหตุผล / ขอบเขต
+      - rowgroup:
+        - row "Vulnerability Management % ช่องโหว่ Critical ที่แก้ภายในเวลาที่กำหนด ระบุขอบเขตเหตุและหลักฐานที่ใช้":
+          - cell "Vulnerability Management":
+            - generic: Vulnerability Management
+          - cell "% ช่องโหว่ Critical ที่แก้ภายในเวลาที่กำหนด":
+            - generic: "% ช่องโหว่ Critical ที่แก้ภายในเวลาที่กำหนด"
+          - cell "ระบุขอบเขตเหตุและหลักฐานที่ใช้":
+            - generic: ระบุขอบเขตเหตุและหลักฐานที่ใช้
+        - row "Incident Response Mean Time to Respond ระบุขอบเขตเหตุและหลักฐานที่ใช้":
+          - cell "Incident Response":
+            - generic: Incident Response
+          - cell "Mean Time to Respond":
+            - generic: Mean Time to Respond
+          - cell "ระบุขอบเขตเหตุและหลักฐานที่ใช้":
+            - generic: ระบุขอบเขตเหตุและหลักฐานที่ใช้
+        - row "Security Awareness % พนักงานที่เรียน Awareness ครบ ระบุขอบเขตเหตุและหลักฐานที่ใช้":
+          - cell "Security Awareness":
+            - generic: Security Awareness
+          - cell "% พนักงานที่เรียน Awareness ครบ":
+            - generic: "% พนักงานที่เรียน Awareness ครบ"
+          - cell "ระบุขอบเขตเหตุและหลักฐานที่ใช้":
+            - generic: ระบุขอบเขตเหตุและหลักฐานที่ใช้
+        - row "Patch Management % ระบบที่ผ่านข้อกำหนด Patch ระบุขอบเขตเหตุและหลักฐานที่ใช้":
+          - cell "Patch Management":
+            - generic: Patch Management
+          - cell "% ระบบที่ผ่านข้อกำหนด Patch":
+            - generic: "% ระบบที่ผ่านข้อกำหนด Patch"
+          - cell "ระบุขอบเขตเหตุและหลักฐานที่ใช้":
+            - generic: ระบุขอบเขตเหตุและหลักฐานที่ใช้
+    - paragraph:
+      - generic: MTTD หมายถึง Mean Time to Detect ส่วนบทเรียนนี้ใช้ MTTR ว่า Mean Time to Respond องค์กรอื่นอาจขยายคำต่างกัน จึงต้องกำหนดก่อนเทียบค่า เมื่อสร้างตัววัดภายใน ให้ระบุเวลาเริ่มเหตุ จุดตรวจพบ และจุดตอบสนอง แล้วหาค่าเฉลี่ยช่วงเวลาที่เทียบกันได้จากกลุ่ม Incident ที่ระบุ ค่าเฉลี่ยอาจซ่อนเหตุที่ช้ามาก และขึ้นกับสิ่งที่ตรวจพบหรือพลาด อย่าเปลี่ยนความหมาย Respond เป็นกู้คืนเสร็จทั้งหมดโดยไม่บอก ต้นฉบับยังใช้ Metric กับการแก้ช่องโหว่ การเรียน Awareness และข้อกำหนด Patch ซึ่งแต่ละเรื่องต้องมีประชากร ช่วงเวลา และวิธีตีความของตน
+    - list:
+      - generic: เลือกและบันทึกจุดตอบสนองก่อนเก็บระยะเวลา
+      - generic: รายงานกลุ่ม Incident และตรวจเหตุที่ผิดจากกลุ่มมาก
+      - generic: ตัววัดเรียนครบวัดการเข้าร่วม ไม่ใช่พฤติกรรมปลอดภัยทุกด้าน
+    - paragraph:
+      - generic: เทียบคำนิยามเดียวกันและเหตุที่เทียบกันได้
+  - button "Toggle reading layout":
+    - generic: Toggle reading layout
+- paragraph: Define where each response clock starts and stops. (3/7)

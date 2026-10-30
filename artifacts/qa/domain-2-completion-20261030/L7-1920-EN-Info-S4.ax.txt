@@ -1,0 +1,137 @@
+- navigation "Presentation controls":
+  - button "Back to Domain":
+  - generic "Security Metrics, KPIs & KRIs":
+    - generic: DOMAIN 2 · OBJECTIVE 2.4
+    - heading "Security Metrics, KPIs & KRIs" [level=1]
+  - group "Slide navigation":
+    - button "Previous slide":
+      - generic: ‹
+    - generic: 7 / 7
+    - button "Finish Lesson":
+      - generic: Finish Lesson
+  - group "Content language":
+    - button "TH":
+      - generic: TH
+    - button "EN" [pressed]:
+      - generic: EN
+  - button "Slides":
+    - generic: Slides
+  - button "Lesson Info":
+    - generic: Info
+  - button "Keyboard shortcuts":
+  - button "Fullscreen":
+    - generic: ⛶
+  - button "Toggle theme":
+- region "The patch KPI improved, but privileged accounts lack MFA. (7/7)":
+  - article:
+    - heading "The patch KPI improved, but privileged accounts lack MFA." [level=2]:
+      - generic: The patch KPI improved, but privileged accounts lack MFA.
+    - heading "The patch KPI improved, but privileged accounts lack MFA." [level=3]:
+      - generic: The patch KPI improved, but privileged accounts lack MFA.
+    - paragraph:
+      - generic: How should the team interpret these two pieces of evidence?
+    - group "Scenario decision options":
+      - button "Declare low risk because the patch KPI improved.":
+        - generic: A
+        - generic: Declare low risk because the patch KPI improved.
+      - button "Rename every measure a KPI and hide exposure counts.":
+        - generic: B
+        - generic: Rename every measure a KPI and hide exposure counts.
+      - button "Validate the definitions, review critical exposure and assign action owners.":
+        - generic: C
+        - generic: Validate the definitions, review critical exposure and assign action owners.
+      - button "Assume more phishing reports always mean more successful attacks." [pressed]:
+        - generic: D
+        - generic: Assume more phishing reports always mean more successful attacks.
+    - heading "Consider what is missing" [level=4]:
+      - generic: Consider what is missing
+    - paragraph:
+      - generic: Reports are not confirmed successful incidents. Check threat activity, reporting behaviour and coverage.
+  - button "Toggle reading layout":
+    - generic: Toggle reading layout
+- paragraph: The patch KPI improved, but privileged accounts lack MFA. (7/7)
+- dialog "Lesson Info":
+  - heading "Lesson Info" [level=2]
+  - button "Close": ✕
+  - paragraph: OBJECTIVE 2.4
+  - heading "Security Metrics, KPIs & KRIs" [level=3]:
+    - generic: Security Metrics, KPIs & KRIs
+  - heading "What you'll learn" [level=4]
+  - list:
+    - generic: Explain the source metrics, applied domains and six KRI examples.
+    - generic: Interpret a defined 15-day patch KPI with scope, data quality and uncertainty.
+  - generic "Slides 1–7 — Full explanations"
+  - generic "Slide 1 — Choose the decision before the number."
+  - generic "Slide 2 — “90% patched” needs a population and a date."
+  - generic "Slide 3 — Define where each response clock starts and stops."
+  - generic "Slide 4 — A KRI signals exposure that needs attention." [active]
+  - heading "A KRI signals exposure that needs attention." [level=2]:
+    - generic: A KRI signals exposure that needs attention.
+  - paragraph:
+    - generic: Use a risk-related measure to decide where to investigate or act.
+  - table "Concepts and practical reasoning":
+    - caption:
+      - generic: Concepts and practical reasoning
+    - rowgroup:
+      - row "Concept / action Meaning / application Reason / boundary":
+        - columnheader "Concept / action":
+          - generic: Concept / action
+        - columnheader "Meaning / application":
+          - generic: Meaning / application
+        - columnheader "Reason / boundary":
+          - generic: Reason / boundary
+    - rowgroup:
+      - row "Critical unpatched vulnerabilities Exposure remains open Interpret with scope, trend and business impact.":
+        - cell "Critical unpatched vulnerabilities":
+          - generic: Critical unpatched vulnerabilities
+        - cell "Exposure remains open":
+          - generic: Exposure remains open
+        - cell "Interpret with scope, trend and business impact.":
+          - generic: Interpret with scope, trend and business impact.
+      - row "Privileged accounts without MFA Privileged access may be less protected Interpret with scope, trend and business impact.":
+        - cell "Privileged accounts without MFA":
+          - generic: Privileged accounts without MFA
+        - cell "Privileged access may be less protected":
+          - generic: Privileged access may be less protected
+        - cell "Interpret with scope, trend and business impact.":
+          - generic: Interpret with scope, trend and business impact.
+      - row "Failed security controls Expected protection may be missing Interpret with scope, trend and business impact.":
+        - cell "Failed security controls":
+          - generic: Failed security controls
+        - cell "Expected protection may be missing":
+          - generic: Expected protection may be missing
+        - cell "Interpret with scope, trend and business impact.":
+          - generic: Interpret with scope, trend and business impact.
+      - row "Increase in phishing reports Investigate threats and reporting behaviour Interpret with scope, trend and business impact.":
+        - cell "Increase in phishing reports":
+          - generic: Increase in phishing reports
+        - cell "Investigate threats and reporting behaviour":
+          - generic: Investigate threats and reporting behaviour
+        - cell "Interpret with scope, trend and business impact.":
+          - generic: Interpret with scope, trend and business impact.
+      - row "Unsupported systems Support and remediation options may be limited Interpret with scope, trend and business impact.":
+        - cell "Unsupported systems":
+          - generic: Unsupported systems
+        - cell "Support and remediation options may be limited":
+          - generic: Support and remediation options may be limited
+        - cell "Interpret with scope, trend and business impact.":
+          - generic: Interpret with scope, trend and business impact.
+      - row "Critical systems without tested backups Recoverability is unproven Interpret with scope, trend and business impact.":
+        - cell "Critical systems without tested backups":
+          - generic: Critical systems without tested backups
+        - cell "Recoverability is unproven":
+          - generic: Recoverability is unproven
+        - cell "Interpret with scope, trend and business impact.":
+          - generic: Interpret with scope, trend and business impact.
+  - paragraph:
+    - generic: "A Key Risk Indicator (KRI) provides an indication of changing risk so the organization can investigate before a significant loss. The source examples are unpatched critical vulnerabilities, privileged accounts without MFA, failed controls, increased phishing reports, unsupported systems and critical systems without tested backups. A KRI is not a prediction that an incident must occur. For example,more reports may reflect more attacks or improved reporting. The official Domain 2 AI guidance also supports AI-specific KRIs: a defined measure of deteriorating model performance (model drift) may flag an operational concern in a critical service. Select validated measures and escalation criteria in context; no universal numeric threshold is implied."
+  - list:
+    - generic: A KRI helps prioritize review; it is not a full risk assessment.
+    - generic: Criticality and compensating safeguards affect interpretation.
+    - generic: AI-specific indicators need an owner, data quality and a response process.
+  - paragraph:
+    - generic: An indicator starts a question; context supports the answer.
+  - generic "Slide 5 — A KPI asks how well we meet a stated objective."
+  - generic "Slide 6 — More reports can have more than one explanation."
+  - generic "Slide 7 — The patch KPI improved, but privileged accounts lack MFA."
+  - generic "References & lesson details"

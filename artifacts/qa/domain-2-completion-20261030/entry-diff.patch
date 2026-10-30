@@ -1,0 +1,172 @@
+diff --git a/data/exam-versions.js b/data/exam-versions.js
+index 9ad4107..91af6d1 100644
+--- a/data/exam-versions.js
++++ b/data/exam-versions.js
+@@ -41,6 +41,14 @@ const versions = [
+     title: 'ISC2 CC 2026 — Update Slides',
+     description: 'Explore cybersecurity concepts through interactive presentations, visual explanations, and structured lessons aligned with the 2026 exam outline.',
+     status: 'coming-soon'
++  },
++  {
++    id: 'isc2-cc-reading-notes',
++    certificationId: 'isc2-cc',
++    type: 'reading',
++    title: 'ISC2 CC 2026 — Reading Notes',
++    description: 'Read cybersecurity study notes with clear explanations, examples, and essential exam concepts.',
++    status: 'available'
+   }
+ ];
+ 
+diff --git a/docs/plans/task.md b/docs/plans/task.md
+index 77bc105..7bfdf95 100644
+--- a/docs/plans/task.md
++++ b/docs/plans/task.md
+@@ -122,6 +122,19 @@
+ | 89. Domain 2 Lessons 1–4 Visual Remediation | Complete — Human Visual Review Pending | Existing4 lessons/28slides retained; individual GRC, Risk Register, BCP and DR compositions refined; unintended Reading fallback fixed.112 presentation/Reading transitions,112 Info disclosures,64 feedback states,16 Reading scroll cases and independent reload/Resume verified.20/20 direct D2 +2/2 task guards +38/38 shared checks; full D2 run22/26 with4 legacy Git-scope conflicts documented.3260/3265 entry files identical; only4 D2 CSS + this row changed. Domain1/JSON/IDs/progress/Quiz/Vocabulary/banks preserved. [Report](isc2-cc-2026/domain-2-visual-remediation-report.md). No Lesson5; stop for review. |
+ | 90. Domain 2 Objective 2.1 — Instructional Redesign, Lesson 1 | Ready for Human Visual Approval — Lesson 1 only | All12 D1 lessons/103slides studied in TH/EN (206 browser cases);13-slide audit recorded. Six L1 compositions redesigned; artificial Slide2 grouping removed from canvas/Reading/Info with all7 purposes retained.24 presentation/24 Reading/24 Info cases +16 feedback states reviewed; independent selection/reload/direct Resume verified.26/26 focused +192/192 expanded;4 legacy whole-tree Git guards remain.3858/3864 entry files identical,6 authorized changes; D1/L2-L4/banks/progress preserved. [Report](isc2-cc-2026/domain-2-objective-2-1-redesign.md). Stop; Lesson2 requires approval. |
+ | 91. Domain 2 Objective 2.1 — Lesson 2 Instructional Redesign | Implemented and desktop-verified — awaiting human visual/academic review | Seven existing L2 slides redesigned with accurate ordinal scoring, readable Risk Register, control-effect and reassessment teaching; full TH/EN Reading/Info retained. 28 presentation + 28 Reading + 28 Info + 16 feedback cases verified at both desktop sizes; keyboard state and actual reload/direct Resume pass independently of L1. 33 focused + 192 shared checks pass; four unchanged historical Git-scope failures documented. All 4,322 protected entry files unchanged; IDs/revision1/catalog/V1 schema preserved; tracker row91 only. No dependencies, unrelated work, Objective2.2 changes, commit or push. [Report and evidence](isc2-cc-2026/domain-2-lesson-2-redesign.md). |
++| 92. Implement ISC2 CC 2026 — Reading Notes (Foundation & UI Shell Only) | Completed | Implemented entry card in row 2 col 2, direct routing via 'Read →' button, 2-column documentation layout, collapsible sticky left sidebar with Domain 1-5 accordions, independent chevron expand/collapse, continuous reading area with neutral empty states, dark/light theme, verified with 9/9 automated tests in tools/verify-reading-notes-foundation.mjs |
++| 93. Refine Reading Notes UI: Minimal Editorial Layout & Objective Navigation | Completed | Refined Reading Notes UI into clean technical documentation reader: removed enclosing bordered cards, reading article renders directly on page background with max-width 780px, left-aligned typography, quiet 'Reading content coming soon.' note, text-based sidebar with all 19 authoritative 2026 Objectives (1.1-5.5) under Domains 1-5 with independent chevron accordion expand/collapse, verified with 9/9 automated tests |
++| 94. ISC2 CC 2026 Reading Notes: Domain 1 Content Integration | Completed | Full content audit & consolidation of D1 sum.md & Domain 1.md into authoritative Domain 1 article structured under Objectives 1.1–1.5 (24 topic anchors). Safe zero-dependency Markdown parser, cached content loader, 3-level sidebar navigation (Domain -> Objective -> Topic) with independent accordion toggles, anchor scrolling, and quiet coming-soon notes for Domains 2–5. Complete audit report in docs/plans/isc2-cc-2026/domain-1-reading-notes-audit.md. Verified with 10/10 automated tests in tools/verify-reading-notes-domain1.mjs, 9/9 tests in tools/verify-reading-notes-foundation.mjs, and 6/6 tests in tools/verify-learning-integration.mjs. Original sources and existing question/vocab/learning boundaries intact. |
++| 95. ISC2 CC 2026 Reading Notes: Full Domain 1 Semantic & Educational Presentation Redesign | Completed | Full semantic and educational redesign of Domain 1 reading notes into a professional textbook experience: KaTeX + semantic math engine (SLE, ARO, ALE formulas, variable breakdown cards, zero raw LaTeX leakage), 12 responsive accessible SVG conceptual diagrams (CIA Triad, 7-layer concentric Defense in Depth, AAA lifecycle, Document hierarchy pyramid, Risk calculation flow, etc.), 8 structured Review Scenario Cards (Context + Question + Verified Answer/Reasoning), textbook editorial typography in CSS, and 24 topic anchor reconciliation. Verified with 123/123 automated checks in tools/verify-reading-notes-domain1-presentation.mjs, 10/10 checks in tools/verify-reading-notes-domain1.mjs, 9/9 checks in tools/verify-reading-notes-foundation.mjs, and 6/6 checks in tools/verify-learning-integration.mjs. Source files, Domains 2–5, Question banks (583 / 119), Vocabulary (403), and Learning Slides strictly preserved. [Full Report](isc2-cc-2026/task-95-domain-1-presentation-redesign-report.md). |
++| 96. ISC2 CC 2026 Reading Notes — Comprehensive Editorial, Semantic & Visual System Overhaul | Completed | Full systemic editorial, semantic & architectural overhaul for Domain 1: eliminated list flattening (MFA 4-Card Concept Grid, Control Categories 4-Card Grid), converted cramped tables to cards (4-Card Risk Treatment Response Grid, 12-Card Distinction Grid), transformed Ethics Canons into 4-Tier Order-of-Precedence Stack, updated controlTimeline to Functional Matrix SVG, implemented adaptive reading layout (--reading-screen-max-width: 1560px, --reading-article-max-width: 1080px, --reading-prose-max-width: 780px, collapsed sidebar 1240px/1140px), eradicated duplicate H1. Verified with 143/143 tests in tools/verify-reading-notes-domain1-presentation.mjs, 10/10 in tools/verify-reading-notes-domain1.mjs, 9/9 in tools/verify-reading-notes-foundation.mjs, and 6/6 in tools/verify-learning-integration.mjs. Source files, banks, vocab, quiz, slides strictly preserved. [Full Report](isc2-cc-2026/task-96-domain-1-editorial-overhaul-report.md). |
++| 97. ISC2 CC 2026 Reading Notes — Semantic Spacing, Vertical Rhythm & Content Grouping Architecture | Completed | Comprehensive vertical rhythm & Law of Proximity semantic grouping architecture implemented across all 5 objectives in Domain 1: 8 vertical spacing tokens (--space-2xs to --space-3xl), 20 semantic introductory labels (.reading-intro-label) with tight sibling proximity (3:1 proximity ratio to tables, grids, diagrams, formulas, lists), explicit resolution for Section 1.1.1 ("คำศัพท์รากฐานที่ต้องแยกความหมายให้ชัดเจน:"), dedicated worked calculation blocks (.reading-calculation-box) for SLE/ALE, scenario example containers (.reading-example-box), standardized callout hierarchy, and break-inside avoidance. 192/192 automated checks pass across all 4 suites (167 presentation + 10 completeness + 9 foundation + 6 learning integration). Original source files, question banks, vocabulary, quiz engine, and learning slides strictly preserved. [Full Report](isc2-cc-2026/task-97-semantic-spacing-and-content-grouping-report.md). |
++| 98. ISC2 CC 2026 Reading Notes — Semantic List Formatting & Visual Grouping System | Completed | Comprehensive semantic list formatting and grouping architecture implemented across all 5 objectives in Domain 1: transformed bold concept pseudo-bullets into semantic concept headings (<h5 class="reading-concept-heading">) and structured paragraphs (.reading-concept-item) with subtle 2px accent border; grouped related warnings in 1.1.1 into single shared callout with 1 SVG header icon and dashed dividers (0 repeated icons); preserved genuine bullet lists (<ul>) for scannable actions and controls; preserved sequential numbering (<ol>) for authentic lifecycles; updated markdown-parser whitelist (h[1-6]|ul|ol|li) and blockquote list rendering; eliminated all raw hyphen/bullet leaks. Verified with 195/195 tests in tools/verify-reading-notes-domain1-presentation.mjs, 10/10 in tools/verify-reading-notes-domain1.mjs, 9/9 in tools/verify-reading-notes-foundation.mjs, and 6/6 in tools/verify-learning-integration.mjs (220/220 total pass). Original source files, question banks, vocabulary, quiz engine, and learning slides strictly preserved. [Full Report](isc2-cc-2026/task-98-semantic-list-formatting-report.md). |
++| 99. ISC2 CC 2026 Reading Notes — Academic Validation & Semantic Integrity Audit | Completed | Comprehensive domain-wide academic and structural integrity review across all 5 objectives in Domain 1: validated conceptual hierarchies against D1 sum.md, Domain 1.md, Script - DOMAIN 1.txt, NIST SP 800-30/37/53/63B, NIST CSF 2.0 (Govern function), ISO/IEC 27001, and ISC2 Code of Ethics; confirmed control categories remain 4 structured categories; integrated 4 source-verified refinements (Data Masking under Confidentiality controls, Data Ownership & Authority Boundaries under 1.1.6, Separation of Duties under Managerial Controls in 1.4.1, Canon 2 internal word sequence nuance); documented taxonomy of historical errors, contextual statements, and source reconciliations. Verified with 195/195 tests in tools/verify-reading-notes-domain1-presentation.mjs, 10/10 in tools/verify-reading-notes-domain1.mjs, 9/9 in tools/verify-reading-notes-foundation.mjs, and 6/6 in tools/verify-learning-integration.mjs (220/220 total pass). Original source files, question banks, vocabulary, quiz engine, and learning slides strictly preserved. [Full Report](isc2-cc-2026/task-99-academic-validation-and-semantic-integrity-report.md). |
++| 100. ISC2 CC 2026 Reading Notes — Table Typography & Visual Hierarchy Overhaul | Completed | Systemic typography and visual hierarchy redesign across all 6 tables in Domain 1: established 7 reusable table tokens in :root (--table-header-font-size: 0.94rem, --table-header-font-weight: 700, --table-body-font-size: 0.92rem, --table-body-line-height: 1.65, --table-cell-padding-y: 12px, --table-cell-padding-x: 16px, --table-row-hover-bg); resolved header inversion (th 15px >= td 14.5px, previous 13px eliminated); eradicated text-transform: uppercase to preserve natural Thai/English technical casing; refactored markdown-parser.js to eliminate blind first-column bolding; balanced Due Care vs. Due Diligence action verbs with equal bold weight (**Implement** / **Assess / Evaluate**) and added .reading-table-note clarifying illustrative verb clusters (non-1:1 correspondence). Verified with 210/210 tests in tools/verify-reading-notes-domain1-presentation.mjs, 10/10 in tools/verify-reading-notes-domain1.mjs, 9/9 in tools/verify-reading-notes-foundation.mjs, and 6/6 in tools/verify-learning-integration.mjs (235/235 total pass). Original source files, question banks, vocabulary, quiz engine, and learning slides strictly preserved. [Full Report](isc2-cc-2026/task-100-table-typography-and-visual-hierarchy-report.md). |
++| 101. ISC2 CC 2026 Reading Notes — Editorial Quality, Academic Integrity & Reusable Design System Delivery | Completed | Final editorial quality, academic integrity, and reusable reading design system established for Domains 1–5: completed comprehensive coverage audit of D1 sum.md (100 headings), Domain 1.md (39 headings), and Script - DOMAIN 1.txt (293 sections) with 100% key term retention; formalized Semantic Content Model (ConceptCardGrid, ResponseGrid, ConceptItem, PrecedenceStack, DistinctionGrid, ScenarioCard, FormulaCard, CalculationBox, WarningGroup, IntroductoryLabel, TableWrapper); validated LaTeX/KaTeX math and 12 SVG diagrams; verified responsive and accessibility compliance (zero raw backticks, zero LaTeX leakage, dark/light themes, keyboard navigation). Verified with 210/210 tests in tools/verify-reading-notes-domain1-presentation.mjs, 10/10 in tools/verify-reading-notes-domain1.mjs, 9/9 in tools/verify-reading-notes-foundation.mjs, and 6/6 in tools/verify-learning-integration.mjs (235/235 total pass). Original sources, question banks, vocabulary, and learning slides strictly preserved. [Coverage Report](isc2-cc-2026/domain-1-content-coverage-report.md) and [Design System](isc2-cc-2026/domain-1-academic-integrity-and-design-system.md). |
++| 103. ISC2 CC 2026 Reading Notes: Domain 1 Comprehensive Content & Visual Quality Overhaul | Completed | Full textbook-grade editorial, semantic, and visual quality overhaul delivered across Domain 1: all 12 SVG diagrams redesigned in diagram-generator.js (emojis replaced with scalable vector paths, 4-color rainbow palette eliminated in favor of calm monochromatic theme cards with blue accents, document hierarchy pyramid tiers smoothed); Code of Ethics Canons transformed into an authoritative numbered hierarchy (01 Society, 02 Honor, 03 Principals, 04 Profession) with single dedicated precedence rule banner, 0 repeated dividers, and plain Unicode arrow mnemonic; all 25 prose LaTeX arrows ($\to$) converted to Unicode (→); non-formula KaTeX blocks ($$\mathbf{Governance}$$) replaced with conceptual calculation box; $\neq$ replaced with ≠; all 23 jarring horizontal dividers (---) eliminated for uninterrupted vertical rhythm; Law of Proximity grouping and typography balance enforced. Verified with 370/370 checks in tools/verify-reading-notes-domain1-presentation.mjs, 10/10 in tools/verify-reading-notes-domain1.mjs, 9/9 in tools/verify-reading-notes-foundation.mjs, and 6/6 in tools/verify-learning-integration.mjs (395/395 total pass). Original sources, question banks, vocabulary, quiz engine, and learning slides strictly preserved. [Full Report](isc2-cc-2026/task-103-domain-1-comprehensive-overhaul-report.md). |
++| 104. Critical Bugfix: Reading Notes HTML Rendering, Escaping & Nested Component Corruption | Completed | Resolved root causes of HTML leakage, bracket escaping corruption, KaTeX currency hijacking, and cascading recursive nesting across Sections 1.1.4 (MFA), 1.2.4 (Risk Treatment), 1.4.1 (Control Categories), and 1.5.4 (Review Scenarios). Created reusable, guaranteed-balanced single-level sibling card renderers in `js/core/content-components.js`; added first-class block directives (`:::mfa-factors`, `:::risk-treatment`, `:::control-categories`, `:::scenario`) in `js/core/markdown-parser.js`; protected full HTML whitelist tags from escaping; isolated literal currency (`$50/ปี`, `$2,000/ปี`, `$10,000`, `$25,000`) before KaTeX math parsing; replaced narrow squished grids with full reading-width stack layouts (`.reading-mfa-stack`, `.reading-treatment-stack`, `.reading-category-stack`) in `css/reading.css`; eliminated all 23 jarring `---` dividers; converted all prose LaTeX arrows to Unicode (→). Verified with 35/35 automated tests in `tools/verify-reading-notes-dom-integrity.mjs`, 370/370 in `tools/verify-reading-notes-domain1-presentation.mjs`, 10/10 in `tools/verify-reading-notes-domain1.mjs`, 9/9 in `tools/verify-reading-notes-foundation.mjs`, and 6/6 in `tools/verify-learning-integration.mjs` (430/430 total pass). Original sources, question banks, vocabulary, and learning slides strictly preserved. [Full Report](isc2-cc-2026/task-104-html-rendering-and-dom-corruption-report.md). |
++| 105. Fix MFA Card Header Alignment & Visual Hierarchy | In Progress | Investigate and fix MFA card header layout, aligning [Icon] [01] [Title] [Subtitle] left-to-right without auto-distributed space, eliminate excessive dashed separators, improve internal content hierarchy for light & dark themes. |
+ 
+ ## Task 57 — Domain 4 question-bank implementation (2026-10-28)
+ 
+diff --git a/index.html b/index.html
+index 02ab5cb..161cb4c 100644
+--- a/index.html
++++ b/index.html
+@@ -15,12 +15,15 @@
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
++  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
++  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="./css/base.css">
+   <link rel="stylesheet" href="./css/components.css">
+   <link rel="stylesheet" href="./css/versions.css">
+   <link rel="stylesheet" href="./css/quiz.css">
+   <link rel="stylesheet" href="./css/results.css">
+   <link rel="stylesheet" href="./css/vocabulary.css">
++  <link rel="stylesheet" href="./css/reading.css">
+   <link rel="stylesheet" href="./css/learning.css">
+   <link rel="stylesheet" href="./css/learning-presentation.css">
+   <link rel="stylesheet" href="./css/learning-editorial-intro.css">
+diff --git a/js/core/state.js b/js/core/state.js
+index e450d0a..cd4f4cd 100644
+--- a/js/core/state.js
++++ b/js/core/state.js
+@@ -6,10 +6,11 @@
+ import { getExamVersions, resolveExamVersion } from '../../data/exam-versions.js';
+ 
+ export const state = {
+-  screen: "home", // "home" | "exam-versions" | "cert-start" | "quiz" | "results"
++  screen: "home", // "home" | "exam-versions" | "cert-start" | "quiz" | "results" | "vocabulary" | "reading-notes"
+   selectedCertification: null,
+   selectedExamVersion: null,
+   learning: { domainId: null, objectiveId: null, lessonId: null, slideId: null },
++  reading: { selectedDomainId: 1, sidebarCollapsed: false, expandedDomains: [1] },
+ 
+   // Setup configuration for current certification session
+   setup: {
+diff --git a/js/ui/renderer.js b/js/ui/renderer.js
+index e7de3cb..886e4bc 100644
+--- a/js/ui/renderer.js
++++ b/js/ui/renderer.js
+@@ -13,6 +13,7 @@ import { renderCertStartScreen } from './screen-start.js';
+ import { renderQuizScreen } from './screen-quiz.js';
+ import { renderResultsScreen, renderReviewWrongScreen } from './screen-results.js';
+ import { renderVocabularyScreen } from './screen-vocabulary.js';
++import { renderReadingScreen } from './screen-reading.js';
+ import { hasPublishedLearning } from '../core/learning-loader.js';
+ let learningRoutes;
+ let renderGeneration = 0;
+@@ -59,6 +60,10 @@ export async function renderApp(versionError = '') {
+           state.screen = 'vocabulary';
+           return renderApp();
+         }
++        if (id === 'isc2-cc-reading-notes') {
++          state.screen = 'reading-notes';
++          return renderApp();
++        }
+         const config = await loadExamConfig(cert.vendorId, cert.certId, id);
+         if (state.screen !== 'exam-versions' || state.selectedCertification !== cert) return;
+         if (!selectExamVersion(id, config)) {
+@@ -97,6 +102,16 @@ export async function renderApp(versionError = '') {
+       );
+       break;
+ 
++    case 'reading-notes':
++      renderReadingScreen(
++        container,
++        () => {
++          state.screen = 'exam-versions';
++          renderApp();
++        }
++      );
++      break;
++
+     case 'cert-start': {
+       const cert = state.selectedCertification;
+       const version = state.selectedExamVersion;
+diff --git a/js/ui/screen-versions.js b/js/ui/screen-versions.js
+index 26793f4..5016514 100644
+--- a/js/ui/screen-versions.js
++++ b/js/ui/screen-versions.js
+@@ -117,7 +117,8 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
+             ${versions.map(version => {
+               const isVocabulary = version.type === 'vocabulary';
+               const isLearning = version.type === 'learning';
+-              const available = isLearning ? learningAvailability.available : isVocabulary ? (version.status === 'available') : !!resolveExamVersion(cert.id, version.id);
++              const isReading = version.type === 'reading';
++              const available = isLearning ? learningAvailability.available : (isVocabulary || isReading) ? (version.status === 'available') : !!resolveExamVersion(cert.id, version.id);
+               const info = information[version.id];
+               const viewLabel = info?.viewLabel || informationLabels.view;
+               return `<article class="cert-card version-card ${available ? '' : 'cert-card-disabled'}"${isLearning ? ' data-learning-card' : ''}>
+@@ -130,7 +131,7 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
+                 </div>
+                 <div class="cert-card-footer">
+                   <span class="status-badge ${available ? 'status-available' : 'status-planned'}${isLearning ? ' learning-entry-status' : ''}">${available ? 'Available' : 'Coming Soon'}</span>
+-                  ${isLearning ? `<button type="button" class="btn ${available ? 'btn-primary' : 'btn-secondary btn-disabled'} btn-select-version btn-learning-entry" data-version-id="${version.id}"${available ? '' : ' disabled'}>${available ? 'Learning →' : 'Coming Soon'}</button>` : available ? `<button type="button" class="btn btn-primary btn-select-version" data-version-id="${version.id}">Select →</button>` : '<button type="button" class="btn btn-secondary btn-disabled" disabled>Coming Soon</button>'}
++                  ${isLearning ? `<button type="button" class="btn ${available ? 'btn-primary' : 'btn-secondary btn-disabled'} btn-select-version btn-learning-entry" data-version-id="${version.id}"${available ? '' : ' disabled'}>${available ? 'Learning →' : 'Coming Soon'}</button>` : isReading ? `<button type="button" class="btn ${available ? 'btn-primary' : 'btn-secondary btn-disabled'} btn-select-version btn-reading-entry" data-version-id="${version.id}"${available ? '' : ' disabled'}>${available ? 'Read →' : 'Coming Soon'}</button>` : available ? `<button type="button" class="btn btn-primary btn-select-version" data-version-id="${version.id}">Select →</button>` : '<button type="button" class="btn btn-secondary btn-disabled" disabled>Coming Soon</button>'}
+                 </div>
+               </article>`;
+             }).join('')}
+@@ -210,8 +211,9 @@ export function renderExamVersionsScreen(container, cert, onSelectVersion, onBac
+       const targetVersion = versions.find(v => v.id === id);
+       if (!targetVersion) return;
+       if (targetVersion.type === 'learning' && !learningAvailability.available) return;
+-      if (!['vocabulary', 'learning'].includes(targetVersion.type) && !resolveExamVersion(cert.id, id)) return;
++      if (!['vocabulary', 'learning', 'reading'].includes(targetVersion.type) && !resolveExamVersion(cert.id, id)) return;
+       if (targetVersion.type === 'vocabulary' && targetVersion.status !== 'available') return;
++      if (targetVersion.type === 'reading' && targetVersion.status !== 'available') return;
+       selectionPending = true;
+       const controls = [...infoButtons, ...container.querySelectorAll('.lang-btn')];
+       controls.forEach(control => { control.disabled = true; });
+diff --git a/tools/verify-learning-integration.mjs b/tools/verify-learning-integration.mjs
+index dabb9c0..01d4a8b 100644
+--- a/tools/verify-learning-integration.mjs
++++ b/tools/verify-learning-integration.mjs
+@@ -6,11 +6,11 @@ import { renderLearningDomain } from '../js/ui/screen-learning-domain.js';
+ import { buildLearningCourseModel } from '../js/core/learning-course.js';
+ const screens = await import('../js/ui/screen-learning-center.js').catch(() => ({}));
+ test('fourth card preserves original order, is English-only and cannot route as an exam or bypass Coming Soon', async () => {
+-  assert.deepEqual(versions.map(v => v.id), ['2026', 'next-bank', 'isc2-cc-vocabulary', 'isc2-cc-learning-slides']); assert.equal(resolveExamVersion('isc2-cc', 'isc2-cc-learning-slides'), null);
++  assert.deepEqual(versions.map(v => v.id), ['2026', 'next-bank', 'isc2-cc-vocabulary', 'isc2-cc-learning-slides', 'isc2-cc-reading-notes']); assert.equal(resolveExamVersion('isc2-cc', 'isc2-cc-learning-slides'), null);
+   const handlers = {}, forged = { getAttribute: () => 'isc2-cc-learning-slides', addEventListener: (type, fn) => { handlers[type] = fn; } };
+   const root = { innerHTML: '', querySelector: () => null, querySelectorAll: selector => selector === '.btn-select-version' ? [forged] : [] };
+   state.setup.language = 'both'; let called = false; renderExamVersionsScreen(root, certs[0], () => { called = true; }, () => {}); await handlers.click(); assert.equal(called, false);
+-  assert.match(root.innerHTML, /Explore cybersecurity concepts/); assert.doesNotMatch(root.innerHTML, /สำรวจแนวคิด/); assert.match(root.innerHTML, /Coming Soon/); assert.equal((root.innerHTML.match(/<article /g) || []).length, 4);
++  assert.match(root.innerHTML, /Explore cybersecurity concepts/); assert.doesNotMatch(root.innerHTML, /สำรวจแนวคิด/); assert.match(root.innerHTML, /Coming Soon/); assert.equal((root.innerHTML.match(/<article /g) || []).length, 5);
+ });
+ test('Learning Center shows five navigable Domain cards without embedded objectives or fake lesson actions', () => {
+   const doc = new TestDocument(), root = doc.createElement('div'); doc.body.append(root); const catalog = JSON.parse(fs.readFileSync(new URL('../content/isc2-cc-2026/learning/published/catalog.json', import.meta.url)));

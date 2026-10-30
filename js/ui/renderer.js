@@ -13,6 +13,7 @@ import { renderCertStartScreen } from './screen-start.js';
 import { renderQuizScreen } from './screen-quiz.js';
 import { renderResultsScreen, renderReviewWrongScreen } from './screen-results.js';
 import { renderVocabularyScreen } from './screen-vocabulary.js';
+import { renderReadingScreen } from './screen-reading.js';
 import { hasPublishedLearning } from '../core/learning-loader.js';
 let learningRoutes;
 let renderGeneration = 0;
@@ -59,6 +60,10 @@ export async function renderApp(versionError = '') {
           state.screen = 'vocabulary';
           return renderApp();
         }
+        if (id === 'isc2-cc-reading-notes') {
+          state.screen = 'reading-notes';
+          return renderApp();
+        }
         const config = await loadExamConfig(cert.vendorId, cert.certId, id);
         if (state.screen !== 'exam-versions' || state.selectedCertification !== cert) return;
         if (!selectExamVersion(id, config)) {
@@ -89,6 +94,16 @@ export async function renderApp(versionError = '') {
 
     case 'vocabulary':
       renderVocabularyScreen(
+        container,
+        () => {
+          state.screen = 'exam-versions';
+          renderApp();
+        }
+      );
+      break;
+
+    case 'reading-notes':
+      renderReadingScreen(
         container,
         () => {
           state.screen = 'exam-versions';

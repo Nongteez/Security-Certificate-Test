@@ -1,0 +1,503 @@
+/**
+ * ISC2 CC 2026 — Reading Notes Screen Module
+ *
+ * Provides a clean technical documentation reader:
+ * - Domain 1 complete real content integration (consolidated from D1 sum.md & Domain 1.md)
+ * - 3-level navigation hierarchy in left sidebar: Domain -> Objective -> Topic
+ * - Independent expand/collapse without scroll loss
+ * - Smooth anchor scrolling to Objectives and Topics
+ * - Scroll spy for active heading/section highlight
+ * - Continuous long-form reading directly on page background
+ * - Domains 2-5 preserved in unpublished state with quiet coming-soon note
+ */
+
+import { state } from '../core/state.js';
+import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
+import { loadDomainReading, getDomainReadingCached } from '../core/reading-loader.js';
+import { domain1Objectives } from '../../content/isc2-cc-2026/reading/domain-1.js';
+
+export const READING_DOMAINS = [
+  {
+    id: 1,
+    title: 'Domain 1: Security Principles',
+    shortTitle: 'Security Principles',
+    weight: '24%',
+    published: true,
+    objectives: domain1Objectives
+  },
+  {
+    id: 2,
+    title: 'Domain 2: Security Governance',
+    shortTitle: 'Security Governance',
+    weight: '17.3%',
+    published: false,
+    objectives: [
+      { id: '2.1', title: '2.1 Plan Governance, Risk, and Compliance (GRC)' },
+      { id: '2.2', title: '2.2 Understand redundancy' },
+      { id: '2.3', title: '2.3 Understand security awareness' },
+      { id: '2.4', title: '2.4 Measure cybersecurity effectiveness' }
+    ]
+  },
+  {
+    id: 3,
+    title: 'Domain 3: Access Controls',
+    shortTitle: 'Access Controls',
+    weight: '20%',
+    published: false,
+    objectives: [
+      { id: '3.1', title: '3.1 Understand identity life cycle management' },
+      { id: '3.2', title: '3.2 Understand logical access controls' }
+    ]
+  },
+  {
+    id: 4,
+    title: 'Domain 4: Network Security',
+    shortTitle: 'Network Security',
+    weight: '21.3%',
+    published: false,
+    objectives: [
+      { id: '4.1', title: '4.1 Understand network security' },
+      { id: '4.2', title: '4.2 Understand network security architecture' },
+      { id: '4.3', title: '4.3 Understand cloud security' }
+    ]
+  },
+  {
+    id: 5,
+    title: 'Domain 5: Security Operations',
+    shortTitle: 'Security Operations',
+    weight: '17.3%',
+    published: false,
+    objectives: [
+      { id: '5.1', title: '5.1 Understand data security' },
+      { id: '5.2', title: '5.2 Understand security operations' },
+      { id: '5.3', title: '5.3 Understand Incident Response (IR)' },
+      { id: '5.4', title: '5.4 Understand asset protection' },
+      { id: '5.5', title: '5.5 Understand security testing' }
+    ]
+  }
+];
+
+function escapeHtml(value) {
+  if (value === null || value === undefined) return '';
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/**
+ * Renders the Reading Notes screen into the provided container.
+ * @param {HTMLElement} container - Root application element
+ * @param {Function} onBack - Callback when user navigates back to exam versions
+ */
+export function renderReadingScreen(container, onBack) {
+  if (!state.reading) {
+    state.reading = {
+      selectedDomainId: 1,
+      sidebarCollapsed: false,
+      expandedDomains: [1],
+      expandedObjectives: ['1.1', '1.2', '1.3', '1.4', '1.5']
+    };
+  }
+
+  let selectedDomainId = state.reading.selectedDomainId || 1;
+  const expandedDomainSet = new Set(state.reading.expandedDomains || [1]);
+  const expandedObjSet = new Set(state.reading.expandedObjectives || ['1.1', '1.2', '1.3', '1.4', '1.5']);
+  let sidebarCollapsed = !!state.reading.sidebarCollapsed;
+  let mobileSidebarOpen = false;
+  let scrollSpyObserver = null;
+
+  function getActiveDomain() {
+    return READING_DOMAINS.find(d => d.id === selectedDomainId) || READING_DOMAINS[0];
+  }
+
+  function renderSidebarNavHtml() {
+    return READING_DOMAINS.map(domain => {
+      const isActive = domain.id === selectedDomainId;
+      const isExpanded = expandedDomainSet.has(domain.id);
+      const objectives = domain.objectives || [];
+
+      return `
+        <div class="reading-nav-group ${isActive ? 'active' : ''} ${isExpanded ? 'expanded' : ''}" data-domain-id="${domain.id}">
+          <div class="reading-nav-domain-row ${isActive ? 'active' : ''}">
+            <button type="button" class="reading-chevron-btn ${isExpanded ? 'expanded' : ''}" data-toggle-domain="${domain.id}" aria-label="${isExpanded ? 'Collapse' : 'Expand'} ${escapeHtml(domain.title)}" aria-expanded="${isExpanded}">
+              <svg class="reading-chevron-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            <button type="button" class="reading-domain-btn ${isActive ? 'active' : ''}" data-select-domain="${domain.id}" aria-label="Select ${escapeHtml(domain.title)}">
+              <span class="reading-domain-label">Domain ${domain.id}</span>
+              <span class="reading-domain-title">${escapeHtml(domain.shortTitle)}</span>
+            </button>
+          </div>
+          <div class="reading-nav-sub-tree ${isExpanded ? 'expanded' : ''}" ${isExpanded ? '' : 'hidden'}>
+            <ul class="reading-nav-objectives">
+              ${objectives.map(obj => {
+                const hasTopics = obj.topics && obj.topics.length > 0;
+                const isObjExpanded = expandedObjSet.has(obj.id);
+                return `
+                  <li class="reading-nav-objective-item ${isObjExpanded ? 'expanded' : ''}" data-objective-id="${escapeHtml(obj.id)}">
+                    <div class="reading-nav-objective-row">
+                      ${hasTopics ? `
+                        <button type="button" class="reading-obj-chevron-btn ${isObjExpanded ? 'expanded' : ''}" data-toggle-obj="${escapeHtml(obj.id)}" aria-label="${isObjExpanded ? 'Collapse' : 'Expand'} topics for ${escapeHtml(obj.id)}" aria-expanded="${isObjExpanded}">
+                          <svg class="reading-chevron-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                          </svg>
+                        </button>
+                      ` : `
+                        <span class="reading-obj-bullet"></span>
+                      `}
+                      ${isActive && hasTopics ? `
+                        <a href="#${escapeHtml(obj.anchorId || ('obj-' + obj.id.replace('.', '-')))}" class="reading-nav-objective-link" data-scroll-to="${escapeHtml(obj.anchorId || ('obj-' + obj.id.replace('.', '-')))}">
+                          <span class="reading-nav-objective-title">${escapeHtml(obj.title)}</span>
+                        </a>
+                      ` : `
+                        <span class="reading-nav-objective-title reading-nav-objective-static">${escapeHtml(obj.title)}</span>
+                      `}
+                    </div>
+                    ${hasTopics ? `
+                      <ul class="reading-nav-topics ${isObjExpanded ? 'expanded' : ''}" ${isObjExpanded ? '' : 'hidden'}>
+                        ${obj.topics.map(t => `
+                          <li class="reading-nav-topic-item">
+                            <a href="#${escapeHtml(t.id)}" class="reading-nav-topic-link" data-scroll-to="${escapeHtml(t.id)}">${escapeHtml(t.title)}</a>
+                          </li>
+                        `).join('')}
+                      </ul>
+                    ` : ''}
+                  </li>
+                `;
+              }).join('')}
+            </ul>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function renderArticleContent(domain) {
+    if (domain.id === 1 && domain.published) {
+      const cached = getDomainReadingCached(1);
+      if (cached) {
+        return `
+          <article class="reading-article" data-domain-id="1">
+            <header class="reading-article-header">
+              <div class="reading-eyebrow">ISC2 CC 2026 · Domain ${domain.id} · Exam Weight ${escapeHtml(domain.weight)}</div>
+              <h1 class="reading-article-title">${escapeHtml(domain.title)}</h1>
+            </header>
+            <div class="reading-body reading-article-markdown">
+              ${cached.renderedHtml}
+            </div>
+          </article>
+        `;
+      }
+      return `
+        <article class="reading-article" data-domain-id="1">
+          <header class="reading-article-header">
+            <div class="reading-eyebrow">ISC2 CC 2026 · Domain ${domain.id} · Exam Weight ${escapeHtml(domain.weight)}</div>
+            <h1 class="reading-article-title">${escapeHtml(domain.title)}</h1>
+          </header>
+          <div class="reading-body reading-article-markdown">
+            <div class="reading-unpublished-note">
+              <p class="reading-unpublished-text">Loading Domain 1 reading notes...</p>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Domains 2-5
+    return `
+      <article class="reading-article" data-domain-id="${domain.id}">
+        <header class="reading-article-header">
+          <div class="reading-eyebrow">ISC2 CC 2026 · Domain ${domain.id} · Exam Weight ${escapeHtml(domain.weight)}</div>
+          <h1 class="reading-article-title">${escapeHtml(domain.title)}</h1>
+        </header>
+
+        <div class="reading-body">
+          <div class="reading-unpublished-note">
+            <p class="reading-unpublished-text">Reading content coming soon.</p>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderFullView() {
+    const activeDomain = getActiveDomain();
+    const articleHtml = renderArticleContent(activeDomain);
+
+    container.innerHTML = `
+      <div class="reading-screen">
+        <header class="reading-top-bar">
+          <div class="reading-top-left">
+            <button type="button" class="btn btn-secondary btn-back-home" id="btn-reading-back">← Back to Exam Versions</button>
+            <button type="button" class="btn btn-secondary btn-toggle-sidebar" id="btn-toggle-sidebar" aria-label="Toggle navigation sidebar" title="Toggle Sidebar">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+              </svg>
+              <span class="btn-toggle-label">Sidebar</span>
+            </button>
+          </div>
+          <div class="reading-top-center">
+            <span class="reading-app-badge">ISC2 CC 2026 — Reading Notes</span>
+          </div>
+          <div class="reading-top-actions">
+            ${renderThemeToggle('reading-theme-toggle')}
+          </div>
+        </header>
+
+        <div class="reading-layout ${sidebarCollapsed ? 'sidebar-collapsed' : ''} ${mobileSidebarOpen ? 'mobile-sidebar-open' : ''}" id="reading-layout">
+          <div class="reading-backdrop" id="reading-backdrop" aria-hidden="true"></div>
+
+          <aside class="reading-sidebar" id="reading-sidebar" aria-label="Domain Navigation">
+            <div class="reading-sidebar-header">
+              <span class="reading-sidebar-title">Domains & Objectives</span>
+              <button type="button" class="reading-sidebar-close-mobile" id="btn-sidebar-close-mobile" aria-label="Close navigation sidebar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            <nav class="reading-nav-domains" id="reading-nav-domains">
+              ${renderSidebarNavHtml()}
+            </nav>
+          </aside>
+
+          <main class="reading-content-pane" id="reading-content-pane" tabindex="-1">
+            ${articleHtml}
+          </main>
+        </div>
+      </div>
+    `;
+
+    attachThemeToggle(container, 'reading-theme-toggle');
+    bindEvents();
+    setupScrollSpy();
+
+    if (activeDomain.id === 1 && !getDomainReadingCached(1)) {
+      loadDomainReading(1).then(() => {
+        if (selectedDomainId === 1) {
+          const pane = container.querySelector('#reading-content-pane');
+          if (pane) {
+            pane.innerHTML = renderArticleContent(activeDomain);
+          }
+          setupScrollSpy();
+        }
+      }).catch(err => {
+        console.error('Failed to load Domain 1 notes:', err);
+      });
+    }
+  }
+
+  function updateContentOnly() {
+    const activeDomain = getActiveDomain();
+    const pane = container.querySelector('#reading-content-pane');
+    if (pane) {
+      pane.innerHTML = renderArticleContent(activeDomain);
+      pane.scrollTop = 0;
+    }
+    const nav = container.querySelector('#reading-nav-domains');
+    if (nav) {
+      nav.innerHTML = renderSidebarNavHtml();
+      bindNavEvents();
+    }
+    setupScrollSpy();
+
+    if (activeDomain.id === 1 && !getDomainReadingCached(1)) {
+      loadDomainReading(1).then(() => {
+        if (selectedDomainId === 1) {
+          const freshPane = container.querySelector('#reading-content-pane');
+          if (freshPane) {
+            freshPane.innerHTML = renderArticleContent(activeDomain);
+          }
+          setupScrollSpy();
+        }
+      }).catch(err => {
+        console.error('Failed to load Domain 1 notes:', err);
+      });
+    }
+  }
+
+  function setupScrollSpy() {
+    if (scrollSpyObserver) {
+      scrollSpyObserver.disconnect();
+      scrollSpyObserver = null;
+    }
+
+    if (selectedDomainId !== 1) return;
+    if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') return;
+
+    const anchors = container.querySelectorAll('.reading-topic-anchor, .reading-objective-section');
+    if (!anchors || anchors.length === 0) return;
+
+    scrollSpyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          // Highlight active topic or objective link in sidebar
+          container.querySelectorAll('.reading-nav-topic-link, .reading-nav-objective-link').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === `#${id}`) {
+              link.classList.add('active');
+            } else if (link.getAttribute('data-scroll-to') !== id) {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, {
+      rootMargin: '-10% 0px -70% 0px',
+      threshold: 0
+    });
+
+    anchors.forEach(a => scrollSpyObserver.observe(a));
+  }
+
+  function bindNavEvents() {
+    // Select domain when clicking domain title
+    container.querySelectorAll('[data-select-domain]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const dId = parseInt(btn.getAttribute('data-select-domain'), 10);
+        if (selectedDomainId !== dId) {
+          selectedDomainId = dId;
+          state.reading.selectedDomainId = dId;
+          // Auto-expand newly selected domain
+          expandedDomainSet.add(dId);
+          state.reading.expandedDomains = Array.from(expandedDomainSet);
+          if (mobileSidebarOpen) {
+            mobileSidebarOpen = false;
+            container.querySelector('#reading-layout')?.classList.remove('mobile-sidebar-open');
+          }
+          updateContentOnly();
+        }
+      });
+    });
+
+    // Toggle domain chevron independently without scroll/screen reset
+    container.querySelectorAll('[data-toggle-domain]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const dId = parseInt(btn.getAttribute('data-toggle-domain'), 10);
+        const group = container.querySelector(`.reading-nav-group[data-domain-id="${dId}"]`);
+        const subTree = group?.querySelector('.reading-nav-sub-tree');
+
+        if (expandedDomainSet.has(dId)) {
+          expandedDomainSet.delete(dId);
+          btn.classList.remove('expanded');
+          btn.setAttribute('aria-expanded', 'false');
+          group?.classList.remove('expanded');
+          if (subTree) {
+            subTree.classList.remove('expanded');
+            subTree.hidden = true;
+          }
+        } else {
+          expandedDomainSet.add(dId);
+          btn.classList.add('expanded');
+          btn.setAttribute('aria-expanded', 'true');
+          group?.classList.add('expanded');
+          if (subTree) {
+            subTree.classList.add('expanded');
+            subTree.hidden = false;
+          }
+        }
+        state.reading.expandedDomains = Array.from(expandedDomainSet);
+      });
+    });
+
+    // Toggle objective chevron independently without scroll/screen reset
+    container.querySelectorAll('[data-toggle-obj]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const objId = btn.getAttribute('data-toggle-obj');
+        const item = container.querySelector(`.reading-nav-objective-item[data-objective-id="${objId}"]`);
+        const topicsList = item?.querySelector('.reading-nav-topics');
+
+        if (expandedObjSet.has(objId)) {
+          expandedObjSet.delete(objId);
+          btn.classList.remove('expanded');
+          btn.setAttribute('aria-expanded', 'false');
+          item?.classList.remove('expanded');
+          if (topicsList) {
+            topicsList.classList.remove('expanded');
+            topicsList.hidden = true;
+          }
+        } else {
+          expandedObjSet.add(objId);
+          btn.classList.add('expanded');
+          btn.setAttribute('aria-expanded', 'true');
+          item?.classList.add('expanded');
+          if (topicsList) {
+            topicsList.classList.add('expanded');
+            topicsList.hidden = false;
+          }
+        }
+        state.reading.expandedObjectives = Array.from(expandedObjSet);
+      });
+    });
+
+    // Smooth anchor navigation for Objectives and Topics
+    container.querySelectorAll('[data-scroll-to]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('data-scroll-to');
+        const targetEl = container.querySelector(`#${targetId}`);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+          if (history.pushState) {
+            history.pushState(null, '', `#${targetId}`);
+          }
+          if (mobileSidebarOpen) {
+            mobileSidebarOpen = false;
+            container.querySelector('#reading-layout')?.classList.remove('mobile-sidebar-open');
+          }
+        }
+      });
+    });
+  }
+
+  function bindEvents() {
+    container.querySelector('#btn-reading-back')?.addEventListener('click', () => {
+      if (scrollSpyObserver) {
+        scrollSpyObserver.disconnect();
+        scrollSpyObserver = null;
+      }
+      onBack();
+    });
+
+    // Sidebar toggle (desktop collapse + mobile drawer toggle)
+    container.querySelector('#btn-toggle-sidebar')?.addEventListener('click', () => {
+      const isMobile = window.innerWidth <= 840;
+      const layout = container.querySelector('#reading-layout');
+
+      if (isMobile) {
+        mobileSidebarOpen = !mobileSidebarOpen;
+        layout?.classList.toggle('mobile-sidebar-open', mobileSidebarOpen);
+      } else {
+        sidebarCollapsed = !sidebarCollapsed;
+        state.reading.sidebarCollapsed = sidebarCollapsed;
+        layout?.classList.toggle('sidebar-collapsed', sidebarCollapsed);
+      }
+    });
+
+    // Mobile sidebar close button
+    container.querySelector('#btn-sidebar-close-mobile')?.addEventListener('click', () => {
+      mobileSidebarOpen = false;
+      container.querySelector('#reading-layout')?.classList.remove('mobile-sidebar-open');
+    });
+
+    // Mobile backdrop click
+    container.querySelector('#reading-backdrop')?.addEventListener('click', () => {
+      mobileSidebarOpen = false;
+      container.querySelector('#reading-layout')?.classList.remove('mobile-sidebar-open');
+    });
+
+    bindNavEvents();
+  }
+
+  renderFullView();
+}

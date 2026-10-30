@@ -1,0 +1,848 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d1-02-aaa-mfa",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 1,
+  "primaryObjectiveId": "1.1",
+  "objectiveIds": [
+    "1.1"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Identification, AAA & Multi-Factor Authentication",
+    "th": "การระบุตัวตน AAA และ Multi-Factor Authentication"
+  },
+  "synopsis": {
+    "en": "Separate identity claims, credential verification, permissions and activity records. Recognize genuine MFA through a procurement access story.",
+    "th": "แยกการอ้างตัวตน การตรวจหลักฐาน สิทธิ์ และบันทึกกิจกรรม พร้อมจำแนก MFA ผ่านสถานการณ์ระบบจัดซื้อ"
+  },
+  "outcomes": [
+    {
+      "en": "Distinguish identification, authentication, authorization and accounting.",
+      "th": "แยก Identification, Authentication, Authorization และ Accounting ได้"
+    },
+    {
+      "en": "Recognize knowledge, possession and inherence, and identify genuine MFA.",
+      "th": "จำแนก Knowledge, Possession และ Inherence พร้อมระบุ MFA ที่แท้จริงได้"
+    },
+    {
+      "en": "Analyze a denied action after successful sign-in without confusing AAA functions.",
+      "th": "วิเคราะห์การถูกปฏิเสธหลังยืนยันตัวตนสำเร็จ โดยไม่สับสนหน้าที่ AAA"
+    },
+    {
+      "en": "Explain the limits of contextual checks, biometric evidence and account activity logs.",
+      "th": "อธิบายข้อจำกัดของบริบท ชีวมิติ และบันทึกกิจกรรมของบัญชีได้"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: CIA Triad security goals. No prior IAM administration experience required.",
+      "th": "แนะนำให้เข้าใจเป้าหมาย CIA Triad ก่อน ไม่จำเป็นต้องมีประสบการณ์ดูแลระบบ IAM"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-01-aaa-map",
+      "title": {
+        "en": "One request. Three security functions.",
+        "th": "คำขอเดียว สามหน้าที่ด้านความปลอดภัย"
+      },
+      "layoutId": "aaa-map",
+      "rendererId": "diagram",
+      "referenceIds": [
+        "isc2-outline",
+        "d1-knowledge",
+        "d1-transcript",
+        "rfc-aaa"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "CIA defines security goals. AAA helps manage and trace access.",
+            "th": "CIA กำหนดเป้าหมายความปลอดภัย ส่วน AAA ช่วยจัดการและติดตามการเข้าถึง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "The questions behind AAA",
+            "th": "คำถามเบื้องหลัง AAA"
+          },
+          "columns": [
+            {
+              "en": "Function",
+              "th": "หน้าที่"
+            },
+            {
+              "en": "Question",
+              "th": "คำถาม"
+            },
+            {
+              "en": "In a procurement portal",
+              "th": "ในระบบจัดซื้อ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Authentication",
+                "th": "Authentication"
+              },
+              {
+                "en": "Is this the claimed identity?",
+                "th": "เป็นตัวตนที่อ้างจริงหรือไม่"
+              },
+              {
+                "en": "Verify the employee’s credential.",
+                "th": "ตรวจสอบหลักฐานยืนยันตัวตนของพนักงาน"
+              }
+            ],
+            [
+              {
+                "en": "Authorization",
+                "th": "Authorization"
+              },
+              {
+                "en": "Is this action permitted?",
+                "th": "อนุญาตให้ทำสิ่งนี้หรือไม่"
+              },
+              {
+                "en": "Check whether this account may approve an order.",
+                "th": "ตรวจสิทธิ์อนุมัติคำสั่งซื้อของบัญชีนี้"
+              }
+            ],
+            [
+              {
+                "en": "Accounting",
+                "th": "Accounting"
+              },
+              {
+                "en": "What activity was recorded?",
+                "th": "บันทึกกิจกรรมอะไรไว้บ้าง"
+              },
+              {
+                "en": "Record the request and its outcome.",
+                "th": "บันทึกคำขอและผลลัพธ์"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Authentication checks evidence associated with a claimed identity. Authorization evaluates permissions for a resource or action. Accounting records activity and usage so it can be traced and reviewed. These functions complement the CIA security goals; they do not replace them. In the portal example, a user may authenticate successfully, be denied an approval action, and still have that denial recorded. AAA is a functional model, not a claim that every system implements a single fixed sequence. Failed authentication attempts can also be logged. The portal is an original teaching example, not an ISC2 exam question.",
+            "th": "Authentication ตรวจหลักฐานที่ผูกกับตัวตนที่อ้าง Authorization ประเมินสิทธิ์ต่อทรัพยากรหรือการกระทำ ส่วน Accounting บันทึกกิจกรรมและการใช้งานเพื่อให้ติดตามและทบทวนได้ หน้าที่เหล่านี้สนับสนุนเป้าหมาย CIA ไม่ได้มาแทน CIA ในตัวอย่างระบบจัดซื้อ ผู้ใช้อาจยืนยันตัวตนสำเร็จ แต่ถูกปฏิเสธการอนุมัติคำสั่งซื้อ และระบบยังบันทึกการปฏิเสธนั้นได้ AAA เป็นแบบจำลองหน้าที่ ไม่ใช่ข้อกำหนดว่าทุกระบบต้องทำตามลำดับตายตัว ความพยายามยืนยันตัวตนที่ล้มเหลวก็บันทึกได้ ตัวอย่างนี้แต่งขึ้นเพื่อการเรียน ไม่ใช่ข้อสอบจริงของ ISC2"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Verified identity ≠ unlimited permission. Recorded activity ≠ proof of the human actor.",
+            "th": "ยืนยันตัวตนแล้ว ≠ มีสิทธิ์ทุกอย่าง บันทึกกิจกรรมแล้ว ≠ พิสูจน์บุคคลผู้กระทำ"
+          }
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-02-claim-and-proof",
+      "title": {
+        "en": "A name is a claim. Verification needs evidence.",
+        "th": "ชื่อคือคำกล่าวอ้าง ต้องมีหลักฐานเพื่อยืนยัน"
+      },
+      "layoutId": "aaa-identity",
+      "rendererId": "diagram",
+      "referenceIds": [
+        "d1-knowledge",
+        "d1-transcript",
+        "nist-authentication"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Identification says who. Authentication checks the claim.",
+            "th": "Identification ระบุว่าเป็นใคร ส่วน Authentication ตรวจสอบคำกล่าวอ้างนั้น"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Claim and verification",
+            "th": "การอ้างและการยืนยันตัวตน"
+          },
+          "columns": [
+            {
+              "en": "Step",
+              "th": "ขั้นตอน"
+            },
+            {
+              "en": "Example",
+              "th": "ตัวอย่าง"
+            },
+            {
+              "en": "Meaning",
+              "th": "ความหมาย"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Identification",
+                "th": "Identification"
+              },
+              {
+                "en": "Employee ID: Nara",
+                "th": "รหัสพนักงาน: Nara"
+              },
+              {
+                "en": "Selects the account being claimed.",
+                "th": "ระบุบัญชีที่กำลังอ้างว่าเป็นเจ้าของ"
+              }
+            ],
+            [
+              {
+                "en": "Authentication",
+                "th": "Authentication"
+              },
+              {
+                "en": "Credential challenge",
+                "th": "ตรวจหลักฐานยืนยันตัวตน"
+              },
+              {
+                "en": "Checks control of an associated authenticator.",
+                "th": "ตรวจว่าควบคุมเครื่องมือยืนยันตัวตนที่ผูกไว้ได้"
+              }
+            ],
+            [
+              {
+                "en": "Result",
+                "th": "ผลลัพธ์"
+              },
+              {
+                "en": "Authenticated session",
+                "th": "เซสชันที่ยืนยันตัวตนแล้ว"
+              },
+              {
+                "en": "Permission checks still apply.",
+                "th": "ยังต้องตรวจสิทธิ์การใช้งาน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Typing a username or presenting an employee identifier is identification: it tells the system which identity is claimed. That identifier is not itself a secret authentication factor. Authentication then verifies evidence, such as control of a password or a registered security key associated with the account. A successful check gives assurance about the digital identity within the method’s limits; it does not make stolen credentials impossible or prove every later action was performed by the account owner. In this example, Nara is a fictional employee identifier. Authentication and authorization answer different questions even when one sign-in interface hides the distinction.",
+            "th": "การพิมพ์ชื่อผู้ใช้หรือแสดงรหัสพนักงานคือ Identification ซึ่งบอกระบบว่ากำลังอ้างตัวตนใด รหัสดังกล่าวไม่ใช่ปัจจัยลับที่ใช้ยืนยันตัวตนด้วยตัวเอง จากนั้น Authentication จะตรวจหลักฐาน เช่น การควบคุมรหัสผ่านหรือ Security key ที่ลงทะเบียนผูกกับบัญชี การตรวจสำเร็จให้ความเชื่อมั่นต่อตัวตนดิจิทัลภายในข้อจำกัดของวิธีนั้น ไม่ได้ทำให้การขโมยข้อมูลยืนยันตัวตนเป็นไปไม่ได้ และไม่ได้พิสูจน์ว่าทุกกิจกรรมภายหลังทำโดยเจ้าของบัญชี ตัวอย่าง Nara เป็นรหัสพนักงานสมมติ Authentication กับ Authorization ตอบคนละคำถาม แม้หน้าลงชื่อเข้าใช้จะรวมขั้นตอนไว้ด้วยกัน"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Username + password: the username identifies; the password is a knowledge factor.",
+            "th": "Username + Password: ชื่อผู้ใช้ระบุตัวตน ส่วนรหัสผ่านเป็นปัจจัยความรู้"
+          }
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-03-permission-boundary",
+      "title": {
+        "en": "Signed in does not mean allowed.",
+        "th": "เข้าสู่ระบบแล้ว ไม่ได้แปลว่าทำได้ทุกอย่าง"
+      },
+      "layoutId": "aaa-permission",
+      "rendererId": "comparison",
+      "referenceIds": [
+        "isc2-outline",
+        "d1-knowledge",
+        "d1-transcript"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The same authenticated account can receive different access decisions.",
+            "th": "บัญชีที่ยืนยันตัวตนแล้วบัญชีเดียวกัน อาจได้รับผลการตรวจสิทธิ์ต่างกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "One account, two permissions",
+            "th": "หนึ่งบัญชี สองสิทธิ์การใช้งาน"
+          },
+          "columns": [
+            {
+              "en": "Account",
+              "th": "บัญชี"
+            },
+            {
+              "en": "Requested action",
+              "th": "การกระทำที่ร้องขอ"
+            },
+            {
+              "en": "Policy decision",
+              "th": "ผลตามนโยบาย"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Nara · signed in",
+                "th": "Nara · ยืนยันตัวตนแล้ว"
+              },
+              {
+                "en": "View purchase orders",
+                "th": "ดูคำสั่งซื้อ"
+              },
+              {
+                "en": "Allowed",
+                "th": "อนุญาต"
+              }
+            ],
+            [
+              {
+                "en": "Nara · signed in",
+                "th": "Nara · ยืนยันตัวตนแล้ว"
+              },
+              {
+                "en": "Approve a purchase order",
+                "th": "อนุมัติคำสั่งซื้อ"
+              },
+              {
+                "en": "Denied",
+                "th": "ปฏิเสธ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Authorization determines whether a subject may perform a particular action on a particular resource. Successful authentication does not grant all permissions. In this fictional portal, the policy lets Nara view orders but not approve them; both decisions can be correct while the identity check remains successful. A denial after sign-in may therefore reflect an authorization boundary rather than a wrong password. The distinction is conceptual here: configuring roles, access-control models, least privilege and separation of duties are deeper Domain 3 topics, not the scope of this lesson. Anonymous or other special access patterns mean authentication is not a universal prerequisite for every possible authorization decision.",
+            "th": "Authorization ตัดสินว่าผู้ร้องขอมีสิทธิ์ทำการกระทำหนึ่งต่อทรัพยากรหนึ่งหรือไม่ การผ่าน Authentication ไม่ได้ให้สิทธิ์ทั้งหมด ในระบบสมมตินี้ นโยบายให้ Nara ดูคำสั่งซื้อได้ แต่อนุมัติไม่ได้ ผลทั้งสองถูกต้องได้โดยที่การยืนยันตัวตนยังสำเร็จอยู่ การถูกปฏิเสธหลังเข้าสู่ระบบจึงอาจเกิดจากขอบเขตสิทธิ์ ไม่ใช่รหัสผ่านผิด บทเรียนนี้สอนความแตกต่างเชิงแนวคิดเท่านั้น การตั้งค่า Role แบบจำลองการควบคุมการเข้าถึง Least privilege และ Separation of duties เป็นเนื้อหาเชิงลึกของ Domain 3 ส่วนการเข้าถึงแบบไม่ระบุตัวตนหรือรูปแบบพิเศษอื่นทำให้ Authentication ไม่ใช่เงื่อนไขก่อนหน้าที่ตายตัวสำหรับ Authorization ทุกกรณี"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Ask which action is permitted—not just whether the login succeeded.",
+            "th": "ถามว่ามีสิทธิ์ทำอะไร ไม่ใช่ดูแค่ว่าเข้าสู่ระบบสำเร็จหรือไม่"
+          }
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-04-activity-trail",
+      "title": {
+        "en": "Leave a trail that can be reviewed.",
+        "th": "บันทึกร่องรอย เพื่อให้ตรวจสอบย้อนหลังได้"
+      },
+      "layoutId": "aaa-accounting",
+      "rendererId": "comparison",
+      "referenceIds": [
+        "d1-knowledge",
+        "d1-transcript",
+        "rfc-aaa"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Accounting records access, actions and outcomes.",
+            "th": "Accounting บันทึกการเข้าถึง การกระทำ และผลลัพธ์"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Illustrative portal event journal",
+            "th": "ตัวอย่างบันทึกเหตุการณ์ในระบบจัดซื้อ"
+          },
+          "columns": [
+            {
+              "en": "Event",
+              "th": "เหตุการณ์"
+            },
+            {
+              "en": "Account",
+              "th": "บัญชี"
+            },
+            {
+              "en": "Action",
+              "th": "การกระทำ"
+            },
+            {
+              "en": "Outcome",
+              "th": "ผลลัพธ์"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "01",
+                "th": "01"
+              },
+              {
+                "en": "Nara",
+                "th": "Nara"
+              },
+              {
+                "en": "Sign in",
+                "th": "เข้าสู่ระบบ"
+              },
+              {
+                "en": "Success",
+                "th": "สำเร็จ"
+              }
+            ],
+            [
+              {
+                "en": "02",
+                "th": "02"
+              },
+              {
+                "en": "Nara",
+                "th": "Nara"
+              },
+              {
+                "en": "View order PO-104",
+                "th": "ดูคำสั่งซื้อ PO-104"
+              },
+              {
+                "en": "Allowed",
+                "th": "อนุญาต"
+              }
+            ],
+            [
+              {
+                "en": "03",
+                "th": "03"
+              },
+              {
+                "en": "Nara",
+                "th": "Nara"
+              },
+              {
+                "en": "Approve order PO-104",
+                "th": "อนุมัติคำสั่งซื้อ PO-104"
+              },
+              {
+                "en": "Denied",
+                "th": "ปฏิเสธ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Accounting tracks and records activity or resource usage. Relevant records can identify the account, attempted action, target resource, time and result. The simplified journal shows that a denied action is worth recording as well as successful access. Actual systems need appropriate collection and protection of records; this illustration does not claim every action is always logged. Auditing is the later examination of such evidence, not a universal synonym for generating it. A record attributed to an account does not alone establish which human used it, especially if credentials were shared or stolen. Accounting supports accountability; non-repudiation needs separate treatment and is not guaranteed by a log entry.",
+            "th": "Accounting คือการติดตามและบันทึกกิจกรรมหรือการใช้ทรัพยากร ข้อมูลที่เกี่ยวข้องอาจระบุบัญชี การกระทำที่พยายามทำ ทรัพยากรเป้าหมาย เวลา และผลลัพธ์ ตัวอย่างย่อนี้แสดงว่าการกระทำที่ถูกปฏิเสธก็มีคุณค่าต่อการบันทึกเช่นเดียวกับการเข้าถึงสำเร็จ ระบบจริงต้องเก็บและปกป้องบันทึกอย่างเหมาะสม ภาพนี้ไม่ได้อ้างว่าทุกกิจกรรมถูกบันทึกเสมอ Auditing คือการตรวจพิจารณาหลักฐานเหล่านั้นภายหลัง ไม่ใช่คำที่ใช้แทนการสร้างบันทึกได้ทุกบริบท บันทึกที่ระบุบัญชีเพียงอย่างเดียวไม่พิสูจน์ว่ามนุษย์คนใดใช้งาน โดยเฉพาะเมื่อมีการใช้ข้อมูลยืนยันตัวตนร่วมกันหรือถูกขโมย Accounting สนับสนุน Accountability แต่ไม่ได้รับประกัน Non-repudiation ซึ่งต้องเรียนแยกต่างหาก"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Recording an action does not authorize it or prevent it.",
+            "th": "การบันทึกการกระทำ ไม่ได้ให้สิทธิ์หรือป้องกันการกระทำนั้น"
+          }
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-05-factor-families",
+      "title": {
+        "en": "Different evidence. Different factor types.",
+        "th": "หลักฐานต่างชนิด ปัจจัยต่างประเภท"
+      },
+      "layoutId": "aaa-factors",
+      "rendererId": "diagram",
+      "referenceIds": [
+        "d1-knowledge",
+        "d1-transcript",
+        "nist-authentication"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Classify the evidence—not the number of screens or devices.",
+            "th": "จำแนกจากหลักฐาน ไม่ใช่จำนวนหน้าจอหรืออุปกรณ์"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Authentication factor families",
+            "th": "ประเภทปัจจัยยืนยันตัวตน"
+          },
+          "columns": [
+            {
+              "en": "Factor",
+              "th": "ปัจจัย"
+            },
+            {
+              "en": "Evidence",
+              "th": "หลักฐาน"
+            },
+            {
+              "en": "Example",
+              "th": "ตัวอย่าง"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Knowledge",
+                "th": "Knowledge"
+              },
+              {
+                "en": "Something you know",
+                "th": "สิ่งที่คุณรู้"
+              },
+              {
+                "en": "Password or PIN",
+                "th": "รหัสผ่าน หรือ PIN"
+              }
+            ],
+            [
+              {
+                "en": "Possession",
+                "th": "Possession"
+              },
+              {
+                "en": "Something you have",
+                "th": "สิ่งที่คุณมี"
+              },
+              {
+                "en": "Registered security key",
+                "th": "Security key ที่ลงทะเบียนไว้"
+              }
+            ],
+            [
+              {
+                "en": "Inherence",
+                "th": "Inherence"
+              },
+              {
+                "en": "Something you are",
+                "th": "สิ่งที่เป็นลักษณะของคุณ"
+              },
+              {
+                "en": "Fingerprint comparison",
+                "th": "การเปรียบเทียบลายนิ้วมือ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A knowledge factor uses a secret the claimant knows, such as a password or PIN. A possession factor demonstrates control of an authenticator, such as a registered hardware security key; simply carrying an unrelated object is not authentication evidence. An inherence factor uses a biometric characteristic such as a fingerprint. For NIST digital authentication, a biometric is not a standalone authenticator: it is used with a physical authenticator, for example to activate a security key. That combines possession with inherence. Possession can be compromised without physically stealing a device, and biometrics are neither unforgeable nor a guarantee of correct identification. Factor choice reduces particular risks; it does not remove all risk.",
+            "th": "Knowledge factor ใช้ความลับที่ผู้ร้องขอรู้ เช่น รหัสผ่านหรือ PIN ส่วน Possession factor แสดงการควบคุมเครื่องมือยืนยันตัวตน เช่น Hardware security key ที่ลงทะเบียนไว้ การพกสิ่งของที่ไม่เกี่ยวข้องไม่ใช่หลักฐานยืนยันตัวตน Inherence factor ใช้ลักษณะทางชีวมิติ เช่น ลายนิ้วมือ สำหรับการยืนยันตัวตนดิจิทัลตาม NIST ชีวมิติไม่ใช่เครื่องมือยืนยันตัวตนที่ใช้เดี่ยว ๆ แต่ใช้ร่วมกับเครื่องมือทางกายภาพ เช่น ใช้ลายนิ้วมือเปิดใช้งาน Security key จึงรวม Possession กับ Inherence เข้าด้วยกัน ปัจจัยสิ่งที่มีอาจถูกโจมตีได้โดยไม่ต้องขโมยอุปกรณ์จริง และชีวมิติไม่ได้ปลอมแปลงไม่ได้หรือรับประกันการระบุตัวตนถูกต้องเสมอ การเลือกปัจจัยช่วยลดความเสี่ยงบางแบบ ไม่ได้ขจัดความเสี่ยงทั้งหมด"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "MFA requires at least two distinct factor types. 2FA is the two-factor case.",
+            "th": "MFA ต้องใช้ปัจจัยต่างประเภทอย่างน้อยสองประเภท ส่วน 2FA คือกรณีสองปัจจัย"
+          }
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-06-mfa-or-more-steps",
+      "title": {
+        "en": "More steps do not always mean MFA.",
+        "th": "หลายขั้นตอน ไม่ได้แปลว่าเป็น MFA เสมอไป"
+      },
+      "layoutId": "aaa-combinations",
+      "rendererId": "comparison",
+      "referenceIds": [
+        "d1-knowledge",
+        "d1-transcript",
+        "nist-authentication"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Count independent factor types, then separate context from evidence.",
+            "th": "นับปัจจัยต่างประเภท แล้วแยกบริบทออกจากหลักฐานยืนยันตัวตน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Distinguish a factor combination from an extra check",
+            "th": "แยกการรวมปัจจัยออกจากการตรวจเพิ่มเติม"
+          },
+          "columns": [
+            {
+              "en": "Combination",
+              "th": "สิ่งที่ใช้ร่วมกัน"
+            },
+            {
+              "en": "Interpretation",
+              "th": "การตีความ"
+            },
+            {
+              "en": "Reason",
+              "th": "เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Password + PIN",
+                "th": "รหัสผ่าน + PIN"
+              },
+              {
+                "en": "Not MFA",
+                "th": "ไม่ใช่ MFA"
+              },
+              {
+                "en": "Knowledge + knowledge",
+                "th": "Knowledge + Knowledge"
+              }
+            ],
+            [
+              {
+                "en": "Password + registered security key",
+                "th": "รหัสผ่าน + Security key ที่ลงทะเบียน"
+              },
+              {
+                "en": "MFA",
+                "th": "เป็น MFA"
+              },
+              {
+                "en": "Knowledge + possession",
+                "th": "Knowledge + Possession"
+              }
+            ],
+            [
+              {
+                "en": "Password + office IP check",
+                "th": "รหัสผ่าน + ตรวจ IP สำนักงาน"
+              },
+              {
+                "en": "Not MFA by this combination alone",
+                "th": "แค่นี้ยังไม่ใช่ MFA"
+              },
+              {
+                "en": "One factor + location context",
+                "th": "หนึ่งปัจจัย + บริบทตำแหน่ง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A password followed by a PIN remains knowledge-only even if two screens are involved. A password plus a successful challenge to a registered security key combines knowledge and possession and can provide MFA. The system must actually verify the factors; merely owning a key is insufficient. Location, IP address and device signals can inform risk-based access decisions, but an office IP is not a second independent authentication factor in this lesson’s three-category model. One physical device can support multiple factors, such as a security key requiring a biometric activation step. Conversely, multiple devices do not automatically mean multiple factor types. MFA reduces the risk from a compromised single factor; it does not promise immunity to phishing or session theft.",
+            "th": "รหัสผ่านตามด้วย PIN ยังเป็นปัจจัยความรู้เพียงประเภทเดียว แม้จะมีสองหน้าจอ รหัสผ่านร่วมกับการตอบ Challenge สำเร็จจาก Security key ที่ลงทะเบียนผูกกับบัญชีรวม Knowledge กับ Possession และเป็น MFA ได้ ระบบต้องตรวจปัจจัยจริง การมี Security key อยู่เฉย ๆ ไม่พอ ตำแหน่ง IP address และสัญญาณอุปกรณ์อาจใช้ประกอบการตัดสินความเสี่ยงในการเข้าถึง แต่ IP สำนักงานไม่ใช่ปัจจัยยืนยันตัวตนอิสระประเภทที่สองตามแบบจำลองสามประเภทในบทเรียนนี้ อุปกรณ์จริงหนึ่งชิ้นอาจรองรับหลายปัจจัย เช่น Security key ที่ต้องใช้ชีวมิติเปิดใช้งาน ในทางกลับกัน หลายอุปกรณ์ไม่ได้แปลว่ามีปัจจัยต่างประเภทโดยอัตโนมัติ MFA ลดความเสี่ยงจากปัจจัยเดียวที่ถูกโจมตี แต่ไม่รับประกันว่าจะต้านทาน Phishing หรือการขโมยเซสชันได้ทั้งหมด"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Two secrets ≠ two factors. A location rule can add protection without being MFA.",
+            "th": "สองความลับ ≠ สองปัจจัย กฎตำแหน่งเพิ่มการป้องกันได้ โดยไม่จำเป็นต้องเป็น MFA"
+          }
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-07-access-case",
+      "title": {
+        "en": "The login worked. Why was approval denied?",
+        "th": "เข้าสู่ระบบสำเร็จ ทำไมจึงอนุมัติไม่ได้"
+      },
+      "layoutId": "aaa-case",
+      "rendererId": "interactive",
+      "referenceIds": [
+        "isc2-outline",
+        "d1-knowledge",
+        "nist-authentication"
+      ],
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Authentication succeeded. Approval was denied. The attempt was recorded.",
+            "th": "ยืนยันตัวตนสำเร็จ แต่อนุมัติไม่ได้ และระบบบันทึกความพยายามไว้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Original teaching scenario — not an official exam question",
+            "th": "สถานการณ์เพื่อการเรียน ไม่ใช่ข้อสอบจริง"
+          },
+          "columns": [
+            {
+              "en": "Observation",
+              "th": "สิ่งที่สังเกต"
+            },
+            {
+              "en": "Function",
+              "th": "หน้าที่"
+            },
+            {
+              "en": "Interpretation",
+              "th": "การตีความ"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Password + security key verified",
+                "th": "ตรวจรหัสผ่าน + Security key สำเร็จ"
+              },
+              {
+                "en": "Authentication",
+                "th": "Authentication"
+              },
+              {
+                "en": "Knowledge + possession: MFA",
+                "th": "Knowledge + Possession: MFA"
+              }
+            ],
+            [
+              {
+                "en": "Order approval denied",
+                "th": "ปฏิเสธการอนุมัติคำสั่งซื้อ"
+              },
+              {
+                "en": "Authorization",
+                "th": "Authorization"
+              },
+              {
+                "en": "The action is outside this account’s permission.",
+                "th": "การกระทำนี้อยู่นอกสิทธิ์ของบัญชี"
+              }
+            ],
+            [
+              {
+                "en": "Attempt and result recorded",
+                "th": "บันทึกความพยายามและผลลัพธ์"
+              },
+              {
+                "en": "Accounting",
+                "th": "Accounting"
+              },
+              {
+                "en": "The record supports later review.",
+                "th": "บันทึกช่วยให้ตรวจสอบย้อนหลังได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The successful credential checks indicate authentication, using knowledge and possession in this scenario. The later denial concerns authorization: the account is not permitted to approve this order. It does not undo the earlier identity check. Recording the denied attempt is accounting. To analyze a similar question, identify the specific action or evidence being described rather than treating the whole incident as one AAA function. Do not infer that MFA grants permissions, that logging blocks the request, or that a log proves Nara personally performed the action. A real investigation would need evidence beyond this simplified scenario. Non-repudiation and privacy remain separate topics for later lessons.",
+            "th": "การตรวจหลักฐานสำเร็จแสดงถึง Authentication โดยใช้ Knowledge กับ Possession ในสถานการณ์นี้ ส่วนการปฏิเสธภายหลังเกี่ยวกับ Authorization เพราะบัญชีไม่มีสิทธิ์อนุมัติคำสั่งซื้อนี้ ไม่ได้ทำให้ผลการยืนยันตัวตนก่อนหน้ากลายเป็นล้มเหลว การบันทึกความพยายามที่ถูกปฏิเสธคือ Accounting เมื่อต้องวิเคราะห์สถานการณ์ลักษณะนี้ ให้ระบุการกระทำหรือหลักฐานเฉพาะที่ถาม ไม่ใช่เหมารวมเหตุการณ์ทั้งหมดเป็นหน้าที่ AAA เพียงอย่างเดียว อย่าอนุมานว่า MFA ให้สิทธิ์ใช้งาน การบันทึกเป็นตัวบล็อกคำขอ หรือ Log พิสูจน์ว่า Nara เป็นผู้ทำด้วยตนเอง การสืบสวนจริงต้องมีหลักฐานมากกว่าสถานการณ์ย่อนี้ Non-repudiation และ Privacy ยังเป็นหัวข้อแยกสำหรับบทเรียนถัดไป"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Check identity. Evaluate permission. Record activity. Keep the questions separate.",
+            "th": "ตรวจตัวตน ประเมินสิทธิ์ บันทึกกิจกรรม แยกคำถามให้ชัดเจน"
+          }
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC Exam Outline — effective September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain 1, Objective 1.1; AAA. MFA is supporting instruction, not a separate objective.",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "d1-knowledge",
+      "title": "Domain 1 extracted knowledge map",
+      "authority": "editorial",
+      "locator": "KNOW-D1-008–012; SQ-06 reconciliations documented in lesson implementation report.",
+      "repositoryPath": "content/isc2-cc-2026/sources/domain-1/extracted-knowledge/knowledge-map.md"
+    },
+    {
+      "id": "d1-transcript",
+      "title": "User-supplied Domain 1 course transcript",
+      "authority": "course",
+      "locator": "Blocks 00:18:08–00:26:57; S12–S14 consulted, not reproduced.",
+      "repositoryPath": "content/isc2-cc-2026/sources/domain-1/transcripts/Script - DOMAIN 1.txt"
+    },
+    {
+      "id": "nist-authentication",
+      "title": "NIST SP 800-63B-4 — Authentication and Authenticator Management",
+      "authority": "technical-primary",
+      "locator": "Introduction; §§2, 3.1, 3.2.3, 5.3. Technical support; not an ISC2 requirement.",
+      "url": "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    },
+    {
+      "id": "rfc-aaa",
+      "title": "RFC 2903 — Generic AAA Architecture",
+      "authority": "technical-primary",
+      "locator": "Introductory AAA definitions; Experimental RFC, not a required implementation.",
+      "url": "https://www.rfc-editor.org/rfc/rfc2903.html"
+    }
+  ],
+  "assets": [],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/lesson-d1-02-aaa-mfa-implementation.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — source-based self-review; user review pending",
+      "reviewedAt": "2026-10-25"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — paired TH/EN self-review; human language review pending",
+      "reviewedAt": "2026-10-25"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — original text and code-native artwork; no course images redistributed",
+      "reviewedAt": "2026-10-25"
+    }
+  }
+}

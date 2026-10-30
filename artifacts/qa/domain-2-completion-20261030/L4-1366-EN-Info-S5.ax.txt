@@ -1,0 +1,127 @@
+- navigation "Presentation controls":
+  - button "Back to Domain":
+  - generic "Disaster Recovery, RTO/RPO & Recovery Strategies":
+    - generic: DOMAIN 2 · OBJECTIVE 2.2
+    - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=1]
+  - group "Slide navigation":
+    - button "Previous slide":
+      - generic: ‹
+    - generic: 9 / 9
+    - button "Finish Lesson":
+      - generic: Finish Lesson
+  - group "Content language":
+    - button "TH":
+      - generic: TH
+    - button "EN" [pressed]:
+      - generic: EN
+  - button "Slides":
+    - generic: Slides
+  - button "Lesson Info":
+    - generic: Info
+  - button "Keyboard shortcuts":
+  - button "Fullscreen":
+    - generic: ⛶
+  - button "Toggle theme":
+- region "Which recovery plan fits the business targets? (9/9)":
+  - article:
+    - heading "Which recovery plan fits the business targets?" [level=2]:
+      - generic: Which recovery plan fits the business targets?
+    - heading "Which recovery plan fits the business targets?" [level=3]:
+      - generic: Which recovery plan fits the business targets?
+    - paragraph:
+      - generic: "The order database fails at 17:00. Acceptable data loss: 30 min. Downtime target: 1 hour."
+    - group "Scenario decision options":
+      - button "Call data loss RTO; start buying Cold Site servers.":
+        - generic: A
+        - generic: Call data loss RTO; start buying Cold Site servers.
+      - button "Keep daily backups only at the primary site; skip drills.":
+        - generic: B
+        - generic: Keep daily backups only at the primary site; skip drills.
+      - button "RPO 30 min, RTO 1 hour; protected copies and tested recovery capacity.":
+        - generic: C
+        - generic: RPO 30 min, RTO 1 hour; protected copies and tested recovery capacity.
+      - button "Restore test servers first; recover orders next week." [pressed]:
+        - generic: D
+        - generic: Restore test servers first; recover orders next week.
+    - heading "Consider what is missing" [level=4]:
+      - generic: Consider what is missing
+    - paragraph:
+      - generic: Noncritical systems should not displace BIA-driven priorities. Waiting until next week misses the one-hour RTO, and stakeholders need coordinated status updates.
+  - button "Toggle reading layout":
+    - generic: Toggle reading layout
+- paragraph: Which recovery plan fits the business targets? (9/9)
+- dialog "Lesson Info":
+  - heading "Lesson Info" [level=2]
+  - button "Close": ✕
+  - paragraph: OBJECTIVE 2.2
+  - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=3]:
+    - generic: Disaster Recovery, RTO/RPO & Recovery Strategies
+  - heading "What you'll learn" [level=4]
+  - list:
+    - generic: Define Disaster Recovery (DR) and a Disaster Recovery Plan (DRP), explain how DRP supports the broader Business Continuity Plan (BCP), and identify the five strategic benefits of DR while keeping GDPR/HIPAA within their proper illustrative bounds.
+    - generic: Distinguish Recovery Time Objective (RTO, maximum acceptable downtime) from Recovery Point Objective (RPO, maximum acceptable data loss in time) using directional timelines and worked outage calculations, while recognizing that targets are not guarantees.
+    - generic: Evaluate backup and restoration strategies (cloud backups and off-site storage) and compare Hot Sites, Warm Sites, and Cold Sites across readiness, restoration speed, and cost trade-offs.
+    - generic: Explain why regular DRP testing and drills, clear IT/business recovery priorities, and role coordination are essential, and master the seven-dimension comparison between Business Continuity (BC) and Disaster Recovery (DR).
+  - generic "Slides 1–9 — Full explanations"
+  - generic "Slide 1 — Restore a working service, not just a server."
+  - generic "Slide 2 — Recovery reduces the business impact of an outage."
+  - generic "Slide 3 — RPO looks back. RTO sets the recovery-time target."
+  - generic "Slide 4 — Separate the target from what actually happened."
+  - generic "Slide 5 — A backup is useful when you can restore it." [active]
+  - heading "A backup is useful when you can restore it." [level=2]:
+    - generic: A backup is useful when you can restore it.
+  - paragraph:
+    - generic: Protect recoverable copies from the incident, then test the entire restoration path.
+  - table "Comparison of on-site backups, cloud backups, and off-site storage in a Disaster Recovery Plan (S18, Domain 2.md §9.4)":
+    - caption:
+      - generic: Comparison of on-site backups, cloud backups, and off-site storage in a Disaster Recovery Plan (S18, Domain 2.md §9.4)
+    - rowgroup:
+      - row "Backup Strategy / Architecture Operational Characteristics Disaster Survival & DRP Role":
+        - columnheader "Backup Strategy / Architecture":
+          - generic: Backup Strategy / Architecture
+        - columnheader "Operational Characteristics":
+          - generic: Operational Characteristics
+        - columnheader "Disaster Survival & DRP Role":
+          - generic: Disaster Survival & DRP Role
+    - rowgroup:
+      - row "On-Site Only Backup (Single-Site Risk) Stores backup copies in the same building or local server room as the primary production database. Useful for some local recovery, but primary and backup may be lost together in a site-wide incident.":
+        - cell "On-Site Only Backup (Single-Site Risk)":
+          - generic: On-Site Only Backup (Single-Site Risk)
+        - cell "Stores backup copies in the same building or local server room as the primary production database.":
+          - generic: Stores backup copies in the same building or local server room as the primary production database.
+        - cell "Useful for some local recovery, but primary and backup may be lost together in a site-wide incident.":
+          - generic: Useful for some local recovery, but primary and backup may be lost together in a site-wide incident.
+      - row "Cloud Backups (S18) Replicates or transfers encrypted backup snapshots to geographically separated cloud storage infrastructure. Can reduce shared physical exposure; test access, clean data, dependencies and restoration capacity.":
+        - cell "Cloud Backups (S18)":
+          - generic: Cloud Backups (S18)
+        - cell "Replicates or transfers encrypted backup snapshots to geographically separated cloud storage infrastructure.":
+          - generic: Replicates or transfers encrypted backup snapshots to geographically separated cloud storage infrastructure.
+        - cell "Can reduce shared physical exposure; test access, clean data, dependencies and restoration capacity.":
+          - generic: Can reduce shared physical exposure; test access, clean data, dependencies and restoration capacity.
+      - row "Off-Site Storage (S18 / D2-Q01) Preserves backup media or replicated storage arrays at a physically separate facility isolated from the primary location. Reduces co-location exposure when appropriately separated; verify that copies survive and remain accessible.":
+        - cell "Off-Site Storage (S18 / D2-Q01)":
+          - generic: Off-Site Storage (S18 / D2-Q01)
+        - cell "Preserves backup media or replicated storage arrays at a physically separate facility isolated from the primary location.":
+          - generic: Preserves backup media or replicated storage arrays at a physically separate facility isolated from the primary location.
+        - cell "Reduces co-location exposure when appropriately separated; verify that copies survive and remain accessible.":
+          - generic: Reduces co-location exposure when appropriately separated; verify that copies survive and remain accessible.
+      - row "Restoration Verification Imperative DRP procedures must document not only how backups are taken, but also how data, configurations, and integrity are restored and verified. Having a backup copy alone never proves recovery will succeed within RTO/RPO unless restoration procedures are tested (Domain 2.md §9.4).":
+        - cell "Restoration Verification Imperative":
+          - generic: Restoration Verification Imperative
+        - cell "DRP procedures must document not only how backups are taken, but also how data, configurations, and integrity are restored and verified.":
+          - generic: DRP procedures must document not only how backups are taken, but also how data, configurations, and integrity are restored and verified.
+        - cell "Having a backup copy alone never proves recovery will succeed within RTO/RPO unless restoration procedures are tested (Domain 2.md §9.4).":
+          - generic: Having a backup copy alone never proves recovery will succeed within RTO/RPO unless restoration procedures are tested (Domain 2.md §9.4).
+  - paragraph:
+    - generic: "An on-site copy can help local recovery but shares physical risks with the primary site. Cloud backups or off-site storage can reduce that shared exposure when copies, access and dependencies are appropriately separated. Location alone is insufficient: protect access and keys, identify a known-good point, restore data and configurations, then validate integrity and business use. Replication may copy corruption and is not automatically a historical backup. The official Domain 2 AI guidance adds that configurations and datasets powering AI services also need recovery planning; copying ordinary business data alone may omit those service dependencies. Test recoverability against RTO and RPO."
+  - list:
+    - generic: "Why On-Site Backups Alone Fail Disaster Recovery (T:L61–63): A single physical catastrophe or network-wide ransomware outbreak can wipe out both primary servers and co-located backups simultaneously."
+    - generic: "Cloud Backups & Off-Site Storage (S18): Geographic and logical separation ensures that a clean, survivable copy of critical data and system configurations remains available after a primary site outage."
+    - generic: "Linking Backup Strategy to RPO & RTO: RPO dictates how frequently changes must be captured or replicated off-site, while RTO dictates how rapidly those backup images can be restored into working systems."
+  - paragraph:
+    - generic: "Key Takeaway: Cloud backups and off-site storage prevent a single site disaster from destroying both live systems and backup copies, but restoration must be verified to meet RPO and RTO."
+  - generic "Slide 6 — A recovery site still has work to complete."
+  - generic "Slide 7 — Exercise the plan, measure, then correct the gaps."
+  - generic "Slide 8 — Keep the business going while IT recovers."
+  - generic "Slide 9 — Which recovery plan fits the business targets?"
+  - generic "References & lesson details"

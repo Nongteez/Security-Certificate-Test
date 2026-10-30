@@ -1,0 +1,27 @@
+/* Private, content-independent typography for authored Domain 2 Lessons 3–8. */
+.learning-slide .d2s-scene {box-sizing:border-box;display:grid;grid-template-rows:auto minmax(0,1fr);gap:2cqw;width:100%;height:100%;padding:3.3cqw 4.2cqw;background:#fff;color:#142d45;}
+.learning-slide .d2s-scene * {box-sizing:border-box;}
+.learning-slide .d2s-header,.learning-slide .d2s-main {min-width:0;min-height:0;}
+.learning-slide .d2s-main {display:flex;flex-direction:column;justify-content:space-between;gap:1.5cqw;}
+.learning-slide .d2s-title {margin:0;color:#102b42;font-size:clamp(30px,3.1cqw,55px);line-height:1.25;font-weight:750;letter-spacing:-.025em;}
+.learning-viewer .learning-slide .d2s-lead {margin:.8cqw 0 0;color:#536277;font-size:clamp(19px,1.75cqw,31px);line-height:1.5;}
+.learning-slide .d2s-term {margin:0;color:#244f77;font-size:clamp(25px,2.2cqw,39px);line-height:1.35;font-weight:700;}
+.learning-viewer .learning-slide .d2s-copy {margin:0;color:#2c435a;font-size:clamp(21px,1.9cqw,34px);line-height:1.45;}
+.learning-viewer .learning-slide .d2s-note {margin:0;color:#536277;font-size:clamp(18px,1.65cqw,30px);line-height:1.45;}
+.learning-viewer .learning-slide .d2s-foot {margin:0;border-top:1px solid #d5e0eb;padding-top:1cqw;color:#39536c;font-size:clamp(18px,1.55cqw,28px);line-height:1.45;}
+.learning-slide .d2s-arrow {align-self:center;color:#7498b6;font-size:3.4cqw;text-align:center;}
+.learning-slide .d2s-decision {display:grid;grid-template-columns:1.1fr 1fr;gap:3cqw;align-items:start;flex:1;}
+.learning-slide .d2s-options {display:grid;gap:.8cqw;}
+.learning-slide .d2s-option {display:grid;grid-template-columns:1.6cqw 1fr;gap:1cqw;align-items:start;min-height:44px;width:100%;padding:1.05cqw 1.2cqw;border:1px solid #becddc;border-radius:3px;background:#fff;color:#1a3b59;text-align:left;font-family:inherit;cursor:pointer;}
+.learning-slide .d2s-option-letter {font-size:clamp(19px,1.7cqw,31px);line-height:1.45;font-weight:750;color:#527695;}
+.learning-slide .d2s-option-copy {font-size:clamp(20px,1.75cqw,32px);line-height:1.45;font-weight:550;}
+.learning-slide .d2s-option:hover {background:#f1f7fc;border-color:#467fab;}
+.learning-slide .d2s-option[aria-pressed='true'] {background:#eaf3fc;border-color:#2563a0;box-shadow:inset 3px 0 #2563a0;}
+.learning-slide .d2s-option:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
+.learning-slide .d2s-feedback {border-left:2px solid #9fbcd5;padding:1cqw 0 1cqw 2cqw;}
+.learning-slide .d2s-feedback .d2s-term {margin-bottom:1cqw;}
+@container (max-width:800px) {
+  .learning-slide .d2s-scene {height:auto;min-height:100%;padding:28px;gap:24px;}
+  .learning-slide .d2s-decision {grid-template-columns:1fr;gap:24px;}
+  .learning-slide .d2s-option {grid-template-columns:24px 1fr;padding:12px;gap:12px;}
+}

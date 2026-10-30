@@ -1,0 +1,67 @@
+- navigation "Presentation controls":
+  - button "Back to Domain":
+  - generic "Social Engineering & Password Protection":
+    - generic: DOMAIN 2 · OBJECTIVE 2.3
+    - heading "Social Engineering & Password Protection" [level=1]
+  - group "Slide navigation":
+    - button "Previous slide":
+      - generic: ‹
+    - generic: 7 / 8
+    - button "Next slide" [active]:
+      - generic: ›
+  - group "Content language":
+    - button "TH" [pressed]:
+      - generic: TH
+    - button "EN":
+      - generic: EN
+  - button "Slides":
+    - generic: Slides
+  - button "Lesson Info":
+    - generic: Info
+  - button "Keyboard shortcuts":
+  - button "Fullscreen":
+    - generic: ⛶
+  - button "Toggle theme":
+- region "MFA does not automatically mean phishing-resistant. (7/8)":
+  - article:
+    - heading "MFA ไม่ได้แปลว่าต้าน Phishing ได้โดยอัตโนมัติ" [level=2]:
+      - generic: MFA ไม่ได้แปลว่าต้าน Phishing ได้โดยอัตโนมัติ
+    - paragraph:
+      - generic: พิจารณาว่าผู้โจมตีส่งต่อผล Authentication ไปใช้กับบริการจริงได้หรือไม่
+    - table "แนวคิดและเหตุผลในการปฏิบัติ":
+      - caption:
+        - generic: แนวคิดและเหตุผลในการปฏิบัติ
+      - rowgroup:
+        - row "แนวคิด / แนวทาง ความหมาย / การใช้ เหตุผล / ขอบเขต":
+          - columnheader "แนวคิด / แนวทาง":
+            - generic: แนวคิด / แนวทาง
+          - columnheader "ความหมาย / การใช้":
+            - generic: ความหมาย / การใช้
+          - columnheader "เหตุผล / ขอบเขต":
+            - generic: เหตุผล / ขอบเขต
+      - rowgroup:
+        - row "Password + OTP ที่กรอกเอง เพิ่มปัจจัยยืนยันตัวตน เว็บปลอมอาจส่งต่อ Password กับรหัสได้":
+          - cell "Password + OTP ที่กรอกเอง":
+            - generic: Password + OTP ที่กรอกเอง
+          - cell "เพิ่มปัจจัยยืนยันตัวตน":
+            - generic: เพิ่มปัจจัยยืนยันตัวตน
+          - cell "เว็บปลอมอาจส่งต่อ Password กับรหัสได้":
+            - generic: เว็บปลอมอาจส่งต่อ Password กับรหัสได้
+        - row "Authentication ที่ต้าน Phishing ผูก Authentication กับ Verifier ด้วย Cryptography FIDO2/WebAuthn ที่ใช้ถูกต้องเป็นตัวอย่าง แต่การติดตั้งและกู้บัญชียังสำคัญ":
+          - cell "Authentication ที่ต้าน Phishing":
+            - generic: Authentication ที่ต้าน Phishing
+          - cell "ผูก Authentication กับ Verifier ด้วย Cryptography":
+            - generic: ผูก Authentication กับ Verifier ด้วย Cryptography
+          - cell "FIDO2/WebAuthn ที่ใช้ถูกต้องเป็นตัวอย่าง แต่การติดตั้งและกู้บัญชียังสำคัญ":
+            - generic: FIDO2/WebAuthn ที่ใช้ถูกต้องเป็นตัวอย่าง แต่การติดตั้งและกู้บัญชียังสำคัญ
+    - paragraph:
+      - generic: MFA ใช้ปัจจัยยืนยันตัวตนต่างประเภทและช่วยลดผลจาก Password หลุด แต่ไม่ใช่ทุกวิธีจะต้าน Phishing รหัส OTP ที่กรอกเองอาจถูกเว็บปลอมส่งต่อไปใช้ได้ NIST อธิบายการต้าน Phishing ด้วยการผูกผ่าน Cryptography โดย FIDO2/WebAuthn ผูกกับชื่อ Verifier ต้องใช้วิธีที่อนุมัติและเหมาะกับความเสี่ยง พร้อมปกป้องทางกู้บัญชี แม้ Authentication ต้าน Phishing ก็ไม่ได้พิสูจน์ว่าทุกคำขอจากบัญชีนั้นได้รับอนุญาตหรือปลอดภัย ยังต้องควบคุมการใช้บัญชีผิด เครื่องปลายทางถูกเจาะ และการหลอกให้ทำอย่างอื่นนอกการ Login
+    - list:
+      - generic: จำนวนปัจจัยกับการต้าน Phishing เป็นคุณสมบัติคนละอย่าง
+      - generic: ไม่อนุมัติคำขอ Authentication ที่ไม่คาดหมาย
+      - generic: รายงาน Login น่าสงสัยตามขั้นตอนที่อนุมัติ
+    - paragraph:
+      - generic: เลือกการป้องกันให้ตรงการโจมตี ไม่ดูแค่จำนวนปัจจัย
+  - button "Toggle reading layout":
+    - generic: Toggle reading layout
+- paragraph: MFA does not automatically mean phishing-resistant. (7/8)

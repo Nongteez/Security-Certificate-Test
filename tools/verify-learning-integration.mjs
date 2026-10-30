@@ -6,11 +6,11 @@ import { renderLearningDomain } from '../js/ui/screen-learning-domain.js';
 import { buildLearningCourseModel } from '../js/core/learning-course.js';
 const screens = await import('../js/ui/screen-learning-center.js').catch(() => ({}));
 test('fourth card preserves original order, is English-only and cannot route as an exam or bypass Coming Soon', async () => {
-  assert.deepEqual(versions.map(v => v.id), ['2026', 'next-bank', 'isc2-cc-vocabulary', 'isc2-cc-learning-slides']); assert.equal(resolveExamVersion('isc2-cc', 'isc2-cc-learning-slides'), null);
+  assert.deepEqual(versions.map(v => v.id), ['2026', 'next-bank', 'isc2-cc-vocabulary', 'isc2-cc-learning-slides', 'isc2-cc-reading-notes']); assert.equal(resolveExamVersion('isc2-cc', 'isc2-cc-learning-slides'), null);
   const handlers = {}, forged = { getAttribute: () => 'isc2-cc-learning-slides', addEventListener: (type, fn) => { handlers[type] = fn; } };
   const root = { innerHTML: '', querySelector: () => null, querySelectorAll: selector => selector === '.btn-select-version' ? [forged] : [] };
   state.setup.language = 'both'; let called = false; renderExamVersionsScreen(root, certs[0], () => { called = true; }, () => {}); await handlers.click(); assert.equal(called, false);
-  assert.match(root.innerHTML, /Explore cybersecurity concepts/); assert.doesNotMatch(root.innerHTML, /สำรวจแนวคิด/); assert.match(root.innerHTML, /Coming Soon/); assert.equal((root.innerHTML.match(/<article /g) || []).length, 4);
+  assert.match(root.innerHTML, /Explore cybersecurity concepts/); assert.doesNotMatch(root.innerHTML, /สำรวจแนวคิด/); assert.match(root.innerHTML, /Coming Soon/); assert.equal((root.innerHTML.match(/<article /g) || []).length, 5);
 });
 test('Learning Center shows five navigable Domain cards without embedded objectives or fake lesson actions', () => {
   const doc = new TestDocument(), root = doc.createElement('div'); doc.body.append(root); const catalog = JSON.parse(fs.readFileSync(new URL('../content/isc2-cc-2026/learning/published/catalog.json', import.meta.url)));

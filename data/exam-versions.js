@@ -41,6 +41,14 @@ const versions = [
     title: 'ISC2 CC 2026 — Update Slides',
     description: 'Explore cybersecurity concepts through interactive presentations, visual explanations, and structured lessons aligned with the 2026 exam outline.',
     status: 'coming-soon'
+  },
+  {
+    id: 'isc2-cc-reading-notes',
+    certificationId: 'isc2-cc',
+    type: 'reading',
+    title: 'ISC2 CC 2026 — Reading Notes',
+    description: 'Read cybersecurity study notes with clear explanations, examples, and essential exam concepts.',
+    status: 'available'
   }
 ];
 

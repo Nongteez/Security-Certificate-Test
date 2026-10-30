@@ -1,0 +1,30 @@
+import {pair,makeScene,makeDecision} from './domain2-lesson-shell.js';
+const id='lesson-d2-07-security-metrics-kpi-kri';
+const scenes=new Map([
+ ['slide-01-measure-for-a-decision',['question-evidence-action',7]],
+ ['slide-02-denominator-and-window',['defined-percentage',3]],
+ ['slide-03-detection-and-response-boundaries',['defined-response-clocks',4]],
+ ['slide-04-kri-exposure',['exposure-and-investigation',6]],
+ ['slide-05-kpi-performance-objective',['performance-against-objective',3]],
+ ['slide-06-interpretation-and-indicator-role',['trend-and-alternative-explanations',3]],
+ ['slide-07-metrics-decision',['performance-and-risk-decision',4]]]);
+export function hasSecurityMetricsPresentation({lesson,slide}={}){const a=scenes.get(slide?.id),b=slide?.blocks;return lesson?.id===id&&!!a&&b?.length===5&&b.map(x=>x.kind).join(',')==='text,table,text,list,text'&&b[1].columns?.length===3&&b[1].rows?.length===a[1]&&b[1].rows.every(r=>r.length===3);}
+export function renderSecurityMetricsPresentation(host,context){
+ const [kind]=scenes.get(context.slide.id),scene=makeScene(host,context,kind,'data-metrics-composition'),{main,el,put,foot,arrow}=scene,rows=context.slide.blocks[1].rows;
+ const item=(a,b)=>{const n=el('section','d2m-item');n.append(put('h4','d2s-term',a),put('p','d2s-copy',b));return n;};
+ const fraction=(label)=>{const n=el('div','d2m-fraction');n.append(put('p','d2m-value',pair('18 / 20 = 90%','18 / 20 = 90%')),put('p','d2s-copy',label));const marks=el('div','d2m-marks');marks.setAttribute('aria-hidden','true');for(let i=0;i<20;i++)marks.append(el('span',i<18?'d2m-met':'d2m-unmet'));n.append(marks);return n;};
+ if(kind==='question-evidence-action'){
+  const n=el('div','d2m-flow');n.append(item(pair('Business question','คำถามธุรกิจ'),pair('Are the controls meeting their objective?','Control ทำได้ตามเป้าหมายหรือไม่?')),arrow(),item(pair('Defined evidence','หลักฐานที่กำหนดชัด'),pair('Measure a relevant activity consistently','วัดกิจกรรมที่เกี่ยวข้องอย่างสอดคล้อง')),arrow(),item(pair('Responsible action','ผู้รับผิดชอบดำเนินการ'),pair('Investigate gaps and improve','ตรวจช่องว่างและปรับปรุง')));main.append(n);foot(pair('Use a measure the audience can interpret and act on.','เลือกสิ่งที่ผู้รับตีความและนำไปดำเนินการได้'));
+ }else if(kind==='defined-percentage'){
+  const n=el('div','d2m-split');n.append(fraction(pair('Illustrative snapshot · systems meeting the patch requirement','ตัวอย่าง ณ เวลาวัด · ระบบที่ผ่านข้อกำหนด Patch')),item(pair('Define the population','กำหนดประชากร'),pair('18 meeting the requirement / 20 assessed in-scope systems','18 ระบบที่ผ่าน / 20 ระบบในขอบเขตที่ตรวจ')));main.append(n);foot(pair('State the date, exclusions and unknown coverage. A zero denominator gives no meaningful rate.','ระบุวันวัด ส่วนที่ยกเว้น และความครอบคลุมที่ยังไม่ทราบ ตัวส่วนศูนย์ไม่ให้อัตราที่มีความหมาย'));
+ }else if(kind==='defined-response-clocks'){
+  const n=el('div','d2m-clock');const labels=el('div','d2m-clock-labels');for(const x of [pair('Incident starts','เริ่มเหตุ'),pair('Detected','ตรวจพบ'),pair('Response milestone','จุดตอบสนองที่กำหนด')])labels.append(put('p','d2s-term',x));n.append(labels);const line=el('div','d2m-clock-line');line.setAttribute('aria-hidden','true');for(let i=0;i<3;i++)line.append(el('span'));n.append(line);const spans=el('div','d2m-clock-spans');spans.append(put('p','d2s-copy',pair('Detection duration → MTTD','ระยะเวลาตรวจพบ → MTTD')),put('p','d2s-copy',pair('Define the response interval → MTTR','กำหนดช่วงเวลาตอบสนอง → MTTR')));n.append(spans);main.append(n);foot(pair('This course: MTTR = Mean Time to Respond. Document the local start/stop definition and average comparable events.','บทเรียนนี้: MTTR = Mean Time to Respond บันทึกจุดเริ่ม/จบที่ใช้ และเฉลี่ยเหตุที่เทียบกันได้'));
+ }else if(kind==='exposure-and-investigation'){
+  const n=el('div','d2m-risk');n.append(item(rows[1][0],rows[1][1]),arrow(),item(pair('Investigate the exposure','ตรวจความเสี่ยงที่เปิดอยู่'),pair('Check criticality, safeguards and the responsible owner','ตรวจความสำคัญ การป้องกัน และผู้รับผิดชอบ')));main.append(n);foot(pair('A KRI prompts a risk question; it does not predict a certain incident. Model-drift indicators also need context.','KRI ช่วยตั้งคำถามด้านความเสี่ยง ไม่ได้ทำนายว่าจะเกิด Incident แน่นอน ตัวชี้วัด Model drift ก็ต้องมีบริบท'));
+ }else if(kind==='performance-against-objective'){
+  const n=el('div','d2m-split');n.append(fraction(pair('Illustrative cohort · critical findings patched within 15 days','กลุ่มตัวอย่าง · รายการ Critical ที่ Patch ภายใน 15 วัน')),item(pair('Illustrative target: 95%','เป้าหมายตัวอย่าง: 95%'),pair('Actual: 90% · below this stated target','ผลจริง: 90% · ต่ำกว่าเป้าหมายที่ระบุนี้')));main.append(n);foot(pair('Use findings whose deadlines fall in the reporting period, including open overdue findings. This is not a universal target.','ใช้รายการที่ครบกำหนดในงวด รวมรายการเปิดที่เกินกำหนด เป้าหมายนี้ไม่ใช่เกณฑ์สากล'));
+ }else if(kind==='trend-and-alternative-explanations'){
+  const n=el('div','d2m-trend');const bars=el('div','d2m-bars');for(const [i,v]of [10,20].entries()){const row=el('div','d2m-bar-row');row.append(put('p','d2s-note',i===0?pair('Earlier period','งวดก่อน'):pair('Current period','งวดนี้')));const bar=el('div',i===0?'d2m-bar d2m-half':'d2m-bar');bar.append(el('span','d2m-bar-value',String(v)));row.append(bar);bars.append(row);}n.append(bars);const why=el('div','d2m-why');why.append(item(pair('More attacks?','การโจมตีเพิ่ม?'),pair('Check threat and incident evidence','ตรวจหลักฐานภัยและ Incident')),item(pair('Better reporting?','รายงานดีขึ้น?'),pair('Check behaviour and coverage','ตรวจพฤติกรรมและความครอบคลุม')));n.append(why);main.append(n);foot(pair('Illustrative phishing reports, equal periods. KPI/KRI role and leading/lagging timing are different classifications.','ตัวอย่างรายงาน Phishing ในงวดเท่ากัน บทบาท KPI/KRI กับช่วงเวลา Leading/Lagging เป็นคนละการจัดประเภท'));
+ }else return makeDecision(scene,context,{prefix:'metrics',correctIndex:2,prompt:pair('What should the team do?','ทีมควรทำอย่างไร?'),choices:rows.map(r=>r[1])});
+ return{destroy(){}};
+}

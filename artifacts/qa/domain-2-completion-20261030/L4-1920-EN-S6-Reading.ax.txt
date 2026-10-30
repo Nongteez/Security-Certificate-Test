@@ -1,0 +1,81 @@
+- navigation "Presentation controls":
+  - button "Back to Domain":
+  - generic "Disaster Recovery, RTO/RPO & Recovery Strategies":
+    - generic: DOMAIN 2 · OBJECTIVE 2.2
+    - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=1]
+  - group "Slide navigation":
+    - button "Previous slide":
+      - generic: ‹
+    - generic: 6 / 9
+    - button "Next slide":
+      - generic: ›
+  - group "Content language":
+    - button "TH":
+      - generic: TH
+    - button "EN" [pressed]:
+      - generic: EN
+  - button "Slides":
+    - generic: Slides
+  - button "Lesson Info":
+    - generic: Info
+  - button "Keyboard shortcuts":
+  - button "Fullscreen":
+    - generic: ⛶
+  - button "Toggle theme":
+- region "A recovery site still has work to complete. (6/9)":
+  - article:
+    - heading "A recovery site still has work to complete." [level=2]:
+      - generic: A recovery site still has work to complete.
+    - paragraph:
+      - generic: Hot, Warm and Cold describe relative readiness. Choose using tested recovery needs and cost.
+    - table "Comparison of Hot Site, Warm Site, and Cold Site recovery strategies (S18, Domain 2.md §9.5, T:L63–66)":
+      - caption:
+        - generic: Comparison of Hot Site, Warm Site, and Cold Site recovery strategies (S18, Domain 2.md §9.5, T:L63–66)
+      - rowgroup:
+        - row "Recovery Site Type (S18) Infrastructure & Data Readiness Transition Speed, Cost & RTO Alignment":
+          - columnheader "Recovery Site Type (S18)":
+            - generic: Recovery Site Type (S18)
+          - columnheader "Infrastructure & Data Readiness":
+            - generic: Infrastructure & Data Readiness
+          - columnheader "Transition Speed, Cost & RTO Alignment":
+            - generic: Transition Speed, Cost & RTO Alignment
+      - rowgroup:
+        - row "Hot Site Fully equipped alternate facility with IT systems, networks, applications, and near-real-time or up-to-date backups already intact. Fastest transition (typically minutes to hours in the instructor's example) and supports stringent RTOs, but carries the highest ongoing cost.":
+          - cell "Hot Site":
+            - generic: Hot Site
+          - cell "Fully equipped alternate facility with IT systems, networks, applications, and near-real-time or up-to-date backups already intact.":
+            - generic: Fully equipped alternate facility with IT systems, networks, applications, and near-real-time or up-to-date backups already intact.
+          - cell "Fastest transition (typically minutes to hours in the instructor's example) and supports stringent RTOs, but carries the highest ongoing cost.":
+            - generic: Fastest transition (typically minutes to hours in the instructor's example) and supports stringent RTOs, but carries the highest ongoing cost.
+        - row "Warm Site Partially equipped site with power, HVAC, cabling, connectivity, and some core IT hardware, but requires loading current data/configs. Moderate transition time (typically several hours to days in the lecture) and moderate cost—suited for intermediate recovery targets.":
+          - cell "Warm Site":
+            - generic: Warm Site
+          - cell "Partially equipped site with power, HVAC, cabling, connectivity, and some core IT hardware, but requires loading current data/configs.":
+            - generic: Partially equipped site with power, HVAC, cabling, connectivity, and some core IT hardware, but requires loading current data/configs.
+          - cell "Moderate transition time (typically several hours to days in the lecture) and moderate cost—suited for intermediate recovery targets.":
+            - generic: Moderate transition time (typically several hours to days in the lecture) and moderate cost—suited for intermediate recovery targets.
+        - row "Cold Site Basic facility space (rooms, power, cooling shells) without pre-installed active servers, storage arrays, or loaded data. Usually the most preparation work and lowest standing cost; do not assume it meets a short RTO.":
+          - cell "Cold Site":
+            - generic: Cold Site
+          - cell "Basic facility space (rooms, power, cooling shells) without pre-installed active servers, storage arrays, or loaded data.":
+            - generic: Basic facility space (rooms, power, cooling shells) without pre-installed active servers, storage arrays, or loaded data.
+          - cell "Usually the most preparation work and lowest standing cost; do not assume it meets a short RTO.":
+            - generic: Usually the most preparation work and lowest standing cost; do not assume it meets a short RTO.
+        - row "Implementation & Dependency Reality Actual failover speed depends on network routing, DNS cutover, software licensing, trained staff, vendor SLAs, and regular testing. Relative timeframes ('minutes/hours' vs. 'days/weeks') are general operational ranges, not fixed guarantees without tested automation.":
+          - cell "Implementation & Dependency Reality":
+            - generic: Implementation & Dependency Reality
+          - cell "Actual failover speed depends on network routing, DNS cutover, software licensing, trained staff, vendor SLAs, and regular testing.":
+            - generic: Actual failover speed depends on network routing, DNS cutover, software licensing, trained staff, vendor SLAs, and regular testing.
+          - cell "Relative timeframes ('minutes/hours' vs. 'days/weeks') are general operational ranges, not fixed guarantees without tested automation.":
+            - generic: Relative timeframes ('minutes/hours' vs. 'days/weeks') are general operational ranges, not fixed guarantees without tested automation.
+    - paragraph:
+      - generic: A Hot Site has the greatest pre-positioned IT readiness and usually higher standing cost. A Warm Site provides partial infrastructure but still needs preparation such as current data and configurations. A Cold Site mainly provides space and basic utilities; equipment and systems still need to be provisioned. These are relative models, not promised recovery times. Lecture ranges such as minutes/hours or days/weeks are illustrative. Network routing, identity, licensing, staffing, capacity and usable data all affect actual restoration. Select a configuration that demonstrates the required recovery objectives in exercises; the site name alone cannot prove a one-hour RTO.
+    - list:
+      - generic: "Hot Site (Highest Readiness / Fastest Recovery / Highest Cost): Active or standby infrastructure with synchronized data; chosen when critical systems demand very short RTOs."
+      - generic: "Warm Site (Partial Readiness / Moderate Recovery / Balanced Cost): Pre-wired facility with baseline hardware that requires loading recent backups and configurations before taking production traffic."
+      - generic: "Cold Site: basic space/utilities with substantial provisioning remaining. Actual recovery depends on the implementation and must be tested against the target."
+    - paragraph:
+      - generic: "Key Takeaway: Hot Sites recover fastest at highest cost, Warm Sites balance partial readiness and moderate recovery time, and Cold Sites cost least upfront but take longest to restore."
+  - button "Toggle reading layout" [active]:
+    - generic: Toggle reading layout
+- paragraph: A recovery site still has work to complete. (6/9)

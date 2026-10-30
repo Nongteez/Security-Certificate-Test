@@ -1,0 +1,2 @@
+import {verifyD2Lesson} from './fixtures/learning/domain2-lesson-contract.mjs';
+verifyD2Lesson({id:'lesson-d2-06-social-engineering-password-protection',objective:'2.3',count:8,prefix:'social',correct:1,terms:[/Trust/,/Fear/,/Urgency/,/Authority/,/Greed/,/Helpfulness/,/Phishing/,/Spear Phishing/,/Whaling/,/Vishing/,/Smishing/,/Pretexting/,/unique/i,/password manager/i,/compromise/i,/stored credentials/i,/phishing.resistant/i,/WebAuthn/,/AI/,/playbook/i],forbidden:[/Baiting|Tailgating/,/MFA guarantees|all MFA is phishing.resistant|rotate passwords every/i]});

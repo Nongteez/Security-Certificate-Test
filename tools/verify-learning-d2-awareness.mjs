@@ -1,0 +1,2 @@
+import {verifyD2Lesson} from './fixtures/learning/domain2-lesson-contract.mjs';
+verifyD2Lesson({id:'lesson-d2-05-security-awareness-culture-leadership',objective:'2.3',count:6,prefix:'awareness',correct:2,terms:[/Common cybersecurity threats/i,/Their security responsibilities/i,/Organizational security policies/i,/recognize and report suspicious/i,/Ask.*unsure/i,/Provide appropriate resources/i,/Lead by example/i,/Ensure security responsibilities are understood/i,/training/i,/feedback/i],forbidden:[/annual training.*guarantees/i,/Q6.*culture/i]});

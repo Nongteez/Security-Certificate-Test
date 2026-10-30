@@ -1,0 +1,127 @@
+- navigation "Presentation controls":
+  - button "Back to Domain":
+  - generic "Disaster Recovery, RTO/RPO & Recovery Strategies":
+    - generic: DOMAIN 2 · OBJECTIVE 2.2
+    - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=1]
+  - group "Slide navigation":
+    - button "Previous slide":
+      - generic: ‹
+    - generic: 9 / 9
+    - button "Finish Lesson":
+      - generic: Finish Lesson
+  - group "Content language":
+    - button "TH":
+      - generic: TH
+    - button "EN" [pressed]:
+      - generic: EN
+  - button "Slides":
+    - generic: Slides
+  - button "Lesson Info":
+    - generic: Info
+  - button "Keyboard shortcuts":
+  - button "Fullscreen":
+    - generic: ⛶
+  - button "Toggle theme":
+- region "Which recovery plan fits the business targets? (9/9)":
+  - article:
+    - heading "Which recovery plan fits the business targets?" [level=2]:
+      - generic: Which recovery plan fits the business targets?
+    - heading "Which recovery plan fits the business targets?" [level=3]:
+      - generic: Which recovery plan fits the business targets?
+    - paragraph:
+      - generic: "The order database fails at 17:00. Acceptable data loss: 30 min. Downtime target: 1 hour."
+    - group "Scenario decision options":
+      - button "Call data loss RTO; start buying Cold Site servers.":
+        - generic: A
+        - generic: Call data loss RTO; start buying Cold Site servers.
+      - button "Keep daily backups only at the primary site; skip drills.":
+        - generic: B
+        - generic: Keep daily backups only at the primary site; skip drills.
+      - button "RPO 30 min, RTO 1 hour; protected copies and tested recovery capacity.":
+        - generic: C
+        - generic: RPO 30 min, RTO 1 hour; protected copies and tested recovery capacity.
+      - button "Restore test servers first; recover orders next week." [pressed]:
+        - generic: D
+        - generic: Restore test servers first; recover orders next week.
+    - heading "Consider what is missing" [level=4]:
+      - generic: Consider what is missing
+    - paragraph:
+      - generic: Noncritical systems should not displace BIA-driven priorities. Waiting until next week misses the one-hour RTO, and stakeholders need coordinated status updates.
+  - button "Toggle reading layout":
+    - generic: Toggle reading layout
+- paragraph: Which recovery plan fits the business targets? (9/9)
+- dialog "Lesson Info":
+  - heading "Lesson Info" [level=2]
+  - button "Close": ✕
+  - paragraph: OBJECTIVE 2.2
+  - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=3]:
+    - generic: Disaster Recovery, RTO/RPO & Recovery Strategies
+  - heading "What you'll learn" [level=4]
+  - list:
+    - generic: Define Disaster Recovery (DR) and a Disaster Recovery Plan (DRP), explain how DRP supports the broader Business Continuity Plan (BCP), and identify the five strategic benefits of DR while keeping GDPR/HIPAA within their proper illustrative bounds.
+    - generic: Distinguish Recovery Time Objective (RTO, maximum acceptable downtime) from Recovery Point Objective (RPO, maximum acceptable data loss in time) using directional timelines and worked outage calculations, while recognizing that targets are not guarantees.
+    - generic: Evaluate backup and restoration strategies (cloud backups and off-site storage) and compare Hot Sites, Warm Sites, and Cold Sites across readiness, restoration speed, and cost trade-offs.
+    - generic: Explain why regular DRP testing and drills, clear IT/business recovery priorities, and role coordination are essential, and master the seven-dimension comparison between Business Continuity (BC) and Disaster Recovery (DR).
+  - generic "Slides 1–9 — Full explanations"
+  - generic "Slide 1 — Restore a working service, not just a server." [active]
+  - heading "Restore a working service, not just a server." [level=2]:
+    - generic: Restore a working service, not just a server.
+  - paragraph:
+    - generic: Disaster Recovery restores disrupted IT and data. The DRP names responsibilities, priorities and procedures.
+  - table "Disaster Recovery (DR) definition, core purposes, three key concepts (S16), and the BC/BCP vs. DR/DRP relationship":
+    - caption:
+      - generic: Disaster Recovery (DR) definition, core purposes, three key concepts (S16), and the BC/BCP vs. DR/DRP relationship
+    - rowgroup:
+      - row "DR Dimension (S16) Core Source Definition & Elements Governance & Exam Distinction":
+        - columnheader "DR Dimension (S16)":
+          - generic: DR Dimension (S16)
+        - columnheader "Core Source Definition & Elements":
+          - generic: Core Source Definition & Elements
+        - columnheader "Governance & Exam Distinction":
+          - generic: Governance & Exam Distinction
+    - rowgroup:
+      - row "Definition of Disaster Recovery (DR) A set of policies, tools, and procedures designed to restore IT infrastructure, systems, and data after a disaster or major disruption. Focuses specifically on restoring disrupted technical capabilities (servers, databases, applications, networks, data).":
+        - cell "Definition of Disaster Recovery (DR)":
+          - generic: Definition of Disaster Recovery (DR)
+        - cell "A set of policies, tools, and procedures designed to restore IT infrastructure, systems, and data after a disaster or major disruption.":
+          - generic: A set of policies, tools, and procedures designed to restore IT infrastructure, systems, and data after a disaster or major disruption.
+        - cell "Focuses specifically on restoring disrupted technical capabilities (servers, databases, applications, networks, data).":
+          - generic: Focuses specifically on restoring disrupted technical capabilities (servers, databases, applications, networks, data).
+      - row "Core Purposes of DR (S16) (1) Minimize downtime and ensure rapid system recovery; (2) Restore critical IT operations after an incident; (3) Protect data integrity and prevent loss; (4) Support business continuity by ensuring technology resilience. Domain 2.md §8.2 unpacks these into 5 operational goals linking technical recovery speed and data integrity directly to business survival.":
+        - cell "Core Purposes of DR (S16)":
+          - generic: Core Purposes of DR (S16)
+        - cell "(1) Minimize downtime and ensure rapid system recovery; (2) Restore critical IT operations after an incident; (3) Protect data integrity and prevent loss; (4) Support business continuity by ensuring technology resilience.":
+          - generic: (1) Minimize downtime and ensure rapid system recovery; (2) Restore critical IT operations after an incident; (3) Protect data integrity and prevent loss; (4) Support business continuity by ensuring technology resilience.
+        - cell "Domain 2.md §8.2 unpacks these into 5 operational goals linking technical recovery speed and data integrity directly to business survival.":
+          - generic: Domain 2.md §8.2 unpacks these into 5 operational goals linking technical recovery speed and data integrity directly to business survival.
+      - 'row "Three Key Concepts (S16) (1) IT-focused recovery; (2) Data and system restoration; (3) A critical part of overall Business Continuity (BC). Never treat DR as separate from or equal in scope to BC: DR is the technical engine inside the broader BC umbrella (DR ⊂ BC)."':
+        - cell "Three Key Concepts (S16)":
+          - generic: Three Key Concepts (S16)
+        - cell "(1) IT-focused recovery; (2) Data and system restoration; (3) A critical part of overall Business Continuity (BC).":
+          - generic: (1) IT-focused recovery; (2) Data and system restoration; (3) A critical part of overall Business Continuity (BC).
+        - 'cell "Never treat DR as separate from or equal in scope to BC: DR is the technical engine inside the broader BC umbrella (DR ⊂ BC)."':
+          - generic: "Never treat DR as separate from or equal in scope to BC: DR is the technical engine inside the broader BC umbrella (DR ⊂ BC)."
+      - row "BC / BCP vs. DR / DRP BC = organizational continuity capability; BCP = documented business continuity plan; DR = IT recovery capability/process; DRP = documented IT disaster recovery plan. If an exam question asks how to restore servers, databases, or networks, choose DR/DRP; if it asks how to keep the whole business running, choose BC/BCP.":
+        - cell "BC / BCP vs. DR / DRP":
+          - generic: BC / BCP vs. DR / DRP
+        - cell "BC = organizational continuity capability; BCP = documented business continuity plan; DR = IT recovery capability/process; DRP = documented IT disaster recovery plan.":
+          - generic: BC = organizational continuity capability; BCP = documented business continuity plan; DR = IT recovery capability/process; DRP = documented IT disaster recovery plan.
+        - cell "If an exam question asks how to restore servers, databases, or networks, choose DR/DRP; if it asks how to keep the whole business running, choose BC/BCP.":
+          - generic: If an exam question asks how to restore servers, databases, or networks, choose DR/DRP; if it asks how to keep the whole business running, choose BC/BCP.
+  - paragraph:
+    - generic: "Disaster Recovery (DR) combines policies, tools and procedures to restore IT infrastructure, systems and data after a disaster or major disruption. A Disaster Recovery Plan (DRP) records who may activate recovery, what to restore first, the procedures and how teams communicate. Restoring a server is only part of recovery: identity, network access, application configuration, data integrity and usable business transactions must also be checked. DR supports Business Continuity (BC), whose broader responsibility includes people, facilities, suppliers and workarounds. BC and DR are capabilities; BCP and DRP are their documented plans."
+  - list:
+    - generic: "Purposes of DR (S16 & Domain 2.md §8.2): Minimize downtime, ensure rapid system recovery, restore critical IT operations after an incident, protect data integrity and prevent loss, and support business continuity by ensuring technology resilience."
+    - generic: "Three Key Concepts (S16): DR is (1) IT-focused recovery, centered on (2) data and system restoration, and serves as (3) a critical part of overall Business Continuity (DR ⊂ BC)."
+    - generic: "DR vs. DRP & BC vs. BCP Distinction: DR is the recovery discipline/capability, whereas the DRP is the written plan detailing recovery objectives, backup restoration methods, alternate IT sites, and testing procedures."
+  - paragraph:
+    - generic: "Key Takeaway: Disaster Recovery (DR) restores IT infrastructure, systems, and data after a disruption—functioning through a documented DRP as a critical technical subset of Business Continuity (DR ⊂ BC)."
+  - generic "Slide 2 — Recovery reduces the business impact of an outage."
+  - generic "Slide 3 — RPO looks back. RTO sets the recovery-time target."
+  - generic "Slide 4 — Separate the target from what actually happened."
+  - generic "Slide 5 — A backup is useful when you can restore it."
+  - generic "Slide 6 — A recovery site still has work to complete."
+  - generic "Slide 7 — Exercise the plan, measure, then correct the gaps."
+  - generic "Slide 8 — Keep the business going while IT recovers."
+  - generic "Slide 9 — Which recovery plan fits the business targets?"
+  - generic "References & lesson details"

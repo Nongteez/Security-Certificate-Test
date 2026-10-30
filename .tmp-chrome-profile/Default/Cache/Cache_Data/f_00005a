@@ -1,0 +1,1022 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d1-11-control-functions",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 1,
+  "primaryObjectiveId": "1.4",
+  "objectiveIds": [
+    "1.4"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "What Is the Control Doing?",
+    "th": "Control นี้ทำหน้าที่อะไร?"
+  },
+  "synopsis": {
+    "en": "Explain security-control functions, their limits and overlap through contextual examples.",
+    "th": "อธิบายหน้าที่ ข้อจำกัด และส่วนทับซ้อนของ Controls จากบริบท"
+  },
+  "outcomes": [
+    {
+      "en": "Distinguish implementation categories from functions without treating them as exclusive.",
+      "th": "แยก Category ตามกลไกกับ Function โดยไม่มองว่าเลือกได้เพียงชุดเดียว"
+    },
+    {
+      "en": "Explain preventive, detective, corrective, recovery, deterrent, directive and compensating effects.",
+      "th": "อธิบายผลแบบ Preventive, Detective, Corrective, Recovery, Deterrent, Directive และ Compensating"
+    },
+    {
+      "en": "Justify multiple functions using the stated design and use of a control.",
+      "th": "ให้เหตุผลหลายหน้าที่จากการออกแบบและวิธีใช้ที่ระบุ"
+    },
+    {
+      "en": "Evaluate the protection, evidence and limitations behind a function label.",
+      "th": "ประเมินการปกป้อง หลักฐาน และข้อจำกัดที่รองรับชื่อหน้าที่"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: Control Categories (Lesson 10), risk and governance foundations.",
+      "th": "แนะนำ Control Categories (Lesson 10) พร้อมพื้นฐาน Risk และ Governance"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-01-category-and-function",
+      "title": {
+        "en": "One control can have a category and several functions.",
+        "th": "Control เดียวมีทั้ง Category และหลาย Function ได้"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-functions-lenses",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Ask how it works—and what it accomplishes in this context.",
+            "th": "ถามทั้งกลไกที่ใช้ และผลที่ทำได้ในบริบทนี้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action or effect",
+              "th": "การกระทำหรือผล"
+            },
+            {
+              "en": "Limit or context",
+              "th": "ข้อจำกัดหรือบริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Category",
+                "th": "Category"
+              },
+              {
+                "en": "A firewall applies software rules: Technical.",
+                "th": "Firewall ใช้กฎซอฟต์แวร์: Technical"
+              },
+              {
+                "en": "How the mechanism is implemented.",
+                "th": "อธิบายกลไกที่ใช้"
+              }
+            ],
+            [
+              {
+                "en": "Function",
+                "th": "Function"
+              },
+              {
+                "en": "Blocking: Preventive. Alerting: Detective.",
+                "th": "บล็อก: Preventive แจ้งเตือน: Detective"
+              },
+              {
+                "en": "What the configured action achieves.",
+                "th": "อธิบายผลของงานที่ตั้งค่าไว้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "L10 taught technical, administrative and physical categories. A §§35,37,44 and B §6 distinguish these from functions: the outcome a safeguard is designed or used to achieve. A firewall can enforce a blocking rule and generate evidence/alerts; its technical category does not exclude preventive and detective functions. The functions are not mutually exclusive labels. Classify the stated action rather than assuming every installation enables every capability. The official 2026 Objective 1.4 lists three categories; this function taxonomy is source-based supporting course depth, not a new set of official numbered requirements. The lesson covers A’s directive function and B’s recovery function as complementary teaching terms, with overlap explained. A product name or a single keyword is insufficient evidence of its actual effect.",
+            "th": "L10 สอน Technical, Administrative และ Physical แล้ว A §§35,37,44 กับ B §6 แยกสิ่งเหล่านี้ออกจาก Function ซึ่งคือผลที่มาตรการถูกออกแบบหรือใช้ให้เกิด Firewall อาจบังคับกฎบล็อกและสร้างหลักฐานหรือ Alert ได้ Category แบบ Technical ไม่ตัดหน้าที่ Preventive และ Detective ออก หน้าที่เหล่านี้ไม่ได้จำเป็นต้องเลือกได้เพียงอย่างเดียว ต้องดูการกระทำที่ระบุ ไม่สมมติว่าทุกระบบเปิดใช้ทุกความสามารถ Objective 1.4 ปี2026 ทางการระบุสาม Category ส่วนชุด Function นี้เป็นความลึกเสริมจากโน้ต ไม่ใช่ข้อกำหนดทางการที่เพิ่มเลขใหม่ บทนี้สอน Directive จาก A และ Recovery จาก B เป็นคำที่ช่วยกัน พร้อมอธิบายส่วนทับซ้อน ชื่อผลิตภัณฑ์หรือ Keyword เดียวไม่ใช่หลักฐานว่าทำงานได้จริง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Category and function describe different aspects of the same control.",
+            "th": "Category และ Function บอกคนละมุมของ Control เดียวกัน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-02-preventive",
+      "title": {
+        "en": "Preventive controls act before an unwanted action succeeds.",
+        "th": "Preventive Controls ทำงานก่อนการกระทำที่ไม่ต้องการสำเร็จ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-functions-prevent",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Enforce a condition that blocks or reduces an unwanted outcome.",
+            "th": "บังคับเงื่อนไขเพื่อหยุดหรือลดโอกาสผลที่ไม่ต้องการ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action or effect",
+              "th": "การกระทำหรือผล"
+            },
+            {
+              "en": "Limit or context",
+              "th": "ข้อจำกัดหรือบริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Attempt",
+                "th": "ความพยายาม"
+              },
+              {
+                "en": "An unauthorised account requests a sensitive file.",
+                "th": "บัญชีไม่มีสิทธิ์ขออ่านไฟล์สำคัญ"
+              },
+              {
+                "en": "A request is not permission.",
+                "th": "การขอไม่ได้แปลว่าได้รับอนุญาต"
+              }
+            ],
+            [
+              {
+                "en": "Enforcement gate",
+                "th": "จุดบังคับใช้"
+              },
+              {
+                "en": "An access rule denies the request.",
+                "th": "กฎสิทธิ์ปฏิเสธคำขอ"
+              },
+              {
+                "en": "The unwanted read is blocked.",
+                "th": "หยุดการอ่านที่ไม่ได้รับอนุญาต"
+              }
+            ],
+            [
+              {
+                "en": "Limit",
+                "th": "ข้อจำกัด"
+              },
+              {
+                "en": "Wrong rules or bypass paths can leave gaps.",
+                "th": "กฎผิดหรือทางข้ามยังสร้างช่องว่าง"
+              },
+              {
+                "en": "Verify the intended protection.",
+                "th": "ตรวจว่าปกป้องได้ตามต้องการ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §39 and B §6.2 describe preventive controls as acting to stop an unwanted activity before it succeeds. Authentication, access rules, locks and appropriately applied encryption can support preventive outcomes, but the precise claim depends on what is being prevented. This original example uses an ACL to deny an unauthorised read. A locked room restricts physical entry through a different category; an approved process can also reduce the likelihood of a bad decision. Preventive does not mean every attack is impossible or that the control acts only before any incident has begun: a rule can prevent the next harmful action during an ongoing event. Misconfiguration, stolen authorised credentials or a bypass may remain. A warning alone does not enforce the condition. Explain the stopped action and test the mechanism rather than labelling a tool preventive forever.",
+            "th": "A §39 และ B §6.2 อธิบาย Preventive ว่าหยุดกิจกรรมที่ไม่ต้องการก่อนสำเร็จ Authentication กฎสิทธิ์ ล็อก และ Encryption ที่ใช้เหมาะสมช่วยป้องกันได้ แต่ต้องระบุว่าป้องกันอะไร ตัวอย่างแต่งขึ้นนี้ใช้ ACL ปฏิเสธการอ่านโดยไม่มีสิทธิ์ ส่วนห้องล็อกจำกัดการเข้าโดยใช้ Category อื่น และกระบวนการที่อนุมัติก็ลดโอกาสตัดสินใจผิดได้ Preventive ไม่ได้แปลว่าโจมตีไม่ได้ทุกแบบ หรือทำงานได้เฉพาะก่อนเหตุทั้งหมดเริ่ม กฎอาจหยุดการกระทำอันตรายถัดไประหว่างเหตุที่ดำเนินอยู่ได้ การตั้งค่าผิด Credential ที่มีสิทธิ์ถูกขโมย หรือทางข้ามอาจยังเหลือ คำเตือนอย่างเดียวไม่ได้บังคับเงื่อนไข ต้องอธิบายว่างานใดถูกหยุดและทดสอบกลไก ไม่ติดป้ายผลิตภัณฑ์ว่า Preventive ตลอดทุกบริบท"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Identify the action being prevented—not a promise of zero risk.",
+            "th": "ระบุงานที่ถูกป้องกัน ไม่ใช่อ้างว่า Risk เป็นศูนย์"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-03-detective",
+      "title": {
+        "en": "Detective controls make relevant activity discoverable.",
+        "th": "Detective Controls ช่วยให้ค้นพบกิจกรรมที่เกี่ยวข้อง"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-functions-detect",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Observation and evidence need a working path to review or response.",
+            "th": "การสังเกตและหลักฐานต้องมีทางไปสู่การตรวจหรือรับมือ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action or effect",
+              "th": "การกระทำหรือผล"
+            },
+            {
+              "en": "Limit or context",
+              "th": "ข้อจำกัดหรือบริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Activity",
+                "th": "กิจกรรม"
+              },
+              {
+                "en": "An unusual access attempt occurs.",
+                "th": "เกิดความพยายามเข้าถึงผิดปกติ"
+              },
+              {
+                "en": "It may be suspicious—not yet confirmed malicious.",
+                "th": "อาจน่าสงสัย แต่ยังไม่ยืนยันว่าโจมตี"
+              }
+            ],
+            [
+              {
+                "en": "Detection",
+                "th": "การตรวจพบ"
+              },
+              {
+                "en": "Monitoring generates an alert or useful record.",
+                "th": "Monitoring สร้าง Alert หรือบันทึกที่ใช้ได้"
+              },
+              {
+                "en": "Collection and configuration matter.",
+                "th": "การเก็บข้อมูลและการตั้งค่ามีผล"
+              }
+            ],
+            [
+              {
+                "en": "Follow-through",
+                "th": "การทำต่อ"
+              },
+              {
+                "en": "An assigned team reviews and escalates.",
+                "th": "ทีมที่รับผิดชอบตรวจและยกระดับ"
+              },
+              {
+                "en": "An alert alone does not block the attempt.",
+                "th": "Alert อย่างเดียวไม่ได้บล็อกความพยายาม"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §40 and B §6.2 give IDS, audit trails, monitoring and motion detection as detective examples. The function is to discover relevant activity or conditions through observation and evidence. In this authored scenario, monitoring flags unusual access and a responsible team checks the context; not every alert is a proven attack. Useful detection requires appropriate collection, visibility, rules and follow-up. A log that is never collected or examined may fail to reveal a problem in practice. Detection may happen during activity or later when recordings are reviewed; it is not restricted to a universal point in time. A detection alert is not automatically a preventive block. If the system also blocks the connection, those are separate configured actions that can support multiple functions. Detailed log operations and incident-response procedures remain outside this control-function unit.",
+            "th": "A §40 และ B §6.2 ยก IDS, Audit Trail, Monitoring และการตรวจจับการเคลื่อนไหวเป็นตัวอย่าง Detective หน้าที่คือค้นพบกิจกรรมหรือสภาพที่เกี่ยวข้องผ่านการสังเกตและหลักฐาน ตัวอย่างแต่งขึ้นนี้ Monitoring แจ้งการเข้าถึงผิดปกติ แล้วทีมที่รับผิดชอบตรวจบริบท ไม่ใช่ทุก Alert ยืนยันว่าโจมตี การตรวจที่ใช้ได้ต้องมีข้อมูลที่เหมาะ มองเห็นกิจกรรม ตั้งกฎ และมีคนทำต่อ Log ที่ไม่เก็บหรือไม่ตรวจอาจไม่ช่วยให้พบปัญหาจริง การตรวจอาจเกิดระหว่างกิจกรรมหรือภายหลังเมื่อดูบันทึก จึงไม่จำกัดเวลาแบบเดียว Alert ไม่ได้เป็นการบล็อกอัตโนมัติ ถ้าระบบบล็อกด้วย นั่นคืออีกการกระทำที่ตั้งค่าและทำได้หลายหน้าที่ รายละเอียดการทำ Log และขั้นตอน Incident Response อยู่นอกบทหน้าที่ Control นี้"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Finding a problem and stopping it are different effects.",
+            "th": "การพบปัญหากับการหยุดปัญหาเป็นคนละผล"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-04-corrective-and-recovery",
+      "title": {
+        "en": "Fix the problem—and restore trusted operation.",
+        "th": "แก้ปัญหา และฟื้นการทำงานที่เชื่อถือได้"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-functions-restore",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Corrective and recovery are useful distinctions with possible overlap.",
+            "th": "Corrective กับ Recovery แยกจุดเน้นได้ แต่ทับซ้อนกันได้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action or effect",
+              "th": "การกระทำหรือผล"
+            },
+            {
+              "en": "Limit or context",
+              "th": "ข้อจำกัดหรือบริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Corrective",
+                "th": "Corrective"
+              },
+              {
+                "en": "Repair the identified weakness or harmful condition.",
+                "th": "แก้จุดอ่อนหรือสภาพที่เป็นปัญหา"
+              },
+              {
+                "en": "Example: correct the configuration after investigation.",
+                "th": "ตัวอย่าง: แก้ค่าที่ผิดหลังตรวจสอบ"
+              }
+            ],
+            [
+              {
+                "en": "Recovery",
+                "th": "Recovery"
+              },
+              {
+                "en": "Restore the required data or service.",
+                "th": "ฟื้นข้อมูลหรือบริการที่ต้องใช้"
+              },
+              {
+                "en": "Example: restore a verified clean backup.",
+                "th": "ตัวอย่าง: กู้จาก Backup สะอาดที่ตรวจแล้ว"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §41 uses corrective broadly for fixing damage, restoring or reducing harm, including backup restoration; B §6.2 separately names recovery for restoring operation. This lesson reconciles the notes: corrective focuses on fixing an identified problem, while recovery highlights restoring needed capabilities, but overlap is valid and not a rigid universal boundary. In this original example, the team investigates a bad configuration, corrects it and restores validated clean data. Restoring data without addressing the cause can recreate the incident; fixing a setting alone may not recover lost data. A patch installed before exploitation may be preventive, while repairing an identified problem may be corrective—read the action and context. Validate integrity and safe operation before return to service. Neither an available backup nor a recovery label guarantees a successful restore. NIST recovery terminology supports restoration of missions/functions; full BC/DR planning is outside this lesson.",
+            "th": "A §41 ใช้ Corrective กว้างถึงแก้ความเสียหาย ฟื้นฟู หรือลดผลเสีย รวมการกู้ Backup ส่วน B §6.2 แยก Recovery สำหรับฟื้นการทำงาน บทนี้เทียบว่า Corrective เน้นแก้ปัญหาที่พบ ส่วน Recovery เน้นคืนความสามารถที่ต้องใช้ แต่ทับซ้อนกันได้ ไม่ใช่ขอบเขตสากลตายตัว ตัวอย่างแต่งขึ้นคือทีมตรวจค่าที่ผิด แก้ไข แล้วกู้ข้อมูลสะอาดที่ตรวจยืนยัน การกู้ข้อมูลโดยไม่จัดการสาเหตุอาจเกิดเหตุซ้ำ การแก้ค่าอย่างเดียวอาจไม่คืนข้อมูลที่หาย Patch ก่อนถูกใช้โจมตีอาจเชิง Preventive ส่วนแก้ปัญหาที่พบอาจเป็น Corrective ต้องอ่านงานและบริบท ตรวจ Integrity และการทำงานปลอดภัยก่อนกลับบริการ มี Backup หรือชื่อ Recovery ก็ไม่ได้รับประกันว่าจะกู้สำเร็จ NIST อธิบาย Recovery เชื่อมการฟื้นภารกิจและงาน รายละเอียด BC/DR อยู่นอกบทนี้"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Repairing the cause and restoring service can both be necessary.",
+            "th": "อาจต้องทั้งแก้สาเหตุและฟื้นบริการ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b",
+        "ref-recovery"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-05-deterrent",
+      "title": {
+        "en": "Deterrent controls aim to discourage the attempt.",
+        "th": "Deterrent Controls มุ่งยับยั้งไม่ให้เริ่มพยายาม"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-functions-deter",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Visibility and perceived consequences influence behaviour.",
+            "th": "การมองเห็นมาตรการและผลที่คาดว่าจะตามมามีผลต่อพฤติกรรม"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action or effect",
+              "th": "การกระทำหรือผล"
+            },
+            {
+              "en": "Limit or context",
+              "th": "ข้อจำกัดหรือบริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Visible signal",
+                "th": "สัญญาณที่เห็นได้"
+              },
+              {
+                "en": "A visible camera or warning communicates scrutiny.",
+                "th": "กล้องที่เห็นชัดหรือป้ายเตือนสื่อว่ามีการเฝ้าดู"
+              },
+              {
+                "en": "The intended effect is discouragement.",
+                "th": "มุ่งให้ผู้กระทำลังเลหรือไม่ทำ"
+              }
+            ],
+            [
+              {
+                "en": "Limit",
+                "th": "ข้อจำกัด"
+              },
+              {
+                "en": "A determined person may still proceed.",
+                "th": "คนที่ตั้งใจอาจยังลงมือ"
+              },
+              {
+                "en": "The sign does not physically stop entry.",
+                "th": "ป้ายไม่ได้หยุดการผ่านเข้าจริง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §38 and B §6.2 describe deterrence as discouraging unwanted behaviour. A visible guard, camera or warning can signal scrutiny and consequences. In this authored facility example, the intended outcome of a visible camera is that a person decides not to attempt an unauthorised entry. That is not the same as a locked barrier physically preventing passage, and it does not prove that the camera is monitored or recording. If recordings are reviewed, detective work is also present; if a guard stops an entry, a preventive action is present. Visibility alone provides no guarantee that every person is deterred. A sign can also communicate instructions, so its directive role may coexist with deterrence. Explain the intended behavioural effect and the operational limits rather than relying on the object name. Different functions can exist within the same installation.",
+            "th": "A §38 และ B §6.2 อธิบาย Deterrent ว่ายับยั้งพฤติกรรมที่ไม่ต้องการ เจ้าหน้าที่ กล้อง หรือป้ายที่เห็นชัดสื่อว่ามีการเฝ้าดูและผลตามมา ตัวอย่างสถานที่แต่งขึ้นนี้มุ่งให้คนเห็นกล้องแล้วตัดสินใจไม่ลองเข้าพื้นที่โดยไม่มีสิทธิ์ ไม่เหมือนประตูล็อกที่ป้องกันการผ่านจริง และไม่ได้พิสูจน์ว่ากล้องบันทึกหรือมีคนดู ถ้าตรวจภาพจะมี Detective ด้วย ถ้าเจ้าหน้าที่หยุดคนเข้าก็มีงาน Preventive การมองเห็นอย่างเดียวไม่รับประกันว่าทุกคนจะยับยั้งตนเอง ป้ายยังอาจบอกคำสั่ง จึงมี Directive ควบคู่ได้ ต้องอธิบายผลต่อพฤติกรรมและข้อจำกัดการทำงาน ไม่อาศัยชื่อสิ่งของ ระบบเดียวมีหลายหน้าที่ได้"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Discouragement is useful; it is not guaranteed enforcement.",
+            "th": "การยับยั้งมีประโยชน์ แต่ไม่ใช่บังคับใช้ได้แน่นอน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-06-directive",
+      "title": {
+        "en": "Directive controls communicate the expected action.",
+        "th": "Directive Controls สื่อสิ่งที่คาดหวังให้ปฏิบัติ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-functions-direct",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Rules and instructions guide behaviour; enforcement is another mechanism.",
+            "th": "กฎและคำสั่งชี้พฤติกรรม ส่วนการบังคับใช้เป็นอีกกลไก"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action or effect",
+              "th": "การกระทำหรือผล"
+            },
+            {
+              "en": "Limit or context",
+              "th": "ข้อจำกัดหรือบริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Instruction",
+                "th": "คำชี้แนวทาง"
+              },
+              {
+                "en": "Verify visitor authorisation before admitting entry.",
+                "th": "ตรวจการอนุญาตผู้มาติดต่อก่อนให้เข้า"
+              },
+              {
+                "en": "An approved procedure states the expected action.",
+                "th": "Procedure ที่อนุมัติบอกสิ่งที่ต้องทำ"
+              }
+            ],
+            [
+              {
+                "en": "Application",
+                "th": "การนำไปใช้"
+              },
+              {
+                "en": "Staff understand and follow the instruction.",
+                "th": "เจ้าหน้าที่เข้าใจและทำตาม"
+              },
+              {
+                "en": "A rule on paper does not operate the door.",
+                "th": "ข้อความในเอกสารไม่ได้ควบคุมประตูเอง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §43 names directive controls as guiding or directing behaviour through policy, procedures, standards, guidance or signs. B §7.1 and L09 already distinguish those document functions. Directive is useful course terminology, not an additional official 1.4 heading. In this authored visitor example, an approved instruction tells staff to verify authorisation before entry. The instruction can reduce mistakes when understood and followed, while a lock and access checks provide separate enforcement. A document alone cannot ensure compliance. A guideline can guide behaviour without becoming a mandatory requirement merely because it is directive; actual authority and adoption still matter. A sign that both states a rule and warns of consequences can serve directive and deterrent purposes. This function does not require repeating the full policy hierarchy or introducing ethics content reserved for L12.",
+            "th": "A §43 เรียก Directive ว่าชี้หรือกำกับพฤติกรรมผ่าน Policy, Procedure, Standard, Guideline หรือป้าย B §7.1 และ L09 แยกหน้าที่เอกสารแล้ว Directive เป็นคำเสริมในคอร์ส ไม่ใช่หัวข้อทางการ1.4ที่เพิ่มขึ้น ตัวอย่างผู้มาติดต่อแต่งขึ้นนี้คำสั่งที่อนุมัติบอกให้เจ้าหน้าที่ตรวจการอนุญาตก่อนให้เข้า คำสั่งช่วยลดความผิดพลาดเมื่อเข้าใจและทำตาม ส่วนล็อกและการตรวจสิทธิ์เป็นกลไกบังคับใช้อีกส่วน เอกสารอย่างเดียวรับประกัน Compliance ไม่ได้ Guideline ชี้พฤติกรรมได้โดยไม่ได้กลายเป็นข้อบังคับเพราะชื่อ Directive ยังต้องดูอำนาจและการนำมาใช้จริง ป้ายที่บอกกฎพร้อมผลตามมาอาจมีทั้ง Directive และ Deterrent บทนี้ไม่ต้องสอนลำดับเอกสารซ้ำเต็มหรือเริ่ม Ethics ที่เป็น L12"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Guiding behaviour does not make every instruction self-enforcing.",
+            "th": "ชี้แนวทางแล้วไม่ได้แปลว่าคำสั่งบังคับตัวเองได้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-07-compensating",
+      "title": {
+        "en": "A compensating control must address the original protection need.",
+        "th": "Compensating Control ต้องตอบความต้องการปกป้องเดิม"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-functions-compensate",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An alternative needs justified comparable protection—not just a different tool.",
+            "th": "ทางเลือกต้องมีเหตุผลว่าปกป้องได้เทียบเคียง ไม่ใช่แค่เปลี่ยนเครื่องมือ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action or effect",
+              "th": "การกระทำหรือผล"
+            },
+            {
+              "en": "Limit or context",
+              "th": "ข้อจำกัดหรือบริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Constraint",
+                "th": "ข้อจำกัด"
+              },
+              {
+                "en": "A legacy host cannot enforce native MFA.",
+                "th": "ระบบเดิมบังคับ MFA ในตัวไม่ได้"
+              },
+              {
+                "en": "Direct access must still be protected.",
+                "th": "ยังต้องคุ้มครองการเข้าถึงเดิม"
+              }
+            ],
+            [
+              {
+                "en": "Assessed alternative",
+                "th": "ทางเลือกที่ประเมิน"
+              },
+              {
+                "en": "Assess a restricted, MFA-protected gateway.",
+                "th": "ประเมิน Gateway จำกัดทางเข้าที่ใช้ MFA"
+              },
+              {
+                "en": "Check direct paths, privileges and monitoring.",
+                "th": "ตรวจทางตรง สิทธิ์ และการเฝ้าดู"
+              }
+            ],
+            [
+              {
+                "en": "Authorised decision",
+                "th": "การตัดสินใจตามอำนาจ"
+              },
+              {
+                "en": "Record rationale, approval, residual risk and review.",
+                "th": "บันทึกเหตุผล การอนุมัติ Risk ที่เหลือ และการทบทวน"
+              },
+              {
+                "en": "An internal decision cannot waive external duties.",
+                "th": "การตัดสินใจภายในไม่ลบหน้าที่ภายนอก"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §42 and B §6.2 describe a compensating control as an alternative when the primary control cannot be implemented. NIST defines compensation in terms of equivalent or comparable protection; its baseline-tailoring guidance requires a rationale addressing the same requirement. In this original example, a legacy host cannot provide native MFA. The team evaluates routing all permitted access through an MFA-protected gateway, restricting privileges and monitoring access. It must verify that direct paths cannot bypass the gateway, assess whether the combination addresses the same requirement, and obtain the authorised decision with ongoing review. It does not certify any particular workaround as equivalent. Extra monitoring alone may only reveal harm after it occurs and may not replace the required preventive protection. Cheaper, easier or merely additional is not automatically compensating. Whether an exception is permitted depends on the applicable requirement and authority; internal acceptance cannot waive a law or contractual obligation. Compensating describes the alternative role relative to another control, so it can also have preventive, detective or other functions. It is not the same as recovery after an incident.",
+            "th": "A §42 และ B §6.2 อธิบาย Compensating ว่าใช้ทางเลือกเมื่อทำ Control หลักไม่ได้ NIST เน้นการปกป้องที่เทียบเท่าหรือเทียบเคียง และแนวทางปรับ Baseline ต้องมีเหตุผลตอบข้อกำหนดเดิม ตัวอย่างแต่งขึ้นนี้ระบบเดิมทำ MFA ในตัวไม่ได้ ทีมประเมินให้การเข้าถึงที่อนุญาตทั้งหมดผ่าน Gateway ที่ใช้ MFA จำกัดสิทธิ์ และเฝ้าดูการเข้า ต้องตรวจว่าทางตรงข้าม Gateway ไม่ได้ ประเมินว่าชุดมาตรการตอบข้อกำหนดเดิมหรือไม่ แล้วขอการตัดสินใจตามอำนาจพร้อมทบทวนต่อ ไม่ได้ยืนยันว่าทางแก้แบบใดเทียบเท่าแน่นอน เพิ่ม Monitoring อย่างเดียวอาจเพียงพบความเสียหายภายหลัง ไม่แทนการป้องกันที่ต้องมี ถูกกว่า ง่ายกว่า หรือเป็นมาตรการเสริมไม่ได้แปลว่า Compensating อัตโนมัติ อนุญาตข้อยกเว้นหรือไม่ขึ้นกับข้อกำหนดและอำนาจ การยอมรับภายในไม่ลบกฎหมายหรือสัญญา คำนี้บอกบทบาททดแทนเมื่อเทียบกับอีก Control จึงอาจมีหน้าที่ Preventive/Detective หรือแบบอื่นร่วมด้วย ไม่ใช่สิ่งเดียวกับ Recovery หลังเหตุ"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Alternative + comparable protection + authorised review.",
+            "th": "ทางเลือก + ปกป้องเทียบเคียง + ทบทวนตามอำนาจ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b",
+        "ref-compensation",
+        "ref-baselines"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-08-context-changes-function",
+      "title": {
+        "en": "The same camera can support different functions.",
+        "th": "กล้องเดียวสนับสนุนหน้าที่ต่างกันได้"
+      },
+      "rendererId": "interactive",
+      "layoutId": "control-functions-context",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Choose a stated use and inspect the effect—not a permanent product label.",
+            "th": "เลือกวิธีใช้ที่ระบุ แล้วดูผล ไม่ติดป้ายตายตัวกับผลิตภัณฑ์"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action or effect",
+              "th": "การกระทำหรือผล"
+            },
+            {
+              "en": "Limit or context",
+              "th": "ข้อจำกัดหรือบริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Visible presence",
+                "th": "เห็นกล้องชัด"
+              },
+              {
+                "en": "Deterrent: intended to discourage an entry attempt.",
+                "th": "Deterrent: มุ่งยับยั้งไม่ให้ลองเข้าพื้นที่"
+              },
+              {
+                "en": "Visibility alone does not prove recording or blocking.",
+                "th": "เห็นกล้องไม่ได้พิสูจน์ว่าบันทึกหรือบล็อก"
+              }
+            ],
+            [
+              {
+                "en": "Reviewed recording",
+                "th": "ตรวจภาพที่บันทึก"
+              },
+              {
+                "en": "Detective: review reveals an unauthorised entry.",
+                "th": "Detective: ตรวจภาพแล้วพบการเข้าโดยไม่มีสิทธิ์"
+              },
+              {
+                "en": "Finding evidence later does not undo the entry.",
+                "th": "พบหลักฐานภายหลังไม่ได้ย้อนหยุดการเข้า"
+              }
+            ],
+            [
+              {
+                "en": "Alert and intervention",
+                "th": "แจ้งและเข้าหยุด"
+              },
+              {
+                "en": "Detection alerts a guard; the guard stops the attempted entry.",
+                "th": "ตรวจพบแล้วแจ้งเจ้าหน้าที่ ซึ่งหยุดความพยายามเข้า"
+              },
+              {
+                "en": "Detective + Preventive across the combined actions.",
+                "th": "Detective + Preventive จากการกระทำที่ทำร่วมกัน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This original context exercise applies A §44 and B §§6.2–6.3. All three uses can occur in one installation; selecting a context does not claim other functions are impossible. Visible presence is deterrent when intended to discourage. Reviewing recordings can detect an entry after the event. In the explicitly combined third scenario, detection alerts a guard and the guard actually stops an attempted entry, so detective and preventive effects are both supported by stated facts. The camera does not physically block by itself, and a recording without review is not proof of timely detection. The system still includes physical protection and technical components from the category perspective taught in L10. Context buttons inspect use cases, not scored single-answer questions; feedback supports multiple valid functions where facts justify them. A claim about a function needs the stated action and a plausible effect; capabilities that are not described should not be assumed.",
+            "th": "แบบฝึกบริบทแต่งขึ้นนี้ใช้ A §44 และ B §§6.2–6.3 ระบบเดียวทำได้ทั้งสามวิธี เลือกบริบทหนึ่งไม่ได้อ้างว่าหน้าที่อื่นเป็นไปไม่ได้ การเห็นกล้องชัดเป็น Deterrent เมื่อมุ่งยับยั้ง ตรวจภาพบันทึกช่วยพบการเข้าภายหลัง ส่วนกรณีที่สามระบุชัดว่าตรวจพบแล้วแจ้งเจ้าหน้าที่ และเจ้าหน้าที่หยุดความพยายามเข้าจริง จึงมีผลทั้ง Detective และ Preventive ตามข้อเท็จจริงที่ให้ กล้องไม่ได้กั้นทางเอง และมีภาพแต่ไม่ตรวจไม่ได้พิสูจน์ว่าพบทันเวลา ในมุม Category ยังมี Physical และองค์ประกอบ Technical ตาม L10 ปุ่มบริบทใช้ดูตัวอย่าง ไม่ใช่คำถามคะแนนที่บังคับคำตอบเดียว Feedback ยอมรับหลายหน้าที่เมื่อมีเหตุผลรองรับ การอ้างหน้าที่ต้องมีการกระทำที่ระบุและผลที่สมเหตุสมผล ไม่สมมติความสามารถที่ไม่ได้กล่าวถึง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "State the use, then justify every claimed function.",
+            "th": "ระบุวิธีใช้ แล้วให้เหตุผลทุกหน้าที่ที่อ้าง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-09-reason-from-effects",
+      "title": {
+        "en": "Explain the effect and the evidence behind the label.",
+        "th": "อธิบายผลและหลักฐานที่รองรับชื่อหน้าที่"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-functions-reason",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Timing is a clue; actual operation determines the claim.",
+            "th": "เวลาเป็นเบาะแส แต่ต้องดูการทำงานจริง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action or effect",
+              "th": "การกระทำหรือผล"
+            },
+            {
+              "en": "Limit or context",
+              "th": "ข้อจำกัดหรือบริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Intent and action",
+                "th": "เจตนาและการกระทำ"
+              },
+              {
+                "en": "What unwanted outcome is addressed—and how?",
+                "th": "จัดการผลที่ไม่ต้องการอะไร และอย่างไร?"
+              },
+              {
+                "en": "Name the described mechanism and function.",
+                "th": "ระบุกลไกและหน้าที่ตามที่อธิบาย"
+              }
+            ],
+            [
+              {
+                "en": "Evidence and limits",
+                "th": "หลักฐานและข้อจำกัด"
+              },
+              {
+                "en": "What shows it works, and what can still fail?",
+                "th": "อะไรยืนยันว่าได้ผล และยังผิดพลาดตรงไหน?"
+              },
+              {
+                "en": "Do not assume an alert also blocks.",
+                "th": "อย่าสมมติว่า Alert บล็อกด้วย"
+              }
+            ],
+            [
+              {
+                "en": "Combined protection",
+                "th": "การปกป้องร่วม"
+              },
+              {
+                "en": "Use complementary controls and reassess changes.",
+                "th": "ใช้ Controls เสริมกันและทบทวนเมื่อเปลี่ยน"
+              },
+              {
+                "en": "One action can support more than one function.",
+                "th": "การกระทำเดียวอาจสนับสนุนหลายหน้าที่"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §45 offers memory cues, while A §44 and B §6.3 require context. Use the cues to start reasoning, not as guaranteed exam shortcuts. A timeline of discourage, prevent, detect and correct can illustrate effects, but real controls overlap and operate continuously rather than in a universal one-way sequence. A patch may prevent exploitation or correct an identified weakness; restoring service can be recovery and broadly corrective; an alternative safeguard may compensate and detect at the same time. Explain the actual purpose, mechanism, operating evidence and limitations. Combine category and function reasoning: a technical safeguard can detect and prevent through different configured actions, while an administrative procedure can guide and reduce mistakes. Reassess the claims when the configuration, use or evidence changes.",
+            "th": "A §45 ให้คำช่วยจำ แต่ A §44 และ B §6.3 ให้ดูบริบท ใช้คำเหล่านี้เริ่มวิเคราะห์ ไม่ใช่สูตรรับประกันข้อสอบ เส้นเวลา ยับยั้ง ป้องกัน ตรวจพบ และแก้ไขช่วยอธิบายผล แต่ระบบจริงทับซ้อนและทำต่อเนื่อง ไม่ใช่ลำดับทางเดียวสากล Patch อาจป้องกันการใช้ช่องโหว่หรือแก้จุดอ่อนที่พบ การฟื้นบริการเป็น Recovery และ Corrective ในความหมายกว้างได้ ทางเลือกอาจทั้ง Compensating และ Detective ต้องอธิบายจุดประสงค์ กลไก หลักฐานการทำงาน และข้อจำกัด ใช้เหตุผลเรื่อง Category และ Function ร่วมกัน มาตรการ Technical อาจตรวจพบและป้องกันผ่านงานที่ตั้งค่าแยกกัน ส่วน Procedure แบบ Administrative ชี้แนวทางและลดความผิดพลาดได้ ต้องทบทวนข้ออ้างเมื่อการตั้งค่า วิธีใช้ หรือหลักฐานเปลี่ยน"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Describe → explain → verify → revisit.",
+            "th": "อธิบายสิ่งที่ทำ → ให้เหตุผล → ตรวจผล → ทบทวน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "ref-outline",
+      "title": "ISC2 CC Exam Outline — September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Objective1.4 names technical/administrative/physical categories; function depth is course support, not new official headings.",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "ref-a",
+      "title": "User Domain 1 Summary (Source A)",
+      "authority": "course",
+      "locator": "A §§35,37–45: function/category distinction, six named functions, contextual CCTV/firewall examples and cue limits.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/D1 sum.md"
+    },
+    {
+      "id": "ref-b",
+      "title": "User Domain 1 Course Notes (Source B)",
+      "authority": "course",
+      "locator": "B §§6.1–6.3: categories, six function examples including recovery, overlap and context; §7.1 directive document context.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/Domain 1.md"
+    },
+    {
+      "id": "ref-compensation",
+      "title": "NIST glossary — Compensating controls",
+      "authority": "technical-primary",
+      "locator": "Equivalent/comparable protection in place of baseline controls; technical qualification of course shorthand.",
+      "url": "https://csrc.nist.gov/glossary/term/compensating_controls"
+    },
+    {
+      "id": "ref-baselines",
+      "title": "NIST SP800-53B — Control Baselines",
+      "authority": "technical-primary",
+      "locator": "Tailoring/compensating controls: rationale, same requirements, comparable protection; not a universal approved workaround.",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53B.pdf"
+    },
+    {
+      "id": "ref-recovery",
+      "title": "NIST glossary — Recovery",
+      "authority": "technical-primary",
+      "locator": "Restoration of organisational missions/business functions; supports B recovery term, not a universal corrective/recovery taxonomy.",
+      "url": "https://csrc.nist.gov/glossary/term/recovery"
+    }
+  ],
+  "assets": [],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/lesson-d1-11-implementation.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — technical self-review; user review pending",
+      "reviewedAt": "2026-10-27"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — bilingual self-review; user review pending",
+      "reviewedAt": "2026-10-27"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — rights self-review; user review pending",
+      "reviewedAt": "2026-10-27"
+    }
+  },
+  "slideOrder": [
+    "slide-01-category-and-function",
+    "slide-02-preventive",
+    "slide-03-detective",
+    "slide-04-corrective-and-recovery",
+    "slide-05-deterrent",
+    "slide-06-directive",
+    "slide-07-compensating",
+    "slide-08-context-changes-function",
+    "slide-09-reason-from-effects"
+  ]
+}

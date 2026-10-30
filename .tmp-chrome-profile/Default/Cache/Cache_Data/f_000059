@@ -1,0 +1,930 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d1-10-control-categories",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 1,
+  "primaryObjectiveId": "1.4",
+  "objectiveIds": [
+    "1.4"
+  ],
+  "revision": "3",
+  "status": "published",
+  "title": {
+    "en": "Control Categories",
+    "th": "ประเภทของมาตรการความปลอดภัย"
+  },
+  "synopsis": {
+    "en": "Distinguish technical, administrative and physical controls by mechanism and apply them together.",
+    "th": "แยก Technical, Administrative และ Physical ตามกลไก และใช้ร่วมกันให้เหมาะสม"
+  },
+  "outcomes": [
+    {
+      "en": "Separate a control category from its function in context.",
+      "th": "แยก Category ของ Control ออกจากหน้าที่ในบริบท"
+    },
+    {
+      "en": "Explain technical, administrative and physical mechanisms with realistic examples.",
+      "th": "อธิบายกลไก Technical, Administrative และ Physical ด้วยตัวอย่างจริงที่เข้าใจได้"
+    },
+    {
+      "en": "Reconcile managerial/operational course labels without inventing a fourth official category.",
+      "th": "เทียบ Managerial/Operational ในคอร์ส โดยไม่เพิ่มหมวดทางการที่สี่"
+    },
+    {
+      "en": "Classify a described component and identify complementary safeguards and evidence.",
+      "th": "จัดประเภทองค์ประกอบที่อธิบาย พร้อมระบุมาตรการเสริมและหลักฐาน"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: CIA, AAA/MFA, risk foundations and governance/document lessons.",
+      "th": "แนะนำพื้นฐาน CIA, AAA/MFA, Risk และ Governance/เอกสาร"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-01-category-and-purpose",
+      "title": {
+        "en": "Category asks how a control is implemented.",
+        "th": "Category ถามว่ามาตรการทำงานผ่านอะไร"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-categories-axes",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Separate the mechanism from the security job it performs.",
+            "th": "แยกกลไกที่ใช้ ออกจากหน้าที่ด้านความปลอดภัย"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Context",
+              "th": "บริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Category",
+                "th": "ประเภทตามกลไก"
+              },
+              {
+                "en": "Technical, administrative or physical?",
+                "th": "Technical, Administrative หรือ Physical?"
+              },
+              {
+                "en": "Example: a firewall enforces software rules.",
+                "th": "ตัวอย่าง: Firewall ใช้กฎในซอฟต์แวร์"
+              }
+            ],
+            [
+              {
+                "en": "Function",
+                "th": "หน้าที่"
+              },
+              {
+                "en": "What is it doing in this scenario?",
+                "th": "ในสถานการณ์นี้มาตรการทำอะไร?"
+              },
+              {
+                "en": "Example: blocking an unauthorised connection.",
+                "th": "ตัวอย่าง: บล็อกการเชื่อมต่อที่ไม่ได้รับอนุญาต"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §35 and B §6 distinguish a control category from its function. A category describes how the safeguard is implemented; a function describes what it does in the stated situation. The official Objective 1.4 uses technical, administrative and physical categories. A software firewall applying a configured connection rule is technical; blocking a connection describes its preventive function. These are different questions, not competing labels. The same security goal may need all three categories, and a single product or service can contain several components. Earlier lessons used encryption, MFA and policy as examples without teaching this taxonomy. This lesson develops category reasoning; Lesson 11 develops preventive, detective and other functions in context. The examples are original teaching scenarios, not predictions of actual exam questions.",
+            "th": "A §35 และ B §6 แยกประเภทของ Control ออกจากหน้าที่ Category อธิบายว่ามาตรการใช้กลไกอะไร ส่วน Function อธิบายว่าทำอะไรในสถานการณ์นั้น Objective 1.4 ทางการใช้ Technical, Administrative และ Physical Firewall ที่ใช้ซอฟต์แวร์บังคับกฎการเชื่อมต่อเป็น Technical ส่วนการบล็อกการเชื่อมต่อบอกหน้าที่เชิงป้องกัน เป็นคนละคำถาม ไม่ใช่คำตอบที่แข่งกัน เป้าหมายเดียวอาจต้องใช้ทั้งสามประเภท และผลิตภัณฑ์หรือบริการเดียวอาจมีหลายองค์ประกอบ บทก่อนใช้ Encryption, MFA และ Policy เป็นตัวอย่างแต่ยังไม่ได้สอนการจัดหมวด บทนี้พัฒนาเหตุผลเรื่อง Category บท 11 อธิบาย Preventive, Detective และหน้าที่อื่นตามบริบท ตัวอย่างแต่งขึ้นเพื่อเรียน ไม่ใช่การทำนายข้อสอบจริง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Mechanism = category. Purpose in context = function.",
+            "th": "กลไกบอก Category ส่วนงานในบริบทบอก Function"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "3"
+      }
+    },
+    {
+      "id": "slide-02-technical-enforcement",
+      "title": {
+        "en": "Technical controls apply rules through technology.",
+        "th": "Technical Controls ใช้เทคโนโลยีบังคับกฎ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-categories-technical",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Hardware and software enforce configured security decisions.",
+            "th": "ฮาร์ดแวร์และซอฟต์แวร์ทำตามการตัดสินใจที่ตั้งค่าไว้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Context",
+              "th": "บริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Request",
+                "th": "คำร้องขอ"
+              },
+              {
+                "en": "A user requests access to a record.",
+                "th": "ผู้ใช้ขอเข้าถึงข้อมูล"
+              },
+              {
+                "en": "Identity alone does not grant every permission.",
+                "th": "รู้ตัวตนไม่ได้ให้ทุกสิทธิ์"
+              }
+            ],
+            [
+              {
+                "en": "Enforcement",
+                "th": "การบังคับใช้"
+              },
+              {
+                "en": "An ACL checks the allowed action.",
+                "th": "ACL ตรวจว่าการกระทำนั้นได้รับอนุญาตไหม"
+              },
+              {
+                "en": "Configured rules determine the result.",
+                "th": "กฎที่ตั้งไว้กำหนดผล"
+              }
+            ],
+            [
+              {
+                "en": "Result",
+                "th": "ผล"
+              },
+              {
+                "en": "Permit or deny the requested action.",
+                "th": "อนุญาตหรือปฏิเสธการกระทำ"
+              },
+              {
+                "en": "Test the rule and review changes.",
+                "th": "ทดสอบกฎและทบทวนการเปลี่ยน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §36 lists encryption, authentication mechanisms, ACLs, firewalls and IDS/IPS as technical examples; B §6.1 calls the category technical/logical. These controls operate through hardware or software: an ACL can enforce allowed actions, MFA checks authentication factors and encryption protects data using cryptographic keys. Those mechanisms have different purposes; technical does not mean that every tool provides every security property. In this authored records example, a valid login does not override an ACL that denies a particular action. People select and configure technology, but that involvement does not make the actual automated enforcement an administrative control. An approved access policy and a human review process are separate administrative components. Misconfiguration, key handling or gaps can still undermine protection; purchasing a tool is not proof that it works. Detailed access models and product configuration remain outside this introductory category unit.",
+            "th": "A §36 ยก Encryption กลไก Authentication, ACL, Firewall และ IDS/IPS เป็นตัวอย่าง Technical ส่วน B §6.1 ใช้คำ Technical/Logical มาตรการเหล่านี้ทำงานผ่านฮาร์ดแวร์หรือซอฟต์แวร์ เช่น ACL บังคับสิทธิ์การกระทำ MFA ตรวจปัจจัย และ Encryption ปกป้องข้อมูลด้วยกุญแจ แต่ละกลไกมีจุดประสงค์ต่างกัน คำว่า Technical ไม่ได้แปลว่าเครื่องมือทุกตัวปกป้องได้ทุกด้าน ในตัวอย่างข้อมูลแต่งขึ้น การ Login สำเร็จไม่ได้ข้าม ACL ที่ปฏิเสธงานบางอย่าง คนเป็นผู้เลือกและตั้งค่าเทคโนโลยี แต่การบังคับใช้อัตโนมัติยังเป็น Technical ส่วน Policy ที่อนุมัติและกระบวนการทบทวนโดยคนเป็นองค์ประกอบ Administrative แยกกัน การตั้งค่าผิด การจัดการกุญแจ หรือช่องว่างยังทำให้ปกป้องไม่ได้ ซื้อเครื่องมือไม่ใช่หลักฐานว่าได้ผล รายละเอียดโมเดลสิทธิ์และการตั้งค่าผลิตภัณฑ์อยู่นอกบทพื้นฐานนี้"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Classify the enforcement—not the person configuring it.",
+            "th": "ดูการบังคับใช้ ไม่ใช่ดูแค่คนที่ตั้งค่า"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "3"
+      }
+    },
+    {
+      "id": "slide-03-administrative-direction",
+      "title": {
+        "en": "Administrative controls organise people and decisions.",
+        "th": "Administrative Controls จัดคน กระบวนการ และการตัดสินใจ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-categories-administrative",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Direction, approved processes and oversight make security repeatable.",
+            "th": "ทิศทาง กระบวนการที่อนุมัติ และการกำกับช่วยให้งานสม่ำเสมอ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Context",
+              "th": "บริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Direction",
+                "th": "ทิศทาง"
+              },
+              {
+                "en": "Set policy and assign responsibilities.",
+                "th": "กำหนด Policy และผู้รับผิดชอบ"
+              },
+              {
+                "en": "Builds on the document roles in L09.",
+                "th": "ต่อจากหน้าที่เอกสารใน L09"
+              }
+            ],
+            [
+              {
+                "en": "People & process",
+                "th": "คนและกระบวนการ"
+              },
+              {
+                "en": "Train staff and review access approvals.",
+                "th": "ฝึกพนักงานและทบทวนการอนุมัติสิทธิ์"
+              },
+              {
+                "en": "A human decision process.",
+                "th": "เป็นกระบวนการตัดสินใจโดยคน"
+              }
+            ],
+            [
+              {
+                "en": "Oversight",
+                "th": "การกำกับ"
+              },
+              {
+                "en": "Assess risk and check evidence.",
+                "th": "ประเมิน Risk และตรวจหลักฐาน"
+              },
+              {
+                "en": "Confirm the process is used.",
+                "th": "ตรวจว่าทำตามกระบวนการจริง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "B §6.1 groups policy, awareness training and risk assessment as administrative/managerial controls. A §36 adds planning, vendor management, hiring checks, classification and human operational processes. Administrative controls guide behaviour, allocate responsibility and organise decisions. This authored example combines approved policy, staff preparation, access approval and review evidence. A policy statement alone does not configure a system or guarantee that people follow it; it needs implementation, ownership and checking. Equally, the fact that a reviewer stores a decision in a software ticket does not turn the human approval process into technical enforcement. The system rule that then applies permissions is a distinct technical component. L09 already teaches policy, standard, procedure and guideline functions; this slide uses those artifacts as controls rather than repeating the document lesson. A control may combine people, process and technology, so identify the component actually described.",
+            "th": "B §6.1 จัด Policy, Awareness Training และ Risk Assessment เป็น Administrative/Managerial ส่วน A §36 เพิ่มการวางแผน ผู้ให้บริการ การตรวจบุคลากร การจัดชั้นข้อมูล และกระบวนการปฏิบัติงานโดยคน Administrative ชี้พฤติกรรม มอบหมายหน้าที่ และจัดการตัดสินใจ ตัวอย่างแต่งขึ้นนี้เชื่อมนโยบายที่อนุมัติ การเตรียมพนักงาน การอนุมัติสิทธิ์ และหลักฐานทบทวน ข้อความ Policy อย่างเดียวไม่ได้ตั้งค่าระบบหรือรับประกันว่าคนทำตาม ต้องมีเจ้าของ การนำไปใช้ และการตรวจ การเก็บผลอนุมัติใน Ticket ซอฟต์แวร์ก็ไม่ได้ทำให้กระบวนการตัดสินใจของคนกลายเป็น Technical ส่วนกฎระบบที่ใช้สิทธิ์เป็นองค์ประกอบ Technical แยกกัน L09 สอนหน้าที่เอกสารแล้ว สไลด์นี้ใช้เอกสารเป็น Control ไม่สอนบทเดิมซ้ำ มาตรการอาจรวมคน กระบวนการ และเทคโนโลยี จึงต้องดูองค์ประกอบที่อธิบายจริง"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A documented process needs people, ownership and evidence.",
+            "th": "กระบวนการที่เขียนไว้ยังต้องมีคน เจ้าของงาน และหลักฐาน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "3"
+      }
+    },
+    {
+      "id": "slide-04-physical-protection",
+      "title": {
+        "en": "Physical controls protect spaces and tangible assets.",
+        "th": "Physical Controls ปกป้องพื้นที่และทรัพย์สินที่จับต้องได้"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-categories-physical",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The protected boundary matters—even when the device is electronic.",
+            "th": "ดูขอบเขตที่ปกป้อง แม้อุปกรณ์จะเป็นอิเล็กทรอนิกส์"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Context",
+              "th": "บริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Facility boundary",
+                "th": "ขอบเขตสถานที่"
+              },
+              {
+                "en": "A locked door limits entry to the server room.",
+                "th": "ประตูล็อกจำกัดการเข้าห้อง Server"
+              },
+              {
+                "en": "An electronic door lock is still physical protection.",
+                "th": "ล็อกอิเล็กทรอนิกส์ยังปกป้องพื้นที่"
+              }
+            ],
+            [
+              {
+                "en": "People & equipment",
+                "th": "คนและอุปกรณ์"
+              },
+              {
+                "en": "Guards, barriers and secured devices protect the site.",
+                "th": "เจ้าหน้าที่ รั้วกั้น และอุปกรณ์ยึดล็อกช่วยดูแลพื้นที่"
+              },
+              {
+                "en": "Logical account permissions are a separate component.",
+                "th": "สิทธิ์บัญชีในระบบเป็นอีกองค์ประกอบ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §36 and B §6.1 give guards, fences, door locks, cameras, alarms and secured equipment as physical examples. They protect facilities, access to spaces and tangible assets; power and environmental safeguards can also protect a physical operating environment. In the authored server-room illustration, the locked boundary controls entry while a guard checks physical access according to procedure. A guard is not automatically an administrative category just because a person performs the task. Nor does an electronic lock become purely logical protection because it uses technology: the stated mechanism restricts entry through a physical door. A badge system may contain technical identity/rule processing, administrative authorisation and physical lock components. Classify the component and protected boundary described rather than treating the entire product as one universal label. Cameras may serve different functions, whose detailed distinctions remain for L11. Physical protection does not replace logical permissions or data handling.",
+            "th": "A §36 และ B §6.1 ยกเจ้าหน้าที่ รั้ว ประตูล็อก กล้อง สัญญาณเตือน และอุปกรณ์ยึดล็อกเป็นตัวอย่าง Physical เพื่อดูแลสถานที่ การเข้าพื้นที่ และทรัพย์สินจริง มาตรการไฟฟ้าและสภาพแวดล้อมก็ช่วยรักษาสภาพการทำงานได้ ภาพห้อง Server แต่งขึ้นแสดงขอบเขตล็อกและเจ้าหน้าที่ตรวจการเข้าตามขั้นตอน เจ้าหน้าที่ไม่ได้เป็น Administrative อัตโนมัติเพียงเพราะเป็นคน และล็อกอิเล็กทรอนิกส์ก็ไม่ได้กลายเป็น Logical อย่างเดียว เพราะกลไกที่อธิบายจำกัดการผ่านประตูจริง ระบบบัตรอาจมีส่วนตรวจตัวตนและกฎแบบ Technical การอนุมัติแบบ Administrative และตัวล็อก Physical ต้องแยกองค์ประกอบกับขอบเขตที่ปกป้อง ไม่ติดป้ายเดียวกับทุกส่วนของผลิตภัณฑ์ กล้องทำได้หลายหน้าที่ซึ่งจะสอนรายละเอียดใน L11 การปกป้องพื้นที่ไม่แทนสิทธิ์ระบบหรือการจัดการข้อมูล"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Electronic does not mean “technical only.”",
+            "th": "อิเล็กทรอนิกส์ไม่ได้แปลว่าเป็น Technical อย่างเดียว"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "3"
+      }
+    },
+    {
+      "id": "slide-05-course-labels",
+      "title": {
+        "en": "Read the course labels without adding an official category.",
+        "th": "อ่านคำในคอร์สให้เข้าใจ โดยไม่เพิ่มหมวดทางการ"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-categories-labels",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Managerial and operational describe useful people/process distinctions.",
+            "th": "Managerial และ Operational ช่วยแยกการบริหารกับงานประจำ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Context",
+              "th": "บริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Managerial",
+                "th": "Managerial"
+              },
+              {
+                "en": "Policy, planning and risk oversight.",
+                "th": "นโยบาย แผน และการกำกับ Risk"
+              },
+              {
+                "en": "A useful course supporting label.",
+                "th": "เป็นคำแบ่งเสริมในคอร์ส"
+              }
+            ],
+            [
+              {
+                "en": "Operational",
+                "th": "Operational"
+              },
+              {
+                "en": "People carry out recurring security processes.",
+                "th": "คนทำกระบวนการความปลอดภัยประจำ"
+              },
+              {
+                "en": "Identify the actual component.",
+                "th": "ยังต้องดูองค์ประกอบที่ทำงานจริง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §36 uses four course labels: technical, managerial, operational and physical. B §6.1 instead groups administrative/managerial, technical/logical and physical; the official 2026 Objective 1.4 lists technical, administrative and physical. Managerial and operational are useful supporting labels, not a fourth official category to add to the outline. In this lesson, policy/planning and people-led recurring processes are discussed within the administrative perspective. That is an instructional reconciliation, not a universal assertion that every operational activity is administrative. A backup procedure and a person reviewing restore evidence are process elements, while the backup software and encryption mechanisms are technical components. Configuration approval is a process; automated enforcement of a configuration rule is technology. Avoid classifying by the word operational alone. Different taxonomies can be useful; answer the category question using the stated scheme and actual mechanism. See Lesson 11 for detailed control functions.",
+            "th": "A §36 ใช้สี่คำในคอร์สคือ Technical, Managerial, Operational และ Physical แต่ B §6.1 ใช้ Administrative/Managerial, Technical/Logical และ Physical ส่วน Objective 1.4 ปี2026 ทางการระบุ Technical, Administrative และ Physical คำ Managerial กับ Operational เป็นคำเสริมที่ช่วยเข้าใจ ไม่ใช่หมวดทางการที่สี่ที่จะเพิ่มเข้า Outline บทนี้อธิบายนโยบายและแผน รวมถึงกระบวนการประจำที่คนทำ ในมุม Administrative เป็นการเทียบเพื่อเรียน ไม่ใช่กฎว่าทุกกิจกรรม Operational ต้องเป็น Administrative Procedure สำรองข้อมูลและคนทบทวนหลักฐานกู้คืนเป็นส่วนกระบวนการ ส่วนซอฟต์แวร์ Backup และ Encryption เป็น Technical การอนุมัติตั้งค่าเป็นกระบวนการ แต่ระบบบังคับค่าตามกฎเป็นเทคโนโลยี อย่าจัดประเภทด้วยคำ Operational อย่างเดียว หลาย Taxonomy มีประโยชน์ได้ แต่ต้องใช้ชุดที่โจทย์ระบุและกลไกจริง ดูรายละเอียดหน้าที่ของ Control ในบท 11"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Official 1.4 categories: Technical · Administrative · Physical.",
+            "th": "หมวดทางการ 1.4: Technical · Administrative · Physical"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "3"
+      }
+    },
+    {
+      "id": "slide-06-one-goal-three-controls",
+      "title": {
+        "en": "One records service needs complementary controls.",
+        "th": "บริการข้อมูลหนึ่งระบบต้องใช้มาตรการที่เสริมกัน"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-categories-together",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Protect the ticket AI data and service with a control mix.",
+            "th": "ปกป้องข้อมูลและบริการ Ticket AI ด้วย Control mix"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "The same ticket AI: three complementary control categories",
+            "th": "Ticket AI เดียวกัน: Controls สามประเภทที่ช่วยกัน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Context",
+              "th": "บริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Administrative",
+                "th": "Administrative"
+              },
+              {
+                "en": "Approve dataset changes and review access",
+                "th": "อนุมัติการเปลี่ยน Dataset และทบทวนสิทธิ์"
+              },
+              {
+                "en": "People check purpose and change evidence",
+                "th": "คนตรวจวัตถุประสงค์และหลักฐานการเปลี่ยน"
+              }
+            ],
+            [
+              {
+                "en": "Technical",
+                "th": "Technical"
+              },
+              {
+                "en": "Restrict writes; protect versions and logs",
+                "th": "จำกัดการแก้ข้อมูล ปกป้อง Version และ Log"
+              },
+              {
+                "en": "Test results against trusted cases",
+                "th": "ทดสอบผลกับกรณีที่เชื่อถือได้"
+              }
+            ],
+            [
+              {
+                "en": "Physical",
+                "th": "Physical"
+              },
+              {
+                "en": "Protect storage hosts or assess provider safeguards",
+                "th": "ปกป้องเครื่องจัดเก็บ หรือประเมินมาตรการผู้ให้บริการ"
+              },
+              {
+                "en": "Confirm the hosting boundary and responsibilities",
+                "th": "ยืนยันขอบเขต Hosting และหน้าที่แต่ละฝ่าย"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §§35–36 and B §6.1 supply the category distinctions; NIST SP 800-12 Rev.1 §2.6 explains that security controls have interdependencies and work as an integrated approach. This original clinic records example uses administrative access approval/review, technical permission enforcement and physical equipment-room protection toward one goal. A locked room does not stop an already authorised network account from misusing data, and an ACL does not decide whether an employee still has a business need unless the approval and review process keeps it current. Each layer has a scope and limitations; the combination still requires testing. Do not map categories one-to-one to CIA: all three categories can support confidentiality, integrity and availability depending on design. This is a short category integration example, not a new detailed network architecture/defense-in-depth unit. The official networking architecture depth remains elsewhere; L11 will examine what each control is doing in a stated event.\n\nAI application: For the ticket AI from Lessons 1 and 3, administrative approval and access review govern who may change the training data and why. Technical write restrictions, protected versions/logs and evaluation against trusted examples help prevent or detect unauthorized changes and unreliable results. Physical safeguards protect the hosts and storage holding the training data and service; for hosted systems, assess relevant provider safeguards and responsibilities rather than assuming a cloud service has no physical boundary. The three categories complement one another, but no combination is an automatic guarantee of safe or fair AI. A locked room does not validate labels, and a protected digest does not prove the original examples are accurate. Keep the authorized purpose, privacy and applicable duties from Lessons 4 and 8; Lesson 12 evaluates adoption within organizational risk boundaries.",
+            "th": "A §§35–36 และ B §6.1 ให้การแยก Category ส่วน NIST SP800-12 Rev.1 §2.6 อธิบายว่า Controls พึ่งพากันและควรทำงานร่วม ตัวอย่างระบบข้อมูลคลินิกแต่งขึ้นใช้การอนุมัติและทบทวนแบบ Administrative การบังคับสิทธิ์ Technical และการดูแลห้องอุปกรณ์ Physical เพื่อเป้าหมายเดียว ห้องล็อกไม่หยุดบัญชีเครือข่ายที่มีสิทธิ์จากการใช้ข้อมูลผิด และ ACL ไม่รู้เองว่าพนักงานยังจำเป็นต้องใช้ข้อมูลหรือไม่ หากกระบวนการอนุมัติและทบทวนไม่ปรับให้ทัน แต่ละส่วนมีขอบเขตและข้อจำกัด แม้รวมกันก็ยังต้องทดสอบ อย่าจับคู่ Category กับ CIA แบบหนึ่งต่อหนึ่ง ทั้งสามประเภทช่วย Confidentiality, Integrity และ Availability ได้ตามการออกแบบ นี่เป็นตัวอย่างเชื่อมหมวดสั้น ๆ ไม่ใช่บทสถาปัตยกรรมเครือข่ายหรือ Defense in Depth ใหม่ รายละเอียดส่วนนั้นอยู่ที่อื่น และ L11 จะวิเคราะห์หน้าที่ของ Control ในเหตุการณ์\n\nAI application: สำหรับ Ticket AI จากบท 1 และ 3 การอนุมัติและทบทวนสิทธิ์แบบ Administrative กำหนดว่าใครแก้ Training data ได้และเพื่ออะไร มาตรการ Technical จำกัดการเขียน ปกป้อง Version/Log และประเมินกับตัวอย่างที่เชื่อถือได้ ช่วยป้องกันหรือตรวจพบการเปลี่ยนโดยไม่มีสิทธิ์และผลที่ไม่น่าเชื่อถือ Physical safeguards ปกป้องเครื่องและ Storage ที่เก็บข้อมูลฝึกและให้บริการ หากใช้ระบบ Hosted ให้ประเมินมาตรการของผู้ให้บริการและหน้าที่ที่เกี่ยวข้อง ไม่ใช่คิดว่า Cloud ไม่มีขอบเขตทางกายภาพ ทั้งสามประเภทช่วยกัน แต่ไม่รับประกันว่า AI จะปลอดภัยหรือเป็นธรรม ห้องที่ล็อกไม่ได้ยืนยันว่า Label ถูกต้อง และ Digest ที่ปกป้องไว้ไม่ได้พิสูจน์ว่าตัวอย่างต้นฉบับแม่นยำ ยังคงต้องใช้ตามวัตถุประสงค์ที่อนุญาต คำนึงถึง Privacy และหน้าที่จากบท 4 และ 8 ส่วนบท 12 ประเมินการนำมาใช้ภายในขอบเขต Risk ขององค์กร"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Controls reduce AI risk; they do not guarantee correct or fair results.",
+            "th": "Controls ลด Risk ของ AI ไม่ได้รับประกันว่าผลจะถูกต้องหรือเป็นธรรม"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b",
+        "ref-nist",
+        "ref-ai-outline",
+        "ref-ai-rmf"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "3"
+      }
+    },
+    {
+      "id": "slide-07-classify-the-mechanism",
+      "title": {
+        "en": "Classify the review—not the ticketing tool.",
+        "th": "จัดประเภทงานทบทวน ไม่ใช่เครื่องมือ Ticket"
+      },
+      "rendererId": "interactive",
+      "layoutId": "control-categories-classify",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A manager reviews access requests and records approval in a ticket.",
+            "th": "ผู้จัดการทบทวนคำขอสิทธิ์ แล้วบันทึกการอนุมัติใน Ticket"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Context",
+              "th": "บริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Technical",
+                "th": "Technical"
+              },
+              {
+                "en": "Software enforcement would be technical.",
+                "th": "การบังคับใช้โดยซอฟต์แวร์เป็น Technical"
+              },
+              {
+                "en": "The described control is a human review.",
+                "th": "แต่สิ่งที่อธิบายคือการทบทวนโดยคน"
+              }
+            ],
+            [
+              {
+                "en": "Administrative",
+                "th": "Administrative"
+              },
+              {
+                "en": "A person applies an approved decision process.",
+                "th": "คนใช้กระบวนการตัดสินใจที่อนุมัติ"
+              },
+              {
+                "en": "The ticket stores evidence of the review.",
+                "th": "Ticket เก็บหลักฐานการทบทวน"
+              }
+            ],
+            [
+              {
+                "en": "Physical",
+                "th": "Physical"
+              },
+              {
+                "en": "A physical control restricts space or equipment access.",
+                "th": "Physical ดูแลการเข้าพื้นที่หรืออุปกรณ์จริง"
+              },
+              {
+                "en": "No physical boundary is being operated here.",
+                "th": "กรณีนี้ไม่ได้ใช้ขอบเขตพื้นที่จริง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "This original non-scored exercise applies A §35–36 and B §6.1. It asks for the mechanism of the human access-request review, not the category of every component in the ticketing product. Administrative is the best answer because a manager follows an approval process and records a decision. A ticket being electronic does not make that judgement software enforcement. If a separate system automatically applies the approved permissions, that enforcement is technical. A locked door controlling entry to equipment would be physical. Both languages explain every choice, and native buttons support keyboard activation. No question bank, score or progress schema is changed; the choice is temporary viewer interaction state. Use the stated mechanism, scope and taxonomy rather than a superficial keyword such as computer or manager. Real systems can combine all three components.",
+            "th": "แบบฝึกแต่งขึ้นไม่มีคะแนนนี้ใช้ A §§35–36 และ B §6.1 โดยถามกลไกของงานทบทวนคำขอสิทธิ์โดยคน ไม่ใช่ประเภททุกส่วนของผลิตภัณฑ์ Ticket Administrative ตรงที่สุดเพราะผู้จัดการทำตามกระบวนการอนุมัติและบันทึกผล Ticket เป็นอิเล็กทรอนิกส์ไม่ได้ทำให้ดุลยพินิจนั้นเป็นการบังคับใช้โดยซอฟต์แวร์ ถ้าระบบอีกส่วนใช้สิทธิ์ที่อนุมัติโดยอัตโนมัติ ส่วนนั้นเป็น Technical ส่วนประตูล็อกที่จำกัดการเข้าห้องอุปกรณ์เป็น Physical มีเหตุผลทุกตัวเลือกทั้งสองภาษา และปุ่มมาตรฐานใช้คีย์บอร์ดได้ ไม่แตะคลังข้อสอบ คะแนน หรือโครงสร้าง Progress คำตอบเป็นสถานะปฏิสัมพันธ์ชั่วคราวใน Viewer ให้ดูชุดประเภท กลไก และขอบเขตที่ระบุ ไม่ใช่แค่คำว่า Computer หรือ Manager ระบบจริงรวมได้ทั้งสามส่วน"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Identify the mechanism actually described.",
+            "th": "ระบุกลไกที่สถานการณ์อธิบายจริง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "3"
+      }
+    },
+    {
+      "id": "slide-08-select-and-check",
+      "title": {
+        "en": "Choose the mechanism, assign an owner, verify the result.",
+        "th": "เลือกกลไก มอบหมายเจ้าของ แล้วตรวจผล"
+      },
+      "rendererId": "comparison",
+      "layoutId": "control-categories-decision",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A category is a way to reason—not proof that a control works.",
+            "th": "Category ช่วยวิเคราะห์ แต่ไม่ใช่หลักฐานว่า Control ได้ผล"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Course concepts and original teaching examples",
+            "th": "แนวคิดจากโน้ตและตัวอย่างแต่งขึ้นเพื่อเรียน"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Meaning or action",
+              "th": "ความหมายหรือการกระทำ"
+            },
+            {
+              "en": "Context",
+              "th": "บริบท"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Scope",
+                "th": "ขอบเขต"
+              },
+              {
+                "en": "What asset, risk and boundary are involved?",
+                "th": "เกี่ยวกับ Asset, Risk และขอบเขตใด?"
+              },
+              {
+                "en": "Avoid choosing by product name alone.",
+                "th": "อย่าเลือกจากชื่อผลิตภัณฑ์อย่างเดียว"
+              }
+            ],
+            [
+              {
+                "en": "Mechanism & owner",
+                "th": "กลไกและเจ้าของงาน"
+              },
+              {
+                "en": "Choose people/process, technology or physical protection.",
+                "th": "เลือกคน/กระบวนการ เทคโนโลยี หรือการปกป้องพื้นที่"
+              },
+              {
+                "en": "Clarify responsibilities between components.",
+                "th": "ระบุหน้าที่ระหว่างส่วนให้ชัด"
+              }
+            ],
+            [
+              {
+                "en": "Evidence",
+                "th": "หลักฐาน"
+              },
+              {
+                "en": "Test operation and review changes.",
+                "th": "ทดสอบการทำงานและทบทวนการเปลี่ยน"
+              },
+              {
+                "en": "A control may fail despite the right label.",
+                "th": "ติดป้ายถูกก็ยังทำงานผิดได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A §§35–36 and B §6.3 encourage reading what a control actually does and which aspect the question asks about. NIST SP800-12 Rev.1 §§2.4,2.6–2.7 support explicit responsibility, integrated safeguards and recurring assessment. This authored decision record starts with an asset and risk, identifies the described mechanism, assigns an appropriate owner and asks for evidence that it works. For a records service, a policy review, permission rule and room lock have different owners and checks; none is automatically sufficient by itself. When an implementation mixes categories, break it into components and explain the stated focus. This lesson teaches the three official category headings with practical distinctions and reconciles the course taxonomy. It does not replace L11 detailed preventive/detective/corrective and other function reasoning, or L12 ethics. Use Lessons 11–12 for that complementary depth; publication alone is not evidence of learning or final human acceptance.",
+            "th": "A §§35–36 และ B §6.3 แนะนำให้อ่านว่ามาตรการทำอะไรจริงและคำถามถามมุมใด NIST SP800-12 Rev.1 §§2.4,2.6–2.7 สนับสนุนหน้าที่ชัด การใช้มาตรการร่วม และการประเมินต่อเนื่อง บันทึกตัดสินใจแต่งขึ้นนี้เริ่มจาก Asset และ Risk ระบุกลไก มอบหมายเจ้าของที่เหมาะ และขอหลักฐานว่าใช้ได้จริง ระบบข้อมูลอาจมีคนตรวจ Policy กฎสิทธิ์ และล็อกห้อง ซึ่งมีเจ้าของและวิธีตรวจต่างกัน ไม่มีส่วนใดพอโดยอัตโนมัติ ถ้าระบบผสมประเภท ให้แยกองค์ประกอบและอธิบายจุดที่กล่าวถึง บทนี้สอนสามหมวดทางการพร้อมแยกตัวอย่างและเทียบ Taxonomy ในคอร์ส แต่ไม่แทน L11 ที่วิเคราะห์หน้าที่ Preventive/Detective/Corrective และแบบอื่น หรือ L12 Ethics เรียนบท 11–12 เพื่อเสริมความลึกส่วนนั้น สถานะ Published เพียงอย่างเดียวไม่ใช่หลักฐานว่าเข้าใจหรือได้รับการยอมรับขั้นสุดท้ายจากมนุษย์"
+          }
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Continue with Lesson 11 to analyze control functions in context.",
+            "th": "เรียนต่อบท 11 เพื่อวิเคราะห์หน้าที่ของ Controls ตามบริบท"
+          }
+        }
+      ],
+      "referenceIds": [
+        "ref-outline",
+        "ref-a",
+        "ref-b",
+        "ref-nist"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "3"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "ref-outline",
+      "title": "ISC2 CC Exam Outline — September 1, 2026",
+      "authority": "official-scope",
+      "locator": "Domain1 Objective1.4: technical, administrative and physical controls.",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "ref-a",
+      "title": "User Domain 1 Summary (Source A)",
+      "authority": "course",
+      "locator": "A §§35–36 category vs function; technical/managerial/operational/physical course labels. §§37–45 function depth deferred L11.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/D1 sum.md"
+    },
+    {
+      "id": "ref-b",
+      "title": "User Domain 1 Course Notes (Source B)",
+      "authority": "course",
+      "locator": "B §6.1 three category groups; §6.3 context reasoning. §6.2 function depth deferred L11.",
+      "repositoryPath": "ISC2 Update 2026/Domain 1/Domain 1.md"
+    },
+    {
+      "id": "ref-nist",
+      "title": "NIST SP 800-12 Rev.1 — An Introduction to Information Security",
+      "authority": "technical-primary",
+      "locator": "§§2.4,2.6–2.7 explicit responsibilities, interdependencies/integration and recurring assessment; supporting application, not authority for ISC2 taxonomy.",
+      "url": "https://csrc.nist.gov/pubs/sp/800/12/r1/final"
+    },
+    {
+      "id": "ref-ai-outline",
+      "title": "ISC2 CC 2026 outline — Domain 1 AI application guidance",
+      "authority": "official-scope",
+      "locator": "How is AI Security Incorporated into the CC Domains? — Domain 1",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    },
+    {
+      "id": "ref-ai-rmf",
+      "title": "NIST AI Risk Management Framework 1.0",
+      "authority": "technical-primary",
+      "locator": "Sections 3 and 5: trustworthiness, governance, measurement and ongoing management",
+      "url": "https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf"
+    }
+  ],
+  "assets": [],
+  "review": {
+    "reviewedRevision": "3",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-1-final-signoff-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex assistant targeted final remediation technical review; human acceptance pending",
+      "reviewedAt": "2026-10-28"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex assistant targeted final remediation bilingual review; human acceptance pending",
+      "reviewedAt": "2026-10-28"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — rights self-review; user review pending",
+      "reviewedAt": "2026-10-27"
+    }
+  },
+  "slideOrder": [
+    "slide-01-category-and-purpose",
+    "slide-02-technical-enforcement",
+    "slide-03-administrative-direction",
+    "slide-04-physical-protection",
+    "slide-05-course-labels",
+    "slide-06-one-goal-three-controls",
+    "slide-07-classify-the-mechanism",
+    "slide-08-select-and-check"
+  ]
+}

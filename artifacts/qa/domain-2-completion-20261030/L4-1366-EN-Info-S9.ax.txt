@@ -1,0 +1,127 @@
+- navigation "Presentation controls":
+  - button "Back to Domain":
+  - generic "Disaster Recovery, RTO/RPO & Recovery Strategies":
+    - generic: DOMAIN 2 · OBJECTIVE 2.2
+    - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=1]
+  - group "Slide navigation":
+    - button "Previous slide":
+      - generic: ‹
+    - generic: 9 / 9
+    - button "Finish Lesson":
+      - generic: Finish Lesson
+  - group "Content language":
+    - button "TH":
+      - generic: TH
+    - button "EN" [pressed]:
+      - generic: EN
+  - button "Slides":
+    - generic: Slides
+  - button "Lesson Info":
+    - generic: Info
+  - button "Keyboard shortcuts":
+  - button "Fullscreen":
+    - generic: ⛶
+  - button "Toggle theme":
+- region "Which recovery plan fits the business targets? (9/9)":
+  - article:
+    - heading "Which recovery plan fits the business targets?" [level=2]:
+      - generic: Which recovery plan fits the business targets?
+    - heading "Which recovery plan fits the business targets?" [level=3]:
+      - generic: Which recovery plan fits the business targets?
+    - paragraph:
+      - generic: "The order database fails at 17:00. Acceptable data loss: 30 min. Downtime target: 1 hour."
+    - group "Scenario decision options":
+      - button "Call data loss RTO; start buying Cold Site servers.":
+        - generic: A
+        - generic: Call data loss RTO; start buying Cold Site servers.
+      - button "Keep daily backups only at the primary site; skip drills.":
+        - generic: B
+        - generic: Keep daily backups only at the primary site; skip drills.
+      - button "RPO 30 min, RTO 1 hour; protected copies and tested recovery capacity.":
+        - generic: C
+        - generic: RPO 30 min, RTO 1 hour; protected copies and tested recovery capacity.
+      - button "Restore test servers first; recover orders next week." [pressed]:
+        - generic: D
+        - generic: Restore test servers first; recover orders next week.
+    - heading "Consider what is missing" [level=4]:
+      - generic: Consider what is missing
+    - paragraph:
+      - generic: Noncritical systems should not displace BIA-driven priorities. Waiting until next week misses the one-hour RTO, and stakeholders need coordinated status updates.
+  - button "Toggle reading layout":
+    - generic: Toggle reading layout
+- paragraph: Which recovery plan fits the business targets? (9/9)
+- dialog "Lesson Info":
+  - heading "Lesson Info" [level=2]
+  - button "Close": ✕
+  - paragraph: OBJECTIVE 2.2
+  - heading "Disaster Recovery, RTO/RPO & Recovery Strategies" [level=3]:
+    - generic: Disaster Recovery, RTO/RPO & Recovery Strategies
+  - heading "What you'll learn" [level=4]
+  - list:
+    - generic: Define Disaster Recovery (DR) and a Disaster Recovery Plan (DRP), explain how DRP supports the broader Business Continuity Plan (BCP), and identify the five strategic benefits of DR while keeping GDPR/HIPAA within their proper illustrative bounds.
+    - generic: Distinguish Recovery Time Objective (RTO, maximum acceptable downtime) from Recovery Point Objective (RPO, maximum acceptable data loss in time) using directional timelines and worked outage calculations, while recognizing that targets are not guarantees.
+    - generic: Evaluate backup and restoration strategies (cloud backups and off-site storage) and compare Hot Sites, Warm Sites, and Cold Sites across readiness, restoration speed, and cost trade-offs.
+    - generic: Explain why regular DRP testing and drills, clear IT/business recovery priorities, and role coordination are essential, and master the seven-dimension comparison between Business Continuity (BC) and Disaster Recovery (DR).
+  - generic "Slides 1–9 — Full explanations"
+  - generic "Slide 1 — Restore a working service, not just a server."
+  - generic "Slide 2 — Recovery reduces the business impact of an outage."
+  - generic "Slide 3 — RPO looks back. RTO sets the recovery-time target."
+  - generic "Slide 4 — Separate the target from what actually happened."
+  - generic "Slide 5 — A backup is useful when you can restore it."
+  - generic "Slide 6 — A recovery site still has work to complete."
+  - generic "Slide 7 — Exercise the plan, measure, then correct the gaps."
+  - generic "Slide 8 — Keep the business going while IT recovers."
+  - generic "Slide 9 — Which recovery plan fits the business targets?" [active]
+  - heading "Which recovery plan fits the business targets?" [level=2]:
+    - generic: Which recovery plan fits the business targets?
+  - paragraph:
+    - generic: "The order database fails at 17:00. Acceptable data loss: 30 min. Downtime target: 1 hour."
+  - table "Decision matrix for evaluating RTO/RPO calculations, backup locations, recovery sites, and DRP testing":
+    - caption:
+      - generic: Decision matrix for evaluating RTO/RPO calculations, backup locations, recovery sites, and DRP testing
+    - rowgroup:
+      - row "Option Candidate DRP Analysis & Strategy Technical & Governance Evaluation":
+        - columnheader "Option":
+          - generic: Option
+        - columnheader "Candidate DRP Analysis & Strategy":
+          - generic: Candidate DRP Analysis & Strategy
+        - columnheader "Technical & Governance Evaluation":
+          - generic: Technical & Governance Evaluation
+    - rowgroup:
+      - row "Option A Classify the 30-minute data-loss limit as RTO and the 1-hour downtime limit as RPO, and procure servers for an unpopulated Cold Site. RTO measures downtime; RPO measures data loss. Reversing them is incorrect, and starting equipment procurement is unsupported for this one-hour target.":
+        - cell "Option A":
+          - generic: Option A
+        - cell "Classify the 30-minute data-loss limit as RTO and the 1-hour downtime limit as RPO, and procure servers for an unpopulated Cold Site.":
+          - generic: Classify the 30-minute data-loss limit as RTO and the 1-hour downtime limit as RPO, and procure servers for an unpopulated Cold Site.
+        - cell "RTO measures downtime; RPO measures data loss. Reversing them is incorrect, and starting equipment procurement is unsupported for this one-hour target.":
+          - generic: RTO measures downtime; RPO measures data loss. Reversing them is incorrect, and starting equipment procurement is unsupported for this one-hour target.
+      - row "Option B Keep all database backups only in the primary server room for speed, and skip DR drills since daily backup jobs are scheduled. All copies share the primary site risk. Daily backups cannot generally support a 30-minute RPO, and a schedule does not demonstrate tested restoration.":
+        - cell "Option B":
+          - generic: Option B
+        - cell "Keep all database backups only in the primary server room for speed, and skip DR drills since daily backup jobs are scheduled.":
+          - generic: Keep all database backups only in the primary server room for speed, and skip DR drills since daily backup jobs are scheduled.
+        - cell "All copies share the primary site risk. Daily backups cannot generally support a 30-minute RPO, and a schedule does not demonstrate tested restoration.":
+          - generic: All copies share the primary site risk. Daily backups cannot generally support a 30-minute RPO, and a schedule does not demonstrate tested restoration.
+      - 'row "Option C Set RPO = 30 min (data ≥ 16:30) and RTO = 1 hr (restore ≤ 18:00), using off-site/cloud replication, a ready Hot/Warm site, and DRP drills. Correct: RPO requires usable data from 16:30 or later; RTO targets service by 18:00. Use protected off-site/cloud copies and capacity verified by drills; a Hot/Warm label alone proves neither target."':
+        - cell "Option C":
+          - generic: Option C
+        - cell "Set RPO = 30 min (data ≥ 16:30) and RTO = 1 hr (restore ≤ 18:00), using off-site/cloud replication, a ready Hot/Warm site, and DRP drills.":
+          - generic: Set RPO = 30 min (data ≥ 16:30) and RTO = 1 hr (restore ≤ 18:00), using off-site/cloud replication, a ready Hot/Warm site, and DRP drills.
+        - 'cell "Correct: RPO requires usable data from 16:30 or later; RTO targets service by 18:00. Use protected off-site/cloud copies and capacity verified by drills; a Hot/Warm label alone proves neither target."':
+          - generic: "Correct: RPO requires usable data from 16:30 or later; RTO targets service by 18:00. Use protected off-site/cloud copies and capacity verified by drills; a Hot/Warm label alone proves neither target."
+      - row "Option D Restore non-critical internal test and archive servers first, then rebuild the order database next week without notifying stakeholders. Noncritical systems should not displace BIA-driven priorities. Waiting until next week misses the one-hour RTO, and stakeholders need coordinated status updates.":
+        - cell "Option D":
+          - generic: Option D
+        - cell "Restore non-critical internal test and archive servers first, then rebuild the order database next week without notifying stakeholders.":
+          - generic: Restore non-critical internal test and archive servers first, then rebuild the order database next week without notifying stakeholders.
+        - cell "Noncritical systems should not displace BIA-driven priorities. Waiting until next week misses the one-hour RTO, and stakeholders need coordinated status updates.":
+          - generic: Noncritical systems should not displace BIA-driven priorities. Waiting until next week misses the one-hour RTO, and stakeholders need coordinated status updates.
+  - paragraph:
+    - generic: A 17:00 database outage with a 30-minute data-loss limit means RPO = 30 minutes and a usable data point at 16:30 or later. A one-hour downtime target means RTO = one hour and service restoration targeted by 18:00. Option C combines the correct objectives with protected off-site/cloud data, prepared recovery capacity and drills. Readiness must be demonstrated rather than inferred from a Hot/Warm label. Option A swaps the objectives and starts equipment procurement; B leaves all copies exposed at one site and substitutes a daily schedule for testing; D restores noncritical systems first and delays the business service. These are illustrative business targets, not universal requirements.
+  - list:
+    - generic: "Why Option C Succeeds: Correctly identifies RPO = 30 min (backup ≥ 16:30) and RTO = 1 hr (restoration ≤ 18:00), backed by off-site/cloud data protection, high-readiness recovery infrastructure, and tested DRP procedures."
+    - generic: "Why Option A Fails (Incorrect objective mapping): Swaps RTO (downtime) with RPO (data loss) and pairs a 1-hour RTO with a Cold Site that has no pre-installed servers."
+    - generic: "Why Options B & D Fail: Option B ignores off-site survival, RPO frequency, and DRP testing; Option D ignores BIA-driven IT system recovery priorities."
+  - paragraph:
+    - generic: "Objective 2.2 Summary: BC & BCP keep the whole business running → DR & DRP restore IT systems and data → RPO bounds backward data loss & RTO bounds forward downtime → Cloud/Off-site backups, Hot/Warm/Cold sites, and regular drills make recovery real."
+  - generic "References & lesson details"
