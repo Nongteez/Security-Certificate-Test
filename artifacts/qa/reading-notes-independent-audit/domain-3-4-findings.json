@@ -1,0 +1,675 @@
+[
+  {
+    "localId": "D34-01",
+    "severity": "P2",
+    "category": "factual/version",
+    "domain": 3,
+    "subsections": [
+      "3.1.6"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 129,
+    "excerpt": "Govern ใน CSF 2.0) โดยมีหัวข้อการควบคุมการเข้าถึง (PR.AC)",
+    "actual": "CSF 2.0 is paired with old PR.AC category.",
+    "expected": "CSF 2.0 uses PR.AA; PR.AC belongs to CSF 1.1.",
+    "rootCause": "Versions mixed in one sentence.",
+    "evidence": "NIST FAQ explicitly says PR.AC moved to PR.AA.",
+    "references": [
+      "https://www.nist.gov/cyberframework/faqs"
+    ],
+    "recommendation": "Use PR.AA or explicitly label PR.AC as CSF 1.1.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-02",
+    "severity": "P2",
+    "category": "factual/internal semantic inconsistency",
+    "domain": 3,
+    "subsections": [
+      "3.2.7",
+      "3.2.8",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 257,
+    "excerpt": "หมวดหมู่คุณลักษณะหลัก 4 ด้าน: [Subject, Object, Environmental, Device]",
+    "actual": "Action is missing from the main four-category list, while the matrix at line 283 and scenario reasoning at 563 include it. Desktop diagram at 2206 omits it; mobile at 2255 includes it.",
+    "expected": "Consistent subject, object/resource, requested action/operation, environment model; device posture remains a valid attribute.",
+    "rootCause": "Parallel summaries use inconsistent taxonomies.",
+    "evidence": "Local prose/matrix/scenario/desktop/mobile comparison; NIST definition evaluates requested operations.",
+    "references": [
+      "https://csrc.nist.gov/pubs/sp/800/162/upd2/final",
+      "https://csrc.nist.gov/projects/attribute-based-access-control"
+    ],
+    "recommendation": "Restore action consistently and add read-vs-delete example.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-03",
+    "severity": "P2",
+    "category": "factual/protocol layer",
+    "domain": 4,
+    "subsections": [
+      "4.1.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 90,
+    "excerpt": "Internet Layer (L2) ... IPv4, IPv6, ICMP, IPsec, ARP",
+    "actual": "ARP is in TCP/IP Internet layer row.",
+    "expected": "ARP belongs with Link/Network Access in the four-layer architecture used here.",
+    "rootCause": "ARP grouped with IP despite local-link role.",
+    "evidence": "RFC1122 covers ARP in Link Layer section 2.3.2.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc1122.html#section-2.3.2"
+    ],
+    "recommendation": "Move ARP to Link/Network Access row.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-04",
+    "severity": "P2",
+    "category": "factual/IPv6",
+    "domain": 4,
+    "subsections": [
+      "4.1.5"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 138,
+    "excerpt": "นำ Prefix ที่ได้มารวมกับ MAC Address ของตนเอง",
+    "actual": "SLAAC taught as combining prefix with MAC address.",
+    "expected": "Combine prefix with interface identifier; current defaults need not embed MAC.",
+    "rootCause": "Historical MAC-derived method presented as universal.",
+    "evidence": "RFC8064 recommends stable identifiers without embedded link-layer address by default.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc8064.html"
+    ],
+    "recommendation": "Teach prefix + IID; label EUI-64 as one historical method.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-05",
+    "severity": "P2",
+    "category": "factual/cloud accountability vs operation",
+    "domain": 4,
+    "subsections": [
+      "4.3.3",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 460,
+    "excerpt": "ลูกค้า (Customer) ต้องเป็นผู้รับผิดชอบเสมอ 100%",
+    "actual": "All data/IAM responsibility is exclusively customer, impossible for CSP to bear; repeats at 697,724,809–810, scenario module 81–82, broad diagram cells.",
+    "expected": "Customer retains classification/access decisions and tenant duties; CSP also secures managed storage/IAM infrastructure/services.",
+    "rootCause": "Customer accountability collapsed into exclusive operational responsibility.",
+    "evidence": "Azure retained duties concern customer-controlled components; AWS IAM/STS itself operates under shared responsibility.",
+    "references": [
+      "https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility",
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/security.html",
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/data-protection.html"
+    ],
+    "recommendation": "Bound cells to customer-controlled data/access decisions; retain customer answer for the public-sharing misconfiguration scenario.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-06",
+    "severity": "P2",
+    "category": "factual/provider-specific generalization",
+    "domain": 4,
+    "subsections": [
+      "4.3.6",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 507,
+    "excerpt": "Security Group ... Instance / Virtual Machine (Host Level) ... กำหนดได้เฉพาะกฎ Allow",
+    "actual": "AWS SG/NACL model taught under generic VPC/VNet header without AWS qualification; return traffic wording can imply any outbound traffic.",
+    "expected": "AWS-specific allow-only SG vs stateless subnet NACL; Azure NSG allows deny and is stateful at subnet/NIC.",
+    "rootCause": "Provider-specific implementation presented without provider context.",
+    "evidence": "AWS VPC FAQ compared directly with Azure NSG official documentation.",
+    "references": [
+      "https://aws.amazon.com/vpc/faqs/",
+      "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview"
+    ],
+    "recommendation": "Label AWS VPC example; specify responses to an allowed flow rather than all outbound.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-07",
+    "severity": "P2",
+    "category": "factual/cloud egress",
+    "domain": 4,
+    "subsections": [
+      "4.3.6"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 505,
+    "excerpt": "หากต้องการออกไปดาวน์โหลดแพตช์ภายนอก ต้องผ่าน NAT Gateway เท่านั้น",
+    "actual": "Private subnet egress requires NAT Gateway only.",
+    "expected": "NAT gateway is one IPv4 option; NAT instance and IPv6 egress-only IGW are alternatives.",
+    "rootCause": "Common architecture stated as exclusive rule.",
+    "evidence": "AWS VPC FAQ documents NAT instance and IPv6 egress-only IGW.",
+    "references": [
+      "https://aws.amazon.com/vpc/faqs/"
+    ],
+    "recommendation": "Replace only with an example and qualify address family/provider.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-08",
+    "severity": "P3",
+    "category": "metadata/outline alignment",
+    "domain": [
+      3,
+      4
+    ],
+    "subsections": [
+      "metadata",
+      "lead"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.js",
+    "line": 13,
+    "excerpt": "Domain 3: Access Controls; Domain 4: Network Security",
+    "actual": "Legacy short titles claimed as official 2026 metadata; also domain-4.js:13 and both MD leads.",
+    "expected": "Identity and Access Management (IAM) Concepts; Networking and Cloud Security Concepts.",
+    "rootCause": "Titles were not updated alongside 2026 objective IDs/weights.",
+    "evidence": "Official ISC2 current detailed outline and effective-date header fetched; PDF click did not resolve.",
+    "references": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Adopt official titles; clearly mark abbreviated navigation labels.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-09",
+    "severity": "P2",
+    "category": "factual/IPv4 broadcast",
+    "domain": 4,
+    "subsections": [
+      "4.1.1"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 22,
+    "excerpt": "Broadcast (FF:FF:FF:FF:FF:FF หรือ x.x.x.255)",
+    "actual": "Last octet 255 is given as generic IPv4 broadcast pattern.",
+    "expected": "Directed broadcast sets all host bits to one; mask determines which bits are host bits.",
+    "rootCause": "Common /24 example lacks its prefix qualifier.",
+    "evidence": "RFC919 all-ones host-number principle; calculated counterexamples: 192.168.1.127 broadcast for /25; 192.168.1.255 can be host in /16.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc919.html#section-7"
+    ],
+    "recommendation": "Use explicit 192.168.1.255/24 example and all-host-bits rule.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-10",
+    "severity": "P2",
+    "category": "factual/IPv4 link-local",
+    "domain": 4,
+    "subsections": [
+      "4.1.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 114,
+    "excerpt": "APIPA ... 169.254.0.0 – 169.254.255.255",
+    "actual": "APIPA appears under RFC1918 private heading; reserved /16 is presented as autoselection range.",
+    "expected": "Link-local is separate from RFC1918; selection 169.254.1.0–169.254.254.255 excludes first/last /24.",
+    "rootCause": "Reserved prefix conflated with selectable addresses and private-address category.",
+    "evidence": "RFC3927 sections 2.1 and 2.7.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc3927.html#section-2.1"
+    ],
+    "recommendation": "Separate link-local heading and state reserved prefix vs host selection range.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-11",
+    "severity": "P2",
+    "category": "factual/security guarantee",
+    "domain": 3,
+    "subsections": [
+      "3.2.5",
+      "3.2.8",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 238,
+    "excerpt": "ความมั่นคงปลอดภัยระดับสูงสุด ป้องกันข้อมูลรั่วไหลได้อย่างเด็ดขาด",
+    "actual": "MAC declared highest security and absolute prevention of leakage; desktop/mobile repeat at generator 2180/2233.",
+    "expected": "Mandatory central policy enforcement is a model property; real protection depends on implementation/policy/other controls.",
+    "rootCause": "Relative model trait turned into an absolute outcome guarantee.",
+    "evidence": "NIST MAC definition specifies policy authority/enforcement, not universal rankings; main local line237 already correctly adds Need-to-Know.",
+    "references": [
+      "https://csrc.nist.gov/glossary/term/mandatory_access_control",
+      "https://csrc.nist.gov/glossary/term/need_to_know"
+    ],
+    "recommendation": "Remove guarantee and repeat Need-to-Know/applicable-policy caveat in review scenario.",
+    "confidence": "high for guarantee; medium for scenario omission severity",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-12",
+    "severity": "P2",
+    "category": "factual/wireless",
+    "domain": 4,
+    "subsections": [
+      "4.1.9"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 268,
+    "excerpt": "ชื่อเครือข่ายยังคงถูกส่งออกไปใน Probe Requests และ Beacon Frames เมื่อมีเครื่องเชื่อมต่อ",
+    "actual": "Hidden SSID name is said to be transmitted in beacons when clients connect.",
+    "expected": "AP still sends beacons, but hidden SSID name is omitted/null; discovery/association traffic can reveal name.",
+    "rootCause": "Continued beacon transmission conflated with SSID-name inclusion.",
+    "evidence": "Cisco Meraki hidden-SSID note distinguishes absent name in beacons.",
+    "references": [
+      "https://documentation.meraki.com/Wireless/Operate_and_Maintain/User_Guides/Monitoring_and_Reporting/Air_Marshal"
+    ],
+    "recommendation": "Keep conclusion that hiding is not robust security; correct mechanism.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-13",
+    "severity": "P2",
+    "category": "factual/service plan generalization",
+    "domain": 4,
+    "subsections": [
+      "4.3.2"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 442,
+    "excerpt": "สเกลขนาดเป็นศูนย์เมื่อไม่มีการใช้งาน",
+    "actual": "FaaS always scales to zero when idle, with Azure Functions included as example.",
+    "expected": "Scale-to-zero depends on plan/configuration; Azure Premium always has at least one instance.",
+    "rootCause": "Common consumption-plan property treated as universal definition.",
+    "evidence": "Azure Functions event-driven scaling table specifies minimum-one Premium and always-ready options.",
+    "references": [
+      "https://learn.microsoft.com/en-us/azure/azure-functions/event-driven-scaling"
+    ],
+    "recommendation": "Qualify scale-to-zero support by provider/plan and explain cold-start tradeoff.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-14",
+    "severity": "P2",
+    "category": "service-specific qualification",
+    "domain": 4,
+    "subsections": [
+      "4.3.2",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 432,
+    "excerpt": "ผู้ให้บริการคลาวด์ดูแล ... ระบบปฏิบัติการ ... ให้ทั้งหมด",
+    "actual": "PaaS OS/runtime handled entirely by CSP, followed by Beanstalk example; may imply no customer platform-maintenance duties.",
+    "expected": "Abstract PaaS provider-management pattern is valid; named service still requires customer supported-version/update configuration and major branch maintenance.",
+    "rootCause": "Abstract responsibility pattern lacks service-specific exception.",
+    "evidence": "Beanstalk managed updates may be disabled and exclude major platform branches; retired versions stop security updates.",
+    "references": [
+      "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-platform-update-managed.html",
+      "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-support-policy.html"
+    ],
+    "recommendation": "Retain exam-level provider OS pattern but qualify named-service duties; PaaS source-code scenario remains correctly keyed.",
+    "confidence": "high evidence; medium on reader inference",
+    "status": "qualified concern"
+  },
+  {
+    "localId": "D34-15",
+    "severity": "P3",
+    "category": "factual/technology taxonomy",
+    "domain": 3,
+    "subsections": [
+      "3.1.7"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 139,
+    "excerpt": "ตัวอย่าง: Microsoft Active Directory (AD), Lightweight Directory Access Protocol (LDAP)",
+    "actual": "LDAP listed as a directory service product peer to AD.",
+    "expected": "LDAP is directory-access protocol; AD/OpenLDAP are implementation examples.",
+    "rootCause": "Protocol vs implementation distinction omitted.",
+    "evidence": "RFC4511 defines LDAP protocol elements for access to directory services.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc4511.html"
+    ],
+    "recommendation": "Name AD/OpenLDAP services and label LDAP protocol separately.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D34-16",
+    "severity": "P3",
+    "category": "factual/API vs protocol",
+    "domain": 4,
+    "subsections": [
+      "4.1.2",
+      "4.1.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 50,
+    "excerpt": "โพรโทคอลสำคัญ: RPC (Remote Procedure Call), NetBIOS, Sockets",
+    "actual": "Sockets is labeled a Session-layer protocol; diagram2284 repeats.",
+    "expected": "Socket is API/endpoint abstraction using transport providers.",
+    "rootCause": "Conceptual layer mapping mixes API with wire protocols.",
+    "evidence": "Microsoft socket API creates sockets bound to transport service provider.",
+    "references": [
+      "https://learn.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket"
+    ],
+    "recommendation": "Remove from protocol examples or label API separately; qualify illustrative OSI mappings.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "Q1",
+    "severity": "P3",
+    "category": "educational workflow",
+    "domain": 3,
+    "subsections": [
+      "3.1.1",
+      "3.1.3",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 64,
+    "excerpt": "กระบวนการ Provisioning มี 6 ขั้นตอนตามลำดับมาตรฐาน",
+    "actual": "Six plausible activities are called standard order and role-first is unconditional.",
+    "expected": "Illustrative workflow; context-dependent prerequisites and approvals.",
+    "evidence": "Official outline does not prescribe six-step ordering; NIST AC2 policy/criteria.",
+    "references": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Label illustrative; bound first-action question.",
+    "confidence": "high except bounded inference as stated",
+    "status": "recommendation"
+  },
+  {
+    "localId": "Q2",
+    "severity": "P3",
+    "category": "Thai terminology and retention",
+    "domain": 3,
+    "subsections": [
+      "3.1.5",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 107,
+    "excerpt": "Disable Account ... (Lock Account)",
+    "actual": "Disable conflated with lockout; history-retention rationale generalized.",
+    "expected": "Administrative disable is distinct from failed-login lockout; retention is policy/system-dependent.",
+    "evidence": "Microsoft documents unlock/disable/delete separately.",
+    "references": [
+      "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage-user-accounts-in-windows-server"
+    ],
+    "recommendation": "Use disable/block sign-in; qualify delete/log dependency.",
+    "confidence": "high except bounded inference as stated",
+    "status": "recommendation"
+  },
+  {
+    "localId": "Q3",
+    "severity": "P3",
+    "category": "authentication nuance",
+    "domain": 3,
+    "subsections": [
+      "3.1.6",
+      "3.1.7"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 2056,
+    "excerpt": "รหัสผ่าน, OTP, ไบโอเมตริกซ์",
+    "actual": "Biometric example lacks NIST remote-auth MFA qualification; no standalone compliance claim.",
+    "expected": "In NIST remote-auth context biometric factor accompanies physical authenticator.",
+    "evidence": "SP800-63B-4 sections2 and3.2.3 checked.",
+    "references": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "recommendation": "Cite current family; add distinct-factor recap/crosslink.",
+    "confidence": "high except bounded inference as stated",
+    "status": "recommendation"
+  },
+  {
+    "localId": "Q4",
+    "severity": "P3",
+    "category": "promoted finding",
+    "domain": 3,
+    "subsections": [
+      "3.1.7"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 139,
+    "excerpt": "LDAP",
+    "actual": "See D34-15.",
+    "expected": "See D34-15.",
+    "evidence": "Primary RFC verified.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc4511.html"
+    ],
+    "recommendation": "Resolve D34-15; do not double count.",
+    "confidence": "high except bounded inference as stated",
+    "status": "confirmed"
+  },
+  {
+    "localId": "Q5",
+    "severity": "P2",
+    "category": "promoted finding and scenario nuance",
+    "domain": 3,
+    "subsections": [
+      "3.2.5",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 238,
+    "excerpt": "ป้องกันข้อมูลรั่วไหลได้อย่างเด็ดขาด",
+    "actual": "Guarantee confirmed; scenario clearance-only phrasing is necessary-condition ambiguity.",
+    "expected": "See D34-11.",
+    "evidence": "Main source237 already includes Need-to-Know.",
+    "references": [
+      "https://csrc.nist.gov/glossary/term/mandatory_access_control"
+    ],
+    "recommendation": "Resolve D34-11; do not double count.",
+    "confidence": "high except bounded inference as stated",
+    "status": "confirmed"
+  },
+  {
+    "localId": "Q6",
+    "severity": "P2",
+    "category": "promoted broadcast finding / historical qualifier",
+    "domain": 4,
+    "subsections": [
+      "4.1.1",
+      "4.1.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 22,
+    "excerpt": "x.x.x.255",
+    "actual": "Generic broadcast false outside assumed prefix; classful history needs label.",
+    "expected": "All-host-bits-one with explicit prefix.",
+    "evidence": "D34-09 counterexamples verified.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc919.html#section-7"
+    ],
+    "recommendation": "Resolve D34-09; label classes historical.",
+    "confidence": "high except bounded inference as stated",
+    "status": "confirmed"
+  },
+  {
+    "localId": "Q7",
+    "severity": "P3",
+    "category": "promoted finding",
+    "domain": 4,
+    "subsections": [
+      "4.1.2"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 50,
+    "excerpt": "Sockets",
+    "actual": "See D34-16.",
+    "expected": "See D34-16.",
+    "evidence": "Microsoft API reference verified.",
+    "references": [
+      "https://learn.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket"
+    ],
+    "recommendation": "Resolve D34-16; do not double count.",
+    "confidence": "high except bounded inference as stated",
+    "status": "confirmed"
+  },
+  {
+    "localId": "Q8",
+    "severity": "P2",
+    "category": "promoted finding",
+    "domain": 4,
+    "subsections": [
+      "4.1.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 114,
+    "excerpt": "169.254.0.0 – 169.254.255.255",
+    "actual": "See D34-10.",
+    "expected": "Reserved prefix vs selectable range/link-local distinction.",
+    "evidence": "RFC3927 verified.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc3927.html#section-2.1"
+    ],
+    "recommendation": "Resolve D34-10; do not double count.",
+    "confidence": "high except bounded inference as stated",
+    "status": "confirmed"
+  },
+  {
+    "localId": "Q9",
+    "severity": "P3",
+    "category": "IPv6 qualification",
+    "domain": 4,
+    "subsections": [
+      "4.1.5",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 136,
+    "excerpt": "รองรับ ... IPsec",
+    "actual": "Source says support, not automatic encryption; generic 6to4 example needs mode qualifier.",
+    "expected": "No false always-encrypted finding; only anycast6to4 deprecated.",
+    "evidence": "RFC8504 SHOULD; RFC7526 explicitly preserves basic unicast6to4.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc7526.html#section-4"
+    ],
+    "recommendation": "Add no-automatic-encryption caveat and transition context.",
+    "confidence": "high except bounded inference as stated",
+    "status": "qualified concern"
+  },
+  {
+    "localId": "Q10",
+    "severity": "P3",
+    "category": "protocol common-case omission",
+    "domain": 4,
+    "subsections": [
+      "4.1.6",
+      "4.1.7"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 192,
+    "excerpt": "UDP สำหรับคำขอทั่วไป, TCP สำหรับ Zone Transfer",
+    "actual": "Conventional examples do not explicitly say only; HTTPS TCP443 omits HTTP3.",
+    "expected": "DNS ordinary queries may use TCP; HTTP3 uses UDP/QUIC.",
+    "evidence": "RFC7766 and9114 verified; FTPS/SSL extensions not separately verified.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc7766.html#section-5"
+    ],
+    "recommendation": "Add modern qualifications; do not count common examples as wholly false.",
+    "confidence": "high except bounded inference as stated",
+    "status": "recommendation"
+  },
+  {
+    "localId": "Q11",
+    "severity": "P2",
+    "category": "promoted finding",
+    "domain": 4,
+    "subsections": [
+      "4.1.9"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 268,
+    "excerpt": "Beacon Frames เมื่อมีเครื่องเชื่อมต่อ",
+    "actual": "Hidden name in beacon claim is factual defect; conclusion remains sound.",
+    "expected": "See D34-12.",
+    "evidence": "Cisco primary reference verified.",
+    "references": [
+      "https://documentation.meraki.com/Wireless/Operate_and_Maintain/User_Guides/Monitoring_and_Reporting/Air_Marshal"
+    ],
+    "recommendation": "Resolve D34-12; do not double count.",
+    "confidence": "high except bounded inference as stated",
+    "status": "confirmed"
+  },
+  {
+    "localId": "Q12",
+    "severity": "P3",
+    "category": "diagram pedagogic qualification",
+    "domain": 4,
+    "subsections": [
+      "4.2.3",
+      "4.2.6"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 2426,
+    "excerpt": "Port 80/443",
+    "actual": "FW web-only label accompanies SMTP/DNS services; five-tier graphic called concentric.",
+    "expected": "Identify example web rule; make five layers illustrative.",
+    "evidence": "Local diagram2437,2441,2445 comparison; no geometry/browser claim.",
+    "references": [],
+    "recommendation": "Qualify labels; no claim that all firewalls permit only80/443.",
+    "confidence": "high except bounded inference as stated",
+    "status": "recommendation"
+  },
+  {
+    "localId": "Q13",
+    "severity": "P2",
+    "category": "promoted findings",
+    "domain": 4,
+    "subsections": [
+      "4.3.2"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 442,
+    "excerpt": "สเกลขนาดเป็นศูนย์",
+    "actual": "Scale-to-zero unconditional defect; Beanstalk bounded service nuance.",
+    "expected": "See D34-13/D34-14; FaaS subtype already acknowledged.",
+    "evidence": "Azure and AWS primary references verified.",
+    "references": [
+      "https://learn.microsoft.com/en-us/azure/azure-functions/event-driven-scaling"
+    ],
+    "recommendation": "Resolve13/14; do not call fourth practical heading itself false.",
+    "confidence": "high except bounded inference as stated",
+    "status": "confirmed"
+  },
+  {
+    "localId": "Q14",
+    "severity": "P3",
+    "category": "NIST vs vendor cloud terminology",
+    "domain": 4,
+    "subsections": [
+      "4.3.4",
+      "4.3.5",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 476,
+    "excerpt": "Private Cloud หรือ On-Premises ผสมกับ Public Cloud",
+    "actual": "Onprem+public vendor usage broader than strict NIST; private highest-security guarantee and commercial-only public ownership need caveats.",
+    "expected": "NIST hybrid combines cloud infrastructures; security depends on controls; ownership may be business/academic/government.",
+    "evidence": "NIST800-145 and hybrid glossary retrieved.",
+    "references": [
+      "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf"
+    ],
+    "recommendation": "Qualify NIST attribution and cloud-vs-datacenter; acknowledge hybrid/multicloud overlap.",
+    "confidence": "high except bounded inference as stated",
+    "status": "qualified concern"
+  }
+]

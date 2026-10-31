@@ -1,0 +1,319 @@
+[
+  {
+    "localId": "D2-01",
+    "severity": "P2",
+    "category": "conceptual precision",
+    "domain": 2,
+    "subsections": [
+      "2.2.3",
+      "2.2.6",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 204,
+    "excerpt": "Maximum Acceptable Downtime",
+    "actual": "Repeated maximum-downtime triggers and RTO ≤ MTD mnemonic can obscure the distinction between a system restoration target and business disruption tolerance.",
+    "expected": "Teach RTO as a recovery target and MTD as the business tolerance; allow for business reprocessing after technical restoration.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 164–168, 203–207, 537, 639, 672–674; scenario JS 28–30; diagram generator 1622, 1640–1642, 1676.",
+      "NIST SP 800-34r1 §3.2.1 states RTO normally needs to be shorter than MTD to leave time for reprocessing. Scenario 2 still correctly identifies RTO."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf#page=31",
+      "https://csrc.nist.gov/glossary/term/recovery_time_objective"
+    ],
+    "recommendation": "Use เป้าหมายระยะเวลาที่ต้องกู้คืนระบบหรือบริการให้พร้อมใช้งาน; explain why the inequality alone does not demonstrate a viable recovery plan.",
+    "confidence": "high",
+    "status": "qualified concern"
+  },
+  {
+    "localId": "D2-02",
+    "severity": "P2",
+    "category": "factual accuracy",
+    "domain": 2,
+    "subsections": [
+      "2.2.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 164,
+    "excerpt": "ก่อนจะเกิดความเสียหายที่ไม่อาจฟื้นคืนได้",
+    "actual": "MTD is described as the threshold before irreversible damage; line 167 further predicts organizational collapse.",
+    "expected": "MTD concerns the threshold for significant mission/business harm, without requiring irreversible damage or certain collapse.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 164 and 167 contain categorical irreversible-damage/collapse wording.",
+      "NIST MTD glossary defines disruption tolerance in terms of significant mission harm."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/glossary/term/maximum_tolerable_downtime"
+    ],
+    "recommendation": "Use ก่อนเกิดผลกระทบเกินระดับที่องค์กรยอมรับได้ and describe target-breach consequences without predicting certain collapse.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D2-03",
+    "severity": "P2",
+    "category": "currency and scope",
+    "domain": 2,
+    "subsections": [
+      "2.3.6"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 327,
+    "excerpt": "Passphrase ที่มีความยาว ≥ 14 ตัวอักษร",
+    "actual": "The modern password recommendation gives an unqualified 14-character baseline.",
+    "expected": "Identify the standard and context: current NIST specifies 15 for single-factor passwords and permits at least 8 when only used within MFA.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 327 recommends ≥14 without the authentication context.",
+      "Directly checked NIST SP 800-63B-4 §3.1.1.2. A 14-character organizational policy is not universally invalid."
+    ],
+    "referenceUrls": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver"
+    ],
+    "recommendation": "Refresh the cited modern baseline and distinguish single-factor from MFA usage; do not present a context-specific minimum as universal.",
+    "confidence": "high",
+    "status": "qualified concern"
+  },
+  {
+    "localId": "D2-04",
+    "severity": "P2",
+    "category": "conceptual taxonomy",
+    "domain": 2,
+    "subsections": [
+      "2.4.8"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 441,
+    "excerpt": "Raw measurable value",
+    "actual": "The memory aid restricts metrics to raw quantitative values and visually puts KPI/KRI on a separate stage.",
+    "expected": "Metrics can include calculated rates, ratios and averages; KPI/KRI are types of metrics.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 441 conflicts with the broader definition at 357.",
+      "Generator 1704, 1789–1792 and 1864–1869 repeat the raw-value hierarchy in desktop/mobile variants.",
+      "Final NIST SP 800-55v1 §2.4 explicitly includes KPI/KRI as metrics."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf#page=16"
+    ],
+    "recommendation": "Show data/measurements feeding metrics including KPI/KRI, followed by communication formats; label the architecture a local teaching aid.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D2-05",
+    "severity": "P2",
+    "category": "unsupported authority and ambiguous definition",
+    "domain": 2,
+    "subsections": [
+      "2.4.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 375,
+    "excerpt": "ตามบริบทในสไลด์และเนื้อหาการสอบ ISC2 CC",
+    "actual": "The heading combines Respond/Remediate while the body defines response initiation and asserts an ISC2 exam convention without traceable official evidence.",
+    "expected": "State the selected expansion and precise start/end events without claiming a universal ISC2 answer convention.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 374–376 acknowledges multiple expansions but favors an initiation-only interpretation as exam-specific.",
+      "Official public outline does not prescribe an MTTR expansion.",
+      "Microsoft primary operational documentation separates acknowledgement from remediation with different timestamps."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "https://learn.microsoft.com/en-us/security/operations/incident-response-overview"
+    ],
+    "recommendation": "Add an interval example and defined endpoints; retain the fact that Mean Time to Respond is a valid context-dependent expansion.",
+    "confidence": "high",
+    "status": "qualified concern"
+  },
+  {
+    "localId": "D2-06",
+    "severity": "P2",
+    "category": "bilingual semantic mismatch",
+    "domain": 2,
+    "subsections": [
+      "2.2.5"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 1542,
+    "excerpt": "DISASTER RECOVERY (DR) — แผนกู้คืนระบบเทคโนโลยีสารสนเทศ",
+    "actual": "Desktop and mobile BC/DR diagram labels translate DR as a plan.",
+    "expected": "Translate DR as การกู้คืน and reserve แผนการกู้คืน for DRP.",
+    "rootCause": null,
+    "evidence": [
+      "Generator 1542 and 1577 use แผน for DR.",
+      "Markdown 508–513 explicitly distinguishes DR capability/process from DRP document.",
+      "NIST SP 800-34r1 distinguishes recovery planning documents and functions."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf#page=22"
+    ],
+    "recommendation": "Correct both desktop and mobile Thai labels while preserving the introductory BC/DR scope relationship.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D2-07",
+    "severity": "P2",
+    "category": "misleading taxonomy",
+    "domain": 2,
+    "subsections": [
+      "2.3.5",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 565,
+    "excerpt": "การส่งข้อความหลอกลวงทั่วไปแบบไม่เจาะจงเป้าหมายในวงกว้าง",
+    "actual": "Phishing is restricted to broad non-targeted messages, and a JS scenario contrasts whaling with spear phishing as though categories exclude one another.",
+    "expected": "Phishing is the broader family, spear phishing is targeted phishing, and whaling targets senior/high-profile recipients within spear phishing.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 308–310 and 564–583; scenario JS 70.",
+      "Canadian Centre for Cyber Security directly confirms whaling as spear phishing against senior/high-profile targets.",
+      "CISA search-indexed text corroborates phishing types, but direct PDF retrieval returned HTTP 403. Finding does not depend on that blocked retrieval."
+    ],
+    "referenceUrls": [
+      "https://www.cyber.gc.ca/en/guidance/introduction-cyber-threat-environment",
+      "https://www.cisa.gov/sites/default/files/2024-02/Update%20to%20Phishing%20General%20Security%20Postcard_01.01.2024.pdf"
+    ],
+    "recommendation": "Label the non-targeted column bulk/generic phishing and explicitly show nesting; retain whaling as scenario 7's most-specific correct answer.",
+    "confidence": "high",
+    "status": "qualified concern"
+  },
+  {
+    "localId": "D2-08",
+    "severity": "P3",
+    "category": "Thai terminology",
+    "domain": 2,
+    "subsections": [
+      "2.4.2",
+      "2.4.5",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 359,
+    "excerpt": "ลักษณะของเมทริกซ์ความปลอดภัย",
+    "actual": "เมทริกซ์ is repeatedly used for metric, creating a matrix-versus-metric semantic collision.",
+    "expected": "Use ตัวชี้วัด consistently, or a clearly identified metric transliteration.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 359, 402, 731–734 and 764; scenario JS 75–78 and 102.",
+      "English metric meaning is established internally at Markdown 357 and externally in NIST SP 800-55v1.",
+      "Thai spelling judgment is editorial semantic review; no exclusive official Thai glossary spelling was established."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf#page=34"
+    ],
+    "recommendation": "Replace เมทริกซ์ when the intended concept is metric; preserve actual matrix terminology where a table/matrix is intended.",
+    "confidence": "high",
+    "status": "confirmed"
+  },
+  {
+    "localId": "D2-09",
+    "severity": "P2",
+    "category": "supplemental coverage",
+    "domain": 2,
+    "subsections": [
+      "2.2.7",
+      "2.3.3",
+      "2.4.4",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 320,
+    "excerpt": "ผู้โจมตีอาจนำ AI และเทคโนโลยี Deepfake Voice มาช่วยสร้างเรื่องราวหลอกลวง",
+    "actual": "Notes cover deepfake voice but omit AI continuity backups/configurations/datasets, model drift, AI-specific KRIs and updated playbook/triage applications.",
+    "expected": "Represent the current official supplemental web guidance without claiming these are additional numbered PDF objectives.",
+    "rootCause": null,
+    "evidence": [
+      "All 777 Markdown lines were inspected; line 320 is the explicit AI teaching.",
+      "Official ISC2 live outline page Domain 2 AI integration text was directly retrieved; numbered September 2026 PDF has broader objective bullets."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Add compact sourced AI continuity, KRI and playbook examples and a source date; frame as supplemental guidance.",
+    "confidence": "high",
+    "status": "recommendation"
+  },
+  {
+    "localId": "D2-10",
+    "severity": "P3",
+    "category": "instructional distinction",
+    "domain": 2,
+    "subsections": [
+      "2.2.8"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 252,
+    "excerpt": "การตรวจทานเอกสาร (Checklist / Tabletop Exercise)",
+    "actual": "Checklist/document review and a scenario-led tabletop exercise are collapsed in one parenthetical.",
+    "expected": "Describe document review separately from discussion-based tabletop role/decision practice.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 252 groups Checklist and Tabletop Exercise under document review.",
+      "NIST SP 800-84 directly describes facilitator-led scenario discussion without deployment of equipment."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf"
+    ],
+    "recommendation": "Give each activity its own short description and retain the testing rationale.",
+    "confidence": "high",
+    "status": "qualified concern"
+  },
+  {
+    "localId": "D2-11",
+    "severity": "P3",
+    "category": "overgeneralized examples",
+    "domain": 2,
+    "subsections": [
+      "2.2.7"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 233,
+    "excerpt": "ข้อมูลที่ซิงโครไนซ์แบบเกือบ Real-time พร้อมใช้งานทันที",
+    "actual": "Hot-site synchronization/readiness and recovery windows are stated without clear example qualifiers.",
+    "expected": "Treat near-real-time synchronization as a possible implementation and time windows as illustrative, with capability validated through testing.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 233–242 supplies readiness claims and specific site recovery ranges.",
+      "NIST SP 800-34r1 §§3.4.3 and 5.1.5 discusses variation in alternate-site implementation."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf#page=36"
+    ],
+    "recommendation": "Add โดยทั่วไป/ตัวอย่าง and explain that design, dependencies and tests establish actual achievable recovery; retain relative readiness/cost ordering.",
+    "confidence": "high",
+    "status": "qualified concern"
+  },
+  {
+    "localId": "D2-12",
+    "severity": "P3",
+    "category": "ambiguous security wording",
+    "domain": 2,
+    "subsections": [
+      "2.3.6"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 328,
+    "excerpt": "รหัสผ่านที่จัดเก็บด้วยการเข้ารหัสและการแฮชร่วมกับ Salt",
+    "actual": "Verifier storage wording mixes encryption with salted hashing; line 333 also phrases phishing resistance as an unlimited inability to intercept authentication.",
+    "expected": "Name salted password hashing with an appropriate cost factor for verifiers; scope encryption and phishing resistance to the intended protections.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 328 wording is ambiguous, not evidence that reversible encryption alone is advocated.",
+      "Markdown 333 contains ไม่สามารถถูกดักขโมย wording.",
+      "NIST SP 800-63B-4 §§3.1.1.2 and 3.2.5 were directly checked."
+    ],
+    "referenceUrls": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "recommendation": "Clarify hashing for verifier storage, transport/additional encryption if intended, and scope phishing-resistant claims without implying immunity to endpoint/session compromise.",
+    "confidence": "high",
+    "status": "qualified concern"
+  }
+]

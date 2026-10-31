@@ -1,0 +1,988 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d4-01-network-request",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 4,
+  "primaryObjectiveId": "4.1",
+  "objectiveIds": [
+    "4.1"
+  ],
+  "revision": "1",
+  "status": "in-preparation",
+  "title": {
+    "en": "Following a Network Request",
+    "th": "ติดตามเส้นทางคำขอผ่าน Network"
+  },
+  "synopsis": {
+    "en": "Connect reference models to the journey of a real request and separate transport reliability from security.",
+    "th": "เชื่อม Reference Models กับเส้นทางคำขอจริง และแยกความน่าเชื่อถือของ Transport จาก Security"
+  },
+  "outcomes": [
+    {
+      "en": "A request crosses several kinds of boundary.",
+      "th": "คำขอหนึ่งครั้งผ่านขอบเขตหลายแบบ"
+    },
+    {
+      "en": "OSI: describe what happens above transport.",
+      "th": "OSI: อธิบายงานที่อยู่เหนือ Transport"
+    },
+    {
+      "en": "OSI: transport, route, local link, signal.",
+      "th": "OSI: Transport เส้นทาง ลิงก์ และสัญญาณ"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: earlier lessons in this objective. No vendor configuration knowledge is required.",
+      "th": "แนะนำบทก่อนหน้าใน Objective นี้ ไม่จำเป็นต้องรู้คำสั่งตั้งค่าของ Vendor"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 Exam Outline",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Objective 4.1; separate Domain 4 AI/application guidance; checked 2026-10-31."
+    },
+    {
+      "id": "d4-summary",
+      "title": "D4 sum.md — user study summary",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 4/D4 sum.md",
+      "locator": "Teaching baseline; corrections and image traceability in Domain 4 academic audit."
+    },
+    {
+      "id": "d4-notes",
+      "title": "Domain 4.md — user study notes",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 4/Domain 4.md",
+      "locator": "Summary networking/devices; official AI data-path application; S02–S03; transcript OSI discussion; S03; summary OSI functions; S04–S06; transcript TCP/IP model; S02; RFC 1122 encapsulation correction; S05; RFC 768 and RFC 9293; full source mapping in domain-4-2026-coverage-matrix.md."
+    },
+    {
+      "id": "internet-stack",
+      "title": "RFC 1122",
+      "url": "https://www.rfc-editor.org/rfc/rfc1122",
+      "locator": "Internet host communication layers; conceptual mapping, not protocol implementation trivia.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "tcp",
+      "title": "RFC 9293",
+      "url": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "locator": "TCP reliable byte-stream service and its limits.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "udp",
+      "title": "RFC 768",
+      "url": "https://www.rfc-editor.org/rfc/rfc768.html",
+      "locator": "Datagram delivery/order not guaranteed.",
+      "authority": "technical-primary"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d4-01-01-request-path",
+      "title": {
+        "en": "A request crosses several kinds of boundary.",
+        "th": "คำขอหนึ่งครั้งผ่านขอบเขตหลายแบบ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A workstation asks an approved AI service to summarize an authorized document.",
+            "th": "Workstation ขอให้ AI Service ที่อนุมัติแล้วสรุปเอกสารที่ได้รับอนุญาต"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Workstation",
+                "th": "เครื่องผู้ใช้"
+              },
+              {
+                "en": "Creates the application request",
+                "th": "สร้างคำขอของ Application"
+              },
+              {
+                "en": "User and data permissions still apply",
+                "th": "ยังต้องมีสิทธิ์ของผู้ใช้และข้อมูล"
+              }
+            ],
+            [
+              {
+                "en": "Switch → router",
+                "th": "Switch → Router"
+              },
+              {
+                "en": "Local forwarding → another network",
+                "th": "ส่งต่อในวง LAN → เครือข่ายอื่น"
+              },
+              {
+                "en": "An address is not an access grant",
+                "th": "Address ไม่ใช่การอนุญาตเข้าถึง"
+              }
+            ],
+            [
+              {
+                "en": "Service",
+                "th": "บริการปลายทาง"
+              },
+              {
+                "en": "Processes the authorized request",
+                "th": "ประมวลผลคำขอที่อนุญาต"
+              },
+              {
+                "en": "Check identity and resource policy",
+                "th": "ตรวจ Identity และนโยบายของ Resource"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A network connects devices so that applications can exchange data. A LAN covers a local network; a WAN connects networks across a wider area, and a WLAN uses a wireless local link. In this example the switch forwards local frames, while a router forwards IP packets between networks. A firewall may enforce policy along the path. DNS can resolve a service name before the connection. Reaching an AI endpoint does not authorize uploading every document: user identity, data classification and application policy remain separate decisions.",
+            "th": "Network เชื่อมอุปกรณ์ให้ Applications แลกเปลี่ยนข้อมูล LAN เป็นเครือข่ายในบริเวณหนึ่ง WAN เชื่อมเครือข่ายในพื้นที่กว้าง และ WLAN ใช้การเชื่อมต่อไร้สายในวง LAN ตัวอย่างนี้ Switch ส่งต่อ Frames ภายในวง ส่วน Router ส่ง IP Packets ระหว่างเครือข่าย และอาจมี Firewall บังคับ Policy ตามเส้นทาง DNS ช่วยแปลงชื่อบริการก่อนเชื่อมต่อ การเข้าถึง AI Endpoint ได้ไม่ได้แปลว่าอัปโหลดเอกสารทุกชนิดได้ ยังต้องพิจารณา Identity การจัดชั้นข้อมูล และนโยบายของ Application แยกกัน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Connectivity enables a request; policy decides whether it should succeed.",
+            "th": "Connectivity ทำให้ส่งคำขอได้ ส่วน Policy ตัดสินว่าควรอนุญาตหรือไม่"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "internet-stack",
+        "tcp",
+        "udp"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-01-02-osi-upper",
+      "title": {
+        "en": "OSI: describe what happens above transport.",
+        "th": "OSI: อธิบายงานที่อยู่เหนือ Transport"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The seven-layer model is a reference for reasoning, not seven mandatory software modules.",
+            "th": "โมเดลเจ็ดชั้นช่วยวิเคราะห์หน้าที่ ไม่ได้บังคับให้ Software ต้องมีเจ็ด Modules"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "7 · Application",
+                "th": "7 · Application"
+              },
+              {
+                "en": "Network services used by applications",
+                "th": "บริการเครือข่ายที่ Applications ใช้"
+              },
+              {
+                "en": "Example: HTTP request",
+                "th": "ตัวอย่าง: คำขอ HTTP"
+              }
+            ],
+            [
+              {
+                "en": "6 · Presentation",
+                "th": "6 · Presentation"
+              },
+              {
+                "en": "Representation and transformation",
+                "th": "รูปแบบและการแปลงข้อมูล"
+              },
+              {
+                "en": "Encoding or cryptographic representation",
+                "th": "Encoding หรือรูปแบบข้อมูลเข้ารหัส"
+              }
+            ],
+            [
+              {
+                "en": "5 · Session",
+                "th": "5 · Session"
+              },
+              {
+                "en": "Dialog/session coordination",
+                "th": "ประสาน Dialog และ Session"
+              },
+              {
+                "en": "Establish, maintain, end exchanges",
+                "th": "เริ่ม รักษา และจบการสื่อสาร"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "OSI separates communication functions into seven conceptual layers. Application-layer services support network applications; the user interface itself is not the entire layer. Presentation concerns representation such as encoding and transformations. Session concerns coordination of dialogs. Real Internet software often combines these functions, so TLS or a particular library need not fit one uniquely correct OSI box. Use the model to ask what function is failing or what a control can observe, rather than memorizing an inflexible location for every real protocol.",
+            "th": "OSI แบ่งหน้าที่การสื่อสารเป็นเจ็ดชั้นในเชิงแนวคิด Application Layer รองรับบริการที่โปรแกรมเครือข่ายใช้งาน ไม่ได้หมายถึงหน้าจอ UI ทั้งหมด Presentation เกี่ยวกับรูปแบบข้อมูล เช่น Encoding และการแปลงรูปแบบ ส่วน Session เกี่ยวกับการประสาน Dialog ในระบบ Internet จริง Software มักรวมหน้าที่เหล่านี้ไว้ด้วยกัน จึงไม่ควรบังคับว่า TLS หรือ Library ใดต้องอยู่ในช่อง OSI เพียงช่องเดียว ใช้โมเดลถามว่าหน้าที่ใดผิดพลาด หรือ Control มองเห็นอะไรได้ ดีกว่าท่องตำแหน่งทุก Protocol แบบตายตัว"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Functions are the lesson; real implementations can combine them.",
+            "th": "เรียนหน้าที่ของแต่ละชั้น โดยยอมรับว่า Implementation จริงอาจรวมหน้าที่กัน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "internet-stack",
+        "tcp",
+        "udp"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-01-03-osi-lower",
+      "title": {
+        "en": "OSI: transport, route, local link, signal.",
+        "th": "OSI: Transport เส้นทาง ลิงก์ และสัญญาณ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Follow the delivery functions from a process toward the physical medium.",
+            "th": "ติดตามหน้าที่ส่งข้อมูลจาก Process ไปถึงสื่อกายภาพ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "4 · Transport",
+                "th": "4 · Transport"
+              },
+              {
+                "en": "TCP streams / UDP datagrams; ports",
+                "th": "TCP Streams / UDP Datagrams และ Ports"
+              },
+              {
+                "en": "Different delivery properties",
+                "th": "คุณสมบัติการส่งต่างกัน"
+              }
+            ],
+            [
+              {
+                "en": "3 · Network",
+                "th": "3 · Network"
+              },
+              {
+                "en": "IP addressing and routing",
+                "th": "IP Addressing และ Routing"
+              },
+              {
+                "en": "Routes between networks",
+                "th": "เลือกเส้นทางระหว่างเครือข่าย"
+              }
+            ],
+            [
+              {
+                "en": "2 · Data link",
+                "th": "2 · Data Link"
+              },
+              {
+                "en": "Frames on a local link",
+                "th": "Frames บนลิงก์ท้องถิ่น"
+              },
+              {
+                "en": "Ethernet switching uses MAC addresses",
+                "th": "Ethernet Switch ใช้ MAC Addresses"
+              }
+            ],
+            [
+              {
+                "en": "1 · Physical",
+                "th": "1 · Physical"
+              },
+              {
+                "en": "Bits represented as signals",
+                "th": "แสดง Bits เป็นสัญญาณ"
+              },
+              {
+                "en": "Copper, fiber or radio",
+                "th": "สายทองแดง Fiber หรือ Radio"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Transport supports communication between application endpoints. TCP and UDP have different behavior; the layer name alone does not promise reliable delivery. The network layer uses IP addresses to route packets across networks. Data-link protocols frame data for a particular link; Ethernet switches commonly forward using MAC addresses. Physical transmission represents bits using electrical, optical or radio signals. Devices can implement functions at several layers. A multilayer switch or application-aware firewall cannot be classified solely by its product name. MAC here means a link-layer address, not mandatory access control from Domain 3.",
+            "th": "Transport รองรับการสื่อสารระหว่าง Endpoints ของ Applications แต่ TCP และ UDP ทำงานต่างกัน ชื่อชั้นจึงไม่รับประกันการส่งสำเร็จ Network Layer ใช้ IP Address เพื่อเลือกเส้นทางข้ามเครือข่าย Data Link จัดข้อมูลเป็น Frames ของลิงก์นั้น โดย Ethernet Switch มักใช้ MAC Address ส่งต่อข้อมูล ส่วน Physical แทน Bits ด้วยสัญญาณไฟฟ้า แสง หรือ Radio อุปกรณ์หนึ่งอาจทำงานหลายชั้น เช่น Multilayer Switch หรือ Firewall ที่ตรวจ Application จึงจัดชั้นจากชื่อสินค้าอย่างเดียวไม่ได้ MAC ในบทนี้หมายถึง Address ของลิงก์ ไม่ใช่ Mandatory Access Control ของ Domain 3"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A router chooses an IP path; a local switch forwards frames.",
+            "th": "Router เลือกเส้นทาง IP ส่วน Switch ในวง LAN ส่งต่อ Frames"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "internet-stack",
+        "tcp",
+        "udp"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-01-04-tcpip-map",
+      "title": {
+        "en": "Two models describe the same communication differently.",
+        "th": "สองโมเดลอธิบายการสื่อสารเดียวกันต่างระดับ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A common four-layer TCP/IP teaching model groups several OSI functions together.",
+            "th": "TCP/IP แบบสี่ชั้นที่ใช้สอนทั่วไป รวมหน้าที่ OSI บางชั้นเข้าด้วยกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Conceptual correspondence, not a one-to-one implementation rule",
+            "th": "การเทียบเชิงแนวคิด ไม่ใช่กฎ Implementation แบบหนึ่งต่อหนึ่ง"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "OSI 7 / 6 / 5",
+                "th": "OSI 7 / 6 / 5"
+              },
+              {
+                "en": "TCP/IP Application",
+                "th": "TCP/IP Application"
+              },
+              {
+                "en": "HTTP, DNS and application exchanges",
+                "th": "HTTP, DNS และการแลกเปลี่ยนระดับ Application"
+              }
+            ],
+            [
+              {
+                "en": "OSI 4",
+                "th": "OSI 4"
+              },
+              {
+                "en": "TCP/IP Transport",
+                "th": "TCP/IP Transport"
+              },
+              {
+                "en": "TCP or UDP",
+                "th": "TCP หรือ UDP"
+              }
+            ],
+            [
+              {
+                "en": "OSI 3",
+                "th": "OSI 3"
+              },
+              {
+                "en": "TCP/IP Internet",
+                "th": "TCP/IP Internet"
+              },
+              {
+                "en": "IP routing",
+                "th": "การเลือกเส้นทาง IP"
+              }
+            ],
+            [
+              {
+                "en": "OSI 2 / 1",
+                "th": "OSI 2 / 1"
+              },
+              {
+                "en": "TCP/IP Link",
+                "th": "TCP/IP Link"
+              },
+              {
+                "en": "Local framing and medium",
+                "th": "Frames และสื่อของลิงก์"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The Internet protocol suite is often taught using Application, Transport, Internet and Link layers. Some textbooks split Link into two layers and show a five-layer model; that convention does not change the packet being sent. OSI upper-layer functions are grouped into the TCP/IP application perspective, while OSI network maps approximately to Internet. This correspondence helps translate terminology, but real protocols and devices can span functions. Identify the model used by the question before naming a layer. Do not interpret different layer counts as conflicting physical networks.",
+            "th": "ชุด Internet Protocol มักสอนเป็น Application, Transport, Internet และ Link บางตำราแยก Link ออกเป็นสองชั้นจึงนับได้ห้าชั้น ซึ่งไม่ได้เปลี่ยน Packet ที่ส่งจริง หน้าที่ OSI ชั้นบนรวมอยู่ในมุม Application ของ TCP/IP ส่วน Network ของ OSI เทียบได้โดยประมาณกับ Internet การเทียบนี้ช่วยอ่านคำศัพท์ข้ามโมเดล แต่ Protocol และอุปกรณ์จริงอาจครอบคลุมหลายหน้าที่ ก่อนตอบชื่อชั้นต้องดูว่าใช้โมเดลใด อย่าสรุปว่าจำนวนชั้นต่างกันหมายถึงเครือข่ายกายภาพคนละแบบ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Name the model before naming its layer.",
+            "th": "ระบุโมเดลก่อนระบุชื่อ Layer"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "internet-stack",
+        "tcp",
+        "udp"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-01-05-encapsulation",
+      "title": {
+        "en": "Encapsulation wraps data for delivery.",
+        "th": "Encapsulation ห่อข้อมูลเพื่อส่งต่อ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Conceptual nesting at the sender; the receiver interprets the relevant headers.",
+            "th": "ผู้ส่งห่อข้อมูลตามหน้าที่ ส่วนผู้รับอ่าน Headers ที่เกี่ยวข้อง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Link frame",
+                "th": "Link Frame"
+              },
+              {
+                "en": "IP packet carried on this link",
+                "th": "บรรทุก IP Packet บนลิงก์นี้"
+              },
+              {
+                "en": "Link framing changes across routed links",
+                "th": "กรอบของลิงก์เปลี่ยนเมื่อผ่าน Router"
+              }
+            ],
+            [
+              {
+                "en": "IP packet",
+                "th": "IP Packet"
+              },
+              {
+                "en": "Transport data plus IP header",
+                "th": "ข้อมูล Transport พร้อม IP Header"
+              },
+              {
+                "en": "Routing uses IP information",
+                "th": "Routing ใช้ข้อมูล IP"
+              }
+            ],
+            [
+              {
+                "en": "Transport + data",
+                "th": "Transport + ข้อมูล"
+              },
+              {
+                "en": "TCP/UDP information and payload",
+                "th": "ข้อมูล TCP/UDP และ Payload"
+              },
+              {
+                "en": "Application data is carried inside",
+                "th": "บรรทุกข้อมูล Application ภายใน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Encapsulation adds information needed by a protocol around data from a higher-level function. A link frame can contain an IP packet, which carries transport information and application data. At a router, a new frame is normally built for the next link; the router does not need to terminate the end-to-end application session merely to forward IP traffic. This is a simplified nesting diagram, not a claim that every OSI layer adds its own header or that every packet contains the same protocols. Encryption may hide content from a sensor without hiding all addressing metadata.",
+            "th": "Encapsulation คือการเพิ่มข้อมูลที่ Protocol ต้องใช้รอบข้อมูลจากหน้าที่ชั้นบน Link Frame อาจบรรทุก IP Packet ซึ่งบรรทุกข้อมูล Transport และ Application อีกที เมื่อผ่าน Router โดยปกติจะสร้าง Frame ใหม่สำหรับลิงก์ถัดไป Router ไม่จำเป็นต้องจบ Application Session เพียงเพื่อส่งต่อ IP ภาพซ้อนนี้เป็นแนวคิดอย่างง่าย ไม่ได้บอกว่าทุกชั้น OSI ต้องเพิ่ม Header ของตัวเอง หรือทุก Packet มี Protocol เหมือนกัน การเข้ารหัสอาจซ่อนเนื้อหาจาก Sensor แต่ไม่ได้ซ่อน Metadata ด้าน Address ทั้งหมด"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Headers serve protocol functions; they are not seven obligatory wrappers.",
+            "th": "Headers ทำหน้าที่ของ Protocol ไม่ใช่กรอบบังคับเจ็ดชั้น"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "internet-stack",
+        "tcp",
+        "udp"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-01-06-tcp-udp",
+      "title": {
+        "en": "Reliable transport is different from secure content.",
+        "th": "Transport ที่น่าเชื่อถือไม่เท่ากับเนื้อหาที่ปลอดภัย"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Choose delivery behavior for the application, then add the required security controls.",
+            "th": "เลือกพฤติกรรมการส่งให้เหมาะกับ Application แล้วเพิ่ม Security Controls ที่จำเป็น"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "TCP",
+                "th": "TCP"
+              },
+              {
+                "en": "Ordered reliable byte stream",
+                "th": "Byte Stream ที่ส่งตามลำดับและมี Reliability"
+              },
+              {
+                "en": "No built-in confidentiality",
+                "th": "ไม่ได้ให้ Confidentiality ในตัว"
+              }
+            ],
+            [
+              {
+                "en": "UDP",
+                "th": "UDP"
+              },
+              {
+                "en": "Datagrams without delivery/order promises",
+                "th": "Datagrams ที่ไม่รับประกันการถึงหรือลำดับ"
+              },
+              {
+                "en": "Application can add its own mechanisms",
+                "th": "Application อาจเพิ่มกลไกเอง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "TCP tracks an ordered byte stream and uses mechanisms such as acknowledgments and retransmission to handle loss. A connection can still fail, and transport delivery is not proof that a business operation committed successfully. UDP provides datagrams without guaranteeing delivery, order or duplicate protection. Applications can build reliability or encrypted transports over UDP; therefore UDP is not a synonym for insecure. Neither raw TCP nor raw UDP alone supplies the identity, authorization and confidentiality required by a protected application. Match the control to the stated requirement.",
+            "th": "TCP ติดตาม Byte Stream ตามลำดับ ใช้กลไกอย่าง Acknowledgment และ Retransmission เพื่อจัดการการสูญหาย แต่ Connection ยังล้มเหลวได้ และการส่งระดับ Transport ไม่ได้พิสูจน์ว่าธุรกรรมทางธุรกิจบันทึกสำเร็จแล้ว UDP ส่ง Datagrams โดยไม่รับประกันการถึง ลำดับ หรือการป้องกันข้อมูลซ้ำ Application สามารถเพิ่ม Reliability หรือสร้าง Transport เข้ารหัสบน UDP ได้ จึงไม่ควรเทียบ UDP กับความไม่ปลอดภัย ทั้ง TCP และ UDP แบบดิบไม่ได้ให้ Identity Authorization และ Confidentiality ครบตามความต้องการของ Application ต้องเลือก Control ให้ตรงกับโจทย์"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Delivery, confidentiality and authorization are separate questions.",
+            "th": "การส่งถึง Confidentiality และ Authorization เป็นคนละคำถาม"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "internet-stack",
+        "tcp",
+        "udp"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-01-07-delivery-decision",
+      "title": {
+        "en": "A completed TCP transfer: what does it prove?",
+        "th": "ส่งข้อมูลผ่าน TCP แล้ว พิสูจน์อะไรได้?"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A report upload used TCP. The team needs confidential content and confirmation that the application saved it.",
+            "th": "อัปโหลดรายงานผ่าน TCP แล้ว ทีมต้องการรักษาความลับและยืนยันว่า Application บันทึกสำเร็จ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "ทางเลือก A"
+              },
+              {
+                "en": "Treat TCP as proof of encryption",
+                "th": "ถือว่า TCP พิสูจน์การเข้ารหัสแล้ว"
+              },
+              {
+                "en": "TCP delivery does not supply confidentiality. Inspect the protected application channel.",
+                "th": "TCP ไม่ได้ให้ Confidentiality ต้องตรวจช่องทาง Application ที่ป้องกันข้อมูลด้วย"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "ทางเลือก B"
+              },
+              {
+                "en": "Use a protected channel and verify the save result",
+                "th": "ใช้ช่องทางที่ป้องกันข้อมูล และตรวจผลการบันทึก"
+              },
+              {
+                "en": "The channel protects content; an application-level result addresses whether the report was saved.",
+                "th": "ช่องทางช่วยป้องกันเนื้อหา ส่วนผลระดับ Application ช่วยยืนยันว่ารายงานถูกบันทึก"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "ทางเลือก C"
+              },
+              {
+                "en": "Replace TCP with UDP to get encryption",
+                "th": "เปลี่ยนเป็น UDP เพื่อให้ได้การเข้ารหัส"
+              },
+              {
+                "en": "UDP alone does not encrypt content or confirm the business operation.",
+                "th": "UDP อย่างเดียวไม่เข้ารหัสเนื้อหาและไม่ยืนยันผลการทำงานทางธุรกิจ"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "ทางเลือก D"
+              },
+              {
+                "en": "Skip access checks once a connection exists",
+                "th": "ข้ามการตรวจสิทธิ์เมื่อเชื่อมต่อได้แล้ว"
+              },
+              {
+                "en": "A network connection does not authorize the user or the report operation.",
+                "th": "การเชื่อมต่อ Network ไม่ได้อนุญาตผู้ใช้หรือการกระทำต่อรายงาน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The requirement contains two distinct questions. Confidentiality needs an appropriately protected application channel, such as properly configured TLS with endpoint validation. Successful transport does not establish that protection. Confirmation of a saved report needs application-level evidence, such as a successful response tied to the request and an appropriate verification of the stored result. Neither an open port nor a successful TCP connection replaces authorization. The supported choice addresses both requirements without promising that a transport protocol alone proves an entire business workflow.",
+            "th": "โจทย์มีความต้องการสองอย่างแยกกัน Confidentiality ต้องใช้ช่องทาง Application ที่ป้องกันเหมาะสม เช่น TLS ที่ตั้งค่าถูกต้องและตรวจปลายทาง การส่งระดับ Transport สำเร็จไม่ได้พิสูจน์การป้องกันนี้ ส่วนการยืนยันว่ารายงานถูกบันทึกต้องมีหลักฐานระดับ Application เช่น Response สำเร็จที่ผูกกับคำขอ และตรวจผลที่จัดเก็บตามความเหมาะสม ทั้ง Port ที่เปิดและ TCP Connection ที่สำเร็จไม่แทน Authorization ทางเลือกที่สอดคล้องจึงตอบทั้งสองความต้องการ โดยไม่อ้างว่า Transport Protocol พิสูจน์ Workflow ธุรกิจทั้งหมดได้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use evidence at the level of the requirement.",
+            "th": "ใช้หลักฐานในระดับที่ตอบความต้องการจริง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "internet-stack",
+        "tcp",
+        "udp"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-4-completion-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    }
+  }
+}

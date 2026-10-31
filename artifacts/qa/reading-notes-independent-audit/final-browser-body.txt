@@ -1,0 +1,31 @@
+ const take=async(file,domain,subsection,width,height,theme,findingId,clip=null)=>{await cdp.screenshot(path.join(ARTIFACTS_DIR,file),clip);out.screenshots.push({file,domain,subsection,viewport:`${width}x${height}`,theme,findingId})};
+ // DevTools listener inventory verifies lifecycle without changing app sources.
+ await nav('#topic-2-1-grc-foundations');
+ const listeners=async()=>{const r=await cdp.send('Runtime.evaluate',{expression:`({scroll:getEventListeners(window).scroll?.length||0,resize:getEventListeners(window).resize?.length||0})`,includeCommandLineAPI:true,returnByValue:true});return r.result.value;};
+ const l1=await listeners();await cdp.eval(`location.hash='#topic-3-1-jml-lifecycle'`);await sleep(800);const l2=await listeners();await cdp.eval(`location.hash='#topic-4-1-fundamentals-topologies'`);await sleep(800);const l3=await listeners();
+ out.checks.push({name:'reader-route-listeners',counts:[l1,l2,l3]});
+ await cdp.eval(`history.back()`);await sleep(800);const back=await cdp.eval(`({domain:document.querySelector('.reading-article')?.dataset.domainId,hash:location.hash})`);await cdp.eval(`history.forward()`);await sleep(800);const forward=await cdp.eval(`({domain:document.querySelector('.reading-article')?.dataset.domainId,hash:location.hash})`);out.checks.push({name:'browser-history',back,forward});
+ for(const [domain,anchor,selector] of [[1,'topic-1-1-core-concepts','.reading-table-wrapper'],[1,'topic-1-2-quantitative-risk','.reading-calculation-box'],[2,'topic-2-1-frameworks-standards','.reading-table-grc-frameworks-wrapper'],[3,'topic-3-2-models-matrix','.reading-table-wrapper'],[4,'topic-4-1-tcp-ip-mapping','.reading-table-wrapper']]){
+  await nav('#'+anchor,320,568);await cdp.eval(`import('./js/core/theme.js').then(m=>m.applyTheme('light'))`);await sleep(400);
+  await cdp.eval(`(()=>{const h=document.getElementById('${anchor}');let e=h;while(e&&!e.matches('${selector}'))e=e.nextElementSibling;if(e){e.scrollIntoView({behavior:'instant'});window.scrollBy(0,-20);window.__auditTarget=e;}})()`);
+  const bounds=await cdp.eval(`(()=>{let e=window.__auditTarget||document.querySelector('${selector}');if(!e)return null;let r=e.getBoundingClientRect();return {x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:r.height,scale:1}})()`);
+  if(bounds)await take(`full-component-d${domain}-${anchor}-320-light.png`,domain,anchor,320,568,'light',domain===2?['RN-I-009']:['RN-I-014'],bounds);
+ }
+ // Full scenario and MFA contrast evidence after settled theme.
+ for(const theme of ['light','dark']){
+  await nav('#topic-1-5-distinctions-scenarios',390,844);await cdp.eval(`import('./js/core/theme.js').then(m=>m.applyTheme('${theme}'))`);await sleep(500);
+  await cdp.eval(`document.querySelector('.reading-scenario-card').scrollIntoView({behavior:'instant'});window.scrollBy(0,-20)`);await take(`scenario-settled-${theme}.png`,1,'1.5.4',390,844,theme,['RN-I-008']);
+ }
+ await nav('#topic-1-1-mfa',390,844);await cdp.eval(`import('./js/core/theme.js').then(m=>m.applyTheme('dark'))`);await sleep(500);await cdp.eval(`document.querySelector('.reading-mfa-stack').scrollIntoView({behavior:'instant'})`);await take('mfa-settled-dark.png',1,'1.1.4',390,844,'dark',['RN-I-008']);
+ // Visible keyboard focus at top; closed drawer target is then reached with Tab.
+ await nav('#topic-2-1-grc-foundations',390,844);await cdp.eval(`window.scrollTo(0,0);document.getElementById('btn-toggle-sidebar').focus()`);await take('keyboard-focus-sidebar-toggle.png',2,'sidebar',390,844,'dark',['RN-I-006']);
+ const focus=await cdp.eval(`(()=>{const e=document.activeElement,s=getComputedStyle(e);return {id:e.id,outline:s.outline,boxShadow:s.boxShadow}})()`);out.checks.push({name:'visible-focus-style',focus});
+ await cdp.eval(`document.getElementById('reading-theme-toggle').focus()`);await cdp.send('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});await cdp.send('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});out.checks.push({name:'closed-drawer-focus',result:await cdp.eval(`(()=>{const e=document.activeElement,r=e.getBoundingClientRect();return {id:e.id,x:r.x,y:r.y,drawerOpen:document.querySelector('.mobile-sidebar-open')!==null}})()`)});
+ // Browser's page/pinch zoom; 320px matrix separately covers narrow reflow.
+ await cdp.send('Emulation.setPageScaleFactor',{pageScaleFactor:2});await take('page-zoom-200.png',2,'2.1.1',390,844,'dark',[]);out.checks.push({name:'page-zoom-200',result:await cdp.eval(`({scale:visualViewport.scale,visualWidth:visualViewport.width,layoutWidth:innerWidth})`)});await cdp.send('Emulation.setPageScaleFactor',{pageScaleFactor:1});
+ // Table keyboard focus works natively in this Chrome, despite no explicit tabindex.
+ // Parser trust boundary probe is a string-only evaluation; no payload is inserted into the DOM.
+ const parser=await cdp.eval(`import('./js/core/markdown-parser.js').then(m=>({inline:m.parseInline('<span onclick="auditProbe()">sample</span>'),raw:m.parseMarkdown('<div onclick="auditProbe()">sample</div>')}))`);out.checks.push({name:'parser-attribute-preservation-string-only',parser});
+ out.checks.push({name:'source-dom-counts',result:await cdp.eval(`({lang:document.documentElement.lang,languageParts:document.querySelector('.reading-article-markdown').querySelectorAll('[lang]').length,thai:document.querySelector('.reading-article-markdown').innerText.length})`)});
+ save();console.log('FINAL BROWSER CHECKS DONE',out.checks.length,out.screenshots.length);
+}catch(e){out.error=e.stack;save();console.error(e);process.exitCode=1;}finally{cdp?.close();chrome.kill();server.close();}

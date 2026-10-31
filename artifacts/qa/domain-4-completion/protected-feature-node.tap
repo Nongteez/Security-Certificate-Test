@@ -1,0 +1,1058 @@
+TAP version 13
+# Subtest: registry has exactly three ordered entries and a typed, unavailable CC vocabulary without counts or loaders
+not ok 1 - registry has exactly three ordered entries and a typed, unavailable CC vocabulary without counts or loaders
+  ---
+  duration_ms: 3.3154
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-exam-vocabulary.mjs:37:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        '2026',
+        'next-bank',
+        'isc2-cc-vocabulary',
+    +   'isc2-cc-learning-slides',
+    +   'isc2-cc-reading-notes'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: '2026'
+    1: 'next-bank'
+    2: 'isc2-cc-vocabulary'
+  actual:
+    0: '2026'
+    1: 'next-bank'
+    2: 'isc2-cc-vocabulary'
+    3: 'isc2-cc-learning-slides'
+    4: 'isc2-cc-reading-notes'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:38:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.start (node:internal/test_runner/test:1096:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+  ...
+# Subtest: vocabulary cannot load exam config/questions or change selected exam through direct calls
+not ok 2 - vocabulary cannot load exam config/questions or change selected exam through direct calls
+  ---
+  duration_ms: 2.3116
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-exam-vocabulary.mjs:50:1'
+  failureType: 'testCodeFailure'
+  error: 'Vocabulary must not select an exam'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'fail'
+  stack: |-
+    root.root (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:31:51)
+    Object.click (file:///D:/_Coding/SEC-CERT-TEST/js/ui/screen-versions.js:221:15)
+    click (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:34:49)
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:58:9)
+    async Test.run (node:internal/test_runner/test:1208:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: screen uses the existing three-card grid, all three info buttons and two disabled actions
+not ok 3 - screen uses the existing three-card grid, all three info buttons and two disabled actions
+  ---
+  duration_ms: 0.576
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-exam-vocabulary.mjs:61:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    5 !== 3
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 3
+  actual: 5
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:63:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: vocabulary dialog has the six specified sections, seven facts and five intended domains
+ok 4 - vocabulary dialog has the six specified sections, seven facts and five intended domains
+  ---
+  duration_ms: 2.5729
+  type: 'test'
+  ...
+# Subtest: new card and full dialog content support EN, TH and EN+TH
+not ok 5 - new card and full dialog content support EN, TH and EN+TH
+  ---
+  duration_ms: 5.591
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-exam-vocabulary.mjs:96:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(f.root.innerHTML.includes(expected))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:101:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: vocabulary reuses focus, Tab, Escape, backdrop and scroll-restoration behavior
+ok 6 - vocabulary reuses focus, Tab, Escape, backdrop and scroll-restoration behavior
+  ---
+  duration_ms: 0.6799
+  type: 'test'
+  ...
+# Subtest: existing registry entries, exam dialogs, protected core/screens/styles and question banks remain unchanged
+not ok 7 - existing registry entries, exam dialogs, protected core/screens/styles and question banks remain unchanged
+  ---
+  duration_ms: 4.2757
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-exam-vocabulary.mjs:136:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      [
+        {
+          badge: '2026 Exam Outline',
+          certificationId: 'isc2-cc',
+          description: '583 practice questions based on the previous ISC2 CC exam domain structure.',
+    ...
+        {
+    +     badge: '2026 Exam Outline',
+          certificationId: 'isc2-cc',
+    +     description: 'Updated exam domains effective September 1, 2026, including AI security concepts. Domain 1, Domain 2, Domain 3 and Domain 4 practice available.',
+    +     domainMetadataReference: './certs/isc2/cc/versions/next-bank/exam.config.js',
+    +     examConfigReference: './certs/isc2/cc/versions/next-bank/exam.config.js',
+    -     description: 'Updated exam domains effective September 1, 2026, including AI security concepts.',
+    -     domainMetadataReference: null,
+    -     examConfigReference: null,
+          id: 'next-bank',
+    +     questionBankReference: './certs/isc2/cc/versions/next-bank/questions/',
+    +     questionCount: 119,
+    +     status: 'available',
+    +     title: 'ISC2 CC 2026 — Exam Outline'
+    -     questionBankReference: null,
+    -     status: 'coming-soon',
+    -     title: 'ISC2 CC — 2026 Exam Outline'
+        }
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      id: '2026'
+      certificationId: 'isc2-cc'
+      title: 'ISC2 CC — Pre-2026 Exam Outline'
+      description: '583 practice questions based on the previous ISC2 CC exam domain structure.'
+      badge: '2026 Exam Outline'
+      status: 'available'
+      questionCount: 583
+      examConfigReference: './certs/isc2/cc/versions/2026/exam.config.js'
+      domainMetadataReference: './certs/isc2/cc/versions/2026/exam.config.js'
+      questionBankReference: './certs/isc2/cc/versions/2026/questions/'
+    1:
+      id: 'next-bank'
+      certificationId: 'isc2-cc'
+      title: 'ISC2 CC — 2026 Exam Outline'
+      description: 'Updated exam domains effective September 1, 2026, including AI security concepts.'
+      status: 'coming-soon'
+      examConfigReference: ~
+      domainMetadataReference: ~
+      questionBankReference: ~
+  actual:
+    0:
+      id: '2026'
+      certificationId: 'isc2-cc'
+      title: 'ISC2 CC — Pre-2026 Exam Outline'
+      description: '583 practice questions based on the previous ISC2 CC exam domain structure.'
+      badge: '2026 Exam Outline'
+      status: 'available'
+      questionCount: 583
+      examConfigReference: './certs/isc2/cc/versions/2026/exam.config.js'
+      domainMetadataReference: './certs/isc2/cc/versions/2026/exam.config.js'
+      questionBankReference: './certs/isc2/cc/versions/2026/questions/'
+    1:
+      id: 'next-bank'
+      certificationId: 'isc2-cc'
+      title: 'ISC2 CC 2026 — Exam Outline'
+      description: 'Updated exam domains effective September 1, 2026, including AI security concepts. Domain 1, Domain 2, Domain 3 and Domain 4 practice available.'
+      badge: '2026 Exam Outline'
+      status: 'available'
+      questionCount: 119
+      examConfigReference: './certs/isc2/cc/versions/next-bank/exam.config.js'
+      domainMetadataReference: './certs/isc2/cc/versions/next-bank/exam.config.js'
+      questionBankReference: './certs/isc2/cc/versions/next-bank/questions/'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:138:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# ====================================================
+#  Phase 4 Quiz Engine & Session Creation Verification
+# ====================================================
+# [1/7] Loading ISC2 CC 2026 Exam Configuration & Questions...
+#   PASS: All 5 domains loaded with exact expected counts (142, 65, 93, 156, 127 = 583).
+# [2/7] Testing Practice Mode (All Domains / Sequential / 10 Questions)...
+#   PASS: Sequential practice loads Q1 first, exact 10 questions, strictly preserving original order.
+# [3/7] Testing Practice Mode (Domain 4 Only / Random / 20 Questions)...
+#   PASS: Domain 4 random practice produces exactly 20 D4 questions without source mutation.
+# [4/7] Testing Practice Mode (All Domains / Random / 100 Questions)...
+#   PASS: 100 random questions created with zero duplicates and valid schema.
+# [5/7] Testing Exam Mode Proportional Allocation (125 Questions, 5 Domains)...
+#   Per-domain allocations computed: { '1': 33, '2': 13, '3': 27, '4': 30, '5': 22 }
+#   Actual domain distribution in exam session: { '1': 33, '2': 13, '3': 27, '4': 30, '5': 22 }
+#   PASS: Exam session has exact 125 questions with 33/13/27/30/22 proportional domain distribution.
+# [6/7] Testing Quiz Session State Management & Answer Recording...
+#   PASS: Quiz session lifecycle, answer recording, and navigation verified.
+# [7/7] Testing Exam Session Initial Timer State...
+#   PASS: Exam timer state correctly initialized to 7200 seconds.
+# ====================================================
+#  STATUS: ALL PHASE 4 ENGINE TESTS PASSED (7/7)
+# ====================================================
+# Subtest: tools\\verify-phase4-quiz-engine.mjs
+ok 2 - tools\\verify-phase4-quiz-engine.mjs
+  ---
+  duration_ms: 325.9447
+  type: 'test'
+  ...
+# === Running Bilingual Exam Guidance Verification ===
+# ✅ PASS: File exists: content/isc2-cc-2026/vocabulary/domain-1.json
+# ✅ PASS: content/isc2-cc-2026/vocabulary/domain-1.json is valid JSON
+# ✅ PASS: content/isc2-cc-2026/vocabulary/domain-1.json has entries array
+# ✅ PASS: content/isc2-cc-2026/vocabulary/domain-1.json has exactly 110 entries (got 110)
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-001
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-002
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-003
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-004
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-005
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-006
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-007
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-008
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-009
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-010
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-011
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-012
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-013
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-014
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-015
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-016
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-017
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-018
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-019
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-020
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-021
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-022
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-023
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-024
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-025
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-026
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-027
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-028
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-029
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-030
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-031
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-032
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-033
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-034
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-035
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-036
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-037
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-038
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-039
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-040
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-041
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-042
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-043
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-044
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-045
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-046
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-047
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-048
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-049
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-050
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-051
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-052
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-053
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-054
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-055
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-056
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-057
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-058
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-059
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-060
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-061
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-062
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-063
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-064
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-065
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-066
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-067
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-068
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-069
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-070
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-071
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-072
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-073
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-074
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-075
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-076
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-077
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-078
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-079
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-080
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-081
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-082
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-083
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-084
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-085
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-086
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-087
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-088
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-089
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-090
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-091
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-092
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-093
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-094
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-095
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-096
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-097
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-098
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-099
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-100
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-101
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-102
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-103
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-104
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-105
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-106
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-107
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-108
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-109
+# ✅ PASS: Unique ID verified: VOC-CC26-D1-110
+# ✅ PASS: [Domain 1] All 110 entry IDs match prefix VOC-CC26-D1-
+# ✅ PASS: [Domain 1] All 110 entries have valid English exam_relevance
+# ✅ PASS: [Domain 1] All 110 entries have valid Thai exam_relevance_th
+# ✅ PASS: [Domain 1] All 110 Thai guidance entries contain authentic Thai characters
+# ✅ PASS: [Domain 1] Zero placeholders found in 110 entries
+# ✅ PASS: File exists: content/isc2-cc-2026/vocabulary/domain-2.json
+# ✅ PASS: content/isc2-cc-2026/vocabulary/domain-2.json is valid JSON
+# ✅ PASS: content/isc2-cc-2026/vocabulary/domain-2.json has entries array
+# ✅ PASS: content/isc2-cc-2026/vocabulary/domain-2.json has exactly 101 entries (got 101)
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-001
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-002
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-003
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-004
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-005
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-006
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-007
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-008
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-009
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-010
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-011
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-012
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-013
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-014
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-015
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-016
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-017
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-018
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-019
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-020
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-021
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-022
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-023
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-024
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-025
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-026
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-027
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-028
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-029
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-030
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-031
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-032
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-033
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-034
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-035
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-036
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-037
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-038
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-039
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-040
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-041
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-042
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-043
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-044
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-045
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-046
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-047
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-048
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-049
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-050
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-051
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-052
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-053
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-054
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-055
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-056
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-057
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-058
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-059
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-060
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-061
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-062
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-063
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-064
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-065
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-066
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-067
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-068
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-069
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-070
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-071
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-072
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-073
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-074
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-075
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-076
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-077
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-078
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-079
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-080
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-081
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-082
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-083
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-084
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-085
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-086
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-087
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-088
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-089
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-090
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-091
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-092
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-093
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-094
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-095
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-096
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-097
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-098
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-099
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-100
+# ✅ PASS: Unique ID verified: VOC-CC26-D2-101
+# ✅ PASS: [Domain 2] All 101 entry IDs match prefix VOC-CC26-D2-
+# ✅ PASS: [Domain 2] All 101 entries have valid English exam_relevance
+# ✅ PASS: [Domain 2] All 101 entries have valid Thai exam_relevance_th
+# ✅ PASS: [Domain 2] All 101 Thai guidance entries contain authentic Thai characters
+# ✅ PASS: [Domain 2] Zero placeholders found in 101 entries
+# ✅ PASS: File exists: content/isc2-cc-2026/vocabulary/domain-3.json
+# ✅ PASS: content/isc2-cc-2026/vocabulary/domain-3.json is valid JSON
+# ✅ PASS: content/isc2-cc-2026/vocabulary/domain-3.json has entries array
+# ✅ PASS: content/isc2-cc-2026/vocabulary/domain-3.json has exactly 102 entries (got 102)
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-001
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-002
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-003
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-004
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-005
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-006
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-007
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-008
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-009
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-010
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-011
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-012
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-013
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-014
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-015
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-016
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-017
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-018
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-019
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-020
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-021
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-022
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-023
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-024
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-025
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-026
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-027
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-028
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-029
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-030
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-031
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-032
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-033
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-034
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-035
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-036
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-037
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-038
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-039
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-040
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-041
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-042
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-043
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-044
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-045
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-046
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-047
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-048
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-049
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-050
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-051
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-052
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-053
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-054
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-055
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-056
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-057
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-058
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-059
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-060
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-061
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-062
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-063
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-064
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-065
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-066
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-067
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-068
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-069
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-070
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-071
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-072
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-073
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-074
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-075
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-076
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-077
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-078
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-079
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-080
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-081
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-082
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-083
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-084
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-085
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-086
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-087
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-088
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-089
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-090
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-091
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-092
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-093
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-094
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-095
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-096
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-097
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-098
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-099
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-100
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-101
+# ✅ PASS: Unique ID verified: VOC-CC26-D3-102
+# ✅ PASS: [Domain 3] All 102 entry IDs match prefix VOC-CC26-D3-
+# ✅ PASS: [Domain 3] All 102 entries have valid English exam_relevance
+# ✅ PASS: [Domain 3] All 102 entries have valid Thai exam_relevance_th
+# ✅ PASS: [Domain 3] All 102 Thai guidance entries contain authentic Thai characters
+# ✅ PASS: [Domain 3] Zero placeholders found in 102 entries
+# ✅ PASS: Total vocabulary entries across Domains 1–3 is exactly 313 (got 313)
+# ✅ PASS: Total Thai exam guidance translations is 313/313 (100% coverage)
+# ✅ PASS: Total English exam guidance entries is 313/313 (100% coverage)
+# ✅ PASS: Total unique IDs is exactly 313
+# ✅ PASS: Draft artifact exists: content/isc2-cc-2026/vocabulary/bilingual-exam-guidance-draft.json
+# ✅ PASS: Draft artifact records 313 total entries
+# ✅ PASS: Review report exists: docs/reviews/isc2-cc-2026-vocabulary-exam-guidance-bilingual.md
+# ✅ PASS: screen-vocabulary.js renders exam_relevance_th in Detail Modal with modal-thai-font styling
+# ✅ PASS: schema.md documents exam_relevance_th in field specifications
+# ========================================
+# Verification Summary: 349 Passed, 0 Failed
+# ========================================
+# Subtest: tools\\verify-vocabulary-bilingual-guidance.mjs
+ok 3 - tools\\verify-vocabulary-bilingual-guidance.mjs
+  ---
+  duration_ms: 328.4798
+  type: 'test'
+  ...
+# Subtest: data/exam-versions.js contains exact expected metadata for vocabulary
+not ok 10 - data/exam-versions.js contains exact expected metadata for vocabulary
+  ---
+  duration_ms: 2.6161
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-vocabulary-card-fix.mjs:65:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'available'
+    - 'coming-soon'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'coming-soon'
+  actual: 'available'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-vocabulary-card-fix.mjs:70:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.start (node:internal/test_runner/test:1096:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+  ...
+# Subtest: Vocabulary card renders strictly English UI text and clean layout across EN, TH, and EN+TH
+not ok 11 - Vocabulary card renders strictly English UI text and clean layout across EN, TH, and EN+TH
+  ---
+  duration_ms: 2.0598
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-vocabulary-card-fix.mjs:75:1'
+  failureType: 'testCodeFailure'
+  error: "[en] Status badge must strictly be single-line 'Coming Soon'"
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-vocabulary-card-fix.mjs:95:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+# Subtest: Other exam version cards remain stable, available, and English-only
+not ok 12 - Other exam version cards remain stable, available, and English-only
+  ---
+  duration_ms: 7.1803
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-vocabulary-card-fix.mjs:134:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(card2.includes('ISC2 CC — 2026 Exam Outline'))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-vocabulary-card-fix.mjs:144:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: UI labels remain English-only via i18n across all modes
+ok 13 - UI labels remain English-only via i18n across all modes
+  ---
+  duration_ms: 0.4788
+  type: 'test'
+  ...
+# Subtest: Question content language preferences still work correctly for questions
+ok 14 - Question content language preferences still work correctly for questions
+  ---
+  duration_ms: 16.1287
+  type: 'test'
+  ...
+# Subtest: 1. Domain 2 vocabulary file exists and conforms to schema
+ok 15 - 1. Domain 2 vocabulary file exists and conforms to schema
+  ---
+  duration_ms: 4.8744
+  type: 'test'
+  ...
+# Subtest: 2. Unique IDs, valid format, and zero collisions with Domain 1
+ok 16 - 2. Unique IDs, valid format, and zero collisions with Domain 1
+  ---
+  duration_ms: 13.4615
+  type: 'test'
+  ...
+# Subtest: 3. Acronym completeness and expansions
+ok 17 - 3. Acronym completeness and expansions
+  ---
+  duration_ms: 4.9413
+  type: 'test'
+  ...
+# Subtest: 4. Bilingual English–Thai parity and character integrity
+ok 18 - 4. Bilingual English–Thai parity and character integrity
+  ---
+  duration_ms: 6.0457
+  type: 'test'
+  ...
+# Subtest: 5. Domain 2 Objective mapping and coverage
+ok 19 - 5. Domain 2 Objective mapping and coverage
+  ---
+  duration_ms: 6.8171
+  type: 'test'
+  ...
+# Subtest: 6. Essential governance concept distinctions are included
+ok 20 - 6. Essential governance concept distinctions are included
+  ---
+  duration_ms: 3.6159
+  type: 'test'
+  ...
+# Subtest: 7. Quarantined defects are excluded or corrected
+ok 21 - 7. Quarantined defects are excluded or corrected
+  ---
+  duration_ms: 5.1936
+  type: 'test'
+  ...
+# Subtest: 8. Vocabulary Loader loads Domain 1, Domain 2, and All domains
+ok 22 - 8. Vocabulary Loader loads Domain 1, Domain 2, and All domains
+  ---
+  duration_ms: 12.8344
+  type: 'test'
+  ...
+# Subtest: 9. Exam versions registry updated with combined vocabularyCount
+ok 23 - 9. Exam versions registry updated with combined vocabularyCount
+  ---
+  duration_ms: 0.6805
+  type: 'test'
+  ...
+# Subtest: 10. Question banks and Domain 1 vocabulary remain untouched
+ok 24 - 10. Question banks and Domain 1 vocabulary remain untouched
+  ---
+  duration_ms: 8.8971
+  type: 'test'
+  ...
+# Subtest: 1. Domain 3 vocabulary file exists and conforms to schema
+ok 25 - 1. Domain 3 vocabulary file exists and conforms to schema
+  ---
+  duration_ms: 4.4818
+  type: 'test'
+  ...
+# Subtest: 2. Unique IDs, valid format, and zero collisions across all domains
+ok 26 - 2. Unique IDs, valid format, and zero collisions across all domains
+  ---
+  duration_ms: 11.1091
+  type: 'test'
+  ...
+# Subtest: 3. Acronym completeness and canonical expansions
+ok 27 - 3. Acronym completeness and canonical expansions
+  ---
+  duration_ms: 3.5947
+  type: 'test'
+  ...
+# Subtest: 4. Bilingual English–Thai parity and character integrity
+ok 28 - 4. Bilingual English–Thai parity and character integrity
+  ---
+  duration_ms: 4.1716
+  type: 'test'
+  ...
+# Subtest: 5. Domain 3 Objective mapping and balanced coverage
+ok 29 - 5. Domain 3 Objective mapping and balanced coverage
+  ---
+  duration_ms: 5.8759
+  type: 'test'
+  ...
+# Subtest: 6. Essential IAM concept comparisons and confusing terms are covered
+ok 30 - 6. Essential IAM concept comparisons and confusing terms are covered
+  ---
+  duration_ms: 3.6981
+  type: 'test'
+  ...
+# Subtest: 7. Academic QA corrections and boundaries are respected
+ok 31 - 7. Academic QA corrections and boundaries are respected
+  ---
+  duration_ms: 3.5304
+  type: 'test'
+  ...
+# Subtest: 8. Vocabulary Loader correctly loads Domain 1, 2, 3 and All domains
+ok 32 - 8. Vocabulary Loader correctly loads Domain 1, 2, 3 and All domains
+  ---
+  duration_ms: 20.5243
+  type: 'test'
+  ...
+# Subtest: 9. Vocabulary registry count matches all loaded domains
+ok 33 - 9. Vocabulary registry count matches all loaded domains
+  ---
+  duration_ms: 1.8433
+  type: 'test'
+  ...
+# Subtest: 10. Existing question banks and D1/D2 vocabulary remain intact as later domains are added
+ok 34 - 10. Existing question banks and D1/D2 vocabulary remain intact as later domains are added
+  ---
+  duration_ms: 48.1996
+  type: 'test'
+  ...
+# PASS content: 90 entries; required fields, EN/TH guidance, IDs, all objectives, all 24 knowledge records, categories and sources. New aliases distinct; 2 documented MAC homonym matches.
+# PASS loader: 90 Domain 4 entries; 403 combined entries.
+# PASS real-screen Node behavior: D4 filter/count, categories/objectives, EN/acronym/full-form/Thai search, zero results, all new detail modals with bilingual guidance, flashcard flip/navigation/shuffle/reset, domain switching and back navigation.
+# Subtest: tools\\verify-vocabulary-domain4.mjs
+ok 7 - tools\\verify-vocabulary-domain4.mjs
+  ---
+  duration_ms: 2038.5315
+  type: 'test'
+  ...
+# Subtest: All 7 vocabulary workspace files exist and have substantial content
+ok 36 - All 7 vocabulary workspace files exist and have substantial content
+  ---
+  duration_ms: 17.71
+  type: 'test'
+  ...
+# Subtest: domain-1.json conforms strictly to data schema and integrity rules
+ok 37 - domain-1.json conforms strictly to data schema and integrity rules
+  ---
+  duration_ms: 6.5266
+  type: 'test'
+  ...
+# Subtest: Coverage across all 5 Exam Objectives is demonstrated
+ok 38 - Coverage across all 5 Exam Objectives is demonstrated
+  ---
+  duration_ms: 8.2716
+  type: 'test'
+  ...
+# Subtest: Supplemental candidates are properly segregated from primary database
+ok 39 - Supplemental candidates are properly segregated from primary database
+  ---
+  duration_ms: 0.7751
+  type: 'test'
+  ...
+# Subtest: Existing question banks, engines, and configs remain untouched
+ok 40 - Existing question banks, engines, and configs remain untouched
+  ---
+  duration_ms: 2.4867
+  type: 'test'
+  ...
+# --- Test 1: Entry Count and Integrity ---
+# PASS: All 313 entries intact (110 + 101 + 102).
+# --- Test 2: Source Code Elements & Markup ---
+# PASS: All required UI controls and state variables present in screen-vocabulary.js.
+# --- Test 3: CSS Stylesheet Integration ---
+# PASS: CSS rules verified and user uncommitted change preserved.
+# --- Test 4: Multi-Select Filtering Logic Simulation ---
+# PASS: All multi-select OR and cross-filter AND combinations pass.
+# --- Test 5: Incompatible Objective Pruning Logic ---
+# PASS: Pruning logic verified for all domain transitions.
+# =============================================
+# ALL VOCABULARY FILTER REDESIGN TESTS PASSED!
+# =============================================
+# Subtest: tools\\verify-vocabulary-filter.mjs
+ok 9 - tools\\verify-vocabulary-filter.mjs
+  ---
+  duration_ms: 235.3284
+  type: 'test'
+  ...
+# Subtest: 1. Desktop font size increased slightly for definition and translation body text only
+ok 42 - 1. Desktop font size increased slightly for definition and translation body text only
+  ---
+  duration_ms: 2.5455
+  type: 'test'
+  ...
+# Subtest: 2. Section headings, Thai meaning, and 35px gap are completely unchanged
+ok 43 - 2. Section headings, Thai meaning, and 35px gap are completely unchanged
+  ---
+  duration_ms: 2.1963
+  type: 'test'
+  ...
+# Subtest: 3. Mobile and tablet layouts preserve original font sizes
+ok 44 - 3. Mobile and tablet layouts preserve original font sizes
+  ---
+  duration_ms: 1.111
+  type: 'test'
+  ...
+# --- Test 1: Mobile Media Query (max-width: 480px) Scope & Card Container ---
+# PASS 1: Study Card internal padding (18px), card-to-card gap (18px), and body gap (14px) verified.
+# --- Test 2: Title & Acronym Badge Wrapping & Spacing ---
+# PASS 2: Title solid \#2563EB styling, natural wrapping, and acronym tag spacing verified.
+# --- Test 3: Full-Form Container Readability & Spacing ---
+# PASS 3: Full-form container internal padding, font-size, and spacing verified.
+# --- Test 4: Thai Meaning Headline & English Definition Typography ---
+# PASS 4: Thai meaning headline and English definition reading paragraph typography verified.
+# --- Test 5: EXAMPLE Panel Natural Height & Spacing on Mobile ---
+# PASS 5: EXAMPLE panel uses natural content height, generous padding, and comfortable line-height.
+# --- Test 6: Very Narrow Screens (max-width: 340px) Adaptations ---
+# PASS 6: Very narrow screen (320px–340px) responsive adjustments verified.
+# --- Test 7: Desktop Subgrid Alignment Intact ---
+# PASS 7: Desktop subgrid equal row height mechanics completely intact.
+# --- Test 8: Data & Filter Integrity ---
+# PASS 8: All 313 vocabulary entries and filters intact.
+# =============================================================
+# ALL VOCABULARY MOBILE READABILITY OVERHAUL TESTS PASSED!
+# =============================================================
+# Subtest: tools\\verify-vocabulary-mobile-readability.mjs
+ok 11 - tools\\verify-vocabulary-mobile-readability.mjs
+  ---
+  duration_ms: 192.6563
+  type: 'test'
+  ...
+# Subtest: 1. Vocabulary Data Integrity: all 313 entries intact with unchanged metadata
+ok 46 - 1. Vocabulary Data Integrity: all 313 entries intact with unchanged metadata
+  ---
+  duration_ms: 19.4643
+  type: 'test'
+  ...
+# Subtest: 2. Modal Content Hierarchy in screen-vocabulary.js without Commonly Confused With
+ok 47 - 2. Modal Content Hierarchy in screen-vocabulary.js without Commonly Confused With
+  ---
+  duration_ms: 0.9818
+  type: 'test'
+  ...
+# Subtest: 3. Hidden Metadata & Visual Density Simplification
+ok 48 - 3. Hidden Metadata & Visual Density Simplification
+  ---
+  duration_ms: 1.4319
+  type: 'test'
+  ...
+# Subtest: 4. Exam Guidance & Relevance Bilingual Support
+ok 49 - 4. Exam Guidance & Relevance Bilingual Support
+  ---
+  duration_ms: 0.6584
+  type: 'test'
+  ...
+# Subtest: 5. Desktop Modal Width & Scaled Reading Typography
+ok 50 - 5. Desktop Modal Width & Scaled Reading Typography
+  ---
+  duration_ms: 1.1712
+  type: 'test'
+  ...
+# Subtest: 6. Simplified Bottom Navigation Footer & Icon Buttons
+ok 51 - 6. Simplified Bottom Navigation Footer & Icon Buttons
+  ---
+  duration_ms: 1.3313
+  type: 'test'
+  ...
+# Subtest: 7. Preserved Navigation & Interaction Functionality
+ok 52 - 7. Preserved Navigation & Interaction Functionality
+  ---
+  duration_ms: 1.4546
+  type: 'test'
+  ...
+# Subtest: 8. Mobile Responsiveness Maintained
+ok 53 - 8. Mobile Responsiveness Maintained
+  ---
+  duration_ms: 0.7571
+  type: 'test'
+  ...
+# node:internal/modules/cjs/loader:1476
+#   const err = new Error(message);
+#               ^
+# Error: Cannot find module 'playwright'
+# Require stack:
+# - D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-vocabulary-responsive.mjs
+#     at Module._resolveFilename (node:internal/modules/cjs/loader:1476:15)
+#     at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+#     at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+#     at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+#     at Module._load (node:internal/modules/cjs/loader:1262:25)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+#     at Module.require (node:internal/modules/cjs/loader:1576:12)
+#     at require (node:internal/modules/helpers:153:16)
+#     at file:///D:/_Coding/SEC-CERT-TEST/tools/verify-vocabulary-responsive.mjs:10:52
+#     at ModuleJob.run (node:internal/modules/esm/module_job:437:25) {
+#   code: 'MODULE_NOT_FOUND',
+#   requireStack: [
+#     'D:\\\\_Coding\\\\SEC-CERT-TEST\\\\tools\\\\verify-vocabulary-responsive.mjs'
+#   ]
+# }
+# Node.js v24.15.0
+# Subtest: tools\\verify-vocabulary-responsive.mjs
+not ok 13 - tools\\verify-vocabulary-responsive.mjs
+  ---
+  duration_ms: 199.7471
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-vocabulary-responsive.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# --- Test 1: CSS Sizing & Spacing Properties ---
+# PASS: Desktop .dict-example-box and .dict-example-text properties verified.
+# --- Test 2: Mobile Responsive Behavior ---
+# PASS: Mobile responsive adaptations verified.
+# --- Test 3: Data Parity & Markup Integrity ---
+# PASS: All 313 entries confirmed with Thai example markup.
+# --- Test 4: Preservation of Uncommitted Customizations ---
+# PASS: All uncommitted customizations and existing features preserved intact.
+# ======================================================
+# ALL VOCABULARY STUDY CARD EXAMPLE ALIGNMENT TESTS PASSED!
+# ======================================================
+# Subtest: tools\\verify-vocabulary-study-card-examples.mjs
+ok 14 - tools\\verify-vocabulary-study-card-examples.mjs
+  ---
+  duration_ms: 165.2892
+  type: 'test'
+  ...
+# Subtest: 1. Study Cards: FULL FORM: label removed while full-form value is preserved
+ok 56 - 1. Study Cards: FULL FORM: label removed while full-form value is preserved
+  ---
+  duration_ms: 2.3853
+  type: 'test'
+  ...
+# Subtest: 2. Vocabulary Detail Modal & Flashcards: Full Form labels strictly preserved
+ok 57 - 2. Vocabulary Detail Modal & Flashcards: Full Form labels strictly preserved
+  ---
+  duration_ms: 0.5994
+  type: 'test'
+  ...
+# Subtest: 3. Data Integrity: all 313 vocabulary entries remain intact
+ok 58 - 3. Data Integrity: all 313 vocabulary entries remain intact
+  ---
+  duration_ms: 7.6468
+  type: 'test'
+  ...
+# --- Test 1: Exact Solid Blue Title Background (\#2563EB) & White Text ---
+# PASS 1: .dict-card-term uses exact solid \#2563EB.
+# PASS 2: Title text is white (\#ffffff).
+# PASS 3: No translucent background overrides remain active.
+# PASS 4: Existing acronym badges (CIA, AAA, ISO, etc.) remain visible and styled.
+# PASS 5: Domain/Objective badges remain hidden on Study Cards only, visible on Flashcards.
+# --- Test 2: Shared Grid-Row Sizing & Synchronized EXAMPLE Panels ---
+# PASS 6: EXAMPLE alignment uses genuinely shared grid-row sizing via CSS Grid subgrid.
+# PASS 7: Variable-length content can expand naturally without clipping.
+# PASS 8: Mobile single-column layout uses natural content height without forced desktop sizing.
+# --- Test 3: Markup Structure & Data Parity ---
+# PASS 9 & 10: All 313 vocabulary entries remain intact and filtering logic is unaffected.
+# ======================================================
+# ALL VOCABULARY STUDY CARD REFINEMENT TESTS PASSED!
+# ======================================================
+# Subtest: tools\\verify-vocabulary-title-highlight.mjs
+ok 16 - tools\\verify-vocabulary-title-highlight.mjs
+  ---
+  duration_ms: 124.6994
+  type: 'test'
+  ...
+1..59
+# tests 59
+# suites 0
+# pass 50
+# fail 9
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2174.4065

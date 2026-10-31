@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d4-08-services-responsibility",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 4,
+  "primaryObjectiveId": "4.3",
+  "objectiveIds": [
+    "4.3"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Service Models & Security Responsibilities",
+    "th": "Service Models และหน้าที่ Security"
+  },
+  "synopsis": {
+    "en": "Assign named duties to the party controlling the component, including serverless and AI-hosted services.",
+    "th": "มอบหน้าที่เฉพาะให้ฝ่ายที่ควบคุมส่วนนั้น รวมถึง Serverless และบริการ AI"
+  },
+  "outcomes": [
+    {
+      "en": "IaaS: rent infrastructure, administer the guest system.",
+      "th": "IaaS: ใช้ Infrastructure เป็นบริการ แต่ยังดูแล Guest System"
+    },
+    {
+      "en": "PaaS: deploy the application onto a managed platform.",
+      "th": "PaaS: Deploy Application บน Platform ที่ดูแลให้"
+    },
+    {
+      "en": "SaaS manages the application, not every customer decision.",
+      "th": "SaaS ดูแล Application ไม่ใช่ตัดสินใจแทน Customer ทุกเรื่อง"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: earlier lessons in this objective. No vendor configuration knowledge is required.",
+      "th": "แนะนำบทก่อนหน้าใน Objective นี้ ไม่จำเป็นต้องรู้คำสั่งตั้งค่าของ Vendor"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 Exam Outline",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Objective 4.3; separate Domain 4 AI/application guidance; checked 2026-10-31."
+    },
+    {
+      "id": "d4-summary",
+      "title": "D4 sum.md — user study summary",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 4/D4 sum.md",
+      "locator": "Teaching baseline; corrections and image traceability in Domain 4 academic audit."
+    },
+    {
+      "id": "d4-notes",
+      "title": "Domain 4.md — user study notes",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 4/Domain 4.md",
+      "locator": "S43,S45,S47–S49; service boundary qualification; S43,S45,S47–S49; application/platform distinction; S44,S46–S49; SaaS data/access duties; S44,S46,S49; AWS runtime supplement; S45–S49; Microsoft component responsibility supplement; Official AI cloud duty application; model/service-specific controls; full source mapping in domain-4-2026-coverage-matrix.md."
+    },
+    {
+      "id": "cloud",
+      "title": "NIST SP 800-145",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf",
+      "locator": "Three foundational service models; FaaS is supplemental industry terminology.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "shared",
+      "title": "Microsoft shared responsibility",
+      "url": "https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility",
+      "locator": "Illustrative component responsibilities vary by service and agreement.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "runtime",
+      "title": "AWS runtime lifecycle",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html",
+      "locator": "Managed/custom/container responsibilities and supported runtime transitions.",
+      "authority": "technical-primary"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d4-08-01-iaas-stack",
+      "title": {
+        "en": "IaaS: rent infrastructure, administer the guest system.",
+        "th": "IaaS: ใช้ Infrastructure เป็นบริการ แต่ยังดูแล Guest System"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Typical public-cloud VM example; responsibility follows the named component and service terms.",
+            "th": "ตัวอย่าง VM บน Public Cloud ทั่วไป หน้าที่ขึ้นกับ Component และข้อตกลงบริการ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Customer",
+                "th": "ฝั่ง Customer"
+              },
+              {
+                "en": "Data, identities and application settings",
+                "th": "Data Identities และการตั้งค่า Application"
+              },
+              {
+                "en": "Control permitted use and access",
+                "th": "ควบคุมการใช้และ Access ที่อนุญาต"
+              }
+            ],
+            [
+              {
+                "en": "Customer guest OS",
+                "th": "Guest OS ของ Customer"
+              },
+              {
+                "en": "Patch and configure the virtual machine",
+                "th": "Patch และตั้งค่า Virtual Machine"
+              },
+              {
+                "en": "A rented VM is not a managed application",
+                "th": "VM ที่เช่าไม่ใช่ Application ที่ดูแลให้ครบ"
+              }
+            ],
+            [
+              {
+                "en": "Provider foundation",
+                "th": "ฐานของ Provider"
+              },
+              {
+                "en": "Physical infrastructure and virtualization",
+                "th": "Physical Infrastructure และ Virtualization"
+              },
+              {
+                "en": "Verify the actual service boundary",
+                "th": "ตรวจขอบเขตบริการจริง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Infrastructure as a Service provides computing infrastructure such as virtual machines, storage and networking. In a typical public-cloud VM service, the provider operates physical facilities and the underlying infrastructure, while the customer manages the guest operating system, deployed applications, identities and configurations it controls. A vulnerable guest OS is not automatically the provider’s patch task just because the VM is in a cloud. Storage, network and managed add-ons can have different boundaries. Identify the exact service and component before assigning responsibility; this diagram is an illustrative model, not a contract or universal legal allocation.",
+            "th": "IaaS ให้ Infrastructure เช่น Virtual Machines Storage และ Networking ในบริการ Public-Cloud VM ทั่วไป Provider ดูแลสถานที่และ Infrastructure ฐาน ส่วน Customer ดูแล Guest OS Applications ที่ติดตั้ง Identities และ Configurations ที่ควบคุมได้ Guest OS ที่มีช่องโหว่ไม่ใช่หน้าที่ Patch ของ Provider โดยอัตโนมัติเพียงเพราะ VM อยู่บน Cloud ส่วน Storage Network และ Managed Add-ons อาจมีขอบเขตต่างกัน ต้องระบุ Service และ Component ให้ชัดก่อนมอบหน้าที่ ภาพนี้เป็นโมเดลอธิบาย ไม่ใช่ Contract หรือการแบ่งความรับผิดทางกฎหมายแบบสากล"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "For this VM example, guest OS patching remains a customer task.",
+            "th": "สำหรับ VM ตัวอย่างนี้ Customer ยังต้องดูแล Guest OS Patching"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud",
+        "shared",
+        "runtime"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-08-02-paas-stack",
+      "title": {
+        "en": "PaaS: deploy the application onto a managed platform.",
+        "th": "PaaS: Deploy Application บน Platform ที่ดูแลให้"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The customer develops the application; the provider manages the stated platform layers.",
+            "th": "Customer พัฒนา Application ส่วน Provider ดูแล Platform Layers ตามบริการ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Customer data / access",
+                "th": "Data / Access ของ Customer"
+              },
+              {
+                "en": "Choose data, identities and permissions",
+                "th": "เลือกข้อมูล Identities และ Permissions"
+              },
+              {
+                "en": "Managed platform does not authorize users",
+                "th": "Platform ที่ดูแลให้ไม่อนุญาตผู้ใช้แทนเอง"
+              }
+            ],
+            [
+              {
+                "en": "Customer application",
+                "th": "Application ของ Customer"
+              },
+              {
+                "en": "Secure code, dependencies and configuration",
+                "th": "ดูแล Code Dependencies และ Configuration"
+              },
+              {
+                "en": "Insecure business logic remains a risk",
+                "th": "Business Logic ไม่ปลอดภัยยังเป็นความเสี่ยง"
+              }
+            ],
+            [
+              {
+                "en": "Provider platform",
+                "th": "Platform ของ Provider"
+              },
+              {
+                "en": "Operate supported OS/runtime/platform",
+                "th": "ดูแล OS/Runtime/Platform ที่ระบุ"
+              },
+              {
+                "en": "Check supported versions and boundaries",
+                "th": "ตรวจ Versions และขอบเขตที่รองรับ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Platform as a Service lets a customer deploy applications without administering the underlying virtual machines or operating systems in the same way as IaaS. The provider operates the specified platform, but the customer still controls application code, selected dependencies, data, identities and exposed configuration. Managed runtime does not mean insecure business logic is automatically repaired. Version support, application upgrades and integration duties depend on the actual service. Verify who handles the precise component and who must initiate a supported-version transition instead of using a single color to assign every possible responsibility.",
+            "th": "PaaS ให้ Customer Deploy Applications โดยไม่ต้องดูแล VMs หรือ OS ฐานแบบเดียวกับ IaaS Provider ดูแล Platform ตามที่ระบุ แต่ Customer ยังควบคุม Application Code Dependencies ที่เลือก Data Identities และ Configuration ที่เปิดให้ตั้งค่า Managed Runtime ไม่ได้ซ่อม Business Logic ที่ไม่ปลอดภัยให้อัตโนมัติ Version Support การ Upgrade Application และงาน Integration ขึ้นกับบริการจริง ต้องตรวจว่าใครดูแล Component ใด และใครเริ่มย้ายไป Supported Version แทนการใช้สีเดียวในภาพเพื่อมอบหน้าที่ทุกอย่างที่อาจมี"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Less infrastructure administration does not remove application security work.",
+            "th": "งานดูแล Infrastructure ลดลง ไม่ได้ยกเลิกงาน Application Security"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud",
+        "shared",
+        "runtime"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-08-03-saas-boundary",
+      "title": {
+        "en": "SaaS manages the application, not every customer decision.",
+        "th": "SaaS ดูแล Application ไม่ใช่ตัดสินใจแทน Customer ทุกเรื่อง"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Example: an online document service runs the software; the customer chooses who may share its files.",
+            "th": "ตัวอย่างบริการเอกสารออนไลน์ดูแล Software ส่วน Customer เลือกว่าใครแชร์ไฟล์ได้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Customer decision",
+                "th": "การตัดสินใจ Customer"
+              },
+              {
+                "en": "Users, data use and sharing settings",
+                "th": "Users การใช้ข้อมูล และ Sharing Settings"
+              },
+              {
+                "en": "Overbroad sharing can expose data",
+                "th": "แชร์กว้างเกินไปทำให้ข้อมูลรั่วได้"
+              }
+            ],
+            [
+              {
+                "en": "Managed application",
+                "th": "Application ที่ดูแลให้"
+              },
+              {
+                "en": "Provider operates the service software",
+                "th": "Provider ดูแล Software ของบริการ"
+              },
+              {
+                "en": "Available controls vary by service",
+                "th": "Controls ที่มีต่างกันตามบริการ"
+              }
+            ],
+            [
+              {
+                "en": "Evidence / agreement",
+                "th": "หลักฐาน / ข้อตกลง"
+              },
+              {
+                "en": "Review access, logs and service commitments",
+                "th": "ตรวจ Access Logs และ Commitments"
+              },
+              {
+                "en": "Do not assume all data duties transferred",
+                "th": "อย่าถือว่าโอนหน้าที่ข้อมูลทั้งหมดแล้ว"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Software as a Service supplies a ready-to-use application rather than asking the customer to administer its underlying stack. The provider normally operates the application and infrastructure of that service. The customer still needs to manage its users, approved data use, permissions, sharing choices and any settings under its control. A public sharing link created by a customer is not automatically fixed by the provider merely because the product is SaaS. Review the service’s actual controls, logs, retention options and agreement. Responsibility can involve coordinated processes without being an equal split of every task.",
+            "th": "SaaS ให้ Application พร้อมใช้แทนการให้ Customer ดูแล Stack ฐาน Provider โดยทั่วไปดูแล Application และ Infrastructure ของบริการนั้น แต่ Customer ยังต้องดูแล Users การใช้ข้อมูลที่อนุมัติ Permissions การแชร์ และ Settings ที่ควบคุมได้ Public Sharing Link ที่ Customer สร้างไม่ได้ถูกแก้โดย Provider อัตโนมัติเพียงเพราะเป็น SaaS ต้องตรวจ Controls Logs Retention Options และข้อตกลงจริง บางหน้าที่อาจต้องประสานกัน แต่ไม่ใช่การแบ่งทุกงานครึ่งต่อครึ่ง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A managed application still needs deliberate customer access settings.",
+            "th": "Application ที่ดูแลให้ยังต้องตั้ง Access ฝั่ง Customer อย่างรอบคอบ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud",
+        "shared",
+        "runtime"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-08-04-faas-code",
+      "title": {
+        "en": "Serverless changes server management, not code accountability.",
+        "th": "Serverless เปลี่ยนงานดูแล Server ไม่ได้ลบความรับผิดชอบ Code"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "FaaS is a useful event-driven service pattern; it is not a fourth NIST foundational service model.",
+            "th": "FaaS เป็นรูปแบบบริการ Event-Driven ที่ใช้ได้จริง แต่ไม่ใช่ Service Model พื้นฐานข้อที่สี่ของ NIST"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Event / trigger",
+                "th": "Event / Trigger"
+              },
+              {
+                "en": "A permitted event invokes a function",
+                "th": "Event ที่อนุญาตเรียก Function"
+              },
+              {
+                "en": "Customer scopes trigger and identity",
+                "th": "Customer จำกัด Trigger และ Identity"
+              }
+            ],
+            [
+              {
+                "en": "Function code",
+                "th": "Code ของ Function"
+              },
+              {
+                "en": "Run a bounded task with needed access",
+                "th": "ทำงานเฉพาะด้วย Access จำเป็น"
+              },
+              {
+                "en": "Secure code, dependencies and secrets",
+                "th": "ป้องกัน Code Dependencies และ Secrets"
+              }
+            ],
+            [
+              {
+                "en": "Managed execution",
+                "th": "ระบบ Execution ที่ดูแลให้"
+              },
+              {
+                "en": "Provider operates the stated environment",
+                "th": "Provider ดูแล Environment ที่ระบุ"
+              },
+              {
+                "en": "Custom/container duties may differ",
+                "th": "หน้าที่ Custom/Container อาจต่างกัน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Function as a Service runs function code in response to events while abstracting much of the server provisioning and operation. Servers still exist. The customer must secure code, dependencies, triggers, permissions and data access it controls. Managed runtimes, custom runtimes and container images can assign update duties differently; for example, a customer may need to rebuild an image or move to a supported runtime version. Check the service guidance rather than assuming every runtime patch is automatic forever. Pricing also depends on the service and agreement, not a universal rule of execution-time-only charges.",
+            "th": "FaaS รัน Function Code ตาม Events โดยซ่อนงาน Provision และดูแล Server จำนวนมาก แต่ Servers ยังมีอยู่ Customer ต้องป้องกัน Code Dependencies Triggers Permissions และ Data Access ที่ควบคุมได้ Managed Runtime Custom Runtime และ Container Images อาจแบ่งงาน Update ต่างกัน เช่น Customer อาจต้อง Rebuild Image หรือย้ายไป Runtime Version ที่รองรับ ต้องอ่านคำแนะนำบริการ ไม่สมมติว่า Runtime ทุกชนิด Patch อัตโนมัติตลอดไป และ Pricing ก็ขึ้นกับบริการกับข้อตกลง ไม่ใช่กฎว่าคิดเฉพาะเวลา Execution เสมอ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Serverless does not mean no servers, no permissions or no update duties.",
+            "th": "Serverless ไม่ได้แปลว่าไม่มี Servers Permissions หรืองาน Update"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud",
+        "shared",
+        "runtime"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-08-05-named-responsibilities",
+      "title": {
+        "en": "Assign the named task, not a vague “cloud security” label.",
+        "th": "มอบหมายงานที่ระบุ ไม่ใช้ป้าย Cloud Security กว้าง ๆ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Start with the exact service, component, customer control and evidence of the agreed duty.",
+            "th": "เริ่มจาก Service Component สิ่งที่ Customer ควบคุม และหลักฐานหน้าที่ตามข้อตกลง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Illustrative duties under stated service boundaries",
+            "th": "หน้าที่ตัวอย่างภายใต้ขอบเขตบริการที่ระบุ"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "IaaS guest OS",
+                "th": "Guest OS บน IaaS"
+              },
+              {
+                "en": "Customer patches its VM OS",
+                "th": "Customer Patch OS ของ VM"
+              },
+              {
+                "en": "Provider operates underlying infrastructure",
+                "th": "Provider ดูแล Infrastructure ฐาน"
+              }
+            ],
+            [
+              {
+                "en": "PaaS app code",
+                "th": "Application Code บน PaaS"
+              },
+              {
+                "en": "Customer fixes its insecure code",
+                "th": "Customer แก้ Code ที่ไม่ปลอดภัย"
+              },
+              {
+                "en": "Platform duty follows service terms",
+                "th": "หน้าที่ Platform ตามข้อตกลงบริการ"
+              }
+            ],
+            [
+              {
+                "en": "SaaS sharing",
+                "th": "Sharing บน SaaS"
+              },
+              {
+                "en": "Customer restricts its file sharing",
+                "th": "Customer จำกัดการแชร์ไฟล์ของตน"
+              },
+              {
+                "en": "Provider operates the application",
+                "th": "Provider ดูแล Application"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Shared responsibility is a division of work, not a statement that every task belongs equally to both parties. For a particular issue, identify the model and exact service, locate the affected component, determine which settings and operations the customer controls, and check the documented responsibility and agreement. Then assign an accountable owner and verify completion. A generic stack picture cannot settle private-cloud operating arrangements, legal liability, encryption defaults or every managed add-on. Both parties may contribute to a process while still having distinct operational tasks.",
+            "th": "Shared Responsibility เป็นการแบ่งงาน ไม่ได้บอกว่าทุกงานเป็นของทั้งสองฝ่ายเท่ากัน เมื่อเกิดปัญหาต้องระบุ Model และ Service จริง หา Component ที่กระทบ ดู Settings กับ Operations ที่ Customer ควบคุม แล้วตรวจเอกสารหน้าที่และข้อตกลง จากนั้นระบุ Owner ที่รับผิดชอบและตรวจผลเสร็จจริง ภาพ Stack ทั่วไปตัดสินรูปแบบดูแล Private Cloud ความรับผิดทางกฎหมาย Default Encryption หรือ Managed Add-ons ทุกชนิดไม่ได้ กระบวนการหนึ่งอาจมีทั้งสองฝ่ายร่วมกัน แต่ยังแยกงานปฏิบัติการชัดเจนได้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Name the component, owner, required action and verification evidence.",
+            "th": "ระบุ Component Owner Action ที่ต้องทำ และหลักฐานตรวจผล"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud",
+        "shared",
+        "runtime"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-08-06-ai-hosting",
+      "title": {
+        "en": "Hosting an AI model does not transfer every data decision.",
+        "th": "การฝาก AI Model ไม่ได้โอนการตัดสินใจข้อมูลทุกเรื่อง"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An organization uses a hosted model API for an approved task with sensitive-data restrictions.",
+            "th": "องค์กรใช้ Hosted Model API ทำงานที่อนุมัติ ภายใต้ข้อจำกัดข้อมูลอ่อนไหว"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Customer workload",
+                "th": "Workload ของ Customer"
+              },
+              {
+                "en": "Approve data, scope identity and protect keys",
+                "th": "อนุมัติข้อมูล จำกัด Identity และป้องกัน Keys"
+              },
+              {
+                "en": "Check retention and allowed processing",
+                "th": "ตรวจ Retention และการประมวลผลที่อนุญาต"
+              }
+            ],
+            [
+              {
+                "en": "Service boundary",
+                "th": "ขอบเขตบริการ"
+              },
+              {
+                "en": "Protected API path and documented duties",
+                "th": "เส้นทาง API ที่ป้องกันและหน้าที่มีเอกสาร"
+              },
+              {
+                "en": "Review configuration and agreement",
+                "th": "ตรวจ Configuration และข้อตกลง"
+              }
+            ],
+            [
+              {
+                "en": "Hosted platform/model",
+                "th": "Platform/Model ที่ให้บริการ"
+              },
+              {
+                "en": "Provider manages specified service parts",
+                "th": "Provider ดูแลส่วนบริการที่ระบุ"
+              },
+              {
+                "en": "Customer must verify its remaining tasks",
+                "th": "Customer ต้องตรวจงานที่ตนยังต้องทำ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "AI hosting may use IaaS, managed platforms or a ready-made service, so the label AI does not identify a single responsibility model. The customer should approve the data and purpose, restrict workload identities and API keys, protect permitted network paths, and review retention, logging and processing terms. Provider management of a model or runtime does not establish permission to submit confidential records. Verify which party handles model/service updates, customer code, access settings and evidence collection for the chosen service. Scaling and usage monitoring help manage workloads but do not resolve governance automatically.",
+            "th": "AI Hosting อาจใช้ IaaS Managed Platform หรือบริการพร้อมใช้ คำว่า AI จึงไม่ได้ระบุ Responsibility Model เดียว Customer ควรอนุมัติข้อมูลและวัตถุประสงค์ จำกัด Workload Identities/API Keys ป้องกันเส้นทาง Network ที่อนุญาต และตรวจ Retention Logging กับ Processing Terms Provider ที่ดูแล Model หรือ Runtime ไม่ได้สร้างสิทธิ์ส่ง Records ลับ ต้องตรวจว่าบริการที่เลือกให้ฝ่ายใดดูแล Model/Service Updates Code ของ Customer Access Settings และการเก็บหลักฐาน Scaling กับ Usage Monitoring ช่วยดูแล Workload แต่ไม่แก้ Governance ให้อัตโนมัติ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Choose the hosting boundary, then assign each remaining data and access duty.",
+            "th": "เลือกขอบเขต Hosting แล้วมอบงาน Data และ Access ที่เหลือให้ชัด"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud",
+        "shared",
+        "runtime"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-08-07-duty-decision",
+      "title": {
+        "en": "A SaaS file is shared too broadly. Who acts on that setting?",
+        "th": "ไฟล์ SaaS ถูกแชร์กว้างเกินไป ใครต้องแก้ Setting นี้?"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "The customer controls file-sharing permissions. The provider operates the SaaS application; no defect in that application is stated.",
+            "th": "Customer ควบคุม File-Sharing Permissions ส่วน Provider ดูแล SaaS และโจทย์ไม่ได้ระบุ Bug ของ Application"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "ทางเลือก A"
+              },
+              {
+                "en": "Wait for the provider to patch the guest OS",
+                "th": "รอ Provider Patch Guest OS"
+              },
+              {
+                "en": "The stated problem is a customer-controlled sharing setting, not a guest operating system flaw.",
+                "th": "ปัญหาที่ระบุคือ Sharing Setting ที่ Customer ควบคุม ไม่ใช่ช่องโหว่ Guest OS"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "ทางเลือก B"
+              },
+              {
+                "en": "Assume SaaS transfers all data duties",
+                "th": "ถือว่า SaaS โอนหน้าที่ข้อมูลทั้งหมด"
+              },
+              {
+                "en": "A managed application does not remove the customer’s stated control over sharing permissions.",
+                "th": "Application ที่ดูแลให้ไม่ลบหน้าที่ Customer ต่อ Sharing Permissions ที่ระบุ"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "ทางเลือก C"
+              },
+              {
+                "en": "Move to private cloud without changing access",
+                "th": "ย้ายไป Private Cloud โดยไม่แก้ Access"
+              },
+              {
+                "en": "A deployment label does not correct an overly broad permission.",
+                "th": "ป้าย Deployment ไม่แก้ Permission ที่กว้างเกินไป"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "ทางเลือก D"
+              },
+              {
+                "en": "Have the customer restrict sharing and verify access",
+                "th": "ให้ Customer จำกัด Sharing แล้วตรวจ Access"
+              },
+              {
+                "en": "Act on the control the customer owns; confirm the required users retain access and others do not.",
+                "th": "แก้ Control ที่ Customer ควบคุม แล้วยืนยันว่าผู้จำเป็นยังเข้าได้และผู้อื่นเข้าไม่ได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The scenario explicitly assigns sharing control to the customer. The accountable customer owner should correct the permission under policy and verify the resulting access, including legitimate users and prohibited recipients. Review available exposure evidence and follow the organization’s response process if needed, without inventing a confirmed breach from the permission alone. The provider continues to operate the SaaS service, but that does not make this customer setting a provider patch task. A private-cloud migration is neither the stated requirement nor a substitute for correct permissions.",
+            "th": "โจทย์ระบุชัดว่า Customer ควบคุม Sharing จึงควรให้ Owner ฝั่ง Customer แก้ Permission ตาม Policy แล้วตรวจ Access หลังแก้ ทั้งผู้ใช้จำเป็นและผู้รับที่ห้ามเข้าถึง ตรวจหลักฐาน Exposure ที่มีและใช้กระบวนการ Response ขององค์กรเมื่อจำเป็น โดยไม่สรุปว่าเกิด Breach แน่นอนจาก Permission เพียงอย่างเดียว Provider ยังดูแลบริการ SaaS แต่ไม่ได้ทำให้ Setting นี้กลายเป็นงาน Patch ของ Provider การย้าย Private Cloud ไม่ใช่ความต้องการที่ระบุและไม่แทน Permissions ที่ถูกต้อง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Responsibility follows the stated control boundary and task.",
+            "th": "หน้าที่ตามขอบเขต Control และงานที่ระบุ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud",
+        "shared",
+        "runtime"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-4-completion-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    }
+  }
+}

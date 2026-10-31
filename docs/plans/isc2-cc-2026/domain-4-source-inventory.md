@@ -122,3 +122,7 @@ Official outline source: no local binary was found in the repository document se
 The title/logo/capture date do not establish instructor identity, course version history, original publication date, media rights, or a complete deck. T contains recognition noise, no timecodes and no audio; whether a disputed word was spoken or introduced by transcription remains unverified. The original lesson may contain uncaptured material, but no missing frame, lesson, Bluetooth discussion or AI section is assumed to exist. Conclusions about this batch's missing teaching are scoped to the files actually inspected.
 
 Original files and their hashes are preserved. No source text was silently corrected; findings and inferred educational implications are kept in the companion academic report.
+
+## 2026-10-31 Learning Slides addendum
+
+Fresh review read all 58 current files: `D4 sum.md`, `Domain 4.md`, `DOMAIN 4.txt`, and all 55 PNGs. The earlier inventory used pre-rename text labels; original history above is retained. Current paths and hashes are in `artifacts/qa/domain-4-completion/entry-baseline.json`; visual review contact sheets `source-sheet-01.png` through `source-sheet-14.png` retain S01–S55 sorted order. S15 is unrelated and excluded. See `domain-4-academic-audit.md`, `domain-4-learning-roadmap.md` and `domain-4-2026-coverage-matrix.md` for the separate Learning Slides curation. Original sources and Reading Notes are unchanged.

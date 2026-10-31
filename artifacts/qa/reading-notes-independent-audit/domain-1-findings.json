@@ -1,0 +1,507 @@
+[
+  {
+    "localId": "D1-F01",
+    "severity": "P1",
+    "category": "academic/internal consistency",
+    "subsections": [
+      "1.1.3",
+      "1.5.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 1307,
+    "excerpt": "Prove identity / Who are you → Authentication",
+    "actual": "Final cheat sheet assigns the identification question to Authentication.",
+    "expected": "Who are you/claim identity maps to Identification; prove identity maps to Authentication.",
+    "rootCause": "One mnemonic row combines two separately defined access-control stages.",
+    "evidence": [
+      "D1:174–176 and 238 distinguish claiming identity from proving it; D1:1307 contradicts that distinction."
+    ],
+    "referenceUrls": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "recommendation": "Split Identification and Authentication into separate rows.",
+    "confidence": "high",
+    "status": "confirmed",
+    "domain": 1
+  },
+  {
+    "localId": "D1-F02",
+    "severity": "P2",
+    "category": "academic/authentication",
+    "subsections": [
+      "1.1.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 189,
+    "excerpt": "ปัจจัยการพิสูจน์ตัวตนแบ่งออกเป็น 4 หมวดหลัก",
+    "actual": "Location is presented beside independent MFA factors; generated card calls it contextual without excluding it from satisfying MFA.",
+    "expected": "Knowledge, possession and inherence are independent factor types; location is a supplementary risk/context signal.",
+    "rootCause": "The four-category heading and contextual card are combined under the independent-factor MFA definition.",
+    "evidence": [
+      "D1:187–195 and content-components.js:60–69; SP 800-63B-4 says fraud indicators cannot substitute for an authentication factor."
+    ],
+    "referenceUrls": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "recommendation": "Separate location context and add password plus corporate IP is not MFA.",
+    "confidence": "high for misleading scope; medium for exam consequence",
+    "status": "confirmed",
+    "domain": 1
+  },
+  {
+    "localId": "D1-F03",
+    "severity": "P2",
+    "category": "academic/bilingual",
+    "subsections": [
+      "1.1.1",
+      "1.5.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 37,
+    "excerpt": "Threat คือสิ่งภายนอก",
+    "actual": "Warnings define threats as external, despite earlier malicious-insider example.",
+    "expected": "Threats can originate internally or externally; distinguish potential harm from exploitable weakness.",
+    "rootCause": "External/internal is used as the defining threat-versus-vulnerability distinction.",
+    "evidence": [
+      "D1:21 correctly lists malicious insiders; D1:37 and 1040 restrict threats to external sources."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/glossary/term/threat",
+      "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-39.pdf"
+    ],
+    "recommendation": "Remove external-only wording and include an insider example.",
+    "confidence": "high",
+    "status": "confirmed",
+    "domain": 1
+  },
+  {
+    "localId": "D1-F04",
+    "severity": "P3",
+    "category": "bilingual/translation",
+    "subsections": [
+      "1.1.1"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 22,
+    "excerpt": "ที่เปิดโอกาสให้ Threat ถูกใช้ประโยชน์",
+    "actual": "Thai passive grammar says that the threat is exploited.",
+    "expected": "Threat sources exploit vulnerabilities.",
+    "rootCause": "The passive object in the Thai definition is Threat rather than the weakness.",
+    "evidence": [
+      "D1:22 reverses the exploitation relationship; later D1 material generally uses the correct relationship."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/glossary/term/threat"
+    ],
+    "recommendation": "Use จุดอ่อน...ที่ภัยคุกคามหรือผู้ก่อภัยคุกคามอาจใช้ประโยชน์เพื่อก่อความเสียหาย.",
+    "confidence": "high",
+    "status": "confirmed",
+    "domain": 1
+  },
+  {
+    "localId": "D1-F05",
+    "severity": "P2",
+    "category": "academic/privacy law",
+    "subsections": [
+      "1.3.2"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 626,
+    "excerpt": "Controller/Processor ทั่วโลกที่มีการประมวลผลข้อมูลพลเมืองสหภาพยุโรป",
+    "actual": "GDPR applicability is described as processing EU citizens' data anywhere.",
+    "expected": "Applicability depends on Article 3 establishment and targeting criteria; citizenship alone is not the test.",
+    "rootCause": "Citizenship is substituted for territorial-scope criteria.",
+    "evidence": [
+      "EDPB Guidelines 3/2018 explain that nationality does not determine Article 3(2) targeting applicability."
+    ],
+    "referenceUrls": [
+      "https://www.edpb.europa.eu/sites/default/files/files/file1/edpb_guidelines_3_2018_territorial_scope_after_public_consultation_en_1.pdf"
+    ],
+    "recommendation": "Replace citizenship rule with concise qualified establishment/targeting language.",
+    "confidence": "high",
+    "status": "confirmed",
+    "domain": 1
+  },
+  {
+    "localId": "D1-F06",
+    "severity": "P2",
+    "category": "semantic diagram/accountability",
+    "subsections": [
+      "1.1.3",
+      "1.1.5",
+      "1.1.6"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 464,
+    "excerpt": "Audit Trails, ประทับเวลา (Timestamps) ... (Non-Repudiation)",
+    "actual": "Mobile AAA diagram implies ordinary timestamped logs create non-repudiation.",
+    "expected": "Logs support accountability; non-repudiation requires appropriate evidence and assurance controls.",
+    "rootCause": "Accounting text assigns a stronger property than ordinary logging establishes.",
+    "evidence": [
+      "DG:464 contrasts with D1:250's signed-evidence discussion; NIST digital-signature definition qualifies assurance by appropriate use."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/glossary/term/digital_signature"
+    ],
+    "recommendation": "Label logging as accountability and separately explain non-repudiation evidence requirements.",
+    "confidence": "high",
+    "status": "confirmed",
+    "domain": 1
+  },
+  {
+    "localId": "D1-F07",
+    "severity": "P2",
+    "category": "academic/risk economics",
+    "subsections": [
+      "1.2.2",
+      "1.2.4",
+      "1.5.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 506,
+    "excerpt": "ต้นทุนของมาตรการความปลอดภัยต่อปีไม่ควรเกินมูลค่า ALE",
+    "actual": "Prose and desktop compare control costs with entire ALE; mobile compares them with ALE savings.",
+    "expected": "Compare annual costs with expected ALE reduction, while recognizing legal/safety/contract constraints.",
+    "rootCause": "Desktop/prose omit residual ALE while mobile uses risk reduction.",
+    "evidence": [
+      "D1:505–506 and DG:744 differ from DG:795. If ALE falls from $10,000 to $9,000 at $5,000 annual cost, being below total ALE does not make the control economical."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-30.pdf",
+      "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-39.pdf"
+    ],
+    "recommendation": "Use ALE before minus ALE after and align both layouts; qualify the economic rule.",
+    "confidence": "high",
+    "status": "confirmed",
+    "domain": 1
+  },
+  {
+    "localId": "D1-F08",
+    "severity": "P2",
+    "category": "academic/source attribution",
+    "subsections": [
+      "1.2.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 533,
+    "excerpt": "เช่น NIST ... Identify → Assess → Treat → Monitor",
+    "actual": "Callout attributes this named four-stage sequence to NIST and claims ISC2 explicitly mandates a fifth reporting stage.",
+    "expected": "NIST SP 800-39 uses Frame, Assess, Respond, Monitor; label local five-stage mnemonic as pedagogical unless official course source is supplied.",
+    "rootCause": "The named NIST sequence in the local callout differs from the primary source.",
+    "evidence": [
+      "NIST CSF FAQ and SP 800-39 confirm Frame/Assess/Respond/Monitor. Public ISC2 outline does not establish the separate fifth-stage claim; that part remains unverified attribution."
+    ],
+    "referenceUrls": [
+      "https://www.nist.gov/cyberframework/faqs",
+      "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-39.pdf",
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Correct NIST attribution and cite official training source or label five-stage model as local teaching structure.",
+    "confidence": "high for NIST mismatch; qualified for ISC2 training claim",
+    "status": "confirmed",
+    "domain": 1
+  },
+  {
+    "localId": "D1-F09",
+    "severity": "P2",
+    "category": "academic/ethics attribution",
+    "subsections": [
+      "1.5.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 990,
+    "excerpt": "ลำดับคำใน Canon 2 ให้เกียรติและความซื่อสัตย์มาก่อนกฎหมาย",
+    "actual": "Text infers priority of honesty over legality from adjective order inside Canon 2.",
+    "expected": "Treat those duties together; lawful conduct may still be unethical without implying word-order precedence.",
+    "rootCause": "Lexical order is interpreted as a normative hierarchy without a supporting source.",
+    "evidence": [
+      "ISC2 public code provides the duties together and no adjective hierarchy."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/ethics"
+    ],
+    "recommendation": "Remove lexical-precedence interpretation; retain lawful-but-unethical example.",
+    "confidence": "high",
+    "status": "confirmed",
+    "domain": 1
+  },
+  {
+    "localId": "D1-F10",
+    "severity": "P2",
+    "category": "academic/legal overstatement",
+    "subsections": [
+      "1.5.2"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 1280,
+    "excerpt": "อาจมีความผิดฐาน Gross Negligence ... ซึ่งไม่ได้รับการคุ้มครองทางกฎหมาย",
+    "actual": "Mobile diagram asserts categorical absence of legal protection after potential gross negligence.",
+    "expected": "Describe possible professional/legal consequences without a jurisdiction-free immunity rule.",
+    "rootCause": null,
+    "evidence": [
+      "DG:1280 qualifies possible gross negligence with may, but not the final loss-of-protection clause. ISC2 Code establishes ethical duties, not the asserted universal legal rule; no particular country's negligence law was validated."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/ethics"
+    ],
+    "recommendation": "Use qualified negligence/liability language and professional discipline; omit universal loss-of-protection conclusion.",
+    "confidence": "high for overstatement",
+    "status": "confirmed",
+    "domain": 1
+  },
+  {
+    "localId": "D1-N01",
+    "severity": "P2",
+    "category": "educational/curriculum completeness",
+    "subsections": [
+      "1.1.2",
+      "1.1.3",
+      "1.1.6",
+      "1.2.1",
+      "1.3.5",
+      "1.5.1"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 1,
+    "excerpt": "เอกสารรวบรวมและเรียบเรียงเนื้อหาฉบับสมบูรณ์",
+    "actual": "No AI/training-data/model-poisoning applications appear in this Domain 1 material.",
+    "expected": "Include concise foundational examples reflecting current ISC2 web guidance.",
+    "rootCause": null,
+    "evidence": [
+      "Full reading and targeted search found no such examples. ISC2 current page explains Domain 1 AI applications; all five formal objective labels are otherwise covered."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Add short CIA, privacy/AAA, risk/governance and ethics examples; no new AI domain required.",
+    "confidence": "high",
+    "status": "recommendation",
+    "domain": 1
+  },
+  {
+    "localId": "D1-N02",
+    "severity": "P2",
+    "category": "semantic diagram/control functions",
+    "subsections": [
+      "1.4.2",
+      "1.4.3"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 1129,
+    "excerpt": "แจ้งเตือนภัยแบบเรียลไทม์ขณะที่เหตุการณ์หรือการโจมตีกำลังดำเนินอยู่",
+    "actual": "Main diagram restricts Detective to during/real time and correction to after incident, despite an overlap caption.",
+    "expected": "Classify primarily by purpose; detective controls also identify prior events and correction can overlap active response.",
+    "rootCause": null,
+    "evidence": [
+      "DG:1053–1084,1125–1129,1140; mitigating overlap caption DG:1177–1179 acknowledged. D1:851 correctly calls retrospective CCTV detective; CISA guide p.13 supports retrospective investigations."
+    ],
+    "referenceUrls": [
+      "https://www.cisa.gov/sites/default/files/c3vp/crr_resources_guides/CRR_Resource_Guide-CM.pdf"
+    ],
+    "recommendation": "Use often-before/during/after labels, add delayed detection, and identify absent directive/compensating functions as cross-cutting or title diagram selected functions.",
+    "confidence": "high",
+    "status": "qualified concern",
+    "domain": 1
+  },
+  {
+    "localId": "D1-N03",
+    "severity": "P2",
+    "category": "semantic diagram/bilingual",
+    "subsections": [
+      "1.1.7"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 610,
+    "excerpt": "ขจัดจุดล้มเหลวเดี่ยว (No Single Point of Failure)",
+    "actual": "Diagram lists seven defenses around an isolated core and implies adding layers eliminates single failure points; layer 6 Thai grammar suggests preventing encryption.",
+    "expected": "Show complementary relationship to core; describe reducing reliance on one control and use Thai wording protecting data through encryption.",
+    "rootCause": null,
+    "evidence": [
+      "DG:565–605 has lists and core without connections/enclosing layers; DG:610 overstates elimination; DG:676 wording ป้องกันช่องโหว่ซอฟต์แวร์และการเข้ารหัสข้อมูล is awkward. Seven layers are explicitly an example and defensible."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/glossary/term/defense_in_depth"
+    ],
+    "recommendation": "Connect/surround layers; qualify independence/diversity and eliminate overpromise; change layer 6 wording to ปกป้องข้อมูลด้วยการเข้ารหัส.",
+    "confidence": "high",
+    "status": "qualified concern",
+    "domain": 1
+  },
+  {
+    "localId": "D1-N04",
+    "severity": "P3",
+    "category": "academic/risk modeling",
+    "subsections": [
+      "1.2.1",
+      "1.2.5",
+      "1.5.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 388,
+    "excerpt": "Risk ... ผลรวมของโอกาส ... ควบคู่กับขนาดของผลกระทบ",
+    "actual": "Thai sum wording and residual-risk subtraction appear alongside a multiplicative mnemonic without model assumptions.",
+    "expected": "Use combination; label likelihood×impact and subtraction as simplified models requiring defined compatible scales.",
+    "rootCause": null,
+    "evidence": [
+      "D1:388,409,580,1056–1060. Approximation sign in risk formula and correct before/after definitions partially mitigate concern."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/pubs/sp/800/30/r1/final",
+      "https://www.cyber.gc.ca/en/cccsglossary"
+    ],
+    "recommendation": "Reassess remaining likelihood and consequence; avoid arithmetic on ordinal High/Medium/Low labels.",
+    "confidence": "high",
+    "status": "qualified concern",
+    "domain": 1
+  },
+  {
+    "localId": "D1-N05",
+    "severity": "P3",
+    "category": "bilingual/privacy qualification",
+    "subsections": [
+      "1.1.6"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 256,
+    "excerpt": "การจัดเก็บ (Collection)",
+    "actual": "Collection translation overlaps storage; controller definition excludes natural persons; consent flow can imply universality; tax retention example lacks jurisdiction.",
+    "expected": "Translate Collection as การเก็บรวบรวม; include natural-person controllers; qualify consent as one legal basis; source jurisdiction-specific retention.",
+    "rootCause": null,
+    "evidence": [
+      "D1:256,267,281,291 and DG:521,533. EDPB supports natural/legal person roles and multiple lawful bases. Seven-year Thai employee-tax rule was not verified; erasure exception is appropriately qualified."
+    ],
+    "referenceUrls": [
+      "https://www.edpb.europa.eu/contact/frequently-asked-questions_en?page=1",
+      "https://www.edpb.europa.eu/topics/key-gdpr-concepts/legal-basis_en"
+    ],
+    "recommendation": "Clarify translation, roles and applicable lawful basis; source or label the retention assumption.",
+    "confidence": "high except unverified retention rule",
+    "status": "qualified concern",
+    "domain": 1
+  },
+  {
+    "localId": "D1-N06",
+    "severity": "P3",
+    "category": "educational/password examples",
+    "subsections": [
+      "1.1.4",
+      "1.3.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 683,
+    "excerpt": "รหัสผ่านต้องมีความยาวอย่างน้อย 14 ตัวอักษร ผสมอักขระ 3 ใน 4 ประเภท",
+    "actual": "Hypothetical password standard teaches dated composition rules; security questions lack legacy labeling; diagram says standards have no exceptions.",
+    "expected": "Use modern example with length/blocklist/MFA and clarify organization-defined scope and approved exceptions.",
+    "rootCause": null,
+    "evidence": [
+      "D1:683, content-components.js:37, DG:1001,1012. NIST SP 800-63B-4 §3.1.1 prohibits composition rules in that standard. Hypothetical example still correctly illustrates a measurable standard."
+    ],
+    "referenceUrls": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "recommendation": "Replace dated example, label security questions legacy, and qualify mandatory/no-exception language.",
+    "confidence": "high about NIST divergence; medium about hypothetical example harm",
+    "status": "recommendation",
+    "domain": 1
+  },
+  {
+    "localId": "D1-N07",
+    "severity": "P3",
+    "category": "educational/operational context",
+    "subsections": [
+      "1.5.1",
+      "1.5.2",
+      "1.5.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 917,
+    "excerpt": "การลง Patch อุดช่องโหว่ทันทีที่ได้รับแจ้ง",
+    "actual": "Immediate installation is presented as due care without change/risk context; scanning-all-servers scenario omits explicit authorization.",
+    "expected": "Teach authorized risk-based normal/emergency change process and prudent response.",
+    "rootCause": null,
+    "evidence": [
+      "D1:917,1258,1267; scenarios 4 and 5; DG:1206,1252. Expected Due Diligence/Due Care answers remain correct."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/pubs/sp/800/40/r4/final",
+      "https://www.canada.ca/en/government/system/digital-government/online-security-privacy/cyber-security-guidance-policy/patch-management-guidance.html"
+    ],
+    "recommendation": "Add authorized scan scope and approved/emergency patch process, verification and urgency context.",
+    "confidence": "high",
+    "status": "recommendation",
+    "domain": 1
+  },
+  {
+    "localId": "D1-N08",
+    "severity": "P3",
+    "category": "source provenance/ethics",
+    "subsections": [
+      "1.5.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 964,
+    "excerpt": "Canon ลำดับก่อนหน้าจะมีความสำคัญเหนือกว่าเสมอ",
+    "actual": "Strict inter-canon priority is repeatedly asserted without an accessible official training citation.",
+    "expected": "Cite official course source or explain as a prioritization aid while preserving professional judgment.",
+    "rootCause": null,
+    "evidence": [
+      "D1:956–964,977 and DG:1292–1397. Current ISC2 public code gives four canons in same order but omits a strict hierarchy; omission does not prove no official training uses it."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/ethics"
+    ],
+    "recommendation": "Supply traceable training citation or qualify the absolute always-supersedes rule.",
+    "confidence": "high that public page omits rule; insufficient to declare convention false",
+    "status": "qualified concern",
+    "domain": 1
+  },
+  {
+    "localId": "D1-N09",
+    "severity": "P3",
+    "category": "academic/teaching absolutes",
+    "subsections": [
+      "1.1.2",
+      "1.1.5"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 222,
+    "excerpt": "เกิดขึ้นหลังจาก Authentication สำเร็จแล้วเสมอ",
+    "actual": "Authorization always after authentication and always-available phrasing overgeneralize; load-balancer example claims elimination of SPOFs with one LB.",
+    "expected": "Qualify named-user login model and service availability goals; ensure redundant LB tier before claiming full topology eliminates SPOFs.",
+    "rootCause": null,
+    "evidence": [
+      "D1:115,222; DG:289. Single load balancer source topology does not show redundancy at that tier; anonymous resource authorization is outside the illustrated login model."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/pubs/sp/800/207/final"
+    ],
+    "recommendation": "Use in this authenticated-user flow, timely/reliable service requirements, and explicit redundant LB assumption.",
+    "confidence": "high",
+    "status": "qualified concern",
+    "domain": 1
+  },
+  {
+    "localId": "D1-N10",
+    "severity": "P3",
+    "category": "educational/taxonomy mapping",
+    "subsections": [
+      "1.4.1"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 758,
+    "excerpt": "Technical / Managerial (Administrative) / Operational / Physical",
+    "actual": "Four-bucket taxonomy is presented without mapping to official three-category outline; Thai mantrap label has typo.",
+    "expected": "Explain operational bucket as an alternative taxonomy/extension and map to technical, administrative and physical.",
+    "rootCause": null,
+    "evidence": [
+      "D1:758–763; content-components.js:182–218. Official outline names technical/admin/physical; operational controls are legitimate in other taxonomies. CC:217 contains ประตูกลักกันคนเดินตาม."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Map categories explicitly and correct Thai access-control-vestibule label.",
+    "confidence": "high",
+    "status": "qualified concern",
+    "domain": 1
+  }
+]

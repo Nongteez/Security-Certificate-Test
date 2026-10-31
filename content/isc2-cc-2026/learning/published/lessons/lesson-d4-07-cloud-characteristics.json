@@ -1,0 +1,812 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d4-07-cloud-characteristics",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 4,
+  "primaryObjectiveId": "4.3",
+  "objectiveIds": [
+    "4.3"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "How Cloud Resources Behave",
+    "th": "Cloud Resources ทำงานอย่างไร"
+  },
+  "synopsis": {
+    "en": "Distinguish five cloud characteristics using provisioning, demand, measurement and access examples.",
+    "th": "แยก Cloud Characteristics ห้าด้านจาก Provisioning Demand การวัด และ Access"
+  },
+  "outcomes": [
+    {
+      "en": "Cloud combines delivery properties, not just a remote server.",
+      "th": "Cloud รวมคุณสมบัติการให้บริการ ไม่ใช่แค่ Server ระยะไกล"
+    },
+    {
+      "en": "Self-service removes a manual provisioning step, not governance.",
+      "th": "Self-Service ลดขั้นตอน Provision ด้วยมือ ไม่ได้ยกเลิก Governance"
+    },
+    {
+      "en": "Elasticity follows demand in both directions.",
+      "th": "Elasticity ปรับตาม Demand ได้ทั้งเพิ่มและลด"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: earlier lessons in this objective. No vendor configuration knowledge is required.",
+      "th": "แนะนำบทก่อนหน้าใน Objective นี้ ไม่จำเป็นต้องรู้คำสั่งตั้งค่าของ Vendor"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 Exam Outline",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Objective 4.3; separate Domain 4 AI/application guidance; checked 2026-10-31."
+    },
+    {
+      "id": "d4-summary",
+      "title": "D4 sum.md — user study summary",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 4/D4 sum.md",
+      "locator": "Teaching baseline; corrections and image traceability in Domain 4 academic audit."
+    },
+    {
+      "id": "d4-notes",
+      "title": "Domain 4.md — user study notes",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 4/Domain 4.md",
+      "locator": "S41–S42; summary cloud overview; S42; self-service governance explanation; S42; official AI scalability application; S42; metering/billing qualification; S42; pooling/network access distinction; full source mapping in domain-4-2026-coverage-matrix.md."
+    },
+    {
+      "id": "cloud",
+      "title": "NIST SP 800-145",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf",
+      "locator": "Five essential properties, not pricing or unlimited capacity promises.",
+      "authority": "technical-primary"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d4-07-01-cloud-model",
+      "title": {
+        "en": "Cloud combines delivery properties, not just a remote server.",
+        "th": "Cloud รวมคุณสมบัติการให้บริการ ไม่ใช่แค่ Server ระยะไกล"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A team needs an approved environment for an application without manually ordering each physical server.",
+            "th": "ทีมต้องการ Environment ที่อนุมัติสำหรับ Application โดยไม่สั่ง Physical Server ใหม่ทุกครั้ง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Consumer request",
+                "th": "คำขอผู้ใช้บริการ"
+              },
+              {
+                "en": "Provision through approved service controls",
+                "th": "Provision ผ่าน Controls ของบริการที่อนุมัติ"
+              },
+              {
+                "en": "Permissions and quotas still apply",
+                "th": "ยังต้องมี Permissions และ Quotas"
+              }
+            ],
+            [
+              {
+                "en": "Pooled resources",
+                "th": "Resources ที่รวมเป็น Pool"
+              },
+              {
+                "en": "Allocate computing capability as needed",
+                "th": "จัดสรรความสามารถตามความต้องการ"
+              },
+              {
+                "en": "Logical isolation remains necessary",
+                "th": "ยังต้องมี Logical Isolation"
+              }
+            ],
+            [
+              {
+                "en": "Service operation",
+                "th": "การให้บริการ"
+              },
+              {
+                "en": "Network access, scaling and usage visibility",
+                "th": "เข้าผ่าน Network ปรับขนาด และเห็น Usage"
+              },
+              {
+                "en": "A remote server alone is not all five properties",
+                "th": "Remote Server อย่างเดียวไม่ครบห้าคุณสมบัติ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Cloud computing offers computing capability through a service model that combines self-service provisioning, network access, pooled resources, elasticity and usage measurement. These characteristics describe how resources are delivered; they do not specify who may read the data or who patches every component. A manually managed server in another building is not automatically a complete cloud model. The consumer still needs approved identities, resource limits and security settings. Separate this question—how the service behaves—from the service model that divides management duties and the deployment model that describes who uses the environment.",
+            "th": "Cloud Computing ให้ความสามารถประมวลผลผ่านบริการที่รวม Self-Service Provisioning Network Access Resource Pooling Elasticity และการวัด Usage คุณสมบัติเหล่านี้อธิบายการส่งมอบ Resources ไม่ได้กำหนดว่าใครอ่านข้อมูลได้หรือใคร Patch ทุกส่วน Server ที่บริหารด้วยมือในอีกอาคารไม่ได้เป็น Cloud ครบคุณสมบัติโดยอัตโนมัติ ผู้ใช้ยังต้องมี Identities ที่อนุมัติ Resource Limits และ Security Settings ต้องแยกคำถามว่าบริการทำงานอย่างไร ออกจาก Service Model ที่แบ่งงานบริหาร และ Deployment Model ที่บอกว่าใครใช้ Environment"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Characteristics describe delivery behavior; they do not grant access.",
+            "th": "Characteristics อธิบายพฤติกรรมการให้บริการ ไม่ได้ให้สิทธิ์ Access"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-07-02-self-service",
+      "title": {
+        "en": "Self-service removes a manual provisioning step, not governance.",
+        "th": "Self-Service ลดขั้นตอน Provision ด้วยมือ ไม่ได้ยกเลิก Governance"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An authorized developer creates an approved test environment through a service portal or API.",
+            "th": "Developer ที่มีสิทธิ์สร้าง Test Environment ที่อนุมัติผ่าน Portal หรือ API"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Authorized request",
+                "th": "คำขอที่มีสิทธิ์"
+              },
+              {
+                "en": "Choose an approved resource template",
+                "th": "เลือก Resource Template ที่อนุมัติ"
+              },
+              {
+                "en": "Role and quota limit the request",
+                "th": "Role และ Quota จำกัดคำขอ"
+              }
+            ],
+            [
+              {
+                "en": "Provision automatically",
+                "th": "Provision อัตโนมัติ"
+              },
+              {
+                "en": "No provider employee needed per request",
+                "th": "ไม่ต้องให้พนักงาน Provider ทำทุกคำขอ"
+              },
+              {
+                "en": "Organization approval may be preconfigured",
+                "th": "องค์กรอาจตั้ง Approval ไว้ล่วงหน้า"
+              }
+            ],
+            [
+              {
+                "en": "Record / control",
+                "th": "บันทึก / ควบคุม"
+              },
+              {
+                "en": "Track owner, configuration and usage",
+                "th": "ติดตาม Owner Configuration และ Usage"
+              },
+              {
+                "en": "Self-service is not unrestricted admin",
+                "th": "Self-Service ไม่ใช่ Admin แบบไม่จำกัด"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "On-demand self-service lets a consumer provision computing capability without requiring a provider employee to manually process every request. It does not mean every employee can provision anything without permission. Organizations can preapprove templates, enforce roles and quotas, record accountable owners and apply configuration policy. An automated portal action may still be governed by internal approval or budget rules. Distinguish this mechanism from elasticity: self-service concerns how a request starts, whereas elasticity concerns adjusting capacity as demand changes. A service can support both.",
+            "th": "On-Demand Self-Service ให้ผู้ใช้ Provision ความสามารถประมวลผลได้โดยไม่ต้องให้พนักงาน Provider ทำทุกคำขอด้วยมือ ไม่ได้หมายถึงพนักงานทุกคนสร้างอะไรก็ได้โดยไม่มีสิทธิ์ องค์กรอนุมัติ Templates ล่วงหน้า บังคับ Roles/Quotas ระบุ Owners และกำหนด Configuration Policy ได้ การทำงานอัตโนมัติผ่าน Portal ยังอยู่ใต้กฎ Approval หรืองบประมาณภายใน ต้องแยกจาก Elasticity ซึ่งเกี่ยวกับการปรับ Capacity ตาม Demand ส่วน Self-Service เกี่ยวกับวิธีเริ่ม Provision บริการเดียวรองรับทั้งสองคุณสมบัติได้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Automated provisioning can still be tightly authorized.",
+            "th": "Provision อัตโนมัติยังควบคุมสิทธิ์อย่างเข้มงวดได้"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-07-03-elasticity",
+      "title": {
+        "en": "Elasticity follows demand in both directions.",
+        "th": "Elasticity ปรับตาม Demand ได้ทั้งเพิ่มและลด"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Illustrative AI inference workers: scale out for a permitted demand spike, then release unneeded capacity.",
+            "th": "ตัวอย่าง AI Inference Workers: เพิ่มเมื่อ Demand สูงตามที่อนุญาต แล้วคืน Capacity ที่ไม่ต้องใช้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Normal demand",
+                "th": "Demand ปกติ"
+              },
+              {
+                "en": "Use the baseline worker capacity",
+                "th": "ใช้ Workers ตาม Baseline"
+              },
+              {
+                "en": "Illustration, not a performance measure",
+                "th": "ตัวอย่าง ไม่ใช่ผลวัด Performance"
+              }
+            ],
+            [
+              {
+                "en": "Demand spike",
+                "th": "Demand เพิ่มสูง"
+              },
+              {
+                "en": "Add supported capacity within limits",
+                "th": "เพิ่ม Capacity ที่รองรับภายใน Limits"
+              },
+              {
+                "en": "Quota, latency and cost still matter",
+                "th": "Quota Latency และ Cost ยังสำคัญ"
+              }
+            ],
+            [
+              {
+                "en": "Demand falls",
+                "th": "Demand ลดลง"
+              },
+              {
+                "en": "Release unneeded capacity",
+                "th": "คืน Capacity ที่ไม่จำเป็น"
+              },
+              {
+                "en": "Verify scaling and availability behavior",
+                "th": "ตรวจ Scaling และ Availability จริง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Rapid elasticity is the ability to expand and contract available resources to match demand. For an AI inference service, supported scaling might add workers when requests rise and remove them when demand falls. It does not guarantee unlimited instantaneous resources, lower cost in every case or automatic application correctness. Quotas, provisioning delay, architecture, data dependencies and budget can constrain scaling. Configure and test the supported mechanism, monitor its effects and verify that capacity can reduce as well as grow. This differs from merely measuring usage or manually ordering permanent hardware.",
+            "th": "Rapid Elasticity คือความสามารถเพิ่มและลด Resources ให้สอดคล้องกับ Demand สำหรับ AI Inference ระบบที่รองรับอาจเพิ่ม Workers เมื่อ Requests สูง และลดเมื่อ Demand ลดลง ไม่ได้สัญญาว่า Resources ไม่จำกัด มีทันทีทุกครั้ง ถูกกว่าเสมอ หรือ Application ถูกต้องอัตโนมัติ Quotas เวลาจัดเตรียม Architecture Data Dependencies และงบประมาณจำกัด Scaling ได้ ต้องตั้งค่าและทดสอบกลไกที่รองรับ Monitor ผล และตรวจว่าลด Capacity กลับได้ด้วย ต่างจากการวัด Usage อย่างเดียวหรือสั่ง Hardware ถาวรด้วยมือ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "More demand → more capacity; less demand → release capacity, within limits.",
+            "th": "Demand เพิ่ม → เพิ่ม Capacity; Demand ลด → คืน Capacity ภายใน Limits"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-07-04-measured-service",
+      "title": {
+        "en": "Measured service makes usage visible; a tariff sets the bill.",
+        "th": "Measured Service ทำให้เห็น Usage ส่วน Tariff กำหนดค่าใช้จ่าย"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Training jobs consume compute and storage. Measure resource use and apply the actual service agreement.",
+            "th": "Training Jobs ใช้ Compute และ Storage ต้องวัด Usage และใช้ข้อตกลงบริการจริง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Measurement and billing are related, not identical",
+            "th": "การวัดกับ Billing เกี่ยวข้องกัน แต่ไม่ใช่สิ่งเดียวกัน"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Measure",
+                "th": "วัด Usage"
+              },
+              {
+                "en": "Compute time, storage or requests",
+                "th": "เวลา Compute Storage หรือ Requests"
+              },
+              {
+                "en": "Metric depends on the service",
+                "th": "Metric ขึ้นกับบริการ"
+              }
+            ],
+            [
+              {
+                "en": "Observe",
+                "th": "ตรวจติดตาม"
+              },
+              {
+                "en": "Reports, dashboards and resource limits",
+                "th": "Reports Dashboards และ Resource Limits"
+              },
+              {
+                "en": "Attribute usage to an owner/project",
+                "th": "ผูก Usage กับ Owner/Project"
+              }
+            ],
+            [
+              {
+                "en": "Charge",
+                "th": "คิดค่าใช้จ่าย"
+              },
+              {
+                "en": "Apply contract, rates and reservations",
+                "th": "ใช้ Contract Rates และ Reservations"
+              },
+              {
+                "en": "No universal “only what ran” promise",
+                "th": "ไม่สัญญาว่าจ่ายเฉพาะที่รันเสมอ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Measured service monitors and reports resource use at a level appropriate to the service, supporting transparency, control and sometimes billing. Compute duration, stored bytes and request counts are different possible metrics. A resource may incur storage, reserved-capacity or other charges even when no application request is running; the tariff and agreement determine that outcome. Use dashboards, budgets and ownership tags to track AI training or other workloads, but do not confuse a budget alert with a guaranteed hard spending cap. Measurement is a delivery characteristic, not a promise that every pricing model is identical.",
+            "th": "Measured Service ติดตามและรายงานการใช้ Resources ในระดับที่เหมาะกับบริการ เพื่อความโปร่งใส การควบคุม และอาจใช้คิดค่าใช้จ่าย เวลา Compute จำนวน Bytes ที่เก็บ และจำนวน Requests เป็น Metrics คนละแบบ Resource อาจมีค่า Storage Reserved Capacity หรือค่าอื่นแม้ไม่มี Request ของ Application ทำงาน ผลจริงขึ้นกับ Tariff และข้อตกลง ใช้ Dashboards Budgets และ Ownership Tags ติดตาม AI Training หรือ Workloads อื่น แต่ Budget Alert ไม่จำเป็นต้องเป็น Hard Spending Cap การวัดเป็นคุณสมบัติการให้บริการ ไม่ใช่คำสัญญาว่าราคาเหมือนกันทุก Model"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Usage evidence informs decisions; read the actual pricing and limit policy.",
+            "th": "หลักฐาน Usage ช่วยตัดสินใจ แต่ต้องอ่าน Policy ราคาและ Limits จริง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-07-05-pooling-network-access",
+      "title": {
+        "en": "Shared resources and broad access still need isolation.",
+        "th": "Resources ร่วมและ Broad Access ยังต้องมี Isolation"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Two essential properties describe resource allocation and client connectivity—not public permission to data.",
+            "th": "สองคุณสมบัติอธิบายการจัดสรร Resources และการเชื่อม Client ไม่ใช่สิทธิ์สาธารณะต่อข้อมูล"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Resource pooling",
+                "th": "Resource Pooling"
+              },
+              {
+                "en": "Allocate shared physical/virtual resources",
+                "th": "จัดสรร Physical/Virtual Resources จาก Pool"
+              },
+              {
+                "en": "Tenant isolation and data controls matter",
+                "th": "Tenant Isolation และ Data Controls สำคัญ"
+              }
+            ],
+            [
+              {
+                "en": "Broad network access",
+                "th": "Broad Network Access"
+              },
+              {
+                "en": "Use standard network mechanisms across clients",
+                "th": "ใช้กลไก Network มาตรฐานจาก Clients หลายชนิด"
+              },
+              {
+                "en": "Authentication and access policy still apply",
+                "th": "ยังต้องมี Authentication และ Access Policy"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Resource pooling lets a provider allocate and reallocate resources among consumers while maintaining the required logical separation. Sharing physical infrastructure is not the same as allowing customers to read one another’s data. Broad network access means service capabilities are available through standard network mechanisms usable by different client types. It does not require anonymous access from every location, unrestricted Internet exposure or permission for any device. Both properties need identity, network and data controls that fit the service and organizational requirements. Verify isolation and access configuration instead of relying on the cloud label.",
+            "th": "Resource Pooling ให้ Provider จัดสรรและปรับจัดสรร Resources ระหว่างผู้ใช้ โดยยังต้องรักษาการแยกเชิง Logical ตามข้อกำหนด การใช้ Physical Infrastructure ร่วมไม่ใช่การอนุญาตให้อ่านข้อมูลของกันและกัน Broad Network Access หมายถึงเข้าถึงความสามารถบริการผ่านกลไก Network มาตรฐานที่ Clients ต่างชนิดใช้ได้ ไม่ได้บังคับให้ Anonymous เข้าได้ทุกที่ เปิด Internet ไม่จำกัด หรืออนุญาตทุกอุปกรณ์ ทั้งสองคุณสมบัติต้องมี Identity Network และ Data Controls ที่เหมาะกับบริการและองค์กร ต้องตรวจ Isolation และ Access Configuration แทนการเชื่อเพียงป้าย Cloud"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Shared infrastructure does not mean shared data permission.",
+            "th": "Infrastructure ร่วมไม่ได้หมายถึงสิทธิ์ข้อมูลร่วม"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-07-06-capacity-decision",
+      "title": {
+        "en": "A campaign ends. Which behavior demonstrates elasticity?",
+        "th": "Campaign จบแล้ว พฤติกรรมใดแสดง Elasticity?"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An approved service added workers during a spike. Demand has returned to normal.",
+            "th": "บริการที่อนุมัติเพิ่ม Workers ช่วง Demand สูง ตอนนี้กลับสู่ระดับปกติแล้ว"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "ทางเลือก A"
+              },
+              {
+                "en": "Release unneeded workers within policy",
+                "th": "คืน Workers ที่ไม่ต้องใช้ภายใต้ Policy"
+              },
+              {
+                "en": "Contracting capacity after the spike demonstrates the downward side of elasticity.",
+                "th": "การลด Capacity หลัง Demand สูงแสดงการปรับลงของ Elasticity"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "ทางเลือก B"
+              },
+              {
+                "en": "Only publish a usage report",
+                "th": "เผยแพร่ Usage Report อย่างเดียว"
+              },
+              {
+                "en": "A report demonstrates measurement; it does not itself change available capacity.",
+                "th": "Report แสดงการวัด แต่ไม่ได้เปลี่ยน Capacity ที่มีด้วยตัวเอง"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "ทางเลือก C"
+              },
+              {
+                "en": "Remove all access restrictions",
+                "th": "เอาข้อจำกัด Access ออกทั้งหมด"
+              },
+              {
+                "en": "Broad network access does not require unrestricted permission and is not the scaling mechanism.",
+                "th": "Broad Network Access ไม่บังคับให้เปิดสิทธิ์ทั้งหมดและไม่ใช่กลไก Scaling"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "ทางเลือก D"
+              },
+              {
+                "en": "Keep all added workers forever",
+                "th": "เก็บ Workers ที่เพิ่มไว้ตลอด"
+              },
+              {
+                "en": "Permanent extra capacity does not demonstrate contraction with lower demand.",
+                "th": "การเก็บ Capacity เพิ่มถาวรไม่แสดงการปรับลดตาม Demand"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The observed demand change calls for contracting unneeded capacity within the approved scaling and availability policy. That behavior demonstrates elasticity in the downward direction. A usage report is useful measured-service evidence, and a portal request may demonstrate self-service, but neither alone proves that resources adjusted to demand. Scaling must preserve the required service behavior; do not remove critical capacity blindly. Actual costs depend on the service tariff and remaining commitments, so releasing workers should not be described as a guarantee that every charge becomes zero.",
+            "th": "Demand ที่ลดลงในโจทย์เหมาะกับการคืน Capacity ที่ไม่จำเป็นภายใต้ Scaling และ Availability Policy นี่แสดง Elasticity ด้านปรับลด Usage Report เป็นหลักฐาน Measured Service ที่มีประโยชน์ และ Portal Request อาจแสดง Self-Service แต่ทั้งสองอย่างไม่พิสูจน์ว่า Resources ปรับตาม Demand แล้ว การ Scaling ต้องรักษาบริการตามข้อกำหนด ไม่ตัด Capacity สำคัญโดยไม่ตรวจ ค่าใช้จ่ายจริงขึ้นกับ Tariff และ Commitments ที่เหลือ จึงไม่ควรอ้างว่าคืน Workers แล้วค่าใช้จ่ายทุกอย่างเป็นศูนย์แน่นอน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Identify the mechanism demonstrated by the action, not a neighboring property.",
+            "th": "ดูว่าการกระทำแสดงกลไกใด ไม่เลือกคุณสมบัติใกล้เคียงแทน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "cloud"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-4-completion-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    }
+  }
+}

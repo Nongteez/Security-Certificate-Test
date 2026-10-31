@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d4-04-wireless-connected-systems",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 4,
+  "primaryObjectiveId": "4.1",
+  "objectiveIds": [
+    "4.1"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Wireless & Connected Physical Systems",
+    "th": "Wireless และระบบกายภาพที่เชื่อมต่อ"
+  },
+  "synopsis": {
+    "en": "Protect wireless links and constrained devices while respecting operational safety and real sensor visibility.",
+    "th": "ป้องกัน Wireless และอุปกรณ์ที่มีข้อจำกัด โดยคำนึงถึง Safety และ Visibility จริง"
+  },
+  "outcomes": [
+    {
+      "en": "Protect the wireless link and the systems behind it.",
+      "th": "ป้องกันทั้งลิงก์ Wireless และระบบที่อยู่ด้านหลัง"
+    },
+    {
+      "en": "Bluetooth pairing is an authorization decision too.",
+      "th": "การ Pair Bluetooth ก็เป็นการตัดสินใจอนุญาต"
+    },
+    {
+      "en": "Embedded, IoT and ICS overlap—but describe different things.",
+      "th": "Embedded, IoT และ ICS ซ้อนกันได้ แต่ไม่ได้หมายถึงสิ่งเดียวกัน"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: earlier lessons in this objective. No vendor configuration knowledge is required.",
+      "th": "แนะนำบทก่อนหน้าใน Objective นี้ ไม่จำเป็นต้องรู้คำสั่งตั้งค่าของ Vendor"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 Exam Outline",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Objective 4.1; separate Domain 4 AI/application guidance; checked 2026-10-31."
+    },
+    {
+      "id": "d4-summary",
+      "title": "D4 sum.md — user study summary",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 4/D4 sum.md",
+      "locator": "Teaching baseline; corrections and image traceability in Domain 4 academic audit."
+    },
+    {
+      "id": "d4-notes",
+      "title": "Domain 4.md — user study notes",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 4/Domain 4.md",
+      "locator": "S16; Apple supported configuration and limits; NIST Bluetooth supplement; missing local teaching explicitly filled; S22–S26; original embedded/ICS/IoT material; S24–S25; NIST final OT safe-change supplement; S23,S26–S27,S37; original lifecycle risks; Official AI wireless/embedded monitoring application; full source mapping in domain-4-2026-coverage-matrix.md."
+    },
+    {
+      "id": "wireless",
+      "title": "Apple wireless configuration guidance",
+      "url": "https://support.apple.com/en-us/102766",
+      "locator": "Strong supported settings; hiding SSID/MAC filtering are not encryption substitutes.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "bluetooth",
+      "title": "NIST SP 800-121r2 Update 1",
+      "url": "https://csrc.nist.gov/pubs/sp/800/121/r2/upd1/final",
+      "locator": "Foundational pairing, discoverability and device maintenance; no latest-version claims.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "ot",
+      "title": "NIST SP 800-82r3",
+      "url": "https://csrc.nist.gov/pubs/sp/800/82/r3/final",
+      "locator": "Final operational technology guidance; safety/availability and authorized changes.",
+      "authority": "technical-primary"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d4-04-01-wifi-controls",
+      "title": {
+        "en": "Protect the wireless link and the systems behind it.",
+        "th": "ป้องกันทั้งลิงก์ Wireless และระบบที่อยู่ด้านหลัง"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Wi-Fi uses radio; an attacker does not need a cable inside the building to attempt contact.",
+            "th": "Wi-Fi ใช้ Radio ผู้โจมตีจึงไม่ต้องเสียบสายภายในอาคารเพื่อพยายามเชื่อมต่อ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Join securely",
+                "th": "เข้าร่วมอย่างปลอดภัย"
+              },
+              {
+                "en": "Use approved WPA3 or supported WPA2-AES policy",
+                "th": "ใช้ WPA3 หรือ WPA2-AES ตาม Policy ที่รองรับ"
+              },
+              {
+                "en": "Strong authentication and encryption",
+                "th": "Authentication และ Encryption ที่เหมาะสม"
+              }
+            ],
+            [
+              {
+                "en": "Maintain",
+                "th": "ดูแลระบบ"
+              },
+              {
+                "en": "Patch APs/devices; secure administration",
+                "th": "Patch AP/อุปกรณ์ และป้องกันระบบ Admin"
+              },
+              {
+                "en": "Hiding SSID is not a security boundary",
+                "th": "ซ่อน SSID ไม่ใช่ Security Boundary"
+              }
+            ],
+            [
+              {
+                "en": "Restrict paths",
+                "th": "จำกัดเส้นทาง"
+              },
+              {
+                "en": "Separate guests and critical resources",
+                "th": "แยก Guests จาก Resources สำคัญ"
+              },
+              {
+                "en": "Verify firewall/access rules",
+                "th": "ตรวจ Firewall และ Access Rules"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Wireless security needs compatible, approved authentication and encryption settings, maintained access points and endpoints, and appropriate network access policy. WPA3 is a strong supported option; compatibility may require an approved WPA2-AES design, while obsolete weak modes should be avoided. Enterprise authentication and guest access should follow organizational policy. A hidden SSID does not conceal all wireless activity, and MAC allowlisting can be bypassed or complicated by address randomization. Neither replaces strong security. No Wi-Fi version or protocol makes endpoints invulnerable; keep administration, firmware and resource access protected too.",
+            "th": "Wireless Security ต้องใช้ Authentication และ Encryption ที่รองรับและอนุมัติ ดูแล Access Points กับ Endpoints และกำหนด Network Access Policy ให้เหมาะสม WPA3 เป็นตัวเลือกที่แข็งแรงเมื่อรองรับ ส่วนอุปกรณ์เก่าอาจต้องใช้แบบ WPA2-AES ที่อนุมัติ ควรหลีกเลี่ยง Modes เก่าที่อ่อนแอ Enterprise Authentication และ Guest Access ต้องตามนโยบายองค์กร การซ่อน SSID ไม่ซ่อนกิจกรรม Radio ทั้งหมด และ MAC Allowlist ถูกเลี่ยงได้หรือมีปัญหาจาก Address Randomization ทั้งสองอย่างไม่แทน Security ที่เหมาะสม ไม่มี Wi-Fi Version ใดทำให้ Endpoint โจมตีไม่ได้ ต้องดูแล Admin Firmware และสิทธิ์ต่อ Resource ด้วย"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Hidden names and MAC filters do not replace strong wireless protection.",
+            "th": "ชื่อที่ซ่อนและ MAC Filters ไม่แทนการป้องกัน Wireless ที่เหมาะสม"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "wireless",
+        "bluetooth",
+        "ot"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-04-02-bluetooth-pairing",
+      "title": {
+        "en": "Bluetooth pairing is an authorization decision too.",
+        "th": "การ Pair Bluetooth ก็เป็นการตัดสินใจอนุญาต"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A nearby device asks to pair with a managed laptop. Recognize the device before approving.",
+            "th": "อุปกรณ์ใกล้เคียงขอ Pair กับ Laptop ที่องค์กรดูแล ต้องรู้ว่าอุปกรณ์ใดก่อนอนุมัติ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Identify",
+                "th": "ระบุอุปกรณ์"
+              },
+              {
+                "en": "Verify the intended peer",
+                "th": "ตรวจอุปกรณ์คู่สื่อสารที่ตั้งใจใช้"
+              },
+              {
+                "en": "A familiar name alone is weak evidence",
+                "th": "ชื่อที่คุ้นเคยอย่างเดียวไม่พอ"
+              }
+            ],
+            [
+              {
+                "en": "Pair securely",
+                "th": "Pair อย่างปลอดภัย"
+              },
+              {
+                "en": "Use supported authentication checks",
+                "th": "ใช้การตรวจ Authentication ที่รองรับ"
+              },
+              {
+                "en": "Reject unexpected pairing prompts",
+                "th": "ปฏิเสธคำขอ Pair ที่ไม่คาดหมาย"
+              }
+            ],
+            [
+              {
+                "en": "Reduce exposure",
+                "th": "ลด Exposure"
+              },
+              {
+                "en": "Disable unused radio/services; review bonds",
+                "th": "ปิด Radio/Services ที่ไม่ใช้ ทบทวน Bonds"
+              },
+              {
+                "en": "Patch and remove obsolete pairings",
+                "th": "Patch และลบการ Pair ที่เลิกใช้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Bluetooth enables short-range communication, but proximity is not proof of trust and radio range is not a security guarantee. Pair only authorized devices, verify the intended peer and confirm any supported authentication comparison through the real devices rather than accepting an unexpected prompt. Some pairing methods offer weaker protection, especially when devices lack a display or input; follow the approved device policy. Limit discoverability and unnecessary services, maintain firmware and operating systems, and remove obsolete paired relationships. Disable Bluetooth when not needed if organizational policy permits. No version-specific security guarantee is assumed here.",
+            "th": "Bluetooth รองรับการสื่อสารระยะใกล้ แต่ความใกล้ไม่ใช่หลักฐาน Trust และระยะ Radio ไม่ใช่การรับประกัน Security ควร Pair เฉพาะอุปกรณ์ที่อนุญาต ตรวจคู่สื่อสารที่ตั้งใจใช้ และยืนยันการเปรียบเทียบ Authentication ผ่านอุปกรณ์จริงตามที่รองรับ ไม่กดรับ Prompt ที่ไม่คาดหมาย บางวิธี Pair ป้องกันได้น้อยกว่า โดยเฉพาะอุปกรณ์ที่ไม่มีจอหรือช่อง Input จึงต้องทำตาม Device Policy จำกัด Discoverability และ Services ที่ไม่จำเป็น ดูแล Firmware/OS และลบความสัมพันธ์การ Pair ที่เลิกใช้ ปิด Bluetooth เมื่อไม่จำเป็นหาก Policy อนุญาต โดยไม่สมมติว่า Version ใดรับประกันความปลอดภัย"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Nearby is a location fact, not a trust grant.",
+            "th": "อยู่ใกล้เป็นข้อมูลตำแหน่ง ไม่ใช่การให้ Trust"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "wireless",
+        "bluetooth",
+        "ot"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-04-03-device-overlap",
+      "title": {
+        "en": "Embedded, IoT and ICS overlap—but describe different things.",
+        "th": "Embedded, IoT และ ICS ซ้อนกันได้ แต่ไม่ได้หมายถึงสิ่งเดียวกัน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Classify the device by its function, connectivity and physical-process role.",
+            "th": "จำแนกอุปกรณ์จากหน้าที่ Connectivity และบทบาทต่อกระบวนการกายภาพ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Three perspectives on a connected controller",
+            "th": "สามมุมมองต่อ Controller ที่เชื่อมต่อ"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Embedded",
+                "th": "ระบบ Embedded"
+              },
+              {
+                "en": "Dedicated function in a larger product",
+                "th": "ทำหน้าที่เฉพาะในผลิตภัณฑ์ที่ใหญ่กว่า"
+              },
+              {
+                "en": "Not every embedded device is Internet-connected",
+                "th": "ไม่ใช่ทุกอุปกรณ์ Embedded ต่อ Internet"
+              }
+            ],
+            [
+              {
+                "en": "IoT",
+                "th": "อุปกรณ์ IoT"
+              },
+              {
+                "en": "Networked physical device/data exchange",
+                "th": "อุปกรณ์กายภาพที่แลกเปลี่ยนข้อมูลผ่าน Network"
+              },
+              {
+                "en": "Inventory and lifecycle matter",
+                "th": "Inventory และ Lifecycle สำคัญ"
+              }
+            ],
+            [
+              {
+                "en": "ICS / OT",
+                "th": "ระบบ ICS / OT"
+              },
+              {
+                "en": "Monitor/control physical processes",
+                "th": "ติดตามหรือควบคุมกระบวนการกายภาพ"
+              },
+              {
+                "en": "Safety and process availability matter",
+                "th": "Safety และ Availability ของ Process สำคัญ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "An embedded system performs a dedicated function within a larger product. An IoT device is a network-connected physical device that exchanges data; many contain embedded systems. Industrial control systems monitor or control industrial processes and are part of operational technology. A networked controller may fit all three descriptions, but a standalone embedded controller need not be IoT. Avoid treating a smart camera, medical device and industrial controller as identical patching problems. Identify the purpose, accountable owner, supported maintenance path and consequences of failure before selecting a control.",
+            "th": "Embedded System ทำหน้าที่เฉพาะภายในผลิตภัณฑ์ที่ใหญ่กว่า IoT เป็นอุปกรณ์กายภาพที่เชื่อม Network และแลกเปลี่ยนข้อมูล ซึ่งหลายชนิดมี Embedded System อยู่ด้วย ส่วน ICS ติดตามหรือควบคุมกระบวนการอุตสาหกรรมและเป็นส่วนหนึ่งของ OT Controller ที่เชื่อม Network อาจตรงทั้งสามคำ แต่ Embedded Controller แบบไม่เชื่อม Network ไม่จำเป็นต้องเป็น IoT อย่าถือว่า Smart Camera Medical Device และ Industrial Controller มีโจทย์ Patch เหมือนกัน ต้องรู้หน้าที่ เจ้าของที่รับผิดชอบ วิธี Maintenance ที่รองรับ และผลเมื่ออุปกรณ์ล้มเหลวก่อนเลือก Control"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Overlapping categories do not imply identical operational risks.",
+            "th": "ประเภทที่ซ้อนกันไม่ได้มี Operational Risks เหมือนกันทั้งหมด"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "wireless",
+        "bluetooth",
+        "ot"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-04-04-ot-change-safety",
+      "title": {
+        "en": "A security change must not create an unsafe process.",
+        "th": "การเปลี่ยน Security ต้องไม่ทำให้ Process ไม่ปลอดภัย"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A production controller has a vulnerability. An untested reboot could interrupt a safety-sensitive process.",
+            "th": "Controller ใน Production มีช่องโหว่ แต่ Reboot ที่ไม่ทดสอบอาจกระทบ Process ที่เกี่ยวกับ Safety"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Assess with operations",
+                "th": "ประเมินร่วมกับ Operations"
+              },
+              {
+                "en": "Confirm process impact and supported fix",
+                "th": "ยืนยันผลต่อ Process และวิธีแก้ที่รองรับ"
+              },
+              {
+                "en": "Safety, timing and dependencies",
+                "th": "Safety เวลา และ Dependencies"
+              }
+            ],
+            [
+              {
+                "en": "Authorize / test",
+                "th": "อนุมัติ / ทดสอบ"
+              },
+              {
+                "en": "Plan validated maintenance and recovery",
+                "th": "วาง Maintenance ที่ทดสอบและแผนกู้คืน"
+              },
+              {
+                "en": "Do not improvise a live change",
+                "th": "ไม่เปลี่ยนระบบสดโดยพลการ"
+              }
+            ],
+            [
+              {
+                "en": "Limit meanwhile",
+                "th": "ลดความเสี่ยงระหว่างรอ"
+              },
+              {
+                "en": "Restrict paths and monitor activity",
+                "th": "จำกัดเส้นทางและ Monitor กิจกรรม"
+              },
+              {
+                "en": "Compensating controls leave residual risk",
+                "th": "Compensating Controls ยังมี Residual Risk"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "OT security must consider safety, reliability and availability of physical processes as well as confidentiality and integrity. A generic instruction to patch immediately may create harm if a controller cannot safely reboot or an update is incompatible. Coordinate with the accountable operations owner and approved vendor/support process, test the change, authorize a maintenance window and establish recovery steps. If patching must wait, use approved isolation, access restrictions and monitoring while documenting residual risk and a follow-up owner. These measures reduce exposure; they do not permanently remove the vulnerability or justify indefinite deferral.",
+            "th": "OT Security ต้องพิจารณา Safety Reliability และ Availability ของกระบวนการกายภาพควบคู่กับ Confidentiality/Integrity คำสั่งทั่วไปให้ Patch ทันทีอาจทำให้เกิดอันตราย หาก Controller Reboot ไม่ได้อย่างปลอดภัยหรือ Update ไม่เข้ากัน ควรประสานเจ้าของ Operations และกระบวนการ Vendor/Support ที่อนุมัติ ทดสอบการเปลี่ยนแปลง กำหนด Maintenance Window และขั้นตอนกู้คืน ถ้ายัง Patch ไม่ได้ ให้ใช้ Isolation การจำกัด Access และ Monitoring ที่อนุมัติ พร้อมบันทึก Residual Risk และผู้รับผิดชอบติดตาม มาตรการเหล่านี้ลด Exposure แต่ไม่ได้ลบช่องโหว่ถาวรหรือเป็นเหตุให้เลื่อนโดยไม่มีกำหนด"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Coordinate a safe fix; document temporary protection and follow-up.",
+            "th": "ประสานการแก้ที่ปลอดภัย บันทึกการป้องกันชั่วคราวและงานติดตาม"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "wireless",
+        "bluetooth",
+        "ot"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-04-05-iot-lifecycle",
+      "title": {
+        "en": "A connected device needs an owner and a lifecycle.",
+        "th": "อุปกรณ์ที่เชื่อมต่อควรมีเจ้าของและ Lifecycle"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Example: a camera needs its recorder, not unrestricted access to business databases.",
+            "th": "ตัวอย่าง Camera ต้องติดต่อ Recorder ไม่จำเป็นต้องเข้าฐานข้อมูลธุรกิจได้ทั้งหมด"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Enroll",
+                "th": "นำเข้าใช้งาน"
+              },
+              {
+                "en": "Inventory, owner, unique credentials",
+                "th": "ทำ Inventory ระบุ Owner และ Credentials เฉพาะ"
+              },
+              {
+                "en": "Remove default access",
+                "th": "ยกเลิก Access แบบ Default"
+              }
+            ],
+            [
+              {
+                "en": "Operate",
+                "th": "ใช้งาน"
+              },
+              {
+                "en": "Supported updates; minimum communication",
+                "th": "Updates ที่รองรับ และสื่อสารเท่าที่จำเป็น"
+              },
+              {
+                "en": "Separate from critical systems",
+                "th": "แยกจากระบบสำคัญ"
+              }
+            ],
+            [
+              {
+                "en": "Retire",
+                "th": "เลิกใช้งาน"
+              },
+              {
+                "en": "Replace unsupported devices; revoke access",
+                "th": "เปลี่ยนอุปกรณ์หมด Support และถอน Access"
+              },
+              {
+                "en": "Handle stored data and records",
+                "th": "จัดการข้อมูลที่เก็บและ Records"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "IoT risk includes default or weak credentials, vulnerable firmware, unnecessary services, insecure communications and devices that outlive vendor security support. Maintain an inventory and accountable owner, configure approved authentication, apply supported updates and allow only required paths. Separate a camera or sensor from critical business systems and verify the rules, rather than assuming a VLAN label alone provides protection. At retirement, remove credentials and network permissions and handle stored data under policy. If updates are unavailable, reassess isolation and replacement; monitoring alone cannot repair an unsupported device.",
+            "th": "IoT มีความเสี่ยงจาก Default/Weak Credentials Firmware ที่มีช่องโหว่ Services เกินจำเป็น การสื่อสารที่ไม่ป้องกัน และอุปกรณ์ที่ใช้นานกว่า Security Support ควรมี Inventory และ Owner ที่รับผิดชอบ ตั้ง Authentication ตามที่อนุมัติ ใช้ Updates ที่รองรับ และเปิดเฉพาะเส้นทางจำเป็น แยก Camera หรือ Sensor จากระบบธุรกิจสำคัญแล้วตรวจ Rules จริง อย่าสมมติว่าป้าย VLAN ป้องกันได้เอง เมื่อเลิกใช้ต้องถอน Credentials และ Network Permissions พร้อมจัดการข้อมูลที่เก็บตาม Policy ถ้าไม่มี Updates ให้ประเมิน Isolation และการเปลี่ยนอุปกรณ์ใหม่ Monitoring อย่างเดียวซ่อมอุปกรณ์หมด Support ไม่ได้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Keep only the paths the device actually needs.",
+            "th": "คงไว้เฉพาะเส้นทางที่อุปกรณ์จำเป็นต้องใช้จริง"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "wireless",
+        "bluetooth",
+        "ot"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-04-06-wireless-signals",
+      "title": {
+        "en": "Interpret wireless and device anomalies in context.",
+        "th": "อ่าน Anomaly ของ Wireless และอุปกรณ์ในบริบท"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A dashboard flags a new Bluetooth peer and unusual camera traffic. The signals need different checks.",
+            "th": "Dashboard พบ Bluetooth Peer ใหม่และ Traffic ของ Camera ผิดปกติ ต้องตรวจคนละบริบท"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Signal → corroboration → bounded conclusion",
+            "th": "สัญญาณ → หลักฐานประกอบ → ข้อสรุปที่มีขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "New peer",
+                "th": "Peer ใหม่"
+              },
+              {
+                "en": "Check approved pairing and device owner",
+                "th": "ตรวจ Pairing ที่อนุมัติและ Owner"
+              },
+              {
+                "en": "Name/proximity does not prove trust",
+                "th": "ชื่อหรือความใกล้ไม่พิสูจน์ Trust"
+              }
+            ],
+            [
+              {
+                "en": "Camera traffic",
+                "th": "Traffic ของ Camera"
+              },
+              {
+                "en": "Compare recorder/update schedule and destination",
+                "th": "เทียบ Recorder/ตาราง Update และปลายทาง"
+              },
+              {
+                "en": "Volume alone does not prove compromise",
+                "th": "ปริมาณอย่างเดียวไม่พิสูจน์ว่าถูกโจมตี"
+              }
+            ],
+            [
+              {
+                "en": "ML score",
+                "th": "คะแนน ML"
+              },
+              {
+                "en": "Record evidence, limits and actual response",
+                "th": "บันทึกหลักฐาน ข้อจำกัด และ Response จริง"
+              },
+              {
+                "en": "Models need useful telemetry",
+                "th": "Models ต้องมี Telemetry ที่ใช้ได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "AI-assisted network tools can prioritize unusual wireless behavior, new peers or changed embedded-device traffic. They need relevant telemetry and an appropriate baseline; limited device logging or encrypted content restricts visibility. A firmware update or authorized recorder change may explain an anomaly, while an unapproved pairing or unexpected destination may need prompt action under policy. Correlate with the device owner, inventory and maintenance records, and report what was actually observed or blocked. Do not grant broad collection rights or claim plaintext visibility merely because monitoring is labelled AI.",
+            "th": "เครื่องมือ Network ที่ใช้ AI ช่วยจัดลำดับพฤติกรรม Wireless ที่ผิดปกติ Peer ใหม่ หรือ Traffic ของ Embedded Device ที่เปลี่ยนไปได้ แต่ต้องมี Telemetry และ Baseline ที่เหมาะสม Logs ที่จำกัดหรือเนื้อหาเข้ารหัสทำให้ Visibility ไม่ครบ Firmware Update หรือการเปลี่ยน Recorder ที่อนุมัติอาจอธิบาย Anomaly ขณะที่ Pairing ไม่ได้รับอนุญาตหรือปลายทางไม่คาดหมายอาจต้องดำเนินการทันทีตาม Policy ควรเทียบกับ Owner Inventory และ Maintenance Records แล้วรายงานสิ่งที่พบหรือบล็อกจริง อย่าให้สิทธิ์เก็บข้อมูลกว้างเกินจำเป็น หรืออ้างว่าเห็น Plaintext เพียงเพราะเรียกเครื่องมือว่า AI"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A useful alert links a signal to the device’s purpose and evidence.",
+            "th": "Alert ที่ใช้ได้เชื่อมสัญญาณกับหน้าที่อุปกรณ์และหลักฐาน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "wireless",
+        "bluetooth",
+        "ot"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-04-07-device-decision",
+      "title": {
+        "en": "A vulnerable controller cannot safely reboot now.",
+        "th": "Controller มีช่องโหว่ แต่ยัง Reboot ไม่ได้อย่างปลอดภัย"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Operations confirms an untested live update could endanger the process. A tested maintenance window can be arranged.",
+            "th": "Operations ยืนยันว่า Update สดที่ไม่ทดสอบอาจอันตราย และจัด Maintenance Window ที่ทดสอบได้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "ทางเลือก A"
+              },
+              {
+                "en": "Force the update during production",
+                "th": "บังคับ Update ระหว่าง Production"
+              },
+              {
+                "en": "This ignores the stated process hazard and approved change requirements.",
+                "th": "แนวทางนี้ละเลยอันตรายต่อ Process และข้อกำหนด Change ที่ระบุ"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "ทางเลือก B"
+              },
+              {
+                "en": "Leave it exposed until it fails",
+                "th": "ปล่อยให้เปิดรับความเสี่ยงจนกว่าจะเสีย"
+              },
+              {
+                "en": "A delayed patch needs risk treatment and follow-up, not indefinite unmanaged exposure.",
+                "th": "การเลื่อน Patch ต้องจัดการความเสี่ยงและติดตาม ไม่ใช่ปล่อย Exposure ไม่มีกำหนด"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "ทางเลือก C"
+              },
+              {
+                "en": "Let an AI score authorize the reboot",
+                "th": "ให้คะแนน AI อนุมัติ Reboot"
+              },
+              {
+                "en": "A monitoring score does not replace operational authority or safety validation.",
+                "th": "คะแนน Monitoring ไม่แทนอำนาจ Operations หรือการตรวจ Safety"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "ทางเลือก D"
+              },
+              {
+                "en": "Restrict paths now; coordinate the tested fix",
+                "th": "จำกัดเส้นทางก่อน แล้วประสานการแก้ที่ทดสอบ"
+              },
+              {
+                "en": "Use authorized temporary controls, record residual risk and an owner, then verify the safe maintenance result.",
+                "th": "ใช้ Controls ชั่วคราวที่อนุมัติ บันทึก Residual Risk และ Owner แล้วตรวจผล Maintenance ที่ปลอดภัย"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The supported action respects both the vulnerability and the stated safety constraint. Coordinate authorized temporary restrictions and monitoring with operations, record the residual risk and accountable follow-up, and implement a tested fix in the approved maintenance window. Verify the resulting process operation and security state rather than equating a scheduled update with completed remediation. An AI alert can support prioritization but cannot authorize an unsafe reboot. Temporary controls are not a permanent claim that the vulnerability no longer exists.",
+            "th": "แนวทางที่เหมาะสมคำนึงถึงทั้งช่องโหว่และข้อจำกัด Safety ที่โจทย์ระบุ ต้องประสาน Operations เพื่อใช้การจำกัดเส้นทางและ Monitoring ชั่วคราวที่อนุมัติ บันทึก Residual Risk และผู้ติดตามรับผิดชอบ แล้วแก้ด้วยวิธีที่ทดสอบใน Maintenance Window ที่อนุมัติ ตรวจทั้งการทำงานของ Process และสถานะ Security หลังแก้ ไม่ถือว่าการนัด Update เท่ากับแก้เสร็จแล้ว AI Alert ช่วยจัดลำดับได้ แต่ไม่อนุมัติ Reboot ที่ไม่ปลอดภัย และ Controls ชั่วคราวไม่ใช่ข้ออ้างว่าช่องโหว่หายไปถาวร"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Safety-aware maintenance and exposure reduction work together.",
+            "th": "Maintenance ที่คำนึงถึง Safety ทำงานร่วมกับการลด Exposure"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "wireless",
+        "bluetooth",
+        "ot"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-4-completion-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    }
+  }
+}

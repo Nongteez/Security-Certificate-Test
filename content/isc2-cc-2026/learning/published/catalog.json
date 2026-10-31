@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "certificationId": "isc2-cc",
   "outlineId": "isc2-cc-2026-09-01",
-  "revision": "29",
+  "revision": "38",
   "domains": [
     {
       "id": 1,
@@ -655,7 +655,7 @@
         "en": "Networking and Cloud Security Concepts",
         "th": "แนวคิดความปลอดภัยของเครือข่ายและคลาวด์"
       },
-      "status": "coming-soon",
+      "status": "published",
       "objectives": [
         {
           "id": "4.1",
@@ -663,8 +663,85 @@
             "en": "Understand network security",
             "th": "เข้าใจความปลอดภัยของเครือข่าย"
           },
-          "status": "coming-soon",
-          "lessons": [],
+          "status": "published",
+          "lessons": [
+            {
+              "id": "lesson-d4-01-network-request",
+              "domainId": 4,
+              "primaryObjectiveId": "4.1",
+              "objectiveIds": [
+                "4.1"
+              ],
+              "title": {
+                "en": "Following a Network Request",
+                "th": "ติดตามเส้นทางคำขอผ่าน Network"
+              },
+              "synopsis": {
+                "en": "Connect reference models to the journey of a real request and separate transport reliability from security.",
+                "th": "เชื่อม Reference Models กับเส้นทางคำขอจริง และแยกความน่าเชื่อถือของ Transport จาก Security"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d4-01-network-request.json"
+            },
+            {
+              "id": "lesson-d4-02-addresses-vpns",
+              "domainId": 4,
+              "primaryObjectiveId": "4.1",
+              "objectiveIds": [
+                "4.1"
+              ],
+              "title": {
+                "en": "Addresses, Translation & VPN Boundaries",
+                "th": "Addresses การแปลง Address และขอบเขต VPN"
+              },
+              "synopsis": {
+                "en": "Read addressing and protected paths without confusing reachability, translation and trust.",
+                "th": "อ่าน Address และเส้นทางที่ป้องกัน โดยแยก Reachability การแปลง Address และ Trust"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d4-02-addresses-vpns.json"
+            },
+            {
+              "id": "lesson-d4-03-traffic-rules-signals",
+              "domainId": 4,
+              "primaryObjectiveId": "4.1",
+              "objectiveIds": [
+                "4.1"
+              ],
+              "title": {
+                "en": "Traffic Rules & Detection Signals",
+                "th": "กฎ Traffic และสัญญาณตรวจจับ"
+              },
+              "synopsis": {
+                "en": "Interpret endpoints, application visibility and anomalous traffic without treating a signal as proof.",
+                "th": "ตีความ Endpoints การมองเห็น Application และ Traffic ผิดปกติ โดยไม่ถือว่าสัญญาณเป็นข้อพิสูจน์"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d4-03-traffic-rules-signals.json"
+            },
+            {
+              "id": "lesson-d4-04-wireless-connected-systems",
+              "domainId": 4,
+              "primaryObjectiveId": "4.1",
+              "objectiveIds": [
+                "4.1"
+              ],
+              "title": {
+                "en": "Wireless & Connected Physical Systems",
+                "th": "Wireless และระบบกายภาพที่เชื่อมต่อ"
+              },
+              "synopsis": {
+                "en": "Protect wireless links and constrained devices while respecting operational safety and real sensor visibility.",
+                "th": "ป้องกัน Wireless และอุปกรณ์ที่มีข้อจำกัด โดยคำนึงถึง Safety และ Visibility จริง"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d4-04-wireless-connected-systems.json"
+            }
+          ],
           "relatedLessonIds": []
         },
         {
@@ -673,8 +750,47 @@
             "en": "Understand network security architecture",
             "th": "เข้าใจสถาปัตยกรรมความปลอดภัยของเครือข่าย"
           },
-          "status": "coming-soon",
-          "lessons": [],
+          "status": "published",
+          "lessons": [
+            {
+              "id": "lesson-d4-05-segmentation-paths",
+              "domainId": 4,
+              "primaryObjectiveId": "4.2",
+              "objectiveIds": [
+                "4.2"
+              ],
+              "title": {
+                "en": "Segmentation & Permitted Paths",
+                "th": "Segmentation และเส้นทางที่อนุญาต"
+              },
+              "synopsis": {
+                "en": "Design useful boundaries through zones, VLANs and workload policies, then verify the allowed and denied paths.",
+                "th": "ออกแบบขอบเขตผ่าน Zones VLANs และ Workload Policies แล้วตรวจเส้นทางที่อนุญาตและปฏิเสธ"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d4-05-segmentation-paths.json"
+            },
+            {
+              "id": "lesson-d4-06-layered-zero-trust",
+              "domainId": 4,
+              "primaryObjectiveId": "4.2",
+              "objectiveIds": [
+                "4.2"
+              ],
+              "title": {
+                "en": "Layered Defenses & Zero Trust",
+                "th": "การป้องกันหลายชั้นและ Zero Trust"
+              },
+              "synopsis": {
+                "en": "Combine different controls and make resource-specific decisions without assuming internal trust or perfect protection.",
+                "th": "ใช้ Controls ต่างหน้าที่ร่วมกัน และตัดสินสิทธิ์ต่อ Resource โดยไม่สมมติ Trust ภายในหรือการป้องกันสมบูรณ์"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d4-06-layered-zero-trust.json"
+            }
+          ],
           "relatedLessonIds": []
         },
         {
@@ -683,8 +799,66 @@
             "en": "Understand cloud security",
             "th": "เข้าใจความปลอดภัยของคลาวด์"
           },
-          "status": "coming-soon",
-          "lessons": [],
+          "status": "published",
+          "lessons": [
+            {
+              "id": "lesson-d4-07-cloud-characteristics",
+              "domainId": 4,
+              "primaryObjectiveId": "4.3",
+              "objectiveIds": [
+                "4.3"
+              ],
+              "title": {
+                "en": "How Cloud Resources Behave",
+                "th": "Cloud Resources ทำงานอย่างไร"
+              },
+              "synopsis": {
+                "en": "Distinguish five cloud characteristics using provisioning, demand, measurement and access examples.",
+                "th": "แยก Cloud Characteristics ห้าด้านจาก Provisioning Demand การวัด และ Access"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d4-07-cloud-characteristics.json"
+            },
+            {
+              "id": "lesson-d4-08-services-responsibility",
+              "domainId": 4,
+              "primaryObjectiveId": "4.3",
+              "objectiveIds": [
+                "4.3"
+              ],
+              "title": {
+                "en": "Service Models & Security Responsibilities",
+                "th": "Service Models และหน้าที่ Security"
+              },
+              "synopsis": {
+                "en": "Assign named duties to the party controlling the component, including serverless and AI-hosted services.",
+                "th": "มอบหน้าที่เฉพาะให้ฝ่ายที่ควบคุมส่วนนั้น รวมถึง Serverless และบริการ AI"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d4-08-services-responsibility.json"
+            },
+            {
+              "id": "lesson-d4-09-cloud-deployments",
+              "domainId": 4,
+              "primaryObjectiveId": "4.3",
+              "objectiveIds": [
+                "4.3"
+              ],
+              "title": {
+                "en": "Cloud Deployments & Dependency Choices",
+                "th": "Cloud Deployments และการเลือก Dependencies"
+              },
+              "synopsis": {
+                "en": "Distinguish who uses a cloud, how environments integrate and how multiple providers affect dependencies.",
+                "th": "แยกว่าใครใช้ Cloud Environments เชื่อมกันอย่างไร และหลาย Providers ส่งผลต่อ Dependencies อย่างไร"
+              },
+              "status": "published",
+              "revision": "1",
+              "lessonPath": "lessons/lesson-d4-09-cloud-deployments.json"
+            }
+          ],
           "relatedLessonIds": []
         }
       ]

@@ -1,0 +1,2105 @@
+[
+  {
+    "localId": "D1-F01",
+    "severity": "P1",
+    "category": "academic/internal consistency",
+    "subsections": [
+      "1.1.3",
+      "1.5.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 1307,
+    "excerpt": "Prove identity / Who are you → Authentication",
+    "actual": "Final cheat sheet assigns the identification question to Authentication.",
+    "expected": "Who are you/claim identity maps to Identification; prove identity maps to Authentication.",
+    "rootCause": "One mnemonic row combines two separately defined access-control stages.",
+    "evidence": [
+      "D1:174–176 and 238 distinguish claiming identity from proving it; D1:1307 contradicts that distinction."
+    ],
+    "referenceUrls": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "recommendation": "Split Identification and Authentication into separate rows.",
+    "confidence": "High",
+    "status": "confirmed",
+    "domain": 1,
+    "id": "D1-F01",
+    "references": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-F02",
+    "severity": "P2",
+    "category": "academic/authentication",
+    "subsections": [
+      "1.1.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 189,
+    "excerpt": "ปัจจัยการพิสูจน์ตัวตนแบ่งออกเป็น 4 หมวดหลัก",
+    "actual": "Location is presented beside independent MFA factors; generated card calls it contextual without excluding it from satisfying MFA.",
+    "expected": "Knowledge, possession and inherence are independent factor types; location is a supplementary risk/context signal.",
+    "rootCause": "The four-category heading and contextual card are combined under the independent-factor MFA definition.",
+    "evidence": [
+      "D1:187–195 and content-components.js:60–69; SP 800-63B-4 says fraud indicators cannot substitute for an authentication factor."
+    ],
+    "referenceUrls": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "recommendation": "Separate location context and add password plus corporate IP is not MFA.",
+    "confidence": "High For Misleading Scope; Medium For Exam Consequence",
+    "status": "confirmed",
+    "domain": 1,
+    "id": "D1-F02",
+    "references": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-F03",
+    "severity": "P2",
+    "category": "academic/bilingual",
+    "subsections": [
+      "1.1.1",
+      "1.5.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 37,
+    "excerpt": "Threat คือสิ่งภายนอก",
+    "actual": "Warnings define threats as external, despite earlier malicious-insider example.",
+    "expected": "Threats can originate internally or externally; distinguish potential harm from exploitable weakness.",
+    "rootCause": "External/internal is used as the defining threat-versus-vulnerability distinction.",
+    "evidence": [
+      "D1:21 correctly lists malicious insiders; D1:37 and 1040 restrict threats to external sources."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/glossary/term/threat",
+      "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-39.pdf"
+    ],
+    "recommendation": "Remove external-only wording and include an insider example.",
+    "confidence": "High",
+    "status": "confirmed",
+    "domain": 1,
+    "id": "D1-F03",
+    "references": [
+      "https://csrc.nist.gov/glossary/term/threat",
+      "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-39.pdf"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-F04",
+    "severity": "P3",
+    "category": "bilingual/translation",
+    "subsections": [
+      "1.1.1"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 22,
+    "excerpt": "ที่เปิดโอกาสให้ Threat ถูกใช้ประโยชน์",
+    "actual": "Thai passive grammar says that the threat is exploited.",
+    "expected": "Threat sources exploit vulnerabilities.",
+    "rootCause": "The passive object in the Thai definition is Threat rather than the weakness.",
+    "evidence": [
+      "D1:22 reverses the exploitation relationship; later D1 material generally uses the correct relationship."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/glossary/term/threat"
+    ],
+    "recommendation": "Use จุดอ่อน...ที่ภัยคุกคามหรือผู้ก่อภัยคุกคามอาจใช้ประโยชน์เพื่อก่อความเสียหาย.",
+    "confidence": "High",
+    "status": "confirmed",
+    "domain": 1,
+    "id": "D1-F04",
+    "references": [
+      "https://csrc.nist.gov/glossary/term/threat"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-F05",
+    "severity": "P2",
+    "category": "academic/privacy law",
+    "subsections": [
+      "1.3.2"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 626,
+    "excerpt": "Controller/Processor ทั่วโลกที่มีการประมวลผลข้อมูลพลเมืองสหภาพยุโรป",
+    "actual": "GDPR applicability is described as processing EU citizens' data anywhere.",
+    "expected": "Applicability depends on Article 3 establishment and targeting criteria; citizenship alone is not the test.",
+    "rootCause": "Citizenship is substituted for territorial-scope criteria.",
+    "evidence": [
+      "EDPB Guidelines 3/2018 explain that nationality does not determine Article 3(2) targeting applicability."
+    ],
+    "referenceUrls": [
+      "https://www.edpb.europa.eu/sites/default/files/files/file1/edpb_guidelines_3_2018_territorial_scope_after_public_consultation_en_1.pdf"
+    ],
+    "recommendation": "Replace citizenship rule with concise qualified establishment/targeting language.",
+    "confidence": "High",
+    "status": "confirmed",
+    "domain": 1,
+    "id": "D1-F05",
+    "references": [
+      "https://www.edpb.europa.eu/sites/default/files/files/file1/edpb_guidelines_3_2018_territorial_scope_after_public_consultation_en_1.pdf"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-F06",
+    "severity": "P2",
+    "category": "semantic diagram/accountability",
+    "subsections": [
+      "1.1.3",
+      "1.1.5",
+      "1.1.6"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 464,
+    "excerpt": "Audit Trails, ประทับเวลา (Timestamps) ... (Non-Repudiation)",
+    "actual": "Mobile AAA diagram implies ordinary timestamped logs create non-repudiation.",
+    "expected": "Logs support accountability; non-repudiation requires appropriate evidence and assurance controls.",
+    "rootCause": "Accounting text assigns a stronger property than ordinary logging establishes.",
+    "evidence": [
+      "DG:464 contrasts with D1:250's signed-evidence discussion; NIST digital-signature definition qualifies assurance by appropriate use."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/glossary/term/digital_signature"
+    ],
+    "recommendation": "Label logging as accountability and separately explain non-repudiation evidence requirements.",
+    "confidence": "High",
+    "status": "confirmed",
+    "domain": 1,
+    "id": "D1-F06",
+    "references": [
+      "https://csrc.nist.gov/glossary/term/digital_signature"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-F07",
+    "severity": "P2",
+    "category": "academic/risk economics",
+    "subsections": [
+      "1.2.2",
+      "1.2.4",
+      "1.5.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 506,
+    "excerpt": "ต้นทุนของมาตรการความปลอดภัยต่อปีไม่ควรเกินมูลค่า ALE",
+    "actual": "Prose and desktop compare control costs with entire ALE; mobile compares them with ALE savings.",
+    "expected": "Compare annual costs with expected ALE reduction, while recognizing legal/safety/contract constraints.",
+    "rootCause": "Desktop/prose omit residual ALE while mobile uses risk reduction.",
+    "evidence": [
+      "D1:505–506 and DG:744 differ from DG:795. If ALE falls from $10,000 to $9,000 at $5,000 annual cost, being below total ALE does not make the control economical."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-30.pdf",
+      "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-39.pdf"
+    ],
+    "recommendation": "Use ALE before minus ALE after and align both layouts; qualify the economic rule.",
+    "confidence": "High",
+    "status": "confirmed",
+    "domain": 1,
+    "id": "D1-F07",
+    "references": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-30.pdf",
+      "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-39.pdf"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-F08",
+    "severity": "P2",
+    "category": "academic/source attribution",
+    "subsections": [
+      "1.2.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 533,
+    "excerpt": "เช่น NIST ... Identify → Assess → Treat → Monitor",
+    "actual": "Callout attributes this named four-stage sequence to NIST and claims ISC2 explicitly mandates a fifth reporting stage.",
+    "expected": "NIST SP 800-39 uses Frame, Assess, Respond, Monitor; label local five-stage mnemonic as pedagogical unless official course source is supplied.",
+    "rootCause": "The named NIST sequence in the local callout differs from the primary source.",
+    "evidence": [
+      "NIST CSF FAQ and SP 800-39 confirm Frame/Assess/Respond/Monitor. Public ISC2 outline does not establish the separate fifth-stage claim; that part remains unverified attribution."
+    ],
+    "referenceUrls": [
+      "https://www.nist.gov/cyberframework/faqs",
+      "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-39.pdf",
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Correct NIST attribution and cite official training source or label five-stage model as local teaching structure.",
+    "confidence": "High For Nist Mismatch; Qualified For Isc2 Training Claim",
+    "status": "confirmed",
+    "domain": 1,
+    "id": "D1-F08",
+    "references": [
+      "https://www.nist.gov/cyberframework/faqs",
+      "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-39.pdf",
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-F09",
+    "severity": "P2",
+    "category": "academic/ethics attribution",
+    "subsections": [
+      "1.5.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 990,
+    "excerpt": "ลำดับคำใน Canon 2 ให้เกียรติและความซื่อสัตย์มาก่อนกฎหมาย",
+    "actual": "Text infers priority of honesty over legality from adjective order inside Canon 2.",
+    "expected": "Treat those duties together; lawful conduct may still be unethical without implying word-order precedence.",
+    "rootCause": "Lexical order is interpreted as a normative hierarchy without a supporting source.",
+    "evidence": [
+      "ISC2 public code provides the duties together and no adjective hierarchy."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/ethics"
+    ],
+    "recommendation": "Remove lexical-precedence interpretation; retain lawful-but-unethical example.",
+    "confidence": "High",
+    "status": "confirmed",
+    "domain": 1,
+    "id": "D1-F09",
+    "references": [
+      "https://www.isc2.org/ethics"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-F10",
+    "severity": "P2",
+    "category": "academic/legal overstatement",
+    "subsections": [
+      "1.5.2"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 1280,
+    "excerpt": "อาจมีความผิดฐาน Gross Negligence ... ซึ่งไม่ได้รับการคุ้มครองทางกฎหมาย",
+    "actual": "Mobile diagram asserts categorical absence of legal protection after potential gross negligence.",
+    "expected": "Describe possible professional/legal consequences without a jurisdiction-free immunity rule.",
+    "rootCause": null,
+    "evidence": [
+      "DG:1280 qualifies possible gross negligence with may, but not the final loss-of-protection clause. ISC2 Code establishes ethical duties, not the asserted universal legal rule; no particular country's negligence law was validated."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/ethics"
+    ],
+    "recommendation": "Use qualified negligence/liability language and professional discipline; omit universal loss-of-protection conclusion.",
+    "confidence": "High For Overstatement",
+    "status": "confirmed",
+    "domain": 1,
+    "id": "D1-F10",
+    "references": [
+      "https://www.isc2.org/ethics"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-N01",
+    "severity": "P2",
+    "category": "educational/curriculum completeness",
+    "subsections": [
+      "1.1.2",
+      "1.1.3",
+      "1.1.6",
+      "1.2.1",
+      "1.3.5",
+      "1.5.1"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 1,
+    "excerpt": "เอกสารรวบรวมและเรียบเรียงเนื้อหาฉบับสมบูรณ์",
+    "actual": "No AI/training-data/model-poisoning applications appear in this Domain 1 material.",
+    "expected": "Include concise foundational examples reflecting current ISC2 web guidance.",
+    "rootCause": null,
+    "evidence": [
+      "Full reading and targeted search found no such examples. ISC2 current page explains Domain 1 AI applications; all five formal objective labels are otherwise covered."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Add short CIA, privacy/AAA, risk/governance and ethics examples; no new AI domain required.",
+    "confidence": "High",
+    "status": "recommendation",
+    "domain": 1,
+    "id": "D1-N01",
+    "references": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-N02",
+    "severity": "P2",
+    "category": "semantic diagram/control functions",
+    "subsections": [
+      "1.4.2",
+      "1.4.3"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 1129,
+    "excerpt": "แจ้งเตือนภัยแบบเรียลไทม์ขณะที่เหตุการณ์หรือการโจมตีกำลังดำเนินอยู่",
+    "actual": "Main diagram restricts Detective to during/real time and correction to after incident, despite an overlap caption.",
+    "expected": "Classify primarily by purpose; detective controls also identify prior events and correction can overlap active response.",
+    "rootCause": null,
+    "evidence": [
+      "DG:1053–1084,1125–1129,1140; mitigating overlap caption DG:1177–1179 acknowledged. D1:851 correctly calls retrospective CCTV detective; CISA guide p.13 supports retrospective investigations."
+    ],
+    "referenceUrls": [
+      "https://www.cisa.gov/sites/default/files/c3vp/crr_resources_guides/CRR_Resource_Guide-CM.pdf"
+    ],
+    "recommendation": "Use often-before/during/after labels, add delayed detection, and identify absent directive/compensating functions as cross-cutting or title diagram selected functions.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "domain": 1,
+    "id": "D1-N02",
+    "references": [
+      "https://www.cisa.gov/sites/default/files/c3vp/crr_resources_guides/CRR_Resource_Guide-CM.pdf"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-N03",
+    "severity": "P2",
+    "category": "semantic diagram/bilingual",
+    "subsections": [
+      "1.1.7"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 610,
+    "excerpt": "ขจัดจุดล้มเหลวเดี่ยว (No Single Point of Failure)",
+    "actual": "Diagram lists seven defenses around an isolated core and implies adding layers eliminates single failure points; layer 6 Thai grammar suggests preventing encryption.",
+    "expected": "Show complementary relationship to core; describe reducing reliance on one control and use Thai wording protecting data through encryption.",
+    "rootCause": null,
+    "evidence": [
+      "DG:565–605 has lists and core without connections/enclosing layers; DG:610 overstates elimination; DG:676 wording ป้องกันช่องโหว่ซอฟต์แวร์และการเข้ารหัสข้อมูล is awkward. Seven layers are explicitly an example and defensible."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/glossary/term/defense_in_depth"
+    ],
+    "recommendation": "Connect/surround layers; qualify independence/diversity and eliminate overpromise; change layer 6 wording to ปกป้องข้อมูลด้วยการเข้ารหัส.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "domain": 1,
+    "id": "D1-N03",
+    "references": [
+      "https://csrc.nist.gov/glossary/term/defense_in_depth"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-N04",
+    "severity": "P3",
+    "category": "academic/risk modeling",
+    "subsections": [
+      "1.2.1",
+      "1.2.5",
+      "1.5.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 388,
+    "excerpt": "Risk ... ผลรวมของโอกาส ... ควบคู่กับขนาดของผลกระทบ",
+    "actual": "Thai sum wording and residual-risk subtraction appear alongside a multiplicative mnemonic without model assumptions.",
+    "expected": "Use combination; label likelihood×impact and subtraction as simplified models requiring defined compatible scales.",
+    "rootCause": null,
+    "evidence": [
+      "D1:388,409,580,1056–1060. Approximation sign in risk formula and correct before/after definitions partially mitigate concern."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/pubs/sp/800/30/r1/final",
+      "https://www.cyber.gc.ca/en/cccsglossary"
+    ],
+    "recommendation": "Reassess remaining likelihood and consequence; avoid arithmetic on ordinal High/Medium/Low labels.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "domain": 1,
+    "id": "D1-N04",
+    "references": [
+      "https://csrc.nist.gov/pubs/sp/800/30/r1/final",
+      "https://www.cyber.gc.ca/en/cccsglossary"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-N05",
+    "severity": "P3",
+    "category": "bilingual/privacy qualification",
+    "subsections": [
+      "1.1.6"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 256,
+    "excerpt": "การจัดเก็บ (Collection)",
+    "actual": "Collection translation overlaps storage; controller definition excludes natural persons; consent flow can imply universality; tax retention example lacks jurisdiction.",
+    "expected": "Translate Collection as การเก็บรวบรวม; include natural-person controllers; qualify consent as one legal basis; source jurisdiction-specific retention.",
+    "rootCause": null,
+    "evidence": [
+      "D1:256,267,281,291 and DG:521,533. EDPB supports natural/legal person roles and multiple lawful bases. Seven-year Thai employee-tax rule was not verified; erasure exception is appropriately qualified."
+    ],
+    "referenceUrls": [
+      "https://www.edpb.europa.eu/contact/frequently-asked-questions_en?page=1",
+      "https://www.edpb.europa.eu/topics/key-gdpr-concepts/legal-basis_en"
+    ],
+    "recommendation": "Clarify translation, roles and applicable lawful basis; source or label the retention assumption.",
+    "confidence": "High Except Unverified Retention Rule",
+    "status": "qualified concern",
+    "domain": 1,
+    "id": "D1-N05",
+    "references": [
+      "https://www.edpb.europa.eu/contact/frequently-asked-questions_en?page=1",
+      "https://www.edpb.europa.eu/topics/key-gdpr-concepts/legal-basis_en"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-N06",
+    "severity": "P3",
+    "category": "educational/password examples",
+    "subsections": [
+      "1.1.4",
+      "1.3.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 683,
+    "excerpt": "รหัสผ่านต้องมีความยาวอย่างน้อย 14 ตัวอักษร ผสมอักขระ 3 ใน 4 ประเภท",
+    "actual": "Hypothetical password standard teaches dated composition rules; security questions lack legacy labeling; diagram says standards have no exceptions.",
+    "expected": "Use modern example with length/blocklist/MFA and clarify organization-defined scope and approved exceptions.",
+    "rootCause": null,
+    "evidence": [
+      "D1:683, content-components.js:37, DG:1001,1012. NIST SP 800-63B-4 §3.1.1 prohibits composition rules in that standard. Hypothetical example still correctly illustrates a measurable standard."
+    ],
+    "referenceUrls": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "recommendation": "Replace dated example, label security questions legacy, and qualify mandatory/no-exception language.",
+    "confidence": "High About Nist Divergence; Medium About Hypothetical Example Harm",
+    "status": "recommendation",
+    "domain": 1,
+    "id": "D1-N06",
+    "references": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-N07",
+    "severity": "P3",
+    "category": "educational/operational context",
+    "subsections": [
+      "1.5.1",
+      "1.5.2",
+      "1.5.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 917,
+    "excerpt": "การลง Patch อุดช่องโหว่ทันทีที่ได้รับแจ้ง",
+    "actual": "Immediate installation is presented as due care without change/risk context; scanning-all-servers scenario omits explicit authorization.",
+    "expected": "Teach authorized risk-based normal/emergency change process and prudent response.",
+    "rootCause": null,
+    "evidence": [
+      "D1:917,1258,1267; scenarios 4 and 5; DG:1206,1252. Expected Due Diligence/Due Care answers remain correct."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/pubs/sp/800/40/r4/final",
+      "https://www.canada.ca/en/government/system/digital-government/online-security-privacy/cyber-security-guidance-policy/patch-management-guidance.html"
+    ],
+    "recommendation": "Add authorized scan scope and approved/emergency patch process, verification and urgency context.",
+    "confidence": "High",
+    "status": "recommendation",
+    "domain": 1,
+    "id": "D1-N07",
+    "references": [
+      "https://csrc.nist.gov/pubs/sp/800/40/r4/final",
+      "https://www.canada.ca/en/government/system/digital-government/online-security-privacy/cyber-security-guidance-policy/patch-management-guidance.html"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-N08",
+    "severity": "P3",
+    "category": "source provenance/ethics",
+    "subsections": [
+      "1.5.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 964,
+    "excerpt": "Canon ลำดับก่อนหน้าจะมีความสำคัญเหนือกว่าเสมอ",
+    "actual": "Strict inter-canon priority is repeatedly asserted without an accessible official training citation.",
+    "expected": "Cite official course source or explain as a prioritization aid while preserving professional judgment.",
+    "rootCause": null,
+    "evidence": [
+      "D1:956–964,977 and DG:1292–1397. Current ISC2 public code gives four canons in same order but omits a strict hierarchy; omission does not prove no official training uses it."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/ethics"
+    ],
+    "recommendation": "Supply traceable training citation or qualify the absolute always-supersedes rule.",
+    "confidence": "High That Public Page Omits Rule; Insufficient To Declare Convention False",
+    "status": "qualified concern",
+    "domain": 1,
+    "id": "D1-N08",
+    "references": [
+      "https://www.isc2.org/ethics"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-N09",
+    "severity": "P3",
+    "category": "academic/teaching absolutes",
+    "subsections": [
+      "1.1.2",
+      "1.1.5"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 222,
+    "excerpt": "เกิดขึ้นหลังจาก Authentication สำเร็จแล้วเสมอ",
+    "actual": "Authorization always after authentication and always-available phrasing overgeneralize; load-balancer example claims elimination of SPOFs with one LB.",
+    "expected": "Qualify named-user login model and service availability goals; ensure redundant LB tier before claiming full topology eliminates SPOFs.",
+    "rootCause": null,
+    "evidence": [
+      "D1:115,222; DG:289. Single load balancer source topology does not show redundancy at that tier; anonymous resource authorization is outside the illustrated login model."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/pubs/sp/800/207/final"
+    ],
+    "recommendation": "Use in this authenticated-user flow, timely/reliable service requirements, and explicit redundant LB assumption.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "domain": 1,
+    "id": "D1-N09",
+    "references": [
+      "https://csrc.nist.gov/pubs/sp/800/207/final"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D1-N10",
+    "severity": "P3",
+    "category": "educational/taxonomy mapping",
+    "subsections": [
+      "1.4.1"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 758,
+    "excerpt": "Technical / Managerial (Administrative) / Operational / Physical",
+    "actual": "Four-bucket taxonomy is presented without mapping to official three-category outline; Thai mantrap label has typo.",
+    "expected": "Explain operational bucket as an alternative taxonomy/extension and map to technical, administrative and physical.",
+    "rootCause": null,
+    "evidence": [
+      "D1:758–763; content-components.js:182–218. Official outline names technical/admin/physical; operational controls are legitimate in other taxonomies. CC:217 contains ประตูกลักกันคนเดินตาม."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Map categories explicitly and correct Thai access-control-vestibule label.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "domain": 1,
+    "id": "D1-N10",
+    "references": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "sourceReview": "domain-1-source-review.md"
+  },
+  {
+    "localId": "D2-01",
+    "severity": "P2",
+    "category": "conceptual precision",
+    "domain": 2,
+    "subsections": [
+      "2.2.3",
+      "2.2.6",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 204,
+    "excerpt": "Maximum Acceptable Downtime",
+    "actual": "Repeated maximum-downtime triggers and RTO ≤ MTD mnemonic can obscure the distinction between a system restoration target and business disruption tolerance.",
+    "expected": "Teach RTO as a recovery target and MTD as the business tolerance; allow for business reprocessing after technical restoration.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 164–168, 203–207, 537, 639, 672–674; scenario JS 28–30; diagram generator 1622, 1640–1642, 1676.",
+      "NIST SP 800-34r1 §3.2.1 states RTO normally needs to be shorter than MTD to leave time for reprocessing. Scenario 2 still correctly identifies RTO."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf#page=31",
+      "https://csrc.nist.gov/glossary/term/recovery_time_objective"
+    ],
+    "recommendation": "Use เป้าหมายระยะเวลาที่ต้องกู้คืนระบบหรือบริการให้พร้อมใช้งาน; explain why the inequality alone does not demonstrate a viable recovery plan.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "id": "D2-01",
+    "references": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf#page=31",
+      "https://csrc.nist.gov/glossary/term/recovery_time_objective"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D2-02",
+    "severity": "P2",
+    "category": "factual accuracy",
+    "domain": 2,
+    "subsections": [
+      "2.2.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 164,
+    "excerpt": "ก่อนจะเกิดความเสียหายที่ไม่อาจฟื้นคืนได้",
+    "actual": "MTD is described as the threshold before irreversible damage; line 167 further predicts organizational collapse.",
+    "expected": "MTD concerns the threshold for significant mission/business harm, without requiring irreversible damage or certain collapse.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 164 and 167 contain categorical irreversible-damage/collapse wording.",
+      "NIST MTD glossary defines disruption tolerance in terms of significant mission harm."
+    ],
+    "referenceUrls": [
+      "https://csrc.nist.gov/glossary/term/maximum_tolerable_downtime"
+    ],
+    "recommendation": "Use ก่อนเกิดผลกระทบเกินระดับที่องค์กรยอมรับได้ and describe target-breach consequences without predicting certain collapse.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D2-02",
+    "references": [
+      "https://csrc.nist.gov/glossary/term/maximum_tolerable_downtime"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D2-03",
+    "severity": "P2",
+    "category": "currency and scope",
+    "domain": 2,
+    "subsections": [
+      "2.3.6"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 327,
+    "excerpt": "Passphrase ที่มีความยาว ≥ 14 ตัวอักษร",
+    "actual": "The modern password recommendation gives an unqualified 14-character baseline.",
+    "expected": "Identify the standard and context: current NIST specifies 15 for single-factor passwords and permits at least 8 when only used within MFA.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 327 recommends ≥14 without the authentication context.",
+      "Directly checked NIST SP 800-63B-4 §3.1.1.2. A 14-character organizational policy is not universally invalid."
+    ],
+    "referenceUrls": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver"
+    ],
+    "recommendation": "Refresh the cited modern baseline and distinguish single-factor from MFA usage; do not present a context-specific minimum as universal.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "id": "D2-03",
+    "references": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D2-04",
+    "severity": "P2",
+    "category": "conceptual taxonomy",
+    "domain": 2,
+    "subsections": [
+      "2.4.8"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 441,
+    "excerpt": "Raw measurable value",
+    "actual": "The memory aid restricts metrics to raw quantitative values and visually puts KPI/KRI on a separate stage.",
+    "expected": "Metrics can include calculated rates, ratios and averages; KPI/KRI are types of metrics.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 441 conflicts with the broader definition at 357.",
+      "Generator 1704, 1789–1792 and 1864–1869 repeat the raw-value hierarchy in desktop/mobile variants.",
+      "Final NIST SP 800-55v1 §2.4 explicitly includes KPI/KRI as metrics."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf#page=16"
+    ],
+    "recommendation": "Show data/measurements feeding metrics including KPI/KRI, followed by communication formats; label the architecture a local teaching aid.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D2-04",
+    "references": [
+      "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf#page=16"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D2-05",
+    "severity": "P2",
+    "category": "unsupported authority and ambiguous definition",
+    "domain": 2,
+    "subsections": [
+      "2.4.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 375,
+    "excerpt": "ตามบริบทในสไลด์และเนื้อหาการสอบ ISC2 CC",
+    "actual": "The heading combines Respond/Remediate while the body defines response initiation and asserts an ISC2 exam convention without traceable official evidence.",
+    "expected": "State the selected expansion and precise start/end events without claiming a universal ISC2 answer convention.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 374–376 acknowledges multiple expansions but favors an initiation-only interpretation as exam-specific.",
+      "Official public outline does not prescribe an MTTR expansion.",
+      "Microsoft primary operational documentation separates acknowledgement from remediation with different timestamps."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "https://learn.microsoft.com/en-us/security/operations/incident-response-overview"
+    ],
+    "recommendation": "Add an interval example and defined endpoints; retain the fact that Mean Time to Respond is a valid context-dependent expansion.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "id": "D2-05",
+    "references": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "https://learn.microsoft.com/en-us/security/operations/incident-response-overview"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D2-06",
+    "severity": "P2",
+    "category": "bilingual semantic mismatch",
+    "domain": 2,
+    "subsections": [
+      "2.2.5"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 1542,
+    "excerpt": "DISASTER RECOVERY (DR) — แผนกู้คืนระบบเทคโนโลยีสารสนเทศ",
+    "actual": "Desktop and mobile BC/DR diagram labels translate DR as a plan.",
+    "expected": "Translate DR as การกู้คืน and reserve แผนการกู้คืน for DRP.",
+    "rootCause": null,
+    "evidence": [
+      "Generator 1542 and 1577 use แผน for DR.",
+      "Markdown 508–513 explicitly distinguishes DR capability/process from DRP document.",
+      "NIST SP 800-34r1 distinguishes recovery planning documents and functions."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf#page=22"
+    ],
+    "recommendation": "Correct both desktop and mobile Thai labels while preserving the introductory BC/DR scope relationship.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D2-06",
+    "references": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf#page=22"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D2-07",
+    "severity": "P2",
+    "category": "misleading taxonomy",
+    "domain": 2,
+    "subsections": [
+      "2.3.5",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 565,
+    "excerpt": "การส่งข้อความหลอกลวงทั่วไปแบบไม่เจาะจงเป้าหมายในวงกว้าง",
+    "actual": "Phishing is restricted to broad non-targeted messages, and a JS scenario contrasts whaling with spear phishing as though categories exclude one another.",
+    "expected": "Phishing is the broader family, spear phishing is targeted phishing, and whaling targets senior/high-profile recipients within spear phishing.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 308–310 and 564–583; scenario JS 70.",
+      "Canadian Centre for Cyber Security directly confirms whaling as spear phishing against senior/high-profile targets.",
+      "CISA search-indexed text corroborates phishing types, but direct PDF retrieval returned HTTP 403. Finding does not depend on that blocked retrieval."
+    ],
+    "referenceUrls": [
+      "https://www.cyber.gc.ca/en/guidance/introduction-cyber-threat-environment",
+      "https://www.cisa.gov/sites/default/files/2024-02/Update%20to%20Phishing%20General%20Security%20Postcard_01.01.2024.pdf"
+    ],
+    "recommendation": "Label the non-targeted column bulk/generic phishing and explicitly show nesting; retain whaling as scenario 7's most-specific correct answer.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "id": "D2-07",
+    "references": [
+      "https://www.cyber.gc.ca/en/guidance/introduction-cyber-threat-environment",
+      "https://www.cisa.gov/sites/default/files/2024-02/Update%20to%20Phishing%20General%20Security%20Postcard_01.01.2024.pdf"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D2-08",
+    "severity": "P3",
+    "category": "Thai terminology",
+    "domain": 2,
+    "subsections": [
+      "2.4.2",
+      "2.4.5",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 359,
+    "excerpt": "ลักษณะของเมทริกซ์ความปลอดภัย",
+    "actual": "เมทริกซ์ is repeatedly used for metric, creating a matrix-versus-metric semantic collision.",
+    "expected": "Use ตัวชี้วัด consistently, or a clearly identified metric transliteration.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 359, 402, 731–734 and 764; scenario JS 75–78 and 102.",
+      "English metric meaning is established internally at Markdown 357 and externally in NIST SP 800-55v1.",
+      "Thai spelling judgment is editorial semantic review; no exclusive official Thai glossary spelling was established."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf#page=34"
+    ],
+    "recommendation": "Replace เมทริกซ์ when the intended concept is metric; preserve actual matrix terminology where a table/matrix is intended.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D2-08",
+    "references": [
+      "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf#page=34"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D2-09",
+    "severity": "P2",
+    "category": "supplemental coverage",
+    "domain": 2,
+    "subsections": [
+      "2.2.7",
+      "2.3.3",
+      "2.4.4",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 320,
+    "excerpt": "ผู้โจมตีอาจนำ AI และเทคโนโลยี Deepfake Voice มาช่วยสร้างเรื่องราวหลอกลวง",
+    "actual": "Notes cover deepfake voice but omit AI continuity backups/configurations/datasets, model drift, AI-specific KRIs and updated playbook/triage applications.",
+    "expected": "Represent the current official supplemental web guidance without claiming these are additional numbered PDF objectives.",
+    "rootCause": null,
+    "evidence": [
+      "All 777 Markdown lines were inspected; line 320 is the explicit AI teaching.",
+      "Official ISC2 live outline page Domain 2 AI integration text was directly retrieved; numbered September 2026 PDF has broader objective bullets."
+    ],
+    "referenceUrls": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Add compact sourced AI continuity, KRI and playbook examples and a source date; frame as supplemental guidance.",
+    "confidence": "High",
+    "status": "recommendation",
+    "id": "D2-09",
+    "references": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D2-10",
+    "severity": "P3",
+    "category": "instructional distinction",
+    "domain": 2,
+    "subsections": [
+      "2.2.8"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 252,
+    "excerpt": "การตรวจทานเอกสาร (Checklist / Tabletop Exercise)",
+    "actual": "Checklist/document review and a scenario-led tabletop exercise are collapsed in one parenthetical.",
+    "expected": "Describe document review separately from discussion-based tabletop role/decision practice.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 252 groups Checklist and Tabletop Exercise under document review.",
+      "NIST SP 800-84 directly describes facilitator-led scenario discussion without deployment of equipment."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf"
+    ],
+    "recommendation": "Give each activity its own short description and retain the testing rationale.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "id": "D2-10",
+    "references": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D2-11",
+    "severity": "P3",
+    "category": "overgeneralized examples",
+    "domain": 2,
+    "subsections": [
+      "2.2.7"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 233,
+    "excerpt": "ข้อมูลที่ซิงโครไนซ์แบบเกือบ Real-time พร้อมใช้งานทันที",
+    "actual": "Hot-site synchronization/readiness and recovery windows are stated without clear example qualifiers.",
+    "expected": "Treat near-real-time synchronization as a possible implementation and time windows as illustrative, with capability validated through testing.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 233–242 supplies readiness claims and specific site recovery ranges.",
+      "NIST SP 800-34r1 §§3.4.3 and 5.1.5 discusses variation in alternate-site implementation."
+    ],
+    "referenceUrls": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf#page=36"
+    ],
+    "recommendation": "Add โดยทั่วไป/ตัวอย่าง and explain that design, dependencies and tests establish actual achievable recovery; retain relative readiness/cost ordering.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "id": "D2-11",
+    "references": [
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf#page=36"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D2-12",
+    "severity": "P3",
+    "category": "ambiguous security wording",
+    "domain": 2,
+    "subsections": [
+      "2.3.6"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-2.md",
+    "line": 328,
+    "excerpt": "รหัสผ่านที่จัดเก็บด้วยการเข้ารหัสและการแฮชร่วมกับ Salt",
+    "actual": "Verifier storage wording mixes encryption with salted hashing; line 333 also phrases phishing resistance as an unlimited inability to intercept authentication.",
+    "expected": "Name salted password hashing with an appropriate cost factor for verifiers; scope encryption and phishing resistance to the intended protections.",
+    "rootCause": null,
+    "evidence": [
+      "Markdown 328 wording is ambiguous, not evidence that reversible encryption alone is advocated.",
+      "Markdown 333 contains ไม่สามารถถูกดักขโมย wording.",
+      "NIST SP 800-63B-4 §§3.1.1.2 and 3.2.5 were directly checked."
+    ],
+    "referenceUrls": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "recommendation": "Clarify hashing for verifier storage, transport/additional encryption if intended, and scope phishing-resistant claims without implying immunity to endpoint/session compromise.",
+    "confidence": "High",
+    "status": "qualified concern",
+    "id": "D2-12",
+    "references": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "sourceReview": "domain-2-source-review.md"
+  },
+  {
+    "localId": "D34-01",
+    "severity": "P2",
+    "category": "factual/version",
+    "domain": 3,
+    "subsections": [
+      "3.1.6"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 129,
+    "excerpt": "Govern ใน CSF 2.0) โดยมีหัวข้อการควบคุมการเข้าถึง (PR.AC)",
+    "actual": "CSF 2.0 is paired with old PR.AC category.",
+    "expected": "CSF 2.0 uses PR.AA; PR.AC belongs to CSF 1.1.",
+    "rootCause": "Versions mixed in one sentence.",
+    "evidence": "NIST FAQ explicitly says PR.AC moved to PR.AA.",
+    "references": [
+      "https://www.nist.gov/cyberframework/faqs"
+    ],
+    "recommendation": "Use PR.AA or explicitly label PR.AC as CSF 1.1.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-01",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-02",
+    "severity": "P2",
+    "category": "factual/internal semantic inconsistency",
+    "domain": 3,
+    "subsections": [
+      "3.2.7",
+      "3.2.8",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 257,
+    "excerpt": "หมวดหมู่คุณลักษณะหลัก 4 ด้าน: [Subject, Object, Environmental, Device]",
+    "actual": "Action is missing from the main four-category list, while the matrix at line 283 and scenario reasoning at 563 include it. Desktop diagram at 2206 omits it; mobile at 2255 includes it.",
+    "expected": "Consistent subject, object/resource, requested action/operation, environment model; device posture remains a valid attribute.",
+    "rootCause": "Parallel summaries use inconsistent taxonomies.",
+    "evidence": "Local prose/matrix/scenario/desktop/mobile comparison; NIST definition evaluates requested operations.",
+    "references": [
+      "https://csrc.nist.gov/pubs/sp/800/162/upd2/final",
+      "https://csrc.nist.gov/projects/attribute-based-access-control"
+    ],
+    "recommendation": "Restore action consistently and add read-vs-delete example.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-02",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-03",
+    "severity": "P2",
+    "category": "factual/protocol layer",
+    "domain": 4,
+    "subsections": [
+      "4.1.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 90,
+    "excerpt": "Internet Layer (L2) ... IPv4, IPv6, ICMP, IPsec, ARP",
+    "actual": "ARP is in TCP/IP Internet layer row.",
+    "expected": "ARP belongs with Link/Network Access in the four-layer architecture used here.",
+    "rootCause": "ARP grouped with IP despite local-link role.",
+    "evidence": "RFC1122 covers ARP in Link Layer section 2.3.2.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc1122.html#section-2.3.2"
+    ],
+    "recommendation": "Move ARP to Link/Network Access row.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-03",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-04",
+    "severity": "P2",
+    "category": "factual/IPv6",
+    "domain": 4,
+    "subsections": [
+      "4.1.5"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 138,
+    "excerpt": "นำ Prefix ที่ได้มารวมกับ MAC Address ของตนเอง",
+    "actual": "SLAAC taught as combining prefix with MAC address.",
+    "expected": "Combine prefix with interface identifier; current defaults need not embed MAC.",
+    "rootCause": "Historical MAC-derived method presented as universal.",
+    "evidence": "RFC8064 recommends stable identifiers without embedded link-layer address by default.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc8064.html"
+    ],
+    "recommendation": "Teach prefix + IID; label EUI-64 as one historical method.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-04",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-05",
+    "severity": "P2",
+    "category": "factual/cloud accountability vs operation",
+    "domain": 4,
+    "subsections": [
+      "4.3.3",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 460,
+    "excerpt": "ลูกค้า (Customer) ต้องเป็นผู้รับผิดชอบเสมอ 100%",
+    "actual": "All data/IAM responsibility is exclusively customer, impossible for CSP to bear; repeats at 697,724,809–810, scenario module 81–82, broad diagram cells.",
+    "expected": "Customer retains classification/access decisions and tenant duties; CSP also secures managed storage/IAM infrastructure/services.",
+    "rootCause": "Customer accountability collapsed into exclusive operational responsibility.",
+    "evidence": "Azure retained duties concern customer-controlled components; AWS IAM/STS itself operates under shared responsibility.",
+    "references": [
+      "https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility",
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/security.html",
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/data-protection.html"
+    ],
+    "recommendation": "Bound cells to customer-controlled data/access decisions; retain customer answer for the public-sharing misconfiguration scenario.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-05",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-06",
+    "severity": "P2",
+    "category": "factual/provider-specific generalization",
+    "domain": 4,
+    "subsections": [
+      "4.3.6",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 507,
+    "excerpt": "Security Group ... Instance / Virtual Machine (Host Level) ... กำหนดได้เฉพาะกฎ Allow",
+    "actual": "AWS SG/NACL model taught under generic VPC/VNet header without AWS qualification; return traffic wording can imply any outbound traffic.",
+    "expected": "AWS-specific allow-only SG vs stateless subnet NACL; Azure NSG allows deny and is stateful at subnet/NIC.",
+    "rootCause": "Provider-specific implementation presented without provider context.",
+    "evidence": "AWS VPC FAQ compared directly with Azure NSG official documentation.",
+    "references": [
+      "https://aws.amazon.com/vpc/faqs/",
+      "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview"
+    ],
+    "recommendation": "Label AWS VPC example; specify responses to an allowed flow rather than all outbound.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-06",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-07",
+    "severity": "P2",
+    "category": "factual/cloud egress",
+    "domain": 4,
+    "subsections": [
+      "4.3.6"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 505,
+    "excerpt": "หากต้องการออกไปดาวน์โหลดแพตช์ภายนอก ต้องผ่าน NAT Gateway เท่านั้น",
+    "actual": "Private subnet egress requires NAT Gateway only.",
+    "expected": "NAT gateway is one IPv4 option; NAT instance and IPv6 egress-only IGW are alternatives.",
+    "rootCause": "Common architecture stated as exclusive rule.",
+    "evidence": "AWS VPC FAQ documents NAT instance and IPv6 egress-only IGW.",
+    "references": [
+      "https://aws.amazon.com/vpc/faqs/"
+    ],
+    "recommendation": "Replace only with an example and qualify address family/provider.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-07",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-08",
+    "severity": "P3",
+    "category": "metadata/outline alignment",
+    "domain": [
+      3,
+      4
+    ],
+    "subsections": [
+      "metadata",
+      "lead"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.js",
+    "line": 13,
+    "excerpt": "Domain 3: Access Controls; Domain 4: Network Security",
+    "actual": "Legacy short titles claimed as official 2026 metadata; also domain-4.js:13 and both MD leads.",
+    "expected": "Identity and Access Management (IAM) Concepts; Networking and Cloud Security Concepts.",
+    "rootCause": "Titles were not updated alongside 2026 objective IDs/weights.",
+    "evidence": "Official ISC2 current detailed outline and effective-date header fetched; PDF click did not resolve.",
+    "references": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Adopt official titles; clearly mark abbreviated navigation labels.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-08",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-09",
+    "severity": "P2",
+    "category": "factual/IPv4 broadcast",
+    "domain": 4,
+    "subsections": [
+      "4.1.1"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 22,
+    "excerpt": "Broadcast (FF:FF:FF:FF:FF:FF หรือ x.x.x.255)",
+    "actual": "Last octet 255 is given as generic IPv4 broadcast pattern.",
+    "expected": "Directed broadcast sets all host bits to one; mask determines which bits are host bits.",
+    "rootCause": "Common /24 example lacks its prefix qualifier.",
+    "evidence": "RFC919 all-ones host-number principle; calculated counterexamples: 192.168.1.127 broadcast for /25; 192.168.1.255 can be host in /16.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc919.html#section-7"
+    ],
+    "recommendation": "Use explicit 192.168.1.255/24 example and all-host-bits rule.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-09",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-10",
+    "severity": "P2",
+    "category": "factual/IPv4 link-local",
+    "domain": 4,
+    "subsections": [
+      "4.1.4"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 114,
+    "excerpt": "APIPA ... 169.254.0.0 – 169.254.255.255",
+    "actual": "APIPA appears under RFC1918 private heading; reserved /16 is presented as autoselection range.",
+    "expected": "Link-local is separate from RFC1918; selection 169.254.1.0–169.254.254.255 excludes first/last /24.",
+    "rootCause": "Reserved prefix conflated with selectable addresses and private-address category.",
+    "evidence": "RFC3927 sections 2.1 and 2.7.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc3927.html#section-2.1"
+    ],
+    "recommendation": "Separate link-local heading and state reserved prefix vs host selection range.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-10",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-11",
+    "severity": "P2",
+    "category": "factual/security guarantee",
+    "domain": 3,
+    "subsections": [
+      "3.2.5",
+      "3.2.8",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 238,
+    "excerpt": "ความมั่นคงปลอดภัยระดับสูงสุด ป้องกันข้อมูลรั่วไหลได้อย่างเด็ดขาด",
+    "actual": "MAC declared highest security and absolute prevention of leakage; desktop/mobile repeat at generator 2180/2233.",
+    "expected": "Mandatory central policy enforcement is a model property; real protection depends on implementation/policy/other controls.",
+    "rootCause": "Relative model trait turned into an absolute outcome guarantee.",
+    "evidence": "NIST MAC definition specifies policy authority/enforcement, not universal rankings; main local line237 already correctly adds Need-to-Know.",
+    "references": [
+      "https://csrc.nist.gov/glossary/term/mandatory_access_control",
+      "https://csrc.nist.gov/glossary/term/need_to_know"
+    ],
+    "recommendation": "Remove guarantee and repeat Need-to-Know/applicable-policy caveat in review scenario.",
+    "confidence": "High For Guarantee; Medium For Scenario Omission Severity",
+    "status": "confirmed",
+    "id": "D34-11",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-12",
+    "severity": "P2",
+    "category": "factual/wireless",
+    "domain": 4,
+    "subsections": [
+      "4.1.9"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 268,
+    "excerpt": "ชื่อเครือข่ายยังคงถูกส่งออกไปใน Probe Requests และ Beacon Frames เมื่อมีเครื่องเชื่อมต่อ",
+    "actual": "Hidden SSID name is said to be transmitted in beacons when clients connect.",
+    "expected": "AP still sends beacons, but hidden SSID name is omitted/null; discovery/association traffic can reveal name.",
+    "rootCause": "Continued beacon transmission conflated with SSID-name inclusion.",
+    "evidence": "Cisco Meraki hidden-SSID note distinguishes absent name in beacons.",
+    "references": [
+      "https://documentation.meraki.com/Wireless/Operate_and_Maintain/User_Guides/Monitoring_and_Reporting/Air_Marshal"
+    ],
+    "recommendation": "Keep conclusion that hiding is not robust security; correct mechanism.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-12",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-13",
+    "severity": "P2",
+    "category": "factual/service plan generalization",
+    "domain": 4,
+    "subsections": [
+      "4.3.2"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 442,
+    "excerpt": "สเกลขนาดเป็นศูนย์เมื่อไม่มีการใช้งาน",
+    "actual": "FaaS always scales to zero when idle, with Azure Functions included as example.",
+    "expected": "Scale-to-zero depends on plan/configuration; Azure Premium always has at least one instance.",
+    "rootCause": "Common consumption-plan property treated as universal definition.",
+    "evidence": "Azure Functions event-driven scaling table specifies minimum-one Premium and always-ready options.",
+    "references": [
+      "https://learn.microsoft.com/en-us/azure/azure-functions/event-driven-scaling"
+    ],
+    "recommendation": "Qualify scale-to-zero support by provider/plan and explain cold-start tradeoff.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-13",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-14",
+    "severity": "P2",
+    "category": "service-specific qualification",
+    "domain": 4,
+    "subsections": [
+      "4.3.2",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 432,
+    "excerpt": "ผู้ให้บริการคลาวด์ดูแล ... ระบบปฏิบัติการ ... ให้ทั้งหมด",
+    "actual": "PaaS OS/runtime handled entirely by CSP, followed by Beanstalk example; may imply no customer platform-maintenance duties.",
+    "expected": "Abstract PaaS provider-management pattern is valid; named service still requires customer supported-version/update configuration and major branch maintenance.",
+    "rootCause": "Abstract responsibility pattern lacks service-specific exception.",
+    "evidence": "Beanstalk managed updates may be disabled and exclude major platform branches; retired versions stop security updates.",
+    "references": [
+      "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-platform-update-managed.html",
+      "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-support-policy.html"
+    ],
+    "recommendation": "Retain exam-level provider OS pattern but qualify named-service duties; PaaS source-code scenario remains correctly keyed.",
+    "confidence": "High Evidence; Medium On Reader Inference",
+    "status": "qualified concern",
+    "id": "D34-14",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-15",
+    "severity": "P3",
+    "category": "factual/technology taxonomy",
+    "domain": 3,
+    "subsections": [
+      "3.1.7"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 139,
+    "excerpt": "ตัวอย่าง: Microsoft Active Directory (AD), Lightweight Directory Access Protocol (LDAP)",
+    "actual": "LDAP listed as a directory service product peer to AD.",
+    "expected": "LDAP is directory-access protocol; AD/OpenLDAP are implementation examples.",
+    "rootCause": "Protocol vs implementation distinction omitted.",
+    "evidence": "RFC4511 defines LDAP protocol elements for access to directory services.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc4511.html"
+    ],
+    "recommendation": "Name AD/OpenLDAP services and label LDAP protocol separately.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-15",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "D34-16",
+    "severity": "P3",
+    "category": "factual/API vs protocol",
+    "domain": 4,
+    "subsections": [
+      "4.1.2",
+      "4.1.3"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 50,
+    "excerpt": "โพรโทคอลสำคัญ: RPC (Remote Procedure Call), NetBIOS, Sockets",
+    "actual": "Sockets is labeled a Session-layer protocol; diagram2284 repeats.",
+    "expected": "Socket is API/endpoint abstraction using transport providers.",
+    "rootCause": "Conceptual layer mapping mixes API with wire protocols.",
+    "evidence": "Microsoft socket API creates sockets bound to transport service provider.",
+    "references": [
+      "https://learn.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket"
+    ],
+    "recommendation": "Remove from protocol examples or label API separately; qualify illustrative OSI mappings.",
+    "confidence": "High",
+    "status": "confirmed",
+    "id": "D34-16",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "Q1",
+    "severity": "P3",
+    "category": "educational workflow",
+    "domain": 3,
+    "subsections": [
+      "3.1.1",
+      "3.1.3",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 64,
+    "excerpt": "กระบวนการ Provisioning มี 6 ขั้นตอนตามลำดับมาตรฐาน",
+    "actual": "Six plausible activities are called standard order and role-first is unconditional.",
+    "expected": "Illustrative workflow; context-dependent prerequisites and approvals.",
+    "evidence": "Official outline does not prescribe six-step ordering; NIST AC2 policy/criteria.",
+    "references": [
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline"
+    ],
+    "recommendation": "Label illustrative; bound first-action question.",
+    "confidence": "High Except Bounded Inference As Stated",
+    "status": "recommendation",
+    "id": "D34-Q1",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "Q2",
+    "severity": "P3",
+    "category": "Thai terminology and retention",
+    "domain": 3,
+    "subsections": [
+      "3.1.5",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-3.md",
+    "line": 107,
+    "excerpt": "Disable Account ... (Lock Account)",
+    "actual": "Disable conflated with lockout; history-retention rationale generalized.",
+    "expected": "Administrative disable is distinct from failed-login lockout; retention is policy/system-dependent.",
+    "evidence": "Microsoft documents unlock/disable/delete separately.",
+    "references": [
+      "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage-user-accounts-in-windows-server"
+    ],
+    "recommendation": "Use disable/block sign-in; qualify delete/log dependency.",
+    "confidence": "High Except Bounded Inference As Stated",
+    "status": "recommendation",
+    "id": "D34-Q2",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "Q3",
+    "severity": "P3",
+    "category": "authentication nuance",
+    "domain": 3,
+    "subsections": [
+      "3.1.6",
+      "3.1.7"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 2056,
+    "excerpt": "รหัสผ่าน, OTP, ไบโอเมตริกซ์",
+    "actual": "Biometric example lacks NIST remote-auth MFA qualification; no standalone compliance claim.",
+    "expected": "In NIST remote-auth context biometric factor accompanies physical authenticator.",
+    "evidence": "SP800-63B-4 sections2 and3.2.3 checked.",
+    "references": [
+      "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    ],
+    "recommendation": "Cite current family; add distinct-factor recap/crosslink.",
+    "confidence": "High Except Bounded Inference As Stated",
+    "status": "recommendation",
+    "id": "D34-Q3",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "Q9",
+    "severity": "P3",
+    "category": "IPv6 qualification",
+    "domain": 4,
+    "subsections": [
+      "4.1.5",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 136,
+    "excerpt": "รองรับ ... IPsec",
+    "actual": "Source says support, not automatic encryption; generic 6to4 example needs mode qualifier.",
+    "expected": "No false always-encrypted finding; only anycast6to4 deprecated.",
+    "evidence": "RFC8504 SHOULD; RFC7526 explicitly preserves basic unicast6to4.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc7526.html#section-4"
+    ],
+    "recommendation": "Add no-automatic-encryption caveat and transition context.",
+    "confidence": "High Except Bounded Inference As Stated",
+    "status": "qualified concern",
+    "id": "D34-Q9",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "Q10",
+    "severity": "P3",
+    "category": "protocol common-case omission",
+    "domain": 4,
+    "subsections": [
+      "4.1.6",
+      "4.1.7"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 192,
+    "excerpt": "UDP สำหรับคำขอทั่วไป, TCP สำหรับ Zone Transfer",
+    "actual": "Conventional examples do not explicitly say only; HTTPS TCP443 omits HTTP3.",
+    "expected": "DNS ordinary queries may use TCP; HTTP3 uses UDP/QUIC.",
+    "evidence": "RFC7766 and9114 verified; FTPS/SSL extensions not separately verified.",
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc7766.html#section-5"
+    ],
+    "recommendation": "Add modern qualifications; do not count common examples as wholly false.",
+    "confidence": "High Except Bounded Inference As Stated",
+    "status": "recommendation",
+    "id": "D34-Q10",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "Q12",
+    "severity": "P3",
+    "category": "diagram pedagogic qualification",
+    "domain": 4,
+    "subsections": [
+      "4.2.3",
+      "4.2.6"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 2426,
+    "excerpt": "Port 80/443",
+    "actual": "FW web-only label accompanies SMTP/DNS services; five-tier graphic called concentric.",
+    "expected": "Identify example web rule; make five layers illustrative.",
+    "evidence": "Local diagram2437,2441,2445 comparison; no geometry/browser claim.",
+    "references": [],
+    "recommendation": "Qualify labels; no claim that all firewalls permit only80/443.",
+    "confidence": "High Except Bounded Inference As Stated",
+    "status": "recommendation",
+    "id": "D34-Q12",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "localId": "Q14",
+    "severity": "P3",
+    "category": "NIST vs vendor cloud terminology",
+    "domain": 4,
+    "subsections": [
+      "4.3.4",
+      "4.3.5",
+      "review"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 476,
+    "excerpt": "Private Cloud หรือ On-Premises ผสมกับ Public Cloud",
+    "actual": "Onprem+public vendor usage broader than strict NIST; private highest-security guarantee and commercial-only public ownership need caveats.",
+    "expected": "NIST hybrid combines cloud infrastructures; security depends on controls; ownership may be business/academic/government.",
+    "evidence": "NIST800-145 and hybrid glossary retrieved.",
+    "references": [
+      "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf"
+    ],
+    "recommendation": "Qualify NIST attribution and cloud-vs-datacenter; acknowledge hybrid/multicloud overlap.",
+    "confidence": "High Except Bounded Inference As Stated",
+    "status": "qualified concern",
+    "id": "D34-Q14",
+    "sourceReview": "domain-3-4-source-review.md"
+  },
+  {
+    "id": "RN-I-001",
+    "localId": "RN-I-001",
+    "severity": "P1",
+    "status": "confirmed",
+    "category": "Typography; Diagram; UI/UX",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "all diagram subsections"
+    ],
+    "file": "css/reading.css",
+    "line": 1187,
+    "title": "Desktop SVG labels become too small, especially at 1024px",
+    "excerpt": "At 1024px, visible SVG text falls to 6.72px (D1), 6.56px (D2/D3), and 5.63px (D4). All 24 diagram payloads contain labels below 11px across the four domains; 23 subsection ranges are affected because one D1 subsection contains two diagrams. Some D3/D4 labels remain only 8–10px at wide desktop.",
+    "actual": "At 1024px, visible SVG text falls to 6.72px (D1), 6.56px (D2/D3), and 5.63px (D4). All 24 diagram payloads contain labels below 11px across the four domains; 23 subsection ranges are affected because one D1 subsection contains two diagrams. Some D3/D4 labels remain only 8–10px at wide desktop.",
+    "expected": "Instructional labels should remain comfortably legible at the available reading-pane width; use a readable responsive representation before severe SVG scaling occurs.",
+    "rootCause": "The 290px sidebar plus 48px gap leaves a 575px prose pane at 1024px; full-width SVG viewBoxes scale their text. The alternative representations switch at viewport 768px rather than actual component width.",
+    "evidence": [
+      "browser-results-attempt3.json: sections[].tinySvg for 1024x768 in both themes",
+      "detail-d3-topic-3-2-models-matrix-1024.png",
+      "All 24 mobile previews/source templates were reviewed; this is not a claim that phone labels still use the desktop SVG."
+    ],
+    "recommendation": "Choose a minimum useful component width for each diagram. Use readable HTML, a simplified vector, or a focused diagram at that width; preserve relationships rather than automatically stacking every item as cards.",
+    "references": [],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-003",
+    "localId": "RN-I-003",
+    "severity": "P1",
+    "status": "confirmed",
+    "category": "Navigation; UI/UX; Technical",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "all"
+    ],
+    "file": "js/ui/screen-reading.js",
+    "line": 149,
+    "title": "Saved reading location is displaced on reload",
+    "excerpt": "Isolated cold topic loads scroll to the intended subsection, but scrollspy changes the hash/active marker to the broad objective. After another 420px scroll and reload, D1 y8439→392, D2 y4166→421, D3 y4706→450, D4 y6317→479.",
+    "actual": "Isolated cold topic loads scroll to the intended subsection, but scrollspy changes the hash/active marker to the broad objective. After another 420px scroll and reload, D1 y8439→392, D2 y4166→421, D3 y4706→450, D4 y6317→479.",
+    "expected": "Reload/resume should retain the intended subsection or documented reading offset, and the active marker should identify the actual subsection.",
+    "rootCause": "restoreLocation returns immediately after restoring an anchor, ignoring scrollY. Scrollspy observes .reading-topic-anchor and entire .reading-objective-section blocks; D2–D4 h3 topics lack the observed class. Objective intersections can replace the explicit topic hash.",
+    "evidence": [
+      "focused-results.json: isolated-cold-scroll-reload (four fresh full-document loads)",
+      "browser-results-attempt3.json reproduces the same symptom, but its accumulated-route journeys are secondary evidence only.",
+      "js/ui/screen-reading.js:149–191, 449–487; js/app.js:28–32"
+    ],
+    "recommendation": "Repair scrollspy/restore precedence within the existing schema, using real heading targets and a stable location policy. Verify a mid-subsection position and actual heading after reload, not only nonzero scroll.",
+    "references": [],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-004",
+    "localId": "RN-I-004",
+    "severity": "P2",
+    "status": "confirmed",
+    "category": "Navigation; UI/UX",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "all"
+    ],
+    "file": "css/reading.css",
+    "line": 111,
+    "title": "Desktop navigation disappears during long reading",
+    "excerpt": "At desktop scrollY=5000, the sidebar top is -4843px and bottom -4155px despite position:sticky. The left rail becomes unused space and cannot navigate without returning to the top.",
+    "actual": "At desktop scrollY=5000, the sidebar top is -4843px and bottom -4155px despite position:sticky. The left rail becomes unused space and cannot navigate without returning to the top.",
+    "expected": "Long-reading navigation should remain reachable as intended by the sticky layout.",
+    "rootCause": "Verified geometry shows sticky behavior is ineffective. The likely cause is the html/body overflow-x:hidden creating a scrolling ancestor (computed overflow hidden auto); the causal CSS change was not applied because this is audit-only.",
+    "evidence": [
+      "focused-results.json: sidebar-at-long-scroll",
+      "desktop-navigation-offscreen.png",
+      "css/base.css:75–85; css/reading.css:111–123"
+    ],
+    "recommendation": "Investigate the scrolling ancestor and sticky boundary in a small layout task; retain the existing restrained reader design.",
+    "references": [],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-005",
+    "localId": "RN-I-005",
+    "severity": "P2",
+    "status": "confirmed",
+    "category": "Technical; Navigation",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "all"
+    ],
+    "file": "js/ui/screen-reading.js",
+    "line": 838,
+    "title": "Reader remounts retain old window handlers",
+    "excerpt": "Hash routing remounts Reading Notes without a reader disposal hook. Earlier domain handlers continue saving new scroll offsets into previous domain entries. Focused route tests show simultaneous stale-domain writes; final-browser-checks.json records listener counts.",
+    "actual": "Hash routing remounts Reading Notes without a reader disposal hook. Earlier domain handlers continue saving new scroll offsets into previous domain entries. Focused route tests show simultaneous stale-domain writes; final-browser-checks.json records listener counts.",
+    "expected": "Exactly one active reader should own its observers, scroll/resize handlers and pending timers.",
+    "rootCause": "Cleanup is closure-local and is called by the in-app Back handler, but renderApp remounts only dispose Learning Slides. Reading render returns no disposal handle.",
+    "evidence": [
+      "focused-results.json: inactive-domain-topic, domain-button-switch, sidebar-at-long-scroll show old-domain lastScrollY updates",
+      "js/app.js:69–72; js/ui/renderer.js:27–30; screen-reading.js:642–652, 838–879"
+    ],
+    "recommendation": "Give the reader a route-disposal lifecycle, clear timers, and verify repeated cross-domain browser Back/Forward does not add listeners or alter inactive-domain progress.",
+    "references": [],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-006",
+    "localId": "RN-I-006",
+    "severity": "P1",
+    "status": "confirmed",
+    "category": "Accessibility; Navigation; UI/UX",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "all"
+    ],
+    "file": "css/reading.css",
+    "line": 3052,
+    "title": "Hidden mobile drawer remains in the keyboard path",
+    "excerpt": "With the drawer closed, Tab reaches its close button at x=-55 and domain/topic controls at x=-290 to -240. Opening the modal-looking drawer leaves focus outside it; Escape does not close it and the toggle exposes no expanded state.",
+    "actual": "With the drawer closed, Tab reaches its close button at x=-55 and domain/topic controls at x=-290 to -240. Opening the modal-looking drawer leaves focus outside it; Escape does not close it and the toggle exposes no expanded state.",
+    "expected": "Closed navigation must be removed from keyboard/assistive traversal. An open overlay should expose its state, provide sensible focus entry/return and prevent obscured background interaction.",
+    "rootCause": "The drawer is only translated off-screen. There is no inert/hidden state for the closed panel and no focus/keyboard handling in bindEvents.",
+    "evidence": [
+      "browser-results-attempt3.json: mobile-closed-Tab-sequence, mobile-open, mobile-Escape",
+      "final-browser-checks.json: closed-drawer-focus",
+      "mobile-sidebar-open.png",
+      "js/ui/screen-reading.js:335–365, 670–695"
+    ],
+    "recommendation": "Apply an explicit closed state and a coherent drawer focus model; support Escape and focus return. Validate WCAG 2.4.3/2.4.7 and modal-overlay interaction. The APG modal pattern is guidance, not itself a WCAG conformance rule.",
+    "references": [
+      "https://www.w3.org/TR/WCAG22/",
+      "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"
+    ],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-007",
+    "localId": "RN-I-007",
+    "severity": "P2",
+    "status": "confirmed",
+    "category": "Accessibility; Bilingual",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "all"
+    ],
+    "file": "js/ui/screen-reading.js",
+    "line": 289,
+    "title": "Thai passages inherit the English page language",
+    "excerpt": "The document is lang=en and each rendered domain article contains zero lang attributes despite extensive Thai explanatory paragraphs.",
+    "actual": "The document is lang=en and each rendered domain article contains zero lang attributes despite extensive Thai explanatory paragraphs.",
+    "expected": "The Thai prose language and meaningful English passages should be programmatically determinable, preserving English exam keywords appropriately.",
+    "rootCause": "The article renderer/parser preserve no language metadata for the bilingual passages; index.html declares only English.",
+    "evidence": [
+      "browser-results-attempt3.json: language=en, languageTags=0 in all 56 configurations",
+      "domain-1-rendered.html through domain-4-rendered.html",
+      "index.html:2"
+    ],
+    "recommendation": "Add appropriately scoped Thai/English language information in a later accessibility task. Do not add a language tag to every borrowed acronym or proper name. Native screen-reader pronunciation was not tested.",
+    "references": [
+      "https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html"
+    ],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-008",
+    "localId": "RN-I-008",
+    "severity": "P2",
+    "status": "confirmed",
+    "category": "Accessibility; Typography",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "review",
+      "1.1.4",
+      "1.5.3",
+      "4.1.3",
+      "4.2.3",
+      "4.2.6",
+      "4.3.3"
+    ],
+    "file": "css/reading.css",
+    "line": 2762,
+    "title": "Scenario/supporting text misses minimum contrast",
+    "excerpt": "Settled light-theme scenario answer labels use #10b981 on white: 2.54:1 at 11.5px. Dark-theme scenario topic text and D1 MFA subtitles use #717182 on #131318: 3.87:1; D1 priority badges are 3.58:1.",
+    "actual": "Settled light-theme scenario answer labels use #10b981 on white: 2.54:1 at 11.5px. Dark-theme scenario topic text and D1 MFA subtitles use #717182 on #131318: 3.87:1; D1 priority badges are 3.58:1. D4 desktop diagram text painted white on #10b981 has 2.54:1 contrast, and white on #3b82f6 has about 3.68:1; small responsibility and network-layer labels are affected in both themes.",
+    "expected": "Normal-sized instructional and navigational text should achieve at least 4.5:1 contrast.",
+    "rootCause": "Scenario answer color is hardcoded; other secondary text uses --text-muted at small sizes.",
+    "evidence": [
+      "contrast-final.json (8 settled-theme probes)",
+      "scenario-settled-light.png, scenario-settled-dark.png, mfa-settled-dark.png",
+      "The initial focused-results contrast data captured transition colors and is explicitly excluded. Counts include repeated elements and are not unique-defect counts.",
+      "svg-geometry.json records actual SVG fill and preceding colored rectangles; diagram-d4-3-1920-light.png confirms the small white-on-color labels. HTML-only contrast counts do not include these SVG paint checks."
+    ],
+    "recommendation": "Adjust only the affected foreground tokens and labels, then verify both themes and text roles against WCAG 1.4.3.",
+    "references": [
+      "https://www.w3.org/TR/WCAG22/"
+    ],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-009",
+    "localId": "RN-I-009",
+    "severity": "P2",
+    "status": "confirmed",
+    "category": "Table; Typography; Semantic Presentation",
+    "domain": 2,
+    "subsections": [
+      "2.1.4"
+    ],
+    "file": "css/reading.css",
+    "line": 2957,
+    "title": "Task 145 keyword protection exceeds the last cell",
+    "excerpt": "At table width 780px, final column width is 187.22px with 32px horizontal padding; Enterprise IT Governance is 182.30px wide, exceeding the 155.22px content box. Wrapper scrollWidth is 791px. At 1024px the wrapper is 573px, so scrolling is required contrary to the earlier report.",
+    "actual": "At table width 780px, final column width is 187.22px with 32px horizontal padding; Enterprise IT Governance is 182.30px wide, exceeding the 155.22px content box. Wrapper scrollWidth is 791px. At 1024px the wrapper is 573px, so scrolling is required contrary to the earlier report.",
+    "expected": "The keyword and padding should fit the assigned cell and the report should describe actual scrolling. Wide desktop column balance should be preserved.",
+    "rootCause": "Fixed 20/24/32/24 percent widths and 780px minimum plus nowrap exceed the actual padded content width. The td min-width:200px does not establish the claimed final column width under fixed layout.",
+    "evidence": [
+      "browser-results-attempt3.json: GRC-details for 14 states",
+      "full-component-d2-topic-2-1-frameworks-standards-320-light.png",
+      "d2-1920x1080-light.png, grc-right-320-light.png",
+      "All three English keywords remain unfragmented. Keyboard ArrowRight moves the wrapper 40px in this Chrome; missing tabindex alone is not logged as a keyboard failure."
+    ],
+    "recommendation": "Account for padding and measured keyword width, or permit natural word-boundary wrapping. Keep contextual comparison relationships and test first/last columns. Consider a readable narrow-screen comparison format through a human-reviewed example.",
+    "references": [],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-010",
+    "localId": "RN-I-010",
+    "severity": "P3",
+    "status": "confirmed",
+    "category": "Typography; Technical",
+    "domain": 1,
+    "subsections": [
+      "1.2.2"
+    ],
+    "file": "content/isc2-cc-2026/reading/domain-1.md",
+    "line": 422,
+    "title": "Escaped currency leaks through raw HTML",
+    "excerpt": "Raw HTML lines display literal backslashes in currency values, including \\$10,000 and \\$5,000; ordinary Markdown currency processing does remove escapes.",
+    "actual": "Raw HTML lines display literal backslashes in currency values, including \\$10,000 and \\$5,000; ordinary Markdown currency processing does remove escapes.",
+    "expected": "Currency examples should display clean dollar amounts with no parser escape artifacts.",
+    "rootCause": "The raw structural HTML branch bypasses parseInline and does not unescape literal dollar sequences.",
+    "evidence": [
+      "browser-results-attempt3.json: D1 rawLeaks in all states",
+      "domain-1-rendered.html; markdown-parser.js:365–377",
+      "full-component-d1-topic-1-2-quantitative-risk-320-light.png"
+    ],
+    "recommendation": "Unify safe inline processing for supported HTML content or remove the unnecessary source escapes in a narrowly scoped later fix.",
+    "references": [],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-011",
+    "localId": "RN-I-011",
+    "severity": "P3",
+    "status": "qualified concern",
+    "category": "Accessibility; Technical",
+    "domain": 1,
+    "subsections": [
+      "1.2.1",
+      "1.2.2",
+      "1.2.5"
+    ],
+    "file": "js/core/math-renderer.js",
+    "line": 73,
+    "title": "Offline math alternatives retain raw LaTeX labels",
+    "excerpt": "The semantic fallback uses original LaTeX as aria-label, including commands such as \\times. The normal network-loaded Chrome run uses KaTeX/MathML and exposes no role=math labels in these subsection records.",
+    "actual": "The semantic fallback uses original LaTeX as aria-label, including commands such as \\times. The normal network-loaded Chrome run uses KaTeX/MathML and exposes no role=math labels in these subsection records.",
+    "expected": "Fallback accessible math should expose a useful expression or spoken alternative, with no assumption about how a particular screen reader pronounces LaTeX commands.",
+    "rootCause": "formatSemanticMath transforms the visible math but escapes the original input directly into aria-label.",
+    "evidence": [
+      "js/core/math-renderer.js:73–77; main browser mathLabels arrays are empty with katex=true",
+      "Historical RN-D1-004 is therefore conditional in current implementation, not a verified normal-mode speech defect."
+    ],
+    "recommendation": "Test offline fallback and one screen-reader/MathML combination before choosing a spoken-label strategy. Keep native MathML when available.",
+    "references": [
+      "https://www.w3.org/TR/WCAG22/"
+    ],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-012",
+    "localId": "RN-I-012",
+    "severity": "P2",
+    "status": "recommendation",
+    "category": "Technical",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "all"
+    ],
+    "file": "js/core/markdown-parser.js",
+    "line": 58,
+    "title": "HTML trust boundary needs explicit handling",
+    "excerpt": "Allowed tags preserve arbitrary attributes and raw structural lines pass through. A string-only probe preserves onclick on span/div. No untrusted content ingestion or current exploitable route was established.",
+    "actual": "Allowed tags preserve arbitrary attributes and raw structural lines pass through. A string-only probe preserves onclick on span/div. No untrusted content ingestion or current exploitable route was established.",
+    "expected": "If content ever becomes untrusted, use an actual attribute/protocol sanitizer; otherwise document and enforce the trusted repository-content boundary.",
+    "rootCause": "The parser allowlist validates tag names, not attributes; rejecting script/iframe lines is not a complete sanitizer.",
+    "evidence": [
+      "final-browser-checks.json: parser-attribute-preservation-string-only; no payload executed or inserted",
+      "markdown-parser.js:58–70, 274–280, 365–377"
+    ],
+    "recommendation": "Document the current trust assumption and introduce a safe sanitizer only if an untrusted path is supported. Do not report an exploitable XSS vulnerability without an input path.",
+    "references": [],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-013",
+    "localId": "RN-I-013",
+    "severity": "P3",
+    "status": "recommendation",
+    "category": "Accessibility; Semantic Presentation",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "all"
+    ],
+    "file": "js/core/markdown-parser.js",
+    "line": 395,
+    "title": "Heading and component semantics need a consistency pass",
+    "excerpt": "All domains have an h1/objective h2/topic h3 structure and table column headers. Some card headings use h5 independent of the surrounding level, diagram titles use h4, and section navigation is often separate from the heading element.",
+    "actual": "All domains have an h1/objective h2/topic h3 structure and table column headers. Some card headings use h5 independent of the surrounding level, diagram titles use h4, and section navigation is often separate from the heading element.",
+    "expected": "Learners should encounter predictable heading levels and meaningful list/table relationships; visual card labels need not all be document headings.",
+    "rootCause": "Raw authored HTML and parser-generated components use different heading conventions.",
+    "evidence": [
+      "domain-1-rendered.html through domain-4-rendered.html",
+      "browser-results-attempt3.json: headings and table scope results",
+      "No blanket claim that skipped heading levels alone establish a WCAG failure."
+    ],
+    "recommendation": "Choose a small heading convention and link real headings to anchors. Preserve the already-correct table scope attributes and scenario grouping.",
+    "references": [
+      "https://www.w3.org/TR/WCAG22/"
+    ],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-014",
+    "localId": "RN-I-014",
+    "severity": "P2",
+    "status": "recommendation",
+    "category": "Table; Semantic Presentation; UI/UX",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "table subsections"
+    ],
+    "file": "css/reading.css",
+    "line": 2823,
+    "title": "Wide comparisons need selective mobile presentation work",
+    "excerpt": "At 320px the article is 260px wide and table wrappers 258px. D3 master model matrix is about 1005px wide; D1 document hierarchy about 705px; D4 TCP/IP comparison about 637px. Tables remain scrollable, but sustained row-to-column comparison requires repeated horizontal movement.",
+    "actual": "At 320px the article is 260px wide and table wrappers 258px. D3 master model matrix is about 1005px wide; D1 document hierarchy about 705px; D4 TCP/IP comparison about 637px. Tables remain scrollable, but sustained row-to-column comparison requires repeated horizontal movement.",
+    "expected": "Use a comparison format learners can follow comfortably on narrow screens while retaining meaningful relationships.",
+    "rootCause": "The same overflow wrapper is the default presentation for tables with substantially different educational structures.",
+    "evidence": [
+      "browser-results-attempt3.json: per-subsection table dimensions",
+      "full-component screenshots; existing table headers/scopes verified",
+      "Scrollable data tables have a WCAG reflow exception; horizontal scroll itself is not logged as a conformance failure."
+    ],
+    "recommendation": "Prototype one long comparison with a persistent row label or a carefully structured mobile alternative. Keep compact tables as tables; do not convert the whole textbook into cards.",
+    "references": [
+      "https://www.w3.org/TR/WCAG22/"
+    ],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-015",
+    "localId": "RN-I-015",
+    "severity": "P3",
+    "status": "confirmed",
+    "category": "Accessibility; UI/UX",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "all"
+    ],
+    "file": "js/ui/screen-reading.js",
+    "line": 622,
+    "title": "Reduced motion is supported only by the floating scroll control",
+    "excerpt": "With prefers-reduced-motion:reduce, sidebar transition remains 0.25s/0.25s/0.2s and topic navigation still requests smooth scrolling. The floating scroll button correctly uses auto scrolling and disables its transition.",
+    "actual": "With prefers-reduced-motion:reduce, sidebar transition remains 0.25s/0.25s/0.2s and topic navigation still requests smooth scrolling. The floating scroll button correctly uses auto scrolling and disables its transition.",
+    "expected": "Apply the preference consistently to the drawer and reading navigation transitions.",
+    "rootCause": "The media query targets only .reading-scroll-nav and topic/hash routing hardcode smooth behavior.",
+    "evidence": [
+      "focused-results.json: reduced-motion-sidebar",
+      "css/reading.css:3636–3641; js/app.js:77; screen-reading.js:622, 797"
+    ],
+    "recommendation": "Use the existing motion preference in the two remaining paths. This is a comfort/preference issue; no automatic WCAG AA failure is inferred.",
+    "references": [],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-016",
+    "localId": "RN-I-016",
+    "severity": "P3",
+    "status": "recommendation",
+    "category": "Technical",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "all"
+    ],
+    "file": "css/reading.css",
+    "line": 639,
+    "title": "Shared CSS and content sniffing make patterns brittle",
+    "excerpt": "The h4 + table/list/callout sibling rules are unscoped; generic --space-* tokens are declared at :root. GRC table behavior depends on exact Thai/English header text. Structured directives discard their bodies and render hardcoded payloads.",
+    "actual": "The h4 + table/list/callout sibling rules are unscoped; generic --space-* tokens are declared at :root. GRC table behavior depends on exact Thai/English header text. Structured directives discard their bodies and render hardcoded payloads.",
+    "expected": "Reading-only patterns should have explicit semantic hooks and predictable scope, without a redesign or one-off parser branch for every domain.",
+    "rootCause": "Incremental global selectors and presentation matching are mixed with authored HTML and component registries.",
+    "evidence": [
+      "css/reading.css:11–19, 639–655; markdown-parser.js:299–341, 459–471",
+      "No specific regression in unrelated Learning Slides is asserted."
+    ],
+    "recommendation": "Scope shared selectors/tokens to Reading Notes and use explicit semantic table/directive metadata when touching the relevant pattern. Keep the lightweight renderer; a rewrite is not justified.",
+    "references": [],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-017",
+    "localId": "RN-I-017",
+    "severity": "P3",
+    "status": "recommendation",
+    "category": "Navigation; Content",
+    "domain": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "subsections": [
+      "all"
+    ],
+    "file": "js/core/reading-progress.js",
+    "line": 115,
+    "title": "Location memory does not distinguish completed reading",
+    "excerpt": "The progress schema records last location per domain, not completed subsections. The UI exposes no completed-reading history or explicit next-reading action. Reading Notes offers Thai prose with English terms, with no English-only text mode.",
+    "actual": "The progress schema records last location per domain, not completed subsections. The UI exposes no completed-reading history or explicit next-reading action. Reading Notes offers Thai prose with English terms, with no English-only text mode.",
+    "expected": "Product decisions should clarify what Continue and completed reading mean and whether the bilingual reader is intentionally a single mixed-language edition.",
+    "rootCause": "Current progress is a location bookmark and the content is one mixed-language corpus.",
+    "evidence": [
+      "reading-progress.js:115–125, 265–307; screen-reading.js:105–137, 330–390",
+      "No completion percentage or full English edition was inferred from the bilingual label."
+    ],
+    "recommendation": "Treat completion indicators, next-subsection control and independent language editions as separate human preference decisions; do not alter the progress schema in audit remediation without approval.",
+    "references": [],
+    "confidence": "High",
+    "sourceReview": null
+  },
+  {
+    "id": "RN-I-018",
+    "localId": "RN-I-018",
+    "severity": "P2",
+    "status": "confirmed",
+    "category": "Diagram; Semantic Presentation",
+    "domain": 4,
+    "subsections": [
+      "4.3.3"
+    ],
+    "file": "js/core/diagram-generator.js",
+    "line": 2637,
+    "title": "Cloud responsibility legend is clipped inside its SVG",
+    "excerpt": "The CSP legend extends 34.07px beyond the SVG right edge at 1920px and 23.96px at 1024px. The SVG overflow is hidden, visibly truncating the Thai label even though there is no page overflow.",
+    "actual": "The CSP legend extends 34.07px beyond the SVG right edge at 1920px and 23.96px at 1024px. The SVG overflow is hidden, visibly truncating the Thai label even though there is no page overflow.",
+    "expected": "The complete provider/customer legend should fit inside the SVG viewport at every desktop size.",
+    "rootCause": "The long provider legend begins at SVG x=498 inside an 840-unit viewBox, leaving insufficient horizontal space for its bilingual text.",
+    "evidence": [
+      "svg-geometry.json: cloudSharedResponsibility in both measured widths",
+      "diagram-d4-3-1920-light.png"
+    ],
+    "recommendation": "Wrap or reposition the legend in the existing vector, or move the legend to semantic HTML. Keep the comparison itself after correcting its responsibility labels (D34-05).",
+    "references": [],
+    "confidence": "High",
+    "sourceReview": null
+  }
+]

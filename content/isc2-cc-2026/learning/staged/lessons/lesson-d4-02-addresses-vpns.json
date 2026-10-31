@@ -1,0 +1,824 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d4-02-addresses-vpns",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 4,
+  "primaryObjectiveId": "4.1",
+  "objectiveIds": [
+    "4.1"
+  ],
+  "revision": "1",
+  "status": "in-preparation",
+  "title": {
+    "en": "Addresses, Translation & VPN Boundaries",
+    "th": "Addresses การแปลง Address และขอบเขต VPN"
+  },
+  "synopsis": {
+    "en": "Read addressing and protected paths without confusing reachability, translation and trust.",
+    "th": "อ่าน Address และเส้นทางที่ป้องกัน โดยแยก Reachability การแปลง Address และ Trust"
+  },
+  "outcomes": [
+    {
+      "en": "IPv4 and IPv6: recognize the address format.",
+      "th": "IPv4 และ IPv6: อ่านรูปแบบ Address ให้เป็น"
+    },
+    {
+      "en": "A route tells you where traffic can go.",
+      "th": "Route บอกว่าข้อมูลเดินทางไปทางใดได้"
+    },
+    {
+      "en": "NAT changes addressing, not the meaning of the content.",
+      "th": "NAT เปลี่ยน Address ไม่ได้ป้องกันเนื้อหาให้เอง"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: earlier lessons in this objective. No vendor configuration knowledge is required.",
+      "th": "แนะนำบทก่อนหน้าใน Objective นี้ ไม่จำเป็นต้องรู้คำสั่งตั้งค่าของ Vendor"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 Exam Outline",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Objective 4.1; separate Domain 4 AI/application guidance; checked 2026-10-31."
+    },
+    {
+      "id": "d4-summary",
+      "title": "D4 sum.md — user study summary",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 4/D4 sum.md",
+      "locator": "Teaching baseline; corrections and image traceability in Domain 4 academic audit."
+    },
+    {
+      "id": "d4-notes",
+      "title": "Domain 4.md — user study notes",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 4/Domain 4.md",
+      "locator": "S07,S11; RFC 4291 notation correction; S09–S10; summary addressing; S10; NIST firewall translation distinction; S12; RFC 8504 correction; S13; official AI data path application; full source mapping in domain-4-2026-coverage-matrix.md."
+    },
+    {
+      "id": "ipv6-address",
+      "title": "RFC 4291",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.2",
+      "locator": "128-bit IPv6 notation; documentation examples, not live endpoints.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "ipv6-security",
+      "title": "RFC 8504",
+      "url": "https://www.rfc-editor.org/rfc/rfc8504.html#section-13",
+      "locator": "IPsec support is not automatic encrypted traffic.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "firewall",
+      "title": "NIST SP 800-41r1",
+      "url": "https://csrc.nist.gov/pubs/sp/800/41/r1/final",
+      "locator": "Address translation and firewall/VPN capabilities differ.",
+      "authority": "technical-primary"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d4-02-01-address-notation",
+      "title": {
+        "en": "IPv4 and IPv6: recognize the address format.",
+        "th": "IPv4 และ IPv6: อ่านรูปแบบ Address ให้เป็น"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Documentation examples below are illustrations, not destinations to contact.",
+            "th": "ตัวอย่าง Address ใช้เพื่ออธิบาย ไม่ใช่ปลายทางสำหรับเชื่อมต่อ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "IPv4 · 32 bits",
+                "th": "IPv4 · 32 Bits"
+              },
+              {
+                "en": "192.0.2.10",
+                "th": "ตัวอย่าง 192.0.2.10"
+              },
+              {
+                "en": "Four decimal octets, each 0–255",
+                "th": "Decimal สี่ Octets แต่ละส่วน 0–255"
+              }
+            ],
+            [
+              {
+                "en": "IPv6 · 128 bits",
+                "th": "IPv6 · 128 Bits"
+              },
+              {
+                "en": "2001:db8:0:0:0:0:0:10",
+                "th": "ตัวอย่าง 2001:db8:0:0:0:0:0:10"
+              },
+              {
+                "en": "Eight 16-bit hexadecimal groups",
+                "th": "Hexadecimal แปดกลุ่ม กลุ่มละ 16 Bits"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "An IP address identifies an interface in an addressing and routing context. IPv4 represents 32 bits using four decimal octets. IPv6 uses 128 bits, commonly written as eight groups of hexadecimal digits separated by colons. Leading zeros in a group can be omitted, and one consecutive run of all-zero groups can be compressed with a double colon; the example becomes 2001:db8::10. Compression changes the written form, not the address length. A larger address space does not authenticate a device, grant permissions or encrypt a connection.",
+            "th": "IP Address ระบุ Interface ภายในบริบทของ Addressing และ Routing IPv4 มี 32 Bits เขียนเป็น Decimal สี่ Octets ส่วน IPv6 มี 128 Bits มักเขียนเป็น Hexadecimal แปดกลุ่มคั่นด้วย Colon สามารถละเลขศูนย์นำหน้าแต่ละกลุ่ม และย่อกลุ่มศูนย์ต่อเนื่องหนึ่งช่วงด้วย Double Colon ตัวอย่างจึงย่อเป็น 2001:db8::10 การย่อเปลี่ยนเพียงรูปเขียน ไม่ได้เปลี่ยนความยาว Address จำนวน Address ที่มากขึ้นไม่ได้ยืนยันตัวตนอุปกรณ์ ไม่ได้ให้สิทธิ์ และไม่ได้เข้ารหัส Connection"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Different notation and address space; no automatic security upgrade.",
+            "th": "รูปเขียนและพื้นที่ Address ต่างกัน แต่ไม่ได้ปลอดภัยขึ้นโดยอัตโนมัติ"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "ipv6-address",
+        "ipv6-security",
+        "firewall"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-02-02-private-public",
+      "title": {
+        "en": "A route tells you where traffic can go.",
+        "th": "Route บอกว่าข้อมูลเดินทางไปทางใดได้"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Example: an office host with a private IPv4 address contacts an Internet service.",
+            "th": "ตัวอย่าง Host ใน Office ที่ใช้ Private IPv4 ติดต่อบริการบน Internet"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Private host",
+                "th": "Host ภายใน"
+              },
+              {
+                "en": "10.0.0.8 in the office",
+                "th": "10.0.0.8 ใน Office"
+              },
+              {
+                "en": "Private IPv4 is not globally routed",
+                "th": "Private IPv4 ไม่ถูก Route บน Internet ทั่วโลก"
+              }
+            ],
+            [
+              {
+                "en": "Network edge",
+                "th": "ขอบเครือข่าย"
+              },
+              {
+                "en": "Route; translation if required",
+                "th": "เลือก Route และแปลง Address เมื่อจำเป็น"
+              },
+              {
+                "en": "A firewall controls permitted flows",
+                "th": "Firewall ควบคุมการสื่อสารที่อนุญาต"
+              }
+            ],
+            [
+              {
+                "en": "Internet service",
+                "th": "บริการ Internet"
+              },
+              {
+                "en": "Reach the approved endpoint",
+                "th": "ไปถึง Endpoint ที่อนุมัติ"
+              },
+              {
+                "en": "Public address ≠ public access permission",
+                "th": "Public Address ไม่เท่ากับสิทธิ์เข้าถึงแบบสาธารณะ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Private IPv4 address ranges are used within networks and are not globally routed on the public Internet. A common office design uses address translation at the edge so hosts can initiate Internet connections through a shared public address. Routing, translation and filtering are different functions even when one device performs them. A public address makes global routing possible; it does not require a server to accept everyone. A private address also does not make a compromised internal device trustworthy. Network policy and application authorization must still decide the permitted communication.",
+            "th": "Private IPv4 ใช้ภายในเครือข่ายและไม่ถูก Route ทั่ว Public Internet การออกแบบ Office ที่พบบ่อยใช้การแปลง Address ที่ขอบเครือข่าย เพื่อให้ Hosts เริ่ม Connection ออก Internet ผ่าน Public Address ร่วมกัน Routing การแปลง Address และ Filtering เป็นคนละหน้าที่ แม้อุปกรณ์เดียวจะทำทั้งหมด Public Address ทำให้ Route ได้ในระดับโลก แต่ไม่ได้บังคับให้ Server ยอมรับทุกคน และ Private Address ก็ไม่ได้ทำให้อุปกรณ์ภายในที่ถูกโจมตีไว้ใจได้ ยังต้องให้นโยบาย Network และ Authorization ของ Application ตัดสินการสื่อสาร"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Address scope, routing and authorization answer different questions.",
+            "th": "ขอบเขต Address เส้นทาง และการอนุญาต ตอบคนละคำถาม"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "ipv6-address",
+        "ipv6-security",
+        "firewall"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-02-03-nat-boundary",
+      "title": {
+        "en": "NAT changes addressing, not the meaning of the content.",
+        "th": "NAT เปลี่ยน Address ไม่ได้ป้องกันเนื้อหาให้เอง"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Example address translation for an outbound connection; security filtering is a separate decision.",
+            "th": "ตัวอย่างการแปลง Address ของ Connection ขาออก ส่วน Security Filtering เป็นอีกการตัดสินใจ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Before NAT",
+                "th": "ก่อน NAT"
+              },
+              {
+                "en": "Private source: 10.0.0.8",
+                "th": "Source ภายใน: 10.0.0.8"
+              },
+              {
+                "en": "Application payload exists",
+                "th": "มี Payload ของ Application"
+              }
+            ],
+            [
+              {
+                "en": "Translation",
+                "th": "การแปลง"
+              },
+              {
+                "en": "Map source address / port",
+                "th": "จับคู่ Source Address / Port"
+              },
+              {
+                "en": "Maintain a translation mapping",
+                "th": "เก็บตารางจับคู่การแปลง"
+              }
+            ],
+            [
+              {
+                "en": "After NAT",
+                "th": "หลัง NAT"
+              },
+              {
+                "en": "Shared public source",
+                "th": "Source สาธารณะที่ใช้ร่วมกัน"
+              },
+              {
+                "en": "No encryption added by NAT",
+                "th": "NAT ไม่ได้เพิ่มการเข้ารหัส"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Network address translation rewrites address information; common port-address translation also maps transport ports so several private hosts can share a public IPv4 address. It can affect inbound reachability, but that side effect is not a complete access-control policy. NAT does not encrypt a sensitive document, verify an AI service or inspect every application action. Use a firewall for the required traffic policy and an appropriately protected channel for confidentiality. Do not treat the absence of IPv4-style address sharing in an IPv6 design as evidence that the network needs no firewall.",
+            "th": "Network Address Translation เขียนข้อมูล Address ใหม่ ส่วน Port-Address Translation ที่พบบ่อยจับคู่ Transport Ports เพื่อให้หลาย Private Hosts ใช้ Public IPv4 ร่วมกันได้ การแปลงอาจมีผลต่อการเข้าถึงจากภายนอก แต่ผลนั้นไม่ใช่นโยบาย Access Control ที่ครบถ้วน NAT ไม่เข้ารหัสเอกสาร ไม่ยืนยัน AI Service และไม่ตรวจการกระทำทุกอย่างของ Application ต้องใช้ Firewall บังคับ Traffic Policy และช่องทางที่ป้องกันข้อมูลเพื่อ Confidentiality อย่าถือว่าการไม่ต้องแชร์ Address แบบ IPv4 ในระบบ IPv6 หมายถึงไม่ต้องมี Firewall"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Translation is not encryption, authentication or a complete firewall policy.",
+            "th": "การแปลง Address ไม่ใช่ Encryption Authentication หรือนโยบาย Firewall ที่ครบถ้วน"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "ipv6-address",
+        "ipv6-security",
+        "firewall"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-02-04-dual-stack",
+      "title": {
+        "en": "Two address families need two verified policy paths.",
+        "th": "สอง Address Families ต้องตรวจ Policy ให้ครบทั้งคู่"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Dual stack runs IPv4 and IPv6 together; it is one coexistence approach.",
+            "th": "Dual Stack ใช้ IPv4 และ IPv6 ร่วมกัน เป็นแนวทางอยู่ร่วมกันแบบหนึ่ง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "IPv4 path",
+                "th": "เส้นทาง IPv4"
+              },
+              {
+                "en": "Approved routes and filtering",
+                "th": "Routes และ Filtering ที่อนุมัติ"
+              },
+              {
+                "en": "Log and test the actual flow",
+                "th": "บันทึกและทดสอบการสื่อสารจริง"
+              }
+            ],
+            [
+              {
+                "en": "IPv6 path",
+                "th": "เส้นทาง IPv6"
+              },
+              {
+                "en": "Equivalent intended policy",
+                "th": "เจตนาของ Policy ต้องครอบคลุมเช่นกัน"
+              },
+              {
+                "en": "Do not leave an unmonitored bypass",
+                "th": "อย่าปล่อยช่องทางเลี่ยงที่ไม่ถูก Monitor"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Dual stack allows an environment to communicate using IPv4 and IPv6. It is not the only migration strategy, and not every deployment requires it. When both are enabled, check that routing, firewall policy, inventory and monitoring cover both rather than leaving IPv6 outside an IPv4-only security design. IPv6 node support for security mechanisms is different from actually configuring and using them. RFC 8504 recommends IPsec support, but an IPv6 address does not mean the packets are automatically encrypted or authenticated. Verify the control protecting the specific flow.",
+            "th": "Dual Stack ทำให้ระบบสื่อสารได้ทั้ง IPv4 และ IPv6 แต่ไม่ใช่วิธีย้ายระบบเพียงแบบเดียว และไม่จำเป็นกับทุก Deployment เมื่อเปิดใช้ทั้งคู่ ต้องตรวจว่า Routing Firewall Policy Inventory และ Monitoring ครอบคลุมทั้งสอง Address Families ไม่ใช่ออกแบบ Security สำหรับ IPv4 แล้วปล่อย IPv6 เป็นทางเลี่ยง การรองรับกลไก Security ของ IPv6 Node ต่างจากการตั้งค่าและใช้งานจริง RFC 8504 แนะนำให้รองรับ IPsec แต่การมี IPv6 Address ไม่ได้หมายความว่า Packets เข้ารหัสหรือยืนยันตัวตนโดยอัตโนมัติ ต้องตรวจ Control ที่ป้องกัน Flow นั้นจริง"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Protect enabled paths; do not infer encryption from IPv6.",
+            "th": "ป้องกันเส้นทางที่เปิดใช้ และอย่าอนุมานการเข้ารหัสจาก IPv6"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "ipv6-address",
+        "ipv6-security",
+        "firewall"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-02-05-vpn-scope",
+      "title": {
+        "en": "A protected tunnel has endpoints and a defined scope.",
+        "th": "Tunnel ที่ป้องกันข้อมูลมีปลายทางและขอบเขต"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Remote-access example: the device connects to the organization, then reaches an approved AI application.",
+            "th": "ตัวอย่าง Remote Access: อุปกรณ์เชื่อมเข้าองค์กร แล้วเข้าถึง AI Application ที่อนุมัติ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Remote device",
+                "th": "อุปกรณ์ระยะไกล"
+              },
+              {
+                "en": "Authenticate to the VPN",
+                "th": "ยืนยันตัวตนเพื่อเข้า VPN"
+              },
+              {
+                "en": "Device security still matters",
+                "th": "Security ของอุปกรณ์ยังสำคัญ"
+              }
+            ],
+            [
+              {
+                "en": "VPN gateway",
+                "th": "VPN Gateway"
+              },
+              {
+                "en": "Tunnel terminates here",
+                "th": "Tunnel สิ้นสุดที่นี่"
+              },
+              {
+                "en": "Coverage depends on routes and policy",
+                "th": "ขอบเขตขึ้นกับ Routes และ Policy"
+              }
+            ],
+            [
+              {
+                "en": "Application",
+                "th": "Application ปลายทาง"
+              },
+              {
+                "en": "Apply resource access checks",
+                "th": "ตรวจสิทธิ์ต่อ Resource"
+              },
+              {
+                "en": "Beyond the tunnel may need TLS too",
+                "th": "เส้นทางพ้น Tunnel อาจต้องมี TLS ด้วย"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A VPN creates a protected logical connection over another network. A remote-access VPN connects a user device to an organizational gateway; a site-to-site VPN links networks through gateways. The tunnel protects the traffic within its configured scope, not every action on a compromised endpoint or every hop beyond its termination. Split-tunnel policies can route only selected traffic through it. Strong authentication, maintained endpoints and resource-specific authorization remain necessary. For an AI service, verify where the tunnel ends, how the remaining path is protected and whether the document may be sent at all.",
+            "th": "VPN สร้างการเชื่อมต่อเชิง Logical ที่ป้องกันข้อมูลบนเครือข่ายอีกชั้น Remote-Access VPN เชื่อมอุปกรณ์ผู้ใช้กับ Gateway ขององค์กร ส่วน Site-to-Site VPN เชื่อมเครือข่ายผ่าน Gateways Tunnel ป้องกัน Traffic ในขอบเขตที่ตั้งค่า ไม่ได้ป้องกันทุกการกระทำบน Endpoint ที่ถูกโจมตี หรือทุก Hop หลังจบ Tunnel นโยบาย Split Tunnel อาจส่งเพียงบาง Traffic ผ่าน VPN ยังต้องมี Authentication ที่เหมาะสม Endpoint ที่ดูแลดี และ Authorization ต่อ Resource สำหรับ AI Service ต้องตรวจว่า Tunnel จบที่ใด เส้นทางที่เหลือป้องกันอย่างไร และส่งเอกสารนั้นได้หรือไม่"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A VPN protects a path; it does not grant unrestricted resource access.",
+            "th": "VPN ป้องกันเส้นทาง ไม่ได้ให้สิทธิ์เข้าถึงทุก Resource"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "ipv6-address",
+        "ipv6-security",
+        "firewall"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d4-02-06-tunnel-decision",
+      "title": {
+        "en": "The VPN is connected. Can the document be uploaded?",
+        "th": "เชื่อม VPN แล้ว อัปโหลดเอกสารได้หรือยัง?"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A contractor has a working VPN. A confidential file is proposed for an external AI service. Approval is not recorded.",
+            "th": "Contractor เชื่อม VPN ได้ ต้องการส่งไฟล์ลับให้ AI Service ภายนอก แต่ไม่มีบันทึกอนุมัติ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Trace the mechanism and its boundary",
+            "th": "ติดตามกลไกและขอบเขต"
+          },
+          "columns": [
+            {
+              "en": "Element",
+              "th": "องค์ประกอบ"
+            },
+            {
+              "en": "Mechanism / action",
+              "th": "กลไก / การกระทำ"
+            },
+            {
+              "en": "Boundary / reason",
+              "th": "ขอบเขต / เหตุผล"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "ทางเลือก A"
+              },
+              {
+                "en": "Upload: the VPN authorizes all data",
+                "th": "อัปโหลด เพราะ VPN อนุญาตข้อมูลทุกชนิด"
+              },
+              {
+                "en": "The tunnel does not authorize the contractor or the destination to process this document.",
+                "th": "Tunnel ไม่ได้อนุญาต Contractor หรือปลายทางให้ประมวลผลเอกสารนี้"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "ทางเลือก B"
+              },
+              {
+                "en": "Use NAT as the confidentiality control",
+                "th": "ใช้ NAT เป็น Control รักษาความลับ"
+              },
+              {
+                "en": "Changing addresses does not encrypt the document or establish processing permission.",
+                "th": "การเปลี่ยน Address ไม่เข้ารหัสเอกสารและไม่สร้างสิทธิ์ประมวลผล"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "ทางเลือก C"
+              },
+              {
+                "en": "Check data approval and the complete protected path",
+                "th": "ตรวจการอนุมัติข้อมูลและการป้องกันตลอดเส้นทาง"
+              },
+              {
+                "en": "Verify permitted destination/data use and protection beyond the VPN endpoint before sending.",
+                "th": "ตรวจว่าปลายทางและการใช้ข้อมูลได้รับอนุญาต รวมทั้งเส้นทางหลัง VPN ก่อนส่ง"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "ทางเลือก D"
+              },
+              {
+                "en": "Switch to IPv6 and skip the review",
+                "th": "เปลี่ยนเป็น IPv6 แล้วข้ามการตรวจ"
+              },
+              {
+                "en": "IPv6 addressing does not supply automatic encryption or permission for external processing.",
+                "th": "IPv6 ไม่ให้การเข้ารหัสอัตโนมัติหรือสิทธิ์ส่งข้อมูลไปประมวลผลภายนอก"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The missing evidence concerns permission to process this particular confidential file and protection of its complete path. A connected VPN proves neither. The organization should verify the authorized recipient/service, allowed data use, user permissions and security controls on each relevant part of the route. Until the required approval is established, connectivity alone is not a reason to upload. This is a boundary decision, not a blanket prohibition on AI or external services. NAT and IPv6 solve other networking problems and cannot replace the approval or confidentiality requirements.",
+            "th": "หลักฐานที่ขาดคือสิทธิ์ประมวลผลไฟล์ลับนี้ และการป้องกันตลอดเส้นทาง VPN ที่เชื่อมได้ไม่พิสูจน์ทั้งสองเรื่อง องค์กรควรตรวจบริการหรือผู้รับที่อนุมัติ วัตถุประสงค์ใช้ข้อมูล สิทธิ์ผู้ใช้ และ Security Controls ในแต่ละช่วงที่เกี่ยวข้อง ระหว่างที่ยังไม่มีการอนุมัติตามกำหนด การเชื่อมต่อได้อย่างเดียวไม่ใช่เหตุผลให้อัปโหลด นี่เป็นการตัดสินขอบเขต ไม่ใช่การห้าม AI หรือบริการภายนอกทั้งหมด NAT และ IPv6 แก้โจทย์ Network คนละด้าน จึงไม่แทนการอนุมัติหรือข้อกำหนด Confidentiality"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Identify the required communication or task.",
+              "th": "ระบุการสื่อสารหรือหน้าที่ที่จำเป็น"
+            },
+            {
+              "en": "Check the actual policy, configuration and evidence.",
+              "th": "ตรวจนโยบาย การตั้งค่า และหลักฐานจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Connectivity is evidence of reachability, not evidence of permission.",
+            "th": "การเชื่อมต่อได้แสดง Reachability ไม่ใช่ Permission"
+          }
+        }
+      ],
+      "referenceIds": [
+        "isc2-outline",
+        "d4-summary",
+        "d4-notes",
+        "ipv6-address",
+        "ipv6-security",
+        "firewall"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-4-completion-report.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex — assistant curation of original explanations; human acceptance pending",
+      "reviewedAt": "2026-10-31"
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import {hasDomain4Presentation,renderDomain4Presentation} from './domain4-presentations.js';
 import {hasDomain3LogicalPresentation,renderDomain3LogicalPresentation} from './domain3-logical-presentations.js';
 import {hasIamFrameworksToolsPresentation,renderIamFrameworksToolsPresentation} from './iam-frameworks-tools-presentations.js';
 import {hasIamReviewDeprovisioningPresentation,renderIamReviewDeprovisioningPresentation} from './iam-review-deprovisioning-presentations.js';
@@ -84,6 +85,9 @@ export function renderSlide(host, context) {
   host.setAttribute('data-layout', context.slide.layoutId || 'default');
   host.setAttribute('data-renderer', context.slide.rendererId || 'text');
   const heading = localize(element(host.ownerDocument, 'h2', 'learning-slide-title'), context.slide.title, context.language); host.append(heading);
+  const d4 = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasDomain4Presentation(context);
+  host.classList.toggle('learning-d4-slide',Boolean(d4));
+  if (d4) heading.classList.add('learning-sr-only');
   const d3Logical = context.mode !== 'reading' && !host.ownerDocument.defaultView?.matchMedia?.('(max-width: 719px)').matches && hasDomain3LogicalPresentation(context);
   host.classList.toggle('learning-d3-logical-slide',Boolean(d3Logical));
   if (d3Logical) heading.classList.add('learning-sr-only');
@@ -151,7 +155,12 @@ export function renderSlide(host, context) {
   const fallback = () => { if (!abort.signal.aborted) { body.replaceChildren(); blocks(body, { ...args, slide: getSemanticSlide(), mode: 'reading' }); } };
   const custom = registry.get(context.slide.rendererId);
 
-  if (d3Logical) {
+  if (d4) {
+    const stop=()=>abort.abort();context.signal?.addEventListener('abort',stop,{once:true});
+    if(context.signal?.aborted)stop();
+    const handle=renderDomain4Presentation(body,args);
+    cleanup=()=>{handle?.destroy?.();context.signal?.removeEventListener('abort',stop)};
+  } else if (d3Logical) {
     const handle=renderDomain3LogicalPresentation(body,args); cleanup=()=>handle?.destroy?.();
   } else if (iamFrameworks) {
     const handle=renderIamFrameworksToolsPresentation(body,args); cleanup=()=>handle?.destroy?.();
