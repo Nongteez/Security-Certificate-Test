@@ -10,7 +10,7 @@
 
 export const domain3Metadata = {
   id: 3,
-  title: 'Domain 3: Access Controls',
+  title: 'Domain 3: Identity and Access Management (IAM) Concepts',
   shortTitle: 'Access Controls',
   weight: '20%',
   published: true
@@ -24,7 +24,7 @@ export const domain3Objectives = [
     topics: [
       { id: 'topic-3-1-jml-lifecycle', title: '3.1.1 IAM Overview & The JML Lifecycle' },
       { id: 'topic-3-1-roles-definition', title: '3.1.2 Roles Definition & Permission Alignment' },
-      { id: 'topic-3-1-provisioning', title: '3.1.3 Identity Provisioning: 6-Step Lifecycle' },
+      { id: 'topic-3-1-provisioning', title: '3.1.3 Identity Provisioning: 6 Example Activities' },
       { id: 'topic-3-1-access-review', title: '3.1.4 Access Review & 6 Core Audit Findings' },
       { id: 'topic-3-1-deprovisioning', title: '3.1.5 Deprovisioning: Triggers & Revocation' },
       { id: 'topic-3-1-iam-frameworks', title: '3.1.6 IAM Management Frameworks: NIST SP 800-63 vs CSF' },

@@ -286,7 +286,7 @@ export const diagrams = {
   <div class="reading-diag-mobile reading-mobile-stack" aria-label="Load Balancer Topology Mobile">
     <div class="reading-mob-banner">
       <span class="reading-mob-banner-tag">HIGH AVAILABILITY TOPOLOGY</span>
-      <p class="reading-mob-banner-text">การกระจายภาระงานและคลัสเตอร์เซิร์ฟเวอร์คู่ขนานเพื่อขจัดจุดล้มเหลวเดี่ยว (Eliminate Single Point of Failure - SPOF)</p>
+      <p class="reading-mob-banner-text">ตัวอย่าง Load Balancer นี้กระจายภาระงานไปยัง Web Servers หลายเครื่อง เพื่อลดผลกระทบจากบางเครื่องเสีย หากต้องการหลีกเลี่ยง Load Balancer เป็น Single Point of Failure ต้องออกแบบความซ้ำซ้อนของ LB และส่วนพึ่งพาอื่นด้วย</p>
     </div>
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-kpi">
@@ -461,7 +461,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">"What did you do?" &middot; การบันทึกและตรวจสอบประวัติ</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">บันทึกเหตุการณ์และการกระทำทั้งหมดลง Log: Audit Trails, ประทับเวลา (Timestamps) เพื่อสร้างความรับผิดชอบที่ไม่สามารถปฏิเสธได้ (Non-Repudiation)</p>
+        <p class="reading-mob-tier-desc">Audit Trails และ Timestamps ช่วยติดตามกิจกรรมและสนับสนุน Accountability เมื่อบันทึกได้รับการปกป้องและเชื่อมโยงกับตัวตนอย่างน่าเชื่อถือ ส่วน Non-repudiation ต้องมีหลักฐานและการควบคุมที่เหมาะสมต่อการโต้แย้งภายหลัง เช่น ลายมือชื่อดิจิทัลพร้อมการจัดการกุญแจและหลักฐานที่เชื่อถือได้ ไม่ได้เกิดจากการมี Log เพียงอย่างเดียว</p>
       </div>
     </div>
   </div>
@@ -530,7 +530,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Determines Purposes &amp; Means &middot; รับผิดชอบสูงสุด</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">องค์กรที่มีอำนาจตัดสินใจว่า <em>เก็บข้อมูลไปทำไม และใช้อย่างไร</em>: รับผิดชอบทางกฎหมายสูงสุด (Ultimate Accountability) ในการกำกับดูแลและรักษาความปลอดภัย</p>
+        <p class="reading-mob-tier-desc">บุคคลธรรมดา นิติบุคคล หน่วยงาน หรือองค์กรที่กำหนดโดยลำพังหรือร่วมกับผู้อื่นว่า <em>เก็บข้อมูลไปทำไม และใช้อย่างไร</em>: รับผิดชอบทางกฎหมายสูงสุด (Ultimate Accountability) ในการกำกับดูแลและรักษาความปลอดภัย</p>
       </div>
 
       <div class="reading-mob-step-connector">
@@ -559,7 +559,7 @@ export const diagrams = {
 <div class="reading-diagram-card" data-diagram="defenseInDepth" role="region" aria-label="Defense in Depth 7-Layer Architecture Diagram">
   <div class="reading-diagram-header">
     <span class="reading-diagram-tag">Security Architecture</span>
-    <h4 class="reading-diagram-title">Defense in Depth — 7 Complementary Protective Layers</h4>
+    <h4 class="reading-diagram-title">Defense in Depth — Seven Example Protective Layers</h4>
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 740 320" class="reading-diagram-svg" aria-label="7 defensive layers protecting core asset at center" role="img">
@@ -599,7 +599,7 @@ export const diagrams = {
         <text x="455" y="195" class="diag-did-desc">Immutable Backups &amp; Incident Response</text>
 
         <rect x="440" y="220" width="280" height="52" rx="6" class="diag-box diag-box-banner" />
-        <text x="580" y="242" class="diag-text-title" text-anchor="middle">No Single Point of Failure</text>
+        <text x="580" y="242" class="diag-text-title" text-anchor="middle">Complementary Security Layers</text>
         <text x="580" y="260" class="diag-text-sub" text-anchor="middle">มาตรการทำงานสอดประสานพร้อมกัน</text>
       </g>
     </svg>
@@ -607,7 +607,7 @@ export const diagrams = {
   <div class="reading-diag-mobile reading-mobile-stack" aria-label="Defense in Depth 7 Layers Mobile">
     <div class="reading-mob-banner">
       <span class="reading-mob-banner-tag">7-LAYER DEFENSE IN DEPTH</span>
-      <p class="reading-mob-banner-text">การป้องกันเชิงลึกหลายชั้นที่ทำงานสอดประสานกันรอบทรัพย์สินสำคัญ: ขจัดจุดล้มเหลวเดี่ยว (No Single Point of Failure)</p>
+      <p class="reading-mob-banner-text">การป้องกันเชิงลึกหลายชั้นที่ทำงานสอดประสานกันรอบทรัพย์สินสำคัญ: ลดโอกาสที่มาตรการเดียวล้มเหลวแล้วเกิดความเสียหาย แต่ชั้นต่าง ๆ อาจมีจุดพึ่งพาร่วมกัน จึงไม่รับประกันว่าจะขจัดทุก Single Point of Failure</p>
     </div>
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-kpi">
@@ -673,7 +673,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Encryption &middot; WAF &middot; Secure Coding</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ป้องกันช่องโหว่ซอฟต์แวร์และการเข้ารหัสข้อมูล: Web Application Firewall (WAF), การเข้ารหัสทั้ง At-Rest และ In-Transit</p>
+        <p class="reading-mob-tier-desc">ลดการเปิดรับความเสี่ยงจากช่องโหว่ซอฟต์แวร์ด้วยมาตรการที่เหมาะสม และใช้การเข้ารหัสข้อมูล: Web Application Firewall (WAF), การเข้ารหัสทั้ง At-Rest และ In-Transit</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-green">
@@ -741,7 +741,7 @@ export const diagrams = {
       </g>
 
       <rect x="150" y="135" width="420" height="32" rx="6" class="diag-box diag-box-banner" />
-      <text x="360" y="156" class="diag-text-sub" text-anchor="middle">Decision Rule: ค่าใช้จ่ายมาตรการป้องกันต่อปี (Cost of Control) ไม่ควรเกิน ALE</text>
+      <text x="360" y="156" class="diag-text-sub" text-anchor="middle">Financial comparison: ALE ก่อน − ALE หลัง เทียบต้นทุน Control ต่อปี</text>
     </svg>
   </div>
   <div class="reading-diag-mobile reading-mobile-stack" aria-label="Quantitative Risk Calculation Pipeline Mobile">
@@ -792,7 +792,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Decision Rule &middot; ความคุ้มค่าของมาตรการควบคุม</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc"><strong>กฎเหล็กของข้อสอบ:</strong> ค่าใช้จ่ายมาตรการป้องกันต่อปี (Cost of Safeguard - ACS) ต้อง <strong>ไม่เกิน</strong> มูลค่าความเสียหายที่ลดลงได้ (ALE Savings) &middot; หากความเสียหายปีละ $20,000 ไม่ควรจ่ายซื้ออุปกรณ์ป้องกันปีละ $25,000</p>
+        <p class="reading-mob-tier-desc"><strong>การเปรียบเทียบด้านการเงินแบบง่าย:</strong> ALE Savings = ALE ก่อน − ALE หลัง เปรียบเทียบกับต้นทุน Control ต่อปี ตัวอย่าง ALE 20,000/ปี กับ Control 25,000/ปี ไม่คุ้มเมื่อพิจารณาเฉพาะการลดความเสียหายนี้ แต่กฎหมาย สัญญา ความปลอดภัยของบุคคล และภารกิจอาจกำหนดให้ต้องใช้มาตรการแม้ผลประโยชน์สุทธิทางการเงินไม่เป็นบวก</p>
       </div>
     </div>
   </div>
@@ -804,7 +804,7 @@ export const diagrams = {
 <div class="reading-diagram-card" data-diagram="riskLifecycle" role="region" aria-label="Risk Management 5-Stage Lifecycle">
   <div class="reading-diagram-header">
     <span class="reading-diagram-tag">Operational Cycle</span>
-    <h4 class="reading-diagram-title">The 5-Stage Risk Management Lifecycle</h4>
+    <h4 class="reading-diagram-title">Risk Management: Five-Part Learning Model</h4>
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 800 200" class="reading-diagram-svg" aria-label="Cyclic process: 5-Stage Risk Management Lifecycle (Identify to Assess to Treat to Monitor to Communicate)" role="img">
@@ -848,7 +848,7 @@ export const diagrams = {
   <div class="reading-diag-mobile reading-mobile-stack" aria-label="Risk Management 5-Stage Lifecycle Mobile">
     <div class="reading-mob-banner">
       <span class="reading-mob-banner-tag">5-STAGE RISK LIFECYCLE</span>
-      <p class="reading-mob-banner-text">วงจรการบริหารความเสี่ยง 5 ขั้นตอน: กระบวนการต่อเนื่องไม่รู้จบ (Continuous Iterative Process)</p>
+      <p class="reading-mob-banner-text">แบบจำลองช่วยเรียนรู้ 5 ส่วน: กระบวนการต่อเนื่อง (Continuous Iterative Process) การสื่อสารเกิดควบคู่ได้ตลอด ไม่ใช่ขั้นตอนสุดท้ายเท่านั้น</p>
     </div>
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-kpi">
@@ -1009,7 +1009,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">MANDATORY &middot; Answers: EXACT SPECIFICATION</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ข้อกำหนดทางเทคนิคขั้นต่ำที่วัดผลได้ชัดเจน (เช่น บังคับรหัสผ่านยาว 12 ตัวขึ้นไป, บังคับเข้ารหัส AES-256) ต้องปฏิบัติตามโดยไม่มีข้อยกเว้น</p>
+        <p class="reading-mob-tier-desc">ข้อกำหนดทางเทคนิคขั้นต่ำที่วัดผลได้ชัดเจน เช่น บัญชีผู้ดูแลระบบต้องใช้ MFA เป็นข้อกำหนดบังคับ การยกเว้นต้องผ่านกระบวนการอนุมัติและบันทึกความเสี่ยงขององค์กร ไม่ใช่การยกเว้นโดยผู้ใช้เอง</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-blue">
@@ -1064,9 +1064,9 @@ export const diagrams = {
       <g>
         <rect x="295" y="15" width="260" height="125" rx="8" class="diag-timeline-card" />
         <rect x="379" y="27" width="92" height="22" rx="4" class="diag-timeline-badge" />
-        <text x="425" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">DURING</text>
+        <text x="425" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">DETECT</text>
         <text x="425" y="68" class="diag-timeline-title" text-anchor="middle">Detective</text>
-        <text x="425" y="93" class="diag-timeline-desc" text-anchor="middle">ตรวจจับ &amp; แจ้งเตือนภัยขณะเกิดเหตุ</text>
+        <text x="425" y="93" class="diag-timeline-desc" text-anchor="middle">ตรวจจับระหว่างเกิดเหตุหรือย้อนหลัง</text>
         <text x="425" y="117" class="diag-timeline-example" text-anchor="middle">IDS, Security Logs, Motion Sensor</text>
       </g>
 
@@ -1078,9 +1078,9 @@ export const diagrams = {
       <g>
         <rect x="575" y="15" width="260" height="125" rx="8" class="diag-timeline-card" />
         <rect x="659" y="27" width="92" height="22" rx="4" class="diag-timeline-badge" />
-        <text x="705" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">AFTER</text>
+        <text x="705" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">CORRECT</text>
         <text x="705" y="68" class="diag-timeline-title" text-anchor="middle">Corrective &amp; Recovery</text>
-        <text x="705" y="93" class="diag-timeline-desc" text-anchor="middle">แก้ไขเยียวยา &amp; กู้คืนระบบหลังเกิดเหตุ</text>
+        <text x="705" y="93" class="diag-timeline-desc" text-anchor="middle">แก้ปัญหา ลดความเสียหาย &amp; กู้คืน</text>
         <text x="705" y="117" class="diag-timeline-example" text-anchor="middle">Patching, Malware Removal, DRP</text>
       </g>
     </svg>
@@ -1088,7 +1088,7 @@ export const diagrams = {
   <div class="reading-diag-mobile reading-mobile-stack" aria-label="Security Control Functions Timeline Mobile">
     <div class="reading-mob-banner">
       <span class="reading-mob-banner-tag">CONTROL TIMELINE TAXONOMY</span>
-      <p class="reading-mob-banner-text">การจำแนกมาตรการตามช่วงเวลาและบทบาทหน้าที่: ก่อนเกิดเหตุ (Before) &middot; ขณะเกิดเหตุ (During) &middot; หลังเกิดเหตุ (After)</p>
+      <p class="reading-mob-banner-text">จัดประเภทตามหน้าที่หลัก ไม่ใช่ช่วงเวลาตายตัว: Preventive สกัดกั้น; Detective ค้นพบระหว่างเกิดหรือย้อนหลัง; Corrective แก้ไขสาเหตุหรือลดความเสียหายและอาจเริ่มขณะเกิดเหตุ; Recovery ฟื้นฟูบริการ เวลาทำงานอาจซ้อนทับกันได้</p>
     </div>
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-kpi">
@@ -1122,11 +1122,11 @@ export const diagrams = {
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">DURING</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">DETECTIVE (ขณะเกิดเหตุ)</h5>
-            <span class="reading-mob-tier-action">ตรวจจับ &amp; แจ้งเตือนภัยขณะเกิดเหตุ</span>
+            <h5 class="reading-mob-tier-name">DETECTIVE (ระหว่างเกิดเหตุหรือย้อนหลัง)</h5>
+            <span class="reading-mob-tier-action">ตรวจจับระหว่างเกิดเหตุหรือย้อนหลัง</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ค้นหา ตรวจจับความผิดปกติ และแจ้งเตือนภัยแบบเรียลไทม์ขณะที่เหตุการณ์หรือการโจมตีกำลังดำเนินอยู่</p>
+        <p class="reading-mob-tier-desc">ค้นหาและตรวจจับเหตุการณ์ได้ทั้งระหว่างเกิดและย้อนหลัง เช่น ตรวจ Log ภายหลัง ไม่จำกัดเฉพาะการแจ้งเตือนแบบเรียลไทม์</p>
         <div class="reading-mob-tier-grid">
           <div class="reading-mob-sub-item">
             <span class="reading-mob-sub-name">Detective (ตรวจจับ)</span>
@@ -1145,7 +1145,7 @@ export const diagrams = {
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">AFTER</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">CORRECTIVE &amp; RECOVERY (หลังเกิดเหตุ)</h5>
+            <h5 class="reading-mob-tier-name">CORRECTIVE &amp; RECOVERY (เวลาอาจซ้อนทับกัน)</h5>
             <span class="reading-mob-tier-action">แก้ไขเยียวยา &amp; กู้คืนระบบสู่ภาวะปกติ</span>
           </div>
         </div>
@@ -1277,7 +1277,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Legal Standard &amp; Continuous Cycle</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">หากผู้บริหารหรือเจ้าหน้าที่ไม่ทำ Due Diligence หรือ Due Care จนเกิดความเสียหาย อาจมีความผิดฐาน <strong>Gross Negligence (ประมาทเลินเล่ออย่างร้ายแรง)</strong> ซึ่งไม่ได้รับการคุ้มครองทางกฎหมาย</p>
+        <p class="reading-mob-tier-desc">การละเลย Due Care หรือ Due Diligence อาจก่อให้เกิดความเสียหายและผลทางวินัย วิชาชีพ หรือกฎหมาย โดยความรับผิดและข้อคุ้มครองที่ใช้ได้ขึ้นอยู่กับข้อเท็จจริง บทบาท และกฎหมายที่เกี่ยวข้อง ไม่อาจสรุปจากคำว่า Gross Negligence (ประมาทเลินเล่ออย่างร้ายแรง) เพียงอย่างเดียวว่าบุคคลนั้นหมดความคุ้มครองทางกฎหมายทุกประเภท</p>
       </div>
     </div>
   </div>
@@ -1539,7 +1539,7 @@ export const diagrams = {
         <rect x="36" y="126" width="768" height="154" rx="8" class="diag-box diag-box-blue diag-dr-inner" stroke-width="2" />
         <rect x="52" y="138" width="140" height="22" rx="4" class="diag-scope-badge-dr" />
         <text x="122" y="149" class="diag-scope-badge-dr-text" text-anchor="middle" dominant-baseline="central">IT SUBSET (DR ⊂ BC)</text>
-        <text x="204" y="154" class="diag-text-title diag-dr-title" font-size="15px">DISASTER RECOVERY (DR) — แผนกู้คืนระบบเทคโนโลยีสารสนเทศ</text>
+        <text x="204" y="154" class="diag-text-title diag-dr-title" font-size="15px">DISASTER RECOVERY (DR) — การกู้คืนระบบเทคโนโลยีสารสนเทศ</text>
         <text x="52" y="180" class="diag-text-sub diag-dr-desc" font-size="13px">เป้าหมาย: กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</text>
         <g class="diag-dr-examples-group">
           <rect x="52" y="196" width="736" height="70" rx="6" class="diag-examples-rect" />
@@ -1574,7 +1574,7 @@ export const diagrams = {
             <span class="reading-mob-tag-pill reading-mob-pill-accent">IT SUBSET (DR ⊂ BC)</span>
           </div>
           <h6 class="reading-mob-inner-title">DISASTER RECOVERY (DR)</h6>
-          <span class="reading-mob-inner-sub">แผนกู้คืนระบบ IT โครงสร้างพื้นฐาน และข้อมูล</span>
+          <span class="reading-mob-inner-sub">การกู้คืนระบบ IT โครงสร้างพื้นฐาน และข้อมูล</span>
         </div>
         <p class="reading-mob-inner-goal"><strong>เป้าหมาย:</strong> กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</p>
         <div class="reading-mob-inner-examples">
@@ -1619,7 +1619,7 @@ export const diagrams = {
       </g>
       <rect x="440" y="25" width="260" height="58" rx="6" class="diag-box diag-box-banner" />
       <text x="570" y="47" class="diag-text-title" text-anchor="middle">RTO (Recovery Time Objective)</text>
-      <text x="570" y="67" class="diag-text-sub" text-anchor="middle">ระบบยอมหยุดทำงานได้สูงสุด: 1 ชม. → (RTO ≤ MTD)</text>
+      <text x="570" y="67" class="diag-text-sub" text-anchor="middle">ตัวอย่างเป้าหมายกู้ระบบ: 1 ชม. (เผื่อเวลาก่อน MTD)</text>
       <line x1="440" y1="105" x2="700" y2="105" stroke="#10b981" stroke-width="4" />
       <g>
         <circle cx="700" cy="105" r="7" fill="#10b981" />
@@ -1637,9 +1637,9 @@ export const diagrams = {
         <p class="reading-mob-metric-detail">ปริมาณข้อมูลที่ยอมให้สูญเสียได้นับย้อนหลังจากเวลาเกิดเหตุ (17:00 ← 16:30)</p>
       </div>
       <div class="reading-mob-metric-box reading-metric-rto">
-        <span class="reading-mob-metric-tag">RTO (Acceptable Downtime)</span>
+        <span class="reading-mob-metric-tag">RTO (Restoration Target)</span>
         <div class="reading-mob-metric-val">1 ชั่วโมง (เดินหน้า)</div>
-        <p class="reading-mob-metric-detail">ระยะเวลาหยุดทำงานสูงสุดที่ยอมรับได้นับเดินหน้าจากเวลาเกิดเหตุ (17:00 → 18:00) · RTO ≤ MTD</p>
+        <p class="reading-mob-metric-detail">เป้าหมายกู้คืนระบบนับเดินหน้าจากเวลาเกิดเหตุ (17:00 → 18:00) ต้องเหลือเวลาตรวจสอบและทำรายการค้างให้ธุรกิจกลับมาทำงานภายใน MTD</p>
       </div>
     </div>
     <div class="reading-mob-timeline-stepper">
@@ -1673,7 +1673,7 @@ export const diagrams = {
       </div>
       <div class="reading-mob-step-connector">
         <div class="reading-mob-connector-line reading-connector-green"></div>
-        <span class="reading-mob-connector-pill reading-pill-green">↓ RTO เดินหน้า: เวลาหยุดทำงานสูงสุด 1 ชม. ↓</span>
+        <span class="reading-mob-connector-pill reading-pill-green">↓ RTO เดินหน้า: เป้าหมายกู้ระบบภายใน 1 ชม. ↓</span>
         <div class="reading-mob-connector-line reading-connector-green"></div>
       </div>
       <div class="reading-mob-step-card reading-step-restored">
@@ -1788,7 +1788,7 @@ export const diagrams = {
         <text x="96" y="336" class="diag-step-num">01</text>
         <text x="130" y="336" class="diag-text-title">METRIC</text>
         <text x="200" y="336" class="diag-text-action">MEASURE &middot; FOUNDATION</text>
-        <text x="130" y="358" class="diag-text-sub">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ</text>
+        <text x="130" y="358" class="diag-text-sub">ค่าที่วัดได้: จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย รวมถึง KPI และ KRI</text>
         <text x="130" y="374" class="diag-text-sub">คุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</text>
       </g>
     </svg>
@@ -1866,7 +1866,7 @@ export const diagrams = {
           </div>
           <span class="reading-mob-tier-level reading-level-base">Foundation</span>
         </div>
-        <p class="reading-mob-tier-desc">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ประเมินประสิทธิผลตามคุณสมบัติ Relevant, Measurable และ Consistent</p>
+        <p class="reading-mob-tier-desc">ค่าที่วัดได้: จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์ โดยควร Relevant, Measurable และ Consistent</p>
       </div>
     </div>
   </div>
@@ -1944,7 +1944,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Provisioning &amp; Role Definition</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">กำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น</p>
+        <p class="reading-mob-tier-desc">หากยังไม่กำหนดบทบาทและสิทธิ์ที่จำเป็น ให้กำหนดและอนุมัติก่อนจัดสรรสิทธิ์ (Define approved access needs) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น</p>
       </div>
       <div class="reading-mob-arrow-down" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -1970,7 +1970,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Deprovisioning &amp; Retention</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">เพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)</p>
+        <p class="reading-mob-tier-desc">เพิกถอนการเข้าถึงตามเวลาที่กำหนด เช่น Disable Account ส่วนการเก็บหรือลบบัญชีและ Audit Trail ให้ทำตามนโยบาย ข้อกำหนด และความสัมพันธ์ของระบบ ไม่ใช่ว่า Disable รับประกันการเก็บ Log ทุกระบบ</p>
       </div>
     </div>
     <div class="reading-mob-banner" style="margin-top: 12px; border-left: 3.5px solid var(--blue, #3b82f6);">
@@ -2177,7 +2177,7 @@ export const diagrams = {
         <text x="451" y="96" class="diag-label-mac" font-size="11.5px" font-weight="700">Enforcement:</text>
         <text x="557" y="96" class="diag-text-sub" font-size="12px">Labels &amp; User Clearances</text>
         <text x="451" y="118" class="diag-label-mac" font-size="11px" font-weight="600">Core Trait:</text>
-        <text x="557" y="118" class="diag-text-sub" font-size="11.5px">Highest Security &middot; Need-to-Know</text>
+        <text x="557" y="118" class="diag-text-sub" font-size="11.5px">Central Policy &middot; Need-to-Know</text>
       </g>
 
       <g>
@@ -2203,7 +2203,7 @@ export const diagrams = {
         <text x="451" y="214" class="diag-label-abac" font-size="11.5px" font-weight="700">Decision Maker:</text>
         <text x="557" y="214" class="diag-text-sub" font-size="12px">Policy Engine (ระบบประมวลผล)</text>
         <text x="451" y="236" class="diag-label-abac" font-size="11.5px" font-weight="700">Enforcement:</text>
-        <text x="557" y="236" class="diag-text-sub" font-size="12px">Subject, Object &amp; Environment</text>
+        <text x="557" y="236" class="diag-text-sub" font-size="12px">Subject, Object, Action, Context</text>
         <text x="451" y="258" class="diag-label-abac" font-size="11px" font-weight="600">Core Trait:</text>
         <text x="557" y="258" class="diag-text-sub" font-size="11.5px">Fine-Grained &middot; Dynamic Context</text>
       </g>
@@ -2230,7 +2230,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Central Authority &middot; Military</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">นโยบายกลางบังคับใช้ผ่าน Security Labels และ Clearances ปลอดภัยสูงสุด ผู้ใช้แก้เองไม่ได้</p>
+        <p class="reading-mob-tier-desc">นโยบายกลางบังคับใช้ผ่าน Security Labels และ Clearances ร่วมกับ Need-to-Know ผู้ใช้แก้เองไม่ได้ และไม่รับประกันว่าจะป้องกันข้อมูลรั่วไหลได้ทุกกรณี</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-dashboard">
@@ -2281,7 +2281,7 @@ export const diagrams = {
       <g>
         <rect x="20" y="121" width="360" height="42" rx="6" class="diag-box diag-box-blue" />
         <text x="36" y="138" class="diag-text-title" font-size="12px" font-weight="700">5. Session (เซสชัน)</text>
-        <text x="36" y="154" class="diag-text-sub" font-size="10.5px">RPC, NetBIOS, Sockets &middot; Session Management</text>
+        <text x="36" y="154" class="diag-text-sub" font-size="10.5px">RPC, NetBIOS &middot; Session Management</text>
       </g>
       <g>
         <rect x="20" y="169" width="360" height="42" rx="6" class="diag-box diag-box-banner" />
@@ -2423,7 +2423,7 @@ export const diagrams = {
         <text x="247" y="123" fill="#f8fafc" font-size="11px" font-weight="700" text-anchor="middle">Firewall</text>
         <text x="247" y="155" fill="#cbd5e1" font-size="9px" text-anchor="middle">Packet Filter</text>
         <text x="247" y="170" fill="#cbd5e1" font-size="9px" text-anchor="middle">Stateful</text>
-        <text x="247" y="210" fill="#93c5fd" font-size="9px" text-anchor="middle">Port 80/443</text>
+        <text x="247" y="210" fill="#93c5fd" font-size="9px" text-anchor="middle">Policy Ports</text>
       </g>
 
       <g>
@@ -2516,7 +2516,7 @@ export const diagrams = {
 <div class="reading-diagram-card" data-diagram="defenseInDepthLayers" role="region" aria-label="Defense in Depth 5-Layer Security Architecture">
   <div class="reading-diagram-header">
     <span class="reading-diagram-tag">Layered Defense</span>
-    <h4 class="reading-diagram-title">Defense in Depth (Layered Defense): 5 Concentric Security Tiers</h4>
+    <h4 class="reading-diagram-title">Defense in Depth: Five Example Control Groups</h4>
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 840 280" class="reading-diagram-svg" aria-label="Hierarchical layered diagram showing 5 security tiers from Perimeter down to Data core" role="img">
@@ -2644,10 +2644,10 @@ export const diagrams = {
         <text x="112" y="76" class="diag-text-sub" font-size="10.5px" text-anchor="middle">Infrastructure as a Service</text>
         
         <rect x="30" y="90" width="165" height="26" rx="4" fill="#10b981" />
-        <text x="112" y="103" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Data &amp; Information (Customer)</text>
+        <text x="112" y="103" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Data Policy (Customer)</text>
         
         <rect x="30" y="122" width="165" height="26" rx="4" fill="#10b981" />
-        <text x="112" y="135" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Identity &amp; Access (Customer)</text>
+        <text x="112" y="135" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">IAM Policy (Customer)</text>
         
         <rect x="30" y="154" width="165" height="26" rx="4" fill="#10b981" />
         <text x="112" y="167" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Applications &amp; Code (Customer)</text>
@@ -2670,10 +2670,10 @@ export const diagrams = {
         <text x="317" y="76" class="diag-text-sub" font-size="10.5px" text-anchor="middle">Platform as a Service</text>
         
         <rect x="235" y="90" width="165" height="26" rx="4" fill="#10b981" />
-        <text x="317" y="103" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Data &amp; Information (Customer)</text>
+        <text x="317" y="103" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Data Policy (Customer)</text>
         
         <rect x="235" y="122" width="165" height="26" rx="4" fill="#10b981" />
-        <text x="317" y="135" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Identity &amp; Access (Customer)</text>
+        <text x="317" y="135" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">IAM Policy (Customer)</text>
         
         <rect x="235" y="154" width="165" height="26" rx="4" fill="#10b981" />
         <text x="317" y="167" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Applications &amp; Code (Customer)</text>
@@ -2696,10 +2696,10 @@ export const diagrams = {
         <text x="522" y="76" class="diag-text-sub" font-size="10.5px" text-anchor="middle">Software as a Service</text>
         
         <rect x="440" y="90" width="165" height="26" rx="4" fill="#10b981" />
-        <text x="522" y="103" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Data &amp; Information (Customer)</text>
+        <text x="522" y="103" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Data Policy (Customer)</text>
         
         <rect x="440" y="122" width="165" height="26" rx="4" fill="#10b981" />
-        <text x="522" y="135" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Identity &amp; Access (Customer)</text>
+        <text x="522" y="135" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">IAM Policy (Customer)</text>
         
         <rect x="440" y="154" width="165" height="26" rx="4" fill="#3b82f6" />
         <text x="522" y="167" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Applications &amp; Logic (CSP)</text>
@@ -2722,10 +2722,10 @@ export const diagrams = {
         <text x="727" y="76" class="diag-text-sub" font-size="10.5px" text-anchor="middle">Function as a Service</text>
         
         <rect x="645" y="90" width="165" height="26" rx="4" fill="#10b981" />
-        <text x="727" y="103" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Data &amp; Information (Customer)</text>
+        <text x="727" y="103" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Data Policy (Customer)</text>
         
         <rect x="645" y="122" width="165" height="26" rx="4" fill="#10b981" />
-        <text x="727" y="135" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Identity &amp; Access (Customer)</text>
+        <text x="727" y="135" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">IAM Policy (Customer)</text>
         
         <rect x="645" y="154" width="165" height="26" rx="4" fill="#10b981" />
         <text x="727" y="167" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Function Code (Customer)</text>
@@ -2753,7 +2753,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">OS &middot; Apps &middot; Customer Managed</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: Data, IAM, Applications, Guest OS, Patching และ Network Configs | CSP ดูแล: Hypervisor, Physical Servers, Storage, Datacenter Facility</p>
+        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Applications, Guest OS, Patching และ Network Configs | CSP ดูแล: Hypervisor, Physical Servers, Storage, Datacenter Facility</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-kpi">
@@ -2764,7 +2764,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Code &middot; Data &middot; Runtime Managed</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: Data, IAM, Application Source Code | CSP ดูแล: OS, Middleware, Language Runtime, Database Engine, Hardware, Physical Security</p>
+        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Application Source Code | CSP ดูแล: OS, Middleware, Language Runtime, Database Engine, Hardware, Physical Security</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-report">
@@ -2775,7 +2775,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Data &middot; Access &middot; App Managed</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: Data และ User Access (IAM) เสมอ | CSP ดูแล: แอปพลิเคชันทั้งหมด, ซอฟต์แวร์, OS, โครงสร้างพื้นฐาน และการสำรองข้อมูลระดับระบบ</p>
+        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย/การตั้งค่า User Access ที่ตนควบคุม; CSP ยังคงดูแลความปลอดภัยของบริการ Storage และ IAM ที่ตนบริหาร | CSP ดูแล: แอปพลิเคชันทั้งหมด, ซอฟต์แวร์, OS, โครงสร้างพื้นฐาน และการสำรองข้อมูลระดับระบบ</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-dashboard">
@@ -2786,7 +2786,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Event Code &middot; Fully Managed</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: เฉพาะ Function Code, Data และ IAM Trigger | CSP ดูแล: การสเกลแบบอัตโนมัติ (Auto-scaling), Event Bus, Container Execution, Host Infrastructure</p>
+        <p class="reading-mob-tier-desc">ลูกค้าดูแล: Function Code, การจัดชั้นข้อมูล และนโยบาย/การตั้งค่า IAM Trigger ที่ตนควบคุม | CSP ดูแล: การสเกลแบบอัตโนมัติ (Auto-scaling), Event Bus, Container Execution, Host Infrastructure</p>
       </div>
     </div>
   </div>

@@ -1,0 +1,979 @@
+<p class="reading-lead">สรุปและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC) ฉบับปรับปรุงปี 2026 ใน Domain 2: Security Governance (น้ำหนักข้อสอบ 17.3%) ครอบคลุมการวางแผนกำกับดูแลความมั่นคงปลอดภัยแบบบูรณาการ (GRC), แผนความต่อเนื่องทางธุรกิจและการจัดระบบสำรอง (Business Continuity & Disaster Recovery), วัฒนธรรมความปลอดภัยและวิศวกรรมสังคม (Security Awareness & Culture), และการวัดผลประสิทธิผลความปลอดภัย (Cybersecurity Measurement, Metrics, KPI/KRI & Reporting)</p>
+<section class="reading-objective-section" id="obj-2-1">
+<h2>Objective 2.1: Plan Governance, Risk, and Compliance (GRC)</h2>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>การกำกับดูแลความมั่นคงปลอดภัยสารสนเทศในองค์กรยุคใหม่ ต้องบูรณาการ 3 เสาหลักเข้าด้วยกันอย่างเป็นระบบ:</p>
+<h3 id="topic-2-1-grc-foundations">2.1.1 GRC Foundations: 3 Pillars Defined</h3>
+<p><strong>GRC</strong> ย่อมาจาก <strong>Governance, Risk, and Compliance</strong> เป็นแนวทางที่มีโครงสร้างและประสานงานกัน (<strong>Structured and Coordinated Approach</strong>) เพื่อบริหารจัดการความมั่นคงปลอดภัยทางไซเบอร์ให้สอดคล้องกับความต้องการและเป้าหมายของธุรกิจ โดยแบ่งออกเป็น 3 เสาหลักที่ต้องทำงานสอดประสานกัน:</p>
+<div class="reading-diagram-card" data-diagram="grcAlignment" role="region" aria-label="GRC Framework Alignment: Governance, Risk, and Compliance">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Governance Model</span>
+    <h4 class="reading-diagram-title">GRC Alignment: Governance, Risk Management &amp; Compliance</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 780 180" class="reading-diagram-svg" aria-label="GRC 3-Pillar alignment supporting Business Objectives" role="img">
+      <rect x="30" y="12" width="720" height="32" rx="6" class="diag-box diag-box-banner" />
+      <text x="390" y="32" class="diag-text-sub" text-anchor="middle">Strategic Objective: Support Business Goals &middot; Protect Assets &middot; Increase Organizational Resilience</text>
+      <g>
+        <rect x="30" y="58" width="220" height="106" rx="8" class="diag-box diag-box-blue" />
+        <text x="140" y="85" class="diag-text-title" text-anchor="middle">GOVERNANCE</text>
+        <text x="140" y="105" class="diag-text-sub" text-anchor="middle">Direction &amp; Oversight</text>
+        <line x1="50" y1="117" x2="230" y2="117" stroke="var(--line)" stroke-width="1" />
+        <text x="140" y="134" class="diag-text-label" text-anchor="middle">ทิศทาง นโยบาย และบทบาทหน้าที่</text>
+        <text x="140" y="150" class="diag-text-label" text-anchor="middle">Accountability ชัดเจน</text>
+      </g>
+      <path d="M 250 111 L 280 111" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
+      <g>
+        <rect x="280" y="58" width="220" height="106" rx="8" class="diag-box diag-box-blue" />
+        <text x="390" y="85" class="diag-text-title" text-anchor="middle">RISK MANAGEMENT</text>
+        <text x="390" y="105" class="diag-text-sub" text-anchor="middle">Identify &amp; Manage</text>
+        <line x1="300" y1="117" x2="480" y2="117" stroke="var(--line)" stroke-width="1" />
+        <text x="390" y="134" class="diag-text-label" text-anchor="middle">ระบุและประเมินความเสี่ยง</text>
+        <text x="390" y="150" class="diag-text-label" text-anchor="middle">จัดลำดับและควบคุมความเสี่ยง</text>
+      </g>
+      <path d="M 500 111 L 530 111" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
+      <g>
+        <rect x="530" y="58" width="220" height="106" rx="8" class="diag-box diag-box-blue" />
+        <text x="640" y="85" class="diag-text-title" text-anchor="middle">COMPLIANCE</text>
+        <text x="640" y="105" class="diag-text-sub" text-anchor="middle">Adhere &amp; Fulfill</text>
+        <line x1="550" y1="117" x2="730" y2="117" stroke="var(--line)" stroke-width="1" />
+        <text x="640" y="134" class="diag-text-label" text-anchor="middle">ทำตามกฎหมายและข้อบังคับ</text>
+        <text x="640" y="150" class="diag-text-label" text-anchor="middle">มาตรฐานสากลและนโยบาย</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-grc" aria-label="GRC Alignment Framework">
+    <div class="reading-mob-banner">
+      <span class="reading-mob-banner-tag">STRATEGIC OBJECTIVE</span>
+      <p class="reading-mob-banner-text">Support Business Goals &middot; Protect Assets &middot; Increase Organizational Resilience</p>
+    </div>
+    <div class="reading-mob-grc-stack">
+      <div class="reading-mob-card reading-mob-card-grc">
+        <div class="reading-mob-card-head">
+          <span class="reading-mob-num-badge">01</span>
+          <div class="reading-mob-head-info">
+            <h5 class="reading-mob-card-title">GOVERNANCE</h5>
+            <span class="reading-mob-card-subtitle">Direction &amp; Oversight</span>
+          </div>
+        </div>
+        <div class="reading-mob-card-body">
+          <p class="reading-mob-card-desc">ทิศทาง นโยบาย และบทบาทหน้าที่</p>
+          <div class="reading-mob-card-pill">Accountability ชัดเจน</div>
+        </div>
+      </div>
+      <div class="reading-mob-arrow-down" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+      <div class="reading-mob-card reading-mob-card-grc">
+        <div class="reading-mob-card-head">
+          <span class="reading-mob-num-badge">02</span>
+          <div class="reading-mob-head-info">
+            <h5 class="reading-mob-card-title">RISK MANAGEMENT</h5>
+            <span class="reading-mob-card-subtitle">Identify &amp; Manage</span>
+          </div>
+        </div>
+        <div class="reading-mob-card-body">
+          <p class="reading-mob-card-desc">ระบุและประเมินความเสี่ยง</p>
+          <div class="reading-mob-card-pill">จัดลำดับและควบคุมความเสี่ยง</div>
+        </div>
+      </div>
+      <div class="reading-mob-arrow-down" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+      <div class="reading-mob-card reading-mob-card-grc">
+        <div class="reading-mob-card-head">
+          <span class="reading-mob-num-badge">03</span>
+          <div class="reading-mob-head-info">
+            <h5 class="reading-mob-card-title">COMPLIANCE</h5>
+            <span class="reading-mob-card-subtitle">Adhere &amp; Fulfill</span>
+          </div>
+        </div>
+        <div class="reading-mob-card-body">
+          <p class="reading-mob-card-desc">ทำตามกฎหมายและข้อบังคับ</p>
+          <div class="reading-mob-card-pill">มาตรฐานสากลและนโยบาย</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ol><li><strong>Governance (การกำกับดูแล):</strong><ul><li>คือการกำหนด <strong>Direction + Oversight + Accountability</strong> (ทิศทาง การกำกับดูแล และความรับผิดชอบ)</li><li>คณะกรรมการและผู้บริหารระดับสูงกำหนดวิสัยทัศน์ นโยบาย บทบาทหน้าที่ และกลยุทธ์ด้านความปลอดภัย เพื่อให้มั่นใจว่าการลงทุนและมาตรการด้าน Cybersecurity สอดคล้องกับเป้าหมายทางธุรกิจ (Business Objectives)</li><li>ตอบคำถามหลัก: <em>"องค์กรของเราจะมุ่งหน้าไปในทิศทางใด และใครคือผู้รับผิดชอบ?"</em></li></ul></li><li><strong>Risk Management (การบริหารความเสี่ยง):</strong><ul><li>คือกระบวนการ <strong>Identify + Assess + Manage Risk</strong> (ระบุ ประเมิน และจัดการความเสี่ยง)</li><li>ระบุภัยคุกคาม (Threats) และช่องโหว่ (Vulnerabilities) ที่อาจส่งผลกระทบต่อทรัพย์สินและเป้าหมายขององค์กร จากนั้นประเมินโอกาสเกิด (Likelihood) และผลกระทบ (Impact) เพื่อเลือกแนวทางจัดการความเสี่ยง (Risk Treatment) ที่เหมาะสม</li><li>ตอบคำถามหลัก: <em>"ความเสี่ยงใดบ้างที่อาจขัดขวางไม่ให้องค์กรบรรลุเป้าหมาย และเราจะควบคุมความเสี่ยงเหล่านั้นอย่างไร?"</em></li></ul></li><li><strong>Compliance (การปฏิบัติตามข้อกำหนด):</strong><ul><li>คือกระบวนการทำให้การดำเนินงานขององค์กรสอดคล้องกับข้อกำหนดและพันธกรณีทั้งหมด</li><li>ครอบคลุมกฎหมาย (Laws), กฎระเบียบข้อบังคับจากหน่วยงานกำกับดูแล (Regulations), มาตรฐานสากลและอุตสาหกรรม (Standards), นโยบายภายใน (Internal Policies) และข้อตกลงตามสัญญาธุรกิจ (Contractual Requirements)</li><li>ตอบคำถามหลัก: <em>"เราได้ปฏิบัติตามกฎหมาย กฎเกณฑ์ และมาตรฐานที่เกี่ยวข้องครบถ้วนหรือไม่?"</em></li></ul></li></ol>
+<div class="reading-callout tip">
+<div class="reading-callout-header">
+<svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+<span>สูตรจำความหมาย 3 เสาหลัก GRC สำหรับห้องสอบ</span>
+</div>
+<p><strong>Governance</strong> = กำกับทิศทางและนโยบาย (Direction &amp; Oversight)</p>
+<p><strong>Risk</strong> = ระบุและจัดการความเสี่ยง (Identify &amp; Manage)</p>
+<p><strong>Compliance</strong> = ปฏิบัติตามกฎหมายและข้อกำหนด (Adhere to Mandates)</p>
+</div>
+<h3 id="topic-2-1-purpose-of-grc">2.1.2 The Purpose of GRC: วัตถุประสงค์ของการบูรณาการ</h3>
+<p>การดำเนินงานด้านความปลอดภัยในอดีตมักเกิดปัญหาแบบ "ไซโล" (Siloed Approach) ที่ต่างฝ่ายต่างทำ เช่น ทีม IT ดูแลเซิร์ฟเวอร์, ทีมกฎหมายดูกฎหมาย, และทีมบริหารความเสี่ยงดูเอกสาร ทำให้เกิดงานซ้ำซ้อนและช่องว่างด้านความปลอดภัย วัตถุประสงค์หลักของ GRC คือการรวมศูนย์และประสานกิจกรรมเหล่านี้ให้เกิดประโยชน์สูงสุด 7 ประการ:</p>
+<ol><li><strong>Align Cybersecurity with Business Objectives:</strong> ทำให้การลงทุนและมาตรการความปลอดภัยไซเบอร์สนับสนุนเป้าหมายทางธุรกิจ ไม่ใช่เป็นอุปสรรคต่อการเติบโต</li><li><strong>Identify and Manage Risks Systematically:</strong> ทำให้มองเห็นและบริหารความเสี่ยงอย่างเป็นระบบทั่วทั้งองค์กร</li><li><strong>Meet Legal and Regulatory Obligations:</strong> ทำให้องค์กรปฏิบัติตามกฎหมายและข้อบังคับได้อย่างครบถ้วนและทันท่วงที</li><li><strong>Establish Consistent Policies and Controls:</strong> สร้างนโยบายและมาตรการควบคุมที่สอดคล้องกันทุกหน่วยงาน</li><li><strong>Improve Accountability:</strong> กำหนดผู้รับผิดชอบ (Owners) ในแต่ละความเสี่ยงและมาตรการอย่างชัดเจน</li><li><strong>Support Informed Decision-Making:</strong> ให้ข้อมูลความเสี่ยงและสถานะความปลอดภัยที่ถูกต้องแก่ผู้บริหารเพื่อประกอบการตัดสินใจ</li><li><strong>Reduce Duplication of Efforts:</strong> ลดการทำงานซ้ำซ้อน เช่น การตรวจสอบข้อกำหนดการควบคุมเดียวกันในหลายระบบหรือหลายมาตรฐาน</li></ol>
+<h3 id="topic-2-1-importance-of-grc">2.1.3 The Importance of GRC: ความสำคัญต่อความทนทานขององค์กร</h3>
+<p>เมื่อองค์กรมีกรอบการทำงาน GRC ที่มีประสิทธิผล จะส่งผลลัพธ์ที่เป็นรูปธรรมต่อความมั่นคงของธุรกิจ:</p>
+<ul><li><strong>ลดความเสี่ยงทางไซเบอร์และธุรกิจ (Reduce Risk Exposure):</strong> ป้องกันไม่ให้ภัยคุกคามกลายเป็นเหตุการณ์ความเสียหายร้ายแรง</li><li><strong>ปกป้องข้อมูลและทรัพย์สินสำคัญ (Protect Critical Assets):</strong> รักษาความลับ ความถูกต้องครบถ้วน และความพร้อมใช้งานของข้อมูลลูกค้าและทรัพย์สินทางปัญญา</li><li><strong>หลีกเลี่ยงบทลงโทษและค่าปรับ (Avoid Penalties & Fines):</strong> ป้องกันความเสียหายทางการเงินและคดีความจากการละเมิดกฎหมายคุ้มครองข้อมูลหรือข้อบังคับของหน่วยงานกำกับดูแล</li><li><strong>เพิ่มความยืดหยุ่นและความทนทานขององค์กร (Organizational Resilience):</strong> เพิ่มขีดความสามารถในการเตรียมพร้อม รับมือ ปรับตัว และฟื้นตัวเมื่อเผชิญกับเหตุการณ์ไม่คาดคิดหรือการโจมตีทางไซเบอร์</li></ul>
+<h3 id="topic-2-1-frameworks-standards">2.1.4 GRC Frameworks and Standards</h3>
+<p>การสร้างโครงสร้างการกำกับดูแลความปลอดภัยตั้งแต่เริ่มต้นเป็นเรื่องยาก องค์กรจึงนิยมนำ <strong>Frameworks (กรอบการดำเนินงาน)</strong> และ <strong>Standards (มาตรฐานสากล)</strong> ที่ได้รับการยอมรับมาปรับใช้:</p>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 22 22 22 12 2"></polygon></svg>ตารางเปรียบเทียบกรอบการดำเนินงาน GRC หลัก 3 ตัวที่ออกสอบบ่อยที่สุด:</p>
+<div class="reading-table-wrapper reading-table-grc-frameworks-wrapper" data-table="grc-frameworks"><table class="reading-table reading-table-grc-frameworks" data-table="grc-frameworks"><thead><tr><th scope="col">Framework / Standard</th><th scope="col">จุดเน้นหลัก (Primary Focus)</th><th scope="col">ขอบเขตและการนำไปใช้</th><th scope="col" class="reading-col-exam-keyword">คำจำสั้นสำหรับสอบ</th></tr></thead><tbody><tr><td><strong>NIST CSF</strong><br>(NIST Cybersecurity Framework)</td><td>การจัดการและลดความเสี่ยงด้านความมั่นคงปลอดภัยไซเบอร์</td><td>กรอบความยืดหยุ่นที่ช่วยประเมิน ระบุ และลดความเสี่ยงไซเบอร์อย่างเป็นระบบ (Functions: Govern, Identify, Protect, Detect, Respond, Recover)</td><td class="reading-col-exam-keyword"><strong>Cybersecurity Risk</strong></td></tr><tr><td><strong>ISO/IEC 27001</strong></td><td>ข้อกำหนดในการจัดตั้งและปรับปรุง <strong>ISMS</strong></td><td>มาตรฐานสากลที่สามารถตรวจประเมินและให้การรับรอง (Certification) สำหรับระบบบริหารจัดการความมั่นคงปลอดภัยสารสนเทศ (Information Security Management System)</td><td class="reading-col-exam-keyword"><strong>ISMS Requirements</strong></td></tr><tr><td><strong>COBIT</strong><br>(Control Objectives for Information Technologies)</td><td>การกำกับดูแลและการบริหารจัดการ IT ระดับองค์กร</td><td>เชื่อมโยงเป้าหมายทางธุรกิจเข้ากับเป้าหมายด้านเทคโนโลยีสารสนเทศ (Governance and Management of Enterprise IT)</td><td class="reading-col-exam-keyword"><strong>Enterprise IT Governance</strong></td></tr></tbody></table></div>
+<div class="reading-callout info">
+<div class="reading-callout-header">
+<svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 8 8 12 12 16 12 8"></polygon></svg>
+<span>ตัวอย่างกฎหมายและข้อบังคับที่ปรากฏร่วมในงาน GRC</span>
+</div>
+<p>ในบริบทของ GRC องค์กรอาจต้องปฏิบัติตามข้อกำหนดเฉพาะด้าน เช่น <strong>GDPR</strong> (คุ้มครองข้อมูลส่วนบุคคลของสหภาพยุโรป), <strong>HIPAA</strong> (คุ้มครองข้อมูลสุขภาพในสหรัฐฯ), <strong>PCI DSS</strong> (มาตรฐานความปลอดภัยข้อมูลบัตรชำระเงิน), <strong>SOX</strong> (การควบคุมภายในด้านรายงานทางการเงิน), และ <strong>CMMC</strong> (มาตรฐานความปลอดภัยสำหรับห่วงโซ่อุปทานกระทรวงกลาโหมสหรัฐฯ)</p>
+</div>
+<h3 id="topic-2-1-grc-tools">2.1.5 Centralized GRC Tools and Platforms</h3>
+<p><strong>GRC Tools</strong> คือแพลตฟอร์มซอฟต์แวร์ที่ช่วยให้องค์กรบริหารจัดการกิจกรรมด้านการกำกับดูแล ความเสี่ยง และการปฏิบัติตามข้อกำหนดได้จากศูนย์กลาง (Centralized Management) แทนการพึ่งพากระดาษหรือสเปรดชีต (Spreadsheets) จำนวนมากที่กระจัดกระจายและขาดการเชื่อมโยง:</p>
+<ul><li><strong>Centralized Risk Registers:</strong> รวมศูนย์บันทึกรายการความเสี่ยงและติดตามสถานะแบบ Real-time</li><li><strong>Policy Management:</strong> จัดเก็บบันทึกนโยบาย ทบทวนเวอร์ชัน และติดตามการยอมรับนโยบายของพนักงาน</li><li><strong>Compliance Tracking:</strong> ตรวจสอบและแสดงสถานะการปฏิบัติตามข้อกำหนดหลายมาตรฐานพร้อมกัน (เช่น เทียบ ISO 27001 กับ NIST CSF)</li><li><strong>Control Management:</strong> ติดตามการทำงาน ประสิทธิผล และผลการทดสอบของ Security Controls</li><li><strong>Audit Management:</strong> รวบรวมหลักฐาน จัดเตรียมรายงาน และอำนวยความสะดวกแก่ผู้ตรวจสอบ (Auditors)</li></ul>
+<h3 id="topic-2-1-risk-register">2.1.6 The Risk Register: Structure, Ownership, and Tracking</h3>
+<p><strong>Risk Register</strong> (ทะเบียนความเสี่ยง) คือเอกสารบันทึกอย่างเป็นทางการขององค์กรที่รวบรวมรายการความเสี่ยงที่ได้รับการระบุแล้ว (<strong>Documented record of identified organizational risks</strong>):</p>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>องค์ประกอบและฟิลด์ข้อมูลสำคัญใน Risk Register:</p>
+<div class="reading-table-wrapper"><table class="reading-table"><thead><tr><th scope="col">ฟิลด์ข้อมูล (Field)</th><th scope="col">ความหมายและบทบาท</th><th scope="col">ตัวอย่างรูปธรรมในองค์กร</th></tr></thead><tbody><tr><td><strong>Risk Description</strong></td><td>คำอธิบายสถานการณ์ความเสี่ยงที่อาจเกิดขึ้น</td><td>แรนซัมแวร์โจมตีและเข้ารหัสข้อมูลบนเซิร์ฟเวอร์หลัก</td></tr><tr><td><strong>Affected Asset / Process</strong></td><td>ทรัพย์สินหรือกระบวนการธุรกิจที่ได้รับผลกระทบ</td><td>ระบบฐานข้อมูล ERP และเซิร์ฟเวอร์ฐานข้อมูลลูกค้า</td></tr><tr><td><strong>Threat</strong></td><td>ภัยคุกคามหรือผู้ก่อภัยคุกคาม</td><td>Ransomware (มัลแวร์เรียกค่าไถ่), กลุ่มอาชญากรไซเบอร์</td></tr><tr><td><strong>Vulnerability</strong></td><td>ช่องโหว่หรือจุดอ่อนที่เปิดโอกาส</td><td>พนักงานขาดความตระหนักเรื่องฟิชชิง, ช่องโหว่ที่ยังไม่ได้แพตช์</td></tr><tr><td><strong>Likelihood</strong></td><td>โอกาสหรือความถี่ที่จะเกิดเหตุการณ์</td><td><div class="reading-bilingual-term"><span class="reading-term-en"><strong>High</strong></span><span class="reading-term-th">(สูง)</span></div></td></tr><tr><td><strong>Impact</strong></td><td>ความรุนแรงของผลกระทบต่อธุรกิจ</td><td><div class="reading-bilingual-term"><span class="reading-term-en"><strong>High</strong></span><span class="reading-term-th">(สูง — ธุรกิจหยุดชะงักและข้อมูลรั่วไหล)</span></div></td></tr><tr><td><strong>Risk Rating</strong></td><td>ระดับความเสี่ยงจากการประเมินร่วมกัน</td><td><div class="reading-bilingual-term"><span class="reading-term-en"><strong>Critical</strong></span><span class="reading-term-th">(วิกฤต)</span></div></td></tr><tr><td><strong>Risk Owner</strong></td><td>บุคคลหรือตำแหน่งที่รับผิดชอบความเสี่ยง</td><td>IT Manager หรือ Chief Information Security Officer (CISO)</td></tr><tr><td><strong>Treatment Strategy</strong></td><td>กลยุทธ์การจัดการความเสี่ยง</td><td><div class="reading-bilingual-term"><span class="reading-term-en"><strong>Mitigation</strong></span><span class="reading-term-th">(ลดความเสี่ยงด้วยการเพิ่มมาตรการควบคุม)</span></div></td></tr><tr><td><strong>Controls Deployed</strong></td><td>มาตรการควบคุมที่เลือกใช้เพื่อลดความเสี่ยง</td><td>EDR บนเครื่องปลายทาง, Backup แบบ Immutable, Network Segmentation, บังคับใช้ MFA</td></tr><tr><td><strong>Current Status</strong></td><td>สถานะความคืบหน้าในการควบคุม</td><td>In Progress (กำลังติดตั้งระบบ EDR)</td></tr><tr><td><strong>Residual Risk</strong></td><td>ความเสี่ยงที่ยังคงหลงเหลืออยู่หลังควบคุม</td><td><div class="reading-bilingual-term"><span class="reading-term-en"><strong>Low to Medium</strong></span><span class="reading-term-th">(ความเสี่ยงลดลงสู่ระดับที่ยอมรับได้)</span></div></td></tr></tbody></table></div>
+<div class="reading-callout warning">
+<div class="reading-callout-header">
+<svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+<span>ข้อควรระวังเรื่อง Risk Owner</span>
+</div>
+<p><strong>Risk Owner</strong> คือบุคคลที่มีอำนาจและความรับผิดชอบ (Accountability) ในการตัดสินใจและติดตามให้ความเสี่ยงได้รับการจัดการอย่างเหมาะสม ไม่ได้หมายความว่า Risk Owner จะต้องเป็นผู้ลงมือคอนฟิกเซิร์ฟเวอร์หรือเขียนโค้ดด้วยตนเอง</p>
+</div>
+</section>
+<section class="reading-objective-section" id="obj-2-2">
+<h2>Objective 2.2: Understand redundancy</h2>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>Redundancy คือการจัดให้มีทรัพยากร ระบบ หรือขั้นตอนสำรอง เพื่อรองรับความต่อเนื่องและการกู้คืน:</p>
+<h3 id="topic-2-2-bc-foundations">2.2.1 Business Continuity (BC) Foundations</h3>
+<p><strong>Business Continuity (BC)</strong> คือความสามารถขององค์กรในการ <strong>ดำเนินกิจกรรมและบริการทางธุรกิจที่สำคัญต่อไปได้ในระหว่างและหลังเกิดเหตุการณ์หยุดชะงัก</strong> (<strong>Disruption</strong>):</p>
+<ul><li>เป้าหมายหลักของ BC คือ <strong>"Keep the business running"</strong> (ทำให้ธุรกิจไม่หยุดชะงัก)</li><li>ขอบเขตของ BC กว้างขวางครอบคลุมทั้งองค์กร ได้แก่ บุคลากร (People), ขั้นตอนการทำงาน (Processes), อาคารสถานที่ (Facilities), คู่ค้าและห่วงโซ่อุปทาน (Suppliers), และเทคโนโลยี (Technology)</li></ul>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>เหตุการณ์หยุดชะงัก (Disruptions) 8 รูปแบบสำคัญที่องค์กรต้องเตรียมรับมือ:</p>
+<ol><li><strong>Natural Disasters:</strong> ภัยธรรมชาติ เช่น อุทกภัย วาตภัย แผ่นดินไหว เพลิงไหม้</li><li><strong>Cyberattacks:</strong> การโจมตีทางไซเบอร์ เช่น Ransomware, DDoS, การบุกรุกเครือข่าย</li><li><strong>Power Outages:</strong> ระบบไฟฟ้าดับหรือระบบพลังงานหลักล้มเหลว</li><li><strong>Equipment Failures:</strong> อุปกรณ์ฮาร์ดแวร์หลักเสียหาย เช่น เมนเฟรมหรือสตอเรจพัง</li><li><strong>Network Outages:</strong> โครงข่ายสื่อสารหรือบริการอินเทอร์เน็ตล่ม</li><li><strong>Pandemics:</strong> โรคระบาดร้ายแรงที่ส่งผลกระทบต่อความพร้อมของบุคลากร</li><li><strong>Loss of Facilities:</strong> อาคารสำนักงานใหญ่หรือดาต้าเซ็นเตอร์ไม่สามารถเข้าใช้งานได้</li><li><strong>Supply-Chain Disruptions:</strong> ห่วงโซ่อุปทานหรือผู้ให้บริการภายนอกหยุดให้บริการกะทันหัน</li></ol>
+<h3 id="topic-2-2-bcp-components">2.2.2 The Business Continuity Plan (BCP)</h3>
+<p><strong>Business Continuity Plan (BCP)</strong> คือเอกสารแผนการปฏิบัติการที่ระบุแนวทางและขั้นตอนที่ชัดเจนว่าองค์กรจะรักษา <strong>Critical Operations</strong> (งานสำคัญยิ่งยวด) ต่อไปได้อย่างไรเมื่อเกิดเหตุหยุดชะงัก องค์ประกอบหลักของ BCP ประกอบด้วย:</p>
+<ul><li><strong>Critical Business Processes:</strong> การระบุกระบวนการธุรกิจที่ต้องเปิดให้บริการต่อเนื่อง เช่น การรับฝาก-ถอนเงิน หรือการจ่ายยาฉุกเฉิน</li><li><strong>Roles and Responsibilities:</strong> การกำหนดสายการบังคับบัญชาและบทบาทหน้าที่ของทีมบริหารความต่อเนื่อง</li><li><strong>Communication Procedures:</strong> ขั้นตอนการติดต่อสื่อสารฉุกเฉินกับพนักงาน ผู้บริหาร ลูกค้า และสื่อมวลชน</li><li><strong>Alternate Work Locations:</strong> การเตรียมสถานที่ทำงานสำรอง หรือระบบที่เอื้อให้พนักงาน Remote Work ได้</li><li><strong>Backup Personnel:</strong> การระบุบุคลากรตัวแทนที่สามารถปฏิบัติหน้าที่ทดแทนได้ทันทีเมื่อผู้รับผิดชอบหลักไม่พร้อม</li><li><strong>Alternate Suppliers:</strong> รายชื่อผู้จัดส่งสินค้า วัตถุดิบ หรือบริการสำรองที่มีข้อตกลงล่วงหน้า</li><li><strong>Essential Technology & Systems:</strong> บัญชีระบบและเทคโนโลยีขั้นต่ำที่จำเป็นต่อการรันธุรกิจ</li><li><strong>Recovery Priorities:</strong> ลำดับความสำคัญในการฟื้นฟูฟังก์ชันงานต่าง ๆ ตามความเร่งด่วน</li></ul>
+<h3 id="topic-2-2-bia">2.2.3 Business Impact Analysis (BIA)</h3>
+<p><strong>Business Impact Analysis (BIA)</strong> หรือการวิเคราะห์ผลกระทบทางธุรกิจ คือกระบวนการศึกษาและประเมินอย่างเป็นระบบ เพื่อระบุว่ากระบวนการใดในองค์กรมีความสำคัญสูงสุด และหากกระบวนการนั้นหยุดชะงักจะส่งผลกระทบทางการเงิน การดำเนินงาน กฎหมาย หรือชื่อเสียงอย่างไร:</p>
+<ul><li>BIA ทำหน้าที่เป็น <strong>สะพานเชื่อมโยง (Bridge)</strong> ระหว่างความต้องการทางธุรกิจ (Business Needs) กับข้อกำหนดการกู้คืนระบบ IT (IT Recovery Requirements)</li><li>ผลลัพธ์ของ BIA ช่วยให้องค์กรจัดลำดับความสำคัญ (Recovery Priorities) และกำหนดเกณฑ์ความทนทานต่อการหยุดทำงาน เช่น <strong>Maximum Tolerable Downtime (MTD)</strong> ซึ่งคือระยะเวลาสูงสุดที่ธุรกิจสามารถทนต่อการหยุดชะงักได้ก่อนเกิดผลกระทบเกินระดับที่องค์กรยอมรับได้</li><li><em>ความสัมพันธ์ของเป้าหมายกู้คืนระบบกับความทนทานของธุรกิจ (Recovery Target and Business Tolerance):</em><ul><li><strong class="reading-math-formula">RTO ≤ MTD</strong> — Recovery Time Objective (ระยะเวลาเป้าหมายที่ฝ่าย IT ต้องกู้คืนระบบให้เสร็จสิ้น) ต้องอยู่ภายใน Maximum Tolerable Downtime (ระยะหยุดชะงักรวมที่ธุรกิจทนได้) และเหลือเวลาตรวจสอบระบบและทำรายการค้างก่อนกลับมาดำเนินธุรกิจ</li><li><em>เหตุผลเชิงตรรกะ:</em> หาก <span class="reading-math-formula">RTO &gt; MTD</span> อาจเกิดผลกระทบเกินระดับที่องค์กรยอมรับได้ก่อนที่ระบบ IT จะกู้คืนเสร็จสิ้น โดยไม่ได้หมายความว่าองค์กรจะล่มสลายหรือเกิดความเสียหายที่ฟื้นคืนไม่ได้เสมอไป ดังนั้น MTD จึงทำหน้าที่เป็นเพดานบนสุด (Upper Bound Ceiling) สำหรับกำหนดค่า RTO เสมอ</li><li>BIA ชี้แนะเป้าหมายและลำดับความสำคัญ แต่ MTD ไม่ใช่สูตรคำนวณทางคณิตศาสตร์แบบตรงไปตรงมาสำหรับทั้ง RTO และ RPO โดย RPO จะขึ้นอยู่กับอัตราการเปลี่ยนแปลงของข้อมูลและขีดความสามารถของระบบสำรองข้อมูล</li></ul></li></ul>
+<h3 id="topic-2-2-dr-it-scope">2.2.4 Disaster Recovery (DR) & IT Scope</h3>
+<p><strong>Disaster Recovery (DR)</strong> คือชุดของนโยบาย เครื่องมือทางเทคนิค และขั้นตอนปฏิบัติที่มุ่งเน้น <strong>การกู้คืนโครงสร้างพื้นฐาน IT, ระบบคอมพิวเตอร์ และข้อมูล (IT Infrastructure, Systems, and Data)</strong> ภายหลังเกิดภัยพิบัติหรือเหตุรบกวนร้ายแรง:</p>
+<ul><li><strong>IT-Focused Recovery:</strong> ขอบเขตของ DR เจาะจงที่ฝั่งเทคโนโลยีสารสนเทศโดยเฉพาะ เช่น เซิร์ฟเวอร์, ฐานข้อมูล, แอปพลิเคชัน, อุปกรณ์เครือข่าย และไฟล์ข้อมูล</li><li><strong>วัตถุประสงค์หลักของ DR:</strong><ol><li><em>Minimize Downtime:</em> ลดระยะเวลาที่ระบบคอมพิวเตอร์หยุดทำงานให้สั้นที่สุด</li><li><em>Ensure Rapid Recovery:</em> ฟื้นฟูระบบให้กลับมาให้บริการได้อย่างรวดเร็วและปลอดภัย</li><li><em>Protect Data Integrity:</em> ป้องกันการสูญหายของข้อมูลและรักษาความถูกต้องครบถ้วนของข้อมูล</li><li><em>Support Business Continuity:</em> สนับสนุนให้แผน BC บรรลุผลสำเร็จ เพราะธุรกิจยุคใหม่ไม่สามารถดำเนินต่อได้หากปราศจากระบบ IT</li></ol></li></ul>
+<h3 id="topic-2-2-bc-vs-dr">2.2.5 BC vs. DR: Scope & Relationship</h3>
+<p>ความสัมพันธ์ระหว่าง BC และ DR เป็นจุดที่ข้อสอบ ISC2 CC ให้ความสำคัญอย่างยิ่ง:</p>
+<div class="reading-diagram-card" data-diagram="bcVsDrScope" role="region" aria-label="Scope Relationship: Business Continuity and Disaster Recovery">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Resilience Architecture</span>
+    <h4 class="reading-diagram-title">Scope Relationship: Business Continuity (BC) vs. Disaster Recovery (DR)</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 840 310" class="reading-diagram-svg" aria-label="Concentric relationship showing DR as a nested subset of BC (DR subset of BC)" role="img">
+      <g>
+        <rect x="20" y="15" width="800" height="280" rx="12" class="diag-box diag-box-banner diag-bc-outer" />
+        <rect x="36" y="28" width="168" height="22" rx="4" class="diag-scope-badge-bc" />
+        <text x="120" y="39" class="diag-scope-badge-bc-text" text-anchor="middle" dominant-baseline="central">ORGANIZATION-WIDE</text>
+        <text x="216" y="44" class="diag-text-title diag-bc-title" font-size="16px">BUSINESS CONTINUITY (BC) — ความต่อเนื่องทางธุรกิจ</text>
+        <text x="36" y="72" class="diag-text-sub diag-bc-desc" font-size="13px">เป้าหมาย: รักษาการดำเนินงานของธุรกิจในภาพรวมให้ดำเนินต่อไปได้ทั้งระหว่างและหลังวิกฤต</text>
+        <g class="diag-scope-pills">
+          <g>
+            <rect x="36" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />
+            <text x="108.5" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">People (บุคลากร)</text>
+          </g>
+          <g>
+            <rect x="191.75" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />
+            <text x="264.25" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Processes (กระบวนการ)</text>
+          </g>
+          <g>
+            <rect x="347.5" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />
+            <text x="420" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Facilities (สถานที่)</text>
+          </g>
+          <g>
+            <rect x="503.25" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />
+            <text x="575.75" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Suppliers (คู่ค้า)</text>
+          </g>
+          <g>
+            <rect x="659" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />
+            <text x="731.5" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Technology (เทคโนโลยี)</text>
+          </g>
+        </g>
+      </g>
+      <g>
+        <rect x="36" y="126" width="768" height="154" rx="8" class="diag-box diag-box-blue diag-dr-inner" stroke-width="2" />
+        <rect x="52" y="138" width="140" height="22" rx="4" class="diag-scope-badge-dr" />
+        <text x="122" y="149" class="diag-scope-badge-dr-text" text-anchor="middle" dominant-baseline="central">IT SUBSET (DR ⊂ BC)</text>
+        <text x="204" y="154" class="diag-text-title diag-dr-title" font-size="15px">DISASTER RECOVERY (DR) — การกู้คืนระบบเทคโนโลยีสารสนเทศ</text>
+        <text x="52" y="180" class="diag-text-sub diag-dr-desc" font-size="13px">เป้าหมาย: กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</text>
+        <g class="diag-dr-examples-group">
+          <rect x="52" y="196" width="736" height="70" rx="6" class="diag-examples-rect" />
+          <line x1="52" y1="196" x2="52" y2="266" stroke="var(--blue)" stroke-width="4" stroke-linecap="round" />
+          <text x="68" y="215" class="diag-examples-hdr">PRACTICAL EXAMPLES (ตัวอย่างการปฏิบัติ):</text>
+          <text x="68" y="235" class="diag-examples-item">• กู้คืนฐานข้อมูล &amp; Virtual Machines (Data &amp; System Restoration) · กู้คืนระบบ Cloud / On-Premise</text>
+          <text x="68" y="253" class="diag-examples-item">• สลับการทำงานไปยังศูนย์สำรอง (Hot / Warm / Cold Alternate Sites) · ฟื้นฟูโครงข่ายสื่อสาร (Network Recovery)</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-scope" aria-label="Scope Relationship: BC vs DR">
+    <div class="reading-mob-scope-outer">
+      <div class="reading-mob-scope-header">
+        <div class="reading-mob-scope-badges">
+          <span class="reading-mob-tag-pill">ORGANIZATION-WIDE SCOPE</span>
+        </div>
+        <h5 class="reading-mob-scope-title">BUSINESS CONTINUITY (BC)</h5>
+        <span class="reading-mob-scope-sub">ร่มใหญ่ครอบคลุมทั้งองค์กร (Comprehensive Scope)</span>
+        <p class="reading-mob-scope-goal"><strong>เป้าหมาย:</strong> รักษาการดำเนินงานของธุรกิจในภาพรวมให้ดำเนินต่อไปได้ทั้งระหว่างและหลังวิกฤต</p>
+        <div class="reading-mob-scope-tags">
+          <span class="reading-mob-tag-item">People (บุคลากร)</span>
+          <span class="reading-mob-tag-item">Processes (กระบวนการ)</span>
+          <span class="reading-mob-tag-item">Facilities (สถานที่)</span>
+          <span class="reading-mob-tag-item">Suppliers (คู่ค้า)</span>
+          <span class="reading-mob-tag-item">Technology (เทคโนโลยี)</span>
+        </div>
+      </div>
+      <div class="reading-mob-scope-inner">
+        <div class="reading-mob-inner-head">
+          <div class="reading-mob-scope-badges">
+            <span class="reading-mob-tag-pill reading-mob-pill-accent">IT SUBSET (DR ⊂ BC)</span>
+          </div>
+          <h6 class="reading-mob-inner-title">DISASTER RECOVERY (DR)</h6>
+          <span class="reading-mob-inner-sub">การกู้คืนระบบ IT โครงสร้างพื้นฐาน และข้อมูล</span>
+        </div>
+        <p class="reading-mob-inner-goal"><strong>เป้าหมาย:</strong> กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</p>
+        <div class="reading-mob-inner-examples">
+          <span class="reading-mob-examples-label">ตัวอย่างการปฏิบัติ (Practical Examples):</span>
+          <ul class="reading-mob-examples-list">
+            <li>กู้คืนฐานข้อมูล, Virtual Machines (VMs) และระบบ Cloud จากชุด Backup</li>
+            <li>สลับการทำงานไปยังศูนย์สำรอง (Hot Site / Warm Site / Cold Site)</li>
+            <li>ฟื้นฟูโครงข่ายสื่อสารและระบบเครือข่ายสำรอง (Network Recovery)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>ตารางเปรียบเทียบความแตกต่างหลักระหว่าง BC และ DR:</p>
+<div class="reading-table-wrapper"><table class="reading-table"><thead><tr><th scope="col">ประเด็นเปรียบเทียบ</th><th scope="col">Business Continuity (BC)</th><th scope="col">Disaster Recovery (DR)</th></tr></thead><tbody><tr><td><strong>Primary Focus</strong></td><td>มุ่งเน้นการทำให้ <strong>ธุรกิจโดยรวมดำเนินต่อไปได้</strong> ระหว่างวิกฤต</td><td>มุ่งเน้นการ <strong>กู้คืนระบบ IT และข้อมูล</strong> หลังภัยพิบัติ</td></tr><tr><td><strong>Scope of Coverage</strong></td><td>กว้างมาก: บุคลากร, ขั้นตอนธุรกิจ, อาคาร, คู่ค้า, กฎหมาย</td><td>แคบและเจาะจง: เซิร์ฟเวอร์, ฐานข้อมูล, เครือข่าย, ซอฟต์แวร์</td></tr><tr><td><strong>Operational Examples</strong></td><td>ให้พนักงานทำงานจากบ้าน, ติดต่อซัพพลายเออร์สำรอง, ใช้ระบบ Manual</td><td>การสลับไปใช้ Cloud Backup, กู้คืน Virtual Machines, กู้ Database</td></tr><tr><td><strong>Key Governance Document</strong></td><td><strong>BCP</strong> (Business Continuity Plan)</td><td><strong>DRP</strong> (Disaster Recovery Plan)</td></tr><tr><td><strong>Relationship</strong></td><td>ร่มใหญ่ของการบริหารความต่อเนื่องระดับองค์กร</td><td>เป็นองค์ประกอบย่อยด้านเทคนิคของ BC (<strong class="reading-math-formula">DR ⊂ BC</strong>)</td></tr></tbody></table></div>
+<h3 id="topic-2-2-rto-rpo">2.2.6 RTO and RPO Recovery Metrics</h3>
+<p>ในการวางแผนกู้คืนระบบ IT องค์กรต้องกำหนดเป้าหมายเชิงเวลา 2 ตัวชี้วัดสำคัญ:</p>
+<div class="reading-diagram-card" data-diagram="rtoRpoTimeline" role="region" aria-label="Timeline comparison: RTO vs RPO at 17:00 failure">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Recovery Metrics</span>
+    <h4 class="reading-diagram-title">Recovery Time Objective (RTO) vs. Recovery Point Objective (RPO)</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 840 210" class="reading-diagram-svg" aria-label="Timeline showing RPO backward from failure and RTO forward from failure" role="img">
+      <line x1="40" y1="105" x2="800" y2="105" stroke="var(--line)" stroke-width="2" />
+      <rect x="140" y="25" width="260" height="58" rx="6" class="diag-box diag-box-banner" />
+      <text x="270" y="47" class="diag-text-title" text-anchor="middle">RPO (Recovery Point Objective)</text>
+      <text x="270" y="67" class="diag-text-sub" text-anchor="middle">← ยอมรับข้อมูลสูญเสียย้อนหลังสูงสุด: 30 นาที</text>
+      <line x1="140" y1="105" x2="400" y2="105" stroke="var(--blue)" stroke-width="4" />
+      <g>
+        <circle cx="420" cy="105" r="9" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+        <rect x="330" y="130" width="180" height="60" rx="6" class="diag-box diag-box-banner" stroke="#ef4444" />
+        <text x="420" y="152" class="diag-text-title" text-anchor="middle" fill="#ef4444">DISASTER (17:00)</text>
+        <text x="420" y="172" class="diag-text-sub" text-anchor="middle">ระบบล่ม / เกิดภัยพิบัติ</text>
+      </g>
+      <g>
+        <circle cx="140" cy="105" r="7" class="diag-box-blue" />
+        <text x="140" y="145" class="diag-text-title" text-anchor="middle">16:30</text>
+        <text x="140" y="165" class="diag-text-label" text-anchor="middle">จุดสำรองข้อมูลล่าสุด</text>
+        <text x="140" y="180" class="diag-text-label" text-anchor="middle">(Last Valid Backup)</text>
+      </g>
+      <rect x="440" y="25" width="260" height="58" rx="6" class="diag-box diag-box-banner" />
+      <text x="570" y="47" class="diag-text-title" text-anchor="middle">RTO (Recovery Time Objective)</text>
+      <text x="570" y="67" class="diag-text-sub" text-anchor="middle">ตัวอย่างเป้าหมายกู้ระบบ: 1 ชม. (เผื่อเวลาก่อน MTD)</text>
+      <line x1="440" y1="105" x2="700" y2="105" stroke="#10b981" stroke-width="4" />
+      <g>
+        <circle cx="700" cy="105" r="7" fill="#10b981" />
+        <text x="700" y="145" class="diag-text-title" text-anchor="middle">18:00</text>
+        <text x="700" y="165" class="diag-text-label" text-anchor="middle">ระบบต้องกู้เสร็จสิ้น</text>
+        <text x="700" y="180" class="diag-text-label" text-anchor="middle">(Service Operational)</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-timeline" aria-label="Timeline comparison: RTO vs RPO at 17:00 failure">
+    <div class="reading-mob-timeline-metrics">
+      <div class="reading-mob-metric-box reading-metric-rpo">
+        <span class="reading-mob-metric-tag">RPO (Data Loss Window)</span>
+        <div class="reading-mob-metric-val">30 นาที (ย้อนหลัง)</div>
+        <p class="reading-mob-metric-detail">ปริมาณข้อมูลที่ยอมให้สูญเสียได้นับย้อนหลังจากเวลาเกิดเหตุ (17:00 ← 16:30)</p>
+      </div>
+      <div class="reading-mob-metric-box reading-metric-rto">
+        <span class="reading-mob-metric-tag">RTO (Restoration Target)</span>
+        <div class="reading-mob-metric-val">1 ชั่วโมง (เดินหน้า)</div>
+        <p class="reading-mob-metric-detail">เป้าหมายกู้คืนระบบนับเดินหน้าจากเวลาเกิดเหตุ (17:00 → 18:00) ต้องเหลือเวลาตรวจสอบและทำรายการค้างให้ธุรกิจกลับมาทำงานภายใน MTD</p>
+      </div>
+    </div>
+    <div class="reading-mob-timeline-stepper">
+      <div class="reading-mob-step-card reading-step-backup">
+        <div class="reading-mob-time-col">
+          <span class="reading-mob-time-tag">16:30</span>
+          <span class="reading-mob-time-dot reading-dot-blue"></span>
+        </div>
+        <div class="reading-mob-time-body">
+          <div class="reading-mob-step-badge reading-badge-blue">POINT OF RECOVERY</div>
+          <h5 class="reading-mob-step-title">Last Valid Backup</h5>
+          <p class="reading-mob-step-desc">จุดสำรองข้อมูลล่าสุดที่สมบูรณ์</p>
+          <div class="reading-mob-step-metric-hint">← สิ้นสุดกรอบ RPO 30 นาที</div>
+        </div>
+      </div>
+      <div class="reading-mob-step-connector">
+        <div class="reading-mob-connector-line reading-connector-blue"></div>
+        <span class="reading-mob-connector-pill reading-pill-blue">↑ RPO ย้อนหลัง: รับข้อมูลสูญเสียสูงสุด 30 นาที ↑</span>
+        <div class="reading-mob-connector-line reading-connector-blue"></div>
+      </div>
+      <div class="reading-mob-step-card reading-step-disaster">
+        <div class="reading-mob-time-col">
+          <span class="reading-mob-time-tag reading-tag-red">17:00</span>
+          <span class="reading-mob-time-dot reading-dot-red"></span>
+        </div>
+        <div class="reading-mob-time-body">
+          <div class="reading-mob-step-badge reading-badge-red">INCIDENT MOMENT</div>
+          <h5 class="reading-mob-step-title reading-title-red">DISASTER (ระบบล่ม / เกิดภัยพิบัติ)</h5>
+          <p class="reading-mob-step-desc">จุดเกิดเหตุขัดข้อง — เริ่มต้นนับเวลาหยุดทำงาน (Downtime)</p>
+        </div>
+      </div>
+      <div class="reading-mob-step-connector">
+        <div class="reading-mob-connector-line reading-connector-green"></div>
+        <span class="reading-mob-connector-pill reading-pill-green">↓ RTO เดินหน้า: เป้าหมายกู้ระบบภายใน 1 ชม. ↓</span>
+        <div class="reading-mob-connector-line reading-connector-green"></div>
+      </div>
+      <div class="reading-mob-step-card reading-step-restored">
+        <div class="reading-mob-time-col">
+          <span class="reading-mob-time-tag reading-tag-green">18:00</span>
+          <span class="reading-mob-time-dot reading-dot-green"></span>
+        </div>
+        <div class="reading-mob-time-body">
+          <div class="reading-mob-step-badge reading-badge-green">TARGET RESTORATION</div>
+          <h5 class="reading-mob-step-title reading-title-green">Service Operational (ระบบกู้เสร็จสิ้น)</h5>
+          <p class="reading-mob-step-desc">ระบบไอทีและข้อมูลต้องกลับมาเปิดบริการได้ตามปกติ</p>
+          <div class="reading-mob-step-metric-hint reading-hint-green">→ สิ้นสุดกรอบ RTO 1 ชั่วโมง</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ol><li><strong>Recovery Time Objective (RTO) — เป้าหมายระยะเวลาการกู้คืน:</strong><ul><li>คือเป้าหมายระยะเวลาสูงสุดที่กำหนดให้กู้คืนระบบหรือบริการหลังหยุดชะงัก (Target Maximum Restoration Interval; มักย่อว่า Maximum Acceptable Downtime ของระบบ) ไม่ใช่ระยะหยุดชะงักรวมของธุรกิจแบบ MTD</li><li><strong>ความสัมพันธ์กับ MTD:</strong> RTO ต้องเหลือเวลาสำหรับการตรวจสอบและทำรายการค้าง เพื่อให้กลับมาดำเนินธุรกิจได้ภายใน MTD เช่น MTD 4 ชั่วโมง อาจกำหนด RTO 3 ชั่วโมงและเวลาเตรียมกลับมาทำงานอีก 1 ชั่วโมง การมี RTO ≤ MTD เพียงอย่างเดียวยังไม่ยืนยันว่าธุรกิจกลับมาทำงานทัน</li><li>ตอบคำถาม: <em>"ระบบหยุดทำงานได้นานที่สุดเท่าไรหลังเกิดเหตุ?"</em></li><li>มุ่งเน้น <strong>เวลาที่สูญเสียไปจากการหยุดให้บริการ</strong> (Forward-looking: จากจุดเกิดเหตุเดินหน้าไปจนถึงจุดที่ระบบพร้อมทำงาน เช่น 17:00 → 18:00 น.)</li></ul></li><li><strong>Recovery Point Objective (RPO) — เป้าหมายจุดเวลาของการกู้คืนข้อมูล:</strong><ul><li>คือ <strong>Maximum Acceptable Data Loss Measured in Time</strong> หรือปริมาณข้อมูลย้อนหลังสูงสุดที่องค์กรยอมรับว่าจะสูญเสียได้ โดยวัดเป็นหน่วยเวลา</li><li>ตอบคำถาม: <em>"องค์กรยอมรับการสูญเสียข้อมูลย้อนหลังได้นานที่สุดเท่าไร?"</em></li><li>มุ่งเน้น <strong>ปริมาณข้อมูลและความถี่ของการสำรองข้อมูล</strong> (Backward-looking: จากจุดเกิดเหตุย้อนหลังไปยังจุดสำรองข้อมูลล่าสุดที่กู้คืนได้ เช่น 17:00 ← 16:30 น. ข้อมูลสูญเสียได้ไม่เกิน 30 นาที)</li></ul></li></ol>
+<div class="reading-callout tip">
+<div class="reading-callout-header">
+<svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+<span>ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.</span>
+</div>
+<p>สมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา <strong>17:00 น.</strong>:</p>
+<ul>
+<li>หากองค์กรกำหนด <strong>RTO = 1 ชั่วโมง</strong> → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน <strong>18:00 น.</strong></li>
+<li>หากองค์กรกำหนด <strong>RPO = 30 นาที</strong> → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา <strong>16:30 น.</strong> (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)</li>
+</ul>
+</div>
+<h3 id="topic-2-2-drp-sites">2.2.7 DRP, Backup & Recovery Sites</h3>
+<p><strong>Disaster Recovery Plan (DRP)</strong> ครอบคลุมกลยุทธ์ด้านการสำรองข้อมูล (Backup Strategies) และสถานที่กู้คืนระบบสำรอง (Recovery Sites):</p>
+<ul><li><strong>Backup Strategies:</strong> การสำรองข้อมูลบนระบบคลาวด์ (Cloud Backups) หรือศูนย์เก็บข้อมูลภายนอก (Off-site Storage) เพื่อให้มั่นใจว่าเมื่อศูนย์ข้อมูลหลักเสียหาย ข้อมูลสำรองจะยังคงปลอดภัยและพร้อมนำมากู้คืน</li><li><strong>ศูนย์กู้คืนระบบสำรอง 3 รูปแบบหลัก (Disaster Recovery Sites):</strong><ol><li><strong>Hot Site:</strong><ul><li>เตรียมระบบและทรัพยากรพร้อมมากเพื่อเริ่มกู้คืนได้รวดเร็ว ข้อมูลอาจจำลองแบบต่อเนื่องหรือจำเป็นต้องปรับปรุงจากสำรองล่าสุด ขึ้นอยู่กับการออกแบบ ไม่ได้หมายความว่าข้อมูลเป็นปัจจุบันและพร้อมใช้งานทันทีทุกกรณี</li><li><em>ระยะเวลากู้คืนโดยเปรียบเทียบ (ช่วงเวลาเป็นตัวอย่าง ไม่ใช่การรับประกัน ต้องทดสอบเทียบ RTO/RPO):</em> เร็วที่สุด (ไม่กี่นาทีถึงไม่กี่ชั่วโมง)</li><li><em>ค่าใช้จ่าย:</em> สูงที่สุด</li></ul></li><li><strong>Warm Site:</strong><ul><li>มีโครงสร้างพื้นฐาน ฮาร์ดแวร์ และเครือข่ายติดตั้งไว้บางส่วน แต่ยังไม่มีข้อมูลล่าสุด ต้องนำข้อมูลสำรองมา Restore และตั้งค่าระบบเพิ่มเติมก่อนเปิดใช้งาน</li><li><em>ระยะเวลากู้คืนโดยเปรียบเทียบ (ช่วงเวลาเป็นตัวอย่าง ไม่ใช่การรับประกัน ต้องทดสอบเทียบ RTO/RPO):</em> ปานกลาง (หลายชั่วโมงถึง 1–2 วัน)</li><li><em>ค่าใช้จ่าย:</em> ปานกลาง</li></ul></li><li><strong>Cold Site:</strong><ul><li>มีเพียงพื้นที่อาคาร ระบบไฟฟ้า ระบบปรับอากาศ และการเดินสายสัญญาณพื้นฐาน โดยไม่มีเครื่องเซิร์ฟเวอร์หรือข้อมูลติดตั้งอยู่ ต้องจัดหาและติดตั้งอุปกรณ์ทั้งหมดใหม่</li><li><em>ระยะเวลากู้คืนโดยเปรียบเทียบ (ช่วงเวลาเป็นตัวอย่าง ไม่ใช่การรับประกัน ต้องทดสอบเทียบ RTO/RPO):</em> ช้าที่สุด (หลายวันถึงหลายสัปดาห์)</li><li><em>ค่าใช้จ่าย:</em> ต่ำที่สุด</li></ul></li></ol></li></ul>
+<h3 id="topic-2-2-dr-testing">2.2.8 DR Testing, Exercises & Drills</h3>
+<p>แผน DRP ที่เขียนไว้อย่างสมบูรณ์แบบบนกระดาษจะไม่มีประโยชน์เลยหากไม่ได้ถูกนำมาทดสอบในโลกความจริง การทดสอบและซ้อมแผน (Testing & Drills) มีความสำคัญอย่างยิ่งเพื่อ:</p>
+<ul><li>ตรวจสอบว่าขั้นตอนที่เขียนไว้สามารถปฏิบัติได้จริงและไม่มีข้อผิดพลาดตกหล่น</li><li>ฝึกฝนให้บุคลากรเกิดความคุ้นเคยกับบทบาทหน้าที่ของตนเมื่อเกิดเหตุฉุกเฉิน</li><li>ปรับปรุงแผนให้ทันสมัยสอดคล้องกับการเปลี่ยนแปลงของระบบ IT อยู่เสมอ</li><li>รูปแบบการทดสอบมีทั้ง Checklist / Document Review เพื่อตรวจความครบถ้วนของแผน; Tabletop Exercise ให้ผู้เกี่ยวข้องอภิปรายบทบาทและการตัดสินใจตามสถานการณ์ที่ผู้นำการฝึกกำหนด โดยไม่ต้องสลับระบบจริง; Simulation / Functional Drill และการทดสอบกู้คืนจริงใช้ตรวจความสามารถปฏิบัติงานตามขอบเขตและความเสี่ยงที่อนุมัติ ส่วน Full-Interruption Test มีการสลับระบบจริง จึงต้องประเมินและอนุมัติผลกระทบก่อน ไม่ใช่ลำดับการทดสอบที่ทุกองค์กรต้องทำเหมือนกัน</li></ul>
+</section>
+<section class="reading-objective-section" id="obj-2-3">
+<h2>Objective 2.3: Understand security awareness</h2>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>มาตรการทางเทคนิคที่แข็งแกร่งที่สุดอาจไร้ความหมายหากมนุษย์ตกเป็นเหยื่อของการหลอกลวง:</p>
+<h3 id="topic-2-3-security-culture">2.3.1 Security Culture as Shared Responsibility</h3>
+<p><strong>Security Culture (วัฒนธรรมความปลอดภัย)</strong> คือสภาพแวดล้อมและค่านิยมร่วมกันภายในองค์กรที่มองว่า <strong>ความมั่นคงปลอดภัยเป็นความรับผิดชอบของทุกคน (Shared Responsibility)</strong> ไม่ใช่ภาระหน้าที่ของทีม Security หรือฝ่าย IT เพียงฝ่ายเดียว:</p>
+<ul><li>พนักงานทุกคนให้ความสำคัญและตระหนักถึงความปลอดภัยในกิจกรรมประจำวัน</li><li>ปฏิบัติตามนโยบายความปลอดภัยด้วยความเข้าใจ ไม่ใช่เพราะถูกบังคับ</li><li>กล้าถามเมื่อไม่แน่ใจ และมีทัศนคติที่ดีต่อการรักษาความปลอดภัย</li><li><strong>พฤติกรรมเชิงบวก:</strong> เมื่อพนักงานได้รับอีเมลที่ดูน่าสงสัย แทนที่จะคลิกลิงก์ด้วยความอยากรู้ พนักงานกลับ <strong>รายงานเหตุผิดปกติ (Report Incident)</strong> ไปยังทีม SOC ทันที</li></ul>
+<h3 id="topic-2-3-security-leadership">2.3.2 Security Leadership & Accountability</h3>
+<p>ผู้บริหารระดับสูงและผู้นำความปลอดภัย (Security Leadership) มีบทบาทชี้นำที่สำคัญยิ่งในการสร้างวัฒนธรรมความปลอดภัยที่ยั่งยืนผ่านหลักการ <strong>"Tone at the Top"</strong>:</p>
+<ul><li><strong>Demonstrate Commitment:</strong> แสดงความมุ่งมั่นและจริงจังต่อความปลอดภัยอย่างเปิดเผย</li><li><strong>Provide Appropriate Resources:</strong> จัดสรรงบประมาณ เครื่องมือ บุคลากร และเวลาในการฝึกอบรมอย่างเพียงพอ</li><li><strong>Support Awareness Programs:</strong> เข้าร่วมและสนับสนุนโครงการสร้างความตระหนักรู้อย่างต่อเนื่อง</li><li><strong>Encourage Incident Reporting:</strong> สร้างบรรยากาศที่เปิดกว้างและไม่ลงโทษพนักงานที่รายงานเหตุผิดพลาดด้วยความสุจริตใจ (Blameless Reporting Environment)</li><li><strong>Lead by Example (ทำให้ดูเป็นตัวอย่าง):</strong> ผู้บริหารระดับสูงต้องปฏิบัติตามกฎเกณฑ์เดียวกันกับพนักงาน เช่น หากองค์กรมีนโยบายให้ใช้ MFA ผู้บริหารก็ต้องใช้ MFA และไม่ขอยกเว้นตนเอง</li></ul>
+<h3 id="topic-2-3-awareness-programs">2.3.3 Security Awareness Programs</h3>
+<p>ในการสอบ ISC2 CC ต้องแยกแยะระดับของการให้ความรู้แก่บุคลากรออกจากกัน:</p>
+<ul><li><strong>Security Awareness (ความตระหนักรู้):</strong> มุ่งเน้นการกระตุ้นให้พนักงาน "รับรู้และสังเกตเห็น" ภัยคุกคามทั่วไปในชีวิตประจำวัน เข้าใจนโยบาย และรู้ว่าต้องปฏิบัติตัวอย่างไรเมื่อเจอเหตุผิดปกติ (เน้น What & How to recognize)</li><li><strong>Security Training (การฝึกอบรมทักษะ):</strong> มุ่งเน้นการสร้าง "ทักษะเฉพาะด้าน" ให้แก่บุคลากรตามบทบาทหน้าที่ เช่น สอนนักพัฒนาให้เขียนโค้ดปลอดภัย (Secure Coding) หรือสอนผู้ดูแลระบบให้คอนฟิกไฟร์วอลล์</li><li><strong>Security Education (การศึกษาเชิงลึก):</strong> มุ่งเน้นความเข้าใจเชิงทฤษฎีและแนวคิดเพื่อการวางแผนกลยุทธ์ในระดับวิชาชีพ</li></ul>
+<h3 id="topic-2-3-social-engineering-psychology">2.3.4 Social Engineering & Psychology</h3>
+<p><strong>Social Engineering (วิศวกรรมสังคม)</strong> คือการใช้ <strong>จิตวิทยาเพื่อชักจูง หลอกลวง หรือบงการพฤติกรรมของมนุษย์ (Psychological Manipulation or Deception)</strong> เพื่อทำให้เหยื่อยอมทำบางสิ่งหรือเปิดเผยข้อมูลที่เป็นความลับ:</p>
+<ul><li>เป้าหมายการโจมตีหลักคือ <strong>ช่องโหว่ด้านพฤติกรรมของมนุษย์ (Human Element)</strong> ไม่จำเป็นต้องอาศัยการเจาะช่องโหว่ทางซอฟต์แวร์ก่อนเสมอไป</li><li>ผู้โจมตีมักกระตุ้นอารมณ์และสัญชาตญาณ 6 ประการ:<ol><li><em>Trust (ความไว้วางใจ):</em> แอบอ้างเป็นบุคคลที่คุ้นเคย เพื่อนร่วมงาน หรือหน่วยงานที่น่าเชื่อถือ</li><li><em>Fear (ความกลัว):</em> ข่มขู่ว่าจะถูกตัดเงินเดือน ถูกฟ้องร้อง หรือบัญชีจะถูกระงับ</li><li><em>Urgency (ความเร่งด่วน):</em> บีบคั้นให้รีบตัดสินใจภายในเวลาอันสั้นเพื่อไม่ให้ทันคิดไตร่ตรอง</li><li><em>Authority (การอ้างอำนาจ):</em> สวมรอยเป็นผู้บริหารระดับสูง ตำรวจ หรือเจ้าหน้าที่ตรวจสอบ</li><li><em>Greed (ความโลภ):</em> ล่อใจด้วยรางวัล ผลประโยชน์ เงินตอบแทน หรือข้อเสนอพิเศษ</li><li><em>Helpfulness (ความอยากช่วยเหลือ):</em> แกล้งทำเป็นเดือดร้อนเพื่อขอความเห็นใจให้ช่วยเหลือ</li></ol></li></ul>
+<h3 id="topic-2-3-social-engineering-techniques">2.3.5 Common Social Engineering Techniques</h3>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>ตารางเปรียบเทียบเทคนิควิศวกรรมสังคมยอดนิยมและคำสำคัญในข้อสอบ:</p>
+<div class="reading-table-wrapper"><table class="reading-table"><thead><tr><th scope="col">เทคนิคการโจมตี</th><th scope="col">คำอธิบายและพฤติกรรมตามสไลด์</th><th scope="col">คำใบ้สำคัญในข้อสอบ (Exam Keywords)</th></tr></thead><tbody><tr><td><strong>Phishing</strong></td><td>ข้อความหลอกลวงเพื่อล่อให้เหยื่อคลิกลิงก์ เปิดไฟล์แนบ หรือกรอกรหัสผ่าน; ตัวอย่างแบบวงกว้างเรียก Bulk Phishing ส่วน Spear Phishing และ Whaling เจาะจงเป้าหมาย</td><td>Fraudulent mass message, Click link, Malicious attachment</td></tr><tr><td><strong>Spear Phishing</strong></td><td>การฟิชชิงที่ปรับแต่งข้อความ <strong>เจาะจงบุคคล แผนก หรือองค์กร</strong> โดยเฉพาะ</td><td>Targeted individual or organization, Tailored information</td></tr><tr><td><strong>Whaling</strong></td><td>การโจมตีฟิชชิงที่พุ่งเป้าไปที่ <strong>ผู้บริหารระดับสูงหรือบุคคลสำคัญ</strong> (High-Profile Target)</td><td>C-Level Executive, CEO, CFO, High-profile target</td></tr><tr><td><strong>Vishing</strong><br>(Voice Phishing)</td><td>การหลอกลวงผ่าน <strong>เสียงหรือการโทรศัพท์</strong> เพื่อขอรหัสผ่านหรือข้อมูล</td><td>Voice, Phone call, Impersonating IT Support over the phone</td></tr><tr><td><strong>Smishing</strong><br>(SMS Phishing)</td><td>การหลอกลวงผ่าน <strong>ข้อความ SMS บนโทรศัพท์มือถือ</strong></td><td>SMS, Text message, Urgent package delivery text</td></tr><tr><td><strong>Pretexting</strong></td><td>การ <strong>สร้างเรื่องราวหรือสถานการณ์สมมุติขึ้นมาล่วงหน้า</strong> เพื่อล่อให้เหยื่อหลงเชื่อและให้ข้อมูล</td><td>Fabricated scenario, Invented pretext, Impersonating auditor</td></tr></tbody></table></div>
+<div class="reading-callout info">
+<div class="reading-callout-header">
+<svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 8 8 12 12 16 12 8"></polygon></svg>
+<span>ข้อสังเกตเกี่ยวกับ Pretexting และ AI ในปี 2026</span>
+</div>
+<p><strong>Pretexting</strong> เป็นการสร้างบทบาทและเรื่องราวปลอม ซึ่งผู้โจมตีอาจนำไปใช้ผสมผสานกับช่องทางต่าง ๆ ได้ เช่น ใช้ Pretexting ร่วมกับ Vishing โทรมาหลอก หรือร่วมกับอีเมลฟิชชิง นอกจากนี้ ในยุคปัจจุบันผู้โจมตีอาจนำ AI และเทคโนโลยี Deepfake Voice มาช่วยสร้างเรื่องราวหลอกลวงได้อย่างสมจริงยิ่งขึ้น</p>
+</div>
+<h3 id="topic-2-3-password-protection">2.3.6 Password Protection & Modern Authentication</h3>
+<p>รหัสผ่านยังคงเป็นแนวป้องกันด่านแรกที่สำคัญ องค์กรต้องกำหนดนโยบายและการปกป้องข้อมูลประจำตัวอย่างรอบด้าน:</p>
+<ul><li><strong>Establish Authentication Policies:</strong> กำหนดนโยบายรหัสผ่านตามความเสี่ยงและวิธีพิสูจน์ตัวตน เน้นความยาวของ Passphrase และการตรวจรหัสผ่านที่รั่วไหล ตาม NIST SP 800-63B-4 รหัสผ่านที่ใช้เป็นปัจจัยเดียวต้องมีอย่างน้อย 15 ตัวอักษร; ถ้าใช้เฉพาะร่วมกับ MFA อาจกำหนดสั้นลงได้แต่ไม่น้อยกว่า 8 ตัวอักษร ตัวเลขนี้เป็นข้อกำหนดของมาตรฐานที่ระบุ ไม่ใช่เกณฑ์สากลสำหรับทุกระบบ</li><li><strong>Protect Stored Credentials:</strong> ระบบตรวจสอบรหัสผ่านควรเก็บค่าแฮชจากวิธี Password Hashing ที่เหมาะสมร่วมกับ salt เฉพาะและค่า cost ที่เหมาะสม ไม่เก็บรหัสผ่านเป็นข้อความธรรมดา; การเข้ารหัส (Encryption) อาจเป็นมาตรการเสริมแยกต่างหากจาก Hashing &amp; Salting</li><li><strong>Implement Access Controls:</strong> จำกัดสิทธิ์การเข้าถึงตามความจำเป็น (Principle of Least Privilege)</li><li><strong>Monitor Suspicious Authentication:</strong> ตรวจสอบและแจ้งเตือนเมื่อเกิดพฤติกรรมล็อกอินผิดปกติ เช่น การล็อกอินพร้อมกันจากต่างประเทศ</li><li><strong>Phishing-Resistant MFA:</strong><ul><li>แม้ <strong>MFA (Multi-Factor Authentication)</strong> จะเพิ่มความปลอดภัยได้มากกว่ารหัสผ่านชั้นเดียว แต่ MFA แบบดั้งเดิม (เช่น SMS OTP หรือการกดยืนยันบนแอป) ยังอาจถูกผู้โจมตีหลอกล่อด้วยเทคนิค Adversary-in-the-Middle (AiTM) หรือ MFA Fatigue ได้</li><li>องค์กรจึงควรส่งเสริมการใช้งาน <strong>Phishing-Resistant Authentication</strong> (เช่น FIDO2 / WebAuthn, Hardware Security Keys หรือ Passkeys) ซึ่งใช้การเข้ารหัสแบบ Public-Key Cryptography ที่ผูกพันกับโดเมนเนมของเว็บไซต์จริงอย่างแนบแน่น จึงต้านทานการหลอกส่งข้อมูลยืนยันที่นำไปใช้ได้ให้เว็บไซต์ปลอม แต่ยังต้องปกป้องอุปกรณ์ เซสชัน และกระบวนการกู้คืนบัญชี ไม่ใช่การรับประกันว่าจะป้องกันการยึดบัญชีได้ทุกกรณี</li></ul></li></ul>
+</section>
+<section class="reading-objective-section" id="obj-2-4">
+<h2>Objective 2.4: Measure cybersecurity effectiveness</h2>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>การบริหารจัดการที่ไม่สามารถวัดผลได้ ย่อมไม่สามารถควบคุมและปรับปรุงได้อย่างแท้จริง:</p>
+<h3 id="topic-2-4-measurement-rationale">2.4.1 Rationale for Security Measurement</h3>
+<p>โครงการความมั่นคงปลอดภัยไซเบอร์ที่ดีต้องมีการ <strong>วัดผลและติดตามผลอย่างต่อเนื่อง (Measured and Monitored)</strong> เพื่อให้มั่นใจว่าการลงทุนและมาตรการที่ติดตั้งไปนั้นสามารถบรรลุเป้าหมายด้านความปลอดภัยที่ตั้งไว้หรือไม่:</p>
+<ol><li><strong>Verify Control Effectiveness:</strong> ตรวจสอบว่ามาตรการความปลอดภัยที่ใช้อยู่ทำงานได้จริงและมีประสิทธิภาพตามที่คาดหวัง</li><li><strong>Identify Weaknesses & Gaps:</strong> ค้นหาจุดอ่อน ข้อบกพร่อง หรือช่องว่างด้านความปลอดภัยก่อนที่ผู้ไม่ประสงค์ดีจะพบ</li><li><strong>Track Security Performance Over Time:</strong> ติดตามความก้าวหน้าและแนวโน้มการพัฒนาความปลอดภัยขององค์กรตามช่วงเวลา</li><li><strong>Support Risk-Based Decision Making:</strong> สนับสนุนผู้บริหารให้สามารถตัดสินใจจัดสรรทรัพยากรบนพื้นฐานของข้อมูลความเสี่ยงจริง</li><li><strong>Demonstrate Compliance:</strong> แสดงหลักฐานที่เป็นรูปธรรมเพื่อยืนยันการปฏิบัติตามกฎหมายและมาตรฐานต่อผู้ตรวจสอบ</li><li><strong>Communicate with Management:</strong> แปลงข้อมูลทางเทคนิคที่ซับซ้อนให้กลายเป็นข้อมูลที่เข้าใจง่ายสำหรับผู้บริหารและคณะกรรมการ</li><li><strong>Identify Areas for Continuous Improvement:</strong> ชี้เป้ากระบวนการที่จำเป็นต้องได้รับการปรับปรุงพัฒนาอย่างต่อเนื่อง</li></ol>
+<h3 id="topic-2-4-metrics-characteristics">2.4.2 Security Metrics Characteristics</h3>
+<p><strong>Security Metric (ตัวชี้วัดความปลอดภัย)</strong> คือค่าที่สามารถวัดได้ (<strong>Measurable Value</strong>) ซึ่งใช้ในการประเมินผลการดำเนินงาน (Performance) หรือประสิทธิผล (Effectiveness) ของกิจกรรม กระบวนการ หรือมาตรการควบคุมด้าน Cybersecurity:</p>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ลักษณะของตัวชี้วัดความปลอดภัยที่ดี 4 ประการ:</p>
+<ul><li><strong>Relevant:</strong> เกี่ยวข้องและสอดคล้องกับเป้าหมายความปลอดภัยหรือเป้าหมายธุรกิจที่ต้องการประเมิน</li><li><strong>Measurable:</strong> สามารถวัดค่าออกมาได้อย่างชัดเจน ไม่กำกวม และได้ข้อมูลที่เป็นตัวเลขหรือสถานะที่ประเมินได้</li><li><strong>Consistent:</strong> ใช้วิธีการจัดเก็บและเกณฑ์การวัดที่สม่ำเสมอในทุกช่วงเวลา เพื่อให้สามารถเปรียบเทียบแนวโน้มได้</li><li><strong>Meaningful to the Intended Audience:</strong> มีความหมายและสื่อสารได้ตรงจุดกับกลุ่มผู้รับสาร (เช่น ผู้บริหารต้องการเห็นภาพรวมความเสี่ยง ขณะที่วิศวกรต้องการรายละเอียดเชิงเทคนิค)</li></ul>
+<h3 id="topic-2-4-mttd-mttr">2.4.3 Incident Response Metrics: MTTD & MTTR</h3>
+<p>ในกระบวนการตอบสนองต่อเหตุการณ์ไม่พึงประสงค์ (Incident Response) มีตัวชี้วัดระยะเวลาการปฏิบัติการหลัก 2 ตัว:</p>
+<ol><li><strong>Mean Time to Detect (MTTD) — เวลาเฉลี่ยในการตรวจพบ:</strong><ul><li>คือระยะเวลาเฉลี่ยตั้งแต่เริ่มเกิดเหตุการณ์บุกรุกหรือความผิดปกติขึ้นในระบบ จนกระทั่งทีมความปลอดภัยสามารถตรวจพบเหตุการณ์นั้นได้</li><li>ยิ่ง MTTD ต่ำ หมายความว่าระบบเฝ้าระวัง (Monitoring) และระบบตรวจจับ (IDS/SIEM) ขององค์กรทำงานได้อย่างรวดเร็ว</li></ul></li><li><strong>MTTR — ต้องระบุชื่อเต็มและช่วงเวลาที่วัด:</strong><ul><li>MTTR มีหลายความหมายตามบริบท เช่น <strong>Mean Time to Respond, Remediate, Repair หรือ Restore</strong> จึงต้องระบุชื่อเต็มและจุดเริ่ม/สิ้นสุดของช่วงเวลาที่วัด หากในบทนี้วัดเวลาเริ่มตอบสนอง ให้ระบุว่าเฉลี่ยตั้งแต่แจ้งเหตุจนเริ่มปฏิบัติ; หากวัดเวลาแก้ไขจนเสร็จ ต้องระบุจุดสิ้นสุดนั้นแยกต่างหาก</li><li><em>บริบททางวิศวกรรมระบบและ IT Operations:</em> คำว่า MTTR อาจหมายถึง <strong>Mean Time to Repair / Restore / Resolve</strong> (เวลาเฉลี่ยในการซ่อมแซม ฟื้นคืนระบบ หรือแก้ปัญหาจนเสร็จสิ้น) อ่านนิยามและจุดเริ่ม/สิ้นสุดในโจทย์ก่อนคำนวณหรือเปรียบเทียบ ไม่ถือว่าทุกบริบทใช้ช่วงเวลาเดียวกัน</li></ul></li></ol>
+<h3 id="topic-2-4-kpi-vs-kri">2.4.4 Key Performance (KPI) vs. Risk (KRI) Indicators</h3>
+<p>การแยกแยะระหว่าง KPI และ KRI ถือเป็นหัวใจสำคัญอย่างยิ่งในการสอบ Domain 2:</p>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>ตารางเปรียบเทียบความแตกต่างระหว่าง KPI และ KRI:</p>
+<div class="reading-table-wrapper"><table class="reading-table"><thead><tr><th scope="col">มิติเปรียบเทียบ</th><th scope="col">Key Performance Indicator (KPI)</th><th scope="col">Key Risk Indicator (KRI)</th></tr></thead><tbody><tr><td><strong>Primary Focus</strong></td><td>มุ่งเน้นการวัด <strong>ผลการดำเนินงาน (Performance)</strong></td><td>มุ่งเน้นการวัดและเฝ้าระวัง <strong>ระดับความเสี่ยง (Risk)</strong></td></tr><tr><td><strong>Core Question</strong></td><td><em>"เราดำเนินงานก้าวหน้าไปถึงเป้าหมายที่ตั้งไว้หรือไม่?"</em></td><td><em>"ระดับความเสี่ยงขององค์กรกำลังเพิ่มขึ้นหรือลดลง?"</em></td></tr><tr><td><strong>Nature of Metric</strong></td><td>วัดความสำเร็จเทียบกับเกณฑ์เป้าหมาย (Performance Target)</td><td>ให้สัญญาณเตือนล่วงหน้า (Early Warning Indicator)</td></tr><tr><td><strong>ตัวอย่างในองค์กร</strong></td><td>ร้อยละของช่องโหว่วิกฤตที่ได้รับการติดตั้ง Patch ภายใน 15 วัน, ร้อยละของพนักงานที่ผ่านการอบรม</td><td>จำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA, จำนวนช่องโหว่วิกฤตที่ยังไม่แพตช์, จำนวนเซิร์ฟเวอร์ที่หมดอายุการสนับสนุน</td></tr></tbody></table></div>
+<div class="reading-callout tip">
+<div class="reading-callout-header">
+<svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+<span>สูตรจำแม่น: KPI vs. KRI</span>
+</div>
+<p><strong>KPI</strong> = <strong>Performance</strong> (วัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จที่กำหนด)</p>
+<p><strong>KRI</strong> = <strong>Risk</strong> (ส่งสัญญาณเตือนภัยล่วงหน้าเมื่อระดับความเสี่ยงเพิ่มขึ้นเข้าใกล้เกณฑ์อันตราย)</p>
+</div>
+<h3 id="topic-2-4-dashboards">2.4.5 Security Dashboards: Operational Visualization</h3>
+<p><strong>Security Dashboard</strong> คือการนำเสนอข้อมูลและตัวชี้วัดความปลอดภัยในรูปแบบ <strong>ภาพและแผนภูมิ (Visual Representation)</strong>:</p>
+<ul><li>ช่วยให้ผู้บริหารและผู้ปฏิบัติการมองเห็นภาพรวมของสถานการณ์ปัจจุบันได้อย่างรวดเร็ว</li><li>นำเสนอผ่าน Charts, Graphs, Tables และ Trend Indicators</li><li>ตอบคำถามหลัก: <em>"ณ ตอนนี้ สถานะความปลอดภัยและแนวโน้มเป็นอย่างไร?"</em></li></ul>
+<h3 id="topic-2-4-scorecards">2.4.6 Security Scorecards: Benchmark Comparison</h3>
+<p><strong>Security Scorecard</strong> ทำหน้าที่สรุปและเปรียบเทียบผลงานจริง (<strong>Actual</strong>) เทียบกับเป้าหมายที่กำหนดไว้ล่วงหน้า (<strong>Targets</strong>):</p>
+<ul><li>ช่วยระบุช่องว่าง (Gaps) และประเด็นที่ต้องได้รับการปรับปรุงอย่างเร่งด่วน</li><li>สื่อสารผลสัมฤทธิ์อย่างโปร่งใส และสร้างความรับผิดชอบ (Accountability)</li><li>ตอบคำถามหลัก: <em>"ผลงานจริงของเราบรรลุเกณฑ์เป้าหมายที่ตกลงกันไว้หรือไม่?"</em></li></ul>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>ตัวอย่างตาราง Security Scorecard จากสไลด์บทเรียน:</p>
+<div class="reading-table-wrapper"><table class="reading-table"><thead><tr><th scope="col">ขอบเขตงาน (Area)</th><th scope="col">ค่าเป้าหมาย (Target)</th><th scope="col">ผลงานจริง (Actual)</th><th scope="col">สถานะประเมิน (Status)</th></tr></thead><tbody><tr><td><strong>Patch Compliance</strong></td><td>95%</td><td>91%</td><td><div class="reading-bilingual-term"><span class="reading-term-en"><strong>Needs Improvement</strong></span><span class="reading-term-th">(ต่ำกว่าเป้าหมาย)</span></div></td></tr><tr><td><strong>MFA Adoption</strong></td><td>100%</td><td>97%</td><td><div class="reading-bilingual-term"><span class="reading-term-en"><strong>Needs Improvement</strong></span><span class="reading-term-th">(ยังมีบัญชีตกค้าง)</span></div></td></tr><tr><td><strong>Security Training</strong></td><td>95%</td><td>98%</td><td><div class="reading-bilingual-term"><span class="reading-term-en"><strong>On Target</strong></span><span class="reading-term-th">(ผ่านเกณฑ์เป้าหมาย)</span></div></td></tr><tr><td><strong>Critical Vulnerabilities</strong></td><td>&lt; 10</td><td>12</td><td><div class="reading-bilingual-term"><span class="reading-term-en"><strong>Needs Attention</strong></span><span class="reading-term-th">(เกินเกณฑ์ที่กำหนด)</span></div></td></tr></tbody></table></div>
+<h3 id="topic-2-4-reports">2.4.7 Cybersecurity Reports: Formal Communication</h3>
+<p><strong>Cybersecurity Report</strong> คือเอกสารรายงานทางการที่ให้ข้อมูลรายละเอียดเชิงลึก (Detailed Information) เพื่อการสื่อสารต่อผู้บริหาร คณะกรรมการ หรือผู้ตรวจสอบภายนอก:</p>
+<ul><li>รวบรวมสรุปเหตุการณ์ความปลอดภัย (Incidents), สถานะช่องโหว่ (Vulnerabilities), แนวโน้มความเสี่ยง (Risk Trends), ผลการตรวจสอบการปฏิบัติตามกฎหมาย (Compliance Findings), และประสิทธิผลของมาตรการควบคุม</li><li>จุดเด่นที่สุดของรายงานคือการให้ <strong>Recommended Actions</strong> (ข้อเสนอแนะเชิงกลยุทธ์และการปฏิบัติ) เพื่อสนับสนุนการตัดสินใจ</li><li>ตอบคำถามหลัก: <em>"รายละเอียดเชิงลึกและข้อเสนอแนะในการปรับปรุงความปลอดภัยมีอะไรบ้าง?"</em></li></ul>
+<h3 id="topic-2-4-memory-aid">2.4.8 The 6-Part Measurement Memory Aid</h3>
+<p>Metric อาจเป็นจำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย KPI และ KRI เป็น Metric ที่เลือกใช้ตามวัตถุประสงค์: KPI ติดตามผลงานเทียบเป้าหมาย ส่วน KRI เฝ้าระวังแนวโน้มความเสี่ยง Dashboard, scorecard และ report เป็นรูปแบบนำเสนอที่อาจใช้ร่วมกันได้ ภาพต่อไปนี้เป็นตัวอย่างการจัดระบบการวัดผล ไม่ใช่ลำดับขั้นที่ทุกองค์กรต้องใช้</p>
+<div class="reading-diagram-card reading-measurement-system" data-diagram="effectivenessHierarchy" role="region" aria-label="Cybersecurity Measurement Architecture: 6-Part Framework">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Measurement Architecture</span>
+    <h4 class="reading-diagram-title">Cybersecurity Measurement, Visualization &amp; Communication Architecture</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 840 405" class="reading-diagram-svg" aria-label="6-concept cybersecurity measurement architecture: Metric to Report" role="img">
+      <g>
+        <rect x="40" y="15" width="760" height="74" rx="8" class="diag-box diag-box-banner" />
+        <g transform="translate(58, 28)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </g>
+        <text x="96" y="44" class="diag-step-num">06</text>
+        <text x="130" y="44" class="diag-text-title">REPORT</text>
+        <text x="200" y="44" class="diag-text-action">COMMUNICATE &amp; RECOMMEND</text>
+        <text x="130" y="68" class="diag-text-sub">เอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)</text>
+      </g>
+
+      <line x1="420" y1="89" x2="420" y2="105" stroke="var(--line, #334155)" stroke-width="2" stroke-dasharray="3,3" />
+
+      <g>
+        <rect x="40" y="105" width="370" height="84" rx="8" class="diag-box diag-box-banner" />
+        <g transform="translate(56, 118)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="9" rx="1"/>
+          <rect x="14" y="3" width="7" height="5" rx="1"/>
+          <rect x="14" y="12" width="7" height="9" rx="1"/>
+          <rect x="3" y="16" width="7" height="5" rx="1"/>
+        </g>
+        <text x="92" y="134" class="diag-step-num">04</text>
+        <text x="124" y="134" class="diag-text-title">DASHBOARD</text>
+        <text x="226" y="134" class="diag-text-action">VISUALIZE</text>
+        <text x="56" y="158" class="diag-text-sub">ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์</text>
+        <text x="56" y="175" class="diag-text-sub">แสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน</text>
+      </g>
+
+      <g>
+        <rect x="430" y="105" width="370" height="84" rx="8" class="diag-box diag-box-banner" />
+        <g transform="translate(446, 118)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+          <rect x="8" y="2" width="8" height="4" rx="1"/>
+          <path d="m9 14 2 2 4-4"/>
+        </g>
+        <text x="482" y="134" class="diag-step-num">05</text>
+        <text x="514" y="134" class="diag-text-title">SCORECARD</text>
+        <text x="614" y="134" class="diag-text-action">COMPARE TARGETS</text>
+        <text x="446" y="158" class="diag-text-sub">ตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย</text>
+        <text x="446" y="175" class="diag-text-sub">ชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้</text>
+      </g>
+
+      <line x1="420" y1="189" x2="420" y2="205" stroke="var(--line, #334155)" stroke-width="2" stroke-dasharray="3,3" />
+
+      <g>
+        <rect x="40" y="205" width="370" height="84" rx="8" class="diag-box diag-box-banner" />
+        <g transform="translate(56, 218)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="12" cy="12" r="6"/>
+          <circle cx="12" cy="12" r="2"/>
+        </g>
+        <text x="92" y="234" class="diag-step-num">02</text>
+        <text x="124" y="234" class="diag-text-title">KPI</text>
+        <text x="160" y="234" class="diag-text-action">PERFORMANCE</text>
+        <text x="56" y="258" class="diag-text-sub">วัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ</text>
+        <text x="56" y="275" class="diag-text-sub">ตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?</text>
+      </g>
+
+      <g>
+        <rect x="430" y="205" width="370" height="84" rx="8" class="diag-box diag-box-banner" />
+        <g transform="translate(446, 218)" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </g>
+        <text x="482" y="234" class="diag-step-num">03</text>
+        <text x="514" y="234" class="diag-text-title">KRI</text>
+        <text x="554" y="234" class="diag-text-action diag-action-amber">RISK WARNING</text>
+        <text x="446" y="258" class="diag-text-sub">สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น</text>
+        <text x="446" y="275" class="diag-text-sub">ตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?</text>
+      </g>
+
+      <line x1="420" y1="289" x2="420" y2="305" stroke="var(--line, #334155)" stroke-width="2" stroke-dasharray="3,3" />
+
+      <g>
+        <rect x="40" y="305" width="760" height="80" rx="8" class="diag-box diag-box-blue" />
+        <g transform="translate(58, 320)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m12 14 4-4"/>
+          <path d="M3.34 19a10 10 0 1 1 17.32 0"/>
+        </g>
+        <text x="96" y="336" class="diag-step-num">01</text>
+        <text x="130" y="336" class="diag-text-title">METRIC</text>
+        <text x="200" y="336" class="diag-text-action">MEASURE &middot; FOUNDATION</text>
+        <text x="130" y="358" class="diag-text-sub">ค่าที่วัดได้: จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย รวมถึง KPI และ KRI</text>
+        <text x="130" y="374" class="diag-text-sub">คุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Measurement Architecture: 6-Part Framework">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-report">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">06</span>
+          <svg class="reading-mob-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">REPORT</h5>
+            <span class="reading-mob-tier-action">Communicate &amp; Recommend</span>
+          </div>
+          <span class="reading-mob-tier-level">Executive</span>
+        </div>
+        <p class="reading-mob-tier-desc">เอกสารทางการสรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-scorecard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">05</span>
+          <svg class="reading-mob-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="m9 14 2 2 4-4"></path></svg>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">SCORECARD</h5>
+            <span class="reading-mob-tier-action">Compare Against Targets</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ตารางเปรียบเทียบผลงานจริง (Actual) เทียบกับเป้าหมาย (Targets) เพื่อชี้จุดที่ต้องปรับปรุง (Gaps)</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-dashboard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">04</span>
+          <svg class="reading-mob-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">DASHBOARD</h5>
+            <span class="reading-mob-tier-action">Visualize Real-Time</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์ผ่านกราฟและตัวบ่งชี้แนวโน้ม สำหรับการเฝ้าระวังรายวัน</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kri">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">03</span>
+          <svg class="reading-mob-icon reading-icon-amber" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">KRI</h5>
+            <span class="reading-mob-tier-action">Risk Warning Indicator</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">สัญญาณเตือนภัยล่วงหน้า (Early Warning) เมื่อแนวโน้มความเสี่ยงกำลังเพิ่มขึ้นเกินระดับยอมรับได้</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">02</span>
+          <svg class="reading-mob-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">KPI</h5>
+            <span class="reading-mob-tier-action">Performance Target</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">วัดผลการดำเนินงานและความก้าวหน้าเทียบกับเป้าหมายความสำเร็จที่องค์กรกำหนดไว้</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-foundation">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num reading-tier-num-base">01</span>
+          <svg class="reading-mob-icon reading-icon-blue" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">METRIC</h5>
+            <span class="reading-mob-tier-action">Measure &middot; Foundation</span>
+          </div>
+          <span class="reading-mob-tier-level reading-level-base">Foundation</span>
+        </div>
+        <p class="reading-mob-tier-desc">ค่าที่วัดได้: จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์ โดยควร Relevant, Measurable และ Consistent</p>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ตารางสรุปคำสำคัญสำหรับวิเคราะห์โจทย์สอบ (Exam Keyword Trigger Matrix):</p>
+<div class="reading-table-wrapper"><table class="reading-table"><thead><tr><th scope="col">เครื่องมือ / แนวคิด</th><th scope="col">คำสำคัญในโจทย์สอบ (Key Exam Triggers)</th><th scope="col">วัตถุประสงค์หลัก (Primary Purpose)</th><th scope="col">ตัวอย่างการใช้งานในองค์กร</th></tr></thead><tbody><tr><td><strong>Metric</strong></td><td>"Defined measurable value", "Count, percentage, ratio or average"</td><td>ค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์</td><td>จำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)</td></tr><tr><td><strong>KPI</strong></td><td>"Performance target", "Progress toward goal", "Success rate"</td><td>ประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย</td><td>ร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)</td></tr><tr><td><strong>KRI</strong></td><td>"Early warning", "Escalating risk", "Threshold exceed"</td><td>ส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้</td><td>จำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (&gt; 0 บัญชี)</td></tr><tr><td><strong>Dashboard</strong></td><td>"Real-time", "Operational view", "Visual representation"</td><td>แสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน</td><td>หน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์</td></tr><tr><td><strong>Scorecard</strong></td><td>"Compare actual vs. target", "Periodic benchmark", "Gaps"</td><td>สรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง</td><td>ตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน</td></tr><tr><td><strong>Report</strong></td><td>"Formal documentation", "Recommended actions", "Executive summary"</td><td>เอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร</td><td>เอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร</td></tr></tbody></table></div>
+</section>
+<section class="reading-objective-section reading-review-section" id="domain-2-review">
+<h2>Domain 2 Summary, Key Distinctions & Review Scenarios</h2>
+<p>ส่วนนี้เป็นชุดเครื่องมือทบทวนและแบบฝึกปฏิบัติสถานการณ์จำลองระดับ Domain-wide เพื่อเสริมสร้างความเข้าใจเชิงลึกสำหรับทั้ง 4 วัตถุประสงค์ใน Domain 2:</p>
+<h3 id="topic-2-review-scenarios">Domain 2 Review &amp; Practical Analysis</h3>
+<span id="topic-2-4-review-scenarios" class="reading-topic-anchor" aria-hidden="true"></span>
+<h4>1. ตารางเปรียบเทียบคำที่มักสับสนในข้อสอบ (Concept Distinctions)</h4>
+<div class="reading-distinction-grid">
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>1. GRC vs. GRC Tool</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">GRC</strong>
+<div class="reading-distinction-desc">แนวทางและกลยุทธ์การกำกับดูแล บริหารความเสี่ยง และทำตามข้อกำหนดระดับองค์กร</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">GRC Tool</strong>
+<div class="reading-distinction-desc">แพลตฟอร์มซอฟต์แวร์ทางเทคนิคที่ใช้สนับสนุนและจัดเก็บข้อมูลงาน GRC จากศูนย์กลาง</div>
+</div>
+</div>
+</div>
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>2. Risk Register vs. Risk Assessment</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Risk Register</strong>
+<div class="reading-distinction-desc">เอกสารบันทึกทะเบียนรายการความเสี่ยงที่ระบุได้พร้อมสถานะและผู้รับผิดชอบ</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Risk Assessment</strong>
+<div class="reading-distinction-desc">กระบวนการและกิจกรรมในการระบุ วิเคราะห์ และประเมินระดับความเสี่ยง</div>
+</div>
+</div>
+</div>
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>3. BC vs. BCP</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Business Continuity (BC)</strong>
+<div class="reading-distinction-desc">ความสามารถและแนวคิดในการทำให้ธุรกิจดำเนินต่อไประหว่างเกิดเหตุหยุดชะงัก</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Business Continuity Plan (BCP)</strong>
+<div class="reading-distinction-desc">เอกสารแผนปฏิบัติการที่ระบุขั้นตอนและแนวทางรักษาการดำเนินงานสำคัญ</div>
+</div>
+</div>
+</div>
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>4. DR vs. DRP</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Disaster Recovery (DR)</strong>
+<div class="reading-distinction-desc">กระบวนการและความสามารถในการกู้คืนโครงสร้างพื้นฐาน IT และข้อมูลหลังภัยพิบัติ</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Disaster Recovery Plan (DRP)</strong>
+<div class="reading-distinction-desc">เอกสารแผนการกู้คืนทางเทคนิคที่ระบุขั้นตอนและเครื่องมือฟื้นฟูระบบ IT</div>
+</div>
+</div>
+</div>
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>5. BC vs. DR</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Business Continuity (BC)</strong>
+<div class="reading-distinction-desc">เน้นภาพรวมธุรกิจทั้งหมด (People, Processes, Facilities, Suppliers, Technology)</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Disaster Recovery (DR)</strong>
+<div class="reading-distinction-desc">เน้นระบบเทคโนโลยีสารสนเทศ (IT Systems, Networks, Servers, Data) โดย DR เป็นส่วนประกอบย่อยของ BC (<strong class="reading-math-formula">DR ⊂ BC</strong>)</div>
+</div>
+</div>
+</div>
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>6. RTO vs. RPO</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Recovery Time Objective (RTO)</strong>
+<div class="reading-distinction-desc">เป้าหมายระยะเวลาสูงสุดสำหรับกู้คืนระบบหรือบริการหลังเกิดเหตุ โดยต้องเหลือเวลาตรวจสอบและทำรายการค้างให้กลับมาดำเนินธุรกิจได้ภายใน MTD</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Recovery Point Objective (RPO)</strong>
+<div class="reading-distinction-desc">ปริมาณข้อมูลย้อนหลังสูงสุดที่ยอมสูญเสียได้วัดเป็นหน่วยเวลา (Data Loss Measured in Time) ย้อนหลังจากจุดเกิดเหตุไปยังชุด Backup ล่าสุด</div>
+</div>
+</div>
+</div>
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>7. Security Awareness vs. Culture</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Security Awareness</strong>
+<div class="reading-distinction-desc">ความรู้ ความเข้าใจ และการสังเกตเห็นภัยคุกคามของแต่ละบุคคล</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Security Culture</strong>
+<div class="reading-distinction-desc">สภาพแวดล้อมและค่านิยมร่วมกันที่มองว่าความปลอดภัยเป็นหน้าที่ของทุกคน</div>
+</div>
+</div>
+</div>
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>8. Phishing vs. Spear Phishing</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Phishing</strong>
+<div class="reading-distinction-desc">Phishing คือข้อความหลอกลวงเพื่อชักจูงให้เปิดเผยข้อมูลหรือทำสิ่งที่เป็นอันตราย อาจส่งวงกว้างหรือเจาะจงเป้าหมายก็ได้; Bulk Phishing เป็นตัวอย่างแบบวงกว้าง</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Spear Phishing</strong>
+<div class="reading-distinction-desc">การปรับแต่งข้อความและข้อมูลเพื่อพุ่งเป้าเจาะจงบุคคลหรือองค์กรโดยเฉพาะ</div>
+</div>
+</div>
+</div>
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>9. Spear Phishing vs. Whaling</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Spear Phishing</strong>
+<div class="reading-distinction-desc">Phishing ที่เจาะจงบุคคลหรือองค์กร เช่น พนักงาน แผนก หรือทีมเฉพาะกลุ่ม; รวมถึงผู้บริหารได้ โดย Whaling เป็นประเภทย่อยที่พุ่งเป้าผู้บริหารหรือบุคคลสำคัญ</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Whaling</strong>
+<div class="reading-distinction-desc">การเจาะจงผู้บริหารระดับสูง (C-Level Executives) หรือบุคคลสำคัญขององค์กร</div>
+</div>
+</div>
+</div>
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>10. Vishing vs. Smishing</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Vishing</strong>
+<div class="reading-distinction-desc">วิศวกรรมสังคมผ่านเสียงหรือการโทรศัพท์ (Voice Phishing)</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Smishing</strong>
+<div class="reading-distinction-desc">วิศวกรรมสังคมผ่านข้อความ SMS บนโทรศัพท์มือถือ (SMS Phishing)</div>
+</div>
+</div>
+</div>
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>11. KPI vs. KRI</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Key Performance Indicator (KPI)</strong>
+<div class="reading-distinction-desc">วัดความก้าวหน้าเทียบกับเป้าหมายผลการดำเนินงาน (Performance)</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Key Risk Indicator (KRI)</strong>
+<div class="reading-distinction-desc">สัญญาณเตือนภัยล่วงหน้าถึงการเปลี่ยนแปลงของระดับความเสี่ยง (Risk Exposure)</div>
+</div>
+</div>
+</div>
+<div class="reading-distinction-card">
+<div class="reading-distinction-header"><span>12. Dashboard vs. Scorecard vs. Report</span></div>
+<div class="reading-distinction-body">
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Dashboard</strong>
+<div class="reading-distinction-desc">Visualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Scorecard</strong>
+<div class="reading-distinction-desc">Compare — เปรียบเทียบผลงานจริงเทียบกับเป้าหมายที่กำหนด (Actual vs Target)</div>
+</div>
+<div class="reading-distinction-point">
+<strong class="reading-distinction-term">Cybersecurity Report</strong>
+<div class="reading-distinction-desc">Communicate — สื่อสารรายละเอียดเชิงลึก ข้อค้นพบ (Detailed Findings) และข้อเสนอแนะเชิงบริหาร (Recommended Actions)</div>
+</div>
+</div>
+</div>
+</div>
+<h4>2. ข้อสังเกตและจุดจำสำคัญสำหรับข้อสอบ (Exam Traps)</h4>
+<ol><li>ถ้าข้อสอบถามถึง <strong>"รักษาการดำเนินงานของธุรกิจให้ทำต่อไปได้"</strong> → ให้เลือก <strong>BC / BCP</strong></li><li>ถ้าข้อสอบถามถึง <strong>"กู้คืนเซิร์ฟเวอร์ ฐานข้อมูล แอปพลิเคชัน หรือโครงข่าย IT"</strong> → ให้เลือก <strong>DR / DRP</strong></li><li>ถ้าข้อสอบถามถึง <strong>"เป้าหมายระยะเวลาสูงสุดสำหรับกู้คืนระบบหรือบริการ"</strong> → ตอบ <strong>RTO</strong> (Recovery Time Objective)</li><li>ถ้าข้อสอบถามถึง <strong>"ปริมาณข้อมูลสูงสุดที่ยอมสูญเสียได้วัดเป็นเวลา"</strong> → ตอบ <strong>RPO</strong> (Recovery Point Objective)</li><li>ถ้าข้อสอบถามถึง <strong>"เอกสารบันทึกและติดตามรายการความเสี่ยงที่ระบุได้"</strong> → ตอบ <strong>Risk Register</strong></li><li>ถ้าข้อสอบถามถึง <strong>"ผู้มีอำนาจและความรับผิดชอบสูงสุดในการจัดการความเสี่ยง"</strong> → ตอบ <strong>Risk Owner</strong></li><li>ถ้าข้อสอบถามถึง <strong>"การจัดตั้งและปรับปรุงระบบ ISMS อย่างต่อเนื่อง"</strong> → ตอบ <strong>ISO/IEC 27001</strong></li><li>ถ้าข้อสอบถามถึง <strong>"กรอบการกำกับดูแลและจัดการ IT ระดับองค์กร"</strong> → ตอบ <strong>COBIT</strong></li><li>ถ้าข้อสอบถามถึง <strong>"กรอบการจัดการและลดความเสี่ยงด้านไซเบอร์"</strong> → ตอบ <strong>NIST CSF</strong></li><li>ถ้าข้อสอบถามถึง <strong>"การชักจูงหรือหลอกลวงทางจิตวิทยาเพื่อเอาข้อมูล"</strong> → ตอบ <strong>Social Engineering</strong></li><li>ถ้าข้อสอบถามถึง <strong>"การหลอกลวงพุ่งเป้าไปที่ผู้บริหารระดับสูง (C-Level)"</strong> → ตอบ <strong>Whaling</strong></li><li>ถ้าข้อสอบถามถึง <strong>"การหลอกลวงผ่านการโทรศัพท์หรือเสียง"</strong> → ตอบ <strong>Vishing</strong></li><li>ถ้าข้อสอบถามถึง <strong>"การสร้างเรื่องราวหรือสถานการณ์สมมุติขึ้นมาลวง"</strong> → ตอบ <strong>Pretexting</strong></li><li>ถ้าข้อสอบถามถึง <strong>"สัญญาณเตือนภัยล่วงหน้าถึงความเสี่ยงที่กำลังเพิ่มขึ้น"</strong> → ตอบ <strong>Key Risk Indicator (KRI)</strong></li><li>ถ้าข้อสอบถามถึง <strong>"การวัดผลเทียบกับเป้าหมายการดำเนินงาน"</strong> → ตอบ <strong>Key Performance Indicator (KPI)</strong></li><li>ถ้าข้อสอบถามถึง <strong>"การแสดงผลงานเปรียบเทียบ Actual vs. Target"</strong> → ตอบ <strong>Security Scorecard</strong></li><li>ถ้าข้อสอบถามถึง <strong>"เอกสารสรุปรายละเอียดเชิงลึกและข้อเสนอแนะเชิงบริหาร"</strong> → ตอบ <strong>Cybersecurity Report</strong></li></ol>
+<h4>3. สถานการณ์จำลองและแนวคิดการวิเคราะห์ (Review Scenarios)</h4>
+<div class="reading-scenario-card" data-scenario="1">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 01</span>
+    <span class="reading-scenario-topic">Business Continuity (BC)</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> สำนักงานใหญ่ของบริษัทประสบเหตุอุทกภัยฉุกเฉินจนอาคารใช้งานไม่ได้ชั่วคราว ฝ่ายบริหารได้สั่งการให้พนักงานย้ายไปปฏิบัติงานที่ศูนย์สำรอง (Alternate Work Location) ทันทีเพื่อให้บริการลูกค้าได้อย่างต่อเนื่องโดยไม่หยุดชะงัก
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> การดำเนินการขององค์กรในสถานการณ์นี้สอดคล้องกับแนวคิดด้านความมั่นคงปลอดภัยข้อใดมากที่สุด?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>Business Continuity (BC) — ความต่อเนื่องทางธุรกิจ</strong> (หัวใจของ BC คือการรักษาการดำเนินงานของกระบวนการธุรกิจที่สำคัญ (Critical Business Operations) ให้ดำเนินต่อไปได้ทั้งในระหว่างและหลังเกิดเหตุหยุดชะงัก โดยมุ่งเน้นภาพรวมระดับองค์กร ทั้งคน กระบวนการ อาคารสถานที่ และคู่ค้า แตกต่างจาก DR ที่เน้นเฉพาะการกู้คืนระบบ IT Infrastructure และข้อมูล)</p>
+  </div>
+</div>
+<div class="reading-scenario-card" data-scenario="2">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 02</span>
+    <span class="reading-scenario-topic">Recovery Time Objective (RTO)</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> ระบบฐานข้อมูลการทำธุรกรรมออนไลน์ของสถาบันการเงินเกิดขัดข้องอย่างรุนแรง ทีมกู้คืนระบบ IT ได้รับคำสั่งจากผู้บริหารว่าระบบจะต้องได้รับการกู้คืนและเปิดให้บริการใหม่อีกครั้งภายในระยะเวลาไม่เกิน 2 ชั่วโมงหลังเกิดเหตุ
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> ระยะเวลาเป้าหมาย "2 ชั่วโมง" ที่ระบบยอมให้หยุดทำงานได้สูงสุดนี้ ตรงกับตัวชี้วัดใด?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>Recovery Time Objective (RTO) — เป้าหมายระยะเวลาการกู้คืน</strong> (RTO คือเป้าหมายระยะเวลาสูงสุดสำหรับกู้คืนระบบ IT หรือบริการหลังหยุดชะงัก (Target Maximum Restoration Interval) ต้องวางแผนเวลาเตรียมกลับมาดำเนินธุรกิจให้ทัน MTD ด้วย คำถามจำคือ "ระบบหยุดได้นานที่สุดเท่าไร?" ในที่นี้คือ 2 ชั่วโมง ซึ่งเป็นเป้าหมายเวลาในการฟื้นฟูระบบให้กลับมาทำงานได้ตามปกติ)</p>
+  </div>
+</div>
+<div class="reading-scenario-card" data-scenario="3">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 03</span>
+    <span class="reading-scenario-topic">Recovery Point Objective (RPO)</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> ฝ่ายจัดการข้อมูลของโรงพยาบาลกำหนดข้อกำหนดว่า หากระบบคลังเวชระเบียนขัดข้อง องค์กรสามารถยอมรับการสูญเสียข้อมูลย้อนหลังได้สูงสุดไม่เกิน 15 นาทีของธุรกรรมล่าสุด ทีมเทคนิคจึงต้องจัดระบบ Backup และ Data Replication ให้มีความถี่สอดคล้องกับข้อกำหนดนี้
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> ข้อกำหนดการยอมรับการสูญเสียข้อมูลย้อนหลังสูงสุด "15 นาที" นี้ สอดคล้องกับตัวชี้วัดใด?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>Recovery Point Objective (RPO) — เป้าหมายจุดเวลาของการกู้คืนข้อมูล</strong> (RPO คือปริมาณข้อมูลย้อนหลังสูงสุดที่องค์กรยอมรับว่าจะสูญเสียได้ โดยวัดเป็นหน่วยเวลา (Maximum Acceptable Data Loss Measured in Time) คำถามจำคือ "ยอมเสียข้อมูลย้อนหลังได้นานแค่ไหน?" ในที่นี้ 15 นาทีหมายถึงจุดกู้คืนข้อมูล (Recovery Point) จะต้องเก่าไม่เกิน 15 นาทีก่อนเกิดเหตุ)</p>
+  </div>
+</div>
+<div class="reading-scenario-card" data-scenario="4">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 04</span>
+    <span class="reading-scenario-topic">Risk Register</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> เจ้าหน้าที่ความมั่นคงปลอดภัยไซเบอร์กำลังจัดทำเอกสารกลางขององค์กรที่รวบรวมรายการความเสี่ยงที่ได้รับการประเมิน โดยมีการระบุรายละเอียดภัยคุกคาม (Threat), จุดอ่อน (Vulnerability), โอกาสเกิด (Likelihood), ผลกระทบ (Impact), ผู้รับผิดชอบ (Risk Owner) และแนวทางจัดการ (Treatment Strategy)
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> เอกสารบันทึกและติดตามรายการความเสี่ยงที่ระบุข้างต้นเรียกว่าอะไร?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>Risk Register — ทะเบียนความเสี่ยง</strong> (Risk Register คือเอกสารบันทึกอย่างเป็นทางการที่รวบรวมรายการความเสี่ยงทั้งหมดที่องค์กรระบุได้ (Documented Record of Identified Organizational Risks) ทำหน้าที่เป็นศูนย์กลางในการติดตามสถานะ มอบหมายผู้รับผิดชอบความเสี่ยง (Risk Owner) และบันทึกแนวทางการควบคุมหรือลดความเสี่ยง)</p>
+  </div>
+</div>
+<div class="reading-scenario-card" data-scenario="5">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 05</span>
+    <span class="reading-scenario-topic">GRC Frameworks (ISO 27001)</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> องค์กรต้องการสร้างระบบบริหารจัดการความมั่นคงปลอดภัยสารสนเทศอย่างเป็นระบบและมีกระบวนการปรับปรุงพัฒนาอย่างต่อเนื่องตามมาตรฐานสากล เพื่อขอรับการรับรองและสร้างความเชื่อมั่นให้กับลูกค้าสถาบันการเงิน
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> กรอบมาตรฐานสากลใดที่เน้นข้อกำหนดในการจัดตั้งและปรับปรุง Information Security Management System (ISMS)?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>ISO/IEC 27001</strong> (ISO/IEC 27001 เป็นมาตรฐานสากลที่กำหนดข้อกำหนดสำหรับการสร้าง นำไปปฏิบัติ บำรุงรักษา และปรับปรุงระบบบริหารจัดการความมั่นคงปลอดภัยสารสนเทศ (ISMS) อย่างต่อเนื่อง ในขณะที่ NIST CSF มุ่งเน้นการจัดการความเสี่ยงไซเบอร์ และ COBIT มุ่งเน้นการกำกับดูแล IT ระดับองค์กร)</p>
+  </div>
+</div>
+<div class="reading-scenario-card" data-scenario="6">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 06</span>
+    <span class="reading-scenario-topic">Social Engineering (Vishing)</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> พนักงานฝ่ายบริการลูกค้าได้รับโทรศัพท์จากบุคคลที่อ้างตัวว่าเป็นวิศวกรอาวุโสจากฝ่าย IT Support แจ้งว่าบัญชีของพนักงานกำลังถูกแฮกและขอให้พนักงานบอกรหัสผ่านและรหัส OTP ทันทีเพื่อทำการล็อกบัญชีฉุกเฉิน
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> การโจมตีแบบวิศวกรรมสังคม (Social Engineering) ที่ใช้การติดต่อผ่านเสียงทางโทรศัพท์นี้เรียกว่าอะไร?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>Vishing (Voice Phishing)</strong> (Vishing คือการหลอกลวงแบบวิศวกรรมสังคมที่ใช้เสียงหรือโทรศัพท์ (Voice / Telephone) เป็นช่องทางในการชักจูง หลอกลวง หรือกดดันให้เหยื่อเปิดเผยข้อมูลสำคัญ โดยมักแอบอ้างอำนาจ (Authority) หรือสร้างสถานการณ์เร่งด่วน (Urgency))</p>
+  </div>
+</div>
+<div class="reading-scenario-card" data-scenario="7">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 07</span>
+    <span class="reading-scenario-topic">Social Engineering (Whaling)</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> ผู้โจมตีได้ทำการสืบค้นข้อมูลเชิงลึกเกี่ยวกับประธานเจ้าหน้าที่ฝ่ายการเงิน (CFO) ของบริษัท จากนั้นส่งอีเมลที่ถูกออกแบบและใช้ถ้อยคำเฉพาะเจาะจงอย่างแนบเนียนเพื่อหลอกให้ CFO อนุมัติการโอนเงินเร่งด่วนไปยังบัญชีต่างประเทศ
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> การโจมตีแบบฟิชชิงที่พุ่งเป้าเจาะจงไปยังบุคคลระดับสูงหรือผู้บริหารระดับสูง (Executive) เรียกว่าอะไร?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>Whaling — การหลอกลวงระดับผู้บริหาร</strong> (Whaling คือการโจมตีแบบฟิชชิงที่พุ่งเป้าหมายไปยังบุคคลระดับสูง (High-Profile Individuals หรือ C-Level Executives) โดยเฉพาะ เช่น CEO หรือ CFO เนื่องจากเป็นผู้มีอำนาจในการอนุมัติทางการเงินหรือเข้าถึงความลับระดับสูงขององค์กร)</p>
+  </div>
+</div>
+<div class="reading-scenario-card" data-scenario="8">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 08</span>
+    <span class="reading-scenario-topic">Key Risk Indicators (KRI)</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> ทีมบริหารความเสี่ยงกำลังตรวจสอบตัวชี้วัดความปลอดภัยและสังเกตเห็นว่า "จำนวนบัญชีผู้ดูแลระบบสิทธิ์สูง (Privileged Accounts) ที่ยังไม่ได้เปิดใช้งาน MFA" มีแนวโน้มเพิ่มขึ้นอย่างต่อเนื่อง ซึ่งชี้ให้เห็นว่าองค์กรกำลังมีความเสี่ยงจากการถูกขโมยข้อมูลประจำตัวเพิ่มสูงขึ้น
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> ตัวชี้วัดที่ทำหน้าที่เป็นสัญญาณเตือนล่วงหน้าถึงแนวโน้มความเสี่ยงที่กำลังเปลี่ยนแปลงนี้ จัดเป็นตัวชี้วัดประเภทใด?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>Key Risk Indicator (KRI) — ตัวชี้วัดความเสี่ยงสำคัญ</strong> (KRI คือตัวชี้วัดที่ให้สัญญาณเตือนล่วงหน้า (Early Warning Indicator) ว่าความเสี่ยงขององค์กรกำลังเพิ่มขึ้นหรือลดลง มุ่งเน้นการเฝ้าระวังแนวโน้มความเสี่ยง (Risk Exposure) ก่อนที่จะเกิดเป็นเหตุการณ์ร้ายแรงจริง ในขณะที่ KPI จะวัดความก้าวหน้าเทียบกับเป้าหมายผลงาน)</p>
+  </div>
+</div>
+<div class="reading-scenario-card" data-scenario="9">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 09</span>
+    <span class="reading-scenario-topic">Key Performance Indicators (KPI)</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> ฝ่ายปฏิบัติการความปลอดภัยตั้งเป้าหมายว่า "ระบบที่มีช่องโหว่ระดับวิกฤต (Critical Vulnerabilities) จะต้องได้รับการติดตั้งแพตช์แก้ไขให้เสร็จสิ้นอย่างน้อย 95% ภายในระยะเวลา 15 วัน" และทำการติดตามผลการดำเนินงานทุกสิ้นเดือน
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> การวัดผลความก้าวหน้าเทียบกับเป้าหมายการดำเนินงานที่ระบุไว้นี้ จัดเป็นตัวชี้วัดประเภทใด?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>Key Performance Indicator (KPI) — ตัวชี้วัดประสิทธิภาพสำคัญ</strong> (KPI วัดความก้าวหน้าไปสู่เป้าหมายการดำเนินงานที่กำหนดไว้อย่างชัดเจน (Measures Progress Toward a Specific Performance Target) ตอบคำถามว่า "เราดำเนินงานได้ตามเป้าหมายหรือไม่?" แตกต่างจาก KRI ที่เน้นการเตือนภัยเรื่องการเพิ่มขึ้นหรือลดลงของระดับความเสี่ยง)</p>
+  </div>
+</div>
+<div class="reading-scenario-card" data-scenario="10">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 10</span>
+    <span class="reading-scenario-topic">Security Scorecards</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> ในการประชุมประจำไตรมาส หัวหน้าฝ่ายความปลอดภัยได้นำเสนอตารางที่เปรียบเทียบผลการดำเนินงานจริง (Actual เช่น อัตราการติดตั้ง Patch ได้ 91%) เทียบกับเป้าหมายที่กำหนดไว้ (Target 95%) พร้อมทั้งระบุสถานะประเมินอย่างชัดเจนว่าเป็น "Needs Improvement"
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> เครื่องมือการสื่อสารที่เน้นการเปรียบเทียบผลงานจริงเทียบกับเป้าหมายที่กำหนดไว้ล่วงหน้านี้เรียกว่าอะไร?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>Security Scorecard — ตารางสรุปคะแนนประเมินความปลอดภัย</strong> (Security Scorecard ทำหน้าที่สรุปและเปรียบเทียบผลงานจริง (Actual) เทียบกับวัตถุประสงค์หรือเป้าหมายที่กำหนดล่วงหน้า (Targets) พร้อมแสดงสถานะ (เช่น On Target, Needs Improvement) เพื่อให้ผู้บริหารมองเห็นช่องว่างในการดำเนินงานได้อย่างชัดเจน)</p>
+  </div>
+</div>
+<div class="reading-scenario-card" data-scenario="11">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 11</span>
+    <span class="reading-scenario-topic">Security Dashboards</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> ผู้จัดการศูนย์ปฏิบัติการความปลอดภัย (SOC Manager) ต้องการหน้าจอที่แสดงผลภาพรวมสถานะความปลอดภัยในปัจจุบันแบบ Real-time ประกอบด้วยแผนภูมิแนวโน้มเหตุการณ์ (Incident Trends), กราฟการปฏิบัติตามแพตช์ และแถบแสดงระดับความเสี่ยงเพื่อการตัดสินใจอย่างรวดเร็ว
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> เครื่องมือแสดงผลที่เน้นการนำเสนอข้อมูลในรูปแบบภาพ (Visual Representation) เพื่อดูสถานะปัจจุบันนี้เรียกว่าอะไร?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>Security Dashboard — แผงควบคุมความปลอดภัยแบบภาพรวม</strong> (Security Dashboard เน้นการแสดงผลข้อมูลและตัวชี้วัดในรูปแบบภาพ (Visual Representation) เช่น ชาร์ต, กราฟ, ตารางสรุป และตัวบ่งชี้แนวโน้ม เพื่อช่วยให้ผู้ดูแลระบบมองเห็นภาพรวมของสถานการณ์ความปลอดภัยในปัจจุบันได้อย่างรวดเร็ว)</p>
+  </div>
+</div>
+<div class="reading-scenario-card" data-scenario="12">
+  <div class="reading-scenario-header">
+    <span class="reading-scenario-badge">Scenario 12</span>
+    <span class="reading-scenario-topic">Cybersecurity Reports</span>
+  </div>
+  <p class="reading-scenario-context reading-scenario-situation">
+    <strong class="reading-scenario-label">สถานการณ์:</strong> ผู้บริหารระดับสูงและคณะกรรมการบริษัทต้องการเอกสารทางการที่ให้รายละเอียดอย่างครบถ้วนเกี่ยวกับเหตุการณ์ความปลอดภัยที่เกิดขึ้นในรอบปี, ผลการตรวจสอบการปฏิบัติตามกฎหมาย (Compliance Findings), แนวโน้มความเสี่ยง และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) เพื่อจัดสรรงบประมาณในปีถัดไป
+  </p>
+  <p class="reading-scenario-question">
+    <strong class="reading-scenario-label">คำถาม:</strong> รูปแบบการสื่อสารข้อมูลความปลอดภัยที่ให้รายละเอียดและข้อเสนอแนะเพื่อการตัดสินใจเชิงบริหารนี้เรียกว่าอะไร?
+  </p>
+  <div class="reading-scenario-answer">
+    <div class="reading-scenario-answer-label">เฉลยและเหตุผล:</div>
+    <p class="reading-scenario-answer-text"><strong>Cybersecurity Report — รายงานความมั่นคงปลอดภัยไซเบอร์</strong> (Cybersecurity Report คือเอกสารที่จัดทำขึ้นเพื่อให้ข้อมูลรายละเอียดเชิงลึก (Detailed Communication) เกี่ยวกับเหตุการณ์, ผลการตรวจสอบ, ประสิทธิผลของการควบคุม, แนวโน้มความเสี่ยง และข้อเสนอแนะที่ควรดำเนินการ (Recommended Actions) เพื่อสนับสนุนการตัดสินใจของผู้บริหารระดับสูง)</p>
+  </div>
+</div>
+</section>

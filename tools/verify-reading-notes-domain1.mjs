@@ -33,7 +33,7 @@ import { loadDomainReading, getDomainReadingCached, clearReadingCache } from '..
 import { domain1Metadata, domain1Objectives, getDomain1Markdown } from '../content/isc2-cc-2026/reading/domain-1.js';
 import { renderReadingScreen, READING_DOMAINS } from '../js/ui/screen-reading.js';
 import { state } from '../js/core/state.js';
-import { createVocabularyDOM } from './fixtures/vocabulary-dom.mjs';
+import { createReadingDOM as createVocabularyDOM } from './fixtures/reading-dom.mjs';
 import { getExamVersions } from '../data/exam-versions.js';
 
 let testCount = 0;

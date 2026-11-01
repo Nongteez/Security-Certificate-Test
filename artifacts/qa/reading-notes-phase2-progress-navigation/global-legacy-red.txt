@@ -1,0 +1,122 @@
+TAP version 13
+# Subtest: V1 loads legacy entries without requiring a migration
+ok 1 - V1 loads legacy entries without requiring a migration
+  ---
+  duration_ms: 2.7304
+  type: 'test'
+  ...
+# Subtest: V1 persists optional subsection-relative offsets across a fresh store
+ok 2 - V1 persists optional subsection-relative offsets across a fresh store
+  ---
+  duration_ms: 1.4775
+  type: 'test'
+  ...
+# Subtest: Optional offset may be negative near an upcoming heading
+ok 3 - Optional offset may be negative near an upcoming heading
+  ---
+  duration_ms: 0.2182
+  type: 'test'
+  ...
+# Subtest: Invalid offsets are omitted rather than coercing a false position
+ok 4 - Invalid offsets are omitted rather than coercing a false position
+  ---
+  duration_ms: 0.2851
+  type: 'test'
+  ...
+# Subtest: Switching to a domain with no topic does not retain another domain global topic
+ok 5 - Switching to a domain with no topic does not retain another domain global topic
+  ---
+  duration_ms: 0.2804
+  type: 'test'
+  ...
+# Subtest: Fresh explicit subsection link takes priority over stored offsets
+ok 6 - Fresh explicit subsection link takes priority over stored offsets
+  ---
+  duration_ms: 0.5717
+  type: 'test'
+  ...
+# Subtest: Reload of the saved subsection restores position, not its heading
+ok 7 - Reload of the saved subsection restores position, not its heading
+  ---
+  duration_ms: 0.261
+  type: 'test'
+  ...
+# Subtest: Reload of a different explicit subsection still follows the URL
+ok 8 - Reload of a different explicit subsection still follows the URL
+  ---
+  duration_ms: 0.1453
+  type: 'test'
+  ...
+# Subtest: Generic entry resumes the last domain and position
+ok 9 - Generic entry resumes the last domain and position
+  ---
+  duration_ms: 0.1373
+  type: 'test'
+  ...
+# Subtest: Overview entry without a reading hash still resumes
+ok 10 - Overview entry without a reading hash still resumes
+  ---
+  duration_ms: 0.1626
+  type: 'test'
+  ...
+# Subtest: Explicit domain selection resumes that domain independently
+ok 11 - Explicit domain selection resumes that domain independently
+  ---
+  duration_ms: 0.1114
+  type: 'test'
+  ...
+# Subtest: History snapshot beats a newer last-read position for the same domain
+ok 12 - History snapshot beats a newer last-read position for the same domain
+  ---
+  duration_ms: 0.1123
+  type: 'test'
+  ...
+# Subtest: Unrelated history snapshots cannot override explicit deep links
+ok 13 - Unrelated history snapshots cannot override explicit deep links
+  ---
+  duration_ms: 0.0956
+  type: 'test'
+  ...
+# Subtest: Malformed history offset cannot make an explicit URL a resume
+ok 14 - Malformed history offset cannot make an explicit URL a resume
+  ---
+  duration_ms: 0.0699
+  type: 'test'
+  ...
+# Subtest: Accepted V1 records with only global location fields still resume
+not ok 15 - Accepted V1 records with only global location fields still resume
+  ---
+  duration_ms: 0.9296
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:21:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + null
+    - 'topic-2-2-rto-rpo'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'topic-2-2-rto-rpo'
+  actual: ~
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:21:164)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 14
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 155.4352

@@ -30,6 +30,11 @@
 }
 
 /* ===== Outer Screen & Header ===== */
+/* hidden creates a non-scrolling sticky ancestor; clip preserves viewport stickiness. */
+body:has(.reading-screen) {
+  overflow-x: clip;
+}
+
 .reading-screen {
   max-width: var(--reading-screen-max-width);
   margin: 0 auto;
@@ -3065,11 +3070,20 @@ ol + blockquote {
     border-right: 1px solid var(--line);
     padding: 20px;
     transform: translateX(-100%);
+    visibility: hidden;
+    pointer-events: none;
     box-shadow: var(--shadow);
+  }
+
+  /* Desktop collapse must not disable the independently controlled mobile drawer. */
+  .reading-layout.sidebar-collapsed .reading-sidebar {
+    display: block;
   }
 
   .reading-layout.mobile-sidebar-open .reading-sidebar {
     transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .reading-sidebar-close-mobile {

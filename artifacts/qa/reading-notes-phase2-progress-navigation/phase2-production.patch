@@ -1,0 +1,853 @@
+--- phase2-before/js/ui/screen-reading.js
++++ phase2-after/js/ui/screen-reading.js
+@@ -14,7 +14,7 @@
+ import { state } from '../core/state.js';
+ import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
+ import { loadDomainReading, getDomainReadingCached } from '../core/reading-loader.js';
+-import { getReadingProgressStore, loadReadingProgress, saveReadingLocation } from '../core/reading-progress.js';
++import { getReadingProgressStore, loadReadingProgress, saveReadingLocation, parseReadingDeepLink, resolveReadingLocation } from '../core/reading-progress.js';
+ import { domain1Objectives } from '../../content/isc2-cc-2026/reading/domain-1.js';
+ import { domain2Objectives, domain2Review } from '../../content/isc2-cc-2026/reading/domain-2.js';
+ import { domain3Objectives, domain3Review } from '../../content/isc2-cc-2026/reading/domain-3.js';
+@@ -72,6 +72,10 @@
+   }
+ ];
+ 
++let disposeActiveReader = null;
++const initialDocumentUrl = typeof window !== 'undefined' ? window.location?.href : null;
++let readerMountedInDocument = false;
++
+ function escapeHtml(value) {
+   if (value === null || value === undefined) return '';
+   return String(value)
+@@ -88,39 +92,31 @@
+  * @param {Function} onBack - Callback when user navigates back to exam versions
+  */
+ export function renderReadingScreen(container, onBack) {
++  disposeActiveReader?.();
+   const allDomainObjectiveIds = READING_DOMAINS.flatMap(d => (d.objectives || []).map(o => o.id));
+   const progress = loadReadingProgress();
+-
+-  if (!state.reading) {
+-    state.reading = {
+-      selectedDomainId: progress.lastDomainId || 1,
+-      sidebarCollapsed: false,
+-      expandedDomains: [progress.lastDomainId || 1],
+-      expandedObjectives: allDomainObjectiveIds,
+-      targetAnchorId: progress.lastTopicId || null,
+-      targetScrollY: progress.lastScrollY || 0,
+-      _hasRestoredProgress: true
+-    };
+-  } else if (!state.reading._hasRestoredProgress) {
+-    if (!state.reading.targetAnchorId && (!state.reading.selectedDomainId || state.reading.selectedDomainId === 1)) {
+-      state.reading.selectedDomainId = progress.lastDomainId || 1;
+-      const dProg = progress.domains?.[state.reading.selectedDomainId];
+-      state.reading.targetAnchorId = dProg?.lastTopicId || null;
+-      state.reading.targetScrollY = dProg?.lastScrollY || 0;
+-    }
+-    state.reading._hasRestoredProgress = true;
+-  }
+-
+-  let selectedDomainId = state.reading.selectedDomainId || 1;
++  const initialDocumentMount = !readerMountedInDocument && window.location.href === initialDocumentUrl;
++  readerMountedInDocument = true;
++  const initialLocation = resolveReadingLocation({
++    hash: window.location.hash, progress,
++    navigationType: initialDocumentMount ? performance.getEntriesByType('navigation')[0]?.type : 'navigate',
++    historyPosition: history.state?.readingNotes
++  });
++  // Keep the existing explicitly selected, unpublished panel outside V1 progress.
++  if (!parseReadingDeepLink(window.location.hash).isReadingRoute && state.reading?.selectedDomainId === 5) {
++    Object.assign(initialLocation, { domainId: 5, anchorId: null, scrollY: 0, mode: 'position' });
++  }
++  state.reading = state.reading || {};
++  state.reading.selectedDomainId = initialLocation.domainId;
++  state.reading._hasRestoredProgress = true;
++  state.reading.targetAnchorId = null;
++  state.reading.targetScrollY = null;
++  let selectedDomainId = initialLocation.domainId;
+   const expandedDomainSet = new Set(state.reading.expandedDomains || [selectedDomainId]);
+   const expandedObjSet = new Set(state.reading.expandedObjectives || allDomainObjectiveIds);
+   expandedDomainSet.add(selectedDomainId);
+ 
+-  // Target anchor & scroll offset to restore
+-  let initialAnchor = state.reading.targetAnchorId || null;
+-  let initialScrollY = state.reading.targetScrollY || 0;
+-  state.reading.targetAnchorId = null;
+-  state.reading.targetScrollY = null;
++  const initialAnchor = initialLocation.anchorId;
+ 
+   // Auto-expand domain and objective if initialAnchor belongs to one
+   if (initialAnchor) {
+@@ -133,12 +129,23 @@
+ 
+   let sidebarCollapsed = !!state.reading.sidebarCollapsed;
+   let mobileSidebarOpen = false;
+-  let scrollSpyObserver = null;
+   let scrollNavCleanup = null;
+   let updateScrollNavState = null;
+   let activeScrollSpyTopicId = initialAnchor;
+-  let saveDebounceTimer = null;
+   let scrollDebounceTimer = null;
++  let restoreGeneration = 0;
++  let pendingRestoration = null;
++  let restoring = true;
++  let disposed = false;
++  let readerRoot = null;
++  let headingTargets = [];
++  let lastSnapshot = null;
++  let removalObserver = null;
++  const listeners = new AbortController();
++  const previousScrollRestoration = history.state?.readingNotes?.previousScrollRestoration || history.scrollRestoration;
++  history.scrollRestoration = 'manual';
++  const isMounted = () => !disposed && readerRoot && container.contains(readerRoot);
++  const listen = (target, type, callback, options = {}) => target?.addEventListener(type, callback, { ...options, signal: listeners.signal });
+ 
+   function getCurrentScrollY() {
+     const pane = container.querySelector('#reading-content-pane');
+@@ -148,48 +155,162 @@
+     return docEl ? docEl.scrollTop : 0;
+   }
+ 
+-  function restoreLocation(anchorId = null, scrollY = 0) {
+-    const doRestore = () => {
+-      if (anchorId) {
+-        const targetEl = document.getElementById(anchorId);
+-        if (targetEl) {
+-          targetEl.scrollIntoView({ behavior: 'auto' });
+-          activeScrollSpyTopicId = anchorId;
+-          container.querySelectorAll('.reading-nav-topic-link, .reading-nav-objective-link').forEach(link => {
+-            const href = link.getAttribute('href');
+-            if (href === `#${anchorId}`) {
+-              link.classList.add('active');
+-            } else if (link.getAttribute('data-scroll-to') !== anchorId) {
+-              link.classList.remove('active');
+-            }
+-          });
+-          if (typeof window !== 'undefined' && window.location.hash !== `#${anchorId}` && history.replaceState) {
+-            history.replaceState(null, '', `#${anchorId}`);
+-          }
+-          return;
+-        }
+-      }
+-      if (scrollY && scrollY > 0) {
+-        const pane = container.querySelector('#reading-content-pane');
+-        if (pane && pane.scrollHeight > pane.clientHeight) {
+-          pane.scrollTop = scrollY;
+-        }
+-        if (typeof window !== 'undefined') {
+-          window.scrollTo({ top: scrollY, behavior: 'auto' });
+-        }
+-      }
++  function setActiveAnchor(id, expand = false) {
++    activeScrollSpyTopicId = id;
++    const match = id?.match(/^(?:topic|obj)-(\d+)-(\d+)/);
++    const objective = match ? `${match[1]}.${match[2]}` : null;
++    if (expand && objective) {
++      expandedDomainSet.add(selectedDomainId);
++      expandedObjSet.add(objective);
++      state.reading.expandedDomains = [...expandedDomainSet];
++      state.reading.expandedObjectives = [...expandedObjSet];
++      const group = container.querySelector(`.reading-nav-group[data-domain-id="${selectedDomainId}"]`);
++      const item = group?.querySelector(`[data-objective-id="${objective}"]`);
++      for (const [owner, buttonSelector, listSelector] of [[group, '[data-toggle-domain]', '.reading-nav-sub-tree'], [item, '[data-toggle-obj]', '.reading-nav-topics']]) {
++        owner?.classList.add('expanded');
++        const button = owner?.querySelector(buttonSelector);
++        button?.classList.add('expanded');
++        button?.setAttribute('aria-expanded', 'true');
++        const list = owner?.querySelector(listSelector);
++        if (list) { list.hidden = false; list.classList.add('expanded'); }
++      }
++    }
++    container.querySelectorAll('.reading-nav-topic-link, .reading-nav-objective-link').forEach(link => {
++      const target = link.getAttribute('data-scroll-to');
++      link.classList.toggle('active', target === id || (objective && target === `obj-${objective.replace('.', '-')}`));
++      if (target === id) link.setAttribute('aria-current', 'location');
++      else link.removeAttribute('aria-current');
++    });
++  }
++
++  function updateActiveFromScroll() {
++    let active = null;
++    for (const target of headingTargets) {
++      if (target.getBoundingClientRect().top <= 80) active = target.id;
++      else break;
++    }
++    setActiveAnchor(active);
++  }
++
++  function snapshotLocation() {
++    const target = activeScrollSpyTopicId && document.getElementById(activeScrollSpyTopicId);
++    const match = activeScrollSpyTopicId?.match(/^(?:topic|obj)-(\d+)-(\d+)/);
++    return {
++      domainId: selectedDomainId, topicId: activeScrollSpyTopicId,
++      objectiveId: match ? `${match[1]}.${match[2]}` : null,
++      scrollY: getCurrentScrollY(),
++      ...(target ? { anchorOffset: -target.getBoundingClientRect().top } : {})
+     };
+-
+-    if (typeof requestAnimationFrame !== 'undefined') {
+-      requestAnimationFrame(() => {
+-        requestAnimationFrame(() => {
+-          doRestore();
+-        });
+-      });
++  }
++
++  function writeHistory(location, method = 'replaceState', hash = null) {
++    const anchor = location.topicId ?? location.anchorId;
++    const route = hash || (anchor ? `#${anchor}` : `#/reading/domain-${location.domainId}`);
++    history[method]({ ...(history.state || {}), readingNotes: {
++      domainId: location.domainId, anchorId: anchor || null,
++      scrollY: location.scrollY || 0, anchorOffset: location.anchorOffset, hash: route,
++      previousScrollRestoration
++    } }, '', route);
++  }
++
++  function persistCurrent(updateHistory = true) {
++    if (!isMounted() || restoring || !getActiveDomain().published) return;
++    updateActiveFromScroll();
++    lastSnapshot = snapshotLocation();
++    saveReadingLocation(lastSnapshot);
++    if (updateHistory) writeHistory(lastSnapshot);
++  }
++
++  function beginRestore(location) {
++    restoring = true;
++    clearTimeout(scrollDebounceTimer);
++    const generation = ++restoreGeneration;
++    pendingRestoration = { location, generation };
++    return generation;
++  }
++
++  function restorePendingLocation() {
++    const request = pendingRestoration;
++    if (request?.location.domainId === selectedDomainId) restoreLocation(request.location, request.generation);
++  }
++
++  async function restoreLocation(location, generation) {
++    if (!isMounted() || generation !== restoreGeneration) return;
++    if (!getActiveDomain().published) { restoring = false; pendingRestoration = null; return; }
++    // Same-domain navigation can arrive while the article is still loading.
++    // Keep its intent until the current content request supplies real targets.
++    if (!getDomainReadingCached(selectedDomainId) || !container.querySelector('.reading-article-markdown')) return;
++    // Wait for the actual article and font/image layout once, rather than retrying
++    // scroll commands after the user has started reading or a new route has won.
++    const images = [...container.querySelectorAll('.reading-article img')].map(img => img.decode?.().catch(() => {}));
++    let timeout;
++    await Promise.race([
++      Promise.all([document.fonts?.ready, ...images]),
++      new Promise(resolve => { timeout = setTimeout(resolve, 1500); })
++    ]);
++    clearTimeout(timeout);
++    if (!isMounted() || generation !== restoreGeneration) return;
++    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
++    if (!isMounted() || generation !== restoreGeneration) return;
++    const target = location.anchorId && document.getElementById(location.anchorId);
++    if (location.mode === 'anchor' && target) {
++      target.scrollIntoView({ behavior: 'instant', block: 'start' });
+     } else {
+-      doRestore();
+-    }
+-  }
++      const top = target && typeof location.anchorOffset === 'number'
++        ? getCurrentScrollY() + target.getBoundingClientRect().top + location.anchorOffset
++        : location.scrollY || 0;
++      const pane = container.querySelector('#reading-content-pane');
++      if (pane && getComputedStyle(pane).overflowY === 'auto' && pane.scrollHeight > pane.clientHeight) pane.scrollTo({ top, behavior: 'instant' });
++      else window.scrollTo({ top, behavior: 'instant' });
++    }
++    restoring = false;
++    pendingRestoration = null;
++    if (target) setActiveAnchor(target.id, true);
++    persistCurrent();
++    updateScrollNavState?.();
++  }
++
++  function cancelDelayedRestore() {
++    if (!restoring) return;
++    ++restoreGeneration;
++    pendingRestoration = null;
++    restoring = false;
++  }
++
++  function syncSidebarState(returnFocus = false) {
++    const mobile = window.innerWidth <= 840;
++    const sidebar = container.querySelector('#reading-sidebar');
++    const trigger = container.querySelector('#btn-toggle-sidebar');
++    const visible = mobile ? mobileSidebarOpen : !sidebarCollapsed;
++    if (!visible && (returnFocus || sidebar?.contains(document.activeElement))) trigger?.focus({ preventScroll: true });
++    if (sidebar) {
++      sidebar.inert = !visible;
++      if (visible) sidebar.removeAttribute('aria-hidden');
++      else sidebar.setAttribute('aria-hidden', 'true');
++    }
++    trigger?.setAttribute('aria-expanded', String(visible));
++    container.querySelector('#reading-layout')?.classList.toggle('mobile-sidebar-open', mobile && mobileSidebarOpen);
++  }
++
++  function closeMobileSidebar(returnFocus = false) {
++    mobileSidebarOpen = false;
++    syncSidebarState(returnFocus);
++  }
++
++  function disposeReader() {
++    if (disposed) return;
++    if (isMounted()) persistCurrent(false);
++    else if (!restoring && lastSnapshot) saveReadingLocation(lastSnapshot);
++    disposed = true;
++    ++restoreGeneration;
++    clearTimeout(scrollDebounceTimer);
++    scrollNavCleanup?.();
++    listeners.abort();
++    removalObserver?.disconnect();
++    history.scrollRestoration = previousScrollRestoration;
++    if (disposeActiveReader === disposeReader) disposeActiveReader = null;
++  }
++  disposeActiveReader = disposeReader;
+ 
+   function getActiveDomain() {
+     return READING_DOMAINS.find(d => d.id === selectedDomainId) || READING_DOMAINS[0];
+@@ -321,6 +442,7 @@
+   }
+ 
+   function renderFullView() {
++    beginRestore(initialLocation);
+     const activeDomain = getActiveDomain();
+     const articleHtml = renderArticleContent(activeDomain);
+ 
+@@ -329,7 +451,7 @@
+         <header class="reading-top-bar">
+           <div class="reading-top-left">
+             <button type="button" class="btn btn-secondary btn-back-home" id="btn-reading-back">← Back to Exam Versions</button>
+-            <button type="button" class="btn btn-secondary btn-toggle-sidebar" id="btn-toggle-sidebar" aria-label="Toggle navigation sidebar" title="Toggle Sidebar">
++            <button type="button" class="btn btn-secondary btn-toggle-sidebar" id="btn-toggle-sidebar" aria-label="Toggle navigation sidebar" title="Toggle Sidebar" aria-controls="reading-sidebar" aria-expanded="false">
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                 <line x1="9" y1="3" x2="9" y2="21"></line>
+@@ -377,40 +499,40 @@
+       </div>
+     `;
+ 
++    readerRoot = container.querySelector('.reading-screen');
+     attachThemeToggle(container, 'reading-theme-toggle');
+     bindEvents();
++    syncSidebarState();
+     setupScrollSpy();
+     initScrollNavigation();
+ 
+     if (activeDomain.published && !getDomainReadingCached(activeDomain.id)) {
+       loadDomainReading(activeDomain.id).then(() => {
+-        if (selectedDomainId === activeDomain.id) {
++        if (isMounted() && selectedDomainId === activeDomain.id) {
+           const pane = container.querySelector('#reading-content-pane');
+           if (pane) {
+             pane.innerHTML = renderArticleContent(activeDomain);
+           }
+           setupScrollSpy();
+           if (updateScrollNavState) updateScrollNavState();
+-          restoreLocation(initialAnchor, initialScrollY);
++          restorePendingLocation();
+         }
+       }).catch(err => {
+         console.error(`Failed to load Domain ${activeDomain.id} notes:`, err);
+       });
+     } else {
+-      restoreLocation(initialAnchor, initialScrollY);
+-    }
+-  }
+-
+-  function updateContentOnly(targetAnchor = null, targetY = 0) {
++      restorePendingLocation();
++    }
++  }
++
++  function updateContentOnly(location) {
++    beginRestore(location);
+     const activeDomain = getActiveDomain();
+     const pane = container.querySelector('#reading-content-pane');
+     if (pane) {
+       pane.innerHTML = renderArticleContent(activeDomain);
+       pane.scrollTop = 0;
+     }
+-    if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+-      window.scrollTo(0, 0);
+-    }
+     const nav = container.querySelector('#reading-nav-domains');
+     if (nav) {
+       nav.innerHTML = renderSidebarNavHtml();
+@@ -421,132 +543,62 @@
+ 
+     if (activeDomain.published && !getDomainReadingCached(activeDomain.id)) {
+       loadDomainReading(activeDomain.id).then(() => {
+-        if (selectedDomainId === activeDomain.id) {
++        if (isMounted() && selectedDomainId === activeDomain.id) {
+           const freshPane = container.querySelector('#reading-content-pane');
+           if (freshPane) {
+             freshPane.innerHTML = renderArticleContent(activeDomain);
+           }
+           setupScrollSpy();
+           if (updateScrollNavState) updateScrollNavState();
+-          restoreLocation(targetAnchor, targetY);
++          restorePendingLocation();
+         }
+       }).catch(err => {
+         console.error(`Failed to load Domain ${activeDomain.id} notes:`, err);
+       });
+     } else {
+-      restoreLocation(targetAnchor, targetY);
++      restorePendingLocation();
+     }
+   }
+ 
+   function setupScrollSpy() {
+-    if (scrollSpyObserver) {
+-      scrollSpyObserver.disconnect();
+-      scrollSpyObserver = null;
+-    }
+-
+-    const activeDomain = getActiveDomain();
+-    if (!activeDomain || !activeDomain.published) return;
+-    if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') return;
+-
+-    const anchors = container.querySelectorAll('.reading-topic-anchor, .reading-objective-section');
+-    if (!anchors || anchors.length === 0) return;
+-
+-    scrollSpyObserver = new IntersectionObserver((entries) => {
+-      entries.forEach(entry => {
+-        if (entry.isIntersecting) {
+-          const id = entry.target.id;
+-          activeScrollSpyTopicId = id;
+-          // Highlight active topic or objective link in sidebar
+-          container.querySelectorAll('.reading-nav-topic-link, .reading-nav-objective-link').forEach(link => {
+-            const href = link.getAttribute('href');
+-            if (href === `#${id}`) {
+-              link.classList.add('active');
+-            } else if (link.getAttribute('data-scroll-to') !== id) {
+-              link.classList.remove('active');
+-            }
+-          });
+-
+-          // Debounced progress saving & URL hash update without duplicate history entry
+-          if (saveDebounceTimer) clearTimeout(saveDebounceTimer);
+-          saveDebounceTimer = setTimeout(() => {
+-            saveReadingLocation({
+-              domainId: selectedDomainId,
+-              topicId: id,
+-              scrollY: getCurrentScrollY()
+-            });
+-            if (typeof history !== 'undefined' && history.replaceState) {
+-              history.replaceState(null, '', `#${id}`);
+-            }
+-          }, 250);
++    // Observe real subsection headings, not the large containing objectives.
++    const domain = getActiveDomain();
++    const ids = (domain.objectives || []).flatMap(obj => [obj.anchorId, ...(obj.topics || []).map(topic => topic.id)]);
++    if (domain.review) ids.push(domain.review.anchorId || domain.review.id);
++    headingTargets = ids.map(id => document.getElementById(id)).filter(Boolean);
++    if (!restoring) updateActiveFromScroll();
++  }
++
++  function navigateTo(location, push = true) {
++    persistCurrent();
++    clearTimeout(scrollDebounceTimer);
++    const changedDomain = selectedDomainId !== location.domainId;
++    selectedDomainId = location.domainId;
++    state.reading.selectedDomainId = selectedDomainId;
++    expandedDomainSet.add(selectedDomainId);
++    state.reading.expandedDomains = [...expandedDomainSet];
++    activeScrollSpyTopicId = location.anchorId;
++    if (push) writeHistory(location, 'pushState');
++    closeMobileSidebar();
++    if (changedDomain) updateContentOnly(location);
++    else restoreLocation(location, beginRestore(location));
++    setActiveAnchor(location.anchorId, true);
++    container.querySelector('#reading-content-pane')?.focus({ preventScroll: true });
++  }
++
++  function bindNavEvents() {
++    container.querySelectorAll('[data-select-domain]').forEach(btn => {
++      btn.addEventListener('click', e => {
++        e.stopPropagation();
++        const domainId = Number(btn.getAttribute('data-select-domain'));
++        if (domainId === selectedDomainId) return;
++        if (domainId === 5) {
++          // Preserve the existing unpublished panel without recording Domain 5 progress.
++          navigateTo({ domainId, mode: 'position', anchorId: null, scrollY: 0 });
++          return;
+         }
+-      });
+-    }, {
+-      rootMargin: '-10% 0px -70% 0px',
+-      threshold: 0
+-    });
+-
+-    anchors.forEach(a => scrollSpyObserver.observe(a));
+-  }
+-
+-  function bindNavEvents() {
+-    // Select domain when clicking domain title
+-    container.querySelectorAll('[data-select-domain]').forEach(btn => {
+-      btn.addEventListener('click', (e) => {
+-        e.stopPropagation();
+-        const dId = parseInt(btn.getAttribute('data-select-domain'), 10);
+-        if (selectedDomainId !== dId) {
+-          // 1. Save current domain's location before switching
+-          saveReadingLocation({
+-            domainId: selectedDomainId,
+-            topicId: activeScrollSpyTopicId || null,
+-            scrollY: getCurrentScrollY()
+-          });
+-
+-          // 2. Switch to new domain
+-          selectedDomainId = dId;
+-          state.reading.selectedDomainId = dId;
+-
+-          // Auto-expand newly selected domain
+-          expandedDomainSet.add(dId);
+-          state.reading.expandedDomains = Array.from(expandedDomainSet);
+-          // Auto-expand newly selected domain's objectives if not already tracked
+-          const targetDomain = READING_DOMAINS.find(d => d.id === dId);
+-          if (targetDomain?.objectives) {
+-            targetDomain.objectives.forEach(obj => expandedObjSet.add(obj.id));
+-            state.reading.expandedObjectives = Array.from(expandedObjSet);
+-          }
+-          if (mobileSidebarOpen) {
+-            mobileSidebarOpen = false;
+-            container.querySelector('#reading-layout')?.classList.remove('mobile-sidebar-open');
+-          }
+-
+-          // 3. Look up target domain saved location
+-          const targetProgress = getReadingProgressStore().getDomainProgress(dId);
+-          const targetAnchor = targetProgress?.lastTopicId || null;
+-          const targetY = targetProgress?.lastScrollY || 0;
+-          activeScrollSpyTopicId = targetAnchor;
+-
+-          // Save newly active domain immediately
+-          saveReadingLocation({
+-            domainId: dId,
+-            topicId: targetAnchor,
+-            scrollY: targetY
+-          });
+-
+-          // 4. Update URL without duplicate history entries
+-          if (targetAnchor) {
+-            if (typeof history !== 'undefined' && history.replaceState) {
+-              history.replaceState(null, '', `#${targetAnchor}`);
+-            }
+-          } else {
+-            if (typeof history !== 'undefined' && history.replaceState) {
+-              history.replaceState(null, '', `#/reading/domain-${dId}`);
+-            }
+-          }
+-
+-          // 5. Update content and restore target location
+-          updateContentOnly(targetAnchor, targetY);
+-        }
++        const location = resolveReadingLocation({ hash: `#/reading/domain-${domainId}`, progress: loadReadingProgress() });
++        navigateTo(location);
+       });
+     });
+ 
+@@ -612,87 +664,84 @@
+       });
+     });
+ 
+-    // Smooth anchor navigation for Objectives and Topics
++    // Explicit subsection navigation starts at the target, even if it was read before.
+     container.querySelectorAll('[data-scroll-to]').forEach(link => {
+-      link.addEventListener('click', (e) => {
+-        const targetId = link.getAttribute('data-scroll-to');
+-        const targetEl = document.getElementById(targetId) || container.querySelector(`#${targetId}`);
+-        if (targetEl) {
+-          e.preventDefault();
+-          targetEl.scrollIntoView({ behavior: 'smooth' });
+-          if (typeof history !== 'undefined' && history.pushState) {
+-            history.pushState(null, '', `#${targetId}`);
+-          }
+-          activeScrollSpyTopicId = targetId;
+-          saveReadingLocation({
+-            domainId: selectedDomainId,
+-            topicId: targetId,
+-            scrollY: getCurrentScrollY()
+-          });
+-          if (mobileSidebarOpen) {
+-            mobileSidebarOpen = false;
+-            container.querySelector('#reading-layout')?.classList.remove('mobile-sidebar-open');
+-          }
+-        }
++      link.addEventListener('click', e => {
++        const anchorId = link.getAttribute('data-scroll-to');
++        const route = parseReadingDeepLink(`#${anchorId}`);
++        if (!route.domainId) return;
++        e.preventDefault();
++        navigateTo({ domainId: route.domainId, mode: 'anchor', anchorId, scrollY: 0 });
+       });
+     });
+   }
+ 
+   function bindEvents() {
+     container.querySelector('#btn-reading-back')?.addEventListener('click', () => {
+-      if (scrollSpyObserver) {
+-        scrollSpyObserver.disconnect();
+-        scrollSpyObserver = null;
+-      }
+-      if (scrollNavCleanup) {
+-        scrollNavCleanup();
+-        scrollNavCleanup = null;
+-      }
+-      if (saveDebounceTimer) clearTimeout(saveDebounceTimer);
+-      if (scrollDebounceTimer) clearTimeout(scrollDebounceTimer);
+-
+-      // Save current position before exiting
+-      saveReadingLocation({
+-        domainId: selectedDomainId,
+-        topicId: activeScrollSpyTopicId || null,
+-        scrollY: getCurrentScrollY()
+-      });
+-
+-      // Clean up URL hash so back button doesn't trap user in reading route
+-      if (typeof history !== 'undefined' && history.replaceState) {
+-        history.replaceState(null, '', window.location.pathname + window.location.search);
+-      }
+-
++      persistCurrent();
++      disposeReader();
++      history.pushState(null, '', window.location.pathname + window.location.search);
+       onBack();
+     });
+-
+-    // Sidebar toggle (desktop collapse + mobile drawer toggle)
+     container.querySelector('#btn-toggle-sidebar')?.addEventListener('click', () => {
+-      const isMobile = window.innerWidth <= 840;
+-      const layout = container.querySelector('#reading-layout');
+-
+-      if (isMobile) {
++      if (window.innerWidth <= 840) {
+         mobileSidebarOpen = !mobileSidebarOpen;
+-        layout?.classList.toggle('mobile-sidebar-open', mobileSidebarOpen);
++        syncSidebarState();
++        if (mobileSidebarOpen) container.querySelector('#btn-sidebar-close-mobile')?.focus({ preventScroll: true });
+       } else {
+         sidebarCollapsed = !sidebarCollapsed;
+         state.reading.sidebarCollapsed = sidebarCollapsed;
+-        layout?.classList.toggle('sidebar-collapsed', sidebarCollapsed);
+-      }
+-    });
+-
+-    // Mobile sidebar close button
+-    container.querySelector('#btn-sidebar-close-mobile')?.addEventListener('click', () => {
+-      mobileSidebarOpen = false;
+-      container.querySelector('#reading-layout')?.classList.remove('mobile-sidebar-open');
+-    });
+-
+-    // Mobile backdrop click
+-    container.querySelector('#reading-backdrop')?.addEventListener('click', () => {
+-      mobileSidebarOpen = false;
+-      container.querySelector('#reading-layout')?.classList.remove('mobile-sidebar-open');
+-    });
+-
++        container.querySelector('#reading-layout')?.classList.toggle('sidebar-collapsed', sidebarCollapsed);
++        syncSidebarState();
++      }
++    });
++    container.querySelector('#btn-sidebar-close-mobile')?.addEventListener('click', () => closeMobileSidebar(true));
++    container.querySelector('#reading-backdrop')?.addEventListener('click', () => closeMobileSidebar(true));
++    listen(window, 'keydown', event => {
++      if (event.key === 'Escape' && mobileSidebarOpen) {
++        event.preventDefault();
++        closeMobileSidebar(true);
++      } else if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) {
++        cancelDelayedRestore();
++      }
++    });
++    listen(window, 'wheel', cancelDelayedRestore, { passive: true });
++    listen(window, 'touchstart', event => {
++      if (!container.querySelector('#reading-sidebar')?.contains(event.target)) cancelDelayedRestore();
++    }, { passive: true });
++    listen(window, 'pointerdown', event => {
++      if (event.target === document.documentElement || container.querySelector('#reading-content-pane')?.contains(event.target)) cancelDelayedRestore();
++    });
++    listen(window, 'resize', () => {
++      if (window.innerWidth > 840) mobileSidebarOpen = false;
++      syncSidebarState();
++    }, { passive: true });
++    listen(container.querySelector('#reading-sidebar'), 'focusout', event => {
++      if (mobileSidebarOpen && !event.currentTarget.contains(event.relatedTarget)) closeMobileSidebar();
++    });
++    listen(window, 'pagehide', () => {
++      persistCurrent();
++      history.scrollRestoration = previousScrollRestoration;
++    });
++    listen(window, 'pageshow', () => { history.scrollRestoration = 'manual'; });
++    listen(document, 'visibilitychange', () => { if (document.hidden) persistCurrent(); });
++
++    const restoreRoute = () => {
++      if (!isMounted()) return;
++      const route = parseReadingDeepLink(location.hash);
++      if (!route.isReadingRoute) return;
++      const destination = resolveReadingLocation({ hash: location.hash, progress: loadReadingProgress(), historyPosition: history.state?.readingNotes });
++      if (destination.domainId !== selectedDomainId) return; // Existing router owns cross-domain mounts.
++      restoreLocation(destination, beginRestore(destination));
++    };
++    listen(window, 'hashchange', restoreRoute);
++    listen(window, 'popstate', () => {
++      clearTimeout(scrollDebounceTimer);
++      if (!restoring && lastSnapshot) saveReadingLocation(lastSnapshot);
++      cancelDelayedRestore();
++      // hashchange follows popstate; this also handles same-hash history entries.
++      queueMicrotask(restoreRoute);
++    });
+     bindNavEvents();
+   }
+ 
+@@ -821,15 +870,13 @@
+         ticking = true;
+       }
+ 
+-      // Debounce saving scroll offset to storage
+-      if (scrollDebounceTimer) clearTimeout(scrollDebounceTimer);
+-      scrollDebounceTimer = setTimeout(() => {
+-        saveReadingLocation({
+-          domainId: selectedDomainId,
+-          topicId: activeScrollSpyTopicId || null,
+-          scrollY: getCurrentScrollY()
+-        });
+-      }, 300);
++      if (!isMounted() || restoring) return;
++      updateActiveFromScroll();
++      lastSnapshot = snapshotLocation();
++      // History positions are per entry; passive scrolling must not add entries.
++      writeHistory(lastSnapshot);
++      clearTimeout(scrollDebounceTimer);
++      scrollDebounceTimer = setTimeout(() => persistCurrent(), 300);
+     }
+ 
+     const currentTarget = getScrollTargetInfo();
+@@ -854,7 +901,6 @@
+     updateNav();
+ 
+     scrollNavCleanup = () => {
+-      if (saveDebounceTimer) clearTimeout(saveDebounceTimer);
+       if (scrollDebounceTimer) clearTimeout(scrollDebounceTimer);
+       scrollNavBtn.removeEventListener('click', handleClick);
+       if (eventTarget) {
+@@ -872,4 +918,8 @@
+   }
+ 
+   renderFullView();
++  if (!parseReadingDeepLink(window.location.hash).isReadingRoute) writeHistory(initialLocation, 'pushState');
++  removalObserver = new MutationObserver(() => { if (!isMounted()) disposeReader(); });
++  removalObserver.observe(container, { childList: true });
++  return { dispose: disposeReader };
+ }
+--- phase2-before/js/core/reading-progress.js
++++ phase2-after/js/core/reading-progress.js
+@@ -124,6 +124,10 @@
+           lastScrollY: sanitizeScrollY(entry.lastScrollY),
+           updatedAt: typeof entry.updatedAt === 'string' ? entry.updatedAt : updatedAt
+         };
++        // Optional V1 extension. Legacy records remain valid without this field.
++        if (typeof entry.lastAnchorOffset === 'number' && Number.isFinite(entry.lastAnchorOffset)) {
++          domains[dId].lastAnchorOffset = Math.round(entry.lastAnchorOffset);
++        }
+       }
+     }
+   }
+@@ -251,6 +255,35 @@
+   return { isReadingRoute: false, domainId: null, anchorId: null };
+ }
+ 
++/** Resolve navigation intent without confusing a copied deep link with Resume. */
++export function resolveReadingLocation({ hash = '', progress, navigationType = 'navigate', historyPosition = null } = {}) {
++  const route = parseReadingDeepLink(hash);
++  const data = validateProgressData(progress) || createDefaultProgressState();
++  const domainId = route.domainId || data.lastDomainId;
++  const saved = data.domains[domainId] || (domainId === data.lastDomainId
++    ? { lastTopicId: data.lastTopicId, lastScrollY: data.lastScrollY }
++    : null);
++  const snapshot = historyPosition;
++  if (snapshot && snapshot.hash === hash && sanitizeDomainId(snapshot.domainId) === domainId &&
++      typeof snapshot.scrollY === 'number' && Number.isFinite(snapshot.scrollY) && snapshot.scrollY >= 0 &&
++      (!route.anchorId || snapshot.anchorId === route.anchorId)) {
++    return {
++      domainId, mode: 'position', anchorId: sanitizeAnchorId(snapshot.anchorId, domainId),
++      scrollY: sanitizeScrollY(snapshot.scrollY),
++      ...(typeof snapshot.anchorOffset === 'number' && Number.isFinite(snapshot.anchorOffset)
++        ? { anchorOffset: snapshot.anchorOffset } : {})
++    };
++  }
++  if (route.anchorId && !(navigationType === 'reload' && saved?.lastTopicId === route.anchorId)) {
++    return { domainId, mode: 'anchor', anchorId: route.anchorId, scrollY: 0 };
++  }
++  return {
++    domainId, mode: 'position', anchorId: saved?.lastTopicId || null,
++    scrollY: saved?.lastScrollY || 0,
++    ...(typeof saved?.lastAnchorOffset === 'number' ? { anchorOffset: saved.lastAnchorOffset } : {})
++  };
++}
++
+ /**
+  * Factory creating a Reading Progress Store instance.
+  * @param {Storage} [providedStorage]
+@@ -318,7 +351,7 @@
+      * @param {number} [location.scrollY] - Content scroll offset
+      * @returns {{ persisted: boolean, data: Object }}
+      */
+-    saveLocation({ domainId, topicId = null, objectiveId = null, scrollY = 0 }) {
++    saveLocation({ domainId, topicId = null, objectiveId = null, scrollY = 0, anchorOffset }) {
+       const dId = sanitizeDomainId(domainId);
+       if (!dId) {
+         return { persisted: false, error: 'Invalid domain ID' };
+@@ -339,12 +372,13 @@
+         lastScrollY: cleanScroll,
+         updatedAt: now
+       };
++      if (typeof anchorOffset === 'number' && Number.isFinite(anchorOffset)) {
++        cachedData.domains[dId].lastAnchorOffset = Math.round(anchorOffset);
++      }
+ 
+       // Update global last-read location
+       cachedData.lastDomainId = dId;
+-      if (cleanTopic !== null) {
+-        cachedData.lastTopicId = cleanTopic;
+-      }
++      cachedData.lastTopicId = cachedData.domains[dId].lastTopicId;
+       cachedData.lastScrollY = cleanScroll;
+       cachedData.updatedAt = now;
+ 
+--- phase2-before/css/reading.css
++++ phase2-after/css/reading.css
+@@ -30,6 +30,11 @@
+ }
+ 
+ /* ===== Outer Screen & Header ===== */
++/* hidden creates a non-scrolling sticky ancestor; clip preserves viewport stickiness. */
++body:has(.reading-screen) {
++  overflow-x: clip;
++}
++
+ .reading-screen {
+   max-width: var(--reading-screen-max-width);
+   margin: 0 auto;
+@@ -3065,11 +3070,20 @@
+     border-right: 1px solid var(--line);
+     padding: 20px;
+     transform: translateX(-100%);
++    visibility: hidden;
++    pointer-events: none;
+     box-shadow: var(--shadow);
+   }
+ 
++  /* Desktop collapse must not disable the independently controlled mobile drawer. */
++  .reading-layout.sidebar-collapsed .reading-sidebar {
++    display: block;
++  }
++
+   .reading-layout.mobile-sidebar-open .reading-sidebar {
+     transform: translateX(0);
++    visibility: visible;
++    pointer-events: auto;
+   }
+ 
+   .reading-sidebar-close-mobile {

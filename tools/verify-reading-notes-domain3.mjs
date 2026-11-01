@@ -55,7 +55,7 @@ test('ISC2 CC 2026 — Reading Notes Domain 3 Verification Suite', async (t) => 
     const cached = getDomainReadingCached(3);
     assert.ok(cached, 'Domain 3 must be pre-populated in reading cache in Node');
     assert.equal(cached.id, 3);
-    assert.ok(cached.renderedHtml.includes('Domain 3: Access Controls'));
+    assert.ok(cached.renderedHtml.includes('Domain 3: Identity and Access Management (IAM) Concepts'));
 
     const loaded = await loadDomainReading(3);
     assert.ok(loaded, 'loadDomainReading(3) must resolve');

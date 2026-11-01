@@ -10,7 +10,7 @@
 
 export const domain4Metadata = {
   id: 4,
-  title: 'Domain 4: Network Security',
+  title: 'Domain 4: Networking and Cloud Security Concepts',
   shortTitle: 'Network Security',
   weight: '21.3%',
   published: true

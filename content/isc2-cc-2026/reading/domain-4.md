@@ -1,4 +1,4 @@
-<p class="reading-lead">สรุปและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC) ฉบับปรับปรุงปี 2026 ใน Domain 4: Network Security (น้ำหนักข้อสอบ 21.3%) ครอบคลุมพื้นฐานเครือข่ายและแบบจำลองอ้างอิง (OSI 7-Layer, TCP/IP 4-Layer, IPv4/IPv6, CIDR, NAT, TCP vs. UDP, พอร์ตบริการหลักและอุปกรณ์เครือข่าย), ความมั่นคงปลอดภัยไร้สาย (Wi-Fi 802.11, WPA2/WPA3, VPN), สถาปัตยกรรมความปลอดภัยเครือข่าย (Network Segmentation, DMZ, VLANs, Micro-Segmentation, Defense in Depth, Zero Trust Architecture), และความมั่นคงปลอดภัยบนระบบคลาวด์ (NIST SP 800-145 5 Characteristics, Service Models IaaS/PaaS/SaaS/FaaS, Shared Responsibility Model, Deployment Models Hybrid vs. Multi-Cloud, Cloud Network Controls)</p>
+<p class="reading-lead">สรุปและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC) ฉบับปรับปรุงปี 2026 ใน Domain 4: Networking and Cloud Security Concepts — แนวคิดความมั่นคงปลอดภัยเครือข่ายและคลาวด์ (น้ำหนักข้อสอบ 21.3%) ครอบคลุมพื้นฐานเครือข่ายและแบบจำลองอ้างอิง (OSI 7-Layer, TCP/IP 4-Layer, IPv4/IPv6, CIDR, NAT, TCP vs. UDP, พอร์ตบริการหลักและอุปกรณ์เครือข่าย), ความมั่นคงปลอดภัยไร้สาย (Wi-Fi 802.11, WPA2/WPA3, VPN), สถาปัตยกรรมความปลอดภัยเครือข่าย (Network Segmentation, DMZ, VLANs, Micro-Segmentation, Defense in Depth, Zero Trust Architecture), และความมั่นคงปลอดภัยบนระบบคลาวด์ (NIST SP 800-145 5 Characteristics, Service Models IaaS/PaaS/SaaS/FaaS, Shared Responsibility Model, Deployment Models Hybrid vs. Multi-Cloud, Cloud Network Controls)</p>
 
 <section class="reading-objective-section" id="obj-4-1">
 
@@ -19,7 +19,7 @@
 
 การแบ่งขอบเขตการชนกันและการแพร่กระจายสัญญาณ (Collision &amp; Broadcast Domains):
 - **Collision Domain (ขอบเขตการชนกันของสัญญาณ):** พื้นที่ทางตรรกะในเครือข่ายที่หากมีอุปกรณ์สองเครื่องส่งข้อมูลออกมาพร้อมกัน สัญญาณจะชนกัน (Collision) ทำให้อุปกรณ์อื่นต้องรอ อุปกรณ์อย่าง Hub สร้างเพียง 1 Collision Domain รวมกันทั้งหมด ในขณะที่ Switch แยกแต่ละพอร์ตออกเป็น 1 Collision Domain อิสระ
-- **Broadcast Domain (ขอบเขตการแพร่สัญญาณ):** พื้นที่ในเครือข่ายที่เมื่ออุปกรณ์ส่งแพ็กเก็ตแบบ Broadcast (FF:FF:FF:FF:FF:FF หรือ x.x.x.255) อุปกรณ์ทุกตัวในขอบเขตนั้นจะได้รับข้อมูล Hub และ Switch ปกติไม่สามารถกั้น Broadcast Domain ได้ มีเพียง **Router** หรือการแบ่ง **VLAN** เท่านั้นที่สามารถแบ่งแยก Broadcast Domain ออกจากกัน
+- **Broadcast Domain (ขอบเขตการแพร่สัญญาณ):** พื้นที่ในเครือข่ายที่เมื่ออุปกรณ์ส่งแพ็กเก็ตแบบ Broadcast (Ethernet ใช้ FF:FF:FF:FF:FF:FF; IPv4 subnet-directed broadcast มีบิตส่วน host เป็น 1 ทั้งหมด เช่น 192.168.1.255 สำหรับ 192.168.1.0/24 ต้องดู subnet mask ไม่ใช่ .255 เพียงอย่างเดียว) อุปกรณ์ทุกตัวในขอบเขตนั้นจะได้รับข้อมูล Hub และ Switch ปกติไม่สามารถกั้น Broadcast Domain ได้ มีเพียง **Router** หรือการแบ่ง **VLAN** เท่านั้นที่สามารถแบ่งแยก Broadcast Domain ออกจากกัน
 
 ขอบเขตการเข้าถึงทางสถาปัตยกรรม:
 - **Intranet:** เครือข่ายภายในองค์กรที่จำกัดให้เข้าถึงได้เฉพาะพนักงานขององค์กรเท่านั้น
@@ -47,7 +47,8 @@
 
 3. **Layer 5 — Session Layer (ชั้นเซสชัน):**
    - ทำหน้าที่สร้าง (Establish), บริหารจัดการ (Maintain) และยกเลิกการเชื่อมต่อเซสชัน (Terminate) ระหว่างสองแอปพลิเคชัน
-   - โพรโทคอลสำคัญ: RPC (Remote Procedure Call), NetBIOS, Sockets
+   - โพรโทคอลที่มักใช้เป็นตัวอย่าง: RPC (Remote Procedure Call), NetBIOS
+   - Session Layer เป็นแนวคิดการสร้าง บริหาร และยุติเซสชันระหว่างแอปพลิเคชัน ส่วน sockets เป็น API/นามธรรมของจุดปลายการสื่อสารที่แอปใช้เรียกบริการเครือข่าย ไม่ใช่โพรโทคอลประจำ Session Layer
    - หน่วยข้อมูล (PDU): Data
 
 4. **Layer 4 — Transport Layer (ชั้นการขนส่งข้อมูล):**
@@ -87,8 +88,10 @@
 | :--- | :--- | :--- | :--- |
 | **Layer 7: Application**<br>**Layer 6: Presentation**<br>**Layer 5: Session** | **Application Layer (L4)** | Data / Messages | HTTP, HTTPS, DNS, SSH, FTP, SMTP, DHCP |
 | **Layer 4: Transport** | **Transport Layer (L3)** | Segment / Datagram | TCP, UDP |
-| **Layer 3: Network** | **Internet Layer (L2)** | Packet | IPv4, IPv6, ICMP, IPsec, ARP |
-| **Layer 2: Data Link**<br>**Layer 1: Physical** | **Network Access / Link Layer (L1)** | Frame / Bits | Ethernet, 802.11 Wi-Fi, MAC, สื่อทางกายภาพ |
+| **Layer 3: Network** | **Internet Layer (L2)** | Packet | IPv4, IPv6, ICMP, IPsec |
+| **Layer 2: Data Link**<br>**Layer 1: Physical** | **Network Access / Link Layer (L1)** | Frame / Bits | Ethernet, 802.11 Wi-Fi, ARP, MAC, สื่อทางกายภาพ |
+
+ในแบบจำลอง TCP/IP 4 ชั้นนี้ ARP อยู่ในชั้น Link / Network Access ทำหน้าที่หา Link-layer address ของปลายทางหรือ next hop บนลิงก์ IPv4 เดียวกัน
 
 <h3 id="topic-4-1-ipv4-cidr-nat">4.1.4 IPv4 Addressing, Subnetting, Classes &amp; NAT: ระบบหมายเลขไอพีเวอร์ชัน 4</h3>
 
@@ -111,7 +114,10 @@
 - **Class A Private:** 10.0.0.0 – 10.255.255.255 (ช่วง 10.0.0.0/8)
 - **Class B Private:** 172.16.0.0 – 172.31.255.255 (ช่วง 172.16.0.0/12)
 - **Class C Private:** 192.168.0.0 – 192.168.255.255 (ช่วง 192.168.0.0/16)
-- **APIPA (Automatic Private IP Addressing):** 169.254.0.0 – 169.254.255.255 (ช่วง 169.254.0.0/16) ระบบปฏิบัติการจะจ่ายให้ตัวเองอัตโนมัติเมื่อไม่สามารถติดต่อขอไอพีจาก DHCP Server ได้
+
+**IPv4 Link-local / APIPA — แยกจาก RFC 1918:**
+
+สงวนบล็อก 169.254.0.0/16 สำหรับสื่อสารบนลิงก์เดียวกัน การเลือกที่อยู่อัตโนมัติตาม RFC 3927 ใช้ 169.254.1.0–169.254.254.255 โดยไม่ใช้ /24 แรกและสุดท้าย และเราเตอร์ไม่ส่งต่อทราฟฟิกนี้ออกนอกลิงก์ APIPA อาจถูกใช้เมื่อไม่สามารถรับที่อยู่จาก DHCP Server ได้
 
 **CIDR (Classless Inter-Domain Routing):**
 เพื่อแก้ปัญหาการสูญเสียหมายเลขไอพีในระบบคลาส จึงมีการใช้เครื่องหมายทับระบุจำนวนบิตของเน็ตเวิร์ก (Slash Notation) เช่น /24 หมายถึงมี Subnet Mask เป็น 255.255.255.0 มีบิตของโฮสต์เหลือ 8 บิต รองรับหมายเลขไอพีได้ 2<sup>8</sup> = 256 หมายเลข (ใช้งานได้จริง 254 โฮสต์ เนื่องจากหัก Network Address และ Broadcast Address ออกไป)
@@ -135,7 +141,7 @@
 - **มหาศาล:** มีหมายเลขรองรับถึง 2<sup>128</sup> หรือราว 3.4 &times; 10<sup>38</sup> หมายเลข ทำให้ทุกอุปกรณ์บนโลกสามารถมี Public IP ได้โดยไม่ต้องพึ่งพา NAT
 - **ความปลอดภัยในตัว:** รองรับมาตรฐานความมั่นคงปลอดภัย **IPsec (IP Security)** ในระดับสถาปัตยกรรมมาตั้งแต่ต้น
 - **ยกเลิก Broadcast:** แทนที่ด้วย **Multicast** (ส่งถึงกลุ่มเฉพาะ) และ **Anycast** (ส่งไปยังเครื่องที่ใกล้ที่สุดในกลุ่ม) ช่วยลดสัญญาณรบกวนในเครือข่ายได้อย่างมหาศาล
-- **SLAAC (Stateless Address Autoconfiguration):** อุปกรณ์สามารถกำหนดหมายเลขไอพีให้ตัวเองได้อัตโนมัติ โดยส่งคำขอไปยังเราเตอร์ (Router Solicitation) และนำ Prefix ที่ได้มารวมกับ MAC Address ของตนเองโดยไม่ต้องพึ่งพา DHCP Server เสมอไป
+- **SLAAC (Stateless Address Autoconfiguration):** SLAAC สร้างที่อยู่ IPv6 โดยใช้ prefix ที่เราเตอร์ประกาศร่วมกับ Interface Identifier (IID) ของอินเทอร์เฟซ วิธีสร้าง IID ไม่จำเป็นต้องใช้ MAC Address; EUI-64 ที่อาศัย MAC เป็นเพียงวิธีหนึ่งในอดีต
 
 กลยุทธ์การเปลี่ยนผ่านจาก IPv4 สู่ IPv6 (Transition Strategies):
 1. **Dual-Stack:** อุปกรณ์และเราเตอร์เปิดใช้งานโพรโทคอล IPv4 และ IPv6 ควบคู่กันไปพร้อมกันในระดับการ์ดเครือข่ายและระบบปฏิบัติการ เป็นแนวทางที่แนะนำที่สุด
@@ -265,7 +271,7 @@
   </div>
   <p>สองสิ่งต่อไปนี้ <strong>ไม่ใช่มาตรการรักษาความปลอดภัยที่แท้จริง</strong>:<br>
   1. <strong>MAC Address Filtering:</strong> ผู้โจมตีสามารถดักจับสัญญาณเพื่อดูหมายเลข MAC ของเครื่องที่ได้รับอนุญาต และทำการปลอมแปลง (Spoofing) ได้อย่างง่ายดาย<br>
-  2. <strong>Disable SSID Broadcast (ซ่อนชื่อ Wi-Fi):</strong> การซ่อน SSID ไม่ได้ช่วยอะไร เพราะชื่อเครือข่ายยังคงถูกส่งออกไปใน Probe Requests และ Beacon Frames เมื่อมีเครื่องเชื่อมต่อ</p>
+  2. <strong>Disable SSID Broadcast (ซ่อนชื่อ Wi-Fi):</strong> การซ่อน SSID เพียงละชื่อจากการประกาศเครือข่าย ไม่ได้หยุด Beacon ทั้งหมด และไม่ใช่การเข้ารหัสหรือการพิสูจน์ตัวตน ผู้สังเกตยังอาจทราบชื่อจากการสื่อสารระหว่างการค้นหาและเชื่อมต่อของลูกข่าย จึงควรใช้ WPA2/WPA3 และการตั้งค่าที่เหมาะสม</p>
 </div>
 
 ความปลอดภัยของระบบ Bluetooth:
@@ -338,6 +344,8 @@
 
 **DMZ (Demilitarized Zone)** คือเครือข่ายย่อยที่ถูกออกแบบมาเพื่อเป็น "เขตกันชน" ระหว่างเครือข่ายสาธารณะภายนอก (Internet) และเครือข่ายภายในองค์กร (Internal Private Network)
 
+ตัวอย่างกฎ External Firewall: อนุญาต HTTPS443 ไปยังเว็บเซิร์ฟเวอร์ และเปิดบริการสาธารณะอื่น เช่น Mail/DNS เฉพาะพอร์ตและปลายทางที่นโยบายอนุมัติ ป้าย Policy Ports ในภาพไม่ใช่การกำหนดให้ทุก DMZ เปิดพอร์ตเหมือนกัน
+
 <div class="reading-semantic-diagram" data-diagram="dmzFirewallArchitecture"></div>
 
 เป้าหมายทางสถาปัตยกรรมของ DMZ:
@@ -376,7 +384,7 @@
 
 <div class="reading-semantic-diagram" data-diagram="defenseInDepthLayers"></div>
 
-ลำดับชั้นการป้องกัน 5 ระดับ (Concentric Rings of Defense):
+ลำดับชั้นการป้องกัน 5 ระดับ (ตัวอย่างกลุ่มมาตรการที่ทำงานร่วมกัน (Complementary Control Groups) ไม่ใช่จำนวนชั้นหรือเส้นทางตายตัว):
 1. **Perimeter Security (ชั้นขอบเขตภายนอก):** ปราการด่านแรกคัดกรองภัยคุกคามจากอินเทอร์เน็ต เช่น Edge Firewalls, DDoS Mitigation (Cloudflare/Akamai), Border Routers, และ External IDS/IPS
 2. **Network Security (ชั้นเครือข่าย):** ควบคุมและกักบริเวณทราฟฟิกภายใน เช่น การแบ่ง VLAN, สถาปัตยกรรม DMZ, Micro-Segmentation, Inter-VLAN ACLs, และ VPN Enclaves
 3. **Endpoint Security (ชั้นเครื่องลูกข่ายและเซิร์ฟเวอร์):** ปกป้องอุปกรณ์ปลายทาง เช่น โปรแกรม Endpoint Detection and Response (EDR), Host-based Firewalls, การอัปเดตระบบปฏิบัติการ (Patch Management), และการปิดฟังก์ชันที่ไม่จำเป็น (System Hardening)
@@ -430,8 +438,8 @@
 
 2. **PaaS (Platform as a Service — บริการแพลตฟอร์ม):**
    - ผู้ให้บริการคลาวด์ดูแลฮาร์ดแวร์ ระบบเครือข่าย ระบบปฏิบัติการ และซอฟต์แวร์รันไทม์ (Runtime Environment) ให้ทั้งหมด
-   - ลูกค้ามีหน้าที่เพียงนำ **โค้ดแอปพลิเคชัน (Application Code) และข้อมูล (Data)** มาติดตั้งและรันงาน
-   - ตัวอย่าง: AWS Elastic Beanstalk, Google App Engine, Microsoft Azure App Services
+   - ลูกค้าดูแล **การพัฒนาโค้ดแอปพลิเคชัน (Application Code), ข้อมูล (Data) และการตั้งค่าที่ตนควบคุม**
+   - ตัวอย่าง: AWS Elastic Beanstalk (รายละเอียดขึ้นอยู่กับบริการ: ลูกค้ายังต้องเลือกเวอร์ชันที่รองรับ ตั้งค่าการอัปเดต และย้าย platform branch เมื่อจำเป็น), Google App Engine, Microsoft Azure App Services
 
 3. **SaaS (Software as a Service — บริการซอฟต์แวร์สำเร็จรูป):**
    - ผู้ให้บริการคลาวด์ดูแลและบริหารจัดการระบบทั้งหมดตั้งแต่ฮาร์ดแวร์ ระบบปฏิบัติการ จนถึงตัวโปรแกรมแอปพลิเคชัน
@@ -439,7 +447,7 @@
    - ตัวอย่าง: Microsoft 365, Google Workspace, Salesforce, Dropbox
 
 4. **FaaS / Serverless (Function as a Service — บริการฟังก์ชันแบบไร้เซิร์ฟเวอร์):**
-   - รูปแบบย่อยของ PaaS ที่ลูกค้านำเฉพาะโค้ดของฟังก์ชันสั้น ๆ มาอัปโหลดไว้ โดยระบบจะรันโค้ดเมื่อมีเหตุการณ์เข้ามากระตุ้น (Event-Driven) และสเกลขนาดเป็นศูนย์เมื่อไม่มีการใช้งาน
+   - FaaS รันฟังก์ชันตามเหตุการณ์ (Event-Driven) และให้ผู้ให้บริการบริหารโครงสร้างพื้นฐาน หลายแผนรองรับการ scale-to-zero เมื่อว่าง แต่พฤติกรรมนี้ขึ้นอยู่กับบริการ แผน และการตั้งค่า เช่น การมี always-ready instance
    - ตัวอย่าง: AWS Lambda, Google Cloud Functions, Azure Functions
 
 <h3 id="topic-4-3-shared-responsibility">4.3.3 The Shared Responsibility Model: โมเดลความรับผิดชอบร่วม</h3>
@@ -450,16 +458,18 @@
 - **Security OF the Cloud (ความปลอดภัยของระบบคลาวด์):** เป็นหน้าที่ของผู้ให้บริการคลาวด์ (CSP) ในการดูแลรักษาศูนย์ข้อมูล อุปกรณ์ฮาร์ดแวร์ ระบบไฟฟ้า เครือข่ายแกนหลัก และซอฟต์แวร์ Hypervisor
 - **Security IN the Cloud (ความปลอดภัยภายในระบบคลาวด์):** เป็นหน้าที่ของลูกค้า (Customer) ในการปกป้องข้อมูล การตั้งค่าไฟร์วอลล์ การจัดการสิทธิ์ผู้ใช้ และการดูแลแอปพลิเคชัน
 
+ในภาพ Data Policy / IAM Policy หมายถึงการจัดชั้นข้อมูล การตัดสินใจให้สิทธิ์ และการตั้งค่าบัญชีที่ลูกค้าควบคุม ไม่ได้หมายความว่าลูกค้าดำเนินบริการ Storage หรือ IAM ทั้งหมดเอง ผู้ให้บริการยังรักษาความปลอดภัยของส่วนบริการที่ตนบริหาร รายละเอียดของโมเดลรวมถึง PaaS ให้ตรวจบริการและข้อตกลง
+
 <div class="reading-semantic-diagram" data-diagram="cloudSharedResponsibility"></div>
 
 <div class="reading-callout tip">
   <div class="reading-callout-header">
     <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-    <span>กฎทองสำหรับห้องสอบ: สิ่งที่ลูกค้าเป็นผู้รับผิดชอบ 100% เสมอ</span>
+    <span>ความรับผิดชอบที่ลูกค้ายังคงมี: การตัดสินใจและการตั้งค่าที่ตนควบคุม</span>
   </div>
-  <p>ไม่ว่าองค์กรจะเลือกใช้โมเดลคลาวด์รูปแบบใด (IaaS, PaaS, SaaS หรือ FaaS) สิ่งที่ <strong>ลูกค้า (Customer) ต้องเป็นผู้รับผิดชอบเสมอ 100%</strong> และไม่สามารถส่งมอบความรับผิดชอบนี้ให้แก่ผู้ให้บริการคลาวด์ได้ คือ:<br>
-  1. <strong>Data &amp; Information (ข้อมูลสารสนเทศและการจัดชั้นความลับ)</strong><br>
-  2. <strong>Identity &amp; Access Management (การบริหารจัดการตัวตน บัญชีผู้ใช้ และสิทธิ์การเข้าถึง)</strong></p>
+  <p>ในทุกโมเดล (IaaS, PaaS, SaaS หรือ FaaS) ลูกค้ายังคงรับผิดชอบการตัดสินใจและการตั้งค่าที่ตนควบคุม แต่ผู้ให้บริการยังต้องรักษาความปลอดภัยของบริการจัดเก็บข้อมูลและระบบ IAM ที่ตนบริหาร ขอบเขตจริงขึ้นอยู่กับบริการและข้อตกลง:<br>
+  1. <strong>Data &amp; Information (การจัดชั้นข้อมูลและการกำหนดผู้มีสิทธิ์เข้าถึง)</strong><br>
+  2. <strong>Identity &amp; Access Management (บัญชี นโยบาย และสิทธิ์ที่ลูกค้าควบคุม)</strong></p>
 </div>
 
 <h3 id="topic-4-3-deployment-models">4.3.4 Cloud Deployment Models: รูปแบบการติดตั้งระบบคลาวด์</h3>
@@ -467,13 +477,13 @@
 ตามมาตรฐาน NIST SP 800-145 รูปแบบการติดตั้งระบบคลาวด์แบ่งออกเป็น 4 รูปแบบหลัก:
 
 1. **Public Cloud (คลาวด์สาธารณะ):**
-   - โครงสร้างพื้นฐานคลาวด์ที่เปิดให้บริการแก่สาธารณชนทั่วไปหรือกลุ่มอุตสาหกรรมขนาดใหญ่ เป็นเจ้าของและบริหารจัดการโดยผู้ให้บริการคลาวด์เชิงพาณิชย์ (เช่น AWS, Azure, Google Cloud)
+   - โครงสร้างพื้นฐานคลาวด์ที่เปิดให้บริการแก่สาธารณชนทั่วไปหรือกลุ่มอุตสาหกรรมขนาดใหญ่ ตาม NIST อาจเป็นขององค์กรธุรกิจ การศึกษา หรือรัฐบาล หรือหลายฝ่ายร่วมกัน ตัวอย่างผู้ให้บริการเชิงพาณิชย์ ได้แก่ AWS, Azure, Google Cloud
    - ใช้ทรัพยากรร่วมกันหลายองค์กร (Multi-tenant) ประหยัดค่าใช้จ่ายและยืดหยุ่นสูงสุด
 2. **Private Cloud (คลาวด์ส่วนตัว):**
    - โครงสร้างพื้นฐานคลาวด์ที่สร้างขึ้นเพื่อใช้งานเฉพาะภายในองค์กรเดียวเท่านั้น (Single-tenant) อาจตั้งอยู่ในศูนย์ข้อมูลขององค์กรเอง (On-Premises) หรือจ้างให้ผู้ให้บริการภายนอกดูแลให้
-   - ให้การควบคุม ความเป็นส่วนตัว และความมั่นคงปลอดภัยสูงสุด เหมาะสำหรับหน่วยงานที่มีข้อกำหนดด้านกฎระเบียบเข้มงวด
+   - ให้การควบคุมเฉพาะทางและสภาพแวดล้อมเฉพาะองค์กร แต่ไม่รับประกันความปลอดภัยสูงกว่าทุกทางเลือก เหมาะสำหรับหน่วยงานที่มีข้อกำหนดด้านกฎระเบียบเข้มงวด
 3. **Hybrid Cloud (คลาวด์แบบผสมผสาน):**
-   - การทำงานร่วมกันอย่างแนบแน่นระหว่างโครงสร้างพื้นฐานอย่างน้อยสองรูปแบบที่ต่างกัน (โดยทั่วไปคือ Private Cloud หรือ On-Premises ผสมกับ Public Cloud)
+   - ตาม NIST เป็นการเชื่อมโครงสร้างพื้นฐานคลาวด์ต่างกันตั้งแต่สองแห่ง (Private, Community หรือ Public) ที่ยังคงเป็นเอกเทศแต่เชื่อมให้ย้ายข้อมูล/แอปได้ เช่น Private Cloud กับ Public Cloud; ในการใช้คำทั่วไปของผู้ให้บริการอาจรวมระบบ on-premises แบบเดิมด้วย แต่ระบบ on-premises ไม่ได้เป็น Private Cloud โดยอัตโนมัติ
    - ข้อมูลและแอปพลิเคชันสามารถถ่ายโอนข้ามกันได้อย่างราบรื่น ช่วยให้องค์กรเก็บข้อมูลความลับไว้ในศูนย์ข้อมูลส่วนตัว แต่สามารถยืมพลังประมวลผลจากพับลิกคลาวด์เมื่อมีความต้องการสูงขึ้น (**Cloud Bursting**)
 4. **Community Cloud (คลาวด์สำหรับกลุ่มองค์กรเฉพาะ):**
    - โครงสร้างพื้นฐานคลาวด์ที่สร้างขึ้นและแชร์กันเฉพาะกลุ่มองค์กรที่มีพันธกิจ กฎหมาย นโยบาย หรือข้อกำหนดความมั่นคงปลอดภัยร่วมกัน
@@ -483,17 +493,17 @@
 
 ข้อสอบ ISC2 CC มักทดสอบความเข้าใจระหว่างคำสองคำนี้อย่างสม่ำเสมอ:
 
-- **Hybrid Cloud:** มุ่งเน้นไปที่การผสมผสานระหว่าง **สภาพแวดล้อมต่างชนิดกัน (Private + Public)** โดยมีเทคโนโลยีเชื่อมโยงเวิร์กโหลดเข้าด้วยกัน เช่น บริษัทเก็บฐานข้อมูลลูกค้าไว้ในดาต้าเซ็นเตอร์ของตนเอง (Private) แต่รันเว็บหน้าร้านบน AWS (Public)
+- **Hybrid Cloud:** มุ่งเน้นไปที่การผสมผสานระหว่าง **สภาพแวดล้อมต่างชนิดกัน (Private + Public)** โดยมีเทคโนโลยีเชื่อมโยงเวิร์กโหลดเข้าด้วยกัน เช่น บริษัทเก็บฐานข้อมูลลูกค้าไว้ในPrivate Cloud ในดาต้าเซ็นเตอร์ของตนเอง แต่รันเว็บหน้าร้านบน AWS (Public)
 - **Multi-Cloud:** มุ่งเน้นไปที่การใช้งาน **ผู้ให้บริการคลาวด์สาธารณะหลายรายพร้อมกัน (Multiple CSPs)** เช่น การใช้เซิร์ฟเวอร์ประมวลผลบน AWS ร่วมกับการใช้บริการ AI บน Google Cloud และใช้อีเมลบน Microsoft Azure เพื่อหลีกเลี่ยงการถูกผูกขาดจากผู้ให้บริการรายเดียว (**Vendor Lock-in**) และเพิ่มความทนทานต่อภัยพิบัติ
 
 ตารางเปรียบเทียบ Hybrid Cloud vs. Multi-Cloud:
 
 | <div class="reading-bilingual-term"><span class="reading-term-en">**Dimension**</span><span class="reading-term-th">(มิติการพิจารณา)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Hybrid Cloud**</span><span class="reading-term-th">(คลาวด์แบบผสมผสาน)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Multi-Cloud**</span><span class="reading-term-th">(คลาวด์หลายผู้ให้บริการ)</span></div> |
 | :--- | :--- | :--- |
-| **Core Architecture** | ผสมผสานระหว่าง **Private Cloud / On-Prem** และ **Public Cloud** | ใช้งาน **Public Cloud หลายราย** พร้อมกัน (เช่น AWS + GCP + Azure) |
+| **Core Architecture** | ผสมผสานระหว่าง **Private Cloud (อาจอยู่ On-Premises)** และ **Public Cloud** | ใช้งาน **Public Cloud หลายราย** พร้อมกัน (เช่น AWS + GCP + Azure) |
 | **Primary Goal** | รักษาข้อมูลความลับไว้ในองค์กร แต่ยืมความยืดหยุ่นจากคลาวด์ | หลีกเลี่ยงการผูกขาด (Vendor Lock-in) และเลือกใช้จุดเด่นของแต่ละเจ้า |
 | **Integration Level** | เชื่อมต่อข้อมูลและกระบวนการทำงานร่วมกันอย่างแนบแน่น | อาจทำงานแยกจากกันเป็นอิสระ หรือเชื่อมต่อกันผ่าน API |
-| **Exam Trigger** | *"On-premises integrated with public cloud", "Sensitive data hosted locally"* | *"Avoiding vendor lock-in", "Using two or more cloud service providers"* |
+| **Exam Trigger** | *"Private cloud integrated with public cloud"; "On-premises integrated with public cloud" เป็นคำใช้แบบกว้างของผู้ให้บริการ ต้องดูบริบท ไม่ใช่ทุกระบบในองค์กรเป็น Private Cloud* | *"Avoiding vendor lock-in", "Using two or more cloud service providers"* |
 
 <h3 id="topic-4-3-cloud-network-controls">4.3.6 Cloud Network Architecture &amp; Security Controls: สถาปัตยกรรมเครือข่ายคลาวด์</h3>
 
@@ -502,10 +512,10 @@
 - **Virtual Private Cloud (VPC) / VNet:** เครือข่ายเสมือนส่วนตัวที่แยกเป็นเอกเทศบนระบบคลาวด์ของผู้ให้บริการ ทำให้ลูกค้าสามารถควบคุมการจัดสรรช่วงไอพี (CIDR Block), การสร้างเครือข่ายย่อย (Subnets), และตารางเส้นทาง (Route Tables) ได้เหมือนศูนย์ข้อมูลส่วนตัว
 - **Public Subnet vs. Private Subnet:**
   - Public Subnet: เชื่อมต่อไปยัง **Internet Gateway (IGW)** โดยตรง เหมาะสำหรับวาง Load Balancer หรือ Bastion Host
-  - Private Subnet: ไม่มีเส้นทางตรงสู่อินเทอร์เน็ต เซิร์ฟเวอร์ฐานข้อมูลต้องอยู่ในนี้ หากต้องการออกไปดาวน์โหลดแพตช์ภายนอก ต้องผ่าน **NAT Gateway** เท่านั้น
-- **Security Groups vs. Network ACLs (NACLs):**
-  - **Security Group:** ไฟร์วอลล์เสมือนระดับ **Instance / Virtual Machine (Host Level)** มีคุณสมบัติเป็น **Stateful** (หากอนุญาตขาเข้า ขาออกจะได้รับอนุญาตอัตโนมัติ) กำหนดได้เฉพาะกฎ Allow
-  - **Network ACL (NACL):** ไฟร์วอลล์เสมือนระดับ **Subnet** มีคุณสมบัติเป็น **Stateless** (ต้องกำหนดกฎทั้งขาเข้าและขาออกแยกกันอย่างชัดเจน) รองรับทั้งกฎ Allow และ Deny เรียงลำดับตามหมายเลข Rule Number
+  - Private Subnet: ไม่มีเส้นทางตรงผ่าน Internet Gateway เซิร์ฟเวอร์ฐานข้อมูลต้องอยู่ในนี้ การออกไปยังอินเทอร์เน็ตต้องใช้เส้นทางและกลไกที่เหมาะสม เช่น **NAT Gateway** สำหรับ IPv4; อาจใช้ NAT instance หรือสำหรับ IPv6 ใช้ egress-only Internet Gateway ตามสถาปัตยกรรมและนโยบาย
+- **ตัวอย่าง AWS VPC — Security Groups vs. Network ACLs (NACLs):**
+  - **Security Group:** การกรองแบบ **Stateful** ที่ผูกกับทรัพยากร/อินเทอร์เฟซของ AWS (ไม่ใช่ Firewall ภายใน Guest OS) ทราฟฟิกตอบกลับของการเชื่อมต่อที่อนุญาตผ่านได้อัตโนมัติ กำหนดได้เฉพาะกฎ Allow
+  - **Network ACL (NACL):** ไฟร์วอลล์เสมือนระดับ **Subnet** มีคุณสมบัติเป็น **Stateless** (ต้องกำหนดกฎทั้งขาเข้าและขาออกแยกกันอย่างชัดเจน) รองรับทั้งกฎ Allow และ Deny เรียงลำดับตามหมายเลข Rule Number ผู้ให้บริการอื่นมีรายละเอียดต่างกัน เช่น Azure NSG เป็น Stateful และมีทั้ง Allow/Deny โดยผูกกับ subnet หรือ NIC ได้
 
 </section>
 
@@ -640,11 +650,11 @@
     <div class="reading-distinction-body">
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">IaaS &amp; PaaS</strong>
-        <div class="reading-distinction-desc">IaaS ลูกค้าดูแลตั้งแต่ OS, Patching และแอปพลิเคชัน ส่วน PaaS ผู้ให้บริการดูแล OS ให้ ลูกค้าดูแลเฉพาะโค้ดและข้อมูล</div>
+        <div class="reading-distinction-desc">IaaS ลูกค้าดูแลตั้งแต่ OS, Patching และแอปพลิเคชัน ส่วน PaaS โดยทั่วไปผู้ให้บริการดูแล OS/แพลตฟอร์ม ลูกค้าดูแลโค้ด ข้อมูล และการตั้งค่าที่ตนควบคุม โดยมีรายละเอียดตามบริการ</div>
       </div>
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">SaaS &amp; FaaS</strong>
-        <div class="reading-distinction-desc">SaaS ผู้ให้บริการดูแลทั้งหมด ลูกค้าดูแลแค่ Data และ User Access ส่วน FaaS ลูกค้าเขียนเฉพาะฟังก์ชันรันตามเหตุการณ์ (Serverless)</div>
+        <div class="reading-distinction-desc">SaaS ผู้ให้บริการบริหารแอปพลิเคชัน/แพลตฟอร์ม ลูกค้ายังคงดูแลการจัดชั้นข้อมูลและนโยบาย/การตั้งค่า User Access ที่ตนควบคุม ส่วน FaaS ลูกค้าเขียนเฉพาะฟังก์ชันรันตามเหตุการณ์ (Serverless)</div>
       </div>
     </div>
   </div>
@@ -668,7 +678,7 @@
     <div class="reading-distinction-body">
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">Hybrid Cloud (สถาปัตยกรรมผสม)</strong>
-        <div class="reading-distinction-desc">การผสมผสานและทำงานร่วมกันอย่างแนบแน่นระหว่าง Private Cloud / On-Premises และ Public Cloud</div>
+        <div class="reading-distinction-desc">การผสมผสานและทำงานร่วมกันอย่างแนบแน่นระหว่าง Private Cloud และ Public Cloud ตามตัวอย่างนี้; การใช้คำแบบผู้ให้บริการอาจรวม on-premises แบบเดิม แต่ต้องระบุบริบท</div>
       </div>
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">Multi-Cloud (หลายผู้ให้บริการ)</strong>
@@ -678,11 +688,11 @@
   </div>
 
   <div class="reading-distinction-card">
-    <div class="reading-distinction-header"><span>12. Security Group (Stateful) vs. Network ACL (Stateless)</span></div>
+    <div class="reading-distinction-header"><span>12. AWS Security Group (Stateful) vs. Network ACL (Stateless)</span></div>
     <div class="reading-distinction-body">
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">Security Group (Stateful &middot; VM Level)</strong>
-        <div class="reading-distinction-desc">ทำงานระดับเครื่องเสมือน มีคุณสมบัติ Stateful อนุญาตทราฟฟิกขากลับอัตโนมัติ กำหนดได้เฉพาะกฎ Allow</div>
+        <div class="reading-distinction-desc">ใน AWS ผูกกับทรัพยากร/อินเทอร์เฟซ เป็น Stateful อนุญาตทราฟฟิกตอบกลับของ flow ที่อนุญาตอัตโนมัติ ใช้กฎ Allow; ไม่ใช่ข้อกำหนดเดียวกันของทุกผู้ให้บริการ</div>
       </div>
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">Network ACL (Stateless &middot; Subnet Level)</strong>
@@ -694,7 +704,7 @@
 
 #### 2. ข้อสังเกตและจุดจำสำคัญสำหรับข้อสอบ (Exam Traps)
 
-1. ถ้าข้อสอบถามถึง **"สิ่งที่ลูกค้าคลาวด์เป็นผู้รับผิดชอบ 100% เสมอในทุกโมเดล (IaaS, PaaS, SaaS)"** → ให้เลือก **Data &amp; Information** หรือ **Identity &amp; Access Management (IAM)**
+1. ถ้าข้อสอบถามถึง **"ความรับผิดชอบที่ลูกค้ายังคงมีในทุกโมเดล: การจัดชั้นข้อมูลและการกำหนดสิทธิ์ที่ตนควบคุม"** → ให้เลือก **Data &amp; Information** หรือ **Identity &amp; Access Management (IAM)**
 2. ถ้าข้อสอบถามถึง **"ใครรับผิดชอบการติดตั้ง Security Patch ให้กับระบบปฏิบัติการของ Virtual Machine ใน IaaS"** → ให้เลือก **Customer (ลูกค้าผู้ใช้บริการ)**
 3. ถ้าข้อสอบถามถึง **"ใครรับผิดชอบการติดตั้ง Security Patch ให้กับระบบปฏิบัติการใน PaaS หรือ SaaS"** → ให้เลือก **Cloud Service Provider (CSP)**
 4. ถ้าข้อสอบถามถึง **"การจัดวางเซิร์ฟเวอร์ที่เปิดให้สาธารณะภายนอกเข้าถึงได้ เพื่อป้องกันเครือข่ายภายใน"** → ให้เลือก **DMZ (Demilitarized Zone)**
@@ -708,7 +718,7 @@
 12. ถ้าข้อสอบถามถึง **"การเข้ารหัส Wi-Fi มาตรฐานสูงสุดที่ใช้กลไก SAE ป้องกันการสุ่มรหัสผ่านออฟไลน์"** → ให้เลือก **WPA3**
 13. ถ้าข้อสอบถามถึง **"มาตรการใดต่อไปนี้ไม่ใช่การรักษาความปลอดภัย Wi-Fi ที่แท้จริง"** → ให้เลือก **MAC Filtering** หรือ **Disable SSID Broadcast (ซ่อนชื่อ Wi-Fi)**
 14. ถ้าข้อสอบถามถึง **"ความแตกต่างระหว่าง IDS และ IPS"** → ตอบว่า **IDS ทำได้เพียงตรวจจับและแจ้งเตือน (Alert) ส่วน IPS สามารถสกัดกั้นและทิ้งแพ็กเก็ตได้ทันที (Inline Drop/Block)**
-15. ถ้าข้อสอบถามถึง **"สถาปัตยกรรมที่ผสมผสานระหว่างศูนย์ข้อมูลส่วนตัว On-Premises เข้ากับ Public Cloud"** → ตอบ **Hybrid Cloud**
+15. ถ้าข้อสอบถามถึง **"สถาปัตยกรรมที่เชื่อม Private Cloud เข้ากับ Public Cloud"** → ตอบ **Hybrid Cloud**
 16. ถ้าข้อสอบถามถึง **"กลยุทธ์การใช้งานผู้ให้บริการคลาวด์หลายเจ้าพร้อมกันเพื่อป้องกัน Vendor Lock-in"** → ตอบ **Multi-Cloud**
 
 #### 3. ตารางสรุปคำสำคัญบ่งชี้แนวคิด (Keyword-to-Concept Matrix)
@@ -718,15 +728,15 @@
 | **Segmentation** | "Blast radius", "Lateral movement", "Divide network" | กักบริเวณความเสียหายและหยุดยั้งการแพร่กระจายของภัยคุกคาม | แยกแผนกการเงินออกจากแผนกต้อนรับ |
 | **DMZ** | "Public-facing servers", "Buffer zone", "Isolate internal DB" | เป็นกันชนแยกบริการสาธารณะออกจากฐานข้อมูลภายใน | วาง Web Server และ Mail Gateway |
 | **Micro-Segmentation** | "East-West traffic", "Workload level", "Host-level firewall" | ควบคุมการสื่อสารระหว่างเซิร์ฟเวอร์ในศูนย์ข้อมูลอย่างละเอียด | กั้นไม่ให้ Web Tier คุยกับ Database ตรง |
-| **Defense in Depth** | "Multiple layers", "No single point of failure", "Concentric" | วางมาตรการซ้อนกันหลายชั้นเพื่อให้มีระบบสำรองป้องกันเสมอ | มีทั้ง Perimeter FW, EDR, WAF และการเข้ารหัส |
+| **Defense in Depth** | "Multiple layers", "Complementary controls", "Example layers" | ใช้หลายมาตรการเสริมกันเพื่อลดผลกระทบเมื่อมาตรการหนึ่งล้มเหลว ไม่รับประกันความเป็นอิสระของทุกชั้น | มีทั้ง Perimeter FW, EDR, WAF และการเข้ารหัส |
 | **Zero Trust** | "Never trust always verify", "Implicit trust eliminated", "Context" | ไม่เชื่อถือใครจากตำแหน่งที่ตั้ง ตรวจสอบตัวตนทุกครั้ง | เครื่องในออฟฟิศยังคงต้องผ่าน MFA และตรวจความปลอดภัย |
 | **IaaS Responsibility** | "Customer patches OS", "Virtual machines", "Infrastructure" | ลูกค้าดูแลตั้งแต่ OS และแอปพลิเคชันขึ้นไป CSP ดูแลฮาร์ดแวร์ | เช่า AWS EC2 แล้วแอดมินต้องอัปเดตแพตช์วินโดวส์เอง |
-| **Customer Data Duty** | "Always customer responsibility", "Data classification", "IAM" | ลูกค้าเป็นเจ้าของและรับผิดชอบข้อมูลและการให้สิทธิ์ 100% เสมอ | ย้ายไฟล์ขึ้น SaaS แล้วตั้งค่าสิทธิ์หลวมจนข้อมูลรั่ว |
-| **Hybrid Cloud** | "On-premises + public", "Cloud bursting", "Local sensitive data" | ผสมผสานดาต้าเซ็นเตอร์ส่วนตัวเข้ากับคลาวด์สาธารณะ | เก็บข้อมูลบัญชีไว้ที่ตึกตนเอง แต่รันประมวลผลบนคลาวด์ |
+| **Customer Data Duty** | "Always customer responsibility", "Data classification", "IAM" | ลูกค้ายังคงรับผิดชอบการจัดชั้นข้อมูล การตัดสินใจให้สิทธิ์ และการตั้งค่าที่ตนควบคุม; CSP ดูแลบริการที่ตนบริหาร | ย้ายไฟล์ขึ้น SaaS แล้วตั้งค่าสิทธิ์หลวมจนข้อมูลรั่ว |
+| **Hybrid Cloud** | "On-premises + public", "Cloud bursting", "Local sensitive data" | เชื่อมคลาวด์ต่างชนิดกัน เช่น Private Cloud ในดาต้าเซ็นเตอร์ส่วนตัวกับ Public Cloud; Hybrid และ Multi-Cloud เกิดร่วมกันได้ | เก็บข้อมูลบัญชีไว้ที่ตึกตนเอง แต่รันประมวลผลบนคลาวด์ |
 | **Community Cloud** | "Shared regulatory requirements", "Specific mission", "Hospitals" | คลาวด์สำหรับกลุ่มองค์กรที่มีข้อกำหนดหรือภารกิจเฉพาะร่วมกัน | กลุ่มโรงพยาบาล 5 แห่งแชร์ระบบประวัติผู้ป่วย |
 | **Multi-Cloud** | "Avoid vendor lock-in", "Multiple CSPs", "AWS + Azure" | ใช้คลาวด์สาธารณะมากกว่า 1 เจ้าเพื่อกระจายความเสี่ยง | ใช้เซิร์ฟเวอร์ AWS ร่วมกับระบบ AI ของ Google Cloud |
 | **WPA3 SAE** | "Simultaneous Authentication of Equals", "Prevent offline dictionary" | ป้องกันการโจมตีแบบสุ่มรหัสผ่านออฟไลน์ในเครือข่าย Wi-Fi | มาตรฐาน Wi-Fi ยุคใหม่ที่ทนทานต่อการดักจับ Handshake |
-| **Security Group** | "Stateful", "Instance level", "Virtual firewall", "Allow only" | ควบคุมทราฟฟิกเข้าออกระดับเครื่องเสมือนบนคลาวด์แบบ Stateful | เปิดพอร์ต 443 ขาเข้า แล้วทราฟฟิกขาออกเปิดให้อัตโนมัติ |
+| **AWS Security Group** | "Stateful", "Instance level", "Virtual firewall", "Allow only" | ควบคุมทราฟฟิกเข้าออกระดับเครื่องเสมือนบนคลาวด์แบบ Stateful | อนุญาต flow เข้าพอร์ต 443 แล้วทราฟฟิกตอบกลับของ flow นั้นผ่านได้อัตโนมัติ ไม่ใช่อนุญาตขาออกใหม่ทั้งหมด |
 
 #### 4. สถานการณ์จำลองและแนวคิดการวิเคราะห์ (Review Scenarios)
 
@@ -805,19 +815,19 @@ id: 8
 badge: Scenario 08
 topic: Customer Responsibility Across Cloud Models
 situation: องค์กรจัดเก็บข้อมูลความลับของลูกค้าไว้ในบริการคลาวด์แบบ Software as a Service (SaaS) ต่อมาผู้ดูแลระบบขององค์กรได้ตั้งค่าสิทธิ์ให้โฟลเดอร์ดังกล่าวเป็นแบบ "Public Accessible" ส่งผลให้บุคคลภายนอกสามารถดาวน์โหลดข้อมูลความลับออกไปได้
-question: ไม่ว่าจะใช้งานคลาวด์โมเดลใด (IaaS, PaaS หรือ SaaS) หน้าที่ในการจำแนกประเภทข้อมูลและการบริหารจัดการสิทธิ์การเข้าถึง (Data & IAM) เป็นของใครเสมอ?
-answer: Customer (ผู้ใช้บริการคลาวด์เสมอ — ไม่สามารถส่งมอบความรับผิดชอบนี้ให้ CSP ได้)
-reasoning: กฎทองของโมเดลความรับผิดชอบร่วมบนคลาวด์คือ ไม่ว่าองค์กรจะใช้โมเดล IaaS, PaaS หรือ SaaS ก็ตาม ทรัพย์สินที่ลูกค้าเป็นผู้รับผิดชอบ 100% เสมอคือ "ข้อมูล (Data & Information)" และ "การบริหารจัดการตัวตนและสิทธิ์การเข้าถึง (IAM & Access Control)" ผู้ให้บริการคลาวด์ไม่สามารถรับผิดชอบแทนได้
+question: ในสถานการณ์นี้ ใครต้องแก้ไขสิทธิ์แชร์ที่องค์กรตั้งค่าผิด (Customer-Controlled Sharing Permission)?
+answer: Customer (ผู้ใช้บริการที่ต้องแก้ไขสิทธิ์แชร์ซึ่งองค์กรตั้งค่าผิด)
+reasoning: ในสถานการณ์นี้ลูกค้าตั้งค่าสิทธิ์แชร์เป็น Public Accessible จึงต้องแก้ไขสิทธิ์ที่ตนควบคุม ลูกค้ายังคงรับผิดชอบการจัดชั้นข้อมูลและนโยบายการเข้าถึง ขณะที่ CSP ยังต้องรักษาความปลอดภัยของบริการ Storage และ IAM ที่ตนบริหาร ขอบเขตจริงขึ้นอยู่กับบริการและข้อตกลง
 :::
 
 :::scenario
 id: 9
 badge: Scenario 09
 topic: Hybrid Cloud Deployment Model
-situation: สถาบันการเงินแห่งหนึ่งจัดเก็บฐานข้อมูลบัญชีเงินฝากของลูกค้าไว้ในศูนย์ข้อมูลส่วนตัว (Private Data Center) ของตนเองเพื่อปฏิบัติตามกฎหมาย แต่ใช้คลาวด์สาธารณะ (Public Cloud) ในการรันระบบวิเคราะห์ข้อมูลขนาดใหญ่ที่ต้องการพลังประมวลผลสูง โดยมีการเชื่อมต่อเครือข่ายอย่างปลอดภัยระหว่างสองระบบ
+situation: สถาบันการเงินแห่งหนึ่งจัดเก็บฐานข้อมูลบัญชีเงินฝากของลูกค้าไว้บน Private Cloud ในศูนย์ข้อมูลของตนเองเพื่อปฏิบัติตามกฎหมาย แต่ใช้คลาวด์สาธารณะ (Public Cloud) ในการรันระบบวิเคราะห์ข้อมูลขนาดใหญ่ที่ต้องการพลังประมวลผลสูง โดยมีการเชื่อมต่อเครือข่ายอย่างปลอดภัยระหว่างสองระบบ
 question: รูปแบบการติดตั้งระบบคลาวด์ (Cloud Deployment Model) ที่ผสมผสานระหว่างศูนย์ข้อมูลส่วนตัว (Private) และคลาวด์สาธารณะ (Public) เข้าด้วยกันอย่างแนบแน่น เรียกว่าอะไร?
 answer: Hybrid Cloud — คลาวด์แบบผสมผสาน
-reasoning: Hybrid Cloud คือการผสมผสานและทำงานร่วมกันระหว่าง Public Cloud และ Private Cloud (หรือ On-premises Data Center) โดยข้อมูลและแอปพลิเคชันสามารถถ่ายโอนและแบ่งปันการทำงานร่วมกันได้อย่างราบรื่นและปลอดภัย ช่วยให้องค์กรได้ทั้งความยืดหยุ่นและการปฏิบัติตามกฎระเบียบ
+reasoning: Hybrid Cloud คือการผสมผสานและทำงานร่วมกันระหว่าง Public Cloud และ Private Cloud ตามตัวอย่างนี้ (คำแบบผู้ให้บริการอาจรวม on-premises แบบเดิมด้วย แต่ไม่ใช่ทุกระบบ on-premises เป็น Private Cloud) โดยข้อมูลและแอปพลิเคชันสามารถถ่ายโอนและแบ่งปันการทำงานร่วมกันได้อย่างราบรื่นและปลอดภัย ช่วยให้องค์กรได้ทั้งความยืดหยุ่นและการปฏิบัติตามกฎระเบียบ
 :::
 
 :::scenario

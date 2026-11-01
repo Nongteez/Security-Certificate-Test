@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: V1 loads legacy entries without requiring a migration
+ok 1 - V1 loads legacy entries without requiring a migration
+  ---
+  duration_ms: 2.1637
+  type: 'test'
+  ...
+# Subtest: V1 persists optional subsection-relative offsets across a fresh store
+ok 2 - V1 persists optional subsection-relative offsets across a fresh store
+  ---
+  duration_ms: 2.2264
+  type: 'test'
+  ...
+# Subtest: Optional offset may be negative near an upcoming heading
+ok 3 - Optional offset may be negative near an upcoming heading
+  ---
+  duration_ms: 0.2939
+  type: 'test'
+  ...
+# Subtest: Invalid offsets are omitted rather than coercing a false position
+ok 4 - Invalid offsets are omitted rather than coercing a false position
+  ---
+  duration_ms: 0.1938
+  type: 'test'
+  ...
+# Subtest: Switching to a domain with no topic does not retain another domain global topic
+ok 5 - Switching to a domain with no topic does not retain another domain global topic
+  ---
+  duration_ms: 0.21
+  type: 'test'
+  ...
+# Subtest: Fresh explicit subsection link takes priority over stored offsets
+ok 6 - Fresh explicit subsection link takes priority over stored offsets
+  ---
+  duration_ms: 0.4381
+  type: 'test'
+  ...
+# Subtest: Reload of the saved subsection restores position, not its heading
+ok 7 - Reload of the saved subsection restores position, not its heading
+  ---
+  duration_ms: 0.2465
+  type: 'test'
+  ...
+# Subtest: Reload of a different explicit subsection still follows the URL
+ok 8 - Reload of a different explicit subsection still follows the URL
+  ---
+  duration_ms: 0.1603
+  type: 'test'
+  ...
+# Subtest: Generic entry resumes the last domain and position
+ok 9 - Generic entry resumes the last domain and position
+  ---
+  duration_ms: 0.1193
+  type: 'test'
+  ...
+# Subtest: Overview entry without a reading hash still resumes
+ok 10 - Overview entry without a reading hash still resumes
+  ---
+  duration_ms: 0.145
+  type: 'test'
+  ...
+# Subtest: Explicit domain selection resumes that domain independently
+ok 11 - Explicit domain selection resumes that domain independently
+  ---
+  duration_ms: 0.0952
+  type: 'test'
+  ...
+# Subtest: History snapshot beats a newer last-read position for the same domain
+ok 12 - History snapshot beats a newer last-read position for the same domain
+  ---
+  duration_ms: 0.0966
+  type: 'test'
+  ...
+# Subtest: Unrelated history snapshots cannot override explicit deep links
+ok 13 - Unrelated history snapshots cannot override explicit deep links
+  ---
+  duration_ms: 0.3419
+  type: 'test'
+  ...
+# Subtest: Malformed history offset cannot make an explicit URL a resume
+ok 14 - Malformed history offset cannot make an explicit URL a resume
+  ---
+  duration_ms: 0.1847
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 173.7345

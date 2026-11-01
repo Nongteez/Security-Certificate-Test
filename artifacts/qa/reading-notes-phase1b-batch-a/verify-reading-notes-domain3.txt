@@ -1,0 +1,43 @@
+▶ ISC2 CC 2026 — Reading Notes Domain 3 Verification Suite
+  ✔ 1. Domain 3 Metadata & Official Outline Boundaries (1.118ms)
+  ✔ 2. UI Shell & READING_DOMAINS Registration (0.4493ms)
+  ✖ 3. Reading Loader Asynchronous & Synchronous Cache (6.1766ms)
+  ✔ 4. Topic Anchors & Navigation Alignment (0.4967ms)
+  ✔ 5. Academic Content Completeness across Objectives 3.1 & 3.2 (0.3981ms)
+  ✔ 6. 4 Semantic Diagrams Generation & Integration (0.2224ms)
+  ✔ 7. Concept Distinctions, Exam Traps & Review Scenarios (0.2684ms)
+  ✔ 8. Zero-Defect Quality Standards (0.3338ms)
+  ✔ 9. Preservation Boundaries (3.1056ms)
+✖ ISC2 CC 2026 — Reading Notes Domain 3 Verification Suite (19.5268ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 8
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24.6134
+
+✖ failing tests:
+
+test at tools\verify-reading-notes-domain3.mjs:54:11
+✖ 3. Reading Loader Asynchronous & Synchronous Cache (6.1766ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(cached.renderedHtml.includes('Domain 3: Access Controls'))
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-notes-domain3.mjs:58:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at TestContext.test (node:internal/test_runner/test:377:20)
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-notes-domain3.mjs:54:11)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

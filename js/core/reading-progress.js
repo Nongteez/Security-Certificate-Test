@@ -124,6 +124,10 @@ export function validateProgressData(data) {
           lastScrollY: sanitizeScrollY(entry.lastScrollY),
           updatedAt: typeof entry.updatedAt === 'string' ? entry.updatedAt : updatedAt
         };
+        // Optional V1 extension. Legacy records remain valid without this field.
+        if (typeof entry.lastAnchorOffset === 'number' && Number.isFinite(entry.lastAnchorOffset)) {
+          domains[dId].lastAnchorOffset = Math.round(entry.lastAnchorOffset);
+        }
       }
     }
   }
@@ -251,6 +255,35 @@ export function parseReadingDeepLink(hash) {
   return { isReadingRoute: false, domainId: null, anchorId: null };
 }
 
+/** Resolve navigation intent without confusing a copied deep link with Resume. */
+export function resolveReadingLocation({ hash = '', progress, navigationType = 'navigate', historyPosition = null } = {}) {
+  const route = parseReadingDeepLink(hash);
+  const data = validateProgressData(progress) || createDefaultProgressState();
+  const domainId = route.domainId || data.lastDomainId;
+  const saved = data.domains[domainId] || (domainId === data.lastDomainId
+    ? { lastTopicId: data.lastTopicId, lastScrollY: data.lastScrollY }
+    : null);
+  const snapshot = historyPosition;
+  if (snapshot && snapshot.hash === hash && sanitizeDomainId(snapshot.domainId) === domainId &&
+      typeof snapshot.scrollY === 'number' && Number.isFinite(snapshot.scrollY) && snapshot.scrollY >= 0 &&
+      (!route.anchorId || snapshot.anchorId === route.anchorId)) {
+    return {
+      domainId, mode: 'position', anchorId: sanitizeAnchorId(snapshot.anchorId, domainId),
+      scrollY: sanitizeScrollY(snapshot.scrollY),
+      ...(typeof snapshot.anchorOffset === 'number' && Number.isFinite(snapshot.anchorOffset)
+        ? { anchorOffset: snapshot.anchorOffset } : {})
+    };
+  }
+  if (route.anchorId && !(navigationType === 'reload' && saved?.lastTopicId === route.anchorId)) {
+    return { domainId, mode: 'anchor', anchorId: route.anchorId, scrollY: 0 };
+  }
+  return {
+    domainId, mode: 'position', anchorId: saved?.lastTopicId || null,
+    scrollY: saved?.lastScrollY || 0,
+    ...(typeof saved?.lastAnchorOffset === 'number' ? { anchorOffset: saved.lastAnchorOffset } : {})
+  };
+}
+
 /**
  * Factory creating a Reading Progress Store instance.
  * @param {Storage} [providedStorage]
@@ -318,7 +351,7 @@ export function createReadingProgressStore(providedStorage = null) {
      * @param {number} [location.scrollY] - Content scroll offset
      * @returns {{ persisted: boolean, data: Object }}
      */
-    saveLocation({ domainId, topicId = null, objectiveId = null, scrollY = 0 }) {
+    saveLocation({ domainId, topicId = null, objectiveId = null, scrollY = 0, anchorOffset }) {
       const dId = sanitizeDomainId(domainId);
       if (!dId) {
         return { persisted: false, error: 'Invalid domain ID' };
@@ -339,12 +372,13 @@ export function createReadingProgressStore(providedStorage = null) {
         lastScrollY: cleanScroll,
         updatedAt: now
       };
+      if (typeof anchorOffset === 'number' && Number.isFinite(anchorOffset)) {
+        cachedData.domains[dId].lastAnchorOffset = Math.round(anchorOffset);
+      }
 
       // Update global last-read location
       cachedData.lastDomainId = dId;
-      if (cleanTopic !== null) {
-        cachedData.lastTopicId = cleanTopic;
-      }
+      cachedData.lastTopicId = cachedData.domains[dId].lastTopicId;
       cachedData.lastScrollY = cleanScroll;
       cachedData.updatedAt = now;
 

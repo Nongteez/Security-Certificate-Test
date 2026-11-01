@@ -1,0 +1,282 @@
+TAP version 13
+# Subtest: V1 loads legacy entries without requiring a migration
+ok 1 - V1 loads legacy entries without requiring a migration
+  ---
+  duration_ms: 1.9847
+  type: 'test'
+  ...
+# Subtest: V1 persists optional subsection-relative offsets across a fresh store
+not ok 2 - V1 persists optional subsection-relative offsets across a fresh store
+  ---
+  duration_ms: 3.6518
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    undefined !== 375
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 375
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:8:403)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+# Subtest: Optional offset may be negative near an upcoming heading
+not ok 3 - Optional offset may be negative near an upcoming heading
+  ---
+  duration_ms: 1.0941
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:9:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - -200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: -200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:9:229)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: Invalid offsets are omitted rather than coercing a false position
+ok 4 - Invalid offsets are omitted rather than coercing a false position
+  ---
+  duration_ms: 0.7594
+  type: 'test'
+  ...
+# Subtest: Switching to a domain with no topic does not retain another domain global topic
+not ok 5 - Switching to a domain with no topic does not retain another domain global topic
+  ---
+  duration_ms: 0.7567
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'topic-1-1-mfa'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'topic-1-1-mfa'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:11:257)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: Fresh explicit subsection link takes priority over stored offsets
+not ok 6 - Fresh explicit subsection link takes priority over stored offsets
+  ---
+  duration_ms: 0.2681
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:12:1'
+  failureType: 'testCodeFailure'
+  error: 'reading.resolveReadingLocation is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    resolve (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:6:37)
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:12:87)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: Reload of the saved subsection restores position, not its heading
+not ok 7 - Reload of the saved subsection restores position, not its heading
+  ---
+  duration_ms: 0.0999
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:13:1'
+  failureType: 'testCodeFailure'
+  error: 'reading.resolveReadingLocation is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    resolve (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:6:37)
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:13:87)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: Reload of a different explicit subsection still follows the URL
+not ok 8 - Reload of a different explicit subsection still follows the URL
+  ---
+  duration_ms: 0.0678
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:14:1'
+  failureType: 'testCodeFailure'
+  error: 'reading.resolveReadingLocation is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    resolve (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:6:37)
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:14:85)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: Generic entry resumes the last domain and position
+not ok 9 - Generic entry resumes the last domain and position
+  ---
+  duration_ms: 0.1972
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:15:1'
+  failureType: 'testCodeFailure'
+  error: 'reading.resolveReadingLocation is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    resolve (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:6:37)
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:15:72)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: Overview entry without a reading hash still resumes
+not ok 10 - Overview entry without a reading hash still resumes
+  ---
+  duration_ms: 0.5748
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:16:1'
+  failureType: 'testCodeFailure'
+  error: 'reading.resolveReadingLocation is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    resolve (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:6:37)
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:16:78)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: Explicit domain selection resumes that domain independently
+not ok 11 - Explicit domain selection resumes that domain independently
+  ---
+  duration_ms: 0.3554
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:17:1'
+  failureType: 'testCodeFailure'
+  error: 'reading.resolveReadingLocation is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    resolve (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:6:37)
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:17:81)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: History snapshot beats a newer last-read position for the same domain
+not ok 12 - History snapshot beats a newer last-read position for the same domain
+  ---
+  duration_ms: 0.2798
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:18:1'
+  failureType: 'testCodeFailure'
+  error: 'reading.resolveReadingLocation is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    resolve (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:6:37)
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:18:91)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: Unrelated history snapshots cannot override explicit deep links
+not ok 13 - Unrelated history snapshots cannot override explicit deep links
+  ---
+  duration_ms: 0.158
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:19:1'
+  failureType: 'testCodeFailure'
+  error: 'reading.resolveReadingLocation is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    resolve (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:6:37)
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:19:85)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: Malformed history offset cannot make an explicit URL a resume
+not ok 14 - Malformed history offset cannot make an explicit URL a resume
+  ---
+  duration_ms: 0.0803
+  type: 'test'
+  location: 'D:\\_Coding\\SEC-CERT-TEST\\tools\\verify-reading-navigation.mjs:20:1'
+  failureType: 'testCodeFailure'
+  error: 'reading.resolveReadingLocation is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    resolve (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:6:37)
+    TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-navigation.mjs:20:83)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1201:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+    Test.postRun (node:internal/test_runner/test:1330:19)
+    Test.run (node:internal/test_runner/test:1258:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 2
+# fail 12
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 157.1603

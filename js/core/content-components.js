@@ -34,7 +34,7 @@ export const mfaFactorsData = [
     subtitle: 'สิ่งที่คุณรู้ (Knowledge)',
     iconSvg: '<path d="M21 2l-2 2m-2-2l-4 4-2-2-4 4 2 2-6 6a2.83 2.83 0 0 1-4-4l6-6-2-2 4-4 2 2 4-4z"></path>',
     desc: 'ข้อมูลหรือความลับที่อยู่ในสมองของผู้ใช้',
-    examples: 'Password, PIN, Passphrase, คำถามกันลืม (Security Questions)',
+    examples: 'Password, PIN, Passphrase; Security Questions เป็นตัวอย่าง Knowledge แบบเดิมที่คาดเดาหรือสืบค้นคำตอบได้ ไม่ใช่แนวทางสมัยใหม่ที่แนะนำ',
     weaknesses: 'เสี่ยงต่อการถูกเดา (Brute Force), แอบดู (Shoulder Surfing), หรือ Phishing'
   },
   {
@@ -65,7 +65,7 @@ export const mfaFactorsData = [
     iconSvg: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>',
     desc: 'บริบททางภูมิศาสตร์หรือตำแหน่งเครือข่ายที่ตรวจสอบได้',
     examples: 'พิกัด GPS, IP Geolocation, การล็อกอินจากเครือข่ายสำนักงาน (Corporate IP Subnet)',
-    note: 'เป็นปัจจัยแวดล้อมเสริม (Contextual Factor)'
+    note: 'เป็นบริบทเสริมสำหรับประเมินความเสี่ยง (Supplementary Risk Signal) ไม่ใช่ปัจจัย MFA; Password + Corporate IP เพียงอย่างเดียวยังไม่ใช่ MFA'
   }
 ];
 
@@ -143,7 +143,7 @@ export const riskTreatmentsData = [
     treatmentNum: '04',
     name: 'Risk Acceptance (การยอมรับความเสี่ยง)',
     badge: 'Live With It',
-    desc: 'รับรู้และยินยอมรับความเสี่ยงนั้นไว้โดยไม่ติดตั้งมาตรการควบคุมเพิ่มเติม มักใช้เมื่อระดับความเสี่ยงต่ำมาก หรือต้นทุนในการป้องกันสูงกว่ามูลค่าความเสียหาย (Safeguard Cost > ALE)',
+    desc: 'รับรู้และยินยอมรับความเสี่ยงนั้นไว้โดยไม่ติดตั้งมาตรการควบคุมเพิ่มเติม มักใช้เมื่อระดับความเสี่ยงต่ำมาก หรือต้นทุนในการป้องกันสูงกว่าประโยชน์จากการลดความเสียหาย (Annual Control Cost > ALE Before − ALE After) โดยต้องพิจารณากฎหมาย สัญญา ความปลอดภัย และภารกิจก่อนรับความเสี่ยง',
     example: 'เซิร์ฟเวอร์ทดสอบภายในไม่มีข้อมูลสำคัญและมี ALE เพียง \\$50/ปี หากซื้ออุปกรณ์ป้องกันราคา \\$2,000/ปี จึงไม่คุ้มค่า ผู้บริหารจึงลงนามอนุมัติรับความเสี่ยงอย่างเป็นทางการ',
     keywords: 'Acknowledge, Retain, Tolerate, Formal executive sign-off, Low risk'
   }
@@ -214,7 +214,7 @@ export const controlCategoriesData = [
     subtitle: 'มาตรการทางกายภาพ',
     iconSvg: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>',
     desc: 'สิ่งกีดขวาง โครงสร้าง และอุปกรณ์ทางกายภาพที่จับต้องได้ เพื่อปกป้องอาคาร สถานที่ ทรัพย์สิน และบุคลากร',
-    examples: 'ประตูนิรภัย ล็อคประตู รั้วกั้น (Fences), รปภ. (Guards), กล้องวงจรปิด (CCTV), ประตูกลักกันคนเดินตาม (Mantraps), สัญญาณเตือนภัย (Alarms)'
+    examples: 'ประตูนิรภัย ล็อคประตู รั้วกั้น (Fences), รปภ. (Guards), กล้องวงจรปิด (CCTV), ประตูควบคุมการผ่านเข้าออกสองชั้น (Mantrap/Access Control Vestibule), สัญญาณเตือนภัย (Alarms)'
   }
 ];
 

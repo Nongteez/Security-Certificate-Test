@@ -1,0 +1,466 @@
+diff --git a/content/isc2-cc-2026/reading/domain-1.md b/content/isc2-cc-2026/reading/domain-1.md
+index 23b41e47..548647d1 100644
+--- a/content/isc2-cc-2026/reading/domain-1.md
++++ b/content/isc2-cc-2026/reading/domain-1.md
+@@ -19,7 +19,7 @@
+ | **Asset (ทรัพย์สิน)** | สิ่งที่มีคุณค่าต่อองค์กร ซึ่งหากสูญหาย เสียหาย หรือรั่วไหลจะเกิดผลกระทบ | ฐานข้อมูลลูกค้า (Customer Database), ระบบชำระเงิน, ทรัพย์สินทางปัญญา, บุคลากร |
+ | **Threat (ภัยคุกคาม)** | สิ่ง เหตุการณ์ หรือบุคคลที่อาจก่อให้เกิดอันตรายหรือสร้างความเสียหายต่อ Asset | แฮกเกอร์, มัลแวร์, แรนซัมแวร์, ไฟไหม้, น้ำท่วม, ไฟดับ |
+ | **Threat Actor (ผู้ก่อภัยคุกคาม)** | ตัวบุคคลหรือกลุ่มบุคคลที่ลงมือหรือพยายามก่อให้เกิดภัยคุกคาม | อาชญากรไซเบอร์ (Cybercriminals), พนักงานภายในที่ประสงค์ร้าย (Insider Threats), รัฐสนับสนุน (Nation-State) |
+-| **Vulnerability (ช่องโหว่)** | จุดอ่อนหรือข้อบกพร่องในระบบ กระบวนการ หรือการควบคุม ที่เปิดโอกาสให้ Threat ถูกใช้ประโยชน์ | เซิร์ฟเวอร์ที่ยังไม่ได้ติดตั้ง Patch, การตั้งค่าความปลอดภัยผิดพลาด (Misconfiguration), รหัสผ่านที่คาดเดาง่าย |
++| **Vulnerability (ช่องโหว่)** | จุดอ่อนหรือข้อบกพร่องในระบบ กระบวนการ หรือมาตรการควบคุม ที่ผู้ก่อภัยคุกคามอาจใช้ประโยชน์ หรือเหตุการณ์คุกคามอาจกระตุ้นให้เกิดความเสียหาย | เซิร์ฟเวอร์ที่ยังไม่ได้ติดตั้ง Patch, การตั้งค่าความปลอดภัยผิดพลาด (Misconfiguration), รหัสผ่านที่คาดเดาง่าย |
+ | **Exploit (การใช้ประโยชน์จากช่องโหว่)** | วิธีการ โค้ดโปรแกรม หรือเทคนิคที่ใช้เจาะผ่านจุดอ่อนของระบบ | สคริปต์ยิงเจาะช่องโหว่ซอฟต์แวร์, Phishing Email หลอกขอรหัสผ่าน |
+ | **Risk (ความเสี่ยง)** | โอกาสและผลกระทบของความเสียหายที่อาจเกิดขึ้นเมื่อ Threat อาศัย Vulnerability สร้างผลกระทบต่อ Asset | โอกาสที่ฐานข้อมูลลูกค้าจะถูกขโมยและสร้างผลเสียหายทางการเงินและชื่อเสียง |
+ | **Control / Safeguard (มาตรการควบคุม)** | กลไก นโยบาย หรือเทคโนโลยีที่นำมาติดตั้งเพื่อลดโอกาสหรือผลกระทบของความเสี่ยง | Multi-Factor Authentication (MFA), Firewall, นโยบายความปลอดภัย |
+@@ -34,7 +34,7 @@
+   <div class="reading-warning-group">
+     <div class="reading-warning-item">
+       <h5 class="reading-concept-heading">Threat ไม่ใช่ Vulnerability</h5>
+-      <p>Threat คือสิ่งภายนอกหรืออันตรายที่เข้ามา (เช่น Hacker, Flood) ส่วน Vulnerability คือจุดอ่อนภายในระบบของเรา (เช่น Unpatched Server หรือ Misconfiguration)</p>
++      <p>Threat คือบุคคล สิ่ง หรือเหตุการณ์ที่อาจก่อความเสียหาย ทั้งจากภายในและภายนอกองค์กร (เช่น พนักงานประสงค์ร้าย, Hacker, Flood) ส่วน Vulnerability คือจุดอ่อนภายในระบบของเรา (เช่น Unpatched Server หรือ Misconfiguration)</p>
+     </div>
+     <div class="reading-warning-item">
+       <h5 class="reading-concept-heading">Vulnerability ไม่ได้แปลว่าเกิดเหตุโจมตีแล้ว</h5>
+@@ -253,7 +253,7 @@
+ 
+ #### 2. Privacy — การคุ้มครองความเป็นส่วนตัวของข้อมูล
+ 
+-เกี่ยวข้องกับการคุ้มครอง **Personally Identifiable Information (PII) / Personal Data** ตลอดวงจรชีวิต: การจัดเก็บ (Collection), การประมวลผล (Processing), การจัดเก็บรักษา (Storage), การถ่ายโอน (Transfer), และการทำลาย (Disposal)
++เกี่ยวข้องกับการคุ้มครอง **Personally Identifiable Information (PII) / Personal Data** ตลอดวงจรชีวิต: การเก็บรวบรวมข้อมูล (Collection), การประมวลผล (Processing), การจัดเก็บรักษา (Storage), การถ่ายโอน (Transfer), และการทำลาย (Disposal)
+ 
+ <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>3 บทบาทหลักในกฎหมายคุ้มครองข้อมูลส่วนบุคคล (เช่น GDPR, PDPA):</p>
+ 
+@@ -264,7 +264,7 @@
+ 
+ <div class="reading-concept-item">
+   <h5 class="reading-concept-heading">Data Controller (ผู้ควบคุมข้อมูล)</h5>
+-  <p>นิติบุคคลหรือองค์กรที่เป็นผู้ตัดสินใจว่า <strong>จะเก็บข้อมูลทำไม และประมวลผลอย่างไร (Determines Purpose and Means)</strong> เช่น บริษัทค้าปลีกที่เก็บข้อมูลลูกค้า</p>
++  <p>บุคคลธรรมดา นิติบุคคล หน่วยงาน หรือองค์กรที่กำหนดโดยลำพังหรือร่วมกับผู้อื่นว่า <strong>จะเก็บข้อมูลทำไม และประมวลผลอย่างไร (Determines Purpose and Means)</strong> เช่น บริษัทค้าปลีกที่เก็บข้อมูลลูกค้า</p>
+ </div>
+ 
+ <div class="reading-concept-item">
+@@ -623,7 +623,7 @@ $ALE = SLE \times ARO$
+ 
+ <div class="reading-concept-item">
+   <h5 class="reading-concept-heading">GDPR (General Data Protection Regulation)</h5>
+-  <p>กฎหมายคุ้มครองข้อมูลส่วนบุคคลของสหภาพยุโรป เน้นสิทธิของ Data Subject และข้อบังคับสำหรับ Controller/Processor ทั่วโลกที่มีการประมวลผลข้อมูลพลเมืองสหภาพยุโรป</p>
++  <p>GDPR คุ้มครองข้อมูลส่วนบุคคลตามขอบเขตการใช้บังคับของกฎหมาย เช่น การประมวลผลในบริบทกิจกรรมของสถานประกอบการในสหภาพยุโรป หรือการเสนอสินค้า/บริการแก่บุคคลที่อยู่ในสหภาพยุโรปหรือเฝ้าติดตามพฤติกรรมของบุคคลที่เกิดขึ้นที่นั่นตามเงื่อนไข Article 3 การมีสัญชาติ EU เพียงอย่างเดียวไม่ใช่เกณฑ์ตัดสิน</p>
+ </div>
+ 
+ <div class="reading-concept-item">
+@@ -1037,7 +1037,7 @@ $ALE = SLE \times ARO$
+     <div class="reading-distinction-body">
+       <div class="reading-distinction-point">
+         <strong class="reading-distinction-term">Threat (ภัยคุกคาม)</strong>
+-        <div class="reading-distinction-desc">สิ่งภายนอก/เหตุการณ์ที่อาจก่ออันตราย (Hacker, Malware, Flood)</div>
++        <div class="reading-distinction-desc">บุคคล สิ่ง หรือเหตุการณ์ภายในหรือภายนอกที่อาจก่ออันตราย (Insider, Hacker, Malware, Flood)</div>
+       </div>
+       <div class="reading-distinction-point">
+         <strong class="reading-distinction-term">Vulnerability (ช่องโหว่)</strong>
+diff --git a/content/isc2-cc-2026/reading/domain-2-scenarios.js b/content/isc2-cc-2026/reading/domain-2-scenarios.js
+index 1ce8d3fc..b84cca66 100644
+--- a/content/isc2-cc-2026/reading/domain-2-scenarios.js
++++ b/content/isc2-cc-2026/reading/domain-2-scenarios.js
+@@ -72,10 +72,10 @@ export const domain2Scenarios = [
+   {
+     id: 8,
+     topic: 'Key Risk Indicators (KRI)',
+-    situation: 'ทีมบริหารความเสี่ยงกำลังตรวจสอบเมทริกซ์ความปลอดภัยและสังเกตเห็นว่า "จำนวนบัญชีผู้ดูแลระบบสิทธิ์สูง (Privileged Accounts) ที่ยังไม่ได้เปิดใช้งาน MFA" มีแนวโน้มเพิ่มขึ้นอย่างต่อเนื่อง ซึ่งชี้ให้เห็นว่าองค์กรกำลังมีความเสี่ยงจากการถูกขโมยข้อมูลประจำตัวเพิ่มสูงขึ้น',
+-    question: 'เมทริกซ์ที่ทำหน้าที่เป็นสัญญาณเตือนล่วงหน้าถึงแนวโน้มความเสี่ยงที่กำลังเปลี่ยนแปลงนี้ จัดเป็นตัวชี้วัดประเภทใด?',
++    situation: 'ทีมบริหารความเสี่ยงกำลังตรวจสอบตัวชี้วัดความปลอดภัยและสังเกตเห็นว่า "จำนวนบัญชีผู้ดูแลระบบสิทธิ์สูง (Privileged Accounts) ที่ยังไม่ได้เปิดใช้งาน MFA" มีแนวโน้มเพิ่มขึ้นอย่างต่อเนื่อง ซึ่งชี้ให้เห็นว่าองค์กรกำลังมีความเสี่ยงจากการถูกขโมยข้อมูลประจำตัวเพิ่มสูงขึ้น',
++    question: 'ตัวชี้วัดที่ทำหน้าที่เป็นสัญญาณเตือนล่วงหน้าถึงแนวโน้มความเสี่ยงที่กำลังเปลี่ยนแปลงนี้ จัดเป็นตัวชี้วัดประเภทใด?',
+     answer: 'Key Risk Indicator (KRI) — ตัวชี้วัดความเสี่ยงสำคัญ',
+-    reasoning: 'KRI คือเมทริกซ์ที่ให้สัญญาณเตือนล่วงหน้า (Early Warning Indicator) ว่าความเสี่ยงขององค์กรกำลังเพิ่มขึ้นหรือลดลง มุ่งเน้นการเฝ้าระวังแนวโน้มความเสี่ยง (Risk Exposure) ก่อนที่จะเกิดเป็นเหตุการณ์ร้ายแรงจริง ในขณะที่ KPI จะวัดความก้าวหน้าเทียบกับเป้าหมายการดำเนินงาน (Performance)'
++    reasoning: 'KRI คือตัวชี้วัดที่ให้สัญญาณเตือนล่วงหน้า (Early Warning Indicator) ว่าความเสี่ยงขององค์กรกำลังเพิ่มขึ้นหรือลดลง มุ่งเน้นการเฝ้าระวังแนวโน้มความเสี่ยง (Risk Exposure) ก่อนที่จะเกิดเป็นเหตุการณ์ร้ายแรงจริง ในขณะที่ KPI จะวัดความก้าวหน้าเทียบกับเป้าหมายการดำเนินงาน (Performance)'
+   },
+   {
+     id: 9,
+@@ -99,7 +99,7 @@ export const domain2Scenarios = [
+     situation: 'ผู้จัดการศูนย์ปฏิบัติการความปลอดภัย (SOC Manager) ต้องการหน้าจอที่แสดงผลภาพรวมสถานะความปลอดภัยในปัจจุบันแบบ Real-time ประกอบด้วยแผนภูมิแนวโน้มเหตุการณ์ (Incident Trends), กราฟการปฏิบัติตามแพตช์ และแถบแสดงระดับความเสี่ยงเพื่อการตัดสินใจอย่างรวดเร็ว',
+     question: 'เครื่องมือแสดงผลที่เน้นการนำเสนอข้อมูลในรูปแบบภาพ (Visual Representation) เพื่อดูสถานะปัจจุบันนี้เรียกว่าอะไร?',
+     answer: 'Security Dashboard — แผงควบคุมความปลอดภัยแบบภาพรวม',
+-    reasoning: 'Security Dashboard เน้นการแสดงผลข้อมูลและเมทริกซ์ในรูปแบบภาพ (Visual Representation) เช่น ชาร์ต, กราฟ, ตารางสรุป และตัวบ่งชี้แนวโน้ม เพื่อช่วยให้ผู้ดูแลระบบมองเห็นภาพรวมของสถานการณ์ความปลอดภัยในปัจจุบันได้อย่างรวดเร็ว (Visualize Current Status)'
++    reasoning: 'Security Dashboard เน้นการแสดงผลข้อมูลและตัวชี้วัดในรูปแบบภาพ (Visual Representation) เช่น ชาร์ต, กราฟ, ตารางสรุป และตัวบ่งชี้แนวโน้ม เพื่อช่วยให้ผู้ดูแลระบบมองเห็นภาพรวมของสถานการณ์ความปลอดภัยในปัจจุบันได้อย่างรวดเร็ว (Visualize Current Status)'
+   },
+   {
+     id: 12,
+diff --git a/content/isc2-cc-2026/reading/domain-2.md b/content/isc2-cc-2026/reading/domain-2.md
+index 2a7c9aa2..a2579f90 100644
+--- a/content/isc2-cc-2026/reading/domain-2.md
++++ b/content/isc2-cc-2026/reading/domain-2.md
+@@ -161,10 +161,10 @@
+ **Business Impact Analysis (BIA)** หรือการวิเคราะห์ผลกระทบทางธุรกิจ คือกระบวนการศึกษาและประเมินอย่างเป็นระบบ เพื่อระบุว่ากระบวนการใดในองค์กรมีความสำคัญสูงสุด และหากกระบวนการนั้นหยุดชะงักจะส่งผลกระทบทางการเงิน การดำเนินงาน กฎหมาย หรือชื่อเสียงอย่างไร:
+ 
+ - BIA ทำหน้าที่เป็น **สะพานเชื่อมโยง (Bridge)** ระหว่างความต้องการทางธุรกิจ (Business Needs) กับข้อกำหนดการกู้คืนระบบ IT (IT Recovery Requirements)
+-- ผลลัพธ์ของ BIA ช่วยให้องค์กรจัดลำดับความสำคัญ (Recovery Priorities) และกำหนดเกณฑ์ความทนทานต่อการหยุดทำงาน เช่น **Maximum Tolerable Downtime (MTD)** ซึ่งคือระยะเวลาสูงสุดที่ธุรกิจสามารถทนต่อการหยุดชะงักได้ก่อนจะเกิดความเสียหายที่ไม่อาจฟื้นคืนได้
++- ผลลัพธ์ของ BIA ช่วยให้องค์กรจัดลำดับความสำคัญ (Recovery Priorities) และกำหนดเกณฑ์ความทนทานต่อการหยุดทำงาน เช่น **Maximum Tolerable Downtime (MTD)** ซึ่งคือระยะเวลาสูงสุดที่ธุรกิจสามารถทนต่อการหยุดชะงักได้ก่อนเกิดผลกระทบเกินระดับที่องค์กรยอมรับได้
+ - *หมายเหตุทางวิชาการและสมการความสัมพันธ์ (Core Academic Inequality):*
+   - <strong class="reading-math-formula">RTO ≤ MTD</strong> — Recovery Time Objective (ระยะเวลาเป้าหมายที่ฝ่าย IT ต้องกู้คืนระบบให้เสร็จสิ้น) จะต้อง **น้อยกว่าหรือเท่ากับ** Maximum Tolerable Downtime (ระยะเวลาหยุดทำงานสูงสุดที่ธุรกิจยอมรับได้) เสมอ
+-  - *เหตุผลเชิงตรรกะ:* หาก <span class="reading-math-formula">RTO &gt; MTD</span> องค์กรจะล่มสลายก่อนที่ระบบ IT จะกู้คืนเสร็จสิ้น ดังนั้น MTD จึงทำหน้าที่เป็นเพดานบนสุด (Upper Bound Ceiling) สำหรับกำหนดค่า RTO เสมอ
++  - *เหตุผลเชิงตรรกะ:* หาก <span class="reading-math-formula">RTO &gt; MTD</span> อาจเกิดผลกระทบเกินระดับที่องค์กรยอมรับได้ก่อนที่ระบบ IT จะกู้คืนเสร็จสิ้น โดยไม่ได้หมายความว่าองค์กรจะล่มสลายหรือเกิดความเสียหายที่ฟื้นคืนไม่ได้เสมอไป ดังนั้น MTD จึงทำหน้าที่เป็นเพดานบนสุด (Upper Bound Ceiling) สำหรับกำหนดค่า RTO เสมอ
+   - BIA ชี้แนะเป้าหมายและลำดับความสำคัญ แต่ MTD ไม่ใช่สูตรคำนวณทางคณิตศาสตร์แบบตรงไปตรงมาสำหรับทั้ง RTO และ RPO โดย RPO จะขึ้นอยู่กับอัตราการเปลี่ยนแปลงของข้อมูลและขีดความสามารถของระบบสำรองข้อมูล
+ 
+ <h3 id="topic-2-2-dr-it-scope">2.2.4 Disaster Recovery (DR) & IT Scope</h3>
+@@ -356,7 +356,7 @@
+ 
+ **Security Metric (ตัวชี้วัดความปลอดภัย)** คือค่าที่สามารถวัดได้ (**Measurable Value**) ซึ่งใช้ในการประเมินผลการดำเนินงาน (Performance) หรือประสิทธิผล (Effectiveness) ของกิจกรรม กระบวนการ หรือมาตรการควบคุมด้าน Cybersecurity:
+ 
+-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ลักษณะของเมทริกซ์ความปลอดภัยที่ดี 4 ประการ:</p>
++<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ลักษณะของตัวชี้วัดความปลอดภัยที่ดี 4 ประการ:</p>
+ 
+ - **Relevant:** เกี่ยวข้องและสอดคล้องกับเป้าหมายความปลอดภัยหรือเป้าหมายธุรกิจที่ต้องการประเมิน
+ - **Measurable:** สามารถวัดค่าออกมาได้อย่างชัดเจน ไม่กำกวม และได้ข้อมูลที่เป็นตัวเลขหรือสถานะที่ประเมินได้
+@@ -399,7 +399,7 @@
+ 
+ <h3 id="topic-2-4-dashboards">2.4.5 Security Dashboards: Operational Visualization</h3>
+ 
+-**Security Dashboard** คือการนำเสนอข้อมูลและเมทริกซ์ความปลอดภัยในรูปแบบ **ภาพและแผนภูมิ (Visual Representation)**:
++**Security Dashboard** คือการนำเสนอข้อมูลและตัวชี้วัดความปลอดภัยในรูปแบบ **ภาพและแผนภูมิ (Visual Representation)**:
+ 
+ - ช่วยให้ผู้บริหารและผู้ปฏิบัติการมองเห็นภาพรวมของสถานการณ์ปัจจุบันได้อย่างรวดเร็ว
+ - นำเสนอผ่าน Charts, Graphs, Tables และ Trend Indicators
+@@ -432,13 +432,15 @@
+ 
+ <h3 id="topic-2-4-memory-aid">2.4.8 The 6-Part Measurement Memory Aid</h3>
+ 
++Metric อาจเป็นจำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย KPI และ KRI เป็น Metric ที่เลือกใช้ตามวัตถุประสงค์: KPI ติดตามผลงานเทียบเป้าหมาย ส่วน KRI เฝ้าระวังแนวโน้มความเสี่ยง Dashboard, scorecard และ report เป็นรูปแบบนำเสนอที่อาจใช้ร่วมกันได้ ภาพต่อไปนี้เป็นตัวอย่างการจัดระบบการวัดผล ไม่ใช่ลำดับขั้นที่ทุกองค์กรต้องใช้
++
+ <div class="reading-semantic-diagram" data-diagram="effectivenessHierarchy"></div>
+ 
+ <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ตารางสรุปคำสำคัญสำหรับวิเคราะห์โจทย์สอบ (Exam Keyword Trigger Matrix):</p>
+ 
+ | เครื่องมือ / แนวคิด | คำสำคัญในโจทย์สอบ (Key Exam Triggers) | วัตถุประสงค์หลัก (Primary Purpose) | ตัวอย่างการใช้งานในองค์กร |
+ |---|---|---|---|
+-| **Metric** | "Raw measurable value", "Quantifiable data", "Measurement base" | ค่าดิบเชิงปริมาณที่ใช้เป็นฐานข้อมูลในการประเมินผล | จำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found) |
++| **Metric** | "Defined measurable value", "Count, percentage, ratio or average" | ค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์ | จำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found) |
+ | **KPI** | "Performance target", "Progress toward goal", "Success rate" | ประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย | ร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance) |
+ | **KRI** | "Early warning", "Escalating risk", "Threshold exceed" | ส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้ | จำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (&gt; 0 บัญชี) |
+ | **Dashboard** | "Real-time", "Operational view", "Visual representation" | แสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน | หน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์ |
+@@ -728,10 +730,10 @@ reasoning: Whaling คือการโจมตีแบบฟิชชิง
+ id: 8
+ badge: Scenario 08
+ topic: Key Risk Indicators (KRI)
+-situation: ทีมบริหารความเสี่ยงกำลังตรวจสอบเมทริกซ์ความปลอดภัยและสังเกตเห็นว่า "จำนวนบัญชีผู้ดูแลระบบสิทธิ์สูง (Privileged Accounts) ที่ยังไม่ได้เปิดใช้งาน MFA" มีแนวโน้มเพิ่มขึ้นอย่างต่อเนื่อง ซึ่งชี้ให้เห็นว่าองค์กรกำลังมีความเสี่ยงจากการถูกขโมยข้อมูลประจำตัวเพิ่มสูงขึ้น
+-question: เมทริกซ์ที่ทำหน้าที่เป็นสัญญาณเตือนล่วงหน้าถึงแนวโน้มความเสี่ยงที่กำลังเปลี่ยนแปลงนี้ จัดเป็นตัวชี้วัดประเภทใด?
++situation: ทีมบริหารความเสี่ยงกำลังตรวจสอบตัวชี้วัดความปลอดภัยและสังเกตเห็นว่า "จำนวนบัญชีผู้ดูแลระบบสิทธิ์สูง (Privileged Accounts) ที่ยังไม่ได้เปิดใช้งาน MFA" มีแนวโน้มเพิ่มขึ้นอย่างต่อเนื่อง ซึ่งชี้ให้เห็นว่าองค์กรกำลังมีความเสี่ยงจากการถูกขโมยข้อมูลประจำตัวเพิ่มสูงขึ้น
++question: ตัวชี้วัดที่ทำหน้าที่เป็นสัญญาณเตือนล่วงหน้าถึงแนวโน้มความเสี่ยงที่กำลังเปลี่ยนแปลงนี้ จัดเป็นตัวชี้วัดประเภทใด?
+ answer: Key Risk Indicator (KRI) — ตัวชี้วัดความเสี่ยงสำคัญ
+-reasoning: KRI คือเมทริกซ์ที่ให้สัญญาณเตือนล่วงหน้า (Early Warning Indicator) ว่าความเสี่ยงขององค์กรกำลังเพิ่มขึ้นหรือลดลง มุ่งเน้นการเฝ้าระวังแนวโน้มความเสี่ยง (Risk Exposure) ก่อนที่จะเกิดเป็นเหตุการณ์ร้ายแรงจริง ในขณะที่ KPI จะวัดความก้าวหน้าเทียบกับเป้าหมายผลงาน
++reasoning: KRI คือตัวชี้วัดที่ให้สัญญาณเตือนล่วงหน้า (Early Warning Indicator) ว่าความเสี่ยงขององค์กรกำลังเพิ่มขึ้นหรือลดลง มุ่งเน้นการเฝ้าระวังแนวโน้มความเสี่ยง (Risk Exposure) ก่อนที่จะเกิดเป็นเหตุการณ์ร้ายแรงจริง ในขณะที่ KPI จะวัดความก้าวหน้าเทียบกับเป้าหมายผลงาน
+ :::
+ 
+ :::scenario
+@@ -761,7 +763,7 @@ topic: Security Dashboards
+ situation: ผู้จัดการศูนย์ปฏิบัติการความปลอดภัย (SOC Manager) ต้องการหน้าจอที่แสดงผลภาพรวมสถานะความปลอดภัยในปัจจุบันแบบ Real-time ประกอบด้วยแผนภูมิแนวโน้มเหตุการณ์ (Incident Trends), กราฟการปฏิบัติตามแพตช์ และแถบแสดงระดับความเสี่ยงเพื่อการตัดสินใจอย่างรวดเร็ว
+ question: เครื่องมือแสดงผลที่เน้นการนำเสนอข้อมูลในรูปแบบภาพ (Visual Representation) เพื่อดูสถานะปัจจุบันนี้เรียกว่าอะไร?
+ answer: Security Dashboard — แผงควบคุมความปลอดภัยแบบภาพรวม
+-reasoning: Security Dashboard เน้นการแสดงผลข้อมูลและเมทริกซ์ในรูปแบบภาพ (Visual Representation) เช่น ชาร์ต, กราฟ, ตารางสรุป และตัวบ่งชี้แนวโน้ม เพื่อช่วยให้ผู้ดูแลระบบมองเห็นภาพรวมของสถานการณ์ความปลอดภัยในปัจจุบันได้อย่างรวดเร็ว
++reasoning: Security Dashboard เน้นการแสดงผลข้อมูลและตัวชี้วัดในรูปแบบภาพ (Visual Representation) เช่น ชาร์ต, กราฟ, ตารางสรุป และตัวบ่งชี้แนวโน้ม เพื่อช่วยให้ผู้ดูแลระบบมองเห็นภาพรวมของสถานการณ์ความปลอดภัยในปัจจุบันได้อย่างรวดเร็ว
+ :::
+ 
+ :::scenario
+diff --git a/content/isc2-cc-2026/reading/domain-3-scenarios.js b/content/isc2-cc-2026/reading/domain-3-scenarios.js
+index f444dbbc..c17a83b9 100644
+--- a/content/isc2-cc-2026/reading/domain-3-scenarios.js
++++ b/content/isc2-cc-2026/reading/domain-3-scenarios.js
+@@ -68,10 +68,10 @@ export const domain3Scenarios = [
+   {
+     id: 7,
+     topic: 'Mandatory Access Control (MAC)',
+-    situation: 'ในระบบสารสนเทศของหน่วยงานความมั่นคง เอกสารทุกฉบับจะถูกระบบตีตรากำกับระดับชั้นความลับอย่างเข้มงวด เช่น Confidential, Secret หรือ Top Secret ผู้ใช้งานจะสามารถเปิดอ่านเอกสารได้ก็ต่อเมื่อระดับความไว้วางใจหรือระดับการตรวจสอบประวัติ (Security Clearance) ของผู้ใช้นั้นมีระดับเท่ากับหรือสูงกว่าระดับชั้นความลับของเอกสารเท่านั้น โดยผู้ใช้ไม่มีสิทธิ์เปลี่ยนแปลงป้ายกำกับของเอกสารด้วยตนเอง',
++    situation: 'ในระบบสารสนเทศของหน่วยงานความมั่นคง เอกสารทุกฉบับจะถูกระบบตีตรากำกับระดับชั้นความลับอย่างเข้มงวด เช่น Confidential, Secret หรือ Top Secret ผู้ใช้งานจะสามารถเปิดอ่านเอกสารได้ก็ต่อเมื่อระดับความไว้วางใจหรือระดับการตรวจสอบประวัติ (Security Clearance) ของผู้ใช้นั้นมีระดับเท่ากับหรือสูงกว่าระดับชั้นความลับของเอกสาร และต้องมี Need-to-Know พร้อมผ่านนโยบายที่เกี่ยวข้องด้วย โดยผู้ใช้ไม่มีสิทธิ์เปลี่ยนแปลงป้ายกำกับของเอกสารด้วยตนเอง',
+     question: 'รูปแบบการควบคุมการเข้าถึงที่ถูกบังคับใช้โดยนโยบายกลางของระบบโดยพิจารณาจาก "ป้ายกำกับความลับ" (Security Labels) และ "ระดับความไว้วางใจ" (Clearance) ของผู้ใช้ เรียกว่าอะไร?',
+     answer: 'Mandatory Access Control (MAC) — การควบคุมการเข้าถึงแบบบังคับ',
+-    reasoning: 'Mandatory Access Control (MAC) เป็นโมเดลการควบคุมที่มีความเข้มงวดสูงสุด โดยอำนาจการตัดสินใจไม่ได้อยู่ที่ผู้ใช้หรือเจ้าของไฟล์ แต่อยู่ที่นโยบายของระบบส่วนกลาง (Central Authority) การเข้าถึงถูกควบคุมผ่านการเปรียบเทียบระหว่าง Security Label ของวัตถุ (Object) กับ Security Clearance ของผู้ใช้ (Subject) นิยมใช้ในองค์กรทางทหารและหน่วยงานรัฐบาลระดับสูง'
++    reasoning: 'Mandatory Access Control (MAC) เป็นโมเดลการควบคุมที่บังคับใช้นโยบายส่วนกลาง โดยอำนาจการตัดสินใจไม่ได้อยู่ที่ผู้ใช้หรือเจ้าของไฟล์ แต่อยู่ที่นโยบายของระบบส่วนกลาง (Central Authority) การเข้าถึงถูกควบคุมผ่านการเปรียบเทียบระหว่าง Security Label ของวัตถุ (Object) กับ Security Clearance ของผู้ใช้ (Subject) นิยมใช้ในองค์กรทางทหารและหน่วยงานรัฐบาลระดับสูง'
+   },
+   {
+     id: 8,
+diff --git a/content/isc2-cc-2026/reading/domain-3.js b/content/isc2-cc-2026/reading/domain-3.js
+index 3ec4de82..76799cb9 100644
+--- a/content/isc2-cc-2026/reading/domain-3.js
++++ b/content/isc2-cc-2026/reading/domain-3.js
+@@ -10,7 +10,7 @@
+ 
+ export const domain3Metadata = {
+   id: 3,
+-  title: 'Domain 3: Access Controls',
++  title: 'Domain 3: Identity and Access Management (IAM) Concepts',
+   shortTitle: 'Access Controls',
+   weight: '20%',
+   published: true
+diff --git a/content/isc2-cc-2026/reading/domain-3.md b/content/isc2-cc-2026/reading/domain-3.md
+index 9bcf52df..4236c8c0 100644
+--- a/content/isc2-cc-2026/reading/domain-3.md
++++ b/content/isc2-cc-2026/reading/domain-3.md
+@@ -1,4 +1,4 @@
+-<p class="reading-lead">สรุปและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC) ฉบับปรับปรุงปี 2026 ใน Domain 3: Access Controls (น้ำหนักข้อสอบ 20%) ครอบคลุมการบริหารจัดการวงจรชีวิตของตัวตนดิจิทัล (Identity Life Cycle Management: Joiner-Mover-Leaver, Provisioning, Periodic Access Review, Deprovisioning), กรอบมาตรฐานและเครื่องมืออัตลักษณ์ (NIST SP 800-63, Directory Services, IdPs), หลักการสิทธิ์ขั้นต่ำ (Principle of Least Privilege), การแบ่งแยกหน้าที่ความรับผิดชอบ (Segregation of Duties), และโมเดลการควบคุมการเข้าถึงเชิงตรรกะแบบครบวงจร (DAC, MAC, RBAC, ABAC)</p>
++<p class="reading-lead">สรุปและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC) ฉบับปรับปรุงปี 2026 ใน Domain 3: Identity and Access Management (IAM) Concepts — แนวคิดการบริหารตัวตนและการเข้าถึง (น้ำหนักข้อสอบ 20%) ครอบคลุมการบริหารจัดการวงจรชีวิตของตัวตนดิจิทัล (Identity Life Cycle Management: Joiner-Mover-Leaver, Provisioning, Periodic Access Review, Deprovisioning), กรอบมาตรฐานและเครื่องมืออัตลักษณ์ (NIST SP 800-63, Directory Services, IdPs), หลักการสิทธิ์ขั้นต่ำ (Principle of Least Privilege), การแบ่งแยกหน้าที่ความรับผิดชอบ (Segregation of Duties), และโมเดลการควบคุมการเข้าถึงเชิงตรรกะแบบครบวงจร (DAC, MAC, RBAC, ABAC)</p>
+ 
+ <section class="reading-objective-section" id="obj-3-1">
+ 
+@@ -126,7 +126,7 @@
+    - **Authentication (SP 800-63B):** กระบวนการตรวจสอบและยืนยันว่าผู้ที่กำลังเข้าใช้งานระบบคือผู้ครอบครองข้อมูลประจำตัว (Authenticator) ที่ถูกต้องจริง (Authenticator Assurance Level: AAL)
+    - **Federation (SP 800-63C):** กระบวนการส่งต่อข้อมูลอัตลักษณ์และการยืนยันตัวตนข้ามขอบเขตความไว้วางใจระหว่างองค์กรหรือระบบต่าง ๆ เช่น Single Sign-On (Federation Assurance Level: FAL)
+ 
+-2. **NIST Cybersecurity Framework (CSF):** กรอบการบริหารความเสี่ยงทางไซเบอร์ในภาพรวมขององค์กร (Identify, Protect, Detect, Respond, Recover และ Govern ใน CSF 2.0) โดยมีหัวข้อการควบคุมการเข้าถึง (PR.AC) เป็นส่วนหนึ่งภายใต้ฟังก์ชัน Protect
++2. **NIST Cybersecurity Framework (CSF):** กรอบการบริหารความเสี่ยงทางไซเบอร์ในภาพรวมขององค์กร (Identify, Protect, Detect, Respond, Recover และ Govern ใน CSF 2.0) โดยมีหมวด Identity Management, Authentication, and Access Control (PR.AA) เป็นส่วนหนึ่งภายใต้ฟังก์ชัน Protect
+ 
+ <div class="reading-semantic-diagram" data-diagram="nistSp80063Framework"></div>
+ 
+@@ -228,14 +228,14 @@
+ 
+ <h3 id="topic-3-2-mac">3.2.5 Mandatory Access Control (MAC): การควบคุมแบบบังคับตามป้ายกำกับ</h3>
+ 
+-**MAC (Mandatory Access Control)** เป็นโมเดลการควบคุมการเข้าถึงที่มีความเข้มงวดและปลอดภัยสูงสุด โดยควบคุมจาก **"นโยบายของระบบส่วนกลาง" (Central Authority &amp; System Policy)**:
++**MAC (Mandatory Access Control)** เป็นโมเดลการควบคุมการเข้าถึงที่บังคับใช้นโยบายส่วนกลาง โดยควบคุมจาก **"นโยบายของระบบส่วนกลาง" (Central Authority &amp; System Policy)**:
+ 
+ - **ผู้มีอำนาจตัดสินใจ:** นโยบายความมั่นคงปลอดภัยส่วนกลางของระบบ (Central Authority) ผู้ใช้หรือเจ้าของไฟล์ไม่มีสิทธิ์เปลี่ยนแปลงการตั้งค่าได้เอง
+ - **กลไกการทำงาน:** บังคับใช้ผ่านการเปรียบเทียบระหว่าง:
+   1. **Security Classification / Label (ป้ายกำกับระดับความลับ):** ติดอยู่กับทรัพยากร/วัตถุ (Object) เช่น Unclassified, Confidential, Secret, Top Secret
+   2. **Security Clearance (ระดับความไว้วางใจ):** มอบให้แก่ตัวผู้ใช้งาน (Subject) ผ่านการตรวจสอบประวัติอย่างละเอียด
+   > **ข้อสังเกตสำคัญสำหรับข้อสอบ (Exam Core Distinction):** การมีระดับความไว้วางใจเพียงอย่างเดียว (**Security Clearance alone**) ไม่ได้ให้อำนาจเข้าถึงข้อมูลลับโดยอัตโนมัติ ผู้ใช้ต้องมี **"ความจำเป็นในการรับรู้" (Need-to-Know)** ที่ถูกต้องชอบธรรมและผ่านเกณฑ์นโยบายการควบคุมการเข้าถึงด้วยเสมอ (Security clearance alone does not automatically authorize access; the user must also have a legitimate Need-to-Know and satisfy applicable access-control policy) ซึ่งเป็นการนำหลัก Least Privilege มาบังคับใช้ร่วมกับ MAC
+-- **ข้อดี:** ความมั่นคงปลอดภัยระดับสูงสุด ป้องกันข้อมูลรั่วไหลได้อย่างเด็ดขาด
++- **ข้อดี:** ช่วยจำกัดการเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต แต่ไม่รับประกันว่าจะป้องกันข้อมูลรั่วไหลได้ทุกกรณี
+ - **ข้อเสีย:** ขาดความยืดหยุ่น (Inflexible), มีความซับซ้อนในการบริหารจัดการสูงมาก และมีต้นทุนการดำเนินงานสูง
+ - **ตัวอย่าง:** ระบบเครือข่ายทางทหาร, หน่วยงานความมั่นคงของรัฐบาล, ระบบปฏิบัติการ SELinux
+ 
+@@ -467,7 +467,7 @@
+ | **Least Privilege** | "Minimum necessary access", "Limit blast radius" | ป้องกันความเสียหายลุกลามเมื่อบัญชีถูกแฮก | Helpdesk รีเซ็ตรหัสผ่านได้แต่ไม่มีสิทธิ์ Domain Admin |
+ | **SoD** | "Multiple people", "Creator cannot approve", "Prevent fraud" | ป้องกันการทุจริตและความผิดพลาดร้ายแรง | ผู้ขอซื้อสินค้าต้องไม่ใช่บุคคลเดียวกับผู้อนุมัติจ่ายเงิน |
+ | **DAC** | "Resource owner decides", "File creator", "NTFS/ACL" | เจ้าของข้อมูลจัดการสิทธิ์ตามความพอใจ | ผู้สร้างไฟล์กำหนดสิทธิ์ Read/Write ให้เพื่อนร่วมงาน |
+-| **MAC** | "Security labels", "Clearance", "Central authority" | ป้องกันข้อมูลความลับรั่วไหลในระดับสูงสุด | ระบบทหารอนุญาตให้อ่านเอกสารลับเฉพาะผู้มี Clearance |
++| **MAC** | "Security labels", "Clearance", "Central authority" | บังคับใช้นโยบายส่วนกลางเพื่อจำกัดการเปิดเผยข้อมูล | ระบบทหารตรวจ Clearance, Need-to-Know และนโยบายที่เกี่ยวข้องก่อนอนุญาตให้อ่านเอกสารลับ |
+ | **RBAC** | "Predefined role", "Job function", "Scalability" | บริหารสิทธิ์พนักงานจำนวนมากอย่างเป็นระบบ | พยาบาลทุกคนในแผนกได้รับสิทธิ์ดูเวชระเบียนเหมือนกัน |
+ | **ABAC** | "Attributes", "Environment", "Time/Device/Location" | ควบคุมการเข้าถึงแบบละเอียดตามบริบท | เข้าถึงข้อมูลการเงินได้เฉพาะเครื่องบริษัทในเวลาทำการ |
+ 
+@@ -537,10 +537,10 @@ reasoning: ในโมเดล Discretionary Access Control (DAC) ผู้เ
+ id: 7
+ badge: Scenario 07
+ topic: Mandatory Access Control (MAC)
+-situation: ในระบบสารสนเทศของหน่วยงานความมั่นคง เอกสารทุกฉบับจะถูกระบบตีตรากำกับระดับชั้นความลับอย่างเข้มงวด เช่น Confidential, Secret หรือ Top Secret ผู้ใช้งานจะสามารถเปิดอ่านเอกสารได้ก็ต่อเมื่อระดับความไว้วางใจหรือระดับการตรวจสอบประวัติ (Security Clearance) ของผู้ใช้นั้นมีระดับเท่ากับหรือสูงกว่าระดับชั้นความลับของเอกสารเท่านั้น โดยผู้ใช้ไม่มีสิทธิ์เปลี่ยนแปลงป้ายกำกับของเอกสารด้วยตนเอง
++situation: ในระบบสารสนเทศของหน่วยงานความมั่นคง เอกสารทุกฉบับจะถูกระบบตีตรากำกับระดับชั้นความลับอย่างเข้มงวด เช่น Confidential, Secret หรือ Top Secret ผู้ใช้งานจะสามารถเปิดอ่านเอกสารได้ก็ต่อเมื่อระดับความไว้วางใจหรือระดับการตรวจสอบประวัติ (Security Clearance) ของผู้ใช้นั้นมีระดับเท่ากับหรือสูงกว่าระดับชั้นความลับของเอกสาร และต้องมี Need-to-Know พร้อมผ่านนโยบายที่เกี่ยวข้องด้วย โดยผู้ใช้ไม่มีสิทธิ์เปลี่ยนแปลงป้ายกำกับของเอกสารด้วยตนเอง
+ question: รูปแบบการควบคุมการเข้าถึงที่ถูกบังคับใช้โดยนโยบายกลางของระบบโดยพิจารณาจาก "ป้ายกำกับความลับ" (Security Labels) และ "ระดับความไว้วางใจ" (Clearance) ของผู้ใช้ เรียกว่าอะไร?
+ answer: Mandatory Access Control (MAC) — การควบคุมการเข้าถึงแบบบังคับ
+-reasoning: Mandatory Access Control (MAC) เป็นโมเดลการควบคุมที่มีความเข้มงวดสูงสุด โดยอำนาจการตัดสินใจไม่ได้อยู่ที่ผู้ใช้หรือเจ้าของไฟล์ แต่อยู่ที่นโยบายของระบบส่วนกลาง (Central Authority) การเข้าถึงถูกควบคุมผ่านการเปรียบเทียบระหว่าง Security Label ของวัตถุ (Object) กับ Security Clearance ของผู้ใช้ (Subject) นิยมใช้ในองค์กรทางทหารและหน่วยงานรัฐบาลระดับสูง
++reasoning: Mandatory Access Control (MAC) เป็นโมเดลการควบคุมที่บังคับใช้นโยบายส่วนกลาง โดยอำนาจการตัดสินใจไม่ได้อยู่ที่ผู้ใช้หรือเจ้าของไฟล์ แต่อยู่ที่นโยบายของระบบส่วนกลาง (Central Authority) การเข้าถึงถูกควบคุมผ่านการเปรียบเทียบระหว่าง Security Label ของวัตถุ (Object) กับ Security Clearance ของผู้ใช้ (Subject) นิยมใช้ในองค์กรทางทหารและหน่วยงานรัฐบาลระดับสูง
+ :::
+ 
+ :::scenario
+diff --git a/content/isc2-cc-2026/reading/domain-4.js b/content/isc2-cc-2026/reading/domain-4.js
+index 633201bb..a89eee5e 100644
+--- a/content/isc2-cc-2026/reading/domain-4.js
++++ b/content/isc2-cc-2026/reading/domain-4.js
+@@ -10,7 +10,7 @@
+ 
+ export const domain4Metadata = {
+   id: 4,
+-  title: 'Domain 4: Network Security',
++  title: 'Domain 4: Networking and Cloud Security Concepts',
+   shortTitle: 'Network Security',
+   weight: '21.3%',
+   published: true
+diff --git a/content/isc2-cc-2026/reading/domain-4.md b/content/isc2-cc-2026/reading/domain-4.md
+index 4eb6c634..fcc0ae98 100644
+--- a/content/isc2-cc-2026/reading/domain-4.md
++++ b/content/isc2-cc-2026/reading/domain-4.md
+@@ -1,4 +1,4 @@
+-<p class="reading-lead">สรุปและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC) ฉบับปรับปรุงปี 2026 ใน Domain 4: Network Security (น้ำหนักข้อสอบ 21.3%) ครอบคลุมพื้นฐานเครือข่ายและแบบจำลองอ้างอิง (OSI 7-Layer, TCP/IP 4-Layer, IPv4/IPv6, CIDR, NAT, TCP vs. UDP, พอร์ตบริการหลักและอุปกรณ์เครือข่าย), ความมั่นคงปลอดภัยไร้สาย (Wi-Fi 802.11, WPA2/WPA3, VPN), สถาปัตยกรรมความปลอดภัยเครือข่าย (Network Segmentation, DMZ, VLANs, Micro-Segmentation, Defense in Depth, Zero Trust Architecture), และความมั่นคงปลอดภัยบนระบบคลาวด์ (NIST SP 800-145 5 Characteristics, Service Models IaaS/PaaS/SaaS/FaaS, Shared Responsibility Model, Deployment Models Hybrid vs. Multi-Cloud, Cloud Network Controls)</p>
++<p class="reading-lead">สรุปและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC) ฉบับปรับปรุงปี 2026 ใน Domain 4: Networking and Cloud Security Concepts — แนวคิดความมั่นคงปลอดภัยเครือข่ายและคลาวด์ (น้ำหนักข้อสอบ 21.3%) ครอบคลุมพื้นฐานเครือข่ายและแบบจำลองอ้างอิง (OSI 7-Layer, TCP/IP 4-Layer, IPv4/IPv6, CIDR, NAT, TCP vs. UDP, พอร์ตบริการหลักและอุปกรณ์เครือข่าย), ความมั่นคงปลอดภัยไร้สาย (Wi-Fi 802.11, WPA2/WPA3, VPN), สถาปัตยกรรมความปลอดภัยเครือข่าย (Network Segmentation, DMZ, VLANs, Micro-Segmentation, Defense in Depth, Zero Trust Architecture), และความมั่นคงปลอดภัยบนระบบคลาวด์ (NIST SP 800-145 5 Characteristics, Service Models IaaS/PaaS/SaaS/FaaS, Shared Responsibility Model, Deployment Models Hybrid vs. Multi-Cloud, Cloud Network Controls)</p>
+ 
+ <section class="reading-objective-section" id="obj-4-1">
+ 
+@@ -47,7 +47,8 @@
+ 
+ 3. **Layer 5 — Session Layer (ชั้นเซสชัน):**
+    - ทำหน้าที่สร้าง (Establish), บริหารจัดการ (Maintain) และยกเลิกการเชื่อมต่อเซสชัน (Terminate) ระหว่างสองแอปพลิเคชัน
+-   - โพรโทคอลสำคัญ: RPC (Remote Procedure Call), NetBIOS, Sockets
++   - โพรโทคอลที่มักใช้เป็นตัวอย่าง: RPC (Remote Procedure Call), NetBIOS
++   - Session Layer เป็นแนวคิดการสร้าง บริหาร และยุติเซสชันระหว่างแอปพลิเคชัน ส่วน sockets เป็น API/นามธรรมของจุดปลายการสื่อสารที่แอปใช้เรียกบริการเครือข่าย ไม่ใช่โพรโทคอลประจำ Session Layer
+    - หน่วยข้อมูล (PDU): Data
+ 
+ 4. **Layer 4 — Transport Layer (ชั้นการขนส่งข้อมูล):**
+@@ -87,8 +88,10 @@
+ | :--- | :--- | :--- | :--- |
+ | **Layer 7: Application**<br>**Layer 6: Presentation**<br>**Layer 5: Session** | **Application Layer (L4)** | Data / Messages | HTTP, HTTPS, DNS, SSH, FTP, SMTP, DHCP |
+ | **Layer 4: Transport** | **Transport Layer (L3)** | Segment / Datagram | TCP, UDP |
+-| **Layer 3: Network** | **Internet Layer (L2)** | Packet | IPv4, IPv6, ICMP, IPsec, ARP |
+-| **Layer 2: Data Link**<br>**Layer 1: Physical** | **Network Access / Link Layer (L1)** | Frame / Bits | Ethernet, 802.11 Wi-Fi, MAC, สื่อทางกายภาพ |
++| **Layer 3: Network** | **Internet Layer (L2)** | Packet | IPv4, IPv6, ICMP, IPsec |
++| **Layer 2: Data Link**<br>**Layer 1: Physical** | **Network Access / Link Layer (L1)** | Frame / Bits | Ethernet, 802.11 Wi-Fi, ARP, MAC, สื่อทางกายภาพ |
++
++ในแบบจำลอง TCP/IP 4 ชั้นนี้ ARP อยู่ในชั้น Link / Network Access ทำหน้าที่หา Link-layer address ของปลายทางหรือ next hop บนลิงก์ IPv4 เดียวกัน
+ 
+ <h3 id="topic-4-1-ipv4-cidr-nat">4.1.4 IPv4 Addressing, Subnetting, Classes &amp; NAT: ระบบหมายเลขไอพีเวอร์ชัน 4</h3>
+ 
+@@ -111,7 +114,10 @@
+ - **Class A Private:** 10.0.0.0 – 10.255.255.255 (ช่วง 10.0.0.0/8)
+ - **Class B Private:** 172.16.0.0 – 172.31.255.255 (ช่วง 172.16.0.0/12)
+ - **Class C Private:** 192.168.0.0 – 192.168.255.255 (ช่วง 192.168.0.0/16)
+-- **APIPA (Automatic Private IP Addressing):** 169.254.0.0 – 169.254.255.255 (ช่วง 169.254.0.0/16) ระบบปฏิบัติการจะจ่ายให้ตัวเองอัตโนมัติเมื่อไม่สามารถติดต่อขอไอพีจาก DHCP Server ได้
++
++**IPv4 Link-local / APIPA — แยกจาก RFC 1918:**
++
++สงวนบล็อก 169.254.0.0/16 สำหรับสื่อสารบนลิงก์เดียวกัน การเลือกที่อยู่อัตโนมัติตาม RFC 3927 ใช้ 169.254.1.0–169.254.254.255 โดยไม่ใช้ /24 แรกและสุดท้าย และเราเตอร์ไม่ส่งต่อทราฟฟิกนี้ออกนอกลิงก์ APIPA อาจถูกใช้เมื่อไม่สามารถรับที่อยู่จาก DHCP Server ได้
+ 
+ **CIDR (Classless Inter-Domain Routing):**
+ เพื่อแก้ปัญหาการสูญเสียหมายเลขไอพีในระบบคลาส จึงมีการใช้เครื่องหมายทับระบุจำนวนบิตของเน็ตเวิร์ก (Slash Notation) เช่น /24 หมายถึงมี Subnet Mask เป็น 255.255.255.0 มีบิตของโฮสต์เหลือ 8 บิต รองรับหมายเลขไอพีได้ 2<sup>8</sup> = 256 หมายเลข (ใช้งานได้จริง 254 โฮสต์ เนื่องจากหัก Network Address และ Broadcast Address ออกไป)
+@@ -135,7 +141,7 @@
+ - **มหาศาล:** มีหมายเลขรองรับถึง 2<sup>128</sup> หรือราว 3.4 &times; 10<sup>38</sup> หมายเลข ทำให้ทุกอุปกรณ์บนโลกสามารถมี Public IP ได้โดยไม่ต้องพึ่งพา NAT
+ - **ความปลอดภัยในตัว:** รองรับมาตรฐานความมั่นคงปลอดภัย **IPsec (IP Security)** ในระดับสถาปัตยกรรมมาตั้งแต่ต้น
+ - **ยกเลิก Broadcast:** แทนที่ด้วย **Multicast** (ส่งถึงกลุ่มเฉพาะ) และ **Anycast** (ส่งไปยังเครื่องที่ใกล้ที่สุดในกลุ่ม) ช่วยลดสัญญาณรบกวนในเครือข่ายได้อย่างมหาศาล
+-- **SLAAC (Stateless Address Autoconfiguration):** อุปกรณ์สามารถกำหนดหมายเลขไอพีให้ตัวเองได้อัตโนมัติ โดยส่งคำขอไปยังเราเตอร์ (Router Solicitation) และนำ Prefix ที่ได้มารวมกับ MAC Address ของตนเองโดยไม่ต้องพึ่งพา DHCP Server เสมอไป
++- **SLAAC (Stateless Address Autoconfiguration):** SLAAC สร้างที่อยู่ IPv6 โดยใช้ prefix ที่เราเตอร์ประกาศร่วมกับ Interface Identifier (IID) ของอินเทอร์เฟซ วิธีสร้าง IID ไม่จำเป็นต้องใช้ MAC Address; EUI-64 ที่อาศัย MAC เป็นเพียงวิธีหนึ่งในอดีต
+ 
+ กลยุทธ์การเปลี่ยนผ่านจาก IPv4 สู่ IPv6 (Transition Strategies):
+ 1. **Dual-Stack:** อุปกรณ์และเราเตอร์เปิดใช้งานโพรโทคอล IPv4 และ IPv6 ควบคู่กันไปพร้อมกันในระดับการ์ดเครือข่ายและระบบปฏิบัติการ เป็นแนวทางที่แนะนำที่สุด
+@@ -265,7 +271,7 @@
+   </div>
+   <p>สองสิ่งต่อไปนี้ <strong>ไม่ใช่มาตรการรักษาความปลอดภัยที่แท้จริง</strong>:<br>
+   1. <strong>MAC Address Filtering:</strong> ผู้โจมตีสามารถดักจับสัญญาณเพื่อดูหมายเลข MAC ของเครื่องที่ได้รับอนุญาต และทำการปลอมแปลง (Spoofing) ได้อย่างง่ายดาย<br>
+-  2. <strong>Disable SSID Broadcast (ซ่อนชื่อ Wi-Fi):</strong> การซ่อน SSID ไม่ได้ช่วยอะไร เพราะชื่อเครือข่ายยังคงถูกส่งออกไปใน Probe Requests และ Beacon Frames เมื่อมีเครื่องเชื่อมต่อ</p>
++  2. <strong>Disable SSID Broadcast (ซ่อนชื่อ Wi-Fi):</strong> การซ่อน SSID เพียงละชื่อจากการประกาศเครือข่าย ไม่ได้หยุด Beacon ทั้งหมด และไม่ใช่การเข้ารหัสหรือการพิสูจน์ตัวตน ผู้สังเกตยังอาจทราบชื่อจากการสื่อสารระหว่างการค้นหาและเชื่อมต่อของลูกข่าย จึงควรใช้ WPA2/WPA3 และการตั้งค่าที่เหมาะสม</p>
+ </div>
+ 
+ ความปลอดภัยของระบบ Bluetooth:
+@@ -439,7 +445,7 @@
+    - ตัวอย่าง: Microsoft 365, Google Workspace, Salesforce, Dropbox
+ 
+ 4. **FaaS / Serverless (Function as a Service — บริการฟังก์ชันแบบไร้เซิร์ฟเวอร์):**
+-   - รูปแบบย่อยของ PaaS ที่ลูกค้านำเฉพาะโค้ดของฟังก์ชันสั้น ๆ มาอัปโหลดไว้ โดยระบบจะรันโค้ดเมื่อมีเหตุการณ์เข้ามากระตุ้น (Event-Driven) และสเกลขนาดเป็นศูนย์เมื่อไม่มีการใช้งาน
++   - FaaS รันฟังก์ชันตามเหตุการณ์ (Event-Driven) และให้ผู้ให้บริการบริหารโครงสร้างพื้นฐาน หลายแผนรองรับการ scale-to-zero เมื่อว่าง แต่พฤติกรรมนี้ขึ้นอยู่กับบริการ แผน และการตั้งค่า เช่น การมี always-ready instance
+    - ตัวอย่าง: AWS Lambda, Google Cloud Functions, Azure Functions
+ 
+ <h3 id="topic-4-3-shared-responsibility">4.3.3 The Shared Responsibility Model: โมเดลความรับผิดชอบร่วม</h3>
+@@ -502,7 +508,7 @@
+ - **Virtual Private Cloud (VPC) / VNet:** เครือข่ายเสมือนส่วนตัวที่แยกเป็นเอกเทศบนระบบคลาวด์ของผู้ให้บริการ ทำให้ลูกค้าสามารถควบคุมการจัดสรรช่วงไอพี (CIDR Block), การสร้างเครือข่ายย่อย (Subnets), และตารางเส้นทาง (Route Tables) ได้เหมือนศูนย์ข้อมูลส่วนตัว
+ - **Public Subnet vs. Private Subnet:**
+   - Public Subnet: เชื่อมต่อไปยัง **Internet Gateway (IGW)** โดยตรง เหมาะสำหรับวาง Load Balancer หรือ Bastion Host
+-  - Private Subnet: ไม่มีเส้นทางตรงสู่อินเทอร์เน็ต เซิร์ฟเวอร์ฐานข้อมูลต้องอยู่ในนี้ หากต้องการออกไปดาวน์โหลดแพตช์ภายนอก ต้องผ่าน **NAT Gateway** เท่านั้น
++  - Private Subnet: ไม่มีเส้นทางตรงผ่าน Internet Gateway เซิร์ฟเวอร์ฐานข้อมูลต้องอยู่ในนี้ การออกไปยังอินเทอร์เน็ตต้องใช้เส้นทางและกลไกที่เหมาะสม เช่น **NAT Gateway** สำหรับ IPv4; อาจใช้ NAT instance หรือสำหรับ IPv6 ใช้ egress-only Internet Gateway ตามสถาปัตยกรรมและนโยบาย
+ - **Security Groups vs. Network ACLs (NACLs):**
+   - **Security Group:** ไฟร์วอลล์เสมือนระดับ **Instance / Virtual Machine (Host Level)** มีคุณสมบัติเป็น **Stateful** (หากอนุญาตขาเข้า ขาออกจะได้รับอนุญาตอัตโนมัติ) กำหนดได้เฉพาะกฎ Allow
+   - **Network ACL (NACL):** ไฟร์วอลล์เสมือนระดับ **Subnet** มีคุณสมบัติเป็น **Stateless** (ต้องกำหนดกฎทั้งขาเข้าและขาออกแยกกันอย่างชัดเจน) รองรับทั้งกฎ Allow และ Deny เรียงลำดับตามหมายเลข Rule Number
+diff --git a/js/core/content-components.js b/js/core/content-components.js
+index ae719af0..db339966 100644
+--- a/js/core/content-components.js
++++ b/js/core/content-components.js
+@@ -214,7 +214,7 @@ export const controlCategoriesData = [
+     subtitle: 'มาตรการทางกายภาพ',
+     iconSvg: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>',
+     desc: 'สิ่งกีดขวาง โครงสร้าง และอุปกรณ์ทางกายภาพที่จับต้องได้ เพื่อปกป้องอาคาร สถานที่ ทรัพย์สิน และบุคลากร',
+-    examples: 'ประตูนิรภัย ล็อคประตู รั้วกั้น (Fences), รปภ. (Guards), กล้องวงจรปิด (CCTV), ประตูกลักกันคนเดินตาม (Mantraps), สัญญาณเตือนภัย (Alarms)'
++    examples: 'ประตูนิรภัย ล็อคประตู รั้วกั้น (Fences), รปภ. (Guards), กล้องวงจรปิด (CCTV), ประตูควบคุมการผ่านเข้าออกสองชั้น (Mantrap/Access Control Vestibule), สัญญาณเตือนภัย (Alarms)'
+   }
+ ];
+ 
+diff --git a/js/core/diagram-generator.js b/js/core/diagram-generator.js
+index c63326e8..48e6e605 100644
+--- a/js/core/diagram-generator.js
++++ b/js/core/diagram-generator.js
+@@ -530,7 +530,7 @@ export const diagrams = {
+             <span class="reading-mob-tier-action">Determines Purposes &amp; Means &middot; รับผิดชอบสูงสุด</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">องค์กรที่มีอำนาจตัดสินใจว่า <em>เก็บข้อมูลไปทำไม และใช้อย่างไร</em>: รับผิดชอบทางกฎหมายสูงสุด (Ultimate Accountability) ในการกำกับดูแลและรักษาความปลอดภัย</p>
++        <p class="reading-mob-tier-desc">บุคคลธรรมดา นิติบุคคล หน่วยงาน หรือองค์กรที่กำหนดโดยลำพังหรือร่วมกับผู้อื่นว่า <em>เก็บข้อมูลไปทำไม และใช้อย่างไร</em>: รับผิดชอบทางกฎหมายสูงสุด (Ultimate Accountability) ในการกำกับดูแลและรักษาความปลอดภัย</p>
+       </div>
+ 
+       <div class="reading-mob-step-connector">
+@@ -1539,7 +1539,7 @@ export const diagrams = {
+         <rect x="36" y="126" width="768" height="154" rx="8" class="diag-box diag-box-blue diag-dr-inner" stroke-width="2" />
+         <rect x="52" y="138" width="140" height="22" rx="4" class="diag-scope-badge-dr" />
+         <text x="122" y="149" class="diag-scope-badge-dr-text" text-anchor="middle" dominant-baseline="central">IT SUBSET (DR ⊂ BC)</text>
+-        <text x="204" y="154" class="diag-text-title diag-dr-title" font-size="15px">DISASTER RECOVERY (DR) — แผนกู้คืนระบบเทคโนโลยีสารสนเทศ</text>
++        <text x="204" y="154" class="diag-text-title diag-dr-title" font-size="15px">DISASTER RECOVERY (DR) — การกู้คืนระบบเทคโนโลยีสารสนเทศ</text>
+         <text x="52" y="180" class="diag-text-sub diag-dr-desc" font-size="13px">เป้าหมาย: กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</text>
+         <g class="diag-dr-examples-group">
+           <rect x="52" y="196" width="736" height="70" rx="6" class="diag-examples-rect" />
+@@ -1574,7 +1574,7 @@ export const diagrams = {
+             <span class="reading-mob-tag-pill reading-mob-pill-accent">IT SUBSET (DR ⊂ BC)</span>
+           </div>
+           <h6 class="reading-mob-inner-title">DISASTER RECOVERY (DR)</h6>
+-          <span class="reading-mob-inner-sub">แผนกู้คืนระบบ IT โครงสร้างพื้นฐาน และข้อมูล</span>
++          <span class="reading-mob-inner-sub">การกู้คืนระบบ IT โครงสร้างพื้นฐาน และข้อมูล</span>
+         </div>
+         <p class="reading-mob-inner-goal"><strong>เป้าหมาย:</strong> กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</p>
+         <div class="reading-mob-inner-examples">
+@@ -1788,7 +1788,7 @@ export const diagrams = {
+         <text x="96" y="336" class="diag-step-num">01</text>
+         <text x="130" y="336" class="diag-text-title">METRIC</text>
+         <text x="200" y="336" class="diag-text-action">MEASURE &middot; FOUNDATION</text>
+-        <text x="130" y="358" class="diag-text-sub">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ</text>
++        <text x="130" y="358" class="diag-text-sub">ค่าที่วัดได้: จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย รวมถึง KPI และ KRI</text>
+         <text x="130" y="374" class="diag-text-sub">คุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</text>
+       </g>
+     </svg>
+@@ -1866,7 +1866,7 @@ export const diagrams = {
+           </div>
+           <span class="reading-mob-tier-level reading-level-base">Foundation</span>
+         </div>
+-        <p class="reading-mob-tier-desc">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ประเมินประสิทธิผลตามคุณสมบัติ Relevant, Measurable และ Consistent</p>
++        <p class="reading-mob-tier-desc">ค่าที่วัดได้: จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์ โดยควร Relevant, Measurable และ Consistent</p>
+       </div>
+     </div>
+   </div>
+@@ -2177,7 +2177,7 @@ export const diagrams = {
+         <text x="451" y="96" class="diag-label-mac" font-size="11.5px" font-weight="700">Enforcement:</text>
+         <text x="557" y="96" class="diag-text-sub" font-size="12px">Labels &amp; User Clearances</text>
+         <text x="451" y="118" class="diag-label-mac" font-size="11px" font-weight="600">Core Trait:</text>
+-        <text x="557" y="118" class="diag-text-sub" font-size="11.5px">Highest Security &middot; Need-to-Know</text>
++        <text x="557" y="118" class="diag-text-sub" font-size="11.5px">Central Policy &middot; Need-to-Know</text>
+       </g>
+ 
+       <g>
+@@ -2230,7 +2230,7 @@ export const diagrams = {
+             <span class="reading-mob-tier-action">Central Authority &middot; Military</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">นโยบายกลางบังคับใช้ผ่าน Security Labels และ Clearances ปลอดภัยสูงสุด ผู้ใช้แก้เองไม่ได้</p>
++        <p class="reading-mob-tier-desc">นโยบายกลางบังคับใช้ผ่าน Security Labels และ Clearances ร่วมกับ Need-to-Know ผู้ใช้แก้เองไม่ได้ และไม่รับประกันว่าจะป้องกันข้อมูลรั่วไหลได้ทุกกรณี</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-dashboard">
+@@ -2281,7 +2281,7 @@ export const diagrams = {
+       <g>
+         <rect x="20" y="121" width="360" height="42" rx="6" class="diag-box diag-box-blue" />
+         <text x="36" y="138" class="diag-text-title" font-size="12px" font-weight="700">5. Session (เซสชัน)</text>
+-        <text x="36" y="154" class="diag-text-sub" font-size="10.5px">RPC, NetBIOS, Sockets &middot; Session Management</text>
++        <text x="36" y="154" class="diag-text-sub" font-size="10.5px">RPC, NetBIOS &middot; Session Management</text>
+       </g>
+       <g>
+         <rect x="20" y="169" width="360" height="42" rx="6" class="diag-box diag-box-banner" />
+diff --git a/js/ui/screen-reading.js b/js/ui/screen-reading.js
+index 6dab0c1f..887de567 100644
+--- a/js/ui/screen-reading.js
++++ b/js/ui/screen-reading.js
+@@ -40,7 +40,7 @@ export const READING_DOMAINS = [
+   },
+   {
+     id: 3,
+-    title: 'Domain 3: Access Controls',
++    title: 'Domain 3: Identity and Access Management (IAM) Concepts',
+     shortTitle: 'Access Controls',
+     weight: '20%',
+     published: true,
+@@ -49,7 +49,7 @@ export const READING_DOMAINS = [
+   },
+   {
+     id: 4,
+-    title: 'Domain 4: Network Security',
++    title: 'Domain 4: Networking and Cloud Security Concepts',
+     shortTitle: 'Network Security',
+     weight: '21.3%',
+     published: true,
+diff --git a/tools/verify-reading-notes-domain3.mjs b/tools/verify-reading-notes-domain3.mjs
+index e3e3f674..0156f961 100644
+--- a/tools/verify-reading-notes-domain3.mjs
++++ b/tools/verify-reading-notes-domain3.mjs
+@@ -55,7 +55,7 @@ test('ISC2 CC 2026 — Reading Notes Domain 3 Verification Suite', async (t) =>
+     const cached = getDomainReadingCached(3);
+     assert.ok(cached, 'Domain 3 must be pre-populated in reading cache in Node');
+     assert.equal(cached.id, 3);
+-    assert.ok(cached.renderedHtml.includes('Domain 3: Access Controls'));
++    assert.ok(cached.renderedHtml.includes('Domain 3: Identity and Access Management (IAM) Concepts'));
+ 
+     const loaded = await loadDomainReading(3);
+     assert.ok(loaded, 'loadDomainReading(3) must resolve');

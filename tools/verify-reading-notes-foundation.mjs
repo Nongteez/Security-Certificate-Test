@@ -30,7 +30,7 @@ import { renderExamVersionsScreen } from '../js/ui/screen-versions.js';
 import { renderReadingScreen, READING_DOMAINS } from '../js/ui/screen-reading.js';
 
 // DOM Fixture
-import { createVocabularyDOM } from './fixtures/vocabulary-dom.mjs';
+import { createReadingDOM as createVocabularyDOM } from './fixtures/reading-dom.mjs';
 
 let totalTests = 0;
 let passedTests = 0;

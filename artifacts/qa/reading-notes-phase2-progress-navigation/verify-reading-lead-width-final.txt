@@ -1,0 +1,40 @@
+============================================================
+Domain 1 Introductory Paragraph Reading Width Verification
+============================================================
+
+Test Suite 1: .reading-lead Specificity & Property Constraints
+  ✓ PASS: .reading-lead rule exists in reading.css
+  ✓ PASS: .reading-lead explicitly defines max-width: var(--reading-prose-max-width)
+  ✓ PASS: .reading-lead explicitly keeps left alignment (margin-left: 0)
+  ✓ PASS: .reading-lead defines margin-right: auto
+  ✓ PASS: .reading-lead maintains comfortable 32px bottom margin
+  ✓ PASS: .reading-lead maintains 16px font-size
+  ✓ PASS: .reading-lead maintains 1.8 line-height
+  ✓ PASS: .reading-lead maintains theme-adaptive text color
+
+Test Suite 2: Base & Collapsed Sidebar Prose Measure Rules
+  ✓ PASS: Base prose measure rule exists
+  ✓ PASS: Base prose measure selector includes .reading-lead
+  ✓ PASS: Base prose measure selector includes .reading-article-markdown > p
+  ✓ PASS: Base prose measure selector includes .reading-objective-section > p
+  ✓ PASS: Base prose group sets max-width: var(--reading-prose-max-width)
+  ✓ PASS: Collapsed sidebar selector includes .reading-lead and section prose
+  ✓ PASS: Collapsed sidebar prose sets fluid width (max-width: 100%)
+
+Test Suite 3: Domain 1 Lead Content & Markup Integrity
+  ✓ PASS: Source Markdown begins with <p class="reading-lead"> with intact text
+  ✓ PASS: Rendered HTML contains identical <p class="reading-lead"> without markup corruption
+
+Test Suite 4: Component Preservation & Layout Boundary Protection
+  ✓ PASS: Article title styles preserved
+  ✓ PASS: Article header divider preserved
+  ✓ PASS: Objective section border-top divider preserved
+  ✓ PASS: Wide educational components rule exists
+  ✓ PASS: Wide components retain max-width: 100%
+  ✓ PASS: Wide components retain width: 100%
+  ✓ PASS: No escaped HTML tag leakage in rendered DOM
+  ✓ PASS: No escaped closing tags in rendered DOM
+
+============================================================
+Verification Summary: 25 Passed, 0 Failed
+============================================================

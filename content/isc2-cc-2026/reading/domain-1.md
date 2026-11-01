@@ -19,7 +19,7 @@
 | **Asset (ทรัพย์สิน)** | สิ่งที่มีคุณค่าต่อองค์กร ซึ่งหากสูญหาย เสียหาย หรือรั่วไหลจะเกิดผลกระทบ | ฐานข้อมูลลูกค้า (Customer Database), ระบบชำระเงิน, ทรัพย์สินทางปัญญา, บุคลากร |
 | **Threat (ภัยคุกคาม)** | สิ่ง เหตุการณ์ หรือบุคคลที่อาจก่อให้เกิดอันตรายหรือสร้างความเสียหายต่อ Asset | แฮกเกอร์, มัลแวร์, แรนซัมแวร์, ไฟไหม้, น้ำท่วม, ไฟดับ |
 | **Threat Actor (ผู้ก่อภัยคุกคาม)** | ตัวบุคคลหรือกลุ่มบุคคลที่ลงมือหรือพยายามก่อให้เกิดภัยคุกคาม | อาชญากรไซเบอร์ (Cybercriminals), พนักงานภายในที่ประสงค์ร้าย (Insider Threats), รัฐสนับสนุน (Nation-State) |
-| **Vulnerability (ช่องโหว่)** | จุดอ่อนหรือข้อบกพร่องในระบบ กระบวนการ หรือการควบคุม ที่เปิดโอกาสให้ Threat ถูกใช้ประโยชน์ | เซิร์ฟเวอร์ที่ยังไม่ได้ติดตั้ง Patch, การตั้งค่าความปลอดภัยผิดพลาด (Misconfiguration), รหัสผ่านที่คาดเดาง่าย |
+| **Vulnerability (ช่องโหว่)** | จุดอ่อนหรือข้อบกพร่องในระบบ กระบวนการ หรือมาตรการควบคุม ที่ผู้ก่อภัยคุกคามอาจใช้ประโยชน์ หรือเหตุการณ์คุกคามอาจกระตุ้นให้เกิดความเสียหาย | เซิร์ฟเวอร์ที่ยังไม่ได้ติดตั้ง Patch, การตั้งค่าความปลอดภัยผิดพลาด (Misconfiguration), รหัสผ่านที่คาดเดาง่าย |
 | **Exploit (การใช้ประโยชน์จากช่องโหว่)** | วิธีการ โค้ดโปรแกรม หรือเทคนิคที่ใช้เจาะผ่านจุดอ่อนของระบบ | สคริปต์ยิงเจาะช่องโหว่ซอฟต์แวร์, Phishing Email หลอกขอรหัสผ่าน |
 | **Risk (ความเสี่ยง)** | โอกาสและผลกระทบของความเสียหายที่อาจเกิดขึ้นเมื่อ Threat อาศัย Vulnerability สร้างผลกระทบต่อ Asset | โอกาสที่ฐานข้อมูลลูกค้าจะถูกขโมยและสร้างผลเสียหายทางการเงินและชื่อเสียง |
 | **Control / Safeguard (มาตรการควบคุม)** | กลไก นโยบาย หรือเทคโนโลยีที่นำมาติดตั้งเพื่อลดโอกาสหรือผลกระทบของความเสี่ยง | Multi-Factor Authentication (MFA), Firewall, นโยบายความปลอดภัย |
@@ -34,7 +34,7 @@
   <div class="reading-warning-group">
     <div class="reading-warning-item">
       <h5 class="reading-concept-heading">Threat ไม่ใช่ Vulnerability</h5>
-      <p>Threat คือสิ่งภายนอกหรืออันตรายที่เข้ามา (เช่น Hacker, Flood) ส่วน Vulnerability คือจุดอ่อนภายในระบบของเรา (เช่น Unpatched Server หรือ Misconfiguration)</p>
+      <p>Threat คือบุคคล สิ่ง หรือเหตุการณ์ที่อาจก่อความเสียหาย ทั้งจากภายในและภายนอกองค์กร (เช่น พนักงานประสงค์ร้าย, Hacker, Flood) ส่วน Vulnerability คือจุดอ่อนภายในระบบของเรา (เช่น Unpatched Server หรือ Misconfiguration)</p>
     </div>
     <div class="reading-warning-item">
       <h5 class="reading-concept-heading">Vulnerability ไม่ได้แปลว่าเกิดเหตุโจมตีแล้ว</h5>
@@ -112,7 +112,7 @@
 
 #### 3. Availability — ความพร้อมใช้งาน
 
-ระบบ ข้อมูล และทรัพยากรต้อง **พร้อมให้ผู้มีสิทธิ์เข้าใช้งานได้เสมอเมื่อต้องการ** โดยมีเป้าหมายสำคัญคือการลด **Downtime** และรับประกันความต่อเนื่องทางธุรกิจจากการคุกคาม เช่น Hardware Failure, ไฟดับ (Power Outage), การโจมตี DDoS, Ransomware เข้ารหัส, หรือภัยธรรมชาติ
+ระบบ ข้อมูล และทรัพยากรต้อง **พร้อมให้ผู้มีสิทธิ์เข้าใช้งานตามเวลาที่จำเป็นและข้อกำหนดบริการ** โดยมีเป้าหมายสำคัญคือการลด **Downtime** และสนับสนุนความต่อเนื่องทางธุรกิจเมื่อเผชิญภัยคุกคาม เช่น Hardware Failure, ไฟดับ (Power Outage), การโจมตี DDoS, Ransomware เข้ารหัส, หรือภัยธรรมชาติ
 
 <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</p>
 
@@ -186,13 +186,13 @@
 
 **MFA** คือการพิสูจน์ตัวตนโดยใช้ปัจจัยตั้งแต่ **2 ประเภทที่แตกต่างกันขึ้นไป (Two or More Independent Factors)**
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>ปัจจัยการพิสูจน์ตัวตนแบ่งออกเป็น 4 หมวดหลัก:</p>
+<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>ปัจจัยหลักของ MFA มี 3 ประเภท: Know, Have และ Are; สถานที่หรือเครือข่ายเป็นบริบทเสริม (Context) ไม่ใช่ปัจจัยอิสระที่ใช้แทนประเภทเหล่านี้:</p>
 
 :::mfa-factors
 - **Something You Know** (สิ่งที่คุณรู้)
 - **Something You Have** (สิ่งที่คุณมี)
 - **Something You Are** (สิ่งที่คุณเป็น)
-- **Somewhere You Are** (สถานที่ที่คุณอยู่)
+- **Somewhere You Are** (สถานที่ที่คุณอยู่ — บริบทเสริม ไม่ใช่ปัจจัย MFA)
 :::
 
 <div class="reading-callout warning">
@@ -219,7 +219,7 @@
 
 #### 3. Authorization — การกำหนดและอนุญาตสิทธิ์
 
-เกิดขึ้น **หลังจาก** Authentication สำเร็จแล้วเสมอ ระบบจะตัดสินใจว่าผู้ใช้คนนี้มีสิทธิ์ทำอะไรกับทรัพยากรใดได้บ้าง (**Permissions / Privileges**)
+เกิดขึ้น **หลังจาก** Authentication สำเร็จในตัวอย่างการล็อกอินทั่วไป ทั้งนี้นโยบาย Authorization อาจอนุญาตผู้ใช้ที่ยังไม่ล็อกอินให้อ่านข้อมูลสาธารณะได้ ระบบจะตัดสินใจว่าผู้ใช้คนนี้มีสิทธิ์ทำอะไรกับทรัพยากรใดได้บ้าง (**Permissions / Privileges**)
 
 - นาย A ล็อกอินผ่าน (Authentication สำเร็จ)
 - นาย A อ่านไฟล์รายงานยอดขายได้ (Read Authorized)
@@ -253,7 +253,7 @@
 
 #### 2. Privacy — การคุ้มครองความเป็นส่วนตัวของข้อมูล
 
-เกี่ยวข้องกับการคุ้มครอง **Personally Identifiable Information (PII) / Personal Data** ตลอดวงจรชีวิต: การจัดเก็บ (Collection), การประมวลผล (Processing), การจัดเก็บรักษา (Storage), การถ่ายโอน (Transfer), และการทำลาย (Disposal)
+เกี่ยวข้องกับการคุ้มครอง **Personally Identifiable Information (PII) / Personal Data** ตลอดวงจรชีวิต: การเก็บรวบรวมข้อมูล (Collection), การประมวลผล (Processing), การจัดเก็บรักษา (Storage), การถ่ายโอน (Transfer), และการทำลาย (Disposal)
 
 <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>3 บทบาทหลักในกฎหมายคุ้มครองข้อมูลส่วนบุคคล (เช่น GDPR, PDPA):</p>
 
@@ -264,7 +264,7 @@
 
 <div class="reading-concept-item">
   <h5 class="reading-concept-heading">Data Controller (ผู้ควบคุมข้อมูล)</h5>
-  <p>นิติบุคคลหรือองค์กรที่เป็นผู้ตัดสินใจว่า <strong>จะเก็บข้อมูลทำไม และประมวลผลอย่างไร (Determines Purpose and Means)</strong> เช่น บริษัทค้าปลีกที่เก็บข้อมูลลูกค้า</p>
+  <p>บุคคลธรรมดา นิติบุคคล หน่วยงาน หรือองค์กรที่กำหนดโดยลำพังหรือร่วมกับผู้อื่นว่า <strong>จะเก็บข้อมูลทำไม และประมวลผลอย่างไร (Determines Purpose and Means)</strong> เช่น บริษัทค้าปลีกที่เก็บข้อมูลลูกค้า</p>
 </div>
 
 <div class="reading-concept-item">
@@ -349,7 +349,7 @@
 
 #### 2. Defense in Depth (Layered Defense)
 
-กลยุทธ์การวาง **มาตรการควบคุมความปลอดภัยหลายชั้นที่สอดประสานกัน** เพื่อป้องกันไม่ให้การล้มเหลวของมาตรการควบคุมชั้นใดชั้นหนึ่งเปิดโอกาสให้ผู้โจมตีเจาะทะลุระบบได้สำเร็จ (No Single Point of Failure in Security)
+กลยุทธ์การวาง **มาตรการควบคุมความปลอดภัยหลายชั้นที่สอดประสานกัน (Defense in Depth)** เพื่อลดโอกาสที่ความล้มเหลวของมาตรการเดียวจะนำไปสู่ความเสียหาย ชั้นต่าง ๆ ยังอาจมีจุดพึ่งพาร่วมกัน จึงไม่รับประกันว่าจะกำจัดจุดล้มเหลวเดี่ยว (Single Point of Failure) ทั้งหมด
 
 <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>ตัวอย่างสถาปัตยกรรมการวางชั้นป้องกัน (7 Security Layers):</p>
 
@@ -385,7 +385,7 @@
 
 ### 1.2.1 Risk Definition & Core Components
 
-**Risk (ความเสี่ยง)** คือผลรวมของโอกาสที่เหตุการณ์ไม่พึงประสงค์จะเกิดขึ้น ควบคู่กับขนาดของผลกระทบหรือความเสียหายที่เกิดขึ้นต่อองค์กร
+**Risk (ความเสี่ยง)** ประเมินจากโอกาสที่เหตุการณ์ไม่พึงประสงค์จะเกิดขึ้นร่วมกับขนาดของผลกระทบหรือความเสียหายที่เกิดขึ้นต่อองค์กร
 
 <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>องค์ประกอบหลักของความเสี่ยง:</p>
 
@@ -407,6 +407,8 @@
 <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>สมการความเสี่ยงเชิงคุณภาพ (Qualitative Risk Formula):</p>
 
 $\text{Risk} \approx \text{Likelihood} \times \text{Impact}$
+
+บางโมเดลแบบง่ายใช้ผลคูณนี้โดยต้องกำหนดสเกลและความหมายของคะแนนให้ชัดเจน องค์กรอาจเลือกวิธีเชิงคุณภาพหรือเชิงปริมาณต่างกัน ไม่ใช่สูตรเดียวที่บังคับใช้กับทุกการประเมิน
 
 
 <div id="topic-1-2-quantitative-risk" class="reading-topic-anchor"></div>
@@ -503,7 +505,7 @@ $ALE = SLE \times ARO$
     <span>ประโยชน์หลักในการทำข้อสอบ (Cost-Benefit Decision Rule)</span>
   </div>
   <p>ค่า $ALE$ ถูกนำมาใช้เปรียบเทียบกับ <strong>ต้นทุนของมาตรการควบคุม (Cost of Control / Safeguard Cost)</strong></p>
-  <p><strong>กฎการตัดสินใจ:</strong> ต้นทุนของมาตรการความปลอดภัยต่อปีไม่ควรเกินมูลค่า $ALE$ ของความเสี่ยงนั้น (เช่น หากความเสี่ยงก่อความเสียหายปีละ \$10,000 องค์กรไม่ควรจ่ายเงินซื้ออุปกรณ์ป้องกันปีละ \$25,000)</p>
+  <p><strong>การเปรียบเทียบด้านการเงินแบบง่าย:</strong> ผลประโยชน์จากการลดความเสียหายต่อปี (Annual Loss-Reduction Benefit) = ALE ก่อนใช้ Control − ALE หลังใช้ Control แล้วเปรียบเทียบกับต้นทุน Control ต่อปี การมีต้นทุนต่ำกว่า ALE เดิมเพียงอย่างเดียวยังไม่พอ เช่น ALE ก่อน 10,000/ปี หลัง 9,000/ปี ลดความเสียหายได้ 1,000/ปี หาก Control มีต้นทุน 5,000/ปี ผลประโยชน์สุทธิเท่ากับ −4,000/ปี ตัวอย่างเดิมที่ ALE \$10,000/ปี แต่ Control ราคา \$25,000/ปี ก็ไม่คุ้มด้านการเงินภายใต้สมมติฐานนี้ อย่างไรก็ตาม กฎหมาย สัญญา ความปลอดภัยของบุคคล และภารกิจอาจทำให้องค์กรต้องเลือกมาตรการแม้ผลตอบแทนทางการเงินโดยตรงไม่เป็นบวก</p>
 </div>
 
 
@@ -511,7 +513,7 @@ $ALE = SLE \times ARO$
 
 ### 1.2.3 Risk Management Lifecycle
 
-การบริหารความเสี่ยง **เป็นกระบวนการต่อเนื่องตลอดเวลา (Continuous Process)** ไม่ใช่กิจกรรมที่ทำครั้งเดียวแล้วสิ้นสุด วงจรชีวิตการบริหารความเสี่ยงประกอบด้วย 5 ขั้นตอนหลัก:
+การบริหารความเสี่ยง **เป็นกระบวนการต่อเนื่องตลอดเวลา (Continuous Process)** ไม่ใช่กิจกรรมที่ทำครั้งเดียวแล้วสิ้นสุด บทนี้ใช้ลำดับช่วยเรียนรู้ 5 ส่วนจากบันทึกการเรียน โดยการสื่อสารเกิดควบคู่ได้ตลอดกระบวนการ:
 
 <div class="reading-semantic-diagram" data-diagram="riskLifecycle"></div>
 
@@ -530,7 +532,7 @@ $ALE = SLE \times ARO$
     <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
     <span>ข้อสังเกตเชิงโครงสร้างและวิชาการ (4 vs. 5 Lifecycle Stages)</span>
   </div>
-  <p>ในตำราและกรอบการทำงานด้านความปลอดภัยสากล (เช่น NIST หรือ ISO 31000) บางครั้งอาจสรุปกระบวนการปฏิบัติการเป็น <strong>4 ขั้นตอนหลัก</strong> (Identify → Assess → Treat → Monitor) โดยมองว่าการสื่อสารและรายงานผล (Communication & Reporting) เป็นกิจกรรมที่ทำควบคู่ไปตลอดเวลา แต่ในหลักสูตรการสอน ISC2 CC 2026 นี้ ได้กำหนด <strong>Risk Communication & Reporting</strong> ไว้อย่างชัดเจนเป็นขั้นตอนที่ 5 ของวงจร เพื่อเน้นย้ำความสำคัญของการรายงานต่อผู้บริหารและผู้มีส่วนได้เสียในการตัดสินใจจัดสรรงบประมาณ</p>
+  <p>บทนี้ใช้ลำดับช่วยเรียนรู้ 5 ส่วนจากบันทึกการเรียน: Identify → Assess → Treat → Monitor → Communicate/Report โดยการสื่อสารและรายงานผลเกิดควบคู่ได้ตลอดกระบวนการ เพื่อให้ผู้บริหารและผู้มีส่วนได้เสียตัดสินใจจัดสรรทรัพยากรได้ กรอบงานอื่นอาจจัดกลุ่มต่างกัน เช่น NIST SP 800-39 ใช้ Frame, Assess, Respond และ Monitor ลำดับ 5 ส่วนนี้เป็นแบบจำลองช่วยเรียนรู้ ไม่ใช่ข้อกำหนดลำดับตายตัวจาก Exam Outline</p>
 </div>
 
 
@@ -577,7 +579,7 @@ $ALE = SLE \times ARO$
 <div class="reading-concept-item">
   <h5 class="reading-concept-heading">Residual Risk (ความเสี่ยงที่หลงเหลือ)</h5>
   <p>ระดับความเสี่ยงที่ยังคงหลงเหลืออยู่หลังจากที่ได้ติดตั้งมาตรการควบคุมความปลอดภัยแล้ว (Risk after controls)</p>
-  $\text{Residual Risk} = \text{Inherent Risk} - \text{Impact of Controls}$
+  <p>Residual Risk คือความเสี่ยงที่ประเมินใหม่หลังคำนึงถึงมาตรการควบคุม ไม่ใช่การลบคะแนนหรือเงินออกจากกันได้เสมอไป ต้องประเมินโอกาสเกิดและผลกระทบที่ยังเหลืออยู่ด้วยโมเดลและสเกลที่เหมาะสม</p>
   <p><em>ตัวอย่าง:</em> ก่อนติดตั้ง MFA ความเสี่ยงที่บัญชีจะถูกแฮกจากรหัสผ่านรั่วมีสูงมาก (Inherent Risk สูง) หลังติดตั้ง MFA ความเสี่ยงลดลงอย่างมาก แต่ยังคงมีโอกาสที่ผู้ใช้อาจถูกหลอกด้วยฟิชชิ่งแบบขั้นสูง (Adversary-in-the-Middle) อยู่บ้าง ความเสี่ยงที่ยังเหลือน้อยนี้เรียกว่า <strong>Residual Risk</strong></p>
 </div>
 
@@ -623,7 +625,7 @@ $ALE = SLE \times ARO$
 
 <div class="reading-concept-item">
   <h5 class="reading-concept-heading">GDPR (General Data Protection Regulation)</h5>
-  <p>กฎหมายคุ้มครองข้อมูลส่วนบุคคลของสหภาพยุโรป เน้นสิทธิของ Data Subject และข้อบังคับสำหรับ Controller/Processor ทั่วโลกที่มีการประมวลผลข้อมูลพลเมืองสหภาพยุโรป</p>
+  <p>GDPR คุ้มครองข้อมูลส่วนบุคคลตามขอบเขตการใช้บังคับของกฎหมาย เช่น การประมวลผลในบริบทกิจกรรมของสถานประกอบการในสหภาพยุโรป หรือการเสนอสินค้า/บริการแก่บุคคลที่อยู่ในสหภาพยุโรปหรือเฝ้าติดตามพฤติกรรมของบุคคลที่เกิดขึ้นที่นั่นตามเงื่อนไข Article 3 การมีสัญชาติ EU เพียงอย่างเดียวไม่ใช่เกณฑ์ตัดสิน</p>
 </div>
 
 <div class="reading-concept-item">
@@ -680,7 +682,7 @@ $ALE = SLE \times ARO$
 | ประเภทเอกสาร | บทบาทหน้าที่ | ระดับการบังคับ | ตัวอย่างรูปธรรม |
 |---|---|---|---|
 | **Policy (นโยบาย)** | กำหนดทิศทางภาพกว้าง วิสัยทัศน์ และความคาดหวังของผู้บริหาร (Answers: *WHAT & WHY*) | **Mandatory (บังคับทุกคน)** | *"พนักงานทุกคนต้องใช้รหัสผ่านที่รัดกุมและปกป้องข้อมูลลูกค้า"* |
-| **Standard (มาตรฐาน)** | กำหนดเกณฑ์ขั้นต่ำ ข้อกำหนดทางเทคนิคที่จำเพาะเจาะจงและวัดผลได้ (Answers: *EXACT SPECIFICATION*) | **Mandatory (บังคับทุกคน)** | *"รหัสผ่านต้องมีความยาวอย่างน้อย 14 ตัวอักษร ผสมอักขระ 3 ใน 4 ประเภท และบังคับใช้ MFA"* |
+| **Standard (มาตรฐาน)** | กำหนดเกณฑ์ขั้นต่ำ ข้อกำหนดทางเทคนิคที่จำเพาะเจาะจงและวัดผลได้ (Answers: *EXACT SPECIFICATION*) | **Mandatory (บังคับทุกคน)** | *"บัญชีผู้ดูแลระบบต้องใช้ MFA ตามมาตรฐานที่องค์กรอนุมัติ"* |
 | **Procedure (ขั้นตอนปฏิบัติ)** | คำแนะนำขั้นตอนการทำงานทีละขั้นแบบเป็นลำดับ (Answers: *HOW*) | **Mandatory (บังคับผู้ปฏิบัติ)** | *"ขั้นตอนการรีเซ็ตรหัสผ่าน: 1. เปิดเว็บพอร์ทัล 2. สแกนบัตร 3. ยืนยัน OTP 4. บันทึกผล"* |
 | **Guideline (แนวทางปฏิบัติ)** | คำแนะนำ ข้อเสนอแนะ หรือ Best Practices เพื่อช่วยในการตัดสินใจ (Answers: *RECOMMENDATION*) | **Advisory (ไม่บังคับ ยืดหยุ่น)** | *"ข้อแนะนำในการสร้าง Passphrase ที่จำง่ายแต่เดายาก เช่น การนำคำ 4 คำมาร้อยเรียงกัน"* |
 
@@ -830,7 +832,7 @@ $ALE = SLE \times ARO$
 <div class="reading-callout tip">
   <div class="reading-callout-header">
     <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-    <span>สูตรจำลำดับการทำงาน (Action Sequence Mnemonic)</span>
+    <span>สูตรจำหน้าที่ของมาตรการ (Function Mnemonic; ไม่ใช่ลำดับตายตัว)</span>
   </div>
   <p><strong>"กลัว (Deterrent) → กัน (Preventive) → เจอ (Detective) → แก้ (Corrective)"</strong></p>
 </div>
@@ -869,7 +871,7 @@ $ALE = SLE \times ARO$
   </div>
   <ol>
     <li>โจทย์ถามหา <strong>หมวดหมู่ (Category)</strong> หรือถามหา <strong>หน้าที่ (Type/Function)</strong>?</li>
-    <li>มาตรการนั้นทำงาน <strong>ก่อน (Before), ระหว่าง (During), หรือหลัง (After)</strong> เกิดเหตุ?</li>
+    <li>มาตรการนั้นทำงาน <strong>ก่อน (Before), ระหว่าง (During), หรือหลัง (After)</strong> เกิดเหตุ? ใช้เวลาเป็นบริบทประกอบ ไม่ใช่เกณฑ์ตายตัว เพราะ Detective อาจพบย้อนหลังและ Corrective อาจเริ่มขณะเกิดเหตุ</li>
     <li>เจตนาหลักที่โจทย์เน้นคือ <strong>ยับยั้งใจ, สกัดกั้น, ค้นหาตรวจจับ, หรือแก้ไขปัญหา</strong>?</li>
   </ol>
 </div>
@@ -987,7 +989,7 @@ $ALE = SLE \times ARO$
       <span class="reading-precedence-badge">Priority 2</span>
     </div>
     <p class="reading-precedence-body">
-      <strong>ประพฤติตนอย่างมีเกียรติ ซื่อสัตย์ ยุติธรรม มีความรับผิดชอบ และถูกต้องตามกฎหมาย:</strong> ปฏิบัติตามกฎหมายอย่างเคร่งครัด ไม่โกหก ไม่บิดเบือนข้อเท็จจริง และรักษาความโปร่งใสในวิชาชีพ <em>(ข้อสังเกตเชิงลึก: ลำดับคำใน Canon 2 ให้เกียรติและความซื่อสัตย์มาก่อนกฎหมาย เพื่อเน้นย้ำว่าความซื่อตรงต่อความจริงต้องเป็นที่ตั้งเสมอ แม้การกระทำบางอย่างจะไม่ผิดกฎหมายแต่ถ้าขาดความซื่อสัตย์หรือบิดเบือนข้อเท็จจริงก็ยังถือว่าละเมิดจริยธรรมของ ISC2)</em>
+      <strong>ประพฤติตนอย่างมีเกียรติ ซื่อสัตย์ ยุติธรรม มีความรับผิดชอบ และถูกต้องตามกฎหมาย:</strong> ปฏิบัติตามกฎหมายอย่างเคร่งครัด ไม่โกหก ไม่บิดเบือนข้อเท็จจริง และรักษาความโปร่งใสในวิชาชีพ <em>(ข้อสังเกต: Canon 2 กำหนดหน้าที่เหล่านี้ร่วมกัน ไม่ควรอนุมานลำดับเหนือกว่ากันจากลำดับคำในประโยค การกระทำที่ไม่ผิดกฎหมายอาจยังขัดจริยธรรมหากเป็นการหลอกลวง บิดเบือนข้อเท็จจริง หรือไม่เป็นธรรม)</em>
     </p>
   </div>
 
@@ -1037,7 +1039,7 @@ $ALE = SLE \times ARO$
     <div class="reading-distinction-body">
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">Threat (ภัยคุกคาม)</strong>
-        <div class="reading-distinction-desc">สิ่งภายนอก/เหตุการณ์ที่อาจก่ออันตราย (Hacker, Malware, Flood)</div>
+        <div class="reading-distinction-desc">บุคคล สิ่ง หรือเหตุการณ์ภายในหรือภายนอกที่อาจก่ออันตราย (Insider, Hacker, Malware, Flood)</div>
       </div>
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">Vulnerability (ช่องโหว่)</strong>
@@ -1053,7 +1055,7 @@ $ALE = SLE \times ARO$
     <div class="reading-distinction-body">
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">Risk (ความเสี่ยง)</strong>
-        <div class="reading-distinction-desc">ผลรวมของโอกาสเกิด (Likelihood) และผลกระทบจากเหตุการณ์ที่ไม่แน่นอน</div>
+        <div class="reading-distinction-desc">การพิจารณาโอกาสเกิด (Likelihood) ร่วมกับผลกระทบ (Impact) จากเหตุการณ์ที่ไม่แน่นอน</div>
       </div>
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">Impact (ผลกระทบ)</strong>
@@ -1105,7 +1107,7 @@ $ALE = SLE \times ARO$
       </div>
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">Availability (ความพร้อมใช้)</strong>
-        <div class="reading-distinction-desc">ระบบและข้อมูลพร้อมให้เข้าถึงได้เสมอเมื่อต้องการ ("Can I access it?")</div>
+        <div class="reading-distinction-desc">ระบบและข้อมูลพร้อมให้ผู้มีสิทธิ์เข้าถึงตามเวลาที่จำเป็นและข้อกำหนดบริการ ("Can I access it?")</div>
       </div>
     </div>
   </div>
@@ -1304,7 +1306,8 @@ reasoning: มุ่งยับยั้งใจและขัดขวาง
 | *Unauthorized disclosure / Read without permission* | **Confidentiality** |
 | *Unauthorized modification / Tampering / Data altered* | **Integrity** |
 | *Downtime / Service disruption / Inaccessible system* | **Availability** |
-| *Prove identity / Who are you* | **Authentication** |
+| *Claim identity / Who are you? — กล่าวอ้างตัวตน* | **Identification (การระบุตัวตน)** |
+| *Prove the claimed identity / Prove it — พิสูจน์ตัวตนที่กล่าวอ้าง* | **Authentication (การพิสูจน์ตัวตน)** |
 | *Permissions / Allowed actions / Read vs Write* | **Authorization** |
 | *Logs / Audit trails / Trace actions* | **Accounting / Accountability** |
 | *Evidence of transaction / Cannot deny sending* | **Non-repudiation** |
