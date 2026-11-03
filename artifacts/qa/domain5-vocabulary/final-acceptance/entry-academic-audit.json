@@ -1,0 +1,891 @@
+[
+  {
+    "itemNum": 1,
+    "id": "VOC-CC26-D5-001",
+    "term": "Data Classification",
+    "acronym": null,
+    "objective": "5.1",
+    "category": "core_term",
+    "thai_meaning": "การจัดประเภทข้อมูล",
+    "definition_en": "Assigning data to a category according to its sensitivity and the organization's handling scheme.",
+    "explanation_th": "การกำหนดประเภทตามความอ่อนไหวและเกณฑ์ขององค์กร ชื่อประเภทและข้อกำหนดอาจต่างกันระหว่างองค์กร",
+    "exam_relevance": "Use the supplied scheme; assigning a category differs from applying a label or enforcing permissions.",
+    "exam_relevance_th": "ใช้เกณฑ์ที่โจทย์ให้ การกำหนดประเภทต่างจากการติดป้ายและการบังคับสิทธิ์",
+    "example_en": "The owner classifies a customer report as Restricted under the company scheme.",
+    "example_th": "เจ้าของจัดรายงานลูกค้าเป็น Restricted ตามเกณฑ์บริษัท",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 2,
+    "id": "VOC-CC26-D5-002",
+    "term": "Data Labeling",
+    "acronym": null,
+    "objective": "5.1",
+    "category": "core_term",
+    "thai_meaning": "การติดป้ายประเภทข้อมูล",
+    "definition_en": "Applying a marking or metadata that communicates a data category already assigned.",
+    "explanation_th": "การแสดงประเภทข้อมูลที่กำหนดแล้วด้วยเครื่องหมายหรือ Metadata ป้ายไม่ได้บังคับสิทธิ์เข้าถึงโดยตัวมันเอง",
+    "exam_relevance": "Distinguish category communication from category assignment and access enforcement.",
+    "exam_relevance_th": "แยกการแสดงประเภทออกจากการกำหนดประเภทและการบังคับสิทธิ์เข้าถึง",
+    "example_en": "An analyst adds a Restricted metadata tag after the owner classifies the file.",
+    "example_th": "นักวิเคราะห์ติดป้าย Metadata ว่า Restricted หลังเจ้าของจัดประเภทไฟล์",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 3,
+    "id": "VOC-CC26-D5-003",
+    "term": "Media Sanitization",
+    "acronym": null,
+    "objective": "5.1",
+    "category": "core_term",
+    "thai_meaning": "การทำให้ข้อมูลบนสื่อกู้คืนไม่ได้ตามระดับที่กำหนด",
+    "definition_en": "A process that makes access to target data on media infeasible for a specified level of effort.",
+    "explanation_th": "กระบวนการทำให้เข้าถึงข้อมูลเป้าหมายบนสื่อได้ยากจนไม่เป็นไปได้ภายใต้ระดับความพยายามที่กำหนด ต้องเลือกวิธีให้เหมาะกับสื่อ ความลับ และแผนใช้ซ้ำ",
+    "exam_relevance": "Ordinary file deletion is insufficient evidence; consider media suitability and verification of the result.",
+    "exam_relevance_th": "การลบไฟล์ทั่วไปไม่ยืนยันผล ต้องพิจารณาชนิดสื่อและตรวจยืนยันผลการดำเนินการ",
+    "example_en": "A team validates an approved sanitization method before transferring an SSD.",
+    "example_th": "ทีมตรวจยืนยันผลวิธี Sanitization ที่อนุมัติก่อนส่งต่อ SSD",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 4,
+    "id": "VOC-CC26-D5-004",
+    "term": "Cryptographic Erase",
+    "acronym": null,
+    "objective": "5.1",
+    "category": "core_term",
+    "thai_meaning": "การลบข้อมูลด้วยการกำจัดกุญแจเข้ารหัส",
+    "definition_en": "Sanitization using destruction of relevant cryptographic keys so encrypted target data cannot feasibly be recovered.",
+    "explanation_th": "การกำจัดกุญแจที่เกี่ยวข้องเพื่อให้กู้ข้อมูลเข้ารหัสเป้าหมายไม่ได้ในทางปฏิบัติ ต้องมีการเข้ารหัสที่เหมาะสมและจัดการสำเนากุญแจที่กู้คืนได้ด้วย",
+    "exam_relevance": "Check retained key copies and prior encryption; removing only a local key is not sufficient assurance.",
+    "exam_relevance_th": "ตรวจสำเนากุญแจและการเข้ารหัสก่อนหน้า การลบกุญแจเฉพาะในเครื่องไม่ให้ความมั่นใจเพียงพอ",
+    "example_en": "An escrow copy of the decryption key prevents the team from establishing cryptographic erase.",
+    "example_th": "สำเนากุญแจถอดรหัสในระบบ Escrow ทำให้ทีมยังยืนยัน Cryptographic erase ไม่ได้",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 5,
+    "id": "VOC-CC26-D5-005",
+    "term": "Symmetric Encryption",
+    "acronym": null,
+    "objective": "5.1",
+    "category": "core_term",
+    "thai_meaning": "การเข้ารหัสแบบกุญแจสมมาตร",
+    "definition_en": "Encryption in which the same secret key is used for encryption and decryption.",
+    "explanation_th": "การเข้ารหัสและถอดรหัสโดยใช้กุญแจลับเดียวกัน เหมาะกับการปกป้องข้อมูลปริมาณมาก แต่ยังต้องจัดการกุญแจอย่างปลอดภัย",
+    "exam_relevance": "Identify the shared-secret role; encryption alone does not establish integrity or sender authenticity.",
+    "exam_relevance_th": "ระบุบทบาทกุญแจลับร่วม การเข้ารหัสเพียงอย่างเดียวไม่ได้ยืนยันความสมบูรณ์หรือผู้ส่ง",
+    "example_en": "A storage service encrypts bulk data with a protected symmetric key.",
+    "example_th": "บริการจัดเก็บเข้ารหัสข้อมูลจำนวนมากด้วยกุญแจสมมาตรที่ปกป้องไว้",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 6,
+    "id": "VOC-CC26-D5-006",
+    "term": "Asymmetric Cryptography",
+    "acronym": null,
+    "objective": "5.1",
+    "category": "core_term",
+    "thai_meaning": "วิทยาการรหัสลับแบบกุญแจคู่",
+    "definition_en": "Cryptographic methods using a mathematically related public key and private key with different roles.",
+    "explanation_th": "วิธีทางรหัสลับที่ใช้กุญแจสาธารณะและกุญแจส่วนตัวซึ่งสัมพันธ์กัน แต่หน้าที่ขึ้นกับกลไก เช่น เข้ารหัสหรือสร้างลายมือชื่อ",
+    "exam_relevance": "Distinguish encryption from signing: recipient public key protects content; signer private key creates a signature.",
+    "exam_relevance_th": "แยกการเข้ารหัสกับการลงลายมือชื่อ กุญแจสาธารณะผู้รับปกป้องเนื้อหา ส่วนกุญแจส่วนตัวผู้ลงนามใช้สร้างลายมือชื่อ",
+    "example_en": "A sender uses the recipient's public encryption key; the recipient uses the private key to decrypt.",
+    "example_th": "ผู้ส่งใช้กุญแจสาธารณะสำหรับเข้ารหัสของผู้รับ และผู้รับใช้กุญแจส่วนตัวถอดรหัส",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 7,
+    "id": "VOC-CC26-D5-007",
+    "term": "Collision Resistance",
+    "acronym": null,
+    "objective": "5.1",
+    "category": "core_term",
+    "thai_meaning": "ความทนทานต่อการหาข้อมูลต่างกันที่ให้ค่าแฮชเดียวกัน",
+    "definition_en": "A hash-function property making it computationally infeasible to find two distinct inputs with the same digest.",
+    "explanation_th": "คุณสมบัติที่ทำให้การหาข้อมูลต่างกันสองชุดซึ่งให้ค่าแฮชเดียวกันทำได้ยากจนไม่เป็นไปได้ในทางคำนวณ ไม่ได้แปลว่าการชนกันไม่มีอยู่",
+    "exam_relevance": "Differentiate infeasible collision finding from impossible collisions and from the avalanche effect.",
+    "exam_relevance_th": "แยกการหาค่าชนกันที่ทำได้ยากจากการอ้างว่าไม่มีวันชนกัน และแยกจาก Avalanche effect",
+    "example_en": "A software publisher avoids MD5 when collision resistance is required.",
+    "example_th": "ผู้เผยแพร่ซอฟต์แวร์หลีกเลี่ยง MD5 เมื่อต้องการ Collision resistance",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 8,
+    "id": "VOC-CC26-D5-008",
+    "term": "Post-Quantum Cryptography",
+    "acronym": "PQC",
+    "objective": "5.1",
+    "category": "acronym",
+    "thai_meaning": "วิทยาการรหัสลับที่ออกแบบให้ต้านทานการโจมตีด้วยควอนตัม",
+    "definition_en": "Cryptographic methods designed to resist attacks by quantum-capable adversaries as well as conventional attackers.",
+    "explanation_th": "กลไกรหัสลับที่ออกแบบให้ต้านทานคู่โจมตีที่ใช้ควอนตัมและคอมพิวเตอร์ทั่วไป ใช้งานบนคอมพิวเตอร์ทั่วไปได้ ไม่ใช่การสื่อสารควอนตัม",
+    "exam_relevance": "Recognize the purpose and migration dependencies; stronger bulk encryption alone does not replace vulnerable public-key mechanisms.",
+    "exam_relevance_th": "เข้าใจจุดประสงค์และส่วนพึ่งพาระหว่างย้ายระบบ การเพิ่มความแข็งแกร่งการเข้ารหัสข้อมูลจำนวนมากไม่ได้แทนกลไกกุญแจสาธารณะที่เสี่ยง",
+    "example_en": "An organization inventories vulnerable public-key dependencies before planning migration.",
+    "example_th": "องค์กรสำรวจส่วนพึ่งพากุญแจสาธารณะที่เสี่ยงก่อนวางแผนย้ายระบบ",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 9,
+    "id": "VOC-CC26-D5-009",
+    "term": "Log Aggregation",
+    "acronym": null,
+    "objective": "5.2",
+    "category": "core_term",
+    "thai_meaning": "การรวบรวมบันทึกจากหลายแหล่ง",
+    "definition_en": "Collecting event records from multiple sources into a location or system for further use.",
+    "explanation_th": "การรวบรวมบันทึกเหตุการณ์จากหลายแหล่งเพื่อค้นหาและวิเคราะห์ต่อ การรวมบันทึกไม่เท่ากับตรวจพบหรือยืนยันการโจมตีแล้ว",
+    "exam_relevance": "Separate collecting records from monitoring them and correlating events; missing sources limit visibility.",
+    "exam_relevance_th": "แยกการรวบรวมจากการติดตามและเชื่อมโยงเหตุการณ์ แหล่งบันทึกที่ขาดทำให้มองเห็นไม่ครบ",
+    "example_en": "Authentication and application audit records are collected in a central service.",
+    "example_th": "บันทึกยืนยันตัวตนและบันทึกตรวจสอบแอปถูกรวมในบริการส่วนกลาง",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 10,
+    "id": "VOC-CC26-D5-010",
+    "term": "Security Information and Event Management",
+    "acronym": "SIEM",
+    "objective": "5.2",
+    "category": "acronym",
+    "thai_meaning": "ระบบจัดการข้อมูลและเหตุการณ์ความปลอดภัย",
+    "definition_en": "A system that collects and analyzes security-related information and events to support monitoring and investigation.",
+    "explanation_th": "ระบบที่รวบรวมและวิเคราะห์ข้อมูลกับเหตุการณ์ด้านความปลอดภัยเพื่อช่วยติดตามและสืบสวน การตอบสนองอัตโนมัติขึ้นกับการเชื่อมต่อ การตั้งค่า และอำนาจที่ให้ไว้",
+    "exam_relevance": "A correlated alert is a lead, not proof of compromise; distinguish analysis support from authorized blocking.",
+    "exam_relevance_th": "แจ้งเตือนที่เชื่อมโยงได้เป็นเบาะแส ไม่ใช่หลักฐานว่าถูกบุกรุกแล้ว แยกการช่วยวิเคราะห์จากอำนาจบล็อก",
+    "example_en": "A SIEM correlates sign-in and export records for an analyst to investigate.",
+    "example_th": "SIEM เชื่อมโยงบันทึกลงชื่อเข้าใช้กับการส่งออกให้นักวิเคราะห์ตรวจสอบ",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 11,
+    "id": "VOC-CC26-D5-011",
+    "term": "Security Event Triage",
+    "acronym": null,
+    "objective": "5.2",
+    "category": "core_term",
+    "thai_meaning": "การคัดกรองและจัดลำดับเหตุการณ์ความปลอดภัย",
+    "definition_en": "Initial assessment of reported security events to validate them and determine priority and appropriate routing.",
+    "explanation_th": "การประเมินเหตุการณ์เบื้องต้นเพื่อตรวจสอบความน่าเชื่อถือ จัดลำดับความสำคัญ และส่งต่อให้ผู้รับผิดชอบตามแผน",
+    "exam_relevance": "Apply the stated business impact and urgency criteria; alert volume alone does not establish priority.",
+    "exam_relevance_th": "ใช้เกณฑ์ผลกระทบและความเร่งด่วนที่ระบุ จำนวนแจ้งเตือนอย่างเดียวไม่กำหนดลำดับ",
+    "example_en": "An analyst prioritizes active unauthorized changes to a payment service over blocked probes on a training host.",
+    "example_th": "นักวิเคราะห์ให้การแก้ระบบชำระเงินโดยไม่ได้รับอนุญาตที่กำลังเกิดสำคัญกว่าการสแกนที่ถูกบล็อกบนเครื่องฝึก",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 12,
+    "id": "VOC-CC26-D5-012",
+    "term": "Event Correlation",
+    "acronym": null,
+    "objective": "5.2",
+    "category": "core_term",
+    "thai_meaning": "การเชื่อมโยงเหตุการณ์ตามบริบท",
+    "definition_en": "Relating observations from multiple records to identify potentially meaningful patterns or connections.",
+    "explanation_th": "การเชื่อมข้อมูลจากหลายบันทึกเพื่อหารูปแบบหรือความสัมพันธ์ที่อาจมีความหมาย ต้องตรวจบริบท เช่น บัญชี เวลา เครื่อง และ Session",
+    "exam_relevance": "Correlation suggests a relationship; proximity in time alone does not prove one attack or a causal link.",
+    "exam_relevance_th": "การเชื่อมโยงเสนอความสัมพันธ์ เวลาใกล้กันอย่างเดียวไม่พิสูจน์ว่าเป็นการโจมตีเดียวกันหรือมีเหตุและผล",
+    "example_en": "A sign-in and an export share the same account and session identifier.",
+    "example_th": "การลงชื่อเข้าใช้และส่งออกมีบัญชีและรหัส Session เดียวกัน",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 13,
+    "id": "VOC-CC26-D5-013",
+    "term": "Cyber Threat Intelligence",
+    "acronym": "CTI",
+    "objective": "5.2",
+    "category": "acronym",
+    "thai_meaning": "ข่าวกรองภัยคุกคามไซเบอร์",
+    "definition_en": "Threat information analyzed and contextualized to support security decisions.",
+    "explanation_th": "ข้อมูลภัยคุกคามที่ผ่านการวิเคราะห์และเพิ่มบริบทเพื่อสนับสนุนการตัดสินใจ ต้องพิจารณาความเกี่ยวข้อง ความทันเวลา และความน่าเชื่อถือ",
+    "exam_relevance": "Distinguish contextual intelligence from an unverified feed; information supports judgment rather than replacing it.",
+    "exam_relevance_th": "แยกข่าวกรองที่มีบริบทจาก Feed ที่ยังไม่ตรวจสอบ ข้อมูลช่วยตัดสินใจแต่ไม่แทนวิจารณญาณ",
+    "example_en": "An analyst uses a recent campaign report to guide a search for related artifacts.",
+    "example_th": "นักวิเคราะห์ใช้รายงานแคมเปญล่าสุดเป็นแนวทางค้นหาร่องรอยที่เกี่ยวข้อง",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 14,
+    "id": "VOC-CC26-D5-014",
+    "term": "Indicator of Compromise",
+    "acronym": "IOC",
+    "objective": "5.2",
+    "category": "acronym",
+    "thai_meaning": "ตัวบ่งชี้ที่อาจสัมพันธ์กับการบุกรุก",
+    "definition_en": "An observable artifact that can suggest malicious activity or compromise when interpreted in context.",
+    "explanation_th": "ร่องรอยที่สังเกตได้ซึ่งอาจบ่งชี้กิจกรรมอันตรายหรือการบุกรุกเมื่อพิจารณาบริบท การตรงกับตัวบ่งชี้เพียงอย่างเดียวไม่ยืนยันเหตุการณ์",
+    "exam_relevance": "Check indicator age and relevance; a reassigned or shared IP address is weak evidence by itself.",
+    "exam_relevance_th": "ตรวจอายุและความเกี่ยวข้องของตัวบ่งชี้ IP ที่ถูกจัดสรรใหม่หรือใช้ร่วมกันเป็นหลักฐานอ่อนหากใช้ลำพัง",
+    "example_en": "A reported malicious file hash is used to search historical endpoint records.",
+    "example_th": "ค่าแฮชไฟล์ที่รายงานว่าอันตรายถูกใช้ค้นบันทึกเครื่องปลายทางย้อนหลัง",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 15,
+    "id": "VOC-CC26-D5-015",
+    "term": "MITRE ATT&CK",
+    "acronym": null,
+    "objective": "5.2",
+    "category": "core_term",
+    "thai_meaning": "ฐานความรู้พฤติกรรมคู่โจมตีของ MITRE",
+    "definition_en": "A knowledge base of adversary tactics and techniques based on observed behavior.",
+    "explanation_th": "ฐานความรู้กลยุทธ์เชิงยุทธวิธีและเทคนิคของคู่โจมตีจากพฤติกรรมที่สังเกตได้ ใช้ช่วยอธิบายพฤติกรรมและประเมินช่องว่างการตรวจจับ ไม่ใช่เครื่องมือบล็อกเอง",
+    "exam_relevance": "A tactic describes why an adversary acts; a technique describes how the goal is pursued.",
+    "exam_relevance_th": "Tactic อธิบายเป้าหมายว่าทำไปเพื่ออะไร ส่วน Technique อธิบายวิธีดำเนินการ",
+    "example_en": "A team maps observed credential-access behavior to ATT&CK techniques.",
+    "example_th": "ทีมจับคู่พฤติกรรมเข้าถึงข้อมูลรับรองที่พบกับเทคนิคใน ATT&CK",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 16,
+    "id": "VOC-CC26-D5-016",
+    "term": "Incident Response Plan",
+    "acronym": "IRP",
+    "objective": "5.3",
+    "category": "acronym",
+    "thai_meaning": "แผนตอบสนองต่อเหตุการณ์ความปลอดภัย",
+    "definition_en": "A documented plan defining how an organization prepares for and manages security incidents.",
+    "explanation_th": "แผนที่กำหนดแนวทาง บทบาท การประสานงาน และการจัดการเหตุการณ์ขององค์กร ต้องดำเนินการตามอำนาจและนโยบายจัดการข้อมูลที่กำหนด",
+    "exam_relevance": "Follow the supplied plan and authority; knowing a response technique does not itself authorize its use.",
+    "exam_relevance_th": "ทำตามแผนและอำนาจที่ระบุ การรู้วิธีตอบสนองไม่ได้ให้อำนาจใช้วิธีนั้นโดยอัตโนมัติ",
+    "example_en": "An analyst sends relevant evidence to the designated incident lead through the approved channel.",
+    "example_th": "นักวิเคราะห์ส่งหลักฐานที่เกี่ยวข้องให้หัวหน้าเหตุการณ์ผ่านช่องทางที่อนุมัติ",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 17,
+    "id": "VOC-CC26-D5-017",
+    "term": "Preservation Hold",
+    "acronym": null,
+    "objective": "5.3",
+    "category": "core_term",
+    "thai_meaning": "คำสั่งระงับการลบข้อมูลที่ต้องสงวนไว้",
+    "definition_en": "A direction to retain specified records despite their normal deletion schedule until the hold is released.",
+    "explanation_th": "คำสั่งให้เก็บบันทึกที่ระบุไว้แม้ถึงกำหนดลบตามปกติ จนผู้มีอำนาจยกเลิกคำสั่ง ไม่ใช่ข้อกำหนดให้เก็บทุกข้อมูลตลอดไป",
+    "exam_relevance": "When a hold is explicitly active, preserve the specified records and controlled access rather than applying routine deletion.",
+    "exam_relevance_th": "เมื่อมีคำสั่งสงวนที่ยังมีผล ให้เก็บบันทึกที่ระบุและควบคุมการเข้าถึง แทนการลบตามรอบ",
+    "example_en": "Incident records are retained after their routine deletion date because an active hold applies.",
+    "example_th": "บันทึกเหตุการณ์ยังถูกเก็บหลังวันลบปกติเพราะมีคำสั่งสงวนที่ยังมีผล",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 18,
+    "id": "VOC-CC26-D5-018",
+    "term": "Containment",
+    "acronym": null,
+    "objective": "5.3",
+    "category": "core_term",
+    "thai_meaning": "การจำกัดขอบเขตและผลกระทบของเหตุการณ์",
+    "definition_en": "Actions that limit the spread or impact of a security incident while further response proceeds.",
+    "explanation_th": "การจำกัดการแพร่กระจายหรือผลกระทบระหว่างดำเนินการตอบสนอง ต้องพิจารณาอำนาจ ผลต่อบริการ และการรักษาหลักฐาน",
+    "exam_relevance": "Distinguish limiting spread from removing the cause and restoring normal service.",
+    "exam_relevance_th": "แยกการหยุดการแพร่กระจายออกจากการกำจัดสาเหตุและการคืนบริการปกติ",
+    "example_en": "An authorized responder isolates a spreading malware infection from the network.",
+    "example_th": "ผู้ตอบสนองที่ได้รับอนุญาตแยกเครื่องติดมัลแวร์ที่กำลังแพร่จากเครือข่าย",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 19,
+    "id": "VOC-CC26-D5-019",
+    "term": "Eradication",
+    "acronym": null,
+    "objective": "5.3",
+    "category": "core_term",
+    "thai_meaning": "การกำจัดสาเหตุและองค์ประกอบอันตราย",
+    "definition_en": "Removing the cause and malicious components of an incident as part of response.",
+    "explanation_th": "การกำจัดสาเหตุและองค์ประกอบอันตราย เช่น มัลแวร์หรือช่องทางเข้าที่ผู้โจมตีใช้ ไม่ใช่เพียงจำกัดการเชื่อมต่อ",
+    "exam_relevance": "Containment limits harm; eradication addresses the cause. Restoration alone does not prove the cause was removed.",
+    "exam_relevance_th": "Containment จำกัดความเสียหาย ส่วน Eradication จัดการสาเหตุ การกู้ระบบอย่างเดียวไม่ยืนยันว่าสาเหตุถูกกำจัด",
+    "example_en": "A response team removes malicious persistence before returning a system to service.",
+    "example_th": "ทีมตอบสนองกำจัดกลไกคงอยู่ของมัลแวร์ก่อนคืนระบบให้บริการ",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 20,
+    "id": "VOC-CC26-D5-020",
+    "term": "Functional Exercise",
+    "acronym": null,
+    "objective": "5.3",
+    "category": "core_term",
+    "thai_meaning": "การฝึกปฏิบัติเพื่อตรวจความสามารถในการดำเนินงาน",
+    "definition_en": "An exercise that validates operational readiness by having personnel perform functions in a simulated operational environment.",
+    "explanation_th": "การฝึกที่ให้ผู้รับผิดชอบปฏิบัติหน้าที่ในสภาพแวดล้อมจำลองเพื่อตรวจความพร้อม ต่างจากการอภิปรายว่าควรทำอย่างไร",
+    "exam_relevance": "Choose demonstrated operation when the gap concerns ability to execute; a tabletop can reveal decision gaps but does not demonstrate tool operation.",
+    "exam_relevance_th": "เลือกผลการปฏิบัติจริงเมื่อช่องว่างคือความสามารถดำเนินการ Tabletop ช่วยพบปัญหาการตัดสินใจแต่ไม่พิสูจน์การใช้เครื่องมือ",
+    "example_en": "The on-call team operates the isolation tool on an authorized lab endpoint and verifies the result.",
+    "example_th": "ทีมเวรใช้เครื่องมือแยกเครือข่ายบนเครื่องทดสอบที่อนุมัติและตรวจผล",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 21,
+    "id": "VOC-CC26-D5-021",
+    "term": "Asset Lifecycle Management",
+    "acronym": null,
+    "objective": "5.4",
+    "category": "core_term",
+    "thai_meaning": "การจัดการทรัพย์สินตลอดวงจรชีวิต",
+    "definition_en": "Managing assets from acquisition and deployment through operation, maintenance and retirement.",
+    "explanation_th": "การจัดการทรัพย์สินตั้งแต่จัดหา ติดตั้ง ใช้งาน บำรุงรักษา จนเลิกใช้ รวมผู้รับผิดชอบและการจัดการข้อมูล ไม่ใช่แค่ลงบัญชีทรัพย์สิน",
+    "exam_relevance": "An inventory removal does not establish safe disposal; consider the asset and its data throughout retirement.",
+    "exam_relevance_th": "การนำออกจากบัญชีไม่ยืนยันว่ากำจัดอย่างปลอดภัย ต้องพิจารณาทั้งทรัพย์สินและข้อมูลระหว่างเลิกใช้",
+    "example_en": "A retired drive is released only after its required sanitization is verified.",
+    "example_th": "สื่อที่เลิกใช้ถูกส่งต่อหลังตรวจยืนยัน Sanitization ที่กำหนดแล้วเท่านั้น",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 22,
+    "id": "VOC-CC26-D5-022",
+    "term": "End of Support",
+    "acronym": null,
+    "objective": "5.4",
+    "category": "core_term",
+    "thai_meaning": "การสิ้นสุดการสนับสนุนจากผู้จัดหา",
+    "definition_en": "The point at which a supplier stops providing specified support for a product under its stated policy.",
+    "explanation_th": "ช่วงที่ผู้จัดหาหยุดให้การสนับสนุนตามขอบเขตที่ประกาศ ต้องตรวจว่ารวมการแก้ช่องโหว่หรือไม่ ระบบอาจยังทำงานแม้หยุดสนับสนุน",
+    "exam_relevance": "Use explicit vendor facts; continued operation does not establish continued patch support or prove compromise.",
+    "exam_relevance_th": "ใช้ข้อเท็จจริงของผู้จัดหา การทำงานต่อได้ไม่ยืนยันว่าจะมีแพตช์ และไม่พิสูจน์ว่าถูกบุกรุกแล้ว",
+    "example_en": "A vendor announces that a platform will receive no further security fixes after a stated date.",
+    "example_th": "ผู้จัดหาประกาศว่าแพลตฟอร์มจะไม่ได้รับการแก้ความปลอดภัยหลังวันที่ระบุ",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 23,
+    "id": "VOC-CC26-D5-023",
+    "term": "Configuration Baseline",
+    "acronym": null,
+    "objective": "5.4",
+    "category": "core_term",
+    "thai_meaning": "ค่าตั้งต้นอ้างอิงที่อนุมัติของระบบ",
+    "definition_en": "A documented, approved set of configuration characteristics used as a reference for managing a system.",
+    "explanation_th": "ชุดลักษณะการตั้งค่าที่บันทึกและอนุมัติไว้สำหรับใช้อ้างอิงในการจัดการระบบ การเปลี่ยนที่อนุมัติอาจปรับค่าฐานได้",
+    "exam_relevance": "Compare observed state with the approved reference; a difference requires assessment, not an automatic compromise verdict.",
+    "exam_relevance_th": "เปรียบเทียบสภาพจริงกับค่าฐานที่อนุมัติ ความต่างต้องตรวจสอบ ไม่ใช่ตัดสินว่าถูกบุกรุกโดยอัตโนมัติ",
+    "example_en": "An administrator compares a server's settings with its approved baseline.",
+    "example_th": "ผู้ดูแลเปรียบเทียบการตั้งค่าเซิร์ฟเวอร์กับค่าฐานที่อนุมัติ",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 24,
+    "id": "VOC-CC26-D5-024",
+    "term": "Configuration Drift",
+    "acronym": null,
+    "objective": "5.4",
+    "category": "core_term",
+    "thai_meaning": "การเบี่ยงเบนของการตั้งค่าจากค่าฐาน",
+    "definition_en": "A difference between an asset's observed configuration and its established reference configuration.",
+    "explanation_th": "ความต่างระหว่างการตั้งค่าที่ตรวจพบกับค่าฐานอ้างอิง อาจเกิดจากการเปลี่ยนที่อนุมัติหรือไม่อนุมัติ จึงต้องตรวจบริบท",
+    "exam_relevance": "Check approved changes before treating drift as malicious; determine whether the reference also needs updating.",
+    "exam_relevance_th": "ตรวจการเปลี่ยนที่อนุมัติก่อนถือว่า Drift เป็นอันตราย และพิจารณาว่าต้องปรับข้อมูลอ้างอิงหรือไม่",
+    "example_en": "A check finds a service enabled that is absent from the recorded baseline.",
+    "example_th": "การตรวจพบว่าบริการหนึ่งเปิดอยู่ทั้งที่ไม่มีในค่าฐานที่บันทึก",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 25,
+    "id": "VOC-CC26-D5-025",
+    "term": "Change Control",
+    "acronym": null,
+    "objective": "5.4",
+    "category": "core_term",
+    "thai_meaning": "การควบคุมการเปลี่ยนแปลงระบบ",
+    "definition_en": "The process of assessing, authorizing, documenting and controlling changes to a system.",
+    "explanation_th": "กระบวนการประเมิน อนุมัติ บันทึก และควบคุมการเปลี่ยนระบบ เพื่อจัดการความเสี่ยงและตรวจว่าผลสอดคล้องกับสิ่งที่อนุมัติ",
+    "exam_relevance": "Distinguish permission to change from evidence that the completed change meets security and business requirements.",
+    "exam_relevance_th": "แยกการอนุญาตให้เปลี่ยนจากหลักฐานว่าผลที่เปลี่ยนแล้วตรงข้อกำหนดความปลอดภัยและธุรกิจ",
+    "example_en": "A firewall change is approved with tests of permitted and prohibited traffic.",
+    "example_th": "การเปลี่ยน Firewall ได้รับอนุมัติพร้อมการทดสอบทราฟฟิกที่อนุญาตและห้าม",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 26,
+    "id": "VOC-CC26-D5-026",
+    "term": "Rollback",
+    "acronym": null,
+    "objective": "5.4",
+    "category": "core_term",
+    "thai_meaning": "การย้อนกลับการเปลี่ยนแปลงระบบ",
+    "definition_en": "Returning a system to an earlier state using a planned recovery action when a change fails its specified criteria.",
+    "explanation_th": "การคืนระบบสู่สภาพก่อนหน้าด้วยขั้นตอนที่วางแผนไว้เมื่อการเปลี่ยนไม่ผ่านเกณฑ์ ต้องปฏิบัติตามเงื่อนไขและอำนาจที่อนุมัติ",
+    "exam_relevance": "Check the stated trigger and authorization, then verify restored service; authorization alone is not always an instruction to roll back immediately.",
+    "exam_relevance_th": "ตรวจเงื่อนไขกระตุ้นและอำนาจ แล้วตรวจบริการหลังคืนสภาพ การอนุญาตอย่างเดียวไม่ได้แปลว่าต้องย้อนกลับทันทีเสมอ",
+    "example_en": "A failed health check triggers the rollback required in the approved change plan.",
+    "example_th": "ผลตรวจสุขภาพล้มเหลวกระตุ้นการย้อนกลับที่แผนอนุมัติกำหนด",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 27,
+    "id": "VOC-CC26-D5-027",
+    "term": "Red Team",
+    "acronym": null,
+    "objective": "5.5",
+    "category": "core_term",
+    "thai_meaning": "ทีมจำลองคู่โจมตีเพื่อทดสอบความพร้อม",
+    "definition_en": "An authorized group that emulates adversary activity to assess security capabilities against agreed objectives.",
+    "explanation_th": "ทีมที่จำลองพฤติกรรมคู่โจมตีภายในขอบเขตและเป้าหมายที่อนุมัติ เพื่อประเมินความสามารถป้องกันและตอบสนอง",
+    "exam_relevance": "Identify adversary emulation and approved scope; red-team activity is not unrestricted permission to attack.",
+    "exam_relevance_th": "ระบุการจำลองคู่โจมตีและขอบเขตที่อนุมัติ การเป็น Red team ไม่ใช่สิทธิ์โจมตีได้โดยไร้ข้อจำกัด",
+    "example_en": "A red team attempts the agreed attack paths during an authorized exercise.",
+    "example_th": "Red team ทดสอบเส้นทางโจมตีที่ตกลงกันระหว่างการฝึกที่ได้รับอนุญาต",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 28,
+    "id": "VOC-CC26-D5-028",
+    "term": "Blue Team",
+    "acronym": null,
+    "objective": "5.5",
+    "category": "core_term",
+    "thai_meaning": "ทีมป้องกันและตรวจจับด้านความปลอดภัย",
+    "definition_en": "Personnel responsible for defending systems through activities such as monitoring, detection and response.",
+    "explanation_th": "ฝ่ายป้องกันระบบซึ่งทำงานติดตาม ตรวจจับ และตอบสนอง อาจร่วมประเมินผลการฝึกกับฝ่ายจำลองโจมตี",
+    "exam_relevance": "Recognize defensive responsibilities; tool output still requires interpretation and action under authority.",
+    "exam_relevance_th": "เข้าใจหน้าที่ฝ่ายป้องกัน ผลจากเครื่องมือยังต้องตีความและดำเนินการตามอำนาจ",
+    "example_en": "Defenders examine alerts generated by the authorized attack simulation.",
+    "example_th": "ฝ่ายป้องกันตรวจแจ้งเตือนที่เกิดจากการจำลองโจมตีที่อนุมัติ",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 29,
+    "id": "VOC-CC26-D5-029",
+    "term": "Purple Team",
+    "acronym": null,
+    "objective": "5.5",
+    "category": "core_term",
+    "thai_meaning": "การร่วมทดสอบระหว่างฝ่ายโจมตีและฝ่ายป้องกัน",
+    "definition_en": "A collaborative approach in which offensive and defensive participants share findings to improve security capabilities.",
+    "explanation_th": "แนวทางที่ฝ่ายจำลองโจมตีและฝ่ายป้องกันร่วมแบ่งปันผลเพื่อปรับปรุงความสามารถความปลอดภัย ไม่จำเป็นต้องเป็นทีมถาวรใหม่",
+    "exam_relevance": "Look for collaboration, feedback and verification rather than assuming every attack exercise is purple teaming.",
+    "exam_relevance_th": "มองหาความร่วมมือ การป้อนกลับ และตรวจผล ไม่ถือว่าการฝึกโจมตีทุกครั้งเป็น Purple teaming",
+    "example_en": "Attackers explain simulated steps, defenders repair a detection gap, and both retest.",
+    "example_th": "ฝ่ายโจมตีอธิบายขั้นตอนจำลอง ฝ่ายป้องกันแก้ช่องว่างการตรวจจับ แล้วร่วมทดสอบซ้ำ",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 30,
+    "id": "VOC-CC26-D5-030",
+    "term": "Vulnerability Scanning",
+    "acronym": null,
+    "objective": "5.5",
+    "category": "core_term",
+    "thai_meaning": "การสแกนหาช่องโหว่ที่เครื่องมือตรวจได้",
+    "definition_en": "Examining systems or applications for potential vulnerabilities using defined checks.",
+    "explanation_th": "การตรวจระบบหรือแอปเพื่อหาช่องโหว่ที่อาจมีอยู่ตามชุดการตรวจ ผลขึ้นกับขอบเขต สิทธิ์ และวิธีของเครื่องมือ ไม่รับรองว่าไม่มีข้อบกพร่องอื่น",
+    "exam_relevance": "Interpret a clean result within the checks performed; scanning is not proof that application logic is secure.",
+    "exam_relevance_th": "ตีความผลไม่พบปัญหาภายในขอบเขตที่ตรวจ การสแกนไม่พิสูจน์ว่าตรรกะแอปปลอดภัย",
+    "example_en": "A version scan reports no known-version findings but does not test business workflows.",
+    "example_th": "การสแกนเวอร์ชันไม่พบประเด็นที่รู้จัก แต่ไม่ได้ทดสอบขั้นตอนธุรกิจ",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 31,
+    "id": "VOC-CC26-D5-031",
+    "term": "Static Application Security Testing",
+    "acronym": "SAST",
+    "objective": "5.5",
+    "category": "acronym",
+    "thai_meaning": "การทดสอบความปลอดภัยแอปแบบไม่รันโปรแกรม",
+    "definition_en": "Analysis of application code or artifacts for security weaknesses without executing the application.",
+    "explanation_th": "การวิเคราะห์โค้ดหรือส่วนประกอบของแอปเพื่อหาจุดอ่อนโดยไม่รันแอป แตกต่างจากการส่งข้อมูลเข้าแอปที่กำลังทำงาน",
+    "exam_relevance": "Classify by how the test operates, not whether the tester happens to possess source code.",
+    "exam_relevance_th": "จำแนกตามวิธีทดสอบ ไม่ใช่เพียงว่าผู้ทดสอบมี Source code หรือไม่",
+    "example_en": "A team examines source code and compiled artifacts without starting the application.",
+    "example_th": "ทีมตรวจ Source code และไฟล์ที่คอมไพล์โดยไม่เริ่มรันแอป",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 32,
+    "id": "VOC-CC26-D5-032",
+    "term": "Dynamic Application Security Testing",
+    "acronym": "DAST",
+    "objective": "5.5",
+    "category": "acronym",
+    "thai_meaning": "การทดสอบความปลอดภัยแอประหว่างทำงาน",
+    "definition_en": "Testing a running application by interacting with it and analyzing its responses for security weaknesses.",
+    "explanation_th": "การทดสอบแอปที่กำลังทำงานด้วยการโต้ตอบและวิเคราะห์ผลตอบสนองเพื่อหาจุดอ่อน ไม่ได้จำแนกจากการไม่มี Source code เพียงอย่างเดียว",
+    "exam_relevance": "Recognize runtime interaction and distinguish it from nonexecuting code analysis.",
+    "exam_relevance_th": "สังเกตการโต้ตอบขณะโปรแกรมทำงาน และแยกจากการวิเคราะห์โค้ดโดยไม่รัน",
+    "example_en": "A tester submits requests to check whether a logged-out session token is rejected.",
+    "example_th": "ผู้ทดสอบส่งคำขอเพื่อตรวจว่า Token ของ Session ที่ออกจากระบบแล้วถูกปฏิเสธหรือไม่",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 33,
+    "id": "VOC-CC26-D5-033",
+    "term": "Threat Modeling",
+    "acronym": null,
+    "objective": "5.5",
+    "category": "core_term",
+    "thai_meaning": "การวิเคราะห์ภัยคุกคามจากแบบจำลองระบบ",
+    "definition_en": "Structured analysis of a system's assets, trust boundaries and potential threats to inform security decisions.",
+    "explanation_th": "การวิเคราะห์ทรัพย์สิน ขอบเขตความเชื่อถือ และภัยที่อาจเกิดกับระบบอย่างมีโครงสร้างเพื่อช่วยตัดสินใจ ควรทบทวนเมื่อระบบเปลี่ยน ไม่จำกัดแค่ครั้งเดียวตอนออกแบบ",
+    "exam_relevance": "Choose modeling when the task is to understand changed threats before choosing controls; a version scan answers a different question.",
+    "exam_relevance_th": "เลือกการทำแบบจำลองเมื่อจำเป็นต้องเข้าใจภัยที่เปลี่ยนก่อนเลือกมาตรการ การสแกนเวอร์ชันตอบอีกประเด็นหนึ่ง",
+    "example_en": "A partner upload feature leads the team to revisit trust boundaries and attack paths.",
+    "example_th": "การเพิ่มให้คู่ค้าอัปโหลดทำให้ทีมทบทวนขอบเขตความเชื่อถือและเส้นทางโจมตี",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      }
+    ]
+  },
+  {
+    "itemNum": 34,
+    "id": "VOC-CC26-D5-034",
+    "term": "Insider Risk",
+    "acronym": null,
+    "objective": "5.2",
+    "category": "core_term",
+    "thai_meaning": "ความเสี่ยงจากบุคคลภายใน",
+    "definition_en": "Potential harm arising from people who have or had authorized access, whether their actions are intentional or unintentional.",
+    "explanation_th": "โอกาสเกิดความเสียหายจากบุคคลที่มีหรือเคยมีสิทธิ์เข้าถึง อาจเกิดจากเจตนาร้ายหรือความผิดพลาด ไม่ควรถือว่าคนในทุกคนเป็นผู้โจมตีโดยเจตนา",
+    "exam_relevance": "Distinguish malicious intent from accidental insider actions; both can create risk despite different motivations.",
+    "exam_relevance_th": "แยกเจตนาร้ายออกจากความผิดพลาดของบุคคลภายใน ทั้งสองสร้างความเสี่ยงได้แม้แรงจูงใจต่างกัน",
+    "example_en": "One employee deliberately sells records while another accidentally sends a report to the wrong recipient.",
+    "example_th": "พนักงานคนหนึ่งขายข้อมูลโดยเจตนา ขณะที่อีกคนส่งรายงานผิดผู้รับโดยพลาด",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      },
+      {
+        "field": "id / objective sequence",
+        "severity": "MINOR",
+        "issue": "Out of sequential objective order in file",
+        "reason": "VOC-CC26-D5-034 (Insider Risk) is mapped to Objective 5.2 but indexed at the end of the array after 5.5 entries.",
+        "recommendation": "Cosmetic only; no functional impact on UI filtering."
+      }
+    ]
+  },
+  {
+    "itemNum": 35,
+    "id": "VOC-CC26-D5-035",
+    "term": "Tailgating",
+    "acronym": null,
+    "objective": "5.5",
+    "category": "core_term",
+    "thai_meaning": "การตามผู้มีสิทธิ์ผ่านจุดควบคุมเข้าออก",
+    "definition_en": "Gaining physical entry by following an authorized person through a controlled access point without independently satisfying entry requirements.",
+    "explanation_th": "การเข้าพื้นที่โดยตามผู้มีสิทธิ์ผ่านจุดควบคุมโดยไม่ได้ผ่านข้อกำหนดเข้าใช้ด้วยตนเอง ความคุ้นเคยหรือการเดินตามไม่แทนการตรวจสิทธิ์",
+    "exam_relevance": "Recognize the entry mechanism; an impersonation claim may accompany it but is a separate identity pretext.",
+    "exam_relevance_th": "ระบุกลไกการเข้าพื้นที่ การอ้างตัวเป็นผู้อื่นอาจเกิดร่วมกันแต่เป็นข้ออ้างด้านตัวตนที่แยกจากการเดินตาม",
+    "example_en": "During an approved physical test, a tester follows an employee through a badge-controlled door without presenting a badge.",
+    "example_th": "ระหว่างการทดสอบที่อนุมัติ ผู้ทดสอบตามพนักงานผ่านประตูควบคุมบัตรโดยไม่แสดงบัตรของตน",
+    "status": "PASS_WITH_MINOR",
+    "findings": [
+      {
+        "field": "confused_with",
+        "severity": "MINOR",
+        "issue": "Empty confused_with array",
+        "reason": "Domains 1-4 maintain populated confused_with arrays for all 403 entries. Audit matrix documented potential confusions.",
+        "recommendation": "Populate confused_with in future metadata refinement pass."
+      },
+      {
+        "field": "id / objective sequence",
+        "severity": "MINOR",
+        "issue": "Out of sequential objective order in file",
+        "reason": "VOC-CC26-D5-035 (Tailgating) is mapped to Objective 5.5 but indexed at the end of the array after 5.5 entries.",
+        "recommendation": "Cosmetic only; no functional impact on UI filtering."
+      }
+    ]
+  }
+]
