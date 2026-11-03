@@ -89,3 +89,129 @@ Status definitions:
 - **Partially Covered:** 0
 - **Unresolved:** 0
 - **Overall Coverage Ratio:** **100% (52/52)**
+
+
+---
+
+# Learning Slides coverage addendum — 2026-11-03
+
+The preceding Reading Notes matrix is preserved. This addendum independently maps the fourteen Domain 5 requirement bullets, including examples, to the new 11 lessons / 59 bilingual slides. Local slide numbers are not ISC2 requirement IDs.
+
+|Official objective|Requirement paraphrase|Meaningful teaching destination|
+|---|---|---|
+|5.1|Data handling: classification, labeling, masking and sanitization|lesson-d5-01-data-handling|
+|5.1|Encryption: symmetric, asymmetric, hashing and quantum-resistant cryptography|lesson-d5-02-cryptography|
+|5.2|Logging and monitoring security events|lesson-d5-03-monitoring|
+|5.2|Security event triage: use cases, prioritization and correlation|lesson-d5-04-event-triage|
+|5.2|Threat actors: types and motivations|lesson-d5-05-threat-intelligence|
+|5.2|Cyber threat intelligence|lesson-d5-05-threat-intelligence|
+|5.2|Threat frameworks|lesson-d5-05-threat-intelligence|
+|5.3|Data-handling policy applied while executing the IRP|lesson-d5-06-incident-response|
+|5.3|IR exercises: testing and tabletop|lesson-d5-07-response-exercises|
+|5.4|Asset lifecycle including EOL devices and software|lesson-d5-08-asset-lifecycle|
+|5.4|Configuration and change management|lesson-d5-09-configuration-change|
+|5.5|Readiness: blue, purple and red teaming|lesson-d5-10-security-testing|
+|5.5|Application testing: scanning, static, dynamic and threat modeling|lesson-d5-10-security-testing|
+|5.5|Physical testing: phishing, tailgating and impersonation|lesson-d5-11-physical-human-testing|
+
+## Separate AI/application mapping
+
+|Official guidance cluster|Destinations and treatment|
+|---|---|
+|AI-assisted SIEM, alert fatigue, CTI/framework triage, routine block versus human intervention|L03 S04/S06; L04 S01–S05; L05; L06 and L07 incident/exercise application|
+|Security of AI workspace: public AI leakage, classification/masking/sanitization, encryption including quantum-resistant; lifecycle/config/change until EOL|L01 S02/S03/S05; L02 S07; L08 S01–S04; L09 S03/S04|
+|Continuous readiness/application testing of AI-integrated defenses; phishing/tailgating and human boundaries|L10 S01/S02/S06; L11 S02–S04|
+
+## Exact slide-to-source trace
+
+### lesson-d5-01-data-handling
+
+- `slide-d5-01-01-classification-labels` — S02–S04; transcript paragraphs 3–10; Domain 5.md §2; data-handling gap supplement
+- `slide-d5-01-02-data-states` — S08–S10; transcript data-at-rest/transit/in-use; Domain 5.md §3.10; official AI workspace guidance
+- `slide-d5-01-03-masking` — S05; transcript masking example corrected; D5 surm.md §19 supplement; official AI data-handling guidance
+- `slide-d5-01-04-sanitization` — S06; transcript secure/cryptographic erase; NIST SP 800-88r2 supplementary correction
+- `slide-d5-01-05-decision` — Original scenario from S02–S06 and official Domain 5 AI workspace guidance
+
+### lesson-d5-02-cryptography
+
+- `slide-d5-02-01-encryption-boundary` — S07; transcript encryption purpose corrected; Domain 5.md §§2.1–2.2; D5 surm.md §19
+- `slide-d5-02-02-symmetric` — S11/S13/S21; Domain 5.md §2.3; D5 surm.md §19
+- `slide-d5-02-03-asymmetric-roles` — S12–S16; transcript private-key signing analogy corrected; Domain 5.md §§2.4/2.6
+- `slide-d5-02-04-hybrid` — S09/S13/S14; D5 surm.md §20; transcript TLS/RSA overgeneralization corrected
+- `slide-d5-02-05-trusted-hashes` — S19–S22; Domain 5.md §2.5; D5 surm.md §19
+- `slide-d5-02-06-signatures-custody` — S12/S17/S18; Domain 5.md §§2.6–2.7; D5 surm.md §§19–20
+- `slide-d5-02-07-quantum-resistant` — Official 5.1 encryption bullet and AI workspace guidance; NIST FIPS 203 supplement; absent substantive source coverage
+- `slide-d5-02-08-decision` — Original scenario based on S12/S19–S22; Domain 5.md §2.5–2.6
+
+### lesson-d5-03-monitoring
+
+- `slide-d5-03-01-record-observe` — S28–S30; Domain 5.md §§3.1–3.6
+- `slide-d5-03-02-trustworthy-telemetry` — Domain 5.md §3.2; D5 surm.md §21
+- `slide-d5-03-03-collection-retention` — S28–S30; Domain 5.md §§3.3–3.6
+- `slide-d5-03-04-siem-chain` — S32/S37; D5 surm.md §§21–23; official AI SIEM guidance
+- `slide-d5-03-05-coverage-tools` — S31–S33; Domain 5.md §§3.7–3.11
+- `slide-d5-03-06-decision` — Original scenario; official Domain 5 AI monitoring and human intervention guidance
+
+### lesson-d5-04-event-triage
+
+- `slide-d5-04-01-event-alert-incident` — S34–S35; Domain 5.md §4.1; official AI automated-block distinction
+- `slide-d5-04-02-use-cases` — S35; Domain 5.md §4.6; D5 surm.md §23
+- `slide-d5-04-03-detection-errors` — Domain 5.md §4.3; D5 sum.md §15
+- `slide-d5-04-04-priority-context` — S36; Domain 5.md §4.4; D5 surm.md §23
+- `slide-d5-04-05-decision` — S37; Domain 5.md §4.5; original scenario
+
+### lesson-d5-05-threat-intelligence
+
+- `slide-d5-05-01-actor-motivations` — S38–S39; Domain 5.md §5.1
+- `slide-d5-05-02-insider-uncertainty` — S38–S39; D5 surm.md §26; official AI workspace application
+- `slide-d5-05-03-intelligence-context` — S40–S41; Domain 5.md §§5.2–5.3; D5 surm.md §24
+- `slide-d5-05-04-attack-framework` — S42–S44; Domain 5.md §§5.4–5.5; MITRE ATT&CK
+- `slide-d5-05-05-decision` — Original scenario from S40–S41; D5 surm.md §24
+
+### lesson-d5-06-incident-response
+
+- `slide-d5-06-01-irp-authority` — S45–S48; Domain 5.md §6; official 5.3
+- `slide-d5-06-02-prepare` — S48; Domain 5.md §6.3 Preparation; NIST SP 800-61r3
+- `slide-d5-06-03-detection-evidence` — S48; Domain 5.md §6.3 Detection; D5 surm.md §26
+- `slide-d5-06-04-contain-eradicate` — S46/S48; Domain 5.md §§6.3–6.5
+- `slide-d5-06-05-recover-improve` — S46–S48; Domain 5.md §6.3 Recovery/Post-Incident
+- `slide-d5-06-06-decision` — Original scenario from S46–S48; Domain 5.md §6.5
+
+### lesson-d5-07-response-exercises
+
+- `slide-d5-07-01-tabletop` — S49–S50; Domain 5.md §§7.1–7.2
+- `slide-d5-07-02-technical-validation` — S51; Domain 5.md §§7.3–7.4
+- `slide-d5-07-03-exercise-improvement` — S49–S51; D5 surm.md §27; official AI exercises guidance
+- `slide-d5-07-04-decision` — Original scenario from S50–S51
+
+### lesson-d5-08-asset-lifecycle
+
+- `slide-d5-08-01-inventory-ownership` — S52–S54; Domain 5.md §§8.1–8.2; official AI asset guidance
+- `slide-d5-08-02-maintain-retire` — S54; Domain 5.md §8.3; D5 surm.md §28
+- `slide-d5-08-03-eol-options` — S55–S56; Domain 5.md §9; D5 surm.md §29
+- `slide-d5-08-04-decision` — Original scenario from S55–S56
+
+### lesson-d5-09-configuration-change
+
+- `slide-d5-09-01-baseline-drift` — S57–S58/S60–S61; Domain 5.md §10; NIST SP 800-128
+- `slide-d5-09-02-patch-risk` — S59–S61; Domain 5.md §10.4; D5 surm.md §31
+- `slide-d5-09-03-controlled-change` — S62–S64; Domain 5.md §11; NIST SP 800-128
+- `slide-d5-09-04-emergency-rollback` — D5 surm.md §32; Domain 5.md §11.2 supplemental rollback
+- `slide-d5-09-05-decision` — Original scenario from S57–S64
+
+### lesson-d5-10-security-testing
+
+- `slide-d5-10-01-team-roles` — S65–S68; Domain 5.md §12; NIST SP 800-115
+- `slide-d5-10-02-purple-feedback` — S68–S69; D5 surm.md §33
+- `slide-d5-10-03-scanning-limits` — S70; Domain 5.md §§13.1–13.2
+- `slide-d5-10-04-static-dynamic` — S71–S73; Domain 5.md §§13.3–13.5
+- `slide-d5-10-05-threat-model` — S74; Domain 5.md §13.6; D5 surm.md §34
+- `slide-d5-10-06-ai-defense-testing` — Official Domain 5 AI continuous testing guidance; S65–S74 application
+- `slide-d5-10-07-decision` — Original scenario from S71–S73; Domain 5.md §13.4
+
+### lesson-d5-11-physical-human-testing
+
+- `slide-d5-11-01-authorized-boundaries` — S75; Domain 5.md §14.1; NIST SP 800-115
+- `slide-d5-11-02-phishing-test` — S76; Domain 5.md §14.2; official AI automated threats application
+- `slide-d5-11-03-tailgating-impersonation` — S77–S78; Domain 5.md §§14.3–14.5
+- `slide-d5-11-04-decision` — Original scenario from S75–S78; Domain 5.md §14

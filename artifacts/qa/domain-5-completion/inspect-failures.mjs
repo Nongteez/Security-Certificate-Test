@@ -1,0 +1,1 @@
+import fs from 'node:fs';const s=fs.readFileSync('artifacts/qa/domain-5-completion/shared-regressions.tap','utf8');for(const b of s.split(/(?=^not ok )/m).slice(1)){const t=b.split(/(?=^# Subtest:)/m)[0];if(/live-preview|visual-remediation/.test(t))console.log(t.slice(0,1900));}

@@ -1,0 +1,597 @@
+[
+  {
+    "id": "FC-001",
+    "severity": "LOW",
+    "domain": 1,
+    "objective": "1.1",
+    "lessonId": "lesson-d1-02-aaa-mfa",
+    "slideId": "slide-05-factor-families",
+    "field": "blocks.2.text",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-02-aaa-mfa.json",
+    "current": {
+      "field": "blocks.2.text",
+      "en": "A knowledge factor uses a secret the claimant knows, such as a password or PIN. A possession factor demonstrates control of an authenticator, such as a registered hardware security key; simply carrying an unrelated object is not authentication evidence. An inherence factor uses a biometric characteristic such as a fingerprint. For NIST digital authentication, a biometric is not a standalone authenticator: it is used with a physical authenticator, for example to activate a security key. That combines possession with inherence. Possession can be compromised without physically stealing a device, and biometrics are neither unforgeable nor a guarantee of correct identification. Factor choice reduces particular risks; it does not remove all risk.",
+      "th": "Knowledge factor ใช้ความลับที่ผู้ร้องขอรู้ เช่น รหัสผ่านหรือ PIN ส่วน Possession factor แสดงการควบคุมเครื่องมือยืนยันตัวตน เช่น Hardware security key ที่ลงทะเบียนไว้ การพกสิ่งของที่ไม่เกี่ยวข้องไม่ใช่หลักฐานยืนยันตัวตน Inherence factor ใช้ลักษณะทางชีวมิติ เช่น ลายนิ้วมือ สำหรับการยืนยันตัวตนดิจิทัลตาม NIST ชีวมิติไม่ใช่เครื่องมือยืนยันตัวตนที่ใช้เดี่ยว ๆ แต่ใช้ร่วมกับเครื่องมือทางกายภาพ เช่น ใช้ลายนิ้วมือเปิดใช้งาน Security key จึงรวม Possession กับ Inherence เข้าด้วยกัน ปัจจัยสิ่งที่มีอาจถูกโจมตีได้โดยไม่ต้องขโมยอุปกรณ์จริง และชีวมิติไม่ได้ปลอมแปลงไม่ได้หรือรับประกันการระบุตัวตนถูกต้องเสมอ การเลือกปัจจัยช่วยลดความเสี่ยงบางแบบ ไม่ได้ขจัดความเสี่ยงทั้งหมด"
+    },
+    "why": "Thai uses an awkward double negative for forgeability. Meaning can be recovered but learners must parse two negatives.",
+    "source": "https://pages.nist.gov/800-63-4/sp800-63b.html §§2, 3.2.3",
+    "proposed": {
+      "en": "A knowledge factor uses a secret the claimant knows, such as a password or PIN. A possession factor demonstrates control of an authenticator, such as a registered hardware security key; simply carrying an unrelated object is not authentication evidence. An inherence factor uses a biometric characteristic such as a fingerprint. For NIST digital authentication, a biometric is not a standalone authenticator: it is used with a physical authenticator, for example to activate a security key. That combines possession with inherence. Possession can be compromised without physically stealing a device, and biometrics are neither unforgeable nor a guarantee of correct identification. Factor choice reduces particular risks; it does not remove all risk.",
+      "th": "Knowledge factor ใช้ความลับที่ผู้ร้องขอรู้ เช่น รหัสผ่านหรือ PIN ส่วน Possession factor แสดงการควบคุมเครื่องมือยืนยันตัวตน เช่น Hardware security key ที่ลงทะเบียนไว้ การพกสิ่งของที่ไม่เกี่ยวข้องไม่ใช่หลักฐานยืนยันตัวตน Inherence factor ใช้ลักษณะทางชีวมิติ เช่น ลายนิ้วมือ สำหรับการยืนยันตัวตนดิจิทัลตาม NIST ชีวมิติไม่ใช่เครื่องมือยืนยันตัวตนที่ใช้เดี่ยว ๆ แต่ใช้ร่วมกับเครื่องมือทางกายภาพ เช่น ใช้ลายนิ้วมือเปิดใช้งาน Security key จึงรวม Possession กับ Inherence เข้าด้วยกัน ปัจจัยสิ่งที่มีอาจถูกโจมตีได้โดยไม่ต้องขโมยอุปกรณ์จริง และชีวมิติอาจถูกปลอมแปลงได้ อีกทั้งไม่รับประกันว่าการระบุตัวตนจะถูกต้องเสมอ การเลือกปัจจัยช่วยลดความเสี่ยงบางแบบ ไม่ได้ขจัดความเสี่ยงทั้งหมด"
+    },
+    "learnerImpact": "Thai uses an awkward double negative for forgeability. Meaning can be recovered but learners must parse two negatives.",
+    "disposition": "Documented proposal only; production unchanged; human editorial review pending"
+  },
+  {
+    "id": "FC-002",
+    "severity": "MEDIUM",
+    "domain": 1,
+    "objective": "1.1",
+    "lessonId": "lesson-d1-01-cia-triad",
+    "slideId": "slide-02-cia-overview",
+    "field": "visual.takeaway",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-01-cia-triad.json",
+    "current": {
+      "field": "visual.takeaway",
+      "en": "Security controls work together: strong encryption cannot help if systems are down or records are tampered with.",
+      "th": "มาตรการความปลอดภัยต้องทำงานร่วมกัน การเข้ารหัสที่ดีจะไร้ผลหากระบบล่ม หรือข้อมูลถูกแก้ไขทำลาย"
+    },
+    "why": "Encryption can still protect confidentiality during an outage. Saying it cannot help or is useless conflicts with the later correctly qualified authenticated-encryption explanation.",
+    "source": "https://csrc.nist.gov/glossary/term/availability; https://csrc.nist.gov/glossary/term/integrity; Domain 1.md §2.2 and D1 Surm.md §2.1",
+    "proposed": {
+      "en": "Security controls work together: encryption can protect confidentiality, but it does not by itself ensure availability; integrity protection requires an appropriate mechanism.",
+      "th": "มาตรการความปลอดภัยต้องทำงานร่วมกัน การเข้ารหัสช่วยรักษาความลับ แต่เพียงอย่างเดียวไม่ได้รับประกันความพร้อมใช้งาน ส่วนการปกป้อง Integrity ต้องใช้กลไกที่เหมาะสม"
+    },
+    "learnerImpact": "Encryption can still protect confidentiality during an outage. Saying it cannot help or is useless conflicts with the later correctly qualified authenticated-encryption explanation.",
+    "disposition": "Documented proposal only; production unchanged; human editorial review pending"
+  },
+  {
+    "id": "FC-003",
+    "severity": "MEDIUM",
+    "domain": 1,
+    "objective": "1.1",
+    "lessonId": "lesson-d1-01-cia-triad",
+    "slideId": "slide-02-cia-overview",
+    "field": "visual.pillars.1.summary",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-01-cia-triad.json",
+    "current": {
+      "field": "visual.pillars.1.summary",
+      "en": "Protect data from unauthorized modification, tampering, or deletion.",
+      "th": "ป้องกันการแก้ไข ดัดแปลง หรือทำลายข้อมูล ด้วยแฮชและลายมือชื่อดิจิทัล"
+    },
+    "why": "Thai adds hashes as a means of preventing modification, whereas a plain hash helps detect change against a trusted baseline. English states the goal without that causal claim. Reading and expanded Info expose this sentence.",
+    "source": "https://csrc.nist.gov/glossary/term/integrity; Domain 1.md §2.2; D1 Surm.md §2.2",
+    "proposed": {
+      "en": "Protect data from unauthorized modification, tampering or deletion; trusted hashes help detect changes, while signatures help verify signed-data integrity and origin.",
+      "th": "ปกป้องข้อมูลจากการแก้ไข ดัดแปลง หรือลบโดยไม่ได้รับอนุญาต Hash ที่เทียบกับค่าอ้างอิงที่เชื่อถือได้ช่วยตรวจพบการเปลี่ยนแปลง ส่วนลายมือชื่อดิจิทัลช่วยตรวจสอบ Integrity และแหล่งที่มาของข้อมูลที่ลงนาม"
+    },
+    "learnerImpact": "Thai adds hashes as a means of preventing modification, whereas a plain hash helps detect change against a trusted baseline. English states the goal without that causal claim. Reading and expanded Info expose this sentence.",
+    "disposition": "Documented proposal only; production unchanged; human editorial review pending"
+  },
+  {
+    "id": "FC-004",
+    "severity": "MEDIUM",
+    "domain": 1,
+    "objective": "1.1",
+    "lessonId": "lesson-d1-01-cia-triad",
+    "slideId": "slide-05-availability",
+    "field": "blocks.0.text",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-01-cia-triad.json",
+    "current": {
+      "field": "blocks.0.text",
+      "en": "Definition: Availability ensures that authorized users have prompt, dependable access to vital information, business applications, and infrastructure whenever required for operations. Data that is perfectly encrypted but inaccessible when needed provides zero business value.",
+      "th": "คำจำกัดความ: Availability คือการรับรองว่าผู้ใช้ที่ได้รับอนุญาตจะสามารถเข้าถึงข้อมูลสำคัญ แอปพลิเคชัน และโครงสร้างพื้นฐานได้อย่างรวดเร็วและต่อเนื่องเมื่อจำเป็นต่อการทำงาน ข้อมูลที่ถูกเข้ารหัสไว้อย่างสมบูรณ์แบบแต่ไม่สามารถเปิดใช้งานได้ ย่อมไม่มีมูลค่าต่อธุรกิจเลย"
+    },
+    "why": "Zero business value is an unsupported absolute. Temporarily unavailable data can retain future recovery, evidentiary or regulatory value. Teach the operational harm without asserting total loss of value.",
+    "source": "https://csrc.nist.gov/glossary/term/availability; Domain 1.md §2.3",
+    "proposed": {
+      "en": "Availability means timely, reliable access to information, applications and infrastructure by authorized users when required. Encryption alone does not ensure that access: unavailable information cannot support the immediate task, even if it retains other or future value.",
+      "th": "Availability คือการให้ผู้มีสิทธิ์เข้าถึงข้อมูล แอปพลิเคชัน และโครงสร้างพื้นฐานได้อย่างเชื่อถือได้ในเวลาที่จำเป็น การเข้ารหัสเพียงอย่างเดียวไม่ได้รับประกันการเข้าถึง ข้อมูลที่ใช้ไม่ได้ย่อมไม่ช่วยงานที่ต้องทำทันที แม้อาจยังมีคุณค่าในด้านอื่นหรือในอนาคต"
+    },
+    "learnerImpact": "Zero business value is an unsupported absolute. Temporarily unavailable data can retain future recovery, evidentiary or regulatory value. Teach the operational harm without asserting total loss of value.",
+    "disposition": "Documented proposal only; production unchanged; human editorial review pending"
+  },
+  {
+    "id": "FC-005",
+    "severity": "MEDIUM",
+    "domain": 1,
+    "objective": "1.1",
+    "lessonId": "lesson-d1-01-cia-triad",
+    "slideId": "slide-08-takeaways",
+    "field": "blocks.1.rows.2.3",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-01-cia-triad.json",
+    "current": {
+      "field": "blocks.1.rows.2.3",
+      "en": "Trap: Backups restore availability, but backups alone do not keep data secret.",
+      "th": "กับดัก: การสำรองข้อมูลช่วยกู้ความพร้อมใช้งาน แต่ไม่ได้ช่วยรักษาความลับ"
+    },
+    "why": "Thai omits alone and reads as a blanket assertion that backup does not help confidentiality. English and Presentation correctly distinguish backup alone from separately protecting backup secrecy.",
+    "source": "https://csrc.nist.gov/glossary/term/availability; Domain 1.md §2.3; this slide Presentation qualifier",
+    "proposed": {
+      "en": "Backups support recovery of availability, but backups alone do not ensure secrecy; protect backup access and encryption separately.",
+      "th": "Backup ช่วยกู้คืนความพร้อมใช้งาน แต่ Backup เพียงอย่างเดียวไม่ได้รับประกันการรักษาความลับ ต้องปกป้องสิทธิ์เข้าถึงและการเข้ารหัสข้อมูลสำรองด้วย"
+    },
+    "learnerImpact": "Thai omits alone and reads as a blanket assertion that backup does not help confidentiality. English and Presentation correctly distinguish backup alone from separately protecting backup secrecy.",
+    "disposition": "Documented proposal only; production unchanged; human editorial review pending"
+  },
+  {
+    "id": "FC-006",
+    "severity": "LOW",
+    "domain": 1,
+    "objective": "1.1",
+    "lessonId": "lesson-d1-01-cia-triad",
+    "slideId": "slide-08-takeaways",
+    "field": "blocks.0.text",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-01-cia-triad.json",
+    "current": {
+      "field": "blocks.0.text",
+      "en": "The CIA Triad is the touchstone for cybersecurity risk analysis and control design. Master these diagnostic indicators, primary safeguards, and common exam traps.",
+      "th": "สามเหลี่ยม CIA คือรากฐานสำคัญที่สุดสำหรับการวิเคราะห์ความเสี่ยงและการออกแบบมาตรการความปลอดภัย จดจำคำสำคัญในข้อสอบ มาตรการหลัก และกับดักที่พบบ่อยให้แม่นยำ"
+    },
+    "why": "Common exam traps implies exam-frequency evidence that is not supplied. The official outline establishes scope, not frequencies or actual question patterns.",
+    "source": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline Domain 1 §1.1",
+    "proposed": {
+      "en": "The CIA Triad supports cybersecurity risk analysis and control design. Use the following learning cues and safeguard examples to distinguish the goals; these are authored study aids, not claims about exam-question frequency.",
+      "th": "CIA Triad สนับสนุนการวิเคราะห์ความเสี่ยงและการออกแบบมาตรการความปลอดภัย ใช้คำช่วยจำและตัวอย่างมาตรการต่อไปนี้เพื่อแยกแต่ละเป้าหมาย ตารางนี้เป็นสื่อช่วยเรียนที่ผู้เขียนจัดทำ ไม่ใช่ข้ออ้างเกี่ยวกับความถี่ของคำถามในข้อสอบ"
+    },
+    "learnerImpact": "Common exam traps implies exam-frequency evidence that is not supplied. The official outline establishes scope, not frequencies or actual question patterns.",
+    "disposition": "Documented proposal only; production unchanged; human editorial review pending"
+  },
+  {
+    "id": "FC-007",
+    "severity": "MEDIUM",
+    "domain": 1,
+    "objective": "1.1",
+    "lessonId": "lesson-d1-01-cia-triad",
+    "slideId": "slide-06-compound-impact",
+    "field": "visual.lead",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-01-cia-triad.json",
+    "current": {
+      "field": "visual.lead",
+      "en": "Attacks rarely hit one pillar in isolation. A complex intrusion can cascade across all three security goals.",
+      "th": "การโจมตีจริงมักไม่กระทบเพียงเสาหลักเดียว เหตุบุกรุกที่ซับซ้อนมักส่งผลกระทบต่อเนื่องครบทั้งสามด้าน"
+    },
+    "why": "English says a complex intrusion can cascade across all three goals; Thai says it often does. Neither source establishes that frequency. The teaching need is possibility of multiple harms.",
+    "source": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline §1.1; Domain 1.md §2.4",
+    "proposed": {
+      "en": "An incident can affect more than one CIA goal. The example below illustrates distinct harms; it is not a required sequence or a claim about how often all three occur.",
+      "th": "เหตุการณ์หนึ่งอาจกระทบเป้าหมาย CIA มากกว่าหนึ่งด้าน ตัวอย่างต่อไปนี้แสดงความเสียหายที่ต่างกัน ไม่ใช่ลำดับบังคับหรือข้ออ้างว่าเหตุการณ์จะกระทบครบทั้งสามด้านบ่อยเพียงใด"
+    },
+    "learnerImpact": "English says a complex intrusion can cascade across all three goals; Thai says it often does. Neither source establishes that frequency. The teaching need is possibility of multiple harms.",
+    "disposition": "Documented proposal only; production unchanged; human editorial review pending"
+  },
+  {
+    "id": "FC-008",
+    "severity": "LOW",
+    "domain": 1,
+    "objective": "1.1",
+    "lessonId": "lesson-d1-01-cia-triad",
+    "slideId": "slide-09-ai-training-integrity",
+    "field": "blocks.2.items.0",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-01-cia-triad.json",
+    "current": {
+      "field": "blocks.2.items.0",
+      "en": "1. Training labels: An attacker relabels urgent tickets as routine. Impact on Data integrity: The training examples now teach the wrong priority.",
+      "th": "1. Training labels: ผู้โจมตีเปลี่ยน Label ของ Ticket เร่งด่วนเป็นงานทั่วไป ผลกระทบต่อ Data integrity (Data integrity): ตัวอย่างสำหรับฝึกสอนให้จัดลำดับผิด"
+    },
+    "why": "Thai duplicates the identical English term Data integrity in parentheses, adding noise instead of a helpful translation. The same pattern occurs in items 1 and 2.",
+    "source": "https://csrc.nist.gov/glossary/term/data_poisoning; apply equivalent term cleanup to blocks.2.items.1 and .2",
+    "proposed": {
+      "en": "1. Training labels: An attacker relabels urgent tickets as routine. Impact on Data integrity: The training examples now teach the wrong priority.",
+      "th": "1. Training labels: ผู้โจมตีเปลี่ยน Label ของ Ticket เร่งด่วนเป็นงานทั่วไป ผลกระทบต่อความถูกต้องครบถ้วนของข้อมูล (Data integrity): ตัวอย่างที่ใช้ฝึกสอนให้จัดลำดับผิด"
+    },
+    "learnerImpact": "Thai duplicates the identical English term Data integrity in parentheses, adding noise instead of a helpful translation. The same pattern occurs in items 1 and 2.",
+    "disposition": "Documented proposal only; production unchanged; human editorial review pending"
+  },
+  {
+    "id": "FC-009",
+    "severity": "LOW",
+    "domain": 1,
+    "objective": "1.1",
+    "lessonId": "lesson-d1-03-non-repudiation",
+    "slideId": "slide-06-evaluate-the-claim",
+    "field": "blocks.2.text",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-03-non-repudiation.json",
+    "current": {
+      "field": "blocks.2.text",
+      "en": "Start with the specific claim: is the question about account access, the content of a signed order, the person who acted, or receipt of the order? A login record and a verified original signature support different conclusions. If the received copy was altered, keep both versions and evaluate the original signature against the correct data and trusted public key. Then examine identity binding, key custody and supporting records before attributing the action to a person. Do not infer confidentiality, guaranteed delivery, intent or legal enforceability merely from a signature result. The original six-slide sequence develops the notes’ authentication-versus-later-evidence distinction without repeating the full AAA lesson.",
+      "th": "เริ่มจากคำกล่าวอ้างเฉพาะที่ต้องตรวจสอบว่าโจทย์ถามเรื่องการเข้าถึงบัญชี เนื้อหาคำสั่งซื้อที่ลงนาม บุคคลผู้กระทำ หรือการได้รับคำสั่งซื้อ บันทึกเข้าสู่ระบบกับลายเซ็นต้นฉบับที่ตรวจผ่านรองรับคนละข้อสรุป หากฉบับที่ได้รับถูกแก้ไข ให้เก็บทั้งสองฉบับและตรวจลายเซ็นเดิมกับข้อมูลที่ถูกฉบับและ Public key ที่เชื่อถือได้ จากนั้นจึงพิจารณาการผูกตัวตน การควบคุมกุญแจ และบันทึกสนับสนุนก่อนโยงการกระทำกับบุคคล อย่าสรุปว่าข้อมูลเป็นความลับ ส่งถึงแน่นอน มีเจตนาใด หรือมีผลบังคับทางกฎหมายจากผลตรวจลายเซ็นอย่างเดียว ลำดับหกสไลด์นี้พัฒนาความแตกต่างระหว่างการยืนยันตัวตนกับหลักฐานภายหลังตามบันทึก โดยไม่สอน AAA ทั้งบทซ้ำ"
+    },
+    "why": "Learner explanation refers to an original six-slide sequence although the published lesson now has seven slides. Remove stale authoring history and retain the evidence distinction.",
+    "learnerImpact": "Learner explanation refers to an original six-slide sequence although the published lesson now has seven slides. Remove stale authoring history and retain the evidence distinction.",
+    "source": "NIST FIPS 186-5 abstract and glossary non_repudiation; current published seven-slide lesson sequence",
+    "proposed": {
+      "en": "Start with the specific claim: is the question about account access, the content of a signed order, the person who acted, or receipt of the order? A login record and a verified original signature support different conclusions. If the received copy was altered, keep both versions and evaluate the original signature against the correct data and trusted public key. Then examine identity binding, key custody and supporting records before attributing the action to a person. Do not infer confidentiality, guaranteed delivery, intent or legal enforceability merely from a signature result. Distinguish evidence of authentication at access time from evidence supporting a later disputed action.",
+      "th": "เริ่มจากคำกล่าวอ้างเฉพาะที่ต้องตรวจสอบว่าโจทย์ถามเรื่องการเข้าถึงบัญชี เนื้อหาคำสั่งซื้อที่ลงนาม บุคคลผู้กระทำ หรือการได้รับคำสั่งซื้อ บันทึกเข้าสู่ระบบกับลายเซ็นต้นฉบับที่ตรวจผ่านรองรับคนละข้อสรุป หากฉบับที่ได้รับถูกแก้ไข ให้เก็บทั้งสองฉบับและตรวจลายเซ็นเดิมกับข้อมูลที่ถูกฉบับและ Public key ที่เชื่อถือได้ จากนั้นจึงพิจารณาการผูกตัวตน การควบคุมกุญแจ และบันทึกสนับสนุนก่อนโยงการกระทำกับบุคคล อย่าสรุปว่าข้อมูลเป็นความลับ ส่งถึงแน่นอน มีเจตนาใด หรือมีผลบังคับทางกฎหมายจากผลตรวจลายเซ็นอย่างเดียว แยกหลักฐานการยืนยันตัวตนขณะเข้าถึงออกจากหลักฐานที่รองรับการกระทำซึ่งถูกโต้แย้งภายหลัง"
+    },
+    "disposition": "Documented proposal only; production unchanged; human editorial review pending"
+  },
+  {
+    "id": "FC-010",
+    "severity": "LOW",
+    "domain": 1,
+    "objective": "1.1",
+    "lessonId": "lesson-d1-03-non-repudiation",
+    "slideId": "slide-03-sign-and-verify",
+    "field": "blocks.2.text",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-03-non-repudiation.json",
+    "current": {
+      "field": "blocks.2.text",
+      "en": "A digital signature algorithm uses the signer’s private key to generate a signature over data. A verifier uses the corresponding public key, the signed data and the signature to check the result. A successful verification supports integrity and origin under the scheme’s assumptions. It does not by itself establish that an arbitrary public key belongs to Nara; a trustworthy identity-to-key association is also needed, commonly supported by a validated certificate and its trust chain. Signing is not a generic instruction to encrypt with a private key, and a signature alone does not hide the document. Algorithm mathematics and certificate administration are outside this beginner lesson. A scanned or pasted handwritten signature is not the cryptographic digital signature described here.",
+      "th": "อัลกอริทึม Digital signature ใช้ Private key ของผู้ลงนามสร้างลายเซ็นเหนือข้อมูล ผู้ตรวจใช้ Public key ที่คู่กันร่วมกับข้อมูลและลายเซ็นเพื่อตรวจผล การตรวจสำเร็จสนับสนุนความถูกต้องและแหล่งที่มาภายใต้เงื่อนไขของระบบ แต่ไม่ได้ยืนยันด้วยตัวเองว่า Public key ใด ๆ เป็นของ Nara ต้องมีการผูกตัวตนกับกุญแจที่เชื่อถือได้ด้วย โดยมักอาศัย Certificate และสายความเชื่อถือที่ตรวจสอบแล้ว การลงนามไม่ใช่คำสั่งทั่วไปว่าให้เข้ารหัสด้วยกุญแจส่วนตัว และลายเซ็นเพียงอย่างเดียวไม่ได้ซ่อนเนื้อหาเอกสาร บทเรียนพื้นฐานนี้ไม่ลงรายละเอียดคณิตศาสตร์อัลกอริทึมหรือการดูแล Certificate ภาพสแกนหรือลายเซ็นลายมือที่นำมาแปะไม่ใช่ Digital signature แบบเข้ารหัสที่อธิบายในบทเรียนนี้"
+    },
+    "why": "Thai uses แบบเข้ารหัส for cryptographic digital signature. This can suggest encryption despite the correct preceding distinction; use an explicit cryptography term. This is a clarity issue, not a wrong key-role explanation.",
+    "learnerImpact": "Thai uses แบบเข้ารหัส for cryptographic digital signature. This can suggest encryption despite the correct preceding distinction; use an explicit cryptography term. This is a clarity issue, not a wrong key-role explanation.",
+    "source": "NIST FIPS 186-5 abstract and glossary non_repudiation; current published seven-slide lesson sequence",
+    "proposed": {
+      "en": "A digital signature algorithm uses the signer’s private key to generate a signature over data. A verifier uses the corresponding public key, the signed data and the signature to check the result. A successful verification supports integrity and origin under the scheme’s assumptions. It does not by itself establish that an arbitrary public key belongs to Nara; a trustworthy identity-to-key association is also needed, commonly supported by a validated certificate and its trust chain. Signing is not a generic instruction to encrypt with a private key, and a signature alone does not hide the document. Algorithm mathematics and certificate administration are outside this beginner lesson. A scanned or pasted handwritten signature is not the cryptographic digital signature described here.",
+      "th": "อัลกอริทึม Digital signature ใช้ Private key ของผู้ลงนามสร้างลายเซ็นเหนือข้อมูล ผู้ตรวจใช้ Public key ที่คู่กันร่วมกับข้อมูลและลายเซ็นเพื่อตรวจผล การตรวจสำเร็จสนับสนุนความถูกต้องและแหล่งที่มาภายใต้เงื่อนไขของระบบ แต่ไม่ได้ยืนยันด้วยตัวเองว่า Public key ใด ๆ เป็นของ Nara ต้องมีการผูกตัวตนกับกุญแจที่เชื่อถือได้ด้วย โดยมักอาศัย Certificate และสายความเชื่อถือที่ตรวจสอบแล้ว การลงนามไม่ใช่คำสั่งทั่วไปว่าให้เข้ารหัสด้วยกุญแจส่วนตัว และลายเซ็นเพียงอย่างเดียวไม่ได้ซ่อนเนื้อหาเอกสาร บทเรียนพื้นฐานนี้ไม่ลงรายละเอียดคณิตศาสตร์อัลกอริทึมหรือการดูแล Certificate ภาพสแกนหรือลายเซ็นลายมือที่นำมาแปะไม่ใช่ ลายมือชื่อดิจิทัลเชิงวิทยาการรหัสลับ (Cryptographic digital signature)ที่อธิบายในบทเรียนนี้"
+    },
+    "disposition": "Documented proposal only; production unchanged; human editorial review pending"
+  },
+  {
+    "id": "FC-011",
+    "severity": "LOW",
+    "domain": 1,
+    "objective": "1.3",
+    "lessonId": "lesson-d1-09-frameworks",
+    "slideId": "slide-06-standard-requirement",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-09-frameworks.json",
+    "field": "blocks.0.text",
+    "current": {
+      "field": "blocks.0.text",
+      "en": "An adopted internal standard defines what must be met.",
+      "th": "Standard ภายในที่รับใช้แล้วกำหนดสิ่งที่ต้องทำตาม"
+    },
+    "proposed": {
+      "en": "An adopted internal standard defines what must be met.",
+      "th": "Standard ภายในที่นำมาบังคับใช้แล้วกำหนดสิ่งที่ต้องทำตาม"
+    },
+    "why": "Thai translates adopted/adoption as รับใช้ (serve), an unnatural term for formally applying a requirement. The surrounding mandatory-condition reasoning is correct, but recurring wording weakens clarity of how a requirement becomes binding. Use นำมาบังคับใช้ consistently.",
+    "learnerImpact": "Editorial clarity across internal standards, guidelines and scenario feedback; no answer-key change.",
+    "source": "User Source A §§28–32 and Source B §7.1; English adopted internal requirement and Thai context",
+    "relatedCorrections": [
+      {
+        "lessonId": "lesson-d1-09-frameworks",
+        "slideId": "slide-06-standard-requirement",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-09-frameworks.json",
+        "field": "blocks.2.text",
+        "current": {
+          "field": "blocks.2.text",
+          "en": "A §30 and B §7.1 describe an internal standard as a specific mandatory requirement supporting policy: a minimum specification or consistent criterion. The authored organisation requires MFA for all administrative accounts within its stated scope. This is a teaching example, not a universal ISC2 configuration rule or a claim that one factor type solves every access risk. A procedure then describes how to enrol, verify and support that requirement. Distinguish this internal document use of standard from an external international standard such as ISO/IEC 27001. Publishing an external standard does not automatically make it law everywhere; an applicable contract, law or internal adoption may establish an obligation. If the requirement cannot be met, the operator follows the authorised exception/escalation process rather than treating advice as permission to ignore it. An internal exception cannot waive applicable external duties.",
+          "th": "A §30 และ B §7.1 อธิบาย Standard ภายในเป็นข้อกำหนดเฉพาะที่ต้องทำตามเพื่อรองรับ Policy เช่น Specification ขั้นต่ำหรือเกณฑ์ร่วม ตัวอย่างองค์กรแต่งขึ้นกำหนด MFA กับบัญชีผู้ดูแลทั้งหมดในขอบเขต นี่เป็นตัวอย่างสอน ไม่ใช่กฎตั้งค่าที่ ISC2 บังคับทุกองค์กร หรืออ้างว่าปัจจัยแบบเดียวแก้ Risk การเข้าถึงได้หมด Procedure จะอธิบายวิธีลงทะเบียน ตรวจ และสนับสนุนข้อกำหนดนี้ ต้องแยกคำว่า Standard ภายในออกจากมาตรฐานสากลภายนอกอย่าง ISO/IEC 27001 การเผยแพร่มาตรฐานไม่ได้ทำให้เป็นกฎหมายทุกที่โดยอัตโนมัติ สัญญา กฎหมาย หรือการรับใช้ภายในอาจสร้างหน้าที่ ถ้าทำตามไม่ได้ต้องเข้าสู่กระบวนการข้อยกเว้นหรือยกระดับตามอำนาจ ไม่ใช่ใช้คำแนะนำเป็นสิทธิ์ละเลย ข้อยกเว้นภายในไม่ลบหน้าที่ภายนอก"
+        },
+        "proposed": {
+          "en": "A §30 and B §7.1 describe an internal standard as a specific mandatory requirement supporting policy: a minimum specification or consistent criterion. The authored organisation requires MFA for all administrative accounts within its stated scope. This is a teaching example, not a universal ISC2 configuration rule or a claim that one factor type solves every access risk. A procedure then describes how to enrol, verify and support that requirement. Distinguish this internal document use of standard from an external international standard such as ISO/IEC 27001. Publishing an external standard does not automatically make it law everywhere; an applicable contract, law or internal adoption may establish an obligation. If the requirement cannot be met, the operator follows the authorised exception/escalation process rather than treating advice as permission to ignore it. An internal exception cannot waive applicable external duties.",
+          "th": "A §30 และ B §7.1 อธิบาย Standard ภายในเป็นข้อกำหนดเฉพาะที่ต้องทำตามเพื่อรองรับ Policy เช่น Specification ขั้นต่ำหรือเกณฑ์ร่วม ตัวอย่างองค์กรแต่งขึ้นกำหนด MFA กับบัญชีผู้ดูแลทั้งหมดในขอบเขต นี่เป็นตัวอย่างสอน ไม่ใช่กฎตั้งค่าที่ ISC2 บังคับทุกองค์กร หรืออ้างว่าปัจจัยแบบเดียวแก้ Risk การเข้าถึงได้หมด Procedure จะอธิบายวิธีลงทะเบียน ตรวจ และสนับสนุนข้อกำหนดนี้ ต้องแยกคำว่า Standard ภายในออกจากมาตรฐานสากลภายนอกอย่าง ISO/IEC 27001 การเผยแพร่มาตรฐานไม่ได้ทำให้เป็นกฎหมายทุกที่โดยอัตโนมัติ สัญญา กฎหมาย หรือการนำมาบังคับใช้ภายในอาจสร้างหน้าที่ ถ้าทำตามไม่ได้ต้องเข้าสู่กระบวนการข้อยกเว้นหรือยกระดับตามอำนาจ ไม่ใช่ใช้คำแนะนำเป็นสิทธิ์ละเลย ข้อยกเว้นภายในไม่ลบหน้าที่ภายนอก"
+        }
+      },
+      {
+        "lessonId": "lesson-d1-09-frameworks",
+        "slideId": "slide-06-standard-requirement",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-09-frameworks.json",
+        "field": "blocks.3.text",
+        "current": {
+          "field": "blocks.3.text",
+          "en": "Specific + required within its adopted scope.",
+          "th": "เฉพาะเจาะจง และต้องทำตามในขอบเขตที่รับใช้"
+        },
+        "proposed": {
+          "en": "Specific + required within its adopted scope.",
+          "th": "เฉพาะเจาะจง และต้องทำตามในขอบเขตที่นำมาบังคับใช้"
+        }
+      },
+      {
+        "lessonId": "lesson-d1-09-frameworks",
+        "slideId": "slide-08-guideline-advice",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-09-frameworks.json",
+        "field": "blocks.1.rows.0.1",
+        "current": {
+          "field": "blocks.1.rows.0.1",
+          "en": "Meet the adopted authentication standard.",
+          "th": "ทำตาม Authentication Standard ที่รับใช้"
+        },
+        "proposed": {
+          "en": "Meet the adopted authentication standard.",
+          "th": "ทำตาม Authentication Standard ที่นำมาบังคับใช้"
+        }
+      },
+      {
+        "lessonId": "lesson-d1-09-frameworks",
+        "slideId": "slide-08-guideline-advice",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-09-frameworks.json",
+        "field": "blocks.2.text",
+        "current": {
+          "field": "blocks.2.text",
+          "en": "A §28 and B §7.1 describe a guideline as recommended practice or advice: generally advisory, flexible and adaptable. It helps a person choose an approach where judgement is allowed. The authored passphrase example is not a fixed password length or new authentication rule. Recommendations must fit the applicable policy and standard. A guideline does not give an operator permission to ignore an adopted requirement or law. Conversely, calling a document a guideline does not cancel a clause made mandatory by an authoritative adoption or contract; check the actual requirement and scope. Policy supplies direction, a standard sets a specific condition, a procedure sets the steps and a guideline recommends a helpful approach. These are useful functional distinctions, not proof that every organisation stores four separate files. Identify what the statement does and how it becomes applicable.",
+          "th": "A §28 และ B §7.1 อธิบาย Guideline เป็นแนวปฏิบัติแนะนำหรือคำปรึกษา โดยทั่วไปยืดหยุ่นและปรับใช้ได้ ช่วยเลือกวิธีเมื่อมีพื้นที่ให้ใช้ดุลยพินิจ ตัวอย่าง Passphrase แต่งขึ้นไม่ได้กำหนดความยาว Password ตายตัวหรือกฎ Authentication ใหม่ คำแนะนำต้องอยู่ภายใต้ Policy และ Standard ที่ใช้ Guideline ไม่ให้สิทธิ์ละเลยข้อกำหนดที่รับใช้หรือกฎหมาย ในทางกลับกัน การตั้งชื่อไฟล์ว่า Guideline ก็ไม่ลบข้อที่ถูกบังคับผ่านการรับใช้ตามอำนาจหรือสัญญา ต้องตรวจข้อกำหนดและขอบเขต Policy ให้ทิศทาง Standard ให้เงื่อนไขเฉพาะ Procedure ให้ขั้นตอน และ Guideline แนะนำวิธีที่ช่วยได้ นี่คือการแยกหน้าที่ ไม่ได้พิสูจน์ว่าทุกองค์กรต้องมีสี่ไฟล์เสมอ ให้ดูว่าข้อความทำอะไรและใช้บังคับอย่างไร"
+        },
+        "proposed": {
+          "en": "A §28 and B §7.1 describe a guideline as recommended practice or advice: generally advisory, flexible and adaptable. It helps a person choose an approach where judgement is allowed. The authored passphrase example is not a fixed password length or new authentication rule. Recommendations must fit the applicable policy and standard. A guideline does not give an operator permission to ignore an adopted requirement or law. Conversely, calling a document a guideline does not cancel a clause made mandatory by an authoritative adoption or contract; check the actual requirement and scope. Policy supplies direction, a standard sets a specific condition, a procedure sets the steps and a guideline recommends a helpful approach. These are useful functional distinctions, not proof that every organisation stores four separate files. Identify what the statement does and how it becomes applicable.",
+          "th": "A §28 และ B §7.1 อธิบาย Guideline เป็นแนวปฏิบัติแนะนำหรือคำปรึกษา โดยทั่วไปยืดหยุ่นและปนำมาบังคับใช้ได้ ช่วยเลือกวิธีเมื่อมีพื้นที่ให้ใช้ดุลยพินิจ ตัวอย่าง Passphrase แต่งขึ้นไม่ได้กำหนดความยาว Password ตายตัวหรือกฎ Authentication ใหม่ คำแนะนำต้องอยู่ภายใต้ Policy และ Standard ที่ใช้ Guideline ไม่ให้สิทธิ์ละเลยข้อกำหนดที่นำมาบังคับใช้หรือกฎหมาย ในทางกลับกัน การตั้งชื่อไฟล์ว่า Guideline ก็ไม่ลบข้อที่ถูกบังคับผ่านการนำมาบังคับใช้ตามอำนาจหรือสัญญา ต้องตรวจข้อกำหนดและขอบเขต Policy ให้ทิศทาง Standard ให้เงื่อนไขเฉพาะ Procedure ให้ขั้นตอน และ Guideline แนะนำวิธีที่ช่วยได้ นี่คือการแยกหน้าที่ ไม่ได้พิสูจน์ว่าทุกองค์กรต้องมีสี่ไฟล์เสมอ ให้ดูว่าข้อความทำอะไรและใช้บังคับอย่างไร"
+        }
+      },
+      {
+        "lessonId": "lesson-d1-09-frameworks",
+        "slideId": "slide-09-classify-the-purpose",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-09-frameworks.json",
+        "field": "blocks.1.rows.1.2",
+        "current": {
+          "field": "blocks.1.rows.1.2",
+          "en": "Correct for this adopted internal requirement.",
+          "th": "ตรงกับข้อกำหนดภายในที่รับใช้ในตัวอย่าง"
+        },
+        "proposed": {
+          "en": "Correct for this adopted internal requirement.",
+          "th": "ตรงกับข้อกำหนดภายในที่นำมาบังคับใช้ในตัวอย่าง"
+        }
+      },
+      {
+        "lessonId": "lesson-d1-09-frameworks",
+        "slideId": "slide-09-classify-the-purpose",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-09-frameworks.json",
+        "field": "blocks.1.rows.3.2",
+        "current": {
+          "field": "blocks.1.rows.3.2",
+          "en": "“Must” here expresses an adopted requirement.",
+          "th": "คำว่าต้องในที่นี้เป็นข้อกำหนดที่รับใช้"
+        },
+        "proposed": {
+          "en": "“Must” here expresses an adopted requirement.",
+          "th": "คำว่าต้องในที่นี้เป็นข้อกำหนดที่นำมาบังคับใช้"
+        }
+      },
+      {
+        "lessonId": "lesson-d1-09-frameworks",
+        "slideId": "slide-09-classify-the-purpose",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-09-frameworks.json",
+        "field": "blocks.2.text",
+        "current": {
+          "field": "blocks.2.text",
+          "en": "This original non-scored exercise applies A §32 and B §7.1. The organisation has adopted a mandatory MFA requirement for its in-scope administrative accounts. Standard is the best function because the statement specifies a condition that must be met. Policy would give the broader direction to protect privileged access. Procedure would give ordered instructions for enrolment, verification and support. Guideline would recommend an approach where choice is allowed. Do not classify by spotting one keyword alone: read what the statement does, who issued it and its scope. A document titled policy may contain a standard-like clause; this exercise asks for the clause function, not the filename. The feedback explains each choice in both languages and changes no exam score or progress schema. Real implementation requirements still depend on the organisation and applicable obligations.",
+          "th": "แบบฝึกแต่งขึ้นไม่มีคะแนนนี้ประยุกต์ A §32 และ B §7.1 องค์กรรับใช้ข้อกำหนด MFA กับบัญชีผู้ดูแลในขอบเขตแล้ว Standard เป็นหน้าที่ที่ตรงที่สุด เพราะระบุเงื่อนไขเฉพาะที่ต้องทำตาม Policy จะเป็นทิศทางกว้างเพื่อปกป้องสิทธิ์สูง Procedure จะบอกขั้นตอนลงทะเบียน ตรวจ และสนับสนุน ส่วน Guideline แนะนำวิธีเมื่อเลือกได้ อย่าตัดสินด้วย Keyword คำเดียว ต้องอ่านหน้าที่ ผู้กำหนด และขอบเขต เอกสารชื่อ Policy อาจมีข้อแบบ Standard อยู่ แบบฝึกถามหน้าที่ของข้อความ ไม่ใช่ชื่อไฟล์ Feedback อธิบายทุกตัวเลือกทั้งสองภาษา ไม่เปลี่ยนคะแนนสอบหรือโครงสร้าง Progress การใช้จริงยังขึ้นกับองค์กรและหน้าที่ที่เกี่ยวข้อง"
+        },
+        "proposed": {
+          "en": "This original non-scored exercise applies A §32 and B §7.1. The organisation has adopted a mandatory MFA requirement for its in-scope administrative accounts. Standard is the best function because the statement specifies a condition that must be met. Policy would give the broader direction to protect privileged access. Procedure would give ordered instructions for enrolment, verification and support. Guideline would recommend an approach where choice is allowed. Do not classify by spotting one keyword alone: read what the statement does, who issued it and its scope. A document titled policy may contain a standard-like clause; this exercise asks for the clause function, not the filename. The feedback explains each choice in both languages and changes no exam score or progress schema. Real implementation requirements still depend on the organisation and applicable obligations.",
+          "th": "แบบฝึกแต่งขึ้นไม่มีคะแนนนี้ประยุกต์ A §32 และ B §7.1 องค์กรนำมาบังคับใช้ข้อกำหนด MFA กับบัญชีผู้ดูแลในขอบเขตแล้ว Standard เป็นหน้าที่ที่ตรงที่สุด เพราะระบุเงื่อนไขเฉพาะที่ต้องทำตาม Policy จะเป็นทิศทางกว้างเพื่อปกป้องสิทธิ์สูง Procedure จะบอกขั้นตอนลงทะเบียน ตรวจ และสนับสนุน ส่วน Guideline แนะนำวิธีเมื่อเลือกได้ อย่าตัดสินด้วย Keyword คำเดียว ต้องอ่านหน้าที่ ผู้กำหนด และขอบเขต เอกสารชื่อ Policy อาจมีข้อแบบ Standard อยู่ แบบฝึกถามหน้าที่ของข้อความ ไม่ใช่ชื่อไฟล์ Feedback อธิบายทุกตัวเลือกทั้งสองภาษา ไม่เปลี่ยนคะแนนสอบหรือโครงสร้าง Progress การใช้จริงยังขึ้นกับองค์กรและหน้าที่ที่เกี่ยวข้อง"
+        }
+      }
+    ],
+    "disposition": "Bilingual editorial proposal only; production unchanged; native Thai acceptance pending"
+  },
+  {
+    "id": "FC-012",
+    "severity": "LOW",
+    "domain": 2,
+    "objective": "2.1",
+    "lessonId": "lesson-d2-01-grc-foundations",
+    "slideId": "slide-02-purpose-of-grc",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+    "field": "blocks.1.rows.0.0",
+    "current": {
+      "field": "blocks.1.rows.0.0",
+      "en": "Align cybersecurity with business objectives",
+      "th": "Align cybersecurity with business objectives"
+    },
+    "why": "All seven purpose labels in the Thai Reading/Info table repeat English sentences without Thai glosses. Thai explanations mitigate impact and Presentation labels are translated, but this creates avoidable language inconsistency for Thai learners.",
+    "learnerImpact": "All seven purpose labels in the Thai Reading/Info table repeat English sentences without Thai glosses. Thai explanations mitigate impact and Presentation labels are translated, but this creates avoidable language inconsistency for Thai learners.",
+    "source": "Compare actual Thai Presentation labels with Reading/Info table; user D2 sum.md §2.1 and supplied S05 course image.",
+    "proposed": {
+      "en": "Align cybersecurity with business objectives",
+      "th": "เชื่อมความปลอดภัยไซเบอร์กับเป้าหมายธุรกิจ"
+    },
+    "relatedCorrections": [
+      {
+        "lessonId": "lesson-d2-01-grc-foundations",
+        "slideId": "slide-02-purpose-of-grc",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+        "field": "blocks.1.rows.1.0",
+        "current": {
+          "field": "blocks.1.rows.1.0",
+          "en": "Identify and manage risks",
+          "th": "Identify and manage risks"
+        },
+        "proposed": {
+          "en": "Identify and manage risks",
+          "th": "ระบุและจัดการความเสี่ยง"
+        }
+      },
+      {
+        "lessonId": "lesson-d2-01-grc-foundations",
+        "slideId": "slide-02-purpose-of-grc",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+        "field": "blocks.1.rows.2.0",
+        "current": {
+          "field": "blocks.1.rows.2.0",
+          "en": "Meet legal and regulatory obligations",
+          "th": "Meet legal and regulatory obligations"
+        },
+        "proposed": {
+          "en": "Meet legal and regulatory obligations",
+          "th": "ปฏิบัติตามหน้าที่ตามกฎหมายและข้อบังคับ"
+        }
+      },
+      {
+        "lessonId": "lesson-d2-01-grc-foundations",
+        "slideId": "slide-02-purpose-of-grc",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+        "field": "blocks.1.rows.3.0",
+        "current": {
+          "field": "blocks.1.rows.3.0",
+          "en": "Establish consistent policies and controls",
+          "th": "Establish consistent policies and controls"
+        },
+        "proposed": {
+          "en": "Establish consistent policies and controls",
+          "th": "กำหนดนโยบายและมาตรการที่สอดคล้องกัน"
+        }
+      },
+      {
+        "lessonId": "lesson-d2-01-grc-foundations",
+        "slideId": "slide-02-purpose-of-grc",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+        "field": "blocks.1.rows.4.0",
+        "current": {
+          "field": "blocks.1.rows.4.0",
+          "en": "Improve accountability",
+          "th": "Improve accountability"
+        },
+        "proposed": {
+          "en": "Improve accountability",
+          "th": "ทำให้ความรับผิดชอบชัดเจน"
+        }
+      },
+      {
+        "lessonId": "lesson-d2-01-grc-foundations",
+        "slideId": "slide-02-purpose-of-grc",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+        "field": "blocks.1.rows.5.0",
+        "current": {
+          "field": "blocks.1.rows.5.0",
+          "en": "Support informed decision-making",
+          "th": "Support informed decision-making"
+        },
+        "proposed": {
+          "en": "Support informed decision-making",
+          "th": "สนับสนุนการตัดสินใจอย่างมีข้อมูล"
+        }
+      },
+      {
+        "lessonId": "lesson-d2-01-grc-foundations",
+        "slideId": "slide-02-purpose-of-grc",
+        "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+        "field": "blocks.1.rows.6.0",
+        "current": {
+          "field": "blocks.1.rows.6.0",
+          "en": "Reduce duplication of security and compliance efforts",
+          "th": "Reduce duplication of security and compliance efforts"
+        },
+        "proposed": {
+          "en": "Reduce duplication of security and compliance efforts",
+          "th": "ลดงานความปลอดภัยและการปฏิบัติตามข้อกำหนดที่ซ้ำซ้อน"
+        }
+      }
+    ],
+    "disposition": "Proposed bilingual correction only; production unchanged; human acceptance pending"
+  },
+  {
+    "id": "FC-013",
+    "severity": "MEDIUM",
+    "domain": 2,
+    "objective": "2.1",
+    "lessonId": "lesson-d2-01-grc-foundations",
+    "slideId": "slide-03-importance-of-grc",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+    "field": "blocks.3.items.0",
+    "current": {
+      "field": "blocks.3.items.0",
+      "en": "Financial Penalties Nuance (S06): Notice the wording 'avoid or reduce financial penalties'—effective GRC cannot guarantee zero incidents, but documented governance and compliance substantially prevent violations and mitigate regulatory enforcement exposure.",
+      "th": "ข้อสังเกตคำว่า Avoid or Reduce Financial Penalties (S06): สไลด์ใช้คำว่าหลีกเลี่ยงหรือลดค่าปรับ เพราะแม้ไม่มีระบบใดรับประกันว่าจะไม่เกิดเหตุเลย แต่การมี GRC และหลักฐานการดูแลตามมาตรฐานช่วยป้องกันการทำผิดกฎและลดความรุนแรงของบทลงโทษได้อย่างมาก"
+    },
+    "why": "Claims substantial prevention and greatly reduced penalty severity without evidence or jurisdiction-specific grounds. Learners may infer that documented GRC itself secures leniency. The source says helps avoid/reduce penalties, not a measured magnitude or assured enforcement outcome.",
+    "learnerImpact": "Claims substantial prevention and greatly reduced penalty severity without evidence or jurisdiction-specific grounds. Learners may infer that documented GRC itself secures leniency. The source says helps avoid/reduce penalties, not a measured magnitude or assured enforcement outcome.",
+    "source": "Supplied S06 course image explicitly says effective GRC helps organizations; Domain 2.md §2.3; Domain 1 due-care lesson explicitly rejects legal immunity from labels/checklists.",
+    "proposed": {
+      "en": "Financial penalties: Effective GRC can help identify and meet applicable obligations and reduce exposure to violations and financial loss. Actual enforcement and penalties depend on the applicable requirements and facts. Documentation alone does not establish compliance or guarantee a reduced penalty.",
+      "th": "ค่าปรับทางการเงิน: GRC ที่มีประสิทธิผลช่วยระบุและปฏิบัติตามหน้าที่ที่เกี่ยวข้อง และอาจลดโอกาสละเมิดข้อกำหนดหรือเกิดความเสียหายทางการเงิน ผลการบังคับใช้และบทลงโทษขึ้นกับข้อกำหนดและข้อเท็จจริง หลักฐานเอกสารเพียงอย่างเดียวไม่ได้ยืนยันว่าปฏิบัติตามครบหรือรับประกันว่าจะลดบทลงโทษ"
+    },
+    "relatedCorrections": [],
+    "disposition": "Proposed bilingual correction only; production unchanged; human acceptance pending"
+  },
+  {
+    "id": "FC-014",
+    "severity": "MEDIUM",
+    "domain": 2,
+    "objective": "2.1",
+    "lessonId": "lesson-d2-01-grc-foundations",
+    "slideId": "slide-03-importance-of-grc",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+    "field": "blocks.2.text",
+    "current": {
+      "field": "blocks.2.text",
+      "en": "Slide S06 and Domain 2.md §2.3 highlight why GRC is a strategic business enabler rather than administrative overhead. Notice on S06 how the instructor explicitly connects specific outcomes back to the GRC triad: reducing cybersecurity and business risks flows from the Risk component, meeting regulatory requirements and avoiding or reducing financial penalties flow from Compliance, and improved decision-making and clear accountability flow from Governance—together producing organizational resilience (the ability to anticipate, withstand, and recover from adverse events, bridging Objective 2.1 to Objective 2.2). Conversely, when effective GRC is absent, organizations suffer four predictable breakdowns: inconsistent security practices across teams, unidentified risks hiding in blind spots, compliance violations, and poor accountability when incidents or audit findings occur.",
+      "th": "สไลด์ S06 และ Domain 2.md หัวข้อ 2.3 ชี้ให้เห็นว่าทำไม GRC จึงเป็นกลไกสนับสนุนความอยู่รอดของธุรกิจ ไม่ใช่แค่ภาระงานเอกสาร ในภาพสไลด์ S06 ผู้สอนโยงลูกศรให้เห็นชัดเจนว่าการลดความเสี่ยงไซเบอร์และธุรกิจเกิดจากมิติ Risk การปฏิบัติตามกฎระเบียบและหลีกเลี่ยงหรือลดค่าปรับทางการเงินเกิดจากมิติ Compliance ส่วนการตัดสินใจที่ดีขึ้นและ Accountability ที่ชัดเจนเกิดจากมิติ Governance ซึ่งเมื่อทำงานร่วมกันจะยกระดับ Organizational Resilience หรือความสามารถขององค์กรในการรับมือและฟื้นตัวจากเหตุรบกวน (เชื่อมต่อไปยังเรื่อง BC/DR ใน Objective 2.2) ในทางตรงกันข้าม หากไม่มี GRC ที่ดี องค์กรจะเผชิญปัญหาหลัก 4 ข้อทันที ได้แก่ แนวปฏิบัติที่ไม่สอดคล้องกัน ความเสี่ยงที่ไม่ถูกค้นพบ การละเมิดข้อกำหนด และความรับผิดชอบที่คลุมเครือไร้เจ้าภาพ"
+    },
+    "why": "Source S06 says organizations without effective GRC may have four failure modes. Published English makes them predictable breakdowns; Thai adds immediately. This changes possible consequences into inevitable immediate outcomes and weakens causal reasoning.",
+    "learnerImpact": "Source S06 says organizations without effective GRC may have four failure modes. Published English makes them predictable breakdowns; Thai adds immediately. This changes possible consequences into inevitable immediate outcomes and weakens causal reasoning.",
+    "source": "ISC2 Update 2026/Domain 2/Screenshot 2026-09-20 180141.png (existing supplied S06, academic source inspection only); Domain 2.md §2.3 uses อาจเกิด.",
+    "proposed": {
+      "en": "Course slide S06 and Domain 2.md §2.3 list seven benefits that effective GRC can help achieve. Governance, risk management and compliance contribute together to risk reduction, protection of assets, meeting obligations, informed decisions, accountability and resilience. Resilience includes anticipating, withstanding and recovering from disruption. Without effective coordination, organizations may have inconsistent security practices, unidentified risks, compliance violations or unclear accountability. These are possible failure modes, not guaranteed or immediate outcomes.",
+      "th": "สไลด์คอร์ส S06 และ Domain 2.md §2.3 แสดงประโยชน์เจ็ดข้อที่ GRC ที่มีประสิทธิผลช่วยสนับสนุนได้ Governance, Risk Management และ Compliance ทำงานร่วมกันเพื่อลดความเสี่ยง ปกป้องทรัพย์สิน ทำตามหน้าที่ ตัดสินใจอย่างมีข้อมูล ระบุผู้รับผิดชอบ และเพิ่ม Resilience ซึ่งรวมการคาดการณ์ รับมือ และฟื้นตัวจากเหตุหยุดชะงัก หากขาดการประสานงานที่มีประสิทธิผล องค์กรอาจมีแนวปฏิบัติไม่สอดคล้องกัน ความเสี่ยงที่ไม่ถูกระบุ การละเมิดข้อกำหนด หรือความรับผิดชอบไม่ชัดเจน นี่คือผลเสียที่อาจเกิด ไม่ใช่สิ่งที่ต้องเกิดแน่นอนหรือทันที"
+    },
+    "relatedCorrections": [],
+    "disposition": "Proposed bilingual correction only; production unchanged; human acceptance pending"
+  },
+  {
+    "id": "FC-015",
+    "severity": "MEDIUM",
+    "domain": 2,
+    "objective": "2.1",
+    "lessonId": "lesson-d2-01-grc-foundations",
+    "slideId": "slide-06-applied-grc-scenario",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+    "field": "blocks.3.items.1",
+    "current": {
+      "field": "blocks.3.items.1",
+      "en": "Why Option B Fails: Confuses an international standard (ISO/IEC 27001) with statutory legislation and sacrifices business continuity/objectives instead of supporting them.",
+      "th": "เหตุผลที่ตัวเลือก B ไม่ตอบโจทย์: เข้าใจผิดว่ามาตรฐานสากล ISO/IEC 27001 เป็นกฎหมายบังคับทุกบริษัท และสั่งหยุดธุรกิจแทนที่จะจัดแนวความปลอดภัยให้เกื้อหนุนธุรกิจ"
+    },
+    "why": "Option B now mandates endpoint tools before governance policies. Reading/Info rationale instead criticizes a different option about treating ISO as law and stopping business. The feedback does not explain the actual distractor, even though the Presentation row-based feedback and correct C key are coherent.",
+    "learnerImpact": "Option B now mandates endpoint tools before governance policies. Reading/Info rationale instead criticizes a different option about treating ISO as law and stopping business. The feedback does not explain the actual distractor, even though the Presentation row-based feedback and correct C key are coherent.",
+    "source": "Current slide blocks.1.rows.1.0–2 and actual Presentation B label; grc-foundations-presentations.js selected-row feedback; current blocks.3.items.1 is stale.",
+    "proposed": {
+      "en": "Why Option B is less suitable here: Endpoint tools may address particular technical exposures, but deploying them before shared governance policies and risk ownership does not solve NovaPay’s coordination and ISMS-assurance needs. Technical deployment can complement a coordinated GRC plan; it does not replace that plan.",
+      "th": "เหตุผลที่ตัวเลือก B เหมาะสมน้อยกว่าในกรณีนี้: เครื่องมือ Endpoint อาจจัดการความเสี่ยงทางเทคนิคบางส่วนได้ แต่การติดตั้งก่อนกำหนดนโยบายกำกับดูแลร่วมและผู้รับผิดชอบ Risk ไม่ได้แก้ปัญหาการประสานงานหรือความต้องการความเชื่อมั่นด้าน ISMS ของ NovaPay การใช้เครื่องมือเทคนิคเสริมแผน GRC ที่ประสานกันได้ แต่ไม่แทนแผนนั้น"
+    },
+    "relatedCorrections": [],
+    "disposition": "Proposed bilingual correction only; production unchanged; human acceptance pending"
+  },
+  {
+    "id": "FC-016",
+    "severity": "LOW",
+    "domain": 2,
+    "objective": "2.1",
+    "lessonId": "lesson-d2-01-grc-foundations",
+    "slideId": "slide-05-grc-distinctions",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+    "field": "blocks.2.text",
+    "current": {
+      "field": "blocks.2.text",
+      "en": "Two distinctions recur throughout ISC2 governance questions and COBIT/NIST principles. First, Governance vs. Management: Governance is the board and executive function that establishes direction, defines policy expectations, assigns accountability, and exercises oversight ('Governance กำหนดทิศทางและความรับผิดชอบ'), whereas Management plans, builds, runs, and monitors day-to-day activities to achieve that direction ('ส่วน Management นำแนวทางนั้นไปปฏิบัติจริง'), sending operational evidence back for oversight review. Second, Risk Management vs. Compliance: Compliance proves adherence to a defined set of external or internal rules at a given scope, whereas Risk Management evaluates actual threat and vulnerability exposure across the organization. Treating compliance as a substitute for risk management creates dangerous blind spots whenever attackers exploit systems or workflows outside the audit checklist.",
+      "th": "ความแตกต่าง 2 คู่สำคัญที่ออกสอบบ่อยในสาย Security Governance และสอดคล้องกับแนวคิด COBIT/NIST คือ คู่แรกระหว่าง Governance กับ Management โดย Governance กำหนดทิศทางและความรับผิดชอบ (Direction, Oversight & Accountability) ในระดับผู้บริหารเพื่อชี้ว่าองค์กรต้องการความมั่นคงปลอดภัยในระดับใด ส่วน Management นำแนวทางนั้นไปปฏิบัติจริงผ่านการจัดสรรคน งบประมาณ กระบวนการ และมาตรการควบคุมรายวัน พร้อมส่งหลักฐานผลลัพธ์กลับมาให้ทบทวน คู่ที่สองคือ Risk Management กับ Compliance โดย Compliance มุ่งพิสูจน์ว่าองค์กรทำตามกฎระเบียบ มาตรฐาน หรือสัญญาที่เกี่ยวข้องครบถ้วน แต่ Risk Management มุ่งประเมินและลดโอกาสเกิดความเสียหายจากภัยคุกคามจริง การทำเพียงให้ผ่านเกณฑ์ตรวจประเมิน (Check-the-box Compliance) จึงไม่สามารถทดแทนการบริหารความเสี่ยงได้ เพราะภัยคุกคามใหม่อาจเกิดนอกขอบเขตรายการตรวจเสมอ"
+    },
+    "why": "English claims recurrence throughout ISC2 governance questions and Thai says frequently examined. Official scope and course comparisons do not establish actual question frequency. Retain study distinctions without an unsupported exam-frequency claim.",
+    "learnerImpact": "English claims recurrence throughout ISC2 governance questions and Thai says frequently examined. Official scope and course comparisons do not establish actual question frequency. Retain study distinctions without an unsupported exam-frequency claim.",
+    "source": "Official ISC2 outline defines Objective 2.1 scope, not actual question patterns; Domain 2.md §24 comparisons.",
+    "proposed": {
+      "en": "Two useful study distinctions in the course notes and COBIT/NIST principles are outlined below. First, Governance vs. Management: Governance is the board and executive function that establishes direction, defines policy expectations, assigns accountability, and exercises oversight ('Governance กำหนดทิศทางและความรับผิดชอบ'), whereas Management plans, builds, runs, and monitors day-to-day activities to achieve that direction ('ส่วน Management นำแนวทางนั้นไปปฏิบัติจริง'), sending operational evidence back for oversight review. Second, Risk Management vs. Compliance: Compliance proves adherence to a defined set of external or internal rules at a given scope, whereas Risk Management evaluates actual threat and vulnerability exposure across the organization. Treating compliance as a substitute for risk management creates dangerous blind spots whenever attackers exploit systems or workflows outside the audit checklist.",
+      "th": "คู่ความแตกต่างสำคัญสองคู่ต่อไปนี้ใช้ทบทวนจากโน้ตและแนวคิด COBIT/NIST คือ คู่แรกระหว่าง Governance กับ Management โดย Governance กำหนดทิศทางและความรับผิดชอบ (Direction, Oversight & Accountability) ในระดับผู้บริหารเพื่อชี้ว่าองค์กรต้องการความมั่นคงปลอดภัยในระดับใด ส่วน Management นำแนวทางนั้นไปปฏิบัติจริงผ่านการจัดสรรคน งบประมาณ กระบวนการ และมาตรการควบคุมรายวัน พร้อมส่งหลักฐานผลลัพธ์กลับมาให้ทบทวน คู่ที่สองคือ Risk Management กับ Compliance โดย Compliance มุ่งพิสูจน์ว่าองค์กรทำตามกฎระเบียบ มาตรฐาน หรือสัญญาที่เกี่ยวข้องครบถ้วน แต่ Risk Management มุ่งประเมินและลดโอกาสเกิดความเสียหายจากภัยคุกคามจริง การทำเพียงให้ผ่านเกณฑ์ตรวจประเมิน (Check-the-box Compliance) จึงไม่สามารถทดแทนการบริหารความเสี่ยงได้ เพราะภัยคุกคามใหม่อาจเกิดนอกขอบเขตรายการตรวจเสมอ"
+    },
+    "relatedCorrections": [],
+    "disposition": "Proposed bilingual correction only; production unchanged; human acceptance pending"
+  },
+  {
+    "id": "FC-017",
+    "severity": "LOW",
+    "domain": 2,
+    "objective": "2.1",
+    "lessonId": "lesson-d2-01-grc-foundations",
+    "slideId": "slide-04-grc-frameworks",
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+    "field": "blocks.1.rows.0.2",
+    "current": {
+      "field": "blocks.1.rows.0.2",
+      "en": "Select when structuring risk-based cybersecurity outcomes and aligning governance with risk reduction.",
+      "th": "เลือกใช้เมื่อต้องการกรอบผลลัพธ์เพื่อบริหารและลดความเสี่ยงไซเบอร์อย่างเป็นลำดับขั้น"
+    },
+    "why": "Thai adds step-by-step sequencing where English says risk-based outcomes and governance alignment. This can be read as a fixed CSF function sequence, contrary to the concurrent-function explanation in Domain 1. Clarify structured application without implying ordered phases.",
+    "learnerImpact": "Thai adds step-by-step sequencing where English says risk-based outcomes and governance alignment. This can be read as a fixed CSF function sequence, contrary to the concurrent-function explanation in Domain 1. Clarify structured application without implying ordered phases.",
+    "source": "Fresh NIST CSF FAQ: Core has concurrent and continuous functions; compare lesson-d1-09-frameworks/slide-02-nist-outcomes.",
+    "proposed": {
+      "en": "Select when structuring risk-based cybersecurity outcomes and aligning governance with risk reduction; CSF functions operate concurrently rather than as mandatory sequential phases.",
+      "th": "เลือกใช้เมื่อต้องการจัดโครงสร้างผลลัพธ์ด้านความเสี่ยงไซเบอร์และเชื่อมการกำกับดูแลกับการลดความเสี่ยง โดย Functions ทำงานควบคู่กัน ไม่ใช่ขั้นตอนตายตัวที่ต้องทำเรียงลำดับ"
+    },
+    "relatedCorrections": [],
+    "disposition": "Proposed bilingual correction only; production unchanged; human acceptance pending"
+  }
+]

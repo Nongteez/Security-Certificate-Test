@@ -1,0 +1,176 @@
+{
+ "metadata": {
+  "schemaVersion": 1,
+  "id": "lesson-d5-06-incident-response",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 5,
+  "primaryObjectiveId": "5.3",
+  "objectiveIds": [
+   "5.3"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+   "en": "Execute an Incident Response Plan",
+   "th": "ดำเนินงานตามแผนตอบสนองเหตุการณ์"
+  },
+  "synopsis": {
+   "en": "Incident response limits harm and supports safe recovery.",
+   "th": "IR จำกัดความเสียหายและสนับสนุนการกู้คืนปลอดภัย"
+  },
+  "outcomes": [
+   {
+    "en": "An IRP connects decisions, roles and data handling.",
+    "th": "IRP เชื่อมการตัดสินใจ หน้าที่ และการจัดการข้อมูล"
+   },
+   {
+    "en": "Prepare before the incident.",
+    "th": "เตรียมพร้อมก่อนเกิดเหตุ"
+   },
+   {
+    "en": "Scope the incident while preserving evidence.",
+    "th": "ตรวจขอบเขตพร้อมรักษาหลักฐาน"
+   },
+   {
+    "en": "Stopping spread differs from removing the cause.",
+    "th": "หยุดการแพร่ต่างจากกำจัดสาเหตุ"
+   },
+   {
+    "en": "Recover safely, then prove the improvement.",
+    "th": "กู้คืนปลอดภัย แล้วพิสูจน์การปรับปรุง"
+   }
+  ],
+  "prerequisites": [
+   {
+    "en": "Recommended: earlier lessons in this objective; no vendor commands are required.",
+    "th": "แนะนำให้อ่านบทก่อนหน้าในวัตถุประสงค์เดียวกัน ไม่จำเป็นต้องรู้คำสั่งเฉพาะผู้ผลิต"
+   }
+  ],
+  "assets": [],
+  "references": [
+   {
+    "id": "isc2-outline",
+    "title": "ISC2 CC September 2026 official exam outline and AI guidance",
+    "authority": "official-scope",
+    "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+    "locator": "Effective September 1, 2026. Domain 5 and separate AI guidance. Retrieved 2026-11-03; archived outline text in QA evidence."
+   },
+   {
+    "id": "d5-notes",
+    "title": "Domain 5.md",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/Domain 5.md",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "d5-summary",
+    "title": "D5 sum.md",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/D5 sum.md",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "d5-master",
+    "title": "D5 surm.md",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/D5 surm.md",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "d5-transcript",
+    "title": "DOMAIN 5.txt",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/DOMAIN 5.txt",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "sanitization",
+    "title": "NIST SP 800-88r2",
+    "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final",
+    "locator": "Media-specific sanitization and verification; supplement to course.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "ir",
+    "title": "NIST SP 800-61r3",
+    "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+    "locator": "Incident response integrated with CSF 2.0; six course activities are a teaching decomposition, not a verbatim current NIST phase list.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "pqc",
+    "title": "NIST FIPS 203",
+    "url": "https://csrc.nist.gov/pubs/fips/203/final",
+    "locator": "ML-KEM establishes a shared secret; does not encrypt bulk application data. Supplement filling required quantum-resistant coverage.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "config",
+    "title": "NIST SP 800-128",
+    "url": "https://csrc.nist.gov/pubs/sp/800/128/upd1/final",
+    "locator": "Approved baseline, security impact analysis and configuration change control.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "testing",
+    "title": "NIST SP 800-115",
+    "url": "https://csrc.nist.gov/pubs/sp/800/115/final",
+    "locator": "Assessment planning, rules of engagement, testing limits and reporting.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "attack",
+    "title": "MITRE ATT&CK",
+    "url": "https://attack.mitre.org/",
+    "locator": "Tactics are adversary goals; techniques are methods. Not a mandatory chronological chain.",
+    "authority": "technical-primary"
+   }
+  ],
+  "slideOrder": [
+   "slide-d5-06-01-irp-authority",
+   "slide-d5-06-02-prepare",
+   "slide-d5-06-03-detection-evidence",
+   "slide-d5-06-04-contain-eradicate",
+   "slide-d5-06-05-recover-improve",
+   "slide-d5-06-06-decision"
+  ],
+  "scenarioAnswer": 0,
+  "review": {
+   "reviewedRevision": "1",
+   "evidencePath": "docs/plans/isc2-cc-2026/domain-5-academic-audit.md",
+   "technical": {
+    "status": "approved",
+    "reviewer": "Codex agent review; human acceptance pending",
+    "reviewedAt": "2026-11-03"
+   },
+   "bilingual": {
+    "status": "approved",
+    "reviewer": "Codex agent review; human acceptance pending",
+    "reviewedAt": "2026-11-03"
+   },
+   "rights": {
+    "status": "approved",
+    "reviewer": "Codex agent review; human acceptance pending",
+    "reviewedAt": "2026-11-03"
+   }
+  }
+ }
+}
+
+{"id":"slide-d5-06-01-irp-authority","title":{"en":"An IRP connects decisions, roles and data handling.","th":"IRP เชื่อมการตัดสินใจ หน้าที่ และการจัดการข้อมูล"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Incident response limits harm and supports safe recovery.","th":"IR จำกัดความเสียหายและสนับสนุนการกู้คืนปลอดภัย"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Authority","th":"อำนาจ"},{"en":"Who declares, isolates and communicates?","th":"ใครประกาศ แยกระบบ และสื่อสารได้"},{"en":"Assign roles and escalation","th":"กำหนดหน้าที่และการส่งต่อ"}],[{"en":"Data handling","th":"การจัดการข้อมูล"},{"en":"Classify, collect, store and share evidence","th":"จัดชั้น เก็บ รักษา และส่งหลักฐาน"},{"en":"Least access and approved channels","th":"สิทธิ์น้อยและช่องทางอนุมัติ"}],[{"en":"Coordination","th":"การประสาน"},{"en":"Security, operations and specialists","th":"Security, Operations และผู้เชี่ยวชาญ"},{"en":"Protect people and essential services","th":"ป้องกันคนและบริการจำเป็น"}]]},{"kind":"text","text":{"en":"An Incident Response Plan defines responsibilities, escalation, communications and coordinated handling of incidents. Data-handling policy governs how sensitive records and evidence are collected, stored, accessed, retained and shared during response. Define authorized decisions before a crisis rather than letting analysts improvise. Legal, privacy, communications and business owners may be needed. Regulatory notification depends on applicable obligations and facts; no universal deadline is taught here. Response can begin while harm is ongoing, not only after an attack ends.","th":"Incident Response Plan กำหนดหน้าที่ การส่งต่อ การสื่อสาร และการประสานจัดการเหตุ นโยบายข้อมูลกำหนดการเก็บ รักษา เข้าถึง เก็บระยะยาว และส่งหลักฐานอ่อนไหว ต้องกำหนดผู้ตัดสินก่อนวิกฤต ไม่ให้แต่ละคนคิดเอง อาจต้องประสาน Legal, Privacy, Communications และเจ้าของธุรกิจ กำหนดเวลาแจ้งหน่วยงานขึ้นกับข้อกำหนดและข้อเท็จจริง ไม่มีกำหนดสากลในบทนี้ การตอบสนองเริ่มได้ขณะความเสียหายดำเนินอยู่ ไม่ต้องรอการโจมตีจบ"}},{"kind":"list","items":[{"en":"The official objective connects data handling and IRP implementation. Evidence access and communication controls are part of response, not optional paperwork.","th":"วัตถุประสงค์ทางการเชื่อม Data Handling กับการใช้ IRP โดยตรง การควบคุมหลักฐานและการสื่อสารเป็นส่วนของการตอบสนอง ไม่ใช่เอกสารที่เลือกทำก็ได้"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"The official objective connects data handling and IRP implementation. Evidence access and communication controls are part of response, not optional paperwork.","th":"วัตถุประสงค์ทางการเชื่อม Data Handling กับการใช้ IRP โดยตรง การควบคุมหลักฐานและการสื่อสารเป็นส่วนของการตอบสนอง ไม่ใช่เอกสารที่เลือกทำก็ได้"},"sourceLocator":"S45–S48; Domain 5.md §6; official 5.3","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","ir"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"An IRP connects decisions, roles and data handling. An IRP connects decisions, roles and data handling. Incident response limits harm and supports safe recovery. Mechanism, decision and limitation Concept Action / relationship Reason / boundary Authority Who declares, isolates and communicates? Assign roles and escalation Data handling Classify, collect, store and share evidence Least access and approved channels Coordination Security, operations and specialists Protect people and essential services Use the mechanism that matches the stated security need.","th":"IRP เชื่อมการตัดสินใจ หน้าที่ และการจัดการข้อมูล IRP เชื่อมการตัดสินใจ หน้าที่ และการจัดการข้อมูล IR จำกัดความเสียหายและสนับสนุนการกู้คืนปลอดภัย กลไก การตัดสินใจ และข้อจำกัด แนวคิด การกระทำ / ความสัมพันธ์ เหตุผล / ขอบเขต อำนาจ ใครประกาศ แยกระบบ และสื่อสารได้ กำหนดหน้าที่และการส่งต่อ การจัดการข้อมูล จัดชั้น เก็บ รักษา และส่งหลักฐาน สิทธิ์น้อยและช่องทางอนุมัติ การประสาน Security, Operations และผู้เชี่ยวชาญ ป้องกันคนและบริการจำเป็น เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-06-02-prepare","title":{"en":"Prepare before the incident.","th":"เตรียมพร้อมก่อนเกิดเหตุ"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"A plan needs usable contacts, tools and permissions.","th":"แผนต้องมีผู้ติดต่อ เครื่องมือ และสิทธิ์ที่ใช้ได้จริง"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"People","th":"คน"},{"en":"Assign responders and alternates","th":"กำหนดผู้ตอบสนองและผู้แทน"},{"en":"Verify escalation routes","th":"ตรวจช่องทางส่งต่อ"}],[{"en":"Process","th":"ขั้นตอน"},{"en":"Maintain playbooks and evidence rules","th":"ดูแล Playbook และกฎหลักฐาน"},{"en":"Practice decisions and handoffs","th":"ฝึกตัดสินใจและส่งงาน"}],[{"en":"Technology","th":"เทคโนโลยี"},{"en":"Ready telemetry, backups and isolation","th":"เตรียม Telemetry, Backup และการแยก"},{"en":"Test access before a crisis","th":"ทดสอบสิทธิ์ก่อนวิกฤต"}]]},{"kind":"text","text":{"en":"Preparation makes response executable. Maintain current roles, contact lists, playbooks, secure communication routes, evidence storage and tool access. Verify backups and containment permissions. The six activities taught in the source are a practical decomposition, not the verbatim current NIST phase model. NIST SP 800-61r3 integrates preparation through governance, identification and protection with detection, response and recovery across cybersecurity risk management. Preparation continues between incidents and improves when exercises reveal gaps.","th":"Preparation ทำให้ตอบสนองได้จริง ต้องดูแลหน้าที่ รายชื่อ Playbook ช่องทางปลอดภัย ที่เก็บหลักฐาน และสิทธิ์เครื่องมือให้ทันสมัย ตรวจ Backup และอำนาจ Containment กิจกรรมหกส่วนในเอกสารเป็นการแบ่งเพื่อเรียน ไม่ใช่ Phase ของ NIST ปัจจุบันแบบคำต่อคำ NIST SP 800-61r3 เชื่อมการเตรียมผ่าน Governance, Identify และ Protect กับ Detect, Respond และ Recover ในการจัดการความเสี่ยง การเตรียมต้องต่อเนื่องระหว่างเหตุและปรับเมื่อการฝึกพบช่องว่าง"}},{"kind":"list","items":[{"en":"A changed AI service, expired credential or unavailable vendor contact can invalidate a previously workable playbook. Recheck dependencies after changes.","th":"บริการ AI ที่เปลี่ยน Credential หมดอายุ หรือ Vendor ติดต่อไม่ได้ อาจทำให้ Playbook เดิมใช้ไม่ได้ ต้องตรวจระบบพึ่งพาหลังเปลี่ยน"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"A changed AI service, expired credential or unavailable vendor contact can invalidate a previously workable playbook. Recheck dependencies after changes.","th":"บริการ AI ที่เปลี่ยน Credential หมดอายุ หรือ Vendor ติดต่อไม่ได้ อาจทำให้ Playbook เดิมใช้ไม่ได้ ต้องตรวจระบบพึ่งพาหลังเปลี่ยน"},"sourceLocator":"S48; Domain 5.md §6.3 Preparation; NIST SP 800-61r3","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","ir"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Prepare before the incident. Prepare before the incident. A plan needs usable contacts, tools and permissions. Mechanism, decision and limitation Concept Action / relationship Reason / boundary People Assign responders and alternates Verify escalation routes Process Maintain playbooks and evidence rules Practice decisions and handoffs Technology Ready telemetry, backups and isolation Test access before a crisis Use the mechanism that matches the stated security need.","th":"เตรียมพร้อมก่อนเกิดเหตุ เตรียมพร้อมก่อนเกิดเหตุ แผนต้องมีผู้ติดต่อ เครื่องมือ และสิทธิ์ที่ใช้ได้จริง กลไก การตัดสินใจ และข้อจำกัด แนวคิด การกระทำ / ความสัมพันธ์ เหตุผล / ขอบเขต คน กำหนดผู้ตอบสนองและผู้แทน ตรวจช่องทางส่งต่อ ขั้นตอน ดูแล Playbook และกฎหลักฐาน ฝึกตัดสินใจและส่งงาน เทคโนโลยี เตรียม Telemetry, Backup และการแยก ทดสอบสิทธิ์ก่อนวิกฤต เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-06-03-detection-evidence","title":{"en":"Scope the incident while preserving evidence.","th":"ตรวจขอบเขตพร้อมรักษาหลักฐาน"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Collect through authorized methods and record provenance.","th":"เก็บด้วยวิธีที่อนุญาตและบันทึกที่มา"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Validate","th":"ตรวจความน่าเชื่อถือ"},{"en":"Check alerts and related activity","th":"ตรวจ Alert และกิจกรรมเกี่ยวข้อง"},{"en":"Separate facts from hypotheses","th":"แยกข้อเท็จจริงจากข้อสันนิษฐาน"}],[{"en":"Scope","th":"ตรวจขอบเขต"},{"en":"Identify affected accounts, hosts and data","th":"ระบุบัญชี Host และข้อมูลที่กระทบ"},{"en":"Update as evidence grows","th":"ปรับเมื่อหลักฐานเพิ่ม"}],[{"en":"Preserve","th":"รักษาหลักฐาน"},{"en":"Record source, time, collector and transfers","th":"บันทึกแหล่ง เวลา ผู้เก็บ และการส่งต่อ"},{"en":"Protect integrity and confidentiality","th":"ป้องกันความถูกต้องและความลับ"}]]},{"kind":"text","text":{"en":"Detection and analysis establish what may be happening, what is affected and how urgent it is. Preserve originals and record source, collection time, collector, method and custody transfers. Hashes help detect later alteration but do not replace chain-of-custody records or prove collection was correct. Shutdown can lose volatile evidence, but safety and active harm can require prompt containment. Follow trained procedures and authorized priorities rather than running unfamiliar forensic tools on a critical system. Keep facts separate from unverified attribution.","th":"Detection และ Analysis ตรวจว่าเกิดอะไร กระทบอะไร และด่วนเพียงใด เก็บต้นฉบับและบันทึกแหล่ง เวลา ผู้เก็บ วิธี และการส่งมอบ Hash ช่วยตรวจการเปลี่ยนภายหลัง แต่ไม่แทน Chain of Custody หรือพิสูจน์ว่าเก็บถูกต้อง การปิดเครื่องอาจทำหลักฐานชั่วคราวหาย แต่ความปลอดภัยกับภัยที่กำลังเกิดอาจต้อง Contain ทันที ทำตามวิธีที่ฝึกและลำดับที่ผู้มีอำนาจกำหนด ไม่รันเครื่องมือ Forensics ที่ไม่คุ้นบนระบบสำคัญ แยกข้อเท็จจริงจาก Attribution ที่ยังไม่ยืนยัน"}},{"kind":"list","items":[{"en":"Do not paste raw evidence into an unapproved AI tool for summarization. Incident confidentiality and evidence-handling rules still apply.","th":"อย่านำหลักฐานดิบเข้า AI ที่ไม่อนุมัติเพื่อสรุป กฎความลับเหตุการณ์และการจัดการหลักฐานยังใช้เหมือนเดิม"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"Do not paste raw evidence into an unapproved AI tool for summarization. Incident confidentiality and evidence-handling rules still apply.","th":"อย่านำหลักฐานดิบเข้า AI ที่ไม่อนุมัติเพื่อสรุป กฎความลับเหตุการณ์และการจัดการหลักฐานยังใช้เหมือนเดิม"},"sourceLocator":"S48; Domain 5.md §6.3 Detection; D5 surm.md §26","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","ir"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Scope the incident while preserving evidence. Scope the incident while preserving evidence. Collect through authorized methods and record provenance. Mechanism, decision and limitation Concept Action / relationship Reason / boundary Validate Check alerts and related activity Separate facts from hypotheses Scope Identify affected accounts, hosts and data Update as evidence grows Preserve Record source, time, collector and transfers Protect integrity and confidentiality Use the mechanism that matches the stated security need.","th":"ตรวจขอบเขตพร้อมรักษาหลักฐาน ตรวจขอบเขตพร้อมรักษาหลักฐาน เก็บด้วยวิธีที่อนุญาตและบันทึกที่มา กลไก การตัดสินใจ และข้อจำกัด แนวคิด การกระทำ / ความสัมพันธ์ เหตุผล / ขอบเขต ตรวจความน่าเชื่อถือ ตรวจ Alert และกิจกรรมเกี่ยวข้อง แยกข้อเท็จจริงจากข้อสันนิษฐาน ตรวจขอบเขต ระบุบัญชี Host และข้อมูลที่กระทบ ปรับเมื่อหลักฐานเพิ่ม รักษาหลักฐาน บันทึกแหล่ง เวลา ผู้เก็บ และการส่งต่อ ป้องกันความถูกต้องและความลับ เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-06-04-contain-eradicate","title":{"en":"Stopping spread differs from removing the cause.","th":"หยุดการแพร่ต่างจากกำจัดสาเหตุ"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Containment limits harm; eradication removes footholds.","th":"Containment จำกัดความเสียหาย Eradication กำจัดจุดยึด"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Contain","th":"จำกัดวง"},{"en":"Isolate host or compromised identity","th":"แยก Host หรือตัวตนที่ถูกยึด"},{"en":"Limit further damage","th":"จำกัดความเสียหายต่อ"}],[{"en":"Eradicate","th":"กำจัด"},{"en":"Remove persistence and fix entry conditions","th":"ลบ Persistence และแก้ช่องทางเข้า"},{"en":"Address validated root causes","th":"แก้สาเหตุที่ตรวจแล้ว"}],[{"en":"Trade-offs","th":"สิ่งที่ต้องชั่ง"},{"en":"Availability, evidence and dependencies","th":"ความพร้อมใช้ หลักฐาน และการพึ่งพา"},{"en":"Follow scoped authority and safety","th":"ทำตามอำนาจ ขอบเขต และความปลอดภัย"}]]},{"kind":"text","text":{"en":"Containment reduces spread or further harm, such as isolating an infected endpoint or restricting an account. Eradication removes malware, unauthorized persistence and validated conditions enabling the incident. Isolation does not make a host clean, and deleting one file may leave other access paths. Return to analysis when new systems appear affected. Consider business and safety impacts, evidence and adversary behavior when choosing actions. These activities can overlap; the teaching sequence is not a rigid one-way process.","th":"Containment ลดการแพร่หรือความเสียหายต่อ เช่น แยกเครื่องติดเชื้อหรือจำกัดบัญชี Eradication ลบ Malware, Persistence ที่ไม่ได้รับอนุญาต และแก้เงื่อนไขที่ทำให้เกิดเหตุที่ตรวจแล้ว แยกเครื่องไม่ได้ทำให้สะอาด ลบไฟล์เดียวอาจยังมีทางเข้าอื่น กลับไปวิเคราะห์เมื่อพบระบบเพิ่ม ต้องดูผลต่อธุรกิจและความปลอดภัย หลักฐาน และพฤติกรรมผู้โจมตี กิจกรรมทำซ้อนกันได้ ลำดับเรียนไม่ใช่กระบวนการทางเดียวตายตัว"}},{"kind":"list","items":[{"en":"Disabling accounts, revoking tokens and rotating credentials affect different access paths. Use the playbook rather than assuming one action ends every session.","th":"ปิดบัญชี เพิกถอน Token และเปลี่ยน Credential กระทบทางเข้าต่างกัน ใช้ Playbook ไม่สมมติว่าการกระทำเดียวจบทุก Session"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"Disabling accounts, revoking tokens and rotating credentials affect different access paths. Use the playbook rather than assuming one action ends every session.","th":"ปิดบัญชี เพิกถอน Token และเปลี่ยน Credential กระทบทางเข้าต่างกัน ใช้ Playbook ไม่สมมติว่าการกระทำเดียวจบทุก Session"},"sourceLocator":"S46/S48; Domain 5.md §§6.3–6.5","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","ir"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Stopping spread differs from removing the cause. Stopping spread differs from removing the cause. Containment limits harm; eradication removes footholds. Contain Isolate host or compromised identity Limit further damage Eradicate Remove persistence and fix entry conditions Address validated root causes Trade-offs Availability, evidence and dependencies Follow scoped authority and safety Use the mechanism that matches the stated security need.","th":"หยุดการแพร่ต่างจากกำจัดสาเหตุ หยุดการแพร่ต่างจากกำจัดสาเหตุ Containment จำกัดความเสียหาย Eradication กำจัดจุดยึด จำกัดวง แยก Host หรือตัวตนที่ถูกยึด จำกัดความเสียหายต่อ กำจัด ลบ Persistence และแก้ช่องทางเข้า แก้สาเหตุที่ตรวจแล้ว สิ่งที่ต้องชั่ง ความพร้อมใช้ หลักฐาน และการพึ่งพา ทำตามอำนาจ ขอบเขต และความปลอดภัย เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-06-05-recover-improve","title":{"en":"Recover safely, then prove the improvement.","th":"กู้คืนปลอดภัย แล้วพิสูจน์การปรับปรุง"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Restoring service does not end monitoring.","th":"คืนบริการไม่ได้แปลว่าจบ Monitoring"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Validate recovery","th":"ตรวจการกู้คืน"},{"en":"Restore from verified clean state","th":"กู้จากสถานะที่ตรวจว่าสะอาด"},{"en":"Check security and business functions","th":"ตรวจความปลอดภัยและงานธุรกิจ"}],[{"en":"Monitor recurrence","th":"ติดตามเหตุซ้ำ"},{"en":"Watch affected identities and services","th":"ติดตามตัวตนและบริการที่กระทบ"},{"en":"Reopen response if needed","th":"กลับไปตอบสนองเมื่อจำเป็น"}],[{"en":"Learn and retest","th":"เรียนรู้และทดสอบซ้ำ"},{"en":"Assign improvements, owners and dates","th":"กำหนดงาน เจ้าของ และวัน"},{"en":"Verify changes close the gap","th":"ตรวจว่าแก้ช่องว่างจริง"}]]},{"kind":"text","text":{"en":"Recovery restores operations from a validated state, checks data and security functions and monitors recurrence. A backup must be suitable and tested; powering on a server is not complete recovery. Post-incident review examines timelines, decisions, causes and control gaps. Convert findings into owned actions with due dates and retest them. AI service recovery may need approved model versions, configurations and dependent datasets. Improvements feed preparation so the next incident starts from a stronger position.","th":"Recovery คืนการทำงานจากสถานะที่ตรวจแล้ว ตรวจข้อมูลและหน้าที่ความปลอดภัย และติดตามเหตุซ้ำ Backup ต้องเหมาะสมและทดสอบแล้ว การเปิด Server อย่างเดียวไม่ครบ Post-Incident Review ตรวจ Timeline การตัดสินใจ สาเหตุ และช่องว่าง เปลี่ยนข้อพบเป็นงานมีเจ้าของ วันกำหนด และทดสอบซ้ำ บริการ AI อาจต้องมี Model Version ที่อนุมัติ การตั้งค่า และ Dataset ที่พึ่งพา ผลปรับปรุงกลับไปเสริม Preparation สำหรับครั้งต่อไป"}},{"kind":"list","items":[{"en":"A clean restore point does not fix the original entry path. Recovery needs validated remediation and checks for recurrence.","th":"จุด Restore ที่สะอาดไม่ได้แก้ทางเข้าเดิม ต้องมีการแก้ไขที่ตรวจแล้วและตรวจการกลับมาเกิดซ้ำ"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"A clean restore point does not fix the original entry path. Recovery needs validated remediation and checks for recurrence.","th":"จุด Restore ที่สะอาดไม่ได้แก้ทางเข้าเดิม ต้องมีการแก้ไขที่ตรวจแล้วและตรวจการกลับมาเกิดซ้ำ"},"sourceLocator":"S46–S48; Domain 5.md §6.3 Recovery/Post-Incident","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","ir"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Recover safely, then prove the improvement. Recover safely, then prove the improvement. Restoring service does not end monitoring. Validate recovery Restore from verified clean state Check security and business functions → Monitor recurrence Watch affected identities and services Reopen response if needed → Learn and retest Assign improvements, owners and dates Verify changes close the gap Use the mechanism that matches the stated security need.","th":"กู้คืนปลอดภัย แล้วพิสูจน์การปรับปรุง กู้คืนปลอดภัย แล้วพิสูจน์การปรับปรุง คืนบริการไม่ได้แปลว่าจบ Monitoring ตรวจการกู้คืน กู้จากสถานะที่ตรวจว่าสะอาด ตรวจความปลอดภัยและงานธุรกิจ → ติดตามเหตุซ้ำ ติดตามตัวตนและบริการที่กระทบ กลับไปตอบสนองเมื่อจำเป็น → เรียนรู้และทดสอบซ้ำ กำหนดงาน เจ้าของ และวัน ตรวจว่าแก้ช่องว่างจริง เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-06-06-decision","title":{"en":"Ransomware is spreading now.","th":"Ransomware กำลังแพร่"},"rendererId":"interactive","layoutId":"default","blocks":[{"kind":"text","text":{"en":"You are an authorized responder. The playbook permits isolating affected hosts. New file encryption is confirmed. What first?","th":"คุณมีอำนาจตอบสนอง Playbook อนุญาตแยก Host ที่กระทบ และยืนยันการเข้ารหัสไฟล์ใหม่ ควรทำอะไรก่อน"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"A","th":"ก"},{"en":"Contain affected hosts and coordinate evidence handling","th":"จำกัด Host ที่กระทบพร้อมประสานเก็บหลักฐาน"},{"en":"Active harm and explicit authority support prompt scoped containment while preserving evidence as safely feasible.","th":"ภัยกำลังเกิดและมีอำนาจชัด จึงควรจำกัดวงทันทีพร้อมรักษาหลักฐานเท่าที่ปลอดภัย"}],[{"en":"B","th":"ข"},{"en":"Complete a full disk analysis before isolation","th":"วิเคราะห์ดิสก์ทั้งหมดก่อนแยก"},{"en":"Waiting can allow continued damage; investigation and authorized containment can proceed together.","th":"รอวิเคราะห์ทั้งหมดอาจเสียหายต่อ การสอบสวนกับ Containment ที่อนุญาตทำคู่กันได้"}],[{"en":"C","th":"ค"},{"en":"Restore the latest backup onto live affected hosts","th":"คืน Backup ล่าสุดลง Host ที่ยังติดเหตุ"},{"en":"Restoring before controlling the threat can expose recovered data to reinfection and does not stop active spread.","th":"คืนก่อนควบคุมภัยอาจทำข้อมูลถูกโจมตีซ้ำและไม่หยุดการแพร่"}],[{"en":"D","th":"ง"},{"en":"Delete suspected malware from all shared drives","th":"ลบ Malware ที่สงสัยจาก Shared Drive ทั้งหมด"},{"en":"Unscoped deletion can destroy evidence, miss persistence and cause disruption without containing hosts.","th":"ลบไม่กำหนดขอบเขตอาจทำหลักฐานหาย พลาด Persistence และกระทบงานโดยไม่จำกัด Host"}]]},{"kind":"text","text":{"en":"The scenario establishes active harm and authority for isolation. Contain affected systems under the playbook and coordinate evidence, communication and scope expansion. Full forensic certainty is not a prerequisite for every authorized protective action. Then investigate persistence and entry conditions, eradicate and validate before recovery. This is not a universal instruction to shut down every device; method and scope depend on the system, safety and evidence needs.","th":"โจทย์ระบุภัยกำลังเกิดและอำนาจแยกชัด จึงจำกัดระบบตาม Playbook พร้อมประสานหลักฐาน สื่อสาร และตรวจขอบเขตเพิ่ม ไม่ต้องมีความแน่นอน Forensics ทั้งหมดก่อนทุกการป้องกันที่อนุญาต จากนั้นตรวจ Persistence และทางเข้า กำจัดและตรวจผลก่อน Recovery ไม่ใช่คำสั่งปิดทุกเครื่องเสมอ วิธีและขอบเขตขึ้นกับระบบ ความปลอดภัย และหลักฐาน"}},{"kind":"list","items":[{"en":"Hazardous physical processes require safety coordination when choosing containment. This case does not authorize arbitrary production shutdowns.","th":"กระบวนการกายภาพอันตรายต้องประสาน Safety เพื่อเลือก Containment กรณีนี้ไม่ได้อนุญาตปิด Production ตามใจ"}]},{"kind":"text","text":{"en":"Choose an action and examine its reason.","th":"เลือกแนวทางแล้วพิจารณาเหตุผลประกอบ"}}],"info":{"en":"Hazardous physical processes require safety coordination when choosing containment. This case does not authorize arbitrary production shutdowns.","th":"กระบวนการกายภาพอันตรายต้องประสาน Safety เพื่อเลือก Containment กรณีนี้ไม่ได้อนุญาตปิด Production ตามใจ"},"sourceLocator":"Original scenario from S46–S48; Domain 5.md §6.5","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","ir"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Ransomware is spreading now. Ransomware is spreading now. You are an authorized responder. The playbook permits isolating affected hosts. New file encryption is confirmed. What first? A Contain affected hosts and coordinate evidence handling B Complete a full disk analysis before isolation C Restore the latest backup onto live affected hosts D Delete suspected malware from all shared drives Choose an action. Use the facts, role and authority stated in the case. Reset Choose an action and examine its reason.","th":"Ransomware กำลังแพร่ Ransomware กำลังแพร่ คุณมีอำนาจตอบสนอง Playbook อนุญาตแยก Host ที่กระทบ และยืนยันการเข้ารหัสไฟล์ใหม่ ควรทำอะไรก่อน A จำกัด Host ที่กระทบพร้อมประสานเก็บหลักฐาน B วิเคราะห์ดิสก์ทั้งหมดก่อนแยก C คืน Backup ล่าสุดลง Host ที่ยังติดเหตุ D ลบ Malware ที่สงสัยจาก Shared Drive ทั้งหมด เลือกแนวทางปฏิบัติ ใช้ข้อเท็จจริง หน้าที่ และอำนาจที่โจทย์ระบุ Reset เลือกแนวทางแล้วพิจารณาเหตุผลประกอบ"}

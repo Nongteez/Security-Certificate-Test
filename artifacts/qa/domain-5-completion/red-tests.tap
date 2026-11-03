@@ -1,0 +1,74 @@
+✖ D5 publishes coherent lessons for every official objective (2.5961ms)
+✖ D5 preserves all other domains and protected existing files (25957.8967ms)
+✖ D5 full-course inventory and unique slide identities (38.3317ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26201.4564
+
+✖ failing tests:
+
+test at tools\verify-learning-d5-completion.mjs:11:1
+✖ D5 publishes coherent lessons for every official objective (2.5961ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 11
+  
+      at TestContext.<anonymous> (file:///C:/Users/Settapon.cs/OneDrive/Desktop/Project/Security-Certificate-Test/tools/verify-learning-d5-completion.mjs:12:51)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.start (node:internal/test_runner/test:1177:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 11,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-learning-d5-completion.mjs:44:1
+✖ D5 preserves all other domains and protected existing files (25957.8967ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(fs.readFileSync(p).subarray(0,fs.statSync(qa+'entry-shared/'+p).size).equals(fs.readFileSync(qa+'entry-shared/'+p)))
+  
+      at TestContext.<anonymous> (file:///C:/Users/Settapon.cs/OneDrive/Desktop/Project/Security-Certificate-Test/tools/verify-learning-d5-completion.mjs:48:159)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\verify-learning-d5-completion.mjs:50:1
+✖ D5 full-course inventory and unique slide identities (38.3317ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  35 !== 46
+  
+      at TestContext.<anonymous> (file:///C:/Users/Settapon.cs/OneDrive/Desktop/Project/Security-Certificate-Test/tools/verify-learning-d5-completion.mjs:51:81)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 35,
+    expected: 46,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

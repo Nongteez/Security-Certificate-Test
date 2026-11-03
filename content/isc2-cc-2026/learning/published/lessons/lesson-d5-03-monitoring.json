@@ -1,0 +1,910 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d5-03-monitoring",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 5,
+  "primaryObjectiveId": "5.2",
+  "objectiveIds": [
+    "5.2"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Logs, Monitoring & SIEM",
+    "th": "บันทึกเหตุการณ์ Monitoring และ SIEM"
+  },
+  "synopsis": {
+    "en": "A useful detection needs an observation, a rule and an owner.",
+    "th": "การตรวจจับที่มีประโยชน์ต้องมีข้อมูล กฎ และผู้รับผิดชอบ"
+  },
+  "outcomes": [
+    {
+      "en": "Recording is not the same as detecting.",
+      "th": "บันทึกข้อมูลไม่เท่ากับตรวจพบภัย"
+    },
+    {
+      "en": "Correlate reliable identities and time.",
+      "th": "เชื่อมโยงตัวตนและเวลาที่น่าเชื่อถือ"
+    },
+    {
+      "en": "Keep evidence usable for its required lifetime.",
+      "th": "เก็บหลักฐานให้ใช้งานได้ตลอดเวลาที่จำเป็น"
+    },
+    {
+      "en": "SIEM connects observations into a hypothesis.",
+      "th": "SIEM เชื่อมข้อมูลเป็นข้อสันนิษฐาน"
+    },
+    {
+      "en": "Choose visibility for the question.",
+      "th": "เลือกการมองเห็นให้ตรงคำถาม"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: earlier lessons in this objective; no vendor commands are required.",
+      "th": "แนะนำให้อ่านบทก่อนหน้าในวัตถุประสงค์เดียวกัน ไม่จำเป็นต้องรู้คำสั่งเฉพาะผู้ผลิต"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 official exam outline and AI guidance",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Effective September 1, 2026. Domain 5 and separate AI guidance. Retrieved 2026-11-03; archived outline text in QA evidence."
+    },
+    {
+      "id": "d5-notes",
+      "title": "Domain 5.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/Domain 5.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-summary",
+      "title": "D5 sum.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/D5 sum.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-master",
+      "title": "D5 surm.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/D5 surm.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-transcript",
+      "title": "DOMAIN 5.txt",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/DOMAIN 5.txt",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "sanitization",
+      "title": "NIST SP 800-88r2",
+      "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final",
+      "locator": "Media-specific sanitization and verification; supplement to course.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "ir",
+      "title": "NIST SP 800-61r3",
+      "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+      "locator": "Incident response integrated with CSF 2.0; six course activities are a teaching decomposition, not a verbatim current NIST phase list.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "pqc",
+      "title": "NIST FIPS 203",
+      "url": "https://csrc.nist.gov/pubs/fips/203/final",
+      "locator": "ML-KEM establishes a shared secret; does not encrypt bulk application data. Supplement filling required quantum-resistant coverage.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "config",
+      "title": "NIST SP 800-128",
+      "url": "https://csrc.nist.gov/pubs/sp/800/128/upd1/final",
+      "locator": "Approved baseline, security impact analysis and configuration change control.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "testing",
+      "title": "NIST SP 800-115",
+      "url": "https://csrc.nist.gov/pubs/sp/800/115/final",
+      "locator": "Assessment planning, rules of engagement, testing limits and reporting.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "attack",
+      "title": "MITRE ATT&CK",
+      "url": "https://attack.mitre.org/",
+      "locator": "Tactics are adversary goals; techniques are methods. Not a mandatory chronological chain.",
+      "authority": "technical-primary"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d5-03-01-record-observe",
+      "title": {
+        "en": "Recording is not the same as detecting.",
+        "th": "บันทึกข้อมูลไม่เท่ากับตรวจพบภัย"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A useful detection needs an observation, a rule and an owner.",
+            "th": "การตรวจจับที่มีประโยชน์ต้องมีข้อมูล กฎ และผู้รับผิดชอบ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Logging",
+                "th": "Logging"
+              },
+              {
+                "en": "Record what happened",
+                "th": "บันทึกสิ่งที่เกิดขึ้น"
+              },
+              {
+                "en": "An event record is not a verdict",
+                "th": "บันทึกเหตุการณ์ไม่ใช่คำตัดสิน"
+              }
+            ],
+            [
+              {
+                "en": "Monitoring",
+                "th": "Monitoring"
+              },
+              {
+                "en": "Evaluate activity over time",
+                "th": "ประเมินกิจกรรมตามเวลา"
+              },
+              {
+                "en": "Needs coverage and context",
+                "th": "ต้องมีข้อมูลครอบคลุมและบริบท"
+              }
+            ],
+            [
+              {
+                "en": "Alerting",
+                "th": "Alerting"
+              },
+              {
+                "en": "Notify a responsible responder",
+                "th": "แจ้งผู้รับผิดชอบตอบสนอง"
+              },
+              {
+                "en": "Needs review and escalation",
+                "th": "ต้องทบทวนและส่งต่อตามเกณฑ์"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A firewall can log one denied connection without anyone detecting a campaign. Monitoring evaluates records or other telemetry against expected conditions, and alerting brings selected findings to a responder. A rule may recognize many failed logins within a time window, but an analyst must still interpret why they occurred. Define the use case, necessary data sources, notification route and response owner. Collecting large quantities of logs alone does not create effective monitoring or guarantee a timely response.",
+            "th": "Firewall อาจบันทึกการปฏิเสธหนึ่ง Connection โดยยังไม่มีใครตรวจพบการโจมตีเป็นชุด Monitoring ประเมินบันทึกหรือ Telemetry เทียบเงื่อนไขที่คาด ส่วน Alerting ส่งผลที่เลือกให้ผู้ตอบสนอง กฎอาจพบ Login ล้มเหลวหลายครั้งในช่วงเวลา แต่ยังต้องมีคนวิเคราะห์สาเหตุ ต้องกำหนด Use Case แหล่งข้อมูล เส้นทางแจ้ง และผู้รับผิดชอบ การเก็บ Log จำนวนมากเพียงอย่างเดียวไม่ทำให้ Monitoring มีประสิทธิภาพหรือรับประกันการตอบสนองทันเวลา"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Operational failures and security incidents can generate similar symptoms. Review the evidence before labeling every service error as an attack.",
+              "th": "ความขัดข้องและเหตุความปลอดภัยอาจมีอาการคล้ายกัน ต้องทบทวนหลักฐานก่อนเรียกทุก Service Error ว่าการโจมตี"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Operational failures and security incidents can generate similar symptoms. Review the evidence before labeling every service error as an attack.",
+        "th": "ความขัดข้องและเหตุความปลอดภัยอาจมีอาการคล้ายกัน ต้องทบทวนหลักฐานก่อนเรียกทุก Service Error ว่าการโจมตี"
+      },
+      "sourceLocator": "S28–S30; Domain 5.md §§3.1–3.6",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "attack"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-03-02-trustworthy-telemetry",
+      "title": {
+        "en": "Correlate reliable identities and time.",
+        "th": "เชื่อมโยงตัวตนและเวลาที่น่าเชื่อถือ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Missing or inconsistent fields can hide the relationship between events.",
+            "th": "ฟิลด์ที่หายหรือไม่สอดคล้องกันอาจซ่อนความเชื่อมโยงเหตุการณ์"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Sources",
+                "th": "แหล่งข้อมูล"
+              },
+              {
+                "en": "Identity, endpoint, network, app, cloud",
+                "th": "Identity, Endpoint, Network, App, Cloud"
+              },
+              {
+                "en": "Choose sources for the use case",
+                "th": "เลือกแหล่งให้ตรง Use Case"
+              }
+            ],
+            [
+              {
+                "en": "Fields",
+                "th": "ฟิลด์"
+              },
+              {
+                "en": "Time, actor, host, action, result",
+                "th": "เวลา ผู้กระทำ Host การกระทำ ผล"
+              },
+              {
+                "en": "Normalize formats; retain originals",
+                "th": "ปรับรูปแบบและเก็บต้นฉบับ"
+              }
+            ],
+            [
+              {
+                "en": "Protection",
+                "th": "การป้องกัน"
+              },
+              {
+                "en": "Restrict access and detect tampering",
+                "th": "จำกัดสิทธิ์และตรวจการแก้ไข"
+              },
+              {
+                "en": "Avoid secrets in logs",
+                "th": "อย่าบันทึกความลับลง Log"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Authentication, operating system, application, firewall, endpoint and cloud audit records answer different questions. Useful fields include timestamps with time zones, source, identity, action and result. Consistent time sources and known clock offsets support chronology; a clock setting alone does not prove all events are accurate. Normalize fields for searching while retaining source evidence. Restrict log modification and access, and monitor collection failures. Avoid logging passwords, session tokens or entire sensitive prompts when less revealing data meets the purpose.",
+            "th": "บันทึก Authentication, OS, Application, Firewall, Endpoint และ Cloud Audit ตอบคำถามต่างกัน ฟิลด์สำคัญมีเวลาและเขตเวลา แหล่งข้อมูล ตัวตน การกระทำ และผล แหล่งเวลาเดียวกันและการรู้ Clock Offset ช่วยเรียงเหตุการณ์ แต่การตั้งเวลาอย่างเดียวไม่พิสูจน์ความถูกต้องทั้งหมด ควรปรับรูปแบบเพื่อค้นพร้อมเก็บหลักฐานต้นทาง จำกัดสิทธิ์แก้ไขและอ่าน Log และติดตามการเก็บที่ล้มเหลว หลีกเลี่ยง Password, Session Token หรือ Prompt อ่อนไหวทั้งข้อความเมื่อใช้ข้อมูลน้อยกว่านั้นได้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "A missing event may reflect disabled auditing, a failed collector or a visibility gap. Absence from the SIEM is not proof that an action never occurred.",
+              "th": "การไม่มี Event อาจเกิดจากปิด Audit ตัวเก็บล้มเหลว หรือจุดอับ การไม่พบใน SIEM ไม่ได้พิสูจน์ว่าไม่เคยเกิดการกระทำนั้น"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "A missing event may reflect disabled auditing, a failed collector or a visibility gap. Absence from the SIEM is not proof that an action never occurred.",
+        "th": "การไม่มี Event อาจเกิดจากปิด Audit ตัวเก็บล้มเหลว หรือจุดอับ การไม่พบใน SIEM ไม่ได้พิสูจน์ว่าไม่เคยเกิดการกระทำนั้น"
+      },
+      "sourceLocator": "Domain 5.md §3.2; D5 surm.md §21",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "attack"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-03-03-collection-retention",
+      "title": {
+        "en": "Keep evidence usable for its required lifetime.",
+        "th": "เก็บหลักฐานให้ใช้งานได้ตลอดเวลาที่จำเป็น"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Aggregation, reporting and archiving serve different needs.",
+            "th": "Aggregation, Reporting และ Archiving ตอบโจทย์ต่างกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Aggregate",
+                "th": "รวบรวม"
+              },
+              {
+                "en": "Centralize relevant records",
+                "th": "รวมบันทึกที่เกี่ยวข้อง"
+              },
+              {
+                "en": "Preserve source context",
+                "th": "รักษาบริบทต้นทาง"
+              }
+            ],
+            [
+              {
+                "en": "Report",
+                "th": "รายงาน"
+              },
+              {
+                "en": "Summarize activity and trends",
+                "th": "สรุปกิจกรรมและแนวโน้ม"
+              },
+              {
+                "en": "A summary may omit detail",
+                "th": "สรุปอาจไม่มีรายละเอียดทั้งหมด"
+              }
+            ],
+            [
+              {
+                "en": "Archive",
+                "th": "เก็บระยะยาว"
+              },
+              {
+                "en": "Retain searchable protected evidence",
+                "th": "เก็บหลักฐานที่ค้นได้และป้องกันแล้ว"
+              },
+              {
+                "en": "Use retention and hold rules",
+                "th": "ใช้นโยบายเก็บและรักษาหลักฐาน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Aggregation combines records from systems so related activity can be examined together. Reporting summarizes selected results for operational, management or compliance needs. Archiving preserves records for later retrieval. Define retention from applicable obligations, policy, investigation needs and privacy risk rather than inventing a universal duration. Test retrieval and protect archive integrity and confidentiality. An incident hold can suspend normal disposal. Moving data into inexpensive storage is not enough if the team cannot locate or interpret it during an investigation.",
+            "th": "Aggregation รวมบันทึกข้ามระบบเพื่อวิเคราะห์ร่วมกัน Reporting สรุปผลที่เลือกสำหรับปฏิบัติงาน ผู้บริหาร หรือข้อกำหนด ส่วน Archiving เก็บเพื่อเรียกใช้ภายหลัง ต้องกำหนดอายุเก็บจากข้อกำหนดที่ใช้จริง นโยบาย ความจำเป็นสอบสวน และความเสี่ยงส่วนตัว ไม่ใช่กำหนดระยะเวลาสากลขึ้นเอง ทดสอบการเรียกคืนและป้องกันความถูกต้องกับความลับของ Archive คำสั่งรักษาหลักฐานอาจระงับการกำจัดตามปกติ การย้ายไป Storage ราคาถูกไม่พอหากค้นหาหรือตีความระหว่างสอบสวนไม่ได้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "An archive and a backup can overlap operationally, but their purposes and retrieval requirements differ. Define both explicitly instead of assuming one replaces the other.",
+              "th": "Archive กับ Backup อาจใช้เทคโนโลยีร่วมกัน แต่เป้าหมายและเงื่อนไขเรียกคืนต่างกัน ต้องระบุทั้งคู่ ไม่สมมติว่าแทนกันได้"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "An archive and a backup can overlap operationally, but their purposes and retrieval requirements differ. Define both explicitly instead of assuming one replaces the other.",
+        "th": "Archive กับ Backup อาจใช้เทคโนโลยีร่วมกัน แต่เป้าหมายและเงื่อนไขเรียกคืนต่างกัน ต้องระบุทั้งคู่ ไม่สมมติว่าแทนกันได้"
+      },
+      "sourceLocator": "S28–S30; Domain 5.md §§3.3–3.6",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "attack"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-03-04-siem-chain",
+      "title": {
+        "en": "SIEM connects observations into a hypothesis.",
+        "th": "SIEM เชื่อมข้อมูลเป็นข้อสันนิษฐาน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Security Information and Event Management supports investigation.",
+            "th": "SIEM สนับสนุนการสอบสวนจากบันทึกและเหตุการณ์"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Collect and normalize",
+                "th": "รวบรวมและปรับรูปแบบ"
+              },
+              {
+                "en": "Join identity and endpoint events",
+                "th": "เชื่อม Identity กับ Endpoint Events"
+              },
+              {
+                "en": "Check identity and time alignment",
+                "th": "ตรวจตัวตนและเวลาที่ตรงกัน"
+              }
+            ],
+            [
+              {
+                "en": "Correlate and analyze",
+                "th": "เชื่อมโยงและวิเคราะห์"
+              },
+              {
+                "en": "Find meaningful combinations",
+                "th": "หาชุดเหตุการณ์ที่มีนัยสำคัญ"
+              },
+              {
+                "en": "Rules and AI can both be wrong",
+                "th": "กฎและ AI ต่างผิดได้"
+              }
+            ],
+            [
+              {
+                "en": "Investigate and act",
+                "th": "สอบสวนและดำเนินการ"
+              },
+              {
+                "en": "Validate scope; follow playbook",
+                "th": "ตรวจขอบเขตและทำตาม Playbook"
+              },
+              {
+                "en": "Automation needs bounded authority",
+                "th": "Automation ต้องจำกัดอำนาจ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A SIEM collects, normalizes and analyzes security data across sources. Failed logins, a later success and unusual endpoint activity may form an account-compromise hypothesis. Correlation increases context but does not prove causation or attacker identity. AI can group related alerts or highlight anomalies to reduce alert fatigue, yet poor telemetry and model errors can hide important signals. Analysts review supporting evidence and maintain visibility into suppressed alerts. A SIEM does not inherently prevent every attack; response integrations operate under defined policies and authority.",
+            "th": "SIEM รวบรวม ปรับรูปแบบ และวิเคราะห์ข้อมูลความปลอดภัยหลายแหล่ง Login ล้มเหลว ตามด้วยสำเร็จและกิจกรรม Endpoint ผิดปกติ อาจนำไปสู่ข้อสันนิษฐานบัญชีถูกยึด Correlation เพิ่มบริบทแต่ไม่พิสูจน์เหตุและผลหรือตัวผู้โจมตี AI ช่วยรวม Alert และชี้ความผิดปกติเพื่อลด Alert Fatigue ได้ แต่ข้อมูลไม่ดีและ Model ผิดพลาดอาจซ่อนสัญญาณสำคัญ นักวิเคราะห์ต้องตรวจหลักฐานและยังมองเห็น Alert ที่ถูกระงับ SIEM ไม่ได้ป้องกันทุกการโจมตีโดยตัวมันเอง การเชื่อมระบบตอบสนองต้องอยู่ใต้นโยบายและอำนาจที่กำหนด"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Fewer alerts is not automatically better security. Measure whether meaningful incidents remain detectable and escalated after tuning or model changes.",
+              "th": "จำนวน Alert ลดลงไม่ได้แปลว่าปลอดภัยขึ้นโดยอัตโนมัติ ต้องวัดว่าเหตุสำคัญยังตรวจพบและส่งต่อได้หลังปรับกฎหรือ Model"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Fewer alerts is not automatically better security. Measure whether meaningful incidents remain detectable and escalated after tuning or model changes.",
+        "th": "จำนวน Alert ลดลงไม่ได้แปลว่าปลอดภัยขึ้นโดยอัตโนมัติ ต้องวัดว่าเหตุสำคัญยังตรวจพบและส่งต่อได้หลังปรับกฎหรือ Model"
+      },
+      "sourceLocator": "S32/S37; D5 surm.md §§21–23; official AI SIEM guidance",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "attack"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-03-05-coverage-tools",
+      "title": {
+        "en": "Choose visibility for the question.",
+        "th": "เลือกการมองเห็นให้ตรงคำถาม"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Agent and agentless collection have different dependencies.",
+            "th": "การเก็บแบบมี Agent และไม่มี Agent พึ่งพาสิ่งต่างกัน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Endpoint tools",
+                "th": "เครื่องมือ Endpoint"
+              },
+              {
+                "en": "AV/EDR observe processes and files",
+                "th": "AV/EDR ติดตาม Process และไฟล์"
+              },
+              {
+                "en": "Agent health affects coverage",
+                "th": "สถานะ Agent กระทบความครอบคลุม"
+              }
+            ],
+            [
+              {
+                "en": "DLP",
+                "th": "DLP"
+              },
+              {
+                "en": "Enforce sensitive-data movement policy",
+                "th": "บังคับนโยบายเคลื่อนย้ายข้อมูลอ่อนไหว"
+              },
+              {
+                "en": "Coverage depends on channel and content",
+                "th": "ขึ้นกับช่องทางและเนื้อหาที่มองเห็น"
+              }
+            ],
+            [
+              {
+                "en": "Agentless / SNMP",
+                "th": "Agentless / SNMP"
+              },
+              {
+                "en": "Use available APIs or device notifications",
+                "th": "ใช้ API หรือการแจ้งจากอุปกรณ์"
+              },
+              {
+                "en": "Credentials and reachability still matter",
+                "th": "ยังต้องมีสิทธิ์และเข้าถึงอุปกรณ์ได้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "An installed agent can collect detailed host activity, while agentless monitoring relies on supported remote interfaces or exported records. Neither has universal visibility. Antivirus can detect malware; EDR adds endpoint investigation and response capabilities according to product and configuration. Quarantine limits a suspicious file and does not prove the host clean. DLP applies data-handling rules to visible channels and cannot guarantee no disclosure. An SNMP trap is an unsolicited device notification; polling is a manager request. A failed collector or disabled agent is itself a monitoring concern.",
+            "th": "Agent ที่ติดตั้งอาจเก็บกิจกรรม Host ละเอียด ส่วน Agentless ใช้ Interface ระยะไกลหรือบันทึกที่ส่งออก ไม่มีแบบใดเห็นทุกอย่าง Antivirus ตรวจ Malware ได้ ส่วน EDR เพิ่มการสอบสวนและตอบสนองตามผลิตภัณฑ์กับการตั้งค่า Quarantine จำกัดไฟล์น่าสงสัยแต่ไม่พิสูจน์ว่าเครื่องสะอาด DLP ใช้กฎจัดการข้อมูลกับช่องทางที่มองเห็นและไม่รับประกันว่าไม่รั่วเลย SNMP Trap คืออุปกรณ์ส่งแจ้งเอง ส่วน Polling คือระบบจัดการเป็นฝ่ายถาม ตัวเก็บที่ล้มเหลวหรือ Agent ปิดก็เป็นสิ่งที่ต้องติดตาม"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Tool categories can overlap. Select capabilities from the requirement and verified deployment, not from a vendor label or an assumption that every device supports SNMP.",
+              "th": "หมวดเครื่องมืออาจทับซ้อนกัน เลือกจากความต้องการและระบบที่ตรวจแล้ว ไม่ใช่ชื่อผลิตภัณฑ์หรือสมมติว่าทุกอุปกรณ์รองรับ SNMP"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Tool categories can overlap. Select capabilities from the requirement and verified deployment, not from a vendor label or an assumption that every device supports SNMP.",
+        "th": "หมวดเครื่องมืออาจทับซ้อนกัน เลือกจากความต้องการและระบบที่ตรวจแล้ว ไม่ใช่ชื่อผลิตภัณฑ์หรือสมมติว่าทุกอุปกรณ์รองรับ SNMP"
+      },
+      "sourceLocator": "S31–S33; Domain 5.md §§3.7–3.11",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "attack"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-03-06-decision",
+      "title": {
+        "en": "AI grouped a critical alert with routine blocks.",
+        "th": "AI จัด Alert สำคัญรวมกับการบล็อกทั่วไป"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "You are the SOC analyst. A grouped alert includes an unusual privileged login and sensitive file access. What is the best next step?",
+            "th": "คุณเป็นนักวิเคราะห์ SOC Alert ที่รวมไว้มี Login สิทธิ์สูงผิดปกติและการอ่านไฟล์อ่อนไหว ควรทำอะไรต่อ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "ก"
+              },
+              {
+                "en": "Inspect supporting events and escalate by impact",
+                "th": "ตรวจ Event ประกอบแล้วส่งต่อตามผลกระทบ"
+              },
+              {
+                "en": "The context can indicate account misuse despite the grouping label; review scope and follow the incident playbook.",
+                "th": "บริบทอาจชี้การใช้บัญชีผิดแม้ชื่อกลุ่มดูปกติ ต้องตรวจขอบเขตและทำตาม Playbook"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "ข"
+              },
+              {
+                "en": "Close it because the AI reduced its priority",
+                "th": "ปิดเพราะ AI ลดลำดับแล้ว"
+              },
+              {
+                "en": "A model score is advisory evidence, not authority to ignore privileged access to sensitive data.",
+                "th": "คะแนน Model เป็นข้อมูลประกอบ ไม่ใช่อำนาจให้ละเลย Access สิทธิ์สูงต่อข้อมูลอ่อนไหว"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "ค"
+              },
+              {
+                "en": "Disable the entire privileged group immediately",
+                "th": "ปิดบัญชีสิทธิ์สูงทั้งกลุ่มทันที"
+              },
+              {
+                "en": "Broad disruption is not justified by this limited context; containment must follow scope, urgency and approved authority.",
+                "th": "การกระทบทั้งกลุ่มยังไม่มีหลักฐานรองรับ ต้อง Contain ตามขอบเขต ความเร่งด่วน และอำนาจอนุมัติ"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "ง"
+              },
+              {
+                "en": "Wait for the weekly trend report",
+                "th": "รอรายงานแนวโน้มรายสัปดาห์"
+              },
+              {
+                "en": "A potentially active high-impact case requires timely review; reporting does not replace operational triage.",
+                "th": "เหตุที่อาจกำลังเกิดและกระทบสูงต้องทบทวนทันเวลา รายงานไม่แทน Triage"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "AI-assisted grouping can reduce repetitive work, but high-impact evidence still requires human review. Verify identities, timestamps and file actions, check authorization and assess other affected assets. Escalate when the organization’s criteria are met and apply urgent containment if the playbook and evidence warrant it. Record why the group was reopened and feed the missed context into tuning. Do not equate a routine automated block with proof that related privileged activity was harmless.",
+            "th": "AI ช่วยลดงานซ้ำได้แต่หลักฐานผลกระทบสูงยังต้องให้คนทบทวน ตรวจตัวตน เวลา การอ่านไฟล์ การอนุญาต และทรัพย์สินอื่นที่เกี่ยวข้อง ส่งต่อตามเกณฑ์องค์กรและ Contain เร่งด่วนเมื่อหลักฐานกับ Playbook รองรับ บันทึกเหตุผลที่เปิดตรวจกลุ่มนี้ใหม่และนำบริบทที่ตกหล่นไปปรับระบบ อย่าคิดว่าการบล็อกอัตโนมัติทั่วไปพิสูจน์ว่ากิจกรรมสิทธิ์สูงที่เกี่ยวข้องไม่มีอันตราย"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Tuning must preserve a route for urgent escalation and a way to audit suppressed alerts. Model output does not remove the analyst’s responsibility.",
+              "th": "การปรับต้องยังมีทางส่งต่อเร่งด่วนและตรวจ Alert ที่ระงับได้ ผล Model ไม่ได้ยกเลิกหน้าที่นักวิเคราะห์"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Choose an action and examine its reason.",
+            "th": "เลือกแนวทางแล้วพิจารณาเหตุผลประกอบ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Tuning must preserve a route for urgent escalation and a way to audit suppressed alerts. Model output does not remove the analyst’s responsibility.",
+        "th": "การปรับต้องยังมีทางส่งต่อเร่งด่วนและตรวจ Alert ที่ระงับได้ ผล Model ไม่ได้ยกเลิกหน้าที่นักวิเคราะห์"
+      },
+      "sourceLocator": "Original scenario; official Domain 5 AI monitoring and human intervention guidance",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "attack"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "slideOrder": [
+    "slide-d5-03-01-record-observe",
+    "slide-d5-03-02-trustworthy-telemetry",
+    "slide-d5-03-03-collection-retention",
+    "slide-d5-03-04-siem-chain",
+    "slide-d5-03-05-coverage-tools",
+    "slide-d5-03-06-decision"
+  ],
+  "scenarioAnswer": 0,
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-5-academic-audit.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    }
+  }
+}

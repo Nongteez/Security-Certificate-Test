@@ -1,0 +1,654 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d5-08-asset-lifecycle",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 5,
+  "primaryObjectiveId": "5.4",
+  "objectiveIds": [
+    "5.4"
+  ],
+  "revision": "1",
+  "status": "in-preparation",
+  "title": {
+    "en": "Protect Assets Through Retirement",
+    "th": "ป้องกันทรัพย์สินจนถึงปลดระวาง"
+  },
+  "synopsis": {
+    "en": "An inventory connects assets to owners, data and dependencies.",
+    "th": "Inventory เชื่อมทรัพย์สินกับเจ้าของ ข้อมูล และการพึ่งพา"
+  },
+  "outcomes": [
+    {
+      "en": "You cannot protect what you cannot identify.",
+      "th": "ป้องกันสิ่งที่ระบุไม่ได้ย่อมทำได้ยาก"
+    },
+    {
+      "en": "Maintenance and retirement need different evidence.",
+      "th": "ดูแลและปลดระวางต้องใช้หลักฐานต่างกัน"
+    },
+    {
+      "en": "EOL changes the support assumptions.",
+      "th": "EOL เปลี่ยนสมมติฐานการสนับสนุน"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: earlier lessons in this objective; no vendor commands are required.",
+      "th": "แนะนำให้อ่านบทก่อนหน้าในวัตถุประสงค์เดียวกัน ไม่จำเป็นต้องรู้คำสั่งเฉพาะผู้ผลิต"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 official exam outline and AI guidance",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Effective September 1, 2026. Domain 5 and separate AI guidance. Retrieved 2026-11-03; archived outline text in QA evidence."
+    },
+    {
+      "id": "d5-notes",
+      "title": "Domain 5.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/Domain 5.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-summary",
+      "title": "D5 sum.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/D5 sum.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-master",
+      "title": "D5 surm.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/D5 surm.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-transcript",
+      "title": "DOMAIN 5.txt",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/DOMAIN 5.txt",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "sanitization",
+      "title": "NIST SP 800-88r2",
+      "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final",
+      "locator": "Media-specific sanitization and verification; supplement to course.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "ir",
+      "title": "NIST SP 800-61r3",
+      "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+      "locator": "Incident response integrated with CSF 2.0; six course activities are a teaching decomposition, not a verbatim current NIST phase list.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "pqc",
+      "title": "NIST FIPS 203",
+      "url": "https://csrc.nist.gov/pubs/fips/203/final",
+      "locator": "ML-KEM establishes a shared secret; does not encrypt bulk application data. Supplement filling required quantum-resistant coverage.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "config",
+      "title": "NIST SP 800-128",
+      "url": "https://csrc.nist.gov/pubs/sp/800/128/upd1/final",
+      "locator": "Approved baseline, security impact analysis and configuration change control.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "testing",
+      "title": "NIST SP 800-115",
+      "url": "https://csrc.nist.gov/pubs/sp/800/115/final",
+      "locator": "Assessment planning, rules of engagement, testing limits and reporting.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "attack",
+      "title": "MITRE ATT&CK",
+      "url": "https://attack.mitre.org/",
+      "locator": "Tactics are adversary goals; techniques are methods. Not a mandatory chronological chain.",
+      "authority": "technical-primary"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d5-08-01-inventory-ownership",
+      "title": {
+        "en": "You cannot protect what you cannot identify.",
+        "th": "ป้องกันสิ่งที่ระบุไม่ได้ย่อมทำได้ยาก"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An inventory connects assets to owners, data and dependencies.",
+            "th": "Inventory เชื่อมทรัพย์สินกับเจ้าของ ข้อมูล และการพึ่งพา"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Identity",
+                "th": "ตัวระบุ"
+              },
+              {
+                "en": "Asset ID, location, version and owner",
+                "th": "รหัส ที่ตั้ง Version และเจ้าของ"
+              },
+              {
+                "en": "Include hardware, software and services",
+                "th": "รวม Hardware, Software และบริการ"
+              }
+            ],
+            [
+              {
+                "en": "Risk context",
+                "th": "บริบทความเสี่ยง"
+              },
+              {
+                "en": "Criticality, data and exposure",
+                "th": "ความสำคัญ ข้อมูล และการเปิดรับ"
+              },
+              {
+                "en": "Prioritize maintenance and response",
+                "th": "จัดลำดับดูแลและตอบสนอง"
+              }
+            ],
+            [
+              {
+                "en": "Lifecycle status",
+                "th": "สถานะวงจรชีวิต"
+              },
+              {
+                "en": "Support dates and planned disposition",
+                "th": "วันสนับสนุนและแผนปลด"
+              },
+              {
+                "en": "Keep records current",
+                "th": "ปรับบันทึกให้ปัจจุบัน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Asset protection starts with knowing what exists and who is accountable. Track hardware, software, cloud resources, applications and important data with identity, owner, version, support status, criticality and dependencies. A server inventory helps determine which systems need a patch or incident containment. An AI model, dataset, service subscription and connecting identity can have different owners and risks. Discovery tools help find assets but do not automatically assign correct ownership or business criticality; reconcile findings with responsible teams.",
+            "th": "การป้องกันทรัพย์สินเริ่มจากรู้ว่ามีอะไรและใครรับผิดชอบ บันทึก Hardware, Software, Cloud, Application และข้อมูลสำคัญ พร้อมตัวระบุ เจ้าของ Version สถานะสนับสนุน ความสำคัญ และระบบพึ่งพา Inventory Server ช่วยระบุระบบที่ต้อง Patch หรือ Contain ส่วน Model, Dataset, Subscription AI และตัวตนเชื่อมระบบอาจมีเจ้าของและความเสี่ยงต่างกัน เครื่องมือสำรวจช่วยหาแต่ไม่ได้กำหนดเจ้าของหรือความสำคัญถูกเอง ต้องตรวจร่วมกับทีมรับผิดชอบ"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "An inventory is maintained evidence, not a one-time spreadsheet. Asset transfers, new cloud instances and AI integrations can make yesterday’s record incomplete.",
+              "th": "Inventory ต้องดูแลต่อเนื่อง ไม่ใช่ตารางครั้งเดียว การย้ายทรัพย์สิน Cloud ใหม่ และ AI Integration อาจทำข้อมูลเมื่อวานไม่ครบ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "An inventory is maintained evidence, not a one-time spreadsheet. Asset transfers, new cloud instances and AI integrations can make yesterday’s record incomplete.",
+        "th": "Inventory ต้องดูแลต่อเนื่อง ไม่ใช่ตารางครั้งเดียว การย้ายทรัพย์สิน Cloud ใหม่ และ AI Integration อาจทำข้อมูลเมื่อวานไม่ครบ"
+      },
+      "sourceLocator": "S52–S54; Domain 5.md §§8.1–8.2; official AI asset guidance",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "config"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-08-02-maintain-retire",
+      "title": {
+        "en": "Maintenance and retirement need different evidence.",
+        "th": "ดูแลและปลดระวางต้องใช้หลักฐานต่างกัน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Ownership continues until access, data and dependencies are resolved.",
+            "th": "ความรับผิดชอบยังอยู่จนจัดการสิทธิ์ ข้อมูล และระบบพึ่งพา"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Acquire and deploy",
+                "th": "จัดหาและติดตั้ง"
+              },
+              {
+                "en": "Define requirements; harden and assign",
+                "th": "กำหนดความต้องการ ตั้งค่าปลอดภัย มอบหมาย"
+              },
+              {
+                "en": "Record ownership and dependencies",
+                "th": "บันทึกเจ้าของและการพึ่งพา"
+              }
+            ],
+            [
+              {
+                "en": "Maintain and monitor",
+                "th": "ดูแลและติดตาม"
+              },
+              {
+                "en": "Patch, back up and review access",
+                "th": "Patch, Backup และทบทวนสิทธิ์"
+              },
+              {
+                "en": "Include AI configurations and versions",
+                "th": "รวมการตั้งค่าและ Version AI"
+              }
+            ],
+            [
+              {
+                "en": "Retire and dispose",
+                "th": "เลิกใช้และกำจัด"
+              },
+              {
+                "en": "Migrate, revoke and sanitize",
+                "th": "ย้ายข้อมูล เพิกถอน และ Sanitize"
+              },
+              {
+                "en": "Verify records, copies and custody",
+                "th": "ตรวจบันทึก สำเนา และการส่งมอบ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Plan and acquire assets with security and support requirements, then deploy with approved settings and ownership. Maintain patches, backups and monitoring throughout use. Retirement removes an asset from service; disposal handles the remaining data and physical or contractual resource. They are not necessarily one event. Before reuse or disposal, resolve retention and evidence holds, migrate needed records, revoke credentials, sanitize appropriately and update the inventory. Retiring an AI integration can require removing API keys and access to datasets as well as ending a subscription.",
+            "th": "วางแผนจัดหาโดยมีเงื่อนไข Security และการสนับสนุน ติดตั้งตามค่าที่อนุมัติและกำหนดเจ้าของ ดูแล Patch, Backup และ Monitoring ตลอดใช้ Retire คือนำออกจากบริการ ส่วน Dispose จัดการข้อมูลและทรัพยากรกายภาพหรือสัญญาที่เหลือ ไม่จำเป็นต้องเป็นเหตุเดียวกัน ก่อนใช้ใหม่หรือกำจัดต้องตรวจ Retention กับ Evidence Hold ย้ายข้อมูลจำเป็น เพิกถอน Credential ทำ Sanitization และปรับ Inventory การเลิก AI Integration อาจต้องลบ API Key และสิทธิ์ Dataset นอกจากยกเลิก Subscription"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Removing an application icon does not prove the service, credentials or retained provider data were removed. Verify the actual retirement scope.",
+              "th": "ลบไอคอนแอปไม่ได้พิสูจน์ว่าบริการ Credential หรือข้อมูลที่ผู้ให้บริการเก็บหายไป ต้องตรวจขอบเขตปลดระวางจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Removing an application icon does not prove the service, credentials or retained provider data were removed. Verify the actual retirement scope.",
+        "th": "ลบไอคอนแอปไม่ได้พิสูจน์ว่าบริการ Credential หรือข้อมูลที่ผู้ให้บริการเก็บหายไป ต้องตรวจขอบเขตปลดระวางจริง"
+      },
+      "sourceLocator": "S54; Domain 5.md §8.3; D5 surm.md §28",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "config"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-08-03-eol-options",
+      "title": {
+        "en": "EOL changes the support assumptions.",
+        "th": "EOL เปลี่ยนสมมติฐานการสนับสนุน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "A working system can still be unsupported and exposed.",
+            "th": "ระบบยังทำงานได้แต่หมดการสนับสนุนและเสี่ยงได้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Long-term treatment",
+                "th": "แนวทางระยะยาว"
+              },
+              {
+                "en": "Upgrade, replace or migrate",
+                "th": "Upgrade เปลี่ยน หรือย้ายระบบ"
+              },
+              {
+                "en": "Test dependencies and safety",
+                "th": "ทดสอบการพึ่งพาและความปลอดภัย"
+              }
+            ],
+            [
+              {
+                "en": "Temporary controls",
+                "th": "มาตรการชั่วคราว"
+              },
+              {
+                "en": "Restrict access, segment and monitor",
+                "th": "จำกัดสิทธิ์ แยกเครือข่าย และติดตาม"
+              },
+              {
+                "en": "Reduce risk; do not restore support",
+                "th": "ลดเสี่ยง ไม่ได้คืนการสนับสนุน"
+              }
+            ],
+            [
+              {
+                "en": "Governance",
+                "th": "การกำกับ"
+              },
+              {
+                "en": "Named owner, acceptance and expiry",
+                "th": "เจ้าของ ผู้ยอมรับเสี่ยง และวันหมดอายุ"
+              },
+              {
+                "en": "Review until retirement",
+                "th": "ทบทวนจนเลิกใช้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "EOL and end-of-support terms vary by vendor, so verify the actual dates and remaining security-update commitments. Unsupported software or devices may retain known vulnerabilities and receive no fixes. Plan upgrade, replacement, migration or decommissioning. When immediate replacement is infeasible, use justified compensating controls such as segmentation, restricted access and enhanced monitoring with an accountable risk decision and review date. These controls do not remove vulnerabilities or restore vendor support. An EOL label is also not proof that compromise has already occurred.",
+            "th": "คำว่า EOL และ End of Support ต่างตาม Vendor ต้องตรวจวันและเงื่อนไข Security Update จริง Software หรือ Device ที่หมดสนับสนุนอาจมีช่องโหว่และไม่ได้รับการแก้ ต้องวางแผน Upgrade เปลี่ยน ย้าย หรือเลิก หากทำทันทีไม่ได้ ใช้ Compensating Controls ที่มีเหตุผล เช่น Segmentation จำกัดสิทธิ์ และ Monitoring พร้อมผู้ตัดสินความเสี่ยงและวันทบทวน มาตรการไม่ได้ลบช่องโหว่หรือคืน Vendor Support และป้าย EOL ก็ไม่ได้พิสูจน์ว่าถูกเจาะแล้ว"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Do not blindly upgrade safety-critical or tightly coupled systems. Coordinate a tested migration while reducing current exposure through authorized controls.",
+              "th": "อย่า Upgrade ระบบสำคัญต่อ Safety หรือพึ่งพากันมากโดยไม่ทดสอบ ประสานการย้ายที่ตรวจแล้วพร้อมลด Exposure ด้วยมาตรการที่อนุญาต"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Do not blindly upgrade safety-critical or tightly coupled systems. Coordinate a tested migration while reducing current exposure through authorized controls.",
+        "th": "อย่า Upgrade ระบบสำคัญต่อ Safety หรือพึ่งพากันมากโดยไม่ทดสอบ ประสานการย้ายที่ตรวจแล้วพร้อมลด Exposure ด้วยมาตรการที่อนุญาต"
+      },
+      "sourceLocator": "S55–S56; Domain 5.md §9; D5 surm.md §29",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "config"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-08-04-decision",
+      "title": {
+        "en": "An unsupported server cannot be replaced this week.",
+        "th": "Server หมดสนับสนุนยังเปลี่ยนสัปดาห์นี้ไม่ได้"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "You are the asset coordinator. A critical legacy application needs a tested migration. What should you recommend meanwhile?",
+            "th": "คุณประสานทรัพย์สิน แอป Legacy สำคัญต้องทดสอบการย้าย ควรแนะนำอะไรระหว่างนี้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "ก"
+              },
+              {
+                "en": "Keep normal access because the application still runs",
+                "th": "คง Access เดิมเพราะแอปยังทำงาน"
+              },
+              {
+                "en": "Operational function does not restore security support or justify leaving exposure unmanaged.",
+                "th": "แอปทำงานไม่ได้คืน Security Support หรือให้เหตุผลปล่อย Exposure โดยไม่จัดการ"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "ข"
+              },
+              {
+                "en": "Install an unsupported upgrade directly in production",
+                "th": "Upgrade ที่ไม่ทดสอบลง Production ทันที"
+              },
+              {
+                "en": "Unvalidated changes can break critical dependencies and do not constitute a controlled migration.",
+                "th": "เปลี่ยนโดยไม่ตรวจอาจทำระบบพึ่งพาสำคัญล้ม ไม่ใช่การย้ายที่ควบคุม"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "ค"
+              },
+              {
+                "en": "Record permanent acceptance with no review date",
+                "th": "ยอมรับเสี่ยงถาวรโดยไม่มีวันทบทวน"
+              },
+              {
+                "en": "An indefinite exception lacks ongoing accountability and an exit plan as conditions change.",
+                "th": "Exception ไม่มีกำหนดขาดการรับผิดชอบต่อเนื่องและแผนออกเมื่อเงื่อนไขเปลี่ยน"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "ง"
+              },
+              {
+                "en": "Apply scoped controls with an owned migration deadline",
+                "th": "ใช้มาตรการจำกัดวงพร้อมเจ้าของและกำหนดย้าย"
+              },
+              {
+                "en": "Temporary exposure reduction plus accountable migration addresses immediate risk and the unsupported lifecycle state.",
+                "th": "ลด Exposure ชั่วคราวพร้อมการย้ายที่มีเจ้าของจัดการทั้งเสี่ยงปัจจุบันและสถานะหมดสนับสนุน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use a documented temporary exception with restricted access, segmentation and monitoring suited to the service. Assign a risk owner, review date and tested migration plan. Verify that controls actually constrain the allowed paths and do not create unsafe availability impacts. Keep the inventory and support information current. Escalate material changes such as active exploitation or failed controls. This is interim risk management, not a claim that compensating controls make the obsolete system fully secure.",
+            "th": "ใช้ Exception ชั่วคราวที่บันทึก พร้อมจำกัดสิทธิ์ Segmentation และ Monitoring เหมาะกับบริการ กำหนดเจ้าของความเสี่ยง วันทบทวน และแผนย้ายที่ทดสอบ ตรวจว่า Control จำกัดทางที่อนุญาตจริงและไม่กระทบความพร้อมใช้อย่างอันตราย ปรับ Inventory กับข้อมูล Support ให้ทัน ส่งต่อเมื่อมีการโจมตีจริงหรือ Control ล้ม นี่คือจัดการเสี่ยงชั่วคราว ไม่ใช่ทำระบบเก่าปลอดภัยสมบูรณ์"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "The authorized risk owner accepts residual business risk. An individual analyst should not silently grant a permanent exception.",
+              "th": "เจ้าของความเสี่ยงที่มีอำนาจยอมรับความเสี่ยงธุรกิจคงเหลือ นักวิเคราะห์ไม่ควรอนุญาตข้อยกเว้นถาวรเองโดยไม่แจ้ง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Choose an action and examine its reason.",
+            "th": "เลือกแนวทางแล้วพิจารณาเหตุผลประกอบ"
+          }
+        }
+      ],
+      "info": {
+        "en": "The authorized risk owner accepts residual business risk. An individual analyst should not silently grant a permanent exception.",
+        "th": "เจ้าของความเสี่ยงที่มีอำนาจยอมรับความเสี่ยงธุรกิจคงเหลือ นักวิเคราะห์ไม่ควรอนุญาตข้อยกเว้นถาวรเองโดยไม่แจ้ง"
+      },
+      "sourceLocator": "Original scenario from S55–S56",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "config"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "slideOrder": [
+    "slide-d5-08-01-inventory-ownership",
+    "slide-d5-08-02-maintain-retire",
+    "slide-d5-08-03-eol-options",
+    "slide-d5-08-04-decision"
+  ],
+  "scenarioAnswer": 3,
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-5-academic-audit.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    }
+  }
+}

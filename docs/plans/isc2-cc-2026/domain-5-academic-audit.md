@@ -164,3 +164,53 @@ All 5 official objectives and the complete Review module for ISC2 CC 2026 Domain
 
 **Audit Recommendation:**  
 **Domain 5 Reading Notes Content Complete — Pending Human Acceptance**
+
+---
+
+# Learning Slides academic audit addendum — 2026-11-03
+
+This addendum evaluates the newly authored Domain 5 Learning Slides. The preceding Reading Notes report is retained verbatim and does not constitute approval of these slides. Agent review is recorded for revision 1; human academic, native Thai editorial and display acceptance remain pending.
+
+Official scope verified directly from ISC2: Security Operations and Incident Response, 17.3%, effective September 1, 2026. Five objectives, fourteen requirement bullets, with examples retained; separate AI guidance is mapped in the coverage addendum. Original course text and images remain unchanged. New diagrams and scenarios paraphrase concepts and do not reproduce course screenshots or question-bank items.
+
+|ID|Severity|Source finding / ambiguity|Learning Slides disposition|
+|---|---|---|---|
+|LS01|Major|S07/transcript says encryption ensures confidentiality, integrity and authenticity|L02 S01 distinguishes confidentiality from authenticated protection; no automatic integrity/authenticity claim|
+|LS02|Major|Transcript treats signing as private-key encryption and public-key decryption generally|L02 S03/S06 explicitly distinguishes signing, encryption and key agreement|
+|LS03|Major|S22/transcript suggests different inputs cannot have the same hash|L02 S05 says collisions are possible; resistance is computational infeasibility|
+|LS04|Major|Fast hashes/password storage conflated; MD5 shown without sufficient qualification|L02 S05 uses salted costed password hashing; MD5/SHA-1 historical only; trusted digest reference required|
+|LS05|Major|Transcript treats deleting a key after encryption as universal cryptographic erase; physical destruction fail-proof|L01 S04 requires suitable prior encryption, removal of relevant key copies, media suitability and verified result; no universal guarantee|
+|LS06|Major|S04 labels described as preventing exposure; masking example used as identity proof|L01 S01 separates labels and enforcement; S03 rejects last-four digits as sufficient identity proof and masking as guaranteed anonymity|
+|LS07|Moderate|S09/transcript uses SSL for current secure web connections|L02 S04 uses TLS, marks SSL obsolete, distinguishes channel protection from endpoint trust|
+|LS08|Moderate|S13/transcript generalizes RSA key exchange in TLS|L02 S04 describes protocol-dependent hybrid establishment; no universal RSA handshake claim|
+|LS09|Moderate|S17 conflates TPM with Secure Boot and guarantees trusted startup|L02 S06 treats device-bound keys/measurements separately from Secure Boot; no certification-level guarantee|
+|LS10|Moderate|HSM/FIPS marketing can imply guaranteed security or a particular assurance level|L02 S06 explains custody and product-dependent assurance; HSM name does not establish validation|
+|LS11|Major|Quantum-resistant cryptography missing substantively|L02 S07 adds explicitly supplementary NIST FIPS 203: ML-KEM establishes shared secret, not bulk encryption/signature; no speculative attack date|
+|LS12|Moderate|DLP, AV, agentless and SIEM coverage overgeneralized in transcript|L03 S04/S05 qualifies visibility, agent health, quarantine, supported APIs, automation authority and model errors|
+|LS13|Moderate|Source priority matrix and event chain can be read as universal|L04 says P1–P5 organizational example, uses context, and rejects mandatory attack sequence|
+|LS14|Moderate|Actor definition malicious only, insider list includes accidental activity|L05 S01/S02 distinguishes malicious actors from accidental insider harm and compromised identity; no attribution from an IP|
+|LS15|Major|Source IR claims aftermath-only, guaranteed compliance and single rigid six phases|L06 begins during active harm, uses applicable policy, qualified obligations and iterative activities; current NIST SP 800-61r3 is distinguished|
+|LS16|Major|Data-handling-policy link to IRP underdeveloped|L06 S01/S03 teaches classified evidence, access, provenance, custody, authorized sharing and holds; no invented universal legal deadline|
+|LS17|Moderate|EOL/end of support simplified; transcript names Windows versions as supported without date qualification|L08 verifies vendor-specific lifecycle commitments; no current Windows support assertion; compensating controls temporary, owned and reviewed|
+|LS18|Moderate|S58/transcript misnames NIST SP 800-128 as network-device guidance; change order rigid|L09 corrects title/scope, separates desired state from transition, allows policy-defined testing/approval sequence and emergency controls|
+|LS19|Moderate|Readiness/tests can imply assurance from one clean result; phishing grouped under physical scope|L10/L11 explain test limits, authorized scope, retest and distinct deception/entry mechanisms while retaining all official examples|
+|LS20|Minor|S24–S27 are unrelated Domain 1 screenshots; duplicates inflate source count|Inventory excludes unrelated material and consolidates duplicate teaching; no extra exam requirement inferred|
+|LS21|Moderate|Earlier reports claim complete review using older file sizes and omit D5 surm.md|New 82-file inventory independently records current byte hashes, all four text sources, image locators and missing media; old report is preserved as history|
+
+Disposition: all material findings above are resolved in authored slide content or excluded with explanation. No known unsupported critical scope item is published. The agent reviewed paired EN/TH explanations for the same concepts; Thai retains familiar technical terms. This is not native Thai editorial acceptance. No unsupported claim of exam frequency is used.
+
+Authoritative supplements checked on 2026-11-03:
+
+- [ISC2 outline and AI guidance](https://www.isc2.org/certifications/cc/cc-certification-exam-outline): authoritative scope; local evidence in official-outline.txt.
+- [NIST SP 800-88r2](https://csrc.nist.gov/pubs/sp/800/88/r2/final): media sanitization, selecting techniques and validation; replaces unqualified older sanitization references for these slides.
+- [NIST SP 800-61r3](https://csrc.nist.gov/pubs/sp/800/61/r3/final): current incident-response risk-management integration.
+- [NIST FIPS 203](https://csrc.nist.gov/pubs/fips/203/final): standardized ML-KEM shared-secret establishment; explicit course gap supplement.
+- [NIST SP 800-128](https://csrc.nist.gov/pubs/sp/800/128/upd1/final): security-focused configuration management.
+- [NIST SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final): planning technical assessments and their limitations.
+- [MITRE ATT&CK](https://attack.mitre.org/): behavior knowledge base and goal/method distinction.
+
+Optional enrichment is labeled in context: specialized data-in-use techniques, detailed TPM/HSM assurance, CTI subdivisions, STRIDE, and advanced AI attacks. No extra numbered official objectives are invented. AI security application is tracked separately from ordinary requirement bullets.
+
+Review limitations: original video/audio and the referenced change-summary PDF are absent from the supplied directory; their provenance, transcription fidelity and reuse rights cannot be certified. No source images are embedded in production. New diagrams, text and scenarios are original educational synthesis.
+
+Learning Slides diagram review: aggregation/reporting/archiving are independent functions, not a mandatory chain; evidence preservation continues during analysis. L03 S03 now uses comparison, and L06 S03 uses mapping. Two original path compositions were corrected before final QA; stable IDs and reading content retained. Retake evidence is linked through the final browser matrix.

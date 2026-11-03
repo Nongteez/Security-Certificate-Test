@@ -1,0 +1,2770 @@
+NIST Interagency Report 
+NIST IR 8286Ar1
+Identifying and Estimating 
+Cybersecurity Risk for 
+Enterprise Risk Management 
+Stephen Quinn 
+Nahla Ivy 
+Matthew Barrett 
+Larry Feldman 
+Greg Witte 
+R. K. Gardner 
+This publication is available free of charge from: 
+https://doi.org/10.6028/NIST.IR.8286Ar1 
+
+ 
+NIST Interagency Report 
+NIST IR 8286Ar1 
+Identifying and Estimating 
+Cybersecurity Risk for  
+Enterprise Risk Management 
+ 
+Stephen Quinn 
+Computer Security Division 
+Information Technology Laboratory 
+ 
+Nahla Ivy 
+Enterprise Risk Management Oﬃce 
+Oﬃce of Financial Resource Management 
+ 
+Matthew Barrett 
+CyberESI Consulting Group, Inc. 
+Larry Feldman 
+Huntington Ingalls Industries 
+ 
+R. K. Gardner 
+New World Technology Partners 
+ 
+Greg Witte 
+Palydin LLC 
+ 
+This publication is available free of charge from: 
+https://doi.org/10.6028/NIST.IR.8286Ar1 
+December 2025 
+ 
+ 
+U.S. Department of Commerce  
+Howard Lutnick, Secretary 
+National Institute of Standards and Technology  
+Craig Burkhardt, Acting Under Secretary of Commerce for Standards and Technology and Acting NIST Director 
+  
+
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+Certain equipment, instruments, software, or materials, commercial or non -commercial, are identified in this 
+paper in order to specify the experimental procedure adequately. Such identification does not imply 
+recommendation or endorsement of any product or service by NIST, nor does it imply that the materials or 
+equipment identified are necessarily the best available for the purpose.  
+There may be references in this publication to other publications currently under development by NIST in 
+accordance with its assigned statutory responsibilities. The information in this publication, including concepts and 
+methodologies, may be used by federal agencies even before the completion of such companion publications. 
+Thus, until each publication is completed, current requirements, guidelines, and procedures, where they exist, 
+remain operative. For planning and transition purposes, federal agencies may wish to closely follow the 
+development of these new publications by NIST.   
+Organizations are encouraged to review all draft publications during public comment periods and provide feedback 
+to NIST. Many NIST cybersecurity publications, other than the ones noted above, are available at 
+https://csrc.nist.gov/publications. 
+NIST Technical Series Policies 
+Copyright, Use, and Licensing Statements 
+NIST Technical Series Publication Identifier Syntax 
+Publication History 
+Approved by the NIST Editorial Review Board on 2025-09-11 
+Supersedes NIST IR 8286A (November 2021) https://doi.org/10.6028/NIST.IR.8286A 
+How to Cite this NIST Technical Series Publication 
+Quinn SD, Ivy N, Barrett M, Feldman L, Witte GA, Gardner RK (2025) Identifying and Estimating Cybersecurity Risk 
+for Enterprise Risk Management. (National Institute of Standards and Technology, Gaithersburg, MD), NIST 
+Interagency Report (IR) NIST IR 8286Ar1. https://doi.org/10.6028/NIST.IR.8286Ar1 
+Author ORCID iDs 
+Matthew Barrett: 0000-0002-7689-427X 
+Larry Feldman: 0000-0003-3888-027X 
+Nahla Ivy: 0000-0003-4741-422X 
+Stephen D. Quinn: 0000-0003-1436-684X 
+Gregory A. Witte: 0000-0002-5425-1097 
+Contact Information 
+nistir8286@nist.gov 
+ 
+National Institute of Standards and Technology 
+Attn: Applied Cybersecurity Division, Information Technology Laboratory  
+100 Bureau Drive (Mail Stop 2000) Gaithersburg, MD 20899-2000 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+Additional Information 
+Additional information about this publication is available at https://csrc.nist.gov/pubs/ir/8286/a/r1/final, including 
+related content, potential updates, and document history.  
+All comments are subject to release under the Freedom of Information Act (FOIA). 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+i 
+Abstract 
+This document supplements NIST Interagency Report (IR) 8286, Integrating Cybersecurity and 
+Enterprise Risk Management (ERM), by providing additional detail regarding risk guidance, 
+identiﬁcation, and analysis. This report oﬀers examples and information to illustrate risk 
+tolerance, risk appetite, and methods for determining risks in that context. To support the 
+development of an Enterprise Risk Register, this report describes documentation of various 
+scenarios based on the potential impact of threats and vulnerabilities on enterprise assets. 
+Documenting the likelihood and impact of various threat events through cybersecurity risk 
+registers integrated into an enterprise risk proﬁle helps to later prioritize and communicate 
+enterprise cybersecurity risk response and monitoring. This document has been updated to 
+reﬂect changes in other NIST documentation (IR 8286 series, Special Publication [SP] 800-
+221/221A, and Cybersecurity Framework 2.0 [CSF]). 
+Keywords 
+cyber risk management; cybersecurity risk management; cybersecurity risk measurement; 
+cybersecurity risk register; enterprise risk management (ERM); enterprise risk proﬁle. 
+Reports on Computer Systems Technology 
+The Information Technology Laboratory (ITL) at the National Institute of Standards and 
+Technology (NIST) promotes the U.S. economy and public welfare by providing technical 
+leadership for the Nation’s measurement and standards infrastructure. ITL develops tests, test 
+methods, reference data, proof of concept implementations, and technical analyses to advance 
+the development and productive use of information technology. ITL’s responsibilities include the 
+development of management, administrative, technical, and physical standards and guidelines 
+for the cost-eﬀective security and privacy of other than national security-related information in 
+federal information systems. 
+  
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+ii 
+Audience 
+The primary audience for this publication includes both federal government and non-federal 
+government cybersecurity, privacy, and cyber supply chain professionals at all levels who 
+understand cybersecurity but may be unfamiliar with the details of enterprise risk management 
+(ERM). 
+The secondary audience includes both federal and non-federal government corporate oﬃcers, 
+high-level executives, ERM oﬃcers and staﬀ members, and others who understand ERM but 
+may be unfamiliar with the details of cybersecurity.  
+This document begins with information generated at the Enterprise Level of the organization 
+and frames the discussion and the response from the risk management practitioners. All readers 
+are expected to gain an improved understanding of how cybersecurity risk management (CSRM) 
+and ERM complement and relate to each other, as well as the beneﬁts of integrating their use.  
+Document Conventions 
+For the purposes of this document, the terms “cybersecurity” and “information security” are 
+used interchangeably, as are the terms Cybersecurity Risk Management (CSRM) and Information 
+Security Risk Management (ISRM). 
+Trademark Information 
+All registered trademarks and trademarks belong to their respective organizations.  
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+iii 
+Patent Disclosure Notice 
+NOTICE: ITL has requested that holders of patent claims whose use may be required for 
+compliance with the guidance or requirements of this publication disclose such patent claims to 
+ITL. However, holders of patents are not obligated to respond to ITL calls for patents and ITL has 
+not undertaken a patent search in order to identify which, if any, patents may apply to this 
+publication. 
+As of the date of publication and following call(s) for the identiﬁcation of patent claims whose 
+use may be required for compliance with the guidance or requirements of this publication, no 
+such patent claims have been identiﬁed to ITL.  
+No representation is made or implied by ITL that licenses are not required to avoid patent 
+infringement in the use of this publication. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+iv 
+Table of Contents 
+Executive Summary ............................................................................................................................1  
+ Introduction ...............................................................................................................................4  
+ Cybersecurity Risk Considerations Throughout the ERM Process................................................ 10 
+2.1.1. Risk Scope, Context, and Criteria ............................................................................................ 13 
+2.1.2. Risk Appetite and Risk Tolerance ............................................................................................ 14 
+2.1.3. Detailed Risk Integration Strategy ........................................................................................... 17 
+2.1.4. Enterprise Strategy for Cybersecurity Risk Reporting ............................................................. 22 
+2.2.1. Inventory and Valuation of Assets ........................................................................................... 25 
+2.2.1.1. Business Impact Analysis ................................................................................................. 25 
+2.2.1.2. Determination of High-Value Assets ............................................................................... 26 
+2.2.1.3. Automation Support for Inventory Accuracy .................................................................. 27 
+2.2.2. Determination of Potential Threats ........................................................................................ 27 
+2.2.2.1. Threat Enumeration ........................................................................................................ 28 
+2.2.2.2. Reducing Unwanted Bias in Threat Considerations ........................................................ 29 
+2.2.2.3. Threat Enumeration Through SWOT Analysis ................................................................. 30 
+2.2.2.4. Use of Gap Analysis to Identify Threats .......................................................................... 31 
+2.2.2.5. Technical Threat Enumeration ........................................................................................ 34 
+2.2.3. Vulnerability Identiﬁcation ...................................................................................................... 37 
+2.2.3.1. Determination of Vulnerabilities and Predisposing Conditions ...................................... 37 
+2.2.3.2. System Complexity as a Vulnerability ............................................................................. 39 
+2.2.3.3. Vulnerability Identiﬁcation Automation .......................................................................... 40 
+2.2.4. Determining Potential Impact ................................................................................................. 41 
+2.2.5. Recording Identiﬁed Risks ....................................................................................................... 43 
+2.2.6. Risk Categorization .................................................................................................................. 45 
+
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+v 
+2.3.1. Selecting Risk Analysis Methodologies ................................................................................... 47 
+2.3.2. Techniques for Estimating Likelihood and Impact ................................................................... 49 
+2.3.2.1. Improving Estimation Based on Knowledge of Prior Events ........................................... 50 
+2.3.2.2. Three-Point Estimation.................................................................................................... 52 
+2.3.2.3. Event Tree Analysis .......................................................................................................... 55 
+2.3.2.4. Monte Carlo Simulation .................................................................................................. 56 
+2.3.2.5. Bayesian Analysis ............................................................................................................ 57 
+ Conclusion ............................................................................................................................... 59 
+References ....................................................................................................................................... 60 
+Appendix A. List of Symbols, Abbreviations, and Acronyms ...................................................... 62 
+Appendix B. Notional Example of a Risk Detail Record (RDR) .................................................... 66 
+Appendix C. Change Log .......................................................................................................... 68 
+List of Tables 
+Table 1. Inputs and outputs for ERM governance and integrated CSRM .............................................. 13 
+Table 2. Notional examples of risk appetite and risk tolerance ........................................................... 16 
+Table 3. Example threat modeling analysis ........................................................................................ 28 
+Table 4. Example bias issues to avoid in risk management ................................................................. 30 
+Table 5. Example SWOT analysis ....................................................................................................... 31 
+Table 6. Cybersecurity Framework current state proﬁles help consider threats ................................... 32 
+Table 7. Example sources of threat information ................................................................................. 35 
+Table 8. Example negative and positive impact scenarios .................................................................. 43 
+Table 9. Example risk tolerance results assessment ........................................................................... 51 
+Table 10. Notional risk detail record.................................................................................................. 66 
+List of Figures 
+Fig. 1. IR 8286 series publications describe detailed CSRM/ERM integration ........................................3  
+Fig. 2. IR 8286A activities as part of CSRM/ERM integration .................................................................4  
+Fig. 3. Integration of various risk management activities into the enterprise risk register and risk proﬁle
+..........................................................................................................................................................7  
+Fig. 4. Notional cybersecurity risk register template .......................................................................... 10 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+vi 
+Fig. 5. Illustration of enterprise risk and coordination ........................................................................ 12 
+Fig. 6. Continuous interaction between ERM and CSRM using the risk register ................................... 17 
+Fig. 7. CSRR highlighting risk description column ............................................................................... 23 
+Fig. 8. Inputs to risk scenario identiﬁcation ....................................................................................... 24 
+Fig. 9. Threats as an input to risk scenario identiﬁcation (Part B) ....................................................... 27 
+Fig. 10. Vulnerability inputs to risk scenario identiﬁcation (Part C) ..................................................... 37 
+Fig. 11. Adverse impact inclusion in risk scenario identiﬁcation (Part D) ............................................. 41 
+Fig. 12. Example risk register with sample risk descriptions ............................................................... 44 
+Fig. 13. CSRR highlighting risk category and current assessment columns ........................................... 46 
+Fig. 14. Example three-point estimate graph (triangle distribution) .................................................... 52 
+Fig. 15. Example three-point estimate graph (normal distribution) .................................................... 54 
+Fig. 16. Example Event Tree Analysis ................................................................................................. 55 
+Fig. 17. Illustration of a histogram from a Monte Carlo estimation simulation .................................... 56 
+Fig. 18. Example quantitative analysis results .................................................................................... 58 
+Fig. 19. Example qualitative analysis results ...................................................................................... 58 
+  
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+vii 
+Acknowledgments 
+The authors thank everyone who has contributed to Revision 1 of this publication and provided 
+feedback on its content, including: Thomas Scott Crumbaugh (Emergency Preparedness & 
+Response Operations (EPRO)), Centers for Medicare and Medicaid Services (CMS), Department 
+of Health and Human Services (HHS)); Charles M. Livingston Sr. (Cybersecurity Risk 
+Management, Oﬃce of the Chief Information Oﬃcer (OCIO), HHS); The FAIR Institute - 
+Standards Committee Members: Michael Coden(Cofounder and Associate Director, 
+Cybersecurity at MIT Sloan); Pankaj Goyal (Director, Standards and Research, FAIR Institute); 
+Alexander Holbrook (Principal, Boston Consulting Group (BCG)); Jack Jones (Author and 
+Chairman Emeritus, FAIR Institute); Pierre Olodo (Senior Lead, Cyber Risk, Richemont); Mike 
+Radigan (Senior Advisor, Cisco); Jan Reich (Data Protection & Risk Management, Novartis); Rob 
+Moore (VP , Technology Risk Management, Mastercard); and Denny Wan (Chair, Reasonable 
+Security Institute); FAIR Institute Management (Nick Sanna (President & Founder); Todd Tucker 
+(Managing Director); Bernadette Dunn (Head of Education); Luke Bader (Director of Member 
+Programs);and Other Contributing Members: (AJ Anand (Director, Transformation and 
+Continuous Improvement, Global Security, ADP); Heather Dart (Senior Manager, Information 
+Risk Management, Danaher Corporation); Dana Haubold (Cybersecurity Advisor, DH Cyber 
+Security Consultancy); Glen Garmes (CISO, Old Republic International); Marko Hamel (Product 
+Security & Risk Expert, SAP); Anthony Leatherwood (Director, Technology Risk and 
+Cybersecurity, Plains All American); Vincent Milette (GRC Transformation Delivery Manager, Air 
+Canada); Steve Reznik (Lead Security Analyst, TriNet); and Timothy Szerlong (Information 
+Security Risk Management Consultant, Unum). 
+The authors also wish to thank all individuals, organizations, and enterprises that contributed to 
+the creation of the original version of this document. This includes Lisa Carnahan, Amy Mahn, 
+Chris Enloe, Santi Kiran, Matt Scholl, Isabel Van Wyk, Jim Foti, Daniel Eliot, and Kevin Stine of 
+NIST; Matthew Smith of Seemless Transition; Kelly Hood and Tom Conkle of Optic Cyber 
+Solutions; Daniel Topper of Huntington Ingalls Industries; and Mat Heyman of Impresa 
+Management Solutions.  
+Organizations and individuals who provided feedback on the public comment drafts include: 
+David Austin of Bible.org; Julie Chua, Linda Esah, Elizabeth Flaim, Kim Isaac, Nnake Nweke, Brent 
+Roddy, Nicole Rohloﬀ, and Musarat Qadri Shaikh of the Cyber-ERM Community of Interest; 
+Melanie Tiano of CTIA; Frederick Doyle of CubicPrism Analytics, Inc.; Alicia Jones of Entergy 
+Services, Inc.; Bernice Harvey of Harvey Consulting & Training LLC; Janet Anderson of the 
+National Security Agency; Amy Hamilton of the U.S. Department of Energy; the Executive 
+Secretariat of the U.S. Department of Energy; and the U.S. Department of Health and Human 
+Services Team; individual contributors include Louise Dandonneau and Carmen Estigarribia. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+1 
+Executive Summary 
+All organizations face a broad array of risks, including cybersecurity risk. For federal agencies, 
+the Oﬃce of Management and Budget (OMB) Circular A-11 deﬁnes risk as “the eﬀect of 
+uncertainty on objectives.” An organization’s mission and business objectives can be impacted 
+by such eﬀects and must be managed at various levels within the organization. 
+This report highlights aspects of cybersecurity risk management (CSRM) inherent to enterprises, 
+organizations, and systems. The terms organization and enterprise are often used 
+interchangeably; however, without an understanding of organizational structure, eﬀective risk 
+management is impossible. For the purposes of this document, an organization is deﬁned as an 
+entity of any size, complexity, or position within a larger organizational structure. The enterprise 
+exists at the top level of the hierarchy where senior leaders have unique risk governance 
+responsibilities. Each enterprise, such as 
+1
+1 A system is deﬁned as “a discrete set of information resources organized expressly for the collection, processing, maintenance, use, sharing, 
+dissemination, or disposition of information.” 
+a 
+corporation or government agency, is comprised of 
+organizations supported by systems.  T his report describes CSRM activities at each level.  
+Note that there may be iterative levels within the enterprise and that positions may be relative. 
+For example, a given enterprise (e.g., a bureau or corporate division) may represent an 
+organization to the overarching agency or corporation. 
+Enterprise risk management (ERM) calls for understanding the core (i.e., signiﬁcant) risks that an 
+organization faces, and this document provides supplemental guidance for aligning cyber 
+security risks within an organization’s overall ERM program. Lessons learned from historical 
+cybersecurity incidents demonstrate the importance of collaboration among CSRM and ERM. 
+This document helps enterprises to apply, improve, and monitor the quality of that cooperation 
+and communication. 
+This NIST Interagency Report (IR) is part of a series of publications supporting IR 8286, 
+Integrating Cybersecurity and Enterprise Risk Management (ERM)[1]. Each publication in the 
+series, illustrated in Fig. 1, provides additional detail and guidance to supplement topics in that 
+document: 
+• IR 8286A (this report) provides additional detail regarding risk context, scenario 
+identiﬁcation, and analysis of likelihood and impact. It also includes methods to convey 
+risk information, such as through cybersecurity risk registers (CSRRs) and risk detail 
+records (RDRs). Similar processes, and the general use of risk registers, are helpful to 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+2 
+identify and manage other types of risk, including those for Cyber Supply Chain and 
+Privacy. 
+• IR 8286B [2]describes ways to apply risk analysis to prioritize cybersecurity risk, evaluate 
+and select appropriate risk response, and communicate risk activities as part of an 
+enterprise CSRM strategy. 
+• IR 8286C [3]describes processes for aggregating information from CSRM activities 
+throughout the enterprise. As that information is integrated and harmonized, 
+organizational and enterprise leaders monitor achievement of risk objectives, consider 
+any changes to risk strategy, and use the combined information to maintain awareness 
+of risk factors and positive risks (or opportunities). 
+• IR 8286D[4]describes speciﬁc considerations for the documentation and analysis of 
+business impacts that result in a full or partial loss of the conﬁdentiality, integrity, or 
+availability of a mission-essential resource. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+3 
+ 
+Fig. 1. IR 8286 series publications describe detailed CSRM/ERM integration 
+A key CSRM success factor is setting leadership expectations, such as through risk appetite and 
+risk tolerance. Section 2.1.1 of this report provides examples of setting and communicating 
+those expectations and provides input into Sec.2.2, which describes methods for identifying 
+CSRM scenarios. Each of the potential risk scenarios are analyzed, as described in Sec. 2.3, to 
+consider speciﬁc likelihood and impact on the organization. Throughout these processes, risk 
+data is developed and recorded in cybersecurity risk registers (and risk detail records) in support 
+of ongoing risk communication. This information becomes the input to risk prioritization and 
+response, which is described in IR 8286B. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+4 
+1. Introduction 
+This report provides guidance that supplements NIST Interagency Report (IR) 8286, Integrating 
+Cybersecurity and Enterprise Risk Management (ERM)[1]. This is the ﬁrst of a series of 
+companion publications that provide guidance for implementing, monitoring, and maintaining 
+an enterprise approach designed to integrate cybersecurity risk management (CSRM) into 
+ERM.
+2
+2 For the purposes of this document, the terms “cybersecurity” and “information security” are used interchangeably. 
+ Readers of this report will beneﬁt from reviewing the foundation document, IR 8286, 
+since many of the concepts described in this report are based upon practices and deﬁnitions 
+established in that IR. Several publications in the series, as illustrated in Fig. 2, provide detailed 
+guidance to supplement topics in the ﬂagship document. 
+ 
+Fig. 2. IR 8286A activities as part of CSRM/ERM integration 
+ 
+
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+5 
+Activities described in this report are shown in dark blue boxes; those in other documents are 
+shown in light blue boxes. This report describes CSRM activities at each level, as illustrated in 
+Fig. 1. Note that there may be iterative levels within the enterprise and that positions may be 
+relative. For example, a given enterprise (e.g., a bureau or corporate division) may represent an 
+organization to the overarching agency or corporation. 
+• NIST IR 8286A (this report) details the context, scenario identiﬁcation, and analysis of 
+likelihood and impact of cybersecurity risk. It also includes methods to convey risk 
+information, such as through cybersecurity risk registers and risk detail records. 
+• NIST IR 8286B [2] describes ways to apply risk analysis to help prioritize cybersecurity 
+risk, evaluate and select appropriate risk responses, and communicate risk activities as 
+part of an enterprise CSRM strategy. 
+• NIST IR 8286C [3] describes processes for aggregating information from CSRM activities 
+throughout the enterprise. As that information is integrated and harmonized, 
+organizational and enterprise leaders monitor achievement of risk objectives, consider 
+any changes to risk strategy, and use the combined information to maintain awareness 
+of risk factors and positive risks (or opportunities). 
+• NIST IR 8286D [4] describes speciﬁc considerations for the documentation and analysis 
+of business impacts that result in a full or partial loss of the conﬁdentiality, integrity, or 
+availability of a mission-essential resource. 
+A key point established by NIST IR 8286is that the terms organization and enterprise are often 
+used interchangeably. That report deﬁnes an organization as an entity of any size, complexity, or 
+position within a larger organizational structure (e.g., a federal agency or company). It deﬁnes 
+an enterprise as having a structural hierarchy and senior leaders that bear ﬁduciary 
+management and reporting responsibilities, including establishing risk strategy (e.g., risk 
+appetite, methods).
+3
+3 This report refers to the term enterprise in two contexts, referencing both the top level of a hierarchical organization and also to represent the 
+organization itself. Generally, the phrase enterprise level refers to governance and management activities at the most senior levels of that 
+hierarchy (sometimes referenced as Level 1 in other NIST publications) while the phrase the enterprise references the entirety of the 
+organization. 
+ Notably, government and private industry CSRM and ERM programs have 
+diﬀerent oversight and reporting requirements (e.g., accountability to the public versus 
+accountability to shareholders), but the general needs and processes are similar. 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+6 
+ Supporting CSRM as an Integrated Component of ERM 
+There are similarities and variances among approaches by public- and private-sector practices 
+for ERM/CSRM coordination and interaction. Some entities incorrectly treat ERM and CSRM 
+practices as separate stovepipes. The CSRM program is an integral part of the ERM portfolio, 
+both taking its direction from ERM and informing it. The universe of risks facing an enterprise 
+includes many factors, and risks to the enterprise’s information and technology often rank high 
+within that list. ERM strategy and CSRM strategy are not divergent; CSRM strategy should be a 
+subset of ERM strategy with particular objectives, processes, and reporting. This report and 
+those in this series support improving ERM and CSRM coordination. As the risk management 
+community continues that discussion, NIST will solicit and publish lessons learned shared by 
+that community. 
+Section 2 shows that enterprise governance activities direct the strategy and methods for risk 
+management, including CSRM. Results of those activities are recorded in various risk registers. 
+Cybersecurity risks, derived from system level assessments, are documented through 
+cybersecurity risk registers (CSRRs) that are aggregated and used to create an enterprise 
+cybersecurity risk register (Enterprise CSRR) that, in turn, becomes part of a broader enterprise 
+risk register (ERR), as depicted in Fig. 3. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+7 
+ 
+Fig. 3. Integration of various risk management activities into the enterprise risk register and risk proﬁle 
+The ERR, when prioritized by those with ﬁduciary and oversight responsibilities, represents an 
+enterprise risk proﬁle. Figure 3 illustrates the integration of risk register information and 
+demonstrates that ERM and CSRM are not separate processes, but CSRM represents an 
+important subset of risk management under the broader umbrella of enterprise risk 
+management. 
+The IR 8286 series builds upon existing NIST frameworks by demonstrating methods for 
+applying risk management processes at all enterprise levels and representing how the NIST 
+frameworks are anchored in ERM. A key construct for performing that integration is the CSRR 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+8 
+described in IR 8286.4
+4 Although this report is focused on CSRM as a function of ERM, NIST SP 800-221 and SP 800-221A describe how multiple risk domains within 
+the information communications technology portfolio (privacy, cybersecurity supply chain risk management [C-SCRM], artiﬁcial intelligence [AI], 
+etc.) can be integrated into ERM using the risk register model.  
+ As shown in Fig. 3, the risk register is a key tool to document, 
+communicate, and manage cybersecurity risk at each level of the enterprise.5
+5 Figure 1 of IR 8286 provides an illustration of the various levels of an entity including the enterprise, organization, and system levels. Activities 
+at these levels are further described in this IR 8286A report. 
+ Use of this 
+process streamlines risk reporting, eliminates duplicate record keeping, and helps share CSRM 
+knowledge across program areas. 
+IR 8286A details methods for completing and maintaining that risk register by identifying threats 
+and analyzing the likelihood of successful exploitation of certain conditions that result in threat 
+events, the estimated impact on enterprise objectives, and whether estimates are within 
+established risk tolerance parameters. This report focuses on the ﬁrst three elements of the 
+enterprise CSRM process: establishing scope, context, and criteria; identifying the cybersecurity-
+related risks that may aﬀect an enterprise’s ability to achieve its objectives; and calculating the 
+likelihood and impact of such risks. Subsequent publications address methods for evaluating risk 
+treatment options, selecting an appropriate treatment, communicating the plans and results of 
+that treatment, and adhering to stakeholders’ risk strategies. 
+ Purpose and Scope 
+This document focuses on improving CSRM understanding and communications between and 
+among cybersecurity professionals, high-level executives, and corporate oﬃcers to help ensure 
+the eﬀective integration of cybersecurity considerations as a critical subset of overarching 
+enterprise risks. The processes that will be described support improved coordination among 
+ERM champions and liaisons. The report recognizes that the risk management community has 
+observed an opportunity for increased rigor in the manner in which cybersecurity risk 
+identiﬁcation, analysis, and reporting are performed at all levels of the enterprise. This 
+publication is designed to provide guidance and to further conversations regarding ways to 
+improve CSRM and the coordination of CSRM with ERM. 
+The goals of this document are to: 
+• Help describe governance processes by which senior leaders build strategy and express 
+expectations regarding CSRM as part of ERM and 
+• Provide guidance for CSRM practitioners in applying the risk direction received from 
+senior leaders, communicating results, coordinating success, and integrating activities. 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+9 
+This document continues the discussion to bridge existing private industry risk management 
+processes with government-mandated federal agency enterprise and cybersecurity risk 
+requirements derived from OMB Circulars A-123 [5] and A-130 [6]. It builds upon concepts 
+introduced in IR 8286 and complements other documents in this series. It references some 
+materials that are speciﬁcally intended for use by federal agencies and will be highlighted as 
+such, but the concepts and approaches are intended to be useful for all enterprises. 
+ Document Structure 
+This publication helps establish an enterprise strategy (Sec.2.1.1) to identify cybersecurity risks 
+to mission objectives (Sec.2.2) and to analyze (Sec.2.3) their likelihood and possible impacts. 
+These sections describe ordinary methods in which that strategy is expressed through risk 
+appetite and risk tolerance. The remainder of this document is organized into the following 
+major sections:6
+6 An Informative Reference that crosswalks the contents of this document and the NIST Cybersecurity Framework will be posted as part of the 
+National Cybersecurity Online Informative References (OLIR) Program. See https://www.nist.gov/informative-references for more information. 
+ 
+• Section 2 details CSRM considerations, including enterprise risk strategy for risk 
+identiﬁcation and risk analysis. 
+• Section 3 provides a short summary and conclusion. 
+• The References section provides links to external sites or publications that provide 
+additional information. 
+• Appendix A contains acronyms used in the document. 
+• Appendix B provides a notional representation of a risk detail record. 
+• Appendix C provides a change log for this document. 
+  
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+10 
+2. Cybersecurity Risk Considerations Throughout the ERM Process 
+Because digital information and technology are valuable enablers for enterprise success and 
+growth, they must be suﬃciently protected from various types of risk. Government entities for 
+whom growth may not be a strategic objective are still likely to ﬁnd value in dynamically adding 
+or changing their services or oﬀerings as their constituents’ needs evolve. Thus, both private 
+and public sector entities need to evaluate the role of information and technology in achieving 
+enterprise objectives. This understanding enables a deeper consideration of the various 
+uncertainties that jeopardize those objectives. 
+In the context of ERM, senior leaders must clearly express expectations regarding how risk 
+should be managed. Those expectations provide CSRM practitioners with objectives for 
+managing cybersecurity risks, including methods for reporting the extent to which risk 
+management activities successfully achieve those objectives. The document for recording and 
+sharing information about those risks is the cybersecurity risk register (CSRR). 
+IR 8286 [1] describes the use of risk registers, example ﬁelds for those registers, and the fact 
+that prioritized risk register contents serve as the basis of a risk proﬁle. That report also states 
+that, while a risk register represents various risks at a single point in time, it is important for the 
+enterprise to ensure that the model is used in a consistent and iterative way. As risks are 
+identiﬁed (including calculation of likelihood and impact), the risk register will be populated 
+with relevant information once decisions have been made. As risk responses are applied to each 
+item in the risk register, the updated state of that risk will become the new current state in the 
+next assessment cycle. Risk management policy designates which roles are appropriate for 
+completing the CSRR at each level. 
+Fig. 4 provides an example of a blank risk register. 
+ 
+Fig. 4. Notional cybersecurity risk register template 
+The highlighted box shows ﬁelds that are relevant to the processes described in this report. The 
+remaining columns are described in IR 8286B. Note that, while prioritization is informed by 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+11 
+some of the information recorded in these columns, risk priority is also discussed in IR 8286B in 
+support of Risk Evaluation and Risk Response activities. While the example illustrates a notional 
+template for cybersecurity risks, a similar template could be used for any type of risk. 
+The risk register provides an easily consumed summary for understanding the risk landscape, 
+but eﬀective risk communication requires many additional details that would not ﬁt into this 
+compact table. The additional information should be recorded in a risk detail record (RDR) and 
+be readily available should the additional detail be required about a risk register entry. The RDR 
+provides an opportunity to record historical risk-related information, detailed risk analysis data, 
+and information about individual and organizational accountability. Appendix B of this 
+document provides a notional example of such a record. 
+ Enterprise Strategy for Cybersecurity Risk Coordination 
+Fig. 5 provides a simpliﬁed illustration of risk integration and coordination activities. Each 
+enterprise is unique, so enterprise leadership may wish to tailor the approach for those unique 
+circumstances. For example, while risk appetite statements (described below) usually originate 
+from the most senior leaders, those leaders may choose to delegate the creation of 
+cybersecurity risk appetite statements to a senior cybersecurity risk oﬃcial (e.g., Chief 
+Information Security Oﬃcer, or CISO). Readers should note that the processes described are 
+cyclical. Early iterations may include the deﬁnition of terms, strategies, and objectives. 
+Subsequent iterations may focus on reﬁning those objectives based on previous results, 
+observations of the risk landscape, and changes within the enterprise. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+12 
+ 
+Fig. 5. Illustration of enterprise risk and coordination7
+7 Fig. 6 further decomposes the risk management cycle, information ﬂow, and decision points illustrated in Error! Reference source not found., 
+which provides a high-level understanding in the context of the organizational structure. Subsequent publications in this series provide 
+additional information about the activities described in Error! Reference source not found. and Error! Reference source not found.. 
+ 
+Fig. 5 describes the process by which senior leaders express strategy and expectations for 
+managing cybersecurity risk throughout the enterprise. In general, IR 8286A addresses activity 
+points 1 to 3, and IRs 8286B and 8286C address activity points 4 to 6. 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+13 
+Table 1. Inputs and outputs for ERM governance and integrated CSRM 
+Activity Point Inputs Outputs 
+1. Setting risk 
+expectations and 
+priorities 
+Internal and external risk context; enterprise 
+roles and responsibilities; governance 
+framework and governance systems for 
+managing risk for all types of risks 
+Documentation of enterprise priorities in light 
+of mission objectives and stakeholder values; 
+direction regarding budget (e.g., authorization 
+for capital and operating expenditures); risk 
+appetite statements pertaining to each risk 
+management discipline, including 
+cybersecurity 
+2. Interpreting risk 
+appetite to deﬁne risk 
+tolerance statements 
+Enterprise priorities in light of mission 
+objectives and stakeholder values; direction 
+regarding budget (e.g., authorization for capital 
+and operating expenditures); risk appetite 
+statements 
+Risk tolerance statements (and metrics) to 
+apply risk appetite direction at the organization 
+level; direction regarding methods to apply 
+CSRM (e.g., centralized services, 
+compliance/auditing methods, shared controls 
+to be inherited and applied at the system level) 
+3. Applying risk 
+tolerance statements 
+to achieve system 
+level CSRM 
+Risk tolerance statements; direction regarding 
+shared services and controls; lessons learned 
+from previous CSRM implementation (and 
+those of peers) 
+Inputs to preparatory activities; system 
+categorization; selection and implementation 
+of system security controls 
+4. Assessing CSRM and 
+reporting system level 
+risk response through 
+CSRRs 
+Security plans; risk response; (etc.) Risk assessment results; CSRRs describing 
+residual risk and response actions taken; risk 
+categorization and metrics that support 
+ongoing assessment, authorization, and 
+continuous monitoring  
+5. Aggregating 
+organization  
+level CSRRs  
+CSRRs showing system level risk decisions and 
+metrics; internal reports from 
+compliance/auditing processes to conﬁrm 
+alignment with enterprise risk strategy; 
+observations regarding CSRM achievement 
+considering risk strategy 
+CSRRs aggregated and normalized based on 
+enterprise-deﬁned risk categories and 
+measurement criteria; reﬁnement of risk 
+tolerance statements, if needed, to ensure 
+balance among value, resources, and risk 
+6. Integrating CSRRs into 
+enterprise CSRR, 
+enterprise risk register 
+(ERR), and enterprise 
+risk proﬁle (ERP) 
+Normalized and harmonized CSRRs from 
+various organization level CSRM reports; 
+compliance and audit reports; results from 
+other (non-cybersecurity) risk management 
+activities; observations regarding ERM and 
+CSRM achievement 
+Aggregated and normalized enterprise CSRR; 
+integrated enterprise risk register (ERR) 
+aligning CSRM results with those of other risk 
+categories; reﬁnement of risk appetite and 
+tolerance statements and risk management 
+direction to ensure balance among value, 
+resources, and risk; enterprise risk proﬁle (ERP) 
+for monitoring and reporting overall risk 
+management activities and results 
+2.1.1. Risk Scope, Context, and Criteria 
+Eﬀective management of risk throughout the enterprise depends upon collaboration and 
+cooperation at each level. After senior leaders provide direction regarding how to manage risks 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+14 
+(including cybersecurity risks), personnel at other levels use that direction to achieve, report, 
+and monitor outcomes. This top-down, collaborative management approach helps ensure that 
+CSRM strategy is formulated as a part of (and ﬂows from) ERM strategy. 
+International Organization for Standardization (ISO) 31000:2018 points out that there are three 
+prerequisites for supporting a CSRM program as an input to ERM[7]: 
+• The scope of the CSRM activities should be deﬁned; 
+• The internal and external context of the CSRM activities should be determined; and 
+• The criteria from enterprise stakeholders should be declared and documented through a 
+comprehensive CSRM strategy. 
+The guidance in the IR 8286 series relies upon these elements (scope, context, and strategy) 
+being established. Senior leaders deﬁne the ERM scope, context, and strategy, which inform 
+enterprise priorities, resource utilization criteria, and responsibilities for various enterprise 
+roles. The ERM strategy helps deﬁne how various organizational systems, processes, and 
+activities cooperate to achieve risk management goals, including those for CSRM, in alignment 
+with mission objectives. 
+2.1.2. Risk Appetite and Risk Tolerance 
+CSRM, as an important component of ERM, helps assure that cybersecurity risks do not hinder 
+established enterprise mission objectives. CSRM also helps ensure that exposure from 
+cybersecurity risk remains within the limits assigned by enterprise leadership. Ongoing 
+communications among ERM and CSRM stakeholders helps to set, achieve, and report on risk 
+expectations throughout the enterprise. The diagram extends the ﬁgure on improving risk 
+management communication from the Cybersecurity Framework (CSF) by indicating risk 
+appetite and risk tolerance deﬁnition, interpretation, and achievement [8]. 
+The process described above illustrates that risk appetite regarding cybersecurity risks is 
+declared at the Enterprise Level. Risk appetite provides a guidepost to the types and amount of 
+risk, on a broad level, that senior leaders are willing to accept in pursuit of mission objectives 
+and enterprise value.
+8
+8 IR 8286 supports the OMB Circular A-123 deﬁnition of risk appetite as “the broad-based amount of risk an organization is willing to accept in 
+pursuit of its mission/vision. It is established by the organization’s most senior level leadership and serves as the guidepost to set strategy and 
+select objectives.” [5]  
+ Risk appetite may be qualitative or quantitative. As leaders establish an 
+organizational structure, business processes, and systems to accomplish enterprise mission 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+15 
+objectives, the results deﬁne the structure and expectations for CSRM at all levels.9
+9 The term “system” throughout this publication pertains to information systems, which are discrete sets of information resources organized for 
+the collection, processing, maintenance, use, sharing, dissemination, or disposition of information, whether such information is in digital or non-
+digital form. 
+ Based on 
+these expectations, cybersecurity risks are identiﬁed, managed, and reported through risk 
+registers and relevant metrics. The register then directly supports the reﬁnement of risk strategy 
+considering mission objectives. 
+Risk appetite can be interpreted by enterprise- and organization-level leaders to develop 
+speciﬁc cybersecurity risk tolerance, which is deﬁned by OMB as “the acceptable level of 
+variance in performance relative to the achievement of objectives” [5]. Risk tolerance 
+represents the speciﬁc level of performance risk deemed acceptable within the risk appetite set 
+by senior leadership(while recognizing that such tolerance can be inﬂuenced by legal or 
+regulatory requirements).
+10
+10 OMB Circular A-123 states, “Risk must be analyzed in relation to achievement of the strategic objectives established in the Agency strategic 
+plan (see OMB Circular No. A-11, Section 230), as well as risk in relation to appropriate operational objectives. Speciﬁc objectives must be 
+identiﬁed and documented to facilitate identiﬁcation of risks to strategic, operations, reporting, and compliance.” [5] 
+ Risk tolerance can be deﬁned at the executive level (e.g., at the 
+department level for U.S. federal agencies), but OMB oﬀers a bit of discretion to an 
+organization, stating that risk tolerance is “generally established at the program, objective, or 
+component level.”11
+11 Examples of the organization level include business units, company departments, or agency divisions. 
+ 
+Risk appetite and risk tolerance are related but distinct in a similar manner to the relationship 
+between governance and management activities. Where risk appetite statements deﬁne the 
+overarching risk guidance, risk tolerance statements deﬁne the speciﬁc application of that 
+direction. This means risk tolerance statements are always more speciﬁc than the corresponding 
+risk appetite statements. Together, these risk appetite and risk tolerance statements represent 
+risk limits, help communicate risk expectations, and improve the focus of risk management 
+eﬀorts. They also help to address other factors such as ﬁndings from internal audits or external 
+reports (e.g., an examination of corporate ﬁnancial records by an independent audit ﬁrm, a 
+review of a federal agency’s improved IT management through the Federal Information 
+Technology Acquisition Reform Act [FITARA]). The deﬁnition of these risk parameters places the 
+enterprise in a better position to identify, prioritize, treat, and monitor risks that may lead to 
+unacceptable loss. Risk tolerance should always stay within the boundaries established by 
+senior leadership. 
+Achievement of deﬁned expectations is conveyed through risk registers that document and 
+communicate risk decisions. Risk assessment results and risk response actions at the system 
+level are reﬂected in CSRRs. As CSRRs from multiple systems are collated and provided to higher 
+level business managers at the organization level, those managers can evaluate results and 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+16 
+reﬁne risk tolerance criteria to optimize value delivery, resource utilization, and risk. The 
+enterprise level aggregation of all of the various CSRRs enables senior leaders to monitor risk 
+response considering the expectations set. ERM, where senior leaders set enterprise risk 
+strategy and make risk-informed decisions, and CSRM, where cybersecurity practitioners can 
+best identify where cybersecurity risk is likely to occur, should be closely coupled. Table 2 
+provides examples of actionable, measurable risk tolerance that illustrates the application of 
+risk appetite to speciﬁc contexts within the organization level structure. 
+Table 2. Notional examples of risk appetite and risk tolerance 
+Example Enterprise 
+Type 
+Example Risk Appetite Statement Example Risk Tolerance Statement 
+Global Retail Firm Our customers associate reliability 
+with our company’s performance, so 
+service disruptions must be minimized 
+for any customer-facing websites. 
+Regional managers may permit website 
+outages lasting up to 4 hours for no more 
+than 5 % of its customers. 
+Government Agency Mission-critical systems must be 
+protected from known cybersecurity 
+vulnerabilities. 
+Systems designated as mission-critical must 
+be patched against critical software 
+vulnerabilities (severity score of 10) within 14 
+days of discovery. 
+Internet Service 
+Provider 
+The company has a low risk appetite 
+with regard to failure to meet 
+customer service level agreements, 
+including network availability and 
+communication speeds. 
+Patches must be applied within deadlines to 
+avoid attack-related outages but also must be 
+well-tested and deployed in a manner that 
+does not reduce availability below agreed-
+upon service levels. 
+Academic Institution 
+ 
+The institution understands that 
+mobile computers are a necessary part 
+of the daily life of students, and some 
+loss is expected. The leadership, 
+however, has no appetite for the loss 
+of any sensitive data (as deﬁned by the 
+Data Classiﬁcation Policy). 
+Because the cost of loss prevention for 
+students’ laptop workstations is likely to 
+exceed the cost of the devices, it is 
+acceptable for up to 10 % to be misplaced or 
+stolen if and only if sensitive institution 
+information is prohibited from being stored 
+on students’ devices. 
+Healthcare Provider The Board of Directors has decided 
+that the enterprise has a low risk 
+appetite for any cybersecurity 
+exposures caused by inadequate 
+access control or authentication 
+processes. 
+There will always be some devices that do not 
+yet support advanced authentication, but  
+100 % of critical healthcare business 
+applications must use multi-factor 
+authentication. 
+These discussions may also help identify positive risks in the form of opportunities. From an 
+opportunity standpoint, the risk appetite statements can identify areas where the organization 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+17 
+needs to stretch further to reach goals and are expressed as those targeted areas where some 
+loss is acceptable without crossing important lines of demarcation (e.g., innovative solutions 
+should be pursued but not at the cost of life, safety, compliance with laws/regulations, or 
+reputation). Understanding that private sector organizations pursue risk as part of their growth 
+strategies and competitive advantage, this aspect should not be forgotten. Similarly, public 
+sector agencies typically have stretch goals to keep up with industry needs, customer 
+expectations, market demands, or other inﬂuences. 
+2.1.3. Detailed Risk Integration Strategy 
+ 
+Fig. 6. Continuous interaction between ERM and CSRM using the risk register12
+12 Fig. 6 demonstrates select communications, processes, and decisions germane to the risk appetite, risk tolerance, and risk register 
+interactions among the three levels of an enterprise addressed by this report and is not intended to be exhaustive. 
+ 
+Fig. 6 illustrates a more detailed information ﬂow of inputs and outputs. Senior leaders and 
+business managers deﬁne risk tolerance direction that is applied at the system level. System 
+level practitioners interpret those risk tolerance statements and apply CSRM activities to 
+achieve risk management objectives. The results are then reviewed to conﬁrm eﬀectiveness, 
+highlight opportunities for improvement, and identify important trends that might require 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+18 
+organization or enterprise level action. The speciﬁc process activities will be based on the risk 
+management methods applied but will generally include those below. 
+The process described in Fig. 6 highlights the integration of ERM and CSRM, achieving the high-
+level process described above, where cybersecurity risks are documented through CSRRs, 
+aggregated at appropriate levels, then used to create an enterprise cybersecurity risk register, 
+which provides input into the broader ERR. This integration is described in more detail in IR 
+8286C. 
+The activities in Fig. 6 are listed below.
+13
+13 For those topics that are addressed in IR 8286A, a pointer to the relevant section is included. IR 8286B describes how to apply risk analysis to 
+prioritize risks and implement appropriate responses. IR 8286C provides guidance regarding aggregation of risks into the enterprise CSRR and 
+subsequent risk monitoring and communications, including adjustments to risk appetite and risk tolerance based upon previous results and the 
+evolving risk landscape. IR 8286D provides additional ways to augment Fig. 6 with business impact analysis. 
+ 
+Risk Context and Strategy Activities 
+• As described in earlier portions of this section, leaders at Levels 1 and 2 deﬁne speciﬁc 
+and measurable risk appetite and risk tolerance statements that reinforce enterprise 
+mission objectives and organization goals. 
+• At Level 3, practitioners interpret the risk tolerance statements for the information and 
+technology assets, processes, and activities which may support mission-essential 
+delivery operations. Those in various roles (e.g., system owners, security oﬃcers) work 
+together to derive system level requirements for conﬁdentiality, integrity, and 
+availability. 
+Risk Identiﬁcation Activities 
+• The value of each asset of a given system (e.g., information type, technical component, 
+personnel, service provider) is appraised to determine how critical or sensitive it is to the 
+operation of the system (see Sec.2.2.1). Subsequent risk decisions depend on an 
+accurate understanding of the importance of each resource to the system. 
+• For each of these components, the practitioner identiﬁes threat sources that might have 
+a harmful eﬀect (see Sec.2.2.2) and the vulnerabilities or conditions that might enable 
+such an eﬀect (see Sec.2.2.3). To complete development of the risk scenario, the 
+practitioner determines the adverse eﬀect of the threat source exploiting the vulnerable 
+conditions. The scenario is recorded in the CSRR as the “Risk Description” (see 
+Sec.2.2.5). The category for the scenario will be recorded in the “Risk Category” column 
+based on enterprise criteria to support risk correlation, aggregation, and reporting. 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+19 
+Risk Analysis Activities 
+• The practitioner performs risk analysis (see Sec.2.3) to determine the likelihood that the 
+threat events and vulnerable conditions would result in harmful impacts to the system 
+asset. Similarly, the practitioner analyzes the impact value and calculates the risk 
+exposure using the methodology deﬁned in the enterprise risk strategy (e.g., as the 
+product of [risk likelihood] x [risk impact].) The results of these analyses are recorded in 
+the CSRR’s “Current Assessment” column as “Likelihood,” “Impact,” and “Exposure.” 
+Risk Response Activities 
+• The determined exposure is compared with the risk tolerance. 
+o If exposure is within risk tolerance limits, the risk may be “accepted.” 
+• If exposure exceeds tolerable levels of risk, practitioners can consider whether they can 
+achieve risk tolerance through other forms of risk response. 
+o In many cases, security controls may be applied to mitigate risk by reducing the 
+likelihood or impact of a risk to a tolerable level. Controls should be implemented 
+with a corresponding performance scale (i.e., key performance indicator, or KPI) 
+which is used as the basis for key risk indicators (KRIs). 
+o Risk response may also include risk transfer, also known as risk sharing. For 
+example, an organization might hire an external organization to process sensitive 
+transactions (e.g., payment card transactions), thus reducing the likelihood that 
+such sensitive data would be processed by an in-house system. Another common 
+risk transfer method involves the use of cybersecurity insurance policies that can 
+help reduce the economic impact if a risk event occurs. 
+o In some cases, it might be determined that the exposure exceeds risk tolerance 
+and cannot be brought within limits through any combination of mitigation or 
+risk transfer. In this case, practitioners (e.g., the system owner) may need to work 
+with Level 2 leaders to revisit the risk tolerance itself. This negotiation presents 
+an opportunity for the Level 2 and Level 3 managers to determine the best 
+course of action to reﬁne risk direction in light of mission objectives (e.g., 
+through a risk-based decision process, an adjustment to the risk tolerance 
+statement, or increased security requirements for the relevant system). In any 
+case, stakeholders will have applied a proactive approach to balancing risk and 
+value. 
+o If an unacceptable cybersecurity risk cannot be adequately treated in a cost-
+eﬀective manner, that risk must be avoided. Such a condition may require 
+signiﬁcant redesign of the system or service. These circumstances should be rare, 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+20 
+and they highlight the value of CSRM coordination early in the system 
+engineering process. Notably, risk avoidance is not the same as ignoring a risk. 
+Risk Monitoring and Communication Activities 
+• KRIs inform organizations whether controls are adequately addressing risk and whether 
+risks are changing over time. When KRIs fall outside of pre-established thresholds, this 
+indicates a risk response is beyond acceptable levels. In this case, organizations should 
+evaluate risks and make any necessary adjustments to controls. 
+• Results of risk activities and decisions are recorded in the CSRR and, if applicable, in a 
+documented Plan of Actions & Milestones (POA&M)
+14
+14 Federal agencies are required by OMB to develop a risk register-like POA&M for each system. The plan includes a listing of unaccepted risks 
+and associated plans to mitigate the risks. However, the time horizon to resolve outstanding risks may exceed the current reporting cycle. 
+Through regulation, many private industry enterprises are also required to document this type of risk in similar ways (e.g., quarterly SEC Form Q-
+10 ﬁlings, a prospectus). 
+ that records agreed-upon future 
+risk activities. 
+• It is important for enterprise processes to ensure adequate communication of risk that 
+has been accepted (or risk that is implicitly accepted, such as through the example 
+above). A key purpose of the various risk registers and reporting methods is to ensure 
+that adequate governance information is available to monitor enterprise risk decisions. 
+• Risk activities may also be informed through the integration of relevant internal and 
+external audit ﬁndings. Signiﬁcant audit ﬁndings often have enterprise level impacts; 
+however, lower severity ﬁndings may, if not addressed adequately, spread through 
+multiple systems to create risk in aggregate. The coordination of audit ﬁndings may span 
+multiple levels of the enterprise. For example, as operational teams at the system level 
+address shortcomings or system deﬁciencies, key ﬁndings might be communicated and 
+tracked by an audit committee (organization level). As responses to ﬁndings occur and 
+are documented (such as through a corrective action plan, or CAP), they assist in the 
+planning of subsequent enterprise risk management. 
+• The process continues until all information and technology assets and processes have 
+been evaluated for risk from currently understood threats and vulnerabilities. For some 
+enterprises, the composite set of system risks (as recorded in the CSRR), risk responses 
+applied, agreements regarding additional CSRM actions to be taken (e.g., as recorded in 
+the POA&M), and other relevant artifacts will be reviewed by a senior oﬃcial to conﬁrm 
+that risk decisions and risk responses align with risk tolerance and risk appetite 
+directives. For federal government agencies, this represents the system authorization 
+process. 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+21 
+• Subsequently, CSRRs from throughout the business level are normalized and aggregated 
+to provide a composite view of the risk posture and decisions for that organization. As 
+Level 2 managers consider feedback from system CSRM activities, they may decide to 
+reﬁne risk tolerance levels. It may be that the aggregate risk across multiple systems 
+represents too great an exposure and needs to be reduced. In other cases, based on 
+successful risk management results, stakeholders may be able to permit a little more risk 
+in some areas if such a decision would support mission objectives and potentially save 
+resources or allow them to be directed to areas that require additional resources in 
+order to meet expected risk tolerances. 
+• Similar reviews and reﬁnement occur at Level 1 to support enterprise governance and 
+risk management decisions. Some types of enterprises may be required to formally 
+disclose risk factors (e.g., through annual reports), and this aggregate understanding of 
+cybersecurity risks and risk decisions can support their ﬁduciary responsibilities. These 
+activities may also help others, such as federal government agencies, to help comply 
+with mandatory requirements, such as those established by OMB. 
+Interpreting risk tolerance at Level 3, practitioners develop requirements and apply security 
+controls to achieve an acceptable level of risk. This process helps to ensure that CSRM occurs in 
+a cost-eﬀective way. As an example, consider the global retail ﬁrm described in the ﬁrst row of 
+Table 2. The system owner of the customer website will select controls that will ensure 
+adherence to availability service levels. In deciding which controls to apply, the system owner 
+collaborates with a security team to consider methods to meet service level objectives. The 
+team can contact the local power utility supplier to determine electrical availability history and 
+gather other information regarding the likelihood of a loss of power to the important website. 
+This additional information might help the system owner decide whether to invest in a backup 
+generator to ensure suﬃcient power availability. 
+Results from previous assessments can be useful for estimating the likelihood of achieving risk 
+goals in the future (this topic is described in Sec.2.3.2.1). The team would then move to the next 
+risk scenario (e.g., perhaps an internet service outage) and review the history and reliability of 
+the organization’s telecommunications provider to ascertain the likelihood and impact of a loss 
+of service. Iterating through each potential risk, as described in Fig. 6, practitioners can develop 
+a risk-based approach to fulﬁlling CSRM objectives in light of risk appetite and risk tolerance. 
+This, in turn, helps CSRM practitioners demonstrate how their actions directly support mission 
+objectives and enterprise success. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+22 
+2.1.4. Enterprise Strategy for Cybersecurity Risk Reporting 
+The enterprise strategy for cybersecurity risk management and monitoring includes common 
+deﬁnitions for how and when assessment, response, and monitoring should take place. Notably, 
+ERM monitoring is for communication and coordination regarding overall risk and should not be 
+confused with system level monitoring (or continuous monitoring.) 
+Direction from senior leaders provides risk guidance – including advice regarding mission 
+priority, risk appetite and tolerance, and capital and operating expenses to manage known risks 
+– to the organizations within their purview. There are some details that need to be deﬁned at 
+the enterprise level so that information can be combined and compared eﬀectively, including 
+the ability to communicate about risks through the various types of risk registers. 
+While many of these details will be delegated to organization level processes, several key factors 
+should be deﬁned at the enterprise level, including: 
+• Criteria regarding risk category selection that enables risk register entries from various 
+risk management domains to be consolidated and compared; 
+• Direction regarding the classiﬁcation and valuation of enterprise assets, including 
+approved methods for business impact analysis (described in Sec.2.2.1.1); 
+• Assessment methodologies, including direction regarding analysis techniques and the 
+appropriate scales to be applied; 
+• Frequency of assessment, reporting, and potential escalation; 
+• Methods for tracking, managing, and reporting risks; and, 
+• Resources available for risk treatment, including common baselines, common controls, 
+and supply chain considerations. 
+As cybersecurity risks are recorded, tracked, and reassessed throughout the risk life cycle and 
+aggregated within the enterprise cybersecurity risk register, this guidance ensures that risk will 
+be consistently communicated, managed, and potentially escalated. Strategic guidance from 
+enterprise stakeholders should also include: 
+• Deﬁnition of the organizational boundaries to which CSRM activities will apply; 
+documentation that the scope for cybersecurity objectives supports alignment among 
+enterprise, business and mission objectives, and operational achievements 
+• Direction regarding speciﬁc roles for managing, communicating, and integrating risks 
+throughout the enterprise; deﬁning the types of stakeholders (by role) will support risk 
+communication and timely decision-making 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+23 
+• Determination of KRIs and KPIs that will support the management and monitoring of the 
+extent to which risk response remains within acceptable levels 
+Through the processes described above, senior leaders express risk limits and expectations as 
+risk appetite statements. That risk appetite is then interpreted through risk tolerance and 
+applied at the system level. The subsections below describe how feedback is provided using the 
+risk register to identify and document risk, analysis, and results. 
+ Risk Identiﬁcation 
+This section describes notional methods for identifying and documenting sources and their 
+potential consequences (recorded in the Risk Description column of the CSRR, as shown by the 
+dashed border in Fig. 7.)
+15
+15 The CSRR template is available in the Open Risk Register Format (ORRF) format, an automated JavaScript Object Notation (JSON) for 
+organizations maintaining automated applications that provide detailed tracking and reporting. The CSRR template is also availa ble in comma-
+separated value (CSV) format at the same link. 
+ The CSRR provides a concise synopsis of identiﬁed risks, 
+supplemented by additional detail as recorded in the RDR. A notional example of an RDR is 
+provided in Appendix B.16
+16 The focus of the IR 8286 series is populating and communicating the risk register; however, many of the activities (such as those described in 
+Sec. 2.2) will generate supporting risk data that should be recorded in an RDR and be readily available should the additional detail be required 
+about a risk register entry. 
+ 
+Fig. 7. CSRR highlighting risk description column 
+ 
+Parts A, B, C, and D 
+(described below) 
+Risk identiﬁcation represents a critical activity for determining the uncertainty that can impact 
+mission objectives. IR 8286A primarily focuses on negative risks (i.e., threats and vulnerabilities 
+that lead to harmful consequences), but positive risks represent a signiﬁcant opportunity and 
+should be documented and reviewed as well. Consideration and details regarding positive risks 
+are described in Section 3 of IR 8286. Through the activities in the following sections, risk 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+24 
+practitioners determine and record events that could enhance or impede objectives, including 
+the risk of failing to pursue opportunities. 
+ 
+Fig. 8. Inputs to risk scenario identiﬁcation17
+17 The consideration of positive risks involves a similar process through which an enterprise asset is considered as contributory to an 
+opportunity, supporting activities to take advantage of a new or preexisting condition, thus resulting in a positive impact (beneﬁt) to the 
+enterprise. 
+ 
+As shown in Fig. 8, which is derived from the Generic Risk Model in SP 800-30, Revision 1, Guide 
+for Conducting Risk Assessments, cybersecurity risk identiﬁcation is composed of four necessary 
+inputs – parts A through D – in the Risk Description cell of the cybersecurity risk register [9]. 
+Combining these elements into a risk scenario helps to provide the full context of a potential 
+loss event. The use of this scenario-based approach helps ensure comprehensive risk 
+identiﬁcation by considering many types of physical and logical events that might occur. The 
+scope of cybersecurity has expanded from its original boundaries of adversarial digital attacks 
+and encompasses all types of uncertainty that can impact any form of information and 
+technology. Accordingly, the risks to be identiﬁed and registered are much broader as well. 
+The completion of the Risk Description column is composed of four activities that are detailed in 
+Sec.2.2.1 through 2.2.4. The activities include: 
+• Part A – Identiﬁcation of the organization’s relevant assets and their valuation 
+• Part B – Determination of potential threats that might jeopardize the conﬁdentiality, 
+integrity, and availability of those assets 
+• Part C – Consideration of vulnerabilities or other predisposing conditions of assets that 
+make a threat event possible 
+• Part D – High-level evaluation of the potential consequences if the threat source (part B) 
+exploits the weakness (part C) against the organizational asset (part A) 
+The integration of those elements enables the practitioner to record each scenario in the CSRR 
+as a description of cybersecurity risk. The quantity and level of detail of the risks identiﬁed 
+should be in accordance with the risk strategy. 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+25 
+Enterprises that are just beginning to integrate the cybersecurity risk register results into 
+broader ERM activities will beneﬁt from focusing on an initial and limited number of top risks. 
+Those creating a risk management program for the ﬁrst time should not wait until the risk 
+register is completed before addressing extraordinary issues. However, over time, the risk 
+register should become the ordinary means of communicating risk information. 
+2.2.1. Inventory and Valuation of Assets 
+The ﬁrst prerequisite for risk identiﬁcation is the determination of enterprise assets that could 
+be aﬀected by risk (part A in Fig. 8). Assets are not limited to technology; they include any 
+resource that helps to achieve mission objectives (e.g., people, facilities, critical data, 
+intellectual property, and services). For assets that record or store or process data, the relevant 
+data types (e.g., contractual, business sensitive, student records, intellectual property, privacy-
+related) have a signiﬁcant bearing on the valuation of an asset and subsequent risk analysis. 
+Enterprises may beneﬁt from applying a comprehensive method to inventory and monitor 
+enterprise assets, such as the use of a conﬁguration management database (CMDB) or an 
+information technology asset management (ITAM) system. These management tools help to 
+record and track the extent to which various assets contribute to the enterprise’s mission. They 
+can also help track enterprise resources throughout their own life cycle. For example, as the use 
+of mobile devices (including personal devices) expands, there are commercial products that can 
+help maintain inventory to support ongoing risk identiﬁcation, analysis, and monitoring. 
+2.2.1.1. Business Impact Analysis 
+Risk managers can beneﬁt by using a business impact analysis (BIA) (sometimes called a 
+business impact assessment) process to consistently identify, evaluate, record, and monitor the 
+criticality and sensitivity of enterprise assets. The BIA categorization can, in turn, inform the 
+establishment of risk tolerance levels. At a system level, assets identiﬁed in the BIA activities can 
+inform the CSRM process. IR 8286D provides more detail on the BIA and its integration with 
+CSRM and ERM. 
+A BIA can help document many aspects of the value of an asset that may extend well beyond 
+replacement costs. For example, while one can calculate the direct cost of research and 
+development underlying a new product oﬀering, the long-term losses of the potential theft of 
+that intellectual property could have more far-reaching impacts, including future revenue, share 
+prices, enterprise reputation, and competitive advantage. That is among the reasons why it is 
+beneﬁcial to gain the guidance of senior leadership regarding the determination of assets that 
+are critical or sensitive. The relative importance of each enterprise asset will be a necessary 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+26 
+input for considering the impact portion of the Risk Description (part D of Fig. 8) in the 
+cybersecurity risk register. Considerations include: 
+• Would loss or theft of the resource compromise customer or enterprise private 
+information? 
+• Would disclosure of an asset’s information trigger legal or regulatory ﬁnes or actions? 
+• Would a lack of availability of the asset interrupt the enterprise’s ability to fulﬁll its 
+mission or result in costly downtime? 
+• Would the lack of conﬁdentiality, integrity, or availability of the asset undermine public 
+or consumer conﬁdence or trust in the enterprise? 
+• Do internal or external critical resources depend on this asset to operate? 
+• For government systems, would loss or theft of the resource or information cause grave 
+damage to national security? 
+As the organization reviews the results of previous system level categorization decisions and 
+monitors risk assessment ﬁndings, practitioners can use that information to review system 
+prioritization as an input into the BIA. 
+2.2.1.2. Determination of High-Value Assets 
+An example of asset valuation is the U.S. Government’s designation of “high value assets,” or 
+HVAs,18
+18 Federal Binding Operational Directive (BOD) 18-02 de scribes speciﬁc actions that f ederal agencies must complete to ensure eﬀective 
+identiﬁcation and timely remediation of major and critical weaknesses to HVA systems.  
+ described in OMB Memorandum M-19-03 as representing agency resources that have 
+been deemed highly sensitive or critical to achieving the business mission [10]. While not all 
+critical federal assets will be characterized as HVAs, OMB M-19-03 represents an example of an 
+enterprise approach to valuation since the memorandum deﬁnes the speciﬁc categories for 
+consistent designation (i.e., information value, role in Mission Essential Function support, and 
+role in support for Federal Civilian Essential Functions) yet permits each agency to determine 
+which assets meet those criteria. Other common industry examples include the use of speciﬁc 
+classiﬁcations to reﬂect the sensitivity and criticality of technology and information, including 
+“Company Conﬁdential” or “Business Sensitive.” 
+Non-federal enterprises have assets listed on a balance sheet and as part of a BIA registry. These 
+lists can serve as a starting point since these assets are generally associated with enterprise 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+27 
+goals and objectives. Assets that provide critical services to multiple enterprise objectives can 
+be designated as HVAs as well. 
+2.2.1.3. Automation Support for Inventory Accuracy 
+Accurate and complete asset inventory is an important element of CSRM, and the measurement 
+of that accuracy is often a key performance measurement for CSRM reporting. To illustrate that 
+importance, federal agencies must report how completely their hardware and software asset 
+management inventories reﬂect what is actually installed on agency networks as part of their 
+annual reporting metrics. 
+Automated tools aid in discovering and monitoring various technical components used by the 
+enterprise. For example, a use case described by the NIST Security Content Automation Protocol 
+(SCAP) speciﬁcation is inventory scanning. Products that have been successfully reviewed as 
+part of the SCAP Validation Program help maintain a comprehensive and accurate inventory of 
+digital assets [11]. Valuation information recorded in that inventory can, in turn, help maintain a 
+comprehensive view of the enterprise assets for which cybersecurity risks should be identiﬁed, 
+analyzed, treated, and monitored. The use of automation helps to ensure that enterprise asset 
+inventory is current, accurate, and complete. 
+The integration of asset inventory management processes throughout the enterprise can help 
+to ensure a complete and accurate repository. For example, harmonizing acquisition, project 
+management, business operations, IT operations, and security as part of an overarching ITAM 
+process will support transparency and real-time data to eﬀectively track and monitor assets. 
+2.2.2. Determination of Potential Threats 
+The enumeration of potential threat sources and the threat events that those sources could 
+initiate is the second prerequisite for the identiﬁcation of potential risk scenarios. Fig. 9 
+represents part B of the Risk Description cell of the CSRR. Because information and technology 
+exist in many forms, this threat-informed risk management approach combines data-driven 
+processes (awareness of threats) and sound business judgment (consideration of mission 
+impact) to support comprehensive risk identiﬁcation. 
+ 
+Fig. 9. Threats as an input to risk scenario identiﬁcation (Part B) 
+
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+28 
+2.2.2.1. Threat Enumeration 
+Many public- and private-sector processes are available to help enumerate threats. One 
+example is the OCTAVE Allegro method from Carnegie Mellon University’s Software Engineering 
+Institute [12]. That model includes identiﬁcation of areas of concern – a process for determining 
+the “possible conditions or situations that can threaten an organization’s information asset.” 
+The OCTAVE Allegro approach describes a process where risk managers create a tree diagram of 
+various threats based on: 
+• Human actors using technical means; 
+• Human actors using physical methods; 
+• Technical problems, such as hardware and software defects, malicious code (e.g., 
+viruses), and other system-related problems; and 
+• Other problems that are outside of the control of an organization (e.g., natural disasters, 
+unavailability of critical infrastructures). 
+Enumeration of threats can be performed as a “top-down” analysis that considers important 
+assets that might be threatened or as a “bottom-up” analysis that considers what an unknown 
+threat might attempt to accomplish. Table 3 provides an example excerpt of a threat analysis. 
+Table 3. Example threat modeling analysis 
+Source Type Motivation Threat Action Assets Aﬀected 
+Insider Accidental, 
+Intentional Disclosure Legal documents related to an upcoming merger, sales 
+records, designs from the research and development division 
+Insider Intentional Disclosure Physical ﬁles from the personnel department, physical design 
+drawings from manufacturing 
+Insider Intentional Modiﬁcation Financial transactions diverted for personal gain through a 
+privilege escalation attack 
+External Accidental Disclosure Remote access account information for maintenance service 
+staﬀ 
+External Intentional Destruction Student record database 
+External Intentional Disclosure Patient medical records database (e.g., ransomware) 
+Software Defects n/a Modiﬁcation Financial transaction database (corruption) 
+Software Defects n/a Interruption Financial transaction database (outage) 
+System Crashes n/a Interruption Retail e-commerce site, payroll processing system, 
+manufacturing automation 
+Utility Outage n/a Disclosure Enterprise network connections, e-commerce data center 
+Natural Disaster n/a Interruption Enterprise network connections, e-commerce data center 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+29 
+The list above includes physical security considerations. Numerous physical issues (e.g., theft, 
+mechanical failures) can aﬀect digital and logical devices, so both logical and physical threat 
+sources should be considered. Threat enumeration should also consider potential motivations 
+or intents. Accidental and intentional threat activity can each have signiﬁcant impacts, but the 
+evaluation, treatment, and monitoring of each type of activity will vary based on the motivation. 
+Motivation will also have some bearing on the likelihood calculation (as described in subsequent 
+sections). 
+Practitioners consider various factors for each threat source based on an understanding of 
+valuable enterprise assets, as determined in Sec.2.2.1. Example considerations include: 
+• What might a human actor accidentally disclose, modify, or destroy? 
+• Are there critical or sensitive data types stored or processed by the assets at risk? 
+• What information or technology might a person (e.g., a disgruntled employee) 
+intentionally disclose, interrupt, or delete? 
+• Are there threat conditions that might be introduced by supply chain partners, such as 
+external service providers? 
+• Are any cyber-physical systems or other operational technology (OT) subject to an attack 
+that might impact safety or otherwise aﬀect enterprise operations? 
+• What similar considerations might apply to accidents or intentional actions from an 
+external source using technical means? 
+• What technical ﬂaws or malicious code might aﬀect valuable systems and lead to 
+adverse impacts on enterprise objectives? 
+• What natural disasters or utility outages might have harmful eﬀects? 
+Risk managers should develop a reasonable list of potential threats based on practical and 
+imaginative scenarios, particularly in light of the assets identiﬁed in earlier processes. The 
+extent of this list depends on the direction of senior leaders. While some stakeholders may 
+prefer fewer risks in the register, it is important to remember that any risks that are not 
+identiﬁed at this stage will not be part of the subsequent risk analysis and may introduce an 
+unforeseen vulnerability. 
+2.2.2.2. Reducing Unwanted Bias in Threat Considerations 
+While cybersecurity threat discussions often focus on the intentional and adversarial digital 
+attack, it is important that all risk practitioners consider a broad array of threat sources and 
+events. In addition, while highly unlikely scenarios might not need to be listed (e.g., a meteorite 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+30 
+crashing into the data center), risk managers should avoid dismissing threats prematurely. For 
+these reasons, practitioners will beneﬁt from identifying and overcoming bias factors in 
+enumerating potential threat sources and the events they might cause. Consideration of these 
+factors will also help reconcile reactionary thinking with analytical reasoning. An intentional 
+approach to enumerate threats without bias helps to avoid complacency before an incident and 
+supports a proactive evaluation based on relevant data, trends, and current events. 
+Table 4 describes some of these bias issues as well as methods for addressing them. 
+Table 4. Example bias issues to avoid in risk management 
+Bias Type Description Example Countermeasure 
+Overconﬁdence 
+The tendency to be overly 
+optimistic about either the 
+potential beneﬁts of an 
+opportunity or the ability to 
+handle a threat 
+Notion that “our users are 
+too smart to fall for a 
+phishing attack” 
+Detailed and realistic risk 
+analysis (see Sec.2.4) helps to 
+evaluate the true probability of 
+threats 
+Group Think 
+A rationalized desire to 
+miscalculate risk factors 
+based on a desire for 
+conformity with other 
+members of a group or 
+team 
+A group member may not 
+want to be the only one to 
+express concern about a 
+given threat or 
+opportunity 
+Use of individual input and 
+subject matter expert 
+judgement (e.g., Delphi 
+Technique) helps avoid the risk 
+that group-based threat 
+discussions might discourage 
+brainstorming 
+Following 
+Trends 
+Over- or under-valuation of 
+threats due to an irrational 
+consideration of recent 
+hype that can result in 
+inappropriate risk response 
+Assuming that any digital 
+challenge can be 
+addressed and solved 
+through the application of 
+“machine learning” and 
+“artiﬁcial intelligence” 
+Staying informed about the 
+details of current threat patterns 
+and considering input from 
+subject matter experts helps 
+avoid “following the herd” to 
+unreasonable conclusions 
+Availability 
+ 
+Tendency to over-focus on 
+opportunities or issues that 
+come readily to mind 
+because one has recently 
+heard or read about them 
+Concern that virtual 
+private network (VPN) 
+conﬁdentiality is insecure 
+because quantum 
+computing will make 
+modern encryption 
+obsolete and unreliable 
+Detailed and realistic risk 
+analysis (Sec.2.3) helps to 
+evaluate the true probability of 
+threats 
+2.2.2.3. Threat Enumeration Through SWOT Analysis 
+While it is critical that enterprises address potential negative impacts on mission and business 
+objectives, it is equally important (and required for federal agencies) that enterprises also plan 
+for success. OMB states in Circular A-123 that “the proﬁle must identify sources of uncertainty, 
+both positive (opportunities) and negative (threats)” [5]. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+31 
+One method for identifying potential positive and negative risks is through the use of a SWOT 
+(strength, weakness, opportunity, threat) analysis. Because eﬀective risk management is 
+achieved by balancing potential beneﬁts against negative consequences, a SWOT analysis 
+provides a visual method for considering these factors. Table 5 provides an example of an 
+overarching SWOT analysis. A similar exercise could be performed at any level of the enterprise, 
+including for an information system or cyber-physical system. 
+Table 5. Example SWOT analysis 
+Strengths 
+• Eﬀective communication within a small oﬃce with 
+co-located staﬀ 
+• Online email and ﬁnancial applications mean no 
+local servers to support and protect 
+• Modernized oﬃce desktop equipment with current 
+operating systems and connectivity 
+Weaknesses 
+• Few dedicated IT and information security 
+employees 
+• Many endpoints are laptops that could be lost or 
+stolen 
+• Oﬃce laptops do not employ full-disk encryption 
+Opportunities 
+• A newly awarded contract will signiﬁcantly increase 
+revenue and reputation 
+• Expansion of services into software development 
+and remote administration services will enable 
+company growth 
+• Funds have been allocated for cybersecurity 
+improvement 
+• Third-party partners may help quickly ramp up new 
+service oﬀerings 
+Threats 
+• Visibility from contract announcement may cause 
+adversaries to target the enterprise 
+• Information security requirements included in the 
+terms and conditions of the new contract increase 
+the criticality of cybersecurity improvement 
+• Additional service oﬀerings (e.g., development and 
+remote administration) increase cybersecurity risks 
+• Supply chain partners may bring additional security 
+risks to be considered and managed 
+2.2.2.4. Use of Gap Analysis to Identify Threats 
+As part of the threat modeling exercise, practitioners can beneﬁt from evaluating a comparison 
+of current conditions to more desirable conditions and then analyzing any gaps between those 
+to identify potential improvements. This process can be iterative in that the organization may 
+not know the current state until after several rounds of risk management activities. Similarly, 
+practitioners may not fully know the desired state until after several iterations of identifying, 
+assessing, analyzing, and responding to risks. Despite this challenge, gap analysis can be a useful 
+tool to include as part of a broad methodology. 
+IR 8286 provides an example of the process described by the Cybersecurity Framework [8], 
+which includes a set of activities that consider the six functions: 
+1. Govern the organization’s cybersecurity risk management strategy, expectations, and 
+policy for its assets. 
+2. Identify what assets are important for achieving enterprise objectives. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+32 
+3. Protect those assets from known threats and vulnerabilities. 
+4. Detect risk events on those assets in an eﬃcient and eﬀective manner. 
+5. Respond to such risk events rapidly and eﬀectively. 
+6. Recover from any disruptions in accordance with enterprise strategy. 
+The framework decomposes the functions into categories, each of which is further described in 
+terms of strategic and tactical outcomes (subcategories). For each subcategory, the framework 
+recommends the creation of proﬁle artifacts that document the current and desired (or target) 
+policies, processes, and practices. By documenting the “as-is” outcomes, organizations can 
+consider potential risk implications, including potential threat events. That information will later 
+help develop target state proﬁles for managing risk as directed by risk appetite and risk 
+tolerance statements. More detail about this process is described in IR 8286C. Table 6 provides 
+an example excerpt from a current proﬁle with example threat considerations. 
+Table 6. Cybersecurity Framework current state proﬁles help consider threats 
+ID Category Current State Threat Considerations 
+GV.S C Cybersecurity 
+Supply Chain 
+Risk 
+Management 
+• Internal security roles are deﬁned 
+but not those of supply chain 
+partners. 
+• Dependencies and resilience 
+requirements for the Commercial 
+Facilities Sector are anecdotally 
+understood but not more formally 
+recorded. 
+• External partner(may not fulﬁll 
+responsibilities for protecting, 
+detecting, or responding to 
+incidents). 
+• Power failure (causes customers 
+[e.g., emergency services, hospitals] 
+with critical dependencies to 
+experience an extended loss of 
+internet service due to a lack of 
+service level agreements and 
+documented resilience 
+requirements).
+ 
+ID.AM Asset 
+Management 
+• Hardware and software are tracked, 
+but inventory is not always accurate. 
+• Network ﬂows are not mapped. 
+• Asset classiﬁcation is performed and 
+eﬀective. 
+• Internal user(adds a non-compliant 
+device; because a device is not in 
+inventory, scans may miss it as a host 
+so vulnerabilities may go 
+undetected). 
+• External adversary(could gain 
+network access, and activities might 
+not be distinguished from 
+unmapped, typical traﬃc patterns). 
+PR.AT Awareness 
+and Training 
+• All staﬀ have been trained in physical 
+and information security practices 
+during onboarding. 
+• Internal user (may fall victim to an 
+email phishing attack due to a lack of 
+suﬃcient training). 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+33 
+ID Category Current State Threat Considerations 
+PR.DS Data 
+Security 
+• Inbound and outbound remote 
+connections are encrypted. 
+• Laptops with proprietary facility 
+information do not have full-disk 
+encryption. 
+• Email systems are conﬁgured to 
+provide limited data loss prevention. 
+• External adversary (who has gained 
+network access may quickly 
+recognize and exﬁltrate 
+unencrypted, sensitive information 
+in databases or within cleartext 
+network traﬃc). 
+• Internal user (may unintentionally 
+send sensitive records without 
+encryption, while data loss 
+prevention tools might impede that 
+error). 
+DE.CM Security 
+Continuous 
+Monitoring 
+• Physical security is monitored 
+through cameras and access log 
+reviews. 
+• Information security logs are 
+aggregated and stored securely. 
+• Intrusion detection products 
+monitor for risks. 
+• Internal user (steals valuable 
+equipment due to a lack of diligent 
+video and log monitoring). 
+• External user (is not quickly 
+detected and thwarted due to 
+ineﬀective monitoring). 
+RS.MA Incident 
+Management 
+• Response processes and procedures 
+are executed and maintained. 
+• Supply chain partner (is not able to 
+provide the Security Operations 
+Center with system log information 
+and is unable to restore data to a 
+known-good recovery point). 
+RC.RP Incident 
+Recovery 
+Plan Execution 
+• Incident recovery processes are 
+included in response plans. 
+• Lack of recovery objectives and 
+metrics impedes the ability to 
+conﬁrm that risks are treated in 
+accordance with risk appetite and 
+risk tolerance. 
+• Software failure (could cause an 
+outage in an essential business 
+application that exceeds 
+organizational directives regarding 
+maximum tolerable downtime). 
+Another source of ideas for threat modeling is SP 800-53, Security and Privacy Controls for 
+Information Systems and Organizations, which provides a catalog of security and privacy 
+controls19
+19 NIST provides a set of OLIR Validation Tool and Focal Document Templates, including those for SP 800-53, that assist with aligning and 
+comparing various information security models. The templates are available at https://csrc.nist.gov/Projects/olir. 
+[13]. A companion document, SP 800-53A, Assessing Security and Privacy Controls in 
+Information Systems and Organizations, documents methods for assessing the eﬀectiveness and 
+suitability of those controls for various purposes [14]. Through the examination of controls and 
+assessment methods, practitioners can observe conditions that align with enterprise situations, 
+sparking discussions about potential threats. For example: 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+34 
+A practitioner can consider control AC-17, Remote Access, which states, “The use 
+of encrypted VPNs provides suﬃcient assurance to the organization that it can 
+eﬀectively treat such connections as internal networks if the cryptographic 
+mechanisms used are implemented in accordance with applicable laws, executive 
+orders, directives, regulations, policies, standards, and guidelines.” [13] The 
+practitioner should then consider the threat conditions that would make 
+encryption necessary (e.g., preventing eavesdropping, ensuring authorization) 
+and perhaps identify regulatory compliance requirements. 
+Considering controls and their assessments can inspire the imagination and support eﬀective 
+thr
+eat modeling. 
+As noted in IR 8286, “organizations creating a risk management program for the ﬁrst time 
+should not wait until the risk register is completed before addressing obvious issues,” such as 
+those issues that arise from the threat modeling exercises. CSRM practitioners, in collaboration 
+with ERM stakeholders, will need to continually deﬁne and reﬁne the timing of various risk 
+identiﬁcation processes. An organization that delays risk management until the end of a 
+detailed and exhaustive risk identiﬁcation activity may ﬁnd that many risks become realized 
+while the practitioners are still working. At the other extreme, immediately beginning risk 
+management when only a few risks have been catalogued can hamper prioritization or cause a 
+continual recalculation of risk importance as new loss event types are identiﬁed and added. 
+Threat identiﬁcation methods may also discover quick wins (e.g., changing default passwords 
+for devices and applications, enabling cryptography settings, locking ﬁle cabinets) that can be 
+eﬃciently resolved, immediately addressed, and documented in the risk register while other 
+risk identiﬁcation activities continue. 
+2.2.2.5. Technical Threat Enumeration 
+While threat sources include many factors because cybersecurity risks are so closely associated 
+with information and technology, technical threats are likely to comprise the majority of those 
+enumerated. The complexity and rapid evolution of technical threats make it particularly 
+worthwhile to gain insights from reputable partners regarding how to prepare for, recognize, 
+and respond to these threat sources. These insights also help achieve a proactive threat 
+management stance rather than a reactive approach. 
+To be successful in protecting information and technology and to rapidly detect, respond, and 
+recover from threat events, the organization may choose to apply an intelligence-driven 
+approach, commonly referenced as cyber threat intelligence (CTI). Using sources of information 
+and data, such as those described in Table 7, practitioners will gain insight into adversaries’ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+35 
+tactics, techniques, and procedures (TTPs) as well as other information about how to prepare 
+and what conditions to monitor. 
+Industry-based threat intelligence-sharing organizations are available for the exchange of CTI 
+among members or subscribers. For example, the Department of Defense’s “Defense Industrial 
+Base Collaborative Information Sharing Environment (DCISE)” is a government program that 
+facilitates CTI sharing between its Defense Industrial Base (DIB) members and participants. 
+Another example is that of information sharing and analysis centers (ISACs) and organizations 
+(ISAOs). Using intelligence provided by such sources, risk practitioners can make threat-
+informed decisions regarding defensive capabilities, threat detection techniques, and mitigation 
+strategies. By correlating and analyzing cyber threat information from multiple sources, an 
+organization can also enrich existing information and make it more actionable.
+20
+20 Cybersecurity information sharing is discussed in detail in SP 800-150, Guide to Cyber Threat Information Sharing, which is available at 
+https://doi.org/10.6028/NIST.SP .800-150. 
+ 
+Table 7. Example sources of threat information 
+Commercial Threat 
+Intelligence sources 
+Various commercial organizations provide subscription-based services that supply 
+enterprise intelligence regarding potential threat actors and events. Often, these 
+intelligence providers maintain an understanding of enterprise asset types; the 
+commercial provider then provides information about what actions speciﬁc threat 
+sources have conducted against similar assets elsewhere. 
+Example: Gartner Inc. Reviews for Security Threat Intelligence Products and Services 
+https://www.gartner.com/reviews/market/security-threat-intelligence-services 
+Automated Indicator 
+Sharing (AIS) feeds 
+Both public- and private-sector organizations (e.g., DHS, FS-ISAC) provide automated 
+data feeds with information about existing or imminent threats, as well as 
+vulnerabilities being exploited by those threats. 
+Example: DHS Cybersecurity and Infrastructure Security Agency (CISA) 
+https://us-cert.cisa.gov/ais, https://www.cisa.gov/ciscp 
+Information Sharing 
+and Analysis Centers 
+and Organizations 
+(ISACs and ISAOs) 
+Many industries, including critical infrastructure sectors, experience sector-speciﬁc 
+threat types. Information Sharing and Analysis Centers (ISACs) provide members with 
+support and information to help conduct risk assessments and maintain risk awareness. 
+Some ISACs oﬀer in-house applications for sharing indicators of compromise (IoC) and 
+other threat-based alerts. 
+Example: National Council of ISACs (https://www.nationalisacs.org/) 
+Technical Threat 
+Category Models 
+Many industry models are available for performing technical threat modeling, 
+particularly in a software development context. Like the threat trees described in 
+Section 2.2.2, such models help guide collaboration and brainstorming activities to 
+consider what-if scenarios, including threats, vulnerabilities, and their impacts. 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+36 
+MITRE ATT&CK® This is a knowledge base of adversary tactics and techniques based on real-world 
+observations, is used as a foundation for the development of speciﬁc threat models and 
+methods and helps enterprise risk practitioners consider the threat conditions that an 
+adversary might apply and the events that adversary might seek to cause. The recent 
+addition of pre-attack indicators and methods can help prepare for and detect signs of 
+an impending event. 
+https://attack.mitre.org/ 
+NSA/CSS Technical 
+Cyber Threat 
+Framework (NTCTF) v2 
+While this model does not help identify sources, it provides a broad list of the types of 
+events that a threat source might attempt to initiate, particularly a motivated human 
+adversary. By deﬁning the actions such an adversary might desire to perform, the NTCTF 
+supports an imaginative approach to enterprise threat modeling. 
+https://www.nsa.gov/Portals/70/documents/what-we-do/cybersecurity/professional-
+resources/ctr-nsa-css-technical-cyber-threat-framework.pdf 
+By understanding typical attack patterns, enterprises can mount defenses to improve resilience. 
+For example, understanding the methods of various attackers in privilege escalation or lateral 
+movement will help risk managers plan eﬀective preventive and detective controls. Because 
+technical attacks can move rapidly, preparation is paramount. Updated, rapid sharing of 
+indicators of compromise (such as those provided through Structured Threat Information 
+Expression [STIX]) helps enterprise practitioners better detect and respond to emerging 
+threats.
+21
+21 STIX is one of several data exchange speciﬁcations for cybersecurity information sharing. More information is available at https://oasis-
+open.github.io/cti-docum entation. 
+ 
+Because of the time-critical nature of cybersecurity risks, the use of automation in threat 
+intelligence analysis enables an enterprise to reduce the potential delays and errors that a 
+human-only approach can introduce. While automated information sharing (AIS) will not 
+entirely eliminate threats, it can help an organization stay aware of and prepared for new and 
+evolving types of attacks. One example of an AIS is that oﬀered by the U.S. Department of 
+Homeland Security (DHS) in accordance with the U.S. Cybersecurity Information Sharing Act of 
+2015. The DHS AIS site includes the following information: 
+The free (DHS) AIS capability enables the exchange of cyber threat indicators 
+between the Federal Government and the private sector at machine speed. 
+Threat indicators are pieces of information like malicious IP addresses or the 
+sender address of a phishing email (although they can also be much more 
+complicated).AIS participants connect to the “CISA Central” service that allows 
+bidirectional sharing of cyber threat indicators. A server housed at each 
+participant’s location allows them to exchange indicators with CISA. Participants 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+37 
+will not only receive DHS-developed indicators but can share indicators they have 
+observed in their own network defense eﬀorts, which DHS will then share back 
+out to all AIS participants.22
+22 CISA Central (formerly the National Cybersecurity and Communications Integration Center, or NCCIC) is part of the Cyber Information Sharing 
+and Collaboration Program (CISCP) and is available at www.cisa.gov/central. 
+ 
+ 
+An analysis of network packet capture data can help identify potential threats based on 
+observed traﬃc. Armed with understanding from CTI sources regarding TTPs and IoCs, 
+practitioners will be able to observe potential indicators and likely attack paths. In conjunction 
+with past and existing cyber incident information, organizations can use CTI to support internal 
+risk communication and risk analysis and to improve risk scenario development. In addition to 
+the technical advisories, the alerts and analysis reports at the DHS National Cyber Alert System 
+provide information about recent TTPs and how they have aﬀected various enterprises. 
+2.2.3. Vulnerability Identiﬁcation 
+For any of the various threat conditions described above to result in an impactful risk, each 
+needs a vulnerable or predisposing condition that can be exploited. The identiﬁcation of 
+vulnerabilities or conditions that a threat source would use to cause impact is an important 
+component of risk identiﬁcation and represents part C (Fig. 10) of the CSRM risk scenario.  As 
+demonstrated in examples throughout this series, threats and vulnerabilities are not limited to 
+the routine vulnerability management of software ﬂaws, patching and network ports, but 
+encompass a broader range of considerations that SP 800-53 addresses in the form of controls. 
+ 
+Fig. 10. Vulnerability inputs to risk scenario identiﬁcation (Part C) 
+2.2.3.1. Determination of Vulnerabilities and Predisposing Conditions 
+While it is necessary to review threats and vulnerabilities as unique elements, they are often 
+considered at the same time. Many organizations will consider a given loss scenario and 
+evaluate both. What threat sources might initiate which threat events? What vulnerabilities or 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+38 
+predisposing conditions might those threat sources exploit to cause a loss event?23
+23 There are many similarities among threat identiﬁcation and vulnerability identiﬁcation activities. These may seem redundant, but it is 
+important to understand both the sources of potential harm (threats) and the conditions that those threat sources might exploit 
+(vulnerabilities). 
+ Much of the 
+information provided through CTI will also inform an understanding of vulnerability. For 
+example, analysis of the infamous 2017 WannaCry ransomware attack includes understanding 
+the threat source and motive (a known and capable cybercrime group seeking ﬁnancial gain), 
+the intended threat event (deliberate modiﬁcation, interruption, and potential destruction of 
+key enterprise information assets), and the vulnerability to be exploited (CVE-2017-0144). 
+Practitioners should (within the scope agreed-upon in activities described in Sec. 2.1.1) 
+systematically consider the potential physical and logical vulnerabilities and predisposing 
+conditions that can be exploited by a threat source. This consideration can be facilitated by 
+many of the methods described in Table 7, including: 
+• The use of commercial intelligence sources can provide threat and vulnerability 
+information. Many providers will note customer enterprise information and technology 
+(e.g., hardware, software, and operating systems in use) to alert of any vulnerabilities in 
+those platforms that are known to be targeted by existing threat sources. 
+• The integration of AIS feeds may include automated alerts regarding known 
+vulnerabilities. Many security incident event monitoring (SIEM) products and intrusion 
+detection systems (IDS) can help enterprises associate asset inventory information with 
+AIS alerts to support incident reporting and monitoring. 
+• A threat tree model (e.g., the diagram in the OCTAVE ALLEGRO guidance) can consider 
+various human factors, technical defects, software ﬂaws, physical entry points, utility 
+dependencies, and supply chain vulnerabilities that present vulnerabilities. 
+• A review of the various threat categorization models (e.g., MITRE ATT&CK
+®) can inspire 
+internal discussions, such as “What vulnerabilities might enable execution of malicious 
+code?” or “What predisposing conditions foster lateral movement within the 
+enterprise?” 
+As with threat modeling, practitioners will also beneﬁt from applying known risk management 
+frameworks as a tool for vulnerability discovery. For example, a review of the controls catalog in 
+SP 800-53 may lead to consideration of control MP-3, Media Marking, which can then inspire 
+discussion regarding potential vulnerabilities that might result from unmarked (or improperly 
+marked) system media. 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+39 
+Notably, the enterprise will beneﬁt from the advice of external specialists with expertise in 
+identifying and categorizing various types of vulnerabilities. Some entities, such as those 
+operating moderate- and high-impact federal information systems, require formal penetration 
+testing to identify potential vulnerabilities and the exploitability of those conditions. In addition 
+to some government and law enforcement agencies that are able to assist enterprises with 
+evaluating physical and technical vulnerabilities, many commercial organizations oﬀer these 
+services. 
+2.2.3.2. System Complexity as a Vulnerability 
+IR 8286states that additional risks can result from the dynamic complexity of enterprise 
+information and technology. In fact, that complexity is itself a vulnerability to be considered and 
+documented. Evaluation of “what-if” scenarios regarding potential vulnerabilities, especially 
+those aﬀecting critical assets, should include the determination of critical dependencies on 
+other resources. Because risk identiﬁcation and risk analysis are iterative, risk analysis methods 
+(such as the Event Tree Analysis described in Sec.2.3.2.2) will help determine those 
+dependencies. Having made that determination, those critical dependencies can be recorded in 
+the BIA register (described in Sec.2.2.1.1). Risk identiﬁcation then includes scenario discussions 
+that evaluate complex or cascading events as vulnerabilities to be identiﬁed. 
+For example, the 2003 Northeast Power Grid interruption demonstrated how several moderate 
+risk events cascaded into a national emergency.
+24
+24 For more information about the 2003 power blackout, please see 
+https://www.nerc.com/pa/rrm/ea/August%2014%202003%20Blackout%20Investigation%20DL/ISPE%20Annual%20Conf%20-
+%20August%2014%20Blackout%20EPA%20of%202005.pdf  
+ Another example of systemic risk are the 
+ﬁnancial institutions that were impacted by cascading risk in 2008.25
+25 For more information about the 2008 global banking crisis, please see the report Risk Management Lessons from the Global Banking Crisis of 
+2008, https://www.sec.gov/news/press/2009/report102109.pdf  
+ In that case, large 
+enterprises experienced catastrophic events because they had interdependencies with other 
+banks, insurance companies, and customers. When identifying and recording risks in the 
+register, such emerging risk conditions created by the interdependence of systems and 
+counterparty risk must also be identiﬁed, tracked, and managed using the same methods 
+described for more straightforward scenarios. 
+As with other CSRM components, vulnerability identiﬁcation can be considered through either 
+qualitative or quantitative means. An organization might determine that it has a large number 
+of high severity vulnerabilities based on an internal review. A qualitative review might result 
+from a gap analysis between the Current Proﬁle and the Target Proﬁle within a Cybersecurity 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+40 
+Framework Organizational Proﬁle since such an analysis is intended to foster discussion and 
+communication regarding risks but will not likely produce a highly speciﬁc quantitative result. 
+More quantitative vulnerability identiﬁcation results from a formal testing approach that 
+examines a discrete set of enterprise resources for a speciﬁed set of known vulnerabilities. 
+Particular vulnerability assessments (e.g., software code review or simulated phishing attack) 
+can provide quantitative results. Results of a formal assessment might include a speciﬁc number 
+of identiﬁed issues, which can be used to help complete the likelihood column of the risk 
+register. 
+2.2.3.3. Vulnerability Identiﬁcation Automation 
+The complexity and interconnection of technology results in many thousands of potential 
+vulnerabilities. Because of this broad scale combined with a rapidly evolving technical 
+landscape, automation can improve the enterprise’s ability to manage relevant vulnerabilities. 
+Automation also enables a timelier monitoring of risk as well as adaptation to changing risk 
+scenarios. 
+Hardware and software products are signiﬁcant sources of vulnerabilities for any enterprise, 
+whether through inherent ﬂaws in those products or through errors in product implementation 
+or application. To help support the consistent identiﬁcation and monitoring of these 
+vulnerabilities, security organizations have developed broad clearinghouses of vulnerability 
+information. For example, NIST operates the National Vulnerability Database (NVD) and the 
+National Checklist Program (NCP) to support vulnerability and security conﬁguration 
+management via catalogs of: 
+• Conﬁguration checklists for securing key information technologies, 
+• Information about secure conﬁguration settings (with associated SP 800-53 security 
+controls), 
+• Vulnerabilities (with associated severity scores), 
+• Standardized security checklists for automated security conﬁguration scanning (e.g., 
+security checklists in Security Content Automation Protocol format26
+26 Information about the NIST SCAP is available at https://csrc.nist.gov/projects/security-content-automation-protocol/. 
+)
+, and 
+• Products that use standards to identify and report vulnerabilities. 
+Automated data feeds, such as those described above, enable enterprise monitoring tools to 
+ingest information about known vulnerabilities in near real-time and compare it with the asset 
+inventory. A key factor in that data feed is information regarding the date that a vulnerability 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+41 
+was publicly disclosed. The severity of a given vulnerability increases exponentially after it 
+becomes publicly known, so it is important that practitioners prioritize remediation of ﬂaws. 
+The risk of the vulnerability must be balanced with the risk of implementing a ﬁx for that issue 
+too quickly. Automated tools can help monitor and maintain that balance through speciﬁc 
+reports regarding severe vulnerabilities that have not been patched within a reasonable time. 
+An example of this is the DHS AWARE (Agency-Wide Adaptive Risk Enumeration) scoring 
+methodology used by the DHS Continuous Diagnostics and Mitigation (CDM) risk management 
+dashboard. AWARE is not intended to identify all issues, but the scoring methodology helps to 
+highlight and prioritize cybersecurity risks that are likely to exceed allowable risk tolerance (e.g., 
+known software vulnerabilities on critical assets that are not mitigated within a designated 
+grace period).
+27
+27 More information about the DHS AWARE scoring method is available at https://www.cisa.gov/cdm-training. 
+ 
+2.2.4. Determining Potential Impact 
+The ﬁnal prerequisite for creating a practical list of risk scenarios for the risk register is the 
+determination of the potential impact of the threats and vulnerabilities described above. The 
+section below describes the completion of part D of the CSRM Risk Description column (Fig. 11). 
+ 
+Fig. 11. Adverse impact inclusion in risk scenario identiﬁcation (Part D) 
+Discovery activities throughout Sec.2.2 may have already highlighted potential adverse impacts 
+to explore. Description of the impact is a key element for enterprise stakeholders and 
+represents the connection between cybersecurity risks and the enterprise objectives that would 
+be aﬀected by those risks. Reviewing the key enterprise objectives, as identiﬁed in scoping, and 
+armed with a broad list of potential threats and vulnerabilities, personnel can develop a list of 
+realistic scenarios. 
+While some types of impact may not be immediately apparent, the long-term eﬀects can be 
+signiﬁcant. For example, consider a situation where a criminal has gained unauthorized access 
+to an enterprise system and has exﬁltrated a large amount of conﬁdential data. If that criminal is 
+cautious, there may not be any disruption of operations. In fact, sometimes cyber criminals 
+actually try to improve the health of a victim’s technology to ensure that it will be available for 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+42 
+their malicious activity. In this case, the system may seem to be working ﬁne – even better than 
+ever – and then later, the enterprise realizes that a catastrophic loss has occurred. 
+Notably, impact scenarios can be considered as a continuum rather than as a binary state. Many 
+impacts will cause mission degradation or reduced performance and may not exhibit 
+themselves as a full interruption of service or capability. This consideration should be factored 
+into risk prioritization and analysis. 
+Risk scenarios should be assessed in terms of both initial impact and downstream 
+consequences. Factors to consider include: 
+• Primary impact – The initial impact following a negative cybersecurity event, such as the 
+downtime when a website is unavailable to customers 
+• Secondary impact – A loss event that occurs subsequent to the primary impact as a 
+downstream or cascading impact to the enterprise 
+For example, consider a large enterprise that experiences a breach of conﬁdential customer 
+data. In this example, an external attacker with criminal intent might attack a highly critical and 
+sensitive customer database through a software vulnerability on the internet-facing website. 
+The initial impact may be minimal since exﬁltration is not disruptive, and the company may not 
+even detect an issue. Once the problem has been discovered, there may be primary impacts, 
+such as: 
+• Cost of a focused investigation into the breach 
+• Price of restitution for customer losses (e.g., credit monitoring services) 
+• The expense of third-party specialists to provide forensic expertise and to ensure 
+adequate mitigation of the cybersecurity incident 
+• Cost of immediate capital investment to address cybersecurity issues that contributed to 
+the breach 
+Long-term or secondary eﬀects may be more impactful. They can include: 
+• Loss of market share due to eroded trust in the company’s reputation 
+• Reduction or cessation of funding for a government agency or program 
+• Revenue losses from organizations that choose not to renew contracts 
+• Fines and penalties from regulators 
+When considering the impact component of risk scenarios, it is important to consider the 
+frequency of potential consequences. A risk event of moderate impact that occurs weekly may, 
+over time, represent a higher risk than that of a major event that occurs infrequently. Such 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+43 
+temporal factors may be valuable for stakeholders’ understanding and reporting of risks. For 
+example, senior leaders may wish to see the impact of a risk expressed as the loss for each 
+occurrence (the single loss expectancy, or SLE), or they might prefer to see the total loss for that 
+risk over an annual period (the annualized loss expectancy, or ALE). Consistent documentation 
+of impact frequency is also important for supporting the integration and aggregation of risk 
+registers. 
+As with other risk components, impact considerations may be either qualitative or quantitative, 
+as illustrated by the examples in Table 8. 
+Table 8. Example negative and positive impact scenarios 
+Description of negative 
+consequences 
+(qualitative) 
+A software ﬂaw results in a signiﬁcant issue with the integrity of enterprise ﬁnancial 
+systems, necessitating a major outage and extended rework to validate existing 
+records and verify proper operation. 
+Description of negative 
+consequences 
+(quantitative) 
+A ransomware attack has performed unauthorized encryption of 112,000 patient 
+records. Remediation and repair of the aﬀected health information system are likely 
+to disrupt operations for 48 hours, resulting in a $1.14 million primary loss. 
+Description of positive 
+impact (qualitative) 
+New machine learning technology would signiﬁcantly increase the throughput of the 
+enterprise research team and could lead to expansion into new marketing areas. 
+Description of positive 
+impact (quantitative) 
+The addition of high-availability services for the enterprise web server will improve 
+availability from 93.4 % to 99.1 % over the next year and will also improve market 
+share by 3 % due to improved customer satisfaction and resulting reviews. 
+2.2.5. Recording Identiﬁed Risks 
+Using the four elements described in earlier subsections (i.e., key assets, threats, vulnerabilities, 
+and impacts), practitioners can complete the risk description column in the risk register. As 
+previously stated, the CSRR provides a brief synopsis of each identiﬁed risk and the RDR 
+provides for recording and managing many of the speciﬁc details developed above. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+44 
+ 
+Fig. 12. Example risk register with sample risk descriptions 
+The use of detailed risk scenarios helps ensure that all understand the risks being considered 
+and the impacts on organizational objectives. The risk description (illustrated in Fig. 12) need 
+not be exhaustive but should include suﬃcient information to support subsequent analysis, 
+evaluation, treatment, and monitoring. Use of a cause-and-eﬀect format clariﬁes the event or 
+scenario under consideration and its speciﬁc impacts. An example risk description based on the 
+data breach illustration above might say: 
+External criminal attacker exploits a software vulnerability in the 
+internet-facing customer data site, resulting in “signiﬁcant” customer 
+conﬁdential data exﬁltration with revenue, reputation, and regulatory 
+implications. 
+ 
+I
+n support of ERM, practitioners need to continually balance an understanding of what mission 
+objectives can be aﬀected by various threats (a top-down consideration) and how various 
+threats can impact enterprise objectives (a bottom-up consideration). Both sets of conditions 
+are continually changing, so CSRM is an iterative activity of ongoing discovery, communication, 
+response, and monitoring. In addition to the known risks that are already being monitored, 
+there may also be developing or emerging risks that are yet to be fully deﬁned but might disrupt 
+enterprise objectives in the future. 
+Each of the activities in Sec.2.2 is iterative and supports the top-down/bottom-up approach 
+described above. An if/then scenario analysis can be developed and used to consider threats 
+and vulnerabilities, which may lead to the discovery of additional risk scenarios to be 
+considered. This iterative process can be adjusted and tailored to develop and maintain a 
+practical and manageable set of risks. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+45 
+As an example, consider some high-value assets that are important to a local hospital and issues 
+that could jeopardize those assets. Some top-down considerations may include: 
+• Patient record database – A ransomware attack could encrypt critical records; a network 
+outage could disrupt availability; an authentication issue could hamper the ability to log 
+in; a software upgrade could inadvertently corrupt the data. 
+• Pharmaceutical system provided by a third party – A malicious (or tricked) insider could 
+alter pharmacy records, resulting in incorrect medication being given to a patient; the 
+malicious external party could break in and disclose or destroy pharmacy records; a 
+construction incident could sever network communications to the service. 
+• Point of care (PoC) terminals – Authentication system failure could disrupt the ability to 
+provide patient care; user data error could result in inaccurate and potentially unsafe 
+patient conditions; an improperly tested software patch could render terminals 
+unusable. 
+Bottom-up considerations start with threats and vulnerabilities and consider where those can 
+lead: 
+• Ransomware attack through a social engineering attack (e.g., web-based malware drive-
+by attack, email phishing attack) – An attack could render many systems unreadable, 
+including patient care databases, pharmacy records, billing systems, and payroll. 
+• Network outage due to a ﬁrewall malfunction – An internal failure of a major switch or 
+router could result in localized failures of PoC terminals, patient in-processing, and 
+medical care services (e.g., review of radiology reports). External connectivity failure 
+would disrupt electronic mail, clinical professional services, pharmaceutical processing, 
+some laboratory results. 
+• Physical hardware malfunction through a failed component – Technical equipment (e.g., 
+televisions) could be rendered unavailable with few consequences, and technology (e.g., 
+patient scanners) malfunctions could fail to provide timely and accurate patient results. 
+Awaiting replacement systems could lead to potential injuries (e.g., through ﬁre or 
+electrical shock) or delays in patient care. 
+Thorough risk identiﬁcation in realistic and mission-oriented scenarios help to communicate the 
+connection between various uncertainties and the mission objectives that might be aﬀected. 
+2.2.6. Risk Categorization 
+Each risk in the CSRR should also indicate the relevant risk category (indicated by the solid, thick 
+black box in Fig. 13) based on the risk strategy guidance described in Sec.2.1.1. Categories could 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+46 
+be any taxonomy that helps aggregate risk information and supports the integration of 
+cybersecurity risk registers for ERM decision support. Example risk categories include: 
+• Risk framework groupings, such as by security and privacy control families (e.g., Access 
+Control, Supply Chain Risk Management, such as those recorded in SP 800-53) 
+• Threat types, such as intentional disclosures, unintended modiﬁcations, system failures, 
+or natural disasters 
+• Impact considerations based on business units aﬀected or information systems impacted 
+Consistent risk categorization supports the eﬀective integration of cybersecurity risks 
+throughout the enterprise and aggregation into an enterprise cybersecurity risk register. That 
+information ultimately becomes part of the overall Enterprise Risk Register and the Enterprise 
+Risk Proﬁle. 
+ Detailed Risk Analysis 
+ 
+Fig. 13. CSRR highlighting risk category and current assessment columns 
+Risk analysis enables the determination of the likelihood of impact and priority of treatment. 
+This section helps to complete the likelihood and impact columns of the cybersecurity risk 
+register and the exposure column that represents the product of those two values. These 
+columns are illustrated by the dashed box in Fig. 13. 
+Because cybersecurity risk reﬂects the eﬀect of uncertainty on or within a digital component 
+that supports enterprise objectives, risk analysis helps to measure both the level of uncertainty 
+entailed by the risk scenario and the extent of the uncertain eﬀect upon enterprise objectives. 
+Deterministic models can provide a detailed analysis of likelihood and impact where suﬃcient 
+information is available for such a determination. In other cases, the randomness of uncertainty 
+and the many factors involved in complex information and technology better support a 
+probabilistic (or stochastic) methodology. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+47 
+2.3.1. Selecting Risk Analysis Methodologies 
+International Electrotechnical Commission (IEC) standard 31010:2019, Risk management — Risk 
+assessment techniques, provides a comprehensive list of risk analysis techniques. The standard 
+states, 
+In deciding whether a qualitative or quantitative technique is more 
+appropriate, the main criteria to consider are the form of output of 
+most use to stakeholders and the availability and reliability of data. 
+Quantitative techniques generally require high quality data if they are to 
+provide meaningful results. However, in some cases where data is not 
+suﬃcient, the rigor needed to apply a quantitative technique can 
+provide an improved understanding of the risk, even though the result 
+of the calculation might be uncertain [15]. 
+ 
+The
+ Open Group Standard for Risk Taxonomy (O-RT) Version 3.0.1, part of the Open Factor 
+Analysis of Information Risk (OpenFAIR) series of documents, supports the assertion that 
+quantitative risk analysis can provide an improved understanding of risk [16].28
+28 Open FAIR also highlights the importance of determining and quantifying the probable frequency of future loss, including the need to 
+determine Threat Event Frequency (TEF) and Loss Event Frequency (LEF) values. Agencies have pointed out that accurate calibrated ranges, such 
+as for TEF and LEF, can lead to more accurate calculations for ALE. Details regarding the Open FAIR taxonomy and analysis are available at the 
+reference provided.  
+ It points out, 
+Because risk is invariably a matter of future events, there is always some 
+amount of uncertainty, which means executives cannot choose or 
+prioritize eﬀectively based upon statements of possibility. Eﬀective risk 
+decision-making can only occur when information about probabilities is 
+provided. Moreover, risk analyses should not be considered predictions 
+of the future. The word “prediction” implies a level of certainty that 
+rarely exists in the real world and does not help people understand the 
+probabilistic nature of analysis. For decision-makers, even though it is 
+impossible to know which roll of the dice will come up, knowing that the 
+probability is 1-in-36 is valuable information. 
+ 
+Analy
+sis considerations are often provided in a qualitative way, such as, “The patient database is 
+at high risk of unauthorized disclosure because we have learned that hackers are targeting 
+health information systems with ransomware, and we have determined that there are 
+numerous vulnerabilities in our health information system.” 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+48 
+In other cases, the analysis can be quantitative, such as in the example below: 
+The health information system contains about 12,000 records. A 
+successful ransomware breach could cost approximately $1.3 million if 
+the data is destroyed or $2.5 million dollars if the breach results in a 
+disclosure. We know that the Arctic Zebra APT team has been targeting 
+similar databases; through our understanding of their techniques and 
+those of others, we believe that there is a 70 % chance they will target 
+us and a 30 % chance (based on internal testing and network scans) that 
+it would be successful. Based on that data, we believe that there is a 
+21 % chance of single loss exposure, or between $273,000 and 
+$525,000. This exposure calculation does not consider additional 
+secondary losses, such as lost revenue due to customer erosion from 
+loss of trust or personal lawsuits against the ﬁrm. 
+ 
+As
+ shown by the referenced standards and examples in this section, there are beneﬁts to both 
+qualitative and quantitative risk analysis methodologies and even the use of multiple 
+methodologies, based on enterprise strategy, organization preference, and data availability. 
+Regardless of the methodologies being applied, it is important to consider as many data points 
+as needed to render a judgement regarding likelihood and impact values. Unfortunately, 
+without supporting data, well-intentioned but misguided methods of risk analysis amount to 
+little more than a guess. In many cases, the application of even a moderate amount of deductive 
+reasoning, combined with various analysis techniques, can render a more accurate and reliable 
+risk analysis. Quantitatively informed qualitative decision-making should be the objective in the 
+absence of purely quantitative-driven decisions. 
+Because CSRM is intended to inform ERM activities, the selection and application of risk analysis 
+methods must be aligned. The enterprise CSRM strategy should inform risk analysis 
+methodologies, support coordination, and direct the consistent use of available data. As with 
+many risk management elements, the strategy should help consider the methods available and 
+provide for a tailored approach that results in eﬀective risk management. 
+When selecting a risk assessment technique, organizations should consider the analysis costs in 
+light of the desired outcome to help determine the most cost-eﬀective technique. Inexpensive 
+but accurate qualitative analysis that identiﬁes the most risks and leads to best mitigating those 
+risks may be the right move for a particular organization. For others, a highly detailed 
+quantitative risk assessment may require more resources than a qualitative approach but may 
+also provide speciﬁc and actionable information that helps to focus attention on important 
+threat scenarios. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+49 
+2.3.2. Techniques for Estimating Likelihood and Impact 
+IR 8286highlights the need for improved risk analysis when estimating and recording the 
+likelihood and impact of cybersecurity events and monitoring to ensure that risks remain within 
+acceptable parameters.29
+29 It is the intention of this document to introduce the reader to commonly used estimation techniques. The authors defer to other industry 
+resources for comprehensive details regarding how to perform such analyses. 
+ To improve enterprise risk estimation accuracy and consistency, CSRM 
+practitioners are encouraged to explore the use of tools and processes that support measurable 
+and meaningful risk analysis and reporting. 
+Some analysis techniques are based on estimates from subject matter experts’ (SMEs) 
+experience and knowledge. Some methods, such as this SME estimation, can be subjective. 
+Other methods are more objective and based on analytical considerations, statistical analysis, 
+and scenario modeling, as well as potentially drawing on knowledge of previous events. 
+Understanding the intended purpose of the analysis can help one decide which techniques to 
+use. For example, a detailed and quantiﬁed approach may be valuable as a basis for a 
+comprehensive review or update of the enterprise cybersecurity approach. Detailed evaluation 
+helps to reinforce defense measures and increase resilience, as in the following example: 
+Enterprise leaders have learned through an InfraGard alert that there is 
+a high probability that companies in its sector will be targeted by a 
+particular APT group. Because internal cybersecurity risk managers have 
+performed threat modeling based on the MITRE Adversarial Tactics, 
+Techniques, and Common Knowledge (ATT&CK®) and Pre-ATT&CK 
+frameworks, the company was able to quickly consider high-value assets 
+that would most likely be at risk. 
+A key TTP of this attack is “password spraying” brute force login 
+attempts. Several critical systems have not yet been updated to support 
+multi-factor authentication and would be vulnerable to such an attack. A 
+poll of the security leaders (using a Delphi exercise) determined that 
+there is a 50 to 70 % chance that the payroll system will be attacked (the 
+mean value was 60 %). A successful attack on that system would have 
+direct and indirect ﬁnancial impacts of between $1.7 million and $2.4 
+million USD with the most likely impact being $2.0 million. Therefore, 
+the risk exposure value for this row of the risk register was established 
+at $1.2 million (based on 0.6 x $2 million). 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+50 
+ 
+Notably, the example above provides several ranges of estimates. Some industry specialists have 
+indicated that a range of possible values is more helpful and likely more accurate than a single 
+“point estimate.” Additionally, while this example uses the mean values of those ranges to 
+identify the likelihood and potential impact, the ranges themselves are often recorded in the 
+risk register. In this instance, given a possible impact of “between $1.7 million and $2.4 million,” 
+the exposure may have been presented as “$1.02 million to $1.44 million.” 
+Furthermore, organizations are encouraged to utilize the following organizational processes to 
+supplement the estimation techniques: 
+• Estimation workshops: utilize small teams to collaborate and challenge assumptions, 
+anchor estimates in real-world analogies and ensure logical consistency. These sessions 
+also reduce individual bias and increase shared understanding of scenarios and inputs. 
+• Calibration training and assessment: this process improves individuals’ ability to 
+estimate uncertainty accurately. Techniques such as the equivalent bet test (e.g., “Would 
+you bet $100 that the true value falls within this range?”) help improve probabilistic 
+thinking and reduce overconﬁdence. 
+• Sensitivity analysis: not just of the model, but of the input assumptions— used to 
+identify which uncertain factors most aﬀect the output. This guides analysts to focus 
+eﬀort where it matters most and improves decision-maker conﬁdence that uncertainty 
+has been appropriately scoped. Sensitivity analysis can also help with setting escalation 
+thresholds for KRIs and may suggest new metrics to monitor. 
+• Tracking actuals versus forecasts: a discipline common in ﬁnance but rarely applied in 
+cybersecurity. By comparing historical estimates to realized outcomes over time, 
+organizations can improve estimation accuracy and identify where assumptions 
+consistently under- or over-shoot. 
+2.3.2.1. Improving Estimation Based on Knowledge of Prior Events 
+Information about previous risk events may be helpful when estimating the likelihood and 
+impact of those in the future. For example, practitioners should consult industry literature, their 
+current power companies, or internet service providers for descriptions of loss events within a 
+given sector or over a particular time frame. To determine the likelihood of a utility outage, the 
+utility provider can be asked to provide details regarding previous disruptions and their 
+duration. 
+As an example, consider the example organization in the ﬁrst row in Table 2 in Section 2.1.2. It 
+describes a global retail ﬁrm at which a senior leader has expressed the risk tolerance statement 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+51 
+that “any outage that exceeds four hours for any customer requires signiﬁcant corrective 
+action.” Risk practitioners can review the actual availability of that website for the previous year 
+(using a table similar to Table 9). 
+Table 9. Example risk tolerance results assessment 
+Month Total Hours 
+in the Month 
+# of Hours 
+Unavailable 
+Outage 
+(Customer %) 
+Available 
+Hours 
+Tolerance Limit 
+(Total - 4 hrs.) 
+Avail % (Avail. 
+Hrs.  ÷ Total Hrs.) 
+Jan 744 1 2.4 743 740 99.87 % 
+Feb 672   672 668 100.00 % 
+Mar 744   744 740 100.00 % 
+Apr 720 1.5 4.5 718.5 716 99.797 % 
+May 744   744 740 100.00 % 
+Jun 720   720 716 100.00 % 
+Jul 744   744 740 100.00 % 
+Aug 744   744 740 100.00 % 
+Sep 720 2 0.5 718 716 99.72 % 
+Oct 744   744 740 100.00 % 
+Nov 720 3 1.5 717 716 99.58 % 
+Dec 744   744 740 100.00 % 
+Yearly 8760 7.5 - 8752.5 8704.5 99.91 % 
+In this case, the system did not exceed the risk tolerance since no single outage exceeded four 
+hours, nor did any outage impact more than 5 % of customers. While past performance is not a 
+guarantee of future probability, it provides some information that helps inform likelihood 
+estimates. The impact of an outage is likely similar to that in previous iterations. Understanding 
+the probability of an outage given what is known about prior disruption helps organizations 
+consider likely exposure in the future. 
+When considering each risk in the risk register, practitioners will analyze the likelihood that any 
+risk would result in an impact that would exceed the risk tolerance. That consideration provides 
+a basis for risk treatment decisions, either to ensure suﬃcient security controls or to review risk 
+tolerance statements to ensure that they represent reasonable and practical expectations. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+52 
+2.3.2.2. Three-Point Estimation 
+One method for considering the likelihood or impact of a risk event is three-point estimation. 
+This method,30
+30 For better estimates of O, M, and P and to eliminate bias, the estimator should poll multiple SMEs and determine the average of individual O 
+values, M values, and P values before proceeding with the three-point estimate. 
+ illustrated in Fig. 14, is useful because it considers the judgment of available 
+SMEs. For example, to determine the impact31
+31 Although impact was used in this example, three-point estimating can also be used in determining likelihood. 
+ of a successful phishing attack, the risk estimator 
+could poll a SME regarding: 
+• The most optimistic (or best case) estimate (O), 
+• A most likely estimate (M), and 
+• A pessimistic (or worst-case) estimate (P). 
+Fig. 14 illustrates the result of a SME estimating a $80,000 revenue loss due to an attack that 
+would be successful if employees are not properly trained. This ﬁrst estimate represents a 
+worst-case scenario (pessimistic). The same estimator may suggest that only a $35,000 impact is 
+likely (optimistic) if the attack were successful but limited in spread. Finally, the SME may 
+suggest that the most likely impact of recovering from such a successful phishing attack would 
+be $50,000. Each of these data points can be used to calculate the expected value (also known 
+as EV, expectation, average, or mean value). 
+ 
+Fig. 14. Example three-point estimate graph (triangle distribution) 
+ 
+
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+53 
+The three datapoints can be categorized as Optimistic ($35,000), Pessimistic ($80,000), and 
+Most likely ($50,000). A simple average of the three numbers (called a Triangular Distribution) 
+is: 
+𝐸𝐸𝐸𝐸=
+P+M+O
+3  = $55,000 in this example, where O=$35,000, P=$80,000, and M=$50,000 
+I
+n this phishing attack scenario, perhaps the estimator believes that the pessimistic and 
+opti
+mistic values are too diﬀerent and that the “most likely” estimate is a better predictor. The 
+estimator can give greater weight (perhaps four times as much) to the “most likely” value using 
+the following standard formula (called the Average for a Beta Distribution): 
+𝐸𝐸𝐸𝐸= 6  = $52,500 
+P+4M+O
+in this example, where O=$35,000, P=$80,000, and M=$50,000 
+The next question is, “How conﬁdent is the estimator regarding this estimated impact of a 
+succe
+ssful phishing attack?” In three-point estimating, conﬁdence (referred to as sigma, or σ) in 
+the estimated value can be predicted by calculating the standard deviations from the mean. A 
+useful model for determining sigma is σ =
+P−O
+6 . 
+Fi
+g. 15 illustrates these values graphically. Statistical models have demonstrated that one can 
+de
+termine the level of conﬁdence (or conﬁdence interval [CI]32
+32 The NIST Engineering Statistics Handbook points out that a conﬁdence interval generates a lower and upper limit for the mean instead of a 
+single estimate. The interval gives an indication of how much uncertainty there is in the estimate of the true mean. The narrower the interval, 
+the more precise the estimate. (See https://www.itl.nist.gov/div898/handbook/.) 
+) in the ﬁnancial estimates given 
+the mean (EV) and standard deviation. For the example above, the estimator will have a 68.27 % 
+conﬁdence that the ﬁnancial impact of a successful phishing attack will result in a loss between 
+$39,000 and $66,000. The estimator will have approximately 95 % conﬁdence that the loss will 
+be between $25,500 and $79,500 and a nearly 100 % conﬁdence in the $12,000 to $93,000 
+estimate. This application of CI is useful for each of the analysis methods in this section and 
+helps to represent the level of uncertainty in each of the estimates.  
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+54 
+ 
+Fig. 15. Example three-point estimate graph (normal distribution) 
+Conﬁdence requirements and standardized methods of calculation should be included in senior 
+leaders’ ERM strategy as part of enterprise risk management policy. This directive helps all risk 
+practitioners in the enterprise consider risk in a similar manner and may help to improve the 
+reliability of likelihood and impact estimates. Additionally, as more information becomes 
+available regarding previous risk results and those of external organizations, this information 
+can be included in the estimation models and used to reduce uncertainty. 
+Notably, the level of eﬀort for estimating risk factors increases with the required level of rigor. 
+An estimate with very low CI might be simple to develop (perhaps as simple as ﬂipping a coin) 
+but likely oﬀers little value. A CI of 99 % may be important in some situations, but the work to 
+develop a more precise estimate can cost signiﬁcantly more than that required for a 90 % CI. 
+Because the appropriate levels of accuracy and precision for cybersecurity risk analysis will vary 
+based on enterprise needs, the techniques and expectations should be clearly deﬁned as part of 
+the enterprise’s risk management guidance. 
+It is critical that the risk practitioner consider the accuracy of the SME estimates over time to 
+determine who or what source is more accurate and then consider that expert judgement more 
+prominently in calculations for the ongoing risk management cycles. Experts who are overly 
+optimistic or pessimistic create a broad range. However, when accuracy is required, especially 
+when calculating likelihood, knowing who the best estimators are in the organization is vitally 
+important. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+55 
+2.3.2.3. Event Tree Analysis 
+Event Tree Analysis (ETA) is a graphical technique that helps practitioners evaluate the 
+downstream impact of a given scenario (as determined in Sec.2.2.4). In the same way that a 
+Root Cause Analysis helps consider previous events that have already led to an event, ETA helps 
+consider the potential consequences of future events. The exercise helps document a sequence 
+of outcomes that could arise following an initiating threat event (e.g., a particular TTP , as 
+described in Sec.2.2.2). By iterating through a series of what-if scenarios, the practitioner can 
+analyze each set of circumstances and determine the likelihood that the results would occur. 
+ 
+Fig. 16. Example Event Tree Analysis 
+Fig. 16 demonstrates the layered defense that an organization employs to prevent malicious 
+code from being used to exﬁltrate data. For each condition, the analyst considers a Boolean 
+(i.e., true or false) answer. The analyst then follows through each iterative outcome until an end 
+result is reached. This analysis can be performed in a qualitative way (using the yes or no 
+conditions), or a probability could be calculated for each scenario. In Fig. 16, the probability is 
+calculated based on whether the attack was prevented (Yes) or if the attack was successful (No). 
+Since each branch of the tree represents a binary option, the sum of the two probabilities is 
+always equal to 100 % (or 1.00 in decimal format). In this example, the calculated probabilities 
+provide information about the potential success (or failure) of risk response. The resulting 
+probability (Pr values in the example below) is multiplied by the anticipated ﬁnancial loss of the 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+56 
+scenario. In the tree below, if the anticipated loss of sensitive data being exﬁltrated is $1.4 
+million, then there is a $205,100 risk exposure ($1.4 million x.1463). 
+The Event Tree Analysis of the cascading events illustrates the various countermeasures 
+available and the calculated percentage of the success of each defense. A qualitative approach 
+would still describe the Yes/No conditions and outcomes but would not include speciﬁc 
+probabilities of each branch. While such an analysis might be less helpful than a quantitative 
+approach, it would still provide meaningful information about potential harmful impacts to the 
+organization and the sequence of events leading to those consequences. 
+2.3.2.4. Monte Carlo Simulation 
+While expert judgement is valuable in estimating risk parameters, one way to reduce 
+subjectivity is to supplement that judgement using simulation models. For example, using the 
+Monte Carlo method, the above parameters could be modeled repeatedly (perhaps several 
+hundred thousand cycles) to help account for the many random variables inherent in 
+cybersecurity risks. Simulation is not always necessary, but with the variables for considering 
+likelihood and impact values (based on the factors described in Sec.2.2), randomly sampled 
+probabilities can help identify a range of possible values.
+33
+33 An example implementation of a Monte Carlo analysis is available from NIST’s Engineering Lab at https://www.nist.gov/services-
+resources/software/monte-car lo-tool. 
+ The results of such a simulation can 
+be plotted on a graph or distribution to facilitate a visual understanding, such as shown in Fig. 
+17. 
+ 
+Fig. 17. Illustration of a histogram from a Monte Carlo estimation simulation 
+For example, when calculating the ﬁnancial impact of the attack on the payroll system (from the 
+example above), practitioners can use a simulation model to consider the most likely range 
+between the low value ($1.7 million) and the high value ($2.4 million). The result of this 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+57 
+simulation could be recorded as a histogram that records the frequency at which certain 
+random values occurred, in this case resulting in a simulated estimated impact of $2 million. 
+2.3.2.5. Bayesian Analysis 
+While there is value in using expert judgement to help estimate risk parameters, it might be 
+improved based on information known from prior events, and the results may represent a more 
+objective determination. For example, if the organization has identiﬁed that several critical 
+software vulnerabilities have remained uncorrected, there is an increased likelihood that a 
+threat actor will be able to exploit a software vulnerability to successfully gain access to the 
+enterprise and exﬁltrate valuable data. Bayesian analysis describes methods for considering 
+conditional probability – applying a distribution model and a set of known prior data to help 
+estimate the probability of a future outcome.34
+34 Application and usage of Bayesian analysis is outside of the scope of this document but is included here as a valid quantitative means for 
+performing risk analysis estimation. 
+ 
+While an SME might render an opinion regarding how likely a breach might be, that opinion can 
+be improved by what the enterprise risk managers already know about the success of previous 
+attempts by others or about the success of adversaries in similar enterprises. Prior knowledge, 
+drawn from internal observations and events at similar organizations can be of signiﬁcant value 
+for improving the accuracy and reliability of estimates, such as those for determining the 
+likelihood of an impactful event or for estimating the impact of that uncertainty on the 
+enterprise objectives. Similar methods can be used to estimate whether several conditions 
+might occur (joint probability) or that certain conditions would occur given other external 
+variables (marginal probability). 
+ Determination and Documentation of Risk Exposure 
+Once the probability that an impactful event will occur has been determined and the most 
+probable impact of such an occurrence has been calculated, the information is recorded in the 
+risk register. Fig. 18 shows how an organization can record this information. 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+58 
+ 
+Fig. 18. Example quantitative analysis results 
+Fig. 19 provides an illustration of similar information in a qualitative manner. 
+ 
+Fig. 19. Example qualitative analysis results 
+In this example, internal SMEs feel that the likelihood of an attack on the organization’s mobile 
+banking application is high. A survey of the SMEs reﬂects their determination that the impact to 
+the organization if customers experience such an event would be high based on customers’ 
+perception that the application lacked suﬃcient security protections. In this case, the 
+practitioner would use the enterprise assessment scale for determining qualitative risk, such as 
+the application of Table I-2, Assessment Scale – Level of Risk (Combination of Likelihood and 
+Impact), from SP 800-30, Revision 1. Based on that table, an event with a high likelihood and 
+high impact would be ranked as a high exposure. As an example, this decision would help 
+inform the selection of strong user authentication and encryption controls. 
+Risk priority is described in IR 8286B and will be determined based on mission objectives, 
+enterprise strategy, and the results of comprehensive risk identiﬁcation and analysis activities. 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+59 
+3. Conclusion 
+The use of the methods and templates described in this report supports eﬀective 
+communication and coordination of ERM and CSRM activities. As described in IR 8286, 
+understanding the expectations of senior leaders and business managers regarding risk is a key 
+input for managing cybersecurity risk at the business and system levels. This is reﬂected by 
+including the determination of enterprise risk appetite and organizational risk tolerance among 
+the ﬁrst tasks in both the Cybersecurity Framework and the NIST Risk Management Framework. 
+Once these expectations have been deﬁned and communicated, practitioners can use various 
+methods to ensure that risk is managed to stay within the limits articulated. They do this by 
+identifying potential risks (as described in Sec.2.2), estimating the probability that an impactful 
+event will occur, calculating the potential harm to the enterprise after such an event, and 
+analyzing the actual risk exposure (the product of likelihood and impact). 
+Industry practitioners have demonstrated that applying risk analysis techniques like those 
+described in Sec.2.3 can be helpful for identifying, responding to, and monitoring enterprise 
+cybersecurity risk. While statistical analysis has been available for hundreds of years, many 
+within the CSRM community have only recently recognized the value of applying a more 
+quantitative approach to risk estimation. It seems likely that those in the CSRM domain will 
+continue to develop and improve statistical methods to estimate risk and include guidance 
+regarding the application of various statistical distribution models. 
+Responses to previous requests for information have indicated that enterprise risk managers 
+desire increased rigor in the manner in which risk identiﬁcation, analysis, and reporting are 
+performed. This publication is designed to provide guidance and to further conversations 
+regarding ways to improve CSRM and the coordination of CSRM with ERM. Subsequent 
+publications in this series will describe improvements to the manner in which risk scenarios are 
+prioritized, treated, and reported. Through the IR 8286 series publications, Cybersecurity 
+Framework 2.0 program, and others, NIST continues to collaborate with public- and private-
+sector communities to address methods for improving the integration and coordination of ERM 
+and CSRM. 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+60 
+References 
+[1] Quinn SD, Chua J, Ivy N, Gardner RK, Kent K, Smith MC, Witte GA (2025) Integrating 
+Cybersecurity and Enterprise Risk Management (ERM). (National Institute of Standards 
+and Technology, Gaithersburg, MD), NIST Interagency Report (IR) NIST IR 8286r1. 
+https://doi.org/10.6028/NIST.IR.8286r1 
+[2] Quinn SD, Ivy N, Barrett M, Witte GA, Gardner RK (2025) Prioritizing Cybersecurity Risk 
+for Enterprise Risk Management. (National Institute of Standards and Technology, 
+Gaithersburg, MD), NIST Interagency Report (IR) NIST IR 8286B-upd1. 
+https://doi.org/10.6028/NIST.IR.8286B-upd1
+ 
+[3] Quinn SD, Ivy N, Barrett M, Gardner RK, Smith MC, Witte GA (2025) Staging 
+Cybersecurity Risks for Enterprise Risk Management and Governance Oversight. 
+(National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency 
+Report (IR) NIST IR 8286Cr1. https://doi.org/10.6028/NIST.IR.8286Cr1
+ 
+[4] Quinn SD, Ivy N, Chua J, Barrett M, Feldman L, Topper D, Witte GA, Gardner RK (2025) 
+Using Business Impact Analysis to Inform Risk Prioritization and Response. (National 
+Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency Report (IR) 
+NIST IR 8286D-upd1. Includes updates as of February 26, 2025. 
+https://doi.org/10.6028/NIST.IR.8286D-upd1 
+[5] Oﬃce of Management and Budget (2016) OMB Circular No. A-123, Management’s 
+Responsibility for Enterprise Risk Management and Internal Control. (The White House, 
+Washington, DC), OMB Memorandum M-16-17, July 15, 2016. Available at 
+https://trumpwhitehouse.archives.gov/sites/whitehouse.gov/ﬁles/omb/memoranda/20
+16/m-16-17.pdf 
+[6] Oﬃce of Management and Budget (2016) OMB Circular No. A-130, Managing 
+Information as a Strategic Resource. (The White House, Washington, DC), OMB Circular 
+No. A-130, July 28, 2016. Available at 
+https://trumpwhitehouse.archives.gov/sites/whitehouse.gov/ﬁles/omb/circulars/A130/a
+130revised.pdf 
+[7] International Organization for Standardization (ISO) (2018) Risk management— 
+Guidelines. ISO 31000:2018. Available at https://www.iso.org/standard/65694.html 
+[8] National Institute of Standards and Technology (2024) The NIST Cybersecurity 
+Framework (CSF) 2.0. (National Institute of Standards and Technology, Gaithersburg, 
+MD), NIST Cybersecurity White Paper (CSWP) NIST CSWP 29. 
+https://doi.org/10.6028/NIST.CSWP .29
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+61 
+[9] Joint Task Force Transformation Initiative (2012) Guide for Conducting Risk Assessments. 
+(National Institute of Standards and Technology, Gaithersburg, MD), NIST Special 
+Publication (SP) 800-30, Rev. 1. https://doi.org/10.6028/NIST.SP .800-30r1 
+[10] Oﬃce of Management and Budget (2019) OMB Memorandum M-19-03, Strengthening 
+the Cybersecurity of Federal Agencies by enhancing the High Value Asset Program. (The 
+White House, Washington, DC), OMB Memorandum M-19-03, December 10, 2018. 
+Available at 
+https://trumpwhitehouse.archives.gov/wp-content/uploads/2018/12/M-19-
+03.pdf 
+[11] National Institute of Standards and Technology (2025) Security Content Automation 
+Protocol. Available at https://csrc.nist.gov/projects/security-content-automation-
+protocol 
+[12] Software Engineering Institute (2007) Introducing OCTAVE Allegro: Improving the 
+Information Security Risk Assessment Process. (Software Engineering Institute, 
+Pittsburgh, PA), Technical Report CMU/SEI-2007-TR-012. Available at 
+https://resources.sei.cmu.edu/asset_ﬁles/TechnicalReport/2007_005_001_14885.pdf
+ 
+[13] Joint Task Force (2020) Security and Privacy Controls for Information Systems and 
+Organizations. (National Institute of Standards and Technology, Gaithersburg, MD), NIST 
+Special Publication (SP) 800-53, Rev. 5. Includes updates as of December 10, 2020. 
+https://doi.org/10.6028/NIST.SP .800-53r5
+ 
+[14] Joint Task Force (2022) Assessing Security and Privacy Controls in Information Systems 
+and Organizations. (National Institute of Standards and Technology, Gaithersburg, MD), 
+NIST Special Publication (SP) 800-53A, Rev. 5. https://doi.org/10.6028/NIST .SP .800-53Ar5 
+[15] International Electrotechnical Commission (IEC) (2019) Risk management – Risk 
+assessment techniques. IEC 31010:2019. Available at 
+https://www.iso.org/standard/72140.html
+ 
+[16] The Open Group (2021) Risk Taxonomy (O-RT), Version 3.0.1 (OpenFAIR). Available at 
+https://publications.opengroup.org/standards/open-fair-standards/c20b 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+62 
+Appendix A. List of Symbols, Abbreviations, and Acronyms 
+Selected acronyms and abbreviations used in this paper are deﬁned below. 
+AI 
+Artiﬁcial Intelligence 
+AIS 
+Automated Indicator Sharing 
+ALE 
+Annualized Loss Expectancy 
+APT 
+Advanced Persistent Threat 
+AWARE 
+Agency-Wide Adaptive Risk Enumeration 
+BIA 
+Business Impact Analysis 
+BOD 
+Binding Operational Directive 
+C-SCRM 
+Cybersecurity Supply Chain Risk Management 
+CAP 
+Corrective Action Plan 
+CDM 
+Continuous Diagnostics and Mitigation 
+CI 
+Conﬁdence Interval 
+CISA 
+Cybersecurity & Infrastructure Security Agency 
+CISCP 
+Cyber Information Sharing and Collaboration Program 
+CISO 
+Chief Information Security Oﬃcer 
+CMDB 
+Conﬁguration Management Database 
+CSF 
+Cybersecurity Framework 
+CSRM 
+Cybersecurity Risk Management 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+63 
+CSRR 
+Cybersecurity Risk Register 
+CSS 
+Central Security Service 
+CSV 
+Comma Separated Values 
+CTI 
+Cyber Threat Intelligence 
+DCISE 
+DoD-Defense Industrial Base Collaborative Information Sharing Environment 
+DHS 
+Department of Homeland Security 
+DIB 
+Defense Industrial Base 
+ERM 
+Enterprise Risk Management 
+ERP 
+Enterprise Risk Proﬁle 
+ERR 
+Enterprise Risk Register 
+ETA 
+Event Tree Analysis 
+EV 
+Expected Value 
+FITARA 
+Federal Information Technology Acquisition Reform Act 
+HVA 
+High Value Asset 
+IDS 
+Intrusion Detection Systems 
+IEC 
+International Electrotechnical Commission 
+IoC 
+Indicators of Compromise 
+IR 
+Interagency Report 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+64 
+ISAC 
+Information Sharing and Analysis Center 
+ISAO 
+Information Sharing and Analysis Organization 
+ISO 
+International Organization for Standardization 
+ISRM 
+Information Security Risk Management 
+ITAM 
+Information Technology Asset Management 
+ITL 
+Information Technology Laboratory 
+JSON 
+JavaScript Object Notation 
+KPI 
+Key Performance Indicator 
+KRI 
+Key Risk Indicator 
+LEF 
+Loss Event Frequency 
+NCCIC 
+National Cybersecurity and Communications Integration Center 
+NCP 
+National Checklist Program 
+NIST 
+National Institute of Standards and Technology 
+NSA 
+National Security Agency 
+NTCTF 
+NSA/CSS Technical Cyber Threat Framework 
+NVD 
+National Vulnerability Database 
+O-RT 
+Open Group Standard for Risk Taxonomy 
+OLIR 
+Online Informative References 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+65 
+OMB 
+Oﬃce of Management and Budget 
+OpenFAIR 
+Open Factor Analysis of Information Risk 
+ORRF 
+Open Risk Register Format 
+OT 
+Operational Technology 
+POA&M 
+Plan of Actions & Milestones 
+PoC 
+Point of Care 
+RDR 
+Risk Detail Record 
+SCAP 
+Security Content Automation Protocol 
+SIEM 
+Security Incident Event Monitoring 
+SLE 
+Single Loss Expectancy 
+SME 
+Subject Matter Expert 
+SP 
+Special Publication 
+STIX 
+Structured Threat Information Expression 
+SWOT 
+Strength, Weakness, Opportunity, and Threat  
+TEF 
+Threat Event Frequency 
+TTP 
+Tactics, Techniques, and Procedures 
+VPN 
+Virtual Private Network 
+ 
+ 
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+66 
+Appendix B. Notional Example of a Risk Detail Record (RDR) 
+NIST IR 8286 recommends use of a risk detail record, or RDR. As shown in the following notional 
+example, an RDR may help provide information regarding each risk, relevant stakeholders, date 
+and schedule considerations, and planned activities. JSON-based digital expressions of the CSRR 
+and RDR notional template, with examples, are available from the NIST Computer Security 
+Resource Center. 
+Table 10. Notional risk detail record 
+Notional Risk Detail Record 
+Risk ID Number(s)  
+System Aﬀected:  
+Organization or business unit:   
+Risk Scenario Description  
+Asset(s) Aﬀected  
+Threat Source(s) / Actor(s)  
+(with intent? with motivation?) 
+ 
+Threat Vector(s)  
+Threat Event(s)  
+Vulnerability / Predisposing 
+Conditions 
+ 
+Primary Adverse Impact (be sure to 
+reconcile impact vs consequences) 
+ 
+Secondary Adverse Impact(s)  
+Other scenario details  
+Risk Category  
+Current Risk Analysis  
+Likelihood before controls (%):  
+ 
+Impact before controls ($): 
+ 
+Exposure Rating before controls 
+($):  
+Planned Residual Risk Response Select all that apply: □ Accept □ Avoid □ Transfer □ Mitigate 
+Planned Risk Response Description  
+Resource Requirements for Planned 
+Risk Response 
+ 
+Planned Response Cost ($)   
+Likelihood after controls will be (%): Impact ($):  Expected Exposure Rating ($):  
+Residual Risk Response as 
+Implemented 
+Actual Response Cost ($): 
+After controls are in place, measured 
+Likelihood is (%):  
+Impact ($):  
+ 
+Final Exposure Rating ($):  
+ 
+Risk owner / point of contact  
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+67 
+Date of risk identiﬁcation  
+Source of risk information  
+Current status date  
+Dependencies  
+Follow-up date  
+Comments  
+NIST IR 8286Ar1  Identifying and Estimating  
+December 2025  Cybersecurity Risk for ERM 
+68 
+Appendix C. Change Log 
+In July 2025, the following changes were made to the report: 
+• All —  Made minor editorial changes throughout the report to implement the current IR 
+template. 
+• All —  Updated all Cybersecurity Framework (CSF) references and excerpts throughout 
+the report from version 1.1 to version 2.0. 
+• Executive Summary and Section 1 —  Added a brief description of IR 8286D to the list of 
+IR 8286 series publications. 
+• Section 1.1 —  Updated footnote 4 to reference SP 800-221 and SP 800-221A. 
+• Section 2.2.1.1 —  Expanded the business impact analysis (BIA) discussion to point 
+readers to IR 8286D for additional information. 
+• Section 2.2.1.2 —  Added a paragraph on high-value assets at non-federal enterprises. 
+• Section 2.2.2.4 —  Updated and reorganized Table 6 to follow the structure and content 
+of CSF version 2.0. 
+• Section 2.3.1 —  Updated quote from the Open Group Standard for Risk Taxonomy to 
+reﬂect the current version (3.0.1 instead of 2.0). 
+• References —  Updated references to reﬂect current versions and URLs. 
+ 

@@ -1,0 +1,2 @@
+import fs from 'node:fs';import {createHash} from 'node:crypto';
+const q='artifacts/qa/domain-5-completion/',p=q+'visual-review-log.json',a=JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,''));for(let n=23;n<=45;n++){const f='review-sheet-'+String(n).padStart(3,'0')+'.png';if(!a.some(r=>r.path===f))a.push({path:f,sha256:createHash('sha256').update(fs.readFileSync(q+f)).digest('hex'),review:'Agent contact-sheet inspection completed; no new clipping, grouping or feedback defects observed.'})}fs.writeFileSync(p,JSON.stringify(a,null,2));

@@ -1,3 +1,4 @@
+import {domain5Storyboard} from './domain5-storyboard.js';
 import { element, localize } from './dom.js';
 import { renderSlide } from './renderers.js';
 import {domain4Storyboard} from './domain4-storyboard.js';
@@ -96,7 +97,7 @@ export function renderLessonInfo(host, { lesson, language = 'en', onClose = () =
     panel.append(explanations);
   }
   // Limit Domain 3 explanations to its reviewed lessons; preserve existing D1/D2 paths.
-  if ((lesson.domainId === 2 || (lesson.domainId === 4 && domain4Storyboard.some(x=>x.id===lesson.id)) || (lesson.domainId === 3 && ['lesson-d3-01-roles-provisioning','lesson-d3-02-review-deprovisioning','lesson-d3-03-iam-frameworks-tools','lesson-d3-06-mfa-authentication-signals','lesson-d3-05-access-control-models','lesson-d3-04-least-privilege-sod'].includes(lesson.id))) && Array.isArray(lesson.slides) && lesson.slides.length > 0) {
+  if ((lesson.domainId === 2 || (lesson.domainId === 5 && domain5Storyboard.some(x=>x.id===lesson.id)) || (lesson.domainId === 4 && domain4Storyboard.some(x=>x.id===lesson.id)) || (lesson.domainId === 3 && ['lesson-d3-01-roles-provisioning','lesson-d3-02-review-deprovisioning','lesson-d3-03-iam-frameworks-tools','lesson-d3-06-mfa-authentication-signals','lesson-d3-05-access-control-models','lesson-d3-04-least-privilege-sod'].includes(lesson.id))) && Array.isArray(lesson.slides) && lesson.slides.length > 0) {
     const d2Explanations = element(doc, 'details', 'learning-info-source-explanations');
     d2Explanations.append(element(doc, 'summary', 'learning-info-details-summary', `Slides 1–${lesson.slides.length} — Full explanations`));
     for (const [index, slide] of lesson.slides.entries()) {

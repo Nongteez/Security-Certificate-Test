@@ -1,0 +1,168 @@
+{
+ "metadata": {
+  "schemaVersion": 1,
+  "id": "lesson-d5-09-configuration-change",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 5,
+  "primaryObjectiveId": "5.4",
+  "objectiveIds": [
+   "5.4"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+   "en": "Secure Configuration & Controlled Change",
+   "th": "การตั้งค่าปลอดภัยและควบคุมการเปลี่ยน"
+  },
+  "synopsis": {
+   "en": "Drift is a difference to investigate, not automatic proof of attack.",
+   "th": "Drift คือความต่างที่ต้องตรวจ ไม่ใช่หลักฐานโจมตีอัตโนมัติ"
+  },
+  "outcomes": [
+   {
+    "en": "Compare actual settings with an approved baseline.",
+    "th": "เทียบค่าจริงกับ Baseline ที่อนุมัติ"
+   },
+   {
+    "en": "Patch decisions need exposure and impact.",
+    "th": "การตัดสิน Patch ต้องดู Exposure และผลกระทบ"
+   },
+   {
+    "en": "A change needs a reason, owner and reviewable result.",
+    "th": "การเปลี่ยนต้องมีเหตุผล เจ้าของ และผลที่ตรวจได้"
+   },
+   {
+    "en": "Urgency changes the route, not accountability.",
+    "th": "ความเร่งด่วนเปลี่ยนเส้นทาง ไม่ยกเลิกความรับผิดชอบ"
+   }
+  ],
+  "prerequisites": [
+   {
+    "en": "Recommended: earlier lessons in this objective; no vendor commands are required.",
+    "th": "แนะนำให้อ่านบทก่อนหน้าในวัตถุประสงค์เดียวกัน ไม่จำเป็นต้องรู้คำสั่งเฉพาะผู้ผลิต"
+   }
+  ],
+  "assets": [],
+  "references": [
+   {
+    "id": "isc2-outline",
+    "title": "ISC2 CC September 2026 official exam outline and AI guidance",
+    "authority": "official-scope",
+    "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+    "locator": "Effective September 1, 2026. Domain 5 and separate AI guidance. Retrieved 2026-11-03; archived outline text in QA evidence."
+   },
+   {
+    "id": "d5-notes",
+    "title": "Domain 5.md",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/Domain 5.md",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "d5-summary",
+    "title": "D5 sum.md",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/D5 sum.md",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "d5-master",
+    "title": "D5 surm.md",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/D5 surm.md",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "d5-transcript",
+    "title": "DOMAIN 5.txt",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/DOMAIN 5.txt",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "sanitization",
+    "title": "NIST SP 800-88r2",
+    "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final",
+    "locator": "Media-specific sanitization and verification; supplement to course.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "ir",
+    "title": "NIST SP 800-61r3",
+    "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+    "locator": "Incident response integrated with CSF 2.0; six course activities are a teaching decomposition, not a verbatim current NIST phase list.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "pqc",
+    "title": "NIST FIPS 203",
+    "url": "https://csrc.nist.gov/pubs/fips/203/final",
+    "locator": "ML-KEM establishes a shared secret; does not encrypt bulk application data. Supplement filling required quantum-resistant coverage.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "config",
+    "title": "NIST SP 800-128",
+    "url": "https://csrc.nist.gov/pubs/sp/800/128/upd1/final",
+    "locator": "Approved baseline, security impact analysis and configuration change control.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "testing",
+    "title": "NIST SP 800-115",
+    "url": "https://csrc.nist.gov/pubs/sp/800/115/final",
+    "locator": "Assessment planning, rules of engagement, testing limits and reporting.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "attack",
+    "title": "MITRE ATT&CK",
+    "url": "https://attack.mitre.org/",
+    "locator": "Tactics are adversary goals; techniques are methods. Not a mandatory chronological chain.",
+    "authority": "technical-primary"
+   }
+  ],
+  "slideOrder": [
+   "slide-d5-09-01-baseline-drift",
+   "slide-d5-09-02-patch-risk",
+   "slide-d5-09-03-controlled-change",
+   "slide-d5-09-04-emergency-rollback",
+   "slide-d5-09-05-decision"
+  ],
+  "scenarioAnswer": 1,
+  "review": {
+   "reviewedRevision": "1",
+   "evidencePath": "docs/plans/isc2-cc-2026/domain-5-academic-audit.md",
+   "technical": {
+    "status": "approved",
+    "reviewer": "Codex agent review; human acceptance pending",
+    "reviewedAt": "2026-11-03"
+   },
+   "bilingual": {
+    "status": "approved",
+    "reviewer": "Codex agent review; human acceptance pending",
+    "reviewedAt": "2026-11-03"
+   },
+   "rights": {
+    "status": "approved",
+    "reviewer": "Codex agent review; human acceptance pending",
+    "reviewedAt": "2026-11-03"
+   }
+  }
+ }
+}
+
+{"id":"slide-d5-09-01-baseline-drift","title":{"en":"Compare actual settings with an approved baseline.","th":"เทียบค่าจริงกับ Baseline ที่อนุมัติ"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Drift is a difference to investigate, not automatic proof of attack.","th":"Drift คือความต่างที่ต้องตรวจ ไม่ใช่หลักฐานโจมตีอัตโนมัติ"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Desired state","th":"สถานะที่ต้องการ"},{"en":"Approved hardened configuration","th":"ค่าปลอดภัยที่อนุมัติ"},{"en":"Tailor and test for the service","th":"ปรับและทดสอบให้เหมาะบริการ"}],[{"en":"Observed state","th":"สถานะที่พบ"},{"en":"Actual settings and versions","th":"ค่าและ Version ที่ใช้จริง"},{"en":"Audit with trustworthy evidence","th":"ตรวจด้วยหลักฐานน่าเชื่อถือ"}],[{"en":"Disposition","th":"การจัดการ"},{"en":"Investigate, remediate or approve exception","th":"ตรวจ แก้ หรืออนุมัติ Exception"},{"en":"Update records through control","th":"ปรับบันทึกผ่านการควบคุม"}]]},{"kind":"text","text":{"en":"Configuration management maintains approved system states. A security baseline defines expected settings such as required logging, restricted management access and disabled unnecessary services. Tailor standards and vendor guidance to business needs and test compatibility. Drift is a difference between actual and approved state; it may reflect an undocumented authorized change, error or misuse. Investigate before changing a critical system blindly. Remediate through approved procedures or record an authorized exception and update the baseline when justified.","th":"Configuration Management ดูแลสถานะที่อนุมัติ Security Baseline กำหนดค่าที่คาด เช่น Logging ที่ต้องมี จำกัดสิทธิ์ดูแล และปิดบริการไม่จำเป็น ปรับมาตรฐานกับคำแนะนำ Vendor ให้เหมาะธุรกิจและทดสอบ Drift คือความต่างระหว่างค่าจริงกับค่าที่อนุมัติ อาจมาจากเปลี่ยนที่อนุญาตแต่ไม่บันทึก ความผิดพลาด หรือใช้ผิด ต้องตรวจก่อนเปลี่ยนระบบสำคัญแบบไม่รู้ แก้ผ่านขั้นตอนหรือบันทึก Exception ที่อนุมัติ และปรับ Baseline เมื่อมีเหตุผล"}},{"kind":"list","items":[{"en":"NIST SP 800-128 is security-focused configuration-management guidance, not merely a network-device settings checklist.","th":"NIST SP 800-128 เป็นแนวทาง Security-Focused Configuration Management ไม่ใช่เพียง Checklist ตั้งค่าอุปกรณ์ Network"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"NIST SP 800-128 is security-focused configuration-management guidance, not merely a network-device settings checklist.","th":"NIST SP 800-128 เป็นแนวทาง Security-Focused Configuration Management ไม่ใช่เพียง Checklist ตั้งค่าอุปกรณ์ Network"},"sourceLocator":"S57–S58/S60–S61; Domain 5.md §10; NIST SP 800-128","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","config"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Compare actual settings with an approved baseline. Compare actual settings with an approved baseline. Drift is a difference to investigate, not automatic proof of attack. Desired state Approved hardened configuration Tailor and test for the service Observed state Actual settings and versions Audit with trustworthy evidence Disposition Investigate, remediate or approve exception Update records through control Use the mechanism that matches the stated security need.","th":"เทียบค่าจริงกับ Baseline ที่อนุมัติ เทียบค่าจริงกับ Baseline ที่อนุมัติ Drift คือความต่างที่ต้องตรวจ ไม่ใช่หลักฐานโจมตีอัตโนมัติ สถานะที่ต้องการ ค่าปลอดภัยที่อนุมัติ ปรับและทดสอบให้เหมาะบริการ สถานะที่พบ ค่าและ Version ที่ใช้จริง ตรวจด้วยหลักฐานน่าเชื่อถือ การจัดการ ตรวจ แก้ หรืออนุมัติ Exception ปรับบันทึกผ่านการควบคุม เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-09-02-patch-risk","title":{"en":"Patch decisions need exposure and impact.","th":"การตัดสิน Patch ต้องดู Exposure และผลกระทบ"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Identify → assess → test → deploy → verify is a useful teaching workflow.","th":"Identify → Assess → Test → Deploy → Verify เป็นแนวทางเรียนที่ใช้ได้"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Identify and assess","th":"ระบุและประเมิน"},{"en":"Affected versions, exploit activity and criticality","th":"Version ที่กระทบ การโจมตี และความสำคัญ"},{"en":"A severity score alone is insufficient","th":"คะแนนรุนแรงอย่างเดียวไม่พอ"}],[{"en":"Test and deploy","th":"ทดสอบและติดตั้ง"},{"en":"Check compatibility and approved rollout","th":"ตรวจการทำงานร่วมและแผนติดตั้ง"},{"en":"Use urgent procedures when warranted","th":"ใช้ขั้นตอนเร่งด่วนเมื่อเหมาะสม"}],[{"en":"Verify","th":"ตรวจผล"},{"en":"Confirm remediation and service health","th":"ยืนยันแก้ไขและสถานะบริการ"},{"en":"Installation success is not the whole result","th":"ติดตั้งสำเร็จไม่ใช่ผลทั้งหมด"}]]},{"kind":"text","text":{"en":"Patch management identifies applicable fixes, assesses risk, tests, deploys and verifies results. Prioritize with affected inventory, exposure, business criticality and evidence of exploitation, not only the highest score. Balance the risk of delay against the risk of service disruption and use approved emergency procedures when necessary. Verify the new version or effective mitigation and test critical functions after deployment. A scanner finding is not itself remediation, and remediation may involve configuration changes, replacement or other mitigation when a patch is unavailable.","th":"Patch Management ระบุ Fix ที่ใช้ได้ ประเมิน ทดสอบ ติดตั้ง และตรวจผล จัดลำดับด้วย Inventory, Exposure ความสำคัญ และหลักฐานโจมตี ไม่ใช่คะแนนสูงสุดอย่างเดียว ชั่งความเสี่ยงรอกับบริการหยุด และใช้ขั้นตอนฉุกเฉินที่อนุมัติเมื่อจำเป็น หลังติดตั้งตรวจ Version หรือผล Mitigation และทดสอบหน้าที่สำคัญ Scanner พบไม่ได้แปลว่าแก้แล้ว การแก้อาจเป็นเปลี่ยนค่า เปลี่ยนระบบ หรือ Mitigation อื่นเมื่อไม่มี Patch"}},{"kind":"list","items":[{"en":"An automated deployment tool still needs controlled permissions, staged rollout and verification. Automation can repeat a mistake rapidly across many assets.","th":"เครื่องมือติดตั้งอัตโนมัติยังต้องจำกัดสิทธิ์ แบ่งช่วง และตรวจผล Automation อาจทำความผิดซ้ำเร็วทั่วหลายทรัพย์สิน"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"An automated deployment tool still needs controlled permissions, staged rollout and verification. Automation can repeat a mistake rapidly across many assets.","th":"เครื่องมือติดตั้งอัตโนมัติยังต้องจำกัดสิทธิ์ แบ่งช่วง และตรวจผล Automation อาจทำความผิดซ้ำเร็วทั่วหลายทรัพย์สิน"},"sourceLocator":"S59–S61; Domain 5.md §10.4; D5 surm.md §31","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","config"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Patch decisions need exposure and impact. Patch decisions need exposure and impact. Identify → assess → test → deploy → verify is a useful teaching workflow. Identify and assess Affected versions, exploit activity and criticality A severity score alone is insufficient → Test and deploy Check compatibility and approved rollout Use urgent procedures when warranted → Verify Confirm remediation and service health Installation success is not the whole result Use the mechanism that matches the stated security need.","th":"การตัดสิน Patch ต้องดู Exposure และผลกระทบ การตัดสิน Patch ต้องดู Exposure และผลกระทบ Identify → Assess → Test → Deploy → Verify เป็นแนวทางเรียนที่ใช้ได้ ระบุและประเมิน Version ที่กระทบ การโจมตี และความสำคัญ คะแนนรุนแรงอย่างเดียวไม่พอ → ทดสอบและติดตั้ง ตรวจการทำงานร่วมและแผนติดตั้ง ใช้ขั้นตอนเร่งด่วนเมื่อเหมาะสม → ตรวจผล ยืนยันแก้ไขและสถานะบริการ ติดตั้งสำเร็จไม่ใช่ผลทั้งหมด เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-09-03-controlled-change","title":{"en":"A change needs a reason, owner and reviewable result.","th":"การเปลี่ยนต้องมีเหตุผล เจ้าของ และผลที่ตรวจได้"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Control how systems move from one approved state to another.","th":"ควบคุมการย้ายจากสถานะอนุมัติหนึ่งไปอีกสถานะ"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Request and assess","th":"ขอและประเมิน"},{"en":"Purpose, scope, dependencies and risk","th":"วัตถุประสงค์ ขอบเขต การพึ่งพา เสี่ยง"},{"en":"Include data-handling impacts","th":"รวมผลต่อการจัดการข้อมูล"}],[{"en":"Authorize and test","th":"อนุมัติและทดสอบ"},{"en":"Appropriate authority and evidence","th":"ผู้มีอำนาจและหลักฐานเหมาะสม"},{"en":"Approval does not guarantee success","th":"อนุมัติไม่ได้รับประกันสำเร็จ"}],[{"en":"Implement and verify","th":"ทำและตรวจผล"},{"en":"Bounded rollout, outcomes and record","th":"ทำตามขอบเขต ตรวจผล บันทึก"},{"en":"Update baseline and inventory","th":"ปรับ Baseline และ Inventory"}]]},{"kind":"text","text":{"en":"Change management controls modifications to reduce unexpected outages and security problems. A request identifies what changes, why, who owns it, affected systems, risk, test evidence, implementation and rollback. The appropriate authority approves according to policy; not every change requires the same committee. Implement within scope, verify expected behavior and document the result. Configuration management defines and maintains the desired state; change management governs the transition. Changing an AI model, connector permissions or retention setting can affect security even without installing a new server.","th":"Change Management ควบคุมการปรับเพื่อลดระบบหยุดและปัญหาความปลอดภัย คำขอระบุอะไร ทำไม ใครรับผิดชอบ ระบบที่กระทบ ความเสี่ยง หลักฐานทดสอบ วิธีทำและย้อนกลับ ผู้มีอำนาจอนุมัติตามนโยบาย ไม่ใช่ทุก Change ผ่านคณะเดียวกัน ทำตามขอบเขต ตรวจผล และบันทึก Configuration Management ดูแลสถานะที่ต้องการ ส่วน Change Management กำกับการเปลี่ยน การเปลี่ยน AI Model สิทธิ์ Connector หรือ Retention ก็กระทบ Security โดยไม่ต้องมี Server ใหม่"}},{"kind":"list","items":[{"en":"The sequence can vary under policy: testing may inform approval, and staged authorization may precede risky tests. The important boundary is controlled authority before implementation.","th":"ลำดับอาจต่างตามนโยบาย ทดสอบอาจเป็นข้อมูลก่อนอนุมัติ และอนุมัติเป็นช่วงก่อนทดสอบเสี่ยงได้ สิ่งสำคัญคือมีอำนาจควบคุมก่อนนำไปใช้"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"The sequence can vary under policy: testing may inform approval, and staged authorization may precede risky tests. The important boundary is controlled authority before implementation.","th":"ลำดับอาจต่างตามนโยบาย ทดสอบอาจเป็นข้อมูลก่อนอนุมัติ และอนุมัติเป็นช่วงก่อนทดสอบเสี่ยงได้ สิ่งสำคัญคือมีอำนาจควบคุมก่อนนำไปใช้"},"sourceLocator":"S62–S64; Domain 5.md §11; NIST SP 800-128","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","config"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"A change needs a reason, owner and reviewable result. A change needs a reason, owner and reviewable result. Control how systems move from one approved state to another. Request and assess Purpose, scope, dependencies and risk Include data-handling impacts → Authorize and test Appropriate authority and evidence Approval does not guarantee success → Implement and verify Bounded rollout, outcomes and record Update baseline and inventory Use the mechanism that matches the stated security need.","th":"การเปลี่ยนต้องมีเหตุผล เจ้าของ และผลที่ตรวจได้ การเปลี่ยนต้องมีเหตุผล เจ้าของ และผลที่ตรวจได้ ควบคุมการย้ายจากสถานะอนุมัติหนึ่งไปอีกสถานะ ขอและประเมิน วัตถุประสงค์ ขอบเขต การพึ่งพา เสี่ยง รวมผลต่อการจัดการข้อมูล → อนุมัติและทดสอบ ผู้มีอำนาจและหลักฐานเหมาะสม อนุมัติไม่ได้รับประกันสำเร็จ → ทำและตรวจผล ทำตามขอบเขต ตรวจผล บันทึก ปรับ Baseline และ Inventory เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-09-04-emergency-rollback","title":{"en":"Urgency changes the route, not accountability.","th":"ความเร่งด่วนเปลี่ยนเส้นทาง ไม่ยกเลิกความรับผิดชอบ"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Emergency changes need appropriate authority and follow-up.","th":"Change ฉุกเฉินต้องมีอำนาจเหมาะสมและติดตาม"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Emergency route","th":"เส้นทางฉุกเฉิน"},{"en":"Expedited approval and bounded action","th":"อนุมัติเร่งด่วนและทำจำกัดวง"},{"en":"Record reason and decision","th":"บันทึกเหตุผลและการตัดสิน"}],[{"en":"Rollback","th":"ย้อนกลับ"},{"en":"Define trigger, method and owner","th":"กำหนดเงื่อนไข วิธี และเจ้าของ"},{"en":"Check data and dependency effects","th":"ตรวจผลต่อข้อมูลและการพึ่งพา"}],[{"en":"Post-change review","th":"ทบทวนหลังเปลี่ยน"},{"en":"Verify, document and reconcile","th":"ตรวจผล บันทึก และปรับให้ตรง"},{"en":"Do not hide temporary settings","th":"อย่าปล่อยค่าชั่วคราวโดยไม่ติดตาม"}]]},{"kind":"text","text":{"en":"An emergency procedure allows urgent protective changes with the authorization and evidence required by policy. It does not mean no approval or documentation. Define success and rollback triggers, responsible people and monitoring. Rollback can itself carry risk, especially when data formats or external dependencies change, so validate its feasibility. After the action, record actual outcomes, reconcile temporary settings and complete required review. A time-limited firewall exception should be removed or formally renewed rather than forgotten.","th":"ขั้นตอนฉุกเฉินให้เปลี่ยนป้องกันเร่งด่วนโดยมีอำนาจและหลักฐานตามนโยบาย ไม่ได้หมายถึงไม่ต้องอนุมัติหรือบันทึก กำหนดผลสำเร็จ เงื่อนไขย้อนกลับ ผู้รับผิดชอบ และ Monitoring Rollback เองอาจเสี่ยง โดยเฉพาะเมื่อรูปแบบข้อมูลหรือระบบภายนอกเปลี่ยน ต้องตรวจว่าทำได้ หลังทำบันทึกผลจริง ปรับค่าชั่วคราวให้ตรง และทบทวนตามกำหนด Exception Firewall ที่จำกัดเวลาต้องลบหรืออนุมัติต่อ ไม่ใช่ลืมไว้"}},{"kind":"list","items":[{"en":"Rollback is a planned risk treatment, not a magical undo button. Some changes need forward remediation or data restoration instead.","th":"Rollback เป็นแผนลดความเสี่ยง ไม่ใช่ปุ่ม Undo วิเศษ บาง Change ต้องแก้ไปข้างหน้าหรือกู้ข้อมูลแทน"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"Rollback is a planned risk treatment, not a magical undo button. Some changes need forward remediation or data restoration instead.","th":"Rollback เป็นแผนลดความเสี่ยง ไม่ใช่ปุ่ม Undo วิเศษ บาง Change ต้องแก้ไปข้างหน้าหรือกู้ข้อมูลแทน"},"sourceLocator":"D5 surm.md §32; Domain 5.md §11.2 supplemental rollback","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","config"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Urgency changes the route, not accountability. Urgency changes the route, not accountability. Emergency changes need appropriate authority and follow-up. Emergency route Expedited approval and bounded action Record reason and decision Rollback Define trigger, method and owner Check data and dependency effects Post-change review Verify, document and reconcile Do not hide temporary settings Use the mechanism that matches the stated security need.","th":"ความเร่งด่วนเปลี่ยนเส้นทาง ไม่ยกเลิกความรับผิดชอบ ความเร่งด่วนเปลี่ยนเส้นทาง ไม่ยกเลิกความรับผิดชอบ Change ฉุกเฉินต้องมีอำนาจเหมาะสมและติดตาม เส้นทางฉุกเฉิน อนุมัติเร่งด่วนและทำจำกัดวง บันทึกเหตุผลและการตัดสิน ย้อนกลับ กำหนดเงื่อนไข วิธี และเจ้าของ ตรวจผลต่อข้อมูลและการพึ่งพา ทบทวนหลังเปลี่ยน ตรวจผล บันทึก และปรับให้ตรง อย่าปล่อยค่าชั่วคราวโดยไม่ติดตาม เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-09-05-decision","title":{"en":"A firewall rule differs from the baseline.","th":"Firewall Rule ต่างจาก Baseline"},"rendererId":"interactive","layoutId":"default","blocks":[{"kind":"text","text":{"en":"You are reviewing drift on a critical service. A temporary rule has no matching change record. What next?","th":"คุณตรวจ Drift บริการสำคัญ พบ Rule ชั่วคราวไม่มี Change Record ควรทำอย่างไร"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"A","th":"ก"},{"en":"Update the baseline to match immediately","th":"แก้ Baseline ให้ตรงทันที"},{"en":"Matching the baseline to an unexplained setting hides the deviation without assessing authorization or risk.","th":"แก้ Baseline ตามค่าที่ยังไม่รู้สาเหตุซ่อนความต่างโดยไม่ตรวจสิทธิ์หรือเสี่ยง"}],[{"en":"B","th":"ข"},{"en":"Investigate owner and exposure; remediate through control","th":"ตรวจเจ้าของและ Exposure แล้วแก้ผ่านการควบคุม"},{"en":"This establishes context and supports authorized remediation while considering service impact and urgent exposure.","th":"วิธีนี้หาบริบทและแก้โดยมีอำนาจ พร้อมดูผลบริการและ Exposure เร่งด่วน"}],[{"en":"C","th":"ค"},{"en":"Delete every nonstandard rule at once","th":"ลบทุก Rule นอกมาตรฐานทันที"},{"en":"Broad unreviewed deletion can disrupt required service paths and destroy useful change evidence.","th":"ลบกว้างไม่ทบทวนอาจตัดเส้นทางจำเป็นและทำหลักฐานการเปลี่ยนหาย"}],[{"en":"D","th":"ง"},{"en":"Leave it because temporary rules are normal","th":"ปล่อยเพราะ Rule ชั่วคราวเป็นเรื่องปกติ"},{"en":"A temporary label is not approval or an expiry mechanism; unexplained access remains a risk.","th":"คำว่าชั่วคราวไม่ใช่อนุมัติหรือกลไกหมดอายุ Access ที่อธิบายไม่ได้ยังเสี่ยง"}]]},{"kind":"text","text":{"en":"Compare the rule to approved requirements and check owner, creation context, traffic and exposure. Use the emergency route if active risk warrants urgent correction; otherwise follow the appropriate change process with impact analysis and rollback. Preserve evidence of the unexplained change. Verify the final allowed and denied paths, document the outcome and update the baseline only when the desired state is legitimately approved.","th":"เทียบ Rule กับความต้องการที่อนุมัติ ตรวจเจ้าของ บริบทสร้าง Traffic และ Exposure หากเสี่ยงจริงเร่งด่วนให้ใช้เส้นทางฉุกเฉิน มิฉะนั้นทำตาม Change พร้อมประเมินผลและย้อนกลับ เก็บหลักฐาน Change ที่อธิบายไม่ได้ ตรวจเส้นทางอนุญาตและปฏิเสธหลังแก้ บันทึกผล และปรับ Baseline เฉพาะเมื่อสถานะที่ต้องการได้รับอนุมัติอย่างถูกต้อง"}},{"kind":"list","items":[{"en":"An authorized change can still create drift if records were not updated. Investigating drift distinguishes documentation gaps from unauthorized exposure.","th":"Change ที่อนุญาตยังทำให้ Drift ได้หากไม่ปรับบันทึก การตรวจช่วยแยกช่องว่างเอกสารจาก Exposure ที่ไม่ได้อนุญาต"}]},{"kind":"text","text":{"en":"Choose an action and examine its reason.","th":"เลือกแนวทางแล้วพิจารณาเหตุผลประกอบ"}}],"info":{"en":"An authorized change can still create drift if records were not updated. Investigating drift distinguishes documentation gaps from unauthorized exposure.","th":"Change ที่อนุญาตยังทำให้ Drift ได้หากไม่ปรับบันทึก การตรวจช่วยแยกช่องว่างเอกสารจาก Exposure ที่ไม่ได้อนุญาต"},"sourceLocator":"Original scenario from S57–S64","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","config"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"A firewall rule differs from the baseline. A firewall rule differs from the baseline. You are reviewing drift on a critical service. A temporary rule has no matching change record. What next? A Update the baseline to match immediately B Investigate owner and exposure; remediate through control C Delete every nonstandard rule at once D Leave it because temporary rules are normal Choose an action. Use the facts, role and authority stated in the case. Reset Choose an action and examine its reason.","th":"Firewall Rule ต่างจาก Baseline Firewall Rule ต่างจาก Baseline คุณตรวจ Drift บริการสำคัญ พบ Rule ชั่วคราวไม่มี Change Record ควรทำอย่างไร A แก้ Baseline ให้ตรงทันที B ตรวจเจ้าของและ Exposure แล้วแก้ผ่านการควบคุม C ลบทุก Rule นอกมาตรฐานทันที D ปล่อยเพราะ Rule ชั่วคราวเป็นเรื่องปกติ เลือกแนวทางปฏิบัติ ใช้ข้อเท็จจริง หน้าที่ และอำนาจที่โจทย์ระบุ Reset เลือกแนวทางแล้วพิจารณาเหตุผลประกอบ"}

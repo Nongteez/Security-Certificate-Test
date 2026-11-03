@@ -1,0 +1,782 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d5-05-threat-intelligence",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 5,
+  "primaryObjectiveId": "5.2",
+  "objectiveIds": [
+    "5.2"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Threat Actors & Intelligence",
+    "th": "ผู้ก่อภัยและข่าวกรองภัยคุกคาม"
+  },
+  "synopsis": {
+    "en": "Actor categories overlap; a tool does not identify its operator.",
+    "th": "หมวดผู้ก่อภัยทับซ้อนกันได้ เครื่องมือไม่ยืนยันว่าใครใช้"
+  },
+  "outcomes": [
+    {
+      "en": "Motivation helps frame a threat hypothesis.",
+      "th": "แรงจูงใจช่วยตั้งสมมติฐานภัยคุกคาม"
+    },
+    {
+      "en": "Separate harmful action from proven intent.",
+      "th": "แยกการกระทำเสียหายจากเจตนาที่พิสูจน์แล้ว"
+    },
+    {
+      "en": "Turn indicators into a decision with context.",
+      "th": "เติมบริบทให้ Indicator ใช้ตัดสินใจได้"
+    },
+    {
+      "en": "ATT&CK links goals to observed methods.",
+      "th": "ATT&CK เชื่อมเป้าหมายกับวิธีที่พบจริง"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: earlier lessons in this objective; no vendor commands are required.",
+      "th": "แนะนำให้อ่านบทก่อนหน้าในวัตถุประสงค์เดียวกัน ไม่จำเป็นต้องรู้คำสั่งเฉพาะผู้ผลิต"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 official exam outline and AI guidance",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Effective September 1, 2026. Domain 5 and separate AI guidance. Retrieved 2026-11-03; archived outline text in QA evidence."
+    },
+    {
+      "id": "d5-notes",
+      "title": "Domain 5.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/Domain 5.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-summary",
+      "title": "D5 sum.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/D5 sum.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-master",
+      "title": "D5 surm.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/D5 surm.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-transcript",
+      "title": "DOMAIN 5.txt",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/DOMAIN 5.txt",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "sanitization",
+      "title": "NIST SP 800-88r2",
+      "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final",
+      "locator": "Media-specific sanitization and verification; supplement to course.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "ir",
+      "title": "NIST SP 800-61r3",
+      "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+      "locator": "Incident response integrated with CSF 2.0; six course activities are a teaching decomposition, not a verbatim current NIST phase list.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "pqc",
+      "title": "NIST FIPS 203",
+      "url": "https://csrc.nist.gov/pubs/fips/203/final",
+      "locator": "ML-KEM establishes a shared secret; does not encrypt bulk application data. Supplement filling required quantum-resistant coverage.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "config",
+      "title": "NIST SP 800-128",
+      "url": "https://csrc.nist.gov/pubs/sp/800/128/upd1/final",
+      "locator": "Approved baseline, security impact analysis and configuration change control.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "testing",
+      "title": "NIST SP 800-115",
+      "url": "https://csrc.nist.gov/pubs/sp/800/115/final",
+      "locator": "Assessment planning, rules of engagement, testing limits and reporting.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "attack",
+      "title": "MITRE ATT&CK",
+      "url": "https://attack.mitre.org/",
+      "locator": "Tactics are adversary goals; techniques are methods. Not a mandatory chronological chain.",
+      "authority": "technical-primary"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d5-05-01-actor-motivations",
+      "title": {
+        "en": "Motivation helps frame a threat hypothesis.",
+        "th": "แรงจูงใจช่วยตั้งสมมติฐานภัยคุกคาม"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Actor categories overlap; a tool does not identify its operator.",
+            "th": "หมวดผู้ก่อภัยทับซ้อนกันได้ เครื่องมือไม่ยืนยันว่าใครใช้"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Criminal / state-linked",
+                "th": "อาชญากร / เชื่อมโยงรัฐ"
+              },
+              {
+                "en": "Profit / espionage or strategic goals",
+                "th": "กำไร / จารกรรมหรือเป้าหมายยุทธศาสตร์"
+              },
+              {
+                "en": "Motivations can overlap",
+                "th": "แรงจูงใจอาจทับซ้อน"
+              }
+            ],
+            [
+              {
+                "en": "Hacktivist / extremist",
+                "th": "Hacktivist / กลุ่มสุดโต่ง"
+              },
+              {
+                "en": "Political influence / disruption or fear",
+                "th": "อิทธิพลการเมือง / หยุดชะงักหรือความกลัว"
+              },
+              {
+                "en": "Assess observed actions and impact",
+                "th": "ประเมินการกระทำและผลกระทบจริง"
+              }
+            ],
+            [
+              {
+                "en": "Insider / opportunist",
+                "th": "คนใน / ผู้ฉวยโอกาส"
+              },
+              {
+                "en": "Abuse of trust / curiosity or recognition",
+                "th": "ใช้ความไว้ใจผิด / อยากรู้หรืออยากเด่น"
+              },
+              {
+                "en": "Capability and intent vary",
+                "th": "ความสามารถและเจตนาต่างกัน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Threat actors are individuals or groups responsible for malicious activity. Course examples include criminals seeking money, state-linked actors seeking intelligence, hacktivists pursuing causes, extremists seeking disruption and inexperienced attackers using ready-made tools. These are useful tendencies, not reliable identities inferred from one event. Insiders may exploit legitimate access for money, revenge or ideology. Some harmful insider events are accidental and do not establish malicious intent. Focus on behavior, capability, opportunity and impact; attribution requires more than an IP address or familiar malware name.",
+            "th": "Threat Actor คือบุคคลหรือกลุ่มที่ทำกิจกรรมมุ่งร้าย ตัวอย่างมีอาชญากรหวังเงิน กลุ่มเชื่อมโยงรัฐหาข่าวกรอง Hacktivist ผลักดันอุดมการณ์ กลุ่มสุดโต่งสร้างความเสียหาย และผู้ประสบการณ์น้อยใช้เครื่องมือสำเร็จรูป สิ่งเหล่านี้เป็นแนวโน้ม ไม่ใช่ตัวตนที่สรุปจาก Event เดียว คนในอาจใช้สิทธิ์เพื่อเงิน แก้แค้น หรืออุดมการณ์ แต่เหตุจากคนในบางอย่างเกิดโดยไม่ตั้งใจ ไม่ได้ยืนยันเจตนาร้าย ให้ดูพฤติกรรม ความสามารถ โอกาส และผลกระทบ Attribution ต้องมีมากกว่า IP หรือชื่อ Malware"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "AI-generated phishing can lower the effort needed to produce convincing messages. It does not tell you whether the operator is a criminal, insider or state-linked group.",
+              "th": "Phishing ที่ AI สร้างช่วยลดแรงในการทำข้อความน่าเชื่อ แต่ไม่ได้บอกว่าผู้ใช้เป็นอาชญากร คนใน หรือกลุ่มรัฐ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "AI-generated phishing can lower the effort needed to produce convincing messages. It does not tell you whether the operator is a criminal, insider or state-linked group.",
+        "th": "Phishing ที่ AI สร้างช่วยลดแรงในการทำข้อความน่าเชื่อ แต่ไม่ได้บอกว่าผู้ใช้เป็นอาชญากร คนใน หรือกลุ่มรัฐ"
+      },
+      "sourceLocator": "S38–S39; Domain 5.md §5.1",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "attack"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-05-02-insider-uncertainty",
+      "title": {
+        "en": "Separate harmful action from proven intent.",
+        "th": "แยกการกระทำเสียหายจากเจตนาที่พิสูจน์แล้ว"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An employee can cause exposure through mistake, coercion or misuse.",
+            "th": "พนักงานอาจทำข้อมูลรั่วเพราะพลาด ถูกบังคับ หรือใช้ผิด"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Accidental exposure",
+                "th": "เปิดเผยโดยพลาด"
+              },
+              {
+                "en": "Wrong recipient or unapproved AI upload",
+                "th": "ผู้รับผิดหรือส่ง AI ที่ไม่อนุมัติ"
+              },
+              {
+                "en": "Contain and improve the process",
+                "th": "จำกัดผลและปรับขั้นตอน"
+              }
+            ],
+            [
+              {
+                "en": "Malicious misuse",
+                "th": "จงใจใช้ผิด"
+              },
+              {
+                "en": "Deliberate theft or sabotage",
+                "th": "ขโมยหรือทำลายโดยเจตนา"
+              },
+              {
+                "en": "Preserve evidence; use proper authority",
+                "th": "รักษาหลักฐานและใช้อำนาจที่เหมาะสม"
+              }
+            ],
+            [
+              {
+                "en": "Compromised identity",
+                "th": "ตัวตนถูกยึด"
+              },
+              {
+                "en": "Attacker acts through a valid account",
+                "th": "ผู้โจมตีใช้บัญชีที่มีอยู่"
+              },
+              {
+                "en": "Account name is not proof of actor",
+                "th": "ชื่อบัญชีไม่พิสูจน์ผู้กระทำ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Insider risk concerns trusted access and can include intentional and unintentional harm. The account performing an action may also be compromised, so do not equate a user name with a proven human actor. If an employee sends confidential content to an unapproved AI service, handle the exposure according to policy while determining whether it was a mistake, coercion or deliberate misuse. Limit investigation access, preserve evidence and involve the designated security, HR or legal roles as needed.",
+            "th": "Insider Risk เกี่ยวข้องกับสิทธิ์ที่ได้รับความไว้ใจ และรวมความเสียหายทั้งตั้งใจและไม่ตั้งใจ บัญชีที่ทำงานอาจถูกยึด จึงอย่าเทียบชื่อ User กับคนที่พิสูจน์แล้ว หากพนักงานส่งข้อมูลลับเข้า AI ที่ไม่อนุมัติ ต้องจัดการ Exposure ตามนโยบายพร้อมตรวจว่าเป็นความพลาด ถูกบังคับ หรือจงใจ จำกัดสิทธิ์สอบสวน เก็บหลักฐาน และประสาน Security, HR หรือ Legal ตามหน้าที่ที่กำหนด"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Insider investigations may have additional authority and privacy constraints. Follow established roles instead of conducting an informal investigation.",
+              "th": "การสอบสวนคนในอาจมีข้อจำกัดอำนาจและความเป็นส่วนตัวเพิ่มเติม ต้องทำตามหน้าที่ ไม่สอบสวนเองนอกกระบวนการ"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Insider investigations may have additional authority and privacy constraints. Follow established roles instead of conducting an informal investigation.",
+        "th": "การสอบสวนคนในอาจมีข้อจำกัดอำนาจและความเป็นส่วนตัวเพิ่มเติม ต้องทำตามหน้าที่ ไม่สอบสวนเองนอกกระบวนการ"
+      },
+      "sourceLocator": "S38–S39; D5 surm.md §26; official AI workspace application",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "attack"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-05-03-intelligence-context",
+      "title": {
+        "en": "Turn indicators into a decision with context.",
+        "th": "เติมบริบทให้ Indicator ใช้ตัดสินใจได้"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Cyber threat intelligence is analyzed knowledge, not just a feed.",
+            "th": "CTI คือความรู้ที่วิเคราะห์แล้ว ไม่ใช่แค่ Feed"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Requirements",
+                "th": "ความต้องการ"
+              },
+              {
+                "en": "Which threat decision needs support?",
+                "th": "ต้องสนับสนุนการตัดสินใจเรื่องใด"
+              },
+              {
+                "en": "Define relevant assets and threats",
+                "th": "ระบุทรัพย์สินและภัยที่เกี่ยวข้อง"
+              }
+            ],
+            [
+              {
+                "en": "Analysis",
+                "th": "การวิเคราะห์"
+              },
+              {
+                "en": "Check source, age and confidence",
+                "th": "ตรวจแหล่ง อายุ และความมั่นใจ"
+              },
+              {
+                "en": "Corroborate local observations",
+                "th": "เทียบข้อมูลที่พบในองค์กร"
+              }
+            ],
+            [
+              {
+                "en": "Action and feedback",
+                "th": "ดำเนินการและประเมินกลับ"
+              },
+              {
+                "en": "Hunt, tune, mitigate or escalate",
+                "th": "ค้นหา ปรับ ลดเสี่ยง หรือส่งต่อ"
+              },
+              {
+                "en": "Reassess usefulness and expiry",
+                "th": "ทบทวนประโยชน์และอายุใช้งาน"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "CTI transforms collected threat information into useful knowledge for decisions. An indicator such as a domain, IP, URL, file hash or registry artifact can guide a search, but its meaning depends on time, source confidence and relevance. A shared hosting IP may serve benign and malicious users. Strategic intelligence supports risk decisions; operational intelligence describes campaigns; tactical or technical detail supports detection. These categories are supplemental organizing aids. Use analyzed context to improve decisions and provide feedback about usefulness.",
+            "th": "CTI เปลี่ยนข้อมูลภัยที่รวบรวมให้เป็นความรู้ใช้ตัดสินใจ Indicator เช่น Domain, IP, URL, File Hash หรือ Registry Artifact ช่วยกำหนดการค้น แต่ความหมายขึ้นกับเวลา ความเชื่อมั่นแหล่ง และความเกี่ยวข้อง IP ของ Shared Hosting อาจให้บริการทั้งดีและร้าย Strategic Intelligence ช่วยตัดสินความเสี่ยง Operational อธิบาย Campaign และ Tactical หรือ Technical ช่วย Detection หมวดเหล่านี้เป็นตัวช่วยจัดความรู้เสริม ใช้บริบทที่วิเคราะห์แล้วปรับการตัดสินใจและส่งผลกลับว่าอะไรมีประโยชน์"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "An IOC match may justify investigation without proving compromise. No match against yesterday’s feed does not prove a host is clean.",
+              "th": "IOC ตรงกันอาจควรตรวจแต่ไม่พิสูจน์ Compromise และการไม่ตรง Feed เมื่อวานก็ไม่พิสูจน์ว่าเครื่องสะอาด"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "An IOC match may justify investigation without proving compromise. No match against yesterday’s feed does not prove a host is clean.",
+        "th": "IOC ตรงกันอาจควรตรวจแต่ไม่พิสูจน์ Compromise และการไม่ตรง Feed เมื่อวานก็ไม่พิสูจน์ว่าเครื่องสะอาด"
+      },
+      "sourceLocator": "S40–S41; Domain 5.md §§5.2–5.3; D5 surm.md §24",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "attack"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-05-04-attack-framework",
+      "title": {
+        "en": "ATT&CK links goals to observed methods.",
+        "th": "ATT&CK เชื่อมเป้าหมายกับวิธีที่พบจริง"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use a framework to organize detection questions and gaps.",
+            "th": "ใช้ Framework จัดคำถาม Detection และช่องว่าง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Tactic: why",
+                "th": "Tactic: ทำเพื่ออะไร"
+              },
+              {
+                "en": "Credential Access is a goal",
+                "th": "Credential Access เป็นเป้าหมาย"
+              },
+              {
+                "en": "Not a mandatory chronological phase",
+                "th": "ไม่ใช่ขั้นเวลาที่ทุกเหตุจำเป็นต้องผ่าน"
+              }
+            ],
+            [
+              {
+                "en": "Technique: how",
+                "th": "Technique: ทำอย่างไร"
+              },
+              {
+                "en": "Credential dumping is a method",
+                "th": "Credential Dumping เป็นวิธี"
+              },
+              {
+                "en": "Look for relevant telemetry",
+                "th": "หา Telemetry ที่เกี่ยวข้อง"
+              }
+            ],
+            [
+              {
+                "en": "Procedure: specific use",
+                "th": "Procedure: วิธีใช้เฉพาะกรณี"
+              },
+              {
+                "en": "Observed implementation in a case",
+                "th": "การลงมือที่พบในกรณีจริง"
+              },
+              {
+                "en": "Test detection rather than count labels",
+                "th": "ทดสอบ Detection ไม่ใช่นับป้าย"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "MITRE ATT&CK is a knowledge base of adversary behavior. Tactics express objectives, techniques describe ways to achieve them and procedures describe specific implementations. Credential Access is a tactic and credential dumping is a technique family. Map expected logs and detection logic to behavior, then test whether necessary evidence is collected and useful alerts result. ATT&CK is not a SIEM, automatic prevention product, universal risk score or required linear path. A colored coverage matrix does not demonstrate that deployed detection works.",
+            "th": "MITRE ATT&CK เป็นฐานความรู้พฤติกรรมฝ่ายโจมตี Tactic คือเป้าหมาย Technique คือวิธีบรรลุ และ Procedure คือการลงมือเฉพาะกรณี Credential Access เป็น Tactic ส่วน Credential Dumping เป็นกลุ่ม Technique ให้เชื่อม Log และ Logic กับพฤติกรรม แล้วทดสอบว่าเก็บหลักฐานและแจ้งได้จริง ATT&CK ไม่ใช่ SIEM ผลิตภัณฑ์ป้องกันอัตโนมัติ คะแนนความเสี่ยงสากล หรือเส้นทางบังคับลำดับเดียว ตารางระบายสีไม่ได้พิสูจน์ว่า Detection ที่ใช้อยู่ทำงาน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "The framework changes over time. Learn goals versus methods rather than treating this illustrative tactic list as the complete current matrix.",
+              "th": "Framework เปลี่ยนได้ ให้เข้าใจความต่างเป้าหมายกับวิธี ไม่ถือรายการตัวอย่างเป็น Matrix ล่าสุดครบทั้งหมด"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "The framework changes over time. Learn goals versus methods rather than treating this illustrative tactic list as the complete current matrix.",
+        "th": "Framework เปลี่ยนได้ ให้เข้าใจความต่างเป้าหมายกับวิธี ไม่ถือรายการตัวอย่างเป็น Matrix ล่าสุดครบทั้งหมด"
+      },
+      "sourceLocator": "S42–S44; Domain 5.md §§5.4–5.5; MITRE ATT&CK",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "attack"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-05-05-decision",
+      "title": {
+        "en": "A feed lists an IP used by a business service.",
+        "th": "Feed ระบุ IP ที่บริการธุรกิจใช้อยู่"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "You are the analyst. A week-old feed flags a shared IP, and one host contacted it. What next?",
+            "th": "คุณเป็นนักวิเคราะห์ Feed อายุหนึ่งสัปดาห์ระบุ Shared IP และมี Host ติดต่อ ควรทำอย่างไร"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "ก"
+              },
+              {
+                "en": "Block the provider’s entire address range",
+                "th": "บล็อก Address Range ผู้ให้บริการทั้งหมด"
+              },
+              {
+                "en": "The evidence does not identify the whole provider as malicious; broad blocking can disrupt legitimate business.",
+                "th": "หลักฐานไม่ได้ชี้ว่าทั้งผู้ให้บริการเป็นภัย การบล็อกกว้างอาจทำธุรกิจหยุด"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "ข"
+              },
+              {
+                "en": "Validate timing, destination context and host activity",
+                "th": "ตรวจเวลา บริบทปลายทาง และกิจกรรม Host"
+              },
+              {
+                "en": "Current context and corroborating records support a proportionate decision while retaining urgent scoped containment options.",
+                "th": "บริบทปัจจุบันและหลักฐานร่วมช่วยตัดสินตามสัดส่วน พร้อมคงทาง Contain เร่งด่วนตามขอบเขต"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "ค"
+              },
+              {
+                "en": "Close the case because the IP is shared",
+                "th": "ปิดเรื่องเพราะเป็น Shared IP"
+              },
+              {
+                "en": "Shared infrastructure creates ambiguity, not proof of benign behavior; the specific connection still needs review.",
+                "th": "Infrastructure ร่วมทำให้กำกวม ไม่พิสูจน์ว่าปกติ ยังต้องตรวจ Connection นั้น"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "ง"
+              },
+              {
+                "en": "Declare the feed’s named actor responsible",
+                "th": "ประกาศว่ากลุ่มที่ Feed ระบุเป็นผู้ทำ"
+              },
+              {
+                "en": "One indicator match is insufficient attribution and can misdirect response away from observed scope and impact.",
+                "th": "Indicator ตรงหนึ่งค่าไม่พอ Attribution และอาจทำให้ตอบสนองหลงจากขอบเขตกับผลจริง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Check when the indicator was observed, the feed confidence and the actual destination service. Examine the host process, identity and surrounding events. The IP may have changed hands or host several services, so corroborate before broad action. If evidence shows active harm, use the authorized playbook for immediate scoped response. Record the decision and confidence and provide feedback to intelligence owners so stale or ambiguous indicators can be reviewed.",
+            "th": "ตรวจเวลาที่พบ Indicator ความมั่นใจ Feed และบริการปลายทางจริง ดู Process ตัวตน และเหตุการณ์รอบข้าง IP อาจเปลี่ยนเจ้าของหรือให้หลายบริการ จึงต้องมีหลักฐานร่วมก่อนดำเนินการวงกว้าง หากพบความเสียหายกำลังเกิดให้ใช้ Playbook ที่อนุญาตตอบสนองทันทีตามขอบเขต บันทึกการตัดสินใจและความมั่นใจ แล้วส่งกลับเจ้าของข่าวกรองเพื่อทบทวน Indicator เก่าหรือกำกวม"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Validation is not a rule to wait indefinitely. Urgency and observed harm determine whether investigation and containment proceed together.",
+              "th": "การตรวจไม่ใช่เหตุให้รอไม่สิ้นสุด ความเร่งด่วนและผลเสียจริงกำหนดว่าต้องสอบสวนและ Contain ควบคู่กันหรือไม่"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Choose an action and examine its reason.",
+            "th": "เลือกแนวทางแล้วพิจารณาเหตุผลประกอบ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Validation is not a rule to wait indefinitely. Urgency and observed harm determine whether investigation and containment proceed together.",
+        "th": "การตรวจไม่ใช่เหตุให้รอไม่สิ้นสุด ความเร่งด่วนและผลเสียจริงกำหนดว่าต้องสอบสวนและ Contain ควบคู่กันหรือไม่"
+      },
+      "sourceLocator": "Original scenario from S40–S41; D5 surm.md §24",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "attack"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "slideOrder": [
+    "slide-d5-05-01-actor-motivations",
+    "slide-d5-05-02-insider-uncertainty",
+    "slide-d5-05-03-intelligence-context",
+    "slide-d5-05-04-attack-framework",
+    "slide-d5-05-05-decision"
+  ],
+  "scenarioAnswer": 1,
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-5-academic-audit.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    }
+  }
+}

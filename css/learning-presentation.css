@@ -354,23 +354,68 @@ html[data-theme="dark"] .learning-viewer {
 .learning-viewer .presentation-workspace[data-view="reading"] .learning-slide { width: 100% !important; max-width: 1040px; height: auto !important; margin: 0 auto; aspect-ratio: auto; font-size: 19px; }
 .learning-viewer .presentation-workspace[data-view="reading"] .learning-slide p,
 .learning-viewer .presentation-workspace[data-view="reading"] .learning-slide li { font-size: 19px; }
-.learning-viewer .learning-table-scroll { overflow: visible; }
-.learning-viewer .learning-slide table { table-layout: fixed; }
-.learning-viewer .learning-slide :is(td, th) { overflow-wrap: anywhere; }
+.learning-viewer .learning-table-scroll { overflow-x: auto; border-radius: 12px; -webkit-overflow-scrolling: touch; }
+.learning-viewer .learning-slide table { table-layout: fixed; width: 100%; }
+.learning-viewer .learning-slide :is(td, th) { overflow-wrap: break-word; }
 
 /* Table spacing refinement: optimize cell padding to eliminate 14px vertical overflow on desktop 1440x900 */
 .learning-viewer [data-layout="summary-grid"] .learning-table-scroll th,
-.learning-viewer [data-layout="summary-grid"] .learning-table-scroll td,
-.learning-viewer .learning-table-scroll th,
-.learning-viewer .learning-table-scroll td {
+.learning-viewer [data-layout="summary-grid"] .learning-table-scroll td {
   padding: 8px 14px;
   line-height: 1.5;
+}
+.learning-viewer .learning-table-scroll th,
+.learning-viewer .learning-table-scroll td {
+  padding: 10px 14px;
+  line-height: 1.55;
+}
+.learning-viewer .learning-slide th {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 700;
+  vertical-align: bottom;
+}
+.learning-viewer .learning-slide th [lang="th"] {
+  font-family: 'Noto Sans Thai', sans-serif;
+  letter-spacing: normal;
 }
 .learning-viewer [data-layout="summary-grid"] .learning-slide-body {
   gap: 10px;
 }
 .learning-viewer [data-layout="summary-grid"] caption {
   margin-bottom: 6px;
+}
+
+/* Reading View Table Enhancements */
+.learning-viewer .presentation-workspace[data-view="reading"] .learning-table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--slide-border, #e2e8f0);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.05);
+  margin: 14px 0 18px;
+}
+.learning-viewer .presentation-workspace[data-view="reading"] .learning-slide table {
+  table-layout: auto;
+  width: 100%;
+}
+.learning-viewer .presentation-workspace[data-view="reading"] .learning-slide th {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 11px 16px;
+  line-height: 1.6;
+  background: #f1f5f9;
+  color: #0f172a;
+  border-bottom: 2px solid #cbd5e1;
+  text-transform: none;
+  letter-spacing: normal;
+  vertical-align: bottom;
+}
+.learning-viewer .presentation-workspace[data-view="reading"] .learning-slide td {
+  font-size: 16px;
+  padding: 12px 16px;
+  line-height: 1.6;
+  vertical-align: top;
 }
 
 /* Three-Zone Presentation Toolbar */

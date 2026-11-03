@@ -1,0 +1,654 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d5-11-physical-human-testing",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 5,
+  "primaryObjectiveId": "5.5",
+  "objectiveIds": [
+    "5.5"
+  ],
+  "revision": "1",
+  "status": "in-preparation",
+  "title": {
+    "en": "Physical Access & Social Engineering Tests",
+    "th": "ทดสอบการเข้าถึงกายภาพและ Social Engineering"
+  },
+  "synopsis": {
+    "en": "Physical testing evaluates facilities, devices and procedures.",
+    "th": "ทดสอบกายภาพประเมินพื้นที่ อุปกรณ์ และขั้นตอน"
+  },
+  "outcomes": [
+    {
+      "en": "Test the boundary under explicit authorization.",
+      "th": "ทดสอบขอบเขตภายใต้การอนุญาตชัดเจน"
+    },
+    {
+      "en": "A convincing message is not verified authority.",
+      "th": "ข้อความน่าเชื่อไม่ได้ยืนยันอำนาจ"
+    },
+    {
+      "en": "A claimed role and a physical entry are separate checks.",
+      "th": "บทบาทที่อ้างกับการเข้าพื้นที่ต้องตรวจแยกกัน"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: earlier lessons in this objective; no vendor commands are required.",
+      "th": "แนะนำให้อ่านบทก่อนหน้าในวัตถุประสงค์เดียวกัน ไม่จำเป็นต้องรู้คำสั่งเฉพาะผู้ผลิต"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 official exam outline and AI guidance",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Effective September 1, 2026. Domain 5 and separate AI guidance. Retrieved 2026-11-03; archived outline text in QA evidence."
+    },
+    {
+      "id": "d5-notes",
+      "title": "Domain 5.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/Domain 5.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-summary",
+      "title": "D5 sum.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/D5 sum.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-master",
+      "title": "D5 surm.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/D5 surm.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-transcript",
+      "title": "DOMAIN 5.txt",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/DOMAIN 5.txt",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "sanitization",
+      "title": "NIST SP 800-88r2",
+      "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final",
+      "locator": "Media-specific sanitization and verification; supplement to course.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "ir",
+      "title": "NIST SP 800-61r3",
+      "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+      "locator": "Incident response integrated with CSF 2.0; six course activities are a teaching decomposition, not a verbatim current NIST phase list.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "pqc",
+      "title": "NIST FIPS 203",
+      "url": "https://csrc.nist.gov/pubs/fips/203/final",
+      "locator": "ML-KEM establishes a shared secret; does not encrypt bulk application data. Supplement filling required quantum-resistant coverage.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "config",
+      "title": "NIST SP 800-128",
+      "url": "https://csrc.nist.gov/pubs/sp/800/128/upd1/final",
+      "locator": "Approved baseline, security impact analysis and configuration change control.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "testing",
+      "title": "NIST SP 800-115",
+      "url": "https://csrc.nist.gov/pubs/sp/800/115/final",
+      "locator": "Assessment planning, rules of engagement, testing limits and reporting.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "attack",
+      "title": "MITRE ATT&CK",
+      "url": "https://attack.mitre.org/",
+      "locator": "Tactics are adversary goals; techniques are methods. Not a mandatory chronological chain.",
+      "authority": "technical-primary"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d5-11-01-authorized-boundaries",
+      "title": {
+        "en": "Test the boundary under explicit authorization.",
+        "th": "ทดสอบขอบเขตภายใต้การอนุญาตชัดเจน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Physical testing evaluates facilities, devices and procedures.",
+            "th": "ทดสอบกายภาพประเมินพื้นที่ อุปกรณ์ และขั้นตอน"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Scope",
+                "th": "ขอบเขต"
+              },
+              {
+                "en": "Approved sites, people, methods and times",
+                "th": "พื้นที่ คน วิธี และเวลาที่อนุญาต"
+              },
+              {
+                "en": "Permission must cover actual activity",
+                "th": "สิทธิ์ต้องครอบคลุมกิจกรรมจริง"
+              }
+            ],
+            [
+              {
+                "en": "Safety",
+                "th": "ความปลอดภัย"
+              },
+              {
+                "en": "Stop conditions and emergency contacts",
+                "th": "เงื่อนไขหยุดและผู้ติดต่อฉุกเฉิน"
+              },
+              {
+                "en": "Protect people and essential services",
+                "th": "ป้องกันคนและบริการจำเป็น"
+              }
+            ],
+            [
+              {
+                "en": "Evidence",
+                "th": "หลักฐาน"
+              },
+              {
+                "en": "Record control outcomes proportionately",
+                "th": "บันทึกผล Control ตามสัดส่วน"
+              },
+              {
+                "en": "Limit collection of sensitive material",
+                "th": "จำกัดการเก็บข้อมูลอ่อนไหว"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Physical penetration testing evaluates whether a person can reach restricted facilities, systems or devices through weaknesses in controls and procedures. Use explicit authorization covering locations, times, tactics and data handling. Agree stop conditions, contacts, safety restrictions and reporting before testing. Locks, guards, badge readers, alarms and visitor procedures form complementary controls. A test can evaluate them without collecting unnecessary confidential records or endangering staff. Permission to test one site does not authorize entry into every tenant or third-party area.",
+            "th": "Physical Pentest ตรวจว่าคนเข้าพื้นที่ ระบบ หรืออุปกรณ์จำกัดผ่านจุดอ่อน Control และขั้นตอนได้หรือไม่ ต้องมีอนุญาตครอบคลุมสถานที่ เวลา เทคนิค และข้อมูล ตกลงเงื่อนไขหยุด ติดต่อ Safety และรายงานก่อน Locks, Guards, Badge Reader, Alarm และ Visitor Procedure ทำงานเสริมกัน ทดสอบได้โดยไม่เก็บข้อมูลลับเกินจำเป็นหรือทำคนเสี่ยง อนุญาตสถานที่หนึ่งไม่ใช่สิทธิ์เข้าทุก Tenant หรือพื้นที่บุคคลที่สาม"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "The outline groups phishing with physical penetration testing examples. Teach the stated scope while distinguishing digital deception from physical entry mechanisms.",
+              "th": "Outline รวม Phishing เป็นตัวอย่างใน Physical Pentest ต้องครอบคลุมตามนั้นพร้อมแยกการหลอกดิจิทัลจากกลไกเข้าพื้นที่"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "The outline groups phishing with physical penetration testing examples. Teach the stated scope while distinguishing digital deception from physical entry mechanisms.",
+        "th": "Outline รวม Phishing เป็นตัวอย่างใน Physical Pentest ต้องครอบคลุมตามนั้นพร้อมแยกการหลอกดิจิทัลจากกลไกเข้าพื้นที่"
+      },
+      "sourceLocator": "S75; Domain 5.md §14.1; NIST SP 800-115",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "testing"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-11-02-phishing-test",
+      "title": {
+        "en": "A convincing message is not verified authority.",
+        "th": "ข้อความน่าเชื่อไม่ได้ยืนยันอำนาจ"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Phishing manipulates people into disclosure or unwanted actions.",
+            "th": "Phishing หลอกให้เปิดเผยหรือทำสิ่งที่ไม่ต้องการ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Claim",
+                "th": "ข้ออ้าง"
+              },
+              {
+                "en": "Urgent account or business request",
+                "th": "คำขอบัญชีหรืองานด่วน"
+              },
+              {
+                "en": "AI can improve apparent fluency",
+                "th": "AI ช่วยให้ภาษาดูแนบเนียน"
+              }
+            ],
+            [
+              {
+                "en": "Verify",
+                "th": "ตรวจสอบ"
+              },
+              {
+                "en": "Use an independent known channel",
+                "th": "ใช้ช่องทางที่รู้อยู่แล้วอย่างอิสระ"
+              },
+              {
+                "en": "Do not trust supplied contact details",
+                "th": "อย่าเชื่อข้อมูลติดต่อที่ข้อความให้"
+              }
+            ],
+            [
+              {
+                "en": "Report",
+                "th": "รายงาน"
+              },
+              {
+                "en": "Follow the approved reporting route",
+                "th": "ทำตามช่องทางรายงานที่อนุมัติ"
+              },
+              {
+                "en": "Simulations should teach and improve",
+                "th": "การจำลองควรสอนและปรับปรุง"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Phishing uses deceptive communications to obtain information or induce actions such as opening attachments or approving access. Targeted messages can exploit a person’s role, and fluent AI-generated text may remove spelling clues. Verify unusual requests through independently known channels rather than links or phone numbers supplied in the message. Authorized simulations should define audience, permitted content, data collection and support. Measure reporting and safe responses as well as clicks, then improve controls and training without treating a single failure as a complete judgment of a person.",
+            "th": "Phishing ใช้ข้อความหลอกเพื่อขอข้อมูลหรือชักให้เปิดไฟล์และอนุมัติสิทธิ์ ข้อความเจาะจงอาศัยหน้าที่คน และ AI เขียนคล่องทำให้จับจากสะกดผิดไม่ได้ ตรวจคำขอผิดปกติผ่านช่องทางที่รู้เอง ไม่ใช้ Link หรือเบอร์ที่ข้อความให้ Simulation ที่อนุญาตต้องกำหนดผู้รับ เนื้อหา การเก็บข้อมูล และการช่วยเหลือ วัดการรายงานและการตอบปลอดภัยนอกจากคลิก แล้วปรับ Control กับอบรม ไม่ตัดสินคนทั้งหมดจากพลาดครั้งเดียว"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "A real suspicious message discovered during an exercise still needs the normal incident reporting route. Simulation labels must not suppress genuine concerns.",
+              "th": "ข้อความน่าสงสัยจริงที่พบระหว่างฝึกยังต้องรายงานตามปกติ ป้ายการฝึกต้องไม่ทำให้ละเลยปัญหาจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "A real suspicious message discovered during an exercise still needs the normal incident reporting route. Simulation labels must not suppress genuine concerns.",
+        "th": "ข้อความน่าสงสัยจริงที่พบระหว่างฝึกยังต้องรายงานตามปกติ ป้ายการฝึกต้องไม่ทำให้ละเลยปัญหาจริง"
+      },
+      "sourceLocator": "S76; Domain 5.md §14.2; official AI automated threats application",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "testing"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-11-03-tailgating-impersonation",
+      "title": {
+        "en": "A claimed role and a physical entry are separate checks.",
+        "th": "บทบาทที่อ้างกับการเข้าพื้นที่ต้องตรวจแยกกัน"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Impersonation can support tailgating, but the mechanisms differ.",
+            "th": "Impersonation ช่วย Tailgating ได้ แต่เป็นคนละกลไก"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Tailgating",
+                "th": "เดินตามเข้าพื้นที่"
+              },
+              {
+                "en": "Follow an authorized person through a door",
+                "th": "ตามผู้มีสิทธิ์ผ่านประตู"
+              },
+              {
+                "en": "Control each person’s entry",
+                "th": "ควบคุมการเข้าแต่ละคน"
+              }
+            ],
+            [
+              {
+                "en": "Impersonation",
+                "th": "แอบอ้างตัวตน"
+              },
+              {
+                "en": "Pretend to be a technician or employee",
+                "th": "อ้างเป็นช่างหรือพนักงาน"
+              },
+              {
+                "en": "Verify identity and work authorization",
+                "th": "ตรวจตัวตนและสิทธิ์ทำงาน"
+              }
+            ],
+            [
+              {
+                "en": "Layered controls",
+                "th": "Control เสริมกัน"
+              },
+              {
+                "en": "Visitor handling, guards and access control",
+                "th": "ดูแลผู้เยี่ยม Guard และ Access Control"
+              },
+              {
+                "en": "Preserve safe emergency egress",
+                "th": "คงทางออกฉุกเฉินที่ปลอดภัย"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Tailgating occurs when an unauthorized person follows someone through a controlled entrance. Impersonation is pretending to be another person or role to obtain access, information or help. A visitor claiming to be IT support may attempt both. Verify identity and work authorization through established contacts, use visitor procedures and do not share badges. Access-control vestibules can reduce unauthorized following but are not infallible and must respect life safety. Respond through security procedures rather than physically confronting a person when unsafe.",
+            "th": "Tailgating คือคนไม่มีสิทธิ์ตามผ่านทางเข้าที่ควบคุม Impersonation คืออ้างเป็นคนหรือบทบาทอื่นเพื่อขอสิทธิ์ ข้อมูล หรือความช่วยเหลือ ผู้มาเยือนอ้าง IT อาจทำทั้งคู่ ตรวจตัวตนกับสิทธิ์งานผ่านผู้ติดต่อที่กำหนด ใช้ Visitor Procedure และไม่แบ่งบัตร Access-Control Vestibule ลดการตามได้แต่ไม่สมบูรณ์และต้องเคารพ Life Safety ตอบผ่านขั้นตอน Security แทนเผชิญหน้าทางกายเมื่อไม่ปลอดภัย"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Possession of a badge does not automatically authorize every area or task. Physical access and permission to administer systems are distinct.",
+              "th": "มีบัตรไม่ได้อนุญาตทุกพื้นที่หรืองาน สิทธิ์เข้าทางกายภาพกับสิทธิ์ดูแลระบบเป็นคนละส่วน"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Possession of a badge does not automatically authorize every area or task. Physical access and permission to administer systems are distinct.",
+        "th": "มีบัตรไม่ได้อนุญาตทุกพื้นที่หรืองาน สิทธิ์เข้าทางกายภาพกับสิทธิ์ดูแลระบบเป็นคนละส่วน"
+      },
+      "sourceLocator": "S77–S78; Domain 5.md §§14.3–14.5",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "testing"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-11-04-decision",
+      "title": {
+        "en": "A visitor claims to be an urgent IT technician.",
+        "th": "ผู้มาเยือนอ้างเป็นช่าง IT งานด่วน"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "You are at a restricted entrance. The visitor asks to follow you in and shows a company logo on a phone. What should you do?",
+            "th": "คุณอยู่หน้าทางเข้าจำกัด ผู้มาเยือนขอตามเข้าและแสดง Logo บริษัทในมือถือ ควรทำอย่างไร"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "ก"
+              },
+              {
+                "en": "Use the visitor verification process and known contact",
+                "th": "ใช้ขั้นตอนตรวจผู้เยี่ยมและผู้ติดต่อที่รู้จัก"
+              },
+              {
+                "en": "Independent identity and work-order verification respects the boundary while allowing legitimate maintenance through approved channels.",
+                "th": "ตรวจตัวตนกับใบงานอย่างอิสระรักษาขอบเขต พร้อมให้การซ่อมจริงเดินตามช่องทางที่อนุมัติ"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "ข"
+              },
+              {
+                "en": "Allow entry because urgent repairs protect availability",
+                "th": "ให้เข้าเพราะซ่อมด่วนรักษา Availability"
+              },
+              {
+                "en": "Urgency does not verify identity or permission; bypassing entry control can expose restricted systems.",
+                "th": "ความด่วนไม่ยืนยันตัวตนหรือสิทธิ์ ข้าม Control อาจเปิดระบบจำกัด"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "ค"
+              },
+              {
+                "en": "Call the number supplied on the visitor’s phone",
+                "th": "โทรเบอร์ที่ผู้มาเยือนแสดง"
+              },
+              {
+                "en": "A contact controlled by the claimant is not independent verification of the claimed role.",
+                "th": "ช่องทางที่ผู้กล่าวอ้างควบคุมไม่ใช่การตรวจบทบาทอย่างอิสระ"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "ง"
+              },
+              {
+                "en": "Lend your badge and ask for an email afterward",
+                "th": "ให้ยืมบัตรแล้วขออีเมลภายหลัง"
+              },
+              {
+                "en": "Badge sharing defeats individual accountability and authorizes entry before verification.",
+                "th": "แบ่งบัตรทำลายการรับผิดชอบรายคนและให้เข้าก่อนตรวจ"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The case combines an impersonation claim with a request that could enable tailgating. Keep the controlled boundary and use the approved visitor process, independently known contact and work authorization. A logo, fluent explanation or urgency is not sufficient evidence. Legitimate technicians can be escorted through authorized procedures after verification. If the situation becomes unsafe, use security assistance rather than confrontation. In an authorized test, record whether the procedure worked and assign improvements without disclosing unnecessary personal information.",
+            "th": "กรณีนี้รวมข้ออ้างตัวตนกับคำขอที่อาจนำสู่ Tailgating รักษาขอบเขตและใช้ Visitor Process ผู้ติดต่อที่รู้เอง และสิทธิ์งาน Logo คำอธิบายคล่อง หรือความด่วนไม่พอ ช่างจริงใช้การนำเข้าตามขั้นตอนหลังตรวจได้ หากไม่ปลอดภัยให้ขอ Security แทนเผชิญหน้า หากเป็น Test ที่อนุญาต บันทึกว่าขั้นตอนทำงานไหมและมอบหมายปรับปรุงโดยไม่เปิดข้อมูลส่วนตัวเกินจำเป็น"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "The correct response verifies permission, not merely appearance. Similar reasoning applies to AI-generated voice or text impersonation requests.",
+              "th": "คำตอบที่เหมาะตรวจสิทธิ์ ไม่ใช่หน้าตาที่ดูเหมือน หลักเดียวกันใช้กับการแอบอ้างด้วยเสียงหรือข้อความ AI"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Choose an action and examine its reason.",
+            "th": "เลือกแนวทางแล้วพิจารณาเหตุผลประกอบ"
+          }
+        }
+      ],
+      "info": {
+        "en": "The correct response verifies permission, not merely appearance. Similar reasoning applies to AI-generated voice or text impersonation requests.",
+        "th": "คำตอบที่เหมาะตรวจสิทธิ์ ไม่ใช่หน้าตาที่ดูเหมือน หลักเดียวกันใช้กับการแอบอ้างด้วยเสียงหรือข้อความ AI"
+      },
+      "sourceLocator": "Original scenario from S75–S78; Domain 5.md §14",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "testing"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "slideOrder": [
+    "slide-d5-11-01-authorized-boundaries",
+    "slide-d5-11-02-phishing-test",
+    "slide-d5-11-03-tailgating-impersonation",
+    "slide-d5-11-04-decision"
+  ],
+  "scenarioAnswer": 0,
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-5-academic-audit.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    }
+  }
+}

@@ -1,0 +1,184 @@
+{
+ "metadata": {
+  "schemaVersion": 1,
+  "id": "lesson-d5-10-security-testing",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 5,
+  "primaryObjectiveId": "5.5",
+  "objectiveIds": [
+   "5.5"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+   "en": "Security Readiness & Application Testing",
+   "th": "ความพร้อมและการทดสอบแอปพลิเคชัน"
+  },
+  "synopsis": {
+   "en": "Readiness testing evaluates people, process and technology under authorization.",
+   "th": "ทดสอบความพร้อมของคน ขั้นตอน และเทคโนโลยีภายใต้การอนุญาต"
+  },
+  "outcomes": [
+   {
+    "en": "Red simulates; blue defends; purple improves together.",
+    "th": "Red จำลอง Blue ป้องกัน Purple ปรับร่วมกัน"
+   },
+   {
+    "en": "Measure the gap, improve and repeat.",
+    "th": "วัดช่องว่าง ปรับ และทำซ้ำ"
+   },
+   {
+    "en": "A scanner finding needs validation and treatment.",
+    "th": "ผล Scanner ต้องตรวจยืนยันและจัดการ"
+   },
+   {
+    "en": "Static inspects code; dynamic exercises behavior.",
+    "th": "Static ตรวจโค้ด Dynamic ทดสอบพฤติกรรม"
+   },
+   {
+    "en": "Model the trust boundaries before relying on controls.",
+    "th": "ทำแบบจำลองขอบเขตความเชื่อถือก่อนพึ่ง Control"
+   },
+   {
+    "en": "Test the AI-integrated defense as a system.",
+    "th": "ทดสอบการป้องกันที่มี AI เป็นระบบรวม"
+   }
+  ],
+  "prerequisites": [
+   {
+    "en": "Recommended: earlier lessons in this objective; no vendor commands are required.",
+    "th": "แนะนำให้อ่านบทก่อนหน้าในวัตถุประสงค์เดียวกัน ไม่จำเป็นต้องรู้คำสั่งเฉพาะผู้ผลิต"
+   }
+  ],
+  "assets": [],
+  "references": [
+   {
+    "id": "isc2-outline",
+    "title": "ISC2 CC September 2026 official exam outline and AI guidance",
+    "authority": "official-scope",
+    "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+    "locator": "Effective September 1, 2026. Domain 5 and separate AI guidance. Retrieved 2026-11-03; archived outline text in QA evidence."
+   },
+   {
+    "id": "d5-notes",
+    "title": "Domain 5.md",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/Domain 5.md",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "d5-summary",
+    "title": "D5 sum.md",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/D5 sum.md",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "d5-master",
+    "title": "D5 surm.md",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/D5 surm.md",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "d5-transcript",
+    "title": "DOMAIN 5.txt",
+    "authority": "course",
+    "repositoryPath": "ISC2 Update 2026/Domain 5/DOMAIN 5.txt",
+    "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+   },
+   {
+    "id": "sanitization",
+    "title": "NIST SP 800-88r2",
+    "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final",
+    "locator": "Media-specific sanitization and verification; supplement to course.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "ir",
+    "title": "NIST SP 800-61r3",
+    "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+    "locator": "Incident response integrated with CSF 2.0; six course activities are a teaching decomposition, not a verbatim current NIST phase list.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "pqc",
+    "title": "NIST FIPS 203",
+    "url": "https://csrc.nist.gov/pubs/fips/203/final",
+    "locator": "ML-KEM establishes a shared secret; does not encrypt bulk application data. Supplement filling required quantum-resistant coverage.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "config",
+    "title": "NIST SP 800-128",
+    "url": "https://csrc.nist.gov/pubs/sp/800/128/upd1/final",
+    "locator": "Approved baseline, security impact analysis and configuration change control.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "testing",
+    "title": "NIST SP 800-115",
+    "url": "https://csrc.nist.gov/pubs/sp/800/115/final",
+    "locator": "Assessment planning, rules of engagement, testing limits and reporting.",
+    "authority": "technical-primary"
+   },
+   {
+    "id": "attack",
+    "title": "MITRE ATT&CK",
+    "url": "https://attack.mitre.org/",
+    "locator": "Tactics are adversary goals; techniques are methods. Not a mandatory chronological chain.",
+    "authority": "technical-primary"
+   }
+  ],
+  "slideOrder": [
+   "slide-d5-10-01-team-roles",
+   "slide-d5-10-02-purple-feedback",
+   "slide-d5-10-03-scanning-limits",
+   "slide-d5-10-04-static-dynamic",
+   "slide-d5-10-05-threat-model",
+   "slide-d5-10-06-ai-defense-testing",
+   "slide-d5-10-07-decision"
+  ],
+  "scenarioAnswer": 2,
+  "review": {
+   "reviewedRevision": "1",
+   "evidencePath": "docs/plans/isc2-cc-2026/domain-5-academic-audit.md",
+   "technical": {
+    "status": "approved",
+    "reviewer": "Codex agent review; human acceptance pending",
+    "reviewedAt": "2026-11-03"
+   },
+   "bilingual": {
+    "status": "approved",
+    "reviewer": "Codex agent review; human acceptance pending",
+    "reviewedAt": "2026-11-03"
+   },
+   "rights": {
+    "status": "approved",
+    "reviewer": "Codex agent review; human acceptance pending",
+    "reviewedAt": "2026-11-03"
+   }
+  }
+ }
+}
+
+{"id":"slide-d5-10-01-team-roles","title":{"en":"Red simulates; blue defends; purple improves together.","th":"Red จำลอง Blue ป้องกัน Purple ปรับร่วมกัน"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Readiness testing evaluates people, process and technology under authorization.","th":"ทดสอบความพร้อมของคน ขั้นตอน และเทคโนโลยีภายใต้การอนุญาต"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Red","th":"Red"},{"en":"Simulate an adversary objective","th":"จำลองเป้าหมายฝ่ายโจมตี"},{"en":"Stay within rules of engagement","th":"อยู่ใน Rules of Engagement"}],[{"en":"Blue","th":"Blue"},{"en":"Detect, investigate and respond","th":"ตรวจ สอบสวน และตอบสนอง"},{"en":"Gather evidence of effectiveness","th":"เก็บหลักฐานประสิทธิผล"}],[{"en":"Purple","th":"Purple"},{"en":"Collaborate on detection and response","th":"ร่วมปรับ Detection และ Response"},{"en":"Retest the changed defenses","th":"ทดสอบการป้องกันหลังปรับ"}]]},{"kind":"text","text":{"en":"Readiness testing evaluates whether defenses and response work against defined scenarios. Red teams simulate adversary actions under explicit authorization. Blue teams monitor, investigate, respond and improve defenses. Purple teaming emphasizes collaboration between offense and defense to expose gaps and validate improvements; it need not be a permanently separate team. A penetration test often emphasizes exploitable weaknesses in a defined scope, whereas a red-team exercise may evaluate broader detection and response objectives. All require clear boundaries, safety, communications and reporting.","th":"Readiness Testing ตรวจว่าป้องกันและตอบสนองสถานการณ์ที่กำหนดได้หรือไม่ Red จำลองการกระทำฝ่ายโจมตีภายใต้อนุญาตชัด Blue ติดตาม สอบสวน ตอบสนอง และปรับป้องกัน Purple เน้นร่วมมือสองฝ่ายเพื่อหาช่องว่างและตรวจผล ไม่ต้องเป็นทีมถาวรแยก Penetration Test มักเน้นจุดอ่อนใช้โจมตีได้ในขอบเขต ส่วน Red Team อาจประเมิน Detection และ Response กว้างกว่า ทุกแบบต้องมีขอบเขต ความปลอดภัย การสื่อสาร และรายงาน"}},{"kind":"list","items":[{"en":"The color describes the role in the activity, not permission to attack arbitrary systems. Authorization must cover the actual targets and methods.","th":"สีบอกหน้าที่ในกิจกรรม ไม่ใช่สิทธิ์โจมตีระบบใดก็ได้ การอนุญาตต้องครอบคลุมเป้าหมายและวิธีจริง"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"The color describes the role in the activity, not permission to attack arbitrary systems. Authorization must cover the actual targets and methods.","th":"สีบอกหน้าที่ในกิจกรรม ไม่ใช่สิทธิ์โจมตีระบบใดก็ได้ การอนุญาตต้องครอบคลุมเป้าหมายและวิธีจริง"},"sourceLocator":"S65–S68; Domain 5.md §12; NIST SP 800-115","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","testing"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Red simulates; blue defends; purple improves together. Red simulates; blue defends; purple improves together. Readiness testing evaluates people, process and technology under authorization. Red Simulate an adversary objective Stay within rules of engagement Blue Detect, investigate and respond Gather evidence of effectiveness Purple Collaborate on detection and response Retest the changed defenses Use the mechanism that matches the stated security need.","th":"Red จำลอง Blue ป้องกัน Purple ปรับร่วมกัน Red จำลอง Blue ป้องกัน Purple ปรับร่วมกัน ทดสอบความพร้อมของคน ขั้นตอน และเทคโนโลยีภายใต้การอนุญาต Red จำลองเป้าหมายฝ่ายโจมตี อยู่ใน Rules of Engagement Blue ตรวจ สอบสวน และตอบสนอง เก็บหลักฐานประสิทธิผล Purple ร่วมปรับ Detection และ Response ทดสอบการป้องกันหลังปรับ เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-10-02-purple-feedback","title":{"en":"Measure the gap, improve and repeat.","th":"วัดช่องว่าง ปรับ และทำซ้ำ"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"A new detection rule is a hypothesis until tested.","th":"กฎ Detection ใหม่ยังเป็นข้อสันนิษฐานจนทดสอบ"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Simulate and observe","th":"จำลองและสังเกต"},{"en":"Expected behavior and telemetry","th":"พฤติกรรมและ Telemetry ที่คาด"},{"en":"Use safe representative activity","th":"ใช้กิจกรรมตัวแทนที่ปลอดภัย"}],[{"en":"Diagnose and improve","th":"หาสาเหตุและปรับ"},{"en":"Logging, logic, routing or response gap","th":"ช่องว่าง Log, Logic, แจ้ง หรือ Response"},{"en":"Assign the actual missing capability","th":"ระบุความสามารถที่ขาดจริง"}],[{"en":"Retest","th":"ทดสอบซ้ำ"},{"en":"Compare useful alerts and response","th":"เทียบ Alert ที่มีประโยชน์และ Response"},{"en":"Keep evidence and limitations","th":"เก็บหลักฐานกับข้อจำกัด"}]]},{"kind":"text","text":{"en":"A purple-team cycle begins with a selected behavior and expected evidence. If blue sees no useful alert, inspect whether telemetry was collected, parsed, correlated, routed and reviewed. Adding a rule cannot fix a missing data source. Improve the identified layer, replay the approved case and verify both detection and response. Measure meaningful results such as whether the right responder received enough context, not only the number of alerts. Record failed tests as evidence for improvement rather than hiding them.","th":"วงจร Purple เริ่มจากพฤติกรรมที่เลือกกับหลักฐานที่คาด หาก Blue ไม่เห็น Alert ที่ใช้ได้ ให้ตรวจว่าเก็บ Parse เชื่อม ส่ง และทบทวนหรือไม่ เพิ่ม Rule ไม่แก้แหล่งข้อมูลที่หาย ปรับชั้นที่พบแล้วทำกรณีที่อนุมัติซ้ำ ตรวจทั้ง Detection และ Response วัดผลที่มีความหมาย เช่น ผู้ตอบสนองถูกคนได้รับบริบทพอ ไม่ใช่นับ Alert อย่างเดียว เก็บผลล้มเหลวไว้ปรับ ไม่ปกปิด"}},{"kind":"list","items":[{"en":"An AI classifier can be one tested component. A successful model score does not prove notification routing or the human response worked.","th":"AI Classifier อาจเป็นองค์ประกอบหนึ่งที่ทดสอบ คะแนน Model ถูกไม่ได้พิสูจน์ว่าแจ้งถึงคนหรือคนตอบสนองได้"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"An AI classifier can be one tested component. A successful model score does not prove notification routing or the human response worked.","th":"AI Classifier อาจเป็นองค์ประกอบหนึ่งที่ทดสอบ คะแนน Model ถูกไม่ได้พิสูจน์ว่าแจ้งถึงคนหรือคนตอบสนองได้"},"sourceLocator":"S68–S69; D5 surm.md §33","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","testing"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Measure the gap, improve and repeat. Measure the gap, improve and repeat. A new detection rule is a hypothesis until tested. Simulate and observe Expected behavior and telemetry Use safe representative activity → Diagnose and improve Logging, logic, routing or response gap Assign the actual missing capability → Retest Compare useful alerts and response Keep evidence and limitations Use the mechanism that matches the stated security need.","th":"วัดช่องว่าง ปรับ และทำซ้ำ วัดช่องว่าง ปรับ และทำซ้ำ กฎ Detection ใหม่ยังเป็นข้อสันนิษฐานจนทดสอบ จำลองและสังเกต พฤติกรรมและ Telemetry ที่คาด ใช้กิจกรรมตัวแทนที่ปลอดภัย → หาสาเหตุและปรับ ช่องว่าง Log, Logic, แจ้ง หรือ Response ระบุความสามารถที่ขาดจริง → ทดสอบซ้ำ เทียบ Alert ที่มีประโยชน์และ Response เก็บหลักฐานกับข้อจำกัด เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-10-03-scanning-limits","title":{"en":"A scanner finding needs validation and treatment.","th":"ผล Scanner ต้องตรวจยืนยันและจัดการ"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Scanning identifies potential weaknesses within its visibility.","th":"Scanning หาจุดอ่อนที่เป็นไปได้ในขอบเขตที่มองเห็น"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Vulnerability scan","th":"สแกนช่องโหว่"},{"en":"Find known versions, patches and settings","th":"หา Version, Patch และค่าที่ทราบปัญหา"},{"en":"Coverage depends on access and checks","th":"ครอบคลุมตามสิทธิ์และรายการตรวจ"}],[{"en":"Penetration test","th":"ทดสอบเจาะระบบ"},{"en":"Validate selected attack paths","th":"พิสูจน์เส้นทางโจมตีที่เลือก"},{"en":"Controlled exploitation within scope","th":"ใช้ช่องโหว่ตามขอบเขตควบคุม"}],[{"en":"Remediation","th":"การแก้ไข"},{"en":"Prioritize, assign, fix and retest","th":"จัดลำดับ มอบหมาย แก้ ทดสอบซ้ำ"},{"en":"A report does not fix a weakness","th":"รายงานไม่ได้แก้จุดอ่อนเอง"}]]},{"kind":"text","text":{"en":"Vulnerability scanning automates or assists checks for known weaknesses, missing patches, exposed services and insecure settings. Results depend on authentication, network reach and the checks available. Validate findings because version detection can be misleading and false positives occur. A clean report does not prove no vulnerabilities, especially for hidden code paths or business logic. Penetration testing evaluates selected exploitability and impact under authorization. Feed validated findings into risk-based remediation and retest; neither scanning nor testing is complete risk elimination.","th":"Vulnerability Scanning ใช้อัตโนมัติหรือช่วยตรวจจุดอ่อนที่ทราบ Patch ที่ขาด บริการเปิด และค่าไม่ปลอดภัย ผลขึ้นกับ Authentication การเข้าถึง Network และรายการตรวจ ต้องยืนยันเพราะการดู Version อาจคลาดและมี False Positive รายงานสะอาดไม่พิสูจน์ว่าไม่มีช่องโหว่ โดยเฉพาะทางโค้ดซ่อนหรือ Business Logic ส่วน Pentest ตรวจการใช้โจมตีและผลกระทบที่เลือกภายใต้อนุญาต นำผลที่ยืนยันไปแก้ตามเสี่ยงและทดสอบซ้ำ ไม่มีแบบใดกำจัดเสี่ยงทั้งหมด"}},{"kind":"list","items":[{"en":"Authenticated scanning often improves visibility but also introduces credential and operational risks. Plan permissions and system impact before testing.","th":"Authenticated Scan มักเพิ่มการมองเห็น แต่เพิ่มความเสี่ยง Credential และปฏิบัติงานด้วย ต้องวางสิทธิ์และผลระบบก่อนทดสอบ"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"Authenticated scanning often improves visibility but also introduces credential and operational risks. Plan permissions and system impact before testing.","th":"Authenticated Scan มักเพิ่มการมองเห็น แต่เพิ่มความเสี่ยง Credential และปฏิบัติงานด้วย ต้องวางสิทธิ์และผลระบบก่อนทดสอบ"},"sourceLocator":"S70; Domain 5.md §§13.1–13.2","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","testing"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"A scanner finding needs validation and treatment. A scanner finding needs validation and treatment. Scanning identifies potential weaknesses within its visibility. Vulnerability scan Find known versions, patches and settings Coverage depends on access and checks Penetration test Validate selected attack paths Controlled exploitation within scope Remediation Prioritize, assign, fix and retest A report does not fix a weakness Use the mechanism that matches the stated security need.","th":"ผล Scanner ต้องตรวจยืนยันและจัดการ ผล Scanner ต้องตรวจยืนยันและจัดการ Scanning หาจุดอ่อนที่เป็นไปได้ในขอบเขตที่มองเห็น สแกนช่องโหว่ หา Version, Patch และค่าที่ทราบปัญหา ครอบคลุมตามสิทธิ์และรายการตรวจ ทดสอบเจาะระบบ พิสูจน์เส้นทางโจมตีที่เลือก ใช้ช่องโหว่ตามขอบเขตควบคุม การแก้ไข จัดลำดับ มอบหมาย แก้ ทดสอบซ้ำ รายงานไม่ได้แก้จุดอ่อนเอง เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-10-04-static-dynamic","title":{"en":"Static inspects code; dynamic exercises behavior.","th":"Static ตรวจโค้ด Dynamic ทดสอบพฤติกรรม"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"The approaches overlap in findings but observe different things.","th":"อาจพบปัญหาคล้ายกันแต่สังเกตคนละส่วน"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"SAST","th":"SAST"},{"en":"Analyze source or compiled code without execution","th":"วิเคราะห์ Source หรือ Compiled Code โดยไม่รัน"},{"en":"May find risky data flows or secrets","th":"อาจพบ Data Flow เสี่ยงหรือ Secret"}],[{"en":"DAST","th":"DAST"},{"en":"Interact with a running application","th":"โต้ตอบกับแอปที่รัน"},{"en":"May reveal session and runtime flaws","th":"อาจพบปัญหา Session และ Runtime"}],[{"en":"Combine","th":"ใช้ร่วมกัน"},{"en":"Review findings and coverage","th":"ทบทวนผลและความครอบคลุม"},{"en":"Neither sees every path","th":"ไม่มีแบบใดเห็นทุกเส้นทาง"}]]},{"kind":"text","text":{"en":"SAST analyzes source or compiled representations without executing the application. It can identify potential insecure flows, hardcoded credentials or unsafe functions, but may lack runtime context. DAST interacts with a running application and can reveal behavior such as failed session invalidation or authorization problems on reached paths. Both can help find injection issues through different evidence. Neither guarantees coverage of every code path or logic flaw. Apply findings during development and operation as appropriate and retest fixes; do not treat them as mutually exclusive lifecycle stages.","th":"SAST วิเคราะห์ Source หรือรูปแทน Compiled โดยไม่รันแอป อาจพบ Flow เสี่ยง Credential ฝัง หรือ Function ไม่ปลอดภัย แต่ขาดบริบท Runtime ส่วน DAST โต้ตอบแอปที่รัน อาจพบ Session ไม่ถูกยกเลิกหรือปัญหาอนุญาตบนทางที่เข้าถึง ทั้งคู่ช่วยหา Injection ด้วยหลักฐานต่างกัน ไม่มีแบบใดครอบคลุมทุกทางโค้ดหรือ Logic ใช้ผลตามช่วงพัฒนาและใช้งานที่เหมาะ แล้วทดสอบแก้ซ้ำ อย่าถือว่าเป็นช่วงที่เลือกได้อย่างใดอย่างหนึ่งเท่านั้น"}},{"kind":"list","items":[{"en":"Static analysis is not limited to reading source text manually. Dynamic analysis needs a running target and representative access to the tested behavior.","th":"Static Analysis ไม่จำกัดแค่อ่าน Source ด้วยคน Dynamic Analysis ต้องมีเป้าหมายที่รันและสิทธิ์เข้าพฤติกรรมที่ต้องทดสอบ"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"Static analysis is not limited to reading source text manually. Dynamic analysis needs a running target and representative access to the tested behavior.","th":"Static Analysis ไม่จำกัดแค่อ่าน Source ด้วยคน Dynamic Analysis ต้องมีเป้าหมายที่รันและสิทธิ์เข้าพฤติกรรมที่ต้องทดสอบ"},"sourceLocator":"S71–S73; Domain 5.md §§13.3–13.5","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","testing"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Static inspects code; dynamic exercises behavior. Static inspects code; dynamic exercises behavior. The approaches overlap in findings but observe different things. SAST Analyze source or compiled code without execution May find risky data flows or secrets DAST Interact with a running application May reveal session and runtime flaws Combine Review findings and coverage Neither sees every path Use the mechanism that matches the stated security need.","th":"Static ตรวจโค้ด Dynamic ทดสอบพฤติกรรม Static ตรวจโค้ด Dynamic ทดสอบพฤติกรรม อาจพบปัญหาคล้ายกันแต่สังเกตคนละส่วน SAST วิเคราะห์ Source หรือ Compiled Code โดยไม่รัน อาจพบ Data Flow เสี่ยงหรือ Secret DAST โต้ตอบกับแอปที่รัน อาจพบปัญหา Session และ Runtime ใช้ร่วมกัน ทบทวนผลและความครอบคลุม ไม่มีแบบใดเห็นทุกเส้นทาง เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-10-05-threat-model","title":{"en":"Model the trust boundaries before relying on controls.","th":"ทำแบบจำลองขอบเขตความเชื่อถือก่อนพึ่ง Control"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Threat modeling asks what can go wrong and how to address it.","th":"Threat Modeling ถามว่าอะไรผิดพลาดได้และจะจัดการอย่างไร"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Describe","th":"อธิบาย"},{"en":"Assets, flows, actors and trust boundaries","th":"ทรัพย์สิน Flow ผู้เกี่ยวข้อง ขอบเขต Trust"},{"en":"Use the system actually being built","th":"ใช้ระบบที่กำลังสร้างจริง"}],[{"en":"Analyze","th":"วิเคราะห์"},{"en":"Abuse paths and potential impacts","th":"ทางใช้ผิดและผลกระทบ"},{"en":"Consider attacker goals and access","th":"ดูเป้าหมายและสิทธิ์ฝ่ายโจมตี"}],[{"en":"Address and validate","th":"จัดการและตรวจ"},{"en":"Controls, tests and residual risk","th":"Control การทดสอบ และเสี่ยงคงเหลือ"},{"en":"Revisit after design changes","th":"ทบทวนเมื่อแบบเปลี่ยน"}]]},{"kind":"text","text":{"en":"Threat modeling is structured analysis of assets, data flows, trust boundaries, threats and mitigations. Start during design so controls can be built in, then revisit when implementation or dependencies change. For a banking app, model account takeover, unauthorized transfers and sensitive-data paths rather than listing malware names. Define controls and tests to evaluate the selected risks. STRIDE is one optional organizing aid from supplemental study material, not a requirement to memorize a particular method here. Threat modeling complements testing and does not prove the implementation correct.","th":"Threat Modeling วิเคราะห์ทรัพย์สิน Data Flow ขอบเขต Trust ภัย และการลดเสี่ยงอย่างเป็นระบบ เริ่มช่วง Design เพื่อสร้าง Control เข้าไปและทบทวนเมื่อโค้ดหรือระบบพึ่งพาเปลี่ยน แอปธนาคารควรจำลองยึดบัญชี โอนโดยไม่มีสิทธิ์ และเส้นทางข้อมูล ไม่ใช่ลิสต์ชื่อ Malware กำหนด Control และ Test เพื่อประเมินเสี่ยง STRIDE เป็นตัวช่วยเสริมจากเอกสาร ไม่ได้บังคับจำวิธีเฉพาะในบทนี้ Threat Modeling เสริม Testing และไม่พิสูจน์ว่า Implementation ถูกต้อง"}},{"kind":"list","items":[{"en":"A model is useful when it changes a decision, control or test. A diagram with no evaluated threats or follow-up is incomplete analysis.","th":"Model มีประโยชน์เมื่อเปลี่ยนการตัดสิน Control หรือ Test แผนภาพที่ไม่มีการประเมินภัยหรือติดตามยังวิเคราะห์ไม่ครบ"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"A model is useful when it changes a decision, control or test. A diagram with no evaluated threats or follow-up is incomplete analysis.","th":"Model มีประโยชน์เมื่อเปลี่ยนการตัดสิน Control หรือ Test แผนภาพที่ไม่มีการประเมินภัยหรือติดตามยังวิเคราะห์ไม่ครบ"},"sourceLocator":"S74; Domain 5.md §13.6; D5 surm.md §34","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","testing"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Model the trust boundaries before relying on controls. Model the trust boundaries before relying on controls. Threat modeling asks what can go wrong and how to address it. Describe Assets, flows, actors and trust boundaries Use the system actually being built → Analyze Abuse paths and potential impacts Consider attacker goals and access → Address and validate Controls, tests and residual risk Revisit after design changes Use the mechanism that matches the stated security need.","th":"ทำแบบจำลองขอบเขตความเชื่อถือก่อนพึ่ง Control ทำแบบจำลองขอบเขตความเชื่อถือก่อนพึ่ง Control Threat Modeling ถามว่าอะไรผิดพลาดได้และจะจัดการอย่างไร อธิบาย ทรัพย์สิน Flow ผู้เกี่ยวข้อง ขอบเขต Trust ใช้ระบบที่กำลังสร้างจริง → วิเคราะห์ ทางใช้ผิดและผลกระทบ ดูเป้าหมายและสิทธิ์ฝ่ายโจมตี → จัดการและตรวจ Control การทดสอบ และเสี่ยงคงเหลือ ทบทวนเมื่อแบบเปลี่ยน เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-10-06-ai-defense-testing","title":{"en":"Test the AI-integrated defense as a system.","th":"ทดสอบการป้องกันที่มี AI เป็นระบบรวม"},"rendererId":"diagram","layoutId":"default","blocks":[{"kind":"text","text":{"en":"Model outputs, data paths and human escalation all affect security.","th":"ผล Model เส้นทางข้อมูล และการส่งต่อคนต่างกระทบ Security"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"Data boundary","th":"ขอบเขตข้อมูล"},{"en":"Use approved synthetic or sanitized inputs","th":"ใช้อินพุตจำลองหรือปิดบังที่อนุมัติ"},{"en":"Do not leak production evidence","th":"อย่าทำหลักฐาน Production รั่ว"}],[{"en":"Detection behavior","th":"พฤติกรรมตรวจจับ"},{"en":"Exercise relevant benign and malicious cases","th":"ทดสอบกรณีปกติและมุ่งร้ายที่เกี่ยวข้อง"},{"en":"Inspect false positives and negatives","th":"ตรวจ False Positive และ Negative"}],[{"en":"Response chain","th":"ห่วงโซ่ตอบสนอง"},{"en":"Verify alerts, authority and follow-up","th":"ตรวจ Alert อำนาจ และการติดตาม"},{"en":"A score alone is insufficient","th":"คะแนนอย่างเดียวไม่พอ"}]]},{"kind":"text","text":{"en":"Apply ordinary readiness and application testing principles to AI-integrated defenses. Model the data entering public or enterprise AI services, assess connector permissions and test whether important events reach authorized responders. Use approved representative inputs and avoid exposing real incident evidence. Include benign cases to reveal disruptive false positives and attack cases to reveal blind spots. Retest when models, configurations or integrations change. This is foundational application of Domain 5 controls; advanced model attack research and vendor-specific guarantees are optional enrichment beyond this lesson.","th":"ใช้หลักทดสอบความพร้อมและแอปกับระบบป้องกันที่มี AI จำลองข้อมูลเข้า Public หรือ Enterprise AI ประเมินสิทธิ์ Connector และทดสอบว่า Event สำคัญถึงผู้ตอบสนองที่มีอำนาจ ใช้อินพุตตัวแทนที่อนุมัติ ไม่เปิดเผยหลักฐานจริง รวมกรณีปกติเพื่อตรวจ False Positive ที่กระทบงานและกรณีโจมตีเพื่อหาจุดอับ ทดสอบใหม่เมื่อ Model ค่า หรือ Integration เปลี่ยน นี่คือการประยุกต์พื้นฐาน Domain 5 ส่วนวิจัยโจมตี Model ขั้นสูงและคำรับรอง Vendor เป็นเสริมเกินบทนี้"}},{"kind":"list","items":[{"en":"Continuous testing means recurring evidence after meaningful changes, not uncontrolled attacks against live services or a promise of perfect detection.","th":"ทดสอบต่อเนื่องคือมีหลักฐานซ้ำหลังเปลี่ยนสำคัญ ไม่ใช่โจมตีบริการจริงแบบไร้ควบคุมหรือสัญญาว่าตรวจได้สมบูรณ์"}]},{"kind":"text","text":{"en":"Use the mechanism that matches the stated security need.","th":"เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}}],"info":{"en":"Continuous testing means recurring evidence after meaningful changes, not uncontrolled attacks against live services or a promise of perfect detection.","th":"ทดสอบต่อเนื่องคือมีหลักฐานซ้ำหลังเปลี่ยนสำคัญ ไม่ใช่โจมตีบริการจริงแบบไร้ควบคุมหรือสัญญาว่าตรวจได้สมบูรณ์"},"sourceLocator":"Official Domain 5 AI continuous testing guidance; S65–S74 application","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","testing"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"Test the AI-integrated defense as a system. Test the AI-integrated defense as a system. Model outputs, data paths and human escalation all affect security. Mechanism, decision and limitation Concept Action / relationship Reason / boundary Data boundary Use approved synthetic or sanitized inputs Do not leak production evidence Detection behavior Exercise relevant benign and malicious cases Inspect false positives and negatives Response chain Verify alerts, authority and follow-up A score alone is insufficient Use the mechanism that matches the stated security need.","th":"ทดสอบการป้องกันที่มี AI เป็นระบบรวม ทดสอบการป้องกันที่มี AI เป็นระบบรวม ผล Model เส้นทางข้อมูล และการส่งต่อคนต่างกระทบ Security กลไก การตัดสินใจ และข้อจำกัด แนวคิด การกระทำ / ความสัมพันธ์ เหตุผล / ขอบเขต ขอบเขตข้อมูล ใช้อินพุตจำลองหรือปิดบังที่อนุมัติ อย่าทำหลักฐาน Production รั่ว พฤติกรรมตรวจจับ ทดสอบกรณีปกติและมุ่งร้ายที่เกี่ยวข้อง ตรวจ False Positive และ Negative ห่วงโซ่ตอบสนอง ตรวจ Alert อำนาจ และการติดตาม คะแนนอย่างเดียวไม่พอ เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"}
+
+{"id":"slide-d5-10-07-decision","title":{"en":"A logout flaw must be checked in a running app.","th":"ต้องตรวจปัญหา Logout ในแอปที่รัน"},"rendererId":"interactive","layoutId":"default","blocks":[{"kind":"text","text":{"en":"You are the test coordinator. A session may remain valid after logout. Which activity directly evaluates the suspected behavior?","th":"คุณประสานทดสอบ Session อาจใช้ต่อได้หลัง Logout กิจกรรมใดตรวจพฤติกรรมนี้โดยตรง"}},{"kind":"table","caption":{"en":"Mechanism, decision and limitation","th":"กลไก การตัดสินใจ และข้อจำกัด"},"columns":[{"en":"Concept","th":"แนวคิด"},{"en":"Action / relationship","th":"การกระทำ / ความสัมพันธ์"},{"en":"Reason / boundary","th":"เหตุผล / ขอบเขต"}],"rows":[[{"en":"A","th":"ก"},{"en":"Review only dependency version advisories","th":"ดูเฉพาะประกาศ Version Dependency"},{"en":"Dependency review can reveal known weaknesses but does not directly demonstrate the app’s actual logout behavior.","th":"ตรวจ Dependency อาจพบปัญหาที่ทราบ แต่ไม่พิสูจน์พฤติกรรม Logout จริง"}],[{"en":"B","th":"ข"},{"en":"Run only static analysis before deployment","th":"ทำเฉพาะ Static Analysis ก่อน Deploy"},{"en":"Static analysis can find relevant code issues but does not execute the session flow the scenario asks to observe.","th":"Static อาจพบโค้ดเกี่ยวข้อง แต่ไม่ได้รัน Session Flow ที่ต้องสังเกต"}],[{"en":"C","th":"ค"},{"en":"Perform an authorized dynamic session test","th":"ทดสอบ Session แบบ Dynamic ตามอนุญาต"},{"en":"Interacting with the running app before and after logout directly checks whether the old session remains accepted.","th":"โต้ตอบแอปก่อนและหลัง Logout ตรวจโดยตรงว่า Session เก่ายังยอมรับหรือไม่"}],[{"en":"D","th":"ง"},{"en":"Treat a successful tabletop as proof","th":"ถือ Tabletop ที่ผ่านเป็นหลักฐาน"},{"en":"A discussion validates understanding and coordination, not the implementation’s runtime session handling.","th":"อภิปรายตรวจความเข้าใจและประสาน ไม่ใช่การจัดการ Session ของโค้ดจริง"}]]},{"kind":"text","text":{"en":"Dynamic testing directly exercises the running logout and subsequent access paths. Use authorized test accounts and scope, record the relevant session behavior without exposing tokens, and check expected denial after logout. Static review and dependency checks remain useful complementary techniques, but do not replace observing this behavior. If the test finds a flaw, assign remediation and repeat the same behavior plus relevant regression checks. Do not infer that all other sessions or authentication controls are secure from this single test.","th":"Dynamic Test รัน Logout และทางเข้าหลังจากนั้นโดยตรง ใช้บัญชีทดสอบและขอบเขตที่อนุญาต บันทึกพฤติกรรมโดยไม่เปิดเผย Token และตรวจว่าหลัง Logout ถูกปฏิเสธตามคาด Static Review กับ Dependency Check ยังเสริมได้ แต่ไม่แทนการสังเกตนี้ หากพบปัญหาให้กำหนดแก้และทดสอบพฤติกรรมเดิมกับ Regression ที่เกี่ยวข้อง อย่าสรุปว่า Session หรือ Authentication อื่นปลอดภัยจาก Test เดียว"}},{"kind":"list","items":[{"en":"SAST and DAST are not competing guarantees. Choose the observation required by the case and combine methods for broader assurance.","th":"SAST กับ DAST ไม่ใช่คำรับประกันที่แข่งกัน เลือกสิ่งที่ต้องสังเกตตามกรณีและใช้หลายวิธีเพื่อความมั่นใจเพิ่ม"}]},{"kind":"text","text":{"en":"Choose an action and examine its reason.","th":"เลือกแนวทางแล้วพิจารณาเหตุผลประกอบ"}}],"info":{"en":"SAST and DAST are not competing guarantees. Choose the observation required by the case and combine methods for broader assurance.","th":"SAST กับ DAST ไม่ใช่คำรับประกันที่แข่งกัน เลือกสิ่งที่ต้องสังเกตตามกรณีและใช้หลายวิธีเพื่อความมั่นใจเพิ่ม"},"sourceLocator":"Original scenario from S71–S73; Domain 5.md §13.4","referenceIds":["isc2-outline","d5-notes","d5-summary","d5-master","d5-transcript","testing"],"review":{"status":"approved","reviewedRevision":"1"}}
+PRESENTATION {"en":"A logout flaw must be checked in a running app. A logout flaw must be checked in a running app. You are the test coordinator. A session may remain valid after logout. Which activity directly evaluates the suspected behavior? A Review only dependency version advisories B Run only static analysis before deployment C Perform an authorized dynamic session test D Treat a successful tabletop as proof Choose an action. Use the facts, role and authority stated in the case. Reset Choose an action and examine its reason.","th":"ต้องตรวจปัญหา Logout ในแอปที่รัน ต้องตรวจปัญหา Logout ในแอปที่รัน คุณประสานทดสอบ Session อาจใช้ต่อได้หลัง Logout กิจกรรมใดตรวจพฤติกรรมนี้โดยตรง A ดูเฉพาะประกาศ Version Dependency B ทำเฉพาะ Static Analysis ก่อน Deploy C ทดสอบ Session แบบ Dynamic ตามอนุญาต D ถือ Tabletop ที่ผ่านเป็นหลักฐาน เลือกแนวทางปฏิบัติ ใช้ข้อเท็จจริง หน้าที่ และอำนาจที่โจทย์ระบุ Reset เลือกแนวทางแล้วพิจารณาเหตุผลประกอบ"}

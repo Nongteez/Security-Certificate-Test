@@ -1,0 +1,654 @@
+{
+  "schemaVersion": 1,
+  "id": "lesson-d5-07-response-exercises",
+  "outlineId": "isc2-cc-2026-09-01",
+  "domainId": 5,
+  "primaryObjectiveId": "5.3",
+  "objectiveIds": [
+    "5.3"
+  ],
+  "revision": "1",
+  "status": "published",
+  "title": {
+    "en": "Test Incident Response Readiness",
+    "th": "ทดสอบความพร้อมตอบสนองเหตุการณ์"
+  },
+  "synopsis": {
+    "en": "Participants explain their response to a simulated incident.",
+    "th": "ผู้ร่วมอธิบายการตอบสนองเหตุจำลอง"
+  },
+  "outcomes": [
+    {
+      "en": "A tabletop tests decisions through discussion.",
+      "th": "Tabletop ทดสอบการตัดสินใจด้วยการอภิปราย"
+    },
+    {
+      "en": "A technical test needs observable results.",
+      "th": "การทดสอบเทคนิคต้องมีผลที่สังเกตได้"
+    },
+    {
+      "en": "Close the gap and test again.",
+      "th": "แก้ช่องว่างแล้วทดสอบอีกครั้ง"
+    }
+  ],
+  "prerequisites": [
+    {
+      "en": "Recommended: earlier lessons in this objective; no vendor commands are required.",
+      "th": "แนะนำให้อ่านบทก่อนหน้าในวัตถุประสงค์เดียวกัน ไม่จำเป็นต้องรู้คำสั่งเฉพาะผู้ผลิต"
+    }
+  ],
+  "assets": [],
+  "references": [
+    {
+      "id": "isc2-outline",
+      "title": "ISC2 CC September 2026 official exam outline and AI guidance",
+      "authority": "official-scope",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "locator": "Effective September 1, 2026. Domain 5 and separate AI guidance. Retrieved 2026-11-03; archived outline text in QA evidence."
+    },
+    {
+      "id": "d5-notes",
+      "title": "Domain 5.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/Domain 5.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-summary",
+      "title": "D5 sum.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/D5 sum.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-master",
+      "title": "D5 surm.md",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/D5 surm.md",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "d5-transcript",
+      "title": "DOMAIN 5.txt",
+      "authority": "course",
+      "repositoryPath": "ISC2 Update 2026/Domain 5/DOMAIN 5.txt",
+      "locator": "See slide sourceLocator and source inventory. Teaching corrected as recorded in Learning Slides academic-audit addendum; source materials preserved."
+    },
+    {
+      "id": "sanitization",
+      "title": "NIST SP 800-88r2",
+      "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final",
+      "locator": "Media-specific sanitization and verification; supplement to course.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "ir",
+      "title": "NIST SP 800-61r3",
+      "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+      "locator": "Incident response integrated with CSF 2.0; six course activities are a teaching decomposition, not a verbatim current NIST phase list.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "pqc",
+      "title": "NIST FIPS 203",
+      "url": "https://csrc.nist.gov/pubs/fips/203/final",
+      "locator": "ML-KEM establishes a shared secret; does not encrypt bulk application data. Supplement filling required quantum-resistant coverage.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "config",
+      "title": "NIST SP 800-128",
+      "url": "https://csrc.nist.gov/pubs/sp/800/128/upd1/final",
+      "locator": "Approved baseline, security impact analysis and configuration change control.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "testing",
+      "title": "NIST SP 800-115",
+      "url": "https://csrc.nist.gov/pubs/sp/800/115/final",
+      "locator": "Assessment planning, rules of engagement, testing limits and reporting.",
+      "authority": "technical-primary"
+    },
+    {
+      "id": "attack",
+      "title": "MITRE ATT&CK",
+      "url": "https://attack.mitre.org/",
+      "locator": "Tactics are adversary goals; techniques are methods. Not a mandatory chronological chain.",
+      "authority": "technical-primary"
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-d5-07-01-tabletop",
+      "title": {
+        "en": "A tabletop tests decisions through discussion.",
+        "th": "Tabletop ทดสอบการตัดสินใจด้วยการอภิปราย"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Participants explain their response to a simulated incident.",
+            "th": "ผู้ร่วมอธิบายการตอบสนองเหตุจำลอง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Inject",
+                "th": "เหตุจำลองเพิ่ม"
+              },
+              {
+                "en": "Critical services are encrypted",
+                "th": "บริการสำคัญถูกเข้ารหัส"
+              },
+              {
+                "en": "A scenario, not a live attack",
+                "th": "เป็นสถานการณ์ ไม่ใช่โจมตีจริง"
+              }
+            ],
+            [
+              {
+                "en": "Decide",
+                "th": "ตัดสินใจ"
+              },
+              {
+                "en": "Who declares, isolates and notifies?",
+                "th": "ใครประกาศ แยก และแจ้ง"
+              },
+              {
+                "en": "Reveal unclear roles",
+                "th": "เผยหน้าที่ไม่ชัด"
+              }
+            ],
+            [
+              {
+                "en": "Record",
+                "th": "บันทึก"
+              },
+              {
+                "en": "Capture assumptions and plan gaps",
+                "th": "บันทึกสมมติฐานและช่องว่าง"
+              },
+              {
+                "en": "Assign follow-up owners",
+                "th": "กำหนดเจ้าของงานติดตาม"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "A tabletop is a discussion-based exercise walking through a simulated incident. It tests roles, escalation, communication, evidence needs and decision authority. Facilitators add facts such as an unavailable manager or suspected AI data exposure to reveal assumptions. The exercise need not alter live production. Evidence includes decisions, unresolved questions and plan gaps. Attendance and confident answers do not prove responders can execute technical containment or restoration.",
+            "th": "Tabletop ฝึกอภิปรายเหตุจำลอง ทดสอบหน้าที่ การส่งต่อ การสื่อสาร หลักฐาน และอำนาจ ผู้ดำเนินเพิ่มข้อมูล เช่น ผู้บริหารติดต่อไม่ได้หรือสงสัยข้อมูลรั่วผ่าน AI เพื่อเผยสมมติฐาน ไม่ต้องเปลี่ยน Production จริง หลักฐานมีการตัดสินใจ คำถามค้าง และช่องว่าง การเข้าร่วมครบและตอบมั่นใจไม่ได้พิสูจน์ว่าทีมทำ Containment หรือ Restore จริงได้"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Include the people who hold the decisions being tested. A SOC-only discussion cannot validate an executive approval route without the relevant participants.",
+              "th": "ควรเชิญผู้มีอำนาจตัดสินที่ต้องทดสอบ การคุยเฉพาะ SOC ตรวจทางอนุมัติผู้บริหารไม่ได้ถ้าไม่มีผู้เกี่ยวข้อง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Include the people who hold the decisions being tested. A SOC-only discussion cannot validate an executive approval route without the relevant participants.",
+        "th": "ควรเชิญผู้มีอำนาจตัดสินที่ต้องทดสอบ การคุยเฉพาะ SOC ตรวจทางอนุมัติผู้บริหารไม่ได้ถ้าไม่มีผู้เกี่ยวข้อง"
+      },
+      "sourceLocator": "S49–S50; Domain 5.md §§7.1–7.2",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "ir"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-07-02-technical-validation",
+      "title": {
+        "en": "A technical test needs observable results.",
+        "th": "การทดสอบเทคนิคต้องมีผลที่สังเกตได้"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Prove a bounded capability rather than discussing it.",
+            "th": "พิสูจน์ความสามารถในขอบเขต ไม่ใช่แค่พูดถึง"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Define",
+                "th": "กำหนด"
+              },
+              {
+                "en": "State scope and expected behavior",
+                "th": "ระบุขอบเขตกับพฤติกรรมที่คาด"
+              },
+              {
+                "en": "Set success criteria",
+                "th": "ตั้งเกณฑ์สำเร็จ"
+              }
+            ],
+            [
+              {
+                "en": "Execute",
+                "th": "ลงมือ"
+              },
+              {
+                "en": "Restore, alert, isolate or revoke in scope",
+                "th": "Restore, Alert, Isolate หรือ Revoke ตามขอบเขต"
+              },
+              {
+                "en": "Use approved safety controls",
+                "th": "ใช้มาตรการปลอดภัยที่อนุมัติ"
+              }
+            ],
+            [
+              {
+                "en": "Verify",
+                "th": "ตรวจผล"
+              },
+              {
+                "en": "Observe data, functions and timing",
+                "th": "ดูข้อมูล หน้าที่ และเวลา"
+              },
+              {
+                "en": "Record limits and failures",
+                "th": "บันทึกข้อจำกัดและความล้มเหลว"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Technical exercises validate controls and procedures. Examples include restoring a backup into an isolated environment, generating a safe event to check alerts or validating account containment. Define expected evidence first. A completed backup job does not prove restored records usable; check application function and integrity. Use representative dependencies and document differences from production. A successful bounded test demonstrates that case, not a guarantee that every system behaves identically.",
+            "th": "การฝึกเทคนิคตรวจ Control และขั้นตอน เช่น Restore ในระบบแยก สร้าง Event ปลอดภัยเพื่อตรวจ Alert หรือทดสอบจำกัดบัญชี กำหนดหลักฐานที่คาดก่อน Backup Job สำเร็จไม่ได้พิสูจน์ว่าข้อมูลใช้ได้ ต้องตรวจงานแอปและความถูกต้อง ใช้ระบบพึ่งพาที่ใกล้เคียงจริงและบันทึกความต่างจาก Production การผ่านกรณีที่มีขอบเขตพิสูจน์เฉพาะกรณีนั้น ไม่รับประกันทุกระบบเหมือนกัน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Technical tests can be part of larger exercises. The useful distinction is the demonstrated capability and collected evidence, not just the activity name.",
+              "th": "การทดสอบเทคนิคอาจเป็นส่วนของการฝึกใหญ่ สิ่งสำคัญคือความสามารถที่พิสูจน์และหลักฐาน ไม่ใช่ชื่อกิจกรรมอย่างเดียว"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Technical tests can be part of larger exercises. The useful distinction is the demonstrated capability and collected evidence, not just the activity name.",
+        "th": "การทดสอบเทคนิคอาจเป็นส่วนของการฝึกใหญ่ สิ่งสำคัญคือความสามารถที่พิสูจน์และหลักฐาน ไม่ใช่ชื่อกิจกรรมอย่างเดียว"
+      },
+      "sourceLocator": "S51; Domain 5.md §§7.3–7.4",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "ir"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-07-03-exercise-improvement",
+      "title": {
+        "en": "Close the gap and test again.",
+        "th": "แก้ช่องว่างแล้วทดสอบอีกครั้ง"
+      },
+      "rendererId": "diagram",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "An after-action report should lead to owned improvements.",
+            "th": "รายงานหลังฝึกต้องนำไปสู่งานที่มีเจ้าของ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "Plan safely",
+                "th": "วางแผนปลอดภัย"
+              },
+              {
+                "en": "Approval, scope, stop conditions, rollback",
+                "th": "อนุมัติ ขอบเขต เงื่อนไขหยุด ย้อนกลับ"
+              },
+              {
+                "en": "Protect essential services",
+                "th": "ป้องกันบริการจำเป็น"
+              }
+            ],
+            [
+              {
+                "en": "Review",
+                "th": "ทบทวน"
+              },
+              {
+                "en": "Compare observations with objectives",
+                "th": "เทียบสิ่งที่พบกับเป้าหมาย"
+              },
+              {
+                "en": "Failures are useful evidence",
+                "th": "ความล้มเหลวเป็นหลักฐานปรับปรุง"
+              }
+            ],
+            [
+              {
+                "en": "Improve",
+                "th": "ปรับปรุง"
+              },
+              {
+                "en": "Assign owner, date and retest",
+                "th": "กำหนดเจ้าของ วัน และทดสอบซ้ำ"
+              },
+              {
+                "en": "Verify the corrected capability",
+                "th": "พิสูจน์ความสามารถหลังแก้"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Exercise planning sets authorization, participants, scope, safety limits, stop conditions and expected evidence. Distinguish exercise traffic from real incidents while retaining a route for genuine problems. Compare observations with objectives and assign actions. Update an outdated contact list and verify the new route; inspect telemetry and logic if an AI-assisted alert was suppressed, then retest. A report without implementation or validation leaves readiness uncertain.",
+            "th": "วางแผนฝึกต้องกำหนดอนุญาต ผู้ร่วม ขอบเขต ความปลอดภัย เงื่อนไขหยุด และหลักฐาน แยก Traffic ฝึกจากเหตุจริงพร้อมมีทางรายงานปัญหาจริง เทียบสิ่งที่พบกับเป้าหมายแล้วมอบหมายงาน แก้รายชื่อเก่าและตรวจทางใหม่ หาก AI ระงับ Alert ให้ตรวจ Telemetry กับ Logic แล้วทดสอบซ้ำ รายงานที่ไม่ลงมือแก้หรือยืนยันผลยังทำให้ความพร้อมไม่แน่นอน"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Tabletop and technical testing complement each other. Neither alone validates every aspect of people, process and technology.",
+              "th": "Tabletop กับ Technical Testing เสริมกัน ไม่มีแบบใดแบบเดียวพิสูจน์คน กระบวนการ และเทคโนโลยีทุกด้าน"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Use the mechanism that matches the stated security need.",
+            "th": "เลือกกลไกให้ตรงกับความต้องการด้านความปลอดภัยที่ระบุ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Tabletop and technical testing complement each other. Neither alone validates every aspect of people, process and technology.",
+        "th": "Tabletop กับ Technical Testing เสริมกัน ไม่มีแบบใดแบบเดียวพิสูจน์คน กระบวนการ และเทคโนโลยีทุกด้าน"
+      },
+      "sourceLocator": "S49–S51; D5 surm.md §27; official AI exercises guidance",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "ir"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    },
+    {
+      "id": "slide-d5-07-04-decision",
+      "title": {
+        "en": "The team says backups are ready.",
+        "th": "ทีมบอกว่า Backup พร้อมแล้ว"
+      },
+      "rendererId": "interactive",
+      "layoutId": "default",
+      "blocks": [
+        {
+          "kind": "text",
+          "text": {
+            "en": "Management needs evidence of service restoration. A tabletop already clarified roles. Which activity fits next?",
+            "th": "ผู้บริหารต้องการหลักฐานกู้บริการได้ Tabletop ชี้หน้าที่ชัดแล้ว ควรทำอะไรต่อ"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "en": "Mechanism, decision and limitation",
+            "th": "กลไก การตัดสินใจ และข้อจำกัด"
+          },
+          "columns": [
+            {
+              "en": "Concept",
+              "th": "แนวคิด"
+            },
+            {
+              "en": "Action / relationship",
+              "th": "การกระทำ / ความสัมพันธ์"
+            },
+            {
+              "en": "Reason / boundary",
+              "th": "เหตุผล / ขอบเขต"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "en": "A",
+                "th": "ก"
+              },
+              {
+                "en": "Repeat the discussion with more attendees",
+                "th": "อภิปรายซ้ำโดยเพิ่มผู้ร่วม"
+              },
+              {
+                "en": "Discussion may help coordination but cannot demonstrate the requested restoration capability.",
+                "th": "อภิปรายอาจช่วยประสาน แต่ไม่พิสูจน์ความสามารถ Restore ที่ต้องการ"
+              }
+            ],
+            [
+              {
+                "en": "B",
+                "th": "ข"
+              },
+              {
+                "en": "Check only backup job success status",
+                "th": "ดูเพียง Backup Job ขึ้นสำเร็จ"
+              },
+              {
+                "en": "Job status does not demonstrate usable restored data or working application dependencies.",
+                "th": "สถานะ Job ไม่พิสูจน์ข้อมูล Restore ใช้ได้หรือระบบพึ่งพาทำงาน"
+              }
+            ],
+            [
+              {
+                "en": "C",
+                "th": "ค"
+              },
+              {
+                "en": "Run an approved isolated restoration test",
+                "th": "ทดสอบ Restore ในระบบแยกตามอนุมัติ"
+              },
+              {
+                "en": "A controlled restore with functional checks produces evidence without unplanned production disruption.",
+                "th": "Restore ที่ควบคุมและตรวจหน้าที่ให้หลักฐานโดยไม่รบกวน Production นอกแผน"
+              }
+            ],
+            [
+              {
+                "en": "D",
+                "th": "ง"
+              },
+              {
+                "en": "Fail over production without a planned window",
+                "th": "สลับ Production โดยไม่มีช่วงวางแผน"
+              },
+              {
+                "en": "Unplanned disruption lacks defined scope, approval and rollback for this exercise.",
+                "th": "กระทบนอกแผนไม่มีขอบเขต อนุมัติ หรือย้อนกลับที่กำหนดสำหรับการฝึก"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "The requested evidence is technical restoration. Use approved scope, suitable data and functional checks, recording timings, integrity, dependencies and environmental limits. The tabletop remains useful evidence about decisions and roles, but answered a different question. If restoration fails, preserve the result, assign remediation and repeat the affected test. Do not claim success merely because a backup file existed.",
+            "th": "หลักฐานที่ต้องการคือ Restore จริง ใช้ขอบเขตที่อนุมัติ ข้อมูลเหมาะสม และตรวจหน้าที่ บันทึกเวลา ความถูกต้อง ระบบพึ่งพา และข้อจำกัด Tabletop ยังมีประโยชน์เรื่องการตัดสินใจและหน้าที่ แต่ตอบคนละคำถาม หาก Restore ล้มเหลวให้เก็บผล กำหนดงานแก้ และทดสอบส่วนที่กระทบใหม่ อย่าบอกว่าสำเร็จเพียงเพราะมีไฟล์ Backup"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Passing this test does not establish production recovery time for every failure. State exactly which environment and dependencies were exercised.",
+              "th": "การผ่านไม่ได้ยืนยันเวลากู้ Production ในทุกเหตุ ต้องระบุสภาพแวดล้อมและระบบพึ่งพาที่ทดสอบจริง"
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": {
+            "en": "Choose an action and examine its reason.",
+            "th": "เลือกแนวทางแล้วพิจารณาเหตุผลประกอบ"
+          }
+        }
+      ],
+      "info": {
+        "en": "Passing this test does not establish production recovery time for every failure. State exactly which environment and dependencies were exercised.",
+        "th": "การผ่านไม่ได้ยืนยันเวลากู้ Production ในทุกเหตุ ต้องระบุสภาพแวดล้อมและระบบพึ่งพาที่ทดสอบจริง"
+      },
+      "sourceLocator": "Original scenario from S50–S51",
+      "referenceIds": [
+        "isc2-outline",
+        "d5-notes",
+        "d5-summary",
+        "d5-master",
+        "d5-transcript",
+        "ir"
+      ],
+      "review": {
+        "status": "approved",
+        "reviewedRevision": "1"
+      }
+    }
+  ],
+  "slideOrder": [
+    "slide-d5-07-01-tabletop",
+    "slide-d5-07-02-technical-validation",
+    "slide-d5-07-03-exercise-improvement",
+    "slide-d5-07-04-decision"
+  ],
+  "scenarioAnswer": 2,
+  "review": {
+    "reviewedRevision": "1",
+    "evidencePath": "docs/plans/isc2-cc-2026/domain-5-academic-audit.md",
+    "technical": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    },
+    "bilingual": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    },
+    "rights": {
+      "status": "approved",
+      "reviewer": "Codex agent review; human acceptance pending",
+      "reviewedAt": "2026-11-03"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+import fs from 'node:fs';import {createHash} from 'node:crypto';
+const q='artifacts/qa/domain-5-completion/',p='docs/plans/isc2-cc-2026/domain-5-vocabulary-progress.md',b=JSON.parse(fs.readFileSync(q+'entry-baseline.json'));
+fs.writeFileSync(q+'concurrent-deltas.json',JSON.stringify([{path:p,entryHash:b.hashes[p],observedHash:createHash('sha256').update(fs.readFileSync(p)).digest('hex'),disposition:'Concurrent Vocabulary audit closure. Not written or reverted by Learning Slides task.'},{path:'docs/plans/task.md',disposition:'Concurrent existing Vocabulary audit rows changed. Snapshot retains all current rows except this task row.'}],null,2));
+fs.copyFileSync(p,q+'concurrent-vocabulary-progress.md');fs.writeFileSync(q+'concurrent-tracker-prefix.md',fs.readFileSync('docs/plans/task.md','utf8').replace(/^\| D5 Learning Slides end-to-end.*(?:\r?\n|$)/m,''));
