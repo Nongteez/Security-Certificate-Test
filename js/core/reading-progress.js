@@ -15,7 +15,7 @@
 
 export const READING_PROGRESS_KEY = 'sec_cert_reading_progress_v1';
 export const READING_SCHEMA_VERSION = 1;
-export const VALID_DOMAIN_IDS = Object.freeze([1, 2, 3, 4]);
+export const VALID_DOMAIN_IDS = Object.freeze([1, 2, 3, 4, 5]);
 
 // In-memory fallback storage when localStorage is unavailable, disabled, or throws quota errors
 const memoryStorage = new Map();

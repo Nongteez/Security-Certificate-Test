@@ -1,0 +1,59 @@
+threatChain: `
+<div class="reading-diagram-card" data-diagram="threatChain" role="region" aria-label="Threat and Control Relationship Pipeline">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Architecture Flow</span>
+    <h4 class="reading-diagram-title">Cybersecurity Threat & Control Relationship Pipeline</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap">
+    <svg viewBox="0 0 760 150" class="reading-diagram-svg" aria-label="Pipeline showing Asset with Vulnerability exploited by Threat Actor causing Impact, mitigated by Safeguards" role="img">
+      <!-- Node 1: Asset -->
+      <g class="diag-node">
+        <rect x="10" y="35" width="120" height="70" rx="8" class="diag-box diag-box-blue" />
+        <text x="70" y="65" class="diag-text-title" text-anchor="middle">Asset</text>
+        <text x="70" y="85" class="diag-text-sub" text-anchor="middle">ทรัพย์สินมีคุณค่า</text>
+      </g>
+      <!-- Arrow 1 -->
+      <path d="M 130 70 L 160 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
+      <text x="145" y="62" class="diag-text-label" text-anchor="middle">มี</text>
+
+      <!-- Node 2: Vulnerability -->
+      <g class="diag-node">
+        <rect x="160" y="35" width="130" height="70" rx="8" class="diag-box diag-box-banner" />
+        <text x="225" y="65" class="diag-text-title" text-anchor="middle">Vulnerability</text>
+        <text x="225" y="85" class="diag-text-sub" text-anchor="middle">จุดอ่อน / ช่องโหว่</text>
+      </g>
+      <!-- Arrow 2 -->
+      <path d="M 290 70 L 320 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
+      <text x="305" y="62" class="diag-text-label" text-anchor="middle">ถูกเจาะผ่าน</text>
+
+      <!-- Node 3: Threat Actor -->
+      <g class="diag-node">
+        <rect x="320" y="35" width="130" height="70" rx="8" class="diag-box diag-box-banner" />
+        <text x="385" y="65" class="diag-text-title" text-anchor="middle">Threat Actor</text>
+        <text x="385" y="85" class="diag-text-sub" text-anchor="middle">ผู้คุกคามใช้ Exploit</text>
+      </g>
+      <!-- Arrow 3 -->
+      <path d="M 450 70 L 480 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
+      <text x="465" y="62" class="diag-text-label" text-anchor="middle">ก่อให้เกิด</text>
+
+      <!-- Node 4: Impact -->
+      <g class="diag-node">
+        <rect x="480" y="35" width="120" height="70" rx="8" class="diag-box diag-box-banner" />
+        <text x="540" y="65" class="diag-text-title" text-anchor="middle">Impact</text>
+        <text x="540" y="85" class="diag-text-sub" text-anchor="middle">ความเสียหาย</text>
+      </g>
+
+      <!-- Safeguard / Control Banner -->
+      <g class="diag-node">
+        <rect x="620" y="25" width="130" height="90" rx="8" class="diag-box diag-box-blue diag-box-highlight" />
+        <text x="685" y="55" class="diag-text-title" text-anchor="middle">Safeguards</text>
+        <text x="685" y="75" class="diag-text-title" text-anchor="middle">& Controls</text>
+        <text x="685" y="98" class="diag-text-sub" text-anchor="middle">มาตรการปกป้อง</text>
+      </g>
+      <!-- Protective Loop arrow -->
+      <path d="M 685 115 C 685 140, 70 140, 70 105" class="diag-arrow diag-arrow-dash" marker-end="url(#diag-arrow-head)" />
+      <text x="375" y="136" class="diag-text-label" text-anchor="middle">Controls เข้ามาปกป้อง Asset และลดความเสี่ยง (Risk)</text>
+    </svg>
+  </div>
+</div>
+`,

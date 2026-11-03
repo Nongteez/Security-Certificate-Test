@@ -253,10 +253,14 @@ console.log('\nTest Suite 4: Maximum DOM Nesting Depth Inside Cards');
 // -----------------------------------------------------------------------------
 console.log('\nTest Suite 5: Currency vs. KaTeX Math Notation Isolation');
 {
-  assert(html.includes('$50/ปี'), 'Literal currency $50/ปี is preserved in output text');
-  assert(html.includes('$2,000/ปี'), 'Literal currency $2,000/ปี is preserved in output text');
-  assert(html.includes('$10,000'), 'Literal currency $10,000 is preserved in output text');
-  assert(html.includes('$25,000'), 'Literal currency $25,000 is preserved in output text');
+  // Serialized HTML may encode a literal currency symbol; inspect its text representation.
+  const currencyText = html.replace(/&#(?:36|x24);|&dollar;/gi, '$');
+  assert(currencyText.includes('$50/ปี'), 'Literal currency $50/ปี is preserved in output text');
+  assert(currencyText.includes('$2,000/ปี'), 'Literal currency $2,000/ปี is preserved in output text');
+  assert(currencyText.includes('$10,000'), 'Literal currency $10,000 is preserved in output text');
+  assert(currencyText.includes('$25,000'), 'Literal currency $25,000 is preserved in output text');
+  const costBenefit = html.match(/<p><strong>การเปรียบเทียบด้านการเงินแบบง่าย:[\s\S]*?<\/p>/)?.[0] || '';
+  assert(costBenefit.length > 0 && !/role="math"|class="katex/.test(costBenefit), 'Both cost-benefit currency values remain outside math delimiters');
 
   // Math formula rendering check
   assert(html.includes('class="reading-math-inline" role="math" aria-label="SLE = AV \\times EF"'), 'Math formula SLE = AV x EF is correctly rendered');

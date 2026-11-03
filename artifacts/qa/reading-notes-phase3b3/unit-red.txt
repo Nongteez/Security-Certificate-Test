@@ -1,0 +1,1800 @@
+✔ All four complete textbooks retain exact rendered educational text and original anchors (33.7763ms)
+✖ Privacy roles are one explicit group beneath their Privacy context (1.2463ms)
+✖ Three role headings are subordinate to the h5 group caption (0.4062ms)
+✖ Reading-only shell can reach its own width without changing global tokens (1.0225ms)
+✖ Content-aware prose measures replace nested definition caps (1.0245ms)
+✖ Privacy columns respond to actual context width and preserve source reading order (0.5116ms)
+✖ Privacy emphasis preserves the key bilingual terminology (0.6969ms)
+✔ All production text outside the reference subsection is byte-preserved (2.3419ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 2
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46.3827
+
+✖ failing tests:
+
+test at tools\verify-reading-layout-width.mjs:4:1
+✖ Privacy roles are one explicit group beneath their Privacy context (1.2463ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /<section class="reading-privacy-context">[\s\S]*?#### 2\. Privacy[\s\S]*?<div class="reading-definition-group reading-privacy-roles">[\s\S]*?Data Subject[\s\S]*?Data Controller[\s\S]*?Data Processor[\s\S]*?<\/section>/. Input:
+  
+  '<p class="reading-lead">เอกสารรวบรวมและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับ <strong>Domain 1: Security Principles</strong> (น้ำหนักข้อสอบ 24%) ครอบคลุมหลักการพื้นฐานด้านความมั่นคงปลอดภัยไซเบอร์ การบริหารความเสี่ยง การกำกับดูแล นโยบาย มาตรการควบคุม และประมวลจริยธรรมวิชาชีพของ ISC2 เพื่อสร้างความเข้าใจเชิงลึกสำหรับเตรียมสอบ</p>\n' +
+    '\n' +
+    '<section id="obj-1-1" class="reading-objective-section reading-structured-objective">\n' +
+    '\n' +
+    '## Objective 1.1: Understand cybersecurity concepts\n' +
+    '\n' +
+    'หัวข้อนี้ว่าด้วยรากฐานที่สำคัญที่สุดของความมั่นคงปลอดภัยสารสนเทศ การเข้าใจว่าเรากำลังปกป้องอะไร จากภัยคุกคามใด ด้วยหลักการและกลไกพื้นฐานอย่างไร\n' +
+    '\n' +
+    '<div id="topic-1-1-core-concepts" class="reading-topic-anchor"></div>\n' +
+    '\n' +
+    '### 1.1.1 Core Security Concepts & Assets\n' +
+    '\n' +
+    '**Information Security (InfoSec)** คือการปกป้องข้อมูลและระบบสารสนเทศจากการเข้าถึง การเปิดเผย การแก้ไข การทำลาย หรือการหยุดชะงักโดยไม่ได้รับอนุญาต โดยต้องรักษาสมดุลระหว่าง **ความปลอดภัย (Security)** กับ **ความต้องการและความคล่องตัวทางธุรกิจ (Business Needs)**\n' +
+    '\n' +
+    '<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>คำศัพท์รากฐานที่ต้องแยกความหมายให้ชัดเจน:</h4>\n' +
+    '\n' +
+    '| คำศัพท์ | คำจำกัดความ | ตัวอย่างในโลกจริง |\n' +
+    '|---|---|---|\n' +
+    '| **Asset (ทรัพย์สิน)** | สิ่งที่มีคุณค่าต่อองค์กร ซึ่งหากสูญหาย เสียหาย หรือรั่วไหลจะเกิดผลกระทบ | ฐานข้อมูลลูกค้า (Customer Database), ระบบชำระเงิน, ทรัพย์สินทางปัญญา, บุคลากร |\n' +
+    '| **Threat (ภัยคุกคาม)** | สิ่ง เหตุการณ์ หรือบุคคลที่อาจก่อให้เกิดอันตรายหรือสร้างความเสียหายต่อ Asset | แฮกเกอร์, มัลแวร์, แรนซัมแวร์, ไฟไหม้, น้ำท่วม, ไฟดับ |\n' +
+    '| **Threat Actor (ผู้ก่อภัยคุกคาม)** | ตัวบุคคลหรือกลุ่มบุคคลที่ลงมือหรือพยายามก่อให้เกิดภัยคุกคาม | อาชญากรไซเบอร์ (Cybercriminals), พนักงานภายในที่ประสงค์ร้าย (Insider Threats), รัฐสนับสนุน (Nation-State) |\n' +
+    '| **Vulnerability (ช่องโหว่)** | จุดอ่อนหรือข้อบกพร่องในระบบ กระบวนการ หรือมาตรการควบคุม ที่ผู้ก่อภัยคุกคามอาจใช้ประโยชน์ หรือเหตุการณ์คุกคามอาจกระตุ้นให้เกิดความเสียหาย | เซิร์ฟเวอร์ที่ยังไม่ได้ติดตั้ง Patch, การตั้งค่าความปลอดภัยผิดพลาด (Misconfiguration), รหัสผ่านที่คาดเดาง่าย |\n' +
+    '| **Exploit (การใช้ประโยชน์จากช่องโหว่)** | วิธีการ โค้ดโปรแกรม หรือเทคนิคที่ใช้เจาะผ่านจุดอ่อนของระบบ | สคริปต์ยิงเจาะช่องโหว่ซอฟต์แวร์, Phishing Email หลอกขอรหัสผ่าน |\n' +
+    '| **Risk (ความเสี่ยง)** | โอกาสและผลกระทบของความเสียหายที่อาจเกิดขึ้นเมื่อ Threat อาศัย Vulnerability สร้างผลกระทบต่อ Asset | โอกาสที่ฐานข้อมูลลูกค้าจะถูกขโมยและสร้างผลเสียหายทางการเงินและชื่อเสียง |\n' +
+    '| **Control / Safeguard (มาตรการควบคุม)** | กลไก นโยบาย หรือเทคโนโลยีที่นำมาติดตั้งเพื่อลดโอกาสหรือผลกระทบของความเสี่ยง | Multi-Factor Authentication (MFA), Firewall, นโยบายความปลอดภัย |\n' +
+    '\n' +
+    '<div class="reading-semantic-diagram" data-diagram="threatChain"></div>\n' +
+    '\n' +
+    '<div class="reading-callout warning">\n' +
+    '  <div class="reading-callout-header">\n' +
+    '    <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>\n' +
+    '    <span>ข้อควรระวังสำหรับข้อสอบ</span>\n' +
+    '  </div>\n' +
+    '  <div class="reading-warning-group">\n' +
+    '    <div class="reading-warning-item">\n' +
+    '      <h5 class="reading-concept-heading">Threat ไม่ใช่ Vulnerability</h5>\n' +
+    '      <p>Threat คือบุคคล สิ่ง หรือเหตุการณ์ที่อาจก่อความเสียหาย ทั้งจากภายในและภายนอกองค์กร (เช่น พนักงานประสงค์ร้าย, Hacker, Flood) ส่วน Vulnerability คือจุดอ่อนภายในระบบของเรา (เช่น Unpatched Server หรือ Misconfiguration)</p>\n' +
+    '    </div>\n' +
+    '    <div class="reading-warning-item">\n' +
+    '      <h5 class="reading-concept-heading">Vulnerability ไม่ได้แปลว่าเกิดเหตุโจมตีแล้ว</h5>\n' +
+    '      <p>การมีจุดอ่อนในระบบไม่ได้แปลว่าองค์กรถูกแฮกแล้ว หากไม่มี Threat เข้ามาใช้ประโยชน์จากช่องโหว่นั้น หรือมี Control ชดเชยอื่นปิดกั้นไว้</p>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</div>\n' +
+    '\n' +
+    '<div id="topic-1-1-cia-triad" class="reading-topic-anchor"></div>\n' +
+    '\n' +
+    '### 1.1.2 The CIA Triad — Confidentiality, Integrity, Availability\n' +
+    '\n' +
+    'แกนกลางของ Information Security ทุกเรื่องถูกสร้างขึ้นบนเสาหลัก 3 ต้น เรียกว่า **CIA Triad**\n' +
+    '\n' +
+    '<div class="reading-semantic-diagram" data-diagram="ciaTriad"></div>\n' +
+    '\n' +
+    '#### 1. Confidentiality — การรักษาความลับ\n' +
+    '\n' +
+    'ข้อมูลต้องถูกเข้าถึงและเปิดเผยต่อ **ผู้ที่ได้รับอนุญาตเท่านั้น (Authorized Individuals Only)** โดยมุ่งเน้นการป้องกัน **Unauthorized Disclosure** (การเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต)\n' +
+    '\n' +
+    '<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</h5>\n' +
+    '\n' +
+    '- **Encryption (การเข้ารหัสข้อมูล):** แปลงข้อมูลให้อ่านไม่ออกหากไม่มีกุญแจถอดรหัส\n' +
+    '- **Access Control & Permissions:** จำกัดสิทธิ์การอ่านไฟล์และระบบ\n' +
+    '- **Data Classification (การจัดชั้นความลับ):** กำหนดระดับความลับ เช่น Public, Internal, Confidential, Restricted\n' +
+    '- **Data Masking (การบดบังข้อมูลบางส่วน):** ซ่อนข้อมูลอ่อนไหวบางส่วนเพื่อป้องกันการมองเห็น เช่น แสดงเฉพาะเลข 4 หลักสุดท้ายของบัตรเครดิต\n' +
+    '- **Need to Know:** อนุญาตให้เข้าถึงเฉพาะข้อมูลที่จำเป็นต่อการปฏิบัติหน้าที่เท่านั้น\n' +
+    '- **Multi-Factor Authentication (MFA):** ป้องกันการสวมรอยเข้าถึงข้อมูล\n' +
+    '\n' +
+    '<div class="reading-scenario-inline">\n' +
+    '  <strong>สถานการณ์จำลอง:</strong> แฮกเกอร์เจาะระบบขโมย Customer Database ออกไป แม้ข้อมูลจะไม่ถูกแก้ไขหรือลบทิ้ง แต่บุคคลที่ไม่ควรเห็นได้เห็น → กระทบ <strong>Confidentiality</strong>\n' +
+    '</div>\n' +
+    '\n' +
+    '<div class="reading-keyword-takeaway">\n' +
+    '  <strong>คีย์เวิร์ดในข้อสอบ:</strong> <em>Confidentiality = Who can SEE it? / Secret / Unauthorized Disclosure</em>\n' +
+    '</div>\n' +
+    '\n' +
+    '#### 2. Integrity — ความถูกต้องและความสมบูรณ์ของข้อมูล\n' +
+    '\n' +
+    'ข้อมูลต้อง **ไม่ถูกแก้ไข ดัดแปลง หรือทำลายโดยไม่ได้รับอนุญาต** และสามารถตรวจสอบความถูกต้องได้ตลอดวงจรชีวิต เพื่อป้องกัน **Unauthorized Modification / Tampering** (การดัดแปลงข้อมูลโดยมิชอบ)\n' +
+    '\n' +
+    '<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</h5>\n' +
+    '\n' +
+    '- **Hashing (การคำนวณค่าแฮช):** ใช้สร้างค่าสรุปข้อมูลทางเดียวเพื่อตรวจสอบว่าไฟล์หรือข้อความถูกดัดแปลงหรือไม่ (เช่น SHA-256)\n' +
+    '- **Digital Signatures (ลายมือชื่อดิจิทัล):** ยืนยันทั้งความถูกต้องของข้อมูล (Integrity) และผู้ลงนาม (Authenticity)\n' +
+    '- **Access Permissions:** จำกัดสิทธิ์ในการแก้ไขหรือลบข้อมูล (Write / Delete permissions)\n' +
+    '- **Change Management (การบริหารการเปลี่ยนแปลง):** มีขั้นตอนอนุมัติ บันทึก และติดตามการแก้ไขระบบ\n' +
+    '- **File Integrity Monitoring (FIM) & Audit Logs:** ตรวจจับเมื่อมีการเปลี่ยนแปลงไฟล์สำคัญ\n' +
+    '\n' +
+    '<div class="reading-scenario-inline">\n' +
+    '  <strong>สถานการณ์จำลอง:</strong> ผู้โจมตีแทรกแซงฐานข้อมูลระบบธนาคารแล้วเปลี่ยนยอดเงินในบัญชี ข้อมูลยังเปิดอ่านได้ ระบบยังออนไลน์ปกติ แต่เนื้อหาถูกเปลี่ยนแปลง → กระทบ <strong>Integrity</strong>\n' +
+    '</div>\n' +
+    '\n' +
+    '<div class="reading-keyword-takeaway">\n' +
+    '  <strong>คีย์เวิร์ดในข้อสอบ:</strong> <em>Integrity = Can I TRUST the data? / Correct / Tampering / Alteration</em>\n' +
+    '</div>\n' +
+    '\n' +
+    '<div class="reading-callout tip">\n' +
+    '  <div class="reading-callout-header">\n' +
+    '    <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>\n' +
+    '    <span>จุดสับสนยอดฮิต (Hashing vs. Encryption)</span>\n' +
+    '  </div>\n' +
+    '  <div class="reading-callout-group">\n' +
+    '    <div class="reading-callout-item">\n' +
+    '      <h5 class="reading-concept-heading">Hashing (ฟังก์ชันทางเดียว — One-way)</h5>\n' +
+    '      <p>คำนวณค่าสรุปข้อมูลเพื่อเปรียบเทียบความถูกต้อง ไม่สามารถถอดกลับมาเป็นข้อความต้นฉบับได้</p>\n' +
+    '    </div>\n' +
+    '    <div class="reading-callout-item">\n' +
+    '      <h5 class="reading-concept-heading">Encryption (กระบวนการสองทาง — Two-way)</h5>\n' +
+    '      <p>เข้ารหัสเพื่อให้เป็นความลับ และสามารถถอดรหัส (Decryption) กลับมาอ่านได้ด้วยกุญแจที่ถูกต้อง</p>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</div>\n' +
+    '\n' +
+    '#### 3. Availability — ความพร้อมใช้งาน\n' +
+    '\n' +
+    'ระบบ ข้อมูล และทรัพยากรต้อง **พร้อมให้ผู้มีสิทธิ์เข้าใช้งานตามเวลาที่จำเป็นและข้อกำหนดบริการ** โดยมีเป้าหมายสำคัญคือการลด **Downtime** และสนับสนุนความต่อเนื่องทางธุรกิจเมื่อเผชิญภัยคุกคาม เช่น Hardware Failure, ไฟดับ (Power Outage), การโจมตี DDoS, Ransomware เข้ารหัส, หรือภัยธรรมชาติ\n' +
+    '\n' +
+    '<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</h5>\n' +
+    '\n' +
+    '- **Redundancy (ความซ้ำซ้อนของอุปกรณ์):** มีชิ้นส่วนสำรอง เช่น Power Supply คู่, RAID ฮาร์ดดิสก์\n' +
+    '- **Failover & Load Balancing:** การกระจายทราฟฟิกและสลับระบบอัตโนมัติเมื่อเครื่องหลักล่ม\n' +
+    '- **Uninterruptible Power Supply (UPS) & Backup Generators:** สำรองพลังงานไฟฟ้า\n' +
+    '- **Redundant Network / Multiple ISPs:** มีผู้ให้บริการอินเทอร์เน็ตมากกว่า 1 เจ้า\n' +
+    '- **Data Backups & Disaster Recovery (DR):** มีแผนและข้อมูลสำรองสำหรับกู้คืนระบบ\n' +
+    '\n' +
+    '<div class="reading-keyword-takeaway">\n' +
+    '  <strong>คีย์เวิร์ดในข้อสอบ:</strong> <em>Availability = Can I ACCESS it when needed? / Accessible / Downtime / Redundancy</em>\n' +
+    '</div>\n' +
+    '\n' +
+    '<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>ตัวอย่างสถาปัตยกรรมเพิ่ม Availability:</h5>\n' +
+    '\n' +
+    '<div class="reading-semantic-diagram" data-diagram="loadBalancer"></div>\n' +
+    '\n' +
+    '<h4 class="reading-subtopic-title">เปรียบเทียบ CIA จากสถานการณ์ข้อสอบ</h4>\n' +
+    '\n' +
+    '| สถานการณ์ในโจทย์ | หลักการที่เด่นที่สุด | คำอธิบายเหตุผล |\n' +
+    '|---|---|---|\n' +
+    '| ข้อมูลเงินเดือ'... 67443 more characters
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-layout-width.mjs:4:87)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<p class="reading-lead">เอกสารรวบรวมและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับ <strong>Domain 1: Security Principles</strong> (น้ำหนักข้อสอบ 24%) ครอบคลุมหลักการพื้นฐานด้านความมั่นคงปลอดภัยไซเบอร์ การบริหารความเสี่ยง การกำกับดูแล นโยบาย มาตรการควบคุม และประมวลจริยธรรมวิชาชีพของ ISC2 เพื่อสร้างความเข้าใจเชิงลึกสำหรับเตรียมสอบ</p>\n\n<section id="obj-1-1" class="reading-objective-section reading-structured-objective">\n\n## Objective 1.1: Understand cybersecurity concepts\n\nหัวข้อนี้ว่าด้วยรากฐานที่สำคัญที่สุดของความมั่นคงปลอดภัยสารสนเทศ การเข้าใจว่าเรากำลังปกป้องอะไร จากภัยคุกคามใด ด้วยหลักการและกลไกพื้นฐานอย่างไร\n\n<div id="topic-1-1-core-concepts" class="reading-topic-anchor"></div>\n\n...',
+    expected: /<section class="reading-privacy-context">[\s\S]*?#### 2\. Privacy[\s\S]*?<div class="reading-definition-group reading-privacy-roles">[\s\S]*?Data Subject[\s\S]*?Data Controller[\s\S]*?Data Processor[\s\S]*?<\/section>/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-layout-width.mjs:5:1
+✖ Three role headings are subordinate to the h5 group caption (0.4062ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 3
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-layout-width.mjs:5:252)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-layout-width.mjs:6:1
+✖ Reading-only shell can reach its own width without changing global tokens (1.0225ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /\.app:has\(\.reading-structured-objective\)\s*\{[^}]*max-width:\s*1560px/s. Input:
+  
+  '/* ==========================================================================\n' +
+    '   ISC2 CC 2026 — Reading Notes CSS Styles\n' +
+    '   Clean, minimal technical documentation layout with dark/light theme support\n' +
+    '   ========================================================================== */\n' +
+    '\n' +
+    ':root {\n' +
+    '  --reading-screen-max-width: 1560px;\n' +
+    '  --reading-article-max-width: 1080px;\n' +
+    '  --reading-prose-max-width: 100%;\n' +
+    '  --reading-component-max-width: 1040px;\n' +
+    '\n' +
+    '  /* Vertical Rhythm Spacing Tokens (4px / 8px Base Grid) */\n' +
+    '  --space-2xs: 4px;\n' +
+    '  --space-xs: 8px;\n' +
+    '  --space-sm: 12px;\n' +
+    '  --space-md: 16px;\n' +
+    '  --space-lg: 24px;\n' +
+    '  --space-xl: 32px;\n' +
+    '  --space-2xl: 44px;\n' +
+    '  --space-3xl: 60px;\n' +
+    '\n' +
+    '  /* Table Typography & Visual Hierarchy Tokens */\n' +
+    '  --table-header-font-size: 0.94rem;\n' +
+    '  --table-header-font-weight: 700;\n' +
+    '  --table-body-font-size: 0.92rem;\n' +
+    '  --table-body-line-height: 1.65;\n' +
+    '  --table-cell-padding-y: 12px;\n' +
+    '  --table-cell-padding-x: 16px;\n' +
+    '  --table-row-hover-bg: rgba(99, 102, 241, 0.04);\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Outer Screen & Header ===== */\n' +
+    '/* hidden creates a non-scrolling sticky ancestor; clip preserves viewport stickiness. */\n' +
+    'body:has(.reading-screen) {\n' +
+    '  overflow-x: clip;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-screen {\n' +
+    '  max-width: var(--reading-screen-max-width);\n' +
+    '  margin: 0 auto;\n' +
+    '  padding: 12px 24px 80px;\n' +
+    '  min-height: 100vh;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-bar {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  gap: 16px;\n' +
+    '  padding: 12px 0 18px;\n' +
+    '  border-bottom: 1px solid var(--line);\n' +
+    '  margin-bottom: 32px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-left {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 12px;\n' +
+    '}\n' +
+    '\n' +
+    '.btn-toggle-sidebar {\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 8px;\n' +
+    '  cursor: pointer;\n' +
+    '  padding: 7px 12px;\n' +
+    '  font-size: 13px;\n' +
+    '  font-weight: 500;\n' +
+    '  border: 1px solid var(--line);\n' +
+    '  border-radius: var(--radius-sm);\n' +
+    '  background: var(--panel);\n' +
+    '  color: var(--text-dim);\n' +
+    '  transition: all 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.btn-toggle-sidebar:hover {\n' +
+    '  background: var(--panel-2);\n' +
+    '  color: var(--text);\n' +
+    '  border-color: var(--line-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-center {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-app-badge {\n' +
+    '  font-size: 13px;\n' +
+    '  font-weight: 600;\n' +
+    '  letter-spacing: 0.02em;\n' +
+    '  color: var(--text-dim);\n' +
+    '  background: var(--panel-2);\n' +
+    '  border: 1px solid var(--line);\n' +
+    '  padding: 4px 12px;\n' +
+    '  border-radius: 20px;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Layout Container ===== */\n' +
+    '.reading-layout {\n' +
+    '  display: flex;\n' +
+    '  gap: 48px;\n' +
+    '  position: relative;\n' +
+    '  align-items: flex-start;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-backdrop {\n' +
+    '  display: none;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Minimal Left Sidebar ===== */\n' +
+    '.reading-sidebar {\n' +
+    '  flex: 0 0 290px;\n' +
+    '  width: 290px;\n' +
+    '  position: sticky;\n' +
+    '  top: 16px;\n' +
+    '  max-height: calc(100vh - 80px);\n' +
+    '  overflow-y: auto;\n' +
+    '  background: transparent;\n' +
+    '  border-right: 1px solid var(--line);\n' +
+    '  padding: 0 16px 32px 0;\n' +
+    '  box-shadow: none;\n' +
+    '  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),\n' +
+    '              width 0.25s cubic-bezier(0.16, 1, 0.3, 1),\n' +
+    '              opacity 0.2s ease;\n' +
+    '}\n' +
+    '\n' +
+    '/* Custom scrollbar for sidebar */\n' +
+    '.reading-sidebar::-webkit-scrollbar {\n' +
+    '  width: 4px;\n' +
+    '}\n' +
+    '.reading-sidebar::-webkit-scrollbar-track {\n' +
+    '  background: transparent;\n' +
+    '}\n' +
+    '.reading-sidebar::-webkit-scrollbar-thumb {\n' +
+    '  background: var(--line);\n' +
+    '  border-radius: 4px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-header {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  padding: 0 4px 10px;\n' +
+    '  margin-bottom: 8px;\n' +
+    '  border-bottom: 1px solid var(--line);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-title {\n' +
+    '  font-size: 11px;\n' +
+    '  font-weight: 700;\n' +
+    '  text-transform: uppercase;\n' +
+    '  letter-spacing: 0.08em;\n' +
+    '  color: var(--text-dim);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-close-mobile {\n' +
+    '  display: none;\n' +
+    '  background: none;\n' +
+    '  border: none;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  padding: 4px;\n' +
+    '  border-radius: 4px;\n' +
+    '}\n' +
+    '.reading-sidebar-close-mobile:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-2);\n' +
+    '}\n' +
+    '\n' +
+    '/* Collapsed sidebar on desktop */\n' +
+    '.reading-layout.sidebar-collapsed .reading-sidebar {\n' +
+    '  display: none;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-content-pane {\n' +
+    '  flex: 1 1 100%;\n' +
+    '  max-width: 1240px;\n' +
+    '  margin: 0 auto;\n' +
+    '  width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-article {\n' +
+    '  max-width: 1140px;\n' +
+    '  width: 100%;\n' +
+    '  margin: 0 auto;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-lead,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > p,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > ul,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > ol,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > blockquote,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > p,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > ul,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > ol,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > blockquote,\n' +
+    '.reading-layout.sidebar-collapsed .reading-intro-label {\n' +
+    '  max-width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-concept-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-response-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-mfa-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-treatment-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-category-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-distinction-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-precedence-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-table-wrapper,\n' +
+    '.reading-layout.sidebar-collapsed .reading-diagram-card,\n' +
+    '.reading-layout.sidebar-collapsed .reading-formula-card,\n' +
+    '.reading-layout.sidebar-collapsed .reading-scenario-card {\n' +
+    '  max-width: 100%;\n' +
+    '  width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Text-Based 3-Level Navigation ===== */\n' +
+    '.reading-nav-domains {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 6px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-group {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-domain-row {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 2px;\n' +
+    '  padding: 2px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn {\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  width: 22px;\n' +
+    '  height: 22px;\n' +
+    '  padding: 0;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  border-radius: 4px;\n' +
+    '  transition: color 0.15s ease, background-color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-svg {\n' +
+    '  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn.expanded .reading-chevron-svg {\n' +
+    '  transform: rotate(90deg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn {\n' +
+    '  flex: 1;\n' +
+    '  text-align: left;\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  padding: 6px 8px;\n' +
+    '  cursor: pointer;\n' +
+    '  display: flex;\n' +
+    '  align-items: baseline;\n' +
+    '  gap: 8px;\n' +
+    '  font-family: inherit;\n' +
+    '  color: var(--text-dim);\n' +
+    '  border-radius: var(--radius-sm);\n' +
+    '  transition: color 0.15s ease, background-color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-label {\n' +
+    '  font-size: 11px;\n' +
+    '  font-weight: 600;\n' +
+    '  text-transform: uppercase;\n' +
+    '  letter-spacing: 0.04em;\n' +
+    '  color: var(--text-muted);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-title {\n' +
+    '  font-size: 13.5px;\n' +
+    '  font-weight: 500;\n' +
+    '  line-height: 1.35;\n' +
+    '  color: inherit;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active {\n' +
+    '  color: var(--blue);\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active .reading-domain-label {\n' +
+    '  color: var(--blue);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active .reading-domain-title {\n' +
+    '  font-weight: 600;\n' +
+    '}\n' +
+    '\n' +
+    '/* Level 2: Objectives */\n' +
+    '.reading-nav-sub-tree {\n' +
+    '  padding-left: 18px;\n' +
+    '  margin: 2px 0 6px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objectives {\n' +
+    '  list-style: none;\n' +
+    '  margin: 0;\n' +
+    '  padding: 0 0 0 8px;\n' +
+    '  border-left: 1px solid var(--line);\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 4px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-item {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-row {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 4px;\n' +
+    '  padding: 2px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn {\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  width: 18px;\n' +
+    '  height: 18px;\n' +
+    '  padding: 0;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  border-radius: 3px;\n' +
+    '  transition: color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn.expanded .reading-chevron-svg {\n' +
+    '  transform: rotate(90deg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-bullet {\n' +
+    '  width: 4px;\n' +
+    '  height: 4px;\n' +
+    '  border-radius: 50%;\n' +
+    '  background: var(--line);\n' +
+    '  margin: 0 7px;\n' +
+    '  flex-shrink: 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link {\n' +
+    '  flex: 1;\n' +
+    '  text-decoration: none;\n' +
+    '  color: var(--text-muted);\n' +
+    '  font-size: 12.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  padding: 2px 4px;\n' +
+    '  border-radius: 3px;\n' +
+    '  transition: color 0.15s ease, background 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link.active {\n' +
+    '  color: var(--blue);\n' +
+    '  font-weight: 600;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-static {\n' +
+    '  display: block;\n' +
+    '  font-size: 12.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  color: var(--text-muted);\n' +
+    '  user-select: none;\n' +
+    '  padding: 2px 4px;\n' +
+    '}\n' +
+    '\n' +
+    '/* Level 3: Topics */\n' +
+    '.reading-nav-topics {\n' +
+    '  list-style: none;\n' +
+    '  margin: 2px 0 6px 14px;\n' +
+    '  padding: 0 0 0 8px;\n' +
+    '  border-left: 1px dashed var(--line);\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 2px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav [hidden],\n' +
+    '.reading-nav-topics[hidden],\n' +
+    '.reading-nav-sub-tree[hidden] {\n' +
+    '  display: none !important;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-item {\n' +
+    '  padding: 1px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link {\n' +
+    '  display: block;\n' +
+    '  font-size: 11.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  color: var(--text-dim);\n' +
+    '  text-decoration: none;\n' +
+    '  padding: 3px 6px;\n' +
+    '  border-radius: 4px;\n' +
+    '  transition: all 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link:hover {\n' +
+    '  color: var(--blue);\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link.active {\n' +
+    '  color: var(--blue);\n' +
+    '  font-weight: 600;\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Main Reading Area (Direct on Page Background) ===== */\n' +
+    '.reading-content-pane {\n' +
+    '  flex: 1 1 0;\n' +
+    '  min-width: 0;\n' +
+    '  padding: 0 0 80px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-article {\n' +
+    '  width: 100%;\n' +
+    '  max-width: var(--reading-article-max-width);\n' +
+    '  margin: 0;\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  border-radius: 0;\n' +
+    '  padding: 0;\n' +
+    '  box-shadow: none;\n' +
+    '}\n' +
+    '\n' +
+    '/* Measure constraint for ordinary p'... 74008 more characters
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-layout-width.mjs:6:94)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '/* ==========================================================================\n   ISC2 CC 2026 — Reading Notes CSS Styles\n   Clean, minimal technical documentation layout with dark/light theme support\n   ========================================================================== */\n\n:root {\n  --reading-screen-max-width: 1560px;\n  --reading-article-max-width: 1080px;\n  --reading-prose-max-width: 100%;\n  --reading-component-max-width: 1040px;\n...',
+    expected: /\.app:has\(\.reading-structured-objective\)\s*\{[^}]*max-width:\s*1560px/s,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-layout-width.mjs:7:1
+✖ Content-aware prose measures replace nested definition caps (1.0245ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /--reading-narrative-measure:\s*96ch/. Input:
+  
+  '/* ==========================================================================\n' +
+    '   ISC2 CC 2026 — Reading Notes CSS Styles\n' +
+    '   Clean, minimal technical documentation layout with dark/light theme support\n' +
+    '   ========================================================================== */\n' +
+    '\n' +
+    ':root {\n' +
+    '  --reading-screen-max-width: 1560px;\n' +
+    '  --reading-article-max-width: 1080px;\n' +
+    '  --reading-prose-max-width: 100%;\n' +
+    '  --reading-component-max-width: 1040px;\n' +
+    '\n' +
+    '  /* Vertical Rhythm Spacing Tokens (4px / 8px Base Grid) */\n' +
+    '  --space-2xs: 4px;\n' +
+    '  --space-xs: 8px;\n' +
+    '  --space-sm: 12px;\n' +
+    '  --space-md: 16px;\n' +
+    '  --space-lg: 24px;\n' +
+    '  --space-xl: 32px;\n' +
+    '  --space-2xl: 44px;\n' +
+    '  --space-3xl: 60px;\n' +
+    '\n' +
+    '  /* Table Typography & Visual Hierarchy Tokens */\n' +
+    '  --table-header-font-size: 0.94rem;\n' +
+    '  --table-header-font-weight: 700;\n' +
+    '  --table-body-font-size: 0.92rem;\n' +
+    '  --table-body-line-height: 1.65;\n' +
+    '  --table-cell-padding-y: 12px;\n' +
+    '  --table-cell-padding-x: 16px;\n' +
+    '  --table-row-hover-bg: rgba(99, 102, 241, 0.04);\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Outer Screen & Header ===== */\n' +
+    '/* hidden creates a non-scrolling sticky ancestor; clip preserves viewport stickiness. */\n' +
+    'body:has(.reading-screen) {\n' +
+    '  overflow-x: clip;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-screen {\n' +
+    '  max-width: var(--reading-screen-max-width);\n' +
+    '  margin: 0 auto;\n' +
+    '  padding: 12px 24px 80px;\n' +
+    '  min-height: 100vh;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-bar {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  gap: 16px;\n' +
+    '  padding: 12px 0 18px;\n' +
+    '  border-bottom: 1px solid var(--line);\n' +
+    '  margin-bottom: 32px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-left {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 12px;\n' +
+    '}\n' +
+    '\n' +
+    '.btn-toggle-sidebar {\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 8px;\n' +
+    '  cursor: pointer;\n' +
+    '  padding: 7px 12px;\n' +
+    '  font-size: 13px;\n' +
+    '  font-weight: 500;\n' +
+    '  border: 1px solid var(--line);\n' +
+    '  border-radius: var(--radius-sm);\n' +
+    '  background: var(--panel);\n' +
+    '  color: var(--text-dim);\n' +
+    '  transition: all 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.btn-toggle-sidebar:hover {\n' +
+    '  background: var(--panel-2);\n' +
+    '  color: var(--text);\n' +
+    '  border-color: var(--line-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-center {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-app-badge {\n' +
+    '  font-size: 13px;\n' +
+    '  font-weight: 600;\n' +
+    '  letter-spacing: 0.02em;\n' +
+    '  color: var(--text-dim);\n' +
+    '  background: var(--panel-2);\n' +
+    '  border: 1px solid var(--line);\n' +
+    '  padding: 4px 12px;\n' +
+    '  border-radius: 20px;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Layout Container ===== */\n' +
+    '.reading-layout {\n' +
+    '  display: flex;\n' +
+    '  gap: 48px;\n' +
+    '  position: relative;\n' +
+    '  align-items: flex-start;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-backdrop {\n' +
+    '  display: none;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Minimal Left Sidebar ===== */\n' +
+    '.reading-sidebar {\n' +
+    '  flex: 0 0 290px;\n' +
+    '  width: 290px;\n' +
+    '  position: sticky;\n' +
+    '  top: 16px;\n' +
+    '  max-height: calc(100vh - 80px);\n' +
+    '  overflow-y: auto;\n' +
+    '  background: transparent;\n' +
+    '  border-right: 1px solid var(--line);\n' +
+    '  padding: 0 16px 32px 0;\n' +
+    '  box-shadow: none;\n' +
+    '  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),\n' +
+    '              width 0.25s cubic-bezier(0.16, 1, 0.3, 1),\n' +
+    '              opacity 0.2s ease;\n' +
+    '}\n' +
+    '\n' +
+    '/* Custom scrollbar for sidebar */\n' +
+    '.reading-sidebar::-webkit-scrollbar {\n' +
+    '  width: 4px;\n' +
+    '}\n' +
+    '.reading-sidebar::-webkit-scrollbar-track {\n' +
+    '  background: transparent;\n' +
+    '}\n' +
+    '.reading-sidebar::-webkit-scrollbar-thumb {\n' +
+    '  background: var(--line);\n' +
+    '  border-radius: 4px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-header {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  padding: 0 4px 10px;\n' +
+    '  margin-bottom: 8px;\n' +
+    '  border-bottom: 1px solid var(--line);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-title {\n' +
+    '  font-size: 11px;\n' +
+    '  font-weight: 700;\n' +
+    '  text-transform: uppercase;\n' +
+    '  letter-spacing: 0.08em;\n' +
+    '  color: var(--text-dim);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-close-mobile {\n' +
+    '  display: none;\n' +
+    '  background: none;\n' +
+    '  border: none;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  padding: 4px;\n' +
+    '  border-radius: 4px;\n' +
+    '}\n' +
+    '.reading-sidebar-close-mobile:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-2);\n' +
+    '}\n' +
+    '\n' +
+    '/* Collapsed sidebar on desktop */\n' +
+    '.reading-layout.sidebar-collapsed .reading-sidebar {\n' +
+    '  display: none;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-content-pane {\n' +
+    '  flex: 1 1 100%;\n' +
+    '  max-width: 1240px;\n' +
+    '  margin: 0 auto;\n' +
+    '  width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-article {\n' +
+    '  max-width: 1140px;\n' +
+    '  width: 100%;\n' +
+    '  margin: 0 auto;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-lead,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > p,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > ul,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > ol,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > blockquote,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > p,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > ul,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > ol,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > blockquote,\n' +
+    '.reading-layout.sidebar-collapsed .reading-intro-label {\n' +
+    '  max-width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-concept-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-response-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-mfa-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-treatment-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-category-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-distinction-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-precedence-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-table-wrapper,\n' +
+    '.reading-layout.sidebar-collapsed .reading-diagram-card,\n' +
+    '.reading-layout.sidebar-collapsed .reading-formula-card,\n' +
+    '.reading-layout.sidebar-collapsed .reading-scenario-card {\n' +
+    '  max-width: 100%;\n' +
+    '  width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Text-Based 3-Level Navigation ===== */\n' +
+    '.reading-nav-domains {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 6px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-group {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-domain-row {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 2px;\n' +
+    '  padding: 2px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn {\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  width: 22px;\n' +
+    '  height: 22px;\n' +
+    '  padding: 0;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  border-radius: 4px;\n' +
+    '  transition: color 0.15s ease, background-color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-svg {\n' +
+    '  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn.expanded .reading-chevron-svg {\n' +
+    '  transform: rotate(90deg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn {\n' +
+    '  flex: 1;\n' +
+    '  text-align: left;\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  padding: 6px 8px;\n' +
+    '  cursor: pointer;\n' +
+    '  display: flex;\n' +
+    '  align-items: baseline;\n' +
+    '  gap: 8px;\n' +
+    '  font-family: inherit;\n' +
+    '  color: var(--text-dim);\n' +
+    '  border-radius: var(--radius-sm);\n' +
+    '  transition: color 0.15s ease, background-color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-label {\n' +
+    '  font-size: 11px;\n' +
+    '  font-weight: 600;\n' +
+    '  text-transform: uppercase;\n' +
+    '  letter-spacing: 0.04em;\n' +
+    '  color: var(--text-muted);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-title {\n' +
+    '  font-size: 13.5px;\n' +
+    '  font-weight: 500;\n' +
+    '  line-height: 1.35;\n' +
+    '  color: inherit;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active {\n' +
+    '  color: var(--blue);\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active .reading-domain-label {\n' +
+    '  color: var(--blue);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active .reading-domain-title {\n' +
+    '  font-weight: 600;\n' +
+    '}\n' +
+    '\n' +
+    '/* Level 2: Objectives */\n' +
+    '.reading-nav-sub-tree {\n' +
+    '  padding-left: 18px;\n' +
+    '  margin: 2px 0 6px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objectives {\n' +
+    '  list-style: none;\n' +
+    '  margin: 0;\n' +
+    '  padding: 0 0 0 8px;\n' +
+    '  border-left: 1px solid var(--line);\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 4px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-item {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-row {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 4px;\n' +
+    '  padding: 2px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn {\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  width: 18px;\n' +
+    '  height: 18px;\n' +
+    '  padding: 0;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  border-radius: 3px;\n' +
+    '  transition: color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn.expanded .reading-chevron-svg {\n' +
+    '  transform: rotate(90deg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-bullet {\n' +
+    '  width: 4px;\n' +
+    '  height: 4px;\n' +
+    '  border-radius: 50%;\n' +
+    '  background: var(--line);\n' +
+    '  margin: 0 7px;\n' +
+    '  flex-shrink: 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link {\n' +
+    '  flex: 1;\n' +
+    '  text-decoration: none;\n' +
+    '  color: var(--text-muted);\n' +
+    '  font-size: 12.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  padding: 2px 4px;\n' +
+    '  border-radius: 3px;\n' +
+    '  transition: color 0.15s ease, background 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link.active {\n' +
+    '  color: var(--blue);\n' +
+    '  font-weight: 600;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-static {\n' +
+    '  display: block;\n' +
+    '  font-size: 12.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  color: var(--text-muted);\n' +
+    '  user-select: none;\n' +
+    '  padding: 2px 4px;\n' +
+    '}\n' +
+    '\n' +
+    '/* Level 3: Topics */\n' +
+    '.reading-nav-topics {\n' +
+    '  list-style: none;\n' +
+    '  margin: 2px 0 6px 14px;\n' +
+    '  padding: 0 0 0 8px;\n' +
+    '  border-left: 1px dashed var(--line);\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 2px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav [hidden],\n' +
+    '.reading-nav-topics[hidden],\n' +
+    '.reading-nav-sub-tree[hidden] {\n' +
+    '  display: none !important;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-item {\n' +
+    '  padding: 1px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link {\n' +
+    '  display: block;\n' +
+    '  font-size: 11.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  color: var(--text-dim);\n' +
+    '  text-decoration: none;\n' +
+    '  padding: 3px 6px;\n' +
+    '  border-radius: 4px;\n' +
+    '  transition: all 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link:hover {\n' +
+    '  color: var(--blue);\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link.active {\n' +
+    '  color: var(--blue);\n' +
+    '  font-weight: 600;\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Main Reading Area (Direct on Page Background) ===== */\n' +
+    '.reading-content-pane {\n' +
+    '  flex: 1 1 0;\n' +
+    '  min-width: 0;\n' +
+    '  padding: 0 0 80px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-article {\n' +
+    '  width: 100%;\n' +
+    '  max-width: var(--reading-article-max-width);\n' +
+    '  margin: 0;\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  border-radius: 0;\n' +
+    '  padding: 0;\n' +
+    '  box-shadow: none;\n' +
+    '}\n' +
+    '\n' +
+    '/* Measure constraint for ordinary p'... 74008 more characters
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-layout-width.mjs:7:80)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '/* ==========================================================================\n   ISC2 CC 2026 — Reading Notes CSS Styles\n   Clean, minimal technical documentation layout with dark/light theme support\n   ========================================================================== */\n\n:root {\n  --reading-screen-max-width: 1560px;\n  --reading-article-max-width: 1080px;\n  --reading-prose-max-width: 100%;\n  --reading-component-max-width: 1040px;\n...',
+    expected: /--reading-narrative-measure:\s*96ch/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-layout-width.mjs:8:1
+✖ Privacy columns respond to actual context width and preserve source reading order (0.5116ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /@container privacy-context\s*\(min-width:\s*56rem\)/. Input:
+  
+  '/* ==========================================================================\n' +
+    '   ISC2 CC 2026 — Reading Notes CSS Styles\n' +
+    '   Clean, minimal technical documentation layout with dark/light theme support\n' +
+    '   ========================================================================== */\n' +
+    '\n' +
+    ':root {\n' +
+    '  --reading-screen-max-width: 1560px;\n' +
+    '  --reading-article-max-width: 1080px;\n' +
+    '  --reading-prose-max-width: 100%;\n' +
+    '  --reading-component-max-width: 1040px;\n' +
+    '\n' +
+    '  /* Vertical Rhythm Spacing Tokens (4px / 8px Base Grid) */\n' +
+    '  --space-2xs: 4px;\n' +
+    '  --space-xs: 8px;\n' +
+    '  --space-sm: 12px;\n' +
+    '  --space-md: 16px;\n' +
+    '  --space-lg: 24px;\n' +
+    '  --space-xl: 32px;\n' +
+    '  --space-2xl: 44px;\n' +
+    '  --space-3xl: 60px;\n' +
+    '\n' +
+    '  /* Table Typography & Visual Hierarchy Tokens */\n' +
+    '  --table-header-font-size: 0.94rem;\n' +
+    '  --table-header-font-weight: 700;\n' +
+    '  --table-body-font-size: 0.92rem;\n' +
+    '  --table-body-line-height: 1.65;\n' +
+    '  --table-cell-padding-y: 12px;\n' +
+    '  --table-cell-padding-x: 16px;\n' +
+    '  --table-row-hover-bg: rgba(99, 102, 241, 0.04);\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Outer Screen & Header ===== */\n' +
+    '/* hidden creates a non-scrolling sticky ancestor; clip preserves viewport stickiness. */\n' +
+    'body:has(.reading-screen) {\n' +
+    '  overflow-x: clip;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-screen {\n' +
+    '  max-width: var(--reading-screen-max-width);\n' +
+    '  margin: 0 auto;\n' +
+    '  padding: 12px 24px 80px;\n' +
+    '  min-height: 100vh;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-bar {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  gap: 16px;\n' +
+    '  padding: 12px 0 18px;\n' +
+    '  border-bottom: 1px solid var(--line);\n' +
+    '  margin-bottom: 32px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-left {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 12px;\n' +
+    '}\n' +
+    '\n' +
+    '.btn-toggle-sidebar {\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 8px;\n' +
+    '  cursor: pointer;\n' +
+    '  padding: 7px 12px;\n' +
+    '  font-size: 13px;\n' +
+    '  font-weight: 500;\n' +
+    '  border: 1px solid var(--line);\n' +
+    '  border-radius: var(--radius-sm);\n' +
+    '  background: var(--panel);\n' +
+    '  color: var(--text-dim);\n' +
+    '  transition: all 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.btn-toggle-sidebar:hover {\n' +
+    '  background: var(--panel-2);\n' +
+    '  color: var(--text);\n' +
+    '  border-color: var(--line-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-center {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-app-badge {\n' +
+    '  font-size: 13px;\n' +
+    '  font-weight: 600;\n' +
+    '  letter-spacing: 0.02em;\n' +
+    '  color: var(--text-dim);\n' +
+    '  background: var(--panel-2);\n' +
+    '  border: 1px solid var(--line);\n' +
+    '  padding: 4px 12px;\n' +
+    '  border-radius: 20px;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Layout Container ===== */\n' +
+    '.reading-layout {\n' +
+    '  display: flex;\n' +
+    '  gap: 48px;\n' +
+    '  position: relative;\n' +
+    '  align-items: flex-start;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-backdrop {\n' +
+    '  display: none;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Minimal Left Sidebar ===== */\n' +
+    '.reading-sidebar {\n' +
+    '  flex: 0 0 290px;\n' +
+    '  width: 290px;\n' +
+    '  position: sticky;\n' +
+    '  top: 16px;\n' +
+    '  max-height: calc(100vh - 80px);\n' +
+    '  overflow-y: auto;\n' +
+    '  background: transparent;\n' +
+    '  border-right: 1px solid var(--line);\n' +
+    '  padding: 0 16px 32px 0;\n' +
+    '  box-shadow: none;\n' +
+    '  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),\n' +
+    '              width 0.25s cubic-bezier(0.16, 1, 0.3, 1),\n' +
+    '              opacity 0.2s ease;\n' +
+    '}\n' +
+    '\n' +
+    '/* Custom scrollbar for sidebar */\n' +
+    '.reading-sidebar::-webkit-scrollbar {\n' +
+    '  width: 4px;\n' +
+    '}\n' +
+    '.reading-sidebar::-webkit-scrollbar-track {\n' +
+    '  background: transparent;\n' +
+    '}\n' +
+    '.reading-sidebar::-webkit-scrollbar-thumb {\n' +
+    '  background: var(--line);\n' +
+    '  border-radius: 4px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-header {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  padding: 0 4px 10px;\n' +
+    '  margin-bottom: 8px;\n' +
+    '  border-bottom: 1px solid var(--line);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-title {\n' +
+    '  font-size: 11px;\n' +
+    '  font-weight: 700;\n' +
+    '  text-transform: uppercase;\n' +
+    '  letter-spacing: 0.08em;\n' +
+    '  color: var(--text-dim);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-close-mobile {\n' +
+    '  display: none;\n' +
+    '  background: none;\n' +
+    '  border: none;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  padding: 4px;\n' +
+    '  border-radius: 4px;\n' +
+    '}\n' +
+    '.reading-sidebar-close-mobile:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-2);\n' +
+    '}\n' +
+    '\n' +
+    '/* Collapsed sidebar on desktop */\n' +
+    '.reading-layout.sidebar-collapsed .reading-sidebar {\n' +
+    '  display: none;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-content-pane {\n' +
+    '  flex: 1 1 100%;\n' +
+    '  max-width: 1240px;\n' +
+    '  margin: 0 auto;\n' +
+    '  width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-article {\n' +
+    '  max-width: 1140px;\n' +
+    '  width: 100%;\n' +
+    '  margin: 0 auto;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-lead,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > p,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > ul,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > ol,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > blockquote,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > p,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > ul,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > ol,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > blockquote,\n' +
+    '.reading-layout.sidebar-collapsed .reading-intro-label {\n' +
+    '  max-width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-concept-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-response-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-mfa-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-treatment-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-category-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-distinction-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-precedence-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-table-wrapper,\n' +
+    '.reading-layout.sidebar-collapsed .reading-diagram-card,\n' +
+    '.reading-layout.sidebar-collapsed .reading-formula-card,\n' +
+    '.reading-layout.sidebar-collapsed .reading-scenario-card {\n' +
+    '  max-width: 100%;\n' +
+    '  width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Text-Based 3-Level Navigation ===== */\n' +
+    '.reading-nav-domains {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 6px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-group {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-domain-row {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 2px;\n' +
+    '  padding: 2px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn {\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  width: 22px;\n' +
+    '  height: 22px;\n' +
+    '  padding: 0;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  border-radius: 4px;\n' +
+    '  transition: color 0.15s ease, background-color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-svg {\n' +
+    '  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn.expanded .reading-chevron-svg {\n' +
+    '  transform: rotate(90deg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn {\n' +
+    '  flex: 1;\n' +
+    '  text-align: left;\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  padding: 6px 8px;\n' +
+    '  cursor: pointer;\n' +
+    '  display: flex;\n' +
+    '  align-items: baseline;\n' +
+    '  gap: 8px;\n' +
+    '  font-family: inherit;\n' +
+    '  color: var(--text-dim);\n' +
+    '  border-radius: var(--radius-sm);\n' +
+    '  transition: color 0.15s ease, background-color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-label {\n' +
+    '  font-size: 11px;\n' +
+    '  font-weight: 600;\n' +
+    '  text-transform: uppercase;\n' +
+    '  letter-spacing: 0.04em;\n' +
+    '  color: var(--text-muted);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-title {\n' +
+    '  font-size: 13.5px;\n' +
+    '  font-weight: 500;\n' +
+    '  line-height: 1.35;\n' +
+    '  color: inherit;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active {\n' +
+    '  color: var(--blue);\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active .reading-domain-label {\n' +
+    '  color: var(--blue);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active .reading-domain-title {\n' +
+    '  font-weight: 600;\n' +
+    '}\n' +
+    '\n' +
+    '/* Level 2: Objectives */\n' +
+    '.reading-nav-sub-tree {\n' +
+    '  padding-left: 18px;\n' +
+    '  margin: 2px 0 6px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objectives {\n' +
+    '  list-style: none;\n' +
+    '  margin: 0;\n' +
+    '  padding: 0 0 0 8px;\n' +
+    '  border-left: 1px solid var(--line);\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 4px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-item {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-row {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 4px;\n' +
+    '  padding: 2px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn {\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  width: 18px;\n' +
+    '  height: 18px;\n' +
+    '  padding: 0;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  border-radius: 3px;\n' +
+    '  transition: color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn.expanded .reading-chevron-svg {\n' +
+    '  transform: rotate(90deg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-bullet {\n' +
+    '  width: 4px;\n' +
+    '  height: 4px;\n' +
+    '  border-radius: 50%;\n' +
+    '  background: var(--line);\n' +
+    '  margin: 0 7px;\n' +
+    '  flex-shrink: 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link {\n' +
+    '  flex: 1;\n' +
+    '  text-decoration: none;\n' +
+    '  color: var(--text-muted);\n' +
+    '  font-size: 12.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  padding: 2px 4px;\n' +
+    '  border-radius: 3px;\n' +
+    '  transition: color 0.15s ease, background 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link.active {\n' +
+    '  color: var(--blue);\n' +
+    '  font-weight: 600;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-static {\n' +
+    '  display: block;\n' +
+    '  font-size: 12.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  color: var(--text-muted);\n' +
+    '  user-select: none;\n' +
+    '  padding: 2px 4px;\n' +
+    '}\n' +
+    '\n' +
+    '/* Level 3: Topics */\n' +
+    '.reading-nav-topics {\n' +
+    '  list-style: none;\n' +
+    '  margin: 2px 0 6px 14px;\n' +
+    '  padding: 0 0 0 8px;\n' +
+    '  border-left: 1px dashed var(--line);\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 2px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav [hidden],\n' +
+    '.reading-nav-topics[hidden],\n' +
+    '.reading-nav-sub-tree[hidden] {\n' +
+    '  display: none !important;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-item {\n' +
+    '  padding: 1px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link {\n' +
+    '  display: block;\n' +
+    '  font-size: 11.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  color: var(--text-dim);\n' +
+    '  text-decoration: none;\n' +
+    '  padding: 3px 6px;\n' +
+    '  border-radius: 4px;\n' +
+    '  transition: all 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link:hover {\n' +
+    '  color: var(--blue);\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link.active {\n' +
+    '  color: var(--blue);\n' +
+    '  font-weight: 600;\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Main Reading Area (Direct on Page Background) ===== */\n' +
+    '.reading-content-pane {\n' +
+    '  flex: 1 1 0;\n' +
+    '  min-width: 0;\n' +
+    '  padding: 0 0 80px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-article {\n' +
+    '  width: 100%;\n' +
+    '  max-width: var(--reading-article-max-width);\n' +
+    '  margin: 0;\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  border-radius: 0;\n' +
+    '  padding: 0;\n' +
+    '  box-shadow: none;\n' +
+    '}\n' +
+    '\n' +
+    '/* Measure constraint for ordinary p'... 74008 more characters
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-layout-width.mjs:8:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '/* ==========================================================================\n   ISC2 CC 2026 — Reading Notes CSS Styles\n   Clean, minimal technical documentation layout with dark/light theme support\n   ========================================================================== */\n\n:root {\n  --reading-screen-max-width: 1560px;\n  --reading-article-max-width: 1080px;\n  --reading-prose-max-width: 100%;\n  --reading-component-max-width: 1040px;\n...',
+    expected: /@container privacy-context\s*\(min-width:\s*56rem\)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-layout-width.mjs:9:1
+✖ Privacy emphasis preserves the key bilingual terminology (0.6969ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /<strong>Determines Purpose and Means<\/strong>/. Input:
+  
+  '<p class="reading-lead">เอกสารรวบรวมและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับ <strong>Domain 1: Security Principles</strong> (น้ำหนักข้อสอบ 24%) ครอบคลุมหลักการพื้นฐานด้านความมั่นคงปลอดภัยไซเบอร์ การบริหารความเสี่ยง การกำกับดูแล นโยบาย มาตรการควบคุม และประมวลจริยธรรมวิชาชีพของ ISC2 เพื่อสร้างความเข้าใจเชิงลึกสำหรับเตรียมสอบ</p>\n' +
+    '\n' +
+    '<section id="obj-1-1" class="reading-objective-section reading-structured-objective">\n' +
+    '\n' +
+    '## Objective 1.1: Understand cybersecurity concepts\n' +
+    '\n' +
+    'หัวข้อนี้ว่าด้วยรากฐานที่สำคัญที่สุดของความมั่นคงปลอดภัยสารสนเทศ การเข้าใจว่าเรากำลังปกป้องอะไร จากภัยคุกคามใด ด้วยหลักการและกลไกพื้นฐานอย่างไร\n' +
+    '\n' +
+    '<div id="topic-1-1-core-concepts" class="reading-topic-anchor"></div>\n' +
+    '\n' +
+    '### 1.1.1 Core Security Concepts & Assets\n' +
+    '\n' +
+    '**Information Security (InfoSec)** คือการปกป้องข้อมูลและระบบสารสนเทศจากการเข้าถึง การเปิดเผย การแก้ไข การทำลาย หรือการหยุดชะงักโดยไม่ได้รับอนุญาต โดยต้องรักษาสมดุลระหว่าง **ความปลอดภัย (Security)** กับ **ความต้องการและความคล่องตัวทางธุรกิจ (Business Needs)**\n' +
+    '\n' +
+    '<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>คำศัพท์รากฐานที่ต้องแยกความหมายให้ชัดเจน:</h4>\n' +
+    '\n' +
+    '| คำศัพท์ | คำจำกัดความ | ตัวอย่างในโลกจริง |\n' +
+    '|---|---|---|\n' +
+    '| **Asset (ทรัพย์สิน)** | สิ่งที่มีคุณค่าต่อองค์กร ซึ่งหากสูญหาย เสียหาย หรือรั่วไหลจะเกิดผลกระทบ | ฐานข้อมูลลูกค้า (Customer Database), ระบบชำระเงิน, ทรัพย์สินทางปัญญา, บุคลากร |\n' +
+    '| **Threat (ภัยคุกคาม)** | สิ่ง เหตุการณ์ หรือบุคคลที่อาจก่อให้เกิดอันตรายหรือสร้างความเสียหายต่อ Asset | แฮกเกอร์, มัลแวร์, แรนซัมแวร์, ไฟไหม้, น้ำท่วม, ไฟดับ |\n' +
+    '| **Threat Actor (ผู้ก่อภัยคุกคาม)** | ตัวบุคคลหรือกลุ่มบุคคลที่ลงมือหรือพยายามก่อให้เกิดภัยคุกคาม | อาชญากรไซเบอร์ (Cybercriminals), พนักงานภายในที่ประสงค์ร้าย (Insider Threats), รัฐสนับสนุน (Nation-State) |\n' +
+    '| **Vulnerability (ช่องโหว่)** | จุดอ่อนหรือข้อบกพร่องในระบบ กระบวนการ หรือมาตรการควบคุม ที่ผู้ก่อภัยคุกคามอาจใช้ประโยชน์ หรือเหตุการณ์คุกคามอาจกระตุ้นให้เกิดความเสียหาย | เซิร์ฟเวอร์ที่ยังไม่ได้ติดตั้ง Patch, การตั้งค่าความปลอดภัยผิดพลาด (Misconfiguration), รหัสผ่านที่คาดเดาง่าย |\n' +
+    '| **Exploit (การใช้ประโยชน์จากช่องโหว่)** | วิธีการ โค้ดโปรแกรม หรือเทคนิคที่ใช้เจาะผ่านจุดอ่อนของระบบ | สคริปต์ยิงเจาะช่องโหว่ซอฟต์แวร์, Phishing Email หลอกขอรหัสผ่าน |\n' +
+    '| **Risk (ความเสี่ยง)** | โอกาสและผลกระทบของความเสียหายที่อาจเกิดขึ้นเมื่อ Threat อาศัย Vulnerability สร้างผลกระทบต่อ Asset | โอกาสที่ฐานข้อมูลลูกค้าจะถูกขโมยและสร้างผลเสียหายทางการเงินและชื่อเสียง |\n' +
+    '| **Control / Safeguard (มาตรการควบคุม)** | กลไก นโยบาย หรือเทคโนโลยีที่นำมาติดตั้งเพื่อลดโอกาสหรือผลกระทบของความเสี่ยง | Multi-Factor Authentication (MFA), Firewall, นโยบายความปลอดภัย |\n' +
+    '\n' +
+    '<div class="reading-semantic-diagram" data-diagram="threatChain"></div>\n' +
+    '\n' +
+    '<div class="reading-callout warning">\n' +
+    '  <div class="reading-callout-header">\n' +
+    '    <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>\n' +
+    '    <span>ข้อควรระวังสำหรับข้อสอบ</span>\n' +
+    '  </div>\n' +
+    '  <div class="reading-warning-group">\n' +
+    '    <div class="reading-warning-item">\n' +
+    '      <h5 class="reading-concept-heading">Threat ไม่ใช่ Vulnerability</h5>\n' +
+    '      <p>Threat คือบุคคล สิ่ง หรือเหตุการณ์ที่อาจก่อความเสียหาย ทั้งจากภายในและภายนอกองค์กร (เช่น พนักงานประสงค์ร้าย, Hacker, Flood) ส่วน Vulnerability คือจุดอ่อนภายในระบบของเรา (เช่น Unpatched Server หรือ Misconfiguration)</p>\n' +
+    '    </div>\n' +
+    '    <div class="reading-warning-item">\n' +
+    '      <h5 class="reading-concept-heading">Vulnerability ไม่ได้แปลว่าเกิดเหตุโจมตีแล้ว</h5>\n' +
+    '      <p>การมีจุดอ่อนในระบบไม่ได้แปลว่าองค์กรถูกแฮกแล้ว หากไม่มี Threat เข้ามาใช้ประโยชน์จากช่องโหว่นั้น หรือมี Control ชดเชยอื่นปิดกั้นไว้</p>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</div>\n' +
+    '\n' +
+    '<div id="topic-1-1-cia-triad" class="reading-topic-anchor"></div>\n' +
+    '\n' +
+    '### 1.1.2 The CIA Triad — Confidentiality, Integrity, Availability\n' +
+    '\n' +
+    'แกนกลางของ Information Security ทุกเรื่องถูกสร้างขึ้นบนเสาหลัก 3 ต้น เรียกว่า **CIA Triad**\n' +
+    '\n' +
+    '<div class="reading-semantic-diagram" data-diagram="ciaTriad"></div>\n' +
+    '\n' +
+    '#### 1. Confidentiality — การรักษาความลับ\n' +
+    '\n' +
+    'ข้อมูลต้องถูกเข้าถึงและเปิดเผยต่อ **ผู้ที่ได้รับอนุญาตเท่านั้น (Authorized Individuals Only)** โดยมุ่งเน้นการป้องกัน **Unauthorized Disclosure** (การเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต)\n' +
+    '\n' +
+    '<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</h5>\n' +
+    '\n' +
+    '- **Encryption (การเข้ารหัสข้อมูล):** แปลงข้อมูลให้อ่านไม่ออกหากไม่มีกุญแจถอดรหัส\n' +
+    '- **Access Control & Permissions:** จำกัดสิทธิ์การอ่านไฟล์และระบบ\n' +
+    '- **Data Classification (การจัดชั้นความลับ):** กำหนดระดับความลับ เช่น Public, Internal, Confidential, Restricted\n' +
+    '- **Data Masking (การบดบังข้อมูลบางส่วน):** ซ่อนข้อมูลอ่อนไหวบางส่วนเพื่อป้องกันการมองเห็น เช่น แสดงเฉพาะเลข 4 หลักสุดท้ายของบัตรเครดิต\n' +
+    '- **Need to Know:** อนุญาตให้เข้าถึงเฉพาะข้อมูลที่จำเป็นต่อการปฏิบัติหน้าที่เท่านั้น\n' +
+    '- **Multi-Factor Authentication (MFA):** ป้องกันการสวมรอยเข้าถึงข้อมูล\n' +
+    '\n' +
+    '<div class="reading-scenario-inline">\n' +
+    '  <strong>สถานการณ์จำลอง:</strong> แฮกเกอร์เจาะระบบขโมย Customer Database ออกไป แม้ข้อมูลจะไม่ถูกแก้ไขหรือลบทิ้ง แต่บุคคลที่ไม่ควรเห็นได้เห็น → กระทบ <strong>Confidentiality</strong>\n' +
+    '</div>\n' +
+    '\n' +
+    '<div class="reading-keyword-takeaway">\n' +
+    '  <strong>คีย์เวิร์ดในข้อสอบ:</strong> <em>Confidentiality = Who can SEE it? / Secret / Unauthorized Disclosure</em>\n' +
+    '</div>\n' +
+    '\n' +
+    '#### 2. Integrity — ความถูกต้องและความสมบูรณ์ของข้อมูล\n' +
+    '\n' +
+    'ข้อมูลต้อง **ไม่ถูกแก้ไข ดัดแปลง หรือทำลายโดยไม่ได้รับอนุญาต** และสามารถตรวจสอบความถูกต้องได้ตลอดวงจรชีวิต เพื่อป้องกัน **Unauthorized Modification / Tampering** (การดัดแปลงข้อมูลโดยมิชอบ)\n' +
+    '\n' +
+    '<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</h5>\n' +
+    '\n' +
+    '- **Hashing (การคำนวณค่าแฮช):** ใช้สร้างค่าสรุปข้อมูลทางเดียวเพื่อตรวจสอบว่าไฟล์หรือข้อความถูกดัดแปลงหรือไม่ (เช่น SHA-256)\n' +
+    '- **Digital Signatures (ลายมือชื่อดิจิทัล):** ยืนยันทั้งความถูกต้องของข้อมูล (Integrity) และผู้ลงนาม (Authenticity)\n' +
+    '- **Access Permissions:** จำกัดสิทธิ์ในการแก้ไขหรือลบข้อมูล (Write / Delete permissions)\n' +
+    '- **Change Management (การบริหารการเปลี่ยนแปลง):** มีขั้นตอนอนุมัติ บันทึก และติดตามการแก้ไขระบบ\n' +
+    '- **File Integrity Monitoring (FIM) & Audit Logs:** ตรวจจับเมื่อมีการเปลี่ยนแปลงไฟล์สำคัญ\n' +
+    '\n' +
+    '<div class="reading-scenario-inline">\n' +
+    '  <strong>สถานการณ์จำลอง:</strong> ผู้โจมตีแทรกแซงฐานข้อมูลระบบธนาคารแล้วเปลี่ยนยอดเงินในบัญชี ข้อมูลยังเปิดอ่านได้ ระบบยังออนไลน์ปกติ แต่เนื้อหาถูกเปลี่ยนแปลง → กระทบ <strong>Integrity</strong>\n' +
+    '</div>\n' +
+    '\n' +
+    '<div class="reading-keyword-takeaway">\n' +
+    '  <strong>คีย์เวิร์ดในข้อสอบ:</strong> <em>Integrity = Can I TRUST the data? / Correct / Tampering / Alteration</em>\n' +
+    '</div>\n' +
+    '\n' +
+    '<div class="reading-callout tip">\n' +
+    '  <div class="reading-callout-header">\n' +
+    '    <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>\n' +
+    '    <span>จุดสับสนยอดฮิต (Hashing vs. Encryption)</span>\n' +
+    '  </div>\n' +
+    '  <div class="reading-callout-group">\n' +
+    '    <div class="reading-callout-item">\n' +
+    '      <h5 class="reading-concept-heading">Hashing (ฟังก์ชันทางเดียว — One-way)</h5>\n' +
+    '      <p>คำนวณค่าสรุปข้อมูลเพื่อเปรียบเทียบความถูกต้อง ไม่สามารถถอดกลับมาเป็นข้อความต้นฉบับได้</p>\n' +
+    '    </div>\n' +
+    '    <div class="reading-callout-item">\n' +
+    '      <h5 class="reading-concept-heading">Encryption (กระบวนการสองทาง — Two-way)</h5>\n' +
+    '      <p>เข้ารหัสเพื่อให้เป็นความลับ และสามารถถอดรหัส (Decryption) กลับมาอ่านได้ด้วยกุญแจที่ถูกต้อง</p>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</div>\n' +
+    '\n' +
+    '#### 3. Availability — ความพร้อมใช้งาน\n' +
+    '\n' +
+    'ระบบ ข้อมูล และทรัพยากรต้อง **พร้อมให้ผู้มีสิทธิ์เข้าใช้งานตามเวลาที่จำเป็นและข้อกำหนดบริการ** โดยมีเป้าหมายสำคัญคือการลด **Downtime** และสนับสนุนความต่อเนื่องทางธุรกิจเมื่อเผชิญภัยคุกคาม เช่น Hardware Failure, ไฟดับ (Power Outage), การโจมตี DDoS, Ransomware เข้ารหัส, หรือภัยธรรมชาติ\n' +
+    '\n' +
+    '<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</h5>\n' +
+    '\n' +
+    '- **Redundancy (ความซ้ำซ้อนของอุปกรณ์):** มีชิ้นส่วนสำรอง เช่น Power Supply คู่, RAID ฮาร์ดดิสก์\n' +
+    '- **Failover & Load Balancing:** การกระจายทราฟฟิกและสลับระบบอัตโนมัติเมื่อเครื่องหลักล่ม\n' +
+    '- **Uninterruptible Power Supply (UPS) & Backup Generators:** สำรองพลังงานไฟฟ้า\n' +
+    '- **Redundant Network / Multiple ISPs:** มีผู้ให้บริการอินเทอร์เน็ตมากกว่า 1 เจ้า\n' +
+    '- **Data Backups & Disaster Recovery (DR):** มีแผนและข้อมูลสำรองสำหรับกู้คืนระบบ\n' +
+    '\n' +
+    '<div class="reading-keyword-takeaway">\n' +
+    '  <strong>คีย์เวิร์ดในข้อสอบ:</strong> <em>Availability = Can I ACCESS it when needed? / Accessible / Downtime / Redundancy</em>\n' +
+    '</div>\n' +
+    '\n' +
+    '<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>ตัวอย่างสถาปัตยกรรมเพิ่ม Availability:</h5>\n' +
+    '\n' +
+    '<div class="reading-semantic-diagram" data-diagram="loadBalancer"></div>\n' +
+    '\n' +
+    '<h4 class="reading-subtopic-title">เปรียบเทียบ CIA จากสถานการณ์ข้อสอบ</h4>\n' +
+    '\n' +
+    '| สถานการณ์ในโจทย์ | หลักการที่เด่นที่สุด | คำอธิบายเหตุผล |\n' +
+    '|---|---|---|\n' +
+    '| ข้อมูลเงินเดือ'... 67443 more characters
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-layout-width.mjs:9:77)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<p class="reading-lead">เอกสารรวบรวมและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับ <strong>Domain 1: Security Principles</strong> (น้ำหนักข้อสอบ 24%) ครอบคลุมหลักการพื้นฐานด้านความมั่นคงปลอดภัยไซเบอร์ การบริหารความเสี่ยง การกำกับดูแล นโยบาย มาตรการควบคุม และประมวลจริยธรรมวิชาชีพของ ISC2 เพื่อสร้างความเข้าใจเชิงลึกสำหรับเตรียมสอบ</p>\n\n<section id="obj-1-1" class="reading-objective-section reading-structured-objective">\n\n## Objective 1.1: Understand cybersecurity concepts\n\nหัวข้อนี้ว่าด้วยรากฐานที่สำคัญที่สุดของความมั่นคงปลอดภัยสารสนเทศ การเข้าใจว่าเรากำลังปกป้องอะไร จากภัยคุกคามใด ด้วยหลักการและกลไกพื้นฐานอย่างไร\n\n<div id="topic-1-1-core-concepts" class="reading-topic-anchor"></div>\n\n...',
+    expected: /<strong>Determines Purpose and Means<\/strong>/,
+    operator: 'match',
+    diff: 'simple'
+  }

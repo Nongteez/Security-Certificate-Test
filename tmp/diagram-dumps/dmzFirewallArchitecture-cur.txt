@@ -1,0 +1,115 @@
+dmzFirewallArchitecture: `
+<div class="reading-diagram-card" data-diagram="dmzFirewallArchitecture" role="region" aria-label="Illustrative DMZ zones and firewall boundaries; policy-dependent connections">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Perimeter Architecture</span>
+    <h4 class="reading-diagram-title">Demilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 840 280" class="reading-diagram-svg" aria-label="Zone overview: Internet, FW1, public Web/WAF, Mail and DNS services in the DMZ, FW2 and internal assets; connections depend on policy, not a mandatory packet route" role="img">
+      <g>
+        <rect x="20" y="25" width="180" height="230" rx="8" class="diag-box diag-box-banner" />
+        <rect x="36" y="38" width="148" height="22" rx="4" fill="#ef4444" />
+        <text x="110" y="49" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">UNTRUSTED ZONE</text>
+        <text x="36" y="82" class="diag-text-title" font-size="14px" font-weight="700">Internet / Outside</text>
+        <text x="36" y="104" class="diag-text-sub" font-size="11.5px">&bull; สาธารณะภายนอก</text>
+        <text x="36" y="124" class="diag-text-sub" font-size="11.5px">&bull; ผู้ใช้งานทั่วไป</text>
+        <text x="36" y="144" class="diag-text-sub" font-size="11.5px">&bull; ภัยคุกคามภายนอก</text>
+        <text x="36" y="174" class="diag-text-sub" font-size="11px">ทราฟฟิกขาเข้าต้องผ่าน</text>
+        <text x="36" y="192" class="diag-text-sub" font-size="11px">การตรวจสอบอย่างเข้มงวด</text>
+      </g>
+
+      <g>
+        <rect x="220" y="45" width="55" height="190" rx="6" fill="#334155" stroke="var(--line, #475569)" stroke-width="1.5" />
+        <rect x="228" y="55" width="39" height="18" rx="3" fill="#ef4444" />
+        <text x="247" y="64" fill="#ffffff" font-size="9.5px" font-weight="800" text-anchor="middle" dominant-baseline="central">FW 1</text>
+        <text x="247" y="105" fill="#f8fafc" font-size="11px" font-weight="700" text-anchor="middle">External</text>
+        <text x="247" y="123" fill="#f8fafc" font-size="11px" font-weight="700" text-anchor="middle">Firewall</text>
+        <text x="247" y="155" fill="#cbd5e1" font-size="9px" text-anchor="middle">Packet Filter</text>
+        <text x="247" y="170" fill="#cbd5e1" font-size="9px" text-anchor="middle">Stateful</text>
+        <text x="247" y="210" fill="#93c5fd" font-size="9px" text-anchor="middle">Policy Ports</text>
+      </g>
+
+      <g>
+        <rect x="295" y="25" width="245" height="230" rx="8" class="diag-box diag-box-blue" />
+        <rect x="311" y="38" width="213" height="22" rx="4" fill="#3b82f6" />
+        <text x="417" y="49" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">BUFFER ZONE &middot; LIMITED TRUST</text>
+        <text x="311" y="82" class="diag-text-title" font-size="14px" font-weight="700">Demilitarized Zone (DMZ)</text>
+        
+        <rect x="311" y="98" width="213" height="32" rx="4" class="diag-box" fill="var(--panel)" />
+        <text x="323" y="118" class="diag-text-title" font-size="11px" font-weight="700">Web Server / WAF</text>
+        <text x="512" y="118" class="diag-text-sub" style="fill: var(--text)" font-size="10.5px" text-anchor="end">HTTPS:443</text>
+
+        <rect x="311" y="136" width="213" height="32" rx="4" class="diag-box" fill="var(--panel)" />
+        <text x="323" y="156" class="diag-text-title" font-size="11px" font-weight="700">Mail Gateway (SMTP)</text>
+        <text x="512" y="156" class="diag-text-sub" style="fill: var(--text)" font-size="10.5px" text-anchor="end">Port 25</text>
+
+        <rect x="311" y="174" width="213" height="32" rx="4" class="diag-box" fill="var(--panel)" />
+        <text x="323" y="194" class="diag-text-title" font-size="11px" font-weight="700">Public DNS / Proxy</text>
+        <text x="512" y="194" class="diag-text-sub" style="fill: var(--text)" font-size="10.5px" text-anchor="end">Port 53</text>
+        
+        <text x="417" y="235" class="diag-text-sub" font-size="10.5px" text-anchor="middle">แยกบริการสาธารณะออกจากเครือข่ายภายใน</text>
+      </g>
+
+      <g>
+        <rect x="560" y="45" width="55" height="190" rx="6" fill="#334155" stroke="var(--line, #475569)" stroke-width="1.5" />
+        <rect x="568" y="55" width="39" height="18" rx="3" fill="#10b981" />
+        <text x="587" y="64" fill="#ffffff" font-size="9.5px" font-weight="800" text-anchor="middle" dominant-baseline="central">FW 2</text>
+        <text x="587" y="105" fill="#f8fafc" font-size="11px" font-weight="700" text-anchor="middle">Internal</text>
+        <text x="587" y="123" fill="#f8fafc" font-size="11px" font-weight="700" text-anchor="middle">Firewall</text>
+        <text x="587" y="155" fill="#cbd5e1" font-size="9px" text-anchor="middle">Deep Inspect</text>
+        <text x="587" y="170" fill="#cbd5e1" font-size="9px" text-anchor="middle">Strict ACLs</text>
+        <text x="587" y="210" fill="#6ee7b7" font-size="9px" text-anchor="middle">App &amp; DB</text>
+      </g>
+
+      <g>
+        <rect x="635" y="25" width="185" height="230" rx="8" class="diag-box diag-box-blue" />
+        <rect x="651" y="38" width="153" height="22" rx="4" fill="#10b981" />
+        <text x="727" y="49" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">TRUSTED INTERNAL</text>
+        <text x="651" y="82" class="diag-text-title" font-size="14px" font-weight="700">Internal Network</text>
+        <text x="651" y="104" class="diag-text-sub" font-size="11.5px">&bull; Database Servers</text>
+        <text x="651" y="124" class="diag-text-sub" font-size="11.5px">&bull; Active Directory (IAM)</text>
+        <text x="651" y="144" class="diag-text-sub" font-size="11.5px">&bull; ERP / HR Systems</text>
+        <text x="651" y="164" class="diag-text-sub" font-size="11.5px">&bull; Staff Workstations</text>
+        <text x="651" y="195" class="diag-text-sub" font-size="11px">ไม่อนุญาตการเชื่อมต่อ</text>
+        <text x="651" y="213" class="diag-text-sub" font-size="11px">ตรงจาก Internet</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="DMZ Architecture Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kri">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">ZONE 1</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">INTERNET / OUTSIDE (UNTRUSTED)</h5>
+            <span class="reading-mob-tier-action">Public Access &middot; Inbound Traffic</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">เครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)</p><p class="reading-diagram-source-labels">UNTRUSTED ZONE · Internet / Outside · &bull; สาธารณะภายนอก · &bull; ผู้ใช้งานทั่วไป · &bull; ภัยคุกคามภายนอก · ทราฟฟิกขาเข้าต้องผ่าน · การตรวจสอบอย่างเข้มงวด · FW 1 · External · Firewall · Packet Filter · Stateful · Policy Ports</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">ZONE 2</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">DEMILITARIZED ZONE (DMZ BUFFER)</h5>
+            <span class="reading-mob-tier-action">Public Services &middot; Limited Trust</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">เขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง</p><p class="reading-diagram-source-labels">BUFFER ZONE &middot; LIMITED TRUST · Demilitarized Zone (DMZ) · Web Server / WAF · HTTPS:443 · Mail Gateway (SMTP) · Port 25 · Public DNS / Proxy · Port 53 · แยกบริการสาธารณะออกจากเครือข่ายภายใน</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-foundation">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">ZONE 3</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">INTERNAL NETWORK (TRUSTED / PRIVATE)</h5>
+            <span class="reading-mob-tier-action">Core Assets &middot; Database &amp; IAM</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">เครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด</p><p class="reading-diagram-source-labels">FW 2 · Internal · Firewall · Deep Inspect · Strict ACLs · App &amp; DB · TRUSTED INTERNAL · Internal Network · &bull; Database Servers · &bull; Active Directory (IAM) · &bull; ERP / HR Systems · &bull; Staff Workstations · ไม่อนุญาตการเชื่อมต่อ · ตรงจาก Internet</p>
+      </div>
+    </div>
+  </div>
+<p class="reading-semantic-note">Illustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี</p></div>
+`,

@@ -1,0 +1,263 @@
+--- phase3e-start/css/reading.css
++++ current/css/reading.css
+@@ -3654,6 +3654,131 @@
+   }
+ }
+ 
++/* Phase 3E: content-aware diagram legibility; preserve semantic relationships. */
++.reading-body .reading-diagram-card { container: reading-diagram / inline-size; }
++.reading-body .reading-diagram-card .reading-diagram-svg { max-width: none; width: 100%; height: auto; }
++.reading-body .reading-diagram-card .reading-diag-desktop { display: none !important; }
++.reading-body .reading-diagram-card .reading-diag-mobile { display: flex !important; flex-direction: column; gap: 16px; width: 100%; }
++.reading-body .reading-diag-mobile :is(p, li, span, .reading-mob-card-pill, .reading-mob-metric-val, .reading-mob-step-metric-hint) {
++  font-size: 15px; line-height: 1.65; color: var(--text); word-break: normal; overflow-wrap: normal;
++}
++.reading-body .reading-diag-mobile :is(h5, h6) { font-size: 16px; line-height: 1.6; color: var(--text); }
++.reading-body .reading-diag-mobile :is(.reading-mob-tier-head, .reading-mob-card-head) { flex-wrap: wrap; align-items: flex-start; }
++.reading-body .reading-diag-mobile :is(.reading-mob-tier-info, .reading-mob-head-info) { min-width: 0; flex: 1 1 12rem; }
++.reading-body .reading-diag-mobile :is(.reading-mob-tier-card, .reading-mob-card, .reading-mob-step-card) { min-width: 0; }
++.reading-body .reading-mob-connector-pill { max-width: 100%; white-space: normal; text-align: center; }
++.reading-body .reading-diagram-card svg text { fill: var(--text); }
++.reading-body .reading-diagram-card svg text[fill="#ffffff"] { fill: #ffffff; }
++.reading-body .reading-diagram-card svg text[fill="#0f172a"] { fill: #0f172a; }
++.reading-body .reading-diagram-card svg rect[fill="#10b981"] { fill: #047857; }
++.reading-body .reading-diagram-card svg rect[fill="#3b82f6"] { fill: #1d4ed8; }
++.reading-body .reading-diagram-card svg rect[fill="#8b5cf6"] { fill: #6d28d9; }
++.reading-body .reading-diagram-card svg rect[fill="#ef4444"] { fill: #b91c1c; }
++.reading-body [data-diagram="cloudSharedResponsibility"] svg > g:first-child > text { font-size: 10.5px; }
++.reading-body :is([data-diagram="dmzFirewallArchitecture"], [data-diagram="cloudSharedResponsibility"], [data-diagram="osiVsTcpIpModel"]) .reading-mob-stack-list {
++  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 16px;
++}
++.reading-body .reading-osi-reference { grid-column: 1 / -1; }
++.reading-body .reading-osi-reference > h5 { margin: 0 0 16px; }
++.reading-body .reading-osi-reference .reading-semantic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 16px; }
++.reading-body .reading-osi-reference .reading-semantic-concept { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
++.reading-body .reading-osi-reference h6 { margin: 0 0 8px; }
++.reading-body .reading-osi-reference p { margin: 0; }
++@container reading-diagram (min-width: 982px) {
++  .reading-body [data-diagram="threatChain"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="threatChain"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 904px) {
++  .reading-body [data-diagram="ciaTriad"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="ciaTriad"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 840px) {
++  .reading-body [data-diagram="loadBalancer"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="loadBalancer"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 904px) {
++  .reading-body [data-diagram="privacyFlow"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="privacyFlow"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1051px) {
++  .reading-body [data-diagram="defenseInDepth"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="defenseInDepth"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 890px) {
++  .reading-body [data-diagram="riskCalculationFlow"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="riskCalculationFlow"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1082px) {
++  .reading-body [data-diagram="riskLifecycle"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="riskLifecycle"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1111px) {
++  .reading-body [data-diagram="documentHierarchy"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="documentHierarchy"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 920px) {
++  .reading-body [data-diagram="dueCareDiligence"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="dueCareDiligence"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1001px) {
++  .reading-body [data-diagram="ethicsCanons"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="ethicsCanons"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1007px) {
++  .reading-body [data-diagram="grcAlignment"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="grcAlignment"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1085px) {
++  .reading-body [data-diagram="rtoRpoTimeline"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="rtoRpoTimeline"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1136px) {
++  .reading-body [data-diagram="nistSp80063Framework"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="nistSp80063Framework"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1136px) {
++  .reading-body [data-diagram="leastPrivilegeVsSod"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="leastPrivilegeVsSod"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1085px) {
++  .reading-body [data-diagram="accessControlModels"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="accessControlModels"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1193px) {
++  .reading-body [data-diagram="osiVsTcpIpModel"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="osiVsTcpIpModel"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1326px) {
++  .reading-body [data-diagram="dmzFirewallArchitecture"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="dmzFirewallArchitecture"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1085px) {
++  .reading-body [data-diagram="defenseInDepthLayers"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="defenseInDepthLayers"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1136px) {
++  .reading-body [data-diagram="cloudSharedResponsibility"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="cloudSharedResponsibility"] .reading-diag-mobile { display: none !important; }
++}
++.reading-body .reading-diag-mobile code { font-size: 15px; }
++.reading-body [data-diagram="riskCalculationFlow"] svg > g:nth-of-type(3) > rect { height: 107px; }
++.reading-body [data-diagram="riskCalculationFlow"] svg > g:nth-of-type(3) > text:last-child { transform: translateY(6px); }
++.reading-body .reading-diag-mobile .reading-mob-step-badge { font-size: 15px; color: var(--text); }
++.reading-body .reading-diag-mobile .reading-mob-step-card { flex-wrap: wrap; }
++.reading-body .reading-diag-mobile .reading-mob-time-body { min-width: 0; flex: 1 1 12rem; }
++.reading-body .reading-diagram-card svg rect[fill^="var(--blue,"] { fill: #1d4ed8; }
++.reading-body [data-diagram="rtoRpoTimeline"] svg > g > text:last-child { transform: translateY(7px); }
++.reading-body [data-diagram="nistSp80063Framework"] svg > g:nth-of-type(-n+3) > rect:first-child { height: 144px; }
++.reading-body [data-diagram="nistSp80063Framework"] svg > g:nth-of-type(-n+3) > text:last-child { transform: translateY(6px); }
++.reading-body [data-diagram="riskCalculationFlow"] svg > g:is(:nth-of-type(1), :nth-of-type(2), :nth-of-type(4)) > rect { height: 96px; }
++.reading-body [data-diagram="riskCalculationFlow"] svg > g:is(:nth-of-type(1), :nth-of-type(2), :nth-of-type(4)) > text:nth-of-type(2) { transform: translateY(8px); }
++.reading-body [data-diagram="riskCalculationFlow"] svg > g:is(:nth-of-type(1), :nth-of-type(2), :nth-of-type(4)) > text:last-child { transform: translateY(15px); }
++.reading-body [data-diagram="riskLifecycle"] svg > rect { height: 78px; }
++.reading-body [data-diagram="riskLifecycle"] svg > .diag-text-sub { transform: translateY(6px); }
++.reading-body [data-diagram="riskLifecycle"] svg > path:last-of-type { transform: translateY(8px); }
++.reading-body [data-diagram="riskLifecycle"] svg > .diag-text-label { transform: translateY(18px); }
++/* End Phase 3E diagram legibility. */
++
+ /* Phase 3B.2: opt-in textbook prose, independent of tables and diagrams. */
+ .reading-body .reading-structured-objective > h3 {
+   margin: 40px 0 16px;
+--- phase3e-start/docs/plans/task.md
++++ current/docs/plans/task.md
+@@ -205,3 +205,5 @@
+ | P3C. Reading tables and technical typography | Implemented — Pending Human Visual Acceptance | All 22 tables and 94 subsections verified at 14 states; 9,906 Chrome checks and 692 regressions pass. Four historical D1 assertions unchanged. Native word boundaries, readable column floors, GRC sizing and keyboard regions implemented; 532 authoritative before/after captures. Reading sources, original notes, diagrams and concurrent Slides preserved. See Phase 3C report / QA manifest. No Phase 3D. |
+ 
+ | P3D. Reading diagram semantics | Implemented — Pending Human Visual Acceptance | All 24 diagrams reviewed; 11 corrected/qualified, 13 preserved. 336 Chrome diagram states / 2,346 checks plus 240 navigation checks pass; 22 suites / 1,076 checks pass. All 94 anchors and 22 tables retained; original notes and concurrent work byte-preserved. Ethics provenance unresolved; legacy visual limits documented. No Phase 3E/F. |
++
++| P3E–3F. Reading Notes final remediation | Phase 3E Complete — Phase 3F In Progress | 24 diagrams × 14 states / 4,138 Chrome checks; 23 suites / 1,082 checks pass. Cloud clipping and label contrast fixed; complete reflow labels preserved. Starting current-production 94-subsection accessibility/navigation QA and floating-control remediation. Human acceptance pending. |
+--- phase3e-start/js/core/diagram-generator.js
++++ current/js/core/diagram-generator.js
+@@ -1413,7 +1413,7 @@
+             <span class="reading-mob-tier-action">Real-World Identity Verification</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ตรวจสอบความถูกต้องของบุคคลในโลกจริง (เช่น แสดงบัตรประชาชน) ก่อนการออกข้อมูลประจำตัวดิจิทัล (Enrollment)</p>
++        <p class="reading-mob-tier-desc">ตรวจสอบความถูกต้องของบุคคลในโลกจริง (เช่น แสดงบัตรประชาชน) ก่อนการออกข้อมูลประจำตัวดิจิทัล (Enrollment)</p><p class="reading-diagram-source-labels">SP 800-63A &middot; IAL</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-scorecard">
+@@ -1424,7 +1424,7 @@
+             <span class="reading-mob-tier-action">Credential Possession &amp; Control</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ยืนยันว่าผู้ใช้เป็นผู้ครอบครองข้อมูลประจำตัว (รหัสผ่าน, OTP, ไบโอเมตริกซ์) ในการล็อกอินประจำวัน</p>
++        <p class="reading-mob-tier-desc">ยืนยันว่าผู้ใช้เป็นผู้ครอบครองข้อมูลประจำตัว (รหัสผ่าน, OTP, ไบโอเมตริกซ์) ในการล็อกอินประจำวัน</p><p class="reading-diagram-source-labels">SP 800-63B &middot; AAL</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-report">
+@@ -1435,7 +1435,7 @@
+             <span class="reading-mob-tier-action">Cross-Domain Trust &amp; Assertions</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ส่งต่อข้อมูลตัวตนและการยืนยันตัวตนข้ามขอบเขตองค์กรหรือระบบบริการ เช่น Single Sign-On (SSO)</p>
++        <p class="reading-mob-tier-desc">ส่งต่อข้อมูลตัวตนและการยืนยันตัวตนข้ามขอบเขตองค์กรหรือระบบบริการ เช่น Single Sign-On (SSO)</p><p class="reading-diagram-source-labels">SP 800-63C &middot; FAL</p>
+       </div>
+     </div>
+   </div>
+@@ -1715,7 +1715,7 @@
+       </g>
+     </svg>
+   </div>
+-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="OSI vs TCP/IP Mobile Stack">
++  <div class="reading-diag-mobile reading-mobile-stack" aria-label="OSI vs TCP/IP Mobile Stack"><section class="reading-osi-reference"><h5>OSI — Seven reference layers / เจ็ดชั้นอ้างอิง</h5><div class="reading-semantic-grid"><section class="reading-semantic-concept" data-osi-layer="7"><h6>7. Application (แอปพลิเคชัน)</h6><p>HTTP, HTTPS, DNS, SSH, FTP &middot; PDU: Data</p></section><section class="reading-semantic-concept" data-osi-layer="6"><h6>6. Presentation (การนำเสนอ)</h6><p>TLS/SSL, ASCII, JSON, JPEG &middot; Formatting</p></section><section class="reading-semantic-concept" data-osi-layer="5"><h6>5. Session (เซสชัน)</h6><p>RPC, NetBIOS &middot; Session Management</p></section><section class="reading-semantic-concept" data-osi-layer="4"><h6>4. Transport (การขนส่ง)</h6><p>TCP, UDP, Ports &middot; PDU: Segments / Datagrams</p></section><section class="reading-semantic-concept" data-osi-layer="3"><h6>3. Network (เครือข่าย)</h6><p>IPv4, IPv6, ICMP, IPsec &middot; PDU: Packets</p></section><section class="reading-semantic-concept" data-osi-layer="2"><h6>2. Data Link (ดาต้าลิงก์)</h6><p>Ethernet, MAC, Switches &middot; PDU: Frames</p></section><section class="reading-semantic-concept" data-osi-layer="1"><h6>1. Physical (กายภาพ)</h6><p>Cables, RJ45, Hubs, Radio Signals &middot; PDU: Bits</p></section></div></section>
+     <div class="reading-mob-stack-list">
+       <div class="reading-mob-tier-card reading-tier-kpi">
+         <div class="reading-mob-tier-head">
+@@ -1853,7 +1853,7 @@
+             <span class="reading-mob-tier-action">Public Access &middot; Inbound Traffic</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">เครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)</p>
++        <p class="reading-mob-tier-desc">เครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)</p><p class="reading-diagram-source-labels">UNTRUSTED ZONE · Internet / Outside · &bull; สาธารณะภายนอก · &bull; ผู้ใช้งานทั่วไป · &bull; ภัยคุกคามภายนอก · ทราฟฟิกขาเข้าต้องผ่าน · การตรวจสอบอย่างเข้มงวด · FW 1 · External · Firewall · Packet Filter · Stateful · Policy Ports</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-kpi">
+@@ -1864,7 +1864,7 @@
+             <span class="reading-mob-tier-action">Public Services &middot; Limited Trust</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">เขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง</p>
++        <p class="reading-mob-tier-desc">เขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง</p><p class="reading-diagram-source-labels">BUFFER ZONE &middot; LIMITED TRUST · Demilitarized Zone (DMZ) · Web Server / WAF · HTTPS:443 · Mail Gateway (SMTP) · Port 25 · Public DNS / Proxy · Port 53 · แยกบริการสาธารณะออกจากเครือข่ายภายใน</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-foundation">
+@@ -1875,7 +1875,7 @@
+             <span class="reading-mob-tier-action">Core Assets &middot; Database &amp; IAM</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">เครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด</p>
++        <p class="reading-mob-tier-desc">เครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด</p><p class="reading-diagram-source-labels">FW 2 · Internal · Firewall · Deep Inspect · Strict ACLs · App &amp; DB · TRUSTED INTERNAL · Internal Network · &bull; Database Servers · &bull; Active Directory (IAM) · &bull; ERP / HR Systems · &bull; Staff Workstations · ไม่อนุญาตการเชื่อมต่อ · ตรงจาก Internet</p>
+       </div>
+     </div>
+   </div>
+@@ -2114,7 +2114,7 @@
+       </g>
+     </svg>
+   </div>
+-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Cloud Shared Responsibility Mobile Stack">
++  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Cloud Shared Responsibility Mobile Stack"><p class="reading-diagram-source-labels">Customer Responsibility (Security IN the Cloud &middot; ลูกค้าดูแล) · CSP Responsibility (Security OF the Cloud &middot; ผู้ให้บริการดูแล)</p>
+     <div class="reading-mob-stack-list">
+       <div class="reading-mob-tier-card reading-tier-foundation">
+         <div class="reading-mob-tier-head">
+@@ -2124,7 +2124,7 @@
+             <span class="reading-mob-tier-action">OS &middot; Apps &middot; Customer Managed</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Applications, Guest OS, Patching และ Network Configs | CSP ดูแล: Hypervisor, Physical Servers, Storage, Datacenter Facility</p>
++        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Applications, Guest OS, Patching และ Network Configs | CSP ดูแล: Hypervisor, Physical Servers, Storage, Datacenter Facility</p><p class="reading-diagram-source-labels">IaaS · Infrastructure as a Service · Data Policy (Customer) · IAM Policy (Customer) · Applications &amp; Code (Customer) · OS &amp; Patching (Customer) · Virtualization (CSP) · Physical Facilities (CSP) · เช่น AWS EC2, Azure VMs</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-kpi">
+@@ -2135,7 +2135,7 @@
+             <span class="reading-mob-tier-action">Code &middot; Data &middot; Runtime Managed</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Application Source Code | CSP ดูแล: OS, Middleware, Language Runtime, Database Engine, Hardware, Physical Security</p>
++        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Application Source Code | CSP ดูแล: OS, Middleware, Language Runtime, Database Engine, Hardware, Physical Security</p><p class="reading-diagram-source-labels">PaaS · Platform as a Service · Data Policy (Customer) · IAM Policy (Customer) · Applications &amp; Code (Customer) · OS &amp; Runtime (CSP) · Virtualization (CSP) · Physical Facilities (CSP) · เช่น App Engine, Elastic Beanstalk</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-report">
+@@ -2146,7 +2146,7 @@
+             <span class="reading-mob-tier-action">Data &middot; Access &middot; App Managed</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย/การตั้งค่า User Access ที่ตนควบคุม; CSP ยังคงดูแลความปลอดภัยของบริการ Storage และ IAM ที่ตนบริหาร | CSP ดูแล: แอปพลิเคชันทั้งหมด, ซอฟต์แวร์, OS, โครงสร้างพื้นฐาน และการสำรองข้อมูลระดับระบบ</p>
++        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย/การตั้งค่า User Access ที่ตนควบคุม; CSP ยังคงดูแลความปลอดภัยของบริการ Storage และ IAM ที่ตนบริหาร | CSP ดูแล: แอปพลิเคชันทั้งหมด, ซอฟต์แวร์, OS, โครงสร้างพื้นฐาน และการสำรองข้อมูลระดับระบบ</p><p class="reading-diagram-source-labels">SaaS · Software as a Service · Data Policy (Customer) · IAM Policy (Customer) · Applications &amp; Logic (CSP) · OS &amp; Runtime (CSP) · Virtualization (CSP) · Physical Facilities (CSP) · เช่น M365, Google Workspace</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-dashboard">
+@@ -2157,7 +2157,7 @@
+             <span class="reading-mob-tier-action">Event Code &middot; Fully Managed</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: Function Code, การจัดชั้นข้อมูล และนโยบาย/การตั้งค่า IAM Trigger ที่ตนควบคุม | CSP ดูแล: การสเกลแบบอัตโนมัติ (Auto-scaling), Event Bus, Container Execution, Host Infrastructure</p>
++        <p class="reading-mob-tier-desc">ลูกค้าดูแล: Function Code, การจัดชั้นข้อมูล และนโยบาย/การตั้งค่า IAM Trigger ที่ตนควบคุม | CSP ดูแล: การสเกลแบบอัตโนมัติ (Auto-scaling), Event Bus, Container Execution, Host Infrastructure</p><p class="reading-diagram-source-labels">FaaS / Serverless · Function as a Service · Data Policy (Customer) · IAM Policy (Customer) · Function Code (Customer) · Event Runtime &amp; OS (CSP) · Compute Container (CSP) · Physical Facilities (CSP) · เช่น AWS Lambda, Cloud Functions</p>
+       </div>
+     </div>
+   </div>
+--- phase3e-start/tools/verify-reading-diagram-semantics.mjs
++++ current/tools/verify-reading-diagram-semantics.mjs
+@@ -3,7 +3,7 @@
+ const q='artifacts/qa/reading-notes-phase3d/';
+ const base=JSON.parse(fs.readFileSync(q+'baseline-diagrams.json','utf8'));
+ const modified=['controlTimeline','effectivenessHierarchy','bcVsDrScope','iamLifecycle','defenseInDepth','osiVsTcpIpModel','aaaLifecycle','dmzFirewallArchitecture','threatChain','privacyFlow','grcAlignment'];
+-test('registry and every unmodified diagram preserved',()=>{assert.deepEqual(Object.keys(diagrams),Object.keys(base));for(const id of Object.keys(base).filter(id=>!modified.includes(id)))assert.equal(diagrams[id],base[id],id)});
++test('registry and every unmodified diagram preserved',()=>{assert.deepEqual(Object.keys(diagrams),Object.keys(base));for(const id of Object.keys(base).filter(id=>!modified.includes(id)))assert.equal(["nistSp80063Framework","cloudSharedResponsibility"].includes(id)?diagrams[id].replace(/<p class="reading-diagram-source-labels">[\s\S]*?<\/p>/g,''):diagrams[id],base[id],id)});
+ test('five control functions coexist without workflow arrows or temporal stages',()=>{const h=diagrams.controlTimeline;for(const name of ['Deterrent','Preventive','Detective','Corrective','Recovery'])assert.match(h,new RegExp(`data-concept="${name.toLowerCase()}"`));assert.match(h,/data-relationship="coexisting-functions"/);assert.doesNotMatch(h,/marker-end|diag-timeline-arrow|reading-mob-step-connector|>BEFORE<|>DURING<|>AFTER</);assert.match(h,/not a mandatory sequence/)});
+ test('measurement retains six concepts in meaningful groups without ordinals',()=>{const h=diagrams.effectivenessHierarchy;for(const key of ['metric','kpi','kri','dashboard','scorecard','report'])assert.match(h,new RegExp(`data-concept="${key}"`));assert.match(h,/data-group="measures"/);assert.match(h,/data-group="communication"/);assert.match(h,/local study aid/);assert.doesNotMatch(h,/diag-step-num|reading-mob-tier-num|>0[1-6]</);assert.doesNotMatch(h,/marker-end|6-Part Framework/)});
+ test('JML Mover is optional and repeatable with continuous governance',()=>{const h=diagrams.iamLifecycle;for(const stage of ['joiner','mover','leaver'])assert.match(h,new RegExp(`data-stage="${stage}"`));assert.match(h,/data-optional="true" data-repeatable="true"/);assert.match(h,/without a Mover/);assert.match(h,/Periodic Access Reviews/);assert.doesNotMatch(h,/reading-mob-arrow-down|>0[123]</)});

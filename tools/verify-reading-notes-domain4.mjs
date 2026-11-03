@@ -49,7 +49,7 @@ test('ISC2 CC 2026 — Reading Notes Domain 4 Verification Suite', async (t) => 
     assert.equal(d4.objectives.length, 3, 'Domain 4 in READING_DOMAINS must have 3 objectives');
     assert.ok(d4.review, 'Domain 4 in READING_DOMAINS must have review section');
 
-    assert.equal(d5?.published, false, 'Domain 5 must remain unpublished');
+    assert.equal(d5?.published, true, 'Domain 5 must now be published');
   });
 
   await t.test('3. Reading Loader Asynchronous & Synchronous Cache', async () => {
@@ -162,7 +162,9 @@ test('ISC2 CC 2026 — Reading Notes Domain 4 Verification Suite', async (t) => 
     assert.equal(distinctionMatch.length, 12, 'Must have exactly 12 concept distinction cards');
 
     // 16 Exam Traps
-    assert.ok(rawMarkdown.includes('16. ถ้าข้อสอบถามถึง'), 'Must contain 16 numbered exam traps');
+    // Phase 3B.2: parallel review prompts are unordered; require every item in source and DOM.
+    assert.equal((rawMarkdown.match(/^- ถ้าข้อสอบถามถึง/gm) || []).length, 16, 'Must contain exactly 16 unordered exam traps');
+    assert.equal((renderedHtml.match(/<li>ถ้าข้อสอบถามถึง/g) || []).length, 16, 'All 16 exam traps must render as list items');
     assert.equal(rawMarkdown.includes('$'), false, 'Raw markdown must contain 0 unescaped LaTeX math delimiters');
 
     // 12 Review Scenarios
@@ -194,9 +196,8 @@ test('ISC2 CC 2026 — Reading Notes Domain 4 Verification Suite', async (t) => 
     const emojiRegex = /[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
     assert.equal(emojiRegex.test(rawMarkdown), false, 'Markdown must contain 0 decorative emojis');
 
-    // Sequential ordered lists
-    const olMatches = renderedHtml.match(/<ol[^>]*>([\s\S]*?)<\/ol>/g);
-    assert.ok(olMatches && olMatches.length > 0, 'Ordered lists must exist');
+    // Phase 3B.2: D4's parallel concepts are headings or unordered supporting lists.
+    assert.doesNotMatch(renderedHtml, /<ol\b/, 'Nonsequential D4 concepts must not imply a mandatory sequence');
   });
 
   await t.test('9. Preservation Boundaries', () => {

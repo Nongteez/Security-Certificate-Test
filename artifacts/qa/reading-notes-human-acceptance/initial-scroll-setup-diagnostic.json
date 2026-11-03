@@ -1,0 +1,150 @@
+{
+  "method": "Installed Chrome actual Input mousePressed/mouseReleased and complete keyDown/keyUp. Focus setup recorded; not physical keyboard/touch hardware.",
+  "checks": [
+    {
+      "name": "Open Domain 3 from real navigation",
+      "pass": true,
+      "detail": {
+        "hash": "#topic-3-2-models-matrix",
+        "y": 213,
+        "domain": "3",
+        "theme": "dark",
+        "focus": "reading-content-pane",
+        "sidebarInert": false
+      }
+    },
+    {
+      "name": "Select Objective 3.2",
+      "pass": true,
+      "detail": {
+        "hash": "#obj-3-2",
+        "y": 189,
+        "domain": "3",
+        "theme": "dark",
+        "focus": "reading-content-pane",
+        "sidebarInert": false
+      }
+    },
+    {
+      "name": "Open ABAC subsection",
+      "pass": true,
+      "detail": {
+        "hash": "#topic-3-2-abac",
+        "y": 292,
+        "domain": "3",
+        "theme": "dark",
+        "focus": "reading-content-pane",
+        "sidebarInert": false
+      }
+    },
+    {
+      "name": "Select next subsection MAC",
+      "pass": true,
+      "detail": {
+        "hash": "#topic-3-2-mac",
+        "y": 13218,
+        "domain": "3",
+        "theme": "dark",
+        "focus": "reading-content-pane",
+        "sidebarInert": false
+      }
+    },
+    {
+      "name": "Browser Back restores ABAC position",
+      "pass": false,
+      "detail": {
+        "before": {
+          "hash": "#topic-3-2-abac",
+          "y": 455,
+          "domain": "3",
+          "theme": "dark",
+          "focus": "reading-content-pane",
+          "sidebarInert": false
+        },
+        "back": {
+          "hash": "#topic-3-2-abac",
+          "y": 13218,
+          "domain": "3",
+          "theme": "dark",
+          "focus": "reading-content-pane",
+          "sidebarInert": false
+        }
+      }
+    },
+    {
+      "name": "Reload restores actual position",
+      "pass": false,
+      "detail": {
+        "back": {
+          "hash": "#topic-3-2-abac",
+          "y": 13218,
+          "domain": "3",
+          "theme": "dark",
+          "focus": "reading-content-pane",
+          "sidebarInert": false
+        },
+        "reloaded": {
+          "hash": "#topic-3-2-abac",
+          "y": 237,
+          "domain": "3",
+          "theme": "dark",
+          "focus": "",
+          "sidebarInert": false
+        }
+      }
+    },
+    {
+      "name": "Exit reaches exam overview",
+      "pass": false,
+      "detail": {
+        "hash": "#topic-3-2-abac",
+        "y": 0,
+        "domain": "3",
+        "theme": "dark",
+        "focus": "",
+        "sidebarInert": false
+      }
+    }
+  ],
+  "screenshots": [
+    "journey-abac-mid.png"
+  ],
+  "steps": [
+    {
+      "action": "mouse-click",
+      "selector": "[data-select-domain=\"3\"]",
+      "x": 184.5,
+      "y": 360.390625,
+      "text": "\n              Domain 3\n              Access Controls\n            "
+    },
+    {
+      "action": "mouse-click",
+      "selector": "[data-scroll-to=\"obj-3-2\"]",
+      "x": 197,
+      "y": 359.59375,
+      "text": "\n                          3.2 Understand logical access controls\n                        "
+    },
+    {
+      "action": "mouse-click",
+      "selector": "[data-scroll-to=\"topic-3-2-abac\"]",
+      "x": 197.5,
+      "y": 487.3125,
+      "text": "3.2.7 Attribute-Based Access Control (ABAC)"
+    },
+    {
+      "action": "mouse-click",
+      "selector": "[data-scroll-to=\"topic-3-2-mac\"]",
+      "x": 197.5,
+      "y": 402.9375,
+      "text": "3.2.5 Mandatory Access Control (MAC)"
+    },
+    {
+      "action": "mouse-click",
+      "selector": "#btn-reading-back",
+      "x": 156.375,
+      "y": 85,
+      "text": "← Back to Exam Versions"
+    }
+  ],
+  "error": "Error: Eval exception: Uncaught (Error: Missing observed selector\n    at <anonymous>:1:72\n    at <anonymous>:1:269)\n    at CDPClient.eval (file:///D:/_Coding/SEC-CERT-TEST/artifacts/qa/reading-notes-human-acceptance/chrome-support.mjs:108:13)\n    at async click (file:///D:/_Coding/SEC-CERT-TEST/artifacts/qa/reading-notes-human-acceptance/interaction-review.mjs:8:40)\n    at async file:///D:/_Coding/SEC-CERT-TEST/artifacts/qa/reading-notes-human-acceptance/interaction-review.mjs:23:1"
+}

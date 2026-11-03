@@ -183,7 +183,7 @@ $$SLE = AV \\times EF$$
   assert.ok(html.includes('<strong>bold</strong>'), 'Must render bold');
   assert.ok(html.includes('<em>italic</em>'), 'Must render italic');
   assert.ok(html.includes('<code>inline code</code>'), 'Must render inline code');
-  assert.ok(html.includes('<div class="reading-table-wrapper">'), 'Must wrap tables for responsiveness');
+  assert.match(html, /<div class="reading-table-wrapper" role="region" tabindex="0" aria-label="[^"]+">/, 'Must wrap tables in a named keyboard-accessible scroll region');
   assert.ok(html.includes('<table class="reading-table">'), 'Must render table');
   assert.ok(html.includes('<blockquote class="reading-blockquote">'), 'Must render blockquote');
   assert.ok(html.includes('<ul>') && html.includes('<li>Item 1</li>'), 'Must render unordered list');
@@ -210,10 +210,10 @@ await runAsyncTest('Reading Loader — Loads Domain 1 data and caches rendered o
   assert.ok(cached, 'Cache must return populated object after load');
   assert.equal(cached.renderedHtml, loaded.renderedHtml);
 
-  // Test Domain 5 placeholder
+  // Test Domain 5 now published
   const d5 = await loadDomainReading(5);
   assert.equal(d5.id, 5);
-  assert.equal(d5.published, false);
+  assert.equal(d5.published, true);
 });
 
 // -------------------------------------------------------------
@@ -332,35 +332,13 @@ runTest('UI Shell Integration — Synchronous mount, independent toggles & scrol
 });
 
 // -------------------------------------------------------------
-// Test 9: Domain 5 Quiet Unpublished Presentation
+// Test 9: All 5 ISC2 CC Domains Published
 // -------------------------------------------------------------
-runTest('Unpublished Domains — Domain 5 shows minimal coming soon notice', () => {
-  const { container, restore } = createVocabularyDOM();
-  try {
-    [5].forEach(domainId => {
-      state.reading = {
-        selectedDomainId: domainId,
-        sidebarCollapsed: false,
-        expandedDomains: [domainId]
-      };
-      renderReadingScreen(container, () => {});
-
-      const article = container.querySelector(`.reading-article[data-domain-id="${domainId}"]`);
-      assert.ok(article, `Article for Domain ${domainId} must be rendered`);
-
-      const unpublishedNote = article.querySelector('.reading-unpublished-note');
-      assert.ok(unpublishedNote, `Domain ${domainId} must contain .reading-unpublished-note`);
-      assert.equal(
-        article.querySelector('.reading-unpublished-text')?.textContent.trim(),
-        'Reading content coming soon.'
-      );
-
-      // Verify no heavy dashboard elements or fake content cards
-      assert.equal(article.querySelector('.card'), null, 'Must not contain dashboard card containers');
-      assert.equal(article.querySelector('.reading-body-empty-illustration'), null, 'Must not contain empty illustration');
-    });
-  } finally {
-    restore();
+runTest('Published Domains — All 5 ISC2 CC Domains now published', () => {
+  assert.equal(READING_DOMAINS.length, 5);
+  for (let i = 1; i <= 5; i++) {
+    const d = READING_DOMAINS.find(dom => dom.id === i);
+    assert.ok(d?.published, `Domain ${i} must be published`);
   }
 });
 

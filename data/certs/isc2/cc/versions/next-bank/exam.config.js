@@ -1,8 +1,14 @@
 /**
  * Exam version configuration for ISC2 CC (2026 Outline - next-bank).
- * Contains Domain 1-4 practice questions. Domain 5 is pending.
+ * Contains Domain 1-5 practice questions. Counts derive from the published banks.
  * Domain 3/4 independent human academic and bilingual review is not claimed.
  */
+import domain1 from './questions/domain-1.js';
+import domain2 from './questions/domain-2.js';
+import domain3 from './questions/domain-3.js';
+import domain4 from './questions/domain-4.js';
+import domain5 from './questions/domain-5.js';
+const totalQuestions = [domain1, domain2, domain3, domain4, domain5].reduce((n, bank) => n + bank.length, 0);
 const config = {
   version: "next-bank",
   effectiveDate: "September 1, 2026",
@@ -10,8 +16,8 @@ const config = {
   defaultLanguage: "en",
   passingPercentage: 70,
   secondsPerQuestion: 90,
-  defaultQuestionCount: 119,
-  totalQuestions: 119,
+  defaultQuestionCount: totalQuestions,
+  totalQuestions,
   domains: [
     {
       id: 1,
@@ -98,10 +104,10 @@ const config = {
       },
       weight: 0.173,
       weightPercentage: 17.3,
-      questionCount: 0,
-      questionThCount: 0,
+      questionCount: domain5.length,
+      questionThCount: domain5.filter(q => q.question_th && q.options_th?.length === 4).length,
       questionFile: "./questions/domain-5.js",
-      available: false
+      available: domain5.length > 0
     }
   ]
 };

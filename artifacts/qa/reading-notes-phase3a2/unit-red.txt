@@ -1,0 +1,168 @@
+✖ AV definition: visible currency retained without escapes or accidental math (2.3283ms)
+✖ SLE variable: visible currency retained without escapes or accidental math (0.5221ms)
+✖ ALE variable: visible currency retained without escapes or accidental math (0.2457ms)
+✖ cost-benefit paragraph: visible currency retained without escapes or accidental math (0.3101ms)
+✖ Due Care note preserves its exact qualification with semantic emphasis (3.5675ms)
+✔ Ordinary Markdown emphasis still parses (0.6591ms)
+✔ An intentional asterisk in inline code remains literal (0.1485ms)
+✔ Inline SLE expression retains multiplication and escaped math currency (0.4307ms)
+✔ Display ALE expression remains display math (0.2054ms)
+✖ The source retains all eight valid escaped-dollar tokens in actual math (0.4732ms)
+✔ Representative risk values and economic counterexample remain correct (0.1765ms)
+✖ The three DMZ service rectangles have explicit paint (0.27ms)
+✔ DMZ roles, zones and all three service/port examples remain (0.1174ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 6
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15.3098
+
+✖ failing tests:
+
+test at tools\verify-reading-critical-readability.mjs:17:44
+✖ AV definition: visible currency retained without escapes or accidental math (2.3283ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /\\\$/. Input:
+  
+  'มูลค่ารวมของทรัพย์สินที่กำลังพิจารณา (คิดเป็นจำนวนเงิน เช่น มูลค่าเซิร์ฟเวอร์ฐานข้อมูล = \\$10,000)'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-critical-readability.mjs:20:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'มูลค่ารวมของทรัพย์สินที่กำลังพิจารณา (คิดเป็นจำนวนเงิน เช่น มูลค่าเซิร์ฟเวอร์ฐานข้อมูล = \\$10,000)',
+    expected: /\\\$/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-critical-readability.mjs:17:44
+✖ SLE variable: visible currency retained without escapes or accidental math (0.5221ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /\\\$/. Input:
+  
+  'AV: Asset Value (มูลค่าทรัพย์สิน เช่น \\$10,000)'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-critical-readability.mjs:20:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'AV: Asset Value (มูลค่าทรัพย์สิน เช่น \\$10,000)',
+    expected: /\\\$/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-critical-readability.mjs:17:44
+✖ ALE variable: visible currency retained without escapes or accidental math (0.2457ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /\\\$/. Input:
+  
+  'SLE: Single Loss Expectancy (ความเสียหายต่อครั้ง เช่น \\$5,000)'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-critical-readability.mjs:20:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'SLE: Single Loss Expectancy (ความเสียหายต่อครั้ง เช่น \\$5,000)',
+    expected: /\\\$/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-critical-readability.mjs:17:44
+✖ cost-benefit paragraph: visible currency retained without escapes or accidental math (0.3101ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /\\\$/. Input:
+  
+  'การเปรียบเทียบด้านการเงินแบบง่าย: ผลประโยชน์จากการลดความเสียหายต่อปี (Annual Loss-Reduction Benefit) = ALE ก่อนใช้ Control − ALE หลังใช้ Control แล้วเปรียบเทียบกับต้นทุน Control ต่อปี การมีต้นทุนต่ำกว่า ALE เดิมเพียงอย่างเดียวยังไม่พอ เช่น ALE ก่อน 10,000/ปี หลัง 9,000/ปี ลดความเสียหายได้ 1,000/ปี หาก Control มีต้นทุน 5,000/ปี ผลประโยชน์สุทธิเท่ากับ −4,000/ปี ตัวอย่างเดิมที่ ALE \\$10,000/ปี แต่ Control ราคา \\$25,000/ปี ก็ไม่คุ้มด้านการเงินภายใต้สมมติฐานนี้ อย่างไรก็ตาม กฎหมาย สัญญา ความปลอดภัยของบุคคล และภารกิจอาจทำให้องค์กรต้องเลือกมาตรการแม้ผลตอบแทนทางการเงินโดยตรงไม่เป็นบวก'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-critical-readability.mjs:20:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'รกิจอาจทำให้องค์กรต้องเลือกมาตรการแม้ผลตอบแทนทางการเงินโดยตรงไม่เป็นบวก...',
+    expected: /\\\$/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-critical-readability.mjs:24:1
+✖ Due Care note preserves its exact qualification with semantic emphasis (3.5675ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(rendered.includes('<em>'))
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-critical-readability.mjs:26:44)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-critical-readability.mjs:45:1
+✖ The source retains all eight valid escaped-dollar tokens in actual math (0.4732ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  13 !== 8
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-critical-readability.mjs:46:51)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 13,
+    expected: 8,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-critical-readability.mjs:54:1
+✖ The three DMZ service rectangles have explicit paint (0.27ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /\bfill="(?!none)[^"]+"/. Input:
+  
+  '<rect x="311" y="98" width="213" height="32" rx="4" class="diag-box" />'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-critical-readability.mjs:56:64)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<rect x="311" y="98" width="213" height="32" rx="4" class="diag-box" />',
+    expected: /\bfill="(?!none)[^"]+"/,
+    operator: 'match',
+    diff: 'simple'
+  }

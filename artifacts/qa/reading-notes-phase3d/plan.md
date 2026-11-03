@@ -1,0 +1,11 @@
+# Phase 3D implementation plan
+
+Single-flow execution. User explicitly authorizes semantic implementation and forbids Git mutations. Preserve the dirty starting filesystem, all course sources, Phase 3A–3C and concurrent Slides. No Phase 3E/F implementation.
+
+1. Reconcile the existing 24-diagram inventory against current registry, source placeholders, original-note passages and official outline. Verify mandatory A–F; distinguish interpretation from official requirements.
+2. Before code, add failing semantic checks: five coexisting control functions, six unnumbered grouped measurement concepts, optional/repeatable Mover, coordinated BC/DR, example defense layers and model correspondence rather than packet chronology. Add checks for ongoing Accounting and DMZ boundary/topology ambiguity identified in the existing review.
+3. Reuse the complete current mobile explanations as common selectable HTML for control functions, BC/DR, measurement and JML; preserve examples and qualifiers, with meaningful headings and relationship notes. Use a small Reading-only grid style. Retain accurate SVG architecture where it already teaches the relationship. Clarify AAA's ongoing Accounting; qualify DMZ scope without inventing mandatory packet routes.
+4. Record a content-disposition ledger for removed step/architecture labels, retained explanations and condensed SVG alternatives. No lesson Markdown or original-note edits.
+5. Chrome before/after at seven viewports in both themes for corrected patterns; review all 24 current diagrams in the same matrix and check tables/layout. Reuse valid old evidence where appropriate. Use the validated Phase 3C screenshot export width lock and native-layout assertions.
+6. Run focused, academic, Reading structure/Math, Phase 3C table and progress/Resume regressions. Inspect the four historical assertions: entity decoding for three existing correct labels and replace the obsolete no-failure guarantee expectation with complementary/nonchronological/qualified semantics. Document every test change.
+7. Save diagram matrix, source/reference rationale, browser evidence, preservation hashes, exact delta and final report. Update only the own tracker row. Human acceptance stays pending.

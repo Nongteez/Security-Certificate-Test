@@ -1,0 +1,50 @@
+✔ diagram reflow follows available container space, not only viewport width (1.817ms)
+✔ cloud legend has a bounded font rule and accessible contrasting responsibility colors (1.021ms)
+✔ native alternatives retain word boundaries and readable label sizes (0.5228ms)
+✔ reflowed OSI view names every original layer with its original detail (0.5166ms)
+✖ all original diagram markup preserved except additive reflow labels (5.2235ms)
+✔ dense reflow alternatives preserve original paired service/port and example labels (0.2071ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16.6162
+
+✖ failing tests:
+
+test at tools\verify-reading-diagram-legibility.mjs:29:1
+✖ all original diagram markup preserved except additive reflow labels (5.2235ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      'threatChain',
+      'ciaTriad',
+      'loadBalancer',
+      'aaaLifecycle',
+  ...
+      'cloudSharedResponsibility',
+  +   'irpLifecycle',
+  +   'mitreAttackTacticTechnique',
+  +   'securityTestingMatrix',
+  +   'assetLifecycleAndEol'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-diagram-legibility.mjs:31:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

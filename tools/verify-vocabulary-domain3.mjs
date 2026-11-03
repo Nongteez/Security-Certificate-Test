@@ -206,7 +206,8 @@ test('8. Vocabulary Loader correctly loads Domain 1, 2, 3 and All domains', asyn
 
   const all = await loadVocabularyData('all');
   const d4 = JSON.parse(fs.readFileSync(path.join(vocabDir, 'domain-4.json'), 'utf8'));
-  const expectedTotal = 313 + d4.entries.length;
+  const d5 = JSON.parse(fs.readFileSync(path.join(vocabDir, 'domain-5.json'), 'utf8'));
+  const expectedTotal = 313 + d4.entries.length + d5.entries.length;
   assert.equal(all.domain_id, 'all', 'Combined dataset loaded');
   assert.equal(all.total_entries, expectedTotal, 'Combined total includes the preserved D1-D3 pool and D4');
   assert.equal(all.entries.length, expectedTotal, 'Combined entries match the domain datasets');

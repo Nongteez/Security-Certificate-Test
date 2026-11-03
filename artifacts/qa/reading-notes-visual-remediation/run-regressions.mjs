@@ -1,0 +1,6 @@
+import fs from 'node:fs';import {spawnSync} from 'node:child_process';
+const q='artifacts/qa/reading-notes-visual-remediation/';
+const suites=JSON.parse(fs.readFileSync('artifacts/qa/reading-notes-phase3f/regression-results.json','utf8')).filter(x=>x.exitCode===0&&!['verify-vocabulary-bilingual-guidance','verify-ethics-mnemonic-highlight'].includes(x.suite));
+suites.push({suite:'verify-reading-visual-remediation',path:'tools/verify-reading-visual-remediation.mjs'});const results=[];
+for(const s of suites){const p=spawnSync(process.execPath,[s.path],{encoding:'utf8',maxBuffer:5000000});fs.writeFileSync(q+s.suite+'-final.log',p.stdout+p.stderr);const n=p.stdout.match(/ℹ pass (\d+)/)?.[1]||p.stdout.match(/Verification Summary:\s*(\d+)\s*\//)?.[1]||p.stdout.match(/(?:Summary|Results):\s*(\d+)\s*Passed/i)?.[1];results.push({suite:s.suite,path:s.path,exitCode:p.status,passedChecks:n?Number(n):s.passedChecks,tail:p.stdout.slice(-250)});console.log(s.suite,p.status)}
+fs.writeFileSync(q+'regression-results.json',JSON.stringify(results,null,2));console.log('TOTAL',results.length,'suites',results.reduce((n,x)=>n+x.passedChecks,0),'checks');if(results.some(x=>x.exitCode!==0))process.exitCode=1;

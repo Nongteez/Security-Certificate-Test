@@ -1,0 +1,149 @@
+✖ registry has exactly three ordered entries and a typed, unavailable CC vocabulary without counts or loaders (12.4618ms)
+✖ vocabulary cannot load exam config/questions or change selected exam through direct calls (4.3285ms)
+✖ screen uses the existing three-card grid, all three info buttons and two disabled actions (0.9007ms)
+✔ vocabulary dialog has the six specified sections, seven facts and five intended domains (2.779ms)
+✖ new card and full dialog content support EN, TH and EN+TH (14.1406ms)
+✔ vocabulary reuses focus, Tab, Escape, backdrop and scroll-restoration behavior (1.3614ms)
+✖ existing registry entries, exam dialogs, protected core/screens/styles and question banks remain unchanged (4.1132ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 2
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69.988
+
+✖ failing tests:
+
+test at tools\verify-exam-vocabulary.mjs:37:1
+✖ registry has exactly three ordered entries and a typed, unavailable CC vocabulary without counts or loaders (12.4618ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '2026',
+      'next-bank',
+      'isc2-cc-vocabulary',
+  +   'isc2-cc-learning-slides',
+  +   'isc2-cc-reading-notes'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:38:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-exam-vocabulary.mjs:50:1
+✖ vocabulary cannot load exam config/questions or change selected exam through direct calls (4.3285ms)
+  AssertionError [ERR_ASSERTION]: Vocabulary must not select an exam
+      at root.root (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:31:51)
+      at Object.click (file:///D:/_Coding/SEC-CERT-TEST/js/ui/screen-versions.js:221:15)
+      at click (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:34:49)
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:58:9)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at tools\verify-exam-vocabulary.mjs:61:1
+✖ screen uses the existing three-card grid, all three info buttons and two disabled actions (0.9007ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  5 !== 3
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:63:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 5,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-exam-vocabulary.mjs:96:1
+✖ new card and full dialog content support EN, TH and EN+TH (14.1406ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(f.root.innerHTML.includes(expected))
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:101:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\verify-exam-vocabulary.mjs:136:1
+✖ existing registry entries, exam dialogs, protected core/screens/styles and question banks remain unchanged (4.1132ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        badge: '2026 Exam Outline',
+        certificationId: 'isc2-cc',
+        description: '583 practice questions based on the previous ISC2 CC exam domain structure.',
+  ...
+      {
+  +     badge: '2026 Exam Outline',
+        certificationId: 'isc2-cc',
+  +     description: 'Updated exam domains effective September 1, 2026, including AI security concepts. Practice available across all five domains.',
+  +     domainMetadataReference: './certs/isc2/cc/versions/next-bank/exam.config.js',
+  +     examConfigReference: './certs/isc2/cc/versions/next-bank/exam.config.js',
+  -     description: 'Updated exam domains effective September 1, 2026, including AI security concepts.',
+  -     domainMetadataReference: null,
+  -     examConfigReference: null,
+        id: 'next-bank',
+  +     questionBankReference: './certs/isc2/cc/versions/next-bank/questions/',
+  +     questionCount: 157,
+  +     status: 'available',
+  +     title: 'ISC2 CC 2026 — Exam Outline'
+  -     questionBankReference: null,
+  -     status: 'coming-soon',
+  -     title: 'ISC2 CC — 2026 Exam Outline'
+      }
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-exam-vocabulary.mjs:138:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

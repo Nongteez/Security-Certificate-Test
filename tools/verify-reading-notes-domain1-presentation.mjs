@@ -80,10 +80,13 @@ const didLayers = [
   'Layer 7: Resilience & Response'
 ];
 didLayers.forEach(layer => {
-  assert(renderedHtml.includes(layer), `Defense in Depth SVG contains ${layer}`);
+  assert(renderedHtml.replace(/&amp;/g, '&').includes(layer), `Defense in Depth rendered text contains ${layer}`);
 });
 
-assert(renderedHtml.includes('No Single Point of Failure'), 'Defense in Depth highlights non-chronological complementary defense');
+assert(diagrams.defenseInDepth.includes('Complementary Security Layers') &&
+  diagrams.defenseInDepth.includes('not a fixed number or chronological sequence') &&
+  diagrams.defenseInDepth.includes('ไม่รับประกันว่าจะขจัดทุก Single Point of Failure'),
+  'Defense in Depth retains complementary non-chronological examples and the no-guarantee qualification');
 assert(renderedHtml.includes('Never Trust, Always Verify'), 'Zero Trust core philosophy is highlighted');
 assert(renderedHtml.includes('ความต่างที่ต้องแยก:'), 'Zero Trust vs Defense in Depth contrast callout preserved');
 
@@ -175,7 +178,10 @@ const allDiagramKeys = [
 allDiagramKeys.forEach(key => {
   assert(renderedHtml.includes(`data-diagram="${key}"`), `Diagram "${key}" is present in rendered HTML`);
   assert(Boolean(diagrams[key]), `Diagram "${key}" is exported in diagram-generator.js`);
-  assert(diagrams[key].includes('<svg') && diagrams[key].includes('</svg>'), `Diagram "${key}" contains valid SVG elements`);
+  const representationValid = ['aaaLifecycle', 'controlTimeline'].includes(key)
+    ? diagrams[key].includes('reading-semantic-diagram') && diagrams[key].includes('<section') && diagrams[key].includes('<h5>')
+    : diagrams[key].includes('<svg') && diagrams[key].includes('</svg>');
+  assert(representationValid, `Diagram "${key}" contains its intended SVG or selectable semantic HTML representation`);
   assert(diagrams[key].includes('role="img"') || diagrams[key].includes('role="region"'), `Diagram "${key}" includes accessibility roles`);
 });
 
@@ -238,14 +244,14 @@ assert(distinctionGrids.length === 1, `Exactly 1 concept distinction grid render
 const distinctionCards = renderedHtml.match(/class="reading-distinction-card"/gi) || [];
 assert(distinctionCards.length === 12, `Exactly 12 paired distinction cards rendered in place of cramped table (found: ${distinctionCards.length})`);
 
-// Precedence Stack (ISC2 Ethics Canons)
+// Four-canon collection (existing CSS class names retained)
 const precedenceStacks = renderedHtml.match(/class="reading-precedence-stack"/gi) || [];
-assert(precedenceStacks.length === 1, `Exactly 1 order-of-precedence stack rendered for Ethics Canons (found: ${precedenceStacks.length})`);
-assert(renderedHtml.includes('reading-precedence-card tier-1') && renderedHtml.includes('reading-precedence-card tier-2') && renderedHtml.includes('reading-precedence-card tier-3') && renderedHtml.includes('reading-precedence-card tier-4'), 'Ethics canons include all 4 hierarchical precedence tiers (1: Society, 2: Honor, 3: Principals, 4: Profession)');
+assert(precedenceStacks.length === 1, `Exactly 1 four-canon collection rendered for Ethics Canons (found: ${precedenceStacks.length})`);
+assert(renderedHtml.includes('reading-precedence-card tier-1') && renderedHtml.includes('reading-precedence-card tier-2') && renderedHtml.includes('reading-precedence-card tier-3') && renderedHtml.includes('reading-precedence-card tier-4'), 'Ethics collection includes all 4 canon identifiers (1: Society, 2: Honor, 3: Principals, 4: Profession)');
 
 // Non-linear Diagram Semantics
 assert(diagrams.controlTimeline.includes('Security Control Function Matrix') || diagrams.controlTimeline.includes('Functional Matrix'), 'controlTimeline SVG updated to functional matrix (non-linear representation)');
-assert(diagrams.ethicsCanons.includes('Strict Order of Precedence') || diagrams.ethicsCanons.includes('Order of Precedence') || diagrams.ethicsCanons.includes('PRECEDENCE 1'), 'ethicsCanons SVG updated to order-of-precedence hierarchy stack');
+assert(diagrams.ethicsCanons.includes('Four mandatory canons') && !/supersedes|Supersedes|PRIORITY/.test(diagrams.ethicsCanons), 'Ethics diagram retains four mandatory canons without asserting unverified universal precedence');
 
 // -------------------------------------------------------------------------
 // SECTION 10: Task 96 — Adaptive Reading Layout CSS Rules
@@ -523,7 +529,7 @@ console.log('\n--- Section 16: Task 103 Quality Overhaul & Visual Hygiene ---');
 assert(!diagrams.ciaTriad.includes('🔒') && !diagrams.ciaTriad.includes('🛡️') && !diagrams.ciaTriad.includes('⚡'), 'CIA Triad diagram replaced emojis (🔒, 🛡️, ⚡) with scalable vector graphics');
 assert(diagrams.ciaTriad.includes('<path') && diagrams.ciaTriad.includes('diag-pillar-blue'), 'CIA Triad uses unified crisp vector SVG icons and unified theme pillars');
 
-// 2. Ethics Canons Numbered Hierarchy & Precedence Banner
+// 2. Ethics Canon Identifiers & Professional Judgment Banner
 assert(
   diagrams.ethicsCanons.includes('01') && diagrams.ethicsCanons.includes('Society') &&
   diagrams.ethicsCanons.includes('02') && diagrams.ethicsCanons.includes('Honor') &&
@@ -532,9 +538,9 @@ assert(
   'ethicsCanons SVG uses clean numbered hierarchy (01 Society, 02 Honor, 03 Principals, 04 Profession)'
 );
 assert(!diagrams.ethicsCanons.includes('#f43f5e') && !diagrams.ethicsCanons.includes('#f59e0b') && !diagrams.ethicsCanons.includes('#10b981'), 'ethicsCanons SVG eliminated 4-color rainbow palette');
-assert(renderedHtml.includes('class="reading-precedence-rule"'), 'Ethics canons include single dedicated precedence rule banner at the top');
-assert(renderedHtml.includes('Canon ลำดับก่อนหน้าจะมีความสำคัญเหนือกว่าเสมอ'), 'Precedence rule clearly explains earlier canon supersedes upon conflict');
-assert(renderedHtml.includes('class="reading-precedence-num">01</span>') && renderedHtml.includes('class="reading-precedence-num">04</span>'), 'Ethics canons HTML cards render numbered hierarchy 01 through 04');
+assert(renderedHtml.includes('class="reading-precedence-rule"'), 'Ethics canons include one dedicated professional judgment banner');
+assert(renderedHtml.includes('Use professional ethical judgment') && !renderedHtml.includes('Canon ลำดับก่อนหน้าจะมีความสำคัญเหนือกว่าเสมอ'), 'Ethics banner explains contextual professional judgment without an unverified universal override');
+assert(renderedHtml.includes('class="reading-precedence-num">01</span>') && renderedHtml.includes('class="reading-precedence-num">04</span>'), 'Ethics canons HTML cards retain numbered identifiers 01 through 04');
 assert(!renderedHtml.includes('reading-precedence-divider'), 'Ethics canons eliminated redundant "▼ ลำดับความสำคัญเหนือกว่า" divider banners');
 
 // 3. Monochromatic / Calm Palette in CSS

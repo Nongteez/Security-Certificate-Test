@@ -1,0 +1,164 @@
+--- baseline/content/isc2-cc-2026/reading/domain-1.md
++++ current/content/isc2-cc-2026/reading/domain-1.md
+@@ -242,29 +242,35 @@
+ 
+ #### 1. Non-repudiation — การไม่อาจปฏิเสธความรับผิดชอบได้
+ 
+-ความสามารถในการพิสูจน์ได้อย่างน่าเชื่อถือว่า **มีบุคคลใดบุคคลหนึ่งได้กระทำการหรือส่งข้อมูลนั้นจริง** โดยผู้กระทำไม่สามารถอ้างภายหลังได้ว่าตนเองไม่ได้เป็นผู้ทำ โดยอาศัยกลไกสำคัญคือ **Digital Signature** ร่วมกับโครงสร้างกุญแจสาธารณะ (PKI) และการประทับเวลาที่เชื่อถือได้ (Timestamping)
++ความสามารถในการพิสูจน์ได้อย่างน่าเชื่อถือว่า มีบุคคลใดบุคคลหนึ่งได้กระทำการหรือส่งข้อมูลนั้นจริง โดยผู้กระทำไม่สามารถอ้างภายหลังได้ว่าตนเองไม่ได้เป็นผู้ทำ โดยอาศัยกลไกสำคัญคือ **Digital Signature** ร่วมกับโครงสร้างกุญแจสาธารณะ (PKI) และการประทับเวลาที่เชื่อถือได้ (Timestamping)
+ 
+ *ความต่างจาก Authentication:* Authentication พิสูจน์ตัวตน ณ ขณะล็อกอิน ส่วน Non-repudiation สร้างหลักฐานทางนิติวิทยาศาสตร์ที่ผูกมัดการกระทำในอดีต
+ 
++<section class="reading-privacy-context">
++
+ #### 2. Privacy — การคุ้มครองความเป็นส่วนตัวของข้อมูล
+ 
+ เกี่ยวข้องกับการคุ้มครอง **Personally Identifiable Information (PII) / Personal Data** ตลอดวงจรชีวิต: การเก็บรวบรวมข้อมูล (Collection), การประมวลผล (Processing), การจัดเก็บรักษา (Storage), การถ่ายโอน (Transfer), และการทำลาย (Disposal)
+ 
+ <h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>3 บทบาทหลักในกฎหมายคุ้มครองข้อมูลส่วนบุคคล (เช่น GDPR, PDPA):</h5>
+ 
+-<div class="reading-concept-item">
+-  <h5 class="reading-concept-heading">Data Subject (เจ้าของข้อมูลส่วนบุคคล)</h5>
++<div class="reading-definition-group reading-privacy-roles">
++
++<div class="reading-concept-item">
++  <h6 class="reading-concept-heading">Data Subject (เจ้าของข้อมูลส่วนบุคคล)</h6>
+   <p>บุคคลธรรมดาที่ข้อมูลนั้นระบุไปถึง (เช่น นายสมชาย ลูกค้าของบริษัท หรือพนักงานในองค์กร)</p>
+ </div>
+ 
+ <div class="reading-concept-item">
+-  <h5 class="reading-concept-heading">Data Controller (ผู้ควบคุมข้อมูล)</h5>
+-  <p>บุคคลธรรมดา นิติบุคคล หน่วยงาน หรือองค์กรที่กำหนดโดยลำพังหรือร่วมกับผู้อื่นว่า <strong>จะเก็บข้อมูลทำไม และประมวลผลอย่างไร (Determines Purpose and Means)</strong> เช่น บริษัทค้าปลีกที่เก็บข้อมูลลูกค้า</p>
+-</div>
+-
+-<div class="reading-concept-item">
+-  <h5 class="reading-concept-heading">Data Processor (ผู้ประมวลผลข้อมูล)</h5>
+-  <p>ฝ่ายที่ทำการประมวลผลข้อมูล <strong>ในนามของและตามคำสั่งของผู้ควบคุมข้อมูล (Processes on behalf of Controller)</strong> เช่น บริษัท Cloud Provider ที่รับฝากฐานข้อมูล</p>
++  <h6 class="reading-concept-heading">Data Controller (ผู้ควบคุมข้อมูล)</h6>
++  <p>บุคคลธรรมดา นิติบุคคล หน่วยงาน หรือองค์กรที่กำหนดโดยลำพังหรือร่วมกับผู้อื่นว่า จะเก็บข้อมูลทำไม และประมวลผลอย่างไร <strong>(Determines Purpose and Means)</strong> เช่น บริษัทค้าปลีกที่เก็บข้อมูลลูกค้า</p>
++</div>
++
++<div class="reading-concept-item">
++  <h6 class="reading-concept-heading">Data Processor (ผู้ประมวลผลข้อมูล)</h6>
++  <p>ฝ่ายที่ทำการประมวลผลข้อมูล ในนามของและตามคำสั่งของผู้ควบคุมข้อมูล <strong>(Processes on behalf of Controller)</strong> เช่น บริษัท Cloud Provider ที่รับฝากฐานข้อมูล</p>
++</div>
++
+ </div>
+ 
+ <div class="reading-semantic-diagram" data-diagram="privacyFlow"></div>
+@@ -290,6 +296,8 @@
+   <h5 class="reading-concept-heading">Right to Be Forgotten (สิทธิในการขอลบข้อมูล)</h5>
+   <p>สิทธิของ Data Subject ในการร้องขอให้ลบข้อมูลส่วนบุคคลของตน อย่างไรก็ตาม <em>ไม่ได้แปลว่าขอลบแล้วองค์กรต้องลบทันทีเสมอไป</em> หากมีกฎหมายบังคับให้ต้องเก็บรักษาไว้ (เช่น กฎหมายภาษี กฎหมายฟอกเงิน) องค์กรยังมีความชอบธรรมในการเก็บข้อมูลนั้นตามกรอบกฎหมาย</p>
+ </div>
++
++</section>
+ 
+ #### 3. Accountability — ความรับผิดชอบที่ตรวจสอบย้อนหลังได้
+ 
+--- baseline/css/reading.css
++++ current/css/reading.css
+@@ -3730,6 +3730,104 @@
+ }
+ /* End Phase 3B.2 scoped typography. */
+ 
++/* Phase 3B.3: content-aware widths within published Reading Notes only. */
++.app:has(.reading-structured-objective) {
++  max-width: 1560px;
++}
++.reading-screen:has(.reading-structured-objective) .reading-layout {
++  gap: 32px;
++}
++.reading-screen:has(.reading-structured-objective) .reading-article {
++  max-width: 100%;
++}
++.reading-body .reading-structured-objective {
++  --reading-narrative-measure: 96ch;
++  --reading-definition-measure: 104ch;
++}
++.reading-body .reading-structured-objective > p:not(.reading-intro-label),
++.reading-body .reading-privacy-context > p {
++  max-width: min(100%, var(--reading-narrative-measure));
++  font-size: 16px;
++  line-height: 1.85;
++}
++.reading-body .reading-structured-objective .reading-concept-unit {
++  max-width: 100%;
++}
++.reading-body .reading-structured-objective .reading-concept-unit > p,
++.reading-body .reading-structured-objective .reading-concept-item > p {
++  max-width: min(100%, var(--reading-definition-measure));
++  font-size: 16px;
++  line-height: 1.85;
++}
++.reading-body .reading-structured-objective > ul,
++.reading-body .reading-structured-objective > ol,
++.reading-body .reading-structured-objective .reading-concept-unit > ul,
++.reading-body .reading-structured-objective .reading-concept-unit > ol {
++  max-width: 100%;
++}
++.reading-body .reading-structured-objective :is(h4, h5).reading-intro-label {
++  font-weight: 600;
++  align-items: flex-start;
++}
++.reading-body .reading-structured-objective .reading-intro-label .reading-label-icon {
++  width: 14px;
++  height: 14px;
++  margin-top: 5px;
++}
++.reading-body .reading-privacy-context {
++  container: privacy-context / inline-size;
++}
++.reading-body .reading-privacy-context > h4 {
++  margin: 32px 0 12px;
++  font-size: 17px;
++  line-height: 1.55;
++  font-weight: 700;
++}
++.reading-body .reading-privacy-context > h5.reading-intro-label {
++  font-size: 16px;
++  line-height: 1.55;
++}
++.reading-body .reading-privacy-roles {
++  display: grid;
++  grid-template-columns: minmax(0, 1fr);
++  gap: 24px;
++  margin: 16px 0 32px;
++}
++.reading-body .reading-privacy-roles > .reading-concept-item {
++  min-width: 0;
++  margin: 0;
++  padding-left: 0;
++  border-left: 0;
++}
++.reading-body .reading-privacy-roles .reading-concept-heading {
++  font-size: 16px;
++  line-height: 1.55;
++  margin-bottom: 8px;
++}
++.reading-body .reading-privacy-roles .reading-concept-item > p {
++  max-width: 100%;
++}
++@container privacy-context (min-width: 56rem) {
++  .reading-body .reading-privacy-roles {
++    grid-template-columns: repeat(3, minmax(0, 1fr));
++  }
++}
++@media (min-width: 841px) {
++  .app:has(.reading-structured-objective) {
++    width: min(100% - 48px, 1560px);
++  }
++  .reading-screen:has(.reading-structured-objective) .reading-sidebar {
++    flex-basis: 270px;
++    width: 270px;
++  }
++}
++@media (min-width: 841px) and (max-width: 1100px) {
++  .reading-screen:has(.reading-structured-objective) .reading-layout {
++    gap: 28px;
++  }
++}
++/* End Phase 3B.3 content-aware widths. */
++
+ /* Phase 3B.1: semantic hierarchy for the two Domain 4 pilot subsections. */
+ .reading-body .reading-structure-pilot {
+     display: flow-root;

@@ -165,7 +165,7 @@ information['isc2-cc-vocabulary'] = {
     information: text('Vocabulary Information', 'ข้อมูลชุดคำศัพท์'),
     coverage: text('Domain Coverage', 'ขอบเขตโดเมน'),
     goals: text('Learning Objectives', 'วัตถุประสงค์การเรียนรู้'),
-    plans: text('Future Practice Features', 'ความสามารถในการฝึกฝนที่วางแผนไว้'),
+    plans: text('Learning Modes and Limits', 'รูปแบบเรียนรู้และข้อจำกัด'),
     notice: text('Important Notice', 'ข้อควรทราบ'),
     field: text('Field', 'หัวข้อ'),
     topic: text('Topic', 'เนื้อหา')
@@ -177,15 +177,15 @@ information['isc2-cc-vocabulary'] = {
     { label: text('Languages', 'ภาษา'), value: text('English / Thai', 'อังกฤษ / ไทย') },
     { label: text('Organization', 'การจัดหมวดหมู่'), value: text('ISC2 CC Domains', 'โดเมนของ ISC2 CC') },
     { label: text('Learning Content', 'เนื้อหาการเรียนรู้'), value: text('Terms, Definitions, Thai Meanings', 'คำศัพท์ คำจำกัดความ และความหมายภาษาไทย') },
-    { label: text('Availability', 'สถานะ'), value: text('Coming Soon', 'เร็ว ๆ นี้') }
+    { label: text('Availability', 'สถานะ'), value: text('Available', 'พร้อมใช้งาน') }
   ],
   // Intended categories only; share names, without importing counts, weights or question content.
   domains: information['next-bank'].domains.map(({ id, name }) => ({ id, name })),
   coverageNotice: text(
-    'The collection is intended to cover the five domains of the updated ISC2 CC 2026 Exam Outline. These are intended vocabulary categories, not claims that vocabulary entries have already been imported.',
-    'ชุดคำศัพท์นี้มีเป้าหมายให้ครอบคลุมทั้งห้าโดเมนของโครงร่างข้อสอบ ISC2 CC ปี 2026 ฉบับปรับปรุง รายการนี้เป็นหมวดหมู่คำศัพท์ที่ตั้งใจจัดทำ ไม่ได้หมายความว่ามีการนำเข้าคำศัพท์แล้ว'
+    'Vocabulary is available across all five domains. Concepts shared between domains may reuse existing entries rather than duplicate them.',
+    'มีคำศัพท์ให้เรียนรู้ทั้งห้าโดเมน แนวคิดที่ใช้ร่วมกันอาจอ้างอิงรายการเดิมแทนการสร้างคำศัพท์ซ้ำ'
   ),
-  goalsNotice: text('These are learning goals, not currently implemented application features.', 'รายการนี้คือเป้าหมายการเรียนรู้ ไม่ใช่ความสามารถของแอปที่พัฒนาเสร็จแล้ว'),
+  goalsNotice: text('Use the definitions, examples and bilingual guidance to support these learning goals.', 'ใช้คำจำกัดความ ตัวอย่าง และคำแนะนำสองภาษาเพื่อสนับสนุนเป้าหมายการเรียนรู้เหล่านี้'),
   goals: [
     text('Recognize important English cybersecurity terminology.', 'จดจำคำศัพท์ภาษาอังกฤษด้านความปลอดภัยไซเบอร์ที่สำคัญ'),
     text('Understand technical definitions.', 'เข้าใจคำจำกัดความทางเทคนิค'),
@@ -193,7 +193,7 @@ information['isc2-cc-vocabulary'] = {
     text('Become familiar with terms appearing in ISC2 CC study materials.', 'คุ้นเคยกับคำศัพท์ที่พบในสื่อการเรียนรู้ ISC2 CC'),
     text('Improve comprehension of English-language certification questions.', 'พัฒนาความเข้าใจคำถามภาษาอังกฤษในการเตรียมสอบการรับรอง')
   ],
-  plansNotice: text('The following are planned capabilities only and are not currently available.', 'รายการต่อไปนี้เป็นเพียงความสามารถที่วางแผนไว้ และยังไม่พร้อมใช้งานในขณะนี้'),
+  plansNotice: text('Study Cards, Flashcards, search and filters are available. Vocabulary quizzes and durable learning-progress tracking are not implemented.', 'ใช้ Study Cards, Flashcards การค้นหาและตัวกรองได้แล้ว ส่วนแบบทดสอบคำศัพท์และการเก็บความก้าวหน้าถาวรยังไม่ได้พัฒนา'),
   plans: [
     text('Vocabulary learning.', 'การเรียนรู้คำศัพท์'),
     text('English-to-Thai terminology practice.', 'การฝึกคำศัพท์จากภาษาอังกฤษเป็นภาษาไทย'),
@@ -206,8 +206,8 @@ information['isc2-cc-vocabulary'] = {
     'This is an independent ISC2 CC preparation resource developed for SEC CERT TEST. It is not a separate official ISC2 examination or exam-outline version.',
     'ชุดคำศัพท์นี้เป็นสื่อการเรียนรู้สำหรับเตรียมสอบ ISC2 CC ที่พัฒนาขึ้นสำหรับ SEC CERT TEST ไม่ใช่การสอบหรือ Exam Outline Version อย่างเป็นทางการที่แยกออกมาจาก ISC2'
   ),
-  comingSoon: text('Vocabulary content is coming soon.', 'เนื้อหาคำศัพท์จะพร้อมให้ใช้งานในอนาคต'),
-  statusLabel: text('Coming Soon', 'เร็ว ๆ นี้')
+  comingSoon: text('Vocabulary content is available for study and recall practice.', 'เนื้อหาคำศัพท์พร้อมใช้สำหรับศึกษาและฝึกทบทวน'),
+  statusLabel: text('Available', 'พร้อมใช้งาน')
 };
 
 export default information;

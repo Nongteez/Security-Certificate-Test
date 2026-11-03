@@ -1,0 +1,136 @@
+threatChain: `
+<div class="reading-diagram-card" data-diagram="threatChain" role="region" aria-label="Threat and Control Relationship Pipeline">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Architecture Flow</span>
+    <h4 class="reading-diagram-title">Cybersecurity Threat &amp; Control Relationship Pipeline</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 760 150" class="reading-diagram-svg" aria-label="Pipeline showing Asset with Vulnerability exploited by Threat Actor causing Impact, mitigated by Safeguards" role="img">
+      <g class="diag-node">
+        <rect x="10" y="35" width="120" height="70" rx="8" class="diag-box diag-box-blue" />
+        <text x="70" y="65" class="diag-text-title" text-anchor="middle">Asset</text>
+        <text x="70" y="85" class="diag-text-sub" text-anchor="middle">ทรัพย์สินมีคุณค่า</text>
+      </g>
+      <path d="M 130 70 L 160 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
+      <text x="145" y="62" class="diag-text-label" text-anchor="middle">มี</text>
+
+      <g class="diag-node">
+        <rect x="160" y="35" width="130" height="70" rx="8" class="diag-box diag-box-banner" />
+        <text x="225" y="65" class="diag-text-title" text-anchor="middle">Vulnerability</text>
+        <text x="225" y="85" class="diag-text-sub" text-anchor="middle">จุดอ่อน / ช่องโหว่</text>
+      </g>
+      <path d="M 290 70 L 320 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
+      <text x="305" y="62" class="diag-text-label" text-anchor="middle">ถูกเจาะผ่าน</text>
+
+      <g class="diag-node">
+        <rect x="320" y="35" width="130" height="70" rx="8" class="diag-box diag-box-banner" />
+        <text x="385" y="65" class="diag-text-title" text-anchor="middle">Threat Actor</text>
+        <text x="385" y="85" class="diag-text-sub" text-anchor="middle">ผู้คุกคามใช้ Exploit</text>
+      </g>
+      <path d="M 450 70 L 480 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
+      <text x="465" y="62" class="diag-text-label" text-anchor="middle">ก่อให้เกิด</text>
+
+      <g class="diag-node">
+        <rect x="480" y="35" width="120" height="70" rx="8" class="diag-box diag-box-banner" />
+        <text x="540" y="65" class="diag-text-title" text-anchor="middle">Impact</text>
+        <text x="540" y="85" class="diag-text-sub" text-anchor="middle">ความเสียหาย</text>
+      </g>
+
+      <g class="diag-node">
+        <rect x="620" y="25" width="130" height="90" rx="8" class="diag-box diag-box-blue diag-box-highlight" />
+        <text x="685" y="55" class="diag-text-title" text-anchor="middle">Safeguards</text>
+        <text x="685" y="75" class="diag-text-title" text-anchor="middle">&amp; Controls</text>
+        <text x="685" y="98" class="diag-text-sub" text-anchor="middle">มาตรการปกป้อง</text>
+      </g>
+      <path d="M 685 115 C 685 140, 70 140, 70 105" class="diag-arrow diag-arrow-dash" marker-end="url(#diag-arrow-head)" />
+      <text x="375" y="136" class="diag-text-label" text-anchor="middle">Controls เข้ามาปกป้อง Asset และลดความเสี่ยง (Risk)</text>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Threat and Control Relationship Pipeline Mobile">
+    <div class="reading-mob-banner">
+      <span class="reading-mob-banner-tag">ATTACK &amp; DEFENSE PIPELINE</span>
+      <p class="reading-mob-banner-text">ความสัมพันธ์ 5 ขั้นตอน: ภัยคุกคามเจาะผ่านช่องโหว่สร้างผลกระทบต่อทรัพย์สิน โดยมีมาตรการควบคุมปิดกั้น</p>
+    </div>
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-blue">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">01</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">ASSET (ทรัพย์สินมีคุณค่า)</h5>
+            <span class="reading-mob-tier-action">Target to Protect &middot; สิ่งที่ต้องคุ้มครอง</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">สิ่งที่มีคุณค่าต่อองค์กร หากสูญหายหรือเสียหายจะเกิดผลกระทบ: ฐานข้อมูลลูกค้า, ระบบชำระเงิน, ทรัพย์สินทางปัญญา, บุคลากร</p>
+      </div>
+
+      <div class="reading-mob-step-connector">
+        <div class="reading-mob-connector-line reading-connector-blue"></div>
+        <span class="reading-mob-connector-pill reading-pill-blue">&darr; มีจุดอ่อนที่อาจเปิดช่องให้โจมตี &darr;</span>
+        <div class="reading-mob-connector-line reading-connector-blue"></div>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-amber">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">02</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">VULNERABILITY (จุดอ่อน / ช่องโหว่)</h5>
+            <span class="reading-mob-tier-action">System Weakness &middot; ข้อบกพร่องภายใน</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ข้อบกพร่องในระบบ ซอฟต์แวร์ หรือกระบวนการ: เซิร์ฟเวอร์ที่ยังไม่ได้ติดตั้ง Patch, การตั้งค่าความปลอดภัยผิดพลาด, รหัสผ่านคาดเดาง่าย</p>
+      </div>
+
+      <div class="reading-mob-step-connector">
+        <div class="reading-mob-connector-line reading-connector-blue"></div>
+        <span class="reading-mob-connector-pill reading-pill-blue">&darr; ถูกมุ่งเป้าโจมตีโดย &darr;</span>
+        <div class="reading-mob-connector-line reading-connector-blue"></div>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-red">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">03</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">THREAT ACTOR &amp; EXPLOIT (ผู้ก่อภัยคุกคาม)</h5>
+            <span class="reading-mob-tier-action">Malicious Intent &middot; ผู้ลงมือโจมตี</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">บุคคลหรือกลุ่มบุคคลที่แสวงหาประโยชน์จากช่องโหว่ (Hacker, Malicious Insider, Nation-State) โดยใช้ <em>Exploit</em> เป็นเทคนิคหรือโค้ดเจาะระบบ</p>
+      </div>
+
+      <div class="reading-mob-step-connector">
+        <div class="reading-mob-connector-line reading-connector-blue"></div>
+        <span class="reading-mob-connector-pill reading-pill-blue">&darr; หากสำเร็จจะก่อให้เกิด &darr;</span>
+        <div class="reading-mob-connector-line reading-connector-blue"></div>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kri">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">04</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">IMPACT &amp; RISK (ความเสียหายและความเสี่ยง)</h5>
+            <span class="reading-mob-tier-action">Harm Realized &middot; ผลกระทบทางธุรกิจ</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ความเสียหายทางการเงิน การหยุดชะงักของบริการ การเสียชื่อเสียง หรือความรับผิดชอบทางกฎหมายเมื่อการโจมตีสร้างความสูญเสียสำเร็จ</p>
+      </div>
+
+      <div class="reading-mob-step-connector">
+        <div class="reading-mob-connector-line reading-connector-green"></div>
+        <span class="reading-mob-connector-pill reading-pill-green">&darr; ลดความเสี่ยงและคุ้มครองทรัพย์สินด้วย &darr;</span>
+        <div class="reading-mob-connector-line reading-connector-green"></div>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-green">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">05</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">SAFEGUARDS &amp; CONTROLS (มาตรการควบคุม)</h5>
+            <span class="reading-mob-tier-action">Protective Countermeasure &middot; วงแหวนป้องกัน</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">กลไก นโยบาย และเทคโนโลยี (MFA, Firewall, การเข้ารหัส, นโยบายความปลอดภัย) ที่ติดตั้งเพื่อลดโอกาสหรือผลกระทบของความเสี่ยง (Risk Mitigation)</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,

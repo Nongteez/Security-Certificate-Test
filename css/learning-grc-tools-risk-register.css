@@ -1,81 +1,474 @@
 /* Lesson2-only authored presentations; semantic explanations remain in Reading/Info. */
-.learning-viewer .learning-slide.learning-grc-tools-slide {container-type:inline-size;padding:0;background:#fff;color:#142b43;overflow:visible;}
-.learning-viewer .learning-grc-tools-slide > .learning-slide-body {display:flex;height:100%;min-height:0;gap:0;}
-.learning-grc-tools-slide .grt-scene {box-sizing:border-box;display:grid;grid-template-rows:auto minmax(0,1fr);gap:2cqw;width:100%;max-width:var(--d2-canvas-max-width, 1400px);margin:0 auto;height:100%;padding:3.3cqw 4.2cqw;background:#fff;color:#142b43;}
-.learning-grc-tools-slide .grt-scene * {box-sizing:border-box;}
-.learning-grc-tools-slide :is(.grt-header,.grt-main) {min-width:0;min-height:0;}
-.learning-grc-tools-slide .grt-title {margin:0;color:#102a41;font-size:clamp(30px,3.1cqw,55px);line-height:1.25;font-weight:750;letter-spacing:-.025em;}
-.learning-viewer .learning-grc-tools-slide .grt-lead {margin:.8cqw 0 0;color:#526174;font-size:clamp(19px,1.75cqw,31px);line-height:1.5;max-width:100%;}
-.learning-grc-tools-slide .grt-main {display:flex;flex-direction:column;justify-content:space-between;gap:1.5cqw;}
-.learning-grc-tools-slide .grt-term {margin:0;color:#244d73;font-size:clamp(24px,2.2cqw,39px);line-height:1.35;font-weight:700;}
-.learning-viewer .learning-grc-tools-slide .grt-copy {margin:0;color:#263d52;font-size:clamp(21px,1.9cqw,34px);line-height:1.45;}
-.learning-viewer .learning-grc-tools-slide .grt-note {margin:.6cqw 0 0;color:#526174;font-size:clamp(18px,1.65cqw,30px);line-height:1.45;}
-.learning-viewer .learning-grc-tools-slide .grt-takeaway {margin:0;padding-top:1cqw;border-top:1px solid #d4dfe9;color:#38536c;font-size:clamp(18px,1.55cqw,28px);line-height:1.45;}
-.learning-grc-tools-slide .grt-arrow {align-self:center;color:#7498b7;font-size:3cqw;text-align:center;}
-.learning-grc-tools-slide .grt-record-title {margin:0 0 1.3cqw;color:#194d7b;font-size:clamp(26px,2.55cqw,46px);line-height:1.35;}
-.learning-grc-tools-slide .grt-record-data {display:grid;gap:1.2cqw;margin:0;}
-.learning-grc-tools-slide .grt-record-field {min-width:0;}
-.learning-viewer .learning-grc-tools-slide .grt-field-label {margin:0 0 .25cqw;color:#526174;font-size:clamp(18px,1.55cqw,28px);line-height:1.4;}
-.learning-grc-tools-slide .grt-field-value {margin:0;color:#223c55;font-size:clamp(22px,2cqw,36px);line-height:1.4;font-weight:600;}
-.learning-viewer .learning-grc-tools-slide .grt-large-question {margin:1.2cqw 0;color:#244d73;font-size:clamp(27px,2.6cqw,47px);line-height:1.35;font-weight:650;}
-/* Working copies converge on a record with observable ownership/status/evidence. */
-.learning-grc-tools-slide .grt-work-flow {display:grid;grid-template-columns:.8fr .18fr 1.25fr;gap:3cqw;align-items:center;flex:1;}
-.learning-grc-tools-slide .grt-working-copies {display:grid;gap:1.2cqw;}
-.learning-viewer .learning-grc-tools-slide .grt-paper-copy {margin:0;border-left:2px solid #c4d1df;border-bottom:1px solid #e1e7ee;padding:.7cqw 1.2cqw;color:#334c63;font-size:clamp(23px,2.1cqw,38px);line-height:1.4;}
-.learning-grc-tools-slide .grt-owned-record {padding:2.2cqw 2.5cqw;border-left:4px solid #3978ae;background:#f2f7fc;}
-/* Six capability annotations connect to the same control record, without a staged workflow. */
-.learning-grc-tools-slide .grt-capability-map {display:grid;grid-template-columns:1fr .82fr 1fr;gap:3cqw;align-items:center;flex:1;}
-.learning-grc-tools-slide .grt-capability-links {display:grid;gap:2cqw;}
-.learning-grc-tools-slide .grt-capability-link {position:relative;padding:.7cqw 0;}
-.learning-grc-tools-slide .grt-capability-name {margin:0 0 .5cqw;color:#244d73;font-size:clamp(23px,2.05cqw,37px);line-height:1.35;}
-.learning-grc-tools-slide .grt-capability-links:first-child .grt-capability-link::after {content:'';position:absolute;right:-2.5cqw;top:50%;width:2cqw;border-top:2px solid #b8cbdc;}
-.learning-grc-tools-slide .grt-capability-links:last-child .grt-capability-link::before {content:'';position:absolute;left:-2.5cqw;top:50%;width:2cqw;border-top:2px solid #b8cbdc;}
-.learning-grc-tools-slide .grt-shared-control {border-left:2px solid #84aaca;border-right:2px solid #84aaca;padding:3cqw 1.7cqw;text-align:center;}
-/* An evaluation activity feeds a readable risk record; complete field dictionary stays in Reading. */
-.learning-grc-tools-slide .grt-assessment-record {display:grid;grid-template-columns:.85fr .14fr 1.25fr;gap:3cqw;align-items:center;flex:1;}
-.learning-grc-tools-slide .grt-assessment-activity {padding-right:1cqw;}
-.learning-grc-tools-slide .grt-register-example {padding:1.8cqw 2.2cqw;border-top:3px solid #3978ae;background:#f5f8fc;}
-.learning-grc-tools-slide .grt-register-example .grt-record-data {gap:.9cqw;}
-/* Explicitly illustrative rank product, then four concise practical responses. */
-.learning-grc-tools-slide .grt-score-example {padding:.3cqw 0 1cqw;}
-.learning-grc-tools-slide .grt-score-formula {display:grid;grid-template-columns:1fr .2fr 1fr .2fr 1fr;align-items:center;gap:2cqw;text-align:center;margin:.8cqw 0 0;}
-.learning-grc-tools-slide .grt-score-number {display:block;color:#225d90;font-size:clamp(46px,5.7cqw,104px);line-height:1.1;}
-.learning-grc-tools-slide .grt-score-operator .grt-score-number {font-size:3.5cqw;color:#829bb1;padding-top:2cqw;}
-.learning-grc-tools-slide .grt-response-choices {display:grid;grid-template-columns:1fr 1fr;gap:1.6cqw 4cqw;}
-.learning-grc-tools-slide .grt-response-choice {border-top:1px solid #d6e0e9;padding-top:.8cqw;}
-.learning-grc-tools-slide .grt-response-choice .grt-term {margin-bottom:.4cqw;}
-/* Preserve the worked values while showing what each safeguard can contribute. */
-.learning-grc-tools-slide .grt-ransomware-layout {display:grid;grid-template-columns:.85fr 1.4fr;gap:4cqw;align-items:center;flex:1;}
-.learning-grc-tools-slide .grt-server-record {padding:1.5cqw 2cqw 1.5cqw 0;border-right:2px solid #b8cbdc;}
-.learning-grc-tools-slide .grt-control-effects {display:grid;gap:.6cqw;}
-.learning-grc-tools-slide .grt-control-effect {display:grid;grid-template-columns:.8fr .12fr 1.1fr;gap:1.2cqw;align-items:center;padding:1cqw 0;border-top:1px solid #d6e0e9;}
-.learning-grc-tools-slide .grt-control-effect:first-child {border-top:0;}
-.learning-grc-tools-slide .grt-control-name {margin:0;color:#244d73;font-size:clamp(24px,2.1cqw,38px);line-height:1.35;}
-/* Before/after is a reassessment relationship, not qualitative arithmetic. */
-.learning-grc-tools-slide .grt-reassessment-diagram {display:grid;grid-template-columns:1fr .64fr 1fr;gap:3cqw;align-items:center;flex:1;}
-.learning-grc-tools-slide .grt-verify-controls {text-align:center;padding:0 1cqw;}
-.learning-grc-tools-slide .grt-verify-controls .grt-copy {font-size:clamp(20px,1.75cqw,32px);}
-.learning-grc-tools-slide .grt-verify-controls .grt-arrow {display:block;font-size:4cqw;margin-top:1cqw;}
-.learning-grc-tools-slide .grt-owner-review {border-top:1px solid #d6e0e9;padding-top:1.2cqw;}
-.learning-grc-tools-slide .grt-owner-review .grt-term {margin-bottom:.7cqw;}
-/* Stable choices retain focus and state while only pressed/feedback content updates. */
-.learning-grc-tools-slide .grt-scenario-layout {display:grid;grid-template-columns:1.1fr 1fr;gap:3cqw;align-items:start;flex:1;}
-.learning-grc-tools-slide .grt-scenario-options {display:grid;gap:.8cqw;}
-.learning-grc-tools-slide .grt-option-btn {display:grid;grid-template-columns:1.6cqw 1fr;gap:1cqw;align-items:start;min-height:44px;width:100%;padding:1.1cqw 1.2cqw;border:1px solid #bdcbd9;border-radius:3px;background:#fff;color:#193b59;text-align:left;font-family:inherit;cursor:pointer;}
-.learning-grc-tools-slide .grt-option-letter {font-size:clamp(19px,1.7cqw,31px);line-height:1.45;font-weight:750;color:#527593;}
-.learning-grc-tools-slide .grt-option-action {font-size:clamp(20px,1.75cqw,32px);line-height:1.45;font-weight:550;}
-.learning-grc-tools-slide .grt-option-btn:hover {background:#f0f6fc;border-color:#4580b4;}
-.learning-grc-tools-slide .grt-option-btn[aria-pressed='true'] {background:#eaf3fc;border-color:#2563a0;box-shadow:inset 3px 0 #2563a0;}
-.learning-grc-tools-slide .grt-option-btn:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
-.learning-grc-tools-slide .grt-scenario-feedback {border-left:2px solid #9ebbd3;padding:1cqw 0 1cqw 2cqw;}
-.learning-grc-tools-slide .grt-feedback-title {margin:0 0 1cqw;color:#214c73;font-size:clamp(25px,2.35cqw,42px);line-height:1.35;}
-.learning-viewer .learning-grc-tools-slide .grt-feedback-body {margin:0;color:#334b62;font-size:clamp(20px,1.85cqw,34px);line-height:1.55;}
-.learning-grc-tools-slide .grt-scenario-feedback[data-grt-outcome='recommended'] {border-color:#34786b;}
-@container (max-width:800px) {
- .learning-grc-tools-slide .grt-scene {height:auto;min-height:100%;padding:28px;gap:24px;}
- .learning-grc-tools-slide :is(.grt-work-flow,.grt-capability-map,.grt-assessment-record,.grt-ransomware-layout,.grt-reassessment-diagram,.grt-scenario-layout) {grid-template-columns:1fr;gap:24px;}
- .learning-grc-tools-slide .grt-capability-link::before,.learning-grc-tools-slide .grt-capability-link::after {content:none!important;}
- .learning-grc-tools-slide .grt-option-btn {grid-template-columns:24px 1fr;padding:12px;gap:12px;}
+.learning-viewer .learning-slide.learning-grc-tools-slide {
+    container-type: inline-size;
+    padding: 0;
+    background: #fff;
+    color: #142b43;
+    overflow: visible;
 }
+
+.learning-viewer .learning-grc-tools-slide>.learning-slide-body {
+    display: flex;
+    height: 100%;
+    min-height: 0;
+    gap: 0;
+}
+
+.learning-grc-tools-slide .grt-scene {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 2cqw;
+    width: 100%;
+    max-width: var(--d2-canvas-max-width, 1400px);
+    margin: 0 auto;
+    height: 100%;
+    padding: 3.3cqw 4.2cqw;
+    background: #fff;
+    color: #142b43;
+}
+
+.learning-grc-tools-slide .grt-scene * {
+    box-sizing: border-box;
+}
+
+.learning-grc-tools-slide :is(.grt-header, .grt-main) {
+    min-width: 0;
+    min-height: 0;
+}
+
+.learning-grc-tools-slide .grt-title {
+    margin: 0;
+    color: #102a41;
+    font-size: clamp(30px, 3.1cqw, 55px);
+    line-height: 1.25;
+    font-weight: 750;
+    letter-spacing: -.025em;
+}
+
+.learning-viewer .learning-grc-tools-slide .grt-lead {
+    margin: .8cqw 0 0;
+    color: #526174;
+    font-size: clamp(19px, 1.75cqw, 31px);
+    line-height: 1.5;
+    max-width: 100%;
+}
+
+.learning-grc-tools-slide .grt-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5cqw;
+}
+
+.learning-grc-tools-slide .grt-term {
+    margin: 0;
+    color: #244d73;
+    font-size: clamp(24px, 2.2cqw, 39px);
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+.learning-viewer .learning-grc-tools-slide .grt-copy {
+    margin: 0;
+    color: #263d52;
+    font-size: clamp(21px, 1.9cqw, 34px);
+    line-height: 1.45;
+}
+
+.learning-viewer .learning-grc-tools-slide .grt-note {
+    margin: .6cqw 0 0;
+    color: #526174;
+    font-size: clamp(18px, 1.65cqw, 30px);
+    line-height: 1.45;
+}
+
+.learning-viewer .learning-grc-tools-slide .grt-takeaway {
+    margin: 0;
+    padding-top: 1cqw;
+    border-top: 1px solid #d4dfe9;
+    color: #38536c;
+    font-size: clamp(18px, 1.55cqw, 28px);
+    line-height: 1.45;
+}
+
+.learning-grc-tools-slide .grt-arrow {
+    align-self: center;
+    color: #7498b7;
+    font-size: 3cqw;
+    text-align: center;
+}
+
+.learning-grc-tools-slide .grt-record-title {
+    margin: 0 0 1.3cqw;
+    color: #194d7b;
+    font-size: clamp(26px, 2.55cqw, 46px);
+    line-height: 1.35;
+}
+
+.learning-grc-tools-slide .grt-record-data {
+    display: grid;
+    gap: 1.2cqw;
+    margin: 0;
+}
+
+.learning-grc-tools-slide .grt-record-field {
+    min-width: 0;
+}
+
+.learning-viewer .learning-grc-tools-slide .grt-field-label {
+    margin: 0 0 .25cqw;
+    color: #526174;
+    font-size: clamp(18px, 1.55cqw, 28px);
+    line-height: 1.4;
+}
+
+.learning-grc-tools-slide .grt-field-value {
+    margin: 0;
+    color: #223c55;
+    font-size: clamp(22px, 2cqw, 36px);
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.learning-viewer .learning-grc-tools-slide .grt-large-question {
+    margin: 1.2cqw 0;
+    color: #244d73;
+    font-size: clamp(27px, 2.6cqw, 47px);
+    line-height: 1.35;
+    font-weight: 650;
+}
+
+/* Working copies converge on a record with observable ownership/status/evidence. */
+.learning-grc-tools-slide .grt-work-flow {
+    display: grid;
+    grid-template-columns: .8fr .18fr 1.25fr;
+    gap: 3cqw;
+    align-items: center;
+    flex: 1;
+}
+
+.learning-grc-tools-slide .grt-working-copies {
+    display: grid;
+    gap: 1.2cqw;
+}
+
+.learning-viewer .learning-grc-tools-slide .grt-paper-copy {
+    margin: 0;
+    border-left: 2px solid #c4d1df;
+    border-bottom: 1px solid #e1e7ee;
+    padding: .7cqw 1.2cqw;
+    color: #334c63;
+    font-size: clamp(23px, 2.1cqw, 38px);
+    line-height: 1.4;
+}
+
+.learning-grc-tools-slide .grt-owned-record {
+    padding: 2.2cqw 2.5cqw;
+    border-left: 4px solid #3978ae;
+    background: #f2f7fc;
+}
+
+/* Six capability annotations connect to the same control record, without a staged workflow. */
+.learning-grc-tools-slide .grt-capability-map {
+    display: grid;
+    grid-template-columns: 1fr .82fr 1fr;
+    gap: 3cqw;
+    align-items: center;
+    flex: 1;
+}
+
+.learning-grc-tools-slide .grt-capability-links {
+    display: grid;
+    gap: 2cqw;
+}
+
+.learning-grc-tools-slide .grt-capability-link {
+    position: relative;
+    padding: .7cqw 0;
+}
+
+.learning-grc-tools-slide .grt-capability-name {
+    margin: 0 0 .5cqw;
+    color: #244d73;
+    font-size: clamp(23px, 2.05cqw, 37px);
+    line-height: 1.35;
+}
+
+.learning-grc-tools-slide .grt-capability-links:first-child .grt-capability-link::after {
+    content: '';
+    position: absolute;
+    right: -2.5cqw;
+    top: 50%;
+    width: 2cqw;
+    border-top: 2px solid #b8cbdc;
+}
+
+.learning-grc-tools-slide .grt-capability-links:last-child .grt-capability-link::before {
+    content: '';
+    position: absolute;
+    left: -2.5cqw;
+    top: 50%;
+    width: 2cqw;
+    border-top: 2px solid #b8cbdc;
+}
+
+.learning-grc-tools-slide .grt-shared-control {
+    border-left: 2px solid #84aaca;
+    border-right: 2px solid #84aaca;
+    padding: 3cqw 1.7cqw;
+    text-align: center;
+}
+
+/* An evaluation activity feeds a readable risk record; complete field dictionary stays in Reading. */
+.learning-grc-tools-slide .grt-assessment-record {
+    display: grid;
+    grid-template-columns: .85fr .14fr 1.25fr;
+    gap: 3cqw;
+    align-items: center;
+    flex: 1;
+}
+
+.learning-grc-tools-slide .grt-assessment-activity {
+    padding-right: 1cqw;
+}
+
+.learning-grc-tools-slide .grt-register-example {
+    padding: 1.8cqw 2.2cqw;
+    border-top: 3px solid #3978ae;
+    background: #f5f8fc;
+}
+
+.learning-grc-tools-slide .grt-register-example .grt-record-data {
+    gap: .9cqw;
+}
+
+/* Explicitly illustrative rank product, then four concise practical responses. */
+.learning-grc-tools-slide .grt-score-example {
+    padding: .3cqw 0 1cqw;
+}
+
+.learning-grc-tools-slide .grt-score-formula {
+    display: grid;
+    grid-template-columns: 1fr .2fr 1fr .2fr 1fr;
+    align-items: center;
+    gap: 2cqw;
+    text-align: center;
+    margin: .8cqw 0 0;
+}
+
+.learning-grc-tools-slide .grt-score-number {
+    display: block;
+    color: #225d90;
+    font-size: clamp(46px, 5.7cqw, 104px);
+    line-height: 1.1;
+}
+
+.learning-grc-tools-slide .grt-score-operator .grt-score-number {
+    font-size: 3.5cqw;
+    color: #829bb1;
+    padding-top: 2cqw;
+}
+
+.learning-grc-tools-slide .grt-response-choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6cqw 4cqw;
+}
+
+.learning-grc-tools-slide .grt-response-choice {
+    border-top: 1px solid #d6e0e9;
+    padding-top: .8cqw;
+}
+
+.learning-grc-tools-slide .grt-response-choice .grt-term {
+    margin-bottom: .4cqw;
+}
+
+/* Preserve the worked values while showing what each safeguard can contribute. */
+.learning-grc-tools-slide .grt-ransomware-layout {
+    display: grid;
+    grid-template-columns: .85fr 1.4fr;
+    gap: 4cqw;
+    align-items: center;
+    flex: 1;
+}
+
+.learning-grc-tools-slide .grt-server-record {
+    padding: 1.5cqw 2cqw 1.5cqw 0;
+    border-right: 2px solid #b8cbdc;
+}
+
+.learning-grc-tools-slide .grt-control-effects {
+    display: grid;
+    gap: .6cqw;
+}
+
+.learning-grc-tools-slide .grt-control-effect {
+    display: grid;
+    grid-template-columns: .8fr .12fr 1.1fr;
+    gap: 1.2cqw;
+    align-items: center;
+    padding: 1cqw 0;
+    border-top: 1px solid #d6e0e9;
+}
+
+.learning-grc-tools-slide .grt-control-effect:first-child {
+    border-top: 0;
+}
+
+.learning-grc-tools-slide .grt-control-name {
+    margin: 0;
+    color: #244d73;
+    font-size: clamp(24px, 2.1cqw, 38px);
+    line-height: 1.35;
+}
+
+/* Before/after is a reassessment relationship, not qualitative arithmetic. */
+.learning-grc-tools-slide .grt-reassessment-diagram {
+    display: grid;
+    grid-template-columns: 1fr .64fr 1fr;
+    gap: 3cqw;
+    align-items: center;
+    flex: 1;
+}
+
+.learning-grc-tools-slide .grt-verify-controls {
+    text-align: center;
+    padding: 0 1cqw;
+}
+
+.learning-grc-tools-slide .grt-verify-controls .grt-copy {
+    font-size: clamp(20px, 1.75cqw, 32px);
+}
+
+.learning-grc-tools-slide .grt-verify-controls .grt-arrow {
+    display: block;
+    font-size: 4cqw;
+    margin-top: 1cqw;
+}
+
+.learning-grc-tools-slide .grt-owner-review {
+    border-top: 1px solid #d6e0e9;
+    padding-top: 1.2cqw;
+}
+
+.learning-grc-tools-slide .grt-owner-review .grt-term {
+    margin-bottom: .7cqw;
+}
+
+/* Stable choices retain focus and state while only pressed/feedback content updates. */
+.learning-grc-tools-slide .grt-scenario-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3cqw;
+    align-items: start;
+    flex: 1;
+}
+
+.learning-grc-tools-slide .grt-scenario-options {
+    display: grid;
+    gap: .8cqw;
+}
+
+.learning-grc-tools-slide .grt-option-btn {
+    display: grid;
+    grid-template-columns: 1.6cqw 1fr;
+    gap: 1cqw;
+    align-items: start;
+    min-height: 44px;
+    width: 100%;
+    padding: 1.1cqw 1.2cqw;
+    border: 1px solid #bdcbd9;
+    border-radius: 3px;
+    background: #fff;
+    color: #193b59;
+    text-align: left;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.learning-grc-tools-slide .grt-option-letter {
+    font-size: clamp(19px, 1.7cqw, 31px);
+    line-height: 1.45;
+    font-weight: 750;
+    color: #527593;
+}
+
+.learning-grc-tools-slide .grt-option-action {
+    font-size: clamp(20px, 1.75cqw, 32px);
+    line-height: 1.45;
+    font-weight: 550;
+}
+
+.learning-grc-tools-slide .grt-option-btn:hover {
+    background: #f0f6fc;
+    border-color: #4580b4;
+}
+
+.learning-grc-tools-slide .grt-option-btn[aria-pressed='true'] {
+    background: #eaf3fc;
+    border-color: #2563a0;
+    box-shadow: inset 3px 0 #2563a0;
+}
+
+.learning-grc-tools-slide .grt-option-btn:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+.learning-grc-tools-slide .grt-scenario-feedback {
+    border-left: 2px solid #9ebbd3;
+    padding: 1cqw 0 1cqw 2cqw;
+}
+
+.learning-grc-tools-slide .grt-feedback-title {
+    margin: 0 0 1cqw;
+    color: #214c73;
+    font-size: clamp(25px, 2.35cqw, 42px);
+    line-height: 1.35;
+}
+
+.learning-viewer .learning-grc-tools-slide .grt-feedback-body {
+    margin: 0;
+    color: #334b62;
+    font-size: clamp(20px, 1.85cqw, 34px);
+    line-height: 1.55;
+}
+
+.learning-grc-tools-slide .grt-scenario-feedback[data-grt-outcome='recommended'] {
+    border-color: #34786b;
+}
+
+@container (max-width:800px) {
+    .learning-grc-tools-slide .grt-scene {
+        height: auto;
+        min-height: 100%;
+        padding: 28px;
+        gap: 24px;
+    }
+
+    .learning-grc-tools-slide :is(.grt-work-flow, .grt-capability-map, .grt-assessment-record, .grt-ransomware-layout, .grt-reassessment-diagram, .grt-scenario-layout) {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .learning-grc-tools-slide .grt-capability-link::before,
+    .learning-grc-tools-slide .grt-capability-link::after {
+        content: none !important;
+    }
+
+    .learning-grc-tools-slide .grt-option-btn {
+        grid-template-columns: 24px 1fr;
+        padding: 12px;
+        gap: 12px;
+    }
+}
+
 /* The example is a compact record with label/value rows, not stacked source definitions. */
-.learning-grc-tools-slide .grt-register-example .grt-record-field {display:grid;grid-template-columns:.34fr 1fr;gap:1cqw;align-items:baseline;}
+.learning-grc-tools-slide .grt-register-example .grt-record-field {
+    display: grid;
+    grid-template-columns: .34fr 1fr;
+    gap: 1cqw;
+    align-items: baseline;
+}

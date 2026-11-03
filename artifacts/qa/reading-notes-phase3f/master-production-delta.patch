@@ -1,0 +1,476 @@
+--- master-start/css/reading.css
++++ final/css/reading.css
+@@ -3654,6 +3654,143 @@
+   }
+ }
+ 
++/* Phase 3F: keep the scroll control in the existing Reading outer gutter. */
++.reading-screen .reading-scroll-nav { right: 2px; }
++.reading-screen .reading-scroll-nav:focus-visible { outline-offset: -3px; }
++.reading-screen:has(.reading-structured-objective) { padding-bottom: max(80px, calc(env(safe-area-inset-bottom) + 64px)); }
++@media (max-width: 840px) {
++  .reading-screen .reading-scroll-nav { right: 0; width: 24px; height: 44px; }
++}
++.reading-screen .reading-eyebrow { color: var(--text-dim); }
++.reading-screen .reading-body :is(.reading-concept-subtitle, .reading-detail-note, .reading-precedence-badge, .reading-scenario-topic, .reading-scenario-answer-label) { color: var(--text); }
++.reading-screen .reading-body :is(.reading-precedence-badge, .reading-scenario-topic, .reading-scenario-answer-label) { font-size: 14px; }
++/* End Phase 3F Reading accessibility. */
++
++/* Phase 3E: content-aware diagram legibility; preserve semantic relationships. */
++.reading-body .reading-diagram-card { container: reading-diagram / inline-size; }
++.reading-body .reading-diagram-card .reading-diagram-svg { max-width: none; width: 100%; height: auto; }
++.reading-body .reading-diagram-card .reading-diag-desktop { display: none !important; }
++.reading-body .reading-diagram-card .reading-diag-mobile { display: flex !important; flex-direction: column; gap: 16px; width: 100%; }
++.reading-body .reading-diag-mobile :is(p, li, span, .reading-mob-card-pill, .reading-mob-metric-val, .reading-mob-step-metric-hint) {
++  font-size: 15px; line-height: 1.65; color: var(--text); word-break: normal; overflow-wrap: normal;
++}
++.reading-body .reading-diag-mobile :is(h5, h6) { font-size: 16px; line-height: 1.6; color: var(--text); }
++.reading-body .reading-diag-mobile :is(.reading-mob-tier-head, .reading-mob-card-head) { flex-wrap: wrap; align-items: flex-start; }
++.reading-body .reading-diag-mobile :is(.reading-mob-tier-info, .reading-mob-head-info) { min-width: 0; flex: 1 1 12rem; }
++.reading-body .reading-diag-mobile :is(.reading-mob-tier-card, .reading-mob-card, .reading-mob-step-card) { min-width: 0; }
++.reading-body .reading-mob-connector-pill { max-width: 100%; white-space: normal; text-align: center; }
++.reading-body .reading-diagram-card svg text { fill: var(--text); }
++.reading-body .reading-diagram-card svg text[fill="#ffffff"] { fill: #ffffff; }
++.reading-body .reading-diagram-card svg text[fill="#0f172a"] { fill: #0f172a; }
++.reading-body .reading-diagram-card svg rect[fill="#10b981"] { fill: #047857; }
++.reading-body .reading-diagram-card svg rect[fill="#3b82f6"] { fill: #1d4ed8; }
++.reading-body .reading-diagram-card svg rect[fill="#8b5cf6"] { fill: #6d28d9; }
++.reading-body .reading-diagram-card svg rect[fill="#ef4444"] { fill: #b91c1c; }
++.reading-body [data-diagram="cloudSharedResponsibility"] svg > g:first-child > text { font-size: 10.5px; }
++.reading-body :is([data-diagram="dmzFirewallArchitecture"], [data-diagram="cloudSharedResponsibility"], [data-diagram="osiVsTcpIpModel"]) .reading-mob-stack-list {
++  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 16px;
++}
++.reading-body .reading-osi-reference { grid-column: 1 / -1; }
++.reading-body .reading-osi-reference > h5 { margin: 0 0 16px; }
++.reading-body .reading-osi-reference .reading-semantic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 16px; }
++.reading-body .reading-osi-reference .reading-semantic-concept { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
++.reading-body .reading-osi-reference h6 { margin: 0 0 8px; }
++.reading-body .reading-osi-reference p { margin: 0; }
++@container reading-diagram (min-width: 982px) {
++  .reading-body [data-diagram="threatChain"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="threatChain"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 904px) {
++  .reading-body [data-diagram="ciaTriad"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="ciaTriad"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 840px) {
++  .reading-body [data-diagram="loadBalancer"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="loadBalancer"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 904px) {
++  .reading-body [data-diagram="privacyFlow"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="privacyFlow"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1051px) {
++  .reading-body [data-diagram="defenseInDepth"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="defenseInDepth"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 890px) {
++  .reading-body [data-diagram="riskCalculationFlow"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="riskCalculationFlow"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1082px) {
++  .reading-body [data-diagram="riskLifecycle"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="riskLifecycle"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1111px) {
++  .reading-body [data-diagram="documentHierarchy"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="documentHierarchy"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 920px) {
++  .reading-body [data-diagram="dueCareDiligence"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="dueCareDiligence"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1001px) {
++  .reading-body [data-diagram="ethicsCanons"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="ethicsCanons"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1007px) {
++  .reading-body [data-diagram="grcAlignment"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="grcAlignment"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1085px) {
++  .reading-body [data-diagram="rtoRpoTimeline"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="rtoRpoTimeline"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1136px) {
++  .reading-body [data-diagram="nistSp80063Framework"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="nistSp80063Framework"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1136px) {
++  .reading-body [data-diagram="leastPrivilegeVsSod"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="leastPrivilegeVsSod"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1085px) {
++  .reading-body [data-diagram="accessControlModels"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="accessControlModels"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1193px) {
++  .reading-body [data-diagram="osiVsTcpIpModel"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="osiVsTcpIpModel"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1326px) {
++  .reading-body [data-diagram="dmzFirewallArchitecture"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="dmzFirewallArchitecture"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1085px) {
++  .reading-body [data-diagram="defenseInDepthLayers"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="defenseInDepthLayers"] .reading-diag-mobile { display: none !important; }
++}
++@container reading-diagram (min-width: 1136px) {
++  .reading-body [data-diagram="cloudSharedResponsibility"] .reading-diag-desktop { display: flex !important; }
++  .reading-body [data-diagram="cloudSharedResponsibility"] .reading-diag-mobile { display: none !important; }
++}
++.reading-body .reading-diag-mobile code { font-size: 15px; }
++.reading-body [data-diagram="riskCalculationFlow"] svg > g:nth-of-type(3) > rect { height: 107px; }
++.reading-body [data-diagram="riskCalculationFlow"] svg > g:nth-of-type(3) > text:last-child { transform: translateY(6px); }
++.reading-body .reading-diag-mobile .reading-mob-step-badge { font-size: 15px; color: var(--text); }
++.reading-body .reading-diag-mobile .reading-mob-step-card { flex-wrap: wrap; }
++.reading-body .reading-diag-mobile .reading-mob-time-body { min-width: 0; flex: 1 1 12rem; }
++.reading-body .reading-diagram-card svg rect[fill^="var(--blue,"] { fill: #1d4ed8; }
++.reading-body [data-diagram="rtoRpoTimeline"] svg > g > text:last-child { transform: translateY(7px); }
++.reading-body [data-diagram="nistSp80063Framework"] svg > g:nth-of-type(-n+3) > rect:first-child { height: 144px; }
++.reading-body [data-diagram="nistSp80063Framework"] svg > g:nth-of-type(-n+3) > text:last-child { transform: translateY(6px); }
++.reading-body [data-diagram="riskCalculationFlow"] svg > g:is(:nth-of-type(1), :nth-of-type(2), :nth-of-type(4)) > rect { height: 96px; }
++.reading-body [data-diagram="riskCalculationFlow"] svg > g:is(:nth-of-type(1), :nth-of-type(2), :nth-of-type(4)) > text:nth-of-type(2) { transform: translateY(8px); }
++.reading-body [data-diagram="riskCalculationFlow"] svg > g:is(:nth-of-type(1), :nth-of-type(2), :nth-of-type(4)) > text:last-child { transform: translateY(15px); }
++.reading-body [data-diagram="riskLifecycle"] svg > rect { height: 78px; }
++.reading-body [data-diagram="riskLifecycle"] svg > .diag-text-sub { transform: translateY(6px); }
++.reading-body [data-diagram="riskLifecycle"] svg > path:last-of-type { transform: translateY(8px); }
++.reading-body [data-diagram="riskLifecycle"] svg > .diag-text-label { transform: translateY(18px); }
++/* End Phase 3E diagram legibility. */
++
+ /* Phase 3B.2: opt-in textbook prose, independent of tables and diagrams. */
+ .reading-body .reading-structured-objective > h3 {
+   margin: 40px 0 16px;
+--- master-start/js/core/diagram-generator.js
++++ final/js/core/diagram-generator.js
+@@ -1030,22 +1030,22 @@
+ 
+   // 1.5.3 ISC2 Code of Ethics Canons (Clean Numbered Precedence Hierarchy: 01-04)
+   ethicsCanons: `
+-<div class="reading-diagram-card" data-diagram="ethicsCanons" role="region" aria-label="ISC2 Code of Ethics 4 Canons Numbered Precedence Hierarchy">
++<div class="reading-diagram-card" data-diagram="ethicsCanons" role="region" aria-label="ISC2 Code of Ethics four mandatory canons and professional judgment">
+   <div class="reading-diagram-header">
+-    <span class="reading-diagram-tag">Ethics Hierarchy</span>
+-    <h4 class="reading-diagram-title">The 4 Canons of the ISC2 Code of Ethics (Strict Order of Precedence)</h4>
++    <span class="reading-diagram-tag">Ethics Canons</span>
++    <h4 class="reading-diagram-title">The Four Canons of the ISC2 Code of Ethics</h4>
+   </div>
+   <div class="reading-diagram-svg-wrap reading-diag-desktop">
+-    <svg viewBox="0 0 740 250" class="reading-diagram-svg" aria-label="Order of precedence: 01 Society, 02 Honor, 03 Principals, 04 Profession" role="img">
++    <svg viewBox="0 0 740 250" class="reading-diagram-svg" aria-label="Four mandatory canons: Society, Honor, Principals, Profession; apply professional ethical judgment" role="img">
+       <rect x="25" y="12" width="690" height="28" rx="5" class="diag-box diag-box-banner" />
+-      <text x="370" y="30" class="diag-text-sub" text-anchor="middle">Order of Precedence: Canon 01 supersedes 02 &middot; 02 supersedes 03 &middot; 03 supersedes 04 (In case of conflict)</text>
++      <text x="370" y="30" class="diag-text-sub" text-anchor="middle">Four mandatory canons; apply professional ethical judgment to the situation.</text>
+ 
+       <g>
+         <rect x="25" y="48" width="690" height="42" rx="6" class="diag-box diag-box-banner" />
+         <text x="50" y="74" class="diag-step-num">01</text>
+         <text x="85" y="74" class="diag-text-title">Society</text>
+         <text x="145" y="74" class="diag-text-sub">Protect society, the common good, public trust, and infrastructure</text>
+-        <text x="695" y="74" class="diag-step-num" text-anchor="end">PRIORITY 1 (HIGHEST)</text>
++        <text x="695" y="74" class="diag-step-num" text-anchor="end">CANON 1</text>
+       </g>
+ 
+       <g>
+@@ -1053,7 +1053,7 @@
+         <text x="50" y="123" class="diag-step-num">02</text>
+         <text x="85" y="123" class="diag-text-title">Honor</text>
+         <text x="135" y="123" class="diag-text-sub">Act honorably, honestly, justly, responsibly, and legally</text>
+-        <text x="695" y="123" class="diag-step-num" text-anchor="end">PRIORITY 2</text>
++        <text x="695" y="123" class="diag-step-num" text-anchor="end">CANON 2</text>
+       </g>
+ 
+       <g>
+@@ -1061,7 +1061,7 @@
+         <text x="50" y="172" class="diag-step-num">03</text>
+         <text x="85" y="172" class="diag-text-title">Principals</text>
+         <text x="160" y="172" class="diag-text-sub">Provide diligent and competent service to principals (Employers / Clients)</text>
+-        <text x="695" y="172" class="diag-step-num" text-anchor="end">PRIORITY 3</text>
++        <text x="695" y="172" class="diag-step-num" text-anchor="end">CANON 3</text>
+       </g>
+ 
+       <g>
+@@ -1069,14 +1069,14 @@
+         <text x="50" y="221" class="diag-step-num">04</text>
+         <text x="85" y="221" class="diag-text-title">Profession</text>
+         <text x="170" y="221" class="diag-text-sub">Advance and protect the profession</text>
+-        <text x="695" y="221" class="diag-step-num" text-anchor="end">PRIORITY 4</text>
++        <text x="695" y="221" class="diag-step-num" text-anchor="end">CANON 4</text>
+       </g>
+     </svg>
+   </div>
+-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="ISC2 Code of Ethics 4 Canons Numbered Precedence Hierarchy Mobile">
++  <div class="reading-diag-mobile reading-mobile-stack" aria-label="ISC2 Code of Ethics four mandatory canons and professional judgment Mobile">
+     <div class="reading-mob-banner">
+-      <span class="reading-mob-banner-tag">STRICT ORDER OF PRECEDENCE</span>
+-      <p class="reading-mob-banner-text">จรรยาบรรณวิชาชีพ ISC2 มี 4 ข้อ เรียงตามลำดับความสำคัญเด็ดขาด: หากเกิดข้อขัดแย้ง ข้อก่อนหน้าจะมีอำนาจเหนือกว่าข้อถัดไปเสมอ (Canon 01 &gt; 02 &gt; 03 &gt; 04)</p>
++      <span class="reading-mob-banner-tag">THE FOUR CANONS</span>
++      <p class="reading-mob-banner-text">จรรยาบรรณ ISC2 ทั้งสี่ข้อเป็นหน้าที่ที่ต้องยึดถือร่วมกัน พิจารณาข้อเท็จจริง บริบท และดุลยพินิจทางวิชาชีพ หมายเลขใช้สำหรับอ้างอิงข้อ ไม่ได้ยืนยันกฎตัดสินความขัดแย้งแบบตายตัว</p>
+     </div>
+     <div class="reading-mob-stack-list">
+       <div class="reading-mob-tier-card reading-tier-red">
+@@ -1084,58 +1084,46 @@
+           <span class="reading-mob-tier-num">01</span>
+           <div class="reading-mob-tier-info">
+             <h5 class="reading-mob-tier-name">CANON 1: SOCIETY &amp; INFRASTRUCTURE</h5>
+-            <span class="reading-mob-tier-action">PRIORITY 1 (สูงสุด) &middot; ปกป้องสังคมและสาธารณชน</span>
+-          </div>
+-        </div>
+-        <p class="reading-mob-tier-desc"><em>"Protect society, the common good, necessary public trust, and infrastructure."</em> — ปกป้องสังคม ประโยชน์ส่วนรวม ความไว้วางใจของสาธารณะ และโครงสร้างพื้นฐานสำคัญของชาติ (หากขัดแย้งกับคำสั่งองค์กร ให้ยึดถือสังคมก่อนเสมอ)</p>
+-      </div>
+-
+-      <div class="reading-mob-step-connector">
+-        <div class="reading-mob-connector-line reading-connector-red"></div>
+-        <span class="reading-mob-connector-pill reading-pill-red">&darr; มีอำนาจบังคับเหนือกว่า (Supersedes) &darr;</span>
+-        <div class="reading-mob-connector-line reading-connector-red"></div>
+-      </div>
++            <span class="reading-mob-tier-action">CANON 1 &middot; ปกป้องสังคมและสาธารณชน</span>
++          </div>
++        </div>
++        <p class="reading-mob-tier-desc"><em>"Protect society, the common good, necessary public trust, and infrastructure."</em> — ปกป้องสังคม ประโยชน์ส่วนรวม ความไว้วางใจของสาธารณะ และโครงสร้างพื้นฐานสำคัญของชาติ (พิจารณาผลกระทบต่อสังคมควบคู่กับหน้าที่อื่นตามบริบท)</p>
++      </div>
++
++
+ 
+       <div class="reading-mob-tier-card reading-tier-amber">
+         <div class="reading-mob-tier-head">
+           <span class="reading-mob-tier-num">02</span>
+           <div class="reading-mob-tier-info">
+             <h5 class="reading-mob-tier-name">CANON 2: HONOR &amp; LEGALITY</h5>
+-            <span class="reading-mob-tier-action">PRIORITY 2 &middot; ซื่อสัตย์ ยุติธรรม และเคารพกฎหมาย</span>
++            <span class="reading-mob-tier-action">CANON 2 &middot; ซื่อสัตย์ ยุติธรรม และเคารพกฎหมาย</span>
+           </div>
+         </div>
+         <p class="reading-mob-tier-desc"><em>"Act honorably, honestly, justly, responsibly, and legally."</em> — ประพฤติตนอย่างสมเกียรติ ซื่อสัตย์ ยุติธรรม มีความรับผิดชอบ และเคารพกฎหมายอย่างเคร่งครัด ไม่ละเมิดกฎหมายเพื่อประโยชน์ส่วนตนหรือผู้อื่น</p>
+       </div>
+ 
+-      <div class="reading-mob-step-connector">
+-        <div class="reading-mob-connector-line reading-connector-amber"></div>
+-        <span class="reading-mob-connector-pill reading-pill-amber">&darr; มีอำนาจบังคับเหนือกว่า (Supersedes) &darr;</span>
+-        <div class="reading-mob-connector-line reading-connector-amber"></div>
+-      </div>
++
+ 
+       <div class="reading-mob-tier-card reading-tier-blue">
+         <div class="reading-mob-tier-head">
+           <span class="reading-mob-tier-num">03</span>
+           <div class="reading-mob-tier-info">
+             <h5 class="reading-mob-tier-name">CANON 3: DILIGENT SERVICE TO PRINCIPALS</h5>
+-            <span class="reading-mob-tier-action">PRIORITY 3 &middot; ปฏิบัติงานต่อนายจ้าง/ลูกค้าอย่างเชี่ยวชาญ</span>
++            <span class="reading-mob-tier-action">CANON 3 &middot; ปฏิบัติงานต่อนายจ้าง/ลูกค้าอย่างเชี่ยวชาญ</span>
+           </div>
+         </div>
+         <p class="reading-mob-tier-desc"><em>"Provide diligent and competent service to principals."</em> — ให้บริการด้วยความขยันขันแข็งและเปี่ยมด้วยสมรรถนะแก่นายจ้างหรือลูกค้า โดยไม่ละเมิดข้อ 1 หรือข้อ 2</p>
+       </div>
+ 
+-      <div class="reading-mob-step-connector">
+-        <div class="reading-mob-connector-line reading-connector-green"></div>
+-        <span class="reading-mob-connector-pill reading-pill-green">&darr; มีอำนาจบังคับเหนือกว่า (Supersedes) &darr;</span>
+-        <div class="reading-mob-connector-line reading-connector-green"></div>
+-      </div>
++
+ 
+       <div class="reading-mob-tier-card reading-tier-green">
+         <div class="reading-mob-tier-head">
+           <span class="reading-mob-tier-num">04</span>
+           <div class="reading-mob-tier-info">
+             <h5 class="reading-mob-tier-name">CANON 4: ADVANCE THE PROFESSION</h5>
+-            <span class="reading-mob-tier-action">PRIORITY 4 &middot; ส่งเสริมและปกป้องวิชาชีพ</span>
++            <span class="reading-mob-tier-action">CANON 4 &middot; ส่งเสริมและปกป้องวิชาชีพ</span>
+           </div>
+         </div>
+         <p class="reading-mob-tier-desc"><em>"Advance and protect the profession."</em> — ส่งเสริมและปกป้องชื่อเสียงของวิชาชีพความมั่นคงปลอดภัยสารสนเทศ แบ่งปันความรู้ ยกระดับมาตรฐาน และไม่กระทำการใดที่ทำให้วิชาชีพเสื่อมเสีย</p>
+@@ -1413,7 +1401,7 @@
+             <span class="reading-mob-tier-action">Real-World Identity Verification</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ตรวจสอบความถูกต้องของบุคคลในโลกจริง (เช่น แสดงบัตรประชาชน) ก่อนการออกข้อมูลประจำตัวดิจิทัล (Enrollment)</p>
++        <p class="reading-mob-tier-desc">ตรวจสอบความถูกต้องของบุคคลในโลกจริง (เช่น แสดงบัตรประชาชน) ก่อนการออกข้อมูลประจำตัวดิจิทัล (Enrollment)</p><p class="reading-diagram-source-labels">SP 800-63A &middot; IAL</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-scorecard">
+@@ -1424,7 +1412,7 @@
+             <span class="reading-mob-tier-action">Credential Possession &amp; Control</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ยืนยันว่าผู้ใช้เป็นผู้ครอบครองข้อมูลประจำตัว (รหัสผ่าน, OTP, ไบโอเมตริกซ์) ในการล็อกอินประจำวัน</p>
++        <p class="reading-mob-tier-desc">ยืนยันว่าผู้ใช้เป็นผู้ครอบครองข้อมูลประจำตัว (รหัสผ่าน, OTP, ไบโอเมตริกซ์) ในการล็อกอินประจำวัน</p><p class="reading-diagram-source-labels">SP 800-63B &middot; AAL</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-report">
+@@ -1435,7 +1423,7 @@
+             <span class="reading-mob-tier-action">Cross-Domain Trust &amp; Assertions</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ส่งต่อข้อมูลตัวตนและการยืนยันตัวตนข้ามขอบเขตองค์กรหรือระบบบริการ เช่น Single Sign-On (SSO)</p>
++        <p class="reading-mob-tier-desc">ส่งต่อข้อมูลตัวตนและการยืนยันตัวตนข้ามขอบเขตองค์กรหรือระบบบริการ เช่น Single Sign-On (SSO)</p><p class="reading-diagram-source-labels">SP 800-63C &middot; FAL</p>
+       </div>
+     </div>
+   </div>
+@@ -1715,7 +1703,7 @@
+       </g>
+     </svg>
+   </div>
+-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="OSI vs TCP/IP Mobile Stack">
++  <div class="reading-diag-mobile reading-mobile-stack" aria-label="OSI vs TCP/IP Mobile Stack"><section class="reading-osi-reference"><h5>OSI — Seven reference layers / เจ็ดชั้นอ้างอิง</h5><div class="reading-semantic-grid"><section class="reading-semantic-concept" data-osi-layer="7"><h6>7. Application (แอปพลิเคชัน)</h6><p>HTTP, HTTPS, DNS, SSH, FTP &middot; PDU: Data</p></section><section class="reading-semantic-concept" data-osi-layer="6"><h6>6. Presentation (การนำเสนอ)</h6><p>TLS/SSL, ASCII, JSON, JPEG &middot; Formatting</p></section><section class="reading-semantic-concept" data-osi-layer="5"><h6>5. Session (เซสชัน)</h6><p>RPC, NetBIOS &middot; Session Management</p></section><section class="reading-semantic-concept" data-osi-layer="4"><h6>4. Transport (การขนส่ง)</h6><p>TCP, UDP, Ports &middot; PDU: Segments / Datagrams</p></section><section class="reading-semantic-concept" data-osi-layer="3"><h6>3. Network (เครือข่าย)</h6><p>IPv4, IPv6, ICMP, IPsec &middot; PDU: Packets</p></section><section class="reading-semantic-concept" data-osi-layer="2"><h6>2. Data Link (ดาต้าลิงก์)</h6><p>Ethernet, MAC, Switches &middot; PDU: Frames</p></section><section class="reading-semantic-concept" data-osi-layer="1"><h6>1. Physical (กายภาพ)</h6><p>Cables, RJ45, Hubs, Radio Signals &middot; PDU: Bits</p></section></div></section>
+     <div class="reading-mob-stack-list">
+       <div class="reading-mob-tier-card reading-tier-kpi">
+         <div class="reading-mob-tier-head">
+@@ -1853,7 +1841,7 @@
+             <span class="reading-mob-tier-action">Public Access &middot; Inbound Traffic</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">เครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)</p>
++        <p class="reading-mob-tier-desc">เครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)</p><p class="reading-diagram-source-labels">UNTRUSTED ZONE · Internet / Outside · &bull; สาธารณะภายนอก · &bull; ผู้ใช้งานทั่วไป · &bull; ภัยคุกคามภายนอก · ทราฟฟิกขาเข้าต้องผ่าน · การตรวจสอบอย่างเข้มงวด · FW 1 · External · Firewall · Packet Filter · Stateful · Policy Ports</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-kpi">
+@@ -1864,7 +1852,7 @@
+             <span class="reading-mob-tier-action">Public Services &middot; Limited Trust</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">เขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง</p>
++        <p class="reading-mob-tier-desc">เขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง</p><p class="reading-diagram-source-labels">BUFFER ZONE &middot; LIMITED TRUST · Demilitarized Zone (DMZ) · Web Server / WAF · HTTPS:443 · Mail Gateway (SMTP) · Port 25 · Public DNS / Proxy · Port 53 · แยกบริการสาธารณะออกจากเครือข่ายภายใน</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-foundation">
+@@ -1875,7 +1863,7 @@
+             <span class="reading-mob-tier-action">Core Assets &middot; Database &amp; IAM</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">เครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด</p>
++        <p class="reading-mob-tier-desc">เครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด</p><p class="reading-diagram-source-labels">FW 2 · Internal · Firewall · Deep Inspect · Strict ACLs · App &amp; DB · TRUSTED INTERNAL · Internal Network · &bull; Database Servers · &bull; Active Directory (IAM) · &bull; ERP / HR Systems · &bull; Staff Workstations · ไม่อนุญาตการเชื่อมต่อ · ตรงจาก Internet</p>
+       </div>
+     </div>
+   </div>
+@@ -2114,7 +2102,7 @@
+       </g>
+     </svg>
+   </div>
+-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Cloud Shared Responsibility Mobile Stack">
++  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Cloud Shared Responsibility Mobile Stack"><p class="reading-diagram-source-labels">Customer Responsibility (Security IN the Cloud &middot; ลูกค้าดูแล) · CSP Responsibility (Security OF the Cloud &middot; ผู้ให้บริการดูแล)</p>
+     <div class="reading-mob-stack-list">
+       <div class="reading-mob-tier-card reading-tier-foundation">
+         <div class="reading-mob-tier-head">
+@@ -2124,7 +2112,7 @@
+             <span class="reading-mob-tier-action">OS &middot; Apps &middot; Customer Managed</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Applications, Guest OS, Patching และ Network Configs | CSP ดูแล: Hypervisor, Physical Servers, Storage, Datacenter Facility</p>
++        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Applications, Guest OS, Patching และ Network Configs | CSP ดูแล: Hypervisor, Physical Servers, Storage, Datacenter Facility</p><p class="reading-diagram-source-labels">IaaS · Infrastructure as a Service · Data Policy (Customer) · IAM Policy (Customer) · Applications &amp; Code (Customer) · OS &amp; Patching (Customer) · Virtualization (CSP) · Physical Facilities (CSP) · เช่น AWS EC2, Azure VMs</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-kpi">
+@@ -2135,7 +2123,7 @@
+             <span class="reading-mob-tier-action">Code &middot; Data &middot; Runtime Managed</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Application Source Code | CSP ดูแล: OS, Middleware, Language Runtime, Database Engine, Hardware, Physical Security</p>
++        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Application Source Code | CSP ดูแล: OS, Middleware, Language Runtime, Database Engine, Hardware, Physical Security</p><p class="reading-diagram-source-labels">PaaS · Platform as a Service · Data Policy (Customer) · IAM Policy (Customer) · Applications &amp; Code (Customer) · OS &amp; Runtime (CSP) · Virtualization (CSP) · Physical Facilities (CSP) · เช่น App Engine, Elastic Beanstalk</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-report">
+@@ -2146,7 +2134,7 @@
+             <span class="reading-mob-tier-action">Data &middot; Access &middot; App Managed</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย/การตั้งค่า User Access ที่ตนควบคุม; CSP ยังคงดูแลความปลอดภัยของบริการ Storage และ IAM ที่ตนบริหาร | CSP ดูแล: แอปพลิเคชันทั้งหมด, ซอฟต์แวร์, OS, โครงสร้างพื้นฐาน และการสำรองข้อมูลระดับระบบ</p>
++        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย/การตั้งค่า User Access ที่ตนควบคุม; CSP ยังคงดูแลความปลอดภัยของบริการ Storage และ IAM ที่ตนบริหาร | CSP ดูแล: แอปพลิเคชันทั้งหมด, ซอฟต์แวร์, OS, โครงสร้างพื้นฐาน และการสำรองข้อมูลระดับระบบ</p><p class="reading-diagram-source-labels">SaaS · Software as a Service · Data Policy (Customer) · IAM Policy (Customer) · Applications &amp; Logic (CSP) · OS &amp; Runtime (CSP) · Virtualization (CSP) · Physical Facilities (CSP) · เช่น M365, Google Workspace</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-dashboard">
+@@ -2157,7 +2145,7 @@
+             <span class="reading-mob-tier-action">Event Code &middot; Fully Managed</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: Function Code, การจัดชั้นข้อมูล และนโยบาย/การตั้งค่า IAM Trigger ที่ตนควบคุม | CSP ดูแล: การสเกลแบบอัตโนมัติ (Auto-scaling), Event Bus, Container Execution, Host Infrastructure</p>
++        <p class="reading-mob-tier-desc">ลูกค้าดูแล: Function Code, การจัดชั้นข้อมูล และนโยบาย/การตั้งค่า IAM Trigger ที่ตนควบคุม | CSP ดูแล: การสเกลแบบอัตโนมัติ (Auto-scaling), Event Bus, Container Execution, Host Infrastructure</p><p class="reading-diagram-source-labels">FaaS / Serverless · Function as a Service · Data Policy (Customer) · IAM Policy (Customer) · Function Code (Customer) · Event Runtime &amp; OS (CSP) · Compute Container (CSP) · Physical Facilities (CSP) · เช่น AWS Lambda, Cloud Functions</p>
+       </div>
+     </div>
+   </div>
+--- master-start/js/ui/screen-reading.js
++++ final/js/ui/screen-reading.js
+@@ -560,7 +560,18 @@
+     }
+   }
+ 
++  function applyReadingLanguageMetadata() {
++    const article = container.querySelector('.reading-article');
++    if (!article || ![1, 2, 3, 4].includes(getActiveDomain().id)) return;
++    article.querySelector('.reading-article-markdown')?.setAttribute('lang', 'th');
++    for (const element of article.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,dt,dd,figcaption,blockquote,em,.reading-diagram-tag')) {
++      const text = element.textContent;
++      if (/[A-Za-z]/.test(text) && !/[\u0e00-\u0e7f]/.test(text) && !element.closest('svg,.katex,code')) element.setAttribute('lang', 'en');
++    }
++  }
++
+   function setupScrollSpy() {
++    applyReadingLanguageMetadata();
+     // Observe real subsection headings, not the large containing objectives.
+     const domain = getActiveDomain();
+     const ids = (domain.objectives || []).flatMap(obj => [obj.anchorId, ...(obj.topics || []).map(topic => topic.id)]);
+--- master-start/content/isc2-cc-2026/reading/domain-1.md
++++ final/content/isc2-cc-2026/reading/domain-1.md
+@@ -941,15 +941,15 @@
+ 
+ ### 1.5.3 ISC2 Code of Ethics (The 4 Canons)
+ 
+-สมาชิกและผู้ถือใบรับรองของ ISC2 ทุกคนต้องยึดมั่นและปฏิบัติตาม **ประมวลจริยธรรม 4 ข้อ (4 Canons)** โดยต้องยึดถือตาม **ลำดับความสำคัญก่อนหลัง (Strict Order of Precedence)**:
+-
+-<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>ประมวลจริยธรรม 4 ข้อตามลำดับความสำคัญก่อนหลัง (Strict Order of Precedence):</h4>
++สมาชิกและผู้ถือใบรับรองของ ISC2 ทุกคนต้องยึดมั่นและปฏิบัติตาม **ประมวลจริยธรรม 4 ข้อ (4 Canons)** โดยพิจารณาหน้าที่ทั้งสี่ร่วมกับข้อเท็จจริงและใช้ดุลยพินิจทางวิชาชีพ:
++
++<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>ประมวลจริยธรรม 4 ข้อ (The Four Canons):</h4>
+ 
+ <div class="reading-semantic-diagram" data-diagram="ethicsCanons"></div>
+ 
+ <div class="reading-precedence-rule">
+   <svg class="reading-rule-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+-  <span><strong>กฎลำดับความสำคัญ (Strict Order of Precedence):</strong> ข้อ 1 ถึง 4 เรียงตามลำดับความสำคัญจากสูงสุดลงไปอย่างเคร่งครัด หากเกิดความขัดแย้งทางหน้าที่ ผลประโยชน์ หรือคำสั่งของผู้ว่าจ้าง <em>Canon ลำดับก่อนหน้าจะมีความสำคัญเหนือกว่าเสมอ</em></span>
++  <span><strong>การใช้ประมวลจริยธรรม (Applying the Canons):</strong> พิจารณาหน้าที่ตาม Canon ทั้งสี่ร่วมกับข้อเท็จจริงและบริบท หมายเลขใช้สำหรับอ้างอิงข้อ ไม่ได้ยืนยันอัลกอริทึมตัดสินความขัดแย้งแบบตายตัว <em>Use professional ethical judgment; numbering alone does not establish a universal conflict-resolution algorithm.</em></span>
+ </div>
+ 
+ <div class="reading-precedence-stack">
+@@ -959,10 +959,10 @@
+         <span class="reading-precedence-num">01</span>
+         <h4 class="reading-precedence-title">Canon 1: Protect society, the common good, necessary public trust and confidence, and the infrastructure</h4>
+       </div>
+-      <span class="reading-precedence-badge">Priority 1 (สำคัญสูงสุด)</span>
++      <span class="reading-precedence-badge">Canon 1</span>
+     </div>
+     <p class="reading-precedence-body">
+-      <strong>ปกป้องสังคม ประโยชน์ส่วนรวม ความไว้วางใจของสาธารณะ และโครงสร้างพื้นฐานสำคัญ:</strong> เป็นข้อที่มีลำดับความสำคัญสูงสุดเหนือกฎข้ออื่นทั้งหมด หากผลประโยชน์ขององค์กรหรือคำสั่งของผู้ว่าจ้างขัดแย้งกับความปลอดภัยของสาธารณะ ต้องเลือกความปลอดภัยของสังคมเป็นอันดับแรกเสมอ
++      <strong>ปกป้องสังคม ประโยชน์ส่วนรวม ความไว้วางใจของสาธารณะ และโครงสร้างพื้นฐานสำคัญ:</strong> พิจารณาความปลอดภัยของสังคมและประโยชน์ส่วนรวมเมื่อประเมินผลกระทบของการกระทำ รวมถึงเมื่อมีแรงกดดันจากผลประโยชน์องค์กรหรือคำสั่งผู้ว่าจ้าง
+     </p>
+   </div>
+ 
+@@ -972,7 +972,7 @@
+         <span class="reading-precedence-num">02</span>
+         <h4 class="reading-precedence-title">Canon 2: Act honorably, honestly, justly, responsibly, and legally</h4>
+       </div>
+-      <span class="reading-precedence-badge">Priority 2</span>
++      <span class="reading-precedence-badge">Canon 2</span>
+     </div>
+     <p class="reading-precedence-body">
+       <strong>ประพฤติตนอย่างมีเกียรติ ซื่อสัตย์ ยุติธรรม มีความรับผิดชอบ และถูกต้องตามกฎหมาย:</strong> ปฏิบัติตามกฎหมายอย่างเคร่งครัด ไม่โกหก ไม่บิดเบือนข้อเท็จจริง และรักษาความโปร่งใสในวิชาชีพ <em>(ข้อสังเกต: Canon 2 กำหนดหน้าที่เหล่านี้ร่วมกัน ไม่ควรอนุมานลำดับเหนือกว่ากันจากลำดับคำในประโยค การกระทำที่ไม่ผิดกฎหมายอาจยังขัดจริยธรรมหากเป็นการหลอกลวง บิดเบือนข้อเท็จจริง หรือไม่เป็นธรรม)</em>
+@@ -985,7 +985,7 @@
+         <span class="reading-precedence-num">03</span>
+         <h4 class="reading-precedence-title">Canon 3: Provide diligent and competent service to principals</h4>
+       </div>
+-      <span class="reading-precedence-badge">Priority 3</span>
++      <span class="reading-precedence-badge">Canon 3</span>
+     </div>
+     <p class="reading-precedence-body">
+       <strong>ให้บริการแก่นายจ้างหรือลูกค้าอย่างขยันขันแข็ง รอบคอบ และเต็มความสามารถ:</strong> รักษาความลับและผลประโยชน์ที่ชอบธรรมของผู้ว่าจ้าง ไม่นำข้อมูลลับไปแสวงหาผลประโยชน์ส่วนตน และไม่รับงานที่ตนขาดความเชี่ยวชาญโดยไม่แจ้งล่วงหน้า
+@@ -998,7 +998,7 @@
+         <span class="reading-precedence-num">04</span>
+         <h4 class="reading-precedence-title">Canon 4: Advance and protect the profession</h4>
+       </div>
+-      <span class="reading-precedence-badge">Priority 4</span>
++      <span class="reading-precedence-badge">Canon 4</span>
+     </div>
+     <p class="reading-precedence-body">
+       <strong>ส่งเสริม ยกระดับ และปกป้องชื่อเสียงของวิชาชีพ:</strong> ร่วมแลกเปลี่ยนความรู้ ยกระดับมาตรฐานวิชาชีพด้านไซเบอร์ และไม่กระทำการใดที่ทำให้เกียรติภูมิของวิชาชีพเสื่อมเสีย

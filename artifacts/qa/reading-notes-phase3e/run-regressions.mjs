@@ -1,0 +1,5 @@
+import fs from'node:fs';import{spawnSync}from'node:child_process';
+const q='artifacts/qa/reading-notes-phase3e/',suites=[...JSON.parse(fs.readFileSync('artifacts/qa/reading-notes-phase3c/regression-results.json','utf8')),{suite:'verify-reading-diagram-semantics',path:'tools/verify-reading-diagram-semantics.mjs',passedChecks:14},{suite:'verify-reading-diagram-legibility',path:'tools/verify-reading-diagram-legibility.mjs',passedChecks:5}],out=[];
+for(const s of suites){const p=spawnSync(process.execPath,[s.path],{encoding:'utf8',maxBuffer:8000000});fs.writeFileSync(q+s.suite+'.log',p.stdout+p.stderr);const n=p.stdout.match(/ℹ pass (\d+)/)?.[1]||p.stdout.match(/Verification Summary:\s*(\d+)\s*\//)?.[1];out.push({suite:s.suite,path:s.path,exitCode:p.status,passedChecks:n?Number(n):s.passedChecks,tail:p.stdout.slice(-400),error:p.stderr.slice(-1000)});fs.writeFileSync(q+'regression-results.json',JSON.stringify(out,null,2));console.log(s.suite,p.status);}
+
+if(out.some(s=>s.exitCode!==0))process.exitCode=1;

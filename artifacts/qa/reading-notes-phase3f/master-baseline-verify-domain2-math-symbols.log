@@ -1,0 +1,79 @@
+▶ ISC2 CC 2026 — Domain 2 Mathematical & Relationship Symbol Suite
+  ✖ 1. Core Academic Relationship: RTO ≤ MTD (0.9197ms)
+  ✖ 2. Core Academic Relationship: DR ⊂ BC (0.2045ms)
+  ✔ 3. Timeline Metrics: RPO Backward vs. RTO Forward (0.2438ms)
+  ✔ 4. Zero Raw LaTeX Leakage in Rendered Content (0.2775ms)
+  ✔ 5. Zero Double-Escaped or Raw HTML Entity Leakage (0.1785ms)
+  ✖ 6. Comparison Operators & Arrow Mnemonic Preservation (0.2351ms)
+  ✔ 7. Math Renderer Module Capability Verification (0.4086ms)
+  ✔ 8. Preservation Boundaries (0.6261ms)
+✖ ISC2 CC 2026 — Domain 2 Mathematical & Relationship Symbol Suite (4.5365ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 5
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8.9742
+
+✖ failing tests:
+
+test at tools\verify-domain2-math-symbols.mjs:15:11
+✖ 1. Core Academic Relationship: RTO ≤ MTD (0.9197ms)
+  AssertionError [ERR_ASSERTION]: Section 2.2.6 must state RTO ≤ MTD
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-domain2-math-symbols.mjs:21:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at TestContext.test (node:internal/test_runner/test:377:20)
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-domain2-math-symbols.mjs:15:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\verify-domain2-math-symbols.mjs:33:11
+✖ 2. Core Academic Relationship: DR ⊂ BC (0.2045ms)
+  AssertionError [ERR_ASSERTION]: bcVsDrScope desktop SVG must include DR ⊂ BC
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-domain2-math-symbols.mjs:41:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at TestContext.test (node:internal/test_runner/test:377:20)
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-domain2-math-symbols.mjs:33:11)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\verify-domain2-math-symbols.mjs:85:11
+✖ 6. Comparison Operators & Arrow Mnemonic Preservation (0.2351ms)
+  AssertionError [ERR_ASSERTION]: Must preserve Passphrase length ≥ 14
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-domain2-math-symbols.mjs:87:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at TestContext.test (node:internal/test_runner/test:377:20)
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-domain2-math-symbols.mjs:85:11)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

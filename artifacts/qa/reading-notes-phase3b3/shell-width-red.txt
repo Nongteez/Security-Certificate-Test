@@ -1,0 +1,502 @@
+✔ All four complete textbooks retain exact rendered educational text and original anchors (41.336ms)
+✔ Privacy roles are one explicit group beneath their Privacy context (0.3972ms)
+✔ Three role headings are subordinate to the h5 group caption (0.2864ms)
+✔ Reading-only shell can reach its own width without changing global tokens (0.7032ms)
+✔ Content-aware prose measures replace nested definition caps (0.485ms)
+✔ Privacy columns respond to actual context width and preserve source reading order (0.3125ms)
+✔ Privacy emphasis preserves the key bilingual terminology (0.121ms)
+✔ All production text outside the reference subsection is byte-preserved (3.8484ms)
+✖ Wide-desktop Reading width overrides both inherited width and max-width caps (1.8731ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57.6357
+
+✖ failing tests:
+
+test at tools\verify-reading-layout-width.mjs:13:1
+✖ Wide-desktop Reading width overrides both inherited width and max-width caps (1.8731ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /@media \(min-width: 841px\) \{\s*\.app:has\(\.reading-structured-objective\) \{[^}]*width: min\(100% - 48px, 1560px\)/. Input:
+  
+  '/* ==========================================================================\n' +
+    '   ISC2 CC 2026 — Reading Notes CSS Styles\n' +
+    '   Clean, minimal technical documentation layout with dark/light theme support\n' +
+    '   ========================================================================== */\n' +
+    '\n' +
+    ':root {\n' +
+    '  --reading-screen-max-width: 1560px;\n' +
+    '  --reading-article-max-width: 1080px;\n' +
+    '  --reading-prose-max-width: 100%;\n' +
+    '  --reading-component-max-width: 1040px;\n' +
+    '\n' +
+    '  /* Vertical Rhythm Spacing Tokens (4px / 8px Base Grid) */\n' +
+    '  --space-2xs: 4px;\n' +
+    '  --space-xs: 8px;\n' +
+    '  --space-sm: 12px;\n' +
+    '  --space-md: 16px;\n' +
+    '  --space-lg: 24px;\n' +
+    '  --space-xl: 32px;\n' +
+    '  --space-2xl: 44px;\n' +
+    '  --space-3xl: 60px;\n' +
+    '\n' +
+    '  /* Table Typography & Visual Hierarchy Tokens */\n' +
+    '  --table-header-font-size: 0.94rem;\n' +
+    '  --table-header-font-weight: 700;\n' +
+    '  --table-body-font-size: 0.92rem;\n' +
+    '  --table-body-line-height: 1.65;\n' +
+    '  --table-cell-padding-y: 12px;\n' +
+    '  --table-cell-padding-x: 16px;\n' +
+    '  --table-row-hover-bg: rgba(99, 102, 241, 0.04);\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Outer Screen & Header ===== */\n' +
+    '/* hidden creates a non-scrolling sticky ancestor; clip preserves viewport stickiness. */\n' +
+    'body:has(.reading-screen) {\n' +
+    '  overflow-x: clip;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-screen {\n' +
+    '  max-width: var(--reading-screen-max-width);\n' +
+    '  margin: 0 auto;\n' +
+    '  padding: 12px 24px 80px;\n' +
+    '  min-height: 100vh;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-bar {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  gap: 16px;\n' +
+    '  padding: 12px 0 18px;\n' +
+    '  border-bottom: 1px solid var(--line);\n' +
+    '  margin-bottom: 32px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-left {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 12px;\n' +
+    '}\n' +
+    '\n' +
+    '.btn-toggle-sidebar {\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 8px;\n' +
+    '  cursor: pointer;\n' +
+    '  padding: 7px 12px;\n' +
+    '  font-size: 13px;\n' +
+    '  font-weight: 500;\n' +
+    '  border: 1px solid var(--line);\n' +
+    '  border-radius: var(--radius-sm);\n' +
+    '  background: var(--panel);\n' +
+    '  color: var(--text-dim);\n' +
+    '  transition: all 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.btn-toggle-sidebar:hover {\n' +
+    '  background: var(--panel-2);\n' +
+    '  color: var(--text);\n' +
+    '  border-color: var(--line-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-center {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-app-badge {\n' +
+    '  font-size: 13px;\n' +
+    '  font-weight: 600;\n' +
+    '  letter-spacing: 0.02em;\n' +
+    '  color: var(--text-dim);\n' +
+    '  background: var(--panel-2);\n' +
+    '  border: 1px solid var(--line);\n' +
+    '  padding: 4px 12px;\n' +
+    '  border-radius: 20px;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Layout Container ===== */\n' +
+    '.reading-layout {\n' +
+    '  display: flex;\n' +
+    '  gap: 48px;\n' +
+    '  position: relative;\n' +
+    '  align-items: flex-start;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-backdrop {\n' +
+    '  display: none;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Minimal Left Sidebar ===== */\n' +
+    '.reading-sidebar {\n' +
+    '  flex: 0 0 290px;\n' +
+    '  width: 290px;\n' +
+    '  position: sticky;\n' +
+    '  top: 16px;\n' +
+    '  max-height: calc(100vh - 80px);\n' +
+    '  overflow-y: auto;\n' +
+    '  background: transparent;\n' +
+    '  border-right: 1px solid var(--line);\n' +
+    '  padding: 0 16px 32px 0;\n' +
+    '  box-shadow: none;\n' +
+    '  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),\n' +
+    '              width 0.25s cubic-bezier(0.16, 1, 0.3, 1),\n' +
+    '              opacity 0.2s ease;\n' +
+    '}\n' +
+    '\n' +
+    '/* Custom scrollbar for sidebar */\n' +
+    '.reading-sidebar::-webkit-scrollbar {\n' +
+    '  width: 4px;\n' +
+    '}\n' +
+    '.reading-sidebar::-webkit-scrollbar-track {\n' +
+    '  background: transparent;\n' +
+    '}\n' +
+    '.reading-sidebar::-webkit-scrollbar-thumb {\n' +
+    '  background: var(--line);\n' +
+    '  border-radius: 4px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-header {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  padding: 0 4px 10px;\n' +
+    '  margin-bottom: 8px;\n' +
+    '  border-bottom: 1px solid var(--line);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-title {\n' +
+    '  font-size: 11px;\n' +
+    '  font-weight: 700;\n' +
+    '  text-transform: uppercase;\n' +
+    '  letter-spacing: 0.08em;\n' +
+    '  color: var(--text-dim);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-close-mobile {\n' +
+    '  display: none;\n' +
+    '  background: none;\n' +
+    '  border: none;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  padding: 4px;\n' +
+    '  border-radius: 4px;\n' +
+    '}\n' +
+    '.reading-sidebar-close-mobile:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-2);\n' +
+    '}\n' +
+    '\n' +
+    '/* Collapsed sidebar on desktop */\n' +
+    '.reading-layout.sidebar-collapsed .reading-sidebar {\n' +
+    '  display: none;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-content-pane {\n' +
+    '  flex: 1 1 100%;\n' +
+    '  max-width: 1240px;\n' +
+    '  margin: 0 auto;\n' +
+    '  width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-article {\n' +
+    '  max-width: 1140px;\n' +
+    '  width: 100%;\n' +
+    '  margin: 0 auto;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-lead,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > p,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > ul,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > ol,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > blockquote,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > p,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > ul,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > ol,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > blockquote,\n' +
+    '.reading-layout.sidebar-collapsed .reading-intro-label {\n' +
+    '  max-width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-concept-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-response-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-mfa-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-treatment-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-category-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-distinction-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-precedence-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-table-wrapper,\n' +
+    '.reading-layout.sidebar-collapsed .reading-diagram-card,\n' +
+    '.reading-layout.sidebar-collapsed .reading-formula-card,\n' +
+    '.reading-layout.sidebar-collapsed .reading-scenario-card {\n' +
+    '  max-width: 100%;\n' +
+    '  width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Text-Based 3-Level Navigation ===== */\n' +
+    '.reading-nav-domains {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 6px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-group {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-domain-row {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 2px;\n' +
+    '  padding: 2px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn {\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  width: 22px;\n' +
+    '  height: 22px;\n' +
+    '  padding: 0;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  border-radius: 4px;\n' +
+    '  transition: color 0.15s ease, background-color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-svg {\n' +
+    '  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn.expanded .reading-chevron-svg {\n' +
+    '  transform: rotate(90deg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn {\n' +
+    '  flex: 1;\n' +
+    '  text-align: left;\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  padding: 6px 8px;\n' +
+    '  cursor: pointer;\n' +
+    '  display: flex;\n' +
+    '  align-items: baseline;\n' +
+    '  gap: 8px;\n' +
+    '  font-family: inherit;\n' +
+    '  color: var(--text-dim);\n' +
+    '  border-radius: var(--radius-sm);\n' +
+    '  transition: color 0.15s ease, background-color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-label {\n' +
+    '  font-size: 11px;\n' +
+    '  font-weight: 600;\n' +
+    '  text-transform: uppercase;\n' +
+    '  letter-spacing: 0.04em;\n' +
+    '  color: var(--text-muted);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-title {\n' +
+    '  font-size: 13.5px;\n' +
+    '  font-weight: 500;\n' +
+    '  line-height: 1.35;\n' +
+    '  color: inherit;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active {\n' +
+    '  color: var(--blue);\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active .reading-domain-label {\n' +
+    '  color: var(--blue);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active .reading-domain-title {\n' +
+    '  font-weight: 600;\n' +
+    '}\n' +
+    '\n' +
+    '/* Level 2: Objectives */\n' +
+    '.reading-nav-sub-tree {\n' +
+    '  padding-left: 18px;\n' +
+    '  margin: 2px 0 6px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objectives {\n' +
+    '  list-style: none;\n' +
+    '  margin: 0;\n' +
+    '  padding: 0 0 0 8px;\n' +
+    '  border-left: 1px solid var(--line);\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 4px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-item {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-row {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 4px;\n' +
+    '  padding: 2px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn {\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  width: 18px;\n' +
+    '  height: 18px;\n' +
+    '  padding: 0;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  border-radius: 3px;\n' +
+    '  transition: color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn.expanded .reading-chevron-svg {\n' +
+    '  transform: rotate(90deg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-bullet {\n' +
+    '  width: 4px;\n' +
+    '  height: 4px;\n' +
+    '  border-radius: 50%;\n' +
+    '  background: var(--line);\n' +
+    '  margin: 0 7px;\n' +
+    '  flex-shrink: 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link {\n' +
+    '  flex: 1;\n' +
+    '  text-decoration: none;\n' +
+    '  color: var(--text-muted);\n' +
+    '  font-size: 12.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  padding: 2px 4px;\n' +
+    '  border-radius: 3px;\n' +
+    '  transition: color 0.15s ease, background 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link.active {\n' +
+    '  color: var(--blue);\n' +
+    '  font-weight: 600;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-static {\n' +
+    '  display: block;\n' +
+    '  font-size: 12.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  color: var(--text-muted);\n' +
+    '  user-select: none;\n' +
+    '  padding: 2px 4px;\n' +
+    '}\n' +
+    '\n' +
+    '/* Level 3: Topics */\n' +
+    '.reading-nav-topics {\n' +
+    '  list-style: none;\n' +
+    '  margin: 2px 0 6px 14px;\n' +
+    '  padding: 0 0 0 8px;\n' +
+    '  border-left: 1px dashed var(--line);\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 2px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav [hidden],\n' +
+    '.reading-nav-topics[hidden],\n' +
+    '.reading-nav-sub-tree[hidden] {\n' +
+    '  display: none !important;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-item {\n' +
+    '  padding: 1px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link {\n' +
+    '  display: block;\n' +
+    '  font-size: 11.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  color: var(--text-dim);\n' +
+    '  text-decoration: none;\n' +
+    '  padding: 3px 6px;\n' +
+    '  border-radius: 4px;\n' +
+    '  transition: all 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link:hover {\n' +
+    '  color: var(--blue);\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link.active {\n' +
+    '  color: var(--blue);\n' +
+    '  font-weight: 600;\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Main Reading Area (Direct on Page Background) ===== */\n' +
+    '.reading-content-pane {\n' +
+    '  flex: 1 1 0;\n' +
+    '  min-width: 0;\n' +
+    '  padding: 0 0 80px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-article {\n' +
+    '  width: 100%;\n' +
+    '  max-width: var(--reading-article-max-width);\n' +
+    '  margin: 0;\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  border-radius: 0;\n' +
+    '  padding: 0;\n' +
+    '  box-shadow: none;\n' +
+    '}\n' +
+    '\n' +
+    '/* Measure constraint for ordinary p'... 76823 more characters
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-layout-width.mjs:13:97)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '/* ==========================================================================\n   ISC2 CC 2026 — Reading Notes CSS Styles\n   Clean, minimal technical documentation layout with dark/light theme support\n   ========================================================================== */\n\n:root {\n  --reading-screen-max-width: 1560px;\n  --reading-article-max-width: 1080px;\n  --reading-prose-max-width: 100%;\n  --reading-component-max-width: 1040px;\n...',
+    expected: /@media \(min-width: 841px\) \{\s*\.app:has\(\.reading-structured-objective\) \{[^}]*width: min\(100% - 48px, 1560px\)/,
+    operator: 'match',
+    diff: 'simple'
+  }

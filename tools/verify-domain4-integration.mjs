@@ -112,7 +112,8 @@ assert.equal(reviewStatus,'ACCEPTED'); assert.deepEqual(acceptedQuestions,staged
 const config=await loadExamConfig('isc2','cc','next-bank'); assert.ok(config);
 const bank=await loadQuestionsForDomains({vendorId:'isc2',certId:'cc',version:'next-bank',domainIds:[1,2,3,4,5]});
 assert.deepEqual(bank[4],acceptedQuestions,'Published module matches accepted source');
-assert.deepEqual(Object.values(bank).map(q=>q.length),[24,39,23,stagedQuestions.length,0]);
+const publishedD5=(await import('../data/certs/isc2/cc/versions/next-bank/questions/domain-5.js')).default;
+assert.deepEqual(Object.values(bank).map(q=>q.length),[24,39,23,stagedQuestions.length,publishedD5.length]);
 const flat=Object.values(bank).flat();
 assert.equal(config.totalQuestions,flat.length); assert.equal(config.defaultQuestionCount,flat.length);
 assert.equal(getExamVersions('isc2-cc').find(v=>v.id==='next-bank').questionCount,flat.length);
@@ -127,7 +128,8 @@ for(const order of ['all','random']) {
   assert.equal(practice.length,bank[4].length);assert.ok(practice.every(q=>q.dom===4));assert.equal(new Set(practice.map(q=>q.id)).size,practice.length);
 }
 const mixed=engine.createPracticeSession({questionsByDomain:bank,selectedDomainIds:[1,2,3,4],order:'all',questionCount:flat.length});
-assert.equal(mixed.length,flat.length);assert.equal(new Set(mixed.map(q=>q.id)).size,flat.length);
+const selectedTotal=[1,2,3,4].reduce((n,id)=>n+bank[id].length,0);
+assert.equal(mixed.length,selectedTotal);assert.equal(new Set(mixed.map(q=>q.id)).size,selectedTotal);assert.ok(mixed.every(q=>q.dom<=4));
 const allocations=engine.calculateDomainAllocations(config.domains,125);
 const exam=engine.createExamSession({questionsByDomain:bank,examConfig:config,totalQuestions:125});
 assert.equal(exam.filter(q=>q.dom===4).length,Math.min(allocations[4],bank[4].length));
@@ -143,11 +145,12 @@ for(const language of ['en','th','both']) {
   const row=container.innerHTML.match(/<div\s+class="domain-row[^>]*data-domain-id="4"[^>]*>/)?.[0];
   assert.ok(row && row.includes('role="checkbox"') && !row.includes('aria-disabled="true"'),'Domain 4 has an enabled setup row');
   const pendingRow=container.innerHTML.match(/<div\s+class="domain-row[^>]*data-domain-id="5"[^>]*>/)?.[0];
-  assert.ok(pendingRow && pendingRow.includes('aria-disabled="true"') && pendingRow.includes('aria-checked="false"'),'Domain 5 remains disabled and unchecked');
+  assert.ok(pendingRow,'Domain 5 setup row exists');
+  assert.equal(pendingRow.includes('aria-disabled="true"'),!config.domains[4].available,'Domain 5 row follows published availability');
 }
 engine.startQuizSession({mode:'practice',questions:bank[4].slice(0,2)});
 engine.recordAnswer({questionIndex:0,selectedIndex:bank[4][0].correct_idx});
 engine.recordAnswer({questionIndex:1,selectedIndex:(bank[4][1].correct_idx+1)%4});
 const snapshot=storage.buildSessionSnapshot(state.state);assert.equal(snapshot.versionId,'next-bank');assert.equal(snapshot.correct,1);assert.equal(snapshot.wrong,1);
 const restored=await loadQuestionsForSession(snapshot);assert.deepEqual(restored[4],bank[4]);
-console.log(`PASS integration: ${flat.length} updated items, Domain 4 selectable; D4/mixed practice, weighted selection (${exam.length}/125 available), scoring, saved-session reload and version isolation. Domain 5 remains empty.`);
+console.log(`PASS integration: ${flat.length} updated items, Domain 4 selectable; D4/mixed practice, weighted selection (${exam.length}/125 available), scoring, saved-session reload and version isolation. Domain 5 availability follows its published bank.`);

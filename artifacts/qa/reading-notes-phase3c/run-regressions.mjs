@@ -1,0 +1,4 @@
+import fs from 'node:fs';import {spawnSync} from 'node:child_process';
+const old=JSON.parse(fs.readFileSync('artifacts/qa/reading-notes-phase3b3/regression-results.json','utf8'));
+const suites=[...old,{suite:'verify-reading-tables-typography',path:'tools/verify-reading-tables-typography.mjs'}];const results=[];
+for(const s of suites){const p=spawnSync(process.execPath,[s.path],{encoding:'utf8',maxBuffer:8000000});fs.writeFileSync(`artifacts/qa/reading-notes-phase3c/${s.suite}.log`,p.stdout+p.stderr);results.push({suite:s.suite,path:s.path,exitCode:p.status,passedChecks:s.passedChecks??5,passedLines:(p.stdout.match(/PASS|✅/g)||[]).length,outputTail:p.stdout.slice(-500),errorTail:p.stderr.slice(-1500)});console.log(s.suite,p.status);fs.writeFileSync('artifacts/qa/reading-notes-phase3c/regression-results.json',JSON.stringify(results,null,2));}

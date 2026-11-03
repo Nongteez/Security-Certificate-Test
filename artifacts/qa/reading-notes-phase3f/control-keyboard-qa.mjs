@@ -1,0 +1,25 @@
+import fs from'node:fs';import path from'node:path';import os from'node:os';import{spawn}from'node:child_process';
+import{startServer,CDPClient,sleep,CHROME_PATH,PORT,DEBUG_PORT,ARTIFACTS_DIR}from'./chrome-support.mjs';
+const file=path.join(ARTIFACTS_DIR,'control-keyboard-results.json'),out=process.argv.includes('--resume')&&fs.existsSync(file)?JSON.parse(fs.readFileSync(file,'utf8')):{checks:[],cases:[],screenshots:[],errors:[]};
+if(out.error){out.recoveredErrors=[...(out.recoveredErrors||[]),out.error];delete out.error;}
+const save=()=>fs.writeFileSync(file,JSON.stringify(out,null,2));
+const server=await startServer();let c;const chrome=spawn(CHROME_PATH,['--headless=new',`--remote-debugging-port=${DEBUG_PORT}`,`--user-data-dir=${fs.mkdtempSync(path.join(os.tmpdir(),'rn-f-controls-'))}`,'--no-first-run','about:blank'],{windowsHide:true});
+try{
+ for(let i=0;i<100;i++){try{if((await fetch(`http://127.0.0.1:${DEBUG_PORT}/json/version`)).ok)break}catch{}await sleep(100)}
+ const tab=await(await fetch(`http://127.0.0.1:${DEBUG_PORT}/json/new`,{method:'PUT'})).json();c=new CDPClient(tab.webSocketDebuggerUrl);await c.connect();await c.send('Page.enable');await c.send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+ const matrix=JSON.parse(fs.readFileSync('artifacts/qa/reading-notes-phase3b2/implementation-matrix.json','utf8'));
+ const enter=async()=>{await c.send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});await c.send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});};
+ for(const [width,height]of[[1920,1080],[1366,768],[1024,768],[768,1024],[390,844],[375,812],[320,568]])for(const theme of['light','dark'])for(const domain of[1,2,3,4]){
+  if(out.cases.some(x=>x.width===width&&x.theme===theme&&x.domain===domain))continue;
+  const meta={domain,width,height,theme};const ids=matrix.filter(x=>x.domain===domain).map(x=>x.id);await c.setViewport(width,height,width<=840);await c.send('Page.navigate',{url:`http://127.0.0.1:${PORT}/index.html?control-qa=${domain}-${width}-${theme}#${ids[0]}`});
+  let ready=false;for(let attempt=0;attempt<2&&!ready;attempt++){if(attempt)await c.send('Page.reload');for(let i=0;i<400;i++){if(await c.eval(`!!document.getElementById('${ids.at(-1)}')`)){ready=true;break}await sleep(50)}}if(!ready)throw Error('reader not ready '+JSON.stringify(meta));await c.eval('document.fonts.ready.then(()=>true)');await c.eval(`import('./js/core/theme.js').then(m=>m.applyTheme('${theme}'))`);await sleep(250);
+  await c.send('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});await c.send('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
+  await c.eval(`document.getElementById('btn-reading-scroll-nav').focus({preventScroll:true});scrollTo({top:500,behavior:'instant'})`);await sleep(120);
+  const initial=await c.eval(`(()=>{const b=document.getElementById('btn-reading-scroll-nav'),r=b.getBoundingClientRect(),s=getComputedStyle(b),a=document.querySelector('.reading-article').getBoundingClientRect();return{y:scrollY,label:b.getAttribute('aria-label'),visible:s.visibility==='visible',focused:document.activeElement===b,focusVisible:b.matches(':focus-visible'),outline:s.outlineStyle,outlineWidth:parseFloat(s.outlineWidth),left:r.left,right:r.right,width:r.width,height:r.height,articleRight:a.right,viewport:document.documentElement.clientWidth}})()`);
+  await enter();await sleep(150);const top=await c.eval(`({y:scrollY,label:document.getElementById('btn-reading-scroll-nav').getAttribute('aria-label'),focus:document.activeElement.id})`);await enter();await sleep(150);const bottom=await c.eval(`({y:scrollY,max:document.documentElement.scrollHeight-innerHeight,label:document.getElementById('btn-reading-scroll-nav').getAttribute('aria-label'),focus:document.activeElement.id})`);
+  const checks=[['visible-focus-target-in-gutter',initial.visible&&initial.focused&&initial.focusVisible&&initial.outline!=='none'&&initial.outlineWidth>=2&&initial.width>=24&&initial.height>=24&&initial.right<=initial.viewport&&initial.left>initial.articleRight],['enter-actually-reaches-top',Math.abs(initial.y-500)<=1&&initial.label==='Back to top'&&top.y<=1&&top.label==='Go to bottom'],['enter-actually-reaches-bottom',Math.abs(bottom.y-bottom.max)<=1&&bottom.y>1000&&bottom.label==='Back to top']];
+  for(const[name,pass]of checks)out.checks.push({name,pass,...meta});out.cases.push({...meta,initial,top,bottom});save();console.log('CONTROL',domain,width,theme,'failed',out.checks.filter(x=>!x.pass).length);
+  if(domain===1){const name=`control-focus-${width}-${theme}.png`;await c.eval(`scrollTo({top:500,behavior:'instant'})`);await sleep(100);await c.screenshot(path.join(ARTIFACTS_DIR,name));out.screenshots.push(name);save();}
+ }
+ if(out.checks.some(x=>!x.pass))process.exitCode=1;
+}catch(e){out.error=e.stack;save();console.error(e);process.exitCode=1;}finally{c?.close();chrome.kill();server.close();await sleep(500)}

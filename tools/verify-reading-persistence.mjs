@@ -365,20 +365,27 @@ test('Scenario 17: No unwanted duplicate history entries contract', () => {
   assert.equal(historyCalls.filter(c => c.method === 'replaceState').length, 10);
 });
 
-test('Scenario 18: Domain 5 is unpublished and rejected as resume target', () => {
-  // Domain 5 is officially unpublished
-  assert.equal(VALID_DOMAIN_IDS.includes(5), false);
-  assert.equal(sanitizeDomainId(5), null);
+test('Scenario 18: Domain 5 is published and supported; invalid domain is rejected as resume target', () => {
+  // Domain 5 is now published and supported in Reading Notes
+  assert.equal(VALID_DOMAIN_IDS.includes(5), true);
+  assert.equal(sanitizeDomainId(5), 5);
+  assert.equal(VALID_DOMAIN_IDS.includes(6), false);
+  assert.equal(sanitizeDomainId(6), null);
 
   const storage = createMockStorage();
   const store = createReadingProgressStore(storage);
 
-  const res = store.saveLocation({ domainId: 5, topicId: 'topic-5-1-data-security' });
-  assert.equal(res.persisted, false);
-  assert.equal(store.getProgress().lastDomainId, 1);
+  const res = store.saveLocation({ domainId: 5, topicId: 'topic-5-1-data-handling-classification' });
+  assert.equal(res.persisted, true);
+  assert.equal(store.getProgress().lastDomainId, 5);
+
+  const invalidRes = store.saveLocation({ domainId: 6, topicId: 'topic-6-1-something' });
+  assert.equal(invalidRes.persisted, false);
 
   const deepLink = parseReadingDeepLink('#/reading/domain-5');
-  assert.equal(deepLink.domainId, null);
+  assert.equal(deepLink.domainId, 5);
+  const invalidDeepLink = parseReadingDeepLink('#/reading/domain-6');
+  assert.equal(invalidDeepLink.domainId, null);
 });
 
 test('Scenario 19: Zero regressions to Quiz persistence (ACTIVE_SESSION_KEY)', () => {

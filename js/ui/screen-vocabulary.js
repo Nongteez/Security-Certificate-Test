@@ -72,6 +72,11 @@ const OBJECTIVES_MAP = [
   { id: '4.1', domain: '4', label: '4.1 Network Security' },
   { id: '4.2', domain: '4', label: '4.2 Network Security Architecture' },
   { id: '4.3', domain: '4', label: '4.3 Cloud Security' },
+  { id: '5.1', domain: '5', label: '5.1 Data Security' },
+  { id: '5.2', domain: '5', label: '5.2 Security Operations' },
+  { id: '5.3', domain: '5', label: '5.3 Incident Response' },
+  { id: '5.4', domain: '5', label: '5.4 Asset Protection' },
+  { id: '5.5', domain: '5', label: '5.5 Security Testing' },
   { id: 'exam_strategy', domain: 'all', label: 'Exam Strategy' }
 ];
 
@@ -255,7 +260,8 @@ export async function renderVocabularyScreen(container, onBack) {
       1: allEntries.filter(e => String(e.domain) === '1').length,
       2: allEntries.filter(e => String(e.domain) === '2').length,
       3: allEntries.filter(e => String(e.domain) === '3').length,
-      4: allEntries.filter(e => String(e.domain) === '4').length
+      4: allEntries.filter(e => String(e.domain) === '4').length,
+      5: allEntries.filter(e => String(e.domain) === '5').length
     };
 
     // Boundary check for flashcardIndex
@@ -274,7 +280,7 @@ export async function renderVocabularyScreen(container, onBack) {
       : OBJECTIVES_MAP.filter(obj => obj.domain === selectedDomain || obj.id === 'exam_strategy');
 
     // Domain hero badge label
-    let domainBadgeLabel = 'All Domains (D1, D2, D3 & D4)';
+    let domainBadgeLabel = 'All Domains (D1–D5)';
     if (selectedDomain === '1') {
       domainBadgeLabel = 'Domain 1 · Security Principles';
     } else if (selectedDomain === '2') {
@@ -283,6 +289,8 @@ export async function renderVocabularyScreen(container, onBack) {
       domainBadgeLabel = 'Domain 3 · IAM Concepts';
     } else if (selectedDomain === '4') {
       domainBadgeLabel = 'Domain 4 · Network & Cloud Security';
+    } else if (selectedDomain === '5') {
+      domainBadgeLabel = 'Domain 5 · Security Operations & Incident Response';
     }
 
     container.innerHTML = `
@@ -334,7 +342,7 @@ export async function renderVocabularyScreen(container, onBack) {
                   <option value="2" ${selectedDomain === '2' ? 'selected' : ''}>Domain 2 (${domainCounts['2']})</option>
                   <option value="3" ${selectedDomain === '3' ? 'selected' : ''}>Domain 3 (${domainCounts['3']})</option>
                   <option value="4" ${selectedDomain === '4' ? 'selected' : ''}>Domain 4 (${domainCounts['4']})</option>
-                  <option value="5" disabled>Domain 5 — Coming Soon</option>
+                  <option value="5" ${selectedDomain === '5' ? 'selected' : ''}>Domain 5 (${domainCounts['5']})</option>
                 </select>
               </div>
 

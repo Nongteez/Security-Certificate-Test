@@ -1,0 +1,847 @@
+✖ Reading scroll control remains available in the outer gutter without narrowing content (2.7367ms)
+✖ Reading language metadata is scoped and preserves existing content (0.7583ms)
+✖ ethics retains all four canons without unverified universal conflict claims (0.3173ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7.6763
+
+✖ failing tests:
+
+test at tools\verify-reading-final-accessibility.mjs:3:1
+✖ Reading scroll control remains available in the outer gutter without narrowing content (2.7367ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Phase 3F/. Input:
+  
+  '/* ==========================================================================\n' +
+    '   ISC2 CC 2026 — Reading Notes CSS Styles\n' +
+    '   Clean, minimal technical documentation layout with dark/light theme support\n' +
+    '   ========================================================================== */\n' +
+    '\n' +
+    ':root {\n' +
+    '  --reading-screen-max-width: 1560px;\n' +
+    '  --reading-article-max-width: 1080px;\n' +
+    '  --reading-prose-max-width: 100%;\n' +
+    '  --reading-component-max-width: 1040px;\n' +
+    '\n' +
+    '  /* Vertical Rhythm Spacing Tokens (4px / 8px Base Grid) */\n' +
+    '  --space-2xs: 4px;\n' +
+    '  --space-xs: 8px;\n' +
+    '  --space-sm: 12px;\n' +
+    '  --space-md: 16px;\n' +
+    '  --space-lg: 24px;\n' +
+    '  --space-xl: 32px;\n' +
+    '  --space-2xl: 44px;\n' +
+    '  --space-3xl: 60px;\n' +
+    '\n' +
+    '  /* Table Typography & Visual Hierarchy Tokens */\n' +
+    '  --table-header-font-size: 0.94rem;\n' +
+    '  --table-header-font-weight: 700;\n' +
+    '  --table-body-font-size: 0.92rem;\n' +
+    '  --table-body-line-height: 1.65;\n' +
+    '  --table-cell-padding-y: 12px;\n' +
+    '  --table-cell-padding-x: 16px;\n' +
+    '  --table-row-hover-bg: rgba(99, 102, 241, 0.04);\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Outer Screen & Header ===== */\n' +
+    '/* hidden creates a non-scrolling sticky ancestor; clip preserves viewport stickiness. */\n' +
+    'body:has(.reading-screen) {\n' +
+    '  overflow-x: clip;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-screen {\n' +
+    '  max-width: var(--reading-screen-max-width);\n' +
+    '  margin: 0 auto;\n' +
+    '  padding: 12px 24px 80px;\n' +
+    '  min-height: 100vh;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-bar {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  gap: 16px;\n' +
+    '  padding: 12px 0 18px;\n' +
+    '  border-bottom: 1px solid var(--line);\n' +
+    '  margin-bottom: 32px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-left {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 12px;\n' +
+    '}\n' +
+    '\n' +
+    '.btn-toggle-sidebar {\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 8px;\n' +
+    '  cursor: pointer;\n' +
+    '  padding: 7px 12px;\n' +
+    '  font-size: 13px;\n' +
+    '  font-weight: 500;\n' +
+    '  border: 1px solid var(--line);\n' +
+    '  border-radius: var(--radius-sm);\n' +
+    '  background: var(--panel);\n' +
+    '  color: var(--text-dim);\n' +
+    '  transition: all 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.btn-toggle-sidebar:hover {\n' +
+    '  background: var(--panel-2);\n' +
+    '  color: var(--text);\n' +
+    '  border-color: var(--line-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-top-center {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-app-badge {\n' +
+    '  font-size: 13px;\n' +
+    '  font-weight: 600;\n' +
+    '  letter-spacing: 0.02em;\n' +
+    '  color: var(--text-dim);\n' +
+    '  background: var(--panel-2);\n' +
+    '  border: 1px solid var(--line);\n' +
+    '  padding: 4px 12px;\n' +
+    '  border-radius: 20px;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Layout Container ===== */\n' +
+    '.reading-layout {\n' +
+    '  display: flex;\n' +
+    '  gap: 48px;\n' +
+    '  position: relative;\n' +
+    '  align-items: flex-start;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-backdrop {\n' +
+    '  display: none;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Minimal Left Sidebar ===== */\n' +
+    '.reading-sidebar {\n' +
+    '  flex: 0 0 290px;\n' +
+    '  width: 290px;\n' +
+    '  position: sticky;\n' +
+    '  top: 16px;\n' +
+    '  max-height: calc(100vh - 80px);\n' +
+    '  overflow-y: auto;\n' +
+    '  background: transparent;\n' +
+    '  border-right: 1px solid var(--line);\n' +
+    '  padding: 0 16px 32px 0;\n' +
+    '  box-shadow: none;\n' +
+    '  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),\n' +
+    '              width 0.25s cubic-bezier(0.16, 1, 0.3, 1),\n' +
+    '              opacity 0.2s ease;\n' +
+    '}\n' +
+    '\n' +
+    '/* Custom scrollbar for sidebar */\n' +
+    '.reading-sidebar::-webkit-scrollbar {\n' +
+    '  width: 4px;\n' +
+    '}\n' +
+    '.reading-sidebar::-webkit-scrollbar-track {\n' +
+    '  background: transparent;\n' +
+    '}\n' +
+    '.reading-sidebar::-webkit-scrollbar-thumb {\n' +
+    '  background: var(--line);\n' +
+    '  border-radius: 4px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-header {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  padding: 0 4px 10px;\n' +
+    '  margin-bottom: 8px;\n' +
+    '  border-bottom: 1px solid var(--line);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-title {\n' +
+    '  font-size: 11px;\n' +
+    '  font-weight: 700;\n' +
+    '  text-transform: uppercase;\n' +
+    '  letter-spacing: 0.08em;\n' +
+    '  color: var(--text-dim);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-sidebar-close-mobile {\n' +
+    '  display: none;\n' +
+    '  background: none;\n' +
+    '  border: none;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  padding: 4px;\n' +
+    '  border-radius: 4px;\n' +
+    '}\n' +
+    '.reading-sidebar-close-mobile:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-2);\n' +
+    '}\n' +
+    '\n' +
+    '/* Collapsed sidebar on desktop */\n' +
+    '.reading-layout.sidebar-collapsed .reading-sidebar {\n' +
+    '  display: none;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-content-pane {\n' +
+    '  flex: 1 1 100%;\n' +
+    '  max-width: 1240px;\n' +
+    '  margin: 0 auto;\n' +
+    '  width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-article {\n' +
+    '  max-width: 1140px;\n' +
+    '  width: 100%;\n' +
+    '  margin: 0 auto;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-lead,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > p,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > ul,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > ol,\n' +
+    '.reading-layout.sidebar-collapsed .reading-article-markdown > blockquote,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > p,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > ul,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > ol,\n' +
+    '.reading-layout.sidebar-collapsed .reading-objective-section > blockquote,\n' +
+    '.reading-layout.sidebar-collapsed .reading-intro-label {\n' +
+    '  max-width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-layout.sidebar-collapsed .reading-concept-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-response-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-mfa-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-treatment-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-category-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-distinction-grid,\n' +
+    '.reading-layout.sidebar-collapsed .reading-precedence-stack,\n' +
+    '.reading-layout.sidebar-collapsed .reading-table-wrapper,\n' +
+    '.reading-layout.sidebar-collapsed .reading-diagram-card,\n' +
+    '.reading-layout.sidebar-collapsed .reading-formula-card,\n' +
+    '.reading-layout.sidebar-collapsed .reading-scenario-card {\n' +
+    '  max-width: 100%;\n' +
+    '  width: 100%;\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Text-Based 3-Level Navigation ===== */\n' +
+    '.reading-nav-domains {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 6px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-group {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-domain-row {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 2px;\n' +
+    '  padding: 2px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn {\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  width: 22px;\n' +
+    '  height: 22px;\n' +
+    '  padding: 0;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  border-radius: 4px;\n' +
+    '  transition: color 0.15s ease, background-color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-svg {\n' +
+    '  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-chevron-btn.expanded .reading-chevron-svg {\n' +
+    '  transform: rotate(90deg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn {\n' +
+    '  flex: 1;\n' +
+    '  text-align: left;\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  padding: 6px 8px;\n' +
+    '  cursor: pointer;\n' +
+    '  display: flex;\n' +
+    '  align-items: baseline;\n' +
+    '  gap: 8px;\n' +
+    '  font-family: inherit;\n' +
+    '  color: var(--text-dim);\n' +
+    '  border-radius: var(--radius-sm);\n' +
+    '  transition: color 0.15s ease, background-color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-label {\n' +
+    '  font-size: 11px;\n' +
+    '  font-weight: 600;\n' +
+    '  text-transform: uppercase;\n' +
+    '  letter-spacing: 0.04em;\n' +
+    '  color: var(--text-muted);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-title {\n' +
+    '  font-size: 13.5px;\n' +
+    '  font-weight: 500;\n' +
+    '  line-height: 1.35;\n' +
+    '  color: inherit;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active {\n' +
+    '  color: var(--blue);\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active .reading-domain-label {\n' +
+    '  color: var(--blue);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-domain-btn.active .reading-domain-title {\n' +
+    '  font-weight: 600;\n' +
+    '}\n' +
+    '\n' +
+    '/* Level 2: Objectives */\n' +
+    '.reading-nav-sub-tree {\n' +
+    '  padding-left: 18px;\n' +
+    '  margin: 2px 0 6px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objectives {\n' +
+    '  list-style: none;\n' +
+    '  margin: 0;\n' +
+    '  padding: 0 0 0 8px;\n' +
+    '  border-left: 1px solid var(--line);\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 4px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-item {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-row {\n' +
+    '  display: flex;\n' +
+    '  align-items: center;\n' +
+    '  gap: 4px;\n' +
+    '  padding: 2px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn {\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  width: 18px;\n' +
+    '  height: 18px;\n' +
+    '  padding: 0;\n' +
+    '  color: var(--text-dim);\n' +
+    '  cursor: pointer;\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  border-radius: 3px;\n' +
+    '  transition: color 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn:hover {\n' +
+    '  color: var(--text);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-chevron-btn.expanded .reading-chevron-svg {\n' +
+    '  transform: rotate(90deg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-obj-bullet {\n' +
+    '  width: 4px;\n' +
+    '  height: 4px;\n' +
+    '  border-radius: 50%;\n' +
+    '  background: var(--line);\n' +
+    '  margin: 0 7px;\n' +
+    '  flex-shrink: 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link {\n' +
+    '  flex: 1;\n' +
+    '  text-decoration: none;\n' +
+    '  color: var(--text-muted);\n' +
+    '  font-size: 12.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  padding: 2px 4px;\n' +
+    '  border-radius: 3px;\n' +
+    '  transition: color 0.15s ease, background 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link:hover {\n' +
+    '  color: var(--text);\n' +
+    '  background: var(--panel-hover);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-link.active {\n' +
+    '  color: var(--blue);\n' +
+    '  font-weight: 600;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-objective-static {\n' +
+    '  display: block;\n' +
+    '  font-size: 12.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  color: var(--text-muted);\n' +
+    '  user-select: none;\n' +
+    '  padding: 2px 4px;\n' +
+    '}\n' +
+    '\n' +
+    '/* Level 3: Topics */\n' +
+    '.reading-nav-topics {\n' +
+    '  list-style: none;\n' +
+    '  margin: 2px 0 6px 14px;\n' +
+    '  padding: 0 0 0 8px;\n' +
+    '  border-left: 1px dashed var(--line);\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: 2px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav [hidden],\n' +
+    '.reading-nav-topics[hidden],\n' +
+    '.reading-nav-sub-tree[hidden] {\n' +
+    '  display: none !important;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-item {\n' +
+    '  padding: 1px 0;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link {\n' +
+    '  display: block;\n' +
+    '  font-size: 11.5px;\n' +
+    '  line-height: 1.4;\n' +
+    '  color: var(--text-dim);\n' +
+    '  text-decoration: none;\n' +
+    '  padding: 3px 6px;\n' +
+    '  border-radius: 4px;\n' +
+    '  transition: all 0.15s ease;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link:hover {\n' +
+    '  color: var(--blue);\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '.reading-nav-topic-link.active {\n' +
+    '  color: var(--blue);\n' +
+    '  font-weight: 600;\n' +
+    '  background: var(--blue-bg);\n' +
+    '}\n' +
+    '\n' +
+    '/* ===== Main Reading Area (Direct on Page Background) ===== */\n' +
+    '.reading-content-pane {\n' +
+    '  flex: 1 1 0;\n' +
+    '  min-width: 0;\n' +
+    '  padding: 0 0 80px;\n' +
+    '}\n' +
+    '\n' +
+    '.reading-article {\n' +
+    '  width: 100%;\n' +
+    '  max-width: var(--reading-article-max-width);\n' +
+    '  margin: 0;\n' +
+    '  background: transparent;\n' +
+    '  border: none;\n' +
+    '  border-radius: 0;\n' +
+    '  padding: 0;\n' +
+    '  box-shadow: none;\n' +
+    '}\n' +
+    '\n' +
+    '/* Measure constraint for ordinary p'... 89808 more characters
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-final-accessibility.mjs:4:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '/* ==========================================================================\n   ISC2 CC 2026 — Reading Notes CSS Styles\n   Clean, minimal technical documentation layout with dark/light theme support\n   ========================================================================== */\n\n:root {\n  --reading-screen-max-width: 1560px;\n  --reading-article-max-width: 1080px;\n  --reading-prose-max-width: 100%;\n  --reading-component-max-width: 1040px;\n...',
+    expected: /Phase 3F/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-final-accessibility.mjs:8:1
+✖ Reading language metadata is scoped and preserves existing content (0.7583ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /function applyReadingLanguageMetadata/. Input:
+  
+  '/**\n' +
+    ' * ISC2 CC 2026 — Reading Notes Screen Module\n' +
+    ' *\n' +
+    ' * Provides a clean technical documentation reader:\n' +
+    ' * - Domain 1 complete real content integration (consolidated from D1 sum.md & Domain 1.md)\n' +
+    ' * - 3-level navigation hierarchy in left sidebar: Domain -> Objective -> Topic\n' +
+    ' * - Independent expand/collapse without scroll loss\n' +
+    ' * - Smooth anchor scrolling to Objectives and Topics\n' +
+    ' * - Scroll spy for active heading/section highlight\n' +
+    ' * - Continuous long-form reading directly on page background\n' +
+    ' * - Domains 2-5 preserved in unpublished state with quiet coming-soon note\n' +
+    ' */\n' +
+    '\n' +
+    "import { state } from '../core/state.js';\n" +
+    "import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';\n" +
+    "import { loadDomainReading, getDomainReadingCached } from '../core/reading-loader.js';\n" +
+    "import { getReadingProgressStore, loadReadingProgress, saveReadingLocation, parseReadingDeepLink, resolveReadingLocation } from '../core/reading-progress.js';\n" +
+    "import { domain1Objectives } from '../../content/isc2-cc-2026/reading/domain-1.js';\n" +
+    "import { domain2Objectives, domain2Review } from '../../content/isc2-cc-2026/reading/domain-2.js';\n" +
+    "import { domain3Objectives, domain3Review } from '../../content/isc2-cc-2026/reading/domain-3.js';\n" +
+    "import { domain4Objectives, domain4Review } from '../../content/isc2-cc-2026/reading/domain-4.js';\n" +
+    '\n' +
+    'export const READING_DOMAINS = [\n' +
+    '  {\n' +
+    '    id: 1,\n' +
+    "    title: 'Domain 1: Security Principles',\n" +
+    "    shortTitle: 'Security Principles',\n" +
+    "    weight: '24%',\n" +
+    '    published: true,\n' +
+    '    objectives: domain1Objectives\n' +
+    '  },\n' +
+    '  {\n' +
+    '    id: 2,\n' +
+    "    title: 'Domain 2: Security Governance',\n" +
+    "    shortTitle: 'Security Governance',\n" +
+    "    weight: '17.3%',\n" +
+    '    published: true,\n' +
+    '    objectives: domain2Objectives,\n' +
+    '    review: domain2Review\n' +
+    '  },\n' +
+    '  {\n' +
+    '    id: 3,\n' +
+    "    title: 'Domain 3: Identity and Access Management (IAM) Concepts',\n" +
+    "    shortTitle: 'Access Controls',\n" +
+    "    weight: '20%',\n" +
+    '    published: true,\n' +
+    '    objectives: domain3Objectives,\n' +
+    '    review: domain3Review\n' +
+    '  },\n' +
+    '  {\n' +
+    '    id: 4,\n' +
+    "    title: 'Domain 4: Networking and Cloud Security Concepts',\n" +
+    "    shortTitle: 'Network Security',\n" +
+    "    weight: '21.3%',\n" +
+    '    published: true,\n' +
+    '    objectives: domain4Objectives,\n' +
+    '    review: domain4Review\n' +
+    '  },\n' +
+    '  {\n' +
+    '    id: 5,\n' +
+    "    title: 'Domain 5: Security Operations',\n" +
+    "    shortTitle: 'Security Operations',\n" +
+    "    weight: '17.3%',\n" +
+    '    published: false,\n' +
+    '    objectives: [\n' +
+    "      { id: '5.1', title: '5.1 Understand data security' },\n" +
+    "      { id: '5.2', title: '5.2 Understand security operations' },\n" +
+    "      { id: '5.3', title: '5.3 Understand Incident Response (IR)' },\n" +
+    "      { id: '5.4', title: '5.4 Understand asset protection' },\n" +
+    "      { id: '5.5', title: '5.5 Understand security testing' }\n" +
+    '    ]\n' +
+    '  }\n' +
+    '];\n' +
+    '\n' +
+    'let disposeActiveReader = null;\n' +
+    "const initialDocumentUrl = typeof window !== 'undefined' ? window.location?.href : null;\n" +
+    'let readerMountedInDocument = false;\n' +
+    '\n' +
+    'function escapeHtml(value) {\n' +
+    "  if (value === null || value === undefined) return '';\n" +
+    '  return String(value)\n' +
+    "    .replace(/&/g, '&amp;')\n" +
+    "    .replace(/</g, '&lt;')\n" +
+    "    .replace(/>/g, '&gt;')\n" +
+    `    .replace(/"/g, '&quot;')\n` +
+    "    .replace(/'/g, '&#39;');\n" +
+    '}\n' +
+    '\n' +
+    '/**\n' +
+    ' * Renders the Reading Notes screen into the provided container.\n' +
+    ' * @param {HTMLElement} container - Root application element\n' +
+    ' * @param {Function} onBack - Callback when user navigates back to exam versions\n' +
+    ' */\n' +
+    'export function renderReadingScreen(container, onBack) {\n' +
+    '  disposeActiveReader?.();\n' +
+    '  const allDomainObjectiveIds = READING_DOMAINS.flatMap(d => (d.objectives || []).map(o => o.id));\n' +
+    '  const progress = loadReadingProgress();\n' +
+    '  const initialDocumentMount = !readerMountedInDocument && window.location.href === initialDocumentUrl;\n' +
+    '  readerMountedInDocument = true;\n' +
+    '  const initialLocation = resolveReadingLocation({\n' +
+    '    hash: window.location.hash, progress,\n' +
+    "    navigationType: initialDocumentMount ? performance.getEntriesByType('navigation')[0]?.type : 'navigate',\n" +
+    '    historyPosition: history.state?.readingNotes\n' +
+    '  });\n' +
+    '  // Keep the existing explicitly selected, unpublished panel outside V1 progress.\n' +
+    '  if (!parseReadingDeepLink(window.location.hash).isReadingRoute && state.reading?.selectedDomainId === 5) {\n' +
+    "    Object.assign(initialLocation, { domainId: 5, anchorId: null, scrollY: 0, mode: 'position' });\n" +
+    '  }\n' +
+    '  state.reading = state.reading || {};\n' +
+    '  state.reading.selectedDomainId = initialLocation.domainId;\n' +
+    '  state.reading._hasRestoredProgress = true;\n' +
+    '  state.reading.targetAnchorId = null;\n' +
+    '  state.reading.targetScrollY = null;\n' +
+    '  let selectedDomainId = initialLocation.domainId;\n' +
+    '  const expandedDomainSet = new Set(state.reading.expandedDomains || [selectedDomainId]);\n' +
+    '  const expandedObjSet = new Set(state.reading.expandedObjectives || allDomainObjectiveIds);\n' +
+    '  expandedDomainSet.add(selectedDomainId);\n' +
+    '\n' +
+    '  const initialAnchor = initialLocation.anchorId;\n' +
+    '\n' +
+    '  // Auto-expand domain and objective if initialAnchor belongs to one\n' +
+    '  if (initialAnchor) {\n' +
+    '    const objMatch = initialAnchor.match(/^(?:topic|obj)-(\\d+)-(\\d+)/);\n' +
+    '    if (objMatch) {\n' +
+    '      expandedDomainSet.add(parseInt(objMatch[1], 10));\n' +
+    '      expandedObjSet.add(`${objMatch[1]}.${objMatch[2]}`);\n' +
+    '    }\n' +
+    '  }\n' +
+    '\n' +
+    '  let sidebarCollapsed = !!state.reading.sidebarCollapsed;\n' +
+    '  let mobileSidebarOpen = false;\n' +
+    '  let scrollNavCleanup = null;\n' +
+    '  let updateScrollNavState = null;\n' +
+    '  let activeScrollSpyTopicId = initialAnchor;\n' +
+    '  let scrollDebounceTimer = null;\n' +
+    '  let restoreGeneration = 0;\n' +
+    '  let pendingRestoration = null;\n' +
+    '  let restoring = true;\n' +
+    '  let disposed = false;\n' +
+    '  let readerRoot = null;\n' +
+    '  let headingTargets = [];\n' +
+    '  let lastSnapshot = null;\n' +
+    '  let removalObserver = null;\n' +
+    '  const listeners = new AbortController();\n' +
+    '  const previousScrollRestoration = history.state?.readingNotes?.previousScrollRestoration || history.scrollRestoration;\n' +
+    "  history.scrollRestoration = 'manual';\n" +
+    '  const isMounted = () => !disposed && readerRoot && container.contains(readerRoot);\n' +
+    '  const listen = (target, type, callback, options = {}) => target?.addEventListener(type, callback, { ...options, signal: listeners.signal });\n' +
+    '\n' +
+    '  function getCurrentScrollY() {\n' +
+    "    const pane = container.querySelector('#reading-content-pane');\n" +
+    '    if (pane && pane.scrollTop > 0) return pane.scrollTop;\n' +
+    "    if (typeof window !== 'undefined' && window.scrollY > 0) return window.scrollY;\n" +
+    "    const docEl = typeof document !== 'undefined' ? document.documentElement : null;\n" +
+    '    return docEl ? docEl.scrollTop : 0;\n' +
+    '  }\n' +
+    '\n' +
+    '  function setActiveAnchor(id, expand = false) {\n' +
+    '    activeScrollSpyTopicId = id;\n' +
+    '    const match = id?.match(/^(?:topic|obj)-(\\d+)-(\\d+)/);\n' +
+    '    const objective = match ? `${match[1]}.${match[2]}` : null;\n' +
+    '    if (expand && objective) {\n' +
+    '      expandedDomainSet.add(selectedDomainId);\n' +
+    '      expandedObjSet.add(objective);\n' +
+    '      state.reading.expandedDomains = [...expandedDomainSet];\n' +
+    '      state.reading.expandedObjectives = [...expandedObjSet];\n' +
+    '      const group = container.querySelector(`.reading-nav-group[data-domain-id="${selectedDomainId}"]`);\n' +
+    '      const item = group?.querySelector(`[data-objective-id="${objective}"]`);\n' +
+    "      for (const [owner, buttonSelector, listSelector] of [[group, '[data-toggle-domain]', '.reading-nav-sub-tree'], [item, '[data-toggle-obj]', '.reading-nav-topics']]) {\n" +
+    "        owner?.classList.add('expanded');\n" +
+    '        const button = owner?.querySelector(buttonSelector);\n' +
+    "        button?.classList.add('expanded');\n" +
+    "        button?.setAttribute('aria-expanded', 'true');\n" +
+    '        const list = owner?.querySelector(listSelector);\n' +
+    "        if (list) { list.hidden = false; list.classList.add('expanded'); }\n" +
+    '      }\n' +
+    '    }\n' +
+    "    container.querySelectorAll('.reading-nav-topic-link, .reading-nav-objective-link').forEach(link => {\n" +
+    "      const target = link.getAttribute('data-scroll-to');\n" +
+    "      link.classList.toggle('active', target === id || (objective && target === `obj-${objective.replace('.', '-')}`));\n" +
+    "      if (target === id) link.setAttribute('aria-current', 'location');\n" +
+    "      else link.removeAttribute('aria-current');\n" +
+    '    });\n' +
+    '  }\n' +
+    '\n' +
+    '  function updateActiveFromScroll() {\n' +
+    '    let active = null;\n' +
+    '    for (const target of headingTargets) {\n' +
+    '      if (target.getBoundingClientRect().top <= 80) active = target.id;\n' +
+    '      else break;\n' +
+    '    }\n' +
+    '    setActiveAnchor(active);\n' +
+    '  }\n' +
+    '\n' +
+    '  function snapshotLocation() {\n' +
+    '    const target = activeScrollSpyTopicId && document.getElementById(activeScrollSpyTopicId);\n' +
+    '    const match = activeScrollSpyTopicId?.match(/^(?:topic|obj)-(\\d+)-(\\d+)/);\n' +
+    '    return {\n' +
+    '      domainId: selectedDomainId, topicId: activeScrollSpyTopicId,\n' +
+    '      objectiveId: match ? `${match[1]}.${match[2]}` : null,\n' +
+    '      scrollY: getCurrentScrollY(),\n' +
+    '      ...(target ? { anchorOffset: -target.getBoundingClientRect().top } : {})\n' +
+    '    };\n' +
+    '  }\n' +
+    '\n' +
+    "  function writeHistory(location, method = 'replaceState', hash = null) {\n" +
+    '    const anchor = location.topicId ?? location.anchorId;\n' +
+    '    const route = hash || (anchor ? `#${anchor}` : `#/reading/domain-${location.domainId}`);\n' +
+    '    history[method]({ ...(history.state || {}), readingNotes: {\n' +
+    '      domainId: location.domainId, anchorId: anchor || null,\n' +
+    '      scrollY: location.scrollY || 0, anchorOffset: location.anchorOffset, hash: route,\n' +
+    '      previousScrollRestoration\n' +
+    "    } }, '', route);\n" +
+    '  }\n' +
+    '\n' +
+    '  function persistCurrent(updateHistory = true) {\n' +
+    '    if (!isMounted() || restoring || !getActiveDomain().published) return;\n' +
+    '    updateActiveFromScroll();\n' +
+    '    lastSnapshot = snapshotLocation();\n' +
+    '    saveReadingLocation(lastSnapshot);\n' +
+    '    if (updateHistory) writeHistory(lastSnapshot);\n' +
+    '  }\n' +
+    '\n' +
+    '  function beginRestore(location) {\n' +
+    '    restoring = true;\n' +
+    '    clearTimeout(scrollDebounceTimer);\n' +
+    '    const generation = ++restoreGeneration;\n' +
+    '    pendingRestoration = { location, generation };\n' +
+    '    return generation;\n' +
+    '  }\n' +
+    '\n' +
+    '  function restorePendingLocation() {\n' +
+    '    const request = pendingRestoration;\n' +
+    '    if (request?.location.domainId === selectedDomainId) restoreLocation(request.location, request.generation);\n' +
+    '  }\n' +
+    '\n' +
+    '  async function restoreLocation(location, generation) {\n' +
+    '    if (!isMounted() || generation !== restoreGeneration) return;\n' +
+    '    if (!getActiveDomain().published) { restoring'... 31137 more characters
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-final-accessibility.mjs:9:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '/**\n * ISC2 CC 2026 — Reading Notes Screen Module\n *\n * Provides a clean technical documentation reader:\n * - Domain 1 complete real content integration (consolidated from D1 sum.md & Domain 1.md)\n * - 3-level navigation hierarchy in left sidebar: Domain -> Objective -> Topic\n * - Independent expand/collapse without scroll loss\n * - Smooth anchor scrolling to Objectives and Topics\n * - Scroll spy for active heading/section highlight\n * - Continuous long-form reading directly on page background\n...',
+    expected: /function applyReadingLanguageMetadata/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-final-accessibility.mjs:11:1
+✖ ethics retains all four canons without unverified universal conflict claims (0.3173ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Use professional ethical judgment/. Input:
+  
+  'id="topic-1-5-isc2-ethics" class="reading-topic-anchor"></div>\n' +
+    '\n' +
+    '### 1.5.3 ISC2 Code of Ethics (The 4 Canons)\n' +
+    '\n' +
+    'สมาชิกและผู้ถือใบรับรองของ ISC2 ทุกคนต้องยึดมั่นและปฏิบัติตาม **ประมวลจริยธรรม 4 ข้อ (4 Canons)** โดยต้องยึดถือตาม **ลำดับความสำคัญก่อนหลัง (Strict Order of Precedence)**:\n' +
+    '\n' +
+    '<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>ประมวลจริยธรรม 4 ข้อตามลำดับความสำคัญก่อนหลัง (Strict Order of Precedence):</h4>\n' +
+    '\n' +
+    '<div class="reading-semantic-diagram" data-diagram="ethicsCanons"></div>\n' +
+    '\n' +
+    '<div class="reading-precedence-rule">\n' +
+    '  <svg class="reading-rule-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>\n' +
+    '  <span><strong>กฎลำดับความสำคัญ (Strict Order of Precedence):</strong> ข้อ 1 ถึง 4 เรียงตามลำดับความสำคัญจากสูงสุดลงไปอย่างเคร่งครัด หากเกิดความขัดแย้งทางหน้าที่ ผลประโยชน์ หรือคำสั่งของผู้ว่าจ้าง <em>Canon ลำดับก่อนหน้าจะมีความสำคัญเหนือกว่าเสมอ</em></span>\n' +
+    '</div>\n' +
+    '\n' +
+    '<div class="reading-precedence-stack">\n' +
+    '  <div class="reading-precedence-card tier-1">\n' +
+    '    <div class="reading-precedence-header">\n' +
+    '      <div class="reading-precedence-title-wrap">\n' +
+    '        <span class="reading-precedence-num">01</span>\n' +
+    '        <h4 class="reading-precedence-title">Canon 1: Protect society, the common good, necessary public trust and confidence, and the infrastructure</h4>\n' +
+    '      </div>\n' +
+    '      <span class="reading-precedence-badge">Priority 1 (สำคัญสูงสุด)</span>\n' +
+    '    </div>\n' +
+    '    <p class="reading-precedence-body">\n' +
+    '      <strong>ปกป้องสังคม ประโยชน์ส่วนรวม ความไว้วางใจของสาธารณะ และโครงสร้างพื้นฐานสำคัญ:</strong> เป็นข้อที่มีลำดับความสำคัญสูงสุดเหนือกฎข้ออื่นทั้งหมด หากผลประโยชน์ขององค์กรหรือคำสั่งของผู้ว่าจ้างขัดแย้งกับความปลอดภัยของสาธารณะ ต้องเลือกความปลอดภัยของสังคมเป็นอันดับแรกเสมอ\n' +
+    '    </p>\n' +
+    '  </div>\n' +
+    '\n' +
+    '  <div class="reading-precedence-card tier-2">\n' +
+    '    <div class="reading-precedence-header">\n' +
+    '      <div class="reading-precedence-title-wrap">\n' +
+    '        <span class="reading-precedence-num">02</span>\n' +
+    '        <h4 class="reading-precedence-title">Canon 2: Act honorably, honestly, justly, responsibly, and legally</h4>\n' +
+    '      </div>\n' +
+    '      <span class="reading-precedence-badge">Priority 2</span>\n' +
+    '    </div>\n' +
+    '    <p class="reading-precedence-body">\n' +
+    '      <strong>ประพฤติตนอย่างมีเกียรติ ซื่อสัตย์ ยุติธรรม มีความรับผิดชอบ และถูกต้องตามกฎหมาย:</strong> ปฏิบัติตามกฎหมายอย่างเคร่งครัด ไม่โกหก ไม่บิดเบือนข้อเท็จจริง และรักษาความโปร่งใสในวิชาชีพ <em>(ข้อสังเกต: Canon 2 กำหนดหน้าที่เหล่านี้ร่วมกัน ไม่ควรอนุมานลำดับเหนือกว่ากันจากลำดับคำในประโยค การกระทำที่ไม่ผิดกฎหมายอาจยังขัดจริยธรรมหากเป็นการหลอกลวง บิดเบือนข้อเท็จจริง หรือไม่เป็นธรรม)</em>\n' +
+    '    </p>\n' +
+    '  </div>\n' +
+    '\n' +
+    '  <div class="reading-precedence-card tier-3">\n' +
+    '    <div class="reading-precedence-header">\n' +
+    '      <div class="reading-precedence-title-wrap">\n' +
+    '        <span class="reading-precedence-num">03</span>\n' +
+    '        <h4 class="reading-precedence-title">Canon 3: Provide diligent and competent service to principals</h4>\n' +
+    '      </div>\n' +
+    '      <span class="reading-precedence-badge">Priority 3</span>\n' +
+    '    </div>\n' +
+    '    <p class="reading-precedence-body">\n' +
+    '      <strong>ให้บริการแก่นายจ้างหรือลูกค้าอย่างขยันขันแข็ง รอบคอบ และเต็มความสามารถ:</strong> รักษาความลับและผลประโยชน์ที่ชอบธรรมของผู้ว่าจ้าง ไม่นำข้อมูลลับไปแสวงหาผลประโยชน์ส่วนตน และไม่รับงานที่ตนขาดความเชี่ยวชาญโดยไม่แจ้งล่วงหน้า\n' +
+    '    </p>\n' +
+    '  </div>\n' +
+    '\n' +
+    '  <div class="reading-precedence-card tier-4">\n' +
+    '    <div class="reading-precedence-header">\n' +
+    '      <div class="reading-precedence-title-wrap">\n' +
+    '        <span class="reading-precedence-num">04</span>\n' +
+    '        <h4 class="reading-precedence-title">Canon 4: Advance and protect the profession</h4>\n' +
+    '      </div>\n' +
+    '      <span class="reading-precedence-badge">Priority 4</span>\n' +
+    '    </div>\n' +
+    '    <p class="reading-precedence-body">\n' +
+    '      <strong>ส่งเสริม ยกระดับ และปกป้องชื่อเสียงของวิชาชีพ:</strong> ร่วมแลกเปลี่ยนความรู้ ยกระดับมาตรฐานวิชาชีพด้านไซเบอร์ และไม่กระทำการใดที่ทำให้เกียรติภูมิของวิชาชีพเสื่อมเสีย\n' +
+    '    </p>\n' +
+    '  </div>\n' +
+    '</div>\n' +
+    '\n' +
+    '> **สูตรจำตัวอักษรย่อ (Mnemonic):**  \n' +
+    '> "<strong class="reading-mnemonic-highlight">S - A - P - P</strong>"  \n' +
+    '> <strong class="reading-mnemonic-highlight">S</strong>ociety → <strong class="reading-mnemonic-highlight">A</strong>ct honorably → <strong class="reading-mnemonic-highlight">P</strong>rincipals → <strong class="reading-mnemonic-highlight">P</strong>rofession\n' +
+    '\n' +
+    '<div '
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-final-accessibility.mjs:14:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'id="topic-1-5-isc2-ethics" class="reading-topic-anchor"></div>\n\n### 1.5.3 ISC2 Code of Ethics (The 4 Canons)\n\nสมาชิกและผู้ถือใบรับรองของ ISC2 ทุกคนต้องยึดมั่นและปฏิบัติตาม **ประมวลจริยธรรม 4 ข้อ (4 Canons)** โดยต้องยึดถือตาม **ลำดับความสำคัญก่อนหลัง (Strict Order of Precedence)**:\n\n<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>ประมวลจริยธรรม 4 ข้อตามลำดับความสำคัญก่อนหลัง (Strict Order of Precedence):</h4>\n\n<div class="reading-semantic-diagram" data-diagram="ethicsCanons"></div>\n\n...',
+    expected: /Use professional ethical judgment/,
+    operator: 'match',
+    diff: 'simple'
+  }

@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1001,
+    "question": "A data owner assigns a report to the Restricted category. An analyst then adds a Restricted metadata tag to the file. Which statement correctly distinguishes these actions?",
+    "options": [
+      "The owner labels the data; the analyst classifies it",
+      "Both actions enforce the file’s access permissions",
+      "Both actions encrypt the contents of the report",
+      "The owner classifies the data; the analyst labels it"
+    ]
+  },
+  {
+    "id": 1002,
+    "question": "Policy defines Internal data as employee-only and Restricted data as accessible only to named project members. A draft contains both types, and policy requires mixed documents to follow the more restrictive category. How should the analyst handle the draft?",
+    "options": [
+      "Apply separate labels while leaving the whole file employee-accessible",
+      "Apply the category covering the larger portion of the draft",
+      "Apply Restricted handling to the complete draft",
+      "Apply Internal handling because both parts are corporate data"
+    ]
+  },
+  {
+    "id": 1003,
+    "question": "A support screen replaces all but the last four digits of an account number with X characters. Staff can still identify the relevant account record. Which data-handling technique is illustrated?",
+    "options": [
+      "Media sanitization",
+      "Symmetric encryption",
+      "Cryptographic hashing",
+      "Data masking"
+    ]
+  },
+  {
+    "id": 1004,
+    "question": "An approved AI service may receive support examples only after all customer identifiers are removed. An analyst masks the customer-number column, but names remain in free-text comments. What should the analyst do before submission?",
+    "options": [
+      "Encrypt the upload and leave the comments unchanged",
+      "Submit because the structured identifier column is masked",
+      "Replace the customer numbers with stable codes and submit",
+      "Review the comments and remove the remaining identifiers"
+    ]
+  },
+  {
+    "id": 1005,
+    "question": "An SSD containing confidential files will be reused internally. Policy requires a validated purge method that preserves reuse. The device supports an approved sanitize operation. Which handling plan meets the requirement?",
+    "options": [
+      "Delete the confidential files and perform a normal file search",
+      "Run the approved operation and validate its recorded outcome",
+      "Physically destroy the storage chips and document destruction",
+      "Quick-format the drive and confirm the old folders are hidden"
+    ]
+  },
+  {
+    "id": 1006,
+    "question": "A drive was encrypted before sensitive data was stored. Its data-encryption key is removed from the drive, but a recoverable copy remains in an escrow system. Has cryptographic erase been established?",
+    "options": [
+      "No; the retained key copy can still enable decryption",
+      "No; cryptographic erase requires destruction of the drive itself",
+      "Yes; removing the local key is sufficient for encrypted media",
+      "Yes; encryption before storage makes later key retention irrelevant"
+    ]
+  },
+  {
+    "id": 1007,
+    "question": "A sender must encrypt a short message so only the intended recipient can decrypt it using a public-key encryption scheme. Which key should the sender use to encrypt the message?",
+    "options": [
+      "The recipient’s private decryption key",
+      "The recipient’s public encryption key",
+      "The sender’s private signing key",
+      "The sender’s public encryption key"
+    ]
+  },
+  {
+    "id": 1008,
+    "question": "An analyst compares a downloaded file with a SHA-256 digest obtained through the publisher’s authenticated channel. The digests differ. Which conclusion is supported by this evidence alone?",
+    "options": [
+      "SHA-256 has produced a collision for these two files",
+      "The downloaded file does not match the referenced content",
+      "The publisher’s private signing key has been compromised",
+      "The file was deliberately modified by an external attacker"
+    ]
+  },
+  {
+    "id": 1009,
+    "question": "What is the purpose of post-quantum cryptography in protecting organizational systems?",
+    "options": [
+      "Require quantum communication channels for every encrypted session",
+      "Replace conventional computers with quantum computers for encryption",
+      "Remove the need to manage cryptographic keys during migration",
+      "Use cryptographic methods designed to resist quantum-capable attacks"
+    ]
+  },
+  {
+    "id": 1010,
+    "question": "A company stores records that must remain confidential for many years. Its bulk encryption uses AES, but its key-establishment process uses a quantum-vulnerable public-key scheme. What should its migration assessment include?",
+    "options": [
+      "Identify the vulnerable key-establishment dependency and assess approved replacements",
+      "Limit the review to whether the existing keys are stored securely",
+      "Replace the bulk cipher while keeping the vulnerable public-key process",
+      "Treat the use of AES as evidence that the whole system is quantum-resistant"
+    ]
+  },
+  {
+    "id": 1011,
+    "question": "Which activity is monitoring rather than simply logging security events?",
+    "options": [
+      "Copying application records into central storage",
+      "Keeping archived records for the required retention period",
+      "Evaluating recorded activity for patterns requiring attention",
+      "Writing authentication outcomes to a system record"
+    ]
+  },
+  {
+    "id": 1012,
+    "question": "A detection rule must relate application exports to the accounts that requested them. Authentication logs reach the SIEM, but the application’s export audit records are not collected. Which change MOST directly addresses the visibility gap?",
+    "options": [
+      "Increase retention of the existing authentication records",
+      "Send existing SIEM alerts to an additional notification channel",
+      "Collect export records with account identifiers and timestamps",
+      "Lower the threshold for failed-authentication alerts"
+    ]
+  },
+  {
+    "id": 1013,
+    "question": "Two validated alerts await triage. One shows ongoing unauthorized changes to a critical payment service. The other records many blocked probes against an isolated training host, with no signs of access. Policy prioritizes active business impact. Which alert has the higher priority?",
+    "options": [
+      "The training-host alert because it contains more attempts",
+      "Both alerts equally because both involve unauthorized activity",
+      "The payment-service alert because harmful activity is ongoing",
+      "The training-host alert because isolated systems have fewer controls"
+    ]
+  },
+  {
+    "id": 1014,
+    "question": "A junior analyst validates suspicious activity involving a privileged account. The playbook requires the incident lead to approve any account restriction; the analyst may collect records and escalate. No approval has been issued. What is the MOST appropriate next action?",
+    "options": [
+      "Wait for the next scheduled access review to raise the issue",
+      "Escalate the evidence to the incident lead for a response decision",
+      "Restrict the account and request retrospective approval",
+      "Reclassify the alert as low priority until approval arrives"
+    ]
+  },
+  {
+    "id": 1015,
+    "question": "A rule is intended to detect unauthorized privileged scans. It flags a scan outside its usual window. Investigation confirms the scan was approved under a documented exception and no unauthorized activity occurred. Relative to the intended detection purpose, how is this alert classified?",
+    "options": [
+      "False negative",
+      "True negative",
+      "True positive",
+      "False positive"
+    ]
+  },
+  {
+    "id": 1016,
+    "question": "An AI-assisted SIEM summary links a suspicious sign-in to a later data export. The source records show different accounts, and the summary provides no host or session link. Which conclusion is MOST justified?",
+    "options": [
+      "Different account names prove the activities are unrelated",
+      "The later export confirms that the suspicious sign-in succeeded",
+      "The proposed link needs corroboration before treating the events as one attack",
+      "The AI-generated narrative is sufficient evidence of account compromise"
+    ]
+  },
+  {
+    "id": 1017,
+    "question": "One employee deliberately sells customer records for personal profit. Another accidentally sends a report to the wrong recipient. Which assessment correctly describes these insider situations?",
+    "options": [
+      "Neither creates insider risk unless an external attacker directed it",
+      "Both are malicious insider actions because protected data was disclosed",
+      "Only the first creates insider risk because the second was accidental",
+      "Both create insider risk, but only the first action is deliberately malicious"
+    ]
+  },
+  {
+    "id": 1018,
+    "question": "A trusted threat report identifies a malicious file hash and the period when a campaign was active. An analyst wants to determine whether relevant endpoints encountered that file. Which use of the report is MOST appropriate?",
+    "options": [
+      "Treat a missing hash match as proof that no related activity occurred",
+      "Search relevant endpoint records for the hash during the stated period",
+      "Search current login failures instead of the reported file evidence",
+      "Classify every endpoint as compromised before checking its records"
+    ]
+  },
+  {
+    "id": 1019,
+    "question": "An old feed labels an IP address as malicious. Current provider information shows the address now belongs to a shared business service, and internal logs show only recent connections. What does the feed entry establish about those recent connections?",
+    "options": [
+      "It requires blocking the address regardless of operational context",
+      "It is a lead to validate, not sufficient proof of current malicious activity",
+      "It proves that the shared business service is fully trustworthy",
+      "It confirms that the recent connections are part of the old campaign"
+    ]
+  },
+  {
+    "id": 1020,
+    "question": "In MITRE ATT&CK, what does a tactic describe?",
+    "options": [
+      "The specific method used to achieve the adversary’s goal",
+      "The exact implementation observed in one intrusion",
+      "The adversary’s tactical goal for performing an action",
+      "The defensive rule that automatically blocks the behavior"
+    ]
+  },
+  {
+    "id": 1021,
+    "question": "An external responder requests an incident log containing employee details. Policy permits sharing only relevant records with approved responders through the secure case portal. The responder is approved. What should the analyst provide?",
+    "options": [
+      "The complete archive through the secure case portal",
+      "The relevant records through the secure case portal",
+      "A portal login shared with the responder’s entire company",
+      "The relevant records through an ordinary personal email account"
+    ]
+  },
+  {
+    "id": 1022,
+    "question": "Incident records reach their routine deletion date. A documented preservation hold requires those records to remain available until the incident lead releases it. The hold is still active. What is the BEST action?",
+    "options": [
+      "Suspend routine deletion for the held records and preserve protected access",
+      "Remove identifiers from the originals and then apply routine deletion",
+      "Keep an unprotected copy and delete the controlled case records",
+      "Delete the records because the standard retention date has arrived"
+    ]
+  },
+  {
+    "id": 1023,
+    "question": "An authorized responder confirms that malware is spreading from a workstation. The playbook permits network isolation, and the workstation has no safety-critical role. The immediate goal is to stop further spread while retaining the device for investigation. Which action BEST meets that goal?",
+    "options": [
+      "Restore the workstation’s business files before restricting its network",
+      "Delete suspicious files while leaving network connections active",
+      "Continue observing until the attacker’s identity is established",
+      "Isolate the workstation using the approved containment mechanism"
+    ]
+  },
+  {
+    "id": 1024,
+    "question": "Responders have removed a backdoor and corrected its entry path. They now rebuild the affected service from a clean image, validate it, and return it to approved use. Which response purpose do these current activities primarily serve?",
+    "options": [
+      "Recovery of safe service operation",
+      "Post-incident review of response performance",
+      "Eradication of the identified backdoor",
+      "Containment of the initial spread"
+    ]
+  },
+  {
+    "id": 1025,
+    "question": "An organization wants to check whether incident leaders agree on notification roles. Participants will discuss a simulated breach without operating technical controls. Which exercise best fits this purpose?",
+    "options": [
+      "A red-team attempt to enter a restricted facility",
+      "An application scan for known software vulnerabilities",
+      "A functional test of network-isolation controls",
+      "A tabletop exercise of the notification decisions"
+    ]
+  },
+  {
+    "id": 1026,
+    "question": "A tabletop reveals uncertainty about whether the on-call team can use the isolation tool. A controlled exercise is authorized on a lab endpoint. Which result would demonstrate the missing technical capability rather than repeat the discussion?",
+    "options": [
+      "The on-call team operates the tool and confirms the lab endpoint is isolated",
+      "The team records that the isolation software license is current",
+      "The incident lead signs the written isolation procedure",
+      "The team explains which isolation button it would select"
+    ]
+  },
+  {
+    "id": 1027,
+    "question": "A laptop is being retired. Its owner and serial number are recorded, but the storage still contains company data. The disposal procedure requires verified sanitization before transfer. What should the asset team do before marking the transfer complete?",
+    "options": [
+      "Complete and record the required sanitization before releasing the laptop",
+      "Remove the laptop from inventory because its owner is already recorded",
+      "Label the laptop Retired and transfer it with its current storage",
+      "Disable the former owner’s login and record the transfer as complete"
+    ]
+  },
+  {
+    "id": 1028,
+    "question": "A vendor states that a server platform will receive no further security fixes after its support date. The server still runs its application normally. Which security conclusion is supported?",
+    "options": [
+      "Application compatibility confirms that security updates will continue",
+      "New vulnerabilities may remain without vendor fixes despite continued operation",
+      "The absence of current outages shows that lifecycle risk is negligible",
+      "The vendor statement proves that the server is already compromised"
+    ]
+  },
+  {
+    "id": 1029,
+    "question": "An unsupported service cannot be replaced this month. It must remain reachable only by two named application servers. The team needs interim exposure reduction while an approved migration proceeds. Which plan BEST meets these constraints?",
+    "options": [
+      "Retain current connectivity and increase backup frequency",
+      "Keep broad connectivity and rely on reviewing alerts each morning",
+      "Permit only the required server paths, monitor activity, and track migration",
+      "Move the service to another segment without changing access rules"
+    ]
+  },
+  {
+    "id": 1030,
+    "question": "A configuration audit finds a server setting differs from the standard baseline. The change register contains a current, approved exception for that exact server and setting. What is the BEST interpretation?",
+    "options": [
+      "Remove the server from future configuration audits",
+      "Treat every baseline difference as an unauthorized change",
+      "Replace the organization-wide baseline with this server’s setting",
+      "Assess the setting against the approved exception as well as the baseline"
+    ]
+  },
+  {
+    "id": 1031,
+    "question": "A patch deployment tool reports success. The change record also requires confirming the installed version and testing the application’s critical transaction. Which verification satisfies the record?",
+    "options": [
+      "Accept the deployment tool’s success message as complete verification",
+      "Check the installed version and execute the defined transaction test",
+      "Check the new version and omit the application test",
+      "Run the transaction test and leave the installed version unconfirmed"
+    ]
+  },
+  {
+    "id": 1032,
+    "question": "An approved maintenance change fails its required health check. The change plan explicitly authorizes the documented rollback for that result. Which next action BEST follows the plan?",
+    "options": [
+      "Execute the documented rollback and verify the restored service",
+      "Implement an untested replacement change instead of the approved rollback",
+      "Close the change because implementation commands completed",
+      "Keep the change active and defer the health check to the next review"
+    ]
+  },
+  {
+    "id": 1033,
+    "question": "During an authorized readiness exercise, attackers explain their simulated steps to defenders. Both groups examine missed detections, improve rules, and repeat the test. Which approach does this illustrate?",
+    "options": [
+      "Purple teaming",
+      "An independent red-team assessment without defender collaboration",
+      "A discussion-only tabletop of response responsibilities",
+      "A blue-team monitoring shift without simulated attacks"
+    ]
+  },
+  {
+    "id": 1034,
+    "question": "A controlled attack simulation produces the expected endpoint records, but those records never reach the SIEM. The purple-team goal is to close this detection gap and demonstrate improvement. What should the teams do?",
+    "options": [
+      "Document the attack steps and finish the exercise without retesting",
+      "Lower an existing alert threshold without checking record delivery",
+      "Repair record forwarding and repeat the simulation to verify detection",
+      "Repeat the same simulation before correcting record forwarding"
+    ]
+  },
+  {
+    "id": 1035,
+    "question": "A scheduled scan finds no known-version vulnerabilities in the web servers it checked. The scan did not test application workflows or authenticated business functions. Which statement accurately describes the result?",
+    "options": [
+      "The result establishes that authenticated functions have no security flaws",
+      "The result removes the need to review future vulnerability information",
+      "The result is limited to the checks performed and does not establish workflow security",
+      "The result proves that the application design resists all relevant threats"
+    ]
+  },
+  {
+    "id": 1036,
+    "question": "A team analyzes application source code and compiled artifacts without executing the application. Which testing description fits this activity?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Vulnerability scanning of deployed service versions",
+      "Threat modeling of application data flows",
+      "Dynamic testing of application input responses"
+    ]
+  },
+  {
+    "id": 1037,
+    "question": "A tester must determine whether a deployed application still accepts a session token after logout. The application is available in an authorized test environment. Which activity MOST directly answers this question?",
+    "options": [
+      "Review a design diagram of the intended logout process",
+      "Inspect source-code comments describing session expiration",
+      "Interact with the running application using the token before and after logout",
+      "Scan the server’s software-version inventory for known issues"
+    ]
+  },
+  {
+    "id": 1038,
+    "question": "A design change will allow a new external partner to upload documents into an internal workflow. Before choosing additional controls, the team needs to identify new assets, trust boundaries and possible attack paths. Which activity is MOST appropriate?",
+    "options": [
+      "Run a version-only vulnerability scan of the unchanged servers",
+      "Revisit the threat model for the changed workflow",
+      "Select controls from the existing checklist without reviewing the change",
+      "Review the previous model without considering the new partner"
+    ]
+  },
+  {
+    "id": 1039,
+    "question": "An authorized test includes three actions: (1) sending a deceptive login-link email, (2) following a badged employee through a controlled door, and (3) claiming to be an IT technician to request access. Which mapping is correct?",
+    "options": [
+      "(1) Phishing; (2) tailgating; (3) impersonation",
+      "(1) Phishing; (2) impersonation; (3) tailgating",
+      "(1) Impersonation; (2) phishing; (3) tailgating",
+      "(1) Tailgating; (2) impersonation; (3) phishing"
+    ]
+  },
+  {
+    "id": 1040,
+    "question": "During a controlled physical-security test, a person claiming to be a technician requests entry to a server room. Procedure requires staff to verify work orders through the established service desk before granting entry. No verification has occurred. What should the employee do?",
+    "options": [
+      "Grant entry while asking the person to email a work order later",
+      "Escort the person inside instead of checking the work order",
+      "Verify the claim by calling a number supplied only by the visitor",
+      "Keep entry pending while verifying the work order through the service desk"
+    ]
+  }
+]

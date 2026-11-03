@@ -1,6 +1,6 @@
 <p class="reading-lead">สรุปและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC) ฉบับปรับปรุงปี 2026 ใน Domain 3: Identity and Access Management (IAM) Concepts — แนวคิดการบริหารตัวตนและการเข้าถึง (น้ำหนักข้อสอบ 20%) ครอบคลุมการบริหารจัดการวงจรชีวิตของตัวตนดิจิทัล (Identity Life Cycle Management: Joiner-Mover-Leaver, Provisioning, Periodic Access Review, Deprovisioning), กรอบมาตรฐานและเครื่องมืออัตลักษณ์ (NIST SP 800-63, Directory Services, IdPs), หลักการสิทธิ์ขั้นต่ำ (Principle of Least Privilege), การแบ่งแยกหน้าที่ความรับผิดชอบ (Segregation of Duties), และโมเดลการควบคุมการเข้าถึงเชิงตรรกะแบบครบวงจร (DAC, MAC, RBAC, ABAC)</p>
 
-<section class="reading-objective-section" id="obj-3-1">
+<section class="reading-objective-section reading-structured-objective" id="obj-3-1">
 
 ## Objective 3.1: Understand Identity Life Cycle Management
 
@@ -17,17 +17,33 @@
 
 <div class="reading-semantic-diagram" data-diagram="iamLifecycle"></div>
 
-1. **Joiner (เข้าทำงานใหม่):**
-   - พนักงานใหม่เริ่มงาน ต้องผ่านขั้นตอนการสร้างตัวตนดิจิทัล (Identity Creation) และการจัดสรรสิทธิ์เริ่มต้นตามตำแหน่งงาน (**Provisioning**)
-   - สิ่งสำคัญที่สุด: องค์กรต้อง **Define Roles and Responsibilities** ให้ชัดเจนก่อนที่จะทำการให้สิทธิ์ (Grant Access)
+<section class="reading-concept-unit">
+<h4>Joiner (เข้าทำงานใหม่):</h4>
 
-2. **Mover (เปลี่ยนบทบาท / เลื่อนตำแหน่ง / ย้ายแผนก):**
-   - พนักงานเปลี่ยนตำแหน่งหรือย้ายสายงาน ต้องได้รับการปรับปรุงสิทธิ์ให้ตรงกับหน้าที่ใหม่
-   - ความเสี่ยงสูงสุดของขั้นตอนนี้คือ **Privilege Accumulation** (หรือ **Privilege Creep**): การได้รับสิทธิ์ใหม่เพิ่มเข้ามาแต่สิทธิ์เดิมของแผนกเก่าไม่ถูกเพิกถอนออกไป
+- พนักงานใหม่เริ่มงาน ต้องผ่านขั้นตอนการสร้างตัวตนดิจิทัล (Identity Creation) และการจัดสรรสิทธิ์เริ่มต้นตามตำแหน่งงาน (**Provisioning**)
+- สิ่งสำคัญที่สุด: องค์กรต้อง **Define Roles and Responsibilities** ให้ชัดเจนก่อนที่จะทำการให้สิทธิ์ (Grant Access)
 
-3. **Leaver (พ้นสภาพการเป็นพนักงาน / สิ้นสุดสัญญาจ้าง):**
-   - พนักงานลาออก ถูกเลิกจ้าง หรือสัญญาจ้างสิ้นสุดลง ต้องเข้าสู่กระบวนการเพิกถอนสิทธิ์อย่างรวดเร็วและสมบูรณ์ (**Deprovisioning**)
-   - ต้องระงับบัญชี (Disable Account), เพิกถอนสิทธิ์การเข้าถึงทั้งหมด และยึดอุปกรณ์คืน เพื่อป้องกันการเข้าถึงโดยไม่ได้รับอนุญาต
+</section>
+
+<section class="reading-concept-unit">
+<h4>Mover (เปลี่ยนบทบาท / เลื่อนตำแหน่ง / ย้ายแผนก):</h4>
+
+- พนักงานเปลี่ยนตำแหน่งหรือย้ายสายงาน ต้องได้รับการปรับปรุงสิทธิ์ให้ตรงกับหน้าที่ใหม่
+- ความเสี่ยงสูงสุดของขั้นตอนนี้คือ **Privilege Accumulation** (หรือ **Privilege Creep**): การได้รับสิทธิ์ใหม่เพิ่มเข้ามาแต่สิทธิ์เดิมของแผนกเก่าไม่ถูกเพิกถอนออกไป
+
+<div class="reading-scenario-inline">
+  <strong>กรณีศึกษาข้อสอบ (Finance-to-IT Transfer):</strong> นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง <strong>Privilege Creep</strong> และละเมิดหลักการ <strong>Segregation of Duties (SoD)</strong> อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ
+</div>
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Leaver (พ้นสภาพการเป็นพนักงาน / สิ้นสุดสัญญาจ้าง):</h4>
+
+- พนักงานลาออก ถูกเลิกจ้าง หรือสัญญาจ้างสิ้นสุดลง ต้องเข้าสู่กระบวนการเพิกถอนสิทธิ์อย่างรวดเร็วและสมบูรณ์ (**Deprovisioning**)
+- ต้องระงับบัญชี (Disable Account), เพิกถอนสิทธิ์การเข้าถึงทั้งหมด และยึดอุปกรณ์คืน เพื่อป้องกันการเข้าถึงโดยไม่ได้รับอนุญาต
+
+</section>
 
 <div class="reading-callout tip">
   <div class="reading-callout-header">
@@ -36,14 +52,30 @@
   </div>
   <p>ก่อนที่องค์กรจะทำการ <strong>Grant Access</strong> ให้กับผู้ใช้รายใดก็ตาม หากยังไม่ทราบบทบาทและสิทธิ์ที่งานต้องใช้ ควร <strong>"Define Roles and Responsibilities"</strong> เพื่อกำหนดขอบเขตหน้าที่และความรับผิดชอบให้ชัดเจนเสียก่อน</p>
 </div>
-
 <h3 id="topic-3-1-roles-definition">3.1.2 Roles Definition &amp; Permission Alignment: การกำหนดบทบาทหน้าที่</h3>
 
 เพื่อป้องกันความสับสนและการให้สิทธิ์อย่างไม่เป็นระบบ องค์กรจำเป็นต้องแยกแยะ 3 คำสำคัญออกจากกันให้ชัดเจน:
 
-- **Role (บทบาท):** หน้าที่หรืองานที่ได้รับมอบหมายภายในองค์กร (เช่น HR Manager, Database Administrator, Security Analyst)
-- **Permission (สิทธิ์ในการกระทำ):** สิทธิ์เฉพาะเจาะจงที่อนุญาตให้กระทำต่อวัตถุหรือระบบ เช่น Read (อ่าน), Write (เขียน), Modify (แก้ไข), Delete (ลบ), Execute (รันโปรแกรม)
-- **Access (การเข้าถึง):** ความสามารถในการเข้าถึงระบบ แอปพลิเคชัน หรือข้อมูลนั้น ๆ
+<section class="reading-concept-unit">
+<h4>Role (บทบาท):</h4>
+
+หน้าที่หรืองานที่ได้รับมอบหมายภายในองค์กร (เช่น HR Manager, Database Administrator, Security Analyst)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Permission (สิทธิ์ในการกระทำ):</h4>
+
+สิทธิ์เฉพาะเจาะจงที่อนุญาตให้กระทำต่อวัตถุหรือระบบ เช่น Read (อ่าน), Write (เขียน), Modify (แก้ไข), Delete (ลบ), Execute (รันโปรแกรม)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Access (การเข้าถึง):</h4>
+
+ความสามารถในการเข้าถึงระบบ แอปพลิเคชัน หรือข้อมูลนั้น ๆ
+
+</section>
 
 หลักการพื้นฐานคือ: <span class="reading-math-formula">Role → Job Function → Required Access</span> สิทธิ์ที่ได้รับจะต้องสะท้อนหน้าที่งานจริงเท่านั้น
 
@@ -54,7 +86,6 @@
 | **Database Administrator (DBA)** | จัดการฐานข้อมูลและโครงสร้างข้อมูล | สิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges |
 | **Security Analyst** | เฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก | สิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts |
 | **Finance Employee** | บันทึกและตรวจสอบธุรกรรมการเงิน | สิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง |
-
 <h3 id="topic-3-1-provisioning">3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์</h3>
 
 **Provisioning** คือกระบวนการเตรียม สร้าง และจัดสรรทรัพยากรตัวตนดิจิทัลและสิทธิ์การเข้าถึง เพื่อให้ผู้ใช้สามารถเริ่มต้นปฏิบัติงานได้:
@@ -63,25 +94,94 @@
 
 กิจกรรม Provisioning ต่อไปนี้เป็นตัวอย่าง ไม่ใช่ลำดับมาตรฐานตายตัว ก่อนให้สิทธิ์ต้องทราบหน้าที่งาน ความจำเป็น และได้รับการอนุมัติตามนโยบาย:
 
-1. **Creating User Account:** การสร้างบัญชีผู้ใช้งานใหม่ขึ้นในระบบระบุตัวตนกลาง (เช่น Active Directory หรือ Cloud Identity)
-2. **Assigning Unique Identity:** การกำหนดรหัสประจำตัวเฉพาะที่ไม่ซ้ำกับใคร เพื่อใช้ในการระบุตัวตนและติดตามความรับผิดชอบ (Accountability)
-3. **Assigning Roles:** การผูกบัญชีเข้ากับบทบาทหน้าที่ (Roles) ตามตำแหน่งงานที่ได้รับการอนุมัติจากฝ่ายทรัพยากรบุคคล
-4. **Granting Permissions:** การกำหนดสิทธิ์การอ่าน เขียน หรือแก้ไข ให้สอดคล้องกับบทบาทที่ได้รับมอบหมาย
-5. **Providing Application Access:** การเปิดช่องทางให้เข้าถึงระบบงานและซอฟต์แวร์ที่ต้องใช้ (เช่น ERP, CRM, Email)
-6. **Issuing Authentication Credentials:** การออกข้อมูลประจำตัวสำหรับยืนยันตัวตน เช่น รหัสผ่านเริ่มต้น, บัตรสมาร์ตการ์ด, หรือการลงทะเบียนโทเค็น MFA
+<section class="reading-concept-unit">
+<h4>Creating User Account:</h4>
 
+การสร้างบัญชีผู้ใช้งานใหม่ขึ้นในระบบระบุตัวตนกลาง (เช่น Active Directory หรือ Cloud Identity)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Assigning Unique Identity:</h4>
+
+การกำหนดรหัสประจำตัวเฉพาะที่ไม่ซ้ำกับใคร เพื่อใช้ในการระบุตัวตนและติดตามความรับผิดชอบ (Accountability)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Assigning Roles:</h4>
+
+การผูกบัญชีเข้ากับบทบาทหน้าที่ (Roles) ตามตำแหน่งงานที่ได้รับการอนุมัติจากฝ่ายทรัพยากรบุคคล
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Granting Permissions:</h4>
+
+การกำหนดสิทธิ์การอ่าน เขียน หรือแก้ไข ให้สอดคล้องกับบทบาทที่ได้รับมอบหมาย
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Providing Application Access:</h4>
+
+การเปิดช่องทางให้เข้าถึงระบบงานและซอฟต์แวร์ที่ต้องใช้ (เช่น ERP, CRM, Email)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Issuing Authentication Credentials:</h4>
+
+การออกข้อมูลประจำตัวสำหรับยืนยันตัวตน เช่น รหัสผ่านเริ่มต้น, บัตรสมาร์ตการ์ด, หรือการลงทะเบียนโทเค็น MFA
+
+</section>
 <h3 id="topic-3-1-access-review">3.1.4 Access Review &amp; 6 Core Audit Findings: การทบทวนสิทธิ์เป็นระยะ</h3>
 
 เมื่อระบบมีการใช้งานไปเป็นระยะเวลาหนึ่ง สิทธิ์การเข้าถึงมักจะเกิดความคลาดเคลื่อนจากความเป็นจริง ดังนั้นองค์กรจึงต้องมีการทำ **Periodic Access Review** (การทบทวนสิทธิ์เป็นระยะ) โดยให้ผู้จัดการสายงาน (Line Managers) และเจ้าของข้อมูล (Data Owners) ร่วมกันตรวจสอบว่าสิทธิ์ของผู้ใช้งานแต่ละคนยังคงถูกต้องและจำเป็นอยู่หรือไม่
 
 จากการตรวจสอบความปลอดภัย (Security Audits) พบข้อบกพร่องสำคัญ 6 ประการที่ข้อสอบมักนำมาตั้งคำถาม:
 
-1. **Excessive Permissions (สิทธิ์เกินความจำเป็น):** ผู้ใช้ได้รับสิทธิ์มากกว่าที่จำเป็นต้องใช้ในการทำงานตามหน้าที่
-2. **Unused Accounts (บัญชีที่ไม่ได้ใช้งาน):** บัญชีที่ไม่มีการล็อกอินเข้าใช้งานเป็นเวลานาน (เช่น เกิน 90 วัน) แต่ยังเปิดทิ้งไว้
-3. **Inappropriate Access (สิทธิ์ไม่เหมาะสมกับงาน):** ผู้ใช้มีสิทธิ์เข้าถึงระบบที่ไม่เกี่ยวข้องกับสายงานของตนเอง
-4. **Role Changes (การเปลี่ยนบทบาทแต่สิทธิ์ค้าง):** พนักงานย้ายตำแหน่งงานแล้ว แต่ยังคงมีสิทธิ์ของหน้าที่งานเดิมหลงเหลืออยู่
-5. **Privilege Accumulation / Privilege Creep (การสะสมสิทธิ์):** การที่สิทธิ์ในระบบค่อย ๆ พอกพูนขึ้นเรื่อย ๆ จากการย้ายแผนกหลายครั้ง
-6. **Orphaned Accounts (บัญชีไร้เจ้าของ):** บัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน
+<section class="reading-concept-unit">
+<h4>Excessive Permissions (สิทธิ์เกินความจำเป็น):</h4>
+
+ผู้ใช้ได้รับสิทธิ์มากกว่าที่จำเป็นต้องใช้ในการทำงานตามหน้าที่
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Unused Accounts (บัญชีที่ไม่ได้ใช้งาน):</h4>
+
+บัญชีที่ไม่มีการล็อกอินเข้าใช้งานเป็นเวลานาน (เช่น เกิน 90 วัน) แต่ยังเปิดทิ้งไว้
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Inappropriate Access (สิทธิ์ไม่เหมาะสมกับงาน):</h4>
+
+ผู้ใช้มีสิทธิ์เข้าถึงระบบที่ไม่เกี่ยวข้องกับสายงานของตนเอง
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Role Changes (การเปลี่ยนบทบาทแต่สิทธิ์ค้าง):</h4>
+
+พนักงานย้ายตำแหน่งงานแล้ว แต่ยังคงมีสิทธิ์ของหน้าที่งานเดิมหลงเหลืออยู่
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Privilege Accumulation / Privilege Creep (การสะสมสิทธิ์):</h4>
+
+การที่สิทธิ์ในระบบค่อย ๆ พอกพูนขึ้นเรื่อย ๆ จากการย้ายแผนกหลายครั้ง
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Orphaned Accounts (บัญชีไร้เจ้าของ):</h4>
+
+บัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน
+
+</section>
 
 <div class="reading-callout warning">
   <div class="reading-callout-header">
@@ -90,24 +190,69 @@
   </div>
   <p>พนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า <strong>Privilege Accumulation</strong> และต้องแก้ไขด้วยกระบวนการ <strong>Periodic Access Review</strong></p>
 </div>
-
 <h3 id="topic-3-1-deprovisioning">3.1.5 Deprovisioning: Triggers &amp; Revocation Practices</h3>
 
 **Deprovisioning** คือกระบวนการเพิกถอนสิทธิ์และระงับการเข้าถึงระบบเมื่อหมดความจำเป็นในการใช้งาน:
 
 สูตรจำสั้น: <span class="reading-math-formula">Deprovisioning = Remove / Disable Access</span>
 
-เหตุการณ์ที่กระตุ้นให้เกิด Deprovisioning (Triggers) มี 4 ประการ:
-- **Termination:** พนักงานถูกบอกเลิกจ้างหรือให้ออก (ต้องดำเนินการระงับสิทธิ์ทันทีเพื่อป้องกัน Insider Threat)
-- **Resignation:** พนักงานลาออกตามความสมัครใจ
-- **Role Change:** พนักงานเปลี่ยนบทบาทหรือย้ายฝ่าย (เพิกถอนสิทธิ์เดิมและปรับปรุงสิทธิ์ใหม่)
-- **Contract Expiration:** สัญญาจ้างของ Vendor หรือพนักงานสัญญาจ้างสิ้นสุดลง
+<h4 class="reading-concept-group-title">เหตุการณ์ที่กระตุ้นให้เกิด Deprovisioning (Triggers) มี 4 ประการ:</h4>
+<section class="reading-concept-unit">
+<h5>Termination:</h5>
 
-กิจกรรมหลักในการ Deprovisioning:
-- **Disable Account:** ปิดการใช้งานบัญชีโดยผู้ดูแล แตกต่างจาก Account Lockout ที่มักเกิดจากการลงชื่อเข้าใช้ผิดซ้ำ
-- **Revoke Application Access:** ถอดสิทธิ์การเข้าถึงแอปพลิเคชันและบริการคลาวด์ทั้งหมด
-- **Remove Group Memberships:** นำชื่อบัญชีออกจากกลุ่มสิทธิ์ต่าง ๆ
-- **Revoke Privileged Access:** ยกเลิกสิทธิ์ระดับผู้ดูแลระบบและคืนโทเค็นเข้าถึงทั้งหมด
+พนักงานถูกบอกเลิกจ้างหรือให้ออก (ต้องดำเนินการระงับสิทธิ์ทันทีเพื่อป้องกัน Insider Threat)
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Resignation:</h5>
+
+พนักงานลาออกตามความสมัครใจ
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Role Change:</h5>
+
+พนักงานเปลี่ยนบทบาทหรือย้ายฝ่าย (เพิกถอนสิทธิ์เดิมและปรับปรุงสิทธิ์ใหม่)
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Contract Expiration:</h5>
+
+สัญญาจ้างของ Vendor หรือพนักงานสัญญาจ้างสิ้นสุดลง
+
+</section>
+
+<h4 class="reading-concept-group-title">กิจกรรมหลักในการ Deprovisioning:</h4>
+<section class="reading-concept-unit">
+<h5>Disable Account:</h5>
+
+ปิดการใช้งานบัญชีโดยผู้ดูแล แตกต่างจาก Account Lockout ที่มักเกิดจากการลงชื่อเข้าใช้ผิดซ้ำ
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Revoke Application Access:</h5>
+
+ถอดสิทธิ์การเข้าถึงแอปพลิเคชันและบริการคลาวด์ทั้งหมด
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Remove Group Memberships:</h5>
+
+นำชื่อบัญชีออกจากกลุ่มสิทธิ์ต่าง ๆ
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Revoke Privileged Access:</h5>
+
+ยกเลิกสิทธิ์ระดับผู้ดูแลระบบและคืนโทเค็นเข้าถึงทั้งหมด
+
+</section>
 
 <div class="reading-callout tip">
   <div class="reading-callout-header">
@@ -116,34 +261,78 @@
   </div>
   <p>ในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ <strong>"Disable Account"</strong> (ปิดการใช้งาน) แทนการ <strong>"Delete Account"</strong> (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป</p>
 </div>
-
 <h3 id="topic-3-1-iam-frameworks">3.1.6 IAM Management Frameworks: NIST SP 800-63 vs CSF</h3>
 
 ในการบริหารจัดการระบบอัตลักษณ์ดิจิทัล องค์กรระดับสากลนิยมอ้างอิงกรอบมาตรฐานของ NIST โดยต้องแยกความแตกต่างระหว่างสองกรอบงานสำคัญ:
 
-1. **NIST SP 800-63 (Digital Identity Guidelines):** กรอบแนวทางเฉพาะทางสำหรับการบริหารจัดการอัตลักษณ์ดิจิทัล ซึ่งแบ่งออกเป็น 3 เสาหลัก/ฟังก์ชันที่ทำงานเกี่ยวข้องกัน:
-   - **Identity Proofing (SP 800-63A):** กระบวนการพิสูจน์และตรวจสอบความมีอยู่จริงและความถูกต้องของตัวบุคคลในโลกจริง ก่อนการออกข้อมูลประจำตัวดิจิทัล (Enrollment &amp; Identity Assurance Level: IAL)
-   - **Authentication (SP 800-63B):** กระบวนการตรวจสอบและยืนยันว่าผู้ที่กำลังเข้าใช้งานระบบคือผู้ครอบครองข้อมูลประจำตัว (Authenticator) ที่ถูกต้องจริง (Authenticator Assurance Level: AAL)
-   - **Federation (SP 800-63C):** กระบวนการส่งต่อข้อมูลอัตลักษณ์และการยืนยันตัวตนข้ามขอบเขตความไว้วางใจระหว่างองค์กรหรือระบบต่าง ๆ เช่น Single Sign-On (Federation Assurance Level: FAL)
+<section class="reading-concept-unit">
+<h4>NIST SP 800-63 (Digital Identity Guidelines):</h4>
 
-2. **NIST Cybersecurity Framework (CSF):** กรอบการบริหารความเสี่ยงทางไซเบอร์ในภาพรวมขององค์กร (Identify, Protect, Detect, Respond, Recover และ Govern ใน CSF 2.0) โดยมีหมวด Identity Management, Authentication, and Access Control (PR.AA) เป็นส่วนหนึ่งภายใต้ฟังก์ชัน Protect
+กรอบแนวทางเฉพาะทางสำหรับการบริหารจัดการอัตลักษณ์ดิจิทัล ซึ่งแบ่งออกเป็น 3 เสาหลัก/ฟังก์ชันที่ทำงานเกี่ยวข้องกัน:
+
+- **Identity Proofing (SP 800-63A):** กระบวนการพิสูจน์และตรวจสอบความมีอยู่จริงและความถูกต้องของตัวบุคคลในโลกจริง ก่อนการออกข้อมูลประจำตัวดิจิทัล (Enrollment &amp; Identity Assurance Level: IAL)
+- **Authentication (SP 800-63B):** กระบวนการตรวจสอบและยืนยันว่าผู้ที่กำลังเข้าใช้งานระบบคือผู้ครอบครองข้อมูลประจำตัว (Authenticator) ที่ถูกต้องจริง (Authenticator Assurance Level: AAL)
+- **Federation (SP 800-63C):** กระบวนการส่งต่อข้อมูลอัตลักษณ์และการยืนยันตัวตนข้ามขอบเขตความไว้วางใจระหว่างองค์กรหรือระบบต่าง ๆ เช่น Single Sign-On (Federation Assurance Level: FAL)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>NIST Cybersecurity Framework (CSF):</h4>
+
+กรอบการบริหารความเสี่ยงทางไซเบอร์ในภาพรวมขององค์กร (Identify, Protect, Detect, Respond, Recover และ Govern ใน CSF 2.0) โดยมีหมวด Identity Management, Authentication, and Access Control (PR.AA) เป็นส่วนหนึ่งภายใต้ฟังก์ชัน Protect
+
+</section>
 
 <div class="reading-semantic-diagram" data-diagram="nistSp80063Framework"></div>
-
 <h3 id="topic-3-1-iam-tools">3.1.7 IAM Technology Stack: Directory Services, IdPs &amp; Access Platforms</h3>
 
 สถาปัตยกรรมเทคโนโลยีที่ใช้สนับสนุนงาน IAM ประกอบด้วย 3 องค์ประกอบหลักที่ทำงานร่วมกัน:
 
-1. **Directory Services (บริการไดเรกทอรี):**
-   - ฐานข้อมูลกลางที่จัดเก็บโครงสร้างผู้ใช้งาน บัญชี กลุ่ม และสิทธิ์ภายในองค์กร
-   - ตัวอย่างบริการไดเรกทอรี: Microsoft Active Directory Domain Services หรือไดเรกทอรีที่ให้บริการ LDAP โดย LDAP (Lightweight Directory Access Protocol) เป็นโพรโทคอลสำหรับเข้าถึงบริการไดเรกทอรี ไม่ใช่ชื่อผลิตภัณฑ์เดียวกับ AD
+<section class="reading-concept-unit">
+<h4>Directory Services (บริการไดเรกทอรี):</h4>
 
-2. **Identity Providers - IdPs (ผู้ให้บริการยืนยันตัวตน):**
-   - ระบบศูนย์กลางที่ทำหน้าที่ให้บริการสร้าง จัดการ และตรวจสอบข้อมูลประจำตัวดิจิทัลสำหรับการยืนยันตัวตน
-   - ตัวอย่าง: Okta, Azure Active Directory / Microsoft Entra ID, Ping Identity
+- ฐานข้อมูลกลางที่จัดเก็บโครงสร้างผู้ใช้งาน บัญชี กลุ่ม และสิทธิ์ภายในองค์กร
+- ตัวอย่างบริการไดเรกทอรี: Microsoft Active Directory Domain Services หรือไดเรกทอรีที่ให้บริการ LDAP โดย LDAP (Lightweight Directory Access Protocol) เป็นโพรโทคอลสำหรับเข้าถึงบริการไดเรกทอรี ไม่ใช่ชื่อผลิตภัณฑ์เดียวกับ AD
 
-3. **Access Management Platforms (แพลตฟอร์มบริหารจัดการการเข้าถึง):**
-   - ระบบที่ทำหน้าที่บังคับใช้นโยบายการควบคุมสิทธิ์ จัดการ Single Sign-On (SSO) และ Multi-Factor Authentication (MFA)
+</section>
+
+<section class="reading-concept-unit">
+<h4>Identity Providers - IdPs (ผู้ให้บริการยืนยันตัวตน):</h4>
+
+- ระบบศูนย์กลางที่ทำหน้าที่ให้บริการสร้าง จัดการ และตรวจสอบข้อมูลประจำตัวดิจิทัลสำหรับการยืนยันตัวตน
+- ตัวอย่าง: Okta, Azure Active Directory / Microsoft Entra ID, Ping Identity
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Access Management Platforms (แพลตฟอร์มบริหารจัดการการเข้าถึง):</h4>
+
+- ระบบที่ทำหน้าที่บังคับใช้นโยบายการควบคุมสิทธิ์ จัดการ Single Sign-On (SSO) และ Multi-Factor Authentication (MFA)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Modern Identity Federation &amp; SSO Protocols (โพรโทคอลการเชื่อมโยงระบบตัวตนดิจิทัล):</h4>
+
+ในการเชื่อมต่อระบบ Identity ข้ามองค์กร (Federation) หรือการทำ Single Sign-On (SSO) บนเว็บคลาวด์ยุคใหม่ อาศัย 3 โพรโทคอลมาตรฐานที่ออกสอบบ่อย:
+
+| โพรโทคอล (Protocol) | หน้าที่หลัก (Primary Purpose) | รูปแบบข้อมูล (Data Format) | คำตอบข้อสอบ (Exam Takeaway) |
+|---|---|---|---|
+| **SAML 2.0**<br>(Security Assertion Markup Language) | **Authentication &amp; Authorization** ในระดับองค์กร | XML (SAML Assertion) | ใช้ทำ Enterprise Web SSO ข้ามโดเมนระหว่าง IdP และ SP (เช่น เข้าแอปองค์กรด้วยบัญชีบริษัท) |
+| **OAuth 2.0**<br>(Open Authorization) | **Authorization (การอนุญาตสิทธิ์)** เท่านั้น | JSON / Access Token | ให้สิทธิ์แอปเข้าถึง API แทนผู้ใช้ โดยไม่ต้องบอกรหัสผ่าน (Delegated Access เช่น อนุญาตให้แอปอ่าน Google Calendar) |
+| **OpenID Connect (OIDC)** | **Authentication (การพิสูจน์ตัวตน)** บนเว็บและมือถือ | JSON Web Token (JWT / id_token) | เลเยอร์ยืนยันตัวตนที่สร้างครอบบน OAuth 2.0 (Identity Layer over OAuth 2.0 เช่น ล็อกอินเว็บด้วยปุ่ม "Sign in with Google") |
+
+<div class="reading-callout tip">
+  <div class="reading-callout-header">
+    <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    <span>สูตรจำแยก 3 โพรโทคอลสำหรับข้อสอบ</span>
+  </div>
+  <p><strong>SAML 2.0</strong> = XML + Enterprise SSO (องค์กรใหญ่กับแอปคลาวด์)</p>
+  <p><strong>OAuth 2.0</strong> = Authorization / Delegated API Access (ให้สิทธิ์แอป ไม่ใช่พิสูจน์ตัวตน)</p>
+  <p><strong>OpenID Connect (OIDC)</strong> = Authentication on top of OAuth 2.0 (ยืนยันตัวตนด้วย JSON Web Token)</p>
+</div>
+
+</section>
 
 <div class="reading-callout tip">
   <div class="reading-callout-header">
@@ -153,56 +342,103 @@
   <p><strong>Authentication (AuthN):</strong> ตอบคำถามว่า <em>"พิสูจน์ว่าคุณเป็นบุคคลที่กล่าวอ้าง"</em> (Prove the claimed identity) — ตรวจสอบยืนยันตัวตน</p>
   <p><strong>Authorization (AuthZ):</strong> ตอบคำถามว่า <em>"คุณได้รับอนุญาตให้ทำอะไรได้บ้าง?"</em> (What are you allowed to do?) — ตรวจสอบและให้สิทธิ์</p>
 </div>
-
 <h3 id="topic-3-1-least-privilege">3.1.8 Principle of Least Privilege (PoLP): หลักสิทธิ์ขั้นต่ำที่จำเป็น</h3>
 
 **Principle of Least Privilege (PoLP)** คือหลักการพื้นฐานที่สำคัญที่สุดประการหนึ่งในการรักษาความมั่นคงปลอดภัยทางไซเบอร์:
 
 > **นิยาม:** ผู้ใช้ บัญชีบริการ หรือโปรแกรม ต้องได้รับสิทธิ์ในการเข้าถึงและกระทำต่อทรัพยากรเฉพาะเท่าที่จำเป็นอย่างยิ่งยวดต่อการปฏิบัติหน้าที่ตามที่ได้รับมอบหมายเท่านั้น (Minimum Necessary Access)
 
-แนวทางการนำไปปฏิบัติ (Implementation Steps):
-- **Role-based permissions:** กำหนดสิทธิ์ให้ตรงตามบทบาทงานจริง ไม่ให้สิทธิ์แบบเหมารวม
-- **Regular reviews:** ตรวจสอบทบทวนสิทธิ์การเข้าถึงอย่างสม่ำเสมอ
-- **Strict enforcement:** บังคับใช้นโยบายอย่างเคร่งครัดและไม่อนุญาตให้ใช้บัญชีระดับผู้ดูแลระบบในการทำงานประจำวัน
+<h4 class="reading-concept-group-title">แนวทางการนำไปปฏิบัติ (Implementation Steps):</h4>
+<section class="reading-concept-unit">
+<h5>Role-based permissions:</h5>
 
-ประโยชน์สำคัญ 4 ประการของ Least Privilege:
-1. **Mitigates Compromised Accounts:** ลดผลกระทบและความเสียหายเมื่อบัญชีผู้ใช้ถูกแฮกหรือถูกขโมยข้อมูลประจำตัว
-2. **Limits Insider Threat Blast Radius:** จำกัดขอบเขตความเสียหายที่เกิดจากภัยคุกคามภายในองค์กร
-3. **Aids Audit and Compliance:** สนับสนุนการตรวจสอบและทำให้เป็นไปตามข้อกำหนดของมาตรฐานสากล
-4. **Promotes System Stability:** ป้องกันการแก้ไขหรือลบการตั้งค่าระบบโดยไม่ตั้งใจ ช่วยให้ระบบมีเสถียรภาพ
+กำหนดสิทธิ์ให้ตรงตามบทบาทงานจริง ไม่ให้สิทธิ์แบบเหมารวม
 
 </section>
 
-<section class="reading-objective-section" id="obj-3-2">
+<section class="reading-concept-unit">
+<h5>Regular reviews:</h5>
+
+ตรวจสอบทบทวนสิทธิ์การเข้าถึงอย่างสม่ำเสมอ
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Strict enforcement:</h5>
+
+บังคับใช้นโยบายอย่างเคร่งครัดและไม่อนุญาตให้ใช้บัญชีระดับผู้ดูแลระบบในการทำงานประจำวัน
+
+</section>
+
+<h4 class="reading-concept-group-title">ประโยชน์สำคัญ 4 ประการของ Least Privilege:</h4>
+<section class="reading-concept-unit">
+<h5>Mitigates Compromised Accounts:</h5>
+
+ลดผลกระทบและความเสียหายเมื่อบัญชีผู้ใช้ถูกแฮกหรือถูกขโมยข้อมูลประจำตัว
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Limits Insider Threat Blast Radius:</h5>
+
+จำกัดขอบเขตความเสียหายที่เกิดจากภัยคุกคามภายในองค์กร
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Aids Audit and Compliance:</h5>
+
+สนับสนุนการตรวจสอบและทำให้เป็นไปตามข้อกำหนดของมาตรฐานสากล
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Promotes System Stability:</h5>
+
+ป้องกันการแก้ไขหรือลบการตั้งค่าระบบโดยไม่ตั้งใจ ช่วยให้ระบบมีเสถียรภาพ
+
+</section>
+
+</section>
+
+<section class="reading-objective-section reading-structured-objective" id="obj-3-2">
 
 ## Objective 3.2: Understand Logical Access Controls
 
 <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>การควบคุมการเข้าถึงเชิงตรรกะคือกลไกทางซอฟต์แวร์และนโยบายที่กำกับดูแลการเข้าถึงทรัพยากรดิจิทัล:</p>
-
 <h3 id="topic-3-2-logical-controls">3.2.1 Logical vs. Physical Access Controls: สถาปัตยกรรมการควบคุม</h3>
 
 การควบคุมการเข้าถึงในระบบความมั่นคงปลอดภัยแบ่งออกเป็น 2 ประเภทใหญ่:
 
-- **Logical Access Controls (การควบคุมการเข้าถึงเชิงตรรกะ):** คือกลไกทางเทคโนโลยี ฮาร์ดแวร์ ซอฟต์แวร์ และนโยบายที่ใช้เพื่อจำกัดและควบคุมการเข้าถึงทรัพยากรในรูปแบบดิจิทัล เช่น ระบบคอมพิวเตอร์ เครือข่าย ข้อมูล ฐานข้อมูล และแอปพลิเคชัน (ครอบคลุมรหัสผ่าน, รายการควบคุมการเข้าถึง ACL, การเข้ารหัสข้อมูล, ไฟร์วอลล์)
-- **Physical Access Controls (การควบคุมการเข้าถึงทางกายภาพ):** คืออุปสรรคและมาตรการที่ใช้ป้องกันการเข้าถึงสถานที่ อาคาร ห้องเซิร์ฟเวอร์ หรืออุปกรณ์ฮาร์ดแวร์โดยตรง (เช่น รั้ว ประตูล็อก การ์ดรักษาความปลอดภัย กล้องวงจรปิด)
+<section class="reading-concept-unit">
+<h4>Logical Access Controls (การควบคุมการเข้าถึงเชิงตรรกะ):</h4>
 
+คือกลไกทางเทคโนโลยี ฮาร์ดแวร์ ซอฟต์แวร์ และนโยบายที่ใช้เพื่อจำกัดและควบคุมการเข้าถึงทรัพยากรในรูปแบบดิจิทัล เช่น ระบบคอมพิวเตอร์ เครือข่าย ข้อมูล ฐานข้อมูล และแอปพลิเคชัน (ครอบคลุมรหัสผ่าน, รายการควบคุมการเข้าถึง ACL, การเข้ารหัสข้อมูล, ไฟร์วอลล์)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Physical Access Controls (การควบคุมการเข้าถึงทางกายภาพ):</h4>
+
+คืออุปสรรคและมาตรการที่ใช้ป้องกันการเข้าถึงสถานที่ อาคาร ห้องเซิร์ฟเวอร์ หรืออุปกรณ์ฮาร์ดแวร์โดยตรง (เช่น รั้ว ประตูล็อก การ์ดรักษาความปลอดภัย กล้องวงจรปิด)
+
+</section>
 <h3 id="topic-3-2-sod">3.2.2 Segregation of Duties (SoD): การแบ่งแยกหน้าที่ความรับผิดชอบ</h3>
 
 **Segregation of Duties (SoD)** หรือ **Separation of Duties** คือหลักการควบคุมภายในที่กำหนดให้กระบวนการทำงานที่มีความสำคัญอย่างยิ่งยวด (Critical Tasks) จะต้องถูกแบ่งขั้นตอนออกเป็นส่วน ๆ และกระจายให้ผู้ปฏิบัติงานมากกว่าหนึ่งคนทำร่วมกัน:
 
 > **กฎทองของ SoD:** หนึ่งกระบวนการสำคัญ ต้องใช้คนมากกว่าหนึ่งคนรับผิดชอบ (<span class="reading-math-formula">Critical Process → Multiple People</span>) และผู้สร้างรายการต้องไม่สามารถอนุมัติรายการของตนเองได้
 
-วัตถุประสงค์หลักของ SoD:
+<h4 class="reading-concept-group-title">วัตถุประสงค์หลักของ SoD:</h4>
 - ป้องกันการทุจริตและการยักยอกเงิน (Prevent Fraud)
 - ป้องกันข้อผิดพลาดจากการปฏิบัติงาน (Prevent Errors)
 - ป้องกันการกระทำโดยไม่ได้รับอนุญาต (Prevent Unauthorized Actions)
 - ลดความเสี่ยงจากภัยคุกคามภายใน (Mitigate Insider Threats)
 
-ตัวอย่างกระบวนการ 3 ขั้นตอนทางการเงิน (3-Stage Workflow):
+<h4 class="reading-concept-group-title">ตัวอย่างกระบวนการ 3 ขั้นตอนทางการเงิน (3-Stage Workflow):</h4>
 1. **Purchasing / Request (การร้องขอซื้อ):** พนักงานคนที่หนึ่ง (Employee A) กรอกใบขอสั่งซื้อสินค้า
 2. **Payment Processing / Approval (การอนุมัติการจ่ายเงิน):** ผู้จัดการหรือพนักงานคนที่สอง (Employee B) เป็นผู้ตรวจสอบและอนุมัติการจ่ายเงิน
 3. **Record Keeping / Reconciliation (การบันทึกบัญชีและกระทบยอด):** เจ้าหน้าที่บัญชีหรือพนักงานคนที่สาม (Employee C) เป็นผู้ลงบันทึกและกระทบยอดบัญชี
-
 <h3 id="topic-3-2-polp-vs-sod">3.2.3 Least Privilege vs. Segregation of Duties: การเปรียบเทียบเชิงลึก</h3>
 
 แม้ว่าทั้งสองหลักการจะมุ่งเน้นการจำกัดความเสี่ยง แต่มีมิติการควบคุมที่แตกต่างกันอย่างชัดเจน:
@@ -216,51 +452,179 @@
 | **Primary Risk Mitigated** | บัญชีถูกแฮกแล้วสร้างความเสียหายลุกลาม (Blast Radius) | การทุจริต การฉ้อโกง และความผิดพลาดโดยคนเพียงคนเดียว (Fraud / Abuse) |
 | **Keyword Trigger** | *"Minimum necessary", "Excessive permissions"* | *"Single person controls entire process", "Approving own request"* |
 
+<div class="reading-callout info">
+  <div class="reading-callout-header">
+    <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    <span>ความสัมพันธ์แบบไตรภาคี: Least Privilege vs. Need to Know vs. Separation of Duties</span>
+  </div>
+  <p><strong>Least Privilege (สิทธิ์ต่ำสุด):</strong> จำกัดระดับสิทธิ์หรือสิทธิพิเศษ (Privileges/Permissions) เท่าที่จำเป็นต่อการปฏิบัติงาน (เช่น ให้สิทธิ์ Read-Only แทนที่จะเป็น Admin)</p>
+  <p><strong>Need to Know (จำเป็นต้องทราบ):</strong> จำกัดการเข้าถึง <em>เนื้อหาข้อมูลเฉพาะส่วน (Specific Data Content)</em> แม้ผู้ใช้จะมีระดับ Clearance สูงก็ตาม หากงานชิ้นนั้นไม่จำเป็นต้องรู้ข้อมูลลับชุดนี้ ก็จะไม่มีสิทธิ์เปิดอ่าน</p>
+  <p><strong>Separation of Duties (การแบ่งแยกหน้าที่):</strong> แบ่งขั้นตอนกระบวนการสำคัญให้ต้องใช้ <em>บุคคลมากกว่าหนึ่งคน</em> ในการดำเนินการจนเสร็จสิ้น เพื่อป้องกันการทุจริต</p>
+</div>
 <h3 id="topic-3-2-dac">3.2.4 Discretionary Access Control (DAC): การควบคุมตามดุลยพินิจของเจ้าของ</h3>
 
 **DAC (Discretionary Access Control)** เป็นโมเดลการควบคุมการเข้าถึงที่กระจายอำนาจการตัดสินใจให้แก่ **"เจ้าของทรัพยากร" (Resource Owner)**:
 
-- **ผู้มีอำนาจตัดสินใจ:** เจ้าของไฟล์หรือผู้สร้างทรัพยากร (Resource Owner)
-- **กลไกการทำงาน:** เจ้าของสามารถกำหนดและเปลี่ยนแปลงสิทธิ์ (Permissions เช่น Read, Write, Execute, Deny) ให้กับผู้ใช้อื่นได้ตามความพึงพอใจของตนเอง โดยมักใช้รายการควบคุมการเข้าถึง (**Access Control Lists: ACLs**) กำกับไว้ที่ตัวไฟล์
-- **ข้อดี:** ยืดหยุ่นสูง (Flexible), ใช้งานง่าย, ไม่ต้องพึ่งพาผู้ดูแลระบบส่วนกลางในทุกขั้นตอน
-- **ข้อเสีย:** มีความเสี่ยงด้านความปลอดภัยสูง เจ้าของอาจเผลอเปิดสิทธิ์ที่หละหลวม และไม่สามารถป้องกันโปรแกรมประสงค์ร้าย (Trojan horse) ที่แอบอ้างสิทธิ์ของผู้ใช้ไปแก้ไขไฟล์ได้
-- **ตัวอย่าง:** สิทธิ์การแชร์ไฟล์ใน Windows (NTFS Permissions), สิทธิ์ไฟล์ในระบบปฏิบัติการ Linux/Unix
+<section class="reading-concept-unit">
+<h4>ผู้มีอำนาจตัดสินใจ:</h4>
 
+เจ้าของไฟล์หรือผู้สร้างทรัพยากร (Resource Owner)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>กลไกการทำงาน:</h4>
+
+เจ้าของสามารถกำหนดและเปลี่ยนแปลงสิทธิ์ (Permissions เช่น Read, Write, Execute, Deny) ให้กับผู้ใช้อื่นได้ตามความพึงพอใจของตนเอง โดยมักใช้รายการควบคุมการเข้าถึง (**Access Control Lists: ACLs**) กำกับไว้ที่ตัวไฟล์
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ข้อดี:</h4>
+
+ยืดหยุ่นสูง (Flexible), ใช้งานง่าย, ไม่ต้องพึ่งพาผู้ดูแลระบบส่วนกลางในทุกขั้นตอน
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ข้อเสีย:</h4>
+
+มีความเสี่ยงด้านความปลอดภัยสูง เจ้าของอาจเผลอเปิดสิทธิ์ที่หละหลวม และไม่สามารถป้องกันโปรแกรมประสงค์ร้าย (Trojan horse) ที่แอบอ้างสิทธิ์ของผู้ใช้ไปแก้ไขไฟล์ได้
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ตัวอย่าง:</h4>
+
+สิทธิ์การแชร์ไฟล์ใน Windows (NTFS Permissions), สิทธิ์ไฟล์ในระบบปฏิบัติการ Linux/Unix
+
+</section>
 <h3 id="topic-3-2-mac">3.2.5 Mandatory Access Control (MAC): การควบคุมแบบบังคับตามป้ายกำกับ</h3>
 
 **MAC (Mandatory Access Control)** เป็นโมเดลการควบคุมการเข้าถึงที่บังคับใช้นโยบายส่วนกลาง โดยควบคุมจาก **"นโยบายของระบบส่วนกลาง" (Central Authority &amp; System Policy)**:
 
-- **ผู้มีอำนาจตัดสินใจ:** นโยบายความมั่นคงปลอดภัยส่วนกลางของระบบ (Central Authority) ผู้ใช้หรือเจ้าของไฟล์ไม่มีสิทธิ์เปลี่ยนแปลงการตั้งค่าได้เอง
-- **กลไกการทำงาน:** บังคับใช้ผ่านการเปรียบเทียบระหว่าง:
-  1. **Security Classification / Label (ป้ายกำกับระดับความลับ):** ติดอยู่กับทรัพยากร/วัตถุ (Object) เช่น Unclassified, Confidential, Secret, Top Secret
-  2. **Security Clearance (ระดับความไว้วางใจ):** มอบให้แก่ตัวผู้ใช้งาน (Subject) ผ่านการตรวจสอบประวัติอย่างละเอียด
-  > **ข้อสังเกตสำคัญสำหรับข้อสอบ (Exam Core Distinction):** การมีระดับความไว้วางใจเพียงอย่างเดียว (**Security Clearance alone**) ไม่ได้ให้อำนาจเข้าถึงข้อมูลลับโดยอัตโนมัติ ผู้ใช้ต้องมี **"ความจำเป็นในการรับรู้" (Need-to-Know)** ที่ถูกต้องชอบธรรมและผ่านเกณฑ์นโยบายการควบคุมการเข้าถึงด้วยเสมอ (Security clearance alone does not automatically authorize access; the user must also have a legitimate Need-to-Know and satisfy applicable access-control policy) ซึ่งเป็นการนำหลัก Least Privilege มาบังคับใช้ร่วมกับ MAC
-- **ข้อดี:** ช่วยจำกัดการเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต แต่ไม่รับประกันว่าจะป้องกันข้อมูลรั่วไหลได้ทุกกรณี
-- **ข้อเสีย:** ขาดความยืดหยุ่น (Inflexible), มีความซับซ้อนในการบริหารจัดการสูงมาก และมีต้นทุนการดำเนินงานสูง
-- **ตัวอย่าง:** ระบบเครือข่ายทางทหาร, หน่วยงานความมั่นคงของรัฐบาล, ระบบปฏิบัติการ SELinux
+<section class="reading-concept-unit">
+<h4>ผู้มีอำนาจตัดสินใจ:</h4>
 
+นโยบายความมั่นคงปลอดภัยส่วนกลางของระบบ (Central Authority) ผู้ใช้หรือเจ้าของไฟล์ไม่มีสิทธิ์เปลี่ยนแปลงการตั้งค่าได้เอง
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>กลไกการทำงาน:</h4>
+
+บังคับใช้ผ่านการเปรียบเทียบระหว่าง:
+
+<section class="reading-concept-unit">
+<h5>Security Classification / Label (ป้ายกำกับระดับความลับ):</h5>
+
+ติดอยู่กับทรัพยากร/วัตถุ (Object) เช่น Unclassified, Confidential, Secret, Top Secret
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Security Clearance (ระดับความไว้วางใจ):</h5>
+
+มอบให้แก่ตัวผู้ใช้งาน (Subject) ผ่านการตรวจสอบประวัติอย่างละเอียด
+
+</section>
+
+> **ข้อสังเกตสำคัญสำหรับข้อสอบ (Exam Core Distinction):** การมีระดับความไว้วางใจเพียงอย่างเดียว (**Security Clearance alone**) ไม่ได้ให้อำนาจเข้าถึงข้อมูลลับโดยอัตโนมัติ ผู้ใช้ต้องมี **"ความจำเป็นในการรับรู้" (Need-to-Know)** ที่ถูกต้องชอบธรรมและผ่านเกณฑ์นโยบายการควบคุมการเข้าถึงด้วยเสมอ (Security clearance alone does not automatically authorize access; the user must also have a legitimate Need-to-Know and satisfy applicable access-control policy) ซึ่งเป็นการนำหลัก Least Privilege มาบังคับใช้ร่วมกับ MAC
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ข้อดี:</h4>
+
+ช่วยจำกัดการเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต แต่ไม่รับประกันว่าจะป้องกันข้อมูลรั่วไหลได้ทุกกรณี
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ข้อเสีย:</h4>
+
+ขาดความยืดหยุ่น (Inflexible), มีความซับซ้อนในการบริหารจัดการสูงมาก และมีต้นทุนการดำเนินงานสูง
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ตัวอย่าง:</h4>
+
+ระบบเครือข่ายทางทหาร, หน่วยงานความมั่นคงของรัฐบาล, ระบบปฏิบัติการ SELinux
+
+</section>
 <h3 id="topic-3-2-rbac">3.2.6 Role-Based Access Control (RBAC): การควบคุมตามบทบาทหน้าที่</h3>
 
 **RBAC (Role-Based Access Control)** เป็นโมเดลการควบคุมที่นิยมใช้งานมากที่สุดในองค์กรธุรกิจยุคปัจจุบัน:
 
-- **ผู้มีอำนาจตัดสินใจ:** บทบาทหน้าที่การทำงานที่กำหนดไว้ล่วงหน้า (**Predefined Job Roles**)
-- **กลไกการทำงาน:** สิทธิ์การเข้าถึง (Permissions) จะถูกผูกไว้กับบทบาทหน้าที่ (Roles เช่น บัญชี, วิศวกร, ผู้จัดการ) จากนั้นผู้ใช้งาน (Users) จะถูกกำหนดให้อยู่ในบทบาทที่สอดคล้องกับตำแหน่งงานจริงของตน
-- **ข้อดี:** บริหารจัดการง่าย มีความสอดคล้อง (Consistency), รองรับการขยายตัวขององค์กรได้ดี (Scalability), เมื่อมีพนักงานใหม่เข้ามาเพียงแค่ผูกเข้ากับ Role ก็สามารถเริ่มงานได้ทันที
-- **ข้อเสีย:** หากองค์กรมีบทบาทงานที่ซับซ้อนเกินไป อาจเกิดปัญหาบทบาทงอกงามจนควบคุมยาก (Role Explosion) หรือหากกำหนดบทบาทกว้างเกินไปผู้ใช้อาจได้รับสิทธิ์เกินจำเป็น
-- **ตัวอย่าง:** ระบบจัดการสิทธิ์ในโรงพยาบาล (แพทย์, พยาบาล, เภสัชกร, การเงิน), ระบบ ERP ขององค์กรธุรกิจ
+<section class="reading-concept-unit">
+<h4>ผู้มีอำนาจตัดสินใจ:</h4>
 
+บทบาทหน้าที่การทำงานที่กำหนดไว้ล่วงหน้า (**Predefined Job Roles**)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>กลไกการทำงาน:</h4>
+
+สิทธิ์การเข้าถึง (Permissions) จะถูกผูกไว้กับบทบาทหน้าที่ (Roles เช่น บัญชี, วิศวกร, ผู้จัดการ) จากนั้นผู้ใช้งาน (Users) จะถูกกำหนดให้อยู่ในบทบาทที่สอดคล้องกับตำแหน่งงานจริงของตน
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ข้อดี:</h4>
+
+บริหารจัดการง่าย มีความสอดคล้อง (Consistency), รองรับการขยายตัวขององค์กรได้ดี (Scalability), เมื่อมีพนักงานใหม่เข้ามาเพียงแค่ผูกเข้ากับ Role ก็สามารถเริ่มงานได้ทันที
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ข้อเสีย:</h4>
+
+หากองค์กรมีบทบาทงานที่ซับซ้อนเกินไป อาจเกิดปัญหาบทบาทงอกงามจนควบคุมยาก (Role Explosion) หรือหากกำหนดบทบาทกว้างเกินไปผู้ใช้อาจได้รับสิทธิ์เกินจำเป็น
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ตัวอย่าง:</h4>
+
+ระบบจัดการสิทธิ์ในโรงพยาบาล (แพทย์, พยาบาล, เภสัชกร, การเงิน), ระบบ ERP ขององค์กรธุรกิจ
+
+</section>
 <h3 id="topic-3-2-abac">3.2.7 Attribute-Based Access Control (ABAC): การควบคุมตามคุณลักษณะและบริบท</h3>
 
 **ABAC (Attribute-Based Access Control)** เป็นโมเดลการควบคุมการเข้าถึงยุคใหม่ที่มีความละเอียด (Fine-grained) และยืดหยุ่นสูงสุด โดยประเมินจาก **คุณลักษณะ (Attributes)** หลากหลายมิติร่วมกับนโยบายเชิงตรรกะแบบไดนามิก:
 
-- **ผู้มีอำนาจตัดสินใจ:** เครื่องยนต์ประมวลผลนโยบาย (Policy Engine) ที่นำเอาค่าคุณลักษณะและเงื่อนไขสภาพแวดล้อมมาประเมินร่วมกันในขณะร้องขอ
-- **ตัวอย่างคุณลักษณะและบริบทที่นโยบายอาจใช้ (ไม่ใช่หมวดหมู่ตายตัว):**
-  1. **Subject Attributes (คุณลักษณะของผู้ใช้):** แผนก, ตำแหน่งงาน, ระดับตำแหน่ง, สถานะการจ้างงาน
-  2. **Object / Resource Attributes (คุณลักษณะของทรัพยากร):** ระดับชั้นความลับของไฟล์, แผนกเจ้าของข้อมูล, ประเภทของไฟล์
-  3. **Environmental Attributes (คุณลักษณะของสภาพแวดล้อม):** เวลาที่ร้องขอ (Time of day), วันในสัปดาห์, พิกัดสถานที่ (Location / Geolocation), เครือข่ายที่เชื่อมต่อ (Subnet / Corporate IP)
-  4. **Device Attributes (คุณลักษณะของอุปกรณ์):** ประเภทของอุปกรณ์ (Corporate Laptop vs. Personal Mobile), สถานะการเข้ารหัสเครื่อง, สถานะการติดตั้งซอฟต์แวร์ป้องกันไวรัส
-- **Requested Action (การกระทำที่ร้องขอ):** ต้องประเมินร่วมกับคุณลักษณะและนโยบาย เช่น Read อาจอนุญาต แต่ Delete ไม่อนุญาต แม้เป็นผู้ใช้และไฟล์เดียวกัน
-- **ตัวอย่างนโยบาย:** *"อนุญาตให้อ่าน (Read) ไฟล์สัญญาทางการเงินได้ ก็ต่อเมื่อ ผู้ใช้สังกัดแผนก Finance (Subject) และเชื่อมต่อผ่านคอมพิวเตอร์ของบริษัทที่มีการเข้ารหัส (Device) ในเวลาทำการ 08:30 - 17:00 น. (Environment) เท่านั้น"*
+<section class="reading-concept-unit">
+<h4>ผู้มีอำนาจตัดสินใจ:</h4>
+
+เครื่องยนต์ประมวลผลนโยบาย (Policy Engine) ที่นำเอาค่าคุณลักษณะและเงื่อนไขสภาพแวดล้อมมาประเมินร่วมกันในขณะร้องขอ
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ตัวอย่างคุณลักษณะและบริบทที่นโยบายอาจใช้ (ไม่ใช่หมวดหมู่ตายตัว):</h4>
+
+- **Subject Attributes (คุณลักษณะของผู้ใช้):** แผนก, ตำแหน่งงาน, ระดับตำแหน่ง, สถานะการจ้างงาน
+- **Object / Resource Attributes (คุณลักษณะของทรัพยากร):** ระดับชั้นความลับของไฟล์, แผนกเจ้าของข้อมูล, ประเภทของไฟล์
+- **Environmental Attributes (คุณลักษณะของสภาพแวดล้อม):** เวลาที่ร้องขอ (Time of day), วันในสัปดาห์, พิกัดสถานที่ (Location / Geolocation), เครือข่ายที่เชื่อมต่อ (Subnet / Corporate IP)
+- **Device Attributes (คุณลักษณะของอุปกรณ์):** ประเภทของอุปกรณ์ (Corporate Laptop vs. Personal Mobile), สถานะการเข้ารหัสเครื่อง, สถานะการติดตั้งซอฟต์แวร์ป้องกันไวรัส
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Requested Action (การกระทำที่ร้องขอ):</h4>
+
+ต้องประเมินร่วมกับคุณลักษณะและนโยบาย เช่น Read อาจอนุญาต แต่ Delete ไม่อนุญาต แม้เป็นผู้ใช้และไฟล์เดียวกัน
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ตัวอย่างนโยบาย:</h4>
+
+*"อนุญาตให้อ่าน (Read) ไฟล์สัญญาทางการเงินได้ ก็ต่อเมื่อ ผู้ใช้สังกัดแผนก Finance (Subject) และเชื่อมต่อผ่านคอมพิวเตอร์ของบริษัทที่มีการเข้ารหัส (Device) ในเวลาทำการ 08:30 - 17:00 น. (Environment) เท่านั้น"*
+
+</section>
 
 <div class="reading-callout tip">
   <div class="reading-callout-header">
@@ -269,7 +633,6 @@
   </div>
   <p>ในเนื้อหาสไลด์การเรียนรู้เบื้องต้นได้ระบุโครงสร้างและคุณลักษณะของ ABAC ไว้อย่างชัดเจน แต่ไม่ได้ระบุรายละเอียดข้อดี-ข้อเสีย ในทางวิชาการและการสอบ ISC2 CC จุดเด่นสำคัญที่สุดของ ABAC คือ <strong>ความละเอียดระดับสูง (Fine-grained Context-Aware Access)</strong> และความสามารถในการประเมินเงื่อนไขเวลาและสถานที่ ส่วนข้อจำกัดคือ <strong>ความซับซ้อนในการประมวลผลนโยบาย (Processing Overhead)</strong> และการตรวจสอบความถูกต้องของกฎที่ซับซ้อน</p>
 </div>
-
 <h3 id="topic-3-2-models-matrix">3.2.8 Master Access Control Models Comparison Matrix: สรุปเปรียบเทียบ 4 โมเดล</h3>
 
 การจดจำความแตกต่างระหว่างโมเดลการควบคุมการเข้าถึงทั้ง 4 แบบ เป็นจุดออกข้อสอบที่พบบ่อยที่สุดใน Domain 3:
@@ -285,12 +648,11 @@
 
 </section>
 
-<section class="reading-objective-section reading-review-section" id="domain-3-review">
+<section class="reading-objective-section reading-review-section reading-structured-objective" id="domain-3-review">
 
 ## Domain 3 Summary, Key Distinctions &amp; Review Scenarios
 
 ส่วนนี้เป็นชุดเครื่องมือทบทวนและแบบฝึกปฏิบัติสถานการณ์จำลองระดับ Domain-wide เพื่อเสริมสร้างความเข้าใจเชิงลึกสำหรับทั้ง 2 วัตถุประสงค์ใน Domain 3:
-
 <h3 id="topic-3-review-scenarios">Domain 3 Review &amp; Practical Analysis</h3>
 <span id="topic-3-review-distinctions" class="reading-topic-anchor" aria-hidden="true"></span>
 <span id="topic-3-review-traps" class="reading-topic-anchor" aria-hidden="true"></span>
@@ -442,20 +804,20 @@
 
 #### 2. ข้อสังเกตและจุดจำสำคัญสำหรับข้อสอบ (Exam Traps)
 
-1. ถ้าข้อสอบถามถึง **"ยังไม่ได้กำหนดบทบาทและสิทธิ์ที่งานต้องใช้ ก่อนให้สิทธิ์เข้าถึง (Grant Access) ควรทำอะไร"** → ให้เลือก **Define Roles and Responsibilities**
-2. ถ้าข้อสอบถามถึง **"กระบวนการสร้างบัญชี กำหนดบทบาท และให้สิทธิ์เข้าถึงเริ่มต้น"** → ให้เลือก **Provisioning**
-3. ถ้าข้อสอบถามถึง **"สิทธิ์เก่าสะสมเพิ่มขึ้นเรื่อย ๆ เมื่อพนักงานเปลี่ยนบทบาทหรือย้ายฝ่าย"** → ให้เลือก **Privilege Accumulation / Privilege Creep**
-4. ถ้าข้อสอบถามถึง **"บัญชีของพนักงานที่ลาออกไปแล้วแต่ยังค้างอยู่ในระบบ"** → ให้เลือก **Orphaned Accounts**
-5. ถ้าข้อสอบถามถึง **"ผู้สร้างรายการไม่สามารถอนุมัติรายการของตนเองได้"** → ให้เลือก **Segregation of Duties (SoD)**
-6. ถ้าข้อสอบถามถึง **"หนึ่งกระบวนการสำคัญต้องใช้คนมากกว่าหนึ่งคนรับผิดชอบ"** → ให้เลือก **Segregation of Duties (SoD)**
-7. ถ้าข้อสอบถามถึง **"จำกัดสิทธิ์ให้มีเฉพาะเท่าที่จำเป็นอย่างยิ่งยวดต่องาน"** → ให้เลือก **Principle of Least Privilege (PoLP)**
-8. ถ้าข้อสอบถามถึง **"เจ้าของไฟล์เป็นผู้ตัดสินใจกำหนดสิทธิ์การเข้าถึงด้วยตนเอง"** → ตอบ **DAC (Discretionary Access Control)**
-9. ถ้าข้อสอบถามถึง **"การควบคุมการเข้าถึงโดยใช้ Security Classification, Labels และ Clearance"** → ตอบ **MAC (Mandatory Access Control)**
-10. ถ้าข้อสอบถามถึง **"การควบคุมที่ผู้ใช้หรือเจ้าของไฟล์ไม่มีสิทธิ์เปลี่ยนแปลงการตั้งค่าได้เอง"** → ตอบ **MAC (Mandatory Access Control)**
-11. ถ้าข้อสอบถามถึง **"การให้สิทธิ์เข้าถึงตามหน้าที่การทำงาน (Job Function / Role)"** → ตอบ **RBAC (Role-Based Access Control)**
-12. ถ้าข้อสอบถามถึง **"การควบคุมการเข้าถึงที่ประเมินเวลา สถานที่ อุปกรณ์ และแผนกแบบไดนามิก"** → ตอบ **ABAC (Attribute-Based Access Control)**
-13. ถ้าข้อสอบถามถึง **"การเพิกถอนสิทธิ์พนักงานที่ลาออก ควรทำอย่างไรเป็นแนวปฏิบัติที่ดีที่สุด"** → ตอบ **Disable Account** (ไม่ใช่ Delete Account ทันที)
-14. ถ้าข้อสอบถามถึง **"การตรวจสอบความมีอยู่จริงของบุคคลในโลกจริงก่อนออกรหัสดิจิทัล"** → ตอบ **Identity Proofing (NIST SP 800-63A)**
+- ถ้าข้อสอบถามถึง **"ยังไม่ได้กำหนดบทบาทและสิทธิ์ที่งานต้องใช้ ก่อนให้สิทธิ์เข้าถึง (Grant Access) ควรทำอะไร"** → ให้เลือก **Define Roles and Responsibilities**
+- ถ้าข้อสอบถามถึง **"กระบวนการสร้างบัญชี กำหนดบทบาท และให้สิทธิ์เข้าถึงเริ่มต้น"** → ให้เลือก **Provisioning**
+- ถ้าข้อสอบถามถึง **"สิทธิ์เก่าสะสมเพิ่มขึ้นเรื่อย ๆ เมื่อพนักงานเปลี่ยนบทบาทหรือย้ายฝ่าย"** → ให้เลือก **Privilege Accumulation / Privilege Creep**
+- ถ้าข้อสอบถามถึง **"บัญชีของพนักงานที่ลาออกไปแล้วแต่ยังค้างอยู่ในระบบ"** → ให้เลือก **Orphaned Accounts**
+- ถ้าข้อสอบถามถึง **"ผู้สร้างรายการไม่สามารถอนุมัติรายการของตนเองได้"** → ให้เลือก **Segregation of Duties (SoD)**
+- ถ้าข้อสอบถามถึง **"หนึ่งกระบวนการสำคัญต้องใช้คนมากกว่าหนึ่งคนรับผิดชอบ"** → ให้เลือก **Segregation of Duties (SoD)**
+- ถ้าข้อสอบถามถึง **"จำกัดสิทธิ์ให้มีเฉพาะเท่าที่จำเป็นอย่างยิ่งยวดต่องาน"** → ให้เลือก **Principle of Least Privilege (PoLP)**
+- ถ้าข้อสอบถามถึง **"เจ้าของไฟล์เป็นผู้ตัดสินใจกำหนดสิทธิ์การเข้าถึงด้วยตนเอง"** → ตอบ **DAC (Discretionary Access Control)**
+- ถ้าข้อสอบถามถึง **"การควบคุมการเข้าถึงโดยใช้ Security Classification, Labels และ Clearance"** → ตอบ **MAC (Mandatory Access Control)**
+- ถ้าข้อสอบถามถึง **"การควบคุมที่ผู้ใช้หรือเจ้าของไฟล์ไม่มีสิทธิ์เปลี่ยนแปลงการตั้งค่าได้เอง"** → ตอบ **MAC (Mandatory Access Control)**
+- ถ้าข้อสอบถามถึง **"การให้สิทธิ์เข้าถึงตามหน้าที่การทำงาน (Job Function / Role)"** → ตอบ **RBAC (Role-Based Access Control)**
+- ถ้าข้อสอบถามถึง **"การควบคุมการเข้าถึงที่ประเมินเวลา สถานที่ อุปกรณ์ และแผนกแบบไดนามิก"** → ตอบ **ABAC (Attribute-Based Access Control)**
+- ถ้าข้อสอบถามถึง **"การเพิกถอนสิทธิ์พนักงานที่ลาออก ควรทำอย่างไรเป็นแนวปฏิบัติที่ดีที่สุด"** → ตอบ **Disable Account** (ไม่ใช่ Delete Account ทันที)
+- ถ้าข้อสอบถามถึง **"การตรวจสอบความมีอยู่จริงของบุคคลในโลกจริงก่อนออกรหัสดิจิทัล"** → ตอบ **Identity Proofing (NIST SP 800-63A)**
 
 #### 3. ตารางสรุปคำสำคัญบ่งชี้แนวคิด (Keyword-to-Concept Matrix)
 

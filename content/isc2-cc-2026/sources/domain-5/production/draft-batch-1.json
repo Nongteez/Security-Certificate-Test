@@ -1,0 +1,552 @@
+[
+  {
+    "id": 1001,
+    "authoringId": "AT01-1",
+    "family": "AT01",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-001",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Classification and labeling",
+    "knowledgeTarget": "Classification assigns a category under the organization’s sensitivity scheme. Labeling communicates that category through a marking or metadata; neither operation by itself enforces access.",
+    "misconceptionTarget": "Label changes sensitivity; confidential always means all employees.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Supply the scheme and handling rule; category names are not universal.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R01",
+      "R22"
+    ],
+    "source": "T:7-19; I03,I04",
+    "stem": [
+      "A data owner assigns a report to the Restricted category. An analyst then adds a Restricted metadata tag to the file. Which statement correctly distinguishes these actions?",
+      "เจ้าของข้อมูลจัดรายงานเป็นประเภท Restricted จากนั้นนักวิเคราะห์เพิ่มป้าย Metadata ว่า Restricted ให้ไฟล์ ข้อใดแยกสองการกระทำนี้ได้ถูกต้อง?"
+    ],
+    "choices": [
+      [
+        "The owner classifies the data; the analyst labels it",
+        "เจ้าของจัดประเภทข้อมูล ส่วนนักวิเคราะห์ติดป้าย",
+        "Classification determines the category; labeling communicates the category already assigned.",
+        "Classification กำหนดประเภท ส่วน Labeling แสดงประเภทที่กำหนดไว้แล้ว"
+      ],
+      [
+        "The owner labels the data; the analyst classifies it",
+        "เจ้าของติดป้าย ส่วนนักวิเคราะห์จัดประเภท",
+        "This reverses assignment of the category and attachment of its indicator.",
+        "ข้อนี้สลับการกำหนดประเภทกับการติดตัวบ่งชี้ประเภท"
+      ],
+      [
+        "Both actions enforce the file’s access permissions",
+        "ทั้งสองการกระทำบังคับสิทธิ์เข้าถึงไฟล์",
+        "A category or tag can guide enforcement, but neither described action establishes permissions by itself.",
+        "ประเภทและป้ายอาจช่วยกำหนดการควบคุม แต่การกระทำที่ระบุไม่ได้ตั้งสิทธิ์โดยตัวมันเอง"
+      ],
+      [
+        "Both actions encrypt the contents of the report",
+        "ทั้งสองการกระทำเข้ารหัสเนื้อหารายงาน",
+        "Categorizing and tagging describe handling requirements; they do not transform content into ciphertext.",
+        "การจัดประเภทและติดป้ายสื่อข้อกำหนดการจัดการ ไม่ได้แปลงเนื้อหาเป็น Ciphertext"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Classification determines the category; labeling communicates the category already assigned.",
+    "assessedDecision": "Separate category assignment from category indication",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1002,
+    "authoringId": "AT01-2",
+    "family": "AT01",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-001",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Classification and labeling",
+    "knowledgeTarget": "Classification assigns a category under the organization’s sensitivity scheme. Labeling communicates that category through a marking or metadata; neither operation by itself enforces access.",
+    "misconceptionTarget": "Label changes sensitivity; confidential always means all employees.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Supply the scheme and handling rule; category names are not universal.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R01",
+      "R22"
+    ],
+    "source": "T:7-19; I03,I04",
+    "stem": [
+      "Policy defines Internal data as employee-only and Restricted data as accessible only to named project members. A draft contains both types, and policy requires mixed documents to follow the more restrictive category. How should the analyst handle the draft?",
+      "นโยบายกำหนดว่า Internal ใช้ได้เฉพาะพนักงาน ส่วน Restricted ใช้ได้เฉพาะสมาชิกโครงการที่ระบุชื่อ ร่างเอกสารมีทั้งสองประเภทและนโยบายให้ใช้ประเภทที่เข้มงวดกว่า นักวิเคราะห์ควรจัดการอย่างไร?"
+    ],
+    "choices": [
+      [
+        "Apply Restricted handling to the complete draft",
+        "ใช้ข้อกำหนด Restricted กับร่างทั้งหมด",
+        "The supplied mixed-document rule requires the more restrictive category for this draft.",
+        "กฎสำหรับเอกสารผสมที่ระบุให้ใช้ประเภทที่เข้มงวดกว่าสำหรับร่างนี้"
+      ],
+      [
+        "Apply Internal handling because both parts are corporate data",
+        "ใช้ข้อกำหนด Internal เพราะทั้งสองส่วนเป็นข้อมูลบริษัท",
+        "Employee-wide access would exceed the named-project restriction on part of the document.",
+        "การให้พนักงานทั่วไปเข้าถึงเกินขอบเขตสมาชิกโครงการที่กำหนดไว้ในข้อมูลบางส่วน"
+      ],
+      [
+        "Apply the category covering the larger portion of the draft",
+        "ใช้ประเภทของข้อมูลที่มีสัดส่วนมากกว่าในร่าง",
+        "The stated rule is based on the more restrictive content, not its proportion.",
+        "กฎที่ระบุพิจารณาเนื้อหาที่จำกัดกว่า ไม่ใช่สัดส่วนของเนื้อหา"
+      ],
+      [
+        "Apply separate labels while leaving the whole file employee-accessible",
+        "ติดป้ายแต่ละส่วนโดยให้พนักงานทั้งหมดเข้าถึงไฟล์ได้",
+        "Labels alone do not satisfy the document-wide handling rule or limit access.",
+        "ป้ายเพียงอย่างเดียวไม่ทำให้เป็นไปตามกฎจัดการทั้งเอกสารหรือจำกัดการเข้าถึง"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The supplied mixed-document rule requires the more restrictive category for this draft.",
+    "assessedDecision": "Apply an explicitly supplied mixed-classification rule",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1003,
+    "authoringId": "AT02-1",
+    "family": "AT02",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-002",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Masking and approved use",
+    "knowledgeTarget": "Masking hides or replaces selected values while retaining information needed for an authorized purpose. It does not inherently anonymize a dataset or authorize disclosure to another service.",
+    "misconceptionTarget": "Last four digits authenticate; masked records always anonymous.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "State exactly which fields may be shared and with whom; public AI use is governed by policy.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R02",
+      "R22"
+    ],
+    "source": "T:19-23; I05",
+    "stem": [
+      "A support screen replaces all but the last four digits of an account number with X characters. Staff can still identify the relevant account record. Which data-handling technique is illustrated?",
+      "หน้าจอฝ่ายสนับสนุนแทนเลขบัญชีทุกหลักยกเว้นสี่หลักท้ายด้วย X โดยพนักงานยังเลือกบันทึกบัญชีที่เกี่ยวข้องได้ ตัวอย่างนี้ใช้เทคนิคใด?"
+    ],
+    "choices": [
+      [
+        "Data masking",
+        "การปกปิดข้อมูลบางส่วน (Data masking)",
+        "Masking conceals selected values while retaining information needed for the support task.",
+        "Masking ปกปิดค่าบางส่วนโดยคงข้อมูลที่จำเป็นต่องานสนับสนุน"
+      ],
+      [
+        "Symmetric encryption",
+        "การเข้ารหัสแบบ Symmetric",
+        "Encryption would create keyed ciphertext; the described screen shows selected original digits instead.",
+        "Encryption สร้าง Ciphertext ด้วยกุญแจ แต่หน้าจอนี้แสดงหลักเดิมที่เลือกไว้"
+      ],
+      [
+        "Cryptographic hashing",
+        "การคำนวณ Cryptographic hash",
+        "A digest is derived from input; replacing selected digits with X is not digest computation.",
+        "Digest คำนวณจากข้อมูลนำเข้า การแทนบางหลักด้วย X ไม่ใช่การคำนวณ Digest"
+      ],
+      [
+        "Media sanitization",
+        "การทำ Media sanitization",
+        "Sanitization addresses recovery of target data from media, rather than limiting a screen display.",
+        "Sanitization จัดการการกู้ข้อมูลจากสื่อ ไม่ใช่เพียงจำกัดสิ่งที่แสดงบนหน้าจอ"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Masking conceals selected values while retaining information needed for the support task.",
+    "assessedDecision": "Recognize purpose-preserving concealment of displayed values",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1004,
+    "authoringId": "AT02-2",
+    "family": "AT02",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-002",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Masking and approved use",
+    "knowledgeTarget": "Masking hides or replaces selected values while retaining information needed for an authorized purpose. It does not inherently anonymize a dataset or authorize disclosure to another service.",
+    "misconceptionTarget": "Last four digits authenticate; masked records always anonymous.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "State exactly which fields may be shared and with whom; public AI use is governed by policy.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R02",
+      "R22"
+    ],
+    "source": "T:19-23; I05",
+    "stem": [
+      "An approved AI service may receive support examples only after all customer identifiers are removed. An analyst masks the customer-number column, but names remain in free-text comments. What should the analyst do before submission?",
+      "บริการ AI ที่อนุมัติรับตัวอย่างงานสนับสนุนได้หลังลบข้อมูลระบุตัวลูกค้าทั้งหมดแล้ว นักวิเคราะห์ปกปิดคอลัมน์เลขลูกค้า แต่ยังมีชื่อในความคิดเห็นแบบ Free text ควรทำอะไรก่อนส่ง?"
+    ],
+    "choices": [
+      [
+        "Review the comments and remove the remaining identifiers",
+        "ตรวจความคิดเห็นและลบข้อมูลระบุตัวที่ยังเหลือ",
+        "The rule covers all identifiers, including free text; masking one column does not meet it.",
+        "กฎครอบคลุมข้อมูลระบุตัวทั้งหมดรวม Free text การปกปิดคอลัมน์เดียวจึงยังไม่พอ"
+      ],
+      [
+        "Submit because the structured identifier column is masked",
+        "ส่งได้เพราะคอลัมน์ระบุตัวแบบมีโครงสร้างถูกปกปิดแล้ว",
+        "Names in comments still violate the stated condition for submitting examples.",
+        "ชื่อในความคิดเห็นยังละเมิดเงื่อนไขการส่งตัวอย่างที่ระบุ"
+      ],
+      [
+        "Encrypt the upload and leave the comments unchanged",
+        "เข้ารหัสการส่งโดยคงความคิดเห็นเดิม",
+        "Transport protection does not remove identifiers that the receiving service can read.",
+        "การป้องกันระหว่างส่งไม่ได้ลบข้อมูลระบุตัวที่บริการปลายทางอ่านได้"
+      ],
+      [
+        "Replace the customer numbers with stable codes and submit",
+        "แทนเลขลูกค้าด้วยรหัสคงที่แล้วส่ง",
+        "Changing the identifier column again does not address the remaining names in free text.",
+        "การแก้คอลัมน์เลขลูกค้าอีกครั้งไม่จัดการชื่อที่เหลือใน Free text"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The rule covers all identifiers, including free text; masking one column does not meet it.",
+    "assessedDecision": "Apply an explicit all-identifiers sharing constraint to unstructured data",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1005,
+    "authoringId": "AT03-1",
+    "family": "AT03",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-003",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Sanitization and cryptographic erase",
+    "knowledgeTarget": "Choose sanitization for the medium, sensitivity and reuse plan; ordinary deletion is not equivalent. Cryptographic erase depends on sound prior encryption and eliminating recoverable relevant key copies, followed by verification/validation.",
+    "misconceptionTarget": "Deleting a file or public key suffices; any damaged media is sanitized.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Do not equate SSD with one mandatory method or physical damage with assured destruction; consider backups and escrow.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R03"
+    ],
+    "source": "T:23-27; I06",
+    "stem": [
+      "An SSD containing confidential files will be reused internally. Policy requires a validated purge method that preserves reuse. The device supports an approved sanitize operation. Which handling plan meets the requirement?",
+      "SSD ที่มีไฟล์ลับจะนำกลับมาใช้ภายใน นโยบายกำหนดให้ใช้วิธี Purge ที่ตรวจยืนยันประสิทธิผลและยังใช้สื่อซ้ำได้ อุปกรณ์รองรับคำสั่ง Sanitize ที่อนุมัติแล้ว แผนใดตรงข้อกำหนด?"
+    ],
+    "choices": [
+      [
+        "Run the approved operation and validate its recorded outcome",
+        "เรียกคำสั่งที่อนุมัติและตรวจยืนยันประสิทธิผลจากผลที่บันทึก",
+        "The supported purge operation and outcome validation address both sanitization and reuse requirements.",
+        "คำสั่ง Purge ที่รองรับพร้อมการตรวจผลตอบทั้งข้อกำหนด Sanitization และการใช้ซ้ำ"
+      ],
+      [
+        "Quick-format the drive and confirm the old folders are hidden",
+        "Quick format แล้วตรวจว่าไม่เห็นโฟลเดอร์เดิม",
+        "A missing directory listing does not establish the required purge of recoverable data.",
+        "การไม่เห็นรายการโฟลเดอร์ไม่ได้ยืนยันว่า Purge ข้อมูลที่กู้คืนได้ตามที่ต้องการ"
+      ],
+      [
+        "Delete the confidential files and perform a normal file search",
+        "ลบไฟล์ลับแล้วค้นหาไฟล์ตามปกติ",
+        "Ordinary deletion and search do not demonstrate that the required sanitization method completed.",
+        "การลบและค้นหาปกติไม่ได้พิสูจน์ว่าวิธี Sanitization ที่กำหนดเสร็จสมบูรณ์"
+      ],
+      [
+        "Physically destroy the storage chips and document destruction",
+        "ทำลายชิปเก็บข้อมูลและบันทึกการทำลาย",
+        "Destruction prevents the intended reuse, so it fails one of the stated requirements.",
+        "การทำลายทำให้ใช้สื่อซ้ำตามแผนไม่ได้ จึงไม่ตรงข้อกำหนดหนึ่งของโจทย์"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The supported purge operation and outcome validation address both sanitization and reuse requirements.",
+    "assessedDecision": "Select verified sanitization compatible with required reuse",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1006,
+    "authoringId": "AT03-2",
+    "family": "AT03",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-003",
+    "cognitive": "E",
+    "difficulty": "intermediate",
+    "stemType": "scenario",
+    "concept": "Sanitization and cryptographic erase",
+    "knowledgeTarget": "Choose sanitization for the medium, sensitivity and reuse plan; ordinary deletion is not equivalent. Cryptographic erase depends on sound prior encryption and eliminating recoverable relevant key copies, followed by verification/validation.",
+    "misconceptionTarget": "Deleting a file or public key suffices; any damaged media is sanitized.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "Do not equate SSD with one mandatory method or physical damage with assured destruction; consider backups and escrow.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R03"
+    ],
+    "source": "T:23-27; I06",
+    "stem": [
+      "A drive was encrypted before sensitive data was stored. Its data-encryption key is removed from the drive, but a recoverable copy remains in an escrow system. Has cryptographic erase been established?",
+      "ไดรฟ์ถูกเข้ารหัสก่อนเก็บข้อมูลสำคัญ กุญแจเข้ารหัสข้อมูลถูกลบออกจากไดรฟ์ แต่ยังมีสำเนาที่กู้คืนได้ในระบบ Escrow ยืนยันว่าเกิด Cryptographic erase แล้วได้หรือไม่?"
+    ],
+    "choices": [
+      [
+        "No; the retained key copy can still enable decryption",
+        "ยังไม่ได้ เพราะสำเนากุญแจที่เก็บไว้ยังอาจถอดรหัสได้",
+        "Cryptographic erase must address recoverable copies of relevant keys; the escrow copy preserves a decryption path.",
+        "Cryptographic erase ต้องจัดการสำเนากุญแจที่เกี่ยวข้องซึ่งกู้คืนได้ สำเนา Escrow ยังเป็นช่องทางถอดรหัส"
+      ],
+      [
+        "Yes; removing the local key is sufficient for encrypted media",
+        "ได้ เพราะลบกุญแจในสื่อที่เข้ารหัสแล้วก็พอ",
+        "Local removal alone does not eliminate the recoverable escrowed copy.",
+        "การลบเฉพาะในไดรฟ์ไม่ได้กำจัดสำเนา Escrow ที่กู้คืนได้"
+      ],
+      [
+        "Yes; encryption before storage makes later key retention irrelevant",
+        "ได้ เพราะเข้ารหัสก่อนเก็บแล้วจึงไม่ต้องสนใจกุญแจที่เก็บไว้",
+        "Prior encryption is necessary context, but a surviving usable key can still recover plaintext.",
+        "การเข้ารหัสก่อนเก็บเป็นเงื่อนไขสำคัญ แต่กุญแจที่ยังใช้ได้อาจกู้ Plaintext ได้"
+      ],
+      [
+        "No; cryptographic erase requires destruction of the drive itself",
+        "ยังไม่ได้ เพราะ Cryptographic erase ต้องทำลายไดรฟ์ด้วย",
+        "Cryptographic erase depends on key sanitization, not a universal requirement to physically destroy the drive.",
+        "Cryptographic erase อาศัยการ Sanitization กุญแจ ไม่ได้บังคับให้ทำลายไดรฟ์ทางกายภาพเสมอ"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Cryptographic erase must address recoverable copies of relevant keys; the escrow copy preserves a decryption path.",
+    "assessedDecision": "Evaluate surviving escrow keys rather than treating encryption as erasure",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1007,
+    "authoringId": "AT04-1",
+    "family": "AT04",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-004",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Cryptographic functions and key roles",
+    "knowledgeTarget": "Symmetric encryption is efficient for bulk protection. In public-key encryption the recipient’s public key protects content for the recipient’s private key; a signature is generated with the signer’s private key and verified with the matching trusted public key.",
+    "misconceptionTarget": "Signer verification hides content; sharing private keys solves distribution.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Encryption alone does not imply integrity/authenticity. Signing is not generically private-key encryption. TLS versions differ.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R04",
+      "R05",
+      "R17"
+    ],
+    "source": "T:27-55; I07,I11-I15",
+    "stem": [
+      "A sender must encrypt a short message so only the intended recipient can decrypt it using a public-key encryption scheme. Which key should the sender use to encrypt the message?",
+      "ผู้ส่งต้องเข้ารหัสข้อความสั้นด้วย Public-key encryption เพื่อให้ผู้รับที่ตั้งใจไว้เท่านั้นถอดรหัสได้ ผู้ส่งควรใช้กุญแจใดเข้ารหัส?"
+    ],
+    "choices": [
+      [
+        "The recipient’s public encryption key",
+        "Public encryption key ของผู้รับ",
+        "The matching recipient private key performs decryption and remains protected by the recipient.",
+        "Private Key ที่สอดคล้องกันของผู้รับใช้ถอดรหัสและต้องได้รับการป้องกันโดยผู้รับ"
+      ],
+      [
+        "The sender’s private signing key",
+        "Private signing key ของผู้ส่ง",
+        "Signing supports verification of origin and integrity; it does not provide recipient-only message confidentiality.",
+        "การลงนามช่วยตรวจที่มาและ Integrity ไม่ได้ทำให้มีเพียงผู้รับเท่านั้นที่อ่านข้อความได้"
+      ],
+      [
+        "The sender’s public encryption key",
+        "Public encryption key ของผู้ส่ง",
+        "That key would protect content for the sender’s private key, rather than the intended recipient’s key.",
+        "กุญแจนี้ปกป้องข้อความสำหรับ Private Key ของผู้ส่ง แทนที่จะเป็นของผู้รับที่ตั้งใจไว้"
+      ],
+      [
+        "The recipient’s private decryption key",
+        "Private decryption key ของผู้รับ",
+        "The sender should not obtain the recipient’s secret private key to encrypt this message.",
+        "ผู้ส่งไม่ควรขอ Private Key ลับของผู้รับเพื่อเข้ารหัสข้อความนี้"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The matching recipient private key performs decryption and remains protected by the recipient.",
+    "assessedDecision": "Distinguish recipient encryption from signing and private-key disclosure",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1008,
+    "authoringId": "AT05-1",
+    "family": "AT05",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-005",
+    "cognitive": "D",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Trustworthy digest comparison",
+    "knowledgeTarget": "A digest comparison can show whether a file matches a trusted reference; it does not by itself identify the person who changed it. Collision resistance means finding distinct matching inputs is infeasible, not that collisions cannot exist.",
+    "misconceptionTarget": "Hashing is reversible encryption; collision impossible; fast unsalted hash is sufficient for passwords.",
+    "decision": "Interpret evidence without overclaiming",
+    "ambiguityControl": "Reference digest must be authenticated; MD5 unsuitable when collision resistance is required; passwords need dedicated salted costed hashing.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R19",
+      "R18",
+      "R07"
+    ],
+    "source": "N:90-102; S:101-140; I19-I22",
+    "stem": [
+      "An analyst compares a downloaded file with a SHA-256 digest obtained through the publisher’s authenticated channel. The digests differ. Which conclusion is supported by this evidence alone?",
+      "นักวิเคราะห์เปรียบเทียบไฟล์ที่ดาวน์โหลดกับ SHA-256 digest ที่ได้รับผ่านช่องทางยืนยันตัวตนของผู้เผยแพร่ ค่า Digest ไม่ตรงกัน หลักฐานนี้เพียงอย่างเดียวสนับสนุนข้อสรุปใด?"
+    ],
+    "choices": [
+      [
+        "The downloaded file does not match the referenced content",
+        "ไฟล์ที่ดาวน์โหลดไม่ตรงกับเนื้อหาที่ใช้อ้างอิง",
+        "A trusted-reference mismatch establishes a content difference, but not its cause or the actor responsible.",
+        "ค่าที่ไม่ตรงกับแหล่งอ้างอิงที่เชื่อถือได้บอกว่าเนื้อหาต่างกัน แต่ยังไม่บอกสาเหตุหรือผู้กระทำ"
+      ],
+      [
+        "The file was deliberately modified by an external attacker",
+        "ผู้โจมตีภายนอกจงใจแก้ไขไฟล์",
+        "Mismatch alone does not distinguish malicious modification from corruption or a different version.",
+        "ค่าไม่ตรงกันอย่างเดียวแยกการแก้ไขโดยเจตนาร้ายออกจากความเสียหายหรือคนละเวอร์ชันไม่ได้"
+      ],
+      [
+        "The publisher’s private signing key has been compromised",
+        "Private signing key ของผู้เผยแพร่ถูกยึดครองแล้ว",
+        "The comparison does not establish any compromise of a signing key.",
+        "การเปรียบเทียบนี้ไม่ได้พิสูจน์ว่า Signing Key ถูกยึดครอง"
+      ],
+      [
+        "SHA-256 has produced a collision for these two files",
+        "SHA-256 เกิด Collision สำหรับไฟล์สองชุดนี้",
+        "A collision would involve equal digests for different inputs; this observation is unequal digests.",
+        "Collision คือข้อมูลต่างกันให้ Digest เท่ากัน แต่สิ่งที่พบคือ Digest ไม่เท่ากัน"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "A trusted-reference mismatch establishes a content difference, but not its cause or the actor responsible.",
+    "assessedDecision": "Bound an integrity inference to what a trusted mismatch establishes",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1009,
+    "authoringId": "AT06-1",
+    "family": "AT06",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-006",
+    "cognitive": "A",
+    "difficulty": "foundational",
+    "stemType": "conceptual",
+    "concept": "Post-quantum foundations",
+    "knowledgeTarget": "Quantum-resistant cryptography addresses attacks from quantum-capable adversaries against vulnerable cryptographic schemes. It includes key establishment and signature approaches usable on conventional computers.",
+    "misconceptionTarget": "PQC requires quantum hardware; changing bulk AES alone replaces vulnerable public-key dependencies.",
+    "decision": "Recognize the functional purpose",
+    "ambiguityControl": "Inventory vulnerable public-key dependencies, evaluate approved replacements and test migration; no prediction of quantum arrival or universal deadline.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R08",
+      "R01"
+    ],
+    "source": "External supplementation for missing local unit (F07)",
+    "stem": [
+      "What is the purpose of post-quantum cryptography in protecting organizational systems?",
+      "Post-quantum cryptography มีวัตถุประสงค์ใดในการปกป้องระบบขององค์กร?"
+    ],
+    "choices": [
+      [
+        "Use cryptographic methods designed to resist quantum-capable attacks",
+        "ใช้วิธี Cryptography ที่ออกแบบให้ต้านทานการโจมตีด้วยคอมพิวเตอร์ควอนตัม",
+        "PQC addresses quantum threats through resistant cryptographic schemes, including key establishment and signatures.",
+        "PQC รับมือภัยควอนตัมด้วยกลไกที่ต้านทาน เช่น การสร้างกุญแจร่วมและลายเซ็น"
+      ],
+      [
+        "Replace conventional computers with quantum computers for encryption",
+        "เปลี่ยนคอมพิวเตอร์ปกติเป็นคอมพิวเตอร์ควอนตัมเพื่อเข้ารหัส",
+        "PQC schemes can run on conventional computers; quantum hardware is not their defining requirement.",
+        "กลไก PQC ทำงานบนคอมพิวเตอร์ปกติได้ ไม่ได้กำหนดว่าต้องใช้ฮาร์ดแวร์ควอนตัม"
+      ],
+      [
+        "Require quantum communication channels for every encrypted session",
+        "กำหนดให้ทุก Session ที่เข้ารหัสใช้ช่องสื่อสารควอนตัม",
+        "Quantum communication is distinct from post-quantum algorithms used on ordinary systems.",
+        "การสื่อสารควอนตัมต่างจากอัลกอริทึม Post-quantum ที่ใช้บนระบบทั่วไป"
+      ],
+      [
+        "Remove the need to manage cryptographic keys during migration",
+        "ยกเลิกความจำเป็นในการจัดการกุญแจระหว่างการย้ายระบบ",
+        "Resistant algorithms still depend on appropriate key management and deployment.",
+        "อัลกอริทึมที่ต้านทานยังต้องอาศัยการจัดการกุญแจและการติดตั้งที่เหมาะสม"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "PQC addresses quantum threats through resistant cryptographic schemes, including key establishment and signatures.",
+    "assessedDecision": "Recognize the purpose of PQC without quantum-hardware confusion",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1010,
+    "authoringId": "AT06-2",
+    "family": "AT06",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-006",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Post-quantum foundations",
+    "knowledgeTarget": "Quantum-resistant cryptography addresses attacks from quantum-capable adversaries against vulnerable cryptographic schemes. It includes key establishment and signature approaches usable on conventional computers.",
+    "misconceptionTarget": "PQC requires quantum hardware; changing bulk AES alone replaces vulnerable public-key dependencies.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Inventory vulnerable public-key dependencies, evaluate approved replacements and test migration; no prediction of quantum arrival or universal deadline.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R08",
+      "R01"
+    ],
+    "source": "External supplementation for missing local unit (F07)",
+    "stem": [
+      "A company stores records that must remain confidential for many years. Its bulk encryption uses AES, but its key-establishment process uses a quantum-vulnerable public-key scheme. What should its migration assessment include?",
+      "บริษัทเก็บบันทึกที่ต้องเป็นความลับอีกหลายปี โดยเข้ารหัสข้อมูลจำนวนมากด้วย AES แต่กระบวนการสร้างกุญแจใช้ Public-key scheme ที่เสี่ยงต่อควอนตัม การประเมินการย้ายระบบควรรวมอะไร?"
+    ],
+    "choices": [
+      [
+        "Identify the vulnerable key-establishment dependency and assess approved replacements",
+        "ระบุส่วนสร้างกุญแจที่มีความเสี่ยงและประเมินวิธีทดแทนที่อนุมัติ",
+        "The public-key dependency remains relevant even when bulk data uses a symmetric cipher.",
+        "ส่วน Public-key ยังต้องได้รับการประเมินแม้ข้อมูลจำนวนมากใช้ Symmetric cipher"
+      ],
+      [
+        "Treat the use of AES as evidence that the whole system is quantum-resistant",
+        "ถือว่าการใช้ AES พิสูจน์ว่าระบบทั้งหมดต้านทานควอนตัมแล้ว",
+        "The bulk cipher does not establish resistance of the separate key-establishment mechanism.",
+        "อัลกอริทึมเข้ารหัสข้อมูลไม่ได้พิสูจน์ความต้านทานของกลไกสร้างกุญแจที่แยกกัน"
+      ],
+      [
+        "Replace the bulk cipher while keeping the vulnerable public-key process",
+        "เปลี่ยนตัวเข้ารหัสข้อมูลโดยคงกระบวนการ Public-key ที่มีความเสี่ยง",
+        "Changing only bulk encryption leaves the identified vulnerable dependency unaddressed.",
+        "การเปลี่ยนเฉพาะการเข้ารหัสข้อมูลยังไม่จัดการส่วนที่ระบุว่ามีความเสี่ยง"
+      ],
+      [
+        "Limit the review to whether the existing keys are stored securely",
+        "จำกัดการทบทวนเฉพาะการเก็บกุญแจเดิมว่าปลอดภัยหรือไม่",
+        "Secure storage matters, but does not remove the algorithmic quantum vulnerability described.",
+        "การเก็บอย่างปลอดภัยสำคัญ แต่ไม่ลบความเสี่ยงควอนตัมของอัลกอริทึมที่โจทย์ระบุ"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The public-key dependency remains relevant even when bulk data uses a symmetric cipher.",
+    "assessedDecision": "Assess vulnerable key dependencies despite protected bulk data",
+    "status": "DRAFT"
+  }
+]

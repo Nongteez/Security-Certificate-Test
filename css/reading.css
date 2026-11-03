@@ -3653,3 +3653,674 @@ html[data-theme="light"] .reading-scroll-nav {
     transform: none !important;
   }
 }
+
+/* Phase 3F: keep the scroll control in the existing Reading outer gutter. */
+.reading-screen .reading-scroll-nav { right: 2px; }
+.reading-screen .reading-scroll-nav:focus-visible { outline-offset: -3px; }
+.reading-screen:has(.reading-structured-objective) { padding-bottom: max(80px, calc(env(safe-area-inset-bottom) + 64px)); }
+@media (max-width: 840px) {
+  .reading-screen .reading-scroll-nav { right: 0; width: 24px; height: 44px; }
+}
+.reading-screen .reading-eyebrow { color: var(--text-dim); }
+.reading-screen .reading-body :is(.reading-concept-subtitle, .reading-detail-note, .reading-precedence-badge, .reading-scenario-topic, .reading-scenario-answer-label) { color: var(--text); }
+.reading-screen .reading-body :is(.reading-precedence-badge, .reading-scenario-topic, .reading-scenario-answer-label) { font-size: 14px; }
+/* End Phase 3F Reading accessibility. */
+
+/* Phase 3E: content-aware diagram legibility; preserve semantic relationships. */
+.reading-body .reading-diagram-card { container: reading-diagram / inline-size; }
+.reading-body .reading-diagram-card .reading-diagram-svg { max-width: none; width: 100%; height: auto; }
+.reading-body .reading-diagram-card .reading-diag-desktop { display: none !important; }
+.reading-body .reading-diagram-card .reading-diag-mobile { display: flex !important; flex-direction: column; gap: 16px; width: 100%; }
+.reading-body .reading-diag-mobile :is(p, li, span, .reading-mob-card-pill, .reading-mob-metric-val, .reading-mob-step-metric-hint) {
+  font-size: 15px; line-height: 1.65; color: var(--text); word-break: normal; overflow-wrap: normal;
+}
+.reading-body .reading-diag-mobile :is(h5, h6) { font-size: 16px; line-height: 1.6; color: var(--text); }
+.reading-body .reading-diag-mobile :is(.reading-mob-tier-head, .reading-mob-card-head) { flex-wrap: wrap; align-items: flex-start; }
+.reading-body .reading-diag-mobile :is(.reading-mob-tier-info, .reading-mob-head-info) { min-width: 0; flex: 1 1 12rem; }
+.reading-body .reading-diag-mobile :is(.reading-mob-tier-card, .reading-mob-card, .reading-mob-step-card) { min-width: 0; }
+.reading-body .reading-mob-connector-pill { max-width: 100%; white-space: normal; text-align: center; }
+.reading-body .reading-diagram-card svg text { fill: var(--text); }
+.reading-body .reading-diagram-card svg text[fill="#ffffff"] { fill: #ffffff; }
+.reading-body .reading-diagram-card svg text[fill="#0f172a"] { fill: #0f172a; }
+.reading-body .reading-diagram-card svg rect[fill="#10b981"] { fill: #047857; }
+.reading-body .reading-diagram-card svg rect[fill="#3b82f6"] { fill: #1d4ed8; }
+.reading-body .reading-diagram-card svg rect[fill="#8b5cf6"] { fill: #6d28d9; }
+.reading-body .reading-diagram-card svg rect[fill="#ef4444"] { fill: #b91c1c; }
+.reading-body [data-diagram="cloudSharedResponsibility"] svg > g:first-child > text { font-size: 10.5px; }
+.reading-body :is([data-diagram="dmzFirewallArchitecture"], [data-diagram="cloudSharedResponsibility"], [data-diagram="osiVsTcpIpModel"]) .reading-mob-stack-list {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 16px;
+}
+.reading-body .reading-osi-reference { grid-column: 1 / -1; }
+.reading-body .reading-osi-reference > h5 { margin: 0 0 16px; }
+.reading-body .reading-osi-reference .reading-semantic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 16px; }
+.reading-body .reading-osi-reference .reading-semantic-concept { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.reading-body .reading-osi-reference h6 { margin: 0 0 8px; }
+.reading-body .reading-osi-reference p { margin: 0; }
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="threatChain"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="threatChain"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 904px) {
+  .reading-body [data-diagram="ciaTriad"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="ciaTriad"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 840px) {
+  .reading-body [data-diagram="loadBalancer"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="loadBalancer"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 904px) {
+  .reading-body [data-diagram="privacyFlow"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="privacyFlow"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="defenseInDepth"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="defenseInDepth"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 890px) {
+  .reading-body [data-diagram="riskCalculationFlow"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="riskCalculationFlow"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="riskLifecycle"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="riskLifecycle"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="documentHierarchy"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="documentHierarchy"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="dueCareDiligence"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="dueCareDiligence"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="ethicsCanons"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="ethicsCanons"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="grcAlignment"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="grcAlignment"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="rtoRpoTimeline"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="rtoRpoTimeline"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="nistSp80063Framework"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="nistSp80063Framework"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="leastPrivilegeVsSod"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="leastPrivilegeVsSod"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="accessControlModels"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="accessControlModels"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="osiVsTcpIpModel"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="osiVsTcpIpModel"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="dmzFirewallArchitecture"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="dmzFirewallArchitecture"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="defenseInDepthLayers"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="defenseInDepthLayers"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="cloudSharedResponsibility"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="cloudSharedResponsibility"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="irpLifecycle"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="irpLifecycle"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="mitreAttackTacticTechnique"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="mitreAttackTacticTechnique"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="securityTestingMatrix"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="securityTestingMatrix"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="assetLifecycleAndEol"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="assetLifecycleAndEol"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="aaaLifecycle"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="aaaLifecycle"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="controlTimeline"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="controlTimeline"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="bcVsDrScope"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="bcVsDrScope"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="effectivenessHierarchy"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="effectivenessHierarchy"] .reading-diag-mobile { display: none !important; }
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-body [data-diagram="iamLifecycle"] .reading-diag-desktop { display: flex !important; }
+  .reading-body [data-diagram="iamLifecycle"] .reading-diag-mobile { display: none !important; }
+}
+.reading-body .reading-diag-mobile code { font-size: 15px; }
+.reading-body [data-diagram="riskCalculationFlow"] svg > g:nth-of-type(3) > rect { height: 107px; }
+.reading-body [data-diagram="riskCalculationFlow"] svg > g:nth-of-type(3) > text:last-child { transform: translateY(6px); }
+.reading-body .reading-diag-mobile .reading-mob-step-badge { font-size: 15px; color: var(--text); }
+.reading-body .reading-diag-mobile .reading-mob-step-card { flex-wrap: wrap; }
+.reading-body .reading-diag-mobile .reading-mob-time-body { min-width: 0; flex: 1 1 12rem; }
+.reading-body .reading-diagram-card svg rect[fill^="var(--blue,"] { fill: #1d4ed8; }
+.reading-body [data-diagram="rtoRpoTimeline"] svg > g > text:last-child { transform: translateY(7px); }
+.reading-body [data-diagram="nistSp80063Framework"] svg > g:nth-of-type(-n+3) > rect:first-child { height: 144px; }
+.reading-body [data-diagram="nistSp80063Framework"] svg > g:nth-of-type(-n+3) > text:last-child { transform: translateY(6px); }
+.reading-body [data-diagram="riskCalculationFlow"] svg > g:is(:nth-of-type(1), :nth-of-type(2), :nth-of-type(4)) > rect { height: 96px; }
+.reading-body [data-diagram="riskCalculationFlow"] svg > g:is(:nth-of-type(1), :nth-of-type(2), :nth-of-type(4)) > text:nth-of-type(2) { transform: translateY(8px); }
+.reading-body [data-diagram="riskCalculationFlow"] svg > g:is(:nth-of-type(1), :nth-of-type(2), :nth-of-type(4)) > text:last-child { transform: translateY(15px); }
+.reading-body [data-diagram="riskLifecycle"] svg > rect { height: 78px; }
+.reading-body [data-diagram="riskLifecycle"] svg > .diag-text-sub { transform: translateY(6px); }
+.reading-body [data-diagram="riskLifecycle"] svg > path:last-of-type { transform: translateY(8px); }
+.reading-body [data-diagram="riskLifecycle"] svg > .diag-text-label { transform: translateY(18px); }
+/* End Phase 3E diagram legibility. */
+
+/* VIS-01–VIS-06: Reading prose rhythm and the single causal threat example. */
+.reading-screen:has(.reading-structured-objective) .reading-layout .reading-article {
+  max-width: 76rem;
+}
+.reading-screen .reading-body .reading-structured-objective {
+  --reading-narrative-measure: 100%;
+  --reading-definition-measure: 100%;
+}
+.reading-screen .reading-body .reading-structured-objective > p:not(.reading-intro-label) {
+  max-width: 100%;
+}
+.reading-screen:has(.reading-structured-objective) .reading-article-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+}
+.reading-screen .reading-body .reading-objective-section {
+  margin-top: 44px;
+  padding-top: 24px;
+}
+.reading-screen .reading-body .reading-objective-section:first-of-type {
+  margin-top: 16px;
+  padding-top: 16px;
+}
+.reading-screen .reading-body > .reading-lead { margin-bottom: 16px; }
+.reading-screen .reading-body .reading-structured-objective > h2 {
+  margin-bottom: 12px;
+  padding-bottom: 0;
+  line-height: 1.4;
+}
+.reading-screen .reading-body .reading-structured-objective > h3 {
+  margin: 28px 0 12px;
+}
+.reading-screen .reading-body .reading-threat-diagram {
+  padding: 24px;
+}
+.reading-screen .reading-body .reading-threat-diagram .reading-diagram-header { margin-bottom: 20px; }
+.reading-screen .reading-body .reading-threat-diagram .reading-diagram-title { margin: 0; line-height: 1.5; }
+.reading-screen .reading-body .reading-threat-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  border-left: 3px solid var(--green, #059669);
+  padding: 12px 16px;
+  background: var(--panel);
+  margin-bottom: 24px;
+}
+.reading-screen .reading-body .reading-threat-concept { min-width: 0; }
+.reading-screen .reading-body .reading-threat-concept h5 {
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+.reading-screen .reading-body .reading-threat-subtitle {
+  display: block;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.reading-screen .reading-body .reading-threat-concept p,
+.reading-screen .reading-body .reading-threat-control-scope {
+  max-width: none;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.reading-screen .reading-body .reading-threat-control-scope { align-self: center; }
+.reading-screen .reading-body .reading-threat-map {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+.reading-screen .reading-body .reading-threat-asset {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--blue-bg);
+}
+.reading-screen .reading-body .reading-threat-has {
+  margin: 12px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.reading-screen .reading-body .reading-threat-edge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 0 4px;
+  text-align: center;
+}
+.reading-screen .reading-body .reading-threat-edge-label {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text);
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.reading-screen .reading-body .reading-threat-edge svg {
+  display: block;
+  flex: none;
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 1.5;
+}
+.reading-screen .reading-body .reading-threat-edge .reading-threat-arrow-horizontal { display: none; }
+.reading-screen .reading-body .reading-threat-arrow-vertical { width: 12px; height: 40px; }
+.reading-screen .reading-body .reading-structured-objective > p.reading-threat-caption {
+  margin: 14px 0 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+@container reading-diagram (min-width: 880px) {
+  .reading-screen .reading-body .reading-threat-map {
+    grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1.2fr) 96px minmax(0, 1fr);
+    gap: 12px;
+  }
+  .reading-screen .reading-body .reading-threat-controls { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 24px; }
+  .reading-screen .reading-body .reading-threat-edge .reading-threat-arrow-horizontal { display: block; width: 88px; height: 12px; }
+  .reading-screen .reading-body .reading-threat-edge .reading-threat-arrow-vertical { display: none; }
+}
+@media (max-width: 600px) {
+  .reading-screen .reading-body .reading-threat-diagram { padding: 16px; }
+}
+/* End VIS-01–VIS-06 targeted Reading remediation. */
+
+/* Phase 3B.2: opt-in textbook prose, independent of tables and diagrams. */
+.reading-body .reading-structured-objective > h3 {
+  margin: 40px 0 16px;
+  font-size: 19px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+.reading-body .reading-structured-objective > h4 {
+  margin: 32px 0 12px;
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 700;
+}
+.reading-body .reading-structured-objective > h5 {
+  margin: 24px 0 8px;
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 700;
+}
+.reading-body .reading-structured-objective > p:not(.reading-intro-label),
+.reading-body .reading-structured-objective .reading-concept-unit > p {
+  max-width: 84ch;
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.8;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.reading-body .reading-structured-objective > ul,
+.reading-body .reading-structured-objective > ol,
+.reading-body .reading-structured-objective .reading-concept-unit > ul,
+.reading-body .reading-structured-objective .reading-concept-unit > ol {
+  max-width: 84ch;
+  margin: 0 0 24px;
+  padding-left: 24px;
+}
+.reading-body .reading-structured-objective > ul li,
+.reading-body .reading-structured-objective > ol li,
+.reading-body .reading-structured-objective .reading-concept-unit li {
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 1.8;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.reading-body .reading-structured-objective li > ul,
+.reading-body .reading-structured-objective li > ol {
+  margin: 6px 0;
+}
+.reading-body .reading-structured-objective .reading-concept-unit {
+  display: flow-root;
+  max-width: 84ch;
+  margin: 24px 0;
+}
+.reading-body .reading-structured-objective .reading-concept-unit > h4,
+.reading-body .reading-structured-objective .reading-concept-unit > h5 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 700;
+  color: var(--text);
+}
+.reading-body .reading-structured-objective .reading-concept-unit > h5 {
+  font-size: 16px;
+}
+.reading-body .reading-structured-objective .reading-concept-unit > :last-child {
+  margin-bottom: 0;
+}
+.reading-body .reading-structured-objective .reading-concept-unit > h4 + .reading-concept-unit {
+  margin-top: 8px;
+}
+.reading-body .reading-structured-objective .reading-concept-item > h4.reading-concept-heading {
+  font-weight: 700;
+}
+/* End Phase 3B.2 scoped typography. */
+
+/* Phase 3D: shared selectable representations for semantic relationships. */
+.reading-body .reading-semantic-diagram .reading-semantic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+.reading-body .reading-semantic-diagram .reading-semantic-concept {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+}
+.reading-body .reading-semantic-diagram [data-optional="true"] {
+  border-style: dashed;
+}
+.reading-body .reading-semantic-diagram h5,
+.reading-body .reading-semantic-diagram h6 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text);
+}
+.reading-body .reading-semantic-diagram p,
+.reading-body .reading-semantic-diagram li {
+  font-size: 15.5px;
+  line-height: 1.7;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.reading-body .reading-semantic-diagram p {
+  margin: 8px 0;
+}
+.reading-body .reading-semantic-diagram ul {
+  margin: 8px 0;
+  padding-left: 22px;
+}
+.reading-body .reading-semantic-diagram .reading-semantic-group,
+.reading-body .reading-semantic-diagram .reading-semantic-governance {
+  margin: 24px 0 0;
+}
+.reading-body .reading-diagram-card > .reading-semantic-note {
+  margin: 16px 0;
+  padding: 12px;
+  border-left: 2px solid var(--line);
+  font-size: 15.5px;
+  line-height: 1.7;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+/* End Phase 3D semantic representations. */
+
+/* Phase 3C: content-driven Reading tables and intact technical words. */
+.reading-body .reading-table-wrapper {
+  max-width: 100%;
+  scrollbar-width: auto;
+  scrollbar-color: var(--text-muted) var(--panel-2);
+}
+.reading-body .reading-table-wrapper:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+.reading-body .reading-table {
+  table-layout: auto;
+  min-width: min-content;
+}
+.reading-body .reading-table th,
+.reading-body .reading-table td {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: manual;
+}
+/* A readable floor for comparisons, without prescribing column proportions.
+   Two-column tables retain their natural sizing; existing document roles win. */
+.reading-body .reading-table:has(th:nth-child(3)) th {
+  min-width: 9rem;
+}
+.reading-body .reading-table .reading-term-en,
+.reading-body .reading-table .reading-term-en strong {
+  white-space: normal;
+}
+/* GRC's fixed percentages plus a nowrap keyword exceeded padded cell bounds.
+   Let each column participate in native min-content sizing, as other tables do. */
+.reading-body .reading-table-grc-frameworks th:nth-child(n),
+.reading-body .reading-table-grc-frameworks td:nth-child(n) {
+  width: auto;
+  min-width: 9rem;
+}
+.reading-body .reading-table-grc-frameworks td.reading-col-exam-keyword strong {
+  white-space: normal;
+}
+/* Risk-card badges must yield space rather than fragment the English title. */
+.reading-body .reading-treatment-header {
+  flex-wrap: wrap;
+}
+.reading-body .reading-treatment-title-group {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+.reading-body .reading-treatment-title {
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.reading-body .reading-scenario-header {
+  flex-wrap: wrap;
+}
+.reading-body .reading-scenario-badge {
+  flex-shrink: 0;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.reading-body .reading-scenario-topic {
+  word-break: normal;
+  overflow-wrap: normal;
+}
+/* End Phase 3C scoped tables. */
+
+/* Phase 3B.3: content-aware widths within published Reading Notes only. */
+.app:has(.reading-structured-objective) {
+  max-width: 1560px;
+}
+.reading-screen:has(.reading-structured-objective) .reading-layout {
+  gap: 32px;
+}
+.reading-screen:has(.reading-structured-objective) .reading-article {
+  max-width: 100%;
+}
+.reading-body .reading-structured-objective {
+  --reading-narrative-measure: 96ch;
+  --reading-definition-measure: 104ch;
+}
+.reading-body .reading-structured-objective > p:not(.reading-intro-label),
+.reading-body .reading-privacy-context > p {
+  max-width: min(100%, var(--reading-narrative-measure));
+  font-size: 16px;
+  line-height: 1.85;
+}
+.reading-body .reading-structured-objective .reading-concept-unit {
+  max-width: 100%;
+}
+.reading-body .reading-structured-objective .reading-concept-unit > p,
+.reading-body .reading-structured-objective .reading-concept-item > p {
+  max-width: min(100%, var(--reading-definition-measure));
+  font-size: 16px;
+  line-height: 1.85;
+}
+.reading-body .reading-structured-objective > ul,
+.reading-body .reading-structured-objective > ol,
+.reading-body .reading-structured-objective .reading-concept-unit > ul,
+.reading-body .reading-structured-objective .reading-concept-unit > ol {
+  max-width: 100%;
+}
+.reading-body .reading-structured-objective :is(h4, h5).reading-intro-label {
+  font-weight: 600;
+  align-items: flex-start;
+}
+.reading-body .reading-structured-objective .reading-intro-label .reading-label-icon {
+  width: 14px;
+  height: 14px;
+  margin-top: 5px;
+}
+.reading-body .reading-privacy-context {
+  container: privacy-context / inline-size;
+}
+.reading-body .reading-privacy-context > h4 {
+  margin: 32px 0 12px;
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 700;
+}
+.reading-body .reading-privacy-context > h5.reading-intro-label {
+  font-size: 16px;
+  line-height: 1.55;
+}
+.reading-body .reading-privacy-roles {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  margin: 16px 0 32px;
+}
+.reading-body .reading-privacy-roles > .reading-concept-item {
+  min-width: 0;
+  margin: 0;
+  padding-left: 0;
+  border-left: 0;
+}
+.reading-body .reading-privacy-roles .reading-concept-heading {
+  font-size: 16px;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+.reading-body .reading-privacy-roles .reading-concept-item > p {
+  max-width: 100%;
+}
+@container privacy-context (min-width: 56rem) {
+  .reading-body .reading-privacy-roles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 841px) {
+  .app:has(.reading-structured-objective) {
+    width: min(100% - 48px, 1560px);
+  }
+  .reading-screen:has(.reading-structured-objective) .reading-sidebar {
+    flex-basis: 270px;
+    width: 270px;
+  }
+}
+@media (min-width: 841px) and (max-width: 1100px) {
+  .reading-screen:has(.reading-structured-objective) .reading-layout {
+    gap: 28px;
+  }
+}
+/* End Phase 3B.3 content-aware widths. */
+
+/* Phase 3B.1: semantic hierarchy for the two Domain 4 pilot subsections. */
+.reading-body .reading-structure-pilot {
+    display: flow-root;
+    margin: 40px 0;
+}
+.reading-body .reading-structure-pilot > h3 {
+    margin: 0 0 16px;
+    font-size: 19px;
+    line-height: 1.5;
+}
+.reading-body .reading-structure-pilot > .reading-concept-group-title {
+    margin: 32px 0 12px;
+    font-size: 17px;
+    line-height: 1.55;
+}
+.reading-body .reading-structure-pilot .reading-definition-unit {
+    display: flow-root;
+    margin: 0 0 24px;
+}
+.reading-body .reading-structure-pilot .reading-definition-unit > h5 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    line-height: 1.55;
+    font-weight: 700;
+    color: var(--text);
+}
+.reading-body .reading-structure-pilot .reading-layer-unit {
+    display: flow-root;
+    margin: 32px 0 0;
+}
+.reading-body .reading-structure-pilot .reading-layer-unit > h4 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text);
+}
+.reading-body .reading-structure-pilot p {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.reading-body .reading-structure-pilot ul,
+.reading-body .reading-structure-pilot ol {
+    margin: 0 0 16px;
+    padding-left: 24px;
+}
+.reading-body .reading-structure-pilot li {
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.reading-body .reading-structure-pilot li:last-child,
+.reading-body .reading-structure-pilot .reading-definition-unit > :last-child,
+.reading-body .reading-structure-pilot .reading-layer-unit > :last-child {
+    margin-bottom: 0;
+}
+.reading-body .reading-structure-pilot li > ul,
+.reading-body .reading-structure-pilot li > ol {
+    margin: 6px 0;
+}
+.reading-body .reading-structure-pilot .reading-example-box {
+    margin: 16px 0;
+}
+.reading-body .reading-structure-pilot .reading-callout.tip,
+.reading-body .reading-structure-pilot .reading-exam-trap {
+    margin: 24px 0;
+}

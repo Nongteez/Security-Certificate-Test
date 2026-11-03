@@ -1,0 +1,4 @@
+import fs from'node:fs';import{spawnSync}from'node:child_process';
+const q='artifacts/qa/reading-notes-phase3f/',r=JSON.parse(fs.readFileSync(q+'historical-regressions.json','utf8'));
+for(const row of r){const p=spawnSync(process.execPath,['--import','./'+q+'historical-baseline-loader.mjs','tools/'+row.suite+'.mjs'],{encoding:'utf8',maxBuffer:8000000,env:{...process.env,READING_QA_BASELINE_RUNTIME:'artifacts/qa/reading-notes-phase3e/baseline-runtime.json'}});fs.writeFileSync(q+'master-baseline-'+row.suite+'.log',p.stdout+p.stderr);row.masterBaselineExit=p.status;if(p.status!==1)throw Error('unexpected baseline status');}
+fs.writeFileSync(q+'historical-regressions.json',JSON.stringify(r,null,2));console.log(r.map(x=>({suite:x.suite,masterBaselineExit:x.masterBaselineExit,phaseFBaselineExit:x.baselineExit,currentExit:x.currentExit})));

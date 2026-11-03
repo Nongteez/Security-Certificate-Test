@@ -74,6 +74,21 @@ if (typeof window === 'undefined' && typeof process !== 'undefined' && process.v
         published: true
       });
     }
+
+    const md5Path = path.resolve(dir, '../../content/isc2-cc-2026/reading/domain-5.md');
+    if (fs.existsSync(md5Path)) {
+      const { domain5Metadata, domain5Objectives, domain5Review } = await import('../../content/isc2-cc-2026/reading/domain-5.js');
+      const rawMarkdown5 = fs.readFileSync(md5Path, 'utf8');
+      const renderedHtml5 = parseMarkdown(rawMarkdown5);
+      readingCache.set(5, {
+        ...domain5Metadata,
+        objectives: domain5Objectives,
+        review: domain5Review,
+        rawMarkdown: rawMarkdown5,
+        renderedHtml: renderedHtml5,
+        published: true
+      });
+    }
   } catch (err) {
     // Graceful fallback to async loader
   }
@@ -170,7 +185,25 @@ export async function loadDomainReading(domainId) {
     return data;
   }
 
-  // Domain 5 is unpublished in this phase
+  if (dId === 5) {
+    const { domain5Metadata, domain5Objectives, domain5Review, getDomain5Markdown } = await import('../../content/isc2-cc-2026/reading/domain-5.js');
+    const rawMarkdown = await getDomain5Markdown();
+    const renderedHtml = parseMarkdown(rawMarkdown);
+
+    const data = {
+      ...domain5Metadata,
+      objectives: domain5Objectives,
+      review: domain5Review,
+      rawMarkdown,
+      renderedHtml,
+      published: true
+    };
+
+    readingCache.set(dId, data);
+    return data;
+  }
+
+  // Any other domain is unpublished
   const placeholder = {
     id: dId,
     published: false

@@ -1,0 +1,32 @@
+====================================================
+ SEC CERT TEST — QUIZ SESSION PERSISTENCE TEST SUITE
+====================================================
+
+[Scenario A] Testing Practice Mode Autosave, Page Refresh & Resume...
+  PASS: Practice mode exact questions, order, answers, and position restored.
+
+[Scenario B] Testing Storage Persistence & Session Detection Across Restarts...
+  PASS: Unfinished session successfully detected in storage.
+
+[Scenario C] Testing Start New Quiz Replacement Confirmation Flow...
+  PASS: Old session cleanly replaced by new session upon explicit start.
+
+[Scenario D] Testing Finish Quiz Cleans Active Storage Session...
+  PASS: Active storage session removed upon finish, results remain active in memory.
+
+[Scenario E] Testing Exam Mode Absolute Expiration & Elapsed Wall-Clock Calculation...
+  PASS: Exam timer restored with real elapsed time accounted for (6300s remaining).
+
+[Scenario F] Testing Exam Expired While Closed...
+  PASS: Expired exam automatically submitted to results, timer never paused or reset.
+
+[Scenario G] Testing Defensive Storage Parsing & Graceful Degradation...
+  PASS: All corrupted/invalid data cases handled defensively with 0 crashes.
+
+[Scenario H] Verifying Question Bank Integrity & Invariants...
+  PASS: 583 total questions preserved with exact domain counts (142/65/93/156/127).
+
+====================================================
+ STATUS: ALL SESSION PERSISTENCE TESTS PASSED (8/8)
+====================================================
+One or more saved question IDs could not be resolved. Keeping saved data.

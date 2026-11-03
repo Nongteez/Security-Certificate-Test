@@ -19,6 +19,7 @@ import { domain1Objectives } from '../../content/isc2-cc-2026/reading/domain-1.j
 import { domain2Objectives, domain2Review } from '../../content/isc2-cc-2026/reading/domain-2.js';
 import { domain3Objectives, domain3Review } from '../../content/isc2-cc-2026/reading/domain-3.js';
 import { domain4Objectives, domain4Review } from '../../content/isc2-cc-2026/reading/domain-4.js';
+import { domain5Objectives, domain5Review } from '../../content/isc2-cc-2026/reading/domain-5.js';
 
 export const READING_DOMAINS = [
   {
@@ -61,14 +62,9 @@ export const READING_DOMAINS = [
     title: 'Domain 5: Security Operations',
     shortTitle: 'Security Operations',
     weight: '17.3%',
-    published: false,
-    objectives: [
-      { id: '5.1', title: '5.1 Understand data security' },
-      { id: '5.2', title: '5.2 Understand security operations' },
-      { id: '5.3', title: '5.3 Understand Incident Response (IR)' },
-      { id: '5.4', title: '5.4 Understand asset protection' },
-      { id: '5.5', title: '5.5 Understand security testing' }
-    ]
+    published: true,
+    objectives: domain5Objectives,
+    review: domain5Review
   }
 ];
 
@@ -102,10 +98,6 @@ export function renderReadingScreen(container, onBack) {
     navigationType: initialDocumentMount ? performance.getEntriesByType('navigation')[0]?.type : 'navigate',
     historyPosition: history.state?.readingNotes
   });
-  // Keep the existing explicitly selected, unpublished panel outside V1 progress.
-  if (!parseReadingDeepLink(window.location.hash).isReadingRoute && state.reading?.selectedDomainId === 5) {
-    Object.assign(initialLocation, { domainId: 5, anchorId: null, scrollY: 0, mode: 'position' });
-  }
   state.reading = state.reading || {};
   state.reading.selectedDomainId = initialLocation.domainId;
   state.reading._hasRestoredProgress = true;
@@ -560,7 +552,18 @@ export function renderReadingScreen(container, onBack) {
     }
   }
 
+  function applyReadingLanguageMetadata() {
+    const article = container.querySelector('.reading-article');
+    if (!article || ![1, 2, 3, 4].includes(getActiveDomain().id)) return;
+    article.querySelector('.reading-article-markdown')?.setAttribute('lang', 'th');
+    for (const element of article.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,dt,dd,figcaption,blockquote,em,.reading-diagram-tag')) {
+      const text = element.textContent;
+      if (/[A-Za-z]/.test(text) && !/[\u0e00-\u0e7f]/.test(text) && !element.closest('svg,.katex,code')) element.setAttribute('lang', 'en');
+    }
+  }
+
   function setupScrollSpy() {
+    applyReadingLanguageMetadata();
     // Observe real subsection headings, not the large containing objectives.
     const domain = getActiveDomain();
     const ids = (domain.objectives || []).flatMap(obj => [obj.anchorId, ...(obj.topics || []).map(topic => topic.id)]);
@@ -592,11 +595,6 @@ export function renderReadingScreen(container, onBack) {
         e.stopPropagation();
         const domainId = Number(btn.getAttribute('data-select-domain'));
         if (domainId === selectedDomainId) return;
-        if (domainId === 5) {
-          // Preserve the existing unpublished panel without recording Domain 5 progress.
-          navigateTo({ domainId, mode: 'position', anchorId: null, scrollY: 0 });
-          return;
-        }
         const location = resolveReadingLocation({ hash: `#/reading/domain-${domainId}`, progress: loadReadingProgress() });
         navigateTo(location);
       });

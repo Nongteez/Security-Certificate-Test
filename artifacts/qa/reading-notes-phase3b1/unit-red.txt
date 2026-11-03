@@ -1,0 +1,206 @@
+✖ Network has three semantic concept-group headings (1.4073ms)
+✖ Ten network terms have their own semantic definition headings (0.2603ms)
+✖ Network definitions have grouped explanations rather than an undifferentiated bullet stream (0.1354ms)
+✖ Seven OSI layer names are h4 headings in 7 through 1 order (0.8039ms)
+✖ OSI layer titles are no longer ordered-list items (0.3955ms)
+✖ Each OSI layer retains a separate supporting list and PDU explanation (0.179ms)
+✔ Complete Network educational text is preserved after Markdown restructuring (0.4152ms)
+✔ Complete OSI educational text is preserved after removing generated list ordinals (0.2986ms)
+✔ Mnemonic wording and Layer 1 to Layer 7 direction remain intact (0.177ms)
+✔ Corrected subnet and sockets explanations remain intact (0.2007ms)
+✔ Existing topic and objective navigation anchors are retained (0.2665ms)
+✖ Pilot styles are explicitly scoped and do not hide list markers (3.4832ms)
+✖ Two pilot wrappers stop before the neighboring TCP/IP subsection (0.1632ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 5
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13.7179
+
+✖ failing tests:
+
+test at tools\verify-reading-structure-pilot.mjs:13:1
+✖ Network has three semantic concept-group headings (1.4073ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 3
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-structure-pilot.mjs:15:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-structure-pilot.mjs:17:1
+✖ Ten network terms have their own semantic definition headings (0.2603ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 10
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-structure-pilot.mjs:19:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 10,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-structure-pilot.mjs:21:1
+✖ Network definitions have grouped explanations rather than an undifferentiated bullet stream (0.1354ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 10
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-structure-pilot.mjs:22:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 10,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-structure-pilot.mjs:25:1
+✖ Seven OSI layer names are h4 headings in 7 through 1 order (0.8039ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   7,
+  -   6,
+  -   5,
+  -   4,
+  -   3,
+  -   2,
+  -   1
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-structure-pilot.mjs:26:107)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-structure-pilot.mjs:28:1
+✖ OSI layer titles are no longer ordered-list items (0.3955ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /<ol\b/. Input:
+  
+  '<h3 id="topic-4-1-osi-model">4.1.2 OSI 7-Layer Reference Model: แบบจำลองอ้างอิง 7 ชั้น</h3>\n' +
+    '<p>ในปี 1984 องค์การระหว่างประเทศว่าด้วยการมาตรฐาน (ISO) ได้กำหนดมาตรฐาน <strong>OSI 7-Layer Reference Model (Open Systems Interconnection)</strong> ขึ้น เพื่อเป็นกรอบแนวคิดเชิงตรรกะสำหรับการออกแบบและทำความเข้าใจกระบวนการสื่อสารระหว่างระบบคอมพิวเตอร์ที่หลากหลาย</p>\n' +
+    '<p>หลักการจำลำดับชั้นของแบบจำลอง OSI จากชั้นล่างสุด (Layer 1) ไปสู่ชั้นบนสุด (Layer 7):</p>\n' +
+    '<span class="reading-math-formula">Please Do Not Throw Sausage Pizza Away (Layer 1 → Layer 7)</span>\n' +
+    '<p>รายละเอียดของแบบจำลองทั้ง 7 ชั้น:</p>\n' +
+    '<ol><li><strong>Layer 7 — Application Layer (ชั้นการประยุกต์):</strong><ul><li>ทำหน้าที่เป็นจุดเชื่อมต่อระหว่างผู้ใช้งานหรือโปรแกรมประยุกต์กับบริการเครือข่าย</li><li>โพรโทคอลสำคัญ: HTTP, HTTPS, DNS, SSH, FTP, SFTP, SMTP, DHCP, Telnet</li><li>หน่วยข้อมูล (PDU): Data / Messages</li></ul></li><li><strong>Layer 6 — Presentation Layer (ชั้นการนำเสนอข้อมูล):</strong><ul><li>ทำหน้าที่จัดรูปแบบ แปลงรหัสข้อมูล (Data Formatting), การบีบอัดข้อมูล (Compression) และการเข้ารหัส/ถอดรหัสความปลอดภัย (Encryption / Decryption)</li><li>มาตรฐานสำคัญ: TLS/SSL, ASCII, Unicode, JSON, XML, JPEG, MP4</li><li>หน่วยข้อมูล (PDU): Data</li></ul></li><li><strong>Layer 5 — Session Layer (ชั้นเซสชัน):</strong><ul><li>ทำหน้าที่สร้าง (Establish), บริหารจัดการ (Maintain) และยกเลิกการเชื่อมต่อเซสชัน (Terminate) ระหว่างสองแอปพลิเคชัน</li><li>โพรโทคอลที่มักใช้เป็นตัวอย่าง: RPC (Remote Procedure Call), NetBIOS</li><li>Session Layer เป็นแนวคิดการสร้าง บริหาร และยุติเซสชันระหว่างแอปพลิเคชัน ส่วน sockets เป็น API/นามธรรมของจุดปลายการสื่อสารที่แอปใช้เรียกบริการเครือข่าย ไม่ใช่โพรโทคอลประจำ Session Layer</li><li>หน่วยข้อมูล (PDU): Data</li></ul></li><li><strong>Layer 4 — Transport Layer (ชั้นการขนส่งข้อมูล):</strong><ul><li>ทำหน้าที่ส่งข้อมูลแบบจุดต่อจุดระหว่างโฮสต์ (Host-to-Host End-to-End Communication), ควบคุมการไหลของข้อมูล (Flow Control), ตรวจจับข้อผิดพลาด และกำหนดหมายเลขพอร์ต (Port Numbers)</li><li>โพรโทคอลสำคัญ: TCP (เน้นความน่าเชื่อถือ ตรวจสอบข้อมูล) และ UDP (เน้นความรวดเร็ว ไม่มีการจับมือ)</li><li>หน่วยข้อมูล (PDU): <strong>Segment</strong> (สำหรับ TCP) หรือ <strong>Datagram</strong> (สำหรับ UDP)</li></ul></li><li><strong>Layer 3 — Network Layer (ชั้นเครือข่าย):</strong><ul><li>ทำหน้าที่กำหนดหมายเลขที่อยู่เชิงตรรกะ (Logical IP Addressing) และเลือกเส้นทางการส่งข้อมูลข้ามเครือข่าย (Routing)</li><li>โพรโทคอลและอุปกรณ์: IPv4, IPv6, ICMP, IPsec, Routers, Layer 3 Switches</li><li>หน่วยข้อมูล (PDU): <strong>Packet</strong></li></ul></li><li><strong>Layer 2 — Data Link Layer (ชั้นเชื่อมโยงข้อมูล):</strong><ul><li>ทำหน้าที่ควบคุมการเข้าถึงสื่อกลาง (Media Access Control: MAC), กำหนดหมายเลขที่อยู่ทางกายภาพ (Physical MAC Address), ตรวจจับข้อผิดพลาดในระดับเฟรม</li><li>โพรโทคอลและอุปกรณ์: Ethernet (IEEE 802.3), Wi-Fi (IEEE 802.11), Switches, Bridges, Network Interface Cards (NIC)</li><li>แบ่งออกเป็น 2 ชั้นย่อย: LLC (Logical Link Control) และ MAC (Media Access Control)</li><li>หน่วยข้อมูล (PDU): <strong>Frame</strong></li></ul></li><li><strong>Layer 1 — Physical Layer (ชั้นกายภาพ):</strong><ul><li>ทำหน้าที่แปลงข้อมูลดิจิทัลให้เป็นสัญญาณทางกายภาพ (ไฟฟ้า, แสง, คลื่นวิทยุ) เพื่อส่งผ่านตัวกลาง</li><li>อุปกรณ์และสื่อกลาง: สายทองแดง UTP (RJ45), ใยแก้วนำแสง (Fiber Optic), Hubs, Repeaters, เสาสัญญาณไร้สาย</li><li>หน่วยข้อมูล (PDU): <strong>Bits</strong> (0 และ 1)</li></ul></li></ol>\n' +
+    '<p>กระบวนการห่อหุ้มและการแกะข้อมูล (Encapsulation &amp; Decapsulation):</p>\n' +
+    '<ul><li><strong>Encapsulation (จากบนลงล่าง):</strong> เมื่อส่งข้อมูล ข้อมูลดิบจากแอปพลิเคชัน (Data) จะถูกเติมส่วนหัว (Header) ในแต่ละชั้น: Data → Segments (เติม TCP/UDP Header ที่มี Port) → Packets (เติม IP Header ที่มี Source/Dest IP) → Frames (เติม MAC Header และ FCS Trailer) → Bits (แปลงเป็นสัญญาณไฟฟ้าส่งออกไป)</li><li><strong>Decapsulation (จากล่างขึ้นบน):</strong> เมื่อฝั่งรับได้รับสัญญาณ จะทำการถอดส่วนหัวออกทีละชั้นย้อนกลับขึ้นไปจนถึงระดับแอปพลิเคชัน</li></ul>'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-structure-pilot.mjs:29:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: ' Pizza Away (Layer 1 → Layer 7)</span>\n<p>รายละเอียดของแบบจำลองทั้ง 7 ชั้น:</p>\n<ol><li><strong>Layer 7 — Application Layer (ชั้นการประยุกต์):</strong><ul><li>ทำหน้าที่เป็นจุดเชื่อมต่อระหว่างผู้ใช้งานหรือโปรแกรมประยุกต์กับบริการเครือข่าย</li><li>โพรโทคอลสำคัญ: HTTP, HTTPS, DNS, SSH, FTP, SFTP, SMTP, DHCP, Telnet</li><li>หน่วยข้อมูล (PDU): Data / Messages</li></ul></li><li><strong>Layer 6 — Presentation Layer (ชั้นการนำเสนอข้อมูล):</strong><ul><li>ทำหน้าที่จัดรูปแบบ แปลงรหัสข้อมูล (Data Formatting), การบีบอัดข้อมูล (Compression) และการเข้ารหัส/ถอดรหัสความปลอดภัย (Encryption / Decryption)</li><li>มาตรฐานสำคัญ: TLS/SSL, ASCII, Unicode, JSON, XML, JPEG, MP4</li><li>หน่วยข้อมูล (PDU): Data</li></ul></li><li><strong>Layer 5 — Session Layer (ชั้นเซสชัน):</strong><ul><li>ทำหน้าที่สร้าง (Establish), บริหารจัดการ (Maintain) และยกเลิกการเชื่อมต่อเซสชัน (Terminate) ระหว่างสองแอปพลิเคชัน</li><li>โพรโทคอลที่มักใช้เป็นตัวอย่าง: RPC (Remote Procedure Call), NetBIOS</li><li>Session Layer เป็นแนวคิดการสร้าง บริหาร และยุติเซสชันระหว่างแอปพลิเคชัน ส่วน sockets เป็น API/นามธรรมของจุดปลายการสื่อสารที่แอปใช้เรียกบริการเครือข่าย ไม่ใช่โพรโทคอลประจำ Session Layer</li><li>หน่วยข้อมูล (PDU): Data</li></ul></li><li><strong>Layer 4 — Transport Layer (ชั้นการขนส่งข้อมูล):</strong><ul><li>ทำหน้าที่ส่งข้อมูลแบบจุดต่อจุดระหว่างโฮสต์ (Host-to-Host End-to-End Communication), ควบคุมการไหลของข้อมูล (Flow Control), ตรวจจับข้อผิดพลาด และกำหนดหมายเลขพอร์ต (Port Numbers)</li><li>โพรโทคอลสำคัญ: TCP (เน้นความน่าเชื่อถือ ตรวจสอบข้อมูล) และ UDP (เน้นความรวดเร็ว ไม่มีการจับมือ)</li><li>หน่วยข้อมูล (PDU): <strong>Segment</strong> (สำหรับ TCP) หรือ <strong>Datagram</strong> (สำหรับ UDP)</li></ul></li><li><strong>Layer 3 — Network Layer (ชั้นเครือข่าย):</strong><ul><li>ทำหน้าที่กำหนดหมายเลขที่อยู่เชิงตรรกะ (Logical IP Addressing) และเลือกเส้นทางการส่งข้อมูลข้ามเครือข่าย (Routing)</li><li>โพรโทคอลและอุปกรณ์: IPv4, IPv6, ICMP, IPsec, Routers, Layer 3 Switches</li><li>หน่วยข้อมูล (PDU): <strong>Packet</strong></li></ul></li><li><strong>Layer 2 — Data Link Layer (ชั้นเชื่อมโยงข้อมูล):</strong><ul><li>ทำหน้าที่ควบคุมการเข้าถึงสื่อกลาง (Media Access Control: MAC), กำหนดหมายเลขที่อยู่ทางกายภาพ (Physical MAC Address), ตรวจจับข้อผิดพลาดในระดับเฟรม</li><li>โพรโทคอลและอุปกรณ์: Ethernet (IEEE 802.3), Wi-Fi (IEEE 802.11), Switches, Bridges, Network Interface Cards (NIC)</li><li>แบ่งออกเป็น 2 ชั้นย่อย: LLC (Logical Link Control) และ MAC (Media Access Control)</li><li>หน่วยข้อมูล (PDU): <strong>Frame</strong></li></ul></li><li><strong>Layer 1 — Physical Layer (ชั้นกายภาพ):</strong><ul><li>ทำหน้าที่แปลงข้อมูลดิจิทัลให้เป็นสัญญาณทางกายภาพ (ไฟฟ้า, แสง, คลื่นวิทยุ) เพื่อส่งผ่านตัวกลาง</li><li>อุปกรณ์และสื่อกลาง: สายทองแดง UTP (RJ45), ใยแก้วนำแสง (Fiber Optic), Hubs, Repeaters, เสาสัญญาณไร้สาย</li><li>หน่วยข้อมูล (PDU): <strong>Bits</strong> (0 และ 1)</li></ul></li></ol>\n<p>กระบวนการห่อหุ้มและการแกะข้อมูล (Encapsulation &amp; Decapsulation):</p>\n<ul><li><strong>Encapsulation (จากบนลงล่าง):</strong> เมื่อส่งข้อมูล ข้อมูลดิบจากแอปพลิเคชัน (Data) จะถูกเติมส่วนหัว (Header) ในแต่ละชั้น: Data → Segments (เติม TCP/UDP Header ที่มี Port) → Packets (เติม IP Header ที่มี Source/Dest IP) → Frames (เติม MAC Header และ FCS Trailer) → Bits (แปลงเป็นสัญญาณไฟฟ้าส่งออกไป)</li><li><strong>Decapsulation (จากล่างขึ้นบน):</strong> เมื่อฝั่งรับได้รับสัญญาณ จะทำการถอดส่วนหัวออกทีละชั้นย้อนกลับขึ้นไปจนถึงระดับแอปพลิเคชัน</li></ul>...',
+    expected: /<ol\b/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-structure-pilot.mjs:31:1
+✖ Each OSI layer retains a separate supporting list and PDU explanation (0.179ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 7
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-structure-pilot.mjs:32:105)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 7,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-structure-pilot.mjs:52:1
+✖ Pilot styles are explicitly scoped and do not hide list markers (3.4832ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(mark>=0)
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-structure-pilot.mjs:53:50)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-structure-pilot.mjs:57:1
+✖ Two pilot wrappers stop before the neighboring TCP/IP subsection (0.1632ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 2
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-structure-pilot.mjs:58:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

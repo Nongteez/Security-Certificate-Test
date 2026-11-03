@@ -19,140 +19,190 @@
 export const diagrams = {
   // 1.1.1 Threat & Control Relationship Chain
   threatChain: `
-<div class="reading-diagram-card" data-diagram="threatChain" role="region" aria-label="Threat and Control Relationship Pipeline">
+<div class="reading-diagram-card reading-threat-diagram" data-diagram="threatChain" data-relationship="causal-example-with-controls" role="region" aria-label="Threat, Vulnerability, Asset and Control Causal Relationship" aria-describedby="threatChain-note">
   <div class="reading-diagram-header">
-    <span class="reading-diagram-tag">Architecture Flow</span>
-    <h4 class="reading-diagram-title">Cybersecurity Threat &amp; Control Relationship Pipeline</h4>
+    <span class="reading-diagram-tag">Causal Model</span>
+    <h4 class="reading-diagram-title">Threats, Vulnerabilities, Impacts &amp; Controls: Causal Relationship</h4>
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
-    <svg viewBox="0 0 760 150" class="reading-diagram-svg" aria-label="Pipeline showing Asset with Vulnerability exploited by Threat Actor causing Impact, mitigated by Safeguards" role="img">
-      <g class="diag-node">
-        <rect x="10" y="35" width="120" height="70" rx="8" class="diag-box diag-box-blue" />
-        <text x="70" y="65" class="diag-text-title" text-anchor="middle">Asset</text>
-        <text x="70" y="85" class="diag-text-sub" text-anchor="middle">ทรัพย์สินมีคุณค่า</text>
-      </g>
-      <path d="M 130 70 L 160 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
-      <text x="145" y="62" class="diag-text-label" text-anchor="middle">มี</text>
+    <svg viewBox="0 0 840 250" class="reading-diagram-svg" aria-label="Causal flow: Threat Actor uses Exploit to target Vulnerability in Asset, which may cause Potential Impact, with Security Controls reducing likelihood and impact" role="img">
+      <!-- Security Controls Secondary Band (Above) -->
+      <g data-threat-concept="controls">
+        <rect x="210" y="16" width="420" height="52" rx="8" class="diag-box diag-box-emerald" />
+        <text x="420" y="36" class="diag-text-title" font-weight="700" text-anchor="middle" fill="var(--green, #10b981)">Security Controls · มาตรการควบคุม</text>
+        <text x="420" y="53" class="diag-text-sub" text-anchor="middle">Safeguards &amp; Countermeasures · ช่วยลดโอกาสเกิดเหตุ (Likelihood) และลดผลกระทบ (Impact)</text>
 
-      <g class="diag-node">
-        <rect x="160" y="35" width="130" height="70" rx="8" class="diag-box diag-box-banner" />
-        <text x="225" y="65" class="diag-text-title" text-anchor="middle">Vulnerability</text>
-        <text x="225" y="85" class="diag-text-sub" text-anchor="middle">จุดอ่อน / ช่องโหว่</text>
-      </g>
-      <path d="M 290 70 L 320 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
-      <text x="305" y="62" class="diag-text-label" text-anchor="middle">ถูกเจาะผ่าน</text>
+        <!-- Downward Indicator 1: Reduces Likelihood -->
+        <line x1="290" y1="68" x2="290" y2="108" stroke="var(--green, #059669)" stroke-width="1.5" stroke-dasharray="3 3" />
+        <polygon points="290,113 286,105 294,105" fill="var(--green, #059669)" />
+        <text x="290" y="92" class="diag-text-label" font-size="10px" text-anchor="middle" fill="var(--green, #059669)">Reduces Likelihood · ลดโอกาส</text>
 
-      <g class="diag-node">
-        <rect x="320" y="35" width="130" height="70" rx="8" class="diag-box diag-box-banner" />
-        <text x="385" y="65" class="diag-text-title" text-anchor="middle">Threat Actor</text>
-        <text x="385" y="85" class="diag-text-sub" text-anchor="middle">ผู้คุกคามใช้ Exploit</text>
-      </g>
-      <path d="M 450 70 L 480 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
-      <text x="465" y="62" class="diag-text-label" text-anchor="middle">ก่อให้เกิด</text>
-
-      <g class="diag-node">
-        <rect x="480" y="35" width="120" height="70" rx="8" class="diag-box diag-box-banner" />
-        <text x="540" y="65" class="diag-text-title" text-anchor="middle">Impact</text>
-        <text x="540" y="85" class="diag-text-sub" text-anchor="middle">ความเสียหาย</text>
+        <!-- Downward Indicator 2: Reduces Impact -->
+        <line x1="570" y1="68" x2="570" y2="98" stroke="var(--green, #059669)" stroke-width="1.5" stroke-dasharray="3 3" />
+        <polygon points="570,103 566,95 574,95" fill="var(--green, #059669)" />
+        <text x="570" y="86" class="diag-text-label" font-size="10px" text-anchor="middle" fill="var(--green, #059669)">Reduces Impact · ลดความเสียหาย</text>
       </g>
 
-      <g class="diag-node">
-        <rect x="620" y="25" width="130" height="90" rx="8" class="diag-box diag-box-blue diag-box-highlight" />
-        <text x="685" y="55" class="diag-text-title" text-anchor="middle">Safeguards</text>
-        <text x="685" y="75" class="diag-text-title" text-anchor="middle">&amp; Controls</text>
-        <text x="685" y="98" class="diag-text-sub" text-anchor="middle">มาตรการปกป้อง</text>
+      <!-- Main Causal Flow -->
+      <!-- 01: Threat Actor -->
+      <g data-threat-concept="threat-actor">
+        <rect x="20" y="115" width="150" height="105" rx="8" class="diag-box diag-box-amber" />
+        <rect x="35" y="125" width="120" height="18" rx="4" fill="#f59e0b" fill-opacity="0.15" />
+        <text x="95" y="138" fill="#f59e0b" font-size="9.5px" font-weight="700" text-anchor="middle">01 · INITIATING AGENT</text>
+        <text x="95" y="164" class="diag-text-title" font-size="14px" font-weight="700" text-anchor="middle">Threat Actor</text>
+        <text x="95" y="184" class="diag-text-sub" font-size="12px" text-anchor="middle">ผู้ก่อภัยคุกคาม</text>
+        <text x="95" y="202" class="diag-text-label" font-size="10.5px" text-anchor="middle">บุคคล/สิ่งที่คุกคาม</text>
       </g>
-      <path d="M 685 115 C 685 140, 70 140, 70 105" class="diag-arrow diag-arrow-dash" marker-end="url(#diag-arrow-head)" />
-      <text x="375" y="136" class="diag-text-label" text-anchor="middle">Controls เข้ามาปกป้อง Asset และลดความเสี่ยง (Risk)</text>
+
+      <!-- Connector 1: Uses / ใช้ -->
+      <g data-from="threat-actor" data-to="vulnerability">
+        <line x1="170" y1="167" x2="209" y2="167" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />
+        <polygon points="214,167 206,163 206,171" fill="var(--blue, #3b82f6)" />
+        <text x="190" y="158" class="diag-text-label" font-size="10.5px" text-anchor="middle">Uses · ใช้</text>
+      </g>
+
+      <!-- 02: Exploit -->
+      <g data-threat-concept="exploit">
+        <rect x="215" y="115" width="150" height="105" rx="8" class="diag-box diag-box-banner" />
+        <rect x="230" y="125" width="120" height="18" rx="4" fill="var(--blue, #3b82f6)" fill-opacity="0.15" />
+        <text x="290" y="138" fill="var(--blue, #3b82f6)" font-size="9.5px" font-weight="700" text-anchor="middle">02 · TECHNIQUE / TOOL</text>
+        <text x="290" y="164" class="diag-text-title" font-size="14px" font-weight="700" text-anchor="middle">Exploit</text>
+        <text x="290" y="184" class="diag-text-sub" font-size="12px" text-anchor="middle">การใช้ประโยชน์</text>
+        <text x="290" y="202" class="diag-text-label" font-size="10.5px" text-anchor="middle">วิธีหรือเครื่องมือเจาะ</text>
+      </g>
+
+      <!-- Connector 2: Targets / เจาะผ่าน -->
+      <g>
+        <line x1="365" y1="167" x2="404" y2="167" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />
+        <polygon points="409,167 401,163 401,171" fill="var(--blue, #3b82f6)" />
+        <text x="385" y="158" class="diag-text-label" font-size="10.5px" text-anchor="middle">Targets · เจาะ</text>
+      </g>
+
+      <!-- 03: Asset & Vulnerability (Grouped Nested Container) -->
+      <g data-threat-group="vulnerable-asset" data-threat-concept="asset">
+        <!-- Outer Box: Asset -->
+        <rect x="410" y="105" width="225" height="125" rx="8" class="diag-box diag-box-blue" style="stroke-dasharray: 4 2;" />
+        <text x="522.5" y="125" class="diag-text-title" fill="var(--blue, #3b82f6)" font-size="12.5px" font-weight="700" text-anchor="middle">Asset · ทรัพย์สินมีคุณค่า</text>
+        <text x="522.5" y="139" class="diag-text-label" font-size="10px" text-anchor="middle">Target to Protect · สิ่งที่ต้องคุ้มครอง</text>
+
+        <!-- Inner Box: Vulnerability -->
+        <g data-threat-concept="vulnerability">
+          <rect x="422" y="147" width="201" height="73" rx="6" class="diag-box diag-box-banner" />
+          <text x="522.5" y="171" class="diag-text-title" font-size="13.5px" font-weight="700" text-anchor="middle">Vulnerability</text>
+          <text x="522.5" y="190" class="diag-text-sub" font-size="12px" text-anchor="middle">ช่องโหว่ / จุดอ่อน</text>
+          <text x="522.5" y="208" class="diag-text-label" font-size="10px" text-anchor="middle">Weakness in Asset · ข้อบกพร่องภายใน</text>
+        </g>
+      </g>
+
+      <!-- Connector 3: May cause / หากสำเร็จ -->
+      <g data-from="vulnerable-asset" data-to="impact">
+        <line x1="635" y1="167" x2="674" y2="167" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />
+        <polygon points="679,167 671,163 671,171" fill="var(--blue, #3b82f6)" />
+        <text x="655" y="156" class="diag-text-label" font-size="9.5px" text-anchor="middle">May cause</text>
+        <text x="655" y="179" class="diag-text-label" font-size="9.5px" text-anchor="middle">หากสำเร็จ</text>
+      </g>
+
+      <!-- 04: Potential Impact -->
+      <g data-threat-concept="impact">
+        <rect x="680" y="115" width="140" height="105" rx="8" class="diag-box diag-box-rose" />
+        <rect x="695" y="125" width="110" height="18" rx="4" fill="#ef4444" fill-opacity="0.15" />
+        <text x="750" y="138" fill="#ef4444" font-size="9.5px" font-weight="700" text-anchor="middle">03 · OUTCOME</text>
+        <text x="750" y="164" class="diag-text-title" font-size="13px" font-weight="700" text-anchor="middle">Potential Impact</text>
+        <text x="750" y="184" class="diag-text-sub" font-size="11.5px" text-anchor="middle">ผลกระทบที่อาจเกิด</text>
+        <text x="750" y="202" class="diag-text-label" font-size="9.5px" text-anchor="middle">Conditional Harm</text>
+      </g>
     </svg>
   </div>
-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Threat and Control Relationship Pipeline Mobile">
-    <div class="reading-mob-banner">
-      <span class="reading-mob-banner-tag">ATTACK &amp; DEFENSE PIPELINE</span>
-      <p class="reading-mob-banner-text">ความสัมพันธ์ 5 ขั้นตอน: ภัยคุกคามเจาะผ่านช่องโหว่สร้างผลกระทบต่อทรัพย์สิน โดยมีมาตรการควบคุมปิดกั้น</p>
+
+  <!-- Mobile Stack Representation (<880px) -->
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Threat Chain Mobile View">
+    <!-- Security Controls Secondary Card -->
+    <div class="reading-mob-tier-card reading-tier-green" data-threat-concept="controls" style="border-left: 3px solid var(--green, #059669);">
+      <div class="reading-mob-tier-head">
+        <span class="reading-mob-tier-num" style="background: var(--green, #059669); color: #fff;">CTRL</span>
+        <div class="reading-mob-tier-info">
+          <h5 class="reading-mob-tier-name">SECURITY CONTROLS (มาตรการควบคุม)</h5>
+          <span class="reading-mob-tier-action">Safeguards &amp; Countermeasures · ปกป้องและลดความเสี่ยง</span>
+        </div>
+      </div>
+      <p class="reading-mob-tier-desc">มาตรการควบคุมช่วยลดโอกาสเกิดเหตุ (Reduces Likelihood) และลดทอนความเสียหาย (Reduces Impact) เมื่อเกิดเหตุ</p>
     </div>
+
+    <!-- Main Causal Stack -->
     <div class="reading-mob-stack-list">
-      <div class="reading-mob-tier-card reading-tier-blue">
+      <!-- 01 Threat Actor -->
+      <div class="reading-mob-tier-card reading-tier-kpi" data-threat-concept="threat-actor">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">01</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">ASSET (ทรัพย์สินมีคุณค่า)</h5>
-            <span class="reading-mob-tier-action">Target to Protect &middot; สิ่งที่ต้องคุ้มครอง</span>
+            <h5 class="reading-mob-tier-name">THREAT ACTOR (ผู้ก่อภัยคุกคาม)</h5>
+            <span class="reading-mob-tier-action">Initiating Agent · ผู้ลงมือหรือพยายามก่อให้เกิดภัยคุกคาม</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">สิ่งที่มีคุณค่าต่อองค์กร หากสูญหายหรือเสียหายจะเกิดผลกระทบ: ฐานข้อมูลลูกค้า, ระบบชำระเงิน, ทรัพย์สินทางปัญญา, บุคลากร</p>
       </div>
 
-      <div class="reading-mob-step-connector">
+      <!-- Connector 1 -->
+      <div class="reading-mob-step-connector" data-from="threat-actor" data-to="vulnerability">
         <div class="reading-mob-connector-line reading-connector-blue"></div>
-        <span class="reading-mob-connector-pill reading-pill-blue">&darr; มีจุดอ่อนที่อาจเปิดช่องให้โจมตี &darr;</span>
+        <span class="reading-mob-connector-pill reading-pill-blue">&darr; Uses / ใช้ประโยชน์ &darr;</span>
         <div class="reading-mob-connector-line reading-connector-blue"></div>
       </div>
 
-      <div class="reading-mob-tier-card reading-tier-amber">
+      <!-- 02 Exploit -->
+      <div class="reading-mob-tier-card reading-tier-blue" data-threat-concept="exploit">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">02</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">VULNERABILITY (จุดอ่อน / ช่องโหว่)</h5>
-            <span class="reading-mob-tier-action">System Weakness &middot; ข้อบกพร่องภายใน</span>
+            <h5 class="reading-mob-tier-name">EXPLOIT (การใช้ประโยชน์จากช่องโหว่)</h5>
+            <span class="reading-mob-tier-action">Attack Technique · วิธีการหรือเครื่องมือที่ใช้เจาะระบบ</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ข้อบกพร่องในระบบ ซอฟต์แวร์ หรือกระบวนการ: เซิร์ฟเวอร์ที่ยังไม่ได้ติดตั้ง Patch, การตั้งค่าความปลอดภัยผิดพลาด, รหัสผ่านคาดเดาง่าย</p>
       </div>
 
+      <!-- Connector 2 -->
       <div class="reading-mob-step-connector">
         <div class="reading-mob-connector-line reading-connector-blue"></div>
-        <span class="reading-mob-connector-pill reading-pill-blue">&darr; ถูกมุ่งเป้าโจมตีโดย &darr;</span>
+        <span class="reading-mob-connector-pill reading-pill-blue">&darr; Targets / เจาะผ่าน &darr;</span>
         <div class="reading-mob-connector-line reading-connector-blue"></div>
       </div>
 
-      <div class="reading-mob-tier-card reading-tier-red">
+      <!-- 03 Asset & Vulnerability Grouped -->
+      <div class="reading-mob-tier-card reading-tier-amber" data-threat-group="vulnerable-asset" data-threat-concept="asset" style="border: 1.5px dashed var(--blue, #3b82f6); background: var(--blue-bg, rgba(59, 130, 246, 0.05));">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">03</span>
+          <span class="reading-mob-tier-num" style="background: var(--blue, #3b82f6); color: #fff;">03</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">THREAT ACTOR &amp; EXPLOIT (ผู้ก่อภัยคุกคาม)</h5>
-            <span class="reading-mob-tier-action">Malicious Intent &middot; ผู้ลงมือโจมตี</span>
+            <h5 class="reading-mob-tier-name">ASSET (ทรัพย์สินมีคุณค่า)</h5>
+            <span class="reading-mob-tier-action">Target to Protect · สิ่งที่องค์กรต้องคุ้มครอง</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">บุคคลหรือกลุ่มบุคคลที่แสวงหาประโยชน์จากช่องโหว่ (Hacker, Malicious Insider, Nation-State) โดยใช้ <em>Exploit</em> เป็นเทคนิคหรือโค้ดเจาะระบบ</p>
+        <div class="reading-mob-subcard" data-threat-concept="vulnerability" style="margin-top: 10px; padding: 10px 14px; background: var(--panel, #1e293b); border: 1px solid var(--line, #334155); border-radius: 6px;">
+          <h6 style="margin: 0; font-size: 14px; font-weight: 700; color: var(--text);">VULNERABILITY (ช่องโหว่)</h6>
+          <div style="font-size: 12px; color: var(--text-muted, #94a3b8); margin-top: 3px;">Weakness in Asset · จุดอ่อนหรือข้อบกพร่องภายในทรัพย์สิน</div>
+        </div>
       </div>
 
-      <div class="reading-mob-step-connector">
+      <!-- Connector 3 -->
+      <div class="reading-mob-step-connector" data-from="vulnerable-asset" data-to="impact">
         <div class="reading-mob-connector-line reading-connector-blue"></div>
-        <span class="reading-mob-connector-pill reading-pill-blue">&darr; หากสำเร็จจะก่อให้เกิด &darr;</span>
+        <span class="reading-mob-connector-pill reading-pill-blue">&darr; If successful, may cause / หากสำเร็จ อาจก่อให้เกิด &darr;</span>
         <div class="reading-mob-connector-line reading-connector-blue"></div>
       </div>
 
-      <div class="reading-mob-tier-card reading-tier-kri">
+      <!-- 04 Potential Impact -->
+      <div class="reading-mob-tier-card reading-tier-report" data-threat-concept="impact">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">04</span>
+          <span class="reading-mob-tier-num" style="background: var(--red, #ef4444); color: #fff;">04</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">IMPACT &amp; RISK (ความเสียหายและความเสี่ยง)</h5>
-            <span class="reading-mob-tier-action">Harm Realized &middot; ผลกระทบทางธุรกิจ</span>
+            <h5 class="reading-mob-tier-name">POTENTIAL IMPACT (ผลกระทบที่อาจเกิดขึ้น)</h5>
+            <span class="reading-mob-tier-action">Conditional Harm · ความเสียหายหากการโจมตีสำเร็จ (ไม่แน่นอน)</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ความเสียหายทางการเงิน การหยุดชะงักของบริการ การเสียชื่อเสียง หรือความรับผิดชอบทางกฎหมายเมื่อการโจมตีสร้างความสูญเสียสำเร็จ</p>
-      </div>
-
-      <div class="reading-mob-step-connector">
-        <div class="reading-mob-connector-line reading-connector-green"></div>
-        <span class="reading-mob-connector-pill reading-pill-green">&darr; ลดความเสี่ยงและคุ้มครองทรัพย์สินด้วย &darr;</span>
-        <div class="reading-mob-connector-line reading-connector-green"></div>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-green">
-        <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">05</span>
-          <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">SAFEGUARDS &amp; CONTROLS (มาตรการควบคุม)</h5>
-            <span class="reading-mob-tier-action">Protective Countermeasure &middot; วงแหวนป้องกัน</span>
-          </div>
-        </div>
-        <p class="reading-mob-tier-desc">กลไก นโยบาย และเทคโนโลยี (MFA, Firewall, การเข้ารหัส, นโยบายความปลอดภัย) ที่ติดตั้งเพื่อลดโอกาสหรือผลกระทบของความเสี่ยง (Risk Mitigation)</p>
       </div>
     </div>
   </div>
 </div>
+<p id="threatChain-note" class="reading-threat-caption"><span lang="th">เป็นตัวอย่างความสัมพันธ์เชิงเหตุและผล ไม่ใช่ลำดับการโจมตีที่ต้องเกิดทุกครั้ง มาตรการควบคุมช่วยลดโอกาสเกิดเหตุและ/หรือผลกระทบ โดยไม่ได้เป็นขั้นตอนสุดท้ายหลังเกิดเหตุ</span> / <span lang="en">Illustrative causal relationship, not a mandatory attack sequence (not five required steps). Controls can reduce risk where relevant, not a final stage after impact.</span></p>
+
 `,
 
   // 1.1.2 Case A: CIA Triad
@@ -360,6 +410,7 @@ export const diagrams = {
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 760 140" class="reading-diagram-svg" aria-label="Identification to Authentication to Authorization to Accounting" role="img">
+      <!-- Step 1: Identification -->
       <g>
         <rect x="10" y="25" width="165" height="90" rx="8" class="diag-box diag-box-banner" />
         <text x="92" y="52" class="diag-step-num" text-anchor="middle">STEP 01</text>
@@ -367,8 +418,12 @@ export const diagrams = {
         <text x="92" y="93" class="diag-text-sub" text-anchor="middle">"Who are you?"</text>
         <text x="92" y="107" class="diag-text-sub" text-anchor="middle">Username / User ID</text>
       </g>
-      <path d="M 175 70 L 205 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
+      <g>
+        <line x1="175" y1="70" x2="199" y2="70" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />
+        <polygon points="205,70 197,65 197,75" fill="var(--blue, #3b82f6)" />
+      </g>
 
+      <!-- Step 2: Authentication -->
       <g>
         <rect x="205" y="25" width="165" height="90" rx="8" class="diag-box diag-box-banner" />
         <text x="287" y="52" class="diag-step-num" text-anchor="middle">STEP 02</text>
@@ -376,8 +431,12 @@ export const diagrams = {
         <text x="287" y="93" class="diag-text-sub" text-anchor="middle">"Prove it!"</text>
         <text x="287" y="107" class="diag-text-sub" text-anchor="middle">Password, MFA, Bio</text>
       </g>
-      <path d="M 370 70 L 400 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
+      <g>
+        <line x1="370" y1="70" x2="394" y2="70" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />
+        <polygon points="400,70 392,65 392,75" fill="var(--blue, #3b82f6)" />
+      </g>
 
+      <!-- Step 3: Authorization -->
       <g>
         <rect x="400" y="25" width="165" height="90" rx="8" class="diag-box diag-box-banner" />
         <text x="482" y="52" class="diag-step-num" text-anchor="middle">STEP 03</text>
@@ -385,8 +444,12 @@ export const diagrams = {
         <text x="482" y="93" class="diag-text-sub" text-anchor="middle">"What can you do?"</text>
         <text x="482" y="107" class="diag-text-sub" text-anchor="middle">Permissions / Roles</text>
       </g>
-      <path d="M 565 70 L 595 70" class="diag-arrow" marker-end="url(#diag-arrow-head)" />
+      <g>
+        <line x1="565" y1="70" x2="589" y2="70" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />
+        <polygon points="595,70 587,65 587,75" fill="var(--blue, #3b82f6)" />
+      </g>
 
+      <!-- Step 4: Accounting -->
       <g>
         <rect x="595" y="25" width="155" height="90" rx="8" class="diag-box diag-box-banner" />
         <text x="672" y="52" class="diag-step-num" text-anchor="middle">STEP 04</text>
@@ -396,84 +459,60 @@ export const diagrams = {
       </g>
     </svg>
   </div>
-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="AAA Security Framework Lifecycle Mobile">
-    <div class="reading-mob-banner">
-      <span class="reading-mob-banner-tag">AAA SECURITY FRAMEWORK</span>
-      <p class="reading-mob-banner-text">วงจร 4 ขั้นตอนในการเข้าถึงระบบอย่างปลอดภัย: ระบุตัวตน &rarr; พิสูจน์ตัวตน &rarr; อนุญาตสิทธิ์ &rarr; บันทึกประวัติ</p>
-    </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="AAA Identity Lifecycle Mobile Stack">
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-kpi">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">01</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">IDENTIFICATION (การระบุตัวตน)</h5>
-            <span class="reading-mob-tier-action">"Who are you?" &middot; การอ้างสิทธิ์ในตัวตน</span>
+            <span class="reading-mob-tier-action">&quot;Who are you?&quot; &middot; Username / User ID</span>
           </div>
         </div>
         <p class="reading-mob-tier-desc">ผู้ใช้แจ้งตัวตนต่อระบบ เช่น Username, Employee ID, อีเมล (ยังไม่มีการพิสูจน์ความจริงในขั้นตอนนี้)</p>
       </div>
-
-      <div class="reading-mob-step-connector">
-        <div class="reading-mob-connector-line reading-connector-blue"></div>
-        <span class="reading-mob-connector-pill reading-pill-blue">&darr; นำหลักฐานมาพิสูจน์ &darr;</span>
-        <div class="reading-mob-connector-line reading-connector-blue"></div>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-blue">
+      <div class="reading-mob-tier-card reading-tier-kri">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">02</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">AUTHENTICATION (การพิสูจน์ตัวตน)</h5>
-            <span class="reading-mob-tier-action">"Prove it!" &middot; ตรวจสอบหลักฐานความจริง</span>
+            <span class="reading-mob-tier-action">&quot;Prove it!&quot; &middot; Password, MFA, Bio</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ระบบตรวจสอบหลักฐานว่าเป็นตัวจริง: รหัสผ่าน (Knowledge), Token / OTP (Ownership), ลายนิ้วมือ/ใบหน้า (Inherence) &middot; MFA ใช้ 2 ปัจจัยขึ้นไปที่ต่างหมวดหมู่</p>
+        <p class="reading-mob-tier-desc">ระบบตรวจสอบหลักฐานว่าเป็นตัวจริง: Password (Knowledge), Token / OTP (Ownership), ลายนิ้วมือ/ใบหน้า (Inherence) &middot; MFA ใช้ 2 ปัจจัยขึ้นไปที่ต่างหมวดหมู่</p>
       </div>
-
-      <div class="reading-mob-step-connector">
-        <div class="reading-mob-connector-line reading-connector-blue"></div>
-        <span class="reading-mob-connector-pill reading-pill-blue">&darr; กำหนดขอบเขตสิทธิ์ &darr;</span>
-        <div class="reading-mob-connector-line reading-connector-blue"></div>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-amber">
+      <div class="reading-mob-tier-card reading-tier-report">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">03</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">AUTHORIZATION (การอนุญาตสิทธิ์)</h5>
-            <span class="reading-mob-tier-action">"What can you do?" &middot; การอนุญาตเข้าถึง</span>
+            <span class="reading-mob-tier-action">&quot;What can you do?&quot; &middot; Permissions / Roles</span>
           </div>
         </div>
         <p class="reading-mob-tier-desc">กำหนดว่าผู้ใช้ทำอะไรได้บ้างในระบบ: Access Control Lists (ACLs), บทบาทงาน (RBAC) ตามหลักสิทธิ์ขั้นต่ำที่จำเป็น (Least Privilege)</p>
       </div>
-
-      <div class="reading-mob-step-connector">
-        <div class="reading-mob-connector-line reading-connector-green"></div>
-        <span class="reading-mob-connector-pill reading-pill-green">&darr; บันทึกและติดตามผล &darr;</span>
-        <div class="reading-mob-connector-line reading-connector-green"></div>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-green">
+      <div class="reading-mob-tier-card reading-tier-dashboard">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">04</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">ACCOUNTING &amp; AUDITING (การตรวจสอบ)</h5>
-            <span class="reading-mob-tier-action">"What did you do?" &middot; การบันทึกและตรวจสอบประวัติ</span>
+            <span class="reading-mob-tier-action">&quot;What did you do?&quot; &middot; Audit Logs / Tracing</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">Audit Trails และ Timestamps ช่วยติดตามกิจกรรมและสนับสนุน Accountability เมื่อบันทึกได้รับการปกป้องและเชื่อมโยงกับตัวตนอย่างน่าเชื่อถือ ส่วน Non-repudiation ต้องมีหลักฐานและการควบคุมที่เหมาะสมต่อการโต้แย้งภายหลัง เช่น ลายมือชื่อดิจิทัลพร้อมการจัดการกุญแจและหลักฐานที่เชื่อถือได้ ไม่ได้เกิดจากการมี Log เพียงอย่างเดียว</p>
+        <p class="reading-mob-tier-desc">Audit Trails และ Timestamps ช่วยติดตามกิจกรรมและสนับสนุน Accountability เมื่อบันทึกได้รับการปกป้องและเชื่อมโยงกับตัวตนอย่างน่าเชื่อถือ สนับสนุน Non-repudiation</p>
       </div>
     </div>
   </div>
+  <p class="reading-semantic-note">Accounting (Audit Logs) บันทึกเหตุการณ์อย่างต่อเนื่องตลอดการใช้งานเพื่อสนับสนุน Accountability และการไม่สามารถปฏิเสธความรับผิดชอบได้ (Non-repudiation)</p>
 </div>
 `,
 
   // 1.1.6 Privacy Governance & Roles Flow
   privacyFlow: `
-<div class="reading-diagram-card" data-diagram="privacyFlow" role="region" aria-label="Privacy Governance and Data Roles Flow">
+<div class="reading-diagram-card" data-diagram="privacyFlow" data-relationship="roles-and-instructions" role="region" aria-label="Privacy Governance and Data Roles Flow">
   <div class="reading-diagram-header">
     <span class="reading-diagram-tag">Governance Model</span>
-    <h4 class="reading-diagram-title">Data Privacy Roles &amp; Lifecycle Chain (GDPR / Regulatory)</h4>
+    <h4 class="reading-diagram-title">Data Privacy Roles and Instructions — Example Delegation</h4>
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 700 150" class="reading-diagram-svg" aria-label="Data Subject to Data Controller to Data Processor" role="img">
@@ -507,7 +546,7 @@ export const diagrams = {
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-kpi">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">01</span>
+
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">DATA SUBJECT (เจ้าของข้อมูลส่วนบุคคล)</h5>
             <span class="reading-mob-tier-action">Individual &middot; บุคคลธรรมดา</span>
@@ -518,13 +557,13 @@ export const diagrams = {
 
       <div class="reading-mob-step-connector">
         <div class="reading-mob-connector-line reading-connector-blue"></div>
-        <span class="reading-mob-connector-pill reading-pill-blue">&darr; ให้ข้อมูลและความยินยอม (Consent) &darr;</span>
+        <span class="reading-mob-connector-pill reading-pill-blue">&darr; ให้ข้อมูลตามบริบท; Consent เมื่อใช้ฐานความยินยอม &darr;</span>
         <div class="reading-mob-connector-line reading-connector-blue"></div>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-blue">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">02</span>
+
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">DATA CONTROLLER (ผู้ควบคุมข้อมูลส่วนบุคคล)</h5>
             <span class="reading-mob-tier-action">Determines Purposes &amp; Means &middot; รับผิดชอบสูงสุด</span>
@@ -541,7 +580,7 @@ export const diagrams = {
 
       <div class="reading-mob-tier-card reading-tier-green">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">03</span>
+
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">DATA PROCESSOR (ผู้ประมวลผลข้อมูลส่วนบุคคล)</h5>
             <span class="reading-mob-tier-action">Acts on Behalf of Controller &middot; ผู้ให้บริการภายนอก</span>
@@ -551,18 +590,18 @@ export const diagrams = {
       </div>
     </div>
   </div>
-</div>
+<p class="reading-semantic-note">Example role relationships when a processor is used, not compulsory processing stages. The consent label applies when consent is the relevant basis; it does not establish the legal basis for every processing context. / ตัวอย่างความสัมพันธ์ระหว่างบทบาทเมื่อมีการใช้ผู้ประมวลผล ไม่ใช่ขั้นตอนบังคับของการประมวลผลทุกกรณี ป้าย Consent ใช้เมื่ออาศัยฐานความยินยอม ไม่ได้กำหนดฐานกฎหมายแทนการพิจารณาบริบท</p></div>
 `,
 
   // 1.1.7 Case B: Defense in Depth (7 Concentric Layers)
   defenseInDepth: `
-<div class="reading-diagram-card" data-diagram="defenseInDepth" role="region" aria-label="Defense in Depth 7-Layer Architecture Diagram">
+<div class="reading-diagram-card" data-diagram="defenseInDepth" role="region" aria-label="Defense in Depth: example complementary layers, not chronological steps">
   <div class="reading-diagram-header">
     <span class="reading-diagram-tag">Security Architecture</span>
     <h4 class="reading-diagram-title">Defense in Depth — Seven Example Protective Layers</h4>
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
-    <svg viewBox="0 0 740 320" class="reading-diagram-svg" aria-label="7 defensive layers protecting core asset at center" role="img">
+    <svg viewBox="0 0 740 320" class="reading-diagram-svg" aria-label="Seven example complementary protective layers around core data; not a fixed count, chronological sequence or guarantee" role="img">
       <circle cx="370" cy="160" r="32" class="diag-did-core" />
       <text x="370" y="157" class="diag-did-core-title" text-anchor="middle">CORE</text>
       <text x="370" y="172" class="diag-did-core-sub" text-anchor="middle">DATA</text>
@@ -688,7 +727,7 @@ export const diagrams = {
       </div>
     </div>
   </div>
-</div>
+<p class="reading-semantic-note">These seven layers are examples of complementary defenses, not a fixed number or chronological sequence. No layer guarantees protection. / ทั้งเจ็ดเป็นตัวอย่างมาตรการหลายชั้นที่เสริมกัน ไม่ใช่จำนวนชั้นสากลหรือลำดับเวลา และไม่รับประกันการป้องกันได้ทุกกรณี</p></div>
 `,
 
   // 1.2.2 Case C: Quantitative Risk Calculation Pipeline
@@ -1047,119 +1086,80 @@ export const diagrams = {
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 850 155" class="reading-diagram-svg" aria-label="Functional Matrix: Deterrent, Preventive, Detective, Corrective, Recovery with overlapping roles" role="img">
+      <!-- Column 1: Before Incident -->
       <g>
         <rect x="15" y="15" width="260" height="125" rx="8" class="diag-timeline-card" />
         <rect x="99" y="27" width="92" height="22" rx="4" class="diag-timeline-badge" />
         <text x="145" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">BEFORE</text>
         <text x="145" y="68" class="diag-timeline-title" text-anchor="middle">Deterrent &amp; Preventive</text>
         <text x="145" y="93" class="diag-timeline-desc" text-anchor="middle">ยับยั้งใจ &amp; สกัดกั้นก่อนเกิดเหตุ</text>
-        <text x="145" y="117" class="diag-timeline-example" text-anchor="middle">ป้ายเตือน, ล็อคประตู, Firewall, MFA</text>
+        <text x="145" y="117" class="diag-timeline-example" text-anchor="middle">Warning Banners, MFA, Firewall</text>
       </g>
 
+      <!-- Arrow 1: Before -> During -->
       <g class="diag-timeline-arrow-group" aria-hidden="true">
         <line x1="277" y1="77" x2="289" y2="77" class="diag-timeline-arrow-line" />
         <polygon points="293,77 287,73 287,81" class="diag-timeline-arrow-head" />
       </g>
 
+      <!-- Column 2: During Incident -->
       <g>
         <rect x="295" y="15" width="260" height="125" rx="8" class="diag-timeline-card" />
         <rect x="379" y="27" width="92" height="22" rx="4" class="diag-timeline-badge" />
-        <text x="425" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">DETECT</text>
+        <text x="425" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">DURING</text>
         <text x="425" y="68" class="diag-timeline-title" text-anchor="middle">Detective</text>
-        <text x="425" y="93" class="diag-timeline-desc" text-anchor="middle">ตรวจจับระหว่างเกิดเหตุหรือย้อนหลัง</text>
+        <text x="425" y="93" class="diag-timeline-desc" text-anchor="middle">ตรวจจับ &amp; แจ้งเตือนภัยขณะเกิดเหตุ</text>
         <text x="425" y="117" class="diag-timeline-example" text-anchor="middle">IDS, Security Logs, Motion Sensor</text>
       </g>
 
+      <!-- Arrow 2: During -> After -->
       <g class="diag-timeline-arrow-group" aria-hidden="true">
         <line x1="557" y1="77" x2="569" y2="77" class="diag-timeline-arrow-line" />
         <polygon points="573,77 567,73 567,81" class="diag-timeline-arrow-head" />
       </g>
 
+      <!-- Column 3: After Incident -->
       <g>
         <rect x="575" y="15" width="260" height="125" rx="8" class="diag-timeline-card" />
         <rect x="659" y="27" width="92" height="22" rx="4" class="diag-timeline-badge" />
-        <text x="705" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">CORRECT</text>
+        <text x="705" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">AFTER</text>
         <text x="705" y="68" class="diag-timeline-title" text-anchor="middle">Corrective &amp; Recovery</text>
-        <text x="705" y="93" class="diag-timeline-desc" text-anchor="middle">แก้ปัญหา ลดความเสียหาย &amp; กู้คืน</text>
-        <text x="705" y="117" class="diag-timeline-example" text-anchor="middle">Patching, Malware Removal, DRP</text>
+        <text x="705" y="93" class="diag-timeline-desc" text-anchor="middle">แก้ไขเยียวยา &amp; กู้คืนระบบหลังเกิดเหตุ</text>
+        <text x="705" y="117" class="diag-timeline-example" text-anchor="middle">Patching, Malware Removal, Alternate Site</text>
       </g>
     </svg>
   </div>
-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Security Control Functions Timeline Mobile">
-    <div class="reading-mob-banner">
-      <span class="reading-mob-banner-tag">CONTROL TIMELINE TAXONOMY</span>
-      <p class="reading-mob-banner-text">จัดประเภทตามหน้าที่หลัก ไม่ใช่ช่วงเวลาตายตัว: Preventive สกัดกั้น; Detective ค้นพบระหว่างเกิดหรือย้อนหลัง; Corrective แก้ไขสาเหตุหรือลดความเสียหายและอาจเริ่มขณะเกิดเหตุ; Recovery ฟื้นฟูบริการ เวลาทำงานอาจซ้อนทับกันได้</p>
-    </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Security Control Functions Mobile Stack">
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-kpi">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">BEFORE</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">DETERRENT &amp; PREVENTIVE (ก่อนเกิดเหตุ)</h5>
-            <span class="reading-mob-tier-action">ยับยั้งใจ &amp; สกัดกั้นก่อนเกิดเหตุ</span>
+            <h5 class="reading-mob-tier-name">DETERRENT &amp; PREVENTIVE</h5>
+            <span class="reading-mob-tier-action">ก่อนเกิดเหตุ &middot; ยับยั้งและสกัดกั้น</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ป้องปรามผู้ไม่ประสงค์ดีไม่ให้กล้าลงมือ และสกัดกั้นการเข้าถึงโดยไม่ได้รับอนุญาตก่อนเกิดเหตุการณ์บุกรุก</p>
-        <div class="reading-mob-tier-grid">
-          <div class="reading-mob-sub-item">
-            <span class="reading-mob-sub-name">Deterrent (ป้องปราม)</span>
-            <span class="reading-mob-sub-desc">ป้ายเตือนโทษทางกฎหมาย (Warning Banners), รั้วกั้น, กล้องวงจรปิดเปิดเผย</span>
-          </div>
-          <div class="reading-mob-sub-item">
-            <span class="reading-mob-sub-name">Preventive (สกัดกั้น)</span>
-            <span class="reading-mob-sub-desc">ล็อคประตู, MFA, Next-Gen Firewall, นโยบาย Least Privilege</span>
-          </div>
-        </div>
+        <p class="reading-mob-tier-desc"><strong>Deterrent:</strong> ป้องปราม/ยับยั้งใจ (Warning Banners, ป้ายเตือน) &middot; <strong>Preventive:</strong> สกัดกั้น ป้องกันไม่ให้เกิดเหตุ (Firewall, MFA, การล็อคประตู, Least Privilege)</p>
       </div>
-
-      <div class="reading-mob-step-connector">
-        <div class="reading-mob-connector-line reading-connector-blue"></div>
-        <span class="reading-mob-connector-pill reading-pill-blue">&darr; เมื่อเกิดเหตุโจมตี (During Attack) &darr;</span>
-        <div class="reading-mob-connector-line reading-connector-blue"></div>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-amber">
+      <div class="reading-mob-tier-card reading-tier-kri">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">DURING</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">DETECTIVE (ระหว่างเกิดเหตุหรือย้อนหลัง)</h5>
-            <span class="reading-mob-tier-action">ตรวจจับระหว่างเกิดเหตุหรือย้อนหลัง</span>
+            <h5 class="reading-mob-tier-name">DETECTIVE</h5>
+            <span class="reading-mob-tier-action">ขณะเกิดเหตุ &middot; ตรวจจับและแจ้งเตือน</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ค้นหาและตรวจจับเหตุการณ์ได้ทั้งระหว่างเกิดและย้อนหลัง เช่น ตรวจ Log ภายหลัง ไม่จำกัดเฉพาะการแจ้งเตือนแบบเรียลไทม์</p>
-        <div class="reading-mob-tier-grid">
-          <div class="reading-mob-sub-item">
-            <span class="reading-mob-sub-name">Detective (ตรวจจับ)</span>
-            <span class="reading-mob-sub-desc">Intrusion Detection System (IDS), Security Logs / SIEM, เซ็นเซอร์จับความเคลื่อนไหว, Honeytokens</span>
-          </div>
-        </div>
+        <p class="reading-mob-tier-desc"><strong>Detective:</strong> ตรวจพบกิจกรรมที่น่าสงสัย (Intrusion Detection System / IDS, Security Logs, Motion Sensor, Honeytokens)</p>
       </div>
-
-      <div class="reading-mob-step-connector">
-        <div class="reading-mob-connector-line reading-connector-green"></div>
-        <span class="reading-mob-connector-pill reading-pill-green">&darr; หลังเหตุการณ์สงบลง (Post-Incident) &darr;</span>
-        <div class="reading-mob-connector-line reading-connector-green"></div>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-green">
+      <div class="reading-mob-tier-card reading-tier-report">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">AFTER</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">CORRECTIVE &amp; RECOVERY (เวลาอาจซ้อนทับกัน)</h5>
-            <span class="reading-mob-tier-action">แก้ไขเยียวยา &amp; กู้คืนระบบสู่ภาวะปกติ</span>
+            <h5 class="reading-mob-tier-name">CORRECTIVE &amp; RECOVERY</h5>
+            <span class="reading-mob-tier-action">หลังเกิดเหตุ &middot; แก้ไขและฟื้นฟู</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ซ่อมแซมความเสียหาย ยุติผลกระทบจากการโจมตี และกู้คืนระบบกลับสู่สภาวะการทำงานปกติอย่างปลอดภัย</p>
-        <div class="reading-mob-tier-grid">
-          <div class="reading-mob-sub-item">
-            <span class="reading-mob-sub-name">Corrective (แก้ไข)</span>
-            <span class="reading-mob-sub-desc">ติดตั้ง Security Patch อุดช่องโหว่, กักกันและกำจัดมัลแวร์ (Malware Quarantine)</span>
-          </div>
-          <div class="reading-mob-sub-item">
-            <span class="reading-mob-sub-name">Recovery (กู้คืน)</span>
-            <span class="reading-mob-sub-desc">กู้คืนระบบจากชุด Backup, ดำเนินการตามแผน DRP, สลับไปศูนย์สำรอง (Alternate Site)</span>
-          </div>
-        </div>
+        <p class="reading-mob-tier-desc"><strong>Corrective:</strong> แก้ไขความเสียหาย (Patching, Malware Removal) &middot; <strong>Recovery:</strong> กู้คืนสู่สภาวะปกติ (ชุดสำรองข้อมูล Backup, แผน DRP, ศูนย์สำรอง Alternate Site)</p>
       </div>
     </div>
   </div>
@@ -1286,22 +1286,22 @@ export const diagrams = {
 
   // 1.5.3 ISC2 Code of Ethics Canons (Clean Numbered Precedence Hierarchy: 01-04)
   ethicsCanons: `
-<div class="reading-diagram-card" data-diagram="ethicsCanons" role="region" aria-label="ISC2 Code of Ethics 4 Canons Numbered Precedence Hierarchy">
+<div class="reading-diagram-card" data-diagram="ethicsCanons" role="region" aria-label="ISC2 Code of Ethics four mandatory canons and professional judgment">
   <div class="reading-diagram-header">
-    <span class="reading-diagram-tag">Ethics Hierarchy</span>
-    <h4 class="reading-diagram-title">The 4 Canons of the ISC2 Code of Ethics (Strict Order of Precedence)</h4>
+    <span class="reading-diagram-tag">Ethics Canons</span>
+    <h4 class="reading-diagram-title">The Four Canons of the ISC2 Code of Ethics</h4>
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
-    <svg viewBox="0 0 740 250" class="reading-diagram-svg" aria-label="Order of precedence: 01 Society, 02 Honor, 03 Principals, 04 Profession" role="img">
+    <svg viewBox="0 0 740 250" class="reading-diagram-svg" aria-label="Four mandatory canons: Society, Honor, Principals, Profession; apply professional ethical judgment" role="img">
       <rect x="25" y="12" width="690" height="28" rx="5" class="diag-box diag-box-banner" />
-      <text x="370" y="30" class="diag-text-sub" text-anchor="middle">Order of Precedence: Canon 01 supersedes 02 &middot; 02 supersedes 03 &middot; 03 supersedes 04 (In case of conflict)</text>
+      <text x="370" y="30" class="diag-text-sub" text-anchor="middle">Four mandatory canons; apply professional ethical judgment to the situation.</text>
 
       <g>
         <rect x="25" y="48" width="690" height="42" rx="6" class="diag-box diag-box-banner" />
         <text x="50" y="74" class="diag-step-num">01</text>
         <text x="85" y="74" class="diag-text-title">Society</text>
         <text x="145" y="74" class="diag-text-sub">Protect society, the common good, public trust, and infrastructure</text>
-        <text x="695" y="74" class="diag-step-num" text-anchor="end">PRIORITY 1 (HIGHEST)</text>
+        <text x="695" y="74" class="diag-step-num" text-anchor="end">CANON 1</text>
       </g>
 
       <g>
@@ -1309,7 +1309,7 @@ export const diagrams = {
         <text x="50" y="123" class="diag-step-num">02</text>
         <text x="85" y="123" class="diag-text-title">Honor</text>
         <text x="135" y="123" class="diag-text-sub">Act honorably, honestly, justly, responsibly, and legally</text>
-        <text x="695" y="123" class="diag-step-num" text-anchor="end">PRIORITY 2</text>
+        <text x="695" y="123" class="diag-step-num" text-anchor="end">CANON 2</text>
       </g>
 
       <g>
@@ -1317,7 +1317,7 @@ export const diagrams = {
         <text x="50" y="172" class="diag-step-num">03</text>
         <text x="85" y="172" class="diag-text-title">Principals</text>
         <text x="160" y="172" class="diag-text-sub">Provide diligent and competent service to principals (Employers / Clients)</text>
-        <text x="695" y="172" class="diag-step-num" text-anchor="end">PRIORITY 3</text>
+        <text x="695" y="172" class="diag-step-num" text-anchor="end">CANON 3</text>
       </g>
 
       <g>
@@ -1325,14 +1325,14 @@ export const diagrams = {
         <text x="50" y="221" class="diag-step-num">04</text>
         <text x="85" y="221" class="diag-text-title">Profession</text>
         <text x="170" y="221" class="diag-text-sub">Advance and protect the profession</text>
-        <text x="695" y="221" class="diag-step-num" text-anchor="end">PRIORITY 4</text>
+        <text x="695" y="221" class="diag-step-num" text-anchor="end">CANON 4</text>
       </g>
     </svg>
   </div>
-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="ISC2 Code of Ethics 4 Canons Numbered Precedence Hierarchy Mobile">
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="ISC2 Code of Ethics four mandatory canons and professional judgment Mobile">
     <div class="reading-mob-banner">
-      <span class="reading-mob-banner-tag">STRICT ORDER OF PRECEDENCE</span>
-      <p class="reading-mob-banner-text">จรรยาบรรณวิชาชีพ ISC2 มี 4 ข้อ เรียงตามลำดับความสำคัญเด็ดขาด: หากเกิดข้อขัดแย้ง ข้อก่อนหน้าจะมีอำนาจเหนือกว่าข้อถัดไปเสมอ (Canon 01 &gt; 02 &gt; 03 &gt; 04)</p>
+      <span class="reading-mob-banner-tag">THE FOUR CANONS</span>
+      <p class="reading-mob-banner-text">จรรยาบรรณ ISC2 ทั้งสี่ข้อเป็นหน้าที่ที่ต้องยึดถือร่วมกัน พิจารณาข้อเท็จจริง บริบท และดุลยพินิจทางวิชาชีพ หมายเลขใช้สำหรับอ้างอิงข้อ ไม่ได้ยืนยันกฎตัดสินความขัดแย้งแบบตายตัว</p>
     </div>
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-red">
@@ -1340,58 +1340,46 @@ export const diagrams = {
           <span class="reading-mob-tier-num">01</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">CANON 1: SOCIETY &amp; INFRASTRUCTURE</h5>
-            <span class="reading-mob-tier-action">PRIORITY 1 (สูงสุด) &middot; ปกป้องสังคมและสาธารณชน</span>
+            <span class="reading-mob-tier-action">CANON 1 &middot; ปกป้องสังคมและสาธารณชน</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc"><em>"Protect society, the common good, necessary public trust, and infrastructure."</em> — ปกป้องสังคม ประโยชน์ส่วนรวม ความไว้วางใจของสาธารณะ และโครงสร้างพื้นฐานสำคัญของชาติ (หากขัดแย้งกับคำสั่งองค์กร ให้ยึดถือสังคมก่อนเสมอ)</p>
+        <p class="reading-mob-tier-desc"><em>"Protect society, the common good, necessary public trust, and infrastructure."</em> — ปกป้องสังคม ประโยชน์ส่วนรวม ความไว้วางใจของสาธารณะ และโครงสร้างพื้นฐานสำคัญของชาติ (พิจารณาผลกระทบต่อสังคมควบคู่กับหน้าที่อื่นตามบริบท)</p>
       </div>
 
-      <div class="reading-mob-step-connector">
-        <div class="reading-mob-connector-line reading-connector-red"></div>
-        <span class="reading-mob-connector-pill reading-pill-red">&darr; มีอำนาจบังคับเหนือกว่า (Supersedes) &darr;</span>
-        <div class="reading-mob-connector-line reading-connector-red"></div>
-      </div>
+
 
       <div class="reading-mob-tier-card reading-tier-amber">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">02</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">CANON 2: HONOR &amp; LEGALITY</h5>
-            <span class="reading-mob-tier-action">PRIORITY 2 &middot; ซื่อสัตย์ ยุติธรรม และเคารพกฎหมาย</span>
+            <span class="reading-mob-tier-action">CANON 2 &middot; ซื่อสัตย์ ยุติธรรม และเคารพกฎหมาย</span>
           </div>
         </div>
         <p class="reading-mob-tier-desc"><em>"Act honorably, honestly, justly, responsibly, and legally."</em> — ประพฤติตนอย่างสมเกียรติ ซื่อสัตย์ ยุติธรรม มีความรับผิดชอบ และเคารพกฎหมายอย่างเคร่งครัด ไม่ละเมิดกฎหมายเพื่อประโยชน์ส่วนตนหรือผู้อื่น</p>
       </div>
 
-      <div class="reading-mob-step-connector">
-        <div class="reading-mob-connector-line reading-connector-amber"></div>
-        <span class="reading-mob-connector-pill reading-pill-amber">&darr; มีอำนาจบังคับเหนือกว่า (Supersedes) &darr;</span>
-        <div class="reading-mob-connector-line reading-connector-amber"></div>
-      </div>
+
 
       <div class="reading-mob-tier-card reading-tier-blue">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">03</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">CANON 3: DILIGENT SERVICE TO PRINCIPALS</h5>
-            <span class="reading-mob-tier-action">PRIORITY 3 &middot; ปฏิบัติงานต่อนายจ้าง/ลูกค้าอย่างเชี่ยวชาญ</span>
+            <span class="reading-mob-tier-action">CANON 3 &middot; ปฏิบัติงานต่อนายจ้าง/ลูกค้าอย่างเชี่ยวชาญ</span>
           </div>
         </div>
         <p class="reading-mob-tier-desc"><em>"Provide diligent and competent service to principals."</em> — ให้บริการด้วยความขยันขันแข็งและเปี่ยมด้วยสมรรถนะแก่นายจ้างหรือลูกค้า โดยไม่ละเมิดข้อ 1 หรือข้อ 2</p>
       </div>
 
-      <div class="reading-mob-step-connector">
-        <div class="reading-mob-connector-line reading-connector-green"></div>
-        <span class="reading-mob-connector-pill reading-pill-green">&darr; มีอำนาจบังคับเหนือกว่า (Supersedes) &darr;</span>
-        <div class="reading-mob-connector-line reading-connector-green"></div>
-      </div>
+
 
       <div class="reading-mob-tier-card reading-tier-green">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">04</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">CANON 4: ADVANCE THE PROFESSION</h5>
-            <span class="reading-mob-tier-action">PRIORITY 4 &middot; ส่งเสริมและปกป้องวิชาชีพ</span>
+            <span class="reading-mob-tier-action">CANON 4 &middot; ส่งเสริมและปกป้องวิชาชีพ</span>
           </div>
         </div>
         <p class="reading-mob-tier-desc"><em>"Advance and protect the profession."</em> — ส่งเสริมและปกป้องชื่อเสียงของวิชาชีพความมั่นคงปลอดภัยสารสนเทศ แบ่งปันความรู้ ยกระดับมาตรฐาน และไม่กระทำการใดที่ทำให้วิชาชีพเสื่อมเสีย</p>
@@ -1404,7 +1392,7 @@ export const diagrams = {
 
   // 2.1.1 GRC Foundations & 3 Pillars
   grcAlignment: `
-<div class="reading-diagram-card" data-diagram="grcAlignment" role="region" aria-label="GRC Framework Alignment: Governance, Risk, and Compliance">
+<div class="reading-diagram-card" data-diagram="grcAlignment" data-relationship="coordinated-grc" role="region" aria-label="GRC Framework Alignment: Governance, Risk, and Compliance">
   <div class="reading-diagram-header">
     <span class="reading-diagram-tag">Governance Model</span>
     <h4 class="reading-diagram-title">GRC Alignment: Governance, Risk Management &amp; Compliance</h4>
@@ -1449,7 +1437,7 @@ export const diagrams = {
     <div class="reading-mob-grc-stack">
       <div class="reading-mob-card reading-mob-card-grc">
         <div class="reading-mob-card-head">
-          <span class="reading-mob-num-badge">01</span>
+
           <div class="reading-mob-head-info">
             <h5 class="reading-mob-card-title">GOVERNANCE</h5>
             <span class="reading-mob-card-subtitle">Direction &amp; Oversight</span>
@@ -1460,12 +1448,10 @@ export const diagrams = {
           <div class="reading-mob-card-pill">Accountability ชัดเจน</div>
         </div>
       </div>
-      <div class="reading-mob-arrow-down" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </div>
+
       <div class="reading-mob-card reading-mob-card-grc">
         <div class="reading-mob-card-head">
-          <span class="reading-mob-num-badge">02</span>
+
           <div class="reading-mob-head-info">
             <h5 class="reading-mob-card-title">RISK MANAGEMENT</h5>
             <span class="reading-mob-card-subtitle">Identify &amp; Manage</span>
@@ -1476,12 +1462,10 @@ export const diagrams = {
           <div class="reading-mob-card-pill">จัดลำดับและควบคุมความเสี่ยง</div>
         </div>
       </div>
-      <div class="reading-mob-arrow-down" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </div>
+
       <div class="reading-mob-card reading-mob-card-grc">
         <div class="reading-mob-card-head">
-          <span class="reading-mob-num-badge">03</span>
+
           <div class="reading-mob-head-info">
             <h5 class="reading-mob-card-title">COMPLIANCE</h5>
             <span class="reading-mob-card-subtitle">Adhere &amp; Fulfill</span>
@@ -1494,7 +1478,7 @@ export const diagrams = {
       </div>
     </div>
   </div>
-</div>
+<p class="reading-semantic-note">Governance, Risk Management and Compliance are coordinated functions supporting shared objectives, not mandatory stages. / Governance, Risk Management และ Compliance ทำงานประสานกันเพื่อเป้าหมายร่วม ไม่ใช่ขั้นตอนที่ต้องทำเรียงตามกัน</p></div>
 `,
 
   // 2.2.5 BC vs DR Scope Hierarchy
@@ -1539,7 +1523,7 @@ export const diagrams = {
         <rect x="36" y="126" width="768" height="154" rx="8" class="diag-box diag-box-blue diag-dr-inner" stroke-width="2" />
         <rect x="52" y="138" width="140" height="22" rx="4" class="diag-scope-badge-dr" />
         <text x="122" y="149" class="diag-scope-badge-dr-text" text-anchor="middle" dominant-baseline="central">IT SUBSET (DR ⊂ BC)</text>
-        <text x="204" y="154" class="diag-text-title diag-dr-title" font-size="15px">DISASTER RECOVERY (DR) — การกู้คืนระบบเทคโนโลยีสารสนเทศ</text>
+        <text x="204" y="154" class="diag-text-title diag-dr-title" font-size="15px">DISASTER RECOVERY (DR) — แผนกู้คืนระบบเทคโนโลยีสารสนเทศ</text>
         <text x="52" y="180" class="diag-text-sub diag-dr-desc" font-size="13px">เป้าหมาย: กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</text>
         <g class="diag-dr-examples-group">
           <rect x="52" y="196" width="736" height="70" rx="6" class="diag-examples-rect" />
@@ -1574,7 +1558,7 @@ export const diagrams = {
             <span class="reading-mob-tag-pill reading-mob-pill-accent">IT SUBSET (DR ⊂ BC)</span>
           </div>
           <h6 class="reading-mob-inner-title">DISASTER RECOVERY (DR)</h6>
-          <span class="reading-mob-inner-sub">การกู้คืนระบบ IT โครงสร้างพื้นฐาน และข้อมูล</span>
+          <span class="reading-mob-inner-sub">แผนกู้คืนระบบ IT โครงสร้างพื้นฐาน และข้อมูล</span>
         </div>
         <p class="reading-mob-inner-goal"><strong>เป้าหมาย:</strong> กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</p>
         <div class="reading-mob-inner-examples">
@@ -1753,8 +1737,8 @@ export const diagrams = {
         <rect x="40" y="205" width="370" height="84" rx="8" class="diag-box diag-box-banner" />
         <g transform="translate(56, 218)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="10"/>
-          <circle cx="12" cy="12" r="6"/>
-          <circle cx="12" cy="12" r="2"/>
+          <circle cx="12" cy="6" r="6"/>
+          <circle cx="12" cy="2" r="2"/>
         </g>
         <text x="92" y="234" class="diag-step-num">02</text>
         <text x="124" y="234" class="diag-text-title">KPI</text>
@@ -1788,7 +1772,7 @@ export const diagrams = {
         <text x="96" y="336" class="diag-step-num">01</text>
         <text x="130" y="336" class="diag-text-title">METRIC</text>
         <text x="200" y="336" class="diag-text-action">MEASURE &middot; FOUNDATION</text>
-        <text x="130" y="358" class="diag-text-sub">ค่าที่วัดได้: จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย รวมถึง KPI และ KRI</text>
+        <text x="130" y="358" class="diag-text-sub">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ</text>
         <text x="130" y="374" class="diag-text-sub">คุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</text>
       </g>
     </svg>
@@ -1798,75 +1782,45 @@ export const diagrams = {
       <div class="reading-mob-tier-card reading-tier-report">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">06</span>
-          <svg class="reading-mob-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">REPORT</h5>
-            <span class="reading-mob-tier-action">Communicate &amp; Recommend</span>
-          </div>
-          <span class="reading-mob-tier-level">Executive</span>
-        </div>
-        <p class="reading-mob-tier-desc">เอกสารทางการสรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)</p>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-scorecard">
-        <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">05</span>
-          <svg class="reading-mob-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="m9 14 2 2 4-4"></path></svg>
-          <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">SCORECARD</h5>
-            <span class="reading-mob-tier-action">Compare Against Targets</span>
+            <span class="reading-mob-tier-action">COMMUNICATE &amp; RECOMMEND</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ตารางเปรียบเทียบผลงานจริง (Actual) เทียบกับเป้าหมาย (Targets) เพื่อชี้จุดที่ต้องปรับปรุง (Gaps)</p>
+        <p class="reading-mob-tier-desc">เอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-dashboard">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">04</span>
-          <svg class="reading-mob-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
+          <span class="reading-mob-tier-num">04 &amp; 05</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">DASHBOARD</h5>
-            <span class="reading-mob-tier-action">Visualize Real-Time</span>
+            <h5 class="reading-mob-tier-name">DASHBOARD &amp; SCORECARD</h5>
+            <span class="reading-mob-tier-action">VISUALIZE &amp; COMPARE</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์ผ่านกราฟและตัวบ่งชี้แนวโน้ม สำหรับการเฝ้าระวังรายวัน</p>
+        <p class="reading-mob-tier-desc"><strong>Dashboard:</strong> แสดงผลกราฟิกแบบ Real-time &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-kri">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">03</span>
-          <svg class="reading-mob-icon reading-icon-amber" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span class="reading-mob-tier-num">02 &amp; 03</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">KRI</h5>
-            <span class="reading-mob-tier-action">Risk Warning Indicator</span>
+            <h5 class="reading-mob-tier-name">KPI &amp; KRI</h5>
+            <span class="reading-mob-tier-action">PERFORMANCE &amp; RISK WARNING</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">สัญญาณเตือนภัยล่วงหน้า (Early Warning) เมื่อแนวโน้มความเสี่ยงกำลังเพิ่มขึ้นเกินระดับยอมรับได้</p>
+        <p class="reading-mob-tier-desc"><strong>KPI:</strong> วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ &middot; <strong>KRI:</strong> สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-kpi">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">02</span>
-          <svg class="reading-mob-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-          <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">KPI</h5>
-            <span class="reading-mob-tier-action">Performance Target</span>
-          </div>
-        </div>
-        <p class="reading-mob-tier-desc">วัดผลการดำเนินงานและความก้าวหน้าเทียบกับเป้าหมายความสำเร็จที่องค์กรกำหนดไว้</p>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-foundation">
-        <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num reading-tier-num-base">01</span>
-          <svg class="reading-mob-icon reading-icon-blue" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+          <span class="reading-mob-tier-num">01</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">METRIC</h5>
-            <span class="reading-mob-tier-action">Measure &middot; Foundation</span>
+            <span class="reading-mob-tier-action">MEASURE &middot; FOUNDATION</span>
           </div>
-          <span class="reading-mob-tier-level reading-level-base">Foundation</span>
         </div>
-        <p class="reading-mob-tier-desc">ค่าที่วัดได้: จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์ โดยควร Relevant, Measurable และ Consistent</p>
+        <p class="reading-mob-tier-desc">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>
       </div>
     </div>
   </div>
@@ -1944,7 +1898,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Provisioning &amp; Role Definition</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">หากยังไม่กำหนดบทบาทและสิทธิ์ที่จำเป็น ให้กำหนดและอนุมัติก่อนจัดสรรสิทธิ์ (Define approved access needs) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น</p>
+        <p class="reading-mob-tier-desc">กำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น</p>
       </div>
       <div class="reading-mob-arrow-down" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -1970,12 +1924,11 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Deprovisioning &amp; Retention</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">เพิกถอนการเข้าถึงตามเวลาที่กำหนด เช่น Disable Account ส่วนการเก็บหรือลบบัญชีและ Audit Trail ให้ทำตามนโยบาย ข้อกำหนด และความสัมพันธ์ของระบบ ไม่ใช่ว่า Disable รับประกันการเก็บ Log ทุกระบบ</p>
+        <p class="reading-mob-tier-desc">เพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)</p>
       </div>
     </div>
     <div class="reading-mob-banner" style="margin-top: 12px; border-left: 3.5px solid var(--blue, #3b82f6);">
-      <span class="reading-mob-banner-tag">CONTINUOUS GOVERNANCE &middot; การกำกับดูแลต่อเนื่อง</span>
-      <p class="reading-mob-banner-text"><strong>Periodic Access Reviews:</strong> การตรวจสอบทบทวนสิทธิ์เป็นระยะเพื่อกำกับดูแลและตรวจสอบความถูกต้องของสิทธิ์ตลอดทั้ง 3 ช่วงวงจรชีวิต (Audit &amp; Verify permissions across all 3 stages)</p>
+      <p class="reading-mob-banner-text"><strong>Periodic Access Reviews:</strong> ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน</p>
     </div>
   </div>
 </div>
@@ -2042,7 +1995,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Real-World Identity Verification</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ตรวจสอบความถูกต้องของบุคคลในโลกจริง (เช่น แสดงบัตรประชาชน) ก่อนการออกข้อมูลประจำตัวดิจิทัล (Enrollment)</p>
+        <p class="reading-mob-tier-desc">ตรวจสอบความถูกต้องของบุคคลในโลกจริง (เช่น แสดงบัตรประชาชน) ก่อนการออกข้อมูลประจำตัวดิจิทัล (Enrollment)</p><p class="reading-diagram-source-labels">SP 800-63A &middot; IAL</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-scorecard">
@@ -2053,7 +2006,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Credential Possession &amp; Control</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ยืนยันว่าผู้ใช้เป็นผู้ครอบครองข้อมูลประจำตัว (รหัสผ่าน, OTP, ไบโอเมตริกซ์) ในการล็อกอินประจำวัน</p>
+        <p class="reading-mob-tier-desc">ยืนยันว่าผู้ใช้เป็นผู้ครอบครองข้อมูลประจำตัว (รหัสผ่าน, OTP, ไบโอเมตริกซ์) ในการล็อกอินประจำวัน</p><p class="reading-diagram-source-labels">SP 800-63B &middot; AAL</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-report">
@@ -2064,7 +2017,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Cross-Domain Trust &amp; Assertions</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ส่งต่อข้อมูลตัวตนและการยืนยันตัวตนข้ามขอบเขตองค์กรหรือระบบบริการ เช่น Single Sign-On (SSO)</p>
+        <p class="reading-mob-tier-desc">ส่งต่อข้อมูลตัวตนและการยืนยันตัวตนข้ามขอบเขตองค์กรหรือระบบบริการ เช่น Single Sign-On (SSO)</p><p class="reading-diagram-source-labels">SP 800-63C &middot; FAL</p>
       </div>
     </div>
   </div>
@@ -2354,7 +2307,12 @@ export const diagrams = {
             <span class="reading-mob-tier-action">User Interfaces &middot; Data Representation</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">รวมหน้าที่ของ Application, Presentation และ Session เข้าด้วยกัน โพรโทคอลสำคัญ: HTTP/HTTPS, DNS, SSH, SMTP, DHCP ข้อมูลเรียกว่า Data / Message</p>
+        <p class="reading-mob-tier-desc">รวมหน้าที่ของ Application, Presentation และ Session เข้าด้วยกัน โพรโทคอลสำคัญ: HTTP/HTTPS, DNS, SSH, SMTP, DHCP &middot; PDU: Data / Messages</p>
+        <div class="reading-mob-sub-layers" style="margin-top: 8px; display: flex; flex-direction: column; gap: 6px;">
+          <div class="reading-mob-sub-item" data-osi-layer="7" style="font-size: 13.5px; padding: 6px 10px; background: var(--panel-2); border-radius: 4px; border-left: 3px solid #3b82f6;"><strong>7. Application:</strong> HTTP, HTTPS, DNS, SSH, FTP &middot; PDU: Data</div>
+          <div class="reading-mob-sub-item" data-osi-layer="6" style="font-size: 13.5px; padding: 6px 10px; background: var(--panel-2); border-radius: 4px; border-left: 3px solid #3b82f6;"><strong>6. Presentation:</strong> TLS/SSL, ASCII, JSON, JPEG &middot; Formatting</div>
+          <div class="reading-mob-sub-item" data-osi-layer="5" style="font-size: 13.5px; padding: 6px 10px; background: var(--panel-2); border-radius: 4px; border-left: 3px solid #3b82f6;"><strong>5. Session:</strong> RPC, NetBIOS &middot; Session Management</div>
+        </div>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-report">
@@ -2365,7 +2323,10 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Host-to-Host Communication</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ดูแลการเชื่อมต่อและส่งข้อมูลระหว่างเครื่องปลายทาง (TCP เชื่อถือได้ vs UDP รวดเร็ว) กำกับด้วย Port Numbers ข้อมูลเรียกว่า Segments / Datagrams</p>
+        <p class="reading-mob-tier-desc">ดูแลการเชื่อมต่อและส่งข้อมูลระหว่างเครื่องปลายทาง (TCP เชื่อถือได้ vs UDP รวดเร็ว) กำกับด้วย Port Numbers &middot; PDU: Segments / Datagrams</p>
+        <div class="reading-mob-sub-layers" style="margin-top: 8px;">
+          <div class="reading-mob-sub-item" data-osi-layer="4" style="font-size: 13.5px; padding: 6px 10px; background: var(--panel-2); border-radius: 4px; border-left: 3px solid #f59e0b;"><strong>4. Transport:</strong> TCP, UDP, Ports &middot; PDU: Segments / Datagrams</div>
+        </div>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-dashboard">
@@ -2376,7 +2337,10 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Logical Addressing &middot; Routing</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">กำหนดหมายเลข IP และเลือกเส้นทางส่งข้อมูลข้ามเครือข่าย โพรโทคอลสำคัญ: IPv4, IPv6, ICMP, IPsec อุปกรณ์: Routers ข้อมูลเรียกว่า Packets</p>
+        <p class="reading-mob-tier-desc">กำหนดหมายเลข IP และเลือกเส้นทางส่งข้อมูลข้ามเครือข่าย โพรโทคอลสำคัญ: IPv4, IPv6, ICMP, IPsec อุปกรณ์: Routers &middot; PDU: Packets</p>
+        <div class="reading-mob-sub-layers" style="margin-top: 8px;">
+          <div class="reading-mob-sub-item" data-osi-layer="3" style="font-size: 13.5px; padding: 6px 10px; background: var(--panel-2); border-radius: 4px; border-left: 3px solid #10b981;"><strong>3. Network:</strong> IPv4, IPv6, ICMP, IPsec &middot; PDU: Packets</div>
+        </div>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-scorecard">
@@ -2384,25 +2348,30 @@ export const diagrams = {
           <span class="reading-mob-tier-num">L1</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">NETWORK ACCESS / LINK (OSI 2, 1)</h5>
-            <span class="reading-mob-tier-action">Physical Hardware &middot; Frames</span>
+            <span class="reading-mob-tier-action">Physical Hardware &middot; Frames &amp; Bits</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">รวม Data Link (MAC, Switches, Ethernet Frames) และ Physical (สายสัญญาณ, Hubs, สัญญาณไฟฟ้าและคลื่นวิทยุ บิตข้อมูล 0/1)</p>
+        <p class="reading-mob-tier-desc">รวมหน้าที่ของ Data Link (MAC, Switches, Ethernet Frames) และ Physical (สายสัญญาณ RJ45, Hubs, คลื่นวิทยุ Radio Signals, Bits 0/1)</p>
+        <div class="reading-mob-sub-layers" style="margin-top: 8px; display: flex; flex-direction: column; gap: 6px;">
+          <div class="reading-mob-sub-item" data-osi-layer="2" style="font-size: 13.5px; padding: 6px 10px; background: var(--panel-2); border-radius: 4px; border-left: 3px solid #8b5cf6;"><strong>2. Data Link:</strong> Ethernet, MAC, Switches &middot; PDU: Frames</div>
+          <div class="reading-mob-sub-item" data-osi-layer="1" style="font-size: 13.5px; padding: 6px 10px; background: var(--panel-2); border-radius: 4px; border-left: 3px solid #8b5cf6;"><strong>1. Physical:</strong> Cables, RJ45, Hubs, Radio Signals &middot; PDU: Bits</div>
+        </div>
       </div>
     </div>
   </div>
+  <p class="reading-semantic-note">Lines show model correspondence, not packet flow or an encapsulation sequence. Layer numbers identify architectural functions, not mandatory operational steps. / เส้นแสดงการเทียบแบบจำลอง ไม่ใช่เส้นทางแพ็กเก็ตหรือลำดับ encapsulation หมายเลขชั้นระบุหน้าที่ทางสถาปัตยกรรม</p>
 </div>
 `,
 
   // 4.2.3 Demilitarized Zone (DMZ) Perimeter Architecture
   dmzFirewallArchitecture: `
-<div class="reading-diagram-card" data-diagram="dmzFirewallArchitecture" role="region" aria-label="Demilitarized Zone Perimeter Architecture">
+<div class="reading-diagram-card" data-diagram="dmzFirewallArchitecture" role="region" aria-label="Illustrative DMZ zones and firewall boundaries; policy-dependent connections">
   <div class="reading-diagram-header">
     <span class="reading-diagram-tag">Perimeter Architecture</span>
-    <h4 class="reading-diagram-title">Demilitarized Zone (DMZ) Dual-Firewall Perimeter Architecture</h4>
+    <h4 class="reading-diagram-title">Demilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries</h4>
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
-    <svg viewBox="0 0 840 280" class="reading-diagram-svg" aria-label="Diagram showing Internet traffic flowing through External Firewall to DMZ servers, and Internal Firewall separating DMZ from Internal Private Network" role="img">
+    <svg viewBox="0 0 840 280" class="reading-diagram-svg" aria-label="Zone overview: Internet, FW1, public Web/WAF, Mail and DNS services in the DMZ, FW2 and internal assets; connections depend on policy, not a mandatory packet route" role="img">
       <g>
         <rect x="20" y="25" width="180" height="230" rx="8" class="diag-box diag-box-banner" />
         <rect x="36" y="38" width="148" height="22" rx="4" fill="#ef4444" />
@@ -2432,17 +2401,17 @@ export const diagrams = {
         <text x="417" y="49" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">BUFFER ZONE &middot; LIMITED TRUST</text>
         <text x="311" y="82" class="diag-text-title" font-size="14px" font-weight="700">Demilitarized Zone (DMZ)</text>
         
-        <rect x="311" y="98" width="213" height="32" rx="4" class="diag-box" />
+        <rect x="311" y="98" width="213" height="32" rx="4" class="diag-box" fill="var(--panel)" />
         <text x="323" y="118" class="diag-text-title" font-size="11px" font-weight="700">Web Server / WAF</text>
-        <text x="512" y="118" class="diag-text-sub" font-size="10.5px" text-anchor="end">HTTPS:443</text>
+        <text x="512" y="118" class="diag-text-sub" style="fill: var(--text)" font-size="10.5px" text-anchor="end">HTTPS:443</text>
 
-        <rect x="311" y="136" width="213" height="32" rx="4" class="diag-box" />
+        <rect x="311" y="136" width="213" height="32" rx="4" class="diag-box" fill="var(--panel)" />
         <text x="323" y="156" class="diag-text-title" font-size="11px" font-weight="700">Mail Gateway (SMTP)</text>
-        <text x="512" y="156" class="diag-text-sub" font-size="10.5px" text-anchor="end">Port 25</text>
+        <text x="512" y="156" class="diag-text-sub" style="fill: var(--text)" font-size="10.5px" text-anchor="end">Port 25</text>
 
-        <rect x="311" y="174" width="213" height="32" rx="4" class="diag-box" />
+        <rect x="311" y="174" width="213" height="32" rx="4" class="diag-box" fill="var(--panel)" />
         <text x="323" y="194" class="diag-text-title" font-size="11px" font-weight="700">Public DNS / Proxy</text>
-        <text x="512" y="194" class="diag-text-sub" font-size="10.5px" text-anchor="end">Port 53</text>
+        <text x="512" y="194" class="diag-text-sub" style="fill: var(--text)" font-size="10.5px" text-anchor="end">Port 53</text>
         
         <text x="417" y="235" class="diag-text-sub" font-size="10.5px" text-anchor="middle">แยกบริการสาธารณะออกจากเครือข่ายภายใน</text>
       </g>
@@ -2482,7 +2451,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Public Access &middot; Inbound Traffic</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">เครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)</p>
+        <p class="reading-mob-tier-desc">เครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)</p><p class="reading-diagram-source-labels">UNTRUSTED ZONE · Internet / Outside · &bull; สาธารณะภายนอก · &bull; ผู้ใช้งานทั่วไป · &bull; ภัยคุกคามภายนอก · ทราฟฟิกขาเข้าต้องผ่าน · การตรวจสอบอย่างเข้มงวด · FW 1 · External · Firewall · Packet Filter · Stateful · Policy Ports</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-kpi">
@@ -2493,7 +2462,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Public Services &middot; Limited Trust</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">เขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) หากถูกเจาะระบบ ผู้โจมตีจะยังไม่สามารถเข้าถึงเครือข่ายภายในได้</p>
+        <p class="reading-mob-tier-desc">เขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง</p><p class="reading-diagram-source-labels">BUFFER ZONE &middot; LIMITED TRUST · Demilitarized Zone (DMZ) · Web Server / WAF · HTTPS:443 · Mail Gateway (SMTP) · Port 25 · Public DNS / Proxy · Port 53 · แยกบริการสาธารณะออกจากเครือข่ายภายใน</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-foundation">
@@ -2504,11 +2473,11 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Core Assets &middot; Database &amp; IAM</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">เครือข่ายภายในที่มีความปลอดภัยสูงสุด จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด</p>
+        <p class="reading-mob-tier-desc">เครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด</p><p class="reading-diagram-source-labels">FW 2 · Internal · Firewall · Deep Inspect · Strict ACLs · App &amp; DB · TRUSTED INTERNAL · Internal Network · &bull; Database Servers · &bull; Active Directory (IAM) · &bull; ERP / HR Systems · &bull; Staff Workstations · ไม่อนุญาตการเชื่อมต่อ · ตรงจาก Internet</p>
       </div>
     </div>
   </div>
-</div>
+<p class="reading-semantic-note">Illustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี</p></div>
 `,
 
   // 4.2.6 Defense in Depth 5 Concentric Security Tiers
@@ -2743,7 +2712,7 @@ export const diagrams = {
       </g>
     </svg>
   </div>
-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Cloud Shared Responsibility Mobile Stack">
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Cloud Shared Responsibility Mobile Stack"><p class="reading-diagram-source-labels">Customer Responsibility (Security IN the Cloud &middot; ลูกค้าดูแล) · CSP Responsibility (Security OF the Cloud &middot; ผู้ให้บริการดูแล)</p>
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-foundation">
         <div class="reading-mob-tier-head">
@@ -2753,7 +2722,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">OS &middot; Apps &middot; Customer Managed</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Applications, Guest OS, Patching และ Network Configs | CSP ดูแล: Hypervisor, Physical Servers, Storage, Datacenter Facility</p>
+        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Applications, Guest OS, Patching และ Network Configs | CSP ดูแล: Hypervisor, Physical Servers, Storage, Datacenter Facility</p><p class="reading-diagram-source-labels">IaaS · Infrastructure as a Service · Data Policy (Customer) · IAM Policy (Customer) · Applications &amp; Code (Customer) · OS &amp; Patching (Customer) · Virtualization (CSP) · Physical Facilities (CSP) · เช่น AWS EC2, Azure VMs</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-kpi">
@@ -2764,7 +2733,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Code &middot; Data &middot; Runtime Managed</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Application Source Code | CSP ดูแล: OS, Middleware, Language Runtime, Database Engine, Hardware, Physical Security</p>
+        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย IAM/การตั้งค่าที่ตนควบคุม, Application Source Code | CSP ดูแล: OS, Middleware, Language Runtime, Database Engine, Hardware, Physical Security</p><p class="reading-diagram-source-labels">PaaS · Platform as a Service · Data Policy (Customer) · IAM Policy (Customer) · Applications &amp; Code (Customer) · OS &amp; Runtime (CSP) · Virtualization (CSP) · Physical Facilities (CSP) · เช่น App Engine, Elastic Beanstalk</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-report">
@@ -2775,7 +2744,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Data &middot; Access &middot; App Managed</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย/การตั้งค่า User Access ที่ตนควบคุม; CSP ยังคงดูแลความปลอดภัยของบริการ Storage และ IAM ที่ตนบริหาร | CSP ดูแล: แอปพลิเคชันทั้งหมด, ซอฟต์แวร์, OS, โครงสร้างพื้นฐาน และการสำรองข้อมูลระดับระบบ</p>
+        <p class="reading-mob-tier-desc">ลูกค้าดูแล: การจัดชั้นข้อมูลและนโยบาย/การตั้งค่า User Access ที่ตนควบคุม; CSP ยังคงดูแลความปลอดภัยของบริการ Storage และ IAM ที่ตนบริหาร | CSP ดูแล: แอปพลิเคชันทั้งหมด, ซอฟต์แวร์, OS, โครงสร้างพื้นฐาน และการสำรองข้อมูลระดับระบบ</p><p class="reading-diagram-source-labels">SaaS · Software as a Service · Data Policy (Customer) · IAM Policy (Customer) · Applications &amp; Logic (CSP) · OS &amp; Runtime (CSP) · Virtualization (CSP) · Physical Facilities (CSP) · เช่น M365, Google Workspace</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-dashboard">
@@ -2786,10 +2755,514 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Event Code &middot; Fully Managed</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ลูกค้าดูแล: Function Code, การจัดชั้นข้อมูล และนโยบาย/การตั้งค่า IAM Trigger ที่ตนควบคุม | CSP ดูแล: การสเกลแบบอัตโนมัติ (Auto-scaling), Event Bus, Container Execution, Host Infrastructure</p>
+        <p class="reading-mob-tier-desc">ลูกค้าดูแล: Function Code, การจัดชั้นข้อมูล และนโยบาย/การตั้งค่า IAM Trigger ที่ตนควบคุม | CSP ดูแล: การสเกลแบบอัตโนมัติ (Auto-scaling), Event Bus, Container Execution, Host Infrastructure</p><p class="reading-diagram-source-labels">FaaS / Serverless · Function as a Service · Data Policy (Customer) · IAM Policy (Customer) · Function Code (Customer) · Event Runtime &amp; OS (CSP) · Compute Container (CSP) · Physical Facilities (CSP) · เช่น AWS Lambda, Cloud Functions</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+  // 5.3.3 The 6-Phase Incident Response Lifecycle
+  irpLifecycle: `
+<div class="reading-diagram-card" data-diagram="irpLifecycle" role="region" aria-label="The 6-Phase Incident Response Lifecycle">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Incident Response Process</span>
+    <h4 class="reading-diagram-title">The 6-Phase Incident Response Lifecycle (วงจรการตอบสนองต่อเหตุการณ์ 6 ขั้นตอน)</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 900 270" class="reading-diagram-svg" aria-label="Continuous 6-phase incident response lifecycle with feedback loop into preparation" role="img">
+      <g>
+        <rect x="25" y="25" width="250" height="90" rx="8" class="diag-box diag-box-blue" />
+        <rect x="37" y="37" width="36" height="20" rx="4" fill="#3b82f6" />
+        <text x="55" y="47" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">P1</text>
+        <text x="82" y="47" class="diag-text-title" font-size="13px" font-weight="700">1. Preparation (เตรียมความพร้อม)</text>
+        <text x="37" y="78" class="diag-text-sub" font-size="11px">นโยบาย, เครื่องมือ SOC, รายชื่อติดต่อ</text>
+        <text x="37" y="96" class="diag-text-sub" font-size="10.5px">การฝึกอบรม IRP, การตั้งค่าความมั่นคงปลอดภัย</text>
+      </g>
+
+      <path d="M 275 70 H 325" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="325,70 315,65 315,75" fill="var(--line, #334155)" />
+
+      <g>
+        <rect x="325" y="25" width="250" height="90" rx="8" class="diag-box diag-box-banner" />
+        <rect x="337" y="37" width="36" height="20" rx="4" fill="#6366f1" />
+        <text x="355" y="47" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">P2</text>
+        <text x="382" y="47" class="diag-text-title" font-size="13px" font-weight="700">2. Detection &amp; Analysis</text>
+        <text x="337" y="78" class="diag-text-sub" font-size="11px">ตรวจจับและวิเคราะห์เหตุการณ์ (SIEM/EDR)</text>
+        <text x="337" y="96" class="diag-text-sub" font-size="10.5px">การคัดกรอง Triage, ประเมินความรุนแรงและขอบเขต</text>
+      </g>
+
+      <path d="M 575 70 H 625" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="625,70 615,65 615,75" fill="var(--line, #334155)" />
+
+      <g>
+        <rect x="625" y="25" width="250" height="90" rx="8" class="diag-box diag-box-blue" />
+        <rect x="637" y="37" width="36" height="20" rx="4" fill="#ef4444" />
+        <text x="655" y="47" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">P3</text>
+        <text x="682" y="47" class="diag-text-title" font-size="13px" font-weight="700">3. Containment (การควบคุม)</text>
+        <text x="637" y="78" class="diag-text-sub" font-size="11px">ตัดการเชื่อมต่อเครือข่าย, กักกันโฮสต์</text>
+        <text x="637" y="96" class="diag-text-sub" font-size="10.5px">จำกัดรัศมีความเสียหาย (Blast Radius)</text>
+      </g>
+
+      <path d="M 750 115 V 155" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="750,155 745,145 755,145" fill="var(--line, #334155)" />
+
+      <g>
+        <rect x="625" y="155" width="250" height="90" rx="8" class="diag-box diag-box-blue" />
+        <rect x="637" y="167" width="36" height="20" rx="4" fill="#f59e0b" />
+        <text x="655" y="177" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">P4</text>
+        <text x="682" y="177" class="diag-text-title" font-size="13px" font-weight="700">4. Eradication (กำจัดสาเหตุ)</text>
+        <text x="637" y="208" class="diag-text-sub" font-size="11px">ลบมัลแวร์, ปิดบัญชีที่ถูกเจาะระบบ</text>
+        <text x="637" y="226" class="diag-text-sub" font-size="10.5px">อุดช่องโหว่ที่เป็นต้นเหตุการบุกรุก</text>
+      </g>
+
+      <path d="M 625 200 H 575" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="575,200 585,195 585,205" fill="var(--line, #334155)" />
+
+      <g>
+        <rect x="325" y="155" width="250" height="90" rx="8" class="diag-box diag-box-banner" />
+        <rect x="337" y="167" width="36" height="20" rx="4" fill="#10b981" />
+        <text x="355" y="177" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">P5</text>
+        <text x="382" y="177" class="diag-text-title" font-size="13px" font-weight="700">5. Recovery (ฟื้นฟูระบบ)</text>
+        <text x="337" y="208" class="diag-text-sub" font-size="11px">กู้คืนระบบจากข้อมูลสำรองที่ปลอดภัย</text>
+        <text x="337" y="226" class="diag-text-sub" font-size="10.5px">ทดสอบความสมบูรณ์ก่อนเปิดใช้งานจริง</text>
+      </g>
+
+      <path d="M 325 200 H 275" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="275,200 285,195 285,205" fill="var(--line, #334155)" />
+
+      <g>
+        <rect x="25" y="155" width="250" height="90" rx="8" class="diag-box diag-box-blue" />
+        <rect x="37" y="167" width="36" height="20" rx="4" fill="#8b5cf6" />
+        <text x="55" y="177" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">P6</text>
+        <text x="82" y="177" class="diag-text-title" font-size="13px" font-weight="700">6. Post-Incident Review</text>
+        <text x="37" y="208" class="diag-text-sub" font-size="11px">ถอดบทเรียน (Lessons Learned)</text>
+        <text x="37" y="226" class="diag-text-sub" font-size="10.5px">ปรับปรุงแผน IRP และมาตรการป้องกัน</text>
+      </g>
+
+      <path d="M 150 155 V 115" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4,4" fill="none" />
+      <polygon points="150,115 145,125 155,125" fill="#3b82f6" />
+      <text x="158" y="137" fill="#3b82f6" font-size="9.5px" font-weight="700">ปรับปรุงอย่างต่อเนื่อง</text>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Incident Response Lifecycle Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">01</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">1. PREPARATION (การเตรียมความพร้อม)</h5>
+            <span class="reading-mob-tier-action">Policies &middot; Tools &middot; Training</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">สร้างและทบทวนแผน IRP, จัดตั้งทีม CSIRT/CIRT, จัดเตรียมเครื่องมือพิสูจน์หลักฐาน (Jump Bags), ซ้อมแผน Tabletop, และเสริมความมั่นคงปลอดภัยตามมาตรฐานขั้นต่ำ (Baselines)</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-report">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">02</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">2. DETECTION &amp; ANALYSIS (การตรวจจับและวิเคราะห์)</h5>
+            <span class="reading-mob-tier-action">Telemetry &middot; SIEM &middot; Triage</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ติดตามการแจ้งเตือนจากระบบเฝ้าระวัง (SIEM/EDR), คัดกรองเหตุการณ์ (Triage), แยกแยะ False Positive, ยืนยัน IOCs, และประเมินระดับความรุนแรงและขอบเขตความเสียหาย</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-dashboard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">03</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">3. CONTAINMENT (การควบคุมและจำกัดวง)</h5>
+            <span class="reading-mob-tier-action">Isolate Host &middot; Limit Blast Radius</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">หยุดยั้งการแพร่กระจายของภัยคุกคาม: ดึงสาย LAN, ปิด Wi-Fi, กักกันโฮสต์ผ่าน EDR, หรือบล็อก IP/Port บนไฟร์วอลล์ เพื่อปกป้องระบบอื่นไม่ให้ได้รับผลกระทบ</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-scorecard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">04</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">4. ERADICATION (การกำจัดสาเหตุ)</h5>
+            <span class="reading-mob-tier-action">Malware Removal &middot; Root-Cause Patching</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ลบมัลแวร์ทั้งหมดออกจากระบบ, ล้างเครื่องและติดตั้งระบบใหม่ (Re-imaging), รีเซ็ตรหัสผ่านบัญชีที่ถูกเจาะ, และอัปเดตแพตช์อุดช่องโหว่ที่เป็นต้นเหตุของการบุกรุก</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">05</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">5. RECOVERY (การกู้คืนระบบ)</h5>
+            <span class="reading-mob-tier-action">Restore &middot; Validate &middot; Production Return</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">กู้คืนระบบและข้อมูลจาก Backup ที่ปลอดภัยและผ่านการตรวจสอบแล้ว, ทดสอบการทำงานและความมั่นคงปลอดภัย, ก่อนทยอยเปิดให้บริการตามปกติและเฝ้าระวังอย่างใกล้ชิด</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-report">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">06</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">6. POST-INCIDENT REVIEW (การทบทวนหลังเหตุการณ์)</h5>
+            <span class="reading-mob-tier-action">Lessons Learned &middot; IRP Improvement</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">จัดประชุมสรุปบทเรียน (Lessons Learned) ร่วมกับผู้มีส่วนได้ส่วนเสีย, จัดทำรายงานเหตุการณ์ฉบับสมบูรณ์, และนำข้อบกพร่องที่พบกลับไปปรับปรุงแผนในขั้นตอน Preparation</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+  // 5.2.9 MITRE ATT&CK Framework: Tactics vs. Techniques vs. Procedures
+  mitreAttackTacticTechnique: `
+<div class="reading-diagram-card" data-diagram="mitreAttackTacticTechnique" role="region" aria-label="MITRE ATT&CK Framework: Tactics, Techniques and Procedures">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Threat Architecture Taxonomy</span>
+    <h4 class="reading-diagram-title">MITRE ATT&CK Framework: Tactics vs. Techniques vs. Procedures (TTPs)</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 900 280" class="reading-diagram-svg" aria-label="Hierarchical architecture of MITRE ATT&CK showing Tactics as Why, Techniques as How, and Procedures as Execution" role="img">
+      <g>
+        <rect x="25" y="25" width="255" height="230" rx="8" class="diag-box diag-box-blue" />
+        <rect x="40" y="37" width="80" height="22" rx="4" fill="#3b82f6" />
+        <text x="80" y="48" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">TACTIC</text>
+        <text x="40" y="80" class="diag-text-title" font-size="14px" font-weight="700">The "WHY" (เป้าหมายยุทธวิธี)</text>
+        <text x="40" y="102" class="diag-text-sub" font-size="11.5px">เป้าหมายสูงสุดที่ศัตรูต้องการบรรลุ:</text>
+        <text x="40" y="126" class="diag-text-sub" font-size="11px">&bull; Initial Access (การเข้าถึงระบบครั้งแรก)</text>
+        <text x="40" y="148" class="diag-text-sub" font-size="11px">&bull; Execution (การสั่งรันโค้ดอันตราย)</text>
+        <text x="40" y="170" class="diag-text-sub" font-size="11px">&bull; Persistence (การฝังตัวระยะยาว)</text>
+        <text x="40" y="192" class="diag-text-sub" font-size="11px">&bull; Lateral Movement (การเคลื่อนที่แนวราบ)</text>
+        <text x="40" y="214" class="diag-text-sub" font-size="11px">&bull; Exfiltration (การขโมยส่งข้อมูลออก)</text>
+        <text x="40" y="238" fill="#3b82f6" font-size="10.5px" font-weight="700">14 Enterprise Tactics ทั้งหมด</text>
+      </g>
+
+      <path d="M 280 140 H 320" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="320,140 310,135 310,145" fill="var(--line, #334155)" />
+      <text x="300" y="130" fill="var(--text-sub, #64748b)" font-size="9.5px" text-anchor="middle">บรรลุเป้าด้วย</text>
+
+      <g>
+        <rect x="320" y="25" width="255" height="230" rx="8" class="diag-box diag-box-banner" />
+        <rect x="335" y="37" width="90" height="22" rx="4" fill="#6366f1" />
+        <text x="380" y="48" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">TECHNIQUE</text>
+        <text x="335" y="80" class="diag-text-title" font-size="14px" font-weight="700">The "HOW" (วิธีการ/เทคนิค)</text>
+        <text x="335" y="102" class="diag-text-sub" font-size="11.5px">วิธีที่ศัตรูใช้กระทำเพื่อบรรลุเป้าหมาย:</text>
+        <text x="335" y="126" class="diag-text-sub" font-size="11px">&bull; Phishing: Spearphishing Link (T1566)</text>
+        <text x="335" y="148" class="diag-text-sub" font-size="11px">&bull; Pass the Hash (T1550.002)</text>
+        <text x="335" y="170" class="diag-text-sub" font-size="11px">&bull; Command and Scripting: PowerShell (T1059)</text>
+        <text x="335" y="192" class="diag-text-sub" font-size="11px">&bull; Scheduled Task / Job (T1053)</text>
+        <text x="335" y="214" class="diag-text-sub" font-size="11px">&bull; Valid Accounts (T1078)</text>
+        <text x="335" y="238" fill="#6366f1" font-size="10.5px" font-weight="700">รวม Sub-techniques ย่อยเฉพาะเจาะจง</text>
+      </g>
+
+      <path d="M 575 140 H 615" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="615,140 605,135 605,145" fill="var(--line, #334155)" />
+      <text x="595" y="130" fill="var(--text-sub, #64748b)" font-size="9.5px" text-anchor="middle">ลงมือปฏิบัติจริง</text>
+
+      <g>
+        <rect x="615" y="25" width="260" height="230" rx="8" class="diag-box diag-box-blue" />
+        <rect x="630" y="37" width="95" height="22" rx="4" fill="#0ea5e9" />
+        <text x="677" y="48" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">PROCEDURE</text>
+        <text x="630" y="80" class="diag-text-title" font-size="14px" font-weight="700">The "EXECUTION" (การลงมือ)</text>
+        <text x="630" y="102" class="diag-text-sub" font-size="11.5px">ขั้นตอน คำสั่ง หรือมัลแวร์ที่ตรวจพบจริง:</text>
+        <text x="630" y="126" class="diag-text-sub" font-size="11px">&bull; คำสั่ง PowerShell ดาวน์โหลดเพย์โหลด</text>
+        <text x="630" y="148" class="diag-text-sub" font-size="11px">&bull; กลุ่ม APT29 ใช้งานเครื่องมือ Mimikatz</text>
+        <text x="630" y="170" class="diag-text-sub" font-size="11px">&bull; การปรับ Registry key รันโปรแกรมอัตโนมัติ</text>
+        <text x="630" y="192" class="diag-text-sub" font-size="11px">&bull; การส่งอีเมลหลอกลวงพร้อมไฟล์แนบ zip</text>
+        <text x="630" y="214" class="diag-text-sub" font-size="11px">&bull; การเข้ารหัสไฟล์ด้วยมัลแวร์ LockBit</text>
+        <text x="630" y="238" fill="#0ea5e9" font-size="10.5px" font-weight="700">พฤติกรรมจริงในรายงานข่าวกรอง CTI</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="MITRE ATT&CK Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">WHY</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">TACTIC (เป้าหมายยุทธวิธีของศัตรู)</h5>
+            <span class="reading-mob-tier-action">Adversary Goal &middot; The "Why"</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">อธิบายว่า "ผู้โจมตีกำลังพยายามทำอะไรเพื่ออะไร" เช่น Initial Access (เจาะเข้าสู่เครือข่าย), Lateral Movement (ย้ายฝั่งไปยังเซิร์ฟเวอร์สำคัญ), Exfiltration (ขโมยข้อมูลออกนอกองค์กร)</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-report">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">HOW</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">TECHNIQUE (เทคนิควิธีการที่นำมาใช้)</h5>
+            <span class="reading-mob-tier-action">Action &middot; The "How"</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">อธิบายว่า "ผู้โจมตีใช้วิธีการใดเพื่อให้บรรลุเป้าหมายของ Tactic" เช่น ใช้ Phishing เพื่อได้ Initial Access, หรือใช้ Pass-the-Hash เพื่อทำการ Lateral Movement ในระบบ Windows Domain</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-dashboard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">EXE</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">PROCEDURE (ขั้นตอนปฏิบัติและโค้ดคำสั่งจริง)</h5>
+            <span class="reading-mob-tier-action">Execution &middot; Real-World Observation</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">อธิบายพฤติกรรมเฉพาะเจาะจงที่ตรวจพบในโลกจริง เช่น คำสั่ง command line ที่พิมพ์, เครื่องมือที่ใช้ (Mimikatz, Cobalt Strike), หรือสคริปต์ที่กลุ่มภัยคุกคาม (APT Groups) ใช้งานจริง</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+  // 5.5.3 Security Testing Matrix: Threat Modeling vs SAST vs DAST vs Pentest
+  securityTestingMatrix: `
+<div class="reading-diagram-card" data-diagram="securityTestingMatrix" role="region" aria-label="Security Testing Matrix: Threat Modeling, SAST, DAST, and Penetration Testing">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Testing Methodology Comparison</span>
+    <h4 class="reading-diagram-title">Security Testing Matrix: Threat Modeling vs. SAST vs. DAST vs. Penetration Testing</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 900 320" class="reading-diagram-svg" aria-label="Comparative matrix comparing Threat Modeling, SAST, DAST, and Penetration Testing across the SDLC" role="img">
+      <rect x="25" y="20" width="850" height="28" rx="6" fill="var(--bg-subtle, #1e293b)" stroke="var(--line, #334155)" stroke-width="1" />
+      <text x="130" y="35" class="diag-text-title" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">1. DESIGN PHASE (ออกแบบ)</text>
+      <text x="345" y="35" class="diag-text-title" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">2. CODING PHASE (พัฒนา)</text>
+      <text x="560" y="35" class="diag-text-title" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">3. TESTING PHASE (ทดสอบ)</text>
+      <text x="770" y="35" class="diag-text-title" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">4. DEPLOY / OPS (ใช้งาน)</text>
+
+      <g>
+        <rect x="25" y="60" width="205" height="240" rx="8" class="diag-box diag-box-blue" />
+        <rect x="37" y="72" width="105" height="20" rx="4" fill="#3b82f6" />
+        <text x="89" y="82" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Threat Modeling</text>
+        <text x="37" y="112" class="diag-text-title" font-size="13px" font-weight="700">การสร้างแบบจำลองภัย</text>
+        <text x="37" y="134" class="diag-text-sub" font-size="11px">จังหวะ: ระยะออกแบบสถาปัตยกรรม</text>
+        <text x="37" y="154" class="diag-text-sub" font-size="11px">มุมมอง: Architectural Review</text>
+        <text x="37" y="174" class="diag-text-sub" font-size="11px">กรอบการคิด: STRIDE Framework</text>
+        <text x="37" y="196" class="diag-text-sub" font-size="10.5px">เป้าหมาย: ค้นหาจุดอ่อนการออกแบบ</text>
+        <text x="37" y="216" class="diag-text-sub" font-size="10.5px">ก่อนเริ่มเขียนโค้ดบรรทัดแรก</text>
+        <text x="37" y="246" fill="#3b82f6" font-size="10px" font-weight="700">แก้ข้อบกพร่องได้ต้นทุนต่ำสุด</text>
+      </g>
+
+      <g>
+        <rect x="240" y="60" width="205" height="240" rx="8" class="diag-box diag-box-banner" />
+        <rect x="252" y="72" width="75" height="20" rx="4" fill="#6366f1" />
+        <text x="289" y="82" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">SAST (Static)</text>
+        <text x="252" y="112" class="diag-text-title" font-size="13px" font-weight="700">การทดสอบโค้ดแบบสถิต</text>
+        <text x="252" y="134" class="diag-text-sub" font-size="11px">จังหวะ: ขณะกำลังพัฒนา (Shift Left)</text>
+        <text x="252" y="154" class="diag-text-sub" font-size="11px">มุมมอง: White-box (เห็นซอร์สโค้ด)</text>
+        <text x="252" y="174" class="diag-text-sub" font-size="11px">สภาวะ: โปรแกรมไม่ต้องรันทำงาน</text>
+        <text x="252" y="196" class="diag-text-sub" font-size="10.5px">เป้าหมาย: Insecure coding rules,</text>
+        <text x="252" y="216" class="diag-text-sub" font-size="10.5px">Hardcoded secrets, SQLi syntax</text>
+        <text x="252" y="246" fill="#6366f1" font-size="10px" font-weight="700">ตรวจพบข้อผิดพลาดตั้งแต่เนิ่น ๆ</text>
+      </g>
+
+      <g>
+        <rect x="455" y="60" width="205" height="240" rx="8" class="diag-box diag-box-blue" />
+        <rect x="467" y="72" width="90" height="20" rx="4" fill="#0ea5e9" />
+        <text x="512" y="82" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">DAST (Dynamic)</text>
+        <text x="467" y="112" class="diag-text-title" font-size="13px" font-weight="700">การทดสอบแบบพลวัต</text>
+        <text x="467" y="134" class="diag-text-sub" font-size="11px">จังหวะ: ระยะทดสอบ / Staging</text>
+        <text x="467" y="154" class="diag-text-sub" font-size="11px">มุมมอง: Black-box (ไม่เห็นโค้ด)</text>
+        <text x="467" y="174" class="diag-text-sub" font-size="11px">สภาวะ: แอปพลิเคชันต้องรันทำงาน</text>
+        <text x="467" y="196" class="diag-text-sub" font-size="10.5px">เป้าหมาย: ปัญหาการยืนยันตัวตน,</text>
+        <text x="467" y="216" class="diag-text-sub" font-size="10.5px">Server misconfiguration, Runtime</text>
+        <text x="467" y="246" fill="#0ea5e9" font-size="10px" font-weight="700">ประเมินผลลัพธ์ผ่าน HTTP Interface</text>
+      </g>
+
+      <g>
+        <rect x="670" y="60" width="205" height="240" rx="8" class="diag-box diag-box-banner" />
+        <rect x="682" y="72" width="95" height="20" rx="4" fill="#ef4444" />
+        <text x="729" y="82" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">Penetration Test</text>
+        <text x="682" y="112" class="diag-text-title" font-size="13px" font-weight="700">การทดสอบเจาะระบบ</text>
+        <text x="682" y="134" class="diag-text-sub" font-size="11px">จังหวะ: ระบบพร้อมใช้งาน / ในองค์กร</text>
+        <text x="682" y="154" class="diag-text-sub" font-size="11px">มุมมอง: Black/Gray/White-box</text>
+        <text x="682" y="174" class="diag-text-sub" font-size="11px">สภาวะ: จำลองการโจมตีของศัตรูจริง</text>
+        <text x="682" y="196" class="diag-text-sub" font-size="10.5px">เป้าหมาย: Exploit ช่องโหว่จริง,</text>
+        <text x="682" y="216" class="diag-text-sub" font-size="10.5px">เชื่อมโยงหลายจุดอ่อน (Chaining)</text>
+        <text x="682" y="246" fill="#ef4444" font-size="10px" font-weight="700">พิสูจน์ผลกระทบธุรกิจจริง (Impact)</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Security Testing Matrix Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">01</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">THREAT MODELING (การสร้างแบบจำลองภัยคุกคาม)</h5>
+            <span class="reading-mob-tier-action">Design Phase &middot; STRIDE</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ดำเนินการในระยะออกแบบสถาปัตยกรรม (Design Phase) ก่อนเขียนโค้ด เพื่อวิเคราะห์ Trust Boundaries, Data Flow Diagrams และค้นหาข้อบกพร่องเชิงโครงสร้างด้วย STRIDE</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-report">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">02</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">SAST (Static Application Security Testing)</h5>
+            <span class="reading-mob-tier-action">Coding Phase &middot; White-Box &middot; Code at Rest</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">วิเคราะห์ซอร์สโค้ดและไบนารีโดยตรงในขณะที่โปรแกรมยังไม่รันทำงาน สอดคล้องกับแนวคิด Shift-Left เพื่อตรวจหา Insecure Coding, Hardcoded Credentials และข้อผิดพลาดทางไวยากรณ์</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-dashboard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">03</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">DAST (Dynamic Application Security Testing)</h5>
+            <span class="reading-mob-tier-action">Testing Phase &middot; Black-Box &middot; Running App</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ทดสอบแอปพลิเคชันจากภายนอกขณะที่โปรแกรมกำลังทำงานจริงในสภาพแวดล้อมจำลอง (Staging) ผ่าน HTTP Request/Response โดยไม่ต้องเห็นซอร์สโค้ด เพื่อหาข้อผิดพลาดด้าน Authentication และเซิร์ฟเวอร์</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-scorecard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">04</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">PENETRATION TESTING (การทดสอบเจาะระบบ)</h5>
+            <span class="reading-mob-tier-action">Ops Phase &middot; Active Exploitation &middot; Impact Proof</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">การจำลองการโจมตีเสมือนจริงที่ได้รับอนุญาตอย่างเป็นลายลักษณ์อักษร (Rules of Engagement) โดยผู้เชี่ยวชาญจะพยายามโจมตีเจาะระบบจริงเพื่อพิสูจน์ผลกระทบทางธุรกิจและหาเส้นทางการโจมตีที่ซับซ้อน</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+  // 5.4.1 Asset Lifecycle Management & EOL Compensating Controls
+  assetLifecycleAndEol: `
+<div class="reading-diagram-card" data-diagram="assetLifecycleAndEol" role="region" aria-label="Asset Lifecycle Management and EOL Compensating Controls">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Asset Protection Governance</span>
+    <h4 class="reading-diagram-title">Asset Lifecycle Management (ALM) &amp; EOL/EOS Compensating Controls</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 900 320" class="reading-diagram-svg" aria-label="Asset Lifecycle stages with dedicated branch for End of Life compensating controls" role="img">
+      <g>
+        <rect x="25" y="25" width="125" height="75" rx="6" class="diag-box diag-box-blue" />
+        <text x="87" y="52" class="diag-text-title" font-size="12px" font-weight="700" text-anchor="middle">1. Plan</text>
+        <text x="87" y="72" class="diag-text-sub" font-size="10.5px" text-anchor="middle">วางแผนจัดซื้อ</text>
+      </g>
+
+      <path d="M 150 62 H 170" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="170,62 163,58 163,66" fill="var(--line, #334155)" />
+
+      <g>
+        <rect x="170" y="25" width="125" height="75" rx="6" class="diag-box diag-box-blue" />
+        <text x="232" y="52" class="diag-text-title" font-size="12px" font-weight="700" text-anchor="middle">2. Acquire</text>
+        <text x="232" y="72" class="diag-text-sub" font-size="10.5px" text-anchor="middle">ลงทะเบียนทรัพย์สิน</text>
+      </g>
+
+      <path d="M 295 62 H 315" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="315,62 308,58 308,66" fill="var(--line, #334155)" />
+
+      <g>
+        <rect x="315" y="25" width="125" height="75" rx="6" class="diag-box diag-box-blue" />
+        <text x="377" y="52" class="diag-text-title" font-size="12px" font-weight="700" text-anchor="middle">3. Deploy</text>
+        <text x="377" y="72" class="diag-text-sub" font-size="10.5px" text-anchor="middle">ตั้งค่าตาม Baseline</text>
+      </g>
+
+      <path d="M 440 62 H 460" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="460,62 453,58 453,66" fill="var(--line, #334155)" />
+
+      <g>
+        <rect x="460" y="25" width="125" height="75" rx="6" class="diag-box diag-box-banner" />
+        <text x="522" y="52" class="diag-text-title" font-size="12px" font-weight="700" text-anchor="middle">4. Maintain</text>
+        <text x="522" y="72" class="diag-text-sub" font-size="10.5px" text-anchor="middle">ลงแพตช์ &amp; ดูแล</text>
+      </g>
+
+      <path d="M 585 62 H 605" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="605,62 598,58 598,66" fill="var(--line, #334155)" />
+
+      <g>
+        <rect x="605" y="25" width="125" height="75" rx="6" class="diag-box diag-box-blue" />
+        <text x="667" y="52" class="diag-text-title" font-size="12px" font-weight="700" text-anchor="middle">5. Monitor</text>
+        <text x="667" y="72" class="diag-text-sub" font-size="10.5px" text-anchor="middle">ตรวจจับ Drift/ช่องโหว่</text>
+      </g>
+
+      <path d="M 730 62 H 750" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+      <polygon points="750,62 743,58 743,66" fill="var(--line, #334155)" />
+
+      <g>
+        <rect x="750" y="25" width="125" height="75" rx="6" class="diag-box diag-box-blue" />
+        <text x="812" y="52" class="diag-text-title" font-size="12px" font-weight="700" text-anchor="middle">6. Dispose</text>
+        <text x="812" y="72" class="diag-text-sub" font-size="10.5px" text-anchor="middle">NIST 800-88 ล้างสื่อ</text>
+      </g>
+
+      <path d="M 522 100 V 135" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3" fill="none" />
+      <polygon points="522,135 517,127 527,127" fill="#ef4444" />
+      <text x="532" y="122" fill="#ef4444" font-size="9.5px" font-weight="700">เข้าสู่ภาวะ EOL / EOS</text>
+
+      <g>
+        <rect x="180" y="140" width="684" height="155" rx="8" fill="var(--bg-subtle, #1e293b)" stroke="#ef4444" stroke-width="1.5" />
+        <rect x="195" y="152" width="160" height="22" rx="4" fill="#ef4444" />
+        <text x="275" y="163" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">EOL / EOS COMPENSATING CONTROLS</text>
+        <text x="370" y="163" class="diag-text-title" font-size="12px" font-weight="700">มาตรการควบคุมชดเชยเมื่อผู้ผลิตหยุดสนับสนุนแพตช์:</text>
+
+        <g>
+          <rect x="195" y="185" width="150" height="95" rx="6" class="diag-box diag-box-blue" />
+          <text x="210" y="206" class="diag-text-title" font-size="11.5px" font-weight="700">1. Network Isolation</text>
+          <text x="210" y="228" class="diag-text-sub" font-size="10px">แยกเข้า Isolated VLAN</text>
+          <text x="210" y="246" class="diag-text-sub" font-size="10px">ตัดขาดจากอินเทอร์เน็ต</text>
+          <text x="210" y="264" class="diag-text-sub" font-size="10px">จำกัด Blast Radius</text>
+        </g>
+
+        <g>
+          <rect x="360" y="185" width="150" height="95" rx="6" class="diag-box diag-box-banner" />
+          <text x="375" y="206" class="diag-text-title" font-size="11.5px" font-weight="700">2. Virtual Patching</text>
+          <text x="375" y="228" class="diag-text-sub" font-size="10px">ติดตั้ง WAF / IPS ขวาง</text>
+          <text x="375" y="246" class="diag-text-sub" font-size="10px">กรอง Exploit Payload</text>
+          <text x="375" y="264" class="diag-text-sub" font-size="10px">ป้องกันช่องโหว่ระดับทราฟฟิก</text>
+        </g>
+
+        <g>
+          <rect x="525" y="185" width="150" height="95" rx="6" class="diag-box diag-box-blue" />
+          <text x="540" y="206" class="diag-text-title" font-size="11.5px" font-weight="700">3. Access Restriction</text>
+          <text x="540" y="228" class="diag-text-sub" font-size="10px">ปิดเซอร์วิสที่ไม่จำเป็น</text>
+          <text x="540" y="246" class="diag-text-sub" font-size="10px">จำกัดสิทธิ์ Least Privilege</text>
+          <text x="540" y="264" class="diag-text-sub" font-size="10px">ห้ามใช้อุปกรณ์ USB ทั่วไป</text>
+        </g>
+
+        <g>
+          <rect x="690" y="185" width="160" height="95" rx="6" class="diag-box diag-box-banner" />
+          <text x="705" y="206" class="diag-text-title" font-size="11.5px" font-weight="700">4. Enhanced Telemetry</text>
+          <text x="705" y="228" class="diag-text-sub" font-size="10px">ส่ง Log ละเอียดเข้า SIEM</text>
+          <text x="705" y="246" class="diag-text-sub" font-size="10px">ตรวจจับความผิดปกติเข้มงวด</text>
+          <text x="705" y="264" class="diag-text-sub" font-size="10px">เร่งแผนย้ายระบบ (Migration)</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Asset Lifecycle Management Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">ALM</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">6 ขั้นตอนวงจรชีวิตทรัพย์สิน (Asset Lifecycle Management)</h5>
+            <span class="reading-mob-tier-action">Standard Governance Stages</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">1. Plan (วางแผนสเปกและความปลอดภัย) &rarr; 2. Acquire (จัดซื้อและติดแท็กทรัพย์สิน) &rarr; 3. Deploy (คอนฟิกตาม Baseline) &rarr; 4. Maintain (ติดตั้ง Patch) &rarr; 5. Monitor (ตรวจสอบ Drift) &rarr; 6. Dispose (ล้างข้อมูลตาม NIST 800-88)</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-scorecard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">EOL</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">COMPENSATING CONTROLS สำหรับอุปกรณ์ EOL/EOS</h5>
+            <span class="reading-mob-tier-action">Unpatchable Legacy Risk Mitigation</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">เมื่ออุปกรณ์สิ้นสุดการสนับสนุน (End of Support) และไม่มี Patch ความปลอดภัยอีกต่อไป ต้องใช้มาตรการชดเชย: 1. Network Segmentation (ตัดขาดเข้า VLAN พิเศษ), 2. Virtual Patching (ใช้ WAF/IPS กรองการโจมตี), 3. ปิดพอร์ตและเซอร์วิสที่ไม่จำเป็น, และ 4. เฝ้าระวัง Log เป็นพิเศษ</p>
       </div>
     </div>
   </div>
 </div>
 `
+
 };

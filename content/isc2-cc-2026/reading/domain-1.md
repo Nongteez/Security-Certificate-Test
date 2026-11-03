@@ -1,6 +1,6 @@
 <p class="reading-lead">เอกสารรวบรวมและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับ <strong>Domain 1: Security Principles</strong> (น้ำหนักข้อสอบ 24%) ครอบคลุมหลักการพื้นฐานด้านความมั่นคงปลอดภัยไซเบอร์ การบริหารความเสี่ยง การกำกับดูแล นโยบาย มาตรการควบคุม และประมวลจริยธรรมวิชาชีพของ ISC2 เพื่อสร้างความเข้าใจเชิงลึกสำหรับเตรียมสอบ</p>
 
-<section id="obj-1-1" class="reading-objective-section">
+<section id="obj-1-1" class="reading-objective-section reading-structured-objective">
 
 ## Objective 1.1: Understand cybersecurity concepts
 
@@ -12,7 +12,7 @@
 
 **Information Security (InfoSec)** คือการปกป้องข้อมูลและระบบสารสนเทศจากการเข้าถึง การเปิดเผย การแก้ไข การทำลาย หรือการหยุดชะงักโดยไม่ได้รับอนุญาต โดยต้องรักษาสมดุลระหว่าง **ความปลอดภัย (Security)** กับ **ความต้องการและความคล่องตัวทางธุรกิจ (Business Needs)**
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>คำศัพท์รากฐานที่ต้องแยกความหมายให้ชัดเจน:</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>คำศัพท์รากฐานที่ต้องแยกความหมายให้ชัดเจน:</h4>
 
 | คำศัพท์ | คำจำกัดความ | ตัวอย่างในโลกจริง |
 |---|---|---|
@@ -43,7 +43,6 @@
   </div>
 </div>
 
-
 <div id="topic-1-1-cia-triad" class="reading-topic-anchor"></div>
 
 ### 1.1.2 The CIA Triad — Confidentiality, Integrity, Availability
@@ -56,7 +55,7 @@
 
 ข้อมูลต้องถูกเข้าถึงและเปิดเผยต่อ **ผู้ที่ได้รับอนุญาตเท่านั้น (Authorized Individuals Only)** โดยมุ่งเน้นการป้องกัน **Unauthorized Disclosure** (การเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต)
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</h5>
 
 - **Encryption (การเข้ารหัสข้อมูล):** แปลงข้อมูลให้อ่านไม่ออกหากไม่มีกุญแจถอดรหัส
 - **Access Control & Permissions:** จำกัดสิทธิ์การอ่านไฟล์และระบบ
@@ -77,7 +76,7 @@
 
 ข้อมูลต้อง **ไม่ถูกแก้ไข ดัดแปลง หรือทำลายโดยไม่ได้รับอนุญาต** และสามารถตรวจสอบความถูกต้องได้ตลอดวงจรชีวิต เพื่อป้องกัน **Unauthorized Modification / Tampering** (การดัดแปลงข้อมูลโดยมิชอบ)
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</h5>
 
 - **Hashing (การคำนวณค่าแฮช):** ใช้สร้างค่าสรุปข้อมูลทางเดียวเพื่อตรวจสอบว่าไฟล์หรือข้อความถูกดัดแปลงหรือไม่ (เช่น SHA-256)
 - **Digital Signatures (ลายมือชื่อดิจิทัล):** ยืนยันทั้งความถูกต้องของข้อมูล (Integrity) และผู้ลงนาม (Authenticity)
@@ -114,7 +113,7 @@
 
 ระบบ ข้อมูล และทรัพยากรต้อง **พร้อมให้ผู้มีสิทธิ์เข้าใช้งานตามเวลาที่จำเป็นและข้อกำหนดบริการ** โดยมีเป้าหมายสำคัญคือการลด **Downtime** และสนับสนุนความต่อเนื่องทางธุรกิจเมื่อเผชิญภัยคุกคาม เช่น Hardware Failure, ไฟดับ (Power Outage), การโจมตี DDoS, Ransomware เข้ารหัส, หรือภัยธรรมชาติ
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>มาตรการควบคุมหลัก (Controls):</h5>
 
 - **Redundancy (ความซ้ำซ้อนของอุปกรณ์):** มีชิ้นส่วนสำรอง เช่น Power Supply คู่, RAID ฮาร์ดดิสก์
 - **Failover & Load Balancing:** การกระจายทราฟฟิกและสลับระบบอัตโนมัติเมื่อเครื่องหลักล่ม
@@ -126,7 +125,7 @@
   <strong>คีย์เวิร์ดในข้อสอบ:</strong> <em>Availability = Can I ACCESS it when needed? / Accessible / Downtime / Redundancy</em>
 </div>
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>ตัวอย่างสถาปัตยกรรมเพิ่ม Availability:</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>ตัวอย่างสถาปัตยกรรมเพิ่ม Availability:</h5>
 
 <div class="reading-semantic-diagram" data-diagram="loadBalancer"></div>
 
@@ -137,6 +136,9 @@
 | ข้อมูลเงินเดือนพนักงานรั่วไหลออกสู่สาธารณะ | **Confidentiality** | มีการเปิดเผยข้อมูลลับแก่ผู้ไม่มีสิทธิ์ |
 | ผู้โจมตีเปลี่ยนเลขบัญชีรับเงินในใบแจ้งหนี้ | **Integrity** | ข้อมูลถูกดัดแปลงแก้ไขจนไม่ถูกต้อง |
 | เว็บไซต์ระบบลงทะเบียนล่มเพราะทราฟฟิก DDoS มหาศาล | **Availability** | ผู้ใช้ที่ถูกต้องไม่สามารถเข้าถึงระบบได้ |
+| ผู้โจมตีดักจับข้อมูลที่วิ่งบนเครือข่ายที่ไม่ได้เข้ารหัส (Wiretapping / Sniffing) | **Confidentiality** | ข้อมูลความลับถูกผู้ไม่มีสิทธิ์ดักอ่าน |
+| ผู้โจมตีส่งโค้ด SQL Injection เพื่อเปลี่ยนยอดเงินในฐานข้อมูล | **Integrity** | ฐานข้อมูลถูกแก้ไขดัดแปลงอย่างไม่ถูกต้อง |
+| บัญชีผู้ดูแลระบบถูกขโมยรหัสผ่านผ่านการทำ Credential Dumping | **Confidentiality** | รหัสผ่านลับถูกเปิดเผยแก่ผู้ไม่ได้รับอนุญาต |
 | Ransomware เข้ารหัสไฟล์ในเครื่องและระบบหยุดชะงัก | **Availability** *(และอาจกระทบ I/C)* | โจทย์มักเน้นผลกระทบที่ระบบทำงานไม่ได้ แต่ต้องดูบริบทคำถาม |
 
 <div class="reading-callout tip">
@@ -160,7 +162,6 @@
   </div>
 </div>
 
-
 <div id="topic-1-1-identification-authentication" class="reading-topic-anchor"></div>
 
 ### 1.1.3 Identification & Authentication (AAA)
@@ -179,6 +180,14 @@
 
 ขั้นตอนที่ระบบ **ตรวจสอบและพิสูจน์ว่าผู้ใช้เป็นบุคคลนั้นจริงตามที่กล่าวอ้าง (Proving Identity)** เช่น การตรวจสอบ Password, การตรวจลายนิ้วมือ, หรือการรับรหัส OTP
 
+<h4 class="reading-subtopic-title">สรุปลำดับขั้นตอนของ AAA Framework</h4>
+
+| ขั้นตอน (Stage) | ชื่อกระบวนการ | ความหมายเชิงปฏิบัติ (Core Concept) | สิ่งที่ผู้ใช้ทำ (User Action) | สิ่งที่ระบบทำ (System Action) |
+|---|---|---|---|---|
+| **Step 1** | **Identification** | กล่าวอ้างตัวตน (Claim Identity) | ป้อน Username หรือแตะบัตรสมาร์ตการ์ด | รับค่าและเตรียมค้นหาประวัติผู้ใช้ |
+| **Step 2** | **Authentication** | พิสูจน์ตัวตน (Prove Identity) | ป้อน Password หรือสแกนลายนิ้วมือ | ตรวจสอบว่าตรงกับข้อมูลยืนยันตัวตนหรือไม่ |
+| **Step 3** | **Authorization** | อนุญาตสิทธิ์ (Grant Permissions) | พยายามเข้าถึงไฟล์หรือสั่งรันโปรแกรม | ตรวจสอบสิทธิ์ (ACL/RBAC) ว่าอนุญาตให้ทำได้หรือไม่ |
+| **Step 4** | **Accounting / Auditing** | บันทึกและตรวจสอบย้อนหลัง (Track Actions) | ใช้งานระบบตามปกติ | บันทึก Log กิจกรรม เวลา และผลลัพธ์เพื่อตรวจสอบย้อนหลัง |
 
 <div id="topic-1-1-mfa" class="reading-topic-anchor"></div>
 
@@ -186,7 +195,7 @@
 
 **MFA** คือการพิสูจน์ตัวตนโดยใช้ปัจจัยตั้งแต่ **2 ประเภทที่แตกต่างกันขึ้นไป (Two or More Independent Factors)**
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>ปัจจัยหลักของ MFA มี 3 ประเภท: Know, Have และ Are; สถานที่หรือเครือข่ายเป็นบริบทเสริม (Context) ไม่ใช่ปัจจัยอิสระที่ใช้แทนประเภทเหล่านี้:</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>ปัจจัยหลักของ MFA มี 3 ประเภท: Know, Have และ Are; สถานที่หรือเครือข่ายเป็นบริบทเสริม (Context) ไม่ใช่ปัจจัยอิสระที่ใช้แทนประเภทเหล่านี้:</h4>
 
 :::mfa-factors
 - **Something You Know** (สิ่งที่คุณรู้)
@@ -212,7 +221,6 @@
   </div>
 </div>
 
-
 <div id="topic-1-1-authorization-accounting" class="reading-topic-anchor"></div>
 
 ### 1.1.5 Authorization & Accounting
@@ -231,7 +239,7 @@
 
 วัตถุประสงค์หลักคือการใช้ในการสืบสวนคดีความมั่นคงปลอดภัย (Forensics), เฝ้าระวังความผิดปกติ, และสร้าง **Accountability** ที่ตรวจสอบย้อนหลังได้
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>สรุปคำถามหลักในข้อสอบสำหรับ 4 ขั้นตอน AAA:</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>สรุปคำถามหลักในข้อสอบสำหรับ 4 ขั้นตอน AAA:</h5>
 
 | คำถามหลักในข้อสอบ | ขั้นตอนที่เกี่ยวข้อง |
 |---|---|
@@ -240,41 +248,46 @@
 | *"What actions and resources are you permitted to access?"* | **Authorization** |
 | *"What did you do, and what evidence is recorded?"* | **Accounting** |
 
-
 <div id="topic-1-1-privacy-data-protection" class="reading-topic-anchor"></div>
 
 ### 1.1.6 Non-repudiation, Privacy & Data Protection
 
 #### 1. Non-repudiation — การไม่อาจปฏิเสธความรับผิดชอบได้
 
-ความสามารถในการพิสูจน์ได้อย่างน่าเชื่อถือว่า **มีบุคคลใดบุคคลหนึ่งได้กระทำการหรือส่งข้อมูลนั้นจริง** โดยผู้กระทำไม่สามารถอ้างภายหลังได้ว่าตนเองไม่ได้เป็นผู้ทำ โดยอาศัยกลไกสำคัญคือ **Digital Signature** ร่วมกับโครงสร้างกุญแจสาธารณะ (PKI) และการประทับเวลาที่เชื่อถือได้ (Timestamping)
+ความสามารถในการพิสูจน์ได้อย่างน่าเชื่อถือว่า มีบุคคลใดบุคคลหนึ่งได้กระทำการหรือส่งข้อมูลนั้นจริง โดยผู้กระทำไม่สามารถอ้างภายหลังได้ว่าตนเองไม่ได้เป็นผู้ทำ โดยอาศัยกลไกสำคัญคือ **Digital Signature** ร่วมกับโครงสร้างกุญแจสาธารณะ (PKI) และการประทับเวลาที่เชื่อถือได้ (Timestamping)
 
 *ความต่างจาก Authentication:* Authentication พิสูจน์ตัวตน ณ ขณะล็อกอิน ส่วน Non-repudiation สร้างหลักฐานทางนิติวิทยาศาสตร์ที่ผูกมัดการกระทำในอดีต
+
+<section class="reading-privacy-context">
 
 #### 2. Privacy — การคุ้มครองความเป็นส่วนตัวของข้อมูล
 
 เกี่ยวข้องกับการคุ้มครอง **Personally Identifiable Information (PII) / Personal Data** ตลอดวงจรชีวิต: การเก็บรวบรวมข้อมูล (Collection), การประมวลผล (Processing), การจัดเก็บรักษา (Storage), การถ่ายโอน (Transfer), และการทำลาย (Disposal)
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>3 บทบาทหลักในกฎหมายคุ้มครองข้อมูลส่วนบุคคล (เช่น GDPR, PDPA):</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>3 บทบาทหลักในกฎหมายคุ้มครองข้อมูลส่วนบุคคล (เช่น GDPR, PDPA):</h5>
+
+<div class="reading-definition-group reading-privacy-roles">
 
 <div class="reading-concept-item">
-  <h5 class="reading-concept-heading">Data Subject (เจ้าของข้อมูลส่วนบุคคล)</h5>
+  <h6 class="reading-concept-heading">Data Subject (เจ้าของข้อมูลส่วนบุคคล)</h6>
   <p>บุคคลธรรมดาที่ข้อมูลนั้นระบุไปถึง (เช่น นายสมชาย ลูกค้าของบริษัท หรือพนักงานในองค์กร)</p>
 </div>
 
 <div class="reading-concept-item">
-  <h5 class="reading-concept-heading">Data Controller (ผู้ควบคุมข้อมูล)</h5>
-  <p>บุคคลธรรมดา นิติบุคคล หน่วยงาน หรือองค์กรที่กำหนดโดยลำพังหรือร่วมกับผู้อื่นว่า <strong>จะเก็บข้อมูลทำไม และประมวลผลอย่างไร (Determines Purpose and Means)</strong> เช่น บริษัทค้าปลีกที่เก็บข้อมูลลูกค้า</p>
+  <h6 class="reading-concept-heading">Data Controller (ผู้ควบคุมข้อมูล)</h6>
+  <p>บุคคลธรรมดา นิติบุคคล หน่วยงาน หรือองค์กรที่กำหนดโดยลำพังหรือร่วมกับผู้อื่นว่า จะเก็บข้อมูลทำไม และประมวลผลอย่างไร <strong>(Determines Purpose and Means)</strong> เช่น บริษัทค้าปลีกที่เก็บข้อมูลลูกค้า</p>
 </div>
 
 <div class="reading-concept-item">
-  <h5 class="reading-concept-heading">Data Processor (ผู้ประมวลผลข้อมูล)</h5>
-  <p>ฝ่ายที่ทำการประมวลผลข้อมูล <strong>ในนามของและตามคำสั่งของผู้ควบคุมข้อมูล (Processes on behalf of Controller)</strong> เช่น บริษัท Cloud Provider ที่รับฝากฐานข้อมูล</p>
+  <h6 class="reading-concept-heading">Data Processor (ผู้ประมวลผลข้อมูล)</h6>
+  <p>ฝ่ายที่ทำการประมวลผลข้อมูล ในนามของและตามคำสั่งของผู้ควบคุมข้อมูล <strong>(Processes on behalf of Controller)</strong> เช่น บริษัท Cloud Provider ที่รับฝากฐานข้อมูล</p>
+</div>
+
 </div>
 
 <div class="reading-semantic-diagram" data-diagram="privacyFlow"></div>
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>กลไกการกำกับดูแลและสิทธิในข้อมูลส่วนบุคคล:</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>กลไกการกำกับดูแลและสิทธิในข้อมูลส่วนบุคคล:</h5>
 
 <div class="reading-concept-item">
   <h5 class="reading-concept-heading">Data Ownership & Authority Boundaries</h5>
@@ -295,6 +308,18 @@
   <h5 class="reading-concept-heading">Right to Be Forgotten (สิทธิในการขอลบข้อมูล)</h5>
   <p>สิทธิของ Data Subject ในการร้องขอให้ลบข้อมูลส่วนบุคคลของตน อย่างไรก็ตาม <em>ไม่ได้แปลว่าขอลบแล้วองค์กรต้องลบทันทีเสมอไป</em> หากมีกฎหมายบังคับให้ต้องเก็บรักษาไว้ (เช่น กฎหมายภาษี กฎหมายฟอกเงิน) องค์กรยังมีความชอบธรรมในการเก็บข้อมูลนั้นตามกรอบกฎหมาย</p>
 </div>
+
+<h4 class="reading-subtopic-title">ตารางเปรียบเทียบความแตกต่าง: Confidentiality vs. Privacy</h4>
+
+| มิติการเปรียบเทียบ | Confidentiality (การรักษาความลับ) | Privacy (ความเป็นส่วนตัว) |
+|---|---|---|
+| **นิยามหลัก** | การป้องกันไม่ให้ผู้ไม่มีสิทธิ์เข้าถึงหรือล่วงรู้ข้อมูล (Protect from unauthorized access) | สิทธิของบุคคลธรรมดาในการควบคุมข้อมูลส่วนตัวของตน (Right to control personal data) |
+| **เป้าหมายความปลอดภัย** | ป้องกัน **Unauthorized Disclosure** | คุ้มครองสิทธิของ **Data Subject** ตามกฎหมาย (เช่น GDPR, PDPA) |
+| **ขอบเขตข้อมูล** | ข้อมูลลับทุกชนิดขององค์กร (Trade Secrets, Financial, Source Code, PII) | เฉพาะข้อมูลส่วนบุคคลที่ระบุตัวตนได้ (**PII / Personal Data**) เท่านั้น |
+| **มาตรการควบคุมหลัก** | Encryption, Access Control, Need to Know, Firewalls | Consent, Data Retention, Purpose Limitation, Right to be Forgotten |
+| **จุดลวงในข้อสอบ** | การเข้ารหัสข้อมูล (Encryption) ตอบสนอง Confidentiality แต่ *ไม่ได้แปลว่าปฏิบัติตาม Privacy ครบถ้วน* หากเก็บข้อมูลโดยไม่ได้รับความยินยอม! | ข้อสอบมักถามว่า "การเก็บข้อมูลลูกค้าโดยเข้ารหัสอย่างดีแต่ไม่แจ้งวัตถุประสงค์ ผิดหลักการใด?" คำตอบคือ **Privacy Violation** |
+
+</section>
 
 #### 3. Accountability — ความรับผิดชอบที่ตรวจสอบย้อนหลังได้
 
@@ -325,18 +350,17 @@
   </div>
 </div>
 
-
 <div id="topic-1-1-zero-trust-defense-in-depth" class="reading-topic-anchor"></div>
 
 ### 1.1.7 Zero Trust & Defense in Depth
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>สองแนวคิดทางสถาปัตยกรรมความปลอดภัยที่เสริมส่งซึ่งกันและกันแต่มีมุมมองที่ต่างกัน:</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>สองแนวคิดทางสถาปัตยกรรมความปลอดภัยที่เสริมส่งซึ่งกันและกันแต่มีมุมมองที่ต่างกัน:</h4>
 
 #### 1. Zero Trust Architecture
 
 ยึดถือคติพจน์สำคัญคือ **“Never Trust, Always Verify” (ไม่ไว้วางใจใคร ตรวจสอบยืนยันเสมอ)** โดยปฏิเสธแนวคิดความเชื่อถือแบบเดิมที่ว่า *"คนในเครือข่ายภายใน (Internal Network) ปลอดภัยและเชื่อถือได้"*
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>หลักการสำคัญของ Zero Trust:</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>หลักการสำคัญของ Zero Trust:</h5>
 
 - ยืนยันตัวตนและอุปกรณ์ตามบริบททุกครั้งที่มีการร้องขอเข้าถึง
 - ยึดหลัก **Least Privilege (สิทธิ์เท่าที่จำเป็น)**
@@ -351,7 +375,7 @@
 
 กลยุทธ์การวาง **มาตรการควบคุมความปลอดภัยหลายชั้นที่สอดประสานกัน (Defense in Depth)** เพื่อลดโอกาสที่ความล้มเหลวของมาตรการเดียวจะนำไปสู่ความเสียหาย ชั้นต่าง ๆ ยังอาจมีจุดพึ่งพาร่วมกัน จึงไม่รับประกันว่าจะกำจัดจุดล้มเหลวเดี่ยว (Single Point of Failure) ทั้งหมด
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>ตัวอย่างสถาปัตยกรรมการวางชั้นป้องกัน (7 Security Layers):</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>ตัวอย่างสถาปัตยกรรมการวางชั้นป้องกัน (7 Security Layers):</h5>
 
 <div class="reading-semantic-diagram" data-diagram="defenseInDepth"></div>
 
@@ -375,19 +399,18 @@
 </section>
 
 
-<section id="obj-1-2" class="reading-objective-section">
+<section id="obj-1-2" class="reading-objective-section reading-structured-objective">
 
 ## Objective 1.2: Understand risk management concepts
 
 การบริหารความเสี่ยงคือหัวใจของการตัดสินใจด้านความปลอดภัย องค์กรไม่สามารถกำจัดความเสี่ยงให้เป็นศูนย์ได้ แต่ต้องเข้าใจ วัดผล และจัดการให้อยู่ในระดับที่ยอมรับได้
-
 <div id="topic-1-2-risk-components" class="reading-topic-anchor"></div>
 
 ### 1.2.1 Risk Definition & Core Components
 
 **Risk (ความเสี่ยง)** ประเมินจากโอกาสที่เหตุการณ์ไม่พึงประสงค์จะเกิดขึ้นร่วมกับขนาดของผลกระทบหรือความเสียหายที่เกิดขึ้นต่อองค์กร
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>องค์ประกอบหลักของความเสี่ยง:</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>องค์ประกอบหลักของความเสี่ยง:</h4>
 
 <div class="reading-concept-item">
   <h5 class="reading-concept-heading">Likelihood (Probability / โอกาสเกิด)</h5>
@@ -404,12 +427,11 @@
   <p>ผลลัพธ์จากการนำโอกาสเกิดและผลกระทบมาประเมินร่วมกันเพื่อจัดลำดับความสำคัญ</p>
 </div>
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>สมการความเสี่ยงเชิงคุณภาพ (Qualitative Risk Formula):</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>สมการความเสี่ยงเชิงคุณภาพ (Qualitative Risk Formula):</h5>
 
 $\text{Risk} \approx \text{Likelihood} \times \text{Impact}$
 
 บางโมเดลแบบง่ายใช้ผลคูณนี้โดยต้องกำหนดสเกลและความหมายของคะแนนให้ชัดเจน องค์กรอาจเลือกวิธีเชิงคุณภาพหรือเชิงปริมาณต่างกัน ไม่ใช่สูตรเดียวที่บังคับใช้กับทุกการประเมิน
-
 
 <div id="topic-1-2-quantitative-risk" class="reading-topic-anchor"></div>
 
@@ -421,7 +443,7 @@ $\text{Risk} \approx \text{Likelihood} \times \text{Impact}$
 
 <div class="reading-concept-item">
   <h5 class="reading-concept-heading">Asset Value (AV)</h5>
-  <p>มูลค่ารวมของทรัพย์สินที่กำลังพิจารณา (คิดเป็นจำนวนเงิน เช่น มูลค่าเซิร์ฟเวอร์ฐานข้อมูล = \$10,000)</p>
+  <p>มูลค่ารวมของทรัพย์สินที่กำลังพิจารณา (คิดเป็นจำนวนเงิน เช่น มูลค่าเซิร์ฟเวอร์ฐานข้อมูล = &#36;10,000)</p>
 </div>
 
 <div class="reading-concept-item">
@@ -442,7 +464,7 @@ $\text{Risk} \approx \text{Likelihood} \times \text{Impact}$
 $SLE = AV \times EF$
   </div>
   <div class="reading-formula-vars">
-    <div class="reading-formula-var"><strong>AV</strong>: Asset Value (มูลค่าทรัพย์สิน เช่น \$10,000)</div>
+    <div class="reading-formula-var"><strong>AV</strong>: Asset Value (มูลค่าทรัพย์สิน เช่น &#36;10,000)</div>
     <div class="reading-formula-var"><strong>EF</strong>: Exposure Factor (สัดส่วนความเสียหาย เช่น 50% หรือ 0.50)</div>
   </div>
 </div>
@@ -460,7 +482,7 @@ $SLE = AV \times EF$
 
 ความถี่หรือจำนวนครั้งโดยประมาณที่เหตุการณ์นั้นจะเกิดขึ้น **ภายในรอบระยะเวลา 1 ปี**
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ตัวอย่างค่า ARO ในข้อสอบ:</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ตัวอย่างค่า ARO ในข้อสอบ:</h5>
 
 - เกิดขึ้นปีละ 2 ครั้ง $→ ARO = 2$
 - เกิดขึ้นปีละ 1 ครั้ง $→ ARO = 1$
@@ -481,7 +503,7 @@ $SLE = AV \times EF$
 $ALE = SLE \times ARO$
   </div>
   <div class="reading-formula-vars">
-    <div class="reading-formula-var"><strong>SLE</strong>: Single Loss Expectancy (ความเสียหายต่อครั้ง เช่น \$5,000)</div>
+    <div class="reading-formula-var"><strong>SLE</strong>: Single Loss Expectancy (ความเสียหายต่อครั้ง เช่น &#36;5,000)</div>
     <div class="reading-formula-var"><strong>ARO</strong>: Annualized Rate of Occurrence (ความถี่ต่อปี เช่น 2 ครั้ง/ปี)</div>
   </div>
 </div>
@@ -495,7 +517,7 @@ $ALE = SLE \times ARO$
 
 </div>
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>ขั้นตอนและลำดับการคำนวณ (Calculation Pipeline):</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>ขั้นตอนและลำดับการคำนวณ (Calculation Pipeline):</h5>
 
 <div class="reading-semantic-diagram" data-diagram="riskCalculationFlow"></div>
 
@@ -505,9 +527,8 @@ $ALE = SLE \times ARO$
     <span>ประโยชน์หลักในการทำข้อสอบ (Cost-Benefit Decision Rule)</span>
   </div>
   <p>ค่า $ALE$ ถูกนำมาใช้เปรียบเทียบกับ <strong>ต้นทุนของมาตรการควบคุม (Cost of Control / Safeguard Cost)</strong></p>
-  <p><strong>การเปรียบเทียบด้านการเงินแบบง่าย:</strong> ผลประโยชน์จากการลดความเสียหายต่อปี (Annual Loss-Reduction Benefit) = ALE ก่อนใช้ Control − ALE หลังใช้ Control แล้วเปรียบเทียบกับต้นทุน Control ต่อปี การมีต้นทุนต่ำกว่า ALE เดิมเพียงอย่างเดียวยังไม่พอ เช่น ALE ก่อน 10,000/ปี หลัง 9,000/ปี ลดความเสียหายได้ 1,000/ปี หาก Control มีต้นทุน 5,000/ปี ผลประโยชน์สุทธิเท่ากับ −4,000/ปี ตัวอย่างเดิมที่ ALE \$10,000/ปี แต่ Control ราคา \$25,000/ปี ก็ไม่คุ้มด้านการเงินภายใต้สมมติฐานนี้ อย่างไรก็ตาม กฎหมาย สัญญา ความปลอดภัยของบุคคล และภารกิจอาจทำให้องค์กรต้องเลือกมาตรการแม้ผลตอบแทนทางการเงินโดยตรงไม่เป็นบวก</p>
+  <p><strong>การเปรียบเทียบด้านการเงินแบบง่าย:</strong> ผลประโยชน์จากการลดความเสียหายต่อปี (Annual Loss-Reduction Benefit) = ALE ก่อนใช้ Control − ALE หลังใช้ Control แล้วเปรียบเทียบกับต้นทุน Control ต่อปี การมีต้นทุนต่ำกว่า ALE เดิมเพียงอย่างเดียวยังไม่พอ เช่น ALE ก่อน 10,000/ปี หลัง 9,000/ปี ลดความเสียหายได้ 1,000/ปี หาก Control มีต้นทุน 5,000/ปี ผลประโยชน์สุทธิเท่ากับ −4,000/ปี ตัวอย่างเดิมที่ ALE &#36;10,000/ปี แต่ Control ราคา &#36;25,000/ปี ก็ไม่คุ้มด้านการเงินภายใต้สมมติฐานนี้ อย่างไรก็ตาม กฎหมาย สัญญา ความปลอดภัยของบุคคล และภารกิจอาจทำให้องค์กรต้องเลือกมาตรการแม้ผลตอบแทนทางการเงินโดยตรงไม่เป็นบวก</p>
 </div>
-
 
 <div id="topic-1-2-risk-lifecycle" class="reading-topic-anchor"></div>
 
@@ -535,12 +556,11 @@ $ALE = SLE \times ARO$
   <p>บทนี้ใช้ลำดับช่วยเรียนรู้ 5 ส่วนจากบันทึกการเรียน: Identify → Assess → Treat → Monitor → Communicate/Report โดยการสื่อสารและรายงานผลเกิดควบคู่ได้ตลอดกระบวนการ เพื่อให้ผู้บริหารและผู้มีส่วนได้เสียตัดสินใจจัดสรรทรัพยากรได้ กรอบงานอื่นอาจจัดกลุ่มต่างกัน เช่น NIST SP 800-39 ใช้ Frame, Assess, Respond และ Monitor ลำดับ 5 ส่วนนี้เป็นแบบจำลองช่วยเรียนรู้ ไม่ใช่ข้อกำหนดลำดับตายตัวจาก Exam Outline</p>
 </div>
 
-
 <div id="topic-1-2-risk-treatment" class="reading-topic-anchor"></div>
 
 ### 1.2.4 Risk Treatment: The 4 Responses
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>เมื่อประเมินความเสี่ยงแล้ว องค์กรต้องเลือกกลยุทธ์ในการจัดการความเสี่ยง 4 รูปแบบหลัก:</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>เมื่อประเมินความเสี่ยงแล้ว องค์กรต้องเลือกกลยุทธ์ในการจัดการความเสี่ยง 4 รูปแบบหลัก:</h4>
 
 :::risk-treatment
 - **Risk Avoidance** (การหลีกเลี่ยงความเสี่ยง)
@@ -566,54 +586,66 @@ $ALE = SLE \times ARO$
   </div>
 </div>
 
-
 <div id="topic-1-2-inherent-residual-risk" class="reading-topic-anchor"></div>
 
 ### 1.2.5 Inherent Risk, Residual Risk, Risk Appetite & Tolerance
 
 <div class="reading-concept-item">
-  <h5 class="reading-concept-heading">Inherent Risk (ความเสี่ยงดั้งเดิม)</h5>
+  <h4 class="reading-concept-heading">Inherent Risk (ความเสี่ยงดั้งเดิม)</h4>
   <p>ระดับความเสี่ยงที่มีอยู่ตามธรรมชาติก่อนที่จะมีการนำมาตรการควบคุมความปลอดภัยใด ๆ มาติดตั้งใช้งาน (Risk before controls)</p>
 </div>
 
 <div class="reading-concept-item">
-  <h5 class="reading-concept-heading">Residual Risk (ความเสี่ยงที่หลงเหลือ)</h5>
+  <h4 class="reading-concept-heading">Residual Risk (ความเสี่ยงที่หลงเหลือ)</h4>
   <p>ระดับความเสี่ยงที่ยังคงหลงเหลืออยู่หลังจากที่ได้ติดตั้งมาตรการควบคุมความปลอดภัยแล้ว (Risk after controls)</p>
   <p>Residual Risk คือความเสี่ยงที่ประเมินใหม่หลังคำนึงถึงมาตรการควบคุม ไม่ใช่การลบคะแนนหรือเงินออกจากกันได้เสมอไป ต้องประเมินโอกาสเกิดและผลกระทบที่ยังเหลืออยู่ด้วยโมเดลและสเกลที่เหมาะสม</p>
   <p><em>ตัวอย่าง:</em> ก่อนติดตั้ง MFA ความเสี่ยงที่บัญชีจะถูกแฮกจากรหัสผ่านรั่วมีสูงมาก (Inherent Risk สูง) หลังติดตั้ง MFA ความเสี่ยงลดลงอย่างมาก แต่ยังคงมีโอกาสที่ผู้ใช้อาจถูกหลอกด้วยฟิชชิ่งแบบขั้นสูง (Adversary-in-the-Middle) อยู่บ้าง ความเสี่ยงที่ยังเหลือน้อยนี้เรียกว่า <strong>Residual Risk</strong></p>
 </div>
 
 <div class="reading-concept-item">
-  <h5 class="reading-concept-heading">Risk Appetite (ความเต็มใจรับความเสี่ยง)</h5>
+  <h4 class="reading-concept-heading">Risk Appetite (ความเต็มใจรับความเสี่ยง)</h4>
   <p>ปริมาณและประเภทของความเสี่ยงในระดับกว้างที่องค์กรพร้อมและยินดีที่จะเปิดรับเพื่อบรรลุเป้าหมายและวิสัยทัศน์ทางธุรกิจ</p>
 </div>
 
 <div class="reading-concept-item">
-  <h5 class="reading-concept-heading">Risk Tolerance (ขอบเขตความเสี่ยงที่ยอมรับได้)</h5>
+  <h4 class="reading-concept-heading">Risk Tolerance (ขอบเขตความเสี่ยงที่ยอมรับได้)</h4>
   <p>ขอบเขตความเบี่ยงเบนที่ยอมให้เกิดขึ้นได้ในแต่ละโครงการหรือระบบย่อย เป็นระดับที่จำเพาะเจาะจงและวัดผลได้มากกว่า Risk Appetite</p>
+</div>
+
+<div class="reading-callout tip">
+  <div class="reading-callout-header">
+    <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+    <span>วงจรการตัดสินใจความเสี่ยงในทางปฏิบัติ (Risk Decision Flow)</span>
+  </div>
+  <p><strong>1. คำนวณความเสี่ยงดั้งเดิม:</strong> ประเมินระดับความเสี่ยงที่ยังไม่มีการควบคุม (Inherent Risk)</p>
+  <p><strong>2. นำมาตรการควบคุมมาใช้:</strong> ติดตั้ง Security Controls ที่เหมาะสมเพื่อลดโอกาสเกิดหรือผลกระทบ</p>
+  <p><strong>3. ประเมินความเสี่ยงที่เหลืออยู่:</strong> คำนวณ Residual Risk หลังมีมาตรการควบคุม</p>
+  <p><strong>4. เปรียบเทียบกับ Risk Appetite:</strong></p>
+  <ul>
+    <li>หาก <strong>Residual Risk &le; Risk Appetite</strong> &rarr; องค์กร <strong>ยอมรับความเสี่ยง (Accept)</strong> ได้อย่างเป็นทางการ</li>
+    <li>หาก <strong>Residual Risk &gt; Risk Appetite</strong> &rarr; องค์กร <strong>ต้องดำเนินการจัดการต่อ (Treat)</strong> เช่น ลดความเสี่ยงเพิ่มเติม (Mitigate), โอนความเสี่ยง (Transfer), หรือหลีกเลี่ยงกิจกรรมนั้น (Avoid) จนกว่าจะอยู่ภายในกรอบที่ยอมรับได้</li>
+  </ul>
 </div>
 
 </section>
 
 
-<section id="obj-1-3" class="reading-objective-section">
+<section id="obj-1-3" class="reading-objective-section reading-structured-objective">
 
 ## Objective 1.3: Understand governance concepts
 
 การกำกับดูแลความมั่นคงปลอดภัยสารสนเทศ (Security Governance) คือการกำหนดทิศทาง โครงสร้างอำนาจหน้าที่ และกติกาเพื่อให้มั่นใจว่ากิจกรรมด้านความปลอดภัยสอดคล้องกับเป้าหมายทางธุรกิจและกฎหมาย
-
 <div id="topic-1-3-governance-fundamentals" class="reading-topic-anchor"></div>
 
 ### 1.3.1 Security Governance Fundamentals
 
 **Security Governance** คือระบบความสัมพันธ์และกระบวนการที่คณะกรรมการบริหารและผู้บริหารระดับสูงใช้ในการ **ชี้นำ (Direct), ควบคุม (Control), และติดตามตรวจสอบ (Hold Accountable)** การดำเนินงานด้านความปลอดภัย
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>แกนหลักของ Governance:</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>แกนหลักของ Governance:</h4>
 **Governance = Direction + Oversight + Accountability**
 
 > **ข้อสอบมักถามความแตกต่าง:**  
 > ผู้บริหารระดับสูงที่ทำหน้าที่ Governance **ไม่ใช่ผู้ที่ลงไปคอนฟิก Firewall หรือตั้งกฎบนเราเตอร์ด้วยตนเอง** แต่เป็นผู้กำหนดนโยบาย ทิศทาง การจัดสรรงบประมาณ การแต่งตั้งผู้รับผิดชอบ และการตรวจสอบว่าองค์กรกำลังมุ่งหน้าไปในทิศทางที่ถูกต้อง
-
 
 <div id="topic-1-3-laws-regulations" class="reading-topic-anchor"></div>
 
@@ -621,7 +653,7 @@ $ALE = SLE \times ARO$
 
 กฎหมายและข้อบังคับคือ **ข้อกำหนดที่มีผลผูกพันตามกฎหมาย (Legally Enforceable Requirements)** หากฝ่าฝืนจะมีบทลงโทษทั้งทางแพ่ง ทางอาญา หรือค่าปรับมหาศาล
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>ตัวอย่างสำคัญที่มักพบในสื่อการเรียนและการสอบ:</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>ตัวอย่างสำคัญที่มักพบในสื่อการเรียนและการสอบ:</h4>
 
 <div class="reading-concept-item">
   <h5 class="reading-concept-heading">GDPR (General Data Protection Regulation)</h5>
@@ -646,14 +678,13 @@ $ALE = SLE \times ARO$
   <p>องค์กรแต่ละแห่งไม่ได้มีหน้าที่ต้องปฏิบัติตามกฎหมายหรือข้อบังคับทุกตัวบนโลก แต่ต้องพิจารณาจาก <strong>พื้นที่ตั้งทางภูมิศาสตร์ (Geography), อุตสาหกรรม (Industry), และประเภทของข้อมูล (Data Type)</strong> ที่ตนเองครอบครอง</p>
 </div>
 
-
 <div id="topic-1-3-security-frameworks" class="reading-topic-anchor"></div>
 
 ### 1.3.3 Security Frameworks
 
 **Security Framework** คือโครงสร้างหรือพิมพ์เขียวที่เป็นระบบ (Structured Blueprint) สำหรับใช้เป็นแนวทางในการสร้าง ปรับปรุง และประเมินโปรแกรมความปลอดภัยขององค์กร
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>ตัวอย่าง Framework ที่เป็นที่ยอมรับระดับสากล:</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>ตัวอย่าง Framework ที่เป็นที่ยอมรับระดับสากล:</h4>
 
 <div class="reading-concept-item">
   <h5 class="reading-concept-heading">NIST Cybersecurity Framework (NIST CSF)</h5>
@@ -670,12 +701,11 @@ $ALE = SLE \times ARO$
   <p>รายการแนวทางปฏิบัติและมาตรการป้องกันความปลอดภัยที่ได้รับการจัดลำดับความสำคัญตามความเร่งด่วน (Prioritized Safeguards) เพื่อรับมือกับการโจมตีทางไซเบอร์ที่พบบ่อยที่สุด</p>
 </div>
 
-
 <div id="topic-1-3-document-hierarchy" class="reading-topic-anchor"></div>
 
 ### 1.3.4 Security Document Hierarchy
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 22 22 22 12 2"></polygon></svg>ลำดับชั้นของเอกสารความปลอดภัยเป็นหัวข้อที่ออกสอบบ่อยมาก และต้องแยกหน้าที่ของเอกสารแต่ละระดับให้ชัดเจน:</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 22 22 22 12 2"></polygon></svg>ลำดับชั้นของเอกสารความปลอดภัยเป็นหัวข้อที่ออกสอบบ่อยมาก และต้องแยกหน้าที่ของเอกสารแต่ละระดับให้ชัดเจน:</h4>
 
 <div class="reading-semantic-diagram" data-diagram="documentHierarchy"></div>
 
@@ -711,7 +741,6 @@ $ALE = SLE \times ARO$
   </div>
 </div>
 
-
 <div id="topic-1-3-grc" class="reading-topic-anchor"></div>
 
 ### 1.3.5 Governance, Risk, and Compliance (GRC)
@@ -719,17 +748,17 @@ $ALE = SLE \times ARO$
 **GRC** คือการบูรณาการสามเสาหลักเข้าด้วยกันเพื่อให้องค์กรขับเคลื่อนไปข้างหน้าอย่างปลอดภัย:
 
 <div class="reading-concept-item">
-  <h5 class="reading-concept-heading">Governance</h5>
+  <h4 class="reading-concept-heading">Governance</h4>
   <p>ชี้ทิศทาง กำหนดความรับผิดชอบ และดูแลภาพรวมเชิงกลยุทธ์</p>
 </div>
 
 <div class="reading-concept-item">
-  <h5 class="reading-concept-heading">Risk Management</h5>
+  <h4 class="reading-concept-heading">Risk Management</h4>
   <p>ระบุและจัดการกับความไม่แน่นอนที่อาจส่งผลกระทบต่อเป้าหมายขององค์กร</p>
 </div>
 
 <div class="reading-concept-item">
-  <h5 class="reading-concept-heading">Compliance</h5>
+  <h4 class="reading-concept-heading">Compliance</h4>
   <p>ปฏิบัติตามกฎหมาย ระเบียบ ข้อบังคับ และเงื่อนไขสัญญาอย่างถูกต้อง</p>
 </div>
 
@@ -745,17 +774,16 @@ $ALE = SLE \times ARO$
 </section>
 
 
-<section id="obj-1-4" class="reading-objective-section">
+<section id="obj-1-4" class="reading-objective-section reading-structured-objective">
 
 ## Objective 1.4: Understand cybersecurity controls
 
 มาตรการควบคุมความปลอดภัย (Security Controls) คือเครื่องมือ กลไก และกระบวนการที่นำมาใช้ป้องกัน ตรวจจับ และตอบสนองต่อความเสี่ยง การวิเคราะห์ข้อสอบต้องแยกให้ออกระหว่าง **Category (หมวดหมู่ของมาตรการ)** และ **Type / Function (หน้าที่การทำงานของมาตรการ)**
-
 <div id="topic-1-4-control-categories" class="reading-topic-anchor"></div>
 
 ### 1.4.1 Security Control Categories
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>การแบ่งหมวดหมู่ตามลักษณะของกลไกหรือสิ่งที่นำมาดำเนินการ:</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>การแบ่งหมวดหมู่ตามลักษณะของกลไกหรือสิ่งที่นำมาดำเนินการ:</h4>
 
 :::control-categories
 - **Technical (Logical) Controls** (มาตรการทางเทคนิค)
@@ -764,12 +792,11 @@ $ALE = SLE \times ARO$
 - **Physical Controls** (มาตรการทางกายภาพ)
 :::
 
-
 <div id="topic-1-4-control-types" class="reading-topic-anchor"></div>
 
 ### 1.4.2 Security Control Types / Functions
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>การแบ่งประเภทตามบทบาทหน้าที่ในการรับมือกับเหตุการณ์ (Timing & Purpose):</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>การแบ่งประเภทตามบทบาทหน้าที่ในการรับมือกับเหตุการณ์ (Timing & Purpose):</h4>
 
 <div class="reading-semantic-diagram" data-diagram="controlTimeline"></div>
 
@@ -837,14 +864,13 @@ $ALE = SLE \times ARO$
   <p><strong>"กลัว (Deterrent) → กัน (Preventive) → เจอ (Detective) → แก้ (Corrective)"</strong></p>
 </div>
 
-
 <div id="topic-1-4-overlapping-controls" class="reading-topic-anchor"></div>
 
 ### 1.4.3 Contextual & Overlapping Controls
 
 **หลักสำคัญที่สุดในข้อสอบ:** มาตรการควบคุมหนึ่งตัวสามารถจัดอยู่ในหลายประเภทได้ ขึ้นอยู่กับ **บริบทและการใช้งานในโจทย์นั้น ๆ (Context is King)**
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>ตัวอย่างเปรียบเทียบการประยุกต์ใช้ตามบริบท:</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>ตัวอย่างเปรียบเทียบการประยุกต์ใช้ตามบริบท:</h4>
 
 <div class="reading-concept-item">
   <h5 class="reading-concept-heading">กล้องวงจรปิด (CCTV)</h5>
@@ -879,26 +905,24 @@ $ALE = SLE \times ARO$
 </section>
 
 
-<section id="obj-1-5" class="reading-objective-section">
+<section id="obj-1-5" class="reading-objective-section reading-structured-objective">
 
 ## Objective 1.5: Maintain professional and ethical conduct
 
 บุคลากรด้านความมั่นคงปลอดภัยไซเบอร์มักถือครองสิทธิ์ระดับสูงในระบบ หน้าที่ด้านจริยธรรม ความรอบคอบระมัดระวัง และการปฏิบัติตามประมวลจริยธรรมของสถาบันจึงเป็นข้อกำหนดที่ไม่อาจละเลยได้
-
 <div id="topic-1-5-code-of-conduct" class="reading-topic-anchor"></div>
 
 ### 1.5.1 Professional Code of Conduct & Authority Boundaries
 
 หลักจรรยาบรรณวิชาชีพกำหนดแนวทางการปฏิบัติตนของผู้เชี่ยวชาญด้านไซเบอร์ โดยยึดถือหลักความซื่อสัตย์ ความน่าเชื่อถือ และความรับผิดชอบ
 
-**หลักการเรื่องสิทธิ์และขอบเขตอำนาจ (Technical Access $\neq$ Business Authorization):**
+<h4 class="reading-concept-group-title">หลักการเรื่องสิทธิ์และขอบเขตอำนาจ (Technical Access $\neq$ Business Authorization):</h4>
 > การที่ผู้ดูแลระบบมีความสามารถทางเทคนิค (Technical Capability) ในการเข้าถึงระบบได้ทุกอย่าง **ไม่ได้แปลว่าบุคคลนั้นมีสิทธิ์อันชอบธรรม (Authorized Right) ในการเข้าไปดูหรือแก้ไขข้อมูลเหล่านั้นตามอำเภอใจ**
 
 <div class="reading-example-box">
   <strong>ตัวอย่างคลาสสิก (Technical Access $\neq$ Business Authorization):</strong><br>
   นาย ก. เป็น Domain Administrator ของบริษัท มีสิทธิ์เข้าถึงฮาร์ดดิสก์ของแผนก HR ได้โดยตรงทางเทคนิค แต่นาย ก. <strong>ไม่มีสิทธิ์</strong> เข้าไปเปิดอ่านไฟล์ประวัติเงินเดือนหรือข้อมูลสุขภาพของเพื่อนร่วมงาน เว้นแต่จะมีคำสั่งหรือวัตถุประสงค์ทางธุรกิจที่ได้รับอนุมัติอย่างเป็นทางการ
 </div>
-
 
 <div id="topic-1-5-due-care-due-diligence" class="reading-topic-anchor"></div>
 
@@ -914,7 +938,7 @@ $ALE = SLE \times ARO$
   <strong>แก่นสำคัญในข้อสอบ:</strong> <em>Due Care = DO / Take Action</em>
 </div>
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>ตัวอย่างการปฏิบัติ Due Care:</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>ตัวอย่างการปฏิบัติ Due Care:</h5>
 
 - การลง Patch อุดช่องโหว่ทันทีที่ได้รับแจ้ง
 - การบังคับใช้นโยบายรหัสผ่านที่รัดกุม
@@ -929,14 +953,14 @@ $ALE = SLE \times ARO$
   <strong>แก่นสำคัญในข้อสอบ:</strong> <em>Due Diligence = CHECK / Verify / Investigate</em>
 </div>
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>ตัวอย่างการปฏิบัติ Due Diligence:</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>ตัวอย่างการปฏิบัติ Due Diligence:</h5>
 
 - การรัน Vulnerability Scan ตรวจสอบจุดอ่อนของเซิร์ฟเวอร์
 - การทำ Risk Assessment ประจำปี
 - การตรวจสอบประวัติและสถานะความปลอดภัยของ Vendor ก่อนเซ็นสัญญา
 - การตรวจสอบผลการสแกนหลังจากการ Patch ว่าช่องโหว่ถูกปิดสนิทจริงหรือไม่
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>วงจรการทำงานร่วมกันและตารางคำกริยาแยกแยะในข้อสอบ:</p>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>วงจรการทำงานร่วมกันและตารางคำกริยาแยกแยะในข้อสอบ:</h5>
 
 <div class="reading-semantic-diagram" data-diagram="dueCareDiligence"></div>
 
@@ -948,22 +972,21 @@ $ALE = SLE \times ARO$
 | **Take Action** (ลงมือปฏิบัติ) | **Investigate** (สืบค้นหาข้อเท็จจริง) |
 | **Patch** (อุดช่องโหว่) | **Verify** (ตรวจพิสูจน์ยืนยัน) |
 
-<p class="reading-table-note">*หมายเหตุ: คำกริยาในแต่ละคอลัมน์เป็นตัวอย่างกลุ่มคำกริยาบ่งชี้ (Illustrative Verb Clusters) ที่พบบ่อยในข้อสอบ ไม่ใช่คู่คำที่มีความสัมพันธ์เทียบเท่ากันแบบ 1 ต่อ 1 ในแต่ละบรรทัด*</p>
-
+<p class="reading-table-note"><em>หมายเหตุ: คำกริยาในแต่ละคอลัมน์เป็นตัวอย่างกลุ่มคำกริยาบ่งชี้ (Illustrative Verb Clusters) ที่พบบ่อยในข้อสอบ ไม่ใช่คู่คำที่มีความสัมพันธ์เทียบเท่ากันแบบ 1 ต่อ 1 ในแต่ละบรรทัด</em></p>
 
 <div id="topic-1-5-isc2-ethics" class="reading-topic-anchor"></div>
 
 ### 1.5.3 ISC2 Code of Ethics (The 4 Canons)
 
-สมาชิกและผู้ถือใบรับรองของ ISC2 ทุกคนต้องยึดมั่นและปฏิบัติตาม **ประมวลจริยธรรม 4 ข้อ (4 Canons)** โดยต้องยึดถือตาม **ลำดับความสำคัญก่อนหลัง (Strict Order of Precedence)**:
+สมาชิกและผู้ถือใบรับรองของ ISC2 ทุกคนต้องยึดมั่นและปฏิบัติตาม **ประมวลจริยธรรม 4 ข้อ (4 Canons)** โดยพิจารณาหน้าที่ทั้งสี่ร่วมกับข้อเท็จจริงและใช้ดุลยพินิจทางวิชาชีพ:
 
-<p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>ประมวลจริยธรรม 4 ข้อตามลำดับความสำคัญก่อนหลัง (Strict Order of Precedence):</p>
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>ประมวลจริยธรรม 4 ข้อ (The Four Canons):</h4>
 
 <div class="reading-semantic-diagram" data-diagram="ethicsCanons"></div>
 
 <div class="reading-precedence-rule">
   <svg class="reading-rule-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-  <span><strong>กฎลำดับความสำคัญ (Strict Order of Precedence):</strong> ข้อ 1 ถึง 4 เรียงตามลำดับความสำคัญจากสูงสุดลงไปอย่างเคร่งครัด หากเกิดความขัดแย้งทางหน้าที่ ผลประโยชน์ หรือคำสั่งของผู้ว่าจ้าง <em>Canon ลำดับก่อนหน้าจะมีความสำคัญเหนือกว่าเสมอ</em></span>
+  <span><strong>การใช้ประมวลจริยธรรม (Applying the Canons):</strong> พิจารณาหน้าที่ตาม Canon ทั้งสี่ร่วมกับข้อเท็จจริงและบริบท หมายเลขใช้สำหรับอ้างอิงข้อ ไม่ได้ยืนยันอัลกอริทึมตัดสินความขัดแย้งแบบตายตัว <em>Use professional ethical judgment; numbering alone does not establish a universal conflict-resolution algorithm.</em></span>
 </div>
 
 <div class="reading-precedence-stack">
@@ -973,10 +996,10 @@ $ALE = SLE \times ARO$
         <span class="reading-precedence-num">01</span>
         <h4 class="reading-precedence-title">Canon 1: Protect society, the common good, necessary public trust and confidence, and the infrastructure</h4>
       </div>
-      <span class="reading-precedence-badge">Priority 1 (สำคัญสูงสุด)</span>
+      <span class="reading-precedence-badge">Canon 1</span>
     </div>
     <p class="reading-precedence-body">
-      <strong>ปกป้องสังคม ประโยชน์ส่วนรวม ความไว้วางใจของสาธารณะ และโครงสร้างพื้นฐานสำคัญ:</strong> เป็นข้อที่มีลำดับความสำคัญสูงสุดเหนือกฎข้ออื่นทั้งหมด หากผลประโยชน์ขององค์กรหรือคำสั่งของผู้ว่าจ้างขัดแย้งกับความปลอดภัยของสาธารณะ ต้องเลือกความปลอดภัยของสังคมเป็นอันดับแรกเสมอ
+      <strong>ปกป้องสังคม ประโยชน์ส่วนรวม ความไว้วางใจของสาธารณะ และโครงสร้างพื้นฐานสำคัญ:</strong> พิจารณาความปลอดภัยของสังคมและประโยชน์ส่วนรวมเมื่อประเมินผลกระทบของการกระทำ รวมถึงเมื่อมีแรงกดดันจากผลประโยชน์องค์กรหรือคำสั่งผู้ว่าจ้าง
     </p>
   </div>
 
@@ -986,7 +1009,7 @@ $ALE = SLE \times ARO$
         <span class="reading-precedence-num">02</span>
         <h4 class="reading-precedence-title">Canon 2: Act honorably, honestly, justly, responsibly, and legally</h4>
       </div>
-      <span class="reading-precedence-badge">Priority 2</span>
+      <span class="reading-precedence-badge">Canon 2</span>
     </div>
     <p class="reading-precedence-body">
       <strong>ประพฤติตนอย่างมีเกียรติ ซื่อสัตย์ ยุติธรรม มีความรับผิดชอบ และถูกต้องตามกฎหมาย:</strong> ปฏิบัติตามกฎหมายอย่างเคร่งครัด ไม่โกหก ไม่บิดเบือนข้อเท็จจริง และรักษาความโปร่งใสในวิชาชีพ <em>(ข้อสังเกต: Canon 2 กำหนดหน้าที่เหล่านี้ร่วมกัน ไม่ควรอนุมานลำดับเหนือกว่ากันจากลำดับคำในประโยค การกระทำที่ไม่ผิดกฎหมายอาจยังขัดจริยธรรมหากเป็นการหลอกลวง บิดเบือนข้อเท็จจริง หรือไม่เป็นธรรม)</em>
@@ -999,7 +1022,7 @@ $ALE = SLE \times ARO$
         <span class="reading-precedence-num">03</span>
         <h4 class="reading-precedence-title">Canon 3: Provide diligent and competent service to principals</h4>
       </div>
-      <span class="reading-precedence-badge">Priority 3</span>
+      <span class="reading-precedence-badge">Canon 3</span>
     </div>
     <p class="reading-precedence-body">
       <strong>ให้บริการแก่นายจ้างหรือลูกค้าอย่างขยันขันแข็ง รอบคอบ และเต็มความสามารถ:</strong> รักษาความลับและผลประโยชน์ที่ชอบธรรมของผู้ว่าจ้าง ไม่นำข้อมูลลับไปแสวงหาผลประโยชน์ส่วนตน และไม่รับงานที่ตนขาดความเชี่ยวชาญโดยไม่แจ้งล่วงหน้า
@@ -1012,7 +1035,7 @@ $ALE = SLE \times ARO$
         <span class="reading-precedence-num">04</span>
         <h4 class="reading-precedence-title">Canon 4: Advance and protect the profession</h4>
       </div>
-      <span class="reading-precedence-badge">Priority 4</span>
+      <span class="reading-precedence-badge">Canon 4</span>
     </div>
     <p class="reading-precedence-body">
       <strong>ส่งเสริม ยกระดับ และปกป้องชื่อเสียงของวิชาชีพ:</strong> ร่วมแลกเปลี่ยนความรู้ ยกระดับมาตรฐานวิชาชีพด้านไซเบอร์ และไม่กระทำการใดที่ทำให้เกียรติภูมิของวิชาชีพเสื่อมเสีย
@@ -1024,6 +1047,15 @@ $ALE = SLE \times ARO$
 > "<strong class="reading-mnemonic-highlight">S - A - P - P</strong>"  
 > <strong class="reading-mnemonic-highlight">S</strong>ociety → <strong class="reading-mnemonic-highlight">A</strong>ct honorably → <strong class="reading-mnemonic-highlight">P</strong>rincipals → <strong class="reading-mnemonic-highlight">P</strong>rofession
 
+<div class="reading-callout info">
+  <div class="reading-callout-header">
+    <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    <span>กรณีศึกษาข้อสอบ: ภาวะกลืนไม่เข้าคายไม่ออกทางจริยธรรม (Ethical Dilemmas)</span>
+  </div>
+  <p><strong>สถานการณ์จำลอง:</strong> ผู้บริหารสั่งให้ผู้ดูแลระบบปกปิดรายงานช่องโหว่ความปลอดภัยร้ายแรงในระบบควบคุมการจ่ายน้ำประปาของเมือง (Critical Infrastructure) เนื่องจากกลัวผลกระทบต่อราคาหุ้นของบริษัท</p>
+  <p><strong>แนวคิดการวิเคราะห์ตามหลักการ ISC2:</strong> เหตุการณ์นี้เกิดความขัดแย้งระหว่างหน้าที่ต่อผู้ว่าจ้าง (<strong>Canon 3:</strong> Diligent service to principals) กับความปลอดภัยของสังคม (<strong>Canon 1:</strong> Protect society, common good &amp; infrastructure)</p>
+  <p><strong>ข้อสรุปเด็ดขาดสำหรับห้องสอบ:</strong> สมาชิก ISC2 ต้องยึดถือประโยชน์และความปลอดภัยของสังคมส่วนรวม (<strong>Canon 1</strong>) เป็นอันดับสูงสุดเสมอ และ <strong>Canon 1 อยู่เหนือผลประโยชน์ของนายจ้างหรือลูกค้า (Canon 3) อย่างไม่มีข้อยกเว้น</strong></p>
+</div>
 
 <div id="topic-1-5-distinctions-scenarios" class="reading-topic-anchor"></div>
 
@@ -1328,4 +1360,3 @@ reasoning: มุ่งยับยั้งใจและขัดขวาง
 | *Society → Act honorably → Principals → Profession* | **ISC2 Code of Ethics (Canons 1–4)** |
 
 </section>
-

@@ -1,0 +1,2282 @@
+[
+  {
+    "id": 1001,
+    "authoringId": "AT01-1",
+    "family": "AT01",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-001",
+    "cognitive": "B",
+    "difficulty": "foundational",
+    "stemType": "scenario",
+    "concept": "Classification and labeling",
+    "knowledgeTarget": "Classification assigns a category under the organization’s sensitivity scheme. Labeling communicates that category through a marking or metadata; neither operation by itself enforces access.",
+    "misconceptionTarget": "Label changes sensitivity; confidential always means all employees.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Supply the scheme and handling rule; category names are not universal.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R01",
+      "R22"
+    ],
+    "source": "T:7-19; I03,I04",
+    "stem": [
+      "A data owner assigns a report to the Restricted category. An analyst then adds a Restricted metadata tag to the file. Which statement correctly distinguishes these actions?",
+      "เจ้าของข้อมูลจัดรายงานเป็นประเภท Restricted จากนั้นนักวิเคราะห์เพิ่มป้าย Metadata ว่า Restricted ให้ไฟล์ ข้อใดแยกสองการกระทำนี้ได้ถูกต้อง?"
+    ],
+    "choices": [
+      [
+        "The owner labels the data; the analyst classifies it",
+        "เจ้าของติดป้าย ส่วนนักวิเคราะห์จัดประเภท",
+        "This reverses assignment of the category and attachment of its indicator.",
+        "ข้อนี้สลับการกำหนดประเภทกับการติดตัวบ่งชี้ประเภท"
+      ],
+      [
+        "Both actions enforce the file’s access permissions",
+        "ทั้งสองการกระทำบังคับสิทธิ์เข้าถึงไฟล์",
+        "A category or tag can guide enforcement, but neither described action establishes permissions by itself.",
+        "ประเภทและป้ายอาจช่วยกำหนดการควบคุม แต่การกระทำที่ระบุไม่ได้ตั้งสิทธิ์โดยตัวมันเอง"
+      ],
+      [
+        "Both actions classify the report at different levels of detail",
+        "ทั้งสองการกระทำจัดประเภทรายงานด้วยระดับรายละเอียดต่างกัน",
+        "The analyst applies the existing category indicator rather than making a second category decision.",
+        "นักวิเคราะห์ติดตัวบ่งชี้ประเภทที่กำหนดแล้ว ไม่ได้ตัดสินประเภทอีกครั้ง"
+      ],
+      [
+        "The owner classifies the data; the analyst labels it",
+        "เจ้าของจัดประเภทข้อมูล ส่วนนักวิเคราะห์ติดป้าย",
+        "Classification determines the category; labeling communicates the category already assigned.",
+        "Classification กำหนดประเภท ส่วน Labeling แสดงประเภทที่กำหนดไว้แล้ว"
+      ]
+    ],
+    "correct": 3,
+    "takeaway": "Classification determines the category; labeling communicates the category already assigned.",
+    "assessedDecision": "Separate category assignment from category indication",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Recognition or a direct basic distinction; no interacting constraints"
+  },
+  {
+    "id": 1002,
+    "authoringId": "AT01-2",
+    "family": "AT01",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-001",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Classification and labeling",
+    "knowledgeTarget": "Classification assigns a category under the organization’s sensitivity scheme. Labeling communicates that category through a marking or metadata; neither operation by itself enforces access.",
+    "misconceptionTarget": "Label changes sensitivity; confidential always means all employees.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Supply the scheme and handling rule; category names are not universal.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R01",
+      "R22"
+    ],
+    "source": "T:7-19; I03,I04",
+    "stem": [
+      "Policy defines Internal data as employee-only and Restricted data as accessible only to named project members. A draft contains both types, and policy requires mixed documents to follow the more restrictive category. How should the analyst handle the draft?",
+      "นโยบายกำหนดว่า Internal ใช้ได้เฉพาะพนักงาน ส่วน Restricted ใช้ได้เฉพาะสมาชิกโครงการที่ระบุชื่อ ร่างเอกสารมีทั้งสองประเภทและนโยบายให้ใช้ประเภทที่เข้มงวดกว่า นักวิเคราะห์ควรจัดการอย่างไร?"
+    ],
+    "choices": [
+      [
+        "Apply separate labels while leaving the whole file employee-accessible",
+        "ติดป้ายแต่ละส่วนโดยให้พนักงานทั้งหมดเข้าถึงไฟล์ได้",
+        "Labels alone do not satisfy the document-wide handling rule or limit access.",
+        "ป้ายเพียงอย่างเดียวไม่ทำให้เป็นไปตามกฎจัดการทั้งเอกสารหรือจำกัดการเข้าถึง"
+      ],
+      [
+        "Apply the category covering the larger portion of the draft",
+        "ใช้ประเภทของข้อมูลที่มีสัดส่วนมากกว่าในร่าง",
+        "The stated rule is based on the more restrictive content, not its proportion.",
+        "กฎที่ระบุพิจารณาเนื้อหาที่จำกัดกว่า ไม่ใช่สัดส่วนของเนื้อหา"
+      ],
+      [
+        "Apply Restricted handling to the complete draft",
+        "ใช้ข้อกำหนด Restricted กับร่างทั้งหมด",
+        "The supplied mixed-document rule requires the more restrictive category for this draft.",
+        "กฎสำหรับเอกสารผสมที่ระบุให้ใช้ประเภทที่เข้มงวดกว่าสำหรับร่างนี้"
+      ],
+      [
+        "Apply Internal handling because both parts are corporate data",
+        "ใช้ข้อกำหนด Internal เพราะทั้งสองส่วนเป็นข้อมูลบริษัท",
+        "Employee-wide access would exceed the named-project restriction on part of the document.",
+        "การให้พนักงานทั่วไปเข้าถึงเกินขอบเขตสมาชิกโครงการที่กำหนดไว้ในข้อมูลบางส่วน"
+      ]
+    ],
+    "correct": 2,
+    "takeaway": "The supplied mixed-document rule requires the more restrictive category for this draft.",
+    "assessedDecision": "Apply an explicitly supplied mixed-classification rule",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1003,
+    "authoringId": "AT02-1",
+    "family": "AT02",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-002",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Masking and approved use",
+    "knowledgeTarget": "Masking hides or replaces selected values while retaining information needed for an authorized purpose. It does not inherently anonymize a dataset or authorize disclosure to another service.",
+    "misconceptionTarget": "Last four digits authenticate; masked records always anonymous.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "State exactly which fields may be shared and with whom; public AI use is governed by policy.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R02",
+      "R22"
+    ],
+    "source": "T:19-23; I05",
+    "stem": [
+      "A support screen replaces all but the last four digits of an account number with X characters. Staff can still identify the relevant account record. Which data-handling technique is illustrated?",
+      "หน้าจอฝ่ายสนับสนุนแทนเลขบัญชีทุกหลักยกเว้นสี่หลักท้ายด้วย X โดยพนักงานยังเลือกบันทึกบัญชีที่เกี่ยวข้องได้ ตัวอย่างนี้ใช้เทคนิคใด?"
+    ],
+    "choices": [
+      [
+        "Media sanitization",
+        "การทำ Media sanitization",
+        "Sanitization addresses recovery of target data from media, rather than limiting a screen display.",
+        "Sanitization จัดการการกู้ข้อมูลจากสื่อ ไม่ใช่เพียงจำกัดสิ่งที่แสดงบนหน้าจอ"
+      ],
+      [
+        "Symmetric encryption",
+        "การเข้ารหัสแบบ Symmetric",
+        "Encryption would create keyed ciphertext; the described screen shows selected original digits instead.",
+        "Encryption สร้าง Ciphertext ด้วยกุญแจ แต่หน้าจอนี้แสดงหลักเดิมที่เลือกไว้"
+      ],
+      [
+        "Cryptographic hashing",
+        "การคำนวณ Cryptographic hash",
+        "A digest is derived from input; replacing selected digits with X is not digest computation.",
+        "Digest คำนวณจากข้อมูลนำเข้า การแทนบางหลักด้วย X ไม่ใช่การคำนวณ Digest"
+      ],
+      [
+        "Data masking",
+        "การปกปิดข้อมูลบางส่วน (Data masking)",
+        "Masking conceals selected values while retaining information needed for the support task.",
+        "Masking ปกปิดค่าบางส่วนโดยคงข้อมูลที่จำเป็นต่องานสนับสนุน"
+      ]
+    ],
+    "correct": 3,
+    "takeaway": "Masking conceals selected values while retaining information needed for the support task.",
+    "assessedDecision": "Recognize purpose-preserving concealment of displayed values",
+    "status": "REJECTED",
+    "revision": 2,
+    "rejectionReason": "Independent reviewer confirmed semantic duplication of existing updated-bank assessment decision (Q585 / Q638 respectively). No replacement added to reach a quota.",
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1004,
+    "authoringId": "AT02-2",
+    "family": "AT02",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-002",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Masking and approved use",
+    "knowledgeTarget": "Masking hides or replaces selected values while retaining information needed for an authorized purpose. It does not inherently anonymize a dataset or authorize disclosure to another service.",
+    "misconceptionTarget": "Last four digits authenticate; masked records always anonymous.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "State exactly which fields may be shared and with whom; public AI use is governed by policy.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R02",
+      "R22"
+    ],
+    "source": "T:19-23; I05",
+    "stem": [
+      "An approved AI service may receive support examples only after all customer identifiers are removed. An analyst masks the customer-number column, but names remain in free-text comments. What should the analyst do before submission?",
+      "บริการ AI ที่อนุมัติรับตัวอย่างงานสนับสนุนได้หลังลบข้อมูลระบุตัวลูกค้าทั้งหมดแล้ว นักวิเคราะห์ปกปิดคอลัมน์เลขลูกค้า แต่ยังมีชื่อในความคิดเห็นแบบ Free text ควรทำอะไรก่อนส่ง?"
+    ],
+    "choices": [
+      [
+        "Encrypt the upload and leave the comments unchanged",
+        "เข้ารหัสการส่งโดยคงความคิดเห็นเดิม",
+        "Transport protection does not remove identifiers that the receiving service can read.",
+        "การป้องกันระหว่างส่งไม่ได้ลบข้อมูลระบุตัวที่บริการปลายทางอ่านได้"
+      ],
+      [
+        "Submit because the structured identifier column is masked",
+        "ส่งได้เพราะคอลัมน์ระบุตัวแบบมีโครงสร้างถูกปกปิดแล้ว",
+        "Names in comments still violate the stated condition for submitting examples.",
+        "ชื่อในความคิดเห็นยังละเมิดเงื่อนไขการส่งตัวอย่างที่ระบุ"
+      ],
+      [
+        "Replace the customer numbers with stable codes and submit",
+        "แทนเลขลูกค้าด้วยรหัสคงที่แล้วส่ง",
+        "Changing the identifier column again does not address the remaining names in free text.",
+        "การแก้คอลัมน์เลขลูกค้าอีกครั้งไม่จัดการชื่อที่เหลือใน Free text"
+      ],
+      [
+        "Review the comments and remove the remaining identifiers",
+        "ตรวจความคิดเห็นและลบข้อมูลระบุตัวที่ยังเหลือ",
+        "The rule covers all identifiers, including free text; masking one column does not meet it.",
+        "กฎครอบคลุมข้อมูลระบุตัวทั้งหมดรวม Free text การปกปิดคอลัมน์เดียวจึงยังไม่พอ"
+      ]
+    ],
+    "correct": 3,
+    "takeaway": "The rule covers all identifiers, including free text; masking one column does not meet it.",
+    "assessedDecision": "Apply an explicit all-identifiers sharing constraint to unstructured data",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1005,
+    "authoringId": "AT03-1",
+    "family": "AT03",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-003",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Sanitization and cryptographic erase",
+    "knowledgeTarget": "Choose sanitization for the medium, sensitivity and reuse plan; ordinary deletion is not equivalent. Cryptographic erase depends on sound prior encryption and eliminating recoverable relevant key copies, followed by verification/validation.",
+    "misconceptionTarget": "Deleting a file or public key suffices; any damaged media is sanitized.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Do not equate SSD with one mandatory method or physical damage with assured destruction; consider backups and escrow.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R03"
+    ],
+    "source": "T:23-27; I06",
+    "stem": [
+      "An SSD containing confidential files will be reused internally. Policy requires a validated purge method that preserves reuse. The device supports an approved sanitize operation. Which handling plan meets the requirement?",
+      "SSD ที่มีไฟล์ลับจะนำกลับมาใช้ภายใน นโยบายกำหนดให้ใช้วิธี Purge ที่ตรวจยืนยันประสิทธิผลและยังใช้สื่อซ้ำได้ อุปกรณ์รองรับคำสั่ง Sanitize ที่อนุมัติแล้ว แผนใดตรงข้อกำหนด?"
+    ],
+    "choices": [
+      [
+        "Delete the confidential files and perform a normal file search",
+        "ลบไฟล์ลับแล้วค้นหาไฟล์ตามปกติ",
+        "Ordinary deletion and search do not demonstrate that the required sanitization method completed.",
+        "การลบและค้นหาปกติไม่ได้พิสูจน์ว่าวิธี Sanitization ที่กำหนดเสร็จสมบูรณ์"
+      ],
+      [
+        "Run the approved operation and validate its recorded outcome",
+        "เรียกคำสั่งที่อนุมัติและตรวจยืนยันประสิทธิผลจากผลที่บันทึก",
+        "The supported purge operation and outcome validation address both sanitization and reuse requirements.",
+        "คำสั่ง Purge ที่รองรับพร้อมการตรวจผลตอบทั้งข้อกำหนด Sanitization และการใช้ซ้ำ"
+      ],
+      [
+        "Physically destroy the storage chips and document destruction",
+        "ทำลายชิปเก็บข้อมูลและบันทึกการทำลาย",
+        "Destruction prevents the intended reuse, so it fails one of the stated requirements.",
+        "การทำลายทำให้ใช้สื่อซ้ำตามแผนไม่ได้ จึงไม่ตรงข้อกำหนดหนึ่งของโจทย์"
+      ],
+      [
+        "Quick-format the drive and confirm the old folders are hidden",
+        "Quick format แล้วตรวจว่าไม่เห็นโฟลเดอร์เดิม",
+        "A missing directory listing does not establish the required purge of recoverable data.",
+        "การไม่เห็นรายการโฟลเดอร์ไม่ได้ยืนยันว่า Purge ข้อมูลที่กู้คืนได้ตามที่ต้องการ"
+      ]
+    ],
+    "correct": 1,
+    "takeaway": "The supported purge operation and outcome validation address both sanitization and reuse requirements.",
+    "assessedDecision": "Select verified sanitization compatible with required reuse",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1006,
+    "authoringId": "AT03-2",
+    "family": "AT03",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-003",
+    "cognitive": "D",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Sanitization and cryptographic erase",
+    "knowledgeTarget": "Choose sanitization for the medium, sensitivity and reuse plan; ordinary deletion is not equivalent. Cryptographic erase depends on sound prior encryption and eliminating recoverable relevant key copies, followed by verification/validation.",
+    "misconceptionTarget": "Deleting a file or public key suffices; any damaged media is sanitized.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "Do not equate SSD with one mandatory method or physical damage with assured destruction; consider backups and escrow.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R03"
+    ],
+    "source": "T:23-27; I06",
+    "stem": [
+      "A drive was encrypted before sensitive data was stored. Its data-encryption key is removed from the drive, but a recoverable copy remains in an escrow system. Has cryptographic erase been established?",
+      "ไดรฟ์ถูกเข้ารหัสก่อนเก็บข้อมูลสำคัญ กุญแจเข้ารหัสข้อมูลถูกลบออกจากไดรฟ์ แต่ยังมีสำเนาที่กู้คืนได้ในระบบ Escrow ยืนยันว่าเกิด Cryptographic erase แล้วได้หรือไม่?"
+    ],
+    "choices": [
+      [
+        "No; the retained key copy can still enable decryption",
+        "ยังไม่ได้ เพราะสำเนากุญแจที่เก็บไว้ยังอาจถอดรหัสได้",
+        "Cryptographic erase must address recoverable copies of relevant keys; the escrow copy preserves a decryption path.",
+        "Cryptographic erase ต้องจัดการสำเนากุญแจที่เกี่ยวข้องซึ่งกู้คืนได้ สำเนา Escrow ยังเป็นช่องทางถอดรหัส"
+      ],
+      [
+        "No; cryptographic erase requires destruction of the drive itself",
+        "ยังไม่ได้ เพราะ Cryptographic erase ต้องทำลายไดรฟ์ด้วย",
+        "Cryptographic erase depends on key sanitization, not a universal requirement to physically destroy the drive.",
+        "Cryptographic erase อาศัยการ Sanitization กุญแจ ไม่ได้บังคับให้ทำลายไดรฟ์ทางกายภาพเสมอ"
+      ],
+      [
+        "Yes; removing the local key is sufficient for encrypted media",
+        "ได้ เพราะลบกุญแจในสื่อที่เข้ารหัสแล้วก็พอ",
+        "Local removal alone does not eliminate the recoverable escrowed copy.",
+        "การลบเฉพาะในไดรฟ์ไม่ได้กำจัดสำเนา Escrow ที่กู้คืนได้"
+      ],
+      [
+        "Yes; encryption before storage makes later key retention irrelevant",
+        "ได้ เพราะเข้ารหัสก่อนเก็บแล้วจึงไม่ต้องสนใจกุญแจที่เก็บไว้",
+        "Prior encryption is necessary context, but a surviving usable key can still recover plaintext.",
+        "การเข้ารหัสก่อนเก็บเป็นเงื่อนไขสำคัญ แต่กุญแจที่ยังใช้ได้อาจกู้ Plaintext ได้"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Cryptographic erase must address recoverable copies of relevant keys; the escrow copy preserves a decryption path.",
+    "assessedDecision": "Evaluate surviving escrow keys rather than treating encryption as erasure",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1007,
+    "authoringId": "AT04-1",
+    "family": "AT04",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-004",
+    "cognitive": "B",
+    "difficulty": "foundational",
+    "stemType": "conceptual",
+    "concept": "Cryptographic functions and key roles",
+    "knowledgeTarget": "Symmetric encryption is efficient for bulk protection. In public-key encryption the recipient’s public key protects content for the recipient’s private key; a signature is generated with the signer’s private key and verified with the matching trusted public key.",
+    "misconceptionTarget": "Signer verification hides content; sharing private keys solves distribution.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Encryption alone does not imply integrity/authenticity. Signing is not generically private-key encryption. TLS versions differ.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R04",
+      "R05",
+      "R17",
+      "R26"
+    ],
+    "source": "T:27-55; I07,I11-I15",
+    "stem": [
+      "A sender must encrypt a short message so only the intended recipient can decrypt it using a public-key encryption scheme. Which key should the sender use to encrypt the message?",
+      "ผู้ส่งต้องเข้ารหัสข้อความสั้นด้วย Public-key encryption เพื่อให้ผู้รับที่ตั้งใจไว้เท่านั้นถอดรหัสได้ ผู้ส่งควรใช้กุญแจใดเข้ารหัส?"
+    ],
+    "choices": [
+      [
+        "The recipient’s private decryption key",
+        "Private decryption key ของผู้รับ",
+        "The sender should not obtain the recipient’s secret private key to encrypt this message.",
+        "ผู้ส่งไม่ควรขอ Private Key ลับของผู้รับเพื่อเข้ารหัสข้อความนี้"
+      ],
+      [
+        "The recipient’s public encryption key",
+        "Public encryption key ของผู้รับ",
+        "The matching recipient private key performs decryption and remains protected by the recipient.",
+        "Private Key ที่สอดคล้องกันของผู้รับใช้ถอดรหัสและต้องได้รับการป้องกันโดยผู้รับ"
+      ],
+      [
+        "The sender’s private signing key",
+        "Private signing key ของผู้ส่ง",
+        "Signing supports verification of origin and integrity; it does not provide recipient-only message confidentiality.",
+        "การลงนามช่วยตรวจที่มาและ Integrity ไม่ได้ทำให้มีเพียงผู้รับเท่านั้นที่อ่านข้อความได้"
+      ],
+      [
+        "The sender’s public encryption key",
+        "Public encryption key ของผู้ส่ง",
+        "That key would protect content for the sender’s private key, rather than the intended recipient’s key.",
+        "กุญแจนี้ปกป้องข้อความสำหรับ Private Key ของผู้ส่ง แทนที่จะเป็นของผู้รับที่ตั้งใจไว้"
+      ]
+    ],
+    "correct": 1,
+    "takeaway": "The matching recipient private key performs decryption and remains protected by the recipient.",
+    "assessedDecision": "Distinguish recipient encryption from signing and private-key disclosure",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1008,
+    "authoringId": "AT05-1",
+    "family": "AT05",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-005",
+    "cognitive": "D",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Trustworthy digest comparison",
+    "knowledgeTarget": "A digest comparison can show whether a file matches a trusted reference; it does not by itself identify the person who changed it. Collision resistance means finding distinct matching inputs is infeasible, not that collisions cannot exist.",
+    "misconceptionTarget": "Hashing is reversible encryption; collision impossible; fast unsalted hash is sufficient for passwords.",
+    "decision": "Interpret evidence without overclaiming",
+    "ambiguityControl": "Reference digest must be authenticated; MD5 unsuitable when collision resistance is required; passwords need dedicated salted costed hashing.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R19",
+      "R18",
+      "R07"
+    ],
+    "source": "N:90-102; S:101-140; I19-I22",
+    "stem": [
+      "An analyst compares a downloaded file with a SHA-256 digest obtained through the publisher’s authenticated channel. The digests differ. Which conclusion is supported by this evidence alone?",
+      "นักวิเคราะห์เปรียบเทียบไฟล์ที่ดาวน์โหลดกับ SHA-256 digest ที่ได้รับผ่านช่องทางยืนยันตัวตนของผู้เผยแพร่ ค่า Digest ไม่ตรงกัน หลักฐานนี้เพียงอย่างเดียวสนับสนุนข้อสรุปใด?"
+    ],
+    "choices": [
+      [
+        "SHA-256 has produced a collision for these two files",
+        "SHA-256 เกิด Collision สำหรับไฟล์สองชุดนี้",
+        "A collision would involve equal digests for different inputs; this observation is unequal digests.",
+        "Collision คือข้อมูลต่างกันให้ Digest เท่ากัน แต่สิ่งที่พบคือ Digest ไม่เท่ากัน"
+      ],
+      [
+        "The downloaded file does not match the referenced content",
+        "ไฟล์ที่ดาวน์โหลดไม่ตรงกับเนื้อหาที่ใช้อ้างอิง",
+        "A trusted-reference mismatch establishes a content difference, but not its cause or the actor responsible.",
+        "ค่าที่ไม่ตรงกับแหล่งอ้างอิงที่เชื่อถือได้บอกว่าเนื้อหาต่างกัน แต่ยังไม่บอกสาเหตุหรือผู้กระทำ"
+      ],
+      [
+        "The publisher’s private signing key has been compromised",
+        "Private signing key ของผู้เผยแพร่ถูกยึดครองแล้ว",
+        "The comparison does not establish any compromise of a signing key.",
+        "การเปรียบเทียบนี้ไม่ได้พิสูจน์ว่า Signing Key ถูกยึดครอง"
+      ],
+      [
+        "The file was deliberately modified by an external attacker",
+        "ผู้โจมตีภายนอกจงใจแก้ไขไฟล์",
+        "Mismatch alone does not distinguish malicious modification from corruption or a different version.",
+        "ค่าไม่ตรงกันอย่างเดียวแยกการแก้ไขโดยเจตนาร้ายออกจากความเสียหายหรือคนละเวอร์ชันไม่ได้"
+      ]
+    ],
+    "correct": 1,
+    "takeaway": "A trusted-reference mismatch establishes a content difference, but not its cause or the actor responsible.",
+    "assessedDecision": "Bound an integrity inference to what a trusted mismatch establishes",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1009,
+    "authoringId": "AT06-1",
+    "family": "AT06",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-006",
+    "cognitive": "A",
+    "difficulty": "foundational",
+    "stemType": "conceptual",
+    "concept": "Post-quantum foundations",
+    "knowledgeTarget": "Quantum-resistant cryptography addresses attacks from quantum-capable adversaries against vulnerable cryptographic schemes. It includes key establishment and signature approaches usable on conventional computers.",
+    "misconceptionTarget": "PQC requires quantum hardware; changing bulk AES alone replaces vulnerable public-key dependencies.",
+    "decision": "Recognize the functional purpose",
+    "ambiguityControl": "Inventory vulnerable public-key dependencies, evaluate approved replacements and test migration; no prediction of quantum arrival or universal deadline.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R08",
+      "R01"
+    ],
+    "source": "External supplementation for missing local unit (F07)",
+    "stem": [
+      "What is the purpose of post-quantum cryptography in protecting organizational systems?",
+      "Post-quantum cryptography มีวัตถุประสงค์ใดในการปกป้องระบบขององค์กร?"
+    ],
+    "choices": [
+      [
+        "Distribute keys over quantum channels to reveal interception",
+        "แจกจ่ายกุญแจผ่านช่องทางควอนตัมเพื่อตรวจพบการดักรับ",
+        "This describes a quantum key distribution goal, not the purpose of post-quantum cryptographic algorithms.",
+        "ข้อนี้อธิบายเป้าหมายของ Quantum key distribution ไม่ใช่จุดประสงค์ของอัลกอริทึม Post-quantum"
+      ],
+      [
+        "Increase the length of existing RSA keys as the long-term quantum defense",
+        "เพิ่มความยาวกุญแจ RSA เดิมเพื่อเป็นการป้องกันควอนตัมระยะยาว",
+        "Larger RSA keys do not remove the underlying vulnerability to a sufficiently capable quantum computer.",
+        "กุญแจ RSA ที่ยาวขึ้นไม่ได้ขจัดจุดอ่อนพื้นฐานต่อคอมพิวเตอร์ควอนตัมที่มีความสามารถเพียงพอ"
+      ],
+      [
+        "Use stronger password hashing to protect public-key exchanges from quantum attacks",
+        "ใช้การแฮชรหัสผ่านที่แข็งแกร่งขึ้นเพื่อป้องกันการแลกเปลี่ยนกุญแจสาธารณะจากควอนตัม",
+        "Password hashing addresses stored password protection; it does not replace quantum-vulnerable public-key algorithms.",
+        "การแฮชรหัสผ่านปกป้องรหัสผ่านที่จัดเก็บ ไม่ได้ทดแทนอัลกอริทึมกุญแจสาธารณะที่เสี่ยงต่อควอนตัม"
+      ],
+      [
+        "Use cryptographic methods designed to resist quantum-capable attacks",
+        "ใช้วิธี Cryptography ที่ออกแบบให้ต้านทานการโจมตีด้วยคอมพิวเตอร์ควอนตัม",
+        "PQC addresses quantum threats through resistant cryptographic schemes, including key establishment and signatures.",
+        "PQC รับมือภัยควอนตัมด้วยกลไกที่ต้านทาน เช่น การสร้างกุญแจร่วมและลายเซ็น"
+      ]
+    ],
+    "correct": 3,
+    "takeaway": "PQC addresses quantum threats through resistant cryptographic schemes, including key establishment and signatures.",
+    "assessedDecision": "Recognize the purpose of PQC without quantum-hardware confusion",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Recognition or a direct basic distinction; no interacting constraints"
+  },
+  {
+    "id": 1010,
+    "authoringId": "AT06-2",
+    "family": "AT06",
+    "objective": "5.1",
+    "knowledge": "KNOW-D5-006",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Post-quantum foundations",
+    "knowledgeTarget": "Quantum-resistant cryptography addresses attacks from quantum-capable adversaries against vulnerable cryptographic schemes. It includes key establishment and signature approaches usable on conventional computers.",
+    "misconceptionTarget": "PQC requires quantum hardware; changing bulk AES alone replaces vulnerable public-key dependencies.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Inventory vulnerable public-key dependencies, evaluate approved replacements and test migration; no prediction of quantum arrival or universal deadline.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R08",
+      "R01"
+    ],
+    "source": "External supplementation for missing local unit (F07)",
+    "stem": [
+      "A company stores records that must remain confidential for many years. Its bulk encryption uses AES, but its key-establishment process uses a quantum-vulnerable public-key scheme. What should its migration assessment include?",
+      "บริษัทเก็บบันทึกที่ต้องเป็นความลับอีกหลายปี โดยเข้ารหัสข้อมูลจำนวนมากด้วย AES แต่กระบวนการสร้างหรือจัดตั้งกุญแจร่วมใช้ Public-key scheme ที่เสี่ยงต่อควอนตัม การประเมินการย้ายระบบควรรวมอะไร?"
+    ],
+    "choices": [
+      [
+        "Identify the vulnerable key-establishment dependency and assess approved replacements",
+        "ระบุส่วนจัดตั้งกุญแจร่วมที่มีความเสี่ยงและประเมินวิธีทดแทนที่อนุมัติ",
+        "The public-key dependency remains relevant even when bulk data uses a symmetric cipher.",
+        "ส่วน Public-key ยังต้องได้รับการประเมินแม้ข้อมูลจำนวนมากใช้ Symmetric cipher"
+      ],
+      [
+        "Limit the review to whether the existing keys are stored securely",
+        "จำกัดการทบทวนเฉพาะการเก็บกุญแจเดิมว่าปลอดภัยหรือไม่",
+        "Secure storage matters, but does not remove the algorithmic quantum vulnerability described.",
+        "การเก็บอย่างปลอดภัยสำคัญ แต่ไม่ลบความเสี่ยงควอนตัมของอัลกอริทึมที่โจทย์ระบุ"
+      ],
+      [
+        "Replace the bulk cipher while keeping the vulnerable public-key process",
+        "เปลี่ยนตัวเข้ารหัสข้อมูลโดยคงกระบวนการ Public-key ที่มีความเสี่ยง",
+        "Changing only bulk encryption leaves the identified vulnerable dependency unaddressed.",
+        "การเปลี่ยนเฉพาะการเข้ารหัสข้อมูลยังไม่จัดการส่วนที่ระบุว่ามีความเสี่ยง"
+      ],
+      [
+        "Treat the use of AES as evidence that the whole system is quantum-resistant",
+        "ถือว่าการใช้ AES พิสูจน์ว่าระบบทั้งหมดต้านทานควอนตัมแล้ว",
+        "The bulk cipher does not establish resistance of the separate key-establishment mechanism.",
+        "อัลกอริทึมเข้ารหัสข้อมูลไม่ได้พิสูจน์ความต้านทานของกลไกจัดตั้งกุญแจร่วมที่แยกกัน"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The public-key dependency remains relevant even when bulk data uses a symmetric cipher.",
+    "assessedDecision": "Assess vulnerable key dependencies despite protected bulk data",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1011,
+    "authoringId": "AT07-1",
+    "family": "AT07",
+    "objective": "5.2",
+    "knowledge": "KNOW-D5-007",
+    "cognitive": "A",
+    "difficulty": "foundational",
+    "stemType": "conceptual",
+    "concept": "Logging, monitoring and aggregation",
+    "knowledgeTarget": "Logging records occurrences; aggregation collects records from multiple sources; monitoring evaluates observations. A central repository without usable data or analysis is not assurance of detection.",
+    "misconceptionTarget": "Collecting logs means an analyst reviewed them; SIEM replaces every endpoint defense.",
+    "decision": "Recognize the functional purpose",
+    "ambiguityControl": "Choose sources relevant to the question; protect timestamp/context and records; retain under policy, not an invented universal duration.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R23",
+      "R22"
+    ],
+    "source": "T:79-109; I28-I33",
+    "stem": [
+      "Which activity is monitoring rather than simply logging security events?",
+      "กิจกรรมใดเป็น Monitoring ไม่ใช่เพียง Logging เหตุการณ์ความปลอดภัย?"
+    ],
+    "choices": [
+      [
+        "Copying application records into central storage",
+        "คัดลอกบันทึกแอปไปเก็บส่วนกลาง",
+        "Central collection supports monitoring, but collection alone is not analysis.",
+        "การรวมบันทึกช่วย Monitoring แต่การรวบรวมอย่างเดียวยังไม่ใช่การวิเคราะห์"
+      ],
+      [
+        "Keeping archived records for the required retention period",
+        "เก็บบันทึกใน Archive ตามระยะเวลาที่กำหนด",
+        "Retention preserves records for later use; it does not establish active evaluation.",
+        "Retention เก็บบันทึกไว้ใช้ภายหลัง ไม่ได้แสดงว่ามีการประเมินอยู่"
+      ],
+      [
+        "Evaluating recorded activity for patterns requiring attention",
+        "ประเมินกิจกรรมที่บันทึกไว้เพื่อหารูปแบบที่ต้องตรวจสอบ",
+        "Monitoring evaluates observations; recording events alone does not establish that evaluation occurred.",
+        "Monitoring ประเมินสิ่งที่สังเกตได้ การบันทึกอย่างเดียวไม่ได้ยืนยันว่ามีการประเมิน"
+      ],
+      [
+        "Writing authentication outcomes to a system record",
+        "เขียนผลการยืนยันตัวตนลงบันทึกระบบ",
+        "This creates log records, but does not by itself evaluate their security meaning.",
+        "การกระทำนี้สร้าง Log แต่ยังไม่ได้ประเมินความหมายด้านความปลอดภัย"
+      ]
+    ],
+    "correct": 2,
+    "takeaway": "Monitoring evaluates observations; recording events alone does not establish that evaluation occurred.",
+    "assessedDecision": "Distinguish evaluating activity from recording/collecting/retaining it",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Recognition or a direct basic distinction; no interacting constraints"
+  },
+  {
+    "id": 1012,
+    "authoringId": "AT07-2",
+    "family": "AT07",
+    "objective": "5.2",
+    "knowledge": "KNOW-D5-007",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Logging, monitoring and aggregation",
+    "knowledgeTarget": "Logging records occurrences; aggregation collects records from multiple sources; monitoring evaluates observations. A central repository without usable data or analysis is not assurance of detection.",
+    "misconceptionTarget": "Collecting logs means an analyst reviewed them; SIEM replaces every endpoint defense.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Choose sources relevant to the question; protect timestamp/context and records; retain under policy, not an invented universal duration.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R23",
+      "R22"
+    ],
+    "source": "T:79-109; I28-I33",
+    "stem": [
+      "A detection rule must relate application exports to the accounts that requested them. Authentication logs reach the SIEM, but the application’s export audit records are not collected. Which change MOST directly addresses the visibility gap?",
+      "กฎตรวจจับต้องเชื่อมการส่งออกข้อมูลจากแอปกับบัญชีที่สั่งงาน มี Authentication logs เข้า SIEM แล้ว แต่ยังไม่เก็บ Export audit records ของแอป การเปลี่ยนแปลงใดแก้ช่องว่างการมองเห็นได้ตรงที่สุด?"
+    ],
+    "choices": [
+      [
+        "Increase retention of the existing authentication records",
+        "เพิ่มระยะเวลาเก็บ Authentication records ที่มีอยู่",
+        "Longer retention does not add the missing export activity.",
+        "การเก็บนานขึ้นไม่ได้เพิ่มข้อมูลกิจกรรมส่งออกที่ขาดอยู่"
+      ],
+      [
+        "Correlate the existing sign-in records by account and source address",
+        "เชื่อมโยงบันทึกลงชื่อเข้าใช้เดิมตามบัญชีและที่อยู่ต้นทาง",
+        "This relates sign-ins but cannot identify export requests that the collected records do not contain.",
+        "ข้อนี้เชื่อมโยงการลงชื่อเข้าใช้ แต่ไม่ระบุคำขอส่งออกที่ไม่มีในบันทึกที่เก็บ"
+      ],
+      [
+        "Collect export records with account identifiers and timestamps",
+        "เก็บบันทึกการส่งออกพร้อมรหัสบัญชีและเวลา",
+        "The missing source provides the export activity and context needed to relate it to authentication records.",
+        "แหล่งข้อมูลที่ขาดให้กิจกรรมส่งออกและบริบทที่จำเป็นต่อการเชื่อมกับบันทึกยืนยันตัวตน"
+      ],
+      [
+        "Lower the threshold for failed-authentication alerts",
+        "ลดเกณฑ์แจ้งเตือนการยืนยันตัวตนล้มเหลว",
+        "A more sensitive login rule does not reveal which accounts exported application data.",
+        "กฎ Login ที่ไวขึ้นไม่ได้บอกว่าบัญชีใดส่งออกข้อมูลแอป"
+      ]
+    ],
+    "correct": 2,
+    "takeaway": "The missing source provides the export activity and context needed to relate it to authentication records.",
+    "assessedDecision": "Choose required telemetry rather than tuning unrelated detection settings",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1013,
+    "authoringId": "AT08-1",
+    "family": "AT08",
+    "objective": "5.2",
+    "knowledge": "KNOW-D5-008",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Risk-aware triage",
+    "knowledgeTarget": "Triage validates reports and prioritizes investigation or action using scope, likely impact, time sensitivity and resources. Organizational escalation and response authority determine permitted next actions.",
+    "misconceptionTarget": "Largest alert count first; automated label overrides business context.",
+    "decision": "Interpret evidence without overclaiming",
+    "ambiguityControl": "State stage, evidence, impact and procedure; no universal P1 matrix or first action.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21"
+    ],
+    "source": "T:109-125; I34-I36",
+    "stem": [
+      "Two validated alerts await triage. One shows ongoing unauthorized changes to a critical payment service. The other records many blocked probes against an isolated training host, with no signs of access. Policy prioritizes active business impact. Which alert has the higher priority?",
+      "มี Alert ที่ตรวจสอบแล้วสองรายการ รายการแรกพบการแก้ไขโดยไม่มีสิทธิ์ที่กำลังเกิดกับบริการชำระเงินสำคัญ อีกอันเป็นการ Probe จำนวนมากที่ถูกบล็อกบนเครื่องฝึกแยกส่วนโดยไม่พบการเข้าถึง นโยบายให้ความสำคัญกับผลกระทบต่อธุรกิจที่เกิดอยู่ ควรจัดลำดับใดสูงกว่า?"
+    ],
+    "choices": [
+      [
+        "The training-host alert because it contains more attempts",
+        "Alert เครื่องฝึก เพราะมีความพยายามจำนวนมากกว่า",
+        "Attempt volume does not outweigh the supplied evidence of active critical-service impact under this policy.",
+        "จำนวนครั้งไม่ได้เหนือกว่าหลักฐานผลกระทบที่กำลังเกิดกับบริการสำคัญตามนโยบายนี้"
+      ],
+      [
+        "Both alerts equally because both involve unauthorized activity",
+        "ให้เท่ากัน เพราะทั้งคู่เกี่ยวข้องกับกิจกรรมที่ไม่มีสิทธิ์",
+        "The policy requires differentiating actual business impact rather than treating all unauthorized activity alike.",
+        "นโยบายต้องแยกผลกระทบจริงต่อธุรกิจ ไม่ใช่จัดกิจกรรมที่ไม่มีสิทธิ์ทุกอย่างเท่ากัน"
+      ],
+      [
+        "The payment-service alert because harmful activity is ongoing",
+        "Alert บริการชำระเงิน เพราะกำลังเกิดกิจกรรมที่เป็นอันตราย",
+        "Active unauthorized changes to a critical service meet the stated priority criterion more strongly than blocked probes.",
+        "การแก้ไขที่ไม่มีสิทธิ์บนบริการสำคัญตรงเกณฑ์ผลกระทบที่เกิดอยู่มากกว่า Probe ที่ถูกบล็อก"
+      ],
+      [
+        "The training-host alert because repeated probes may precede a compromise",
+        "แจ้งเตือนเครื่องฝึกอบรม เพราะการสแกนซ้ำอาจนำไปสู่การบุกรุก",
+        "Possible later compromise merits investigation, but the stated rule gives ongoing critical business harm higher priority.",
+        "โอกาสถูกบุกรุกภายหลังควรตรวจสอบ แต่กฎที่ระบุให้ความเสียหายต่อธุรกิจสำคัญที่กำลังเกิดมีลำดับสูงกว่า"
+      ]
+    ],
+    "correct": 2,
+    "takeaway": "Active unauthorized changes to a critical service meet the stated priority criterion more strongly than blocked probes.",
+    "assessedDecision": "Interpret priority from active impact instead of alert volume",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1014,
+    "authoringId": "AT08-2",
+    "family": "AT08",
+    "objective": "5.2",
+    "knowledge": "KNOW-D5-008",
+    "cognitive": "E",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Risk-aware triage",
+    "knowledgeTarget": "Triage validates reports and prioritizes investigation or action using scope, likely impact, time sensitivity and resources. Organizational escalation and response authority determine permitted next actions.",
+    "misconceptionTarget": "Largest alert count first; automated label overrides business context.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "State stage, evidence, impact and procedure; no universal P1 matrix or first action.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21"
+    ],
+    "source": "T:109-125; I34-I36",
+    "stem": [
+      "A junior analyst validates suspicious activity involving a privileged account. The playbook requires the incident lead to approve any account restriction; the analyst may collect records and escalate. No approval has been issued. What is the MOST appropriate next action?",
+      "นักวิเคราะห์ระดับเริ่มต้นตรวจสอบกิจกรรมน่าสงสัยของบัญชีสิทธิ์สูงแล้ว Playbook กำหนดให้ Incident lead อนุมัติก่อนจำกัดบัญชี โดยนักวิเคราะห์เก็บบันทึกและ Escalate ได้ ขณะนี้ยังไม่มีการอนุมัติ ควรทำอะไรต่ออย่างเหมาะสมที่สุด?"
+    ],
+    "choices": [
+      [
+        "Collect another day of account activity before notifying the incident lead",
+        "เก็บกิจกรรมบัญชีเพิ่มอีกหนึ่งวันก่อนแจ้งหัวหน้าเหตุการณ์",
+        "More evidence can be collected, but validated privileged-account activity should already be escalated to the decision-maker.",
+        "เก็บหลักฐานเพิ่มได้ แต่ควรยกระดับกิจกรรมบัญชีสิทธิ์สูงที่ตรวจสอบแล้วให้ผู้มีอำนาจตัดสินใจ"
+      ],
+      [
+        "Escalate the evidence to the incident lead for a response decision",
+        "ส่งหลักฐานให้ Incident lead เพื่อพิจารณาการตอบสนอง",
+        "Escalation follows the stated authority boundary and supplies the decision maker with validated evidence.",
+        "การ Escalate เป็นไปตามขอบเขตอำนาจและให้หลักฐานที่ตรวจสอบแล้วแก่ผู้ตัดสินใจ"
+      ],
+      [
+        "Restrict the account and request retrospective approval",
+        "จำกัดบัญชีก่อนแล้วขออนุมัติย้อนหลัง",
+        "The stated playbook requires approval before this action; no emergency exception is provided.",
+        "Playbook ที่ระบุต้องอนุมัติก่อน และโจทย์ไม่ได้ให้ข้อยกเว้นฉุกเฉิน"
+      ],
+      [
+        "Ask the account owner to approve restricting their own account",
+        "ขอให้เจ้าของบัญชีอนุมัติการจำกัดบัญชีของตน",
+        "The playbook assigns restriction approval to the incident lead, not to the account owner.",
+        "คู่มือกำหนดให้หัวหน้าเหตุการณ์อนุมัติการจำกัด ไม่ใช่เจ้าของบัญชี"
+      ]
+    ],
+    "correct": 1,
+    "takeaway": "Escalation follows the stated authority boundary and supplies the decision maker with validated evidence.",
+    "assessedDecision": "Select escalation within a supplied incident-response authority boundary",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1015,
+    "authoringId": "AT09-1",
+    "family": "AT09",
+    "objective": "5.2",
+    "knowledge": "KNOW-D5-009",
+    "cognitive": "B",
+    "difficulty": "foundational",
+    "stemType": "scenario",
+    "concept": "Signals and actual incidents",
+    "knowledgeTarget": "An event is an occurrence; an alert signals a condition to evaluate; an incident meets applicable incident criteria. A false positive is a benign condition flagged under the detector’s rule; a false negative is a relevant condition missed.",
+    "misconceptionTarget": "No alert means no threat; every alert proves breach.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "State ground truth and incident criteria. An incident need not wait for completed damage.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21",
+      "R23"
+    ],
+    "source": "N:225-255; T:119-121",
+    "stem": [
+      "A rule is intended to detect unauthorized privileged scans. It flags a scan outside its usual window. Investigation confirms the scan was approved under a documented exception and no unauthorized activity occurred. Relative to the intended detection purpose, how is this alert classified?",
+      "กฎมีเป้าหมายตรวจจับ Privileged scan ที่ไม่ได้รับอนุญาต และแจ้ง Scan นอกช่วงปกติ การตรวจสอบยืนยันว่า Scan อนุมัติตามข้อยกเว้นที่บันทึกไว้และไม่มีกิจกรรมที่ไม่มีสิทธิ์ เมื่อเทียบกับเป้าหมายตรวจจับ Alert นี้จัดเป็นประเภทใด?"
+    ],
+    "choices": [
+      [
+        "False negative",
+        "ผลลบลวง (False negative)",
+        "A false negative requires a relevant harmful condition that the detector missed; this detector did alert.",
+        "False negative ต้องมีภาวะอันตรายที่ระบบพลาด แต่กรณีนี้ระบบแจ้งเตือน"
+      ],
+      [
+        "True negative",
+        "ผลลบจริง (True negative)",
+        "A true negative would involve no alert for the benign activity; an alert was produced here.",
+        "True negative คือไม่แจ้งสำหรับกิจกรรมที่ไม่เป็นภัย แต่กรณีนี้มี Alert"
+      ],
+      [
+        "True positive",
+        "ผลบวกจริง (True positive)",
+        "The investigation did not establish the unauthorized condition the rule was intended to detect.",
+        "การตรวจสอบไม่ได้พบเงื่อนไขที่ไม่มีสิทธิ์ซึ่งกฎตั้งใจตรวจจับ"
+      ],
+      [
+        "False positive",
+        "ผลบวกลวง (False positive)",
+        "The detector signaled suspicious activity, but investigation established an authorized benign exception.",
+        "ระบบแจ้งกิจกรรมน่าสงสัย แต่การตรวจยืนยันว่าเป็นข้อยกเว้นที่อนุมัติและไม่เป็นอันตราย"
+      ]
+    ],
+    "correct": 3,
+    "takeaway": "The detector signaled suspicious activity, but investigation established an authorized benign exception.",
+    "assessedDecision": "Classify a detector result using explicitly established ground truth",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Recognition or a direct basic distinction; no interacting constraints"
+  },
+  {
+    "id": 1016,
+    "authoringId": "AT10-1",
+    "family": "AT10",
+    "objective": "5.2",
+    "knowledge": "KNOW-D5-010",
+    "cognitive": "D",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Correlation and bounded inference",
+    "knowledgeTarget": "Relate observations using relevant host, identity and time context to assess a possible pattern. Several correlated records may strengthen an inference without proving attribution or success.",
+    "misconceptionTarget": "Correlation alone is proof; a routine block is automatically top priority.",
+    "decision": "Interpret evidence without overclaiming",
+    "ambiguityControl": "Distinguish prevented routine attempts from evidence requiring human response; validate AI-derived explanations against source records.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21",
+      "R02"
+    ],
+    "source": "I35,I37; N:275-295",
+    "stem": [
+      "An AI-assisted SIEM summary links a suspicious sign-in to a later data export. The source records show different accounts, and the summary provides no host or session link. Which conclusion is MOST justified?",
+      "สรุปจาก SIEM ที่ใช้ AI เชื่อม Sign-in น่าสงสัยกับการส่งออกข้อมูลภายหลัง แต่ Source records แสดงคนละบัญชีและสรุปไม่ระบุความเชื่อมโยงของ Host หรือ Session ข้อสรุปใดมีเหตุผลรองรับมากที่สุด?"
+    ],
+    "choices": [
+      [
+        "Different account names prove the activities are unrelated",
+        "ชื่อบัญชีต่างกันพิสูจน์ว่าสองกิจกรรมไม่เกี่ยวกัน",
+        "Different accounts weaken this link but do not prove that a broader attack could not involve both.",
+        "บัญชีต่างกันทำให้ข้อเชื่อมโยงนี้อ่อนลง แต่ไม่พิสูจน์ว่าการโจมตีวงกว้างจะไม่เกี่ยวกับทั้งสอง"
+      ],
+      [
+        "The later export confirms that the suspicious sign-in succeeded",
+        "การส่งออกภายหลังยืนยันว่า Sign-in น่าสงสัยสำเร็จ",
+        "The records lack the connection needed to attribute the export to that sign-in.",
+        "บันทึกยังขาดความเชื่อมโยงที่จะระบุว่าการส่งออกมาจาก Sign-in นั้น"
+      ],
+      [
+        "The proposed link needs corroboration before treating the events as one attack",
+        "ต้องหาหลักฐานสนับสนุนก่อนถือว่าสองเหตุการณ์เป็นการโจมตีเดียวกัน",
+        "Temporal proximity and an automated narrative do not establish a shared actor or session.",
+        "เวลาใกล้กันและเรื่องราวจากระบบอัตโนมัติไม่ได้ยืนยันผู้กระทำหรือ Session ร่วมกัน"
+      ],
+      [
+        "The AI-generated narrative is sufficient evidence of account compromise",
+        "เรื่องราวที่ AI สร้างเป็นหลักฐานเพียงพอว่าบัญชีถูกยึดครอง",
+        "An automated explanation must be assessed against its source evidence, especially when linking context is missing.",
+        "ต้องประเมินคำอธิบายอัตโนมัติเทียบหลักฐานต้นทาง โดยเฉพาะเมื่อขาดบริบทเชื่อมโยง"
+      ]
+    ],
+    "correct": 2,
+    "takeaway": "Temporal proximity and an automated narrative do not establish a shared actor or session.",
+    "assessedDecision": "Validate an automated correlation against evidence rather than accept or dismiss it categorically",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1017,
+    "authoringId": "AT11-1",
+    "family": "AT11",
+    "objective": "5.2",
+    "knowledge": "KNOW-D5-011",
+    "cognitive": "B",
+    "difficulty": "foundational",
+    "stemType": "scenario",
+    "concept": "Actor motives and insider risk",
+    "knowledgeTarget": "Actor categories suggest typical motivations, not certain identity from one technique. Insider threats can be intentional or unintentional; a deliberate theft should be distinguished from an accidental disclosure.",
+    "misconceptionTarget": "All insiders malicious; motive uniquely proves attribution.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "State intent and observed motivation explicitly; avoid assigning a nation-state from one indicator.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R24",
+      "R15"
+    ],
+    "source": "I38,I39; T:125-129",
+    "stem": [
+      "One employee deliberately sells customer records for personal profit. Another accidentally sends a report to the wrong recipient. Which assessment correctly describes these insider situations?",
+      "พนักงานคนหนึ่งจงใจขายข้อมูลลูกค้าเพื่อประโยชน์ส่วนตัว อีกคนส่งรายงานผิดผู้รับโดยไม่ตั้งใจ ข้อใดอธิบายเหตุจากบุคคลภายในสองกรณีนี้ได้ถูกต้อง?"
+    ],
+    "choices": [
+      [
+        "Only the first is an insider situation; the second is an external disclosure because the recipient is outside",
+        "เฉพาะกรณีแรกเป็นเหตุจากบุคคลภายใน กรณีที่สองเป็นเหตุจากภายนอกเพราะผู้รับอยู่นอกองค์กร",
+        "The employee’s internal access is the source of both situations; an outside recipient does not turn the accidental insider action into an externally originated event.",
+        "ทั้งสองกรณีมีต้นทางจากสิทธิ์ภายในของพนักงาน ผู้รับภายนอกไม่ได้ทำให้การกระทำโดยพลาดของคนในกลายเป็นเหตุที่มีต้นทางภายนอก"
+      ],
+      [
+        "Both are malicious insider actions because protected data was disclosed",
+        "ทั้งสองเป็นการกระทำมุ่งร้าย เพราะมีการเปิดเผยข้อมูลที่ต้องปกป้อง",
+        "Disclosure establishes possible harm, not malicious intent in the accidental case.",
+        "การเปิดเผยบอกถึงความเสียหายที่อาจเกิด ไม่ได้ยืนยันเจตนาร้ายในกรณีผิดพลาด"
+      ],
+      [
+        "Only the first creates insider risk because the second was accidental",
+        "มีเพียงกรณีแรกเป็น Insider risk เพราะกรณีที่สองไม่ตั้งใจ",
+        "Accidental misuse of authorized access can also create insider risk.",
+        "การใช้สิทธิ์ที่มีอยู่ผิดพลาดโดยไม่ตั้งใจก็สร้าง Insider risk ได้"
+      ],
+      [
+        "Both create insider risk, but only the first action is deliberately malicious",
+        "ทั้งสองสร้าง Insider risk แต่มีเพียงการกระทำแรกที่จงใจมุ่งร้าย",
+        "Insider threats include intentional and unintentional harm; the supplied intent distinguishes these cases.",
+        "Insider threats รวมความเสียหายทั้งที่ตั้งใจและไม่ตั้งใจ เจตนาที่โจทย์ให้แยกสองกรณีนี้"
+      ]
+    ],
+    "correct": 3,
+    "takeaway": "Insider threats include intentional and unintentional harm; the supplied intent distinguishes these cases.",
+    "assessedDecision": "Separate malicious intent from the broader category of insider risk",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Recognition or a direct basic distinction; no interacting constraints"
+  },
+  {
+    "id": 1018,
+    "authoringId": "AT12-1",
+    "family": "AT12",
+    "objective": "5.2",
+    "knowledge": "KNOW-D5-012",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Contextual threat intelligence",
+    "knowledgeTarget": "CTI is analyzed threat information useful to a decision. Indicators such as addresses/hashes guide searches, but require time, relevance and confidence checks before disruptive action.",
+    "misconceptionTarget": "A feed entry is proof of compromise; indicators remain reliable forever.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "A shared or reassigned address can reduce confidence; preserve information-sharing constraints.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R15",
+      "R21"
+    ],
+    "source": "I40,I41; N:317-346",
+    "stem": [
+      "A trusted threat report identifies a malicious file hash and the period when a campaign was active. An analyst wants to determine whether relevant endpoints encountered that file. Which use of the report is MOST appropriate?",
+      "รายงานภัยคุกคามที่เชื่อถือได้ระบุ Hash ไฟล์อันตรายและช่วงที่ Campaign ทำงาน นักวิเคราะห์ต้องการทราบว่า Endpoint ที่เกี่ยวข้องเคยพบไฟล์นั้นหรือไม่ ควรใช้รายงานอย่างไร?"
+    ],
+    "choices": [
+      [
+        "Treat a missing hash match as proof that no related activity occurred",
+        "ถือว่าการไม่พบ Hash พิสูจน์ว่าไม่มีกิจกรรมที่เกี่ยวข้อง",
+        "Record coverage and retention may be incomplete; absence of a match is not complete proof of absence.",
+        "ขอบเขตและระยะเวลาเก็บบันทึกอาจไม่ครบ การไม่พบจึงไม่พิสูจน์ว่าไม่มีทั้งหมด"
+      ],
+      [
+        "Search relevant endpoint records for the hash during the stated period",
+        "ค้นบันทึก Endpoint ที่เกี่ยวข้องตาม Hash ในช่วงเวลาที่ระบุ",
+        "The indicator and time context support a focused retrospective search; matching evidence can then be investigated.",
+        "Indicator และช่วงเวลาช่วยค้นย้อนหลังอย่างมีเป้าหมาย แล้วจึงตรวจหลักฐานที่พบต่อ"
+      ],
+      [
+        "Search current login failures instead of the reported file evidence",
+        "ค้นการ Login ล้มเหลวปัจจุบันแทนหลักฐานไฟล์ที่รายงาน",
+        "That search does not directly answer whether endpoints encountered the specified file.",
+        "การค้นเช่นนั้นไม่ตอบตรงว่า Endpoint พบไฟล์ที่ระบุหรือไม่"
+      ],
+      [
+        "Classify every endpoint as compromised before checking its records",
+        "จัด Endpoint ทุกเครื่องว่าถูกยึดครองก่อนตรวจบันทึก",
+        "A report about a campaign does not establish that every endpoint encountered the file.",
+        "รายงาน Campaign ไม่ได้ยืนยันว่า Endpoint ทุกเครื่องพบไฟล์"
+      ]
+    ],
+    "correct": 1,
+    "takeaway": "The indicator and time context support a focused retrospective search; matching evidence can then be investigated.",
+    "assessedDecision": "Use a time-bound indicator for a scoped investigation",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1019,
+    "authoringId": "AT12-2",
+    "family": "AT12",
+    "objective": "5.2",
+    "knowledge": "KNOW-D5-012",
+    "cognitive": "D",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Contextual threat intelligence",
+    "knowledgeTarget": "CTI is analyzed threat information useful to a decision. Indicators such as addresses/hashes guide searches, but require time, relevance and confidence checks before disruptive action.",
+    "misconceptionTarget": "A feed entry is proof of compromise; indicators remain reliable forever.",
+    "decision": "Interpret evidence without overclaiming",
+    "ambiguityControl": "A shared or reassigned address can reduce confidence; preserve information-sharing constraints.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R15",
+      "R21"
+    ],
+    "source": "I40,I41; N:317-346",
+    "stem": [
+      "An old feed labels an IP address as malicious. Current provider information shows the address now belongs to a shared business service, and internal logs show only recent connections. What does the feed entry establish about those recent connections?",
+      "Feed เก่าระบุว่า IP หนึ่งเป็นอันตราย ข้อมูลผู้ให้บริการปัจจุบันแสดงว่า IP นี้เป็นบริการธุรกิจที่ใช้ร่วมกัน และ Log ภายในพบเฉพาะการเชื่อมต่อไม่นานมานี้ Feed ดังกล่าวยืนยันอะไรเกี่ยวกับการเชื่อมต่อล่าสุด?"
+    ],
+    "choices": [
+      [
+        "It requires blocking the address regardless of operational context",
+        "กำหนดให้ต้องบล็อก IP โดยไม่พิจารณาบริบทการใช้งาน",
+        "The feed alone supplies no such authority or rule and may affect legitimate shared-service traffic.",
+        "Feed เพียงอย่างเดียวไม่ได้ให้อำนาจหรือกฎดังกล่าว และอาจกระทบการใช้บริการที่ถูกต้อง"
+      ],
+      [
+        "It is a lead to validate, not sufficient proof of current malicious activity",
+        "เป็นข้อมูลนำให้ตรวจต่อ ยังไม่พอพิสูจน์กิจกรรมอันตรายในปัจจุบัน",
+        "The indicator’s age and changed/shared use limit what can be inferred about current traffic.",
+        "อายุ Indicator และการใช้งานที่เปลี่ยนหรือใช้ร่วมกันจำกัดข้อสรุปเกี่ยวกับ Traffic ปัจจุบัน"
+      ],
+      [
+        "It proves that the shared business service is fully trustworthy",
+        "พิสูจน์ว่าบริการธุรกิจที่ใช้ร่วมกันน่าเชื่อถือทั้งหมด",
+        "A changed context weakens an old indicator; it does not prove the entire service is safe.",
+        "บริบทที่เปลี่ยนทำให้ Indicator เก่าอ่อนลง แต่ไม่พิสูจน์ว่าบริการทั้งหมดปลอดภัย"
+      ],
+      [
+        "It confirms that the recent connections are part of the old campaign",
+        "ยืนยันว่าการเชื่อมต่อล่าสุดเป็นส่วนหนึ่งของ Campaign เก่า",
+        "A historical address association does not establish continuity of ownership or malicious use.",
+        "ความเกี่ยวข้องกับ IP ในอดีตไม่ยืนยันว่าเจ้าของหรือการใช้อันตรายยังต่อเนื่อง"
+      ]
+    ],
+    "correct": 1,
+    "takeaway": "The indicator’s age and changed/shared use limit what can be inferred about current traffic.",
+    "assessedDecision": "Interpret indicator staleness and shared infrastructure without overclaiming",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1020,
+    "authoringId": "AT13-1",
+    "family": "AT13",
+    "objective": "5.2",
+    "knowledge": "KNOW-D5-013",
+    "cognitive": "A",
+    "difficulty": "foundational",
+    "stemType": "conceptual",
+    "concept": "Adversary behavior frameworks",
+    "knowledgeTarget": "ATT&CK organizes observed adversary behaviors. Tactics express goals; techniques express methods. Mapping a behavior can support detection-gap analysis; the knowledge base does not block attacks itself.",
+    "misconceptionTarget": "ATT&CK is SIEM; technique is motivation.",
+    "decision": "Recognize the functional purpose",
+    "ambiguityControl": "No exhaustive tactic list or technique-ID recall; frameworks are aids rather than certainty.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R09"
+    ],
+    "source": "I42-I44; T:133-137",
+    "stem": [
+      "In MITRE ATT&CK, what does a tactic describe?",
+      "ใน MITRE ATT&CK คำว่า Tactic อธิบายอะไร?"
+    ],
+    "choices": [
+      [
+        "The specific method used to achieve the adversary’s goal",
+        "วิธีเฉพาะที่ใช้บรรลุเป้าหมายของผู้โจมตี",
+        "This describes a technique rather than the tactic’s goal.",
+        "นี่อธิบาย Technique แทนที่จะเป็นเป้าหมายของ Tactic"
+      ],
+      [
+        "The exact implementation observed in one intrusion",
+        "วิธีลงมือเฉพาะที่สังเกตพบในการบุกรุกครั้งหนึ่ง",
+        "A particular implementation is a procedure example, not the general tactical goal.",
+        "การลงมือในกรณีเฉพาะเป็นตัวอย่าง Procedure ไม่ใช่เป้าหมายเชิงยุทธวิธีทั่วไป"
+      ],
+      [
+        "The adversary’s tactical goal for performing an action",
+        "เป้าหมายเชิงยุทธวิธีของผู้โจมตีในการกระทำหนึ่ง",
+        "A tactic expresses why an adversary acts; a technique describes how the goal is pursued.",
+        "Tactic อธิบายว่าทำไปเพื่ออะไร ส่วน Technique อธิบายวิธีบรรลุเป้าหมายนั้น"
+      ],
+      [
+        "The defensive rule that automatically blocks the behavior",
+        "กฎป้องกันที่บล็อกพฤติกรรมโดยอัตโนมัติ",
+        "ATT&CK describes adversary behavior; its tactics are not automatic enforcement rules.",
+        "ATT&CK อธิบายพฤติกรรมผู้โจมตี Tactic ไม่ใช่กฎบังคับใช้ที่ทำงานอัตโนมัติ"
+      ]
+    ],
+    "correct": 2,
+    "takeaway": "A tactic expresses why an adversary acts; a technique describes how the goal is pursued.",
+    "assessedDecision": "Recognize tactical purpose versus method, implementation and enforcement",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Recognition or a direct basic distinction; no interacting constraints"
+  },
+  {
+    "id": 1021,
+    "authoringId": "AT14-1",
+    "family": "AT14",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-014",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Policy-governed incident data",
+    "knowledgeTarget": "Protect incident records’ confidentiality, integrity and provenance; restrict access to authorized personnel. Collect/retain data under evidence procedures and retention policy; share via designated channels with approved recipients.",
+    "misconceptionTarget": "IR permits unrestricted sharing; routine deletion overrides a hold; public tools can receive raw records.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Apply the policy supplied in the item; respect an explicit preservation hold. Formal forensic chain of custody is not claimed mandatory for every incident.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21",
+      "R22"
+    ],
+    "source": "N:406,414,426,471; supplemented from RS.AN-06/07",
+    "stem": [
+      "An external responder requests an incident log containing employee details. Policy permits sharing only relevant records with approved responders through the secure case portal. The responder is approved. What should the analyst provide?",
+      "ผู้ตอบสนองภายนอกขอ Incident log ที่มีข้อมูลพนักงาน นโยบายให้แชร์เฉพาะบันทึกที่เกี่ยวข้องแก่ผู้ตอบสนองที่อนุมัติผ่าน Secure case portal และผู้ขอนี้ได้รับอนุมัติแล้ว นักวิเคราะห์ควรให้อะไร?"
+    ],
+    "choices": [
+      [
+        "The complete archive through the secure case portal",
+        "Archive ทั้งหมดผ่าน Secure case portal",
+        "An approved recipient and channel do not remove the restriction to relevant records.",
+        "ผู้รับและช่องทางที่อนุมัติไม่ได้ยกเลิกข้อจำกัดให้ส่งเฉพาะบันทึกที่เกี่ยวข้อง"
+      ],
+      [
+        "The relevant records through the secure case portal",
+        "บันทึกที่เกี่ยวข้องผ่าน Secure case portal",
+        "This meets the stated recipient, relevance and transfer-channel requirements together.",
+        "การกระทำนี้ตรงทั้งผู้รับที่อนุมัติ ความเกี่ยวข้อง และช่องทางส่งที่นโยบายกำหนด"
+      ],
+      [
+        "A summary including this incident and unrelated employee incidents through the secure case portal",
+        "สรุปเหตุการณ์นี้รวมกับเหตุการณ์พนักงานที่ไม่เกี่ยวข้องผ่าน Secure case portal",
+        "The secure channel satisfies only the transfer requirement; unrelated employee incidents exceed the relevant-records limit.",
+        "ช่องทางปลอดภัยตอบข้อกำหนดการส่งเท่านั้น เหตุการณ์พนักงานที่ไม่เกี่ยวข้องเกินขอบเขตบันทึกที่อนุญาต"
+      ],
+      [
+        "The relevant records through an ordinary personal email account",
+        "บันทึกที่เกี่ยวข้องผ่านบัญชีอีเมลส่วนตัวทั่วไป",
+        "Selecting relevant data does not satisfy the required secure transfer channel.",
+        "การเลือกข้อมูลที่เกี่ยวข้องไม่ได้ทำให้เป็นไปตามช่องทางส่งที่ปลอดภัยตามข้อกำหนด"
+      ]
+    ],
+    "correct": 1,
+    "takeaway": "This meets the stated recipient, relevance and transfer-channel requirements together.",
+    "assessedDecision": "Apply recipient, data-minimization and secure-channel constraints together",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1022,
+    "authoringId": "AT14-2",
+    "family": "AT14",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-014",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Policy-governed incident data",
+    "knowledgeTarget": "Protect incident records’ confidentiality, integrity and provenance; restrict access to authorized personnel. Collect/retain data under evidence procedures and retention policy; share via designated channels with approved recipients.",
+    "misconceptionTarget": "IR permits unrestricted sharing; routine deletion overrides a hold; public tools can receive raw records.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "Apply the policy supplied in the item; respect an explicit preservation hold. Formal forensic chain of custody is not claimed mandatory for every incident.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21",
+      "R22"
+    ],
+    "source": "N:406,414,426,471; supplemented from RS.AN-06/07",
+    "stem": [
+      "Incident records reach their routine deletion date. A documented preservation hold requires those records to remain available until the incident lead releases it. The hold is still active. What is the BEST action?",
+      "Incident records ถึงวันที่ลบตามรอบ แต่มี Preservation hold ที่บันทึกไว้ให้เก็บจนกว่า Incident lead จะยกเลิก และ Hold ยังมีผลอยู่ ควรทำอะไรจึงเหมาะสมที่สุด?"
+    ],
+    "choices": [
+      [
+        "Suspend routine deletion for the held records and preserve protected access",
+        "ระงับการลบตามรอบสำหรับบันทึกที่ถูก Hold และคงการเข้าถึงอย่างมีการป้องกัน",
+        "The explicit hold overrides routine disposal for these records while their protection requirements continue.",
+        "Hold ที่ระบุยกเว้นการกำจัดตามรอบสำหรับบันทึกเหล่านี้ โดยยังต้องป้องกันข้อมูลต่อ"
+      ],
+      [
+        "Remove identifiers from the originals and then apply routine deletion",
+        "ลบข้อมูลระบุตัวจากต้นฉบับแล้วลบตามรอบ",
+        "Altering and deleting the held originals would defeat their required preservation.",
+        "การแก้ไขแล้วลบต้นฉบับที่ถูก Hold ขัดกับการเก็บรักษาที่กำหนด"
+      ],
+      [
+        "Export the held records to the case folder, then delete the originals before checking the export",
+        "ส่งออกบันทึกที่ถูกระงับการลบไปโฟลเดอร์คดี แล้วลบต้นฉบับก่อนตรวจสอบไฟล์ส่งออก",
+        "An unchecked export does not establish that the held records remain complete and available; preserve the controlled records under the hold.",
+        "ไฟล์ส่งออกที่ยังไม่ตรวจสอบไม่ยืนยันว่าบันทึกครบและพร้อมใช้ ควรเก็บบันทึกที่ควบคุมไว้ตามคำสั่ง"
+      ],
+      [
+        "Delete the records because the standard retention date has arrived",
+        "ลบบันทึกเพราะถึงวันครบกำหนดเก็บปกติแล้ว",
+        "The active preservation instruction is a stated exception to the routine deletion schedule.",
+        "คำสั่งเก็บรักษาที่ยังมีผลเป็นข้อยกเว้นที่โจทย์ระบุสำหรับรอบลบปกติ"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The explicit hold overrides routine disposal for these records while their protection requirements continue.",
+    "assessedDecision": "Follow an explicit preservation hold without inventing a legal retention period",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1023,
+    "authoringId": "AT15-1",
+    "family": "AT15",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-015",
+    "cognitive": "E",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Authorized containment",
+    "knowledgeTarget": "Containment limits ongoing harm or spread. An authorized responder may isolate a system or restrict a compromised session under the playbook, balancing safety, evidence and business constraints.",
+    "misconceptionTarget": "Wait for perfect attribution during authorized urgent containment; destroy artifacts to contain.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "Specify confirmed conditions, granted authority and safety constraints. No universal report/isolate/preserve-first rule.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21"
+    ],
+    "source": "I46,I48; N:410-426",
+    "stem": [
+      "An authorized responder confirms that malware is spreading from a workstation. The playbook permits network isolation, and the workstation has no safety-critical role. The immediate goal is to stop further spread while retaining the device for investigation. Which action BEST meets that goal?",
+      "ผู้ตอบสนองที่มีอำนาจยืนยันว่า Malware กำลังแพร่จาก Workstation โดย Playbook อนุญาตให้แยกเครือข่ายและเครื่องนี้ไม่เกี่ยวกับความปลอดภัยต่อชีวิต เป้าหมายทันทีคือหยุดการแพร่โดยเก็บเครื่องไว้ตรวจสอบ การกระทำใดเหมาะสมที่สุด?"
+    ],
+    "choices": [
+      [
+        "Restore the workstation’s business files before restricting its network",
+        "กู้ไฟล์งานของเครื่องก่อนจำกัดเครือข่าย",
+        "Restoration does not first address the confirmed ongoing network spread described in this case.",
+        "การกู้ไฟล์ยังไม่จัดการการแพร่ทางเครือข่ายที่ยืนยันว่ากำลังเกิดในกรณีนี้"
+      ],
+      [
+        "Delete suspicious files while leaving network connections active",
+        "ลบไฟล์น่าสงสัยโดยปล่อยการเชื่อมต่อเครือข่ายไว้",
+        "Partial file removal does not reliably limit the active spread and may alter investigation artifacts.",
+        "การลบไฟล์บางส่วนไม่จำกัดการแพร่ที่กำลังเกิดอย่างน่าเชื่อถือและอาจเปลี่ยนหลักฐาน"
+      ],
+      [
+        "Continue observing until the attacker’s identity is established",
+        "สังเกตต่อจนกว่าจะระบุตัวผู้โจมตีได้",
+        "Attribution is not a prerequisite for the explicitly authorized containment of confirmed spread.",
+        "การระบุตัวผู้โจมตีไม่ใช่เงื่อนไขก่อน Containment ที่ได้รับอนุญาตเมื่อยืนยันการแพร่แล้ว"
+      ],
+      [
+        "Isolate the workstation using the approved containment mechanism",
+        "แยก Workstation ด้วยกลไก Containment ที่อนุมัติ",
+        "Authorized network isolation limits spread while preserving the device for the planned investigation.",
+        "การแยกเครือข่ายที่มีอำนาจอนุญาตจำกัดการแพร่โดยยังเก็บอุปกรณ์ไว้ตรวจสอบ"
+      ]
+    ],
+    "correct": 3,
+    "takeaway": "Authorized network isolation limits spread while preserving the device for the planned investigation.",
+    "assessedDecision": "Choose bounded authorized containment under an explicit immediate objective",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1024,
+    "authoringId": "AT16-1",
+    "family": "AT16",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-016",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Eradication, recovery and learning",
+    "knowledgeTarget": "Eradication addresses malicious components and causes. Recovery restores verified safe operation against recovery criteria; lessons learned feed improvements into controls, plans and training.",
+    "misconceptionTarget": "Restoration fixes every cause; review replaces remediation.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Restoring a copy is not proof persistence was removed. Stage labels are teaching aids, not a mandated NIST six-step taxonomy.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21"
+    ],
+    "source": "N:428-450; I48,I49",
+    "stem": [
+      "Responders have removed a backdoor and corrected its entry path. They now rebuild the affected service from a clean image, validate it, and return it to approved use. Which response purpose do these current activities primarily serve?",
+      "ทีมตอบสนองกำจัด Backdoor และแก้ช่องทางเข้าแล้ว ขณะนี้สร้างบริการใหม่จาก Clean image ตรวจยืนยัน และคืนให้ใช้งานตามที่อนุมัติ กิจกรรมปัจจุบันมีเป้าหมายหลักใด?"
+    ],
+    "choices": [
+      [
+        "Recovery of safe service operation",
+        "Recovery เพื่อคืนการทำงานของบริการอย่างปลอดภัย",
+        "Rebuilding, validating and returning service to use address safe restoration after the malicious cause was removed.",
+        "การสร้างใหม่ ตรวจผล และคืนบริการมุ่งฟื้นการทำงานอย่างปลอดภัยหลังนำสาเหตุอันตรายออกแล้ว"
+      ],
+      [
+        "Post-incident review of response performance",
+        "Post-incident review เพื่อทบทวนผลการตอบสนอง",
+        "Review assesses lessons and improvements; rebuilding and returning service are operational restoration activities.",
+        "Review ประเมินบทเรียนและสิ่งที่ควรปรับ ส่วนการสร้างใหม่และคืนบริการเป็นการฟื้นการทำงาน"
+      ],
+      [
+        "Eradication of the identified backdoor",
+        "Eradication เพื่อกำจัด Backdoor ที่ระบุ",
+        "The stem says removal and entry-path correction are already completed, rather than the current restoration task.",
+        "โจทย์ระบุว่ากำจัดและแก้ทางเข้าแล้ว ไม่ใช่งานคืนบริการที่กำลังทำ"
+      ],
+      [
+        "Containment of the initial spread",
+        "Containment เพื่อจำกัดการแพร่เริ่มต้น",
+        "Containment limits ongoing impact; the described current work is restoring approved operation.",
+        "Containment จำกัดผลกระทบที่กำลังเกิด แต่งานปัจจุบันคือคืนการทำงานที่อนุมัติ"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Rebuilding, validating and returning service to use address safe restoration after the malicious cause was removed.",
+    "assessedDecision": "Differentiate restoration from already-completed eradication and later review",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1025,
+    "authoringId": "AT17-1",
+    "family": "AT17",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-017",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Response exercises",
+    "knowledgeTarget": "A tabletop discusses a simulated situation to test roles/decisions. Functional technical tests exercise actual capabilities in a controlled scope, such as isolating a test endpoint or routing an escalation.",
+    "misconceptionTarget": "Successful discussion proves technical function; written plan guarantees readiness.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Match the exercise to the capability; no changes to live systems are implied by discussion alone.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21",
+      "R14"
+    ],
+    "source": "I49-I51; N:491-523",
+    "stem": [
+      "An organization wants to check whether incident leaders agree on notification roles. Participants will discuss a simulated breach without operating technical controls. Which exercise best fits this purpose?",
+      "องค์กรต้องการตรวจว่าผู้นำตอบสนองเข้าใจบทบาทการแจ้งเหตุสอดคล้องกัน โดยจะอภิปรายเหตุจำลองและไม่สั่งงานมาตรการทางเทคนิค แบบฝึกใดตรงวัตถุประสงค์?"
+    ],
+    "choices": [
+      [
+        "A red-team attempt to enter a restricted facility",
+        "Red-team test เพื่อพยายามเข้าพื้นที่จำกัด",
+        "An adversarial access test evaluates different controls and is unnecessary for the specified discussion goal.",
+        "การทดสอบเข้าถึงแบบผู้โจมตีประเมินคนละมาตรการและไม่จำเป็นต่อเป้าหมายการอภิปราย"
+      ],
+      [
+        "An application scan for known software vulnerabilities",
+        "Scan แอปเพื่อหาช่องโหว่ซอฟต์แวร์ที่รู้จัก",
+        "A vulnerability scan does not establish whether incident leaders understand notification roles.",
+        "Vulnerability scan ไม่ได้ยืนยันว่าผู้นำตอบสนองเข้าใจบทบาทการแจ้งเหตุ"
+      ],
+      [
+        "A functional test of network-isolation controls",
+        "Functional test ของมาตรการแยกเครือข่าย",
+        "That test operates technical controls, while this objective concerns discussion of notification responsibilities.",
+        "การทดสอบนั้นสั่งงานมาตรการทางเทคนิค แต่เป้าหมายนี้คืออภิปรายความรับผิดชอบการแจ้งเหตุ"
+      ],
+      [
+        "A tabletop exercise of the notification decisions",
+        "Tabletop exercise เพื่ออภิปรายการตัดสินใจแจ้งเหตุ",
+        "A discussion-based tabletop directly tests understanding of roles and coordination in a simulated situation.",
+        "Tabletop ที่เน้นอภิปรายตรวจความเข้าใจบทบาทและการประสานงานในสถานการณ์จำลองได้ตรง"
+      ]
+    ],
+    "correct": 3,
+    "takeaway": "A discussion-based tabletop directly tests understanding of roles and coordination in a simulated situation.",
+    "assessedDecision": "Select a discussion exercise for role and notification agreement",
+    "status": "REJECTED",
+    "revision": 2,
+    "rejectionReason": "Independent reviewer confirmed semantic duplication of existing updated-bank assessment decision (Q585 / Q638 respectively). No replacement added to reach a quota.",
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1026,
+    "authoringId": "AT17-2",
+    "family": "AT17",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-017",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Response exercises",
+    "knowledgeTarget": "A tabletop discusses a simulated situation to test roles/decisions. Functional technical tests exercise actual capabilities in a controlled scope, such as isolating a test endpoint or routing an escalation.",
+    "misconceptionTarget": "Successful discussion proves technical function; written plan guarantees readiness.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Match the exercise to the capability; no changes to live systems are implied by discussion alone.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21",
+      "R14",
+      "R28"
+    ],
+    "source": "I49-I51; N:491-523",
+    "stem": [
+      "A tabletop reveals uncertainty about whether the on-call team can use the isolation tool. A controlled exercise is authorized on a lab endpoint. Which result would demonstrate the missing technical capability rather than repeat the discussion?",
+      "Tabletop พบว่ายังไม่แน่ใจว่าทีม On-call ใช้เครื่องมือแยกเครื่องได้หรือไม่ จึงอนุมัติแบบฝึกที่ควบคุมบน Lab endpoint ผลใดแสดงความสามารถทางเทคนิคที่ขาด แทนที่จะอภิปรายซ้ำ?"
+    ],
+    "choices": [
+      [
+        "The on-call team operates the tool and confirms the lab endpoint is isolated",
+        "ทีม On-call สั่งเครื่องมือและตรวจยืนยันว่า Lab endpoint ถูกแยกแล้ว",
+        "Performing and verifying the authorized action provides functional evidence of the team’s tool capability.",
+        "การลงมือและตรวจผลการกระทำที่อนุมัติให้หลักฐานเชิงหน้าที่ว่าทีมใช้เครื่องมือได้"
+      ],
+      [
+        "The team confirms that the tool appears in the endpoint software inventory",
+        "ทีมยืนยันว่ามีเครื่องมือในบัญชีซอฟต์แวร์ของเครื่องปลายทาง",
+        "Installed software does not demonstrate that the on-call team can operate it successfully.",
+        "การติดตั้งซอฟต์แวร์ไม่ได้แสดงว่าทีมเวรใช้เครื่องมือนั้นได้สำเร็จ"
+      ],
+      [
+        "The incident lead signs the written isolation procedure",
+        "Incident lead ลงนามในขั้นตอนแยกเครื่องที่เขียนไว้",
+        "Approval of a procedure does not demonstrate that the on-call team can execute it successfully.",
+        "การอนุมัติขั้นตอนไม่ได้แสดงว่าทีม On-call ปฏิบัติได้สำเร็จ"
+      ],
+      [
+        "The team explains which isolation button it would select",
+        "ทีมอธิบายว่าจะเลือกปุ่มแยกเครื่องปุ่มใด",
+        "Describing an intended action still tests discussion rather than actual use of the tool.",
+        "การอธิบายสิ่งที่จะทำยังทดสอบการอภิปราย ไม่ใช่การใช้เครื่องมือจริง"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Performing and verifying the authorized action provides functional evidence of the team’s tool capability.",
+    "assessedDecision": "Require executed and verified capability evidence after a tabletop gap",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1027,
+    "authoringId": "AT18-1",
+    "family": "AT18",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-018",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Asset lifecycle accountability",
+    "knowledgeTarget": "Protect assets through planning, acquisition, deployment, maintenance, monitoring and secure retirement. Inventory and ownership support these activities; retirement from service is distinct from sanitizing/disposal.",
+    "misconceptionTarget": "Purchase inventory covers lifecycle; powered off means safe disposal.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Illustrative cycle labels/counts vary; final storage handling must be verified before release.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R22",
+      "R11",
+      "R03"
+    ],
+    "source": "I53,I54; N:531-559",
+    "stem": [
+      "A laptop is being retired. Its owner and serial number are recorded, but the storage still contains company data. The disposal procedure requires verified sanitization before transfer. What should the asset team do before marking the transfer complete?",
+      "กำลังปลดระวาง Laptop ซึ่งบันทึกเจ้าของและ Serial number แล้ว แต่สื่อยังมีข้อมูลบริษัท ขั้นตอนกำจัดกำหนดให้ Sanitization ที่ตรวจผลแล้วก่อนส่งต่อ ทีมทรัพย์สินควรทำอะไรก่อนระบุว่าส่งต่อเสร็จ?"
+    ],
+    "choices": [
+      [
+        "Complete and record the required sanitization before releasing the laptop",
+        "ทำ Sanitization ตามข้อกำหนดและบันทึกผลก่อนส่งมอบ Laptop",
+        "Lifecycle closure must include the required data-handling exit condition, not only an inventory record.",
+        "การปิดวงจรทรัพย์สินต้องรวมเงื่อนไขจัดการข้อมูลก่อนออก ไม่ใช่เพียงบันทึก Inventory"
+      ],
+      [
+        "Remove the laptop from inventory because its owner is already recorded",
+        "ลบ Laptop จาก Inventory เพราะบันทึกเจ้าของไว้แล้ว",
+        "Removing the record does not satisfy the outstanding sanitization condition before transfer.",
+        "การลบรายการไม่ได้ทำให้ผ่านเงื่อนไข Sanitization ที่ยังไม่เสร็จก่อนส่งต่อ"
+      ],
+      [
+        "Label the laptop Retired and transfer it with its current storage",
+        "ติดป้าย Retired แล้วส่งต่อพร้อมสื่อในสภาพปัจจุบัน",
+        "A retirement label identifies status but does not prevent recovery of the company data.",
+        "ป้ายปลดระวางบอกสถานะ แต่ไม่ป้องกันการกู้ข้อมูลบริษัท"
+      ],
+      [
+        "Disable the former owner’s login and record the transfer as complete",
+        "ปิด Login ของเจ้าของเดิมแล้วระบุว่าการส่งต่อเสร็จแล้ว",
+        "Disabling an account does not sanitize data remaining on the transferred storage.",
+        "การปิดบัญชีไม่ได้ Sanitization ข้อมูลที่ยังเหลือบนสื่อที่ส่งต่อ"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Lifecycle closure must include the required data-handling exit condition, not only an inventory record.",
+    "assessedDecision": "Close an asset lifecycle only after the specified data exit condition",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1028,
+    "authoringId": "AT19-1",
+    "family": "AT19",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-019",
+    "cognitive": "D",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Unsupported assets and residual risk",
+    "knowledgeTarget": "If the vendor no longer supplies security fixes, new vulnerabilities may remain unpatched. If immediate replacement is infeasible, documented restricted access/segmentation/monitoring can reduce exposure while migration proceeds.",
+    "misconceptionTarget": "Working device has no lifecycle risk; isolation makes unsupported software supported.",
+    "decision": "Interpret evidence without overclaiming",
+    "ambiguityControl": "Use stated support facts rather than product-name assumptions. Temporary controls neither restore vendor support nor remove the flaw.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R11",
+      "R16"
+    ],
+    "source": "I55,I56; N:567-587",
+    "stem": [
+      "A vendor states that a server platform will receive no further security fixes after its support date. The server still runs its application normally. Which security conclusion is supported?",
+      "ผู้ผลิตระบุว่าจะไม่มี Security fixes สำหรับแพลตฟอร์ม Server หลังวันสิ้นสุด Support แม้ Server ยังรันแอปตามปกติ ข้อสรุปด้านความปลอดภัยใดมีหลักฐานรองรับ?"
+    ],
+    "choices": [
+      [
+        "Application compatibility confirms that security updates will continue",
+        "แอปยังเข้ากันได้จึงยืนยันว่าจะมี Security updates ต่อ",
+        "Application function does not override the vendor’s explicit end-of-fixes statement.",
+        "การทำงานของแอปไม่เปลี่ยนคำประกาศชัดเจนของผู้ผลิตว่าจะหยุด Fix"
+      ],
+      [
+        "New vulnerabilities may remain without vendor fixes despite continued operation",
+        "ช่องโหว่ใหม่อาจไม่มี Fix จากผู้ผลิตแม้ระบบยังทำงานได้",
+        "Functional availability and ongoing vendor remediation are different properties; continued operation does not establish patch support.",
+        "ความสามารถทำงานกับการแก้ไขจากผู้ผลิตเป็นคนละเรื่อง การยังทำงานไม่ได้ยืนยันการสนับสนุน Patch"
+      ],
+      [
+        "The absence of current outages shows that lifecycle risk is negligible",
+        "การไม่เกิด Outage ตอนนี้แสดงว่าความเสี่ยงวงจรชีวิตต่ำมาก",
+        "Current uptime does not address future vulnerabilities that the vendor will not fix.",
+        "การทำงานต่อเนื่องปัจจุบันไม่จัดการช่องโหว่ในอนาคตที่ผู้ผลิตไม่แก้"
+      ],
+      [
+        "The vendor statement proves that the server is already compromised",
+        "คำประกาศผู้ผลิตพิสูจน์ว่า Server ถูกยึดครองแล้ว",
+        "Loss of support increases exposure but is not evidence that exploitation has occurred.",
+        "การไม่มี Support เพิ่มความเสี่ยง แต่ไม่ใช่หลักฐานว่าเกิด Exploitation แล้ว"
+      ]
+    ],
+    "correct": 1,
+    "takeaway": "Functional availability and ongoing vendor remediation are different properties; continued operation does not establish patch support.",
+    "assessedDecision": "Separate continued operation, support status and evidence of compromise",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1029,
+    "authoringId": "AT19-2",
+    "family": "AT19",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-019",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Unsupported assets and residual risk",
+    "knowledgeTarget": "If the vendor no longer supplies security fixes, new vulnerabilities may remain unpatched. If immediate replacement is infeasible, documented restricted access/segmentation/monitoring can reduce exposure while migration proceeds.",
+    "misconceptionTarget": "Working device has no lifecycle risk; isolation makes unsupported software supported.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "Use stated support facts rather than product-name assumptions. Temporary controls neither restore vendor support nor remove the flaw.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R11",
+      "R16"
+    ],
+    "source": "I55,I56; N:567-587",
+    "stem": [
+      "An unsupported service cannot be replaced this month. It must remain reachable only by two named application servers. The team needs interim exposure reduction while an approved migration proceeds. Which plan BEST meets these constraints?",
+      "บริการที่หมด Support ยังเปลี่ยนไม่ได้ในเดือนนี้ และต้องเข้าถึงได้เฉพาะ Application server สองเครื่องที่ระบุ ทีมต้องลด Exposure ระหว่างดำเนินแผนย้ายที่อนุมัติ แผนใดเหมาะสมที่สุด?"
+    ],
+    "choices": [
+      [
+        "Retain current connectivity and increase backup frequency",
+        "คงการเชื่อมต่อเดิมและเพิ่มความถี่ Backup",
+        "More backups can support recovery, but do not restrict exposure to the two permitted servers.",
+        "Backup เพิ่มช่วย Recovery แต่ไม่ได้จำกัด Exposure ให้เหลือ Server สองเครื่องตามข้อกำหนด"
+      ],
+      [
+        "Keep broad connectivity and rely on reviewing alerts each morning",
+        "คงการเชื่อมต่อกว้างแล้วอาศัยทบทวน Alert ทุกเช้า",
+        "Monitoring alone leaves the unnecessary access paths available despite the stated restriction.",
+        "Monitoring อย่างเดียวยังเปิดทางเข้าที่ไม่จำเป็นทั้งที่ระบุให้จำกัดไว้"
+      ],
+      [
+        "Permit only the required server paths, monitor activity, and track migration",
+        "อนุญาตเฉพาะเส้นทางจาก Server ที่จำเป็น เฝ้าติดตาม และติดตามแผนย้าย",
+        "Restricted connectivity reduces exposure while maintaining the required service and an accountable path to replacement.",
+        "การจำกัดการเชื่อมต่อลด Exposure โดยยังให้บริการที่จำเป็นและมีแผนทดแทนที่ติดตามได้"
+      ],
+      [
+        "Move the service to another segment without changing access rules",
+        "ย้ายบริการไปอีก Segment โดยไม่เปลี่ยน Access rules",
+        "A different segment alone does not enforce the named-server restriction without effective access controls.",
+        "การอยู่คนละ Segment อย่างเดียวไม่บังคับข้อจำกัด Server ที่ระบุหากไม่มี Access control ที่มีผล"
+      ]
+    ],
+    "correct": 2,
+    "takeaway": "Restricted connectivity reduces exposure while maintaining the required service and an accountable path to replacement.",
+    "assessedDecision": "Select temporary compensating controls that enforce a concrete access constraint",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1030,
+    "authoringId": "AT20-1",
+    "family": "AT20",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-020",
+    "cognitive": "D",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Approved state versus observed drift",
+    "knowledgeTarget": "Configuration management maintains approved system state and evaluates deviations. A baseline provides the reference; an approved exception or unrecorded legitimate change must be considered before declaring malice.",
+    "misconceptionTarget": "Every deviation is malicious; change request alone updates actual settings.",
+    "decision": "Interpret evidence without overclaiming",
+    "ambiguityControl": "NIST800-128 is general system configuration guidance, not just a device benchmark. Reconcile evidence with authorization.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R11",
+      "R22"
+    ],
+    "source": "I57,I58,I64; N:595-625",
+    "stem": [
+      "A configuration audit finds a server setting differs from the standard baseline. The change register contains a current, approved exception for that exact server and setting. What is the BEST interpretation?",
+      "Configuration audit พบค่าตั้ง Server ต่างจาก Baseline ปกติ แต่ Change register มีข้อยกเว้นที่อนุมัติและยังมีผลสำหรับ Server และค่านั้นพอดี ควรตีความอย่างไรจึงเหมาะสมที่สุด?"
+    ],
+    "choices": [
+      [
+        "Remove the server from future configuration audits",
+        "นำ Server ออกจากการตรวจ Configuration ในอนาคต",
+        "An exception defines what to assess; it does not remove the need to monitor the approved state.",
+        "ข้อยกเว้นกำหนดสิ่งที่ต้องประเมิน ไม่ได้ยกเลิกความจำเป็นในการติดตามสถานะที่อนุมัติ"
+      ],
+      [
+        "Treat every baseline difference as an unauthorized change",
+        "ถือว่าความต่างจาก Baseline ทุกกรณีเป็นการเปลี่ยนที่ไม่มีสิทธิ์",
+        "This ignores the explicitly current and applicable approved exception.",
+        "ข้อนี้ละเลยข้อยกเว้นที่อนุมัติซึ่งโจทย์ระบุว่ายังใช้ได้และตรงกรณี"
+      ],
+      [
+        "Replace the organization-wide baseline with this server’s setting",
+        "แทน Baseline ทั้งองค์กรด้วยค่าตั้งของ Server นี้",
+        "A server-specific exception does not authorize changing the baseline for all systems.",
+        "ข้อยกเว้นเฉพาะ Server ไม่ได้อนุญาตให้เปลี่ยน Baseline สำหรับทุกระบบ"
+      ],
+      [
+        "Assess the setting against the approved exception as well as the baseline",
+        "ประเมินค่าตั้งเทียบข้อยกเว้นที่อนุมัติร่วมกับ Baseline",
+        "The exception is relevant authorization evidence; difference from the standard alone does not establish an unauthorized change.",
+        "ข้อยกเว้นเป็นหลักฐานการอนุมัติที่เกี่ยวข้อง ความต่างจากมาตรฐานอย่างเดียวไม่ยืนยันว่าเปลี่ยนโดยไม่มีสิทธิ์"
+      ]
+    ],
+    "correct": 3,
+    "takeaway": "The exception is relevant authorization evidence; difference from the standard alone does not establish an unauthorized change.",
+    "assessedDecision": "Interpret a deviation using valid exception evidence rather than automatic malice",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1031,
+    "authoringId": "AT21-1",
+    "family": "AT21",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-021",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Governed changes and verification",
+    "knowledgeTarget": "Change control evaluates risk and authorizes implementation under the organization’s process. Patches require appropriate assessment/testing and verification of intended installation and service operation.",
+    "misconceptionTarget": "Automated deployment bypasses approval; install status proves operational success.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "State completed steps and rollback/exception authority when asking NEXT; do not derive universal order from slide arrows.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R11",
+      "R22"
+    ],
+    "source": "I59-I64; N:627-690",
+    "stem": [
+      "A patch deployment tool reports success. The change record also requires confirming the installed version and testing the application’s critical transaction. Which verification satisfies the record?",
+      "เครื่องมือ Deploy patch รายงานว่าสำเร็จ แต่ Change record กำหนดให้ยืนยันเวอร์ชันที่ติดตั้งและทดสอบธุรกรรมสำคัญของแอปด้วย การตรวจใดตรงข้อกำหนด?"
+    ],
+    "choices": [
+      [
+        "Accept the deployment tool’s success message as complete verification",
+        "ถือข้อความสำเร็จของเครื่องมือเป็นการตรวจครบแล้ว",
+        "The record explicitly requires version and application checks beyond the deployment message.",
+        "บันทึกกำหนดชัดว่าต้องตรวจเวอร์ชันและแอปเพิ่มเติมจากข้อความ Deploy"
+      ],
+      [
+        "Check the installed version and execute the defined transaction test",
+        "ตรวจเวอร์ชันที่ติดตั้งและรันการทดสอบธุรกรรมที่กำหนด",
+        "This verifies both the intended installation and the required application behavior rather than relying on tool status alone.",
+        "การตรวจนี้ยืนยันทั้งการติดตั้งที่ต้องการและพฤติกรรมแอปตามข้อกำหนด แทนการเชื่อสถานะเครื่องมืออย่างเดียว"
+      ],
+      [
+        "Check the new version and omit the application test",
+        "ตรวจเวอร์ชันใหม่แล้วไม่ต้องทดสอบแอป",
+        "A version check does not satisfy the separate critical-transaction requirement.",
+        "การตรวจเวอร์ชันไม่ทำให้ผ่านข้อกำหนดทดสอบธุรกรรมสำคัญที่แยกต่างหาก"
+      ],
+      [
+        "Run the transaction test and leave the installed version unconfirmed",
+        "ทดสอบธุรกรรมโดยไม่ยืนยันเวอร์ชันที่ติดตั้ง",
+        "Application function alone does not establish that the intended patch version was installed.",
+        "แอปทำงานได้อย่างเดียวไม่ได้ยืนยันว่าติดตั้ง Patch เวอร์ชันที่ต้องการ"
+      ]
+    ],
+    "correct": 1,
+    "takeaway": "This verifies both the intended installation and the required application behavior rather than relying on tool status alone.",
+    "assessedDecision": "Verify installation and functional acceptance beyond deployment status",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1032,
+    "authoringId": "AT21-2",
+    "family": "AT21",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-021",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Governed changes and verification",
+    "knowledgeTarget": "Change control evaluates risk and authorizes implementation under the organization’s process. Patches require appropriate assessment/testing and verification of intended installation and service operation.",
+    "misconceptionTarget": "Automated deployment bypasses approval; install status proves operational success.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "State completed steps and rollback/exception authority when asking NEXT; do not derive universal order from slide arrows.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R11",
+      "R22"
+    ],
+    "source": "I59-I64; N:627-690",
+    "stem": [
+      "An approved maintenance change fails its required health check. The change plan requires the documented rollback when that health check fails. Which next action BEST follows the plan?",
+      "การเปลี่ยนแปลงระบบที่อนุมัติไม่ผ่านการตรวจสุขภาพที่กำหนด แผนการเปลี่ยนแปลงกำหนดให้ย้อนกลับตามเอกสารเมื่อการตรวจนี้ล้มเหลว การกระทำถัดไปใดสอดคล้องกับแผนมากที่สุด?"
+    ],
+    "choices": [
+      [
+        "Execute the documented rollback and verify the restored service",
+        "ทำ Rollback ที่ระบุและตรวจบริการหลังคืนสภาพ",
+        "The failure condition activates the already authorized rollback path; verifying restoration checks the result.",
+        "เงื่อนไขล้มเหลวทำให้ใช้เส้นทาง Rollback ที่อนุมัติไว้แล้ว การตรวจบริการยืนยันผลการคืนสภาพ"
+      ],
+      [
+        "Troubleshoot the failed change in place before starting the documented rollback",
+        "แก้ปัญหาการเปลี่ยนแปลงที่ล้มเหลวก่อนเริ่มย้อนกลับตามเอกสาร",
+        "In-place troubleshooting delays the authorized response to the failed health check specified in this plan.",
+        "การแก้ปัญหาในระบบที่เปลี่ยนแล้วทำให้การตอบสนองที่อนุมัติไว้สำหรับผลตรวจล้มเหลวล่าช้า"
+      ],
+      [
+        "Request a second approval before using the documented rollback",
+        "ขออนุมัติครั้งที่สองก่อนย้อนกลับตามเอกสาร",
+        "The stated plan already authorizes this rollback for the observed result; no additional approval requirement is given.",
+        "แผนที่ระบุอนุมัติการย้อนกลับสำหรับผลนี้แล้ว ไม่มีเงื่อนไขให้ขออนุมัติเพิ่ม"
+      ],
+      [
+        "Keep the change active and defer the health check to the next review",
+        "คง Change ไว้แล้วเลื่อน Health check ไปการทบทวนครั้งหน้า",
+        "The check has already failed and the plan defines what to do for that result.",
+        "Health check ล้มเหลวแล้ว และแผนกำหนดสิ่งที่ต้องทำสำหรับผลนี้"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The failure condition activates the already authorized rollback path; verifying restoration checks the result.",
+    "assessedDecision": "Follow an explicit rollback branch after a failed acceptance check",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1033,
+    "authoringId": "AT22-1",
+    "family": "AT22",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-022",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Readiness team purposes",
+    "knowledgeTarget": "Blue activities defend/detect/respond; red exercises simulate adversary behavior within authorization. Purple collaboration uses attack observations and defensive results to improve and retest detection.",
+    "misconceptionTarget": "Red is unauthorized attack; finding a gap completes improvement without retest.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Authorization and test scope are explicit. Purple is a collaboration approach and need not be a separate permanent team.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R14",
+      "R01",
+      "R27"
+    ],
+    "source": "I66-I69; N:704-736",
+    "stem": [
+      "During an authorized readiness exercise, attackers explain their simulated steps to defenders. Both groups examine missed detections, improve rules, and repeat the test. Which approach does this illustrate?",
+      "ใน Readiness exercise ที่อนุมัติ ฝ่ายจำลองผู้โจมตีอธิบายขั้นตอนแก่ฝ่ายป้องกัน ทั้งสองร่วมตรวจจุดที่ตรวจจับพลาด ปรับกฎ และทดสอบซ้ำ เป็นแนวทางใด?"
+    ],
+    "choices": [
+      [
+        "A purple-team approach",
+        "แนวทาง Purple teaming",
+        "The defining feature is collaborative attack-and-defense improvement with feedback and retesting.",
+        "จุดสำคัญคือร่วมปรับปรุงระหว่างฝ่ายโจมตีและป้องกันโดยมี Feedback และทดสอบซ้ำ"
+      ],
+      [
+        "An independent red-team assessment without defender collaboration",
+        "การประเมิน Red team อิสระโดยไม่ร่วมกับฝ่ายป้องกัน",
+        "That description omits the deliberate joint analysis and improvement stated in the exercise.",
+        "คำอธิบายนี้ขาดการวิเคราะห์และปรับปรุงร่วมกันที่โจทย์ระบุ"
+      ],
+      [
+        "A tabletop that discusses how proposed attacks might be detected",
+        "Tabletop ที่อภิปรายว่าจะตรวจพบการโจมตีที่เสนอได้อย่างไร",
+        "A discussion can consider detection, but this exercise executes simulations, changes rules and retests their effect.",
+        "การอภิปรายพิจารณาการตรวจจับได้ แต่โจทย์ดำเนินการจำลอง ปรับกฎ และทดสอบผลซ้ำ"
+      ],
+      [
+        "A blue-team review of detections using stored attack records",
+        "การทบทวนการตรวจจับของ Blue team โดยใช้บันทึกการโจมตีที่จัดเก็บ",
+        "A defensive record review does not capture the active attacker-defender collaboration and repeated simulations described.",
+        "การทบทวนบันทึกฝ่ายป้องกันไม่ครอบคลุมความร่วมมือของฝ่ายโจมตีและป้องกัน รวมถึงการจำลองซ้ำตามโจทย์"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The defining feature is collaborative attack-and-defense improvement with feedback and retesting.",
+    "assessedDecision": "Identify collaboration and iterative improvement rather than team color alone",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1034,
+    "authoringId": "AT22-2",
+    "family": "AT22",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-022",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Readiness team purposes",
+    "knowledgeTarget": "Blue activities defend/detect/respond; red exercises simulate adversary behavior within authorization. Purple collaboration uses attack observations and defensive results to improve and retest detection.",
+    "misconceptionTarget": "Red is unauthorized attack; finding a gap completes improvement without retest.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Authorization and test scope are explicit. Purple is a collaboration approach and need not be a separate permanent team.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R14",
+      "R01",
+      "R27"
+    ],
+    "source": "I66-I69; N:704-736",
+    "stem": [
+      "A controlled attack simulation produces the expected endpoint records, but those records never reach the SIEM. The purple-team goal is to close this detection gap and demonstrate improvement. What should the teams do?",
+      "การจำลองโจมตีที่ควบคุมสร้าง Endpoint records ได้ตามคาด แต่บันทึกไม่เข้า SIEM เป้าหมาย Purple team คือปิดช่องว่างตรวจจับและแสดงว่าดีขึ้น ทีมควรทำอะไร?"
+    ],
+    "choices": [
+      [
+        "Document the attack steps and finish the exercise without retesting",
+        "บันทึกขั้นตอนโจมตีแล้วจบแบบฝึกโดยไม่ทดสอบซ้ำ",
+        "Documentation is useful but does not establish that the detection gap was corrected.",
+        "เอกสารมีประโยชน์ แต่ยังไม่พิสูจน์ว่าแก้ช่องว่างตรวจจับแล้ว"
+      ],
+      [
+        "Lower an existing alert threshold without checking record delivery",
+        "ลดเกณฑ์ Alert เดิมโดยไม่ตรวจการส่งบันทึก",
+        "A rule cannot evaluate missing records merely because its threshold is lower.",
+        "กฎไม่สามารถประเมินบันทึกที่ไม่มาถึงเพียงเพราะลด Threshold"
+      ],
+      [
+        "Repair record forwarding and repeat the simulation to verify detection",
+        "แก้การส่งบันทึกแล้วจำลองซ้ำเพื่อตรวจยืนยันการตรวจจับ",
+        "The observed failure is missing telemetry at the SIEM; repair plus retest addresses and validates that gap.",
+        "สิ่งที่พบคือ Telemetry ไม่ถึง SIEM การแก้และทดสอบซ้ำจึงจัดการและยืนยันช่องว่างนี้"
+      ],
+      [
+        "Repeat the same simulation before correcting record forwarding",
+        "จำลองแบบเดิมซ้ำก่อนแก้การส่งบันทึก",
+        "Repeating without addressing the established delivery failure does not demonstrate improved detection.",
+        "การทำซ้ำโดยไม่แก้การส่งที่ยืนยันว่าล้มเหลวไม่ได้แสดงว่าตรวจจับดีขึ้น"
+      ]
+    ],
+    "correct": 2,
+    "takeaway": "The observed failure is missing telemetry at the SIEM; repair plus retest addresses and validates that gap.",
+    "assessedDecision": "Apply cause-specific telemetry repair and verify purple-team improvement",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1035,
+    "authoringId": "AT23-1",
+    "family": "AT23",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-023",
+    "cognitive": "D",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Scanning evidence and limits",
+    "knowledgeTarget": "A vulnerability scan identifies potential weaknesses, including vulnerable versions and configurations. Findings require validation and scope-aware prioritization; absence of findings does not prove absence of vulnerabilities.",
+    "misconceptionTarget": "A scanner proves every exploit succeeds; a clean scan proves secure design.",
+    "decision": "Interpret evidence without overclaiming",
+    "ambiguityControl": "Do not equate version inference with demonstrated exploitation. Testing cannot guarantee complete security.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R14"
+    ],
+    "source": "I70; N:744-757",
+    "stem": [
+      "A scheduled scan finds no known-version vulnerabilities in the web servers it checked. The scan did not test application workflows or authenticated business functions. Which statement accurately describes the result?",
+      "Scan ตามรอบไม่พบช่องโหว่จากเวอร์ชันที่รู้จักใน Web server ที่ตรวจ โดยไม่ได้ทดสอบ Workflow หรือฟังก์ชันธุรกิจที่ต้อง Login ข้อใดอธิบายผลได้ถูกต้อง?"
+    ],
+    "choices": [
+      [
+        "The result establishes that authenticated functions have no security flaws",
+        "ผลยืนยันว่าฟังก์ชันที่ต้อง Login ไม่มีข้อบกพร่องความปลอดภัย",
+        "Those functions were explicitly outside the performed checks.",
+        "ฟังก์ชันเหล่านั้นอยู่นอกสิ่งที่ตรวจตามที่โจทย์ระบุ"
+      ],
+      [
+        "The result supports postponing authenticated testing until a version vulnerability is found",
+        "ผลนี้สนับสนุนให้เลื่อนการทดสอบแบบยืนยันตัวตนจนกว่าจะพบช่องโหว่เวอร์ชัน",
+        "The scan has not assessed those functions, so its clean result supplies no evidence for postponing their assessment.",
+        "การสแกนยังไม่ได้ประเมินฟังก์ชันเหล่านั้น ผลที่ไม่พบปัญหาจึงไม่ใช่หลักฐานให้เลื่อนการประเมิน"
+      ],
+      [
+        "The result is limited to the checks performed and does not establish workflow security",
+        "ผลจำกัดตามสิ่งที่ตรวจ และไม่ได้ยืนยันความปลอดภัยของ Workflow",
+        "A clean result within one scan’s scope is not evidence that untested application behavior is secure.",
+        "ผลไม่พบปัญหาภายในขอบเขต Scan หนึ่งไม่ได้พิสูจน์ว่าพฤติกรรมแอปที่ไม่ทดสอบปลอดภัย"
+      ],
+      [
+        "The result proves that the application design resists all relevant threats",
+        "ผลพิสูจน์ว่า Design ของแอปต้านภัยคุกคามที่เกี่ยวข้องทั้งหมด",
+        "Known-version scanning does not comprehensively evaluate design threats or application logic.",
+        "การ Scan เวอร์ชันไม่ได้ประเมินภัยระดับ Design หรือ Logic แอปอย่างครบถ้วน"
+      ]
+    ],
+    "correct": 2,
+    "takeaway": "A clean result within one scan’s scope is not evidence that untested application behavior is secure.",
+    "assessedDecision": "Interpret a negative scan within its actual tested scope",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1036,
+    "authoringId": "AT24-1",
+    "family": "AT24",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-024",
+    "cognitive": "B",
+    "difficulty": "foundational",
+    "stemType": "conceptual",
+    "concept": "Static and dynamic testing",
+    "knowledgeTarget": "SAST inspects code artifacts without executing the application; DAST interacts with a running application. Both can contribute evidence about overlapping flaw classes.",
+    "misconceptionTarget": "Only one method can find injection; DAST defined by inability to know code.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Select by artifact/runtime access and testing objective, not an assertion that the tester cannot possess source.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R12",
+      "R20"
+    ],
+    "source": "I71-I73; N:761-793",
+    "stem": [
+      "A team analyzes application source code and compiled artifacts without executing the application. Which testing description fits this activity?",
+      "ทีมวิเคราะห์ Source code และ Compiled artifacts โดยไม่รันแอป คำอธิบายการทดสอบใดตรงกับกิจกรรมนี้?"
+    ],
+    "choices": [
+      [
+        "Static Application Security Testing (SAST)",
+        "การทดสอบความปลอดภัยแอปแบบ Static (SAST)",
+        "Static analysis examines code artifacts without requiring the application to run.",
+        "Static analysis ตรวจ Code artifacts โดยไม่ต้องให้แอปทำงาน"
+      ],
+      [
+        "Vulnerability scanning of deployed service versions",
+        "Vulnerability scanning เวอร์ชันบริการที่ Deploy แล้ว",
+        "Checking deployed versions differs from examining source or compiled code without execution.",
+        "การตรวจเวอร์ชันที่ Deploy แล้วต่างจากวิเคราะห์ Source หรือ Compiled code โดยไม่รัน"
+      ],
+      [
+        "Threat modeling of application data flows",
+        "Threat modeling ของ Data flows ในแอป",
+        "Threat modeling assesses threats and design context rather than inspecting source/compiled code as this task describes.",
+        "Threat modeling ประเมินภัยและบริบท Design แทนการตรวจ Source หรือ Compiled code ตามงานนี้"
+      ],
+      [
+        "Dynamic testing of application input responses",
+        "การทดสอบ Dynamic ต่อผลตอบสนองของ Input ในแอป",
+        "Testing input responses requires executing behavior, whereas this task does not execute the application.",
+        "การทดสอบผลตอบสนองของ Input ต้องให้พฤติกรรมทำงาน แต่งานนี้ไม่รันแอป"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Static analysis examines code artifacts without requiring the application to run.",
+    "assessedDecision": "Differentiate artifact analysis from runtime and other testing activities",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Recognition or a direct basic distinction; no interacting constraints"
+  },
+  {
+    "id": 1037,
+    "authoringId": "AT24-2",
+    "family": "AT24",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-024",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Static and dynamic testing",
+    "knowledgeTarget": "SAST inspects code artifacts without executing the application; DAST interacts with a running application. Both can contribute evidence about overlapping flaw classes.",
+    "misconceptionTarget": "Only one method can find injection; DAST defined by inability to know code.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Select by artifact/runtime access and testing objective, not an assertion that the tester cannot possess source.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R12",
+      "R20"
+    ],
+    "source": "I71-I73; N:761-793",
+    "stem": [
+      "A tester must determine whether a deployed application still accepts a session token after logout. The application is available in an authorized test environment. Which activity MOST directly answers this question?",
+      "ผู้ทดสอบต้องตรวจว่าแอปที่ Deploy แล้วยังรับ Session token หลัง Logout หรือไม่ โดยมีแอปในสภาพแวดล้อมทดสอบที่อนุญาต กิจกรรมใดตอบคำถามได้ตรงที่สุด?"
+    ],
+    "choices": [
+      [
+        "Review a design diagram of the intended logout process",
+        "ตรวจแผนภาพ Design ของกระบวนการ Logout ที่ตั้งใจไว้",
+        "A design description does not establish how the deployed application actually handles that token.",
+        "คำอธิบาย Design ไม่ได้ยืนยันว่าแอปที่ Deploy จัดการ Token จริงอย่างไร"
+      ],
+      [
+        "Inspect source-code comments describing session expiration",
+        "ตรวจ Comment ใน Source code ที่อธิบาย Session expiration",
+        "Comments state intent and cannot substitute for observing the running application’s result.",
+        "Comment ระบุเจตนาและไม่แทนการสังเกตผลจากแอปที่ทำงานจริง"
+      ],
+      [
+        "Interact with the running application using the token before and after logout",
+        "โต้ตอบกับแอปที่ทำงานโดยใช้ Token ก่อนและหลัง Logout",
+        "This dynamic test observes the actual session behavior the requirement asks about.",
+        "การทดสอบแบบ Dynamic นี้สังเกตพฤติกรรม Session จริงที่ข้อกำหนดต้องการทราบ"
+      ],
+      [
+        "Scan the server’s software-version inventory for known issues",
+        "Scan รายการเวอร์ชันซอฟต์แวร์ของ Server เพื่อหาปัญหาที่รู้จัก",
+        "Version findings do not directly measure this application’s session invalidation behavior.",
+        "ผลตรวจเวอร์ชันไม่ได้วัดพฤติกรรมยกเลิก Session ของแอปนี้โดยตรง"
+      ]
+    ],
+    "correct": 2,
+    "takeaway": "This dynamic test observes the actual session behavior the requirement asks about.",
+    "assessedDecision": "Choose dynamic observation for a concrete deployed-session requirement",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1038,
+    "authoringId": "AT25-1",
+    "family": "AT25",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-025",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Threat modeling through change",
+    "knowledgeTarget": "Threat modeling identifies valued assets, potential threats, paths and mitigations in system context. Start early and revisit when designs or assumptions change.",
+    "misconceptionTarget": "One design review guarantees security; scans replace design reasoning.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "No mandatory named method or one-time-only claim. It complements code/runtime testing.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R13"
+    ],
+    "source": "I74; N:797-811",
+    "stem": [
+      "A design change will allow a new external partner to upload documents into an internal workflow. Before choosing additional controls, the team needs to identify new assets, trust boundaries and possible attack paths. Which activity is MOST appropriate?",
+      "การเปลี่ยน Design จะให้คู่ค้าภายนอกรายใหม่ Upload เอกสารเข้ากระบวนงานภายใน ก่อนเลือกมาตรการเพิ่ม ทีมต้องระบุ Assets, Trust boundaries และเส้นทางโจมตีใหม่ กิจกรรมใดเหมาะสมที่สุด?"
+    ],
+    "choices": [
+      [
+        "Run a version-only vulnerability scan of the unchanged servers",
+        "Scan ช่องโหว่เฉพาะเวอร์ชันบน Server ที่ไม่เปลี่ยน",
+        "A version scan does not identify all new design-level paths introduced by the partner workflow.",
+        "การ Scan เวอร์ชันไม่ได้ระบุเส้นทางระดับ Design ใหม่ทั้งหมดที่ Workflow คู่ค้านำเข้ามา"
+      ],
+      [
+        "Revisit the threat model for the changed workflow",
+        "ทบทวน Threat model ของ Workflow ที่เปลี่ยน",
+        "Threat modeling evaluates threats and mitigations in system context and should reflect changed assumptions and boundaries.",
+        "Threat modeling ประเมินภัยและมาตรการในบริบทระบบ จึงต้องสะท้อนสมมติฐานและขอบเขตที่เปลี่ยน"
+      ],
+      [
+        "Repeat the previous penetration test against the existing internal interface",
+        "ทดสอบเจาะระบบซ้ำที่อินเทอร์เฟซภายในเดิม",
+        "Testing the previous interface does not first identify the new partner boundary and changed attack paths needed for control selection.",
+        "การทดสอบอินเทอร์เฟซเดิมไม่ได้เริ่มจากระบุขอบเขตคู่ค้าใหม่และเส้นทางโจมตีที่เปลี่ยนสำหรับเลือกมาตรการ"
+      ],
+      [
+        "Review the new partner’s security certification and accepted contract terms",
+        "ตรวจสอบใบรับรองความปลอดภัยและเงื่อนไขสัญญาที่ตกลงกับคู่ค้าใหม่",
+        "Supplier assurance can inform risk decisions, but it does not map assets, boundaries and attack paths in the changed workflow.",
+        "การประเมินคู่ค้าช่วยตัดสินความเสี่ยงได้ แต่ไม่ได้วิเคราะห์ทรัพย์สิน ขอบเขต และเส้นทางโจมตีในงานที่เปลี่ยน"
+      ]
+    ],
+    "correct": 1,
+    "takeaway": "Threat modeling evaluates threats and mitigations in system context and should reflect changed assumptions and boundaries.",
+    "assessedDecision": "Choose updated design-threat analysis before selecting controls",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  },
+  {
+    "id": 1039,
+    "authoringId": "AT26-1",
+    "family": "AT26",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-026",
+    "cognitive": "B",
+    "difficulty": "foundational",
+    "stemType": "scenario",
+    "concept": "Physical and social test boundaries",
+    "knowledgeTarget": "Physical testing evaluates authorized attempts to cross access boundaries. Tailgating follows an authorized person; impersonation uses false identity; phishing uses deceptive communication. An event may combine them.",
+    "misconceptionTarget": "A badge stops every follower; impersonation and tailgating cannot coexist.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Ask about a specific action or supplied verification procedure; do not force mutually exclusive categories or call all phishing physical.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R14",
+      "R01"
+    ],
+    "source": "I75-I78; N:819-861",
+    "stem": [
+      "An authorized test includes three actions: (1) sending a deceptive login-link email, (2) following a badged employee through a controlled door, and (3) claiming to be an IT technician to request access. Which mapping is correct?",
+      "การทดสอบที่อนุญาตมีสามการกระทำ คือ (1) ส่งอีเมลลวงพร้อมลิงก์ Login (2) เดินตามพนักงานที่ใช้บัตรผ่านประตูควบคุม (3) อ้างว่าเป็นช่าง IT เพื่อขอเข้าถึง การจับคู่ใดถูกต้อง?"
+    ],
+    "choices": [
+      [
+        "(1) Phishing; (2) tailgating; (3) impersonation",
+        "ข้อหนึ่ง Phishing ข้อสอง Tailgating ข้อสาม Impersonation",
+        "The mappings distinguish deceptive communication, following through a physical boundary, and a false identity claim.",
+        "การจับคู่แยกการสื่อสารลวง การตามผ่านขอบเขตกายภาพ และการอ้างตัวตนเท็จ"
+      ],
+      [
+        "(1) Phishing; (2) impersonation; (3) tailgating",
+        "ข้อหนึ่ง Phishing ข้อสอง Impersonation ข้อสาม Tailgating",
+        "The email mapping is right, but the door-following and technician-claim mappings are reversed.",
+        "อีเมลจับคู่ถูก แต่การเดินตามประตูกับการอ้างเป็นช่างจับคู่สลับกัน"
+      ],
+      [
+        "(1) Impersonation; (2) phishing; (3) tailgating",
+        "ข้อหนึ่ง Impersonation ข้อสอง Phishing ข้อสาม Tailgating",
+        "Following through a door is not phishing, and a false technician claim is not itself following an authorized entrant.",
+        "การตามผ่านประตูไม่ใช่ Phishing และการอ้างเป็นช่างไม่ได้หมายถึงการตามผู้มีสิทธิ์เข้าไป"
+      ],
+      [
+        "(1) Tailgating; (2) impersonation; (3) phishing",
+        "ข้อหนึ่ง Tailgating ข้อสอง Impersonation ข้อสาม Phishing",
+        "The email is not physical following; the second action does not describe a false identity claim.",
+        "อีเมลไม่ใช่การเดินตาม และการกระทำที่สองไม่ได้ระบุการอ้างตัวตนเท็จ"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The mappings distinguish deceptive communication, following through a physical boundary, and a false identity claim.",
+    "assessedDecision": "Distinguish three named test techniques without treating their real-world overlap as exclusivity",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Recognition or a direct basic distinction; no interacting constraints"
+  },
+  {
+    "id": 1040,
+    "authoringId": "AT26-2",
+    "family": "AT26",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-026",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Physical and social test boundaries",
+    "knowledgeTarget": "Physical testing evaluates authorized attempts to cross access boundaries. Tailgating follows an authorized person; impersonation uses false identity; phishing uses deceptive communication. An event may combine them.",
+    "misconceptionTarget": "A badge stops every follower; impersonation and tailgating cannot coexist.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Ask about a specific action or supplied verification procedure; do not force mutually exclusive categories or call all phishing physical.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R14",
+      "R01"
+    ],
+    "source": "I75-I78; N:819-861",
+    "stem": [
+      "During a controlled physical-security test, a person claiming to be a technician requests entry to a server room. Procedure requires staff to verify work orders through the established service desk before granting entry. No verification has occurred. What should the employee do?",
+      "ระหว่างการทดสอบ Physical security ที่ควบคุม บุคคลอ้างเป็นช่างขอเข้าห้อง Server ขั้นตอนให้ตรวจ Work order ผ่าน Service desk ที่กำหนดก่อนอนุญาตเข้า และยังไม่ได้ตรวจ พนักงานควรทำอะไร?"
+    ],
+    "choices": [
+      [
+        "Grant entry while asking the person to email a work order later",
+        "ให้เข้าก่อนแล้วขอให้ส่ง Work order ทางอีเมลภายหลัง",
+        "Later paperwork bypasses the explicit requirement to verify before entry.",
+        "เอกสารภายหลังข้ามข้อกำหนดชัดเจนว่าต้องตรวจก่อนเข้า"
+      ],
+      [
+        "Escort the person inside instead of checking the work order",
+        "พาบุคคลเข้าไปแทนการตรวจ Work order",
+        "Escorting does not replace a prerequisite that the procedure explicitly requires before granting access.",
+        "การพาเข้าไม่แทนเงื่อนไขก่อนให้สิทธิ์ซึ่งขั้นตอนกำหนดไว้อย่างชัดเจน"
+      ],
+      [
+        "Verify the claim by calling a number supplied only by the visitor",
+        "ตรวจคำอ้างโดยโทรหมายเลขที่ผู้มาติดต่อให้เพียงฝ่ายเดียว",
+        "A visitor-supplied contact does not meet the established service-desk verification route.",
+        "ผู้ติดต่อที่ผู้มาเยือนให้เองไม่ตรงช่องทาง Service desk ที่กำหนดไว้"
+      ],
+      [
+        "Keep entry pending while verifying the work order through the service desk",
+        "รออนุญาตเข้าจนกว่าจะตรวจ Work order ผ่าน Service desk",
+        "The prescribed independent verification must occur before entry; a claimed role does not satisfy it.",
+        "ต้องตรวจยืนยันตามช่องทางอิสระที่กำหนดก่อนเข้า การอ้างบทบาทยังไม่ผ่านเงื่อนไข"
+      ]
+    ],
+    "correct": 3,
+    "takeaway": "The prescribed independent verification must occur before entry; a claimed role does not satisfy it.",
+    "assessedDecision": "Apply an established verification prerequisite during an authorized physical test",
+    "status": "DRAFT",
+    "revision": 3,
+    "difficultyRationale": "Transfers a stated security principle to context, evidence or authorization; not specialist implementation knowledge"
+  }
+]

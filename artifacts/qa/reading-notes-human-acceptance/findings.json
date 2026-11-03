@@ -1,0 +1,35 @@
+[
+  {
+    "id": "HAR-V01",
+    "result": "NEEDS FIX",
+    "severity": "Low",
+    "acceptanceBlocker": false,
+    "domain": 2,
+    "anchor": "topic-2-4-scorecards",
+    "source": "content/isc2-cc-2026/reading/domain-2.md:489",
+    "viewports": "All four requested widths, both themes",
+    "steps": "Open scorecard subsection; inspect icon before the example-table caption.",
+    "observation": "Decorative blue X/cross precedes a neutral example table. It can suggest an error, failure or close action unrelated to the caption.",
+    "evidence": [
+      "target-scorecards-390-dark.png",
+      "target-scorecards-320-light.png"
+    ],
+    "recommendation": "Subject to user approval, replace only this decorative caption glyph with a neutral table/example symbol or remove it. Preserve wording, table and anchors."
+  },
+  {
+    "id": "HAR-A01",
+    "result": "NEEDS FIX",
+    "severity": "Low",
+    "acceptanceBlocker": false,
+    "domain": 1,
+    "anchor": "topic-1-1-cia-triad",
+    "viewports": "1366×768 Light accessible-tree sample; unnamed nodes also observed in other contexts",
+    "steps": "Open CIA route and inspect Chrome accessibility tree; follow backend node IDs in supplemental-results.json.",
+    "observation": "Several decorative SVGs are exposed as unnamed image nodes, including the already-named theme button icon and reading-rule icons. Instructional diagram regions retain explicit names.",
+    "evidence": [
+      "supplemental-results.json"
+    ],
+    "recommendation": "In a separately approved scoped follow-up, hide purely decorative Reading SVGs from accessibility APIs while retaining button names and informative diagrams. Do not blanket-hide all SVGs.",
+    "limitation": "Native speech output / practical user impact UNVERIFIED. AX exposure is confirmed, an audible announcement is not."
+  }
+]

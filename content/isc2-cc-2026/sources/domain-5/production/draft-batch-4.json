@@ -1,0 +1,550 @@
+[
+  {
+    "id": 1031,
+    "authoringId": "AT21-1",
+    "family": "AT21",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-021",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Governed changes and verification",
+    "knowledgeTarget": "Change control evaluates risk and authorizes implementation under the organization’s process. Patches require appropriate assessment/testing and verification of intended installation and service operation.",
+    "misconceptionTarget": "Automated deployment bypasses approval; install status proves operational success.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "State completed steps and rollback/exception authority when asking NEXT; do not derive universal order from slide arrows.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R11",
+      "R22"
+    ],
+    "source": "I59-I64; N:627-690",
+    "stem": [
+      "A patch deployment tool reports success. The change record also requires confirming the installed version and testing the application’s critical transaction. Which verification satisfies the record?",
+      "เครื่องมือ Deploy patch รายงานว่าสำเร็จ แต่ Change record กำหนดให้ยืนยันเวอร์ชันที่ติดตั้งและทดสอบธุรกรรมสำคัญของแอปด้วย การตรวจใดตรงข้อกำหนด?"
+    ],
+    "choices": [
+      [
+        "Check the installed version and execute the defined transaction test",
+        "ตรวจเวอร์ชันที่ติดตั้งและรันการทดสอบธุรกรรมที่กำหนด",
+        "This verifies both the intended installation and the required application behavior rather than relying on tool status alone.",
+        "การตรวจนี้ยืนยันทั้งการติดตั้งที่ต้องการและพฤติกรรมแอปตามข้อกำหนด แทนการเชื่อสถานะเครื่องมืออย่างเดียว"
+      ],
+      [
+        "Accept the deployment tool’s success message as complete verification",
+        "ถือข้อความสำเร็จของเครื่องมือเป็นการตรวจครบแล้ว",
+        "The record explicitly requires version and application checks beyond the deployment message.",
+        "บันทึกกำหนดชัดว่าต้องตรวจเวอร์ชันและแอปเพิ่มเติมจากข้อความ Deploy"
+      ],
+      [
+        "Check the new version and omit the application test",
+        "ตรวจเวอร์ชันใหม่แล้วไม่ต้องทดสอบแอป",
+        "A version check does not satisfy the separate critical-transaction requirement.",
+        "การตรวจเวอร์ชันไม่ทำให้ผ่านข้อกำหนดทดสอบธุรกรรมสำคัญที่แยกต่างหาก"
+      ],
+      [
+        "Run the transaction test and leave the installed version unconfirmed",
+        "ทดสอบธุรกรรมโดยไม่ยืนยันเวอร์ชันที่ติดตั้ง",
+        "Application function alone does not establish that the intended patch version was installed.",
+        "แอปทำงานได้อย่างเดียวไม่ได้ยืนยันว่าติดตั้ง Patch เวอร์ชันที่ต้องการ"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "This verifies both the intended installation and the required application behavior rather than relying on tool status alone.",
+    "assessedDecision": "Verify installation and functional acceptance beyond deployment status",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1032,
+    "authoringId": "AT21-2",
+    "family": "AT21",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-021",
+    "cognitive": "E",
+    "difficulty": "intermediate",
+    "stemType": "scenario",
+    "concept": "Governed changes and verification",
+    "knowledgeTarget": "Change control evaluates risk and authorizes implementation under the organization’s process. Patches require appropriate assessment/testing and verification of intended installation and service operation.",
+    "misconceptionTarget": "Automated deployment bypasses approval; install status proves operational success.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "State completed steps and rollback/exception authority when asking NEXT; do not derive universal order from slide arrows.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R11",
+      "R22"
+    ],
+    "source": "I59-I64; N:627-690",
+    "stem": [
+      "An approved maintenance change fails its required health check. The change plan explicitly authorizes the documented rollback for that result. Which next action BEST follows the plan?",
+      "การเปลี่ยนแปลงบำรุงรักษาที่อนุมัติไม่ผ่าน Health check ที่กำหนด แผนอนุญาตชัดเจนให้ทำ Rollback ที่บันทึกไว้เมื่อเกิดผลนี้ การทำอะไรต่อจึงตรงแผนที่สุด?"
+    ],
+    "choices": [
+      [
+        "Execute the documented rollback and verify the restored service",
+        "ทำ Rollback ที่ระบุและตรวจบริการหลังคืนสภาพ",
+        "The failure condition activates the already authorized rollback path; verifying restoration checks the result.",
+        "เงื่อนไขล้มเหลวทำให้ใช้เส้นทาง Rollback ที่อนุมัติไว้แล้ว การตรวจบริการยืนยันผลการคืนสภาพ"
+      ],
+      [
+        "Close the change because implementation commands completed",
+        "ปิด Change เพราะคำสั่ง Implement ทำงานครบแล้ว",
+        "Command completion does not override a failed acceptance check or the specified rollback condition.",
+        "คำสั่งทำงานครบไม่ได้แทนผลตรวจที่ไม่ผ่านหรือเงื่อนไข Rollback ที่กำหนด"
+      ],
+      [
+        "Keep the change active and defer the health check to the next review",
+        "คง Change ไว้แล้วเลื่อน Health check ไปการทบทวนครั้งหน้า",
+        "The check has already failed and the plan defines what to do for that result.",
+        "Health check ล้มเหลวแล้ว และแผนกำหนดสิ่งที่ต้องทำสำหรับผลนี้"
+      ],
+      [
+        "Implement an untested replacement change instead of the approved rollback",
+        "ลง Change ทดแทนที่ยังไม่ทดสอบแทน Rollback ที่อนุมัติ",
+        "The supplied authorization covers the rollback, not an unassessed replacement change.",
+        "อำนาจอนุมัติที่โจทย์ให้ครอบคลุม Rollback ไม่ใช่ Change ทดแทนที่ยังไม่ประเมิน"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The failure condition activates the already authorized rollback path; verifying restoration checks the result.",
+    "assessedDecision": "Follow an explicit rollback branch after a failed acceptance check",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1033,
+    "authoringId": "AT22-1",
+    "family": "AT22",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-022",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Readiness team purposes",
+    "knowledgeTarget": "Blue activities defend/detect/respond; red exercises simulate adversary behavior within authorization. Purple collaboration uses attack observations and defensive results to improve and retest detection.",
+    "misconceptionTarget": "Red is unauthorized attack; finding a gap completes improvement without retest.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Authorization and test scope are explicit. Purple is a collaboration approach and need not be a separate permanent team.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R14",
+      "R01"
+    ],
+    "source": "I66-I69; N:704-736",
+    "stem": [
+      "During an authorized readiness exercise, attackers explain their simulated steps to defenders. Both groups examine missed detections, improve rules, and repeat the test. Which approach does this illustrate?",
+      "ใน Readiness exercise ที่อนุมัติ ฝ่ายจำลองผู้โจมตีอธิบายขั้นตอนแก่ฝ่ายป้องกัน ทั้งสองร่วมตรวจจุดที่ตรวจจับพลาด ปรับกฎ และทดสอบซ้ำ เป็นแนวทางใด?"
+    ],
+    "choices": [
+      [
+        "Purple teaming",
+        "Purple teaming",
+        "The defining feature is collaborative attack-and-defense improvement with feedback and retesting.",
+        "จุดสำคัญคือร่วมปรับปรุงระหว่างฝ่ายโจมตีและป้องกันโดยมี Feedback และทดสอบซ้ำ"
+      ],
+      [
+        "An independent red-team assessment without defender collaboration",
+        "การประเมิน Red team อิสระโดยไม่ร่วมกับฝ่ายป้องกัน",
+        "That description omits the deliberate joint analysis and improvement stated in the exercise.",
+        "คำอธิบายนี้ขาดการวิเคราะห์และปรับปรุงร่วมกันที่โจทย์ระบุ"
+      ],
+      [
+        "A blue-team monitoring shift without simulated attacks",
+        "เวร Monitoring ของ Blue team โดยไม่มีการจำลองโจมตี",
+        "Routine defensive monitoring alone does not include the described adversary simulation and joint feedback cycle.",
+        "Monitoring ปกติอย่างเดียวไม่รวมการจำลองโจมตีและวงจร Feedback ร่วมกันที่ระบุ"
+      ],
+      [
+        "A discussion-only tabletop of response responsibilities",
+        "Tabletop อภิปรายบทบาทตอบสนองอย่างเดียว",
+        "The exercise executes, changes and retests detection behavior rather than only discussing responsibilities.",
+        "แบบฝึกนี้ลงมือ เปลี่ยน และทดสอบพฤติกรรมตรวจจับซ้ำ ไม่ใช่เพียงอภิปรายบทบาท"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The defining feature is collaborative attack-and-defense improvement with feedback and retesting.",
+    "assessedDecision": "Identify collaboration and iterative improvement rather than team color alone",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1034,
+    "authoringId": "AT22-2",
+    "family": "AT22",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-022",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Readiness team purposes",
+    "knowledgeTarget": "Blue activities defend/detect/respond; red exercises simulate adversary behavior within authorization. Purple collaboration uses attack observations and defensive results to improve and retest detection.",
+    "misconceptionTarget": "Red is unauthorized attack; finding a gap completes improvement without retest.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Authorization and test scope are explicit. Purple is a collaboration approach and need not be a separate permanent team.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R14",
+      "R01"
+    ],
+    "source": "I66-I69; N:704-736",
+    "stem": [
+      "A controlled attack simulation produces the expected endpoint records, but those records never reach the SIEM. The purple-team goal is to close this detection gap and demonstrate improvement. What should the teams do?",
+      "การจำลองโจมตีที่ควบคุมสร้าง Endpoint records ได้ตามคาด แต่บันทึกไม่เข้า SIEM เป้าหมาย Purple team คือปิดช่องว่างตรวจจับและแสดงว่าดีขึ้น ทีมควรทำอะไร?"
+    ],
+    "choices": [
+      [
+        "Repair record forwarding and repeat the simulation to verify detection",
+        "แก้การส่งบันทึกแล้วจำลองซ้ำเพื่อตรวจยืนยันการตรวจจับ",
+        "The observed failure is missing telemetry at the SIEM; repair plus retest addresses and validates that gap.",
+        "สิ่งที่พบคือ Telemetry ไม่ถึง SIEM การแก้และทดสอบซ้ำจึงจัดการและยืนยันช่องว่างนี้"
+      ],
+      [
+        "Lower an existing alert threshold without checking record delivery",
+        "ลดเกณฑ์ Alert เดิมโดยไม่ตรวจการส่งบันทึก",
+        "A rule cannot evaluate missing records merely because its threshold is lower.",
+        "กฎไม่สามารถประเมินบันทึกที่ไม่มาถึงเพียงเพราะลด Threshold"
+      ],
+      [
+        "Document the attack steps and finish the exercise without retesting",
+        "บันทึกขั้นตอนโจมตีแล้วจบแบบฝึกโดยไม่ทดสอบซ้ำ",
+        "Documentation is useful but does not establish that the detection gap was corrected.",
+        "เอกสารมีประโยชน์ แต่ยังไม่พิสูจน์ว่าแก้ช่องว่างตรวจจับแล้ว"
+      ],
+      [
+        "Repeat the same simulation before correcting record forwarding",
+        "จำลองแบบเดิมซ้ำก่อนแก้การส่งบันทึก",
+        "Repeating without addressing the established delivery failure does not demonstrate improved detection.",
+        "การทำซ้ำโดยไม่แก้การส่งที่ยืนยันว่าล้มเหลวไม่ได้แสดงว่าตรวจจับดีขึ้น"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The observed failure is missing telemetry at the SIEM; repair plus retest addresses and validates that gap.",
+    "assessedDecision": "Apply cause-specific telemetry repair and verify purple-team improvement",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1035,
+    "authoringId": "AT23-1",
+    "family": "AT23",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-023",
+    "cognitive": "D",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Scanning evidence and limits",
+    "knowledgeTarget": "A vulnerability scan identifies potential weaknesses, including vulnerable versions and configurations. Findings require validation and scope-aware prioritization; absence of findings does not prove absence of vulnerabilities.",
+    "misconceptionTarget": "A scanner proves every exploit succeeds; a clean scan proves secure design.",
+    "decision": "Interpret evidence without overclaiming",
+    "ambiguityControl": "Do not equate version inference with demonstrated exploitation. Testing cannot guarantee complete security.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R14"
+    ],
+    "source": "I70; N:744-757",
+    "stem": [
+      "A scheduled scan finds no known-version vulnerabilities in the web servers it checked. The scan did not test application workflows or authenticated business functions. Which statement accurately describes the result?",
+      "Scan ตามรอบไม่พบช่องโหว่จากเวอร์ชันที่รู้จักใน Web server ที่ตรวจ โดยไม่ได้ทดสอบ Workflow หรือฟังก์ชันธุรกิจที่ต้อง Login ข้อใดอธิบายผลได้ถูกต้อง?"
+    ],
+    "choices": [
+      [
+        "The result is limited to the checks performed and does not establish workflow security",
+        "ผลจำกัดตามสิ่งที่ตรวจ และไม่ได้ยืนยันความปลอดภัยของ Workflow",
+        "A clean result within one scan’s scope is not evidence that untested application behavior is secure.",
+        "ผลไม่พบปัญหาภายในขอบเขต Scan หนึ่งไม่ได้พิสูจน์ว่าพฤติกรรมแอปที่ไม่ทดสอบปลอดภัย"
+      ],
+      [
+        "The result establishes that authenticated functions have no security flaws",
+        "ผลยืนยันว่าฟังก์ชันที่ต้อง Login ไม่มีข้อบกพร่องความปลอดภัย",
+        "Those functions were explicitly outside the performed checks.",
+        "ฟังก์ชันเหล่านั้นอยู่นอกสิ่งที่ตรวจตามที่โจทย์ระบุ"
+      ],
+      [
+        "The result proves that the application design resists all relevant threats",
+        "ผลพิสูจน์ว่า Design ของแอปต้านภัยคุกคามที่เกี่ยวข้องทั้งหมด",
+        "Known-version scanning does not comprehensively evaluate design threats or application logic.",
+        "การ Scan เวอร์ชันไม่ได้ประเมินภัยระดับ Design หรือ Logic แอปอย่างครบถ้วน"
+      ],
+      [
+        "The result removes the need to review future vulnerability information",
+        "ผลทำให้ไม่ต้องทบทวนข้อมูลช่องโหว่ในอนาคต",
+        "New vulnerabilities may emerge after the scan, so its result does not eliminate ongoing review.",
+        "ช่องโหว่ใหม่อาจปรากฏหลัง Scan ผลนี้จึงไม่ยกเลิกการทบทวนต่อเนื่อง"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "A clean result within one scan’s scope is not evidence that untested application behavior is secure.",
+    "assessedDecision": "Interpret a negative scan within its actual tested scope",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1036,
+    "authoringId": "AT24-1",
+    "family": "AT24",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-024",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Static and dynamic testing",
+    "knowledgeTarget": "SAST inspects code artifacts without executing the application; DAST interacts with a running application. Both can contribute evidence about overlapping flaw classes.",
+    "misconceptionTarget": "Only one method can find injection; DAST defined by inability to know code.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Select by artifact/runtime access and testing objective, not an assertion that the tester cannot possess source.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R12",
+      "R20"
+    ],
+    "source": "I71-I73; N:761-793",
+    "stem": [
+      "A team analyzes application source code and compiled artifacts without executing the application. Which testing description fits this activity?",
+      "ทีมวิเคราะห์ Source code และ Compiled artifacts โดยไม่รันแอป คำอธิบายการทดสอบใดตรงกับกิจกรรมนี้?"
+    ],
+    "choices": [
+      [
+        "Static Application Security Testing (SAST)",
+        "Static Application Security Testing (SAST)",
+        "Static analysis examines code artifacts without requiring the application to run.",
+        "Static analysis ตรวจ Code artifacts โดยไม่ต้องให้แอปทำงาน"
+      ],
+      [
+        "Dynamic Application Security Testing (DAST)",
+        "Dynamic Application Security Testing (DAST)",
+        "Dynamic testing interacts with a running application rather than inspecting these artifacts without execution.",
+        "Dynamic testing โต้ตอบกับแอปที่กำลังทำงาน แทนการตรวจ Artifacts โดยไม่รัน"
+      ],
+      [
+        "A functional incident-response exercise",
+        "แบบฝึก Incident response เชิงหน้าที่",
+        "That exercise tests response capabilities, not the stated code-analysis method.",
+        "แบบฝึกนั้นทดสอบความสามารถตอบสนอง ไม่ใช่วิธีวิเคราะห์ Code ที่ระบุ"
+      ],
+      [
+        "A physical penetration test",
+        "Physical penetration test",
+        "Physical testing assesses access to facilities or devices, rather than this nonexecuting code review.",
+        "การทดสอบทางกายภาพประเมินการเข้าถึงสถานที่หรืออุปกรณ์ ไม่ใช่การตรวจ Code โดยไม่รัน"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Static analysis examines code artifacts without requiring the application to run.",
+    "assessedDecision": "Differentiate artifact analysis from runtime and other testing activities",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1037,
+    "authoringId": "AT24-2",
+    "family": "AT24",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-024",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Static and dynamic testing",
+    "knowledgeTarget": "SAST inspects code artifacts without executing the application; DAST interacts with a running application. Both can contribute evidence about overlapping flaw classes.",
+    "misconceptionTarget": "Only one method can find injection; DAST defined by inability to know code.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Select by artifact/runtime access and testing objective, not an assertion that the tester cannot possess source.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R12",
+      "R20"
+    ],
+    "source": "I71-I73; N:761-793",
+    "stem": [
+      "A tester must determine whether a deployed application still accepts a session token after logout. The application is available in an authorized test environment. Which activity MOST directly answers this question?",
+      "ผู้ทดสอบต้องตรวจว่าแอปที่ Deploy แล้วยังรับ Session token หลัง Logout หรือไม่ โดยมีแอปในสภาพแวดล้อมทดสอบที่อนุญาต กิจกรรมใดตอบคำถามได้ตรงที่สุด?"
+    ],
+    "choices": [
+      [
+        "Interact with the running application using the token before and after logout",
+        "โต้ตอบกับแอปที่ทำงานโดยใช้ Token ก่อนและหลัง Logout",
+        "This dynamic test observes the actual session behavior the requirement asks about.",
+        "การทดสอบแบบ Dynamic นี้สังเกตพฤติกรรม Session จริงที่ข้อกำหนดต้องการทราบ"
+      ],
+      [
+        "Review a design diagram of the intended logout process",
+        "ตรวจแผนภาพ Design ของกระบวนการ Logout ที่ตั้งใจไว้",
+        "A design description does not establish how the deployed application actually handles that token.",
+        "คำอธิบาย Design ไม่ได้ยืนยันว่าแอปที่ Deploy จัดการ Token จริงอย่างไร"
+      ],
+      [
+        "Scan the server’s software-version inventory for known issues",
+        "Scan รายการเวอร์ชันซอฟต์แวร์ของ Server เพื่อหาปัญหาที่รู้จัก",
+        "Version findings do not directly measure this application’s session invalidation behavior.",
+        "ผลตรวจเวอร์ชันไม่ได้วัดพฤติกรรมยกเลิก Session ของแอปนี้โดยตรง"
+      ],
+      [
+        "Inspect source-code comments describing session expiration",
+        "ตรวจ Comment ใน Source code ที่อธิบาย Session expiration",
+        "Comments state intent and cannot substitute for observing the running application’s result.",
+        "Comment ระบุเจตนาและไม่แทนการสังเกตผลจากแอปที่ทำงานจริง"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "This dynamic test observes the actual session behavior the requirement asks about.",
+    "assessedDecision": "Choose dynamic observation for a concrete deployed-session requirement",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1038,
+    "authoringId": "AT25-1",
+    "family": "AT25",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-025",
+    "cognitive": "E",
+    "difficulty": "intermediate",
+    "stemType": "scenario",
+    "concept": "Threat modeling through change",
+    "knowledgeTarget": "Threat modeling identifies valued assets, potential threats, paths and mitigations in system context. Start early and revisit when designs or assumptions change.",
+    "misconceptionTarget": "One design review guarantees security; scans replace design reasoning.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "No mandatory named method or one-time-only claim. It complements code/runtime testing.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R13"
+    ],
+    "source": "I74; N:797-811",
+    "stem": [
+      "A design change will allow a new external partner to upload documents into an internal workflow. Before choosing additional controls, the team needs to identify new assets, trust boundaries and possible attack paths. Which activity is MOST appropriate?",
+      "การเปลี่ยน Design จะให้คู่ค้าภายนอกรายใหม่ Upload เอกสารเข้ากระบวนงานภายใน ก่อนเลือกมาตรการเพิ่ม ทีมต้องระบุ Assets, Trust boundaries และเส้นทางโจมตีใหม่ กิจกรรมใดเหมาะสมที่สุด?"
+    ],
+    "choices": [
+      [
+        "Revisit the threat model for the changed workflow",
+        "ทบทวน Threat model ของ Workflow ที่เปลี่ยน",
+        "Threat modeling evaluates threats and mitigations in system context and should reflect changed assumptions and boundaries.",
+        "Threat modeling ประเมินภัยและมาตรการในบริบทระบบ จึงต้องสะท้อนสมมติฐานและขอบเขตที่เปลี่ยน"
+      ],
+      [
+        "Run a version-only vulnerability scan of the unchanged servers",
+        "Scan ช่องโหว่เฉพาะเวอร์ชันบน Server ที่ไม่เปลี่ยน",
+        "A version scan does not identify all new design-level paths introduced by the partner workflow.",
+        "การ Scan เวอร์ชันไม่ได้ระบุเส้นทางระดับ Design ใหม่ทั้งหมดที่ Workflow คู่ค้านำเข้ามา"
+      ],
+      [
+        "Review the previous model without considering the new partner",
+        "ทบทวน Model เดิมโดยไม่พิจารณาคู่ค้ารายใหม่",
+        "The new external interaction is precisely the changed assumption that needs analysis.",
+        "การโต้ตอบภายนอกใหม่นี้คือสมมติฐานที่เปลี่ยนและต้องวิเคราะห์"
+      ],
+      [
+        "Select controls from the existing checklist without reviewing the change",
+        "เลือกมาตรการจาก Checklist เดิมโดยไม่ทบทวนการเปลี่ยน",
+        "A checklist can assist later choices, but skipping context analysis does not meet the stated need.",
+        "Checklist ช่วยเลือกภายหลังได้ แต่การข้ามการวิเคราะห์บริบทไม่ตรงความต้องการที่ระบุ"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Threat modeling evaluates threats and mitigations in system context and should reflect changed assumptions and boundaries.",
+    "assessedDecision": "Choose updated design-threat analysis before selecting controls",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1039,
+    "authoringId": "AT26-1",
+    "family": "AT26",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-026",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Physical and social test boundaries",
+    "knowledgeTarget": "Physical testing evaluates authorized attempts to cross access boundaries. Tailgating follows an authorized person; impersonation uses false identity; phishing uses deceptive communication. An event may combine them.",
+    "misconceptionTarget": "A badge stops every follower; impersonation and tailgating cannot coexist.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Ask about a specific action or supplied verification procedure; do not force mutually exclusive categories or call all phishing physical.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R14",
+      "R01"
+    ],
+    "source": "I75-I78; N:819-861",
+    "stem": [
+      "An authorized test includes three actions: (1) sending a deceptive login-link email, (2) following a badged employee through a controlled door, and (3) claiming to be an IT technician to request access. Which mapping is correct?",
+      "การทดสอบที่อนุญาตมีสามการกระทำ คือ (1) ส่งอีเมลลวงพร้อมลิงก์ Login (2) เดินตามพนักงานที่ใช้บัตรผ่านประตูควบคุม (3) อ้างว่าเป็นช่าง IT เพื่อขอเข้าถึง การจับคู่ใดถูกต้อง?"
+    ],
+    "choices": [
+      [
+        "(1) Phishing; (2) tailgating; (3) impersonation",
+        "(1) Phishing (2) Tailgating (3) Impersonation",
+        "The mappings distinguish deceptive communication, following through a physical boundary, and a false identity claim.",
+        "การจับคู่แยกการสื่อสารลวง การตามผ่านขอบเขตกายภาพ และการอ้างตัวตนเท็จ"
+      ],
+      [
+        "(1) Impersonation; (2) phishing; (3) tailgating",
+        "(1) Impersonation (2) Phishing (3) Tailgating",
+        "Following through a door is not phishing, and a false technician claim is not itself following an authorized entrant.",
+        "การตามผ่านประตูไม่ใช่ Phishing และการอ้างเป็นช่างไม่ได้หมายถึงการตามผู้มีสิทธิ์เข้าไป"
+      ],
+      [
+        "(1) Tailgating; (2) impersonation; (3) phishing",
+        "(1) Tailgating (2) Impersonation (3) Phishing",
+        "The email is not physical following; the second action does not describe a false identity claim.",
+        "อีเมลไม่ใช่การเดินตาม และการกระทำที่สองไม่ได้ระบุการอ้างตัวตนเท็จ"
+      ],
+      [
+        "(1) Phishing; (2) impersonation; (3) tailgating",
+        "(1) Phishing (2) Impersonation (3) Tailgating",
+        "The email mapping is right, but the door-following and technician-claim mappings are reversed.",
+        "อีเมลจับคู่ถูก แต่การเดินตามประตูกับการอ้างเป็นช่างจับคู่สลับกัน"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The mappings distinguish deceptive communication, following through a physical boundary, and a false identity claim.",
+    "assessedDecision": "Distinguish three named test techniques without treating their real-world overlap as exclusivity",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1040,
+    "authoringId": "AT26-2",
+    "family": "AT26",
+    "objective": "5.5",
+    "knowledge": "KNOW-D5-026",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Physical and social test boundaries",
+    "knowledgeTarget": "Physical testing evaluates authorized attempts to cross access boundaries. Tailgating follows an authorized person; impersonation uses false identity; phishing uses deceptive communication. An event may combine them.",
+    "misconceptionTarget": "A badge stops every follower; impersonation and tailgating cannot coexist.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Ask about a specific action or supplied verification procedure; do not force mutually exclusive categories or call all phishing physical.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R14",
+      "R01"
+    ],
+    "source": "I75-I78; N:819-861",
+    "stem": [
+      "During a controlled physical-security test, a person claiming to be a technician requests entry to a server room. Procedure requires staff to verify work orders through the established service desk before granting entry. No verification has occurred. What should the employee do?",
+      "ระหว่างการทดสอบ Physical security ที่ควบคุม บุคคลอ้างเป็นช่างขอเข้าห้อง Server ขั้นตอนให้ตรวจ Work order ผ่าน Service desk ที่กำหนดก่อนอนุญาตเข้า และยังไม่ได้ตรวจ พนักงานควรทำอะไร?"
+    ],
+    "choices": [
+      [
+        "Keep entry pending while verifying the work order through the service desk",
+        "รออนุญาตเข้าจนกว่าจะตรวจ Work order ผ่าน Service desk",
+        "The prescribed independent verification must occur before entry; a claimed role does not satisfy it.",
+        "ต้องตรวจยืนยันตามช่องทางอิสระที่กำหนดก่อนเข้า การอ้างบทบาทยังไม่ผ่านเงื่อนไข"
+      ],
+      [
+        "Grant entry while asking the person to email a work order later",
+        "ให้เข้าก่อนแล้วขอให้ส่ง Work order ทางอีเมลภายหลัง",
+        "Later paperwork bypasses the explicit requirement to verify before entry.",
+        "เอกสารภายหลังข้ามข้อกำหนดชัดเจนว่าต้องตรวจก่อนเข้า"
+      ],
+      [
+        "Verify the claim by calling a number supplied only by the visitor",
+        "ตรวจคำอ้างโดยโทรหมายเลขที่ผู้มาติดต่อให้เพียงฝ่ายเดียว",
+        "A visitor-supplied contact does not meet the established service-desk verification route.",
+        "ผู้ติดต่อที่ผู้มาเยือนให้เองไม่ตรงช่องทาง Service desk ที่กำหนดไว้"
+      ],
+      [
+        "Escort the person inside instead of checking the work order",
+        "พาบุคคลเข้าไปแทนการตรวจ Work order",
+        "Escorting does not replace a prerequisite that the procedure explicitly requires before granting access.",
+        "การพาเข้าไม่แทนเงื่อนไขก่อนให้สิทธิ์ซึ่งขั้นตอนกำหนดไว้อย่างชัดเจน"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The prescribed independent verification must occur before entry; a claimed role does not satisfy it.",
+    "assessedDecision": "Apply an established verification prerequisite during an authorized physical test",
+    "status": "DRAFT"
+  }
+]

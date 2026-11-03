@@ -1,0 +1,551 @@
+[
+  {
+    "id": 1021,
+    "authoringId": "AT14-1",
+    "family": "AT14",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-014",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Policy-governed incident data",
+    "knowledgeTarget": "Protect incident records’ confidentiality, integrity and provenance; restrict access to authorized personnel. Collect/retain data under evidence procedures and retention policy; share via designated channels with approved recipients.",
+    "misconceptionTarget": "IR permits unrestricted sharing; routine deletion overrides a hold; public tools can receive raw records.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Apply the policy supplied in the item; respect an explicit preservation hold. Formal forensic chain of custody is not claimed mandatory for every incident.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21",
+      "R22"
+    ],
+    "source": "N:406,414,426,471; supplemented from RS.AN-06/07",
+    "stem": [
+      "An external responder requests an incident log containing employee details. Policy permits sharing only relevant records with approved responders through the secure case portal. The responder is approved. What should the analyst provide?",
+      "ผู้ตอบสนองภายนอกขอ Incident log ที่มีข้อมูลพนักงาน นโยบายให้แชร์เฉพาะบันทึกที่เกี่ยวข้องแก่ผู้ตอบสนองที่อนุมัติผ่าน Secure case portal และผู้ขอนี้ได้รับอนุมัติแล้ว นักวิเคราะห์ควรให้อะไร?"
+    ],
+    "choices": [
+      [
+        "The relevant records through the secure case portal",
+        "บันทึกที่เกี่ยวข้องผ่าน Secure case portal",
+        "This meets the stated recipient, relevance and transfer-channel requirements together.",
+        "การกระทำนี้ตรงทั้งผู้รับที่อนุมัติ ความเกี่ยวข้อง และช่องทางส่งที่นโยบายกำหนด"
+      ],
+      [
+        "The complete archive through the secure case portal",
+        "Archive ทั้งหมดผ่าน Secure case portal",
+        "An approved recipient and channel do not remove the restriction to relevant records.",
+        "ผู้รับและช่องทางที่อนุมัติไม่ได้ยกเลิกข้อจำกัดให้ส่งเฉพาะบันทึกที่เกี่ยวข้อง"
+      ],
+      [
+        "The relevant records through an ordinary personal email account",
+        "บันทึกที่เกี่ยวข้องผ่านบัญชีอีเมลส่วนตัวทั่วไป",
+        "Selecting relevant data does not satisfy the required secure transfer channel.",
+        "การเลือกข้อมูลที่เกี่ยวข้องไม่ได้ทำให้เป็นไปตามช่องทางส่งที่ปลอดภัยตามข้อกำหนด"
+      ],
+      [
+        "A portal login shared with the responder’s entire company",
+        "บัญชีเข้า Portal ที่แชร์ให้ทั้งบริษัทของผู้ตอบสนอง",
+        "Approval of the named responder does not authorize access for the entire company through shared credentials.",
+        "การอนุมัติผู้ตอบสนองรายนั้นไม่ได้ให้สิทธิ์ทั้งบริษัทเข้าถึงด้วยบัญชีร่วม"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "This meets the stated recipient, relevance and transfer-channel requirements together.",
+    "assessedDecision": "Apply recipient, data-minimization and secure-channel constraints together",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1022,
+    "authoringId": "AT14-2",
+    "family": "AT14",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-014",
+    "cognitive": "E",
+    "difficulty": "intermediate",
+    "stemType": "scenario",
+    "concept": "Policy-governed incident data",
+    "knowledgeTarget": "Protect incident records’ confidentiality, integrity and provenance; restrict access to authorized personnel. Collect/retain data under evidence procedures and retention policy; share via designated channels with approved recipients.",
+    "misconceptionTarget": "IR permits unrestricted sharing; routine deletion overrides a hold; public tools can receive raw records.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "Apply the policy supplied in the item; respect an explicit preservation hold. Formal forensic chain of custody is not claimed mandatory for every incident.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21",
+      "R22"
+    ],
+    "source": "N:406,414,426,471; supplemented from RS.AN-06/07",
+    "stem": [
+      "Incident records reach their routine deletion date. A documented preservation hold requires those records to remain available until the incident lead releases it. The hold is still active. What is the BEST action?",
+      "Incident records ถึงวันที่ลบตามรอบ แต่มี Preservation hold ที่บันทึกไว้ให้เก็บจนกว่า Incident lead จะยกเลิก และ Hold ยังมีผลอยู่ ควรทำอะไรจึงเหมาะสมที่สุด?"
+    ],
+    "choices": [
+      [
+        "Suspend routine deletion for the held records and preserve protected access",
+        "ระงับการลบตามรอบสำหรับบันทึกที่ถูก Hold และคงการเข้าถึงอย่างมีการป้องกัน",
+        "The explicit hold overrides routine disposal for these records while their protection requirements continue.",
+        "Hold ที่ระบุยกเว้นการกำจัดตามรอบสำหรับบันทึกเหล่านี้ โดยยังต้องป้องกันข้อมูลต่อ"
+      ],
+      [
+        "Delete the records because the standard retention date has arrived",
+        "ลบบันทึกเพราะถึงวันครบกำหนดเก็บปกติแล้ว",
+        "The active preservation instruction is a stated exception to the routine deletion schedule.",
+        "คำสั่งเก็บรักษาที่ยังมีผลเป็นข้อยกเว้นที่โจทย์ระบุสำหรับรอบลบปกติ"
+      ],
+      [
+        "Keep an unprotected copy and delete the controlled case records",
+        "เก็บสำเนาที่ไม่ป้องกันแล้วลบบันทึกใน Case ที่ควบคุมไว้",
+        "An unprotected copy does not maintain the required safeguarded evidence records and provenance.",
+        "สำเนาที่ไม่ป้องกันไม่รักษาบันทึกหลักฐานและที่มาภายใต้การควบคุมที่ต้องการ"
+      ],
+      [
+        "Remove identifiers from the originals and then apply routine deletion",
+        "ลบข้อมูลระบุตัวจากต้นฉบับแล้วลบตามรอบ",
+        "Altering and deleting the held originals would defeat their required preservation.",
+        "การแก้ไขแล้วลบต้นฉบับที่ถูก Hold ขัดกับการเก็บรักษาที่กำหนด"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The explicit hold overrides routine disposal for these records while their protection requirements continue.",
+    "assessedDecision": "Follow an explicit preservation hold without inventing a legal retention period",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1023,
+    "authoringId": "AT15-1",
+    "family": "AT15",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-015",
+    "cognitive": "E",
+    "difficulty": "intermediate",
+    "stemType": "scenario",
+    "concept": "Authorized containment",
+    "knowledgeTarget": "Containment limits ongoing harm or spread. An authorized responder may isolate a system or restrict a compromised session under the playbook, balancing safety, evidence and business constraints.",
+    "misconceptionTarget": "Wait for perfect attribution during authorized urgent containment; destroy artifacts to contain.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "Specify confirmed conditions, granted authority and safety constraints. No universal report/isolate/preserve-first rule.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21"
+    ],
+    "source": "I46,I48; N:410-426",
+    "stem": [
+      "An authorized responder confirms that malware is spreading from a workstation. The playbook permits network isolation, and the workstation has no safety-critical role. The immediate goal is to stop further spread while retaining the device for investigation. Which action BEST meets that goal?",
+      "ผู้ตอบสนองที่มีอำนาจยืนยันว่า Malware กำลังแพร่จาก Workstation โดย Playbook อนุญาตให้แยกเครือข่ายและเครื่องนี้ไม่เกี่ยวกับความปลอดภัยต่อชีวิต เป้าหมายทันทีคือหยุดการแพร่โดยเก็บเครื่องไว้ตรวจสอบ การกระทำใดเหมาะสมที่สุด?"
+    ],
+    "choices": [
+      [
+        "Isolate the workstation using the approved containment mechanism",
+        "แยก Workstation ด้วยกลไก Containment ที่อนุมัติ",
+        "Authorized network isolation limits spread while preserving the device for the planned investigation.",
+        "การแยกเครือข่ายที่มีอำนาจอนุญาตจำกัดการแพร่โดยยังเก็บอุปกรณ์ไว้ตรวจสอบ"
+      ],
+      [
+        "Restore the workstation’s business files before restricting its network",
+        "กู้ไฟล์งานของเครื่องก่อนจำกัดเครือข่าย",
+        "Restoration does not first address the confirmed ongoing network spread described in this case.",
+        "การกู้ไฟล์ยังไม่จัดการการแพร่ทางเครือข่ายที่ยืนยันว่ากำลังเกิดในกรณีนี้"
+      ],
+      [
+        "Delete suspicious files while leaving network connections active",
+        "ลบไฟล์น่าสงสัยโดยปล่อยการเชื่อมต่อเครือข่ายไว้",
+        "Partial file removal does not reliably limit the active spread and may alter investigation artifacts.",
+        "การลบไฟล์บางส่วนไม่จำกัดการแพร่ที่กำลังเกิดอย่างน่าเชื่อถือและอาจเปลี่ยนหลักฐาน"
+      ],
+      [
+        "Continue observing until the attacker’s identity is established",
+        "สังเกตต่อจนกว่าจะระบุตัวผู้โจมตีได้",
+        "Attribution is not a prerequisite for the explicitly authorized containment of confirmed spread.",
+        "การระบุตัวผู้โจมตีไม่ใช่เงื่อนไขก่อน Containment ที่ได้รับอนุญาตเมื่อยืนยันการแพร่แล้ว"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Authorized network isolation limits spread while preserving the device for the planned investigation.",
+    "assessedDecision": "Choose bounded authorized containment under an explicit immediate objective",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1024,
+    "authoringId": "AT16-1",
+    "family": "AT16",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-016",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Eradication, recovery and learning",
+    "knowledgeTarget": "Eradication addresses malicious components and causes. Recovery restores verified safe operation against recovery criteria; lessons learned feed improvements into controls, plans and training.",
+    "misconceptionTarget": "Restoration fixes every cause; review replaces remediation.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Restoring a copy is not proof persistence was removed. Stage labels are teaching aids, not a mandated NIST six-step taxonomy.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21"
+    ],
+    "source": "N:428-450; I48,I49",
+    "stem": [
+      "Responders have removed a backdoor and corrected its entry path. They now rebuild the affected service from a clean image, validate it, and return it to approved use. Which response purpose do these current activities primarily serve?",
+      "ทีมตอบสนองกำจัด Backdoor และแก้ช่องทางเข้าแล้ว ขณะนี้สร้างบริการใหม่จาก Clean image ตรวจยืนยัน และคืนให้ใช้งานตามที่อนุมัติ กิจกรรมปัจจุบันมีเป้าหมายหลักใด?"
+    ],
+    "choices": [
+      [
+        "Recovery of safe service operation",
+        "Recovery เพื่อคืนการทำงานของบริการอย่างปลอดภัย",
+        "Rebuilding, validating and returning service to use address safe restoration after the malicious cause was removed.",
+        "การสร้างใหม่ ตรวจผล และคืนบริการมุ่งฟื้นการทำงานอย่างปลอดภัยหลังนำสาเหตุอันตรายออกแล้ว"
+      ],
+      [
+        "Containment of the initial spread",
+        "Containment เพื่อจำกัดการแพร่เริ่มต้น",
+        "Containment limits ongoing impact; the described current work is restoring approved operation.",
+        "Containment จำกัดผลกระทบที่กำลังเกิด แต่งานปัจจุบันคือคืนการทำงานที่อนุมัติ"
+      ],
+      [
+        "Eradication of the identified backdoor",
+        "Eradication เพื่อกำจัด Backdoor ที่ระบุ",
+        "The stem says removal and entry-path correction are already completed, rather than the current restoration task.",
+        "โจทย์ระบุว่ากำจัดและแก้ทางเข้าแล้ว ไม่ใช่งานคืนบริการที่กำลังทำ"
+      ],
+      [
+        "Post-incident review of response performance",
+        "Post-incident review เพื่อทบทวนผลการตอบสนอง",
+        "Review assesses lessons and improvements; rebuilding and returning service are operational restoration activities.",
+        "Review ประเมินบทเรียนและสิ่งที่ควรปรับ ส่วนการสร้างใหม่และคืนบริการเป็นการฟื้นการทำงาน"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Rebuilding, validating and returning service to use address safe restoration after the malicious cause was removed.",
+    "assessedDecision": "Differentiate restoration from already-completed eradication and later review",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1025,
+    "authoringId": "AT17-1",
+    "family": "AT17",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-017",
+    "cognitive": "B",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Response exercises",
+    "knowledgeTarget": "A tabletop discusses a simulated situation to test roles/decisions. Functional technical tests exercise actual capabilities in a controlled scope, such as isolating a test endpoint or routing an escalation.",
+    "misconceptionTarget": "Successful discussion proves technical function; written plan guarantees readiness.",
+    "decision": "Differentiate the concepts under the given conditions",
+    "ambiguityControl": "Match the exercise to the capability; no changes to live systems are implied by discussion alone.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21",
+      "R14"
+    ],
+    "source": "I49-I51; N:491-523",
+    "stem": [
+      "An organization wants to check whether incident leaders agree on notification roles. Participants will discuss a simulated breach without operating technical controls. Which exercise best fits this purpose?",
+      "องค์กรต้องการตรวจว่าผู้นำตอบสนองเข้าใจบทบาทการแจ้งเหตุสอดคล้องกัน โดยจะอภิปรายเหตุจำลองและไม่สั่งงานมาตรการทางเทคนิค แบบฝึกใดตรงวัตถุประสงค์?"
+    ],
+    "choices": [
+      [
+        "A tabletop exercise of the notification decisions",
+        "Tabletop exercise เพื่ออภิปรายการตัดสินใจแจ้งเหตุ",
+        "A discussion-based tabletop directly tests understanding of roles and coordination in a simulated situation.",
+        "Tabletop ที่เน้นอภิปรายตรวจความเข้าใจบทบาทและการประสานงานในสถานการณ์จำลองได้ตรง"
+      ],
+      [
+        "A functional test of network-isolation controls",
+        "Functional test ของมาตรการแยกเครือข่าย",
+        "That test operates technical controls, while this objective concerns discussion of notification responsibilities.",
+        "การทดสอบนั้นสั่งงานมาตรการทางเทคนิค แต่เป้าหมายนี้คืออภิปรายความรับผิดชอบการแจ้งเหตุ"
+      ],
+      [
+        "An application scan for known software vulnerabilities",
+        "Scan แอปเพื่อหาช่องโหว่ซอฟต์แวร์ที่รู้จัก",
+        "A vulnerability scan does not establish whether incident leaders understand notification roles.",
+        "Vulnerability scan ไม่ได้ยืนยันว่าผู้นำตอบสนองเข้าใจบทบาทการแจ้งเหตุ"
+      ],
+      [
+        "A red-team attempt to enter a restricted facility",
+        "Red-team test เพื่อพยายามเข้าพื้นที่จำกัด",
+        "An adversarial access test evaluates different controls and is unnecessary for the specified discussion goal.",
+        "การทดสอบเข้าถึงแบบผู้โจมตีประเมินคนละมาตรการและไม่จำเป็นต่อเป้าหมายการอภิปราย"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "A discussion-based tabletop directly tests understanding of roles and coordination in a simulated situation.",
+    "assessedDecision": "Select a discussion exercise for role and notification agreement",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1026,
+    "authoringId": "AT17-2",
+    "family": "AT17",
+    "objective": "5.3",
+    "knowledge": "KNOW-D5-017",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Response exercises",
+    "knowledgeTarget": "A tabletop discusses a simulated situation to test roles/decisions. Functional technical tests exercise actual capabilities in a controlled scope, such as isolating a test endpoint or routing an escalation.",
+    "misconceptionTarget": "Successful discussion proves technical function; written plan guarantees readiness.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Match the exercise to the capability; no changes to live systems are implied by discussion alone.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R21",
+      "R14"
+    ],
+    "source": "I49-I51; N:491-523",
+    "stem": [
+      "A tabletop reveals uncertainty about whether the on-call team can use the isolation tool. A controlled exercise is authorized on a lab endpoint. Which result would demonstrate the missing technical capability rather than repeat the discussion?",
+      "Tabletop พบว่ายังไม่แน่ใจว่าทีม On-call ใช้เครื่องมือแยกเครื่องได้หรือไม่ จึงอนุมัติแบบฝึกที่ควบคุมบน Lab endpoint ผลใดแสดงความสามารถทางเทคนิคที่ขาด แทนที่จะอภิปรายซ้ำ?"
+    ],
+    "choices": [
+      [
+        "The on-call team operates the tool and confirms the lab endpoint is isolated",
+        "ทีม On-call สั่งเครื่องมือและตรวจยืนยันว่า Lab endpoint ถูกแยกแล้ว",
+        "Performing and verifying the authorized action provides functional evidence of the team’s tool capability.",
+        "การลงมือและตรวจผลการกระทำที่อนุมัติให้หลักฐานเชิงหน้าที่ว่าทีมใช้เครื่องมือได้"
+      ],
+      [
+        "The team explains which isolation button it would select",
+        "ทีมอธิบายว่าจะเลือกปุ่มแยกเครื่องปุ่มใด",
+        "Describing an intended action still tests discussion rather than actual use of the tool.",
+        "การอธิบายสิ่งที่จะทำยังทดสอบการอภิปราย ไม่ใช่การใช้เครื่องมือจริง"
+      ],
+      [
+        "The incident lead signs the written isolation procedure",
+        "Incident lead ลงนามในขั้นตอนแยกเครื่องที่เขียนไว้",
+        "Approval of a procedure does not demonstrate that the on-call team can execute it successfully.",
+        "การอนุมัติขั้นตอนไม่ได้แสดงว่าทีม On-call ปฏิบัติได้สำเร็จ"
+      ],
+      [
+        "The team records that the isolation software license is current",
+        "ทีมบันทึกว่า License ซอฟต์แวร์แยกเครื่องยังใช้ได้",
+        "A current license is not evidence that the staff can operate the capability or verify its effect.",
+        "License ที่ยังใช้ได้ไม่ใช่หลักฐานว่าบุคลากรใช้ความสามารถนั้นหรือยืนยันผลได้"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Performing and verifying the authorized action provides functional evidence of the team’s tool capability.",
+    "assessedDecision": "Require executed and verified capability evidence after a tabletop gap",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1027,
+    "authoringId": "AT18-1",
+    "family": "AT18",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-018",
+    "cognitive": "C",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Asset lifecycle accountability",
+    "knowledgeTarget": "Protect assets through planning, acquisition, deployment, maintenance, monitoring and secure retirement. Inventory and ownership support these activities; retirement from service is distinct from sanitizing/disposal.",
+    "misconceptionTarget": "Purchase inventory covers lifecycle; powered off means safe disposal.",
+    "decision": "Apply the governing rule to stated facts",
+    "ambiguityControl": "Illustrative cycle labels/counts vary; final storage handling must be verified before release.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R22",
+      "R11",
+      "R03"
+    ],
+    "source": "I53,I54; N:531-559",
+    "stem": [
+      "A laptop is being retired. Its owner and serial number are recorded, but the storage still contains company data. The disposal procedure requires verified sanitization before transfer. What should the asset team do before marking the transfer complete?",
+      "กำลังปลดระวาง Laptop ซึ่งบันทึกเจ้าของและ Serial number แล้ว แต่สื่อยังมีข้อมูลบริษัท ขั้นตอนกำจัดกำหนดให้ Sanitization ที่ตรวจผลแล้วก่อนส่งต่อ ทีมทรัพย์สินควรทำอะไรก่อนระบุว่าส่งต่อเสร็จ?"
+    ],
+    "choices": [
+      [
+        "Complete and record the required sanitization before releasing the laptop",
+        "ทำ Sanitization ตามข้อกำหนดและบันทึกผลก่อนส่งมอบ Laptop",
+        "Lifecycle closure must include the required data-handling exit condition, not only an inventory record.",
+        "การปิดวงจรทรัพย์สินต้องรวมเงื่อนไขจัดการข้อมูลก่อนออก ไม่ใช่เพียงบันทึก Inventory"
+      ],
+      [
+        "Remove the laptop from inventory because its owner is already recorded",
+        "ลบ Laptop จาก Inventory เพราะบันทึกเจ้าของไว้แล้ว",
+        "Removing the record does not satisfy the outstanding sanitization condition before transfer.",
+        "การลบรายการไม่ได้ทำให้ผ่านเงื่อนไข Sanitization ที่ยังไม่เสร็จก่อนส่งต่อ"
+      ],
+      [
+        "Label the laptop Retired and transfer it with its current storage",
+        "ติดป้าย Retired แล้วส่งต่อพร้อมสื่อในสภาพปัจจุบัน",
+        "A retirement label identifies status but does not prevent recovery of the company data.",
+        "ป้ายปลดระวางบอกสถานะ แต่ไม่ป้องกันการกู้ข้อมูลบริษัท"
+      ],
+      [
+        "Disable the former owner’s login and record the transfer as complete",
+        "ปิด Login ของเจ้าของเดิมแล้วระบุว่าการส่งต่อเสร็จแล้ว",
+        "Disabling an account does not sanitize data remaining on the transferred storage.",
+        "การปิดบัญชีไม่ได้ Sanitization ข้อมูลที่ยังเหลือบนสื่อที่ส่งต่อ"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Lifecycle closure must include the required data-handling exit condition, not only an inventory record.",
+    "assessedDecision": "Close an asset lifecycle only after the specified data exit condition",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1028,
+    "authoringId": "AT19-1",
+    "family": "AT19",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-019",
+    "cognitive": "D",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Unsupported assets and residual risk",
+    "knowledgeTarget": "If the vendor no longer supplies security fixes, new vulnerabilities may remain unpatched. If immediate replacement is infeasible, documented restricted access/segmentation/monitoring can reduce exposure while migration proceeds.",
+    "misconceptionTarget": "Working device has no lifecycle risk; isolation makes unsupported software supported.",
+    "decision": "Interpret evidence without overclaiming",
+    "ambiguityControl": "Use stated support facts rather than product-name assumptions. Temporary controls neither restore vendor support nor remove the flaw.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R11",
+      "R16"
+    ],
+    "source": "I55,I56; N:567-587",
+    "stem": [
+      "A vendor states that a server platform will receive no further security fixes after its support date. The server still runs its application normally. Which security conclusion is supported?",
+      "ผู้ผลิตระบุว่าจะไม่มี Security fixes สำหรับแพลตฟอร์ม Server หลังวันสิ้นสุด Support แม้ Server ยังรันแอปตามปกติ ข้อสรุปด้านความปลอดภัยใดมีหลักฐานรองรับ?"
+    ],
+    "choices": [
+      [
+        "New vulnerabilities may remain without vendor fixes despite continued operation",
+        "ช่องโหว่ใหม่อาจไม่มี Fix จากผู้ผลิตแม้ระบบยังทำงานได้",
+        "Functional availability and ongoing vendor remediation are different properties; continued operation does not establish patch support.",
+        "ความสามารถทำงานกับการแก้ไขจากผู้ผลิตเป็นคนละเรื่อง การยังทำงานไม่ได้ยืนยันการสนับสนุน Patch"
+      ],
+      [
+        "The absence of current outages shows that lifecycle risk is negligible",
+        "การไม่เกิด Outage ตอนนี้แสดงว่าความเสี่ยงวงจรชีวิตต่ำมาก",
+        "Current uptime does not address future vulnerabilities that the vendor will not fix.",
+        "การทำงานต่อเนื่องปัจจุบันไม่จัดการช่องโหว่ในอนาคตที่ผู้ผลิตไม่แก้"
+      ],
+      [
+        "The vendor statement proves that the server is already compromised",
+        "คำประกาศผู้ผลิตพิสูจน์ว่า Server ถูกยึดครองแล้ว",
+        "Loss of support increases exposure but is not evidence that exploitation has occurred.",
+        "การไม่มี Support เพิ่มความเสี่ยง แต่ไม่ใช่หลักฐานว่าเกิด Exploitation แล้ว"
+      ],
+      [
+        "Application compatibility confirms that security updates will continue",
+        "แอปยังเข้ากันได้จึงยืนยันว่าจะมี Security updates ต่อ",
+        "Application function does not override the vendor’s explicit end-of-fixes statement.",
+        "การทำงานของแอปไม่เปลี่ยนคำประกาศชัดเจนของผู้ผลิตว่าจะหยุด Fix"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Functional availability and ongoing vendor remediation are different properties; continued operation does not establish patch support.",
+    "assessedDecision": "Separate continued operation, support status and evidence of compromise",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1029,
+    "authoringId": "AT19-2",
+    "family": "AT19",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-019",
+    "cognitive": "E",
+    "difficulty": "intermediate",
+    "stemType": "scenario",
+    "concept": "Unsupported assets and residual risk",
+    "knowledgeTarget": "If the vendor no longer supplies security fixes, new vulnerabilities may remain unpatched. If immediate replacement is infeasible, documented restricted access/segmentation/monitoring can reduce exposure while migration proceeds.",
+    "misconceptionTarget": "Working device has no lifecycle risk; isolation makes unsupported software supported.",
+    "decision": "Select the authorized action meeting all constraints",
+    "ambiguityControl": "Use stated support facts rather than product-name assumptions. Temporary controls neither restore vendor support nor remove the flaw.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R11",
+      "R16"
+    ],
+    "source": "I55,I56; N:567-587",
+    "stem": [
+      "An unsupported service cannot be replaced this month. It must remain reachable only by two named application servers. The team needs interim exposure reduction while an approved migration proceeds. Which plan BEST meets these constraints?",
+      "บริการที่หมด Support ยังเปลี่ยนไม่ได้ในเดือนนี้ และต้องเข้าถึงได้เฉพาะ Application server สองเครื่องที่ระบุ ทีมต้องลด Exposure ระหว่างดำเนินแผนย้ายที่อนุมัติ แผนใดเหมาะสมที่สุด?"
+    ],
+    "choices": [
+      [
+        "Permit only the required server paths, monitor activity, and track migration",
+        "อนุญาตเฉพาะเส้นทางจาก Server ที่จำเป็น เฝ้าติดตาม และติดตามแผนย้าย",
+        "Restricted connectivity reduces exposure while maintaining the required service and an accountable path to replacement.",
+        "การจำกัดการเชื่อมต่อลด Exposure โดยยังให้บริการที่จำเป็นและมีแผนทดแทนที่ติดตามได้"
+      ],
+      [
+        "Retain current connectivity and increase backup frequency",
+        "คงการเชื่อมต่อเดิมและเพิ่มความถี่ Backup",
+        "More backups can support recovery, but do not restrict exposure to the two permitted servers.",
+        "Backup เพิ่มช่วย Recovery แต่ไม่ได้จำกัด Exposure ให้เหลือ Server สองเครื่องตามข้อกำหนด"
+      ],
+      [
+        "Keep broad connectivity and rely on reviewing alerts each morning",
+        "คงการเชื่อมต่อกว้างแล้วอาศัยทบทวน Alert ทุกเช้า",
+        "Monitoring alone leaves the unnecessary access paths available despite the stated restriction.",
+        "Monitoring อย่างเดียวยังเปิดทางเข้าที่ไม่จำเป็นทั้งที่ระบุให้จำกัดไว้"
+      ],
+      [
+        "Move the service to another segment without changing access rules",
+        "ย้ายบริการไปอีก Segment โดยไม่เปลี่ยน Access rules",
+        "A different segment alone does not enforce the named-server restriction without effective access controls.",
+        "การอยู่คนละ Segment อย่างเดียวไม่บังคับข้อจำกัด Server ที่ระบุหากไม่มี Access control ที่มีผล"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "Restricted connectivity reduces exposure while maintaining the required service and an accountable path to replacement.",
+    "assessedDecision": "Select temporary compensating controls that enforce a concrete access constraint",
+    "status": "DRAFT"
+  },
+  {
+    "id": 1030,
+    "authoringId": "AT20-1",
+    "family": "AT20",
+    "objective": "5.4",
+    "knowledge": "KNOW-D5-020",
+    "cognitive": "D",
+    "difficulty": "applied",
+    "stemType": "scenario",
+    "concept": "Approved state versus observed drift",
+    "knowledgeTarget": "Configuration management maintains approved system state and evaluates deviations. A baseline provides the reference; an approved exception or unrecorded legitimate change must be considered before declaring malice.",
+    "misconceptionTarget": "Every deviation is malicious; change request alone updates actual settings.",
+    "decision": "Interpret evidence without overclaiming",
+    "ambiguityControl": "NIST800-128 is general system configuration guidance, not just a device benchmark. Reconcile evidence with authorization.",
+    "duplicateRisk": "Compare same concept and decision across legacy583, updated119 and candidate40; retain only distinct value",
+    "references": [
+      "R11",
+      "R22"
+    ],
+    "source": "I57,I58,I64; N:595-625",
+    "stem": [
+      "A configuration audit finds a server setting differs from the standard baseline. The change register contains a current, approved exception for that exact server and setting. What is the BEST interpretation?",
+      "Configuration audit พบค่าตั้ง Server ต่างจาก Baseline ปกติ แต่ Change register มีข้อยกเว้นที่อนุมัติและยังมีผลสำหรับ Server และค่านั้นพอดี ควรตีความอย่างไรจึงเหมาะสมที่สุด?"
+    ],
+    "choices": [
+      [
+        "Assess the setting against the approved exception as well as the baseline",
+        "ประเมินค่าตั้งเทียบข้อยกเว้นที่อนุมัติร่วมกับ Baseline",
+        "The exception is relevant authorization evidence; difference from the standard alone does not establish an unauthorized change.",
+        "ข้อยกเว้นเป็นหลักฐานการอนุมัติที่เกี่ยวข้อง ความต่างจากมาตรฐานอย่างเดียวไม่ยืนยันว่าเปลี่ยนโดยไม่มีสิทธิ์"
+      ],
+      [
+        "Treat every baseline difference as an unauthorized change",
+        "ถือว่าความต่างจาก Baseline ทุกกรณีเป็นการเปลี่ยนที่ไม่มีสิทธิ์",
+        "This ignores the explicitly current and applicable approved exception.",
+        "ข้อนี้ละเลยข้อยกเว้นที่อนุมัติซึ่งโจทย์ระบุว่ายังใช้ได้และตรงกรณี"
+      ],
+      [
+        "Replace the organization-wide baseline with this server’s setting",
+        "แทน Baseline ทั้งองค์กรด้วยค่าตั้งของ Server นี้",
+        "A server-specific exception does not authorize changing the baseline for all systems.",
+        "ข้อยกเว้นเฉพาะ Server ไม่ได้อนุญาตให้เปลี่ยน Baseline สำหรับทุกระบบ"
+      ],
+      [
+        "Remove the server from future configuration audits",
+        "นำ Server ออกจากการตรวจ Configuration ในอนาคต",
+        "An exception defines what to assess; it does not remove the need to monitor the approved state.",
+        "ข้อยกเว้นกำหนดสิ่งที่ต้องประเมิน ไม่ได้ยกเลิกความจำเป็นในการติดตามสถานะที่อนุมัติ"
+      ]
+    ],
+    "correct": 0,
+    "takeaway": "The exception is relevant authorization evidence; difference from the standard alone does not establish an unauthorized change.",
+    "assessedDecision": "Interpret a deviation using valid exception evidence rather than automatic malice",
+    "status": "DRAFT"
+  }
+]

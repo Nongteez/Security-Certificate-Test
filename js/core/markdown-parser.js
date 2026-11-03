@@ -54,6 +54,16 @@ export function parseInline(text) {
     return placeholder;
   });
 
+  // Numeric superscripts in authored prose are a bounded inline notation.
+  // Code spans are already protected; tags with attributes or nonnumeric bodies
+  // continue through ordinary bracket escaping rather than HTML passthrough.
+  const superscripts = [];
+  html = html.replace(/<sup>([0-9]+)<\/sup>/g, (match, exponent) => {
+    const placeholder = `__NUMERIC_SUP_${superscripts.length}__`;
+    superscripts.push(`<sup>${exponent}</sup>`);
+    return placeholder;
+  });
+
   // Protect all valid structural and inline HTML tags so they are NEVER corrupted by bracket escaping
   const safeTags = [];
   html = html.replace(/<\/?([a-zA-Z0-9\-]+)(?:\s+[^>]*)?>/gi, (tag, tagName) => {
@@ -82,6 +92,11 @@ export function parseInline(text) {
     return renderInlineMath(math);
   });
 
+  // Math inline: \(...\) standard LaTeX inline notation
+  html = html.replace(/\\\(([\s\S]+?)\\\)/g, (match, math) => {
+    return renderInlineMath(math);
+  });
+
   // Restore currencies
   currencies.forEach((c, idx) => {
     html = html.replace(`__CURRENCY_${idx}__`, c);
@@ -93,8 +108,8 @@ export function parseInline(text) {
   // Bold & Italic: ***text***
   html = html.replace(/\*\*\*([^*]+)\*\*\*/g, '<strong><em>$1</em></strong>');
 
-  // Bold: **text**
-  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  // Bold: **text** (supports nested italic *text*)
+  html = html.replace(/\*\*([^\n]+?)\*\*/g, '<strong>$1</strong>');
 
   // Italic: *text* (ensure not part of math or list)
   html = html.replace(/(^|[^*])\*([^*]+)\*/g, '$1<em>$2</em>');
@@ -113,6 +128,10 @@ export function parseInline(text) {
   // Restore safe inline tags
   safeTags.forEach((tag, idx) => {
     html = html.replace(`__SAFE_TAG_${idx}__`, tag);
+  });
+
+  superscripts.forEach((superscript, idx) => {
+    html = html.replace(`__NUMERIC_SUP_${idx}__`, superscript);
   });
 
   // Restore code spans
@@ -468,7 +487,12 @@ export function parseMarkdown(markdown) {
           : 'reading-table';
         const dataAttr = isGrcFrameworksTable ? ' data-table="grc-frameworks"' : '';
 
-        let tableHtml = `<div class="${wrapperClass}"${dataAttr}><table class="${tableClass}"${dataAttr}><thead><tr>`;
+        // Name the native scroll region from its visible column headers. Keep
+        // inline formatting out of the attribute and escape literal quotes/&.
+        const tableLabel = headerCells.map(h => h.replace(/<[^>]*>/g, '')).join(' / ')
+          .replace(/&(?!(?:#\d+|#x[\da-f]+|[a-z]+);)/gi, '&amp;')
+          .replace(/"/g, '&quot;');
+        let tableHtml = `<div class="${wrapperClass}"${dataAttr} role="region" tabindex="0" aria-label="${tableLabel}"><table class="${tableClass}"${dataAttr}><thead><tr>`;
         headerCells.forEach((th, thIdx) => {
           const colClass = (isGrcFrameworksTable && thIdx === 3) ? ' class="reading-col-exam-keyword"' : '';
           tableHtml += `<th scope="col"${colClass}>${th}</th>`;

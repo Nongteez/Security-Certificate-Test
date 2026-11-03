@@ -48,7 +48,7 @@ test('ISC2 CC 2026 — Reading Notes Domain 3 Verification Suite', async (t) => 
     assert.ok(d3.review, 'Domain 3 in READING_DOMAINS must have review section');
 
     assert.equal(d4?.published, true, 'Domain 4 must now be published');
-    assert.equal(d5?.published, false, 'Domain 5 must remain unpublished');
+    assert.equal(d5?.published, true, 'Domain 5 must now be published');
   });
 
   await t.test('3. Reading Loader Asynchronous & Synchronous Cache', async () => {

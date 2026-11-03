@@ -1,0 +1,37 @@
+✔ 1. Domain 3 vocabulary file exists and conforms to schema (3.1186ms)
+✔ 2. Unique IDs, valid format, and zero collisions across all domains (6.6321ms)
+✔ 3. Acronym completeness and canonical expansions (2.7629ms)
+✔ 4. Bilingual English–Thai parity and character integrity (2.009ms)
+✔ 5. Domain 3 Objective mapping and balanced coverage (3.8899ms)
+✔ 6. Essential IAM concept comparisons and confusing terms are covered (2.2716ms)
+✔ 7. Academic QA corrections and boundaries are respected (2.1101ms)
+✖ 8. Vocabulary Loader correctly loads Domain 1, 2, 3 and All domains (11.5155ms)
+✔ 9. Vocabulary registry count matches all loaded domains (0.2495ms)
+✔ 10. Existing question banks and D1/D2 vocabulary remain intact as later domains are added (15.3026ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 9
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 56.1875
+
+✖ failing tests:
+
+test at tools\verify-vocabulary-domain3.mjs:194:1
+✖ 8. Vocabulary Loader correctly loads Domain 1, 2, 3 and All domains (11.5155ms)
+  AssertionError [ERR_ASSERTION]: Combined total includes the preserved D1-D3 pool and D4
+  
+  438 !== 403
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-vocabulary-domain3.mjs:211:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 438,
+    expected: 403,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

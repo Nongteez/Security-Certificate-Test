@@ -1,0 +1,24 @@
+<h3 id="topic-3-2-mac">3.2.5 Mandatory Access Control (MAC): การควบคุมแบบบังคับตามป้ายกำกับ</h3>
+<p><strong>MAC (Mandatory Access Control)</strong> เป็นโมเดลการควบคุมการเข้าถึงที่บังคับใช้นโยบายส่วนกลาง โดยควบคุมจาก <strong>"นโยบายของระบบส่วนกลาง" (Central Authority &amp; System Policy)</strong>:</p>
+<section class="reading-concept-unit">
+<h4>ผู้มีอำนาจตัดสินใจ:</h4>
+<p>นโยบายความมั่นคงปลอดภัยส่วนกลางของระบบ (Central Authority) ผู้ใช้หรือเจ้าของไฟล์ไม่มีสิทธิ์เปลี่ยนแปลงการตั้งค่าได้เอง</p>
+</section>
+<section class="reading-concept-unit">
+<h4>กลไกการทำงาน:</h4>
+<p>บังคับใช้ผ่านการเปรียบเทียบระหว่าง:</p>
+<ol><li><strong>Security Classification / Label (ป้ายกำกับระดับความลับ):</strong> ติดอยู่กับทรัพยากร/วัตถุ (Object) เช่น Unclassified, Confidential, Secret, Top Secret</li><li><strong>Security Clearance (ระดับความไว้วางใจ):</strong> มอบให้แก่ตัวผู้ใช้งาน (Subject) ผ่านการตรวจสอบประวัติอย่างละเอียด</li></ol>
+<blockquote class="reading-blockquote"><p><strong>ข้อสังเกตสำคัญสำหรับข้อสอบ (Exam Core Distinction):</strong> การมีระดับความไว้วางใจเพียงอย่างเดียว (<strong>Security Clearance alone</strong>) ไม่ได้ให้อำนาจเข้าถึงข้อมูลลับโดยอัตโนมัติ ผู้ใช้ต้องมี <strong>"ความจำเป็นในการรับรู้" (Need-to-Know)</strong> ที่ถูกต้องชอบธรรมและผ่านเกณฑ์นโยบายการควบคุมการเข้าถึงด้วยเสมอ (Security clearance alone does not automatically authorize access; the user must also have a legitimate Need-to-Know and satisfy applicable access-control policy) ซึ่งเป็นการนำหลัก Least Privilege มาบังคับใช้ร่วมกับ MAC</p></blockquote>
+</section>
+<section class="reading-concept-unit">
+<h4>ข้อดี:</h4>
+<p>ช่วยจำกัดการเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต แต่ไม่รับประกันว่าจะป้องกันข้อมูลรั่วไหลได้ทุกกรณี</p>
+</section>
+<section class="reading-concept-unit">
+<h4>ข้อเสีย:</h4>
+<p>ขาดความยืดหยุ่น (Inflexible), มีความซับซ้อนในการบริหารจัดการสูงมาก และมีต้นทุนการดำเนินงานสูง</p>
+</section>
+<section class="reading-concept-unit">
+<h4>ตัวอย่าง:</h4>
+<p>ระบบเครือข่ายทางทหาร, หน่วยงานความมั่นคงของรัฐบาล, ระบบปฏิบัติการ SELinux</p>
+</section>

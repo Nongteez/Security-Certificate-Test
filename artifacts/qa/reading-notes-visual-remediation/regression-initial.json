@@ -1,0 +1,57 @@
+[
+  {
+    "suite": "verify-reading-visual-remediation",
+    "exit": 0,
+    "tail": "✔ VIS-01 ordinary prose uses the article width with a bounded expanded rail (0.8262ms)\n✔ VIS-02 objective and subsection rhythm has a dedicated scoped correction (0.4334ms)\n✔ VIS-03/05 relationship map keeps controls separate and causal links explicit (0.2941ms)\n✔ VIS-04 qualification is concise and outside the diagram card (0.1365ms)\n✔ VIS-06 normal HTML labels reflow with separate arrow tracks (0.1542ms)\n✔ all five original bilingual definition paragraphs and subtitles are preserved (0.2803ms)\n✔ all Markdown and other 23 diagram payloads are preserved (6.2591ms)\nℹ tests 7\nℹ suites 0\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 13.0661\n"
+  },
+  {
+    "suite": "verify-reading-diagram-legibility",
+    "exit": 1,
+    "tail": "amp; Controls · มาตรการควบคุม</h5>\\n      <span class=\"reading-threat-subtitle\">Protective Countermeasure &middot; วงแหวนป้องกัน</span>\\n...',\n    expected: '\\n<div class=\"reading-diagram-card\" data-diagram=\"threatChain\" data-relationship=\"causal-example-with-controls\" role=\"region\" aria-label=\"Threat and Control Relationship Pipeline\">\\n  <div class=\"reading-diagram-header\">\\n    <span class=\"reading-diagram-tag\">Architecture Flow</span>\\n    <h4 class=\"reading-diagram-title\">Threats, Vulnerabilities, Impacts and Controls: A Causal Example</h4>\\n  </div>\\n  <div class=\"reading-diagram-svg-wrap reading-diag-desktop\">\\n    <svg viewBox=\"0 0 760 150\" class=\"reading-diagram-svg\" aria-label=\"Pipeline showing Asset with Vulnerability exploited by Threat Actor causing Impact, mitigated by Safeguards\" role=\"img\">\\n      <g class=\"diag-node\">\\n        <rect x=\"10\" y=\"35\" width=\"120\" height=\"70\" rx=\"8\" class=\"diag-box diag-box-blue\" />\\n...',\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n"
+  },
+  {
+    "suite": "verify-reading-diagram-semantics",
+    "exit": 1,
+    "tail": "13\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 12.1877\n\n✖ failing tests:\n\ntest at tools\\verify-reading-diagram-semantics.mjs:16:1\n✖ all original explanatory mobile paragraphs retained except documented corrections (1.9372ms)\n  AssertionError [ERR_ASSERTION]: threatChain: Retained explanation / qualified entity-relationship caption\n      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-diagram-semantics.mjs:18:34)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1201:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)\n      at Test.postRun (node:internal/test_runner/test:1330:19)\n      at Test.run (node:internal/test_runner/test:1258:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: '==',\n    diff: 'simple'\n  }\n"
+  },
+  {
+    "suite": "verify-reading-layout-width",
+    "exit": 0,
+    "tail": "✔ All four complete textbooks retain exact rendered educational text and original anchors (30.1935ms)\n✔ Privacy roles are one explicit group beneath their Privacy context (0.2559ms)\n✔ Three role headings are subordinate to the h5 group caption (0.1435ms)\n✔ Reading-only shell can reach its own width without changing global tokens (0.2573ms)\n✔ Content-aware prose measures replace nested definition caps (0.3977ms)\n✔ Privacy columns respond to actual context width and preserve source reading order (0.2475ms)\n✔ Privacy emphasis preserves the key bilingual terminology (0.1136ms)\n✔ All production text outside the reference subsection is byte-preserved (2.4595ms)\n✔ Wide-desktop Reading width overrides both inherited width and max-width caps (0.3014ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 39.912\n"
+  },
+  {
+    "suite": "verify-reading-cross-domain-structure",
+    "exit": 0,
+    "tail": "tics (0.017ms)\n✔ topic-4-review-scenarios: complete subsection text, examples, formulas and values (0.9378ms)\n✔ topic-4-review-scenarios: reviewed group labels and definition titles are semantic headings (0.0636ms)\n✔ topic-4-review-scenarios: heading levels do not skip a parent (0.0372ms)\n✔ topic-4-review-scenarios: appropriate ordered-list semantics (0.039ms)\n✔ Numeric superscripts render in inline prose without raw markup (0.1421ms)\n✔ Superscript-looking code remains literal escaped code (0.1341ms)\n✔ Attribute-bearing and nonnumeric superscripts remain escaped (0.072ms)\n✔ Existing script and iframe escaping is preserved (0.043ms)\n✔ All five authored D4 exponent occurrences become native sup elements (4.5508ms)\n✔ Scoped B2 typography leaves the pilot block and global tokens intact (1.8402ms)\n✔ Remaining authored ordered lists belong only to the risk and SoD process examples (3.6389ms)\nℹ tests 391\nℹ suites 0\nℹ pass 391\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 121.8261\n"
+  },
+  {
+    "suite": "verify-reading-final-accessibility",
+    "exit": 1,
+    "tail": "========================================================================\\r\\n   ISC2 CC 2026 — Reading Notes CSS Styles\\r\\n   Clean, minimal technical documentation layout with dark/light theme support\\r\\n   ========================================================================== */\\r\\n\\r\\n:root {\\r\\n  --reading-screen-max-width: 1560px;\\r\\n  --reading-article-max-width: 1080px;\\r\\n  --reading-prose-max-width: 100%;\\r\\n  --reading-component-max-width: 1040px;\\r\\n...',\n    expected: '/* ==========================================================================\\n   ISC2 CC 2026 — Reading Notes CSS Styles\\n   Clean, minimal technical documentation layout with dark/light theme support\\n   ========================================================================== */\\n\\n:root {\\n  --reading-screen-max-width: 1560px;\\n  --reading-article-max-width: 1080px;\\n  --reading-prose-max-width: 100%;\\n  --reading-component-max-width: 1040px;\\n...',\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n"
+  },
+  {
+    "suite": "verify-reading-notes-domain1-presentation",
+    "exit": 0,
+    "tail": "iers 01 through 04\n  [PASS] Ethics canons eliminated redundant \"▼ ลำดับความสำคัญเหนือกว่า\" divider banners\n  [PASS] Ethics CSS cards eliminated harsh rainbow left-borders (#f43f5e)\n  [PASS] Document hierarchy pyramid tiers use calm monochromatic blue progression instead of 4 rainbow fills\n  [PASS] Source Markdown has zero raw \\to arrows (clean Unicode → used instead)\n  [PASS] Prose Governance equation eliminated KaTeX \\mathbf abuse\n  [PASS] Rendered HTML has zero raw \\to arrow leakage in prose\n  [PASS] Ethics mnemonic uses clean Unicode arrow and bold text instead of LaTeX\n  [PASS] Source Markdown eliminated all 23 jarring horizontal dividers (---) (found: 0)\n  [PASS] Rendered HTML has zero redundant <hr class=\"reading-divider\"> elements\n\n================================================================\nVerification Summary: 370/370 tests passed (0 failed)\n================================================================\n\nAll Task 95 presentation redesign assertions passed successfully!\n"
+  },
+  {
+    "suite": "verify-reading-tables-typography",
+    "exit": 0,
+    "tail": "PASS all 22 original table data structures retained\nPASS native headers and complete row/cell counts for every table\nPASS scroll wrappers have keyboard entry and contextual accessible names\nPASS label cannot inject attributes or elements\nPASS scoped table sizing uses natural word boundaries and content-driven layout\n5/5 focused checks passed\n"
+  },
+  {
+    "suite": "verify-reading-critical-readability",
+    "exit": 0,
+    "tail": "urrency retained without escapes or accidental math (0.5047ms)\n✔ ALE variable: visible currency retained without escapes or accidental math (0.2338ms)\n✔ cost-benefit paragraph: visible currency retained without escapes or accidental math (0.1747ms)\n✔ Due Care note preserves its exact qualification with semantic emphasis (0.3576ms)\n✔ Ordinary Markdown emphasis still parses (0.8881ms)\n✔ An intentional asterisk in inline code remains literal (0.2046ms)\n✔ Inline SLE expression retains multiplication and escaped math currency (0.4984ms)\n✔ Display ALE expression remains display math (0.2111ms)\n✔ The source retains all eight valid escaped-dollar tokens in actual math (0.2646ms)\n✔ Representative risk values and economic counterexample remain correct (0.1476ms)\n✔ The three DMZ service rectangles have explicit paint (0.2046ms)\n✔ DMZ roles, zones and all three service/port examples remain (0.0853ms)\nℹ tests 13\nℹ suites 0\nℹ pass 13\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 12.3921\n"
+  },
+  {
+    "suite": "verify-reading-structure-pilot",
+    "exit": 0,
+    "tail": "n headings (0.4275ms)\n✔ Network definitions have grouped explanations rather than an undifferentiated bullet stream (0.2455ms)\n✔ Seven OSI layer names are h4 headings in 7 through 1 order (0.6827ms)\n✔ OSI layer titles are no longer ordered-list items (0.2267ms)\n✔ Each OSI layer retains a separate supporting list and PDU explanation (0.1944ms)\n✔ Complete Network educational text is preserved after Markdown restructuring (0.37ms)\n✔ Complete OSI educational text is preserved after removing generated list ordinals (0.3629ms)\n✔ Mnemonic wording and Layer 1 to Layer 7 direction remain intact (0.1622ms)\n✔ Corrected subnet and sockets explanations remain intact (0.1972ms)\n✔ Existing topic and objective navigation anchors are retained (0.5496ms)\n✔ Pilot styles are explicitly scoped and do not hide list markers (0.6211ms)\n✔ Two pilot wrappers stop before the neighboring TCP/IP subsection (0.2502ms)\nℹ tests 13\nℹ suites 0\nℹ pass 13\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 14.0589\n"
+  },
+  {
+    "suite": "verify-reading-navigation",
+    "exit": 0,
+    "tail": "re omitted rather than coercing a false position (0.2246ms)\n✔ Switching to a domain with no topic does not retain another domain global topic (0.2013ms)\n✔ Fresh explicit subsection link takes priority over stored offsets (0.4169ms)\n✔ Reload of the saved subsection restores position, not its heading (0.2207ms)\n✔ Reload of a different explicit subsection still follows the URL (0.147ms)\n✔ Generic entry resumes the last domain and position (0.1472ms)\n✔ Overview entry without a reading hash still resumes (0.1471ms)\n✔ Explicit domain selection resumes that domain independently (0.1376ms)\n✔ History snapshot beats a newer last-read position for the same domain (0.0872ms)\n✔ Unrelated history snapshots cannot override explicit deep links (0.0983ms)\n✔ Malformed history offset cannot make an explicit URL a resume (0.0878ms)\n✔ Accepted V1 records with only global location fields still resume (0.0788ms)\nℹ tests 15\nℹ suites 0\nℹ pass 15\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 13.304\n"
+  }
+]

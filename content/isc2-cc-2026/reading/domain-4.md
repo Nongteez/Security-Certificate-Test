@@ -1,30 +1,98 @@
 <p class="reading-lead">สรุปและเรียบเรียงเนื้อหาฉบับสมบูรณ์สำหรับเตรียมสอบ ISC2 Certified in Cybersecurity (CC) ฉบับปรับปรุงปี 2026 ใน Domain 4: Networking and Cloud Security Concepts — แนวคิดความมั่นคงปลอดภัยเครือข่ายและคลาวด์ (น้ำหนักข้อสอบ 21.3%) ครอบคลุมพื้นฐานเครือข่ายและแบบจำลองอ้างอิง (OSI 7-Layer, TCP/IP 4-Layer, IPv4/IPv6, CIDR, NAT, TCP vs. UDP, พอร์ตบริการหลักและอุปกรณ์เครือข่าย), ความมั่นคงปลอดภัยไร้สาย (Wi-Fi 802.11, WPA2/WPA3, VPN), สถาปัตยกรรมความปลอดภัยเครือข่าย (Network Segmentation, DMZ, VLANs, Micro-Segmentation, Defense in Depth, Zero Trust Architecture), และความมั่นคงปลอดภัยบนระบบคลาวด์ (NIST SP 800-145 5 Characteristics, Service Models IaaS/PaaS/SaaS/FaaS, Shared Responsibility Model, Deployment Models Hybrid vs. Multi-Cloud, Cloud Network Controls)</p>
 
-<section class="reading-objective-section" id="obj-4-1">
+<section class="reading-objective-section reading-structured-objective" id="obj-4-1">
 
 ## Objective 4.1: Understand Network Security
 
 <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>เครือข่ายคอมพิวเตอร์เป็นช่องทางหลักในการสื่อสารข้อมูล แต่ก็เป็นช่องทางหลักที่ผู้ไม่หวังดีใช้ในการโจมตีระบบ การทำความเข้าใจโครงสร้างและโพรโทคอลพื้นฐานจึงเป็นหัวใจสำคัญของความมั่นคงปลอดภัย:</p>
 
+<section class="reading-structure-pilot">
+
 <h3 id="topic-4-1-fundamentals-topologies">4.1.1 Network Fundamentals &amp; Topologies: พื้นฐานเครือข่ายและขอบเขต</h3>
 
 **Computer Network (เครือข่ายคอมพิวเตอร์)** คือกลุ่มของอุปกรณ์คอมพิวเตอร์ (Nodes หรือ Hosts) สองเครื่องขึ้นไปที่เชื่อมต่อถึงกันผ่านสื่อกลางในการสื่อสาร (Transmission Media) ทั้งแบบใช้สาย (Wired เช่น สายทองแดง UTP, ใยแก้วนำแสง Fiber Optic) หรือไร้สาย (Wireless เช่น คลื่นวิทยุ Radio Frequencies) เพื่อวัตถุประสงค์ในการแลกเปลี่ยนข้อมูลและแบ่งปันทรัพยากรร่วมกัน
 
-ขอบเขตทางภูมิศาสตร์ของระบบเครือข่าย (Network Scope):
-- **LAN (Local Area Network):** เครือข่ายท้องถิ่นในขอบเขตจำกัด เช่น ภายในห้องทำงาน อาคารเดี่ยว หรือวิทยาเขตขนาดเล็ก มีความเร็วสูงและอัตราความผิดพลาดต่ำ
-- **WAN (Wide Area Network):** เครือข่ายบริเวณกว้างที่เชื่อมต่อข้ามเมือง ประเทศ หรือข้ามทวีป โดยมีอินเทอร์เน็ต (Internet) เป็นตัวอย่างของ WAN ที่ใหญ่ที่สุดในโลก
-- **WLAN (Wireless Local Area Network):** เครือข่ายท้องถิ่นแบบไร้สายตามมาตรฐาน IEEE 802.11 (Wi-Fi)
-- **PAN (Personal Area Network):** เครือข่ายส่วนบุคคลระยะใกล้มาก (ประมาณ 10 เมตร) เช่น การเชื่อมต่อผ่าน Bluetooth ระหว่างสมาร์ตโฟนกับหูฟังไร้สาย
-- **VPN (Virtual Private Network):** เครือข่ายเสมือนส่วนตัวที่สร้างช่องทางเข้ารหัสข้อมูล (Encrypted Tunnel) ผ่านเครือข่ายสาธารณะที่ไม่ปลอดภัยอย่างอินเทอร์เน็ต
+<h4 class="reading-concept-group-title">ขอบเขตทางภูมิศาสตร์ของระบบเครือข่าย (Network Scope):</h4>
 
-การแบ่งขอบเขตการชนกันและการแพร่กระจายสัญญาณ (Collision &amp; Broadcast Domains):
-- **Collision Domain (ขอบเขตการชนกันของสัญญาณ):** พื้นที่ทางตรรกะในเครือข่ายที่หากมีอุปกรณ์สองเครื่องส่งข้อมูลออกมาพร้อมกัน สัญญาณจะชนกัน (Collision) ทำให้อุปกรณ์อื่นต้องรอ อุปกรณ์อย่าง Hub สร้างเพียง 1 Collision Domain รวมกันทั้งหมด ในขณะที่ Switch แยกแต่ละพอร์ตออกเป็น 1 Collision Domain อิสระ
-- **Broadcast Domain (ขอบเขตการแพร่สัญญาณ):** พื้นที่ในเครือข่ายที่เมื่ออุปกรณ์ส่งแพ็กเก็ตแบบ Broadcast (Ethernet ใช้ FF:FF:FF:FF:FF:FF; IPv4 subnet-directed broadcast มีบิตส่วน host เป็น 1 ทั้งหมด เช่น 192.168.1.255 สำหรับ 192.168.1.0/24 ต้องดู subnet mask ไม่ใช่ .255 เพียงอย่างเดียว) อุปกรณ์ทุกตัวในขอบเขตนั้นจะได้รับข้อมูล Hub และ Switch ปกติไม่สามารถกั้น Broadcast Domain ได้ มีเพียง **Router** หรือการแบ่ง **VLAN** เท่านั้นที่สามารถแบ่งแยก Broadcast Domain ออกจากกัน
+<section class="reading-definition-unit">
+<h5>LAN (Local Area Network):</h5>
 
-ขอบเขตการเข้าถึงทางสถาปัตยกรรม:
-- **Intranet:** เครือข่ายภายในองค์กรที่จำกัดให้เข้าถึงได้เฉพาะพนักงานขององค์กรเท่านั้น
-- **Extranet:** เครือข่ายภายในที่เปิดให้คู่ค้า พันธมิตรทางธุรกิจ หรือลูกค้าที่ได้รับอนุญาตสามารถเข้าถึงได้บางส่วนผ่านการยืนยันตัวตนที่ปลอดภัย
-- **Internet:** เครือข่ายสาธารณะทั่วโลกที่เชื่อมต่อเครือข่ายนับล้านเข้าด้วยกัน และไม่มีหน่วยงานใดหน่วยงานหนึ่งเป็นเจ้าของแต่เพียงผู้เดียว
+เครือข่ายท้องถิ่นในขอบเขตจำกัด เช่น ภายในห้องทำงาน อาคารเดี่ยว หรือวิทยาเขตขนาดเล็ก มีความเร็วสูงและอัตราความผิดพลาดต่ำ
+
+</section>
+
+<section class="reading-definition-unit">
+<h5>WAN (Wide Area Network):</h5>
+
+เครือข่ายบริเวณกว้างที่เชื่อมต่อข้ามเมือง ประเทศ หรือข้ามทวีป โดยมีอินเทอร์เน็ต (Internet) เป็นตัวอย่างของ WAN ที่ใหญ่ที่สุดในโลก
+
+</section>
+
+<section class="reading-definition-unit">
+<h5>WLAN (Wireless Local Area Network):</h5>
+
+เครือข่ายท้องถิ่นแบบไร้สายตามมาตรฐาน IEEE 802.11 (Wi-Fi)
+
+</section>
+
+<section class="reading-definition-unit">
+<h5>PAN (Personal Area Network):</h5>
+
+เครือข่ายส่วนบุคคลระยะใกล้มาก (ประมาณ 10 เมตร) เช่น การเชื่อมต่อผ่าน Bluetooth ระหว่างสมาร์ตโฟนกับหูฟังไร้สาย
+
+</section>
+
+<section class="reading-definition-unit">
+<h5>VPN (Virtual Private Network):</h5>
+
+เครือข่ายเสมือนส่วนตัวที่สร้างช่องทางเข้ารหัสข้อมูล (Encrypted Tunnel) ผ่านเครือข่ายสาธารณะที่ไม่ปลอดภัยอย่างอินเทอร์เน็ต
+
+</section>
+
+
+<h4 class="reading-concept-group-title">การแบ่งขอบเขตการชนกันและการแพร่กระจายสัญญาณ (Collision &amp; Broadcast Domains):</h4>
+
+<section class="reading-definition-unit">
+<h5>Collision Domain (ขอบเขตการชนกันของสัญญาณ):</h5>
+
+พื้นที่ทางตรรกะในเครือข่ายที่หากมีอุปกรณ์สองเครื่องส่งข้อมูลออกมาพร้อมกัน สัญญาณจะชนกัน (Collision) ทำให้อุปกรณ์อื่นต้องรอ อุปกรณ์อย่าง Hub สร้างเพียง 1 Collision Domain รวมกันทั้งหมด ในขณะที่ Switch แยกแต่ละพอร์ตออกเป็น 1 Collision Domain อิสระ
+
+</section>
+
+<section class="reading-definition-unit">
+<h5>Broadcast Domain (ขอบเขตการแพร่สัญญาณ):</h5>
+
+พื้นที่ในเครือข่ายที่เมื่ออุปกรณ์ส่งแพ็กเก็ตแบบ Broadcast (Ethernet ใช้ FF:FF:FF:FF:FF:FF; IPv4 subnet-directed broadcast มีบิตส่วน host เป็น 1 ทั้งหมด เช่น 192.168.1.255 สำหรับ 192.168.1.0/24 ต้องดู subnet mask ไม่ใช่ .255 เพียงอย่างเดียว) อุปกรณ์ทุกตัวในขอบเขตนั้นจะได้รับข้อมูล Hub และ Switch ปกติไม่สามารถกั้น Broadcast Domain ได้ มีเพียง **Router** หรือการแบ่ง **VLAN** เท่านั้นที่สามารถแบ่งแยก Broadcast Domain ออกจากกัน
+
+</section>
+
+
+<h4 class="reading-concept-group-title">ขอบเขตการเข้าถึงทางสถาปัตยกรรม:</h4>
+
+<section class="reading-definition-unit">
+<h5>Intranet:</h5>
+
+เครือข่ายภายในองค์กรที่จำกัดให้เข้าถึงได้เฉพาะพนักงานขององค์กรเท่านั้น
+
+</section>
+
+<section class="reading-definition-unit">
+<h5>Extranet:</h5>
+
+เครือข่ายภายในที่เปิดให้คู่ค้า พันธมิตรทางธุรกิจ หรือลูกค้าที่ได้รับอนุญาตสามารถเข้าถึงได้บางส่วนผ่านการยืนยันตัวตนที่ปลอดภัย
+
+</section>
+
+<section class="reading-definition-unit">
+<h5>Internet:</h5>
+
+เครือข่ายสาธารณะทั่วโลกที่เชื่อมต่อเครือข่ายนับล้านเข้าด้วยกัน และไม่มีหน่วยงานใดหน่วยงานหนึ่งเป็นเจ้าของแต่เพียงผู้เดียว
+
+</section>
+
+</section>
+
+<section class="reading-structure-pilot">
 
 <h3 id="topic-4-1-osi-model">4.1.2 OSI 7-Layer Reference Model: แบบจำลองอ้างอิง 7 ชั้น</h3>
 
@@ -35,46 +103,77 @@
 
 รายละเอียดของแบบจำลองทั้ง 7 ชั้น:
 
-1. **Layer 7 — Application Layer (ชั้นการประยุกต์):**
-   - ทำหน้าที่เป็นจุดเชื่อมต่อระหว่างผู้ใช้งานหรือโปรแกรมประยุกต์กับบริการเครือข่าย
-   - โพรโทคอลสำคัญ: HTTP, HTTPS, DNS, SSH, FTP, SFTP, SMTP, DHCP, Telnet
-   - หน่วยข้อมูล (PDU): Data / Messages
+<section class="reading-layer-unit">
+<h4>Layer 7 — Application Layer (ชั้นการประยุกต์):</h4>
 
-2. **Layer 6 — Presentation Layer (ชั้นการนำเสนอข้อมูล):**
-   - ทำหน้าที่จัดรูปแบบ แปลงรหัสข้อมูล (Data Formatting), การบีบอัดข้อมูล (Compression) และการเข้ารหัส/ถอดรหัสความปลอดภัย (Encryption / Decryption)
-   - มาตรฐานสำคัญ: TLS/SSL, ASCII, Unicode, JSON, XML, JPEG, MP4
-   - หน่วยข้อมูล (PDU): Data
+- ทำหน้าที่เป็นจุดเชื่อมต่อระหว่างผู้ใช้งานหรือโปรแกรมประยุกต์กับบริการเครือข่าย
+- โพรโทคอลสำคัญ: HTTP, HTTPS, DNS, SSH, FTP, SFTP, SMTP, DHCP, Telnet
+- หน่วยข้อมูล (PDU): Data / Messages
 
-3. **Layer 5 — Session Layer (ชั้นเซสชัน):**
-   - ทำหน้าที่สร้าง (Establish), บริหารจัดการ (Maintain) และยกเลิกการเชื่อมต่อเซสชัน (Terminate) ระหว่างสองแอปพลิเคชัน
-   - โพรโทคอลที่มักใช้เป็นตัวอย่าง: RPC (Remote Procedure Call), NetBIOS
-   - Session Layer เป็นแนวคิดการสร้าง บริหาร และยุติเซสชันระหว่างแอปพลิเคชัน ส่วน sockets เป็น API/นามธรรมของจุดปลายการสื่อสารที่แอปใช้เรียกบริการเครือข่าย ไม่ใช่โพรโทคอลประจำ Session Layer
-   - หน่วยข้อมูล (PDU): Data
+</section>
 
-4. **Layer 4 — Transport Layer (ชั้นการขนส่งข้อมูล):**
-   - ทำหน้าที่ส่งข้อมูลแบบจุดต่อจุดระหว่างโฮสต์ (Host-to-Host End-to-End Communication), ควบคุมการไหลของข้อมูล (Flow Control), ตรวจจับข้อผิดพลาด และกำหนดหมายเลขพอร์ต (Port Numbers)
-   - โพรโทคอลสำคัญ: TCP (เน้นความน่าเชื่อถือ ตรวจสอบข้อมูล) และ UDP (เน้นความรวดเร็ว ไม่มีการจับมือ)
-   - หน่วยข้อมูล (PDU): **Segment** (สำหรับ TCP) หรือ **Datagram** (สำหรับ UDP)
+<section class="reading-layer-unit">
+<h4>Layer 6 — Presentation Layer (ชั้นการนำเสนอข้อมูล):</h4>
 
-5. **Layer 3 — Network Layer (ชั้นเครือข่าย):**
-   - ทำหน้าที่กำหนดหมายเลขที่อยู่เชิงตรรกะ (Logical IP Addressing) และเลือกเส้นทางการส่งข้อมูลข้ามเครือข่าย (Routing)
-   - โพรโทคอลและอุปกรณ์: IPv4, IPv6, ICMP, IPsec, Routers, Layer 3 Switches
-   - หน่วยข้อมูล (PDU): **Packet**
+- ทำหน้าที่จัดรูปแบบ แปลงรหัสข้อมูล (Data Formatting), การบีบอัดข้อมูล (Compression) และการเข้ารหัส/ถอดรหัสความปลอดภัย (Encryption / Decryption)
+- มาตรฐานสำคัญ: TLS/SSL, ASCII, Unicode, JSON, XML, JPEG, MP4
+- หน่วยข้อมูล (PDU): Data
 
-6. **Layer 2 — Data Link Layer (ชั้นเชื่อมโยงข้อมูล):**
-   - ทำหน้าที่ควบคุมการเข้าถึงสื่อกลาง (Media Access Control: MAC), กำหนดหมายเลขที่อยู่ทางกายภาพ (Physical MAC Address), ตรวจจับข้อผิดพลาดในระดับเฟรม
-   - โพรโทคอลและอุปกรณ์: Ethernet (IEEE 802.3), Wi-Fi (IEEE 802.11), Switches, Bridges, Network Interface Cards (NIC)
-   - แบ่งออกเป็น 2 ชั้นย่อย: LLC (Logical Link Control) และ MAC (Media Access Control)
-   - หน่วยข้อมูล (PDU): **Frame**
+</section>
 
-7. **Layer 1 — Physical Layer (ชั้นกายภาพ):**
-   - ทำหน้าที่แปลงข้อมูลดิจิทัลให้เป็นสัญญาณทางกายภาพ (ไฟฟ้า, แสง, คลื่นวิทยุ) เพื่อส่งผ่านตัวกลาง
-   - อุปกรณ์และสื่อกลาง: สายทองแดง UTP (RJ45), ใยแก้วนำแสง (Fiber Optic), Hubs, Repeaters, เสาสัญญาณไร้สาย
-   - หน่วยข้อมูล (PDU): **Bits** (0 และ 1)
+<section class="reading-layer-unit">
+<h4>Layer 5 — Session Layer (ชั้นเซสชัน):</h4>
 
-กระบวนการห่อหุ้มและการแกะข้อมูล (Encapsulation &amp; Decapsulation):
+- ทำหน้าที่สร้าง (Establish), บริหารจัดการ (Maintain) และยกเลิกการเชื่อมต่อเซสชัน (Terminate) ระหว่างสองแอปพลิเคชัน
+- โพรโทคอลที่มักใช้เป็นตัวอย่าง: RPC (Remote Procedure Call), NetBIOS
+- Session Layer เป็นแนวคิดการสร้าง บริหาร และยุติเซสชันระหว่างแอปพลิเคชัน ส่วน sockets เป็น API/นามธรรมของจุดปลายการสื่อสารที่แอปใช้เรียกบริการเครือข่าย ไม่ใช่โพรโทคอลประจำ Session Layer
+- หน่วยข้อมูล (PDU): Data
+
+</section>
+
+<section class="reading-layer-unit">
+<h4>Layer 4 — Transport Layer (ชั้นการขนส่งข้อมูล):</h4>
+
+- ทำหน้าที่ส่งข้อมูลแบบจุดต่อจุดระหว่างโฮสต์ (Host-to-Host End-to-End Communication), ควบคุมการไหลของข้อมูล (Flow Control), ตรวจจับข้อผิดพลาด และกำหนดหมายเลขพอร์ต (Port Numbers)
+- โพรโทคอลสำคัญ: TCP (เน้นความน่าเชื่อถือ ตรวจสอบข้อมูล) และ UDP (เน้นความรวดเร็ว ไม่มีการจับมือ)
+- หน่วยข้อมูล (PDU): **Segment** (สำหรับ TCP) หรือ **Datagram** (สำหรับ UDP)
+
+</section>
+
+<section class="reading-layer-unit">
+<h4>Layer 3 — Network Layer (ชั้นเครือข่าย):</h4>
+
+- ทำหน้าที่กำหนดหมายเลขที่อยู่เชิงตรรกะ (Logical IP Addressing) และเลือกเส้นทางการส่งข้อมูลข้ามเครือข่าย (Routing)
+- โพรโทคอลและอุปกรณ์: IPv4, IPv6, ICMP, IPsec, Routers, Layer 3 Switches
+- หน่วยข้อมูล (PDU): **Packet**
+
+</section>
+
+<section class="reading-layer-unit">
+<h4>Layer 2 — Data Link Layer (ชั้นเชื่อมโยงข้อมูล):</h4>
+
+- ทำหน้าที่ควบคุมการเข้าถึงสื่อกลาง (Media Access Control: MAC), กำหนดหมายเลขที่อยู่ทางกายภาพ (Physical MAC Address), ตรวจจับข้อผิดพลาดในระดับเฟรม
+- โพรโทคอลและอุปกรณ์: Ethernet (IEEE 802.3), Wi-Fi (IEEE 802.11), Switches, Bridges, Network Interface Cards (NIC)
+- แบ่งออกเป็น 2 ชั้นย่อย: LLC (Logical Link Control) และ MAC (Media Access Control)
+- หน่วยข้อมูล (PDU): **Frame**
+
+</section>
+
+<section class="reading-layer-unit">
+<h4>Layer 1 — Physical Layer (ชั้นกายภาพ):</h4>
+
+- ทำหน้าที่แปลงข้อมูลดิจิทัลให้เป็นสัญญาณทางกายภาพ (ไฟฟ้า, แสง, คลื่นวิทยุ) เพื่อส่งผ่านตัวกลาง
+- อุปกรณ์และสื่อกลาง: สายทองแดง UTP (RJ45), ใยแก้วนำแสง (Fiber Optic), Hubs, Repeaters, เสาสัญญาณไร้สาย
+- หน่วยข้อมูล (PDU): **Bits** (0 และ 1)
+
+</section>
+
+<h4 class="reading-concept-group-title">กระบวนการห่อหุ้มและการแกะข้อมูล (Encapsulation &amp; Decapsulation):</h4>
+
 - **Encapsulation (จากบนลงล่าง):** เมื่อส่งข้อมูล ข้อมูลดิบจากแอปพลิเคชัน (Data) จะถูกเติมส่วนหัว (Header) ในแต่ละชั้น: Data → Segments (เติม TCP/UDP Header ที่มี Port) → Packets (เติม IP Header ที่มี Source/Dest IP) → Frames (เติม MAC Header และ FCS Trailer) → Bits (แปลงเป็นสัญญาณไฟฟ้าส่งออกไป)
 - **Decapsulation (จากล่างขึ้นบน):** เมื่อฝั่งรับได้รับสัญญาณ จะทำการถอดส่วนหัวออกทีละชั้นย้อนกลับขึ้นไปจนถึงระดับแอปพลิเคชัน
+
+</section>
 
 <h3 id="topic-4-1-tcp-ip-mapping">4.1.3 TCP/IP 4-Layer Architecture Mapping: แบบจำลอง TCP/IP ในทางปฏิบัติ</h3>
 
@@ -82,47 +181,106 @@
 
 <div class="reading-semantic-diagram" data-diagram="osiVsTcpIpModel"></div>
 
-ตารางเปรียบเทียบความสัมพันธ์ระหว่างแบบจำลอง OSI และ TCP/IP:
+<h4 class="reading-concept-group-title">ตารางเปรียบเทียบความสัมพันธ์ระหว่างแบบจำลอง OSI และ TCP/IP:</h4>
 
-| <div class="reading-bilingual-term"><span class="reading-term-en">**OSI 7-Layer Model**</span><span class="reading-term-th">(แบบจำลองทางทฤษฎี)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**TCP/IP 4-Layer Model**</span><span class="reading-term-th">(สถาปัตยกรรมใช้งานจริง)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Data Unit (PDU)**</span><span class="reading-term-th">(หน่วยข้อมูล)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Key Protocols**</span><span class="reading-term-th">(โพรโทคอลหลัก)</span></div> |
-| :--- | :--- | :--- | :--- |
-| **Layer 7: Application**<br>**Layer 6: Presentation**<br>**Layer 5: Session** | **Application Layer (L4)** | Data / Messages | HTTP, HTTPS, DNS, SSH, FTP, SMTP, DHCP |
-| **Layer 4: Transport** | **Transport Layer (L3)** | Segment / Datagram | TCP, UDP |
-| **Layer 3: Network** | **Internet Layer (L2)** | Packet | IPv4, IPv6, ICMP, IPsec |
-| **Layer 2: Data Link**<br>**Layer 1: Physical** | **Network Access / Link Layer (L1)** | Frame / Bits | Ethernet, 802.11 Wi-Fi, ARP, MAC, สื่อทางกายภาพ |
+| <div class="reading-bilingual-term"><span class="reading-term-en">**OSI 7-Layer Model**</span><span class="reading-term-th">(แบบจำลองทางทฤษฎี)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**TCP/IP 4-Layer Model**</span><span class="reading-term-th">(สถาปัตยกรรมใช้งานจริง)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Data Unit (PDU)**</span><span class="reading-term-th">(หน่วยข้อมูล)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Key Protocols**</span><span class="reading-term-th">(โพรโทคอลหลัก)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Hardware &amp; Security Controls**</span><span class="reading-term-th">(อุปกรณ์และมาตรการ)</span></div> |
+| :--- | :--- | :--- | :--- | :--- |
+| **Layer 7: Application**<br>**Layer 6: Presentation**<br>**Layer 5: Session** | **Application Layer (L4)** | Data / Messages | HTTP, HTTPS, DNS, SSH, FTP, SMTP, DHCP | Application Proxy, Next-Gen Firewall (NGFW), Web Application Firewall (WAF) |
+| **Layer 4: Transport** | **Transport Layer (L3)** | Segment / Datagram | TCP, UDP | Stateful Inspection Firewall, Port Numbers / Sockets |
+| **Layer 3: Network** | **Internet Layer (L2)** | Packet | IPv4, IPv6, ICMP, IPsec | Routers, Layer 3 Switches, Packet-Filtering Firewall |
+| **Layer 2: Data Link**<br>**Layer 1: Physical** | **Network Access / Link Layer (L1)** | Frame / Bits | Ethernet, 802.11 Wi-Fi, ARP, MAC, สื่อทางกายภาพ | Layer 2 Switches, WAPs, Network Interface Cards (NICs), Hubs, สายสัญญาณ |
 
 ในแบบจำลอง TCP/IP 4 ชั้นนี้ ARP อยู่ในชั้น Link / Network Access ทำหน้าที่หา Link-layer address ของปลายทางหรือ next hop บนลิงก์ IPv4 เดียวกัน
-
 <h3 id="topic-4-1-ipv4-cidr-nat">4.1.4 IPv4 Addressing, Subnetting, Classes &amp; NAT: ระบบหมายเลขไอพีเวอร์ชัน 4</h3>
 
-**IPv4 (Internet Protocol version 4)** เป็นระบบระบุตำแหน่งเชิงตรรกะขนาด 32 บิต แบ่งออกเป็น 4 ส่วนย่อยเรียกว่า อ็อกเท็ต (Octets) โดยแต่ละอ็อกเท็ตมีขนาด 8 บิต เขียนคั่นด้วยจุดในรูปแบบตัวเลขฐานสิบ (Dotted-Decimal Notation เช่น 192.168.1.1) ทำให้มีหมายเลขไอพีทั้งหมด 2<sup>32</sup> หรือประมาณ 4.3 พันล้านหมายเลข
+<h4 class="reading-concept-group-title">IPv4 (Internet Protocol version 4)</h4>
 
-โครงสร้างของหมายเลขไอพีแบ่งออกเป็น 2 ส่วนหลักเสมอ:
-- **Network ID:** ระบุว่าอุปกรณ์อยู่ในเครือข่ายย่อย (Subnet) ใด
-- **Host ID:** ระบุตัวตนเฉพาะของเครื่องอุปกรณ์ภายในเครือข่ายย่อยนั้น
+เป็นระบบระบุตำแหน่งเชิงตรรกะขนาด 32 บิต แบ่งออกเป็น 4 ส่วนย่อยเรียกว่า อ็อกเท็ต (Octets) โดยแต่ละอ็อกเท็ตมีขนาด 8 บิต เขียนคั่นด้วยจุดในรูปแบบตัวเลขฐานสิบ (Dotted-Decimal Notation เช่น 192.168.1.1) ทำให้มีหมายเลขไอพีทั้งหมด 2<sup>32</sup> หรือประมาณ 4.3 พันล้านหมายเลข
 
-การจัดหมวดหมู่ไอพีแบบคลาส (Classful Addressing):
-- **Class A:** 1.0.0.0 – 126.255.255.255 (Default Subnet Mask: 255.0.0.0 หรือ /8) — สำหรับองค์กรขนาดใหญ่มาก
-- **Class B:** 128.0.0.0 – 191.255.255.255 (Default Subnet Mask: 255.255.0.0 หรือ /16) — สำหรับองค์กรขนาดกลาง
-- **Class C:** 192.0.0.0 – 223.255.255.255 (Default Subnet Mask: 255.255.255.0 หรือ /24) — สำหรับเครือข่ายขนาดเล็ก
-- **Class D:** 224.0.0.0 – 239.255.255.255 — สงวนไว้สำหรับการส่งข้อมูลแบบกลุ่มเฉพาะ (Multicast)
-- **Class E:** 240.0.0.0 – 255.255.255.255 — สงวนไว้สำหรับการทดลองและการวิจัย (Experimental)
+<h4 class="reading-concept-group-title">โครงสร้างของหมายเลขไอพีแบ่งออกเป็น 2 ส่วนหลักเสมอ:</h4>
+<section class="reading-concept-unit">
+<h5>Network ID:</h5>
+
+ระบุว่าอุปกรณ์อยู่ในเครือข่ายย่อย (Subnet) ใด
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Host ID:</h5>
+
+ระบุตัวตนเฉพาะของเครื่องอุปกรณ์ภายในเครือข่ายย่อยนั้น
+
+</section>
+
+<h4 class="reading-concept-group-title">การจัดหมวดหมู่ไอพีแบบคลาส (Classful Addressing):</h4>
+<section class="reading-concept-unit">
+<h5>Class A:</h5>
+
+1.0.0.0 – 126.255.255.255 (Default Subnet Mask: 255.0.0.0 หรือ /8) — สำหรับองค์กรขนาดใหญ่มาก
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Class B:</h5>
+
+128.0.0.0 – 191.255.255.255 (Default Subnet Mask: 255.255.0.0 หรือ /16) — สำหรับองค์กรขนาดกลาง
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Class C:</h5>
+
+192.0.0.0 – 223.255.255.255 (Default Subnet Mask: 255.255.255.0 หรือ /24) — สำหรับเครือข่ายขนาดเล็ก
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Class D:</h5>
+
+224.0.0.0 – 239.255.255.255 — สงวนไว้สำหรับการส่งข้อมูลแบบกลุ่มเฉพาะ (Multicast)
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Class E:</h5>
+
+240.0.0.0 – 255.255.255.255 — สงวนไว้สำหรับการทดลองและการวิจัย (Experimental)
+
+</section>
+
 - *หมายเหตุ:* ช่วง 127.0.0.0/8 ถูกสงวนไว้สำหรับการทดสอบย้อนกลับภายในเครื่อง (Loopback Testing) โดยมี 127.0.0.1 หมายถึง Localhost
 
-ช่วงหมายเลขไอพีส่วนตัวตามมาตรฐาน RFC 1918 (Private IP Addresses):
+<h4 class="reading-concept-group-title">ช่วงหมายเลขไอพีส่วนตัวตามมาตรฐาน RFC 1918 (Private IP Addresses):</h4>
 หมายเลขเหล่านี้ไม่สามารถนำไปใช้งานหรือจัดเส้นทางบนอินเทอร์เน็ตสาธารณะได้โดยตรง และสงวนไว้ใช้งานภายในองค์กร:
-- **Class A Private:** 10.0.0.0 – 10.255.255.255 (ช่วง 10.0.0.0/8)
-- **Class B Private:** 172.16.0.0 – 172.31.255.255 (ช่วง 172.16.0.0/12)
-- **Class C Private:** 192.168.0.0 – 192.168.255.255 (ช่วง 192.168.0.0/16)
+<section class="reading-concept-unit">
+<h5>Class A Private:</h5>
 
-**IPv4 Link-local / APIPA — แยกจาก RFC 1918:**
+10.0.0.0 – 10.255.255.255 (ช่วง 10.0.0.0/8)
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Class B Private:</h5>
+
+172.16.0.0 – 172.31.255.255 (ช่วง 172.16.0.0/12)
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Class C Private:</h5>
+
+192.168.0.0 – 192.168.255.255 (ช่วง 192.168.0.0/16)
+
+</section>
+
+<h4 class="reading-concept-group-title">IPv4 Link-local / APIPA — แยกจาก RFC 1918:</h4>
 
 สงวนบล็อก 169.254.0.0/16 สำหรับสื่อสารบนลิงก์เดียวกัน การเลือกที่อยู่อัตโนมัติตาม RFC 3927 ใช้ 169.254.1.0–169.254.254.255 โดยไม่ใช้ /24 แรกและสุดท้าย และเราเตอร์ไม่ส่งต่อทราฟฟิกนี้ออกนอกลิงก์ APIPA อาจถูกใช้เมื่อไม่สามารถรับที่อยู่จาก DHCP Server ได้
 
-**CIDR (Classless Inter-Domain Routing):**
+<h4 class="reading-concept-group-title">CIDR (Classless Inter-Domain Routing):</h4>
 เพื่อแก้ปัญหาการสูญเสียหมายเลขไอพีในระบบคลาส จึงมีการใช้เครื่องหมายทับระบุจำนวนบิตของเน็ตเวิร์ก (Slash Notation) เช่น /24 หมายถึงมี Subnet Mask เป็น 255.255.255.0 มีบิตของโฮสต์เหลือ 8 บิต รองรับหมายเลขไอพีได้ 2<sup>8</sup> = 256 หมายเลข (ใช้งานได้จริง 254 โฮสต์ เนื่องจากหัก Network Address และ Broadcast Address ออกไป)
 
-**NAT (Network Address Translation):**
+<h4 class="reading-concept-group-title">NAT (Network Address Translation):</h4>
 กระบวนการแปลงหมายเลข Private IP ของอุปกรณ์ภายในเครือข่ายให้เป็น Public IP เพียงหนึ่งหรือสองหมายเลขเมื่อส่งข้อมูลออกสู่อินเทอร์เน็ต โดยรูปแบบที่นิยมที่สุดคือ **PAT (Port Address Translation หรือ NAT Overload)** ซึ่งใช้พอร์ตในการแยกแยะทราฟฟิกของแต่ละเครื่อง
 
 <div class="reading-callout tip">
@@ -132,39 +290,62 @@
   </div>
   <p>แม้ว่า NAT จะช่วยซ่อนโครงสร้างหมายเลขไอพีภายในองค์กร (Topology Hiding) แต่ <strong>NAT ไม่ใช่ระบบรักษาความปลอดภัย ไม่ใช่ระบบเข้ารหัสข้อมูล และไม่สามารถทดแทนไฟร์วอลล์ได้</strong> ข้อมูลที่ส่งผ่าน NAT ยังคงเดินทางในรูปแบบ Plaintext เว้นแต่จะมีการเข้ารหัสด้วย TLS หรือ IPsec เสริม</p>
 </div>
-
 <h3 id="topic-4-1-ipv6-architecture">4.1.5 IPv6 Architecture, SLAAC &amp; Dual-Stack: การขยายขีดความสามารถสู่ IPv6</h3>
 
 เนื่องจากหมายเลข IPv4 มีจำกัดและหมดลงแล้ว จึงมีการพัฒนา **IPv6 (Internet Protocol version 6)** ขึ้นมา โดยมีขนาดความยาวถึง **128 บิต** เขียนแทนด้วยเลขฐานสิบหก (Hexadecimal) แบ่งเป็น 8 กลุ่ม กลุ่มละ 16 บิต คั่นด้วยเครื่องหมายโคลอน (Colon เช่น `2001:0db8:85a3:0000:0000:8a2e:0370:7334`)
 
-คุณลักษณะเด่นของ IPv6:
+<h4 class="reading-concept-group-title">คุณลักษณะเด่นของ IPv6:</h4>
 - **มหาศาล:** มีหมายเลขรองรับถึง 2<sup>128</sup> หรือราว 3.4 &times; 10<sup>38</sup> หมายเลข ทำให้ทุกอุปกรณ์บนโลกสามารถมี Public IP ได้โดยไม่ต้องพึ่งพา NAT
 - **ความปลอดภัยในตัว:** รองรับมาตรฐานความมั่นคงปลอดภัย **IPsec (IP Security)** ในระดับสถาปัตยกรรมมาตั้งแต่ต้น
 - **ยกเลิก Broadcast:** แทนที่ด้วย **Multicast** (ส่งถึงกลุ่มเฉพาะ) และ **Anycast** (ส่งไปยังเครื่องที่ใกล้ที่สุดในกลุ่ม) ช่วยลดสัญญาณรบกวนในเครือข่ายได้อย่างมหาศาล
 - **SLAAC (Stateless Address Autoconfiguration):** SLAAC สร้างที่อยู่ IPv6 โดยใช้ prefix ที่เราเตอร์ประกาศร่วมกับ Interface Identifier (IID) ของอินเทอร์เฟซ วิธีสร้าง IID ไม่จำเป็นต้องใช้ MAC Address; EUI-64 ที่อาศัย MAC เป็นเพียงวิธีหนึ่งในอดีต
 
-กลยุทธ์การเปลี่ยนผ่านจาก IPv4 สู่ IPv6 (Transition Strategies):
-1. **Dual-Stack:** อุปกรณ์และเราเตอร์เปิดใช้งานโพรโทคอล IPv4 และ IPv6 ควบคู่กันไปพร้อมกันในระดับการ์ดเครือข่ายและระบบปฏิบัติการ เป็นแนวทางที่แนะนำที่สุด
-2. **Tunneling:** การนำแพ็กเก็ต IPv6 มาห่อหุ้มไว้ในแพ็กเก็ต IPv4 เพื่อส่งผ่านเครือข่ายที่ยังรองรับเพียง IPv4 เช่น 6to4 หรือ Teredo
-3. **Translation (NAT64 / DNS64):** การแปลงแพ็กเก็ตข้ามไปมาระหว่างอุปกรณ์ที่เป็น IPv6 ล้วนกับบริการที่เป็น IPv4 ล้วน
+<h4 class="reading-concept-group-title">กลยุทธ์การเปลี่ยนผ่านจาก IPv4 สู่ IPv6 (Transition Strategies):</h4>
+<section class="reading-concept-unit">
+<h5>Dual-Stack:</h5>
 
+อุปกรณ์และเราเตอร์เปิดใช้งานโพรโทคอล IPv4 และ IPv6 ควบคู่กันไปพร้อมกันในระดับการ์ดเครือข่ายและระบบปฏิบัติการ เป็นแนวทางที่แนะนำที่สุด
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Tunneling:</h5>
+
+การนำแพ็กเก็ต IPv6 มาห่อหุ้มไว้ในแพ็กเก็ต IPv4 เพื่อส่งผ่านเครือข่ายที่ยังรองรับเพียง IPv4 เช่น 6to4 หรือ Teredo
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Translation (NAT64 / DNS64):</h5>
+
+การแปลงแพ็กเก็ตข้ามไปมาระหว่างอุปกรณ์ที่เป็น IPv6 ล้วนกับบริการที่เป็น IPv4 ล้วน
+
+</section>
 <h3 id="topic-4-1-tcp-vs-udp">4.1.6 Transport Layer Protocols (TCP vs. UDP): โพรโทคอลในระดับการขนส่ง</h3>
 
 ในระดับ Transport Layer มี 2 โพรโทคอลหลักที่ทำหน้าที่แตกต่างกันอย่างสิ้นเชิง:
 
-1. **TCP (Transmission Control Protocol):**
-   - **Connection-Oriented:** ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (**3-Way Handshake: SYN → SYN-ACK → ACK**)
-   - **Reliable Delivery:** รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)
-   - **Flow &amp; Congestion Control:** มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)
-   - เหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)
+<section class="reading-concept-unit">
+<h4>TCP (Transmission Control Protocol):</h4>
 
-2. **UDP (User Datagram Protocol):**
-   - **Connectionless:** ไม่มีการสร้างการเชื่อมต่อล่วงหน้า ไม่มีการจับมือ (No Handshake) สามารถส่งข้อมูลออกไปได้ทันที
-   - **Unreliable / Best-Effort:** ไม่รับประกันว่าข้อมูลจะถึงปลายทางหรือไม่ ไม่มีการเรียงลำดับใหม่ และไม่มีการส่งซ้ำ
-   - **Low Overhead &amp; High Speed:** ขนาด Header สั้นมาก (เพียง 8 ไบต์ เมื่อเทียบกับ 20 ไบต์ของ TCP) ทำให้ประมวลผลได้รวดเร็วมาก
-   - เหมาะสำหรับงานที่ต้องการความเร็วแบบเรียลไทม์ และยอมรับการสูญเสียข้อมูลบางส่วนได้: Video/Audio Streaming, การโทรผ่านอินเทอร์เน็ต (VoIP), เกมออนไลน์, บริการค้นหาชื่อโดเมน (DNS Queries), การแจกไอพี (DHCP), และการตรวจสอบสถานะ (SNMP)
+- **Connection-Oriented:** ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (**3-Way Handshake: SYN → SYN-ACK → ACK**)
+- **Reliable Delivery:** รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)
+- **Flow &amp; Congestion Control:** มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)
+- เหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)
 
-ตารางเปรียบเทียบเชิงลึก TCP vs. UDP:
+</section>
+
+<section class="reading-concept-unit">
+<h4>UDP (User Datagram Protocol):</h4>
+
+- **Connectionless:** ไม่มีการสร้างการเชื่อมต่อล่วงหน้า ไม่มีการจับมือ (No Handshake) สามารถส่งข้อมูลออกไปได้ทันที
+- **Unreliable / Best-Effort:** ไม่รับประกันว่าข้อมูลจะถึงปลายทางหรือไม่ ไม่มีการเรียงลำดับใหม่ และไม่มีการส่งซ้ำ
+- **Low Overhead &amp; High Speed:** ขนาด Header สั้นมาก (เพียง 8 ไบต์ เมื่อเทียบกับ 20 ไบต์ของ TCP) ทำให้ประมวลผลได้รวดเร็วมาก
+- เหมาะสำหรับงานที่ต้องการความเร็วแบบเรียลไทม์ และยอมรับการสูญเสียข้อมูลบางส่วนได้: Video/Audio Streaming, การโทรผ่านอินเทอร์เน็ต (VoIP), เกมออนไลน์, บริการค้นหาชื่อโดเมน (DNS Queries), การแจกไอพี (DHCP), และการตรวจสอบสถานะ (SNMP)
+
+</section>
+
+<h4 class="reading-concept-group-title">ตารางเปรียบเทียบเชิงลึก TCP vs. UDP:</h4>
 
 | <div class="reading-bilingual-term"><span class="reading-term-en">**Feature**</span><span class="reading-term-th">(คุณลักษณะ)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**TCP**</span><span class="reading-term-th">(Transmission Control Protocol)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**UDP**</span><span class="reading-term-th">(User Datagram Protocol)</span></div> |
 | :--- | :--- | :--- |
@@ -174,20 +355,36 @@
 | **Header Size** | 20–60 Bytes (ซับซ้อน มีการควบคุม) | 8 Bytes คงที่ (เรียบง่าย น้ำหนักเบา) |
 | **Speed &amp; Latency** | ช้ากว่า มีภาระในการตรวจสอบ | รวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ |
 | **Typical Use Cases** | เว็บ, อีเมล, การโอนย้ายไฟล์, ฐานข้อมูล | วิดีโอสตรีมมิง, VoIP, DNS, DHCP, เกมออนไลน์ |
-
 <h3 id="topic-4-1-ports-multiplexing">4.1.7 Network Ports, Multiplexing &amp; Core Services: พอร์ตและการระบุบริการ</h3>
 
 **Port Number (หมายเลขพอร์ต)** คือตัวเลขขนาด 16 บิต (มีค่าตั้งแต่ 0 ถึง 65,535) ที่ใช้ระบุกระบวนการทำงานหรือบริการแอปพลิเคชันเฉพาะเจาะจงบนระบบปฏิบัติการ
 
-แนวคิดของ **Socket (ซ็อกเก็ต):**
+<h4 class="reading-concept-group-title">แนวคิดของ Socket (ซ็อกเก็ต):</h4>
 การจับคู่ระหว่าง `IP Address + Port Number` (เช่น `192.168.1.50:443`) ทำให้คอมพิวเตอร์เครื่องเดียวสามารถเปิดใช้งานหลายโปรแกรมพร้อมกันได้ผ่านการส่งสัญญาณสลับแบบ **Multiplexing**
 
-การแบ่งช่วงของหมายเลขพอร์ต (IANA Classification):
-- **Well-Known Ports (0 – 1,023):** สงวนไว้สำหรับบริการหลักของระบบและโพรโทคอลมาตรฐานสากล
-- **Registered Ports (1,024 – 49,151):** พอร์ตที่บริษัทหรือผู้พัฒนาซอฟต์แวร์สามารถลงทะเบียนใช้งานเฉพาะ
-- **Dynamic / Private / Ephemeral Ports (49,152 – 65,535):** พอร์ตชั่วคราวที่ระบบปฏิบัติการกำหนดให้กับฝั่งเครื่องลูกข่าย (Client) เมื่อส่งคำขอออกไป
+<h4 class="reading-concept-group-title">การแบ่งช่วงของหมายเลขพอร์ต (IANA Classification):</h4>
+<section class="reading-concept-unit">
+<h5>Well-Known Ports (0 – 1,023):</h5>
 
-ตารางหมายเลขพอร์ตสำคัญที่พบบ่อยในข้อสอบ ISC2 CC:
+สงวนไว้สำหรับบริการหลักของระบบและโพรโทคอลมาตรฐานสากล
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Registered Ports (1,024 – 49,151):</h5>
+
+พอร์ตที่บริษัทหรือผู้พัฒนาซอฟต์แวร์สามารถลงทะเบียนใช้งานเฉพาะ
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Dynamic / Private / Ephemeral Ports (49,152 – 65,535):</h5>
+
+พอร์ตชั่วคราวที่ระบบปฏิบัติการกำหนดให้กับฝั่งเครื่องลูกข่าย (Client) เมื่อส่งคำขอออกไป
+
+</section>
+
+<h4 class="reading-concept-group-title">ตารางหมายเลขพอร์ตสำคัญที่พบบ่อยในข้อสอบ ISC2 CC:</h4>
 
 | <div class="reading-bilingual-term"><span class="reading-term-en">**Port Number**</span><span class="reading-term-th">(หมายเลขพอร์ต)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Protocol Name**</span><span class="reading-term-th">(ชื่อโพรโทคอล)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Transport**</span><span class="reading-term-th">(ระดับการขนส่ง)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Security Evaluation**</span><span class="reading-term-th">(ความปลอดภัยและการใช้งาน)</span></div> |
 | :--- | :--- | :--- | :--- |
@@ -206,140 +403,274 @@
 | **995** | POP3S | TCP | **Secure** การดึงอีเมลผ่านการเข้ารหัส TLS |
 | **161 / 162** | SNMP (Network Management) | UDP | จัดการและตรวจสอบอุปกรณ์เครือข่าย (เวอร์ชัน 3 เท่านั้นที่รองรับการเข้ารหัส) |
 | **3389** | RDP (Remote Desktop Protocol) | TCP | รีโมตควบคุมหน้าจอ Windows จากระยะไกล |
-
 <h3 id="topic-4-1-network-devices">4.1.8 Network Devices &amp; Security Filtering: อุปกรณ์เครือข่ายและการกรองข้อมูล</h3>
 
 อุปกรณ์ในระบบเครือข่ายทำหน้าที่ในระดับชั้นของแบบจำลอง OSI ที่แตกต่างกัน และมีบทบาทต่อความมั่นคงปลอดภัยไม่เท่ากัน:
 
-1. **Hub (Layer 1):**
-   - อุปกรณ์ทวนสัญญาณแบบหลายพอร์ต เมื่อได้รับสัญญาณจากพอร์ตหนึ่งจะส่งกระจาย (Broadcast / Flood) ออกไปยังทุกพอร์ตที่เหลือ
-   - เป็น 1 Collision Domain รวมกันทั้งหมด และเป็น 1 Broadcast Domain
-   - **ความเสี่ยง:** มีความปลอดภัยต่ำมาก เครื่องใดก็ตามที่ต่อเข้ากับ Hub สามารถดักจับแพ็กเก็ต (Packet Sniffing) ของเครื่องอื่นได้ทั้งหมด
+<section class="reading-concept-unit">
+<h4>Hub (Layer 1):</h4>
 
-2. **Switch (Layer 2):**
-   - อุปกรณ์สลับสัญญาณที่ชาญฉลาด ทำงานโดยการเรียนรู้และจดจำหมายเลขกายภาพลงใน **MAC Address Table (CAM Table)**
-   - แยกแต่ละพอร์ตออกเป็น 1 Collision Domain อิสระ ช่วยเพิ่มประสิทธิภาพและป้องกันการดักรับข้อมูลระหว่างเครื่องได้ดีกว่า Hub
-   - **ความเสี่ยง:** อาจถูกโจมตีด้วยเทคนิค **MAC Flooding** (ส่ง MAC ปลอมจำนวนมากจนตารางเต็ม ทำให้สวิตช์ลดระดับตัวเองลงไปทำงานคล้าย Hub) หรือ **ARP Spoofing**
+- อุปกรณ์ทวนสัญญาณแบบหลายพอร์ต เมื่อได้รับสัญญาณจากพอร์ตหนึ่งจะส่งกระจาย (Broadcast / Flood) ออกไปยังทุกพอร์ตที่เหลือ
+- เป็น 1 Collision Domain รวมกันทั้งหมด และเป็น 1 Broadcast Domain
+- **ความเสี่ยง:** มีความปลอดภัยต่ำมาก เครื่องใดก็ตามที่ต่อเข้ากับ Hub สามารถดักจับแพ็กเก็ต (Packet Sniffing) ของเครื่องอื่นได้ทั้งหมด
 
-3. **Router (Layer 3):**
-   - อุปกรณ์กำหนดเส้นทางการส่งแพ็กเก็ตระหว่างเครือข่ายย่อยที่ต่างกัน โดยพิจารณาจาก IP Address และ Routing Table
-   - ทำหน้าที่แบ่งแยก **Broadcast Domain** ออกจากกันโดยเด็ดขาด ทำให้การแพร่สัญญาณไม่ล้นข้ามเครือข่าย
-   - มักรองรับการสร้างกฎกรองข้อมูลเบื้องต้นผ่าน **Access Control Lists (ACLs)**
+</section>
 
-4. **Firewall (ไฟร์วอลล์):**
-   - อุปกรณ์หรือซอฟต์แวร์ที่ทำหน้าที่เป็นปราการควบคุมการเข้าออกของทราฟฟิกระหว่างเครือข่ายที่มีระดับความเชื่อถือต่างกัน
-   - **Packet Filtering Firewall (Stateless):** ตรวจสอบเฉพาะ Source/Dest IP และ Port แต่ละแพ็กเก็ตอย่างอิสระ ไม่จดจำสถานะการเชื่อมต่อ
-   - **Stateful Inspection Firewall:** ตรวจสอบและบันทึกสถานะการเชื่อมต่อ (State Table) เช่น หากเป็นการตอบกลับของเซสชันที่เครื่องภายในเริ่มเปิดก่อน จะอนุญาตให้ผ่านได้โดยอัตโนมัติ
-   - **Next-Generation Firewall (NGFW):** ไฟร์วอลล์ยุคใหม่ที่ทำงานลึกถึง Layer 7 มีการตรวจสอบแพ็กเก็ตเชิงลึก (Deep Packet Inspection: DPI), ตรวจสอบตัวตนแอปพลิเคชัน (Application Awareness), มีระบบ IPS ฝังในตัว และสามารถถอดรหัส SSL/TLS เพื่อตรวจหามัลแวร์ได้
+<section class="reading-concept-unit">
+<h4>Switch (Layer 2):</h4>
 
-5. **IDS vs. IPS:**
-   - **IDS (Intrusion Detection System):** ทำงานแบบตรวจจับและแจ้งเตือน เชื่อมต่อแบบขนาน (Out-of-band หรือ Tap/SPAN Port) ตรวจพบพฤติกรรมผิดปกติแล้วส่ง Alert หรือ Log ไปยังผู้ดูแล แต่ไม่สามารถสกัดกั้นหรือหยุดยั้งการโจมตีได้ด้วยตัวเอง
-   - **IPS (Intrusion Prevention System):** ทำงานแบบสกัดกั้นเชิงรุก เชื่อมต่อแบบขวางทางเดินข้อมูลโดยตรง (In-line) เมื่อตรวจพบภัยคุกคาม จะทำการตัดการเชื่อมต่อ (Reset TCP) หรือทิ้งแพ็กเก็ต (Drop Packet) ทันทีเพื่อปกป้องระบบ
+- อุปกรณ์สลับสัญญาณที่ชาญฉลาด ทำงานโดยการเรียนรู้และจดจำหมายเลขกายภาพลงใน **MAC Address Table (CAM Table)**
+- แยกแต่ละพอร์ตออกเป็น 1 Collision Domain อิสระ ช่วยเพิ่มประสิทธิภาพและป้องกันการดักรับข้อมูลระหว่างเครื่องได้ดีกว่า Hub
+- **ความเสี่ยง:** อาจถูกโจมตีด้วยเทคนิค **MAC Flooding** (ส่ง MAC ปลอมจำนวนมากจนตารางเต็ม ทำให้สวิตช์ลดระดับตัวเองลงไปทำงานคล้าย Hub) หรือ **ARP Spoofing**
 
-6. **Proxy Server (พร็อกซีเซิร์ฟเวอร์):**
-   - **Forward Proxy:** ทำหน้าที่เป็นตัวแทนของเครื่องลูกข่ายภายในในการออกสู่อินเทอร์เน็ตภายนอก ช่วยซ่อนไอพีภายใน กรองเนื้อหาเว็บไซต์ (Content Filtering) และแคชข้อมูล
-   - **Reverse Proxy:** ทำหน้าที่เป็นตัวแทนของเซิร์ฟเวอร์ภายในในการรับคำขอจากผู้ใช้บนอินเทอร์เน็ต ช่วยกระจายโหลด (Load Balancing), บีบอัดข้อมูล, และทำหน้าที่ถอดรหัส SSL (SSL Offloading)
+</section>
 
+<section class="reading-concept-unit">
+<h4>Router (Layer 3):</h4>
+
+- อุปกรณ์กำหนดเส้นทางการส่งแพ็กเก็ตระหว่างเครือข่ายย่อยที่ต่างกัน โดยพิจารณาจาก IP Address และ Routing Table
+- ทำหน้าที่แบ่งแยก **Broadcast Domain** ออกจากกันโดยเด็ดขาด ทำให้การแพร่สัญญาณไม่ล้นข้ามเครือข่าย
+- มักรองรับการสร้างกฎกรองข้อมูลเบื้องต้นผ่าน **Access Control Lists (ACLs)**
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Firewall (ไฟร์วอลล์):</h4>
+
+- อุปกรณ์หรือซอฟต์แวร์ที่ทำหน้าที่เป็นปราการควบคุมการเข้าออกของทราฟฟิกระหว่างเครือข่ายที่มีระดับความเชื่อถือต่างกัน
+- **Packet Filtering Firewall (Stateless):** ตรวจสอบเฉพาะ Source/Dest IP และ Port แต่ละแพ็กเก็ตอย่างอิสระ ไม่จดจำสถานะการเชื่อมต่อ
+- **Stateful Inspection Firewall:** ตรวจสอบและบันทึกสถานะการเชื่อมต่อ (State Table) เช่น หากเป็นการตอบกลับของเซสชันที่เครื่องภายในเริ่มเปิดก่อน จะอนุญาตให้ผ่านได้โดยอัตโนมัติ
+- **Next-Generation Firewall (NGFW):** ไฟร์วอลล์ยุคใหม่ที่ทำงานลึกถึง Layer 7 มีการตรวจสอบแพ็กเก็ตเชิงลึก (Deep Packet Inspection: DPI), ตรวจสอบตัวตนแอปพลิเคชัน (Application Awareness), มีระบบ IPS ฝังในตัว และสามารถถอดรหัส SSL/TLS เพื่อตรวจหามัลแวร์ได้
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>IDS vs. IPS:</h4>
+
+- **IDS (Intrusion Detection System):** ทำงานแบบตรวจจับและแจ้งเตือน เชื่อมต่อแบบขนาน (Out-of-band หรือ Tap/SPAN Port) ตรวจพบพฤติกรรมผิดปกติแล้วส่ง Alert หรือ Log ไปยังผู้ดูแล แต่ไม่สามารถสกัดกั้นหรือหยุดยั้งการโจมตีได้ด้วยตัวเอง
+- **IPS (Intrusion Prevention System):** ทำงานแบบสกัดกั้นเชิงรุก เชื่อมต่อแบบขวางทางเดินข้อมูลโดยตรง (In-line) เมื่อตรวจพบภัยคุกคาม จะทำการตัดการเชื่อมต่อ (Reset TCP) หรือทิ้งแพ็กเก็ต (Drop Packet) ทันทีเพื่อปกป้องระบบ
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Proxy Server (พร็อกซีเซิร์ฟเวอร์):</h4>
+
+- **Forward Proxy:** ทำหน้าที่เป็นตัวแทนของเครื่องลูกข่ายภายในในการออกสู่อินเทอร์เน็ตภายนอก ช่วยซ่อนไอพีภายใน กรองเนื้อหาเว็บไซต์ (Content Filtering) และแคชข้อมูล
+- **Reverse Proxy:** ทำหน้าที่เป็นตัวแทนของเซิร์ฟเวอร์ภายในในการรับคำขอจากผู้ใช้บนอินเทอร์เน็ต ช่วยกระจายโหลด (Load Balancing), บีบอัดข้อมูล, และทำหน้าที่ถอดรหัส SSL (SSL Offloading)
+
+</section>
 <h3 id="topic-4-1-wireless-security">4.1.9 Wireless Security: Wi-Fi, Bluetooth &amp; VPN: ความมั่นคงปลอดภัยไร้สาย</h3>
 
 ระบบเครือข่ายไร้สายส่งผ่านข้อมูลผ่านคลื่นวิทยุในที่โล่ง ทำให้ผู้โจมตีสามารถดักรับสัญญาณได้จากระยะไกลโดยไม่ต้องเข้าถึงสายสัญญาณทางกายภาพ
 
-มาตรฐานเครือข่ายไร้สาย IEEE 802.11:
+<h4 class="reading-concept-group-title">มาตรฐานเครือข่ายไร้สาย IEEE 802.11:</h4>
 - ย่านความถี่ **2.4 GHz:** ส่งสัญญาณได้ไกล ทะลุสิ่งกีดขวางได้ดี แต่มีช่องสัญญาณน้อย (Channels 1, 6, 11 เท่านั้นที่ไม่ทับซ้อนกัน) และมีสัญญาณรบกวนสูง
 - ย่านความถี่ **5 GHz:** อัตราการรับส่งข้อมูลเร็วกว่า มีช่องสัญญาณมากกว่า แต่ระยะทางส่งสั้นกว่าและทะลุสิ่งกีดขวางได้น้อยกว่า
 - ยุคสมัยของมาตรฐาน: 802.11b (11 Mbps) → 802.11g (54 Mbps) → 802.11n (Wi-Fi 4) → 802.11ac (Wi-Fi 5) → 802.11ax (Wi-Fi 6)
 
-วิวัฒนาการของการเข้ารหัสความปลอดภัย Wi-Fi:
-1. **WEP (Wired Equivalent Privacy):**
-   - ใช้งานรหัสลับ RC4 ร่วมกับค่า Initialization Vector (IV) ขนาดสั้นเพียง 24 บิต ซึ่งส่งแบบไม่เข้ารหัส
-   - มีข้อบกพร่องทางคณิตศาสตร์ร้ายแรง สามารถถูกถอดรหัสได้ภายในเวลาไม่กี่นาที **ห้ามใช้งานโดยเด็ดขาด**
-2. **WPA (Wi-Fi Protected Access):**
-   - พัฒนาขึ้นเป็นมาตรการชั่วคราวเพื่ออุดช่องโหว่ของ WEP โดยนำโปรโตคอล TKIP (Temporal Key Integrity Protocol) มาใช้
-   - ถูกยกเลิกและจัดว่าล้าสมัยแล้ว
-3. **WPA2 (IEEE 802.11i):**
-   - นำมาตรฐานการเข้ารหัสขั้นสูง **AES (Advanced Encryption Standard)** ร่วมกับ **CCMP** (Counter Mode Cipher Block Chaining Message Authentication Code Protocol)
-   - เป็นมาตรฐานหลักที่ใช้งานแพร่หลาย มี 2 โหมด: Personal (WPA2-PSK ใช้รหัสผ่านร่วม) และ Enterprise (WPA2-Enterprise ยืนยันตัวตนรายบุคคลผ่าน RADIUS / 802.1X)
-4. **WPA3:**
-   - มาตรฐานความปลอดภัยสูงสุดในปัจจุบัน
-   - ในโหมด Personal ใช้กระบวนการ **SAE (Simultaneous Authentication of Equals)** ป้องกันการโจมตีแบบสุ่มรหัสผ่านออฟไลน์ (Offline Dictionary Attacks) และมีคุณสมบัติ Forward Secrecy
-   - ในโหมด Enterprise รองรับการเข้ารหัสความปลอดภัยสูงระดับ 192 บิต
+<h4 class="reading-concept-group-title">วิวัฒนาการของการเข้ารหัสความปลอดภัย Wi-Fi:</h4>
+<section class="reading-concept-unit">
+<h5>WEP (Wired Equivalent Privacy):</h5>
+
+- ใช้งานรหัสลับ RC4 ร่วมกับค่า Initialization Vector (IV) ขนาดสั้นเพียง 24 บิต ซึ่งส่งแบบไม่เข้ารหัส
+- มีข้อบกพร่องทางคณิตศาสตร์ร้ายแรง สามารถถูกถอดรหัสได้ภายในเวลาไม่กี่นาที **ห้ามใช้งานโดยเด็ดขาด**
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>WPA (Wi-Fi Protected Access):</h5>
+
+- พัฒนาขึ้นเป็นมาตรการชั่วคราวเพื่ออุดช่องโหว่ของ WEP โดยนำโปรโตคอล TKIP (Temporal Key Integrity Protocol) มาใช้
+- ถูกยกเลิกและจัดว่าล้าสมัยแล้ว
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>WPA2 (IEEE 802.11i):</h5>
+
+- นำมาตรฐานการเข้ารหัสขั้นสูง **AES (Advanced Encryption Standard)** ร่วมกับ **CCMP** (Counter Mode Cipher Block Chaining Message Authentication Code Protocol)
+- เป็นมาตรฐานหลักที่ใช้งานแพร่หลาย มี 2 โหมด: Personal (WPA2-PSK ใช้รหัสผ่านร่วม) และ Enterprise (WPA2-Enterprise ยืนยันตัวตนรายบุคคลผ่าน RADIUS / 802.1X)
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>WPA3:</h5>
+
+- มาตรฐานความปลอดภัยสูงสุดในปัจจุบัน
+- ในโหมด Personal ใช้กระบวนการ **SAE (Simultaneous Authentication of Equals)** ป้องกันการโจมตีแบบสุ่มรหัสผ่านออฟไลน์ (Offline Dictionary Attacks) และมีคุณสมบัติ Forward Secrecy
+- ในโหมด Enterprise รองรับการเข้ารหัสความปลอดภัยสูงระดับ 192 บิต
+
+</section>
 
 <div class="reading-callout warning">
   <div class="reading-callout-header">
     <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
     <span>กับดักข้อสอบ: ความเชื่อผิด ๆ ด้านความปลอดภัย Wi-Fi</span>
   </div>
-  <p>สองสิ่งต่อไปนี้ <strong>ไม่ใช่มาตรการรักษาความปลอดภัยที่แท้จริง</strong>:<br>
-  1. <strong>MAC Address Filtering:</strong> ผู้โจมตีสามารถดักจับสัญญาณเพื่อดูหมายเลข MAC ของเครื่องที่ได้รับอนุญาต และทำการปลอมแปลง (Spoofing) ได้อย่างง่ายดาย<br>
-  2. <strong>Disable SSID Broadcast (ซ่อนชื่อ Wi-Fi):</strong> การซ่อน SSID เพียงละชื่อจากการประกาศเครือข่าย ไม่ได้หยุด Beacon ทั้งหมด และไม่ใช่การเข้ารหัสหรือการพิสูจน์ตัวตน ผู้สังเกตยังอาจทราบชื่อจากการสื่อสารระหว่างการค้นหาและเชื่อมต่อของลูกข่าย จึงควรใช้ WPA2/WPA3 และการตั้งค่าที่เหมาะสม</p>
+  <p>สองสิ่งต่อไปนี้ <strong>ไม่ใช่มาตรการรักษาความปลอดภัยที่แท้จริง</strong>:</p>
+  <ul>
+    <li><strong>MAC Address Filtering:</strong> ผู้โจมตีสามารถดักจับสัญญาณเพื่อดูหมายเลข MAC ของเครื่องที่ได้รับอนุญาต และทำการปลอมแปลง (Spoofing) ได้อย่างง่ายดาย</li>
+    <li><strong>Disable SSID Broadcast (ซ่อนชื่อ Wi-Fi):</strong> การซ่อน SSID เพียงละชื่อจากการประกาศเครือข่าย ไม่ได้หยุด Beacon ทั้งหมด และไม่ใช่การเข้ารหัสหรือการพิสูจน์ตัวตน ผู้สังเกตยังอาจทราบชื่อจากการสื่อสารระหว่างการค้นหาและเชื่อมต่อของลูกข่าย จึงควรใช้ WPA2/WPA3 และการตั้งค่าที่เหมาะสม</li>
+  </ul>
 </div>
 
-ความปลอดภัยของระบบ Bluetooth:
+<h4 class="reading-concept-group-title">ความปลอดภัยของระบบ Bluetooth:</h4>
 - เครือข่ายไร้สายระยะสั้น (PAN) มาตรฐาน IEEE 802.15.1
-- **Bluejacking:** การส่งข้อความหรือนามบัตรที่ไม่พึงประสงค์ไปยังอุปกรณ์ที่เปิดบลูทูธไว้โดยไม่ได้รับอนุญาต (ก่อความรำคาญ ไม่ทำให้ข้อมูลรั่วไหล)
-- **Bluesnarfing:** การเข้าถึงและขโมยข้อมูลลับจากอุปกรณ์ เช่น รายชื่อผู้ติดต่อ รูปภาพ หรือข้อความ
-- **Bluebugging:** การเข้ายึดครองสิทธิ์ควบคุมอุปกรณ์เพื่อสั่งโทรออก ส่งข้อความ หรือดักฟังการสนทนา
+<section class="reading-concept-unit">
+<h5>Bluejacking:</h5>
 
-เทคโนโลยี VPN (Virtual Private Network):
-- **Remote Access VPN:** พนักงานเชื่อมต่อจากภายนอก (Work from Home) ผ่านโปรแกรม Client เข้าสู่เครือข่ายสำนักงาน
-- **Site-to-Site VPN:** เชื่อมต่อเครือข่ายของสาขาสองแห่งเข้าด้วยกันอย่างถาวรผ่านเราเตอร์หรือไฟร์วอลล์
-- **IPsec (Internet Protocol Security):** โปรโตคอลเข้ารหัสระดับ Layer 3 ประกอบด้วย 2 โปรโตคอลย่อย:
-  - **AH (Authentication Header):** ตรวจสอบความถูกต้องและบูรณภาพของข้อมูล (Integrity &amp; Authentication) แต่ *ไม่เข้ารหัสข้อมูล* (No Confidentiality)
-  - **ESP (Encapsulating Security Payload):** ให้ทั้งการเข้ารหัสข้อมูล (Confidentiality) และการตรวจสอบบูรณภาพ (Integrity) จึงเป็นที่นิยมใช้งานมากที่สุด
+การส่งข้อความหรือนามบัตรที่ไม่พึงประสงค์ไปยังอุปกรณ์ที่เปิดบลูทูธไว้โดยไม่ได้รับอนุญาต (ก่อความรำคาญ ไม่ทำให้ข้อมูลรั่วไหล)
 
+</section>
+
+<section class="reading-concept-unit">
+<h5>Bluesnarfing:</h5>
+
+การเข้าถึงและขโมยข้อมูลลับจากอุปกรณ์ เช่น รายชื่อผู้ติดต่อ รูปภาพ หรือข้อความ
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Bluebugging:</h5>
+
+การเข้ายึดครองสิทธิ์ควบคุมอุปกรณ์เพื่อสั่งโทรออก ส่งข้อความ หรือดักฟังการสนทนา
+
+</section>
+
+<h4 class="reading-concept-group-title">เทคโนโลยี VPN (Virtual Private Network):</h4>
+<section class="reading-concept-unit">
+<h5>Remote Access VPN:</h5>
+
+พนักงานเชื่อมต่อจากภายนอก (Work from Home) ผ่านโปรแกรม Client เข้าสู่เครือข่ายสำนักงาน
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Site-to-Site VPN:</h5>
+
+เชื่อมต่อเครือข่ายของสาขาสองแห่งเข้าด้วยกันอย่างถาวรผ่านเราเตอร์หรือไฟร์วอลล์
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>IPsec (Internet Protocol Security):</h5>
+
+โปรโตคอลเข้ารหัสระดับ Layer 3 ประกอบด้วย 2 โปรโตคอลย่อย:
+
+- **AH (Authentication Header):** ตรวจสอบความถูกต้องและบูรณภาพของข้อมูล (Integrity &amp; Authentication) แต่ *ไม่เข้ารหัสข้อมูล* (No Confidentiality)
+- **ESP (Encapsulating Security Payload):** ให้ทั้งการเข้ารหัสข้อมูล (Confidentiality) และการตรวจสอบบูรณภาพ (Integrity) จึงเป็นที่นิยมใช้งานมากที่สุด
+
+</section>
 <h3 id="topic-4-1-network-threats-iot">4.1.10 Network Threats, Embedded Systems &amp; IoT Security: ภัยคุกคามและอุปกรณ์อัจฉริยะ</h3>
 
-การจำแนกประเภทภัยคุกคามบนระบบเครือข่าย:
-- **DoS / DDoS (Denial of Service):** การโจมตีเพื่อทำให้บริการหรือระบบไม่สามารถใช้งานได้ DoS มาจากแหล่งเดียว แต่ **DDoS (Distributed DoS)** เป็นการระดมโจมตีพร้อมกันจากเครือข่ายเครื่องที่ติดมัลแวร์นับหมื่นนับล้านเครื่องทั่วโลก (**Botnet**) ภายใต้การสั่งการของ **Botmaster / C2 Server**
-- **Man-in-the-Middle (MITM):** ผู้โจมตีแทรกตัวอยู่ระหว่างกลางของการสื่อสาร เพื่อดักรับหรือเปลี่ยนแปลงข้อมูล เช่น ผ่านการทำ ARP Poisoning หรือ Rogue DHCP Server
-- **Spoofing (การปลอมแปลง):** การปลอมแปลงตัวตน เช่น IP Spoofing (ปลอมไอพีต้นทาง), MAC Spoofing, หรือ Email Spoofing
-- **Sniffing (การดักฟังข้อมูล):** การใช้เครื่องมืออย่าง Wireshark เพื่อดักจับแพ็กเก็ตที่วิ่งผ่านเครือข่าย หากไม่มีการเข้ารหัส ข้อมูลความลับจะถูกอ่านได้ทันที
-- **Lateral Movement (การเคลื่อนที่ในแนวราบ):** เมื่อผู้โจมตีเจาะระบบเครื่องแรกสำเร็จ (เช่น เครื่องคอมพิวเตอร์พนักงานต้อนรับ) จะใช้เครื่องดังกล่าวเป็นฐานในการสแกนหาช่องโหว่และขยายขอบเขตการควบคุมไปยังเซิร์ฟเวอร์เครื่องอื่นในเครือข่าย
+<h4 class="reading-concept-group-title">การจำแนกประเภทภัยคุกคามบนระบบเครือข่าย:</h4>
+<section class="reading-concept-unit">
+<h5>DoS / DDoS (Denial of Service):</h5>
 
-ความมั่นคงปลอดภัยของระบบฝังตัว (Embedded Systems) และระบบควบคุมทางอุตสาหกรรม (OT / ICS / SCADA):
+การโจมตีเพื่อทำให้บริการหรือระบบไม่สามารถใช้งานได้ DoS มาจากแหล่งเดียว แต่ **DDoS (Distributed DoS)** เป็นการระดมโจมตีพร้อมกันจากเครือข่ายเครื่องที่ติดมัลแวร์นับหมื่นนับล้านเครื่องทั่วโลก (**Botnet**) ภายใต้การสั่งการของ **Botmaster / C2 Server**
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Man-in-the-Middle (MITM):</h5>
+
+ผู้โจมตีแทรกตัวอยู่ระหว่างกลางของการสื่อสาร เพื่อดักรับหรือเปลี่ยนแปลงข้อมูล เช่น ผ่านการทำ ARP Poisoning หรือ Rogue DHCP Server
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Spoofing (การปลอมแปลง):</h5>
+
+การปลอมแปลงตัวตน เช่น IP Spoofing (ปลอมไอพีต้นทาง), MAC Spoofing, หรือ Email Spoofing
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Sniffing (การดักฟังข้อมูล):</h5>
+
+การใช้เครื่องมืออย่าง Wireshark เพื่อดักจับแพ็กเก็ตที่วิ่งผ่านเครือข่าย หากไม่มีการเข้ารหัส ข้อมูลความลับจะถูกอ่านได้ทันที
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Lateral Movement (การเคลื่อนที่ในแนวราบ):</h5>
+
+เมื่อผู้โจมตีเจาะระบบเครื่องแรกสำเร็จ (เช่น เครื่องคอมพิวเตอร์พนักงานต้อนรับ) จะใช้เครื่องดังกล่าวเป็นฐานในการสแกนหาช่องโหว่และขยายขอบเขตการควบคุมไปยังเซิร์ฟเวอร์เครื่องอื่นในเครือข่าย
+
+</section>
+
+<h4 class="reading-concept-group-title">ความมั่นคงปลอดภัยของระบบฝังตัว (Embedded Systems) และระบบควบคุมทางอุตสาหกรรม (OT / ICS / SCADA):</h4>
 - **ความแตกต่างสำคัญ:** ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ **ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)**
 - **ข้อจำกัด:** มักเป็นระบบเก่า (Legacy Systems) ที่ทำงานแบบ Real-time ไม่สามารถหยุดการทำงานเพื่อรีบูตหรือติดตั้งแพตช์ได้ง่าย และโพรโทคอลสื่อสารมักไม่มีระบบยืนยันตัวตนในตัว (เช่น Modbus, BACnet)
+- **Purdue Model for Industrial Control Systems (สถาปัตยกรรมแบ่งชั้นความปลอดภัย Purdue Model):**
+  - **Level 0 (Physical Process):** เซ็นเซอร์ วาล์ว มอเตอร์ และอุปกรณ์วัดค่าทางกายภาพ
+  - **Level 1 (Basic Control):** อุปกรณ์ควบคุมพื้นฐาน เช่น Programmable Logic Controllers (PLCs) และ Remote Terminal Units (RTUs)
+  - **Level 2 (Area Supervisory Control):** หน้าจอควบคุมของผู้ปฏิบัติงาน (Human-Machine Interface: HMI) และระบบควบคุม SCADA ประจำพื้นที่
+  - **Level 3 (Site Operations):** ระบบบริหารการผลิตระดับโรงงาน, บันทึกประวัติกระบวนการ (Historians), และระบบอัปเดตระบบอุตสาหกรรม
+  - **Level 3.5 (Industrial DMZ — IDMZ):** **เขตกันชนความปลอดภัยที่สำคัญที่สุด** ทำหน้าที่คั่นกลางและตัดขาดการเชื่อมต่อโดยตรงระหว่างเครือข่ายอุตสาหกรรม (OT) และเครือข่ายสำนักงาน (IT)
+  - **Level 4 / 5 (Enterprise IT & Corporate Network):** เครือข่ายสำนักงานทั่วไป อีเมล ระบบ ERP และการเชื่อมต่ออินเทอร์เน็ตภายนอก
+- **กฎเหล็กด้านความปลอดภัยของ ICS/SCADA:** ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น
 
-ความเปราะบางของอุปกรณ์ IoT (Internet of Things):
+<h4 class="reading-concept-group-title">ความเปราะบางของอุปกรณ์ IoT (Internet of Things):</h4>
 - อุปกรณ์ขนาดเล็กที่มีเซ็นเซอร์และเชื่อมต่ออินเทอร์เน็ตได้ เช่น กล้องวงจรปิดอัจฉริยะ หลอดไฟอัจฉริยะ หรือเราเตอร์ตามบ้าน
 - จุดอ่อนสำคัญ: มักตั้งรหัสผ่านเริ่มต้นมาจากโรงงาน (Default Credentials เช่น admin/admin), ไม่มีหน้าต่างอัปเดตเฟิร์มแวร์, และมักถูกผู้โจมตีแฮกเพื่อนำไปเป็นส่วนหนึ่งของเครือข่าย Botnet (เช่น Mirai Botnet)
 - **แนวทางป้องกันที่ดีที่สุด:** ต้องทำการ **แยกอุปกรณ์ IoT และ OT ออกไปไว้ใน VLAN หรือ Network Segment เฉพาะ** และควบคุมการสื่อสารผ่านไฟร์วอลล์อย่างเข้มงวด
 
 </section>
 
-<section class="reading-objective-section" id="obj-4-2">
+<section class="reading-objective-section reading-structured-objective" id="obj-4-2">
 
 ## Objective 4.2: Understand Network Security Architecture
 
 <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>สถาปัตยกรรมความมั่นคงปลอดภัยเครือข่ายคือการวางโครงสร้างและกำหนดเขตแดนเพื่อควบคุมการไหลเวียนของข้อมูล ป้องกันไม่ให้ภัยคุกคามลุกลามเมื่อเกิดการบุกรุก:</p>
-
 <h3 id="topic-4-2-segmentation-blast-radius">4.2.1 Network Segmentation &amp; Blast Radius Reduction: การแบ่งส่วนเครือข่าย</h3>
 
-**Flat Network (เครือข่ายแบบราบเรียบ):**
+<h4 class="reading-concept-group-title">Flat Network (เครือข่ายแบบราบเรียบ):</h4>
 คือเครือข่ายที่อุปกรณ์ทุกเครื่องเชื่อมต่อถึงกันโดยตรงโดยไม่มีการกั้นส่วน หากเครื่องใดเครื่องหนึ่งติดมัลแวร์หรือถูกแฮก ผู้โจมตีจะสามารถเข้าถึงเครื่องอื่น ๆ ในเครือข่ายได้ทันที
 
-**Network Segmentation (การแบ่งส่วนเครือข่าย):**
+<h4 class="reading-concept-group-title">Network Segmentation (การแบ่งส่วนเครือข่าย):</h4>
 คือแนวปฏิบัติในการแบ่งเครือข่ายขนาดใหญ่ออกเป็นเครือข่ายย่อย ๆ (Subnetworks หรือ Segments) ที่แยกจากกันในเชิงตรรกะหรือทางกายภาพ และบังคับใช้การควบคุมทราฟฟิกข้ามเขตด้วยไฟร์วอลล์หรือ Access Control Lists (ACLs)
 
-ประโยชน์หลักของการแบ่งส่วนเครือข่าย:
-1. **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น
-2. **Prevent Lateral Movement (หยุดยั้งการเคลื่อนที่ในแนวราบ):** ผู้โจมตีไม่สามารถสแกนหรือส่งมัลแวร์ข้ามไปยังเซิร์ฟเวอร์สำคัญได้โดยตรง
-3. **Traffic Isolation &amp; Performance:** ลดปริมาณการแพร่กระจายของ Broadcast ทำให้เครือข่ายมีประสิทธิภาพสูงขึ้น
-4. **Compliance &amp; Audit Scope:** ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น
-
+<h4 class="reading-concept-group-title">ประโยชน์หลักของการแบ่งส่วนเครือข่าย:</h4>
+- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น
+- **Prevent Lateral Movement (หยุดยั้งการเคลื่อนที่ในแนวราบ):** ผู้โจมตีไม่สามารถสแกนหรือส่งมัลแวร์ข้ามไปยังเซิร์ฟเวอร์สำคัญได้โดยตรง
+- **Traffic Isolation &amp; Performance:** ลดปริมาณการแพร่กระจายของ Broadcast ทำให้เครือข่ายมีประสิทธิภาพสูงขึ้น
+- **Compliance &amp; Audit Scope:** ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น
 <h3 id="topic-4-2-firewall-zones">4.2.2 Firewall Security Zones &amp; Trust Boundaries: เขตความปลอดภัยและขอบเขตความเชื่อถือ</h3>
 
 ในการออกแบบความมั่นคงปลอดภัยเครือข่าย ไฟร์วอลล์จะแบ่งเครือข่ายออกเป็นโซนความปลอดภัย (Security Zones) โดยกำหนดระดับความเชื่อถือ (Trust Levels) ที่แตกต่างกัน:
 
-- **Untrusted Zone (Outside):** โซนภายนอกที่ไม่มีความน่าเชื่อถือ เช่น เครือข่ายอินเทอร์เน็ตสาธารณะ
-- **DMZ (Demilitarized Zone):** โซนกันชนที่มีระดับความน่าเชื่อถือจำกัด (Limited Trust) สำหรับวางระบบที่เปิดให้บริการแก่สาธารณะ
-- **Trusted Zone (Inside):** โซนเครือข่ายภายในองค์กรที่มีความน่าเชื่อถือสูง เช่น เครื่องคอมพิวเตอร์พนักงานและเซิร์ฟเวอร์สำนักงาน
-- **Restricted / Management Zone:** โซนความมั่นคงปลอดภัยสูงสุดที่มีการควบคุมเข้มงวดที่สุด เช่น เครือข่ายควบคุมระบบ (Out-of-Band Management), Active Directory Domain Controllers และฐานข้อมูลการเงิน
+<section class="reading-concept-unit">
+<h4>Untrusted Zone (Outside):</h4>
 
-กฎพื้นฐานของการควบคุมทราฟฟิกระหว่างโซน:
+โซนภายนอกที่ไม่มีความน่าเชื่อถือ เช่น เครือข่ายอินเทอร์เน็ตสาธารณะ
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>DMZ (Demilitarized Zone):</h4>
+
+โซนกันชนที่มีระดับความน่าเชื่อถือจำกัด (Limited Trust) สำหรับวางระบบที่เปิดให้บริการแก่สาธารณะ
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Trusted Zone (Inside):</h4>
+
+โซนเครือข่ายภายในองค์กรที่มีความน่าเชื่อถือสูง เช่น เครื่องคอมพิวเตอร์พนักงานและเซิร์ฟเวอร์สำนักงาน
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Restricted / Management Zone:</h4>
+
+โซนความมั่นคงปลอดภัยสูงสุดที่มีการควบคุมเข้มงวดที่สุด เช่น เครือข่ายควบคุมระบบ (Out-of-Band Management), Active Directory Domain Controllers และฐานข้อมูลการเงิน
+
+</section>
+
+<h4 class="reading-concept-group-title">กฎพื้นฐานของการควบคุมทราฟฟิกระหว่างโซน:</h4>
 - ทราฟฟิกจากโซนที่มีความน่าเชื่อถือสูงไปยังโซนที่มีความน่าเชื่อถือต่ำกว่า จะได้รับอนุญาตตามนโยบาย (และไฟร์วอลล์แบบ Stateful จะอนุญาตให้ข้อมูลตอบกลับวิ่งกลับเข้ามาได้)
 - ทราฟฟิกจากโซนที่มีความน่าเชื่อถือต่ำไปยังโซนที่มีความน่าเชื่อถือสูงกว่า **จะถูกปฏิเสธโดยค่าเริ่มต้น (Default Deny)** เว้นแต่จะมีกฎอนุญาตเฉพาะเจาะจงที่จำเป็นอย่างยิ่งยวด
-
 <h3 id="topic-4-2-dmz-architecture">4.2.3 Demilitarized Zone (DMZ) Architecture: เขตปลอดทหารและเครือข่ายกันชน</h3>
 
 **DMZ (Demilitarized Zone)** คือเครือข่ายย่อยที่ถูกออกแบบมาเพื่อเป็น "เขตกันชน" ระหว่างเครือข่ายสาธารณะภายนอก (Internet) และเครือข่ายภายในองค์กร (Internal Private Network)
@@ -348,36 +679,61 @@
 
 <div class="reading-semantic-diagram" data-diagram="dmzFirewallArchitecture"></div>
 
-เป้าหมายทางสถาปัตยกรรมของ DMZ:
+<h4 class="reading-concept-group-title">เป้าหมายทางสถาปัตยกรรมของ DMZ:</h4>
 - วางเฉพาะเซิร์ฟเวอร์ที่จำเป็นต้องเปิดให้สาธารณะภายนอกเข้าถึงได้ไว้ใน DMZ เช่น **Web Server (HTTPS:443), Mail Gateway (SMTP:25), Public DNS Server (Port 53), และ Reverse Proxy / WAF**
 - **ป้องกันเครือข่ายภายใน:** หากเว็บเซิร์ฟเวอร์ใน DMZ ถูกเจาะระบบ ผู้โจมตีจะติดอยู่เพียงใน DMZ และไม่สามารถเข้าถึงเครือข่ายภายในหรือฐานข้อมูลหลักได้โดยตรง เนื่องจากมีไฟร์วอลล์ภายใน (Internal Firewall) คอยสกัดกั้นทราฟฟิกขาเข้าจาก DMZ ไว้
 
-รูปแบบการติดตั้ง DMZ:
-1. **Single-Firewall DMZ (Three-Homed Firewall):** ใช้ไฟร์วอลล์ 1 ตัวที่มีการ์ดเครือข่ายอย่างน้อย 3 พอร์ต เชื่อมต่อไปยัง Outside, DMZ และ Inside ช่วยประหยัดค่าใช้จ่าย
-2. **Dual-Firewall DMZ (Layered / Back-to-Back):** ใช้ไฟร์วอลล์ 2 ตัวกั้นระหว่าง Outside → DMZ (External Firewall) และ DMZ → Inside (Internal Firewall) โดยแนวปฏิบัติที่ดีที่สุดมักใช้ไฟร์วอลล์ต่างยี่ห้อกัน (Different Vendors) เพื่อป้องกันกรณีที่ยี่ห้อใดเกิดช่องโหว่ Zero-Day จะได้ไม่ส่งผลกระทบต่อไฟร์วอลล์ทั้งสองชั้นพร้อมกัน
+<h4 class="reading-concept-group-title">รูปแบบการติดตั้ง DMZ:</h4>
+<section class="reading-concept-unit">
+<h5>Single-Firewall DMZ (Three-Homed Firewall):</h5>
 
+ใช้ไฟร์วอลล์ 1 ตัวที่มีการ์ดเครือข่ายอย่างน้อย 3 พอร์ต เชื่อมต่อไปยัง Outside, DMZ และ Inside ช่วยประหยัดค่าใช้จ่าย
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Dual-Firewall DMZ (Layered / Back-to-Back):</h5>
+
+ใช้ไฟร์วอลล์ 2 ตัวกั้นระหว่าง Outside → DMZ (External Firewall) และ DMZ → Inside (Internal Firewall) โดยแนวปฏิบัติที่ดีที่สุดมักใช้ไฟร์วอลล์ต่างยี่ห้อกัน (Different Vendors) เพื่อป้องกันกรณีที่ยี่ห้อใดเกิดช่องโหว่ Zero-Day จะได้ไม่ส่งผลกระทบต่อไฟร์วอลล์ทั้งสองชั้นพร้อมกัน
+
+</section>
 <h3 id="topic-4-2-vlans-routing">4.2.4 Virtual Local Area Networks (VLANs) &amp; Routing: เครือข่ายเสมือนระดับสวิตช์</h3>
 
 **VLAN (Virtual Local Area Network)** คือเทคโนโลยีในระดับ **Data Link Layer (Layer 2)** ที่ใช้สวิตช์ทางกายภาพเพียงตัวเดียวในการแบ่งแยกพอร์ตออกเป็นเครือข่ายเชิงตรรกะหลายเครือข่ายเสมือนมีสวิตช์แยกต่างหากจากกัน
 
-คุณลักษณะสำคัญของ VLAN:
-- **มาตรฐาน IEEE 802.1Q:** สวิตช์จะทำการแท็กหมายเลข VLAN ID (ขนาด 12 บิต รองรับ VLAN ได้ตั้งแต่ 1 ถึง 4,094) ลงใน Ethernet Frame ระหว่างพอร์ตที่เป็น **Trunk Link**
-- **แยก Broadcast Domain:** คอมพิวเตอร์ที่อยู่ใน VLAN ต่างกันจะไม่สามารถสื่อสารหากันได้ในระดับ Layer 2 และการส่งสัญญาณ Broadcast จะถูกกักไว้เฉพาะภายใน VLAN ของตนเองเท่านั้น
-- **Inter-VLAN Routing:** หากอุปกรณ์ต่าง VLAN ต้องการสื่อสารหากัน จำเป็นต้องส่งข้อมูลขึ้นไปยังอุปกรณ์ระดับ **Layer 3 (Router หรือ Layer 3 Switch)** เพื่อทำการจัดเส้นทาง ซึ่งเป็นจุดที่องค์กรสามารถติดตั้งไฟร์วอลล์หรือ Access Control Lists (ACLs) เพื่อควบคุมความปลอดภัยได้
+<h4 class="reading-concept-group-title">คุณลักษณะสำคัญของ VLAN:</h4>
+<section class="reading-concept-unit">
+<h5>มาตรฐาน IEEE 802.1Q:</h5>
 
+สวิตช์จะทำการแท็กหมายเลข VLAN ID (ขนาด 12 บิต รองรับ VLAN ได้ตั้งแต่ 1 ถึง 4,094) ลงใน Ethernet Frame ระหว่างพอร์ตที่เป็น **Trunk Link**
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>แยก Broadcast Domain:</h5>
+
+คอมพิวเตอร์ที่อยู่ใน VLAN ต่างกันจะไม่สามารถสื่อสารหากันได้ในระดับ Layer 2 และการส่งสัญญาณ Broadcast จะถูกกักไว้เฉพาะภายใน VLAN ของตนเองเท่านั้น
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>Inter-VLAN Routing:</h5>
+
+หากอุปกรณ์ต่าง VLAN ต้องการสื่อสารหากัน จำเป็นต้องส่งข้อมูลขึ้นไปยังอุปกรณ์ระดับ **Layer 3 (Router หรือ Layer 3 Switch)** เพื่อทำการจัดเส้นทาง ซึ่งเป็นจุดที่องค์กรสามารถติดตั้งไฟร์วอลล์หรือ Access Control Lists (ACLs) เพื่อควบคุมความปลอดภัยได้
+
+</section>
 <h3 id="topic-4-2-microsegmentation">4.2.5 Micro-Segmentation &amp; East-West Traffic Control: การแบ่งส่วนเครือข่ายระดับย่อย</h3>
 
 ในศูนย์ข้อมูลคลาวด์และสถาปัตยกรรมแอปพลิเคชันยุคใหม่ ทราฟฟิกส่วนใหญ่ไม่ได้วิ่งเข้าออกจากภายนอก (North-South Traffic) แต่เป็นการสื่อสารระหว่างเซิร์ฟเวอร์ด้วยกันเองภายในศูนย์ข้อมูล (**East-West Traffic**)
 
-**Micro-Segmentation:**
+<h4 class="reading-concept-group-title">Micro-Segmentation:</h4>
 คือแนวปฏิบัติในการแบ่งส่วนความปลอดภัยลงลึกไปถึงระดับเวิร์กโหลดเดี่ยว (Workload-level), เครื่องเสมือนเดี่ยว (VM-level), หรือคอนเทนเนอร์เดี่ยว (Container-level) โดยอาศัยเทคโนโลยี Software-Defined Networking (SDN) และ Host-Based Firewalls
 
-ประโยชน์ในระบบ Multi-Tier Architecture:
+<h4 class="reading-concept-group-title">ประโยชน์ในระบบ Multi-Tier Architecture:</h4>
 ในระบบเว็บแอปพลิเคชันแบบ 3 ชั้น (Web Tier → Application Tier → Database Tier):
 - Web Tier ได้รับอนุญาตให้สื่อสารกับ Application Tier เฉพาะพอร์ต API ที่กำหนดเท่านั้น
 - Web Tier **ไม่ได้รับอนุญาตให้เชื่อมต่อไปยัง Database Tier โดยตรง**
 - เซิร์ฟเวอร์ใน Web Tier ด้วยกันเองไม่สามารถสื่อสารข้ามหากันได้ (Peer-to-Peer Isolation) ทำให้เมื่อเว็บเซิร์ฟเวอร์เครื่องหนึ่งถูกเจาะระบบ ผู้โจมตีไม่สามารถเคลื่อนที่ในแนวราบไปยังเซิร์ฟเวอร์เครื่องอื่นในระดับเดียวกันได้
-
 <h3 id="topic-4-2-defense-in-depth">4.2.6 Defense in Depth Layered Strategy: การป้องกันแบบเชิงลึกหลายชั้น</h3>
 
 **Defense in Depth (หรือ Layered Defense)** คือปรัชญาและกลยุทธ์การออกแบบความมั่นคงปลอดภัยที่วางมาตรการควบคุมและป้องกันซ้อนกันหลายระดับชั้น เพื่อให้มั่นใจว่า **หากการควบคุมในชั้นใดชั้นหนึ่งล้มเหลวหรือไม่ทำงาน การควบคุมในชั้นถัดไปยังคงสามารถตรวจจับ ป้องกัน และลดทอนผลกระทบของภัยคุกคามได้**
@@ -385,118 +741,260 @@
 <div class="reading-semantic-diagram" data-diagram="defenseInDepthLayers"></div>
 
 ลำดับชั้นการป้องกัน 5 ระดับ (ตัวอย่างกลุ่มมาตรการที่ทำงานร่วมกัน (Complementary Control Groups) ไม่ใช่จำนวนชั้นหรือเส้นทางตายตัว):
-1. **Perimeter Security (ชั้นขอบเขตภายนอก):** ปราการด่านแรกคัดกรองภัยคุกคามจากอินเทอร์เน็ต เช่น Edge Firewalls, DDoS Mitigation (Cloudflare/Akamai), Border Routers, และ External IDS/IPS
-2. **Network Security (ชั้นเครือข่าย):** ควบคุมและกักบริเวณทราฟฟิกภายใน เช่น การแบ่ง VLAN, สถาปัตยกรรม DMZ, Micro-Segmentation, Inter-VLAN ACLs, และ VPN Enclaves
-3. **Endpoint Security (ชั้นเครื่องลูกข่ายและเซิร์ฟเวอร์):** ปกป้องอุปกรณ์ปลายทาง เช่น โปรแกรม Endpoint Detection and Response (EDR), Host-based Firewalls, การอัปเดตระบบปฏิบัติการ (Patch Management), และการปิดฟังก์ชันที่ไม่จำเป็น (System Hardening)
-4. **Application Security (ชั้นซอฟต์แวร์ประยุกต์):** ปกป้องโปรแกรมและข้อมูลขณะประมวลผล เช่น Web Application Firewall (WAF), การตรวจสอบข้อมูลนำเข้า (Input Validation), วงจรการพัฒนาซอฟต์แวร์ที่ปลอดภัย (Secure SDLC), และการยืนยันตัวตนแบบหลายปัจจัย (MFA)
-5. **Data Security (ชั้นข้อมูล — หัวใจสำคัญที่สุด):** ปกป้องทรัพย์สินสารสนเทศอันมีค่า เช่น การเข้ารหัสข้อมูลขณะพัก (Encryption at Rest) และขณะส่ง (Encryption in Transit), การบริหารจัดการสิทธิ์ขั้นต่ำ (PoLP), และการสำรองข้อมูลที่ไม่สามารถแก้ไขได้ (Immutable Backups)
+<section class="reading-concept-unit">
+<h4>Perimeter Security (ชั้นขอบเขตภายนอก):</h4>
 
+ปราการด่านแรกคัดกรองภัยคุกคามจากอินเทอร์เน็ต เช่น Edge Firewalls, DDoS Mitigation (Cloudflare/Akamai), Border Routers, และ External IDS/IPS
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Network Security (ชั้นเครือข่าย):</h4>
+
+ควบคุมและกักบริเวณทราฟฟิกภายใน เช่น การแบ่ง VLAN, สถาปัตยกรรม DMZ, Micro-Segmentation, Inter-VLAN ACLs, และ VPN Enclaves
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Endpoint Security (ชั้นเครื่องลูกข่ายและเซิร์ฟเวอร์):</h4>
+
+ปกป้องอุปกรณ์ปลายทาง เช่น โปรแกรม Endpoint Detection and Response (EDR), Host-based Firewalls, การอัปเดตระบบปฏิบัติการ (Patch Management), และการปิดฟังก์ชันที่ไม่จำเป็น (System Hardening)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Application Security (ชั้นซอฟต์แวร์ประยุกต์):</h4>
+
+ปกป้องโปรแกรมและข้อมูลขณะประมวลผล เช่น Web Application Firewall (WAF), การตรวจสอบข้อมูลนำเข้า (Input Validation), วงจรการพัฒนาซอฟต์แวร์ที่ปลอดภัย (Secure SDLC), และการยืนยันตัวตนแบบหลายปัจจัย (MFA)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Data Security (ชั้นข้อมูล — หัวใจสำคัญที่สุด):</h4>
+
+ปกป้องทรัพย์สินสารสนเทศอันมีค่า เช่น การเข้ารหัสข้อมูลขณะพัก (Encryption at Rest) และขณะส่ง (Encryption in Transit), การบริหารจัดการสิทธิ์ขั้นต่ำ (PoLP), และการสำรองข้อมูลที่ไม่สามารถแก้ไขได้ (Immutable Backups)
+
+</section>
 <h3 id="topic-4-2-zero-trust">4.2.7 Zero Trust Architecture (ZTA) in Networking: สถาปัตยกรรมแบบไม่ไว้วางใจสิ่งใด</h3>
 
 สถาปัตยกรรมแบบเดิมยึดแนวคิด **Perimeter Security ("Castle-and-Moat")** ซึ่งถือว่าผู้ใช้หรืออุปกรณ์ใดก็ตามที่อยู่ "ภายใน" เครือข่ายองค์กร เป็นสิ่งที่ไว้วางใจได้โดยปริยาย (Implicit Trust) แต่เมื่อเครือข่ายขยายตัวสู่คลาวด์และการทำงานจากระยะไกล ขอบเขตแบบเดิมจึงไม่สามารถปกป้องระบบได้อีกต่อไป
 
-**Zero Trust Architecture (ZTA) ตามมาตรฐาน NIST SP 800-207:**
+<h4 class="reading-concept-group-title">Zero Trust Architecture (ZTA) ตามมาตรฐาน NIST SP 800-207:</h4>
 ยึดถือคติพจน์ประจำใจคือ **"Never Trust, Always Verify" (ไม่ไว้วางใจสิ่งใด ต้องตรวจสอบและยืนยันตัวตนทุกครั้งเสมอ)**
 
-หลักการเสาหลักของ Zero Trust:
-1. **ไม่มีความไว้วางใจโดยปริยายจากตำแหน่งที่ตั้ง:** การเชื่อมต่อสาย LAN ในสำนักงาน หรือการต่อผ่าน VPN ภายใน ไม่ได้หมายความว่าจะได้รับความไว้วางใจ
-2. **ยืนยันตัวตนอย่างชัดเจนตามบริบท (Verify Explicitly):** การอนุญาตให้เข้าถึงทรัพยากรต้องประเมินปัจจัยหลากหลายด้านอย่างไดนามิก เช่น ตัวตนของผู้ใช้ (User Identity), ความสมบูรณ์ของอุปกรณ์ (Device Health), ตำแหน่งที่ตั้ง (Geolocation), และพฤติกรรมการใช้งาน
-3. **การเข้าถึงด้วยสิทธิ์ขั้นต่ำเสมอ (Use Least Privileged Access):** กำหนดสิทธิ์แบบ Just-in-Time (JIT) และ Just-Enough-Access (JEA)
-4. **สันนิษฐานไว้ก่อนเสมอว่าระบบถูกเจาะแล้ว (Assume Breach):** ออกแบบระบบโดยคิดเสมอว่าผู้โจมตีแฝงตัวอยู่ในเครือข่ายแล้ว เพื่อผลักดันให้เกิดการแบ่งส่วนเครือข่ายย่อย การเข้ารหัสข้อมูลแบบต้นทางถึงปลายทาง และการตรวจสอบบันทึกเหตุการณ์อย่างต่อเนื่อง
+<h4 class="reading-concept-group-title">หลักการเสาหลักของ Zero Trust:</h4>
+<section class="reading-concept-unit">
+<h5>ไม่มีความไว้วางใจโดยปริยายจากตำแหน่งที่ตั้ง:</h5>
+
+การเชื่อมต่อสาย LAN ในสำนักงาน หรือการต่อผ่าน VPN ภายใน ไม่ได้หมายความว่าจะได้รับความไว้วางใจ
 
 </section>
 
-<section class="reading-objective-section" id="obj-4-3">
+<section class="reading-concept-unit">
+<h5>ยืนยันตัวตนอย่างชัดเจนตามบริบท (Verify Explicitly):</h5>
+
+การอนุญาตให้เข้าถึงทรัพยากรต้องประเมินปัจจัยหลากหลายด้านอย่างไดนามิก เช่น ตัวตนของผู้ใช้ (User Identity), ความสมบูรณ์ของอุปกรณ์ (Device Health), ตำแหน่งที่ตั้ง (Geolocation), และพฤติกรรมการใช้งาน
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>การเข้าถึงด้วยสิทธิ์ขั้นต่ำเสมอ (Use Least Privileged Access):</h5>
+
+กำหนดสิทธิ์แบบ Just-in-Time (JIT) และ Just-Enough-Access (JEA)
+
+</section>
+
+<section class="reading-concept-unit">
+<h5>สันนิษฐานไว้ก่อนเสมอว่าระบบถูกเจาะแล้ว (Assume Breach):</h5>
+
+ออกแบบระบบโดยคิดเสมอว่าผู้โจมตีแฝงตัวอยู่ในเครือข่ายแล้ว เพื่อผลักดันให้เกิดการแบ่งส่วนเครือข่ายย่อย การเข้ารหัสข้อมูลแบบต้นทางถึงปลายทาง และการตรวจสอบบันทึกเหตุการณ์อย่างต่อเนื่อง
+
+</section>
+
+</section>
+
+<section class="reading-objective-section reading-structured-objective" id="obj-4-3">
 
 ## Objective 4.3: Understand Cloud Security
 
 <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>การประมวลผลแบบคลาวด์นำมาซึ่งความยืดหยุ่นและการประหยัดต่อขนาด แต่ก็เปลี่ยนโฉมหน้าของความรับผิดชอบด้านความมั่นคงปลอดภัยไปอย่างสิ้นเชิง:</p>
-
 <h3 id="topic-4-3-cloud-characteristics">4.3.1 Cloud Computing Foundations &amp; 5 Characteristics: คุณลักษณะสำคัญ 5 ประการ</h3>
 
 ตามนิยามมาตรฐานของสถาบันมาตรฐานและเทคโนโลยีแห่งชาติสหรัฐฯ (**NIST SP 800-145**) ระบบประมวลผลแบบคลาวด์ (Cloud Computing) จะต้องมีคุณลักษณะจำเป็นพื้นฐานครบทั้ง 5 ประการ ดังนี้:
 
-1. **On-Demand Self-Service (การบริการตนเองตามความต้องการ):**
-   - ผู้ใช้บริการสามารถร้องขอ จัดสรร และปรับเปลี่ยนทรัพยากรการประมวลผล (เช่น เวลาเซิร์ฟเวอร์ พื้นที่จัดเก็บข้อมูล) ได้ด้วยตนเองโดยอัตโนมัติผ่านหน้าเว็บหรือ API โดยไม่ต้องรอให้เจ้าหน้าที่ของผู้ให้บริการคลาวด์ดำเนินการให้
-2. **Broad Network Access (การเข้าถึงเครือข่ายที่กว้างขวาง):**
-   - ทรัพยากรคลาวด์สามารถเข้าถึงได้ผ่านระบบเครือข่ายด้วยกลไกและมาตรฐานสากล รองรับการใช้งานจากอุปกรณ์ที่หลากหลาย เช่น แล็ปท็อป สมาร์ตโฟน แท็บเล็ต หรือเวิร์กสเตชัน
-3. **Resource Pooling (การรวมทรัพยากรไว้เป็นกลุ่มก้อน):**
-   - ทรัพยากรคอมพิวเตอร์ของผู้ให้บริการ (ฮาร์ดแวร์ พื้นที่เก็บข้อมูล เครือข่าย) ถูกนำมารวมกันเป็นสระรวมเพื่อให้บริการแก่ลูกค้าหลายรายพร้อมกันในรูปแบบ **Multi-Tenancy** โดยมีระบบกั้นแยกในเชิงตรรกะ ลูกค้าจะไม่ทราบตำแหน่งทางกายภาพที่แน่นอนของเซิร์ฟเวอร์
-4. **Rapid Elasticity (ความยืดหยุ่นที่รวดเร็ว):**
-   - ความสามารถในการเพิ่มขยาย (Scale Up / Scale Out) หรือลดขนาดทรัพยากร (Scale Down / Scale In) ได้อย่างรวดเร็วและเป็นอัตโนมัติตามปริมาณความต้องการใช้งานจริง ทำให้เสมือนว่ามีทรัพยากรไม่จำกัด
-5. **Measured Service (บริการที่วัดปริมาณการใช้งานได้):**
-   - ระบบคลาวด์มีมิเตอร์วัดและควบคุมปริมาณการใช้ทรัพยากรอย่างโปร่งใส เช่น ปริมาณการประมวลผล พื้นที่จัดเก็บ ปริมาณข้อมูลรับส่ง เพื่อนำไปคิดค่าบริการตามการใช้งานจริง (**Pay-as-you-go**)
+<section class="reading-concept-unit">
+<h4>On-Demand Self-Service (การบริการตนเองตามความต้องการ):</h4>
 
+- ผู้ใช้บริการสามารถร้องขอ จัดสรร และปรับเปลี่ยนทรัพยากรการประมวลผล (เช่น เวลาเซิร์ฟเวอร์ พื้นที่จัดเก็บข้อมูล) ได้ด้วยตนเองโดยอัตโนมัติผ่านหน้าเว็บหรือ API โดยไม่ต้องรอให้เจ้าหน้าที่ของผู้ให้บริการคลาวด์ดำเนินการให้
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Broad Network Access (การเข้าถึงเครือข่ายที่กว้างขวาง):</h4>
+
+- ทรัพยากรคลาวด์สามารถเข้าถึงได้ผ่านระบบเครือข่ายด้วยกลไกและมาตรฐานสากล รองรับการใช้งานจากอุปกรณ์ที่หลากหลาย เช่น แล็ปท็อป สมาร์ตโฟน แท็บเล็ต หรือเวิร์กสเตชัน
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Resource Pooling (การรวมทรัพยากรไว้เป็นกลุ่มก้อน):</h4>
+
+- ทรัพยากรคอมพิวเตอร์ของผู้ให้บริการ (ฮาร์ดแวร์ พื้นที่เก็บข้อมูล เครือข่าย) ถูกนำมารวมกันเป็นสระรวมเพื่อให้บริการแก่ลูกค้าหลายรายพร้อมกันในรูปแบบ **Multi-Tenancy** โดยมีระบบกั้นแยกในเชิงตรรกะ ลูกค้าจะไม่ทราบตำแหน่งทางกายภาพที่แน่นอนของเซิร์ฟเวอร์
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Rapid Elasticity (ความยืดหยุ่นที่รวดเร็ว):</h4>
+
+- ความสามารถในการเพิ่มขยาย (Scale Up / Scale Out) หรือลดขนาดทรัพยากร (Scale Down / Scale In) ได้อย่างรวดเร็วและเป็นอัตโนมัติตามปริมาณความต้องการใช้งานจริง ทำให้เสมือนว่ามีทรัพยากรไม่จำกัด
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Measured Service (บริการที่วัดปริมาณการใช้งานได้):</h4>
+
+- ระบบคลาวด์มีมิเตอร์วัดและควบคุมปริมาณการใช้ทรัพยากรอย่างโปร่งใส เช่น ปริมาณการประมวลผล พื้นที่จัดเก็บ ปริมาณข้อมูลรับส่ง เพื่อนำไปคิดค่าบริการตามการใช้งานจริง (**Pay-as-you-go**)
+
+</section>
 <h3 id="topic-4-3-service-models">4.3.2 Cloud Service Models (IaaS, PaaS, SaaS, FaaS): รูปแบบการให้บริการคลาวด์</h3>
 
 บริการคลาวด์แบ่งออกเป็น 4 รูปแบบหลักตามระดับการควบคุมและการบริหารจัดการ:
 
-1. **IaaS (Infrastructure as a Service — บริการโครงสร้างพื้นฐาน):**
-   - ผู้ให้บริการคลาวด์ (CSP) รับผิดชอบโครงสร้างพื้นฐานทางกายภาพ ฮาร์ดแวร์ ศูนย์ข้อมูล และระบบเวอร์ชวลไลเซชัน (Hypervisor)
-   - ลูกค้า (Customer) เช่าเครื่อง Virtual Machine (VM) และพื้นที่จัดเก็บ โดยลูกค้ามีสิทธิ์ควบคุมและรับผิดชอบตั้งแต่ **ระบบปฏิบัติการ (Guest OS), การติดตั้ง Security Patches, มิดเดิลแวร์, แอปพลิเคชัน, และข้อมูล**
-   - ตัวอย่าง: Amazon EC2, Microsoft Azure Virtual Machines, Google Compute Engine (GCE)
+<section class="reading-concept-unit">
+<h4>IaaS (Infrastructure as a Service — บริการโครงสร้างพื้นฐาน):</h4>
 
-2. **PaaS (Platform as a Service — บริการแพลตฟอร์ม):**
-   - ผู้ให้บริการคลาวด์ดูแลฮาร์ดแวร์ ระบบเครือข่าย ระบบปฏิบัติการ และซอฟต์แวร์รันไทม์ (Runtime Environment) ให้ทั้งหมด
-   - ลูกค้าดูแล **การพัฒนาโค้ดแอปพลิเคชัน (Application Code), ข้อมูล (Data) และการตั้งค่าที่ตนควบคุม**
-   - ตัวอย่าง: AWS Elastic Beanstalk (รายละเอียดขึ้นอยู่กับบริการ: ลูกค้ายังต้องเลือกเวอร์ชันที่รองรับ ตั้งค่าการอัปเดต และย้าย platform branch เมื่อจำเป็น), Google App Engine, Microsoft Azure App Services
+- ผู้ให้บริการคลาวด์ (CSP) รับผิดชอบโครงสร้างพื้นฐานทางกายภาพ ฮาร์ดแวร์ ศูนย์ข้อมูล และระบบเวอร์ชวลไลเซชัน (Hypervisor)
+- ลูกค้า (Customer) เช่าเครื่อง Virtual Machine (VM) และพื้นที่จัดเก็บ โดยลูกค้ามีสิทธิ์ควบคุมและรับผิดชอบตั้งแต่ **ระบบปฏิบัติการ (Guest OS), การติดตั้ง Security Patches, มิดเดิลแวร์, แอปพลิเคชัน, และข้อมูล**
+- ตัวอย่าง: Amazon EC2, Microsoft Azure Virtual Machines, Google Compute Engine (GCE)
 
-3. **SaaS (Software as a Service — บริการซอฟต์แวร์สำเร็จรูป):**
-   - ผู้ให้บริการคลาวด์ดูแลและบริหารจัดการระบบทั้งหมดตั้งแต่ฮาร์ดแวร์ ระบบปฏิบัติการ จนถึงตัวโปรแกรมแอปพลิเคชัน
-   - ลูกค้าเข้าใช้งานซอฟต์แวร์สำเร็จรูปผ่านเว็บเบราว์เซอร์ โดยลูกค้ามีหน้าที่ดูแลเฉพาะ **ข้อมูลของตนเอง และการจัดการสิทธิ์การเข้าถึงของผู้ใช้งาน (User Access Management)**
-   - ตัวอย่าง: Microsoft 365, Google Workspace, Salesforce, Dropbox
+</section>
 
-4. **FaaS / Serverless (Function as a Service — บริการฟังก์ชันแบบไร้เซิร์ฟเวอร์):**
-   - FaaS รันฟังก์ชันตามเหตุการณ์ (Event-Driven) และให้ผู้ให้บริการบริหารโครงสร้างพื้นฐาน หลายแผนรองรับการ scale-to-zero เมื่อว่าง แต่พฤติกรรมนี้ขึ้นอยู่กับบริการ แผน และการตั้งค่า เช่น การมี always-ready instance
-   - ตัวอย่าง: AWS Lambda, Google Cloud Functions, Azure Functions
+<section class="reading-concept-unit">
+<h4>PaaS (Platform as a Service — บริการแพลตฟอร์ม):</h4>
 
+- ผู้ให้บริการคลาวด์ดูแลฮาร์ดแวร์ ระบบเครือข่าย ระบบปฏิบัติการ และซอฟต์แวร์รันไทม์ (Runtime Environment) ให้ทั้งหมด
+- ลูกค้าดูแล **การพัฒนาโค้ดแอปพลิเคชัน (Application Code), ข้อมูล (Data) และการตั้งค่าที่ตนควบคุม**
+- ตัวอย่าง: AWS Elastic Beanstalk (รายละเอียดขึ้นอยู่กับบริการ: ลูกค้ายังต้องเลือกเวอร์ชันที่รองรับ ตั้งค่าการอัปเดต และย้าย platform branch เมื่อจำเป็น), Google App Engine, Microsoft Azure App Services
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>SaaS (Software as a Service — บริการซอฟต์แวร์สำเร็จรูป):</h4>
+
+- ผู้ให้บริการคลาวด์ดูแลและบริหารจัดการระบบทั้งหมดตั้งแต่ฮาร์ดแวร์ ระบบปฏิบัติการ จนถึงตัวโปรแกรมแอปพลิเคชัน
+- ลูกค้าเข้าใช้งานซอฟต์แวร์สำเร็จรูปผ่านเว็บเบราว์เซอร์ โดยลูกค้ามีหน้าที่ดูแลเฉพาะ **ข้อมูลของตนเอง และการจัดการสิทธิ์การเข้าถึงของผู้ใช้งาน (User Access Management)**
+- ตัวอย่าง: Microsoft 365, Google Workspace, Salesforce, Dropbox
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>FaaS / Serverless (Function as a Service — บริการฟังก์ชันแบบไร้เซิร์ฟเวอร์):</h4>
+
+- FaaS รันฟังก์ชันตามเหตุการณ์ (Event-Driven) และให้ผู้ให้บริการบริหารโครงสร้างพื้นฐาน หลายแผนรองรับการ scale-to-zero เมื่อว่าง แต่พฤติกรรมนี้ขึ้นอยู่กับบริการ แผน และการตั้งค่า เช่น การมี always-ready instance
+- ตัวอย่าง: AWS Lambda, Google Cloud Functions, Azure Functions
+
+</section>
 <h3 id="topic-4-3-shared-responsibility">4.3.3 The Shared Responsibility Model: โมเดลความรับผิดชอบร่วม</h3>
 
 ความเข้าใจผิดที่อันตรายที่สุดในระบบคลาวด์คือการคิดว่า *"เมื่อย้ายไประบบคลาวด์แล้ว ผู้ให้บริการจะดูแลความปลอดภัยทั้งหมดให้เรา"*
 
 ในความเป็นจริง ความมั่นคงปลอดภัยบนคลาวด์เป็นพันธสัญญาความรับผิดชอบร่วมกัน (**Shared Responsibility Model**):
-- **Security OF the Cloud (ความปลอดภัยของระบบคลาวด์):** เป็นหน้าที่ของผู้ให้บริการคลาวด์ (CSP) ในการดูแลรักษาศูนย์ข้อมูล อุปกรณ์ฮาร์ดแวร์ ระบบไฟฟ้า เครือข่ายแกนหลัก และซอฟต์แวร์ Hypervisor
-- **Security IN the Cloud (ความปลอดภัยภายในระบบคลาวด์):** เป็นหน้าที่ของลูกค้า (Customer) ในการปกป้องข้อมูล การตั้งค่าไฟร์วอลล์ การจัดการสิทธิ์ผู้ใช้ และการดูแลแอปพลิเคชัน
+<section class="reading-concept-unit">
+<h4>Security OF the Cloud (ความปลอดภัยของระบบคลาวด์):</h4>
+
+เป็นหน้าที่ของผู้ให้บริการคลาวด์ (CSP) ในการดูแลรักษาศูนย์ข้อมูล อุปกรณ์ฮาร์ดแวร์ ระบบไฟฟ้า เครือข่ายแกนหลัก และซอฟต์แวร์ Hypervisor
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Security IN the Cloud (ความปลอดภัยภายในระบบคลาวด์):</h4>
+
+เป็นหน้าที่ของลูกค้า (Customer) ในการปกป้องข้อมูล การตั้งค่าไฟร์วอลล์ การจัดการสิทธิ์ผู้ใช้ และการดูแลแอปพลิเคชัน
+
+</section>
 
 ในภาพ Data Policy / IAM Policy หมายถึงการจัดชั้นข้อมูล การตัดสินใจให้สิทธิ์ และการตั้งค่าบัญชีที่ลูกค้าควบคุม ไม่ได้หมายความว่าลูกค้าดำเนินบริการ Storage หรือ IAM ทั้งหมดเอง ผู้ให้บริการยังรักษาความปลอดภัยของส่วนบริการที่ตนบริหาร รายละเอียดของโมเดลรวมถึง PaaS ให้ตรวจบริการและข้อตกลง
 
 <div class="reading-semantic-diagram" data-diagram="cloudSharedResponsibility"></div>
+
+<h4 class="reading-concept-group-title">ตารางเปรียบเทียบความรับผิดชอบ 8 ชั้นสถาปัตยกรรม (Shared Responsibility Matrix):</h4>
+
+| ชั้นสถาปัตยกรรม (Architectural Layer) | On-Premises (ศูนย์ข้อมูลตนเอง) | IaaS (Infrastructure as a Service) | PaaS (Platform as a Service) | SaaS (Software as a Service) |
+|---|---|---|---|---|
+| **Data &amp; Information (ข้อมูลและความลับ)** | **Customer** | **Customer** | **Customer** | **Customer** |
+| **Identity &amp; Access (บัญชีและสิทธิ์ผู้ใช้)** | **Customer** | **Customer** | **Customer** | **Customer** |
+| **Application (โค้ดและการตั้งค่าแอป)** | **Customer** | **Customer** | **Customer** | **Cloud Provider (CSP)** |
+| **Runtime &amp; Middleware (สภาพแวดล้อมรันไทม์)** | **Customer** | **Customer** | **Cloud Provider (CSP)** | **Cloud Provider (CSP)** |
+| **Operating System (ระบบปฏิบัติการ OS)** | **Customer** | **Customer** | **Cloud Provider (CSP)** | **Cloud Provider (CSP)** |
+| **Virtualization / Hypervisor** | **Customer** | **Cloud Provider (CSP)** | **Cloud Provider (CSP)** | **Cloud Provider (CSP)** |
+| **Physical Hardware &amp; Network** | **Customer** | **Cloud Provider (CSP)** | **Cloud Provider (CSP)** | **Cloud Provider (CSP)** |
+| **Physical Facilities / Datacenter** | **Customer** | **Cloud Provider (CSP)** | **Cloud Provider (CSP)** | **Cloud Provider (CSP)** |
 
 <div class="reading-callout tip">
   <div class="reading-callout-header">
     <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
     <span>ความรับผิดชอบที่ลูกค้ายังคงมี: การตัดสินใจและการตั้งค่าที่ตนควบคุม</span>
   </div>
-  <p>ในทุกโมเดล (IaaS, PaaS, SaaS หรือ FaaS) ลูกค้ายังคงรับผิดชอบการตัดสินใจและการตั้งค่าที่ตนควบคุม แต่ผู้ให้บริการยังต้องรักษาความปลอดภัยของบริการจัดเก็บข้อมูลและระบบ IAM ที่ตนบริหาร ขอบเขตจริงขึ้นอยู่กับบริการและข้อตกลง:<br>
-  1. <strong>Data &amp; Information (การจัดชั้นข้อมูลและการกำหนดผู้มีสิทธิ์เข้าถึง)</strong><br>
-  2. <strong>Identity &amp; Access Management (บัญชี นโยบาย และสิทธิ์ที่ลูกค้าควบคุม)</strong></p>
+  <p>ในทุกโมเดล (IaaS, PaaS, SaaS หรือ FaaS) ลูกค้ายังคงรับผิดชอบการตัดสินใจและการตั้งค่าที่ตนควบคุม แต่ผู้ให้บริการยังต้องรักษาความปลอดภัยของบริการจัดเก็บข้อมูลและระบบ IAM ที่ตนบริหาร ขอบเขตจริงขึ้นอยู่กับบริการและข้อตกลง:</p>
+  <ul>
+    <li><strong>Data &amp; Information (การจัดชั้นข้อมูลและการกำหนดผู้มีสิทธิ์เข้าถึง)</strong></li>
+    <li><strong>Identity &amp; Access Management (บัญชี นโยบาย และสิทธิ์ที่ลูกค้าควบคุม)</strong></li>
+  </ul>
 </div>
-
 <h3 id="topic-4-3-deployment-models">4.3.4 Cloud Deployment Models: รูปแบบการติดตั้งระบบคลาวด์</h3>
 
 ตามมาตรฐาน NIST SP 800-145 รูปแบบการติดตั้งระบบคลาวด์แบ่งออกเป็น 4 รูปแบบหลัก:
 
-1. **Public Cloud (คลาวด์สาธารณะ):**
-   - โครงสร้างพื้นฐานคลาวด์ที่เปิดให้บริการแก่สาธารณชนทั่วไปหรือกลุ่มอุตสาหกรรมขนาดใหญ่ ตาม NIST อาจเป็นขององค์กรธุรกิจ การศึกษา หรือรัฐบาล หรือหลายฝ่ายร่วมกัน ตัวอย่างผู้ให้บริการเชิงพาณิชย์ ได้แก่ AWS, Azure, Google Cloud
-   - ใช้ทรัพยากรร่วมกันหลายองค์กร (Multi-tenant) ประหยัดค่าใช้จ่ายและยืดหยุ่นสูงสุด
-2. **Private Cloud (คลาวด์ส่วนตัว):**
-   - โครงสร้างพื้นฐานคลาวด์ที่สร้างขึ้นเพื่อใช้งานเฉพาะภายในองค์กรเดียวเท่านั้น (Single-tenant) อาจตั้งอยู่ในศูนย์ข้อมูลขององค์กรเอง (On-Premises) หรือจ้างให้ผู้ให้บริการภายนอกดูแลให้
-   - ให้การควบคุมเฉพาะทางและสภาพแวดล้อมเฉพาะองค์กร แต่ไม่รับประกันความปลอดภัยสูงกว่าทุกทางเลือก เหมาะสำหรับหน่วยงานที่มีข้อกำหนดด้านกฎระเบียบเข้มงวด
-3. **Hybrid Cloud (คลาวด์แบบผสมผสาน):**
-   - ตาม NIST เป็นการเชื่อมโครงสร้างพื้นฐานคลาวด์ต่างกันตั้งแต่สองแห่ง (Private, Community หรือ Public) ที่ยังคงเป็นเอกเทศแต่เชื่อมให้ย้ายข้อมูล/แอปได้ เช่น Private Cloud กับ Public Cloud; ในการใช้คำทั่วไปของผู้ให้บริการอาจรวมระบบ on-premises แบบเดิมด้วย แต่ระบบ on-premises ไม่ได้เป็น Private Cloud โดยอัตโนมัติ
-   - ข้อมูลและแอปพลิเคชันสามารถถ่ายโอนข้ามกันได้อย่างราบรื่น ช่วยให้องค์กรเก็บข้อมูลความลับไว้ในศูนย์ข้อมูลส่วนตัว แต่สามารถยืมพลังประมวลผลจากพับลิกคลาวด์เมื่อมีความต้องการสูงขึ้น (**Cloud Bursting**)
-4. **Community Cloud (คลาวด์สำหรับกลุ่มองค์กรเฉพาะ):**
-   - โครงสร้างพื้นฐานคลาวด์ที่สร้างขึ้นและแชร์กันเฉพาะกลุ่มองค์กรที่มีพันธกิจ กฎหมาย นโยบาย หรือข้อกำหนดความมั่นคงปลอดภัยร่วมกัน
-   - ตัวอย่าง: เครือข่ายโรงพยาบาลในภูมิภาคที่แชร์ระบบเวชระเบียนผู้ป่วยร่วมกัน, หรือกลุ่มธนาคารที่ใช้ระบบชำระเงินมาตรฐานเดียวกัน
+<section class="reading-concept-unit">
+<h4>Public Cloud (คลาวด์สาธารณะ):</h4>
 
+- โครงสร้างพื้นฐานคลาวด์ที่เปิดให้บริการแก่สาธารณชนทั่วไปหรือกลุ่มอุตสาหกรรมขนาดใหญ่ ตาม NIST อาจเป็นขององค์กรธุรกิจ การศึกษา หรือรัฐบาล หรือหลายฝ่ายร่วมกัน ตัวอย่างผู้ให้บริการเชิงพาณิชย์ ได้แก่ AWS, Azure, Google Cloud
+- ใช้ทรัพยากรร่วมกันหลายองค์กร (Multi-tenant) ประหยัดค่าใช้จ่ายและยืดหยุ่นสูงสุด
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Private Cloud (คลาวด์ส่วนตัว):</h4>
+
+- โครงสร้างพื้นฐานคลาวด์ที่สร้างขึ้นเพื่อใช้งานเฉพาะภายในองค์กรเดียวเท่านั้น (Single-tenant) อาจตั้งอยู่ในศูนย์ข้อมูลขององค์กรเอง (On-Premises) หรือจ้างให้ผู้ให้บริการภายนอกดูแลให้
+- ให้การควบคุมเฉพาะทางและสภาพแวดล้อมเฉพาะองค์กร แต่ไม่รับประกันความปลอดภัยสูงกว่าทุกทางเลือก เหมาะสำหรับหน่วยงานที่มีข้อกำหนดด้านกฎระเบียบเข้มงวด
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Hybrid Cloud (คลาวด์แบบผสมผสาน):</h4>
+
+- ตาม NIST เป็นการเชื่อมโครงสร้างพื้นฐานคลาวด์ต่างกันตั้งแต่สองแห่ง (Private, Community หรือ Public) ที่ยังคงเป็นเอกเทศแต่เชื่อมให้ย้ายข้อมูล/แอปได้ เช่น Private Cloud กับ Public Cloud; ในการใช้คำทั่วไปของผู้ให้บริการอาจรวมระบบ on-premises แบบเดิมด้วย แต่ระบบ on-premises ไม่ได้เป็น Private Cloud โดยอัตโนมัติ
+- ข้อมูลและแอปพลิเคชันสามารถถ่ายโอนข้ามกันได้อย่างราบรื่น ช่วยให้องค์กรเก็บข้อมูลความลับไว้ในศูนย์ข้อมูลส่วนตัว แต่สามารถยืมพลังประมวลผลจากพับลิกคลาวด์เมื่อมีความต้องการสูงขึ้น (**Cloud Bursting**)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Community Cloud (คลาวด์สำหรับกลุ่มองค์กรเฉพาะ):</h4>
+
+- โครงสร้างพื้นฐานคลาวด์ที่สร้างขึ้นและแชร์กันเฉพาะกลุ่มองค์กรที่มีพันธกิจ กฎหมาย นโยบาย หรือข้อกำหนดความมั่นคงปลอดภัยร่วมกัน
+- ตัวอย่าง: เครือข่ายโรงพยาบาลในภูมิภาคที่แชร์ระบบเวชระเบียนผู้ป่วยร่วมกัน, หรือกลุ่มธนาคารที่ใช้ระบบชำระเงินมาตรฐานเดียวกัน
+
+</section>
 <h3 id="topic-4-3-hybrid-vs-multicloud">4.3.5 Critical Deployment Distinction: ความแตกต่างระหว่าง Hybrid vs. Multi-Cloud</h3>
 
 ข้อสอบ ISC2 CC มักทดสอบความเข้าใจระหว่างคำสองคำนี้อย่างสม่ำเสมอ:
 
-- **Hybrid Cloud:** มุ่งเน้นไปที่การผสมผสานระหว่าง **สภาพแวดล้อมต่างชนิดกัน (Private + Public)** โดยมีเทคโนโลยีเชื่อมโยงเวิร์กโหลดเข้าด้วยกัน เช่น บริษัทเก็บฐานข้อมูลลูกค้าไว้ในPrivate Cloud ในดาต้าเซ็นเตอร์ของตนเอง แต่รันเว็บหน้าร้านบน AWS (Public)
-- **Multi-Cloud:** มุ่งเน้นไปที่การใช้งาน **ผู้ให้บริการคลาวด์สาธารณะหลายรายพร้อมกัน (Multiple CSPs)** เช่น การใช้เซิร์ฟเวอร์ประมวลผลบน AWS ร่วมกับการใช้บริการ AI บน Google Cloud และใช้อีเมลบน Microsoft Azure เพื่อหลีกเลี่ยงการถูกผูกขาดจากผู้ให้บริการรายเดียว (**Vendor Lock-in**) และเพิ่มความทนทานต่อภัยพิบัติ
+<section class="reading-concept-unit">
+<h4>Hybrid Cloud:</h4>
 
-ตารางเปรียบเทียบ Hybrid Cloud vs. Multi-Cloud:
+มุ่งเน้นไปที่การผสมผสานระหว่าง **สภาพแวดล้อมต่างชนิดกัน (Private + Public)** โดยมีเทคโนโลยีเชื่อมโยงเวิร์กโหลดเข้าด้วยกัน เช่น บริษัทเก็บฐานข้อมูลลูกค้าไว้ในPrivate Cloud ในดาต้าเซ็นเตอร์ของตนเอง แต่รันเว็บหน้าร้านบน AWS (Public)
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>Multi-Cloud:</h4>
+
+มุ่งเน้นไปที่การใช้งาน **ผู้ให้บริการคลาวด์สาธารณะหลายรายพร้อมกัน (Multiple CSPs)** เช่น การใช้เซิร์ฟเวอร์ประมวลผลบน AWS ร่วมกับการใช้บริการ AI บน Google Cloud และใช้อีเมลบน Microsoft Azure เพื่อหลีกเลี่ยงการถูกผูกขาดจากผู้ให้บริการรายเดียว (**Vendor Lock-in**) และเพิ่มความทนทานต่อภัยพิบัติ
+
+</section>
+
+<h4 class="reading-concept-group-title">ตารางเปรียบเทียบ Hybrid Cloud vs. Multi-Cloud:</h4>
 
 | <div class="reading-bilingual-term"><span class="reading-term-en">**Dimension**</span><span class="reading-term-th">(มิติการพิจารณา)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Hybrid Cloud**</span><span class="reading-term-th">(คลาวด์แบบผสมผสาน)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Multi-Cloud**</span><span class="reading-term-th">(คลาวด์หลายผู้ให้บริการ)</span></div> |
 | :--- | :--- | :--- |
@@ -504,27 +1002,40 @@
 | **Primary Goal** | รักษาข้อมูลความลับไว้ในองค์กร แต่ยืมความยืดหยุ่นจากคลาวด์ | หลีกเลี่ยงการผูกขาด (Vendor Lock-in) และเลือกใช้จุดเด่นของแต่ละเจ้า |
 | **Integration Level** | เชื่อมต่อข้อมูลและกระบวนการทำงานร่วมกันอย่างแนบแน่น | อาจทำงานแยกจากกันเป็นอิสระ หรือเชื่อมต่อกันผ่าน API |
 | **Exam Trigger** | *"Private cloud integrated with public cloud"; "On-premises integrated with public cloud" เป็นคำใช้แบบกว้างของผู้ให้บริการ ต้องดูบริบท ไม่ใช่ทุกระบบในองค์กรเป็น Private Cloud* | *"Avoiding vendor lock-in", "Using two or more cloud service providers"* |
-
 <h3 id="topic-4-3-cloud-network-controls">4.3.6 Cloud Network Architecture &amp; Security Controls: สถาปัตยกรรมเครือข่ายคลาวด์</h3>
 
 การรักษาความปลอดภัยเครือข่ายบนระบบคลาวด์อาศัยการกำหนดค่าเชิงซอฟต์แวร์ (Software-Defined):
 
-- **Virtual Private Cloud (VPC) / VNet:** เครือข่ายเสมือนส่วนตัวที่แยกเป็นเอกเทศบนระบบคลาวด์ของผู้ให้บริการ ทำให้ลูกค้าสามารถควบคุมการจัดสรรช่วงไอพี (CIDR Block), การสร้างเครือข่ายย่อย (Subnets), และตารางเส้นทาง (Route Tables) ได้เหมือนศูนย์ข้อมูลส่วนตัว
-- **Public Subnet vs. Private Subnet:**
-  - Public Subnet: เชื่อมต่อไปยัง **Internet Gateway (IGW)** โดยตรง เหมาะสำหรับวาง Load Balancer หรือ Bastion Host
-  - Private Subnet: ไม่มีเส้นทางตรงผ่าน Internet Gateway เซิร์ฟเวอร์ฐานข้อมูลต้องอยู่ในนี้ การออกไปยังอินเทอร์เน็ตต้องใช้เส้นทางและกลไกที่เหมาะสม เช่น **NAT Gateway** สำหรับ IPv4; อาจใช้ NAT instance หรือสำหรับ IPv6 ใช้ egress-only Internet Gateway ตามสถาปัตยกรรมและนโยบาย
-- **ตัวอย่าง AWS VPC — Security Groups vs. Network ACLs (NACLs):**
-  - **Security Group:** การกรองแบบ **Stateful** ที่ผูกกับทรัพยากร/อินเทอร์เฟซของ AWS (ไม่ใช่ Firewall ภายใน Guest OS) ทราฟฟิกตอบกลับของการเชื่อมต่อที่อนุญาตผ่านได้อัตโนมัติ กำหนดได้เฉพาะกฎ Allow
-  - **Network ACL (NACL):** ไฟร์วอลล์เสมือนระดับ **Subnet** มีคุณสมบัติเป็น **Stateless** (ต้องกำหนดกฎทั้งขาเข้าและขาออกแยกกันอย่างชัดเจน) รองรับทั้งกฎ Allow และ Deny เรียงลำดับตามหมายเลข Rule Number ผู้ให้บริการอื่นมีรายละเอียดต่างกัน เช่น Azure NSG เป็น Stateful และมีทั้ง Allow/Deny โดยผูกกับ subnet หรือ NIC ได้
+<section class="reading-concept-unit">
+<h4>Virtual Private Cloud (VPC) / VNet:</h4>
+
+เครือข่ายเสมือนส่วนตัวที่แยกเป็นเอกเทศบนระบบคลาวด์ของผู้ให้บริการ ทำให้ลูกค้าสามารถควบคุมการจัดสรรช่วงไอพี (CIDR Block), การสร้างเครือข่ายย่อย (Subnets), และตารางเส้นทาง (Route Tables) ได้เหมือนศูนย์ข้อมูลส่วนตัว
 
 </section>
 
-<section class="reading-objective-section reading-review-section" id="domain-4-review">
+<section class="reading-concept-unit">
+<h4>Public Subnet vs. Private Subnet:</h4>
+
+- Public Subnet: เชื่อมต่อไปยัง **Internet Gateway (IGW)** โดยตรง เหมาะสำหรับวาง Load Balancer หรือ Bastion Host
+- Private Subnet: ไม่มีเส้นทางตรงผ่าน Internet Gateway เซิร์ฟเวอร์ฐานข้อมูลต้องอยู่ในนี้ การออกไปยังอินเทอร์เน็ตต้องใช้เส้นทางและกลไกที่เหมาะสม เช่น **NAT Gateway** สำหรับ IPv4; อาจใช้ NAT instance หรือสำหรับ IPv6 ใช้ egress-only Internet Gateway ตามสถาปัตยกรรมและนโยบาย
+
+</section>
+
+<section class="reading-concept-unit">
+<h4>ตัวอย่าง AWS VPC — Security Groups vs. Network ACLs (NACLs):</h4>
+
+- **Security Group:** การกรองแบบ **Stateful** ที่ผูกกับทรัพยากร/อินเทอร์เฟซของ AWS (ไม่ใช่ Firewall ภายใน Guest OS) ทราฟฟิกตอบกลับของการเชื่อมต่อที่อนุญาตผ่านได้อัตโนมัติ กำหนดได้เฉพาะกฎ Allow
+- **Network ACL (NACL):** ไฟร์วอลล์เสมือนระดับ **Subnet** มีคุณสมบัติเป็น **Stateless** (ต้องกำหนดกฎทั้งขาเข้าและขาออกแยกกันอย่างชัดเจน) รองรับทั้งกฎ Allow และ Deny เรียงลำดับตามหมายเลข Rule Number ผู้ให้บริการอื่นมีรายละเอียดต่างกัน เช่น Azure NSG เป็น Stateful และมีทั้ง Allow/Deny โดยผูกกับ subnet หรือ NIC ได้
+
+</section>
+
+</section>
+
+<section class="reading-objective-section reading-review-section reading-structured-objective" id="domain-4-review">
 
 ## Domain 4 Summary, Key Distinctions &amp; Review Scenarios
 
 ส่วนนี้เป็นชุดเครื่องมือทบทวนและแบบฝึกปฏิบัติสถานการณ์จำลองระดับ Domain-wide เพื่อเสริมสร้างความเข้าใจเชิงลึกสำหรับทั้ง 3 วัตถุประสงค์ใน Domain 4:
-
 <h3 id="topic-4-review-scenarios">Domain 4 Review &amp; Practical Analysis</h3>
 <span id="topic-4-review-distinctions" class="reading-topic-anchor" aria-hidden="true"></span>
 <span id="topic-4-review-traps" class="reading-topic-anchor" aria-hidden="true"></span>
@@ -704,22 +1215,22 @@
 
 #### 2. ข้อสังเกตและจุดจำสำคัญสำหรับข้อสอบ (Exam Traps)
 
-1. ถ้าข้อสอบถามถึง **"ความรับผิดชอบที่ลูกค้ายังคงมีในทุกโมเดล: การจัดชั้นข้อมูลและการกำหนดสิทธิ์ที่ตนควบคุม"** → ให้เลือก **Data &amp; Information** หรือ **Identity &amp; Access Management (IAM)**
-2. ถ้าข้อสอบถามถึง **"ใครรับผิดชอบการติดตั้ง Security Patch ให้กับระบบปฏิบัติการของ Virtual Machine ใน IaaS"** → ให้เลือก **Customer (ลูกค้าผู้ใช้บริการ)**
-3. ถ้าข้อสอบถามถึง **"ใครรับผิดชอบการติดตั้ง Security Patch ให้กับระบบปฏิบัติการใน PaaS หรือ SaaS"** → ให้เลือก **Cloud Service Provider (CSP)**
-4. ถ้าข้อสอบถามถึง **"การจัดวางเซิร์ฟเวอร์ที่เปิดให้สาธารณะภายนอกเข้าถึงได้ เพื่อป้องกันเครือข่ายภายใน"** → ให้เลือก **DMZ (Demilitarized Zone)**
-5. ถ้าข้อสอบถามถึง **"ห้ามนำสิ่งใดไปวางไว้ใน DMZ โดยเด็ดขาด"** → ให้เลือก **Internal Database** หรือ **Active Directory / Domain Controller**
-6. ถ้าข้อสอบถามถึง **"การแบ่งส่วนเครือข่ายเพื่อลดขอบเขตความเสียหายและหยุดยั้งการเคลื่อนที่ในแนวราบ"** → ให้เลือก **Network Segmentation** หรือ **Micro-Segmentation**
-7. ถ้าข้อสอบถามถึง **"การควบคุมทราฟฟิกในแนวราบ (East-West Traffic) ระหว่างเซิร์ฟเวอร์ในระดับเวิร์กโหลดเดี่ยว"** → ให้เลือก **Micro-Segmentation**
-8. ถ้าข้อสอบถามถึง **"อุปกรณ์ที่ทำหน้าที่แยก Collision Domain แต่ไม่สามารถแยก Broadcast Domain ได้"** → ให้เลือก **Switch (Layer 2)**
-9. ถ้าข้อสอบถามถึง **"อุปกรณ์ที่ทำหน้าที่แยก Broadcast Domain ออกจากกันโดยเด็ดขาด"** → ให้เลือก **Router (Layer 3)**
-10. ถ้าข้อสอบถามถึง **"โพรโทคอลที่ทำงานแบบ Connection-oriented และมีการทำ 3-Way Handshake"** → ให้เลือก **TCP**
-11. ถ้าข้อสอบถามถึง **"โพรโทคอลที่ทำงานแบบ Connectionless น้ำหนักเบา และเหมาะกับการสตรีมวิดีโอหรือ DNS"** → ให้เลือก **UDP**
-12. ถ้าข้อสอบถามถึง **"การเข้ารหัส Wi-Fi มาตรฐานสูงสุดที่ใช้กลไก SAE ป้องกันการสุ่มรหัสผ่านออฟไลน์"** → ให้เลือก **WPA3**
-13. ถ้าข้อสอบถามถึง **"มาตรการใดต่อไปนี้ไม่ใช่การรักษาความปลอดภัย Wi-Fi ที่แท้จริง"** → ให้เลือก **MAC Filtering** หรือ **Disable SSID Broadcast (ซ่อนชื่อ Wi-Fi)**
-14. ถ้าข้อสอบถามถึง **"ความแตกต่างระหว่าง IDS และ IPS"** → ตอบว่า **IDS ทำได้เพียงตรวจจับและแจ้งเตือน (Alert) ส่วน IPS สามารถสกัดกั้นและทิ้งแพ็กเก็ตได้ทันที (Inline Drop/Block)**
-15. ถ้าข้อสอบถามถึง **"สถาปัตยกรรมที่เชื่อม Private Cloud เข้ากับ Public Cloud"** → ตอบ **Hybrid Cloud**
-16. ถ้าข้อสอบถามถึง **"กลยุทธ์การใช้งานผู้ให้บริการคลาวด์หลายเจ้าพร้อมกันเพื่อป้องกัน Vendor Lock-in"** → ตอบ **Multi-Cloud**
+- ถ้าข้อสอบถามถึง **"ความรับผิดชอบที่ลูกค้ายังคงมีในทุกโมเดล: การจัดชั้นข้อมูลและการกำหนดสิทธิ์ที่ตนควบคุม"** → ให้เลือก **Data &amp; Information** หรือ **Identity &amp; Access Management (IAM)**
+- ถ้าข้อสอบถามถึง **"ใครรับผิดชอบการติดตั้ง Security Patch ให้กับระบบปฏิบัติการของ Virtual Machine ใน IaaS"** → ให้เลือก **Customer (ลูกค้าผู้ใช้บริการ)**
+- ถ้าข้อสอบถามถึง **"ใครรับผิดชอบการติดตั้ง Security Patch ให้กับระบบปฏิบัติการใน PaaS หรือ SaaS"** → ให้เลือก **Cloud Service Provider (CSP)**
+- ถ้าข้อสอบถามถึง **"การจัดวางเซิร์ฟเวอร์ที่เปิดให้สาธารณะภายนอกเข้าถึงได้ เพื่อป้องกันเครือข่ายภายใน"** → ให้เลือก **DMZ (Demilitarized Zone)**
+- ถ้าข้อสอบถามถึง **"ห้ามนำสิ่งใดไปวางไว้ใน DMZ โดยเด็ดขาด"** → ให้เลือก **Internal Database** หรือ **Active Directory / Domain Controller**
+- ถ้าข้อสอบถามถึง **"การแบ่งส่วนเครือข่ายเพื่อลดขอบเขตความเสียหายและหยุดยั้งการเคลื่อนที่ในแนวราบ"** → ให้เลือก **Network Segmentation** หรือ **Micro-Segmentation**
+- ถ้าข้อสอบถามถึง **"การควบคุมทราฟฟิกในแนวราบ (East-West Traffic) ระหว่างเซิร์ฟเวอร์ในระดับเวิร์กโหลดเดี่ยว"** → ให้เลือก **Micro-Segmentation**
+- ถ้าข้อสอบถามถึง **"อุปกรณ์ที่ทำหน้าที่แยก Collision Domain แต่ไม่สามารถแยก Broadcast Domain ได้"** → ให้เลือก **Switch (Layer 2)**
+- ถ้าข้อสอบถามถึง **"อุปกรณ์ที่ทำหน้าที่แยก Broadcast Domain ออกจากกันโดยเด็ดขาด"** → ให้เลือก **Router (Layer 3)**
+- ถ้าข้อสอบถามถึง **"โพรโทคอลที่ทำงานแบบ Connection-oriented และมีการทำ 3-Way Handshake"** → ให้เลือก **TCP**
+- ถ้าข้อสอบถามถึง **"โพรโทคอลที่ทำงานแบบ Connectionless น้ำหนักเบา และเหมาะกับการสตรีมวิดีโอหรือ DNS"** → ให้เลือก **UDP**
+- ถ้าข้อสอบถามถึง **"การเข้ารหัส Wi-Fi มาตรฐานสูงสุดที่ใช้กลไก SAE ป้องกันการสุ่มรหัสผ่านออฟไลน์"** → ให้เลือก **WPA3**
+- ถ้าข้อสอบถามถึง **"มาตรการใดต่อไปนี้ไม่ใช่การรักษาความปลอดภัย Wi-Fi ที่แท้จริง"** → ให้เลือก **MAC Filtering** หรือ **Disable SSID Broadcast (ซ่อนชื่อ Wi-Fi)**
+- ถ้าข้อสอบถามถึง **"ความแตกต่างระหว่าง IDS และ IPS"** → ตอบว่า **IDS ทำได้เพียงตรวจจับและแจ้งเตือน (Alert) ส่วน IPS สามารถสกัดกั้นและทิ้งแพ็กเก็ตได้ทันที (Inline Drop/Block)**
+- ถ้าข้อสอบถามถึง **"สถาปัตยกรรมที่เชื่อม Private Cloud เข้ากับ Public Cloud"** → ตอบ **Hybrid Cloud**
+- ถ้าข้อสอบถามถึง **"กลยุทธ์การใช้งานผู้ให้บริการคลาวด์หลายเจ้าพร้อมกันเพื่อป้องกัน Vendor Lock-in"** → ตอบ **Multi-Cloud**
 
 #### 3. ตารางสรุปคำสำคัญบ่งชี้แนวคิด (Keyword-to-Concept Matrix)
 

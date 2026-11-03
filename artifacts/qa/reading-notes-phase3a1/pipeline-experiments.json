@@ -1,0 +1,32 @@
+[
+  {
+    "name": "inline-currency",
+    "input": "AV = \\$10,000",
+    "output": "AV = $10,000"
+  },
+  {
+    "name": "html-currency",
+    "input": "<p>AV = \\$10,000</p>",
+    "output": "<p>AV = \\$10,000</p>"
+  },
+  {
+    "name": "inline-bold",
+    "input": "**Asset Value**",
+    "output": "<p><strong>Asset Value</strong></p>"
+  },
+  {
+    "name": "html-bold",
+    "input": "<p>**Asset Value**</p>",
+    "output": "<p>**Asset Value**</p>"
+  },
+  {
+    "name": "valid-math",
+    "input": "SLE = \\$10,000 \\times 0.50 = \\$5,000",
+    "output": "<span class=\"reading-math-inline\" role=\"math\" aria-label=\"SLE = \\$10,000 \\times 0.50 = \\$5,000\"><var class=\"math-var\">SLE</var> = $10,000 <span class=\"math-operator\">&times;</span> 0.50 = $5,000</span>"
+  },
+  {
+    "name": "nested-list",
+    "input": "1. Layer 7\n   - Responsibility\n   - Example\n2. Layer 6\n   - Responsibility",
+    "output": "<ol><li>Layer 7<ul><li>Responsibility</li><li>Example</li></ul></li><li>Layer 6<ul><li>Responsibility</li></ul></li></ol>"
+  }
+]

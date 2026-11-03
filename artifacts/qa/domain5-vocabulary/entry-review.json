@@ -1,0 +1,1579 @@
+[
+  {
+    "id": "VOC-CC26-D5-001",
+    "knowledge": "KNOW-D5-001",
+    "localEvidence": "T:7-19; I03,I04",
+    "references": [
+      "R01",
+      "R22"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Classification assigns a category under the organization’s sensitivity scheme. Labeling communicates that category through a marking or metadata; neither operation by itself enforces access.",
+    "scopeLimits": "Supply the scheme and handling rule; category names are not universal.",
+    "misconceptions": "Label changes sensitivity; confidential always means all employees.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Classification assigns a category under the organization’s sensitivity scheme. Labeling communicates that category through a marking or metadata; neither operation by itself enforces access. Conditions: Supply the scheme and handling rule; category names are not universal.",
+      "objective": "5.1 — Use the supplied scheme; assigning a category differs from applying a label or enforcing permissions.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การกำหนดประเภทตามความอ่อนไหวและเกณฑ์ขององค์กร ชื่อประเภทและข้อกำหนดอาจต่างกันระหว่างองค์กร / Guidance: ใช้เกณฑ์ที่โจทย์ให้ การกำหนดประเภทต่างจากการติดป้ายและการบังคับสิทธิ์",
+      "definition": "Distinction supported by concise definition: Assigning data to a category according to its sensitivity and the organization's handling scheme.",
+      "example": "The owner classifies a customer report as Restricted under the company scheme. / เจ้าของจัดรายงานลูกค้าเป็น Restricted ตามเกณฑ์บริษัท",
+      "guidance": "Use the supplied scheme; assigning a category differs from applying a label or enforcing permissions.",
+      "duplicates": "D3SecurityLabel indicates a category; this entry teaches assignment under an organization-specific scheme. Not a second label definition.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-001; local source T:7-19; I03,I04; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "79d0fb7e2b3b8adac146df92e258636db5e4c593605485cb3ad42575e31b1a6e"
+  },
+  {
+    "id": "VOC-CC26-D5-002",
+    "knowledge": "KNOW-D5-001",
+    "localEvidence": "T:7-19; I03,I04",
+    "references": [
+      "R01",
+      "R22"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Classification assigns a category under the organization’s sensitivity scheme. Labeling communicates that category through a marking or metadata; neither operation by itself enforces access.",
+    "scopeLimits": "Supply the scheme and handling rule; category names are not universal.",
+    "misconceptions": "Label changes sensitivity; confidential always means all employees.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Classification assigns a category under the organization’s sensitivity scheme. Labeling communicates that category through a marking or metadata; neither operation by itself enforces access. Conditions: Supply the scheme and handling rule; category names are not universal.",
+      "objective": "5.1 — Distinguish category communication from category assignment and access enforcement.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การแสดงประเภทข้อมูลที่กำหนดแล้วด้วยเครื่องหมายหรือ Metadata ป้ายไม่ได้บังคับสิทธิ์เข้าถึงโดยตัวมันเอง / Guidance: แยกการแสดงประเภทออกจากการกำหนดประเภทและการบังคับสิทธิ์เข้าถึง",
+      "definition": "Distinction supported by concise definition: Applying a marking or metadata that communicates a data category already assigned.",
+      "example": "An analyst adds a Restricted metadata tag after the owner classifies the file. / นักวิเคราะห์ติดป้าย Metadata ว่า Restricted หลังเจ้าของจัดประเภทไฟล์",
+      "guidance": "Distinguish category communication from category assignment and access enforcement.",
+      "duplicates": "D3SecurityLabel defines the MAC object attribute; this entry teaches the marking action versus category assignment, without assuming label-enforced access.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-001; local source T:7-19; I03,I04; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "3712b62a4130600f20761be48942ebfd269f0b5248d59042cfd7be009032bfd8"
+  },
+  {
+    "id": "VOC-CC26-D5-003",
+    "knowledge": "KNOW-D5-003",
+    "localEvidence": "T:23-27; I06",
+    "references": [
+      "R03"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Choose sanitization for the medium, sensitivity and reuse plan; ordinary deletion is not equivalent. Cryptographic erase depends on sound prior encryption and eliminating recoverable relevant key copies, followed by verification/validation.",
+    "scopeLimits": "Do not equate SSD with one mandatory method or physical damage with assured destruction; consider backups and escrow.",
+    "misconceptions": "Deleting a file or public key suffices; any damaged media is sanitized.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Choose sanitization for the medium, sensitivity and reuse plan; ordinary deletion is not equivalent. Cryptographic erase depends on sound prior encryption and eliminating recoverable relevant key copies, followed by verification/validation. Conditions: Do not equate SSD with one mandatory method or physical damage with assured destruction; consider backups and escrow.",
+      "objective": "5.1 — Ordinary file deletion is insufficient evidence; consider media suitability and verification of the result.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "กระบวนการทำให้เข้าถึงข้อมูลเป้าหมายบนสื่อได้ยากจนไม่เป็นไปได้ภายใต้ระดับความพยายามที่กำหนด ต้องเลือกวิธีให้เหมาะกับสื่อ ความลับ และแผนใช้ซ้ำ / Guidance: การลบไฟล์ทั่วไปไม่ยืนยันผล ต้องพิจารณาชนิดสื่อและตรวจยืนยันผลการดำเนินการ",
+      "definition": "Distinction supported by concise definition: A process that makes access to target data on media infeasible for a specified level of effort.",
+      "example": "A team validates an approved sanitization method before transferring an SSD. / ทีมตรวจยืนยันผลวิธี Sanitization ที่อนุมัติก่อนส่งต่อ SSD",
+      "guidance": "Ordinary file deletion is insufficient evidence; consider media suitability and verification of the result.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-003; local source T:23-27; I06; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "6c9b39a4e7bbc4ee41545760b16faa2fa45cc4593ec2a9be8925c045981c00eb"
+  },
+  {
+    "id": "VOC-CC26-D5-004",
+    "knowledge": "KNOW-D5-003",
+    "localEvidence": "T:23-27; I06",
+    "references": [
+      "R03"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Choose sanitization for the medium, sensitivity and reuse plan; ordinary deletion is not equivalent. Cryptographic erase depends on sound prior encryption and eliminating recoverable relevant key copies, followed by verification/validation.",
+    "scopeLimits": "Do not equate SSD with one mandatory method or physical damage with assured destruction; consider backups and escrow.",
+    "misconceptions": "Deleting a file or public key suffices; any damaged media is sanitized.",
+    "scores": {
+      "technical": 4,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Choose sanitization for the medium, sensitivity and reuse plan; ordinary deletion is not equivalent. Cryptographic erase depends on sound prior encryption and eliminating recoverable relevant key copies, followed by verification/validation. Conditions: Do not equate SSD with one mandatory method or physical damage with assured destruction; consider backups and escrow.",
+      "objective": "5.1 — Check retained key copies and prior encryption; removing only a local key is not sufficient assurance.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การกำจัดกุญแจที่เกี่ยวข้องเพื่อให้กู้ข้อมูลเข้ารหัสเป้าหมายไม่ได้ในทางปฏิบัติ ต้องมีการเข้ารหัสที่เหมาะสมและจัดการสำเนากุญแจที่กู้คืนได้ด้วย / Guidance: ตรวจสำเนากุญแจและการเข้ารหัสก่อนหน้า การลบกุญแจเฉพาะในเครื่องไม่ให้ความมั่นใจเพียงพอ",
+      "definition": "Distinction supported by concise definition: Sanitization using destruction of relevant cryptographic keys so encrypted target data cannot feasibly be recovered.",
+      "example": "An escrow copy of the decryption key prevents the team from establishing cryptographic erase. / สำเนากุญแจถอดรหัสในระบบ Escrow ทำให้ทีมยังยืนยัน Cryptographic erase ไม่ได้",
+      "guidance": "Check retained key copies and prior encryption; removing only a local key is not sufficient assurance.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-003; local source T:23-27; I06; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "8d1f6ddc557fe32dd78a657962a290efe91ba3cd3e6be02eaa39a08124a3190c"
+  },
+  {
+    "id": "VOC-CC26-D5-005",
+    "knowledge": "KNOW-D5-004",
+    "localEvidence": "T:27-55; I07,I11-I15",
+    "references": [
+      "R04",
+      "R05",
+      "R17",
+      "R26"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Symmetric encryption is efficient for bulk protection. In public-key encryption the recipient’s public key protects content for the recipient’s private key; a signature is generated with the signer’s private key and verified with the matching trusted public key.",
+    "scopeLimits": "Encryption alone does not imply integrity/authenticity. Signing is not generically private-key encryption. TLS versions differ.",
+    "misconceptions": "Signer verification hides content; sharing private keys solves distribution.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Symmetric encryption is efficient for bulk protection. In public-key encryption the recipient’s public key protects content for the recipient’s private key; a signature is generated with the signer’s private key and verified with the matching trusted public key. Conditions: Encryption alone does not imply integrity/authenticity. Signing is not generically private-key encryption. TLS versions differ.",
+      "objective": "5.1 — Identify the shared-secret role; encryption alone does not establish integrity or sender authenticity.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การเข้ารหัสและถอดรหัสโดยใช้กุญแจลับเดียวกัน เหมาะกับการปกป้องข้อมูลปริมาณมาก แต่ยังต้องจัดการกุญแจอย่างปลอดภัย / Guidance: ระบุบทบาทกุญแจลับร่วม การเข้ารหัสเพียงอย่างเดียวไม่ได้ยืนยันความสมบูรณ์หรือผู้ส่ง",
+      "definition": "Distinction supported by concise definition: Encryption in which the same secret key is used for encryption and decryption.",
+      "example": "A storage service encrypts bulk data with a protected symmetric key. / บริการจัดเก็บเข้ารหัสข้อมูลจำนวนมากด้วยกุญแจสมมาตรที่ปกป้องไว้",
+      "guidance": "Identify the shared-secret role; encryption alone does not establish integrity or sender authenticity.",
+      "duplicates": "D1Encryption is the general confidentiality process; this entry adds shared-secret key roles, not a synonym.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-004; local source T:27-55; I07,I11-I15; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "5784ea1ec4dc61771316fd7e56ef0d9e7e73ab626c97bda6c47ebf50f9906c60"
+  },
+  {
+    "id": "VOC-CC26-D5-006",
+    "knowledge": "KNOW-D5-004",
+    "localEvidence": "T:27-55; I07,I11-I15",
+    "references": [
+      "R04",
+      "R05",
+      "R17",
+      "R26"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Symmetric encryption is efficient for bulk protection. In public-key encryption the recipient’s public key protects content for the recipient’s private key; a signature is generated with the signer’s private key and verified with the matching trusted public key.",
+    "scopeLimits": "Encryption alone does not imply integrity/authenticity. Signing is not generically private-key encryption. TLS versions differ.",
+    "misconceptions": "Signer verification hides content; sharing private keys solves distribution.",
+    "scores": {
+      "technical": 4,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 46,
+    "hardFails": [],
+    "passes": {
+      "technical": "Symmetric encryption is efficient for bulk protection. In public-key encryption the recipient’s public key protects content for the recipient’s private key; a signature is generated with the signer’s private key and verified with the matching trusted public key. Conditions: Encryption alone does not imply integrity/authenticity. Signing is not generically private-key encryption. TLS versions differ.",
+      "objective": "5.1 — Distinguish encryption from signing: recipient public key protects content; signer private key creates a signature.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "วิธีทางรหัสลับที่ใช้กุญแจสาธารณะและกุญแจส่วนตัวซึ่งสัมพันธ์กัน แต่หน้าที่ขึ้นกับกลไก เช่น เข้ารหัสหรือสร้างลายมือชื่อ / Guidance: แยกการเข้ารหัสกับการลงลายมือชื่อ กุญแจสาธารณะผู้รับปกป้องเนื้อหา ส่วนกุญแจส่วนตัวผู้ลงนามใช้สร้างลายมือชื่อ",
+      "definition": "Distinction supported by concise definition: Cryptographic methods using a mathematically related public key and private key with different roles.",
+      "example": "A sender uses the recipient's public encryption key; the recipient uses the private key to decrypt. / ผู้ส่งใช้กุญแจสาธารณะสำหรับเข้ารหัสของผู้รับ และผู้รับใช้กุญแจส่วนตัวถอดรหัส",
+      "guidance": "Distinguish encryption from signing: recipient public key protects content; signer private key creates a signature.",
+      "duplicates": "D1DigitalSignature is one application; distinct public/private roles and encryption-versus-signing distinction are assessed here. Existing signature simplification is not copied.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-004; local source T:27-55; I07,I11-I15; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "8579d66fb1e1a6bf835e8d5b1bbfb49bae78c6152008198f0663e12026155488"
+  },
+  {
+    "id": "VOC-CC26-D5-007",
+    "knowledge": "KNOW-D5-005",
+    "localEvidence": "N:90-102; S:101-140; I19-I22",
+    "references": [
+      "R19",
+      "R18",
+      "R07"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "A digest comparison can show whether a file matches a trusted reference; it does not by itself identify the person who changed it. Collision resistance means finding distinct matching inputs is infeasible, not that collisions cannot exist.",
+    "scopeLimits": "Reference digest must be authenticated; MD5 unsuitable when collision resistance is required; passwords need dedicated salted costed hashing.",
+    "misconceptions": "Hashing is reversible encryption; collision impossible; fast unsalted hash is sufficient for passwords.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "A digest comparison can show whether a file matches a trusted reference; it does not by itself identify the person who changed it. Collision resistance means finding distinct matching inputs is infeasible, not that collisions cannot exist. Conditions: Reference digest must be authenticated; MD5 unsuitable when collision resistance is required; passwords need dedicated salted costed hashing.",
+      "objective": "5.1 — Differentiate infeasible collision finding from impossible collisions and from the avalanche effect.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "คุณสมบัติที่ทำให้การหาข้อมูลต่างกันสองชุดซึ่งให้ค่าแฮชเดียวกันทำได้ยากจนไม่เป็นไปได้ในทางคำนวณ ไม่ได้แปลว่าการชนกันไม่มีอยู่ / Guidance: แยกการหาค่าชนกันที่ทำได้ยากจากการอ้างว่าไม่มีวันชนกัน และแยกจาก Avalanche effect",
+      "definition": "Distinction supported by concise definition: A hash-function property making it computationally infeasible to find two distinct inputs with the same digest.",
+      "example": "A software publisher avoids MD5 when collision resistance is required. / ผู้เผยแพร่ซอฟต์แวร์หลีกเลี่ยง MD5 เมื่อต้องการ Collision resistance",
+      "guidance": "Differentiate infeasible collision finding from impossible collisions and from the avalanche effect.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-005; local source N:90-102; S:101-140; I19-I22; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "67ce2719c93c1e69f56453b62a71b71f10b7c48b8c00a1b0667150794e2d2d33"
+  },
+  {
+    "id": "VOC-CC26-D5-008",
+    "knowledge": "KNOW-D5-006",
+    "localEvidence": "External supplementation for missing local unit (F07)",
+    "references": [
+      "R08",
+      "R01"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Quantum-resistant cryptography addresses attacks from quantum-capable adversaries against vulnerable cryptographic schemes. It includes key establishment and signature approaches usable on conventional computers.",
+    "scopeLimits": "Inventory vulnerable public-key dependencies, evaluate approved replacements and test migration; no prediction of quantum arrival or universal deadline.",
+    "misconceptions": "PQC requires quantum hardware; changing bulk AES alone replaces vulnerable public-key dependencies.",
+    "scores": {
+      "technical": 4,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Quantum-resistant cryptography addresses attacks from quantum-capable adversaries against vulnerable cryptographic schemes. It includes key establishment and signature approaches usable on conventional computers. Conditions: Inventory vulnerable public-key dependencies, evaluate approved replacements and test migration; no prediction of quantum arrival or universal deadline.",
+      "objective": "5.1 — Recognize the purpose and migration dependencies; stronger bulk encryption alone does not replace vulnerable public-key mechanisms.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "กลไกรหัสลับที่ออกแบบให้ต้านทานคู่โจมตีที่ใช้ควอนตัมและคอมพิวเตอร์ทั่วไป ใช้งานบนคอมพิวเตอร์ทั่วไปได้ ไม่ใช่การสื่อสารควอนตัม / Guidance: เข้าใจจุดประสงค์และส่วนพึ่งพาระหว่างย้ายระบบ การเพิ่มความแข็งแกร่งการเข้ารหัสข้อมูลจำนวนมากไม่ได้แทนกลไกกุญแจสาธารณะที่เสี่ยง",
+      "definition": "Distinction supported by concise definition: Cryptographic methods designed to resist attacks by quantum-capable adversaries as well as conventional attackers.",
+      "example": "An organization inventories vulnerable public-key dependencies before planning migration. / องค์กรสำรวจส่วนพึ่งพากุญแจสาธารณะที่เสี่ยงก่อนวางแผนย้ายระบบ",
+      "guidance": "Recognize the purpose and migration dependencies; stronger bulk encryption alone does not replace vulnerable public-key mechanisms.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-006; local source External supplementation for missing local unit (F07); registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "260ab9977297f2f58b558a48fc39125b449c9910421b884f8097d9c987d0f879"
+  },
+  {
+    "id": "VOC-CC26-D5-009",
+    "knowledge": "KNOW-D5-007",
+    "localEvidence": "T:79-109; I28-I33",
+    "references": [
+      "R23",
+      "R22"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Logging records occurrences; aggregation collects records from multiple sources; monitoring evaluates observations. A central repository without usable data or analysis is not assurance of detection.",
+    "scopeLimits": "Choose sources relevant to the question; protect timestamp/context and records; retain under policy, not an invented universal duration.",
+    "misconceptions": "Collecting logs means an analyst reviewed them; SIEM replaces every endpoint defense.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 4,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 46,
+    "hardFails": [],
+    "passes": {
+      "technical": "Logging records occurrences; aggregation collects records from multiple sources; monitoring evaluates observations. A central repository without usable data or analysis is not assurance of detection. Conditions: Choose sources relevant to the question; protect timestamp/context and records; retain under policy, not an invented universal duration.",
+      "objective": "5.2 — Separate collecting records from monitoring them and correlating events; missing sources limit visibility.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การรวบรวมบันทึกเหตุการณ์จากหลายแหล่งเพื่อค้นหาและวิเคราะห์ต่อ การรวมบันทึกไม่เท่ากับตรวจพบหรือยืนยันการโจมตีแล้ว / Guidance: แยกการรวบรวมจากการติดตามและเชื่อมโยงเหตุการณ์ แหล่งบันทึกที่ขาดทำให้มองเห็นไม่ครบ",
+      "definition": "Distinction supported by concise definition: Collecting event records from multiple sources into a location or system for further use.",
+      "example": "Authentication and application audit records are collected in a central service. / บันทึกยืนยันตัวตนและบันทึกตรวจสอบแอปถูกรวมในบริการส่วนกลาง",
+      "guidance": "Separate collecting records from monitoring them and correlating events; missing sources limit visibility.",
+      "duplicates": "D1AuditTrail/Logging is recording; this entry is multi-source collection, distinct from recording or analyzing.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-007; local source T:79-109; I28-I33; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "5441a6922a060ccd07ab281ad49158161bbe4e9ad6da5060750a8f25b6df9ebd"
+  },
+  {
+    "id": "VOC-CC26-D5-010",
+    "knowledge": "KNOW-D5-007",
+    "localEvidence": "T:79-109; I28-I33",
+    "references": [
+      "R23",
+      "R22"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Logging records occurrences; aggregation collects records from multiple sources; monitoring evaluates observations. A central repository without usable data or analysis is not assurance of detection.",
+    "scopeLimits": "Choose sources relevant to the question; protect timestamp/context and records; retain under policy, not an invented universal duration.",
+    "misconceptions": "Collecting logs means an analyst reviewed them; SIEM replaces every endpoint defense.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Logging records occurrences; aggregation collects records from multiple sources; monitoring evaluates observations. A central repository without usable data or analysis is not assurance of detection. Conditions: Choose sources relevant to the question; protect timestamp/context and records; retain under policy, not an invented universal duration.",
+      "objective": "5.2 — A correlated alert is a lead, not proof of compromise; distinguish analysis support from authorized blocking.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "ระบบที่รวบรวมและวิเคราะห์ข้อมูลกับเหตุการณ์ด้านความปลอดภัยเพื่อช่วยติดตามและสืบสวน การตอบสนองอัตโนมัติขึ้นกับการเชื่อมต่อ การตั้งค่า และอำนาจที่ให้ไว้ / Guidance: แจ้งเตือนที่เชื่อมโยงได้เป็นเบาะแส ไม่ใช่หลักฐานว่าถูกบุกรุกแล้ว แยกการช่วยวิเคราะห์จากอำนาจบล็อก",
+      "definition": "Distinction supported by concise definition: A system that collects and analyzes security-related information and events to support monitoring and investigation.",
+      "example": "A SIEM correlates sign-in and export records for an analyst to investigate. / SIEM เชื่อมโยงบันทึกลงชื่อเข้าใช้กับการส่งออกให้นักวิเคราะห์ตรวจสอบ",
+      "guidance": "A correlated alert is a lead, not proof of compromise; distinguish analysis support from authorized blocking.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-007; local source T:79-109; I28-I33; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "29a767f78822f2070fbc138562aabbdbd776f31613c87bc85c019e3c4c756632"
+  },
+  {
+    "id": "VOC-CC26-D5-011",
+    "knowledge": "KNOW-D5-008",
+    "localEvidence": "T:109-125; I34-I36",
+    "references": [
+      "R21"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Triage validates reports and prioritizes investigation or action using scope, likely impact, time sensitivity and resources. Organizational escalation and response authority determine permitted next actions.",
+    "scopeLimits": "State stage, evidence, impact and procedure; no universal P1 matrix or first action.",
+    "misconceptions": "Largest alert count first; automated label overrides business context.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Triage validates reports and prioritizes investigation or action using scope, likely impact, time sensitivity and resources. Organizational escalation and response authority determine permitted next actions. Conditions: State stage, evidence, impact and procedure; no universal P1 matrix or first action.",
+      "objective": "5.2 — Apply the stated business impact and urgency criteria; alert volume alone does not establish priority.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การประเมินเหตุการณ์เบื้องต้นเพื่อตรวจสอบความน่าเชื่อถือ จัดลำดับความสำคัญ และส่งต่อให้ผู้รับผิดชอบตามแผน / Guidance: ใช้เกณฑ์ผลกระทบและความเร่งด่วนที่ระบุ จำนวนแจ้งเตือนอย่างเดียวไม่กำหนดลำดับ",
+      "definition": "Distinction supported by concise definition: Initial assessment of reported security events to validate them and determine priority and appropriate routing.",
+      "example": "An analyst prioritizes active unauthorized changes to a payment service over blocked probes on a training host. / นักวิเคราะห์ให้การแก้ระบบชำระเงินโดยไม่ได้รับอนุญาตที่กำลังเกิดสำคัญกว่าการสแกนที่ถูกบล็อกบนเครื่องฝึก",
+      "guidance": "Apply the stated business impact and urgency criteria; alert volume alone does not establish priority.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-008; local source T:109-125; I34-I36; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "7335552208ed9369c859132d65f9b9a80484068550b9d91847af4868a20b7cfb"
+  },
+  {
+    "id": "VOC-CC26-D5-012",
+    "knowledge": "KNOW-D5-010",
+    "localEvidence": "I35,I37; N:275-295",
+    "references": [
+      "R21",
+      "R02"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Relate observations using relevant host, identity and time context to assess a possible pattern. Several correlated records may strengthen an inference without proving attribution or success.",
+    "scopeLimits": "Distinguish prevented routine attempts from evidence requiring human response; validate AI-derived explanations against source records.",
+    "misconceptions": "Correlation alone is proof; a routine block is automatically top priority.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Relate observations using relevant host, identity and time context to assess a possible pattern. Several correlated records may strengthen an inference without proving attribution or success. Conditions: Distinguish prevented routine attempts from evidence requiring human response; validate AI-derived explanations against source records.",
+      "objective": "5.2 — Correlation suggests a relationship; proximity in time alone does not prove one attack or a causal link.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การเชื่อมข้อมูลจากหลายบันทึกเพื่อหารูปแบบหรือความสัมพันธ์ที่อาจมีความหมาย ต้องตรวจบริบท เช่น บัญชี เวลา เครื่อง และ Session / Guidance: การเชื่อมโยงเสนอความสัมพันธ์ เวลาใกล้กันอย่างเดียวไม่พิสูจน์ว่าเป็นการโจมตีเดียวกันหรือมีเหตุและผล",
+      "definition": "Distinction supported by concise definition: Relating observations from multiple records to identify potentially meaningful patterns or connections.",
+      "example": "A sign-in and an export share the same account and session identifier. / การลงชื่อเข้าใช้และส่งออกมีบัญชีและรหัส Session เดียวกัน",
+      "guidance": "Correlation suggests a relationship; proximity in time alone does not prove one attack or a causal link.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-010; local source I35,I37; N:275-295; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "6c10633585232d0314c3eaf67938a410ad5ca9b238f5a442dadc5da44f9ddd66"
+  },
+  {
+    "id": "VOC-CC26-D5-013",
+    "knowledge": "KNOW-D5-012",
+    "localEvidence": "I40,I41; N:317-346",
+    "references": [
+      "R15",
+      "R21"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "CTI is analyzed threat information useful to a decision. Indicators such as addresses/hashes guide searches, but require time, relevance and confidence checks before disruptive action.",
+    "scopeLimits": "A shared or reassigned address can reduce confidence; preserve information-sharing constraints.",
+    "misconceptions": "A feed entry is proof of compromise; indicators remain reliable forever.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "CTI is analyzed threat information useful to a decision. Indicators such as addresses/hashes guide searches, but require time, relevance and confidence checks before disruptive action. Conditions: A shared or reassigned address can reduce confidence; preserve information-sharing constraints.",
+      "objective": "5.2 — Distinguish contextual intelligence from an unverified feed; information supports judgment rather than replacing it.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "ข้อมูลภัยคุกคามที่ผ่านการวิเคราะห์และเพิ่มบริบทเพื่อสนับสนุนการตัดสินใจ ต้องพิจารณาความเกี่ยวข้อง ความทันเวลา และความน่าเชื่อถือ / Guidance: แยกข่าวกรองที่มีบริบทจาก Feed ที่ยังไม่ตรวจสอบ ข้อมูลช่วยตัดสินใจแต่ไม่แทนวิจารณญาณ",
+      "definition": "Distinction supported by concise definition: Threat information analyzed and contextualized to support security decisions.",
+      "example": "An analyst uses a recent campaign report to guide a search for related artifacts. / นักวิเคราะห์ใช้รายงานแคมเปญล่าสุดเป็นแนวทางค้นหาร่องรอยที่เกี่ยวข้อง",
+      "guidance": "Distinguish contextual intelligence from an unverified feed; information supports judgment rather than replacing it.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-012; local source I40,I41; N:317-346; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "befd0722d7a9457deb627bad21cb017de995f4641a85a108ff681548c8225612"
+  },
+  {
+    "id": "VOC-CC26-D5-014",
+    "knowledge": "KNOW-D5-012",
+    "localEvidence": "I40,I41; N:317-346",
+    "references": [
+      "R15",
+      "R21"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "CTI is analyzed threat information useful to a decision. Indicators such as addresses/hashes guide searches, but require time, relevance and confidence checks before disruptive action.",
+    "scopeLimits": "A shared or reassigned address can reduce confidence; preserve information-sharing constraints.",
+    "misconceptions": "A feed entry is proof of compromise; indicators remain reliable forever.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "CTI is analyzed threat information useful to a decision. Indicators such as addresses/hashes guide searches, but require time, relevance and confidence checks before disruptive action. Conditions: A shared or reassigned address can reduce confidence; preserve information-sharing constraints.",
+      "objective": "5.2 — Check indicator age and relevance; a reassigned or shared IP address is weak evidence by itself.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "ร่องรอยที่สังเกตได้ซึ่งอาจบ่งชี้กิจกรรมอันตรายหรือการบุกรุกเมื่อพิจารณาบริบท การตรงกับตัวบ่งชี้เพียงอย่างเดียวไม่ยืนยันเหตุการณ์ / Guidance: ตรวจอายุและความเกี่ยวข้องของตัวบ่งชี้ IP ที่ถูกจัดสรรใหม่หรือใช้ร่วมกันเป็นหลักฐานอ่อนหากใช้ลำพัง",
+      "definition": "Distinction supported by concise definition: An observable artifact that can suggest malicious activity or compromise when interpreted in context.",
+      "example": "A reported malicious file hash is used to search historical endpoint records. / ค่าแฮชไฟล์ที่รายงานว่าอันตรายถูกใช้ค้นบันทึกเครื่องปลายทางย้อนหลัง",
+      "guidance": "Check indicator age and relevance; a reassigned or shared IP address is weak evidence by itself.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-012; local source I40,I41; N:317-346; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "ff146bb75dbd8cb7e41dfca1d9d04a75d966111f7ca256c31111348eb922e30e"
+  },
+  {
+    "id": "VOC-CC26-D5-015",
+    "knowledge": "KNOW-D5-013",
+    "localEvidence": "I42-I44; T:133-137",
+    "references": [
+      "R09"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "ATT&CK organizes observed adversary behaviors. Tactics express goals; techniques express methods. Mapping a behavior can support detection-gap analysis; the knowledge base does not block attacks itself.",
+    "scopeLimits": "No exhaustive tactic list or technique-ID recall; frameworks are aids rather than certainty.",
+    "misconceptions": "ATT&CK is SIEM; technique is motivation.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "ATT&CK organizes observed adversary behaviors. Tactics express goals; techniques express methods. Mapping a behavior can support detection-gap analysis; the knowledge base does not block attacks itself. Conditions: No exhaustive tactic list or technique-ID recall; frameworks are aids rather than certainty.",
+      "objective": "5.2 — A tactic describes why an adversary acts; a technique describes how the goal is pursued.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "ฐานความรู้กลยุทธ์เชิงยุทธวิธีและเทคนิคของคู่โจมตีจากพฤติกรรมที่สังเกตได้ ใช้ช่วยอธิบายพฤติกรรมและประเมินช่องว่างการตรวจจับ ไม่ใช่เครื่องมือบล็อกเอง / Guidance: Tactic อธิบายเป้าหมายว่าทำไปเพื่ออะไร ส่วน Technique อธิบายวิธีดำเนินการ",
+      "definition": "Distinction supported by concise definition: A knowledge base of adversary tactics and techniques based on observed behavior.",
+      "example": "A team maps observed credential-access behavior to ATT&CK techniques. / ทีมจับคู่พฤติกรรมเข้าถึงข้อมูลรับรองที่พบกับเทคนิคใน ATT&CK",
+      "guidance": "A tactic describes why an adversary acts; a technique describes how the goal is pursued.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-013; local source I42-I44; T:133-137; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "4a2771102ab121bdfaedf3ed9805bb292b4f3878ef7e7657f8617153bf1bd77e"
+  },
+  {
+    "id": "VOC-CC26-D5-016",
+    "knowledge": "KNOW-D5-014",
+    "localEvidence": "N:406,414,426,471; supplemented from RS.AN-06/07",
+    "references": [
+      "R21",
+      "R22"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Protect incident records’ confidentiality, integrity and provenance; restrict access to authorized personnel. Collect/retain data under evidence procedures and retention policy; share via designated channels with approved recipients.",
+    "scopeLimits": "Apply the policy supplied in the item; respect an explicit preservation hold. Formal forensic chain of custody is not claimed mandatory for every incident.",
+    "misconceptions": "IR permits unrestricted sharing; routine deletion overrides a hold; public tools can receive raw records.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Protect incident records’ confidentiality, integrity and provenance; restrict access to authorized personnel. Collect/retain data under evidence procedures and retention policy; share via designated channels with approved recipients. Conditions: Apply the policy supplied in the item; respect an explicit preservation hold. Formal forensic chain of custody is not claimed mandatory for every incident.",
+      "objective": "5.3 — Follow the supplied plan and authority; knowing a response technique does not itself authorize its use.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "แผนที่กำหนดแนวทาง บทบาท การประสานงาน และการจัดการเหตุการณ์ขององค์กร ต้องดำเนินการตามอำนาจและนโยบายจัดการข้อมูลที่กำหนด / Guidance: ทำตามแผนและอำนาจที่ระบุ การรู้วิธีตอบสนองไม่ได้ให้อำนาจใช้วิธีนั้นโดยอัตโนมัติ",
+      "definition": "Distinction supported by concise definition: A documented plan defining how an organization prepares for and manages security incidents.",
+      "example": "An analyst sends relevant evidence to the designated incident lead through the approved channel. / นักวิเคราะห์ส่งหลักฐานที่เกี่ยวข้องให้หัวหน้าเหตุการณ์ผ่านช่องทางที่อนุมัติ",
+      "guidance": "Follow the supplied plan and authority; knowing a response technique does not itself authorize its use.",
+      "duplicates": "D1IncidentResponse is the response activity; this entry is the documented plan defining roles, authority and handling.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-014; local source N:406,414,426,471; supplemented from RS.AN-06/07; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "8c6f2fbe9d9c4fa1a99364603d2a7287fd6d0a42f6441d2662898efc746a0351"
+  },
+  {
+    "id": "VOC-CC26-D5-017",
+    "knowledge": "KNOW-D5-014",
+    "localEvidence": "N:406,414,426,471; supplemented from RS.AN-06/07",
+    "references": [
+      "R21",
+      "R22"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Protect incident records’ confidentiality, integrity and provenance; restrict access to authorized personnel. Collect/retain data under evidence procedures and retention policy; share via designated channels with approved recipients.",
+    "scopeLimits": "Apply the policy supplied in the item; respect an explicit preservation hold. Formal forensic chain of custody is not claimed mandatory for every incident.",
+    "misconceptions": "IR permits unrestricted sharing; routine deletion overrides a hold; public tools can receive raw records.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Protect incident records’ confidentiality, integrity and provenance; restrict access to authorized personnel. Collect/retain data under evidence procedures and retention policy; share via designated channels with approved recipients. Conditions: Apply the policy supplied in the item; respect an explicit preservation hold. Formal forensic chain of custody is not claimed mandatory for every incident.",
+      "objective": "5.3 — When a hold is explicitly active, preserve the specified records and controlled access rather than applying routine deletion.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "คำสั่งให้เก็บบันทึกที่ระบุไว้แม้ถึงกำหนดลบตามปกติ จนผู้มีอำนาจยกเลิกคำสั่ง ไม่ใช่ข้อกำหนดให้เก็บทุกข้อมูลตลอดไป / Guidance: เมื่อมีคำสั่งสงวนที่ยังมีผล ให้เก็บบันทึกที่ระบุและควบคุมการเข้าถึง แทนการลบตามรอบ",
+      "definition": "Distinction supported by concise definition: A direction to retain specified records despite their normal deletion schedule until the hold is released.",
+      "example": "Incident records are retained after their routine deletion date because an active hold applies. / บันทึกเหตุการณ์ยังถูกเก็บหลังวันลบปกติเพราะมีคำสั่งสงวนที่ยังมีผล",
+      "guidance": "When a hold is explicitly active, preserve the specified records and controlled access rather than applying routine deletion.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-014; local source N:406,414,426,471; supplemented from RS.AN-06/07; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "a1f85ac59fe546f45c1f074f2ac03e903283f9f183eab6a2a4d0c3f9be0642fa"
+  },
+  {
+    "id": "VOC-CC26-D5-018",
+    "knowledge": "KNOW-D5-015",
+    "localEvidence": "I46,I48; N:410-426",
+    "references": [
+      "R21"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Containment limits ongoing harm or spread. An authorized responder may isolate a system or restrict a compromised session under the playbook, balancing safety, evidence and business constraints.",
+    "scopeLimits": "Specify confirmed conditions, granted authority and safety constraints. No universal report/isolate/preserve-first rule.",
+    "misconceptions": "Wait for perfect attribution during authorized urgent containment; destroy artifacts to contain.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Containment limits ongoing harm or spread. An authorized responder may isolate a system or restrict a compromised session under the playbook, balancing safety, evidence and business constraints. Conditions: Specify confirmed conditions, granted authority and safety constraints. No universal report/isolate/preserve-first rule.",
+      "objective": "5.3 — Distinguish limiting spread from removing the cause and restoring normal service.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การจำกัดการแพร่กระจายหรือผลกระทบระหว่างดำเนินการตอบสนอง ต้องพิจารณาอำนาจ ผลต่อบริการ และการรักษาหลักฐาน / Guidance: แยกการหยุดการแพร่กระจายออกจากการกำจัดสาเหตุและการคืนบริการปกติ",
+      "definition": "Distinction supported by concise definition: Actions that limit the spread or impact of a security incident while further response proceeds.",
+      "example": "An authorized responder isolates a spreading malware infection from the network. / ผู้ตอบสนองที่ได้รับอนุญาตแยกเครื่องติดมัลแวร์ที่กำลังแพร่จากเครือข่าย",
+      "guidance": "Distinguish limiting spread from removing the cause and restoring normal service.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-015; local source I46,I48; N:410-426; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "3dccdefa8fa397d3a459967ef8abb94411a3c225fd21468c3354e02ba533c35f"
+  },
+  {
+    "id": "VOC-CC26-D5-019",
+    "knowledge": "KNOW-D5-016",
+    "localEvidence": "N:428-450; I48,I49",
+    "references": [
+      "R21"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Eradication addresses malicious components and causes. Recovery restores verified safe operation against recovery criteria; lessons learned feed improvements into controls, plans and training.",
+    "scopeLimits": "Restoring a copy is not proof persistence was removed. Stage labels are teaching aids, not a mandated NIST six-step taxonomy.",
+    "misconceptions": "Restoration fixes every cause; review replaces remediation.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Eradication addresses malicious components and causes. Recovery restores verified safe operation against recovery criteria; lessons learned feed improvements into controls, plans and training. Conditions: Restoring a copy is not proof persistence was removed. Stage labels are teaching aids, not a mandated NIST six-step taxonomy.",
+      "objective": "5.3 — Containment limits harm; eradication addresses the cause. Restoration alone does not prove the cause was removed.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การกำจัดสาเหตุและองค์ประกอบอันตราย เช่น มัลแวร์หรือช่องทางเข้าที่ผู้โจมตีใช้ ไม่ใช่เพียงจำกัดการเชื่อมต่อ / Guidance: Containment จำกัดความเสียหาย ส่วน Eradication จัดการสาเหตุ การกู้ระบบอย่างเดียวไม่ยืนยันว่าสาเหตุถูกกำจัด",
+      "definition": "Distinction supported by concise definition: Removing the cause and malicious components of an incident as part of response.",
+      "example": "A response team removes malicious persistence before returning a system to service. / ทีมตอบสนองกำจัดกลไกคงอยู่ของมัลแวร์ก่อนคืนระบบให้บริการ",
+      "guidance": "Containment limits harm; eradication addresses the cause. Restoration alone does not prove the cause was removed.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-016; local source N:428-450; I48,I49; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "782adb06859280d0c580d89102b6f2b9bd9152ea3a3302adbfab1a3f6691acd7"
+  },
+  {
+    "id": "VOC-CC26-D5-020",
+    "knowledge": "KNOW-D5-017",
+    "localEvidence": "I49-I51; N:491-523",
+    "references": [
+      "R21",
+      "R14",
+      "R28"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "A tabletop discusses a simulated situation to test roles/decisions. Functional technical tests exercise actual capabilities in a controlled scope, such as isolating a test endpoint or routing an escalation.",
+    "scopeLimits": "Match the exercise to the capability; no changes to live systems are implied by discussion alone.",
+    "misconceptions": "Successful discussion proves technical function; written plan guarantees readiness.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "A tabletop discusses a simulated situation to test roles/decisions. Functional technical tests exercise actual capabilities in a controlled scope, such as isolating a test endpoint or routing an escalation. Conditions: Match the exercise to the capability; no changes to live systems are implied by discussion alone.",
+      "objective": "5.3 — Choose demonstrated operation when the gap concerns ability to execute; a tabletop can reveal decision gaps but does not demonstrate tool operation.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การฝึกที่ให้ผู้รับผิดชอบปฏิบัติหน้าที่ในสภาพแวดล้อมจำลองเพื่อตรวจความพร้อม ต่างจากการอภิปรายว่าควรทำอย่างไร / Guidance: เลือกผลการปฏิบัติจริงเมื่อช่องว่างคือความสามารถดำเนินการ Tabletop ช่วยพบปัญหาการตัดสินใจแต่ไม่พิสูจน์การใช้เครื่องมือ",
+      "definition": "Distinction supported by concise definition: An exercise that validates operational readiness by having personnel perform functions in a simulated operational environment.",
+      "example": "The on-call team operates the isolation tool on an authorized lab endpoint and verifies the result. / ทีมเวรใช้เครื่องมือแยกเครือข่ายบนเครื่องทดสอบที่อนุมัติและตรวจผล",
+      "guidance": "Choose demonstrated operation when the gap concerns ability to execute; a tabletop can reveal decision gaps but does not demonstrate tool operation.",
+      "duplicates": "D2SimulationExercise is specifically an isolated DRbackup-restoration drill. This entry teaches operational function validation in simulated conditions (IRisolation), and explicitly contrasts discussion versus execution. Related broader exercise category; retained for canonical functional terminology, not counted as independent unrelated coverage.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-017; local source I49-I51; N:491-523; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "48d4b1b07a62575c2ebfeee66af7fb598ebe54c6b47403ca1bc63d8a3d547a25"
+  },
+  {
+    "id": "VOC-CC26-D5-021",
+    "knowledge": "KNOW-D5-018",
+    "localEvidence": "I53,I54; N:531-559",
+    "references": [
+      "R22",
+      "R11",
+      "R03"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Protect assets through planning, acquisition, deployment, maintenance, monitoring and secure retirement. Inventory and ownership support these activities; retirement from service is distinct from sanitizing/disposal.",
+    "scopeLimits": "Illustrative cycle labels/counts vary; final storage handling must be verified before release.",
+    "misconceptions": "Purchase inventory covers lifecycle; powered off means safe disposal.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Protect assets through planning, acquisition, deployment, maintenance, monitoring and secure retirement. Inventory and ownership support these activities; retirement from service is distinct from sanitizing/disposal. Conditions: Illustrative cycle labels/counts vary; final storage handling must be verified before release.",
+      "objective": "5.4 — An inventory removal does not establish safe disposal; consider the asset and its data throughout retirement.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การจัดการทรัพย์สินตั้งแต่จัดหา ติดตั้ง ใช้งาน บำรุงรักษา จนเลิกใช้ รวมผู้รับผิดชอบและการจัดการข้อมูล ไม่ใช่แค่ลงบัญชีทรัพย์สิน / Guidance: การนำออกจากบัญชีไม่ยืนยันว่ากำจัดอย่างปลอดภัย ต้องพิจารณาทั้งทรัพย์สินและข้อมูลระหว่างเลิกใช้",
+      "definition": "Distinction supported by concise definition: Managing assets from acquisition and deployment through operation, maintenance and retirement.",
+      "example": "A retired drive is released only after its required sanitization is verified. / สื่อที่เลิกใช้ถูกส่งต่อหลังตรวจยืนยัน Sanitization ที่กำหนดแล้วเท่านั้น",
+      "guidance": "An inventory removal does not establish safe disposal; consider the asset and its data throughout retirement.",
+      "duplicates": "D1DataInventory is a catalog of data; lifecycle governance spans acquisition through retirement and includes hardware responsibility and verified disposal.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-018; local source I53,I54; N:531-559; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "bb3651b62e617efea7af28a0fab02972ec3a1212a3156af4f57026f20390ed41"
+  },
+  {
+    "id": "VOC-CC26-D5-022",
+    "knowledge": "KNOW-D5-019",
+    "localEvidence": "I55,I56; N:567-587",
+    "references": [
+      "R11",
+      "R16"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "If the vendor no longer supplies security fixes, new vulnerabilities may remain unpatched. If immediate replacement is infeasible, documented restricted access/segmentation/monitoring can reduce exposure while migration proceeds.",
+    "scopeLimits": "Use stated support facts rather than product-name assumptions. Temporary controls neither restore vendor support nor remove the flaw.",
+    "misconceptions": "Working device has no lifecycle risk; isolation makes unsupported software supported.",
+    "scores": {
+      "technical": 4,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "If the vendor no longer supplies security fixes, new vulnerabilities may remain unpatched. If immediate replacement is infeasible, documented restricted access/segmentation/monitoring can reduce exposure while migration proceeds. Conditions: Use stated support facts rather than product-name assumptions. Temporary controls neither restore vendor support nor remove the flaw.",
+      "objective": "5.4 — Use explicit vendor facts; continued operation does not establish continued patch support or prove compromise.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "ช่วงที่ผู้จัดหาหยุดให้การสนับสนุนตามขอบเขตที่ประกาศ ต้องตรวจว่ารวมการแก้ช่องโหว่หรือไม่ ระบบอาจยังทำงานแม้หยุดสนับสนุน / Guidance: ใช้ข้อเท็จจริงของผู้จัดหา การทำงานต่อได้ไม่ยืนยันว่าจะมีแพตช์ และไม่พิสูจน์ว่าถูกบุกรุกแล้ว",
+      "definition": "Distinction supported by concise definition: The point at which a supplier stops providing specified support for a product under its stated policy.",
+      "example": "A vendor announces that a platform will receive no further security fixes after a stated date. / ผู้จัดหาประกาศว่าแพลตฟอร์มจะไม่ได้รับการแก้ความปลอดภัยหลังวันที่ระบุ",
+      "guidance": "Use explicit vendor facts; continued operation does not establish continued patch support or prove compromise.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-019; local source I55,I56; N:567-587; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "4d374377458fef693ff08de731eb933e30afbd06507d051a523a0df7fcff4dfa"
+  },
+  {
+    "id": "VOC-CC26-D5-023",
+    "knowledge": "KNOW-D5-020",
+    "localEvidence": "I57,I58,I64; N:595-625",
+    "references": [
+      "R11",
+      "R22"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Configuration management maintains approved system state and evaluates deviations. A baseline provides the reference; an approved exception or unrecorded legitimate change must be considered before declaring malice.",
+    "scopeLimits": "NIST800-128 is general system configuration guidance, not just a device benchmark. Reconcile evidence with authorization.",
+    "misconceptions": "Every deviation is malicious; change request alone updates actual settings.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Configuration management maintains approved system state and evaluates deviations. A baseline provides the reference; an approved exception or unrecorded legitimate change must be considered before declaring malice. Conditions: NIST800-128 is general system configuration guidance, not just a device benchmark. Reconcile evidence with authorization.",
+      "objective": "5.4 — Compare observed state with the approved reference; a difference requires assessment, not an automatic compromise verdict.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "ชุดลักษณะการตั้งค่าที่บันทึกและอนุมัติไว้สำหรับใช้อ้างอิงในการจัดการระบบ การเปลี่ยนที่อนุมัติอาจปรับค่าฐานได้ / Guidance: เปรียบเทียบสภาพจริงกับค่าฐานที่อนุมัติ ความต่างต้องตรวจสอบ ไม่ใช่ตัดสินว่าถูกบุกรุกโดยอัตโนมัติ",
+      "definition": "Distinction supported by concise definition: A documented, approved set of configuration characteristics used as a reference for managing a system.",
+      "example": "An administrator compares a server's settings with its approved baseline. / ผู้ดูแลเปรียบเทียบการตั้งค่าเซิร์ฟเวอร์กับค่าฐานที่อนุมัติ",
+      "guidance": "Compare observed state with the approved reference; a difference requires assessment, not an automatic compromise verdict.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-020; local source I57,I58,I64; N:595-625; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "228238d1d6194ca2cdcf4f85162665e128500f390f71c408dd654ba27184c05a"
+  },
+  {
+    "id": "VOC-CC26-D5-024",
+    "knowledge": "KNOW-D5-020",
+    "localEvidence": "I57,I58,I64; N:595-625",
+    "references": [
+      "R11",
+      "R22"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Configuration management maintains approved system state and evaluates deviations. A baseline provides the reference; an approved exception or unrecorded legitimate change must be considered before declaring malice.",
+    "scopeLimits": "NIST800-128 is general system configuration guidance, not just a device benchmark. Reconcile evidence with authorization.",
+    "misconceptions": "Every deviation is malicious; change request alone updates actual settings.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Configuration management maintains approved system state and evaluates deviations. A baseline provides the reference; an approved exception or unrecorded legitimate change must be considered before declaring malice. Conditions: NIST800-128 is general system configuration guidance, not just a device benchmark. Reconcile evidence with authorization.",
+      "objective": "5.4 — Check approved changes before treating drift as malicious; determine whether the reference also needs updating.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "ความต่างระหว่างการตั้งค่าที่ตรวจพบกับค่าฐานอ้างอิง อาจเกิดจากการเปลี่ยนที่อนุมัติหรือไม่อนุมัติ จึงต้องตรวจบริบท / Guidance: ตรวจการเปลี่ยนที่อนุมัติก่อนถือว่า Drift เป็นอันตราย และพิจารณาว่าต้องปรับข้อมูลอ้างอิงหรือไม่",
+      "definition": "Distinction supported by concise definition: A difference between an asset's observed configuration and its established reference configuration.",
+      "example": "A check finds a service enabled that is absent from the recorded baseline. / การตรวจพบว่าบริการหนึ่งเปิดอยู่ทั้งที่ไม่มีในค่าฐานที่บันทึก",
+      "guidance": "Check approved changes before treating drift as malicious; determine whether the reference also needs updating.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-020; local source I57,I58,I64; N:595-625; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "1da3c4bc52e24125e16c1022044dee8a9307f0f3c180603909e26b652f569e38"
+  },
+  {
+    "id": "VOC-CC26-D5-025",
+    "knowledge": "KNOW-D5-021",
+    "localEvidence": "I59-I64; N:627-690",
+    "references": [
+      "R11",
+      "R22"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Change control evaluates risk and authorizes implementation under the organization’s process. Patches require appropriate assessment/testing and verification of intended installation and service operation.",
+    "scopeLimits": "State completed steps and rollback/exception authority when asking NEXT; do not derive universal order from slide arrows.",
+    "misconceptions": "Automated deployment bypasses approval; install status proves operational success.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Change control evaluates risk and authorizes implementation under the organization’s process. Patches require appropriate assessment/testing and verification of intended installation and service operation. Conditions: State completed steps and rollback/exception authority when asking NEXT; do not derive universal order from slide arrows.",
+      "objective": "5.4 — Distinguish permission to change from evidence that the completed change meets security and business requirements.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "กระบวนการประเมิน อนุมัติ บันทึก และควบคุมการเปลี่ยนระบบ เพื่อจัดการความเสี่ยงและตรวจว่าผลสอดคล้องกับสิ่งที่อนุมัติ / Guidance: แยกการอนุญาตให้เปลี่ยนจากหลักฐานว่าผลที่เปลี่ยนแล้วตรงข้อกำหนดความปลอดภัยและธุรกิจ",
+      "definition": "Distinction supported by concise definition: The process of assessing, authorizing, documenting and controlling changes to a system.",
+      "example": "A firewall change is approved with tests of permitted and prohibited traffic. / การเปลี่ยน Firewall ได้รับอนุมัติพร้อมการทดสอบทราฟฟิกที่อนุญาตและห้าม",
+      "guidance": "Distinguish permission to change from evidence that the completed change meets security and business requirements.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-021; local source I59-I64; N:627-690; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "70bcc30db711d19759c6ac39ea61da19985e5b424822f018f5b8a9d3311a12bd"
+  },
+  {
+    "id": "VOC-CC26-D5-026",
+    "knowledge": "KNOW-D5-021",
+    "localEvidence": "I59-I64; N:627-690",
+    "references": [
+      "R11",
+      "R22"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Change control evaluates risk and authorizes implementation under the organization’s process. Patches require appropriate assessment/testing and verification of intended installation and service operation.",
+    "scopeLimits": "State completed steps and rollback/exception authority when asking NEXT; do not derive universal order from slide arrows.",
+    "misconceptions": "Automated deployment bypasses approval; install status proves operational success.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Change control evaluates risk and authorizes implementation under the organization’s process. Patches require appropriate assessment/testing and verification of intended installation and service operation. Conditions: State completed steps and rollback/exception authority when asking NEXT; do not derive universal order from slide arrows.",
+      "objective": "5.4 — Check the stated trigger and authorization, then verify restored service; authorization alone is not always an instruction to roll back immediately.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การคืนระบบสู่สภาพก่อนหน้าด้วยขั้นตอนที่วางแผนไว้เมื่อการเปลี่ยนไม่ผ่านเกณฑ์ ต้องปฏิบัติตามเงื่อนไขและอำนาจที่อนุมัติ / Guidance: ตรวจเงื่อนไขกระตุ้นและอำนาจ แล้วตรวจบริการหลังคืนสภาพ การอนุญาตอย่างเดียวไม่ได้แปลว่าต้องย้อนกลับทันทีเสมอ",
+      "definition": "Distinction supported by concise definition: Returning a system to an earlier state using a planned recovery action when a change fails its specified criteria.",
+      "example": "A failed health check triggers the rollback required in the approved change plan. / ผลตรวจสุขภาพล้มเหลวกระตุ้นการย้อนกลับที่แผนอนุมัติกำหนด",
+      "guidance": "Check the stated trigger and authorization, then verify restored service; authorization alone is not always an instruction to roll back immediately.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-021; local source I59-I64; N:627-690; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "6ce6f39e32d510dc1bb018df272c496ce450add3db7c160e72558624dff0abd8"
+  },
+  {
+    "id": "VOC-CC26-D5-027",
+    "knowledge": "KNOW-D5-022",
+    "localEvidence": "I66-I69; N:704-736",
+    "references": [
+      "R14",
+      "R01",
+      "R27"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Blue activities defend/detect/respond; red exercises simulate adversary behavior within authorization. Purple collaboration uses attack observations and defensive results to improve and retest detection.",
+    "scopeLimits": "Authorization and test scope are explicit. Purple is a collaboration approach and need not be a separate permanent team.",
+    "misconceptions": "Red is unauthorized attack; finding a gap completes improvement without retest.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 4,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Blue activities defend/detect/respond; red exercises simulate adversary behavior within authorization. Purple collaboration uses attack observations and defensive results to improve and retest detection. Conditions: Authorization and test scope are explicit. Purple is a collaboration approach and need not be a separate permanent team.",
+      "objective": "5.5 — Identify adversary emulation and approved scope; red-team activity is not unrestricted permission to attack.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "ทีมที่จำลองพฤติกรรมคู่โจมตีภายในขอบเขตและเป้าหมายที่อนุมัติ เพื่อประเมินความสามารถป้องกันและตอบสนอง / Guidance: ระบุการจำลองคู่โจมตีและขอบเขตที่อนุมัติ การเป็น Red team ไม่ใช่สิทธิ์โจมตีได้โดยไร้ข้อจำกัด",
+      "definition": "Distinction supported by concise definition: An authorized group that emulates adversary activity to assess security capabilities against agreed objectives.",
+      "example": "A red team attempts the agreed attack paths during an authorized exercise. / Red team ทดสอบเส้นทางโจมตีที่ตกลงกันระหว่างการฝึกที่ได้รับอนุญาต",
+      "guidance": "Identify adversary emulation and approved scope; red-team activity is not unrestricted permission to attack.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-022; local source I66-I69; N:704-736; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "9a3c2ba74150fedbd5a044167a62198915d96489dee8490cdbe491c209f0075c"
+  },
+  {
+    "id": "VOC-CC26-D5-028",
+    "knowledge": "KNOW-D5-022",
+    "localEvidence": "I66-I69; N:704-736",
+    "references": [
+      "R14",
+      "R01",
+      "R27"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Blue activities defend/detect/respond; red exercises simulate adversary behavior within authorization. Purple collaboration uses attack observations and defensive results to improve and retest detection.",
+    "scopeLimits": "Authorization and test scope are explicit. Purple is a collaboration approach and need not be a separate permanent team.",
+    "misconceptions": "Red is unauthorized attack; finding a gap completes improvement without retest.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 4,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Blue activities defend/detect/respond; red exercises simulate adversary behavior within authorization. Purple collaboration uses attack observations and defensive results to improve and retest detection. Conditions: Authorization and test scope are explicit. Purple is a collaboration approach and need not be a separate permanent team.",
+      "objective": "5.5 — Recognize defensive responsibilities; tool output still requires interpretation and action under authority.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "ฝ่ายป้องกันระบบซึ่งทำงานติดตาม ตรวจจับ และตอบสนอง อาจร่วมประเมินผลการฝึกกับฝ่ายจำลองโจมตี / Guidance: เข้าใจหน้าที่ฝ่ายป้องกัน ผลจากเครื่องมือยังต้องตีความและดำเนินการตามอำนาจ",
+      "definition": "Distinction supported by concise definition: Personnel responsible for defending systems through activities such as monitoring, detection and response.",
+      "example": "Defenders examine alerts generated by the authorized attack simulation. / ฝ่ายป้องกันตรวจแจ้งเตือนที่เกิดจากการจำลองโจมตีที่อนุมัติ",
+      "guidance": "Recognize defensive responsibilities; tool output still requires interpretation and action under authority.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-022; local source I66-I69; N:704-736; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "b3ec35a9fd010691135a187ad7eb65d26a604da8eedd6d99152ca5310f7b2007"
+  },
+  {
+    "id": "VOC-CC26-D5-029",
+    "knowledge": "KNOW-D5-022",
+    "localEvidence": "I66-I69; N:704-736",
+    "references": [
+      "R14",
+      "R01",
+      "R27"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Blue activities defend/detect/respond; red exercises simulate adversary behavior within authorization. Purple collaboration uses attack observations and defensive results to improve and retest detection.",
+    "scopeLimits": "Authorization and test scope are explicit. Purple is a collaboration approach and need not be a separate permanent team.",
+    "misconceptions": "Red is unauthorized attack; finding a gap completes improvement without retest.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "Blue activities defend/detect/respond; red exercises simulate adversary behavior within authorization. Purple collaboration uses attack observations and defensive results to improve and retest detection. Conditions: Authorization and test scope are explicit. Purple is a collaboration approach and need not be a separate permanent team.",
+      "objective": "5.5 — Look for collaboration, feedback and verification rather than assuming every attack exercise is purple teaming.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "แนวทางที่ฝ่ายจำลองโจมตีและฝ่ายป้องกันร่วมแบ่งปันผลเพื่อปรับปรุงความสามารถความปลอดภัย ไม่จำเป็นต้องเป็นทีมถาวรใหม่ / Guidance: มองหาความร่วมมือ การป้อนกลับ และตรวจผล ไม่ถือว่าการฝึกโจมตีทุกครั้งเป็น Purple teaming",
+      "definition": "Distinction supported by concise definition: A collaborative approach in which offensive and defensive participants share findings to improve security capabilities.",
+      "example": "Attackers explain simulated steps, defenders repair a detection gap, and both retest. / ฝ่ายโจมตีอธิบายขั้นตอนจำลอง ฝ่ายป้องกันแก้ช่องว่างการตรวจจับ แล้วร่วมทดสอบซ้ำ",
+      "guidance": "Look for collaboration, feedback and verification rather than assuming every attack exercise is purple teaming.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-022; local source I66-I69; N:704-736; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "16771ce3772014350526ac2c7bbef906caf4c5a9e51197610ba93bc082dc2c7c"
+  },
+  {
+    "id": "VOC-CC26-D5-030",
+    "knowledge": "KNOW-D5-023",
+    "localEvidence": "I70; N:744-757",
+    "references": [
+      "R14"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "A vulnerability scan identifies potential weaknesses, including vulnerable versions and configurations. Findings require validation and scope-aware prioritization; absence of findings does not prove absence of vulnerabilities.",
+    "scopeLimits": "Do not equate version inference with demonstrated exploitation. Testing cannot guarantee complete security.",
+    "misconceptions": "A scanner proves every exploit succeeds; a clean scan proves secure design.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "A vulnerability scan identifies potential weaknesses, including vulnerable versions and configurations. Findings require validation and scope-aware prioritization; absence of findings does not prove absence of vulnerabilities. Conditions: Do not equate version inference with demonstrated exploitation. Testing cannot guarantee complete security.",
+      "objective": "5.5 — Interpret a clean result within the checks performed; scanning is not proof that application logic is secure.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การตรวจระบบหรือแอปเพื่อหาช่องโหว่ที่อาจมีอยู่ตามชุดการตรวจ ผลขึ้นกับขอบเขต สิทธิ์ และวิธีของเครื่องมือ ไม่รับรองว่าไม่มีข้อบกพร่องอื่น / Guidance: ตีความผลไม่พบปัญหาภายในขอบเขตที่ตรวจ การสแกนไม่พิสูจน์ว่าตรรกะแอปปลอดภัย",
+      "definition": "Distinction supported by concise definition: Examining systems or applications for potential vulnerabilities using defined checks.",
+      "example": "A version scan reports no known-version findings but does not test business workflows. / การสแกนเวอร์ชันไม่พบประเด็นที่รู้จัก แต่ไม่ได้ทดสอบขั้นตอนธุรกิจ",
+      "guidance": "Interpret a clean result within the checks performed; scanning is not proof that application logic is secure.",
+      "duplicates": "D1Vulnerability names a weakness; this entry describes a bounded assessment method and evidence limitations.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-023; local source I70; N:744-757; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "37983e8741598a7363430096088952f9edfc0c3636488efd51398b03e6ac9a6a"
+  },
+  {
+    "id": "VOC-CC26-D5-031",
+    "knowledge": "KNOW-D5-024",
+    "localEvidence": "I71-I73; N:761-793",
+    "references": [
+      "R12",
+      "R20"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "SAST inspects code artifacts without executing the application; DAST interacts with a running application. Both can contribute evidence about overlapping flaw classes.",
+    "scopeLimits": "Select by artifact/runtime access and testing objective, not an assertion that the tester cannot possess source.",
+    "misconceptions": "Only one method can find injection; DAST defined by inability to know code.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "SAST inspects code artifacts without executing the application; DAST interacts with a running application. Both can contribute evidence about overlapping flaw classes. Conditions: Select by artifact/runtime access and testing objective, not an assertion that the tester cannot possess source.",
+      "objective": "5.5 — Classify by how the test operates, not whether the tester happens to possess source code.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การวิเคราะห์โค้ดหรือส่วนประกอบของแอปเพื่อหาจุดอ่อนโดยไม่รันแอป แตกต่างจากการส่งข้อมูลเข้าแอปที่กำลังทำงาน / Guidance: จำแนกตามวิธีทดสอบ ไม่ใช่เพียงว่าผู้ทดสอบมี Source code หรือไม่",
+      "definition": "Distinction supported by concise definition: Analysis of application code or artifacts for security weaknesses without executing the application.",
+      "example": "A team examines source code and compiled artifacts without starting the application. / ทีมตรวจ Source code และไฟล์ที่คอมไพล์โดยไม่เริ่มรันแอป",
+      "guidance": "Classify by how the test operates, not whether the tester happens to possess source code.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-024; local source I71-I73; N:761-793; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "35a8c045ea8b69f72634a65b110b07191debb910585dd4bda989a979a603dec3"
+  },
+  {
+    "id": "VOC-CC26-D5-032",
+    "knowledge": "KNOW-D5-024",
+    "localEvidence": "I71-I73; N:761-793",
+    "references": [
+      "R12",
+      "R20"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "SAST inspects code artifacts without executing the application; DAST interacts with a running application. Both can contribute evidence about overlapping flaw classes.",
+    "scopeLimits": "Select by artifact/runtime access and testing objective, not an assertion that the tester cannot possess source.",
+    "misconceptions": "Only one method can find injection; DAST defined by inability to know code.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 5,
+      "traceability": 4
+    },
+    "total50": 48,
+    "hardFails": [],
+    "passes": {
+      "technical": "SAST inspects code artifacts without executing the application; DAST interacts with a running application. Both can contribute evidence about overlapping flaw classes. Conditions: Select by artifact/runtime access and testing objective, not an assertion that the tester cannot possess source.",
+      "objective": "5.5 — Recognize runtime interaction and distinguish it from nonexecuting code analysis.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การทดสอบแอปที่กำลังทำงานด้วยการโต้ตอบและวิเคราะห์ผลตอบสนองเพื่อหาจุดอ่อน ไม่ได้จำแนกจากการไม่มี Source code เพียงอย่างเดียว / Guidance: สังเกตการโต้ตอบขณะโปรแกรมทำงาน และแยกจากการวิเคราะห์โค้ดโดยไม่รัน",
+      "definition": "Distinction supported by concise definition: Testing a running application by interacting with it and analyzing its responses for security weaknesses.",
+      "example": "A tester submits requests to check whether a logged-out session token is rejected. / ผู้ทดสอบส่งคำขอเพื่อตรวจว่า Token ของ Session ที่ออกจากระบบแล้วถูกปฏิเสธหรือไม่",
+      "guidance": "Recognize runtime interaction and distinguish it from nonexecuting code analysis.",
+      "duplicates": "Compared all403 existing term/acronym/full-form inventory and ranked definition neighbors; this is a distinct narrow function or canonical concept, not a renamed existing entry.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-024; local source I71-I73; N:761-793; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "ae0feca64ca7c164789515ba1212022e1a938c84b96cbe4307381046cc10e7d1"
+  },
+  {
+    "id": "VOC-CC26-D5-033",
+    "knowledge": "KNOW-D5-025",
+    "localEvidence": "I74; N:797-811",
+    "references": [
+      "R13"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Threat modeling identifies valued assets, potential threats, paths and mitigations in system context. Start early and revisit when designs or assumptions change.",
+    "scopeLimits": "No mandatory named method or one-time-only claim. It complements code/runtime testing.",
+    "misconceptions": "One design review guarantees security; scans replace design reasoning.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Threat modeling identifies valued assets, potential threats, paths and mitigations in system context. Start early and revisit when designs or assumptions change. Conditions: No mandatory named method or one-time-only claim. It complements code/runtime testing.",
+      "objective": "5.5 — Choose modeling when the task is to understand changed threats before choosing controls; a version scan answers a different question.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การวิเคราะห์ทรัพย์สิน ขอบเขตความเชื่อถือ และภัยที่อาจเกิดกับระบบอย่างมีโครงสร้างเพื่อช่วยตัดสินใจ ควรทบทวนเมื่อระบบเปลี่ยน ไม่จำกัดแค่ครั้งเดียวตอนออกแบบ / Guidance: เลือกการทำแบบจำลองเมื่อจำเป็นต้องเข้าใจภัยที่เปลี่ยนก่อนเลือกมาตรการ การสแกนเวอร์ชันตอบอีกประเด็นหนึ่ง",
+      "definition": "Distinction supported by concise definition: Structured analysis of a system's assets, trust boundaries and potential threats to inform security decisions.",
+      "example": "A partner upload feature leads the team to revisit trust boundaries and attack paths. / การเพิ่มให้คู่ค้าอัปโหลดทำให้ทีมทบทวนขอบเขตความเชื่อถือและเส้นทางโจมตี",
+      "guidance": "Choose modeling when the task is to understand changed threats before choosing controls; a version scan answers a different question.",
+      "duplicates": "D4TrustBoundary is a boundary concept; this entry is structured analysis across system changes.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-025; local source I74; N:797-811; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "91cff84d4b09d1f2e63d5212ef3af41f679f63fbaf780171ea72474b015966ea"
+  },
+  {
+    "id": "VOC-CC26-D5-034",
+    "knowledge": "KNOW-D5-011",
+    "localEvidence": "I38,I39; T:125-129",
+    "references": [
+      "R24",
+      "R15"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Actor categories suggest typical motivations, not certain identity from one technique. Insider threats can be intentional or unintentional; a deliberate theft should be distinguished from an accidental disclosure.",
+    "scopeLimits": "State intent and observed motivation explicitly; avoid assigning a nation-state from one indicator.",
+    "misconceptions": "All insiders malicious; motive uniquely proves attribution.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Actor categories suggest typical motivations, not certain identity from one technique. Insider threats can be intentional or unintentional; a deliberate theft should be distinguished from an accidental disclosure. Conditions: State intent and observed motivation explicitly; avoid assigning a nation-state from one indicator.",
+      "objective": "5.2 — Distinguish malicious intent from accidental insider actions; both can create risk despite different motivations.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "โอกาสเกิดความเสียหายจากบุคคลที่มีหรือเคยมีสิทธิ์เข้าถึง อาจเกิดจากเจตนาร้ายหรือความผิดพลาด ไม่ควรถือว่าคนในทุกคนเป็นผู้โจมตีโดยเจตนา / Guidance: แยกเจตนาร้ายออกจากความผิดพลาดของบุคคลภายใน ทั้งสองสร้างความเสี่ยงได้แม้แรงจูงใจต่างกัน",
+      "definition": "Distinction supported by concise definition: Potential harm arising from people who have or had authorized access, whether their actions are intentional or unintentional.",
+      "example": "One employee deliberately sells records while another accidentally sends a report to the wrong recipient. / พนักงานคนหนึ่งขายข้อมูลโดยเจตนา ขณะที่อีกคนส่งรายงานผิดผู้รับโดยพลาด",
+      "guidance": "Distinguish malicious intent from accidental insider actions; both can create risk despite different motivations.",
+      "duplicates": "D1Threat is generic; this entry distinguishes intentional and unintentional harm through legitimate access.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-011; local source I38,I39; T:125-129; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "f0cb1f42aa9fd7813ffc3c49e83935c06b4c1cb2fe98051fa67f82c76672a7b1"
+  },
+  {
+    "id": "VOC-CC26-D5-035",
+    "knowledge": "KNOW-D5-026",
+    "localEvidence": "I75-I78; N:819-861",
+    "references": [
+      "R14",
+      "R01"
+    ],
+    "status": "PASS_AUTHOR_QA",
+    "reviewer": "Author assistant; no independent/human/native-Thai review claim",
+    "technicalBasis": "Physical testing evaluates authorized attempts to cross access boundaries. Tailgating follows an authorized person; impersonation uses false identity; phishing uses deceptive communication. An event may combine them.",
+    "scopeLimits": "Ask about a specific action or supplied verification procedure; do not force mutually exclusive categories or call all phishing physical.",
+    "misconceptions": "A badge stops every follower; impersonation and tailgating cannot coexist.",
+    "scores": {
+      "technical": 5,
+      "objective": 5,
+      "English": 5,
+      "Thai": 4,
+      "definition": 5,
+      "usefulness": 5,
+      "example": 5,
+      "guidance": 5,
+      "nonredundancy": 4,
+      "traceability": 4
+    },
+    "total50": 47,
+    "hardFails": [],
+    "passes": {
+      "technical": "Physical testing evaluates authorized attempts to cross access boundaries. Tailgating follows an authorized person; impersonation uses false identity; phishing uses deceptive communication. An event may combine them. Conditions: Ask about a specific action or supplied verification procedure; do not force mutually exclusive categories or call all phishing physical.",
+      "objective": "5.5 — Recognize the entry mechanism; an impersonation claim may accompany it but is a separate identity pretext.",
+      "English": "Canonical spelling and acronym/full-form checked; no invented acronym for MITRE ATT&CK.",
+      "Thai": "การเข้าพื้นที่โดยตามผู้มีสิทธิ์ผ่านจุดควบคุมโดยไม่ได้ผ่านข้อกำหนดเข้าใช้ด้วยตนเอง ความคุ้นเคยหรือการเดินตามไม่แทนการตรวจสิทธิ์ / Guidance: ระบุกลไกการเข้าพื้นที่ การอ้างตัวเป็นผู้อื่นอาจเกิดร่วมกันแต่เป็นข้ออ้างด้านตัวตนที่แยกจากการเดินตาม",
+      "definition": "Distinction supported by concise definition: Gaining physical entry by following an authorized person through a controlled access point without independently satisfying entry requirements.",
+      "example": "During an approved physical test, a tester follows an employee through a badge-controlled door without presenting a badge. / ระหว่างการทดสอบที่อนุมัติ ผู้ทดสอบตามพนักงานผ่านประตูควบคุมบัตรโดยไม่แสดงบัตรของตน",
+      "guidance": "Recognize the entry mechanism; an impersonation claim may accompany it but is a separate identity pretext.",
+      "duplicates": "D2SocialEngineering andPretexting describe broader manipulation/pretexts; following physical entry is a distinct mechanism.",
+      "learning": "Short ENdefinition +Thai meaning on recall back; nuance/examples/guidance in detail modal; actual rendering tested.",
+      "traceability": "KNOW-D5-026; local source I75-I78; N:819-861; registered primary sections linked in sources."
+    },
+    "limitations": [
+      "Author model review; independent reviewer unavailable due recorded account usage limit.",
+      "No human/native-Thai approval or empirical learner calibration."
+    ],
+    "itemHash": "b3d09d73b17fda830d16bbb00085640946a6eb7ec3e35832d04a4d3a2a0b8431"
+  }
+]

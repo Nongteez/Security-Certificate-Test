@@ -1,0 +1,12 @@
+{
+  "run": "First post-table-fix width regression, before risk-header correction",
+  "classification": "Confirmed pre-existing technical typography defect found by expanded all-prose geometry check",
+  "domain": 1,
+  "source": ":::risk-treatment in domain-1.md; generated reading-treatment-header/title-group/title",
+  "cases": [
+    {"width":375,"themes":["light","dark"],"splitWords":["Transfer","Sharing"]},
+    {"width":320,"themes":["light","dark"],"splitWords":["Avoidance","Risk","Transfer","Sharing","Acceptance"]}
+  ],
+  "cause": "Nonwrapping flex header reserves badge width while the inherited break-word rule permits its title to shrink below English word width",
+  "correction": "Reading-only flex-wrap on header, a yielding title group and normal word boundaries on the title; no label, badge, numbering or academic wording changed"
+}

@@ -1,0 +1,35 @@
+============================================================
+Ethics Mnemonic S-A-P-P Highlighting Verification
+============================================================
+
+Test Suite 1: CSS Scoped Class & Theme Color Tokens
+  ✓ PASS: .reading-mnemonic-highlight rule exists in reading.css
+  ✓ PASS: .reading-mnemonic-highlight uses theme-aware color: var(--blue)
+  ✓ PASS: .reading-mnemonic-highlight enforces bold font-weight (700)
+  ✓ PASS: Dark theme defines high-contrast --blue: #3a86ff in base.css
+  ✓ PASS: Light theme defines accessible --blue: #2563eb in base.css
+
+Test Suite 2: Mnemonic Code S-A-P-P Highlighting
+  ✓ PASS: Markdown contains S - A - P - P wrapped in .reading-mnemonic-highlight
+  ✓ PASS: Rendered DOM outputs <strong class="reading-mnemonic-highlight">S - A - P - P</strong> without escaping corruption
+
+Test Suite 3: Explanatory Line Initial Letters Only
+  ✓ PASS: ONLY "S" in "Society" is highlighted in bold blue
+  ✓ PASS: Full word "Society" is NOT highlighted
+  ✓ PASS: ONLY "A" in "Act honorably" is highlighted in bold blue
+  ✓ PASS: Full word "Act" is NOT highlighted
+  ✓ PASS: ONLY "P" in "Principals" is highlighted in bold blue
+  ✓ PASS: Full word "Principals" is NOT highlighted
+  ✓ PASS: ONLY "P" in "Profession" is highlighted in bold blue
+  ✓ PASS: Full word "Profession" is NOT highlighted
+
+Test Suite 4: Plain Text, Separators & Callout Preservation
+  ✓ PASS: Arrows (→) and spaces retain normal body text position and formatting
+  ✓ PASS: Thai callout label is 100% preserved
+  ✓ PASS: Mnemonic callout is rendered inside standard blockquote
+  ✓ PASS: No escaped HTML markup leakage
+  ✓ PASS: Zero raw LaTeX arrow leakage
+
+============================================================
+Ethics Mnemonic Summary: 20 Passed, 0 Failed
+============================================================

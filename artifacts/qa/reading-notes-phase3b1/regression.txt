@@ -1,0 +1,192 @@
+✔ AV definition: visible currency retained without escapes or accidental math (14.0559ms)
+✔ SLE variable: visible currency retained without escapes or accidental math (1.7529ms)
+✔ ALE variable: visible currency retained without escapes or accidental math (1.6718ms)
+✔ cost-benefit paragraph: visible currency retained without escapes or accidental math (2.1007ms)
+✔ Due Care note preserves its exact qualification with semantic emphasis (6.824ms)
+✔ Ordinary Markdown emphasis still parses (1.9515ms)
+✔ An intentional asterisk in inline code remains literal (1.9153ms)
+✔ Inline SLE expression retains multiplication and escaped math currency (1.1386ms)
+✔ Display ALE expression remains display math (0.869ms)
+✔ The source retains all eight valid escaped-dollar tokens in actual math (2.8053ms)
+✔ Representative risk values and economic counterexample remain correct (0.4694ms)
+✔ The three DMZ service rectangles have explicit paint (3.2211ms)
+✔ DMZ roles, zones and all three service/port examples remain (4.6727ms)
+✔ V1 loads legacy entries without requiring a migration (4.6592ms)
+✔ V1 persists optional subsection-relative offsets across a fresh store (6.5209ms)
+✔ Optional offset may be negative near an upcoming heading (0.438ms)
+✔ Invalid offsets are omitted rather than coercing a false position (0.5023ms)
+✔ Switching to a domain with no topic does not retain another domain global topic (0.5637ms)
+✔ Fresh explicit subsection link takes priority over stored offsets (0.996ms)
+✔ Reload of the saved subsection restores position, not its heading (0.5607ms)
+✔ Reload of a different explicit subsection still follows the URL (0.5105ms)
+✔ Generic entry resumes the last domain and position (0.4132ms)
+✔ Overview entry without a reading hash still resumes (0.455ms)
+✔ Explicit domain selection resumes that domain independently (0.4725ms)
+✔ History snapshot beats a newer last-read position for the same domain (0.2502ms)
+✔ Unrelated history snapshots cannot override explicit deep links (0.2492ms)
+✔ Malformed history offset cannot make an explicit URL a resume (0.2004ms)
+✔ Accepted V1 records with only global location fields still resume (0.2077ms)
+
+============================================================
+ISC2 CC 2026 — Reading Notes DOM Integrity Verification
+============================================================
+
+Test Suite 1: HTML Tag Balance & Stack Verification
+  ✓ PASS: All HTML tags are 100% balanced with zero unclosed or mismatched tags
+
+Test Suite 2: Raw HTML Escaping & Bracket Leakage
+  ✓ PASS: No raw HTML tags escaped to &lt;tag&gt; or &lt;/tag&gt;
+  ✓ PASS: No unrendered ::: block directives leaked into output
+  ✓ PASS: No dangerous script or iframe tags injected
+
+Test Suite 3: Sibling Independence & Single-Level Layout
+  ✓ PASS: All 4 MFA items present (found 4)
+  ✓ PASS: MFA stack contains exactly 4 direct sibling items (found 4)
+  ✓ PASS: No nested reading-mfa-stack containers
+  ✓ PASS: All 4 Risk Treatment items present (found 4)
+  ✓ PASS: Risk treatment stack contains exactly 4 direct sibling items (found 4)
+  ✓ PASS: No nested reading-treatment-stack containers
+  ✓ PASS: All 4 Control Category items present (found 4)
+  ✓ PASS: Control category stack contains exactly 4 direct sibling items (found 4)
+  ✓ PASS: No nested reading-category-stack containers
+  ✓ PASS: All 8 Review Scenario cards present (found 8)
+  ✓ PASS: Scenario 1 does NOT contain another scenario card
+  ✓ PASS: Scenario 2 does NOT contain another scenario card
+  ✓ PASS: Scenario 3 does NOT contain another scenario card
+  ✓ PASS: Scenario 4 does NOT contain another scenario card
+  ✓ PASS: Scenario 5 does NOT contain another scenario card
+  ✓ PASS: Scenario 6 does NOT contain another scenario card
+  ✓ PASS: Scenario 7 does NOT contain another scenario card
+  ✓ PASS: Scenario 8 does NOT contain another scenario card
+  ✓ PASS: All 8 scenarios successfully validated as independent sibling cards (matched 8)
+
+Test Suite 4: Maximum DOM Nesting Depth Inside Cards
+  ✓ PASS: Scenario cards have shallow DOM tree (max depth 3 <= 4)
+  ✓ PASS: MFA factor items have shallow DOM tree (found 4, max depth 4 <= 4)
+  ✓ PASS: Risk treatment items have shallow DOM tree (found 4, max depth 4 <= 4)
+
+Test Suite 5: Currency vs. KaTeX Math Notation Isolation
+  ✓ PASS: Literal currency $50/ปี is preserved in output text
+  ✓ PASS: Literal currency $2,000/ปี is preserved in output text
+  ✓ PASS: Literal currency $10,000 is preserved in output text
+  ✓ PASS: Literal currency $25,000 is preserved in output text
+  ✓ PASS: Both cost-benefit currency values remain outside math delimiters
+  ✓ PASS: Math formula SLE = AV x EF is correctly rendered
+  ✓ PASS: Math formula ALE = SLE x ARO is correctly rendered
+  ✓ PASS: Currency was not hijacked into a KaTeX math component
+
+Test Suite 6: Textbook Aesthetics & Clean Dividers
+  ✓ PASS: 0 <hr> divider tags present in generated HTML (found 0)
+  ✓ PASS: 0 raw '---' horizontal rules in Domain 1 Markdown source (found 0)
+
+============================================================
+DOM Integrity Results: 36 / 36 Passed
+============================================================
+
+✔ tools\verify-reading-notes-dom-integrity.mjs (203.0224ms)
+=== ISC2 CC 2026 — Reading Notes Domain 1 Verification ===
+
+✓ PASS: Source Files Preservation — Original markdown files remain untouched
+✓ PASS: Traceability Report — Audit documentation exists with full concept mapping
+✓ PASS: Domain 1 Content Completeness — All verified syllabus concepts present
+✓ PASS: Markdown Parser — Correct HTML generation and script safety
+✓ PASS: Reading Loader — Loads Domain 1 data and caches rendered output
+✓ PASS: 3-Level Navigation Hierarchy — 5 Objectives and 23 Topic Anchors
+✓ PASS: Anchor Alignment — Every sidebar link has a matching anchor in the article HTML
+✓ PASS: UI Shell Integration — Synchronous mount, independent toggles & scroll anchors
+✓ PASS: Unpublished Domains — Domain 5 shows minimal coming soon notice
+✓ PASS: Preservation Boundary — Protected question banks, quiz, vocabulary and slides intact
+
+=============================================================
+Verification Summary: 10/10 tests passed.
+=============================================================
+✔ tools\verify-reading-notes-domain1.mjs (680.0402ms)
+▶ ISC2 CC 2026 — Reading Notes Domain 2 Verification Suite
+  ✔ 1. Domain 2 Metadata & Official Outline Boundaries (3.6124ms)
+  ✔ 2. UI Shell & READING_DOMAINS Registration (0.8981ms)
+  ✔ 3. Reading Loader Asynchronous & Synchronous Cache (1.1866ms)
+  ✔ 4. Topic Anchors & Navigation Alignment (2.2086ms)
+  ✔ 5. Academic Content Completeness across Objectives 2.1–2.4 (0.8124ms)
+  ✔ 6. 4 Semantic Diagrams Generation & Integration (0.2908ms)
+  ✔ 7. Concept Distinctions, Exam Traps & Review Scenarios (2.9052ms)
+  ✔ 8. Preservation Boundaries (6.4694ms)
+✔ ISC2 CC 2026 — Reading Notes Domain 2 Verification Suite (36.0736ms)
+▶ ISC2 CC 2026 — Reading Notes Domain 3 Verification Suite
+  ✔ 1. Domain 3 Metadata & Official Outline Boundaries (1.4093ms)
+  ✔ 2. UI Shell & READING_DOMAINS Registration (1.5949ms)
+  ✔ 3. Reading Loader Asynchronous & Synchronous Cache (0.5415ms)
+  ✔ 4. Topic Anchors & Navigation Alignment (1.5751ms)
+  ✔ 5. Academic Content Completeness across Objectives 3.1 & 3.2 (2.2867ms)
+  ✔ 6. 4 Semantic Diagrams Generation & Integration (1.3715ms)
+  ✔ 7. Concept Distinctions, Exam Traps & Review Scenarios (1.6006ms)
+  ✔ 8. Zero-Defect Quality Standards (9.9782ms)
+  ✔ 9. Preservation Boundaries (14.1357ms)
+✔ ISC2 CC 2026 — Reading Notes Domain 3 Verification Suite (54.4023ms)
+▶ ISC2 CC 2026 — Reading Notes Domain 4 Verification Suite
+  ✔ 1. Domain 4 Metadata & Official Outline Boundaries (1.1054ms)
+  ✔ 2. UI Shell & READING_DOMAINS Registration (0.5761ms)
+  ✔ 3. Reading Loader Asynchronous & Synchronous Cache (0.4304ms)
+  ✔ 4. Topic Anchors & Navigation Alignment (2.7872ms)
+  ✔ 5. Academic Content Completeness across Objectives 4.1, 4.2 & 4.3 (1.9605ms)
+  ✔ 6. 4 Semantic Diagrams Generation & Integration (1.0567ms)
+  ✔ 7. Concept Distinctions, Exam Traps & Review Scenarios (0.5789ms)
+  ✔ 8. Zero-Defect Quality Standards (1.4269ms)
+  ✔ 9. Preservation Boundaries (17.392ms)
+✔ ISC2 CC 2026 — Reading Notes Domain 4 Verification Suite (65.3447ms)
+=== ISC2 CC 2026 — Reading Notes Foundation Verification ===
+
+✓ PASS: Exam Versions Registry — Card position, attributes, and no fake statistics
+✓ PASS: Card Rendering — Available status, Read → button, and active state
+✓ PASS: Reading Screen Shell — Header, sidebar, content pane, and back button
+✓ PASS: Sidebar Navigation — 5 Domains with Authoritative 2026 Objectives 1.1–5.5
+✓ PASS: Domain Navigation — Selection switches domain; Chevron toggles expand/collapse independently
+✓ PASS: Main Reading Area — Quiet unpublished message without heavy cards, illustrations, or badges
+✓ PASS: Sidebar Collapsibility — Desktop toggle and mobile drawer classes
+✓ PASS: CSS & HTML Verification — reading.css linked and design tokens respected
+✓ PASS: Preservation Boundary — Existing banks, config, and vocabulary intact
+
+=============================================================
+Verification Summary: 9/9 tests passed.
+=============================================================
+✔ tools\verify-reading-notes-foundation.mjs (1512.218ms)
+✔ Scenario 1: First visit with empty storage returns default clean state (9.1463ms)
+✔ Scenario 2: Persisting Domain 1 location (4.7758ms)
+✔ Scenario 3: Persisting Domain 2 location (0.8649ms)
+✔ Scenario 4: Persisting Domain 3 location (0.3804ms)
+✔ Scenario 5: Persisting Domain 4 location (0.7891ms)
+✔ Scenario 6: Switching domains and restoring individual per-domain locations (1.7864ms)
+✔ Scenario 7: Reloading and restoring last active location from storage (2.0188ms)
+✔ Scenario 8: Leaving Reading Notes and returning retains saved state (0.5656ms)
+✔ Scenario 9: Valid direct deep links parsed accurately (6.6371ms)
+✔ Scenario 10: Deep link takes precedence over saved state on cold load (0.9644ms)
+✔ Scenario 11: Invalid domain falls back safely (0.4275ms)
+✔ Scenario 12: Invalid subsection ID falls back safely and rejects injection (0.1859ms)
+✔ Scenario 13: Corrupted localStorage JSON recovers gracefully (0.2694ms)
+✔ Scenario 14: Unsupported schema version triggers clean default fallback (0.2809ms)
+✔ Scenario 15: Storage write failure falls back to memory storage safely (0.5271ms)
+✔ Scenario 16: Browser Back/Forward navigation hash parsing (0.3746ms)
+✔ Scenario 17: No unwanted duplicate history entries contract (0.2629ms)
+✔ Scenario 18: Domain 5 is unpublished and rejected as resume target (0.5463ms)
+✔ Scenario 19: Zero regressions to Quiz persistence (ACTIVE_SESSION_KEY) (2.4444ms)
+✔ Scenario 20: Zero regressions to Learning Slides persistence (LEARNING_PROGRESS_KEY) (1.2192ms)
+✔ Network has three semantic concept-group headings (2.8793ms)
+✔ Ten network terms have their own semantic definition headings (0.7536ms)
+✔ Network definitions have grouped explanations rather than an undifferentiated bullet stream (0.7261ms)
+✔ Seven OSI layer names are h4 headings in 7 through 1 order (3.2798ms)
+✔ OSI layer titles are no longer ordered-list items (0.7519ms)
+✔ Each OSI layer retains a separate supporting list and PDU explanation (0.5967ms)
+✔ Complete Network educational text is preserved after Markdown restructuring (1.2537ms)
+✔ Complete OSI educational text is preserved after removing generated list ordinals (1.1741ms)
+✔ Mnemonic wording and Layer 1 to Layer 7 direction remain intact (0.6766ms)
+✔ Corrected subnet and sockets explanations remain intact (0.5447ms)
+✔ Existing topic and objective navigation anchors are retained (0.5621ms)
+✔ Pilot styles are explicitly scoped and do not hide list markers (1.5442ms)
+✔ Two pilot wrappers stop before the neighboring TCP/IP subsection (0.3616ms)
+ℹ tests 93
+ℹ suites 0
+ℹ pass 93
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1662.0191

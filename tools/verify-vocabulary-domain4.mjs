@@ -80,7 +80,8 @@ if(process.argv.includes('--duplicates')) {
 }
 if(staging) {console.log('PASS staging only; registration/UI integration not asserted.');process.exit(0);}
 
-assert.equal(all.total_entries, 313 + data.entries.length);
+const publishedD5=JSON.parse(read('content/isc2-cc-2026/vocabulary/domain-5.json'));
+assert.equal(all.total_entries, 313 + data.entries.length + publishedD5.entries.length);
 assert.equal(versions.find(v => v.id === 'isc2-cc-vocabulary').vocabularyCount, all.total_entries);
 assert.deepEqual(all.entries.slice(0,313),old);
 assert.deepEqual(all.entries.filter(e=>e.domain===4),data.entries);
@@ -100,7 +101,7 @@ try {
   await renderVocabularyScreen(root,()=>{back=true;});
   assert.equal(cardIds().length,all.total_entries);assert.equal(count(),all.total_entries);
   const option=find('#vocab-domain-select').children.find(c=>c.value==='4');assert.ok(option&&!option.disabled&&option.textContent.includes(`(${data.total_entries})`));
-  const domain5=find('#vocab-domain-select').children.find(c=>c.value==='5');assert.ok(domain5.disabled);
+  const domain5=find('#vocab-domain-select').children.find(c=>c.value==='5');assert.ok(domain5&&!domain5.disabled&&domain5.textContent.includes(`(${publishedD5.entries.length})`));
   change(find('#vocab-domain-select'),'4');assert.deepEqual(cardIds(),data.entries.map(e=>e.id));assert.equal(count(),data.total_entries);
   for(const objective of ['4.1','4.2','4.3']) assert.ok(find(`[data-obj-check="${objective}"]`));
   assert.equal(root.querySelector('[data-obj-check="3.1"]'),null);

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "DEFECT-C-001",
+    "domain": 5,
+    "objective": "Objective 5.2",
+    "subsection": "5.2.8 Cyber Threat Intelligence & IOCs",
+    "sourceLocation": "content/isc2-cc-2026/reading/domain-5.md:1555",
+    "renderedLocation": "Section 5.2.8, bullet 2",
+    "observed": "Nested italic within bold (**...*อาจ*...**) caused bold regex to fail, leaking literal asterisks into rendered HTML.",
+    "severity": "P1",
+    "rootCause": "Rigid [^*]+ pattern in markdown-parser.js bold regex rejected inner asterisks.",
+    "remediation": "Updated js/core/markdown-parser.js to use non-newline lazy pattern /\\*\\*([^\\n]+?)\\*\\*/g, enabling clean parsing of nested emphasis.",
+    "verification": "Re-audit of all 5 domains confirmed 0 unrendered asterisks in visible text.",
+    "status": "RESOLVED"
+  },
+  {
+    "id": "DEFECT-C-002",
+    "domain": 5,
+    "objective": "Objective 5.1",
+    "subsection": "5.1.4 Symmetric & Asymmetric Encryption",
+    "sourceLocation": "content/isc2-cc-2026/reading/domain-5.md:235",
+    "renderedLocation": "Section 5.1.4, symmetric encryption key count formula",
+    "observed": "Formula was written using LaTeX parenthetical delimiters \\(n(n-1)/2\\), rendering literally as plain text in the browser.",
+    "severity": "P2",
+    "rootCause": "markdown-parser.js only parsed $...$ delimiters for math, ignoring standard LaTeX \\(...\\) notation.",
+    "remediation": "Converted formula in domain-5.md to (n - 1) / 2$ and added \\(...\\) regex parser support in js/core/markdown-parser.js parseInline.",
+    "verification": "DOM and real Chrome inspection confirmed formula renders as accessible math component.",
+    "status": "RESOLVED"
+  },
+  {
+    "id": "DEFECT-C-003",
+    "domain": "All",
+    "objective": "All Objectives",
+    "subsection": "Deep Linking and Cold Navigation",
+    "sourceLocation": "tools/audit-final-browser-qa.mjs",
+    "renderedLocation": "URL Hash Router",
+    "observed": "Audit script used query param hash #reading?domain=X which was not recognized by reading-progress.js router.",
+    "severity": "P2",
+    "rootCause": "Reading Notes router strictly supports #/reading/domain-X and anchor hashes per Task 143 specification.",
+    "remediation": "Aligned audit navigation to #/reading/domain-X format.",
+    "verification": "70/70 viewport matrix configurations passed with 42 tables and 28 diagrams rendered live.",
+    "status": "RESOLVED"
+  }
+]

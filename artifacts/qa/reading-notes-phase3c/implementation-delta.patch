@@ -1,0 +1,109 @@
+--- phase3c-start/css/reading.css
++++ current/css/reading.css
+@@ -3730,6 +3730,71 @@
+ }
+ /* End Phase 3B.2 scoped typography. */
+ 
++/* Phase 3C: content-driven Reading tables and intact technical words. */
++.reading-body .reading-table-wrapper {
++  max-width: 100%;
++  scrollbar-width: auto;
++  scrollbar-color: var(--text-muted) var(--panel-2);
++}
++.reading-body .reading-table-wrapper:focus-visible {
++  outline: 2px solid var(--blue);
++  outline-offset: 2px;
++}
++.reading-body .reading-table {
++  table-layout: auto;
++  min-width: min-content;
++}
++.reading-body .reading-table th,
++.reading-body .reading-table td {
++  word-break: normal;
++  overflow-wrap: normal;
++  hyphens: manual;
++}
++/* A readable floor for comparisons, without prescribing column proportions.
++   Two-column tables retain their natural sizing; existing document roles win. */
++.reading-body .reading-table:has(th:nth-child(3)) th {
++  min-width: 9rem;
++}
++.reading-body .reading-table .reading-term-en,
++.reading-body .reading-table .reading-term-en strong {
++  white-space: normal;
++}
++/* GRC's fixed percentages plus a nowrap keyword exceeded padded cell bounds.
++   Let each column participate in native min-content sizing, as other tables do. */
++.reading-body .reading-table-grc-frameworks th:nth-child(n),
++.reading-body .reading-table-grc-frameworks td:nth-child(n) {
++  width: auto;
++  min-width: 9rem;
++}
++.reading-body .reading-table-grc-frameworks td.reading-col-exam-keyword strong {
++  white-space: normal;
++}
++/* Risk-card badges must yield space rather than fragment the English title. */
++.reading-body .reading-treatment-header {
++  flex-wrap: wrap;
++}
++.reading-body .reading-treatment-title-group {
++  flex: 1 1 16rem;
++  min-width: 0;
++}
++.reading-body .reading-treatment-title {
++  word-break: normal;
++  overflow-wrap: normal;
++}
++.reading-body .reading-scenario-header {
++  flex-wrap: wrap;
++}
++.reading-body .reading-scenario-badge {
++  flex-shrink: 0;
++  word-break: normal;
++  overflow-wrap: normal;
++}
++.reading-body .reading-scenario-topic {
++  word-break: normal;
++  overflow-wrap: normal;
++}
++/* End Phase 3C scoped tables. */
++
+ /* Phase 3B.3: content-aware widths within published Reading Notes only. */
+ .app:has(.reading-structured-objective) {
+   max-width: 1560px;
+--- phase3c-start/js/core/markdown-parser.js
++++ current/js/core/markdown-parser.js
+@@ -482,7 +482,12 @@
+           : 'reading-table';
+         const dataAttr = isGrcFrameworksTable ? ' data-table="grc-frameworks"' : '';
+ 
+-        let tableHtml = `<div class="${wrapperClass}"${dataAttr}><table class="${tableClass}"${dataAttr}><thead><tr>`;
++        // Name the native scroll region from its visible column headers. Keep
++        // inline formatting out of the attribute and escape literal quotes/&.
++        const tableLabel = headerCells.map(h => h.replace(/<[^>]*>/g, '')).join(' / ')
++          .replace(/&(?!(?:#\d+|#x[\da-f]+|[a-z]+);)/gi, '&amp;')
++          .replace(/"/g, '&quot;');
++        let tableHtml = `<div class="${wrapperClass}"${dataAttr} role="region" tabindex="0" aria-label="${tableLabel}"><table class="${tableClass}"${dataAttr}><thead><tr>`;
+         headerCells.forEach((th, thIdx) => {
+           const colClass = (isGrcFrameworksTable && thIdx === 3) ? ' class="reading-col-exam-keyword"' : '';
+           tableHtml += `<th scope="col"${colClass}>${th}</th>`;
+--- phase3c-start/docs/plans/task.md
++++ current/docs/plans/task.md
+@@ -201,3 +201,5 @@
+ | P3B2. Cross-domain semantic structure and reading comfort | Implemented — Pending Human Visual Acceptance | All 94 covered; 70 source structures and 92 prose styles updated; B1 pilots intact. 678 regression checks and 10,342 Chrome checks pass. Four historical D1 assertions unchanged. See B2 report and QA manifests; no Phase 3C. |
+ 
+ | P3B3. Reading layout width and visual hierarchy | Implemented — Pending Human Visual Acceptance | All 94 ranges at 14 states; 5,834 Chrome checks and 3,948 derived checks pass; 687 regressions pass, historical four unchanged. Reference article 934→1210px at 1920; text/anchors preserved; concurrent Slides protected. No Phase 3C. |
++
++| P3C. Reading tables and technical typography | Implemented — Pending Human Visual Acceptance | All 22 tables and 94 subsections verified at 14 states; 9,906 Chrome checks and 692 regressions pass. Four historical D1 assertions unchanged. Native word boundaries, readable column floors, GRC sizing and keyboard regions implemented; 532 authoritative before/after captures. Reading sources, original notes, diagrams and concurrent Slides preserved. See Phase 3C report / QA manifest. No Phase 3D. |
+--- phase3c-start/tools/verify-reading-notes-domain1.mjs
++++ current/tools/verify-reading-notes-domain1.mjs
+@@ -183,7 +183,7 @@
+   assert.ok(html.includes('<strong>bold</strong>'), 'Must render bold');
+   assert.ok(html.includes('<em>italic</em>'), 'Must render italic');
+   assert.ok(html.includes('<code>inline code</code>'), 'Must render inline code');
+-  assert.ok(html.includes('<div class="reading-table-wrapper">'), 'Must wrap tables for responsiveness');
++  assert.match(html, /<div class="reading-table-wrapper" role="region" tabindex="0" aria-label="[^"]+">/, 'Must wrap tables in a named keyboard-accessible scroll region');
+   assert.ok(html.includes('<table class="reading-table">'), 'Must render table');
+   assert.ok(html.includes('<blockquote class="reading-blockquote">'), 'Must render blockquote');
+   assert.ok(html.includes('<ul>') && html.includes('<li>Item 1</li>'), 'Must render unordered list');

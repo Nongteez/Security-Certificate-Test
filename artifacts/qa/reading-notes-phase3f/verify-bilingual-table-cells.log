@@ -1,0 +1,67 @@
+============================================================
+Bilingual Table Terminology Separation Verification Suite
+============================================================
+
+Test Suite 1: CSS Architecture & Semantic Styling Rules
+  ✓ PASS: CSS defines .reading-bilingual-term container
+  ✓ PASS: .reading-bilingual-term CSS rule block exists
+  ✓ PASS: .reading-bilingual-term uses display: flex
+  ✓ PASS: .reading-bilingual-term stacks elements into 2 lines (flex-direction: column)
+  ✓ PASS: .reading-bilingual-term defines 2-4px vertical gap
+  ✓ PASS: .reading-bilingual-term defines compact line-height
+  ✓ PASS: CSS defines .reading-term-en styling
+  ✓ PASS: CSS defines .reading-term-th styling
+  ✓ PASS: English term has bold weight (font-weight: 700)
+  ✓ PASS: English term has primary text color (var(--text))
+  ✓ PASS: Thai translation has semibold weight (font-weight: 600)
+  ✓ PASS: Thai translation uses muted/subordinate color
+
+Test Suite 2: Table 1 (Section 1.1.1) Core Concepts Cells
+  ✓ PASS: Table 1 renders stacked bilingual term: Asset + (ทรัพย์สิน)
+  ✓ PASS: Table 1 renders stacked bilingual term: Threat + (ภัยคุกคาม)
+  ✓ PASS: Table 1 renders stacked bilingual term: Threat Actor + (ผู้ก่อภัยคุกคาม)
+  ✓ PASS: Table 1 renders stacked bilingual term: Vulnerability + (ช่องโหว่)
+  ✓ PASS: Table 1 renders stacked bilingual term: Exploit + (การใช้ประโยชน์จากช่องโหว่)
+  ✓ PASS: Table 1 renders stacked bilingual term: Risk + (ความเสี่ยง)
+  ✓ PASS: Table 1 renders stacked bilingual term: Control / Safeguard + (มาตรการควบคุม)
+
+Test Suite 3: Table 4 (Section 1.3.3) Documentation Hierarchy Cells
+  ✓ PASS: Table 4 renders stacked bilingual term: Policy + (นโยบาย)
+  ✓ PASS: Table 4 renders stacked bilingual term: Standard + (มาตรฐาน)
+  ✓ PASS: Table 4 renders stacked bilingual term: Procedure + (ขั้นตอนปฏิบัติ)
+  ✓ PASS: Table 4 renders stacked bilingual term: Guideline + (แนวทางปฏิบัติ)
+  ✓ PASS: Table 4 renders stacked bilingual term: Mandatory + (บังคับทุกคน)
+  ✓ PASS: Table 4 renders stacked bilingual term: Mandatory + (บังคับผู้ปฏิบัติ)
+  ✓ PASS: Table 4 renders stacked bilingual term: Advisory + (ไม่บังคับ ยืดหยุ่น)
+
+Test Suite 4: Table 5 (Section 1.5.1) Due Care vs Due Diligence Verbs
+  ✓ PASS: Table 5 renders stacked bilingual term: Implement + (นำไปติดตั้ง)
+  ✓ PASS: Table 5 renders stacked bilingual term: Assess / Evaluate + (ประเมินผล)
+  ✓ PASS: Table 5 renders stacked bilingual term: Apply + (ปรับใช้)
+  ✓ PASS: Table 5 renders stacked bilingual term: Review / Audit + (ทบทวนและตรวจสอบ)
+  ✓ PASS: Table 5 renders stacked bilingual term: Protect + (ปกป้อง)
+  ✓ PASS: Table 5 renders stacked bilingual term: Monitor + (เฝ้าระวัง)
+  ✓ PASS: Table 5 renders stacked bilingual term: Take Action + (ลงมือปฏิบัติ)
+  ✓ PASS: Table 5 renders stacked bilingual term: Investigate + (สืบค้นหาข้อเท็จจริง)
+  ✓ PASS: Table 5 renders stacked bilingual term: Patch + (อุดช่องโหว่)
+  ✓ PASS: Table 5 renders stacked bilingual term: Verify + (ตรวจพิสูจน์ยืนยัน)
+
+Test Suite 5: Protection of Non-Terminology Parenthetical Cells
+  ✓ PASS: Examples in Table 1 Col 2 are NOT converted to bilingual term
+  ✓ PASS: Customer Database example text preserved verbatim
+  ✓ PASS: Cybercriminals example text preserved verbatim
+  ✓ PASS: Misconfiguration example text preserved verbatim
+  ✓ PASS: Table 2 explanatory note preserved verbatim without conversion
+  ✓ PASS: Table 4 WHAT & WHY explanation preserved verbatim
+  ✓ PASS: Table 6 WHAT keyword preserved verbatim
+  ✓ PASS: Table 6 Canons 1–4 reference preserved verbatim
+
+Test Suite 6: Total Cell Count & Preservation Boundary
+  ✓ PASS: exam-versions.js exists
+  ✓ PASS: quiz-engine.js exists
+  ✓ PASS: vocabulary-loader.js exists
+
+============================================================
+Bilingual Terminology Verification Summary: 47 Passed, 1 Failed
+============================================================
+  ✗ FAIL: Exactly 25 bilingual terminology cells converted across 3 tables (found: 27)

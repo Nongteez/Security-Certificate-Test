@@ -1,0 +1,30 @@
+====================================================
+ Phase 4 Quiz Engine & Session Creation Verification
+====================================================
+
+[1/7] Loading ISC2 CC 2026 Exam Configuration & Questions...
+  PASS: All 5 domains loaded with exact expected counts (142, 65, 93, 156, 127 = 583).
+
+[2/7] Testing Practice Mode (All Domains / Sequential / 10 Questions)...
+  PASS: Sequential practice loads Q1 first, exact 10 questions, strictly preserving original order.
+
+[3/7] Testing Practice Mode (Domain 4 Only / Random / 20 Questions)...
+  PASS: Domain 4 random practice produces exactly 20 D4 questions without source mutation.
+
+[4/7] Testing Practice Mode (All Domains / Random / 100 Questions)...
+  PASS: 100 random questions created with zero duplicates and valid schema.
+
+[5/7] Testing Exam Mode Proportional Allocation (125 Questions, 5 Domains)...
+  Per-domain allocations computed: { '1': 33, '2': 13, '3': 27, '4': 30, '5': 22 }
+  Actual domain distribution in exam session: { '1': 33, '2': 13, '3': 27, '4': 30, '5': 22 }
+  PASS: Exam session has exact 125 questions with 33/13/27/30/22 proportional domain distribution.
+
+[6/7] Testing Quiz Session State Management & Answer Recording...
+  PASS: Quiz session lifecycle, answer recording, and navigation verified.
+
+[7/7] Testing Exam Session Initial Timer State...
+  PASS: Exam timer state correctly initialized to 7200 seconds.
+
+====================================================
+ STATUS: ALL PHASE 4 ENGINE TESTS PASSED (7/7)
+====================================================

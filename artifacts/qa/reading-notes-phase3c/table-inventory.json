@@ -1,0 +1,1084 @@
+[
+  {
+    "domain": 1,
+    "index": 0,
+    "anchor": "topic-1-1-core-concepts",
+    "line": 17,
+    "headers": [
+      "คำศัพท์",
+      "คำจำกัดความ",
+      "ตัวอย่างในโลกจริง"
+    ],
+    "rows": [
+      [
+        "**Asset (ทรัพย์สิน)**",
+        "สิ่งที่มีคุณค่าต่อองค์กร ซึ่งหากสูญหาย เสียหาย หรือรั่วไหลจะเกิดผลกระทบ",
+        "ฐานข้อมูลลูกค้า (Customer Database), ระบบชำระเงิน, ทรัพย์สินทางปัญญา, บุคลากร"
+      ],
+      [
+        "**Threat (ภัยคุกคาม)**",
+        "สิ่ง เหตุการณ์ หรือบุคคลที่อาจก่อให้เกิดอันตรายหรือสร้างความเสียหายต่อ Asset",
+        "แฮกเกอร์, มัลแวร์, แรนซัมแวร์, ไฟไหม้, น้ำท่วม, ไฟดับ"
+      ],
+      [
+        "**Threat Actor (ผู้ก่อภัยคุกคาม)**",
+        "ตัวบุคคลหรือกลุ่มบุคคลที่ลงมือหรือพยายามก่อให้เกิดภัยคุกคาม",
+        "อาชญากรไซเบอร์ (Cybercriminals), พนักงานภายในที่ประสงค์ร้าย (Insider Threats), รัฐสนับสนุน (Nation-State)"
+      ],
+      [
+        "**Vulnerability (ช่องโหว่)**",
+        "จุดอ่อนหรือข้อบกพร่องในระบบ กระบวนการ หรือมาตรการควบคุม ที่ผู้ก่อภัยคุกคามอาจใช้ประโยชน์ หรือเหตุการณ์คุกคามอาจกระตุ้นให้เกิดความเสียหาย",
+        "เซิร์ฟเวอร์ที่ยังไม่ได้ติดตั้ง Patch, การตั้งค่าความปลอดภัยผิดพลาด (Misconfiguration), รหัสผ่านที่คาดเดาง่าย"
+      ],
+      [
+        "**Exploit (การใช้ประโยชน์จากช่องโหว่)**",
+        "วิธีการ โค้ดโปรแกรม หรือเทคนิคที่ใช้เจาะผ่านจุดอ่อนของระบบ",
+        "สคริปต์ยิงเจาะช่องโหว่ซอฟต์แวร์, Phishing Email หลอกขอรหัสผ่าน"
+      ],
+      [
+        "**Risk (ความเสี่ยง)**",
+        "โอกาสและผลกระทบของความเสียหายที่อาจเกิดขึ้นเมื่อ Threat อาศัย Vulnerability สร้างผลกระทบต่อ Asset",
+        "โอกาสที่ฐานข้อมูลลูกค้าจะถูกขโมยและสร้างผลเสียหายทางการเงินและชื่อเสียง"
+      ],
+      [
+        "**Control / Safeguard (มาตรการควบคุม)**",
+        "กลไก นโยบาย หรือเทคโนโลยีที่นำมาติดตั้งเพื่อลดโอกาสหรือผลกระทบของความเสี่ยง",
+        "Multi-Factor Authentication (MFA), Firewall, นโยบายความปลอดภัย"
+      ]
+    ]
+  },
+  {
+    "domain": 1,
+    "index": 1,
+    "anchor": "topic-1-1-cia-triad",
+    "line": 134,
+    "headers": [
+      "สถานการณ์ในโจทย์",
+      "หลักการที่เด่นที่สุด",
+      "คำอธิบายเหตุผล"
+    ],
+    "rows": [
+      [
+        "ข้อมูลเงินเดือนพนักงานรั่วไหลออกสู่สาธารณะ",
+        "**Confidentiality**",
+        "มีการเปิดเผยข้อมูลลับแก่ผู้ไม่มีสิทธิ์"
+      ],
+      [
+        "ผู้โจมตีเปลี่ยนเลขบัญชีรับเงินในใบแจ้งหนี้",
+        "**Integrity**",
+        "ข้อมูลถูกดัดแปลงแก้ไขจนไม่ถูกต้อง"
+      ],
+      [
+        "เว็บไซต์ระบบลงทะเบียนล่มเพราะทราฟฟิก DDoS มหาศาล",
+        "**Availability**",
+        "ผู้ใช้ที่ถูกต้องไม่สามารถเข้าถึงระบบได้"
+      ],
+      [
+        "Ransomware เข้ารหัสไฟล์ในเครื่องและระบบหยุดชะงัก",
+        "**Availability** *(และอาจกระทบ I/C)*",
+        "โจทย์มักเน้นผลกระทบที่ระบบทำงานไม่ได้ แต่ต้องดูบริบทคำถาม"
+      ]
+    ]
+  },
+  {
+    "domain": 1,
+    "index": 2,
+    "anchor": "topic-1-1-authorization-accounting",
+    "line": 232,
+    "headers": [
+      "คำถามหลักในข้อสอบ",
+      "ขั้นตอนที่เกี่ยวข้อง"
+    ],
+    "rows": [
+      [
+        "*\"Who are you?\"*",
+        "**Identification**"
+      ],
+      [
+        "*\"Prove that you are who you claim to be.\"*",
+        "**Authentication**"
+      ],
+      [
+        "*\"What actions and resources are you permitted to access?\"*",
+        "**Authorization**"
+      ],
+      [
+        "*\"What did you do, and what evidence is recorded?\"*",
+        "**Accounting**"
+      ]
+    ]
+  },
+  {
+    "domain": 1,
+    "index": 3,
+    "anchor": "topic-1-3-document-hierarchy",
+    "line": 675,
+    "headers": [
+      "ประเภทเอกสาร",
+      "บทบาทหน้าที่",
+      "ระดับการบังคับ",
+      "ตัวอย่างรูปธรรม"
+    ],
+    "rows": [
+      [
+        "**Policy (นโยบาย)**",
+        "กำหนดทิศทางภาพกว้าง วิสัยทัศน์ และความคาดหวังของผู้บริหาร (Answers: *WHAT & WHY*)",
+        "**Mandatory (บังคับทุกคน)**",
+        "*\"พนักงานทุกคนต้องใช้รหัสผ่านที่รัดกุมและปกป้องข้อมูลลูกค้า\"*"
+      ],
+      [
+        "**Standard (มาตรฐาน)**",
+        "กำหนดเกณฑ์ขั้นต่ำ ข้อกำหนดทางเทคนิคที่จำเพาะเจาะจงและวัดผลได้ (Answers: *EXACT SPECIFICATION*)",
+        "**Mandatory (บังคับทุกคน)**",
+        "*\"บัญชีผู้ดูแลระบบต้องใช้ MFA ตามมาตรฐานที่องค์กรอนุมัติ\"*"
+      ],
+      [
+        "**Procedure (ขั้นตอนปฏิบัติ)**",
+        "คำแนะนำขั้นตอนการทำงานทีละขั้นแบบเป็นลำดับ (Answers: *HOW*)",
+        "**Mandatory (บังคับผู้ปฏิบัติ)**",
+        "*\"ขั้นตอนการรีเซ็ตรหัสผ่าน: 1. เปิดเว็บพอร์ทัล 2. สแกนบัตร 3. ยืนยัน OTP 4. บันทึกผล\"*"
+      ],
+      [
+        "**Guideline (แนวทางปฏิบัติ)**",
+        "คำแนะนำ ข้อเสนอแนะ หรือ Best Practices เพื่อช่วยในการตัดสินใจ (Answers: *RECOMMENDATION*)",
+        "**Advisory (ไม่บังคับ ยืดหยุ่น)**",
+        "*\"ข้อแนะนำในการสร้าง Passphrase ที่จำง่ายแต่เดายาก เช่น การนำคำ 4 คำมาร้อยเรียงกัน\"*"
+      ]
+    ]
+  },
+  {
+    "domain": 1,
+    "index": 4,
+    "anchor": "topic-1-5-due-care-due-diligence",
+    "line": 930,
+    "headers": [
+      "คำกริยาในโจทย์ Due Care (DO)",
+      "คำกริยาในโจทย์ Due Diligence (CHECK)"
+    ],
+    "rows": [
+      [
+        "**Implement** (นำไปติดตั้ง)",
+        "**Assess / Evaluate** (ประเมินผล)"
+      ],
+      [
+        "**Apply** (ปรับใช้)",
+        "**Review / Audit** (ทบทวนและตรวจสอบ)"
+      ],
+      [
+        "**Protect** (ปกป้อง)",
+        "**Monitor** (เฝ้าระวัง)"
+      ],
+      [
+        "**Take Action** (ลงมือปฏิบัติ)",
+        "**Investigate** (สืบค้นหาข้อเท็จจริง)"
+      ],
+      [
+        "**Patch** (อุดช่องโหว่)",
+        "**Verify** (ตรวจพิสูจน์ยืนยัน)"
+      ]
+    ]
+  },
+  {
+    "domain": 1,
+    "index": 5,
+    "anchor": "topic-1-5-distinctions-scenarios",
+    "line": 1289,
+    "headers": [
+      "Keyword ในโจทย์ข้อสอบ",
+      "เชื่อมโยงไปยังคำตอบ / แนวคิด"
+    ],
+    "rows": [
+      [
+        "*Unauthorized disclosure / Read without permission*",
+        "**Confidentiality**"
+      ],
+      [
+        "*Unauthorized modification / Tampering / Data altered*",
+        "**Integrity**"
+      ],
+      [
+        "*Downtime / Service disruption / Inaccessible system*",
+        "**Availability**"
+      ],
+      [
+        "*Claim identity / Who are you? — กล่าวอ้างตัวตน*",
+        "**Identification (การระบุตัวตน)**"
+      ],
+      [
+        "*Prove the claimed identity / Prove it — พิสูจน์ตัวตนที่กล่าวอ้าง*",
+        "**Authentication (การพิสูจน์ตัวตน)**"
+      ],
+      [
+        "*Permissions / Allowed actions / Read vs Write*",
+        "**Authorization**"
+      ],
+      [
+        "*Logs / Audit trails / Trace actions*",
+        "**Accounting / Accountability**"
+      ],
+      [
+        "*Evidence of transaction / Cannot deny sending*",
+        "**Non-repudiation**"
+      ],
+      [
+        "*Threat exploits weakness*",
+        "**Vulnerability → Risk**"
+      ],
+      [
+        "*Cease risky activity / Stop service*",
+        "**Risk Avoidance**"
+      ],
+      [
+        "*Install patches / Deploy MFA / Lower impact*",
+        "**Risk Mitigation**"
+      ],
+      [
+        "*Purchase cyber insurance / Third-party SLA*",
+        "**Risk Transfer**"
+      ],
+      [
+        "*Formal executive sign-off / Cost exceeds benefit*",
+        "**Risk Acceptance**"
+      ],
+      [
+        "*Risk remaining after controls deployed*",
+        "**Residual Risk**"
+      ],
+      [
+        "*High-level management direction (WHAT)*",
+        "**Policy**"
+      ],
+      [
+        "*Mandatory minimum specification (REQUIRED)*",
+        "**Standard**"
+      ],
+      [
+        "*Step-by-step technical instructions (HOW)*",
+        "**Procedure**"
+      ],
+      [
+        "*Advisory best practice recommendations (SHOULD)*",
+        "**Guideline**"
+      ],
+      [
+        "*Reasonable steps taken to protect (DO)*",
+        "**Due Care**"
+      ],
+      [
+        "*Investigate, assess, evaluate, verify (CHECK)*",
+        "**Due Diligence**"
+      ],
+      [
+        "*Verify every access regardless of location*",
+        "**Zero Trust**"
+      ],
+      [
+        "*Multiple layered safeguards / Redundant defenses*",
+        "**Defense in Depth**"
+      ],
+      [
+        "*Society → Act honorably → Principals → Profession*",
+        "**ISC2 Code of Ethics (Canons 1–4)**"
+      ]
+    ]
+  },
+  {
+    "domain": 2,
+    "index": 0,
+    "anchor": "topic-2-1-frameworks-standards",
+    "line": 76,
+    "headers": [
+      "Framework / Standard",
+      "จุดเน้นหลัก (Primary Focus)",
+      "ขอบเขตและการนำไปใช้",
+      "คำจำสั้นสำหรับสอบ"
+    ],
+    "rows": [
+      [
+        "**NIST CSF**<br>(NIST Cybersecurity Framework)",
+        "การจัดการและลดความเสี่ยงด้านความมั่นคงปลอดภัยไซเบอร์",
+        "กรอบความยืดหยุ่นที่ช่วยประเมิน ระบุ และลดความเสี่ยงไซเบอร์อย่างเป็นระบบ (Functions: Govern, Identify, Protect, Detect, Respond, Recover)",
+        "**Cybersecurity Risk**"
+      ],
+      [
+        "**ISO/IEC 27001**",
+        "ข้อกำหนดในการจัดตั้งและปรับปรุง **ISMS**",
+        "มาตรฐานสากลที่สามารถตรวจประเมินและให้การรับรอง (Certification) สำหรับระบบบริหารจัดการความมั่นคงปลอดภัยสารสนเทศ (Information Security Management System)",
+        "**ISMS Requirements**"
+      ],
+      [
+        "**COBIT**<br>(Control Objectives for Information Technologies)",
+        "การกำกับดูแลและการบริหารจัดการ IT ระดับองค์กร",
+        "เชื่อมโยงเป้าหมายทางธุรกิจเข้ากับเป้าหมายด้านเทคโนโลยีสารสนเทศ (Governance and Management of Enterprise IT)",
+        "**Enterprise IT Governance**"
+      ]
+    ]
+  },
+  {
+    "domain": 2,
+    "index": 1,
+    "anchor": "topic-2-1-risk-register",
+    "line": 133,
+    "headers": [
+      "ฟิลด์ข้อมูล (Field)",
+      "ความหมายและบทบาท",
+      "ตัวอย่างรูปธรรมในองค์กร"
+    ],
+    "rows": [
+      [
+        "**Risk Description**",
+        "คำอธิบายสถานการณ์ความเสี่ยงที่อาจเกิดขึ้น",
+        "แรนซัมแวร์โจมตีและเข้ารหัสข้อมูลบนเซิร์ฟเวอร์หลัก"
+      ],
+      [
+        "**Affected Asset / Process**",
+        "ทรัพย์สินหรือกระบวนการธุรกิจที่ได้รับผลกระทบ",
+        "ระบบฐานข้อมูล ERP และเซิร์ฟเวอร์ฐานข้อมูลลูกค้า"
+      ],
+      [
+        "**Threat**",
+        "ภัยคุกคามหรือผู้ก่อภัยคุกคาม",
+        "Ransomware (มัลแวร์เรียกค่าไถ่), กลุ่มอาชญากรไซเบอร์"
+      ],
+      [
+        "**Vulnerability**",
+        "ช่องโหว่หรือจุดอ่อนที่เปิดโอกาส",
+        "พนักงานขาดความตระหนักเรื่องฟิชชิง, ช่องโหว่ที่ยังไม่ได้แพตช์"
+      ],
+      [
+        "**Likelihood**",
+        "โอกาสหรือความถี่ที่จะเกิดเหตุการณ์",
+        "High (สูง)"
+      ],
+      [
+        "**Impact**",
+        "ความรุนแรงของผลกระทบต่อธุรกิจ",
+        "High (สูง — ธุรกิจหยุดชะงักและข้อมูลรั่วไหล)"
+      ],
+      [
+        "**Risk Rating**",
+        "ระดับความเสี่ยงจากการประเมินร่วมกัน",
+        "Critical (วิกฤต)"
+      ],
+      [
+        "**Risk Owner**",
+        "บุคคลหรือตำแหน่งที่รับผิดชอบความเสี่ยง",
+        "IT Manager หรือ Chief Information Security Officer (CISO)"
+      ],
+      [
+        "**Treatment Strategy**",
+        "กลยุทธ์การจัดการความเสี่ยง",
+        "Mitigation (ลดความเสี่ยงด้วยการเพิ่มมาตรการควบคุม)"
+      ],
+      [
+        "**Controls Deployed**",
+        "มาตรการควบคุมที่เลือกใช้เพื่อลดความเสี่ยง",
+        "EDR บนเครื่องปลายทาง, Backup แบบ Immutable, Network Segmentation, บังคับใช้ MFA"
+      ],
+      [
+        "**Current Status**",
+        "สถานะความคืบหน้าในการควบคุม",
+        "In Progress (กำลังติดตั้งระบบ EDR)"
+      ],
+      [
+        "**Residual Risk**",
+        "ความเสี่ยงที่ยังคงหลงเหลืออยู่หลังควบคุม",
+        "Low to Medium (ความเสี่ยงลดลงสู่ระดับที่ยอมรับได้)"
+      ]
+    ]
+  },
+  {
+    "domain": 2,
+    "index": 2,
+    "anchor": "topic-2-2-bc-vs-dr",
+    "line": 220,
+    "headers": [
+      "ประเด็นเปรียบเทียบ",
+      "Business Continuity (BC)",
+      "Disaster Recovery (DR)"
+    ],
+    "rows": [
+      [
+        "**Primary Focus**",
+        "มุ่งเน้นการทำให้ **ธุรกิจโดยรวมดำเนินต่อไปได้** ระหว่างวิกฤต",
+        "มุ่งเน้นการ **กู้คืนระบบ IT และข้อมูล** หลังภัยพิบัติ"
+      ],
+      [
+        "**Scope of Coverage**",
+        "กว้างมาก: บุคลากร, ขั้นตอนธุรกิจ, อาคาร, คู่ค้า, กฎหมาย",
+        "แคบและเจาะจง: เซิร์ฟเวอร์, ฐานข้อมูล, เครือข่าย, ซอฟต์แวร์"
+      ],
+      [
+        "**Operational Examples**",
+        "ให้พนักงานทำงานจากบ้าน, ติดต่อซัพพลายเออร์สำรอง, ใช้ระบบ Manual",
+        "การสลับไปใช้ Cloud Backup, กู้คืน Virtual Machines, กู้ Database"
+      ],
+      [
+        "**Key Governance Document**",
+        "**BCP** (Business Continuity Plan)",
+        "**DRP** (Disaster Recovery Plan)"
+      ],
+      [
+        "**Relationship**",
+        "ร่มใหญ่ของการบริหารความต่อเนื่องระดับองค์กร",
+        "เป็นองค์ประกอบย่อยด้านเทคนิคของ BC (<strong class=\"reading-math-formula\">DR ⊂ BC</strong>)"
+      ]
+    ]
+  },
+  {
+    "domain": 2,
+    "index": 3,
+    "anchor": "topic-2-3-social-engineering-techniques",
+    "line": 378,
+    "headers": [
+      "เทคนิคการโจมตี",
+      "คำอธิบายและพฤติกรรมตามสไลด์",
+      "คำใบ้สำคัญในข้อสอบ (Exam Keywords)"
+    ],
+    "rows": [
+      [
+        "**Phishing**",
+        "ข้อความหลอกลวงเพื่อล่อให้เหยื่อคลิกลิงก์ เปิดไฟล์แนบ หรือกรอกรหัสผ่าน; ตัวอย่างแบบวงกว้างเรียก Bulk Phishing ส่วน Spear Phishing และ Whaling เจาะจงเป้าหมาย",
+        "Fraudulent mass message, Click link, Malicious attachment"
+      ],
+      [
+        "**Spear Phishing**",
+        "การฟิชชิงที่ปรับแต่งข้อความ **เจาะจงบุคคล แผนก หรือองค์กร** โดยเฉพาะ",
+        "Targeted individual or organization, Tailored information"
+      ],
+      [
+        "**Whaling**",
+        "การโจมตีฟิชชิงที่พุ่งเป้าไปที่ **ผู้บริหารระดับสูงหรือบุคคลสำคัญ** (High-Profile Target)",
+        "C-Level Executive, CEO, CFO, High-profile target"
+      ],
+      [
+        "**Vishing**<br>(Voice Phishing)",
+        "การหลอกลวงผ่าน **เสียงหรือการโทรศัพท์** เพื่อขอรหัสผ่านหรือข้อมูล",
+        "Voice, Phone call, Impersonating IT Support over the phone"
+      ],
+      [
+        "**Smishing**<br>(SMS Phishing)",
+        "การหลอกลวงผ่าน **ข้อความ SMS บนโทรศัพท์มือถือ**",
+        "SMS, Text message, Urgent package delivery text"
+      ],
+      [
+        "**Pretexting**",
+        "การ **สร้างเรื่องราวหรือสถานการณ์สมมุติขึ้นมาล่วงหน้า** เพื่อล่อให้เหยื่อหลงเชื่อและให้ข้อมูล",
+        "Fabricated scenario, Invented pretext, Impersonating auditor"
+      ]
+    ]
+  },
+  {
+    "domain": 2,
+    "index": 4,
+    "anchor": "topic-2-4-kpi-vs-kri",
+    "line": 459,
+    "headers": [
+      "มิติเปรียบเทียบ",
+      "Key Performance Indicator (KPI)",
+      "Key Risk Indicator (KRI)"
+    ],
+    "rows": [
+      [
+        "**Primary Focus**",
+        "มุ่งเน้นการวัด **ผลการดำเนินงาน (Performance)**",
+        "มุ่งเน้นการวัดและเฝ้าระวัง **ระดับความเสี่ยง (Risk)**"
+      ],
+      [
+        "**Core Question**",
+        "*\"เราดำเนินงานก้าวหน้าไปถึงเป้าหมายที่ตั้งไว้หรือไม่?\"*",
+        "*\"ระดับความเสี่ยงขององค์กรกำลังเพิ่มขึ้นหรือลดลง?\"*"
+      ],
+      [
+        "**Nature of Metric**",
+        "วัดความสำเร็จเทียบกับเกณฑ์เป้าหมาย (Performance Target)",
+        "ให้สัญญาณเตือนล่วงหน้า (Early Warning Indicator)"
+      ],
+      [
+        "**ตัวอย่างในองค์กร**",
+        "ร้อยละของช่องโหว่วิกฤตที่ได้รับการติดตั้ง Patch ภายใน 15 วัน, ร้อยละของพนักงานที่ผ่านการอบรม",
+        "จำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA, จำนวนช่องโหว่วิกฤตที่ยังไม่แพตช์, จำนวนเซิร์ฟเวอร์ที่หมดอายุการสนับสนุน"
+      ]
+    ]
+  },
+  {
+    "domain": 2,
+    "index": 5,
+    "anchor": "topic-2-4-scorecards",
+    "line": 491,
+    "headers": [
+      "ขอบเขตงาน (Area)",
+      "ค่าเป้าหมาย (Target)",
+      "ผลงานจริง (Actual)",
+      "สถานะประเมิน (Status)"
+    ],
+    "rows": [
+      [
+        "**Patch Compliance**",
+        "95%",
+        "91%",
+        "**Needs Improvement** (ต่ำกว่าเป้าหมาย)"
+      ],
+      [
+        "**MFA Adoption**",
+        "100%",
+        "97%",
+        "**Needs Improvement** (ยังมีบัญชีตกค้าง)"
+      ],
+      [
+        "**Security Training**",
+        "95%",
+        "98%",
+        "**On Target** (ผ่านเกณฑ์เป้าหมาย)"
+      ],
+      [
+        "**Critical Vulnerabilities**",
+        "&lt; 10",
+        "12",
+        "**Needs Attention** (เกินเกณฑ์ที่กำหนด)"
+      ]
+    ]
+  },
+  {
+    "domain": 2,
+    "index": 6,
+    "anchor": "topic-2-4-memory-aid",
+    "line": 512,
+    "headers": [
+      "เครื่องมือ / แนวคิด",
+      "คำสำคัญในโจทย์สอบ (Key Exam Triggers)",
+      "วัตถุประสงค์หลัก (Primary Purpose)",
+      "ตัวอย่างการใช้งานในองค์กร"
+    ],
+    "rows": [
+      [
+        "**Metric**",
+        "\"Defined measurable value\", \"Count, percentage, ratio or average\"",
+        "ค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์",
+        "จำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)"
+      ],
+      [
+        "**KPI**",
+        "\"Performance target\", \"Progress toward goal\", \"Success rate\"",
+        "ประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย",
+        "ร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)"
+      ],
+      [
+        "**KRI**",
+        "\"Early warning\", \"Escalating risk\", \"Threshold exceed\"",
+        "ส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้",
+        "จำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (&gt; 0 บัญชี)"
+      ],
+      [
+        "**Dashboard**",
+        "\"Real-time\", \"Operational view\", \"Visual representation\"",
+        "แสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน",
+        "หน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+      ],
+      [
+        "**Scorecard**",
+        "\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"",
+        "สรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง",
+        "ตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน"
+      ],
+      [
+        "**Report**",
+        "\"Formal documentation\", \"Recommended actions\", \"Executive summary\"",
+        "เอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร",
+        "เอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร"
+      ]
+    ]
+  },
+  {
+    "domain": 3,
+    "index": 0,
+    "anchor": "topic-3-1-roles-definition",
+    "line": 78,
+    "headers": [
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Role Name**</span><span class=\"reading-term-th\">(ชื่อบทบาทหน้าที่)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Primary Job Function**</span><span class=\"reading-term-th\">(หน้าที่งานหลัก)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Required Access &amp; Permissions**</span><span class=\"reading-term-th\">(สิทธิ์การเข้าถึงที่จำเป็น)</span></div>"
+    ],
+    "rows": [
+      [
+        "**HR Manager**",
+        "จัดการข้อมูลบุคลากรและเงินเดือน",
+        "สิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง"
+      ],
+      [
+        "**Network Administrator**",
+        "ดูแลระบบเครือข่ายและเราเตอร์",
+        "สิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways"
+      ],
+      [
+        "**Database Administrator (DBA)**",
+        "จัดการฐานข้อมูลและโครงสร้างข้อมูล",
+        "สิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges"
+      ],
+      [
+        "**Security Analyst**",
+        "เฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก",
+        "สิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts"
+      ],
+      [
+        "**Finance Employee**",
+        "บันทึกและตรวจสอบธุรกรรมการเงิน",
+        "สิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง"
+      ]
+    ]
+  },
+  {
+    "domain": 3,
+    "index": 1,
+    "anchor": "topic-3-2-polp-vs-sod",
+    "line": 421,
+    "headers": [
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Comparison Aspect**</span><span class=\"reading-term-th\">(มิติการเปรียบเทียบ)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Principle of Least Privilege (PoLP)**</span><span class=\"reading-term-th\">(หลักสิทธิ์ขั้นต่ำ)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Segregation of Duties (SoD)**</span><span class=\"reading-term-th\">(การแบ่งแยกหน้าที่)</span></div>"
+    ],
+    "rows": [
+      [
+        "**Focus (จุดเน้น)**",
+        "มุ่งเน้นไปที่ **สิทธิ์ของบุคคล/บัญชีรายบุคคล** (Individual Permissions)",
+        "มุ่งเน้นไปที่ **ขั้นตอนของกระบวนการทำงาน** (Workflow / Process Steps)"
+      ],
+      [
+        "**Core Rule (กฎหลัก)**",
+        "จำกัดสิทธิ์ให้มีเฉพาะ **สิทธิ์ขั้นต่ำที่จำเป็น** (Minimum Access)",
+        "แบ่งงานสำคัญให้มี **ผู้รับผิดชอบมากกว่าหนึ่งคน** (Multiple People)"
+      ],
+      [
+        "**Primary Risk Mitigated**",
+        "บัญชีถูกแฮกแล้วสร้างความเสียหายลุกลาม (Blast Radius)",
+        "การทุจริต การฉ้อโกง และความผิดพลาดโดยคนเพียงคนเดียว (Fraud / Abuse)"
+      ],
+      [
+        "**Keyword Trigger**",
+        "*\"Minimum necessary\", \"Excessive permissions\"*",
+        "*\"Single person controls entire process\", \"Approving own request\"*"
+      ]
+    ]
+  },
+  {
+    "domain": 3,
+    "index": 2,
+    "anchor": "topic-3-2-models-matrix",
+    "line": 605,
+    "headers": [
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Access Control Model**</span><span class=\"reading-term-th\">(โมเดลการควบคุม)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Decision Maker**</span><span class=\"reading-term-th\">(ผู้ตัดสินใจให้สิทธิ์)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Primary Mechanism**</span><span class=\"reading-term-th\">(กลไกหลักในการทำงาน)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Typical Use Case / Environment**</span><span class=\"reading-term-th\">(สภาพแวดล้อมที่นิยมใช้)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Exam Keyword Triggers**</span><span class=\"reading-term-th\">(คำสำคัญบ่งชี้ในข้อสอบ)</span></div>"
+    ],
+    "rows": [
+      [
+        "**DAC (Discretionary)**",
+        "**Resource Owner** (เจ้าของทรัพยากร)",
+        "Access Control Lists (ACLs) กำกับที่ตัวไฟล์",
+        "ระบบแชร์ไฟล์ทั่วไป, Windows NTFS, Unix Permissions",
+        "*\"Owner decides\", \"File creator sets access\", \"Discretion\"*"
+      ],
+      [
+        "**MAC (Mandatory)**",
+        "**Central Authority** (นโยบายกลางของระบบ)",
+        "Security Labels &amp; Subject Clearances",
+        "ทางทหาร, หน่วยงานความมั่นคง, ระบบลับราชการ",
+        "*\"Security Classification\", \"Clearance\", \"Top Secret\", \"Labels\"*"
+      ],
+      [
+        "**RBAC (Role-Based)**",
+        "**Predefined Role** (บทบาทหน้าที่งาน)",
+        "Permissions ผูกกับ Roles แล้ว User ผูกกับ Roles",
+        "องค์กรธุรกิจทั่วไป, สถาบันการเงิน, โรงพยาบาล",
+        "*\"Job function\", \"Predefined roles\", \"Onboarding scalability\"*"
+      ],
+      [
+        "**ABAC (Attribute-Based)**",
+        "**Policy Engine** (ระบบประมวลผลนโยบาย)",
+        "Multiple Attributes (Subject, Object, Action, Environment)",
+        "ระบบคลาวด์ยุคใหม่, Zero Trust Architecture",
+        "*\"Attributes\", \"Environmental conditions\", \"Time/Location/Device\"*"
+      ]
+    ]
+  },
+  {
+    "domain": 3,
+    "index": 3,
+    "anchor": "topic-3-review-quickref",
+    "line": 787,
+    "headers": [
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Concept**</span><span class=\"reading-term-th\">(แนวคิดสำคัญ)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Exam Trigger Keywords**</span><span class=\"reading-term-th\">(คำค้นพบในโจทย์ข้อสอบ)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Core Purpose**</span><span class=\"reading-term-th\">(วัตถุประสงค์หลัก)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Practical Scenario Example**</span><span class=\"reading-term-th\">(ตัวอย่างสถานการณ์จริง)</span></div>"
+    ],
+    "rows": [
+      [
+        "**Provisioning**",
+        "\"Create identity\", \"Grant required access\", \"Onboarding\"",
+        "จัดสรรตัวตนดิจิทัลและสิทธิ์เริ่มต้นทำงาน",
+        "พนักงานใหม่ได้รับการสร้าง AD User และมอบสิทธิ์ ERP"
+      ],
+      [
+        "**Deprovisioning**",
+        "\"Disable access\", \"Termination\", \"Contract ended\"",
+        "ระงับและเพิกถอนสิทธิ์เมื่อหมดความจำเป็น",
+        "ระงับบัญชี VPN และอีเมลทันทีที่พนักงานพ้นสภาพ"
+      ],
+      [
+        "**Periodic Review**",
+        "\"Regular review\", \"Audit findings\", \"Verify permissions\"",
+        "ตรวจสอบความถูกต้องของสิทธิ์เป็นระยะ",
+        "ผู้จัดการตรวจสอบรายชื่อสิทธิ์ของทีมงานทุก 3 เดือน"
+      ],
+      [
+        "**Privilege Creep**",
+        "\"Role change\", \"Accumulated rights\", \"Mover event\"",
+        "ระบุสิทธิ์ตกค้างจากการย้ายแผนก",
+        "ย้ายจาก Finance ไป IT แต่ยังเปิดดูไฟล์การเงินได้"
+      ],
+      [
+        "**Least Privilege**",
+        "\"Minimum necessary access\", \"Limit blast radius\"",
+        "ป้องกันความเสียหายลุกลามเมื่อบัญชีถูกแฮก",
+        "Helpdesk รีเซ็ตรหัสผ่านได้แต่ไม่มีสิทธิ์ Domain Admin"
+      ],
+      [
+        "**SoD**",
+        "\"Multiple people\", \"Creator cannot approve\", \"Prevent fraud\"",
+        "ป้องกันการทุจริตและความผิดพลาดร้ายแรง",
+        "ผู้ขอซื้อสินค้าต้องไม่ใช่บุคคลเดียวกับผู้อนุมัติจ่ายเงิน"
+      ],
+      [
+        "**DAC**",
+        "\"Resource owner decides\", \"File creator\", \"NTFS/ACL\"",
+        "เจ้าของข้อมูลจัดการสิทธิ์ตามความพอใจ",
+        "ผู้สร้างไฟล์กำหนดสิทธิ์ Read/Write ให้เพื่อนร่วมงาน"
+      ],
+      [
+        "**MAC**",
+        "\"Security labels\", \"Clearance\", \"Central authority\"",
+        "บังคับใช้นโยบายส่วนกลางเพื่อจำกัดการเปิดเผยข้อมูล",
+        "ระบบทหารตรวจ Clearance, Need-to-Know และนโยบายที่เกี่ยวข้องก่อนอนุญาตให้อ่านเอกสารลับ"
+      ],
+      [
+        "**RBAC**",
+        "\"Predefined role\", \"Job function\", \"Scalability\"",
+        "บริหารสิทธิ์พนักงานจำนวนมากอย่างเป็นระบบ",
+        "พยาบาลทุกคนในแผนกได้รับสิทธิ์ดูเวชระเบียนเหมือนกัน"
+      ],
+      [
+        "**ABAC**",
+        "\"Attributes\", \"Environment\", \"Time/Device/Location\"",
+        "ควบคุมการเข้าถึงแบบละเอียดตามบริบท",
+        "เข้าถึงข้อมูลการเงินได้เฉพาะเครื่องบริษัทในเวลาทำการ"
+      ]
+    ]
+  },
+  {
+    "domain": 4,
+    "index": 0,
+    "anchor": "topic-4-1-tcp-ip-mapping",
+    "line": 186,
+    "headers": [
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**OSI 7-Layer Model**</span><span class=\"reading-term-th\">(แบบจำลองทางทฤษฎี)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**TCP/IP 4-Layer Model**</span><span class=\"reading-term-th\">(สถาปัตยกรรมใช้งานจริง)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Data Unit (PDU)**</span><span class=\"reading-term-th\">(หน่วยข้อมูล)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Key Protocols**</span><span class=\"reading-term-th\">(โพรโทคอลหลัก)</span></div>"
+    ],
+    "rows": [
+      [
+        "**Layer 7: Application**<br>**Layer 6: Presentation**<br>**Layer 5: Session**",
+        "**Application Layer (L4)**",
+        "Data / Messages",
+        "HTTP, HTTPS, DNS, SSH, FTP, SMTP, DHCP"
+      ],
+      [
+        "**Layer 4: Transport**",
+        "**Transport Layer (L3)**",
+        "Segment / Datagram",
+        "TCP, UDP"
+      ],
+      [
+        "**Layer 3: Network**",
+        "**Internet Layer (L2)**",
+        "Packet",
+        "IPv4, IPv6, ICMP, IPsec"
+      ],
+      [
+        "**Layer 2: Data Link**<br>**Layer 1: Physical**",
+        "**Network Access / Link Layer (L1)**",
+        "Frame / Bits",
+        "Ethernet, 802.11 Wi-Fi, ARP, MAC, สื่อทางกายภาพ"
+      ]
+    ]
+  },
+  {
+    "domain": 4,
+    "index": 1,
+    "anchor": "topic-4-1-tcp-vs-udp",
+    "line": 350,
+    "headers": [
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Feature**</span><span class=\"reading-term-th\">(คุณลักษณะ)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**TCP**</span><span class=\"reading-term-th\">(Transmission Control Protocol)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**UDP**</span><span class=\"reading-term-th\">(User Datagram Protocol)</span></div>"
+    ],
+    "rows": [
+      [
+        "**Connection State**",
+        "Connection-Oriented (ต้องเชื่อมต่อก่อน)",
+        "Connectionless (ส่งข้อมูลได้ทันที)"
+      ],
+      [
+        "**Handshake**",
+        "3-Way Handshake (SYN, SYN-ACK, ACK)",
+        "ไม่มีกระบวนการ Handshake"
+      ],
+      [
+        "**Data Reliability**",
+        "สูง รับประกันข้อมูลครบถ้วน มีการส่งซ้ำ",
+        "ต่ำ แบบ Best-Effort ไม่มีการส่งซ้ำ"
+      ],
+      [
+        "**Header Size**",
+        "20–60 Bytes (ซับซ้อน มีการควบคุม)",
+        "8 Bytes คงที่ (เรียบง่าย น้ำหนักเบา)"
+      ],
+      [
+        "**Speed &amp; Latency**",
+        "ช้ากว่า มีภาระในการตรวจสอบ",
+        "รวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+      ],
+      [
+        "**Typical Use Cases**",
+        "เว็บ, อีเมล, การโอนย้ายไฟล์, ฐานข้อมูล",
+        "วิดีโอสตรีมมิง, VoIP, DNS, DHCP, เกมออนไลน์"
+      ]
+    ]
+  },
+  {
+    "domain": 4,
+    "index": 2,
+    "anchor": "topic-4-1-ports-multiplexing",
+    "line": 389,
+    "headers": [
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Port Number**</span><span class=\"reading-term-th\">(หมายเลขพอร์ต)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Protocol Name**</span><span class=\"reading-term-th\">(ชื่อโพรโทคอล)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Transport**</span><span class=\"reading-term-th\">(ระดับการขนส่ง)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Security Evaluation**</span><span class=\"reading-term-th\">(ความปลอดภัยและการใช้งาน)</span></div>"
+    ],
+    "rows": [
+      [
+        "**20 / 21**",
+        "FTP (File Transfer Protocol)",
+        "TCP",
+        "**Insecure** ส่งข้อมูลและรหัสผ่านเป็นข้อความธรรมดา (Plaintext)"
+      ],
+      [
+        "**22**",
+        "SSH / SFTP",
+        "TCP",
+        "**Secure** เข้ารหัสข้อมูลทั้งหมด ใช้แทน Telnet และ FTP"
+      ],
+      [
+        "**23**",
+        "Telnet",
+        "TCP",
+        "**Insecure** ข้อความธรรมดา ห้ามใช้งานในเครือข่ายปัจจุบัน"
+      ],
+      [
+        "**25**",
+        "SMTP (Simple Mail Transfer)",
+        "TCP",
+        "รับส่งอีเมลระหว่างเซิร์ฟเวอร์ โดยเริ่มต้นเป็น Plaintext"
+      ],
+      [
+        "**53**",
+        "DNS (Domain Name System)",
+        "UDP / TCP",
+        "แปลงชื่อโฮสต์เป็นไอพี (UDP สำหรับคำขอทั่วไป, TCP สำหรับ Zone Transfer)"
+      ],
+      [
+        "**67 / 68**",
+        "DHCP (Dynamic Host Config)",
+        "UDP",
+        "เซิร์ฟเวอร์ (67) และเครื่องลูกข่าย (68) ในการขอรับไอพีอัตโนมัติ"
+      ],
+      [
+        "**80**",
+        "HTTP (Hypertext Transfer)",
+        "TCP",
+        "**Insecure** เว็บไซต์ที่ไม่มีการเข้ารหัสข้อมูล"
+      ],
+      [
+        "**110**",
+        "POP3 (Post Office Protocol 3)",
+        "TCP",
+        "**Insecure** ดาวน์โหลดอีเมลลงเครื่องลูกข่าย"
+      ],
+      [
+        "**143**",
+        "IMAP (Internet Message Access)",
+        "TCP",
+        "**Insecure** ซิงค์อีเมลบนเซิร์ฟเวอร์"
+      ],
+      [
+        "**443**",
+        "HTTPS (HTTP Secure)",
+        "TCP",
+        "**Secure** เว็บไซต์ที่มีการเข้ารหัสผ่าน TLS/SSL"
+      ],
+      [
+        "**990**",
+        "FTPS (FTP over TLS)",
+        "TCP",
+        "**Secure** การส่งไฟล์ FTP ภายใต้การเข้ารหัส TLS"
+      ],
+      [
+        "**993**",
+        "IMAPS",
+        "TCP",
+        "**Secure** การเข้าถึงอีเมลผ่านการเข้ารหัส TLS"
+      ],
+      [
+        "**995**",
+        "POP3S",
+        "TCP",
+        "**Secure** การดึงอีเมลผ่านการเข้ารหัส TLS"
+      ],
+      [
+        "**161 / 162**",
+        "SNMP (Network Management)",
+        "UDP",
+        "จัดการและตรวจสอบอุปกรณ์เครือข่าย (เวอร์ชัน 3 เท่านั้นที่รองรับการเข้ารหัส)"
+      ],
+      [
+        "**3389**",
+        "RDP (Remote Desktop Protocol)",
+        "TCP",
+        "รีโมตควบคุมหน้าจอ Windows จากระยะไกล"
+      ]
+    ]
+  },
+  {
+    "domain": 4,
+    "index": 3,
+    "anchor": "topic-4-3-hybrid-vs-multicloud",
+    "line": 978,
+    "headers": [
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Dimension**</span><span class=\"reading-term-th\">(มิติการพิจารณา)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Hybrid Cloud**</span><span class=\"reading-term-th\">(คลาวด์แบบผสมผสาน)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Multi-Cloud**</span><span class=\"reading-term-th\">(คลาวด์หลายผู้ให้บริการ)</span></div>"
+    ],
+    "rows": [
+      [
+        "**Core Architecture**",
+        "ผสมผสานระหว่าง **Private Cloud (อาจอยู่ On-Premises)** และ **Public Cloud**",
+        "ใช้งาน **Public Cloud หลายราย** พร้อมกัน (เช่น AWS + GCP + Azure)"
+      ],
+      [
+        "**Primary Goal**",
+        "รักษาข้อมูลความลับไว้ในองค์กร แต่ยืมความยืดหยุ่นจากคลาวด์",
+        "หลีกเลี่ยงการผูกขาด (Vendor Lock-in) และเลือกใช้จุดเด่นของแต่ละเจ้า"
+      ],
+      [
+        "**Integration Level**",
+        "เชื่อมต่อข้อมูลและกระบวนการทำงานร่วมกันอย่างแนบแน่น",
+        "อาจทำงานแยกจากกันเป็นอิสระ หรือเชื่อมต่อกันผ่าน API"
+      ],
+      [
+        "**Exam Trigger**",
+        "*\"Private cloud integrated with public cloud\"; \"On-premises integrated with public cloud\" เป็นคำใช้แบบกว้างของผู้ให้บริการ ต้องดูบริบท ไม่ใช่ทุกระบบในองค์กรเป็น Private Cloud*",
+        "*\"Avoiding vendor lock-in\", \"Using two or more cloud service providers\"*"
+      ]
+    ]
+  },
+  {
+    "domain": 4,
+    "index": 4,
+    "anchor": "topic-4-review-quickref",
+    "line": 1216,
+    "headers": [
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Concept**</span><span class=\"reading-term-th\">(แนวคิดสำคัญ)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Exam Trigger Keywords**</span><span class=\"reading-term-th\">(คำค้นพบในโจทย์ข้อสอบ)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Core Purpose**</span><span class=\"reading-term-th\">(วัตถุประสงค์หลัก)</span></div>",
+      "<div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Practical Scenario Example**</span><span class=\"reading-term-th\">(ตัวอย่างสถานการณ์จริง)</span></div>"
+    ],
+    "rows": [
+      [
+        "**Segmentation**",
+        "\"Blast radius\", \"Lateral movement\", \"Divide network\"",
+        "กักบริเวณความเสียหายและหยุดยั้งการแพร่กระจายของภัยคุกคาม",
+        "แยกแผนกการเงินออกจากแผนกต้อนรับ"
+      ],
+      [
+        "**DMZ**",
+        "\"Public-facing servers\", \"Buffer zone\", \"Isolate internal DB\"",
+        "เป็นกันชนแยกบริการสาธารณะออกจากฐานข้อมูลภายใน",
+        "วาง Web Server และ Mail Gateway"
+      ],
+      [
+        "**Micro-Segmentation**",
+        "\"East-West traffic\", \"Workload level\", \"Host-level firewall\"",
+        "ควบคุมการสื่อสารระหว่างเซิร์ฟเวอร์ในศูนย์ข้อมูลอย่างละเอียด",
+        "กั้นไม่ให้ Web Tier คุยกับ Database ตรง"
+      ],
+      [
+        "**Defense in Depth**",
+        "\"Multiple layers\", \"Complementary controls\", \"Example layers\"",
+        "ใช้หลายมาตรการเสริมกันเพื่อลดผลกระทบเมื่อมาตรการหนึ่งล้มเหลว ไม่รับประกันความเป็นอิสระของทุกชั้น",
+        "มีทั้ง Perimeter FW, EDR, WAF และการเข้ารหัส"
+      ],
+      [
+        "**Zero Trust**",
+        "\"Never trust always verify\", \"Implicit trust eliminated\", \"Context\"",
+        "ไม่เชื่อถือใครจากตำแหน่งที่ตั้ง ตรวจสอบตัวตนทุกครั้ง",
+        "เครื่องในออฟฟิศยังคงต้องผ่าน MFA และตรวจความปลอดภัย"
+      ],
+      [
+        "**IaaS Responsibility**",
+        "\"Customer patches OS\", \"Virtual machines\", \"Infrastructure\"",
+        "ลูกค้าดูแลตั้งแต่ OS และแอปพลิเคชันขึ้นไป CSP ดูแลฮาร์ดแวร์",
+        "เช่า AWS EC2 แล้วแอดมินต้องอัปเดตแพตช์วินโดวส์เอง"
+      ],
+      [
+        "**Customer Data Duty**",
+        "\"Always customer responsibility\", \"Data classification\", \"IAM\"",
+        "ลูกค้ายังคงรับผิดชอบการจัดชั้นข้อมูล การตัดสินใจให้สิทธิ์ และการตั้งค่าที่ตนควบคุม; CSP ดูแลบริการที่ตนบริหาร",
+        "ย้ายไฟล์ขึ้น SaaS แล้วตั้งค่าสิทธิ์หลวมจนข้อมูลรั่ว"
+      ],
+      [
+        "**Hybrid Cloud**",
+        "\"On-premises + public\", \"Cloud bursting\", \"Local sensitive data\"",
+        "เชื่อมคลาวด์ต่างชนิดกัน เช่น Private Cloud ในดาต้าเซ็นเตอร์ส่วนตัวกับ Public Cloud; Hybrid และ Multi-Cloud เกิดร่วมกันได้",
+        "เก็บข้อมูลบัญชีไว้ที่ตึกตนเอง แต่รันประมวลผลบนคลาวด์"
+      ],
+      [
+        "**Community Cloud**",
+        "\"Shared regulatory requirements\", \"Specific mission\", \"Hospitals\"",
+        "คลาวด์สำหรับกลุ่มองค์กรที่มีข้อกำหนดหรือภารกิจเฉพาะร่วมกัน",
+        "กลุ่มโรงพยาบาล 5 แห่งแชร์ระบบประวัติผู้ป่วย"
+      ],
+      [
+        "**Multi-Cloud**",
+        "\"Avoid vendor lock-in\", \"Multiple CSPs\", \"AWS + Azure\"",
+        "ใช้คลาวด์สาธารณะมากกว่า 1 เจ้าเพื่อกระจายความเสี่ยง",
+        "ใช้เซิร์ฟเวอร์ AWS ร่วมกับระบบ AI ของ Google Cloud"
+      ],
+      [
+        "**WPA3 SAE**",
+        "\"Simultaneous Authentication of Equals\", \"Prevent offline dictionary\"",
+        "ป้องกันการโจมตีแบบสุ่มรหัสผ่านออฟไลน์ในเครือข่าย Wi-Fi",
+        "มาตรฐาน Wi-Fi ยุคใหม่ที่ทนทานต่อการดักจับ Handshake"
+      ],
+      [
+        "**AWS Security Group**",
+        "\"Stateful\", \"Instance level\", \"Virtual firewall\", \"Allow only\"",
+        "ควบคุมทราฟฟิกเข้าออกระดับเครื่องเสมือนบนคลาวด์แบบ Stateful",
+        "อนุญาต flow เข้าพอร์ต 443 แล้วทราฟฟิกตอบกลับของ flow นั้นผ่านได้อัตโนมัติ ไม่ใช่อนุญาตขาออกใหม่ทั้งหมด"
+      ]
+    ]
+  }
+]
