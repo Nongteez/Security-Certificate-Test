@@ -1,0 +1,714 @@
+[
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-01",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "กลไก **Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ)** ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n1. **Integrity (ความสมบูรณ์):** ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\n2. **Origin Authentication (การยืนยันแหล่งที่มา):** เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\n3. **Non-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้):** สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.",
+    "count": 1,
+    "line": 285,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-01",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "- **ผู้ลงนาม (Signer):** ใช้อัลกอริทึม **Sign** กับ Private Key และเอกสาร &rarr; ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\n- **ผู้ตรวจ (Verifier):** ใช้อัลกอริทึม **Verify** กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ &rarr; ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\n**แยกหน้าที่ให้ชัด (Different purposes):** Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\n**ตัวอย่าง (Example):** ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+    "count": 1,
+    "line": 291,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-02",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "การเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.",
+    "count": 1,
+    "line": 306,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-02",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "โมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n- ทำหน้าที่สนับสนุน **Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์)** ของแพลตฟอร์ม / Support a platform hardware root of trust.\n- **Measured Boot:** ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน **Secure Boot** ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\n- สร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.",
+    "count": 1,
+    "line": 311,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-02",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "โมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n- สร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\n- แอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\n- อัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\n- การรับรอง **FIPS 140** ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\n- การป้องกันและตอบสนองต่อการงัดแงะ รวมถึง **Zeroization (การล้างข้อมูลกุญแจ)** ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.",
+    "count": 1,
+    "line": 321,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-02",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "| **รูปแบบ (Form)** | Discrete / Integrated / Firmware TPM | PCIe / Network / USB เป็นตัวอย่าง (examples) |\n| **ขอบเขตทั่วไป (Typical scope)** | ความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys) | งานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations) |\n| **งานตัวอย่าง (Example use)** | Measured Boot, ปกป้องกุญแจ BitLocker (key protection) | จัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments) |\n| **มาตรฐาน (Standards)** | ข้อกำหนด TPM: ISO/IEC 11889 (TPM specification) | ตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated) |\n| **การป้องกัน (Protection)** | ขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent) | การป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization) |\n\n**เลือกตามหน้าที่ (Choose by purpose):** TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+    "count": 0,
+    "line": null,
+    "normalizedPresent": true,
+    "normalizationReason": "Task157 changed the matching note from Markdown strong text to an HTML paragraph; table text and meaning retained."
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-02",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "- **3. TPM vs. HSM:** TPM สนับสนุนความเชื่อถือของแพลตฟอร์ม (Measured Boot / BitLocker) มีได้ทั้ง Discrete, Integrated และ Firmware; HSM ปกป้องและใช้งานกุญแจของแอป/บริการ รูปแบบ การรับรอง และการป้องกันขึ้นกับโมดูล / TPM: platform trust; HSM: application/service key operations, with module-specific capabilities and validation.",
+    "count": 1,
+    "line": 1235,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-01",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "- ลายมือชื่อดิจิทัลใช้ Private Key ลงนาม และใช้ Public Key ที่สัมพันธ์กันและเชื่อถือได้ตรวจเอกสารกับลายมือชื่อ ไม่ใช่สูตรทั่วไปว่าเข้ารหัสแฮชแล้วถอดรหัสด้วย Public Key / Sign with the private key; verify the document and signature with the corresponding trusted public key. Signing alone provides no confidentiality.",
+    "count": 1,
+    "line": 1255,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-02",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "situation: ศูนย์ข้อมูลของสถาบันการเงินต้องการระบบสร้าง ปกป้อง และบริหาร Root CA Keys และ Financial Transaction Keys สำหรับบริการหลายระบบ โดยต้องเลือกรุ่นที่รองรับภาระงานและมีใบรับรอง FIPS 140-3 ตรงตามข้อกำหนดของกรณีนี้ / A financial institution needs shared CA/payment-key operations and must select a module whose capacity and FIPS 140-3 validation meet this case's requirements.",
+    "count": 1,
+    "line": 1293,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-02",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "reasoning: HSM เหมาะกับงานกุญแจของบริการในกรณีนี้ แต่ต้องตรวจความสามารถและใบรับรองของโมดูลที่เลือก ส่วน TPM เน้นความเชื่อถือและกุญแจของแพลตฟอร์ม ไม่ได้จำกัดเฉพาะชิปแยกบนเมนบอร์ด / An HSM fits this service-key use case; verify the selected module's capabilities and certificate. A TPM focuses on platform trust and keys and need not be a discrete motherboard chip.",
+    "count": 1,
+    "line": 1296,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-01",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "- **Digital Signature:** ตรวจความสมบูรณ์และสนับสนุนหลักฐานแหล่งที่มาเมื่อเชื่อถือ Public Key และการควบคุม Private Key ไม่คุ้มครองความลับ / Integrity and origin evidence depend on trusted key association and custody; no confidentiality.",
+    "count": 1,
+    "line": 1454,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-02",
+    "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+    "after": " * - 04: Platform trust vs. service-key operations (TPM vs. selected HSM)",
+    "count": 1,
+    "line": 8,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-02",
+    "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+    "after": "    situation: \"ศูนย์ข้อมูลของสถาบันการเงินต้องการระบบสร้าง ปกป้อง และบริหาร Root CA Keys และ Financial Transaction Keys สำหรับบริการหลายระบบ โดยต้องเลือกรุ่นที่รองรับภาระงานและมีใบรับรอง FIPS 140-3 ตรงตามข้อกำหนดของกรณีนี้ / A financial institution needs shared CA/payment-key operations and must select a module whose capacity and FIPS 140-3 validation meet this case's requirements.\",",
+    "count": 1,
+    "line": 47,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5",
+    "id": "ACC-D5-02",
+    "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+    "after": "    reasoning: 'HSM เหมาะกับงานกุญแจของบริการในกรณีนี้ แต่ต้องตรวจความสามารถและใบรับรองของโมดูลที่เลือก ส่วน TPM เน้นความเชื่อถือและกุญแจของแพลตฟอร์ม ไม่ได้จำกัดเฉพาะชิปแยกบนเมนบอร์ด / An HSM fits this service-key use case; verify the selected module\\'s capabilities and certificate. A TPM focuses on platform trust and keys and need not be a discrete motherboard chip.'",
+    "count": 1,
+    "line": 50,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "เมื่ออุปกรณ์จัดเก็บข้อมูล (Hard Drive, SSD, เทปสำรองข้อมูล, แฟลชไดรฟ์) จะถูกใช้ซ้ำ ส่งต่อ หรือกำจัด ต้องเลือกวิธีให้เหมาะกับสื่อ ความอ่อนไหวของข้อมูล และนโยบายองค์กร **NIST SP 800-88 Rev. 2 (Guidelines for Media Sanitization)** อธิบายการทำให้เข้าถึงข้อมูลเป้าหมายไม่ได้ในทางปฏิบัติภายใต้ระดับความพยายามที่กำหนด ไม่ใช่การรับประกันว่ากู้คืนไม่ได้ 100% ตลอดไป / Select a method for the media, data sensitivity and organizational policy. NIST SP 800-88 Rev. 2 defines sanitization in terms of making target-data access infeasible for a specified level of effort, using three methods:",
+    "count": 1,
+    "line": 126,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "<h5>1. Clear (การล้างข้อมูลด้วยวิธีเชิงตรรกะ):</h5>",
+    "count": 1,
+    "line": 129,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "ใช้วิธีเชิงตรรกะกับพื้นที่ที่ผู้ใช้เข้าถึงได้ (User-addressable Storage) เพื่อต้านการกู้คืนแบบง่ายผ่านอินเทอร์เฟซปกติ เช่น การเขียนทับเมื่อเหมาะกับสื่อนั้น ไม่ได้แปลว่าครอบคลุมพื้นที่สำรองหรือข้อมูลเดิมทุกตำแหน่งของ SSD / Clear protects against simple, non-invasive recovery through the normal interface. Overwriting is one media-dependent technique; it does not necessarily reach every previous data location on an SSD.",
+    "count": 1,
+    "line": 131,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "ใช้เทคนิคเชิงตรรกะหรือทางกายภาพเพื่อให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ โดยมุ่งให้สื่อยังใช้ต่อได้หากเทคนิคและสื่อนั้นรองรับ / Purge targets infeasible recovery even with advanced laboratory techniques while aiming to retain usability where supported.\n- **Secure Erase / Cryptographic Erase (CE):** ต้องตรวจเทคนิคที่อุปกรณ์รองรับและเงื่อนไขของผู้ผลิต ชื่อคำสั่งอย่างเดียวไม่ยืนยันผล และ CE ล้างกุญแจ ไม่ใช่เขียนทับบล็อกข้อมูลทุกบล็อก / A command name alone does not establish effective purge; CE sanitizes keys rather than overwriting every data block.\n- **Degaussing (การลบล้างสนามแม่เหล็ก):** ใช้ได้กับสื่อแม่เหล็กที่เหมาะสม เช่น HDD หรือเทป ไม่ใช้กับ SSD และอาจทำให้สื่อใช้ต่อไม่ได้ / Degaussing applies to suitable magnetic media, not SSDs, and can leave the media unusable.\n- การส่งต่อหรือบริจาคต้องยอมรับผลล้างข้อมูลตามนโยบายก่อน ไม่ใช่เห็นคำว่า Secure Erase แล้วถือว่าปลอดภัย / Reuse or donation requires an accepted sanitization outcome under policy, not just a reported command name.",
+    "count": 1,
+    "line": 138,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "ทำให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ และทำให้สื่อใช้จัดเก็บข้อมูลต่อไม่ได้ เช่น บดย่อยหรือเผาด้วยกระบวนการที่เหมาะกับชนิดสื่อและได้รับอนุมัติ การเจาะรูหรือทำให้อุปกรณ์เปิดไม่ติดเพียงอย่างเดียวไม่ได้พิสูจน์ว่าข้อมูลถูกทำลายครบ / Destroy makes advanced recovery infeasible and leaves the media unusable for storage. Use an approved media-appropriate process; a drilled hole or a device that no longer starts is not proof of effective destruction.",
+    "count": 1,
+    "line": 148,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "การทำลายกุญแจอาจใช้เป็น **Cryptographic Erase (CE)** ซึ่งเป็นเทคนิคของ Purge ไม่ใช่วิธีหลักลำดับที่สี่ ใช้ได้เมื่อข้อมูลเป้าหมายถูกเข้ารหัสอย่างเหมาะสมก่อนจัดเก็บ และล้างกุญแจเป้าหมายที่จำเป็นรวมทุกสำเนาได้อย่างน่าเชื่อถือ ต้องพิจารณาสำรองข้อมูล กุญแจสำรอง และสำเนา Plaintext แยกต่างหากด้วย / CE is a purge technique, not a fourth sanitization method. It depends on suitable encryption before storage and reliable sanitization of all copies of the target keys. Backups, escrowed keys and plaintext copies need separate consideration; CE is not a promise against every future recovery capability.",
+    "count": 1,
+    "line": 155,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "**ตรวจผลก่อนยอมรับ (Assurance):** Verification ตรวจว่ากระบวนการเสร็จและมีข้อผิดพลาดหรือไม่ ส่วน Validation ประเมินว่าผลเพียงพอต่อสื่อ ข้อมูล และความเสี่ยงที่กำหนดหรือไม่ หากไม่เพียงพอต้องเลือกดำเนินการเพิ่มเติมก่อนปล่อยสื่อ / Verification checks completion and reported issues; validation decides whether the outcome is effective for the media, data and risk. An inadequate result must not be accepted for release.\n\n| วิธี/เทคนิค (Method/technique) | แนวทาง (Approach) | ขอบเขตผล (Protection goal) | ใช้สื่อต่อ (Reuse) |",
+    "count": 1,
+    "line": 159,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "| **Clear** | เทคนิคเชิงตรรกะ (Logical technique) | ต้านการกู้แบบง่ายผ่านอินเทอร์เฟซปกติ (Simple recovery) | โดยทั่วไปได้ ตามสื่อ/นโยบาย (Usually; media/policy dependent) |\n| **Purge** | เทคนิคที่เหมาะกับสื่อ รวม CE เมื่อครบเงื่อนไข (Media-appropriate technique) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | มุ่งให้ใช้ต่อได้ แต่ขึ้นกับเทคนิค (Intended; technique dependent) |\n| **Destroy** | ทำลายทางกายภาพที่เหมาะสม (Appropriate physical destruction) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | ไม่ได้ (Unusable for storage) |\n| **CE / Crypto-shredding** | เทคนิคของ Purge: ล้างกุญแจเป้าหมาย (Purge technique: key sanitization) | ขึ้นกับการเข้ารหัสและทุกสำเนากุญแจ (Encryption/key-copy conditions) | อาจได้เมื่อสื่อยังทำงานและนโยบายอนุญาต (May be reusable under policy) |",
+    "count": 1,
+    "line": 163,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-04",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "บทเรียนนี้ใช้ **6 กิจกรรมเป็นแบบจำลองเพื่อการเรียน (Teaching Model)** ตามภาพและตัวอย่างด้านล่าง กิจกรรมอาจคาบเกี่ยว ย้อนกลับ หรือทำซ้ำตามเหตุการณ์ ไม่ใช่ลำดับบังคับสากลที่ NIST, ISO หรือ ISC2 กำหนดตรงกัน / The six activities below are this course's teaching model. They can overlap, repeat or be revisited; they are not a universal sequence jointly prescribed by NIST, ISO and ISC2.\n\n**บริบท NIST ปัจจุบัน (Current NIST context):** NIST SP 800-61 Rev. 3 เชื่อม IR กับ CSF 2.0 โดย Detect, Respond และ Recover เป็นแกนการตอบสนอง ส่วน Govern, Identify และ Protect สนับสนุนความพร้อมและการจัดการความเสี่ยง พร้อมปรับปรุงจากบทเรียนอย่างต่อเนื่อง / NIST SP 800-61 Rev. 3 places incident response within CSF 2.0: Detect, Respond and Recover address incidents, supported by broader Govern, Identify and Protect activities and continuous improvement. นี่ไม่ใช่การเปลี่ยนเป็นขั้นตอนบังคับใหม่หกข้อ / These functions are not a replacement six-step mandatory pipeline.",
+    "count": 1,
+    "line": 738,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-04",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "- **Long-term Containment (การควบคุมระยะยาว):** จัดสภาพแวดล้อมชั่วคราวที่ควบคุมความเสี่ยง เพื่อให้บริการที่จำเป็นทำงานได้ในวงจำกัดระหว่างรอการแก้ไขถาวร / Maintain limited essential services in a controlled temporary environment while permanent remediation is arranged.",
+    "count": 1,
+    "line": 770,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-04",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "การทบทวนอย่างเป็นทางการหลังเหตุการณ์ช่วยปรับปรุงระบบ แต่ไม่ต้องรอให้กู้คืนเสร็จจึงเริ่มใช้บทเรียนที่พบ / A formal post-incident review supports improvement; useful lessons can be applied before recovery finishes.\n- จัดประชุมตามกรอบเวลาที่องค์กรกำหนด เช่น ภายใน 1–2 สัปดาห์หลังเหตุการณ์ยุติในตัวอย่างนี้ ไม่ใช่กำหนดสากล / Use the organization's review schedule; one to two weeks is an example, not a universal deadline.",
+    "count": 1,
+    "line": 798,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "- **5. Clear vs. Purge vs. Destroy:** Clear มุ่งต้านการกู้แบบง่าย; Purge มุ่งให้การกู้ระดับแล็บไม่อาจทำได้ในทางปฏิบัติ; Destroy เพิ่มการทำให้สื่อใช้จัดเก็บต่อไม่ได้ ทุกวิธีต้องเหมาะกับสื่อและตรวจผล / Clear targets simple recovery; Purge targets infeasible advanced recovery; Destroy also makes the media unusable. Match the method to the media and assess the outcome.",
+    "count": 1,
+    "line": 1237,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "- บนคลาวด์หรือไดรฟ์เสมือน CE / Crypto-shredding อาจเหมาะเมื่อครบเงื่อนไขการเข้ารหัสและการล้างกุญแจรวมสำเนา ไม่ใช่คำตอบอัตโนมัติเพียงเพราะเข้าไม่ถึงฮาร์ดแวร์ / For cloud or virtual storage, consider CE only when encryption and key-sanitization conditions are met; lack of physical access alone does not make it sufficient.",
+    "count": 1,
+    "line": 1248,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "situation: โรงพยาบาลจะบริจาค SSD ที่เคยเก็บข้อมูลผู้ป่วย ต้องการให้การกู้ข้อมูลระดับแล็บไม่อาจทำได้ในทางปฏิบัติและให้ไดรฟ์ยังใช้ต่อได้ โดยต้องตรวจวิธีที่รุ่นนั้นรองรับและยอมรับผลตามนโยบายก่อนส่งต่อ / A hospital plans to donate a patient-data SSD. It needs infeasible advanced recovery while retaining usability, subject to a supported technique and an accepted sanitization outcome.\nquestion: ตาม NIST SP 800-88 Rev. 2 วิธีใดตรงกับเป้าหมายของกรณีนี้? / Which sanitization method matches this case's goal?\nanswer: Purge (ใช้เทคนิคที่เหมาะกับ SSD และตรวจผลแล้ว / SSD-appropriate technique with verified and validated results)\nreasoning: Purge ตรงกับเป้าหมายการกู้ระดับแล็บและการใช้สื่อต่อ ต้องเลือกเทคนิคที่ SSD รองรับ โดย CE ใช้ได้เมื่อครบเงื่อนไขการเข้ารหัสและกุญแจ การ Degauss ไม่ใช้กับ SSD และชื่อ Secure Erase อย่างเดียวไม่พิสูจน์ผล ต้อง Verification และ Validation ก่อนยอมรับ / Purge matches the advanced-recovery goal while aiming to retain usability. Select a supported SSD technique; CE requires appropriate encryption and key conditions. Degaussing is unsuitable for SSDs, and a Secure Erase label alone is not proof. Verify completion and validate effectiveness.",
+    "count": 1,
+    "line": 1263,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-04",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "1. **Incident Response Teaching Model (6 กิจกรรม):** Preparation &rarr; Detection &amp; Analysis &rarr; Containment &rarr; Eradication &rarr; Recovery &rarr; Post-Incident Review เป็นภาพช่วยเรียน กิจกรรมอาจคาบเกี่ยวหรือย้อนกลับ ไม่ใช่ลำดับมาตรฐานบังคับ / A learning aid; activities can overlap or be revisited, rather than a mandatory standard sequence.",
+    "count": 1,
+    "line": 1500,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-2",
+    "id": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+    "after": "    situation: 'โรงพยาบาลจะบริจาค SSD ที่เคยเก็บข้อมูลผู้ป่วย ต้องการให้การกู้ข้อมูลระดับแล็บไม่อาจทำได้ในทางปฏิบัติและให้ไดรฟ์ยังใช้ต่อได้ โดยต้องตรวจวิธีที่รุ่นนั้นรองรับและยอมรับผลตามนโยบายก่อนส่งต่อ / A hospital plans to donate a patient-data SSD. It needs infeasible advanced recovery while retaining usability, subject to a supported technique and an accepted sanitization outcome.',\n    question: 'ตาม NIST SP 800-88 Rev. 2 วิธีใดตรงกับเป้าหมายของกรณีนี้? / Which sanitization method matches this case\\'s goal?',\n    answer: 'Purge (ใช้เทคนิคที่เหมาะกับ SSD และตรวจผลแล้ว / SSD-appropriate technique with verified and validated results)',\n    reasoning: 'Purge ตรงกับเป้าหมายการกู้ระดับแล็บและการใช้สื่อต่อ ต้องเลือกเทคนิคที่ SSD รองรับ โดย CE ใช้ได้เมื่อครบเงื่อนไขการเข้ารหัสและกุญแจ การ Degauss ไม่ใช้กับ SSD และชื่อ Secure Erase อย่างเดียวไม่พิสูจน์ผล ต้อง Verification และ Validation ก่อนยอมรับ / Purge matches the advanced-recovery goal while aiming to retain usability. Select a supported SSD technique; CE requires appropriate encryption and key conditions. Degaussing is unsuitable for SSDs, and a Secure Erase label alone is not proof. Verify completion and validate effectiveness.'",
+    "count": 1,
+    "line": 23,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-3",
+    "id": "ACC-D5-05",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "after": "- ใน Tactic *Execution* อาจใช้ Sub-technique **Command and Scripting Interpreter: PowerShell (T1059.001)**\n\n**ชื่อกับรหัส (Names and IDs):** PowerShell และ Spearphishing Link เป็น Sub-techniques ของ Command and Scripting Interpreter (T1059) และ Phishing (T1566) ตามลำดับ จึงใช้รหัสย่อยของตนเองเมื่อระบุชื่อเฉพาะ / PowerShell and Spearphishing Link have their own sub-technique IDs; T1059 and T1566 identify their parent techniques.",
+    "count": 1,
+    "line": 677,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-3",
+    "id": "ACC-D5-05",
+    "path": "js/core/diagram-generator.js",
+    "after": "        <text x=\"40\" y=\"238\" fill=\"#3b82f6\" font-size=\"10.5px\" font-weight=\"700\">ตัวอย่าง Tactics / Goal examples</text>",
+    "count": 1,
+    "line": 2939,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-3",
+    "id": "ACC-D5-05",
+    "path": "js/core/diagram-generator.js",
+    "after": "        <text x=\"335\" y=\"126\" class=\"diag-text-sub\" font-size=\"11px\">&bull; Spearphishing Link (T1566.002)</text>",
+    "count": 1,
+    "line": 2952,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-5-batch-3",
+    "id": "ACC-D5-05",
+    "path": "js/core/diagram-generator.js",
+    "after": "        <text x=\"335\" y=\"170\" class=\"diag-text-sub\" font-size=\"11px\">&bull; PowerShell (T1059.001)</text>",
+    "count": 1,
+    "line": 2954,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-1-batch-a",
+    "id": "ACC-D1-01",
+    "path": "content/isc2-cc-2026/reading/domain-1.md",
+    "after": "องค์กรต้องเคารพสิทธิของ Data Subject ตามกฎหมายที่ใช้บังคับ และขอความยินยอมเมื่อใช้ฐานความยินยอม <em>Respect data-subject rights under applicable law; obtain consent when relying on consent as the legal basis.</em>",
+    "count": 1,
+    "line": 294,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-1-batch-a",
+    "id": "ACC-D1-01",
+    "path": "content/isc2-cc-2026/reading/domain-1.md",
+    "after": "| **มาตรการควบคุมหลัก** | Encryption, Access Control, Need to Know, Firewalls | Lawful Basis (เช่น Consent เมื่อเหมาะสม), Transparency, Data Retention, Purpose Limitation, Right to be Forgotten |",
+    "count": 1,
+    "line": 319,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-1-batch-a",
+    "id": "ACC-D1-01",
+    "path": "content/isc2-cc-2026/reading/domain-1.md",
+    "after": "| **ตัวอย่างวิเคราะห์ (Illustrative example)** | Encryption จำกัดการเข้าถึง แต่เพียงอย่างเดียวยังไม่ยืนยันว่าปฏิบัติตาม Privacy ครบถ้วน / Encryption restricts access; it alone does not establish privacy compliance. | ต้องพิจารณาวัตถุประสงค์ ฐานกฎหมาย และหน้าที่ด้านความโปร่งใสตามกฎหมายที่ใช้บังคับ; ตาม GDPR ความยินยอมเป็นฐานหนึ่ง / Check purpose, lawful basis and applicable transparency duties; under GDPR, consent is one possible basis. |",
+    "count": 1,
+    "line": 320,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-1-batch-a",
+    "id": "ENR-D1-04",
+    "path": "content/isc2-cc-2026/reading/domain-1.md",
+    "after": "### 1.4.1 Security Control Categories\n\n**คำศัพท์ในโครงร่างสอบ (Outline terminology):** โครงร่างสอบ CC ที่มีผล 1 กันยายน 2026 ระบุหมวด Technical, Administrative และ Physical; บทเรียนนี้แยกงานบริหาร (Managerial) และงานประจำวันโดยบุคลากร (Operational) เพื่อช่วยอธิบายด้าน Administrative / The CC outline effective 1 September 2026 names Technical, Administrative and Physical controls; this course explains administrative work through managerial and day-to-day operational activities.\n",
+    "count": 1,
+    "line": 784,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-1-batch-a",
+    "id": "VER-D1-01",
+    "path": "content/isc2-cc-2026/reading/domain-1.md",
+    "after": "  <p><strong>แนวทางใช้ดุลยพินิจ (Professional judgment):</strong> คำนึงถึงความปลอดภัยของสาธารณะ เก็บรักษาหลักฐานที่เกี่ยวข้อง และขอคำแนะนำผ่านช่องทางที่มีอำนาจ เช่น ผู้รับผิดชอบด้านความปลอดภัยหรือฝ่ายกฎหมาย โดยพิจารณาหน้าที่ทั้งสี่ร่วมกับข้อเท็จจริง ไม่อนุมานว่ามีสิทธิปกปิด เปิดเผยข้อมูลต่อสาธารณะโดยพลการ หรือทำผิดกฎหมาย / Protect public welfare, preserve relevant evidence and seek guidance through authorized channels, such as security leadership or legal counsel, considering all four duties and the facts. Do not infer permission to conceal, disclose publicly without authorization or act illegally.</p>",
+    "count": 1,
+    "line": 1059,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-2-batch-a",
+    "id": "ACC-D2-01",
+    "path": "content/isc2-cc-2026/reading/domain-2.md",
+    "after": "ในการวางแผนกู้คืนระบบ IT องค์กรต้องกำหนดเป้าหมายเชิงเวลา 2 ตัวชี้วัดสำคัญ:\n\n**สมมติฐานของภาพ (Illustrative assumptions):** ภาพสมมติว่ามีจุดสำรองที่กู้คืนได้เวลา 16:30 น. และเกิดเหตุเวลา 17:00 น.; จุดสำรองนี้ตรงกับขอบเขต RPO 30 นาทีในตัวอย่าง ส่วน 18:00 น. เป็นเป้าหมาย RTO 1 ชั่วโมง ไม่ใช่ผลกู้คืนที่ทดสอบแล้ว / The illustration assumes a recoverable 16:30 backup and a 17:00 outage. That backup coincides with the example’s 30-minute RPO boundary; 18:00 is the one-hour RTO target, not a tested recovery outcome.\n",
+    "count": 1,
+    "line": 229,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-2-batch-a",
+    "id": "ACC-D2-01",
+    "path": "content/isc2-cc-2026/reading/domain-2.md",
+    "after": "- **แบบจำลองวางแผนอย่างง่าย (Simplified planning model):**\n  **MTD &ge; RTO + WRT**\n  ในแบบจำลองนี้ RTO นับจากเริ่มหยุดชะงักจนระบบ IT พร้อมใช้งาน แล้ว WRT นับต่อจนธุรกิจกลับมาดำเนินงาน โดยสมมติให้สองช่วงไม่ซ้อนทับกัน; กิจกรรมจริงอาจซ้อนทับกันได้ / Here, RTO runs from disruption to IT readiness, followed by WRT until business resumes. The model assumes non-overlapping intervals; actual activities may overlap.\n  *หากผลรวมเกิน MTD แผนนี้จัดสรรเวลาเกินช่วงหยุดชะงักที่ธุรกิจยอมรับ ต้องทบทวนแผน; การหยุดชะงักจริงเกิน MTD ไม่ได้หมายความว่าองค์กรจะอยู่รอดไม่ได้เสมอไป / If the sum exceeds MTD, the plan exceeds the business downtime tolerance and needs review. An actual outage beyond MTD does not inevitably mean organizational failure.*",
+    "count": 1,
+    "line": 259,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-2-batch-a",
+    "id": "ACC-D2-02",
+    "path": "content/isc2-cc-2026/reading/domain-2.md",
+    "after": "**รอบอัปเดต (Refresh cadence):** Dashboard อาจอัปเดตเป็นระยะหรือใกล้เวลาจริง ขึ้นอยู่กับการเก็บข้อมูลและการรายงาน ควรตรวจเวลาอัปเดตของข้อมูล / A dashboard may refresh periodically or near real time, depending on data collection and reporting; check when its data was updated.\n\n<div class=\"reading-semantic-diagram\" data-diagram=\"effectivenessHierarchy\"></div>",
+    "count": 1,
+    "line": 562,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-2-batch-a",
+    "id": "ACC-D2-02",
+    "path": "content/isc2-cc-2026/reading/domain-2.md",
+    "after": "| **Dashboard** | \"Refresh cadence varies\", \"Operational view\", \"Visual representation\" | แสดงภาพรวมผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน โดยความสดของข้อมูลขึ้นกับรอบอัปเดต (Data freshness depends on refresh cadence) | ตัวอย่างหน้าจอ SOC ที่ตั้งค่าให้อัปเดตใกล้เวลาจริง (Illustrative near-real-time SOC view) |",
+    "count": 1,
+    "line": 573,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-2-batch-a",
+    "id": "ACC-D2-02",
+    "path": "content/isc2-cc-2026/reading/domain-2.md",
+    "after": "<div class=\"reading-distinction-desc\">Visualize — นำเสนอภาพรวมและแนวโน้มตามรอบอัปเดต (Periodic / near-real-time)</div>",
+    "count": 1,
+    "line": 749,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-2-batch-a",
+    "id": "ACC-D2-02",
+    "path": "js/core/diagram-generator.js",
+    "after": "<text x=\"56\" y=\"158\" class=\"diag-text-sub\">ภาพรวมตามรอบอัปเดต (Refresh cadence)</text>",
+    "count": 1,
+    "line": 1716,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-2-batch-a",
+    "id": "ACC-D2-02",
+    "path": "js/core/diagram-generator.js",
+    "after": "<text x=\"130\" y=\"358\" class=\"diag-text-sub\">ค่าที่กำหนดและวัดได้ (Defined measurable value)</text>",
+    "count": 1,
+    "line": 1775,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-2-batch-a",
+    "id": "ACC-D2-02",
+    "path": "js/core/diagram-generator.js",
+    "after": "<p class=\"reading-mob-tier-desc\"><strong>Dashboard:</strong> แสดงผลกราฟิกตามรอบอัปเดต (Periodic / near-real-time) &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>",
+    "count": 1,
+    "line": 1801,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-2-batch-a",
+    "id": "ACC-D2-02",
+    "path": "js/core/diagram-generator.js",
+    "after": "<p class=\"reading-mob-tier-desc\">ค่าที่กำหนดและวัดได้ (Defined measurable value): จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย (count, percentage, ratio or average) &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>",
+    "count": 1,
+    "line": 1823,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ACC-D3-01",
+    "path": "content/isc2-cc-2026/reading/domain-3.md",
+    "after": "การได้รับสิทธิ์ใหม่เพิ่มเข้ามาแต่สิทธิ์เดิมที่หมดความจำเป็นไม่ถูกเพิกถอน (Obsolete access remains)",
+    "count": 1,
+    "line": 32,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ACC-D3-01",
+    "path": "content/isc2-cc-2026/reading/domain-3.md",
+    "after": "  <p><strong>สถานการณ์สมมติ (Finance-to-IT Transfer):</strong> นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ</p>\n  <p><strong>Illustrative policy:</strong> Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.</p>",
+    "count": 1,
+    "line": 35,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ACC-D3-01",
+    "path": "js/core/diagram-generator.js",
+    "after": "<p class=\"reading-mob-tier-desc\">ทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)</p>",
+    "count": 1,
+    "line": 1914,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ENR-D3-02",
+    "path": "content/isc2-cc-2026/reading/domain-3.md",
+    "after": "การผูกบัญชีกับบทบาทหน้าที่ (Roles) ตามข้อมูลตำแหน่งงานที่ตรวจสอบแล้ว โดยผู้มีอำนาจตามนโยบายอนุมัติสิทธิ์ของระบบหรือทรัพยากรนั้น ไม่ใช่ถือว่า HR อนุมัติสิทธิ์ทุกระบบเสมอ / Verified job information informs the role; the policy-designated authority approves resource access, rather than assuming HR approves every system.",
+    "count": 1,
+    "line": 115,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ENR-D3-02",
+    "path": "content/isc2-cc-2026/reading/domain-3.md",
+    "after": "<p><strong>ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed):</strong> ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ</p>\n<p><strong>Illustrative check:</strong> The policy-designated approver authorizes only monthly-report reading, not payroll changes or network administration. Testing shows payroll changes also succeed. Correct the excess grant, then verify that report reading succeeds while payroll changes and network administration are denied.</p>\n\n<h3 id=\"topic-3-1-access-review\">",
+    "count": 1,
+    "line": 139,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ENR-D3-03",
+    "path": "content/isc2-cc-2026/reading/domain-3.md",
+    "after": "บัญชีที่ไม่มีการล็อกอินเป็นเวลานานแต่ยังเปิดทิ้งไว้ เช่น เกิน 90 วันภายใต้นโยบายสมมติ; เกณฑ์จริงกำหนดตามบริบทและนโยบายองค์กร / For example, over 90 days under an illustrative policy; the actual inactivity threshold is organization-defined.",
+    "count": 1,
+    "line": 158,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ENR-D3-03",
+    "path": "content/isc2-cc-2026/reading/domain-3.md",
+    "after": "พนักงานย้ายตำแหน่งแล้ว แต่สิทธิ์งานเดิมที่หมดความจำเป็นยังค้างอยู่ (Obsolete access after a role change)",
+    "count": 1,
+    "line": 172,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ENR-D3-03",
+    "path": "content/isc2-cc-2026/reading/domain-3.md",
+    "after": "การที่สิทธิ์เกินความจำเป็นสะสมจากการย้ายแผนกหลายครั้ง โดยไม่ถอนส่วนที่เลิกใช้ (Accumulation of unnecessary access)",
+    "count": 1,
+    "line": 179,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ENR-D3-03",
+    "path": "content/isc2-cc-2026/reading/domain-3.md",
+    "after": "ตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+    "count": 1,
+    "line": 186,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ENR-D3-03",
+    "path": "content/isc2-cc-2026/reading/domain-3.md",
+    "after": "  <p>สมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้</p>\n  <p><strong>Review → apply → verify:</strong> Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.</p>",
+    "count": 1,
+    "line": 195,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ACC-D3-01",
+    "path": "content/isc2-cc-2026/reading/domain-3.md",
+    "after": "พนักงานเปลี่ยนบทบาทหรือย้ายฝ่าย (ถอนสิทธิ์ที่หมดความจำเป็นและปรับให้ตรงหน้าที่ใหม่ตามนโยบาย / Revoke obsolete access and align rights with the new duties under policy)",
+    "count": 1,
+    "line": 222,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-3-batch-a",
+    "id": "ENR-D3-04",
+    "path": "content/isc2-cc-2026/reading/domain-3.md",
+    "after": "<p><strong>ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session):</strong> สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป</p>\n<p><strong>Illustrative session check:</strong> The contract has ended and the administrator is authorized to withdraw access. The central account is disabled, but this application’s existing session still reads data. Use the application’s supported access/session revocation process, verify denial with that existing session, and retain required evidence. Application behavior varies.</p>\n\n<h3 id=\"topic-3-1-iam-frameworks\">",
+    "count": 1,
+    "line": 269,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-01",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "- **การใช้ IPsec (IP Security):** IPv6 ใช้ IPsec ได้เมื่อรองรับและกำหนดค่าการใช้งานอย่างเหมาะสม แต่ที่อยู่ IPv6 เพียงอย่างเดียวไม่ได้เข้ารหัสหรือยืนยันความถูกต้องของทราฟฟิก / IPv6 can use properly supported and configured IPsec; IPv6 addressing alone does not encrypt or authenticate traffic.",
+    "count": 1,
+    "line": 299,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-01",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "ใช้ IPsec ได้เมื่อรองรับและกำหนดค่า; IPv6 ไม่ได้ป้องกันทราฟฟิกโดยอัตโนมัติ (IPsec requires actual use/configuration)",
+    "count": 1,
+    "line": 1084,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "- **Reliable Delivery:** ให้บริการข้อมูลไบต์แบบเรียงลำดับและเชื่อถือได้ ด้วยลำดับหมายเลขและการส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว ความเชื่อถือได้ของ TCP ไม่ได้รับรองว่าธุรกรรมในแอปสำเร็จ หรือให้ความลับและการตรวจความถูกต้องเชิงคริปโต / TCP provides a reliable, in-order byte stream with sequencing and retransmission, but connections can fail. Transport reliability alone does not provide cryptographic protection or confirm application transaction completion.",
+    "count": 1,
+    "line": 332,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "- มักใช้กับงานที่ต้องการข้อมูลเรียงลำดับและการส่งซ้ำ เช่น Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP) / Common uses needing ordered delivery and retransmission.",
+    "count": 1,
+    "line": 334,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "- **Low Overhead:** UDP มี Header 8 ไบต์ เทียบกับ TCP อย่างน้อย 20 ไบต์ แต่ไม่ได้รับประกันว่าจะเร็วกว่า; ความเร็วและความหน่วงขึ้นกับเครือข่ายและแอป / UDP has an 8-byte header versus TCP’s minimum 20 bytes; actual speed and latency depend on the network and application.",
+    "count": 1,
+    "line": 343,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "| **Data Reliability** | ข้อมูลไบต์เรียงลำดับและส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว (Reliable ordered stream; connection failure possible) | Best-Effort; UDP เองไม่รับประกันลำดับหรือส่งซ้ำ (No built-in ordering/retransmission) |",
+    "count": 1,
+    "line": 354,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "| **Speed &amp; Latency** | มีภาระจากกลไกความเชื่อถือได้; ผลจริงขึ้นกับสภาพใช้งาน (Context-dependent) | มีภาระพื้นฐานน้อยกว่า แต่ไม่รับประกันความเร็วหรือความหน่วง (No universal speed/latency guarantee) |",
+    "count": 1,
+    "line": 356,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "Connection-oriented, 3-way handshake, reliable ordered byte stream; การเชื่อมต่ออาจล้มเหลว และไม่ยืนยันว่าธุรกรรมในแอปสำเร็จ (Connection failure possible; no application-completion guarantee)",
+    "count": 1,
+    "line": 1066,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "Connectionless, ไม่มีการจับมือ, Best-effort โดยไม่มีการเรียงลำดับหรือส่งซ้ำใน UDP เอง; ความเร็วขึ้นกับเครือข่ายและแอป (Speed depends on network/application)",
+    "count": 1,
+    "line": 1070,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ENR-D4-04",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "- **ความแตกต่างสำคัญ:** OT/ICS ต้องประเมิน Safety, ความเชื่อถือได้ ความพร้อมใช้งาน และผลต่อกระบวนการก่อนเปลี่ยนระบบ ลำดับความสำคัญขึ้นกับความเสี่ยงของงาน; IT ก็ไม่ได้ให้ Confidentiality สูงสุดทุกกรณี / Assess OT safety, reliability, availability and process impact before changes. Priorities depend on the process and risk; IT does not universally prioritize confidentiality.",
+    "count": 1,
+    "line": 603,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ENR-D4-04",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "- **Purdue Model — บริบทเสริมทางเลือก (Optional architecture context):** ตัวอย่างการจัดกลุ่มระบบตามหน้าที่ ไม่ใช่สถาปัตยกรรมบังคับสำหรับ OT ทุกระบบ / An example functional grouping, not a universal OT architecture:",
+    "count": 1,
+    "line": 605,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ENR-D4-04",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "  - **Level 3.5 (Industrial DMZ — IDMZ):** ตัวอย่างเขตกันชนสำหรับควบคุมการสื่อสาร IT/OT ตามสถาปัตยกรรมและนโยบายที่เลือก (Example IT/OT communication boundary under the selected architecture/policy)",
+    "count": 1,
+    "line": 610,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ENR-D4-04",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "- **การสื่อสารที่จำเป็นของ ICS/SCADA:** แยก IT/OT และอนุญาตเฉพาะเส้นทางที่จำเป็นซึ่งควบคุมและตรวจสอบได้ตามความเสี่ยง/ผลต่อกระบวนการ ใช้สถาปัตยกรรมที่เหมาะสม เช่น Firewall/DMZ; Data Diode เป็นทางเลือกสำหรับความต้องการสื่อสารทางเดียว ไม่ใช่กฎเส้นทางเดียวสำหรับทุกระบบ / Separate IT/OT and permit only necessary, controlled and monitored paths suited to process risk. Firewalls/DMZs and, where one-way communication fits, data diodes are architectural options rather than a universal sole path.",
+    "count": 1,
+    "line": 612,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "เครือข่ายที่ไม่มีการแบ่งเขตควบคุมภายในอาจเปิดเส้นทางให้ผู้โจมตีเข้าถึงระบบอื่นได้กว้างขึ้น แต่ไม่ได้แปลว่าทุกเครื่องถูกเจาะแล้ว; ผลขึ้นกับการเข้าถึงและมาตรการที่มี / A flat network can expose more reachable systems, but does not prove every host is compromised; reachability and other controls matter.",
+    "count": 1,
+    "line": 629,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** ช่วยลดขอบเขตผลกระทบเมื่อขอบเขตถูกบังคับใช้และทดสอบ แต่ไม่รับประกันว่าจะอยู่ในเซกเมนต์เดียว / Enforced, tested boundaries can reduce impact; they do not guarantee single-segment containment.",
+    "count": 1,
+    "line": 635,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "- **Limit Lateral Movement (จำกัดการเคลื่อนที่ในแนวราบ):** จำกัดเส้นทางตามนโยบายที่บังคับใช้จริง; เส้นทางที่ยังอนุญาตหรือจุดควบคุมที่ถูกเจาะอาจเปิดทางได้ ชื่อ VLAN อย่างเดียวไม่ใช่นโยบายบังคับใช้ / Enforcement limits reachable paths; allowed paths or compromised controls can still permit movement. A VLAN label alone is not enforcement.",
+    "count": 1,
+    "line": 636,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "- **Traffic Isolation &amp; Performance:** การแยก Broadcast Domain เช่น VLAN อาจลด Broadcast ในแต่ละส่วน แต่ผลด้านประสิทธิภาพขึ้นกับการออกแบบและปริมาณงาน / Separating broadcast domains can reduce local broadcast traffic; performance depends on design and workload.",
+    "count": 1,
+    "line": 637,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "- **Compliance &amp; Audit Scope:** การลดขอบเขต เช่น PCI DSS ต้องเป็นไปตามเงื่อนไขของมาตรฐานที่ใช้และตรวจยืนยันประสิทธิผลของการแยก ไม่ได้ลดขอบเขตโดยอัตโนมัติ / Scope reduction depends on applicable requirements and validated segmentation effectiveness; it is not automatic.",
+    "count": 1,
+    "line": 638,
+    "normalizedPresent": true
+  },
+  {
+    "batch": "reading-notes-phase-3a-domain-4-batch-a",
+    "id": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "after": "| **Segmentation** | \"Blast radius\", \"Lateral movement\", \"Divide network\" | ช่วยลดผลกระทบและจำกัดเส้นทางเมื่อบังคับใช้/ทดสอบนโยบาย (Risk reduction with enforced/tested policy) | แยกแผนกการเงินออกจากแผนกต้อนรับและตรวจเส้นทางที่อนุญาต/ปฏิเสธ |",
+    "count": 1,
+    "line": 1239,
+    "normalizedPresent": true
+  }
+]

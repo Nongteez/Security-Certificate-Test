@@ -1,0 +1,644 @@
+{
+  "date": "2026-11-04",
+  "stage": "after",
+  "browser": "Chrome/156.0.8078.80",
+  "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "mode": "Real headless Google Chrome via CDP; isolated temporary profile",
+  "matrix": [
+    {
+      "run": "1920x1080-light",
+      "width": 1920,
+      "height": 1080,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "1920x1080-dark",
+      "width": 1920,
+      "height": 1080,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "1440x900-light",
+      "width": 1440,
+      "height": 900,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "1440x900-dark",
+      "width": 1440,
+      "height": 900,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "1366x768-light",
+      "width": 1366,
+      "height": 768,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "1366x768-dark",
+      "width": 1366,
+      "height": 768,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "768x1024-light",
+      "width": 768,
+      "height": 1024,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/after/768x1024-light-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 192.140625,
+          "bottom": 372.734375,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)"
+        }
+      ]
+    },
+    {
+      "run": "768x1024-dark",
+      "width": 768,
+      "height": 1024,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/after/768x1024-dark-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 192.140625,
+          "bottom": 372.734375,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)"
+        }
+      ]
+    },
+    {
+      "run": "390x844-light",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/after/390x844-light-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 191.796875,
+          "bottom": 421.890625,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)"
+        }
+      ]
+    },
+    {
+      "run": "390x844-dark",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/after/390x844-dark-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 191.796875,
+          "bottom": 421.890625,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)"
+        }
+      ]
+    },
+    {
+      "run": "360x800-light",
+      "width": 360,
+      "height": 800,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/after/360x800-light-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 191.96875,
+          "bottom": 471.5625,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)"
+        }
+      ]
+    },
+    {
+      "run": "360x800-dark",
+      "width": 360,
+      "height": 800,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "สถานการณ์สมมติ (Finance-to-IT Transfer): นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ\n\nIllustrative policy: Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nสมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้\n\nReview → apply → verify: Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.",
+      "provisionText": "ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed): ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ",
+      "sessionText": "ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session): สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/after/360x800-dark-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 191.96875,
+          "bottom": 471.5625,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)"
+        }
+      ]
+    }
+  ],
+  "navigation": [],
+  "protectedStates": [],
+  "exceptions": [],
+  "consoleErrors": [],
+  "status": "PASS"
+}

@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {parseMarkdown} from '../../../js/core/markdown-parser.js';
+import {domain5Scenarios} from '../../../content/isc2-cc-2026/reading/domain-5-scenarios.js';
+import {domain5Scenarios as oldScenarios} from './before-domain-5-scenarios.js';
+const OUT=path.dirname(fileURLToPath(import.meta.url)),ROOT=path.resolve(OUT,'../../..');
+const old=fs.readFileSync(path.join(OUT,'before-domain-5.md'),'utf8');
+const text=fs.readFileSync(path.join(ROOT,'content/isc2-cc-2026/reading/domain-5.md'),'utf8');
+const before=parseMarkdown(old),html=parseMarkdown(text),checks=[];
+function check(name,fn){try{fn();checks.push({name,passed:true});}catch(error){checks.push({name,passed:false,error:error.message});}}
+const ids=x=>[...x.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
+const diagrams=x=>[...x.matchAll(/data-diagram="([^"]+)"/g)].map(m=>m[1]);
+const scenarios=x=>x.match(/:::scenario\n[\s\S]*?\n:::/g);
+function section(x,id){const marker='<h3 id="'+id+'"';const start=x.indexOf(marker);assert.ok(start>=0);let end=x.indexOf('<h3 id=',start+marker.length);const h2=x.indexOf('<h2',start+marker.length);if(h2>=0&&(end<0||h2<end))end=h2;return x.slice(start,end<0?undefined:end);}
+check('All explicit IDs and order unchanged',()=>assert.deepEqual(ids(text),ids(old)));
+check('All existing diagram placements unchanged',()=>assert.deepEqual(diagrams(text),diagrams(old)));
+check('Batch 1 signature/hash/password and TPM/HSM units byte-identical',()=>{for(const id of ['topic-5-1-hashing-digital-signatures','topic-5-1-tpm-vs-hsm'])assert.equal(section(text,id),section(old,id));});
+check('Batch 1 review cues preserved verbatim',()=>{for(const line of old.split('\n').filter(l=>l.startsWith('- **3. TPM vs. HSM:')||l.startsWith('- **Digital Signature:')||l.startsWith('- ลายมือชื่อดิจิทัลใช้ Private Key')))assert.ok(text.includes(line));});
+check('Twelve scenario cards retained',()=>assert.equal((html.match(/class="reading-scenario-card"/g)||[]).length,12));
+check('All eleven other Markdown scenarios, including Batch 1 scenario 04, unchanged',()=>{const a=scenarios(old),b=scenarios(text);assert.equal(a.length,12);for(let i=1;i<12;i++)assert.equal(b[i],a[i]);});
+check('Reusable scenario data unchanged except scenario 01',()=>{assert.equal(domain5Scenarios.length,12);for(let i=1;i<12;i++)assert.deepEqual(domain5Scenarios[i],oldScenarios[i]);});
+check('Scenario 01 Markdown/export fields match',()=>{const block=scenarios(text)[0];for(const key of ['topic','situation','question','answer','reasoning'])assert.equal(domain5Scenarios[0][key],block.match(new RegExp('^'+key+': (.+)$','m'))[1]);});
+check('Existing total tables unchanged',()=>assert.equal((html.match(/<table\b/g)||[]).length,(before.match(/<table\b/g)||[]).length));
+check('Sanitization and IR tables retain correct row/column structure',()=>{for(const [id,count]of [['topic-5-1-data-sanitization-destruction',5],['topic-5-3-irp-lifecycle-phases',7]]){const block=section(html,id),table=block.match(/<table\b[\s\S]*?<\/table>/)[0],rows=table.match(/<tr\b[\s\S]*?<\/tr>/g);assert.equal(rows.length,count);for(const row of rows)assert.equal((row.match(/<t[dh]\b/g)||[]).length,4);}});
+check('IR six activity headings, verb table and ransomware case retained',()=>{const a=section(old,'topic-5-3-irp-lifecycle-phases'),b=section(text,'topic-5-3-irp-lifecycle-phases');assert.deepEqual([...b.matchAll(/<h5>([\s\S]*?)<\/h5>/g)].map(m=>m[1]),[...a.matchAll(/<h5>([\s\S]*?)<\/h5>/g)].map(m=>m[1]));const marker='<h5>กรณีศึกษาจำลองสถานการณ์ Ransomware';assert.equal(b.slice(b.indexOf(marker)),a.slice(a.indexOf(marker)));assert.equal(b.match(/\| ขั้นตอน IRP[\s\S]*?\n\n/)[0],a.match(/\| ขั้นตอน IRP[\s\S]*?\n\n/)[0]);});
+check('Section/div wrapper counts unchanged',()=>{for(const tag of ['section','div'])for(const slash of ['','/'])assert.equal((text.match(new RegExp('<'+slash+tag+'(?:>|\\s)','g'))||[]).length,(old.match(new RegExp('<'+slash+tag+'(?:>|\\s)','g'))||[]).length);});
+check('Updated units render without raw Markdown/fence/scenario markers',()=>{for(const id of ['topic-5-1-data-sanitization-destruction','topic-5-3-irp-lifecycle-phases']){const rendered=section(html,id).replace(/<[^>]*>/g,'');assert.ok(!rendered.includes('**'));assert.ok(!rendered.includes('```'));assert.ok(!rendered.includes(':::'));}});
+const report={status:checks.every(c=>c.passed)?'PASS':'FAIL',checksPassed:checks.filter(c=>c.passed).length,checksTotal:checks.length,checks};
+fs.writeFileSync(path.join(OUT,'content-integrity.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));if(report.status!=='PASS')process.exitCode=1;

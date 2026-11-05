@@ -1,0 +1,2898 @@
+[
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-01-cia-triad.json",
+    "sha256": "87ded3584b7e5d0b6cd99cd299dff102b9d32feffdc5519d7c36fec8a17200bf",
+    "lessonId": "lesson-d1-01-cia-triad",
+    "slides": [
+      {
+        "id": "slide-01-orientation",
+        "title": {
+          "en": "Why Do We Secure Information?",
+          "th": "ทำไมเราจึงต้องรักษาความมั่นคงปลอดภัยของข้อมูล?"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-02-cia-overview",
+        "title": {
+          "en": "The Three Pillars of Information Security",
+          "th": "3 เสาหลักแห่งความมั่นคงปลอดภัยสารสนเทศ"
+        },
+        "rendererId": "pillars"
+      },
+      {
+        "id": "slide-03-confidentiality",
+        "title": {
+          "en": "Confidentiality: Protecting Against Unauthorized Disclosure",
+          "th": "Confidentiality: การป้องกันการเปิดเผยข้อมูลโดยไม่ได้รับอนุญาต"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-04-integrity",
+        "title": {
+          "en": "Integrity: Protecting Against Unauthorized Modification",
+          "th": "Integrity: การป้องกันการแก้ไขดัดแปลงข้อมูลโดยไม่ได้รับอนุญาต"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-05-availability",
+        "title": {
+          "en": "Availability: Ensuring Dependable, Timely Access",
+          "th": "Availability: การรับรองความพร้อมใช้งานอย่างต่อเนื่องและทันท่วงที"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-06-compound-impact",
+        "title": {
+          "en": "Real-World Complexity: Compound Impacts Across the Triad",
+          "th": "โลกความเป็นจริง: เหตุการณ์เดียวที่ส่งผลกระทบต่อเนื่องหลายด้าน"
+        },
+        "rendererId": "incident-flow"
+      },
+      {
+        "id": "slide-07-scenario-reflection",
+        "title": {
+          "en": "Scenario Reflection: Which Principle Is Violated?",
+          "th": "ทดสอบความเข้าใจ: หลักการใดถูกละเมิดโดยตรง?"
+        },
+        "rendererId": "scenario-decision"
+      },
+      {
+        "id": "slide-08-takeaways",
+        "title": {
+          "en": "Key Takeaways & Exam Quick-Reference",
+          "th": "สรุปประเด็นสำคัญและตารางช่วยจำสำหรับเตรียมสอบ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-09-ai-training-integrity",
+        "title": {
+          "en": "Poisoned data can teach an AI the wrong lesson.",
+          "th": "ข้อมูลที่ถูกวางยา อาจสอนให้ AI เรียนรู้ผิด"
+        },
+        "rendererId": "incident-flow"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-02-aaa-mfa.json",
+    "sha256": "3daf101305bf0628d5e23d703c632e007ed7128941b486545c5118cdb763867b",
+    "lessonId": "lesson-d1-02-aaa-mfa",
+    "slides": [
+      {
+        "id": "slide-01-aaa-map",
+        "title": {
+          "en": "One request. Three security functions.",
+          "th": "คำขอเดียว สามหน้าที่ด้านความปลอดภัย"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-02-claim-and-proof",
+        "title": {
+          "en": "A name is a claim. Verification needs evidence.",
+          "th": "ชื่อคือคำกล่าวอ้าง ต้องมีหลักฐานเพื่อยืนยัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-03-permission-boundary",
+        "title": {
+          "en": "Signed in does not mean allowed.",
+          "th": "เข้าสู่ระบบแล้ว ไม่ได้แปลว่าทำได้ทุกอย่าง"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-activity-trail",
+        "title": {
+          "en": "Leave a trail that can be reviewed.",
+          "th": "บันทึกร่องรอย เพื่อให้ตรวจสอบย้อนหลังได้"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-factor-families",
+        "title": {
+          "en": "Different evidence. Different factor types.",
+          "th": "หลักฐานต่างชนิด ปัจจัยต่างประเภท"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-06-mfa-or-more-steps",
+        "title": {
+          "en": "More steps do not always mean MFA.",
+          "th": "หลายขั้นตอน ไม่ได้แปลว่าเป็น MFA เสมอไป"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-access-case",
+        "title": {
+          "en": "The login worked. Why was approval denied?",
+          "th": "เข้าสู่ระบบสำเร็จ ทำไมจึงอนุมัติไม่ได้"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-03-non-repudiation.json",
+    "sha256": "5d57e4b25d934ac7256021f1203383121721407c0a4570862f6cfb7e344bb883",
+    "lessonId": "lesson-d1-03-non-repudiation",
+    "slides": [
+      {
+        "id": "slide-01-disputed-action",
+        "title": {
+          "en": "When an action is disputed, evidence matters.",
+          "th": "เมื่อการกระทำถูกโต้แย้ง หลักฐานจึงสำคัญ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-different-questions",
+        "title": {
+          "en": "A login, a log and a signature answer different questions.",
+          "th": "การเข้าสู่ระบบ Log และลายเซ็น ตอบคนละคำถาม"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-03-sign-and-verify",
+        "title": {
+          "en": "Sign privately. Verify with a trusted public key.",
+          "th": "ลงนามด้วยกุญแจส่วนตัว ตรวจด้วยกุญแจสาธารณะที่เชื่อถือได้"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-altered-copy",
+        "title": {
+          "en": "A copied signature does not validate changed content.",
+          "th": "คัดลอกลายเซ็นเดิม ไม่ได้ทำให้ข้อมูลที่แก้ไขผ่านการตรวจ"
+        },
+        "rendererId": "interactive"
+      },
+      {
+        "id": "slide-05-evidence-conditions",
+        "title": {
+          "en": "Good evidence needs more than mathematics.",
+          "th": "หลักฐานที่ดี ต้องมีมากกว่าผลคำนวณ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-evaluate-the-claim",
+        "title": {
+          "en": "Which conclusion does the evidence support?",
+          "th": "หลักฐานรองรับข้อสรุปใดได้บ้าง"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-ai-action-evidence",
+        "title": {
+          "en": "Trace the AI action. Then evaluate the evidence.",
+          "th": "ติดตามการกระทำของ AI แล้วประเมินหลักฐาน"
+        },
+        "rendererId": "comparison"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-04-privacy.json",
+    "sha256": "9edaf38f654a44d5d1f66177044bd225d8a862d8cc4a153f6b16d0f0c7285294",
+    "lessonId": "lesson-d1-04-privacy",
+    "slides": [
+      {
+        "id": "slide-01-secure-is-not-enough",
+        "title": {
+          "en": "Privacy asks more than “who can read it?”",
+          "th": "Privacy ถามมากกว่าแค่ “ใครอ่านได้”"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-recognize-personal-data",
+        "title": {
+          "en": "A person can be identified without a name.",
+          "th": "ระบุตัวบุคคลได้ แม้ไม่มีชื่อ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-03-roles-and-responsibility",
+        "title": {
+          "en": "Follow the decisions, not the server.",
+          "th": "ดูว่าใครตัดสินใจ ไม่ใช่ใครมีเซิร์ฟเวอร์"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-purpose-and-minimization",
+        "title": {
+          "en": "Start with the purpose. Collect what it needs.",
+          "th": "เริ่มจากวัตถุประสงค์ แล้วเก็บเท่าที่จำเป็น"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-inventory-and-copies",
+        "title": {
+          "en": "You cannot manage a copy you cannot find.",
+          "th": "จัดการสำเนาไม่ได้ หากไม่รู้ว่าอยู่ที่ไหน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-retention-with-a-reason",
+        "title": {
+          "en": "Retention needs a reason and a review point.",
+          "th": "Retention ต้องมีเหตุผลและจุดทบทวน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-conditional-erasure",
+        "title": {
+          "en": "A deletion request starts a review.",
+          "th": "คำขอลบข้อมูลเริ่มกระบวนการพิจารณา"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-08-evaluate-a-new-use",
+        "title": {
+          "en": "A secure upload can still be the wrong next step.",
+          "th": "อัปโหลดอย่างปลอดภัย ก็อาจเป็นขั้นตอนที่ไม่เหมาะสม"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-05-risk-foundations.json",
+    "sha256": "d3f9cae29ed28a612b89c79f01b09b223bb3244e88329f86d4d0c78f607c512f",
+    "lessonId": "lesson-d1-05-risk-foundations",
+    "slides": [
+      {
+        "id": "slide-01-potential-harm",
+        "title": {
+          "en": "Risk exists before an incident happens.",
+          "th": "Risk มีอยู่ได้ ก่อนเกิดเหตุการณ์จริง"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-connect-the-scenario",
+        "title": {
+          "en": "Connect the weakness to a consequence.",
+          "th": "เชื่อมจุดอ่อนให้เห็นผลที่อาจตามมา"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-03-separate-the-terms",
+        "title": {
+          "en": "A threat is not a vulnerability.",
+          "th": "Threat ไม่ใช่ Vulnerability"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-likelihood-and-impact",
+        "title": {
+          "en": "Two questions shape the risk judgment.",
+          "th": "สองคำถามช่วยประเมินความเสี่ยง"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-continuous-lifecycle",
+        "title": {
+          "en": "Risk management is a loop, not a checklist finish.",
+          "th": "Risk management วนทบทวน ไม่จบแค่ติ๊กครบ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-write-a-risk-statement",
+        "title": {
+          "en": "Write a scenario people can act on.",
+          "th": "เขียนสถานการณ์ให้คนตัดสินใจต่อได้"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-review-after-change",
+        "title": {
+          "en": "A completed patch is evidence—not “risk zero.”",
+          "th": "ติดตั้ง Patch แล้ว ต้องประเมิน Risk ต่อ"
+        },
+        "rendererId": "interactive"
+      },
+      {
+        "id": "slide-08-communicate-for-a-decision",
+        "title": {
+          "en": "A useful report leads to an informed decision.",
+          "th": "รายงานที่ดี ช่วยให้ตัดสินใจอย่างมีข้อมูล"
+        },
+        "rendererId": "comparison"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-06-assessment.json",
+    "sha256": "bceed13c2bd0428267bcf10a50d147ffb791bda68deeb48e2154aa7f5becd0f6",
+    "lessonId": "lesson-d1-06-assessment",
+    "slides": [
+      {
+        "id": "slide-01-choose-the-method",
+        "title": {
+          "en": "Choose a method that supports the decision.",
+          "th": "เลือกวิธีประเมินให้ตอบโจทย์การตัดสินใจ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-define-the-criteria",
+        "title": {
+          "en": "A “high” label needs a shared meaning.",
+          "th": "คำว่า “สูง” ต้องมีเกณฑ์ร่วมกัน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-03-estimate-one-loss",
+        "title": {
+          "en": "First estimate the loss from one event.",
+          "th": "เริ่มจากประมาณความเสียหายหนึ่งเหตุการณ์"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-annual-frequency",
+        "title": {
+          "en": "ARO is a frequency, not a probability.",
+          "th": "ARO คือความถี่ ไม่ใช่ความน่าจะเป็น"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-annualize-the-loss",
+        "title": {
+          "en": "ALE converts the model to an annual basis.",
+          "th": "ALE แปลงค่าประมาณให้อยู่บนฐานต่อปี"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-compare-like-with-like",
+        "title": {
+          "en": "The larger single loss may not have the larger ALE.",
+          "th": "เสียต่อครั้งมากกว่า อาจมี ALE น้อยกว่า"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-test-the-estimate",
+        "title": {
+          "en": "Change an assumption. Watch the estimate move.",
+          "th": "เปลี่ยนสมมติฐาน แล้วดูค่าประมาณเปลี่ยน"
+        },
+        "rendererId": "interactive"
+      },
+      {
+        "id": "slide-08-prioritize-with-context",
+        "title": {
+          "en": "Prioritize with evidence—not a number alone.",
+          "th": "จัดลำดับด้วยหลักฐาน ไม่ใช่ตัวเลขอย่างเดียว"
+        },
+        "rendererId": "comparison"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-07-risk-response.json",
+    "sha256": "4334114d9b8b857eb09ba34fb46d4220ee8a73cbaaa6f9cd4c068aa8fe8827cd",
+    "lessonId": "lesson-d1-07-risk-response",
+    "slides": [
+      {
+        "id": "slide-01-four-response-paths",
+        "title": {
+          "en": "Choose a response—not just a risk label.",
+          "th": "เลือกวิธีตอบสนอง ไม่หยุดแค่ป้ายระดับ Risk"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-stop-or-reduce",
+        "title": {
+          "en": "Avoid the activity—or reduce its risk.",
+          "th": "หยุดกิจกรรม หรือทำให้เสี่ยงน้อยลง"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-03-share-the-consequences",
+        "title": {
+          "en": "Insurance can share costs—not stop the attack.",
+          "th": "ประกันช่วยแบ่งค่าเสียหาย ไม่ได้หยุดการโจมตี"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-authorize-acceptance",
+        "title": {
+          "en": "Acceptance needs a decision—not silence.",
+          "th": "Accept ต้องมีการตัดสินใจ ไม่ใช่ปล่อยเงียบ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-risk-that-remains",
+        "title": {
+          "en": "Controls change risk; they do not promise zero.",
+          "th": "Control เปลี่ยน Risk แต่ไม่สัญญาว่าเหลือศูนย์"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-use-organisational-limits",
+        "title": {
+          "en": "Use the organisation’s direction and limits.",
+          "th": "ใช้ทิศทางและขอบเขตที่องค์กรกำหนด"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-compare-treatment-value",
+        "title": {
+          "en": "Compare value on a consistent basis.",
+          "th": "เทียบความคุ้มค่าบนฐานเดียวกัน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-08-clinic-decision",
+        "title": {
+          "en": "The patch is installed. Can the risk be closed?",
+          "th": "ลง Patch แล้ว ปิดเรื่อง Risk ได้หรือยัง?"
+        },
+        "rendererId": "interactive"
+      },
+      {
+        "id": "slide-09-monitor-and-reassess",
+        "title": {
+          "en": "Monitor the response—and the changing context.",
+          "th": "ติดตามทั้งวิธีตอบสนองและบริบทที่เปลี่ยน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-10-communicate-the-decision",
+        "title": {
+          "en": "Leave a record people can act on.",
+          "th": "บันทึกให้คนรับช่วงลงมือทำต่อได้"
+        },
+        "rendererId": "comparison"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-08-governance.json",
+    "sha256": "7db5b5cfe9f99ba34e52e8ab9a9afa36076cea54cc32099dc9c89c96f0b350ad",
+    "lessonId": "lesson-d1-08-governance",
+    "slides": [
+      {
+        "id": "slide-01-govern-security",
+        "title": {
+          "en": "Governance gives security a direction.",
+          "th": "Governance กำหนดทิศทางให้ความปลอดภัย"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-govern-and-manage",
+        "title": {
+          "en": "Governing and managing have different jobs.",
+          "th": "การกำกับดูแลกับการบริหารงานมีหน้าที่ต่างกัน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-03-sources-of-obligations",
+        "title": {
+          "en": "Ask where the requirement comes from.",
+          "th": "ถามก่อนว่าข้อกำหนดมาจากไหน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-establish-applicability",
+        "title": {
+          "en": "Applicability depends on facts—not a logo.",
+          "th": "Applicability ต้องดูข้อเท็จจริง ไม่ใช่ตรารับรอง"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-bound-the-legal-examples",
+        "title": {
+          "en": "GDPR and HIPAA have defined scopes.",
+          "th": "GDPR และ HIPAA มีขอบเขตที่กำหนดไว้"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-payment-card-requirements",
+        "title": {
+          "en": "Outsourcing payments does not erase every duty.",
+          "th": "จ้างภายนอกทำการจ่ายเงิน ไม่ได้ลบทุกหน้าที่"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-compliance-and-security",
+        "title": {
+          "en": "Compliance evidence is not a promise of perfect security.",
+          "th": "หลักฐาน Compliance ไม่ได้รับประกันความปลอดภัยสมบูรณ์"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-08-ai-governance-intake",
+        "title": {
+          "en": "The AI demo works. Is that enough to approve it?",
+          "th": "AI สาธิตได้ผล แค่นี้อนุมัติใช้ได้หรือยัง?"
+        },
+        "rendererId": "interactive"
+      },
+      {
+        "id": "slide-09-trace-requirements",
+        "title": {
+          "en": "Turn requirements into accountable evidence.",
+          "th": "เชื่อมข้อกำหนดกับงานและหลักฐานที่มีผู้รับผิดชอบ"
+        },
+        "rendererId": "comparison"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-09-frameworks.json",
+    "sha256": "aed12a9080922f121452b6e0be62d4d5422f10471b1c60da5d0ccffb88047abd",
+    "lessonId": "lesson-d1-09-frameworks",
+    "slides": [
+      {
+        "id": "slide-01-framework-structure",
+        "title": {
+          "en": "A framework gives security work a structure.",
+          "th": "Framework ช่วยจัดโครงสร้างงานความปลอดภัย"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-nist-outcomes",
+        "title": {
+          "en": "NIST CSF describes outcomes—not your exact configuration.",
+          "th": "NIST CSF บอกผลลัพธ์ ไม่ได้กำหนดค่าระบบแทนองค์กร"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-03-iso-isms",
+        "title": {
+          "en": "ISO/IEC 27001 specifies requirements for an ISMS.",
+          "th": "ISO/IEC 27001 กำหนดข้อกำหนดสำหรับ ISMS"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-cis-safeguards",
+        "title": {
+          "en": "CIS Controls turns priorities into practical safeguards.",
+          "th": "CIS Controls ช่วยจัดลำดับ Safeguards ที่นำไปทำได้"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-policy-direction",
+        "title": {
+          "en": "Policy states the organisation’s direction.",
+          "th": "Policy กำหนดทิศทางที่องค์กรต้องการ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-standard-requirement",
+        "title": {
+          "en": "A standard makes a requirement specific.",
+          "th": "Standard ทำให้ข้อกำหนดชัดเจนตรวจได้"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-procedure-steps",
+        "title": {
+          "en": "A procedure makes the work repeatable.",
+          "th": "Procedure ทำให้งานทำซ้ำได้อย่างถูกลำดับ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-08-guideline-advice",
+        "title": {
+          "en": "Guidelines help people choose a good approach.",
+          "th": "Guideline ช่วยเลือกแนวทางที่เหมาะสม"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-09-classify-the-purpose",
+        "title": {
+          "en": "Which document function does this statement serve?",
+          "th": "ข้อความนี้ทำหน้าที่เป็นเอกสารแบบใด?"
+        },
+        "rendererId": "interactive"
+      },
+      {
+        "id": "slide-10-connect-and-review",
+        "title": {
+          "en": "Keep direction, requirements and steps aligned.",
+          "th": "ให้ทิศทาง ข้อกำหนด และขั้นตอนสอดคล้องกัน"
+        },
+        "rendererId": "comparison"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-10-control-categories.json",
+    "sha256": "1573c8d325de95a08da1415299e57ad69c583aee408af875bf13407bff5427a9",
+    "lessonId": "lesson-d1-10-control-categories",
+    "slides": [
+      {
+        "id": "slide-01-category-and-purpose",
+        "title": {
+          "en": "Category asks how a control is implemented.",
+          "th": "Category ถามว่ามาตรการทำงานผ่านอะไร"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-technical-enforcement",
+        "title": {
+          "en": "Technical controls apply rules through technology.",
+          "th": "Technical Controls ใช้เทคโนโลยีบังคับกฎ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-03-administrative-direction",
+        "title": {
+          "en": "Administrative controls organise people and decisions.",
+          "th": "Administrative Controls จัดคน กระบวนการ และการตัดสินใจ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-physical-protection",
+        "title": {
+          "en": "Physical controls protect spaces and tangible assets.",
+          "th": "Physical Controls ปกป้องพื้นที่และทรัพย์สินที่จับต้องได้"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-course-labels",
+        "title": {
+          "en": "Read the course labels without adding an official category.",
+          "th": "อ่านคำในคอร์สให้เข้าใจ โดยไม่เพิ่มหมวดทางการ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-one-goal-three-controls",
+        "title": {
+          "en": "One records service needs complementary controls.",
+          "th": "บริการข้อมูลหนึ่งระบบต้องใช้มาตรการที่เสริมกัน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-classify-the-mechanism",
+        "title": {
+          "en": "Classify the review—not the ticketing tool.",
+          "th": "จัดประเภทงานทบทวน ไม่ใช่เครื่องมือ Ticket"
+        },
+        "rendererId": "interactive"
+      },
+      {
+        "id": "slide-08-select-and-check",
+        "title": {
+          "en": "Choose the mechanism, assign an owner, verify the result.",
+          "th": "เลือกกลไก มอบหมายเจ้าของ แล้วตรวจผล"
+        },
+        "rendererId": "comparison"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-11-control-functions.json",
+    "sha256": "6e40ae9ffba7eab447a79fbfe7afb36d6d63d9c2b68f6320c230f1cc3be33443",
+    "lessonId": "lesson-d1-11-control-functions",
+    "slides": [
+      {
+        "id": "slide-01-category-and-function",
+        "title": {
+          "en": "One control can have a category and several functions.",
+          "th": "Control เดียวมีทั้ง Category และหลาย Function ได้"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-preventive",
+        "title": {
+          "en": "Preventive controls act before an unwanted action succeeds.",
+          "th": "Preventive Controls ทำงานก่อนการกระทำที่ไม่ต้องการสำเร็จ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-03-detective",
+        "title": {
+          "en": "Detective controls make relevant activity discoverable.",
+          "th": "Detective Controls ช่วยให้ค้นพบกิจกรรมที่เกี่ยวข้อง"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-corrective-and-recovery",
+        "title": {
+          "en": "Fix the problem—and restore trusted operation.",
+          "th": "แก้ปัญหา และฟื้นการทำงานที่เชื่อถือได้"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-deterrent",
+        "title": {
+          "en": "Deterrent controls aim to discourage the attempt.",
+          "th": "Deterrent Controls มุ่งยับยั้งไม่ให้เริ่มพยายาม"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-directive",
+        "title": {
+          "en": "Directive controls communicate the expected action.",
+          "th": "Directive Controls สื่อสิ่งที่คาดหวังให้ปฏิบัติ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-compensating",
+        "title": {
+          "en": "A compensating control must address the original protection need.",
+          "th": "Compensating Control ต้องตอบความต้องการปกป้องเดิม"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-08-context-changes-function",
+        "title": {
+          "en": "The same camera can support different functions.",
+          "th": "กล้องเดียวสนับสนุนหน้าที่ต่างกันได้"
+        },
+        "rendererId": "interactive"
+      },
+      {
+        "id": "slide-09-reason-from-effects",
+        "title": {
+          "en": "Explain the effect and the evidence behind the label.",
+          "th": "อธิบายผลและหลักฐานที่รองรับชื่อหน้าที่"
+        },
+        "rendererId": "comparison"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d1-12-professional-conduct.json",
+    "sha256": "56361c4953541ca8b29d171f6e6e3b00b8bc6692543f4553612ad4b359fa32e0",
+    "lessonId": "lesson-d1-12-professional-conduct",
+    "slides": [
+      {
+        "id": "slide-01-access-and-authority",
+        "title": {
+          "en": "Technical access is not permission for every purpose.",
+          "th": "เข้าถึงทางเทคนิคได้ ไม่ได้แปลว่าทำได้ทุกวัตถุประสงค์"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-professional-conduct",
+        "title": {
+          "en": "Professional conduct makes trust observable.",
+          "th": "ความประพฤติวิชาชีพต้องเห็นได้จากการทำงาน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-03-reasonable-care",
+        "title": {
+          "en": "Due care means reasonable protection in context.",
+          "th": "Due Care คือการปกป้องที่สมเหตุสมผลตามบริบท"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-investigate-and-review",
+        "title": {
+          "en": "Due diligence builds and refreshes the evidence.",
+          "th": "Due Diligence สร้างและทบทวนหลักฐานให้ทันสถานการณ์"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-scan-patch-verify",
+        "title": {
+          "en": "Investigate → protect → verify → keep reviewing.",
+          "th": "ตรวจสอบ → ปกป้อง → ยืนยันผล → ทบทวนต่อ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-four-canons",
+        "title": {
+          "en": "Four canons frame professional judgment.",
+          "th": "หลักจริยธรรมสี่ข้อช่วยกำกับการตัดสินใจ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-public-trust-and-honesty",
+        "title": {
+          "en": "Protect people without distorting the finding.",
+          "th": "ปกป้องผู้คนโดยไม่บิดเบือนข้อค้นพบ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-08-competent-service",
+        "title": {
+          "en": "Serve principals competently—and strengthen the profession.",
+          "th": "บริการอย่างมีความสามารถและส่งเสริมวิชาชีพ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-09-reporting-decision",
+        "title": {
+          "en": "A deadline does not justify hiding a serious finding.",
+          "th": "เส้นตายไม่ใช่เหตุให้ปกปิดข้อค้นพบร้ายแรง"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-10-defensible-decisions",
+        "title": {
+          "en": "Make the decision explainable—and review the result.",
+          "th": "อธิบายการตัดสินใจได้ และตรวจผลที่เกิดขึ้น"
+        },
+        "rendererId": "comparison"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-01-grc-foundations.json",
+    "sha256": "81849ef22533ba0ee73f276797b40f6129bcc8708c5001859137aca978c75101",
+    "lessonId": "lesson-d2-01-grc-foundations",
+    "slides": [
+      {
+        "id": "slide-01-grc-foundations",
+        "title": {
+          "en": "GRC connects Governance, Risk, and Compliance to business objectives.",
+          "th": "GRC ประสาน Governance, Risk และ Compliance ให้สอดคล้องกับเป้าหมายธุรกิจ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-02-purpose-of-grc",
+        "title": {
+          "en": "The seven purposes of GRC turn scattered controls into a coordinated program.",
+          "th": "วัตถุประสงค์ทั้ง 7 ข้อของ GRC เปลี่ยนงานที่กระจัดกระจายให้เป็นระบบที่ประสานกัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-03-importance-of-grc",
+        "title": {
+          "en": "Effective GRC builds resilience—while absent GRC leaves blind spots and violations.",
+          "th": "GRC ที่มีประสิทธิผลช่วยสร้างความทนทานให้ธุรกิจ แต่หากขาด GRC จะเกิดจุดบอดและการละเมิดกฎ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-04-grc-frameworks",
+        "title": {
+          "en": "Frameworks and standards structure GRC—each serving a distinct governance purpose.",
+          "th": "Frameworks และ Standards ช่วยจัดโครงสร้างงาน GRC โดยมีจุดเน้นที่แตกต่างกันชัดเจน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-grc-distinctions",
+        "title": {
+          "en": "Separate Governance from Management—and Risk Management from Compliance.",
+          "th": "แยกบทบาท Governance ออกจาก Management และแยก Risk Management ออกจาก Compliance"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-applied-grc-scenario",
+        "title": {
+          "en": "Applied Scenario: Structuring GRC for a Growing B2B Payment Platform",
+          "th": "สถานการณ์ประยุกต์: การวางระบบ GRC ให้แพลตฟอร์มชำระเงิน B2B ที่กำลังเติบโต"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-02-grc-tools-risk-register.json",
+    "sha256": "e4486b7a62a81c6bba23038609ca12e98d06e96a3f3647afcc9c528987511807",
+    "lessonId": "lesson-d2-02-grc-tools-risk-register",
+    "slides": [
+      {
+        "id": "slide-01-grc-tools-platform",
+        "title": {
+          "en": "GRC tools keep shared work visible.",
+          "th": "GRC Tools ช่วยให้เห็นงานและข้อมูลร่วมกัน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-six-grc-tool-capabilities",
+        "title": {
+          "en": "GRC capabilities connect through shared records.",
+          "th": "ความสามารถของ GRC เชื่อมกันผ่านข้อมูลร่วม"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-03-risk-register-anatomy",
+        "title": {
+          "en": "Assess the risk. Keep its record current.",
+          "th": "ประเมิน Risk แล้วติดตามต่อในทะเบียน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-04-scoring-and-treatment",
+        "title": {
+          "en": "A risk score supports a decision.",
+          "th": "คะแนน Risk ใช้ประกอบการตัดสินใจ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-ransomware-worked-example",
+        "title": {
+          "en": "Match controls to the ransomware scenario.",
+          "th": "เลือก Controls ให้ตรงกับความเสี่ยง Ransomware"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-06-residual-risk-and-ownership",
+        "title": {
+          "en": "Reassess risk after controls.",
+          "th": "ประเมิน Risk อีกครั้งหลังใช้ Controls"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-07-risk-register-scenario",
+        "title": {
+          "en": "What should Aegis Health record next?",
+          "th": "Aegis Health ควรบันทึกและติดตามอะไรต่อ?"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-03-business-continuity-bcp.json",
+    "sha256": "1a84988279805e6bcfd3644a65088215f34ae21348240acdd913a9c3f0012256",
+    "lessonId": "lesson-d2-03-business-continuity-bcp",
+    "slides": [
+      {
+        "id": "slide-01-redundancy-and-bc-foundations",
+        "title": {
+          "en": "Keep the critical service running.",
+          "th": "รักษาบริการสำคัญให้เดินต่อ"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-02-eight-disruption-triggers",
+        "title": {
+          "en": "Different disruptions can stop the same service.",
+          "th": "หลายเหตุหยุดชะงักกระทบบริการเดียวกันได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-03-bcp-and-eight-elements",
+        "title": {
+          "en": "A BCP turns intentions into usable instructions.",
+          "th": "BCP เปลี่ยนความตั้งใจเป็นขั้นตอนที่ใช้ได้จริง"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-04-operational-redundancy-strategies",
+        "title": {
+          "en": "Check what the alternate depends on.",
+          "th": "ตรวจว่าทางเลือกสำรองยังพึ่งพาอะไร"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-bia-and-recovery-priorities",
+        "title": {
+          "en": "Recover the dependencies that the business needs.",
+          "th": "ฟื้นฟูสิ่งที่งานสำคัญต้องพึ่งพา"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-06-continuity-decision-scenario",
+        "title": {
+          "en": "How can customer operations continue safely?",
+          "th": "จะให้บริการลูกค้าต่ออย่างปลอดภัยได้อย่างไร?"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-04-disaster-recovery-drp.json",
+    "sha256": "1d8b1141871a1fe7d42e7b38525a11ae1de9f886a20db9114797ce7b419f94e5",
+    "lessonId": "lesson-d2-04-disaster-recovery-drp",
+    "slides": [
+      {
+        "id": "slide-01-dr-definition-purposes-drp",
+        "title": {
+          "en": "Restore a working service, not just a server.",
+          "th": "กู้ให้บริการใช้งานได้ ไม่ใช่แค่เปิด Server"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-02-dr-importance-and-compliance-bounds",
+        "title": {
+          "en": "Recovery reduces the business impact of an outage.",
+          "th": "การกู้คืนช่วยลดผลกระทบของระบบหยุดทำงาน"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-03-rto-and-rpo-timeline",
+        "title": {
+          "en": "RPO looks back. RTO sets the recovery-time target.",
+          "th": "RPO มองย้อนข้อมูล ส่วน RTO กำหนดเป้าหมายเวลากู้คืน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-04-worked-recovery-target-examples",
+        "title": {
+          "en": "Separate the target from what actually happened.",
+          "th": "แยกเป้าหมายออกจากสิ่งที่เกิดขึ้นจริง"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-05-backup-and-restoration-strategies",
+        "title": {
+          "en": "A backup is useful when you can restore it.",
+          "th": "Backup มีประโยชน์เมื่อนำมากู้คืนได้"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-06-dr-sites-hot-warm-cold",
+        "title": {
+          "en": "A recovery site still has work to complete.",
+          "th": "ศูนย์สำรองยังมีงานที่ต้องเตรียมให้พร้อม"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-07-drp-testing-and-coordination",
+        "title": {
+          "en": "Exercise the plan, measure, then correct the gaps.",
+          "th": "ซ้อมแผน วัดผล แล้วแก้สิ่งที่ยังขาด"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-08-bc-vs-dr-seven-dimensions",
+        "title": {
+          "en": "Keep the business going while IT recovers.",
+          "th": "ประคองงานธุรกิจระหว่างที่กู้ IT"
+        },
+        "rendererId": "comparison"
+      },
+      {
+        "id": "slide-09-disaster-recovery-scenario",
+        "title": {
+          "en": "Which recovery plan fits the business targets?",
+          "th": "แผนกู้คืนใดสอดคล้องกับเป้าหมายธุรกิจ?"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-05-security-awareness-culture-leadership.json",
+    "sha256": "983c19429cc9b032fb923124b597b3c0816e4375c95ea591345213e09a07aa71",
+    "lessonId": "lesson-d2-05-security-awareness-culture-leadership",
+    "slides": [
+      {
+        "id": "slide-01-awareness-to-safe-action",
+        "title": {
+          "en": "Awareness turns recognition into a safer action.",
+          "th": "Awareness เปลี่ยนการสังเกตเป็นการปฏิบัติที่ปลอดภัย"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-02-awareness-and-training",
+        "title": {
+          "en": "Recognizing a risk and practising a task support each other.",
+          "th": "การรู้ทันความเสี่ยงกับการฝึกลงมือช่วยเสริมกัน"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-03-shared-daily-culture",
+        "title": {
+          "en": "Culture is what the team makes normal.",
+          "th": "Culture คือสิ่งที่ทีมทำเป็นเรื่องปกติ"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-04-leadership-makes-rules-credible",
+        "title": {
+          "en": "Leaders make secure behaviour credible and possible.",
+          "th": "ผู้นำทำให้พฤติกรรมปลอดภัยน่าเชื่อและทำได้จริง"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-05-reinforcement-and-feedback",
+        "title": {
+          "en": "Reinforce the behaviour, then learn from the friction.",
+          "th": "เสริมพฤติกรรม แล้วเรียนรู้จากสิ่งที่ทำให้ติดขัด"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-06-culture-and-leadership-decision",
+        "title": {
+          "en": "How would you support a safer reporting culture?",
+          "th": "จะสนับสนุน Culture การรายงานที่ปลอดภัยอย่างไร?"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-06-social-engineering-password-protection.json",
+    "sha256": "9278ff9186b7b0bb5f85194d7966a6a4c0715488029734d5f8f7fad6bd31c6ee",
+    "lessonId": "lesson-d2-06-social-engineering-password-protection",
+    "slides": [
+      {
+        "id": "slide-01-manipulation-and-request",
+        "title": {
+          "en": "Notice the action the caller wants you to take.",
+          "th": "สังเกตว่าผู้ติดต่ออยากให้เราทำอะไร"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-02-phishing-targeting",
+        "title": {
+          "en": "Phishing can be broad or carefully targeted.",
+          "th": "Phishing อาจหว่านกว้างหรือเจาะจงเป้าหมาย"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-03-channel-and-pretext",
+        "title": {
+          "en": "The channel and the story are different dimensions.",
+          "th": "ช่องทางกับเรื่องที่สร้างขึ้นเป็นคนละมิติ"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-04-verify-and-report",
+        "title": {
+          "en": "Use a known channel, then report the concern.",
+          "th": "ใช้ช่องทางที่รู้จัก แล้วรายงานข้อกังวล"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-05-unique-protected-passwords",
+        "title": {
+          "en": "Do not let one stolen password open several accounts.",
+          "th": "อย่าให้ Password ที่หลุดหนึ่งชุดเปิดได้หลายบัญชี"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-06-organizational-credential-protection",
+        "title": {
+          "en": "Password protection is also an organizational responsibility.",
+          "th": "การปกป้อง Password เป็นหน้าที่องค์กรด้วย"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-07-mfa-and-phishing-resistance",
+        "title": {
+          "en": "MFA does not automatically mean phishing-resistant.",
+          "th": "MFA ไม่ได้แปลว่าต้าน Phishing ได้โดยอัตโนมัติ"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-08-urgent-it-caller-decision",
+        "title": {
+          "en": "An urgent “IT caller” asks for your password and OTP.",
+          "th": "“เจ้าหน้าที่ IT” โทรเร่งขอ Password และ OTP"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-07-security-metrics-kpi-kri.json",
+    "sha256": "b075b61ee4afd9413a70818a51ccb4e51923b54ebb9a825cf7491dd5c11d1f83",
+    "lessonId": "lesson-d2-07-security-metrics-kpi-kri",
+    "slides": [
+      {
+        "id": "slide-01-measure-for-a-decision",
+        "title": {
+          "en": "Choose the decision before the number.",
+          "th": "เลือกคำถามที่ต้องตัดสินใจก่อนเลือกตัวเลข"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-02-denominator-and-window",
+        "title": {
+          "en": "“90% patched” needs a population and a date.",
+          "th": "“Patch แล้ว 90%” ต้องรู้ว่าจากกลุ่มใดและเมื่อใด"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-03-detection-and-response-boundaries",
+        "title": {
+          "en": "Define where each response clock starts and stops.",
+          "th": "กำหนดจุดเริ่มและจุดจบของเวลาตอบสนอง"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-04-kri-exposure",
+        "title": {
+          "en": "A KRI signals exposure that needs attention.",
+          "th": "KRI ชี้ความเสี่ยงที่ควรติดตาม"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-05-kpi-performance-objective",
+        "title": {
+          "en": "A KPI asks how well we meet a stated objective.",
+          "th": "KPI ถามว่าเราทำได้ตามเป้าหมายเพียงใด"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-06-interpretation-and-indicator-role",
+        "title": {
+          "en": "More reports can have more than one explanation.",
+          "th": "รายงานเพิ่มอาจอธิบายได้มากกว่าหนึ่งแบบ"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-07-metrics-decision",
+        "title": {
+          "en": "The patch KPI improved, but privileged accounts lack MFA.",
+          "th": "Patch KPI ดีขึ้น แต่บัญชีสิทธิ์สูงยังไม่มี MFA"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d2-08-dashboards-scorecards-reports.json",
+    "sha256": "39c7f583f9bc5dd3fe84757a83059a6602ff32b133ba0afbb759910a2d339b44",
+    "lessonId": "lesson-d2-08-dashboards-scorecards-reports",
+    "slides": [
+      {
+        "id": "slide-01-dashboard-status-and-trend",
+        "title": {
+          "en": "A dashboard makes status and trends visible.",
+          "th": "Dashboard ช่วยให้เห็นสถานะและแนวโน้ม"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-02-scorecard-against-target",
+        "title": {
+          "en": "A scorecard compares actual performance with a target.",
+          "th": "Scorecard เทียบผลงานจริงกับเป้าหมาย"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-03-source-scorecard-and-units",
+        "title": {
+          "en": "Read the comparison—and check the units.",
+          "th": "อ่านผลเทียบเป้า และตรวจหน่วยด้วย"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-04-report-evidence-to-action",
+        "title": {
+          "en": "A report explains the evidence and the action needed.",
+          "th": "Report อธิบายหลักฐานและสิ่งที่ต้องทำ"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-05-audience-and-decision",
+        "title": {
+          "en": "Choose the view for the question being asked.",
+          "th": "เลือกมุมมองให้ตรงกับคำถาม"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-06-reporting-decision",
+        "title": {
+          "en": "Management asks: are we on target, and what should happen next?",
+          "th": "ผู้บริหารถาม: ถึงเป้าหรือยัง และควรทำอะไรต่อ?"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d3-01-roles-provisioning.json",
+    "sha256": "d63e6c9311e367a0da769721264725fe14e2a56f82d0f17993e9d922ca790895",
+    "lessonId": "lesson-d3-01-roles-provisioning",
+    "slides": [
+      {
+        "id": "slide-d3-01-01-role-to-task",
+        "title": {
+          "en": "Start with the work, then justify the access.",
+          "th": "เริ่มจากหน้าที่ แล้วจึงกำหนดสิทธิ์ที่จำเป็น"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-01-02-identity-account-identifier",
+        "title": {
+          "en": "One person can use more than one account.",
+          "th": "คนเดียวอาจใช้ได้หลายบัญชี"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-01-03-authorize-before-assignment",
+        "title": {
+          "en": "Approval and implementation have different responsibilities.",
+          "th": "การอนุมัติกับการตั้งค่าสิทธิ์มีหน้าที่ต่างกัน"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-01-04-provision-approved-access",
+        "title": {
+          "en": "Provision the approved ability to work.",
+          "th": "จัดเตรียมสิทธิ์ให้ทำงานได้ตามที่อนุมัติ"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-01-05-verify-the-grant",
+        "title": {
+          "en": "Compare approved scope with effective access.",
+          "th": "เทียบสิทธิ์ที่อนุมัติกับสิทธิ์ที่ใช้ได้จริง"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-01-06-own-the-reporting-bot",
+        "title": {
+          "en": "Automation still needs an accountable owner.",
+          "th": "ระบบอัตโนมัติก็ต้องมีผู้รับผิดชอบ"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-01-07-urgent-access-decision",
+        "title": {
+          "en": "Urgency does not establish approval authority.",
+          "th": "งานเร่งด่วนไม่ได้ให้อำนาจอนุมัติสิทธิ์"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d3-02-review-deprovisioning.json",
+    "sha256": "aad07b0b69b8ad6001e7424880dbc78dcba91177427767e2682acfd9338f6e68",
+    "lessonId": "lesson-d3-02-review-deprovisioning",
+    "slides": [
+      {
+        "id": "slide-d3-02-01-mover-before-after",
+        "title": {
+          "en": "A new role does not justify keeping every old permission.",
+          "th": "ย้ายหน้าที่แล้ว ไม่ได้แปลว่าควรเก็บทุกสิทธิ์เดิม"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-02-02-review-apply-verify",
+        "title": {
+          "en": "A review decision must become a verified access change.",
+          "th": "ผลทบทวนต้องนำไปสู่การปรับสิทธิ์ที่ตรวจยืนยันได้"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-02-03-activity-and-ownership",
+        "title": {
+          "en": "Usage and ownership answer different questions.",
+          "th": "การใช้งานกับผู้รับผิดชอบเป็นคนละคำถาม"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-02-04-review-at-the-change",
+        "title": {
+          "en": "Scheduled reviews do not replace change-triggered reassessment.",
+          "th": "การทบทวนตามรอบไม่ทดแทนการตรวจเมื่อหน้าที่เปลี่ยน"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-02-05-withdraw-without-erasing-history",
+        "title": {
+          "en": "Withdraw access without erasing required evidence.",
+          "th": "ถอนสิทธิ์ โดยไม่ทำลายหลักฐานที่ต้องเก็บ"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-02-06-central-and-application-sessions",
+        "title": {
+          "en": "A central disable does not prove every app session has ended.",
+          "th": "ระงับบัญชีกลางแล้ว ไม่ได้ยืนยันว่าทุก Session ในแอปสิ้นสุดลง"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-02-07-retire-a-workload-identity",
+        "title": {
+          "en": "A retired workload should not leave active, unjustified access.",
+          "th": "เลิกใช้ระบบงานแล้ว ไม่ควรทิ้งสิทธิ์ที่หมดความจำเป็นไว้"
+        },
+        "rendererId": "text"
+      },
+      {
+        "id": "slide-d3-02-08-complete-offboarding-decision",
+        "title": {
+          "en": "Finish the withdrawal, then verify the result.",
+          "th": "ถอนสิทธิ์ให้ครบ แล้วตรวจผล"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d3-03-iam-frameworks-tools.json",
+    "sha256": "e6c69280f64cfe227319c7c2d77b6dc38ddef021e1d8851cb142232fa167d244",
+    "lessonId": "lesson-d3-03-iam-frameworks-tools",
+    "slides": [
+      {
+        "id": "slide-d3-03-01-guidance-is-not-software",
+        "title": {
+          "en": "Guidance shapes the design; tools carry it out.",
+          "th": "แนวทางช่วยออกแบบ เครื่องมือทำตามที่กำหนด"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-03-02-directory-records",
+        "title": {
+          "en": "A directory supplies records, not every access decision.",
+          "th": "Directory ให้ข้อมูล ไม่ได้ตัดสินสิทธิ์ทุกอย่างแทนแอป"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-03-03-idp-to-application",
+        "title": {
+          "en": "An IdP supplies evidence; the application checks access.",
+          "th": "IdP ส่งหลักฐาน แอปตรวจสิทธิ์ของคำขอ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-03-04-governance-and-enforcement",
+        "title": {
+          "en": "Governance decides the grant; enforcement applies the rule.",
+          "th": "การกำกับตัดสินสิทธิ์ การบังคับใช้ตรวจคำขอ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-03-05-sso-with-access-boundaries",
+        "title": {
+          "en": "One sign-in can support apps with different permissions.",
+          "th": "ลงชื่อเข้าใช้ครั้งเดียว แต่สิทธิ์แต่ละแอปต่างกันได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-03-06-tool-responsibility-decision",
+        "title": {
+          "en": "Choose the function that supplies the evidence you need.",
+          "th": "เลือกหน้าที่ที่ให้หลักฐานตรงกับสิ่งที่ต้องใช้"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d3-04-least-privilege-sod.json",
+    "sha256": "ed71fcd6e238590cd571faaed5a9cb487a4b26d52c94147de29e122d36c3b38d",
+    "lessonId": "lesson-d3-04-least-privilege-sod",
+    "slides": [
+      {
+        "id": "slide-d3-04-01-rights-for-the-task",
+        "title": {
+          "en": "Enough access for the task, without unnecessary power.",
+          "th": "ให้สิทธิ์พอทำงาน โดยไม่เพิ่มอำนาจที่ไม่จำเป็น"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-04-02-limit-privileged-work",
+        "title": {
+          "en": "Privileged rights belong to the authorized maintenance task.",
+          "th": "สิทธิ์ระดับสูงต้องตรงกับงานดูแลที่ได้รับอนุญาต"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-04-03-permission-and-information-need",
+        "title": {
+          "en": "Check both the action and the information needed.",
+          "th": "ตรวจทั้งการกระทำและข้อมูลที่ต้องใช้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-04-04-stop-self-approval",
+        "title": {
+          "en": "The requester must not approve their own transaction.",
+          "th": "ผู้สร้างรายการต้องอนุมัติรายการตนเองไม่ได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-04-05-roles-need-independent-actors",
+        "title": {
+          "en": "Different account names do not create independent authority.",
+          "th": "ชื่อบัญชีต่างกัน ไม่ได้ทำให้อำนาจเป็นอิสระ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-04-06-bot-authority-boundary",
+        "title": {
+          "en": "A request-generating bot must not approve its own work.",
+          "th": "Bot ที่สร้างคำขอต้องอนุมัติงานตนเองไม่ได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-04-07-scope-and-conflict-decision",
+        "title": {
+          "en": "Choose rights that support the work and independent approval.",
+          "th": "เลือกสิทธิ์ให้งานทำได้และอนุมัติอย่างเป็นอิสระ"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d3-05-access-control-models.json",
+    "sha256": "72d6844e83dc5f96911c0ce84d50d0ccb17fbc1260d5ad62704b96f28c59ffd4",
+    "lessonId": "lesson-d3-05-access-control-models",
+    "slides": [
+      {
+        "id": "slide-d3-05-01-request-policy-enforcement",
+        "title": {
+          "en": "A model explains the rule; enforcement applies it.",
+          "th": "โมเดลอธิบายกฎ การบังคับใช้นำกฎไปตรวจคำขอ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-05-02-dac-authorized-owner",
+        "title": {
+          "en": "DAC delegates access-setting discretion to an authorized owner.",
+          "th": "DAC ให้อำนาจเจ้าของที่ได้รับอนุญาตกำหนดสิทธิ์"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-05-03-mac-central-policy",
+        "title": {
+          "en": "MAC applies mandatory policy that ordinary owners cannot override.",
+          "th": "MAC บังคับนโยบายที่เจ้าของทั่วไปเปลี่ยนข้ามไม่ได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-05-04-rbac-role-permission-reuse",
+        "title": {
+          "en": "RBAC reuses role-permission assignments.",
+          "th": "RBAC ใช้ชุดสิทธิ์ของ Role ร่วมกัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-05-05-abac-evaluate-the-request",
+        "title": {
+          "en": "ABAC evaluates the attributes of this request against policy.",
+          "th": "ABAC เทียบ Attributes ของคำขอนี้กับนโยบาย"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-05-06-effective-role-combinations",
+        "title": {
+          "en": "A shared role does not prove identical total rights.",
+          "th": "มี Role ร่วมกัน ไม่ได้พิสูจน์ว่าสิทธิ์รวมเหมือนกัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-05-07-choose-by-policy-requirement",
+        "title": {
+          "en": "Choose by policy requirements, not a security ranking.",
+          "th": "เลือกตามข้อกำหนดนโยบาย ไม่ใช่อันดับความปลอดภัย"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-05-08-mandatory-policy-decision",
+        "title": {
+          "en": "Which model matches a mandatory owner-override boundary?",
+          "th": "โมเดลใดตรงกับข้อบังคับที่เจ้าของข้ามไม่ได้?"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d3-06-mfa-authentication-signals.json",
+    "sha256": "9528087d3b3739ea963d5957c7be50a40776c91a45c395dded181057549e6a5a",
+    "lessonId": "lesson-d3-06-mfa-authentication-signals",
+    "slides": [
+      {
+        "id": "slide-d3-06-01-authenticated-but-not-authorized",
+        "title": {
+          "en": "Successful MFA does not expand the permission boundary.",
+          "th": "ผ่าน MFA ไม่ได้ทำให้ขอบเขตสิทธิ์เพิ่มขึ้น"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-06-02-factor-types-not-screens",
+        "title": {
+          "en": "Count factor types, not screens or devices.",
+          "th": "นับประเภทปัจจัย ไม่ใช่จำนวนหน้าจอหรืออุปกรณ์"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-06-03-risk-context-not-a-factor",
+        "title": {
+          "en": "A risk signal can trigger checks without becoming a factor.",
+          "th": "สัญญาณเสี่ยงนำไปตรวจเพิ่มได้ โดยไม่กลายเป็นปัจจัย"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-06-04-implausible-login-evidence",
+        "title": {
+          "en": "Two distant login observations are a signal, not a verdict.",
+          "th": "ข้อมูล Login ห่างไกลสองจุดเป็นสัญญาณ ไม่ใช่คำตัดสิน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-06-05-proportionate-authorized-response",
+        "title": {
+          "en": "Respond within policy, evidence and your authority.",
+          "th": "ตอบสนองตามนโยบาย หลักฐาน และอำนาจของคุณ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d3-06-06-anomalous-login-decision",
+        "title": {
+          "en": "Use the anomaly to support an authorized decision.",
+          "th": "ใช้ความผิดปกติประกอบการตัดสินตามอำนาจ"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d4-01-network-request.json",
+    "sha256": "4c2ebf119d416b31e9d373d18f5d152b782b4558b8c286442055dc320ae6f9e8",
+    "lessonId": "lesson-d4-01-network-request",
+    "slides": [
+      {
+        "id": "slide-d4-01-01-request-path",
+        "title": {
+          "en": "A request crosses several kinds of boundary.",
+          "th": "คำขอหนึ่งครั้งผ่านขอบเขตหลายแบบ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-01-02-osi-upper",
+        "title": {
+          "en": "OSI: describe what happens above transport.",
+          "th": "OSI: อธิบายงานที่อยู่เหนือ Transport"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-01-03-osi-lower",
+        "title": {
+          "en": "OSI: transport, route, local link, signal.",
+          "th": "OSI: Transport เส้นทาง ลิงก์ และสัญญาณ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-01-04-tcpip-map",
+        "title": {
+          "en": "Two models describe the same communication differently.",
+          "th": "สองโมเดลอธิบายการสื่อสารเดียวกันต่างระดับ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-01-05-encapsulation",
+        "title": {
+          "en": "Encapsulation wraps data for delivery.",
+          "th": "Encapsulation ห่อข้อมูลเพื่อส่งต่อ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-01-06-tcp-udp",
+        "title": {
+          "en": "Reliable transport is different from secure content.",
+          "th": "Transport ที่น่าเชื่อถือไม่เท่ากับเนื้อหาที่ปลอดภัย"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-01-07-delivery-decision",
+        "title": {
+          "en": "A completed TCP transfer: what does it prove?",
+          "th": "ส่งข้อมูลผ่าน TCP แล้ว พิสูจน์อะไรได้?"
+        },
+        "rendererId": "diagram"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d4-02-addresses-vpns.json",
+    "sha256": "ecdec4f1182d9ad1a3104851cf46959937e421fcb4983d0ff5f44d5081e63fbb",
+    "lessonId": "lesson-d4-02-addresses-vpns",
+    "slides": [
+      {
+        "id": "slide-d4-02-01-address-notation",
+        "title": {
+          "en": "IPv4 and IPv6: recognize the address format.",
+          "th": "IPv4 และ IPv6: อ่านรูปแบบ Address ให้เป็น"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-02-02-private-public",
+        "title": {
+          "en": "A route tells you where traffic can go.",
+          "th": "Route บอกว่าข้อมูลเดินทางไปทางใดได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-02-03-nat-boundary",
+        "title": {
+          "en": "NAT changes addressing, not the meaning of the content.",
+          "th": "NAT เปลี่ยน Address ไม่ได้ป้องกันเนื้อหาให้เอง"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-02-04-dual-stack",
+        "title": {
+          "en": "Two address families need two verified policy paths.",
+          "th": "สอง Address Families ต้องตรวจ Policy ให้ครบทั้งคู่"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-02-05-vpn-scope",
+        "title": {
+          "en": "A protected tunnel has endpoints and a defined scope.",
+          "th": "Tunnel ที่ป้องกันข้อมูลมีปลายทางและขอบเขต"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-02-06-tunnel-decision",
+        "title": {
+          "en": "The VPN is connected. Can the document be uploaded?",
+          "th": "เชื่อม VPN แล้ว อัปโหลดเอกสารได้หรือยัง?"
+        },
+        "rendererId": "diagram"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d4-03-traffic-rules-signals.json",
+    "sha256": "ecf04f828e5fd1eb13ad077f777a9c010222e9a0456ebb588cbaacc083246c11",
+    "lessonId": "lesson-d4-03-traffic-rules-signals",
+    "slides": [
+      {
+        "id": "slide-d4-03-01-transport-endpoints",
+        "title": {
+          "en": "Ports identify endpoints within a transport protocol.",
+          "th": "Ports ระบุ Endpoints ภายใน Transport Protocol"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-03-02-service-clues",
+        "title": {
+          "en": "A familiar port is a clue, not a verdict.",
+          "th": "Port ที่คุ้นเคยเป็นเบาะแส ไม่ใช่คำตัดสิน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-03-03-firewall-policy",
+        "title": {
+          "en": "Write a rule for a necessary flow, not a trusted label.",
+          "th": "เขียน Rule ให้ Flow ที่จำเป็น ไม่ใช่ป้ายว่า Trusted"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-03-04-detection-prevention",
+        "title": {
+          "en": "Detecting an event and blocking it are different jobs.",
+          "th": "ตรวจพบเหตุการณ์กับบล็อกเหตุการณ์เป็นคนละหน้าที่"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-03-05-ai-monitoring",
+        "title": {
+          "en": "AI can prioritize a signal; evidence explains it.",
+          "th": "AI ช่วยจัดลำดับสัญญาณ ส่วนหลักฐานช่วยอธิบาย"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-03-06-alert-decision",
+        "title": {
+          "en": "The dashboard says “unusual.” What should the report say?",
+          "th": "Dashboard บอกว่าผิดปกติ ควรรายงานอย่างไร?"
+        },
+        "rendererId": "diagram"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d4-04-wireless-connected-systems.json",
+    "sha256": "212fe59a8c52a7892cb0a0929182e6f9aed46fbe0d21cbebadd2f369595641fa",
+    "lessonId": "lesson-d4-04-wireless-connected-systems",
+    "slides": [
+      {
+        "id": "slide-d4-04-01-wifi-controls",
+        "title": {
+          "en": "Protect the wireless link and the systems behind it.",
+          "th": "ป้องกันทั้งลิงก์ Wireless และระบบที่อยู่ด้านหลัง"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-04-02-bluetooth-pairing",
+        "title": {
+          "en": "Bluetooth pairing is an authorization decision too.",
+          "th": "การ Pair Bluetooth ก็เป็นการตัดสินใจอนุญาต"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-04-03-device-overlap",
+        "title": {
+          "en": "Embedded, IoT and ICS overlap—but describe different things.",
+          "th": "Embedded, IoT และ ICS ซ้อนกันได้ แต่ไม่ได้หมายถึงสิ่งเดียวกัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-04-04-ot-change-safety",
+        "title": {
+          "en": "A security change must not create an unsafe process.",
+          "th": "การเปลี่ยน Security ต้องไม่ทำให้ Process ไม่ปลอดภัย"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-04-05-iot-lifecycle",
+        "title": {
+          "en": "A connected device needs an owner and a lifecycle.",
+          "th": "อุปกรณ์ที่เชื่อมต่อควรมีเจ้าของและ Lifecycle"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-04-06-wireless-signals",
+        "title": {
+          "en": "Interpret wireless and device anomalies in context.",
+          "th": "อ่าน Anomaly ของ Wireless และอุปกรณ์ในบริบท"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-04-07-device-decision",
+        "title": {
+          "en": "A vulnerable controller cannot safely reboot now.",
+          "th": "Controller มีช่องโหว่ แต่ยัง Reboot ไม่ได้อย่างปลอดภัย"
+        },
+        "rendererId": "diagram"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d4-05-segmentation-paths.json",
+    "sha256": "7b56388a068bfc86e6110831e143633a9d2a3ef7b19b6ed3eda7a93c10c49149",
+    "lessonId": "lesson-d4-05-segmentation-paths",
+    "slides": [
+      {
+        "id": "slide-d4-05-01-blast-radius",
+        "title": {
+          "en": "A boundary is useful only when unwanted paths are blocked.",
+          "th": "ขอบเขตมีประโยชน์เมื่อบังคับปิดเส้นทางที่ไม่ต้องการ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-05-02-firewall-zones",
+        "title": {
+          "en": "Zones organize policy, not unconditional trust.",
+          "th": "Zones ช่วยจัด Policy ไม่ได้ให้ Trust โดยไม่มีเงื่อนไข"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-05-03-dmz-path",
+        "title": {
+          "en": "Publish the web service, not the internal database.",
+          "th": "เปิด Web Service ไม่ใช่เปิดฐานข้อมูลภายใน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-05-04-vlan-routing",
+        "title": {
+          "en": "A VLAN separates broadcasts; routing policy controls the crossing.",
+          "th": "VLAN แยก Broadcast ส่วน Routing Policy คุมการข้าม"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-05-05-workload-policy",
+        "title": {
+          "en": "Micro-segmentation makes permitted workload paths precise.",
+          "th": "Micro-Segmentation ระบุเส้นทาง Workload ให้ละเอียด"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-05-06-ai-environment-boundary",
+        "title": {
+          "en": "Separate experimentation from sensitive production data.",
+          "th": "แยกการทดลองออกจากข้อมูล Production ที่อ่อนไหว"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-05-07-path-decision",
+        "title": {
+          "en": "The camera has a VLAN. Is the database protected?",
+          "th": "Camera มี VLAN แล้ว ฐานข้อมูลปลอดภัยหรือยัง?"
+        },
+        "rendererId": "diagram"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d4-06-layered-zero-trust.json",
+    "sha256": "aca6e9b73bcc876d644c13fa6e2962d420ac029d3c939f807ba2d497f55e4d86",
+    "lessonId": "lesson-d4-06-layered-zero-trust",
+    "slides": [
+      {
+        "id": "slide-d4-06-01-independent-defenses",
+        "title": {
+          "en": "Use layers that answer different security questions.",
+          "th": "ใช้ชั้นป้องกันที่ตอบโจทย์ Security ต่างกัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-06-02-residual-dependencies",
+        "title": {
+          "en": "Several controls can still share one failure.",
+          "th": "หลาย Controls ยังอาจล้มเหลวจากจุดร่วมเดียวกัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-06-03-resource-decision",
+        "title": {
+          "en": "Decide access to the resource, not trust in the network.",
+          "th": "ตัดสิน Access ต่อ Resource ไม่ใช่ Trust ใน Network"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-06-04-complementary-controls",
+        "title": {
+          "en": "Containment, verification and layers can work together.",
+          "th": "Containment การตรวจสิทธิ์ และหลายชั้น ทำงานร่วมกันได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-06-05-access-decision",
+        "title": {
+          "en": "A valid employee account, an unhealthy device.",
+          "th": "Account พนักงานถูกต้อง แต่อุปกรณ์ไม่ผ่านเกณฑ์"
+        },
+        "rendererId": "diagram"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d4-07-cloud-characteristics.json",
+    "sha256": "e6561b05724229dc47fb0bce1460d3975152565a4c97b2541bdcba226743dd24",
+    "lessonId": "lesson-d4-07-cloud-characteristics",
+    "slides": [
+      {
+        "id": "slide-d4-07-01-cloud-model",
+        "title": {
+          "en": "Cloud combines delivery properties, not just a remote server.",
+          "th": "Cloud รวมคุณสมบัติการให้บริการ ไม่ใช่แค่ Server ระยะไกล"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-07-02-self-service",
+        "title": {
+          "en": "Self-service removes a manual provisioning step, not governance.",
+          "th": "Self-Service ลดขั้นตอน Provision ด้วยมือ ไม่ได้ยกเลิก Governance"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-07-03-elasticity",
+        "title": {
+          "en": "Elasticity follows demand in both directions.",
+          "th": "Elasticity ปรับตาม Demand ได้ทั้งเพิ่มและลด"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-07-04-measured-service",
+        "title": {
+          "en": "Measured service makes usage visible; a tariff sets the bill.",
+          "th": "Measured Service ทำให้เห็น Usage ส่วน Tariff กำหนดค่าใช้จ่าย"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-07-05-pooling-network-access",
+        "title": {
+          "en": "Shared resources and broad access still need isolation.",
+          "th": "Resources ร่วมและ Broad Access ยังต้องมี Isolation"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-07-06-capacity-decision",
+        "title": {
+          "en": "A campaign ends. Which behavior demonstrates elasticity?",
+          "th": "Campaign จบแล้ว พฤติกรรมใดแสดง Elasticity?"
+        },
+        "rendererId": "diagram"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d4-08-services-responsibility.json",
+    "sha256": "06ec6186d1d57eff7363d870469f46802f3b6f138616ba5222851eb98ceb0d78",
+    "lessonId": "lesson-d4-08-services-responsibility",
+    "slides": [
+      {
+        "id": "slide-d4-08-01-iaas-stack",
+        "title": {
+          "en": "IaaS: rent infrastructure, administer the guest system.",
+          "th": "IaaS: ใช้ Infrastructure เป็นบริการ แต่ยังดูแล Guest System"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-08-02-paas-stack",
+        "title": {
+          "en": "PaaS: deploy the application onto a managed platform.",
+          "th": "PaaS: Deploy Application บน Platform ที่ดูแลให้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-08-03-saas-boundary",
+        "title": {
+          "en": "SaaS manages the application, not every customer decision.",
+          "th": "SaaS ดูแล Application ไม่ใช่ตัดสินใจแทน Customer ทุกเรื่อง"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-08-04-faas-code",
+        "title": {
+          "en": "Serverless changes server management, not code accountability.",
+          "th": "Serverless เปลี่ยนงานดูแล Server ไม่ได้ลบความรับผิดชอบ Code"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-08-05-named-responsibilities",
+        "title": {
+          "en": "Assign the named task, not a vague “cloud security” label.",
+          "th": "มอบหมายงานที่ระบุ ไม่ใช้ป้าย Cloud Security กว้าง ๆ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-08-06-ai-hosting",
+        "title": {
+          "en": "Hosting an AI model does not transfer every data decision.",
+          "th": "การฝาก AI Model ไม่ได้โอนการตัดสินใจข้อมูลทุกเรื่อง"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-08-07-duty-decision",
+        "title": {
+          "en": "A SaaS file is shared too broadly. Who acts on that setting?",
+          "th": "ไฟล์ SaaS ถูกแชร์กว้างเกินไป ใครต้องแก้ Setting นี้?"
+        },
+        "rendererId": "diagram"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d4-09-cloud-deployments.json",
+    "sha256": "6eefc058ce22535d7bc75b7907617f6d163246cca5ca6e80236f14ca4b755ca5",
+    "lessonId": "lesson-d4-09-cloud-deployments",
+    "slides": [
+      {
+        "id": "slide-d4-09-01-public-access-boundary",
+        "title": {
+          "en": "Public cloud does not mean public permission to your data.",
+          "th": "Public Cloud ไม่ได้ให้สิทธิ์สาธารณะต่อข้อมูลของคุณ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-09-02-private-ownership",
+        "title": {
+          "en": "Private means exclusive organizational use, not automatic security.",
+          "th": "Private หมายถึงใช้เฉพาะองค์กร ไม่ได้ปลอดภัยอัตโนมัติ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-09-03-community-governance",
+        "title": {
+          "en": "Community cloud starts with shared requirements.",
+          "th": "Community Cloud เริ่มจาก Requirements ร่วม"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-09-04-hybrid-composition",
+        "title": {
+          "en": "Hybrid integrates distinct cloud environments.",
+          "th": "Hybrid เชื่อม Cloud Environments ที่ยังแยกกัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-09-05-multicloud-dependencies",
+        "title": {
+          "en": "Multiple providers create choices—and more dependencies to verify.",
+          "th": "หลาย Providers เพิ่มตัวเลือกและ Dependencies ที่ต้องตรวจ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d4-09-06-deployment-decision",
+        "title": {
+          "en": "AI at one provider, analytics at another: what is established?",
+          "th": "AI Provider หนึ่ง Analytics อีกแห่ง พิสูจน์อะไรแล้ว?"
+        },
+        "rendererId": "diagram"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d5-01-data-handling.json",
+    "sha256": "bc9a27c40f092b08b8df11e6e7aa3539859419fd6f7165250c5c26fed35e0aef",
+    "lessonId": "lesson-d5-01-data-handling",
+    "slides": [
+      {
+        "id": "slide-d5-01-01-classification-labels",
+        "title": {
+          "en": "Classify first; make handling visible.",
+          "th": "จัดชั้นข้อมูลก่อน แล้วสื่อสารวิธีจัดการให้ชัด"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-01-02-data-states",
+        "title": {
+          "en": "Follow the data through three states.",
+          "th": "ติดตามข้อมูลในสามสถานะ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-01-03-masking",
+        "title": {
+          "en": "Mask what the recipient does not need.",
+          "th": "ปิดบังส่วนที่ผู้รับไม่จำเป็นต้องเห็น"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-01-04-sanitization",
+        "title": {
+          "en": "Match sanitization to media and risk.",
+          "th": "เลือกวิธีกำจัดข้อมูลให้เหมาะกับสื่อและความเสี่ยง"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-01-05-decision",
+        "title": {
+          "en": "An analyst wants help from public AI.",
+          "th": "นักวิเคราะห์ต้องการให้ AI สาธารณะช่วยงาน"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d5-02-cryptography.json",
+    "sha256": "d6e9d2aeac4df35766a1b5bd3da5272bae55a34498dfd519e1c47440043ccbc2",
+    "lessonId": "lesson-d5-02-cryptography",
+    "slides": [
+      {
+        "id": "slide-d5-02-01-encryption-boundary",
+        "title": {
+          "en": "Encryption hides readable content.",
+          "th": "การเข้ารหัสซ่อนเนื้อหาที่อ่านได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-02-02-symmetric",
+        "title": {
+          "en": "One shared secret protects bulk data.",
+          "th": "กุญแจลับร่วมป้องกันข้อมูลจำนวนมาก"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-02-03-asymmetric-roles",
+        "title": {
+          "en": "Public and private keys have distinct roles.",
+          "th": "กุญแจสาธารณะและส่วนตัวมีหน้าที่ต่างกัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-02-04-hybrid",
+        "title": {
+          "en": "Establish keys, then protect the session.",
+          "th": "ตั้งกุญแจก่อน แล้วป้องกันข้อมูลใน Session"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-02-05-trusted-hashes",
+        "title": {
+          "en": "A digest is useful only with a trustworthy comparison.",
+          "th": "Digest ต้องเทียบกับค่าอ้างอิงที่เชื่อถือได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-02-06-signatures-custody",
+        "title": {
+          "en": "A signature depends on key custody and identity.",
+          "th": "ลายเซ็นขึ้นกับการดูแลกุญแจและตัวตน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-02-07-quantum-resistant",
+        "title": {
+          "en": "Plan the transition to quantum-resistant mechanisms.",
+          "th": "วางแผนเปลี่ยนไปใช้กลไกต้านทานควอนตัม"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-02-08-decision",
+        "title": {
+          "en": "Which evidence verifies a software publisher?",
+          "th": "หลักฐานใดช่วยตรวจผู้เผยแพร่ซอฟต์แวร์"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d5-03-monitoring.json",
+    "sha256": "91f7eff2cf6077f240b5feb17eaac5eed0ae0f0c7b941432f2a6f6b9dc73c8f6",
+    "lessonId": "lesson-d5-03-monitoring",
+    "slides": [
+      {
+        "id": "slide-d5-03-01-record-observe",
+        "title": {
+          "en": "Recording is not the same as detecting.",
+          "th": "บันทึกข้อมูลไม่เท่ากับตรวจพบภัย"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-03-02-trustworthy-telemetry",
+        "title": {
+          "en": "Correlate reliable identities and time.",
+          "th": "เชื่อมโยงตัวตนและเวลาที่น่าเชื่อถือ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-03-03-collection-retention",
+        "title": {
+          "en": "Keep evidence usable for its required lifetime.",
+          "th": "เก็บหลักฐานให้ใช้งานได้ตลอดเวลาที่จำเป็น"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-03-04-siem-chain",
+        "title": {
+          "en": "SIEM connects observations into a hypothesis.",
+          "th": "SIEM เชื่อมข้อมูลเป็นข้อสันนิษฐาน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-03-05-coverage-tools",
+        "title": {
+          "en": "Choose visibility for the question.",
+          "th": "เลือกการมองเห็นให้ตรงคำถาม"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-03-06-decision",
+        "title": {
+          "en": "AI grouped a critical alert with routine blocks.",
+          "th": "AI จัด Alert สำคัญรวมกับการบล็อกทั่วไป"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d5-04-event-triage.json",
+    "sha256": "6722db369bfdfc05ffc4a3afa33f2e5c4d3ca79eef929c5d3f4988b15b5b1592",
+    "lessonId": "lesson-d5-04-event-triage",
+    "slides": [
+      {
+        "id": "slide-d5-04-01-event-alert-incident",
+        "title": {
+          "en": "An alert starts a question, not a verdict.",
+          "th": "Alert เริ่มคำถาม ไม่ใช่คำตัดสิน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-04-02-use-cases",
+        "title": {
+          "en": "Define what the detection is trying to find.",
+          "th": "กำหนดว่า Detection ต้องการหาอะไร"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-04-03-detection-errors",
+        "title": {
+          "en": "Separate reality from the detector’s output.",
+          "th": "แยกสิ่งที่เกิดจริงจากผลของเครื่องตรวจ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-04-04-priority-context",
+        "title": {
+          "en": "Prioritize business risk, not just the alert label.",
+          "th": "จัดลำดับจากความเสี่ยงองค์กร ไม่ใช่ชื่อ Alert"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-04-05-decision",
+        "title": {
+          "en": "Several records suggest account compromise.",
+          "th": "หลายบันทึกชี้ว่าบัญชีอาจถูกยึด"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d5-05-threat-intelligence.json",
+    "sha256": "33363e168f074f16918413c67ed57f0138ce9502971be08fe98b9e881e83eef9",
+    "lessonId": "lesson-d5-05-threat-intelligence",
+    "slides": [
+      {
+        "id": "slide-d5-05-01-actor-motivations",
+        "title": {
+          "en": "Motivation helps frame a threat hypothesis.",
+          "th": "แรงจูงใจช่วยตั้งสมมติฐานภัยคุกคาม"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-05-02-insider-uncertainty",
+        "title": {
+          "en": "Separate harmful action from proven intent.",
+          "th": "แยกการกระทำเสียหายจากเจตนาที่พิสูจน์แล้ว"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-05-03-intelligence-context",
+        "title": {
+          "en": "Turn indicators into a decision with context.",
+          "th": "เติมบริบทให้ Indicator ใช้ตัดสินใจได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-05-04-attack-framework",
+        "title": {
+          "en": "ATT&CK links goals to observed methods.",
+          "th": "ATT&CK เชื่อมเป้าหมายกับวิธีที่พบจริง"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-05-05-decision",
+        "title": {
+          "en": "A feed lists an IP used by a business service.",
+          "th": "Feed ระบุ IP ที่บริการธุรกิจใช้อยู่"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d5-06-incident-response.json",
+    "sha256": "378b35ef4fb104d221dc1909c3702b139f9dad24ebaf99fc2788138957e53cb5",
+    "lessonId": "lesson-d5-06-incident-response",
+    "slides": [
+      {
+        "id": "slide-d5-06-01-irp-authority",
+        "title": {
+          "en": "An IRP connects decisions, roles and data handling.",
+          "th": "IRP เชื่อมการตัดสินใจ หน้าที่ และการจัดการข้อมูล"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-06-02-prepare",
+        "title": {
+          "en": "Prepare before the incident.",
+          "th": "เตรียมพร้อมก่อนเกิดเหตุ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-06-03-detection-evidence",
+        "title": {
+          "en": "Scope the incident while preserving evidence.",
+          "th": "ตรวจขอบเขตพร้อมรักษาหลักฐาน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-06-04-contain-eradicate",
+        "title": {
+          "en": "Stopping spread differs from removing the cause.",
+          "th": "หยุดการแพร่ต่างจากกำจัดสาเหตุ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-06-05-recover-improve",
+        "title": {
+          "en": "Recover safely, then prove the improvement.",
+          "th": "กู้คืนปลอดภัย แล้วพิสูจน์การปรับปรุง"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-06-06-decision",
+        "title": {
+          "en": "Ransomware is spreading now.",
+          "th": "Ransomware กำลังแพร่"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d5-07-response-exercises.json",
+    "sha256": "8d65e373ee131437390d17c2111c324ce1aa1da311ff2ca532ea26e7bd4f7ec5",
+    "lessonId": "lesson-d5-07-response-exercises",
+    "slides": [
+      {
+        "id": "slide-d5-07-01-tabletop",
+        "title": {
+          "en": "A tabletop tests decisions through discussion.",
+          "th": "Tabletop ทดสอบการตัดสินใจด้วยการอภิปราย"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-07-02-technical-validation",
+        "title": {
+          "en": "A technical test needs observable results.",
+          "th": "การทดสอบเทคนิคต้องมีผลที่สังเกตได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-07-03-exercise-improvement",
+        "title": {
+          "en": "Close the gap and test again.",
+          "th": "แก้ช่องว่างแล้วทดสอบอีกครั้ง"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-07-04-decision",
+        "title": {
+          "en": "The team says backups are ready.",
+          "th": "ทีมบอกว่า Backup พร้อมแล้ว"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d5-08-asset-lifecycle.json",
+    "sha256": "40187ad75d502a5023f9828a8c4dd022d8fa389d8c43badb00885c4f4859705f",
+    "lessonId": "lesson-d5-08-asset-lifecycle",
+    "slides": [
+      {
+        "id": "slide-d5-08-01-inventory-ownership",
+        "title": {
+          "en": "You cannot protect what you cannot identify.",
+          "th": "ป้องกันสิ่งที่ระบุไม่ได้ย่อมทำได้ยาก"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-08-02-maintain-retire",
+        "title": {
+          "en": "Maintenance and retirement need different evidence.",
+          "th": "ดูแลและปลดระวางต้องใช้หลักฐานต่างกัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-08-03-eol-options",
+        "title": {
+          "en": "EOL changes the support assumptions.",
+          "th": "EOL เปลี่ยนสมมติฐานการสนับสนุน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-08-04-decision",
+        "title": {
+          "en": "An unsupported server cannot be replaced this week.",
+          "th": "Server หมดสนับสนุนยังเปลี่ยนสัปดาห์นี้ไม่ได้"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d5-09-configuration-change.json",
+    "sha256": "7e0383addefc4b9f411d7dc8803445cc3144c2b1f5d8b40e36d86c5c9d9d9dce",
+    "lessonId": "lesson-d5-09-configuration-change",
+    "slides": [
+      {
+        "id": "slide-d5-09-01-baseline-drift",
+        "title": {
+          "en": "Compare actual settings with an approved baseline.",
+          "th": "เทียบค่าจริงกับ Baseline ที่อนุมัติ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-09-02-patch-risk",
+        "title": {
+          "en": "Patch decisions need exposure and impact.",
+          "th": "การตัดสิน Patch ต้องดู Exposure และผลกระทบ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-09-03-controlled-change",
+        "title": {
+          "en": "A change needs a reason, owner and reviewable result.",
+          "th": "การเปลี่ยนต้องมีเหตุผล เจ้าของ และผลที่ตรวจได้"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-09-04-emergency-rollback",
+        "title": {
+          "en": "Urgency changes the route, not accountability.",
+          "th": "ความเร่งด่วนเปลี่ยนเส้นทาง ไม่ยกเลิกความรับผิดชอบ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-09-05-decision",
+        "title": {
+          "en": "A firewall rule differs from the baseline.",
+          "th": "Firewall Rule ต่างจาก Baseline"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d5-10-security-testing.json",
+    "sha256": "f7b465717b0cb730f7848e8bcfc69b0eae816ee14388c806dcf3620f2d494c88",
+    "lessonId": "lesson-d5-10-security-testing",
+    "slides": [
+      {
+        "id": "slide-d5-10-01-team-roles",
+        "title": {
+          "en": "Red simulates; blue defends; purple improves together.",
+          "th": "Red จำลอง Blue ป้องกัน Purple ปรับร่วมกัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-10-02-purple-feedback",
+        "title": {
+          "en": "Measure the gap, improve and repeat.",
+          "th": "วัดช่องว่าง ปรับ และทำซ้ำ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-10-03-scanning-limits",
+        "title": {
+          "en": "A scanner finding needs validation and treatment.",
+          "th": "ผล Scanner ต้องตรวจยืนยันและจัดการ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-10-04-static-dynamic",
+        "title": {
+          "en": "Static inspects code; dynamic exercises behavior.",
+          "th": "Static ตรวจโค้ด Dynamic ทดสอบพฤติกรรม"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-10-05-threat-model",
+        "title": {
+          "en": "Model the trust boundaries before relying on controls.",
+          "th": "ทำแบบจำลองขอบเขตความเชื่อถือก่อนพึ่ง Control"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-10-06-ai-defense-testing",
+        "title": {
+          "en": "Test the AI-integrated defense as a system.",
+          "th": "ทดสอบการป้องกันที่มี AI เป็นระบบรวม"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-10-07-decision",
+        "title": {
+          "en": "A logout flaw must be checked in a running app.",
+          "th": "ต้องตรวจปัญหา Logout ในแอปที่รัน"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  },
+  {
+    "path": "content/isc2-cc-2026/learning/published/lessons/lesson-d5-11-physical-human-testing.json",
+    "sha256": "f44b82c65ed9956fd1a1cb938236035a1e7066effe1de29de108335091bc78dd",
+    "lessonId": "lesson-d5-11-physical-human-testing",
+    "slides": [
+      {
+        "id": "slide-d5-11-01-authorized-boundaries",
+        "title": {
+          "en": "Test the boundary under explicit authorization.",
+          "th": "ทดสอบขอบเขตภายใต้การอนุญาตชัดเจน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-11-02-phishing-test",
+        "title": {
+          "en": "A convincing message is not verified authority.",
+          "th": "ข้อความน่าเชื่อไม่ได้ยืนยันอำนาจ"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-11-03-tailgating-impersonation",
+        "title": {
+          "en": "A claimed role and a physical entry are separate checks.",
+          "th": "บทบาทที่อ้างกับการเข้าพื้นที่ต้องตรวจแยกกัน"
+        },
+        "rendererId": "diagram"
+      },
+      {
+        "id": "slide-d5-11-04-decision",
+        "title": {
+          "en": "A visitor claims to be an urgent IT technician.",
+          "th": "ผู้มาเยือนอ้างเป็นช่าง IT งานด่วน"
+        },
+        "rendererId": "interactive"
+      }
+    ],
+    "inspection": "Prior domain review semantic comparisons reused after newline-equivalent content verification; current catalog inventory. Renderer source checked for reporting/backup deduplication; no fresh browser pass."
+  }
+]

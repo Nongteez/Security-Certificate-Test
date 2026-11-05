@@ -1,0 +1,198 @@
+{
+  "batch": {
+    "id": "D2-A",
+    "title": "Recovery and measurement consistency",
+    "domain": 2,
+    "findingIds": [
+      "ACC-D2-01",
+      "ACC-D2-02"
+    ],
+    "estimatedEffort": "1.5–2.5 hours",
+    "gate": "Requires explicit human authorization for named IDs; APPROVE WITH REVISION text must be incorporated, not bypassed.",
+    "acceptanceCriteria": [
+      "Source-aligned minimal change; retain useful existing examples and anchors.",
+      "EN/TH semantic parity; check repeated summaries and affected diagram labels.",
+      "For media: static text equivalent, non-color labels, readable 360–390px layout and no clipping; test keyboard/reduced-motion only if an interaction is separately approved.",
+      "Run targeted content integrity/render checks in future implementation; no production checks are represented as executed in this review."
+    ]
+  },
+  "findings": [
+    {
+      "id": "ACC-D2-01",
+      "domain": 2,
+      "officialObjective": "2.2",
+      "category": "Academic correction",
+      "auditClassification": "CORRECT ACADEMIC ERROR",
+      "decision": "APPROVE WITH REVISION",
+      "currentLearnerExperience": "RTO/RPO prose and the 17:00 example correctly separate targets; line 259 nevertheless equates exceeding the planning bound with inability to survive.",
+      "genuineGap": "One categorical conclusion contradicts the earlier business-impact definition. The backup label may be a hypothetical observation rather than an error.",
+      "smallestUsefulChange": "Correct line 259; label the equation a simplified planning model. Distinguish an assumed backup from a target boundary without claiming the existing backup timestamp is intrinsically invalid.",
+      "sample": {
+        "en": "Exceeding MTD means the outage exceeds the business tolerance defined for this case; it does not always mean the organization cannot survive.",
+        "th": "การหยุดชะงักเกิน MTD หมายถึงเกินขอบเขตที่ธุรกิจยอมรับในกรณีนี้ ไม่ได้หมายความว่าองค์กรจะอยู่รอดไม่ได้เสมอไป"
+      },
+      "reason": "NIST 800-34 section 3.2.1 supports impact/tolerance terminology. Preserve the correct 16:30/17:00/18:00 example and its units.",
+      "academicConstraints": "Do not present RTO+WRT as a universal sequential law; use explicitly defined intervals.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-2.md",
+          "anchor": "topic-2-2-rto-rpo",
+          "startLine": 227,
+          "endLine": 272
+        }
+      ],
+      "supportingSources": [
+        "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf — 3.2.1, business impact/tolerances",
+        "Domain 2 screenshot 183410 and DOMAIN 2.txt redundancy segment; compare Reading lines 197–201",
+        "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf — Section 3.2.1, printed pp.16–17, BIA recovery priorities and MTD/RTO/RPO"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P1",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Correct line 259; label the equation a simplified planning model. Distinguish an assumed backup from a target boundary without claiming the existing backup timestamp is intrinsically invalid.",
+        "Do not present RTO+WRT as a universal sequential law; use explicitly defined intervals."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ACC-D2-01",
+        "phase1Record": "ACC-D2-01"
+      },
+      "reportedAcademicEvidence": {
+        "id": "ACC-D2-01",
+        "domain": 2,
+        "anchor": "topic-2-2-rto-rpo",
+        "readingPath": "content/isc2-cc-2026/reading/domain-2.md",
+        "startLine": 256,
+        "endLine": 259,
+        "currentClaim": "- **Maximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้):** คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\n- **สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:**\n  **MTD &ge; RTO + WRT**\n  *(หาก RTO + WRT &gt; MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)*",
+        "localSource": "Domain 2 screenshot 183410 and DOMAIN 2.txt redundancy segment; compare Reading lines 197–201",
+        "authorityUrl": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf",
+        "authorityLocation": "Section 3.2.1, printed pp.16–17, BIA recovery priorities and MTD/RTO/RPO",
+        "conclusion": "Keep the simplified planning relationship with defined intervals; line 256 already says may, but line 259 claims certain inability to survive. Replace that certainty with unacceptable impact. Treat target and observed backup separately only if the timeline intends a target; an explicitly assumed backup is a valid illustrative observation.",
+        "smallestCorrection": "Keep the simplified planning relationship with defined intervals; line 256 already says may, but line 259 claims certain inability to survive. Replace that certainty with unacceptable impact. Treat target and observed backup separately only if the timeline intends a target; an explicitly assumed backup is a valid illustrative observation.",
+        "priority": "P1",
+        "confidence": "High",
+        "verificationStatus": "CONFIRMED",
+        "primaryClassification": "CORRECT ACADEMIC ERROR"
+      },
+      "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+      "exactCurrentClaim": {
+        "path": "content/isc2-cc-2026/reading/domain-2.md",
+        "startLine": 256,
+        "endLine": 259,
+        "text": "- **Maximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้):** คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\n- **สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:**\n  **MTD &ge; RTO + WRT**\n  *(หาก RTO + WRT &gt; MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)*"
+      },
+      "authorityVerification": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf",
+        "location": "Section 3.2.1, printed pp.16–17, BIA recovery priorities and MTD/RTO/RPO",
+        "reviewConclusion": "NIST 800-34 section 3.2.1 supports impact/tolerance terminology. Preserve the correct 16:30/17:00/18:00 example and its units."
+      },
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "batch": "D2-A"
+    },
+    {
+      "id": "ACC-D2-02",
+      "domain": 2,
+      "officialObjective": "2.4",
+      "category": "Academic correction",
+      "auditClassification": "CORRECT ACADEMIC ERROR",
+      "decision": "APPROVE",
+      "currentLearnerExperience": "The notes explicitly allow count, rate, ratio and mean; the embedded graphic calls METRIC a Quantifiable Raw Value.",
+      "genuineGap": "This is a prose/graphic inconsistency, not a missing metrics chapter.",
+      "smallestUsefulChange": "Replace the raw-only graphic label with defined measurable value; qualify dashboard update time in the existing diagram and cues.",
+      "sample": {
+        "en": "A metric can be a count, percentage, ratio or average with a defined scope and period.",
+        "th": "Metric อาจเป็นจำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย โดยต้องกำหนดขอบเขตและช่วงเวลาที่วัด"
+      },
+      "reason": "The correction is ready and supported both by the notes and NIST measurement examples.",
+      "academicConstraints": "Do not create a second measurement hierarchy or assume every dashboard is real time.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-2.md",
+          "anchor": "topic-2-4-memory-aid",
+          "startLine": 555,
+          "endLine": 578
+        },
+        {
+          "path": "js/core/diagram-generator.js",
+          "anchor": "security-measurement-hierarchy / Quantifiable Raw Value",
+          "startLine": 1775,
+          "endLine": 1775,
+          "futureScope": "label-only after explicit approval; no renderer restructuring"
+        },
+        {
+          "path": "js/core/diagram-generator.js",
+          "anchor": "effectivenessHierarchy / dashboard refresh claim",
+          "startLine": 1716,
+          "endLine": 1716,
+          "futureScope": "Qualify real-time label only; preserve chart structure"
+        }
+      ],
+      "supportingSources": [
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf — 3.3, quantitative measures",
+        "js/core/diagram-generator.js:1775 — exact contradictory label",
+        "Domain 2 metric screenshot 223240 includes percentages and means; diagram-generator.js:1775 effectivenessHierarchy raw-value label",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf — Sections 3.3.1–3.3.4: implementation, effectiveness, efficiency and impact measures"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P1",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Replace the raw-only graphic label with defined measurable value; qualify dashboard update time in the existing diagram and cues.",
+        "Do not create a second measurement hierarchy or assume every dashboard is real time."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ACC-D2-02",
+        "phase1Record": "ACC-D2-02"
+      },
+      "reportedAcademicEvidence": {
+        "id": "ACC-D2-02",
+        "domain": 2,
+        "anchor": "topic-2-4-memory-aid",
+        "readingPath": "content/isc2-cc-2026/reading/domain-2.md",
+        "startLine": 555,
+        "endLine": 565,
+        "currentClaim": "<h3 id=\"topic-2-4-memory-aid\">2.4.8 The 6-Part Measurement Memory Aid</h3>\n\nMetric อาจเป็นจำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย KPI และ KRI เป็น Metric ที่เลือกใช้ตามวัตถุประสงค์: KPI ติดตามผลงานเทียบเป้าหมาย ส่วน KRI เฝ้าระวังแนวโน้มความเสี่ยง Dashboard, scorecard และ report เป็นรูปแบบนำเสนอที่อาจใช้ร่วมกันได้ ภาพต่อไปนี้เป็นตัวอย่างการจัดระบบการวัดผล ไม่ใช่ลำดับขั้นที่ทุกองค์กรต้องใช้\n\n<div class=\"reading-semantic-diagram\" data-diagram=\"effectivenessHierarchy\"></div>\n\n<p class=\"reading-intro-label\"><svg class=\"reading-label-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"12 6 12 12 16 14\"></polyline></svg>ตารางสรุปคำสำคัญสำหรับวิเคราะห์โจทย์สอบ (Exam Keyword Trigger Matrix):</p>\n\n| เครื่องมือ / แนวคิด | คำสำคัญในโจทย์สอบ (Key Exam Triggers) | วัตถุประสงค์หลัก (Primary Purpose) | ตัวอย่างการใช้งานในองค์กร |\n|---|---|---|---|\n| **Metric** | \"Defined measurable value\", \"Count, percentage, ratio or average\" | ค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์ | จำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found) |",
+        "localSource": "Domain 2 metric screenshot 223240 includes percentages and means; diagram-generator.js:1775 effectivenessHierarchy raw-value label",
+        "authorityUrl": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf",
+        "authorityLocation": "Sections 3.3.1–3.3.4: implementation, effectiveness, efficiency and impact measures",
+        "conclusion": "Prose already recognizes calculated measures. Correct the contradictory raw-only diagram label and qualify dashboard refresh assumptions; retain the existing visual.",
+        "smallestCorrection": "Prose already recognizes calculated measures. Correct the contradictory raw-only diagram label and qualify dashboard refresh assumptions; retain the existing visual.",
+        "priority": "P1",
+        "confidence": "High",
+        "verificationStatus": "CONFIRMED",
+        "primaryClassification": "CORRECT ACADEMIC ERROR"
+      },
+      "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+      "exactCurrentClaim": {
+        "path": "js/core/diagram-generator.js",
+        "startLine": 1775,
+        "endLine": 1775,
+        "text": "Quantifiable Raw Value"
+      },
+      "authorityVerification": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf",
+        "location": "Sections 3.3.1–3.3.4: implementation, effectiveness, efficiency and impact measures",
+        "reviewConclusion": "The correction is ready and supported both by the notes and NIST measurement examples."
+      },
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "batch": "D2-A"
+    }
+  ]
+}

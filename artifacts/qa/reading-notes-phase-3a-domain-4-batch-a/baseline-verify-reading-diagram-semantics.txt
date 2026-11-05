@@ -1,0 +1,721 @@
+✖ registry and every unmodified diagram preserved (2.5592ms)
+✖ five control functions coexist without workflow arrows or temporal stages (0.7664ms)
+✖ measurement retains six concepts in meaningful groups without ordinals (0.4715ms)
+✖ JML Mover is optional and repeatable with continuous governance (0.3317ms)
+✖ BC and DR are distinct coordinated scopes without universal subset notation (0.3551ms)
+✔ DiD is an illustrative, complementary architecture without mandatory order (0.2624ms)
+✔ OSI mapping preserves seven identifiers and distinguishes data flow (0.1494ms)
+✖ Accounting is ongoing rather than the final mandatory step (0.257ms)
+✔ DMZ explicitly identifies zone boundaries and qualified isolation (0.1347ms)
+✖ all original explanatory mobile paragraphs retained except documented corrections (1.0799ms)
+✔ condensed SVG examples remain available as selectable English terms (0.3529ms)
+✔ threat/control entities are not a five-step response procedure (0.1789ms)
+✔ GRC mobile pillars coexist without stage connectors (0.1333ms)
+✔ privacy diagram shows scoped role relationships, not compulsory consent steps (0.081ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 7
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15.1841
+
+✖ failing tests:
+
+test at tools\verify-reading-diagram-semantics.mjs:7:1
+✖ registry and every unmodified diagram preserved (2.5592ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      'threatChain',
+      'ciaTriad',
+      'loadBalancer',
+      'aaaLifecycle',
+  ...
+      'cloudSharedResponsibility',
+  +   'irpLifecycle',
+  +   'mitreAttackTacticTechnique',
+  +   'securityTestingMatrix',
+  +   'assetLifecycleAndEol'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-diagram-semantics.mjs:7:68)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-diagram-semantics.mjs:8:1
+✖ five control functions coexist without workflow arrows or temporal stages (0.7664ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /data-concept="deterrent"/. Input:
+  
+  '\n' +
+    '<div class="reading-diagram-card" data-diagram="controlTimeline" role="region" aria-label="Security Control Function Matrix">\n' +
+    '  <div class="reading-diagram-header">\n' +
+    '    <span class="reading-diagram-tag">Control Taxonomy</span>\n' +
+    '    <h4 class="reading-diagram-title">Security Control Functions: Purpose, Timing &amp; Overlapping Roles</h4>\n' +
+    '  </div>\n' +
+    '  <div class="reading-diagram-svg-wrap reading-diag-desktop">\n' +
+    '    <svg viewBox="0 0 850 155" class="reading-diagram-svg" aria-label="Functional Matrix: Deterrent, Preventive, Detective, Corrective, Recovery with overlapping roles" role="img">\n' +
+    '      <!-- Column 1: Before Incident -->\n' +
+    '      <g>\n' +
+    '        <rect x="15" y="15" width="260" height="125" rx="8" class="diag-timeline-card" />\n' +
+    '        <rect x="99" y="27" width="92" height="22" rx="4" class="diag-timeline-badge" />\n' +
+    '        <text x="145" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">BEFORE</text>\n' +
+    '        <text x="145" y="68" class="diag-timeline-title" text-anchor="middle">Deterrent &amp; Preventive</text>\n' +
+    '        <text x="145" y="93" class="diag-timeline-desc" text-anchor="middle">ยับยั้งใจ &amp; สกัดกั้นก่อนเกิดเหตุ</text>\n' +
+    '        <text x="145" y="117" class="diag-timeline-example" text-anchor="middle">Warning Banners, MFA, Firewall</text>\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <!-- Arrow 1: Before -> During -->\n' +
+    '      <g class="diag-timeline-arrow-group" aria-hidden="true">\n' +
+    '        <line x1="277" y1="77" x2="289" y2="77" class="diag-timeline-arrow-line" />\n' +
+    '        <polygon points="293,77 287,73 287,81" class="diag-timeline-arrow-head" />\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <!-- Column 2: During Incident -->\n' +
+    '      <g>\n' +
+    '        <rect x="295" y="15" width="260" height="125" rx="8" class="diag-timeline-card" />\n' +
+    '        <rect x="379" y="27" width="92" height="22" rx="4" class="diag-timeline-badge" />\n' +
+    '        <text x="425" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">DURING</text>\n' +
+    '        <text x="425" y="68" class="diag-timeline-title" text-anchor="middle">Detective</text>\n' +
+    '        <text x="425" y="93" class="diag-timeline-desc" text-anchor="middle">ตรวจจับ &amp; แจ้งเตือนภัยขณะเกิดเหตุ</text>\n' +
+    '        <text x="425" y="117" class="diag-timeline-example" text-anchor="middle">IDS, Security Logs, Motion Sensor</text>\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <!-- Arrow 2: During -> After -->\n' +
+    '      <g class="diag-timeline-arrow-group" aria-hidden="true">\n' +
+    '        <line x1="557" y1="77" x2="569" y2="77" class="diag-timeline-arrow-line" />\n' +
+    '        <polygon points="573,77 567,73 567,81" class="diag-timeline-arrow-head" />\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <!-- Column 3: After Incident -->\n' +
+    '      <g>\n' +
+    '        <rect x="575" y="15" width="260" height="125" rx="8" class="diag-timeline-card" />\n' +
+    '        <rect x="659" y="27" width="92" height="22" rx="4" class="diag-timeline-badge" />\n' +
+    '        <text x="705" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">AFTER</text>\n' +
+    '        <text x="705" y="68" class="diag-timeline-title" text-anchor="middle">Corrective &amp; Recovery</text>\n' +
+    '        <text x="705" y="93" class="diag-timeline-desc" text-anchor="middle">แก้ไขเยียวยา &amp; กู้คืนระบบหลังเกิดเหตุ</text>\n' +
+    '        <text x="705" y="117" class="diag-timeline-example" text-anchor="middle">Patching, Malware Removal, Alternate Site</text>\n' +
+    '      </g>\n' +
+    '    </svg>\n' +
+    '  </div>\n' +
+    '  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Security Control Functions Mobile Stack">\n' +
+    '    <div class="reading-mob-stack-list">\n' +
+    '      <div class="reading-mob-tier-card reading-tier-kpi">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">BEFORE</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">DETERRENT &amp; PREVENTIVE</h5>\n' +
+    '            <span class="reading-mob-tier-action">ก่อนเกิดเหตุ &middot; ยับยั้งและสกัดกั้น</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc"><strong>Deterrent:</strong> ป้องปราม/ยับยั้งใจ (Warning Banners, ป้ายเตือน) &middot; <strong>Preventive:</strong> สกัดกั้น ป้องกันไม่ให้เกิดเหตุ (Firewall, MFA, การล็อคประตู, Least Privilege)</p>\n' +
+    '      </div>\n' +
+    '      <div class="reading-mob-tier-card reading-tier-kri">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">DURING</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">DETECTIVE</h5>\n' +
+    '            <span class="reading-mob-tier-action">ขณะเกิดเหตุ &middot; ตรวจจับและแจ้งเตือน</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc"><strong>Detective:</strong> ตรวจพบกิจกรรมที่น่าสงสัย (Intrusion Detection System / IDS, Security Logs, Motion Sensor, Honeytokens)</p>\n' +
+    '      </div>\n' +
+    '      <div class="reading-mob-tier-card reading-tier-report">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">AFTER</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">CORRECTIVE &amp; RECOVERY</h5>\n' +
+    '            <span class="reading-mob-tier-action">หลังเกิดเหตุ &middot; แก้ไขและฟื้นฟู</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc"><strong>Corrective:</strong> แก้ไขความเสียหาย (Patching, Malware Removal) &middot; <strong>Recovery:</strong> กู้คืนสู่สภาวะปกติ (ชุดสำรองข้อมูล Backup, แผน DRP, ศูนย์สำรอง Alternate Site)</p>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <div class="reading-diagram-caption reading-timeline-caption">\n' +
+    '    <div class="reading-timeline-caption-header">\n' +
+    '      <span class="reading-timeline-caption-badge">\n' +
+    '        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n' +
+    '          <circle cx="12" cy="12" r="10"></circle>\n' +
+    '          <line x1="12" y1="16" x2="12" y2="12"></line>\n' +
+    '          <line x1="12" y1="8" x2="12.01" y2="8"></line>\n' +
+    '        </svg>\n' +
+    '        Key Concept: Overlap &amp; Multi-Role Functions\n' +
+    '      </span>\n' +
+    '    </div>\n' +
+    '    <p class="reading-timeline-caption-text">\n' +
+    '      <strong>มาตรการความมั่นคงปลอดภัยหนึ่งตัวสามารถทำหน้าที่ได้หลายฟังก์ชันพร้อมกัน:</strong>\n' +
+    '      การจำแนกตามช่วงเวลา (Before / During / After) เป็นกรอบแนวคิดเพื่อความเข้าใจ ไม่ได้จำกัดว่ามาตรการหนึ่งจะถูกผูกขาดอยู่เพียงช่วงเวลาเดียว เช่น <em>กล้องวงจรปิด (CCTV)</em> เมื่อติดตั้งเด่นชัดจะทำหน้าที่เป็น <strong>Deterrent</strong> (ป้องปรามยับยั้งใจผู้บุกรุกก่อนเกิดเหตุ) ขณะเดียวกันก็ทำหน้าที่เป็น <strong>Detective</strong> (ตรวจจับและบันทึกภาพหลักฐานขณะเกิดเหตุ)\n' +
+    '    </p>\n' +
+    '  </div>\n' +
+    '</div>\n'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-diagram-semantics.mjs:8:208)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '\n<div class="reading-diagram-card" data-diagram="controlTimeline" role="region" aria-label="Security Control Function Matrix">\n  <div class="reading-diagram-header">\n    <span class="reading-diagram-tag">Control Taxonomy</span>\n    <h4 class="reading-diagram-title">Security Control Functions: Purpose, Timing &amp; Overlapping Roles</h4>\n  </div>\n  <div class="reading-diagram-svg-wrap reading-diag-desktop">\n    <svg viewBox="0 0 850 155" class="reading-diagram-svg" aria-label="Functional Matrix: Deterrent, Preventive, Detective, Corrective, Recovery with overlapping roles" role="img">\n      <!-- Column 1: Before Incident -->\n      <g>\n...',
+    expected: /data-concept="deterrent"/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-diagram-semantics.mjs:9:1
+✖ measurement retains six concepts in meaningful groups without ordinals (0.4715ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /data-concept="metric"/. Input:
+  
+  '\n' +
+    '<div class="reading-diagram-card reading-measurement-system" data-diagram="effectivenessHierarchy" role="region" aria-label="Cybersecurity Measurement Architecture: 6-Part Framework">\n' +
+    '  <div class="reading-diagram-header">\n' +
+    '    <span class="reading-diagram-tag">Measurement Architecture</span>\n' +
+    '    <h4 class="reading-diagram-title">Cybersecurity Measurement, Visualization &amp; Communication Architecture</h4>\n' +
+    '  </div>\n' +
+    '  <div class="reading-diagram-svg-wrap reading-diag-desktop">\n' +
+    '    <svg viewBox="0 0 840 405" class="reading-diagram-svg" aria-label="6-concept cybersecurity measurement architecture: Metric to Report" role="img">\n' +
+    '      <g>\n' +
+    '        <rect x="40" y="15" width="760" height="74" rx="8" class="diag-box diag-box-banner" />\n' +
+    '        <g transform="translate(58, 28)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n' +
+    '          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>\n' +
+    '          <polyline points="14 2 14 8 20 8"/>\n' +
+    '          <line x1="16" y1="13" x2="8" y2="13"/>\n' +
+    '          <line x1="16" y1="17" x2="8" y2="17"/>\n' +
+    '        </g>\n' +
+    '        <text x="96" y="44" class="diag-step-num">06</text>\n' +
+    '        <text x="130" y="44" class="diag-text-title">REPORT</text>\n' +
+    '        <text x="200" y="44" class="diag-text-action">COMMUNICATE &amp; RECOMMEND</text>\n' +
+    '        <text x="130" y="68" class="diag-text-sub">เอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)</text>\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <line x1="420" y1="89" x2="420" y2="105" stroke="var(--line, #334155)" stroke-width="2" stroke-dasharray="3,3" />\n' +
+    '\n' +
+    '      <g>\n' +
+    '        <rect x="40" y="105" width="370" height="84" rx="8" class="diag-box diag-box-banner" />\n' +
+    '        <g transform="translate(56, 118)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n' +
+    '          <rect x="3" y="3" width="7" height="9" rx="1"/>\n' +
+    '          <rect x="14" y="3" width="7" height="5" rx="1"/>\n' +
+    '          <rect x="14" y="12" width="7" height="9" rx="1"/>\n' +
+    '          <rect x="3" y="16" width="7" height="5" rx="1"/>\n' +
+    '        </g>\n' +
+    '        <text x="92" y="134" class="diag-step-num">04</text>\n' +
+    '        <text x="124" y="134" class="diag-text-title">DASHBOARD</text>\n' +
+    '        <text x="226" y="134" class="diag-text-action">VISUALIZE</text>\n' +
+    '        <text x="56" y="158" class="diag-text-sub">ภาพรวมตามรอบอัปเดต (Refresh cadence)</text>\n' +
+    '        <text x="56" y="175" class="diag-text-sub">แสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน</text>\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <g>\n' +
+    '        <rect x="430" y="105" width="370" height="84" rx="8" class="diag-box diag-box-banner" />\n' +
+    '        <g transform="translate(446, 118)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n' +
+    '          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>\n' +
+    '          <rect x="8" y="2" width="8" height="4" rx="1"/>\n' +
+    '          <path d="m9 14 2 2 4-4"/>\n' +
+    '        </g>\n' +
+    '        <text x="482" y="134" class="diag-step-num">05</text>\n' +
+    '        <text x="514" y="134" class="diag-text-title">SCORECARD</text>\n' +
+    '        <text x="614" y="134" class="diag-text-action">COMPARE TARGETS</text>\n' +
+    '        <text x="446" y="158" class="diag-text-sub">ตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย</text>\n' +
+    '        <text x="446" y="175" class="diag-text-sub">ชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้</text>\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <line x1="420" y1="189" x2="420" y2="205" stroke="var(--line, #334155)" stroke-width="2" stroke-dasharray="3,3" />\n' +
+    '\n' +
+    '      <g>\n' +
+    '        <rect x="40" y="205" width="370" height="84" rx="8" class="diag-box diag-box-banner" />\n' +
+    '        <g transform="translate(56, 218)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n' +
+    '          <circle cx="12" cy="12" r="10"/>\n' +
+    '          <circle cx="12" cy="6" r="6"/>\n' +
+    '          <circle cx="12" cy="2" r="2"/>\n' +
+    '        </g>\n' +
+    '        <text x="92" y="234" class="diag-step-num">02</text>\n' +
+    '        <text x="124" y="234" class="diag-text-title">KPI</text>\n' +
+    '        <text x="160" y="234" class="diag-text-action">PERFORMANCE</text>\n' +
+    '        <text x="56" y="258" class="diag-text-sub">วัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ</text>\n' +
+    '        <text x="56" y="275" class="diag-text-sub">ตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?</text>\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <g>\n' +
+    '        <rect x="430" y="205" width="370" height="84" rx="8" class="diag-box diag-box-banner" />\n' +
+    '        <g transform="translate(446, 218)" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n' +
+    '          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>\n' +
+    '          <line x1="12" y1="8" x2="12" y2="12"/>\n' +
+    '          <line x1="12" y1="16" x2="12.01" y2="16"/>\n' +
+    '        </g>\n' +
+    '        <text x="482" y="234" class="diag-step-num">03</text>\n' +
+    '        <text x="514" y="234" class="diag-text-title">KRI</text>\n' +
+    '        <text x="554" y="234" class="diag-text-action diag-action-amber">RISK WARNING</text>\n' +
+    '        <text x="446" y="258" class="diag-text-sub">สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น</text>\n' +
+    '        <text x="446" y="275" class="diag-text-sub">ตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?</text>\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <line x1="420" y1="289" x2="420" y2="305" stroke="var(--line, #334155)" stroke-width="2" stroke-dasharray="3,3" />\n' +
+    '\n' +
+    '      <g>\n' +
+    '        <rect x="40" y="305" width="760" height="80" rx="8" class="diag-box diag-box-blue" />\n' +
+    '        <g transform="translate(58, 320)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n' +
+    '          <path d="m12 14 4-4"/>\n' +
+    '          <path d="M3.34 19a10 10 0 1 1 17.32 0"/>\n' +
+    '        </g>\n' +
+    '        <text x="96" y="336" class="diag-step-num">01</text>\n' +
+    '        <text x="130" y="336" class="diag-text-title">METRIC</text>\n' +
+    '        <text x="200" y="336" class="diag-text-action">MEASURE &middot; FOUNDATION</text>\n' +
+    '        <text x="130" y="358" class="diag-text-sub">ค่าที่กำหนดและวัดได้ (Defined measurable value)</text>\n' +
+    '        <text x="130" y="374" class="diag-text-sub">คุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</text>\n' +
+    '      </g>\n' +
+    '    </svg>\n' +
+    '  </div>\n' +
+    '  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Measurement Architecture: 6-Part Framework">\n' +
+    '    <div class="reading-mob-stack-list">\n' +
+    '      <div class="reading-mob-tier-card reading-tier-report">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">06</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">REPORT</h5>\n' +
+    '            <span class="reading-mob-tier-action">COMMUNICATE &amp; RECOMMEND</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc">เอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร</p>\n' +
+    '      </div>\n' +
+    '\n' +
+    '      <div class="reading-mob-tier-card reading-tier-dashboard">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">04 &amp; 05</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">DASHBOARD &amp; SCORECARD</h5>\n' +
+    '            <span class="reading-mob-tier-action">VISUALIZE &amp; COMPARE</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc"><strong>Dashboard:</strong> แสดงผลกราฟิกตามรอบอัปเดต (Periodic / near-real-time) &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>\n' +
+    '      </div>\n' +
+    '\n' +
+    '      <div class="reading-mob-tier-card reading-tier-kri">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">02 &amp; 03</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">KPI &amp; KRI</h5>\n' +
+    '            <span class="reading-mob-tier-action">PERFORMANCE &amp; RISK WARNING</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc"><strong>KPI:</strong> วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ &middot; <strong>KRI:</strong> สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต</p>\n' +
+    '      </div>\n' +
+    '\n' +
+    '      <div class="reading-mob-tier-card reading-tier-kpi">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">01</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">METRIC</h5>\n' +
+    '            <span class="reading-mob-tier-action">MEASURE &middot; FOUNDATION</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc">ค่าที่กำหนดและวัดได้ (Defined measurable value): จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย (count, percentage, ratio or average) &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</div>\n'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-diagram-semantics.mjs:9:204)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '\n<div class="reading-diagram-card reading-measurement-system" data-diagram="effectivenessHierarchy" role="region" aria-label="Cybersecurity Measurement Architecture: 6-Part Framework">\n  <div class="reading-diagram-header">\n    <span class="reading-diagram-tag">Measurement Architecture</span>\n    <h4 class="reading-diagram-title">Cybersecurity Measurement, Visualization &amp; Communication Architecture</h4>\n  </div>\n  <div class="reading-diagram-svg-wrap reading-diag-desktop">\n    <svg viewBox="0 0 840 405" class="reading-diagram-svg" aria-label="6-concept cybersecurity measurement architecture: Metric to Report" role="img">\n      <g>\n        <rect x="40" y="15" width="760" height="74" rx="8" class="diag-box diag-box-banner" />\n...',
+    expected: /data-concept="metric"/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-diagram-semantics.mjs:10:1
+✖ JML Mover is optional and repeatable with continuous governance (0.3317ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /data-stage="joiner"/. Input:
+  
+  '\n' +
+    '<div class="reading-diagram-card" data-diagram="iamLifecycle" role="region" aria-label="Identity and Access Management Lifecycle: Joiner, Mover, Leaver">\n' +
+    '  <div class="reading-diagram-header">\n' +
+    '    <span class="reading-diagram-tag">Identity Governance</span>\n' +
+    '    <h4 class="reading-diagram-title">The JML Lifecycle: Joiner, Mover, Leaver Architecture</h4>\n' +
+    '  </div>\n' +
+    '  <div class="reading-diagram-svg-wrap reading-diag-desktop">\n' +
+    '    <svg viewBox="0 0 840 220" class="reading-diagram-svg" aria-label="JML Lifecycle showing Joiner provisioning, Mover access re-evaluation, and Leaver deprovisioning with continuous access review" role="img">\n' +
+    '      <g>\n' +
+    '        <rect x="20" y="20" width="245" height="150" rx="8" class="diag-box diag-box-blue" />\n' +
+    '        <rect x="35" y="32" width="90" height="20" rx="4" fill="var(--blue, #3b82f6)" />\n' +
+    '        <text x="80" y="42" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">01 JOINER</text>\n' +
+    '        <text x="35" y="70" class="diag-text-title" font-size="15px">Provisioning</text>\n' +
+    '        <text x="35" y="88" class="diag-text-sub" font-size="12px">การจัดสรรสิทธิ์พนักงานใหม่</text>\n' +
+    '        <line x1="35" y1="100" x2="250" y2="100" stroke="var(--line, #334155)" stroke-width="1" />\n' +
+    '        <text x="35" y="118" class="diag-text-sub" font-size="11.5px">&bull; Define Roles &amp; Responsibilities</text>\n' +
+    '        <text x="35" y="136" class="diag-text-sub" font-size="11.5px">&bull; Assign Unique Digital ID</text>\n' +
+    '        <text x="35" y="154" class="diag-text-sub" font-size="11.5px">&bull; Initial Credentials &amp; Permissions</text>\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <g>\n' +
+    '        <path d="M 268 95 L 290 95" stroke="var(--blue, #3b82f6)" stroke-width="2.5" stroke-linecap="round" />\n' +
+    '        <polygon points="296,95 288,90 288,100" fill="var(--blue, #3b82f6)" />\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <g>\n' +
+    '        <rect x="298" y="20" width="245" height="150" rx="8" class="diag-box diag-box-banner" />\n' +
+    '        <rect x="313" y="32" width="85" height="20" rx="4" fill="#f59e0b" />\n' +
+    '        <text x="355.5" y="42" fill="#0f172a" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">02 MOVER</text>\n' +
+    '        <text x="313" y="70" class="diag-text-title" font-size="15px">Re-Evaluation</text>\n' +
+    '        <text x="313" y="88" class="diag-text-sub" font-size="12px">ย้ายฝ่าย / เปลี่ยนตำแหน่ง</text>\n' +
+    '        <line x1="313" y1="100" x2="528" y2="100" stroke="var(--line, #334155)" stroke-width="1" />\n' +
+    '        <text x="313" y="118" class="diag-text-sub" font-size="11.5px">&bull; Grant New Role Permissions</text>\n' +
+    '        <text x="313" y="136" class="diag-text-sub" font-size="11.5px">&bull; Revoke Obsolete Permissions</text>\n' +
+    '        <text x="313" y="154" class="diag-text-sub" font-size="11.5px">&bull; Prevent Privilege Accumulation</text>\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <g>\n' +
+    '        <path d="M 546 95 L 568 95" stroke="var(--blue, #3b82f6)" stroke-width="2.5" stroke-linecap="round" />\n' +
+    '        <polygon points="574,95 566,90 566,100" fill="var(--blue, #3b82f6)" />\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <g>\n' +
+    '        <rect x="576" y="20" width="245" height="150" rx="8" class="diag-box diag-box-blue" />\n' +
+    '        <rect x="591" y="32" width="90" height="20" rx="4" fill="#ef4444" />\n' +
+    '        <text x="636" y="42" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">03 LEAVER</text>\n' +
+    '        <text x="591" y="70" class="diag-text-title" font-size="15px">Deprovisioning</text>\n' +
+    '        <text x="591" y="88" class="diag-text-sub" font-size="12px">พ้นสภาพ / ลาออก / เลิกจ้าง</text>\n' +
+    '        <line x1="591" y1="100" x2="806" y2="100" stroke="var(--line, #334155)" stroke-width="1" />\n' +
+    '        <text x="591" y="118" class="diag-text-sub" font-size="11.5px">&bull; Disable Account Promptly</text>\n' +
+    '        <text x="591" y="136" class="diag-text-sub" font-size="11.5px">&bull; Revoke All Application Access</text>\n' +
+    '        <text x="591" y="154" class="diag-text-sub" font-size="11.5px">&bull; Retain Logs &amp; Audit Trail</text>\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <g>\n' +
+    '        <rect x="20" y="185" width="801" height="26" rx="4" fill="var(--panel, #1e293b)" stroke="var(--line, #334155)" stroke-width="1" />\n' +
+    '        <text x="420" y="198" fill="var(--text-muted, #94a3b8)" font-size="11.5px" font-weight="600" text-anchor="middle" dominant-baseline="central">CONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages</text>\n' +
+    '      </g>\n' +
+    '    </svg>\n' +
+    '  </div>\n' +
+    '  <div class="reading-diag-mobile reading-mobile-stack" aria-label="JML Lifecycle Stages">\n' +
+    '    <div class="reading-mob-stack-list">\n' +
+    '      <div class="reading-mob-tier-card reading-tier-kpi">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">01</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">JOINER (เข้าใหม่)</h5>\n' +
+    '            <span class="reading-mob-tier-action">Provisioning &amp; Role Definition</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc">กำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น</p>\n' +
+    '      </div>\n' +
+    '      <div class="reading-mob-arrow-down" aria-hidden="true">\n' +
+    '        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>\n' +
+    '      </div>\n' +
+    '      <div class="reading-mob-tier-card reading-tier-kri">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">02</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">MOVER (ย้ายฝ่าย)</h5>\n' +
+    '            <span class="reading-mob-tier-action">Access Re-Evaluation</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc">ทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)</p>\n' +
+    '      </div>\n' +
+    '      <div class="reading-mob-arrow-down" aria-hidden="true">\n' +
+    '        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>\n' +
+    '      </div>\n' +
+    '      <div class="reading-mob-tier-card reading-tier-report">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">03</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">LEAVER (พ้นสภาพ)</h5>\n' +
+    '            <span class="reading-mob-tier-action">Deprovisioning &amp; Retention</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc">เพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)</p>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <div class="reading-mob-banner" style="margin-top: 12px; border-left: 3.5px solid var(--blue, #3b82f6);">\n' +
+    '      <p class="reading-mob-banner-text"><strong>Periodic Access Reviews:</strong> ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน</p>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</div>\n'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-diagram-semantics.mjs:10:161)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '\n<div class="reading-diagram-card" data-diagram="iamLifecycle" role="region" aria-label="Identity and Access Management Lifecycle: Joiner, Mover, Leaver">\n  <div class="reading-diagram-header">\n    <span class="reading-diagram-tag">Identity Governance</span>\n    <h4 class="reading-diagram-title">The JML Lifecycle: Joiner, Mover, Leaver Architecture</h4>\n  </div>\n  <div class="reading-diagram-svg-wrap reading-diag-desktop">\n    <svg viewBox="0 0 840 220" class="reading-diagram-svg" aria-label="JML Lifecycle showing Joiner provisioning, Mover access re-evaluation, and Leaver deprovisioning with continuous access review" role="img">\n      <g>\n        <rect x="20" y="20" width="245" height="150" rx="8" class="diag-box diag-box-blue" />\n...',
+    expected: /data-stage="joiner"/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-diagram-semantics.mjs:11:1
+✖ BC and DR are distinct coordinated scopes without universal subset notation (0.3551ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /data-relationship="supporting-scopes"/. Input:
+  
+  '\n' +
+    '<div class="reading-diagram-card" data-diagram="bcVsDrScope" role="region" aria-label="Scope Relationship: Business Continuity and Disaster Recovery">\n' +
+    '  <div class="reading-diagram-header">\n' +
+    '    <span class="reading-diagram-tag">Resilience Architecture</span>\n' +
+    '    <h4 class="reading-diagram-title">Scope Relationship: Business Continuity (BC) vs. Disaster Recovery (DR)</h4>\n' +
+    '  </div>\n' +
+    '  <div class="reading-diagram-svg-wrap reading-diag-desktop">\n' +
+    '    <svg viewBox="0 0 840 310" class="reading-diagram-svg" aria-label="Concentric relationship showing DR as a nested subset of BC (DR subset of BC)" role="img">\n' +
+    '      <g>\n' +
+    '        <rect x="20" y="15" width="800" height="280" rx="12" class="diag-box diag-box-banner diag-bc-outer" />\n' +
+    '        <rect x="36" y="28" width="168" height="22" rx="4" class="diag-scope-badge-bc" />\n' +
+    '        <text x="120" y="39" class="diag-scope-badge-bc-text" text-anchor="middle" dominant-baseline="central">ORGANIZATION-WIDE</text>\n' +
+    '        <text x="216" y="44" class="diag-text-title diag-bc-title" font-size="16px">BUSINESS CONTINUITY (BC) — ความต่อเนื่องทางธุรกิจ</text>\n' +
+    '        <text x="36" y="72" class="diag-text-sub diag-bc-desc" font-size="13px">เป้าหมาย: รักษาการดำเนินงานของธุรกิจในภาพรวมให้ดำเนินต่อไปได้ทั้งระหว่างและหลังวิกฤต</text>\n' +
+    '        <g class="diag-scope-pills">\n' +
+    '          <g>\n' +
+    '            <rect x="36" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />\n' +
+    '            <text x="108.5" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">People (บุคลากร)</text>\n' +
+    '          </g>\n' +
+    '          <g>\n' +
+    '            <rect x="191.75" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />\n' +
+    '            <text x="264.25" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Processes (กระบวนการ)</text>\n' +
+    '          </g>\n' +
+    '          <g>\n' +
+    '            <rect x="347.5" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />\n' +
+    '            <text x="420" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Facilities (สถานที่)</text>\n' +
+    '          </g>\n' +
+    '          <g>\n' +
+    '            <rect x="503.25" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />\n' +
+    '            <text x="575.75" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Suppliers (คู่ค้า)</text>\n' +
+    '          </g>\n' +
+    '          <g>\n' +
+    '            <rect x="659" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />\n' +
+    '            <text x="731.5" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Technology (เทคโนโลยี)</text>\n' +
+    '          </g>\n' +
+    '        </g>\n' +
+    '      </g>\n' +
+    '      <g>\n' +
+    '        <rect x="36" y="126" width="768" height="154" rx="8" class="diag-box diag-box-blue diag-dr-inner" stroke-width="2" />\n' +
+    '        <rect x="52" y="138" width="140" height="22" rx="4" class="diag-scope-badge-dr" />\n' +
+    '        <text x="122" y="149" class="diag-scope-badge-dr-text" text-anchor="middle" dominant-baseline="central">IT SUBSET (DR ⊂ BC)</text>\n' +
+    '        <text x="204" y="154" class="diag-text-title diag-dr-title" font-size="15px">DISASTER RECOVERY (DR) — แผนกู้คืนระบบเทคโนโลยีสารสนเทศ</text>\n' +
+    '        <text x="52" y="180" class="diag-text-sub diag-dr-desc" font-size="13px">เป้าหมาย: กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</text>\n' +
+    '        <g class="diag-dr-examples-group">\n' +
+    '          <rect x="52" y="196" width="736" height="70" rx="6" class="diag-examples-rect" />\n' +
+    '          <line x1="52" y1="196" x2="52" y2="266" stroke="var(--blue)" stroke-width="4" stroke-linecap="round" />\n' +
+    '          <text x="68" y="215" class="diag-examples-hdr">PRACTICAL EXAMPLES (ตัวอย่างการปฏิบัติ):</text>\n' +
+    '          <text x="68" y="235" class="diag-examples-item">• กู้คืนฐานข้อมูล &amp; Virtual Machines (Data &amp; System Restoration) · กู้คืนระบบ Cloud / On-Premise</text>\n' +
+    '          <text x="68" y="253" class="diag-examples-item">• สลับการทำงานไปยังศูนย์สำรอง (Hot / Warm / Cold Alternate Sites) · ฟื้นฟูโครงข่ายสื่อสาร (Network Recovery)</text>\n' +
+    '        </g>\n' +
+    '      </g>\n' +
+    '    </svg>\n' +
+    '  </div>\n' +
+    '  <div class="reading-diag-mobile reading-mobile-scope" aria-label="Scope Relationship: BC vs DR">\n' +
+    '    <div class="reading-mob-scope-outer">\n' +
+    '      <div class="reading-mob-scope-header">\n' +
+    '        <div class="reading-mob-scope-badges">\n' +
+    '          <span class="reading-mob-tag-pill">ORGANIZATION-WIDE SCOPE</span>\n' +
+    '        </div>\n' +
+    '        <h5 class="reading-mob-scope-title">BUSINESS CONTINUITY (BC)</h5>\n' +
+    '        <span class="reading-mob-scope-sub">ร่มใหญ่ครอบคลุมทั้งองค์กร (Comprehensive Scope)</span>\n' +
+    '        <p class="reading-mob-scope-goal"><strong>เป้าหมาย:</strong> รักษาการดำเนินงานของธุรกิจในภาพรวมให้ดำเนินต่อไปได้ทั้งระหว่างและหลังวิกฤต</p>\n' +
+    '        <div class="reading-mob-scope-tags">\n' +
+    '          <span class="reading-mob-tag-item">People (บุคลากร)</span>\n' +
+    '          <span class="reading-mob-tag-item">Processes (กระบวนการ)</span>\n' +
+    '          <span class="reading-mob-tag-item">Facilities (สถานที่)</span>\n' +
+    '          <span class="reading-mob-tag-item">Suppliers (คู่ค้า)</span>\n' +
+    '          <span class="reading-mob-tag-item">Technology (เทคโนโลยี)</span>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '      <div class="reading-mob-scope-inner">\n' +
+    '        <div class="reading-mob-inner-head">\n' +
+    '          <div class="reading-mob-scope-badges">\n' +
+    '            <span class="reading-mob-tag-pill reading-mob-pill-accent">IT SUBSET (DR ⊂ BC)</span>\n' +
+    '          </div>\n' +
+    '          <h6 class="reading-mob-inner-title">DISASTER RECOVERY (DR)</h6>\n' +
+    '          <span class="reading-mob-inner-sub">แผนกู้คืนระบบ IT โครงสร้างพื้นฐาน และข้อมูล</span>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-inner-goal"><strong>เป้าหมาย:</strong> กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</p>\n' +
+    '        <div class="reading-mob-inner-examples">\n' +
+    '          <span class="reading-mob-examples-label">ตัวอย่างการปฏิบัติ (Practical Examples):</span>\n' +
+    '          <ul class="reading-mob-examples-list">\n' +
+    '            <li>กู้คืนฐานข้อมูล, Virtual Machines (VMs) และระบบ Cloud จากชุด Backup</li>\n' +
+    '            <li>สลับการทำงานไปยังศูนย์สำรอง (Hot Site / Warm Site / Cold Site)</li>\n' +
+    '            <li>ฟื้นฟูโครงข่ายสื่อสารและระบบเครือข่ายสำรอง (Network Recovery)</li>\n' +
+    '          </ul>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</div>\n'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-diagram-semantics.mjs:11:125)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '\n<div class="reading-diagram-card" data-diagram="bcVsDrScope" role="region" aria-label="Scope Relationship: Business Continuity and Disaster Recovery">\n  <div class="reading-diagram-header">\n    <span class="reading-diagram-tag">Resilience Architecture</span>\n    <h4 class="reading-diagram-title">Scope Relationship: Business Continuity (BC) vs. Disaster Recovery (DR)</h4>\n  </div>\n  <div class="reading-diagram-svg-wrap reading-diag-desktop">\n    <svg viewBox="0 0 840 310" class="reading-diagram-svg" aria-label="Concentric relationship showing DR as a nested subset of BC (DR subset of BC)" role="img">\n      <g>\n        <rect x="20" y="15" width="800" height="280" rx="12" class="diag-box diag-box-banner diag-bc-outer" />\n...',
+    expected: /data-relationship="supporting-scopes"/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-diagram-semantics.mjs:14:1
+✖ Accounting is ongoing rather than the final mandatory step (0.257ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /data-relationship="illustrative-access"/. Input:
+  
+  '\n' +
+    '<div class="reading-diagram-card" data-diagram="aaaLifecycle" role="region" aria-label="AAA Identity Lifecycle Process Flow">\n' +
+    '  <div class="reading-diagram-header">\n' +
+    '    <span class="reading-diagram-tag">Process Flow</span>\n' +
+    '    <h4 class="reading-diagram-title">The AAA Framework &amp; Identity Lifecycle</h4>\n' +
+    '  </div>\n' +
+    '  <div class="reading-diagram-svg-wrap reading-diag-desktop">\n' +
+    '    <svg viewBox="0 0 760 140" class="reading-diagram-svg" aria-label="Identification to Authentication to Authorization to Accounting" role="img">\n' +
+    '      <!-- Step 1: Identification -->\n' +
+    '      <g>\n' +
+    '        <rect x="10" y="25" width="165" height="90" rx="8" class="diag-box diag-box-banner" />\n' +
+    '        <text x="92" y="52" class="diag-step-num" text-anchor="middle">STEP 01</text>\n' +
+    '        <text x="92" y="74" class="diag-text-title" text-anchor="middle">Identification</text>\n' +
+    '        <text x="92" y="93" class="diag-text-sub" text-anchor="middle">"Who are you?"</text>\n' +
+    '        <text x="92" y="107" class="diag-text-sub" text-anchor="middle">Username / User ID</text>\n' +
+    '      </g>\n' +
+    '      <g>\n' +
+    '        <line x1="175" y1="70" x2="199" y2="70" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />\n' +
+    '        <polygon points="205,70 197,65 197,75" fill="var(--blue, #3b82f6)" />\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <!-- Step 2: Authentication -->\n' +
+    '      <g>\n' +
+    '        <rect x="205" y="25" width="165" height="90" rx="8" class="diag-box diag-box-banner" />\n' +
+    '        <text x="287" y="52" class="diag-step-num" text-anchor="middle">STEP 02</text>\n' +
+    '        <text x="287" y="74" class="diag-text-title" text-anchor="middle">Authentication</text>\n' +
+    '        <text x="287" y="93" class="diag-text-sub" text-anchor="middle">"Prove it!"</text>\n' +
+    '        <text x="287" y="107" class="diag-text-sub" text-anchor="middle">Password, MFA, Bio</text>\n' +
+    '      </g>\n' +
+    '      <g>\n' +
+    '        <line x1="370" y1="70" x2="394" y2="70" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />\n' +
+    '        <polygon points="400,70 392,65 392,75" fill="var(--blue, #3b82f6)" />\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <!-- Step 3: Authorization -->\n' +
+    '      <g>\n' +
+    '        <rect x="400" y="25" width="165" height="90" rx="8" class="diag-box diag-box-banner" />\n' +
+    '        <text x="482" y="52" class="diag-step-num" text-anchor="middle">STEP 03</text>\n' +
+    '        <text x="482" y="74" class="diag-text-title" text-anchor="middle">Authorization</text>\n' +
+    '        <text x="482" y="93" class="diag-text-sub" text-anchor="middle">"What can you do?"</text>\n' +
+    '        <text x="482" y="107" class="diag-text-sub" text-anchor="middle">Permissions / Roles</text>\n' +
+    '      </g>\n' +
+    '      <g>\n' +
+    '        <line x1="565" y1="70" x2="589" y2="70" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />\n' +
+    '        <polygon points="595,70 587,65 587,75" fill="var(--blue, #3b82f6)" />\n' +
+    '      </g>\n' +
+    '\n' +
+    '      <!-- Step 4: Accounting -->\n' +
+    '      <g>\n' +
+    '        <rect x="595" y="25" width="155" height="90" rx="8" class="diag-box diag-box-banner" />\n' +
+    '        <text x="672" y="52" class="diag-step-num" text-anchor="middle">STEP 04</text>\n' +
+    '        <text x="672" y="74" class="diag-text-title" text-anchor="middle">Accounting</text>\n' +
+    '        <text x="672" y="93" class="diag-text-sub" text-anchor="middle">"What did you do?"</text>\n' +
+    '        <text x="672" y="107" class="diag-text-sub" text-anchor="middle">Audit Logs / Tracing</text>\n' +
+    '      </g>\n' +
+    '    </svg>\n' +
+    '  </div>\n' +
+    '  <div class="reading-diag-mobile reading-mobile-stack" aria-label="AAA Identity Lifecycle Mobile Stack">\n' +
+    '    <div class="reading-mob-stack-list">\n' +
+    '      <div class="reading-mob-tier-card reading-tier-kpi">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">01</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">IDENTIFICATION (การระบุตัวตน)</h5>\n' +
+    '            <span class="reading-mob-tier-action">&quot;Who are you?&quot; &middot; Username / User ID</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc">ผู้ใช้แจ้งตัวตนต่อระบบ เช่น Username, Employee ID, อีเมล (ยังไม่มีการพิสูจน์ความจริงในขั้นตอนนี้)</p>\n' +
+    '      </div>\n' +
+    '      <div class="reading-mob-tier-card reading-tier-kri">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">02</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">AUTHENTICATION (การพิสูจน์ตัวตน)</h5>\n' +
+    '            <span class="reading-mob-tier-action">&quot;Prove it!&quot; &middot; Password, MFA, Bio</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc">ระบบตรวจสอบหลักฐานว่าเป็นตัวจริง: Password (Knowledge), Token / OTP (Ownership), ลายนิ้วมือ/ใบหน้า (Inherence) &middot; MFA ใช้ 2 ปัจจัยขึ้นไปที่ต่างหมวดหมู่</p>\n' +
+    '      </div>\n' +
+    '      <div class="reading-mob-tier-card reading-tier-report">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">03</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">AUTHORIZATION (การอนุญาตสิทธิ์)</h5>\n' +
+    '            <span class="reading-mob-tier-action">&quot;What can you do?&quot; &middot; Permissions / Roles</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc">กำหนดว่าผู้ใช้ทำอะไรได้บ้างในระบบ: Access Control Lists (ACLs), บทบาทงาน (RBAC) ตามหลักสิทธิ์ขั้นต่ำที่จำเป็น (Least Privilege)</p>\n' +
+    '      </div>\n' +
+    '      <div class="reading-mob-tier-card reading-tier-dashboard">\n' +
+    '        <div class="reading-mob-tier-head">\n' +
+    '          <span class="reading-mob-tier-num">04</span>\n' +
+    '          <div class="reading-mob-tier-info">\n' +
+    '            <h5 class="reading-mob-tier-name">ACCOUNTING &amp; AUDITING (การตรวจสอบ)</h5>\n' +
+    '            <span class="reading-mob-tier-action">&quot;What did you do?&quot; &middot; Audit Logs / Tracing</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <p class="reading-mob-tier-desc">Audit Trails และ Timestamps ช่วยติดตามกิจกรรมและสนับสนุน Accountability เมื่อบันทึกได้รับการปกป้องและเชื่อมโยงกับตัวตนอย่างน่าเชื่อถือ สนับสนุน Non-repudiation</p>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <p class="reading-semantic-note">Accounting (Audit Logs) บันทึกเหตุการณ์อย่างต่อเนื่องตลอดการใช้งานเพื่อสนับสนุน Accountability และการไม่สามารถปฏิเสธความรับผิดชอบได้ (Non-repudiation)</p>\n' +
+    '</div>\n'
+  
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-diagram-semantics.mjs:14:109)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '\n<div class="reading-diagram-card" data-diagram="aaaLifecycle" role="region" aria-label="AAA Identity Lifecycle Process Flow">\n  <div class="reading-diagram-header">\n    <span class="reading-diagram-tag">Process Flow</span>\n    <h4 class="reading-diagram-title">The AAA Framework &amp; Identity Lifecycle</h4>\n  </div>\n  <div class="reading-diagram-svg-wrap reading-diag-desktop">\n    <svg viewBox="0 0 760 140" class="reading-diagram-svg" aria-label="Identification to Authentication to Authorization to Accounting" role="img">\n      <!-- Step 1: Identification -->\n      <g>\n...',
+    expected: /data-relationship="illustrative-access"/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\verify-reading-diagram-semantics.mjs:16:1
+✖ all original explanatory mobile paragraphs retained except documented corrections (1.0799ms)
+  AssertionError [ERR_ASSERTION]: controlTimeline: Original explanatory paragraph
+      at TestContext.<anonymous> (file:///D:/_Coding/SEC-CERT-TEST/tools/verify-reading-diagram-semantics.mjs:25:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

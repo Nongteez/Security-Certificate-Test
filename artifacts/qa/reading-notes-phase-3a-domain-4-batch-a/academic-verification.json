@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-04",
+  "findings": [
+    "ACC-D4-01",
+    "ACC-D4-02",
+    "ACC-D4-03",
+    "ENR-D4-04"
+  ],
+  "sources": [
+    {
+      "title": "RFC 8504 §13/13.1",
+      "url": "https://www.rfc-editor.org/rfc/rfc8504.html#section-13.1",
+      "supports": "IPsec support SHOULD does not mean automatic encryption/authentication; actual supported/configured use is distinct."
+    },
+    {
+      "title": "RFC 9293 §2.2, §3.8.3",
+      "url": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "supports": "Reliable ordered byte stream, sequencing/retransmission and possible connection failure; no application transaction completion or cryptographic secrecy guarantee."
+    },
+    {
+      "title": "RFC 768",
+      "url": "https://www.rfc-editor.org/rfc/rfc768.html",
+      "supports": "UDP eight-byte header and absence of built-in delivery/order guarantee."
+    },
+    {
+      "title": "RFC 8085 §3.1",
+      "url": "https://www.rfc-editor.org/rfc/rfc8085.html",
+      "supports": "Application/network congestion context; no unconditional UDP speed ranking."
+    },
+    {
+      "title": "NIST SP 800-41r1 §2.3, §4",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-41r1.pdf",
+      "supports": "September 2009; inspection limits and risk-based policy enforcement, not guaranteed containment."
+    },
+    {
+      "title": "NIST SP 800-82r3 §4.2.2, §5.2.3.1, §5.3.1",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf",
+      "supports": "September 2023; process-specific safety/reliability, optional organizing models and controlled required communications. Network architecture printed pp.71–73 (PDF87–89); safety printed79/PDF95."
+    },
+    {
+      "title": "PCI SSC FAQ 1115",
+      "url": "https://www.pcisecuritystandards.org/faqs/1115/",
+      "supports": "Audit scope reduction depends on applicable requirements and verified effective segmentation, not VLAN names alone."
+    },
+    {
+      "title": "ISC2 CC outline",
+      "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "supports": "Effective 1 September 2026; objectives4.1 and4.2 map foundational protocols, connected systems and segmentation, not exact exam questions."
+    }
+  ],
+  "classification": {
+    "ACC-D4-01": "Clarification: existing prose says architecture support, not an explicit automatic-encryption claim.",
+    "ACC-D4-02": "Preserve ordered-stream teaching; qualify completeness, connection failure, application boundary and speed.",
+    "ACC-D4-03": "Condition containment/reachability/performance/audit scope on enforced tested policy.",
+    "ENR-D4-04": "Risk/process-specific priorities, optional Purdue context and controlled necessary paths."
+  },
+  "limitations": [
+    "Supplied Settapon directory absent; matching local Domain4 corpus used.",
+    "CISA 2025 microsegmentation PDF returned403; not used as inspected full-text evidence.",
+    "No vendor procedure, live bypass/reboot/patch instruction or human bilingual acceptance claimed."
+  ],
+  "deferred": "Scenario01 reasoning retains an unqualified lateral-movement prevention claim; all scenario edits are outside this batch authorization."
+}

@@ -1,0 +1,319 @@
+{
+  "batch": {
+    "id": "D4-A",
+    "title": "Transport and enforced segmentation",
+    "domain": 4,
+    "findingIds": [
+      "ACC-D4-01",
+      "ACC-D4-02",
+      "ACC-D4-03",
+      "ENR-D4-04"
+    ],
+    "estimatedEffort": "2–3 hours",
+    "gate": "Requires explicit human authorization for named IDs; APPROVE WITH REVISION text must be incorporated, not bypassed.",
+    "acceptanceCriteria": [
+      "Source-aligned minimal change; retain useful existing examples and anchors.",
+      "EN/TH semantic parity; check repeated summaries and affected diagram labels.",
+      "For media: static text equivalent, non-color labels, readable 360–390px layout and no clipping; test keyboard/reduced-motion only if an interaction is separately approved.",
+      "Run targeted content integrity/render checks in future implementation; no production checks are represented as executed in this review."
+    ]
+  },
+  "findings": [
+    {
+      "id": "ACC-D4-02",
+      "domain": 4,
+      "officialObjective": "4.1",
+      "category": "Academic correction",
+      "auditClassification": "CORRECT ACADEMIC ERROR",
+      "decision": "APPROVE WITH REVISION",
+      "currentLearnerExperience": "TCP is correctly described as reliable, sequenced and retransmitting, but its complete-data wording and speed comparison read as unconditional.",
+      "genuineGap": "The missing boundary is connection failure and application completion, not an absence of TCP reliability.",
+      "smallestUsefulChange": "Retain reliable ordered byte-stream terminology. Add a concise failure/application boundary and qualify speed comparisons; do not rewrite TCP as unreliable.",
+      "sample": {
+        "en": "TCP provides an ordered, reliable byte stream, but a connection can fail. Receiving bytes does not prove the application completed the requested transaction.",
+        "th": "TCP ให้บริการข้อมูลไบต์แบบเรียงลำดับและเชื่อถือได้ แต่การเชื่อมต่ออาจล้มเหลว การรับไบต์ไม่ได้พิสูจน์ว่าแอปทำธุรกรรมที่ร้องขอสำเร็จ"
+      },
+      "reason": "RFC 9293 supports both reliability and connection failure. This is an overstatement correction, not rejection of the core transport definition.",
+      "academicConstraints": "TCP reliability is not cryptographic integrity, secrecy or business-transaction confirmation.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-4.md",
+          "anchor": "topic-4-1-tcp-vs-udp",
+          "startLine": 324,
+          "endLine": 357
+        }
+      ],
+      "supportingSources": [
+        "https://www.rfc-editor.org/rfc/rfc9293.html#section-3.8.3 — reliable service and connection failure",
+        "Domain 4 source TCP/IP screenshots 145229/145505; published lesson-d4-01 reliable-transport explanation",
+        "https://www.rfc-editor.org/rfc/rfc9293.html#section-3.8.3 — Sections 2.2 and 3.8.3"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P1",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Retain reliable ordered byte-stream terminology. Add a concise failure/application boundary and qualify speed comparisons; do not rewrite TCP as unreliable.",
+        "TCP reliability is not cryptographic integrity, secrecy or business-transaction confirmation."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ACC-D4-02",
+        "phase1Record": "ACC-D4-02"
+      },
+      "reportedAcademicEvidence": {
+        "id": "ACC-D4-02",
+        "domain": 4,
+        "anchor": "topic-4-1-tcp-vs-udp",
+        "readingPath": "content/isc2-cc-2026/reading/domain-4.md",
+        "startLine": 332,
+        "endLine": 334,
+        "currentClaim": "- **Reliable Delivery:** รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\n- **Flow &amp; Congestion Control:** มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\n- เหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+        "localSource": "Domain 4 source TCP/IP screenshots 145229/145505; published lesson-d4-01 reliable-transport explanation",
+        "authorityUrl": "https://www.rfc-editor.org/rfc/rfc9293.html#section-3.8.3",
+        "authorityLocation": "Sections 2.2 and 3.8.3",
+        "conclusion": "Teach ordered delivery, acknowledgement/retransmission and connection failure. Remove an unconditional complete-data guarantee; TCP does not prove application transaction completion or confidentiality.",
+        "smallestCorrection": "Teach ordered delivery, acknowledgement/retransmission and connection failure. Remove an unconditional complete-data guarantee; TCP does not prove application transaction completion or confidentiality.",
+        "priority": "P0",
+        "confidence": "High",
+        "verificationStatus": "CONFIRMED",
+        "primaryClassification": "CORRECT ACADEMIC ERROR"
+      },
+      "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+      "exactCurrentClaim": {
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "startLine": 332,
+        "endLine": 334,
+        "text": "- **Reliable Delivery:** รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\n- **Flow &amp; Congestion Control:** มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\n- เหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)"
+      },
+      "authorityVerification": {
+        "url": "https://www.rfc-editor.org/rfc/rfc9293.html#section-3.8.3",
+        "location": "Sections 2.2 and 3.8.3",
+        "reviewConclusion": "RFC 9293 supports both reliability and connection failure. This is an overstatement correction, not rejection of the core transport definition."
+      },
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "batch": "D4-A"
+    },
+    {
+      "id": "ACC-D4-03",
+      "domain": 4,
+      "officialObjective": "4.2",
+      "category": "Academic correction",
+      "auditClassification": "CORRECT ACADEMIC ERROR",
+      "decision": "APPROVE WITH REVISION",
+      "currentLearnerExperience": "Segmentation is defined with enforcement, but benefit bullets promise containment and automatic compliance-scope reduction.",
+      "genuineGap": "Allowed paths, compromised control points and policy effectiveness are missing conditions.",
+      "smallestUsefulChange": "Replace certainty with risk/reachability reduction; retain the architecture and state compliance scoping requires validated applicable conditions.",
+      "sample": {
+        "en": "Segmentation can limit lateral movement when boundaries are enforced and tested; it does not guarantee that compromise stays in one segment.",
+        "th": "Segmentation ช่วยจำกัดการเคลื่อนที่ข้ามระบบเมื่อบังคับใช้และทดสอบขอบเขตแล้ว แต่ไม่รับประกันว่าเหตุบุกรุกจะอยู่ในเซกเมนต์เดียว"
+      },
+      "reason": "CISA and NIST support limiting exposure rather than an unconditional containment guarantee.",
+      "academicConstraints": "A flat network does not alone prove every host is compromised; a VLAN name alone is not an enforcement policy.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-4.md",
+          "anchor": "topic-4-2-segmentation-blast-radius",
+          "startLine": 626,
+          "endLine": 638
+        }
+      ],
+      "supportingSources": [
+        "https://www.cisa.gov/sites/default/files/2025-07/ZT-Microsegmentation-Guidance-Part-One_508c.pdf — scope and lateral-movement purpose",
+        "Domain 4 screenshot 182644; published lesson-d4-05 allowed/denied paths",
+        "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-41r1.pdf — Sections 2.3 firewall inspection limitations and 4 firewall policy"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P0",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Replace certainty with risk/reachability reduction; retain the architecture and state compliance scoping requires validated applicable conditions.",
+        "A flat network does not alone prove every host is compromised; a VLAN name alone is not an enforcement policy."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ACC-D4-03",
+        "phase1Record": "ACC-D4-03"
+      },
+      "reportedAcademicEvidence": {
+        "id": "ACC-D4-03",
+        "domain": 4,
+        "anchor": "topic-4-2-segmentation-blast-radius",
+        "readingPath": "content/isc2-cc-2026/reading/domain-4.md",
+        "startLine": 635,
+        "endLine": 638,
+        "currentClaim": "- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น\n- **Prevent Lateral Movement (หยุดยั้งการเคลื่อนที่ในแนวราบ):** ผู้โจมตีไม่สามารถสแกนหรือส่งมัลแวร์ข้ามไปยังเซิร์ฟเวอร์สำคัญได้โดยตรง\n- **Traffic Isolation &amp; Performance:** ลดปริมาณการแพร่กระจายของ Broadcast ทำให้เครือข่ายมีประสิทธิภาพสูงขึ้น\n- **Compliance &amp; Audit Scope:** ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+        "localSource": "Domain 4 screenshot 182644; published lesson-d4-05 allowed/denied paths",
+        "authorityUrl": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-41r1.pdf",
+        "authorityLocation": "Sections 2.3 firewall inspection limitations and 4 firewall policy",
+        "conclusion": "Say segmentation can limit reachability and lateral movement when enforced and tested; remove certain containment and automatic audit-scope reduction. Scope decisions require applicable standard validation.",
+        "smallestCorrection": "Say segmentation can limit reachability and lateral movement when enforced and tested; remove certain containment and automatic audit-scope reduction. Scope decisions require applicable standard validation.",
+        "priority": "P0",
+        "confidence": "High",
+        "verificationStatus": "CONFIRMED",
+        "primaryClassification": "CORRECT ACADEMIC ERROR"
+      },
+      "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+      "exactCurrentClaim": {
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "startLine": 635,
+        "endLine": 638,
+        "text": "- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น\n- **Prevent Lateral Movement (หยุดยั้งการเคลื่อนที่ในแนวราบ):** ผู้โจมตีไม่สามารถสแกนหรือส่งมัลแวร์ข้ามไปยังเซิร์ฟเวอร์สำคัญได้โดยตรง\n- **Traffic Isolation &amp; Performance:** ลดปริมาณการแพร่กระจายของ Broadcast ทำให้เครือข่ายมีประสิทธิภาพสูงขึ้น\n- **Compliance &amp; Audit Scope:** ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น"
+      },
+      "authorityVerification": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-41r1.pdf",
+        "location": "Sections 2.3 firewall inspection limitations and 4 firewall policy",
+        "reviewConclusion": "CISA and NIST support limiting exposure rather than an unconditional containment guarantee."
+      },
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "batch": "D4-A"
+    },
+    {
+      "id": "ACC-D4-01",
+      "domain": 4,
+      "officialObjective": "4.1",
+      "category": "Open lead",
+      "auditClassification": "REQUIRES VERIFICATION",
+      "decision": "APPROVE WITH REVISION",
+      "currentLearnerExperience": "The current sentence says supports IPsec; the heading says built-in security.",
+      "genuineGap": "A beginner could infer automatic protection, but that stronger claim is not actually written.",
+      "smallestUsefulChange": "Add one use/configuration qualification and adjust the heading if necessary. Do not label the entire paragraph a confirmed automatic-encryption error.",
+      "sample": {
+        "en": "IPv6 can use IPsec, but IPv6 addressing alone does not encrypt or authenticate traffic.",
+        "th": "IPv6 ใช้ IPsec ได้ แต่การใช้ที่อยู่ IPv6 เพียงอย่างเดียวไม่ได้เข้ารหัสหรือยืนยันความถูกต้องของทราฟฟิก"
+      },
+      "reason": "RFC 8504 sections 13–13.1 support the distinction; this resolves the clarification without inventing a defect.",
+      "academicConstraints": "Stay at the stated CC concept; label hypothetical conditions and avoid unconditional guarantees.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-4.md",
+          "anchor": "topic-4-1-ipv6-architecture",
+          "startLine": 293,
+          "endLine": 323
+        }
+      ],
+      "supportingSources": [
+        "https://www.rfc-editor.org/rfc/rfc8504.html#section-13.1",
+        "Domain 4 screenshot 151830; DOMAIN 4.txt IPv6 benefit narration",
+        "https://www.rfc-editor.org/rfc/rfc8504.html#section-13.1 — Sections 13 and 13.1"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P2",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Add one use/configuration qualification and adjust the heading if necessary. Do not label the entire paragraph a confirmed automatic-encryption error.",
+        "Stay at the stated CC concept; label hypothetical conditions and avoid unconditional guarantees."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ACC-D4-01",
+        "phase1Record": "ACC-D4-01"
+      },
+      "reportedAcademicEvidence": {
+        "id": "ACC-D4-01",
+        "domain": 4,
+        "anchor": "topic-4-1-ipv6-architecture",
+        "readingPath": "content/isc2-cc-2026/reading/domain-4.md",
+        "startLine": 299,
+        "endLine": 299,
+        "currentClaim": "- **ความปลอดภัยในตัว:** รองรับมาตรฐานความมั่นคงปลอดภัย **IPsec (IP Security)** ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+        "localSource": "Domain 4 screenshot 151830; DOMAIN 4.txt IPv6 benefit narration",
+        "authorityUrl": "https://www.rfc-editor.org/rfc/rfc8504.html#section-13.1",
+        "authorityLocation": "Sections 13 and 13.1",
+        "conclusion": "The heading can mislead, but the current sentence says supports IPsec, not that traffic is encrypted by default. Add a configuration/actual-use qualification; do not count this as a demonstrated unconditional encryption claim.",
+        "smallestCorrection": "The heading can mislead, but the current sentence says supports IPsec, not that traffic is encrypted by default. Add a configuration/actual-use qualification; do not count this as a demonstrated unconditional encryption claim.",
+        "priority": "P1",
+        "confidence": "Unresolved",
+        "verificationStatus": "CLARIFICATION, NOT CONFIRMED ERROR",
+        "primaryClassification": "REQUIRES VERIFICATION"
+      },
+      "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+      "exactCurrentClaim": {
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "startLine": 299,
+        "endLine": 299,
+        "text": "- **ความปลอดภัยในตัว:** รองรับมาตรฐานความมั่นคงปลอดภัย **IPsec (IP Security)** ในระดับสถาปัตยกรรมมาตั้งแต่ต้น"
+      },
+      "authorityVerification": {
+        "url": "https://www.rfc-editor.org/rfc/rfc8504.html#section-13.1",
+        "location": "Sections 13 and 13.1",
+        "reviewConclusion": "RFC 8504 sections 13–13.1 support the distinction; this resolves the clarification without inventing a defect."
+      },
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "batch": "D4-A"
+    },
+    {
+      "id": "ENR-D4-04",
+      "domain": 4,
+      "officialObjective": "4.1",
+      "category": "Open lead",
+      "auditClassification": "REQUIRES VERIFICATION",
+      "decision": "APPROVE WITH REVISION",
+      "currentLearnerExperience": "The OT paragraph imposes a universal IT confidentiality priority and an IDMZ/data-diode-only path rule, with detailed Purdue levels.",
+      "genuineGap": "The guidance is risk- and architecture-dependent; a universal hierarchy/design rule exceeds beginner scope.",
+      "smallestUsefulChange": "Replace categorical priority/path language with process-specific safety/reliability and controlled required communications. Keep Purdue detail optional; no new industrial topology or operational instructions.",
+      "sample": {
+        "en": "For OT, assess safety, reliability and the process impact before changing systems. Permit only required, controlled communications using a suitable architecture.",
+        "th": "สำหรับ OT ต้องประเมินความปลอดภัยต่อชีวิต ความเชื่อถือได้ และผลต่อกระบวนการก่อนเปลี่ยนระบบ อนุญาตเฉพาะการสื่อสารที่จำเป็นและควบคุมผ่านสถาปัตยกรรมที่เหมาะสม"
+      },
+      "reason": "NIST 800-82r3 describes alternatives and context, including data diodes as an option; the earlier landing-page-only gap is now narrowed.",
+      "academicConstraints": "Do not approve generic bypass, reboot or patch instructions for a live industrial process.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-4.md",
+          "anchor": "topic-4-1-network-threats-iot",
+          "startLine": 564,
+          "endLine": 625
+        }
+      ],
+      "supportingSources": [
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf — OT segmentation, DMZ and unidirectional gateway alternatives",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf — network segregation and unidirectional-gateway discussion",
+        "domain-3-4-review.md:83",
+        "content/isc2-cc-2026/reading/domain-4.md:564"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P1",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Replace categorical priority/path language with process-specific safety/reliability and controlled required communications. Keep Purdue detail optional; no new industrial topology or operational instructions.",
+        "Do not approve generic bypass, reboot or patch instructions for a live industrial process."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ENR-D4-04",
+        "phase1Record": "ENR-D4-04"
+      },
+      "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "batch": "D4-A"
+    }
+  ]
+}

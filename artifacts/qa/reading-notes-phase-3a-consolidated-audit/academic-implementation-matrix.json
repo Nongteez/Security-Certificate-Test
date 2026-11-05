@@ -1,0 +1,1143 @@
+[
+  {
+    "id": "ACC-D1-01",
+    "domain": 1,
+    "objective": "1.1",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — verified",
+    "reason": "Applicable-law rights/consent basis qualifier and lawful-basis/transparency table are present; no consent-for-all inference in corrected passage.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-1.md",
+        "anchor": "topic-1-1-privacy-data-protection",
+        "exists": true,
+        "anchorFound": true,
+        "line": 251,
+        "text": "<div id=\"topic-1-1-privacy-data-protection\" class=\"reading-topic-anchor\"></div>\n\n### 1.1.6 Non-repudiation, Privacy & Data Protection\n\n#### 1. Non-repudiation — การไม่อาจปฏิเสธความรับผิดชอบได้\n\nความสามารถในการพิสูจน์ได้อย่างน่าเชื่อถือว่า มีบุคคลใดบุคคลหนึ่งได้กระทำการหรือส่งข้อมูลนั้นจริง โดยผู้กระทำไม่สามารถอ้างภายหลังได้ว่าตนเองไม่ได้เป็นผู้ทำ โดยอาศัยกลไกสำคัญคือ **Digital Signature** ร่วมกับโครงสร้างกุญแจสาธารณะ (PKI) และการประทับเวลาที่เชื่อถือได้ (Timestamping)\n\n*ความต่างจาก Authentication:* Authentication พิสูจน์ตัวตน ณ ขณะล็อกอิน ส่วน Non-repudiation สร้างหลักฐานทางนิติวิทยาศาสตร์ที่ผูกมัดการกระทำในอดีต\n\n<section class=\"reading-privacy-context\">\n\n#### 2. Privacy — การคุ้มครองความเป็นส่วนตัวของข้อมูล\n\nเกี่ยวข้องกับการคุ้มครอง **Personally Identifiable Information (PII) / Personal Data** ตลอดวงจรชีวิต: การเก็บรวบรวมข้อมูล (Collection), การประมวลผล (Processing), การจัดเก็บรักษา (Storage), การถ่ายโอน (Transfer), และการทำลาย (Disposal)\n\n<h5 class=\"reading-intro-label\"><svg class=\"reading-label-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg>3 บทบาทหลักในกฎหมายคุ้มครองข้อมูลส่วนบุคคล (เช่น GDPR, PDPA):</h5>\n\n<div class=\"reading-definition-group reading-privacy-roles\">\n\n<div class=\"reading-concept-item\">\n  <h6 class=\"reading-concept-heading\">Data Subject (เจ้าของข้อมูลส่วนบุคคล)</h6>\n  <p>บุคคลธรรมดาที่ข้อมูลนั้นระบุไปถึง (เช่น นายสมชาย ลูกค้าของบริษัท หรือพนักงานในองค์กร)</p>\n</div>\n\n<div class=\"reading-concept-item\">\n  <h6 class=\"reading-concept-heading\">Data Controller (ผู้ควบคุมข้อมูล)</h6>\n  <p>บุคคลธรรมดา นิติบุคคล หน่วยงาน หรือองค์กรที่กำหนดโดยลำพังหรือร่วมกับผู้อื่นว่า จะเก็บข้อมูลทำไม และประมวลผลอย่างไร <strong>(Determines Purpose and Means)</strong> เช่น บริษัทค้าปลีกที่เก็บข้อมูลลูกค้า</p>\n</div>\n\n<div class=\"reading-concept-item\">\n  <h6 class=\"reading-concept-heading\">Data Processor (ผู้ประมวลผลข้อมูล)</h6>\n  <p>ฝ่ายที่ทำการประมวลผลข้อมูล ในนามของและตามคำสั่งของผู้ควบคุมข้อมูล <strong>(Processes on behalf of Controller)</strong> เช่น บริษัท Cloud Provider ที่รับฝากฐานข้อมูล</p>\n</div>\n\n</div>\n\n<div class=\"reading-semantic-diagram\" data-diagram=\"privacyFlow\"></div>\n\n<h5 class=\"reading-intro-label\"><svg class=\"reading-label-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"></path><polyline points=\"14 2 14 8 20 8\"></polyline><line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"></line><line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"></line><polyline points=\"10 9 9 9 8 9\"></polyline></svg>กลไกการกำกับดูแลและสิทธิในข้อมูลส่วนบุคคล:</h5>\n\n<div class=\"reading-concept-item\">\n  <h5 class=\"reading-concept-heading\">Data Ownership & Authority Boundaries</h5>\n  <p>การกำหนดว่าใครมีอำนาจตัดสินใจ (Authority) และความรับผิดชอบ (Responsibility) ต่อข้อมูลด้าน Security และ Compliance โดยมีหลักสำคัญคือ <em>การที่องค์กรถือครองหรือจัดเก็บข้อมูลไม่ได้แปลว่าจะนำ Personal Data ไปทำอะไรก็ได้ตามอำเภอใจ</em> องค์กรต้องเคารพสิทธิของ Data Subject ตามกฎหมายที่ใช้บังคับ และขอความยินยอมเมื่อใช้ฐานความยินยอม <em>Respect data-subject rights under applicable law; obtain consent when relying on consent as the legal basis.</em></p>\n</div>\n\n<div class=\"reading-concept-item\">\n  <h5 class=\"reading-concept-heading\">Data Inventory</h5>\n  <p>รายการสำรวจทรัพย์สินข้อมูลทั้งหมดขององค์กร เพื่อตอบคำถามว่า <em>\"เรามีข้อมูลประเภทใดบ้าง และจัดเก็บอยู่ที่ใด?\"</em></p>\n</div>\n\n<div class=\"reading-concept-item\">\n  <h5 class=\"reading-concept-heading\">Data Retention</h5>\n  <p>นโยบายระบุระยะเวลาในการเก็บรักษาข้อมูลแต่ละประเภท และกำหนดเงื่อนไขการทำลายทิ้งเมื่อหมดความจำเป็น (เช่น การเก็บเอกสารภาษีพนักงานไว้ 7 ปีตามที่กฎหมายกำหนด)</p>\n</div>\n\n<div class=\"reading-concept-item\">\n  <h5 class=\"reading-concept-heading\">Right to Be Forgotten (สิทธิในการขอลบข้อมูล)</h5>\n  <p>สิทธิของ Data Subject ในการร้องขอให้ลบข้อมูลส่วนบุคคลของตน อย่างไรก็ตาม <em>ไม่ได้แปลว่าขอลบแล้วองค์กรต้องลบทันทีเสมอไป</em> หากมีกฎหมายบังคับให้ต้องเก็บรักษาไว้ (เช่น กฎหมายภาษี กฎหมายฟอกเงิน) องค์กรยังมีความชอบธรรมในการเก็บข้อมูลนั้นตามกรอบกฎหมาย</p>\n</div>\n\n<h4 class=\"reading-subtopic-title\">ตารางเปรียบเทียบความแตกต่าง: Confidentiality vs. Privacy</h4>\n\n| มิติการเปรียบเทียบ | Confidentiality (การรักษาความลับ) | Privacy (ความเป็นส่วนตัว) |\n|---|---|---|\n| **นิยามหลัก** | การป้องกันไม่ให้ผู้ไม่มีสิทธิ์เข้าถึงหรือล่วงรู้ข้อมูล (Protect from unauthorized access) | สิทธิของบุคคลธรรมดาในการควบคุมข้อมูลส่วนตัวของตน (Right to control personal data) |\n| **เป้าหมายความปลอดภัย** | ป้องกัน **Unauthorized Disclosure** | คุ้มครองสิทธิของ **Data Subject** ตามกฎหมาย (เช่น GDPR, PDPA) |\n| **ขอบเขตข้อมูล** | ข้อมูลลับทุกชนิดขององค์กร (Trade Secrets, Financial, Source Code, PII) | เฉพาะข้อมูลส่วนบุคคลที่ระบุตัวตนได้ (**PII / Personal Data**) เท่านั้น |\n| **มาตรการควบคุมหลัก** | Encryption, Access Control, Need to Know, Firewalls | Lawful Basis (เช่น Consent เมื่อเหมาะสม), Transparency, Data Retention, Purpose Limitation, Right to be Forgotten |\n| **ตัวอย่างวิเคราะห์ (Illustrative example)** | Encryption จำกัดการเข้าถึง แต่เพียงอย่างเดียวยังไม่ยืนยันว่าปฏิบัติตาม Privacy ครบถ้วน / Encryption restricts access; it alone does not establish privacy compliance. | ต้องพิจารณาวัตถุประสงค์ ฐานกฎหมาย และหน้าที่ด้านความโปร่งใสตามกฎหมายที่ใช้บังคับ; ตาม GDPR ความยินยอมเป็นฐานหนึ่ง / Check purpose, lawful basis and applicable transparency duties; under GDPR, consent is one possible basis. |\n\n</section>\n\n#### 3. Accountability — ความรับผิดชอบที่ตรวจสอบย้อนหลังได้\n\nหลักการที่บุคคลต้องรับผิดชอบต่อการกระทำของตนบนระบบ โดยระบบต้องสามารถเชื่อมโยงกิจกรรมไปยังตัวบุคคลนั้นได้อย่างจำเพาะเจาะจง (Unique Identity + Secure Logs)\n\n<div class=\"reading-callout tip\">\n  <div class=\"reading-callout-header\">\n    <svg class=\"reading-callout-icon\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line></svg>\n    <span>สรุปเปรียบเทียบคำที่ใกล้เคียงกัน</span>\n  </div>\n  <div class=\"reading-callout-group\">\n    <div class=\"reading-callout-item\">\n      <h5 class=\"reading-concept-heading\">Confidentiality</h5>\n      <p>ข้อมูลลับถูกจำกัดการเข้าถึงเฉพาะผู้ได้รับอนุญาต (Who can SEE it?)</p>\n    </div>\n    <div class=\"reading-callout-item\">\n      <h5 class=\"reading-concept-heading\">Privacy</h5>\n      <p>การจัดการข้อมูลส่วนบุคคล (PII) ให้สอดคล้องกับสิทธิและกฎหมาย</p>\n    </div>\n    <div class=\"reading-callout-item\">\n      <h5 class=\"reading-concept-heading\">Non-repudiation</h5>\n      <p>มีหลักฐานทางดิจิทัลยืนยันว่าผู้กระทำไม่อาจปฏิเสธได้</p>\n    </div>\n    <div class=\"reading-callout-item\">\n      <h5 class=\"reading-concept-heading\">Accountability</h5>\n      <p>สามารถตรวจสอบย้อนหลังได้ว่าใครเป็นผู้รับผิดชอบต่อเหตุการณ์นั้น (Unique Identity + Secure Logs)</p>\n    </div>\n  </div>\n</div>\n\n",
+        "sha256": "55221da2506facc9feefae2c7b81b201e387c4f34da50995d7cc70c21ee22157"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-1-batch-a",
+        "id": "ACC-D1-01",
+        "path": "content/isc2-cc-2026/reading/domain-1.md",
+        "after": "องค์กรต้องเคารพสิทธิของ Data Subject ตามกฎหมายที่ใช้บังคับ และขอความยินยอมเมื่อใช้ฐานความยินยอม <em>Respect data-subject rights under applicable law; obtain consent when relying on consent as the legal basis.</em>",
+        "count": 1,
+        "line": 294,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-1-batch-a",
+        "id": "ACC-D1-01",
+        "path": "content/isc2-cc-2026/reading/domain-1.md",
+        "after": "| **มาตรการควบคุมหลัก** | Encryption, Access Control, Need to Know, Firewalls | Lawful Basis (เช่น Consent เมื่อเหมาะสม), Transparency, Data Retention, Purpose Limitation, Right to be Forgotten |",
+        "count": 1,
+        "line": 319,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-1-batch-a",
+        "id": "ACC-D1-01",
+        "path": "content/isc2-cc-2026/reading/domain-1.md",
+        "after": "| **ตัวอย่างวิเคราะห์ (Illustrative example)** | Encryption จำกัดการเข้าถึง แต่เพียงอย่างเดียวยังไม่ยืนยันว่าปฏิบัติตาม Privacy ครบถ้วน / Encryption restricts access; it alone does not establish privacy compliance. | ต้องพิจารณาวัตถุประสงค์ ฐานกฎหมาย และหน้าที่ด้านความโปร่งใสตามกฎหมายที่ใช้บังคับ; ตาม GDPR ความยินยอมเป็นฐานหนึ่ง / Check purpose, lawful basis and applicable transparency duties; under GDPR, consent is one possible basis. |",
+        "count": 1,
+        "line": 320,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ACC-D2-01",
+    "domain": 2,
+    "objective": "2.2",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — verified",
+    "reason": "Non-overlap planning assumptions, possible activity overlap, tolerance versus certain failure, assumed backup versus target retained with correct times.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-2.md",
+        "anchor": "topic-2-2-rto-rpo",
+        "exists": true,
+        "anchorFound": true,
+        "line": 227,
+        "text": "<h3 id=\"topic-2-2-rto-rpo\">2.2.6 RTO and RPO Recovery Metrics</h3>\n\nในการวางแผนกู้คืนระบบ IT องค์กรต้องกำหนดเป้าหมายเชิงเวลา 2 ตัวชี้วัดสำคัญ:\n\n**สมมติฐานของภาพ (Illustrative assumptions):** ภาพสมมติว่ามีจุดสำรองที่กู้คืนได้เวลา 16:30 น. และเกิดเหตุเวลา 17:00 น.; จุดสำรองนี้ตรงกับขอบเขต RPO 30 นาทีในตัวอย่าง ส่วน 18:00 น. เป็นเป้าหมาย RTO 1 ชั่วโมง ไม่ใช่ผลกู้คืนที่ทดสอบแล้ว / The illustration assumes a recoverable 16:30 backup and a 17:00 outage. That backup coincides with the example’s 30-minute RPO boundary; 18:00 is the one-hour RTO target, not a tested recovery outcome.\n\n<div class=\"reading-semantic-diagram\" data-diagram=\"rtoRpoTimeline\"></div>\n\n<section class=\"reading-concept-unit\">\n<h4>Recovery Time Objective (RTO) — เป้าหมายระยะเวลาการกู้คืน:</h4>\n\n- คือเป้าหมายระยะเวลาสูงสุดที่กำหนดให้กู้คืนระบบหรือบริการหลังหยุดชะงัก (Target Maximum Restoration Interval; มักย่อว่า Maximum Acceptable Downtime ของระบบ) ไม่ใช่ระยะหยุดชะงักรวมของธุรกิจแบบ MTD\n- **ความสัมพันธ์กับ MTD:** RTO ต้องเหลือเวลาสำหรับการตรวจสอบและทำรายการค้าง เพื่อให้กลับมาดำเนินธุรกิจได้ภายใน MTD เช่น MTD 4 ชั่วโมง อาจกำหนด RTO 3 ชั่วโมงและเวลาเตรียมกลับมาทำงานอีก 1 ชั่วโมง การมี RTO ≤ MTD เพียงอย่างเดียวยังไม่ยืนยันว่าธุรกิจกลับมาทำงานทัน\n- ตอบคำถาม: *\"ระบบหยุดทำงานได้นานที่สุดเท่าไรหลังเกิดเหตุ?\"*\n- มุ่งเน้น **เวลาที่สูญเสียไปจากการหยุดให้บริการ** (Forward-looking: จากจุดเกิดเหตุเดินหน้าไปจนถึงจุดที่ระบบพร้อมทำงาน เช่น 17:00 → 18:00 น.)\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Recovery Point Objective (RPO) — เป้าหมายจุดเวลาของการกู้คืนข้อมูล:</h4>\n\n- คือ **Maximum Acceptable Data Loss Measured in Time** หรือปริมาณข้อมูลย้อนหลังสูงสุดที่องค์กรยอมรับว่าจะสูญเสียได้ โดยวัดเป็นหน่วยเวลา\n- ตอบคำถาม: *\"องค์กรยอมรับการสูญเสียข้อมูลย้อนหลังได้นานที่สุดเท่าไร?\"*\n- มุ่งเน้น **ปริมาณข้อมูลและความถี่ของการสำรองข้อมูล** (Backward-looking: จากจุดเกิดเหตุย้อนหลังไปยังจุดสำรองข้อมูลล่าสุดที่กู้คืนได้ เช่น 17:00 ← 16:30 น. ข้อมูลสูญเสียได้ไม่เกิน 30 นาที)\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:</h4>\n\n- **Work Recovery Time (WRT — เวลาฟื้นฟูระบบงาน):** คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\n- **Maximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้):** คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\n- **แบบจำลองวางแผนอย่างง่าย (Simplified planning model):**\n  **MTD &ge; RTO + WRT**\n  ในแบบจำลองนี้ RTO นับจากเริ่มหยุดชะงักจนระบบ IT พร้อมใช้งาน แล้ว WRT นับต่อจนธุรกิจกลับมาดำเนินงาน โดยสมมติให้สองช่วงไม่ซ้อนทับกัน; กิจกรรมจริงอาจซ้อนทับกันได้ / Here, RTO runs from disruption to IT readiness, followed by WRT until business resumes. The model assumes non-overlapping intervals; actual activities may overlap.\n  *หากผลรวมเกิน MTD แผนนี้จัดสรรเวลาเกินช่วงหยุดชะงักที่ธุรกิจยอมรับ ต้องทบทวนแผน; การหยุดชะงักจริงเกิน MTD ไม่ได้หมายความว่าองค์กรจะอยู่รอดไม่ได้เสมอไป / If the sum exceeds MTD, the plan exceeds the business downtime tolerance and needs review. An actual outage beyond MTD does not inevitably mean organizational failure.*\n</section>\n\n<div class=\"reading-callout tip\">\n  <div class=\"reading-callout-header\">\n    <svg class=\"reading-callout-icon\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line></svg>\n    <span>ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.</span>\n  </div>\n  <p>สมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา <strong>17:00 น.</strong>:</p>\n  <ul>\n    <li>หากองค์กรกำหนด <strong>RTO = 1 ชั่วโมง</strong> → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน <strong>18:00 น.</strong></li>\n    <li>หากองค์กรกำหนด <strong>RPO = 30 นาที</strong> → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา <strong>16:30 น.</strong> (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)</li>\n  </ul>\n</div>\n",
+        "sha256": "c9a925f0a2a54c1415bf58e09726fab7c07468987b4d5dfa5b9c4200e19036e8"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-2-batch-a",
+        "id": "ACC-D2-01",
+        "path": "content/isc2-cc-2026/reading/domain-2.md",
+        "after": "ในการวางแผนกู้คืนระบบ IT องค์กรต้องกำหนดเป้าหมายเชิงเวลา 2 ตัวชี้วัดสำคัญ:\n\n**สมมติฐานของภาพ (Illustrative assumptions):** ภาพสมมติว่ามีจุดสำรองที่กู้คืนได้เวลา 16:30 น. และเกิดเหตุเวลา 17:00 น.; จุดสำรองนี้ตรงกับขอบเขต RPO 30 นาทีในตัวอย่าง ส่วน 18:00 น. เป็นเป้าหมาย RTO 1 ชั่วโมง ไม่ใช่ผลกู้คืนที่ทดสอบแล้ว / The illustration assumes a recoverable 16:30 backup and a 17:00 outage. That backup coincides with the example’s 30-minute RPO boundary; 18:00 is the one-hour RTO target, not a tested recovery outcome.\n",
+        "count": 1,
+        "line": 229,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-2-batch-a",
+        "id": "ACC-D2-01",
+        "path": "content/isc2-cc-2026/reading/domain-2.md",
+        "after": "- **แบบจำลองวางแผนอย่างง่าย (Simplified planning model):**\n  **MTD &ge; RTO + WRT**\n  ในแบบจำลองนี้ RTO นับจากเริ่มหยุดชะงักจนระบบ IT พร้อมใช้งาน แล้ว WRT นับต่อจนธุรกิจกลับมาดำเนินงาน โดยสมมติให้สองช่วงไม่ซ้อนทับกัน; กิจกรรมจริงอาจซ้อนทับกันได้ / Here, RTO runs from disruption to IT readiness, followed by WRT until business resumes. The model assumes non-overlapping intervals; actual activities may overlap.\n  *หากผลรวมเกิน MTD แผนนี้จัดสรรเวลาเกินช่วงหยุดชะงักที่ธุรกิจยอมรับ ต้องทบทวนแผน; การหยุดชะงักจริงเกิน MTD ไม่ได้หมายความว่าองค์กรจะอยู่รอดไม่ได้เสมอไป / If the sum exceeds MTD, the plan exceeds the business downtime tolerance and needs review. An actual outage beyond MTD does not inevitably mean organizational failure.*",
+        "count": 1,
+        "line": 259,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ACC-D2-02",
+    "domain": 2,
+    "objective": "2.4",
+    "decision": "APPROVE",
+    "status": "Implemented — verified",
+    "reason": "Defined measurable value and refresh cadence are present in prose/table/review and desktop/mobile diagram; legacy ordinal architecture issue A03 is separate.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-2.md",
+        "anchor": "topic-2-4-memory-aid",
+        "exists": true,
+        "anchorFound": true,
+        "line": 558,
+        "text": "<h3 id=\"topic-2-4-memory-aid\">2.4.8 The 6-Part Measurement Memory Aid</h3>\n\nMetric อาจเป็นจำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย KPI และ KRI เป็น Metric ที่เลือกใช้ตามวัตถุประสงค์: KPI ติดตามผลงานเทียบเป้าหมาย ส่วน KRI เฝ้าระวังแนวโน้มความเสี่ยง Dashboard, scorecard และ report เป็นรูปแบบนำเสนอที่อาจใช้ร่วมกันได้ ภาพต่อไปนี้เป็นตัวอย่างการจัดระบบการวัดผล ไม่ใช่ลำดับขั้นที่ทุกองค์กรต้องใช้\n\n**รอบอัปเดต (Refresh cadence):** Dashboard อาจอัปเดตเป็นระยะหรือใกล้เวลาจริง ขึ้นอยู่กับการเก็บข้อมูลและการรายงาน ควรตรวจเวลาอัปเดตของข้อมูล / A dashboard may refresh periodically or near real time, depending on data collection and reporting; check when its data was updated.\n\n<div class=\"reading-semantic-diagram\" data-diagram=\"effectivenessHierarchy\"></div>\n\n<p class=\"reading-intro-label\"><svg class=\"reading-label-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"12 6 12 12 16 14\"></polyline></svg>ตารางสรุปคำสำคัญสำหรับวิเคราะห์โจทย์สอบ (Exam Keyword Trigger Matrix):</p>\n\n| เครื่องมือ / แนวคิด | คำสำคัญในโจทย์สอบ (Key Exam Triggers) | วัตถุประสงค์หลัก (Primary Purpose) | ตัวอย่างการใช้งานในองค์กร |\n|---|---|---|---|\n| **Metric** | \"Defined measurable value\", \"Count, percentage, ratio or average\" | ค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์ | จำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found) |\n| **KPI** | \"Performance target\", \"Progress toward goal\", \"Success rate\" | ประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย | ร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance) |\n| **KRI** | \"Early warning\", \"Escalating risk\", \"Threshold exceed\" | ส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้ | จำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (&gt; 0 บัญชี) |\n| **Dashboard** | \"Refresh cadence varies\", \"Operational view\", \"Visual representation\" | แสดงภาพรวมผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน โดยความสดของข้อมูลขึ้นกับรอบอัปเดต (Data freshness depends on refresh cadence) | ตัวอย่างหน้าจอ SOC ที่ตั้งค่าให้อัปเดตใกล้เวลาจริง (Illustrative near-real-time SOC view) |\n| **Scorecard** | \"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\" | สรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง | ตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน |\n| **Report** | \"Formal documentation\", \"Recommended actions\", \"Executive summary\" | เอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร | เอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร |\n\n</section>\n\n<section class=\"reading-objective-section reading-review-section reading-structured-objective\" id=\"domain-2-review\">\n\n## Domain 2 Summary, Key Distinctions & Review Scenarios\n\nส่วนนี้เป็นชุดเครื่องมือทบทวนและแบบฝึกปฏิบัติสถานการณ์จำลองระดับ Domain-wide เพื่อเสริมสร้างความเข้าใจเชิงลึกสำหรับทั้ง 4 วัตถุประสงค์ใน Domain 2:\n",
+        "sha256": "c9a925f0a2a54c1415bf58e09726fab7c07468987b4d5dfa5b9c4200e19036e8"
+      },
+      {
+        "path": "js/core/diagram-generator.js",
+        "anchor": "security-measurement-hierarchy / Quantifiable Raw Value",
+        "resolvedSymbol": "effectivenessHierarchy",
+        "locatorType": "Phase2 descriptive locator resolved to current JS template symbol, not an HTML anchor",
+        "exists": true,
+        "anchorFound": true,
+        "line": 1681,
+        "text": "effectivenessHierarchy: `\n<div class=\"reading-diagram-card reading-measurement-system\" data-diagram=\"effectivenessHierarchy\" role=\"region\" aria-label=\"Cybersecurity Measurement Architecture: 6-Part Framework\">\n  <div class=\"reading-diagram-header\">\n    <span class=\"reading-diagram-tag\">Measurement Architecture</span>\n    <h4 class=\"reading-diagram-title\">Cybersecurity Measurement, Visualization &amp; Communication Architecture</h4>\n  </div>\n  <div class=\"reading-diagram-svg-wrap reading-diag-desktop\">\n    <svg viewBox=\"0 0 840 405\" class=\"reading-diagram-svg\" aria-label=\"6-concept cybersecurity measurement architecture: Metric to Report\" role=\"img\">\n      <g>\n        <rect x=\"40\" y=\"15\" width=\"760\" height=\"74\" rx=\"8\" class=\"diag-box diag-box-banner\" />\n        <g transform=\"translate(58, 28)\" stroke=\"var(--blue, #3b82f6)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/>\n          <polyline points=\"14 2 14 8 20 8\"/>\n          <line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"/>\n          <line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"/>\n        </g>\n        <text x=\"96\" y=\"44\" class=\"diag-step-num\">06</text>\n        <text x=\"130\" y=\"44\" class=\"diag-text-title\">REPORT</text>\n        <text x=\"200\" y=\"44\" class=\"diag-text-action\">COMMUNICATE &amp; RECOMMEND</text>\n        <text x=\"130\" y=\"68\" class=\"diag-text-sub\">เอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)</text>\n      </g>\n\n      <line x1=\"420\" y1=\"89\" x2=\"420\" y2=\"105\" stroke=\"var(--line, #334155)\" stroke-width=\"2\" stroke-dasharray=\"3,3\" />\n\n      <g>\n        <rect x=\"40\" y=\"105\" width=\"370\" height=\"84\" rx=\"8\" class=\"diag-box diag-box-banner\" />\n        <g transform=\"translate(56, 118)\" stroke=\"var(--blue, #3b82f6)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <rect x=\"3\" y=\"3\" width=\"7\" height=\"9\" rx=\"1\"/>\n          <rect x=\"14\" y=\"3\" width=\"7\" height=\"5\" rx=\"1\"/>\n          <rect x=\"14\" y=\"12\" width=\"7\" height=\"9\" rx=\"1\"/>\n          <rect x=\"3\" y=\"16\" width=\"7\" height=\"5\" rx=\"1\"/>\n        </g>\n        <text x=\"92\" y=\"134\" class=\"diag-step-num\">04</text>\n        <text x=\"124\" y=\"134\" class=\"diag-text-title\">DASHBOARD</text>\n        <text x=\"226\" y=\"134\" class=\"diag-text-action\">VISUALIZE</text>\n        <text x=\"56\" y=\"158\" class=\"diag-text-sub\">ภาพรวมตามรอบอัปเดต (Refresh cadence)</text>\n        <text x=\"56\" y=\"175\" class=\"diag-text-sub\">แสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน</text>\n      </g>\n\n      <g>\n        <rect x=\"430\" y=\"105\" width=\"370\" height=\"84\" rx=\"8\" class=\"diag-box diag-box-banner\" />\n        <g transform=\"translate(446, 118)\" stroke=\"var(--blue, #3b82f6)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\"/>\n          <rect x=\"8\" y=\"2\" width=\"8\" height=\"4\" rx=\"1\"/>\n          <path d=\"m9 14 2 2 4-4\"/>\n        </g>\n        <text x=\"482\" y=\"134\" class=\"diag-step-num\">05</text>\n        <text x=\"514\" y=\"134\" class=\"diag-text-title\">SCORECARD</text>\n        <text x=\"614\" y=\"134\" class=\"diag-text-action\">COMPARE TARGETS</text>\n        <text x=\"446\" y=\"158\" class=\"diag-text-sub\">ตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย</text>\n        <text x=\"446\" y=\"175\" class=\"diag-text-sub\">ชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้</text>\n      </g>\n\n      <line x1=\"420\" y1=\"189\" x2=\"420\" y2=\"205\" stroke=\"var(--line, #334155)\" stroke-width=\"2\" stroke-dasharray=\"3,3\" />\n\n      <g>\n        <rect x=\"40\" y=\"205\" width=\"370\" height=\"84\" rx=\"8\" class=\"diag-box diag-box-banner\" />\n        <g transform=\"translate(56, 218)\" stroke=\"var(--blue, #3b82f6)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <circle cx=\"12\" cy=\"12\" r=\"10\"/>\n          <circle cx=\"12\" cy=\"6\" r=\"6\"/>\n          <circle cx=\"12\" cy=\"2\" r=\"2\"/>\n        </g>\n        <text x=\"92\" y=\"234\" class=\"diag-step-num\">02</text>\n        <text x=\"124\" y=\"234\" class=\"diag-text-title\">KPI</text>\n        <text x=\"160\" y=\"234\" class=\"diag-text-action\">PERFORMANCE</text>\n        <text x=\"56\" y=\"258\" class=\"diag-text-sub\">วัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ</text>\n        <text x=\"56\" y=\"275\" class=\"diag-text-sub\">ตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?</text>\n      </g>\n\n      <g>\n        <rect x=\"430\" y=\"205\" width=\"370\" height=\"84\" rx=\"8\" class=\"diag-box diag-box-banner\" />\n        <g transform=\"translate(446, 218)\" stroke=\"#f59e0b\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>\n          <line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"/>\n          <line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"/>\n        </g>\n        <text x=\"482\" y=\"234\" class=\"diag-step-num\">03</text>\n        <text x=\"514\" y=\"234\" class=\"diag-text-title\">KRI</text>\n        <text x=\"554\" y=\"234\" class=\"diag-text-action diag-action-amber\">RISK WARNING</text>\n        <text x=\"446\" y=\"258\" class=\"diag-text-sub\">สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น</text>\n        <text x=\"446\" y=\"275\" class=\"diag-text-sub\">ตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?</text>\n      </g>\n\n      <line x1=\"420\" y1=\"289\" x2=\"420\" y2=\"305\" stroke=\"var(--line, #334155)\" stroke-width=\"2\" stroke-dasharray=\"3,3\" />\n\n      <g>\n        <rect x=\"40\" y=\"305\" width=\"760\" height=\"80\" rx=\"8\" class=\"diag-box diag-box-blue\" />\n        <g transform=\"translate(58, 320)\" stroke=\"var(--blue, #3b82f6)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <path d=\"m12 14 4-4\"/>\n          <path d=\"M3.34 19a10 10 0 1 1 17.32 0\"/>\n        </g>\n        <text x=\"96\" y=\"336\" class=\"diag-step-num\">01</text>\n        <text x=\"130\" y=\"336\" class=\"diag-text-title\">METRIC</text>\n        <text x=\"200\" y=\"336\" class=\"diag-text-action\">MEASURE &middot; FOUNDATION</text>\n        <text x=\"130\" y=\"358\" class=\"diag-text-sub\">ค่าที่กำหนดและวัดได้ (Defined measurable value)</text>\n        <text x=\"130\" y=\"374\" class=\"diag-text-sub\">คุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</text>\n      </g>\n    </svg>\n  </div>\n  <div class=\"reading-diag-mobile reading-mobile-stack\" aria-label=\"Measurement Architecture: 6-Part Framework\">\n    <div class=\"reading-mob-stack-list\">\n      <div class=\"reading-mob-tier-card reading-tier-report\">\n        <div class=\"reading-mob-tier-head\">\n          <span class=\"reading-mob-tier-num\">06</span>\n          <div class=\"reading-mob-tier-info\">\n            <h5 class=\"reading-mob-tier-name\">REPORT</h5>\n            <span class=\"reading-mob-tier-action\">COMMUNICATE &amp; RECOMMEND</span>\n          </div>\n        </div>\n        <p class=\"reading-mob-tier-desc\">เอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร</p>\n      </div>\n\n      <div class=\"reading-mob-tier-card reading-tier-dashboard\">\n        <div class=\"reading-mob-tier-head\">\n          <span class=\"reading-mob-tier-num\">04 &amp; 05</span>\n          <div class=\"reading-mob-tier-info\">\n            <h5 class=\"reading-mob-tier-name\">DASHBOARD &amp; SCORECARD</h5>\n            <span class=\"reading-mob-tier-action\">VISUALIZE &amp; COMPARE</span>\n          </div>\n        </div>\n        <p class=\"reading-mob-tier-desc\"><strong>Dashboard:</strong> แสดงผลกราฟิกตามรอบอัปเดต (Periodic / near-real-time) &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>\n      </div>\n\n      <div class=\"reading-mob-tier-card reading-tier-kri\">\n        <div class=\"reading-mob-tier-head\">\n          <span class=\"reading-mob-tier-num\">02 &amp; 03</span>\n          <div class=\"reading-mob-tier-info\">\n            <h5 class=\"reading-mob-tier-name\">KPI &amp; KRI</h5>\n            <span class=\"reading-mob-tier-action\">PERFORMANCE &amp; RISK WARNING</span>\n          </div>\n        </div>\n        <p class=\"reading-mob-tier-desc\"><strong>KPI:</strong> วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ &middot; <strong>KRI:</strong> สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต</p>\n      </div>\n\n      <div class=\"reading-mob-tier-card reading-tier-kpi\">\n        <div class=\"reading-mob-tier-head\">\n          <span class=\"reading-mob-tier-num\">01</span>\n          <div class=\"reading-mob-tier-info\">\n            <h5 class=\"reading-mob-tier-name\">METRIC</h5>\n            <span class=\"reading-mob-tier-action\">MEASURE &middot; FOUNDATION</span>\n          </div>\n        </div>\n        <p class=\"reading-mob-tier-desc\">ค่าที่กำหนดและวัดได้ (Defined measurable value): จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย (count, percentage, ratio or average) &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>\n      </div>\n    </div>\n  </div>\n</div>\n`,",
+        "sha256": "f119ade6524dd5dd0c2e009caf452122eda0ad3f3f7987a84aa8083e22276090"
+      },
+      {
+        "path": "js/core/diagram-generator.js",
+        "anchor": "effectivenessHierarchy / dashboard refresh claim",
+        "resolvedSymbol": "effectivenessHierarchy",
+        "locatorType": "Phase2 descriptive locator resolved to current JS template symbol, not an HTML anchor",
+        "exists": true,
+        "anchorFound": true,
+        "line": 1681,
+        "text": "effectivenessHierarchy: `\n<div class=\"reading-diagram-card reading-measurement-system\" data-diagram=\"effectivenessHierarchy\" role=\"region\" aria-label=\"Cybersecurity Measurement Architecture: 6-Part Framework\">\n  <div class=\"reading-diagram-header\">\n    <span class=\"reading-diagram-tag\">Measurement Architecture</span>\n    <h4 class=\"reading-diagram-title\">Cybersecurity Measurement, Visualization &amp; Communication Architecture</h4>\n  </div>\n  <div class=\"reading-diagram-svg-wrap reading-diag-desktop\">\n    <svg viewBox=\"0 0 840 405\" class=\"reading-diagram-svg\" aria-label=\"6-concept cybersecurity measurement architecture: Metric to Report\" role=\"img\">\n      <g>\n        <rect x=\"40\" y=\"15\" width=\"760\" height=\"74\" rx=\"8\" class=\"diag-box diag-box-banner\" />\n        <g transform=\"translate(58, 28)\" stroke=\"var(--blue, #3b82f6)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/>\n          <polyline points=\"14 2 14 8 20 8\"/>\n          <line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"/>\n          <line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"/>\n        </g>\n        <text x=\"96\" y=\"44\" class=\"diag-step-num\">06</text>\n        <text x=\"130\" y=\"44\" class=\"diag-text-title\">REPORT</text>\n        <text x=\"200\" y=\"44\" class=\"diag-text-action\">COMMUNICATE &amp; RECOMMEND</text>\n        <text x=\"130\" y=\"68\" class=\"diag-text-sub\">เอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)</text>\n      </g>\n\n      <line x1=\"420\" y1=\"89\" x2=\"420\" y2=\"105\" stroke=\"var(--line, #334155)\" stroke-width=\"2\" stroke-dasharray=\"3,3\" />\n\n      <g>\n        <rect x=\"40\" y=\"105\" width=\"370\" height=\"84\" rx=\"8\" class=\"diag-box diag-box-banner\" />\n        <g transform=\"translate(56, 118)\" stroke=\"var(--blue, #3b82f6)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <rect x=\"3\" y=\"3\" width=\"7\" height=\"9\" rx=\"1\"/>\n          <rect x=\"14\" y=\"3\" width=\"7\" height=\"5\" rx=\"1\"/>\n          <rect x=\"14\" y=\"12\" width=\"7\" height=\"9\" rx=\"1\"/>\n          <rect x=\"3\" y=\"16\" width=\"7\" height=\"5\" rx=\"1\"/>\n        </g>\n        <text x=\"92\" y=\"134\" class=\"diag-step-num\">04</text>\n        <text x=\"124\" y=\"134\" class=\"diag-text-title\">DASHBOARD</text>\n        <text x=\"226\" y=\"134\" class=\"diag-text-action\">VISUALIZE</text>\n        <text x=\"56\" y=\"158\" class=\"diag-text-sub\">ภาพรวมตามรอบอัปเดต (Refresh cadence)</text>\n        <text x=\"56\" y=\"175\" class=\"diag-text-sub\">แสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน</text>\n      </g>\n\n      <g>\n        <rect x=\"430\" y=\"105\" width=\"370\" height=\"84\" rx=\"8\" class=\"diag-box diag-box-banner\" />\n        <g transform=\"translate(446, 118)\" stroke=\"var(--blue, #3b82f6)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\"/>\n          <rect x=\"8\" y=\"2\" width=\"8\" height=\"4\" rx=\"1\"/>\n          <path d=\"m9 14 2 2 4-4\"/>\n        </g>\n        <text x=\"482\" y=\"134\" class=\"diag-step-num\">05</text>\n        <text x=\"514\" y=\"134\" class=\"diag-text-title\">SCORECARD</text>\n        <text x=\"614\" y=\"134\" class=\"diag-text-action\">COMPARE TARGETS</text>\n        <text x=\"446\" y=\"158\" class=\"diag-text-sub\">ตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย</text>\n        <text x=\"446\" y=\"175\" class=\"diag-text-sub\">ชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้</text>\n      </g>\n\n      <line x1=\"420\" y1=\"189\" x2=\"420\" y2=\"205\" stroke=\"var(--line, #334155)\" stroke-width=\"2\" stroke-dasharray=\"3,3\" />\n\n      <g>\n        <rect x=\"40\" y=\"205\" width=\"370\" height=\"84\" rx=\"8\" class=\"diag-box diag-box-banner\" />\n        <g transform=\"translate(56, 218)\" stroke=\"var(--blue, #3b82f6)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <circle cx=\"12\" cy=\"12\" r=\"10\"/>\n          <circle cx=\"12\" cy=\"6\" r=\"6\"/>\n          <circle cx=\"12\" cy=\"2\" r=\"2\"/>\n        </g>\n        <text x=\"92\" y=\"234\" class=\"diag-step-num\">02</text>\n        <text x=\"124\" y=\"234\" class=\"diag-text-title\">KPI</text>\n        <text x=\"160\" y=\"234\" class=\"diag-text-action\">PERFORMANCE</text>\n        <text x=\"56\" y=\"258\" class=\"diag-text-sub\">วัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ</text>\n        <text x=\"56\" y=\"275\" class=\"diag-text-sub\">ตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?</text>\n      </g>\n\n      <g>\n        <rect x=\"430\" y=\"205\" width=\"370\" height=\"84\" rx=\"8\" class=\"diag-box diag-box-banner\" />\n        <g transform=\"translate(446, 218)\" stroke=\"#f59e0b\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>\n          <line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"/>\n          <line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"/>\n        </g>\n        <text x=\"482\" y=\"234\" class=\"diag-step-num\">03</text>\n        <text x=\"514\" y=\"234\" class=\"diag-text-title\">KRI</text>\n        <text x=\"554\" y=\"234\" class=\"diag-text-action diag-action-amber\">RISK WARNING</text>\n        <text x=\"446\" y=\"258\" class=\"diag-text-sub\">สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น</text>\n        <text x=\"446\" y=\"275\" class=\"diag-text-sub\">ตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?</text>\n      </g>\n\n      <line x1=\"420\" y1=\"289\" x2=\"420\" y2=\"305\" stroke=\"var(--line, #334155)\" stroke-width=\"2\" stroke-dasharray=\"3,3\" />\n\n      <g>\n        <rect x=\"40\" y=\"305\" width=\"760\" height=\"80\" rx=\"8\" class=\"diag-box diag-box-blue\" />\n        <g transform=\"translate(58, 320)\" stroke=\"var(--blue, #3b82f6)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n          <path d=\"m12 14 4-4\"/>\n          <path d=\"M3.34 19a10 10 0 1 1 17.32 0\"/>\n        </g>\n        <text x=\"96\" y=\"336\" class=\"diag-step-num\">01</text>\n        <text x=\"130\" y=\"336\" class=\"diag-text-title\">METRIC</text>\n        <text x=\"200\" y=\"336\" class=\"diag-text-action\">MEASURE &middot; FOUNDATION</text>\n        <text x=\"130\" y=\"358\" class=\"diag-text-sub\">ค่าที่กำหนดและวัดได้ (Defined measurable value)</text>\n        <text x=\"130\" y=\"374\" class=\"diag-text-sub\">คุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</text>\n      </g>\n    </svg>\n  </div>\n  <div class=\"reading-diag-mobile reading-mobile-stack\" aria-label=\"Measurement Architecture: 6-Part Framework\">\n    <div class=\"reading-mob-stack-list\">\n      <div class=\"reading-mob-tier-card reading-tier-report\">\n        <div class=\"reading-mob-tier-head\">\n          <span class=\"reading-mob-tier-num\">06</span>\n          <div class=\"reading-mob-tier-info\">\n            <h5 class=\"reading-mob-tier-name\">REPORT</h5>\n            <span class=\"reading-mob-tier-action\">COMMUNICATE &amp; RECOMMEND</span>\n          </div>\n        </div>\n        <p class=\"reading-mob-tier-desc\">เอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร</p>\n      </div>\n\n      <div class=\"reading-mob-tier-card reading-tier-dashboard\">\n        <div class=\"reading-mob-tier-head\">\n          <span class=\"reading-mob-tier-num\">04 &amp; 05</span>\n          <div class=\"reading-mob-tier-info\">\n            <h5 class=\"reading-mob-tier-name\">DASHBOARD &amp; SCORECARD</h5>\n            <span class=\"reading-mob-tier-action\">VISUALIZE &amp; COMPARE</span>\n          </div>\n        </div>\n        <p class=\"reading-mob-tier-desc\"><strong>Dashboard:</strong> แสดงผลกราฟิกตามรอบอัปเดต (Periodic / near-real-time) &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>\n      </div>\n\n      <div class=\"reading-mob-tier-card reading-tier-kri\">\n        <div class=\"reading-mob-tier-head\">\n          <span class=\"reading-mob-tier-num\">02 &amp; 03</span>\n          <div class=\"reading-mob-tier-info\">\n            <h5 class=\"reading-mob-tier-name\">KPI &amp; KRI</h5>\n            <span class=\"reading-mob-tier-action\">PERFORMANCE &amp; RISK WARNING</span>\n          </div>\n        </div>\n        <p class=\"reading-mob-tier-desc\"><strong>KPI:</strong> วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ &middot; <strong>KRI:</strong> สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต</p>\n      </div>\n\n      <div class=\"reading-mob-tier-card reading-tier-kpi\">\n        <div class=\"reading-mob-tier-head\">\n          <span class=\"reading-mob-tier-num\">01</span>\n          <div class=\"reading-mob-tier-info\">\n            <h5 class=\"reading-mob-tier-name\">METRIC</h5>\n            <span class=\"reading-mob-tier-action\">MEASURE &middot; FOUNDATION</span>\n          </div>\n        </div>\n        <p class=\"reading-mob-tier-desc\">ค่าที่กำหนดและวัดได้ (Defined measurable value): จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย (count, percentage, ratio or average) &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>\n      </div>\n    </div>\n  </div>\n</div>\n`,",
+        "sha256": "f119ade6524dd5dd0c2e009caf452122eda0ad3f3f7987a84aa8083e22276090"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-2-batch-a",
+        "id": "ACC-D2-02",
+        "path": "content/isc2-cc-2026/reading/domain-2.md",
+        "after": "**รอบอัปเดต (Refresh cadence):** Dashboard อาจอัปเดตเป็นระยะหรือใกล้เวลาจริง ขึ้นอยู่กับการเก็บข้อมูลและการรายงาน ควรตรวจเวลาอัปเดตของข้อมูล / A dashboard may refresh periodically or near real time, depending on data collection and reporting; check when its data was updated.\n\n<div class=\"reading-semantic-diagram\" data-diagram=\"effectivenessHierarchy\"></div>",
+        "count": 1,
+        "line": 562,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-2-batch-a",
+        "id": "ACC-D2-02",
+        "path": "content/isc2-cc-2026/reading/domain-2.md",
+        "after": "| **Dashboard** | \"Refresh cadence varies\", \"Operational view\", \"Visual representation\" | แสดงภาพรวมผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน โดยความสดของข้อมูลขึ้นกับรอบอัปเดต (Data freshness depends on refresh cadence) | ตัวอย่างหน้าจอ SOC ที่ตั้งค่าให้อัปเดตใกล้เวลาจริง (Illustrative near-real-time SOC view) |",
+        "count": 1,
+        "line": 573,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-2-batch-a",
+        "id": "ACC-D2-02",
+        "path": "content/isc2-cc-2026/reading/domain-2.md",
+        "after": "<div class=\"reading-distinction-desc\">Visualize — นำเสนอภาพรวมและแนวโน้มตามรอบอัปเดต (Periodic / near-real-time)</div>",
+        "count": 1,
+        "line": 749,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-2-batch-a",
+        "id": "ACC-D2-02",
+        "path": "js/core/diagram-generator.js",
+        "after": "<text x=\"56\" y=\"158\" class=\"diag-text-sub\">ภาพรวมตามรอบอัปเดต (Refresh cadence)</text>",
+        "count": 1,
+        "line": 1716,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-2-batch-a",
+        "id": "ACC-D2-02",
+        "path": "js/core/diagram-generator.js",
+        "after": "<text x=\"130\" y=\"358\" class=\"diag-text-sub\">ค่าที่กำหนดและวัดได้ (Defined measurable value)</text>",
+        "count": 1,
+        "line": 1775,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-2-batch-a",
+        "id": "ACC-D2-02",
+        "path": "js/core/diagram-generator.js",
+        "after": "<p class=\"reading-mob-tier-desc\"><strong>Dashboard:</strong> แสดงผลกราฟิกตามรอบอัปเดต (Periodic / near-real-time) &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>",
+        "count": 1,
+        "line": 1801,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-2-batch-a",
+        "id": "ACC-D2-02",
+        "path": "js/core/diagram-generator.js",
+        "after": "<p class=\"reading-mob-tier-desc\">ค่าที่กำหนดและวัดได้ (Defined measurable value): จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย (count, percentage, ratio or average) &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>",
+        "count": 1,
+        "line": 1823,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ACC-D3-01",
+    "domain": 3,
+    "objective": "3.1",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — verified",
+    "reason": "Explicit Helpdesk policy, obsolete/conflicting versus justified common access, no universal revoke-all order, verified effect; mobile Mover paragraph matches desktop obsolete-access intent. Legacy mandatory-looking JML graphic is separate A04.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "anchor": "topic-3-1-jml-lifecycle",
+        "exists": true,
+        "anchorFound": true,
+        "line": 9,
+        "text": "<h3 id=\"topic-3-1-jml-lifecycle\">3.1.1 IAM Overview &amp; The JML Lifecycle: วงจรชีวิตตัวตนดิจิทัล</h3>\n\n**IAM (Identity and Access Management)** คือกรอบนโยบาย กระบวนการ และเทคโนโลยีที่ใช้เพื่อกำกับดูแลว่า *\"ใคร (Who)\"* สามารถเข้าถึง *\"ทรัพยากรใด (What)\"* ได้บ้าง ภายใต้ *\"เงื่อนไขใด (Under what conditions)\"* เพื่อให้มั่นใจว่าผู้ใช้ที่ถูกต้องจะสามารถเข้าถึงทรัพยากรที่จำเป็นได้ในเวลาที่เหมาะสม และป้องกันไม่ให้ผู้ไม่มีสิทธิ์เข้าถึงข้อมูลขององค์กร\n\nกระบวนการหลักของ IAM ทำงานสอดประสานกันเป็นวงจรต่อเนื่อง 5 ขั้นตอนหลัก:\n<span class=\"reading-math-formula\">Identity → Access → Control → Review → Remove</span>\n\nในทางปฏิบัติระดับสากลและองค์กรธุรกิจ วงจรชีวิตของพนักงานและตัวตนดิจิทัลถูกสรุปผ่านโมเดล **JML (Joiner, Mover, Leaver)**:\n\n<div class=\"reading-semantic-diagram\" data-diagram=\"iamLifecycle\"></div>\n\n<section class=\"reading-concept-unit\">\n<h4>Joiner (เข้าทำงานใหม่):</h4>\n\n- พนักงานใหม่เริ่มงาน ต้องผ่านขั้นตอนการสร้างตัวตนดิจิทัล (Identity Creation) และการจัดสรรสิทธิ์เริ่มต้นตามตำแหน่งงาน (**Provisioning**)\n- สิ่งสำคัญที่สุด: องค์กรต้อง **Define Roles and Responsibilities** ให้ชัดเจนก่อนที่จะทำการให้สิทธิ์ (Grant Access)\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Mover (เปลี่ยนบทบาท / เลื่อนตำแหน่ง / ย้ายแผนก):</h4>\n\n- พนักงานเปลี่ยนตำแหน่งหรือย้ายสายงาน ต้องได้รับการปรับปรุงสิทธิ์ให้ตรงกับหน้าที่ใหม่\n- ความเสี่ยงสูงสุดของขั้นตอนนี้คือ **Privilege Accumulation** (หรือ **Privilege Creep**): การได้รับสิทธิ์ใหม่เพิ่มเข้ามาแต่สิทธิ์เดิมที่หมดความจำเป็นไม่ถูกเพิกถอน (Obsolete access remains)\n\n<div class=\"reading-scenario-inline\">\n  <p><strong>สถานการณ์สมมติ (Finance-to-IT Transfer):</strong> นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ</p>\n  <p><strong>Illustrative policy:</strong> Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.</p>\n</div>\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Leaver (พ้นสภาพการเป็นพนักงาน / สิ้นสุดสัญญาจ้าง):</h4>\n\n- พนักงานลาออก ถูกเลิกจ้าง หรือสัญญาจ้างสิ้นสุดลง ต้องเข้าสู่กระบวนการเพิกถอนสิทธิ์อย่างรวดเร็วและสมบูรณ์ (**Deprovisioning**)\n- ต้องระงับบัญชี (Disable Account), เพิกถอนสิทธิ์การเข้าถึงทั้งหมด และยึดอุปกรณ์คืน เพื่อป้องกันการเข้าถึงโดยไม่ได้รับอนุญาต\n\n</section>\n\n<div class=\"reading-callout tip\">\n  <div class=\"reading-callout-header\">\n    <svg class=\"reading-callout-icon\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line></svg>\n    <span>กฎทองสำหรับห้องสอบ: จุดเริ่มต้นของ IAM</span>\n  </div>\n  <p>ก่อนที่องค์กรจะทำการ <strong>Grant Access</strong> ให้กับผู้ใช้รายใดก็ตาม หากยังไม่ทราบบทบาทและสิทธิ์ที่งานต้องใช้ ควร <strong>\"Define Roles and Responsibilities\"</strong> เพื่อกำหนดขอบเขตหน้าที่และความรับผิดชอบให้ชัดเจนเสียก่อน</p>\n</div>\n",
+        "sha256": "e8c60a7db03e637150f78921d1dffbb8c64f29c86a643e11993f699fb3ee2580"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ACC-D3-01",
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "after": "การได้รับสิทธิ์ใหม่เพิ่มเข้ามาแต่สิทธิ์เดิมที่หมดความจำเป็นไม่ถูกเพิกถอน (Obsolete access remains)",
+        "count": 1,
+        "line": 32,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ACC-D3-01",
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "after": "  <p><strong>สถานการณ์สมมติ (Finance-to-IT Transfer):</strong> นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ</p>\n  <p><strong>Illustrative policy:</strong> Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.</p>",
+        "count": 1,
+        "line": 35,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ACC-D3-01",
+        "path": "js/core/diagram-generator.js",
+        "after": "<p class=\"reading-mob-tier-desc\">ทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)</p>",
+        "count": 1,
+        "line": 1914,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ACC-D3-01",
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "after": "พนักงานเปลี่ยนบทบาทหรือย้ายฝ่าย (ถอนสิทธิ์ที่หมดความจำเป็นและปรับให้ตรงหน้าที่ใหม่ตามนโยบาย / Revoke obsolete access and align rights with the new duties under policy)",
+        "count": 1,
+        "line": 222,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ACC-D4-02",
+    "domain": 4,
+    "objective": "4.1",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — requires revision",
+    "reason": "Reliable stream/failure/crypto/application caveats and conditional table/review speed wording are present; mobile OSI Transport paragraph still contrasts reliable TCP with fast UDP (A09), so consistency closure requires revision.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "anchor": "topic-4-1-tcp-vs-udp",
+        "exists": true,
+        "anchorFound": true,
+        "line": 324,
+        "text": "<h3 id=\"topic-4-1-tcp-vs-udp\">4.1.6 Transport Layer Protocols (TCP vs. UDP): โพรโทคอลในระดับการขนส่ง</h3>\n\nในระดับ Transport Layer มี 2 โพรโทคอลหลักที่ทำหน้าที่แตกต่างกันอย่างสิ้นเชิง:\n\n<section class=\"reading-concept-unit\">\n<h4>TCP (Transmission Control Protocol):</h4>\n\n- **Connection-Oriented:** ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (**3-Way Handshake: SYN → SYN-ACK → ACK**)\n- **Reliable Delivery:** ให้บริการข้อมูลไบต์แบบเรียงลำดับและเชื่อถือได้ ด้วยลำดับหมายเลขและการส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว ความเชื่อถือได้ของ TCP ไม่ได้รับรองว่าธุรกรรมในแอปสำเร็จ หรือให้ความลับและการตรวจความถูกต้องเชิงคริปโต / TCP provides a reliable, in-order byte stream with sequencing and retransmission, but connections can fail. Transport reliability alone does not provide cryptographic protection or confirm application transaction completion.\n- **Flow &amp; Congestion Control:** มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\n- มักใช้กับงานที่ต้องการข้อมูลเรียงลำดับและการส่งซ้ำ เช่น Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP) / Common uses needing ordered delivery and retransmission.\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>UDP (User Datagram Protocol):</h4>\n\n- **Connectionless:** ไม่มีการสร้างการเชื่อมต่อล่วงหน้า ไม่มีการจับมือ (No Handshake) สามารถส่งข้อมูลออกไปได้ทันที\n- **Unreliable / Best-Effort:** ไม่รับประกันว่าข้อมูลจะถึงปลายทางหรือไม่ ไม่มีการเรียงลำดับใหม่ และไม่มีการส่งซ้ำ\n- **Low Overhead:** UDP มี Header 8 ไบต์ เทียบกับ TCP อย่างน้อย 20 ไบต์ แต่ไม่ได้รับประกันว่าจะเร็วกว่า; ความเร็วและความหน่วงขึ้นกับเครือข่ายและแอป / UDP has an 8-byte header versus TCP’s minimum 20 bytes; actual speed and latency depend on the network and application.\n- เหมาะสำหรับงานที่ต้องการความเร็วแบบเรียลไทม์ และยอมรับการสูญเสียข้อมูลบางส่วนได้: Video/Audio Streaming, การโทรผ่านอินเทอร์เน็ต (VoIP), เกมออนไลน์, บริการค้นหาชื่อโดเมน (DNS Queries), การแจกไอพี (DHCP), และการตรวจสอบสถานะ (SNMP)\n\n</section>\n\n<h4 class=\"reading-concept-group-title\">ตารางเปรียบเทียบเชิงลึก TCP vs. UDP:</h4>\n\n| <div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**Feature**</span><span class=\"reading-term-th\">(คุณลักษณะ)</span></div> | <div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**TCP**</span><span class=\"reading-term-th\">(Transmission Control Protocol)</span></div> | <div class=\"reading-bilingual-term\"><span class=\"reading-term-en\">**UDP**</span><span class=\"reading-term-th\">(User Datagram Protocol)</span></div> |\n| :--- | :--- | :--- |\n| **Connection State** | Connection-Oriented (ต้องเชื่อมต่อก่อน) | Connectionless (ส่งข้อมูลได้ทันที) |\n| **Handshake** | 3-Way Handshake (SYN, SYN-ACK, ACK) | ไม่มีกระบวนการ Handshake |\n| **Data Reliability** | ข้อมูลไบต์เรียงลำดับและส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว (Reliable ordered stream; connection failure possible) | Best-Effort; UDP เองไม่รับประกันลำดับหรือส่งซ้ำ (No built-in ordering/retransmission) |\n| **Header Size** | 20–60 Bytes (ซับซ้อน มีการควบคุม) | 8 Bytes คงที่ (เรียบง่าย น้ำหนักเบา) |\n| **Speed &amp; Latency** | มีภาระจากกลไกความเชื่อถือได้; ผลจริงขึ้นกับสภาพใช้งาน (Context-dependent) | มีภาระพื้นฐานน้อยกว่า แต่ไม่รับประกันความเร็วหรือความหน่วง (No universal speed/latency guarantee) |\n| **Typical Use Cases** | เว็บ, อีเมล, การโอนย้ายไฟล์, ฐานข้อมูล | วิดีโอสตรีมมิง, VoIP, DNS, DHCP, เกมออนไลน์ |\n",
+        "sha256": "c7e57a020dc5fc685e4e3d9422cd69460f85cb88b66c7128f73c8d79c84d0f6b"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-02",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "- **Reliable Delivery:** ให้บริการข้อมูลไบต์แบบเรียงลำดับและเชื่อถือได้ ด้วยลำดับหมายเลขและการส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว ความเชื่อถือได้ของ TCP ไม่ได้รับรองว่าธุรกรรมในแอปสำเร็จ หรือให้ความลับและการตรวจความถูกต้องเชิงคริปโต / TCP provides a reliable, in-order byte stream with sequencing and retransmission, but connections can fail. Transport reliability alone does not provide cryptographic protection or confirm application transaction completion.",
+        "count": 1,
+        "line": 332,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-02",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "- มักใช้กับงานที่ต้องการข้อมูลเรียงลำดับและการส่งซ้ำ เช่น Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP) / Common uses needing ordered delivery and retransmission.",
+        "count": 1,
+        "line": 334,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-02",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "- **Low Overhead:** UDP มี Header 8 ไบต์ เทียบกับ TCP อย่างน้อย 20 ไบต์ แต่ไม่ได้รับประกันว่าจะเร็วกว่า; ความเร็วและความหน่วงขึ้นกับเครือข่ายและแอป / UDP has an 8-byte header versus TCP’s minimum 20 bytes; actual speed and latency depend on the network and application.",
+        "count": 1,
+        "line": 343,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-02",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "| **Data Reliability** | ข้อมูลไบต์เรียงลำดับและส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว (Reliable ordered stream; connection failure possible) | Best-Effort; UDP เองไม่รับประกันลำดับหรือส่งซ้ำ (No built-in ordering/retransmission) |",
+        "count": 1,
+        "line": 354,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-02",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "| **Speed &amp; Latency** | มีภาระจากกลไกความเชื่อถือได้; ผลจริงขึ้นกับสภาพใช้งาน (Context-dependent) | มีภาระพื้นฐานน้อยกว่า แต่ไม่รับประกันความเร็วหรือความหน่วง (No universal speed/latency guarantee) |",
+        "count": 1,
+        "line": 356,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-02",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "Connection-oriented, 3-way handshake, reliable ordered byte stream; การเชื่อมต่ออาจล้มเหลว และไม่ยืนยันว่าธุรกรรมในแอปสำเร็จ (Connection failure possible; no application-completion guarantee)",
+        "count": 1,
+        "line": 1066,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-02",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "Connectionless, ไม่มีการจับมือ, Best-effort โดยไม่มีการเรียงลำดับหรือส่งซ้ำใน UDP เอง; ความเร็วขึ้นกับเครือข่ายและแอป (Speed depends on network/application)",
+        "count": 1,
+        "line": 1070,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ACC-D4-03",
+    "domain": 4,
+    "objective": "4.2",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — requires revision",
+    "reason": "Main paragraph, four benefit bullets and quick summary corrected; Scenario01 still unconditionally prevents lateral movement, so cross-representation closure remains incomplete (A01).",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "anchor": "topic-4-2-segmentation-blast-radius",
+        "exists": true,
+        "anchorFound": true,
+        "line": 626,
+        "text": "<h3 id=\"topic-4-2-segmentation-blast-radius\">4.2.1 Network Segmentation &amp; Blast Radius Reduction: การแบ่งส่วนเครือข่าย</h3>\n\n<h4 class=\"reading-concept-group-title\">Flat Network (เครือข่ายแบบราบเรียบ):</h4>\nเครือข่ายที่ไม่มีการแบ่งเขตควบคุมภายในอาจเปิดเส้นทางให้ผู้โจมตีเข้าถึงระบบอื่นได้กว้างขึ้น แต่ไม่ได้แปลว่าทุกเครื่องถูกเจาะแล้ว; ผลขึ้นกับการเข้าถึงและมาตรการที่มี / A flat network can expose more reachable systems, but does not prove every host is compromised; reachability and other controls matter.\n\n<h4 class=\"reading-concept-group-title\">Network Segmentation (การแบ่งส่วนเครือข่าย):</h4>\nคือแนวปฏิบัติในการแบ่งเครือข่ายขนาดใหญ่ออกเป็นเครือข่ายย่อย ๆ (Subnetworks หรือ Segments) ที่แยกจากกันในเชิงตรรกะหรือทางกายภาพ และบังคับใช้การควบคุมทราฟฟิกข้ามเขตด้วยไฟร์วอลล์หรือ Access Control Lists (ACLs)\n\n<h4 class=\"reading-concept-group-title\">ประโยชน์หลักของการแบ่งส่วนเครือข่าย:</h4>\n- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** ช่วยลดขอบเขตผลกระทบเมื่อขอบเขตถูกบังคับใช้และทดสอบ แต่ไม่รับประกันว่าจะอยู่ในเซกเมนต์เดียว / Enforced, tested boundaries can reduce impact; they do not guarantee single-segment containment.\n- **Limit Lateral Movement (จำกัดการเคลื่อนที่ในแนวราบ):** จำกัดเส้นทางตามนโยบายที่บังคับใช้จริง; เส้นทางที่ยังอนุญาตหรือจุดควบคุมที่ถูกเจาะอาจเปิดทางได้ ชื่อ VLAN อย่างเดียวไม่ใช่นโยบายบังคับใช้ / Enforcement limits reachable paths; allowed paths or compromised controls can still permit movement. A VLAN label alone is not enforcement.\n- **Traffic Isolation &amp; Performance:** การแยก Broadcast Domain เช่น VLAN อาจลด Broadcast ในแต่ละส่วน แต่ผลด้านประสิทธิภาพขึ้นกับการออกแบบและปริมาณงาน / Separating broadcast domains can reduce local broadcast traffic; performance depends on design and workload.\n- **Compliance &amp; Audit Scope:** การลดขอบเขต เช่น PCI DSS ต้องเป็นไปตามเงื่อนไขของมาตรฐานที่ใช้และตรวจยืนยันประสิทธิผลของการแยก ไม่ได้ลดขอบเขตโดยอัตโนมัติ / Scope reduction depends on applicable requirements and validated segmentation effectiveness; it is not automatic.\n",
+        "sha256": "c7e57a020dc5fc685e4e3d9422cd69460f85cb88b66c7128f73c8d79c84d0f6b"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-03",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "เครือข่ายที่ไม่มีการแบ่งเขตควบคุมภายในอาจเปิดเส้นทางให้ผู้โจมตีเข้าถึงระบบอื่นได้กว้างขึ้น แต่ไม่ได้แปลว่าทุกเครื่องถูกเจาะแล้ว; ผลขึ้นกับการเข้าถึงและมาตรการที่มี / A flat network can expose more reachable systems, but does not prove every host is compromised; reachability and other controls matter.",
+        "count": 1,
+        "line": 629,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-03",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** ช่วยลดขอบเขตผลกระทบเมื่อขอบเขตถูกบังคับใช้และทดสอบ แต่ไม่รับประกันว่าจะอยู่ในเซกเมนต์เดียว / Enforced, tested boundaries can reduce impact; they do not guarantee single-segment containment.",
+        "count": 1,
+        "line": 635,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-03",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "- **Limit Lateral Movement (จำกัดการเคลื่อนที่ในแนวราบ):** จำกัดเส้นทางตามนโยบายที่บังคับใช้จริง; เส้นทางที่ยังอนุญาตหรือจุดควบคุมที่ถูกเจาะอาจเปิดทางได้ ชื่อ VLAN อย่างเดียวไม่ใช่นโยบายบังคับใช้ / Enforcement limits reachable paths; allowed paths or compromised controls can still permit movement. A VLAN label alone is not enforcement.",
+        "count": 1,
+        "line": 636,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-03",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "- **Traffic Isolation &amp; Performance:** การแยก Broadcast Domain เช่น VLAN อาจลด Broadcast ในแต่ละส่วน แต่ผลด้านประสิทธิภาพขึ้นกับการออกแบบและปริมาณงาน / Separating broadcast domains can reduce local broadcast traffic; performance depends on design and workload.",
+        "count": 1,
+        "line": 637,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-03",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "- **Compliance &amp; Audit Scope:** การลดขอบเขต เช่น PCI DSS ต้องเป็นไปตามเงื่อนไขของมาตรฐานที่ใช้และตรวจยืนยันประสิทธิผลของการแยก ไม่ได้ลดขอบเขตโดยอัตโนมัติ / Scope reduction depends on applicable requirements and validated segmentation effectiveness; it is not automatic.",
+        "count": 1,
+        "line": 638,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-03",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "| **Segmentation** | \"Blast radius\", \"Lateral movement\", \"Divide network\" | ช่วยลดผลกระทบและจำกัดเส้นทางเมื่อบังคับใช้/ทดสอบนโยบาย (Risk reduction with enforced/tested policy) | แยกแผนกการเงินออกจากแผนกต้อนรับและตรวจเส้นทางที่อนุญาต/ปฏิเสธ |",
+        "count": 1,
+        "line": 1239,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ACC-D5-01",
+    "domain": 5,
+    "objective": "5.1",
+    "decision": "APPROVE",
+    "status": "Implemented — verified",
+    "reason": "Algorithm-independent Sign/Verify, trusted key association, conditional origin/non-repudiation evidence; no confidentiality or harmless-software guarantee.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "anchor": "topic-5-1-hashing-digital-signatures",
+        "exists": true,
+        "anchorFound": true,
+        "line": 251,
+        "text": "<h3 id=\"topic-5-1-hashing-digital-signatures\">5.1.7 Hashing, Integrity &amp; Digital Signatures: แฮชและความถูกต้องสมบูรณ์</h3>\n\n**Cryptographic Hash Function (ฟังก์ชันแฮชทางวิทยาการรหัสลับ)** คือขั้นตอนวิธีทางคณิตศาสตร์แบบทางเดียว (One-Way Function) ที่แปลงข้อมูลนำเข้าที่มีความยาวเท่าใดก็ได้ ให้กลายเป็นข้อความผลลัพธ์ที่มีความยาวคงที่แน่นอน เรียกว่า **Hash Value, Message Digest, หรือ Fingerprint**\n\n<h4 class=\"reading-concept-group-title\">5 คุณสมบัติสำคัญของฟังก์ชันแฮชทางวิทยาการรหัสลับ:</h4>\n\n1. **ความแน่นอนของผลลัพธ์ (Deterministic):** ข้อมูลนำเข้าชุดเดียวกัน จะได้ค่าแฮชเดิมเสมอทุกครั้ง ไม่มีความสุ่ม\n2. **ความต้านทานต่อการคำนวณย้อนกลับ (Preimage Resistance / One-Way Property):** เมื่อทราบค่าแฮช ไม่สามารถแปลงแฮชย้อนกลับมาเป็นข้อมูลต้นฉบับได้ในทางปฏิบัติ\n3. **ความต้านทานต่อการหาข้อความอื่นที่ได้แฮชเดิม (Second-Preimage Resistance / Weak Collision Resistance):** เมื่อกำหนดข้อความต้นฉบับมาให้ชุดหนึ่ง เป็นไปไม่ได้ในทางคำนวณที่จะหาข้อความอื่นที่แตกต่างกันแต่ได้ค่าแฮชตรงกัน\n4. **ความต้านทานต่อการชนกัน (Collision Resistance / Strong Collision Resistance):** เป็นไปไม่ได้ในทางคำนวณที่จะค้นหาข้อมูลสองชุดใด ๆ ที่แตกต่างกันแต่ให้ค่าแฮชตรงกัน\n5. **ปรากฏการณ์หิมะถล่ม (Avalanche Effect):** หากเปลี่ยนแปลงข้อมูลต้นฉบับเพียงแค่ 1 บิต (เช่น เปลี่ยนตัวพิมพ์เล็กเป็นตัวพิมพ์ใหญ่ หรือเติมจุด) ค่าแฮชที่ได้จะเปลี่ยนไปโดยสิ้นเชิง (มากกว่า 50% ของบิตทั้งหมด)\n\n<section class=\"reading-definition-unit\">\n<h5>Hashing vs. Encryption: ข้อแตกต่างที่ข้อสอบชอบถาม:</h5>\n\n- **Encryption (การเข้ารหัส):** เป็นกระบวนการสองทาง (Two-Way Process) สามารถถอดรหัสกลับมาเป็นข้อความเดิมได้เสมอเมื่อมีกุญแจ วัตถุประสงค์เพื่อรักษา **ความลับ (Confidentiality)**\n- **Hashing (การแฮช):** เป็นกระบวนการทางเดียว (One-Way Process) **ไม่สามารถถอดรหัสกลับได้เด็ดขาด** วัตถุประสงค์เพื่อตรวจสอบ **ความถูกต้องสมบูรณ์ (Integrity)** ว่าข้อมูลไม่ถูกแอบแก้ไขหรือเสียหายระหว่างส่ง\n- **ขั้นตอนวิธีแฮช:** SHA-256 (Secure Hash Algorithm 256 บิต ในตระกูล SHA-2), SHA-3 ส่วน MD5 (128 บิต) และ SHA-1 (160 บิต) ถูกพิสูจน์แล้วว่าเกิดการชนกันได้ง่าย จึงถือว่าไม่ปลอดภัยสำหรับงานความมั่นคงปลอดภัยยุคใหม่\n- **ตัวอย่างการใช้งานตรวจสอบไฟล์ (File Integrity):** การดาวน์โหลดไฟล์ติดตั้งโปรแกรมหรือเฟิร์มแวร์ แล้วนำมาคำนวณค่า SHA-256 เพื่อเปรียบเทียบกับค่า Hash อ้างอิงที่ผู้ผลิตประกาศไว้ หากค่าตรงกันแสดงว่าไฟล์ไม่ถูกมัลแวร์ดัดแปลงระหว่างทาง\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>Password Hashing และบทบาทของ Salt:</h5>\n\n- **ทำไมไม่ควรใช้ SHA-256 แฮชรหัสผ่านโดยตรง:** SHA-256 ออกแบบมาให้ทำงานเร็วมากเพื่อตรวจสอบไฟล์ แต่ความเร็วนี้กลายเป็นจุดอ่อนสำหรับการเก็บรหัสผ่าน เพราะผู้โจมตีสามารถใช้ GPU Cluster คำนวณเดารหัสผ่านได้หลายพันล้านครั้งต่อวินาที\n- **ขั้นตอนวิธีแฮชรหัสผ่านเฉพาะทาง:** องค์กรต้องใช้ขั้นตอนวิธีที่ออกแบบมาให้คำนวณช้า (Work-Factor Tunable) และใช้หน่วยความจำสูง เช่น `Argon2id` (มาตรฐานสูงสุดปัจจุบัน), `bcrypt`, `PBKDF2`, หรือ `scrypt`\n- **การเติมค่าสุ่ม Salt (Cryptographic Salting):** การสร้างสตริงสุ่มความยาวพอเหมาะเฉพาะตัวสำหรับผู้ใช้แต่ละคน แล้วนำไปต่อท้ายรหัสผ่านก่อนเข้าฟังก์ชันแฮช ช่วยป้องกันการโจมตีด้วยตารางคำนวณล่วงหน้า (**Rainbow Tables**) และทำให้ผู้ใช้สองคนที่ตั้งรหัสผ่านเหมือนกัน มีค่าแฮชที่จัดเก็บในฐานข้อมูลแตกต่างกันอย่างสิ้นเชิง\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>Digital Signatures (ลายมือชื่อดิจิทัล):</h5>\n\nกลไก **Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ)** ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n1. **Integrity (ความสมบูรณ์):** ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\n2. **Origin Authentication (การยืนยันแหล่งที่มา):** เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\n3. **Non-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้):** สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\n**กระบวนการทำงานของลายมือชื่อดิจิทัล:**\n- **ผู้ลงนาม (Signer):** ใช้อัลกอริทึม **Sign** กับ Private Key และเอกสาร &rarr; ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\n- **ผู้ตรวจ (Verifier):** ใช้อัลกอริทึม **Verify** กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ &rarr; ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\n**แยกหน้าที่ให้ชัด (Different purposes):** Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\n**ตัวอย่าง (Example):** ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.\n\n</section>\n\n</section>\n\n<section class=\"reading-structure-pilot\">\n\n",
+        "sha256": "bcb60d24584e1eb11bd4a030e91ffe99e5041fab5aa9acae852563d857ae8887"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-01",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "กลไก **Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ)** ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n1. **Integrity (ความสมบูรณ์):** ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\n2. **Origin Authentication (การยืนยันแหล่งที่มา):** เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\n3. **Non-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้):** สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.",
+        "count": 1,
+        "line": 285,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-01",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "- **ผู้ลงนาม (Signer):** ใช้อัลกอริทึม **Sign** กับ Private Key และเอกสาร &rarr; ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\n- **ผู้ตรวจ (Verifier):** ใช้อัลกอริทึม **Verify** กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ &rarr; ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\n**แยกหน้าที่ให้ชัด (Different purposes):** Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\n**ตัวอย่าง (Example):** ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+        "count": 1,
+        "line": 291,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-01",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "- ลายมือชื่อดิจิทัลใช้ Private Key ลงนาม และใช้ Public Key ที่สัมพันธ์กันและเชื่อถือได้ตรวจเอกสารกับลายมือชื่อ ไม่ใช่สูตรทั่วไปว่าเข้ารหัสแฮชแล้วถอดรหัสด้วย Public Key / Sign with the private key; verify the document and signature with the corresponding trusted public key. Signing alone provides no confidentiality.",
+        "count": 1,
+        "line": 1255,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-01",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "- **Digital Signature:** ตรวจความสมบูรณ์และสนับสนุนหลักฐานแหล่งที่มาเมื่อเชื่อถือ Public Key และการควบคุม Private Key ไม่คุ้มครองความลับ / Integrity and origin evidence depend on trusted key association and custody; no confidentiality.",
+        "count": 1,
+        "line": 1454,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ACC-D5-02",
+    "domain": 5,
+    "objective": "5.1",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — verified",
+    "reason": "TPM forms, measurement/enforcement distinction, released drive key and configured protected signing keys; HSM performance/validation/tamper/export are model/policy dependent. Table and scenario04 align.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "anchor": "topic-5-1-tpm-vs-hsm",
+        "exists": true,
+        "anchorFound": true,
+        "line": 304,
+        "text": "<h3 id=\"topic-5-1-tpm-vs-hsm\">5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์</h3>\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\n<section class=\"reading-definition-unit\">\n<h5>TPM (Trusted Platform Module - ISO/IEC 11889):</h5>\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n- ทำหน้าที่สนับสนุน **Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์)** ของแพลตฟอร์ม / Support a platform hardware root of trust.\n- **Measured Boot:** ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน **Secure Boot** ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\n- สร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>HSM (Hardware Security Module):</h5>\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n- สร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\n- แอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\n- อัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\n- การรับรอง **FIPS 140** ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\n- การป้องกันและตอบสนองต่อการงัดแงะ รวมถึง **Zeroization (การล้างข้อมูลกุญแจ)** ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\n\n</section>\n\n| มิติการเปรียบเทียบ | TPM (Trusted Platform Module) | HSM (Hardware Security Module) |\n| :--- | :--- | :--- |\n| **รูปแบบ (Form)** | Discrete / Integrated / Firmware TPM | PCIe / Network / USB เป็นตัวอย่าง (examples) |\n| **ขอบเขตทั่วไป (Typical scope)** | ความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys) | งานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations) |\n| **งานตัวอย่าง (Example use)** | Measured Boot, ปกป้องกุญแจ BitLocker (key protection) | จัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments) |\n| **มาตรฐาน (Standards)** | ข้อกำหนด TPM: ISO/IEC 11889 (TPM specification) | ตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated) |\n| **การป้องกัน (Protection)** | ขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent) | การป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization) |\n\n<p class=\"reading-table-note\"><strong>เลือกตามหน้าที่ (Choose by purpose):</strong> TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.</p>\n\n</section>\n\n</section>\n\n<section class=\"reading-objective-section reading-structured-objective\" id=\"obj-5-2\">\n\n## Objective 5.2: Understand Security Operations\n\n<p class=\"reading-intro-label\"><svg class=\"reading-label-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg>การปฏิบัติการด้านความมั่นคงปลอดภัย (Security Operations) คือการเฝ้าระวัง วิเคราะห์ ตรวจจับ และรับมือกับภัยคุกคามที่เกิดขึ้นตลอด 24 ชั่วโมง โดยอาศัยข้อมูลโทรมาตร บันทึกเหตุการณ์ และเครื่องมืออัตโนมัติ:</p>\n\n<section class=\"reading-structure-pilot\">\n\n",
+        "sha256": "bcb60d24584e1eb11bd4a030e91ffe99e5041fab5aa9acae852563d857ae8887"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-02",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "การเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.",
+        "count": 1,
+        "line": 306,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-02",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "โมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n- ทำหน้าที่สนับสนุน **Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์)** ของแพลตฟอร์ม / Support a platform hardware root of trust.\n- **Measured Boot:** ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน **Secure Boot** ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\n- สร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.",
+        "count": 1,
+        "line": 311,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-02",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "โมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n- สร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\n- แอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\n- อัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\n- การรับรอง **FIPS 140** ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\n- การป้องกันและตอบสนองต่อการงัดแงะ รวมถึง **Zeroization (การล้างข้อมูลกุญแจ)** ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.",
+        "count": 1,
+        "line": 321,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-02",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "| **รูปแบบ (Form)** | Discrete / Integrated / Firmware TPM | PCIe / Network / USB เป็นตัวอย่าง (examples) |\n| **ขอบเขตทั่วไป (Typical scope)** | ความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys) | งานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations) |\n| **งานตัวอย่าง (Example use)** | Measured Boot, ปกป้องกุญแจ BitLocker (key protection) | จัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments) |\n| **มาตรฐาน (Standards)** | ข้อกำหนด TPM: ISO/IEC 11889 (TPM specification) | ตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated) |\n| **การป้องกัน (Protection)** | ขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent) | การป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization) |\n\n**เลือกตามหน้าที่ (Choose by purpose):** TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+        "count": 0,
+        "line": null,
+        "normalizedPresent": true,
+        "normalizationReason": "Task157 changed the matching note from Markdown strong text to an HTML paragraph; table text and meaning retained."
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-02",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "- **3. TPM vs. HSM:** TPM สนับสนุนความเชื่อถือของแพลตฟอร์ม (Measured Boot / BitLocker) มีได้ทั้ง Discrete, Integrated และ Firmware; HSM ปกป้องและใช้งานกุญแจของแอป/บริการ รูปแบบ การรับรอง และการป้องกันขึ้นกับโมดูล / TPM: platform trust; HSM: application/service key operations, with module-specific capabilities and validation.",
+        "count": 1,
+        "line": 1235,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-02",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "situation: ศูนย์ข้อมูลของสถาบันการเงินต้องการระบบสร้าง ปกป้อง และบริหาร Root CA Keys และ Financial Transaction Keys สำหรับบริการหลายระบบ โดยต้องเลือกรุ่นที่รองรับภาระงานและมีใบรับรอง FIPS 140-3 ตรงตามข้อกำหนดของกรณีนี้ / A financial institution needs shared CA/payment-key operations and must select a module whose capacity and FIPS 140-3 validation meet this case's requirements.",
+        "count": 1,
+        "line": 1293,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-02",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "reasoning: HSM เหมาะกับงานกุญแจของบริการในกรณีนี้ แต่ต้องตรวจความสามารถและใบรับรองของโมดูลที่เลือก ส่วน TPM เน้นความเชื่อถือและกุญแจของแพลตฟอร์ม ไม่ได้จำกัดเฉพาะชิปแยกบนเมนบอร์ด / An HSM fits this service-key use case; verify the selected module's capabilities and certificate. A TPM focuses on platform trust and keys and need not be a discrete motherboard chip.",
+        "count": 1,
+        "line": 1296,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-02",
+        "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+        "after": " * - 04: Platform trust vs. service-key operations (TPM vs. selected HSM)",
+        "count": 1,
+        "line": 8,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-02",
+        "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+        "after": "    situation: \"ศูนย์ข้อมูลของสถาบันการเงินต้องการระบบสร้าง ปกป้อง และบริหาร Root CA Keys และ Financial Transaction Keys สำหรับบริการหลายระบบ โดยต้องเลือกรุ่นที่รองรับภาระงานและมีใบรับรอง FIPS 140-3 ตรงตามข้อกำหนดของกรณีนี้ / A financial institution needs shared CA/payment-key operations and must select a module whose capacity and FIPS 140-3 validation meet this case's requirements.\",",
+        "count": 1,
+        "line": 47,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5",
+        "id": "ACC-D5-02",
+        "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+        "after": "    reasoning: 'HSM เหมาะกับงานกุญแจของบริการในกรณีนี้ แต่ต้องตรวจความสามารถและใบรับรองของโมดูลที่เลือก ส่วน TPM เน้นความเชื่อถือและกุญแจของแพลตฟอร์ม ไม่ได้จำกัดเฉพาะชิปแยกบนเมนบอร์ด / An HSM fits this service-key use case; verify the selected module\\'s capabilities and certificate. A TPM focuses on platform trust and keys and need not be a discrete motherboard chip.'",
+        "count": 1,
+        "line": 50,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ACC-D5-03",
+    "domain": 5,
+    "objective": "5.1",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — verified",
+    "reason": "Rev2; user-addressable Clear, conditional CE/Purge/Destroy, key-copy/plaintext limits, verification versus validation; SSD donation scenario01 aligns in both representations.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "anchor": "topic-5-1-data-sanitization-destruction",
+        "exists": true,
+        "anchorFound": true,
+        "line": 124,
+        "text": "<h3 id=\"topic-5-1-data-sanitization-destruction\">5.1.4 Data Sanitization &amp; NIST SP 800-88: การล้างและทำลายสื่อบันทึกข้อมูล</h3>\n\nเมื่ออุปกรณ์จัดเก็บข้อมูล (Hard Drive, SSD, เทปสำรองข้อมูล, แฟลชไดรฟ์) จะถูกใช้ซ้ำ ส่งต่อ หรือกำจัด ต้องเลือกวิธีให้เหมาะกับสื่อ ความอ่อนไหวของข้อมูล และนโยบายองค์กร **NIST SP 800-88 Rev. 2 (Guidelines for Media Sanitization)** อธิบายการทำให้เข้าถึงข้อมูลเป้าหมายไม่ได้ในทางปฏิบัติภายใต้ระดับความพยายามที่กำหนด ไม่ใช่การรับประกันว่ากู้คืนไม่ได้ 100% ตลอดไป / Select a method for the media, data sensitivity and organizational policy. NIST SP 800-88 Rev. 2 defines sanitization in terms of making target-data access infeasible for a specified level of effort, using three methods:\n\n<section class=\"reading-definition-unit\">\n<h5>1. Clear (การล้างข้อมูลด้วยวิธีเชิงตรรกะ):</h5>\n\nใช้วิธีเชิงตรรกะกับพื้นที่ที่ผู้ใช้เข้าถึงได้ (User-addressable Storage) เพื่อต้านการกู้คืนแบบง่ายผ่านอินเทอร์เฟซปกติ เช่น การเขียนทับเมื่อเหมาะกับสื่อนั้น ไม่ได้แปลว่าครอบคลุมพื้นที่สำรองหรือข้อมูลเดิมทุกตำแหน่งของ SSD / Clear protects against simple, non-invasive recovery through the normal interface. Overwriting is one media-dependent technique; it does not necessarily reach every previous data location on an SSD.\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>2. Purge (การล้างข้อมูลระดับลึก):</h5>\n\nใช้เทคนิคเชิงตรรกะหรือทางกายภาพเพื่อให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ โดยมุ่งให้สื่อยังใช้ต่อได้หากเทคนิคและสื่อนั้นรองรับ / Purge targets infeasible recovery even with advanced laboratory techniques while aiming to retain usability where supported.\n- **Secure Erase / Cryptographic Erase (CE):** ต้องตรวจเทคนิคที่อุปกรณ์รองรับและเงื่อนไขของผู้ผลิต ชื่อคำสั่งอย่างเดียวไม่ยืนยันผล และ CE ล้างกุญแจ ไม่ใช่เขียนทับบล็อกข้อมูลทุกบล็อก / A command name alone does not establish effective purge; CE sanitizes keys rather than overwriting every data block.\n- **Degaussing (การลบล้างสนามแม่เหล็ก):** ใช้ได้กับสื่อแม่เหล็กที่เหมาะสม เช่น HDD หรือเทป ไม่ใช้กับ SSD และอาจทำให้สื่อใช้ต่อไม่ได้ / Degaussing applies to suitable magnetic media, not SSDs, and can leave the media unusable.\n- การส่งต่อหรือบริจาคต้องยอมรับผลล้างข้อมูลตามนโยบายก่อน ไม่ใช่เห็นคำว่า Secure Erase แล้วถือว่าปลอดภัย / Reuse or donation requires an accepted sanitization outcome under policy, not just a reported command name.\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>3. Destroy (การทำลายสื่อทางกายภาพ):</h5>\n\nทำให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ และทำให้สื่อใช้จัดเก็บข้อมูลต่อไม่ได้ เช่น บดย่อยหรือเผาด้วยกระบวนการที่เหมาะกับชนิดสื่อและได้รับอนุมัติ การเจาะรูหรือทำให้อุปกรณ์เปิดไม่ติดเพียงอย่างเดียวไม่ได้พิสูจน์ว่าข้อมูลถูกทำลายครบ / Destroy makes advanced recovery infeasible and leaves the media unusable for storage. Use an approved media-appropriate process; a drilled hole or a device that no longer starts is not proof of effective destruction.\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>Crypto-shredding (การทำลายกุญแจเข้ารหัส):</h5>\n\nการทำลายกุญแจอาจใช้เป็น **Cryptographic Erase (CE)** ซึ่งเป็นเทคนิคของ Purge ไม่ใช่วิธีหลักลำดับที่สี่ ใช้ได้เมื่อข้อมูลเป้าหมายถูกเข้ารหัสอย่างเหมาะสมก่อนจัดเก็บ และล้างกุญแจเป้าหมายที่จำเป็นรวมทุกสำเนาได้อย่างน่าเชื่อถือ ต้องพิจารณาสำรองข้อมูล กุญแจสำรอง และสำเนา Plaintext แยกต่างหากด้วย / CE is a purge technique, not a fourth sanitization method. It depends on suitable encryption before storage and reliable sanitization of all copies of the target keys. Backups, escrowed keys and plaintext copies need separate consideration; CE is not a promise against every future recovery capability.\n\n</section>\n\n**ตรวจผลก่อนยอมรับ (Assurance):** Verification ตรวจว่ากระบวนการเสร็จและมีข้อผิดพลาดหรือไม่ ส่วน Validation ประเมินว่าผลเพียงพอต่อสื่อ ข้อมูล และความเสี่ยงที่กำหนดหรือไม่ หากไม่เพียงพอต้องเลือกดำเนินการเพิ่มเติมก่อนปล่อยสื่อ / Verification checks completion and reported issues; validation decides whether the outcome is effective for the media, data and risk. An inadequate result must not be accepted for release.\n\n| วิธี/เทคนิค (Method/technique) | แนวทาง (Approach) | ขอบเขตผล (Protection goal) | ใช้สื่อต่อ (Reuse) |\n| :--- | :--- | :--- | :--- |\n| **Clear** | เทคนิคเชิงตรรกะ (Logical technique) | ต้านการกู้แบบง่ายผ่านอินเทอร์เฟซปกติ (Simple recovery) | โดยทั่วไปได้ ตามสื่อ/นโยบาย (Usually; media/policy dependent) |\n| **Purge** | เทคนิคที่เหมาะกับสื่อ รวม CE เมื่อครบเงื่อนไข (Media-appropriate technique) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | มุ่งให้ใช้ต่อได้ แต่ขึ้นกับเทคนิค (Intended; technique dependent) |\n| **Destroy** | ทำลายทางกายภาพที่เหมาะสม (Appropriate physical destruction) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | ไม่ได้ (Unusable for storage) |\n| **CE / Crypto-shredding** | เทคนิคของ Purge: ล้างกุญแจเป้าหมาย (Purge technique: key sanitization) | ขึ้นกับการเข้ารหัสและทุกสำเนากุญแจ (Encryption/key-copy conditions) | อาจได้เมื่อสื่อยังทำงานและนโยบายอนุญาต (May be reusable under policy) |\n\n</section>\n\n<section class=\"reading-structure-pilot\">\n\n",
+        "sha256": "bcb60d24584e1eb11bd4a030e91ffe99e5041fab5aa9acae852563d857ae8887"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "เมื่ออุปกรณ์จัดเก็บข้อมูล (Hard Drive, SSD, เทปสำรองข้อมูล, แฟลชไดรฟ์) จะถูกใช้ซ้ำ ส่งต่อ หรือกำจัด ต้องเลือกวิธีให้เหมาะกับสื่อ ความอ่อนไหวของข้อมูล และนโยบายองค์กร **NIST SP 800-88 Rev. 2 (Guidelines for Media Sanitization)** อธิบายการทำให้เข้าถึงข้อมูลเป้าหมายไม่ได้ในทางปฏิบัติภายใต้ระดับความพยายามที่กำหนด ไม่ใช่การรับประกันว่ากู้คืนไม่ได้ 100% ตลอดไป / Select a method for the media, data sensitivity and organizational policy. NIST SP 800-88 Rev. 2 defines sanitization in terms of making target-data access infeasible for a specified level of effort, using three methods:",
+        "count": 1,
+        "line": 126,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "<h5>1. Clear (การล้างข้อมูลด้วยวิธีเชิงตรรกะ):</h5>",
+        "count": 1,
+        "line": 129,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "ใช้วิธีเชิงตรรกะกับพื้นที่ที่ผู้ใช้เข้าถึงได้ (User-addressable Storage) เพื่อต้านการกู้คืนแบบง่ายผ่านอินเทอร์เฟซปกติ เช่น การเขียนทับเมื่อเหมาะกับสื่อนั้น ไม่ได้แปลว่าครอบคลุมพื้นที่สำรองหรือข้อมูลเดิมทุกตำแหน่งของ SSD / Clear protects against simple, non-invasive recovery through the normal interface. Overwriting is one media-dependent technique; it does not necessarily reach every previous data location on an SSD.",
+        "count": 1,
+        "line": 131,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "ใช้เทคนิคเชิงตรรกะหรือทางกายภาพเพื่อให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ โดยมุ่งให้สื่อยังใช้ต่อได้หากเทคนิคและสื่อนั้นรองรับ / Purge targets infeasible recovery even with advanced laboratory techniques while aiming to retain usability where supported.\n- **Secure Erase / Cryptographic Erase (CE):** ต้องตรวจเทคนิคที่อุปกรณ์รองรับและเงื่อนไขของผู้ผลิต ชื่อคำสั่งอย่างเดียวไม่ยืนยันผล และ CE ล้างกุญแจ ไม่ใช่เขียนทับบล็อกข้อมูลทุกบล็อก / A command name alone does not establish effective purge; CE sanitizes keys rather than overwriting every data block.\n- **Degaussing (การลบล้างสนามแม่เหล็ก):** ใช้ได้กับสื่อแม่เหล็กที่เหมาะสม เช่น HDD หรือเทป ไม่ใช้กับ SSD และอาจทำให้สื่อใช้ต่อไม่ได้ / Degaussing applies to suitable magnetic media, not SSDs, and can leave the media unusable.\n- การส่งต่อหรือบริจาคต้องยอมรับผลล้างข้อมูลตามนโยบายก่อน ไม่ใช่เห็นคำว่า Secure Erase แล้วถือว่าปลอดภัย / Reuse or donation requires an accepted sanitization outcome under policy, not just a reported command name.",
+        "count": 1,
+        "line": 138,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "ทำให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ และทำให้สื่อใช้จัดเก็บข้อมูลต่อไม่ได้ เช่น บดย่อยหรือเผาด้วยกระบวนการที่เหมาะกับชนิดสื่อและได้รับอนุมัติ การเจาะรูหรือทำให้อุปกรณ์เปิดไม่ติดเพียงอย่างเดียวไม่ได้พิสูจน์ว่าข้อมูลถูกทำลายครบ / Destroy makes advanced recovery infeasible and leaves the media unusable for storage. Use an approved media-appropriate process; a drilled hole or a device that no longer starts is not proof of effective destruction.",
+        "count": 1,
+        "line": 148,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "การทำลายกุญแจอาจใช้เป็น **Cryptographic Erase (CE)** ซึ่งเป็นเทคนิคของ Purge ไม่ใช่วิธีหลักลำดับที่สี่ ใช้ได้เมื่อข้อมูลเป้าหมายถูกเข้ารหัสอย่างเหมาะสมก่อนจัดเก็บ และล้างกุญแจเป้าหมายที่จำเป็นรวมทุกสำเนาได้อย่างน่าเชื่อถือ ต้องพิจารณาสำรองข้อมูล กุญแจสำรอง และสำเนา Plaintext แยกต่างหากด้วย / CE is a purge technique, not a fourth sanitization method. It depends on suitable encryption before storage and reliable sanitization of all copies of the target keys. Backups, escrowed keys and plaintext copies need separate consideration; CE is not a promise against every future recovery capability.",
+        "count": 1,
+        "line": 155,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "**ตรวจผลก่อนยอมรับ (Assurance):** Verification ตรวจว่ากระบวนการเสร็จและมีข้อผิดพลาดหรือไม่ ส่วน Validation ประเมินว่าผลเพียงพอต่อสื่อ ข้อมูล และความเสี่ยงที่กำหนดหรือไม่ หากไม่เพียงพอต้องเลือกดำเนินการเพิ่มเติมก่อนปล่อยสื่อ / Verification checks completion and reported issues; validation decides whether the outcome is effective for the media, data and risk. An inadequate result must not be accepted for release.\n\n| วิธี/เทคนิค (Method/technique) | แนวทาง (Approach) | ขอบเขตผล (Protection goal) | ใช้สื่อต่อ (Reuse) |",
+        "count": 1,
+        "line": 159,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "| **Clear** | เทคนิคเชิงตรรกะ (Logical technique) | ต้านการกู้แบบง่ายผ่านอินเทอร์เฟซปกติ (Simple recovery) | โดยทั่วไปได้ ตามสื่อ/นโยบาย (Usually; media/policy dependent) |\n| **Purge** | เทคนิคที่เหมาะกับสื่อ รวม CE เมื่อครบเงื่อนไข (Media-appropriate technique) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | มุ่งให้ใช้ต่อได้ แต่ขึ้นกับเทคนิค (Intended; technique dependent) |\n| **Destroy** | ทำลายทางกายภาพที่เหมาะสม (Appropriate physical destruction) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | ไม่ได้ (Unusable for storage) |\n| **CE / Crypto-shredding** | เทคนิคของ Purge: ล้างกุญแจเป้าหมาย (Purge technique: key sanitization) | ขึ้นกับการเข้ารหัสและทุกสำเนากุญแจ (Encryption/key-copy conditions) | อาจได้เมื่อสื่อยังทำงานและนโยบายอนุญาต (May be reusable under policy) |",
+        "count": 1,
+        "line": 163,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "- **5. Clear vs. Purge vs. Destroy:** Clear มุ่งต้านการกู้แบบง่าย; Purge มุ่งให้การกู้ระดับแล็บไม่อาจทำได้ในทางปฏิบัติ; Destroy เพิ่มการทำให้สื่อใช้จัดเก็บต่อไม่ได้ ทุกวิธีต้องเหมาะกับสื่อและตรวจผล / Clear targets simple recovery; Purge targets infeasible advanced recovery; Destroy also makes the media unusable. Match the method to the media and assess the outcome.",
+        "count": 1,
+        "line": 1237,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "- บนคลาวด์หรือไดรฟ์เสมือน CE / Crypto-shredding อาจเหมาะเมื่อครบเงื่อนไขการเข้ารหัสและการล้างกุญแจรวมสำเนา ไม่ใช่คำตอบอัตโนมัติเพียงเพราะเข้าไม่ถึงฮาร์ดแวร์ / For cloud or virtual storage, consider CE only when encryption and key-sanitization conditions are met; lack of physical access alone does not make it sufficient.",
+        "count": 1,
+        "line": 1248,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "situation: โรงพยาบาลจะบริจาค SSD ที่เคยเก็บข้อมูลผู้ป่วย ต้องการให้การกู้ข้อมูลระดับแล็บไม่อาจทำได้ในทางปฏิบัติและให้ไดรฟ์ยังใช้ต่อได้ โดยต้องตรวจวิธีที่รุ่นนั้นรองรับและยอมรับผลตามนโยบายก่อนส่งต่อ / A hospital plans to donate a patient-data SSD. It needs infeasible advanced recovery while retaining usability, subject to a supported technique and an accepted sanitization outcome.\nquestion: ตาม NIST SP 800-88 Rev. 2 วิธีใดตรงกับเป้าหมายของกรณีนี้? / Which sanitization method matches this case's goal?\nanswer: Purge (ใช้เทคนิคที่เหมาะกับ SSD และตรวจผลแล้ว / SSD-appropriate technique with verified and validated results)\nreasoning: Purge ตรงกับเป้าหมายการกู้ระดับแล็บและการใช้สื่อต่อ ต้องเลือกเทคนิคที่ SSD รองรับ โดย CE ใช้ได้เมื่อครบเงื่อนไขการเข้ารหัสและกุญแจ การ Degauss ไม่ใช้กับ SSD และชื่อ Secure Erase อย่างเดียวไม่พิสูจน์ผล ต้อง Verification และ Validation ก่อนยอมรับ / Purge matches the advanced-recovery goal while aiming to retain usability. Select a supported SSD technique; CE requires appropriate encryption and key conditions. Degaussing is unsuitable for SSDs, and a Secure Erase label alone is not proof. Verify completion and validate effectiveness.",
+        "count": 1,
+        "line": 1263,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-03",
+        "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+        "after": "    situation: 'โรงพยาบาลจะบริจาค SSD ที่เคยเก็บข้อมูลผู้ป่วย ต้องการให้การกู้ข้อมูลระดับแล็บไม่อาจทำได้ในทางปฏิบัติและให้ไดรฟ์ยังใช้ต่อได้ โดยต้องตรวจวิธีที่รุ่นนั้นรองรับและยอมรับผลตามนโยบายก่อนส่งต่อ / A hospital plans to donate a patient-data SSD. It needs infeasible advanced recovery while retaining usability, subject to a supported technique and an accepted sanitization outcome.',\n    question: 'ตาม NIST SP 800-88 Rev. 2 วิธีใดตรงกับเป้าหมายของกรณีนี้? / Which sanitization method matches this case\\'s goal?',\n    answer: 'Purge (ใช้เทคนิคที่เหมาะกับ SSD และตรวจผลแล้ว / SSD-appropriate technique with verified and validated results)',\n    reasoning: 'Purge ตรงกับเป้าหมายการกู้ระดับแล็บและการใช้สื่อต่อ ต้องเลือกเทคนิคที่ SSD รองรับ โดย CE ใช้ได้เมื่อครบเงื่อนไขการเข้ารหัสและกุญแจ การ Degauss ไม่ใช้กับ SSD และชื่อ Secure Erase อย่างเดียวไม่พิสูจน์ผล ต้อง Verification และ Validation ก่อนยอมรับ / Purge matches the advanced-recovery goal while aiming to retain usability. Select a supported SSD technique; CE requires appropriate encryption and key conditions. Degaussing is unsuitable for SSDs, and a Secure Erase label alone is not proof. Verify completion and validate effectiveness.'",
+        "count": 1,
+        "line": 23,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ACC-D5-04",
+    "domain": 5,
+    "objective": "5.3",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — verified",
+    "reason": "Six activities explicitly a teaching model, current NIST/CSF context and continuous improvement, timing illustrative; no unverified joint mandatory attribution.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "anchor": "topic-5-3-irp-lifecycle-phases",
+        "exists": true,
+        "anchorFound": true,
+        "line": 736,
+        "text": "<h3 id=\"topic-5-3-irp-lifecycle-phases\">5.3.3 The 6-Phase Incident Response Lifecycle: 6 ขั้นตอนวงจรการตอบสนองต่อเหตุการณ์</h3>\n\nบทเรียนนี้ใช้ **6 กิจกรรมเป็นแบบจำลองเพื่อการเรียน (Teaching Model)** ตามภาพและตัวอย่างด้านล่าง กิจกรรมอาจคาบเกี่ยว ย้อนกลับ หรือทำซ้ำตามเหตุการณ์ ไม่ใช่ลำดับบังคับสากลที่ NIST, ISO หรือ ISC2 กำหนดตรงกัน / The six activities below are this course's teaching model. They can overlap, repeat or be revisited; they are not a universal sequence jointly prescribed by NIST, ISO and ISC2.\n\n**บริบท NIST ปัจจุบัน (Current NIST context):** NIST SP 800-61 Rev. 3 เชื่อม IR กับ CSF 2.0 โดย Detect, Respond และ Recover เป็นแกนการตอบสนอง ส่วน Govern, Identify และ Protect สนับสนุนความพร้อมและการจัดการความเสี่ยง พร้อมปรับปรุงจากบทเรียนอย่างต่อเนื่อง / NIST SP 800-61 Rev. 3 places incident response within CSF 2.0: Detect, Respond and Recover address incidents, supported by broader Govern, Identify and Protect activities and continuous improvement. นี่ไม่ใช่การเปลี่ยนเป็นขั้นตอนบังคับใหม่หกข้อ / These functions are not a replacement six-step mandatory pipeline.\n\n<div class=\"reading-semantic-diagram\" data-diagram=\"irpLifecycle\"></div>\n\n<section class=\"reading-definition-unit\">\n<h5>1. Preparation (การเตรียมความพร้อม):</h5>\n\nขั้นตอนที่สำคัญที่สุดที่ต้องทำ **ก่อนเกิดเหตุการณ์จริง**:\n- จัดทำและทบทวนแผน IRP และนโยบายความมั่นคงปลอดภัย\n- จัดตั้งและอบรมทีม CSIRT พร้อมจัดทำผังการติดต่อสื่อสารยามฉุกเฉิน (Call Tree)\n- จัดเตรียมเครื่องมือสำหรับเก็บหลักฐานดิจิทัล (Forensic Jump Bags)\n- เสริมความแข็งแกร่งของระบบตามมาตรฐานขั้นต่ำ (Security Baselines) และซ้อมแผนรับมืออย่างสม่ำเสมอ\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>2. Detection &amp; Analysis (การตรวจจับและวิเคราะห์):</h5>\n\nขั้นตอนที่เริ่มเมื่อมีสัญญาณเตือนภัย:\n- เฝ้าระวังและคัดกรองการแจ้งเตือนจากระบบ SIEM, EDR, และไฟร์วอลล์\n- แยกแยะ False Positive ออกจากภัยคุกคามจริง\n- ประเมินขอบเขตของระบบที่ได้รับผลกระทบ (Scope) และกำหนดระดับความรุนแรงของเหตุการณ์\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>3. Containment (การควบคุมและจำกัดขอบเขตความเสียหาย):</h5>\n\nเป้าหมายคือหยุดยั้งไม่ให้ความเสียหายลุกลามไปยังระบบอื่น แบ่งเป็น:\n- **Short-term Containment (การกักกันระยะสั้น):** ดึงสาย LAN, ปิดการเชื่อมต่อ Wi-Fi, สั่ง EDR กักกันโฮสต์ (Isolate Host), หรือบล็อก IP/Port บนไฟร์วอลล์ทันที\n- **Long-term Containment (การควบคุมระยะยาว):** จัดสภาพแวดล้อมชั่วคราวที่ควบคุมความเสี่ยง เพื่อให้บริการที่จำเป็นทำงานได้ในวงจำกัดระหว่างรอการแก้ไขถาวร / Maintain limited essential services in a controlled temporary environment while permanent remediation is arranged.\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>4. Eradication (การกำจัดสาเหตุของภัยคุกคาม):</h5>\n\nเมื่อควบคุมพื้นที่เกิดเหตุได้แล้ว จึงเริ่มกำจัดต้นเหตุของปัญหาทั้งหมด:\n- ลบมัลแวร์ เครื่องมือเจาะระบบ และแบ็คดอร์ (Backdoors) ออกจากเครื่อง\n- ล้างระบบและติดตั้งระบบปฏิบัติการใหม่จากอิมเมจที่ปลอดภัย (Re-imaging)\n- ปิดหรือรีเซ็ตรหัสผ่านบัญชีผู้ใช้ทั้งหมดที่ถูกแฮกเกอร์ยึดครอง\n- อัปเดตแพตช์อุดช่องโหว่ที่เป็นจุดเริ่มต้นของการถูกเจาะระบบ\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>5. Recovery (การกู้คืนระบบสู่สภาวะปกติ):</h5>\n\nนำระบบงานและข้อมูลกลับมาเปิดให้บริการอย่างปลอดภัย:\n- กู้คืนข้อมูลจากระบบสำรอง (Backup) ที่ตรวจสอบแล้วว่าสะอาดและไม่มีมัลแวร์แฝงอยู่\n- ทดสอบการทำงานและความปลอดภัยก่อนเปิดให้บริการแก่ผู้ใช้งานทั่วไป\n- เฝ้าระวังพฤติกรรมของระบบอย่างใกล้ชิดเพื่อป้องกันการกลับมาบุกรุกซ้ำ\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>6. Post-Incident Review (การทบทวนหลังเหตุการณ์ / Lessons Learned):</h5>\n\nการทบทวนอย่างเป็นทางการหลังเหตุการณ์ช่วยปรับปรุงระบบ แต่ไม่ต้องรอให้กู้คืนเสร็จจึงเริ่มใช้บทเรียนที่พบ / A formal post-incident review supports improvement; useful lessons can be applied before recovery finishes.\n- จัดประชุมตามกรอบเวลาที่องค์กรกำหนด เช่น ภายใน 1–2 สัปดาห์หลังเหตุการณ์ยุติในตัวอย่างนี้ ไม่ใช่กำหนดสากล / Use the organization's review schedule; one to two weeks is an example, not a universal deadline.\n- ตอบคำถามสำคัญ: อะไรเกิดขึ้นบ้าง? แผนที่เตรียมไว้ได้ผลหรือไม่? มีจุดบกพร่องตรงไหน?\n- จัดทำรายงานสรุปเหตุการณ์ฉบับสมบูรณ์ และนำข้อเสนอแนะกลับไปอัปเดตแผน IRP ในขั้นตอน Preparation เพื่อสร้างวงจรสู่การพัฒนาอย่างต่อเนื่อง\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>ตารางเปรียบเทียบคำกริยาชี้เป้าสำหรับข้อสอบ (Exam Verb Triggers):</h5>\n\n| ขั้นตอน IRP | คำกริยาชี้เป้าในโจทย์ (Exam Keywords) | คำถามหลัก | ตัวอย่างการกระทำในสถานการณ์จริง |\n| :--- | :--- | :--- | :--- |\n| **Preparation** | Train, Establish playbook, Backup, Call tree | เตรียมพร้อมล่วงหน้าอย่างไร? | จัดตั้งทีม CSIRT, จัดทำ Playbook, จัดเตรียมเครื่องมือ Forensics |\n| **Detection &amp; Analysis** | Identify, Scope, Investigate, Assess impact | เกิดอะไรขึ้นและลามไปถึงไหน? | ตรวจสอบ Alert บน EDR, สำรวจว่าเซิร์ฟเวอร์กี่เครื่องติดมัลแวร์ |\n| **Containment** | **Stop spread**, **Isolate**, **Disconnect**, Quarantine | หยุดยั้งการลุกลามอย่างไร? | ดึงสาย LAN, สั่ง EDR ตัดขาดโฮสต์, บล็อกพอร์ตบนไฟร์วอลล์ |\n| **Eradication** | **Remove malware**, **Delete backdoor**, **Patch flaw** | กำจัดต้นตอของภัยอย่างไร? | สแกนลบโทรจัน, ปิดบัญชีลับที่แฮกเกอร์สร้าง, อุดช่องโหว่ซอฟต์แวร์ |\n| **Recovery** | **Restore**, **Rebuild**, **Return to service**, Reconnect | นำระบบกลับมาเปิดอย่างไร? | Restore ข้อมูลจาก Clean Backup, เปิดระบบให้ผู้ใช้กลับมาทำงาน |\n| **Post-Incident Review** | **Lessons learned**, Root cause analysis, Update IRP | เรียนรู้อะไรเพื่อไม่ให้เกิดซ้ำ? | ประชุมทบทวนเหตุการณ์, ปรับปรุงกฎตรวจจับ, อบรมพนักงาน |\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>กรณีศึกษาจำลองสถานการณ์ Ransomware แบบครบวงจร 6 ขั้นตอน:</h5>\n\n**สถานการณ์:** พนักงานแผนกบัญชีเปิดไฟล์เอกสารแนบในอีเมลหลอกลวง ทำให้มัลแวร์เรียกค่าไถ่ (Ransomware) เริ่มปฏิบัติการเข้ารหัสไฟล์และพยายามแพร่กระจายไปทั่วเครือข่าย:\n\n1. **Phase 1: Preparation:** องค์กรมีการสำรองข้อมูลแบบ Immutable Backup (แก้ไขไม่ได้) ไว้นอกสถานที่ มีเครื่องมือ EDR และมีคู่มือ Ransomware Playbook พร้อมใช้งาน\n2. **Phase 2: Detection &amp; Analysis:** ระบบ EDR ส่งสัญญาณเตือนเมื่อพบคำสั่งผิดปกติในการลบ Shadow Copies ทีมวิเคราะห์ประเมินขอบเขตพบเครื่องคอมพิวเตอร์ติดเชื้อแล้ว 3 เครื่อง\n3. **Phase 3: Containment:** เจ้าหน้าที่สั่ง EDR ตัดการเชื่อมต่อเครือข่ายของเครื่องทั้ง 3 เครื่องทันที (Isolate Hosts) เพื่อหยุดยั้งไม่ให้มัลแวร์เข้ารหัสไฟล์บน Network Share กลาง\n4. **Phase 4: Eradication:** ทีมงานตรวจพบช่องทางเข้าหลัก ลบไฟล์เพย์โหลดมัลแวร์ ทำการล้างเครื่องและลง OS ใหม่ (Re-imaging) และบล็อกโดเมน C2 บนเกตเวย์\n5. **Phase 5: Recovery:** กู้คืนไฟล์ข้อมูลของแผนกบัญชีจากระบบสำรองข้อมูลที่สะอาด ทดสอบการทำงาน และเปิดให้พนักงานใช้งานพร้อมเฝ้าระวังพฤติกรรมอย่างใกล้ชิด\n6. **Phase 6: Post-Incident Review:** ทีมงานประชุมสรุปเหตุการณ์ (PIR) ระบุสาเหตุรากเหง้า (RCA) ว่าระบบคัดกรองอีเมลปล่อยไฟล์แนบต้องสงสัยผ่านเข้ามา จึงทำการปรับปรุงกฎเกณฑ์ Mail Filter และส่งพนักงานเข้ารับการอบรม Phishing Simulation เพิ่มเติม\n\n</section>\n\n</section>\n\n<section class=\"reading-structure-pilot\">\n\n",
+        "sha256": "bcb60d24584e1eb11bd4a030e91ffe99e5041fab5aa9acae852563d857ae8887"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-04",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "บทเรียนนี้ใช้ **6 กิจกรรมเป็นแบบจำลองเพื่อการเรียน (Teaching Model)** ตามภาพและตัวอย่างด้านล่าง กิจกรรมอาจคาบเกี่ยว ย้อนกลับ หรือทำซ้ำตามเหตุการณ์ ไม่ใช่ลำดับบังคับสากลที่ NIST, ISO หรือ ISC2 กำหนดตรงกัน / The six activities below are this course's teaching model. They can overlap, repeat or be revisited; they are not a universal sequence jointly prescribed by NIST, ISO and ISC2.\n\n**บริบท NIST ปัจจุบัน (Current NIST context):** NIST SP 800-61 Rev. 3 เชื่อม IR กับ CSF 2.0 โดย Detect, Respond และ Recover เป็นแกนการตอบสนอง ส่วน Govern, Identify และ Protect สนับสนุนความพร้อมและการจัดการความเสี่ยง พร้อมปรับปรุงจากบทเรียนอย่างต่อเนื่อง / NIST SP 800-61 Rev. 3 places incident response within CSF 2.0: Detect, Respond and Recover address incidents, supported by broader Govern, Identify and Protect activities and continuous improvement. นี่ไม่ใช่การเปลี่ยนเป็นขั้นตอนบังคับใหม่หกข้อ / These functions are not a replacement six-step mandatory pipeline.",
+        "count": 1,
+        "line": 738,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-04",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "- **Long-term Containment (การควบคุมระยะยาว):** จัดสภาพแวดล้อมชั่วคราวที่ควบคุมความเสี่ยง เพื่อให้บริการที่จำเป็นทำงานได้ในวงจำกัดระหว่างรอการแก้ไขถาวร / Maintain limited essential services in a controlled temporary environment while permanent remediation is arranged.",
+        "count": 1,
+        "line": 770,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-04",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "การทบทวนอย่างเป็นทางการหลังเหตุการณ์ช่วยปรับปรุงระบบ แต่ไม่ต้องรอให้กู้คืนเสร็จจึงเริ่มใช้บทเรียนที่พบ / A formal post-incident review supports improvement; useful lessons can be applied before recovery finishes.\n- จัดประชุมตามกรอบเวลาที่องค์กรกำหนด เช่น ภายใน 1–2 สัปดาห์หลังเหตุการณ์ยุติในตัวอย่างนี้ ไม่ใช่กำหนดสากล / Use the organization's review schedule; one to two weeks is an example, not a universal deadline.",
+        "count": 1,
+        "line": 798,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-2",
+        "id": "ACC-D5-04",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "1. **Incident Response Teaching Model (6 กิจกรรม):** Preparation &rarr; Detection &amp; Analysis &rarr; Containment &rarr; Eradication &rarr; Recovery &rarr; Post-Incident Review เป็นภาพช่วยเรียน กิจกรรมอาจคาบเกี่ยวหรือย้อนกลับ ไม่ใช่ลำดับมาตรฐานบังคับ / A learning aid; activities can overlap or be revisited, rather than a mandatory standard sequence.",
+        "count": 1,
+        "line": 1500,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ACC-D5-05",
+    "domain": 5,
+    "objective": "5.2",
+    "decision": "APPROVE",
+    "status": "Implemented — verified",
+    "reason": "PowerShell T1059.001 and Spearphishing Link T1566.002; parents distinguished, unstable count removed; diagram labels match.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "anchor": "topic-5-2-mitre-attack-framework",
+        "exists": true,
+        "anchorFound": true,
+        "line": 651,
+        "text": "<h3 id=\"topic-5-2-mitre-attack-framework\">5.2.9 MITRE ATT&amp;CK Framework: TTPs กรอบโครงสร้างวิเคราะห์ภัยคุกคาม</h3>\n\n**MITRE ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge)** คือฐานความรู้ระดับโลกที่รวบรวมพฤติกรรมการโจมตีในโลกแห่งความเป็นจริงของแฮกเกอร์ โดยจัดหมวดหมู่อย่างเป็นระบบเพื่อให้นักวิเคราะห์ความมั่นคงปลอดภัยเข้าใจบริบทการโจมตีได้อย่างแม่นยำ\n\n<div class=\"reading-semantic-diagram\" data-diagram=\"mitreAttackTacticTechnique\"></div>\n\n<h4 class=\"reading-concept-group-title\">การแบ่งระดับชั้น TTPs ใน MITRE ATT&amp;CK:</h4>\n\n<section class=\"reading-definition-unit\">\n<h5>1. Tactics (ยุทธวิธี — ทำไม / The \"WHY\"):</h5>\n\nเป้าหมายสูงสุดที่ผู้โจมตีกำลังพยายามทำให้สำเร็จในแต่ละขั้นตอน เช่น:\n- **Initial Access:** ต้องการเจาะเข้าสู่เครือข่ายเป็นก้าวแรก\n- **Execution:** ต้องการสั่งรันโค้ดอันตรายบนเครื่องเหยื่อ\n- **Persistence:** ต้องการฝังตัวในระบบแม้เครื่องจะถูกรีสตาร์ต\n- **Lateral Movement:** ต้องการขยายการเข้าถึงจากเครื่องหนึ่งไปยังเซิร์ฟเวอร์เครื่องอื่น\n- **Exfiltration:** ต้องการขโมยส่งข้อมูลสำคัญออกนอกองค์กร\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>2. Techniques (เทคนิค — ทำอย่างไร / The \"HOW\"):</h5>\n\nวิธีการหรือเทคนิคเฉพาะทางที่ผู้โจมตีนำมาใช้เพื่อให้บรรลุเป้าหมายของ Tactic นั้น เช่น:\n- ใน Tactic *Initial Access* อาจใช้เทคนิค **Phishing (T1566)**\n- ใน Tactic *Lateral Movement* อาจใช้เทคนิค **Pass the Hash (T1550.002)**\n- ใน Tactic *Execution* อาจใช้ Sub-technique **Command and Scripting Interpreter: PowerShell (T1059.001)**\n\n**ชื่อกับรหัส (Names and IDs):** PowerShell และ Spearphishing Link เป็น Sub-techniques ของ Command and Scripting Interpreter (T1059) และ Phishing (T1566) ตามลำดับ จึงใช้รหัสย่อยของตนเองเมื่อระบุชื่อเฉพาะ / PowerShell and Spearphishing Link have their own sub-technique IDs; T1059 and T1566 identify their parent techniques.\n\n</section>\n\n<section class=\"reading-definition-unit\">\n<h5>3. Procedures (ขั้นตอนปฏิบัติการจริง — การลงมือทำ / The \"EXECUTION\"):</h5>\n\nการลงมือปฏิบัติจริงในโลกความจริง คำสั่งคอมมานด์ไลน์ที่พิมพ์ หรือสายพันธุ์มัลแวร์ที่ตรวจพบ เช่น กลุ่ม APT29 ใช้งานเครื่องมือ Mimikatz ในการดึงรหัสผ่าน หรือสคริปต์คำสั่งดาวน์โหลดไฟล์เพย์โหลดเฉพาะเจาะจง\n\n</section>\n\n</section>\n\n</section>\n\n<section class=\"reading-objective-section reading-structured-objective\" id=\"obj-5-3\">\n\n## Objective 5.3: Understand Incident Response (IR)\n\n<p class=\"reading-intro-label\"><svg class=\"reading-label-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg>ไม่มีองค์กรใดที่ปลอดภัย 100% สิ่งสำคัญที่สุดเมื่อเกิดการบุกรุกคือความสามารถในการควบคุมความเสียหาย กู้คืนระบบ และรวบรวมหลักฐานอย่างเป็นระบบตามกระบวนการ Incident Response:</p>\n\n<section class=\"reading-structure-pilot\">\n\n",
+        "sha256": "bcb60d24584e1eb11bd4a030e91ffe99e5041fab5aa9acae852563d857ae8887"
+      },
+      {
+        "path": "js/core/diagram-generator.js",
+        "anchor": "mitre-attack-framework",
+        "resolvedSymbol": "mitreAttackTacticTechnique",
+        "locatorType": "Phase2 descriptive locator resolved to current JS template symbol, not an HTML anchor",
+        "exists": true,
+        "anchorFound": true,
+        "line": 2920,
+        "text": "mitreAttackTacticTechnique: `\n<div class=\"reading-diagram-card\" data-diagram=\"mitreAttackTacticTechnique\" role=\"region\" aria-label=\"MITRE ATT&CK Framework: Tactics, Techniques and Procedures\">\n  <div class=\"reading-diagram-header\">\n    <span class=\"reading-diagram-tag\">Threat Architecture Taxonomy</span>\n    <h4 class=\"reading-diagram-title\">MITRE ATT&CK Framework: Tactics vs. Techniques vs. Procedures (TTPs)</h4>\n  </div>\n  <div class=\"reading-diagram-svg-wrap reading-diag-desktop\">\n    <svg viewBox=\"0 0 900 280\" class=\"reading-diagram-svg\" aria-label=\"Hierarchical architecture of MITRE ATT&CK showing Tactics as Why, Techniques as How, and Procedures as Execution\" role=\"img\">\n      <g>\n        <rect x=\"25\" y=\"25\" width=\"255\" height=\"230\" rx=\"8\" class=\"diag-box diag-box-blue\" />\n        <rect x=\"40\" y=\"37\" width=\"80\" height=\"22\" rx=\"4\" fill=\"#3b82f6\" />\n        <text x=\"80\" y=\"48\" fill=\"#ffffff\" font-size=\"11px\" font-weight=\"700\" text-anchor=\"middle\" dominant-baseline=\"central\">TACTIC</text>\n        <text x=\"40\" y=\"80\" class=\"diag-text-title\" font-size=\"14px\" font-weight=\"700\">The \"WHY\" (เป้าหมายยุทธวิธี)</text>\n        <text x=\"40\" y=\"102\" class=\"diag-text-sub\" font-size=\"11.5px\">เป้าหมายสูงสุดที่ศัตรูต้องการบรรลุ:</text>\n        <text x=\"40\" y=\"126\" class=\"diag-text-sub\" font-size=\"11px\">&bull; Initial Access (การเข้าถึงระบบครั้งแรก)</text>\n        <text x=\"40\" y=\"148\" class=\"diag-text-sub\" font-size=\"11px\">&bull; Execution (การสั่งรันโค้ดอันตราย)</text>\n        <text x=\"40\" y=\"170\" class=\"diag-text-sub\" font-size=\"11px\">&bull; Persistence (การฝังตัวระยะยาว)</text>\n        <text x=\"40\" y=\"192\" class=\"diag-text-sub\" font-size=\"11px\">&bull; Lateral Movement (การเคลื่อนที่แนวราบ)</text>\n        <text x=\"40\" y=\"214\" class=\"diag-text-sub\" font-size=\"11px\">&bull; Exfiltration (การขโมยส่งข้อมูลออก)</text>\n        <text x=\"40\" y=\"238\" fill=\"#3b82f6\" font-size=\"10.5px\" font-weight=\"700\">ตัวอย่าง Tactics / Goal examples</text>\n      </g>\n\n      <path d=\"M 280 140 H 320\" stroke=\"var(--line, #334155)\" stroke-width=\"2\" fill=\"none\" />\n      <polygon points=\"320,140 310,135 310,145\" fill=\"var(--line, #334155)\" />\n      <text x=\"300\" y=\"130\" fill=\"var(--text-sub, #64748b)\" font-size=\"9.5px\" text-anchor=\"middle\">บรรลุเป้าด้วย</text>\n\n      <g>\n        <rect x=\"320\" y=\"25\" width=\"255\" height=\"230\" rx=\"8\" class=\"diag-box diag-box-banner\" />\n        <rect x=\"335\" y=\"37\" width=\"90\" height=\"22\" rx=\"4\" fill=\"#6366f1\" />\n        <text x=\"380\" y=\"48\" fill=\"#ffffff\" font-size=\"11px\" font-weight=\"700\" text-anchor=\"middle\" dominant-baseline=\"central\">TECHNIQUE</text>\n        <text x=\"335\" y=\"80\" class=\"diag-text-title\" font-size=\"14px\" font-weight=\"700\">The \"HOW\" (วิธีการ/เทคนิค)</text>\n        <text x=\"335\" y=\"102\" class=\"diag-text-sub\" font-size=\"11.5px\">วิธีที่ศัตรูใช้กระทำเพื่อบรรลุเป้าหมาย:</text>\n        <text x=\"335\" y=\"126\" class=\"diag-text-sub\" font-size=\"11px\">&bull; Spearphishing Link (T1566.002)</text>\n        <text x=\"335\" y=\"148\" class=\"diag-text-sub\" font-size=\"11px\">&bull; Pass the Hash (T1550.002)</text>\n        <text x=\"335\" y=\"170\" class=\"diag-text-sub\" font-size=\"11px\">&bull; PowerShell (T1059.001)</text>\n        <text x=\"335\" y=\"192\" class=\"diag-text-sub\" font-size=\"11px\">&bull; Scheduled Task / Job (T1053)</text>\n        <text x=\"335\" y=\"214\" class=\"diag-text-sub\" font-size=\"11px\">&bull; Valid Accounts (T1078)</text>\n        <text x=\"335\" y=\"238\" fill=\"#6366f1\" font-size=\"10.5px\" font-weight=\"700\">รวม Sub-techniques ย่อยเฉพาะเจาะจง</text>\n      </g>\n\n      <path d=\"M 575 140 H 615\" stroke=\"var(--line, #334155)\" stroke-width=\"2\" fill=\"none\" />\n      <polygon points=\"615,140 605,135 605,145\" fill=\"var(--line, #334155)\" />\n      <text x=\"595\" y=\"130\" fill=\"var(--text-sub, #64748b)\" font-size=\"9.5px\" text-anchor=\"middle\">ลงมือปฏิบัติจริง</text>\n\n      <g>\n        <rect x=\"615\" y=\"25\" width=\"260\" height=\"230\" rx=\"8\" class=\"diag-box diag-box-blue\" />\n        <rect x=\"630\" y=\"37\" width=\"95\" height=\"22\" rx=\"4\" fill=\"#0ea5e9\" />\n        <text x=\"677\" y=\"48\" fill=\"#ffffff\" font-size=\"11px\" font-weight=\"700\" text-anchor=\"middle\" dominant-baseline=\"central\">PROCEDURE</text>\n        <text x=\"630\" y=\"80\" class=\"diag-text-title\" font-size=\"14px\" font-weight=\"700\">The \"EXECUTION\" (การลงมือ)</text>\n        <text x=\"630\" y=\"102\" class=\"diag-text-sub\" font-size=\"11.5px\">ขั้นตอน คำสั่ง หรือมัลแวร์ที่ตรวจพบจริง:</text>\n        <text x=\"630\" y=\"126\" class=\"diag-text-sub\" font-size=\"11px\">&bull; คำสั่ง PowerShell ดาวน์โหลดเพย์โหลด</text>\n        <text x=\"630\" y=\"148\" class=\"diag-text-sub\" font-size=\"11px\">&bull; กลุ่ม APT29 ใช้งานเครื่องมือ Mimikatz</text>\n        <text x=\"630\" y=\"170\" class=\"diag-text-sub\" font-size=\"11px\">&bull; การปรับ Registry key รันโปรแกรมอัตโนมัติ</text>\n        <text x=\"630\" y=\"192\" class=\"diag-text-sub\" font-size=\"11px\">&bull; การส่งอีเมลหลอกลวงพร้อมไฟล์แนบ zip</text>\n        <text x=\"630\" y=\"214\" class=\"diag-text-sub\" font-size=\"11px\">&bull; การเข้ารหัสไฟล์ด้วยมัลแวร์ LockBit</text>\n        <text x=\"630\" y=\"238\" fill=\"#0ea5e9\" font-size=\"10.5px\" font-weight=\"700\">พฤติกรรมจริงในรายงานข่าวกรอง CTI</text>\n      </g>\n    </svg>\n  </div>\n  <div class=\"reading-diag-mobile reading-mobile-stack\" aria-label=\"MITRE ATT&CK Mobile Stack\">\n    <div class=\"reading-mob-stack-list\">\n      <div class=\"reading-mob-tier-card reading-tier-kpi\">\n        <div class=\"reading-mob-tier-head\">\n          <span class=\"reading-mob-tier-num\">WHY</span>\n          <div class=\"reading-mob-tier-info\">\n            <h5 class=\"reading-mob-tier-name\">TACTIC (เป้าหมายยุทธวิธีของศัตรู)</h5>\n            <span class=\"reading-mob-tier-action\">Adversary Goal &middot; The \"Why\"</span>\n          </div>\n        </div>\n        <p class=\"reading-mob-tier-desc\">อธิบายว่า \"ผู้โจมตีกำลังพยายามทำอะไรเพื่ออะไร\" เช่น Initial Access (เจาะเข้าสู่เครือข่าย), Lateral Movement (ย้ายฝั่งไปยังเซิร์ฟเวอร์สำคัญ), Exfiltration (ขโมยข้อมูลออกนอกองค์กร)</p>\n      </div>\n\n      <div class=\"reading-mob-tier-card reading-tier-report\">\n        <div class=\"reading-mob-tier-head\">\n          <span class=\"reading-mob-tier-num\">HOW</span>\n          <div class=\"reading-mob-tier-info\">\n            <h5 class=\"reading-mob-tier-name\">TECHNIQUE (เทคนิควิธีการที่นำมาใช้)</h5>\n            <span class=\"reading-mob-tier-action\">Action &middot; The \"How\"</span>\n          </div>\n        </div>\n        <p class=\"reading-mob-tier-desc\">อธิบายว่า \"ผู้โจมตีใช้วิธีการใดเพื่อให้บรรลุเป้าหมายของ Tactic\" เช่น ใช้ Phishing เพื่อได้ Initial Access, หรือใช้ Pass-the-Hash เพื่อทำการ Lateral Movement ในระบบ Windows Domain</p>\n      </div>\n\n      <div class=\"reading-mob-tier-card reading-tier-dashboard\">\n        <div class=\"reading-mob-tier-head\">\n          <span class=\"reading-mob-tier-num\">EXE</span>\n          <div class=\"reading-mob-tier-info\">\n            <h5 class=\"reading-mob-tier-name\">PROCEDURE (ขั้นตอนปฏิบัติและโค้ดคำสั่งจริง)</h5>\n            <span class=\"reading-mob-tier-action\">Execution &middot; Real-World Observation</span>\n          </div>\n        </div>\n        <p class=\"reading-mob-tier-desc\">อธิบายพฤติกรรมเฉพาะเจาะจงที่ตรวจพบในโลกจริง เช่น คำสั่ง command line ที่พิมพ์, เครื่องมือที่ใช้ (Mimikatz, Cobalt Strike), หรือสคริปต์ที่กลุ่มภัยคุกคาม (APT Groups) ใช้งานจริง</p>\n      </div>\n    </div>\n  </div>\n</div>\n`,",
+        "sha256": "f119ade6524dd5dd0c2e009caf452122eda0ad3f3f7987a84aa8083e22276090"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-3",
+        "id": "ACC-D5-05",
+        "path": "content/isc2-cc-2026/reading/domain-5.md",
+        "after": "- ใน Tactic *Execution* อาจใช้ Sub-technique **Command and Scripting Interpreter: PowerShell (T1059.001)**\n\n**ชื่อกับรหัส (Names and IDs):** PowerShell และ Spearphishing Link เป็น Sub-techniques ของ Command and Scripting Interpreter (T1059) และ Phishing (T1566) ตามลำดับ จึงใช้รหัสย่อยของตนเองเมื่อระบุชื่อเฉพาะ / PowerShell and Spearphishing Link have their own sub-technique IDs; T1059 and T1566 identify their parent techniques.",
+        "count": 1,
+        "line": 677,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-3",
+        "id": "ACC-D5-05",
+        "path": "js/core/diagram-generator.js",
+        "after": "        <text x=\"40\" y=\"238\" fill=\"#3b82f6\" font-size=\"10.5px\" font-weight=\"700\">ตัวอย่าง Tactics / Goal examples</text>",
+        "count": 1,
+        "line": 2939,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-3",
+        "id": "ACC-D5-05",
+        "path": "js/core/diagram-generator.js",
+        "after": "        <text x=\"335\" y=\"126\" class=\"diag-text-sub\" font-size=\"11px\">&bull; Spearphishing Link (T1566.002)</text>",
+        "count": 1,
+        "line": 2952,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-5-batch-3",
+        "id": "ACC-D5-05",
+        "path": "js/core/diagram-generator.js",
+        "after": "        <text x=\"335\" y=\"170\" class=\"diag-text-sub\" font-size=\"11px\">&bull; PowerShell (T1059.001)</text>",
+        "count": 1,
+        "line": 2954,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ACC-D4-01",
+    "domain": 4,
+    "objective": "4.1",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — verified",
+    "reason": "Supported/configured IPsec is distinguished from IPv6 addressing alone in both unit and summary. This is clarification, not proof the old prose promised automatic encryption.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "anchor": "topic-4-1-ipv6-architecture",
+        "exists": true,
+        "anchorFound": true,
+        "line": 293,
+        "text": "<h3 id=\"topic-4-1-ipv6-architecture\">4.1.5 IPv6 Architecture, SLAAC &amp; Dual-Stack: การขยายขีดความสามารถสู่ IPv6</h3>\n\nเนื่องจากหมายเลข IPv4 มีจำกัดและหมดลงแล้ว จึงมีการพัฒนา **IPv6 (Internet Protocol version 6)** ขึ้นมา โดยมีขนาดความยาวถึง **128 บิต** เขียนแทนด้วยเลขฐานสิบหก (Hexadecimal) แบ่งเป็น 8 กลุ่ม กลุ่มละ 16 บิต คั่นด้วยเครื่องหมายโคลอน (Colon เช่น `2001:0db8:85a3:0000:0000:8a2e:0370:7334`)\n\n<h4 class=\"reading-concept-group-title\">คุณลักษณะเด่นของ IPv6:</h4>\n- **มหาศาล:** มีหมายเลขรองรับถึง 2<sup>128</sup> หรือราว 3.4 &times; 10<sup>38</sup> หมายเลข ทำให้ทุกอุปกรณ์บนโลกสามารถมี Public IP ได้โดยไม่ต้องพึ่งพา NAT\n- **การใช้ IPsec (IP Security):** IPv6 ใช้ IPsec ได้เมื่อรองรับและกำหนดค่าการใช้งานอย่างเหมาะสม แต่ที่อยู่ IPv6 เพียงอย่างเดียวไม่ได้เข้ารหัสหรือยืนยันความถูกต้องของทราฟฟิก / IPv6 can use properly supported and configured IPsec; IPv6 addressing alone does not encrypt or authenticate traffic.\n- **ยกเลิก Broadcast:** แทนที่ด้วย **Multicast** (ส่งถึงกลุ่มเฉพาะ) และ **Anycast** (ส่งไปยังเครื่องที่ใกล้ที่สุดในกลุ่ม) ช่วยลดสัญญาณรบกวนในเครือข่ายได้อย่างมหาศาล\n- **SLAAC (Stateless Address Autoconfiguration):** SLAAC สร้างที่อยู่ IPv6 โดยใช้ prefix ที่เราเตอร์ประกาศร่วมกับ Interface Identifier (IID) ของอินเทอร์เฟซ วิธีสร้าง IID ไม่จำเป็นต้องใช้ MAC Address; EUI-64 ที่อาศัย MAC เป็นเพียงวิธีหนึ่งในอดีต\n\n<h4 class=\"reading-concept-group-title\">กลยุทธ์การเปลี่ยนผ่านจาก IPv4 สู่ IPv6 (Transition Strategies):</h4>\n<section class=\"reading-concept-unit\">\n<h5>Dual-Stack:</h5>\n\nอุปกรณ์และเราเตอร์เปิดใช้งานโพรโทคอล IPv4 และ IPv6 ควบคู่กันไปพร้อมกันในระดับการ์ดเครือข่ายและระบบปฏิบัติการ เป็นแนวทางที่แนะนำที่สุด\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Tunneling:</h5>\n\nการนำแพ็กเก็ต IPv6 มาห่อหุ้มไว้ในแพ็กเก็ต IPv4 เพื่อส่งผ่านเครือข่ายที่ยังรองรับเพียง IPv4 เช่น 6to4 หรือ Teredo\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Translation (NAT64 / DNS64):</h5>\n\nการแปลงแพ็กเก็ตข้ามไปมาระหว่างอุปกรณ์ที่เป็น IPv6 ล้วนกับบริการที่เป็น IPv4 ล้วน\n\n</section>\n",
+        "sha256": "c7e57a020dc5fc685e4e3d9422cd69460f85cb88b66c7128f73c8d79c84d0f6b"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-01",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "- **การใช้ IPsec (IP Security):** IPv6 ใช้ IPsec ได้เมื่อรองรับและกำหนดค่าการใช้งานอย่างเหมาะสม แต่ที่อยู่ IPv6 เพียงอย่างเดียวไม่ได้เข้ารหัสหรือยืนยันความถูกต้องของทราฟฟิก / IPv6 can use properly supported and configured IPsec; IPv6 addressing alone does not encrypt or authenticate traffic.",
+        "count": 1,
+        "line": 299,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ACC-D4-01",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "ใช้ IPsec ได้เมื่อรองรับและกำหนดค่า; IPv6 ไม่ได้ป้องกันทราฟฟิกโดยอัตโนมัติ (IPsec requires actual use/configuration)",
+        "count": 1,
+        "line": 1084,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "VER-D1-01",
+    "domain": 1,
+    "objective": "1.5",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — verified",
+    "reason": "Four canons retained; professional judgment and authorized guidance replace exceptionless hierarchy/exam certainty.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-1.md",
+        "anchor": "topic-1-5-isc2-ethics",
+        "exists": true,
+        "anchorFound": true,
+        "line": 979,
+        "text": "<div id=\"topic-1-5-isc2-ethics\" class=\"reading-topic-anchor\"></div>\n\n### 1.5.3 ISC2 Code of Ethics (The 4 Canons)\n\nสมาชิกและผู้ถือใบรับรองของ ISC2 ทุกคนต้องยึดมั่นและปฏิบัติตาม **ประมวลจริยธรรม 4 ข้อ (4 Canons)** โดยพิจารณาหน้าที่ทั้งสี่ร่วมกับข้อเท็จจริงและใช้ดุลยพินิจทางวิชาชีพ:\n\n<h4 class=\"reading-intro-label\"><svg class=\"reading-label-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"></polygon></svg>ประมวลจริยธรรม 4 ข้อ (The Four Canons):</h4>\n\n<div class=\"reading-semantic-diagram\" data-diagram=\"ethicsCanons\"></div>\n\n<div class=\"reading-precedence-rule\">\n  <svg class=\"reading-rule-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line></svg>\n  <span><strong>การใช้ประมวลจริยธรรม (Applying the Canons):</strong> พิจารณาหน้าที่ตาม Canon ทั้งสี่ร่วมกับข้อเท็จจริงและบริบท หมายเลขใช้สำหรับอ้างอิงข้อ ไม่ได้ยืนยันอัลกอริทึมตัดสินความขัดแย้งแบบตายตัว <em>Use professional ethical judgment; numbering alone does not establish a universal conflict-resolution algorithm.</em></span>\n</div>\n\n<div class=\"reading-precedence-stack\">\n  <div class=\"reading-precedence-card tier-1\">\n    <div class=\"reading-precedence-header\">\n      <div class=\"reading-precedence-title-wrap\">\n        <span class=\"reading-precedence-num\">01</span>\n        <h4 class=\"reading-precedence-title\">Canon 1: Protect society, the common good, necessary public trust and confidence, and the infrastructure</h4>\n      </div>\n      <span class=\"reading-precedence-badge\">Canon 1</span>\n    </div>\n    <p class=\"reading-precedence-body\">\n      <strong>ปกป้องสังคม ประโยชน์ส่วนรวม ความไว้วางใจของสาธารณะ และโครงสร้างพื้นฐานสำคัญ:</strong> พิจารณาความปลอดภัยของสังคมและประโยชน์ส่วนรวมเมื่อประเมินผลกระทบของการกระทำ รวมถึงเมื่อมีแรงกดดันจากผลประโยชน์องค์กรหรือคำสั่งผู้ว่าจ้าง\n    </p>\n  </div>\n\n  <div class=\"reading-precedence-card tier-2\">\n    <div class=\"reading-precedence-header\">\n      <div class=\"reading-precedence-title-wrap\">\n        <span class=\"reading-precedence-num\">02</span>\n        <h4 class=\"reading-precedence-title\">Canon 2: Act honorably, honestly, justly, responsibly, and legally</h4>\n      </div>\n      <span class=\"reading-precedence-badge\">Canon 2</span>\n    </div>\n    <p class=\"reading-precedence-body\">\n      <strong>ประพฤติตนอย่างมีเกียรติ ซื่อสัตย์ ยุติธรรม มีความรับผิดชอบ และถูกต้องตามกฎหมาย:</strong> ปฏิบัติตามกฎหมายอย่างเคร่งครัด ไม่โกหก ไม่บิดเบือนข้อเท็จจริง และรักษาความโปร่งใสในวิชาชีพ <em>(ข้อสังเกต: Canon 2 กำหนดหน้าที่เหล่านี้ร่วมกัน ไม่ควรอนุมานลำดับเหนือกว่ากันจากลำดับคำในประโยค การกระทำที่ไม่ผิดกฎหมายอาจยังขัดจริยธรรมหากเป็นการหลอกลวง บิดเบือนข้อเท็จจริง หรือไม่เป็นธรรม)</em>\n    </p>\n  </div>\n\n  <div class=\"reading-precedence-card tier-3\">\n    <div class=\"reading-precedence-header\">\n      <div class=\"reading-precedence-title-wrap\">\n        <span class=\"reading-precedence-num\">03</span>\n        <h4 class=\"reading-precedence-title\">Canon 3: Provide diligent and competent service to principals</h4>\n      </div>\n      <span class=\"reading-precedence-badge\">Canon 3</span>\n    </div>\n    <p class=\"reading-precedence-body\">\n      <strong>ให้บริการแก่นายจ้างหรือลูกค้าอย่างขยันขันแข็ง รอบคอบ และเต็มความสามารถ:</strong> รักษาความลับและผลประโยชน์ที่ชอบธรรมของผู้ว่าจ้าง ไม่นำข้อมูลลับไปแสวงหาผลประโยชน์ส่วนตน และไม่รับงานที่ตนขาดความเชี่ยวชาญโดยไม่แจ้งล่วงหน้า\n    </p>\n  </div>\n\n  <div class=\"reading-precedence-card tier-4\">\n    <div class=\"reading-precedence-header\">\n      <div class=\"reading-precedence-title-wrap\">\n        <span class=\"reading-precedence-num\">04</span>\n        <h4 class=\"reading-precedence-title\">Canon 4: Advance and protect the profession</h4>\n      </div>\n      <span class=\"reading-precedence-badge\">Canon 4</span>\n    </div>\n    <p class=\"reading-precedence-body\">\n      <strong>ส่งเสริม ยกระดับ และปกป้องชื่อเสียงของวิชาชีพ:</strong> ร่วมแลกเปลี่ยนความรู้ ยกระดับมาตรฐานวิชาชีพด้านไซเบอร์ และไม่กระทำการใดที่ทำให้เกียรติภูมิของวิชาชีพเสื่อมเสีย\n    </p>\n  </div>\n</div>\n\n> **สูตรจำตัวอักษรย่อ (Mnemonic):**  \n> \"<strong class=\"reading-mnemonic-highlight\">S - A - P - P</strong>\"  \n> <strong class=\"reading-mnemonic-highlight\">S</strong>ociety → <strong class=\"reading-mnemonic-highlight\">A</strong>ct honorably → <strong class=\"reading-mnemonic-highlight\">P</strong>rincipals → <strong class=\"reading-mnemonic-highlight\">P</strong>rofession\n\n<div class=\"reading-callout info\">\n  <div class=\"reading-callout-header\">\n    <svg class=\"reading-callout-icon\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line></svg>\n    <span>กรณีศึกษาข้อสอบ: ภาวะกลืนไม่เข้าคายไม่ออกทางจริยธรรม (Ethical Dilemmas)</span>\n  </div>\n  <p><strong>สถานการณ์จำลอง:</strong> ผู้บริหารสั่งให้ผู้ดูแลระบบปกปิดรายงานช่องโหว่ความปลอดภัยร้ายแรงในระบบควบคุมการจ่ายน้ำประปาของเมือง (Critical Infrastructure) เนื่องจากกลัวผลกระทบต่อราคาหุ้นของบริษัท</p>\n  <p><strong>แนวคิดการวิเคราะห์ตามหลักการ ISC2:</strong> เหตุการณ์นี้เกิดความขัดแย้งระหว่างหน้าที่ต่อผู้ว่าจ้าง (<strong>Canon 3:</strong> Diligent service to principals) กับความปลอดภัยของสังคม (<strong>Canon 1:</strong> Protect society, common good &amp; infrastructure)</p>\n  <p><strong>แนวทางใช้ดุลยพินิจ (Professional judgment):</strong> คำนึงถึงความปลอดภัยของสาธารณะ เก็บรักษาหลักฐานที่เกี่ยวข้อง และขอคำแนะนำผ่านช่องทางที่มีอำนาจ เช่น ผู้รับผิดชอบด้านความปลอดภัยหรือฝ่ายกฎหมาย โดยพิจารณาหน้าที่ทั้งสี่ร่วมกับข้อเท็จจริง ไม่อนุมานว่ามีสิทธิปกปิด เปิดเผยข้อมูลต่อสาธารณะโดยพลการ หรือทำผิดกฎหมาย / Protect public welfare, preserve relevant evidence and seek guidance through authorized channels, such as security leadership or legal counsel, considering all four duties and the facts. Do not infer permission to conceal, disclose publicly without authorization or act illegally.</p>\n</div>\n\n",
+        "sha256": "55221da2506facc9feefae2c7b81b201e387c4f34da50995d7cc70c21ee22157"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-1-batch-a",
+        "id": "VER-D1-01",
+        "path": "content/isc2-cc-2026/reading/domain-1.md",
+        "after": "  <p><strong>แนวทางใช้ดุลยพินิจ (Professional judgment):</strong> คำนึงถึงความปลอดภัยของสาธารณะ เก็บรักษาหลักฐานที่เกี่ยวข้อง และขอคำแนะนำผ่านช่องทางที่มีอำนาจ เช่น ผู้รับผิดชอบด้านความปลอดภัยหรือฝ่ายกฎหมาย โดยพิจารณาหน้าที่ทั้งสี่ร่วมกับข้อเท็จจริง ไม่อนุมานว่ามีสิทธิปกปิด เปิดเผยข้อมูลต่อสาธารณะโดยพลการ หรือทำผิดกฎหมาย / Protect public welfare, preserve relevant evidence and seek guidance through authorized channels, such as security leadership or legal counsel, considering all four duties and the facts. Do not infer permission to conceal, disclose publicly without authorization or act illegally.</p>",
+        "count": 1,
+        "line": 1059,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ENR-D1-04",
+    "domain": 1,
+    "objective": "1.4",
+    "decision": "APPROVE",
+    "status": "Implemented — verified",
+    "reason": "Official Technical/Administrative/Physical terminology is distinguished from course managerial/operational subdivision.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-1.md",
+        "anchor": "topic-1-4-control-categories",
+        "exists": true,
+        "anchorFound": true,
+        "line": 782,
+        "text": "<div id=\"topic-1-4-control-categories\" class=\"reading-topic-anchor\"></div>\n\n### 1.4.1 Security Control Categories\n\n**คำศัพท์ในโครงร่างสอบ (Outline terminology):** โครงร่างสอบ CC ที่มีผล 1 กันยายน 2026 ระบุหมวด Technical, Administrative และ Physical; บทเรียนนี้แยกงานบริหาร (Managerial) และงานประจำวันโดยบุคลากร (Operational) เพื่อช่วยอธิบายด้าน Administrative / The CC outline effective 1 September 2026 names Technical, Administrative and Physical controls; this course explains administrative work through managerial and day-to-day operational activities.\n\n<h4 class=\"reading-intro-label\"><svg class=\"reading-label-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"3\" width=\"7\" height=\"7\"></rect><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\"></rect><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\"></rect><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\"></rect></svg>การแบ่งหมวดหมู่ตามลักษณะของกลไกหรือสิ่งที่นำมาดำเนินการ:</h4>\n\n:::control-categories\n- **Technical (Logical) Controls** (มาตรการทางเทคนิค)\n- **Managerial (Administrative) Controls** (มาตรการเชิงบริหารจัดการ)\n- **Operational Controls** (มาตรการเชิงปฏิบัติการ)\n- **Physical Controls** (มาตรการทางกายภาพ)\n:::\n\n",
+        "sha256": "55221da2506facc9feefae2c7b81b201e387c4f34da50995d7cc70c21ee22157"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-1-batch-a",
+        "id": "ENR-D1-04",
+        "path": "content/isc2-cc-2026/reading/domain-1.md",
+        "after": "### 1.4.1 Security Control Categories\n\n**คำศัพท์ในโครงร่างสอบ (Outline terminology):** โครงร่างสอบ CC ที่มีผล 1 กันยายน 2026 ระบุหมวด Technical, Administrative และ Physical; บทเรียนนี้แยกงานบริหาร (Managerial) และงานประจำวันโดยบุคลากร (Operational) เพื่อช่วยอธิบายด้าน Administrative / The CC outline effective 1 September 2026 names Technical, Administrative and Physical controls; this course explains administrative work through managerial and day-to-day operational activities.\n",
+        "count": 1,
+        "line": 784,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ENR-D3-03",
+    "domain": 3,
+    "objective": "3.1",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — verified",
+    "reason": "Activity is distinguished from accountable ownership;90days illustrative; review decision, applied removal and verification all present.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "anchor": "topic-3-1-access-review",
+        "exists": true,
+        "anchorFound": true,
+        "line": 142,
+        "text": "<h3 id=\"topic-3-1-access-review\">3.1.4 Access Review &amp; 6 Core Audit Findings: การทบทวนสิทธิ์เป็นระยะ</h3>\n\nเมื่อระบบมีการใช้งานไปเป็นระยะเวลาหนึ่ง สิทธิ์การเข้าถึงมักจะเกิดความคลาดเคลื่อนจากความเป็นจริง ดังนั้นองค์กรจึงต้องมีการทำ **Periodic Access Review** (การทบทวนสิทธิ์เป็นระยะ) โดยให้ผู้จัดการสายงาน (Line Managers) และเจ้าของข้อมูล (Data Owners) ร่วมกันตรวจสอบว่าสิทธิ์ของผู้ใช้งานแต่ละคนยังคงถูกต้องและจำเป็นอยู่หรือไม่\n\nจากการตรวจสอบความปลอดภัย (Security Audits) พบข้อบกพร่องสำคัญ 6 ประการที่ข้อสอบมักนำมาตั้งคำถาม:\n\n<section class=\"reading-concept-unit\">\n<h4>Excessive Permissions (สิทธิ์เกินความจำเป็น):</h4>\n\nผู้ใช้ได้รับสิทธิ์มากกว่าที่จำเป็นต้องใช้ในการทำงานตามหน้าที่\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Unused Accounts (บัญชีที่ไม่ได้ใช้งาน):</h4>\n\nบัญชีที่ไม่มีการล็อกอินเป็นเวลานานแต่ยังเปิดทิ้งไว้ เช่น เกิน 90 วันภายใต้นโยบายสมมติ; เกณฑ์จริงกำหนดตามบริบทและนโยบายองค์กร / For example, over 90 days under an illustrative policy; the actual inactivity threshold is organization-defined.\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Inappropriate Access (สิทธิ์ไม่เหมาะสมกับงาน):</h4>\n\nผู้ใช้มีสิทธิ์เข้าถึงระบบที่ไม่เกี่ยวข้องกับสายงานของตนเอง\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Role Changes (การเปลี่ยนบทบาทแต่สิทธิ์ค้าง):</h4>\n\nพนักงานย้ายตำแหน่งแล้ว แต่สิทธิ์งานเดิมที่หมดความจำเป็นยังค้างอยู่ (Obsolete access after a role change)\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Privilege Accumulation / Privilege Creep (การสะสมสิทธิ์):</h4>\n\nการที่สิทธิ์เกินความจำเป็นสะสมจากการย้ายแผนกหลายครั้ง โดยไม่ถอนส่วนที่เลิกใช้ (Accumulation of unnecessary access)\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Orphaned Accounts (บัญชีไร้เจ้าของ):</h4>\n\nตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.\n\n</section>\n\n<div class=\"reading-callout warning\">\n  <div class=\"reading-callout-header\">\n    <svg class=\"reading-callout-icon\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z\"></path><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"13\"></line><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg>\n    <span>กรณีศึกษาคลาสสิก: Finance ย้ายไป IT</span>\n  </div>\n  <p>สมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้</p>\n  <p><strong>Review → apply → verify:</strong> Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.</p>\n</div>\n",
+        "sha256": "e8c60a7db03e637150f78921d1dffbb8c64f29c86a643e11993f699fb3ee2580"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ENR-D3-03",
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "after": "บัญชีที่ไม่มีการล็อกอินเป็นเวลานานแต่ยังเปิดทิ้งไว้ เช่น เกิน 90 วันภายใต้นโยบายสมมติ; เกณฑ์จริงกำหนดตามบริบทและนโยบายองค์กร / For example, over 90 days under an illustrative policy; the actual inactivity threshold is organization-defined.",
+        "count": 1,
+        "line": 158,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ENR-D3-03",
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "after": "พนักงานย้ายตำแหน่งแล้ว แต่สิทธิ์งานเดิมที่หมดความจำเป็นยังค้างอยู่ (Obsolete access after a role change)",
+        "count": 1,
+        "line": 172,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ENR-D3-03",
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "after": "การที่สิทธิ์เกินความจำเป็นสะสมจากการย้ายแผนกหลายครั้ง โดยไม่ถอนส่วนที่เลิกใช้ (Accumulation of unnecessary access)",
+        "count": 1,
+        "line": 179,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ENR-D3-03",
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "after": "ตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.",
+        "count": 1,
+        "line": 186,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ENR-D3-03",
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "after": "  <p>สมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้</p>\n  <p><strong>Review → apply → verify:</strong> Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.</p>",
+        "count": 1,
+        "line": 195,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ENR-D4-04",
+    "domain": 4,
+    "objective": "4.1",
+    "decision": "APPROVE WITH REVISION",
+    "status": "Implemented — verified",
+    "reason": "Process-risk priorities, optional Purdue context/IDMZ and controlled necessary communication; one-way data diode is conditional rather than universal sole path.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "anchor": "topic-4-1-network-threats-iot",
+        "exists": true,
+        "anchorFound": true,
+        "line": 564,
+        "text": "<h3 id=\"topic-4-1-network-threats-iot\">4.1.10 Network Threats, Embedded Systems &amp; IoT Security: ภัยคุกคามและอุปกรณ์อัจฉริยะ</h3>\n\n<h4 class=\"reading-concept-group-title\">การจำแนกประเภทภัยคุกคามบนระบบเครือข่าย:</h4>\n<section class=\"reading-concept-unit\">\n<h5>DoS / DDoS (Denial of Service):</h5>\n\nการโจมตีเพื่อทำให้บริการหรือระบบไม่สามารถใช้งานได้ DoS มาจากแหล่งเดียว แต่ **DDoS (Distributed DoS)** เป็นการระดมโจมตีพร้อมกันจากเครือข่ายเครื่องที่ติดมัลแวร์นับหมื่นนับล้านเครื่องทั่วโลก (**Botnet**) ภายใต้การสั่งการของ **Botmaster / C2 Server**\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Man-in-the-Middle (MITM):</h5>\n\nผู้โจมตีแทรกตัวอยู่ระหว่างกลางของการสื่อสาร เพื่อดักรับหรือเปลี่ยนแปลงข้อมูล เช่น ผ่านการทำ ARP Poisoning หรือ Rogue DHCP Server\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Spoofing (การปลอมแปลง):</h5>\n\nการปลอมแปลงตัวตน เช่น IP Spoofing (ปลอมไอพีต้นทาง), MAC Spoofing, หรือ Email Spoofing\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Sniffing (การดักฟังข้อมูล):</h5>\n\nการใช้เครื่องมืออย่าง Wireshark เพื่อดักจับแพ็กเก็ตที่วิ่งผ่านเครือข่าย หากไม่มีการเข้ารหัส ข้อมูลความลับจะถูกอ่านได้ทันที\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Lateral Movement (การเคลื่อนที่ในแนวราบ):</h5>\n\nเมื่อผู้โจมตีเจาะระบบเครื่องแรกสำเร็จ (เช่น เครื่องคอมพิวเตอร์พนักงานต้อนรับ) จะใช้เครื่องดังกล่าวเป็นฐานในการสแกนหาช่องโหว่และขยายขอบเขตการควบคุมไปยังเซิร์ฟเวอร์เครื่องอื่นในเครือข่าย\n\n</section>\n\n<h4 class=\"reading-concept-group-title\">ความมั่นคงปลอดภัยของระบบฝังตัว (Embedded Systems) และระบบควบคุมทางอุตสาหกรรม (OT / ICS / SCADA):</h4>\n- **ความแตกต่างสำคัญ:** OT/ICS ต้องประเมิน Safety, ความเชื่อถือได้ ความพร้อมใช้งาน และผลต่อกระบวนการก่อนเปลี่ยนระบบ ลำดับความสำคัญขึ้นกับความเสี่ยงของงาน; IT ก็ไม่ได้ให้ Confidentiality สูงสุดทุกกรณี / Assess OT safety, reliability, availability and process impact before changes. Priorities depend on the process and risk; IT does not universally prioritize confidentiality.\n- **ข้อจำกัด:** มักเป็นระบบเก่า (Legacy Systems) ที่ทำงานแบบ Real-time ไม่สามารถหยุดการทำงานเพื่อรีบูตหรือติดตั้งแพตช์ได้ง่าย และโพรโทคอลสื่อสารมักไม่มีระบบยืนยันตัวตนในตัว (เช่น Modbus, BACnet)\n- **Purdue Model — บริบทเสริมทางเลือก (Optional architecture context):** ตัวอย่างการจัดกลุ่มระบบตามหน้าที่ ไม่ใช่สถาปัตยกรรมบังคับสำหรับ OT ทุกระบบ / An example functional grouping, not a universal OT architecture:\n  - **Level 0 (Physical Process):** เซ็นเซอร์ วาล์ว มอเตอร์ และอุปกรณ์วัดค่าทางกายภาพ\n  - **Level 1 (Basic Control):** อุปกรณ์ควบคุมพื้นฐาน เช่น Programmable Logic Controllers (PLCs) และ Remote Terminal Units (RTUs)\n  - **Level 2 (Area Supervisory Control):** หน้าจอควบคุมของผู้ปฏิบัติงาน (Human-Machine Interface: HMI) และระบบควบคุม SCADA ประจำพื้นที่\n  - **Level 3 (Site Operations):** ระบบบริหารการผลิตระดับโรงงาน, บันทึกประวัติกระบวนการ (Historians), และระบบอัปเดตระบบอุตสาหกรรม\n  - **Level 3.5 (Industrial DMZ — IDMZ):** ตัวอย่างเขตกันชนสำหรับควบคุมการสื่อสาร IT/OT ตามสถาปัตยกรรมและนโยบายที่เลือก (Example IT/OT communication boundary under the selected architecture/policy)\n  - **Level 4 / 5 (Enterprise IT & Corporate Network):** เครือข่ายสำนักงานทั่วไป อีเมล ระบบ ERP และการเชื่อมต่ออินเทอร์เน็ตภายนอก\n- **การสื่อสารที่จำเป็นของ ICS/SCADA:** แยก IT/OT และอนุญาตเฉพาะเส้นทางที่จำเป็นซึ่งควบคุมและตรวจสอบได้ตามความเสี่ยง/ผลต่อกระบวนการ ใช้สถาปัตยกรรมที่เหมาะสม เช่น Firewall/DMZ; Data Diode เป็นทางเลือกสำหรับความต้องการสื่อสารทางเดียว ไม่ใช่กฎเส้นทางเดียวสำหรับทุกระบบ / Separate IT/OT and permit only necessary, controlled and monitored paths suited to process risk. Firewalls/DMZs and, where one-way communication fits, data diodes are architectural options rather than a universal sole path.\n\n<h4 class=\"reading-concept-group-title\">ความเปราะบางของอุปกรณ์ IoT (Internet of Things):</h4>\n- อุปกรณ์ขนาดเล็กที่มีเซ็นเซอร์และเชื่อมต่ออินเทอร์เน็ตได้ เช่น กล้องวงจรปิดอัจฉริยะ หลอดไฟอัจฉริยะ หรือเราเตอร์ตามบ้าน\n- จุดอ่อนสำคัญ: มักตั้งรหัสผ่านเริ่มต้นมาจากโรงงาน (Default Credentials เช่น admin/admin), ไม่มีหน้าต่างอัปเดตเฟิร์มแวร์, และมักถูกผู้โจมตีแฮกเพื่อนำไปเป็นส่วนหนึ่งของเครือข่าย Botnet (เช่น Mirai Botnet)\n- **แนวทางป้องกันที่ดีที่สุด:** ต้องทำการ **แยกอุปกรณ์ IoT และ OT ออกไปไว้ใน VLAN หรือ Network Segment เฉพาะ** และควบคุมการสื่อสารผ่านไฟร์วอลล์อย่างเข้มงวด\n\n</section>\n\n<section class=\"reading-objective-section reading-structured-objective\" id=\"obj-4-2\">\n\n## Objective 4.2: Understand Network Security Architecture\n\n<p class=\"reading-intro-label\"><svg class=\"reading-label-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg>สถาปัตยกรรมความมั่นคงปลอดภัยเครือข่ายคือการวางโครงสร้างและกำหนดเขตแดนเพื่อควบคุมการไหลเวียนของข้อมูล ป้องกันไม่ให้ภัยคุกคามลุกลามเมื่อเกิดการบุกรุก:</p>\n",
+        "sha256": "c7e57a020dc5fc685e4e3d9422cd69460f85cb88b66c7128f73c8d79c84d0f6b"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ENR-D4-04",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "- **ความแตกต่างสำคัญ:** OT/ICS ต้องประเมิน Safety, ความเชื่อถือได้ ความพร้อมใช้งาน และผลต่อกระบวนการก่อนเปลี่ยนระบบ ลำดับความสำคัญขึ้นกับความเสี่ยงของงาน; IT ก็ไม่ได้ให้ Confidentiality สูงสุดทุกกรณี / Assess OT safety, reliability, availability and process impact before changes. Priorities depend on the process and risk; IT does not universally prioritize confidentiality.",
+        "count": 1,
+        "line": 603,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ENR-D4-04",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "- **Purdue Model — บริบทเสริมทางเลือก (Optional architecture context):** ตัวอย่างการจัดกลุ่มระบบตามหน้าที่ ไม่ใช่สถาปัตยกรรมบังคับสำหรับ OT ทุกระบบ / An example functional grouping, not a universal OT architecture:",
+        "count": 1,
+        "line": 605,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ENR-D4-04",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "  - **Level 3.5 (Industrial DMZ — IDMZ):** ตัวอย่างเขตกันชนสำหรับควบคุมการสื่อสาร IT/OT ตามสถาปัตยกรรมและนโยบายที่เลือก (Example IT/OT communication boundary under the selected architecture/policy)",
+        "count": 1,
+        "line": 610,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-4-batch-a",
+        "id": "ENR-D4-04",
+        "path": "content/isc2-cc-2026/reading/domain-4.md",
+        "after": "- **การสื่อสารที่จำเป็นของ ICS/SCADA:** แยก IT/OT และอนุญาตเฉพาะเส้นทางที่จำเป็นซึ่งควบคุมและตรวจสอบได้ตามความเสี่ยง/ผลต่อกระบวนการ ใช้สถาปัตยกรรมที่เหมาะสม เช่น Firewall/DMZ; Data Diode เป็นทางเลือกสำหรับความต้องการสื่อสารทางเดียว ไม่ใช่กฎเส้นทางเดียวสำหรับทุกระบบ / Separate IT/OT and permit only necessary, controlled and monitored paths suited to process risk. Firewalls/DMZs and, where one-way communication fits, data diodes are architectural options rather than a universal sole path.",
+        "count": 1,
+        "line": 612,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ENR-D3-02",
+    "domain": 3,
+    "objective": "3.1",
+    "decision": "APPROVE",
+    "status": "Implemented — verified",
+    "reason": "Approved report read versus observed payroll change; authorized correction and allowed/denied retest. Policy-designated approval, not HR-only.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "anchor": "topic-3-1-provisioning",
+        "exists": true,
+        "anchorFound": true,
+        "line": 90,
+        "text": "<h3 id=\"topic-3-1-provisioning\">3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์</h3>\n\n**Provisioning** คือกระบวนการเตรียม สร้าง และจัดสรรทรัพยากรตัวตนดิจิทัลและสิทธิ์การเข้าถึง เพื่อให้ผู้ใช้สามารถเริ่มต้นปฏิบัติงานได้:\n\nสูตรจำสั้น: <span class=\"reading-math-formula\">Provisioning = Create Identity + Grant Required Access</span>\n\nกิจกรรม Provisioning ต่อไปนี้เป็นตัวอย่าง ไม่ใช่ลำดับมาตรฐานตายตัว ก่อนให้สิทธิ์ต้องทราบหน้าที่งาน ความจำเป็น และได้รับการอนุมัติตามนโยบาย:\n\n<section class=\"reading-concept-unit\">\n<h4>Creating User Account:</h4>\n\nการสร้างบัญชีผู้ใช้งานใหม่ขึ้นในระบบระบุตัวตนกลาง (เช่น Active Directory หรือ Cloud Identity)\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Assigning Unique Identity:</h4>\n\nการกำหนดรหัสประจำตัวเฉพาะที่ไม่ซ้ำกับใคร เพื่อใช้ในการระบุตัวตนและติดตามความรับผิดชอบ (Accountability)\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Assigning Roles:</h4>\n\nการผูกบัญชีกับบทบาทหน้าที่ (Roles) ตามข้อมูลตำแหน่งงานที่ตรวจสอบแล้ว โดยผู้มีอำนาจตามนโยบายอนุมัติสิทธิ์ของระบบหรือทรัพยากรนั้น ไม่ใช่ถือว่า HR อนุมัติสิทธิ์ทุกระบบเสมอ / Verified job information informs the role; the policy-designated authority approves resource access, rather than assuming HR approves every system.\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Granting Permissions:</h4>\n\nการกำหนดสิทธิ์การอ่าน เขียน หรือแก้ไข ให้สอดคล้องกับบทบาทที่ได้รับมอบหมาย\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Providing Application Access:</h4>\n\nการเปิดช่องทางให้เข้าถึงระบบงานและซอฟต์แวร์ที่ต้องใช้ (เช่น ERP, CRM, Email)\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h4>Issuing Authentication Credentials:</h4>\n\nการออกข้อมูลประจำตัวสำหรับยืนยันตัวตน เช่น รหัสผ่านเริ่มต้น, บัตรสมาร์ตการ์ด, หรือการลงทะเบียนโทเค็น MFA\n\n</section>\n<p><strong>ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed):</strong> ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ</p>\n<p><strong>Illustrative check:</strong> The policy-designated approver authorizes only monthly-report reading, not payroll changes or network administration. Testing shows payroll changes also succeed. Correct the excess grant, then verify that report reading succeeds while payroll changes and network administration are denied.</p>\n\n",
+        "sha256": "e8c60a7db03e637150f78921d1dffbb8c64f29c86a643e11993f699fb3ee2580"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ENR-D3-02",
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "after": "การผูกบัญชีกับบทบาทหน้าที่ (Roles) ตามข้อมูลตำแหน่งงานที่ตรวจสอบแล้ว โดยผู้มีอำนาจตามนโยบายอนุมัติสิทธิ์ของระบบหรือทรัพยากรนั้น ไม่ใช่ถือว่า HR อนุมัติสิทธิ์ทุกระบบเสมอ / Verified job information informs the role; the policy-designated authority approves resource access, rather than assuming HR approves every system.",
+        "count": 1,
+        "line": 115,
+        "normalizedPresent": true
+      },
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ENR-D3-02",
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "after": "<p><strong>ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed):</strong> ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ</p>\n<p><strong>Illustrative check:</strong> The policy-designated approver authorizes only monthly-report reading, not payroll changes or network administration. Testing shows payroll changes also succeed. Correct the excess grant, then verify that report reading succeeds while payroll changes and network administration are denied.</p>\n\n<h3 id=\"topic-3-1-access-review\">",
+        "count": 1,
+        "line": 139,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  },
+  {
+    "id": "ENR-D3-04",
+    "domain": 3,
+    "objective": "3.1",
+    "decision": "APPROVE",
+    "status": "Implemented — requires revision",
+    "reason": "Existing app session check and retained prose caveat are correct, but mobile Leaver paragraph still implies Disable Account preserves Audit Trail (A10); cross-representation acceptance requires revision.",
+    "targets": [
+      {
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "anchor": "topic-3-1-deprovisioning",
+        "exists": true,
+        "anchorFound": true,
+        "line": 198,
+        "text": "<h3 id=\"topic-3-1-deprovisioning\">3.1.5 Deprovisioning: Triggers &amp; Revocation Practices</h3>\n\n**Deprovisioning** คือกระบวนการเพิกถอนสิทธิ์และระงับการเข้าถึงระบบเมื่อหมดความจำเป็นในการใช้งาน:\n\nสูตรจำสั้น: <span class=\"reading-math-formula\">Deprovisioning = Remove / Disable Access</span>\n\n<h4 class=\"reading-concept-group-title\">เหตุการณ์ที่กระตุ้นให้เกิด Deprovisioning (Triggers) มี 4 ประการ:</h4>\n<section class=\"reading-concept-unit\">\n<h5>Termination:</h5>\n\nพนักงานถูกบอกเลิกจ้างหรือให้ออก (ต้องดำเนินการระงับสิทธิ์ทันทีเพื่อป้องกัน Insider Threat)\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Resignation:</h5>\n\nพนักงานลาออกตามความสมัครใจ\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Role Change:</h5>\n\nพนักงานเปลี่ยนบทบาทหรือย้ายฝ่าย (ถอนสิทธิ์ที่หมดความจำเป็นและปรับให้ตรงหน้าที่ใหม่ตามนโยบาย / Revoke obsolete access and align rights with the new duties under policy)\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Contract Expiration:</h5>\n\nสัญญาจ้างของ Vendor หรือพนักงานสัญญาจ้างสิ้นสุดลง\n\n</section>\n\n<h4 class=\"reading-concept-group-title\">กิจกรรมหลักในการ Deprovisioning:</h4>\n<section class=\"reading-concept-unit\">\n<h5>Disable Account:</h5>\n\nปิดการใช้งานบัญชีโดยผู้ดูแล แตกต่างจาก Account Lockout ที่มักเกิดจากการลงชื่อเข้าใช้ผิดซ้ำ\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Revoke Application Access:</h5>\n\nถอดสิทธิ์การเข้าถึงแอปพลิเคชันและบริการคลาวด์ทั้งหมด\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Remove Group Memberships:</h5>\n\nนำชื่อบัญชีออกจากกลุ่มสิทธิ์ต่าง ๆ\n\n</section>\n\n<section class=\"reading-concept-unit\">\n<h5>Revoke Privileged Access:</h5>\n\nยกเลิกสิทธิ์ระดับผู้ดูแลระบบและคืนโทเค็นเข้าถึงทั้งหมด\n\n</section>\n\n<div class=\"reading-callout tip\">\n  <div class=\"reading-callout-header\">\n    <svg class=\"reading-callout-icon\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line></svg>\n    <span>ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที</span>\n  </div>\n  <p>ในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ <strong>\"Disable Account\"</strong> (ปิดการใช้งาน) แทนการ <strong>\"Delete Account\"</strong> (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป</p>\n</div>\n<p><strong>ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session):</strong> สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป</p>\n<p><strong>Illustrative session check:</strong> The contract has ended and the administrator is authorized to withdraw access. The central account is disabled, but this application’s existing session still reads data. Use the application’s supported access/session revocation process, verify denial with that existing session, and retain required evidence. Application behavior varies.</p>\n\n",
+        "sha256": "e8c60a7db03e637150f78921d1dffbb8c64f29c86a643e11993f699fb3ee2580"
+      }
+    ],
+    "verifiedSpans": [
+      {
+        "batch": "reading-notes-phase-3a-domain-3-batch-a",
+        "id": "ENR-D3-04",
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "after": "<p><strong>ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session):</strong> สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป</p>\n<p><strong>Illustrative session check:</strong> The contract has ended and the administrator is authorized to withdraw access. The central account is disabled, but this application’s existing session still reads data. Use the application’s supported access/session revocation process, verify denial with that existing session, and retain required evidence. Application behavior varies.</p>\n\n<h3 id=\"topic-3-1-iam-frameworks\">",
+        "count": 1,
+        "line": 269,
+        "normalizedPresent": true
+      }
+    ],
+    "bilingual": "Corrected actors/conditions/quantities/limitations align; compact English terminology is not a full English edition. Human language acceptance pending."
+  }
+]

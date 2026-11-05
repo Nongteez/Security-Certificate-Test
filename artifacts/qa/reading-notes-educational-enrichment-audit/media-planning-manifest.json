@@ -1,0 +1,437 @@
+[
+  {
+    "id": "VIS-01",
+    "domain": 4,
+    "target": "topic-4-1-network-devices",
+    "proposedFilename": "assets/reading/domain-4/network-devices/ids-passive-ips-inline.{locale}.svg",
+    "primaryClassification": "ADD DIAGRAM",
+    "priority": "P2",
+    "learningObjective": "Distinguish seeing a traffic copy from blocking traffic in-path",
+    "whyCurrentExplanationInsufficient": "Device definitions lack a paired placement view",
+    "requiredComponentsAndRelationships": "Client→switch→server; mirror/TAP→IDS→alert; paired client→IPS→server",
+    "academicConstraints": "Assume prevention enabled in IPS panel; passive IDS alone does not directly block; coordinated blocking is separate",
+    "format": "Code-native SVG/HTML; selectable localized text",
+    "sourceOrAuthorship": "Original educational authorship proposed",
+    "licensePermissionStatus": "Authorship pending; no asset exists; project distribution license must be selected",
+    "alt": {
+      "en": "Passive IDS receives a copy; inline IPS can block a request on its path.",
+      "th": "IDS แบบ Passive รับสำเนาทราฟฟิก ส่วน IPS ที่อยู่ในเส้นทางสามารถบล็อกคำขอได้"
+    },
+    "caption": {
+      "en": "Placement and configured mode determine the action.",
+      "th": "ตำแหน่งติดตั้งและโหมดที่กำหนดเป็นตัวกำหนดการทำงาน"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "Reading devices and published D4-03 cover function; adapt existing semantics rather than duplicate definitions",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "VIS-01",
+    "relatedFindingIds": []
+  },
+  {
+    "id": "VIS-02",
+    "domain": 5,
+    "target": "topic-5-1-tpm-vs-hsm",
+    "proposedFilename": "assets/reading/domain-5/tpm-hsm/hsm-signing-boundary.{locale}.svg",
+    "primaryClassification": "ADD DIAGRAM",
+    "priority": "P2",
+    "learningObjective": "Understand protected key custody and operation requests",
+    "whyCurrentExplanationInsufficient": "Definition/table do not show operation and boundary",
+    "requiredComponentsAndRelationships": "Application→authorized request→HSM/private key→signature; verifier outside uses data/signature/trusted public key",
+    "academicConstraints": "Use non-exportable signing-key example; no raw-key arrow, no generic public-key decryption; authorized wrapped backups vary",
+    "format": "Code-native SVG/HTML; selectable localized text",
+    "sourceOrAuthorship": "Original educational authorship proposed",
+    "licensePermissionStatus": "Authorship pending; no asset exists; project distribution license must be selected",
+    "alt": {
+      "en": "Application requests signing; private key stays inside the HSM and the signature returns.",
+      "th": "แอปขอลงนาม กุญแจส่วนตัวอยู่ภายใน HSM และส่งลายเซ็นกลับ"
+    },
+    "caption": {
+      "en": "This configured key boundary does not itself authorize every request.",
+      "th": "เขตป้องกันกุญแจในตัวอย่างนี้ไม่ได้อนุญาตทุกคำขอโดยอัตโนมัติ"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "Published d5-02 key-operation semantics must be reused first",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "VIS-02",
+    "relatedFindingIds": [
+      "ACC-D5-02"
+    ]
+  },
+  {
+    "id": "D2-A01",
+    "domain": 2,
+    "target": "topic-2-2-drp-sites",
+    "proposedFilename": "assets/reading/domain-2/backups/restore-dependencies.{locale}.svg",
+    "primaryClassification": "ADD DIAGRAM",
+    "priority": "P2",
+    "learningObjective": "Choose required restore sets",
+    "whyCurrentExplanationInsufficient": "Table and Sunday–Thursday example explain sets verbally but lack a set-dependency picture",
+    "requiredComponentsAndRelationships": "Sunday full; Mon A Tue B Wed C; Wed differential ABC; three separate incrementals A/B/C; Thursday restore sets highlighted",
+    "academicConstraints": "Conventional simplified file-backup example; restore requires valid accessible tested chain; not every product behaves identically",
+    "format": "Code-native SVG/HTML; selectable localized text",
+    "sourceOrAuthorship": "Original educational authorship proposed",
+    "licensePermissionStatus": "Authorship pending; no asset exists; project distribution license must be selected",
+    "alt": {
+      "en": "Differential restore uses full plus latest differential; incremental restore uses full plus every required incremental.",
+      "th": "การกู้แบบ Differential ใช้ Full กับ Differential ล่าสุด ส่วน Incremental ใช้ Full กับ Incremental ที่จำเป็นทุกชุด"
+    },
+    "caption": {
+      "en": "Successful backup is not proof of successful restoration.",
+      "th": "การสำรองสำเร็จไม่ใช่หลักฐานว่ากู้คืนได้สำเร็จ"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "L2-04 custom renderer:25–27 shows copy→verify→restore→test, not these full/differential/incremental sets",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "D2-A01",
+    "relatedFindingIds": []
+  },
+  {
+    "id": "D2-A02",
+    "domain": 2,
+    "target": "topic-2-3-social-engineering-techniques",
+    "proposedFilename": "assets/reading/domain-2/social-engineering/simulated-suspicious-message.{locale}.webp",
+    "primaryClassification": "ADD REAL-WORLD IMAGE",
+    "priority": "P3",
+    "learningObjective": "Recognize request, pressure and independent verification route",
+    "whyCurrentExplanationInsufficient": "No actual message interface in text lecture screenshots",
+    "requiredComponentsAndRelationships": "One rights-cleared real anonymized message or explicitly simulated interface; three HTML annotations",
+    "academicConstraints": "Real/simulated label mandatory; no live links or personal data; grammar/branding are not proof",
+    "format": "Optimized WebP/AVIF with compatible fallback",
+    "sourceOrAuthorship": "Unselected real image: permission required; fallback authored simulated screenshot",
+    "licensePermissionStatus": "REQUIRES VERIFICATION; no real image selected or cleared",
+    "alt": {
+      "en": "Illustrative message requests urgent disclosure; annotations identify the requested action and verification route.",
+      "th": "ข้อความตัวอย่างเร่งให้เปิดเผยข้อมูล พร้อมคำอธิบายการกระทำที่ร้องขอและช่องทางตรวจสอบ"
+    },
+    "caption": {
+      "en": "Illustrative scenario; verify using an independently known channel.",
+      "th": "สถานการณ์สมมติ ตรวจสอบผ่านช่องทางที่ทราบว่าเชื่อถือได้"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "L2-06 already teaches decision; approve only if interface recognition adds value",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "D2-A02",
+    "relatedFindingIds": []
+  },
+  {
+    "id": "D2-A03",
+    "domain": 2,
+    "target": "topic-2-4-dashboards",
+    "proposedFilename": "assets/reading/domain-2/metrics/reporting-views.{locale}.svg",
+    "primaryClassification": "DUPLICATE — DO NOT ADD",
+    "priority": "P3",
+    "learningObjective": "Compare status, target and action",
+    "whyCurrentExplanationInsufficient": "Prior review hypothesized missing artifact representations; current renderer already implements them",
+    "requiredComponentsAndRelationships": "Existing status/trend bars, 91/95 comparison and recommendation flow",
+    "academicConstraints": "Adapt/link existing representations; no new dashboard asset",
+    "format": "Code-native SVG/HTML; selectable localized text",
+    "sourceOrAuthorship": "Original educational authorship proposed",
+    "licensePermissionStatus": "Authorship pending; no asset exists; project distribution license must be selected",
+    "alt": {
+      "en": "Status, target and recommended action use existing lesson examples.",
+      "th": "สถานะ เป้าหมาย และแนวทางแนะนำใช้ตัวอย่างบทเรียนที่มีอยู่"
+    },
+    "caption": {
+      "en": "Reuse existing reporting lesson.",
+      "th": "ใช้บทเรียนการรายงานที่มีอยู่"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "security-reporting-presentations.js:14–23 has all three views; rendered QA not newly performed",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "D2-A03",
+    "relatedFindingIds": []
+  },
+  {
+    "id": "D4-M01",
+    "domain": 4,
+    "target": "topic-4-1-osi-model",
+    "proposedFilename": "assets/reading/domain-4/network-fundamentals/encapsulation.{locale}.svg",
+    "primaryClassification": "ADD DIAGRAM",
+    "priority": "P3",
+    "learningObjective": "Distinguish packet nesting and next-hop scope",
+    "whyCurrentExplanationInsufficient": "Only if existing lesson adaptation cannot supply standalone reading clarity",
+    "requiredComponentsAndRelationships": "Application inside transport inside IP inside link frame; router rebuilds next-link frame",
+    "academicConstraints": "Simplified routed Ethernet/TCP; not every OSI layer adds a header; avoid unchanged-every-field claim",
+    "format": "Code-native SVG/HTML; selectable localized text",
+    "sourceOrAuthorship": "Original educational authorship proposed",
+    "licensePermissionStatus": "Authorship pending; no asset exists; project distribution license must be selected",
+    "alt": {
+      "en": "Link frame contains an IP packet and a transport segment; next-hop frame changes.",
+      "th": "เฟรมลิงก์บรรจุแพ็กเก็ต IP และส่วนข้อมูลขนส่ง โดยเฟรมเปลี่ยนตามจุดส่งต่อ"
+    },
+    "caption": {
+      "en": "A simplified routed TCP/Ethernet example.",
+      "th": "ตัวอย่าง TCP และ Ethernet แบบส่งผ่านเราเตอร์อย่างย่อ"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "Prefer existing slide-d4-01-05-encapsulation; reject a second OSI ladder",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "D4-M01",
+    "relatedFindingIds": []
+  },
+  {
+    "id": "D5-M16",
+    "domain": 5,
+    "target": "topic-5-5-threat-modeling-design",
+    "proposedFilename": "assets/reading/domain-5/threat-modeling/account-recovery-boundary.{locale}.svg",
+    "primaryClassification": "ADD DIAGRAM",
+    "priority": "P3",
+    "learningObjective": "Connect threat, control and test to a trust boundary",
+    "whyCurrentExplanationInsufficient": "Only if the compact practical example still leaves the boundary abstract",
+    "requiredComponentsAndRelationships": "External client→recovery API→records, one boundary, forged request, identity check and test",
+    "academicConstraints": "Fictional service, no customer data or exploit instructions; revisit assumptions when design changes",
+    "format": "Code-native SVG/HTML; selectable localized text",
+    "sourceOrAuthorship": "Original educational authorship proposed",
+    "licensePermissionStatus": "Authorship pending; no asset exists; project distribution license must be selected",
+    "alt": {
+      "en": "A recovery request crosses a trust boundary before access to account records.",
+      "th": "คำขอกู้บัญชีข้ามขอบเขตความเชื่อถือก่อนเข้าถึงข้อมูลบัญชี"
+    },
+    "caption": {
+      "en": "Model one threat, choose a control and specify test evidence.",
+      "th": "จำลองภัยคุกคามหนึ่งกรณี เลือกมาตรการและกำหนดหลักฐานทดสอบ"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "Published D5-10 threat-modeling slide and current prose must be reused first",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "D5-M16",
+    "relatedFindingIds": []
+  },
+  {
+    "id": "IMG-HSM-NET",
+    "domain": 5,
+    "target": "topic-5-1-tpm-vs-hsm",
+    "proposedFilename": "assets/reading/domain-5/tpm-hsm/network-hsm.webp",
+    "primaryClassification": "ADD REAL-WORLD IMAGE",
+    "priority": "P3",
+    "learningObjective": "Recognize two distinct HSM physical forms",
+    "whyCurrentExplanationInsufficient": "Current definition/table is conceptual, source HSM slide is text-only",
+    "requiredComponentsAndRelationships": "One network appliance and one USB HSM as a paired comparison, then stacked",
+    "academicConstraints": "Actual model verified as HSM; shape proves neither certification nor supported policies",
+    "format": "Optimized WebP/AVIF with compatible fallback",
+    "sourceOrAuthorship": "https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms",
+    "licensePermissionStatus": "LINK ONLY; redistribution permission and image-level copyright not established",
+    "alt": {
+      "en": "Thales Luna Network HSM, an example HSM form factor.",
+      "th": "Thales Luna Network HSM ตัวอย่างรูปแบบอุปกรณ์ HSM"
+    },
+    "caption": {
+      "en": "HSMs come in multiple forms; check model-specific validation.",
+      "th": "HSM มีหลายรูปแบบ ต้องตรวจสอบการรับรองเฉพาะรุ่น"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "No current clean licensed photo; source screenshot not suitable product photo",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "IMG-HSM-PAIR",
+    "relatedFindingIds": [
+      "ACC-D5-02"
+    ]
+  },
+  {
+    "id": "IMG-HSM-USB",
+    "domain": 5,
+    "target": "topic-5-1-tpm-vs-hsm",
+    "proposedFilename": "assets/reading/domain-5/tpm-hsm/usb-hsm.webp",
+    "primaryClassification": "ADD REAL-WORLD IMAGE",
+    "priority": "P3",
+    "learningObjective": "Recognize two distinct HSM physical forms",
+    "whyCurrentExplanationInsufficient": "Current definition/table is conceptual, source HSM slide is text-only",
+    "requiredComponentsAndRelationships": "One network appliance and one USB HSM as a paired comparison, then stacked",
+    "academicConstraints": "Actual model verified as HSM; shape proves neither certification nor supported policies",
+    "format": "Optimized WebP/AVIF with compatible fallback",
+    "sourceOrAuthorship": "https://www.yubico.com/product/yubihsm-2/",
+    "licensePermissionStatus": "LINK ONLY; redistribution permission and image-level copyright not established",
+    "alt": {
+      "en": "Yubico YubiHSM 2, an example HSM form factor.",
+      "th": "Yubico YubiHSM 2 ตัวอย่างรูปแบบอุปกรณ์ HSM"
+    },
+    "caption": {
+      "en": "HSMs come in multiple forms; check model-specific validation.",
+      "th": "HSM มีหลายรูปแบบ ต้องตรวจสอบการรับรองเฉพาะรุ่น"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "No current clean licensed photo; source screenshot not suitable product photo",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "IMG-HSM-PAIR",
+    "relatedFindingIds": [
+      "ACC-D5-02"
+    ]
+  },
+  {
+    "id": "IMG-FW",
+    "domain": 4,
+    "target": "topic-4-1-network-devices",
+    "proposedFilename": "assets/reading/domain-4/network-devices/firewall-appliance.webp",
+    "primaryClassification": "ADD REAL-WORLD IMAGE",
+    "priority": "P3",
+    "learningObjective": "Recognize a physical network appliance and connector",
+    "whyCurrentExplanationInsufficient": "Only if novice device recognition remains difficult",
+    "requiredComponentsAndRelationships": "One appliance, physical Ethernet connector; host firewall contrast in adjacent HTML",
+    "academicConstraints": "Appliance can combine functions; physical socket differs from TCP/UDP port; no enforcement guarantee",
+    "format": "Optimized WebP/AVIF with compatible fallback",
+    "sourceOrAuthorship": "https://www.fortinet.com/products/next-generation-firewall",
+    "licensePermissionStatus": "LINK ONLY; public educational redistribution permission not established",
+    "alt": {
+      "en": "Example physical firewall appliance with Ethernet connectors.",
+      "th": "ตัวอย่างอุปกรณ์ไฟร์วอลล์จริงพร้อมช่องเชื่อมต่อ Ethernet"
+    },
+    "caption": {
+      "en": "Function depends on deployment and configuration.",
+      "th": "หน้าที่ขึ้นกับการติดตั้งและการกำหนดค่า"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "Source screenshot 152505 already shows host/network placement; photo may add little",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "IMG-FW",
+    "relatedFindingIds": []
+  },
+  {
+    "id": "INT-IDS",
+    "domain": 4,
+    "target": "topic-4-1-network-devices",
+    "proposedFilename": "existing renderer reference: VIS-01 optional stepped mode",
+    "primaryClassification": "ADD ANIMATION / INTERACTIVE VISUAL",
+    "priority": "P3",
+    "learningObjective": "See observation versus in-path blocking",
+    "whyCurrentExplanationInsufficient": "Only if static VIS-01 leaves a demonstrated learning need",
+    "requiredComponentsAndRelationships": "Send example request; next/previous steps expose copy/observation/result; reset",
+    "academicConstraints": "No autoplay, guaranteed detection or private-key movement; prevention-enabled example",
+    "format": "Code-native SVG/HTML; selectable localized text",
+    "sourceOrAuthorship": "Original educational authorship proposed",
+    "licensePermissionStatus": "Authorship pending; no asset exists; project distribution license must be selected",
+    "alt": {
+      "en": "User steps through a request observed by IDS or blocked by inline IPS.",
+      "th": "ผู้เรียนกดทีละขั้นเพื่อดูคำขอที่ IDS ตรวจพบหรือ IPS ในเส้นทางบล็อก"
+    },
+    "caption": {
+      "en": "Static panels carry the full lesson.",
+      "th": "ภาพนิ่งแสดงสาระครบถ้วน"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "Conditional extension of VIS-01, not a second independent asset",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "INT-IDS",
+    "relatedFindingIds": []
+  },
+  {
+    "id": "INT-ABAC",
+    "domain": 3,
+    "target": "topic-3-2-abac",
+    "proposedFilename": "existing slide-d3-05-05-abac-evaluate-the-request",
+    "primaryClassification": "DUPLICATE — DO NOT ADD",
+    "priority": "P3",
+    "learningObjective": "Evaluate subject resource action and conditions",
+    "whyCurrentExplanationInsufficient": "Existing lesson already teaches the decision; no demonstrated unmet need",
+    "requiredComponentsAndRelationships": "Native controls if later adapted; explicit AND rule and unknown handling",
+    "academicConstraints": "Request-specific outcome, no universal ABAC security ranking",
+    "format": "Code-native SVG/HTML; selectable localized text",
+    "sourceOrAuthorship": "Original educational authorship proposed",
+    "licensePermissionStatus": "Authorship pending; no asset exists; project distribution license must be selected",
+    "alt": {
+      "en": "Subject, resource, action and required conditions determine this example decision.",
+      "th": "ผู้ร้องขอ ทรัพยากร การกระทำและเงื่อนไขที่ต้องผ่านกำหนดผลในตัวอย่างนี้"
+    },
+    "caption": {
+      "en": "Link the existing lesson before building another interaction.",
+      "th": "เชื่อมโยงบทเรียนที่มีอยู่ก่อนสร้างกิจกรรมเพิ่ม"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "Current ABAC rule/scenario and published D3-05-05",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "INT-ABAC",
+    "relatedFindingIds": []
+  },
+  {
+    "id": "INT-TRIAGE",
+    "domain": 5,
+    "target": "topic-5-2-alert-triage-prioritization",
+    "proposedFilename": "existing slide-d5-04-03 detection outcomes",
+    "primaryClassification": "DUPLICATE — DO NOT ADD",
+    "priority": "P3",
+    "learningObjective": "Distinguish detector output from actual condition",
+    "whyCurrentExplanationInsufficient": "Four-case classifier already overlaps existing lesson and reading matrix",
+    "requiredComponentsAndRelationships": "TP FP TN FN synthetic cases; labelled reality and detector output",
+    "academicConstraints": "False-negative harm is contextual; buttons/radios with announced feedback if ever adapted",
+    "format": "Code-native SVG/HTML; selectable localized text",
+    "sourceOrAuthorship": "Original educational authorship proposed",
+    "licensePermissionStatus": "Authorship pending; no asset exists; project distribution license must be selected",
+    "alt": {
+      "en": "Reality and detector output determine true or false positive and negative.",
+      "th": "สภาพจริงและผลตรวจเป็นตัวกำหนดผลบวกหรือลบที่ถูกหรือผิด"
+    },
+    "caption": {
+      "en": "Use the existing explanation first.",
+      "th": "ใช้คำอธิบายที่มีอยู่ก่อน"
+    },
+    "mobile": "Stack at 360–390 px; do not shrink labels into illegibility; preserve aspect ratio and intrinsic dimensions",
+    "accessibility": "Equivalent adjacent prose/table; non-color labels, meaningful figure caption, readable Thai/English and contrast; keyboard and announced state for any interaction",
+    "existingEquivalent": "Published D5-04-03; current reading matrix/scenario",
+    "reducedMotion": "Static default; if approved interaction, user steps only, no autoplay, instant transitions for reduced-motion; complete no-JS equivalent",
+    "optimization": "SVG viewBox, no embedded scripts/fonts/remote dependencies, aim under 40KB if legible; photo variants aim under 150KB with attribution preserved",
+    "responsiveRequirements": "Reserve dimensions; use responsive widths/srcset where appropriate; no essential bitmap text",
+    "productionAssetExists": false,
+    "implementationApproved": false,
+    "workPackageId": "INT-TRIAGE",
+    "relatedFindingIds": []
+  }
+]

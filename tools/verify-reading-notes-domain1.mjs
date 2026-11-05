@@ -353,8 +353,8 @@ runTest('Preservation Boundary — Protected question banks, quiz, vocabulary an
   const slidesCard = ccVersions.find(v => v.id === 'isc2-cc-learning-slides');
 
   assert.equal(legacyCard?.questionCount, 583, 'Legacy 2026 card question count preserved');
-  assert.equal(nextBankCard?.questionCount, 119, 'Next-bank 2026 card question count preserved');
-  assert.equal(vocabCard?.vocabularyCount, 403, 'Vocabulary count preserved');
+  assert.equal(nextBankCard?.questionCount, 157, 'Next-bank 2026 card question count preserved');
+  assert.equal(vocabCard?.vocabularyCount, 438, 'Vocabulary count preserved');
   assert.equal(slidesCard?.status, 'coming-soon', 'Learning slides status preserved');
 
   // Verify vocabulary databases
@@ -362,8 +362,11 @@ runTest('Preservation Boundary — Protected question banks, quiz, vocabulary an
   const v2 = JSON.parse(fs.readFileSync(path.join(root, 'content', 'isc2-cc-2026', 'vocabulary', 'domain-2.json'), 'utf8'));
   const v3 = JSON.parse(fs.readFileSync(path.join(root, 'content', 'isc2-cc-2026', 'vocabulary', 'domain-3.json'), 'utf8'));
   const v4 = JSON.parse(fs.readFileSync(path.join(root, 'content', 'isc2-cc-2026', 'vocabulary', 'domain-4.json'), 'utf8'));
-  const totalVocab = v1.entries.length + v2.entries.length + v3.entries.length + v4.entries.length;
-  assert.equal(totalVocab, 403, 'Vocabulary must preserve all 403 terms across domains 1-4');
+  const v5 = fs.existsSync(path.join(root, 'content', 'isc2-cc-2026', 'vocabulary', 'domain-5.json'))
+    ? JSON.parse(fs.readFileSync(path.join(root, 'content', 'isc2-cc-2026', 'vocabulary', 'domain-5.json'), 'utf8'))
+    : { entries: [] };
+  const totalVocab = v1.entries.length + v2.entries.length + v3.entries.length + v4.entries.length + v5.entries.length;
+  assert.equal(totalVocab, 438, 'Vocabulary must preserve all 438 terms across domains 1-5');
 });
 
 // -------------------------------------------------------------

@@ -1,0 +1,65 @@
+[
+  {
+    "finding": "ACC-D2-01",
+    "path": "content/isc2-cc-2026/reading/domain-2.md",
+    "before": "ในการวางแผนกู้คืนระบบ IT องค์กรต้องกำหนดเป้าหมายเชิงเวลา 2 ตัวชี้วัดสำคัญ:\n",
+    "after": "ในการวางแผนกู้คืนระบบ IT องค์กรต้องกำหนดเป้าหมายเชิงเวลา 2 ตัวชี้วัดสำคัญ:\n\n**สมมติฐานของภาพ (Illustrative assumptions):** ภาพสมมติว่ามีจุดสำรองที่กู้คืนได้เวลา 16:30 น. และเกิดเหตุเวลา 17:00 น.; จุดสำรองนี้ตรงกับขอบเขต RPO 30 นาทีในตัวอย่าง ส่วน 18:00 น. เป็นเป้าหมาย RTO 1 ชั่วโมง ไม่ใช่ผลกู้คืนที่ทดสอบแล้ว / The illustration assumes a recoverable 16:30 backup and a 17:00 outage. That backup coincides with the example’s 30-minute RPO boundary; 18:00 is the one-hour RTO target, not a tested recovery outcome.\n",
+    "entryLine": 229
+  },
+  {
+    "finding": "ACC-D2-01",
+    "path": "content/isc2-cc-2026/reading/domain-2.md",
+    "before": "- **สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:**\n  **MTD &ge; RTO + WRT**\n  *(หาก RTO + WRT &gt; MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)*",
+    "after": "- **แบบจำลองวางแผนอย่างง่าย (Simplified planning model):**\n  **MTD &ge; RTO + WRT**\n  ในแบบจำลองนี้ RTO นับจากเริ่มหยุดชะงักจนระบบ IT พร้อมใช้งาน แล้ว WRT นับต่อจนธุรกิจกลับมาดำเนินงาน โดยสมมติให้สองช่วงไม่ซ้อนทับกัน; กิจกรรมจริงอาจซ้อนทับกันได้ / Here, RTO runs from disruption to IT readiness, followed by WRT until business resumes. The model assumes non-overlapping intervals; actual activities may overlap.\n  *หากผลรวมเกิน MTD แผนนี้จัดสรรเวลาเกินช่วงหยุดชะงักที่ธุรกิจยอมรับ ต้องทบทวนแผน; การหยุดชะงักจริงเกิน MTD ไม่ได้หมายความว่าองค์กรจะอยู่รอดไม่ได้เสมอไป / If the sum exceeds MTD, the plan exceeds the business downtime tolerance and needs review. An actual outage beyond MTD does not inevitably mean organizational failure.*",
+    "entryLine": 257
+  },
+  {
+    "finding": "ACC-D2-02",
+    "path": "content/isc2-cc-2026/reading/domain-2.md",
+    "before": "<div class=\"reading-semantic-diagram\" data-diagram=\"effectivenessHierarchy\"></div>",
+    "after": "**รอบอัปเดต (Refresh cadence):** Dashboard อาจอัปเดตเป็นระยะหรือใกล้เวลาจริง ขึ้นอยู่กับการเก็บข้อมูลและการรายงาน ควรตรวจเวลาอัปเดตของข้อมูล / A dashboard may refresh periodically or near real time, depending on data collection and reporting; check when its data was updated.\n\n<div class=\"reading-semantic-diagram\" data-diagram=\"effectivenessHierarchy\"></div>",
+    "entryLine": 559
+  },
+  {
+    "finding": "ACC-D2-02",
+    "path": "content/isc2-cc-2026/reading/domain-2.md",
+    "before": "| **Dashboard** | \"Real-time\", \"Operational view\", \"Visual representation\" | แสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน | หน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์ |",
+    "after": "| **Dashboard** | \"Refresh cadence varies\", \"Operational view\", \"Visual representation\" | แสดงภาพรวมผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน โดยความสดของข้อมูลขึ้นกับรอบอัปเดต (Data freshness depends on refresh cadence) | ตัวอย่างหน้าจอ SOC ที่ตั้งค่าให้อัปเดตใกล้เวลาจริง (Illustrative near-real-time SOC view) |",
+    "entryLine": 568
+  },
+  {
+    "finding": "ACC-D2-02",
+    "path": "content/isc2-cc-2026/reading/domain-2.md",
+    "before": "<div class=\"reading-distinction-desc\">Visualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time</div>",
+    "after": "<div class=\"reading-distinction-desc\">Visualize — นำเสนอภาพรวมและแนวโน้มตามรอบอัปเดต (Periodic / near-real-time)</div>",
+    "entryLine": 744
+  },
+  {
+    "finding": "ACC-D2-02",
+    "path": "js/core/diagram-generator.js",
+    "before": "<text x=\"56\" y=\"158\" class=\"diag-text-sub\">ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์</text>",
+    "after": "<text x=\"56\" y=\"158\" class=\"diag-text-sub\">ภาพรวมตามรอบอัปเดต (Refresh cadence)</text>",
+    "entryLine": 1716
+  },
+  {
+    "finding": "ACC-D2-02",
+    "path": "js/core/diagram-generator.js",
+    "before": "<text x=\"130\" y=\"358\" class=\"diag-text-sub\">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ</text>",
+    "after": "<text x=\"130\" y=\"358\" class=\"diag-text-sub\">ค่าที่กำหนดและวัดได้ (Defined measurable value)</text>",
+    "entryLine": 1775
+  },
+  {
+    "finding": "ACC-D2-02",
+    "path": "js/core/diagram-generator.js",
+    "before": "<p class=\"reading-mob-tier-desc\"><strong>Dashboard:</strong> แสดงผลกราฟิกแบบ Real-time &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>",
+    "after": "<p class=\"reading-mob-tier-desc\"><strong>Dashboard:</strong> แสดงผลกราฟิกตามรอบอัปเดต (Periodic / near-real-time) &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>",
+    "entryLine": 1801
+  },
+  {
+    "finding": "ACC-D2-02",
+    "path": "js/core/diagram-generator.js",
+    "before": "<p class=\"reading-mob-tier-desc\">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>",
+    "after": "<p class=\"reading-mob-tier-desc\">ค่าที่กำหนดและวัดได้ (Defined measurable value): จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย (count, percentage, ratio or average) &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>",
+    "entryLine": 1823
+  }
+]

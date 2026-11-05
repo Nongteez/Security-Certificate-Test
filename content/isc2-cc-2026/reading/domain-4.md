@@ -166,6 +166,17 @@
 - อุปกรณ์และสื่อกลาง: สายทองแดง UTP (RJ45), ใยแก้วนำแสง (Fiber Optic), Hubs, Repeaters, เสาสัญญาณไร้สาย
 - หน่วยข้อมูล (PDU): **Bits** (0 และ 1)
 
+<figure class="reading-figure" style="max-width: 680px; margin: 18px auto;">
+  <div class="reading-figure-img-wrap" style="aspect-ratio: 16/9; max-height: 320px;">
+    <img src="assets/images/reading/fiber-optic-connectors.jpg" alt="LC and SC Fiber Optic Connectors showing ceramic ferrule and optical fiber core" class="reading-figure-img" width="1002" height="969" loading="lazy">
+  </div>
+  <figcaption class="reading-figcaption">
+    <span class="reading-figure-badge badge-physical">Physical Layer Media · Fiber Optic vs. Copper</span>
+    <strong>สื่อนำสัญญาณใยแก้วนำแสง (LC &amp; SC Fiber Optic Connectors):</strong> สายไฟเบอร์ออปติกส่งข้อมูลด้วยคลื่นแสง (Photons) ผ่านแกนแก้วหรือพลาสติกบริสุทธิ์ ทำให้มีจุดเด่นสำคัญสำหรับข้อสอบ: <em>ทนทานต่อสัญญาณรบกวนแม่เหล็กไฟฟ้า (Electromagnetic Interference - EMI) และสัญญาณคลื่นวิทยุ (RFI) 100%</em> อีกทั้งยังดักรับข้อมูล (Wiretapping / Eavesdropping) ได้ยากกว่าสายทองแดง UTP มาก
+    <span class="reading-figure-attr">ภาพ: Poil / Wikimedia Commons / CC BY-SA 3.0</span>
+  </figcaption>
+</figure>
+
 </section>
 
 <h4 class="reading-concept-group-title">กระบวนการห่อหุ้มและการแกะข้อมูล (Encapsulation &amp; Decapsulation):</h4>
@@ -296,7 +307,7 @@
 
 <h4 class="reading-concept-group-title">คุณลักษณะเด่นของ IPv6:</h4>
 - **มหาศาล:** มีหมายเลขรองรับถึง 2<sup>128</sup> หรือราว 3.4 &times; 10<sup>38</sup> หมายเลข ทำให้ทุกอุปกรณ์บนโลกสามารถมี Public IP ได้โดยไม่ต้องพึ่งพา NAT
-- **ความปลอดภัยในตัว:** รองรับมาตรฐานความมั่นคงปลอดภัย **IPsec (IP Security)** ในระดับสถาปัตยกรรมมาตั้งแต่ต้น
+- **การใช้ IPsec (IP Security):** IPv6 ใช้ IPsec ได้เมื่อรองรับและกำหนดค่าการใช้งานอย่างเหมาะสม แต่ที่อยู่ IPv6 เพียงอย่างเดียวไม่ได้เข้ารหัสหรือยืนยันความถูกต้องของทราฟฟิก / IPv6 can use properly supported and configured IPsec; IPv6 addressing alone does not encrypt or authenticate traffic.
 - **ยกเลิก Broadcast:** แทนที่ด้วย **Multicast** (ส่งถึงกลุ่มเฉพาะ) และ **Anycast** (ส่งไปยังเครื่องที่ใกล้ที่สุดในกลุ่ม) ช่วยลดสัญญาณรบกวนในเครือข่ายได้อย่างมหาศาล
 - **SLAAC (Stateless Address Autoconfiguration):** SLAAC สร้างที่อยู่ IPv6 โดยใช้ prefix ที่เราเตอร์ประกาศร่วมกับ Interface Identifier (IID) ของอินเทอร์เฟซ วิธีสร้าง IID ไม่จำเป็นต้องใช้ MAC Address; EUI-64 ที่อาศัย MAC เป็นเพียงวิธีหนึ่งในอดีต
 
@@ -329,9 +340,9 @@
 <h4>TCP (Transmission Control Protocol):</h4>
 
 - **Connection-Oriented:** ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (**3-Way Handshake: SYN → SYN-ACK → ACK**)
-- **Reliable Delivery:** รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)
+- **Reliable Delivery:** ให้บริการข้อมูลไบต์แบบเรียงลำดับและเชื่อถือได้ ด้วยลำดับหมายเลขและการส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว ความเชื่อถือได้ของ TCP ไม่ได้รับรองว่าธุรกรรมในแอปสำเร็จ หรือให้ความลับและการตรวจความถูกต้องเชิงคริปโต / TCP provides a reliable, in-order byte stream with sequencing and retransmission, but connections can fail. Transport reliability alone does not provide cryptographic protection or confirm application transaction completion.
 - **Flow &amp; Congestion Control:** มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)
-- เหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)
+- มักใช้กับงานที่ต้องการข้อมูลเรียงลำดับและการส่งซ้ำ เช่น Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP) / Common uses needing ordered delivery and retransmission.
 
 </section>
 
@@ -340,7 +351,7 @@
 
 - **Connectionless:** ไม่มีการสร้างการเชื่อมต่อล่วงหน้า ไม่มีการจับมือ (No Handshake) สามารถส่งข้อมูลออกไปได้ทันที
 - **Unreliable / Best-Effort:** ไม่รับประกันว่าข้อมูลจะถึงปลายทางหรือไม่ ไม่มีการเรียงลำดับใหม่ และไม่มีการส่งซ้ำ
-- **Low Overhead &amp; High Speed:** ขนาด Header สั้นมาก (เพียง 8 ไบต์ เมื่อเทียบกับ 20 ไบต์ของ TCP) ทำให้ประมวลผลได้รวดเร็วมาก
+- **Low Overhead:** UDP มี Header 8 ไบต์ เทียบกับ TCP อย่างน้อย 20 ไบต์ แต่ไม่ได้รับประกันว่าจะเร็วกว่า; ความเร็วและความหน่วงขึ้นกับเครือข่ายและแอป / UDP has an 8-byte header versus TCP’s minimum 20 bytes; actual speed and latency depend on the network and application.
 - เหมาะสำหรับงานที่ต้องการความเร็วแบบเรียลไทม์ และยอมรับการสูญเสียข้อมูลบางส่วนได้: Video/Audio Streaming, การโทรผ่านอินเทอร์เน็ต (VoIP), เกมออนไลน์, บริการค้นหาชื่อโดเมน (DNS Queries), การแจกไอพี (DHCP), และการตรวจสอบสถานะ (SNMP)
 
 </section>
@@ -351,10 +362,33 @@
 | :--- | :--- | :--- |
 | **Connection State** | Connection-Oriented (ต้องเชื่อมต่อก่อน) | Connectionless (ส่งข้อมูลได้ทันที) |
 | **Handshake** | 3-Way Handshake (SYN, SYN-ACK, ACK) | ไม่มีกระบวนการ Handshake |
-| **Data Reliability** | สูง รับประกันข้อมูลครบถ้วน มีการส่งซ้ำ | ต่ำ แบบ Best-Effort ไม่มีการส่งซ้ำ |
+| **Data Reliability** | ข้อมูลไบต์เรียงลำดับและส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว (Reliable ordered stream; connection failure possible) | Best-Effort; UDP เองไม่รับประกันลำดับหรือส่งซ้ำ (No built-in ordering/retransmission) |
 | **Header Size** | 20–60 Bytes (ซับซ้อน มีการควบคุม) | 8 Bytes คงที่ (เรียบง่าย น้ำหนักเบา) |
-| **Speed &amp; Latency** | ช้ากว่า มีภาระในการตรวจสอบ | รวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ |
+| **Speed &amp; Latency** | มีภาระจากกลไกความเชื่อถือได้; ผลจริงขึ้นกับสภาพใช้งาน (Context-dependent) | มีภาระพื้นฐานน้อยกว่า แต่ไม่รับประกันความเร็วหรือความหน่วง (No universal speed/latency guarantee) |
 | **Typical Use Cases** | เว็บ, อีเมล, การโอนย้ายไฟล์, ฐานข้อมูล | วิดีโอสตรีมมิง, VoIP, DNS, DHCP, เกมออนไลน์ |
+
+<div class="reading-semantic-diagram" data-diagram="tcpHandshakeVsUdp"></div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การเลือกระหว่าง TCP และ UDP — ธุรกรรมธนาคารเทียบกับการประชุมวิดีโอสด</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> ฝ่ายสถาปัตยกรรมระบบของธนาคารกำลังพัฒนา 2 แอปพลิเคชัน: (1) บริการโอนเงินผ่านระบบโมบายแบงก์กิ้ง และ (2) ระบบ Video Conference สำหรับการประชุมผู้บริหารแบบเรียลไทม์</div>
+  <div class="reading-example-step"><strong>2. การเลือกใช้ TCP สำหรับระบบการเงิน (Reliability First):</strong>
+    <ul>
+      <li>ระบบโอนเงินต้องการความถูกต้องครบถ้วนของข้อมูล 100% หากข้อมูลสูญหายแม้แต่ไบต์เดียวอาจทำให้ยอดเงินผิดพลาด</li>
+      <li>แอปพลิเคชันเลือกใช้ <strong>TCP (พอร์ต 443 HTTPS)</strong> ซึ่งสร้างการเชื่อมต่อผ่าน <strong>3-Way Handshake (SYN &rarr; SYN-ACK &rarr; ACK)</strong></li>
+      <li>หากเครือข่ายมีสัญญาณรบกวนและแพ็กเก็ตตกหล่น กลไก Sequence Number และ Acknowledgment ของ TCP จะส่งแพ็กเก็ตที่หายไปซ้ำ (Retransmission) จนกว่าจะได้รับครบถ้วน</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การเลือกใช้ UDP สำหรับการประชุมสด (Speed &amp; Low Latency First):</strong>
+    <ul>
+      <li>ระบบ Video Conference ต้องการความหน่วงต่ำที่สุด (Ultra-low Latency) เพื่อให้ภาพและเสียงตรงกับเวลาจริงแบบไม่กระตุก</li>
+      <li>แอปพลิเคชันเลือกใช้ <strong>UDP</strong> ซึ่งเป็น <strong>Connectionless</strong> ไม่ต้องเสียเวลาทำ Handshake ก่อนส่งข้อมูล และไม่มี Header ขนาดใหญ่</li>
+      <li>หากมีแพ็กเก็ตภาพหรือเสียงหล่นหายไปในบางมิลลิวินาที ระบบจะข้ามไปประมวลผลเฟรมถัดไปทันทีโดยไม่ขอให้ส่งซ้ำ เพราะการนำเสียงย้อนหลังที่ตกหล่นมาเล่นซ้ำจะทำให้เสียงทับซ้อนและพูดคุยไม่รู้เรื่อง</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): TCP มุ่งเน้นความน่าเชื่อถือ ความครบถ้วนของข้อมูล และการจัดเรียงลำดับ (Connection-oriented, 3-Way Handshake, Retransmission) เหมาะกับการเงิน เว็บ และฐานข้อมูล ส่วน UDP มุ่งเน้นความเร็ว ความหน่วงต่ำ และความเรียบง่าย (Connectionless, Best-effort, No retransmission) เหมาะกับสตรีมมิงมัลติมีเดีย VoIP และ DNS</div>
+</div>
+
 <h3 id="topic-4-1-ports-multiplexing">4.1.7 Network Ports, Multiplexing &amp; Core Services: พอร์ตและการระบุบริการ</h3>
 
 **Port Number (หมายเลขพอร์ต)** คือตัวเลขขนาด 16 บิต (มีค่าตั้งแต่ 0 ถึง 65,535) ที่ใช้ระบุกระบวนการทำงานหรือบริการแอปพลิเคชันเฉพาะเจาะจงบนระบบปฏิบัติการ
@@ -449,6 +483,28 @@
 
 - **IDS (Intrusion Detection System):** ทำงานแบบตรวจจับและแจ้งเตือน เชื่อมต่อแบบขนาน (Out-of-band หรือ Tap/SPAN Port) ตรวจพบพฤติกรรมผิดปกติแล้วส่ง Alert หรือ Log ไปยังผู้ดูแล แต่ไม่สามารถสกัดกั้นหรือหยุดยั้งการโจมตีได้ด้วยตัวเอง
 - **IPS (Intrusion Prevention System):** ทำงานแบบสกัดกั้นเชิงรุก เชื่อมต่อแบบขวางทางเดินข้อมูลโดยตรง (In-line) เมื่อตรวจพบภัยคุกคาม จะทำการตัดการเชื่อมต่อ (Reset TCP) หรือทิ้งแพ็กเก็ต (Drop Packet) ทันทีเพื่อปกป้องระบบ
+
+<div class="reading-semantic-diagram" data-diagram="idsVsIpsInspectionFlow"></div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การรับมือการโจมตี SQL Injection — ความแตกต่างระหว่าง IDS (Out-of-band) และ IPS (Inline)</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> ผู้ไม่ประสงค์ดีบนอินเทอร์เน็ตพยายามส่งเพย์โหลด SQL Injection ผ่านทาง HTTP POST เพื่อดึงข้อมูลรหัสผ่านออกจากฐานข้อมูลขององค์กร</div>
+  <div class="reading-example-step"><strong>2. การทำงานของ IDS (Intrusion Detection System — โหมดตรวจจับ):</strong>
+    <ul>
+      <li>IDS ติดตั้งแบบ <strong>Out-of-band</strong> โดยรับสำเนาทราฟฟิกผ่านทาง SPAN Port / Network TAP</li>
+      <li>เมื่อแพ็กเก็ตที่เป็น SQL Injection วิ่งผ่าน IDS จะวิเคราะห์ Signature และตรวจพบการโจมตีได้สำเร็จ</li>
+      <li><strong>ผลลัพธ์:</strong> IDS ส่ง Alert แจ้งเตือนไปยังหน้าจอ SIEM ของทีม SOC แต่เนื่องจาก IDS ไม่ได้ขวางอยู่บนเส้นทางหลัก แพ็กเก็ตอันตรายจึงยังคงวิ่งทะลุเข้าไปถึงเซิร์ฟเวอร์เป้าหมายได้ (Detection only, cannot block packets directly)</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การทำงานของ IPS (Intrusion Prevention System — โหมดป้องกัน):</strong>
+    <ul>
+      <li>IPS ติดตั้งแบบ <strong>Inline</strong> ขวางอยู่ตรงกลางเส้นทางจราจรของเครือข่ายก่อนถึงเซิร์ฟเวอร์</li>
+      <li>เมื่อแพ็กเก็ตอันตรายชุดเดียวกันเดินทางมาถึง ตัวประมวลผลของ IPS ตรวจจับ Signature ได้แบบเรียลไทม์</li>
+      <li><strong>ผลลัพธ์:</strong> IPS สั่ง <strong>Drop Packet</strong> อันตรายนั้นทิ้งทันที และสร้างคำสั่งชั่วคราวบนไฟร์วอลล์เพื่อบล็อก IP แอดเดรสของผู้โจมตี ทำให้เพย์โหลดไม่สามารถเข้าถึงเว็บเซิร์ฟเวอร์ได้เลย</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): IDS ทำงานแบบ Out-of-band หรือ Passive ผ่านการคัดลอกสัญญาณ จึงทำได้เพียงตรวจจับและส่งสัญญาณเตือน (Alert) แต่ไม่สามารถสกัดกั้นข้อมูลได้ ขณะที่ IPS ติดตั้งแบบ Inline อยู่ในทิศทางไหลของข้อมูล จึงสามารถสกัดกั้น (Block / Drop Packet / Reset Connection) และป้องกันความเสียหายได้ทันทีก่อนที่แพ็กเก็ตจะถึงเป้าหมาย</div>
+</div>
 
 </section>
 
@@ -561,6 +617,26 @@
 - **ESP (Encapsulating Security Payload):** ให้ทั้งการเข้ารหัสข้อมูล (Confidentiality) และการตรวจสอบบูรณภาพ (Integrity) จึงเป็นที่นิยมใช้งานมากที่สุด
 
 </section>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การป้องกันพนักงานทำงานระยะไกลบน Wi-Fi สาธารณะด้วย VPN และ TLS</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> "ชานนท์" วิศวกรซอฟต์แวร์นั่งทำงานในร้านกาแฟและเชื่อมต่ออินเทอร์เน็ตผ่าน Wi-Fi สาธารณะที่ไม่มีการตั้งรหัสผ่าน (Open Wi-Fi Network) เพื่อส่งรายงานสรุปผลกำไรเข้าสู่ระบบอินทราเน็ตของบริษัท</div>
+  <div class="reading-example-step"><strong>2. ภัยคุกคามบนเครือข่ายสาธารณะ (Threat Analysis):</strong>
+    <ul>
+      <li>ผู้โจมตีที่นั่งอยู่ในร้านกาแฟเดียวกันเปิดใช้งานโหมดดักฟังข้อมูล (Packet Sniffing) และสร้าง Evil Twin Access Point เพื่อดักจับข้อมูลทั้งหมดที่วิ่งผ่านอากาศ</li>
+      <li>หากชานนท์ส่งข้อมูลโดยไม่ป้องกัน ผู้โจมตีจะสามารถดักขโมย Session Cookies และเนื้อหารายงานที่เป็นความลับได้</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การเปิดใช้งาน Remote Access VPN (Technical Defense):</strong>
+    <ul>
+      <li>ชานนท์เปิดใช้งานโปรแกรม <strong>Remote Access VPN</strong> บนแล็ปท็อปของบริษัท และยืนยันตัวตนด้วย MFA</li>
+      <li>ไคลเอนต์สร้างทันเนลที่เข้ารหัสด้วย <strong>IPsec / TLS Tunnel</strong> เชื่อมตรงไปยัง VPN Gateway ของสำนักงานใหญ่</li>
+      <li>แพ็กเก็ตทั้งหมดถูกห่อหุ้ม (Encapsulation) และเข้ารหัสแบบ End-to-End ด้วยอัลกอริทึม AES-256</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>4. ผลลัพธ์ความปลอดภัย (Security Outcome):</strong> ผู้โจมตีที่ดักฟังทราฟฟิกในร้านกาแฟจะมองเห็นเพียงแพ็กเก็ตขยะที่ถูกเข้ารหัสวิ่งไปยัง IP แอดเดรสของ VPN Gateway เท่านั้น โดยไม่สามารถอ่านเนื้อหาหรือถอดรหัสข้อมูลภายในได้เลย</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): Wi-Fi สาธารณะเป็นเครือข่ายที่ไม่น่าเชื่อถือ (Untrusted Network) การใช้งาน Remote Access VPN ที่มีการเข้ารหัสแบบสตรอง (IPsec หรือ TLS) จะช่วยสร้างช่องทางสื่อสารที่ปลอดภัยเสมือนนั่งทำงานอยู่ในออฟฟิศ ปกป้องข้อมูลจากภัยคุกคามการดักฟังและ Man-in-the-Middle</div>
+</div>
 <h3 id="topic-4-1-network-threats-iot">4.1.10 Network Threats, Embedded Systems &amp; IoT Security: ภัยคุกคามและอุปกรณ์อัจฉริยะ</h3>
 
 <h4 class="reading-concept-group-title">การจำแนกประเภทภัยคุกคามบนระบบเครือข่าย:</h4>
@@ -600,16 +676,16 @@
 </section>
 
 <h4 class="reading-concept-group-title">ความมั่นคงปลอดภัยของระบบฝังตัว (Embedded Systems) และระบบควบคุมทางอุตสาหกรรม (OT / ICS / SCADA):</h4>
-- **ความแตกต่างสำคัญ:** ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ **ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)**
+- **ความแตกต่างสำคัญ:** OT/ICS ต้องประเมิน Safety, ความเชื่อถือได้ ความพร้อมใช้งาน และผลต่อกระบวนการก่อนเปลี่ยนระบบ ลำดับความสำคัญขึ้นกับความเสี่ยงของงาน; IT ก็ไม่ได้ให้ Confidentiality สูงสุดทุกกรณี / Assess OT safety, reliability, availability and process impact before changes. Priorities depend on the process and risk; IT does not universally prioritize confidentiality.
 - **ข้อจำกัด:** มักเป็นระบบเก่า (Legacy Systems) ที่ทำงานแบบ Real-time ไม่สามารถหยุดการทำงานเพื่อรีบูตหรือติดตั้งแพตช์ได้ง่าย และโพรโทคอลสื่อสารมักไม่มีระบบยืนยันตัวตนในตัว (เช่น Modbus, BACnet)
-- **Purdue Model for Industrial Control Systems (สถาปัตยกรรมแบ่งชั้นความปลอดภัย Purdue Model):**
+- **Purdue Model — บริบทเสริมทางเลือก (Optional architecture context):** ตัวอย่างการจัดกลุ่มระบบตามหน้าที่ ไม่ใช่สถาปัตยกรรมบังคับสำหรับ OT ทุกระบบ / An example functional grouping, not a universal OT architecture:
   - **Level 0 (Physical Process):** เซ็นเซอร์ วาล์ว มอเตอร์ และอุปกรณ์วัดค่าทางกายภาพ
   - **Level 1 (Basic Control):** อุปกรณ์ควบคุมพื้นฐาน เช่น Programmable Logic Controllers (PLCs) และ Remote Terminal Units (RTUs)
   - **Level 2 (Area Supervisory Control):** หน้าจอควบคุมของผู้ปฏิบัติงาน (Human-Machine Interface: HMI) และระบบควบคุม SCADA ประจำพื้นที่
   - **Level 3 (Site Operations):** ระบบบริหารการผลิตระดับโรงงาน, บันทึกประวัติกระบวนการ (Historians), และระบบอัปเดตระบบอุตสาหกรรม
-  - **Level 3.5 (Industrial DMZ — IDMZ):** **เขตกันชนความปลอดภัยที่สำคัญที่สุด** ทำหน้าที่คั่นกลางและตัดขาดการเชื่อมต่อโดยตรงระหว่างเครือข่ายอุตสาหกรรม (OT) และเครือข่ายสำนักงาน (IT)
+  - **Level 3.5 (Industrial DMZ — IDMZ):** ตัวอย่างเขตกันชนสำหรับควบคุมการสื่อสาร IT/OT ตามสถาปัตยกรรมและนโยบายที่เลือก (Example IT/OT communication boundary under the selected architecture/policy)
   - **Level 4 / 5 (Enterprise IT & Corporate Network):** เครือข่ายสำนักงานทั่วไป อีเมล ระบบ ERP และการเชื่อมต่ออินเทอร์เน็ตภายนอก
-- **กฎเหล็กด้านความปลอดภัยของ ICS/SCADA:** ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น
+- **การสื่อสารที่จำเป็นของ ICS/SCADA:** แยก IT/OT และอนุญาตเฉพาะเส้นทางที่จำเป็นซึ่งควบคุมและตรวจสอบได้ตามความเสี่ยง/ผลต่อกระบวนการ ใช้สถาปัตยกรรมที่เหมาะสม เช่น Firewall/DMZ; Data Diode เป็นทางเลือกสำหรับความต้องการสื่อสารทางเดียว ไม่ใช่กฎเส้นทางเดียวสำหรับทุกระบบ / Separate IT/OT and permit only necessary, controlled and monitored paths suited to process risk. Firewalls/DMZs and, where one-way communication fits, data diodes are architectural options rather than a universal sole path.
 
 <h4 class="reading-concept-group-title">ความเปราะบางของอุปกรณ์ IoT (Internet of Things):</h4>
 - อุปกรณ์ขนาดเล็กที่มีเซ็นเซอร์และเชื่อมต่ออินเทอร์เน็ตได้ เช่น กล้องวงจรปิดอัจฉริยะ หลอดไฟอัจฉริยะ หรือเราเตอร์ตามบ้าน
@@ -626,16 +702,16 @@
 <h3 id="topic-4-2-segmentation-blast-radius">4.2.1 Network Segmentation &amp; Blast Radius Reduction: การแบ่งส่วนเครือข่าย</h3>
 
 <h4 class="reading-concept-group-title">Flat Network (เครือข่ายแบบราบเรียบ):</h4>
-คือเครือข่ายที่อุปกรณ์ทุกเครื่องเชื่อมต่อถึงกันโดยตรงโดยไม่มีการกั้นส่วน หากเครื่องใดเครื่องหนึ่งติดมัลแวร์หรือถูกแฮก ผู้โจมตีจะสามารถเข้าถึงเครื่องอื่น ๆ ในเครือข่ายได้ทันที
+เครือข่ายที่ไม่มีการแบ่งเขตควบคุมภายในอาจเปิดเส้นทางให้ผู้โจมตีเข้าถึงระบบอื่นได้กว้างขึ้น แต่ไม่ได้แปลว่าทุกเครื่องถูกเจาะแล้ว; ผลขึ้นกับการเข้าถึงและมาตรการที่มี / A flat network can expose more reachable systems, but does not prove every host is compromised; reachability and other controls matter.
 
 <h4 class="reading-concept-group-title">Network Segmentation (การแบ่งส่วนเครือข่าย):</h4>
 คือแนวปฏิบัติในการแบ่งเครือข่ายขนาดใหญ่ออกเป็นเครือข่ายย่อย ๆ (Subnetworks หรือ Segments) ที่แยกจากกันในเชิงตรรกะหรือทางกายภาพ และบังคับใช้การควบคุมทราฟฟิกข้ามเขตด้วยไฟร์วอลล์หรือ Access Control Lists (ACLs)
 
 <h4 class="reading-concept-group-title">ประโยชน์หลักของการแบ่งส่วนเครือข่าย:</h4>
-- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น
-- **Prevent Lateral Movement (หยุดยั้งการเคลื่อนที่ในแนวราบ):** ผู้โจมตีไม่สามารถสแกนหรือส่งมัลแวร์ข้ามไปยังเซิร์ฟเวอร์สำคัญได้โดยตรง
-- **Traffic Isolation &amp; Performance:** ลดปริมาณการแพร่กระจายของ Broadcast ทำให้เครือข่ายมีประสิทธิภาพสูงขึ้น
-- **Compliance &amp; Audit Scope:** ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น
+- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** ช่วยลดขอบเขตผลกระทบเมื่อขอบเขตถูกบังคับใช้และทดสอบ แต่ไม่รับประกันว่าจะอยู่ในเซกเมนต์เดียว / Enforced, tested boundaries can reduce impact; they do not guarantee single-segment containment.
+- **Limit Lateral Movement (จำกัดการเคลื่อนที่ในแนวราบ):** จำกัดเส้นทางตามนโยบายที่บังคับใช้จริง; เส้นทางที่ยังอนุญาตหรือจุดควบคุมที่ถูกเจาะอาจเปิดทางได้ ชื่อ VLAN อย่างเดียวไม่ใช่นโยบายบังคับใช้ / Enforcement limits reachable paths; allowed paths or compromised controls can still permit movement. A VLAN label alone is not enforcement.
+- **Traffic Isolation &amp; Performance:** การแยก Broadcast Domain เช่น VLAN อาจลด Broadcast ในแต่ละส่วน แต่ผลด้านประสิทธิภาพขึ้นกับการออกแบบและปริมาณงาน / Separating broadcast domains can reduce local broadcast traffic; performance depends on design and workload.
+- **Compliance &amp; Audit Scope:** การลดขอบเขต เช่น PCI DSS ต้องเป็นไปตามเงื่อนไขของมาตรฐานที่ใช้และตรวจยืนยันประสิทธิผลของการแยก ไม่ได้ลดขอบเขตโดยอัตโนมัติ / Scope reduction depends on applicable requirements and validated segmentation effectiveness; it is not automatic.
 <h3 id="topic-4-2-firewall-zones">4.2.2 Firewall Security Zones &amp; Trust Boundaries: เขตความปลอดภัยและขอบเขตความเชื่อถือ</h3>
 
 ในการออกแบบความมั่นคงปลอดภัยเครือข่าย ไฟร์วอลล์จะแบ่งเครือข่ายออกเป็นโซนความปลอดภัย (Security Zones) โดยกำหนดระดับความเชื่อถือ (Trust Levels) ที่แตกต่างกัน:
@@ -697,6 +773,26 @@
 ใช้ไฟร์วอลล์ 2 ตัวกั้นระหว่าง Outside → DMZ (External Firewall) และ DMZ → Inside (Internal Firewall) โดยแนวปฏิบัติที่ดีที่สุดมักใช้ไฟร์วอลล์ต่างยี่ห้อกัน (Different Vendors) เพื่อป้องกันกรณีที่ยี่ห้อใดเกิดช่องโหว่ Zero-Day จะได้ไม่ส่งผลกระทบต่อไฟร์วอลล์ทั้งสองชั้นพร้อมกัน
 
 </section>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การจำกัดวงความเสียหายเมื่อเว็บเซิร์ฟเวอร์ใน DMZ ถูกบุกรุก</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> องค์กรธุรกิจติดตั้งระบบตามสถาปัตยกรรม Dual-Firewall DMZ โดยมี Public Web Server ให้บริการลูกค้าตั้งอยู่ใน DMZ ส่วนฐานข้อมูลลูกค้า (Internal Database) และระบบ Active Directory ตั้งอยู่ใน Trusted Internal Network หลังไฟร์วอลล์ชั้นใน</div>
+  <div class="reading-example-step"><strong>2. เหตุการณ์การบุกรุกจากภายนอก (External Compromise):</strong>
+    <ul>
+      <li>ผู้โจมตีจากอินเทอร์เน็ตใช้ช่องโหว่ Zero-Day บนเว็บแอปพลิเคชัน (พอร์ต 443 ผ่าน External Firewall) และสามารถยึดสิทธิ์ Web Shell บนเว็บเซิร์ฟเวอร์ใน DMZ ได้สำเร็จ</li>
+      <li>ผู้โจมตีพยายามสแกนหาเครื่องอื่นเพื่อเคลื่อนที่ในแนวราบ (Lateral Movement) หวังจะขโมยฐานข้อมูลลูกค้าโดยตรง</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การสกัดกั้นด้วยสถาปัตยกรรม DMZ และ Internal Firewall (Containment):</strong>
+    <ul>
+      <li>ผู้โจมตีพยายามเชื่อมต่อไปยังฐานข้อมูลภายในผ่านพอร์ต 3306 (MySQL) และพอร์ต 445 (SMB) ของเครือข่ายภายใน</li>
+      <li><strong>กฎของ Internal Firewall:</strong> ไฟร์วอลล์ชั้นในบังคับใช้นโยบาย <strong>Default Deny</strong> โดยไม่อนุญาตให้เซิร์ฟเวอร์ใน DMZ เริ่มต้นเปิดการเชื่อมต่อ (Initiate Connection) เข้าสู่เครือข่ายภายในได้เลย เว้นแต่เป็นการตอบกลับทราฟฟิก หรือการเรียกใช้เฉพาะ API Port ที่ได้รับอนุญาตอย่างเข้มงวด</li>
+      <li>แพ็กเก็ตที่พยายามเชื่อมต่อโดยตรงถูก Internal Firewall ดรอปทิ้งทั้งหมด และส่งสัญญาณแจ้งเตือนไปยังระบบ SIEM</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>4. ผลลัพธ์และบทเรียน (Security Impact):</strong> การบุกรุกถูกกักบริเวณ (Contained) ไว้เฉพาะใน DMZ เท่านั้น เครือข่ายภายในและฐานข้อมูลหลักไม่ได้รับความเสียหาย ทีม CSIRT สามารถตัดการเชื่อมต่อเว็บเซิร์ฟเวอร์ที่ถูกเจาะเพื่อล้างระบบและติดตั้งใหม่ได้อย่างปลอดภัย</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): วัตถุประสงค์หลักของ DMZ คือการสร้างเขตกันชนเพื่อวางเซิร์ฟเวอร์ที่ต้องเปิดสู่สาธารณะ หากเซิร์ฟเวอร์ใน DMZ ถูกยึด ไฟร์วอลล์ชั้นในจะป้องกันไม่ให้ผู้โจมตีทะลุเข้าสู่เครือข่ายภายในที่เป็นหัวใจขององค์กร</div>
+</div>
 <h3 id="topic-4-2-vlans-routing">4.2.4 Virtual Local Area Networks (VLANs) &amp; Routing: เครือข่ายเสมือนระดับสวิตช์</h3>
 
 **VLAN (Virtual Local Area Network)** คือเทคโนโลยีในระดับ **Data Link Layer (Layer 2)** ที่ใช้สวิตช์ทางกายภาพเพียงตัวเดียวในการแบ่งแยกพอร์ตออกเป็นเครือข่ายเชิงตรรกะหลายเครือข่ายเสมือนมีสวิตช์แยกต่างหากจากกัน
@@ -722,6 +818,24 @@
 หากอุปกรณ์ต่าง VLAN ต้องการสื่อสารหากัน จำเป็นต้องส่งข้อมูลขึ้นไปยังอุปกรณ์ระดับ **Layer 3 (Router หรือ Layer 3 Switch)** เพื่อทำการจัดเส้นทาง ซึ่งเป็นจุดที่องค์กรสามารถติดตั้งไฟร์วอลล์หรือ Access Control Lists (ACLs) เพื่อควบคุมความปลอดภัยได้
 
 </section>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การแบ่งแยก Workstation VLAN ออกจาก Server VLAN ด้วย Layer 3 Firewall</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> สำนักงานแห่งหนึ่งมีพนักงาน 200 คนใช้อุปกรณ์คอมพิวเตอร์และโน้ตบุ๊ก โดยในเครือข่ายเดียวกันมีเซิร์ฟเวอร์เก็บข้อมูลการเงินและระบบเงินเดือนของบริษัท</div>
+  <div class="reading-example-step"><strong>2. การจัดทำ VLAN Segmentation (Logical Separation):</strong>
+    <ul>
+      <li>ผู้ดูแลระบบเครือข่ายทำการแยกเครือข่ายออกเป็น 2 VLANs บนสวิตช์หลัก: <strong>VLAN 10 (Workstations พนักงาน)</strong> และ <strong>VLAN 20 (Financial Servers)</strong></li>
+      <li>การทำ VLAN ช่วยแยก Broadcast Domain ทำให้การแพร่สัญญาณขยะหรือมัลแวร์แบบ ARP Spoofing ใน VLAN 10 ไม่สามารถล้นข้ามไปยัง VLAN 20 ได้ในระดับ Layer 2</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การควบคุมความปลอดภัยที่จุด Inter-VLAN Routing (Layer 3 Enforcement):</strong>
+    <ul>
+      <li>พนักงานบางคนเข้าใจผิดว่าเพียงแค่ตั้ง VLAN แยกกันก็ปลอดภัยแล้ว แต่ในความเป็นจริง หากมี Router เชื่อมต่อระหว่าง VLAN ทราฟฟิกจะวิ่งข้ามหากันได้หากไม่มีการควบคุม</li>
+      <li>ผู้ดูแลระบบจึงกำหนดให้เส้นทาง Inter-VLAN Routing ต้องวิ่งผ่าน <strong>Next-Generation Firewall</strong> และกำหนด Access Control List (ACL): ห้ามเครื่องใน VLAN 10 เชื่อมต่อเข้าพอร์ตบริหารจัดการ (SSH/RDP) ของ VLAN 20 โดยเด็ดขาด และอนุญาตให้เข้าถึงเฉพาะพอร์ตแอปพลิเคชันการเงินที่ผ่านการยืนยันตัวตนแล้วเท่านั้น</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): VLAN ช่วยแบ่งแยกทราฟฟิกในระดับ Layer 2 (Data Link) และแยก Broadcast Domain แต่ไม่ได้ทำหน้าที่เป็นตัวกรองความปลอดภัยโดยอัตโนมัติ การควบคุมความปลอดภัยระหว่าง VLAN ที่แท้จริงต้องอาศัยอุปกรณ์ระดับ Layer 3 (Router หรือ Firewall) ที่มี ACLs หรือนโยบายความปลอดภัยคอยตรวจสอบและคัดกรองทราฟฟิกข้าม VLAN</div>
+</div>
 <h3 id="topic-4-2-microsegmentation">4.2.5 Micro-Segmentation &amp; East-West Traffic Control: การแบ่งส่วนเครือข่ายระดับย่อย</h3>
 
 ในศูนย์ข้อมูลคลาวด์และสถาปัตยกรรมแอปพลิเคชันยุคใหม่ ทราฟฟิกส่วนใหญ่ไม่ได้วิ่งเข้าออกจากภายนอก (North-South Traffic) แต่เป็นการสื่อสารระหว่างเซิร์ฟเวอร์ด้วยกันเองภายในศูนย์ข้อมูล (**East-West Traffic**)
@@ -1063,11 +1177,11 @@
     <div class="reading-distinction-body">
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">TCP (Transmission Control Protocol)</strong>
-        <div class="reading-distinction-desc">Connection-oriented, 3-way handshake, รับประกันความสมบูรณ์ของข้อมูล เหมาะกับเว็บ (HTTP/S), อีเมล, และการโอนย้ายไฟล์</div>
+        <div class="reading-distinction-desc">Connection-oriented, 3-way handshake, reliable ordered byte stream; การเชื่อมต่ออาจล้มเหลว และไม่ยืนยันว่าธุรกรรมในแอปสำเร็จ (Connection failure possible; no application-completion guarantee)</div>
       </div>
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">UDP (User Datagram Protocol)</strong>
-        <div class="reading-distinction-desc">Connectionless, ไม่มีการจับมือ, ส่งข้อมูลรวดเร็วแบบ Best-effort ยอมรับข้อมูลสูญหายได้ เหมาะกับสตรีมมิง, VoIP, DNS, และ DHCP</div>
+        <div class="reading-distinction-desc">Connectionless, ไม่มีการจับมือ, Best-effort โดยไม่มีการเรียงลำดับหรือส่งซ้ำใน UDP เอง; ความเร็วขึ้นกับเครือข่ายและแอป (Speed depends on network/application)</div>
       </div>
     </div>
   </div>
@@ -1081,7 +1195,7 @@
       </div>
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">IPv6 (128-bit Hexadecimal)</strong>
-        <div class="reading-distinction-desc">มีหมายเลขมหาศาล (3.4 &times; 10<sup>38</sup>), รองรับ IPsec ในตัว, กำหนดไอพีอัตโนมัติด้วย SLAAC และยกเลิก Broadcast โดยแทนที่ด้วย Multicast/Anycast</div>
+        <div class="reading-distinction-desc">มีหมายเลขมหาศาล (3.4 &times; 10<sup>38</sup>), ใช้ IPsec ได้เมื่อรองรับและกำหนดค่า; IPv6 ไม่ได้ป้องกันทราฟฟิกโดยอัตโนมัติ (IPsec requires actual use/configuration), กำหนดไอพีอัตโนมัติด้วย SLAAC และยกเลิก Broadcast โดยแทนที่ด้วย Multicast/Anycast</div>
       </div>
     </div>
   </div>
@@ -1236,7 +1350,7 @@
 
 | <div class="reading-bilingual-term"><span class="reading-term-en">**Concept**</span><span class="reading-term-th">(แนวคิดสำคัญ)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Exam Trigger Keywords**</span><span class="reading-term-th">(คำค้นพบในโจทย์ข้อสอบ)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Core Purpose**</span><span class="reading-term-th">(วัตถุประสงค์หลัก)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Practical Scenario Example**</span><span class="reading-term-th">(ตัวอย่างสถานการณ์จริง)</span></div> |
 | :--- | :--- | :--- | :--- |
-| **Segmentation** | "Blast radius", "Lateral movement", "Divide network" | กักบริเวณความเสียหายและหยุดยั้งการแพร่กระจายของภัยคุกคาม | แยกแผนกการเงินออกจากแผนกต้อนรับ |
+| **Segmentation** | "Blast radius", "Lateral movement", "Divide network" | ช่วยลดผลกระทบและจำกัดเส้นทางเมื่อบังคับใช้/ทดสอบนโยบาย (Risk reduction with enforced/tested policy) | แยกแผนกการเงินออกจากแผนกต้อนรับและตรวจเส้นทางที่อนุญาต/ปฏิเสธ |
 | **DMZ** | "Public-facing servers", "Buffer zone", "Isolate internal DB" | เป็นกันชนแยกบริการสาธารณะออกจากฐานข้อมูลภายใน | วาง Web Server และ Mail Gateway |
 | **Micro-Segmentation** | "East-West traffic", "Workload level", "Host-level firewall" | ควบคุมการสื่อสารระหว่างเซิร์ฟเวอร์ในศูนย์ข้อมูลอย่างละเอียด | กั้นไม่ให้ Web Tier คุยกับ Database ตรง |
 | **Defense in Depth** | "Multiple layers", "Complementary controls", "Example layers" | ใช้หลายมาตรการเสริมกันเพื่อลดผลกระทบเมื่อมาตรการหนึ่งล้มเหลว ไม่รับประกันความเป็นอิสระของทุกชั้น | มีทั้ง Perimeter FW, EDR, WAF และการเข้ารหัส |
@@ -1258,7 +1372,7 @@ topic: Network Segmentation & Blast Radius
 situation: ผู้ดูแลระบบความมั่นคงปลอดภัยพบว่า หากคอมพิวเตอร์ในแผนกต้อนรับ (Reception) ถูกมัลแวร์เรียกค่าไถ่ (Ransomware) โจมตี มัลแวร์จะสามารถแพร่กระจายผ่านระบบเครือข่ายไปยังเซิร์ฟเวอร์ฐานข้อมูลการเงิน (Financial Database) ได้โดยตรงเนื่องจากเครือข่ายทั้งหมดเชื่อมต่อกันเป็นผืนเดียว (Flat Network)
 question: สถาปัตยกรรมความมั่นคงปลอดภัยใดที่องค์กรควรนำมาใช้เพื่อจำกัดการแพร่กระจายของภัยคุกคาม และลดขอบเขตความเสียหาย (Blast Radius)?
 answer: Network Segmentation — การแบ่งส่วนเครือข่าย
-reasoning: Network Segmentation คือการแบ่งระบบเครือข่ายขนาดใหญ่ออกเป็นส่วนย่อย ๆ (Subnetworks หรือ Segments) ที่มีการแยกและควบคุมการไหลเวียนของทราฟฟิกด้วย Access Control Lists (ACLs) หรือไฟร์วอลล์ การแบ่งส่วนเครือข่ายช่วยลดรัศมีความเสียหาย (Blast Radius) และป้องกันไม่ให้ผู้โจมตีสามารถเคลื่อนที่ในแนวราบ (Lateral Movement) ไปยังระบบสำคัญอื่นได้
+reasoning: Network Segmentation คือการแบ่งระบบเครือข่ายขนาดใหญ่ออกเป็นส่วนย่อย ๆ (Subnetworks หรือ Segments) ที่มีการแยกและควบคุมการไหลเวียนของทราฟฟิกด้วย Access Control Lists (ACLs) หรือไฟร์วอลล์ การแบ่งส่วนเครือข่ายที่บังคับใช้และทดสอบนโยบายอย่างถูกต้อง ช่วยจำกัดการเข้าถึง (Reachability) ลดรัศมีความเสียหาย (Blast Radius) และขัดขวางหรือหน่วงเหนี่ยวการเคลื่อนที่ในแนวราบ (Lateral Movement) ของผู้โจมตีไปยังระบบสำคัญอื่น
 :::
 
 :::scenario

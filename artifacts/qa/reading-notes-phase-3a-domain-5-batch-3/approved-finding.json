@@ -1,0 +1,96 @@
+{
+  "id": "ACC-D5-05",
+  "domain": 5,
+  "officialObjective": "5.2",
+  "category": "Academic correction",
+  "auditClassification": "CORRECT ACADEMIC ERROR",
+  "decision": "APPROVE",
+  "currentLearnerExperience": "PowerShell is labelled T1059 and the graphic uses T1566 for named Spearphishing Link and an unversioned count of 14 tactics.",
+  "genuineGap": "Named sub-technique IDs and an undated count are inaccurate against the inspected current list.",
+  "smallestUsefulChange": "Use T1059.001 for PowerShell and T1566.002 for Spearphishing Link, or use parent names consistently. Remove the count rather than introduce count memorization.",
+  "sample": {
+    "en": "A tactic describes an adversary goal; a technique describes a way to pursue it. A named sub-technique has its own identifier.",
+    "th": "Tactic อธิบายเป้าหมายของผู้โจมตี ส่วน Technique อธิบายวิธีไปสู่เป้าหมาย โดย Sub-technique ที่มีชื่อเฉพาะมีรหัสของตนเอง"
+  },
+  "reason": "Current MITRE pages support the IDs; generic Phishing T1566 and Pass the Hash T1550.002 remain correct.",
+  "academicConstraints": "Keep Why/How distinctions; do not turn ATT&CK into a mandatory linear sequence or require exhaustive IDs.",
+  "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+  "targets": [
+    {
+      "path": "content/isc2-cc-2026/reading/domain-5.md",
+      "anchor": "topic-5-2-mitre-attack-framework",
+      "startLine": 674,
+      "endLine": 722
+    },
+    {
+      "path": "js/core/diagram-generator.js",
+      "anchor": "mitre-attack-framework",
+      "startLine": 2939,
+      "endLine": 2954,
+      "futureScope": "Only named IDs and undated tactic count; verify exact strings before implementation"
+    }
+  ],
+  "supportingSources": [
+    "https://attack.mitre.org/techniques/T1059/001/",
+    "https://attack.mitre.org/techniques/T1566/",
+    "https://attack.mitre.org/tactics/enterprise/",
+    "Domain 5 screenshots 201553/201613 teach tactic/technique distinction; current diagram-generator.js:2939/2952/2954 adds stale count and parent IDs for named sub-techniques",
+    "https://attack.mitre.org/techniques/T1059/001/ — PowerShell ID/tactic; also https://attack.mitre.org/tactics/enterprise/ and https://attack.mitre.org/techniques/T1566/",
+    "https://attack.mitre.org/tactics/enterprise/",
+    "https://attack.mitre.org/techniques/T1566/"
+  ],
+  "dependencies": [],
+  "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+  "severity": "P1",
+  "implementationAuthorized": false,
+  "userApprovalRequired": true,
+  "acceptanceCriteria": [
+    "Only the named target and accepted representations change; existing anchors remain intact.",
+    "Thai and English convey the same actor, condition, quantity and limitation.",
+    "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+    "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+    "Use T1059.001 for PowerShell and T1566.002 for Spearphishing Link, or use parent names consistently. Remove the count rather than introduce count memorization.",
+    "Keep Why/How distinctions; do not turn ATT&CK into a mandatory linear sequence or require exhaustive IDs."
+  ],
+  "evidence": {
+    "readingExcerpt": "current-target-excerpts.json#ACC-D5-05",
+    "phase1Record": "ACC-D5-05"
+  },
+  "reportedAcademicEvidence": {
+    "id": "ACC-D5-05",
+    "domain": 5,
+    "anchor": "topic-5-2-mitre-attack-framework",
+    "readingPath": "content/isc2-cc-2026/reading/domain-5.md",
+    "startLine": 698,
+    "endLine": 700,
+    "currentClaim": "- ใน Tactic *Initial Access* อาจใช้เทคนิค **Phishing (T1566)**\n- ใน Tactic *Lateral Movement* อาจใช้เทคนิค **Pass the Hash (T1550.002)**\n- ใน Tactic *Execution* อาจใช้เทคนิค **Command and Scripting: PowerShell (T1059)**",
+    "localSource": "Domain 5 screenshots 201553/201613 teach tactic/technique distinction; current diagram-generator.js:2939/2952/2954 adds stale count and parent IDs for named sub-techniques",
+    "authorityUrl": "https://attack.mitre.org/techniques/T1059/001/",
+    "authorityLocation": "PowerShell ID/tactic; also https://attack.mitre.org/tactics/enterprise/ and https://attack.mitre.org/techniques/T1566/",
+    "conclusion": "Use PowerShell T1059.001 when naming the sub-technique; generic T1059 names its parent. Likewise Spearphishing Link is T1566.002, while generic Phishing T1566 is already correct in prose. Current official Enterprise list has 15 tactics, so remove the unversioned 14-count label or date its source. Retain Why/How and avoid exhaustive ID memorization.",
+    "smallestCorrection": "Use PowerShell T1059.001 when naming the sub-technique; generic T1059 names its parent. Likewise Spearphishing Link is T1566.002, while generic Phishing T1566 is already correct in prose. Current official Enterprise list has 15 tactics, so remove the unversioned 14-count label or date its source. Retain Why/How and avoid exhaustive ID memorization.",
+    "priority": "P1",
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "additionalAuthorityUrls": [
+      "https://attack.mitre.org/tactics/enterprise/",
+      "https://attack.mitre.org/techniques/T1566/"
+    ]
+  },
+  "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+  "exactCurrentClaim": {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "startLine": 698,
+    "endLine": 700,
+    "text": "- ใน Tactic *Initial Access* อาจใช้เทคนิค **Phishing (T1566)**\n- ใน Tactic *Lateral Movement* อาจใช้เทคนิค **Pass the Hash (T1550.002)**\n- ใน Tactic *Execution* อาจใช้เทคนิค **Command and Scripting: PowerShell (T1059)**"
+  },
+  "authorityVerification": {
+    "url": "https://attack.mitre.org/techniques/T1059/001/",
+    "location": "PowerShell ID/tactic; also https://attack.mitre.org/tactics/enterprise/ and https://attack.mitre.org/techniques/T1566/",
+    "reviewConclusion": "Current MITRE pages support the IDs; generic Phishing T1566 and Pass the Hash T1550.002 remain correct."
+  },
+  "reviewDate": "2026-11-03",
+  "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+  "batch": "D5-C"
+}

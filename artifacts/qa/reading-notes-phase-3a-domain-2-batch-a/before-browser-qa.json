@@ -1,0 +1,1977 @@
+{
+  "date": "2026-11-04",
+  "stage": "before",
+  "browser": "Chrome/156.0.8078.80",
+  "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "mode": "Real headless Google Chrome via CDP; isolated temporary profile",
+  "matrix": [
+    {
+      "run": "1920x1080-light",
+      "width": 1920,
+      "height": 1080,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "labels": [
+        {
+          "text": "ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์",
+          "left": 56,
+          "right": 251.99754333496094,
+          "panelLeft": 40,
+          "panelRight": 410,
+          "fit": true
+        },
+        {
+          "text": "ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ",
+          "left": 130,
+          "right": 574.3074035644531,
+          "panelLeft": 40,
+          "panelRight": 800,
+          "fit": true
+        }
+      ],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (Recovery Point Objective)\n← ยอมรับข้อมูลสูญเสียย้อนหลังสูงสุด: 30 นาที\nDISASTER (17:00)\nระบบล่ม / เกิดภัยพิบัติ\n16:30\nจุดสำรองข้อมูลล่าสุด\n(Last Valid Backup)\nRTO (Recovery Time Objective)\nตัวอย่างเป้าหมายกู้ระบบ: 1 ชม. (เผื่อเวลาก่อน MTD)\n18:00\nระบบต้องกู้เสร็จสิ้น\n(Service Operational)",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 35.984375,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 36.28125,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/1920x1080-light-recovery.png",
+        "screenshots/before/1920x1080-light-wrt.png",
+        "screenshots/before/1920x1080-light-model.png",
+        "screenshots/before/1920x1080-light-conclusion.png",
+        "screenshots/before/1920x1080-light-example.png",
+        "screenshots/before/1920x1080-light-memory.png",
+        "screenshots/before/1920x1080-light-measurement.png",
+        "screenshots/before/1920x1080-light-dashboardRow.png",
+        "screenshots/before/1920x1080-light-summary.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 227.984375,
+          "bottom": 256.484375,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 191.53125,
+          "bottom": 451.453125,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 192.0625,
+          "bottom": 278.453125,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 191.65625,
+          "bottom": 215.65625,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192.453125,
+          "bottom": 372.578125,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 228.28125,
+          "bottom": 256.78125,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 191.96875,
+          "bottom": 910.046875,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 191.75,
+          "bottom": 265.3125,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 192.234375,
+          "bottom": 266.875,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "1920x1080-dark",
+      "width": 1920,
+      "height": 1080,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "labels": [
+        {
+          "text": "ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์",
+          "left": 56,
+          "right": 251.99754333496094,
+          "panelLeft": 40,
+          "panelRight": 410,
+          "fit": true
+        },
+        {
+          "text": "ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ",
+          "left": 130,
+          "right": 574.3074035644531,
+          "panelLeft": 40,
+          "panelRight": 800,
+          "fit": true
+        }
+      ],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (Recovery Point Objective)\n← ยอมรับข้อมูลสูญเสียย้อนหลังสูงสุด: 30 นาที\nDISASTER (17:00)\nระบบล่ม / เกิดภัยพิบัติ\n16:30\nจุดสำรองข้อมูลล่าสุด\n(Last Valid Backup)\nRTO (Recovery Time Objective)\nตัวอย่างเป้าหมายกู้ระบบ: 1 ชม. (เผื่อเวลาก่อน MTD)\n18:00\nระบบต้องกู้เสร็จสิ้น\n(Service Operational)",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 35.984375,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 36.28125,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/1920x1080-dark-recovery.png",
+        "screenshots/before/1920x1080-dark-wrt.png",
+        "screenshots/before/1920x1080-dark-model.png",
+        "screenshots/before/1920x1080-dark-conclusion.png",
+        "screenshots/before/1920x1080-dark-example.png",
+        "screenshots/before/1920x1080-dark-memory.png",
+        "screenshots/before/1920x1080-dark-measurement.png",
+        "screenshots/before/1920x1080-dark-dashboardRow.png",
+        "screenshots/before/1920x1080-dark-summary.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 227.984375,
+          "bottom": 256.484375,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 191.53125,
+          "bottom": 451.453125,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 192.0625,
+          "bottom": 278.453125,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 191.65625,
+          "bottom": 215.65625,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192.453125,
+          "bottom": 372.578125,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 228.28125,
+          "bottom": 256.78125,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 191.96875,
+          "bottom": 910.046875,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 191.75,
+          "bottom": 265.3125,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 192.234375,
+          "bottom": 266.875,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "1440x900-light",
+      "width": 1440,
+      "height": 900,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "labels": [
+        {
+          "text": "ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์",
+          "left": 56,
+          "right": 251.92840576171875,
+          "panelLeft": 40,
+          "panelRight": 410,
+          "fit": true
+        },
+        {
+          "text": "ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ",
+          "left": 130,
+          "right": 574.1606140136719,
+          "panelLeft": 40,
+          "panelRight": 800,
+          "fit": true
+        }
+      ],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (Recovery Point Objective)\n← ยอมรับข้อมูลสูญเสียย้อนหลังสูงสุด: 30 นาที\nDISASTER (17:00)\nระบบล่ม / เกิดภัยพิบัติ\n16:30\nจุดสำรองข้อมูลล่าสุด\n(Last Valid Backup)\nRTO (Recovery Time Objective)\nตัวอย่างเป้าหมายกู้ระบบ: 1 ชม. (เผื่อเวลาก่อน MTD)\n18:00\nระบบต้องกู้เสร็จสิ้น\n(Service Operational)",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 36.484375,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 36.234375,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/1440x900-light-recovery.png",
+        "screenshots/before/1440x900-light-wrt.png",
+        "screenshots/before/1440x900-light-model.png",
+        "screenshots/before/1440x900-light-conclusion.png",
+        "screenshots/before/1440x900-light-example.png",
+        "screenshots/before/1440x900-light-memory.png",
+        "screenshots/before/1440x900-light-measurement.png",
+        "screenshots/before/1440x900-light-dashboardRow.png",
+        "screenshots/before/1440x900-light-summary.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 228.484375,
+          "bottom": 256.984375,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 192.28125,
+          "bottom": 481,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 191.609375,
+          "bottom": 278,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 192.203125,
+          "bottom": 216.203125,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192,
+          "bottom": 372.125,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 228.234375,
+          "bottom": 256.734375,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 191.515625,
+          "bottom": 821.359375,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 192.34375,
+          "bottom": 290.1875,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 192.1875,
+          "bottom": 243.28125,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "1440x900-dark",
+      "width": 1440,
+      "height": 900,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "labels": [
+        {
+          "text": "ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์",
+          "left": 56,
+          "right": 251.92840576171875,
+          "panelLeft": 40,
+          "panelRight": 410,
+          "fit": true
+        },
+        {
+          "text": "ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ",
+          "left": 130,
+          "right": 574.1606140136719,
+          "panelLeft": 40,
+          "panelRight": 800,
+          "fit": true
+        }
+      ],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (Recovery Point Objective)\n← ยอมรับข้อมูลสูญเสียย้อนหลังสูงสุด: 30 นาที\nDISASTER (17:00)\nระบบล่ม / เกิดภัยพิบัติ\n16:30\nจุดสำรองข้อมูลล่าสุด\n(Last Valid Backup)\nRTO (Recovery Time Objective)\nตัวอย่างเป้าหมายกู้ระบบ: 1 ชม. (เผื่อเวลาก่อน MTD)\n18:00\nระบบต้องกู้เสร็จสิ้น\n(Service Operational)",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 36.484375,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 36.234375,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/1440x900-dark-recovery.png",
+        "screenshots/before/1440x900-dark-wrt.png",
+        "screenshots/before/1440x900-dark-model.png",
+        "screenshots/before/1440x900-dark-conclusion.png",
+        "screenshots/before/1440x900-dark-example.png",
+        "screenshots/before/1440x900-dark-memory.png",
+        "screenshots/before/1440x900-dark-measurement.png",
+        "screenshots/before/1440x900-dark-dashboardRow.png",
+        "screenshots/before/1440x900-dark-summary.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 228.484375,
+          "bottom": 256.984375,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 192.28125,
+          "bottom": 481,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 191.609375,
+          "bottom": 278,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 192.203125,
+          "bottom": 216.203125,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192,
+          "bottom": 372.125,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 228.234375,
+          "bottom": 256.734375,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 191.515625,
+          "bottom": 821.359375,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 192.34375,
+          "bottom": 290.1875,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 192.1875,
+          "bottom": 243.28125,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "1366x768-light",
+      "width": 1366,
+      "height": 768,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "labels": [
+        {
+          "text": "ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์",
+          "left": 55.06977081298828,
+          "right": 252.12943267822266,
+          "panelLeft": 40,
+          "panelRight": 410,
+          "fit": true
+        },
+        {
+          "text": "ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ",
+          "left": 130,
+          "right": 574.2441711425781,
+          "panelLeft": 40,
+          "panelRight": 800,
+          "fit": true
+        }
+      ],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (Recovery Point Objective)\n← ยอมรับข้อมูลสูญเสียย้อนหลังสูงสุด: 30 นาที\nDISASTER (17:00)\nระบบล่ม / เกิดภัยพิบัติ\n16:30\nจุดสำรองข้อมูลล่าสุด\n(Last Valid Backup)\nRTO (Recovery Time Objective)\nตัวอย่างเป้าหมายกู้ระบบ: 1 ชม. (เผื่อเวลาก่อน MTD)\n18:00\nระบบต้องกู้เสร็จสิ้น\n(Service Operational)",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 36.46875,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 35.734375,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/1366x768-light-recovery.png",
+        "screenshots/before/1366x768-light-wrt.png",
+        "screenshots/before/1366x768-light-model.png",
+        "screenshots/before/1366x768-light-conclusion.png",
+        "screenshots/before/1366x768-light-example.png",
+        "screenshots/before/1366x768-light-memory.png",
+        "screenshots/before/1366x768-light-measurement.png",
+        "screenshots/before/1366x768-light-dashboardRow.png",
+        "screenshots/before/1366x768-light-summary.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 228.46875,
+          "bottom": 256.96875,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 191.5625,
+          "bottom": 480.28125,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 191.890625,
+          "bottom": 278.28125,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 192.484375,
+          "bottom": 216.484375,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192.28125,
+          "bottom": 372.40625,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 227.734375,
+          "bottom": 256.234375,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 192.015625,
+          "bottom": 786.1875,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 192.453125,
+          "bottom": 290.296875,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 192.265625,
+          "bottom": 243.359375,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "1366x768-dark",
+      "width": 1366,
+      "height": 768,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "labels": [
+        {
+          "text": "ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์",
+          "left": 55.06977081298828,
+          "right": 252.12943267822266,
+          "panelLeft": 40,
+          "panelRight": 410,
+          "fit": true
+        },
+        {
+          "text": "ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ",
+          "left": 130,
+          "right": 574.2441711425781,
+          "panelLeft": 40,
+          "panelRight": 800,
+          "fit": true
+        }
+      ],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (Recovery Point Objective)\n← ยอมรับข้อมูลสูญเสียย้อนหลังสูงสุด: 30 นาที\nDISASTER (17:00)\nระบบล่ม / เกิดภัยพิบัติ\n16:30\nจุดสำรองข้อมูลล่าสุด\n(Last Valid Backup)\nRTO (Recovery Time Objective)\nตัวอย่างเป้าหมายกู้ระบบ: 1 ชม. (เผื่อเวลาก่อน MTD)\n18:00\nระบบต้องกู้เสร็จสิ้น\n(Service Operational)",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 36.46875,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 35.734375,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/1366x768-dark-recovery.png",
+        "screenshots/before/1366x768-dark-wrt.png",
+        "screenshots/before/1366x768-dark-model.png",
+        "screenshots/before/1366x768-dark-conclusion.png",
+        "screenshots/before/1366x768-dark-example.png",
+        "screenshots/before/1366x768-dark-memory.png",
+        "screenshots/before/1366x768-dark-measurement.png",
+        "screenshots/before/1366x768-dark-dashboardRow.png",
+        "screenshots/before/1366x768-dark-summary.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 228.46875,
+          "bottom": 256.96875,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 191.5625,
+          "bottom": 480.28125,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 191.890625,
+          "bottom": 278.28125,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 192.484375,
+          "bottom": 216.484375,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192.28125,
+          "bottom": 372.40625,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 227.734375,
+          "bottom": 256.234375,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 192.015625,
+          "bottom": 786.1875,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)\n04\nDASHBOARD\nVISUALIZE\nภาพรวมสถานะความปลอดภัยแบบเรียลไทม์\nแสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน\n05\nSCORECARD\nCOMPARE TARGETS\nตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย\nชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้\n02\nKPI\nPERFORMANCE\nวัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ\nตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?\n03\nKRI\nRISK WARNING\nสัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น\nตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?\n01\nMETRIC\nMEASURE · FOUNDATION\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ\nคุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 192.453125,
+          "bottom": 290.296875,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 192.265625,
+          "bottom": 243.359375,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "768x1024-light",
+      "width": 768,
+      "height": 1024,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "labels": [],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (DATA LOSS WINDOW)\n30 นาที (ย้อนหลัง)\n\nปริมาณข้อมูลที่ยอมให้สูญเสียได้นับย้อนหลังจากเวลาเกิดเหตุ (17:00 ← 16:30)\n\nRTO (RESTORATION TARGET)\n1 ชั่วโมง (เดินหน้า)\n\nเป้าหมายกู้คืนระบบนับเดินหน้าจากเวลาเกิดเหตุ (17:00 → 18:00) ต้องเหลือเวลาตรวจสอบและทำรายการค้างให้ธุรกิจกลับมาทำงานภายใน MTD\n\n16:30\nPOINT OF RECOVERY\nLast Valid Backup\n\nจุดสำรองข้อมูลล่าสุดที่สมบูรณ์\n\n← สิ้นสุดกรอบ RPO 30 นาที\n↑ RPO ย้อนหลัง: รับข้อมูลสูญเสียสูงสุด 30 นาที ↑\n17:00\nINCIDENT MOMENT\nDISASTER (ระบบล่ม / เกิดภัยพิบัติ)\n\nจุดเกิดเหตุขัดข้อง — เริ่มต้นนับเวลาหยุดทำงาน (Downtime)\n\n↓ RTO เดินหน้า: เป้าหมายกู้ระบบภายใน 1 ชม. ↓\n18:00\nTARGET RESTORATION\nService Operational (ระบบกู้เสร็จสิ้น)\n\nระบบไอทีและข้อมูลต้องกลับมาเปิดบริการได้ตามปกติ\n\n→ สิ้นสุดกรอบ RTO 1 ชั่วโมง",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 35.859375,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 35.6875,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/768x1024-light-recovery.png",
+        "screenshots/before/768x1024-light-wrt.png",
+        "screenshots/before/768x1024-light-model.png",
+        "screenshots/before/768x1024-light-conclusion.png",
+        "screenshots/before/768x1024-light-example.png",
+        "screenshots/before/768x1024-light-memory.png",
+        "screenshots/before/768x1024-light-measurement.png",
+        "screenshots/before/768x1024-light-dashboardRow.png",
+        "screenshots/before/768x1024-light-summary.png",
+        "screenshots/before/768x1024-light-metric.png",
+        "screenshots/before/768x1024-light-dashboard.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 227.859375,
+          "bottom": 256.359375,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 191.875,
+          "bottom": 538.1875,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 191.796875,
+          "bottom": 278.1875,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 192.390625,
+          "bottom": 216.390625,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192.1875,
+          "bottom": 423.0625,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 227.6875,
+          "bottom": 256.1875,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 191.5625,
+          "bottom": 962.984375,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 192.375,
+          "bottom": 314.5,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 191.953125,
+          "bottom": 243.046875,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        },
+        {
+          "part": "metric",
+          "top": 192.140625,
+          "bottom": 347.984375,
+          "text": "01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboard",
+          "top": 192.203125,
+          "bottom": 348.046875,
+          "text": "04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "768x1024-dark",
+      "width": 768,
+      "height": 1024,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "labels": [],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (DATA LOSS WINDOW)\n30 นาที (ย้อนหลัง)\n\nปริมาณข้อมูลที่ยอมให้สูญเสียได้นับย้อนหลังจากเวลาเกิดเหตุ (17:00 ← 16:30)\n\nRTO (RESTORATION TARGET)\n1 ชั่วโมง (เดินหน้า)\n\nเป้าหมายกู้คืนระบบนับเดินหน้าจากเวลาเกิดเหตุ (17:00 → 18:00) ต้องเหลือเวลาตรวจสอบและทำรายการค้างให้ธุรกิจกลับมาทำงานภายใน MTD\n\n16:30\nPOINT OF RECOVERY\nLast Valid Backup\n\nจุดสำรองข้อมูลล่าสุดที่สมบูรณ์\n\n← สิ้นสุดกรอบ RPO 30 นาที\n↑ RPO ย้อนหลัง: รับข้อมูลสูญเสียสูงสุด 30 นาที ↑\n17:00\nINCIDENT MOMENT\nDISASTER (ระบบล่ม / เกิดภัยพิบัติ)\n\nจุดเกิดเหตุขัดข้อง — เริ่มต้นนับเวลาหยุดทำงาน (Downtime)\n\n↓ RTO เดินหน้า: เป้าหมายกู้ระบบภายใน 1 ชม. ↓\n18:00\nTARGET RESTORATION\nService Operational (ระบบกู้เสร็จสิ้น)\n\nระบบไอทีและข้อมูลต้องกลับมาเปิดบริการได้ตามปกติ\n\n→ สิ้นสุดกรอบ RTO 1 ชั่วโมง",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 35.859375,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 35.6875,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/768x1024-dark-recovery.png",
+        "screenshots/before/768x1024-dark-wrt.png",
+        "screenshots/before/768x1024-dark-model.png",
+        "screenshots/before/768x1024-dark-conclusion.png",
+        "screenshots/before/768x1024-dark-example.png",
+        "screenshots/before/768x1024-dark-memory.png",
+        "screenshots/before/768x1024-dark-measurement.png",
+        "screenshots/before/768x1024-dark-dashboardRow.png",
+        "screenshots/before/768x1024-dark-summary.png",
+        "screenshots/before/768x1024-dark-metric.png",
+        "screenshots/before/768x1024-dark-dashboard.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 227.859375,
+          "bottom": 256.359375,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 191.875,
+          "bottom": 538.1875,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 191.796875,
+          "bottom": 278.1875,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 192.390625,
+          "bottom": 216.390625,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192.1875,
+          "bottom": 423.0625,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 227.6875,
+          "bottom": 256.1875,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 191.5625,
+          "bottom": 962.984375,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 192.375,
+          "bottom": 314.5,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 191.953125,
+          "bottom": 243.046875,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        },
+        {
+          "part": "metric",
+          "top": 192.140625,
+          "bottom": 347.984375,
+          "text": "01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboard",
+          "top": 192.203125,
+          "bottom": 348.046875,
+          "text": "04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "390x844-light",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "labels": [],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (DATA LOSS WINDOW)\n30 นาที (ย้อนหลัง)\n\nปริมาณข้อมูลที่ยอมให้สูญเสียได้นับย้อนหลังจากเวลาเกิดเหตุ (17:00 ← 16:30)\n\nRTO (RESTORATION TARGET)\n1 ชั่วโมง (เดินหน้า)\n\nเป้าหมายกู้คืนระบบนับเดินหน้าจากเวลาเกิดเหตุ (17:00 → 18:00) ต้องเหลือเวลาตรวจสอบและทำรายการค้างให้ธุรกิจกลับมาทำงานภายใน MTD\n\n16:30\nPOINT OF RECOVERY\nLast Valid Backup\n\nจุดสำรองข้อมูลล่าสุดที่สมบูรณ์\n\n← สิ้นสุดกรอบ RPO 30 นาที\n↑ RPO ย้อนหลัง: รับข้อมูลสูญเสียสูงสุด 30 นาที ↑\n17:00\nINCIDENT MOMENT\nDISASTER (ระบบล่ม / เกิดภัยพิบัติ)\n\nจุดเกิดเหตุขัดข้อง — เริ่มต้นนับเวลาหยุดทำงาน (Downtime)\n\n↓ RTO เดินหน้า: เป้าหมายกู้ระบบภายใน 1 ชม. ↓\n18:00\nTARGET RESTORATION\nService Operational (ระบบกู้เสร็จสิ้น)\n\nระบบไอทีและข้อมูลต้องกลับมาเปิดบริการได้ตามปกติ\n\n→ สิ้นสุดกรอบ RTO 1 ชั่วโมง",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 36.015625,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 36.484375,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/390x844-light-recovery.png",
+        "screenshots/before/390x844-light-wrt.png",
+        "screenshots/before/390x844-light-model.png",
+        "screenshots/before/390x844-light-conclusion.png",
+        "screenshots/before/390x844-light-example.png",
+        "screenshots/before/390x844-light-memory.png",
+        "screenshots/before/390x844-light-measurement.png",
+        "screenshots/before/390x844-light-dashboardRow.png",
+        "screenshots/before/390x844-light-dashboardRow-right.png",
+        "screenshots/before/390x844-light-summary.png",
+        "screenshots/before/390x844-light-metric.png",
+        "screenshots/before/390x844-light-dashboard.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 228.015625,
+          "bottom": 256.515625,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 191.5,
+          "bottom": 823.328125,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 192.34375,
+          "bottom": 336.328125,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 191.9375,
+          "bottom": 273.53125,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192.328125,
+          "bottom": 578.703125,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 228.484375,
+          "bottom": 285.484375,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 191.640625,
+          "bottom": 1324.90625,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 192.40625,
+          "bottom": 338.8125,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 191.5,
+          "bottom": 266.140625,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        },
+        {
+          "part": "metric",
+          "top": 191.8125,
+          "bottom": 421.90625,
+          "text": "01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboard",
+          "top": 192.375,
+          "bottom": 438.46875,
+          "text": "04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps"
+        }
+      ],
+      "tableEdge": {
+        "max": 252,
+        "reached": true
+      }
+    },
+    {
+      "run": "390x844-dark",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "labels": [],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (DATA LOSS WINDOW)\n30 นาที (ย้อนหลัง)\n\nปริมาณข้อมูลที่ยอมให้สูญเสียได้นับย้อนหลังจากเวลาเกิดเหตุ (17:00 ← 16:30)\n\nRTO (RESTORATION TARGET)\n1 ชั่วโมง (เดินหน้า)\n\nเป้าหมายกู้คืนระบบนับเดินหน้าจากเวลาเกิดเหตุ (17:00 → 18:00) ต้องเหลือเวลาตรวจสอบและทำรายการค้างให้ธุรกิจกลับมาทำงานภายใน MTD\n\n16:30\nPOINT OF RECOVERY\nLast Valid Backup\n\nจุดสำรองข้อมูลล่าสุดที่สมบูรณ์\n\n← สิ้นสุดกรอบ RPO 30 นาที\n↑ RPO ย้อนหลัง: รับข้อมูลสูญเสียสูงสุด 30 นาที ↑\n17:00\nINCIDENT MOMENT\nDISASTER (ระบบล่ม / เกิดภัยพิบัติ)\n\nจุดเกิดเหตุขัดข้อง — เริ่มต้นนับเวลาหยุดทำงาน (Downtime)\n\n↓ RTO เดินหน้า: เป้าหมายกู้ระบบภายใน 1 ชม. ↓\n18:00\nTARGET RESTORATION\nService Operational (ระบบกู้เสร็จสิ้น)\n\nระบบไอทีและข้อมูลต้องกลับมาเปิดบริการได้ตามปกติ\n\n→ สิ้นสุดกรอบ RTO 1 ชั่วโมง",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 36.015625,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 36.484375,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/390x844-dark-recovery.png",
+        "screenshots/before/390x844-dark-wrt.png",
+        "screenshots/before/390x844-dark-model.png",
+        "screenshots/before/390x844-dark-conclusion.png",
+        "screenshots/before/390x844-dark-example.png",
+        "screenshots/before/390x844-dark-memory.png",
+        "screenshots/before/390x844-dark-measurement.png",
+        "screenshots/before/390x844-dark-dashboardRow.png",
+        "screenshots/before/390x844-dark-dashboardRow-right.png",
+        "screenshots/before/390x844-dark-summary.png",
+        "screenshots/before/390x844-dark-metric.png",
+        "screenshots/before/390x844-dark-dashboard.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 228.015625,
+          "bottom": 256.515625,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 191.5,
+          "bottom": 823.328125,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 192.34375,
+          "bottom": 336.328125,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 191.9375,
+          "bottom": 273.53125,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192.328125,
+          "bottom": 578.703125,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 228.484375,
+          "bottom": 285.484375,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 191.640625,
+          "bottom": 1324.90625,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 192.40625,
+          "bottom": 338.8125,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 191.5,
+          "bottom": 266.140625,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        },
+        {
+          "part": "metric",
+          "top": 191.8125,
+          "bottom": 421.90625,
+          "text": "01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboard",
+          "top": 192.375,
+          "bottom": 438.46875,
+          "text": "04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps"
+        }
+      ],
+      "tableEdge": {
+        "max": 252,
+        "reached": true
+      }
+    },
+    {
+      "run": "360x800-light",
+      "width": 360,
+      "height": 800,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "labels": [],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (DATA LOSS WINDOW)\n30 นาที (ย้อนหลัง)\n\nปริมาณข้อมูลที่ยอมให้สูญเสียได้นับย้อนหลังจากเวลาเกิดเหตุ (17:00 ← 16:30)\n\nRTO (RESTORATION TARGET)\n1 ชั่วโมง (เดินหน้า)\n\nเป้าหมายกู้คืนระบบนับเดินหน้าจากเวลาเกิดเหตุ (17:00 → 18:00) ต้องเหลือเวลาตรวจสอบและทำรายการค้างให้ธุรกิจกลับมาทำงานภายใน MTD\n\n16:30\nPOINT OF RECOVERY\nLast Valid Backup\n\nจุดสำรองข้อมูลล่าสุดที่สมบูรณ์\n\n← สิ้นสุดกรอบ RPO 30 นาที\n↑ RPO ย้อนหลัง: รับข้อมูลสูญเสียสูงสุด 30 นาที ↑\n17:00\nINCIDENT MOMENT\nDISASTER (ระบบล่ม / เกิดภัยพิบัติ)\n\nจุดเกิดเหตุขัดข้อง — เริ่มต้นนับเวลาหยุดทำงาน (Downtime)\n\n↓ RTO เดินหน้า: เป้าหมายกู้ระบบภายใน 1 ชม. ↓\n18:00\nTARGET RESTORATION\nService Operational (ระบบกู้เสร็จสิ้น)\n\nระบบไอทีและข้อมูลต้องกลับมาเปิดบริการได้ตามปกติ\n\n→ สิ้นสุดกรอบ RTO 1 ชั่วโมง",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 36.484375,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 36.3125,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/360x800-light-recovery.png",
+        "screenshots/before/360x800-light-wrt.png",
+        "screenshots/before/360x800-light-model.png",
+        "screenshots/before/360x800-light-conclusion.png",
+        "screenshots/before/360x800-light-example.png",
+        "screenshots/before/360x800-light-memory.png",
+        "screenshots/before/360x800-light-measurement.png",
+        "screenshots/before/360x800-light-dashboardRow.png",
+        "screenshots/before/360x800-light-dashboardRow-right.png",
+        "screenshots/before/360x800-light-summary.png",
+        "screenshots/before/360x800-light-metric.png",
+        "screenshots/before/360x800-light-dashboard.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 228.484375,
+          "bottom": 285.484375,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 191.515625,
+          "bottom": 852.140625,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 192.15625,
+          "bottom": 336.140625,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 191.75,
+          "bottom": 273.34375,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192.140625,
+          "bottom": 603.890625,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 228.3125,
+          "bottom": 285.3125,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 192.0625,
+          "bottom": 1399.578125,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 192.078125,
+          "bottom": 338.484375,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 191.828125,
+          "bottom": 266.46875,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        },
+        {
+          "part": "metric",
+          "top": 191.734375,
+          "bottom": 446.578125,
+          "text": "01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboard",
+          "top": 191.546875,
+          "bottom": 437.640625,
+          "text": "04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps"
+        }
+      ],
+      "tableEdge": {
+        "max": 282,
+        "reached": true
+      }
+    },
+    {
+      "run": "360x800-dark",
+      "width": 360,
+      "height": 800,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tables": 9,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "labels": [],
+      "timelineText": "RECOVERY METRICS\nRecovery Time Objective (RTO) vs. Recovery Point Objective (RPO)\nRPO (DATA LOSS WINDOW)\n30 นาที (ย้อนหลัง)\n\nปริมาณข้อมูลที่ยอมให้สูญเสียได้นับย้อนหลังจากเวลาเกิดเหตุ (17:00 ← 16:30)\n\nRTO (RESTORATION TARGET)\n1 ชั่วโมง (เดินหน้า)\n\nเป้าหมายกู้คืนระบบนับเดินหน้าจากเวลาเกิดเหตุ (17:00 → 18:00) ต้องเหลือเวลาตรวจสอบและทำรายการค้างให้ธุรกิจกลับมาทำงานภายใน MTD\n\n16:30\nPOINT OF RECOVERY\nLast Valid Backup\n\nจุดสำรองข้อมูลล่าสุดที่สมบูรณ์\n\n← สิ้นสุดกรอบ RPO 30 นาที\n↑ RPO ย้อนหลัง: รับข้อมูลสูญเสียสูงสุด 30 นาที ↑\n17:00\nINCIDENT MOMENT\nDISASTER (ระบบล่ม / เกิดภัยพิบัติ)\n\nจุดเกิดเหตุขัดข้อง — เริ่มต้นนับเวลาหยุดทำงาน (Downtime)\n\n↓ RTO เดินหน้า: เป้าหมายกู้ระบบภายใน 1 ชม. ↓\n18:00\nTARGET RESTORATION\nService Operational (ระบบกู้เสร็จสิ้น)\n\nระบบไอทีและข้อมูลต้องกลับมาเปิดบริการได้ตามปกติ\n\n→ สิ้นสุดกรอบ RTO 1 ชั่วโมง",
+      "exampleText": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)",
+      "wrtText": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)",
+      "measurementText": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)",
+      "tableText": "เครื่องมือ / แนวคิด\tคำสำคัญในโจทย์สอบ (Key Exam Triggers)\tวัตถุประสงค์หลัก (Primary Purpose)\tตัวอย่างการใช้งานในองค์กร\nMetric\t\"Defined measurable value\", \"Count, percentage, ratio or average\"\tค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์\tจำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found)\nKPI\t\"Performance target\", \"Progress toward goal\", \"Success rate\"\tประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย\tร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance)\nKRI\t\"Early warning\", \"Escalating risk\", \"Threshold exceed\"\tส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้\tจำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (> 0 บัญชี)\nDashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์\nScorecard\t\"Compare actual vs. target\", \"Periodic benchmark\", \"Gaps\"\tสรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง\tตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน\nReport\t\"Formal documentation\", \"Recommended actions\", \"Executive summary\"\tเอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร\tเอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร",
+      "summaryText": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time",
+      "pass": true,
+      "navigation": [
+        {
+          "hash": "#topic-2-2-rto-rpo",
+          "y": 36.484375,
+          "id": "topic-2-2-rto-rpo",
+          "pass": true
+        },
+        {
+          "hash": "#topic-2-4-memory-aid",
+          "y": 36.3125,
+          "id": "topic-2-4-memory-aid",
+          "pass": true
+        }
+      ],
+      "screenshots": [
+        "screenshots/before/360x800-dark-recovery.png",
+        "screenshots/before/360x800-dark-wrt.png",
+        "screenshots/before/360x800-dark-model.png",
+        "screenshots/before/360x800-dark-conclusion.png",
+        "screenshots/before/360x800-dark-example.png",
+        "screenshots/before/360x800-dark-memory.png",
+        "screenshots/before/360x800-dark-measurement.png",
+        "screenshots/before/360x800-dark-dashboardRow.png",
+        "screenshots/before/360x800-dark-dashboardRow-right.png",
+        "screenshots/before/360x800-dark-summary.png",
+        "screenshots/before/360x800-dark-metric.png",
+        "screenshots/before/360x800-dark-dashboard.png"
+      ],
+      "captures": [
+        {
+          "part": "recovery",
+          "top": 228.484375,
+          "bottom": 285.484375,
+          "text": "2.2.6 RTO and RPO Recovery Metrics"
+        },
+        {
+          "part": "wrt",
+          "top": 191.515625,
+          "bottom": 852.140625,
+          "text": "Work Recovery Time (WRT) และความสัมพันธ์กับ MTD:\nWork Recovery Time (WRT — เวลาฟื้นฟูระบบงาน): คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ\nMaximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้): คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)\nสูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "model",
+          "top": 192.15625,
+          "bottom": 336.140625,
+          "text": "สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:\nMTD ≥ RTO + WRT\n(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "conclusion",
+          "top": 191.75,
+          "bottom": 273.34375,
+          "text": "(หาก RTO + WRT > MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)"
+        },
+        {
+          "part": "example",
+          "top": 192.140625,
+          "bottom": 603.890625,
+          "text": "ตัวอย่างสถานการณ์จริง: ระบบล่มเวลา 17:00 น.\n\nสมมติเซิร์ฟเวอร์หลักเกิดไฟไหม้และดับลง ณ เวลา 17:00 น.:\n\nหากองค์กรกำหนด RTO = 1 ชั่วโมง → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน 18:00 น.\nหากองค์กรกำหนด RPO = 30 นาที → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา 16:30 น. (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)"
+        },
+        {
+          "part": "memory",
+          "top": 228.3125,
+          "bottom": 285.3125,
+          "text": "2.4.8 The 6-Part Measurement Memory Aid"
+        },
+        {
+          "part": "measurement",
+          "top": 192.0625,
+          "bottom": 1399.578125,
+          "text": "MEASUREMENT ARCHITECTURE\nCybersecurity Measurement, Visualization & Communication Architecture\n06\nREPORT\nCOMMUNICATE & RECOMMEND\n\nเอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร\n\n04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps\n\n02 & 03\nKPI & KRI\nPERFORMANCE & RISK WARNING\n\nKPI: วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ · KRI: สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต\n\n01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboardRow",
+          "top": 192.078125,
+          "bottom": 338.484375,
+          "text": "Dashboard\t\"Real-time\", \"Operational view\", \"Visual representation\"\tแสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน\tหน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์"
+        },
+        {
+          "part": "summary",
+          "top": 191.828125,
+          "bottom": 266.46875,
+          "text": "Dashboard\nVisualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time"
+        },
+        {
+          "part": "metric",
+          "top": 191.734375,
+          "bottom": 446.578125,
+          "text": "01\nMETRIC\nMEASURE · FOUNDATION\n\nค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ · คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)"
+        },
+        {
+          "part": "dashboard",
+          "top": 191.546875,
+          "bottom": 437.640625,
+          "text": "04 & 05\nDASHBOARD & SCORECARD\nVISUALIZE & COMPARE\n\nDashboard: แสดงผลกราฟิกแบบ Real-time · Scorecard: เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps"
+        }
+      ],
+      "tableEdge": {
+        "max": 282,
+        "reached": true
+      }
+    }
+  ],
+  "navigation": [
+    {
+      "id": "topic-2-2-rto-rpo",
+      "direct": {
+        "hash": "#topic-2-2-rto-rpo",
+        "y": 36.484375
+      },
+      "reload": {
+        "hash": "#topic-2-2-rto-rpo",
+        "y": 36.484375
+      },
+      "returned": {
+        "hash": "#topic-2-2-rto-rpo",
+        "y": 36.484375
+      },
+      "pass": true
+    },
+    {
+      "id": "topic-2-4-memory-aid",
+      "direct": {
+        "hash": "#topic-2-4-memory-aid",
+        "y": 36.3125
+      },
+      "reload": {
+        "hash": "#topic-2-4-memory-aid",
+        "y": 36.3125
+      },
+      "returned": {
+        "hash": "#topic-2-4-memory-aid",
+        "y": 36.3125
+      },
+      "pass": true
+    }
+  ],
+  "protectedStates": [],
+  "exceptions": [],
+  "consoleErrors": [],
+  "status": "PASS"
+}

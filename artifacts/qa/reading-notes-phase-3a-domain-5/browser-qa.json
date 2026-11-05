@@ -1,0 +1,718 @@
+{
+  "date": "2026-11-04",
+  "browser": "Chrome/156.0.8078.80",
+  "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "mode": "Real Google Chrome headless via CDP; isolated temporary profile",
+  "url": "http://127.0.0.1:5267/#/reading/domain-5",
+  "matrix": [
+    {
+      "run": "1920x1080-light",
+      "width": 1920,
+      "height": 1080,
+      "innerWidth": 1920,
+      "innerHeight": 1080,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 1206,
+      "tableContainerWidth": 1206,
+      "tableScrollable": false,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/1920x1080-light-signature.png",
+        "screenshots/1920x1080-light-hardware.png",
+        "screenshots/1920x1080-light-table.png"
+      ]
+    },
+    {
+      "run": "1920x1080-dark",
+      "width": 1920,
+      "height": 1080,
+      "innerWidth": 1920,
+      "innerHeight": 1080,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 1206,
+      "tableContainerWidth": 1206,
+      "tableScrollable": false,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/1920x1080-dark-signature.png",
+        "screenshots/1920x1080-dark-hardware.png",
+        "screenshots/1920x1080-dark-table.png"
+      ]
+    },
+    {
+      "run": "1440x900-light",
+      "width": 1440,
+      "height": 900,
+      "innerWidth": 1440,
+      "innerHeight": 900,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 1023,
+      "tableContainerWidth": 1023,
+      "tableScrollable": false,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/1440x900-light-signature.png",
+        "screenshots/1440x900-light-hardware.png",
+        "screenshots/1440x900-light-table.png"
+      ]
+    },
+    {
+      "run": "1440x900-dark",
+      "width": 1440,
+      "height": 900,
+      "innerWidth": 1440,
+      "innerHeight": 900,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 1023,
+      "tableContainerWidth": 1023,
+      "tableScrollable": false,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/1440x900-dark-signature.png",
+        "screenshots/1440x900-dark-hardware.png",
+        "screenshots/1440x900-dark-table.png"
+      ]
+    },
+    {
+      "run": "1366x768-light",
+      "width": 1366,
+      "height": 768,
+      "innerWidth": 1366,
+      "innerHeight": 768,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 949,
+      "tableContainerWidth": 949,
+      "tableScrollable": false,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/1366x768-light-signature.png",
+        "screenshots/1366x768-light-hardware.png",
+        "screenshots/1366x768-light-table.png"
+      ]
+    },
+    {
+      "run": "1366x768-dark",
+      "width": 1366,
+      "height": 768,
+      "innerWidth": 1366,
+      "innerHeight": 768,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 949,
+      "tableContainerWidth": 949,
+      "tableScrollable": false,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/1366x768-dark-signature.png",
+        "screenshots/1366x768-dark-hardware.png",
+        "screenshots/1366x768-dark-table.png"
+      ]
+    },
+    {
+      "run": "768x1024-light",
+      "width": 768,
+      "height": 1024,
+      "innerWidth": 768,
+      "innerHeight": 1024,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 685,
+      "tableContainerWidth": 685,
+      "tableScrollable": false,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/768x1024-light-signature.png",
+        "screenshots/768x1024-light-hardware.png",
+        "screenshots/768x1024-light-table.png"
+      ]
+    },
+    {
+      "run": "768x1024-dark",
+      "width": 768,
+      "height": 1024,
+      "innerWidth": 768,
+      "innerHeight": 1024,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 685,
+      "tableContainerWidth": 685,
+      "tableScrollable": false,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/768x1024-dark-signature.png",
+        "screenshots/768x1024-dark-hardware.png",
+        "screenshots/768x1024-dark-table.png"
+      ]
+    },
+    {
+      "run": "390x844-light",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 547.296875,
+      "tableContainerWidth": 326,
+      "tableScrollable": true,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/390x844-light-signature.png",
+        "screenshots/390x844-light-hardware.png",
+        "screenshots/390x844-light-table.png",
+        "screenshots/390x844-light-table-right.png"
+      ],
+      "tableRightEdgeReachable": true
+    },
+    {
+      "run": "390x844-dark",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 547.296875,
+      "tableContainerWidth": 326,
+      "tableScrollable": true,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/390x844-dark-signature.png",
+        "screenshots/390x844-dark-hardware.png",
+        "screenshots/390x844-dark-table.png",
+        "screenshots/390x844-dark-table-right.png"
+      ],
+      "tableRightEdgeReachable": true
+    },
+    {
+      "run": "360x800-light",
+      "width": 360,
+      "height": 800,
+      "innerWidth": 360,
+      "innerHeight": 800,
+      "theme": "light",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 547.296875,
+      "tableContainerWidth": 296,
+      "tableScrollable": true,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/360x800-light-signature.png",
+        "screenshots/360x800-light-hardware.png",
+        "screenshots/360x800-light-table.png",
+        "screenshots/360x800-light-table-right.png"
+      ],
+      "tableRightEdgeReachable": true
+    },
+    {
+      "run": "360x800-dark",
+      "width": 360,
+      "height": 800,
+      "innerWidth": 360,
+      "innerHeight": 800,
+      "theme": "dark",
+      "pageOverflow": 0,
+      "clippedProse": [],
+      "tableRows": 6,
+      "tableColumnCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "tableWidth": 547.296875,
+      "tableContainerWidth": 296,
+      "tableScrollable": true,
+      "scenarioCount": 12,
+      "diagrams": [
+        {
+          "key": "mitreAttackTacticTechnique",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "irpLifecycle",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "assetLifecycleAndEol",
+          "visible": true,
+          "svg": true
+        },
+        {
+          "key": "securityTestingMatrix",
+          "visible": true,
+          "svg": true
+        }
+      ],
+      "thaiFont": "\"Noto Sans Thai\", \"Space Grotesk\", system-ui, sans-serif",
+      "signatureText": "Digital Signatures (ลายมือชื่อดิจิทัล):\n\nกลไก Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ) ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n\nIntegrity (ความสมบูรณ์): ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\nOrigin Authentication (การยืนยันแหล่งที่มา): เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\nNon-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้): สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.\n\nกระบวนการทำงานของลายมือชื่อดิจิทัล:\n\nผู้ลงนาม (Signer): ใช้อัลกอริทึม Sign กับ Private Key และเอกสาร → ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\nผู้ตรวจ (Verifier): ใช้อัลกอริทึม Verify กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ → ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\nแยกหน้าที่ให้ชัด (Different purposes): Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\nตัวอย่าง (Example): ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+      "hsmText": "5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์\n\nการเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.\n\nTPM (Trusted Platform Module - ISO/IEC 11889):\n\nโมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n\nทำหน้าที่สนับสนุน Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์) ของแพลตฟอร์ม / Support a platform hardware root of trust.\nMeasured Boot: ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน Secure Boot ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\nสร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.\nHSM (Hardware Security Module):\n\nโมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n\nสร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\nแอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\nอัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\nการรับรอง FIPS 140 ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\nการป้องกันและตอบสนองต่อการงัดแงะ รวมถึง Zeroization (การล้างข้อมูลกุญแจ) ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.\nมิติการเปรียบเทียบ\tTPM (Trusted Platform Module)\tHSM (Hardware Security Module)\nรูปแบบ (Form)\tDiscrete / Integrated / Firmware TPM\tPCIe / Network / USB เป็นตัวอย่าง (examples)\nขอบเขตทั่วไป (Typical scope)\tความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys)\tงานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations)\nงานตัวอย่าง (Example use)\tMeasured Boot, ปกป้องกุญแจ BitLocker (key protection)\tจัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments)\nมาตรฐาน (Standards)\tข้อกำหนด TPM: ISO/IEC 11889 (TPM specification)\tตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated)\nการป้องกัน (Protection)\tขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent)\tการป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization)\n\nเลือกตามหน้าที่ (Choose by purpose): TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+      "pass": true,
+      "screenshots": [
+        "screenshots/360x800-dark-signature.png",
+        "screenshots/360x800-dark-hardware.png",
+        "screenshots/360x800-dark-table.png",
+        "screenshots/360x800-dark-table-right.png"
+      ],
+      "tableRightEdgeReachable": true
+    }
+  ],
+  "navigation": [
+    {
+      "id": "topic-5-1-hashing-digital-signatures",
+      "direct": {
+        "hash": "#topic-5-1-hashing-digital-signatures",
+        "anchorExists": true,
+        "y": 36.265625
+      },
+      "reload": {
+        "hash": "#topic-5-1-hashing-digital-signatures",
+        "anchorExists": true,
+        "y": 36.265625
+      },
+      "otherDomain": {
+        "article": true,
+        "anchor": true,
+        "hash": "#/reading/domain-4"
+      },
+      "returnToTopic": {
+        "exists": true,
+        "hash": "#topic-5-1-hashing-digital-signatures",
+        "y": 36.265625
+      },
+      "pass": true
+    },
+    {
+      "id": "topic-5-1-tpm-vs-hsm",
+      "direct": {
+        "hash": "#topic-5-1-tpm-vs-hsm",
+        "anchorExists": true,
+        "y": 35.953125
+      },
+      "reload": {
+        "hash": "#topic-5-1-tpm-vs-hsm",
+        "anchorExists": true,
+        "y": 35.953125
+      },
+      "otherDomain": {
+        "article": true,
+        "anchor": true,
+        "hash": "#/reading/domain-4"
+      },
+      "returnToTopic": {
+        "exists": true,
+        "hash": "#topic-5-1-tpm-vs-hsm",
+        "y": 35.953125
+      },
+      "pass": true
+    }
+  ],
+  "exceptions": [],
+  "consoleErrors": [],
+  "status": "PASS"
+}

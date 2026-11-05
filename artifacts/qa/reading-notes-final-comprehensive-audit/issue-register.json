@@ -1,0 +1,111 @@
+{
+  "auditTitle": "ISC2 CC 2026 Reading Notes — Final Comprehensive Audit Issue Register",
+  "auditDate": "2026-11-05",
+  "totalIssues": 11,
+  "fixedAndVerified": 11,
+  "fixedNotVerified": 0,
+  "unresolved": 0,
+  "notTested": 0,
+  "issues": [
+    {
+      "id": "AUD-D1-001",
+      "component": "Domain 1 / Verification Suite",
+      "severity": "Medium",
+      "rootCause": "Stale question bank count assertion in tools/verify-reading-notes-domain1.mjs (hardcoded 119 vs active 157 next-bank questions).",
+      "fix": "Updated assertion to dynamically reflect active 157-item next-bank count.",
+      "verification": "tools/verify-reading-notes-domain1.mjs 10/10 PASS.",
+      "status": "FIXED AND VERIFIED"
+    },
+    {
+      "id": "AUD-D1-002",
+      "component": "Domain 1 / Verification Suite",
+      "severity": "Medium",
+      "rootCause": "Stale vocabulary assertion in tools/verify-reading-notes-domain1.mjs (hardcoded 403 vs active 438 total terms including Domain 5).",
+      "fix": "Updated assertion to load and aggregate all 5 domain JSON files (438 total).",
+      "verification": "tools/verify-reading-notes-domain1.mjs 10/10 PASS.",
+      "status": "FIXED AND VERIFIED"
+    },
+    {
+      "id": "AUD-D1-003",
+      "component": "Domain 1 / Markdown Formatting",
+      "severity": "Low",
+      "rootCause": "Stray LaTeX delimiter '\\to' leaked into Quantitative Risk analysis text in line 699 of domain-1.md.",
+      "fix": "Replaced '\\to' with Unicode '&rarr;' outside math delimiters.",
+      "verification": "tools/verify-reading-notes-dom-integrity.mjs PASS.",
+      "status": "FIXED AND VERIFIED"
+    },
+    {
+      "id": "AUD-D5-001",
+      "component": "Domain 5 / Diagram Integration",
+      "severity": "High",
+      "rootCause": "Legacy script insert-domain5-markdown.mjs repeatedly appended 'cryptographyPipelines' tag 15 times before </section>.",
+      "fix": "Deduplicated tags and restored exact 1:1 diagram mapping in Section 5.1.7.",
+      "verification": "tools/verify-reading-notes-domain5.mjs 9/9 PASS, count = 1.",
+      "status": "FIXED AND VERIFIED"
+    },
+    {
+      "id": "AUD-SHARED-001",
+      "component": "UI Shell / Navigation Test Runner",
+      "severity": "Medium",
+      "rootCause": "Automated audit script queried .reading-nav-domain-btn instead of semantic selector [data-select-domain].",
+      "fix": "Updated selector in audit runner tools/run-final-comprehensive-audit.mjs.",
+      "verification": "tools/run-final-comprehensive-audit.mjs 43/43 PASS.",
+      "status": "FIXED AND VERIFIED"
+    },
+    {
+      "id": "AUD-SHARED-002",
+      "component": "CSS / Layout & Design Tokens",
+      "severity": "Low",
+      "rootCause": "Absence of unified textbook styling tokens for 5-step concrete real-world operational examples.",
+      "fix": "Added .reading-example-box, .reading-example-title, .reading-example-step, and .reading-example-takeaway in css/reading.css.",
+      "verification": "Real Chrome CDP Dark & Light mode contrast evaluation PASS.",
+      "status": "FIXED AND VERIFIED"
+    },
+    {
+      "id": "ACC-D4-02",
+      "component": "Domain 4 / Academic Fidelity",
+      "severity": "Medium",
+      "rootCause": "Unqualified claim that UDP is inherently faster without clarifying low-latency connectionless design vs reliability overhead.",
+      "fix": "Qualified explanation in Section 4.1.2 distinguishing TCP connection setup/retransmission from UDP real-time low-overhead streaming.",
+      "verification": "tools/verify-reading-notes-domain4.mjs 10/10 PASS.",
+      "status": "FIXED AND VERIFIED"
+    },
+    {
+      "id": "ACC-D4-03",
+      "component": "Domain 4 / Practice Scenario",
+      "severity": "Medium",
+      "rootCause": "Scenario 01 explanation emphasized packet throughput rather than blast radius reduction and Layer 3 boundary isolation.",
+      "fix": "Corrected domain-4-scenarios.js to focus on blast radius containment.",
+      "verification": "tools/verify-reading-notes-domain4.mjs 10/10 PASS.",
+      "status": "FIXED AND VERIFIED"
+    },
+    {
+      "id": "ENR-D3-04",
+      "component": "Domain 3 / Academic Nuance",
+      "severity": "Low",
+      "rootCause": "Ambiguity in JML Leaver process between immediate access termination and long-term audit log retention.",
+      "fix": "Clarified in domain-3.md Section 3.1.2 that account access terminates immediately upon separation while audit logs are retained for compliance.",
+      "verification": "tools/verify-reading-notes-domain3.mjs 10/10 PASS.",
+      "status": "FIXED AND VERIFIED"
+    },
+    {
+      "id": "DEFECT-C-001",
+      "component": "Markdown Parser",
+      "severity": "Medium",
+      "rootCause": "Regex parsing error when nested italic text occurred inside bold markdown formatting.",
+      "fix": "Refined nested formatting regex in js/core/markdown-parser.js.",
+      "verification": "tools/verify-reading-notes-dom-integrity.mjs 36/36 PASS.",
+      "status": "FIXED AND VERIFIED"
+    },
+    {
+      "id": "DEFECT-C-002",
+      "component": "Domain 5 / Math Formatting",
+      "severity": "Low",
+      "rootCause": "Raw LaTeX parenthetical notation \\(n(n-1)/2\\) leaked in domain-5.md Section 5.1.3.",
+      "fix": "Replaced with standard inline math delimiter $n(n-1)/2$.",
+      "verification": "tools/verify-reading-notes-dom-integrity.mjs 36/36 PASS.",
+      "status": "FIXED AND VERIFIED"
+    }
+  ]
+}
+

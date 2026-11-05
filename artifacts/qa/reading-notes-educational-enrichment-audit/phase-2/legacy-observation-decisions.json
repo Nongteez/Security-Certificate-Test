@@ -1,0 +1,635 @@
+[
+  {
+    "legacyId": "D1-01",
+    "originalObservation": "| D1-01 — 1.1.1 Core concepts; R1:11–43; `topic-1-1-core-concepts` | Seven-term bilingual table has assets, threats, weaknesses, risk and controls; existing `threatChain`; warning distinguishes weakness from incident. | KEEP EXISTING; DUPLICATE — DO NOT ADD | Learner should connect a valuable business service to a possible loss, not memorize isolated nouns. L1-05 `slide-02-connect-the-scenario`, `slide-03-separate-the-terms`, `slide-06-write-a-risk-statement` already supply clinic and flood examples. Cross-link/reuse one of these. If editing prose, clarify that phishing exploits human/process weaknesses without implying every phishing email is software exploit code. No new chain diagram. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-02",
+    "originalObservation": "| D1-02 — 1.1.2 CIA overview; R1:48–52 | Existing `ciaTriad` plus control lists and applied examples for all three goals. | KEEP EXISTING | Add only a one-sentence business purpose if necessary: protect who may see data, whether it remains trustworthy, and whether a needed service is accessible. L1-01 already includes compound impacts and scenario reflection. A second CIA triangle or lock stock photo adds no learning value. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-03",
+    "originalObservation": "| D1-03 — Confidentiality child; R1:54–72 | Authorized access, masking, classification and a database theft scenario. | KEEP EXISTING | A real example can use a fictional masked account display if learners cannot recognize masking; source `D1 Example.md` A2 already contains expanded masking/redaction examples. Reuse that concise example rather than invent another. Do not treat masking as a replacement for permission controls or use real payment/personnel data. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-04",
+    "originalObservation": "| D1-04 — Integrity child; R1:75–110 | Tampered bank balance, hashes/signatures/permissions and hash-versus-encryption contrast. | IMPROVE EXPLANATION | State that the reference hash and origin must be trusted; matching a checksum does not establish that a file or AI training dataset is safe or correct. L1-01 `slide-09-ai-training-integrity` already teaches the AI data-poisoning application; L1-03 teaches signature alteration. Reuse those, not another hash demo. Avoid the original PNG's MD5 reference as a current recommended security choice. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-05",
+    "originalObservation": "| D1-05 — Availability child; R1:112–160 | Redundancy, UPS, ISP, DR, load-balancer diagram; table already acknowledges ransomware can affect multiple goals. | IMPROVE EXPLANATION; DUPLICATE — DO NOT ADD | Explain load balancing distributes work, failover changes service path after failure, and a backup supports recovery; none alone promises uninterrupted service. Existing `loadBalancer` and L1-01 availability/compound-impact slides cover this. Link the D2 backup discussion. No generic datacenter image or another three-server drawing. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-06",
+    "originalObservation": "| D1-06 — 1.1.3 Identification/Authentication; R1:167–190; `topic-1-1-identification-authentication` | User-action/system-action table supports a novice's mental model; explicit claim-versus-proof distinction. | IMPROVE EXPLANATION | Apply D1-C03. Use an example with username “Nara” → credential verification and the subsequent denied approval, already implemented in L1-02. The table should distinguish recorded account evidence from proof of the physical human. No additional login simulation. |",
+    "decision": "APPROVE WITH REVISION",
+    "decisionIds": [
+      "ENR-D1-03"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-07",
+    "originalObservation": "| D1-07 — 1.1.4 MFA; R1:194–219; `topic-1-1-mfa` | Correctly requires distinct types, explicitly says location is context, and contrasts password+PIN with password+biometric. Existing `mfa-factors` custom block. | KEEP EXISTING; NEEDS VERIFICATION | Keep the source correction: original `224441`/`225627` screenshot graphic depicts location as a fourth MFA factor and must not be copied. Prefer password + registered security key as simple verified-evidence example. Explain possession means proving control of a registered authenticator, not merely owning a phone. L1-02 factor and combinations slides already do this; defer NIST-specific biometric restrictions to a labelled supporting note. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-08",
+    "originalObservation": "| D1-08 — 1.1.5 Authorization; R1:226–234; `topic-1-1-authorization-accounting` | Read allowed/delete denied example; public-resource caveat prevents a universal authenticated-only model. | KEEP EXISTING | Purpose: one account can legitimately receive different results for different actions. L1-02 `slide-03-permission-boundary` and the case interaction already supply a more concrete version. Link/reuse, no new permission matrix beyond the present small example. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-09",
+    "originalObservation": "| D1-09 — Accounting child; R1:236–249 | Explicit Who/What/When/Where/outcome fields; connects tracing to accountability. | ADD PRACTICAL EXAMPLE | A compact fictional row makes the abstract word “Log” recognizable: `10:04 | nara | approve order O-17 | denied`. Explain it records the attempt, not permission or certain human attribution. This example already exists in L1-02 `slide-04-activity-trail`; import/adapt the same row rather than create a new log graphic or interactive asset. Thai: “บันทึกช่วยตรวจสอบ ไม่ได้อนุญาตให้กระทำ”. |",
+    "decision": "APPROVE WITH REVISION",
+    "decisionIds": [
+      "ENR-D1-05"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-10",
+    "originalObservation": "| D1-10 — 1.1.6 Non-repudiation child; R1:253–259 | Distinguishes login verification from evidence of a past signed action. | IMPROVE EXPLANATION; DUPLICATE — DO NOT ADD | “Cannot deny” needs conditions: trust in identity/key association, private-key control, preserved original data/signature and relevant time evidence. A valid signature does not establish human intent, delivery, or freedom from key compromise. L1-03 `slide-03-sign-and-verify`, interactive `slide-04-altered-copy`, and `slide-05-evidence-conditions` already cover the exact gap. Cross-link/reuse; no new signing animation. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-11",
+    "originalObservation": "| D1-11 — Privacy roles/lifecycle child; R1:263–320; `topic-1-1-privacy-data-protection` | Existing `privacyFlow`, subject/controller/processor cards, inventory/retention/conditional erasure and C-versus-privacy table. | IMPROVE EXPLANATION; REPLACE MISLEADING PRESENTATION | Apply D1-C02. Explain why collection/reuse can be inappropriate even when encrypted and accessible only by staff. L1-04's delivery example, inventory, retention and AI ticket-reuse decision already make the purpose concrete. Reuse one fictional data record across all roles, not GDPR logo imagery or a second data-flow chart. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "ACC-D1-01",
+      "LEG-D1-LEGAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-12",
+    "originalObservation": "| D1-12 — Accountability child; R1:324–348 | Connects unique identities and protected records with responsibility; distinguishes confidentiality/privacy/evidence concepts. | IMPROVE EXPLANATION | Explain shared “admin” accounts make individual attribution harder; account logs are evidence to evaluate. `D1 Example.md` A4 has the admin01/shared-admin comparison; L1-03 `slide-02-different-questions` already separates accounting, auditing and accountability. Reuse as one contrasting paragraph. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-13",
+    "originalObservation": "| D1-13 — 1.1.7 Zero Trust/Defense in Depth; R1:355–394; `topic-1-1-zero-trust-defense-in-depth` | Practical office-LAN example, multiple complementary controls, caveat about shared dependencies, existing `defenseInDepth`. | KEEP EXISTING; IMPROVE EXPLANATION | Avoid “always” implying users must type a password for every packet/request; explain contextual policy evaluation, least privilege and current device/session evidence at a beginner level. Explicitly call seven layers an illustrative teaching model, not universal architecture. Detailed network design belongs in D4; no new castle/onion or zero-trust vendor diagram. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-14",
+    "originalObservation": "| D1-14 — 1.2.1 Risk components; R1:409–434; `topic-1-2-risk-components` | Separates likelihood and impact, financial/operational/reputation effects, correctly qualifies the product as one scoring method. | KEEP EXISTING | L1-05 `slide-04-likelihood-and-impact` and L1-06 `slide-02-define-the-criteria` already illustrate why “High” needs criteria. Reuse a qualitative example with stated scope/time horizon; do not add an uncalibrated colored risk matrix. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-15",
+    "originalObservation": "| D1-15 — 1.2.2 quantitative introduction/AV/EF; R1:438–451; `topic-1-2-quantitative-risk` | Clear monetary and fractional units, coherent server/flood example. | IMPROVE EXPLANATION; NEEDS VERIFICATION | Replace “formulas must be memorized precisely”/exam-frequency implication with an illustrative model supporting decisions; the outline's risk-assessment objective alone does not establish required arithmetic depth. Show estimates and assumptions rather than precision claims. L1-06 already has eight assessment slides and an input-changing interaction, so no new risk calculator. |",
+    "decision": "APPROVE WITH REVISION",
+    "decisionIds": [
+      "ENR-D1-02"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-16",
+    "originalObservation": "| D1-16 — SLE child; R1:454–477 | AV 10,000 × EF 0.5 = 5,000 per event is already worked. | KEEP EXISTING | Purpose: distinguish one-event loss from a year's loss; keep per-event units next to output. L1-06 `slide-03-estimate-one-loss` covers this. Do not add another worked numerical example. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-17",
+    "originalObservation": "| D1-17 — ARO child; R1:481–491 | Multiple recurrence conversions already correct the transcript's “once in five years = 2” transcription error. | KEEP EXISTING | State frequency per year, which can exceed one, rather than probability. L1-06 `slide-04-annual-frequency` already teaches exactly that. Reuse explanation; do not reproduce the raw transcript's arithmetic. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-18",
+    "originalObservation": "| D1-18 — ALE/cost benefit child; R1:493–530 | Worked annualization, existing `riskCalculationFlow`, corrected comparison of pre/post-control loss reduction against annual cost; legal/safety/mission caveat. | KEEP EXISTING; DUPLICATE — DO NOT ADD | Preserve this improved explanation. L1-06 annual-loss/estimate interaction and L1-07 `slide-07-compare-treatment-value` already supply model limits and decision context. Another calculator or currency illustration is redundant. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-19",
+    "originalObservation": "| D1-19 — 1.2.3 lifecycle; R1:535–556; `topic-1-2-risk-lifecycle` | Existing cycle, reassessment triggers, communication throughout and explicit framework-dependent grouping. | KEEP EXISTING | Keep “continuous” as the purpose; L1-05 `slide-05-continuous-lifecycle` and `slide-07-review-after-change` already demonstrate it. Avoid a second strict numbered process or staged checklist that contradicts the caveat. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-20",
+    "originalObservation": "| D1-20 — 1.2.4 responses; R1:561–584; `topic-1-2-risk-treatment` | Existing four-response custom block and explicit insurance limitation. | IMPROVE EXPLANATION; DUPLICATE — DO NOT ADD | Teach that acceptance is an authorized, documented decision with a review trigger, not simply low likelihood or ignoring risk. L1-07 `slide-04-authorize-acceptance`, `slide-08-clinic-decision`, `slide-10-communicate-the-decision` already cover the gap. Avoid “transfer only finance” as a universal definition; insurance transfers specified financial consequences, other arrangements may allocate other responsibilities while accountability remains. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "ENR-D1-06",
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-21",
+    "originalObservation": "| D1-21 — 1.2.5 inherent/residual/appetite/tolerance; R1:591–626; `topic-1-2-inherent-residual-risk` | Correctly rejects naive subtraction for residual risk; concrete MFA example; broad appetite versus specific tolerance definitions. | IMPROVE EXPLANATION | Replace `Residual Risk ≤ Risk Appetite` as if all risks share a single numeric threshold with comparison to applicable approved criteria/limits, authorized owner decision and monitoring. State control effectiveness must be checked. L1-07 `slide-05-risk-that-remains`, `slide-06-use-organisational-limits` already teach this. No new before/after gauge. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-22",
+    "originalObservation": "| D1-22 — 1.3.1 governance fundamentals; R1:640–648; `topic-1-3-governance-fundamentals` | Direction/oversight/accountability, distinguishes leadership from firewall configuration. | KEEP EXISTING | L1-08 `slide-02-govern-and-manage` already provides role distinction. Keep orientation short and point to D2 for integration; no second GRC diagram in this introductory paragraph. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-23",
+    "originalObservation": "| D1-23 — 1.3.2 law/regulation; R1:652–678; `topic-1-3-laws-regulations` | GDPR Article 3 caveat, PCI DSS contractual distinction and contextual applicability already present. | IMPROVE EXPLANATION; NEEDS VERIFICATION | HIPAA description should mention covered entities/business associates and regulated PHI rather than all health data. Avoid promises of criminal/huge fines in every case. Reuse L1-08 `slide-04-establish-applicability`, `slide-05-bound-the-legal-examples`, `slide-06-payment-card-requirements`. No legal-compliance checklist or regulation-logo collage. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-LEGAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-24",
+    "originalObservation": "| D1-24 — 1.3.3 frameworks; R1:683–701; `topic-1-3-security-frameworks` | Concise differences between CSF outcomes, ISO ISMS and prioritized CIS safeguards. | KEEP EXISTING | L1-09 already has framework-specific slides. One sentence says why a company uses each, not a new poster with every control ID or certification detail. Keep version-sensitive detail subject to official verification. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-25",
+    "originalObservation": "| D1-25 — 1.3.4 document hierarchy; R1:706–739; `topic-1-3-document-hierarchy` | Existing `documentHierarchy`, four-role table, concrete MFA/reset/passphrase examples and mandatory/advisory distinction. | KEEP EXISTING; DUPLICATE — DO NOT ADD | L1-09 already contains policy/standard/procedure/guideline slides and `slide-09-classify-the-purpose` interaction. Preserve concrete examples and avoid making Guidelines a mandatory final step below Procedure. No new hierarchy or card-sorting tool. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-26",
+    "originalObservation": "| D1-26 — 1.3.5 GRC; R1:746–771; `topic-1-3-grc` | Short three-pillar explanation, strong compliance≠complete security caution. | DUPLICATE — DO NOT ADD | This is an introductory bridge. D2 2.1.1 has the full GRC diagram and L2-01 its teaching sequence. Cross-link it instead of repeating definitions, GRC purpose lists or new icons. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-27",
+    "originalObservation": "| D1-27 — 1.4.1 categories; R1:784–793; `topic-1-4-control-categories` | Existing custom category presentation; separates mechanism category from purpose at R1:781. | IMPROVE EXPLANATION; NEEDS VERIFICATION | Apply D1-C04; L1-10 provides concrete technical/administrative/physical examples and explicitly labels course taxonomy. A machine versus a human process can both use software; classify the mechanism being discussed. No decorative concentric category layers. |",
+    "decision": "APPROVE",
+    "decisionIds": [
+      "ENR-D1-04"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-28",
+    "originalObservation": "| D1-28 — 1.4.2 functions; R1:797–864; `topic-1-4-control-types` | Existing `controlTimeline`, examples for seven functions, explicit warning mnemonic is not fixed chronological order. | IMPROVE EXPLANATION | Label Recovery as a useful course distinction, not a universally separate official type, if outline comparison requires. Compensating controls must address the original protection objective and be evaluated/approved; VPN+logging is not automatically equivalent to MFA. L1-11 `slide-07-compensating` already covers this. Keep timing secondary to purpose; no second control timeline. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-29",
+    "originalObservation": "| D1-29 — 1.4.3 overlapping controls; R1:869–901; `topic-1-4-overlapping-controls` | CCTV and firewall each have two functions; practical analysis steps already reject rigid Before/During/After labels. | KEEP EXISTING; DUPLICATE — DO NOT ADD | L1-11 interactive `slide-08-context-changes-function` already changes CCTV context. An annotated real CCTV/sign image could show recognition, but is lower value than the existing explicit examples and may be redundant. Do not request a stock photo merely to fill space. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-30",
+    "originalObservation": "| D1-30 — 1.5.1 conduct/authority; R1:915–924; `topic-1-5-code-of-conduct` | Domain Administrator/HR scenario clearly explains capability≠authorized purpose. | KEEP EXISTING | L1-12 `slide-01-access-and-authority` already presents the same learning outcome. Keep professional purpose and need-to-know; do not add an admin-dashboard screenshot or a second ethical-access scenario. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-31",
+    "originalObservation": "| D1-31 — 1.5.2 Due Care/Diligence incl. children; R1:929–975; `topic-1-5-due-care-due-diligence` | Action/check distinctions, patch/scan examples, existing `dueCareDiligence`, and non-one-to-one mnemonic warning. | IMPROVE EXPLANATION | Replace “patch immediately once notified” with risk-informed authorization, testing, rollout and verification where context requires. Due Care means reasonable action, not maximum-speed unmanaged change. L1-12 `slide-05-scan-patch-verify` already supplies the cycle. No new scan→patch→scan diagram. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-32",
+    "originalObservation": "| D1-32 — 1.5.3 Canons incl. four children; R1:979–1057; `topic-1-5-isc2-ethics` | English canon wording, Thai meaning, mnemonic and existing `ethicsCanons` support recognition. | REPLACE MISLEADING PRESENTATION | Apply D1-C01 before enrichment. For each canon keep purpose plus one modest work example already available in L1-12, with professional judgment rather than a numeric ranking. No new four-step ethics decision engine; no advice to disclose sensitive findings publicly without process. |",
+    "decision": "APPROVE WITH REVISION",
+    "decisionIds": [
+      "VER-D1-01"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-33",
+    "originalObservation": "| D1-33 — 1.5.4 distinctions; R1:1062–1254; `topic-1-5-distinctions-scenarios` | Twelve contrast pairs summarize the chapter and are appropriate for quick review. | KEEP EXISTING; IMPROVE EXPLANATION | Remove absolutes introduced by compression: impact can be potential rather than only realized (R1:1094), and transfer is not universally “only finance” (R1:1202). Preserve summary, but link canonical explanation rather than adding a second glossary deck. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D1-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-34",
+    "originalObservation": "| D1-34 — review scenarios; R1:1260–1332; `domain-1-scenarios.js` | Eight short cases already cover CIA, access, insurance, care/diligence, acceptance, zero trust and deterrence. | KEEP EXISTING; DUPLICATE — DO NOT ADD | Existing cases plus published lesson decisions mean blanket requests for eight more examples are redundant. Make clear they are authored practice, not actual examination items. If revising the immediate-patch case, keep consistency with D1-31 and preserve its care/diligence teaching aim. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D1-35",
+    "originalObservation": "| D1-35 — keyword cheat sheet; R1:1334–1360 | Compact bilingual English-trigger recognition is useful for Thai beginners. | IMPROVE EXPLANATION | Add a brief “keywords are clues; choose from the described purpose and evidence” preface. Executive sign-off alone does not prove acceptable risk; third-party SLA alone does not establish full transfer. Do not add more keyword-only charts. |",
+    "decision": "APPROVE WITH REVISION",
+    "decisionIds": [
+      "LEG-STUDY-CUES"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-01",
+    "originalObservation": "| D2-01 — 2.1.1 GRC foundations; R2:9–49; `topic-2-1-grc-foundations` | Bilingual three pillars, business questions and existing `grcAlignment` make purpose visible. | KEEP EXISTING; DUPLICATE — DO NOT ADD | L2-01 `lesson-d2-01-grc-foundations.json` already teaches the integrated approach. Use one common business decision to connect the pillars if revising prose; no new GRC Venn diagram or compliance puzzle photo. D1 1.3.5 should remain the short bridge. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-02",
+    "originalObservation": "| D2-02 — 2.1.2 purpose; R2:51–61; `topic-2-1-purpose-of-grc` | Explains silo problems, duplicate evidence gathering, shared owners and aligned business decisions. | KEEP EXISTING | A short worked example can reuse L2-01's integration: one evidence source supports multiple applicable obligations. Do not repeat the seven-item benefits list as seven infographics. Purpose is coordinated decision making, not buying a platform. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-03",
+    "originalObservation": "| D2-03 — 2.1.3 importance; R2:62–69; `topic-2-1-importance-of-grc` | Connects GRC to business impact, asset protection and resilience. | IMPROVE EXPLANATION | “Reduce risk” and “help avoid penalties” are aims, not assurance that attacks/violations cannot occur. L2-01 already covers this importance/purpose material; retain the paragraph with conditional language, no new inspirational image. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-04",
+    "originalObservation": "| D2-04 — 2.1.4 frameworks; R2:70–87; `topic-2-1-frameworks-standards` | Useful CSF/ISO/COBIT comparison and applicability examples. | KEEP EXISTING; NEEDS VERIFICATION | Avoid “three most frequently examined frameworks” without evidence; call them course examples. Distinguish framework, certifiable ISMS standard and legal/contractual obligations. L2-01 and L1-09 already cover these distinctions. Deep ISO clauses, COBIT process IDs, CMMC levels and SOX legal analysis are OUT OF SCOPE here. |",
+    "decision": "APPROVE WITH REVISION",
+    "decisionIds": [
+      "LEG-STUDY-CUES"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-05",
+    "originalObservation": "| D2-05 — 2.1.5 tools; R2:89–124; `topic-2-1-grc-tools` | Five capabilities with concise purpose, and rationale for central records. | ADD PRACTICAL EXAMPLE | Show a small **fictional** linked record: requirement → control → evidence → owner → review due date. L2-02 `lesson-d2-02-grc-tools-risk-register.json` already develops centralization and tracking; adapt its record rather than a new vendor screenshot. Explain software supports accountable decisions; it does not automatically provide compliance or real-time trustworthy data. |",
+    "decision": "APPROVE WITH REVISION",
+    "decisionIds": [
+      "ENR-D2-04"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-06",
+    "originalObservation": "| D2-06 — 2.1.6 register/owner; R2:127–153; `topic-2-1-risk-register` | Twelve-field ransomware example; owner-versus-implementer warning is valuable. | IMPROVE EXPLANATION; DUPLICATE — DO NOT ADD | The table is a vertical description of fields, not an actual risk record viewed horizontally; L2-02 already provides worked tracking/ownership. Reuse one compact row with review date and evidence/uncertainty, not a second register. Residual “Low to Medium” must be an assessed outcome, not automatic result of listing EDR/MFA. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-07",
+    "originalObservation": "| D2-07 — 2.2.1 BC foundations; R2:163–179; `topic-2-2-bc-foundations` | Defines critical operations, business-wide scope and eight disruption types. | KEEP EXISTING | L2-03 `lesson-d2-03-business-continuity-bcp.json` already supplies a regional-flood scenario. Purpose: maintain a safe minimum critical service during disruption, not necessarily normal full capacity. Reuse scenario; no disaster-photo collage. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-08",
+    "originalObservation": "| D2-08 — 2.2.2 BCP; R2:180–191; `topic-2-2-bcp-components` | Concrete roles, communications, alternate locations/people/suppliers and priorities. | ADD PRACTICAL EXAMPLE | Reuse L2-03 regional-flood example as a four-line miniature plan: service → workaround → responsible role → approved contact route. Keep distinction between ability (BC) and document (BCP). No full organizational template or personal contact details. |",
+    "decision": "APPROVE WITH REVISION",
+    "decisionIds": [
+      "ENR-D2-05"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-09",
+    "originalObservation": "| D2-09 — 2.2.3 BIA; R2:192–201; `topic-2-2-bia` | Explains business-to-IT bridge, multiple impact dimensions, MTD and recovery prioritization; correctly qualifies survival claim. | IMPROVE EXPLANATION | Use a two-service comparison—urgent medicine dispensing versus monthly report—to explain why business impact, time sensitivity and dependencies set priorities. L2-03 already has BIA/recovery priorities, so reuse instead of adding a second matrix. RPO should reflect the business's acceptable data-loss needs and feasible recovery strategy, not just existing backup capability. Apply D2-C01 consistently. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "ACC-D2-01",
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-10",
+    "originalObservation": "| D2-10 — 2.2.4 DR/IT; R2:202–211; `topic-2-2-dr-it-scope` | Clear IT restoration scope and relationship to business continuity. | KEEP EXISTING | L2-04 `slide-01-dr-definition-purposes-drp` already shows restoration of a working service, dependencies and documented responsibilities. Clarify continuity can use manual alternatives while IT recovers; “modern business cannot operate without IT” is too absolute. No additional generic cloud recovery picture. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-11",
+    "originalObservation": "| D2-11 — 2.2.5 BC versus DR; R2:212–226; `topic-2-2-bc-vs-dr` | Existing `bcVsDrScope`, complete comparison and practical examples. | KEEP EXISTING; DUPLICATE — DO NOT ADD | L2-04 `slide-08-bc-vs-dr-seven-dimensions` and L2-03 already cover scope/nesting. Keep DR as a supporting part of BC without suggesting isolated timelines or no overlap. No second umbrella illustration. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-12",
+    "originalObservation": "| D2-12 — 2.2.6 RTO/RPO incl. WRT/MTD; R2:227–270; `topic-2-2-rto-rpo` | Existing timeline and precise 17:00 example; text distinguishes objectives, data-loss window and business resumption allowance. | REPLACE MISLEADING PRESENTATION; DUPLICATE — DO NOT ADD | Apply D2-C01/C04. Treat `RTO + WRT ≤ MTD` as a model with defined boundaries, not universal survival law or a claim all recovery work is sequential. L2-04 directional timeline, worked target/actual examples and recovery-decision interaction already cover the hard concepts. A new RTO/RPO slider repeats existing teaching; revise current timeline instead. |",
+    "decision": "APPROVE WITH REVISION",
+    "decisionIds": [
+      "ACC-D2-01"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-13",
+    "originalObservation": "| D2-13 — 2.2.7 backup strategy child; R2:273–299; `topic-2-2-drp-sites` | Complete full/differential/incremental table plus a Sunday-to-Thursday restoration example. | ADD NEW DIAGRAM | Candidate **D2-A01**, contingent on checking final published L2-04 visual output: a compact Sunday Full + Mon/Tue/Wed changed-data strip, with explicit highlighted restore sets for differential versus incremental. Existing L2-04 `slide-05-backup-and-restoration-strategies` focuses on recoverable/offsite copies; the Reading table's set dependency benefits from a diagram. Do not add another generic offsite-cloud architecture. Qualify speed/storage claims as conventional file-backup comparisons, not guarantees for every implementation. |",
+    "decision": "APPROVE WITH REVISION",
+    "decisionIds": [
+      "D2-A01"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-14",
+    "originalObservation": "| D2-14 — 2.2.7 offsite/site child; R2:299–329 | Offsite rationale plus hot/warm/cold readiness/cost comparison; explicitly says times are illustrative, must test RTO/RPO. | KEEP EXISTING | L2-04 `slide-05-backup-and-restoration-strategies` and `slide-06-dr-sites-hot-warm-cold` already cover this. Explain separated location alone does not prevent stolen credentials deleting both copies, bad data replication or untested restore paths. No hot/warm/cold physical building photo: readiness is not visually established by room appearance. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-15",
+    "originalObservation": "| D2-15 — 2.2.8 tests/drills; R2:334–357; `topic-2-2-dr-testing` | Five activity descriptions distinguish discussion, simulation, parallel use and cutover; business approval appears. | IMPROVE EXPLANATION | Replace categorical “no risk” with low direct operational disruption and “typical relative risk,” dependent on scope, data, dependencies and authorization. Call five forms illustrative test methods, not compulsory sequential maturity levels. L2-04 `slide-07-drp-testing-and-coordination` already teaches exercise→measure→correct; reuse. No five-step mandatory ladder graphic. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-16",
+    "originalObservation": "| D2-16 — 2.3.1 culture; R2:367–374; `topic-2-3-security-culture` | Shared responsibility, ask-when-unsure and reporting example make behavior tangible. | KEEP EXISTING | L2-05 `slide-03-shared-daily-culture` and `slide-06-culture-and-leadership-decision` already demonstrate this. Reporting should use the approved organizational route; SOC is an example, not a requirement for every small organization. No stock image of smiling trainees. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-17",
+    "originalObservation": "| D2-17 — 2.3.2 leadership; R2:375–383; `topic-2-3-security-leadership` | Resources, supported reporting, leading by example and executive MFA consistency. | KEEP EXISTING; DUPLICATE — DO NOT ADD | L2-05 `slide-04-leadership-makes-rules-credible` covers exactly this. Purpose: leaders make safe behavior feasible and credible, not merely issue slogans. Keep the existing practical executive example. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-18",
+    "originalObservation": "| D2-18 — 2.3.3 awareness/training/education; R2:384–405; `topic-2-3-awareness-programs` | Distinguishes recognition, job-specific practice and deeper understanding. | IMPROVE EXPLANATION | Frame them as complementary learning purposes with overlap, not rigid ranks. A report-phishing reminder versus a practice session using the approved report button is already in L2-05 `slide-02-awareness-and-training`. Reuse and add a short “what to do if already clicked” route only if absent from the final text. No additional course ladder. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-19",
+    "originalObservation": "| D2-19 — 2.3.4 psychology; R2:408–419; `topic-2-3-social-engineering-psychology` | Six persuasion mechanisms and explicit focus on induced action. | KEEP EXISTING | L2-06 `slide-01-manipulation-and-request` already combines authority/urgency. Teach “what action are they asking me to take?” and independent verification rather than training people to infer trust from voice familiarity, grammar or branding. No criminal portrait or fear-focused image. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-20",
+    "originalObservation": "| D2-20 — 2.3.5 techniques; R2:420–443; `topic-2-3-social-engineering-techniques` | Channel, target and fabricated story distinctions; table covers many practical variants; AI/deepfake is already mentioned. | ADD REAL-WORLD IMAGE; NEEDS VERIFICATION | Candidate **D2-A02**: one safe, anonymized/permission-cleared phishing-message screenshot or faithful authored mailbox screenshot with annotations on requested action, urgency and independent verification path. Label real versus simulated explicitly; disable/remove actionable links, use reserved domains. Source pictures here are text slides, not inspectable message examples. L2-06 already covers targeting/channel/pretext, so the value must be visual recognition, not repeating definitions. Tailgating/piggybacking consent distinction varies by source: say “in this teaching convention,” or verify before implying universal definition. Baiting need not be only physical USB. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "D2-A02",
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-21",
+    "originalObservation": "| D2-21 — 2.3.6 password/modern auth; R2:445–455; `topic-2-3-password-protection` | Current scoped NIST password lengths, salted password-hashing distinction, least privilege/monitoring and qualified phishing resistance. | IMPROVE EXPLANATION; DUPLICATE — DO NOT ADD | Organizational controls are strong, but the transcript and L2-06 `slide-05-unique-protected-passwords` explicitly include strong unique passwords, no reuse/sharing, password manager and suspected-compromise reporting. Reuse those user actions in a concise beginner paragraph. Keep 15/8 values labelled NIST-specific supporting context rather than universal CC memorization. Existing MFA lessons cover factor count; no additional authentication animation. |",
+    "decision": "APPROVE",
+    "decisionIds": [
+      "ENR-D2-03"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-22",
+    "originalObservation": "| D2-22 — 2.4.1 rationale; R2:464–474; `topic-2-4-measurement-rationale` | Clear seven purposes linking measurement to decisions, control evidence and improvement. | KEEP EXISTING | L2-07 `slide-01-measure-for-a-decision` covers question→evidence→action. Rephrase opening maxim R2:463 as “measurement supports improvement” rather than claiming anything unmeasured cannot be managed. No graph solely as visual decoration. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-23",
+    "originalObservation": "| D2-23 — 2.4.2 characteristics; R2:475–484; `topic-2-4-metrics-characteristics` | Relevant/measurable/consistent/audience-meaningful is a usable small checklist. | ADD PRACTICAL EXAMPLE; DUPLICATE — DO NOT ADD | Reuse L2-07 `slide-02-denominator-and-window`: 18 of 20 assessed in-scope systems = 90%, snapshot date and exclusions disclosed. Purpose: a percentage without population/period cannot support a valid comparison. Existing lesson already provides needed calculation; no separate percentage calculator or new chart. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-24",
+    "originalObservation": "| D2-24 — 2.4.3 MTTD/MTTR; R2:485–501; `topic-2-4-mttd-mttr` | Correctly acknowledges multiple MTTR expansions and requires endpoints before comparison. | ADD PRACTICAL EXAMPLE | Reuse source `D2 surm.md` §11.2 or L2-07 `slide-03-detection-and-response-boundaries`: incidents with 10/20/30-minute detection delays have mean 20 min; label measured interval and cohort. Averages can hide slow outliers; lower reported mean alone does not prove better detection coverage. No new timing widget unless existing lesson cannot show the defined boundaries. |",
+    "decision": "APPROVE",
+    "decisionIds": [
+      "ENR-D2-06"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-25",
+    "originalObservation": "| D2-25 — 2.4.4 KPI/KRI; R2:504–523; `topic-2-4-kpi-vs-kri` | Parallel core questions and practical patch/MFA/unsupported-system examples. | IMPROVE EXPLANATION; DUPLICATE — DO NOT ADD | The same underlying metric can serve different indicator purposes. “More phishing reports” may indicate exposure or improved reporting; verify context. L2-07 `slide-06-interpretation-and-indicator-role` and interactive `slide-07-metrics-decision` already cover both nuances. No new KPI/KRI sorting game. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D2-RESIDUAL"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-26",
+    "originalObservation": "| D2-26 — 2.4.5 dashboards; R2:525–531; `topic-2-4-dashboards` | Purpose, chart/table options and a status/trend question. | ADD NEW DIAGRAM | Candidate **D2-A03** is a shared three-view worked exhibit used across dashboard/scorecard/report: one small time-series/status panel with date, population, definition, target line and unknown coverage note. It must use the same fictional patch dataset as the two next views. Published L2-08 is mostly text/table based; check final rendered visuals before approving. The educational purpose is seeing the artifact itself rather than another definition. Do not copy a vendor SOC dashboard or assume real-time data. |",
+    "decision": "REJECT",
+    "decisionIds": [
+      "D2-A03"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-27",
+    "originalObservation": "| D2-27 — 2.4.6 scorecards; R2:532–547; `topic-2-4-scorecards` | Existing table already demonstrates actual-versus-target with contrasting better/higher and lower-needed directions. | NEEDS VERIFICATION; KEEP EXISTING | Apply D2-C02. Keep actual 91 versus target 95, gap 4 percentage points and stated measurement period. Use existing table as the scorecard view of D2-A03; no independent new scorecard image. L2-08 `slide-02-scorecard-against-target` already teaches comparison and `slide-03-source-scorecard-and-units` the source ambiguity. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "VER-D2-01"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-28",
+    "originalObservation": "| D2-28 — 2.4.7 reports; R2:548–554; `topic-2-4-reports` | Connects evidence, risk context and recommended action to audience. | ADD PRACTICAL EXAMPLE | Use D2-A03's same dataset in a miniature report excerpt: “91% versus 95%; critical-system coverage unknown; owner validates coverage and proposes next action by date.” Label data and organization fictional. L2-08 `slide-04-report-evidence-to-action`/`slide-06-reporting-decision` already give the reasoning, so adapt, do not author another scenario. |",
+    "decision": "HOLD",
+    "decisionIds": [
+      "LEG-D2-RESIDUAL",
+      "D2-A03"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-29",
+    "originalObservation": "| D2-29 — 2.4.8 memory aid; R2:555–570; `topic-2-4-memory-aid` | Correct prose says metrics include percentages/averages, KPI/KRI are selected by purpose, and views overlap. | REPLACE MISLEADING PRESENTATION; DUPLICATE — DO NOT ADD | Apply D2-C03 to the existing `effectivenessHierarchy`; don't add another hierarchy. Keep memory aid explicitly non-mandatory and replace raw-value imagery/labels. L2-08 `slide-05-audience-and-decision` already teaches choosing a view by question, not job title. |",
+    "decision": "APPROVE",
+    "decisionIds": [
+      "ACC-D2-02"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-30",
+    "originalObservation": "| D2-30 — review distinctions; R2:576–756; `domain-2-review`, `topic-2-review-scenarios` | Existing contrast cards cover GRC/tool, register/assessment, BC/BCP, DR/DRP, BC/DR, RTO/RPO, awareness/culture, KPI/KRI and reporting views. | KEEP EXISTING | Keep concise and align compressed definitions with corrected main sections. Do not create another glossary, comparison poster or card deck. Link main explanations when a keyword shortcut would lose scope. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-31",
+    "originalObservation": "| D2-31 — exam traps; R2:758–776 | Compact recap of common confusions. | IMPROVE EXPLANATION | Replace categorical keywords with contextual clues: a dashboard need not be real-time, reports may contain scorecards, a signed-off risk still needs applicable authority/criteria, and a target is not observed success. Existing L2-07/L2-08 decisions already test this nuance. |",
+    "decision": "APPROVE WITH REVISION",
+    "decisionIds": [
+      "LEG-STUDY-CUES"
+    ],
+    "reason": "Use linked decisions only. If mixed, this observation is HOLD for its residual detail; a specifically approved component remains bounded by its own decision.",
+    "implementationAuthorized": false
+  },
+  {
+    "legacyId": "D2-32",
+    "originalObservation": "| D2-32 — twelve scenarios; R2:778–898; `domain-2-scenarios.js` | Twelve existing applied cases match master source review and cover the major D2 concepts. | KEEP EXISTING; DUPLICATE — DO NOT ADD | Do not recommend twelve additional near-identical cases. For a beginner, follow one case with “what evidence changed the decision?” rather than another recall quiz. Scenario 11's real-time dashboard is a valid stated scenario, but not a universal definition. Preserve authored-practice status. |",
+    "decision": "REJECT",
+    "decisionIds": [],
+    "reason": "Preserve the useful current material; reject a new insertion/asset because no distinct gap is established.",
+    "implementationAuthorized": false
+  }
+]

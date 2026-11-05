@@ -1,0 +1,40 @@
+--- entry/domain-1.md
++++ after/domain-1.md
+@@ -291,7 +291,7 @@
+ 
+ <div class="reading-concept-item">
+   <h5 class="reading-concept-heading">Data Ownership & Authority Boundaries</h5>
+-  <p>การกำหนดว่าใครมีอำนาจตัดสินใจ (Authority) และความรับผิดชอบ (Responsibility) ต่อข้อมูลด้าน Security และ Compliance โดยมีหลักสำคัญคือ <em>การที่องค์กรถือครองหรือจัดเก็บข้อมูลไม่ได้แปลว่าจะนำ Personal Data ไปทำอะไรก็ได้ตามอำเภอใจ</em> องค์กรยังคงต้องเคารพสิทธิและความยินยอมของ Data Subject เสมอ</p>
++  <p>การกำหนดว่าใครมีอำนาจตัดสินใจ (Authority) และความรับผิดชอบ (Responsibility) ต่อข้อมูลด้าน Security และ Compliance โดยมีหลักสำคัญคือ <em>การที่องค์กรถือครองหรือจัดเก็บข้อมูลไม่ได้แปลว่าจะนำ Personal Data ไปทำอะไรก็ได้ตามอำเภอใจ</em> องค์กรต้องเคารพสิทธิของ Data Subject ตามกฎหมายที่ใช้บังคับ และขอความยินยอมเมื่อใช้ฐานความยินยอม <em>Respect data-subject rights under applicable law; obtain consent when relying on consent as the legal basis.</em></p>
+ </div>
+ 
+ <div class="reading-concept-item">
+@@ -316,8 +316,8 @@
+ | **นิยามหลัก** | การป้องกันไม่ให้ผู้ไม่มีสิทธิ์เข้าถึงหรือล่วงรู้ข้อมูล (Protect from unauthorized access) | สิทธิของบุคคลธรรมดาในการควบคุมข้อมูลส่วนตัวของตน (Right to control personal data) |
+ | **เป้าหมายความปลอดภัย** | ป้องกัน **Unauthorized Disclosure** | คุ้มครองสิทธิของ **Data Subject** ตามกฎหมาย (เช่น GDPR, PDPA) |
+ | **ขอบเขตข้อมูล** | ข้อมูลลับทุกชนิดขององค์กร (Trade Secrets, Financial, Source Code, PII) | เฉพาะข้อมูลส่วนบุคคลที่ระบุตัวตนได้ (**PII / Personal Data**) เท่านั้น |
+-| **มาตรการควบคุมหลัก** | Encryption, Access Control, Need to Know, Firewalls | Consent, Data Retention, Purpose Limitation, Right to be Forgotten |
+-| **จุดลวงในข้อสอบ** | การเข้ารหัสข้อมูล (Encryption) ตอบสนอง Confidentiality แต่ *ไม่ได้แปลว่าปฏิบัติตาม Privacy ครบถ้วน* หากเก็บข้อมูลโดยไม่ได้รับความยินยอม! | ข้อสอบมักถามว่า "การเก็บข้อมูลลูกค้าโดยเข้ารหัสอย่างดีแต่ไม่แจ้งวัตถุประสงค์ ผิดหลักการใด?" คำตอบคือ **Privacy Violation** |
++| **มาตรการควบคุมหลัก** | Encryption, Access Control, Need to Know, Firewalls | Lawful Basis (เช่น Consent เมื่อเหมาะสม), Transparency, Data Retention, Purpose Limitation, Right to be Forgotten |
++| **ตัวอย่างวิเคราะห์ (Illustrative example)** | Encryption จำกัดการเข้าถึง แต่เพียงอย่างเดียวยังไม่ยืนยันว่าปฏิบัติตาม Privacy ครบถ้วน / Encryption restricts access; it alone does not establish privacy compliance. | ต้องพิจารณาวัตถุประสงค์ ฐานกฎหมาย และหน้าที่ด้านความโปร่งใสตามกฎหมายที่ใช้บังคับ; ตาม GDPR ความยินยอมเป็นฐานหนึ่ง / Check purpose, lawful basis and applicable transparency duties; under GDPR, consent is one possible basis. |
+ 
+ </section>
+ 
+@@ -783,6 +783,8 @@
+ 
+ ### 1.4.1 Security Control Categories
+ 
++**คำศัพท์ในโครงร่างสอบ (Outline terminology):** โครงร่างสอบ CC ที่มีผล 1 กันยายน 2026 ระบุหมวด Technical, Administrative และ Physical; บทเรียนนี้แยกงานบริหาร (Managerial) และงานประจำวันโดยบุคลากร (Operational) เพื่อช่วยอธิบายด้าน Administrative / The CC outline effective 1 September 2026 names Technical, Administrative and Physical controls; this course explains administrative work through managerial and day-to-day operational activities.
++
+ <h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>การแบ่งหมวดหมู่ตามลักษณะของกลไกหรือสิ่งที่นำมาดำเนินการ:</h4>
+ 
+ :::control-categories
+@@ -1054,7 +1056,7 @@
+   </div>
+   <p><strong>สถานการณ์จำลอง:</strong> ผู้บริหารสั่งให้ผู้ดูแลระบบปกปิดรายงานช่องโหว่ความปลอดภัยร้ายแรงในระบบควบคุมการจ่ายน้ำประปาของเมือง (Critical Infrastructure) เนื่องจากกลัวผลกระทบต่อราคาหุ้นของบริษัท</p>
+   <p><strong>แนวคิดการวิเคราะห์ตามหลักการ ISC2:</strong> เหตุการณ์นี้เกิดความขัดแย้งระหว่างหน้าที่ต่อผู้ว่าจ้าง (<strong>Canon 3:</strong> Diligent service to principals) กับความปลอดภัยของสังคม (<strong>Canon 1:</strong> Protect society, common good &amp; infrastructure)</p>
+-  <p><strong>ข้อสรุปเด็ดขาดสำหรับห้องสอบ:</strong> สมาชิก ISC2 ต้องยึดถือประโยชน์และความปลอดภัยของสังคมส่วนรวม (<strong>Canon 1</strong>) เป็นอันดับสูงสุดเสมอ และ <strong>Canon 1 อยู่เหนือผลประโยชน์ของนายจ้างหรือลูกค้า (Canon 3) อย่างไม่มีข้อยกเว้น</strong></p>
++  <p><strong>แนวทางใช้ดุลยพินิจ (Professional judgment):</strong> คำนึงถึงความปลอดภัยของสาธารณะ เก็บรักษาหลักฐานที่เกี่ยวข้อง และขอคำแนะนำผ่านช่องทางที่มีอำนาจ เช่น ผู้รับผิดชอบด้านความปลอดภัยหรือฝ่ายกฎหมาย โดยพิจารณาหน้าที่ทั้งสี่ร่วมกับข้อเท็จจริง ไม่อนุมานว่ามีสิทธิปกปิด เปิดเผยข้อมูลต่อสาธารณะโดยพลการ หรือทำผิดกฎหมาย / Protect public welfare, preserve relevant evidence and seek guidance through authorized channels, such as security leadership or legal counsel, considering all four duties and the facts. Do not infer permission to conceal, disclose publicly without authorization or act illegally.</p>
+ </div>
+ 
+ <div id="topic-1-5-distinctions-scenarios" class="reading-topic-anchor"></div>

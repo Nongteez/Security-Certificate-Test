@@ -1,0 +1,18 @@
+{
+  "severity": "P1",
+  "markdown": {
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "line": 1261
+  },
+  "reusable": {
+    "path": "content/isc2-cc-2026/reading/domain-4-scenarios.js",
+    "line": 26
+  },
+  "exactStatement": "reasoning: 'Network Segmentation คือการแบ่งระบบเครือข่ายขนาดใหญ่ออกเป็นส่วนย่อย ๆ (Subnetworks หรือ Segments) ที่มีการแยกและควบคุมการไหลเวียนของทราฟฟิกด้วย Access Control Lists (ACLs) หรือไฟร์วอลล์ การแบ่งส่วนเครือข่ายช่วยลดรัศมีความเสียหาย (Blast Radius) และป้องกันไม่ให้ผู้โจมตีสามารถเคลื่อนที่ในแนวราบ (Lateral Movement) ไปยังระบบสำคัญอื่นได้'",
+  "contradiction": "Main D4 segmentation unit and summary explicitly condition risk reduction on enforced/tested policy, allowed paths and remaining dependencies.",
+  "recommendedThai": "การแบ่งส่วนเครือข่ายที่กำหนดนโยบาย บังคับใช้ และทดสอบอย่างเหมาะสมช่วยจำกัดการเข้าถึงที่ไม่ต้องการ การเคลื่อนที่ในแนวราบ และขอบเขตความเสียหาย แต่ไม่รับประกันว่าจะหยุดทุกเส้นทาง ผู้โจมตีอาจยังใช้เส้นทางที่อนุญาตหรือมาตรการที่ถูกเจาะได้",
+  "recommendedEnglish": "Properly defined, enforced and tested segmentation can limit unwanted reachability, lateral movement and blast radius. It does not guarantee containment of every path; an attacker may still use permitted paths or compromised controls.",
+  "minimumScope": "Replace only final prevention claim with the bounded qualification in both existing reasoning representations. Preserve question/answer and all other scenarios. Include TH/EN if accepted as part of this scoped correction.",
+  "requiresSeparateAuthorization": true,
+  "implemented": false
+}

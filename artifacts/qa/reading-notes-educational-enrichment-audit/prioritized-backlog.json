@@ -1,0 +1,987 @@
+[
+  {
+    "id": "ACC-D1-01",
+    "domain": 1,
+    "target": "topic-1-1-privacy-data-protection",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "priority": "P1",
+    "rationale": "Qualify the no-consent implication: establish the applicable lawful basis and transparency duties. Consent is one basis; this is not a jurisdiction-free compliance rule.",
+    "sources": [
+      "Domain 1 privacy screenshots 225943/231044; original treatment is broad, not a universal legal rule",
+      "https://www.edpb.europa.eu/topics/key-gdpr-concepts/legal-basis_en — Legal basis: six possible GDPR grounds"
+    ],
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ACC-D2-01",
+    "domain": 2,
+    "target": "topic-2-2-rto-rpo",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "priority": "P1",
+    "rationale": "Keep the simplified planning relationship with defined intervals; line 256 already says may, but line 259 claims certain inability to survive. Replace that certainty with unacceptable impact. Treat target and observed backup separately only if the timeline intends a target; an explicitly assumed backup is a valid illustrative observation.",
+    "sources": [
+      "Domain 2 screenshot 183410 and DOMAIN 2.txt redundancy segment; compare Reading lines 197–201",
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf — Section 3.2.1, printed pp.16–17, BIA recovery priorities and MTD/RTO/RPO"
+    ],
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ACC-D2-02",
+    "domain": 2,
+    "target": "topic-2-4-memory-aid",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "priority": "P1",
+    "rationale": "Prose already recognizes calculated measures. Correct the contradictory raw-only diagram label and qualify dashboard refresh assumptions; retain the existing visual.",
+    "sources": [
+      "Domain 2 metric screenshot 223240 includes percentages and means; diagram-generator.js:1775 effectivenessHierarchy raw-value label",
+      "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf — Sections 3.3.1–3.3.4: implementation, effectiveness, efficiency and impact measures"
+    ],
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ACC-D3-01",
+    "domain": 3,
+    "target": "topic-3-1-jml-lifecycle",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "priority": "P0",
+    "rationale": "Replace Domain Admin with approved delegated helpdesk rights; retain justified shared access, revoke obsolete/conflicting rights, verify resulting access. Transition timing is policy-dependent; simultaneous old/new rights do not automatically prove SoD violation.",
+    "sources": [
+      "Domain 3 D3 Example.md:86–94; screenshot 040655 shows review after transfer, not universal revoke-all ordering",
+      "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf — AC-6 pp.36–38; PS-5 p.225 (PDF pages 63–65 and 252)"
+    ],
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ACC-D4-01",
+    "domain": 4,
+    "target": "topic-4-1-ipv6-architecture",
+    "primaryClassification": "REQUIRES VERIFICATION",
+    "priority": "P1",
+    "rationale": "The heading can mislead, but the current sentence says supports IPsec, not that traffic is encrypted by default. Add a configuration/actual-use qualification; do not count this as a demonstrated unconditional encryption claim.",
+    "sources": [
+      "Domain 4 screenshot 151830; DOMAIN 4.txt IPv6 benefit narration",
+      "https://www.rfc-editor.org/rfc/rfc8504.html#section-13.1 — Sections 13 and 13.1"
+    ],
+    "confidence": "Unresolved",
+    "verificationStatus": "CLARIFICATION, NOT CONFIRMED ERROR",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ACC-D4-02",
+    "domain": 4,
+    "target": "topic-4-1-tcp-vs-udp",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "priority": "P0",
+    "rationale": "Teach ordered delivery, acknowledgement/retransmission and connection failure. Remove an unconditional complete-data guarantee; TCP does not prove application transaction completion or confidentiality.",
+    "sources": [
+      "Domain 4 source TCP/IP screenshots 145229/145505; published lesson-d4-01 reliable-transport explanation",
+      "https://www.rfc-editor.org/rfc/rfc9293.html#section-3.8.3 — Sections 2.2 and 3.8.3"
+    ],
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ACC-D4-03",
+    "domain": 4,
+    "target": "topic-4-2-segmentation-blast-radius",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "priority": "P0",
+    "rationale": "Say segmentation can limit reachability and lateral movement when enforced and tested; remove certain containment and automatic audit-scope reduction. Scope decisions require applicable standard validation.",
+    "sources": [
+      "Domain 4 screenshot 182644; published lesson-d4-05 allowed/denied paths",
+      "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-41r1.pdf — Sections 2.3 firewall inspection limitations and 4 firewall policy"
+    ],
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ACC-D5-01",
+    "domain": 5,
+    "target": "topic-5-1-hashing-digital-signatures",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "priority": "P0",
+    "rationale": "Use scheme-independent Sign(private key, data) and Verify(public key, data, signature). Do not teach generic signature generation as private-key encryption/public-key decryption; trust in the key association and custody remains necessary.",
+    "sources": [
+      "Domain 5 D5 Example.md:121–133 and E.10; DOMAIN 5.txt:55 uses sign/validate rather than a universal encryption recipe",
+      "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf — Section 3, pp.9–15; sections 3.2/3.3 generation and verification"
+    ],
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ACC-D5-02",
+    "domain": 5,
+    "target": "topic-5-1-tpm-vs-hsm",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "priority": "P0",
+    "rationale": "HSM shape, throughput, tamper response and validation depend on exact model/version/configuration. Include USB as an optional counterexample; a product name is not a certificate. TPM 2.0 can also be integrated or firmware-based; separate measured boot from enforcement.",
+    "sources": [
+      "Domain 5 screenshot 235638 says often used for FIPS compliance, not every device certified at one level; E.11 illustrates key custody",
+      "https://docs.yubico.com/hardware/yubihsm-2/hsm-2-user-guide/hsm2-intro-overview.html — Overview and FIPS Validation/Mode; also Microsoft TPM recommendations, TPM 2.0 implementation paragraph"
+    ],
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ACC-D5-03",
+    "domain": 5,
+    "target": "topic-5-1-data-sanitization-destruction",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "priority": "P0",
+    "rationale": "Update the obsolete current-reference attribution; select approved media-specific methods, verify and validate results. Replace 100% with recovery infeasible under the defined threat model; reuse/CE claims require conditions.",
+    "sources": [
+      "Domain 5 screenshot 204222 gives methods; source does not establish 100% future-proof recovery impossibility",
+      "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r2.pdf — Sections 2.4, 4.5.1–4.5.2 and glossary infeasible/destroy"
+    ],
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ACC-D5-04",
+    "domain": 5,
+    "target": "topic-5-3-irp-lifecycle-phases",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "priority": "P0",
+    "rationale": "Identify the six activities as a course teaching decomposition. Current NIST Rev.3 uses a CSF-based model, with Detect/Respond/Recover supported by broader risk management and continuous improvement. Do not attribute the exact local sequence to NIST/ISO/ISC2 as a universal model.",
+    "sources": [
+      "Domain 5 screenshot 224716 is a six-activity teaching breakdown; its existence does not make it the current NIST model",
+      "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf — Section 2.1; Figure 2, printed p.5 (PDF page 13)"
+    ],
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ACC-D5-05",
+    "domain": 5,
+    "target": "topic-5-2-mitre-attack-framework",
+    "primaryClassification": "CORRECT ACADEMIC ERROR",
+    "priority": "P1",
+    "rationale": "Use PowerShell T1059.001 when naming the sub-technique; generic T1059 names its parent. Likewise Spearphishing Link is T1566.002, while generic Phishing T1566 is already correct in prose. Current official Enterprise list has 15 tactics, so remove the unversioned 14-count label or date its source. Retain Why/How and avoid exhaustive ID memorization.",
+    "sources": [
+      "Domain 5 screenshots 201553/201613 teach tactic/technique distinction; current diagram-generator.js:2939/2952/2954 adds stale count and parent IDs for named sub-techniques",
+      "https://attack.mitre.org/techniques/T1059/001/ — PowerShell ID/tactic; also https://attack.mitre.org/tactics/enterprise/ and https://attack.mitre.org/techniques/T1566/",
+      "https://attack.mitre.org/tactics/enterprise/",
+      "https://attack.mitre.org/techniques/T1566/"
+    ],
+    "confidence": "High",
+    "verificationStatus": "CONFIRMED",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "VER-D1-01",
+    "domain": 1,
+    "target": "topic-1-5-isc2-ethics",
+    "primaryClassification": "REQUIRES VERIFICATION",
+    "priority": "P1",
+    "rationale": "Internal contradiction confirmed; the external claim of an exceptionless universal hierarchy is not established by the inspected page. Remove unsupported exam certainty or obtain explicit official guidance. Do not infer that canon ordering is prohibited.",
+    "sources": [
+      "Script - DOMAIN 1.txt ethics segment and screenshot 003325; compare existing caution at Reading line 989",
+      "https://www.isc2.org/ethics — Code of Ethics Canons; current page does not establish the claimed exceptionless conflict algorithm"
+    ],
+    "confidence": "Unresolved",
+    "verificationStatus": "REQUIRES VERIFICATION",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "VER-D2-01",
+    "domain": 2,
+    "target": "topic-2-4-scorecards",
+    "primaryClassification": "REQUIRES VERIFICATION",
+    "priority": "P1",
+    "rationale": "Current row omits units; it does not explicitly call 12 a resolved count. Quarantine scoring of this row or replace with an explicitly authored example. Obtain denominator, time window and unit from the source author.",
+    "sources": [
+      "Screenshot 2026-09-20 223508.png native resolution; DOMAIN 2.txt:111 says <10%",
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline — Objective 2.4 defines scope but cannot resolve source example units"
+    ],
+    "confidence": "Unresolved",
+    "verificationStatus": "REQUIRES VERIFICATION",
+    "complexity": "Small editorial change; medium cross-scenario consistency review",
+    "secondaryRecommendations": [
+      "Synchronize summaries, diagram labels/mobile fallbacks and reusable scenarios after approval"
+    ],
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D1-02",
+    "domain": 1,
+    "target": "topic-1-2-quantitative-risk",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Label arithmetic assumptions and remove unsupported exam memorization/frequency claims; existing worked SLE/ARO/ALE examples are sufficient.",
+    "sources": [
+      "domain-1-2-review.md:48",
+      "content/isc2-cc-2026/reading/domain-1.md:436"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D1-03",
+    "domain": 1,
+    "target": "topic-1-1-identification-authentication",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Treat identification as a preliminary claim and AAA as three functions; accounting can include unsuccessful attempts. Reuse L1-02.",
+    "sources": [
+      "domain-1-2-review.md:39",
+      "content/isc2-cc-2026/reading/domain-1.md:165"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D1-04",
+    "domain": 1,
+    "target": "topic-1-4-control-categories",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Distinguish official Technical/Administrative/Physical vocabulary from course Managerial/Operational subdivisions; retain contextual functions.",
+    "sources": [
+      "domain-1-2-review.md:60",
+      "content/isc2-cc-2026/reading/domain-1.md:782"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D1-05",
+    "domain": 1,
+    "target": "topic-1-1-authorization-accounting",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P2",
+    "rationale": "Adapt existing fictional denied-action log row from L1-02; same account can be allowed one action and denied another.",
+    "sources": [
+      "domain-1-2-review.md:41",
+      "content/isc2-cc-2026/reading/domain-1.md:224"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D1-06",
+    "domain": 1,
+    "target": "topic-1-2-risk-treatment",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P2",
+    "rationale": "Use authorized risk acceptance, defined criteria, owner/review trigger and reasonable patch/change action; reuse L1-07/12.",
+    "sources": [
+      "domain-1-2-review.md:53",
+      "content/isc2-cc-2026/reading/domain-1.md:559"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D2-03",
+    "domain": 2,
+    "target": "topic-2-3-password-protection",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Add concise unique-password/manager/no-sharing/reporting actions from published L2-06; preserve scoped NIST-specific numerical guidance.",
+    "sources": [
+      "domain-1-2-review.md:96",
+      "content/isc2-cc-2026/reading/domain-2.md:445"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D2-04",
+    "domain": 2,
+    "target": "topic-2-1-grc-tools",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P2",
+    "rationale": "Adapt linked requirement/control/evidence/owner/review record from L2-02, not a vendor screenshot.",
+    "sources": [
+      "domain-1-2-review.md:80",
+      "content/isc2-cc-2026/reading/domain-2.md:89"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D2-05",
+    "domain": 2,
+    "target": "topic-2-2-bcp-components",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P2",
+    "rationale": "Adapt flood continuity example with minimum service, workaround, responsible role and approved communications from L2-03.",
+    "sources": [
+      "domain-1-2-review.md:83",
+      "content/isc2-cc-2026/reading/domain-2.md:180"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D2-06",
+    "domain": 2,
+    "target": "topic-2-4-mttd-mttr",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P2",
+    "rationale": "Use 10/20/30 minute detection delays, mean 20, with cohort/endpoints and outlier limitation; reuse L2-07.",
+    "sources": [
+      "domain-1-2-review.md:99",
+      "content/isc2-cc-2026/reading/domain-2.md:485"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D3-02",
+    "domain": 3,
+    "target": "topic-3-1-provisioning",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P1",
+    "rationale": "Adapt approved versus observed rights from D3-01-05; separate approval, implementation and enforcement.",
+    "sources": [
+      "domain-3-4-review.md:51",
+      "content/isc2-cc-2026/reading/domain-3.md:89"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D3-03",
+    "domain": 3,
+    "target": "topic-3-1-access-review",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Orphaned means missing accountable ownership, not only a departed employee; distinguish review decision from verified remediation.",
+    "sources": [
+      "domain-3-4-review.md:52",
+      "content/isc2-cc-2026/reading/domain-3.md:138"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D3-04",
+    "domain": 3,
+    "target": "topic-3-1-deprovisioning",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P1",
+    "rationale": "Use still-active app session after central disable; revoke using supported mechanisms and verify denial; reuse D3-02-06.",
+    "sources": [
+      "domain-3-4-review.md:53",
+      "content/isc2-cc-2026/reading/domain-3.md:193"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D3-05",
+    "domain": 3,
+    "target": "topic-3-1-iam-frameworks",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Guidance differs from software; proofing/authentication/federation need not form a compulsory onboarding sequence; reuse D3-03.",
+    "sources": [
+      "domain-3-4-review.md:54",
+      "content/isc2-cc-2026/reading/domain-3.md:264"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D3-06",
+    "domain": 3,
+    "target": "topic-3-1-iam-tools",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P2",
+    "rationale": "RFC 6749 section 1.4 confirms access-token formats vary. Clarify whether JSON means a token response or token payload; OAuth grants access and OIDC adds an identity layer. No protocol configuration tutorial.",
+    "sources": [
+      "domain-3-4-review.md:55",
+      "content/isc2-cc-2026/reading/domain-3.md:287",
+      "https://www.rfc-editor.org/rfc/rfc6749.html#section-1.4"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D3-07",
+    "domain": 3,
+    "target": "topic-3-1-least-privilege",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P1",
+    "rationale": "Owned reporting identity gets only necessary read scope plus review/retirement; reuse bot cases from published D3-01/02/04.",
+    "sources": [
+      "domain-3-4-review.md:56",
+      "content/isc2-cc-2026/reading/domain-3.md:345"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D3-08",
+    "domain": 3,
+    "target": "topic-3-2-sod",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Two accounts controlled by the same actor do not create independent approval; retain current SoD comparison and reuse D3-04.",
+    "sources": [
+      "domain-3-4-review.md:58",
+      "content/isc2-cc-2026/reading/domain-3.md:426"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D4-02",
+    "domain": 4,
+    "target": "topic-4-1-osi-model",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Qualify conceptual layer functions and approximate mapping; not every OSI layer adds a header; adapt D4-01 encapsulation explanation.",
+    "sources": [
+      "domain-3-4-review.md:75",
+      "content/isc2-cc-2026/reading/domain-4.md:97"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D4-03",
+    "domain": 4,
+    "target": "topic-4-1-ports-multiplexing",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "One declared TCP/UDP endpoint flow shows source/destination ports; common service defaults are clues, not proof of encryption or identity.",
+    "sources": [
+      "domain-3-4-review.md:80",
+      "content/isc2-cc-2026/reading/domain-4.md:358"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D4-04",
+    "domain": 4,
+    "target": "topic-4-1-network-threats-iot",
+    "primaryClassification": "REQUIRES VERIFICATION",
+    "priority": "P1",
+    "rationale": "Review universal IT CIA ordering and IDMZ/data-diode-only claims against NIST 800-82r3 before authoring; prefer a safety-aware controller-maintenance example.",
+    "sources": [
+      "domain-3-4-review.md:83",
+      "content/isc2-cc-2026/reading/domain-4.md:564"
+    ],
+    "confidence": "Medium",
+    "verificationStatus": "OPEN TECHNICAL QUESTION",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D4-05",
+    "domain": 4,
+    "target": "topic-4-2-vlans-routing",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P1",
+    "rationale": "Adapt camera-to-recorder allowed / camera-to-database denied path; VLAN membership alone is not application access enforcement.",
+    "sources": [
+      "domain-3-4-review.md:87",
+      "content/isc2-cc-2026/reading/domain-4.md:700"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D4-06",
+    "domain": 4,
+    "target": "topic-4-3-shared-responsibility",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Apply service-specific task boundaries to tables as well as prose; customer settings differ from whole provider-operated services; reuse D4-08.",
+    "sources": [
+      "domain-3-4-review.md:93",
+      "content/isc2-cc-2026/reading/domain-4.md:897"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D4-07",
+    "domain": 4,
+    "target": "topic-4-3-cloud-characteristics",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P2",
+    "rationale": "Measured service is not a mandatory billing tariff; elasticity has constraints and works in both directions. Adapt D4-07.",
+    "sources": [
+      "domain-3-4-review.md:91",
+      "content/isc2-cc-2026/reading/domain-4.md:821"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D5-06",
+    "domain": 5,
+    "target": "topic-5-1-data-states-controls",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P1",
+    "rationale": "Follow one record from encrypted storage through TLS to authorized memory/display/export; connect DLP and unapproved AI upload without another state diagram.",
+    "sources": [
+      "domain-5-review.md:31",
+      "content/isc2-cc-2026/reading/domain-5.md:182"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D5-07",
+    "domain": 5,
+    "target": "topic-5-2-monitoring-siem-correlation",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P1",
+    "rationale": "Improve existing synthetic log chain with timezone, identity/action/outcome and benign alternatives; correlation supports investigation, not certain compromise.",
+    "sources": [
+      "domain-5-review.md:36",
+      "content/isc2-cc-2026/reading/domain-5.md:411"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D5-08",
+    "domain": 5,
+    "target": "topic-5-2-alert-triage-prioritization",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Prioritize by impact/context and evidence; neither a DC login nor every false negative has a universal severity. Keep existing cases.",
+    "sources": [
+      "domain-5-review.md:40",
+      "content/isc2-cc-2026/reading/domain-5.md:491"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D5-10",
+    "domain": 5,
+    "target": "topic-5-3-evidence-handling-chain-of-custody",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P1",
+    "rationale": "Add one authorized fictional evidence handoff; matching hash does not prove a complete custody record. No legal-admissibility guarantee.",
+    "sources": [
+      "domain-5-review.md:47",
+      "content/isc2-cc-2026/reading/domain-5.md:860"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D5-11",
+    "domain": 5,
+    "target": "topic-5-3-ir-exercises-tabletop-simulation",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P2",
+    "rationale": "Restore exercise records objective, usable restored service, result, owner and retest; backup-job success alone does not establish recoverability.",
+    "sources": [
+      "domain-5-review.md:48",
+      "content/isc2-cc-2026/reading/domain-5.md:895"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D5-12",
+    "domain": 5,
+    "target": "topic-5-4-eol-eos-compensating-controls",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Temporary legacy controls need owner, review deadline, validation and migration; mitigation does not restore vendor support. Distinguish retirement and disposal.",
+    "sources": [
+      "domain-5-review.md:50",
+      "content/isc2-cc-2026/reading/domain-5.md:962"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D5-13",
+    "domain": 5,
+    "target": "topic-5-4-change-management-process",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Use appropriate change authority, verification and documentation; no universal CAB or numbered workflow; investigate baseline drift before remediation.",
+    "sources": [
+      "domain-5-review.md:53",
+      "content/isc2-cc-2026/reading/domain-5.md:1023"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D5-14",
+    "domain": 5,
+    "target": "topic-5-5-appsec-sast-dast",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Static versus running analysis is the key distinction; neither is confined to exactly one lifecycle phase. Reuse current table and slide testing distinctions.",
+    "sources": [
+      "domain-5-review.md:56",
+      "content/isc2-cc-2026/reading/domain-5.md:1155"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-D5-15",
+    "domain": 5,
+    "target": "topic-5-5-threat-modeling-design",
+    "primaryClassification": "ADD PRACTICAL EXAMPLE",
+    "priority": "P2",
+    "rationale": "Account-recovery request crosses one trust boundary: identify one forged-request threat, control and test; diagram only if the boundary remains abstract.",
+    "sources": [
+      "domain-5-review.md:57",
+      "content/isc2-cc-2026/reading/domain-5.md:1197"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-X-01",
+    "domain": 0,
+    "target": "all five Reading Notes modules",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Review meaning parity for every approved EN/TH change; English terms within Thai prose do not constitute a full English explanatory version.",
+    "sources": [
+      "all three domain review appendices",
+      "Current ISC2 dated outline and published lesson catalog"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "ENR-X-02",
+    "domain": 0,
+    "target": "official outline AI integration and 5.1 PQC",
+    "primaryClassification": "EXPAND EXPLANATION",
+    "priority": "P1",
+    "rationale": "Adapt compact foundational AI and PQC cases already in published lessons; preserve concept scope without a new advanced chapter.",
+    "sources": [
+      "all three domain review appendices",
+      "Current ISC2 dated outline and published lesson catalog",
+      "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "https://csrc.nist.gov/pubs/fips/203/final"
+    ],
+    "confidence": "High for observed instructional gap; proposed remedy needs human review",
+    "verificationStatus": "EDITORIAL PROPOSAL",
+    "complexity": "Small prose/example; medium bilingual and repeated-summary reconciliation",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "VIS-01",
+    "assetIds": [
+      "VIS-01"
+    ],
+    "relatedFindingIds": [],
+    "domain": 4,
+    "target": "topic-4-1-network-devices",
+    "primaryClassification": "ADD DIAGRAM",
+    "priority": "P2",
+    "rationale": "Distinguish seeing a traffic copy from blocking traffic in-path; Device definitions lack a paired placement view",
+    "sources": [
+      "Original educational authorship proposed",
+      "Reading devices and published D4-03 cover function; adapt existing semantics rather than duplicate definitions"
+    ],
+    "confidence": "Conditional instructional proposal",
+    "verificationStatus": "HUMAN REVIEW / REUSE GATE",
+    "complexity": "Medium static media",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "VIS-02",
+    "assetIds": [
+      "VIS-02"
+    ],
+    "relatedFindingIds": [
+      "ACC-D5-02"
+    ],
+    "domain": 5,
+    "target": "topic-5-1-tpm-vs-hsm",
+    "primaryClassification": "ADD DIAGRAM",
+    "priority": "P2",
+    "rationale": "Understand protected key custody and operation requests; Definition/table do not show operation and boundary",
+    "sources": [
+      "Original educational authorship proposed",
+      "Published d5-02 key-operation semantics must be reused first"
+    ],
+    "confidence": "Conditional instructional proposal",
+    "verificationStatus": "HUMAN REVIEW / REUSE GATE",
+    "complexity": "Medium static media",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "D2-A01",
+    "assetIds": [
+      "D2-A01"
+    ],
+    "relatedFindingIds": [],
+    "domain": 2,
+    "target": "topic-2-2-drp-sites",
+    "primaryClassification": "ADD DIAGRAM",
+    "priority": "P2",
+    "rationale": "Choose required restore sets; Table and Sunday–Thursday example explain sets verbally but lack a set-dependency picture",
+    "sources": [
+      "Original educational authorship proposed",
+      "L2-04 custom renderer:25–27 shows copy→verify→restore→test, not these full/differential/incremental sets"
+    ],
+    "confidence": "Conditional instructional proposal",
+    "verificationStatus": "HUMAN REVIEW / REUSE GATE",
+    "complexity": "Medium static media",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "D2-A02",
+    "assetIds": [
+      "D2-A02"
+    ],
+    "relatedFindingIds": [],
+    "domain": 2,
+    "target": "topic-2-3-social-engineering-techniques",
+    "primaryClassification": "ADD REAL-WORLD IMAGE",
+    "priority": "P3",
+    "rationale": "Recognize request, pressure and independent verification route; No actual message interface in text lecture screenshots",
+    "sources": [
+      "Unselected real image: permission required; fallback authored simulated screenshot",
+      "L2-06 already teaches decision; approve only if interface recognition adds value"
+    ],
+    "confidence": "Conditional instructional proposal",
+    "verificationStatus": "IMAGE RIGHTS UNRESOLVED",
+    "complexity": "Medium static media",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "D4-M01",
+    "assetIds": [
+      "D4-M01"
+    ],
+    "relatedFindingIds": [],
+    "domain": 4,
+    "target": "topic-4-1-osi-model",
+    "primaryClassification": "ADD DIAGRAM",
+    "priority": "P3",
+    "rationale": "Distinguish packet nesting and next-hop scope; Only if existing lesson adaptation cannot supply standalone reading clarity",
+    "sources": [
+      "Original educational authorship proposed",
+      "Prefer existing slide-d4-01-05-encapsulation; reject a second OSI ladder"
+    ],
+    "confidence": "Conditional instructional proposal",
+    "verificationStatus": "HUMAN REVIEW / REUSE GATE",
+    "complexity": "Medium static media",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "D5-M16",
+    "assetIds": [
+      "D5-M16"
+    ],
+    "relatedFindingIds": [],
+    "domain": 5,
+    "target": "topic-5-5-threat-modeling-design",
+    "primaryClassification": "ADD DIAGRAM",
+    "priority": "P3",
+    "rationale": "Connect threat, control and test to a trust boundary; Only if the compact practical example still leaves the boundary abstract",
+    "sources": [
+      "Original educational authorship proposed",
+      "Published D5-10 threat-modeling slide and current prose must be reused first"
+    ],
+    "confidence": "Conditional instructional proposal",
+    "verificationStatus": "HUMAN REVIEW / REUSE GATE",
+    "complexity": "Medium static media",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "IMG-HSM-PAIR",
+    "assetIds": [
+      "IMG-HSM-NET",
+      "IMG-HSM-USB"
+    ],
+    "relatedFindingIds": [
+      "ACC-D5-02"
+    ],
+    "domain": 5,
+    "target": "topic-5-1-tpm-vs-hsm",
+    "primaryClassification": "ADD REAL-WORLD IMAGE",
+    "priority": "P3",
+    "rationale": "One paired network/USB form-factor comparison; both image-level permissions required",
+    "sources": [
+      "https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms",
+      "No current clean licensed photo; source screenshot not suitable product photo",
+      "https://www.yubico.com/product/yubihsm-2/"
+    ],
+    "confidence": "Conditional instructional proposal",
+    "verificationStatus": "IMAGE RIGHTS UNRESOLVED",
+    "complexity": "Medium static media",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "IMG-FW",
+    "assetIds": [
+      "IMG-FW"
+    ],
+    "relatedFindingIds": [],
+    "domain": 4,
+    "target": "topic-4-1-network-devices",
+    "primaryClassification": "ADD REAL-WORLD IMAGE",
+    "priority": "P3",
+    "rationale": "Recognize a physical network appliance and connector; Only if novice device recognition remains difficult",
+    "sources": [
+      "https://www.fortinet.com/products/next-generation-firewall",
+      "Source screenshot 152505 already shows host/network placement; photo may add little"
+    ],
+    "confidence": "Conditional instructional proposal",
+    "verificationStatus": "IMAGE RIGHTS UNRESOLVED",
+    "complexity": "Medium static media",
+    "productionImplementationApproved": false
+  },
+  {
+    "id": "INT-IDS",
+    "assetIds": [
+      "INT-IDS"
+    ],
+    "relatedFindingIds": [],
+    "domain": 4,
+    "target": "topic-4-1-network-devices",
+    "primaryClassification": "ADD ANIMATION / INTERACTIVE VISUAL",
+    "priority": "P3",
+    "rationale": "See observation versus in-path blocking; Only if static VIS-01 leaves a demonstrated learning need",
+    "sources": [
+      "Original educational authorship proposed",
+      "Conditional extension of VIS-01, not a second independent asset"
+    ],
+    "confidence": "Conditional instructional proposal",
+    "verificationStatus": "HUMAN REVIEW / REUSE GATE",
+    "complexity": "Large interaction and accessibility QA",
+    "productionImplementationApproved": false
+  }
+]

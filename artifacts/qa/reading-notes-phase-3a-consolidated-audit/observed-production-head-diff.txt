@@ -1,0 +1,991 @@
+diff --git a/content/isc2-cc-2026/reading/domain-1.md b/content/isc2-cc-2026/reading/domain-1.md
+index 83fe01ef..ec358ca6 100644
+--- a/content/isc2-cc-2026/reading/domain-1.md
++++ b/content/isc2-cc-2026/reading/domain-1.md
+@@ -291,7 +291,7 @@
+ 
+ <div class="reading-concept-item">
+   <h5 class="reading-concept-heading">Data Ownership & Authority Boundaries</h5>
+-  <p>การกำหนดว่าใครมีอำนาจตัดสินใจ (Authority) และความรับผิดชอบ (Responsibility) ต่อข้อมูลด้าน Security และ Compliance โดยมีหลักสำคัญคือ <em>การที่องค์กรถือครองหรือจัดเก็บข้อมูลไม่ได้แปลว่าจะนำ Personal Data ไปทำอะไรก็ได้ตามอำเภอใจ</em> องค์กรยังคงต้องเคารพสิทธิและความยินยอมของ Data Subject เสมอ</p>
++  <p>การกำหนดว่าใครมีอำนาจตัดสินใจ (Authority) และความรับผิดชอบ (Responsibility) ต่อข้อมูลด้าน Security และ Compliance โดยมีหลักสำคัญคือ <em>การที่องค์กรถือครองหรือจัดเก็บข้อมูลไม่ได้แปลว่าจะนำ Personal Data ไปทำอะไรก็ได้ตามอำเภอใจ</em> องค์กรต้องเคารพสิทธิของ Data Subject ตามกฎหมายที่ใช้บังคับ และขอความยินยอมเมื่อใช้ฐานความยินยอม <em>Respect data-subject rights under applicable law; obtain consent when relying on consent as the legal basis.</em></p>
+ </div>
+ 
+ <div class="reading-concept-item">
+@@ -316,8 +316,8 @@
+ | **นิยามหลัก** | การป้องกันไม่ให้ผู้ไม่มีสิทธิ์เข้าถึงหรือล่วงรู้ข้อมูล (Protect from unauthorized access) | สิทธิของบุคคลธรรมดาในการควบคุมข้อมูลส่วนตัวของตน (Right to control personal data) |
+ | **เป้าหมายความปลอดภัย** | ป้องกัน **Unauthorized Disclosure** | คุ้มครองสิทธิของ **Data Subject** ตามกฎหมาย (เช่น GDPR, PDPA) |
+ | **ขอบเขตข้อมูล** | ข้อมูลลับทุกชนิดขององค์กร (Trade Secrets, Financial, Source Code, PII) | เฉพาะข้อมูลส่วนบุคคลที่ระบุตัวตนได้ (**PII / Personal Data**) เท่านั้น |
+-| **มาตรการควบคุมหลัก** | Encryption, Access Control, Need to Know, Firewalls | Consent, Data Retention, Purpose Limitation, Right to be Forgotten |
+-| **จุดลวงในข้อสอบ** | การเข้ารหัสข้อมูล (Encryption) ตอบสนอง Confidentiality แต่ *ไม่ได้แปลว่าปฏิบัติตาม Privacy ครบถ้วน* หากเก็บข้อมูลโดยไม่ได้รับความยินยอม! | ข้อสอบมักถามว่า "การเก็บข้อมูลลูกค้าโดยเข้ารหัสอย่างดีแต่ไม่แจ้งวัตถุประสงค์ ผิดหลักการใด?" คำตอบคือ **Privacy Violation** |
++| **มาตรการควบคุมหลัก** | Encryption, Access Control, Need to Know, Firewalls | Lawful Basis (เช่น Consent เมื่อเหมาะสม), Transparency, Data Retention, Purpose Limitation, Right to be Forgotten |
++| **ตัวอย่างวิเคราะห์ (Illustrative example)** | Encryption จำกัดการเข้าถึง แต่เพียงอย่างเดียวยังไม่ยืนยันว่าปฏิบัติตาม Privacy ครบถ้วน / Encryption restricts access; it alone does not establish privacy compliance. | ต้องพิจารณาวัตถุประสงค์ ฐานกฎหมาย และหน้าที่ด้านความโปร่งใสตามกฎหมายที่ใช้บังคับ; ตาม GDPR ความยินยอมเป็นฐานหนึ่ง / Check purpose, lawful basis and applicable transparency duties; under GDPR, consent is one possible basis. |
+ 
+ </section>
+ 
+@@ -783,6 +783,8 @@ $ALE = SLE \times ARO$
+ 
+ ### 1.4.1 Security Control Categories
+ 
++**คำศัพท์ในโครงร่างสอบ (Outline terminology):** โครงร่างสอบ CC ที่มีผล 1 กันยายน 2026 ระบุหมวด Technical, Administrative และ Physical; บทเรียนนี้แยกงานบริหาร (Managerial) และงานประจำวันโดยบุคลากร (Operational) เพื่อช่วยอธิบายด้าน Administrative / The CC outline effective 1 September 2026 names Technical, Administrative and Physical controls; this course explains administrative work through managerial and day-to-day operational activities.
++
+ <h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>การแบ่งหมวดหมู่ตามลักษณะของกลไกหรือสิ่งที่นำมาดำเนินการ:</h4>
+ 
+ :::control-categories
+@@ -1054,7 +1056,7 @@ $ALE = SLE \times ARO$
+   </div>
+   <p><strong>สถานการณ์จำลอง:</strong> ผู้บริหารสั่งให้ผู้ดูแลระบบปกปิดรายงานช่องโหว่ความปลอดภัยร้ายแรงในระบบควบคุมการจ่ายน้ำประปาของเมือง (Critical Infrastructure) เนื่องจากกลัวผลกระทบต่อราคาหุ้นของบริษัท</p>
+   <p><strong>แนวคิดการวิเคราะห์ตามหลักการ ISC2:</strong> เหตุการณ์นี้เกิดความขัดแย้งระหว่างหน้าที่ต่อผู้ว่าจ้าง (<strong>Canon 3:</strong> Diligent service to principals) กับความปลอดภัยของสังคม (<strong>Canon 1:</strong> Protect society, common good &amp; infrastructure)</p>
+-  <p><strong>ข้อสรุปเด็ดขาดสำหรับห้องสอบ:</strong> สมาชิก ISC2 ต้องยึดถือประโยชน์และความปลอดภัยของสังคมส่วนรวม (<strong>Canon 1</strong>) เป็นอันดับสูงสุดเสมอ และ <strong>Canon 1 อยู่เหนือผลประโยชน์ของนายจ้างหรือลูกค้า (Canon 3) อย่างไม่มีข้อยกเว้น</strong></p>
++  <p><strong>แนวทางใช้ดุลยพินิจ (Professional judgment):</strong> คำนึงถึงความปลอดภัยของสาธารณะ เก็บรักษาหลักฐานที่เกี่ยวข้อง และขอคำแนะนำผ่านช่องทางที่มีอำนาจ เช่น ผู้รับผิดชอบด้านความปลอดภัยหรือฝ่ายกฎหมาย โดยพิจารณาหน้าที่ทั้งสี่ร่วมกับข้อเท็จจริง ไม่อนุมานว่ามีสิทธิปกปิด เปิดเผยข้อมูลต่อสาธารณะโดยพลการ หรือทำผิดกฎหมาย / Protect public welfare, preserve relevant evidence and seek guidance through authorized channels, such as security leadership or legal counsel, considering all four duties and the facts. Do not infer permission to conceal, disclose publicly without authorization or act illegally.</p>
+ </div>
+ 
+ <div id="topic-1-5-distinctions-scenarios" class="reading-topic-anchor"></div>
+diff --git a/content/isc2-cc-2026/reading/domain-2.md b/content/isc2-cc-2026/reading/domain-2.md
+index a18d1e4a..d5f59fe2 100644
+--- a/content/isc2-cc-2026/reading/domain-2.md
++++ b/content/isc2-cc-2026/reading/domain-2.md
+@@ -228,6 +228,8 @@
+ 
+ ในการวางแผนกู้คืนระบบ IT องค์กรต้องกำหนดเป้าหมายเชิงเวลา 2 ตัวชี้วัดสำคัญ:
+ 
++**สมมติฐานของภาพ (Illustrative assumptions):** ภาพสมมติว่ามีจุดสำรองที่กู้คืนได้เวลา 16:30 น. และเกิดเหตุเวลา 17:00 น.; จุดสำรองนี้ตรงกับขอบเขต RPO 30 นาทีในตัวอย่าง ส่วน 18:00 น. เป็นเป้าหมาย RTO 1 ชั่วโมง ไม่ใช่ผลกู้คืนที่ทดสอบแล้ว / The illustration assumes a recoverable 16:30 backup and a 17:00 outage. That backup coincides with the example’s 30-minute RPO boundary; 18:00 is the one-hour RTO target, not a tested recovery outcome.
++
+ <div class="reading-semantic-diagram" data-diagram="rtoRpoTimeline"></div>
+ 
+ <section class="reading-concept-unit">
+@@ -254,9 +256,10 @@
+ 
+ - **Work Recovery Time (WRT — เวลาฟื้นฟูระบบงาน):** คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ
+ - **Maximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้):** คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)
+-- **สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:**
++- **แบบจำลองวางแผนอย่างง่าย (Simplified planning model):**
+   **MTD &ge; RTO + WRT**
+-  *(หาก RTO + WRT &gt; MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)*
++  ในแบบจำลองนี้ RTO นับจากเริ่มหยุดชะงักจนระบบ IT พร้อมใช้งาน แล้ว WRT นับต่อจนธุรกิจกลับมาดำเนินงาน โดยสมมติให้สองช่วงไม่ซ้อนทับกัน; กิจกรรมจริงอาจซ้อนทับกันได้ / Here, RTO runs from disruption to IT readiness, followed by WRT until business resumes. The model assumes non-overlapping intervals; actual activities may overlap.
++  *หากผลรวมเกิน MTD แผนนี้จัดสรรเวลาเกินช่วงหยุดชะงักที่ธุรกิจยอมรับ ต้องทบทวนแผน; การหยุดชะงักจริงเกิน MTD ไม่ได้หมายความว่าองค์กรจะอยู่รอดไม่ได้เสมอไป / If the sum exceeds MTD, the plan exceeds the business downtime tolerance and needs review. An actual outage beyond MTD does not inevitably mean organizational failure.*
+ </section>
+ 
+ <div class="reading-callout tip">
+@@ -556,6 +559,8 @@
+ 
+ Metric อาจเป็นจำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย KPI และ KRI เป็น Metric ที่เลือกใช้ตามวัตถุประสงค์: KPI ติดตามผลงานเทียบเป้าหมาย ส่วน KRI เฝ้าระวังแนวโน้มความเสี่ยง Dashboard, scorecard และ report เป็นรูปแบบนำเสนอที่อาจใช้ร่วมกันได้ ภาพต่อไปนี้เป็นตัวอย่างการจัดระบบการวัดผล ไม่ใช่ลำดับขั้นที่ทุกองค์กรต้องใช้
+ 
++**รอบอัปเดต (Refresh cadence):** Dashboard อาจอัปเดตเป็นระยะหรือใกล้เวลาจริง ขึ้นอยู่กับการเก็บข้อมูลและการรายงาน ควรตรวจเวลาอัปเดตของข้อมูล / A dashboard may refresh periodically or near real time, depending on data collection and reporting; check when its data was updated.
++
+ <div class="reading-semantic-diagram" data-diagram="effectivenessHierarchy"></div>
+ 
+ <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ตารางสรุปคำสำคัญสำหรับวิเคราะห์โจทย์สอบ (Exam Keyword Trigger Matrix):</p>
+@@ -565,7 +570,7 @@ Metric อาจเป็นจำนวน ร้อยละ อัตรา
+ | **Metric** | "Defined measurable value", "Count, percentage, ratio or average" | ค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์ | จำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found) |
+ | **KPI** | "Performance target", "Progress toward goal", "Success rate" | ประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย | ร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance) |
+ | **KRI** | "Early warning", "Escalating risk", "Threshold exceed" | ส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้ | จำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (&gt; 0 บัญชี) |
+-| **Dashboard** | "Real-time", "Operational view", "Visual representation" | แสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน | หน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์ |
++| **Dashboard** | "Refresh cadence varies", "Operational view", "Visual representation" | แสดงภาพรวมผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน โดยความสดของข้อมูลขึ้นกับรอบอัปเดต (Data freshness depends on refresh cadence) | ตัวอย่างหน้าจอ SOC ที่ตั้งค่าให้อัปเดตใกล้เวลาจริง (Illustrative near-real-time SOC view) |
+ | **Scorecard** | "Compare actual vs. target", "Periodic benchmark", "Gaps" | สรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง | ตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน |
+ | **Report** | "Formal documentation", "Recommended actions", "Executive summary" | เอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร | เอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร |
+ 
+@@ -741,7 +746,7 @@ Metric อาจเป็นจำนวน ร้อยละ อัตรา
+     <div class="reading-distinction-body">
+       <div class="reading-distinction-point">
+         <strong class="reading-distinction-term">Dashboard</strong>
+-        <div class="reading-distinction-desc">Visualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time</div>
++        <div class="reading-distinction-desc">Visualize — นำเสนอภาพรวมและแนวโน้มตามรอบอัปเดต (Periodic / near-real-time)</div>
+       </div>
+       <div class="reading-distinction-point">
+         <strong class="reading-distinction-term">Scorecard</strong>
+diff --git a/content/isc2-cc-2026/reading/domain-3.md b/content/isc2-cc-2026/reading/domain-3.md
+index e378b40a..d4ce51d0 100644
+--- a/content/isc2-cc-2026/reading/domain-3.md
++++ b/content/isc2-cc-2026/reading/domain-3.md
+@@ -29,10 +29,11 @@
+ <h4>Mover (เปลี่ยนบทบาท / เลื่อนตำแหน่ง / ย้ายแผนก):</h4>
+ 
+ - พนักงานเปลี่ยนตำแหน่งหรือย้ายสายงาน ต้องได้รับการปรับปรุงสิทธิ์ให้ตรงกับหน้าที่ใหม่
+-- ความเสี่ยงสูงสุดของขั้นตอนนี้คือ **Privilege Accumulation** (หรือ **Privilege Creep**): การได้รับสิทธิ์ใหม่เพิ่มเข้ามาแต่สิทธิ์เดิมของแผนกเก่าไม่ถูกเพิกถอนออกไป
++- ความเสี่ยงสูงสุดของขั้นตอนนี้คือ **Privilege Accumulation** (หรือ **Privilege Creep**): การได้รับสิทธิ์ใหม่เพิ่มเข้ามาแต่สิทธิ์เดิมที่หมดความจำเป็นไม่ถูกเพิกถอน (Obsolete access remains)
+ 
+ <div class="reading-scenario-inline">
+-  <strong>กรณีศึกษาข้อสอบ (Finance-to-IT Transfer):</strong> นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง <strong>Privilege Creep</strong> และละเมิดหลักการ <strong>Segregation of Duties (SoD)</strong> อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ
++  <p><strong>สถานการณ์สมมติ (Finance-to-IT Transfer):</strong> นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ</p>
++  <p><strong>Illustrative policy:</strong> Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.</p>
+ </div>
+ 
+ </section>
+@@ -111,7 +112,7 @@
+ <section class="reading-concept-unit">
+ <h4>Assigning Roles:</h4>
+ 
+-การผูกบัญชีเข้ากับบทบาทหน้าที่ (Roles) ตามตำแหน่งงานที่ได้รับการอนุมัติจากฝ่ายทรัพยากรบุคคล
++การผูกบัญชีกับบทบาทหน้าที่ (Roles) ตามข้อมูลตำแหน่งงานที่ตรวจสอบแล้ว โดยผู้มีอำนาจตามนโยบายอนุมัติสิทธิ์ของระบบหรือทรัพยากรนั้น ไม่ใช่ถือว่า HR อนุมัติสิทธิ์ทุกระบบเสมอ / Verified job information informs the role; the policy-designated authority approves resource access, rather than assuming HR approves every system.
+ 
+ </section>
+ 
+@@ -135,6 +136,9 @@
+ การออกข้อมูลประจำตัวสำหรับยืนยันตัวตน เช่น รหัสผ่านเริ่มต้น, บัตรสมาร์ตการ์ด, หรือการลงทะเบียนโทเค็น MFA
+ 
+ </section>
++<p><strong>ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed):</strong> ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ</p>
++<p><strong>Illustrative check:</strong> The policy-designated approver authorizes only monthly-report reading, not payroll changes or network administration. Testing shows payroll changes also succeed. Correct the excess grant, then verify that report reading succeeds while payroll changes and network administration are denied.</p>
++
+ <h3 id="topic-3-1-access-review">3.1.4 Access Review &amp; 6 Core Audit Findings: การทบทวนสิทธิ์เป็นระยะ</h3>
+ 
+ เมื่อระบบมีการใช้งานไปเป็นระยะเวลาหนึ่ง สิทธิ์การเข้าถึงมักจะเกิดความคลาดเคลื่อนจากความเป็นจริง ดังนั้นองค์กรจึงต้องมีการทำ **Periodic Access Review** (การทบทวนสิทธิ์เป็นระยะ) โดยให้ผู้จัดการสายงาน (Line Managers) และเจ้าของข้อมูล (Data Owners) ร่วมกันตรวจสอบว่าสิทธิ์ของผู้ใช้งานแต่ละคนยังคงถูกต้องและจำเป็นอยู่หรือไม่
+@@ -151,7 +155,7 @@
+ <section class="reading-concept-unit">
+ <h4>Unused Accounts (บัญชีที่ไม่ได้ใช้งาน):</h4>
+ 
+-บัญชีที่ไม่มีการล็อกอินเข้าใช้งานเป็นเวลานาน (เช่น เกิน 90 วัน) แต่ยังเปิดทิ้งไว้
++บัญชีที่ไม่มีการล็อกอินเป็นเวลานานแต่ยังเปิดทิ้งไว้ เช่น เกิน 90 วันภายใต้นโยบายสมมติ; เกณฑ์จริงกำหนดตามบริบทและนโยบายองค์กร / For example, over 90 days under an illustrative policy; the actual inactivity threshold is organization-defined.
+ 
+ </section>
+ 
+@@ -165,21 +169,21 @@
+ <section class="reading-concept-unit">
+ <h4>Role Changes (การเปลี่ยนบทบาทแต่สิทธิ์ค้าง):</h4>
+ 
+-พนักงานย้ายตำแหน่งงานแล้ว แต่ยังคงมีสิทธิ์ของหน้าที่งานเดิมหลงเหลืออยู่
++พนักงานย้ายตำแหน่งแล้ว แต่สิทธิ์งานเดิมที่หมดความจำเป็นยังค้างอยู่ (Obsolete access after a role change)
+ 
+ </section>
+ 
+ <section class="reading-concept-unit">
+ <h4>Privilege Accumulation / Privilege Creep (การสะสมสิทธิ์):</h4>
+ 
+-การที่สิทธิ์ในระบบค่อย ๆ พอกพูนขึ้นเรื่อย ๆ จากการย้ายแผนกหลายครั้ง
++การที่สิทธิ์เกินความจำเป็นสะสมจากการย้ายแผนกหลายครั้ง โดยไม่ถอนส่วนที่เลิกใช้ (Accumulation of unnecessary access)
+ 
+ </section>
+ 
+ <section class="reading-concept-unit">
+ <h4>Orphaned Accounts (บัญชีไร้เจ้าของ):</h4>
+ 
+-บัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน
++ตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.
+ 
+ </section>
+ 
+@@ -188,7 +192,8 @@
+     <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+     <span>กรณีศึกษาคลาสสิก: Finance ย้ายไป IT</span>
+   </div>
+-  <p>พนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า <strong>Privilege Accumulation</strong> และต้องแก้ไขด้วยกระบวนการ <strong>Periodic Access Review</strong></p>
++  <p>สมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้</p>
++  <p><strong>Review → apply → verify:</strong> Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.</p>
+ </div>
+ <h3 id="topic-3-1-deprovisioning">3.1.5 Deprovisioning: Triggers &amp; Revocation Practices</h3>
+ 
+@@ -214,7 +219,7 @@
+ <section class="reading-concept-unit">
+ <h5>Role Change:</h5>
+ 
+-พนักงานเปลี่ยนบทบาทหรือย้ายฝ่าย (เพิกถอนสิทธิ์เดิมและปรับปรุงสิทธิ์ใหม่)
++พนักงานเปลี่ยนบทบาทหรือย้ายฝ่าย (ถอนสิทธิ์ที่หมดความจำเป็นและปรับให้ตรงหน้าที่ใหม่ตามนโยบาย / Revoke obsolete access and align rights with the new duties under policy)
+ 
+ </section>
+ 
+@@ -261,6 +266,9 @@
+   </div>
+   <p>ในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ <strong>"Disable Account"</strong> (ปิดการใช้งาน) แทนการ <strong>"Delete Account"</strong> (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป</p>
+ </div>
++<p><strong>ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session):</strong> สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป</p>
++<p><strong>Illustrative session check:</strong> The contract has ended and the administrator is authorized to withdraw access. The central account is disabled, but this application’s existing session still reads data. Use the application’s supported access/session revocation process, verify denial with that existing session, and retain required evidence. Application behavior varies.</p>
++
+ <h3 id="topic-3-1-iam-frameworks">3.1.6 IAM Management Frameworks: NIST SP 800-63 vs CSF</h3>
+ 
+ ในการบริหารจัดการระบบอัตลักษณ์ดิจิทัล องค์กรระดับสากลนิยมอ้างอิงกรอบมาตรฐานของ NIST โดยต้องแยกความแตกต่างระหว่างสองกรอบงานสำคัญ:
+diff --git a/content/isc2-cc-2026/reading/domain-4.md b/content/isc2-cc-2026/reading/domain-4.md
+index 9c78e92e..5289da98 100644
+--- a/content/isc2-cc-2026/reading/domain-4.md
++++ b/content/isc2-cc-2026/reading/domain-4.md
+@@ -296,7 +296,7 @@
+ 
+ <h4 class="reading-concept-group-title">คุณลักษณะเด่นของ IPv6:</h4>
+ - **มหาศาล:** มีหมายเลขรองรับถึง 2<sup>128</sup> หรือราว 3.4 &times; 10<sup>38</sup> หมายเลข ทำให้ทุกอุปกรณ์บนโลกสามารถมี Public IP ได้โดยไม่ต้องพึ่งพา NAT
+-- **ความปลอดภัยในตัว:** รองรับมาตรฐานความมั่นคงปลอดภัย **IPsec (IP Security)** ในระดับสถาปัตยกรรมมาตั้งแต่ต้น
++- **การใช้ IPsec (IP Security):** IPv6 ใช้ IPsec ได้เมื่อรองรับและกำหนดค่าการใช้งานอย่างเหมาะสม แต่ที่อยู่ IPv6 เพียงอย่างเดียวไม่ได้เข้ารหัสหรือยืนยันความถูกต้องของทราฟฟิก / IPv6 can use properly supported and configured IPsec; IPv6 addressing alone does not encrypt or authenticate traffic.
+ - **ยกเลิก Broadcast:** แทนที่ด้วย **Multicast** (ส่งถึงกลุ่มเฉพาะ) และ **Anycast** (ส่งไปยังเครื่องที่ใกล้ที่สุดในกลุ่ม) ช่วยลดสัญญาณรบกวนในเครือข่ายได้อย่างมหาศาล
+ - **SLAAC (Stateless Address Autoconfiguration):** SLAAC สร้างที่อยู่ IPv6 โดยใช้ prefix ที่เราเตอร์ประกาศร่วมกับ Interface Identifier (IID) ของอินเทอร์เฟซ วิธีสร้าง IID ไม่จำเป็นต้องใช้ MAC Address; EUI-64 ที่อาศัย MAC เป็นเพียงวิธีหนึ่งในอดีต
+ 
+@@ -329,9 +329,9 @@
+ <h4>TCP (Transmission Control Protocol):</h4>
+ 
+ - **Connection-Oriented:** ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (**3-Way Handshake: SYN → SYN-ACK → ACK**)
+-- **Reliable Delivery:** รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)
++- **Reliable Delivery:** ให้บริการข้อมูลไบต์แบบเรียงลำดับและเชื่อถือได้ ด้วยลำดับหมายเลขและการส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว ความเชื่อถือได้ของ TCP ไม่ได้รับรองว่าธุรกรรมในแอปสำเร็จ หรือให้ความลับและการตรวจความถูกต้องเชิงคริปโต / TCP provides a reliable, in-order byte stream with sequencing and retransmission, but connections can fail. Transport reliability alone does not provide cryptographic protection or confirm application transaction completion.
+ - **Flow &amp; Congestion Control:** มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)
+-- เหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)
++- มักใช้กับงานที่ต้องการข้อมูลเรียงลำดับและการส่งซ้ำ เช่น Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP) / Common uses needing ordered delivery and retransmission.
+ 
+ </section>
+ 
+@@ -340,7 +340,7 @@
+ 
+ - **Connectionless:** ไม่มีการสร้างการเชื่อมต่อล่วงหน้า ไม่มีการจับมือ (No Handshake) สามารถส่งข้อมูลออกไปได้ทันที
+ - **Unreliable / Best-Effort:** ไม่รับประกันว่าข้อมูลจะถึงปลายทางหรือไม่ ไม่มีการเรียงลำดับใหม่ และไม่มีการส่งซ้ำ
+-- **Low Overhead &amp; High Speed:** ขนาด Header สั้นมาก (เพียง 8 ไบต์ เมื่อเทียบกับ 20 ไบต์ของ TCP) ทำให้ประมวลผลได้รวดเร็วมาก
++- **Low Overhead:** UDP มี Header 8 ไบต์ เทียบกับ TCP อย่างน้อย 20 ไบต์ แต่ไม่ได้รับประกันว่าจะเร็วกว่า; ความเร็วและความหน่วงขึ้นกับเครือข่ายและแอป / UDP has an 8-byte header versus TCP’s minimum 20 bytes; actual speed and latency depend on the network and application.
+ - เหมาะสำหรับงานที่ต้องการความเร็วแบบเรียลไทม์ และยอมรับการสูญเสียข้อมูลบางส่วนได้: Video/Audio Streaming, การโทรผ่านอินเทอร์เน็ต (VoIP), เกมออนไลน์, บริการค้นหาชื่อโดเมน (DNS Queries), การแจกไอพี (DHCP), และการตรวจสอบสถานะ (SNMP)
+ 
+ </section>
+@@ -351,9 +351,9 @@
+ | :--- | :--- | :--- |
+ | **Connection State** | Connection-Oriented (ต้องเชื่อมต่อก่อน) | Connectionless (ส่งข้อมูลได้ทันที) |
+ | **Handshake** | 3-Way Handshake (SYN, SYN-ACK, ACK) | ไม่มีกระบวนการ Handshake |
+-| **Data Reliability** | สูง รับประกันข้อมูลครบถ้วน มีการส่งซ้ำ | ต่ำ แบบ Best-Effort ไม่มีการส่งซ้ำ |
++| **Data Reliability** | ข้อมูลไบต์เรียงลำดับและส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว (Reliable ordered stream; connection failure possible) | Best-Effort; UDP เองไม่รับประกันลำดับหรือส่งซ้ำ (No built-in ordering/retransmission) |
+ | **Header Size** | 20–60 Bytes (ซับซ้อน มีการควบคุม) | 8 Bytes คงที่ (เรียบง่าย น้ำหนักเบา) |
+-| **Speed &amp; Latency** | ช้ากว่า มีภาระในการตรวจสอบ | รวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ |
++| **Speed &amp; Latency** | มีภาระจากกลไกความเชื่อถือได้; ผลจริงขึ้นกับสภาพใช้งาน (Context-dependent) | มีภาระพื้นฐานน้อยกว่า แต่ไม่รับประกันความเร็วหรือความหน่วง (No universal speed/latency guarantee) |
+ | **Typical Use Cases** | เว็บ, อีเมล, การโอนย้ายไฟล์, ฐานข้อมูล | วิดีโอสตรีมมิง, VoIP, DNS, DHCP, เกมออนไลน์ |
+ <h3 id="topic-4-1-ports-multiplexing">4.1.7 Network Ports, Multiplexing &amp; Core Services: พอร์ตและการระบุบริการ</h3>
+ 
+@@ -600,16 +600,16 @@
+ </section>
+ 
+ <h4 class="reading-concept-group-title">ความมั่นคงปลอดภัยของระบบฝังตัว (Embedded Systems) และระบบควบคุมทางอุตสาหกรรม (OT / ICS / SCADA):</h4>
+-- **ความแตกต่างสำคัญ:** ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ **ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)**
++- **ความแตกต่างสำคัญ:** OT/ICS ต้องประเมิน Safety, ความเชื่อถือได้ ความพร้อมใช้งาน และผลต่อกระบวนการก่อนเปลี่ยนระบบ ลำดับความสำคัญขึ้นกับความเสี่ยงของงาน; IT ก็ไม่ได้ให้ Confidentiality สูงสุดทุกกรณี / Assess OT safety, reliability, availability and process impact before changes. Priorities depend on the process and risk; IT does not universally prioritize confidentiality.
+ - **ข้อจำกัด:** มักเป็นระบบเก่า (Legacy Systems) ที่ทำงานแบบ Real-time ไม่สามารถหยุดการทำงานเพื่อรีบูตหรือติดตั้งแพตช์ได้ง่าย และโพรโทคอลสื่อสารมักไม่มีระบบยืนยันตัวตนในตัว (เช่น Modbus, BACnet)
+-- **Purdue Model for Industrial Control Systems (สถาปัตยกรรมแบ่งชั้นความปลอดภัย Purdue Model):**
++- **Purdue Model — บริบทเสริมทางเลือก (Optional architecture context):** ตัวอย่างการจัดกลุ่มระบบตามหน้าที่ ไม่ใช่สถาปัตยกรรมบังคับสำหรับ OT ทุกระบบ / An example functional grouping, not a universal OT architecture:
+   - **Level 0 (Physical Process):** เซ็นเซอร์ วาล์ว มอเตอร์ และอุปกรณ์วัดค่าทางกายภาพ
+   - **Level 1 (Basic Control):** อุปกรณ์ควบคุมพื้นฐาน เช่น Programmable Logic Controllers (PLCs) และ Remote Terminal Units (RTUs)
+   - **Level 2 (Area Supervisory Control):** หน้าจอควบคุมของผู้ปฏิบัติงาน (Human-Machine Interface: HMI) และระบบควบคุม SCADA ประจำพื้นที่
+   - **Level 3 (Site Operations):** ระบบบริหารการผลิตระดับโรงงาน, บันทึกประวัติกระบวนการ (Historians), และระบบอัปเดตระบบอุตสาหกรรม
+-  - **Level 3.5 (Industrial DMZ — IDMZ):** **เขตกันชนความปลอดภัยที่สำคัญที่สุด** ทำหน้าที่คั่นกลางและตัดขาดการเชื่อมต่อโดยตรงระหว่างเครือข่ายอุตสาหกรรม (OT) และเครือข่ายสำนักงาน (IT)
++  - **Level 3.5 (Industrial DMZ — IDMZ):** ตัวอย่างเขตกันชนสำหรับควบคุมการสื่อสาร IT/OT ตามสถาปัตยกรรมและนโยบายที่เลือก (Example IT/OT communication boundary under the selected architecture/policy)
+   - **Level 4 / 5 (Enterprise IT & Corporate Network):** เครือข่ายสำนักงานทั่วไป อีเมล ระบบ ERP และการเชื่อมต่ออินเทอร์เน็ตภายนอก
+-- **กฎเหล็กด้านความปลอดภัยของ ICS/SCADA:** ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น
++- **การสื่อสารที่จำเป็นของ ICS/SCADA:** แยก IT/OT และอนุญาตเฉพาะเส้นทางที่จำเป็นซึ่งควบคุมและตรวจสอบได้ตามความเสี่ยง/ผลต่อกระบวนการ ใช้สถาปัตยกรรมที่เหมาะสม เช่น Firewall/DMZ; Data Diode เป็นทางเลือกสำหรับความต้องการสื่อสารทางเดียว ไม่ใช่กฎเส้นทางเดียวสำหรับทุกระบบ / Separate IT/OT and permit only necessary, controlled and monitored paths suited to process risk. Firewalls/DMZs and, where one-way communication fits, data diodes are architectural options rather than a universal sole path.
+ 
+ <h4 class="reading-concept-group-title">ความเปราะบางของอุปกรณ์ IoT (Internet of Things):</h4>
+ - อุปกรณ์ขนาดเล็กที่มีเซ็นเซอร์และเชื่อมต่ออินเทอร์เน็ตได้ เช่น กล้องวงจรปิดอัจฉริยะ หลอดไฟอัจฉริยะ หรือเราเตอร์ตามบ้าน
+@@ -626,16 +626,16 @@
+ <h3 id="topic-4-2-segmentation-blast-radius">4.2.1 Network Segmentation &amp; Blast Radius Reduction: การแบ่งส่วนเครือข่าย</h3>
+ 
+ <h4 class="reading-concept-group-title">Flat Network (เครือข่ายแบบราบเรียบ):</h4>
+-คือเครือข่ายที่อุปกรณ์ทุกเครื่องเชื่อมต่อถึงกันโดยตรงโดยไม่มีการกั้นส่วน หากเครื่องใดเครื่องหนึ่งติดมัลแวร์หรือถูกแฮก ผู้โจมตีจะสามารถเข้าถึงเครื่องอื่น ๆ ในเครือข่ายได้ทันที
++เครือข่ายที่ไม่มีการแบ่งเขตควบคุมภายในอาจเปิดเส้นทางให้ผู้โจมตีเข้าถึงระบบอื่นได้กว้างขึ้น แต่ไม่ได้แปลว่าทุกเครื่องถูกเจาะแล้ว; ผลขึ้นกับการเข้าถึงและมาตรการที่มี / A flat network can expose more reachable systems, but does not prove every host is compromised; reachability and other controls matter.
+ 
+ <h4 class="reading-concept-group-title">Network Segmentation (การแบ่งส่วนเครือข่าย):</h4>
+ คือแนวปฏิบัติในการแบ่งเครือข่ายขนาดใหญ่ออกเป็นเครือข่ายย่อย ๆ (Subnetworks หรือ Segments) ที่แยกจากกันในเชิงตรรกะหรือทางกายภาพ และบังคับใช้การควบคุมทราฟฟิกข้ามเขตด้วยไฟร์วอลล์หรือ Access Control Lists (ACLs)
+ 
+ <h4 class="reading-concept-group-title">ประโยชน์หลักของการแบ่งส่วนเครือข่าย:</h4>
+-- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น
+-- **Prevent Lateral Movement (หยุดยั้งการเคลื่อนที่ในแนวราบ):** ผู้โจมตีไม่สามารถสแกนหรือส่งมัลแวร์ข้ามไปยังเซิร์ฟเวอร์สำคัญได้โดยตรง
+-- **Traffic Isolation &amp; Performance:** ลดปริมาณการแพร่กระจายของ Broadcast ทำให้เครือข่ายมีประสิทธิภาพสูงขึ้น
+-- **Compliance &amp; Audit Scope:** ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น
++- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** ช่วยลดขอบเขตผลกระทบเมื่อขอบเขตถูกบังคับใช้และทดสอบ แต่ไม่รับประกันว่าจะอยู่ในเซกเมนต์เดียว / Enforced, tested boundaries can reduce impact; they do not guarantee single-segment containment.
++- **Limit Lateral Movement (จำกัดการเคลื่อนที่ในแนวราบ):** จำกัดเส้นทางตามนโยบายที่บังคับใช้จริง; เส้นทางที่ยังอนุญาตหรือจุดควบคุมที่ถูกเจาะอาจเปิดทางได้ ชื่อ VLAN อย่างเดียวไม่ใช่นโยบายบังคับใช้ / Enforcement limits reachable paths; allowed paths or compromised controls can still permit movement. A VLAN label alone is not enforcement.
++- **Traffic Isolation &amp; Performance:** การแยก Broadcast Domain เช่น VLAN อาจลด Broadcast ในแต่ละส่วน แต่ผลด้านประสิทธิภาพขึ้นกับการออกแบบและปริมาณงาน / Separating broadcast domains can reduce local broadcast traffic; performance depends on design and workload.
++- **Compliance &amp; Audit Scope:** การลดขอบเขต เช่น PCI DSS ต้องเป็นไปตามเงื่อนไขของมาตรฐานที่ใช้และตรวจยืนยันประสิทธิผลของการแยก ไม่ได้ลดขอบเขตโดยอัตโนมัติ / Scope reduction depends on applicable requirements and validated segmentation effectiveness; it is not automatic.
+ <h3 id="topic-4-2-firewall-zones">4.2.2 Firewall Security Zones &amp; Trust Boundaries: เขตความปลอดภัยและขอบเขตความเชื่อถือ</h3>
+ 
+ ในการออกแบบความมั่นคงปลอดภัยเครือข่าย ไฟร์วอลล์จะแบ่งเครือข่ายออกเป็นโซนความปลอดภัย (Security Zones) โดยกำหนดระดับความเชื่อถือ (Trust Levels) ที่แตกต่างกัน:
+@@ -1063,11 +1063,11 @@
+     <div class="reading-distinction-body">
+       <div class="reading-distinction-point">
+         <strong class="reading-distinction-term">TCP (Transmission Control Protocol)</strong>
+-        <div class="reading-distinction-desc">Connection-oriented, 3-way handshake, รับประกันความสมบูรณ์ของข้อมูล เหมาะกับเว็บ (HTTP/S), อีเมล, และการโอนย้ายไฟล์</div>
++        <div class="reading-distinction-desc">Connection-oriented, 3-way handshake, reliable ordered byte stream; การเชื่อมต่ออาจล้มเหลว และไม่ยืนยันว่าธุรกรรมในแอปสำเร็จ (Connection failure possible; no application-completion guarantee)</div>
+       </div>
+       <div class="reading-distinction-point">
+         <strong class="reading-distinction-term">UDP (User Datagram Protocol)</strong>
+-        <div class="reading-distinction-desc">Connectionless, ไม่มีการจับมือ, ส่งข้อมูลรวดเร็วแบบ Best-effort ยอมรับข้อมูลสูญหายได้ เหมาะกับสตรีมมิง, VoIP, DNS, และ DHCP</div>
++        <div class="reading-distinction-desc">Connectionless, ไม่มีการจับมือ, Best-effort โดยไม่มีการเรียงลำดับหรือส่งซ้ำใน UDP เอง; ความเร็วขึ้นกับเครือข่ายและแอป (Speed depends on network/application)</div>
+       </div>
+     </div>
+   </div>
+@@ -1081,7 +1081,7 @@
+       </div>
+       <div class="reading-distinction-point">
+         <strong class="reading-distinction-term">IPv6 (128-bit Hexadecimal)</strong>
+-        <div class="reading-distinction-desc">มีหมายเลขมหาศาล (3.4 &times; 10<sup>38</sup>), รองรับ IPsec ในตัว, กำหนดไอพีอัตโนมัติด้วย SLAAC และยกเลิก Broadcast โดยแทนที่ด้วย Multicast/Anycast</div>
++        <div class="reading-distinction-desc">มีหมายเลขมหาศาล (3.4 &times; 10<sup>38</sup>), ใช้ IPsec ได้เมื่อรองรับและกำหนดค่า; IPv6 ไม่ได้ป้องกันทราฟฟิกโดยอัตโนมัติ (IPsec requires actual use/configuration), กำหนดไอพีอัตโนมัติด้วย SLAAC และยกเลิก Broadcast โดยแทนที่ด้วย Multicast/Anycast</div>
+       </div>
+     </div>
+   </div>
+@@ -1236,7 +1236,7 @@
+ 
+ | <div class="reading-bilingual-term"><span class="reading-term-en">**Concept**</span><span class="reading-term-th">(แนวคิดสำคัญ)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Exam Trigger Keywords**</span><span class="reading-term-th">(คำค้นพบในโจทย์ข้อสอบ)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Core Purpose**</span><span class="reading-term-th">(วัตถุประสงค์หลัก)</span></div> | <div class="reading-bilingual-term"><span class="reading-term-en">**Practical Scenario Example**</span><span class="reading-term-th">(ตัวอย่างสถานการณ์จริง)</span></div> |
+ | :--- | :--- | :--- | :--- |
+-| **Segmentation** | "Blast radius", "Lateral movement", "Divide network" | กักบริเวณความเสียหายและหยุดยั้งการแพร่กระจายของภัยคุกคาม | แยกแผนกการเงินออกจากแผนกต้อนรับ |
++| **Segmentation** | "Blast radius", "Lateral movement", "Divide network" | ช่วยลดผลกระทบและจำกัดเส้นทางเมื่อบังคับใช้/ทดสอบนโยบาย (Risk reduction with enforced/tested policy) | แยกแผนกการเงินออกจากแผนกต้อนรับและตรวจเส้นทางที่อนุญาต/ปฏิเสธ |
+ | **DMZ** | "Public-facing servers", "Buffer zone", "Isolate internal DB" | เป็นกันชนแยกบริการสาธารณะออกจากฐานข้อมูลภายใน | วาง Web Server และ Mail Gateway |
+ | **Micro-Segmentation** | "East-West traffic", "Workload level", "Host-level firewall" | ควบคุมการสื่อสารระหว่างเซิร์ฟเวอร์ในศูนย์ข้อมูลอย่างละเอียด | กั้นไม่ให้ Web Tier คุยกับ Database ตรง |
+ | **Defense in Depth** | "Multiple layers", "Complementary controls", "Example layers" | ใช้หลายมาตรการเสริมกันเพื่อลดผลกระทบเมื่อมาตรการหนึ่งล้มเหลว ไม่รับประกันความเป็นอิสระของทุกชั้น | มีทั้ง Perimeter FW, EDR, WAF และการเข้ารหัส |
+diff --git a/content/isc2-cc-2026/reading/domain-5-scenarios.js b/content/isc2-cc-2026/reading/domain-5-scenarios.js
+index 4e6d1728..d59929d7 100644
+--- a/content/isc2-cc-2026/reading/domain-5-scenarios.js
++++ b/content/isc2-cc-2026/reading/domain-5-scenarios.js
+@@ -5,7 +5,7 @@
+  * - 01: Data Sanitization & NIST SP 800-88 Media Sanitization (Purge vs. Clear for SSDs)
+  * - 02: Cryptographic Protection for Data at Rest vs. Data in Transit (Full Disk Encryption & TLS)
+  * - 03: Hybrid Cryptography & Bulk Data Transmission (Symmetric AES payload + Asymmetric RSA key exchange)
+- * - 04: Platform Root of Trust vs. Enterprise Appliance (Motherboard TPM vs. Dedicated HSM)
++ * - 04: Platform trust vs. service-key operations (TPM vs. selected HSM)
+  * - 05: Centralized Log Aggregation & Telemetry Correlation (SIEM Incident Detection)
+  * - 06: Security Alert Triage & Alert Fatigue Mitigation (False Positive vs. False Negative)
+  * - 07: Threat Framework Taxonomy (MITRE ATT&CK Tactics [Why] vs. Techniques [How])
+@@ -20,10 +20,10 @@ export const domain5Scenarios = [
+   {
+     id: 1,
+     topic: 'Data Sanitization & NIST SP 800-88',
+-    situation: 'โรงพยาบาลแห่งหนึ่งเตรียมปลดระวางอุปกรณ์ Solid-State Drive (SSD) ที่เคยจัดเก็บประวัติข้อมูลสุขภาพของผู้ป่วย (Protected Health Information - PHI) เพื่อนำไดรฟ์ไปบริจาคต่อให้กับสถานศึกษา ฝ่ายความปลอดภัยต้องการลบข้อมูลโดยมั่นใจว่าข้อมูลจะไม่สามารถกู้คืนได้ด้วยเครื่องมือทางห้องปฏิบัติการขั้นสูง แต่ยังคงรักษาโครงสร้างของ SSD ให้สามารถนำกลับมาใช้งานซ้ำได้',
+-    question: 'ตามมาตรฐาน NIST SP 800-88 Rev. 1 ระดับการทำลายข้อมูล (Sanitization Level) ใดที่เหมาะสมที่สุดสำหรับสถานการณ์นี้?',
+-    answer: 'Purge (Sanitization via Cryptographic Erase / Secure Erase)',
+-    reasoning: 'NIST SP 800-88 แบ่งระดับการล้างข้อมูลเป็น 3 ระดับหลัก: Clear (การเขียนทับระดับผู้ใช้ ไม่สามารถป้องกันเครื่องมือห้องแล็บขั้นสูงได้), Purge (การล้างข้อมูลระดับลึก เช่น Secure Erase ของคอนโทรลเลอร์ SSD หรือ Degaussing บนสื่อแม่เหล็ก ทำให้ไม่สามารถกู้คืนได้แม้ใช้เครื่องมือขั้นสูงในแล็บ แต่อุปกรณ์ยังนำมาใช้ต่อได้), และ Destroy (การทำลายสื่อทางกายภาพ เช่น บด ย่อย หรือเผา ซึ่งอุปกรณ์จะไม่สามารถใช้งานได้อีก)'
++    situation: 'โรงพยาบาลจะบริจาค SSD ที่เคยเก็บข้อมูลผู้ป่วย ต้องการให้การกู้ข้อมูลระดับแล็บไม่อาจทำได้ในทางปฏิบัติและให้ไดรฟ์ยังใช้ต่อได้ โดยต้องตรวจวิธีที่รุ่นนั้นรองรับและยอมรับผลตามนโยบายก่อนส่งต่อ / A hospital plans to donate a patient-data SSD. It needs infeasible advanced recovery while retaining usability, subject to a supported technique and an accepted sanitization outcome.',
++    question: 'ตาม NIST SP 800-88 Rev. 2 วิธีใดตรงกับเป้าหมายของกรณีนี้? / Which sanitization method matches this case\'s goal?',
++    answer: 'Purge (ใช้เทคนิคที่เหมาะกับ SSD และตรวจผลแล้ว / SSD-appropriate technique with verified and validated results)',
++    reasoning: 'Purge ตรงกับเป้าหมายการกู้ระดับแล็บและการใช้สื่อต่อ ต้องเลือกเทคนิคที่ SSD รองรับ โดย CE ใช้ได้เมื่อครบเงื่อนไขการเข้ารหัสและกุญแจ การ Degauss ไม่ใช้กับ SSD และชื่อ Secure Erase อย่างเดียวไม่พิสูจน์ผล ต้อง Verification และ Validation ก่อนยอมรับ / Purge matches the advanced-recovery goal while aiming to retain usability. Select a supported SSD technique; CE requires appropriate encryption and key conditions. Degaussing is unsuitable for SSDs, and a Secure Erase label alone is not proof. Verify completion and validate effectiveness.'
+   },
+   {
+     id: 2,
+@@ -44,10 +44,10 @@ export const domain5Scenarios = [
+   {
+     id: 4,
+     topic: 'Hardware Security Modules (HSM) vs. TPM',
+-    situation: 'ศูนย์ข้อมูลของสถาบันการเงินต้องการติดตั้งระบบสร้าง จัดเก็บ และบริหารจัดการวงจรกุญแจเข้ารหัสระดับองค์กร (Root CA Keys และ Financial Transaction Keys) ที่รองรับการประมวลผลคำขอถอดรหัสปริมาณมหาศาล และมีระบบป้องกันการงัดแงะทางกายภาพระดับสูงตามมาตรฐาน FIPS 140-2 Level 3/4',
++    situation: "ศูนย์ข้อมูลของสถาบันการเงินต้องการระบบสร้าง ปกป้อง และบริหาร Root CA Keys และ Financial Transaction Keys สำหรับบริการหลายระบบ โดยต้องเลือกรุ่นที่รองรับภาระงานและมีใบรับรอง FIPS 140-3 ตรงตามข้อกำหนดของกรณีนี้ / A financial institution needs shared CA/payment-key operations and must select a module whose capacity and FIPS 140-3 validation meet this case's requirements.",
+     question: 'อุปกรณ์รักษาความมั่นคงปลอดภัยระดับฮาร์ดแวร์ชนิดใดที่เหมาะสมที่สุดสำหรับศูนย์ข้อมูลแห่งนี้?',
+     answer: 'Hardware Security Module (HSM)',
+-    reasoning: 'HSM คืออุปกรณ์ฮาร์ดแวร์ภายนอกหรือระบบเครือข่ายสำหรับองค์กรขนาดใหญ่ ออกแบบมาเฉพาะเพื่อสร้าง ปกป้อง และบริหารกุญแจเข้ารหัสลับขั้นสูงสุด มีคุณสมบัติต่อต้านการงัดแงะ (Tamper-resistant) ต่างจาก TPM ซึ่งเป็นชิปฝังอยู่บนเมนบอร์ดของคอมพิวเตอร์เฉพาะเครื่องเพื่อดูแลความสมบูรณ์ของระบบ (Platform Integrity) และบูตระบบปลอดภัย (Secure Boot)'
++    reasoning: 'HSM เหมาะกับงานกุญแจของบริการในกรณีนี้ แต่ต้องตรวจความสามารถและใบรับรองของโมดูลที่เลือก ส่วน TPM เน้นความเชื่อถือและกุญแจของแพลตฟอร์ม ไม่ได้จำกัดเฉพาะชิปแยกบนเมนบอร์ด / An HSM fits this service-key use case; verify the selected module\'s capabilities and certificate. A TPM focuses on platform trust and keys and need not be a discrete motherboard chip.'
+   },
+   {
+     id: 5,
+diff --git a/content/isc2-cc-2026/reading/domain-5.md b/content/isc2-cc-2026/reading/domain-5.md
+index 3936b9a8..f065f315 100644
+--- a/content/isc2-cc-2026/reading/domain-5.md
++++ b/content/isc2-cc-2026/reading/domain-5.md
+@@ -53,8 +53,6 @@
+ 
+ </section>
+ 
+-<div class="reading-table-wrapper">
+-
+ | ระดับการจัดชั้นข้อมูล (Classification) | ระดับความลับ | ตัวอย่างข้อมูล | มาตรการควบคุมที่จำเป็น |
+ | :--- | :--- | :--- | :--- |
+ | **Public** | เปิดเผยได้ทั่วไป | เว็บไซต์บริษัท, ข่าวแจกสื่อ | ตรวจสอบความถูกต้องสมบูรณ์ (Integrity) |
+@@ -62,8 +60,6 @@
+ | **Sensitive** | จำกัดเฉพาะผู้มีหน้าที่ | ข้อมูลการเงิน, ซอร์สโค้ด | เข้ารหัสลับ, กำหนดสิทธิ์ Least Privilege เข้มงวด |
+ | **Regulated (PII/PHI)** | กฎหมายคุ้มครองสูงสุด | ข้อมูลบัตรประชาชน, ประวัติคนไข้ | เข้ารหัส FDE/TLS, Audit Logs ตลอดเวลา, ทำลายตามมาตรฐาน |
+ 
+-</div>
+-
+ </section>
+ 
+ <section class="reading-structure-pilot">
+@@ -115,65 +111,59 @@
+ 
+ <h4 class="reading-concept-group-title">ข้อแตกต่างระหว่างการปกป้องข้อมูลด้วยเทคนิคต่าง ๆ:</h4>
+ 
+-<div class="reading-table-wrapper">
+-
+ | เทคนิค | หลักการทำงาน | ความสามารถในการกู้คืน | ประโยชน์การใช้งาน |
+ | :--- | :--- | :--- | :--- |
+ | **Data Masking** | ปิดบังบางส่วนหรือแทนที่ด้วยข้อมูลรูปทรงเดียวกัน | รักษาโครงสร้างเดิม ปิดบังสายตา | หน้าจอบริการลูกค้า, ระบบทดสอบ Dev/QA |
+ | **Pseudonymization** | แทนที่ตัวระบุบุคคลด้วยรหัสเทียม (Pseudonym) | ย้อนกลับได้หากมีกุญแจจับคู่แยกต่างหาก | งานวิจัย, การวิเคราะห์ข้อมูลทางการแพทย์ |
+ | **Anonymization** | ลบข้อมูลระบุตัวตนออกอย่างถาวร | ไม่สามารถย้อนกลับได้โดยเด็ดขาด | งานสถิติสาธารณะ, ข้อมูลที่ไม่เข้าข่าย GDPR |
+ 
+-</div>
+-
+ </section>
+ 
+ <section class="reading-structure-pilot">
+ 
+ <h3 id="topic-5-1-data-sanitization-destruction">5.1.4 Data Sanitization &amp; NIST SP 800-88: การล้างและทำลายสื่อบันทึกข้อมูล</h3>
+ 
+-เมื่ออุปกรณ์จัดเก็บข้อมูล (Hard Drive, SSD, เทปสำรองข้อมูล, แฟลชไดรฟ์) สิ้นสุดการใช้งานหรือต้องโอนย้ายไปให้ผู้อื่น องค์กรต้องทำลายข้อมูลที่ค้างอยู่ไม่ให้สามารถกู้คืนได้ ตามมาตรฐานสากล **NIST SP 800-88 Rev. 1 (Guidelines for Media Sanitization)** ได้กำหนดระดับการทำลายข้อมูลไว้ 3 ระดับหลัก:
++เมื่ออุปกรณ์จัดเก็บข้อมูล (Hard Drive, SSD, เทปสำรองข้อมูล, แฟลชไดรฟ์) จะถูกใช้ซ้ำ ส่งต่อ หรือกำจัด ต้องเลือกวิธีให้เหมาะกับสื่อ ความอ่อนไหวของข้อมูล และนโยบายองค์กร **NIST SP 800-88 Rev. 2 (Guidelines for Media Sanitization)** อธิบายการทำให้เข้าถึงข้อมูลเป้าหมายไม่ได้ในทางปฏิบัติภายใต้ระดับความพยายามที่กำหนด ไม่ใช่การรับประกันว่ากู้คืนไม่ได้ 100% ตลอดไป / Select a method for the media, data sensitivity and organizational policy. NIST SP 800-88 Rev. 2 defines sanitization in terms of making target-data access infeasible for a specified level of effort, using three methods:
+ 
+ <section class="reading-definition-unit">
+-<h5>1. Clear (การเขียนทับระดับผู้ใช้):</h5>
++<h5>1. Clear (การล้างข้อมูลด้วยวิธีเชิงตรรกะ):</h5>
+ 
+-การเขียนทับพื้นที่จัดเก็บข้อมูลทั้งหมดด้วยข้อมูลที่ไม่มีความหมาย (เช่น เขียนทับด้วยเลข 0 ทั้งหมด หรือบิตสุ่ม) โดยใช้คำสั่งมาตรฐานระดับผู้ใช้ (Logical Interface Commands) สามารถป้องกันการกู้คืนข้อมูลด้วยซอฟต์แวร์กู้ข้อมูลทั่วไปได้ แต่ไม่สามารถป้องกันการกู้ข้อมูลด้วยเครื่องมือวิเคราะห์ในห้องปฏิบัติการขั้นสูงได้ เหมาะสำหรับอุปกรณ์ที่จะนำกลับมาหมุนเวียนใช้ใหม่ภายในองค์กรเดียวกัน
++ใช้วิธีเชิงตรรกะกับพื้นที่ที่ผู้ใช้เข้าถึงได้ (User-addressable Storage) เพื่อต้านการกู้คืนแบบง่ายผ่านอินเทอร์เฟซปกติ เช่น การเขียนทับเมื่อเหมาะกับสื่อนั้น ไม่ได้แปลว่าครอบคลุมพื้นที่สำรองหรือข้อมูลเดิมทุกตำแหน่งของ SSD / Clear protects against simple, non-invasive recovery through the normal interface. Overwriting is one media-dependent technique; it does not necessarily reach every previous data location on an SSD.
+ 
+ </section>
+ 
+ <section class="reading-definition-unit">
+ <h5>2. Purge (การล้างข้อมูลระดับลึก):</h5>
+ 
+-การใช้เทคนิคระดับฮาร์ดแวร์หรือทางกายภาพเพื่อทำให้ข้อมูลไม่สามารถกู้คืนได้ แม้จะใช้เครื่องมือทางห้องปฏิบัติการขั้นสูง (Laboratory Attack Techniques) ก็ตาม:
+-- **ATA Secure Erase / Cryptographic Erase (CE):** สั่งการผ่านคอนโทรลเลอร์ของอุปกรณ์โซลิดสเตตไดรฟ์ (SSD) เพื่อล้างบล็อกหน่วยความจำแฟลชทั้งหมด รวมถึงพื้นที่สำรอง (Over-provisioned areas)
+-- **Degaussing (การลบล้างสนามแม่เหล็ก):** การใช้เครื่องสร้างสนามแม่เหล็กความเข้มสูงทำลายโดเมนแม่เหล็กบนสื่อบันทึกประเภทจานแม่เหล็ก (HDD และเทป) ทำให้ข้อมูลหายไปอย่างสิ้นเชิง (ข้อควรระวัง: Degaussing จะทำลายฮาร์ดดิสก์จนไม่สามารถนำกลับมาใช้ใหม่ได้ และไม่สามารถใช้กับ SSD ได้)
+-- สื่อบันทึกที่ผ่านการ Purge ด้วย Secure Erase สามารถนำไปใช้งานต่อนอกองค์กรหรือบริจาคได้อย่างปลอดภัย
++ใช้เทคนิคเชิงตรรกะหรือทางกายภาพเพื่อให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ โดยมุ่งให้สื่อยังใช้ต่อได้หากเทคนิคและสื่อนั้นรองรับ / Purge targets infeasible recovery even with advanced laboratory techniques while aiming to retain usability where supported.
++- **Secure Erase / Cryptographic Erase (CE):** ต้องตรวจเทคนิคที่อุปกรณ์รองรับและเงื่อนไขของผู้ผลิต ชื่อคำสั่งอย่างเดียวไม่ยืนยันผล และ CE ล้างกุญแจ ไม่ใช่เขียนทับบล็อกข้อมูลทุกบล็อก / A command name alone does not establish effective purge; CE sanitizes keys rather than overwriting every data block.
++- **Degaussing (การลบล้างสนามแม่เหล็ก):** ใช้ได้กับสื่อแม่เหล็กที่เหมาะสม เช่น HDD หรือเทป ไม่ใช้กับ SSD และอาจทำให้สื่อใช้ต่อไม่ได้ / Degaussing applies to suitable magnetic media, not SSDs, and can leave the media unusable.
++- การส่งต่อหรือบริจาคต้องยอมรับผลล้างข้อมูลตามนโยบายก่อน ไม่ใช่เห็นคำว่า Secure Erase แล้วถือว่าปลอดภัย / Reuse or donation requires an accepted sanitization outcome under policy, not just a reported command name.
+ 
+ </section>
+ 
+ <section class="reading-definition-unit">
+ <h5>3. Destroy (การทำลายสื่อทางกายภาพ):</h5>
+ 
+-การทำลายชิ้นส่วนทางกายภาพของสื่อบันทึกข้อมูลจนไม่สามารถนำมาเชื่อมต่อหรือใช้งานได้อีกตลอดไป ได้แก่ การบดละเอียด (Shredding), การเผาทำลายที่อุณหภูมิสูง (Incineration), การย่อยสลายด้วยสารเคมี (Disintegration), การหลอมละลาย (Melting), หรือการเจาะทะลุจานบันทึก (Deforming/Drilling) นิยมใช้กับสื่อบันทึกที่มีข้อมูลความลับระดับสูงสุด หรืออุปกรณ์ที่ชำรุดเสียหายจนไม่สามารถสั่งรันคำสั่ง Clear/Purge ได้
++ทำให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ และทำให้สื่อใช้จัดเก็บข้อมูลต่อไม่ได้ เช่น บดย่อยหรือเผาด้วยกระบวนการที่เหมาะกับชนิดสื่อและได้รับอนุมัติ การเจาะรูหรือทำให้อุปกรณ์เปิดไม่ติดเพียงอย่างเดียวไม่ได้พิสูจน์ว่าข้อมูลถูกทำลายครบ / Destroy makes advanced recovery infeasible and leaves the media unusable for storage. Use an approved media-appropriate process; a drilled hole or a device that no longer starts is not proof of effective destruction.
+ 
+ </section>
+ 
+ <section class="reading-definition-unit">
+ <h5>Crypto-shredding (การทำลายกุญแจเข้ารหัส):</h5>
+ 
+-เทคนิคพิเศษสำหรับการทำลายข้อมูลบนระบบคลาวด์หรือไดรฟ์เสมือน (Virtual Disks) ที่ผู้ใช้งานไม่มีสิทธิ์เข้าถึงอุปกรณ์ฮาร์ดแวร์ทางกายภาพ: ทำได้โดยการเข้ารหัสข้อมูลทั้งหมดด้วยอัลกอริทึมที่แข็งแกร่ง (AES-256) ตั้งแต่ต้น จากนั้นเมื่อต้องการทำลายข้อมูล ให้ทำการลบและทำลายกุญแจถอดรหัส (Decryption Key) ทิ้งอย่างถาวร ส่งผลให้ข้อมูลที่เหลืออยู่กลายเป็นขยะดิจิทัลที่ไม่สามารถถอดรหัสกลับมาได้อีกเลย
++การทำลายกุญแจอาจใช้เป็น **Cryptographic Erase (CE)** ซึ่งเป็นเทคนิคของ Purge ไม่ใช่วิธีหลักลำดับที่สี่ ใช้ได้เมื่อข้อมูลเป้าหมายถูกเข้ารหัสอย่างเหมาะสมก่อนจัดเก็บ และล้างกุญแจเป้าหมายที่จำเป็นรวมทุกสำเนาได้อย่างน่าเชื่อถือ ต้องพิจารณาสำรองข้อมูล กุญแจสำรอง และสำเนา Plaintext แยกต่างหากด้วย / CE is a purge technique, not a fourth sanitization method. It depends on suitable encryption before storage and reliable sanitization of all copies of the target keys. Backups, escrowed keys and plaintext copies need separate consideration; CE is not a promise against every future recovery capability.
+ 
+ </section>
+ 
+-<div class="reading-table-wrapper">
++**ตรวจผลก่อนยอมรับ (Assurance):** Verification ตรวจว่ากระบวนการเสร็จและมีข้อผิดพลาดหรือไม่ ส่วน Validation ประเมินว่าผลเพียงพอต่อสื่อ ข้อมูล และความเสี่ยงที่กำหนดหรือไม่ หากไม่เพียงพอต้องเลือกดำเนินการเพิ่มเติมก่อนปล่อยสื่อ / Verification checks completion and reported issues; validation decides whether the outcome is effective for the media, data and risk. An inadequate result must not be accepted for release.
+ 
+-| วิธีการตาม NIST SP 800-88 | กลไกการดำเนินการ | ป้องกันการโจมตีระดับแล็บได้หรือไม่ | อุปกรณ์นำกลับมาใช้ใหม่ได้หรือไม่ |
++| วิธี/เทคนิค (Method/technique) | แนวทาง (Approach) | ขอบเขตผล (Protection goal) | ใช้สื่อต่อ (Reuse) |
+ | :--- | :--- | :--- | :--- |
+-| **Clear** | เขียนทับแบบลอจิคัล (Overwriting) | ไม่ได้ (แล็บขั้นสูงอาจกู้ได้) | ได้ (นำกลับมาใช้ซ้ำได้) |
+-| **Purge** | Secure Erase, Degaussing, CE | **ได้ (แล็บขั้นสูงก็กู้คืนไม่ได้)** | ได้สำหรับ SSD/CE, ไม่ได้สำหรับ HDD ที่โดน Degauss |
+-| **Destroy** | บดย่อย, เผาทำลาย, หลอมละลาย | **ได้ 100% (สื่อถูกทำลายถาวร)** | ไม่ได้ (อุปกรณ์พังทลายสิ้นเชิง) |
+-| **Crypto-shredding** | ลบและทำลายกุญแจเข้ารหัสทิ้ง | **ได้ (หากกุญแจถูกทำลายสมบูรณ์)** | ได้ (เนื้อที่จัดเก็บบนคลาวด์นำมาเขียนทับใหม่ได้) |
+-
+-</div>
++| **Clear** | เทคนิคเชิงตรรกะ (Logical technique) | ต้านการกู้แบบง่ายผ่านอินเทอร์เฟซปกติ (Simple recovery) | โดยทั่วไปได้ ตามสื่อ/นโยบาย (Usually; media/policy dependent) |
++| **Purge** | เทคนิคที่เหมาะกับสื่อ รวม CE เมื่อครบเงื่อนไข (Media-appropriate technique) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | มุ่งให้ใช้ต่อได้ แต่ขึ้นกับเทคนิค (Intended; technique dependent) |
++| **Destroy** | ทำลายทางกายภาพที่เหมาะสม (Appropriate physical destruction) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | ไม่ได้ (Unusable for storage) |
++| **CE / Crypto-shredding** | เทคนิคของ Purge: ล้างกุญแจเป้าหมาย (Purge technique: key sanitization) | ขึ้นกับการเข้ารหัสและทุกสำเนากุญแจ (Encryption/key-copy conditions) | อาจได้เมื่อสื่อยังทำงานและนโยบายอนุญาต (May be reusable under policy) |
+ 
+ </section>
+ 
+@@ -210,16 +200,12 @@
+ 
+ </section>
+ 
+-<div class="reading-table-wrapper">
+-
+ | สถานะของข้อมูล (Data State) | ตำแหน่งที่ข้อมูลอยู่ | มาตรการควบคุมความปลอดภัยหลัก | เทคโนโลยีตัวอย่าง |
+ | :--- | :--- | :--- | :--- |
+ | **Data at Rest** | ฮาร์ดดิสก์, SSD, Database, Backup Tape | Full Disk Encryption, File Encryption | BitLocker, FileVault, SED, TDE |
+ | **Data in Transit** | สาย LAN, สัญญาณ Wi-Fi, อินเทอร์เน็ต | Cryptographic Tunneling, Encrypted Protocols | TLS 1.3, HTTPS, IPsec, SFTP, WPA3 |
+ | **Data in Use** | RAM, CPU Cache, Registers, หน้าจอ | Memory Isolation, Enclaves, Privacy Screen | Intel SGX, AMD SEV, Clean Desk Policy |
+ 
+-</div>
+-
+ </section>
+ 
+ <section class="reading-structure-pilot">
+@@ -250,8 +236,6 @@
+ 1. ใช้ **Asymmetric Encryption (RSA หรือ ECC)** ในช่วงเริ่มต้นเพื่อแลกเปลี่ยนกุญแจแบบสมมาตรชั่วคราว (Session Key) อย่างปลอดภัย
+ 2. จากนั้นใช้กุญแจ Session Key ดังกล่าวในการส่งข้อมูลด้วย **Symmetric Encryption (AES)** ซึ่งมีความเร็วสูงในการเข้ารหัสเนื้อหาทั้งหมด
+ 
+-<div class="reading-table-wrapper">
+-
+ | คุณลักษณะ (Attribute) | Symmetric Encryption (สมมาตร) | Asymmetric Encryption (อสมมาตร) |
+ | :--- | :--- | :--- |
+ | **จำนวนกุญแจ** | 1 กุญแจ (Shared Secret Key) | 2 กุญแจคู่กัน (Public Key & Private Key) |
+@@ -260,8 +244,6 @@
+ | **การใช้งานหลัก** | ข้อมูลปริมาณมาก (Bulk Data), Disk Encryption | การแลกเปลี่ยนกุญแจ (Key Exchange), Digital Signatures |
+ | **ขั้นตอนวิธีตัวอย่าง** | **AES-128/192/256**, Blowfish, ChaCha20 | **RSA**, **ECC**, Diffie-Hellman |
+ 
+-</div>
+-
+ </section>
+ 
+ <section class="reading-structure-pilot">
+@@ -300,14 +282,18 @@
+ <section class="reading-definition-unit">
+ <h5>Digital Signatures (ลายมือชื่อดิจิทัล):</h5>
+ 
+-กลไกที่ผสานการทำงานของ **Hashing** และ **Asymmetric Encryption** เข้าด้วยกัน เพื่อให้ได้คุณสมบัติความมั่นคงปลอดภัย 3 ประการ:
+-1. **Integrity (ความสมบูรณ์):** ข้อมูลไม่ถูกดัดแปลง
+-2. **Authentication (การยืนยันตัวตน):** ยืนยันว่าผู้ส่งเป็นตัวจริง
+-3. **Non-repudiation (การปฏิเสธความรับผิดชอบไม่ได้):** ผู้ส่งไม่สามารถอ้างได้ว่าตนไม่ได้เป็นผู้ส่งข้อความ
++กลไก **Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ)** ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:
++1. **Integrity (ความสมบูรณ์):** ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.
++2. **Origin Authentication (การยืนยันแหล่งที่มา):** เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.
++3. **Non-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้):** สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.
+ 
+ **กระบวนการทำงานของลายมือชื่อดิจิทัล:**
+-- **ผู้ส่ง (Sender):** นำเอกสารไปคำนวณค่าแฮช &rarr; นำค่าแฮชไปเข้ารหัสด้วย **Private Key ของผู้ส่งเอง** ได้ผลลัพธ์เป็น "ลายมือชื่อดิจิทัล" &rarr; แนบลายมือชื่อไปพร้อมกับเอกสาร
+-- **ผู้รับ (Recipient):** นำลายมือชื่อดิจิทัลไปถอดรหัสด้วย **Public Key ของผู้ส่ง** จะได้ค่าแฮชเดิม &rarr; คำนวณค่าแฮชของเอกสารที่ได้รับมาเทียบเคียง &rarr; หากค่าแฮชตรงกัน แสดงว่าเอกสารมาจากผู้ส่งจริงและไม่ถูกดัดแปลงแก้ไข
++- **ผู้ลงนาม (Signer):** ใช้อัลกอริทึม **Sign** กับ Private Key และเอกสาร &rarr; ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.
++- **ผู้ตรวจ (Verifier):** ใช้อัลกอริทึม **Verify** กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ &rarr; ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.
++
++**แยกหน้าที่ให้ชัด (Different purposes):** Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.
++
++**ตัวอย่าง (Example):** ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.
+ 
+ </section>
+ 
+@@ -317,40 +303,39 @@
+ 
+ <h3 id="topic-5-1-tpm-vs-hsm">5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์</h3>
+ 
+-การเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้ฮาร์ดแวร์ความปลอดภัยเฉพาะทางในการปกป้องกุญแจ:
++การเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.
+ 
+ <section class="reading-definition-unit">
+ <h5>TPM (Trusted Platform Module - ISO/IEC 11889):</h5>
+ 
+-ไมโครชิปความปลอดภัยเฉพาะทางที่ถูกบัดกรีติดอยู่บนเมนบอร์ดของคอมพิวเตอร์หรืออุปกรณ์ปลายทาง:
+-- ทำหน้าที่เป็น **Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์)** ของคอมพิวเตอร์แต่ละเครื่อง
+-- สนับสนุนฟีเจอร์ **Measured Boot และ Secure Boot** โดยวัดค่าแฮชของเฟิร์มแวร์ UEFI, บูตโหลดเดอร์, และเคอร์เนลระบบปฏิบัติการก่อนอนุญาตให้เปิดเครื่อง เพื่อป้องกันไม่ให้ Rootkit หรือมัลแวร์บูตแทรกแซงระบบ
+-- จัดเก็บกุญแจเข้ารหัสลับของเครื่องเฉพาะ เช่น กุญแจ BitLocker โดยกุญแจจะไม่หลุดออกไปยังระบบปฏิบัติการ
++โมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.
++- ทำหน้าที่สนับสนุน **Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์)** ของแพลตฟอร์ม / Support a platform hardware root of trust.
++- **Measured Boot:** ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน **Secure Boot** ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.
++- สร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.
+ 
+ </section>
+ 
+ <section class="reading-definition-unit">
+ <h5>HSM (Hardware Security Module):</h5>
+ 
+-อุปกรณ์ฮาร์ดแวร์ความปลอดภัยระดับองค์กร (Enterprise Appliance) อาจเป็นการ์ด PCIe ภายในเซิร์ฟเวอร์ หรือเป็นตู้ฮาร์ดแวร์ภายนอกที่เชื่อมต่อผ่านระบบเครือข่าย:
+-- ออกแบบมาเพื่อสร้าง ปกป้อง และบริหารวงจรกุญแจเข้ารหัสลับระดับองค์กร (Root Certificate Authority Keys, กุญแจธุรกรรมทางการเงิน, กุญแจเซิร์ฟเวอร์คลาวด์)
+-- มีประสิทธิภาพในการประมวลผลทางคณิตศาสตร์สูงมาก รองรับการถอดรหัสและเซ็นลายมือชื่อดิจิทัลพร้อมกันนับหมื่นรายการต่อวินาที
+-- ผ่านการรับรองความปลอดภัยระดับสูงตามมาตรฐาน **FIPS 140-2 Level 3 หรือ Level 4**
+-- มีคุณสมบัติต่อต้านการงัดแงะทางกายภาพ (Tamper-Resistant & Tamper-Evident) หากตรวจพบการพยายามเปิดฝาเครื่องหรือเจาะทะลุ อุปกรณ์จะทำลายกุญแจทิ้งทันที (Zeroization) เพื่อป้องกันข้อมูลรั่วไหล
++โมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.
++- สร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.
++- แอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.
++- อัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.
++- การรับรอง **FIPS 140** ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.
++- การป้องกันและตอบสนองต่อการงัดแงะ รวมถึง **Zeroization (การล้างข้อมูลกุญแจ)** ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.
+ 
+ </section>
+ 
+-<div class="reading-table-wrapper">
+-
+ | มิติการเปรียบเทียบ | TPM (Trusted Platform Module) | HSM (Hardware Security Module) |
+ | :--- | :--- | :--- |
+-| **ตำแหน่งติดตั้ง** | ชิปบนเมนบอร์ดคอมพิวเตอร์ปลายทาง (PC/Laptop) | อุปกรณ์ฮาร์ดแวร์แยกต่างหากในศูนย์ข้อมูล / เครือข่าย |
+-| **ขอบเขตการใช้งาน** | ประจำเครื่องคอมพิวเตอร์เครื่องเดียว | ให้บริการส่วนกลางแก่องค์กรหรือเซิร์ฟเวอร์ทั้งระบบ |
+-| **หน้าที่หลัก** | Platform Integrity, Secure Boot, BitLocker Keys | จัดการวงจรกุญแจ, Root CA, ทำธุรกรรมทางการเงิน |
+-| **มาตรฐานความปลอดภัย** | ISO/IEC 11889 | **FIPS 140-2 / FIPS 140-3 (Level 3/4)** |
+-| **การป้องกันการงัดแงะ** | พื้นฐานในตัวชิป | มีเซนเซอร์ตรวจจับและทำลายกุญแจอัตโนมัติ (Zeroization) |
++| **รูปแบบ (Form)** | Discrete / Integrated / Firmware TPM | PCIe / Network / USB เป็นตัวอย่าง (examples) |
++| **ขอบเขตทั่วไป (Typical scope)** | ความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys) | งานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations) |
++| **งานตัวอย่าง (Example use)** | Measured Boot, ปกป้องกุญแจ BitLocker (key protection) | จัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments) |
++| **มาตรฐาน (Standards)** | ข้อกำหนด TPM: ISO/IEC 11889 (TPM specification) | ตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated) |
++| **การป้องกัน (Protection)** | ขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent) | การป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization) |
+ 
+-</div>
++<p class="reading-table-note"><strong>เลือกตามหน้าที่ (Choose by purpose):</strong> TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.</p>
+ 
+ </section>
+ 
+@@ -540,16 +525,12 @@
+ 
+ การจัดลำดับการตอบสนองของศูนย์ SOC ต้องประเมินจากหลายปัจจัยร่วมกัน ได้แก่ **Severity, Business Impact, Likelihood, Business Criticality, Asset Exposure, และ Urgency**:
+ 
+-<div class="reading-table-wrapper">
+-
+ | Urgency / Impact | High Impact (ผลกระทบสูง) | Medium Impact (ผลกระทบปานกลาง) | Low Impact (ผลกระทบต่ำ) |
+ | :--- | :--- | :--- | :--- |
+ | **High Urgency (เร่งด่วนสูง)** | **P1 (Critical):** โจมตีเซิร์ฟเวอร์หลัก | **P2 (Major):** ระบบงานสาขาย่อยติดขัด | **P3 (Moderate):** เครื่องพนักงาน 1 เครื่อง |
+ | **Medium Urgency (เร่งด่วนปานกลาง)** | **P2 (Major):** ช่องโหว่สำคัญบนระบบหลังบ้าน | **P3 (Moderate):** การตั้งค่าผิดพลาดทั่วไป | **P4 (Minor):** โปรแกรมแจ้งเตือนข้อผิดพลาด |
+ | **Low Urgency (เร่งด่วนต่ำ)** | **P3 (Moderate):** ระบบทดสอบถูกโจมตี | **P4 (Minor):** ข้อมูล Log ค้างส่ง | **P5 (Informational):** บันทึกสถิติเพื่อทบทวน |
+ 
+-</div>
+-
+ - **เกณฑ์พิจารณาเปรียบเทียบ:** สัญญาณเตือน Suspicious Login บนเซิร์ฟเวอร์ Production Domain Controller ต้องถูกจัดเป็น **P1** เสมอ ในขณะที่การพยายามสแกนพอร์ตบนเซิร์ฟเวอร์ทดสอบในห้อง Lab ที่ไม่มีข้อมูลจริงจะถูกจัดเป็น **P4 หรือ P5**
+ 
+ </section>
+@@ -599,8 +580,6 @@
+ 
+ </section>
+ 
+-<div class="reading-table-wrapper">
+-
+ | ประเภท Threat Actor | แรงจูงใจหลัก | ระดับความสามารถและทรัพยากร | เป้าหมายทั่วไป |
+ | :--- | :--- | :--- | :--- |
+ | **Nation-State (APT)** | จารกรรมข้อมูล, ผลประโยชน์ประเทศ | สูงสุด (งบประมาณและเครื่องมือระดับชาติ) | รัฐบาล, กองทัพ, โครงสร้างพื้นฐานสำคัญ |
+@@ -609,8 +588,6 @@
+ | **Insiders** | เงิน, ความแค้น, หรือความประมาท | มีสิทธิ์เข้าถึงระบบภายในโดยตรง | ทรัพย์สินทางปัญญา, ฐานข้อมูลลูกค้า |
+ | **Script Kiddies** | ความสนุก, อวดโอ้, ลองของ | ต่ำมาก (ใช้เครื่องมือสำเร็จรูป) | ระบบที่มีช่องโหว่ชัดเจนและเปิดสู่สาธารณะ |
+ 
+-</div>
+-
+ </section>
+ 
+ <section class="reading-structure-pilot">
+@@ -697,7 +674,9 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ วิธีการหรือเทคนิคเฉพาะทางที่ผู้โจมตีนำมาใช้เพื่อให้บรรลุเป้าหมายของ Tactic นั้น เช่น:
+ - ใน Tactic *Initial Access* อาจใช้เทคนิค **Phishing (T1566)**
+ - ใน Tactic *Lateral Movement* อาจใช้เทคนิค **Pass the Hash (T1550.002)**
+-- ใน Tactic *Execution* อาจใช้เทคนิค **Command and Scripting: PowerShell (T1059)**
++- ใน Tactic *Execution* อาจใช้ Sub-technique **Command and Scripting Interpreter: PowerShell (T1059.001)**
++
++**ชื่อกับรหัส (Names and IDs):** PowerShell และ Spearphishing Link เป็น Sub-techniques ของ Command and Scripting Interpreter (T1059) และ Phishing (T1566) ตามลำดับ จึงใช้รหัสย่อยของตนเองเมื่อระบุชื่อเฉพาะ / PowerShell and Spearphishing Link have their own sub-technique IDs; T1059 and T1566 identify their parent techniques.
+ 
+ </section>
+ 
+@@ -756,7 +735,9 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ 
+ <h3 id="topic-5-3-irp-lifecycle-phases">5.3.3 The 6-Phase Incident Response Lifecycle: 6 ขั้นตอนวงจรการตอบสนองต่อเหตุการณ์</h3>
+ 
+-ตามมาตรฐาน **NIST SP 800-61 / ISO 27035** และหลักสูตร ISC2 CC วงจรการตอบสนองต่อเหตุการณ์แบ่งออกเป็น 6 ขั้นตอนต่อเนื่องกันอย่างเป็นระบบ:
++บทเรียนนี้ใช้ **6 กิจกรรมเป็นแบบจำลองเพื่อการเรียน (Teaching Model)** ตามภาพและตัวอย่างด้านล่าง กิจกรรมอาจคาบเกี่ยว ย้อนกลับ หรือทำซ้ำตามเหตุการณ์ ไม่ใช่ลำดับบังคับสากลที่ NIST, ISO หรือ ISC2 กำหนดตรงกัน / The six activities below are this course's teaching model. They can overlap, repeat or be revisited; they are not a universal sequence jointly prescribed by NIST, ISO and ISC2.
++
++**บริบท NIST ปัจจุบัน (Current NIST context):** NIST SP 800-61 Rev. 3 เชื่อม IR กับ CSF 2.0 โดย Detect, Respond และ Recover เป็นแกนการตอบสนอง ส่วน Govern, Identify และ Protect สนับสนุนความพร้อมและการจัดการความเสี่ยง พร้อมปรับปรุงจากบทเรียนอย่างต่อเนื่อง / NIST SP 800-61 Rev. 3 places incident response within CSF 2.0: Detect, Respond and Recover address incidents, supported by broader Govern, Identify and Protect activities and continuous improvement. นี่ไม่ใช่การเปลี่ยนเป็นขั้นตอนบังคับใหม่หกข้อ / These functions are not a replacement six-step mandatory pipeline.
+ 
+ <div class="reading-semantic-diagram" data-diagram="irpLifecycle"></div>
+ 
+@@ -786,7 +767,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ 
+ เป้าหมายคือหยุดยั้งไม่ให้ความเสียหายลุกลามไปยังระบบอื่น แบ่งเป็น:
+ - **Short-term Containment (การกักกันระยะสั้น):** ดึงสาย LAN, ปิดการเชื่อมต่อ Wi-Fi, สั่ง EDR กักกันโฮสต์ (Isolate Host), หรือบล็อก IP/Port บนไฟร์วอลล์ทันที
+-- **Long-term Containment (การควบคุมระยะยาว):** วางระบบสำรองชั่วคราวเพื่อให้อสังหาริมทรัพย์ของระบบงานยังคงให้บริการได้ในวงจำกัดในระหว่างรอการแก้ไขถาวร
++- **Long-term Containment (การควบคุมระยะยาว):** จัดสภาพแวดล้อมชั่วคราวที่ควบคุมความเสี่ยง เพื่อให้บริการที่จำเป็นทำงานได้ในวงจำกัดระหว่างรอการแก้ไขถาวร / Maintain limited essential services in a controlled temporary environment while permanent remediation is arranged.
+ 
+ </section>
+ 
+@@ -814,8 +795,8 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ <section class="reading-definition-unit">
+ <h5>6. Post-Incident Review (การทบทวนหลังเหตุการณ์ / Lessons Learned):</h5>
+ 
+-ขั้นตอนสุดท้ายแต่ทรงคุณค่าที่สุดสำหรับการปรับปรุงระบบ:
+-- จัดประชุมถอดบทเรียนร่วมกับผู้เกี่ยวข้องทั้งหมดภายใน 1–2 สัปดาห์หลังเหตุการณ์ยุติ
++การทบทวนอย่างเป็นทางการหลังเหตุการณ์ช่วยปรับปรุงระบบ แต่ไม่ต้องรอให้กู้คืนเสร็จจึงเริ่มใช้บทเรียนที่พบ / A formal post-incident review supports improvement; useful lessons can be applied before recovery finishes.
++- จัดประชุมตามกรอบเวลาที่องค์กรกำหนด เช่น ภายใน 1–2 สัปดาห์หลังเหตุการณ์ยุติในตัวอย่างนี้ ไม่ใช่กำหนดสากล / Use the organization's review schedule; one to two weeks is an example, not a universal deadline.
+ - ตอบคำถามสำคัญ: อะไรเกิดขึ้นบ้าง? แผนที่เตรียมไว้ได้ผลหรือไม่? มีจุดบกพร่องตรงไหน?
+ - จัดทำรายงานสรุปเหตุการณ์ฉบับสมบูรณ์ และนำข้อเสนอแนะกลับไปอัปเดตแผน IRP ในขั้นตอน Preparation เพื่อสร้างวงจรสู่การพัฒนาอย่างต่อเนื่อง
+ 
+@@ -824,8 +805,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ <section class="reading-definition-unit">
+ <h5>ตารางเปรียบเทียบคำกริยาชี้เป้าสำหรับข้อสอบ (Exam Verb Triggers):</h5>
+ 
+-<div class="reading-table-wrapper">
+-
+ | ขั้นตอน IRP | คำกริยาชี้เป้าในโจทย์ (Exam Keywords) | คำถามหลัก | ตัวอย่างการกระทำในสถานการณ์จริง |
+ | :--- | :--- | :--- | :--- |
+ | **Preparation** | Train, Establish playbook, Backup, Call tree | เตรียมพร้อมล่วงหน้าอย่างไร? | จัดตั้งทีม CSIRT, จัดทำ Playbook, จัดเตรียมเครื่องมือ Forensics |
+@@ -835,8 +814,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ | **Recovery** | **Restore**, **Rebuild**, **Return to service**, Reconnect | นำระบบกลับมาเปิดอย่างไร? | Restore ข้อมูลจาก Clean Backup, เปิดระบบให้ผู้ใช้กลับมาทำงาน |
+ | **Post-Incident Review** | **Lessons learned**, Root cause analysis, Update IRP | เรียนรู้อะไรเพื่อไม่ให้เกิดซ้ำ? | ประชุมทบทวนเหตุการณ์, ปรับปรุงกฎตรวจจับ, อบรมพนักงาน |
+ 
+-</div>
+-
+ </section>
+ 
+ <section class="reading-definition-unit">
+@@ -916,8 +893,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ 
+ </section>
+ 
+-<div class="reading-table-wrapper">
+-
+ | มิติการเปรียบเทียบ | Tabletop Exercise (TTX) | Technical Testing / Simulation |
+ | :--- | :--- | :--- |
+ | **รูปแบบการฝึกซ้อม** | อภิปรายจำลองสถานการณ์ในห้องประชุม (Discussion) | ลงมือปฏิบัติจริงบนระบบคอมพิวเตอร์ (Hands-on) |
+@@ -926,8 +901,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ | **จุดเน้นหลัก** | การตัดสินใจ, บทบาทหน้าที่, การสื่อสาร | ความแม่นยำของเครื่องมือ, การจับสัญญาณ Log, ฝีมือช่าง |
+ | **ความถี่ที่แนะนำ** | อย่างน้อยปีละ 1–2 ครั้ง | ซ้อมเป็นประจำหรือทำร่วมกับ Red/Blue Team |
+ 
+-</div>
+-
+ </section>
+ 
+ </section>
+@@ -1034,8 +1007,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ 6. **Implement &amp; Deploy:** ดำเนินการติดตั้งจริงตามขั้นตอนที่ได้รับอนุมัติอย่างเคร่งครัด
+ 7. **Post-Implementation Review (PIR):** ประเมินผลลัพธ์หลังการติดตั้งว่าบรรลุวัตถุประสงค์หรือไม่ และบันทึกข้อผิดพลาดเพื่อปิดคำขอเปลี่ยนแปลง
+ 
+-<div class="reading-table-wrapper">
+-
+ | ประเด็นเปรียบเทียบ | Configuration Management (การจัดการการตั้งค่า) | Change Management (การจัดการการเปลี่ยนแปลง) |
+ | :--- | :--- | :--- |
+ | **บทบาทหลัก** | **Maintains Desired Configuration:** รักษาและคงสถานะความมั่นคงปลอดภัยที่ระบบควรจะเป็น | **Controls Changes to Systems:** ควบคุมกระบวนการปรับปรุง แก้ไข หรืออัปเกรดระบบ |
+@@ -1044,8 +1015,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ | **การตรวจจับและป้องกัน** | ตรวจจับ **Configuration Drift** (การเบี่ยงเบนจากฐานมาตรฐาน) | ป้องกันปัญหา Downtime, ผลกระทบต่อธุรกิจ และการแก้ไขโดยพลการ |
+ | **ตัวอย่างในโลกจริง** | เทมเพลตการตั้งค่าพอร์ตและนโยบายบนไฟร์วอลล์ที่ได้รับอนุมัติแล้ว | เอกสาร RFC ยื่นขอเปิดพอร์ตบริการใหม่บนไฟร์วอลล์พร้อมแผน Rollback |
+ 
+-</div>
+-
+ </section>
+ 
+ </section>
+@@ -1098,16 +1067,12 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ 
+ </section>
+ 
+-<div class="reading-table-wrapper">
+-
+ | ทีมความปลอดภัย | บทบาทหน้าที่ | กิจกรรมหลัก | เป้าหมายสูงสุด |
+ | :--- | :--- | :--- | :--- |
+ | **Blue Team** | ฝ่ายตั้งรับ (Defenders) | เฝ้าระวัง SIEM, ปรับแต่งไฟร์วอลล์, ทำ IR, กักกันมัลแวร์ | ปกป้องระบบและขัดขวางการโจมตี |
+ | **Red Team** | ฝ่ายรุก (Attackers) | จำลองการเจาะระบบ, เจาะผ่านช่องโหว่, ทำ Phishing | ค้นหาจุดอ่อนและทดสอบประสิทธิภาพของฝ่ายรับ |
+ | **Purple Team** | ผสานความร่วมมือ (Collaboration) | ซ้อมร่วมกันแบบเรียลไทม์, แลกเปลี่ยนข้อมูลเชิงลึก | ยกระดับขีดความสามารถการตรวจจับอย่างรวดเร็ว |
+ 
+-</div>
+-
+ </section>
+ 
+ <section class="reading-structure-pilot">
+@@ -1136,8 +1101,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ 
+ </section>
+ 
+-<div class="reading-table-wrapper">
+-
+ | มิติการเปรียบเทียบ | Vulnerability Assessment (VA) | Penetration Testing (Pentest) |
+ | :--- | :--- | :--- |
+ | **วิธีการทำงาน** | สแกนอัตโนมัติด้วยซอฟต์แวร์ (Automated Tool) | ดำเนินการโดยผู้เชี่ยวชาญมนุษย์ (Human Expert) |
+@@ -1146,8 +1109,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ | **ความเสี่ยงต่อระบบงาน** | ต่ำมาก (ทำงานได้ในเวลาปกติ) | ปานกลางถึงสูง (อาจทำให้บริการหยุดชะงัก) |
+ | **เอกสารบังคับก่อนเริ่ม** | ข้อตกลงทั่วไป | **เอกสารอนุญาตและกฎเกณฑ์ (Rules of Engagement)** |
+ 
+-</div>
+-
+ </section>
+ 
+ <section class="reading-structure-pilot">
+@@ -1178,8 +1139,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ 
+ </section>
+ 
+-<div class="reading-table-wrapper">
+-
+ | คุณลักษณะ (Attribute) | SAST (Static Testing) | DAST (Dynamic Testing) |
+ | :--- | :--- | :--- |
+ | **มุมมองการทดสอบ** | White-box (มองเห็นซอร์สโค้ด) | Black-box (มองไม่เห็นซอร์สโค้ด) |
+@@ -1188,8 +1147,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ | **สิ่งที่ตรวจจับได้ดี** | ไวยากรณ์ผิดพลาด, Hardcoded Passwords, SQLi | ปัญหาเซสชัน, Authentication, Server Config |
+ | **ความแม่นยำของตำแหน่ง** | ชี้เป้าได้ถึงหมายเลขบรรทัดของโค้ด | แจ้งเฉพาะ URL หรือพารามิเตอร์ที่พบปัญหา |
+ 
+-</div>
+-
+ </section>
+ 
+ <section class="reading-structure-pilot">
+@@ -1275,9 +1232,9 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ 
+ - **1. Symmetric vs. Asymmetric Encryption:** Symmetric ใช้กุญแจเดียว รวดเร็ว เหมาะกับข้อมูลขนาดใหญ่ (AES); Asymmetric ใช้ 2 กุญแจ ช้ากว่า แต่แก้ปัญหาการส่งกุญแจและทำลายมือชื่อดิจิทัลได้ (RSA, ECC)
+ - **2. Hashing vs. Encryption:** Hashing เป็นกระบวนการทางเดียว ตรวจสอบความถูกต้องสมบูรณ์ (Integrity) ถอดรหัสกลับไม่ได้; Encryption เป็นสองทาง คุ้มครองความลับ (Confidentiality) ถอดรหัสกลับได้
+-- **3. TPM vs. HSM:** TPM เป็นชิปบนเมนบอร์ดดูแลเครื่องเฉพาะตัว (Measured Boot / BitLocker); HSM เป็นอุปกรณ์แยกต่างหากระดับองค์กรรองรับ FIPS 140-2 Level 3/4 สำหรับกุญแจสำคัญระดับศูนย์ข้อมูล
++- **3. TPM vs. HSM:** TPM สนับสนุนความเชื่อถือของแพลตฟอร์ม (Measured Boot / BitLocker) มีได้ทั้ง Discrete, Integrated และ Firmware; HSM ปกป้องและใช้งานกุญแจของแอป/บริการ รูปแบบ การรับรอง และการป้องกันขึ้นกับโมดูล / TPM: platform trust; HSM: application/service key operations, with module-specific capabilities and validation.
+ - **4. Data at Rest vs. Data in Transit vs. Data in Use:** At Rest ปกป้องด้วย Full Disk Encryption; In Transit ปกป้องด้วย TLS/IPsec; In Use ปกป้องด้วย Secure Enclaves และ Memory Isolation
+-- **5. Clear vs. Purge vs. Destroy:** Clear ป้องกันเครื่องมือทั่วไปแต่วิธีทางแล็บอาจกู้ได้; Purge ป้องกันได้แม้ใช้เครื่องมือแล็บขั้นสูง; Destroy ทำลายสื่อทางกายภาพจนใช้งานไม่ได้ถาวร
++- **5. Clear vs. Purge vs. Destroy:** Clear มุ่งต้านการกู้แบบง่าย; Purge มุ่งให้การกู้ระดับแล็บไม่อาจทำได้ในทางปฏิบัติ; Destroy เพิ่มการทำให้สื่อใช้จัดเก็บต่อไม่ได้ ทุกวิธีต้องเหมาะกับสื่อและตรวจผล / Clear targets simple recovery; Purge targets infeasible advanced recovery; Destroy also makes the media unusable. Match the method to the media and assess the outcome.
+ - **6. Event vs. Alert vs. Incident:** Event คือเรื่องปกติทั่วไป; Alert คือการแจ้งเตือนเมื่อเกินเกณฑ์; Incident คือเหตุการณ์ที่มีผลกระทบเชิงลบต่อสามเหลี่ยม CIA
+ - **7. False Positive vs. False Negative:** False Positive คือแจ้งเตือนผิดทั้งที่ไม่มีภัย ทำให้เกิด Alert Fatigue; False Negative คือมีภัยจริงแต่ตรวจไม่พบ ซึ่งเป็นสภาวะที่อันตรายที่สุด
+ - **8. Tabletop Exercise (TTX) vs. Technical Testing:** TTX ซ้อมแบบอภิปรายในห้องประชุม ไม่มีผลต่อระบบจริง; Technical Testing คือการลงมือปฏิบัติทดสอบระบบจริง
+@@ -1288,14 +1245,14 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ 
+ <h4 class="reading-concept-group-title">กับดักข้อสอบที่พบบ่อยใน Domain 5 (Exam Traps):</h4>
+ 
+-- ถ้าข้อสอบถามถึงการทำลายข้อมูลบนระบบคลาวด์ที่เข้าไม่ถึงฮาร์ดแวร์จริง คำตอบคือ Crypto-shredding (การลบและทำลายกุญแจถอดรหัสทิ้ง)
++- บนคลาวด์หรือไดรฟ์เสมือน CE / Crypto-shredding อาจเหมาะเมื่อครบเงื่อนไขการเข้ารหัสและการล้างกุญแจรวมสำเนา ไม่ใช่คำตอบอัตโนมัติเพียงเพราะเข้าไม่ถึงฮาร์ดแวร์ / For cloud or virtual storage, consider CE only when encryption and key-sanitization conditions are met; lack of physical access alone does not make it sufficient.
+ - ถ้าข้อสอบถามถึงวิธีการกำจัดข้อมูลบนฮาร์ดดิสก์จานแม่เหล็กด้วยสนามแม่เหล็กเข้มข้น คำตอบคือ Degaussing แต่ห้ามตอบข้อนี้หากสื่อบันทึกเป็น SSD
+ - ถ้าข้อสอบถามถึงสิ่งที่อันตรายที่สุดในระบบเฝ้าระวัง คำตอบคือ False Negative (ภัยบุกรุกเข้ามาได้โดยไม่มีใครรู้ตัว)
+ - ถ้าข้อสอบถามถึงขั้นตอนแรกสุดที่ต้องทำเมื่อเครื่องปลายทางติด Ransomware คำตอบคือ Containment (การกักกันโฮสต์หรือตัดการเชื่อมต่อเครือข่ายทันที)
+ - ถ้าข้อสอบถามถึงคณะกรรมการที่มีหน้าที่อนุมัติคำขอการเปลี่ยนแปลงระบบ คำตอบคือ Change Advisory Board (CAB)
+ - ถ้าข้อสอบถามถึงเครื่องมือตรวจหาช่องโหว่ซอร์สโค้ดตั้งแต่ระยะเริ่มพัฒนา (Shift-Left) คำตอบคือ SAST (Static Application Security Testing)
+ - ถ้าข้อสอบถามถึงการเดินตามหลังพนักงานผ่านประตูความปลอดภัย คำตอบคือ Tailgating หรือ Piggybacking
+-- ถ้าข้อสอบถามถึงองค์ประกอบของลายมือชื่อดิจิทัล คำตอบคือ นำแฮชของข้อความไปเข้ารหัสด้วย Private Key ของผู้ส่ง
++- ลายมือชื่อดิจิทัลใช้ Private Key ลงนาม และใช้ Public Key ที่สัมพันธ์กันและเชื่อถือได้ตรวจเอกสารกับลายมือชื่อ ไม่ใช่สูตรทั่วไปว่าเข้ารหัสแฮชแล้วถอดรหัสด้วย Public Key / Sign with the private key; verify the document and signature with the corresponding trusted public key. Signing alone provides no confidentiality.
+ 
+ #### สถานการณ์จำลองและแนวคิดการวิเคราะห์ (Review Scenarios)
+ 
+@@ -1303,10 +1260,10 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
+ id: 1
+ badge: Scenario 01
+ topic: Data Sanitization & NIST SP 800-88
+-situation: โรงพยาบาลแห่งหนึ่งเตรียมปลดระวางอุปกรณ์ Solid-State Drive (SSD) ที่เคยจัดเก็บประวัติข้อมูลสุขภาพของผู้ป่วย (Protected Health Information - PHI) เพื่อนำไดรฟ์ไปบริจาคต่อให้กับสถานศึกษา ฝ่ายความปลอดภัยต้องการลบข้อมูลโดยมั่นใจว่าข้อมูลจะไม่สามารถกู้คืนได้ด้วยเครื่องมือทางห้องปฏิบัติการขั้นสูง แต่ยังคงรักษาโครงสร้างของ SSD ให้สามารถนำกลับมาใช้งานซ้ำได้
+-question: ตามมาตรฐาน NIST SP 800-88 Rev. 1 ระดับการทำลายข้อมูล (Sanitization Level) ใดที่เหมาะสมที่สุดสำหรับสถานการณ์นี้?
+-answer: Purge (Sanitization via Cryptographic Erase / Secure Erase)
+-reasoning: NIST SP 800-88 แบ่งระดับการล้างข้อมูลเป็น 3 ระดับหลัก: Clear (การเขียนทับระดับผู้ใช้ ไม่สามารถป้องกันเครื่องมือห้องแล็บขั้นสูงได้), Purge (การล้างข้อมูลระดับลึก เช่น Secure Erase ของคอนโทรลเลอร์ SSD หรือ Degaussing บนสื่อแม่เหล็ก ทำให้ไม่สามารถกู้คืนได้แม้ใช้เครื่องมือขั้นสูงในแล็บ แต่อุปกรณ์ยังนำมาใช้ต่อได้), และ Destroy (การทำลายสื่อทางกายภาพ เช่น บด ย่อย หรือเผา ซึ่งอุปกรณ์จะไม่สามารถใช้งานได้อีก)
++situation: โรงพยาบาลจะบริจาค SSD ที่เคยเก็บข้อมูลผู้ป่วย ต้องการให้การกู้ข้อมูลระดับแล็บไม่อาจทำได้ในทางปฏิบัติและให้ไดรฟ์ยังใช้ต่อได้ โดยต้องตรวจวิธีที่รุ่นนั้นรองรับและยอมรับผลตามนโยบายก่อนส่งต่อ / A hospital plans to donate a patient-data SSD. It needs infeasible advanced recovery while retaining usability, subject to a supported technique and an accepted sanitization outcome.
++question: ตาม NIST SP 800-88 Rev. 2 วิธีใดตรงกับเป้าหมายของกรณีนี้? / Which sanitization method matches this case's goal?
++answer: Purge (ใช้เทคนิคที่เหมาะกับ SSD และตรวจผลแล้ว / SSD-appropriate technique with verified and validated results)
++reasoning: Purge ตรงกับเป้าหมายการกู้ระดับแล็บและการใช้สื่อต่อ ต้องเลือกเทคนิคที่ SSD รองรับ โดย CE ใช้ได้เมื่อครบเงื่อนไขการเข้ารหัสและกุญแจ การ Degauss ไม่ใช้กับ SSD และชื่อ Secure Erase อย่างเดียวไม่พิสูจน์ผล ต้อง Verification และ Validation ก่อนยอมรับ / Purge matches the advanced-recovery goal while aiming to retain usability. Select a supported SSD technique; CE requires appropriate encryption and key conditions. Degaussing is unsuitable for SSDs, and a Secure Erase label alone is not proof. Verify completion and validate effectiveness.
+ :::
+ 
+ :::scenario
+@@ -1333,10 +1290,10 @@ reasoning: Hybrid Encryption นำจุดเด่นของทั้งส
+ id: 4
+ badge: Scenario 04
+ topic: Hardware Security Modules (HSM) vs. TPM
+-situation: ศูนย์ข้อมูลของสถาบันการเงินต้องการติดตั้งระบบสร้าง จัดเก็บ และบริหารจัดการวงจรกุญแจเข้ารหัสระดับองค์กร (Root CA Keys และ Financial Transaction Keys) ที่รองรับการประมวลผลคำขอถอดรหัสปริมาณมหาศาล และมีระบบป้องกันการงัดแงะทางกายภาพระดับสูงตามมาตรฐาน FIPS 140-2 Level 3/4
++situation: ศูนย์ข้อมูลของสถาบันการเงินต้องการระบบสร้าง ปกป้อง และบริหาร Root CA Keys และ Financial Transaction Keys สำหรับบริการหลายระบบ โดยต้องเลือกรุ่นที่รองรับภาระงานและมีใบรับรอง FIPS 140-3 ตรงตามข้อกำหนดของกรณีนี้ / A financial institution needs shared CA/payment-key operations and must select a module whose capacity and FIPS 140-3 validation meet this case's requirements.
+ question: อุปกรณ์รักษาความมั่นคงปลอดภัยระดับฮาร์ดแวร์ชนิดใดที่เหมาะสมที่สุดสำหรับศูนย์ข้อมูลแห่งนี้?
+ answer: Hardware Security Module (HSM)
+-reasoning: HSM คืออุปกรณ์ฮาร์ดแวร์ภายนอกหรือระบบเครือข่ายสำหรับองค์กรขนาดใหญ่ ออกแบบมาเฉพาะเพื่อสร้าง ปกป้อง และบริหารกุญแจเข้ารหัสลับขั้นสูงสุด มีคุณสมบัติต่อต้านการงัดแงะ (Tamper-resistant) ต่างจาก TPM ซึ่งเป็นชิปฝังอยู่บนเมนบอร์ดของคอมพิวเตอร์เฉพาะเครื่องเพื่อดูแลความสมบูรณ์ของระบบ (Platform Integrity) และบูตระบบปลอดภัย (Secure Boot)
++reasoning: HSM เหมาะกับงานกุญแจของบริการในกรณีนี้ แต่ต้องตรวจความสามารถและใบรับรองของโมดูลที่เลือก ส่วน TPM เน้นความเชื่อถือและกุญแจของแพลตฟอร์ม ไม่ได้จำกัดเฉพาะชิปแยกบนเมนบอร์ด / An HSM fits this service-key use case; verify the selected module's capabilities and certificate. A TPM focuses on platform trust and keys and need not be a discrete motherboard chip.
+ :::
+ 
+ :::scenario
+@@ -1494,7 +1451,7 @@ reasoning: SAST เป็นการทดสอบแบบ White-box ที
+ 
+ - **Encryption:** ปกป้องความลับ (Confidentiality) ด้วยการแปลง Plaintext &rarr; Ciphertext
+ - **Hash:** การตรวจสอบความสมบูรณ์ทางเดียว (One-way Integrity Check) ไม่สามารถถอดรหัสกลับได้
+-- **Digital Signature:** ยืนยันความสมบูรณ์และตัวตนผู้ส่ง (Integrity + Authenticity + Non-repudiation)
++- **Digital Signature:** ตรวจความสมบูรณ์และสนับสนุนหลักฐานแหล่งที่มาเมื่อเชื่อถือ Public Key และการควบคุม Private Key ไม่คุ้มครองความลับ / Integrity and origin evidence depend on trusted key association and custody; no confidentiality.
+ - **HSM:** อุปกรณ์ฮาร์ดแวร์ความปลอดภัยสูงเฉพาะทางสำหรับจัดเก็บและประมวลผลกุญแจเข้ารหัสลับ
+ - **Logging:** การบันทึกเหตุการณ์ (Record Events) ลงในแฟ้มข้อมูล
+ - **Monitoring:** การเฝ้าสังเกตและประเมินพฤติกรรม (Observe &amp; Evaluate) จากข้อมูล Log
+@@ -1540,7 +1497,7 @@ reasoning: SAST เป็นการทดสอบแบบ White-box ที
+ <section class="reading-definition-unit">
+ <h5>5 ลำดับกระบวนการสำคัญที่ควรท่องจำ (Key Process Sequences):</h5>
+ 
+-1. **Incident Response Lifecycle (6 ขั้นตอน):** Preparation &rarr; Detection &amp; Analysis &rarr; Containment &rarr; Eradication &rarr; Recovery &rarr; Post-Incident Review
++1. **Incident Response Teaching Model (6 กิจกรรม):** Preparation &rarr; Detection &amp; Analysis &rarr; Containment &rarr; Eradication &rarr; Recovery &rarr; Post-Incident Review เป็นภาพช่วยเรียน กิจกรรมอาจคาบเกี่ยวหรือย้อนกลับ ไม่ใช่ลำดับมาตรฐานบังคับ / A learning aid; activities can overlap or be revisited, rather than a mandatory standard sequence.
+ 2. **Patch Management Process (5 ขั้นตอน):** Identify &rarr; Assess &rarr; Test &rarr; Deploy &rarr; Verify
+ 3. **Change Management Process (7 ขั้นตอน):** Request &rarr; Assess &rarr; Approve (CAB) &rarr; Schedule &rarr; Test &rarr; Implement &rarr; Post-Implementation Review (PIR)
+ 4. **Asset Lifecycle Management (6 ขั้นตอน):** Plan &rarr; Acquire &rarr; Deploy &rarr; Maintain &rarr; Monitor &rarr; Dispose
+diff --git a/css/reading.css b/css/reading.css
+index 1bf8224b..343955b3 100644
+--- a/css/reading.css
++++ b/css/reading.css
+@@ -2862,6 +2862,8 @@ ol + blockquote {
+   letter-spacing: 0.01em;
+   line-height: 1.45;
+   text-transform: none;
++  vertical-align: bottom;
++  font-family: 'Space Grotesk', 'Noto Sans Thai', system-ui, sans-serif;
+ }
+ 
+ .reading-table tbody tr {
+@@ -2879,6 +2881,7 @@ ol + blockquote {
+ .reading-table td strong {
+   color: var(--text);
+   font-weight: 700;
++  font-family: 'Space Grotesk', 'Noto Sans Thai', system-ui, sans-serif;
+ }
+ 
+ .reading-table td em {
+@@ -2894,6 +2897,10 @@ ol + blockquote {
+   line-height: 1.35;
+ }
+ 
++.reading-table th .reading-bilingual-term {
++  justify-content: flex-end;
++}
++
+ .reading-bilingual-term .reading-term-en,
+ .reading-bilingual-term .reading-term-en strong {
+   font-weight: 700;
+@@ -2903,6 +2910,7 @@ ol + blockquote {
+   line-height: 1.35;
+   white-space: nowrap;
+   word-break: normal;
++  font-family: 'Space Grotesk', 'Noto Sans Thai', system-ui, sans-serif;
+ }
+ 
+ .reading-bilingual-term .reading-term-th {
+@@ -4097,8 +4105,19 @@ html[data-theme="light"] .reading-scroll-nav {
+ /* Phase 3C: content-driven Reading tables and intact technical words. */
+ .reading-body .reading-table-wrapper {
+   max-width: 100%;
+-  scrollbar-width: auto;
+-  scrollbar-color: var(--text-muted) var(--panel-2);
++  scrollbar-width: thin;
++  scrollbar-color: var(--line) transparent;
++  -webkit-overflow-scrolling: touch;
++}
++.reading-body .reading-table-wrapper::-webkit-scrollbar {
++  height: 6px;
++}
++.reading-body .reading-table-wrapper::-webkit-scrollbar-track {
++  background: transparent;
++}
++.reading-body .reading-table-wrapper::-webkit-scrollbar-thumb {
++  background: var(--line);
++  border-radius: 3px;
+ }
+ .reading-body .reading-table-wrapper:focus-visible {
+   outline: 2px solid var(--blue);
+@@ -4111,7 +4130,7 @@ html[data-theme="light"] .reading-scroll-nav {
+ .reading-body .reading-table th,
+ .reading-body .reading-table td {
+   word-break: normal;
+-  overflow-wrap: normal;
++  overflow-wrap: break-word;
+   hyphens: manual;
+ }
+ /* A readable floor for comparisons, without prescribing column proportions.
+diff --git a/js/core/diagram-generator.js b/js/core/diagram-generator.js
+index f8ce59e1..4c2d97ea 100644
+--- a/js/core/diagram-generator.js
++++ b/js/core/diagram-generator.js
+@@ -1713,7 +1713,7 @@ export const diagrams = {
+         <text x="92" y="134" class="diag-step-num">04</text>
+         <text x="124" y="134" class="diag-text-title">DASHBOARD</text>
+         <text x="226" y="134" class="diag-text-action">VISUALIZE</text>
+-        <text x="56" y="158" class="diag-text-sub">ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์</text>
++        <text x="56" y="158" class="diag-text-sub">ภาพรวมตามรอบอัปเดต (Refresh cadence)</text>
+         <text x="56" y="175" class="diag-text-sub">แสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน</text>
+       </g>
+ 
+@@ -1772,7 +1772,7 @@ export const diagrams = {
+         <text x="96" y="336" class="diag-step-num">01</text>
+         <text x="130" y="336" class="diag-text-title">METRIC</text>
+         <text x="200" y="336" class="diag-text-action">MEASURE &middot; FOUNDATION</text>
+-        <text x="130" y="358" class="diag-text-sub">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ</text>
++        <text x="130" y="358" class="diag-text-sub">ค่าที่กำหนดและวัดได้ (Defined measurable value)</text>
+         <text x="130" y="374" class="diag-text-sub">คุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</text>
+       </g>
+     </svg>
+@@ -1798,7 +1798,7 @@ export const diagrams = {
+             <span class="reading-mob-tier-action">VISUALIZE &amp; COMPARE</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc"><strong>Dashboard:</strong> แสดงผลกราฟิกแบบ Real-time &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>
++        <p class="reading-mob-tier-desc"><strong>Dashboard:</strong> แสดงผลกราฟิกตามรอบอัปเดต (Periodic / near-real-time) &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-kri">
+@@ -1820,7 +1820,7 @@ export const diagrams = {
+             <span class="reading-mob-tier-action">MEASURE &middot; FOUNDATION</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>
++        <p class="reading-mob-tier-desc">ค่าที่กำหนดและวัดได้ (Defined measurable value): จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย (count, percentage, ratio or average) &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>
+       </div>
+     </div>
+   </div>
+@@ -1911,7 +1911,7 @@ export const diagrams = {
+             <span class="reading-mob-tier-action">Access Re-Evaluation</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)</p>
++        <p class="reading-mob-tier-desc">ทบทวนตามหน้าที่ใหม่ ถอนสิทธิ์ที่หมดความจำเป็นหรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ (Review access; revoke obsolete/conflicting rights and retain justified access under policy)</p>
+       </div>
+       <div class="reading-mob-arrow-down" aria-hidden="true">
+         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+@@ -2936,7 +2936,7 @@ export const diagrams = {
+         <text x="40" y="170" class="diag-text-sub" font-size="11px">&bull; Persistence (การฝังตัวระยะยาว)</text>
+         <text x="40" y="192" class="diag-text-sub" font-size="11px">&bull; Lateral Movement (การเคลื่อนที่แนวราบ)</text>
+         <text x="40" y="214" class="diag-text-sub" font-size="11px">&bull; Exfiltration (การขโมยส่งข้อมูลออก)</text>
+-        <text x="40" y="238" fill="#3b82f6" font-size="10.5px" font-weight="700">14 Enterprise Tactics ทั้งหมด</text>
++        <text x="40" y="238" fill="#3b82f6" font-size="10.5px" font-weight="700">ตัวอย่าง Tactics / Goal examples</text>
+       </g>
+ 
+       <path d="M 280 140 H 320" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
+@@ -2949,9 +2949,9 @@ export const diagrams = {
+         <text x="380" y="48" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">TECHNIQUE</text>
+         <text x="335" y="80" class="diag-text-title" font-size="14px" font-weight="700">The "HOW" (วิธีการ/เทคนิค)</text>
+         <text x="335" y="102" class="diag-text-sub" font-size="11.5px">วิธีที่ศัตรูใช้กระทำเพื่อบรรลุเป้าหมาย:</text>
+-        <text x="335" y="126" class="diag-text-sub" font-size="11px">&bull; Phishing: Spearphishing Link (T1566)</text>
++        <text x="335" y="126" class="diag-text-sub" font-size="11px">&bull; Spearphishing Link (T1566.002)</text>
+         <text x="335" y="148" class="diag-text-sub" font-size="11px">&bull; Pass the Hash (T1550.002)</text>
+-        <text x="335" y="170" class="diag-text-sub" font-size="11px">&bull; Command and Scripting: PowerShell (T1059)</text>
++        <text x="335" y="170" class="diag-text-sub" font-size="11px">&bull; PowerShell (T1059.001)</text>
+         <text x="335" y="192" class="diag-text-sub" font-size="11px">&bull; Scheduled Task / Job (T1053)</text>
+         <text x="335" y="214" class="diag-text-sub" font-size="11px">&bull; Valid Accounts (T1078)</text>
+         <text x="335" y="238" fill="#6366f1" font-size="10.5px" font-weight="700">รวม Sub-techniques ย่อยเฉพาะเจาะจง</text>
+diff --git a/js/core/markdown-parser.js b/js/core/markdown-parser.js
+index 4427c355..a5f335c1 100644
+--- a/js/core/markdown-parser.js
++++ b/js/core/markdown-parser.js
+@@ -495,7 +495,7 @@ export function parseMarkdown(markdown) {
+         let tableHtml = `<div class="${wrapperClass}"${dataAttr} role="region" tabindex="0" aria-label="${tableLabel}"><table class="${tableClass}"${dataAttr}><thead><tr>`;
+         headerCells.forEach((th, thIdx) => {
+           const colClass = (isGrcFrameworksTable && thIdx === 3) ? ' class="reading-col-exam-keyword"' : '';
+-          tableHtml += `<th scope="col"${colClass}>${th}</th>`;
++          tableHtml += `<th scope="col"${colClass}>${parseInline(th)}</th>`;
+         });
+         tableHtml += '</tr></thead><tbody>';
+         bodyRows.forEach(row => {

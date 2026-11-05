@@ -1,0 +1,142 @@
+[
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 303,
+    "beforeEndLine": 306,
+    "afterStartLine": 303,
+    "afterEndLine": 306,
+    "original": "กลไกที่ผสานการทำงานของ **Hashing** และ **Asymmetric Encryption** เข้าด้วยกัน เพื่อให้ได้คุณสมบัติความมั่นคงปลอดภัย 3 ประการ:\n1. **Integrity (ความสมบูรณ์):** ข้อมูลไม่ถูกดัดแปลง\n2. **Authentication (การยืนยันตัวตน):** ยืนยันว่าผู้ส่งเป็นตัวจริง\n3. **Non-repudiation (การปฏิเสธความรับผิดชอบไม่ได้):** ผู้ส่งไม่สามารถอ้างได้ว่าตนไม่ได้เป็นผู้ส่งข้อความ",
+    "replacement": "กลไก **Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ)** ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:\n1. **Integrity (ความสมบูรณ์):** ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.\n2. **Origin Authentication (การยืนยันแหล่งที่มา):** เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.\n3. **Non-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้):** สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.",
+    "finding": "ACC-D5-01"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 309,
+    "beforeEndLine": 310,
+    "afterStartLine": 309,
+    "afterEndLine": 314,
+    "original": "- **ผู้ส่ง (Sender):** นำเอกสารไปคำนวณค่าแฮช &rarr; นำค่าแฮชไปเข้ารหัสด้วย **Private Key ของผู้ส่งเอง** ได้ผลลัพธ์เป็น \"ลายมือชื่อดิจิทัล\" &rarr; แนบลายมือชื่อไปพร้อมกับเอกสาร\n- **ผู้รับ (Recipient):** นำลายมือชื่อดิจิทัลไปถอดรหัสด้วย **Public Key ของผู้ส่ง** จะได้ค่าแฮชเดิม &rarr; คำนวณค่าแฮชของเอกสารที่ได้รับมาเทียบเคียง &rarr; หากค่าแฮชตรงกัน แสดงว่าเอกสารมาจากผู้ส่งจริงและไม่ถูกดัดแปลงแก้ไข",
+    "replacement": "- **ผู้ลงนาม (Signer):** ใช้อัลกอริทึม **Sign** กับ Private Key และเอกสาร &rarr; ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.\n- **ผู้ตรวจ (Verifier):** ใช้อัลกอริทึม **Verify** กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ &rarr; ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.\n\n**แยกหน้าที่ให้ชัด (Different purposes):** Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.\n\n**ตัวอย่าง (Example):** ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.",
+    "finding": "ACC-D5-01"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 320,
+    "beforeEndLine": 320,
+    "afterStartLine": 324,
+    "afterEndLine": 324,
+    "original": "การเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้ฮาร์ดแวร์ความปลอดภัยเฉพาะทางในการปกป้องกุญแจ:",
+    "replacement": "การเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.",
+    "finding": "ACC-D5-02"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 325,
+    "beforeEndLine": 328,
+    "afterStartLine": 329,
+    "afterEndLine": 332,
+    "original": "ไมโครชิปความปลอดภัยเฉพาะทางที่ถูกบัดกรีติดอยู่บนเมนบอร์ดของคอมพิวเตอร์หรืออุปกรณ์ปลายทาง:\n- ทำหน้าที่เป็น **Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์)** ของคอมพิวเตอร์แต่ละเครื่อง\n- สนับสนุนฟีเจอร์ **Measured Boot และ Secure Boot** โดยวัดค่าแฮชของเฟิร์มแวร์ UEFI, บูตโหลดเดอร์, และเคอร์เนลระบบปฏิบัติการก่อนอนุญาตให้เปิดเครื่อง เพื่อป้องกันไม่ให้ Rootkit หรือมัลแวร์บูตแทรกแซงระบบ\n- จัดเก็บกุญแจเข้ารหัสลับของเครื่องเฉพาะ เช่น กุญแจ BitLocker โดยกุญแจจะไม่หลุดออกไปยังระบบปฏิบัติการ",
+    "replacement": "โมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.\n- ทำหน้าที่สนับสนุน **Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์)** ของแพลตฟอร์ม / Support a platform hardware root of trust.\n- **Measured Boot:** ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน **Secure Boot** ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.\n- สร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.",
+    "finding": "ACC-D5-02"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 335,
+    "beforeEndLine": 339,
+    "afterStartLine": 339,
+    "afterEndLine": 344,
+    "original": "อุปกรณ์ฮาร์ดแวร์ความปลอดภัยระดับองค์กร (Enterprise Appliance) อาจเป็นการ์ด PCIe ภายในเซิร์ฟเวอร์ หรือเป็นตู้ฮาร์ดแวร์ภายนอกที่เชื่อมต่อผ่านระบบเครือข่าย:\n- ออกแบบมาเพื่อสร้าง ปกป้อง และบริหารวงจรกุญแจเข้ารหัสลับระดับองค์กร (Root Certificate Authority Keys, กุญแจธุรกรรมทางการเงิน, กุญแจเซิร์ฟเวอร์คลาวด์)\n- มีประสิทธิภาพในการประมวลผลทางคณิตศาสตร์สูงมาก รองรับการถอดรหัสและเซ็นลายมือชื่อดิจิทัลพร้อมกันนับหมื่นรายการต่อวินาที\n- ผ่านการรับรองความปลอดภัยระดับสูงตามมาตรฐาน **FIPS 140-2 Level 3 หรือ Level 4**\n- มีคุณสมบัติต่อต้านการงัดแงะทางกายภาพ (Tamper-Resistant & Tamper-Evident) หากตรวจพบการพยายามเปิดฝาเครื่องหรือเจาะทะลุ อุปกรณ์จะทำลายกุญแจทิ้งทันที (Zeroization) เพื่อป้องกันข้อมูลรั่วไหล",
+    "replacement": "โมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.\n- สร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.\n- แอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.\n- อัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.\n- การรับรอง **FIPS 140** ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.\n- การป้องกันและตอบสนองต่อการงัดแงะ รวมถึง **Zeroization (การล้างข้อมูลกุญแจ)** ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.",
+    "finding": "ACC-D5-02"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 347,
+    "beforeEndLine": 351,
+    "afterStartLine": 352,
+    "afterEndLine": 358,
+    "original": "| **ตำแหน่งติดตั้ง** | ชิปบนเมนบอร์ดคอมพิวเตอร์ปลายทาง (PC/Laptop) | อุปกรณ์ฮาร์ดแวร์แยกต่างหากในศูนย์ข้อมูล / เครือข่าย |\n| **ขอบเขตการใช้งาน** | ประจำเครื่องคอมพิวเตอร์เครื่องเดียว | ให้บริการส่วนกลางแก่องค์กรหรือเซิร์ฟเวอร์ทั้งระบบ |\n| **หน้าที่หลัก** | Platform Integrity, Secure Boot, BitLocker Keys | จัดการวงจรกุญแจ, Root CA, ทำธุรกรรมทางการเงิน |\n| **มาตรฐานความปลอดภัย** | ISO/IEC 11889 | **FIPS 140-2 / FIPS 140-3 (Level 3/4)** |\n| **การป้องกันการงัดแงะ** | พื้นฐานในตัวชิป | มีเซนเซอร์ตรวจจับและทำลายกุญแจอัตโนมัติ (Zeroization) |",
+    "replacement": "| **รูปแบบ (Form)** | Discrete / Integrated / Firmware TPM | PCIe / Network / USB เป็นตัวอย่าง (examples) |\n| **ขอบเขตทั่วไป (Typical scope)** | ความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys) | งานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations) |\n| **งานตัวอย่าง (Example use)** | Measured Boot, ปกป้องกุญแจ BitLocker (key protection) | จัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments) |\n| **มาตรฐาน (Standards)** | ข้อกำหนด TPM: ISO/IEC 11889 (TPM specification) | ตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated) |\n| **การป้องกัน (Protection)** | ขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent) | การป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization) |\n\n**เลือกตามหน้าที่ (Choose by purpose):** TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.",
+    "finding": "ACC-D5-02"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 1278,
+    "beforeEndLine": 1278,
+    "afterStartLine": 1285,
+    "afterEndLine": 1285,
+    "original": "- **3. TPM vs. HSM:** TPM เป็นชิปบนเมนบอร์ดดูแลเครื่องเฉพาะตัว (Measured Boot / BitLocker); HSM เป็นอุปกรณ์แยกต่างหากระดับองค์กรรองรับ FIPS 140-2 Level 3/4 สำหรับกุญแจสำคัญระดับศูนย์ข้อมูล",
+    "replacement": "- **3. TPM vs. HSM:** TPM สนับสนุนความเชื่อถือของแพลตฟอร์ม (Measured Boot / BitLocker) มีได้ทั้ง Discrete, Integrated และ Firmware; HSM ปกป้องและใช้งานกุญแจของแอป/บริการ รูปแบบ การรับรอง และการป้องกันขึ้นกับโมดูล / TPM: platform trust; HSM: application/service key operations, with module-specific capabilities and validation.",
+    "finding": "ACC-D5-02"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 1298,
+    "beforeEndLine": 1298,
+    "afterStartLine": 1305,
+    "afterEndLine": 1305,
+    "original": "- ถ้าข้อสอบถามถึงองค์ประกอบของลายมือชื่อดิจิทัล คำตอบคือ นำแฮชของข้อความไปเข้ารหัสด้วย Private Key ของผู้ส่ง",
+    "replacement": "- ลายมือชื่อดิจิทัลใช้ Private Key ลงนาม และใช้ Public Key ที่สัมพันธ์กันและเชื่อถือได้ตรวจเอกสารกับลายมือชื่อ ไม่ใช่สูตรทั่วไปว่าเข้ารหัสแฮชแล้วถอดรหัสด้วย Public Key / Sign with the private key; verify the document and signature with the corresponding trusted public key. Signing alone provides no confidentiality.",
+    "finding": "ACC-D5-01"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 1336,
+    "beforeEndLine": 1336,
+    "afterStartLine": 1343,
+    "afterEndLine": 1343,
+    "original": "situation: ศูนย์ข้อมูลของสถาบันการเงินต้องการติดตั้งระบบสร้าง จัดเก็บ และบริหารจัดการวงจรกุญแจเข้ารหัสระดับองค์กร (Root CA Keys และ Financial Transaction Keys) ที่รองรับการประมวลผลคำขอถอดรหัสปริมาณมหาศาล และมีระบบป้องกันการงัดแงะทางกายภาพระดับสูงตามมาตรฐาน FIPS 140-2 Level 3/4",
+    "replacement": "situation: ศูนย์ข้อมูลของสถาบันการเงินต้องการระบบสร้าง ปกป้อง และบริหาร Root CA Keys และ Financial Transaction Keys สำหรับบริการหลายระบบ โดยต้องเลือกรุ่นที่รองรับภาระงานและมีใบรับรอง FIPS 140-3 ตรงตามข้อกำหนดของกรณีนี้ / A financial institution needs shared CA/payment-key operations and must select a module whose capacity and FIPS 140-3 validation meet this case's requirements.",
+    "finding": "ACC-D5-02"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 1339,
+    "beforeEndLine": 1339,
+    "afterStartLine": 1346,
+    "afterEndLine": 1346,
+    "original": "reasoning: HSM คืออุปกรณ์ฮาร์ดแวร์ภายนอกหรือระบบเครือข่ายสำหรับองค์กรขนาดใหญ่ ออกแบบมาเฉพาะเพื่อสร้าง ปกป้อง และบริหารกุญแจเข้ารหัสลับขั้นสูงสุด มีคุณสมบัติต่อต้านการงัดแงะ (Tamper-resistant) ต่างจาก TPM ซึ่งเป็นชิปฝังอยู่บนเมนบอร์ดของคอมพิวเตอร์เฉพาะเครื่องเพื่อดูแลความสมบูรณ์ของระบบ (Platform Integrity) และบูตระบบปลอดภัย (Secure Boot)",
+    "replacement": "reasoning: HSM เหมาะกับงานกุญแจของบริการในกรณีนี้ แต่ต้องตรวจความสามารถและใบรับรองของโมดูลที่เลือก ส่วน TPM เน้นความเชื่อถือและกุญแจของแพลตฟอร์ม ไม่ได้จำกัดเฉพาะชิปแยกบนเมนบอร์ด / An HSM fits this service-key use case; verify the selected module's capabilities and certificate. A TPM focuses on platform trust and keys and need not be a discrete motherboard chip.",
+    "finding": "ACC-D5-02"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 1497,
+    "beforeEndLine": 1497,
+    "afterStartLine": 1504,
+    "afterEndLine": 1504,
+    "original": "- **Digital Signature:** ยืนยันความสมบูรณ์และตัวตนผู้ส่ง (Integrity + Authenticity + Non-repudiation)",
+    "replacement": "- **Digital Signature:** ตรวจความสมบูรณ์และสนับสนุนหลักฐานแหล่งที่มาเมื่อเชื่อถือ Public Key และการควบคุม Private Key ไม่คุ้มครองความลับ / Integrity and origin evidence depend on trusted key association and custody; no confidentiality.",
+    "finding": "ACC-D5-01"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+    "beforeStartLine": 8,
+    "beforeEndLine": 8,
+    "afterStartLine": 8,
+    "afterEndLine": 8,
+    "original": " * - 04: Platform Root of Trust vs. Enterprise Appliance (Motherboard TPM vs. Dedicated HSM)",
+    "replacement": " * - 04: Platform trust vs. service-key operations (TPM vs. selected HSM)",
+    "finding": "ACC-D5-02"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+    "beforeStartLine": 47,
+    "beforeEndLine": 47,
+    "afterStartLine": 47,
+    "afterEndLine": 47,
+    "original": "    situation: 'ศูนย์ข้อมูลของสถาบันการเงินต้องการติดตั้งระบบสร้าง จัดเก็บ และบริหารจัดการวงจรกุญแจเข้ารหัสระดับองค์กร (Root CA Keys และ Financial Transaction Keys) ที่รองรับการประมวลผลคำขอถอดรหัสปริมาณมหาศาล และมีระบบป้องกันการงัดแงะทางกายภาพระดับสูงตามมาตรฐาน FIPS 140-2 Level 3/4',",
+    "replacement": "    situation: \"ศูนย์ข้อมูลของสถาบันการเงินต้องการระบบสร้าง ปกป้อง และบริหาร Root CA Keys และ Financial Transaction Keys สำหรับบริการหลายระบบ โดยต้องเลือกรุ่นที่รองรับภาระงานและมีใบรับรอง FIPS 140-3 ตรงตามข้อกำหนดของกรณีนี้ / A financial institution needs shared CA/payment-key operations and must select a module whose capacity and FIPS 140-3 validation meet this case's requirements.\",",
+    "finding": "ACC-D5-02"
+  },
+  {
+    "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+    "beforeStartLine": 50,
+    "beforeEndLine": 50,
+    "afterStartLine": 50,
+    "afterEndLine": 50,
+    "original": "    reasoning: 'HSM คืออุปกรณ์ฮาร์ดแวร์ภายนอกหรือระบบเครือข่ายสำหรับองค์กรขนาดใหญ่ ออกแบบมาเฉพาะเพื่อสร้าง ปกป้อง และบริหารกุญแจเข้ารหัสลับขั้นสูงสุด มีคุณสมบัติต่อต้านการงัดแงะ (Tamper-resistant) ต่างจาก TPM ซึ่งเป็นชิปฝังอยู่บนเมนบอร์ดของคอมพิวเตอร์เฉพาะเครื่องเพื่อดูแลความสมบูรณ์ของระบบ (Platform Integrity) และบูตระบบปลอดภัย (Secure Boot)'",
+    "replacement": "    reasoning: 'HSM เหมาะกับงานกุญแจของบริการในกรณีนี้ แต่ต้องตรวจความสามารถและใบรับรองของโมดูลที่เลือก ส่วน TPM เน้นความเชื่อถือและกุญแจของแพลตฟอร์ม ไม่ได้จำกัดเฉพาะชิปแยกบนเมนบอร์ด / An HSM fits this service-key use case; verify the selected module\\'s capabilities and certificate. A TPM focuses on platform trust and keys and need not be a discrete motherboard chip.'",
+    "finding": "ACC-D5-02"
+  }
+]

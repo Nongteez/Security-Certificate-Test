@@ -1,0 +1,1151 @@
+{
+  "date": "2026-11-04",
+  "stage": "before",
+  "browser": "Chrome/156.0.8078.80",
+  "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "mode": "Real headless Google Chrome via CDP; isolated temporary profile",
+  "matrix": [
+    {
+      "run": "1920x1080-light",
+      "width": 1920,
+      "height": 1080,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nUNTRUSTED ZONE\nInternet / Outside\n• สาธารณะภายนอก\n• ผู้ใช้งานทั่วไป\n• ภัยคุกคามภายนอก\nทราฟฟิกขาเข้าต้องผ่าน\nการตรวจสอบอย่างเข้มงวด\nFW 1\nExternal\nFirewall\nPacket Filter\nStateful\nPolicy Ports\nBUFFER ZONE · LIMITED TRUST\nDemilitarized Zone (DMZ)\nWeb Server / WAF\nHTTPS:443\nMail Gateway (SMTP)\nPort 25\nPublic DNS / Proxy\nPort 53\nแยกบริการสาธารณะออกจากเครือข่ายภายใน\nFW 2\nInternal\nFirewall\nDeep Inspect\nStrict ACLs\nApp & DB\nTRUSTED INTERNAL\nInternal Network\n• Database Servers\n• Active Directory (IAM)\n• ERP / HR Systems\n• Staff Workstations\nไม่อนุญาตการเชื่อมต่อ\nตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/1920x1080-light-speedRow.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 36.03125,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 35.890625,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 35.84375,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 35.75,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 191.796875,
+          "bottom": 242.078125,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "1920x1080-dark",
+      "width": 1920,
+      "height": 1080,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nUNTRUSTED ZONE\nInternet / Outside\n• สาธารณะภายนอก\n• ผู้ใช้งานทั่วไป\n• ภัยคุกคามภายนอก\nทราฟฟิกขาเข้าต้องผ่าน\nการตรวจสอบอย่างเข้มงวด\nFW 1\nExternal\nFirewall\nPacket Filter\nStateful\nPolicy Ports\nBUFFER ZONE · LIMITED TRUST\nDemilitarized Zone (DMZ)\nWeb Server / WAF\nHTTPS:443\nMail Gateway (SMTP)\nPort 25\nPublic DNS / Proxy\nPort 53\nแยกบริการสาธารณะออกจากเครือข่ายภายใน\nFW 2\nInternal\nFirewall\nDeep Inspect\nStrict ACLs\nApp & DB\nTRUSTED INTERNAL\nInternal Network\n• Database Servers\n• Active Directory (IAM)\n• ERP / HR Systems\n• Staff Workstations\nไม่อนุญาตการเชื่อมต่อ\nตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/1920x1080-dark-speedRow.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 36.03125,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 35.890625,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 35.84375,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 35.75,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 191.796875,
+          "bottom": 242.078125,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "1440x900-light",
+      "width": 1440,
+      "height": 900,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nUNTRUSTED ZONE\nInternet / Outside\n• สาธารณะภายนอก\n• ผู้ใช้งานทั่วไป\n• ภัยคุกคามภายนอก\nทราฟฟิกขาเข้าต้องผ่าน\nการตรวจสอบอย่างเข้มงวด\nFW 1\nExternal\nFirewall\nPacket Filter\nStateful\nPolicy Ports\nBUFFER ZONE · LIMITED TRUST\nDemilitarized Zone (DMZ)\nWeb Server / WAF\nHTTPS:443\nMail Gateway (SMTP)\nPort 25\nPublic DNS / Proxy\nPort 53\nแยกบริการสาธารณะออกจากเครือข่ายภายใน\nFW 2\nInternal\nFirewall\nDeep Inspect\nStrict ACLs\nApp & DB\nTRUSTED INTERNAL\nInternal Network\n• Database Servers\n• Active Directory (IAM)\n• ERP / HR Systems\n• Staff Workstations\nไม่อนุญาตการเชื่อมต่อ\nตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/1440x900-light-speedRow.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 35.546875,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 36.203125,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 36.328125,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 35.515625,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 191.90625,
+          "bottom": 242.1875,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "1440x900-dark",
+      "width": 1440,
+      "height": 900,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nUNTRUSTED ZONE\nInternet / Outside\n• สาธารณะภายนอก\n• ผู้ใช้งานทั่วไป\n• ภัยคุกคามภายนอก\nทราฟฟิกขาเข้าต้องผ่าน\nการตรวจสอบอย่างเข้มงวด\nFW 1\nExternal\nFirewall\nPacket Filter\nStateful\nPolicy Ports\nBUFFER ZONE · LIMITED TRUST\nDemilitarized Zone (DMZ)\nWeb Server / WAF\nHTTPS:443\nMail Gateway (SMTP)\nPort 25\nPublic DNS / Proxy\nPort 53\nแยกบริการสาธารณะออกจากเครือข่ายภายใน\nFW 2\nInternal\nFirewall\nDeep Inspect\nStrict ACLs\nApp & DB\nTRUSTED INTERNAL\nInternal Network\n• Database Servers\n• Active Directory (IAM)\n• ERP / HR Systems\n• Staff Workstations\nไม่อนุญาตการเชื่อมต่อ\nตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/1440x900-dark-speedRow.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 35.546875,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 36.203125,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 36.328125,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 35.515625,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 191.90625,
+          "bottom": 242.1875,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "1366x768-light",
+      "width": 1366,
+      "height": 768,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nUNTRUSTED ZONE\nInternet / Outside\n• สาธารณะภายนอก\n• ผู้ใช้งานทั่วไป\n• ภัยคุกคามภายนอก\nทราฟฟิกขาเข้าต้องผ่าน\nการตรวจสอบอย่างเข้มงวด\nFW 1\nExternal\nFirewall\nPacket Filter\nStateful\nPolicy Ports\nBUFFER ZONE · LIMITED TRUST\nDemilitarized Zone (DMZ)\nWeb Server / WAF\nHTTPS:443\nMail Gateway (SMTP)\nPort 25\nPublic DNS / Proxy\nPort 53\nแยกบริการสาธารณะออกจากเครือข่ายภายใน\nFW 2\nInternal\nFirewall\nDeep Inspect\nStrict ACLs\nApp & DB\nTRUSTED INTERNAL\nInternal Network\n• Database Servers\n• Active Directory (IAM)\n• ERP / HR Systems\n• Staff Workstations\nไม่อนุญาตการเชื่อมต่อ\nตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/1366x768-light-speedRow.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 35.703125,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 35.953125,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 35.765625,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 35.75,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 192.25,
+          "bottom": 242.53125,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "1366x768-dark",
+      "width": 1366,
+      "height": 768,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nUNTRUSTED ZONE\nInternet / Outside\n• สาธารณะภายนอก\n• ผู้ใช้งานทั่วไป\n• ภัยคุกคามภายนอก\nทราฟฟิกขาเข้าต้องผ่าน\nการตรวจสอบอย่างเข้มงวด\nFW 1\nExternal\nFirewall\nPacket Filter\nStateful\nPolicy Ports\nBUFFER ZONE · LIMITED TRUST\nDemilitarized Zone (DMZ)\nWeb Server / WAF\nHTTPS:443\nMail Gateway (SMTP)\nPort 25\nPublic DNS / Proxy\nPort 53\nแยกบริการสาธารณะออกจากเครือข่ายภายใน\nFW 2\nInternal\nFirewall\nDeep Inspect\nStrict ACLs\nApp & DB\nTRUSTED INTERNAL\nInternal Network\n• Database Servers\n• Active Directory (IAM)\n• ERP / HR Systems\n• Staff Workstations\nไม่อนุญาตการเชื่อมต่อ\nตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/1366x768-dark-speedRow.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 35.703125,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 35.953125,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 35.765625,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 35.75,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 192.25,
+          "bottom": 242.53125,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "768x1024-light",
+      "width": 768,
+      "height": 1024,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nZONE 1\nINTERNET / OUTSIDE (UNTRUSTED)\nPublic Access · Inbound Traffic\n\nเครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)\n\nUNTRUSTED ZONE · Internet / Outside · • สาธารณะภายนอก · • ผู้ใช้งานทั่วไป · • ภัยคุกคามภายนอก · ทราฟฟิกขาเข้าต้องผ่าน · การตรวจสอบอย่างเข้มงวด · FW 1 · External · Firewall · Packet Filter · Stateful · Policy Ports\n\nZONE 2\nDEMILITARIZED ZONE (DMZ BUFFER)\nPublic Services · Limited Trust\n\nเขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง\n\nBUFFER ZONE · LIMITED TRUST · Demilitarized Zone (DMZ) · Web Server / WAF · HTTPS:443 · Mail Gateway (SMTP) · Port 25 · Public DNS / Proxy · Port 53 · แยกบริการสาธารณะออกจากเครือข่ายภายใน\n\nZONE 3\nINTERNAL NETWORK (TRUSTED / PRIVATE)\nCore Assets · Database & IAM\n\nเครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด\n\nFW 2 · Internal · Firewall · Deep Inspect · Strict ACLs · App & DB · TRUSTED INTERNAL · Internal Network · • Database Servers · • Active Directory (IAM) · • ERP / HR Systems · • Staff Workstations · ไม่อนุญาตการเชื่อมต่อ · ตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/768x1024-light-speedRow.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 36.296875,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 36.125,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 35.5,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 36.484375,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 191.734375,
+          "bottom": 242.015625,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "768x1024-dark",
+      "width": 768,
+      "height": 1024,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nZONE 1\nINTERNET / OUTSIDE (UNTRUSTED)\nPublic Access · Inbound Traffic\n\nเครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)\n\nUNTRUSTED ZONE · Internet / Outside · • สาธารณะภายนอก · • ผู้ใช้งานทั่วไป · • ภัยคุกคามภายนอก · ทราฟฟิกขาเข้าต้องผ่าน · การตรวจสอบอย่างเข้มงวด · FW 1 · External · Firewall · Packet Filter · Stateful · Policy Ports\n\nZONE 2\nDEMILITARIZED ZONE (DMZ BUFFER)\nPublic Services · Limited Trust\n\nเขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง\n\nBUFFER ZONE · LIMITED TRUST · Demilitarized Zone (DMZ) · Web Server / WAF · HTTPS:443 · Mail Gateway (SMTP) · Port 25 · Public DNS / Proxy · Port 53 · แยกบริการสาธารณะออกจากเครือข่ายภายใน\n\nZONE 3\nINTERNAL NETWORK (TRUSTED / PRIVATE)\nCore Assets · Database & IAM\n\nเครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด\n\nFW 2 · Internal · Firewall · Deep Inspect · Strict ACLs · App & DB · TRUSTED INTERNAL · Internal Network · • Database Servers · • Active Directory (IAM) · • ERP / HR Systems · • Staff Workstations · ไม่อนุญาตการเชื่อมต่อ · ตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/768x1024-dark-speedRow.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 36.296875,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 36.125,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 35.5,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 36.484375,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 191.734375,
+          "bottom": 242.015625,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 0,
+        "reached": true
+      }
+    },
+    {
+      "run": "390x844-light",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nZONE 1\nINTERNET / OUTSIDE (UNTRUSTED)\nPublic Access · Inbound Traffic\n\nเครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)\n\nUNTRUSTED ZONE · Internet / Outside · • สาธารณะภายนอก · • ผู้ใช้งานทั่วไป · • ภัยคุกคามภายนอก · ทราฟฟิกขาเข้าต้องผ่าน · การตรวจสอบอย่างเข้มงวด · FW 1 · External · Firewall · Packet Filter · Stateful · Policy Ports\n\nZONE 2\nDEMILITARIZED ZONE (DMZ BUFFER)\nPublic Services · Limited Trust\n\nเขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง\n\nBUFFER ZONE · LIMITED TRUST · Demilitarized Zone (DMZ) · Web Server / WAF · HTTPS:443 · Mail Gateway (SMTP) · Port 25 · Public DNS / Proxy · Port 53 · แยกบริการสาธารณะออกจากเครือข่ายภายใน\n\nZONE 3\nINTERNAL NETWORK (TRUSTED / PRIVATE)\nCore Assets · Database & IAM\n\nเครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด\n\nFW 2 · Internal · Firewall · Deep Inspect · Strict ACLs · App & DB · TRUSTED INTERNAL · Internal Network · • Database Servers · • Active Directory (IAM) · • ERP / HR Systems · • Staff Workstations · ไม่อนุญาตการเชื่อมต่อ · ตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/390x844-light-speedRow.png",
+        "screenshots/before/390x844-light-speedRow-right.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 36.34375,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 36.171875,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 36.390625,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 35.796875,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 192.15625,
+          "bottom": 267.71875,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 104,
+        "reached": true
+      }
+    },
+    {
+      "run": "390x844-dark",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nZONE 1\nINTERNET / OUTSIDE (UNTRUSTED)\nPublic Access · Inbound Traffic\n\nเครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)\n\nUNTRUSTED ZONE · Internet / Outside · • สาธารณะภายนอก · • ผู้ใช้งานทั่วไป · • ภัยคุกคามภายนอก · ทราฟฟิกขาเข้าต้องผ่าน · การตรวจสอบอย่างเข้มงวด · FW 1 · External · Firewall · Packet Filter · Stateful · Policy Ports\n\nZONE 2\nDEMILITARIZED ZONE (DMZ BUFFER)\nPublic Services · Limited Trust\n\nเขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง\n\nBUFFER ZONE · LIMITED TRUST · Demilitarized Zone (DMZ) · Web Server / WAF · HTTPS:443 · Mail Gateway (SMTP) · Port 25 · Public DNS / Proxy · Port 53 · แยกบริการสาธารณะออกจากเครือข่ายภายใน\n\nZONE 3\nINTERNAL NETWORK (TRUSTED / PRIVATE)\nCore Assets · Database & IAM\n\nเครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด\n\nFW 2 · Internal · Firewall · Deep Inspect · Strict ACLs · App & DB · TRUSTED INTERNAL · Internal Network · • Database Servers · • Active Directory (IAM) · • ERP / HR Systems · • Staff Workstations · ไม่อนุญาตการเชื่อมต่อ · ตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/390x844-dark-speedRow.png",
+        "screenshots/before/390x844-dark-speedRow-right.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 36.34375,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 36.171875,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 36.390625,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 35.796875,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 192.15625,
+          "bottom": 267.71875,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 104,
+        "reached": true
+      }
+    },
+    {
+      "run": "360x800-light",
+      "width": 360,
+      "height": 800,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nZONE 1\nINTERNET / OUTSIDE (UNTRUSTED)\nPublic Access · Inbound Traffic\n\nเครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)\n\nUNTRUSTED ZONE · Internet / Outside · • สาธารณะภายนอก · • ผู้ใช้งานทั่วไป · • ภัยคุกคามภายนอก · ทราฟฟิกขาเข้าต้องผ่าน · การตรวจสอบอย่างเข้มงวด · FW 1 · External · Firewall · Packet Filter · Stateful · Policy Ports\n\nZONE 2\nDEMILITARIZED ZONE (DMZ BUFFER)\nPublic Services · Limited Trust\n\nเขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง\n\nBUFFER ZONE · LIMITED TRUST · Demilitarized Zone (DMZ) · Web Server / WAF · HTTPS:443 · Mail Gateway (SMTP) · Port 25 · Public DNS / Proxy · Port 53 · แยกบริการสาธารณะออกจากเครือข่ายภายใน\n\nZONE 3\nINTERNAL NETWORK (TRUSTED / PRIVATE)\nCore Assets · Database & IAM\n\nเครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด\n\nFW 2 · Internal · Firewall · Deep Inspect · Strict ACLs · App & DB · TRUSTED INTERNAL · Internal Network · • Database Servers · • Active Directory (IAM) · • ERP / HR Systems · • Staff Workstations · ไม่อนุญาตการเชื่อมต่อ · ตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/360x800-light-speedRow.png",
+        "screenshots/before/360x800-light-speedRow-right.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 35.625,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 36.4375,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 36.28125,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 35.6875,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 191.90625,
+          "bottom": 267.46875,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 134,
+        "reached": true
+      }
+    },
+    {
+      "run": "360x800-dark",
+      "width": 360,
+      "height": 800,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 6,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "ipv6Text": "ความปลอดภัยในตัว: รองรับมาตรฐานความมั่นคงปลอดภัย IPsec (IP Security) ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+      "tcpText": "TCP (Transmission Control Protocol):\nConnection-Oriented: ต้องสร้างการเชื่อมต่อก่อนเริ่มส่งข้อมูลเสมอ ผ่านกระบวนการจับมือ 3 ขั้นตอน (3-Way Handshake: SYN → SYN-ACK → ACK)\nReliable Delivery: รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)\nFlow & Congestion Control: มีกลไกปรับความเร็วในการส่งข้อมูลเพื่อป้องกันไม่ให้ฝั่งรับล้น (Sliding Window)\nเหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+      "otText": "ความแตกต่างสำคัญ: ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)",
+      "pathText": "กฎเหล็กด้านความปลอดภัยของ ICS/SCADA: ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+      "segText": "Reduce Blast Radius (จำกัดรัศมีความเสียหาย): เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+      "complianceText": "Compliance & Audit Scope: ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+      "dmzText": "PERIMETER ARCHITECTURE\nDemilitarized Zone (DMZ): Illustrative Zones and Firewall Boundaries\nZONE 1\nINTERNET / OUTSIDE (UNTRUSTED)\nPublic Access · Inbound Traffic\n\nเครือข่ายสาธารณะภายนอก ไม่มีความไว้วางใจ ทราฟฟิกทั้งหมดต้องถูกคัดกรองผ่าน External Firewall (FW 1)\n\nUNTRUSTED ZONE · Internet / Outside · • สาธารณะภายนอก · • ผู้ใช้งานทั่วไป · • ภัยคุกคามภายนอก · ทราฟฟิกขาเข้าต้องผ่าน · การตรวจสอบอย่างเข้มงวด · FW 1 · External · Firewall · Packet Filter · Stateful · Policy Ports\n\nZONE 2\nDEMILITARIZED ZONE (DMZ BUFFER)\nPublic Services · Limited Trust\n\nเขตกันชนที่วางเซิร์ฟเวอร์ที่เปิดให้สาธารณะเข้าถึงได้ (Web, Mail Gateway, DNS, Reverse Proxy) การแบ่งเขตช่วยจำกัดเส้นทางจาก DMZ ไปยังเครือข่ายภายใน โดยขึ้นกับนโยบาย การตั้งค่า และการควบคุมที่เกี่ยวข้อง\n\nBUFFER ZONE · LIMITED TRUST · Demilitarized Zone (DMZ) · Web Server / WAF · HTTPS:443 · Mail Gateway (SMTP) · Port 25 · Public DNS / Proxy · Port 53 · แยกบริการสาธารณะออกจากเครือข่ายภายใน\n\nZONE 3\nINTERNAL NETWORK (TRUSTED / PRIVATE)\nCore Assets · Database & IAM\n\nเครือข่ายภายในสำหรับทรัพย์สินสำคัญ จัดเก็บฐานข้อมูลสำคัญ (Database), Active Directory, ERP กั้นด้วย Internal Firewall (FW 2) เพื่อห้ามทราฟฟิกตรงจากภายนอกโดยเด็ดขาด\n\nFW 2 · Internal · Firewall · Deep Inspect · Strict ACLs · App & DB · TRUSTED INTERNAL · Internal Network · • Database Servers · • Active Directory (IAM) · • ERP / HR Systems · • Staff Workstations · ไม่อนุญาตการเชื่อมต่อ · ตรงจาก Internet\n\nIllustrative zone overview, not a universal packet route. FW1 mediates outside/DMZ connections; FW2 controls separately permitted connections to the internal network. Public requests may terminate in the DMZ. Isolation limits paths but does not guarantee that compromise cannot spread. / ตัวอย่างภาพรวมเขตและขอบเขตไฟร์วอลล์ ไม่ใช่เส้นทางบังคับของทุกแพ็กเก็ต คำขอบริการอาจสิ้นสุดใน DMZ ส่วนการเชื่อมต่อภายในต้องได้รับอนุญาตแยกตามนโยบาย การแบ่งเขตจำกัดเส้นทางแต่ไม่รับประกันว่าจะหยุดการลุกลามได้ทุกกรณี",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/360x800-dark-speedRow.png",
+        "screenshots/before/360x800-dark-speedRow-right.png"
+      ],
+      "navigation": [
+        {
+          "hash": "#topic-4-1-ipv6-architecture",
+          "y": 35.625,
+          "id": "topic-4-1-ipv6-architecture",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-tcp-vs-udp",
+          "y": 36.4375,
+          "id": "topic-4-1-tcp-vs-udp",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-1-network-threats-iot",
+          "y": 36.28125,
+          "id": "topic-4-1-network-threats-iot",
+          "pass": true
+        },
+        {
+          "hash": "#topic-4-2-segmentation-blast-radius",
+          "y": 35.6875,
+          "id": "topic-4-2-segmentation-blast-radius",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "part": "speedRow",
+          "top": 191.90625,
+          "bottom": 267.46875,
+          "text": "Speed & Latency\tช้ากว่า มีภาระในการตรวจสอบ\tรวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ"
+        }
+      ],
+      "tableEdge": {
+        "max": 134,
+        "reached": true
+      }
+    }
+  ],
+  "navigation": [
+    {
+      "id": "topic-4-1-ipv6-architecture",
+      "direct": {
+        "hash": "#topic-4-1-ipv6-architecture",
+        "y": 35.625
+      },
+      "reload": {
+        "hash": "#topic-4-1-ipv6-architecture",
+        "y": 35.625
+      },
+      "returned": {
+        "hash": "#topic-4-1-ipv6-architecture",
+        "y": 35.625
+      },
+      "pass": true
+    },
+    {
+      "id": "topic-4-1-tcp-vs-udp",
+      "direct": {
+        "hash": "#topic-4-1-tcp-vs-udp",
+        "y": 36.4375
+      },
+      "reload": {
+        "hash": "#topic-4-1-tcp-vs-udp",
+        "y": 36.4375
+      },
+      "returned": {
+        "hash": "#topic-4-1-tcp-vs-udp",
+        "y": 36.4375
+      },
+      "pass": true
+    },
+    {
+      "id": "topic-4-1-network-threats-iot",
+      "direct": {
+        "hash": "#topic-4-1-network-threats-iot",
+        "y": 36.28125
+      },
+      "reload": {
+        "hash": "#topic-4-1-network-threats-iot",
+        "y": 36.28125
+      },
+      "returned": {
+        "hash": "#topic-4-1-network-threats-iot",
+        "y": 36.28125
+      },
+      "pass": true
+    },
+    {
+      "id": "topic-4-2-segmentation-blast-radius",
+      "direct": {
+        "hash": "#topic-4-2-segmentation-blast-radius",
+        "y": 35.6875
+      },
+      "reload": {
+        "hash": "#topic-4-2-segmentation-blast-radius",
+        "y": 35.6875
+      },
+      "returned": {
+        "hash": "#topic-4-2-segmentation-blast-radius",
+        "y": 35.6875
+      },
+      "pass": true
+    }
+  ],
+  "protectedStates": [],
+  "exceptions": [],
+  "consoleErrors": [],
+  "status": "PASS"
+}

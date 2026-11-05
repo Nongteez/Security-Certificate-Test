@@ -129,6 +129,20 @@
 
 <div class="reading-semantic-diagram" data-diagram="loadBalancer"></div>
 
+<div class="reading-example-box">
+  <div class="reading-example-title"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg><strong>ตัวอย่างสถานการณ์จริง: การบูรณาการ CIA Triad ในระบบเวชระเบียนโรงพยาบาล (Hospital EHR System)</strong></div>
+  <div class="reading-example-step"><strong>1. สถานการณ์ตั้งต้น (Initial Situation):</strong> โรงพยาบาลจัดเก็บข้อมูลประวัติการรักษา ผลตรวจเลือด และคำสั่งผ่าตัดของผู้ป่วย 100,000 รายบนระบบคลาวด์ ซึ่งข้อมูลนี้มีผลโดยตรงต่อชีวิตและความเป็นส่วนตัวของผู้ป่วย</div>
+  <div class="reading-example-step"><strong>2. การกระทำและเหตุการณ์ทางเทคนิค (Action &amp; Technical Events):</strong>
+    <ul>
+      <li><em>Confidentiality:</em> พยาบาลแผนกศัลยกรรมเข้าดูผลเลือดของผู้ป่วยที่ตนดูแลได้ แต่ระบบบล็อกไม่ให้เจ้าหน้าที่ฝ่ายการตลาดหรือบุคคลภายนอกเปิดดูเวชระเบียน โดยข้อมูลถูกเข้ารหัสด้วย AES-256 ทั้งขณะส่งผ่านเครือข่าย (In-Transit) และขณะจัดเก็บ (At-Rest)</li>
+      <li><em>Integrity:</em> กรุ๊ปเลือดของผู้ป่วย <code>O-Positive</code> ต้องไม่ถูกเปลี่ยนเป็น <code>AB</code> โดยไม่ได้ตั้งใจหรือถูกแฮกเกอร์แก้ไข ระบบใช้ Cryptographic Hash (SHA-256) และบันทึก Digital Signature ของแพทย์ผู้สั่งยาเพื่อตรวจจับการปลอมแปลง หากผลแฮชไม่ตรง ระบบจะปฏิเสธการจ่ายยาทันที</li>
+      <li><em>Availability:</em> ห้องผ่าตัดฉุกเฉินต้องการเข้าถึงข้อมูลแพ้ยาของผู้ป่วยทันทีตลอด 24/7 โรงพยาบาลจึงติดตั้ง Redundant Database Server, ระบบสำรองไฟฟ้า (UPS + เครื่องปั่นไฟดีเซล), และคู่สายอินเทอร์เน็ตสำรอง (Dual ISP) เพื่อไม่ให้ระบบล่มแม้ไฟฟ้าดับหรือสายไฟขาด</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. ผลกระทบด้านความมั่นคงปลอดภัย (Security Impact):</strong> ผู้ป่วยได้รับการรักษาที่ถูกต้อง ปลอดภัยจากการให้ยาผิดกรุ๊ป ข้อมูลส่วนตัวไม่รั่วไหลสู่สาธารณะ และแพทย์ผ่าตัดเข้าถึงข้อมูลได้ทันท่วงทีในภาวะวิกฤต</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): ความปลอดภัยที่แท้จริงต้องรักษาสมดุลของเสาหลักทั้งสาม (Security in Balance) หากข้อมูลเป็นความลับอย่างยิ่งยวดแต่แพทย์เปิดดูไม่ได้ในห้องผ่าตัด ความปลอดภัยนั้นย่อมล้มเหลวในภารกิจจริง</div>
+</div>
+
 <h4 class="reading-subtopic-title">เปรียบเทียบ CIA จากสถานการณ์ข้อสอบ</h4>
 
 | สถานการณ์ในโจทย์ | หลักการที่เด่นที่สุด | คำอธิบายเหตุผล |
@@ -204,6 +218,38 @@
 - **Somewhere You Are** (สถานที่ที่คุณอยู่ — บริบทเสริม ไม่ใช่ปัจจัย MFA)
 :::
 
+<h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>ตัวอย่างอุปกรณ์จริงในการยืนยันตัวตน (Authentication Hardware in Practice):</h4>
+
+<div class="reading-figure-grid">
+  <figure class="reading-figure">
+    <div class="reading-figure-img-wrap">
+      <img src="assets/images/reading/yubikey-5-nfc-token.png" alt="YubiKey 5 NFC Hardware Security Token" class="reading-figure-img" width="450" height="300" loading="lazy">
+    </div>
+    <figcaption class="reading-figcaption">
+      <div class="reading-figure-header">
+        <span class="reading-figure-badge badge-have">Something You Have</span>
+        <h5 class="reading-figure-title">Cryptographic Hardware Security Key</h5>
+      </div>
+      <p class="reading-figure-desc">ตัวอย่างกุญแจความปลอดภัยฮาร์ดแวร์ (YubiKey 5 NFC) พิสูจน์ตัวตนด้วยกุญแจเข้ารหัสลับภายในชิป (FIDO2 / WebAuthn) ช่วยป้องกันการดักจับรหัสผ่านและการโจมตีแบบฟิชชิ่งได้อย่างมีประสิทธิภาพสูง เพราะใช้กลไกการยืนยันตัวตนด้วยกุญแจสาธารณะที่ผูกกับโดเมน (Origin-bound)</p>
+      <div class="reading-attribution">ภาพ: Wikimedia Commons (CC BY-SA 4.0 โดย FelixLadd)</div>
+    </figcaption>
+  </figure>
+
+  <figure class="reading-figure">
+    <div class="reading-figure-img-wrap">
+      <img src="assets/images/reading/datacenter-biometric-scanner.jpg" alt="Data Center Biometric Fingerprint Access Control Scanner" class="reading-figure-img" width="280" height="380" loading="lazy">
+    </div>
+    <figcaption class="reading-figcaption">
+      <div class="reading-figure-header">
+        <span class="reading-figure-badge badge-are">Something You Are</span>
+        <h5 class="reading-figure-title">Biometric Access Control Scanner</h5>
+      </div>
+      <p class="reading-figure-desc">ตัวอย่างเครื่องสแกนลายนิ้วมือควบคุมการเข้าออก Data Center (Macquarie Telecom) ตรวจสอบคุณลักษณะทางกายภาพที่ไม่สามารถโอนย้าย เลียนแบบ หรือลืมทิ้งไว้ได้</p>
+      <div class="reading-attribution">ภาพ: Wikimedia Commons (CC BY 3.0 โดย Lgate74)</div>
+    </figcaption>
+  </figure>
+</div>
+
 <div class="reading-callout warning">
   <div class="reading-callout-header">
     <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
@@ -248,6 +294,34 @@
 | *"What actions and resources are you permitted to access?"* | **Authorization** |
 | *"What did you do, and what evidence is recorded?"* | **Accounting** |
 
+<div class="reading-example-box">
+  <div class="reading-example-title"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7.5" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg><strong>ตัวอย่างสถานการณ์จริง: การทำงานร่วมกันระหว่าง Identity, Permissions, Policies และ Access Decisions</strong></div>
+  <div class="reading-example-step"><strong>1. สถานการณ์ตั้งต้น (Initial Situation):</strong> องค์กรจัดเก็บไฟล์งบการเงินความลับสูง <code>Q4_Audit_Report.xlsx</code> บนเซิร์ฟเวอร์กลาง โดย Security Administrator (นายชาร์ลี) ได้ตั้งค่านโยบายความปลอดภัย (Policy) ว่า <em>"อนุญาตเฉพาะตำแหน่ง Senior Accountant ในแผนกบัญชีเท่านั้นให้อ่านไฟล์นี้ได้ ส่วนแผนกอื่นห้ามเข้าถึงโดยเด็ดขาด"</em></div>
+  <div class="reading-example-step"><strong>2. การกระทำของผู้ใช้ (User Actions):</strong>
+    <ul>
+      <li><strong>อลิซ (Senior Accountant):</strong> ต้องการเปิดไฟล์เพื่อกระทบยอดตัวเลขทางบัญชี</li>
+      <li><strong>บ็อบ (Marketing Intern):</strong> บังเอิญพบ URL ของไฟล์บนระบบแชร์และพยายามคลิกเปิดดูข้อมูล</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. เหตุการณ์ทางเทคนิค (Technical Access Decision):</strong>
+    <ul>
+      <li><em>Identification &amp; Authentication:</em> ทั้งอลิซและบ็อบป้อน Username/Password และรหัส MFA สำเร็จ ระบบยืนยันได้ว่าอลิซคืออลิซตัวจริง และบ็อบคือบ็อบตัวจริง (Authentication Passed)</li>
+      <li><em>Policy &amp; Permissions Evaluation:</em> ระบบ Access Control Engine ตรวจสอบสิทธิ์ (Permissions) จาก Role:
+        <ul>
+          <li>อลิซมี Role = <code>Finance_Senior</code> &rarr; สอดคล้องกับ Policy &rarr; ระบบส่งคำสั่ง <strong>Authorization Granted (Read Permitted)</strong></li>
+          <li>บ็อบมี Role = <code>Marketing_Intern</code> &rarr; ขัดกับ Policy &rarr; ระบบส่งคำสั่ง <strong>Authorization Denied (HTTP 403 Forbidden)</strong></li>
+        </ul>
+      </li>
+      <li><em>Accounting &amp; Audit Trail:</em> ระบบบันทึกหลักฐานที่ไม่สามารถแก้ไขได้ลงใน Central Log:
+        <br><code>[2026-11-05 09:14:02 UTC] USER="alice@corp" ROLE="Finance_Senior" ACTION="READ" TARGET="Q4_Audit_Report.xlsx" STATUS="SUCCESS"</code>
+        <br><code>[2026-11-05 09:14:48 UTC] USER="bob@corp" ROLE="Marketing_Intern" ACTION="READ" TARGET="Q4_Audit_Report.xlsx" STATUS="DENIED_UNAUTHORIZED"</code>
+      </li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>4. ผลกระทบด้านความมั่นคงปลอดภัย (Security Impact):</strong> ความลับของข้อมูลทางการเงินได้รับการปกป้อง ป้องกันการรั่วไหลจากคนใน (Insider Threat) และเมื่อผู้ตรวจสอบภายนอก (Auditor) เข้ามาตรวจ สามารถนำ Log มายืนยันได้ทันทีว่าใครเข้าถึงเอกสารนี้เมื่อใด</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): Identity &ne; Permissions — การที่ผู้ใช้ล็อกอินผ่าน (Authentication) ไม่ได้แปลว่ามีสิทธิ์เข้าถึงทุกสิ่ง ระบบต้องตัดสินใจตาม Policy (Authorization) และบันทึกหลักฐานตรวจสอบเสมอ (Accounting)</div>
+</div>
+
 <div id="topic-1-1-privacy-data-protection" class="reading-topic-anchor"></div>
 
 ### 1.1.6 Non-repudiation, Privacy & Data Protection
@@ -291,7 +365,7 @@
 
 <div class="reading-concept-item">
   <h5 class="reading-concept-heading">Data Ownership & Authority Boundaries</h5>
-  <p>การกำหนดว่าใครมีอำนาจตัดสินใจ (Authority) และความรับผิดชอบ (Responsibility) ต่อข้อมูลด้าน Security และ Compliance โดยมีหลักสำคัญคือ <em>การที่องค์กรถือครองหรือจัดเก็บข้อมูลไม่ได้แปลว่าจะนำ Personal Data ไปทำอะไรก็ได้ตามอำเภอใจ</em> องค์กรยังคงต้องเคารพสิทธิและความยินยอมของ Data Subject เสมอ</p>
+  <p>การกำหนดว่าใครมีอำนาจตัดสินใจ (Authority) และความรับผิดชอบ (Responsibility) ต่อข้อมูลด้าน Security และ Compliance โดยมีหลักสำคัญคือ <em>การที่องค์กรถือครองหรือจัดเก็บข้อมูลไม่ได้แปลว่าจะนำ Personal Data ไปทำอะไรก็ได้ตามอำเภอใจ</em> องค์กรต้องเคารพสิทธิของ Data Subject ตามกฎหมายที่ใช้บังคับ และขอความยินยอมเมื่อใช้ฐานความยินยอม <em>Respect data-subject rights under applicable law; obtain consent when relying on consent as the legal basis.</em></p>
 </div>
 
 <div class="reading-concept-item">
@@ -316,8 +390,72 @@
 | **นิยามหลัก** | การป้องกันไม่ให้ผู้ไม่มีสิทธิ์เข้าถึงหรือล่วงรู้ข้อมูล (Protect from unauthorized access) | สิทธิของบุคคลธรรมดาในการควบคุมข้อมูลส่วนตัวของตน (Right to control personal data) |
 | **เป้าหมายความปลอดภัย** | ป้องกัน **Unauthorized Disclosure** | คุ้มครองสิทธิของ **Data Subject** ตามกฎหมาย (เช่น GDPR, PDPA) |
 | **ขอบเขตข้อมูล** | ข้อมูลลับทุกชนิดขององค์กร (Trade Secrets, Financial, Source Code, PII) | เฉพาะข้อมูลส่วนบุคคลที่ระบุตัวตนได้ (**PII / Personal Data**) เท่านั้น |
-| **มาตรการควบคุมหลัก** | Encryption, Access Control, Need to Know, Firewalls | Consent, Data Retention, Purpose Limitation, Right to be Forgotten |
-| **จุดลวงในข้อสอบ** | การเข้ารหัสข้อมูล (Encryption) ตอบสนอง Confidentiality แต่ *ไม่ได้แปลว่าปฏิบัติตาม Privacy ครบถ้วน* หากเก็บข้อมูลโดยไม่ได้รับความยินยอม! | ข้อสอบมักถามว่า "การเก็บข้อมูลลูกค้าโดยเข้ารหัสอย่างดีแต่ไม่แจ้งวัตถุประสงค์ ผิดหลักการใด?" คำตอบคือ **Privacy Violation** |
+| **มาตรการควบคุมหลัก** | Encryption, Access Control, Need to Know, Firewalls | Lawful Basis (เช่น Consent เมื่อเหมาะสม), Transparency, Data Retention, Purpose Limitation, Right to be Forgotten |
+| **ตัวอย่างวิเคราะห์ (Illustrative example)** | Encryption จำกัดการเข้าถึง แต่เพียงอย่างเดียวยังไม่ยืนยันว่าปฏิบัติตาม Privacy ครบถ้วน / Encryption restricts access; it alone does not establish privacy compliance. | ต้องพิจารณาวัตถุประสงค์ ฐานกฎหมาย และหน้าที่ด้านความโปร่งใสตามกฎหมายที่ใช้บังคับ; ตาม GDPR ความยินยอมเป็นฐานหนึ่ง / Check purpose, lawful basis and applicable transparency duties; under GDPR, consent is one possible basis. |
+
+<h4 class="reading-subtopic-title">เทคนิคการปกป้องข้อมูลส่วนบุคคล: การทำ Data Masking (Display Masking)</h4>
+
+การพรางข้อมูลหรือ **Data Masking (Display / Dynamic Masking)** คือเทคนิคการปกป้องความเป็นส่วนตัวของข้อมูลส่วนบุคคล (PII) ณ จุดแสดงผลบนหน้าจอ โดยระบบจะแสดงเฉพาะข้อมูลบางส่วนเท่าที่จำเป็นต่อการปฏิบัติงาน (เช่น การยืนยันตัวตนลูกค้าของ Call Center) และปกปิดส่วนที่เหลือด้วยเครื่องมือหรือสัญลักษณ์พรางตา โดย **ไม่ต้องแก้ไขข้อมูลจริงในฐานข้อมูลหลัก**
+
+<div class="reading-masking-card" role="region" aria-label="Data Masking Input Process Output Flow">
+  <div class="reading-masking-header">
+    <span class="reading-masking-tag">Privacy Technique · Input → Process → Output</span>
+    <h5 class="reading-masking-title">ตัวอย่างกระบวนการทำ Data Masking บนข้อมูลตัวอย่างจำลอง (Fictional Examples)</h5>
+  </div>
+  <div class="reading-masking-grid">
+    <div class="reading-masking-item">
+      <div class="reading-masking-type">หมายเลขบัตรเครดิต (Payment Card / PAN)</div>
+      <div class="reading-masking-pipeline">
+        <div class="reading-masking-before"><code>4532 8912 3456 7890</code><span class="reading-masking-note">ข้อมูลดิบ (Raw Data)</span></div>
+        <div class="reading-masking-arrow"><span>Mask Middle</span>&rarr;</div>
+        <div class="reading-masking-after"><code>4532 •••• •••• 7890</code><span class="reading-masking-note">แสดงผลให้ Call Center</span></div>
+      </div>
+    </div>
+    <div class="reading-masking-item">
+      <div class="reading-masking-type">เลขประจำตัวประชาชน (Citizen ID Number)</div>
+      <div class="reading-masking-pipeline">
+        <div class="reading-masking-before"><code>1-2345-67890-12-3</code><span class="reading-masking-note">ข้อมูลลับในระบบ</span></div>
+        <div class="reading-masking-arrow"><span>Mask 5 Digits</span>&rarr;</div>
+        <div class="reading-masking-after"><code>1-2345-•••••-12-3</code><span class="reading-masking-note">แสดงผลบนหน้าเว็บ</span></div>
+      </div>
+    </div>
+    <div class="reading-masking-item">
+      <div class="reading-masking-type">อีเมลผู้ใช้งาน (Personal Email Address)</div>
+      <div class="reading-masking-pipeline">
+        <div class="reading-masking-before"><code>sarah.connor@example.com</code><span class="reading-masking-note">อีเมลจริงของบัญชี</span></div>
+        <div class="reading-masking-arrow"><span>Mask Mailbox</span>&rarr;</div>
+        <div class="reading-masking-after"><code>s•••••r@example.com</code><span class="reading-masking-note">หน้าจอขอรีเซ็ตรหัสผ่าน</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="reading-callout tip">
+  <div class="reading-callout-header">
+    <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    <span>แยกแยะ 4 เทคนิคปกป้องข้อมูลในข้อสอบ (Masking vs. Encryption vs. Hashing vs. Tokenization)</span>
+  </div>
+  <ul>
+    <li><strong>Data Masking:</strong> การพรางข้อมูลหน้าจอเพื่อจำกัดการมองเห็น (Obfuscate Display) โดยข้อมูลจริงยังอยู่เหมือนเดิม มุ่งตอบโจทย์ Privacy &amp; Need-to-Know</li>
+    <li><strong>Encryption:</strong> การเข้ารหัสข้อมูลทางคณิตศาสตร์ให้กลายเป็น Ciphertext สามารถ <strong>ถอดรหัสกลับคืนได้ (Reversible)</strong> หากมีกุญแจถอดรหัสที่ถูกต้อง</li>
+    <li><strong>Hashing:</strong> การแปลงข้อมูลเป็นค่าตัวเลขขนาดคงที่ทางเดียว <strong>ไม่สามารถแปลงย้อนกลับได้ (Irreversible)</strong> ใช้ตรวจความถูกต้องสมบูรณ์ (Integrity)</li>
+    <li><strong>Tokenization:</strong> การแทนที่ข้อมูลจริงด้วยค่าตัวแทนสุ่ม (Surrogate Token) ที่ไม่มีความสัมพันธ์ทางคณิตศาสตร์กับข้อมูลเดิม โดยข้อมูลจริงถูกเก็บแยกไว้ใน Token Vault ที่มีความปลอดภัยสูง</li>
+  </ul>
+</div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg><strong>ตัวอย่างสถานการณ์จริง: การแสดงผลด้วย Data Masking ในศูนย์บริการลูกค้า (Customer Call Center)</strong></div>
+  <div class="reading-example-step"><strong>1. สถานการณ์ตั้งต้น (Initial Situation):</strong> ลูกค้าโทรศัพท์เข้ามายังศูนย์บริการ Call Center ของธนาคารเพื่อสอบถามยอดใช้จ่ายบัตรเครดิต เจ้าหน้าที่บริการลูกค้าจำเป็นต้องยืนยันตัวตนของผู้โทร แต่ตามหลักการ <em>Need-to-Know</em> เจ้าหน้าที่ไม่มีความจำเป็นต้องเห็นเลขบัตรเครดิตเต็ม 16 หลัก หรือรหัส CVV</div>
+  <div class="reading-example-step"><strong>2. การกระทำและเหตุการณ์ทางเทคนิค (Action &amp; Technical Events):</strong>
+    <ul>
+      <li><em>ข้อมูลจริงในฐานข้อมูล (Storage At-Rest):</em> เลขบัตร <code>4532-8901-2345-6789</code> ถูกเข้ารหัสอย่างแน่นหนาด้วย AES-256 (Encryption) หากแฮกเกอร์ขโมยฮาร์ดดิสก์ไป จะอ่านข้อมูลไม่ได้เลย</li>
+      <li><em>การพรางข้อมูลบนหน้าจอ (Dynamic Data Masking):</em> เมื่อระบบดึงข้อมูลมาแสดงบนหน้าจอโปรแกรมของเจ้าหน้าที่ แอปพลิเคชันทำการพรางข้อมูลทันที โดยแสดงผลเป็น <code>••••-••••-••••-6789</code> และเลขบัตรประชาชนเป็น <code>X-XXXX-XXXXX-89-0</code></li>
+      <li><em>การยืนยันตัวตน:</em> เจ้าหน้าที่กล่าวว่า <em>"ขออนุญาตให้คุณลูกค้ายืนยันเลข 4 หลักสุดท้ายของบัตรเครดิตครับ"</em> ลูกค้าตอบ <em>"6789"</em> &rarr; เจ้าหน้าที่ตรวจสอบตรงกับหน้าจอและดำเนินการต่อได้</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. ผลกระทบด้านความมั่นคงปลอดภัย (Security Impact):</strong> ป้องกันการแอบมองหน้าจอ (Shoulder Surfing), ป้องกันมัลแวร์จับภาพหน้าจอ (Screen Scraping), และลดความเสี่ยงที่เจ้าหน้าที่ภายในจะจดเลขบัตรเครดิตไปทุจริต (Insider Threat) ตอบโจทย์ทั้ง Privacy และมาตรฐาน PCI DSS</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): Data Masking คือการพรางหน้าจอเพื่อจำกัดการมองเห็น (Obfuscation) ข้อมูลจริงหลังบ้านยังอยู่ครบ ไม่ใช่การเข้ารหัสทางคณิตศาสตร์ (Encryption) ที่แปลงข้อมูลเป็น Ciphertext เพื่อถอดรหัสในภายหลัง</div>
+</div>
 
 </section>
 
@@ -394,6 +532,21 @@
       <p>เป็น <em>Architecture Strategy</em> ที่เน้นการวางเกราะป้องกันหลายชั้นซ้อนกัน</p>
     </div>
   </div>
+</div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg><strong>ตัวอย่างสถานการณ์จริง: การประสานพลังระหว่าง Defense in Depth และ Zero Trust เมื่อเกิดการโจมตี Phishing</strong></div>
+  <div class="reading-example-step"><strong>1. สถานการณ์ตั้งต้น (Initial Situation):</strong> พนักงานฝ่ายจัดซื้อที่ทำงานจากบ้าน (Remote Work) ได้รับอีเมลหลอกลวง (Spear Phishing) ที่แนบไฟล์มัลแวร์ปลอมแปลงเป็นใบเสนอราคา <code>Invoice_October.pdf.exe</code></div>
+  <div class="reading-example-step"><strong>2. กลไกการป้องกันหลายชั้น (Defense in Depth Layers):</strong>
+    <ul>
+      <li><em>Layer 1 (Email Security Gateway):</em> ตรวจจับความผิดปกติของ Sender Domain และแนบป้ายเตือน <code>[EXTERNAL EMAIL]</code> ให้พนักงานระมัดระวัง</li>
+      <li><em>Layer 2 (Endpoint EDR Protection):</em> พนักงานเผลอเปิดไฟล์ มัลแวร์พยายามรันสคริปต์ PowerShell แต่ซอฟต์แวร์ EDR บนเครื่องตรวจจับพฤติกรรมผิดปกติและสั่งกักกันไฟล์ (Quarantine) ทันที</li>
+      <li><em>Layer 3 (Zero Trust Network Access - ZTNA):</em> หากมัลแวร์สามารถขโมยรหัสผ่านเครื่องได้และพยายามแพร่กระจายข้ามเครือข่าย (Lateral Movement) ไปยังฐานข้อมูลลูกค้า ระบบ Zero Trust จะบล็อกทันทีเพราะ: (1) มีการแบ่งส่วนเครือข่ายย่อย (Microsegmentation), (2) เครื่องของพนักงานไม่ผ่านการตรวจสอบความสมบูรณ์ (Posture Check), และ (3) มีการเรียกขอ MFA ซ้ำอีกครั้ง</li>
+      <li><em>Layer 4 (Data Encryption &amp; SIEM Monitoring):</em> ข้อมูลในฐานข้อมูลยังคงเข้ารหัสด้วย AES-256 และเหตุการณ์การเชื่อมต่อที่ผิดปกติถูกส่งแจ้งเตือนไปยังทีม SOC แบบเรียลไทม์</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. ผลกระทบด้านความมั่นคงปลอดภัย (Security Impact):</strong> แม้จะมีพนักงานพลาดเปิดไฟล์ติดมัลแวร์ (Endpoint Compromised) แต่องค์กรไม่เกิดวิกฤตข้อมูลรั่วไหลครั้งใหญ่ เพราะไม่ได้พึ่งพาเพียงเกราะป้องกันชั้นเดียว</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): Defense in Depth วางเกราะป้องกันหลายชั้นเพื่อขจัด Single Point of Failure ส่วน Zero Trust ยึดหลัก "Assume Breach" (สมมติว่ามีช่องโหว่เกิดขึ้นแล้ว) และตรวจสอบยืนยันทุกการเข้าถึงอย่างต่อเนื่องแม้จะอยู่ภายในเครือข่ายเดียวกัน</div>
 </div>
 
 </section>
@@ -530,6 +683,27 @@ $ALE = SLE \times ARO$
   <p><strong>การเปรียบเทียบด้านการเงินแบบง่าย:</strong> ผลประโยชน์จากการลดความเสียหายต่อปี (Annual Loss-Reduction Benefit) = ALE ก่อนใช้ Control − ALE หลังใช้ Control แล้วเปรียบเทียบกับต้นทุน Control ต่อปี การมีต้นทุนต่ำกว่า ALE เดิมเพียงอย่างเดียวยังไม่พอ เช่น ALE ก่อน 10,000/ปี หลัง 9,000/ปี ลดความเสียหายได้ 1,000/ปี หาก Control มีต้นทุน 5,000/ปี ผลประโยชน์สุทธิเท่ากับ −4,000/ปี ตัวอย่างเดิมที่ ALE &#36;10,000/ปี แต่ Control ราคา &#36;25,000/ปี ก็ไม่คุ้มด้านการเงินภายใต้สมมติฐานนี้ อย่างไรก็ตาม กฎหมาย สัญญา ความปลอดภัยของบุคคล และภารกิจอาจทำให้องค์กรต้องเลือกมาตรการแม้ผลตอบแทนทางการเงินโดยตรงไม่เป็นบวก</p>
 </div>
 
+<div class="reading-example-box">
+  <div class="reading-example-title"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg><strong>ตัวอย่างสถานการณ์จริง: การประยุกต์ใช้สูตร SLE, ARO, ALE ในการตัดสินใจทางธุรกิจ (Cost-Benefit Business Case)</strong></div>
+  <div class="reading-example-step"><strong>1. สถานการณ์ตั้งต้น (Initial Situation):</strong> บริษัท E-Commerce มีฐานข้อมูลคำสั่งซื้อและบัญชีลูกค้าที่มีมูลค่า ($AV$) เท่ากับ \$200,000 ปัจจุบันยังไม่มีระบบสำรองข้อมูลอัตโนมัติบนคลาวด์</div>
+  <div class="reading-example-step"><strong>2. การคำนวณความเสี่ยงเดิม (Inherent Risk Calculation):</strong>
+    <ul>
+      <li>หากเกิดเหตุการณ์ฮาร์ดแวร์เซิร์ฟเวอร์พังเสียหายอย่างรุนแรง ประเมินว่าจะสูญเสียข้อมูลและโอกาสขาย 40% ($EF = 0.40$) &rarr; $SLE = \$200,000 \times 0.40 = \$80,000$ ต่อครั้ง</li>
+      <li>จากสถิติในอุตสาหกรรม เหตุการณ์ฮาร์ดแวร์พังเช่นนี้มีโอกาสเกิดขึ้นเฉลี่ยทุก 2 ปีครั้ง ($ARO = 0.5$)</li>
+      <li>ความเสียหายที่คาดว่าจะเกิดขึ้นต่อปีเดิม ($ALE_{\text{initial}}$) = $\$80,000 \times 0.5 = \$40,000$ ต่อปี</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การประเมินมาตรการควบคุม (Safeguard Evaluation):</strong>
+    <ul>
+      <li>ฝ่ายไอทีเสนอติดตั้งระบบ Automated Cloud Snapshot Replication ซึ่งมีค่าใช้จ่ายรวมค่าสมาชิก \$10,000 ต่อปี</li>
+      <li>หากติดตั้งระบบนี้ ความเสียหายหากเกิดเหตุการณ์เดิมจะลดลงเหลือเพียง 5% ($EF_{\text{new}} = 0.05$) &rarr; $SLE_{\text{new}} = \$10,000$ ทำให้ $ALE_{\text{residual}} = \$10,000 \times 0.5 = \$5,000$ ต่อปี</li>
+      <li><strong>คำนวณความคุ้มค่าสุทธิ (Cost-Benefit):</strong> $(\$40,000 - \$5,000) - \$10,000 = \$25,000$ ต่อปี</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>4. ผลกระทบและการตัดสินใจ (Management Decision):</strong> คณะกรรมการบริหารอนุมัติงบประมาณทันที เพราะตัวเลขพิสูจน์ชัดเจนว่าการลงทุน \$10,000 สามารถประหยัดความสูญเสียให้องค์กรได้ถึง \$25,000 ต่อปี</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): การตัดสินใจซื้อมาตรการควบคุมความปลอดภัยในองค์กรต้องใช้การวิเคราะห์เชิงปริมาณ (Quantitative Analysis) เปรียบเทียบผลประโยชน์ที่ลดความสูญเสียต่อปีกับต้นทุนของมาตรการนั้น ไม่ใช่การตัดสินใจด้วยความรู้สึก</div>
+</div>
+
 <div id="topic-1-2-risk-lifecycle" class="reading-topic-anchor"></div>
 
 ### 1.2.3 Risk Management Lifecycle
@@ -569,6 +743,10 @@ $ALE = SLE \times ARO$
 - **Risk Acceptance** (การยอมรับความเสี่ยง)
 :::
 
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>กระบวนการตัดสินใจเลือกกลยุทธ์รับมือความเสี่ยง (Risk Treatment Decision Logic):</h5>
+
+<div class="reading-semantic-diagram" data-diagram="riskTreatmentDecisionFlow"></div>
+
 <div class="reading-callout danger">
   <div class="reading-callout-header">
     <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
@@ -584,6 +762,20 @@ $ALE = SLE \times ARO$
       <p>ไม่ได้ลดความเสี่ยงที่ต้นเหตุ และไม่สามารถกู้คืนชื่อเสียงขององค์กรหรือความไว้วางใจของลูกค้าที่สูญเสียไปจากการถูกเจาะข้อมูลได้</p>
     </div>
   </div>
+</div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><strong>ตัวอย่างสถานการณ์จริง: การประยุกต์ใช้ 4 กลยุทธ์จัดการความเสี่ยง (Avoid, Mitigate, Transfer, Accept) ในโครงการย้ายระบบขึ้นคลาวด์</strong></div>
+  <div class="reading-example-step"><strong>1. สถานการณ์ตั้งต้น (Initial Situation):</strong> สถาบันการเงินแห่งหนึ่งกำลังวางแผนพัฒนาแอปพลิเคชันธุรกรรมออนไลน์บนคลาวด์ ทีมประเมินความเสี่ยงพบประเด็นสำคัญ 4 ด้านที่ต้องตัดสินใจรับมือ:</div>
+  <div class="reading-example-step"><strong>2. การเลือกกลยุทธ์ตามบริบท (Strategic Response Selection):</strong>
+    <ul>
+      <li><strong>Risk Avoidance (หลีกเลี่ยง):</strong> ฝ่ายการตลาดต้องการทำระบบเก็บบัตรเครดิตในเครื่องเซิร์ฟเวอร์ของตนเองเพื่อความสะดวก แต่ทีมความปลอดภัยประเมินว่าเสี่ยงถูกโจมตีสูงมาก จึงตัดสินใจ <em>ยกเลิกฟีเจอร์นี้ทิ้งโดยสิ้นเชิง</em> และเปลี่ยนไปเชื่อมต่อกับ Payment Gateway ภายนอกที่ผ่านการรับรอง PCI DSS แทน เพื่อตัดกิจกรรมที่มีความเสี่ยงสูงออกไป</li>
+      <li><strong>Risk Mitigation (ลดความเสี่ยง):</strong> ความเสี่ยงจากการถูกดักรับข้อมูลบนอินเทอร์เน็ต (Man-in-the-Middle) องค์กร <em>ติดตั้งมาตรการควบคุมทางเทคนิค</em> บังคับใช้โปรโตคอล TLS 1.3, ติดตั้ง Web Application Firewall (WAF), เข้ารหัสฐานข้อมูล, และบังคับให้ผู้ใช้ทุกคนยืนยันตัวตนด้วย MFA</li>
+      <li><strong>Risk Transfer (โอนความเสี่ยง):</strong> ความเสี่ยงจากผลกระทบทางการเงินและความรับผิดชอบตามกฎหมายหากเกิดเหตุการณ์ข้อมูลลูกค้ารั่วไหลครั้งใหญ่ องค์กร <em>ซื้อประกันภัยไซเบอร์ (Cyber Insurance) วงเงิน 50 ล้านบาท</em> เพื่อให้บริษัทประกันเป็นผู้รับภาระความเสียหายทางการเงินแทน</li>
+      <li><strong>Risk Acceptance (ยอมรับความเสี่ยง):</strong> ความเสี่ยงจากความล่าช้าในการประมวลผล (Network Latency) เล็กน้อย 0.05 วินาทีระหว่างคลาวด์ต่างภูมิภาค ซึ่งไม่กระทบต่อประสบการณ์ใช้งานของผู้ใช้และต้นทุนในการเช่าคู่สายความเร็วสูงพิเศษระดับ Dedicated สูงเกินความจำเป็น ผู้บริหารจึง <em>ลงนามยอมรับความเสี่ยงนี้อย่างเป็นทางการ</em> ภายในกรอบ Risk Appetite</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): ในโลกความเป็นจริง องค์กรไม่ได้เลือกใช้เพียงกลยุทธ์เดียว แต่ต้องผสมผสานทั้ง 4 กลยุทธ์ตามระดับความเสี่ยง ต้นทุน และความเต็มใจรับความเสี่ยง (Risk Appetite) ขององค์กร</div>
 </div>
 
 <div id="topic-1-2-inherent-residual-risk" class="reading-topic-anchor"></div>
@@ -783,6 +975,8 @@ $ALE = SLE \times ARO$
 
 ### 1.4.1 Security Control Categories
 
+**คำศัพท์ในโครงร่างสอบ (Outline terminology):** โครงร่างสอบ CC ที่มีผล 1 กันยายน 2026 ระบุหมวด Technical, Administrative และ Physical; บทเรียนนี้แยกงานบริหาร (Managerial) และงานประจำวันโดยบุคลากร (Operational) เพื่อช่วยอธิบายด้าน Administrative / The CC outline effective 1 September 2026 names Technical, Administrative and Physical controls; this course explains administrative work through managerial and day-to-day operational activities.
+
 <h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>การแบ่งหมวดหมู่ตามลักษณะของกลไกหรือสิ่งที่นำมาดำเนินการ:</h4>
 
 :::control-categories
@@ -791,6 +985,20 @@ $ALE = SLE \times ARO$
 - **Operational Controls** (มาตรการเชิงปฏิบัติการ)
 - **Physical Controls** (มาตรการทางกายภาพ)
 :::
+
+<figure class="reading-figure">
+  <div class="reading-figure-img-wrap">
+    <img src="assets/images/reading/optical-access-turnstiles.jpg" alt="Drop Arm Optical Turnstiles with integrated access control" class="reading-figure-img" width="720" height="400" loading="lazy">
+  </div>
+  <figcaption class="reading-figcaption">
+    <div class="reading-figure-header">
+      <span class="reading-figure-badge badge-physical">Physical Security Control</span>
+      <h5 class="reading-figure-title">Optical Access Control Turnstiles (ระบบประตูปีกกั้นออปติคัล)</h5>
+    </div>
+    <p class="reading-figure-desc">ตัวอย่างมาตรการควบคุมทางกายภาพ (Physical Control) ที่ทำหน้าที่ร่วมกันทั้ง <strong>Preventive</strong> (สกัดกั้นการเข้าถึงโดยไม่ได้รับอนุญาต และป้องกันการเดินตามกันหรือ Tailgating / Piggybacking) และ <strong>Detective</strong> (มีเซนเซอร์ตรวจจับและส่งสัญญาณเตือน Alarm เมื่อมีการบุกรุกหรือฝ่าแนวกั้น)</p>
+    <div class="reading-attribution">ภาพ: Wikimedia Commons (CC BY-SA 4.0 โดย Fabtron)</div>
+  </figcaption>
+</figure>
 
 <div id="topic-1-4-control-types" class="reading-topic-anchor"></div>
 
@@ -1054,7 +1262,7 @@ $ALE = SLE \times ARO$
   </div>
   <p><strong>สถานการณ์จำลอง:</strong> ผู้บริหารสั่งให้ผู้ดูแลระบบปกปิดรายงานช่องโหว่ความปลอดภัยร้ายแรงในระบบควบคุมการจ่ายน้ำประปาของเมือง (Critical Infrastructure) เนื่องจากกลัวผลกระทบต่อราคาหุ้นของบริษัท</p>
   <p><strong>แนวคิดการวิเคราะห์ตามหลักการ ISC2:</strong> เหตุการณ์นี้เกิดความขัดแย้งระหว่างหน้าที่ต่อผู้ว่าจ้าง (<strong>Canon 3:</strong> Diligent service to principals) กับความปลอดภัยของสังคม (<strong>Canon 1:</strong> Protect society, common good &amp; infrastructure)</p>
-  <p><strong>ข้อสรุปเด็ดขาดสำหรับห้องสอบ:</strong> สมาชิก ISC2 ต้องยึดถือประโยชน์และความปลอดภัยของสังคมส่วนรวม (<strong>Canon 1</strong>) เป็นอันดับสูงสุดเสมอ และ <strong>Canon 1 อยู่เหนือผลประโยชน์ของนายจ้างหรือลูกค้า (Canon 3) อย่างไม่มีข้อยกเว้น</strong></p>
+  <p><strong>แนวทางใช้ดุลยพินิจ (Professional judgment):</strong> คำนึงถึงความปลอดภัยของสาธารณะ เก็บรักษาหลักฐานที่เกี่ยวข้อง และขอคำแนะนำผ่านช่องทางที่มีอำนาจ เช่น ผู้รับผิดชอบด้านความปลอดภัยหรือฝ่ายกฎหมาย โดยพิจารณาหน้าที่ทั้งสี่ร่วมกับข้อเท็จจริง ไม่อนุมานว่ามีสิทธิปกปิด เปิดเผยข้อมูลต่อสาธารณะโดยพลการ หรือทำผิดกฎหมาย / Protect public welfare, preserve relevant evidence and seek guidance through authorized channels, such as security leadership or legal counsel, considering all four duties and the facts. Do not infer permission to conceal, disclose publicly without authorization or act illegally.</p>
 </div>
 
 <div id="topic-1-5-distinctions-scenarios" class="reading-topic-anchor"></div>

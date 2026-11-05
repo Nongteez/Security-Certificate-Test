@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {parseMarkdown} from '../../../js/core/markdown-parser.js';
+import {domain5Scenarios} from '../../../content/isc2-cc-2026/reading/domain-5-scenarios.js';
+const OUT=path.dirname(fileURLToPath(import.meta.url));
+const ROOT=path.resolve(OUT,'../../..');
+const before=fs.readFileSync(path.join(OUT,'before-domain-5.md'),'utf8');
+const after=fs.readFileSync(path.join(ROOT,'content/isc2-cc-2026/reading/domain-5.md'),'utf8');
+const oldHtml=parseMarkdown(before),html=parseMarkdown(after),checks=[];
+function check(name,fn){try{fn();checks.push({name,passed:true});}catch(error){checks.push({name,passed:false,error:error.message});}}
+check('All original explicit subsection identifiers and their order preserved',()=>assert.deepEqual([...after.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]),[...before.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1])));
+check('All existing diagram placements unchanged',()=>assert.deepEqual([...after.matchAll(/data-diagram="([^"]+)"/g)].map(m=>m[1]),[...before.matchAll(/data-diagram="([^"]+)"/g)].map(m=>m[1])));
+check('Hash-property, file-hash and password-hashing content byte-identical',()=>assert.equal(after.split('<h3 id="topic-5-1-hashing-digital-signatures">')[1].split('<h5>Digital Signatures')[0],before.split('<h3 id="topic-5-1-hashing-digital-signatures">')[1].split('<h5>Digital Signatures')[0]));
+check('Existing 12 scenario cards preserved',()=>assert.equal((html.match(/class="reading-scenario-card"/g)||[]).length,12));
+check('Existing total table count unchanged',()=>assert.equal((html.match(/<table\b/g)||[]).length,(oldHtml.match(/<table\b/g)||[]).length));
+check('Affected comparison retains three columns and five comparison rows',()=>{const unit=html.split('id="topic-5-1-tpm-vs-hsm"')[1].split('id="obj-5-2"')[0];const table=unit.match(/<table\b[\s\S]*?<\/table>/)[0];const rows=table.match(/<tr\b[\s\S]*?<\/tr>/g);assert.equal(rows.length,6);for(const row of rows)assert.equal((row.match(/<t[dh]\b/g)||[]).length,3);});
+check('All non-HSM Reading scenarios byte-identical',()=>{const old=before.match(/:::scenario\n[\s\S]*?\n:::/g),updated=after.match(/:::scenario\n[\s\S]*?\n:::/g);assert.equal(old.length,12);for(let i=0;i<old.length;i++)if(i!==3)assert.equal(updated[i],old[i]);});
+check('Reusable scenario 04 matches the actual Markdown fields',()=>{const block=after.match(/:::scenario\nid: 4\n[\s\S]*?\n:::/)[0];const scenario=domain5Scenarios.find(s=>s.id===4||s.id==='4');assert.ok(scenario);for(const key of ['situation','question','answer','reasoning'])assert.equal(scenario[key],block.match(new RegExp('^'+key+': (.+)$','m'))[1]);});
+check('Rendered updated units contain no leaked markup delimiters',()=>{const unit=html.split('id="topic-5-1-hashing-digital-signatures"')[1].split('id="obj-5-2"')[0];const text=unit.replace(/<[^>]*>/g,'');assert.ok(!text.includes('**'));assert.ok(!text.includes('```'));assert.ok(!text.includes(':::'));});
+check('Section wrapper counts unchanged',()=>{for(const tag of ['section','div'])for(const slash of ['','/'])assert.equal((after.match(new RegExp('<'+slash+tag+'(?:>|\\s)','g'))||[]).length,(before.match(new RegExp('<'+slash+tag+'(?:>|\\s)','g'))||[]).length);});
+const report={status:checks.every(c=>c.passed)?'PASS':'FAIL',checks};
+fs.writeFileSync(path.join(OUT,'content-integrity.json'),JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify(report,null,2));if(report.status!=='PASS')process.exitCode=1;

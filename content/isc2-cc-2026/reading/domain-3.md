@@ -29,10 +29,11 @@
 <h4>Mover (เปลี่ยนบทบาท / เลื่อนตำแหน่ง / ย้ายแผนก):</h4>
 
 - พนักงานเปลี่ยนตำแหน่งหรือย้ายสายงาน ต้องได้รับการปรับปรุงสิทธิ์ให้ตรงกับหน้าที่ใหม่
-- ความเสี่ยงสูงสุดของขั้นตอนนี้คือ **Privilege Accumulation** (หรือ **Privilege Creep**): การได้รับสิทธิ์ใหม่เพิ่มเข้ามาแต่สิทธิ์เดิมของแผนกเก่าไม่ถูกเพิกถอนออกไป
+- ความเสี่ยงสูงสุดของขั้นตอนนี้คือ **Privilege Accumulation** (หรือ **Privilege Creep**): การได้รับสิทธิ์ใหม่เพิ่มเข้ามาแต่สิทธิ์เดิมที่หมดความจำเป็นไม่ถูกเพิกถอน (Obsolete access remains)
 
 <div class="reading-scenario-inline">
-  <strong>กรณีศึกษาข้อสอบ (Finance-to-IT Transfer):</strong> นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง <strong>Privilege Creep</strong> และละเมิดหลักการ <strong>Segregation of Duties (SoD)</strong> อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ
+  <p><strong>สถานการณ์สมมติ (Finance-to-IT Transfer):</strong> นโยบายตัวอย่างให้ Helpdesk รีเซ็ตรหัสผ่านผู้ใช้ทั่วไปได้ แต่ไม่ให้ Domain Admin หรืออนุมัติจ่ายเงิน ERP เมื่อสมคิดย้ายจาก Finance มา Helpdesk สิทธิ์อนุมัติจ่ายเงินเดิมที่ยังค้างจึงเป็นสิทธิ์เกินความจำเป็น ให้คงสิทธิ์ส่วนกลางที่ยังมีเหตุผลรองรับ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และให้เฉพาะงานใหม่ที่อนุมัติแล้ว พร้อมตรวจผลจริง ลำดับการเปลี่ยนผ่านเป็นไปตามนโยบาย; การมีหลายสิทธิ์ร่วมกันไม่ได้พิสูจน์การละเมิด SoD โดยอัตโนมัติ</p>
+  <p><strong>Illustrative policy:</strong> Helpdesk may reset ordinary users’ passwords, but not administer the domain or approve ERP payments. When Somkid moves from Finance to Helpdesk, retained ERP payment approval is obsolete excess access. Retain justified common access, revoke obsolete or conflicting permissions, grant only approved new tasks and verify effective access. Transition order follows policy; combined permissions alone do not prove a SoD violation.</p>
 </div>
 
 </section>
@@ -111,7 +112,7 @@
 <section class="reading-concept-unit">
 <h4>Assigning Roles:</h4>
 
-การผูกบัญชีเข้ากับบทบาทหน้าที่ (Roles) ตามตำแหน่งงานที่ได้รับการอนุมัติจากฝ่ายทรัพยากรบุคคล
+การผูกบัญชีกับบทบาทหน้าที่ (Roles) ตามข้อมูลตำแหน่งงานที่ตรวจสอบแล้ว โดยผู้มีอำนาจตามนโยบายอนุมัติสิทธิ์ของระบบหรือทรัพยากรนั้น ไม่ใช่ถือว่า HR อนุมัติสิทธิ์ทุกระบบเสมอ / Verified job information informs the role; the policy-designated authority approves resource access, rather than assuming HR approves every system.
 
 </section>
 
@@ -132,9 +133,45 @@
 <section class="reading-concept-unit">
 <h4>Issuing Authentication Credentials:</h4>
 
-การออกข้อมูลประจำตัวสำหรับยืนยันตัวตน เช่น รหัสผ่านเริ่มต้น, บัตรสมาร์ตการ์ด, หรือการลงทะเบียนโทเค็น MFA
+การออกข้อมูลประจำตัวสำหรับยืนยันตัวตน เช่น รหัสผ่านเริ่มต้น, บัตรสมาร์ตการ์ด (Smart Card / CAC / PIV), หรือการลงทะเบียนโทเค็น MFA และระบบสแกนไบโอเมตริกซ์
+
+<figure class="reading-figure" style="max-width: 680px; margin: 18px auto;">
+  <div class="reading-figure-img-wrap" style="aspect-ratio: 16/9; max-height: 320px;">
+    <img src="assets/images/reading/piv-smart-card-features.jpg" alt="U.S. Personal Identity Verification (PIV) Smart Card showing integrated circuit microchip contact pad and physical security features" class="reading-figure-img" width="1017" height="1013" loading="lazy">
+  </div>
+  <figcaption class="reading-figcaption">
+    <span class="reading-figure-badge badge-have">Something You Have · Cryptographic Smart Card</span>
+    <strong>ฮาร์ดแวร์ยืนยันตัวตน Personal Identity Verification (PIV / CAC Smart Card):</strong> ตัวอย่างบัตรสมาร์ตการ์ดมาตรฐานความปลอดภัยระดับสูง แสดงแผ่นสัมผัสโลหะทองของไมโครโปรเซสเซอร์ (Integrated Circuit Chip) ที่จัดเก็บ Private Key และ Digital Certificate อย่างปลอดภัย โดยไม่สามารถคัดลอกหรือดึงกุญแจลับออกมาได้ (Hardware Cryptographic Token)
+    <span class="reading-figure-attr">ภาพ: U.S. Government Accountability Office (GAO Report GAO-11-751) / Public Domain</span>
+  </figcaption>
+</figure>
+
+<div class="reading-semantic-diagram" data-diagram="biometricSensitivityCurve"></div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การปรับตั้งค่าไบโอเมตริกซ์ — ห้องมั่นคงคลังอาวุธ (High Security) เทียบกับ ประตูตรวจบัตรสนามบิน (High Throughput)</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> องค์กรด้านความมั่นคงกำลังติดตั้งระบบสแกนม่านตา (Iris Scanner) ใน 2 พื้นที่ที่มีเป้าหมายต่างกันอย่างสิ้นเชิง: (1) ประตูทางเข้าห้องนิรภัยเก็บข้อมูลลับทางทหาร และ (2) ประตูทางผ่านอัตโนมัติ (Automated Border Gate) ที่สนามบินนานาชาติ</div>
+  <div class="reading-example-step"><strong>2. การตั้งค่าพื้นที่ความมั่นคงสูง (Vault / Military: เน้น Low FAR):</strong>
+    <ul>
+      <li><strong>เป้าหมาย:</strong> ป้องกันไม่ให้ผู้ไม่มีสิทธิ์ผ่านเข้าไปได้โดยเด็ดขาด แม้จะยอมให้เจ้าหน้าที่ตัวจริงถูกปฏิเสธบ้างก็ตาม</li>
+      <li><strong>การตั้งค่า:</strong> ปรับเพิ่มระดับความไว (High Sensitivity / Stringent Threshold) ส่งผลให้ <strong>False Acceptance Rate (FAR)</strong> ลดลงเกือบเป็น 0% (ไม่มีทางยอมรับคนแปลกหน้า)</li>
+      <li><strong>ผลข้างเคียง:</strong> <strong>False Rejection Rate (FRR)</strong> สูงขึ้น เจ้าหน้าที่ตัวจริงอาจต้องสแกนม่านตาซ้ำ 2-3 ครั้งกว่าระบบจะยอมรับ แต่ในบริบทนี้ถือเป็นเรื่องยอมรับได้เพื่อแลกกับความปลอดภัยสูงสุด</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การตั้งค่าพื้นที่ที่มีผู้คนหนาแน่น (Airport Turnstile: เน้น Low FRR & Throughput):</strong>
+    <ul>
+      <li><strong>เป้าหมาย:</strong> ระบายผู้โดยสารหลายหมื่นคนต่อชั่วโมง ไม่ให้เกิดคิวสะสมหรือการติดขัดที่หน้าประตู</li>
+      <li><strong>การตั้งค่า:</strong> ปรับลดระดับความไวลงเล็กน้อยเพื่อให้ผู้โดยสารที่ถูกต้องเดินผ่านได้รวดเร็ว ช่วยให้ <strong>False Rejection Rate (FRR)</strong> ต่ำสุด โดยมีเจ้าหน้าที่รักษาความปลอดภัยตรวจซ้ำเป็นด่านที่สอง</li>
+      <li><strong>จุดสมดุล (CER):</strong> ในการเลือกซื้ออุปกรณ์ ผู้จัดซื้อเลือกสแกนเนอร์ที่มีค่า <strong>Crossover Error Rate (CER / EER)</strong> ต่ำที่สุด เพราะจุดที่ FAR เท่ากับ FRR ยิ่งต่ำ หมายถึงเซ็นเซอร์มีคุณภาพและแม่นยำสูงโดยรวม</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): FAR (Type II Error) คือการยอมรับคนร้าย ส่วน FRR (Type I Error) คือการปฏิเสธคนดี การปรับระดับความไวของระบบไบโอเมตริกซ์ต้องสอดคล้องกับวัตถุประสงค์การใช้งาน: ระบบความมั่นคงสูงต้องการ FAR ต่ำสุด ขณะที่ระบบสาธารณะเน้น FRR ต่ำเพื่อความสะดวก และอุปกรณ์ที่ดีที่สุดคืออุปกรณ์ที่มีค่า CER ต่ำที่สุด</div>
+</div>
 
 </section>
+<p><strong>ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed):</strong> ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ</p>
+<p><strong>Illustrative check:</strong> The policy-designated approver authorizes only monthly-report reading, not payroll changes or network administration. Testing shows payroll changes also succeed. Correct the excess grant, then verify that report reading succeeds while payroll changes and network administration are denied.</p>
+
 <h3 id="topic-3-1-access-review">3.1.4 Access Review &amp; 6 Core Audit Findings: การทบทวนสิทธิ์เป็นระยะ</h3>
 
 เมื่อระบบมีการใช้งานไปเป็นระยะเวลาหนึ่ง สิทธิ์การเข้าถึงมักจะเกิดความคลาดเคลื่อนจากความเป็นจริง ดังนั้นองค์กรจึงต้องมีการทำ **Periodic Access Review** (การทบทวนสิทธิ์เป็นระยะ) โดยให้ผู้จัดการสายงาน (Line Managers) และเจ้าของข้อมูล (Data Owners) ร่วมกันตรวจสอบว่าสิทธิ์ของผู้ใช้งานแต่ละคนยังคงถูกต้องและจำเป็นอยู่หรือไม่
@@ -151,7 +188,7 @@
 <section class="reading-concept-unit">
 <h4>Unused Accounts (บัญชีที่ไม่ได้ใช้งาน):</h4>
 
-บัญชีที่ไม่มีการล็อกอินเข้าใช้งานเป็นเวลานาน (เช่น เกิน 90 วัน) แต่ยังเปิดทิ้งไว้
+บัญชีที่ไม่มีการล็อกอินเป็นเวลานานแต่ยังเปิดทิ้งไว้ เช่น เกิน 90 วันภายใต้นโยบายสมมติ; เกณฑ์จริงกำหนดตามบริบทและนโยบายองค์กร / For example, over 90 days under an illustrative policy; the actual inactivity threshold is organization-defined.
 
 </section>
 
@@ -165,21 +202,21 @@
 <section class="reading-concept-unit">
 <h4>Role Changes (การเปลี่ยนบทบาทแต่สิทธิ์ค้าง):</h4>
 
-พนักงานย้ายตำแหน่งงานแล้ว แต่ยังคงมีสิทธิ์ของหน้าที่งานเดิมหลงเหลืออยู่
+พนักงานย้ายตำแหน่งแล้ว แต่สิทธิ์งานเดิมที่หมดความจำเป็นยังค้างอยู่ (Obsolete access after a role change)
 
 </section>
 
 <section class="reading-concept-unit">
 <h4>Privilege Accumulation / Privilege Creep (การสะสมสิทธิ์):</h4>
 
-การที่สิทธิ์ในระบบค่อย ๆ พอกพูนขึ้นเรื่อย ๆ จากการย้ายแผนกหลายครั้ง
+การที่สิทธิ์เกินความจำเป็นสะสมจากการย้ายแผนกหลายครั้ง โดยไม่ถอนส่วนที่เลิกใช้ (Accumulation of unnecessary access)
 
 </section>
 
 <section class="reading-concept-unit">
 <h4>Orphaned Accounts (บัญชีไร้เจ้าของ):</h4>
 
-บัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน
+ตัวอย่างคือบัญชีของผู้ลาออกหรือสิ้นสุดสัญญาที่ยังไม่ถูกระงับ นอกจากนี้ต้องตรวจสอบบัญชีที่หาผู้รับผิดชอบที่มีอำนาจไม่ได้ แม้จะมีการใช้งานล่าสุด; Activity ไม่ได้ยืนยัน Ownership / A departed user’s active account is one example. Also investigate accounts without an identifiable accountable owner, even if recently used; activity alone does not establish ownership.
 
 </section>
 
@@ -188,7 +225,33 @@
     <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
     <span>กรณีศึกษาคลาสสิก: Finance ย้ายไป IT</span>
   </div>
-  <p>พนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า <strong>Privilege Accumulation</strong> และต้องแก้ไขด้วยกระบวนการ <strong>Periodic Access Review</strong></p>
+  <p>สมมติว่านโยบายไม่ให้เข้าดูรายงาน Finance หลังย้ายไปงาน IT นี้ ผ่านไป 6 เดือนพนักงานยังเปิดรายงานเดิมได้ จึงพบสิทธิ์เกินความจำเป็น การทบทวนต้องตามด้วยคำตัดสินจากผู้มีอำนาจ การถอนสิทธิ์ที่อนุมัติให้ถอน และการตรวจว่าอ่านรายงาน Finance ไม่ได้แล้ว ขณะที่งาน IT ที่ยังอนุมัติไว้ทำได้</p>
+  <p><strong>Review → apply → verify:</strong> Under the example policy, Finance-report access is no longer needed after this IT transfer. Six months later it still works. Obtain the authorized review decision, apply the approved removal and verify that Finance-report reading is denied while approved IT work remains available.</p>
+</div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การสะสมสิทธิ์ข้ามสายงาน (Privilege Creep) และการแก้ไขด้วย Periodic Access Review</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> "กานต์" เริ่มต้นทำงานเป็นเจ้าหน้าที่ฝ่ายการเงิน (Finance Officer) มีสิทธิ์เข้าถึงระบบ SAP บัญชีเจ้าหนี้และการอนุมัติใบจ่ายเงิน 3 ปีต่อมา กานต์สอบย้ายตำแหน่งภายในสำเร็จเป็นเจ้าหน้าที่ฝ่ายตรวจสอบภายใน (Internal Auditor) เพื่อช่วยตรวจทานการดำเนินงานขององค์กร</div>
+  <div class="reading-example-step"><strong>2. เหตุการณ์เกิดการสะสมสิทธิ์ (Privilege Accumulation):</strong>
+    <ul>
+      <li>ฝ่าย IT ดำเนินการ Provisioning สิทธิ์ใหม่สำหรับตำแหน่ง Internal Auditor ให้แก่กานต์ ได้แก่ สิทธิ์อ่านล็อกระบบและเข้าถึงรายงานตรวจสอบทุกแผนก</li>
+      <li>อย่างไรก็ตาม ผู้จัดการฝ่ายการเงินคนเดิมไม่ได้แจ้งคำขอ Deprovisioning สิทธิ์เก่าออก และฝ่าย IT ก็ไม่ได้ตรวจสอบสิทธิ์เดิมที่มีอยู่</li>
+      <li><strong>ผลลัพธ์:</strong> กานต์มีทั้งสิทธิ์ในการอนุมัติจ่ายเงินของฝ่ายการเงินเดิม และสิทธิ์ในการตรวจสอบระบบของฝ่ายตรวจสอบภายในไปพร้อมกัน ซึ่งถือเป็นการขัดต่อหลักการแบ่งแยกหน้าที่ (Segregation of Duties: SoD) อย่างร้ายแรง</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การตรวจพบในรอบ Periodic Access Review (Audit Finding):</strong>
+    <ul>
+      <li>เมื่อถึงรอบการทบทวนสิทธิ์ประจำไตรมาส (Quarterly Access Review) เจ้าของระบบและผู้จัดการฝ่ายตรวจสอบได้เปรียบเทียบสิทธิ์จริงที่กานต์ถือครองเทียบกับ Job Function ปัจจุบัน</li>
+      <li>ระบบ Identity Governance แจ้งเตือนข้อขัดแย้งด้าน SoD และระบุว่าบัญชีของกานต์มี "สิทธิ์เกินความจำเป็น" (Excessive Permissions) จากบทบาทงานเดิมที่เลิกใช้แล้ว (Obsolete Permissions)</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>4. การแก้ไขและการบังคับใช้นโยบาย (Remediation & Least Privilege):</strong>
+    <ul>
+      <li>ฝ่ายความปลอดภัยเพิกถอนสิทธิ์การอนุมัติจ่ายเงินในระบบบัญชีทั้งหมดทันที</li>
+      <li>กำหนดให้ขั้นตอน Mover ในระบบ IAM บังคับตรวจสอบและตัดสิทธิ์เดิมก่อนจัดสรรสิทธิ์ใหม่โดยอัตโนมัติ เพื่อป้องกันปัญหา Privilege Creep ในอนาคต</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): ในขั้นตอน Mover ของวงจรชีวิต JML ความเสี่ยงสูงสุดคือการสะสมสิทธิ์เดิมที่ล้าสมัย (Privilege Creep) การทบทวนสิทธิ์เป็นระยะ (Periodic Access Review) ร่วมกับการบังคับใช้หลัก Least Privilege จะช่วยตรวจจับและตัดสิทธิ์ที่เกินจำเป็นออกก่อนที่จะนำไปสู่การทุจริตหรือช่องโหว่ความปลอดภัย</div>
 </div>
 <h3 id="topic-3-1-deprovisioning">3.1.5 Deprovisioning: Triggers &amp; Revocation Practices</h3>
 
@@ -214,7 +277,7 @@
 <section class="reading-concept-unit">
 <h5>Role Change:</h5>
 
-พนักงานเปลี่ยนบทบาทหรือย้ายฝ่าย (เพิกถอนสิทธิ์เดิมและปรับปรุงสิทธิ์ใหม่)
+พนักงานเปลี่ยนบทบาทหรือย้ายฝ่าย (ถอนสิทธิ์ที่หมดความจำเป็นและปรับให้ตรงหน้าที่ใหม่ตามนโยบาย / Revoke obsolete access and align rights with the new duties under policy)
 
 </section>
 
@@ -261,6 +324,18 @@
   </div>
   <p>ในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ <strong>"Disable Account"</strong> (ปิดการใช้งาน) แทนการ <strong>"Delete Account"</strong> (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป</p>
 </div>
+
+<div class="reading-callout info">
+  <div class="reading-callout-header">
+    <svg class="reading-callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    <span>ข้อกำหนดสำคัญ: Leaver Access Revocation vs. Audit Log Retention (ENR-D3-04)</span>
+  </div>
+  <p><strong>การตัดสิทธิ์การเข้าถึงทันที (Immediate Access Revocation):</strong> เมื่อพนักงานพ้นสภาพหรือสิ้นสุดสัญญาจ้าง (Leaver Event) บัญชีผู้ใช้, สิทธิ์การเข้าถึงระบบ, กุญแจดิจิทัล, และ Session tokens ทั้งหมดต้องถูกระงับหรือเพิกถอน <em>โดยทันที (Immediately)</em> เพื่อกำจัดความเสี่ยงจากการเข้าถึงโดยไม่ได้รับอนุญาตและภัยคุกคามจากคนใน (Insider Threat)</p>
+  <p><strong>การเก็บรักษาบันทึกหลักฐานตรวจสอบ (Audit Log &amp; History Retention):</strong> บันทึกประวัติการเข้าถึง (Access Logs), บันทึกการทำธุรกรรม (Transaction Logs), และร่องรอยการตรวจสอบ (Audit Trail) ในอดีตของพนักงานผู้นั้น <em>ต้องไม่ถูกลบทำลายโดยเด็ดขาด</em> แต่องค์กรต้องจัดเก็บรักษาไว้ตามนโยบาย Retention Policy และข้อกำหนดทางกฎหมาย/การกำกับดูแล เพื่อความพร้อมในการสืบสวนทางนิติวิทยาศาสตร์ (Forensic Readiness) และการตรวจสอบความสอดคล้อง (Compliance Auditing)</p>
+</div>
+<p><strong>ตัวอย่างสมมติ: Session ในแอปยังใช้ได้ (Surviving app session):</strong> สัญญาจ้างสิ้นสุดและผู้ดูแลมีอำนาจถอนสิทธิ์แล้ว บัญชีกลางถูกระงับ แต่ในตัวอย่างนี้ Session เดิมของแอปยังเปิดข้อมูลได้ ให้ใช้กระบวนการถอนสิทธิ์หรือ Session ที่แอปรองรับ แล้วตรวจด้วย Session เดิมว่าถูกปฏิเสธการเข้าถึง พร้อมเก็บหลักฐานตามนโยบาย พฤติกรรมนี้ไม่ได้เกิดเหมือนกันทุกแอป</p>
+<p><strong>Illustrative session check:</strong> The contract has ended and the administrator is authorized to withdraw access. The central account is disabled, but this application’s existing session still reads data. Use the application’s supported access/session revocation process, verify denial with that existing session, and retain required evidence. Application behavior varies.</p>
+
 <h3 id="topic-3-1-iam-frameworks">3.1.6 IAM Management Frameworks: NIST SP 800-63 vs CSF</h3>
 
 ในการบริหารจัดการระบบอัตลักษณ์ดิจิทัล องค์กรระดับสากลนิยมอ้างอิงกรอบมาตรฐานของ NIST โดยต้องแยกความแตกต่างระหว่างสองกรอบงานสำคัญ:
@@ -645,6 +720,20 @@
 | **MAC (Mandatory)** | **Central Authority** (นโยบายกลางของระบบ) | Security Labels &amp; Subject Clearances | ทางทหาร, หน่วยงานความมั่นคง, ระบบลับราชการ | *"Security Classification", "Clearance", "Top Secret", "Labels"* |
 | **RBAC (Role-Based)** | **Predefined Role** (บทบาทหน้าที่งาน) | Permissions ผูกกับ Roles แล้ว User ผูกกับ Roles | องค์กรธุรกิจทั่วไป, สถาบันการเงิน, โรงพยาบาล | *"Job function", "Predefined roles", "Onboarding scalability"* |
 | **ABAC (Attribute-Based)** | **Policy Engine** (ระบบประมวลผลนโยบาย) | Multiple Attributes (Subject, Object, Action, Environment) | ระบบคลาวด์ยุคใหม่, Zero Trust Architecture | *"Attributes", "Environmental conditions", "Time/Location/Device"* |
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การเปรียบเทียบการตัดสินใจให้สิทธิ์ใน 4 โมเดล (DAC, MAC, RBAC, ABAC)</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> องค์กรต้องการกำหนดนโยบายให้บุคลากรเข้าถึงเอกสารและฐานข้อมูลเวชระเบียน โดยแต่ละฝ่ายเลือกใช้โมเดลควบคุมการเข้าถึงที่เหมาะสมกับบริบทของตน</div>
+  <div class="reading-example-step"><strong>2. การตัดสินใจในแต่ละโมเดล (Access Decision Mechanisms):</strong>
+    <ul>
+      <li><strong>Discretionary Access Control (DAC):</strong> นายแพทย์สมชายเป็นผู้สร้างไฟล์รายงานผลวิจัย "Research_2026.docx" บนระบบแชร์ไฟล์ ในฐานะ Resource Owner หมอสมชายสามารถคลิกขวาที่ไฟล์เพื่อกำหนดให้เพื่อนร่วมงานอ่านได้ และสั่งบล็อกคนอื่นได้ด้วยตนเองอย่างอิสระ (Owner sets ACLs)</li>
+      <li><strong>Mandatory Access Control (MAC):</strong> หน่วยวิจัยด้านความมั่นคงกำหนดป้ายกำกับไฟล์เป็น <em>Top Secret</em> นายแพทย์สมเกียรติมี Security Clearance ระดับ <em>Top Secret</em> แต่หากไม่มี <strong>Need-to-Know</strong> ในโครงการนี้ ระบบส่วนกลางจะปฏิเสธการเข้าถึงทันที (Central Policy + Label + Clearance + Need-to-Know)</li>
+      <li><strong>Role-Based Access Control (RBAC):</strong> ในระบบโรงพยาบาลส่วนหน้า มีการสร้าง Role เช่น <em>"Emergency Nurse"</em> และ <em>"Cardiologist"</em> พยาบาลที่ถูกบรรจุใน Role นี้จะได้รับสิทธิ์บันทึกสัญญาณชีพทันที แต่ไม่สามารถสั่งยาจำพวกสารเสพติดได้ ซึ่งสงวนไว้เฉพาะ Role แพทย์เท่านั้น (Predefined Job Roles)</li>
+      <li><strong>Attribute-Based Access Control (ABAC):</strong> พยาบาลเข้าใช้งานระบบจากเครื่องแท็บเล็ตของโรงพยาบาลในเวลากะปฏิบัติงาน (08:00 - 16:00 น.) ผ่านเครือข่าย Wi-Fi ในหอผู้ป่วย &rarr; ระบบอนุญาตให้เข้าดูประวัติผู้ป่วยได้ แต่หากพยาบาลคนเดียวกันพยายามล็อกอินดูข้อมูลชุดเดิมจากสมาร์ตโฟนส่วนตัวเวลา 22:00 น. จากที่พัก &rarr; Policy Engine ของ ABAC จะปฏิเสธการเข้าถึงทันทีเนื่องจากเงื่อนไขเวลา สถานที่ และอุปกรณ์ไม่ตรงตามนโยบาย</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): DAC ให้สิทธิ์แก่เจ้าของไฟล์ตัดสินใจเอง, MAC บังคับใช้ตามระดับความลับและสิทธิ์ส่วนกลางจากระบบ, RBAC ยึดตามบทบาทหน้าที่งานในองค์กร, และ ABAC ประเมินแบบไดนามิกจากคุณลักษณะของผู้ใช้ ทรัพยากร และบริบทสภาพแวดล้อม (เวลา สถานที่ อุปกรณ์)</div>
+</div>
 
 </section>
 

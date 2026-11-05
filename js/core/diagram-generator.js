@@ -305,6 +305,12 @@ export const diagrams = {
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 680 180" class="reading-diagram-svg" aria-label="Load balancer distributing traffic to redundant servers" role="img">
+      <defs>
+        <marker id="diag-arrow-head" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--diag-arrow, #64748b)" class="diag-marker-arrow" />
+        </marker>
+      </defs>
+
       <rect x="20" y="60" width="110" height="60" rx="6" class="diag-box diag-box-banner" />
       <text x="75" y="87" class="diag-text-title" text-anchor="middle">End Users</text>
       <text x="75" y="105" class="diag-text-sub" text-anchor="middle">ผู้ใช้งานระบบ</text>
@@ -516,6 +522,12 @@ export const diagrams = {
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 700 150" class="reading-diagram-svg" aria-label="Data Subject to Data Controller to Data Processor" role="img">
+      <defs>
+        <marker id="diag-arrow-head" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--diag-arrow, #64748b)" class="diag-marker-arrow" />
+        </marker>
+      </defs>
+
       <rect x="15" y="30" width="180" height="90" rx="8" class="diag-box diag-box-banner" />
       <text x="105" y="58" class="diag-text-title" text-anchor="middle">Data Subject</text>
       <text x="105" y="78" class="diag-text-sub" text-anchor="middle">เจ้าของข้อมูลส่วนบุคคล</text>
@@ -847,6 +859,12 @@ export const diagrams = {
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 800 200" class="reading-diagram-svg" aria-label="Cyclic process: 5-Stage Risk Management Lifecycle (Identify to Assess to Treat to Monitor to Communicate)" role="img">
+      <defs>
+        <marker id="diag-arrow-head" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--diag-arrow, #64748b)" class="diag-marker-arrow" />
+        </marker>
+      </defs>
+
       <rect x="46" y="20" width="124" height="70" rx="8" class="diag-box diag-box-banner" />
       <text x="108" y="47" class="diag-step-num" text-anchor="middle">STAGE 01</text>
       <text x="108" y="67" class="diag-text-title" text-anchor="middle">Identify</text>
@@ -967,6 +985,171 @@ export const diagrams = {
           </div>
         </div>
         <p class="reading-mob-tier-desc">รายงานสถานะความเสี่ยงต่อคณะกรรมการและผู้มีส่วนได้ส่วนเสีย พร้อมนำผลสะท้อนกลับไปปรับปรุงขั้นตอนระบุความเสี่ยงในรอบถัดไป</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+  // 1.2.4 Risk Treatment Decision Framework & 4 Responses
+  riskTreatmentDecisionFlow: `
+<div class="reading-diagram-card" data-diagram="riskTreatmentDecisionFlow" role="region" aria-label="Risk Treatment Decision Framework and 4 Responses Flowchart">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Decision Framework</span>
+    <h4 class="reading-diagram-title">Risk Treatment Decision Logic &middot; The 4 Strategic Responses</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 860 380" class="reading-diagram-svg" aria-label="Risk Treatment Decision Flowchart showing Inherent Risk evaluated against Risk Appetite, leading to Avoid, Transfer, Mitigate, or Accept, and Residual Risk governance loop" role="img">
+      <!-- Top Level: Inherent Risk Card -->
+      <g>
+        <rect x="30" y="20" width="220" height="62" rx="8" class="diag-box diag-box-banner" />
+        <text x="140" y="44" class="diag-step-num" text-anchor="middle">INPUT · EVALUATION</text>
+        <text x="140" y="65" class="diag-text-title" text-anchor="middle">Inherent Risk (ความเสี่ยงดั้งเดิม)</text>
+      </g>
+
+      <!-- Arrow to Decision Point -->
+      <line x1="250" y1="51" x2="310" y2="51" stroke="var(--blue, #3b82f6)" stroke-width="2" />
+      <polygon points="316,51 308,47 308,55" fill="var(--blue, #3b82f6)" />
+
+      <!-- Top Level: Decision Threshold Card -->
+      <g>
+        <rect x="316" y="16" width="260" height="70" rx="8" class="diag-box diag-box-blue diag-box-highlight" />
+        <text x="446" y="42" class="diag-text-title" font-weight="700" text-anchor="middle">Is Risk &gt; Risk Appetite?</text>
+        <text x="446" y="62" class="diag-text-sub" text-anchor="middle">ความเสี่ยงเกินขอบเขตที่ยอมรับได้หรือไม่?</text>
+      </g>
+
+      <!-- Downward Arrow for YES -->
+      <line x1="446" y1="86" x2="446" y2="120" stroke="var(--blue, #2563eb)" stroke-width="2" />
+      <polygon points="446,126 441,118 451,118" fill="var(--blue, #2563eb)" />
+      <rect x="376" y="94" width="140" height="20" rx="4" fill="var(--panel-2, #f8fafc)" stroke="var(--blue, #3b82f6)" stroke-width="1" />
+      <text x="446" y="108" class="diag-text-label" font-size="11px" font-weight="700" text-anchor="middle" fill="var(--blue, #2563eb)">YES &middot; ต้องจัดการ (Treat)</text>
+
+      <!-- Rightward connection for NO -> Direct Accept -->
+      <path d="M 576 51 L 752 51 L 752 120" stroke="var(--text-light, #64748b)" stroke-width="1.5" stroke-dasharray="4,4" fill="none" />
+      <polygon points="752,126 748,118 756,118" fill="var(--text-light, #64748b)" />
+      <text x="664" y="44" class="diag-text-sub" font-size="10.5px" text-anchor="middle">NO (&le; Appetite)</text>
+
+      <!-- Middle Level: 4 Treatment Cards -->
+      <!-- Option 1: AVOID -->
+      <g>
+        <rect x="30" y="130" width="185" height="135" rx="8" class="diag-box diag-box-rose" />
+        <rect x="42" y="140" width="161" height="20" rx="4" fill="#ef4444" fill-opacity="0.15" />
+        <text x="122" y="154" class="diag-step-num" text-anchor="middle" fill="#dc2626">OPTION 1 · AVOID</text>
+        <text x="122" y="180" class="diag-text-title" font-weight="700" text-anchor="middle">Risk Avoidance</text>
+        <text x="122" y="198" class="diag-text-sub" font-weight="600" text-anchor="middle">การหลีกเลี่ยงความเสี่ยง</text>
+        <text x="122" y="222" class="diag-text-sub" font-size="11px" text-anchor="middle">"Stop the Activity"</text>
+        <text x="122" y="238" class="diag-text-sub" font-size="10.5px" text-anchor="middle">ยกเลิกโครงการ / ตัดความเสี่ยงเป็น 0</text>
+      </g>
+
+      <!-- Option 2: TRANSFER -->
+      <g>
+        <rect x="240" y="130" width="185" height="135" rx="8" class="diag-box diag-box-amber" />
+        <rect x="252" y="140" width="161" height="20" rx="4" fill="#f59e0b" fill-opacity="0.15" />
+        <text x="332" y="154" class="diag-step-num" text-anchor="middle" fill="#d97706">OPTION 2 · TRANSFER</text>
+        <text x="332" y="180" class="diag-text-title" font-weight="700" text-anchor="middle">Risk Transfer / Share</text>
+        <text x="332" y="198" class="diag-text-sub" font-weight="600" text-anchor="middle">การโอนความเสี่ยง</text>
+        <text x="332" y="222" class="diag-text-sub" font-size="11px" text-anchor="middle">"Share Financial Impact"</text>
+        <text x="332" y="238" class="diag-text-sub" font-size="10.5px" text-anchor="middle">Cyber Insurance / Vendor SLA</text>
+      </g>
+
+      <!-- Option 3: MITIGATE -->
+      <g>
+        <rect x="450" y="130" width="185" height="135" rx="8" class="diag-box diag-box-emerald" />
+        <rect x="462" y="140" width="161" height="20" rx="4" fill="#10b981" fill-opacity="0.15" />
+        <text x="542" y="154" class="diag-step-num" text-anchor="middle" fill="#059669">OPTION 3 · MITIGATE</text>
+        <text x="542" y="180" class="diag-text-title" font-weight="700" text-anchor="middle">Risk Mitigation</text>
+        <text x="542" y="198" class="diag-text-sub" font-weight="600" text-anchor="middle">การลดความเสี่ยง</text>
+        <text x="542" y="222" class="diag-text-sub" font-size="11px" text-anchor="middle">"Apply Security Controls"</text>
+        <text x="542" y="238" class="diag-text-sub" font-size="10.5px" text-anchor="middle">MFA / Patching / Firewall</text>
+      </g>
+
+      <!-- Option 4: ACCEPT -->
+      <g>
+        <rect x="660" y="130" width="185" height="135" rx="8" class="diag-box diag-box-blue" />
+        <rect x="672" y="140" width="161" height="20" rx="4" fill="#3b82f6" fill-opacity="0.15" />
+        <text x="752" y="154" class="diag-step-num" text-anchor="middle" fill="#2563eb">OPTION 4 · ACCEPT</text>
+        <text x="752" y="180" class="diag-text-title" font-weight="700" text-anchor="middle">Risk Acceptance</text>
+        <text x="752" y="198" class="diag-text-sub" font-weight="600" text-anchor="middle">การยอมรับความเสี่ยง</text>
+        <text x="752" y="222" class="diag-text-sub" font-size="11px" text-anchor="middle">"Formal Sign-off &amp; Log"</text>
+        <text x="752" y="238" class="diag-text-sub" font-size="10.5px" text-anchor="middle">ผู้บริหารลงนาม + Risk Register</text>
+      </g>
+
+      <!-- Connecting Lines from Mitigate/Transfer to Residual Risk -->
+      <line x1="332" y1="265" x2="332" y2="288" stroke="var(--amber, #f59e0b)" stroke-width="1.5" />
+      <line x1="542" y1="265" x2="542" y2="288" stroke="var(--green, #10b981)" stroke-width="1.5" />
+      <polygon points="332,294 328,286 336,286" fill="var(--amber, #f59e0b)" />
+      <polygon points="542,294 538,286 546,286" fill="var(--green, #10b981)" />
+
+      <!-- Bottom Level: Residual Risk & Governance Band -->
+      <g>
+        <rect x="30" y="298" width="815" height="64" rx="8" class="diag-box diag-box-banner" />
+        <text x="50" y="324" class="diag-text-title" font-weight="700">Governance Gate &middot; Residual Risk Evaluation:</text>
+        <text x="50" y="344" class="diag-text-sub">ความเสี่ยงที่หลงเหลือ (Residual Risk) ต้องได้รับการประเมินใหม่ หาก Residual Risk &le; Risk Appetite &rarr; Accept ได้อย่างถูกต้อง | ทบทวนสม่ำเสมอ</text>
+        <rect x="660" y="310" width="168" height="38" rx="6" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-width="1" />
+        <text x="744" y="327" class="diag-step-num" text-anchor="middle" fill="#059669">GOVERNANCE RULE</text>
+        <text x="744" y="341" class="diag-text-sub" font-size="10.5px" font-weight="700" text-anchor="middle" fill="#047857">Residual &le; Appetite</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Risk Treatment Decision Framework Mobile">
+    <div class="reading-mob-banner">
+      <span class="reading-mob-banner-tag">RISK TREATMENT DECISION FRAMEWORK</span>
+      <p class="reading-mob-banner-text">วงจรการตัดสินใจรับมือความเสี่ยง 4 กลยุทธ์ตามกรอบมาตรฐานสากล: หลีกเลี่ยง &middot; โอน &middot; ลด &middot; ยอมรับ</p>
+    </div>
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-foundation">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">01</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">INHERENT RISK &amp; THRESHOLD EVALUATION</h5>
+            <span class="reading-mob-tier-action">Is Risk &gt; Risk Appetite?</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ประเมินระดับความเสี่ยงดั้งเดิมก่อนมีมาตรการ (Likelihood &times; Impact) หากความเสี่ยงสูงกว่า Risk Appetite องค์กรต้องเลือกกลยุทธ์จัดการ (Treat) เพื่อลดระดับความเสี่ยง</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-red">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">A</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">OPTION 1: RISK AVOIDANCE (การหลีกเลี่ยง)</h5>
+            <span class="reading-mob-tier-action">"Stop the Activity" &middot; ยุติกิจกรรมเสี่ยง</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ยกเลิกโครงการ ยุติบริการ หรือตัดการเชื่อมต่อที่มีความเสี่ยงสูงเกินรับไหวและไม่มีมาตรการควบคุมที่คุ้มค่า เพื่อตัดโอกาสเกิดความเสียหายเป็น 0 โดยสิ้นเชิง</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-amber">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">B</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">OPTION 2: RISK TRANSFER / SHARING (การโอน)</h5>
+            <span class="reading-mob-tier-action">"Share Financial Impact" &middot; ถ่ายโอนภาระการเงิน</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ซื้อประกันภัยไซเบอร์ (Cyber Insurance) หรือทำสัญญา Third-Party SLA เพื่อชดเชยความเสียหายทางการเงิน *ข้อควรระวัง: ประกันไม่สามารถอุดช่องโหว่ทางเทคนิคหรือกู้ชื่อเสียงที่เสียไปได้*</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-green">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">C</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">OPTION 3: RISK MITIGATION (การลดความเสี่ยง)</h5>
+            <span class="reading-mob-tier-action">"Apply Controls" &middot; ติดตั้งมาตรการความปลอดภัย</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">กลยุทธ์หลักที่ใช้บ่อยที่สุด: ติดตั้ง Security Controls ทางเทคนิค บริหารจัดการ หรือกายภาพ (เช่น MFA, Patching, Firewall, Backup) เพื่อลดโอกาสเกิด (Likelihood) หรือลดผลกระทบ (Impact)</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-blue">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">D</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">OPTION 4: RISK ACCEPTANCE &amp; GOVERNANCE (การยอมรับ)</h5>
+            <span class="reading-mob-tier-action">"Residual Risk &le; Appetite" &middot; ยอมรับอย่างมีเอกสาร</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ยอมรับความเสี่ยงที่เหลืออยู่ (Residual Risk) เมื่อประเมินแล้วว่าต่ำกว่าหรือเท่ากับ Risk Appetite ต้องผ่านการลงนามอนุมัติจากผู้บริหารอย่างเป็นทางการ บันทึกใน Risk Register และทบทวนสม่ำเสมอ</p>
       </div>
     </div>
   </div>
@@ -1191,6 +1374,12 @@ export const diagrams = {
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 680 160" class="reading-diagram-svg" aria-label="Due diligence checks, Due care acts, Due diligence verifies" role="img">
+      <defs>
+        <marker id="diag-arrow-head" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--diag-arrow, #64748b)" class="diag-marker-arrow" />
+        </marker>
+      </defs>
+
       <g>
         <rect x="30" y="30" width="180" height="80" rx="8" class="diag-box diag-box-banner" />
         <text x="120" y="58" class="diag-step-num" text-anchor="middle">DUE DILIGENCE (CHECK)</text>
@@ -1399,13 +1588,19 @@ export const diagrams = {
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 780 180" class="reading-diagram-svg" aria-label="GRC 3-Pillar alignment supporting Business Objectives" role="img">
+      <defs>
+        <marker id="diag-arrow-head" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--diag-arrow, #64748b)" class="diag-marker-arrow" />
+        </marker>
+      </defs>
+
       <rect x="30" y="12" width="720" height="32" rx="6" class="diag-box diag-box-banner" />
       <text x="390" y="32" class="diag-text-sub" text-anchor="middle">Strategic Objective: Support Business Goals &middot; Protect Assets &middot; Increase Organizational Resilience</text>
       <g>
         <rect x="30" y="58" width="220" height="106" rx="8" class="diag-box diag-box-blue" />
         <text x="140" y="85" class="diag-text-title" text-anchor="middle">GOVERNANCE</text>
         <text x="140" y="105" class="diag-text-sub" text-anchor="middle">Direction &amp; Oversight</text>
-        <line x1="50" y1="117" x2="230" y2="117" stroke="var(--line)" stroke-width="1" />
+        <line x1="50" y1="117" x2="230" y2="117" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="140" y="134" class="diag-text-label" text-anchor="middle">ทิศทาง นโยบาย และบทบาทหน้าที่</text>
         <text x="140" y="150" class="diag-text-label" text-anchor="middle">Accountability ชัดเจน</text>
       </g>
@@ -1414,7 +1609,7 @@ export const diagrams = {
         <rect x="280" y="58" width="220" height="106" rx="8" class="diag-box diag-box-blue" />
         <text x="390" y="85" class="diag-text-title" text-anchor="middle">RISK MANAGEMENT</text>
         <text x="390" y="105" class="diag-text-sub" text-anchor="middle">Identify &amp; Manage</text>
-        <line x1="300" y1="117" x2="480" y2="117" stroke="var(--line)" stroke-width="1" />
+        <line x1="300" y1="117" x2="480" y2="117" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="390" y="134" class="diag-text-label" text-anchor="middle">ระบุและประเมินความเสี่ยง</text>
         <text x="390" y="150" class="diag-text-label" text-anchor="middle">จัดลำดับและควบคุมความเสี่ยง</text>
       </g>
@@ -1423,7 +1618,7 @@ export const diagrams = {
         <rect x="530" y="58" width="220" height="106" rx="8" class="diag-box diag-box-blue" />
         <text x="640" y="85" class="diag-text-title" text-anchor="middle">COMPLIANCE</text>
         <text x="640" y="105" class="diag-text-sub" text-anchor="middle">Adhere &amp; Fulfill</text>
-        <line x1="550" y1="117" x2="730" y2="117" stroke="var(--line)" stroke-width="1" />
+        <line x1="550" y1="117" x2="730" y2="117" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="640" y="134" class="diag-text-label" text-anchor="middle">ทำตามกฎหมายและข้อบังคับ</text>
         <text x="640" y="150" class="diag-text-label" text-anchor="middle">มาตรฐานสากลและนโยบาย</text>
       </g>
@@ -1584,7 +1779,7 @@ export const diagrams = {
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 840 210" class="reading-diagram-svg" aria-label="Timeline showing RPO backward from failure and RTO forward from failure" role="img">
-      <line x1="40" y1="105" x2="800" y2="105" stroke="var(--line)" stroke-width="2" />
+      <line x1="40" y1="105" x2="800" y2="105" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
       <rect x="140" y="25" width="260" height="58" rx="6" class="diag-box diag-box-banner" />
       <text x="270" y="47" class="diag-text-title" text-anchor="middle">RPO (Recovery Point Objective)</text>
       <text x="270" y="67" class="diag-text-sub" text-anchor="middle">← ยอมรับข้อมูลสูญเสียย้อนหลังสูงสุด: 30 นาที</text>
@@ -1700,7 +1895,7 @@ export const diagrams = {
         <text x="130" y="68" class="diag-text-sub">เอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)</text>
       </g>
 
-      <line x1="420" y1="89" x2="420" y2="105" stroke="var(--line, #334155)" stroke-width="2" stroke-dasharray="3,3" />
+      <line x1="420" y1="89" x2="420" y2="105" stroke="var(--diag-connector, #64748b)" stroke-width="2" stroke-dasharray="3,3" />
 
       <g>
         <rect x="40" y="105" width="370" height="84" rx="8" class="diag-box diag-box-banner" />
@@ -1731,7 +1926,7 @@ export const diagrams = {
         <text x="446" y="175" class="diag-text-sub">ชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้</text>
       </g>
 
-      <line x1="420" y1="189" x2="420" y2="205" stroke="var(--line, #334155)" stroke-width="2" stroke-dasharray="3,3" />
+      <line x1="420" y1="189" x2="420" y2="205" stroke="var(--diag-connector, #64748b)" stroke-width="2" stroke-dasharray="3,3" />
 
       <g>
         <rect x="40" y="205" width="370" height="84" rx="8" class="diag-box diag-box-banner" />
@@ -1761,7 +1956,7 @@ export const diagrams = {
         <text x="446" y="275" class="diag-text-sub">ตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?</text>
       </g>
 
-      <line x1="420" y1="289" x2="420" y2="305" stroke="var(--line, #334155)" stroke-width="2" stroke-dasharray="3,3" />
+      <line x1="420" y1="289" x2="420" y2="305" stroke="var(--diag-connector, #64748b)" stroke-width="2" stroke-dasharray="3,3" />
 
       <g>
         <rect x="40" y="305" width="760" height="80" rx="8" class="diag-box diag-box-blue" />
@@ -1838,11 +2033,11 @@ export const diagrams = {
     <svg viewBox="0 0 840 220" class="reading-diagram-svg" aria-label="JML Lifecycle showing Joiner provisioning, Mover access re-evaluation, and Leaver deprovisioning with continuous access review" role="img">
       <g>
         <rect x="20" y="20" width="245" height="150" rx="8" class="diag-box diag-box-blue" />
-        <rect x="35" y="32" width="90" height="20" rx="4" fill="var(--blue, #3b82f6)" />
+        <rect x="35" y="32" width="90" height="20" rx="4" fill="#1d4ed8" />
         <text x="80" y="42" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">01 JOINER</text>
         <text x="35" y="70" class="diag-text-title" font-size="15px">Provisioning</text>
         <text x="35" y="88" class="diag-text-sub" font-size="12px">การจัดสรรสิทธิ์พนักงานใหม่</text>
-        <line x1="35" y1="100" x2="250" y2="100" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="35" y1="100" x2="250" y2="100" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="35" y="118" class="diag-text-sub" font-size="11.5px">&bull; Define Roles &amp; Responsibilities</text>
         <text x="35" y="136" class="diag-text-sub" font-size="11.5px">&bull; Assign Unique Digital ID</text>
         <text x="35" y="154" class="diag-text-sub" font-size="11.5px">&bull; Initial Credentials &amp; Permissions</text>
@@ -1859,7 +2054,7 @@ export const diagrams = {
         <text x="355.5" y="42" fill="#0f172a" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">02 MOVER</text>
         <text x="313" y="70" class="diag-text-title" font-size="15px">Re-Evaluation</text>
         <text x="313" y="88" class="diag-text-sub" font-size="12px">ย้ายฝ่าย / เปลี่ยนตำแหน่ง</text>
-        <line x1="313" y1="100" x2="528" y2="100" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="313" y1="100" x2="528" y2="100" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="313" y="118" class="diag-text-sub" font-size="11.5px">&bull; Grant New Role Permissions</text>
         <text x="313" y="136" class="diag-text-sub" font-size="11.5px">&bull; Revoke Obsolete Permissions</text>
         <text x="313" y="154" class="diag-text-sub" font-size="11.5px">&bull; Prevent Privilege Accumulation</text>
@@ -1876,14 +2071,14 @@ export const diagrams = {
         <text x="636" y="42" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">03 LEAVER</text>
         <text x="591" y="70" class="diag-text-title" font-size="15px">Deprovisioning</text>
         <text x="591" y="88" class="diag-text-sub" font-size="12px">พ้นสภาพ / ลาออก / เลิกจ้าง</text>
-        <line x1="591" y1="100" x2="806" y2="100" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="591" y1="100" x2="806" y2="100" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="591" y="118" class="diag-text-sub" font-size="11.5px">&bull; Disable Account Promptly</text>
         <text x="591" y="136" class="diag-text-sub" font-size="11.5px">&bull; Revoke All Application Access</text>
         <text x="591" y="154" class="diag-text-sub" font-size="11.5px">&bull; Retain Logs &amp; Audit Trail</text>
       </g>
 
       <g>
-        <rect x="20" y="185" width="801" height="26" rx="4" fill="var(--panel, #1e293b)" stroke="var(--line, #334155)" stroke-width="1" />
+        <rect x="20" y="185" width="801" height="26" rx="4" fill="var(--panel, #1e293b)" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="420" y="198" fill="var(--text-muted, #94a3b8)" font-size="11.5px" font-weight="600" text-anchor="middle" dominant-baseline="central">CONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages</text>
       </g>
     </svg>
@@ -1949,7 +2144,7 @@ export const diagrams = {
         <text x="87.5" y="37" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">SP 800-63A &middot; IAL</text>
         <text x="35" y="65" class="diag-text-title" font-size="14.5px">Identity Proofing</text>
         <text x="35" y="83" class="diag-text-sub" font-size="12px">พิสูจน์ตัวตนในโลกจริง</text>
-        <line x1="35" y1="95" x2="250" y2="95" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="35" y1="95" x2="250" y2="95" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="35" y="112" class="diag-text-sub" font-size="11.5px">&bull; Real-World Identity Validation</text>
         <text x="35" y="130" class="diag-text-sub" font-size="11.5px">&bull; Enrollment &amp; Evidence Check</text>
         <text x="35" y="142" fill="var(--text-muted, #94a3b8)" font-size="10.5px">ตรวจหลักฐานก่อนออกรหัสดิจิทัล</text>
@@ -1961,7 +2156,7 @@ export const diagrams = {
         <text x="365.5" y="37" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">SP 800-63B &middot; AAL</text>
         <text x="313" y="65" class="diag-text-title" font-size="14.5px">Authentication</text>
         <text x="313" y="83" class="diag-text-sub" font-size="12px">การพิสูจน์ยืนยันตัวตน</text>
-        <line x1="313" y1="95" x2="528" y2="95" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="313" y1="95" x2="528" y2="95" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="313" y="112" class="diag-text-sub" font-size="11.5px">&bull; Authenticator Control Proof</text>
         <text x="313" y="130" class="diag-text-sub" font-size="11.5px">&bull; Passwords, MFA Tokens, OTP</text>
         <text x="313" y="142" fill="var(--text-muted, #94a3b8)" font-size="10.5px">ยืนยันผู้ล็อกอินเป็นเจ้าของจริง</text>
@@ -1973,14 +2168,14 @@ export const diagrams = {
         <text x="643.5" y="37" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">SP 800-63C &middot; FAL</text>
         <text x="591" y="65" class="diag-text-title" font-size="14.5px">Federation</text>
         <text x="591" y="83" class="diag-text-sub" font-size="12px">การเชื่อมโยงระบบตัวตน</text>
-        <line x1="591" y1="95" x2="806" y2="95" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="591" y1="95" x2="806" y2="95" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="591" y="112" class="diag-text-sub" font-size="11.5px">&bull; Cross-Domain Identity Trust</text>
         <text x="591" y="130" class="diag-text-sub" font-size="11.5px">&bull; Single Sign-On (SSO) Assertions</text>
         <text x="591" y="142" fill="var(--text-muted, #94a3b8)" font-size="10.5px">ส่งต่อผลการยืนยันตัวตนข้ามระบบ</text>
       </g>
 
       <g>
-        <rect x="20" y="162" width="801" height="26" rx="4" fill="var(--panel, #1e293b)" stroke="var(--line, #334155)" stroke-width="1" />
+        <rect x="20" y="162" width="801" height="26" rx="4" fill="var(--panel, #1e293b)" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="420" y="175" fill="var(--text-muted, #94a3b8)" font-size="11.5px" font-weight="600" text-anchor="middle" dominant-baseline="central">INTERRELATED FACETS: Distinct identity functions supporting different operational needs, not a rigid sequential pipeline</text>
       </g>
     </svg>
@@ -2039,7 +2234,7 @@ export const diagrams = {
         <text x="116" y="43" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">VERTICAL AXIS &middot; สิทธิ์รายคน</text>
         <text x="36" y="74" class="diag-text-title" font-size="15.5px">Principle of Least Privilege (PoLP)</text>
         <text x="36" y="94" class="diag-text-sub" font-size="12.5px">หลักการจำกัดสิทธิ์ขั้นต่ำที่จำเป็น</text>
-        <line x1="36" y1="106" x2="389" y2="106" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="36" y1="106" x2="389" y2="106" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="36" y="126" class="diag-text-title" font-size="12.5px">Core Rule (กฎหลัก):</text>
         <text x="36" y="144" class="diag-text-sub" font-size="12px">&bull; ให้สิทธิ์เฉพาะเท่าที่จำเป็นอย่างแท้จริงต่องาน</text>
         <text x="36" y="162" class="diag-text-sub" font-size="12px">&bull; Minimum Necessary Access (เช่น Helpdesk รีเซ็ตรหัสได้เท่านั้น)</text>
@@ -2048,8 +2243,8 @@ export const diagrams = {
         <text x="36" y="220" class="diag-text-sub" font-size="12px">&bull; ป้องกันการสะสมสิทธิ์และข้อผิดพลาดจากผู้ใช้รายคน</text>
       </g>
 
-      <line x1="420" y1="30" x2="420" y2="230" stroke="var(--line, #334155)" stroke-width="1.5" stroke-dasharray="4,4" />
-      <circle cx="420" cy="130" r="16" fill="var(--panel, #1e293b)" stroke="var(--line, #334155)" stroke-width="1.5" />
+      <line x1="420" y1="30" x2="420" y2="230" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" stroke-dasharray="4,4" />
+      <circle cx="420" cy="130" r="16" fill="var(--panel, #1e293b)" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" />
       <text x="420" y="130" fill="var(--text-muted, #94a3b8)" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">VS</text>
 
       <g>
@@ -2058,7 +2253,7 @@ export const diagrams = {
         <text x="541" y="43" fill="#0f172a" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">HORIZONTAL AXIS &middot; ขั้นตอนงาน</text>
         <text x="451" y="74" class="diag-text-title" font-size="15.5px">Segregation of Duties (SoD)</text>
         <text x="451" y="94" class="diag-text-sub" font-size="12.5px">การแบ่งแยกหน้าที่ความรับผิดชอบ</text>
-        <line x1="451" y1="106" x2="804" y2="106" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="451" y1="106" x2="804" y2="106" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="451" y="126" class="diag-text-title" font-size="12.5px">Core Rule (กฎหลัก):</text>
         <text x="451" y="144" class="diag-text-sub" font-size="12px">&bull; งานสำคัญต้องใช้คนมากกว่าหนึ่งคน (Multiple People)</text>
         <text x="451" y="162" class="diag-text-sub" font-size="12px">&bull; ผู้สร้างรายการต้องไม่สามารถอนุมัติรายการของตนเองได้</text>
@@ -2110,7 +2305,7 @@ export const diagrams = {
         <rect x="36" y="27" width="46" height="20" rx="4" fill="var(--blue, #3b82f6)" />
         <text x="59" y="37" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">DAC</text>
         <text x="92" y="37" class="diag-text-title" font-size="14px" font-weight="700" dominant-baseline="central">Discretionary Access Control</text>
-        <line x1="36" y1="56" x2="389" y2="56" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="36" y1="56" x2="389" y2="56" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="36" y="74" class="diag-label-dac" font-size="11.5px" font-weight="700">Decision Maker:</text>
         <text x="142" y="74" class="diag-text-sub" font-size="12px">Resource Owner (เจ้าของไฟล์)</text>
         <text x="36" y="96" class="diag-label-dac" font-size="11.5px" font-weight="700">Enforcement:</text>
@@ -2124,7 +2319,7 @@ export const diagrams = {
         <rect x="451" y="27" width="46" height="20" rx="4" fill="#ef4444" />
         <text x="474" y="37" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">MAC</text>
         <text x="507" y="37" class="diag-text-title" font-size="14px" font-weight="700" dominant-baseline="central">Mandatory Access Control</text>
-        <line x1="451" y1="56" x2="804" y2="56" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="451" y1="56" x2="804" y2="56" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="451" y="74" class="diag-label-mac" font-size="11.5px" font-weight="700">Decision Maker:</text>
         <text x="557" y="74" class="diag-text-sub" font-size="12px">Central Authority (นโยบายกลาง)</text>
         <text x="451" y="96" class="diag-label-mac" font-size="11.5px" font-weight="700">Enforcement:</text>
@@ -2138,7 +2333,7 @@ export const diagrams = {
         <rect x="36" y="167" width="50" height="20" rx="4" fill="#10b981" />
         <text x="61" y="177" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">RBAC</text>
         <text x="96" y="177" class="diag-text-title" font-size="14px" font-weight="700" dominant-baseline="central">Role-Based Access Control</text>
-        <line x1="36" y1="196" x2="389" y2="196" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="36" y1="196" x2="389" y2="196" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="36" y="214" class="diag-label-rbac" font-size="11.5px" font-weight="700">Decision Maker:</text>
         <text x="142" y="214" class="diag-text-sub" font-size="12px">Predefined Roles (บทบาทงาน)</text>
         <text x="36" y="236" class="diag-label-rbac" font-size="11.5px" font-weight="700">Enforcement:</text>
@@ -2152,7 +2347,7 @@ export const diagrams = {
         <rect x="451" y="167" width="50" height="20" rx="4" fill="#8b5cf6" />
         <text x="476" y="177" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">ABAC</text>
         <text x="511" y="177" class="diag-text-title" font-size="14px" font-weight="700" dominant-baseline="central">Attribute-Based Access Control</text>
-        <line x1="451" y1="196" x2="804" y2="196" stroke="var(--line, #334155)" stroke-width="1" />
+        <line x1="451" y1="196" x2="804" y2="196" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
         <text x="451" y="214" class="diag-label-abac" font-size="11.5px" font-weight="700">Decision Maker:</text>
         <text x="557" y="214" class="diag-text-sub" font-size="12px">Policy Engine (ระบบประมวลผล)</text>
         <text x="451" y="236" class="diag-label-abac" font-size="11.5px" font-weight="700">Enforcement:</text>
@@ -2257,14 +2452,14 @@ export const diagrams = {
         <text x="36" y="346" class="diag-text-sub" font-size="10.5px">Cables, RJ45, Hubs, Radio Signals &middot; PDU: Bits</text>
       </g>
 
-      <path d="M 380 46 H 415 V 94 H 460 M 415 94 V 142 H 380" stroke="var(--line, #334155)" stroke-width="1.5" fill="none" />
-      <path d="M 380 190 H 460" stroke="var(--line, #334155)" stroke-width="1.5" fill="none" />
-      <path d="M 380 238 H 460" stroke="var(--line, #334155)" stroke-width="1.5" fill="none" />
-      <path d="M 380 286 H 415 V 310 H 460 M 415 310 V 334 H 380" stroke="var(--line, #334155)" stroke-width="1.5" fill="none" />
+      <path d="M 380 46 H 415 V 94 H 460 M 415 94 V 142 H 380" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" fill="none" />
+      <path d="M 380 190 H 460" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" fill="none" />
+      <path d="M 380 238 H 460" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" fill="none" />
+      <path d="M 380 286 H 415 V 310 H 460 M 415 310 V 334 H 380" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" fill="none" />
 
       <g>
         <rect x="460" y="25" width="360" height="138" rx="8" class="diag-box diag-box-blue" />
-        <rect x="476" y="37" width="90" height="20" rx="4" fill="#3b82f6" />
+        <rect x="476" y="37" width="90" height="20" rx="4" fill="#1d4ed8" />
         <text x="521" y="47" fill="#ffffff" font-size="10.5px" font-weight="700" text-anchor="middle" dominant-baseline="central">TCP/IP L4</text>
         <text x="476" y="80" class="diag-text-title" font-size="14px" font-weight="700">Application Layer (แอปพลิเคชัน)</text>
         <text x="476" y="102" class="diag-text-sub" font-size="11.5px">รวมหน้าที่ของ OSI Layer 7, 6, 5 เข้าด้วยกัน</text>
@@ -2282,7 +2477,7 @@ export const diagrams = {
 
       <g>
         <rect x="460" y="217" width="360" height="42" rx="6" class="diag-box diag-box-blue" />
-        <rect x="476" y="227" width="80" height="22" rx="4" fill="#10b981" />
+        <rect x="476" y="227" width="80" height="22" rx="4" fill="#047857" />
         <text x="516" y="238" fill="#ffffff" font-size="10px" font-weight="700" text-anchor="middle" dominant-baseline="central">TCP/IP L2</text>
         <text x="568" y="233" class="diag-text-title" font-size="13px" font-weight="700">Internet Layer (IP / ICMP)</text>
         <text x="568" y="249" class="diag-text-sub" font-size="10.5px">Logical Routing &middot; PDU: Packets</text>
@@ -2290,7 +2485,7 @@ export const diagrams = {
 
       <g>
         <rect x="460" y="265" width="360" height="90" rx="8" class="diag-box diag-box-banner" />
-        <rect x="476" y="277" width="90" height="20" rx="4" fill="#8b5cf6" />
+        <rect x="476" y="277" width="90" height="20" rx="4" fill="#6d28d9" />
         <text x="521" y="287" fill="#ffffff" font-size="10px" font-weight="700" text-anchor="middle" dominant-baseline="central">TCP/IP L1</text>
         <text x="476" y="318" class="diag-text-title" font-size="13.5px" font-weight="700">Network Access / Link Layer</text>
         <text x="476" y="338" class="diag-text-sub" font-size="11.5px">รวม Data Link (Frames) + Physical (Bits, Cables)</text>
@@ -2779,8 +2974,8 @@ export const diagrams = {
         <text x="37" y="96" class="diag-text-sub" font-size="10.5px">การฝึกอบรม IRP, การตั้งค่าความมั่นคงปลอดภัย</text>
       </g>
 
-      <path d="M 275 70 H 325" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="325,70 315,65 315,75" fill="var(--line, #334155)" />
+      <path d="M 275 70 H 325" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="325,70 315,65 315,75" fill="var(--diag-connector, #64748b)" />
 
       <g>
         <rect x="325" y="25" width="250" height="90" rx="8" class="diag-box diag-box-banner" />
@@ -2791,8 +2986,8 @@ export const diagrams = {
         <text x="337" y="96" class="diag-text-sub" font-size="10.5px">การคัดกรอง Triage, ประเมินความรุนแรงและขอบเขต</text>
       </g>
 
-      <path d="M 575 70 H 625" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="625,70 615,65 615,75" fill="var(--line, #334155)" />
+      <path d="M 575 70 H 625" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="625,70 615,65 615,75" fill="var(--diag-connector, #64748b)" />
 
       <g>
         <rect x="625" y="25" width="250" height="90" rx="8" class="diag-box diag-box-blue" />
@@ -2803,8 +2998,8 @@ export const diagrams = {
         <text x="637" y="96" class="diag-text-sub" font-size="10.5px">จำกัดรัศมีความเสียหาย (Blast Radius)</text>
       </g>
 
-      <path d="M 750 115 V 155" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="750,155 745,145 755,145" fill="var(--line, #334155)" />
+      <path d="M 750 115 V 155" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="750,155 745,145 755,145" fill="var(--diag-connector, #64748b)" />
 
       <g>
         <rect x="625" y="155" width="250" height="90" rx="8" class="diag-box diag-box-blue" />
@@ -2815,8 +3010,8 @@ export const diagrams = {
         <text x="637" y="226" class="diag-text-sub" font-size="10.5px">อุดช่องโหว่ที่เป็นต้นเหตุการบุกรุก</text>
       </g>
 
-      <path d="M 625 200 H 575" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="575,200 585,195 585,205" fill="var(--line, #334155)" />
+      <path d="M 625 200 H 575" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="575,200 585,195 585,205" fill="var(--diag-connector, #64748b)" />
 
       <g>
         <rect x="325" y="155" width="250" height="90" rx="8" class="diag-box diag-box-banner" />
@@ -2827,8 +3022,8 @@ export const diagrams = {
         <text x="337" y="226" class="diag-text-sub" font-size="10.5px">ทดสอบความสมบูรณ์ก่อนเปิดใช้งานจริง</text>
       </g>
 
-      <path d="M 325 200 H 275" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="275,200 285,195 285,205" fill="var(--line, #334155)" />
+      <path d="M 325 200 H 275" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="275,200 285,195 285,205" fill="var(--diag-connector, #64748b)" />
 
       <g>
         <rect x="25" y="155" width="250" height="90" rx="8" class="diag-box diag-box-blue" />
@@ -2939,8 +3134,8 @@ export const diagrams = {
         <text x="40" y="238" fill="#3b82f6" font-size="10.5px" font-weight="700">14 Enterprise Tactics ทั้งหมด</text>
       </g>
 
-      <path d="M 280 140 H 320" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="320,140 310,135 310,145" fill="var(--line, #334155)" />
+      <path d="M 280 140 H 320" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="320,140 310,135 310,145" fill="var(--diag-connector, #64748b)" />
       <text x="300" y="130" fill="var(--text-sub, #64748b)" font-size="9.5px" text-anchor="middle">บรรลุเป้าด้วย</text>
 
       <g>
@@ -2957,8 +3152,8 @@ export const diagrams = {
         <text x="335" y="238" fill="#6366f1" font-size="10.5px" font-weight="700">รวม Sub-techniques ย่อยเฉพาะเจาะจง</text>
       </g>
 
-      <path d="M 575 140 H 615" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="615,140 605,135 605,145" fill="var(--line, #334155)" />
+      <path d="M 575 140 H 615" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="615,140 605,135 605,145" fill="var(--diag-connector, #64748b)" />
       <text x="595" y="130" fill="var(--text-sub, #64748b)" font-size="9.5px" text-anchor="middle">ลงมือปฏิบัติจริง</text>
 
       <g>
@@ -3024,7 +3219,7 @@ export const diagrams = {
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 900 320" class="reading-diagram-svg" aria-label="Comparative matrix comparing Threat Modeling, SAST, DAST, and Penetration Testing across the SDLC" role="img">
-      <rect x="25" y="20" width="850" height="28" rx="6" fill="var(--bg-subtle, #1e293b)" stroke="var(--line, #334155)" stroke-width="1" />
+      <rect x="25" y="20" width="850" height="28" rx="6" fill="var(--bg-subtle, #1e293b)" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
       <text x="130" y="35" class="diag-text-title" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">1. DESIGN PHASE (ออกแบบ)</text>
       <text x="345" y="35" class="diag-text-title" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">2. CODING PHASE (พัฒนา)</text>
       <text x="560" y="35" class="diag-text-title" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">3. TESTING PHASE (ทดสอบ)</text>
@@ -3148,8 +3343,8 @@ export const diagrams = {
         <text x="87" y="72" class="diag-text-sub" font-size="10.5px" text-anchor="middle">วางแผนจัดซื้อ</text>
       </g>
 
-      <path d="M 150 62 H 170" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="170,62 163,58 163,66" fill="var(--line, #334155)" />
+      <path d="M 150 62 H 170" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="170,62 163,58 163,66" fill="var(--diag-connector, #64748b)" />
 
       <g>
         <rect x="170" y="25" width="125" height="75" rx="6" class="diag-box diag-box-blue" />
@@ -3157,8 +3352,8 @@ export const diagrams = {
         <text x="232" y="72" class="diag-text-sub" font-size="10.5px" text-anchor="middle">ลงทะเบียนทรัพย์สิน</text>
       </g>
 
-      <path d="M 295 62 H 315" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="315,62 308,58 308,66" fill="var(--line, #334155)" />
+      <path d="M 295 62 H 315" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="315,62 308,58 308,66" fill="var(--diag-connector, #64748b)" />
 
       <g>
         <rect x="315" y="25" width="125" height="75" rx="6" class="diag-box diag-box-blue" />
@@ -3166,8 +3361,8 @@ export const diagrams = {
         <text x="377" y="72" class="diag-text-sub" font-size="10.5px" text-anchor="middle">ตั้งค่าตาม Baseline</text>
       </g>
 
-      <path d="M 440 62 H 460" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="460,62 453,58 453,66" fill="var(--line, #334155)" />
+      <path d="M 440 62 H 460" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="460,62 453,58 453,66" fill="var(--diag-connector, #64748b)" />
 
       <g>
         <rect x="460" y="25" width="125" height="75" rx="6" class="diag-box diag-box-banner" />
@@ -3175,8 +3370,8 @@ export const diagrams = {
         <text x="522" y="72" class="diag-text-sub" font-size="10.5px" text-anchor="middle">ลงแพตช์ &amp; ดูแล</text>
       </g>
 
-      <path d="M 585 62 H 605" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="605,62 598,58 598,66" fill="var(--line, #334155)" />
+      <path d="M 585 62 H 605" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="605,62 598,58 598,66" fill="var(--diag-connector, #64748b)" />
 
       <g>
         <rect x="605" y="25" width="125" height="75" rx="6" class="diag-box diag-box-blue" />
@@ -3184,8 +3379,8 @@ export const diagrams = {
         <text x="667" y="72" class="diag-text-sub" font-size="10.5px" text-anchor="middle">ตรวจจับ Drift/ช่องโหว่</text>
       </g>
 
-      <path d="M 730 62 H 750" stroke="var(--line, #334155)" stroke-width="2" fill="none" />
-      <polygon points="750,62 743,58 743,66" fill="var(--line, #334155)" />
+      <path d="M 730 62 H 750" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
+      <polygon points="750,62 743,58 743,66" fill="var(--diag-connector, #64748b)" />
 
       <g>
         <rect x="750" y="25" width="125" height="75" rx="6" class="diag-box diag-box-blue" />
@@ -3259,6 +3454,1231 @@ export const diagrams = {
           </div>
         </div>
         <p class="reading-mob-tier-desc">เมื่ออุปกรณ์สิ้นสุดการสนับสนุน (End of Support) และไม่มี Patch ความปลอดภัยอีกต่อไป ต้องใช้มาตรการชดเชย: 1. Network Segmentation (ตัดขาดเข้า VLAN พิเศษ), 2. Virtual Patching (ใช้ WAF/IPS กรองการโจมตี), 3. ปิดพอร์ตและเซอร์วิสที่ไม่จำเป็น, และ 4. เฝ้าระวัง Log เป็นพิเศษ</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+// 2.2.7 Data Backup Strategies & Recovery Chains
+  backupRestoreChains: `
+<div class="reading-diagram-card reading-backup-chains" data-diagram="backupRestoreChains" role="region" aria-label="Data Backup Strategies and Recovery Chains: Differential vs Incremental">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Recovery Architecture</span>
+    <h4 class="reading-diagram-title">Data Backup Strategies &amp; Recovery Chains: Differential vs. Incremental</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 860 410" class="reading-diagram-svg" aria-label="Comparison of restore chains for Differential and Incremental backups after a Thursday disaster" role="img">
+      <!-- Days Timeline Track -->
+      <g>
+        <rect x="30" y="16" width="800" height="36" rx="6" class="diag-box diag-box-banner" />
+        <text x="50" y="39" class="diag-text-label" font-weight="700">WEEKLY TIMELINE:</text>
+        <text x="190" y="39" class="diag-text-title" font-weight="700" fill="var(--blue, #3b82f6)">SUN (Full Backup)</text>
+        <text x="350" y="39" class="diag-text-label">MON</text>
+        <text x="470" y="39" class="diag-text-label">TUE</text>
+        <text x="590" y="39" class="diag-text-label">WED</text>
+        <rect x="690" y="22" width="130" height="24" rx="4" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" stroke-width="1" />
+        <text x="755" y="38" text-anchor="middle" font-size="11px" font-weight="700" fill="#ef4444">THU 09:00 CRASH</text>
+      </g>
+
+      <!-- Track 1: Differential Backup Strategy -->
+      <g transform="translate(0, 68)">
+        <rect x="30" y="0" width="800" height="150" rx="8" class="diag-box" />
+        <rect x="42" y="10" width="220" height="24" rx="4" fill="rgba(59, 130, 246, 0.12)" />
+        <text x="50" y="26" class="diag-text-title" font-weight="700" fill="var(--blue, #3b82f6)">STRATEGY A: DIFFERENTIAL BACKUP</text>
+        <text x="275" y="26" class="diag-text-sub" font-size="11.5px">สำรองเฉพาะข้อมูลที่เปลี่ยนนับจาก Full ล่าสุด (ขนาดไฟล์สำรองโตขึ้นทุกวัน)</text>
+
+        <!-- Daily Backup Footprint -->
+        <g transform="translate(150, 42)">
+          <rect x="0" y="10" width="70" height="50" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="var(--blue, #3b82f6)" />
+          <text x="35" y="32" text-anchor="middle" font-size="11px" font-weight="700" fill="var(--text)">Sun Full</text>
+          <text x="35" y="48" text-anchor="middle" font-size="9.5px" fill="var(--text-secondary)">100% Base</text>
+
+          <rect x="150" y="35" width="60" height="25" rx="3" class="diag-box diag-box-banner" />
+          <text x="180" y="51" text-anchor="middle" font-size="10px" fill="var(--text)">Mon Δ</text>
+
+          <rect x="270" y="25" width="60" height="35" rx="3" class="diag-box diag-box-banner" />
+          <text x="300" y="46" text-anchor="middle" font-size="10px" fill="var(--text)">Tue Δ</text>
+
+          <rect x="390" y="10" width="65" height="50" rx="3" fill="rgba(245, 158, 11, 0.2)" stroke="#f59e0b" stroke-width="1.5" />
+          <text x="422" y="32" text-anchor="middle" font-size="10px" font-weight="700" fill="#f59e0b">Wed Diff</text>
+          <text x="422" y="48" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Mon+Tue+Wed</text>
+        </g>
+
+        <!-- Recovery Action Sequence -->
+        <g transform="translate(42, 108)">
+          <rect x="0" y="0" width="776" height="34" rx="5" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.4)" />
+          <text x="14" y="21" font-size="11.5px" font-weight="700" fill="var(--green, #10b981)">RECOVERY PATH ON THURSDAY (EXACTLY 2 STEPS):</text>
+          <text x="340" y="21" font-size="12px" font-weight="700" fill="var(--text)">[1] Restore Sun Full (Base)</text>
+          <text x="520" y="21" font-size="12px" fill="var(--text-secondary)">&rarr;</text>
+          <text x="540" y="21" font-size="12px" font-weight="700" fill="#f59e0b">[2] Restore Wed Diff (All Changes)</text>
+          <rect x="710" y="6" width="56" height="22" rx="3" fill="#10b981" />
+          <text x="738" y="21" text-anchor="middle" font-size="10px" font-weight="700" fill="#ffffff">FAST RTO</text>
+        </g>
+      </g>
+
+      <!-- Track 2: Incremental Backup Strategy -->
+      <g transform="translate(0, 230)">
+        <rect x="30" y="0" width="800" height="150" rx="8" class="diag-box" />
+        <rect x="42" y="10" width="220" height="24" rx="4" fill="rgba(16, 185, 129, 0.12)" />
+        <text x="50" y="26" class="diag-text-title" font-weight="700" fill="var(--green, #10b981)">STRATEGY B: INCREMENTAL BACKUP</text>
+        <text x="275" y="26" class="diag-text-sub" font-size="11.5px">สำรองเฉพาะข้อมูลที่เปลี่ยนนับจาก Backup ครั้งล่าสุด (ขนาดเล็ก สำรองเร็วสุด)</text>
+
+        <!-- Daily Backup Footprint -->
+        <g transform="translate(150, 42)">
+          <rect x="0" y="10" width="70" height="50" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="var(--blue, #3b82f6)" />
+          <text x="35" y="32" text-anchor="middle" font-size="11px" font-weight="700" fill="var(--text)">Sun Full</text>
+          <text x="35" y="48" text-anchor="middle" font-size="9.5px" fill="var(--text-secondary)">100% Base</text>
+
+          <rect x="150" y="35" width="60" height="25" rx="3" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" />
+          <text x="180" y="51" text-anchor="middle" font-size="10px" font-weight="600" fill="#10b981">Mon Incr</text>
+
+          <rect x="270" y="35" width="60" height="25" rx="3" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" />
+          <text x="300" y="51" text-anchor="middle" font-size="10px" font-weight="600" fill="#10b981">Tue Incr</text>
+
+          <rect x="390" y="35" width="60" height="25" rx="3" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" />
+          <text x="420" y="51" text-anchor="middle" font-size="10px" font-weight="600" fill="#10b981">Wed Incr</text>
+        </g>
+
+        <!-- Recovery Action Sequence -->
+        <g transform="translate(42, 108)">
+          <rect x="0" y="0" width="776" height="34" rx="5" fill="rgba(245, 158, 11, 0.08)" stroke="rgba(245, 158, 11, 0.4)" />
+          <text x="14" y="21" font-size="11.5px" font-weight="700" fill="#f59e0b">RECOVERY PATH ON THURSDAY (4 SEQUENTIAL STEPS):</text>
+          <text x="340" y="21" font-size="11px" font-weight="600" fill="var(--text)">[1] Sun Full &rarr; [2] Mon Inc &rarr; [3] Tue Inc &rarr; [4] Wed Inc</text>
+          <rect x="710" y="6" width="56" height="22" rx="3" fill="#f59e0b" />
+          <text x="738" y="21" text-anchor="middle" font-size="10px" font-weight="700" fill="#ffffff">SLOW RTO</text>
+        </g>
+      </g>
+
+      <!-- Bottom Trade-off Banner -->
+      <g transform="translate(30, 386)">
+        <text x="400" y="16" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">EXAM TAKEAWAY: Differential = Fast Restore (2 sets), Slower Backup | Incremental = Fastest Daily Backup, Slowest Restore (N sets)</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Backup and Restore Chains Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">DIFF</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">DIFFERENTIAL BACKUP (2-Step Recovery Chain)</h5>
+            <span class="reading-mob-tier-action">Fast Restoration &bull; 2 Sets Required</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc"><strong>สิ่งที่สำรอง:</strong> บันทึกเฉพาะไฟล์ที่มีการเปลี่ยนแปลงนับตั้งแต่ Full Backup ครั้งล่าสุด (ขนาดไฟล์จะใหญ่ขึ้นเรื่อย ๆ ในแต่ละวัน)<br><strong>การกู้คืนเมื่อระบบล่มวันพฤหัส:</strong> ใช้เพียง <code>Full (อาทิตย์) + Diff (พุธ)</code> = <strong>2 ชุดเท่านั้น</strong> กู้คืนได้รวดเร็ว ลดความเสี่ยงจากสื่อบันทึกสูญหาย</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-scorecard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">INCR</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">INCREMENTAL BACKUP (Sequential Replay Chain)</h5>
+            <span class="reading-mob-tier-action">Fastest Daily Backup &bull; Sequential Replay</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc"><strong>สิ่งที่สำรอง:</strong> บันทึกเฉพาะสิ่งที่เปลี่ยนนับจาก Backup ครั้งก่อนหน้า (ใช้เวลาและพื้นที่สำรองน้อยที่สุดในแต่ละวัน)<br><strong>การกู้คืนเมื่อระบบล่มวันพฤหัส:</strong> ต้องกู้เรียงลำดับ <code>Full (อาทิตย์) &rarr; Incr (จันทร์) &rarr; Incr (อังคาร) &rarr; Incr (พุธ)</code> รวม <strong>4 ชุด</strong> หากเทปชุดใดชุดหนึ่งเสียหาย จะไม่สามารถกู้คืนข้อมูลต่อได้</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kri">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">RULE</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">ARCHIVE BIT BEHAVIOR (กลไก Archive Bit สำหรับห้องสอบ)</h5>
+            <span class="reading-mob-tier-action">Key Mechanism Trigger</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">&bull; <strong>Full Backup:</strong> สำรองทุกไฟล์ และ <em>เคลียร์ Archive Bit (เซ็ตเป็น 0)</em><br>&bull; <strong>Differential Backup:</strong> สำรองไฟล์ที่มีการเปลี่ยนแปลง แต่ <em>ไม่เคลียร์ Archive Bit (ยังคงเป็น 1)</em><br>&bull; <strong>Incremental Backup:</strong> สำรองไฟล์ที่มีการเปลี่ยนแปลง และ <em>เคลียร์ Archive Bit (เซ็ตเป็น 0)</em></p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+  // 2.2.7 Disaster Recovery Site Tiers Comparison
+  drSiteTiers: `
+<div class="reading-diagram-card reading-dr-sites" data-diagram="drSiteTiers" role="region" aria-label="Disaster Recovery Site Tiers: Hot, Warm, Cold and Cloud DR Comparison">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Disaster Recovery Sites</span>
+    <h4 class="reading-diagram-title">Disaster Recovery Site Tiers Comparison: Hot vs. Warm vs. Cold vs. Cloud</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 860 300" class="reading-diagram-svg" aria-label="Four DR site tiers compared by RTO, cost, data currency, and hardware readiness" role="img">
+      <!-- Col 1: Hot Site -->
+      <g transform="translate(25, 15)">
+        <rect x="0" y="0" width="190" height="270" rx="8" class="diag-box diag-box-rose" />
+        <rect x="15" y="15" width="160" height="28" rx="4" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" stroke-width="1" />
+        <text x="95" y="34" text-anchor="middle" font-size="12px" font-weight="700" fill="#ef4444">HOT SITE</text>
+        
+        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Readiness (RTO):</text>
+        <text x="20" y="86" font-size="11.5px" font-weight="700" fill="#ef4444">Minutes to Hours</text>
+        
+        <text x="20" y="112" font-size="11px" font-weight="700" fill="var(--text)">Data Status:</text>
+        <text x="20" y="128" font-size="10.5px" fill="var(--text-secondary)">Real-time Synchronous</text>
+        <text x="20" y="142" font-size="10.5px" fill="var(--text-secondary)">or Continuous Mirroring</text>
+        
+        <text x="20" y="168" font-size="11px" font-weight="700" fill="var(--text)">Hardware State:</text>
+        <text x="20" y="184" font-size="10.5px" fill="var(--text-secondary)">Fully populated, active,</text>
+        <text x="20" y="198" font-size="10.5px" fill="var(--text-secondary)">identical live servers</text>
+        
+        <rect x="15" y="222" width="160" height="36" rx="4" class="diag-box diag-box-banner" />
+        <text x="95" y="238" text-anchor="middle" font-size="10px" font-weight="700" fill="#ef4444">COST: $$$$$ (HIGHEST)</text>
+        <text x="95" y="250" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Mission-Critical Systems</text>
+      </g>
+
+      <!-- Col 2: Warm Site -->
+      <g transform="translate(230, 15)">
+        <rect x="0" y="0" width="190" height="270" rx="8" class="diag-box diag-box-amber" />
+        <rect x="15" y="15" width="160" height="28" rx="4" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="1" />
+        <text x="95" y="34" text-anchor="middle" font-size="12px" font-weight="700" fill="#f59e0b">WARM SITE</text>
+        
+        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Readiness (RTO):</text>
+        <text x="20" y="86" font-size="11.5px" font-weight="700" fill="#f59e0b">Hours to Days (12-48h)</text>
+        
+        <text x="20" y="112" font-size="11px" font-weight="700" fill="var(--text)">Data Status:</text>
+        <text x="20" y="128" font-size="10.5px" fill="var(--text-secondary)">Shipped / Cloud Backups</text>
+        <text x="20" y="142" font-size="10.5px" fill="var(--text-secondary)">Must restore from media</text>
+        
+        <text x="20" y="168" font-size="11px" font-weight="700" fill="var(--text)">Hardware State:</text>
+        <text x="20" y="184" font-size="10.5px" fill="var(--text-secondary)">Pre-installed baseline</text>
+        <text x="20" y="198" font-size="10.5px" fill="var(--text-secondary)">Needs app config &amp; data</text>
+        
+        <rect x="15" y="222" width="160" height="36" rx="4" class="diag-box diag-box-banner" />
+        <text x="95" y="238" text-anchor="middle" font-size="10px" font-weight="700" fill="#f59e0b">COST: $$$ (MODERATE)</text>
+        <text x="95" y="250" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Balanced Trade-off</text>
+      </g>
+
+      <!-- Col 3: Cold Site -->
+      <g transform="translate(435, 15)">
+        <rect x="0" y="0" width="190" height="270" rx="8" class="diag-box diag-box-blue" />
+        <rect x="15" y="15" width="160" height="28" rx="4" fill="rgba(59, 130, 246, 0.15)" stroke="var(--blue, #3b82f6)" stroke-width="1" />
+        <text x="95" y="34" text-anchor="middle" font-size="12px" font-weight="700" fill="var(--blue, #3b82f6)">COLD SITE</text>
+        
+        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Readiness (RTO):</text>
+        <text x="20" y="86" font-size="11.5px" font-weight="700" fill="var(--blue, #3b82f6)">Days to Weeks</text>
+        
+        <text x="20" y="112" font-size="11px" font-weight="700" fill="var(--text)">Data Status:</text>
+        <text x="20" y="128" font-size="10.5px" fill="var(--text-secondary)">No data stored on-site</text>
+        <text x="20" y="142" font-size="10.5px" fill="var(--text-secondary)">Fetch from off-site vault</text>
+        
+        <text x="20" y="168" font-size="11px" font-weight="700" fill="var(--text)">Hardware State:</text>
+        <text x="20" y="184" font-size="10.5px" fill="var(--text-secondary)">Empty shell (Power, HVAC,</text>
+        <text x="20" y="198" font-size="10.5px" fill="var(--text-secondary)">raised floor, cabling only)</text>
+        
+        <rect x="15" y="222" width="160" height="36" rx="4" class="diag-box diag-box-banner" />
+        <text x="95" y="238" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--blue, #3b82f6)">COST: $ (LOWEST)</text>
+        <text x="95" y="250" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Non-Urgent Operations</text>
+      </g>
+
+      <!-- Col 4: Cloud DR -->
+      <g transform="translate(640, 15)">
+        <rect x="0" y="0" width="190" height="270" rx="8" class="diag-box diag-box-emerald" />
+        <rect x="15" y="15" width="160" height="28" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
+        <text x="95" y="34" text-anchor="middle" font-size="12px" font-weight="700" fill="#10b981">CLOUD DR (DRaaS)</text>
+        
+        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Readiness (RTO):</text>
+        <text x="20" y="86" font-size="11.5px" font-weight="700" fill="#10b981">Minutes to Hours</text>
+        
+        <text x="20" y="112" font-size="11px" font-weight="700" fill="var(--text)">Data Status:</text>
+        <text x="20" y="128" font-size="10.5px" fill="var(--text-secondary)">Cloud snapshot sync</text>
+        <text x="20" y="142" font-size="10.5px" fill="var(--text-secondary)">Automated replication</text>
+        
+        <text x="20" y="168" font-size="11px" font-weight="700" fill="var(--text)">Hardware State:</text>
+        <text x="20" y="184" font-size="10.5px" fill="var(--text-secondary)">Virtual on-demand</text>
+        <text x="20" y="198" font-size="10.5px" fill="var(--text-secondary)">Spin-up compute elastic</text>
+        
+        <rect x="15" y="222" width="160" height="36" rx="4" class="diag-box diag-box-banner" />
+        <text x="95" y="238" text-anchor="middle" font-size="10px" font-weight="700" fill="#10b981">COST: PAY-AS-YOU-GO</text>
+        <text x="95" y="250" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Flexible OpEx Model</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="DR Site Tiers Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kri">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">HOT</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">HOT SITE (ศูนย์กู้คืนระบบพร้อมใช้งานทันที)</h5>
+            <span class="reading-mob-tier-action">RTO: Minutes to Hours &bull; Cost: $$$$$</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">มีอุปกรณ์และระบบที่เหมือนกับไซต์หลักทุกประการ ข้อมูลมีการทำสำเนาจำลองแบบต่อเนื่อง (Real-time Mirroring) พร้อมสลับการทำงานได้ทันทีเมื่อไซต์หลักล่ม เหมาะกับงานที่หยุดชะงักไม่ได้ (Mission-Critical)</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-scorecard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">WARM</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">WARM SITE (ศูนย์กู้คืนระบบติดตั้งอุปกรณ์พร้อมส่วนหนึ่ง)</h5>
+            <span class="reading-mob-tier-action">RTO: Hours to Days (12-48h) &bull; Cost: $$$</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">มีฮาร์ดแวร์พื้นฐานติดตั้งไว้แล้ว แต่ยังไม่มีข้อมูลล่าสุด ต้องนำข้อมูลสำรองจากเทปหรือคลาวด์มา Restore และคอนฟิกค่าก่อนเปิดบริการ เป็นจุดกึ่งกลางระหว่างต้นทุนและความเร็ว</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">COLD</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">COLD SITE (ศูนย์กู้คืนระบบแบบอาคารเปล่า)</h5>
+            <span class="reading-mob-tier-action">RTO: Days to Weeks &bull; Cost: $</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">มีเพียงพื้นที่อาคาร ระบบไฟฟ้า ระบบปรับอากาศ (HVAC) และการเดินสายสัญญาณ แต่ไม่มีเครื่องเซิร์ฟเวอร์หรือข้อมูลติดตั้งอยู่ ต้องสั่งซื้อและติดตั้งอุปกรณ์ใหม่ทั้งหมด ค่าใช้จ่ายถูกที่สุดแต่ใช้เวลากู้นานที่สุด</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-dashboard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">CLOUD</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">CLOUD DR / DRaaS (การกู้คืนบนระบบคลาวด์)</h5>
+            <span class="reading-mob-tier-action">RTO: Minutes to Hours &bull; Pay-as-you-go</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ใช้โครงสร้างพื้นฐานคลาวด์ในการทำ Snapshots และสำรอง Image เมื่อเกิดภัยพิบัติสามารถเปิด Virtual Machines ขึ้นมาทำงานแทนได้ทันที จ่ายค่าบริการตามการใช้งานจริง (OpEx)</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+  // 3.1.3 Biometric Error Sensitivity Curves (FAR vs FRR vs CER)
+  biometricSensitivityCurve: `
+<div class="reading-diagram-card reading-biometric-curve" data-diagram="biometricSensitivityCurve" role="region" aria-label="Biometric Performance Curve: FAR, FRR, and Crossover Error Rate (CER)">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Biometric Performance</span>
+    <h4 class="reading-diagram-title">Biometric Error Trade-offs: FAR, FRR &amp; Crossover Error Rate (CER)</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 860 390" class="reading-diagram-svg" aria-label="Plot of FAR decreasing and FRR increasing with sensitivity threshold, intersecting at CER point" role="img">
+      <!-- Coordinate System Background -->
+      <g>
+        <rect x="30" y="15" width="800" height="325" rx="8" class="diag-box diag-box-banner" />
+        
+        <!-- Y-Axis (Error Rate) -->
+        <line x1="130" y1="50" x2="130" y2="300" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+        <polygon points="130,42 125,52 135,52" fill="var(--diag-connector, #64748b)" />
+        <text x="120" y="55" text-anchor="end" font-size="11px" font-weight="700" fill="var(--text)">High Error %</text>
+        <text x="120" y="295" text-anchor="end" font-size="11px" font-weight="700" fill="var(--text)">0% Error</text>
+        <text x="50" y="175" font-size="11.5px" font-weight="700" fill="var(--text)" transform="rotate(-90 50 175)" text-anchor="middle">ERROR RATE (อัตราความผิดพลาด)</text>
+
+        <!-- X-Axis (Sensitivity Threshold) -->
+        <line x1="130" y1="300" x2="790" y2="300" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+        <polygon points="798,300 788,295 788,305" fill="var(--diag-connector, #64748b)" />
+        <text x="460" y="324" text-anchor="middle" font-size="12px" font-weight="700" fill="var(--text)">SENSITIVITY THRESHOLD &middot; ระดับความเข้มงวดของระบบสแกน</text>
+        <text x="170" y="318" text-anchor="start" font-size="10.5px" fill="var(--text-secondary)">Low Sensitivity (ตรวจผ่อนปรน)</text>
+        <text x="760" y="318" text-anchor="end" font-size="10.5px" fill="var(--text-secondary)">High Sensitivity (ตรวจเข้มงวด)</text>
+
+        <!-- Grid Reference Lines -->
+        <line x1="130" y1="180" x2="780" y2="180" stroke="var(--diag-connector, #64748b)" stroke-width="1" stroke-dasharray="3,3" opacity="0.6" />
+        <line x1="455" y1="50" x2="455" y2="300" stroke="var(--diag-connector, #64748b)" stroke-width="1" stroke-dasharray="3,3" opacity="0.6" />
+      </g>
+
+      <!-- Curve 1: FAR (False Acceptance Rate - Type II Error) -->
+      <g>
+        <path d="M 160 80 Q 300 120 455 180 T 750 280" fill="none" stroke="#ef4444" stroke-width="3.5" stroke-linecap="round" />
+        <!-- Callout Banner for FAR -->
+        <rect x="155" y="88" width="225" height="48" rx="6" fill="rgba(239, 68, 68, 0.12)" stroke="#ef4444" stroke-width="1.2" />
+        <text x="165" y="106" font-size="11.5px" font-weight="700" fill="#ef4444">FAR · False Acceptance Rate</text>
+        <text x="165" y="124" font-size="10px" font-weight="600" fill="var(--text)">Type II Error: ยอมรับผู้บุกรุก (อันตราย)</text>
+      </g>
+
+      <!-- Curve 2: FRR (False Rejection Rate - Type I Error) -->
+      <g>
+        <path d="M 160 280 Q 300 240 455 180 T 750 80" fill="none" stroke="var(--blue, #3b82f6)" stroke-width="3.5" stroke-linecap="round" />
+        <!-- Callout Banner for FRR -->
+        <rect x="545" y="88" width="225" height="48" rx="6" fill="rgba(59, 130, 246, 0.12)" stroke="var(--blue, #3b82f6)" stroke-width="1.2" />
+        <text x="555" y="106" font-size="11.5px" font-weight="700" fill="var(--blue, #3b82f6)">FRR · False Rejection Rate</text>
+        <text x="555" y="124" font-size="10px" font-weight="600" fill="var(--text)">Type I Error: ปฏิเสธผู้มีสิทธิ์ (ไม่สะดวก)</text>
+      </g>
+
+      <!-- CER Intersection Point -->
+      <g>
+        <!-- Outer Glow Ring -->
+        <circle cx="455" cy="180" r="14" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="2" />
+        <!-- Inner Core -->
+        <circle cx="455" cy="180" r="6" fill="#10b981" />
+        
+        <!-- CER Callout Box -->
+        <rect x="360" y="202" width="190" height="48" rx="6" fill="var(--panel-2, #0f172a)" stroke="#10b981" stroke-width="1.5" />
+        <text x="455" y="220" text-anchor="middle" font-size="12px" font-weight="700" fill="#10b981">CER / EER Point</text>
+        <text x="455" y="238" text-anchor="middle" font-size="10px" font-weight="600" fill="var(--text)">FAR = FRR (Optimal Balance)</text>
+      </g>
+
+      <!-- Bottom Benchmark Footer -->
+      <g transform="translate(30, 350)">
+        <rect x="0" y="0" width="800" height="30" rx="5" class="diag-box diag-box-banner" />
+        <text x="400" y="19" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">EXAM RULE: The LOWER the CER value, the MORE ACCURATE the biometric system &bull; High-security sites tune for lower FAR</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Biometric Sensitivity Curves Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kri">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">FAR</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">FALSE ACCEPTANCE RATE (Type II Error)</h5>
+            <span class="reading-mob-tier-action">Security Failure &bull; Impostor Accepted</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ระบบตัดสินใจผิดพลาดโดย <strong>"อนุญาตให้ผู้ไม่มีสิทธิ์ผ่านเข้ามา"</strong> ถือเป็นความล้มเหลวด้านความมั่นคงปลอดภัยที่ร้ายแรงที่สุด เกิดขึ้นเมื่อตั้งค่าระบบให้ผ่อนปรน (Low Sensitivity)</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-scorecard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">FRR</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">FALSE REJECTION RATE (Type I Error)</h5>
+            <span class="reading-mob-tier-action">Usability Friction &bull; Valid User Rejected</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ระบบตัดสินใจผิดพลาดโดย <strong>"ปฏิเสธผู้ใช้งานจริงที่มีสิทธิ์ถูกต้อง"</strong> (Insult Rate) เกิดขึ้นเมื่อตั้งค่าระบบให้เข้มงวดเกินไป (High Sensitivity) ทำให้เกิดความล่าช้า ผู้ใช้หงุดหงิด และภาระงาน Helpdesk เพิ่มขึ้น</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">CER</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">CROSSOVER ERROR RATE (CER / EER)</h5>
+            <span class="reading-mob-tier-action">Accuracy Benchmark &bull; FAR = FRR</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">จุดตัดที่อัตราความผิดพลาด <strong>FAR เท่ากับ FRR พอดี</strong> ใช้เป็นตัวชี้วัดเปรียบเทียบความแม่นยำรวมของเทคโนโลยีไบโอเมตริกซ์: <strong>ยิ่งค่า CER ต่ำ แสดงว่าระบบมีความแม่นยำสูงกว่า</strong> (The lower the CER, the more accurate the device)</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+  // 4.1.6 TCP 3-Way Handshake vs UDP Connectionless Transmission
+  tcpHandshakeVsUdp: `
+<div class="reading-diagram-card reading-transport-protocols" data-diagram="tcpHandshakeVsUdp" role="region" aria-label="TCP 3-Way Handshake versus UDP Connectionless Datagram Transmission">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Transport Layer Protocols</span>
+    <h4 class="reading-diagram-title">TCP 3-Way Handshake vs. UDP Connectionless Transmission</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 860 380" class="reading-diagram-svg" aria-label="Comparison of TCP connection setup and reliable stream with UDP fire-and-forget datagram delivery" role="img">
+      <!-- Left Panel: TCP Connection-Oriented -->
+      <g transform="translate(25, 15)">
+        <rect x="0" y="0" width="395" height="320" rx="8" class="diag-box diag-box-blue" />
+        <rect x="15" y="12" width="365" height="26" rx="4" fill="rgba(59, 130, 246, 0.15)" stroke="var(--blue, #3b82f6)" stroke-width="1" />
+        <text x="197" y="29" text-anchor="middle" font-size="12px" font-weight="700" fill="var(--blue, #3b82f6)">TCP: 3-WAY HANDSHAKE (CONNECTION-ORIENTED)</text>
+
+        <!-- Hosts Endpoints -->
+        <text x="60" y="62" text-anchor="middle" font-size="11px" font-weight="700" fill="var(--text)">CLIENT</text>
+        <line x1="60" y1="70" x2="60" y2="250" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" stroke-dasharray="3,3" />
+
+        <text x="335" y="62" text-anchor="middle" font-size="11px" font-weight="700" fill="var(--text)">SERVER</text>
+        <line x1="335" y1="70" x2="335" y2="250" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" stroke-dasharray="3,3" />
+
+        <!-- 1. SYN -->
+        <line x1="60" y1="90" x2="330" y2="120" stroke="var(--blue, #3b82f6)" stroke-width="2" />
+        <polygon points="334,120 324,116 326,124" fill="var(--blue, #3b82f6)" />
+        <rect x="130" y="92" width="135" height="18" rx="3" fill="var(--panel-2, #0f172a)" stroke="var(--blue, #3b82f6)" stroke-width="1" />
+        <text x="197" y="105" text-anchor="middle" font-size="10.5px" font-weight="700" fill="var(--blue, #3b82f6)">1. SYN (Seq = x)</text>
+
+        <!-- 2. SYN-ACK -->
+        <line x1="335" y1="135" x2="65" y2="165" stroke="#10b981" stroke-width="2" />
+        <polygon points="61,165 71,161 69,169" fill="#10b981" />
+        <rect x="110" y="137" width="175" height="18" rx="3" fill="var(--panel-2, #0f172a)" stroke="#10b981" stroke-width="1" />
+        <text x="197" y="150" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#10b981">2. SYN-ACK (Seq = y, Ack = x+1)</text>
+
+        <!-- 3. ACK -->
+        <line x1="60" y1="180" x2="330" y2="210" stroke="var(--blue, #3b82f6)" stroke-width="2" />
+        <polygon points="334,210 324,206 326,214" fill="var(--blue, #3b82f6)" />
+        <rect x="130" y="182" width="135" height="18" rx="3" fill="var(--panel-2, #0f172a)" stroke="var(--blue, #3b82f6)" stroke-width="1" />
+        <text x="197" y="195" text-anchor="middle" font-size="10.5px" font-weight="700" fill="var(--blue, #3b82f6)">3. ACK (Ack = y+1)</text>
+
+        <!-- Established Footer -->
+        <rect x="15" y="240" width="365" height="68" rx="5" class="diag-box diag-box-banner" />
+        <text x="197" y="258" text-anchor="middle" font-size="11px" font-weight="700" fill="var(--text)">CONNECTION ESTABLISHED &middot; RELIABLE STREAM</text>
+        <text x="197" y="274" text-anchor="middle" font-size="10px" fill="var(--text-secondary)">&bull; Header: 20&ndash;60 Bytes &bull; In-Order Delivery &bull; Retransmission on Loss</text>
+        <text x="197" y="292" text-anchor="middle" font-size="10px" fill="var(--blue, #3b82f6)">Use Cases: HTTP/HTTPS, SSH, SFTP, SMTP, Database</text>
+      </g>
+
+      <!-- Right Panel: UDP Connectionless -->
+      <g transform="translate(440, 15)">
+        <rect x="0" y="0" width="395" height="320" rx="8" class="diag-box diag-box-amber" />
+        <rect x="15" y="12" width="365" height="26" rx="4" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="1" />
+        <text x="197" y="29" text-anchor="middle" font-size="12px" font-weight="700" fill="#f59e0b">UDP: CONNECTIONLESS DATAGRAM (BEST-EFFORT)</text>
+
+        <!-- Hosts Endpoints -->
+        <text x="60" y="62" text-anchor="middle" font-size="11px" font-weight="700" fill="var(--text)">SENDER</text>
+        <line x1="60" y1="70" x2="60" y2="250" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" stroke-dasharray="3,3" />
+
+        <text x="335" y="62" text-anchor="middle" font-size="11px" font-weight="700" fill="var(--text)">RECEIVER</text>
+        <line x1="335" y1="70" x2="335" y2="250" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" stroke-dasharray="3,3" />
+
+        <!-- Datagram 1 -->
+        <line x1="60" y1="95" x2="330" y2="115" stroke="#f59e0b" stroke-width="2" />
+        <polygon points="334,115 324,111 326,119" fill="#f59e0b" />
+        <text x="197" y="103" text-anchor="middle" font-size="10.5px" font-weight="600" fill="var(--text)">Datagram 1 (No Handshake)</text>
+
+        <!-- Datagram 2 -->
+        <line x1="60" y1="140" x2="330" y2="160" stroke="#f59e0b" stroke-width="2" />
+        <polygon points="334,160 324,156 326,164" fill="#f59e0b" />
+        <text x="197" y="148" text-anchor="middle" font-size="10.5px" font-weight="600" fill="var(--text)">Datagram 2 (Immediate Send)</text>
+
+        <!-- Datagram 3 (Dropped) -->
+        <line x1="60" y1="185" x2="210" y2="200" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,3" />
+        <circle cx="215" cy="200" r="8" fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" />
+        <line x1="210" y1="195" x2="220" y2="205" stroke="#ef4444" stroke-width="1.5" />
+        <line x1="220" y1="195" x2="210" y2="205" stroke="#ef4444" stroke-width="1.5" />
+        <text x="270" y="204" font-size="10px" font-weight="700" fill="#ef4444">Packet Lost (No Retransmit)</text>
+
+        <!-- UDP Footer -->
+        <rect x="15" y="240" width="365" height="68" rx="5" class="diag-box diag-box-banner" />
+        <text x="197" y="258" text-anchor="middle" font-size="11px" font-weight="700" fill="var(--text)">FIRE-AND-FORGET &middot; MINIMAL 8-BYTE HEADER</text>
+        <text x="197" y="274" text-anchor="middle" font-size="10px" fill="var(--text-secondary)">&bull; Fixed 8B Header &bull; No Ordering &bull; No Acknowledgment Overhead</text>
+        <text x="197" y="292" text-anchor="middle" font-size="10px" fill="#f59e0b">Use Cases: VoIP, Video Streaming, DNS Query, DHCP, SNMP</text>
+      </g>
+
+      <!-- Bottom Benchmark Banner -->
+      <g transform="translate(25, 345)">
+        <rect x="0" y="0" width="810" height="26" rx="4" class="diag-box diag-box-banner" />
+        <text x="405" y="17" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">EXAM TAKEAWAY: UDP latency advantage is from zero setup/retransmission &mdash; actual speed depends on application and network conditions</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="TCP vs UDP Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">TCP</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">TCP (Transmission Control Protocol)</h5>
+            <span class="reading-mob-tier-action">Connection-Oriented &bull; Reliable In-Order</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc"><strong>3-Way Handshake:</strong> ต้องจับมือ <code>SYN &rarr; SYN-ACK &rarr; ACK</code> ให้สำเร็จก่อนเริ่มส่งข้อมูล<br><strong>ความเชื่อถือได้:</strong> รับประกันลำดับข้อมูล (Sequencing) และมีการส่งซ้ำเมื่อข้อมูลตกหล่น (Retransmission) มี Header ขนาด 20-60 Bytes เหมาะกับ Web (HTTPS), Mail (SMTP), SSH, File Transfer</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-scorecard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">UDP</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">UDP (User Datagram Protocol)</h5>
+            <span class="reading-mob-tier-action">Connectionless &bull; Best-Effort Delivery</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc"><strong>ส่งข้อมูลทันที:</strong> ไม่มีการจับมือ (No Handshake) และไม่มีการส่งซ้ำหากแพ็กเก็ตสูญหาย (Best-Effort)<br><strong>น้ำหนักเบา:</strong> Header ขนาดเพียง 8 Bytes คงที่ เหมาะกับงานที่ต้องการความต่อเนื่องแบบเรียลไทม์ เช่น วิดีโอสตรีมมิง, VoIP, DNS Queries, DHCP</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kri">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">NOTE</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">เงื่อนไขด้านความเร็วและความหน่วง (ACC-D4-02)</h5>
+            <span class="reading-mob-tier-action">Context-Dependent Performance</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ข้อได้เปรียบด้านความเร็วของ UDP เกิดจากการไม่มีภาระในการสร้างการเชื่อมต่อและไม่มีการหน่วงเวลาเพื่อรอข้อมูลที่ส่งซ้ำ แต่ UDP ไม่ได้รับประกันว่าจะส่งข้อมูลได้เร็วกว่าเสมอไป โดยความเร็วและความหน่วงจริงยังคงขึ้นอยู่กับสภาพแบนด์วิดท์ของเครือข่ายและการจัดการของแอปพลิเคชัน</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+  // 4.1.8 IDS vs IPS Architectural Inspection Flow
+  idsVsIpsInspectionFlow: `
+<div class="reading-diagram-card reading-ids-ips" data-diagram="idsVsIpsInspectionFlow" role="region" aria-label="IDS vs IPS Architectural Flow: Passive Out-of-Band vs Active In-Line">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Network Security Devices</span>
+    <h4 class="reading-diagram-title">IDS vs. IPS Inspection Flow: Passive Out-of-Band vs. Active In-Line</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 860 320" class="reading-diagram-svg" aria-label="Comparison showing passive IDS receiving mirrored SPAN traffic out-of-band versus active IPS sitting directly in-line to drop packets" role="img">
+      <!-- Left: Passive IDS (Out-of-Band) -->
+      <g transform="translate(25, 15)">
+        <rect x="0" y="0" width="395" height="260" rx="8" class="diag-box diag-box-blue" />
+        <rect x="15" y="12" width="365" height="26" rx="4" fill="rgba(59, 130, 246, 0.15)" stroke="var(--blue, #3b82f6)" stroke-width="1" />
+        <text x="197" y="29" text-anchor="middle" font-size="12px" font-weight="700" fill="var(--blue, #3b82f6)">IDS (PASSIVE &middot; OUT-OF-BAND &middot; DETECTIVE)</text>
+
+        <!-- Main Traffic Path -->
+        <rect x="30" y="70" width="80" height="40" rx="6" class="diag-box diag-box-banner" />
+        <text x="70" y="94" text-anchor="middle" font-size="11px" font-weight="700">Router</text>
+
+        <line x1="110" y1="90" x2="160" y2="90" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+        <polygon points="166,90 158,86 158,94" fill="var(--diag-connector, #64748b)" />
+
+        <rect x="166" y="70" width="80" height="40" rx="6" class="diag-box diag-box-banner" />
+        <text x="206" y="94" text-anchor="middle" font-size="11px" font-weight="700">Switch</text>
+
+        <line x1="246" y1="90" x2="300" y2="90" stroke="#10b981" stroke-width="2" />
+        <polygon points="306,90 298,86 298,94" fill="#10b981" />
+
+        <rect x="306" y="70" width="70" height="40" rx="6" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" stroke-width="1" />
+        <text x="341" y="94" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#10b981">Host PC</text>
+
+        <!-- SPAN / TAP Mirror Downward -->
+        <line x1="206" y1="110" x2="206" y2="155" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-dasharray="3,3" />
+        <polygon points="206,161 202,153 210,153" fill="var(--blue, #3b82f6)" />
+        <text x="212" y="136" font-size="9.5px" font-weight="600" fill="var(--blue, #3b82f6)">SPAN / Port Mirror (Copy)</text>
+
+        <!-- IDS Appliance Box -->
+        <rect x="126" y="165" width="160" height="45" rx="6" fill="rgba(59, 130, 246, 0.2)" stroke="var(--blue, #3b82f6)" stroke-width="1.5" />
+        <text x="206" y="185" text-anchor="middle" font-size="12px" font-weight="700" fill="var(--blue, #3b82f6)">IDS SENSOR</text>
+        <text x="206" y="200" text-anchor="middle" font-size="10px" fill="var(--text-secondary)">Passive Copy Analysis</text>
+
+        <text x="197" y="235" text-anchor="middle" font-size="11px" font-weight="700" fill="#ef4444">&bull; ALERT / LOG ONLY &bull; Cannot Stop Attack in Real-Time</text>
+      </g>
+
+      <!-- Right: Active IPS (In-Line) -->
+      <g transform="translate(440, 15)">
+        <rect x="0" y="0" width="395" height="260" rx="8" class="diag-box diag-box-emerald" />
+        <rect x="15" y="12" width="365" height="26" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
+        <text x="197" y="29" text-anchor="middle" font-size="12px" font-weight="700" fill="#10b981">IPS (ACTIVE &middot; IN-LINE &middot; PREVENTIVE)</text>
+
+        <!-- Main Traffic Path Going Directly Through IPS -->
+        <rect x="25" y="70" width="75" height="40" rx="6" class="diag-box diag-box-banner" />
+        <text x="62" y="94" text-anchor="middle" font-size="11px" font-weight="700">Router</text>
+
+        <line x1="100" y1="90" x2="145" y2="90" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+        <polygon points="151,90 143,86 143,94" fill="var(--diag-connector, #64748b)" />
+
+        <!-- In-Line IPS Appliance -->
+        <rect x="151" y="62" width="115" height="56" rx="6" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="2" />
+        <text x="208" y="86" text-anchor="middle" font-size="12px" font-weight="700" fill="#10b981">IPS DEVICE</text>
+        <text x="208" y="104" text-anchor="middle" font-size="9.5px" font-weight="700" fill="var(--text)">IN-LINE FILTER</text>
+
+        <!-- Safe Packet Continues -->
+        <line x1="266" y1="80" x2="310" y2="80" stroke="#10b981" stroke-width="2" />
+        <polygon points="316,80 308,76 308,84" fill="#10b981" />
+        <rect x="316" y="65" width="65" height="30" rx="4" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" />
+        <text x="348" y="84" text-anchor="middle" font-size="10px" font-weight="700" fill="#10b981">Pass Safe</text>
+
+        <!-- Malicious Packet Dropped -->
+        <line x1="208" y1="118" x2="208" y2="155" stroke="#ef4444" stroke-width="2" />
+        <polygon points="208,161 204,153 212,153" fill="#ef4444" />
+        <rect x="138" y="165" width="140" height="30" rx="4" fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" />
+        <text x="208" y="184" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#ef4444">DROP / RESET PACKET</text>
+
+        <text x="197" y="235" text-anchor="middle" font-size="11px" font-weight="700" fill="#10b981">&bull; BLOCKS ATTACK IN REAL-TIME &bull; Active Safeguard</text>
+      </g>
+
+      <!-- Bottom Benchmark Banner -->
+      <g transform="translate(25, 285)">
+        <rect x="0" y="0" width="810" height="26" rx="4" class="diag-box diag-box-banner" />
+        <text x="405" y="17" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">EXAM DECISION: IDS = Detective (Out-of-band copy, alerts only) | IPS = Preventive (In-line path, actively blocks/drops packets)</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="IDS vs IPS Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">IDS</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">IDS: INTRUSION DETECTION SYSTEM</h5>
+            <span class="reading-mob-tier-action">Passive &bull; Out-of-Band &bull; Detective Control</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc"><strong>ตำแหน่งติดตั้ง:</strong> วางอยู่นอกสายการส่งข้อมูลจริง (Out-of-Band) โดยรับสำเนาแพ็กเก็ตผ่าน SPAN / Port Mirror หรือ Network TAP<br><strong>การทำงาน:</strong> วิเคราะห์สำเนาแพ็กเก็ต เมื่อพบการโจมตีจะทำการแจ้งเตือน (Alert) และบันทึก Log <em>แต่ไม่สามารถขัดขวางหรือหยุดยั้งแพ็กเก็ตจริงที่วิ่งผ่านสวิตช์ได้ทันที</em></p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-scorecard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">IPS</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">IPS: INTRUSION PREVENTION SYSTEM</h5>
+            <span class="reading-mob-tier-action">Active &bull; In-Line &bull; Preventive Control</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc"><strong>ตำแหน่งติดตั้ง:</strong> วางขวางอยู่กลางสายทางเดินข้อมูลจริง (In-Line) ทุกแพ็กเก็ตต้องไหลผ่าน IPS ก่อนเข้าสู่ระบบปลายทาง<br><strong>การทำงาน:</strong> ตรวจสอบแพ็กเก็ตแบบเรียลไทม์ หากพบว่าเป็นภัยคุกคามสามารถ <strong>ทิ้งแพ็กเก็ต (Drop) หรือตัดการเชื่อมต่อ (Reset Connection) ได้ทันที</strong> แต่มีความเสี่ยงที่จะกลายเป็นคอขวดหรือ Single Point of Failure หากอุปกรณ์ล้มเหลว</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+// 5.1.6 & 5.1.7 Cryptography Foundations: Symmetric, Asymmetric, Hashing & Digital Signatures
+  cryptographyPipelines: `
+<div class="reading-diagram-card reading-crypto-pipelines" data-diagram="cryptographyPipelines" role="region" aria-label="Cryptography Pipelines: Symmetric, Asymmetric, Hashing and Digital Signatures">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Cryptographic Foundations</span>
+    <h4 class="reading-diagram-title">Cryptographic Systems: Symmetric, Asymmetric, Hashing &amp; Digital Signatures</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 860 840" class="reading-diagram-svg" aria-label="Visual pipelines comparing Symmetric encryption, Asymmetric encryption, Cryptographic Hashing with avalanche effect, and Digital Signature signing and verification" role="img">
+      
+      <!-- ========================================================
+           BAND 1: SYMMETRIC ENCRYPTION (SHARED SECRET KEY)
+           ======================================================== -->
+      <g transform="translate(25, 15)">
+        <rect x="0" y="0" width="810" height="185" rx="8" class="diag-box diag-box-banner" />
+        
+        <!-- Header Pill -->
+        <rect x="15" y="12" width="410" height="24" rx="4" fill="#1d4ed8" />
+        <text x="220" y="28" text-anchor="middle" font-size="11.5px" font-weight="700" fill="#ffffff">1. SYMMETRIC ENCRYPTION · SHARED SECRET KEY (ความลับร่วมกัน)</text>
+        
+        <!-- Pipeline Flow -->
+        <!-- Step 1: Plaintext -->
+        <g transform="translate(20, 50)">
+          <rect x="0" y="0" width="145" height="75" rx="6" class="diag-box diag-box-blue" />
+          <text x="72" y="24" text-anchor="middle" font-size="12px" font-weight="700" class="diag-text-title">Plaintext (ข้อความเดิม)</text>
+          <rect x="12" y="36" width="121" height="26" rx="4" fill="rgba(59, 130, 246, 0.12)" />
+          <text x="72" y="53" text-anchor="middle" font-size="11px" font-family="monospace" font-weight="700" fill="var(--blue, #2563eb)">"SECRET DATA"</text>
+        </g>
+
+        <!-- Arrow 1 -> Key Engine -->
+        <g transform="translate(165, 80)">
+          <line x1="0" y1="7" x2="40" y2="7" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+          <polygon points="46,7 38,3 38,11" fill="var(--diag-connector, #64748b)" />
+        </g>
+
+        <!-- Step 2: Encryption Engine with Key K -->
+        <g transform="translate(215, 45)">
+          <rect x="0" y="0" width="140" height="85" rx="6" fill="rgba(37, 99, 235, 0.12)" stroke="#2563eb" stroke-width="1.5" />
+          <text x="70" y="24" text-anchor="middle" font-size="12px" font-weight="700" fill="var(--blue, #2563eb)">ENCRYPT ENGINE</text>
+          <rect x="15" y="34" width="110" height="22" rx="4" fill="#1d4ed8" />
+          <text x="70" y="49" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#ffffff">&#128273; Shared Key K</text>
+          <text x="70" y="73" text-anchor="middle" font-size="10px" class="diag-text-sub">AES-256 / ChaCha20</text>
+        </g>
+
+        <!-- Arrow 2 -> Ciphertext -->
+        <g transform="translate(355, 80)">
+          <line x1="0" y1="7" x2="40" y2="7" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+          <polygon points="46,7 38,3 38,11" fill="var(--diag-connector, #64748b)" />
+        </g>
+
+        <!-- Step 3: Ciphertext in Transit -->
+        <g transform="translate(405, 50)">
+          <rect x="0" y="0" width="145" height="75" rx="6" class="diag-box diag-box-amber" />
+          <text x="72" y="24" text-anchor="middle" font-size="12px" font-weight="700" fill="#b45309">Ciphertext (ข้อความเข้ารหัส)</text>
+          <rect x="12" y="36" width="121" height="26" rx="4" fill="rgba(245, 158, 11, 0.15)" />
+          <text x="72" y="53" text-anchor="middle" font-size="11px" font-family="monospace" font-weight="700" fill="#d97706">%#8@!*&amp;^$7f</text>
+        </g>
+
+        <!-- Arrow 3 -> Decrypt Engine -->
+        <g transform="translate(550, 80)">
+          <line x1="0" y1="7" x2="40" y2="7" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+          <polygon points="46,7 38,3 38,11" fill="var(--diag-connector, #64748b)" />
+        </g>
+
+        <!-- Step 4: Decryption Engine with Same Key K -->
+        <g transform="translate(600, 45)">
+          <rect x="0" y="0" width="140" height="85" rx="6" fill="rgba(37, 99, 235, 0.12)" stroke="#2563eb" stroke-width="1.5" />
+          <text x="70" y="24" text-anchor="middle" font-size="12px" font-weight="700" fill="var(--blue, #2563eb)">DECRYPT ENGINE</text>
+          <rect x="15" y="34" width="110" height="22" rx="4" fill="#1d4ed8" />
+          <text x="70" y="49" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#ffffff">&#128273; Same Key K</text>
+          <text x="70" y="73" text-anchor="middle" font-size="10px" class="diag-text-sub">กุญแจดอกเดียวกันเป๊ะ</text>
+        </g>
+
+        <!-- Arrow 4 -> Final Plaintext -->
+        <g transform="translate(740, 80)">
+          <line x1="0" y1="7" x2="25" y2="7" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+          <polygon points="31,7 23,3 23,11" fill="var(--diag-connector, #64748b)" />
+        </g>
+
+        <!-- Bottom Feature Bar -->
+        <g transform="translate(20, 142)">
+          <rect x="0" y="0" width="770" height="30" rx="4" fill="rgba(59, 130, 246, 0.08)" stroke="rgba(59, 130, 246, 0.3)" stroke-width="1" />
+          <text x="385" y="20" text-anchor="middle" font-size="11px" font-weight="600" class="diag-text-sub">
+            <tspan fill="#1d4ed8" font-weight="700">จุดเด่น:</tspan> ประสิทธิภาพสูงมาก เหมาะกับข้อมูลปริมาณมาก (Bulk Data) &bull; <tspan fill="#b91c1c" font-weight="700">ข้อจำกัดหลัก:</tspan> การแจกจ่ายกุญแจ (Key Distribution Problem) ต้องส่งผ่านช่องทางปลอดภัย (ใช้ n(n-1)/2 กุญแจ)
+          </text>
+        </g>
+      </g>
+
+      <!-- ========================================================
+           BAND 2: ASYMMETRIC ENCRYPTION (PUBLIC / PRIVATE PAIR)
+           ======================================================== -->
+      <g transform="translate(25, 215)">
+        <rect x="0" y="0" width="810" height="195" rx="8" class="diag-box diag-box-banner" />
+        
+        <!-- Header Pill -->
+        <rect x="15" y="12" width="460" height="24" rx="4" fill="#6d28d9" />
+        <text x="245" y="28" text-anchor="middle" font-size="11.5px" font-weight="700" fill="#ffffff">2. ASYMMETRIC ENCRYPTION · PUBLIC &amp; PRIVATE KEY PAIR (กุญแจคู่รหัส)</text>
+
+        <!-- Mode A: Confidentiality (Encryption) -->
+        <g transform="translate(20, 48)">
+          <rect x="0" y="0" width="370" height="98" rx="6" class="diag-box diag-box-blue" />
+          <rect x="10" y="8" width="220" height="20" rx="3" fill="#1d4ed8" />
+          <text x="120" y="22" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#ffffff">โหมดรักษาความลับ (CONFIDENTIALITY)</text>
+          
+          <text x="15" y="48" font-size="11px" font-weight="700" class="diag-text-title">ผู้ส่ง (Sender) เข้ารหัสด้วย:</text>
+          <rect x="175" y="34" width="180" height="22" rx="4" fill="rgba(37, 99, 235, 0.15)" stroke="#2563eb" />
+          <text x="265" y="49" text-anchor="middle" font-size="10px" font-weight="700" fill="#1d4ed8">&#128274; Public Key ของผู้รับ</text>
+          
+          <text x="15" y="78" font-size="11px" font-weight="700" class="diag-text-title">ผู้รับ (Recipient) ถอดรหัสด้วย:</text>
+          <rect x="175" y="64" width="180" height="22" rx="4" fill="rgba(220, 38, 38, 0.15)" stroke="#dc2626" />
+          <text x="265" y="79" text-anchor="middle" font-size="10px" font-weight="700" fill="#b91c1c">&#128273; Private Key ของผู้รับเอง</text>
+        </g>
+
+        <!-- Mode B: Authenticity / Digital Signature -->
+        <g transform="translate(420, 48)">
+          <rect x="0" y="0" width="370" height="98" rx="6" class="diag-box diag-box-emerald" />
+          <rect x="10" y="8" width="230" height="20" rx="3" fill="#047857" />
+          <text x="125" y="22" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#ffffff">โหมดยืนยันตัวตน (AUTHENTICITY / SIGN)</text>
+          
+          <text x="15" y="48" font-size="11px" font-weight="700" class="diag-text-title">ผู้ส่ง (Signer) ลงลายมือชื่อด้วย:</text>
+          <rect x="175" y="34" width="180" height="22" rx="4" fill="rgba(220, 38, 38, 0.15)" stroke="#dc2626" />
+          <text x="265" y="49" text-anchor="middle" font-size="10px" font-weight="700" fill="#b91c1c">&#128273; Private Key ของผู้ส่งเอง</text>
+          
+          <text x="15" y="78" font-size="11px" font-weight="700" class="diag-text-title">ทุกคนในโลก ตรวจสอบด้วย:</text>
+          <rect x="175" y="64" width="180" height="22" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#059669" />
+          <text x="265" y="79" text-anchor="middle" font-size="10px" font-weight="700" fill="#047857">&#128274; Public Key ของผู้ส่ง</text>
+        </g>
+
+        <!-- Bottom Asymmetric Summary -->
+        <g transform="translate(20, 155)">
+          <rect x="0" y="0" width="770" height="28" rx="4" fill="rgba(109, 40, 217, 0.08)" stroke="rgba(109, 40, 217, 0.3)" stroke-width="1" />
+          <text x="385" y="18" text-anchor="middle" font-size="10.5px" font-weight="600" class="diag-text-sub">
+            <tspan fill="#6d28d9" font-weight="700">กฎเหล็กจำสอบ:</tspan> สิ่งใดเข้ารหัสด้วยกุญแจดอกหนึ่ง ต้องถอดด้วยกุญแจอีกดอกในคู่นั้นเท่านั้น &bull; Private Key ห้ามเปิดเผยเด็ดขาด &bull; Public Key แจกจ่ายได้เสรี
+          </text>
+        </g>
+      </g>
+
+      <!-- ========================================================
+           BAND 3: CRYPTOGRAPHIC HASHING & AVALANCHE EFFECT
+           ======================================================== -->
+      <g transform="translate(25, 425)">
+        <rect x="0" y="0" width="810" height="185" rx="8" class="diag-box diag-box-banner" />
+        
+        <!-- Header Pill -->
+        <rect x="15" y="12" width="460" height="24" rx="4" fill="#0e7490" />
+        <text x="245" y="28" text-anchor="middle" font-size="11.5px" font-weight="700" fill="#ffffff">3. CRYPTOGRAPHIC HASHING · ONE-WAY DIGEST &amp; AVALANCHE EFFECT</text>
+
+        <!-- Avalanche Demo Box A -->
+        <g transform="translate(20, 48)">
+          <rect x="0" y="0" width="180" height="52" rx="6" class="diag-box diag-box-blue" />
+          <text x="90" y="20" text-anchor="middle" font-size="10.5px" font-weight="700" class="diag-text-title">Input A (ข้อความต้นฉบับ)</text>
+          <text x="90" y="38" text-anchor="middle" font-size="11px" font-family="monospace" font-weight="700" fill="#2563eb">"ISC2 CC 2026"</text>
+          
+          <line x1="180" y1="26" x2="225" y2="26" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+          <polygon points="231,26 223,22 223,30" fill="var(--diag-connector, #64748b)" />
+
+          <rect x="231" y="8" width="105" height="36" rx="4" fill="#0e7490" />
+          <text x="283" y="30" text-anchor="middle" font-size="11px" font-weight="700" fill="#ffffff">SHA-256</text>
+
+          <line x1="336" y1="26" x2="375" y2="26" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+          <polygon points="381,26 373,22 373,30" fill="var(--diag-connector, #64748b)" />
+
+          <rect x="381" y="0" width="389" height="52" rx="6" fill="rgba(14, 116, 144, 0.12)" stroke="#0e7490" />
+          <text x="575" y="20" text-anchor="middle" font-size="10px" font-weight="700" fill="#0e7490">Output Digest A (256 bits · 64 Hex Chars)</text>
+          <text x="575" y="38" text-anchor="middle" font-size="9.5px" font-family="monospace" font-weight="700" fill="var(--text)">f6b25b7af6ddbc236d5a4c79...90698cab</text>
+        </g>
+
+        <!-- Avalanche Demo Box B (Modifying ONE Dot) -->
+        <g transform="translate(20, 108)">
+          <rect x="0" y="0" width="180" height="52" rx="6" class="diag-box diag-box-amber" />
+          <text x="90" y="20" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#b45309">Input B (+ เติมจุด 1 ตัว)</text>
+          <text x="90" y="38" text-anchor="middle" font-size="11px" font-family="monospace" font-weight="700" fill="#d97706">"ISC2 CC 2026."</text>
+          
+          <line x1="180" y1="26" x2="225" y2="26" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+          <polygon points="231,26 223,22 223,30" fill="var(--diag-connector, #64748b)" />
+
+          <rect x="231" y="8" width="105" height="36" rx="4" fill="#0e7490" />
+          <text x="283" y="30" text-anchor="middle" font-size="11px" font-weight="700" fill="#ffffff">SHA-256</text>
+
+          <line x1="336" y1="26" x2="375" y2="26" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
+          <polygon points="381,26 373,22 373,30" fill="var(--diag-connector, #64748b)" />
+
+          <rect x="381" y="0" width="389" height="52" rx="6" fill="rgba(244, 63, 94, 0.12)" stroke="#e11d48" />
+          <text x="575" y="20" text-anchor="middle" font-size="10px" font-weight="700" fill="#e11d48">&#9888; Output Digest B (Avalanche: &gt;50% บิตเปลี่ยนไปสิ้นเชิง)</text>
+          <text x="575" y="38" text-anchor="middle" font-size="9.5px" font-family="monospace" font-weight="700" fill="var(--text)">ccb550aaca692c0be01b943c...50ecbb7e</text>
+        </g>
+      </g>
+
+      <!-- ========================================================
+           BAND 4: DIGITAL SIGNATURE (SIGNING & VERIFY WORKFLOW)
+           ======================================================== -->
+      <g transform="translate(25, 625)">
+        <rect x="0" y="0" width="810" height="200" rx="8" class="diag-box diag-box-banner" />
+        
+        <!-- Header Pill -->
+        <rect x="15" y="12" width="480" height="24" rx="4" fill="#047857" />
+        <text x="255" y="28" text-anchor="middle" font-size="11.5px" font-weight="700" fill="#ffffff">4. DIGITAL SIGNATURE WORKFLOW · INTEGRITY &amp; NON-REPUDIATION</text>
+
+        <!-- Left Column: Signing Workflow (Sender) -->
+        <g transform="translate(20, 48)">
+          <rect x="0" y="0" width="365" height="135" rx="6" class="diag-box diag-box-rose" />
+          <text x="182" y="20" text-anchor="middle" font-size="11px" font-weight="700" fill="#b91c1c">ขั้นตอนฝั่งผู้ส่ง (SIGNING PROCESS)</text>
+          
+          <rect x="12" y="32" width="95" height="30" rx="4" class="diag-box diag-box-banner" />
+          <text x="59" y="51" text-anchor="middle" font-size="10px" font-weight="700" class="diag-text-title">Message</text>
+
+          <line x1="107" y1="47" x2="135" y2="47" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" />
+          <polygon points="139,47 133,44 133,50" fill="var(--diag-connector, #64748b)" />
+
+          <rect x="139" y="32" width="75" height="30" rx="4" fill="#0e7490" />
+          <text x="176" y="51" text-anchor="middle" font-size="10px" font-weight="700" fill="#ffffff">Hash Func</text>
+
+          <line x1="214" y1="47" x2="242" y2="47" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" />
+          <polygon points="246,47 240,44 240,50" fill="var(--diag-connector, #64748b)" />
+
+          <rect x="246" y="32" width="105" height="30" rx="4" class="diag-box diag-box-banner" />
+          <text x="298" y="51" text-anchor="middle" font-size="9.5px" font-family="monospace" font-weight="700" class="diag-text-title">Digest (D1)</text>
+
+          <!-- Sign Operation Arrow -->
+          <line x1="298" y1="62" x2="298" y2="82" stroke="var(--diag-rose-line, #ef4444)" stroke-width="2" />
+          <polygon points="298,87 294,80 302,80" fill="var(--diag-rose-line, #ef4444)" />
+
+          <rect x="195" y="88" width="156" height="36" rx="4" fill="#b91c1c" />
+          <text x="273" y="104" text-anchor="middle" font-size="9.5px" font-weight="700" fill="#ffffff">&#128273; Encrypt Digest with</text>
+          <text x="273" y="118" text-anchor="middle" font-size="10px" font-weight="700" fill="#fecdd3">Sender's PRIVATE Key</text>
+
+          <text x="100" y="110" font-size="10px" font-weight="700" fill="#047857">&#10140; Digital Signature</text>
+        </g>
+
+        <!-- Right Column: Verification Workflow (Receiver) -->
+        <g transform="translate(425, 48)">
+          <rect x="0" y="0" width="365" height="135" rx="6" class="diag-box diag-box-emerald" />
+          <text x="182" y="20" text-anchor="middle" font-size="11px" font-weight="700" fill="#047857">ขั้นตอนฝั่งผู้รับ (VERIFICATION PROCESS)</text>
+          
+          <rect x="12" y="32" width="165" height="42" rx="4" class="diag-box diag-box-banner" />
+          <text x="94" y="48" text-anchor="middle" font-size="9.5px" class="diag-text-title">Hash received message</text>
+          <text x="94" y="64" text-anchor="middle" font-size="10px" font-family="monospace" font-weight="700" fill="#0e7490">&#10140; Computed Digest (D_A)</text>
+
+          <rect x="188" y="32" width="165" height="42" rx="4" class="diag-box diag-box-banner" />
+          <text x="270" y="48" text-anchor="middle" font-size="9.5px" class="diag-text-title">Decrypt Signature with</text>
+          <text x="270" y="64" text-anchor="middle" font-size="10px" font-weight="700" fill="#047857">&#128274; Sender's PUBLIC Key (D_B)</text>
+
+          <!-- Compare Box -->
+          <rect x="12" y="86" width="341" height="38" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#059669" stroke-width="1.5" />
+          <text x="182" y="103" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#047857">เปรียบเทียบ: D_A == D_B ? &bull; หากตรงกัน = สำเร็จ 100%</text>
+          <text x="182" y="117" text-anchor="middle" font-size="9px" class="diag-text-sub">ยืนยัน Integrity (ไม่ถูกดัดแปลง) &amp; Authenticity / Non-Repudiation (ผู้ส่งปฏิเสธไม่ได้)</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Cryptography Pipelines Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">01</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">1. SYMMETRIC ENCRYPTION (กุญแจสมมาตร)</h5>
+            <span class="reading-mob-tier-action">Fast · Bulk Data · Shared Secret Key</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc"><strong>การทำงาน:</strong> ใช้กุญแจลับดอกเดียวกัน (Shared Secret Key K) ทั้งเข้ารหัส (Encrypt) และถอดรหัส (Decrypt)<br><strong>ข้อดี:</strong> ทำงานเร็วมาก กินพลังงานน้อย เหมาะกับการเข้ารหัสไฟล์ขนาดใหญ่ (AES-256, ChaCha20)<br><strong>ปัญหาข้อจำกัด (Key Distribution):</strong> ผู้ส่งและผู้รับต้องแลกเปลี่ยนกุญแจลับอย่างปลอดภัยก่อน หากมีผู้ใช้ N คน ต้องบริหารจัดการกุญแจถึง <code>n(n-1)/2</code> คู่</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-scorecard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">02</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">2. ASYMMETRIC ENCRYPTION (กุญแจอสมมาตร)</h5>
+            <span class="reading-mob-tier-action">Key Pair · Public Key + Private Key</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc"><strong>กุญแจคู่รหัส:</strong> ประกอบด้วย Public Key (แจกจ่ายได้เสรี) และ Private Key (เก็บรักษาเป็นความลับสูงสุด ห้ามเปิดเผย)<br><strong>โหมด 1 รักษาความลับ (Confidentiality):</strong> ผู้ส่งเข้ารหัสด้วย <em>Public Key ของผู้รับ</em> &rarr; มีเพียงผู้รับที่ถือ <em>Private Key ของตนเอง</em> เท่านั้นที่ถอดรหัสได้<br><strong>โหมด 2 ยืนยันตัวตน (Authenticity / Signature):</strong> ผู้ส่งลงลายมือชื่อด้วย <em>Private Key ของผู้ส่ง</em> &rarr; ทุกคนสามารถตรวจสอบได้ด้วย <em>Public Key ของผู้ส่ง</em></p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-audit">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">03</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">3. CRYPTOGRAPHIC HASHING (ฟังก์ชันแฮชทางคณิตศาสตร์)</h5>
+            <span class="reading-mob-tier-action">One-Way · Deterministic · Fixed-Length Digest</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc"><strong>คุณสมบัติหลัก:</strong> แปลงข้อมูลขนาดใดก็ได้ให้กลายเป็นค่าสรุปย่อความยาวคงที่ (Digest) เช่น SHA-256 จะได้ 256 บิต (64 ตัวอักษรฐานสิบหก) เสมอ เป็นฟังก์ชันทางเดียว (One-Way) ไม่สามารถแปลงย้อนกลับได้<br><strong>Avalanche Effect:</strong> หากเปลี่ยนแปลงข้อมูลตั้งต้นเพียงบิตเดียวหรือตัวอักษรเดียว ค่า Hash Digest ที่ได้จะเปลี่ยนแปลงไปมากกว่า 50% อย่างสิ้นเชิง ทำให้ตรวจจับการดัดแปลงข้อมูลได้ทันที</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">04</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">4. DIGITAL SIGNATURES (ลายมือชื่อดิจิทัล)</h5>
+            <span class="reading-mob-tier-action">Integrity · Authenticity · Non-Repudiation</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc"><strong>ขั้นตอนการสร้าง:</strong> ผู้ส่งนำข้อความไปแฮชเป็น Digest จากนั้น <strong>เข้ารหัสเฉพาะค่า Digest ด้วย Private Key ของผู้ส่ง</strong> แล้วแนบไปกับข้อความเดิม<br><strong>ขั้นตอนการตรวจ:</strong> ผู้รับนำข้อความที่ได้ไปแฮชใหม่ (D1) และนำลายมือชื่อไปถอดรหัสด้วย Public Key ของผู้ส่ง (D2) หาก <code>D1 == D2</code> ถือว่าเอกสารไม่ถูกแก้ไขและส่งมาจากเจ้าของตัวจริง<br><strong>ข้อควรระวังสำหรับสอบ:</strong> ลายมือชื่อดิจิทัล <em>ไม่ได้เข้ารหัสเนื้อหาข้อความ</em> จึงไม่ได้รับประกันการรักษาความลับ (Confidentiality) แต่รับประกัน Integrity, Authenticity และการปฏิเสธความรับผิดไม่ได้ (Non-Repudiation)</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+  // 5.2.2 SIEM Multi-Source Telemetry Pipeline
+  siemTelemetryPipeline: `
+<div class="reading-diagram-card reading-siem-pipeline" data-diagram="siemTelemetryPipeline" role="region" aria-label="SIEM Multi-Source Telemetry Pipeline: Log Aggregation, Normalization and Correlation">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Security Monitoring</span>
+    <h4 class="reading-diagram-title">SIEM Multi-Source Telemetry Pipeline: Aggregation, Normalization &amp; Correlation</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 860 360" class="reading-diagram-svg" aria-label="Four-stage pipeline showing log sources feeding collectors, normalization with NTP sync, SIEM rule correlation, and SOC triage alerting" role="img">
+      <!-- 4 Connected Pipeline Stages -->
+      <!-- Stage 1: Telemetry Sources -->
+      <g transform="translate(25, 20)">
+        <rect x="0" y="0" width="180" height="280" rx="8" class="diag-box diag-box-blue" />
+        <rect x="12" y="12" width="156" height="26" rx="4" fill="rgba(59, 130, 246, 0.15)" stroke="var(--blue, #3b82f6)" />
+        <text x="90" y="29" text-anchor="middle" font-size="11px" font-weight="700" fill="var(--blue, #3b82f6)">STAGE 1: SOURCES</text>
+
+        <!-- Sub source items -->
+        <g transform="translate(12, 50)">
+          <rect x="0" y="0" width="156" height="34" rx="4" class="diag-box diag-box-banner" />
+          <text x="78" y="16" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--text)">Firewall &amp; VPN Logs</text>
+          <text x="78" y="28" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">Traffic permits / drops</text>
+
+          <rect x="0" y="44" width="156" height="34" rx="4" class="diag-box diag-box-banner" />
+          <text x="78" y="60" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--text)">Active Directory Logs</text>
+          <text x="78" y="72" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">Event 4624 (Success) / 4625</text>
+
+          <rect x="0" y="88" width="156" height="34" rx="4" class="diag-box diag-box-banner" />
+          <text x="78" y="104" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--text)">Endpoint EDR Agents</text>
+          <text x="78" y="116" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">Process spawns, cmd line</text>
+
+          <rect x="0" y="132" width="156" height="34" rx="4" class="diag-box diag-box-banner" />
+          <text x="78" y="148" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--text)">Cloud Audit Trails</text>
+          <text x="78" y="160" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">AWS CloudTrail, IAM API</text>
+
+          <rect x="0" y="176" width="156" height="34" rx="4" class="diag-box diag-box-banner" />
+          <text x="78" y="192" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--text)">Network Devices (Syslog)</text>
+          <text x="78" y="204" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">Routers, Switches, WAPs</text>
+        </g>
+      </g>
+
+      <!-- Connector 1 -->
+      <line x1="205" y1="160" x2="235" y2="160" stroke="var(--blue, #3b82f6)" stroke-width="2" />
+      <polygon points="240,160 232,156 232,164" fill="var(--blue, #3b82f6)" />
+
+      <!-- Stage 2: Ingestion & Normalization -->
+      <g transform="translate(240, 20)">
+        <rect x="0" y="0" width="175" height="280" rx="8" class="diag-box diag-box-amber" />
+        <rect x="12" y="12" width="151" height="26" rx="4" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" />
+        <text x="87" y="29" text-anchor="middle" font-size="11px" font-weight="700" fill="#f59e0b">STAGE 2: COLLECT &amp; PARSE</text>
+
+        <g transform="translate(12, 50)">
+          <rect x="0" y="0" width="151" height="52" rx="4" class="diag-box diag-box-banner" />
+          <text x="75" y="20" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--text)">Log Forwarders</text>
+          <text x="75" y="36" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">Fluentd / Logstash / Beats</text>
+
+          <rect x="0" y="64" width="151" height="64" rx="4" class="diag-box diag-box-banner" />
+          <text x="75" y="82" text-anchor="middle" font-size="10px" font-weight="700" fill="#f59e0b">NTP Time Sync (UTC)</text>
+          <text x="75" y="98" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">ปรับเวลาทุกเครื่องตรงกัน</text>
+          <text x="75" y="112" text-anchor="middle" font-size="8px" fill="var(--text-secondary)">ป้องกันปัญหาลำดับเหตุการณ์</text>
+
+          <rect x="0" y="140" width="151" height="64" rx="4" class="diag-box diag-box-banner" />
+          <text x="75" y="158" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--text)">Field Normalization</text>
+          <text x="75" y="174" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">แปลงฟิลด์ให้เป็นมาตรฐาน</text>
+          <text x="75" y="188" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">Common Event Format (CEF)</text>
+        </g>
+      </g>
+
+      <!-- Connector 2 -->
+      <line x1="415" y1="160" x2="445" y2="160" stroke="#f59e0b" stroke-width="2" />
+      <polygon points="450,160 442,156 442,164" fill="#f59e0b" />
+
+      <!-- Stage 3: SIEM Correlation Engine -->
+      <g transform="translate(450, 20)">
+        <rect x="0" y="0" width="180" height="280" rx="8" class="diag-box diag-box-emerald" />
+        <rect x="12" y="12" width="156" height="26" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" />
+        <text x="90" y="29" text-anchor="middle" font-size="11px" font-weight="700" fill="#10b981">STAGE 3: CORRELATION</text>
+
+        <g transform="translate(12, 50)">
+          <rect x="0" y="0" width="156" height="64" rx="4" class="diag-box diag-box-banner" />
+          <text x="78" y="20" text-anchor="middle" font-size="10px" font-weight="700" fill="#10b981">Rule-Based Correlation</text>
+          <text x="78" y="36" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">จับคู่เหตุการณ์ข้ามระบบ</text>
+          <text x="78" y="50" text-anchor="middle" font-size="8px" fill="var(--text-secondary)">5x Failed Login + Admin Login</text>
+
+          <rect x="0" y="76" width="156" height="64" rx="4" class="diag-box diag-box-banner" />
+          <text x="78" y="96" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--text)">Behavioral Analytics (UEBA)</text>
+          <text x="78" y="112" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">ตรวจจับพฤติกรรมผิดปกติ</text>
+          <text x="78" y="126" text-anchor="middle" font-size="8px" fill="var(--text-secondary)">ล็อกอินจากประเทศที่ไม่เคยพบ</text>
+
+          <rect x="0" y="152" width="156" height="52" rx="4" class="diag-box diag-box-banner" />
+          <text x="78" y="172" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--text)">Threat Intel Matching</text>
+          <text x="78" y="188" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">เทียบ IOCs กับฐานข้อมูลภายนอก</text>
+        </g>
+      </g>
+
+      <!-- Connector 3 -->
+      <line x1="630" y1="160" x2="660" y2="160" stroke="#10b981" stroke-width="2" />
+      <polygon points="665,160 657,156 657,164" fill="#10b981" />
+
+      <!-- Stage 4: SOC Alert & Action -->
+      <g transform="translate(665, 20)">
+        <rect x="0" y="0" width="170" height="280" rx="8" class="diag-box diag-box-rose" />
+        <rect x="12" y="12" width="146" height="26" rx="4" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" />
+        <text x="85" y="29" text-anchor="middle" font-size="11px" font-weight="700" fill="#ef4444">STAGE 4: SOC TRIAGE</text>
+
+        <g transform="translate(12, 50)">
+          <rect x="0" y="0" width="146" height="64" rx="4" class="diag-box diag-box-banner" />
+          <text x="73" y="22" text-anchor="middle" font-size="10px" font-weight="700" fill="#ef4444">High-Severity Alert</text>
+          <text x="73" y="38" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">แจ้งเตือนบนหน้าจอ SOC</text>
+          <text x="73" y="52" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">จัดลำดับความเร่งด่วน</text>
+
+          <rect x="0" y="76" width="146" height="64" rx="4" class="diag-box diag-box-banner" />
+          <text x="73" y="96" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--text)">Incident Ticket</text>
+          <text x="73" y="112" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">เปิดใบสั่งงานสอบสวน</text>
+          <text x="73" y="126" text-anchor="middle" font-size="8px" fill="var(--text-secondary)">มอบหมายให้ Tier 1 Analyst</text>
+
+          <rect x="0" y="152" width="146" height="52" rx="4" class="diag-box diag-box-banner" />
+          <text x="73" y="172" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--blue, #3b82f6)">SOAR Automation</text>
+          <text x="73" y="188" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">สั่งตัดเครื่องออกจากเครือข่าย</text>
+        </g>
+      </g>
+
+      <!-- Bottom Benchmark Banner -->
+      <g transform="translate(25, 315)">
+        <rect x="0" y="0" width="810" height="26" rx="4" class="diag-box diag-box-banner" />
+        <text x="405" y="17" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">EXAM TAKEAWAY: Logging is Passive Recording &bull; SIEM is Active Correlation across Disparate Sources &bull; NTP is Essential</text>
+      </g>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="SIEM Telemetry Pipeline Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">S1</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">1. TELEMETRY SOURCES (แหล่งกำเนิดบันทึกเหตุการณ์)</h5>
+            <span class="reading-mob-tier-action">Firewall &bull; Active Directory &bull; EDR &bull; Cloud</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">รวบรวม Log จากหลากหลายอุปกรณ์ทั่วทั้งองค์กร เช่น ไฟร์วอลล์ (Traffic), Windows Active Directory (การพิสูจน์ตัวตน), Endpoint EDR (การรันโปรเซส), และ Cloud Audit Trails (API Calls)</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-scorecard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">S2</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">2. INGESTION, PARSING &amp; NTP SYNC</h5>
+            <span class="reading-mob-tier-action">Normalization &bull; UTC Clock Synchronization</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">แปลงข้อมูล Log หลากหลายรูปแบบให้อยู่ในมาตรฐานเดียวกัน (CEF) และต้องมี <strong>NTP (Network Time Protocol)</strong> ซิงค์เวลาของทุกระบบให้ตรงกันในมาตรฐาน UTC เพื่อให้สามารถเรียงลำดับไทม์ไลน์การโจมตีได้อย่างถูกต้อง</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kri">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">S3</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">3. SIEM CORRELATION ENGINE (เครื่องมือจับคู่ความสัมพันธ์)</h5>
+            <span class="reading-mob-tier-action">Rule Matching &bull; Anomaly Detection</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">หัวใจของ SIEM คือการนำเหตุการณ์ที่ดูปกติในแต่ละระบบมาเชื่อมโยงกัน เช่น ล็อกอินล้มเหลว 5 ครั้งบนเครื่องลูกข่าย + การล็อกอินสิทธิ์แอดมินสำเร็จบนเซิร์ฟเวอร์ + การเชื่อมต่อไปยังไอพีต่างประเทศ เกิดขึ้นต่อเนื่องกันใน 10 วินาที</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-dashboard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">S4</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">4. SOC TRIAGE &amp; INCIDENT ESCALATION</h5>
+            <span class="reading-mob-tier-action">Alert Dashboard &bull; Ticket &bull; SOAR Playbook</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">สร้างการแจ้งเตือนระดับสูงบน Dashboard ของทีม SOC เปิด Incident Ticket ให้เจ้าหน้าที่สอบสวน และสามารถสั่งการอัตโนมัติผ่าน SOAR เพื่อกักกันเครื่องที่ติดมัลแวร์ได้ทันที</p>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+
+  // 5.5.1 Purple Team Collaborative Continuous Loop
+  purpleTeamLoop: `
+<div class="reading-diagram-card reading-purple-team" data-diagram="purpleTeamLoop" role="region" aria-label="Purple Team Continuous Collaborative Validation Cycle">
+  <div class="reading-diagram-header">
+    <span class="reading-diagram-tag">Security Testing</span>
+    <h4 class="reading-diagram-title">Purple Team Collaborative Security Validation Cycle</h4>
+  </div>
+  <div class="reading-diagram-svg-wrap reading-diag-desktop">
+    <svg viewBox="0 0 860 300" class="reading-diagram-svg" aria-label="Cyclical collaboration showing Red Team offensive emulation, Purple Team debrief, and Blue Team defensive hardening" role="img">
+      <!-- 3 Core Teaming Pillars -->
+      <!-- Red Team -->
+      <g transform="translate(40, 25)">
+        <rect x="0" y="0" width="220" height="210" rx="8" class="diag-box diag-box-rose" />
+        <rect x="15" y="15" width="190" height="26" rx="4" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" stroke-width="1" />
+        <text x="110" y="32" text-anchor="middle" font-size="12px" font-weight="700" fill="#ef4444">RED TEAM (OFFENSIVE)</text>
+
+        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Core Role: ผู้โจมตีจำลอง</text>
+        <text x="20" y="88" font-size="10.5px" fill="var(--text-secondary)">&bull; Adversary Emulation</text>
+        <text x="20" y="106" font-size="10.5px" fill="var(--text-secondary)">&bull; Execute MITRE ATT&amp;CK TTPs</text>
+        <text x="20" y="124" font-size="10.5px" fill="var(--text-secondary)">&bull; Test Real-World Defenses</text>
+
+        <rect x="15" y="150" width="190" height="42" rx="4" class="diag-box diag-box-banner" />
+        <text x="110" y="168" text-anchor="middle" font-size="10px" font-weight="700" fill="#ef4444">GOAL: FIND DEFENSE BLINDSPOTS</text>
+        <text x="110" y="182" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">ชี้เป้าจุดที่ระบบตรวจจับไม่พบ</text>
+      </g>
+
+      <!-- Arrow Red -> Purple -->
+      <line x1="260" y1="130" x2="310" y2="130" stroke="#a855f7" stroke-width="2.5" />
+      <polygon points="316,130 306,125 306,135" fill="#a855f7" />
+      <text x="288" y="120" text-anchor="middle" font-size="10px" font-weight="700" fill="#a855f7">Attacks</text>
+
+      <!-- Purple Team (Collaborative Bridge) -->
+      <g transform="translate(320, 15)">
+        <rect x="0" y="0" width="220" height="230" rx="8" fill="rgba(168, 85, 247, 0.10)" stroke="#a855f7" stroke-width="2" />
+        <rect x="15" y="15" width="190" height="28" rx="4" fill="rgba(168, 85, 247, 0.2)" stroke="#a855f7" />
+        <text x="110" y="34" text-anchor="middle" font-size="12px" font-weight="700" fill="#a855f7">PURPLE TEAM (COLLABORATIVE)</text>
+
+        <text x="20" y="70" font-size="11px" font-weight="700" fill="var(--text)">Joint Facilitation: ประสานร่วม</text>
+        <text x="20" y="90" font-size="10.5px" fill="var(--text-secondary)">&bull; Joint Debrief &amp; Walkthrough</text>
+        <text x="20" y="108" font-size="10.5px" fill="var(--text-secondary)">&bull; Telemetry Visibility Verification</text>
+        <text x="20" y="126" font-size="10.5px" fill="var(--text-secondary)">&bull; Gap Analysis &amp; Action Plan</text>
+
+        <rect x="15" y="158" width="190" height="48" rx="4" class="diag-box diag-box-banner" />
+        <text x="110" y="176" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#a855f7">MAXIMIZE VALUE</text>
+        <text x="110" y="194" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">ไม่ใช่ทีมที่สามถาวร แต่เป็นแนวทางปฏิบัติ</text>
+      </g>
+
+      <!-- Arrow Purple -> Blue -->
+      <line x1="540" y1="130" x2="590" y2="130" stroke="#a855f7" stroke-width="2.5" />
+      <polygon points="596,130 586,125 586,135" fill="#a855f7" />
+      <text x="568" y="120" text-anchor="middle" font-size="10px" font-weight="700" fill="#a855f7">Insights</text>
+
+      <!-- Blue Team -->
+      <g transform="translate(600, 25)">
+        <rect x="0" y="0" width="220" height="210" rx="8" class="diag-box diag-box-blue" />
+        <rect x="15" y="15" width="190" height="26" rx="4" fill="rgba(59, 130, 246, 0.15)" stroke="var(--blue, #3b82f6)" stroke-width="1" />
+        <text x="110" y="32" text-anchor="middle" font-size="12px" font-weight="700" fill="var(--blue, #3b82f6)">BLUE TEAM (DEFENSIVE)</text>
+
+        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Core Role: ผู้พิทักษ์ระบบ</text>
+        <text x="20" y="88" font-size="10.5px" fill="var(--text-secondary)">&bull; Security Operations &amp; SIEM</text>
+        <text x="20" y="106" font-size="10.5px" fill="var(--text-secondary)">&bull; Tune Detection Rules</text>
+        <text x="20" y="124" font-size="10.5px" fill="var(--text-secondary)">&bull; Incident Response &amp; Patching</text>
+
+        <rect x="15" y="150" width="190" height="42" rx="4" class="diag-box diag-box-banner" />
+        <text x="110" y="168" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--blue, #3b82f6)">GOAL: HARDEN DEFENSIVE POSTURE</text>
+        <text x="110" y="182" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">ปิดช่องโหว่และเพิ่มการตรวจจับ</text>
+      </g>
+
+      <!-- Feedback Loop Arrow (Blue -> Red) -->
+      <path d="M 710 235 L 710 265 L 150 265 L 150 235" fill="none" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" stroke-dasharray="4,4" />
+      <polygon points="150,230 146,238 154,238" fill="var(--diag-connector, #64748b)" />
+      <text x="430" y="280" text-anchor="middle" font-size="10.5px" font-weight="600" fill="var(--text-secondary)">CONTINUOUS VALIDATION LOOP: Retest and Verify Defensive Improvements</text>
+    </svg>
+  </div>
+  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Purple Team Loop Mobile Stack">
+    <div class="reading-mob-stack-list">
+      <div class="reading-mob-tier-card reading-tier-kri">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">RED</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">RED TEAM (Offensive Security)</h5>
+            <span class="reading-mob-tier-action">Adversary Emulation &bull; Real-World Attacks</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">จำลองพฤติกรรมของผู้โจมตีจริง (Adversary Emulation) ทดสอบเจาะระบบและรัน TTPs ตามกรอบ MITRE ATT&amp;CK เพื่อค้นหาช่องโหว่และจุดบอดในการตรวจจับ</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-dashboard">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">PURPLE</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">PURPLE TEAMING (Collaborative Loop)</h5>
+            <span class="reading-mob-tier-action">Knowledge Transfer &bull; Gap Remediation</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ไม่ใช่ทีมประจำที่สามแยกต่างหาก แต่เป็น <strong>กรอบการทำงานร่วมกันระหว่าง Red Team และ Blue Team</strong> เพื่อร่วมกันทบทวนว่าการโจมตีแต่ละขั้นสร้าง Log ในระบบหรือไม่ และปรับจูนการตรวจจับร่วมกันทันที</p>
+      </div>
+
+      <div class="reading-mob-tier-card reading-tier-kpi">
+        <div class="reading-mob-tier-head">
+          <span class="reading-mob-tier-num">BLUE</span>
+          <div class="reading-mob-tier-info">
+            <h5 class="reading-mob-tier-name">BLUE TEAM (Defensive Security)</h5>
+            <span class="reading-mob-tier-action">Monitoring &bull; Detection Tuning &bull; Hardening</span>
+          </div>
+        </div>
+        <p class="reading-mob-tier-desc">ฝ่ายตั้งรับความปลอดภัย ดูแลระบบ SIEM, EDR, และไฟร์วอลล์ นำข้อค้นพบจาก Purple Team มาเขียนกฎตรวจจับใหม่ (Correlation Rules) และอัปเดตมาตรการควบคุมเพื่อปิดช่องว่างอย่างเป็นระบบ</p>
       </div>
     </div>
   </div>

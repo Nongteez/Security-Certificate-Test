@@ -26,7 +26,7 @@ import {
   renderControlCategorySection
 } from './content-components.js';
 
-const VALID_HTML_TAG_REGEX = /^<\/?(?:section|div|svg|g|path|circle|rect|line|polyline|polygon|text|aside|header|footer|main|article|p|span|strong|em|b|i|br|small|h[1-6]|ul|ol|li|table|thead|tbody|tfoot|tr|th|td|blockquote|pre|code)(?:\s+[^>]*)?>/i;
+const VALID_HTML_TAG_REGEX = /^<\/?(?:section|div|svg|g|path|circle|rect|line|polyline|polygon|text|aside|header|footer|main|article|p|span|strong|em|b|i|br|small|h[1-6]|ul|ol|li|table|thead|tbody|tfoot|tr|th|td|blockquote|pre|code|figure|figcaption|img|picture|a)(?:\s+[^>]*)?>/i;
 
 function escapeHtml(text) {
   if (!text) return '';
@@ -68,7 +68,7 @@ export function parseInline(text) {
   const safeTags = [];
   html = html.replace(/<\/?([a-zA-Z0-9\-]+)(?:\s+[^>]*)?>/gi, (tag, tagName) => {
     const lower = tagName.toLowerCase();
-    if (/^(section|div|svg|g|path|circle|rect|line|polyline|polygon|text|aside|header|footer|main|article|p|span|strong|em|b|i|br|small|var|kbd|code|pre|h[1-6]|ul|ol|li|table|thead|tbody|tfoot|tr|th|td|blockquote|a)$/.test(lower)) {
+    if (/^(section|div|svg|g|path|circle|rect|line|polyline|polygon|text|aside|header|footer|main|article|p|span|strong|em|b|i|br|small|var|kbd|code|pre|h[1-6]|ul|ol|li|table|thead|tbody|tfoot|tr|th|td|blockquote|a|figure|figcaption|img|picture)$/.test(lower)) {
       const placeholder = `__SAFE_TAG_${safeTags.length}__`;
       safeTags.push(tag);
       return placeholder;
@@ -495,7 +495,7 @@ export function parseMarkdown(markdown) {
         let tableHtml = `<div class="${wrapperClass}"${dataAttr} role="region" tabindex="0" aria-label="${tableLabel}"><table class="${tableClass}"${dataAttr}><thead><tr>`;
         headerCells.forEach((th, thIdx) => {
           const colClass = (isGrcFrameworksTable && thIdx === 3) ? ' class="reading-col-exam-keyword"' : '';
-          tableHtml += `<th scope="col"${colClass}>${th}</th>`;
+          tableHtml += `<th scope="col"${colClass}>${parseInline(th)}</th>`;
         });
         tableHtml += '</tr></thead><tbody>';
         bodyRows.forEach(row => {

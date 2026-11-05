@@ -1,0 +1,64 @@
+{
+  "verifiedDate": "2026-11-04",
+  "timezone": "Asia/Bangkok",
+  "findings": [
+    {
+      "id": "ACC-D2-01",
+      "decision": "APPROVE WITH REVISION",
+      "objective": "2.2",
+      "anchor": "topic-2-2-rto-rpo",
+      "dependencies": [],
+      "reference": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf",
+        "publication": "NIST SP 800-34 Revision 1, May 2010",
+        "location": "Section 3.2.1, printed pp.16–17, PDF pages 29–30 (zero-based); downtime definitions and additional reprocessing time",
+        "verifiedConclusion": "MTD expresses accepted business-process downtime and impact tolerance. RTO normally leaves room for additional recovery work. The guide does not make every exceedance proof of organizational non-survival or require every recovery activity to be sequential."
+      },
+      "implementation": "Preserve the inequality as an explicitly simplified planning model with IT-readiness and business-resumption endpoints; acknowledge possible overlap in real activities. Replace categorical failure with business-tolerance and plan-review wording. Label the existing backup point as assumed recoverable and the restoration time as a target rather than measured completion.",
+      "preserved": "Original RTO/RPO/WRT definitions, existing conditional MTD definition, 16:30/17:00/18:00 case, all values/units, RTO/RPO timeline geometry/labels and scenario answers.",
+      "scopeBoundary": "The inequality is course notation, not an attributed universal NIST equation. No new numerical values, backup cadence guarantee or new recovery example."
+    },
+    {
+      "id": "ACC-D2-02",
+      "decision": "APPROVE",
+      "objective": "2.4",
+      "anchor": "topic-2-4-memory-aid",
+      "dependencies": [],
+      "reference": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-55v1.pdf",
+        "publication": "NIST SP 800-55 Volume 1, December 2024",
+        "location": "Section 3.1.1 printed pp.12–14 (scope, formulas, numeric measures, time-based references/reporting frequency); sections 3.3.1–3.3.4 printed pp.17–18 (measure types)",
+        "verifiedConclusion": "Measures include calculated values, percentages and timeliness measures; their scope, calculation and collection/reporting timing need definition. The source does not support treating every dashboard as real time."
+      },
+      "implementation": "Change exactly two existing desktop SVG text nodes and two corresponding mobile paragraphs; replace raw-only wording with defined measurable value, and qualify dashboard refresh timing. Add a concise bilingual freshness note and reconcile only the matching table row and review distinction.",
+      "preserved": "All SVG attributes, geometry, relationships, icons and other templates; remaining mobile text, existing metric/KPI/KRI definitions, all scenarios/data, all scorecard values.",
+      "scopeBoundary": "No replacement measurement hierarchy or fixed refresh interval. A real-time dashboard explicitly requested in scenario 12 remains a valid contextual example, not a universal definition."
+    }
+  ],
+  "outline": {
+    "url": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+    "effectiveDate": "2026-09-01",
+    "location": "2.2 redundancy (BC/DR); 2.4 effectiveness (metrics/KRI, dashboards, scorecards and reports)",
+    "boundary": "Objective mapping and foundational depth only; not evidence of specific exam questions, timing formulas or memorization requirements."
+  },
+  "originalSources": {
+    "requestedDirectory": "C:/Users/Settapon.cs/OneDrive/Desktop/Project/Security-Certificate-Test/ISC2 Update 2026/Domain 2",
+    "requestedDirectoryAvailable": false,
+    "usedDirectory": "D:/_Coding/SEC-CERT-TEST/ISC2 Update 2026/Domain 2",
+    "transcript": {"path": "DOMAIN 2.txt", "segments": "Recovery definitions/backups, security measurement/metrics, dashboards and exam memory aid; existing source context retained, not treated as independent standards authority."},
+    "nativeImagesViewed": [
+      {"path": "Screenshot 2026-09-20 183410.png", "observed": "RTO/RPO, backup/recovery strategies and testing; supports retaining the instructional context."},
+      {"path": "Screenshot 2026-09-20 222340.png", "observed": "Metric definition, counts, percentage patched, mean time to detect/respond; contradicts raw-only simplification."},
+      {"path": "Screenshot 2026-09-20 223200.png", "observed": "KPI percentage example; preserve metric/calculated-value distinction."},
+      {"path": "Screenshot 2026-09-20 223320.png", "observed": "Dashboard definition and visual formats; does not require universal real-time data."}
+    ],
+    "phase2LocatorCorrection": "The reviewed finding cites metric screenshot 223240, which does not exist in this accessible corpus. The original image manifest identifies metric slide 222340; it was located and viewed natively. Historical Phase 2 records are preserved unchanged.",
+    "unavailableSupplementalReference": {"urls": ["https://www.cisa.gov/stopransomware/ransomware-guide", "https://www.cisa.gov/sites/default/files/2023-10/StopRansomware-Guide-508C-v3_1.pdf"], "result": "Direct web fetch returned 403. Official indexed search excerpts corroborate backup testing, but no material correction depends on inaccessible full-text CISA content; directly inspected NIST guidance supplies the academic support."}
+  },
+  "consistencyReview": {
+    "timeline": "Latest recoverable backup at 16:30 is a legitimate assumed observation coinciding with the example RPO boundary. Adjacent bilingual note distinguishes that assumption from a guarantee. All timeline labels remain unchanged.",
+    "summaries": "One directly matching dashboard distinction was qualified. Correct RTO/RPO summaries and memory cues retained.",
+    "scenarios": "All twelve Markdown scenarios and reusable data remain unchanged. Scenario 12 intentionally requests a real-time SOC view; such a configuration is possible and does not assert every dashboard is real time.",
+    "heldScorecard": "VER-D2-01 is HOLD and excluded from D2-A. Critical-vulnerability row values/units remain untouched; no guessed correction."
+  }
+}

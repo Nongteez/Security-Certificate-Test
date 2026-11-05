@@ -1,0 +1,89 @@
+--- entry/content/isc2-cc-2026/reading/domain-2.md
++++ after/content/isc2-cc-2026/reading/domain-2.md
+@@ -228,6 +228,8 @@
+ 
+ ในการวางแผนกู้คืนระบบ IT องค์กรต้องกำหนดเป้าหมายเชิงเวลา 2 ตัวชี้วัดสำคัญ:
+ 
++**สมมติฐานของภาพ (Illustrative assumptions):** ภาพสมมติว่ามีจุดสำรองที่กู้คืนได้เวลา 16:30 น. และเกิดเหตุเวลา 17:00 น.; จุดสำรองนี้ตรงกับขอบเขต RPO 30 นาทีในตัวอย่าง ส่วน 18:00 น. เป็นเป้าหมาย RTO 1 ชั่วโมง ไม่ใช่ผลกู้คืนที่ทดสอบแล้ว / The illustration assumes a recoverable 16:30 backup and a 17:00 outage. That backup coincides with the example’s 30-minute RPO boundary; 18:00 is the one-hour RTO target, not a tested recovery outcome.
++
+ <div class="reading-semantic-diagram" data-diagram="rtoRpoTimeline"></div>
+ 
+ <section class="reading-concept-unit">
+@@ -254,9 +256,10 @@
+ 
+ - **Work Recovery Time (WRT — เวลาฟื้นฟูระบบงาน):** คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ
+ - **Maximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้):** คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)
+-- **สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:**
++- **แบบจำลองวางแผนอย่างง่าย (Simplified planning model):**
+   **MTD &ge; RTO + WRT**
+-  *(หาก RTO + WRT &gt; MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)*
++  ในแบบจำลองนี้ RTO นับจากเริ่มหยุดชะงักจนระบบ IT พร้อมใช้งาน แล้ว WRT นับต่อจนธุรกิจกลับมาดำเนินงาน โดยสมมติให้สองช่วงไม่ซ้อนทับกัน; กิจกรรมจริงอาจซ้อนทับกันได้ / Here, RTO runs from disruption to IT readiness, followed by WRT until business resumes. The model assumes non-overlapping intervals; actual activities may overlap.
++  *หากผลรวมเกิน MTD แผนนี้จัดสรรเวลาเกินช่วงหยุดชะงักที่ธุรกิจยอมรับ ต้องทบทวนแผน; การหยุดชะงักจริงเกิน MTD ไม่ได้หมายความว่าองค์กรจะอยู่รอดไม่ได้เสมอไป / If the sum exceeds MTD, the plan exceeds the business downtime tolerance and needs review. An actual outage beyond MTD does not inevitably mean organizational failure.*
+ </section>
+ 
+ <div class="reading-callout tip">
+@@ -556,6 +559,8 @@
+ 
+ Metric อาจเป็นจำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย KPI และ KRI เป็น Metric ที่เลือกใช้ตามวัตถุประสงค์: KPI ติดตามผลงานเทียบเป้าหมาย ส่วน KRI เฝ้าระวังแนวโน้มความเสี่ยง Dashboard, scorecard และ report เป็นรูปแบบนำเสนอที่อาจใช้ร่วมกันได้ ภาพต่อไปนี้เป็นตัวอย่างการจัดระบบการวัดผล ไม่ใช่ลำดับขั้นที่ทุกองค์กรต้องใช้
+ 
++**รอบอัปเดต (Refresh cadence):** Dashboard อาจอัปเดตเป็นระยะหรือใกล้เวลาจริง ขึ้นอยู่กับการเก็บข้อมูลและการรายงาน ควรตรวจเวลาอัปเดตของข้อมูล / A dashboard may refresh periodically or near real time, depending on data collection and reporting; check when its data was updated.
++
+ <div class="reading-semantic-diagram" data-diagram="effectivenessHierarchy"></div>
+ 
+ <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ตารางสรุปคำสำคัญสำหรับวิเคราะห์โจทย์สอบ (Exam Keyword Trigger Matrix):</p>
+@@ -565,7 +570,7 @@
+ | **Metric** | "Defined measurable value", "Count, percentage, ratio or average" | ค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์ | จำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found) |
+ | **KPI** | "Performance target", "Progress toward goal", "Success rate" | ประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย | ร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance) |
+ | **KRI** | "Early warning", "Escalating risk", "Threshold exceed" | ส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้ | จำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (&gt; 0 บัญชี) |
+-| **Dashboard** | "Real-time", "Operational view", "Visual representation" | แสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน | หน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์ |
++| **Dashboard** | "Refresh cadence varies", "Operational view", "Visual representation" | แสดงภาพรวมผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน โดยความสดของข้อมูลขึ้นกับรอบอัปเดต (Data freshness depends on refresh cadence) | ตัวอย่างหน้าจอ SOC ที่ตั้งค่าให้อัปเดตใกล้เวลาจริง (Illustrative near-real-time SOC view) |
+ | **Scorecard** | "Compare actual vs. target", "Periodic benchmark", "Gaps" | สรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง | ตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน |
+ | **Report** | "Formal documentation", "Recommended actions", "Executive summary" | เอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร | เอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร |
+ 
+@@ -741,7 +746,7 @@
+     <div class="reading-distinction-body">
+       <div class="reading-distinction-point">
+         <strong class="reading-distinction-term">Dashboard</strong>
+-        <div class="reading-distinction-desc">Visualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time</div>
++        <div class="reading-distinction-desc">Visualize — นำเสนอภาพรวมและแนวโน้มตามรอบอัปเดต (Periodic / near-real-time)</div>
+       </div>
+       <div class="reading-distinction-point">
+         <strong class="reading-distinction-term">Scorecard</strong>
+--- entry/js/core/diagram-generator.js
++++ after/js/core/diagram-generator.js
+@@ -1713,7 +1713,7 @@
+         <text x="92" y="134" class="diag-step-num">04</text>
+         <text x="124" y="134" class="diag-text-title">DASHBOARD</text>
+         <text x="226" y="134" class="diag-text-action">VISUALIZE</text>
+-        <text x="56" y="158" class="diag-text-sub">ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์</text>
++        <text x="56" y="158" class="diag-text-sub">ภาพรวมตามรอบอัปเดต (Refresh cadence)</text>
+         <text x="56" y="175" class="diag-text-sub">แสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน</text>
+       </g>
+ 
+@@ -1772,7 +1772,7 @@
+         <text x="96" y="336" class="diag-step-num">01</text>
+         <text x="130" y="336" class="diag-text-title">METRIC</text>
+         <text x="200" y="336" class="diag-text-action">MEASURE &middot; FOUNDATION</text>
+-        <text x="130" y="358" class="diag-text-sub">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ</text>
++        <text x="130" y="358" class="diag-text-sub">ค่าที่กำหนดและวัดได้ (Defined measurable value)</text>
+         <text x="130" y="374" class="diag-text-sub">คุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</text>
+       </g>
+     </svg>
+@@ -1798,7 +1798,7 @@
+             <span class="reading-mob-tier-action">VISUALIZE &amp; COMPARE</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc"><strong>Dashboard:</strong> แสดงผลกราฟิกแบบ Real-time &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>
++        <p class="reading-mob-tier-desc"><strong>Dashboard:</strong> แสดงผลกราฟิกตามรอบอัปเดต (Periodic / near-real-time) &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>
+       </div>
+ 
+       <div class="reading-mob-tier-card reading-tier-kri">
+@@ -1820,7 +1820,7 @@
+             <span class="reading-mob-tier-action">MEASURE &middot; FOUNDATION</span>
+           </div>
+         </div>
+-        <p class="reading-mob-tier-desc">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>
++        <p class="reading-mob-tier-desc">ค่าที่กำหนดและวัดได้ (Defined measurable value): จำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย (count, percentage, ratio or average) &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>
+       </div>
+     </div>
+   </div>

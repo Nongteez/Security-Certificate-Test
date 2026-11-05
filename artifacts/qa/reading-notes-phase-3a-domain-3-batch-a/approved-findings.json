@@ -1,0 +1,261 @@
+{
+  "batch": {
+    "id": "D3-A",
+    "title": "Mover policy and access lifecycle",
+    "domain": 3,
+    "findingIds": [
+      "ACC-D3-01",
+      "ENR-D3-02",
+      "ENR-D3-03",
+      "ENR-D3-04"
+    ],
+    "estimatedEffort": "2–3 hours",
+    "gate": "Requires explicit human authorization for named IDs; APPROVE WITH REVISION text must be incorporated, not bypassed.",
+    "acceptanceCriteria": [
+      "Source-aligned minimal change; retain useful existing examples and anchors.",
+      "EN/TH semantic parity; check repeated summaries and affected diagram labels.",
+      "For media: static text equivalent, non-color labels, readable 360–390px layout and no clipping; test keyboard/reduced-motion only if an interaction is separately approved.",
+      "Run targeted content integrity/render checks in future implementation; no production checks are represented as executed in this review."
+    ]
+  },
+  "findings": [
+    {
+      "id": "ACC-D3-01",
+      "domain": 3,
+      "officialObjective": "3.1",
+      "category": "Academic correction",
+      "auditClassification": "CORRECT ACADEMIC ERROR",
+      "decision": "APPROVE WITH REVISION",
+      "currentLearnerExperience": "The mover case uses Domain Admin for Helpdesk and mandates removal of all old rights before every new grant.",
+      "genuineGap": "Universal removal order and automatic SoD violation are not established; the privileged grant may be an intentionally bad example.",
+      "smallestUsefulChange": "Use task-scoped helpdesk rights, or explicitly label Domain Admin excessive under the example policy. Remove obsolete/conflicting rights, retain justified common rights and verify the controlled transition.",
+      "sample": {
+        "en": "After the transfer, retain justified common access, remove obsolete Finance rights and grant only the approved Helpdesk tasks.",
+        "th": "เมื่อย้ายงาน ให้คงสิทธิ์ส่วนกลางที่ยังจำเป็น ถอนสิทธิ์ Finance ที่หมดความจำเป็น และให้เฉพาะงาน Helpdesk ที่ได้รับอนุมัติ"
+      },
+      "reason": "AC-6 and PS-5 support justified task access and policy-defined transitions. Do not recast every combined permission set as an SoD violation.",
+      "academicConstraints": "State the example policy; distinguish an insecure scenario from a recommendation to grant Domain Admin.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-3.md",
+          "anchor": "topic-3-1-jml-lifecycle",
+          "startLine": 9,
+          "endLine": 54
+        }
+      ],
+      "supportingSources": [
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf — AC-6 and PS-5",
+        "Domain 3 D3 Example.md:86–94; screenshot 040655 shows review after transfer, not universal revoke-all ordering",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf — AC-6 pp.36–38; PS-5 p.225 (PDF pages 63–65 and 252)"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P0",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Use task-scoped helpdesk rights, or explicitly label Domain Admin excessive under the example policy. Remove obsolete/conflicting rights, retain justified common rights and verify the controlled transition.",
+        "State the example policy; distinguish an insecure scenario from a recommendation to grant Domain Admin."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ACC-D3-01",
+        "phase1Record": "ACC-D3-01"
+      },
+      "reportedAcademicEvidence": {
+        "id": "ACC-D3-01",
+        "domain": 3,
+        "anchor": "topic-3-1-jml-lifecycle",
+        "readingPath": "content/isc2-cc-2026/reading/domain-3.md",
+        "startLine": 35,
+        "endLine": 35,
+        "currentClaim": "  <strong>กรณีศึกษาข้อสอบ (Finance-to-IT Transfer):</strong> นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง <strong>Privilege Creep</strong> และละเมิดหลักการ <strong>Segregation of Duties (SoD)</strong> อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+        "localSource": "Domain 3 D3 Example.md:86–94; screenshot 040655 shows review after transfer, not universal revoke-all ordering",
+        "authorityUrl": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+        "authorityLocation": "AC-6 pp.36–38; PS-5 p.225 (PDF pages 63–65 and 252)",
+        "conclusion": "Replace Domain Admin with approved delegated helpdesk rights; retain justified shared access, revoke obsolete/conflicting rights, verify resulting access. Transition timing is policy-dependent; simultaneous old/new rights do not automatically prove SoD violation.",
+        "smallestCorrection": "Replace Domain Admin with approved delegated helpdesk rights; retain justified shared access, revoke obsolete/conflicting rights, verify resulting access. Transition timing is policy-dependent; simultaneous old/new rights do not automatically prove SoD violation.",
+        "priority": "P0",
+        "confidence": "High",
+        "verificationStatus": "CONFIRMED",
+        "primaryClassification": "CORRECT ACADEMIC ERROR"
+      },
+      "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+      "exactCurrentClaim": {
+        "path": "content/isc2-cc-2026/reading/domain-3.md",
+        "startLine": 35,
+        "endLine": 35,
+        "text": "  <strong>กรณีศึกษาข้อสอบ (Finance-to-IT Transfer):</strong> นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง <strong>Privilege Creep</strong> และละเมิดหลักการ <strong>Segregation of Duties (SoD)</strong> อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ"
+      },
+      "authorityVerification": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+        "location": "AC-6 pp.36–38; PS-5 p.225 (PDF pages 63–65 and 252)",
+        "reviewConclusion": "AC-6 and PS-5 support justified task access and policy-defined transitions. Do not recast every combined permission set as an SoD violation."
+      },
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "batch": "D3-A"
+    },
+    {
+      "id": "ENR-D3-03",
+      "domain": 3,
+      "officialObjective": "3.1",
+      "category": "Explanation",
+      "auditClassification": "EXPAND EXPLANATION",
+      "decision": "APPROVE WITH REVISION",
+      "currentLearnerExperience": "Review findings include a departed-user orphan example and a repeated Finance mover case.",
+      "genuineGap": "Activity, ownership and applied revocation are different questions.",
+      "smallestUsefulChange": "Clarify that accounts with no accountable owner also need investigation, then distinguish decision, applied change and verification; avoid prescribing a universal definition or idle-day limit.",
+      "sample": {
+        "en": "Recent activity does not prove an account still has an accountable owner. After the review decision, apply the authorized change and verify effective access.",
+        "th": "การมีการใช้งานล่าสุดไม่ได้พิสูจน์ว่าบัญชียังมีผู้รับผิดชอบ หลังตัดสินใจทบทวน ต้องปรับตามอำนาจและตรวจสิทธิ์ที่ใช้งานได้จริง"
+      },
+      "reason": "The existing ownership matrix in the published lesson is a strong reuse source; add no new matrix.",
+      "academicConstraints": "Stay at the stated CC concept; label hypothetical conditions and avoid unconditional guarantees.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-3.md",
+          "anchor": "topic-3-1-access-review",
+          "startLine": 138,
+          "endLine": 192
+        }
+      ],
+      "supportingSources": [
+        "domain-3-4-review.md:52",
+        "content/isc2-cc-2026/reading/domain-3.md:138"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P1",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Clarify that accounts with no accountable owner also need investigation, then distinguish decision, applied change and verification; avoid prescribing a universal definition or idle-day limit.",
+        "Stay at the stated CC concept; label hypothetical conditions and avoid unconditional guarantees."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ENR-D3-03",
+        "phase1Record": "ENR-D3-03"
+      },
+      "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "batch": "D3-A"
+    },
+    {
+      "id": "ENR-D3-02",
+      "domain": 3,
+      "officialObjective": "3.1",
+      "category": "Practical example",
+      "auditClassification": "ADD PRACTICAL EXAMPLE",
+      "decision": "APPROVE",
+      "currentLearnerExperience": "Provisioning already requires role need and approval, then lists six illustrative activities.",
+      "genuineGap": "Approval and effective enforcement can still differ; there is no observed-versus-approved test result.",
+      "smallestUsefulChange": "Adapt the existing published three-action check as one compact comparison: report read allowed, payroll change denied, unrelated administration denied; correct the observed mismatch.",
+      "sample": {
+        "en": "Approved: read the report. Observed: payroll modification also succeeds. Correct the unintended grant and verify both allowed and denied actions again.",
+        "th": "สิทธิ์ที่อนุมัติคืออ่านรายงาน แต่ผลตรวจพบว่าแก้ Payroll ได้ด้วย ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำทั้งงานที่อนุญาตและงานที่ต้องปฏิเสธ"
+      },
+      "reason": "The example adds verification, not another onboarding sequence.",
+      "academicConstraints": "Use synthetic roles and explicitly approved actions; do not infer HR alone approves every resource permission.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-3.md",
+          "anchor": "topic-3-1-provisioning",
+          "startLine": 89,
+          "endLine": 137
+        }
+      ],
+      "supportingSources": [
+        "domain-3-4-review.md:51",
+        "content/isc2-cc-2026/reading/domain-3.md:89"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P1",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Adapt the existing published three-action check as one compact comparison: report read allowed, payroll change denied, unrelated administration denied; correct the observed mismatch.",
+        "Use synthetic roles and explicitly approved actions; do not infer HR alone approves every resource permission."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ENR-D3-02",
+        "phase1Record": "ENR-D3-02"
+      },
+      "recommendedMedia": "Short text example; use one compact record/table only when named in the required change. No new image.",
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "learningOutcome": "Approval and effective enforcement can still differ; there is no observed-versus-approved test result. Adapt the existing published three-action check as one compact comparison: report read allowed, payroll change denied, unrelated administration denied; correct the observed mismatch.",
+      "realismAndFit": "Synthetic bounded case in the listed subsection; state the case policy/assumptions, not a universal operational instruction.",
+      "batch": "D3-A"
+    },
+    {
+      "id": "ENR-D3-04",
+      "domain": 3,
+      "officialObjective": "3.1",
+      "category": "Practical example",
+      "auditClassification": "ADD PRACTICAL EXAMPLE",
+      "decision": "APPROVE",
+      "currentLearnerExperience": "The notes separately list central disable, app revocation and group/privileged removal, with a careful retention caveat.",
+      "genuineGap": "A concrete surviving session explains why these are separate actions.",
+      "smallestUsefulChange": "Adapt the published observed-session case and one denial check; no token/configuration tutorial.",
+      "sample": {
+        "en": "The central account is disabled, but an existing application session still works in this example. Use the supported revocation process and verify the application denies access.",
+        "th": "ในตัวอย่างนี้บัญชีกลางถูกระงับแล้ว แต่ Session เดิมในแอปยังใช้ได้ จึงต้องใช้กระบวนการเพิกถอนที่ระบบรองรับและตรวจว่าแอปปฏิเสธการเข้าถึง"
+      },
+      "reason": "A realistic bounded observation explains coordinated withdrawal without claiming every application behaves identically.",
+      "academicConstraints": "Stay at the stated CC concept; label hypothetical conditions and avoid unconditional guarantees.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-3.md",
+          "anchor": "topic-3-1-deprovisioning",
+          "startLine": 193,
+          "endLine": 263
+        }
+      ],
+      "supportingSources": [
+        "domain-3-4-review.md:53",
+        "content/isc2-cc-2026/reading/domain-3.md:193"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P1",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Adapt the published observed-session case and one denial check; no token/configuration tutorial.",
+        "Stay at the stated CC concept; label hypothetical conditions and avoid unconditional guarantees."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ENR-D3-04",
+        "phase1Record": "ENR-D3-04"
+      },
+      "recommendedMedia": "Short text example; use one compact record/table only when named in the required change. No new image.",
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "learningOutcome": "A concrete surviving session explains why these are separate actions. Adapt the published observed-session case and one denial check; no token/configuration tutorial.",
+      "realismAndFit": "Synthetic bounded case in the listed subsection; state the case policy/assumptions, not a universal operational instruction.",
+      "batch": "D3-A"
+    }
+  ]
+}

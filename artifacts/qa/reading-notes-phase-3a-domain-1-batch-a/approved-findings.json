@@ -1,0 +1,236 @@
+{
+  "batch": {
+    "id": "D1-A",
+    "title": "Privacy, ethics and control taxonomy",
+    "domain": 1,
+    "findingIds": [
+      "ACC-D1-01",
+      "VER-D1-01",
+      "ENR-D1-04"
+    ],
+    "estimatedEffort": "1.5–2.5 hours",
+    "gate": "Requires explicit human authorization for named IDs; APPROVE WITH REVISION text must be incorporated, not bypassed.",
+    "acceptanceCriteria": [
+      "Source-aligned minimal change; retain useful existing examples and anchors.",
+      "EN/TH semantic parity; check repeated summaries and affected diagram labels.",
+      "For media: static text equivalent, non-color labels, readable 360–390px layout and no clipping; test keyboard/reduced-motion only if an interaction is separately approved.",
+      "Run targeted content integrity/render checks in future implementation; no production checks are represented as executed in this review."
+    ]
+  },
+  "findings": [
+    {
+      "id": "ACC-D1-01",
+      "domain": 1,
+      "officialObjective": "1.1",
+      "category": "Academic correction",
+      "auditClassification": "CORRECT ACADEMIC ERROR",
+      "decision": "APPROVE WITH REVISION",
+      "currentLearnerExperience": "Privacy table contrasts encryption with consent and transparency; line 320 implies absent consent is enough to establish a violation.",
+      "genuineGap": "The lawful basis is unspecified; transparency and consent are different questions.",
+      "smallestUsefulChange": "Replace the blanket consent inference with an applicable-law/basis qualifier; retain the privacy-versus-confidentiality distinction.",
+      "sample": {
+        "en": "Encryption restricts access. Privacy also requires an appropriate purpose and lawful basis; consent is one possible basis under the GDPR.",
+        "th": "การเข้ารหัสจำกัดการเข้าถึง ส่วน Privacy ยังต้องพิจารณาวัตถุประสงค์และฐานกฎหมายที่เหมาะสม โดยความยินยอมเป็นฐานหนึ่งตาม GDPR"
+      },
+      "reason": "The EDPB directly supports the scope correction; it does not establish Thai retention periods or resolve every PDPA example.",
+      "academicConstraints": "Do not say all personal-data processing requires consent or that no-consent processing is automatically unlawful.",
+      "preserveExisting": "Keep the existing roles, inventory and qualified erasure explanation.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-1.md",
+          "anchor": "topic-1-1-privacy-data-protection",
+          "startLine": 251,
+          "endLine": 352
+        }
+      ],
+      "supportingSources": [
+        "https://www.edpb.europa.eu/topics/key-gdpr-concepts/legal-basis_en — General information",
+        "Domain 1 privacy screenshots 225943/231044; original treatment is broad, not a universal legal rule",
+        "https://www.edpb.europa.eu/topics/key-gdpr-concepts/legal-basis_en — Legal basis: six possible GDPR grounds"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P1",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Replace the blanket consent inference with an applicable-law/basis qualifier; retain the privacy-versus-confidentiality distinction.",
+        "Do not say all personal-data processing requires consent or that no-consent processing is automatically unlawful."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ACC-D1-01",
+        "phase1Record": "ACC-D1-01"
+      },
+      "reportedAcademicEvidence": {
+        "id": "ACC-D1-01",
+        "domain": 1,
+        "anchor": "topic-1-1-privacy-data-protection",
+        "readingPath": "content/isc2-cc-2026/reading/domain-1.md",
+        "startLine": 320,
+        "endLine": 320,
+        "currentClaim": "| **จุดลวงในข้อสอบ** | การเข้ารหัสข้อมูล (Encryption) ตอบสนอง Confidentiality แต่ *ไม่ได้แปลว่าปฏิบัติตาม Privacy ครบถ้วน* หากเก็บข้อมูลโดยไม่ได้รับความยินยอม! | ข้อสอบมักถามว่า \"การเก็บข้อมูลลูกค้าโดยเข้ารหัสอย่างดีแต่ไม่แจ้งวัตถุประสงค์ ผิดหลักการใด?\" คำตอบคือ **Privacy Violation** |",
+        "localSource": "Domain 1 privacy screenshots 225943/231044; original treatment is broad, not a universal legal rule",
+        "authorityUrl": "https://www.edpb.europa.eu/topics/key-gdpr-concepts/legal-basis_en",
+        "authorityLocation": "Legal basis: six possible GDPR grounds",
+        "conclusion": "Qualify the no-consent implication: establish the applicable lawful basis and transparency duties. Consent is one basis; this is not a jurisdiction-free compliance rule.",
+        "smallestCorrection": "Qualify the no-consent implication: establish the applicable lawful basis and transparency duties. Consent is one basis; this is not a jurisdiction-free compliance rule.",
+        "priority": "P1",
+        "confidence": "High",
+        "verificationStatus": "CONFIRMED",
+        "primaryClassification": "CORRECT ACADEMIC ERROR"
+      },
+      "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+      "exactCurrentClaim": {
+        "path": "content/isc2-cc-2026/reading/domain-1.md",
+        "startLine": 320,
+        "endLine": 320,
+        "text": "| **จุดลวงในข้อสอบ** | การเข้ารหัสข้อมูล (Encryption) ตอบสนอง Confidentiality แต่ *ไม่ได้แปลว่าปฏิบัติตาม Privacy ครบถ้วน* หากเก็บข้อมูลโดยไม่ได้รับความยินยอม! | ข้อสอบมักถามว่า \"การเก็บข้อมูลลูกค้าโดยเข้ารหัสอย่างดีแต่ไม่แจ้งวัตถุประสงค์ ผิดหลักการใด?\" คำตอบคือ **Privacy Violation** |"
+      },
+      "authorityVerification": {
+        "url": "https://www.edpb.europa.eu/topics/key-gdpr-concepts/legal-basis_en",
+        "location": "Legal basis: six possible GDPR grounds",
+        "reviewConclusion": "The EDPB directly supports the scope correction; it does not establish Thai retention periods or resolve every PDPA example."
+      },
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "batch": "D1-A"
+    },
+    {
+      "id": "VER-D1-01",
+      "domain": 1,
+      "officialObjective": "1.5",
+      "category": "Open lead",
+      "auditClassification": "REQUIRES VERIFICATION",
+      "decision": "APPROVE WITH REVISION",
+      "currentLearnerExperience": "Line 989 calls for judgment, while line 1057 gives an exceptionless exam conclusion.",
+      "genuineGap": "The internal contradiction and unsupported certainty are established; an official mechanical canon-conflict algorithm is not.",
+      "smallestUsefulChange": "Replace only the exceptionless/exam-certainty assertion with the existing professional-judgment principle and authorized escalation. Do not assert the opposite hierarchy.",
+      "sample": {
+        "en": "Protect public welfare, preserve relevant evidence and seek appropriate authorized guidance while considering the professional duties in context.",
+        "th": "คำนึงถึงสวัสดิภาพสาธารณะ เก็บรักษาหลักฐานที่เกี่ยวข้อง และขอคำแนะนำผ่านช่องทางที่มีอำนาจ โดยพิจารณาหน้าที่ทางวิชาชีพร่วมกับบริบท"
+      },
+      "reason": "The official Code explicitly requires judgment. No new priority algorithm or disclosure instruction is approved.",
+      "academicConstraints": "Keep the four canons; do not infer permission for public disclosure, illegal action or concealment.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-1.md",
+          "anchor": "topic-1-5-isc2-ethics",
+          "startLine": 977,
+          "endLine": 1059
+        }
+      ],
+      "supportingSources": [
+        "https://www.isc2.org/ethics — Code introduction and canons",
+        "Script - DOMAIN 1.txt ethics segment and screenshot 003325; compare existing caution at Reading line 989",
+        "https://www.isc2.org/ethics — Code of Ethics Canons; current page does not establish the claimed exceptionless conflict algorithm"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P1",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Replace only the exceptionless/exam-certainty assertion with the existing professional-judgment principle and authorized escalation. Do not assert the opposite hierarchy.",
+        "Keep the four canons; do not infer permission for public disclosure, illegal action or concealment."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#VER-D1-01",
+        "phase1Record": "VER-D1-01"
+      },
+      "reportedAcademicEvidence": {
+        "id": "VER-D1-01",
+        "domain": 1,
+        "anchor": "topic-1-5-isc2-ethics",
+        "readingPath": "content/isc2-cc-2026/reading/domain-1.md",
+        "startLine": 1057,
+        "endLine": 1057,
+        "currentClaim": "  <p><strong>ข้อสรุปเด็ดขาดสำหรับห้องสอบ:</strong> สมาชิก ISC2 ต้องยึดถือประโยชน์และความปลอดภัยของสังคมส่วนรวม (<strong>Canon 1</strong>) เป็นอันดับสูงสุดเสมอ และ <strong>Canon 1 อยู่เหนือผลประโยชน์ของนายจ้างหรือลูกค้า (Canon 3) อย่างไม่มีข้อยกเว้น</strong></p>",
+        "localSource": "Script - DOMAIN 1.txt ethics segment and screenshot 003325; compare existing caution at Reading line 989",
+        "authorityUrl": "https://www.isc2.org/ethics",
+        "authorityLocation": "Code of Ethics Canons; current page does not establish the claimed exceptionless conflict algorithm",
+        "conclusion": "Internal contradiction confirmed; the external claim of an exceptionless universal hierarchy is not established by the inspected page. Remove unsupported exam certainty or obtain explicit official guidance. Do not infer that canon ordering is prohibited.",
+        "smallestCorrection": "Internal contradiction confirmed; the external claim of an exceptionless universal hierarchy is not established by the inspected page. Remove unsupported exam certainty or obtain explicit official guidance. Do not infer that canon ordering is prohibited.",
+        "priority": "P1",
+        "confidence": "Unresolved",
+        "verificationStatus": "REQUIRES VERIFICATION",
+        "primaryClassification": "REQUIRES VERIFICATION"
+      },
+      "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+      "exactCurrentClaim": {
+        "path": "content/isc2-cc-2026/reading/domain-1.md",
+        "startLine": 1057,
+        "endLine": 1057,
+        "text": "  <p><strong>ข้อสรุปเด็ดขาดสำหรับห้องสอบ:</strong> สมาชิก ISC2 ต้องยึดถือประโยชน์และความปลอดภัยของสังคมส่วนรวม (<strong>Canon 1</strong>) เป็นอันดับสูงสุดเสมอ และ <strong>Canon 1 อยู่เหนือผลประโยชน์ของนายจ้างหรือลูกค้า (Canon 3) อย่างไม่มีข้อยกเว้น</strong></p>"
+      },
+      "authorityVerification": {
+        "url": "https://www.isc2.org/ethics",
+        "location": "Code of Ethics Canons; current page does not establish the claimed exceptionless conflict algorithm",
+        "reviewConclusion": "The official Code explicitly requires judgment. No new priority algorithm or disclosure instruction is approved."
+      },
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "batch": "D1-A"
+    },
+    {
+      "id": "ENR-D1-04",
+      "domain": 1,
+      "officialObjective": "1.4",
+      "category": "Explanation",
+      "auditClassification": "EXPAND EXPLANATION",
+      "decision": "APPROVE",
+      "currentLearnerExperience": "The course lists Technical, Managerial, Operational and Physical without relating its labels to official category wording.",
+      "genuineGap": "Learners need one taxonomy note, not replacement definitions.",
+      "smallestUsefulChange": "Add a short note relating the course subdivision to the outline Technical/Administrative/Physical vocabulary.",
+      "sample": {
+        "en": "The outline names technical, administrative and physical controls; this course also separates managerial and operational activities for explanation.",
+        "th": "โครงร่างสอบใช้หมวด Technical, Administrative และ Physical ส่วนบทเรียนนี้แยกกิจกรรม Managerial และ Operational เพิ่มเพื่อช่วยอธิบาย"
+      },
+      "reason": "Useful for terminology alignment; preserve the contextual examples and overlapping functions.",
+      "academicConstraints": "Stay at the stated CC concept; label hypothetical conditions and avoid unconditional guarantees.",
+      "preserveExisting": "Retain current definitions, useful comparisons, anchors and existing lesson visuals; change only the identified claim/example.",
+      "targets": [
+        {
+          "path": "content/isc2-cc-2026/reading/domain-1.md",
+          "anchor": "topic-1-4-control-categories",
+          "startLine": 782,
+          "endLine": 794
+        }
+      ],
+      "supportingSources": [
+        "https://www.isc2.org/certifications/cc/cc-certification-exam-outline — 1.4",
+        "domain-1-2-review.md:60",
+        "content/isc2-cc-2026/reading/domain-1.md:782"
+      ],
+      "dependencies": [],
+      "estimatedEffort": "30–60 minutes including bilingual and summary reconciliation",
+      "severity": "P1",
+      "implementationAuthorized": false,
+      "userApprovalRequired": true,
+      "acceptanceCriteria": [
+        "Only the named target and accepted representations change; existing anchors remain intact.",
+        "Thai and English convey the same actor, condition, quantity and limitation.",
+        "Check repeated Reading summaries/scenarios and changed diagram labels; do not edit Learning Slides, Vocabulary or Question Banks.",
+        "Compare against cited primary reference and the exact current passage; do not expand into vendor setup or algorithm internals.",
+        "Add a short note relating the course subdivision to the outline Technical/Administrative/Physical vocabulary.",
+        "Stay at the stated CC concept; label hypothetical conditions and avoid unconditional guarantees."
+      ],
+      "evidence": {
+        "readingExcerpt": "current-target-excerpts.json#ENR-D1-04",
+        "phase1Record": "ENR-D1-04"
+      },
+      "recommendedMedia": "None; concise existing-paragraph edit or compact example",
+      "reviewDate": "2026-11-03",
+      "beginnerRelevance": "Bounded to the stated CC concept or editorial accuracy; advanced implementation details excluded.",
+      "batch": "D1-A"
+    }
+  ]
+}

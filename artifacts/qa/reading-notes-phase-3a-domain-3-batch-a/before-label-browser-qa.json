@@ -1,0 +1,644 @@
+{
+  "date": "2026-11-04",
+  "stage": "before",
+  "browser": "Chrome/156.0.8078.80",
+  "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "mode": "Real headless Google Chrome via CDP; isolated temporary profile",
+  "matrix": [
+    {
+      "run": "1920x1080-light",
+      "width": 1920,
+      "height": 1080,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "1920x1080-dark",
+      "width": 1920,
+      "height": 1080,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "1440x900-light",
+      "width": 1440,
+      "height": 900,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "1440x900-dark",
+      "width": 1440,
+      "height": 900,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "1366x768-light",
+      "width": 1366,
+      "height": 768,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "1366x768-dark",
+      "width": 1366,
+      "height": 768,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": true,
+      "mobile": false,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01 JOINER\nProvisioning\nการจัดสรรสิทธิ์พนักงานใหม่\n• Define Roles & Responsibilities\n• Assign Unique Digital ID\n• Initial Credentials & Permissions\n02 MOVER\nRe-Evaluation\nย้ายฝ่าย / เปลี่ยนตำแหน่ง\n• Grant New Role Permissions\n• Revoke Obsolete Permissions\n• Prevent Privilege Accumulation\n03 LEAVER\nDeprovisioning\nพ้นสภาพ / ลาออก / เลิกจ้าง\n• Disable Account Promptly\n• Revoke All Application Access\n• Retain Logs & Audit Trail\nCONTINUOUS GOVERNANCE: Periodic Access Reviews audit and verify permissions across all 3 stages",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [],
+      "navigation": [],
+      "captures": []
+    },
+    {
+      "run": "768x1024-light",
+      "width": 768,
+      "height": 1024,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/768x1024-light-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 192.140625,
+          "bottom": 347.984375,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)"
+        }
+      ]
+    },
+    {
+      "run": "768x1024-dark",
+      "width": 768,
+      "height": 1024,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/768x1024-dark-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 192.140625,
+          "bottom": 347.984375,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)"
+        }
+      ]
+    },
+    {
+      "run": "390x844-light",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/390x844-light-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 191.796875,
+          "bottom": 397.140625,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)"
+        }
+      ]
+    },
+    {
+      "run": "390x844-dark",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/390x844-dark-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 191.796875,
+          "bottom": 397.140625,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)"
+        }
+      ]
+    },
+    {
+      "run": "360x800-light",
+      "width": 360,
+      "height": 800,
+      "theme": "light",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/360x800-light-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 191.96875,
+          "bottom": 397.3125,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)"
+        }
+      ]
+    },
+    {
+      "run": "360x800-dark",
+      "width": 360,
+      "height": 800,
+      "theme": "dark",
+      "overflow": 0,
+      "tables": 5,
+      "nested": 0,
+      "headers": [
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        },
+        {
+          "align": "bottom",
+          "font": "\"Space Grotesk\", \"Noto Sans Thai\", system-ui, sans-serif"
+        }
+      ],
+      "diagrams": 4,
+      "scenarios": 12,
+      "desktop": false,
+      "mobile": true,
+      "clipped": [],
+      "retentionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "tableText": "Role Name\n(ชื่อบทบาทหน้าที่)\n\t\nPrimary Job Function\n(หน้าที่งานหลัก)\n\t\nRequired Access & Permissions\n(สิทธิ์การเข้าถึงที่จำเป็น)\n\nHR Manager\tจัดการข้อมูลบุคลากรและเงินเดือน\tสิทธิ์ Read/Write ระบบ HRIS, ข้อมูลประวัติพนักงาน, เอกสารสัญญาจ้าง\nNetwork Administrator\tดูแลระบบเครือข่ายและเราเตอร์\tสิทธิ์ Configure อุปกรณ์ Network, Switches, Firewalls, VPN Gateways\nDatabase Administrator (DBA)\tจัดการฐานข้อมูลและโครงสร้างข้อมูล\tสิทธิ์จัดการ Database Instances, Schema, Backup/Restore, User DB Privileges\nSecurity Analyst\tเฝ้าระวังภัยคุกคามและวิเคราะห์ล็อก\tสิทธิ์ Read-only สำหรับ Security Logs, SIEM Dashboard, EDR Alerts\nFinance Employee\tบันทึกและตรวจสอบธุรกรรมการเงิน\tสิทธิ์บันทึกใบเสร็จและใบแจ้งหนี้ในระบบ ERP โดยไม่มีสิทธิ์อนุมัติจ่ายเงินของตนเอง",
+      "moverText": "กรณีศึกษาข้อสอบ (Finance-to-IT Transfer): นายสมคิด ย้ายตำแหน่งจากแผนกบัญชี (Finance) ไปเป็นผู้ดูแลระบบฝ่ายไอที (IT Helpdesk) ฝ่ายไอทีได้สร้างสิทธิ์ Domain Admin ให้เขา แต่ไม่มีการเพิกถอนสิทธิ์การอนุมัติการจ่ายเงินในระบบ ERP เดิม ทำให้สมคิดมีทั้งสิทธิ์เข้าถึงระบบหลังบ้านและสิทธิ์อนุมัติเงิน ซึ่งเป็นความเสี่ยง Privilege Creep และละเมิดหลักการ Segregation of Duties (SoD) อย่างร้ายแรง วิธีแก้ที่ถูกต้องคือต้องมีขั้นตอนทบทวนและเพิกถอนสิทธิ์เดิมทั้งหมดก่อนมอบสิทธิ์ใหม่เสมอ",
+      "jmlText": "IDENTITY GOVERNANCE\nThe JML Lifecycle: Joiner, Mover, Leaver Architecture\n01\nJOINER (เข้าใหม่)\nProvisioning & Role Definition\n\nกำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น\n\n02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)\n\n03\nLEAVER (พ้นสภาพ)\nDeprovisioning & Retention\n\nเพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)\n\nPeriodic Access Reviews: ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน",
+      "orphanText": "Orphaned Accounts (บัญชีไร้เจ้าของ):\n\nบัญชีของผู้ใช้ที่ลาออก พ้นสภาพ หรือสัญญาจ้างสิ้นสุดลงแล้ว แต่บัญชียังไม่ถูกระงับหรือเพิกถอน",
+      "reviewText": "กรณีศึกษาคลาสสิก: Finance ย้ายไป IT\n\nพนักงานย้ายจากแผนก Finance ไปแผนก IT ได้รับสิทธิ์ IT Admin แต่ระบบยังไม่ได้ถอดสิทธิ์ดูงบการเงินใน Finance ออก ผ่านไป 6 เดือนพนักงานยังเปิดดูข้อมูลลับทางการเงินได้ ปัญหานี้เรียกว่า Privilege Accumulation และต้องแก้ไขด้วยกระบวนการ Periodic Access Review",
+      "provisionText": "3.1.3 Identity Provisioning: ตัวอย่างกิจกรรม 6 ส่วนในการจัดสรรสิทธิ์",
+      "sessionText": "ข้อควรระวัง: Deprovisioning ไม่จำเป็นต้องลบบัญชีทิ้งทันที\n\nในทางปฏิบัติด้านความมั่นคงปลอดภัย การ Deprovisioning มักจะใช้วิธีการ \"Disable Account\" (ปิดการใช้งาน) แทนการ \"Delete Account\" (ลบทิ้งถาวร) ทันที เพื่อพิจารณานโยบายการเก็บรักษาบัญชี หลักฐานตรวจสอบ (Audit Trail / Logs) และความสัมพันธ์ของระบบ เช่น ความเป็นเจ้าของไฟล์ การเก็บหรือลบต้องทำตามข้อกำหนดที่เกี่ยวข้อง; การ Disable ไม่ได้ยืนยันว่าทุก Log ถูกเก็บไว้ และการ Delete ไม่ได้ทำให้ Log ทุกระบบสูญหายเสมอไป",
+      "pass": true,
+      "screenshots": [
+        "screenshots/before/360x800-dark-jmlMover.png"
+      ],
+      "navigation": [],
+      "captures": [
+        {
+          "part": "jmlMover",
+          "top": 191.96875,
+          "bottom": 397.3125,
+          "text": "02\nMOVER (ย้ายฝ่าย)\nAccess Re-Evaluation\n\nประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)"
+        }
+      ]
+    }
+  ],
+  "navigation": [],
+  "protectedStates": [],
+  "exceptions": [],
+  "consoleErrors": [],
+  "status": "PASS"
+}

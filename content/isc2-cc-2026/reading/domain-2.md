@@ -224,9 +224,34 @@
 | **Operational Examples** | ให้พนักงานทำงานจากบ้าน, ติดต่อซัพพลายเออร์สำรอง, ใช้ระบบ Manual | การสลับไปใช้ Cloud Backup, กู้คืน Virtual Machines, กู้ Database |
 | **Key Governance Document** | **BCP** (Business Continuity Plan) | **DRP** (Disaster Recovery Plan) |
 | **Relationship** | ร่มใหญ่ของการบริหารความต่อเนื่องระดับองค์กร | เป็นองค์ประกอบย่อยด้านเทคนิคของ BC (<strong class="reading-math-formula">DR ⊂ BC</strong>) |
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การประสานงาน BCP และ DRP เมื่อเกิดอุทกภัยครั้งใหญ่</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> ธนาคารพาณิชย์แห่งหนึ่งมีสำนักงานใหญ่และศูนย์ดาต้าเซ็นเตอร์หลักตั้งอยู่ในพื้นที่ราบลุ่มริมแม่น้ำ ในช่วงฤดูมรสุมเกิดน้ำท่วมฉับพลันระดับน้ำสูง 1.5 เมตร ทำให้ชั้นใต้ดินของอาคารสำนักงานใหญ่ถูกน้ำท่วม ระบบไฟฟ้าหลักดับและเครื่องกำเนิดไฟฟ้าสำรองไม่สามารถทำงานได้</div>
+  <div class="reading-example-step"><strong>2. การปฏิบัติการของทีม BCP (Business Continuity in Action):</strong>
+    <ul>
+      <li>ประธานคณะกรรมการบริหารความต่อเนื่อง (BC Team Lead) ประกาศใช้แผน BCP ทันทีเพื่อรักษาการดำเนินธุรกิจภาพรวม</li>
+      <li>สั่งการให้พนักงานฝ่ายสินเชื่อและฝ่ายบริการลูกค้า 300 คนเปลี่ยนไปปฏิบัติงานจากที่พัก (Work from Home) โดยใช้แล็ปท็อปของบริษัทเชื่อมต่อผ่านโครงข่ายที่ปลอดภัย</li>
+      <li>เปิดใช้งานศูนย์บริการลูกค้าทางโทรศัพท์สำรอง (Alternate Call Center) ที่สาขาต่างจังหวัดเพื่อรับสายลูกค้าแทนศูนย์หลัก</li>
+      <li>ประกาศใช้ขั้นตอน Manual Emergency Procedure ในการรับฝาก-ถอนเงินที่สาขาย่อยที่ยังเปิดให้บริการได้</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การปฏิบัติการของทีม DRP (Disaster Recovery in Action):</strong>
+    <ul>
+      <li>ผู้จัดการฝ่าย IT Disaster Recovery สั่งเริ่มขั้นตอน DRP เพื่อกู้คืนระบบเทคโนโลยีสารสนเทศ</li>
+      <li>สั่งตัดการทำงานของศูนย์ข้อมูลหลักและทำ Automated Failover สลับระบบฐานข้อมูลธุรกรรมไปยัง Cloud Recovery Site ที่ตั้งอยู่คนละภูมิภาค</li>
+      <li>เชื่อมต่อข้อมูลสำรองชุดล่าสุด (Snapshot) และตรวจสอบความสมบูรณ์ของฐานข้อมูล (Database Integrity Verification)</li>
+      <li>เปิดบริการ Mobile Banking และ Core Banking API บนคลาวด์ให้กลับมาให้บริการได้ภายใน 3 ชั่วโมง</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>4. ผลกระทบและความสำเร็จ (Operational Result):</strong> ลูกค้าสามารถทำธุรกรรมผ่านแอปพลิเคชันมือถือได้ตามปกติ พนักงานยังคงติดต่อลูกค้าได้ แม้อาคารสำนักงานใหญ่จะจมน้ำและไม่สามารถเข้าใช้งานได้เป็นเวลา 2 สัปดาห์</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): BCP มุ่งเน้นการทำให้ "ธุรกิจโดยรวมดำเนินต่อไปได้" (ครอบคลุมคน สถานที่ กระบวนการ คู่ค้า) ขณะที่ DRP คือกลไกย่อยทางเทคนิคที่มุ่งเน้นการ "กู้คืนระบบ IT เซิร์ฟเวอร์ และข้อมูล" เพื่อให้แผน BCP บรรลุผลสำเร็จ (DR เป็นส่วนหนึ่งของ BC)</div>
+</div>
 <h3 id="topic-2-2-rto-rpo">2.2.6 RTO and RPO Recovery Metrics</h3>
 
 ในการวางแผนกู้คืนระบบ IT องค์กรต้องกำหนดเป้าหมายเชิงเวลา 2 ตัวชี้วัดสำคัญ:
+
+**สมมติฐานของภาพ (Illustrative assumptions):** ภาพสมมติว่ามีจุดสำรองที่กู้คืนได้เวลา 16:30 น. และเกิดเหตุเวลา 17:00 น.; จุดสำรองนี้ตรงกับขอบเขต RPO 30 นาทีในตัวอย่าง ส่วน 18:00 น. เป็นเป้าหมาย RTO 1 ชั่วโมง ไม่ใช่ผลกู้คืนที่ทดสอบแล้ว / The illustration assumes a recoverable 16:30 backup and a 17:00 outage. That backup coincides with the example’s 30-minute RPO boundary; 18:00 is the one-hour RTO target, not a tested recovery outcome.
 
 <div class="reading-semantic-diagram" data-diagram="rtoRpoTimeline"></div>
 
@@ -254,9 +279,10 @@
 
 - **Work Recovery Time (WRT — เวลาฟื้นฟูระบบงาน):** คือระยะเวลาที่ทีมงานต้องใช้ในการตรวจสอบความสมบูรณ์ของข้อมูล (Integrity Checks), ทดสอบการเชื่อมต่อระบบ, และป้อนข้อมูลธุรกรรมที่คั่งค้างระหว่างระบบล่ม (Catch-up / Manual Data Entry) ก่อนจะประกาศเปิดให้บริการแก่ผู้ใช้และธุรกิจอย่างเป็นทางการ
 - **Maximum Tolerable Downtime (MTD — ระยะเวลาหยุดชะงักสูงสุดที่ยอมรับได้):** คือระยะเวลารวมสูงสุดตั้งแต่ระบบเริ่มล่ม จนกระทั่งกระบวนการทางธุรกิจกลับมาเปิดดำเนินงานได้ตามปกติ หากหยุดชะงักนานเกิน MTD องค์กรอาจเกิดความเสียหายอย่างถาวร (Irreparable Harm)
-- **สูตรความสัมพันธ์แม่บทสำหรับห้องสอบ:**
+- **แบบจำลองวางแผนอย่างง่าย (Simplified planning model):**
   **MTD &ge; RTO + WRT**
-  *(หาก RTO + WRT &gt; MTD หมายความว่าธุรกิจจะได้รับความเสียหายวิกฤตเกินระดับที่องค์กรจะอยู่รอดได้)*
+  ในแบบจำลองนี้ RTO นับจากเริ่มหยุดชะงักจนระบบ IT พร้อมใช้งาน แล้ว WRT นับต่อจนธุรกิจกลับมาดำเนินงาน โดยสมมติให้สองช่วงไม่ซ้อนทับกัน; กิจกรรมจริงอาจซ้อนทับกันได้ / Here, RTO runs from disruption to IT readiness, followed by WRT until business resumes. The model assumes non-overlapping intervals; actual activities may overlap.
+  *หากผลรวมเกิน MTD แผนนี้จัดสรรเวลาเกินช่วงหยุดชะงักที่ธุรกิจยอมรับ ต้องทบทวนแผน; การหยุดชะงักจริงเกิน MTD ไม่ได้หมายความว่าองค์กรจะอยู่รอดไม่ได้เสมอไป / If the sum exceeds MTD, the plan exceeds the business downtime tolerance and needs review. An actual outage beyond MTD does not inevitably mean organizational failure.*
 </section>
 
 <div class="reading-callout tip">
@@ -269,6 +295,33 @@
     <li>หากองค์กรกำหนด <strong>RTO = 1 ชั่วโมง</strong> → ทีม IT มีเป้าหมายต้องกู้คืนระบบให้กลับมาเปิดบริการได้ภายในเวลาไม่เกิน <strong>18:00 น.</strong></li>
     <li>หากองค์กรกำหนด <strong>RPO = 30 นาที</strong> → จุดสำรองข้อมูล (Data Backup Point) ที่นำมากู้คืนจะต้องเก่าไม่เกิน 30 นาทีก่อนเกิดเหตุ นั่นคือข้อมูลจะต้องสมบูรณ์อย่างน้อยถึงเวลา <strong>16:30 น.</strong> (ข้อมูลธุรกรรมระหว่าง 16:30 - 17:00 คือข้อมูลที่ยอมสูญเสียได้ตามข้อตกลง)</li>
   </ul>
+</div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การคำนวณและบริหาร RTO, RPO, WRT และ MTD ในระบบ E-Commerce</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> แพลตฟอร์มช้อปปิ้งออนไลน์ที่มียอดสั่งซื้อเฉลี่ย 1,000 รายการต่อชั่วโมง มีการสำรองข้อมูลฐานข้อมูลแบบ Snapshot อัตโนมัติทุก 2 ชั่วโมง (เวลา 10:00, 12:00, 14:00, ...) ต่อมา ณ เวลา <strong>14:00 น.</strong> เกิดเหตุระบบ SAN Storage คอนโทรลเลอร์ล้มเหลวและข้อมูลเสียหายอย่างรุนแรง ทำให้ระบบสั่งซื้อหยุดทำงานทันที</div>
+  <div class="reading-example-step"><strong>2. การคำนวณ RPO และปริมาณข้อมูลที่สูญเสีย (Data Loss Analysis):</strong>
+    <ul>
+      <li>จุดสำรองข้อมูลที่สมบูรณ์ชุดล่าสุดคือเวลา <strong>12:00 น.</strong> (Snapshot เวลา 14:00 เสียหายพร้อมกับคอนโทรลเลอร์)</li>
+      <li>องค์กรกำหนดค่า <strong>RPO = 2 ชั่วโมง</strong> ข้อมูลคำสั่งซื้อที่เกิดขึ้นระหว่าง 12:00 ถึง 14:00 (รวม 2 ชั่วโมง หรือประมาณ 2,000 รายการ) สูญหายไปจากฐานข้อมูลหลัก</li>
+      <li>ผลลัพธ์: การสูญเสียข้อมูล 2 ชั่วโมงนี้ยังคงอยู่ในเกณฑ์ RPO ที่ธุรกิจยอมรับได้ตามที่ผ่านการอนุมัติใน BIA</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การคำนวณ RTO และระยะเวลากู้คืนระบบ IT (Restoration Interval):</strong>
+    <ul>
+      <li>องค์กรกำหนดค่า <strong>RTO = 4 ชั่วโมง</strong> สำหรับระบบจัดเก็บข้อมูลและเซิร์ฟเวอร์ฐานข้อมูล</li>
+      <li>ทีมวิศวกรระบบ IT ทำการเปลี่ยนคอนโทรลเลอร์สำรอง เมานต์ Snapshot เวลา 12:00 น. และเริ่มระบบฐานข้อมูลใหม่เสร็จสิ้น ณ เวลา <strong>17:30 น.</strong> (ใช้เวลาไป 3.5 ชั่วโมง นับจาก 14:00 น.)</li>
+      <li>ผลลัพธ์: ทีม IT สามารถกู้คืนระบบกลับมาพร้อมใช้งานได้สำเร็จก่อนครบกำหนด RTO 4 ชั่วโมง (ผ่านเกณฑ์ทางเทคนิค)</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>4. การทำงานของ WRT และการตรวจสอบเพดาน MTD (Business Recovery & MTD):</strong>
+    <ul>
+      <li><strong>Work Recovery Time (WRT):</strong> แม้ระบบ IT พร้อมใช้งานเวลา 17:30 น. แต่ธุรกิจยังเปิดให้บริการไม่ได้ทันที ทีมงานต้องใช้เวลาอีก 30 นาที (17:30 ถึง 18:00 น.) ในการรันสคริปต์กระทบยอดรายการชำระเงินกับเกตเวย์ภายนอก และป้อนข้อมูลคำสั่งซื้อที่คั่งค้าง (Catch-up Data Entry)</li>
+      <li><strong>Maximum Tolerable Downtime (MTD):</strong> องค์กรกำหนด MTD ไว้ที่ <strong>5 ชั่วโมง</strong></li>
+      <li><strong>การประเมินเวลารวม:</strong> เวลาหยุดชะงักจริงทั้งหมด = RTO (3.5 ชั่วโมง) + WRT (0.5 ชั่วโมง) = 4.0 ชั่วโมง ซึ่งไม่เกินเพดาน MTD (5 ชั่วโมง) ทำให้ธุรกิจเปิดให้บริการได้ปกติ ณ เวลา 18:00 น. โดยไม่เกิดความเสียหายถาวร</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): RPO มองย้อนหลัง (Backward-looking) เพื่อวัดปริมาณข้อมูลที่ยอมสูญเสียได้ ส่วน RTO มองไปข้างหน้า (Forward-looking) เพื่อวัดเวลาที่ทีม IT ใช้กู้ระบบ โดยมี WRT เป็นเวลาที่ฝ่ายธุรกิจต้องใช้ปรับปรุงข้อมูล และผลรวมทั้งหมด (RTO + WRT) ต้องไม่เกินเพดานสูงสุด MTD ที่ธุรกิจทนรับได้</div>
 </div>
 <h3 id="topic-2-2-drp-sites">2.2.7 DRP, Backup & Recovery Sites</h3>
 
@@ -296,7 +349,29 @@
   </ul>
 </div>
 
+<div class="reading-semantic-diagram" data-diagram="backupRestoreChains"></div>
+
 การสำรองข้อมูลบนระบบคลาวด์ (Cloud Backups) หรือศูนย์เก็บข้อมูลภายนอก (Off-site Storage) เพื่อให้มั่นใจว่าเมื่อศูนย์ข้อมูลหลักเสียหาย ข้อมูลสำรองจะยังคงปลอดภัยและพร้อมนำมากู้คืน
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การกู้คืนระบบหลังโดนแรนซัมแวร์ — Differential vs. Incremental Backup Chain</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> บริษัทโลจิสติกส์ขนาดใหญ่ประสบเหตุการณ์แรนซัมแวร์เข้ารหัสไฟล์เซิร์ฟเวอร์ในวันพฤหัสบดี เวลา 15:00 น. ฝ่ายความปลอดภัยทำการตัดการเชื่อมต่อเครือข่ายและล้างระบบเพื่อเตรียมกู้คืนข้อมูล โดยบริษัทมีนโยบายทำ Full Backup ทุกคืนวันอาทิตย์ เวลา 02:00 น.</div>
+  <div class="reading-example-step"><strong>2. การทดสอบกู้คืนแบบ Incremental Backup (ความเสี่ยงของสายโซ่ขาด):</strong>
+    <ul>
+      <li>หากบริษัทใช้กลยุทธ์ Incremental Backup ในแต่ละคืน: จันทร์ (Incr-1), อังคาร (Incr-2), พุธ (Incr-3)</li>
+      <li>การกู้คืนต้องใช้เทปหรือชุดสำรองข้อมูลเรียงลำดับต่อเนื่อง: <em>Full (อาทิตย์) &rarr; Incr-1 (จันทร์) &rarr; Incr-2 (อังคาร) &rarr; Incr-3 (พุธ)</em> รวมทั้งสิ้น <strong>4 ชุด</strong></li>
+      <li><strong>เหตุการณ์วิกฤต:</strong> เมื่อทีมงานนำเทปชุดวันอังคาร (Incr-2) มาอ่าน ปรากฏว่าไฟล์ข้อมูลในเทปเสียหาย (CRC Read Error) ทำให้สายโซ่การกู้คืนขาดลง ส่งผลให้ข้อมูลของวันพุธ (Incr-3) ไม่สามารถนำมากู้คืนต่อได้ ข้อมูลของวันอังคารและพุธจึงสูญหายทั้งหมด</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การเปรียบเทียบกับ Differential Backup (ความทนทานสูงกว่า):</strong>
+    <ul>
+      <li>หากบริษัทเลือกใช้กลยุทธ์ Differential Backup ในแต่ละคืน: จันทร์ (Diff บันทึกการเปลี่ยนแปลงตั้งแต่วันอาทิตย์), อังคาร (Diff บันทึกการเปลี่ยนแปลงตั้งแต่วันอาทิตย์), พุธ (Diff บันทึกการเปลี่ยนแปลงทั้งหมดตั้งแต่วันอาทิตย์จนถึงพุธ)</li>
+      <li>การกู้คืนใช้ข้อมูลเพียง <strong>2 ชุด</strong> เท่านั้น: <em>Full (อาทิตย์) + Diff (พุธ)</em></li>
+      <li><strong>ข้อได้เปรียบ:</strong> แม้ว่าชุดข้อมูลสำรองของวันจันทร์หรืออังคารจะสูญหายหรือเสียหายไป ก็ไม่มีผลกระทบใดๆ ต่อการกู้คืน เพราะชุด Diff ของวันพุธได้รวบรวมข้อมูลส่วนต่างทั้งหมดนับตั้งแต่วันอาทิตย์ไว้เรียบร้อยแล้ว</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): Incremental Backup ช่วยประหยัดพื้นที่จัดเก็บและสำรองข้อมูลได้เร็วที่สุดในแต่ละวัน แต่มีความเสี่ยงสูงที่สุดตอนกู้คืน เพราะหากชุดสำรองข้อมูลย่อยชุดใดชุดหนึ่งเสียหาย สายโซ่จะขาดทันที ขณะที่ Differential Backup ใช้เพียง 2 ชุดในการกู้คืน (Full ล่าสุด + Diff ล่าสุด) จึงกู้คืนได้เร็วกว่าและปลอดภัยกว่ามากในสถานการณ์กู้ภัยจริง</div>
+</div>
 
 </section>
 
@@ -329,6 +404,26 @@
 - *ค่าใช้จ่าย:* ต่ำที่สุด
 
 </section>
+
+<div class="reading-semantic-diagram" data-diagram="drSiteTiers"></div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การเลือกประเภทศูนย์สำรอง (Hot vs. Warm vs. Cold Site) ตามผลการวิเคราะห์ BIA</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> เครือโรงพยาบาลเอกชนขนาดใหญ่กำลังจัดทำแผน DRP สำหรับระบบหลัก 2 ระบบ: (1) ระบบ Electronic Health Record (EHR) ที่ใช้สั่งยาและดูประวัติผู้ป่วยในห้องผ่าตัดฉุกเฉิน และ (2) ระบบคลังเอกสารใบเสร็จทางบัญชีย้อนหลัง 10 ปี (Billing Archive)</div>
+  <div class="reading-example-step"><strong>2. การวิเคราะห์ตามผล BIA (Business Impact Analysis):</strong>
+    <ul>
+      <li><strong>ระบบ EHR:</strong> BIA ระบุ MTD = 2 ชั่วโมง และ RTO = 30 นาที เนื่องจากเกี่ยวข้องกับชีวิตและความปลอดภัยของผู้ป่วยโดยตรง</li>
+      <li><strong>ระบบ Billing Archive:</strong> BIA ระบุ MTD = 14 วัน และ RTO = 7 วัน เนื่องจากใช้เพียงเพื่อการตรวจสอบบัญชีประจำปี ไม่ส่งผลต่อการดูแลรักษาผู้ป่วยในแต่ละวัน</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การตัดสินใจเลือกศูนย์สำรองที่เหมาะสม:</strong>
+    <ul>
+      <li><strong>สำหรับระบบ EHR &rarr; เลือก Hot Site:</strong> ติดตั้งเซิร์ฟเวอร์ที่มีสเปกเทียบเท่าศูนย์หลัก พร้อมระบบ Data Replication แบบ Synchronous บนคลาวด์ตลอด 24 ชั่วโมง แม้จะมีค่าใช้จ่ายสูงที่สุด แต่สามารถสลับการทำงานได้ภายใน 15 นาที ตอบโจทย์ RTO 30 นาที และช่วยรักษาชีวิตผู้ป่วยได้</li>
+      <li><strong>สำหรับระบบ Billing Archive &rarr; เลือก Cold Site หรือ Warm Site ราคาประหยัด:</strong> องค์กรเลือกทำสัญญาเช่าพื้นที่ Cold Site ร่วมกับการเก็บข้อมูลสำรองบน Cloud Cold Storage รายเดือน เนื่องจากค่าใช้จ่ายต่ำมาก และหากเกิดภัยพิบัติก็ยังมีเวลา 7 วันในการจัดหาฮาร์ดแวร์มาติดตั้งโดยไม่กระทบต่อธุรกิจ</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): ไม่มีประเภทศูนย์สำรองที่ดีที่สุดสำหรับทุกระบบ องค์กรต้องเลือก Hot, Warm หรือ Cold Site ตามความเร่งด่วนที่ได้จากผลการวิเคราะห์ BIA (ค่า MTD และ RTO) เพื่อให้คุ้มค่าต่องบประมาณและตอบโจทย์ความอยู่รอดของภารกิจสำคัญสูงสุด</div>
+</div>
 
 </section>
 <h3 id="topic-2-2-dr-testing">2.2.8 DR Testing, Exercises & Drills</h3>
@@ -441,6 +536,26 @@
     <span>ข้อสังเกตเกี่ยวกับ Pretexting และ AI ในปี 2026</span>
   </div>
   <p><strong>Pretexting</strong> เป็นการสร้างบทบาทและเรื่องราวปลอม ซึ่งผู้โจมตีอาจนำไปใช้ผสมผสานกับช่องทางต่าง ๆ ได้ เช่น ใช้ Pretexting ร่วมกับ Vishing โทรมาหลอก หรือร่วมกับอีเมลฟิชชิง นอกจากนี้ ในยุคปัจจุบันผู้โจมตีอาจนำ AI และเทคโนโลยี Deepfake Voice มาช่วยสร้างเรื่องราวหลอกลวงได้อย่างสมจริงยิ่งขึ้น</p>
+</div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การป้องกันการโจมตีแบบ Pretexting, Spear Phishing และ AI Voice Impersonation</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> "นิรันดร์" นักบัญชีการเงินของบริษัทนำเข้าสินค้า ได้รับอีเมลเวลา 16:30 น. ในวันศุกร์สิ้นเดือน จากอีเมลที่ระบุชื่อผู้ส่งเป็นประธานเจ้าหน้าที่บริหารฝ่ายการเงิน (CFO) ซึ่งกำลังเดินทางไปประชุมต่างประเทศ โดยมีหัวข้อว่า <em>"ด่วนที่สุด: โอนเงินชำระค่าสัญญาร่วมทุนต่างประเทศก่อน 17:00 น. มิฉะนั้นสัญญาจะถูกยกเลิก"</em> พร้อมแนบเอกสารใบแจ้งหนี้ปลอมและเลขบัญชีใหม่</div>
+  <div class="reading-example-step"><strong>2. การใช้จิตวิทยาและการสร้างเรื่องราว (Pretexting & Vishing):</strong>
+    <ul>
+      <li>ผู้โจมตีทำการบ้านจากโซเชียลมีเดีย (OSINT) จนรู้ว่า CFO อยู่บนเครื่องบิน จึงใช้เทคนิค <strong>Pretexting</strong> สร้างสถานการณ์เร่งด่วนและกดดัน (Urgency & Authority)</li>
+      <li>หลังจากส่งอีเมล 5 นาที ผู้โจมตีโทรศัพท์เข้ามา (<strong>Vishing</strong>) โดยใช้เทคโนโลยี AI Voice Cloning เลียนแบบน้ำเสียงของ CFO สั่งการให้นิรันดร์รีบโอนเงินจำนวน 1.5 ล้านบาททันที โดยอ้างว่ากำลังจะขึ้นเครื่องบินต่อและสัญญาณโทรศัพท์จะขาดหาย</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การปฏิบัติตามนโยบายความปลอดภัย (Defense & Verification):</strong>
+    <ul>
+      <li>นิรันดร์ได้รับการฝึกอบรม Security Awareness มาเป็นอย่างดี จึงสังเกตเห็นสัญญาณเตือนภัย: ความเร่งด่วนผิดปกติ, บัญชีปลายทางเป็นบัญชีใหม่, และการสั่งข้ามขั้นตอนปกติ</li>
+      <li>ตรวจสอบแอดเดรสผู้ส่งอย่างละเอียด พบว่าเป็นโดเมนปลอมที่สะกดคล้ายของบริษัท (Typosquatting)</li>
+      <li>ปฏิบัติตามนโยบาย <strong>Dual Authorization (หลักการอนุมัติสองคน)</strong> และนโยบาย <strong>Out-of-Band Verification</strong> โดยติดต่อไปยังเลขาฯ ส่วนตัวของ CFO และโทรเข้าเบอร์โทรศัพท์ทางการของ CFO เพื่อยืนยันคำสั่ง</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>4. ผลลัพธ์และบทเรียน (Incident Reporting):</strong> สามารถระงับการโอนเงินได้ทันท่วงที นิรันดร์กดปุ่ม Report Phishing บนโปรแกรมอีเมลเพื่อส่งหลักฐานให้ทีม SOC บล็อกโดเมนของผู้โจมตีและแจ้งเตือนพนักงานทั่วทั้งบริษัท</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): วิศวกรรมสังคมพุ่งเป้าไปที่จุดอ่อนด้านอารมณ์ของมนุษย์ (ความกลัว ความเกรงใจผู้มีอำนาจ และความเร่งด่วน) การป้องกันที่มีประสิทธิภาพสูงสุดต้องผสานทั้ง ความตระหนักรู้ของพนักงาน (Security Awareness), นโยบายการตรวจสอบแบบ Out-of-Band, และมาตรการทางเทคนิคที่แข็งแกร่ง</div>
 </div>
 <h3 id="topic-2-3-password-protection">2.3.6 Password Protection & Modern Authentication</h3>
 
@@ -556,6 +671,8 @@
 
 Metric อาจเป็นจำนวน ร้อยละ อัตราส่วน หรือค่าเฉลี่ย KPI และ KRI เป็น Metric ที่เลือกใช้ตามวัตถุประสงค์: KPI ติดตามผลงานเทียบเป้าหมาย ส่วน KRI เฝ้าระวังแนวโน้มความเสี่ยง Dashboard, scorecard และ report เป็นรูปแบบนำเสนอที่อาจใช้ร่วมกันได้ ภาพต่อไปนี้เป็นตัวอย่างการจัดระบบการวัดผล ไม่ใช่ลำดับขั้นที่ทุกองค์กรต้องใช้
 
+**รอบอัปเดต (Refresh cadence):** Dashboard อาจอัปเดตเป็นระยะหรือใกล้เวลาจริง ขึ้นอยู่กับการเก็บข้อมูลและการรายงาน ควรตรวจเวลาอัปเดตของข้อมูล / A dashboard may refresh periodically or near real time, depending on data collection and reporting; check when its data was updated.
+
 <div class="reading-semantic-diagram" data-diagram="effectivenessHierarchy"></div>
 
 <p class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ตารางสรุปคำสำคัญสำหรับวิเคราะห์โจทย์สอบ (Exam Keyword Trigger Matrix):</p>
@@ -565,7 +682,7 @@ Metric อาจเป็นจำนวน ร้อยละ อัตรา�
 | **Metric** | "Defined measurable value", "Count, percentage, ratio or average" | ค่าที่กำหนดและวัดอย่างสม่ำเสมอเพื่อประเมินการดำเนินงานหรือความเสี่ยง รวมถึง KPI และ KRI ที่เลือกใช้ตามวัตถุประสงค์ | จำนวนช่องโหว่ทั้งหมดที่ตรวจพบประจำเดือน (Total vulnerabilities found) |
 | **KPI** | "Performance target", "Progress toward goal", "Success rate" | ประเมินความก้าวหน้าของผลการดำเนินงานเทียบกับเป้าหมาย | ร้อยละของเครื่องที่ติดตั้งแพตช์ตรงตามกำหนด (95% Patch compliance) |
 | **KRI** | "Early warning", "Escalating risk", "Threshold exceed" | ส่งสัญญาณเตือนภัยล่วงหน้าเมื่อความเสี่ยงเพิ่มขึ้นเกินเกณฑ์ที่ยอมรับได้ | จำนวนบัญชีผู้ดูแลระบบที่ไม่มี MFA เกินเกณฑ์ที่ยอมรับได้ (&gt; 0 บัญชี) |
-| **Dashboard** | "Real-time", "Operational view", "Visual representation" | แสดงภาพรวมสถานะปัจจุบันผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน | หน้าจอ SOC แสดงสถานะการโจมตีและการแจ้งเตือนความปลอดภัยแบบเรียลไทม์ |
+| **Dashboard** | "Refresh cadence varies", "Operational view", "Visual representation" | แสดงภาพรวมผ่านชาร์ต/กราฟสำหรับการเฝ้าระวังประจำวัน โดยความสดของข้อมูลขึ้นกับรอบอัปเดต (Data freshness depends on refresh cadence) | ตัวอย่างหน้าจอ SOC ที่ตั้งค่าให้อัปเดตใกล้เวลาจริง (Illustrative near-real-time SOC view) |
 | **Scorecard** | "Compare actual vs. target", "Periodic benchmark", "Gaps" | สรุปและเปรียบเทียบผลจริงกับเป้าหมายเป็นระยะเพื่อชี้จุดที่ต้องปรับปรุง | ตารางสรุปผลงานประจำไตรมาสแสดง Actual เทียบ Target ในแต่ละด้าน |
 | **Report** | "Formal documentation", "Recommended actions", "Executive summary" | เอกสารทางการสรุปผลเชิงลึกพร้อมข้อเสนอแนะเชิงกลยุทธ์ต่อผู้บริหาร | เอกสารรายงานการประเมินความปลอดภัยประจำปีต่อคณะกรรมการบริหาร |
 
@@ -741,7 +858,7 @@ Metric อาจเป็นจำนวน ร้อยละ อัตรา�
     <div class="reading-distinction-body">
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">Dashboard</strong>
-        <div class="reading-distinction-desc">Visualize — นำเสนอข้อมูลภาพรวมและแนวโน้มแบบ Real-time</div>
+        <div class="reading-distinction-desc">Visualize — นำเสนอภาพรวมและแนวโน้มตามรอบอัปเดต (Periodic / near-real-time)</div>
       </div>
       <div class="reading-distinction-point">
         <strong class="reading-distinction-term">Scorecard</strong>

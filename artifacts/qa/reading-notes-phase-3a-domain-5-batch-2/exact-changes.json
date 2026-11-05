@@ -1,0 +1,162 @@
+[
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 134,
+    "beforeEndLine": 134,
+    "afterStartLine": 134,
+    "afterEndLine": 134,
+    "original": "เมื่ออุปกรณ์จัดเก็บข้อมูล (Hard Drive, SSD, เทปสำรองข้อมูล, แฟลชไดรฟ์) สิ้นสุดการใช้งานหรือต้องโอนย้ายไปให้ผู้อื่น องค์กรต้องทำลายข้อมูลที่ค้างอยู่ไม่ให้สามารถกู้คืนได้ ตามมาตรฐานสากล **NIST SP 800-88 Rev. 1 (Guidelines for Media Sanitization)** ได้กำหนดระดับการทำลายข้อมูลไว้ 3 ระดับหลัก:",
+    "corrected": "เมื่ออุปกรณ์จัดเก็บข้อมูล (Hard Drive, SSD, เทปสำรองข้อมูล, แฟลชไดรฟ์) จะถูกใช้ซ้ำ ส่งต่อ หรือกำจัด ต้องเลือกวิธีให้เหมาะกับสื่อ ความอ่อนไหวของข้อมูล และนโยบายองค์กร **NIST SP 800-88 Rev. 2 (Guidelines for Media Sanitization)** อธิบายการทำให้เข้าถึงข้อมูลเป้าหมายไม่ได้ในทางปฏิบัติภายใต้ระดับความพยายามที่กำหนด ไม่ใช่การรับประกันว่ากู้คืนไม่ได้ 100% ตลอดไป / Select a method for the media, data sensitivity and organizational policy. NIST SP 800-88 Rev. 2 defines sanitization in terms of making target-data access infeasible for a specified level of effort, using three methods:"
+  },
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 137,
+    "beforeEndLine": 137,
+    "afterStartLine": 137,
+    "afterEndLine": 137,
+    "original": "<h5>1. Clear (การเขียนทับระดับผู้ใช้):</h5>",
+    "corrected": "<h5>1. Clear (การล้างข้อมูลด้วยวิธีเชิงตรรกะ):</h5>"
+  },
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 139,
+    "beforeEndLine": 139,
+    "afterStartLine": 139,
+    "afterEndLine": 139,
+    "original": "การเขียนทับพื้นที่จัดเก็บข้อมูลทั้งหมดด้วยข้อมูลที่ไม่มีความหมาย (เช่น เขียนทับด้วยเลข 0 ทั้งหมด หรือบิตสุ่ม) โดยใช้คำสั่งมาตรฐานระดับผู้ใช้ (Logical Interface Commands) สามารถป้องกันการกู้คืนข้อมูลด้วยซอฟต์แวร์กู้ข้อมูลทั่วไปได้ แต่ไม่สามารถป้องกันการกู้ข้อมูลด้วยเครื่องมือวิเคราะห์ในห้องปฏิบัติการขั้นสูงได้ เหมาะสำหรับอุปกรณ์ที่จะนำกลับมาหมุนเวียนใช้ใหม่ภายในองค์กรเดียวกัน",
+    "corrected": "ใช้วิธีเชิงตรรกะกับพื้นที่ที่ผู้ใช้เข้าถึงได้ (User-addressable Storage) เพื่อต้านการกู้คืนแบบง่ายผ่านอินเทอร์เฟซปกติ เช่น การเขียนทับเมื่อเหมาะกับสื่อนั้น ไม่ได้แปลว่าครอบคลุมพื้นที่สำรองหรือข้อมูลเดิมทุกตำแหน่งของ SSD / Clear protects against simple, non-invasive recovery through the normal interface. Overwriting is one media-dependent technique; it does not necessarily reach every previous data location on an SSD."
+  },
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 146,
+    "beforeEndLine": 149,
+    "afterStartLine": 146,
+    "afterEndLine": 149,
+    "original": "การใช้เทคนิคระดับฮาร์ดแวร์หรือทางกายภาพเพื่อทำให้ข้อมูลไม่สามารถกู้คืนได้ แม้จะใช้เครื่องมือทางห้องปฏิบัติการขั้นสูง (Laboratory Attack Techniques) ก็ตาม:\n- **ATA Secure Erase / Cryptographic Erase (CE):** สั่งการผ่านคอนโทรลเลอร์ของอุปกรณ์โซลิดสเตตไดรฟ์ (SSD) เพื่อล้างบล็อกหน่วยความจำแฟลชทั้งหมด รวมถึงพื้นที่สำรอง (Over-provisioned areas)\n- **Degaussing (การลบล้างสนามแม่เหล็ก):** การใช้เครื่องสร้างสนามแม่เหล็กความเข้มสูงทำลายโดเมนแม่เหล็กบนสื่อบันทึกประเภทจานแม่เหล็ก (HDD และเทป) ทำให้ข้อมูลหายไปอย่างสิ้นเชิง (ข้อควรระวัง: Degaussing จะทำลายฮาร์ดดิสก์จนไม่สามารถนำกลับมาใช้ใหม่ได้ และไม่สามารถใช้กับ SSD ได้)\n- สื่อบันทึกที่ผ่านการ Purge ด้วย Secure Erase สามารถนำไปใช้งานต่อนอกองค์กรหรือบริจาคได้อย่างปลอดภัย",
+    "corrected": "ใช้เทคนิคเชิงตรรกะหรือทางกายภาพเพื่อให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ โดยมุ่งให้สื่อยังใช้ต่อได้หากเทคนิคและสื่อนั้นรองรับ / Purge targets infeasible recovery even with advanced laboratory techniques while aiming to retain usability where supported.\n- **Secure Erase / Cryptographic Erase (CE):** ต้องตรวจเทคนิคที่อุปกรณ์รองรับและเงื่อนไขของผู้ผลิต ชื่อคำสั่งอย่างเดียวไม่ยืนยันผล และ CE ล้างกุญแจ ไม่ใช่เขียนทับบล็อกข้อมูลทุกบล็อก / A command name alone does not establish effective purge; CE sanitizes keys rather than overwriting every data block.\n- **Degaussing (การลบล้างสนามแม่เหล็ก):** ใช้ได้กับสื่อแม่เหล็กที่เหมาะสม เช่น HDD หรือเทป ไม่ใช้กับ SSD และอาจทำให้สื่อใช้ต่อไม่ได้ / Degaussing applies to suitable magnetic media, not SSDs, and can leave the media unusable.\n- การส่งต่อหรือบริจาคต้องยอมรับผลล้างข้อมูลตามนโยบายก่อน ไม่ใช่เห็นคำว่า Secure Erase แล้วถือว่าปลอดภัย / Reuse or donation requires an accepted sanitization outcome under policy, not just a reported command name."
+  },
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 156,
+    "beforeEndLine": 156,
+    "afterStartLine": 156,
+    "afterEndLine": 156,
+    "original": "การทำลายชิ้นส่วนทางกายภาพของสื่อบันทึกข้อมูลจนไม่สามารถนำมาเชื่อมต่อหรือใช้งานได้อีกตลอดไป ได้แก่ การบดละเอียด (Shredding), การเผาทำลายที่อุณหภูมิสูง (Incineration), การย่อยสลายด้วยสารเคมี (Disintegration), การหลอมละลาย (Melting), หรือการเจาะทะลุจานบันทึก (Deforming/Drilling) นิยมใช้กับสื่อบันทึกที่มีข้อมูลความลับระดับสูงสุด หรืออุปกรณ์ที่ชำรุดเสียหายจนไม่สามารถสั่งรันคำสั่ง Clear/Purge ได้",
+    "corrected": "ทำให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ และทำให้สื่อใช้จัดเก็บข้อมูลต่อไม่ได้ เช่น บดย่อยหรือเผาด้วยกระบวนการที่เหมาะกับชนิดสื่อและได้รับอนุมัติ การเจาะรูหรือทำให้อุปกรณ์เปิดไม่ติดเพียงอย่างเดียวไม่ได้พิสูจน์ว่าข้อมูลถูกทำลายครบ / Destroy makes advanced recovery infeasible and leaves the media unusable for storage. Use an approved media-appropriate process; a drilled hole or a device that no longer starts is not proof of effective destruction."
+  },
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 163,
+    "beforeEndLine": 163,
+    "afterStartLine": 163,
+    "afterEndLine": 163,
+    "original": "เทคนิคพิเศษสำหรับการทำลายข้อมูลบนระบบคลาวด์หรือไดรฟ์เสมือน (Virtual Disks) ที่ผู้ใช้งานไม่มีสิทธิ์เข้าถึงอุปกรณ์ฮาร์ดแวร์ทางกายภาพ: ทำได้โดยการเข้ารหัสข้อมูลทั้งหมดด้วยอัลกอริทึมที่แข็งแกร่ง (AES-256) ตั้งแต่ต้น จากนั้นเมื่อต้องการทำลายข้อมูล ให้ทำการลบและทำลายกุญแจถอดรหัส (Decryption Key) ทิ้งอย่างถาวร ส่งผลให้ข้อมูลที่เหลืออยู่กลายเป็นขยะดิจิทัลที่ไม่สามารถถอดรหัสกลับมาได้อีกเลย",
+    "corrected": "การทำลายกุญแจอาจใช้เป็น **Cryptographic Erase (CE)** ซึ่งเป็นเทคนิคของ Purge ไม่ใช่วิธีหลักลำดับที่สี่ ใช้ได้เมื่อข้อมูลเป้าหมายถูกเข้ารหัสอย่างเหมาะสมก่อนจัดเก็บ และล้างกุญแจเป้าหมายที่จำเป็นรวมทุกสำเนาได้อย่างน่าเชื่อถือ ต้องพิจารณาสำรองข้อมูล กุญแจสำรอง และสำเนา Plaintext แยกต่างหากด้วย / CE is a purge technique, not a fourth sanitization method. It depends on suitable encryption before storage and reliable sanitization of all copies of the target keys. Backups, escrowed keys and plaintext copies need separate consideration; CE is not a promise against every future recovery capability."
+  },
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 169,
+    "beforeEndLine": 169,
+    "afterStartLine": 169,
+    "afterEndLine": 171,
+    "original": "| วิธีการตาม NIST SP 800-88 | กลไกการดำเนินการ | ป้องกันการโจมตีระดับแล็บได้หรือไม่ | อุปกรณ์นำกลับมาใช้ใหม่ได้หรือไม่ |",
+    "corrected": "**ตรวจผลก่อนยอมรับ (Assurance):** Verification ตรวจว่ากระบวนการเสร็จและมีข้อผิดพลาดหรือไม่ ส่วน Validation ประเมินว่าผลเพียงพอต่อสื่อ ข้อมูล และความเสี่ยงที่กำหนดหรือไม่ หากไม่เพียงพอต้องเลือกดำเนินการเพิ่มเติมก่อนปล่อยสื่อ / Verification checks completion and reported issues; validation decides whether the outcome is effective for the media, data and risk. An inadequate result must not be accepted for release.\n\n| วิธี/เทคนิค (Method/technique) | แนวทาง (Approach) | ขอบเขตผล (Protection goal) | ใช้สื่อต่อ (Reuse) |"
+  },
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 171,
+    "beforeEndLine": 174,
+    "afterStartLine": 173,
+    "afterEndLine": 176,
+    "original": "| **Clear** | เขียนทับแบบลอจิคัล (Overwriting) | ไม่ได้ (แล็บขั้นสูงอาจกู้ได้) | ได้ (นำกลับมาใช้ซ้ำได้) |\n| **Purge** | Secure Erase, Degaussing, CE | **ได้ (แล็บขั้นสูงก็กู้คืนไม่ได้)** | ได้สำหรับ SSD/CE, ไม่ได้สำหรับ HDD ที่โดน Degauss |\n| **Destroy** | บดย่อย, เผาทำลาย, หลอมละลาย | **ได้ 100% (สื่อถูกทำลายถาวร)** | ไม่ได้ (อุปกรณ์พังทลายสิ้นเชิง) |\n| **Crypto-shredding** | ลบและทำลายกุญแจเข้ารหัสทิ้ง | **ได้ (หากกุญแจถูกทำลายสมบูรณ์)** | ได้ (เนื้อที่จัดเก็บบนคลาวด์นำมาเขียนทับใหม่ได้) |",
+    "corrected": "| **Clear** | เทคนิคเชิงตรรกะ (Logical technique) | ต้านการกู้แบบง่ายผ่านอินเทอร์เฟซปกติ (Simple recovery) | โดยทั่วไปได้ ตามสื่อ/นโยบาย (Usually; media/policy dependent) |\n| **Purge** | เทคนิคที่เหมาะกับสื่อ รวม CE เมื่อครบเงื่อนไข (Media-appropriate technique) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | มุ่งให้ใช้ต่อได้ แต่ขึ้นกับเทคนิค (Intended; technique dependent) |\n| **Destroy** | ทำลายทางกายภาพที่เหมาะสม (Appropriate physical destruction) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | ไม่ได้ (Unusable for storage) |\n| **CE / Crypto-shredding** | เทคนิคของ Purge: ล้างกุญแจเป้าหมาย (Purge technique: key sanitization) | ขึ้นกับการเข้ารหัสและทุกสำเนากุญแจ (Encryption/key-copy conditions) | อาจได้เมื่อสื่อยังทำงานและนโยบายอนุญาต (May be reusable under policy) |"
+  },
+  {
+    "finding": "ACC-D5-04",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 766,
+    "beforeEndLine": 766,
+    "afterStartLine": 768,
+    "afterEndLine": 770,
+    "original": "ตามมาตรฐาน **NIST SP 800-61 / ISO 27035** และหลักสูตร ISC2 CC วงจรการตอบสนองต่อเหตุการณ์แบ่งออกเป็น 6 ขั้นตอนต่อเนื่องกันอย่างเป็นระบบ:",
+    "corrected": "บทเรียนนี้ใช้ **6 กิจกรรมเป็นแบบจำลองเพื่อการเรียน (Teaching Model)** ตามภาพและตัวอย่างด้านล่าง กิจกรรมอาจคาบเกี่ยว ย้อนกลับ หรือทำซ้ำตามเหตุการณ์ ไม่ใช่ลำดับบังคับสากลที่ NIST, ISO หรือ ISC2 กำหนดตรงกัน / The six activities below are this course's teaching model. They can overlap, repeat or be revisited; they are not a universal sequence jointly prescribed by NIST, ISO and ISC2.\n\n**บริบท NIST ปัจจุบัน (Current NIST context):** NIST SP 800-61 Rev. 3 เชื่อม IR กับ CSF 2.0 โดย Detect, Respond และ Recover เป็นแกนการตอบสนอง ส่วน Govern, Identify และ Protect สนับสนุนความพร้อมและการจัดการความเสี่ยง พร้อมปรับปรุงจากบทเรียนอย่างต่อเนื่อง / NIST SP 800-61 Rev. 3 places incident response within CSF 2.0: Detect, Respond and Recover address incidents, supported by broader Govern, Identify and Protect activities and continuous improvement. นี่ไม่ใช่การเปลี่ยนเป็นขั้นตอนบังคับใหม่หกข้อ / These functions are not a replacement six-step mandatory pipeline."
+  },
+  {
+    "finding": "ACC-D5-04",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 796,
+    "beforeEndLine": 796,
+    "afterStartLine": 800,
+    "afterEndLine": 800,
+    "original": "- **Long-term Containment (การควบคุมระยะยาว):** วางระบบสำรองชั่วคราวเพื่อให้อสังหาริมทรัพย์ของระบบงานยังคงให้บริการได้ในวงจำกัดในระหว่างรอการแก้ไขถาวร",
+    "corrected": "- **Long-term Containment (การควบคุมระยะยาว):** จัดสภาพแวดล้อมชั่วคราวที่ควบคุมความเสี่ยง เพื่อให้บริการที่จำเป็นทำงานได้ในวงจำกัดระหว่างรอการแก้ไขถาวร / Maintain limited essential services in a controlled temporary environment while permanent remediation is arranged."
+  },
+  {
+    "finding": "ACC-D5-04",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 824,
+    "beforeEndLine": 825,
+    "afterStartLine": 828,
+    "afterEndLine": 829,
+    "original": "ขั้นตอนสุดท้ายแต่ทรงคุณค่าที่สุดสำหรับการปรับปรุงระบบ:\n- จัดประชุมถอดบทเรียนร่วมกับผู้เกี่ยวข้องทั้งหมดภายใน 1–2 สัปดาห์หลังเหตุการณ์ยุติ",
+    "corrected": "การทบทวนอย่างเป็นทางการหลังเหตุการณ์ช่วยปรับปรุงระบบ แต่ไม่ต้องรอให้กู้คืนเสร็จจึงเริ่มใช้บทเรียนที่พบ / A formal post-incident review supports improvement; useful lessons can be applied before recovery finishes.\n- จัดประชุมตามกรอบเวลาที่องค์กรกำหนด เช่น ภายใน 1–2 สัปดาห์หลังเหตุการณ์ยุติในตัวอย่างนี้ ไม่ใช่กำหนดสากล / Use the organization's review schedule; one to two weeks is an example, not a universal deadline."
+  },
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 1287,
+    "beforeEndLine": 1287,
+    "afterStartLine": 1291,
+    "afterEndLine": 1291,
+    "original": "- **5. Clear vs. Purge vs. Destroy:** Clear ป้องกันเครื่องมือทั่วไปแต่วิธีทางแล็บอาจกู้ได้; Purge ป้องกันได้แม้ใช้เครื่องมือแล็บขั้นสูง; Destroy ทำลายสื่อทางกายภาพจนใช้งานไม่ได้ถาวร",
+    "corrected": "- **5. Clear vs. Purge vs. Destroy:** Clear มุ่งต้านการกู้แบบง่าย; Purge มุ่งให้การกู้ระดับแล็บไม่อาจทำได้ในทางปฏิบัติ; Destroy เพิ่มการทำให้สื่อใช้จัดเก็บต่อไม่ได้ ทุกวิธีต้องเหมาะกับสื่อและตรวจผล / Clear targets simple recovery; Purge targets infeasible advanced recovery; Destroy also makes the media unusable. Match the method to the media and assess the outcome."
+  },
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 1298,
+    "beforeEndLine": 1298,
+    "afterStartLine": 1302,
+    "afterEndLine": 1302,
+    "original": "- ถ้าข้อสอบถามถึงการทำลายข้อมูลบนระบบคลาวด์ที่เข้าไม่ถึงฮาร์ดแวร์จริง คำตอบคือ Crypto-shredding (การลบและทำลายกุญแจถอดรหัสทิ้ง)",
+    "corrected": "- บนคลาวด์หรือไดรฟ์เสมือน CE / Crypto-shredding อาจเหมาะเมื่อครบเงื่อนไขการเข้ารหัสและการล้างกุญแจรวมสำเนา ไม่ใช่คำตอบอัตโนมัติเพียงเพราะเข้าไม่ถึงฮาร์ดแวร์ / For cloud or virtual storage, consider CE only when encryption and key-sanitization conditions are met; lack of physical access alone does not make it sufficient."
+  },
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 1313,
+    "beforeEndLine": 1316,
+    "afterStartLine": 1317,
+    "afterEndLine": 1320,
+    "original": "situation: โรงพยาบาลแห่งหนึ่งเตรียมปลดระวางอุปกรณ์ Solid-State Drive (SSD) ที่เคยจัดเก็บประวัติข้อมูลสุขภาพของผู้ป่วย (Protected Health Information - PHI) เพื่อนำไดรฟ์ไปบริจาคต่อให้กับสถานศึกษา ฝ่ายความปลอดภัยต้องการลบข้อมูลโดยมั่นใจว่าข้อมูลจะไม่สามารถกู้คืนได้ด้วยเครื่องมือทางห้องปฏิบัติการขั้นสูง แต่ยังคงรักษาโครงสร้างของ SSD ให้สามารถนำกลับมาใช้งานซ้ำได้\nquestion: ตามมาตรฐาน NIST SP 800-88 Rev. 1 ระดับการทำลายข้อมูล (Sanitization Level) ใดที่เหมาะสมที่สุดสำหรับสถานการณ์นี้?\nanswer: Purge (Sanitization via Cryptographic Erase / Secure Erase)\nreasoning: NIST SP 800-88 แบ่งระดับการล้างข้อมูลเป็น 3 ระดับหลัก: Clear (การเขียนทับระดับผู้ใช้ ไม่สามารถป้องกันเครื่องมือห้องแล็บขั้นสูงได้), Purge (การล้างข้อมูลระดับลึก เช่น Secure Erase ของคอนโทรลเลอร์ SSD หรือ Degaussing บนสื่อแม่เหล็ก ทำให้ไม่สามารถกู้คืนได้แม้ใช้เครื่องมือขั้นสูงในแล็บ แต่อุปกรณ์ยังนำมาใช้ต่อได้), และ Destroy (การทำลายสื่อทางกายภาพ เช่น บด ย่อย หรือเผา ซึ่งอุปกรณ์จะไม่สามารถใช้งานได้อีก)",
+    "corrected": "situation: โรงพยาบาลจะบริจาค SSD ที่เคยเก็บข้อมูลผู้ป่วย ต้องการให้การกู้ข้อมูลระดับแล็บไม่อาจทำได้ในทางปฏิบัติและให้ไดรฟ์ยังใช้ต่อได้ โดยต้องตรวจวิธีที่รุ่นนั้นรองรับและยอมรับผลตามนโยบายก่อนส่งต่อ / A hospital plans to donate a patient-data SSD. It needs infeasible advanced recovery while retaining usability, subject to a supported technique and an accepted sanitization outcome.\nquestion: ตาม NIST SP 800-88 Rev. 2 วิธีใดตรงกับเป้าหมายของกรณีนี้? / Which sanitization method matches this case's goal?\nanswer: Purge (ใช้เทคนิคที่เหมาะกับ SSD และตรวจผลแล้ว / SSD-appropriate technique with verified and validated results)\nreasoning: Purge ตรงกับเป้าหมายการกู้ระดับแล็บและการใช้สื่อต่อ ต้องเลือกเทคนิคที่ SSD รองรับ โดย CE ใช้ได้เมื่อครบเงื่อนไขการเข้ารหัสและกุญแจ การ Degauss ไม่ใช้กับ SSD และชื่อ Secure Erase อย่างเดียวไม่พิสูจน์ผล ต้อง Verification และ Validation ก่อนยอมรับ / Purge matches the advanced-recovery goal while aiming to retain usability. Select a supported SSD technique; CE requires appropriate encryption and key conditions. Degaussing is unsuitable for SSDs, and a Secure Erase label alone is not proof. Verify completion and validate effectiveness."
+  },
+  {
+    "finding": "ACC-D5-04",
+    "path": "content/isc2-cc-2026/reading/domain-5.md",
+    "beforeStartLine": 1550,
+    "beforeEndLine": 1550,
+    "afterStartLine": 1554,
+    "afterEndLine": 1554,
+    "original": "1. **Incident Response Lifecycle (6 ขั้นตอน):** Preparation &rarr; Detection &amp; Analysis &rarr; Containment &rarr; Eradication &rarr; Recovery &rarr; Post-Incident Review",
+    "corrected": "1. **Incident Response Teaching Model (6 กิจกรรม):** Preparation &rarr; Detection &amp; Analysis &rarr; Containment &rarr; Eradication &rarr; Recovery &rarr; Post-Incident Review เป็นภาพช่วยเรียน กิจกรรมอาจคาบเกี่ยวหรือย้อนกลับ ไม่ใช่ลำดับมาตรฐานบังคับ / A learning aid; activities can overlap or be revisited, rather than a mandatory standard sequence."
+  },
+  {
+    "finding": "ACC-D5-03",
+    "path": "content/isc2-cc-2026/reading/domain-5-scenarios.js",
+    "beforeStartLine": 23,
+    "beforeEndLine": 26,
+    "afterStartLine": 23,
+    "afterEndLine": 26,
+    "original": "    situation: 'โรงพยาบาลแห่งหนึ่งเตรียมปลดระวางอุปกรณ์ Solid-State Drive (SSD) ที่เคยจัดเก็บประวัติข้อมูลสุขภาพของผู้ป่วย (Protected Health Information - PHI) เพื่อนำไดรฟ์ไปบริจาคต่อให้กับสถานศึกษา ฝ่ายความปลอดภัยต้องการลบข้อมูลโดยมั่นใจว่าข้อมูลจะไม่สามารถกู้คืนได้ด้วยเครื่องมือทางห้องปฏิบัติการขั้นสูง แต่ยังคงรักษาโครงสร้างของ SSD ให้สามารถนำกลับมาใช้งานซ้ำได้',\n    question: 'ตามมาตรฐาน NIST SP 800-88 Rev. 1 ระดับการทำลายข้อมูล (Sanitization Level) ใดที่เหมาะสมที่สุดสำหรับสถานการณ์นี้?',\n    answer: 'Purge (Sanitization via Cryptographic Erase / Secure Erase)',\n    reasoning: 'NIST SP 800-88 แบ่งระดับการล้างข้อมูลเป็น 3 ระดับหลัก: Clear (การเขียนทับระดับผู้ใช้ ไม่สามารถป้องกันเครื่องมือห้องแล็บขั้นสูงได้), Purge (การล้างข้อมูลระดับลึก เช่น Secure Erase ของคอนโทรลเลอร์ SSD หรือ Degaussing บนสื่อแม่เหล็ก ทำให้ไม่สามารถกู้คืนได้แม้ใช้เครื่องมือขั้นสูงในแล็บ แต่อุปกรณ์ยังนำมาใช้ต่อได้), และ Destroy (การทำลายสื่อทางกายภาพ เช่น บด ย่อย หรือเผา ซึ่งอุปกรณ์จะไม่สามารถใช้งานได้อีก)'",
+    "corrected": "    situation: 'โรงพยาบาลจะบริจาค SSD ที่เคยเก็บข้อมูลผู้ป่วย ต้องการให้การกู้ข้อมูลระดับแล็บไม่อาจทำได้ในทางปฏิบัติและให้ไดรฟ์ยังใช้ต่อได้ โดยต้องตรวจวิธีที่รุ่นนั้นรองรับและยอมรับผลตามนโยบายก่อนส่งต่อ / A hospital plans to donate a patient-data SSD. It needs infeasible advanced recovery while retaining usability, subject to a supported technique and an accepted sanitization outcome.',\n    question: 'ตาม NIST SP 800-88 Rev. 2 วิธีใดตรงกับเป้าหมายของกรณีนี้? / Which sanitization method matches this case\\'s goal?',\n    answer: 'Purge (ใช้เทคนิคที่เหมาะกับ SSD และตรวจผลแล้ว / SSD-appropriate technique with verified and validated results)',\n    reasoning: 'Purge ตรงกับเป้าหมายการกู้ระดับแล็บและการใช้สื่อต่อ ต้องเลือกเทคนิคที่ SSD รองรับ โดย CE ใช้ได้เมื่อครบเงื่อนไขการเข้ารหัสและกุญแจ การ Degauss ไม่ใช้กับ SSD และชื่อ Secure Erase อย่างเดียวไม่พิสูจน์ผล ต้อง Verification และ Validation ก่อนยอมรับ / Purge matches the advanced-recovery goal while aiming to retain usability. Select a supported SSD technique; CE requires appropriate encryption and key conditions. Degaussing is unsuitable for SSDs, and a Secure Erase label alone is not proof. Verify completion and validate effectiveness.'"
+  }
+]

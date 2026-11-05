@@ -175,6 +175,30 @@
 
 </div>
 
+<figure class="reading-figure" style="max-width: 680px; margin: 18px auto;">
+  <div class="reading-figure-img-wrap" style="aspect-ratio: 16/9; max-height: 320px;">
+    <img src="assets/images/reading/physically-destroyed-hard-drive.jpg" alt="Physically shredded hard drive platters showing complete mechanical destruction" class="reading-figure-img" width="800" height="600" loading="lazy">
+  </div>
+  <figcaption class="reading-figcaption">
+    <span class="reading-figure-badge badge-physical">NIST SP 800-88 &middot; Physical Destruction</span>
+    <strong>การทำลายสื่อจัดเก็บข้อมูลทางกายภาพ (Physical Media Destruction):</strong> ตัวอย่างฮาร์ดดิสก์ที่ถูกบดละเอียดผ่านเครื่องทำลายฮาร์ดดิสก์อุตสาหกรรม (Industrial Hard Drive Shredder) จนแผ่นจานแม่เหล็ก (Platters) แตกกระจายเป็นเศษชิ้นส่วนโลหะขนาดเล็ก ทำให้การกู้คืนข้อมูลด้วยเทคนิคในห้องปฏิบัติการขั้นสูงเป็นไปไม่ได้อย่างสิ้นเชิง (Ultimate Sanitization)
+    <span class="reading-figure-attr">ภาพ: Raysonho / Wikimedia Commons / CC0 1.0 Universal Public Domain</span>
+  </figcaption>
+</figure>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การเลือกวิธีทำลายข้อมูลตามมาตรฐาน NIST SP 800-88 ใน 3 สถานการณ์องค์กร</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> ธนาคารพาณิชย์กำลังปลดระวางอุปกรณ์จัดเก็บข้อมูล 3 กลุ่มที่มีระดับความลับและเป้าหมายการนำไปใช้ต่างกัน: (1) แล็ปท็อปพนักงานทั่วไป 50 เครื่องที่จะบริจาคให้โรงเรียน, (2) ไดรฟ์ NVMe SSD ในเซิร์ฟเวอร์ฐานข้อมูลลูกค้า 20 ตัวที่จะส่งคืนให้บริษัทเช่าซื้อ, และ (3) ฮาร์ดดิสก์ของเซิร์ฟเวอร์จัดเก็บคีย์หลักระบบ Core Banking ที่หมดอายุการใช้งาน</div>
+  <div class="reading-example-step"><strong>2. การเลือกวิธีการและผลลัพธ์ตามระดับความลับ:</strong>
+    <ul>
+      <li><strong>กลุ่มที่ 1 &rarr; ใช้ Clear (การเขียนทับระดับลอจิคัล):</strong> แล็ปท็อปที่จะนำไปบริจาคผ่านกระบวนการเขียนทับข้อมูลด้วยศูนย์ทุกเซกเตอร์ (Single-pass Overwrite) ตามมาตรฐาน Clear ข้อมูลทั่วไปถูกลบหมดและโรงเรียนสามารถลงระบบปฏิบัติการใหม่ใช้งานได้ทันที</li>
+      <li><strong>กลุ่มที่ 2 &rarr; ใช้ Purge (Cryptographic Erase / ATA Secure Erase):</strong> ไดรฟ์ SSD ที่เคยเก็บ PII ลูกค้าต้องป้องกันไม่ให้แล็บกู้ข้อมูลได้ แม้จะส่งคืนผู้ให้เช่าซื้อ ฝ่าย IT สั่งใช้คำสั่ง Cryptographic Erase (CE) เพื่อทำลาย Master Key ของฮาร์ดแวร์ทิ้งทันที และรันคำสั่ง Sanitize Block Erase ทำให้ข้อมูลกลายเป็นสัญญาณสุ่มที่กู้คืนไม่ได้ แต่ตัวไดรฟ์ยังนำกลับมาใช้ใหม่ได้ตามเงื่อนไขสัญญาเช่า</li>
+      <li><strong>กลุ่มที่ 3 &rarr; ใช้ Destroy (การทำลายทางกายภาพอย่างถาวร):</strong> ฮาร์ดดิสก์แม่เหล็กที่เคยเก็บกุญแจหลักระบบธนาคาร ถือเป็นทรัพย์สินความมั่นคงสูงสุด องค์กรนำเข้าเครื่องบดย่อยอุตสาหกรรม (Industrial Shredder) จนแผ่นจานแม่เหล็กแตกละเอียดเป็นชิ้นส่วนขนาดเล็กกว่า 2 มิลลิเมตร พร้อมออกใบรับรอง Certificate of Destruction</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): มาตรฐาน NIST SP 800-88 แบ่งการทำลายข้อมูลเป็น 3 ระดับ: Clear ป้องกันการกู้ข้อมูลด้วยเครื่องมือซอฟต์แวร์ทั่วไปและนำสื่อกลับมาใช้ใหม่ได้, Purge ป้องกันการกู้ข้อมูลแม้ใช้เทคนิคในห้องปฏิบัติการขั้นสูง, และ Destroy ทำลายสื่อทางกายภาพจนไม่สามารถอ่านหรือนำกลับมาใช้ใหม่ได้ 100%</div>
+</div>
+
 </section>
 
 <section class="reading-structure-pilot">
@@ -262,6 +286,28 @@
 
 </div>
 
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การแลกเปลี่ยนข้อมูลบัญชีด้วยการเข้ารหัสแบบสมมาตรและอสมมาตร (Hybrid Encryption)</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> "อลิซ" ผู้จัดการฝ่ายบัญชีต้องการส่งไฟล์สเปรดชีตสรุปเงินเดือนประจำปีขนาด 500 MB ให้ "บ็อบ" ผู้จัดการฝ่ายบุคคลผ่านทางอินเทอร์เน็ต โดยข้อมูลต้องเป็นความลับสูงสุด</div>
+  <div class="reading-example-step"><strong>2. ปัญหาของการใช้ Symmetric อย่างเดียว (Key Distribution Problem):</strong>
+    <ul>
+      <li>หากอลิซใช้ <strong>AES-256</strong> เข้ารหัสไฟล์ อลิซจะได้ Ciphertext ที่ปลอดภัยและประมวลผลเร็วมาก</li>
+      <li>แต่อลิซจะส่งกุญแจลับ (Shared Secret Key K) ให้บ็อบได้อย่างไร? หากส่งทางอีเมลหรือแชต ผู้โจมตีที่ดักฟังอยู่จะขโมยกุญแจ K ไปถอดรหัสได้ทันที</li>
+      <li>นอกจากนี้ หากบริษัทมีพนักงาน 1,000 คนที่ต้องคุยกันแบบตัวต่อตัว จะต้องจัดการกุญแจลับมากถึงเกือบ 500,000 คู่กุญแจตามสูตร n(n - 1) / 2</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. วิธีแก้ปัญหาด้วย Hybrid Encryption (TLS / OpenPGP):</strong>
+    <ul>
+      <li>โปรแกรมของอลิซสร้างกุญแจสมมาตรชั่วคราวขึ้นมา 1 ดอก เรียกว่า <strong>Session Key</strong> แล้วนำไปเข้ารหัสไฟล์สเปรดชีต 500 MB ด้วย <strong>AES-256</strong> (ใช้เวลาเพียง 1 วินาที)</li>
+      <li>โปรแกรมนำเอา Session Key ดอกเล็กๆ นั้น ไปเข้ารหัสด้วย <strong>Public Key ของบ็อบ</strong> (โดยใช้อัลกอริทึม Asymmetric เช่น <strong>RSA-4096 หรือ ECC</strong>)</li>
+      <li>อลิซส่งทั้งไฟล์ที่เข้ารหัสด้วย AES และ Session Key ที่เข้ารหัสด้วย Public Key ไปให้บ็อบพร้อมกันทางเครือข่ายสาธารณะ</li>
+      <li>เมื่อบ็อบได้รับ บ็อบใช้ <strong>Private Key ของตนเอง</strong> ถอดรหัส Session Key ออกมา จากนั้นนำ Session Key นั้นไปถอดรหัสไฟล์สเปรดชีตต้นฉบับ</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): Symmetric Encryption (เช่น AES) รวดเร็วมากเหมาะกับข้อมูลปริมาณมาก แต่มีปัญหาการแจกจ่ายกุญแจ ส่วน Asymmetric Encryption (เช่น RSA, ECC) ใช้คู่กุญแจทำให้ส่งมอบ Public Key ได้อย่างปลอดภัยแต่ประมวลผลช้า สถาปัตยกรรมยุคใหม่จึงใช้ Hybrid Encryption โดยใช้ Asymmetric แลกเปลี่ยนกุญแจ Session Key และใช้ Symmetric เข้ารหัสเนื้อหาจริง</div>
+</div>
+
 </section>
 
 <section class="reading-structure-pilot">
@@ -310,6 +356,28 @@
 - **ผู้รับ (Recipient):** นำลายมือชื่อดิจิทัลไปถอดรหัสด้วย **Public Key ของผู้ส่ง** จะได้ค่าแฮชเดิม &rarr; คำนวณค่าแฮชของเอกสารที่ได้รับมาเทียบเคียง &rarr; หากค่าแฮชตรงกัน แสดงว่าเอกสารมาจากผู้ส่งจริงและไม่ถูกดัดแปลงแก้ไข
 
 </section>
+
+
+<div class="reading-semantic-diagram" data-diagram="cryptographyPipelines"></div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การตรวจสอบความถูกต้องของเฟิร์มแวร์และลายมือชื่อดิจิทัล (Avalanche Effect &amp; Digital Signature)</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> วิศวกรเครือข่ายดาวน์โหลดไฟล์อัปเดตเฟิร์มแวร์เราเตอร์หลัก "router_fw_v4.2.bin" ขนาด 120 MB จากเว็บไซต์ผู้ผลิต โดยผู้ผลิตระบุค่า SHA-256 อ้างอิงและลายมือชื่อดิจิทัลไว้บนหน้าเว็บ</div>
+  <div class="reading-example-step"><strong>2. การตรวจสอบ File Integrity และปรากฏการณ์หิมะถล่ม (Avalanche Effect):</strong>
+    <ul>
+      <li>วิศวกรใช้คำสั่ง sha256sum คำนวณค่าแฮชของไฟล์ที่ดาวน์โหลดมา ได้ผลลัพธ์เป็นค่าแฮช 64 ตัวอักษร เช่น a1b2c3...f9 ตรงกับค่าที่ผู้ผลิตประกาศไว้ 100%</li>
+      <li>สมมติว่าระหว่างดาวน์โหลด มีมัลแวร์ในเครือข่ายพยายามแทรกโค้ดอันตรายขนาดเพียง 1 บิตลงในเฟิร์มแวร์ จากคุณสมบัติ <strong>Avalanche Effect</strong> ค่า SHA-256 ที่คำนวณได้ใหม่จะเปลี่ยนไปอย่างสิ้นเชิงมากกว่า 50% ของบิตทั้งหมด วิศวกรจะทราบทันทีว่าไฟล์ถูกดัดแปลงและยกเลิกการติดตั้ง</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การยืนยันตัวตนด้วย Digital Signature (Authenticity &amp; Non-repudiation):</strong>
+    <ul>
+      <li>ลำพังเพียงค่าแฮชยังไม่พอ เพราะผู้โจมตีที่ทำ Man-in-the-Middle อาจเปลี่ยนทั้งไฟล์เฟิร์มแวร์และเปลี่ยนตัวเลขค่าแฮชบนเว็บเพจปลอมพร้อมกันได้</li>
+      <li>ผู้ผลิตจึงใช้ <strong>Private Key ของบริษัทผู้ผลิต</strong> เซ็นรับรอง (Sign) บนค่าแฮชของเฟิร์มแวร์เพื่อสร้าง <strong>Digital Signature</strong></li>
+      <li>ตัวเราเตอร์จะตรวจสอบลายมือชื่อด้วย <strong>Public Key ของผู้ผลิต</strong> ที่ฝังอยู่ในชิปฮาร์ดแวร์ หากค่าแฮชที่ถอดรหัสได้ตรงกัน แสดงว่า (1) เฟิร์มแวร์ไม่ถูกแก้ไข (Integrity), (2) มาจากผู้ผลิตตัวจริง (Authentication), และ (3) ผู้ผลิตไม่สามารถปฏิเสธความรับผิดชอบได้ (Non-repudiation)</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): ฟังก์ชันแฮช (เช่น SHA-256) เป็นกระบวนการทางเดียวสำหรับตรวจสอบความถูกต้องสมบูรณ์ (Integrity) โดยการเปลี่ยนเพียง 1 บิตจะทำให้ผลลัพธ์เปลี่ยนไปโดยสิ้นเชิง (Avalanche Effect) และเมื่อนำค่าแฮชไปเข้ารหัสด้วย Private Key ของผู้ส่ง จะได้เป็น ลายมือชื่อดิจิทัล (Digital Signature) ที่ให้ทั้ง Integrity, Authentication และ Non-repudiation</div>
+</div>
 
 </section>
 
@@ -436,6 +504,29 @@
 - **ผลลัพธ์ Correlation:** หากมองแยกชิ้น เหตุการณ์เหล่านี้อาจดูเหมือนเรื่องทั่วไป แต่เมื่อ SIEM นำมาร้อยเรียงกัน ระบบจะสามารถสรุปได้ทันทีว่า **"กำลังเกิดการโจมตีแบบ Brute-Force สำเร็จและมีการสั่งรันโค้ดเจาะระบบ"** พร้อมยกระดับเป็นแจ้งเตือนวิกฤต (Critical Incident Alert) ทันที
 
 </section>
+
+<div class="reading-semantic-diagram" data-diagram="siemTelemetryPipeline"></div>
+
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การตรวจจับการโจมตีข้ามเซิร์ฟเวอร์ด้วย SIEM Event Correlation</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> องค์กรมีเซิร์ฟเวอร์ 5 เครื่องในระบบงาน และได้รับเหตุการณ์ล็อกอินล้มเหลว (Event ID 4625) เฉลี่ยวันละหลายร้อยครั้งจากผู้ใช้ทั่วไปที่พิมพ์รหัสผ่านผิด หากดูแยกทีละเครื่องจะไม่มีอะไรผิดปกติ</div>
+  <div class="reading-example-step"><strong>2. เหตุการณ์การโจมตีแบบ Password Spraying:</strong>
+    <ul>
+      <li>ผู้โจมตีสุ่มใช้รหัสผ่านยอดนิยมอย่าง "Winter2026!" ยิงทดสอบไปยังบัญชีพนักงาน 100 คนบนเซิร์ฟเวอร์ 5 เครื่องพร้อมกัน โดยเว้นช่วงไม่ให้บัญชีใดบัญชีหนึ่งถูกล็อก</li>
+      <li>เซิร์ฟเวอร์แต่ละเครื่องบันทึกเฉพาะล็อกอินล้มเหลวเครื่องละ 20 ครั้ง ซึ่งผู้ดูแลระบบแต่ละเครื่องมองว่าเป็นเหตุการณ์ปกติ (Isolated Log Noise)</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. พลังของ SIEM Event Correlation (Connecting the Dots):</strong>
+    <ul>
+      <li>ระบบ SIEM ดึงล็อก (Log Ingestion &amp; Aggregation) จากเซิร์ฟเวอร์ทั้ง 5 เครื่อง, ไฟร์วอลล์, และ VPN Gateway มารวมที่ศูนย์กลาง</li>
+      <li><strong>Correlation Rule:</strong> มีการตั้งกฎว่า <em>"หากมี IP แอดเดรสเดียวกัน พยายามล็อกอินล้มเหลวด้วยรหัสผ่านเดียวกัน ไปยังบัญชีผู้ใช้มากกว่า 10 บัญชี ภายในเวลา 5 นาที ข้ามเครื่องเซิร์ฟเวอร์มากกว่า 2 เครื่อง ให้จัดเป็นภัยคุกคามระดับสูง"</em></li>
+      <li>เครื่องยนต์ Event Correlation ทำการจับคู่เวลา (Time-window), IP ต้นทาง และชื่อผู้ใช้ข้ามอุปกรณ์ทั้ง 5 เครื่องเข้าด้วยกัน แล้วสรุปเป็น <strong>High-Severity Alert: Distributed Password Spraying Attack</strong> ทันที</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>4. การตอบสนองอัตโนมัติ (Automated Containment):</strong> ระบบ SIEM สั่งการไปยังไฟร์วอลล์เพื่อขึ้นบัญชีดำบล็อก IP ของผู้โจมตี และแจ้งเตือนให้นักวิเคราะห์ SOC ดำเนินการรีเซ็ตรหัสผ่านบัญชีพนักงานที่มีความเสี่ยง</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): Log Aggregation คือการรวบรวมล็อกมาไว้ที่เดียว แต่หัวใจสำคัญที่แท้จริงของ SIEM คือ Event Correlation ซึ่งเป็นการเชื่อมโยงความสัมพันธ์ของล็อกหลายร้อยรายการจากหลายอุปกรณ์เข้าด้วยกันตามเวลาและตรรกะ เพื่อตรวจจับการโจมตีที่ซับซ้อนซึ่งไม่สามารถมองเห็นได้จากการดูล็อกทีละเครื่อง</div>
+</div>
 
 </section>
 
@@ -853,6 +944,33 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 
 </section>
 
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การรับมือวิกฤตแรนซัมแวร์ตามวงจร Incident Response Lifecycle 6 ขั้นตอน</div>
+  <div class="reading-example-step"><strong>1. Preparation (การเตรียมความพร้อม):</strong> องค์กรมีแผน IRP จัดตั้งทีม CSIRT มีการติดตั้งซอฟต์แวร์ EDR บนทุกเครื่อง และทำระบบสำรองข้อมูลแบบ Immutable Cloud Backup ตลอดจนซ้อมแผน Tabletop Exercise ทุกปี</div>
+  <div class="reading-example-step"><strong>2. Detection &amp; Analysis (การตรวจจับและวิเคราะห์):</strong>
+    <ul>
+      <li>เวลา 09:15 น. ระบบ EDR ตรวจพบลักษณะการเข้ารหัสไฟล์ผิดปกติบนเครื่องของแผนกจัดซื้อ และแจ้งเตือนมายัง SIEM</li>
+      <li>นักวิเคราะห์ SOC วิเคราะห์ Signature ยืนยันว่าคือแรนซัมแวร์ LockBit ที่พยายามเชื่อมต่อ C2 Server เพื่อดาวน์โหลดเพย์โหลดเพิ่มเติม</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. Containment (การควบคุมและกักกันความเสียหาย):</strong>
+    <ul>
+      <li><strong>Short-term Containment:</strong> ทีม CSIRT สั่ง EDR กักกันเครื่อง (Network Isolation) ตัดสัญญาณ Wi-Fi และดึงสาย LAN ทันทีเพื่อหยุดการแพร่กระจายไปยังเซิร์ฟเวอร์ส่วนกลาง</li>
+      <li>บล็อกโดเมนและ IP ของ C2 Server บน External Firewall ทั่วทั้งองค์กร</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>4. Eradication (การกำจัดต้นตอ):</strong>
+    <ul>
+      <li>ตรวจพบว่าผู้โจมตีเข้ามาทางช่องโหว่ VPN ที่ไม่ได้แพตช์ ทีมความปลอดภัยจึงทำการติดตั้งแพตช์อุดช่องโหว่ VPN ทันที</li>
+      <li>สั่งล้างระบบเครื่องที่ติดมัลแวร์ทั้งหมดและติดตั้งระบบปฏิบัติการใหม่จาก Gold Image ที่สะอาด (Re-imaging) พร้อมทั้งบังคับรีเซ็ตรหัสผ่านและโทเค็นเซสชันของบัญชีที่เกี่ยวข้องทั้งหมด</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>5. Recovery (การกู้คืนระบบ):</strong> ทีม IT กู้คืนไฟล์ข้อมูลจากระบบ Immutable Backup ของคืนก่อนหน้า ทำการตรวจสอบความสมบูรณ์และสแกนหามัลแวร์ซ้ำ จากนั้นเปิดระบบให้พนักงานจัดซื้อกลับมาทำงานตามปกติ พร้อมเฝ้าระวังทราฟฟิกเครือข่ายอย่างใกล้ชิดตลอด 48 ชั่วโมง</div>
+  <div class="reading-example-step"><strong>6. Post-Incident Review / Lessons Learned (การทบทวนหลังเหตุการณ์):</strong> ทีม CSIRT และผู้บริหารประชุมทบทวนเหตุการณ์ บันทึก Timeline และช่องโหว่ นำข้อผิดพลาดมาปรับปรุงกระบวนการ Patch Management ให้มีระยะเวลาติดตั้งแพตช์เร็วขึ้น และจัดฝึกอบรมพนักงานเรื่องการสังเกตไฟล์แนบอันตรายเพิ่มเติม</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): กระบวนการรับมือเหตุการณ์ความมั่นคงปลอดภัยต้องดำเนินตาม 6 ขั้นตอนของ NIST SP 800-61 / ISC2: การเตรียมพร้อม &rarr; การตรวจจับและวิเคราะห์ &rarr; การกักกัน &rarr; การกำจัดต้นตอ &rarr; การกู้คืนระบบ &rarr; และการสรุปบทเรียน โดยห้ามข้ามขั้นตอนการกักกัน (Containment) ก่อนไปเริ่มกำจัดมัลแวร์ เพื่อป้องกันไม่ให้มัลแวร์ลุกลามไปยังระบบอื่น</div>
+</div>
+
 </section>
 
 <section class="reading-structure-pilot">
@@ -1107,6 +1225,8 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 | **Purple Team** | ผสานความร่วมมือ (Collaboration) | ซ้อมร่วมกันแบบเรียลไทม์, แลกเปลี่ยนข้อมูลเชิงลึก | ยกระดับขีดความสามารถการตรวจจับอย่างรวดเร็ว |
 
 </div>
+
+<div class="reading-semantic-diagram" data-diagram="purpleTeamLoop"></div>
 
 </section>
 

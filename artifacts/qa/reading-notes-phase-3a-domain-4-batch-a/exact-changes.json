@@ -1,0 +1,135 @@
+[
+  {
+    "finding": "ACC-D4-01",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "- **ความปลอดภัยในตัว:** รองรับมาตรฐานความมั่นคงปลอดภัย **IPsec (IP Security)** ในระดับสถาปัตยกรรมมาตั้งแต่ต้น",
+    "after": "- **การใช้ IPsec (IP Security):** IPv6 ใช้ IPsec ได้เมื่อรองรับและกำหนดค่าการใช้งานอย่างเหมาะสม แต่ที่อยู่ IPv6 เพียงอย่างเดียวไม่ได้เข้ารหัสหรือยืนยันความถูกต้องของทราฟฟิก / IPv6 can use properly supported and configured IPsec; IPv6 addressing alone does not encrypt or authenticate traffic.",
+    "entryLine": 299
+  },
+  {
+    "finding": "ACC-D4-01",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "รองรับ IPsec ในตัว",
+    "after": "ใช้ IPsec ได้เมื่อรองรับและกำหนดค่า; IPv6 ไม่ได้ป้องกันทราฟฟิกโดยอัตโนมัติ (IPsec requires actual use/configuration)",
+    "entryLine": 1084
+  },
+  {
+    "finding": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "- **Reliable Delivery:** รับประกันความสมบูรณ์ของข้อมูล มีการตรวจสอบลำดับแพ็กเก็ต (Sequencing) และมีการส่งซ้ำหากข้อมูลสูญหาย (Retransmission)",
+    "after": "- **Reliable Delivery:** ให้บริการข้อมูลไบต์แบบเรียงลำดับและเชื่อถือได้ ด้วยลำดับหมายเลขและการส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว ความเชื่อถือได้ของ TCP ไม่ได้รับรองว่าธุรกรรมในแอปสำเร็จ หรือให้ความลับและการตรวจความถูกต้องเชิงคริปโต / TCP provides a reliable, in-order byte stream with sequencing and retransmission, but connections can fail. Transport reliability alone does not provide cryptographic protection or confirm application transaction completion.",
+    "entryLine": 332
+  },
+  {
+    "finding": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "- เหมาะสำหรับงานที่ห้ามข้อมูลผิดพลาดหรือสูญหาย: Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP)",
+    "after": "- มักใช้กับงานที่ต้องการข้อมูลเรียงลำดับและการส่งซ้ำ เช่น Web Browsing (HTTP/HTTPS), File Transfer (FTP/SFTP), Remote Terminal (SSH), อีเมล (SMTP/IMAP) / Common uses needing ordered delivery and retransmission.",
+    "entryLine": 334
+  },
+  {
+    "finding": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "- **Low Overhead &amp; High Speed:** ขนาด Header สั้นมาก (เพียง 8 ไบต์ เมื่อเทียบกับ 20 ไบต์ของ TCP) ทำให้ประมวลผลได้รวดเร็วมาก",
+    "after": "- **Low Overhead:** UDP มี Header 8 ไบต์ เทียบกับ TCP อย่างน้อย 20 ไบต์ แต่ไม่ได้รับประกันว่าจะเร็วกว่า; ความเร็วและความหน่วงขึ้นกับเครือข่ายและแอป / UDP has an 8-byte header versus TCP’s minimum 20 bytes; actual speed and latency depend on the network and application.",
+    "entryLine": 343
+  },
+  {
+    "finding": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "| **Data Reliability** | สูง รับประกันข้อมูลครบถ้วน มีการส่งซ้ำ | ต่ำ แบบ Best-Effort ไม่มีการส่งซ้ำ |",
+    "after": "| **Data Reliability** | ข้อมูลไบต์เรียงลำดับและส่งซ้ำ แต่การเชื่อมต่ออาจล้มเหลว (Reliable ordered stream; connection failure possible) | Best-Effort; UDP เองไม่รับประกันลำดับหรือส่งซ้ำ (No built-in ordering/retransmission) |",
+    "entryLine": 354
+  },
+  {
+    "finding": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "| **Speed &amp; Latency** | ช้ากว่า มีภาระในการตรวจสอบ | รวดเร็ว มีค่าหน่วงเวลา (Latency) ต่ำ |",
+    "after": "| **Speed &amp; Latency** | มีภาระจากกลไกความเชื่อถือได้; ผลจริงขึ้นกับสภาพใช้งาน (Context-dependent) | มีภาระพื้นฐานน้อยกว่า แต่ไม่รับประกันความเร็วหรือความหน่วง (No universal speed/latency guarantee) |",
+    "entryLine": 356
+  },
+  {
+    "finding": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "Connection-oriented, 3-way handshake, รับประกันความสมบูรณ์ของข้อมูล เหมาะกับเว็บ (HTTP/S), อีเมล, และการโอนย้ายไฟล์",
+    "after": "Connection-oriented, 3-way handshake, reliable ordered byte stream; การเชื่อมต่ออาจล้มเหลว และไม่ยืนยันว่าธุรกรรมในแอปสำเร็จ (Connection failure possible; no application-completion guarantee)",
+    "entryLine": 1066
+  },
+  {
+    "finding": "ACC-D4-02",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "Connectionless, ไม่มีการจับมือ, ส่งข้อมูลรวดเร็วแบบ Best-effort ยอมรับข้อมูลสูญหายได้ เหมาะกับสตรีมมิง, VoIP, DNS, และ DHCP",
+    "after": "Connectionless, ไม่มีการจับมือ, Best-effort โดยไม่มีการเรียงลำดับหรือส่งซ้ำใน UDP เอง; ความเร็วขึ้นกับเครือข่ายและแอป (Speed depends on network/application)",
+    "entryLine": 1070
+  },
+  {
+    "finding": "ENR-D4-04",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "- **ความแตกต่างสำคัญ:** ในขณะที่ระบบสารสนเทศทั่วไป (IT) ให้ความสำคัญสูงสุดกับความลับ (Confidentiality) แต่ระบบอุตสาหกรรม (OT/ICS) ให้ความสำคัญสูงสุดกับ **ความพร้อมใช้งาน (Availability) และความปลอดภัยต่อชีวิตมนุษย์ (Safety)**",
+    "after": "- **ความแตกต่างสำคัญ:** OT/ICS ต้องประเมิน Safety, ความเชื่อถือได้ ความพร้อมใช้งาน และผลต่อกระบวนการก่อนเปลี่ยนระบบ ลำดับความสำคัญขึ้นกับความเสี่ยงของงาน; IT ก็ไม่ได้ให้ Confidentiality สูงสุดทุกกรณี / Assess OT safety, reliability, availability and process impact before changes. Priorities depend on the process and risk; IT does not universally prioritize confidentiality.",
+    "entryLine": 603
+  },
+  {
+    "finding": "ENR-D4-04",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "- **Purdue Model for Industrial Control Systems (สถาปัตยกรรมแบ่งชั้นความปลอดภัย Purdue Model):**",
+    "after": "- **Purdue Model — บริบทเสริมทางเลือก (Optional architecture context):** ตัวอย่างการจัดกลุ่มระบบตามหน้าที่ ไม่ใช่สถาปัตยกรรมบังคับสำหรับ OT ทุกระบบ / An example functional grouping, not a universal OT architecture:",
+    "entryLine": 605
+  },
+  {
+    "finding": "ENR-D4-04",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "  - **Level 3.5 (Industrial DMZ — IDMZ):** **เขตกันชนความปลอดภัยที่สำคัญที่สุด** ทำหน้าที่คั่นกลางและตัดขาดการเชื่อมต่อโดยตรงระหว่างเครือข่ายอุตสาหกรรม (OT) และเครือข่ายสำนักงาน (IT)",
+    "after": "  - **Level 3.5 (Industrial DMZ — IDMZ):** ตัวอย่างเขตกันชนสำหรับควบคุมการสื่อสาร IT/OT ตามสถาปัตยกรรมและนโยบายที่เลือก (Example IT/OT communication boundary under the selected architecture/policy)",
+    "entryLine": 610
+  },
+  {
+    "finding": "ENR-D4-04",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "- **กฎเหล็กด้านความปลอดภัยของ ICS/SCADA:** ห้ามเชื่อมต่อเครือข่าย Level 4/5 (IT สำนักงาน หรือ อินเทอร์เน็ต) ตรงเข้าสู่ Level 0–2 (เครื่องจักรอุตสาหกรรม) โดยเด็ดขาด การส่งผ่านข้อมูลต้องทำผ่าน Industrial DMZ (IDMZ) หรือ Data Diode แบบสื่อสารทางเดียวเท่านั้น",
+    "after": "- **การสื่อสารที่จำเป็นของ ICS/SCADA:** แยก IT/OT และอนุญาตเฉพาะเส้นทางที่จำเป็นซึ่งควบคุมและตรวจสอบได้ตามความเสี่ยง/ผลต่อกระบวนการ ใช้สถาปัตยกรรมที่เหมาะสม เช่น Firewall/DMZ; Data Diode เป็นทางเลือกสำหรับความต้องการสื่อสารทางเดียว ไม่ใช่กฎเส้นทางเดียวสำหรับทุกระบบ / Separate IT/OT and permit only necessary, controlled and monitored paths suited to process risk. Firewalls/DMZs and, where one-way communication fits, data diodes are architectural options rather than a universal sole path.",
+    "entryLine": 612
+  },
+  {
+    "finding": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "คือเครือข่ายที่อุปกรณ์ทุกเครื่องเชื่อมต่อถึงกันโดยตรงโดยไม่มีการกั้นส่วน หากเครื่องใดเครื่องหนึ่งติดมัลแวร์หรือถูกแฮก ผู้โจมตีจะสามารถเข้าถึงเครื่องอื่น ๆ ในเครือข่ายได้ทันที",
+    "after": "เครือข่ายที่ไม่มีการแบ่งเขตควบคุมภายในอาจเปิดเส้นทางให้ผู้โจมตีเข้าถึงระบบอื่นได้กว้างขึ้น แต่ไม่ได้แปลว่าทุกเครื่องถูกเจาะแล้ว; ผลขึ้นกับการเข้าถึงและมาตรการที่มี / A flat network can expose more reachable systems, but does not prove every host is compromised; reachability and other controls matter.",
+    "entryLine": 629
+  },
+  {
+    "finding": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** เมื่อเกิดเหตุการณ์ความมั่นคงปลอดภัย ความเสียหายจะถูกจำกัดอยู่เฉพาะภายในเซกเมนต์นั้น ๆ ไม่ลุกลามไปยังระบบอื่น",
+    "after": "- **Reduce Blast Radius (จำกัดรัศมีความเสียหาย):** ช่วยลดขอบเขตผลกระทบเมื่อขอบเขตถูกบังคับใช้และทดสอบ แต่ไม่รับประกันว่าจะอยู่ในเซกเมนต์เดียว / Enforced, tested boundaries can reduce impact; they do not guarantee single-segment containment.",
+    "entryLine": 635
+  },
+  {
+    "finding": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "- **Prevent Lateral Movement (หยุดยั้งการเคลื่อนที่ในแนวราบ):** ผู้โจมตีไม่สามารถสแกนหรือส่งมัลแวร์ข้ามไปยังเซิร์ฟเวอร์สำคัญได้โดยตรง",
+    "after": "- **Limit Lateral Movement (จำกัดการเคลื่อนที่ในแนวราบ):** จำกัดเส้นทางตามนโยบายที่บังคับใช้จริง; เส้นทางที่ยังอนุญาตหรือจุดควบคุมที่ถูกเจาะอาจเปิดทางได้ ชื่อ VLAN อย่างเดียวไม่ใช่นโยบายบังคับใช้ / Enforcement limits reachable paths; allowed paths or compromised controls can still permit movement. A VLAN label alone is not enforcement.",
+    "entryLine": 636
+  },
+  {
+    "finding": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "- **Traffic Isolation &amp; Performance:** ลดปริมาณการแพร่กระจายของ Broadcast ทำให้เครือข่ายมีประสิทธิภาพสูงขึ้น",
+    "after": "- **Traffic Isolation &amp; Performance:** การแยก Broadcast Domain เช่น VLAN อาจลด Broadcast ในแต่ละส่วน แต่ผลด้านประสิทธิภาพขึ้นกับการออกแบบและปริมาณงาน / Separating broadcast domains can reduce local broadcast traffic; performance depends on design and workload.",
+    "entryLine": 637
+  },
+  {
+    "finding": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "- **Compliance &amp; Audit Scope:** ช่วยลดขอบเขตการตรวจสอบมาตรฐานความปลอดภัย (เช่น PCI DSS สำหรับข้อมูลบัตรเครดิต) โดยจำกัดให้ตรวจเฉพาะเซกเมนต์ที่เกี่ยวข้องเท่านั้น",
+    "after": "- **Compliance &amp; Audit Scope:** การลดขอบเขต เช่น PCI DSS ต้องเป็นไปตามเงื่อนไขของมาตรฐานที่ใช้และตรวจยืนยันประสิทธิผลของการแยก ไม่ได้ลดขอบเขตโดยอัตโนมัติ / Scope reduction depends on applicable requirements and validated segmentation effectiveness; it is not automatic.",
+    "entryLine": 638
+  },
+  {
+    "finding": "ACC-D4-03",
+    "path": "content/isc2-cc-2026/reading/domain-4.md",
+    "before": "| **Segmentation** | \"Blast radius\", \"Lateral movement\", \"Divide network\" | กักบริเวณความเสียหายและหยุดยั้งการแพร่กระจายของภัยคุกคาม | แยกแผนกการเงินออกจากแผนกต้อนรับ |",
+    "after": "| **Segmentation** | \"Blast radius\", \"Lateral movement\", \"Divide network\" | ช่วยลดผลกระทบและจำกัดเส้นทางเมื่อบังคับใช้/ทดสอบนโยบาย (Risk reduction with enforced/tested policy) | แยกแผนกการเงินออกจากแผนกต้อนรับและตรวจเส้นทางที่อนุญาต/ปฏิเสธ |",
+    "entryLine": 1239
+  }
+]
