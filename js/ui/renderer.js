@@ -11,6 +11,7 @@ import { renderHomeScreen } from './screen-home.js';
 import { renderExamVersionsScreen } from './screen-versions.js';
 import { renderCertStartScreen } from './screen-start.js';
 import { renderQuizScreen } from './screen-quiz.js';
+import { renderStudyAnswersScreen } from './screen-study-answers.js';
 import { renderResultsScreen, renderReviewWrongScreen } from './screen-results.js';
 import { renderVocabularyScreen } from './screen-vocabulary.js';
 import { renderReadingScreen } from './screen-reading.js';
@@ -146,6 +147,10 @@ export async function renderApp(versionError = '') {
       );
       break;
     }
+
+    case 'study-answers':
+      renderStudyAnswersScreen(container, renderApp);
+      break;
 
     case 'quiz':
       renderQuizScreen(

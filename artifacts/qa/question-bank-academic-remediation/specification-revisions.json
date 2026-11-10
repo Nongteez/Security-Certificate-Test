@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1041,
+    "type": "historical-reference-only",
+    "before": {
+      "proposed_id": 1041,
+      "domain": 1,
+      "objective": "1.1",
+      "target": "Accounting and attributable activity",
+      "context": "Evidence linking an approved actor to an operation; distinguish login and permission evidence",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "evidence selection",
+      "terminology": "AAA; accounting; audit trail",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+        "line": 115,
+        "heading": "3.4 Accounting / Auditing — การบันทึกและตรวจสอบ"
+      },
+      "overlap": "587 tests authorization; corrupted 588 does not count as accounting coverage.",
+      "source_limit": "Local supporting text available; final academic and bilingual gates required."
+    },
+    "after": {
+      "proposed_id": 1041,
+      "domain": 1,
+      "objective": "1.1",
+      "target": "Accounting and attributable activity",
+      "context": "Evidence linking an approved actor to an operation; distinguish login and permission evidence",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "evidence selection",
+      "terminology": "AAA; accounting; audit trail",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+        "line": 115,
+        "heading": "3.4 Accounting / Auditing — การบันทึกและตรวจสอบ"
+      },
+      "overlap": "587 tests authorization; repaired 588 tests same-factor authentication, not accounting. No primary accounting decision is present.",
+      "source_limit": "Local supporting text available; final academic and bilingual gates required."
+    }
+  },
+  {
+    "id": 1042,
+    "type": "historical-reference-only",
+    "before": {
+      "proposed_id": 1042,
+      "domain": 1,
+      "objective": "1.1",
+      "target": "Non-repudiation versus authentication",
+      "context": "Evidence of a past signed action rather than successful current login",
+      "cognitive": "understand",
+      "difficulty": "foundational",
+      "style": "concept distinction",
+      "terminology": "non-repudiation; authentication; evidence",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+        "line": 130,
+        "heading": "4.1 Non-repudiation — การไม่อาจปฏิเสธการกระทำ"
+      },
+      "overlap": "No current primary target; 589 has unrelated corrupted explanation. New crypto mechanics slot 1083 has a different target.",
+      "source_limit": "Local explanation is qualified; verify official ethics/privacy terminology and NIST signature evidence, without legal-proof guarantees."
+    },
+    "after": {
+      "proposed_id": 1042,
+      "domain": 1,
+      "objective": "1.1",
+      "target": "Non-repudiation versus authentication",
+      "context": "Evidence of a past signed action rather than successful current login",
+      "cognitive": "understand",
+      "difficulty": "foundational",
+      "style": "concept distinction",
+      "terminology": "non-repudiation; authentication; evidence",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+        "line": 130,
+        "heading": "4.1 Non-repudiation — การไม่อาจปฏิเสธการกระทำ"
+      },
+      "overlap": "Repaired 589 tests controller/processor roles; no primary non-repudiation target. 1083 tests signature key mechanics rather than evidentiary purpose.",
+      "source_limit": "Local explanation is qualified; verify official ethics/privacy terminology and NIST signature evidence, without legal-proof guarantees."
+    }
+  },
+  {
+    "id": 1044,
+    "type": "design",
+    "before": {
+      "proposed_id": 1044,
+      "domain": 1,
+      "objective": "1.1",
+      "target": "Retention with a stated lawful exception",
+      "context": "Routine retention decision for non-incident personal records under an explicit applicable rule",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "policy application",
+      "terminology": "retention; personal data; exception",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+        "line": 431,
+        "heading": "13. Data Retention"
+      },
+      "overlap": "1022 is an incident preservation hold; this tests ordinary privacy lifecycle and defined duration.",
+      "source_limit": "No jurisdiction-specific retention period supplied locally; put the applicable rule in the future scenario, or hold for legal-source research."
+    },
+    "after": {
+      "proposed_id": 1044,
+      "domain": 1,
+      "objective": "1.1",
+      "target": "Apply a supplied ordinary retention schedule",
+      "context": "Determine disposition from an explicitly supplied retention period and trigger; no erasure request, legal hold or exceptional preservation condition.",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "apply a supplied schedule",
+      "terminology": "retention; personal data; exception",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+        "line": 431,
+        "heading": "13. Data Retention"
+      },
+      "overlap": "1022 tests an incident/legal-hold exception. 1045 tests category-scoped erasure conflicts. This slot applies the ordinary schedule only.",
+      "source_limit": "Read D1 sum 431–451, Data Retention. Supply the rule; do not invent a statutory period or universal deletion requirement."
+    }
+  },
+  {
+    "id": 1045,
+    "type": "design",
+    "before": {
+      "proposed_id": 1045,
+      "domain": 1,
+      "objective": "1.1",
+      "target": "Erasure request is conditional",
+      "context": "Privacy deletion request conflicting with a supplied lawful retention duty",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "constraint analysis",
+      "terminology": "erasure; retention; applicable requirement",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+        "line": 453,
+        "heading": "14. Right to Be Forgotten"
+      },
+      "overlap": "Distinct from retention scheduling and 1022 incident hold: assess a data-subject request and exception.",
+      "source_limit": "Do not invent GDPR/Thai PDPA exceptions or claim automatic erasure; research actual law if named."
+    },
+    "after": {
+      "proposed_id": 1045,
+      "domain": 1,
+      "objective": "1.1",
+      "target": "Scope an erasure request against supplied retention obligations",
+      "context": "Separate explicitly defined record categories eligible for erasure from categories subject to a stated retention requirement; avoid blanket deletion or blanket retention.",
+      "cognitive": "analyze",
+      "difficulty": "applied",
+      "style": "category-scoped disposition",
+      "terminology": "erasure; retention; applicable requirement",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+        "line": 453,
+        "heading": "14. Right to Be Forgotten"
+      },
+      "overlap": "1044 applies an ordinary schedule without competing requests; 1022 concerns incident preservation. This target is category-scoped rights-request disposition.",
+      "source_limit": "D1 sum 453–468, Right to Be Forgotten, with 431–451 retention. Supply the governing requirement and affected categories; no unsupported named-law exceptions or legal advice."
+    }
+  },
+  {
+    "id": 1046,
+    "type": "design",
+    "before": {
+      "proposed_id": 1046,
+      "domain": 1,
+      "objective": "1.1",
+      "target": "Privacy versus confidentiality",
+      "context": "Restricted access to personal data does not by itself justify its collection/use",
+      "cognitive": "analyze",
+      "difficulty": "foundational",
+      "style": "concept distinction",
+      "terminology": "privacy; confidentiality; purpose",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+        "line": 142,
+        "heading": "4.3 Accountability — ความรับผิดชอบตรวจสอบย้อนกลับได้"
+      },
+      "overlap": "585 protects visibility of card data; new target is authorized but inappropriate use, not another masking choice.",
+      "source_limit": "Local supporting text available; final academic and bilingual gates required."
+    },
+    "after": {
+      "proposed_id": 1046,
+      "domain": 1,
+      "objective": "1.1",
+      "target": "Purpose-compatible use of personal data",
+      "context": "An authorized secondary use conflicts with the explicitly stated original purpose and governing rule while confidentiality and access boundaries remain intact.",
+      "cognitive": "apply",
+      "difficulty": "foundational",
+      "style": "purpose-use distinction",
+      "terminology": "privacy; confidentiality; purpose",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+        "line": 136,
+        "heading": "4.2 Privacy — ความเป็นส่วนตัว"
+      },
+      "overlap": "1043 concerns unnecessary collection; 585 concerns masking. Assess permitted purpose of use, not minimization, confidentiality failure or accountability logging.",
+      "source_limit": "Read Domain 1.md 136–146 Privacy; corrected from the Accountability heading at 142. Do not imply every secondary use is forbidden; supply the purpose rule."
+    }
+  },
+  {
+    "id": 1051,
+    "type": "design",
+    "before": {
+      "proposed_id": 1051,
+      "domain": 1,
+      "objective": "1.2",
+      "target": "Risk-based control investment",
+      "context": "Compare a stated control cost with a stated expected loss reduction and nonfinancial constraints",
+      "cognitive": "analyze",
+      "difficulty": "applied",
+      "style": "decision scenario",
+      "terminology": "likelihood; impact; treatment cost",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/Script - DOMAIN 1.txt",
+        "line": 181,
+        "heading": "00:43:30 - 00:44:46"
+      },
+      "overlap": "596/633 concern reporting format, not selecting investment using explicit evidence.",
+      "source_limit": "Local source supports risk response, but no universal ROI decision rule; include governing constraints and research any named economic formula."
+    },
+    "after": {
+      "proposed_id": 1051,
+      "domain": 1,
+      "objective": "1.2",
+      "target": "Constrained comparison of risk-treatment evidence",
+      "context": "Compare supplied costs and expected loss reductions on a common time horizon and unit basis, subject to explicit binding legal, safety or policy constraints; identify the defensible comparison rather than a universal cost-only acceptance rule.",
+      "cognitive": "analyze",
+      "difficulty": "applied",
+      "style": "constrained evidence comparison",
+      "terminology": "likelihood; impact; treatment cost",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 1/Script - DOMAIN 1.txt",
+        "line": 175,
+        "heading": "00:41:59–00:44:46 — risk acceptance cost example (read through line 182)"
+      },
+      "overlap": "1049 calculates a single-loss estimate; 1050 annualizes loss. This slot interprets comparable treatment evidence under constraints. 1065 compares metric cohorts rather than investment choices.",
+      "source_limit": "Read transcript 175–182 in full, not fragment 181 alone. Its simplified cost comparison is not a universal acceptance rule. Supplement Domain 1.md governance 231–252 and NIST SP800-30r1 §2.3.2; supply common horizon, cost categories, benefits and binding constraints. No advanced finance or unstated ROI formula."
+    }
+  },
+  {
+    "id": 1071,
+    "type": "design",
+    "before": {
+      "proposed_id": 1071,
+      "domain": 3,
+      "objective": "3.2",
+      "target": "Group membership and granted permissions",
+      "context": "Incorrect group membership produces excess effective resource access",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "remediation selection",
+      "terminology": "group; membership; permission; least privilege",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 3/D3 surm.md",
+        "line": 564,
+        "heading": "15.2 Group-Based Access"
+      },
+      "overlap": "665 infers total rights from multiple roles; new target is correcting an explicitly wrong membership while retaining justified groups. Hold if draft reduces to the same rights-inference decision.",
+      "source_limit": "Local supporting text available; final academic and bilingual gates required."
+    },
+    "after": {
+      "proposed_id": 1071,
+      "domain": 3,
+      "objective": "3.2",
+      "target": "Prospective scope of a group-wide permission change",
+      "context": "Identify all affected principals before changing a shared group permission. Membership is fixed; only permissions from that single flat group apply. No nesting, overrides or deny-precedence rules.",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "prospective permission-scope prediction",
+      "terminology": "group; membership; permission; least privilege",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 3/D3 surm.md",
+        "line": 564,
+        "heading": "15.2 Group-Based Access"
+      },
+      "overlap": "648/649 concern mover cleanup and verification; 658 read-only PoLP; 665 existing multiple-role effective rights; 663 identifies RBAC. This is prospective blast radius of one shared permission edit, not cleanup or model recall.",
+      "source_limit": "D3 surm 564–566 Group-Based Access supports assigning permissions to groups. Microsoft access-control overview corroborates member permissions. Explicit simplified model is required; do not generalize to nested inheritance or vendor-specific precedence."
+    }
+  },
+  {
+    "id": 1078,
+    "type": "design",
+    "before": {
+      "proposed_id": 1078,
+      "domain": 4,
+      "objective": "4.1",
+      "target": "Application protocol purpose",
+      "context": "Match a stated secure administration or time-synchronization need to an application function",
+      "cognitive": "understand",
+      "difficulty": "applied",
+      "style": "function selection",
+      "terminology": "SSH; NTP; service; protocol",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+        "line": 166,
+        "heading": "2.11 Applications และ Protocols [จากสไลด์ + เสริม]"
+      },
+      "overlap": "676 is FTPS/SFTP compatibility; 674/677 port/state identity. New target is application purpose, not a port-number recall variant.",
+      "source_limit": "Local supporting text available; final academic and bilingual gates required."
+    },
+    "after": {
+      "proposed_id": 1078,
+      "domain": 4,
+      "objective": "4.1",
+      "target": "Select the time-synchronization service function",
+      "context": "Clocks are explicitly unsynchronized while event collection and forwarding work; an approved time source is available. Assess NTP function, not secure remote administration or default-port recall.",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "service-function selection",
+      "terminology": "SSH; NTP; service; protocol",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+        "line": 187,
+        "heading": "2.11 Applications and Protocols — Time sync / NTP row"
+      },
+      "overlap": "1012/1034 concern missing telemetry/forwarding. This slot repairs clock alignment with working transport; it must not become another logging-pipeline repair.",
+      "source_limit": "Read application table 166–190, especially NTP row187. Time synchronization supports event correlation; NTP alone does not guarantee authenticity, integrity or trustworthy logs."
+    }
+  },
+  {
+    "id": 1080,
+    "type": "design",
+    "before": {
+      "proposed_id": 1080,
+      "domain": 4,
+      "objective": "4.2",
+      "target": "Resource authorization versus trusted location",
+      "context": "A resource decision considers explicitly supplied requester/device conditions after network admission",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "access decision",
+      "terminology": "Zero Trust; resource; context",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+        "line": 268,
+        "heading": "3.6 Zero Trust [จากสไลด์]"
+      },
+      "overlap": "689 asks whether VPN/firewall can coexist with Zero Trust. New target is the resource-level decision, not whether to remove network controls.",
+      "source_limit": "Local supporting text available; final academic and bilingual gates required."
+    },
+    "after": {
+      "proposed_id": 1080,
+      "domain": 4,
+      "objective": "4.2",
+      "target": "Policy-triggered reevaluation during ongoing resource access",
+      "context": "Apply an explicit resource policy after a verified relevant device-posture/context change during access. VPN admission remains intact; the supplied policy defines the reevaluation and response.",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "policy-triggered access reevaluation",
+      "terminology": "Zero Trust; resource; context",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+        "line": 268,
+        "heading": "3.6 Zero Trust [จากสไลด์]"
+      },
+      "overlap": "689 concerns VPN/firewall architecture; 702 role/dataset separation; 664 ABAC label; 668 uncertain AI alert; 651 offboarding session termination. This is ongoing access reevaluation on verified change under an explicit policy.",
+      "source_limit": "D4 surm 268–280 Zero Trust and D4 sum418 introduce context-based verification. NIST SP800-207 §2.1 tenet6 supports reevaluation during communication. Do not assert universal automatic denial, fixed reauthentication frequency or instant revocation."
+    }
+  },
+  {
+    "id": 1082,
+    "type": "design",
+    "before": {
+      "proposed_id": 1082,
+      "domain": 5,
+      "objective": "5.1",
+      "target": "Symmetric bulk confidentiality and key protection",
+      "context": "Bulk data protection with an explicit protected key-distribution requirement",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "control selection",
+      "terminology": "symmetric; secret key; AES",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 5/D5 sum.md",
+        "line": 61,
+        "heading": "3. Symmetric Encryption"
+      },
+      "overlap": "1007 public-key encryption, 1010 PQC dependency and 585 masking do not test selecting symmetric bulk protection; avoid algorithm-strength trivia.",
+      "source_limit": "Local supporting text available; final academic and bilingual gates required."
+    },
+    "after": {
+      "proposed_id": 1082,
+      "domain": 5,
+      "objective": "5.1",
+      "target": "Bulk confidentiality after a shared session key is established",
+      "context": "Select the symmetric-encryption role for bulk data confidentiality after the shared/session key has already been established and protected; key establishment is explicitly outside the decision.",
+      "cognitive": "apply",
+      "difficulty": "applied",
+      "style": "bounded cryptographic-purpose selection",
+      "terminology": "symmetric; secret key; AES",
+      "source": {
+        "path": "ISC2 Update 2026/Domain 5/D5 sum.md",
+        "line": 61,
+        "heading": "3. Symmetric Encryption"
+      },
+      "overlap": "1007 selects the recipient public key to encrypt a short message; 1010 concerns PQC dependencies; 1083 signature key roles. This slot concerns bulk encryption with an already-established shared key. Do not mix session establishment with bulk protection in a hybrid-protocol choice.",
+      "source_limit": "D5 sum61–97 Symmetric Encryption and session-key use; FIPS197 corroborates AES as a symmetric block cipher. No universal speed comparison, benchmark, key-length trivia or claim that confidentiality alone authenticates a sender."
+    }
+  }
+]

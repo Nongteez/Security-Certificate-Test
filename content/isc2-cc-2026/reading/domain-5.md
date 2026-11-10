@@ -53,8 +53,6 @@
 
 </section>
 
-<div class="reading-table-wrapper">
-
 | ระดับการจัดชั้นข้อมูล (Classification) | ระดับความลับ | ตัวอย่างข้อมูล | มาตรการควบคุมที่จำเป็น |
 | :--- | :--- | :--- | :--- |
 | **Public** | เปิดเผยได้ทั่วไป | เว็บไซต์บริษัท, ข่าวแจกสื่อ | ตรวจสอบความถูกต้องสมบูรณ์ (Integrity) |
@@ -62,7 +60,6 @@
 | **Sensitive** | จำกัดเฉพาะผู้มีหน้าที่ | ข้อมูลการเงิน, ซอร์สโค้ด | เข้ารหัสลับ, กำหนดสิทธิ์ Least Privilege เข้มงวด |
 | **Regulated (PII/PHI)** | กฎหมายคุ้มครองสูงสุด | ข้อมูลบัตรประชาชน, ประวัติคนไข้ | เข้ารหัส FDE/TLS, Audit Logs ตลอดเวลา, ทำลายตามมาตรฐาน |
 
-</div>
 
 </section>
 
@@ -115,15 +112,12 @@
 
 <h4 class="reading-concept-group-title">ข้อแตกต่างระหว่างการปกป้องข้อมูลด้วยเทคนิคต่าง ๆ:</h4>
 
-<div class="reading-table-wrapper">
-
 | เทคนิค | หลักการทำงาน | ความสามารถในการกู้คืน | ประโยชน์การใช้งาน |
 | :--- | :--- | :--- | :--- |
 | **Data Masking** | ปิดบังบางส่วนหรือแทนที่ด้วยข้อมูลรูปทรงเดียวกัน | รักษาโครงสร้างเดิม ปิดบังสายตา | หน้าจอบริการลูกค้า, ระบบทดสอบ Dev/QA |
 | **Pseudonymization** | แทนที่ตัวระบุบุคคลด้วยรหัสเทียม (Pseudonym) | ย้อนกลับได้หากมีกุญแจจับคู่แยกต่างหาก | งานวิจัย, การวิเคราะห์ข้อมูลทางการแพทย์ |
 | **Anonymization** | ลบข้อมูลระบุตัวตนออกอย่างถาวร | ไม่สามารถย้อนกลับได้โดยเด็ดขาด | งานสถิติสาธารณะ, ข้อมูลที่ไม่เข้าข่าย GDPR |
 
-</div>
 
 </section>
 
@@ -131,49 +125,48 @@
 
 <h3 id="topic-5-1-data-sanitization-destruction">5.1.4 Data Sanitization &amp; NIST SP 800-88: การล้างและทำลายสื่อบันทึกข้อมูล</h3>
 
-เมื่ออุปกรณ์จัดเก็บข้อมูล (Hard Drive, SSD, เทปสำรองข้อมูล, แฟลชไดรฟ์) สิ้นสุดการใช้งานหรือต้องโอนย้ายไปให้ผู้อื่น องค์กรต้องทำลายข้อมูลที่ค้างอยู่ไม่ให้สามารถกู้คืนได้ ตามมาตรฐานสากล **NIST SP 800-88 Rev. 1 (Guidelines for Media Sanitization)** ได้กำหนดระดับการทำลายข้อมูลไว้ 3 ระดับหลัก:
+เมื่ออุปกรณ์จัดเก็บข้อมูล (Hard Drive, SSD, เทปสำรองข้อมูล, แฟลชไดรฟ์) จะถูกใช้ซ้ำ ส่งต่อ หรือกำจัด ต้องเลือกวิธีให้เหมาะกับสื่อ ความอ่อนไหวของข้อมูล และนโยบายองค์กร **NIST SP 800-88 Rev. 2 (Guidelines for Media Sanitization)** อธิบายการทำให้เข้าถึงข้อมูลเป้าหมายไม่ได้ในทางปฏิบัติภายใต้ระดับความพยายามที่กำหนด ไม่ใช่การรับประกันว่ากู้คืนไม่ได้ 100% ตลอดไป / Select a method for the media, data sensitivity and organizational policy. NIST SP 800-88 Rev. 2 defines sanitization in terms of making target-data access infeasible for a specified level of effort, using three methods:
 
 <section class="reading-definition-unit">
-<h5>1. Clear (การเขียนทับระดับผู้ใช้):</h5>
+<h4>1. Clear (การล้างข้อมูลด้วยวิธีเชิงตรรกะ):</h4>
 
-การเขียนทับพื้นที่จัดเก็บข้อมูลทั้งหมดด้วยข้อมูลที่ไม่มีความหมาย (เช่น เขียนทับด้วยเลข 0 ทั้งหมด หรือบิตสุ่ม) โดยใช้คำสั่งมาตรฐานระดับผู้ใช้ (Logical Interface Commands) สามารถป้องกันการกู้คืนข้อมูลด้วยซอฟต์แวร์กู้ข้อมูลทั่วไปได้ แต่ไม่สามารถป้องกันการกู้ข้อมูลด้วยเครื่องมือวิเคราะห์ในห้องปฏิบัติการขั้นสูงได้ เหมาะสำหรับอุปกรณ์ที่จะนำกลับมาหมุนเวียนใช้ใหม่ภายในองค์กรเดียวกัน
+ใช้วิธีเชิงตรรกะกับพื้นที่ที่ผู้ใช้เข้าถึงได้ (User-addressable Storage) เพื่อต้านการกู้คืนแบบง่ายผ่านอินเทอร์เฟซปกติ เช่น การเขียนทับเมื่อเหมาะกับสื่อนั้น ไม่ได้แปลว่าครอบคลุมพื้นที่สำรองหรือข้อมูลเดิมทุกตำแหน่งของ SSD / Clear protects against simple, non-invasive recovery through the normal interface. Overwriting is one media-dependent technique; it does not necessarily reach every previous data location on an SSD.
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>2. Purge (การล้างข้อมูลระดับลึก):</h5>
+<h4>2. Purge (การล้างข้อมูลระดับลึก):</h4>
 
-การใช้เทคนิคระดับฮาร์ดแวร์หรือทางกายภาพเพื่อทำให้ข้อมูลไม่สามารถกู้คืนได้ แม้จะใช้เครื่องมือทางห้องปฏิบัติการขั้นสูง (Laboratory Attack Techniques) ก็ตาม:
-- **ATA Secure Erase / Cryptographic Erase (CE):** สั่งการผ่านคอนโทรลเลอร์ของอุปกรณ์โซลิดสเตตไดรฟ์ (SSD) เพื่อล้างบล็อกหน่วยความจำแฟลชทั้งหมด รวมถึงพื้นที่สำรอง (Over-provisioned areas)
-- **Degaussing (การลบล้างสนามแม่เหล็ก):** การใช้เครื่องสร้างสนามแม่เหล็กความเข้มสูงทำลายโดเมนแม่เหล็กบนสื่อบันทึกประเภทจานแม่เหล็ก (HDD และเทป) ทำให้ข้อมูลหายไปอย่างสิ้นเชิง (ข้อควรระวัง: Degaussing จะทำลายฮาร์ดดิสก์จนไม่สามารถนำกลับมาใช้ใหม่ได้ และไม่สามารถใช้กับ SSD ได้)
-- สื่อบันทึกที่ผ่านการ Purge ด้วย Secure Erase สามารถนำไปใช้งานต่อนอกองค์กรหรือบริจาคได้อย่างปลอดภัย
-
-</section>
-
-<section class="reading-definition-unit">
-<h5>3. Destroy (การทำลายสื่อทางกายภาพ):</h5>
-
-การทำลายชิ้นส่วนทางกายภาพของสื่อบันทึกข้อมูลจนไม่สามารถนำมาเชื่อมต่อหรือใช้งานได้อีกตลอดไป ได้แก่ การบดละเอียด (Shredding), การเผาทำลายที่อุณหภูมิสูง (Incineration), การย่อยสลายด้วยสารเคมี (Disintegration), การหลอมละลาย (Melting), หรือการเจาะทะลุจานบันทึก (Deforming/Drilling) นิยมใช้กับสื่อบันทึกที่มีข้อมูลความลับระดับสูงสุด หรืออุปกรณ์ที่ชำรุดเสียหายจนไม่สามารถสั่งรันคำสั่ง Clear/Purge ได้
+ใช้เทคนิคเชิงตรรกะหรือทางกายภาพเพื่อให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ โดยมุ่งให้สื่อยังใช้ต่อได้หากเทคนิคและสื่อนั้นรองรับ / Purge targets infeasible recovery even with advanced laboratory techniques while aiming to retain usability where supported.
+- **Secure Erase / Cryptographic Erase (CE):** ต้องตรวจเทคนิคที่อุปกรณ์รองรับและเงื่อนไขของผู้ผลิต ชื่อคำสั่งอย่างเดียวไม่ยืนยันผล และ CE ล้างกุญแจ ไม่ใช่เขียนทับบล็อกข้อมูลทุกบล็อก / A command name alone does not establish effective purge; CE sanitizes keys rather than overwriting every data block.
+- **Degaussing (การลบล้างสนามแม่เหล็ก):** ใช้ได้กับสื่อแม่เหล็กที่เหมาะสม เช่น HDD หรือเทป ไม่ใช้กับ SSD และอาจทำให้สื่อใช้ต่อไม่ได้ / Degaussing applies to suitable magnetic media, not SSDs, and can leave the media unusable.
+- การส่งต่อหรือบริจาคต้องยอมรับผลล้างข้อมูลตามนโยบายก่อน ไม่ใช่เห็นคำว่า Secure Erase แล้วถือว่าปลอดภัย / Reuse or donation requires an accepted sanitization outcome under policy, not just a reported command name.
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>Crypto-shredding (การทำลายกุญแจเข้ารหัส):</h5>
+<h4>3. Destroy (การทำลายสื่อทางกายภาพ):</h4>
 
-เทคนิคพิเศษสำหรับการทำลายข้อมูลบนระบบคลาวด์หรือไดรฟ์เสมือน (Virtual Disks) ที่ผู้ใช้งานไม่มีสิทธิ์เข้าถึงอุปกรณ์ฮาร์ดแวร์ทางกายภาพ: ทำได้โดยการเข้ารหัสข้อมูลทั้งหมดด้วยอัลกอริทึมที่แข็งแกร่ง (AES-256) ตั้งแต่ต้น จากนั้นเมื่อต้องการทำลายข้อมูล ให้ทำการลบและทำลายกุญแจถอดรหัส (Decryption Key) ทิ้งอย่างถาวร ส่งผลให้ข้อมูลที่เหลืออยู่กลายเป็นขยะดิจิทัลที่ไม่สามารถถอดรหัสกลับมาได้อีกเลย
+ทำให้การกู้ข้อมูลเป้าหมายด้วยเทคนิคห้องปฏิบัติการขั้นสูงไม่อาจทำได้ในทางปฏิบัติ และทำให้สื่อใช้จัดเก็บข้อมูลต่อไม่ได้ เช่น บดย่อยหรือเผาด้วยกระบวนการที่เหมาะกับชนิดสื่อและได้รับอนุมัติ การเจาะรูหรือทำให้อุปกรณ์เปิดไม่ติดเพียงอย่างเดียวไม่ได้พิสูจน์ว่าข้อมูลถูกทำลายครบ / Destroy makes advanced recovery infeasible and leaves the media unusable for storage. Use an approved media-appropriate process; a drilled hole or a device that no longer starts is not proof of effective destruction.
 
 </section>
 
-<div class="reading-table-wrapper">
+<section class="reading-definition-unit">
+<h4>Crypto-shredding (การทำลายกุญแจเข้ารหัส):</h4>
 
-| วิธีการตาม NIST SP 800-88 | กลไกการดำเนินการ | ป้องกันการโจมตีระดับแล็บได้หรือไม่ | อุปกรณ์นำกลับมาใช้ใหม่ได้หรือไม่ |
+การทำลายกุญแจอาจใช้เป็น **Cryptographic Erase (CE)** ซึ่งเป็นเทคนิคของ Purge ไม่ใช่วิธีหลักลำดับที่สี่ ใช้ได้เมื่อข้อมูลเป้าหมายถูกเข้ารหัสอย่างเหมาะสมก่อนจัดเก็บ และล้างกุญแจเป้าหมายที่จำเป็นรวมทุกสำเนาได้อย่างน่าเชื่อถือ ต้องพิจารณาสำรองข้อมูล กุญแจสำรอง และสำเนา Plaintext แยกต่างหากด้วย / CE is a purge technique, not a fourth sanitization method. It depends on suitable encryption before storage and reliable sanitization of all copies of the target keys. Backups, escrowed keys and plaintext copies need separate consideration; CE is not a promise against every future recovery capability.
+
+</section>
+
+**ตรวจผลก่อนยอมรับ (Assurance):** Verification ตรวจว่ากระบวนการเสร็จและมีข้อผิดพลาดหรือไม่ ส่วน Validation ประเมินว่าผลเพียงพอต่อสื่อ ข้อมูล และความเสี่ยงที่กำหนดหรือไม่ หากไม่เพียงพอต้องเลือกดำเนินการเพิ่มเติมก่อนปล่อยสื่อ / Verification checks completion and reported issues; validation decides whether the outcome is effective for the media, data and risk. An inadequate result must not be accepted for release.
+
+| วิธี/เทคนิค (Method/technique) | แนวทาง (Approach) | ขอบเขตผล (Protection goal) | ใช้สื่อต่อ (Reuse) |
 | :--- | :--- | :--- | :--- |
-| **Clear** | เขียนทับแบบลอจิคัล (Overwriting) | ไม่ได้ (แล็บขั้นสูงอาจกู้ได้) | ได้ (นำกลับมาใช้ซ้ำได้) |
-| **Purge** | Secure Erase, Degaussing, CE | **ได้ (แล็บขั้นสูงก็กู้คืนไม่ได้)** | ได้สำหรับ SSD/CE, ไม่ได้สำหรับ HDD ที่โดน Degauss |
-| **Destroy** | บดย่อย, เผาทำลาย, หลอมละลาย | **ได้ 100% (สื่อถูกทำลายถาวร)** | ไม่ได้ (อุปกรณ์พังทลายสิ้นเชิง) |
-| **Crypto-shredding** | ลบและทำลายกุญแจเข้ารหัสทิ้ง | **ได้ (หากกุญแจถูกทำลายสมบูรณ์)** | ได้ (เนื้อที่จัดเก็บบนคลาวด์นำมาเขียนทับใหม่ได้) |
+| **Clear** | เทคนิคเชิงตรรกะ (Logical technique) | ต้านการกู้แบบง่ายผ่านอินเทอร์เฟซปกติ (Simple recovery) | โดยทั่วไปได้ ตามสื่อ/นโยบาย (Usually; media/policy dependent) |
+| **Purge** | เทคนิคที่เหมาะกับสื่อ รวม CE เมื่อครบเงื่อนไข (Media-appropriate technique) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | มุ่งให้ใช้ต่อได้ แต่ขึ้นกับเทคนิค (Intended; technique dependent) |
+| **Destroy** | ทำลายทางกายภาพที่เหมาะสม (Appropriate physical destruction) | กู้ระดับแล็บไม่ได้ในทางปฏิบัติ (Advanced recovery infeasible) | ไม่ได้ (Unusable for storage) |
+| **CE / Crypto-shredding** | เทคนิคของ Purge: ล้างกุญแจเป้าหมาย (Purge technique: key sanitization) | ขึ้นกับการเข้ารหัสและทุกสำเนากุญแจ (Encryption/key-copy conditions) | อาจได้เมื่อสื่อยังทำงานและนโยบายอนุญาต (May be reusable under policy) |
 
-</div>
 
 <figure class="reading-figure" style="max-width: 680px; margin: 18px auto;">
   <div class="reading-figure-img-wrap" style="aspect-ratio: 16/9; max-height: 320px;">
@@ -181,7 +174,7 @@
   </div>
   <figcaption class="reading-figcaption">
     <span class="reading-figure-badge badge-physical">NIST SP 800-88 &middot; Physical Destruction</span>
-    <strong>การทำลายสื่อจัดเก็บข้อมูลทางกายภาพ (Physical Media Destruction):</strong> ตัวอย่างฮาร์ดดิสก์ที่ถูกบดละเอียดผ่านเครื่องทำลายฮาร์ดดิสก์อุตสาหกรรม (Industrial Hard Drive Shredder) จนแผ่นจานแม่เหล็ก (Platters) แตกกระจายเป็นเศษชิ้นส่วนโลหะขนาดเล็ก ทำให้การกู้คืนข้อมูลด้วยเทคนิคในห้องปฏิบัติการขั้นสูงเป็นไปไม่ได้อย่างสิ้นเชิง (Ultimate Sanitization)
+    <strong>การทำลายสื่อจัดเก็บข้อมูลทางกายภาพ (Physical Media Destruction):</strong> ตัวอย่างฮาร์ดดิสก์ที่ถูกบดละเอียดผ่านเครื่องทำลายฮาร์ดดิสก์อุตสาหกรรม (Industrial Hard Drive Shredder) จนแผ่นจานแม่เหล็ก (Platters) แตกกระจายเป็นเศษชิ้นส่วนโลหะขนาดเล็ก แสดงตัวอย่างความเสียหายทางกายภาพ แต่ภาพถ่ายอย่างเดียวไม่ยืนยันว่าทำลายข้อมูลเป้าหมายครบตามระดับที่กำหนด ต้องตรวจวิธี ผลลัพธ์ และความเหมาะสมกับสื่อนั้น / A destruction photograph is not evidence of complete sanitization; verify and validate the media-specific outcome.
     <span class="reading-figure-attr">ภาพ: Raysonho / Wikimedia Commons / CC0 1.0 Universal Public Domain</span>
   </figcaption>
 </figure>
@@ -191,12 +184,12 @@
   <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> ธนาคารพาณิชย์กำลังปลดระวางอุปกรณ์จัดเก็บข้อมูล 3 กลุ่มที่มีระดับความลับและเป้าหมายการนำไปใช้ต่างกัน: (1) แล็ปท็อปพนักงานทั่วไป 50 เครื่องที่จะบริจาคให้โรงเรียน, (2) ไดรฟ์ NVMe SSD ในเซิร์ฟเวอร์ฐานข้อมูลลูกค้า 20 ตัวที่จะส่งคืนให้บริษัทเช่าซื้อ, และ (3) ฮาร์ดดิสก์ของเซิร์ฟเวอร์จัดเก็บคีย์หลักระบบ Core Banking ที่หมดอายุการใช้งาน</div>
   <div class="reading-example-step"><strong>2. การเลือกวิธีการและผลลัพธ์ตามระดับความลับ:</strong>
     <ul>
-      <li><strong>กลุ่มที่ 1 &rarr; ใช้ Clear (การเขียนทับระดับลอจิคัล):</strong> แล็ปท็อปที่จะนำไปบริจาคผ่านกระบวนการเขียนทับข้อมูลด้วยศูนย์ทุกเซกเตอร์ (Single-pass Overwrite) ตามมาตรฐาน Clear ข้อมูลทั่วไปถูกลบหมดและโรงเรียนสามารถลงระบบปฏิบัติการใหม่ใช้งานได้ทันที</li>
-      <li><strong>กลุ่มที่ 2 &rarr; ใช้ Purge (Cryptographic Erase / ATA Secure Erase):</strong> ไดรฟ์ SSD ที่เคยเก็บ PII ลูกค้าต้องป้องกันไม่ให้แล็บกู้ข้อมูลได้ แม้จะส่งคืนผู้ให้เช่าซื้อ ฝ่าย IT สั่งใช้คำสั่ง Cryptographic Erase (CE) เพื่อทำลาย Master Key ของฮาร์ดแวร์ทิ้งทันที และรันคำสั่ง Sanitize Block Erase ทำให้ข้อมูลกลายเป็นสัญญาณสุ่มที่กู้คืนไม่ได้ แต่ตัวไดรฟ์ยังนำกลับมาใช้ใหม่ได้ตามเงื่อนไขสัญญาเช่า</li>
-      <li><strong>กลุ่มที่ 3 &rarr; ใช้ Destroy (การทำลายทางกายภาพอย่างถาวร):</strong> ฮาร์ดดิสก์แม่เหล็กที่เคยเก็บกุญแจหลักระบบธนาคาร ถือเป็นทรัพย์สินความมั่นคงสูงสุด องค์กรนำเข้าเครื่องบดย่อยอุตสาหกรรม (Industrial Shredder) จนแผ่นจานแม่เหล็กแตกละเอียดเป็นชิ้นส่วนขนาดเล็กกว่า 2 มิลลิเมตร พร้อมออกใบรับรอง Certificate of Destruction</li>
+      <li><strong>กลุ่มที่ 1 &rarr; Clear:</strong> สมมติว่าสื่อ ข้อมูล และนโยบายการส่งต่อผ่านการประเมินว่า Clear เพียงพอ จึงใช้วิธีเชิงตรรกะที่เหมาะกับสื่อและตรวจผลก่อนบริจาค การเขียนทับไม่ได้ยืนยันว่าครอบคลุมทุกตำแหน่งเดิมของ SSD / Use Clear only where the media, data sensitivity and transfer policy justify it; verify the result.</li>
+      <li><strong>กลุ่มที่ 2 &rarr; Purge:</strong> เลือกวิธีที่สื่อและเครื่องมือรองรับ หากใช้ Cryptographic Erase ต้องมีการเข้ารหัสข้อมูลไว้ก่อนและทำให้กุญแจเป้าหมายทุกสำเนาใช้ไม่ได้ พร้อมพิจารณาข้อมูลสำรองหรือ Plaintext แยกต่างหาก แล้วตรวจและยอมรับผลตามนโยบาย ไม่ใช้ชื่อคำสั่งแทนหลักฐานความสำเร็จ / CE is conditional on prior encryption and effective sanitization of all target-key copies; verify and validate the outcome.</li>
+      <li><strong>กลุ่มที่ 3 &rarr; Destroy:</strong> เลือกเทคนิคทำลายที่เหมาะกับสื่อและระดับความพยายามกู้คืนที่กำหนด ตรวจชิ้นส่วนและหลักฐานกระบวนการก่อนยอมรับผล ใบรับรองหรือภาพถ่ายเพียงอย่างเดียวไม่พิสูจน์ว่าข้อมูลเป้าหมายถูกทำลายครบ / Validate the media-specific destruction process and its evidence; no universal particle size is asserted.</li>
     </ul>
   </div>
-  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): มาตรฐาน NIST SP 800-88 แบ่งการทำลายข้อมูลเป็น 3 ระดับ: Clear ป้องกันการกู้ข้อมูลด้วยเครื่องมือซอฟต์แวร์ทั่วไปและนำสื่อกลับมาใช้ใหม่ได้, Purge ป้องกันการกู้ข้อมูลแม้ใช้เทคนิคในห้องปฏิบัติการขั้นสูง, และ Destroy ทำลายสื่อทางกายภาพจนไม่สามารถอ่านหรือนำกลับมาใช้ใหม่ได้ 100%</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ: Clear, Purge และ Destroy เป็นวิธีที่เลือกตามสื่อ ความอ่อนไหว และข้อกำหนด ต้องตรวจการดำเนินการและยอมรับผลตามระดับที่กำหนด ไม่ใช่รับประกันการกู้คืนไม่ได้ 100% ตลอดไป / Select a media-appropriate method, verify execution and validate the outcome for the required level of effort.</div>
 </div>
 
 </section>
@@ -208,7 +201,7 @@
 ข้อมูลในระบบคอมพิวเตอร์จะดำรงอยู่ใน 3 สถานะที่แตกต่างกัน ซึ่งแต่ละสถานะมีภัยคุกคามและต้องการมาตรการควบคุมความปลอดภัยที่เฉพาะเจาะจง:
 
 <section class="reading-definition-unit">
-<h5>1. ข้อมูลขณะพักหรือจัดเก็บ (Data at Rest):</h5>
+<h4>1. ข้อมูลขณะพักหรือจัดเก็บ (Data at Rest):</h4>
 
 ข้อมูลที่ถูกบันทึกอยู่นิ่งบนสื่อจัดเก็บข้อมูลถาวร เช่น ฮาร์ดดิสก์ในเซิร์ฟเวอร์, SSD ในเครื่องแล็ปท็อป, สื่อสำรองข้อมูลเทป, หรือฐานข้อมูลในดาต้าเซ็นเตอร์
 - **ภัยคุกคาม:** อุปกรณ์สูญหาย, แล็ปท็อปถูกขโมย, การขโมยฮาร์ดดิสก์ไปต่อพ่วงกับเครื่องอื่น
@@ -217,7 +210,7 @@
 </section>
 
 <section class="reading-definition-unit">
-<h5>2. ข้อมูลขณะเคลื่อนที่หรือส่งผ่านเครือข่าย (Data in Transit / Motion):</h5>
+<h4>2. ข้อมูลขณะเคลื่อนที่หรือส่งผ่านเครือข่าย (Data in Transit / Motion):</h4>
 
 ข้อมูลที่กำลังเดินทางข้ามระบบเครือข่าย ทั้งเครือข่ายภายในองค์กร (LAN) หรือเครือข่ายสาธารณะอย่างอินเทอร์เน็ต เช่น การเปิดเว็บไซต์, การส่งอีเมล, หรือการโอนย้ายไฟล์ข้ามเซิร์ฟเวอร์
 - **ภัยคุกคาม:** การดักดักรับข้อมูล (Eavesdropping / Sniffing), การปลอมแปลงแพ็กเก็ต (Man-in-the-Middle - MitM)
@@ -226,7 +219,7 @@
 </section>
 
 <section class="reading-definition-unit">
-<h5>3. ข้อมูลขณะประมวลผล (Data in Use):</h5>
+<h4>3. ข้อมูลขณะประมวลผล (Data in Use):</h4>
 
 ข้อมูลที่ถูกโหลดขึ้นมาอยู่ในหน่วยความจำชั่วคราว (RAM, CPU Cache, Registers) และกำลังถูกประมวลผลหรือแก้ไขโดยซีพียูและแอปพลิเคชัน
 - **ภัยคุกคาม:** การแอบส่องหน้าจอ (Shoulder Surfing), การดัมป์หน่วยความจำ (Memory Scraping / RAM Dumps), มัลแวร์ขโมยข้อมูลในแคช
@@ -234,15 +227,12 @@
 
 </section>
 
-<div class="reading-table-wrapper">
-
 | สถานะของข้อมูล (Data State) | ตำแหน่งที่ข้อมูลอยู่ | มาตรการควบคุมความปลอดภัยหลัก | เทคโนโลยีตัวอย่าง |
 | :--- | :--- | :--- | :--- |
 | **Data at Rest** | ฮาร์ดดิสก์, SSD, Database, Backup Tape | Full Disk Encryption, File Encryption | BitLocker, FileVault, SED, TDE |
 | **Data in Transit** | สาย LAN, สัญญาณ Wi-Fi, อินเทอร์เน็ต | Cryptographic Tunneling, Encrypted Protocols | TLS 1.3, HTTPS, IPsec, SFTP, WPA3 |
 | **Data in Use** | RAM, CPU Cache, Registers, หน้าจอ | Memory Isolation, Enclaves, Privacy Screen | Intel SGX, AMD SEV, Clean Desk Policy |
 
-</div>
 
 </section>
 
@@ -274,8 +264,6 @@
 1. ใช้ **Asymmetric Encryption (RSA หรือ ECC)** ในช่วงเริ่มต้นเพื่อแลกเปลี่ยนกุญแจแบบสมมาตรชั่วคราว (Session Key) อย่างปลอดภัย
 2. จากนั้นใช้กุญแจ Session Key ดังกล่าวในการส่งข้อมูลด้วย **Symmetric Encryption (AES)** ซึ่งมีความเร็วสูงในการเข้ารหัสเนื้อหาทั้งหมด
 
-<div class="reading-table-wrapper">
-
 | คุณลักษณะ (Attribute) | Symmetric Encryption (สมมาตร) | Asymmetric Encryption (อสมมาตร) |
 | :--- | :--- | :--- |
 | **จำนวนกุญแจ** | 1 กุญแจ (Shared Secret Key) | 2 กุญแจคู่กัน (Public Key & Private Key) |
@@ -284,7 +272,6 @@
 | **การใช้งานหลัก** | ข้อมูลปริมาณมาก (Bulk Data), Disk Encryption | การแลกเปลี่ยนกุญแจ (Key Exchange), Digital Signatures |
 | **ขั้นตอนวิธีตัวอย่าง** | **AES-128/192/256**, Blowfish, ChaCha20 | **RSA**, **ECC**, Diffie-Hellman |
 
-</div>
 
 
 <div class="reading-example-box">
@@ -322,7 +309,7 @@
 2. **ความต้านทานต่อการคำนวณย้อนกลับ (Preimage Resistance / One-Way Property):** เมื่อทราบค่าแฮช ไม่สามารถแปลงแฮชย้อนกลับมาเป็นข้อมูลต้นฉบับได้ในทางปฏิบัติ
 3. **ความต้านทานต่อการหาข้อความอื่นที่ได้แฮชเดิม (Second-Preimage Resistance / Weak Collision Resistance):** เมื่อกำหนดข้อความต้นฉบับมาให้ชุดหนึ่ง เป็นไปไม่ได้ในทางคำนวณที่จะหาข้อความอื่นที่แตกต่างกันแต่ได้ค่าแฮชตรงกัน
 4. **ความต้านทานต่อการชนกัน (Collision Resistance / Strong Collision Resistance):** เป็นไปไม่ได้ในทางคำนวณที่จะค้นหาข้อมูลสองชุดใด ๆ ที่แตกต่างกันแต่ให้ค่าแฮชตรงกัน
-5. **ปรากฏการณ์หิมะถล่ม (Avalanche Effect):** หากเปลี่ยนแปลงข้อมูลต้นฉบับเพียงแค่ 1 บิต (เช่น เปลี่ยนตัวพิมพ์เล็กเป็นตัวพิมพ์ใหญ่ หรือเติมจุด) ค่าแฮชที่ได้จะเปลี่ยนไปโดยสิ้นเชิง (มากกว่า 50% ของบิตทั้งหมด)
+5. **ปรากฏการณ์หิมะถล่ม (Avalanche Effect):** หากเปลี่ยนแปลงข้อมูลต้นฉบับเพียงแค่ 1 บิต (เช่น เปลี่ยนตัวพิมพ์เล็กเป็นตัวพิมพ์ใหญ่ หรือเติมจุด) ค่าแฮชที่ได้จะเปลี่ยนไปโดยสิ้นเชิง (โดยคาดหวังให้บิตผลลัพธ์เปลี่ยนประมาณครึ่งหนึ่งในภาพรวม ไม่ใช่ข้อรับประกันต่อข้อมูลทุกคู่ / About half the output bits on average, not a guarantee for every pair)
 
 <section class="reading-definition-unit">
 <h5>Hashing vs. Encryption: ข้อแตกต่างที่ข้อสอบชอบถาม:</h5>
@@ -346,14 +333,18 @@
 <section class="reading-definition-unit">
 <h5>Digital Signatures (ลายมือชื่อดิจิทัล):</h5>
 
-กลไกที่ผสานการทำงานของ **Hashing** และ **Asymmetric Encryption** เข้าด้วยกัน เพื่อให้ได้คุณสมบัติความมั่นคงปลอดภัย 3 ประการ:
-1. **Integrity (ความสมบูรณ์):** ข้อมูลไม่ถูกดัดแปลง
-2. **Authentication (การยืนยันตัวตน):** ยืนยันว่าผู้ส่งเป็นตัวจริง
-3. **Non-repudiation (การปฏิเสธความรับผิดชอบไม่ได้):** ผู้ส่งไม่สามารถอ้างได้ว่าตนไม่ได้เป็นผู้ส่งข้อความ
+กลไก **Public-key Cryptography (วิทยาการเข้ารหัสลับแบบกุญแจสาธารณะ)** ที่ใช้กุญแจส่วนตัวสร้างลายมือชื่อ และกุญแจสาธารณะที่สัมพันธ์กันตรวจสอบ โดยการแฮชเป็นส่วนหนึ่งของการประมวลผลข้อความตามอัลกอริทึมลายมือชื่อที่ใช้ ไม่ใช่การเข้ารหัสเพื่อซ่อนข้อความ / Digital signatures use private-key signing and corresponding public-key verification, with hashing handled as specified by the signature algorithm:
+1. **Integrity (ความสมบูรณ์):** ตรวจว่าข้อมูลที่ลงนามถูกเปลี่ยนแปลงหรือไม่ / Detect changes to the signed data.
+2. **Origin Authentication (การยืนยันแหล่งที่มา):** เชื่อมลายมือชื่อกับผู้ลงนามได้เมื่อเชื่อถือความสัมพันธ์ระหว่างตัวตนกับ Public Key / Authenticate the origin using a trusted identity-to-public-key association.
+3. **Non-repudiation (การไม่อาจปฏิเสธความรับผิดชอบได้):** สนับสนุนหลักฐานของการลงนาม โดยต้องพิจารณาการควบคุม Private Key และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล / Support evidence of signing, subject to key custody and supporting evidence; a valid signature alone does not prove human intent.
 
 **กระบวนการทำงานของลายมือชื่อดิจิทัล:**
-- **ผู้ส่ง (Sender):** นำเอกสารไปคำนวณค่าแฮช &rarr; นำค่าแฮชไปเข้ารหัสด้วย **Private Key ของผู้ส่งเอง** ได้ผลลัพธ์เป็น "ลายมือชื่อดิจิทัล" &rarr; แนบลายมือชื่อไปพร้อมกับเอกสาร
-- **ผู้รับ (Recipient):** นำลายมือชื่อดิจิทัลไปถอดรหัสด้วย **Public Key ของผู้ส่ง** จะได้ค่าแฮชเดิม &rarr; คำนวณค่าแฮชของเอกสารที่ได้รับมาเทียบเคียง &rarr; หากค่าแฮชตรงกัน แสดงว่าเอกสารมาจากผู้ส่งจริงและไม่ถูกดัดแปลงแก้ไข
+- **ผู้ลงนาม (Signer):** ใช้อัลกอริทึม **Sign** กับ Private Key และเอกสาร &rarr; ได้ลายมือชื่อดิจิทัลแนบกับเอกสาร / Use the private key to sign the document and attach the resulting signature.
+- **ผู้ตรวจ (Verifier):** ใช้อัลกอริทึม **Verify** กับเอกสาร ลายมือชื่อ และ Public Key ที่สัมพันธ์กันและเชื่อถือได้ &rarr; ได้ผลผ่านหรือไม่ผ่าน / Verify the document and signature using the corresponding trusted public key; the result is valid or invalid. การตรวจนี้ไม่ใช่การถอดรหัสลายมือชื่อเพื่ออ่านค่าแฮชเป็นสูตรทั่วไป / Verification is not universally public-key decryption of a digest.
+
+**แยกหน้าที่ให้ชัด (Different purposes):** Hash ใช้ตรวจเทียบข้อมูล แต่ค่าแฮชเปล่า ๆ ไม่ยืนยันผู้ส่ง; Signature เพิ่มหลักฐานแหล่งที่มา; Encryption คุ้มครองความลับ การลงนามเพียงอย่างเดียวไม่ซ่อนเอกสาร / A bare hash does not authenticate a sender. A signature adds origin evidence; encryption protects confidentiality. Signing alone does not hide the document.
+
+**ตัวอย่าง (Example):** ผู้ผลิตลงนามไฟล์อัปเดต ผู้รับตรวจไฟล์และลายมือชื่อด้วย Public Key ของผู้ผลิตที่ตรวจสอบแหล่งที่มาแล้ว ผลผ่านสนับสนุนความสมบูรณ์และแหล่งที่มา แต่ไม่ได้รับประกันว่าโปรแกรมปราศจากมัลแวร์ / A publisher signs an update. Verification with its trusted public key supports integrity and origin, but does not establish that the software is harmless.
 
 </section>
 
@@ -366,17 +357,17 @@
   <div class="reading-example-step"><strong>2. การตรวจสอบ File Integrity และปรากฏการณ์หิมะถล่ม (Avalanche Effect):</strong>
     <ul>
       <li>วิศวกรใช้คำสั่ง sha256sum คำนวณค่าแฮชของไฟล์ที่ดาวน์โหลดมา ได้ผลลัพธ์เป็นค่าแฮช 64 ตัวอักษร เช่น a1b2c3...f9 ตรงกับค่าที่ผู้ผลิตประกาศไว้ 100%</li>
-      <li>สมมติว่าระหว่างดาวน์โหลด มีมัลแวร์ในเครือข่ายพยายามแทรกโค้ดอันตรายขนาดเพียง 1 บิตลงในเฟิร์มแวร์ จากคุณสมบัติ <strong>Avalanche Effect</strong> ค่า SHA-256 ที่คำนวณได้ใหม่จะเปลี่ยนไปอย่างสิ้นเชิงมากกว่า 50% ของบิตทั้งหมด วิศวกรจะทราบทันทีว่าไฟล์ถูกดัดแปลงและยกเลิกการติดตั้ง</li>
+      <li>สมมติว่าระหว่างดาวน์โหลด ไฟล์เฟิร์มแวร์มีข้อมูลเปลี่ยนไปแม้เพียง 1 บิตจากความเสียหายหรือการดัดแปลง จากคุณสมบัติ <strong>Avalanche Effect</strong> ค่า SHA-256 ที่คำนวณได้ใหม่คาดว่าจะต่างจากเดิม โดยไม่รับประกันว่าทุกคู่ต้องต่างเกิน 50% ของบิต วิศวกรจะทราบทันทีว่าไฟล์ถูกดัดแปลงและยกเลิกการติดตั้ง</li>
     </ul>
   </div>
   <div class="reading-example-step"><strong>3. การยืนยันตัวตนด้วย Digital Signature (Authenticity &amp; Non-repudiation):</strong>
     <ul>
       <li>ลำพังเพียงค่าแฮชยังไม่พอ เพราะผู้โจมตีที่ทำ Man-in-the-Middle อาจเปลี่ยนทั้งไฟล์เฟิร์มแวร์และเปลี่ยนตัวเลขค่าแฮชบนเว็บเพจปลอมพร้อมกันได้</li>
       <li>ผู้ผลิตจึงใช้ <strong>Private Key ของบริษัทผู้ผลิต</strong> เซ็นรับรอง (Sign) บนค่าแฮชของเฟิร์มแวร์เพื่อสร้าง <strong>Digital Signature</strong></li>
-      <li>ตัวเราเตอร์จะตรวจสอบลายมือชื่อด้วย <strong>Public Key ของผู้ผลิต</strong> ที่ฝังอยู่ในชิปฮาร์ดแวร์ หากค่าแฮชที่ถอดรหัสได้ตรงกัน แสดงว่า (1) เฟิร์มแวร์ไม่ถูกแก้ไข (Integrity), (2) มาจากผู้ผลิตตัวจริง (Authentication), และ (3) ผู้ผลิตไม่สามารถปฏิเสธความรับผิดชอบได้ (Non-repudiation)</li>
+      <li>ในตัวอย่างนี้ เราเตอร์ใช้ Public Key ของผู้ผลิตที่ตรวจสอบความน่าเชื่อถือแล้วกับอัลกอริทึม Verify ผลผ่านสนับสนุน Integrity และ Origin Authentication; Non-repudiation ยังขึ้นกับการควบคุมกุญแจและหลักฐานประกอบ ไม่ยืนยันว่าเฟิร์มแวร์ปราศจากมัลแวร์ / Verify with the trusted publisher key; validity is evidence of signing, not proof of harmless software.</li>
     </ul>
   </div>
-  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): ฟังก์ชันแฮช (เช่น SHA-256) เป็นกระบวนการทางเดียวสำหรับตรวจสอบความถูกต้องสมบูรณ์ (Integrity) โดยการเปลี่ยนเพียง 1 บิตจะทำให้ผลลัพธ์เปลี่ยนไปโดยสิ้นเชิง (Avalanche Effect) และเมื่อนำค่าแฮชไปเข้ารหัสด้วย Private Key ของผู้ส่ง จะได้เป็น ลายมือชื่อดิจิทัล (Digital Signature) ที่ให้ทั้ง Integrity, Authentication และ Non-repudiation</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ: Hash ใช้ตรวจเทียบข้อมูล ส่วน Digital Signature ใช้ Sign ด้วย Private Key และ Verify ด้วย Public Key ที่เชื่อถือได้ตามอัลกอริทึม ไม่ใช่สูตรเข้ารหัสค่าแฮชเพื่อถอดกลับเสมอไป การลงนามไม่ซ่อนข้อมูลหรือรับประกันเจตนาผู้ลงนาม / Hash comparison and signature verification serve different purposes; signing does not provide confidentiality.</div>
 </div>
 
 </section>
@@ -385,40 +376,40 @@
 
 <h3 id="topic-5-1-tpm-vs-hsm">5.1.8 Hardware Security: TPM vs. HSM: การรักษาความปลอดภัยระดับฮาร์ดแวร์</h3>
 
-การเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้ฮาร์ดแวร์ความปลอดภัยเฉพาะทางในการปกป้องกุญแจ:
+การเก็บกุญแจเข้ารหัสลับไว้บนซอฟต์แวร์หรือในระบบปฏิบัติการมีความเสี่ยงที่จะถูกมัลแวร์ขโมย องค์กรจึงใช้เขตป้องกันที่มีฮาร์ดแวร์รองรับสำหรับกุญแจสำคัญ โดยยังต้องควบคุมสิทธิ์และการตั้งค่า / Hardware-backed boundaries help protect keys; they still require access control and correct configuration.
 
 <section class="reading-definition-unit">
-<h5>TPM (Trusted Platform Module - ISO/IEC 11889):</h5>
+<h4>TPM (Trusted Platform Module - ISO/IEC 11889):</h4>
 
-ไมโครชิปความปลอดภัยเฉพาะทางที่ถูกบัดกรีติดอยู่บนเมนบอร์ดของคอมพิวเตอร์หรืออุปกรณ์ปลายทาง:
-- ทำหน้าที่เป็น **Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์)** ของคอมพิวเตอร์แต่ละเครื่อง
-- สนับสนุนฟีเจอร์ **Measured Boot และ Secure Boot** โดยวัดค่าแฮชของเฟิร์มแวร์ UEFI, บูตโหลดเดอร์, และเคอร์เนลระบบปฏิบัติการก่อนอนุญาตให้เปิดเครื่อง เพื่อป้องกันไม่ให้ Rootkit หรือมัลแวร์บูตแทรกแซงระบบ
-- จัดเก็บกุญแจเข้ารหัสลับของเครื่องเฉพาะ เช่น กุญแจ BitLocker โดยกุญแจจะไม่หลุดออกไปยังระบบปฏิบัติการ
+โมดูลความเชื่อถือสำหรับแพลตฟอร์ม อาจเป็นชิปแยก (Discrete), รวมในชิปอื่น (Integrated) หรือทำงานในเฟิร์มแวร์ภายในสภาพแวดล้อมประมวลผลที่เชื่อถือได้ (Firmware TPM) ไม่จำเป็นต้องเป็นชิปที่บัดกรีแยกเสมอ / A TPM may be discrete, integrated or firmware-based within a trusted execution environment.
+- ทำหน้าที่สนับสนุน **Hardware Root of Trust (รากฐานความน่าเชื่อถือระดับฮาร์ดแวร์)** ของแพลตฟอร์ม / Support a platform hardware root of trust.
+- **Measured Boot:** ซอฟต์แวร์บูตวัดส่วนประกอบและบันทึกค่าลง TPM เพื่อเป็นหลักฐานสภาพแพลตฟอร์ม ส่วน **Secure Boot** ใช้เฟิร์มแวร์ UEFI ตรวจลายมือชื่อและนโยบายก่อนโหลดส่วนประกอบบูต ไม่ใช่ TPM รับประกันว่าบูตแล้วไม่มีมัลแวร์ / Measured Boot records boot measurements in the TPM; Secure Boot enforces boot-signature policy through UEFI firmware. Neither is a guarantee of malware-free operation.
+- สร้างและใช้กุญแจที่ป้องกันโดย TPM และช่วยปกป้องข้อมูลกุญแจของ BitLocker ได้ แต่กุญแจที่ระบบใช้ถอดรหัสไดรฟ์อาจถูกปล่อยให้ระบบปฏิบัติการใช้เมื่อผ่านเงื่อนไข / A TPM can generate and use protected keys and help protect BitLocker key material; drive-decryption key material can be released to the operating system when the configured conditions are met.
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>HSM (Hardware Security Module):</h5>
+<h4>HSM (Hardware Security Module):</h4>
 
-อุปกรณ์ฮาร์ดแวร์ความปลอดภัยระดับองค์กร (Enterprise Appliance) อาจเป็นการ์ด PCIe ภายในเซิร์ฟเวอร์ หรือเป็นตู้ฮาร์ดแวร์ภายนอกที่เชื่อมต่อผ่านระบบเครือข่าย:
-- ออกแบบมาเพื่อสร้าง ปกป้อง และบริหารวงจรกุญแจเข้ารหัสลับระดับองค์กร (Root Certificate Authority Keys, กุญแจธุรกรรมทางการเงิน, กุญแจเซิร์ฟเวอร์คลาวด์)
-- มีประสิทธิภาพในการประมวลผลทางคณิตศาสตร์สูงมาก รองรับการถอดรหัสและเซ็นลายมือชื่อดิจิทัลพร้อมกันนับหมื่นรายการต่อวินาที
-- ผ่านการรับรองความปลอดภัยระดับสูงตามมาตรฐาน **FIPS 140-2 Level 3 หรือ Level 4**
-- มีคุณสมบัติต่อต้านการงัดแงะทางกายภาพ (Tamper-Resistant & Tamper-Evident) หากตรวจพบการพยายามเปิดฝาเครื่องหรือเจาะทะลุ อุปกรณ์จะทำลายกุญแจทิ้งทันที (Zeroization) เพื่อป้องกันข้อมูลรั่วไหล
+โมดูลฮาร์ดแวร์สำหรับปกป้องกุญแจและทำงานด้านวิทยาการเข้ารหัสลับ มีได้หลายรูปแบบ เช่น การ์ด PCIe อุปกรณ์เครือข่าย หรือ USB / An HSM protects keys and performs cryptographic operations; form factors include PCIe, network appliances and USB devices.
+- สร้าง ปกป้อง ใช้งาน และบริหารวงจรกุญแจ เช่น Root Certificate Authority Keys กุญแจธุรกรรมทางการเงิน และกุญแจเซิร์ฟเวอร์คลาวด์ / Generate, protect, use and manage keys, for example CA, payment and cloud-service keys.
+- แอปที่ได้รับอนุญาตอาจขอให้ HSM ลงนามภายในเขตป้องกันด้วย Private Key ที่กำหนดไม่ให้ส่งออก แล้วรับเฉพาะลายมือชื่อกลับมา ส่วนการสำรองหรือส่งออกกุญแจแบบห่อหุ้ม (Wrapped Export) ขึ้นกับโมดูลและนโยบาย / An authorized application can request signing with a configured non-exportable private key and receive the signature. Protected backup or wrapped export depends on the module and policy.
+- อัลกอริทึมที่รองรับและอัตราประมวลผลขึ้นกับรุ่น งาน และการตั้งค่า ไม่มีอัตรารายการต่อวินาทีที่ใช้แทน HSM ทุกตัวได้ / Supported algorithms and throughput depend on the model, workload and configuration.
+- การรับรอง **FIPS 140** ต้องตรวจใบรับรองของโมดูล รุ่นฮาร์ดแวร์/เฟิร์มแวร์ และโหมดที่ใช้ ไม่ใช่ HSM ทุกตัวผ่าน Level 3/4 / Check the specific module certificate, hardware/firmware versions and operating mode; HSM does not inherently mean Level 3/4 validation.
+- การป้องกันและตอบสนองต่อการงัดแงะ รวมถึง **Zeroization (การล้างข้อมูลกุญแจ)** ขึ้นกับการออกแบบและเงื่อนไขของรุ่น ไม่ใช่อุปกรณ์ทุกตัวตรวจพบแล้วทำลายกุญแจทันที / Tamper protection and responses, including zeroization, are design- and condition-dependent, not a universal instant response.
 
 </section>
-
-<div class="reading-table-wrapper">
 
 | มิติการเปรียบเทียบ | TPM (Trusted Platform Module) | HSM (Hardware Security Module) |
 | :--- | :--- | :--- |
-| **ตำแหน่งติดตั้ง** | ชิปบนเมนบอร์ดคอมพิวเตอร์ปลายทาง (PC/Laptop) | อุปกรณ์ฮาร์ดแวร์แยกต่างหากในศูนย์ข้อมูล / เครือข่าย |
-| **ขอบเขตการใช้งาน** | ประจำเครื่องคอมพิวเตอร์เครื่องเดียว | ให้บริการส่วนกลางแก่องค์กรหรือเซิร์ฟเวอร์ทั้งระบบ |
-| **หน้าที่หลัก** | Platform Integrity, Secure Boot, BitLocker Keys | จัดการวงจรกุญแจ, Root CA, ทำธุรกรรมทางการเงิน |
-| **มาตรฐานความปลอดภัย** | ISO/IEC 11889 | **FIPS 140-2 / FIPS 140-3 (Level 3/4)** |
-| **การป้องกันการงัดแงะ** | พื้นฐานในตัวชิป | มีเซนเซอร์ตรวจจับและทำลายกุญแจอัตโนมัติ (Zeroization) |
+| **รูปแบบ (Form)** | Discrete / Integrated / Firmware TPM | PCIe / Network / USB เป็นตัวอย่าง (examples) |
+| **ขอบเขตทั่วไป (Typical scope)** | ความเชื่อถือและกุญแจของแพลตฟอร์ม (Platform trust and keys) | งานกุญแจ/คริปโตของแอปหรือบริการ (Application/service key operations) |
+| **งานตัวอย่าง (Example use)** | Measured Boot, ปกป้องกุญแจ BitLocker (key protection) | จัดการกุญแจ (key management), Root CA, ธุรกรรมการเงิน (payments) |
+| **มาตรฐาน (Standards)** | ข้อกำหนด TPM: ISO/IEC 11889 (TPM specification) | ตรวจ FIPS 140 certificate ของโมดูลและโหมด (module/mode); ไม่ใช่ทุกตัวได้รับการรับรอง (not all are validated) |
+| **การป้องกัน (Protection)** | ขึ้นกับวิธีติดตั้งและแพลตฟอร์ม (Implementation/platform dependent) | การป้องกันการงัดแงะและ Zeroization ขึ้นกับรุ่น (Model-dependent tamper protection/zeroization) |
 
-</div>
+**เลือกตามหน้าที่ (Choose by purpose):** TPM เน้นความเชื่อถือของแพลตฟอร์ม ส่วน HSM เน้นงานกุญแจของแอป/บริการ จึงใช้แทนกันโดยอัตโนมัติไม่ได้ และฮาร์ดแวร์ไม่ได้รับประกันความปลอดภัยสมบูรณ์ / TPMs focus on platform trust; HSMs focus on application/service key operations. They are not automatically interchangeable, and hardware protection is not absolute security.
+
 
 </section>
 
@@ -437,7 +428,7 @@
 **Log (บันทึกเหตุการณ์)** คือประวัติการบันทึกกิจกรรม คำขอ การทำงาน และความผิดปกติที่เกิดขึ้นในระบบคอมพิวเตอร์ เครือข่าย หรือแอปพลิเคชันอย่างต่อเนื่อง โดยระบุวัน เวลา (Timestamp), บัญชีผู้ใช้, หมายเลข IP, และเหตุการณ์ที่เกิดขึ้น
 
 <section class="reading-definition-unit">
-<h5>Logging vs. Monitoring: ความแตกต่างเชิงแนวคิดที่สำคัญ:</h5>
+<h4>Logging vs. Monitoring: ความแตกต่างเชิงแนวคิดที่สำคัญ:</h4>
 
 - **Logging (การบันทึก):** คือกระบวนการจัดเก็บรวบรวมข้อมูลเหตุการณ์ที่เกิดขึ้นในระบบ (Recording Events) ลงในไฟล์หรือฐานข้อมูล
 - **Monitoring (การเฝ้าระวัง):** คือการติดตาม สังเกตการณ์ วิเคราะห์ และประเมินพฤติกรรมจากข้อมูล Log เหล่านั้นอย่างต่อเนื่องในเวลาจริง (Observing & Evaluating Behavior)
@@ -447,7 +438,7 @@
 </section>
 
 <section class="reading-definition-unit">
-<h5>6 แหล่ง Log สำคัญในระบบไอที (The 6 Essential Log Sources):</h5>
+<h4>6 แหล่ง Log สำคัญในระบบไอที (The 6 Essential Log Sources):</h4>
 
 1. **Authentication Logs:** บันทึกการเข้าสู่ระบบสำเร็จ (Login Success), ล้มเหลว (Login Failure), การล็อกบัญชี (Lockout), และการยกระดับสิทธิ์
 2. **Operating System Logs:** การเริ่มหรือหยุดบริการ (Service Start/Stop), ข้อผิดพลาดของเคอร์เนล, และการแก้ไขไฟล์ระบบ
@@ -479,7 +470,7 @@
 <h3 id="topic-5-2-monitoring-siem-correlation">5.2.2 Security Monitoring, SIEM &amp; Telemetry Correlation: การเฝ้าระวังและระบบ SIEM</h3>
 
 <section class="reading-definition-unit">
-<h5>Agent-Based vs. Agentless Monitoring:</h5>
+<h4>Agent-Based vs. Agentless Monitoring:</h4>
 
 - **Agent-Based Monitoring:** ติดตั้งโปรแกรมตัวแทน (Agent) ลงบนเครื่องเป้าหมายโดยตรง สามารถดึงข้อมูลระบบได้ละเอียด ลึกซึ้ง และมีประสิทธิภาพสูง แต่กินทรัพยากรเครื่องและต้องคอยอัปเดต Agent
 - **Agentless Monitoring:** ใช้โพรโทคอลมาตรฐานเครือข่ายในการดึงข้อมูลจากระยะไกล (เช่น SNMP, WMI, SSH, NetFlow) ไม่ต้องติดตั้งโปรแกรมเพิ่มในเครื่องเป้าหมาย แต่ข้อมูลที่ได้อาจไม่ละเอียดเท่ากับการมี Agent
@@ -487,21 +478,21 @@
 </section>
 
 <section class="reading-definition-unit">
-<h5>SIEM (Security Information and Event Management):</h5>
+<h4>SIEM (Security Information and Event Management):</h4>
 
 ระบบศูนย์กลางอัจฉริยะของศูนย์ปฏิบัติการเฝ้าระวังความมั่นคงปลอดภัย (SOC) ที่รวบรวมข้อมูล Log และเหตุการณ์จากอุปกรณ์ทุกชนิดมาจัดหมวดหมู่ให้เป็นมาตรฐานเดียวกัน (Normalization) และวิเคราะห์ความสัมพันธ์แบบเรียลไทม์
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>Event Correlation (การวิเคราะห์ความเชื่อมโยงของเหตุการณ์):</h5>
+<h4>Event Correlation (การวิเคราะห์ความเชื่อมโยงของเหตุการณ์):</h4>
 
 หัวใจสำคัญที่สุดของ SIEM คือการนำเหตุการณ์ที่เกิดขึ้นแยกจากกันมาร้อยเรียงเข้าด้วยกัน:
 - *เหตุการณ์ที่ 1:* ไฟร์วอลล์ตรวจพบการสแกนพอร์ตจาก IP ภายนอก (ถือเป็นเหตุการณ์ความเสี่ยงต่ำ)
 - *เหตุการณ์ที่ 2:* เครื่องโดเมนคอนโทรลเลอร์บันทึกการล็อกอินล้มเหลว 50 ครั้งใน 1 นาที (เสี่ยงปานกลาง)
 - *เหตุการณ์ที่ 3:* มีการล็อกอินสำเร็จในครั้งที่ 51 นอกเวลาทำการ
 - *เหตุการณ์ที่ 4:* เครื่องปลายทางมีการรันคำสั่ง PowerShell ที่น่าสงสัย
-- **ผลลัพธ์ Correlation:** หากมองแยกชิ้น เหตุการณ์เหล่านี้อาจดูเหมือนเรื่องทั่วไป แต่เมื่อ SIEM นำมาร้อยเรียงกัน ระบบจะสามารถสรุปได้ทันทีว่า **"กำลังเกิดการโจมตีแบบ Brute-Force สำเร็จและมีการสั่งรันโค้ดเจาะระบบ"** พร้อมยกระดับเป็นแจ้งเตือนวิกฤต (Critical Incident Alert) ทันที
+- **ผลลัพธ์ Correlation:** สมมติว่าเวลา 10:00–10:01 UTC เหตุการณ์ล็อกอินและ PowerShell เชื่อมกับบัญชี `analyst01` และเครื่อง `WS-01` พร้อม IP ต้นทางเดียวกัน ลำดับนี้สร้างสมมติฐานการบุกรุกที่ต้องตรวจสอบเวลา ตัวตน เครื่อง และคำสั่งจริง ก่อนยืนยันเหตุและจัดลำดับความเร่งด่วน / Correlate timestamps, account, host and source context; the sequence supports an investigation hypothesis, not automatic proof of compromise.
 
 </section>
 
@@ -535,14 +526,14 @@
 <h3 id="topic-5-2-edr-antivirus">5.2.3 Endpoint Detection &amp; Response (EDR) and Antivirus: การปกป้องเครื่องปลายทาง</h3>
 
 <section class="reading-definition-unit">
-<h5>Traditional Antivirus (แอนติไวรัสแบบดั้งเดิม):</h5>
+<h4>Traditional Antivirus (แอนติไวรัสแบบดั้งเดิม):</h4>
 
 ทำงานโดยอาศัยการตรวจจับด้วย **ลายเซ็น (Signature-based Detection)** คือเปรียบเทียบไฟล์กับฐานข้อมูลไวรัสที่รู้จัก หากแฮกเกอร์เขียนมัลแวร์ใหม่ (Zero-day) หรือปรับเปลี่ยนโค้ดเล็กน้อย (Polymorphic Malware) แอนติไวรัสแบบเดิมจะไม่สามารถตรวจจับได้
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>Next-Gen Antivirus (NGAV) &amp; EDR (Endpoint Detection and Response):</h5>
+<h4>Next-Gen Antivirus (NGAV) &amp; EDR (Endpoint Detection and Response):</h4>
 
 เทคโนโลยีการปกป้องเครื่องปลายทางยุคใหม่ที่ก้าวข้ามข้อจำกัดของลายเซ็น:
 - **Heuristic &amp; Behavioral Analysis:** ตรวจสอบพฤติกรรมการทำงานของโปรแกรม เช่น การพยายามฉีดโค้ดเข้าไปในโพรเซสอื่น การแก้ไขรีจิสทรีสำคัญ หรือการพยายามเข้ารหัสไฟล์จำนวนมาก แม้จะไม่เคยรู้จักมัลแวร์ตัวนี้มาก่อนแต่หากพฤติกรรมเป็นอันตราย ระบบจะบล็อกทันที
@@ -584,7 +575,7 @@
 ในแต่ละวัน ศูนย์ SOC อาจได้รับการแจ้งเตือนนับหมื่นรายการ การคัดกรองที่มีประสิทธิภาพจึงเป็นหัวใจสำคัญ:
 
 <section class="reading-definition-unit">
-<h5>Event vs. Alert vs. Incident: 3 คำสำคัญที่ห้ามสับสน:</h5>
+<h4>Event vs. Alert vs. Incident: 3 คำสำคัญที่ห้ามสับสน:</h4>
 
 - **Event (เหตุการณ์ทั่วไป):** สิ่งที่เกิดขึ้นในระบบที่สามารถสังเกตและบันทึกได้ เช่น ผู้ใช้เข้าสู่ระบบสำเร็จ, การสร้างไฟล์ใหม่, การส่งคำขอ DNS ส่วนใหญ่เป็นกิจกรรมปกติ
 - **Alert (การแจ้งเตือน):** ข้อความเตือนที่ระบบสร้างขึ้นเมื่อตรวจพบ Event ที่ตรงตามเงื่อนไขหรือเกินขอบเขตที่ตั้งไว้ บ่งบอกว่าอาจมีความผิดปกติที่ต้องตรวจสอบ
@@ -594,7 +585,7 @@
 </section>
 
 <section class="reading-definition-unit">
-<h5>Event Correlation: การเชื่อมโยงเหตุการณ์หาความจริง:</h5>
+<h4>Event Correlation: การเชื่อมโยงเหตุการณ์หาความจริง:</h4>
 
 **Event Correlation** คือกระบวนการวิเคราะห์ความสัมพันธ์เชิงตรรกะและเวลาของเหตุการณ์หลายรายการที่บันทึกไว้ในระบบต่าง ๆ เพื่อตรวจจับการโจมตีที่ซับซ้อน ตัวอย่างลำดับเหตุการณ์ 5 ขั้นตอนที่ข้อสอบชอบยก:
 
@@ -607,7 +598,7 @@
 </section>
 
 <section class="reading-definition-unit">
-<h5>6 สถานการณ์จำลองการใช้งานในศูนย์ SOC (Common SOC Use Cases):</h5>
+<h4>6 สถานการณ์จำลองการใช้งานในศูนย์ SOC (Common SOC Use Cases):</h4>
 
 1. **Multiple Failed Logins:** การพยายามล็อกอินล้มเหลวซ้ำ ๆ บ่งชี้ถึงการโจมตีแบบ Brute-Force หรือ Password Spraying
 2. **Impossible Travel:** มีการเข้าสู่ระบบจาก 2 สถานที่ห่างไกลกันในเวลาสั้นเกินกว่าจะเดินทางได้จริง (เช่น กรุงเทพฯ และ ลอนดอน ในเวลาห่างกัน 30 นาที) แต่อาจเกิด False Positive ได้หากผู้ใช้เชื่อมต่อผ่าน Corporate VPN
@@ -619,19 +610,17 @@
 </section>
 
 <section class="reading-definition-unit">
-<h5>False Positive vs. False Negative: ข้อสอบออกบ่อยมาก:</h5>
+<h4>False Positive vs. False Negative: ข้อสอบออกบ่อยมาก:</h4>
 
 - **False Positive (การแจ้งเตือนผิดพลาด):** ระบบแจ้งเตือนว่ามีภัยคุกคาม แต่ความจริงเป็นกิจกรรมปกติ (เช่น แจ้งเตือนว่าพนักงานส่งมัลแวร์ ทั้งที่เป็นเพียงการส่งสคริปต์รายงานประจำวัน) ผลกระทบ: ก่อให้เกิดภาวะ **Alert Fatigue (ความเหนื่อยล้าจากการแจ้งเตือน)** ทำให้นักวิเคราะห์ทำงานหนักเกินไปและอาจมองข้ามภัยจริง
-- **False Negative (การตรวจจับล้มเหลว / มองไม่เห็นภัย):** เกิดการโจมตีหรือมีมัลแวร์บุกรุกเข้ามาในระบบจริง แต่ระบบรักษาความปลอดภัย **ตรวจจับไม่พบและไม่มีการแจ้งเตือนใด ๆ** ผลกระทบ: **เป็นสถานการณ์ที่อันตรายและสร้างความเสียหายสูงสุด** เพราะองค์กรจะไม่รู้ตัวว่าถูกเจาะระบบ
+- **False Negative (การตรวจจับล้มเหลว / มองไม่เห็นภัย):** เกิดการโจมตีหรือมีมัลแวร์บุกรุกเข้ามาในระบบจริง แต่ระบบรักษาความปลอดภัย **ตรวจจับไม่พบและไม่มีการแจ้งเตือนใด ๆ** ผลกระทบ: **อาจปล่อยให้ภัยดำเนินต่อโดยไม่ถูกตรวจพบ แต่ความรุนแรงต้องประเมินตามผลกระทบและบริบท (Impact depends on context)** เพราะองค์กรจะไม่รู้ตัวว่าถูกเจาะระบบ
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>การจัดลำดับความสำคัญตามเมทริกซ์ความเสี่ยง (Risk Matrix Prioritization):</h5>
+<h4>การจัดลำดับความสำคัญตามเมทริกซ์ความเสี่ยง (Risk Matrix Prioritization):</h4>
 
 การจัดลำดับการตอบสนองของศูนย์ SOC ต้องประเมินจากหลายปัจจัยร่วมกัน ได้แก่ **Severity, Business Impact, Likelihood, Business Criticality, Asset Exposure, และ Urgency**:
-
-<div class="reading-table-wrapper">
 
 | Urgency / Impact | High Impact (ผลกระทบสูง) | Medium Impact (ผลกระทบปานกลาง) | Low Impact (ผลกระทบต่ำ) |
 | :--- | :--- | :--- | :--- |
@@ -639,9 +628,8 @@
 | **Medium Urgency (เร่งด่วนปานกลาง)** | **P2 (Major):** ช่องโหว่สำคัญบนระบบหลังบ้าน | **P3 (Moderate):** การตั้งค่าผิดพลาดทั่วไป | **P4 (Minor):** โปรแกรมแจ้งเตือนข้อผิดพลาด |
 | **Low Urgency (เร่งด่วนต่ำ)** | **P3 (Moderate):** ระบบทดสอบถูกโจมตี | **P4 (Minor):** ข้อมูล Log ค้างส่ง | **P5 (Informational):** บันทึกสถิติเพื่อทบทวน |
 
-</div>
 
-- **เกณฑ์พิจารณาเปรียบเทียบ:** สัญญาณเตือน Suspicious Login บนเซิร์ฟเวอร์ Production Domain Controller ต้องถูกจัดเป็น **P1** เสมอ ในขณะที่การพยายามสแกนพอร์ตบนเซิร์ฟเวอร์ทดสอบในห้อง Lab ที่ไม่มีข้อมูลจริงจะถูกจัดเป็น **P4 หรือ P5**
+- **เกณฑ์พิจารณาเปรียบเทียบ:** สัญญาณเตือน Suspicious Login บนเซิร์ฟเวอร์ Production Domain Controller ควรได้รับการตรวจสอบเร่งด่วน แต่ระดับ P1 ต้องประเมินหลักฐาน ขอบเขต และผลกระทบตามนโยบาย (Not every suspicious login is automatically P1) ในขณะที่การพยายามสแกนพอร์ตบนเซิร์ฟเวอร์ทดสอบในห้อง Lab ที่ไม่มีข้อมูลจริงจะถูกจัดเป็น **P4 หรือ P5**
 
 </section>
 
@@ -654,28 +642,28 @@
 การเข้าใจแรงจูงใจและความสามารถของผู้โจมตี ช่วยให้องค์กรออกแบบมาตรการป้องกันได้อย่างตรงจุด:
 
 <section class="reading-definition-unit">
-<h5>1. กลุ่มที่ได้รับการสนับสนุนจากรัฐบาล (Nation-State / APTs):</h5>
+<h4>1. กลุ่มที่ได้รับการสนับสนุนจากรัฐบาล (Nation-State / APTs):</h4>
 
 กลุ่มแฮกเกอร์ระดับสูงที่ได้รับทุนสนับสนุนจากรัฐบาลต่างชาติ (Advanced Persistent Threats) มีทรัพยากรมหาศาล ความเชี่ยวชาญสูงสุด และความอดทนในการฝังตัวระยะยาว แรงจูงใจหลัก: ผลประโยชน์ทางภูมิรัฐศาสตร์ การจารกรรมข้อมูลความลับระดับชาติ (Espionage) หรือการก่อวินาศกรรมโครงสร้างพื้นฐาน
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>2. อาชญากรไซเบอร์ (Cybercriminals):</h5>
+<h4>2. อาชญากรไซเบอร์ (Cybercriminals):</h4>
 
 กลุ่มอาชญากรรมที่มุ่งแสวงหา **ผลประโยชน์ทางการเงิน (Financial Gain)** เป็นหลัก ผ่านการปล่อยมัลแวร์เรียกค่าไถ่ (Ransomware), การขโมยข้อมูลบัตรเครดิตไปขายในดาร์กเว็บ, หรือการหลอกโอนเงินทางธุรกิจ (Business Email Compromise - BEC)
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>3. แฮกเกอร์นักกิจกรรม (Hacktivists):</h5>
+<h4>3. แฮกเกอร์นักกิจกรรม (Hacktivists):</h4>
 
 บุคคลหรือกลุ่มบุคคลที่โจมตีระบบเพื่อขับเคลื่อน **อุดมการณ์ทางการเมือง สังคม ศาสนา หรือสิ่งแวดล้อม** เช่น การเจาะเว็บไซต์เพื่อเปลี่ยนหน้าประกาศ (Defacement) หรือการยิงถล่มด้วย DDoS เพื่อปิดกั้นการเข้าถึง
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>4. บุคคลภายในองค์กร (Insiders):</h5>
+<h4>4. บุคคลภายในองค์กร (Insiders):</h4>
 
 พนักงาน คู่ค้า หรือผู้รับเหมาที่มีสิทธิ์เข้าถึงระบบถูกต้องตามกฎหมาย:
 - **Malicious Insider (ผู้ไม่ประสงค์ดี):** ใช้สิทธิ์ที่ตนมีขโมยข้อมูลเพื่อขายหรือทำลายระบบเพื่อแก้แค้น
@@ -684,13 +672,11 @@
 </section>
 
 <section class="reading-definition-unit">
-<h5>5. ผู้โจมตีมือใหม่ (Script Kiddies):</h5>
+<h4>5. ผู้โจมตีมือใหม่ (Script Kiddies):</h4>
 
 ผู้โจมตีที่มีทักษะทางเทคนิคต่ำ ใช้เครื่องมือและสคริปต์สำเร็จรูปที่ดาวน์โหลดจากอินเทอร์เน็ตในการโจมตีเป้าหมายแบบสุ่ม แรงจูงใจ: ความคึกคะนอง เรียกร้องความสนใจ หรืออวดเพื่อน
 
 </section>
-
-<div class="reading-table-wrapper">
 
 | ประเภท Threat Actor | แรงจูงใจหลัก | ระดับความสามารถและทรัพยากร | เป้าหมายทั่วไป |
 | :--- | :--- | :--- | :--- |
@@ -700,7 +686,6 @@
 | **Insiders** | เงิน, ความแค้น, หรือความประมาท | มีสิทธิ์เข้าถึงระบบภายในโดยตรง | ทรัพย์สินทางปัญญา, ฐานข้อมูลลูกค้า |
 | **Script Kiddies** | ความสนุก, อวดโอ้, ลองของ | ต่ำมาก (ใช้เครื่องมือสำเร็จรูป) | ระบบที่มีช่องโหว่ชัดเจนและเปิดสู่สาธารณะ |
 
-</div>
 
 </section>
 
@@ -711,7 +696,7 @@
 **CTI (Cyber Threat Intelligence)** คือข้อมูลข่าวกรองเกี่ยวกับภัยคุกคามและกลุ่มผู้โจมตีที่ผ่านการรวบรวม กลั่นกรอง วิเคราะห์บริบท และแปลงเป็นความรู้เชิงปฏิบัติการสำหรับช่วยตัดสินใจด้านความมั่นคงปลอดภัย (Actionable Security Knowledge)
 
 <section class="reading-definition-unit">
-<h5>6 คำถามหลักที่ CTI ช่วยให้องค์กรตอบได้:</h5>
+<h4>6 คำถามหลักที่ CTI ช่วยให้องค์กรตอบได้:</h4>
 
 - **ใครอาจโจมตีเรา? (Who might attack us?):** ระบุกลุ่ม Threat Actor และแรงจูงใจ
 - **เรากำลังเผชิญภัยคุกคามใด? (What threats are we facing?):** แคมเปญการโจมตีที่มุ่งเป้ามายังอุตสาหกรรมเดียวกัน
@@ -788,7 +773,9 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 วิธีการหรือเทคนิคเฉพาะทางที่ผู้โจมตีนำมาใช้เพื่อให้บรรลุเป้าหมายของ Tactic นั้น เช่น:
 - ใน Tactic *Initial Access* อาจใช้เทคนิค **Phishing (T1566)**
 - ใน Tactic *Lateral Movement* อาจใช้เทคนิค **Pass the Hash (T1550.002)**
-- ใน Tactic *Execution* อาจใช้เทคนิค **Command and Scripting: PowerShell (T1059)**
+- ใน Tactic *Execution* อาจใช้ Sub-technique **Command and Scripting Interpreter: PowerShell (T1059.001)**
+
+**ชื่อกับรหัส (Names and IDs):** PowerShell และ Spearphishing Link เป็น Sub-techniques ของ Command and Scripting Interpreter (T1059) และ Phishing (T1566) ตามลำดับ จึงใช้รหัสย่อยของตนเองเมื่อระบุชื่อเฉพาะ / PowerShell and Spearphishing Link have their own sub-technique IDs; T1059 and T1566 identify their parent techniques.
 
 </section>
 
@@ -847,12 +834,14 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 
 <h3 id="topic-5-3-irp-lifecycle-phases">5.3.3 The 6-Phase Incident Response Lifecycle: 6 ขั้นตอนวงจรการตอบสนองต่อเหตุการณ์</h3>
 
-ตามมาตรฐาน **NIST SP 800-61 / ISO 27035** และหลักสูตร ISC2 CC วงจรการตอบสนองต่อเหตุการณ์แบ่งออกเป็น 6 ขั้นตอนต่อเนื่องกันอย่างเป็นระบบ:
+บทเรียนนี้ใช้ **6 กิจกรรมเป็นแบบจำลองเพื่อการเรียน (Teaching Model)** ตามภาพและตัวอย่างด้านล่าง กิจกรรมอาจคาบเกี่ยว ย้อนกลับ หรือทำซ้ำตามเหตุการณ์ ไม่ใช่ลำดับบังคับสากลที่ NIST, ISO หรือ ISC2 กำหนดตรงกัน / The six activities below are this course's teaching model. They can overlap, repeat or be revisited; they are not a universal sequence jointly prescribed by NIST, ISO and ISC2.
+
+**บริบท NIST ปัจจุบัน (Current NIST context):** NIST SP 800-61 Rev. 3 เชื่อม IR กับ CSF 2.0 โดย Detect, Respond และ Recover เป็นแกนการตอบสนอง ส่วน Govern, Identify และ Protect สนับสนุนความพร้อมและการจัดการความเสี่ยง พร้อมปรับปรุงจากบทเรียนอย่างต่อเนื่อง / NIST SP 800-61 Rev. 3 places incident response within CSF 2.0: Detect, Respond and Recover address incidents, supported by broader Govern, Identify and Protect activities and continuous improvement. นี่ไม่ใช่การเปลี่ยนเป็นขั้นตอนบังคับใหม่หกข้อ / These functions are not a replacement six-step mandatory pipeline.
 
 <div class="reading-semantic-diagram" data-diagram="irpLifecycle"></div>
 
 <section class="reading-definition-unit">
-<h5>1. Preparation (การเตรียมความพร้อม):</h5>
+<h4>1. Preparation (การเตรียมความพร้อม):</h4>
 
 ขั้นตอนที่สำคัญที่สุดที่ต้องทำ **ก่อนเกิดเหตุการณ์จริง**:
 - จัดทำและทบทวนแผน IRP และนโยบายความมั่นคงปลอดภัย
@@ -863,7 +852,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>2. Detection &amp; Analysis (การตรวจจับและวิเคราะห์):</h5>
+<h4>2. Detection &amp; Analysis (การตรวจจับและวิเคราะห์):</h4>
 
 ขั้นตอนที่เริ่มเมื่อมีสัญญาณเตือนภัย:
 - เฝ้าระวังและคัดกรองการแจ้งเตือนจากระบบ SIEM, EDR, และไฟร์วอลล์
@@ -873,16 +862,16 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>3. Containment (การควบคุมและจำกัดขอบเขตความเสียหาย):</h5>
+<h4>3. Containment (การควบคุมและจำกัดขอบเขตความเสียหาย):</h4>
 
 เป้าหมายคือหยุดยั้งไม่ให้ความเสียหายลุกลามไปยังระบบอื่น แบ่งเป็น:
 - **Short-term Containment (การกักกันระยะสั้น):** ดึงสาย LAN, ปิดการเชื่อมต่อ Wi-Fi, สั่ง EDR กักกันโฮสต์ (Isolate Host), หรือบล็อก IP/Port บนไฟร์วอลล์ทันที
-- **Long-term Containment (การควบคุมระยะยาว):** วางระบบสำรองชั่วคราวเพื่อให้อสังหาริมทรัพย์ของระบบงานยังคงให้บริการได้ในวงจำกัดในระหว่างรอการแก้ไขถาวร
+- **Long-term Containment (การควบคุมระยะยาว):** จัดสภาพแวดล้อมชั่วคราวที่ควบคุมความเสี่ยง เพื่อให้บริการที่จำเป็นทำงานได้ในวงจำกัดระหว่างรอการแก้ไขถาวร / Maintain limited essential services in a controlled temporary environment while permanent remediation is arranged.
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>4. Eradication (การกำจัดสาเหตุของภัยคุกคาม):</h5>
+<h4>4. Eradication (การกำจัดสาเหตุของภัยคุกคาม):</h4>
 
 เมื่อควบคุมพื้นที่เกิดเหตุได้แล้ว จึงเริ่มกำจัดต้นเหตุของปัญหาทั้งหมด:
 - ลบมัลแวร์ เครื่องมือเจาะระบบ และแบ็คดอร์ (Backdoors) ออกจากเครื่อง
@@ -893,7 +882,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>5. Recovery (การกู้คืนระบบสู่สภาวะปกติ):</h5>
+<h4>5. Recovery (การกู้คืนระบบสู่สภาวะปกติ):</h4>
 
 นำระบบงานและข้อมูลกลับมาเปิดให้บริการอย่างปลอดภัย:
 - กู้คืนข้อมูลจากระบบสำรอง (Backup) ที่ตรวจสอบแล้วว่าสะอาดและไม่มีมัลแวร์แฝงอยู่
@@ -903,19 +892,17 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>6. Post-Incident Review (การทบทวนหลังเหตุการณ์ / Lessons Learned):</h5>
+<h4>6. Post-Incident Review (การทบทวนหลังเหตุการณ์ / Lessons Learned):</h4>
 
-ขั้นตอนสุดท้ายแต่ทรงคุณค่าที่สุดสำหรับการปรับปรุงระบบ:
-- จัดประชุมถอดบทเรียนร่วมกับผู้เกี่ยวข้องทั้งหมดภายใน 1–2 สัปดาห์หลังเหตุการณ์ยุติ
+การทบทวนอย่างเป็นทางการหลังเหตุการณ์ช่วยปรับปรุงระบบ แต่ไม่ต้องรอให้กู้คืนเสร็จจึงเริ่มใช้บทเรียนที่พบ / A formal post-incident review supports improvement; useful lessons can be applied before recovery finishes.
+- จัดประชุมตามกรอบเวลาที่องค์กรกำหนด เช่น ภายใน 1–2 สัปดาห์หลังเหตุการณ์ยุติในตัวอย่างนี้ ไม่ใช่กำหนดสากล / Use the organization's review schedule; one to two weeks is an example, not a universal deadline.
 - ตอบคำถามสำคัญ: อะไรเกิดขึ้นบ้าง? แผนที่เตรียมไว้ได้ผลหรือไม่? มีจุดบกพร่องตรงไหน?
 - จัดทำรายงานสรุปเหตุการณ์ฉบับสมบูรณ์ และนำข้อเสนอแนะกลับไปอัปเดตแผน IRP ในขั้นตอน Preparation เพื่อสร้างวงจรสู่การพัฒนาอย่างต่อเนื่อง
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>ตารางเปรียบเทียบคำกริยาชี้เป้าสำหรับข้อสอบ (Exam Verb Triggers):</h5>
-
-<div class="reading-table-wrapper">
+<h4>ตารางเปรียบเทียบคำกริยาชี้เป้าสำหรับข้อสอบ (Exam Verb Triggers):</h4>
 
 | ขั้นตอน IRP | คำกริยาชี้เป้าในโจทย์ (Exam Keywords) | คำถามหลัก | ตัวอย่างการกระทำในสถานการณ์จริง |
 | :--- | :--- | :--- | :--- |
@@ -926,12 +913,11 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 | **Recovery** | **Restore**, **Rebuild**, **Return to service**, Reconnect | นำระบบกลับมาเปิดอย่างไร? | Restore ข้อมูลจาก Clean Backup, เปิดระบบให้ผู้ใช้กลับมาทำงาน |
 | **Post-Incident Review** | **Lessons learned**, Root cause analysis, Update IRP | เรียนรู้อะไรเพื่อไม่ให้เกิดซ้ำ? | ประชุมทบทวนเหตุการณ์, ปรับปรุงกฎตรวจจับ, อบรมพนักงาน |
 
-</div>
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>กรณีศึกษาจำลองสถานการณ์ Ransomware แบบครบวงจร 6 ขั้นตอน:</h5>
+<h4>กรณีศึกษาจำลองสถานการณ์ Ransomware แบบครบวงจร 6 ขั้นตอน:</h4>
 
 **สถานการณ์:** พนักงานแผนกบัญชีเปิดไฟล์เอกสารแนบในอีเมลหลอกลวง ทำให้มัลแวร์เรียกค่าไถ่ (Ransomware) เริ่มปฏิบัติการเข้ารหัสไฟล์และพยายามแพร่กระจายไปทั่วเครือข่าย:
 
@@ -980,21 +966,21 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 การเก็บรวบรวมหลักฐานดิจิทัลต้องเป็นไปตามหลักการทางกฎหมาย เพื่อให้สามารถใช้เป็นพยานหลักฐานในชั้นศาลได้:
 
 <section class="reading-definition-unit">
-<h5>ความสมบูรณ์ของพยานหลักฐาน (Evidence Integrity &amp; Bit-stream Image):</h5>
+<h4>ความสมบูรณ์ของพยานหลักฐาน (Evidence Integrity &amp; Bit-stream Image):</h4>
 
 ห้ามเปิดเครื่องหรือทำงานบนฮาร์ดดิสก์ของกลางโดยตรง เพราะการเปิดเครื่องจะเปลี่ยนแปลง Timestamp และข้อมูลในระบบ ต้องใช้อุปกรณ์ป้องกันการเขียนทับ (Write-Blocker) และทำสำเนาข้อมูลแบบบิตต่อบิต (Bit-stream Image หรือ Forensic Clone) จากนั้นคำนวณค่าแฮช (SHA-256) ของข้อมูลต้นฉบับและข้อมูลสำเนามาเทียบกัน หากค่าแฮชตรงกันจึงนำสำเนานั้นไปตรวจพิสูจน์
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>โซ่การเก็บรักษาพยานหลักฐาน (Chain of Custody):</h5>
+<h4>โซ่การเก็บรักษาพยานหลักฐาน (Chain of Custody):</h4>
 
 เอกสารบันทึกประวัติการครอบครองพยานหลักฐานอย่างต่อเนื่องตั้งแต่เริ่มเก็บกู้จนถึงชั้นศาล ต้องระบุอย่างละเอียดว่า: ใครเป็นผู้เก็บหลักฐาน, เก็บเมื่อไหร่, เก็บที่ไหน, ถูกส่งมอบให้ใคร, วันเวลาใด, และเพื่อวัตถุประสงค์อะไร หากเอกสาร Chain of Custody ขาดตอนหรือมีช่องว่าง ศาลอาจปฏิเสธไม่รับฟังพยานหลักฐานชิ้นนั้นทันที
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>ลำดับความไม่เสถียรของข้อมูล (Order of Volatility - RFC 3227):</h5>
+<h4>ลำดับความไม่เสถียรของข้อมูล (Order of Volatility - RFC 3227):</h4>
 
 ข้อมูลดิจิทัลมีอายุขัยต่างกัน เมื่อต้องเก็บหลักฐาน ผู้ตรวจสอบต้องเก็บ **ข้อมูลที่สูญหายได้ง่ายที่สุดก่อนเสมอ**:
 1. รีจิสทรีและแคชของหน่วยประมวลผล (CPU Registers & Cache) — *หายทันทีเมื่อไม่มีไฟ*
@@ -1015,7 +1001,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 แผน IRP ที่เขียนไว้บนกระดาษแต่ไม่เคยซ้อม จะใช้งานไม่ได้จริงในยามวิกฤต องค์กรจึงต้องฝึกซ้อมอย่างสม่ำเสมอ:
 
 <section class="reading-definition-unit">
-<h5>1. การฝึกซ้อมบนโต๊ะ (Tabletop Exercise - TTX):</h5>
+<h4>1. การฝึกซ้อมบนโต๊ะ (Tabletop Exercise - TTX):</h4>
 
 การฝึกซ้อมตามสถานการณ์จำลองเชิงอภิปราย (Discussion-based) ในห้องประชุม โดยมีผู้บริหาร ฝ่ายไอที ฝ่ายกฎหมาย และฝ่ายประชาสัมพันธ์เข้าร่วม:
 - มีผู้นำเสนอสถานการณ์วิกฤตสมมุติ (เช่น เกิดการโจมตีด้วย Ransomware และข้อมูลลูกค้ารั่วไหล)
@@ -1025,7 +1011,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>2. การทดสอบและจำลองเชิงเทคนิค (Technical Testing / Live Simulation):</h5>
+<h4>2. การทดสอบและจำลองเชิงเทคนิค (Technical Testing / Live Simulation):</h4>
 
 การทดสอบภาคปฏิบัติจริงในสภาพแวดล้อมจำลอง (Cyber Range, Purple Team, หรือ Live Fire):
 - ทีมเทคนิคต้องเผชิญหน้ากับการโจมตีเสมือนจริงบนระบบคอมพิวเตอร์และเครือข่าย
@@ -1033,8 +1019,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 - **ข้อดี:** ตรวจสอบความพร้อมทางเทคโนโลยีและทักษะของทีมวิศวกรได้อย่างแท้จริง มีความซับซ้อนและค่าใช้จ่ายสูงกว่า TTX
 
 </section>
-
-<div class="reading-table-wrapper">
 
 | มิติการเปรียบเทียบ | Tabletop Exercise (TTX) | Technical Testing / Simulation |
 | :--- | :--- | :--- |
@@ -1044,7 +1028,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 | **จุดเน้นหลัก** | การตัดสินใจ, บทบาทหน้าที่, การสื่อสาร | ความแม่นยำของเครื่องมือ, การจับสัญญาณ Log, ฝีมือช่าง |
 | **ความถี่ที่แนะนำ** | อย่างน้อยปีละ 1–2 ครั้ง | ซ้อมเป็นประจำหรือทำร่วมกับ Red/Blue Team |
 
-</div>
 
 </section>
 
@@ -1080,7 +1063,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 <h3 id="topic-5-4-eol-eos-compensating-controls">5.4.2 End of Life (EOL) / End of Support (EOS) Risks &amp; Compensating Controls: อุปกรณ์หมดอายุการใช้งาน</h3>
 
 <section class="reading-definition-unit">
-<h5>EOL vs. EOS: ความแตกต่างที่สำคัญ:</h5>
+<h4>EOL vs. EOS: ความแตกต่างที่สำคัญ:</h4>
 
 - **End of Life (EOL):** ผู้ผลิตยุติการจัดจำหน่ายผลิตภัณฑ์และหยุดพัฒนาฟีเจอร์ใหม่ แต่อาจยังคงมีการปล่อยแพตช์ความปลอดภัยที่สำคัญอยู่
 - **End of Support (EOS):** ผู้ผลิต **ยุติการสนับสนุนทางเทคนิคและหยุดการออกแพตช์ความปลอดภัยทั้งหมดโดยสิ้นเชิง** อุปกรณ์หรือระบบปฏิบัติการที่เข้าสู่สภาวะ EOS (เช่น Windows 7 หรือ Windows Server 2008) จะกลายเป็นเป้าหมายที่เปราะบางที่สุด เพราะหากมีช่องโหว่ใหม่เกิดขึ้น ผู้ผลิตจะไม่ทำแพตช์อุดช่องโหว่นั้นอีกต่อไป
@@ -1088,7 +1071,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>มาตรการควบคุมชดเชย (Compensating Controls) สำหรับระบบ EOS:</h5>
+<h4>มาตรการควบคุมชดเชย (Compensating Controls) สำหรับระบบ EOS:</h4>
 
 ในบางกรณี องค์กรไม่สามารถเปลี่ยนอุปกรณ์ EOS ได้ทันที (เช่น เครื่องจักรในโรงงานผลิต หรือเครื่องมือแพทย์ที่มีมูลค่าหลายสิบล้านบาท) องค์กรจำเป็นต้องบังคับใช้ **Compensating Controls (มาตรการควบคุมชดเชย)** เพื่อบรรเทาความเสี่ยง:
 1. **Network Segmentation / Strict Isolation:** ตัดขาดอุปกรณ์ EOS ออกจากอินเทอร์เน็ตภายนอก และแยกไปอยู่ใน VLAN อิสระ (Isolated VLAN) เพื่อป้องกันการแพร่กระจายของมัลแวร์
@@ -1107,14 +1090,14 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 **Configuration Management (การจัดการการตั้งค่า)** คือกระบวนการควบคุมและรักษาความสม่ำเสมอของการตั้งค่าฮาร์ดแวร์ ซอฟต์แวร์ และระบบเครือข่ายให้เป็นไปตามมาตรฐานที่ได้รับการอนุมัติ
 
 <section class="reading-definition-unit">
-<h5>Security Baselines (ฐานความมั่นคงปลอดภัยขั้นต่ำ):</h5>
+<h4>Security Baselines (ฐานความมั่นคงปลอดภัยขั้นต่ำ):</h4>
 
 ชุดการตั้งค่าความปลอดภัยมาตรฐานที่ผ่านการทดสอบและอนุมัติแล้วว่าต้องถูกนำไปปรับใช้กับอุปกรณ์ทุกเครื่องในองค์กร เช่น การปิดพอร์ตที่ไม่จำเป็น, การปิดสิทธิ์ Guest Account, การบังคับใช้นโยบายรหัสผ่านที่ซับซ้อน อ้างอิงตามมาตรฐานสากล เช่น **CIS Benchmarks** หรือ **DISA STIGs**
 
 </section>
 
 <section class="reading-definition-unit">
-<h5>Configuration Drift (การเบี่ยงเบนของการตั้งค่า):</h5>
+<h4>Configuration Drift (การเบี่ยงเบนของการตั้งค่า):</h4>
 
 ปรากฏการณ์ที่การตั้งค่าของระบบค่อย ๆ เบี่ยงเบนออกจาก Baseline เดิมอย่างช้า ๆ อันเนื่องมาจากการแก้ไขเฉพาะหน้าของผู้ดูแลระบบ การติดตั้งซอฟต์แวร์เสริม หรือการทดสอบระบบที่ไม่มีการบันทึก การเกิด Drift ทำให้ระบบมีช่องโหว่ที่ไม่คาดคิด องค์กรจึงต้องใช้เครื่องมืออัตโนมัติ (เช่น Ansible, Puppet, Chef, Microsoft Intune) เพื่อตรวจสอบและดึงการตั้งค่าให้กลับสู่ Baseline ที่ถูกต้องตลอดเวลา
 
@@ -1152,8 +1135,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 6. **Implement &amp; Deploy:** ดำเนินการติดตั้งจริงตามขั้นตอนที่ได้รับอนุมัติอย่างเคร่งครัด
 7. **Post-Implementation Review (PIR):** ประเมินผลลัพธ์หลังการติดตั้งว่าบรรลุวัตถุประสงค์หรือไม่ และบันทึกข้อผิดพลาดเพื่อปิดคำขอเปลี่ยนแปลง
 
-<div class="reading-table-wrapper">
-
 | ประเด็นเปรียบเทียบ | Configuration Management (การจัดการการตั้งค่า) | Change Management (การจัดการการเปลี่ยนแปลง) |
 | :--- | :--- | :--- |
 | **บทบาทหลัก** | **Maintains Desired Configuration:** รักษาและคงสถานะความมั่นคงปลอดภัยที่ระบบควรจะเป็น | **Controls Changes to Systems:** ควบคุมกระบวนการปรับปรุง แก้ไข หรืออัปเกรดระบบ |
@@ -1162,7 +1143,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 | **การตรวจจับและป้องกัน** | ตรวจจับ **Configuration Drift** (การเบี่ยงเบนจากฐานมาตรฐาน) | ป้องกันปัญหา Downtime, ผลกระทบต่อธุรกิจ และการแก้ไขโดยพลการ |
 | **ตัวอย่างในโลกจริง** | เทมเพลตการตั้งค่าพอร์ตและนโยบายบนไฟร์วอลล์ที่ได้รับอนุมัติแล้ว | เอกสาร RFC ยื่นขอเปิดพอร์ตบริการใหม่บนไฟร์วอลล์พร้อมแผน Rollback |
 
-</div>
 
 </section>
 
@@ -1181,7 +1161,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 ในการฝึกซ้อมและประเมินความพร้อมด้านความปลอดภัย องค์กรนิยมจัดทีมผู้เชี่ยวชาญออกเป็น 3 สี:
 
 <section class="reading-definition-unit">
-<h5>1. Blue Team (ทีมสีน้ำเงิน — ฝ่ายตั้งรับ):</h5>
+<h4>1. Blue Team (ทีมสีน้ำเงิน — ฝ่ายตั้งรับ):</h4>
 
 ทีมวิศวกรความปลอดภัยที่มีหน้าที่ในการ **ปกป้องและเฝ้าระวังระบบขององค์กร**:
 - เฝ้าระวังเหตุการณ์ผ่าน SIEM และ EDR
@@ -1191,7 +1171,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>2. Red Team (ทีมสีแดง — ฝ่ายรุก):</h5>
+<h4>2. Red Team (ทีมสีแดง — ฝ่ายรุก):</h4>
 
 ทีมผู้เชี่ยวชาญที่ทำหน้าที่ **จำลองบทบาทเป็นผู้โจมตีในโลกจริง (Adversary Emulation)**:
 - ใช้วิธีการ เครื่องมือ และยุทธวิธีเสมือนแฮกเกอร์จริงในการเจาะระบบ
@@ -1201,7 +1181,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>3. Purple Team (ทีมสีม่วง — ฝ่ายผสานความร่วมมือ):</h5>
+<h4>3. Purple Team (ทีมสีม่วง — ฝ่ายผสานความร่วมมือ):</h4>
 
 แนวคิดการผสานความร่วมมือแบบบูรณาการระหว่าง **Red Team และ Blue Team**:
 - ในอดีต Red และ Blue มักทำงานแยกกัน ทำให้ Blue Team ไม่ทราบว่าตนพลาดการตรวจจับจุดใด
@@ -1216,15 +1196,12 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 
 </section>
 
-<div class="reading-table-wrapper">
-
 | ทีมความปลอดภัย | บทบาทหน้าที่ | กิจกรรมหลัก | เป้าหมายสูงสุด |
 | :--- | :--- | :--- | :--- |
 | **Blue Team** | ฝ่ายตั้งรับ (Defenders) | เฝ้าระวัง SIEM, ปรับแต่งไฟร์วอลล์, ทำ IR, กักกันมัลแวร์ | ปกป้องระบบและขัดขวางการโจมตี |
 | **Red Team** | ฝ่ายรุก (Attackers) | จำลองการเจาะระบบ, เจาะผ่านช่องโหว่, ทำ Phishing | ค้นหาจุดอ่อนและทดสอบประสิทธิภาพของฝ่ายรับ |
 | **Purple Team** | ผสานความร่วมมือ (Collaboration) | ซ้อมร่วมกันแบบเรียลไทม์, แลกเปลี่ยนข้อมูลเชิงลึก | ยกระดับขีดความสามารถการตรวจจับอย่างรวดเร็ว |
 
-</div>
 
 <div class="reading-semantic-diagram" data-diagram="purpleTeamLoop"></div>
 
@@ -1237,7 +1214,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 สองกระบวนการนี้มีเป้าหมายและขั้นตอนการทำงานที่แตกต่างกันอย่างชัดเจน:
 
 <section class="reading-definition-unit">
-<h5>Vulnerability Assessment (VA - การประเมินและสแกนหาช่องโหว่):</h5>
+<h4>Vulnerability Assessment (VA - การประเมินและสแกนหาช่องโหว่):</h4>
 
 กระบวนการที่ใช้ **เครื่องมือสแกนอัตโนมัติ (Automated Vulnerability Scanners เช่น Nessus, Qualys, OpenVAS)** เพื่อค้นหาจุดอ่อน ซอฟต์แวร์ที่ยังไม่ได้อัปเดตแพตช์ หรือการตั้งค่าที่ผิดพลาดในระบบ:
 - **เน้นความกว้าง (Breadth):** ตรวจสอบอุปกรณ์จำนวนมากในเวลาอันสั้น
@@ -1247,7 +1224,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>Penetration Testing (Pentest - การทดสอบเจาะระบบ):</h5>
+<h4>Penetration Testing (Pentest - การทดสอบเจาะระบบ):</h4>
 
 การจำลองการโจมตีเสมือนจริงโดยมนุษย์ (Ethical Hacker) ที่ได้รับ **การอนุญาตอย่างเป็นลายลักษณ์อักษร (Rules of Engagement - RoE)**:
 - **เน้นความลึก (Depth):** ผู้ทดสอบจะพยายาม **ส่งโค้ดเจาะช่องโหว่จริง (Active Exploitation)** เพื่อพิสูจน์ว่าช่องโหว่นั้นสามารถสร้างความเสียหายต่อธุรกิจได้จริงหรือไม่
@@ -1255,8 +1232,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 - **ผลลัพธ์:** รายงานพิสูจน์หลักฐาน (Proof of Concept) และคำแนะนำในการปรับปรุงแก้ไข
 
 </section>
-
-<div class="reading-table-wrapper">
 
 | มิติการเปรียบเทียบ | Vulnerability Assessment (VA) | Penetration Testing (Pentest) |
 | :--- | :--- | :--- |
@@ -1266,7 +1241,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 | **ความเสี่ยงต่อระบบงาน** | ต่ำมาก (ทำงานได้ในเวลาปกติ) | ปานกลางถึงสูง (อาจทำให้บริการหยุดชะงัก) |
 | **เอกสารบังคับก่อนเริ่ม** | ข้อตกลงทั่วไป | **เอกสารอนุญาตและกฎเกณฑ์ (Rules of Engagement)** |
 
-</div>
 
 </section>
 
@@ -1279,7 +1253,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 <div class="reading-semantic-diagram" data-diagram="securityTestingMatrix"></div>
 
 <section class="reading-definition-unit">
-<h5>SAST (Static Application Security Testing):</h5>
+<h4>SAST (Static Application Security Testing):</h4>
 
 การทดสอบแบบ **กล่องขาว (White-box Testing)** ที่วิเคราะห์ซอร์สโค้ด (Source Code), ไบต์โค้ด, หรือไบนารีโดยตรง:
 - ดำเนินการในขณะที่ **โปรแกรมยังไม่รันทำงาน (Code at Rest)** ในระยะเริ่มต้นของการพัฒนา (Coding Phase)
@@ -1289,7 +1263,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>DAST (Dynamic Application Security Testing):</h5>
+<h4>DAST (Dynamic Application Security Testing):</h4>
 
 การทดสอบแบบ **กล่องดำ (Black-box Testing)** ที่ทดสอบแอปพลิเคชันจากมุมมองภายนอกผ่านเครือข่าย:
 - ดำเนินการในขณะที่ **แอปพลิเคชันกำลังรันทำงานจริง (Running Application)** ในสภาพแวดล้อมทดสอบ (Staging / QA)
@@ -1297,8 +1271,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 - จุดแข็ง: ตรวจจับปัญหาที่เกิดขึ้นเฉพาะตอนโปรแกรมทำงาน เช่น ปัญหาเซสชันการยืนยันตัวตน (Authentication Flaws), การตั้งค่าเซิร์ฟเวอร์ผิดพลาด (Server Misconfigurations), และปัญหาความปลอดภัยของ API
 
 </section>
-
-<div class="reading-table-wrapper">
 
 | คุณลักษณะ (Attribute) | SAST (Static Testing) | DAST (Dynamic Testing) |
 | :--- | :--- | :--- |
@@ -1308,7 +1280,6 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 | **สิ่งที่ตรวจจับได้ดี** | ไวยากรณ์ผิดพลาด, Hardcoded Passwords, SQLi | ปัญหาเซสชัน, Authentication, Server Config |
 | **ความแม่นยำของตำแหน่ง** | ชี้เป้าได้ถึงหมายเลขบรรทัดของโค้ด | แจ้งเฉพาะ URL หรือพารามิเตอร์ที่พบปัญหา |
 
-</div>
 
 </section>
 
@@ -1352,7 +1323,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 **Social Engineering (วิศวกรรมสังคม)** คือศิลปะในการหลอกลวงหรือโน้มน้าวใจมนุษย์ให้เปิดเผยข้อมูลความลับ ยอมละเมิดขั้นตอนความปลอดภัย หรือติดตั้งมัลแวร์ โดยโจมตีที่จุดอ่อนของมนุษย์ (ความกลัว ความโลภ ความเห็นอกเห็นใจ หรือความเกรงใจ):
 
 <section class="reading-definition-unit">
-<h5>1. Phishing (การหลอกลวงผ่านอีเมล):</h5>
+<h4>1. Phishing (การหลอกลวงผ่านอีเมล):</h4>
 
 - **Phishing (ทั่วไป):** การหว่านส่งอีเมลหลอกลวงจำนวนมากไปยังผู้รับแบบไม่เจาะจง อ้างว่าบัญชีถูกระงับเพื่อให้เหยื่อคลิกลิงก์ปลอม
 - **Spear Phishing:** การเจาะจงเป้าหมายไปยังบุคคลหรือองค์กรใดองค์กรหนึ่งโดยเฉพาะ มีการหาข้อมูลเหยื่อมาล่วงหน้าเพื่อสร้างความน่าเชื่อถือ
@@ -1362,7 +1333,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>2. Tailgating / Piggybacking (การเดินตามหลังเข้าประตู):</h5>
+<h4>2. Tailgating / Piggybacking (การเดินตามหลังเข้าประตู):</h4>
 
 การที่บุคคลที่ไม่ได้รับอนุญาตแอบเดินตามหลังพนักงานที่แตะคีย์การ์ดผ่านประตูความปลอดภัยเข้ามาในพื้นที่หวงห้ามโดยอาศัยความเกรงใจหรือความมีน้ำใจของพนักงาน
 - **มาตรการป้องกัน:** การติดตั้งประตูกลสองชั้น (Mantraps / Security Portals), ประตูกลหมุนแบบเดินได้ทีละคน (Turnstiles), และการอบรมพนักงานให้กล้าปฏิเสธไม่ให้คนอื่นเดินตาม
@@ -1370,7 +1341,7 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 </section>
 
 <section class="reading-definition-unit">
-<h5>3. Impersonation &amp; Pretexting (การสวมรอยเป็นบุคคลอื่น):</h5>
+<h4>3. Impersonation &amp; Pretexting (การสวมรอยเป็นบุคคลอื่น):</h4>
 
 การสร้างตัวตนสมมุติและเรื่องราวหลอกลวง (Pretext) เพื่อให้เหยื่อหลงเชื่อ เช่น แต่งตัวเป็นช่างเทคนิคไอที ช่างซ่อมแอร์ พนักงานส่งเอกสาร หรือผู้ตรวจสอบบัญชี เพื่อขอเดินเข้าไปในห้องเซิร์ฟเวอร์หรือขอดูข้อมูลสำคัญ
 - **มาตรการป้องกัน:** การบังคับใช้ขั้นตอนการยืนยันตัวตนอย่างเคร่งครัด (Verification Procedures) ห้ามอนุญาตให้บุคคลภายนอกเข้าพื้นที่โดยไม่มีเจ้าหน้าที่ประกบ (Escort) ตลอดเวลา
@@ -1395,11 +1366,11 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 
 - **1. Symmetric vs. Asymmetric Encryption:** Symmetric ใช้กุญแจเดียว รวดเร็ว เหมาะกับข้อมูลขนาดใหญ่ (AES); Asymmetric ใช้ 2 กุญแจ ช้ากว่า แต่แก้ปัญหาการส่งกุญแจและทำลายมือชื่อดิจิทัลได้ (RSA, ECC)
 - **2. Hashing vs. Encryption:** Hashing เป็นกระบวนการทางเดียว ตรวจสอบความถูกต้องสมบูรณ์ (Integrity) ถอดรหัสกลับไม่ได้; Encryption เป็นสองทาง คุ้มครองความลับ (Confidentiality) ถอดรหัสกลับได้
-- **3. TPM vs. HSM:** TPM เป็นชิปบนเมนบอร์ดดูแลเครื่องเฉพาะตัว (Measured Boot / BitLocker); HSM เป็นอุปกรณ์แยกต่างหากระดับองค์กรรองรับ FIPS 140-2 Level 3/4 สำหรับกุญแจสำคัญระดับศูนย์ข้อมูล
+- **3. TPM vs. HSM:** TPM สนับสนุนความเชื่อถือของแพลตฟอร์ม (Measured Boot / BitLocker) มีได้ทั้ง Discrete, Integrated และ Firmware; HSM ปกป้องและใช้งานกุญแจของแอป/บริการ รูปแบบ การรับรอง และการป้องกันขึ้นกับโมดูล / TPM: platform trust; HSM: application/service key operations, with module-specific capabilities and validation.
 - **4. Data at Rest vs. Data in Transit vs. Data in Use:** At Rest ปกป้องด้วย Full Disk Encryption; In Transit ปกป้องด้วย TLS/IPsec; In Use ปกป้องด้วย Secure Enclaves และ Memory Isolation
-- **5. Clear vs. Purge vs. Destroy:** Clear ป้องกันเครื่องมือทั่วไปแต่วิธีทางแล็บอาจกู้ได้; Purge ป้องกันได้แม้ใช้เครื่องมือแล็บขั้นสูง; Destroy ทำลายสื่อทางกายภาพจนใช้งานไม่ได้ถาวร
+- **5. Clear vs. Purge vs. Destroy:** Clear มุ่งต้านการกู้แบบง่าย; Purge มุ่งให้การกู้ระดับแล็บไม่อาจทำได้ในทางปฏิบัติ; Destroy เพิ่มการทำให้สื่อใช้จัดเก็บต่อไม่ได้ ทุกวิธีต้องเหมาะกับสื่อและตรวจผล / Clear targets simple recovery; Purge targets infeasible advanced recovery; Destroy also makes the media unusable. Match the method to the media and assess the outcome.
 - **6. Event vs. Alert vs. Incident:** Event คือเรื่องปกติทั่วไป; Alert คือการแจ้งเตือนเมื่อเกินเกณฑ์; Incident คือเหตุการณ์ที่มีผลกระทบเชิงลบต่อสามเหลี่ยม CIA
-- **7. False Positive vs. False Negative:** False Positive คือแจ้งเตือนผิดทั้งที่ไม่มีภัย ทำให้เกิด Alert Fatigue; False Negative คือมีภัยจริงแต่ตรวจไม่พบ ซึ่งเป็นสภาวะที่อันตรายที่สุด
+- **7. False Positive vs. False Negative:** False Positive คือแจ้งเตือนผิดทั้งที่ไม่มีภัย ทำให้เกิด Alert Fatigue; False Negative คือมีภัยจริงแต่ตรวจไม่พบ ซึ่งอาจทำให้ภัยดำเนินต่อ แต่ต้องประเมินผลกระทบเทียบกับการเตือนผิดตามบริบท
 - **8. Tabletop Exercise (TTX) vs. Technical Testing:** TTX ซ้อมแบบอภิปรายในห้องประชุม ไม่มีผลต่อระบบจริง; Technical Testing คือการลงมือปฏิบัติทดสอบระบบจริง
 - **9. Containment vs. Eradication:** Containment คือการกักกันโรคเพื่อจำกัดวงความเสียหาย (ดึงสาย LAN); Eradication คือการกำจัดมัลแวร์และอุดช่องโหว่ให้สะอาด
 - **10. EOL vs. EOS:** EOL หยุดขายแต่ยังออกแพตช์; EOS หยุดสนับสนุนและหยุดออกแพตช์โดยสิ้นเชิง ต้องใช้ Compensating Controls
@@ -1408,14 +1379,14 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 
 <h4 class="reading-concept-group-title">กับดักข้อสอบที่พบบ่อยใน Domain 5 (Exam Traps):</h4>
 
-- ถ้าข้อสอบถามถึงการทำลายข้อมูลบนระบบคลาวด์ที่เข้าไม่ถึงฮาร์ดแวร์จริง คำตอบคือ Crypto-shredding (การลบและทำลายกุญแจถอดรหัสทิ้ง)
+- บนคลาวด์หรือไดรฟ์เสมือน CE / Crypto-shredding อาจเหมาะเมื่อครบเงื่อนไขการเข้ารหัสและการล้างกุญแจรวมสำเนา ไม่ใช่คำตอบอัตโนมัติเพียงเพราะเข้าไม่ถึงฮาร์ดแวร์ / For cloud or virtual storage, consider CE only when encryption and key-sanitization conditions are met; lack of physical access alone does not make it sufficient.
 - ถ้าข้อสอบถามถึงวิธีการกำจัดข้อมูลบนฮาร์ดดิสก์จานแม่เหล็กด้วยสนามแม่เหล็กเข้มข้น คำตอบคือ Degaussing แต่ห้ามตอบข้อนี้หากสื่อบันทึกเป็น SSD
-- ถ้าข้อสอบถามถึงสิ่งที่อันตรายที่สุดในระบบเฝ้าระวัง คำตอบคือ False Negative (ภัยบุกรุกเข้ามาได้โดยไม่มีใครรู้ตัว)
+- False Negative คือภัยจริงที่ตรวจไม่พบ ส่วน False Positive อาจสร้างภาระหรือหยุดบริการผิดพลาดได้ ต้องประเมินผลกระทบของทั้งสองตามบริบท (Assess both error types by context)
 - ถ้าข้อสอบถามถึงขั้นตอนแรกสุดที่ต้องทำเมื่อเครื่องปลายทางติด Ransomware คำตอบคือ Containment (การกักกันโฮสต์หรือตัดการเชื่อมต่อเครือข่ายทันที)
 - ถ้าข้อสอบถามถึงคณะกรรมการที่มีหน้าที่อนุมัติคำขอการเปลี่ยนแปลงระบบ คำตอบคือ Change Advisory Board (CAB)
 - ถ้าข้อสอบถามถึงเครื่องมือตรวจหาช่องโหว่ซอร์สโค้ดตั้งแต่ระยะเริ่มพัฒนา (Shift-Left) คำตอบคือ SAST (Static Application Security Testing)
 - ถ้าข้อสอบถามถึงการเดินตามหลังพนักงานผ่านประตูความปลอดภัย คำตอบคือ Tailgating หรือ Piggybacking
-- ถ้าข้อสอบถามถึงองค์ประกอบของลายมือชื่อดิจิทัล คำตอบคือ นำแฮชของข้อความไปเข้ารหัสด้วย Private Key ของผู้ส่ง
+- ลายมือชื่อดิจิทัลใช้ Private Key ลงนาม และใช้ Public Key ที่สัมพันธ์กันและเชื่อถือได้ตรวจเอกสารกับลายมือชื่อ ไม่ใช่สูตรทั่วไปว่าเข้ารหัสแฮชแล้วถอดรหัสด้วย Public Key / Sign with the private key; verify the document and signature with the corresponding trusted public key. Signing alone provides no confidentiality.
 
 #### สถานการณ์จำลองและแนวคิดการวิเคราะห์ (Review Scenarios)
 
@@ -1423,10 +1394,10 @@ Threat Intelligence Feed แจ้งเตือนหมายเลข IP อ
 id: 1
 badge: Scenario 01
 topic: Data Sanitization & NIST SP 800-88
-situation: โรงพยาบาลแห่งหนึ่งเตรียมปลดระวางอุปกรณ์ Solid-State Drive (SSD) ที่เคยจัดเก็บประวัติข้อมูลสุขภาพของผู้ป่วย (Protected Health Information - PHI) เพื่อนำไดรฟ์ไปบริจาคต่อให้กับสถานศึกษา ฝ่ายความปลอดภัยต้องการลบข้อมูลโดยมั่นใจว่าข้อมูลจะไม่สามารถกู้คืนได้ด้วยเครื่องมือทางห้องปฏิบัติการขั้นสูง แต่ยังคงรักษาโครงสร้างของ SSD ให้สามารถนำกลับมาใช้งานซ้ำได้
-question: ตามมาตรฐาน NIST SP 800-88 Rev. 1 ระดับการทำลายข้อมูล (Sanitization Level) ใดที่เหมาะสมที่สุดสำหรับสถานการณ์นี้?
-answer: Purge (Sanitization via Cryptographic Erase / Secure Erase)
-reasoning: NIST SP 800-88 แบ่งระดับการล้างข้อมูลเป็น 3 ระดับหลัก: Clear (การเขียนทับระดับผู้ใช้ ไม่สามารถป้องกันเครื่องมือห้องแล็บขั้นสูงได้), Purge (การล้างข้อมูลระดับลึก เช่น Secure Erase ของคอนโทรลเลอร์ SSD หรือ Degaussing บนสื่อแม่เหล็ก ทำให้ไม่สามารถกู้คืนได้แม้ใช้เครื่องมือขั้นสูงในแล็บ แต่อุปกรณ์ยังนำมาใช้ต่อได้), และ Destroy (การทำลายสื่อทางกายภาพ เช่น บด ย่อย หรือเผา ซึ่งอุปกรณ์จะไม่สามารถใช้งานได้อีก)
+situation: โรงพยาบาลจะบริจาค SSD ที่เคยเก็บข้อมูลผู้ป่วย ต้องการให้การกู้ข้อมูลระดับแล็บไม่อาจทำได้ในทางปฏิบัติและให้ไดรฟ์ยังใช้ต่อได้ โดยต้องตรวจวิธีที่รุ่นนั้นรองรับและยอมรับผลตามนโยบายก่อนส่งต่อ / A hospital plans to donate a patient-data SSD. It needs infeasible advanced recovery while retaining usability, subject to a supported technique and an accepted sanitization outcome.
+question: ตาม NIST SP 800-88 Rev. 2 วิธีใดตรงกับเป้าหมายของกรณีนี้? / Which sanitization method matches this case's goal?
+answer: Purge (ใช้เทคนิคที่เหมาะกับ SSD และตรวจผลแล้ว / SSD-appropriate technique with verified and validated results)
+reasoning: Purge ตรงกับเป้าหมายการกู้ระดับแล็บและการใช้สื่อต่อ ต้องเลือกเทคนิคที่ SSD รองรับ โดย CE ใช้ได้เมื่อครบเงื่อนไขการเข้ารหัสและกุญแจ การ Degauss ไม่ใช้กับ SSD และชื่อ Secure Erase อย่างเดียวไม่พิสูจน์ผล ต้อง Verification และ Validation ก่อนยอมรับ / Purge matches the advanced-recovery goal while aiming to retain usability. Select a supported SSD technique; CE requires appropriate encryption and key conditions. Degaussing is unsuitable for SSDs, and a Secure Erase label alone is not proof. Verify completion and validate effectiveness.
 :::
 
 :::scenario
@@ -1453,10 +1424,10 @@ reasoning: Hybrid Encryption นำจุดเด่นของทั้งส
 id: 4
 badge: Scenario 04
 topic: Hardware Security Modules (HSM) vs. TPM
-situation: ศูนย์ข้อมูลของสถาบันการเงินต้องการติดตั้งระบบสร้าง จัดเก็บ และบริหารจัดการวงจรกุญแจเข้ารหัสระดับองค์กร (Root CA Keys และ Financial Transaction Keys) ที่รองรับการประมวลผลคำขอถอดรหัสปริมาณมหาศาล และมีระบบป้องกันการงัดแงะทางกายภาพระดับสูงตามมาตรฐาน FIPS 140-2 Level 3/4
+situation: ศูนย์ข้อมูลของสถาบันการเงินต้องการระบบสร้าง ปกป้อง และบริหาร Root CA Keys และ Financial Transaction Keys สำหรับบริการหลายระบบ โดยต้องเลือกรุ่นที่รองรับภาระงานและมีใบรับรอง FIPS 140-3 ตรงตามข้อกำหนดของกรณีนี้ / A financial institution needs shared CA/payment-key operations and must select a module whose capacity and FIPS 140-3 validation meet this case's requirements.
 question: อุปกรณ์รักษาความมั่นคงปลอดภัยระดับฮาร์ดแวร์ชนิดใดที่เหมาะสมที่สุดสำหรับศูนย์ข้อมูลแห่งนี้?
 answer: Hardware Security Module (HSM)
-reasoning: HSM คืออุปกรณ์ฮาร์ดแวร์ภายนอกหรือระบบเครือข่ายสำหรับองค์กรขนาดใหญ่ ออกแบบมาเฉพาะเพื่อสร้าง ปกป้อง และบริหารกุญแจเข้ารหัสลับขั้นสูงสุด มีคุณสมบัติต่อต้านการงัดแงะ (Tamper-resistant) ต่างจาก TPM ซึ่งเป็นชิปฝังอยู่บนเมนบอร์ดของคอมพิวเตอร์เฉพาะเครื่องเพื่อดูแลความสมบูรณ์ของระบบ (Platform Integrity) และบูตระบบปลอดภัย (Secure Boot)
+reasoning: HSM เหมาะกับงานกุญแจของบริการในกรณีนี้ แต่ต้องตรวจความสามารถและใบรับรองของโมดูลที่เลือก ส่วน TPM เน้นความเชื่อถือและกุญแจของแพลตฟอร์ม ไม่ได้จำกัดเฉพาะชิปแยกบนเมนบอร์ด / An HSM fits this service-key use case; verify the selected module's capabilities and certificate. A TPM focuses on platform trust and keys and need not be a discrete motherboard chip.
 :::
 
 :::scenario
@@ -1474,9 +1445,9 @@ id: 6
 badge: Scenario 06
 topic: Security Alert Triage & Alert Fatigue
 situation: เจ้าหน้าที่ศูนย์เฝ้าระวังความมั่นคงปลอดภัย (SOC) ได้รับการแจ้งเตือนจากระบบตรวจจับมากกว่า 5,000 ครั้งต่อวัน โดยพบว่ามากกว่า 95% เป็นการแจ้งเตือนกิจกรรมปกติของระบบ ส่งผลให้นักวิเคราะห์ทำงานหนักเกินไปและมองข้ามการแจ้งเตือนภัยคุกคามจริงที่แฝงเข้ามา
-question: ปรากฏการณ์ที่เกิดการแจ้งเตือนกิจกรรมปกติว่าเป็นภัย (False Positive) จนนำไปสู่ความเหนื่อยล้าของเจ้าหน้าที่ เรียกว่าอะไร และภัยประเภทใดที่อันตรายที่สุดต่อความมั่นคงปลอดภัย?
-answer: Alert Fatigue (ความเหนื่อยล้าจากการแจ้งเตือน) เกิดจาก False Positive; และภัยที่อันตรายที่สุดคือ False Negative
-reasoning: False Positive (เตือนผิดพลาดทั้งที่ไม่มีภัย) ก่อให้เกิดภาวะ Alert Fatigue ทำให้เจ้าหน้าที่ละเลยการตรวจสอบ ขณะที่ False Negative (มีภัยคุกคามเกิดขึ้นจริงแต่ระบบตรวจไม่พบและไม่แจ้งเตือน) เป็นสถานการณ์ที่อันตรายที่สุด เพราะผู้โจมตีสามารถยึดครองระบบได้โดยที่องค์กรไม่รู้ตัว
+question: การเตือนกิจกรรมปกติว่าเป็นภัย (False Positive) สะสมทำให้เกิดอะไร และเหตุใดต้องประเมินผลกระทบของ False Positive กับ False Negative ตามบริบท?
+answer: False Positive ที่สะสมอาจทำให้ Alert Fatigue; False Negative คือภัยจริงที่ไม่ถูกตรวจพบ ความรุนแรงของทั้งสองขึ้นกับผลกระทบและบริบท
+reasoning: False Positive ที่สะสมอาจทำให้เจ้าหน้าที่ล้าและพลาดสัญญาณสำคัญ ขณะที่ False Negative ปล่อยให้ภัยจริงดำเนินต่อโดยไม่ถูกตรวจพบ ทั้งสองอาจรุนแรงได้ ต้องพิจารณาผลกระทบ ความเชื่อมั่น และความสำคัญของระบบ / False positives can cause fatigue or unnecessary disruption; false negatives leave real threats undetected. Assess impact and context rather than assuming one type is always worst.
 :::
 
 :::scenario
@@ -1614,7 +1585,7 @@ reasoning: SAST เป็นการทดสอบแบบ White-box ที�
 
 - **Encryption:** ปกป้องความลับ (Confidentiality) ด้วยการแปลง Plaintext &rarr; Ciphertext
 - **Hash:** การตรวจสอบความสมบูรณ์ทางเดียว (One-way Integrity Check) ไม่สามารถถอดรหัสกลับได้
-- **Digital Signature:** ยืนยันความสมบูรณ์และตัวตนผู้ส่ง (Integrity + Authenticity + Non-repudiation)
+- **Digital Signature:** ตรวจความสมบูรณ์และสนับสนุนหลักฐานแหล่งที่มาเมื่อเชื่อถือ Public Key และการควบคุม Private Key ไม่คุ้มครองความลับ / Integrity and origin evidence depend on trusted key association and custody; no confidentiality.
 - **HSM:** อุปกรณ์ฮาร์ดแวร์ความปลอดภัยสูงเฉพาะทางสำหรับจัดเก็บและประมวลผลกุญแจเข้ารหัสลับ
 - **Logging:** การบันทึกเหตุการณ์ (Record Events) ลงในแฟ้มข้อมูล
 - **Monitoring:** การเฝ้าสังเกตและประเมินพฤติกรรม (Observe &amp; Evaluate) จากข้อมูล Log
@@ -1660,7 +1631,7 @@ reasoning: SAST เป็นการทดสอบแบบ White-box ที�
 <section class="reading-definition-unit">
 <h5>5 ลำดับกระบวนการสำคัญที่ควรท่องจำ (Key Process Sequences):</h5>
 
-1. **Incident Response Lifecycle (6 ขั้นตอน):** Preparation &rarr; Detection &amp; Analysis &rarr; Containment &rarr; Eradication &rarr; Recovery &rarr; Post-Incident Review
+1. **Incident Response Teaching Model (6 กิจกรรม):** Preparation &rarr; Detection &amp; Analysis &rarr; Containment &rarr; Eradication &rarr; Recovery &rarr; Post-Incident Review เป็นภาพช่วยเรียน กิจกรรมอาจคาบเกี่ยวหรือย้อนกลับ ไม่ใช่ลำดับมาตรฐานบังคับ / A learning aid; activities can overlap or be revisited, rather than a mandatory standard sequence.
 2. **Patch Management Process (5 ขั้นตอน):** Identify &rarr; Assess &rarr; Test &rarr; Deploy &rarr; Verify
 3. **Change Management Process (7 ขั้นตอน):** Request &rarr; Assess &rarr; Approve (CAB) &rarr; Schedule &rarr; Test &rarr; Implement &rarr; Post-Implementation Review (PIR)
 4. **Asset Lifecycle Management (6 ขั้นตอน):** Plan &rarr; Acquire &rarr; Deploy &rarr; Maintain &rarr; Monitor &rarr; Dispose

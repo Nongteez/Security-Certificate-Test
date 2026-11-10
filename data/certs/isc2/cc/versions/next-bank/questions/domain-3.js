@@ -1041,6 +1041,366 @@ const questions = [
         }
       ]
     }
+  },
+  {
+    "id": 1066,
+    "dom": 3,
+    "question": "Two unrelated organizations each have a local account displayed as 'rlee'. Their directories use independent namespaces, and no verified account-linking evidence is available. Which conclusion is justified?",
+    "options": [
+      "The accounts represent the same person because usernames are globally unique",
+      "The matching names alone do not establish that the accounts represent the same person",
+      "One account must be fraudulent because duplicate names cannot be legitimate",
+      "Permissions can be copied between the accounts because their identifiers match"
+    ],
+    "correct_idx": 1,
+    "explanation": "An identifier has meaning within a scope. Equal display strings across independent namespaces do not establish entity linkage.\n\nA: Local usernames are not stated to be globally unique.\nC: Independent namespaces can legitimately contain the same identifier string.\nD: A name match establishes neither common ownership nor an approved permission assignment.",
+    "short_explanation_en": "An identifier has meaning within a scope. Equal display strings across independent namespaces do not establish entity linkage.",
+    "question_th": "องค์กรสองแห่งที่ไม่เกี่ยวข้องกันต่างมีบัญชีภายในแสดงชื่อว่า rlee ไดเรกทอรีใช้เนมสเปซแยกกัน และยังไม่มีหลักฐานเชื่อมโยงบัญชีที่ตรวจสอบแล้ว ข้อสรุปใดมีเหตุผลรองรับ?",
+    "options_th": [
+      "บัญชีแทนบุคคลเดียวกันเพราะชื่อผู้ใช้ไม่ซ้ำกันทั่วโลก",
+      "ชื่อที่ตรงกันเพียงอย่างเดียวไม่ได้ยืนยันว่าบัญชีแทนบุคคลเดียวกัน",
+      "บัญชีหนึ่งต้องปลอมเพราะชื่อซ้ำไม่อาจถูกต้องได้",
+      "คัดลอกสิทธิ์ระหว่างบัญชีได้เพราะตัวระบุตรงกัน"
+    ],
+    "explanation_th": "ตัวระบุมีความหมายภายในขอบเขตหนึ่ง ข้อความชื่อที่เท่ากันข้ามเนมสเปซอิสระไม่ได้ยืนยันการเชื่อมโยงบุคคล\n\nA: โจทย์ไม่ได้ระบุว่าชื่อผู้ใช้ภายในต้องไม่ซ้ำกันทั่วโลก\nC: เนมสเปซแยกกันอาจมีข้อความตัวระบุเดียวกันโดยถูกต้องได้\nD: ชื่อที่ตรงกันไม่ได้ยืนยันเจ้าของร่วมกันหรือการอนุมัติให้สิทธิ์",
+    "explanation_detail": {
+      "correct": {
+        "en": "An identifier has meaning within a scope. Equal display strings across independent namespaces do not establish entity linkage.",
+        "th": "ตัวระบุมีความหมายภายในขอบเขตหนึ่ง ข้อความชื่อที่เท่ากันข้ามเนมสเปซอิสระไม่ได้ยืนยันการเชื่อมโยงบุคคล"
+      },
+      "incorrect": [
+        {
+          "letter": "A",
+          "text_en": "Local usernames are not stated to be globally unique.",
+          "text_th": "โจทย์ไม่ได้ระบุว่าชื่อผู้ใช้ภายในต้องไม่ซ้ำกันทั่วโลก"
+        },
+        {
+          "letter": "C",
+          "text_en": "Independent namespaces can legitimately contain the same identifier string.",
+          "text_th": "เนมสเปซแยกกันอาจมีข้อความตัวระบุเดียวกันโดยถูกต้องได้"
+        },
+        {
+          "letter": "D",
+          "text_en": "A name match establishes neither common ownership nor an approved permission assignment.",
+          "text_th": "ชื่อที่ตรงกันไม่ได้ยืนยันเจ้าของร่วมกันหรือการอนุมัติให้สิทธิ์"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1067,
+    "dom": 3,
+    "question": "In NIST digital-identity terminology, a service records a binding between a subscriber's identity, an identifier and an issued authenticator. The subscriber controls the authenticator to demonstrate authentication. What is the recorded binding called?",
+    "options": [
+      "A credential",
+      "An authenticator",
+      "An authorization policy",
+      "An audit event"
+    ],
+    "correct_idx": 0,
+    "explanation": "NIST distinguishes the credential binding from the authenticator used to demonstrate control. It is not universally just a username/password pair.\n\nB: The authenticator is the controlled secret or device, not the binding described here.\nC: An authorization policy governs permitted resource actions, not this identity-to-authenticator binding.\nD: An audit event records an action; it is not the identity binding being defined.",
+    "short_explanation_en": "NIST distinguishes the credential binding from the authenticator used to demonstrate control. It is not universally just a username/password pair.",
+    "question_th": "ตามศัพท์อัตลักษณ์ดิจิทัลของ NIST บริการบันทึกการผูกอัตลักษณ์ของผู้ใช้บริการผ่านตัวระบุเข้ากับสิ่งที่ใช้พิสูจน์ตัวตนที่ออกให้ ผู้ใช้ควบคุมสิ่งนั้นเพื่อแสดงการพิสูจน์ตัวตน การผูกที่บันทึกไว้นี้เรียกว่าอะไร?",
+    "options_th": [
+      "Credential",
+      "Authenticator",
+      "นโยบายกำหนดสิทธิ์เข้าถึง",
+      "เหตุการณ์ในบันทึกตรวจสอบ"
+    ],
+    "explanation_th": "NIST แยกการผูกที่เรียกว่า Credential ออกจาก Authenticator ที่ใช้แสดงการควบคุม จึงไม่ได้หมายถึงคู่ชื่อผู้ใช้กับรหัสผ่านในทุกกรณี\n\nB: Authenticator คือความลับหรืออุปกรณ์ที่ควบคุม ไม่ใช่การผูกที่อธิบายนี้\nC: นโยบายกำหนดสิทธิ์ควบคุมการกระทำกับทรัพยากร ไม่ใช่การผูกอัตลักษณ์กับสิ่งที่ใช้พิสูจน์ตัวตน\nD: เหตุการณ์ในบันทึกแสดงการกระทำ ไม่ใช่การผูกอัตลักษณ์ที่กำลังนิยาม",
+    "explanation_detail": {
+      "correct": {
+        "en": "NIST distinguishes the credential binding from the authenticator used to demonstrate control. It is not universally just a username/password pair.",
+        "th": "NIST แยกการผูกที่เรียกว่า Credential ออกจาก Authenticator ที่ใช้แสดงการควบคุม จึงไม่ได้หมายถึงคู่ชื่อผู้ใช้กับรหัสผ่านในทุกกรณี"
+      },
+      "incorrect": [
+        {
+          "letter": "B",
+          "text_en": "The authenticator is the controlled secret or device, not the binding described here.",
+          "text_th": "Authenticator คือความลับหรืออุปกรณ์ที่ควบคุม ไม่ใช่การผูกที่อธิบายนี้"
+        },
+        {
+          "letter": "C",
+          "text_en": "An authorization policy governs permitted resource actions, not this identity-to-authenticator binding.",
+          "text_th": "นโยบายกำหนดสิทธิ์ควบคุมการกระทำกับทรัพยากร ไม่ใช่การผูกอัตลักษณ์กับสิ่งที่ใช้พิสูจน์ตัวตน"
+        },
+        {
+          "letter": "D",
+          "text_en": "An audit event records an action; it is not the identity binding being defined.",
+          "text_th": "เหตุการณ์ในบันทึกแสดงการกระทำ ไม่ใช่การผูกอัตลักษณ์ที่กำลังนิยาม"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1068,
+    "dom": 3,
+    "question": "A new analyst's approved access consists of the standard reporting role. A peer has that role plus a separately approved payment-release exception for another duty. The new analyst does not perform that duty. Which initial provisioning choice best follows the approved scope?",
+    "options": [
+      "Copy all of the peer's rights to ensure identical starting access",
+      "Copy the exception temporarily and remove it at the next review",
+      "Ask the new analyst to use the peer's account for reports",
+      "Assign the standard reporting role without copying the peer's exception"
+    ],
+    "correct_idx": 3,
+    "explanation": "The initial grant should implement the new analyst's approved needs. A peer's legitimate additional duty does not extend this authorization.\n\nA: This would include an exception outside the new analyst's approved duties.\nB: A later review does not authorize an unnecessary initial grant.\nC: Account sharing would not implement the approved individual provisioning.",
+    "short_explanation_en": "The initial grant should implement the new analyst's approved needs. A peer's legitimate additional duty does not extend this authorization.",
+    "question_th": "สิทธิ์ที่อนุมัติให้นักวิเคราะห์ใหม่มีเพียงบทบาทรายงานมาตรฐาน เพื่อนร่วมงานมีบทบาทนี้และข้อยกเว้นปล่อยการชำระเงินที่อนุมัติแยกสำหรับอีกหน้าที่ นักวิเคราะห์ใหม่ไม่ได้ทำหน้าที่นั้น การจัดเตรียมสิทธิ์เริ่มต้นแบบใดเป็นไปตามขอบเขตที่อนุมัติได้ดีที่สุด?",
+    "options_th": [
+      "คัดลอกสิทธิ์ทั้งหมดของเพื่อนเพื่อให้เริ่มต้นเหมือนกัน",
+      "คัดลอกข้อยกเว้นไว้ชั่วคราวแล้วถอนเมื่อทบทวนรอบหน้า",
+      "ให้นักวิเคราะห์ใหม่ใช้บัญชีเพื่อนเพื่อทำรายงาน",
+      "กำหนดบทบาทรายงานมาตรฐานโดยไม่คัดลอกข้อยกเว้นของเพื่อน"
+    ],
+    "explanation_th": "สิทธิ์เริ่มต้นควรตรงความจำเป็นที่อนุมัติให้นักวิเคราะห์ใหม่ หน้าที่เพิ่มเติมที่ถูกต้องของเพื่อนไม่ได้ขยายอำนาจอนุมัตินี้\n\nA: จะรวมข้อยกเว้นนอกหน้าที่ที่อนุมัติให้นักวิเคราะห์ใหม่ด้วย\nB: การทบทวนภายหลังไม่ได้อนุมัติการให้สิทธิ์เริ่มต้นที่ไม่จำเป็น\nC: การใช้บัญชีร่วมไม่ได้จัดเตรียมสิทธิ์รายบุคคลตามที่อนุมัติ",
+    "explanation_detail": {
+      "correct": {
+        "en": "The initial grant should implement the new analyst's approved needs. A peer's legitimate additional duty does not extend this authorization.",
+        "th": "สิทธิ์เริ่มต้นควรตรงความจำเป็นที่อนุมัติให้นักวิเคราะห์ใหม่ หน้าที่เพิ่มเติมที่ถูกต้องของเพื่อนไม่ได้ขยายอำนาจอนุมัตินี้"
+      },
+      "incorrect": [
+        {
+          "letter": "A",
+          "text_en": "This would include an exception outside the new analyst's approved duties.",
+          "text_th": "จะรวมข้อยกเว้นนอกหน้าที่ที่อนุมัติให้นักวิเคราะห์ใหม่ด้วย"
+        },
+        {
+          "letter": "B",
+          "text_en": "A later review does not authorize an unnecessary initial grant.",
+          "text_th": "การทบทวนภายหลังไม่ได้อนุมัติการให้สิทธิ์เริ่มต้นที่ไม่จำเป็น"
+        },
+        {
+          "letter": "C",
+          "text_en": "Account sharing would not implement the approved individual provisioning.",
+          "text_th": "การใช้บัญชีร่วมไม่ได้จัดเตรียมสิทธิ์รายบุคคลตามที่อนุมัติ"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1069,
+    "dom": 3,
+    "question": "An organization's access-review policy requires high-risk administrative roles to be reviewed monthly and ordinary reporting roles quarterly. Role classification has been verified, and event-driven reviews remain available when duties change. Which routine schedule follows this policy?",
+    "options": [
+      "Review the administrative roles monthly and reporting roles quarterly",
+      "Review every role quarterly because it is a common audit interval",
+      "Review every role annually unless an incident occurs",
+      "Review each role once at provisioning and rely solely on duty-change notices"
+    ],
+    "correct_idx": 0,
+    "explanation": "The supplied risk classifications determine the routine cadence. Event-driven review complements rather than cancels that schedule.\n\nB: A familiar interval does not override the explicit monthly requirement for high-risk roles.\nC: This ignores both stated routine review intervals.\nD: Initial approval and event-driven updates do not replace required recurring reviews.",
+    "short_explanation_en": "The supplied risk classifications determine the routine cadence. Event-driven review complements rather than cancels that schedule.",
+    "question_th": "นโยบายทบทวนสิทธิ์ขององค์กรกำหนดให้ทบทวนบทบาทผู้ดูแลที่เสี่ยงสูงทุกเดือน และบทบาทรายงานทั่วไปทุกไตรมาส ตรวจสอบการจัดประเภทบทบาทแล้ว และยังทบทวนตามเหตุการณ์ได้เมื่อหน้าที่เปลี่ยน กำหนดการตามรอบใดตรงนโยบายนี้?",
+    "options_th": [
+      "ทบทวนบทบาทผู้ดูแลทุกเดือนและบทบาทรายงานทุกไตรมาส",
+      "ทบทวนทุกบทบาททุกไตรมาสเพราะเป็นช่วงตรวจสอบที่ใช้กันทั่วไป",
+      "ทบทวนทุกบทบาททุกปีเว้นแต่เกิดเหตุการณ์ความปลอดภัย",
+      "ทบทวนแต่ละบทบาทครั้งเดียวตอนให้สิทธิ์แล้วพึ่งการแจ้งเปลี่ยนหน้าที่เท่านั้น"
+    ],
+    "explanation_th": "การจัดประเภทความเสี่ยงที่ให้มากำหนดรอบทบทวน การทบทวนตามเหตุการณ์เสริมกำหนดการ ไม่ได้ยกเลิกกำหนดการ\n\nB: ช่วงเวลาที่คุ้นเคยไม่ได้ยกเลิกข้อกำหนดรายเดือนสำหรับบทบาทเสี่ยงสูง\nC: เป็นการละเลยช่วงเวลาตามรอบทั้งสองแบบที่ระบุ\nD: การอนุมัติเริ่มต้นและการปรับตามเหตุการณ์ไม่ได้แทนการทบทวนซ้ำตามที่กำหนด",
+    "explanation_detail": {
+      "correct": {
+        "en": "The supplied risk classifications determine the routine cadence. Event-driven review complements rather than cancels that schedule.",
+        "th": "การจัดประเภทความเสี่ยงที่ให้มากำหนดรอบทบทวน การทบทวนตามเหตุการณ์เสริมกำหนดการ ไม่ได้ยกเลิกกำหนดการ"
+      },
+      "incorrect": [
+        {
+          "letter": "B",
+          "text_en": "A familiar interval does not override the explicit monthly requirement for high-risk roles.",
+          "text_th": "ช่วงเวลาที่คุ้นเคยไม่ได้ยกเลิกข้อกำหนดรายเดือนสำหรับบทบาทเสี่ยงสูง"
+        },
+        {
+          "letter": "C",
+          "text_en": "This ignores both stated routine review intervals.",
+          "text_th": "เป็นการละเลยช่วงเวลาตามรอบทั้งสองแบบที่ระบุ"
+        },
+        {
+          "letter": "D",
+          "text_en": "Initial approval and event-driven updates do not replace required recurring reviews.",
+          "text_th": "การอนุมัติเริ่มต้นและการปรับตามเหตุการณ์ไม่ได้แทนการทบทวนซ้ำตามที่กำหนด"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1070,
+    "dom": 3,
+    "question": "A file service uses a list of subjects, files and permitted operations to enforce centrally approved access decisions. An assessor sees this list but has no evidence that file owners may change permissions. Which conclusion is best supported?",
+    "options": [
+      "The list proves the service uses discretionary access control",
+      "The list proves the service uses mandatory classification labels",
+      "The list proves the service bases access on organizational job roles",
+      "The list is an access-control mechanism; it alone does not establish a discretionary model"
+    ],
+    "correct_idx": 3,
+    "explanation": "An ACL can implement policy decisions. Determining the decision model requires evidence of who may grant rights and under what rules.\n\nA: A list of permissions does not by itself prove owner discretion over grants.\nB: No mandatory classification or clearance rule is supplied.\nC: The representation alone does not show that a job-role assignment policy generated it.",
+    "short_explanation_en": "An ACL can implement policy decisions. Determining the decision model requires evidence of who may grant rights and under what rules.",
+    "question_th": "บริการไฟล์ใช้รายการผู้กระทำ ไฟล์ และการกระทำที่อนุญาตเพื่อบังคับตามการตัดสินสิทธิ์ที่อนุมัติจากส่วนกลาง ผู้ประเมินเห็นรายการนี้แต่ไม่มีหลักฐานว่าเจ้าของไฟล์เปลี่ยนสิทธิ์เองได้ ข้อสรุปใดมีหลักฐานรองรับดีที่สุด?",
+    "options_th": [
+      "รายการนี้ยืนยันว่าบริการใช้ Discretionary Access Control",
+      "รายการนี้ยืนยันว่าบริการใช้ป้ายระดับชั้นบังคับ",
+      "รายการนี้ยืนยันว่าบริการตัดสินสิทธิ์ตามบทบาทงานในองค์กร",
+      "รายการนี้เป็นกลไกควบคุมสิทธิ์ แต่เพียงอย่างเดียวยังไม่ยืนยันว่าเป็นโมเดลแบบใช้ดุลยพินิจ"
+    ],
+    "explanation_th": "ACL ใช้บังคับการตัดสินตามนโยบายได้ การระบุโมเดลต้องมีหลักฐานว่าใครให้สิทธิ์ได้และอยู่ภายใต้กฎใด\n\nA: รายการสิทธิ์เพียงอย่างเดียวไม่ได้ยืนยันว่าเจ้าของมีดุลยพินิจให้สิทธิ์\nB: โจทย์ไม่ได้ให้กฎจัดชั้นหรือระดับการเข้าถึงแบบบังคับ\nC: รูปแบบรายการเพียงอย่างเดียวไม่ได้แสดงว่านโยบายบทบาทงานเป็นตัวสร้างรายการ",
+    "explanation_detail": {
+      "correct": {
+        "en": "An ACL can implement policy decisions. Determining the decision model requires evidence of who may grant rights and under what rules.",
+        "th": "ACL ใช้บังคับการตัดสินตามนโยบายได้ การระบุโมเดลต้องมีหลักฐานว่าใครให้สิทธิ์ได้และอยู่ภายใต้กฎใด"
+      },
+      "incorrect": [
+        {
+          "letter": "A",
+          "text_en": "A list of permissions does not by itself prove owner discretion over grants.",
+          "text_th": "รายการสิทธิ์เพียงอย่างเดียวไม่ได้ยืนยันว่าเจ้าของมีดุลยพินิจให้สิทธิ์"
+        },
+        {
+          "letter": "B",
+          "text_en": "No mandatory classification or clearance rule is supplied.",
+          "text_th": "โจทย์ไม่ได้ให้กฎจัดชั้นหรือระดับการเข้าถึงแบบบังคับ"
+        },
+        {
+          "letter": "C",
+          "text_en": "The representation alone does not show that a job-role assignment policy generated it.",
+          "text_th": "รูปแบบรายการเพียงอย่างเดียวไม่ได้แสดงว่านโยบายบทบาทงานเป็นตัวสร้างรายการ"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1071,
+    "dom": 3,
+    "question": "A folder grants read-only access through one flat group with 12 members. Membership will remain unchanged. There are no individual grants, nested groups or other applicable rules. An administrator proposes adding write permission to that group. Whose effective folder access would change under this model?",
+    "options": [
+      "All 12 current group members would gain write access",
+      "Only the group member who requested the change",
+      "Only people who join the group after the change",
+      "Only the administrator who edits the group permission"
+    ],
+    "correct_idx": 0,
+    "explanation": "The grant is made to the shared group and applies to every member under the explicitly limited model. It is not an individual exception.\n\nB: The proposed grant targets the group, not the requester alone.\nC: Existing members also receive the group's changed permission.\nD: Editing a grant does not make the administrator its sole beneficiary.",
+    "short_explanation_en": "The grant is made to the shared group and applies to every member under the explicitly limited model. It is not an individual exception.",
+    "question_th": "โฟลเดอร์ให้สิทธิ์อ่านอย่างเดียวผ่านกลุ่มแบบชั้นเดียวที่มีสมาชิก 12 คน โดยสมาชิกจะไม่เปลี่ยน ไม่มีสิทธิ์รายบุคคล กลุ่มซ้อน หรือกฎอื่นที่ใช้ร่วม ผู้ดูแลเสนอเพิ่มสิทธิ์เขียนให้กลุ่มนี้ ภายใต้โมเดลนี้ สิทธิ์ใช้งานจริงของใครจะเปลี่ยน?",
+    "options_th": [
+      "สมาชิกปัจจุบันทั้ง 12 คนจะได้สิทธิ์เขียน",
+      "เฉพาะสมาชิกกลุ่มที่ร้องขอการเปลี่ยนแปลง",
+      "เฉพาะผู้ที่เข้ากลุ่มหลังเปลี่ยนสิทธิ์",
+      "เฉพาะผู้ดูแลที่แก้สิทธิ์ของกลุ่ม"
+    ],
+    "explanation_th": "เป็นการให้สิทธิ์แก่กลุ่มร่วม จึงมีผลกับสมาชิกทุกคนภายใต้โมเดลที่จำกัดไว้ชัดเจน ไม่ใช่ข้อยกเว้นรายบุคคล\n\nB: ข้อเสนอให้สิทธิ์แก่กลุ่ม ไม่ใช่เฉพาะผู้ร้องขอ\nC: สมาชิกเดิมก็ได้รับสิทธิ์ของกลุ่มที่เปลี่ยนไปด้วย\nD: การแก้รายการสิทธิ์ไม่ได้ทำให้ผู้ดูแลเป็นผู้ได้รับประโยชน์เพียงคนเดียว",
+    "explanation_detail": {
+      "correct": {
+        "en": "The grant is made to the shared group and applies to every member under the explicitly limited model. It is not an individual exception.",
+        "th": "เป็นการให้สิทธิ์แก่กลุ่มร่วม จึงมีผลกับสมาชิกทุกคนภายใต้โมเดลที่จำกัดไว้ชัดเจน ไม่ใช่ข้อยกเว้นรายบุคคล"
+      },
+      "incorrect": [
+        {
+          "letter": "B",
+          "text_en": "The proposed grant targets the group, not the requester alone.",
+          "text_th": "ข้อเสนอให้สิทธิ์แก่กลุ่ม ไม่ใช่เฉพาะผู้ร้องขอ"
+        },
+        {
+          "letter": "C",
+          "text_en": "Existing members also receive the group's changed permission.",
+          "text_th": "สมาชิกเดิมก็ได้รับสิทธิ์ของกลุ่มที่เปลี่ยนไปด้วย"
+        },
+        {
+          "letter": "D",
+          "text_en": "Editing a grant does not make the administrator its sole beneficiary.",
+          "text_th": "การแก้รายการสิทธิ์ไม่ได้ทำให้ผู้ดูแลเป็นผู้ได้รับประโยชน์เพียงคนเดียว"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1072,
+    "dom": 3,
+    "question": "A service team approves a 30-minute privileged maintenance task. Policy requires elevated permissions to end when the approved window closes; ordinary access must remain. Which arrangement most directly implements that requirement?",
+    "options": [
+      "Grant the approved elevation with enforced expiry and retain the ordinary role",
+      "Keep the elevation until the next quarterly access review",
+      "Delete the person's entire account when the window ends",
+      "Grant permanent elevation and rely on a reminder to stop using it"
+    ],
+    "correct_idx": 0,
+    "explanation": "Time-bounded elevation constrains the duration of privilege while preserving ordinary work. It implements the stated policy without treating all access as temporary.\n\nB: A quarterly review cannot enforce the specified 30-minute end time.\nC: This would remove ordinary access that the scenario says must remain.\nD: Stopping voluntary use does not end the elevated permission as required.",
+    "short_explanation_en": "Time-bounded elevation constrains the duration of privilege while preserving ordinary work. It implements the stated policy without treating all access as temporary.",
+    "question_th": "ทีมบริการอนุมัติงานบำรุงรักษาที่ใช้สิทธิ์พิเศษ 30 นาที นโยบายกำหนดให้สิทธิ์ยกระดับสิ้นสุดเมื่อปิดช่วงเวลาที่อนุมัติ แต่ต้องคงสิทธิ์งานทั่วไป การจัดการใดนำข้อกำหนดนี้ไปใช้ได้ตรงที่สุด?",
+    "options_th": [
+      "ให้สิทธิ์ยกระดับที่อนุมัติพร้อมบังคับหมดอายุและคงบทบาททั่วไป",
+      "คงสิทธิ์ยกระดับจนถึงการทบทวนสิทธิ์รายไตรมาสถัดไป",
+      "ลบบัญชีของบุคคลทั้งหมดเมื่อหมดช่วงเวลา",
+      "ให้สิทธิ์ยกระดับถาวรและใช้การเตือนให้หยุดใช้งาน"
+    ],
+    "explanation_th": "สิทธิ์ยกระดับที่มีเวลาสิ้นสุดจำกัดระยะเวลาใช้สิทธิ์พิเศษพร้อมรักษางานทั่วไป ตรงนโยบายโดยไม่ถือว่าสิทธิ์ทั้งหมดต้องเป็นชั่วคราว\n\nB: การทบทวนรายไตรมาสบังคับเวลาสิ้นสุด 30 นาทีที่ระบุไม่ได้\nC: จะลบสิทธิ์งานทั่วไปที่โจทย์กำหนดให้คงไว้ด้วย\nD: การหยุดใช้โดยสมัครใจไม่ได้ทำให้สิทธิ์ยกระดับสิ้นสุดตามที่กำหนด",
+    "explanation_detail": {
+      "correct": {
+        "en": "Time-bounded elevation constrains the duration of privilege while preserving ordinary work. It implements the stated policy without treating all access as temporary.",
+        "th": "สิทธิ์ยกระดับที่มีเวลาสิ้นสุดจำกัดระยะเวลาใช้สิทธิ์พิเศษพร้อมรักษางานทั่วไป ตรงนโยบายโดยไม่ถือว่าสิทธิ์ทั้งหมดต้องเป็นชั่วคราว"
+      },
+      "incorrect": [
+        {
+          "letter": "B",
+          "text_en": "A quarterly review cannot enforce the specified 30-minute end time.",
+          "text_th": "การทบทวนรายไตรมาสบังคับเวลาสิ้นสุด 30 นาทีที่ระบุไม่ได้"
+        },
+        {
+          "letter": "C",
+          "text_en": "This would remove ordinary access that the scenario says must remain.",
+          "text_th": "จะลบสิทธิ์งานทั่วไปที่โจทย์กำหนดให้คงไว้ด้วย"
+        },
+        {
+          "letter": "D",
+          "text_en": "Stopping voluntary use does not end the elevated permission as required.",
+          "text_th": "การหยุดใช้โดยสมัครใจไม่ได้ทำให้สิทธิ์ยกระดับสิ้นสุดตามที่กำหนด"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1073,
+    "dom": 3,
+    "question": "A resource policy permits access only when the requester is in the Research role, uses a compliant managed device and connects during the approved hours. Otherwise it denies access. Which request satisfies the policy?",
+    "options": [
+      "A Research user on a compliant managed device during approved hours",
+      "A Research user on an unmanaged device during approved hours",
+      "A Finance user on a compliant managed device during approved hours",
+      "A Research user on a compliant managed device outside approved hours"
+    ],
+    "correct_idx": 0,
+    "explanation": "All three required conditions are true. Satisfying only some conditions is insufficient under the supplied conjunction.\n\nB: The managed/compliant-device condition is not satisfied.\nC: The required Research-role condition is not satisfied.\nD: The approved-hours condition is not satisfied.",
+    "short_explanation_en": "All three required conditions are true. Satisfying only some conditions is insufficient under the supplied conjunction.",
+    "question_th": "นโยบายทรัพยากรอนุญาตเฉพาะเมื่อผู้ร้องขออยู่ในบทบาท Research ใช้อุปกรณ์ที่องค์กรจัดการและผ่านข้อกำหนด และเชื่อมต่อในเวลาที่อนุมัติ มิฉะนั้นปฏิเสธ คำขอใดผ่านนโยบาย?",
+    "options_th": [
+      "ผู้ใช้ Research บนอุปกรณ์ที่จัดการและผ่านข้อกำหนดในเวลาที่อนุมัติ",
+      "ผู้ใช้ Research บนอุปกรณ์ที่ไม่ได้จัดการในเวลาที่อนุมัติ",
+      "ผู้ใช้ Finance บนอุปกรณ์ที่จัดการและผ่านข้อกำหนดในเวลาที่อนุมัติ",
+      "ผู้ใช้ Research บนอุปกรณ์ที่จัดการและผ่านข้อกำหนดนอกเวลาที่อนุมัติ"
+    ],
+    "explanation_th": "เงื่อนไขที่ต้องมีทั้งสามข้อเป็นจริง การผ่านเพียงบางข้อไม่พอตามกฎที่ต้องครบทุกข้อ\n\nB: ไม่ผ่านเงื่อนไขอุปกรณ์ที่จัดการและผ่านข้อกำหนด\nC: ไม่ผ่านเงื่อนไขบทบาท Research\nD: ไม่ผ่านเงื่อนไขเวลาที่อนุมัติ",
+    "explanation_detail": {
+      "correct": {
+        "en": "All three required conditions are true. Satisfying only some conditions is insufficient under the supplied conjunction.",
+        "th": "เงื่อนไขที่ต้องมีทั้งสามข้อเป็นจริง การผ่านเพียงบางข้อไม่พอตามกฎที่ต้องครบทุกข้อ"
+      },
+      "incorrect": [
+        {
+          "letter": "B",
+          "text_en": "The managed/compliant-device condition is not satisfied.",
+          "text_th": "ไม่ผ่านเงื่อนไขอุปกรณ์ที่จัดการและผ่านข้อกำหนด"
+        },
+        {
+          "letter": "C",
+          "text_en": "The required Research-role condition is not satisfied.",
+          "text_th": "ไม่ผ่านเงื่อนไขบทบาท Research"
+        },
+        {
+          "letter": "D",
+          "text_en": "The approved-hours condition is not satisfied.",
+          "text_th": "ไม่ผ่านเงื่อนไขเวลาที่อนุมัติ"
+        }
+      ]
+    }
   }
 ];
 

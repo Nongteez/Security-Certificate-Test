@@ -1,0 +1,2144 @@
+[
+  {
+    "id": 588,
+    "domain": 1,
+    "issue": "Structured explanation describes Accounting instead of the password/PIN factor question.",
+    "references": [
+      "R01",
+      "R02",
+      "L01"
+    ],
+    "safe_to_apply": true,
+    "key_before": "B",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Multi-factor authentication (MFA) requires the presentation of two or more credentials drawn from independent factor categories: something you know (knowledge), something you have (possession), or something you are (biometrics). A password and a PIN are both knowledge-based credentials ('something you know'). Using two items from the same factor category constitutes two-step or multi-credential authentication, but not multi-factor authentication. MFA requires two distinct categories, not necessarily three. PIN entropy and token format are implementation details that do not change factor taxonomy.",
+        "after": "Multi-factor authentication (MFA) requires the presentation of two or more credentials drawn from independent factor categories: something you know (knowledge), something you have (possession), or something you are (biometrics). A password and a PIN are both knowledge-based credentials ('something you know'). Using two items from the same factor category still constitutes single-factor authentication, not multi-factor authentication. MFA requires two distinct categories, not necessarily three. PIN entropy and token format are implementation details that do not change factor taxonomy."
+      },
+      "explanation_th": {
+        "before": "ข้อ B ถูกต้อง: Multi-Factor Authentication (MFA) ต้องใช้หลักฐานที่มาจากปัจจัยที่แตกต่างกันอย่างน้อย 2 ใน 3 ปัจจัย ได้แก่ สิ่งที่คุณรู้ (Know), สิ่งที่คุณมี (Have), และสิ่งที่คุณเป็น (Are) ทั้งรหัสผ่านและรหัส PIN จัดเป็น 'สิ่งที่คุณรู้' (Knowledge factor) ทั้งคู่ จึงเป็นเพียง Two-step authentication ไม่ใช่ MFA\n- ข้อ A ไม่ถูกต้อง: แม้ PIN 4 หลักจะสั้น แต่นั่นไม่ใช่เหตุผลทางนิยามที่ทำให้ไม่เป็น MFA\n- ข้อ C ไม่ถูกต้อง: MFA พื้นฐานต้องการเพียง 2 ปัจจัยที่ต่างกัน (Two-factor) ไม่จำเป็นต้องถึง 3 ปัจจัยเสมอไป\n- ข้อ D ไม่ถูกต้อง: PIN สามารถตั้งและกรอกผ่านซอฟต์แวร์ได้ ไม่จำกัดเฉพาะฮาร์ดแวร์โทเคน",
+        "after": "ข้อ B ถูกต้อง: Multi-Factor Authentication (MFA) ต้องใช้หลักฐานที่มาจากปัจจัยที่แตกต่างกันอย่างน้อย 2 ใน 3 ปัจจัย ได้แก่ สิ่งที่คุณรู้ (Know), สิ่งที่คุณมี (Have), และสิ่งที่คุณเป็น (Are) ทั้งรหัสผ่านและรหัส PIN จัดเป็น 'สิ่งที่คุณรู้' (Knowledge factor) ทั้งคู่ จึงยังคงเป็นการพิสูจน์ตัวตนแบบปัจจัยเดียว ไม่ใช่ MFA\n- ข้อ A ไม่ถูกต้อง: แม้ PIN 4 หลักจะสั้น แต่นั่นไม่ใช่เหตุผลทางนิยามที่ทำให้ไม่เป็น MFA\n- ข้อ C ไม่ถูกต้อง: MFA พื้นฐานต้องการเพียง 2 ปัจจัยที่ต่างกัน (Two-factor) ไม่จำเป็นต้องถึง 3 ปัจจัยเสมอไป\n- ข้อ D ไม่ถูกต้อง: PIN สามารถตั้งและกรอกผ่านซอฟต์แวร์ได้ ไม่จำกัดเฉพาะฮาร์ดแวร์โทเคน"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Accounting (and auditing) is the component of the AAA model responsible for logging, tracking, recording, and monitoring user and system actions, producing audit trails that prove who performed which action and when.",
+            "th": "Accounting (การบันทึกและตรวจสอบกิจกรรม) คือองค์ประกอบของ AAA ที่ทำหน้าที่บันทึกเหตุการณ์ สร้าง Audit Log เพื่อให้สามารถตรวจสอบย้อนหลังได้ว่าใคร ทำอะไร ที่ไหน เมื่อใด"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Authentication verifies the truth of a claimed identity, not post-access activity logging.",
+              "text_th": "Authentication มีหน้าที่ตรวจสอบความถูกต้องของตัวตนตอนล็อกอิน ไม่ได้บันทึกกิจกรรมย้อนหลัง"
+            },
+            {
+              "letter": "C",
+              "text_en": "Authorization defines what actions an authenticated user is permitted to perform.",
+              "text_th": "Authorization เป็นการกำหนดสิทธิ์การเข้าถึง ไม่ใช่การบันทึกประวัติย้อนหลัง"
+            },
+            {
+              "letter": "D",
+              "text_en": "Identification provides an identity claim before authentication begins.",
+              "text_th": "Identification เป็นขั้นตอนการแสดงตนเบื้องต้นเท่านั้น"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "The password and the PIN entered on this login screen are both knowledge factors: something you know. Two secrets of the same factor type do not meet the requirement for multiple distinct authentication factors.",
+            "th": "รหัสผ่านและ PIN ที่กรอกบนหน้าจอล็อกอินนี้เป็นปัจจัยประเภทสิ่งที่คุณรู้ (Knowledge factor) ทั้งคู่ การใช้ความลับสองอย่างในปัจจัยประเภทเดียวกันจึงไม่ตรงตามข้อกำหนดที่ต้องใช้ปัจจัยต่างประเภทกันของ MFA"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "PIN strength matters to security, but its length does not change its factor category. Even a longer PIN combined only with a password would still use knowledge factors.",
+              "text_th": "ความแข็งแรงของ PIN มีผลต่อความปลอดภัย แต่ความยาวไม่ได้เปลี่ยนประเภทปัจจัย แม้ใช้ PIN ที่ยาวขึ้นร่วมกับรหัสผ่านเพียงอย่างเดียวก็ยังเป็นปัจจัยประเภทสิ่งที่คุณรู้"
+            },
+            {
+              "letter": "C",
+              "text_en": "MFA requires at least two distinct factor types, not necessarily three. The problem here is that both supplied secrets have the same type.",
+              "text_th": "MFA ต้องใช้ปัจจัยต่างประเภทกันอย่างน้อยสองประเภท ไม่จำเป็นต้องครบสามประเภท ปัญหาในโจทย์คือความลับทั้งสองอย่างเป็นปัจจัยประเภทเดียวกัน"
+            },
+            {
+              "letter": "D",
+              "text_en": "A PIN can be entered in software or used to activate an authenticator. It is not restricted to hardware-token entry; a PIN plus a password alone does not demonstrate possession of such a token.",
+              "text_th": "PIN สามารถกรอกผ่านซอฟต์แวร์หรือใช้ปลดล็อกสิ่งที่ใช้พิสูจน์ตัวตนได้ ไม่ได้จำกัดว่าต้องกรอกบนฮาร์ดแวร์โทเคน และ PIN ร่วมกับรหัสผ่านเพียงอย่างเดียวไม่ได้แสดงว่าผู้ใช้ครอบครองโทเคนดังกล่าว"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 589,
+    "domain": 1,
+    "issue": "Structured explanation describes non-repudiation instead of privacy roles.",
+    "references": [
+      "R01",
+      "R03",
+      "L02"
+    ],
+    "safe_to_apply": true,
+    "key_before": "C",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Non-repudiation provides indisputable proof of the origin, authenticity, and integrity of data, preventing an author or sender from falsely denying having performed an action or sent a communication. Asymmetric digital signatures combined with secure timestamps achieve non-repudiation.",
+            "th": "Non-repudiation (การไม่สามารถปฏิเสธความรับผิดได้) คือคุณสมบัติความปลอดภัยที่ให้หลักฐานที่ไม่อาจโต้แย้งได้ว่าใครเป็นผู้กระทำหรือส่งข้อมูล ทำให้ผู้กระทำไม่สามารถปฏิเสธความรับผิดชอบได้ การใช้ Digital Signature ร่วมกับ Timestamp เป็นตัวอย่างที่ชัดเจนที่สุด"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Symmetric encryption provides confidentiality, but because both parties share the exact same key, either party could have generated the ciphertext, failing to provide non-repudiation.",
+              "text_th": "Symmetric encryption ใช้กุญแจลับร่วมกัน ทำให้ไม่สามารถพิสูจน์ได้ว่าฝ่ายใดเป็นผู้ส่งอย่างแท้จริง จึงไม่รองรับ Non-repudiation"
+            },
+            {
+              "letter": "B",
+              "text_en": "High-availability clustering guarantees operational uptime, not message provenance or individual accountability.",
+              "text_th": "High-availability clustering เน้นความพร้อมใช้งาน (Availability) ไม่เกี่ยวข้องกับการพิสูจน์ตัวตนผู้ส่ง"
+            },
+            {
+              "letter": "D",
+              "text_en": "Shared departmental accounts prevent establishing individual accountability, destroying non-repudiation.",
+              "text_th": "Shared departmental accounts ทำลายหลักการ Non-repudiation โดยตรงเพราะไม่สามารถระบุตัวบุคคลผู้กระทำได้"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "The cloud provider is the Data Processor in the stated arrangement because it stores and processes personal data on the retailer’s instructions. The retailer determines the processing purpose; cloud hosting alone does not make the provider the controller.",
+            "th": "ผู้ให้บริการคลาวด์เป็นผู้ประมวลผลข้อมูลส่วนบุคคล (Data Processor) ในความสัมพันธ์ตามโจทย์ เพราะจัดเก็บและประมวลผลข้อมูลตามคำสั่งของบริษัทค้าปลีก บริษัทค้าปลีกเป็นผู้กำหนดวัตถุประสงค์ การให้บริการโฮสต์บนคลาวด์เพียงอย่างเดียวไม่ได้ทำให้ผู้ให้บริการเป็นผู้ควบคุมข้อมูล"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "The Data Subjects are the individuals whose shipping and payment information is processed, rather than the hosting provider.",
+              "text_th": "Data Subject คือบุคคลที่ข้อมูลการจัดส่งและการชำระเงินของตนถูกประมวลผล ไม่ใช่ผู้ให้บริการโฮสต์"
+            },
+            {
+              "letter": "B",
+              "text_en": "A Data Controller determines the purposes and means of processing. Here the retailer directs the processing, while the provider acts on its instructions.",
+              "text_th": "Data Controller เป็นผู้กำหนดวัตถุประสงค์และวิธีการประมวลผล ในโจทย์บริษัทค้าปลีกเป็นผู้กำหนดการประมวลผล ส่วนผู้ให้บริการปฏิบัติตามคำสั่ง"
+            },
+            {
+              "letter": "D",
+              "text_en": "A Data Protection Authority supervises compliance with data-protection law. The provider is supplying a processing service, not acting as that regulator.",
+              "text_th": "Data Protection Authority เป็นหน่วยงานกำกับการปฏิบัติตามกฎหมายคุ้มครองข้อมูล ผู้ให้บริการในโจทย์ให้บริการประมวลผล ไม่ได้ทำหน้าที่เป็นหน่วยงานกำกับดังกล่าว"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 590,
+    "domain": 1,
+    "issue": "Structured explanation describes threats rather than inventory; flat EN also confuses a sanitization schedule with procedures.",
+    "references": [
+      "R01",
+      "R04",
+      "L02"
+    ],
+    "safe_to_apply": true,
+    "key_before": "B",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "A data inventory (or data asset catalog) identifies what information assets exist, their classification, their storage locations, and their assigned business owners. In contrast, a data retention policy establishes timeframes for how long records must be kept and when they must be destroyed. A data sanitization schedule specifies operational procedures for wiping or destroying retired physical media. A data masking standard defines formatting rules for obscuring sensitive fields from unauthorized viewers.",
+        "after": "A data inventory records the categories of information held, their storage locations and their responsible owners. Those are the facts needed for the stated data-mapping exercise.\nA: A retention policy defines how long records are kept and when disposal is appropriate; it does not itself catalog the data, locations and owners.\nC: A sanitization schedule sets when data or media is to be sanitized. It does not provide the requested catalog of existing datasets and their owners.\nD: A masking standard specifies how sensitive fields are obscured for an authorized use. It does not identify every dataset, storage location and owner."
+      },
+      "explanation_th": {
+        "before": "ข้อ B ถูกต้อง: Data Inventory (การจัดทำบัญชีรายการข้อมูล) เป็นกระบวนการสำรวจและบันทึกว่าองค์กรครอบครองข้อมูลประเภทใดบ้าง จัดเก็บอยู่ที่ไหน (Location) และใครเป็นผู้รับผิดชอบ (Ownership) เพื่อเป็นรากฐานในการคุ้มครองข้อมูล\n- ข้อ A ไม่ถูกต้อง: Data retention policy กำหนดระยะเวลาว่าต้องเก็บข้อมูลไว้นานเท่าใดและทำลายเมื่อใด\n- ข้อ C ไม่ถูกต้อง: Data sanitization schedule คือกำหนดการลบหรือทำลายสื่อบันทึกข้อมูลอย่างถาวร\n- ข้อ D ไม่ถูกต้อง: Data masking standard คือแนวทางปฏิบัติในการปิดบังข้อมูลบางส่วนเพื่อความปลอดภัย",
+        "after": "Data inventory บันทึกประเภทข้อมูลที่องค์กรมี สถานที่จัดเก็บ และเจ้าของหรือผู้รับผิดชอบข้อมูล ซึ่งตรงกับข้อมูลที่ต้องใช้ในการจัดทำแผนผังข้อมูลตามโจทย์\nA: นโยบายการเก็บรักษาข้อมูลกำหนดว่าต้องเก็บข้อมูลนานเท่าใดและควรทำลายเมื่อใด ไม่ได้ทำหน้าที่จัดทำบัญชีประเภทข้อมูล สถานที่จัดเก็บ และเจ้าของข้อมูลโดยตรง\nC: ตารางการทำลายข้อมูลอย่างปลอดภัยกำหนดเวลาที่ต้องล้างข้อมูลหรือจัดการสื่อบันทึก ไม่ได้ให้บัญชีชุดข้อมูลที่มีอยู่และเจ้าของข้อมูลตามที่ต้องการ\nD: มาตรฐานการพรางข้อมูลกำหนดวิธีปิดบังข้อมูลอ่อนไหวเพื่อการใช้งานที่ได้รับอนุญาต ไม่ได้ระบุชุดข้อมูลทั้งหมด สถานที่จัดเก็บ และเจ้าของข้อมูล"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "In cybersecurity risk taxonomy, a Threat is any potential circumstance, event, or entity with the capability to exploit a vulnerability and cause harm or loss to an asset. The adversarial phishing group is the threat actor initiating the threat event.",
+            "th": "Threat (ภัยคุกคาม) คือเหตุการณ์ สภาวการณ์ หรือบุคคล/กลุ่มบุคคลที่มีศักยภาพในการแสวงหาประโยชน์จากช่องโหว่เพื่อสร้างความเสียหายต่อทรัพย์สิน ในกรณีนี้กลุ่มแฮกเกอร์และแคมเปญ Phishing ถือเป็นภัยคุกคามโดยตรง"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "A Vulnerability is an inherent weakness, flaw, or gap in security procedures or systems (such as lack of employee training).",
+              "text_th": "Vulnerability คือจุดอ่อนหรือช่องโหว่ เช่น การที่พนักงานยังไม่ได้รับการอบรม"
+            },
+            {
+              "letter": "C",
+              "text_en": "An Impact is the measured magnitude of harm or loss resulting from an exploited vulnerability.",
+              "text_th": "Impact คือขนาดของความเสียหายที่เกิดขึ้นหากถูกโจมตีสำเร็จ"
+            },
+            {
+              "letter": "D",
+              "text_en": "Residual risk is the remaining risk after controls are implemented.",
+              "text_th": "Residual risk คือความเสี่ยงที่เหลืออยู่หลังติดตั้งมาตรการควบคุมแล้ว"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "A data inventory records the categories of information held, their storage locations and their responsible owners. Those are the facts needed for the stated data-mapping exercise.",
+            "th": "Data inventory บันทึกประเภทข้อมูลที่องค์กรมี สถานที่จัดเก็บ และเจ้าของหรือผู้รับผิดชอบข้อมูล ซึ่งตรงกับข้อมูลที่ต้องใช้ในการจัดทำแผนผังข้อมูลตามโจทย์"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "A retention policy defines how long records are kept and when disposal is appropriate; it does not itself catalog the data, locations and owners.",
+              "text_th": "นโยบายการเก็บรักษาข้อมูลกำหนดว่าต้องเก็บข้อมูลนานเท่าใดและควรทำลายเมื่อใด ไม่ได้ทำหน้าที่จัดทำบัญชีประเภทข้อมูล สถานที่จัดเก็บ และเจ้าของข้อมูลโดยตรง"
+            },
+            {
+              "letter": "C",
+              "text_en": "A sanitization schedule sets when data or media is to be sanitized. It does not provide the requested catalog of existing datasets and their owners.",
+              "text_th": "ตารางการทำลายข้อมูลอย่างปลอดภัยกำหนดเวลาที่ต้องล้างข้อมูลหรือจัดการสื่อบันทึก ไม่ได้ให้บัญชีชุดข้อมูลที่มีอยู่และเจ้าของข้อมูลตามที่ต้องการ"
+            },
+            {
+              "letter": "D",
+              "text_en": "A masking standard specifies how sensitive fields are obscured for an authorized use. It does not identify every dataset, storage location and owner.",
+              "text_th": "มาตรฐานการพรางข้อมูลกำหนดวิธีปิดบังข้อมูลอ่อนไหวเพื่อการใช้งานที่ได้รับอนุญาต ไม่ได้ระบุชุดข้อมูลทั้งหมด สถานที่จัดเก็บ และเจ้าของข้อมูล"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 591,
+    "domain": 1,
+    "issue": "Structured explanation describes a generic risk formula and unrelated exclusions rather than the displayed asset/threat/vulnerability/impact choices.",
+    "references": [
+      "R01",
+      "R05",
+      "L03"
+    ],
+    "safe_to_apply": true,
+    "key_before": "C",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation_th": {
+        "before": "ข้อ C ถูกต้อง: ช่องโหว่ (Vulnerability) คือจุดอ่อน ข้อบกพร่อง หรือความผิดพลาดในระบบ โปรแกรม หรือกระบวนการ ซึ่งสามารถถูกเจาะหรือใช้ประโยชน์โดยภัยคุกคามได้ ซอฟต์แวร์ที่ยังไม่ลงแพตช์จึงเป็นตัวอย่างที่ชัดเจนของช่องโหว่\n- ข้อ A ไม่ถูกต้อง: ทรัพย์สิน (Asset) คือเว็บเซิร์ฟเวอร์หรือฐานข้อมูลลูกค้าที่มีมูลค่าต่อองค์กร\n- ข้อ B ไม่ถูกต้อง: ภัยคุกคาม (Threat) คือเหตุการณ์หรือตัวกระทำที่อาจก่อให้เกิดความเสียหาย เช่น แฮกเกอร์หรือการโจมตีทางไซเบอร์\n- ข้อ D ไม่ถูกต้อง: ผลกระทบ (Impact) คือความเสียหายหรือความสูญเสียที่เกิดขึ้นหากการโจมตีสำเร็จ เช่น ข้อมูลลูกค้าถูกขโมย",
+        "after": "ข้อ C ถูกต้อง: ช่องโหว่ (Vulnerability) คือจุดอ่อน ข้อบกพร่อง หรือความผิดพลาดในระบบ โปรแกรม หรือกระบวนการ ซึ่งสามารถถูกเจาะหรือใช้ประโยชน์โดยภัยคุกคามได้ ข้อบกพร่องในซอฟต์แวร์ที่ยังไม่ได้แพตช์จึงเป็นตัวอย่างที่ชัดเจนของช่องโหว่\n- ข้อ A ไม่ถูกต้อง: ทรัพย์สิน (Asset) คือเว็บเซิร์ฟเวอร์หรือฐานข้อมูลลูกค้าที่มีมูลค่าต่อองค์กร\n- ข้อ B ไม่ถูกต้อง: ภัยคุกคาม (Threat) คือเหตุการณ์หรือตัวกระทำที่อาจก่อให้เกิดความเสียหาย เช่น แฮกเกอร์หรือการโจมตีทางไซเบอร์\n- ข้อ D ไม่ถูกต้อง: ผลกระทบ (Impact) คือความเสียหายหรือความสูญเสียที่เกิดขึ้นหากการโจมตีสำเร็จ เช่น ข้อมูลลูกค้าถูกขโมย"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Risk fundamentally represents the likelihood and impact of a Threat exploiting a Vulnerability to cause harm to an Asset (Risk = Threat × Vulnerability × Asset value/Impact). Without an asset to protect, a vulnerability in that asset, and a threat capable of exploiting it, risk does not exist.",
+            "th": "Risk (ความเสี่ยง) เกิดจากจุดตัดของ 3 องค์ประกอบหลัก ได้แก่: ภัยคุกคาม (Threat) เข้ามาแสวงหาประโยชน์จาก ช่องโหว่ (Vulnerability) ที่มีอยู่ เพื่อสร้างความเสียหายต่อ ทรัพย์สิน (Asset) ขององค์กร หากขาดองค์ประกอบใดองค์ประกอบหนึ่ง ความเสี่ยงทางความปลอดภัยจะไม่เกิดขึ้น"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Excluding threats overlooks the active source of harm.",
+              "text_th": "การมองข้าม Threat ทำให้ขาดปัจจัยที่จะเข้ามาโจมตี"
+            },
+            {
+              "letter": "B",
+              "text_en": "Excluding assets means there is nothing of value at risk.",
+              "text_th": "การไม่มี Asset หมายถึงไม่มีสิ่งมีค่าใดๆ ที่ต้องปกป้อง"
+            },
+            {
+              "letter": "D",
+              "text_en": "Treating controls as primary components confuses safeguards with the inherent risk equation.",
+              "text_th": "Controls เป็นมาตรการควบคุมเพื่อลดความเสี่ยง ไม่ใช่องค์ประกอบพื้นฐานที่ก่อให้เกิดความเสี่ยง"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "The unpatched code-execution flaw is a Vulnerability: a weakness that a threat could exploit. The question asks about the flaw itself, not the asset containing it or the resulting harm.",
+            "th": "ข้อบกพร่องที่ยังไม่ได้แพตช์และเปิดทางให้รันโค้ดได้เป็นช่องโหว่ (Vulnerability) คือจุดอ่อนที่ภัยคุกคามอาจใช้ประโยชน์ได้ โจทย์ถามถึงข้อบกพร่อง ไม่ใช่ทรัพย์สินที่มีข้อบกพร่องหรือความเสียหายที่ตามมา"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "The web server and customer database are assets of value. The software flaw is a weakness in an asset, not the asset itself.",
+              "text_th": "เว็บเซิร์ฟเวอร์และฐานข้อมูลลูกค้าเป็นทรัพย์สินที่มีคุณค่า ส่วนข้อบกพร่องของซอฟต์แวร์เป็นจุดอ่อนในทรัพย์สิน ไม่ใช่ตัวทรัพย์สินเอง"
+            },
+            {
+              "letter": "B",
+              "text_en": "The malicious actors and the potential attack are sources or events of threat. The exploitable software flaw is the vulnerability they could use.",
+              "text_th": "ผู้ไม่หวังดีและการโจมตีที่อาจเกิดขึ้นเป็นแหล่งหรือเหตุการณ์ของภัยคุกคาม ส่วนข้อบกพร่องของซอฟต์แวร์ที่ใช้โจมตีได้เป็นช่องโหว่"
+            },
+            {
+              "letter": "D",
+              "text_en": "Impact is the harm resulting from an incident, such as disclosure or alteration of customer records. The flaw is a condition that can enable that harm.",
+              "text_th": "Impact คือความเสียหายที่เกิดจากเหตุการณ์ เช่น ข้อมูลลูกค้าถูกเปิดเผยหรือแก้ไข ส่วนข้อบกพร่องเป็นสภาวะที่อาจเปิดทางให้เกิดความเสียหายนั้น"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 596,
+    "domain": 1,
+    "issue": "C/D distractor rationales are attached to different displayed choices.",
+    "references": [
+      "R06",
+      "L04"
+    ],
+    "safe_to_apply": true,
+    "key_before": "B",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Effective risk communication matches the information needs and decision authority of the intended audience. Executive leadership and the Board of Directors require high-level, strategic risk reports that contextualize identified threats in terms of business impact, financial risk, operational objectives, and resource prioritization.",
+            "th": "การสื่อสารความเสี่ยงที่มีประสิทธิภาพจะต้องปรับให้เข้ากับกลุ่มเป้าหมาย สำหรับผู้บริหารระดับสูงและคณะกรรมการบริษัท ต้องนำเสนอเป็นรายงานเชิงกลยุทธ์ระดับสูง (High-level strategic report) ที่เชื่อมโยงความเสี่ยงด้านไซเบอร์เข้ากับผลกระทบทางธุรกิจ การเงิน และการจัดสรรทรัพยากร"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Raw technical packet captures, alert logs, and software revision lists overwhelm non-technical executives and obscure critical decision points.",
+              "text_th": "การส่งข้อมูลล็อกทางเทคนิคอย่างละเอียดจะทำให้ผู้บริหารสับสนและไม่เห็นภาพรวมเชิงธุรกิจ"
+            },
+            {
+              "letter": "C",
+              "text_en": "Promising 'zero risk' is unrealistic and fundamentally misrepresents the nature of risk management.",
+              "text_th": "การรับประกันว่าจะไม่มีความเสี่ยงหลงเหลืออยู่เลย (Zero risk) เป็นสิ่งที่เป็นไปไม่ได้ในทางปฏิบัติ"
+            },
+            {
+              "letter": "D",
+              "text_en": "Technical configuration parameters provide operational detail rather than strategic decision support.",
+              "text_th": "พารามิเตอร์การตั้งค่าทางเทคนิคเป็นเรื่องระดับปฏิบัติการ ไม่ใช่ระดับการตัดสินใจของบอร์ด"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "Effective risk communication matches the information needs and decision authority of the intended audience. Executive leadership and the Board of Directors require high-level, strategic risk reports that contextualize identified threats in terms of business impact, financial risk, operational objectives, and resource prioritization.",
+            "th": "การสื่อสารความเสี่ยงที่มีประสิทธิภาพจะต้องปรับให้เข้ากับกลุ่มเป้าหมาย สำหรับผู้บริหารระดับสูงและคณะกรรมการบริษัท ต้องนำเสนอเป็นรายงานเชิงกลยุทธ์ระดับสูง (High-level strategic report) ที่เชื่อมโยงความเสี่ยงด้านไซเบอร์เข้ากับผลกระทบทางธุรกิจ การเงิน และการจัดสรรทรัพยากร"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Raw technical packet captures, alert logs, and software revision lists overwhelm non-technical executives and obscure critical decision points.",
+              "text_th": "การส่งข้อมูลล็อกทางเทคนิคอย่างละเอียดจะทำให้ผู้บริหารสับสนและไม่เห็นภาพรวมเชิงธุรกิจ"
+            },
+            {
+              "letter": "C",
+              "text_en": "Software versions and scan-script output may support technical investigation, but this inventory alone does not explain prioritized business impacts or investment needs to the board.",
+              "text_th": "หมายเลขเวอร์ชันและผลลัพธ์สคริปต์สแกนอาจใช้สนับสนุนการตรวจสอบทางเทคนิค แต่รายการเหล่านี้เพียงอย่างเดียวไม่ได้อธิบายผลกระทบทางธุรกิจที่จัดลำดับแล้วหรือความต้องการลงทุนต่อคณะกรรมการ"
+            },
+            {
+              "letter": "D",
+              "text_en": "Budget approval cannot guarantee that every residual cyber risk becomes zero. Reporting should communicate remaining risk and the expected benefits and limits of proposed controls.",
+              "text_th": "การอนุมัติงบประมาณไม่สามารถรับประกันว่าความเสี่ยงทางไซเบอร์ที่เหลืออยู่ทุกอย่างจะเป็นศูนย์ รายงานควรสื่อสารความเสี่ยงที่เหลือและประโยชน์รวมถึงข้อจำกัดที่คาดหวังจากมาตรการที่เสนอ"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 597,
+    "domain": 1,
+    "issue": "C refers to software development absent from the option; D incorrectly receives the zero-risk rationale.",
+    "references": [
+      "R06",
+      "L04"
+    ],
+    "safe_to_apply": true,
+    "key_before": "A",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Governance is the strategic framework of rules, relationships, and oversight that directs and controls how an organization manages risk, ensures accountability, complies with legal requirements, and aligns information security with overall business goals.",
+            "th": "Governance (การกำกับดูแล) คือกรอบการทำงานเชิงกลยุทธ์ กฎเกณฑ์ และการกำกับดูแลจากฝ่ายบริหาร เพื่อให้มั่นใจว่าการบริหารจัดการความมั่นคงปลอดภัยสอดคล้องกับเป้าหมายทางธุรกิจ มีความรับผิดชอบ และปฏิบัติตามกฎหมาย"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Operational activities—such as configuring firewalls, managing user accounts, or updating antivirus definitions—are tactical and operational security administration, not governance.",
+              "text_th": "การคอนฟิกไฟร์วอลล์และจัดการบัญชีผู้ใช้เป็นงานระดับปฏิบัติการ (Security Administration) ไม่ใช่ Governance"
+            },
+            {
+              "letter": "C",
+              "text_en": "Software development and deployment constitute engineering activities rather than governance.",
+              "text_th": "การพัฒนาซอฟต์แวร์เป็นงานด้านวิศวกรรม ไม่ใช่การกำกับดูแลเชิงนโยบาย"
+            },
+            {
+              "letter": "D",
+              "text_en": "Governance cannot guarantee the complete absence of incidents, as zero risk does not exist.",
+              "text_th": "Governance ไม่สามารถรับประกันว่าจะไม่มีเหตุการณ์บุกรุกเกิดขึ้นได้ 100%"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "Governance is the strategic framework of rules, relationships, and oversight that directs and controls how an organization manages risk, ensures accountability, complies with legal requirements, and aligns information security with overall business goals.",
+            "th": "Governance (การกำกับดูแล) คือกรอบการทำงานเชิงกลยุทธ์ กฎเกณฑ์ และการกำกับดูแลจากฝ่ายบริหาร เพื่อให้มั่นใจว่าการบริหารจัดการความมั่นคงปลอดภัยสอดคล้องกับเป้าหมายทางธุรกิจ มีความรับผิดชอบ และปฏิบัติตามกฎหมาย"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Operational activities—such as configuring firewalls, managing user accounts, or updating antivirus definitions—are tactical and operational security administration, not governance.",
+              "text_th": "การคอนฟิกไฟร์วอลล์และจัดการบัญชีผู้ใช้เป็นงานระดับปฏิบัติการ (Security Administration) ไม่ใช่ Governance"
+            },
+            {
+              "letter": "C",
+              "text_en": "Governance directs and oversees risk management; it cannot guarantee that a breach or outage will never occur.",
+              "text_th": "Governance กำหนดทิศทางและกำกับการบริหารความเสี่ยง แต่ไม่สามารถรับประกันว่าจะไม่มีการละเมิดข้อมูลหรือระบบหยุดทำงานเลย"
+            },
+            {
+              "letter": "D",
+              "text_en": "Configuring firewalls and writing detection rules implement technical controls. These activities support governance decisions but are not the enterprise-level direction and oversight asked about.",
+              "text_th": "การตั้งค่าไฟร์วอลล์และเขียนกฎตรวจจับเป็นการนำมาตรการทางเทคนิคไปใช้ งานเหล่านี้สนับสนุนการตัดสินใจด้าน Governance แต่ไม่ใช่การกำหนดทิศทางและกำกับดูแลระดับองค์กรที่โจทย์ถาม"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 599,
+    "domain": 1,
+    "issue": "B guideline and D policy rationales are swapped.",
+    "references": [
+      "L04"
+    ],
+    "safe_to_apply": true,
+    "key_before": "A",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "A standard is a mandatory governance document that specifies uniform technical requirements, configurations, hardware/software baselines, and rules used to achieve policy compliance. The specific 10-minute screen lock and AES-256 encryption criteria are explicit technical specifications, making this a standard.",
+            "th": "Standard (มาตรฐาน) คือเอกสารข้อกำหนดที่มีผลบังคับใช้เพื่อระบุเกณฑ์ทางเทคนิคขั้นต่ำ (Baseline) ที่แน่นอน เช่น การกำหนดเวลาล็อกหน้าจอ 10 นาที หรือระดับการเข้ารหัส AES-256 เพื่อให้สอดคล้องกับนโยบาย"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Policies outline high-level management intent without numerical technical parameters.",
+              "text_th": "Policy กำหนดเพียงหลักการระดับสูงว่าต้องป้องกันข้อมูล แต่ไม่ระบุค่าตัวเลขทางเทคนิค"
+            },
+            {
+              "letter": "C",
+              "text_en": "Procedures provide chronological step-by-step instructions for performing tasks.",
+              "text_th": "Procedure ระบุขั้นตอนการคลิกหรือคำสั่งทีละขั้น ไม่ใช่เกณฑ์ข้อกำหนด"
+            },
+            {
+              "letter": "D",
+              "text_en": "Guidelines offer non-mandatory recommendations and advice.",
+              "text_th": "Guideline เป็นข้อเสนอแนะ ไม่ใช่ข้อบังคับตายตัว"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "A standard is a mandatory governance document that specifies uniform technical requirements, configurations, hardware/software baselines, and rules used to achieve policy compliance. The specific 10-minute screen lock and AES-256 encryption criteria are explicit technical specifications, making this a standard.",
+            "th": "Standard (มาตรฐาน) คือเอกสารข้อกำหนดที่มีผลบังคับใช้เพื่อระบุเกณฑ์ทางเทคนิคขั้นต่ำ (Baseline) ที่แน่นอน เช่น การกำหนดเวลาล็อกหน้าจอ 10 นาที หรือระดับการเข้ารหัส AES-256 เพื่อให้สอดคล้องกับนโยบาย"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "A guideline gives recommended practice rather than the mandatory technical requirements explicitly specified in this document.",
+              "text_th": "Guideline เป็นคำแนะนำในการปฏิบัติ ไม่ใช่ข้อกำหนดทางเทคนิคภาคบังคับที่ระบุอย่างชัดเจนในเอกสารนี้"
+            },
+            {
+              "letter": "C",
+              "text_en": "Procedures provide chronological step-by-step instructions for performing tasks.",
+              "text_th": "Procedure ระบุขั้นตอนการคลิกหรือคำสั่งทีละขั้น ไม่ใช่เกณฑ์ข้อกำหนด"
+            },
+            {
+              "letter": "D",
+              "text_en": "A policy states management direction and expectations. The mandatory lock interval and encryption specification are the detailed standard implementing that direction.",
+              "text_th": "Policy ระบุทิศทางและความคาดหวังของผู้บริหาร ส่วนระยะเวลาล็อกหน้าจอและข้อกำหนดการเข้ารหัสภาคบังคับเป็นรายละเอียดของ Standard ที่ใช้ดำเนินการตามทิศทางนั้น"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 601,
+    "domain": 1,
+    "issue": "Distractor rationales misstate the categories actually assigned in B/C/D; acknowledge the three-category model rather than imposing it on every taxonomy.",
+    "references": [
+      "R01",
+      "L05"
+    ],
+    "safe_to_apply": true,
+    "key_before": "A",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Cybersecurity controls are categorized by their implementation domain: Technical controls use hardware or software mechanisms (e.g., firewalls, access control lists, encryption). Managerial (or Administrative) controls focus on policies, procedures, background checks, risk assessments, and personnel training directed by management. Physical controls use real-world tangible barriers and facility defenses (e.g., fences, turnstiles, locks, lighting). Thus, firewalls are Technical, employee training and background checks are Managerial/Administrative, and fences/turnstiles are Physical.",
+            "th": "หมวดหมู่ของการควบคุมความมั่นคงปลอดภัยแบ่งตามลักษณะการนำไปใช้งาน ได้แก่: Technical (เทคนิค: กลไกฮาร์ดแวร์/ซอฟต์แวร์ เช่น ไฟร์วอลล์), Managerial/Administrative (การจัดการ: นโยบาย ตรวจประวัติ และการอบรม), และ Physical (กายภาพ: สิ่งกีดขวาง รั้ว ประตูล็อก)"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Option B misclassifies personnel training as technical instead of managerial/administrative.",
+              "text_th": "ตัวเลือก B จัดหมวดหมู่การอบรมพนักงานเป็น Technical ซึ่งไม่ถูกต้อง"
+            },
+            {
+              "letter": "C",
+              "text_en": "Option C misclassifies firewalls as managerial instead of technical.",
+              "text_th": "ตัวเลือก C จัดหมวดหมู่ไฟร์วอลล์เป็น Managerial ซึ่งไม่ถูกต้อง"
+            },
+            {
+              "letter": "D",
+              "text_en": "Option D misclassifies firewalls as physical and fences as technical.",
+              "text_th": "ตัวเลือก D สลับหมวดหมู่ไฟร์วอลล์และรั้วกั้นอาคาร"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "Cybersecurity controls are categorized by their implementation domain: Technical controls use hardware or software mechanisms (e.g., firewalls, access control lists, encryption). Managerial (or Administrative) controls focus on policies, procedures, background checks, risk assessments, and personnel training directed by management. Physical controls use real-world tangible barriers and facility defenses (e.g., fences, turnstiles, locks, lighting). Thus, firewalls are Technical, employee training and background checks are Managerial/Administrative, and fences/turnstiles are Physical.",
+            "th": "หมวดหมู่ของการควบคุมความมั่นคงปลอดภัยแบ่งตามลักษณะการนำไปใช้งาน ได้แก่: Technical (เทคนิค: กลไกฮาร์ดแวร์/ซอฟต์แวร์ เช่น ไฟร์วอลล์), Managerial/Administrative (การจัดการ: นโยบาย ตรวจประวัติ และการอบรม), และ Physical (กายภาพ: สิ่งกีดขวาง รั้ว ประตูล็อก)"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Under the technical/administrative/physical classification used here, the packet-inspecting firewall is technical, and background checks/training are administrative personnel measures. B instead calls them operational and technical.",
+              "text_th": "ภายใต้การแบ่งเป็น Technical/Administrative/Physical ที่ใช้ในข้อนี้ ไฟร์วอลล์ตรวจแพ็กเก็ตเป็นมาตรการทางเทคนิค ส่วนการตรวจประวัติและอบรมเป็นมาตรการด้านบุคลากรทางการบริหาร ข้อ B กลับจัดเป็น Operational และ Technical ตามลำดับ"
+            },
+            {
+              "letter": "C",
+              "text_en": "C calls the firewall physical and the facility barriers managerial/administrative. The firewall’s packet inspection is technical, while the fences and turnstiles control physical entry.",
+              "text_th": "ข้อ C จัดไฟร์วอลล์เป็น Physical และสิ่งกีดขวางอาคารเป็น Managerial/Administrative แต่การตรวจแพ็กเก็ตเป็นกลไกทางเทคนิค ส่วนรั้วและประตูกั้นควบคุมการเข้าถึงทางกายภาพ"
+            },
+            {
+              "letter": "D",
+              "text_en": "D correctly identifies the firewall as technical, but calls background checks/training physical and facility barriers operational. Those measures are administrative and physical respectively in the classification used here.",
+              "text_th": "ข้อ D จัดไฟร์วอลล์เป็น Technical ถูกต้อง แต่จัดการตรวจประวัติและอบรมเป็น Physical และสิ่งกีดขวางอาคารเป็น Operational ซึ่งในกรอบการแบ่งประเภทที่ใช้ในข้อนี้ควรเป็น Administrative และ Physical ตามลำดับ"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 603,
+    "domain": 1,
+    "issue": "B/C detective/preventive rationales are swapped; Thai stem omitted the supplied write-once backup property.",
+    "references": [
+      "L05",
+      "R10"
+    ],
+    "safe_to_apply": true,
+    "key_before": "A",
+    "key_proposed": "unchanged",
+    "fields": {
+      "question_th": {
+        "before": "หลังจากเกิดเหตุการณ์มัลแวร์เรียกค่าไถ่ (Ransomware) เข้ารหัสฐานข้อมูลบัญชีสำคัญ ทีมกู้คืนภัยพิบัติได้แยกเครือข่ายที่ติดเชื้อ ล้างเครื่องเสมือนที่ถูกโจมตี และกู้คืนข้อมูลการเงินที่สมบูรณ์จากชุดข้อมูลสำรองแบบออฟไลน์ (Offline backup) ในแง่ของฟังก์ชันการควบคุม การกู้คืนระบบจากชุดข้อมูลสำรองนี้ทำหน้าที่ใด?",
+        "after": "หลังจากเกิดเหตุการณ์มัลแวร์เรียกค่าไถ่ (Ransomware) เข้ารหัสฐานข้อมูลบัญชีสำคัญ ทีมกู้คืนภัยพิบัติได้แยกเครือข่ายที่ติดเชื้อ ล้างเครื่องเสมือนที่ถูกโจมตี และกู้คืนข้อมูลการเงินที่สมบูรณ์จากชุดข้อมูลสำรองแบบออฟไลน์ (Offline backup) แบบเขียนได้ครั้งเดียว (Write-once) ในแง่ของฟังก์ชันการควบคุม การกู้คืนระบบจากชุดข้อมูลสำรองนี้ทำหน้าที่ใด?"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "A Corrective control functions to remedy damage, fix vulnerabilities, restore impacted assets, and return systems to a normal operational state following a security incident. Restoring data from backups, applying corrective patches, and rebuilding compromised operating systems are primary examples of corrective controls.",
+            "th": "Corrective Control (การควบคุมเชิงแก้ไข) ทำหน้าที่ซ่อมแซม เยียวยาความเสียหาย ฟื้นฟูระบบ และนำระบบกลับสู่สภาวะการทำงานปกติหลังเกิดเหตุการณ์ความมั่นคงปลอดภัย เช่น การกู้คืนข้อมูลจากแบ็กอัป การลงแพตช์แก้ไขช่องโหว่ หรือการติดตั้งระบบใหม่"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Preventive controls stop incidents before they occur, rather than restoring systems after an event.",
+              "text_th": "Preventive control ทำหน้าที่ป้องกันไม่ให้เกิดเหตุ ไม่ใช่การกู้คืนหลังเกิดเหตุ"
+            },
+            {
+              "letter": "C",
+              "text_en": "Detective controls identify and alert on active or past incidents without remediating the damage.",
+              "text_th": "Detective control ทำหน้าที่ตรวจจับและแจ้งเตือน แต่ไม่ได้ซ่อมแซมหรือกู้คืนระบบ"
+            },
+            {
+              "letter": "D",
+              "text_en": "Directive controls specify mandatory behavioral rules and policies.",
+              "text_th": "Directive control เป็นการสั่งการและออกกฎระเบียบบังคับใช้"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "A Corrective control functions to remedy damage, fix vulnerabilities, restore impacted assets, and return systems to a normal operational state following a security incident. Restoring data from backups, applying corrective patches, and rebuilding compromised operating systems are primary examples of corrective controls.",
+            "th": "Corrective Control (การควบคุมเชิงแก้ไข) ทำหน้าที่ซ่อมแซม เยียวยาความเสียหาย ฟื้นฟูระบบ และนำระบบกลับสู่สภาวะการทำงานปกติหลังเกิดเหตุการณ์ความมั่นคงปลอดภัย เช่น การกู้คืนข้อมูลจากแบ็กอัป การลงแพตช์แก้ไขช่องโหว่ หรือการติดตั้งระบบใหม่"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Detective controls identify or alert on events. Restoring the affected systems is corrective recovery rather than the act of detecting the ransomware.",
+              "text_th": "Detective control ใช้ระบุหรือตรวจพบเหตุการณ์และแจ้งเตือน ส่วนการกู้คืนระบบที่ได้รับผลกระทบเป็นการแก้ไขฟื้นฟู ไม่ใช่การตรวจจับ Ransomware"
+            },
+            {
+              "letter": "C",
+              "text_en": "Preventive controls aim to stop an unwanted event before it occurs. Here the infection has already damaged systems and the stated action restores them.",
+              "text_th": "Preventive control มุ่งป้องกันเหตุที่ไม่ต้องการก่อนเกิดเหตุ แต่ในโจทย์ระบบได้รับความเสียหายจากการติดเชื้อแล้ว และการกระทำที่ถามคือการกู้คืนระบบ"
+            },
+            {
+              "letter": "D",
+              "text_en": "Directive controls specify mandatory behavioral rules and policies.",
+              "text_th": "Directive control เป็นการสั่งการและออกกฎระเบียบบังคับใช้"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 611,
+    "domain": 2,
+    "issue": "D describes PCI DSS rather than NIST SP800-30; accreditation applies to certification bodies, and Thai example incorrectly calls surveillance annual renewal.",
+    "references": [
+      "R09",
+      "R05",
+      "R06",
+      "L06"
+    ],
+    "safe_to_apply": true,
+    "key_before": "A",
+    "key_proposed": "unchanged",
+    "fields": {
+      "question": {
+        "before": "An enterprise seeks to adopt an established cybersecurity framework to structure its program. The Chief Information Security Officer (CISO) requires a framework that provides an internationally accredited, third-party certifiable Information Security Management System (ISMS) standard. Which of the following frameworks BEST satisfies this requirement?",
+        "after": "An enterprise seeks to adopt an established cybersecurity framework to structure its program. The Chief Information Security Officer (CISO) requires a framework that provides an internationally recognized, third-party certifiable Information Security Management System (ISMS) standard. Which of the following frameworks BEST satisfies this requirement?"
+      },
+      "explanation": {
+        "before": "Option A is correct. ISO/IEC 27001 is specifically designed as a certifiable requirements standard for an Information Security Management System (ISMS), enabling organizations to earn accredited third-party certification. Option B is incorrect: The NIST Cybersecurity Framework (NIST CSF) is a voluntary guidance framework providing a common language and taxonomy, but does not provide an accredited formal certification program. Option C is incorrect: COBIT 2019 focuses on broad enterprise governance and management of IT processes, not on providing accredited certification of an organizational ISMS. Option D is incorrect: PCI DSS is a specialized payment card industry compliance standard for entities processing cardholder data, not an accredited comprehensive enterprise ISMS certification scheme.",
+        "after": "ISO/IEC 27001 specifies requirements for an Information Security Management System (ISMS) against which an organization can obtain independent third-party certification. Accreditation concerns the competence of a certification body; it is not accreditation of the standard itself.\nB: NIST CSF 2.0 organizes cybersecurity outcomes and risk-management guidance; NIST does not offer an organizational ISMS certification through the CSF.\nC: COBIT 2019 focuses on broad enterprise governance and management of IT processes, not on providing accredited certification of an organizational ISMS.\nD: NIST SP 800-30 Rev. 1 guides the conduct of risk assessments. It is not a set of certifiable ISMS requirements like ISO/IEC 27001."
+      },
+      "question_th": {
+        "before": "องค์กรแห่งหนึ่งต้องการนำกรอบการทำงานด้านความมั่นคงปลอดภัยไซเบอร์ที่เป็นที่ยอมรับมาใช้เพื่อจัดโครงสร้างโปรแกรมของตน CISO ต้องการกรอบการทำงานที่มอบมาตรฐานระบบบริหารจัดการความมั่นคงปลอดภัยสารสนเทศ (ISMS) ที่ได้รับการรับรองในระดับสากลและสามารถตรวจรับรองโดยหน่วยงานภายนอกได้ กรอบการทำงานใดต่อไปนี้ตอบโจทย์ความต้องการนี้ได้เหมาะสมที่สุด (BEST)?",
+        "after": "องค์กรแห่งหนึ่งต้องการนำกรอบการทำงานด้านความมั่นคงปลอดภัยไซเบอร์ที่เป็นที่ยอมรับมาใช้เพื่อจัดโครงสร้างโปรแกรมของตน CISO ต้องการกรอบการทำงานที่มอบมาตรฐานระบบบริหารจัดการความมั่นคงปลอดภัยสารสนเทศ (ISMS) ที่เป็นที่ยอมรับในระดับสากลและสามารถตรวจรับรองโดยหน่วยงานภายนอกได้ กรอบการทำงานใดต่อไปนี้ตอบโจทย์ความต้องการนี้ได้เหมาะสมที่สุด (BEST)?"
+      },
+      "explanation_th": {
+        "before": "ข้อ A ถูกต้อง: ISO/IEC 27001 ได้รับการออกแบบมาโดยเฉพาะเพื่อเป็นมาตรฐานข้อกำหนดสำหรับระบบ ISMS ที่องค์กรสามารถขอรับการตรวจประเมินและออกใบรับรองสากลได้\n- ข้อ B ไม่ถูกต้อง: NIST CSF เป็นกรอบแนวปฏิบัติเพื่อการสื่อสารและยกระดับความปลอดภัย แต่ไม่มีกระบวนการตรวจประเมินเพื่อออกใบรับรองอย่างเป็นทางการแก่องค์กร\n- ข้อ C ไม่ถูกต้อง: COBIT 2019 เน้นการกำกับดูแลกระบวนการทางไอทีในระดับองค์กร ไม่ใช่มาตรฐานในการรับรองระบบความปลอดภัยสารสนเทศ\n- ข้อ D ไม่ถูกต้อง: PCI DSS เป็นมาตรฐานการปฏิบัติตามกฎเกณฑ์เฉพาะทางสำหรับข้อมูลบัตรชำระเงิน ไม่ใช่มาตรฐานการตรวจรับรองระบบบริหารจัดการความปลอดภัย (ISMS) ครอบคลุมระดับองค์กร",
+        "after": "ISO/IEC 27001 กำหนดข้อกำหนดสำหรับระบบบริหารจัดการความมั่นคงปลอดภัยสารสนเทศ (ISMS) ที่องค์กรสามารถขอรับการตรวจรับรองจากหน่วยงานภายนอกได้ Accreditation เป็นการรับรองความสามารถของหน่วยงานตรวจรับรอง ไม่ใช่การรับรองตัวมาตรฐาน\nB: NIST CSF 2.0 จัดหมวดผลลัพธ์และแนวทางบริหารความเสี่ยงด้านความมั่นคงปลอดภัย โดย NIST ไม่ได้จัดให้มีการตรวจรับรอง ISMS ขององค์กรผ่าน CSF\nC: COBIT 2019 เน้นการกำกับดูแลกระบวนการทางไอทีในระดับองค์กร ไม่ใช่มาตรฐานในการรับรองระบบความปลอดภัยสารสนเทศ\nD: NIST SP 800-30 Rev. 1 ให้แนวทางการประเมินความเสี่ยง ไม่ใช่ชุดข้อกำหนด ISMS สำหรับการตรวจรับรองแบบ ISO/IEC 27001"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "ISO/IEC 27001 is specifically designed as a certifiable requirements standard for an Information Security Management System (ISMS), enabling organizations to earn accredited third-party certification.",
+            "th": "ISO/IEC 27001 ได้รับการออกแบบมาโดยเฉพาะเพื่อเป็นมาตรฐานข้อกำหนดสำหรับระบบ ISMS ที่องค์กรสามารถขอรับการตรวจประเมินและออกใบรับรองสากลได้"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "The NIST Cybersecurity Framework (NIST CSF) is a voluntary guidance framework providing a common language and taxonomy, but does not provide an accredited formal certification program.",
+              "text_th": "NIST CSF เป็นกรอบแนวปฏิบัติเพื่อการสื่อสารและยกระดับความปลอดภัย แต่ไม่มีกระบวนการตรวจประเมินเพื่อออกใบรับรองอย่างเป็นทางการแก่องค์กร"
+            },
+            {
+              "letter": "C",
+              "text_en": "COBIT 2019 focuses on broad enterprise governance and management of IT processes, not on providing accredited certification of an organizational ISMS.",
+              "text_th": "COBIT 2019 เน้นการกำกับดูแลกระบวนการทางไอทีในระดับองค์กร ไม่ใช่มาตรฐานในการรับรองระบบความปลอดภัยสารสนเทศ"
+            },
+            {
+              "letter": "D",
+              "text_en": "PCI DSS is a specialized payment card industry compliance standard for entities processing cardholder data, not an accredited comprehensive enterprise ISMS certification scheme.",
+              "text_th": "PCI DSS เป็นมาตรฐานการปฏิบัติตามกฎเกณฑ์เฉพาะทางสำหรับข้อมูลบัตรชำระเงิน ไม่ใช่มาตรฐานการตรวจรับรองระบบบริหารจัดการความปลอดภัย (ISMS) ครอบคลุมระดับองค์กร"
+            }
+          ],
+          "example": {
+            "en": "Global SaaS providers undergo annual ISO/IEC 27001 surveillance audits to maintain public accredited certificates that satisfy enterprise vendor due diligence requirements worldwide.",
+            "th": "บริษัทผู้ให้บริการ SaaS ระดับโลกเข้ารับการตรวจสอบเพื่อต่ออายุใบรับรอง ISO/IEC 27001 ทุกปี เพื่อใช้เป็นหลักฐานแสดงความน่าเชื่อถือแก่ลูกค้าองค์กรทั่วโลก"
+          },
+          "exam_tip": {
+            "en": "Differentiate frameworks vs standards: ISO 27001 = certifiable ISMS requirements standard; NIST CSF = voluntary flexible framework; COBIT = enterprise IT governance.",
+            "th": "แยกแยะความต่างให้ชัดเจน: ISO 27001 = มาตรฐานข้อกำหนด ISMS ที่ตรวจรับรองได้; NIST CSF = กรอบแนวปฏิบัติแบบยืดหยุ่น; COBIT = การกำกับดูแลไอทีองค์กร"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "ISO/IEC 27001 specifies requirements for an Information Security Management System (ISMS) against which an organization can obtain independent third-party certification. Accreditation concerns the competence of a certification body; it is not accreditation of the standard itself.",
+            "th": "ISO/IEC 27001 กำหนดข้อกำหนดสำหรับระบบบริหารจัดการความมั่นคงปลอดภัยสารสนเทศ (ISMS) ที่องค์กรสามารถขอรับการตรวจรับรองจากหน่วยงานภายนอกได้ Accreditation เป็นการรับรองความสามารถของหน่วยงานตรวจรับรอง ไม่ใช่การรับรองตัวมาตรฐาน"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "NIST CSF 2.0 organizes cybersecurity outcomes and risk-management guidance; NIST does not offer an organizational ISMS certification through the CSF.",
+              "text_th": "NIST CSF 2.0 จัดหมวดผลลัพธ์และแนวทางบริหารความเสี่ยงด้านความมั่นคงปลอดภัย โดย NIST ไม่ได้จัดให้มีการตรวจรับรอง ISMS ขององค์กรผ่าน CSF"
+            },
+            {
+              "letter": "C",
+              "text_en": "COBIT 2019 focuses on broad enterprise governance and management of IT processes, not on providing accredited certification of an organizational ISMS.",
+              "text_th": "COBIT 2019 เน้นการกำกับดูแลกระบวนการทางไอทีในระดับองค์กร ไม่ใช่มาตรฐานในการรับรองระบบความปลอดภัยสารสนเทศ"
+            },
+            {
+              "letter": "D",
+              "text_en": "NIST SP 800-30 Rev. 1 guides the conduct of risk assessments. It is not a set of certifiable ISMS requirements like ISO/IEC 27001.",
+              "text_th": "NIST SP 800-30 Rev. 1 ให้แนวทางการประเมินความเสี่ยง ไม่ใช่ชุดข้อกำหนด ISMS สำหรับการตรวจรับรองแบบ ISO/IEC 27001"
+            }
+          ],
+          "example": {
+            "en": "An organization may use its ISO/IEC 27001 certificate, including its scope and validity, as one input to a customer’s supplier assessment. Certification does not replace assessment of the customer’s specific risks.",
+            "th": "องค์กรอาจใช้ใบรับรอง ISO/IEC 27001 พร้อมขอบเขตและระยะเวลาที่มีผล เป็นข้อมูลส่วนหนึ่งในการประเมินผู้ให้บริการของลูกค้า การมีใบรับรองไม่ได้ทดแทนการประเมินความเสี่ยงเฉพาะของลูกค้า"
+          },
+          "exam_tip": {
+            "en": "Differentiate frameworks vs standards: ISO 27001 = certifiable ISMS requirements standard; NIST CSF = voluntary flexible framework; COBIT = enterprise IT governance.",
+            "th": "แยกแยะความต่างให้ชัดเจน: ISO 27001 = มาตรฐานข้อกำหนด ISMS ที่ตรวจรับรองได้; NIST CSF = กรอบแนวปฏิบัติแบบยืดหยุ่น; COBIT = การกำกับดูแลไอทีองค์กร"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 592,
+    "domain": 1,
+    "issue": "Quantitative assessment is incorrectly defined as requiring precise monetary valuations.",
+    "references": [
+      "R05",
+      "L03"
+    ],
+    "safe_to_apply": true,
+    "key_before": "B",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Qualitative risk analysis uses descriptive scales, expert judgment, and experiential categorization (such as High, Medium, and Low) to evaluate and prioritize risks based on likelihood and impact. It does not attempt to assign precise numerical dollar amounts. In contrast, quantitative risk analysis relies on numerical and financial calculations, such as monetary loss figures and annual frequencies. Residual risk is the risk remaining after controls are implemented, and total cost of ownership evaluates asset purchase and maintenance expenses.",
+        "after": "The descriptive High/Medium/Low ratings and expert judgment make this qualitative risk analysis. Quantitative analysis uses numerical values with meaningful units and relationships; financial loss estimates are one example, not its only form.\nA: Quantitative analysis uses numerical estimates whose meaning and scale support comparison, such as loss amounts or occurrence frequencies. The supplied descriptive categories do not provide such measurements.\nC: Residual risk is the risk remaining after safeguards, not an analysis methodology.\nD: Total cost of ownership assesses acquisition and operating costs, not risk probability or impact."
+      },
+      "short_explanation_en": {
+        "before": "Qualitative risk analysis uses subjective judgment and descriptive scales rather than numerical financial metrics.",
+        "after": "Qualitative analysis uses descriptive categories and expert judgment; quantitative analysis requires meaningful numerical estimates."
+      },
+      "explanation_th": {
+        "before": "ข้อ B ถูกต้อง: Qualitative Risk Analysis (การวิเคราะห์ความเสี่ยงเชิงคุณภาพ) เป็นการประเมินความเสี่ยงโดยใช้ดุลยพินิจของผู้เชี่ยวชาญ การระดมสมอง และการจัดลำดับด้วยคำอธิบายเชิงคุณภาพ เช่น สูง/กลาง/ต่ำ โดยไม่ต้องใช้ตัวเลขทางการเงินที่แน่ชัด เหมาะกับองค์กรที่ไม่มีข้อมูลสถิติตัวเลขในอดีต\n- ข้อ A ไม่ถูกต้อง: Quantitative risk analysis ต้องคำนวณเป็นตัวเลขทางการเงินและความถี่ทางสถิติที่แน่นอน\n- ข้อ C ไม่ถูกต้อง: Residual risk คือความเสี่ยงที่ยังคงเหลืออยู่หลังใช้มาตรการควบคุม ไม่ใช่ชื่อวิธีประเมิน\n- ข้อ D ไม่ถูกต้อง: Total cost of ownership เป็นการคำนวณค่าใช้จ่ายในการจัดซื้อและดูแลรักษาระบบ ไม่ใช่การประเมินความเสี่ยง",
+        "after": "การให้ระดับเชิงพรรณนา High/Medium/Low โดยอาศัยดุลยพินิจของผู้เชี่ยวชาญเป็นการวิเคราะห์ความเสี่ยงเชิงคุณภาพ ส่วนการวิเคราะห์เชิงปริมาณใช้ค่าตัวเลขที่มีหน่วยและความสัมพันธ์ที่มีความหมาย การประมาณความสูญเสียทางการเงินเป็นเพียงตัวอย่างหนึ่ง ไม่ใช่รูปแบบเดียว\nA: การวิเคราะห์เชิงปริมาณใช้ค่าประมาณตัวเลขที่มีความหมายและมาตราส่วนสำหรับเปรียบเทียบ เช่น มูลค่าความสูญเสียหรือความถี่การเกิดเหตุ ระดับเชิงพรรณนาในโจทย์ไม่ได้ให้ค่าการวัดลักษณะนั้น\nC: Residual risk คือความเสี่ยงที่ยังคงเหลืออยู่หลังใช้มาตรการควบคุม ไม่ใช่ชื่อวิธีประเมิน\nD: Total cost of ownership เป็นการคำนวณค่าใช้จ่ายในการจัดซื้อและดูแลรักษาระบบ ไม่ใช่การประเมินความเสี่ยง"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Qualitative Risk Analysis uses descriptive, categorical scales (such as High, Medium, Low) and expert judgment, interviews, and workshops to evaluate and prioritize risks based on relative likelihood and subjective impact. It is ideal when numerical loss history or precise financial data is unavailable.",
+            "th": "Qualitative Risk Analysis (การวิเคราะห์ความเสี่ยงเชิงคุณภาพ) เป็นการประเมินความเสี่ยงโดยใช้ดุลยพินิจของผู้เชี่ยวชาญ การระดมสมอง และการจัดลำดับด้วยคำอธิบายเชิงคุณภาพ เช่น สูง/กลาง/ต่ำ โดยไม่ต้องใช้ตัวเลขทางการเงินที่แน่ชัด เหมาะกับองค์กรที่ไม่มีข้อมูลสถิติตัวเลขในอดีต"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Quantitative risk analysis requires precise monetary valuations and numerical calculations (such as SLE, ARO, and ALE).",
+              "text_th": "Quantitative risk analysis ต้องคำนวณเป็นตัวเลขทางการเงินและความถี่ทางสถิติที่แน่นอน"
+            },
+            {
+              "letter": "C",
+              "text_en": "Residual risk is the risk remaining after safeguards, not an analysis methodology.",
+              "text_th": "Residual risk คือความเสี่ยงที่ยังคงเหลืออยู่หลังใช้มาตรการควบคุม ไม่ใช่ชื่อวิธีประเมิน"
+            },
+            {
+              "letter": "D",
+              "text_en": "Total cost of ownership assesses acquisition and operating costs, not risk probability or impact.",
+              "text_th": "Total cost of ownership เป็นการคำนวณค่าใช้จ่ายในการจัดซื้อและดูแลรักษาระบบ ไม่ใช่การประเมินความเสี่ยง"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "The descriptive High/Medium/Low ratings and expert judgment make this qualitative risk analysis. Quantitative analysis uses numerical values with meaningful units and relationships; financial loss estimates are one example, not its only form.",
+            "th": "การให้ระดับเชิงพรรณนา High/Medium/Low โดยอาศัยดุลยพินิจของผู้เชี่ยวชาญเป็นการวิเคราะห์ความเสี่ยงเชิงคุณภาพ ส่วนการวิเคราะห์เชิงปริมาณใช้ค่าตัวเลขที่มีหน่วยและความสัมพันธ์ที่มีความหมาย การประมาณความสูญเสียทางการเงินเป็นเพียงตัวอย่างหนึ่ง ไม่ใช่รูปแบบเดียว"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Quantitative analysis uses numerical estimates whose meaning and scale support comparison, such as loss amounts or occurrence frequencies. The supplied descriptive categories do not provide such measurements.",
+              "text_th": "การวิเคราะห์เชิงปริมาณใช้ค่าประมาณตัวเลขที่มีความหมายและมาตราส่วนสำหรับเปรียบเทียบ เช่น มูลค่าความสูญเสียหรือความถี่การเกิดเหตุ ระดับเชิงพรรณนาในโจทย์ไม่ได้ให้ค่าการวัดลักษณะนั้น"
+            },
+            {
+              "letter": "C",
+              "text_en": "Residual risk is the risk remaining after safeguards, not an analysis methodology.",
+              "text_th": "Residual risk คือความเสี่ยงที่ยังคงเหลืออยู่หลังใช้มาตรการควบคุม ไม่ใช่ชื่อวิธีประเมิน"
+            },
+            {
+              "letter": "D",
+              "text_en": "Total cost of ownership assesses acquisition and operating costs, not risk probability or impact.",
+              "text_th": "Total cost of ownership เป็นการคำนวณค่าใช้จ่ายในการจัดซื้อและดูแลรักษาระบบ ไม่ใช่การประเมินความเสี่ยง"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 595,
+    "domain": 1,
+    "issue": "Thai acceptance rationale adds ignoring impacts; avoidance wording should refer to the declined activity, not all organizational risk.",
+    "references": [
+      "R05",
+      "L03"
+    ],
+    "safe_to_apply": true,
+    "key_before": "A",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Risk Avoidance is the strategy of eliminating risk exposure entirely by choosing not to engage in, or by completely discontinuing, the specific activity, service, or technology that creates the risk. Choosing not to adopt or purchase the high-risk AI platform completely avoids the associated risks. Risk mitigation would involve deploying controls (such as data sanitization filters) to use the technology safely. Risk transfer would involve shifting financial exposure via insurance or contracts. Risk acceptance would proceed with adoption while tolerating the risks.",
+        "after": "Declining to deploy this platform avoids the exposure associated with using it. This is avoidance of the specified activity, not a claim that all healthcare or privacy risks disappear.\nB: Mitigation would use safeguards to reduce risk while continuing with the activity, rather than declining deployment.\nC: Risk transfer would involve shifting financial exposure via insurance or contracts.\nD: Acceptance would retain the identified risk through an informed decision by an authorized party. It does not mean ignoring possible impacts; the organization instead declines the activity here."
+      },
+      "explanation_th": {
+        "before": "ข้อ A ถูกต้อง: Risk Avoidance (การหลีกเลี่ยงความเสี่ยง) คือการตัดสินใจไม่ทำกิจกรรม ยกเลิก หรือไม่นำเทคโนโลยีที่มีความเสี่ยงสูงนั้นเข้ามาใช้เลย เพื่อตัดโอกาสการเกิดความเสี่ยงนั้นให้หมดสิ้นไป\n- ข้อ B ไม่ถูกต้อง: Risk Mitigation คือการเดินหน้านำ AI มาใช้แต่ติดตั้งมาตรการป้องกันเพิ่มเติมเพื่อลดความเสี่ยง\n- ข้อ C ไม่ถูกต้อง: Risk Transfer คือการผลักภาระความสูญเสียทางการเงินไปให้ผู้อื่น เช่น ทำประกันภัย\n- ข้อ D ไม่ถูกต้อง: Risk Acceptance คือการยอมรับความเสี่ยงและเดินหน้าติดตั้งใช้งานโดยไม่สนผลกระทบ",
+        "after": "การไม่นำแพลตฟอร์มนี้มาใช้เป็นการหลีกเลี่ยงความเสี่ยงที่เกิดจากการใช้งานแพลตฟอร์มนั้น เป็นการหลีกเลี่ยงกิจกรรมที่ระบุ ไม่ได้หมายความว่าความเสี่ยงด้านสุขภาพหรือความเป็นส่วนตัวทั้งหมดจะหายไป\nB: Mitigation ใช้มาตรการลดความเสี่ยงโดยยังดำเนินกิจกรรมต่อ ต่างจากการตัดสินใจไม่นำระบบมาใช้\nC: Risk Transfer คือการผลักภาระความสูญเสียทางการเงินไปให้ผู้อื่น เช่น ทำประกันภัย\nD: Acceptance คือการคงรับความเสี่ยงที่ระบุไว้โดยผู้มีอำนาจตัดสินใจอย่างมีข้อมูล ไม่ใช่การเพิกเฉยต่อผลกระทบที่อาจเกิดขึ้น แต่ในโจทย์องค์กรเลือกไม่ดำเนินกิจกรรมนั้น"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Risk Avoidance is the strategy of eliminating risk exposure entirely by choosing not to engage in, or by completely discontinuing, the specific activity, service, or technology that creates the risk. Choosing not to adopt or purchase the high-risk AI platform completely avoids the associated risks.",
+            "th": "Risk Avoidance (การหลีกเลี่ยงความเสี่ยง) คือการตัดสินใจไม่ทำกิจกรรม ยกเลิก หรือไม่นำเทคโนโลยีที่มีความเสี่ยงสูงนั้นเข้ามาใช้เลย เพื่อตัดโอกาสการเกิดความเสี่ยงนั้นให้หมดสิ้นไป"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Risk mitigation would involve deploying controls (such as data sanitization filters) to use the technology safely.",
+              "text_th": "Risk Mitigation คือการเดินหน้านำ AI มาใช้แต่ติดตั้งมาตรการป้องกันเพิ่มเติมเพื่อลดความเสี่ยง"
+            },
+            {
+              "letter": "C",
+              "text_en": "Risk transfer would involve shifting financial exposure via insurance or contracts.",
+              "text_th": "Risk Transfer คือการผลักภาระความสูญเสียทางการเงินไปให้ผู้อื่น เช่น ทำประกันภัย"
+            },
+            {
+              "letter": "D",
+              "text_en": "Risk acceptance would proceed with adoption while tolerating the risks.",
+              "text_th": "Risk Acceptance คือการยอมรับความเสี่ยงและเดินหน้าติดตั้งใช้งานโดยไม่สนผลกระทบ"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "Declining to deploy this platform avoids the exposure associated with using it. This is avoidance of the specified activity, not a claim that all healthcare or privacy risks disappear.",
+            "th": "การไม่นำแพลตฟอร์มนี้มาใช้เป็นการหลีกเลี่ยงความเสี่ยงที่เกิดจากการใช้งานแพลตฟอร์มนั้น เป็นการหลีกเลี่ยงกิจกรรมที่ระบุ ไม่ได้หมายความว่าความเสี่ยงด้านสุขภาพหรือความเป็นส่วนตัวทั้งหมดจะหายไป"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Mitigation would use safeguards to reduce risk while continuing with the activity, rather than declining deployment.",
+              "text_th": "Mitigation ใช้มาตรการลดความเสี่ยงโดยยังดำเนินกิจกรรมต่อ ต่างจากการตัดสินใจไม่นำระบบมาใช้"
+            },
+            {
+              "letter": "C",
+              "text_en": "Risk transfer would involve shifting financial exposure via insurance or contracts.",
+              "text_th": "Risk Transfer คือการผลักภาระความสูญเสียทางการเงินไปให้ผู้อื่น เช่น ทำประกันภัย"
+            },
+            {
+              "letter": "D",
+              "text_en": "Acceptance would retain the identified risk through an informed decision by an authorized party. It does not mean ignoring possible impacts; the organization instead declines the activity here.",
+              "text_th": "Acceptance คือการคงรับความเสี่ยงที่ระบุไว้โดยผู้มีอำนาจตัดสินใจอย่างมีข้อมูล ไม่ใช่การเพิกเฉยต่อผลกระทบที่อาจเกิดขึ้น แต่ในโจทย์องค์กรเลือกไม่ดำเนินกิจกรรมนั้น"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 600,
+    "domain": 1,
+    "issue": "An ISO/IEC27001 requirements standard is conflated with a cybersecurity framework.",
+    "references": [
+      "R06",
+      "R09",
+      "L04"
+    ],
+    "safe_to_apply": true,
+    "key_before": "A",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "A cybersecurity framework (such as NIST CSF or ISO/IEC 27001) provides a comprehensive, structured methodology for building, organizing, measuring, and maturing an enterprise security program. It organizes controls across domains and assists organizations in assessing their current security posture against targeted baselines. In contrast, standard operating procedures outline operational keystrokes for specific tasks, acceptable use policies govern end-user computer usage, and baseline guidelines provide non-mandatory technical advice.",
+        "after": "A cybersecurity framework such as NIST CSF provides a structure for assessing, prioritizing and communicating cybersecurity outcomes across a program. ISO/IEC 27001 is a related ISMS requirements standard, rather than another name for the CSF.\nB: Standard operating procedures outline operational keystrokes for specific tasks, not enterprise program architecture.\nC: Acceptable use policies govern end-user computer usage rules, not overall program structure.\nD: Baseline guidelines provide non-mandatory technical advice rather than program architecture."
+      },
+      "explanation_th": {
+        "before": "ข้อ A ถูกต้อง: กรอบการดำเนินงาน (Cybersecurity Framework) เช่น NIST CSF หรือ ISO/IEC 27001 คือแบบแผนโครงสร้างระดับมหภาคที่ช่วยให้องค์กรวางแผน ออกแบบ สร้าง และประเมินระดับวุฒิภาวะ (Maturity) ของโครงการความมั่นคงปลอดภัยในภาพรวมได้อย่างเป็นระบบ\n- ข้อ B ไม่ถูกต้อง: Standard Operating Procedure (SOP) เป็นขั้นตอนการทำงานสำหรับงานย่อยเฉพาะเรื่อง ไม่ใช่โครงสร้างของทั้งโปรแกรม\n- ข้อ C ไม่ถูกต้อง: Acceptable Use Policy (AUP) เป็นนโยบายการใช้งานของพนักงานทั่วไป\n- ข้อ D ไม่ถูกต้อง: Baseline Security Guideline เป็นเพียงคำแนะนำเบื้องต้นสำหรับการตั้งค่าอุปกรณ์",
+        "after": "กรอบการทำงานด้านความมั่นคงปลอดภัย เช่น NIST CSF ช่วยจัดโครงสร้างการประเมิน จัดลำดับความสำคัญ และสื่อสารผลลัพธ์ด้านความมั่นคงปลอดภัยของโปรแกรม ส่วน ISO/IEC 27001 เป็นมาตรฐานข้อกำหนด ISMS ที่เกี่ยวข้อง ไม่ใช่อีกชื่อหนึ่งของ CSF\nB: Standard operating procedures เป็นเพียงขั้นตอนการทำงานย่อยสำหรับงานเฉพาะอย่าง\nC: Acceptable use policy เป็นนโยบายการใช้งานอุปกรณ์ของผู้ใช้ ไม่ใช่กรอบโครงสร้างองค์กร\nD: Baseline guidelines เป็นเพียงคำแนะนำเบื้องต้น ไม่ครอบคลุมการบริหารจัดการระดับองค์กร"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "A cybersecurity framework (such as NIST CSF or ISO/IEC 27001) provides a comprehensive, structured methodology for building, organizing, measuring, and maturing an enterprise security program. It organizes controls across domains and assists organizations in assessing their current security posture against targeted baselines.",
+            "th": "Cybersecurity Framework (กรอบการทำงานความมั่นคงปลอดภัยไซเบอร์ เช่น NIST CSF, ISO/IEC 27001) เป็นชุดแนวทางและโครงสร้างที่ครอบคลุม เพื่อช่วยให้องค์กรวางแผน ออกแบบ ปฏิบัติ และวัดผลระดับวุฒิภาวะของระบบความปลอดภัยได้อย่างเป็นระบบ"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Standard operating procedures outline operational keystrokes for specific tasks, not enterprise program architecture.",
+              "text_th": "Standard operating procedures เป็นเพียงขั้นตอนการทำงานย่อยสำหรับงานเฉพาะอย่าง"
+            },
+            {
+              "letter": "C",
+              "text_en": "Acceptable use policies govern end-user computer usage rules, not overall program structure.",
+              "text_th": "Acceptable use policy เป็นนโยบายการใช้งานอุปกรณ์ของผู้ใช้ ไม่ใช่กรอบโครงสร้างองค์กร"
+            },
+            {
+              "letter": "D",
+              "text_en": "Baseline guidelines provide non-mandatory technical advice rather than program architecture.",
+              "text_th": "Baseline guidelines เป็นเพียงคำแนะนำเบื้องต้น ไม่ครอบคลุมการบริหารจัดการระดับองค์กร"
+            }
+          ]
+        },
+        "after": {
+          "correct": {
+            "en": "A cybersecurity framework such as NIST CSF provides a structure for assessing, prioritizing and communicating cybersecurity outcomes across a program. ISO/IEC 27001 is a related ISMS requirements standard, rather than another name for the CSF.",
+            "th": "กรอบการทำงานด้านความมั่นคงปลอดภัย เช่น NIST CSF ช่วยจัดโครงสร้างการประเมิน จัดลำดับความสำคัญ และสื่อสารผลลัพธ์ด้านความมั่นคงปลอดภัยของโปรแกรม ส่วน ISO/IEC 27001 เป็นมาตรฐานข้อกำหนด ISMS ที่เกี่ยวข้อง ไม่ใช่อีกชื่อหนึ่งของ CSF"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Standard operating procedures outline operational keystrokes for specific tasks, not enterprise program architecture.",
+              "text_th": "Standard operating procedures เป็นเพียงขั้นตอนการทำงานย่อยสำหรับงานเฉพาะอย่าง"
+            },
+            {
+              "letter": "C",
+              "text_en": "Acceptable use policies govern end-user computer usage rules, not overall program structure.",
+              "text_th": "Acceptable use policy เป็นนโยบายการใช้งานอุปกรณ์ของผู้ใช้ ไม่ใช่กรอบโครงสร้างองค์กร"
+            },
+            {
+              "letter": "D",
+              "text_en": "Baseline guidelines provide non-mandatory technical advice rather than program architecture.",
+              "text_th": "Baseline guidelines เป็นเพียงคำแนะนำเบื้องต้น ไม่ครอบคลุมการบริหารจัดการระดับองค์กร"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": 612,
+    "domain": 2,
+    "issue": "Explanation treats organizational authority as inherent in job titles, including zero vendor authority.",
+    "references": [
+      "R06",
+      "L06"
+    ],
+    "safe_to_apply": true,
+    "key_before": "C",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option C is correct. The business asset owner has direct responsibility for the payroll business process, understands the operational trade-offs, and holds the delegated executive authority to accept risk or authorize downtime. Option A is incorrect: External auditors must maintain strict independence; assuming risk ownership or making operational management decisions creates an immediate conflict of interest. Option B is incorrect: Cybersecurity analysts evaluate vulnerabilities and recommend mitigations, but they do not own business operations or have authority to accept operational downtime risks. Option D is incorrect: Third-party software vendors supply technical patches and advisories, but have zero governance authority within the customer organization.",
+        "after": "The designated business asset owner is the best choice among these options because the decision balances payroll business impact and security exposure. Authority to accept risk or approve downtime must be assigned by organizational governance; decisions beyond that authority require escalation.\nA: External auditors must maintain strict independence; assuming risk ownership or making operational management decisions creates an immediate conflict of interest.\nB: The analyst can provide vulnerability evidence and recommendations, but the scenario does not assign the analyst authority over payroll business-risk acceptance or downtime.\nD: The vendor engineer can advise on the flaw and remediation. Publishing an advisory does not confer authority to accept the customer’s business risk or approve its outage."
+      },
+      "short_explanation_en": {
+        "before": "Risk Owners are business leaders who manage the asset and possess the authority to accept or treat business risks.",
+        "after": "Risk decisions require designated authority and knowledge of the affected business process; authority is assigned by governance."
+      },
+      "explanation_th": {
+        "before": "ข้อ C ถูกต้อง: เจ้าของทรัพย์สินทางธุรกิจมีความรับผิดชอบโดยตรงต่อกระบวนการจ่ายเงินเดือน เข้าใจผลกระทบอย่างแท้จริง และมีอำนาจตัดสินใจยอมรับความเสี่ยงหรืออนุมัติให้หยุดระบบ\n- ข้อ A ไม่ถูกต้อง: ผู้ตรวจสอบภายนอกต้องรักษาความเป็นอิสระ การเข้ามารับผิดชอบความเสี่ยงหรือตัดสินใจในการดำเนินงานจะทำให้เกิดผลประโยชน์ทับซ้อนทันที\n- ข้อ B ไม่ถูกต้อง: นักวิเคราะห์ความปลอดภัยทำหน้าที่ระบุช่องโหว่และเสนอแนะแนวทางแก้ไข แต่ไม่มีอำนาจตัดสินใจยอมรับผลกระทบจากการหยุดชะงักของธุรกิจ\n- ข้อ D ไม่ถูกต้อง: ผู้ขายซอฟต์แวร์มีหน้าที่ให้ข้อมูลและแพตช์ แต่ไม่มีสิทธิ์ในการกำกับดูแลหรือตัดสินใจใดๆ ภายในองค์กรของผู้ใช้",
+        "after": "เจ้าของทรัพย์สินทางธุรกิจที่ได้รับมอบหมายเหมาะสมที่สุดในบรรดาตัวเลือก เพราะต้องชั่งน้ำหนักผลกระทบต่องานเงินเดือนกับความเสี่ยงด้านความปลอดภัย อำนาจยอมรับความเสี่ยงหรืออนุมัติการหยุดระบบต้องได้รับการกำหนดโดยการกำกับดูแลองค์กร และต้องส่งต่อเมื่อเกินอำนาจนั้น\nA: ผู้ตรวจสอบภายนอกต้องรักษาความเป็นอิสระ การเข้ามารับผิดชอบความเสี่ยงหรือตัดสินใจในการดำเนินงานจะทำให้เกิดผลประโยชน์ทับซ้อนทันที\nB: นักวิเคราะห์สามารถให้หลักฐานช่องโหว่และข้อเสนอแนะได้ แต่โจทย์ไม่ได้มอบอำนาจตัดสินใจยอมรับความเสี่ยงทางธุรกิจหรือหยุดระบบเงินเดือนให้แก่นักวิเคราะห์\nD: วิศวกรของผู้ขายสามารถให้คำแนะนำเรื่องช่องโหว่และการแก้ไขได้ การเผยแพร่คำแนะนำไม่ได้ทำให้มีอำนาจยอมรับความเสี่ยงทางธุรกิจหรืออนุมัติการหยุดระบบของลูกค้า"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "The business asset owner has direct responsibility for the payroll business process, understands the operational trade-offs, and holds the delegated executive authority to accept risk or authorize downtime.",
+            "th": "เจ้าของทรัพย์สินทางธุรกิจมีความรับผิดชอบโดยตรงต่อกระบวนการจ่ายเงินเดือน เข้าใจผลกระทบอย่างแท้จริง และมีอำนาจตัดสินใจยอมรับความเสี่ยงหรืออนุมัติให้หยุดระบบ"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "External auditors must maintain strict independence; assuming risk ownership or making operational management decisions creates an immediate conflict of interest.",
+              "text_th": "ผู้ตรวจสอบภายนอกต้องรักษาความเป็นอิสระ การเข้ามารับผิดชอบความเสี่ยงหรือตัดสินใจในการดำเนินงานจะทำให้เกิดผลประโยชน์ทับซ้อนทันที"
+            },
+            {
+              "letter": "B",
+              "text_en": "Cybersecurity analysts evaluate vulnerabilities and recommend mitigations, but they do not own business operations or have authority to accept operational downtime risks.",
+              "text_th": "นักวิเคราะห์ความปลอดภัยทำหน้าที่ระบุช่องโหว่และเสนอแนะแนวทางแก้ไข แต่ไม่มีอำนาจตัดสินใจยอมรับผลกระทบจากการหยุดชะงักของธุรกิจ"
+            },
+            {
+              "letter": "D",
+              "text_en": "Third-party software vendors supply technical patches and advisories, but have zero governance authority within the customer organization.",
+              "text_th": "ผู้ขายซอฟต์แวร์มีหน้าที่ให้ข้อมูลและแพตช์ แต่ไม่มีสิทธิ์ในการกำกับดูแลหรือตัดสินใจใดๆ ภายในองค์กรของผู้ใช้"
+            }
+          ],
+          "example": {
+            "en": "When a vulnerability requires taking down a hospital's pharmacy dispensing system, the Chief Medical Officer and Pharmacy Director act as Risk Owners to balance patient safety risks against security risks.",
+            "th": "เมื่อการลงแพตช์ต้องปิดระบบจ่ายยาของโรงพยาบาล ผู้อำนวยการฝ่ายการแพทย์และหัวหน้าฝ่ายเภสัชกรรมจะทำหน้าที่เป็นเจ้าของความเสี่ยงเพื่อชั่งน้ำหนักระหว่างความปลอดภัยของผู้ป่วยกับความเสี่ยงด้านไซเบอร์"
+          },
+          "exam_tip": {
+            "en": "Fundamental ISC2 concept: Security professionals advise and facilitate, but business asset owners OWN the risk.",
+            "th": "หลักการสำคัญของ ISC2: ฝ่ายความมั่นคงปลอดภัยทำหน้าที่ให้คำแนะนำ แต่เจ้าของทรัพย์สินทางธุรกิจคือ 'เจ้าของความเสี่ยง' ตัวจริง"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "The designated business asset owner is the best choice among these options because the decision balances payroll business impact and security exposure. Authority to accept risk or approve downtime must be assigned by organizational governance; decisions beyond that authority require escalation.",
+            "th": "เจ้าของทรัพย์สินทางธุรกิจที่ได้รับมอบหมายเหมาะสมที่สุดในบรรดาตัวเลือก เพราะต้องชั่งน้ำหนักผลกระทบต่องานเงินเดือนกับความเสี่ยงด้านความปลอดภัย อำนาจยอมรับความเสี่ยงหรืออนุมัติการหยุดระบบต้องได้รับการกำหนดโดยการกำกับดูแลองค์กร และต้องส่งต่อเมื่อเกินอำนาจนั้น"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "External auditors must maintain strict independence; assuming risk ownership or making operational management decisions creates an immediate conflict of interest.",
+              "text_th": "ผู้ตรวจสอบภายนอกต้องรักษาความเป็นอิสระ การเข้ามารับผิดชอบความเสี่ยงหรือตัดสินใจในการดำเนินงานจะทำให้เกิดผลประโยชน์ทับซ้อนทันที"
+            },
+            {
+              "letter": "B",
+              "text_en": "The analyst can provide vulnerability evidence and recommendations, but the scenario does not assign the analyst authority over payroll business-risk acceptance or downtime.",
+              "text_th": "นักวิเคราะห์สามารถให้หลักฐานช่องโหว่และข้อเสนอแนะได้ แต่โจทย์ไม่ได้มอบอำนาจตัดสินใจยอมรับความเสี่ยงทางธุรกิจหรือหยุดระบบเงินเดือนให้แก่นักวิเคราะห์"
+            },
+            {
+              "letter": "D",
+              "text_en": "The vendor engineer can advise on the flaw and remediation. Publishing an advisory does not confer authority to accept the customer’s business risk or approve its outage.",
+              "text_th": "วิศวกรของผู้ขายสามารถให้คำแนะนำเรื่องช่องโหว่และการแก้ไขได้ การเผยแพร่คำแนะนำไม่ได้ทำให้มีอำนาจยอมรับความเสี่ยงทางธุรกิจหรืออนุมัติการหยุดระบบของลูกค้า"
+            }
+          ],
+          "example": {
+            "en": "If a hospital designates its Pharmacy Director as the risk owner, that person evaluates pharmacy impacts and makes or escalates the decision within the assigned authority.",
+            "th": "หากโรงพยาบาลมอบหมายให้หัวหน้าฝ่ายเภสัชกรรมเป็นเจ้าของความเสี่ยง บุคคลนั้นจะประเมินผลกระทบต่องานเภสัชกรรมและตัดสินใจหรือส่งต่อภายในขอบเขตอำนาจที่ได้รับ"
+          },
+          "exam_tip": {
+            "en": "Check the designated decision authority and business impact. A job title alone does not establish permission to accept risk.",
+            "th": "ตรวจสอบผู้มีอำนาจตัดสินใจที่ได้รับมอบหมายและผลกระทบทางธุรกิจ ชื่อตำแหน่งเพียงอย่างเดียวไม่ได้ทำให้มีอำนาจยอมรับความเสี่ยง"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 613,
+    "domain": 2,
+    "issue": "Cessation does not automatically erase risk-register history; outsourcing example overstates avoidance of all payment risk.",
+    "references": [
+      "R05",
+      "L03"
+    ],
+    "safe_to_apply": true,
+    "key_before": "B",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option B is correct. Risk Avoidance is the complete cessation of a risk-bearing activity or decommissioning of an asset, which successfully eliminates the targeted risk from the enterprise risk register. Option A is incorrect: Risk Mitigation applies technical or procedural safeguards to reduce risk to acceptable levels while keeping the operational process active. Option C is incorrect: Risk Transfer shifts financial loss or operational management to a third party (such as cyber insurance or indemnification contracts), but does not retire the asset. Option D is incorrect: Risk Acceptance acknowledges and retains residual risk without implementing additional countermeasures or retiring the business function.",
+        "after": "Permanently retiring the vulnerable device and its diagnostic service stops the specified risk-bearing activity, illustrating Risk Avoidance. Record the disposition and any remaining transition risks rather than assuming that risk-register history disappears.\nA: Risk Mitigation applies technical or procedural safeguards to reduce risk to acceptable levels while keeping the operational process active.\nC: Risk Transfer shifts financial loss or operational management to a third party (such as cyber insurance or indemnification contracts), but does not retire the asset.\nD: Risk Acceptance acknowledges and retains residual risk without implementing additional countermeasures or retiring the business function."
+      },
+      "explanation_th": {
+        "before": "ข้อ B ถูกต้อง: การหลีกเลี่ยงความเสี่ยงคือการยุติกิจกรรมที่ก่อให้เกิดความเสี่ยงหรือการปลดระวางทรัพย์สินอย่างสิ้นเชิง ซึ่งช่วยกำจัดความเสี่ยงเฉพาะนั้นออกจากองค์กรได้อย่างสมบูรณ์\n- ข้อ A ไม่ถูกต้อง: การลดความเสี่ยงคือการใส่มาตรการป้องกันเพื่อลดระดับความเสี่ยงให้อยู่ในเกณฑ์ยอมรับได้ แต่ยังคงดำเนินงานระบบนั้นต่อไป\n- ข้อ C ไม่ถูกต้อง: การถ่ายโอนความเสี่ยงคือการส่งต่อภาระทางการเงินให้บุคคลอื่น เช่น การทำประกันภัย แต่ตัวระบบยังคงทำงานอยู่\n- ข้อ D ไม่ถูกต้อง: การยอมรับความเสี่ยงคือการรับทราบและยอมรับระดับความเสี่ยงคงเหลือโดยไม่ทำมาตรการเพิ่มเติมและไม่ยกเลิกระบบ",
+        "after": "การเลิกใช้อุปกรณ์ที่มีช่องโหว่และยุติบริการตรวจวินิจฉัยนั้นอย่างถาวรเป็นการหยุดกิจกรรมที่ก่อความเสี่ยง จึงเป็น Risk Avoidance ควรบันทึกผลการจัดการและความเสี่ยงช่วงเปลี่ยนผ่านที่ยังเหลือ ไม่ใช่ถือว่าประวัติในทะเบียนความเสี่ยงหายไปเอง\nA: การลดความเสี่ยงคือการใส่มาตรการป้องกันเพื่อลดระดับความเสี่ยงให้อยู่ในเกณฑ์ยอมรับได้ แต่ยังคงดำเนินงานระบบนั้นต่อไป\nC: การถ่ายโอนความเสี่ยงคือการส่งต่อภาระทางการเงินให้บุคคลอื่น เช่น การทำประกันภัย แต่ตัวระบบยังคงทำงานอยู่\nD: การยอมรับความเสี่ยงคือการรับทราบและยอมรับระดับความเสี่ยงคงเหลือโดยไม่ทำมาตรการเพิ่มเติมและไม่ยกเลิกระบบ"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Risk Avoidance is the complete cessation of a risk-bearing activity or decommissioning of an asset, which successfully eliminates the targeted risk from the enterprise risk register.",
+            "th": "การหลีกเลี่ยงความเสี่ยงคือการยุติกิจกรรมที่ก่อให้เกิดความเสี่ยงหรือการปลดระวางทรัพย์สินอย่างสิ้นเชิง ซึ่งช่วยกำจัดความเสี่ยงเฉพาะนั้นออกจากองค์กรได้อย่างสมบูรณ์"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Risk Mitigation applies technical or procedural safeguards to reduce risk to acceptable levels while keeping the operational process active.",
+              "text_th": "การลดความเสี่ยงคือการใส่มาตรการป้องกันเพื่อลดระดับความเสี่ยงให้อยู่ในเกณฑ์ยอมรับได้ แต่ยังคงดำเนินงานระบบนั้นต่อไป"
+            },
+            {
+              "letter": "C",
+              "text_en": "Risk Transfer shifts financial loss or operational management to a third party (such as cyber insurance or indemnification contracts), but does not retire the asset.",
+              "text_th": "การถ่ายโอนความเสี่ยงคือการส่งต่อภาระทางการเงินให้บุคคลอื่น เช่น การทำประกันภัย แต่ตัวระบบยังคงทำงานอยู่"
+            },
+            {
+              "letter": "D",
+              "text_en": "Risk Acceptance acknowledges and retains residual risk without implementing additional countermeasures or retiring the business function.",
+              "text_th": "การยอมรับความเสี่ยงคือการรับทราบและยอมรับระดับความเสี่ยงคงเหลือโดยไม่ทำมาตรการเพิ่มเติมและไม่ยกเลิกระบบ"
+            }
+          ],
+          "example": {
+            "en": "An e-commerce store eliminates the risk of credit card data theft by completely disabling credit card storage and outsourcing all payment processing to an external gateway.",
+            "th": "ร้านค้าออนไลน์ขจัดความเสี่ยงในการถูกขโมยข้อมูลบัตรเครดิตโดยการยกเลิกการเก็บข้อมูลบัตรในเซิร์ฟเวอร์ของตนเองทั้งหมด และส่งต่อให้เกตเวย์ภายนอกจัดการแทน"
+          },
+          "exam_tip": {
+            "en": "Key distinction reconciled in Phase 3.5: While residual risk in ongoing operational systems is rarely zero, specific targeted risks CAN be completely reduced to zero through true Risk Avoidance.",
+            "th": "ประเด็นสำคัญที่ผ่านการตรวจสอบ: แม้ความเสี่ยงในระบบที่ทำงานอยู่จะไม่เป็นศูนย์ แต่ความเสี่ยงเฉพาะอย่างสามารถลดเป็นศูนย์ได้ผ่านการหลีกเลี่ยงความเสี่ยง (Risk Avoidance)"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "Permanently retiring the vulnerable device and its diagnostic service stops the specified risk-bearing activity, illustrating Risk Avoidance. Record the disposition and any remaining transition risks rather than assuming that risk-register history disappears.",
+            "th": "การเลิกใช้อุปกรณ์ที่มีช่องโหว่และยุติบริการตรวจวินิจฉัยนั้นอย่างถาวรเป็นการหยุดกิจกรรมที่ก่อความเสี่ยง จึงเป็น Risk Avoidance ควรบันทึกผลการจัดการและความเสี่ยงช่วงเปลี่ยนผ่านที่ยังเหลือ ไม่ใช่ถือว่าประวัติในทะเบียนความเสี่ยงหายไปเอง"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Risk Mitigation applies technical or procedural safeguards to reduce risk to acceptable levels while keeping the operational process active.",
+              "text_th": "การลดความเสี่ยงคือการใส่มาตรการป้องกันเพื่อลดระดับความเสี่ยงให้อยู่ในเกณฑ์ยอมรับได้ แต่ยังคงดำเนินงานระบบนั้นต่อไป"
+            },
+            {
+              "letter": "C",
+              "text_en": "Risk Transfer shifts financial loss or operational management to a third party (such as cyber insurance or indemnification contracts), but does not retire the asset.",
+              "text_th": "การถ่ายโอนความเสี่ยงคือการส่งต่อภาระทางการเงินให้บุคคลอื่น เช่น การทำประกันภัย แต่ตัวระบบยังคงทำงานอยู่"
+            },
+            {
+              "letter": "D",
+              "text_en": "Risk Acceptance acknowledges and retains residual risk without implementing additional countermeasures or retiring the business function.",
+              "text_th": "การยอมรับความเสี่ยงคือการรับทราบและยอมรับระดับความเสี่ยงคงเหลือโดยไม่ทำมาตรการเพิ่มเติมและไม่ยกเลิกระบบ"
+            }
+          ],
+          "example": {
+            "en": "The hospital retires the unsupported device and ends the associated service rather than continuing to operate it with additional controls. Other hospital risks still require management.",
+            "th": "โรงพยาบาลเลิกใช้อุปกรณ์ที่หมดการสนับสนุนและยุติบริการที่เกี่ยวข้อง แทนการใช้งานต่อพร้อมเพิ่มมาตรการควบคุม ความเสี่ยงอื่นของโรงพยาบาลยังต้องได้รับการจัดการ"
+          },
+          "exam_tip": {
+            "en": "Avoidance stops the specified activity. Mitigation reduces its risk while the activity continues; transfer and acceptance do not by themselves stop it.",
+            "th": "Avoidance หยุดกิจกรรมที่ระบุ ส่วน Mitigation ลดความเสี่ยงขณะยังดำเนินกิจกรรมต่อ และ Transfer กับ Acceptance ไม่ได้หยุดกิจกรรมนั้นโดยตัวมันเอง"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 614,
+    "domain": 2,
+    "issue": "Explanation asserts blanket international-methodology compliance solely from use of numeric scales.",
+    "references": [
+      "R05",
+      "L06"
+    ],
+    "safe_to_apply": true,
+    "key_before": "D",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option D is correct. Assigning ordinal numeric scores to qualitative bins produces a semi-quantitative risk assessment, prioritizing risks by rank order without measuring cardinal monetary losses. Option A is incorrect: Annualized Loss Expectancy (ALE) requires multiplying Single Loss Expectancy (SLE in dollars) by Annualized Rate of Occurrence (ARO); it cannot be derived from arbitrary 1-5 scales. Option B is incorrect: Performing arithmetic on subjective ordinal scores does not convert qualitative tiers into quantitative data; quantitative analysis requires measurable empirical units (e.g., dollars, hours). Option C is incorrect: Using numeric scales in risk matrices is standard industry practice (ISO 31000, NIST SP 800-30) and is entirely compliant with international methodologies.",
+        "after": "Assigning ordinal numeric scores to qualitative bins produces a semi-quantitative risk assessment, prioritizing risks by rank order without measuring cardinal monetary losses.\nA: Annualized Loss Expectancy (ALE) requires multiplying Single Loss Expectancy (SLE in dollars) by Annualized Rate of Occurrence (ARO); it cannot be derived from arbitrary 1-5 scales.\nB: Performing arithmetic on subjective ordinal scores does not convert qualitative tiers into quantitative data; quantitative analysis requires measurable empirical units (e.g., dollars, hours).\nC: NIST SP 800-30 recognizes semi-quantitative scales. Using numbers is not itself a violation; whether the method is appropriate depends on the defined scales, assumptions and assessment context."
+      },
+      "short_explanation_en": {
+        "before": "Ordinal numeric risk scales without empirical monetary units represent semi-quantitative assessment methodologies.",
+        "after": "Ordinal risk scales support semi-quantitative ranking; arithmetic alone does not establish quantitative measurement."
+      },
+      "explanation_th": {
+        "before": "ข้อ D ถูกต้อง: การใส่ตัวเลขลำดับในเกณฑ์เชิงคุณภาพจัดเป็นการประเมินแบบกึ่งเชิงปริมาณ ซึ่งใช้จัดอันดับความสำคัญเปรียบเทียบ แต่ไม่ได้วัดมูลค่าความเสียหายเป็นตัวเงินจริง\n- ข้อ A ไม่ถูกต้อง: การคำนวณ ALE ต้องใช้การคูณความเสียหายต่อครั้งเป็นตัวเงิน (SLE) กับอัตราการเกิดในรอบปี (ARO) ไม่สามารถสรุปจากสเกล 1-5 ได้\n- ข้อ B ไม่ถูกต้อง: การนำตัวเลขลำดับมาคำนวณไม่ได้เปลี่ยนข้อมูลเชิงคุณภาพเป็นเชิงปริมาณ การประเมินเชิงปริมาณต้องใช้หน่วยวัดเชิงประจักษ์จริง (เช่น มูลค่าเงิน, ชั่วโมง)\n- ข้อ C ไม่ถูกต้อง: การใช้ตัวเลขในตารางประเมินความเสี่ยงเป็นวิธีปฏิบัติมาตรฐานที่สากลยอมรับ และสอดคล้องกับระเบียบวิธีของ ISO 31000 และ NIST",
+        "after": "การใส่ตัวเลขลำดับในเกณฑ์เชิงคุณภาพจัดเป็นการประเมินแบบกึ่งเชิงปริมาณ ซึ่งใช้จัดอันดับความสำคัญเปรียบเทียบ แต่ไม่ได้วัดมูลค่าความเสียหายเป็นตัวเงินจริง\nA: การคำนวณ ALE ต้องใช้การคูณความเสียหายต่อครั้งเป็นตัวเงิน (SLE) กับอัตราการเกิดในรอบปี (ARO) ไม่สามารถสรุปจากสเกล 1-5 ได้\nB: การนำตัวเลขลำดับมาคำนวณไม่ได้เปลี่ยนข้อมูลเชิงคุณภาพเป็นเชิงปริมาณ การประเมินเชิงปริมาณต้องใช้หน่วยวัดเชิงประจักษ์จริง (เช่น มูลค่าเงิน, ชั่วโมง)\nC: NIST SP 800-30 ยอมรับการใช้มาตราส่วนกึ่งเชิงปริมาณ การใช้ตัวเลขไม่ได้เป็นการละเมิดโดยตัวมันเอง ส่วนวิธีการเหมาะสมหรือไม่ขึ้นกับนิยามมาตราส่วน สมมติฐาน และบริบทการประเมิน"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Assigning ordinal numeric scores to qualitative bins produces a semi-quantitative risk assessment, prioritizing risks by rank order without measuring cardinal monetary losses.",
+            "th": "การใส่ตัวเลขลำดับในเกณฑ์เชิงคุณภาพจัดเป็นการประเมินแบบกึ่งเชิงปริมาณ ซึ่งใช้จัดอันดับความสำคัญเปรียบเทียบ แต่ไม่ได้วัดมูลค่าความเสียหายเป็นตัวเงินจริง"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Annualized Loss Expectancy (ALE) requires multiplying Single Loss Expectancy (SLE in dollars) by Annualized Rate of Occurrence (ARO); it cannot be derived from arbitrary 1-5 scales.",
+              "text_th": "การคำนวณ ALE ต้องใช้การคูณความเสียหายต่อครั้งเป็นตัวเงิน (SLE) กับอัตราการเกิดในรอบปี (ARO) ไม่สามารถสรุปจากสเกล 1-5 ได้"
+            },
+            {
+              "letter": "B",
+              "text_en": "Performing arithmetic on subjective ordinal scores does not convert qualitative tiers into quantitative data; quantitative analysis requires measurable empirical units (e.g., dollars, hours).",
+              "text_th": "การนำตัวเลขลำดับมาคำนวณไม่ได้เปลี่ยนข้อมูลเชิงคุณภาพเป็นเชิงปริมาณ การประเมินเชิงปริมาณต้องใช้หน่วยวัดเชิงประจักษ์จริง (เช่น มูลค่าเงิน, ชั่วโมง)"
+            },
+            {
+              "letter": "C",
+              "text_en": "Using numeric scales in risk matrices is standard industry practice (ISO 31000, NIST SP 800-30) and is entirely compliant with international methodologies.",
+              "text_th": "การใช้ตัวเลขในตารางประเมินความเสี่ยงเป็นวิธีปฏิบัติมาตรฐานที่สากลยอมรับ และสอดคล้องกับระเบียบวิธีของ ISO 31000 และ NIST"
+            }
+          ],
+          "example": {
+            "en": "An organization rates risk as 4 (Likelihood) x 3 (Impact) = 12. This is semi-quantitative. If they calculate that a server outage costs $50,000 per incident and occurs twice a year (ALE = $100,000), that is quantitative.",
+            "th": "องค์กรประเมินความเสี่ยงได้ 4 x 3 = 12 นี่คือกึ่งเชิงปริมาณ แต่หากคำนวณว่าเซิร์ฟเวอร์ล่มจะเสียหายครั้งละ 50,000 ดอลลาร์ และเกิดขึ้นปีละ 2 ครั้ง (ALE = 100,000 ดอลลาร์) นี่จึงเป็นเชิงปริมาณ"
+          },
+          "exam_tip": {
+            "en": "Reconciled NIST concept: Qualitative = descriptive words (Low, Med, High); Semi-Quantitative = ordinal numbers (1-5); Quantitative = empirical monetary/mathematical metrics (ALE, SLE, ARO).",
+            "th": "นิยามที่ถูกต้องตาม NIST: เชิงคุณภาพ = คำบรรยาย (ต่ำ, ปานกลาง, สูง); กึ่งเชิงปริมาณ = ตัวเลขตามลำดับ (1-5); เชิงปริมาณ = หน่วยวัดทางการเงินหรือสถิติจริง (ALE, SLE, ARO)"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "Assigning ordinal numeric scores to qualitative bins produces a semi-quantitative risk assessment, prioritizing risks by rank order without measuring cardinal monetary losses.",
+            "th": "การใส่ตัวเลขลำดับในเกณฑ์เชิงคุณภาพจัดเป็นการประเมินแบบกึ่งเชิงปริมาณ ซึ่งใช้จัดอันดับความสำคัญเปรียบเทียบ แต่ไม่ได้วัดมูลค่าความเสียหายเป็นตัวเงินจริง"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Annualized Loss Expectancy (ALE) requires multiplying Single Loss Expectancy (SLE in dollars) by Annualized Rate of Occurrence (ARO); it cannot be derived from arbitrary 1-5 scales.",
+              "text_th": "การคำนวณ ALE ต้องใช้การคูณความเสียหายต่อครั้งเป็นตัวเงิน (SLE) กับอัตราการเกิดในรอบปี (ARO) ไม่สามารถสรุปจากสเกล 1-5 ได้"
+            },
+            {
+              "letter": "B",
+              "text_en": "Performing arithmetic on subjective ordinal scores does not convert qualitative tiers into quantitative data; quantitative analysis requires measurable empirical units (e.g., dollars, hours).",
+              "text_th": "การนำตัวเลขลำดับมาคำนวณไม่ได้เปลี่ยนข้อมูลเชิงคุณภาพเป็นเชิงปริมาณ การประเมินเชิงปริมาณต้องใช้หน่วยวัดเชิงประจักษ์จริง (เช่น มูลค่าเงิน, ชั่วโมง)"
+            },
+            {
+              "letter": "C",
+              "text_en": "NIST SP 800-30 recognizes semi-quantitative scales. Using numbers is not itself a violation; whether the method is appropriate depends on the defined scales, assumptions and assessment context.",
+              "text_th": "NIST SP 800-30 ยอมรับการใช้มาตราส่วนกึ่งเชิงปริมาณ การใช้ตัวเลขไม่ได้เป็นการละเมิดโดยตัวมันเอง ส่วนวิธีการเหมาะสมหรือไม่ขึ้นกับนิยามมาตราส่วน สมมติฐาน และบริบทการประเมิน"
+            }
+          ],
+          "example": {
+            "en": "An organization rates risk as 4 (Likelihood) x 3 (Impact) = 12. This is semi-quantitative. If they calculate that a server outage costs $50,000 per incident and occurs twice a year (ALE = $100,000), that is quantitative.",
+            "th": "องค์กรประเมินความเสี่ยงได้ 4 x 3 = 12 นี่คือกึ่งเชิงปริมาณ แต่หากคำนวณว่าเซิร์ฟเวอร์ล่มจะเสียหายครั้งละ 50,000 ดอลลาร์ และเกิดขึ้นปีละ 2 ครั้ง (ALE = 100,000 ดอลลาร์) นี่จึงเป็นเชิงปริมาณ"
+          },
+          "exam_tip": {
+            "en": "Distinguish descriptive categories, ordinal ranking scales and numerical estimates with meaningful units. Financial estimates are examples of quantitative analysis, not its only form.",
+            "th": "แยกระดับเชิงพรรณนา มาตราส่วนจัดอันดับ และค่าประมาณตัวเลขที่มีหน่วยมีความหมาย การประมาณทางการเงินเป็นตัวอย่างการวิเคราะห์เชิงปริมาณ ไม่ใช่รูปแบบเดียว"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 616,
+    "domain": 2,
+    "issue": "BIA is described as universally mandatory first rather than first for these unresolved recovery priorities.",
+    "references": [
+      "R10",
+      "L06"
+    ],
+    "safe_to_apply": true,
+    "key_before": "B",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option B is correct. Conducting a Business Impact Analysis (BIA) is the mandatory first step to objectively evaluate the criticality of business processes and establish evidence-based recovery priorities. Option A is incorrect: Procuring an alternate hot site facility is premature before a BIA identifies whether the systems actually require near-zero recovery time or can tolerate lower-cost recovery options. Option C is incorrect: Executing a full-scale failover simulation requires a developed and documented continuity plan; testing cannot precede plan creation and impact assessment. Option D is incorrect: Deploying technical data replication tools across all systems is wasteful and inefficient without BIA data defining which systems genuinely warrant continuous replication.",
+        "after": "Because recovery priorities have not been established in this scenario, a BIA should identify critical functions, downtime impacts and dependencies before selecting recovery resources. This supports an evidence-based resolution of the departments’ competing requests.\nA: Procuring an alternate hot site facility is premature before a BIA identifies whether the systems actually require near-zero recovery time or can tolerate lower-cost recovery options.\nC: Executing a full-scale failover simulation requires a developed and documented continuity plan; testing cannot precede plan creation and impact assessment.\nD: Deploying technical data replication tools across all systems is wasteful and inefficient without BIA data defining which systems genuinely warrant continuous replication."
+      },
+      "short_explanation_en": {
+        "before": "A Business Impact Analysis (BIA) must be conducted first to identify critical business functions and establish objective recovery priorities.",
+        "after": "Here, a BIA establishes business recovery needs before recovery resources are selected."
+      },
+      "explanation_th": {
+        "before": "ข้อ B ถูกต้อง: การวิเคราะห์ผลกระทบทางธุรกิจ (BIA) เป็นขั้นตอนแรกที่ต้องทำเสมอเพื่อประเมินความสำคัญของกระบวนการทางธุรกิจและกำหนดลำดับการกู้คืนอย่างเป็นกลาง\n- ข้อ A ไม่ถูกต้อง: การทำสัญญาเช่า Hot site เป็นการตัดสินใจที่เร็วเกินไปก่อนที่ BIA จะระบุว่าระบบต้องการการกู้คืนระดับวินาทีจริงหรือไม่ หรือใช้ไซต์ราคาประหยัดกว่าได้\n- ข้อ C ไม่ถูกต้อง: การฝึกซ้อมเต็มรูปแบบต้องมีแผนงานที่สมบูรณ์ก่อน ไม่สามารถทดสอบแผนงานที่ยังไม่ได้วิเคราะห์และสร้างขึ้นได้\n- ข้อ D ไม่ถูกต้อง: การติดตั้งระบบ Replication ให้กับทุกระบบสิ้นเปลืองงบประมาณโดยใช่เหตุ หากยังไม่มีผล BIA ยืนยันว่าข้อมูลใดคุ้มค่าต่อการลงทุน",
+        "after": "ในสถานการณ์นี้ยังไม่ได้กำหนดลำดับความสำคัญในการกู้คืน จึงควรทำ BIA เพื่อระบุหน้าที่สำคัญ ผลกระทบจากการหยุดทำงาน และการพึ่งพาระหว่างระบบ ก่อนเลือกทรัพยากรกู้คืน เพื่อใช้หลักฐานตัดสินคำขอที่ขัดแย้งกันของแต่ละฝ่าย\nA: การทำสัญญาเช่า Hot site เป็นการตัดสินใจที่เร็วเกินไปก่อนที่ BIA จะระบุว่าระบบต้องการการกู้คืนระดับวินาทีจริงหรือไม่ หรือใช้ไซต์ราคาประหยัดกว่าได้\nC: การฝึกซ้อมเต็มรูปแบบต้องมีแผนงานที่สมบูรณ์ก่อน ไม่สามารถทดสอบแผนงานที่ยังไม่ได้วิเคราะห์และสร้างขึ้นได้\nD: การติดตั้งระบบ Replication ให้กับทุกระบบสิ้นเปลืองงบประมาณโดยใช่เหตุ หากยังไม่มีผล BIA ยืนยันว่าข้อมูลใดคุ้มค่าต่อการลงทุน"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Conducting a Business Impact Analysis (BIA) is the mandatory first step to objectively evaluate the criticality of business processes and establish evidence-based recovery priorities.",
+            "th": "การวิเคราะห์ผลกระทบทางธุรกิจ (BIA) เป็นขั้นตอนแรกที่ต้องทำเสมอเพื่อประเมินความสำคัญของกระบวนการทางธุรกิจและกำหนดลำดับการกู้คืนอย่างเป็นกลาง"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Procuring an alternate hot site facility is premature before a BIA identifies whether the systems actually require near-zero recovery time or can tolerate lower-cost recovery options.",
+              "text_th": "การทำสัญญาเช่า Hot site เป็นการตัดสินใจที่เร็วเกินไปก่อนที่ BIA จะระบุว่าระบบต้องการการกู้คืนระดับวินาทีจริงหรือไม่ หรือใช้ไซต์ราคาประหยัดกว่าได้"
+            },
+            {
+              "letter": "C",
+              "text_en": "Executing a full-scale failover simulation requires a developed and documented continuity plan; testing cannot precede plan creation and impact assessment.",
+              "text_th": "การฝึกซ้อมเต็มรูปแบบต้องมีแผนงานที่สมบูรณ์ก่อน ไม่สามารถทดสอบแผนงานที่ยังไม่ได้วิเคราะห์และสร้างขึ้นได้"
+            },
+            {
+              "letter": "D",
+              "text_en": "Deploying technical data replication tools across all systems is wasteful and inefficient without BIA data defining which systems genuinely warrant continuous replication.",
+              "text_th": "การติดตั้งระบบ Replication ให้กับทุกระบบสิ้นเปลืองงบประมาณโดยใช่เหตุ หากยังไม่มีผล BIA ยืนยันว่าข้อมูลใดคุ้มค่าต่อการลงทุน"
+            }
+          ],
+          "example": {
+            "en": "A hospital conducting a BIA discovers that emergency room patient telemetry has an MTD of 15 minutes, whereas the internal cafeteria inventory system has an MTD of 7 days, resolving restore priority disputes immediately.",
+            "th": "โรงพยาบาลทำ BIA พบว่าระบบติดตามสัญญาณชีพอุบัติเหตุหยุดได้ไม่เกิน 15 นาที ส่วนระบบสต็อกอาหารโรงอาหารหยุดได้ 7 วัน ทำให้ยุติข้อขัดแย้งในการจัดลำดับการกู้คืนได้ทันที"
+          },
+          "exam_tip": {
+            "en": "Exam sequencing rule: BIA comes BEFORE RTO/RPO targets, and RTO/RPO targets come BEFORE selecting recovery strategies or buying alternate sites.",
+            "th": "กฎลำดับขั้นตอนในการสอบ: BIA มาก่อนการตั้งเป้าหมาย RTO/RPO และเป้าหมาย RTO/RPO ต้องมาก่อนการเลือกศูนย์สำรองหรือซื้อเครื่องมือทางเทคนิค"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "Because recovery priorities have not been established in this scenario, a BIA should identify critical functions, downtime impacts and dependencies before selecting recovery resources. This supports an evidence-based resolution of the departments’ competing requests.",
+            "th": "ในสถานการณ์นี้ยังไม่ได้กำหนดลำดับความสำคัญในการกู้คืน จึงควรทำ BIA เพื่อระบุหน้าที่สำคัญ ผลกระทบจากการหยุดทำงาน และการพึ่งพาระหว่างระบบ ก่อนเลือกทรัพยากรกู้คืน เพื่อใช้หลักฐานตัดสินคำขอที่ขัดแย้งกันของแต่ละฝ่าย"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Procuring an alternate hot site facility is premature before a BIA identifies whether the systems actually require near-zero recovery time or can tolerate lower-cost recovery options.",
+              "text_th": "การทำสัญญาเช่า Hot site เป็นการตัดสินใจที่เร็วเกินไปก่อนที่ BIA จะระบุว่าระบบต้องการการกู้คืนระดับวินาทีจริงหรือไม่ หรือใช้ไซต์ราคาประหยัดกว่าได้"
+            },
+            {
+              "letter": "C",
+              "text_en": "Executing a full-scale failover simulation requires a developed and documented continuity plan; testing cannot precede plan creation and impact assessment.",
+              "text_th": "การฝึกซ้อมเต็มรูปแบบต้องมีแผนงานที่สมบูรณ์ก่อน ไม่สามารถทดสอบแผนงานที่ยังไม่ได้วิเคราะห์และสร้างขึ้นได้"
+            },
+            {
+              "letter": "D",
+              "text_en": "Deploying technical data replication tools across all systems is wasteful and inefficient without BIA data defining which systems genuinely warrant continuous replication.",
+              "text_th": "การติดตั้งระบบ Replication ให้กับทุกระบบสิ้นเปลืองงบประมาณโดยใช่เหตุ หากยังไม่มีผล BIA ยืนยันว่าข้อมูลใดคุ้มค่าต่อการลงทุน"
+            }
+          ],
+          "example": {
+            "en": "A BIA identifies the impact of losing emergency telemetry and cafeteria inventory, including dependencies needed to recover each function. That evidence informs recovery priorities.",
+            "th": "BIA ระบุผลกระทบจากการสูญเสียระบบติดตามสัญญาณชีพฉุกเฉินและระบบสต็อกโรงอาหาร รวมถึงระบบที่แต่ละหน้าที่ต้องพึ่งพาในการกู้คืน หลักฐานนี้ใช้ประกอบการจัดลำดับความสำคัญ"
+          },
+          "exam_tip": {
+            "en": "For this scenario, determine business recovery needs before purchasing a site or deploying recovery technology. Do not treat BIA as the first action in every possible continuity-planning workflow.",
+            "th": "ในโจทย์นี้ต้องกำหนดความต้องการกู้คืนทางธุรกิจก่อนซื้อบริการสถานที่สำรองหรือติดตั้งเทคโนโลยี อย่าเหมารวมว่า BIA เป็นขั้นตอนแรกของกระบวนการวางแผนความต่อเนื่องทุกกรณี"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 618,
+    "domain": 2,
+    "issue": "Co-location/frequent-backup claims need the stated common-hazard context, not a universal compliance or uselessness claim.",
+    "references": [
+      "R10",
+      "L06"
+    ],
+    "safe_to_apply": true,
+    "key_before": "D",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option D is correct. Co-locating backup repositories in the same physical facility as production servers violates the fundamental disaster recovery principle of geographic diversity, creating a shared physical fault domain. Option A is incorrect: Backup type selection (full vs differential) determines data recovery speed, but does not solve physical destruction when primary and backup storage share the same flooded room. Option B is incorrect: An hourly backup schedule is a frequent, robust cadence; the failure was caused by physical placement, not the time interval between backups. Option C is incorrect: Disk NAS storage is modern and supports rapid restoration; physical magnetic tape in the same flooded room would have suffered identical water damage.",
+        "after": "In the stated flood scenario, production and co-located backups share a physical failure domain. Backup frequency alone does not protect recovery data from an event that can damage both copies; the recovery strategy must address that common hazard.\nA: Backup type selection (full vs differential) determines data recovery speed, but does not solve physical destruction when primary and backup storage share the same flooded room.\nB: An hourly backup schedule is a frequent, robust cadence; the failure was caused by physical placement, not the time interval between backups.\nC: Disk NAS storage is modern and supports rapid restoration; physical magnetic tape in the same flooded room would have suffered identical water damage."
+      },
+      "short_explanation_en": {
+        "before": "Storing backups in the same physical room as production servers creates a single point of failure that localized disasters will destroy.",
+        "after": "Co-located production and backup copies may share the same disaster exposure; backup frequency alone does not address that hazard."
+      },
+      "explanation_th": {
+        "before": "ข้อ D ถูกต้อง: การวางอุปกรณ์สำรองข้อมูลไว้ในห้องเดียวกับเซิร์ฟเวอร์หลักละเมิดหลักการแยกพื้นที่ทางภูมิศาสตร์ ทำให้ทั้งระบบหลักและระบบสำรองถูกทำลายพร้อมกันเมื่อเกิดภัยพิบัติเฉพาะจุด\n- ข้อ A ไม่ถูกต้อง: การเลือกประเภทการสำรองข้อมูล (Full vs Differential) ส่งผลต่อความเร็วในการกู้ข้อมูล แต่ไม่ช่วยแก้ปัญหาการถูกทำลายทางกายภาพเมื่อระบบจริงและระบบสำรองอยู่ในห้องเดียวกัน\n- ข้อ B ไม่ถูกต้อง: รอบการสำรองข้อมูลทุกชั่วโมงถือว่าถี่และเหมาะสมมาก ความล้มเหลวเกิดจากสถานที่ตั้งอุปกรณ์ ไม่ใช่ช่วงเวลาการสำรองข้อมูล\n- ข้อ C ไม่ถูกต้อง: การใช้ NAS ช่วยให้กู้ข้อมูลได้เร็ว หากเปลี่ยนเป็นเทปคาสเซ็ทแต่อยู่ในห้องที่ท่อน้ำแตกเหมือนเดิม เทปก็ถูกทำลายเสียหายเช่นกัน",
+        "after": "ในสถานการณ์น้ำท่วมตามโจทย์ ระบบหลักและข้อมูลสำรองที่อยู่ร่วมสถานที่มีจุดเสี่ยงต่อเหตุทางกายภาพร่วมกัน ความถี่ในการสำรองเพียงอย่างเดียวไม่ได้ป้องกันข้อมูลสำหรับกู้คืนจากเหตุที่อาจทำลายทั้งสองชุด แผนกู้คืนจึงต้องจัดการภัยร่วมดังกล่าว\nA: การเลือกประเภทการสำรองข้อมูล (Full vs Differential) ส่งผลต่อความเร็วในการกู้ข้อมูล แต่ไม่ช่วยแก้ปัญหาการถูกทำลายทางกายภาพเมื่อระบบจริงและระบบสำรองอยู่ในห้องเดียวกัน\nB: รอบการสำรองข้อมูลทุกชั่วโมงถือว่าถี่และเหมาะสมมาก ความล้มเหลวเกิดจากสถานที่ตั้งอุปกรณ์ ไม่ใช่ช่วงเวลาการสำรองข้อมูล\nC: การใช้ NAS ช่วยให้กู้ข้อมูลได้เร็ว หากเปลี่ยนเป็นเทปคาสเซ็ทแต่อยู่ในห้องที่ท่อน้ำแตกเหมือนเดิม เทปก็ถูกทำลายเสียหายเช่นกัน"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Co-locating backup repositories in the same physical facility as production servers violates the fundamental disaster recovery principle of geographic diversity, creating a shared physical fault domain.",
+            "th": "การวางอุปกรณ์สำรองข้อมูลไว้ในห้องเดียวกับเซิร์ฟเวอร์หลักละเมิดหลักการแยกพื้นที่ทางภูมิศาสตร์ ทำให้ทั้งระบบหลักและระบบสำรองถูกทำลายพร้อมกันเมื่อเกิดภัยพิบัติเฉพาะจุด"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Backup type selection (full vs differential) determines data recovery speed, but does not solve physical destruction when primary and backup storage share the same flooded room.",
+              "text_th": "การเลือกประเภทการสำรองข้อมูล (Full vs Differential) ส่งผลต่อความเร็วในการกู้ข้อมูล แต่ไม่ช่วยแก้ปัญหาการถูกทำลายทางกายภาพเมื่อระบบจริงและระบบสำรองอยู่ในห้องเดียวกัน"
+            },
+            {
+              "letter": "B",
+              "text_en": "An hourly backup schedule is a frequent, robust cadence; the failure was caused by physical placement, not the time interval between backups.",
+              "text_th": "รอบการสำรองข้อมูลทุกชั่วโมงถือว่าถี่และเหมาะสมมาก ความล้มเหลวเกิดจากสถานที่ตั้งอุปกรณ์ ไม่ใช่ช่วงเวลาการสำรองข้อมูล"
+            },
+            {
+              "letter": "C",
+              "text_en": "Disk NAS storage is modern and supports rapid restoration; physical magnetic tape in the same flooded room would have suffered identical water damage.",
+              "text_th": "การใช้ NAS ช่วยให้กู้ข้อมูลได้เร็ว หากเปลี่ยนเป็นเทปคาสเซ็ทแต่อยู่ในห้องที่ท่อน้ำแตกเหมือนเดิม เทปก็ถูกทำลายเสียหายเช่นกัน"
+            }
+          ],
+          "example": {
+            "en": "The standard 3-2-1 backup rule dictates keeping 3 copies of data, on 2 different media types, with at least 1 copy stored offsite in a geographically separated location.",
+            "th": "กฎการสำรองข้อมูล 3-2-1 กำหนดให้มีข้อมูล 3 ชุด บนสื่อบันทึก 2 ชนิด และอย่างน้อย 1 ชุดต้องเก็บไว้นอกสถานที่ในพื้นที่ทางภูมิศาสตร์ที่แยกจากกัน"
+          },
+          "exam_tip": {
+            "en": "Exam reminder: Having frequent backups is completely useless if a single physical fire, flood, or power surge can destroy both the original and the backup media simultaneously.",
+            "th": "ข้อควรจำในการสอบ: การสำรองข้อมูลบ่อยแค่ไหนก็ไร้ประโยชน์ หากไฟไหม้หรือน้ำท่วมเพียงจุดเดียวสามารถทำลายทั้งระบบจริงและตัวสำรองไปพร้อมกัน"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "In the stated flood scenario, production and co-located backups share a physical failure domain. Backup frequency alone does not protect recovery data from an event that can damage both copies; the recovery strategy must address that common hazard.",
+            "th": "ในสถานการณ์น้ำท่วมตามโจทย์ ระบบหลักและข้อมูลสำรองที่อยู่ร่วมสถานที่มีจุดเสี่ยงต่อเหตุทางกายภาพร่วมกัน ความถี่ในการสำรองเพียงอย่างเดียวไม่ได้ป้องกันข้อมูลสำหรับกู้คืนจากเหตุที่อาจทำลายทั้งสองชุด แผนกู้คืนจึงต้องจัดการภัยร่วมดังกล่าว"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Backup type selection (full vs differential) determines data recovery speed, but does not solve physical destruction when primary and backup storage share the same flooded room.",
+              "text_th": "การเลือกประเภทการสำรองข้อมูล (Full vs Differential) ส่งผลต่อความเร็วในการกู้ข้อมูล แต่ไม่ช่วยแก้ปัญหาการถูกทำลายทางกายภาพเมื่อระบบจริงและระบบสำรองอยู่ในห้องเดียวกัน"
+            },
+            {
+              "letter": "B",
+              "text_en": "An hourly backup schedule is a frequent, robust cadence; the failure was caused by physical placement, not the time interval between backups.",
+              "text_th": "รอบการสำรองข้อมูลทุกชั่วโมงถือว่าถี่และเหมาะสมมาก ความล้มเหลวเกิดจากสถานที่ตั้งอุปกรณ์ ไม่ใช่ช่วงเวลาการสำรองข้อมูล"
+            },
+            {
+              "letter": "C",
+              "text_en": "Disk NAS storage is modern and supports rapid restoration; physical magnetic tape in the same flooded room would have suffered identical water damage.",
+              "text_th": "การใช้ NAS ช่วยให้กู้ข้อมูลได้เร็ว หากเปลี่ยนเป็นเทปคาสเซ็ทแต่อยู่ในห้องที่ท่อน้ำแตกเหมือนเดิม เทปก็ถูกทำลายเสียหายเช่นกัน"
+            }
+          ],
+          "example": {
+            "en": "A recovery plan considers whether flooding could affect both the production room and its backup storage, then provides protected recovery copies outside that common hazard where needed.",
+            "th": "แผนกู้คืนพิจารณาว่าน้ำท่วมอาจกระทบทั้งห้องระบบหลักและที่เก็บข้อมูลสำรองหรือไม่ แล้วจัดให้มีชุดข้อมูลกู้คืนที่ได้รับการปกป้องอยู่นอกภัยร่วมดังกล่าวตามความจำเป็น"
+          },
+          "exam_tip": {
+            "en": "Assess common hazards affecting production and backups, and verify that the recovery copies remain accessible and usable under the planned disaster conditions.",
+            "th": "ประเมินภัยร่วมที่อาจกระทบทั้งระบบหลักและข้อมูลสำรอง และตรวจว่าชุดข้อมูลกู้คืนยังเข้าถึงและใช้งานได้ภายใต้เงื่อนไขภัยพิบัติที่วางแผนไว้"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 625,
+    "domain": 2,
+    "issue": "MFA is presented as a guarantee against credential-stuffing takeover instead of reducing reliance on a leaked password.",
+    "references": [
+      "R02",
+      "L01"
+    ],
+    "safe_to_apply": true,
+    "key_before": "A",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option A is correct. Multi-Factor Authentication (MFA) ensures that even if credentials are leaked and replayed via credential stuffing, access is denied without the second authentication factor. Option B is incorrect: Arbitrary periodic password changes (e.g., every 30 days) are discouraged by NIST SP 800-63B because they cause users to select predictable patterns and do not prevent credential stuffing. Option C is incorrect: Increasing password length does not prevent credential stuffing because the attacker possesses the exact credential pair reused by the victim. Option D is incorrect: Banning remote work is an extreme operational disruption that fails to solve the root problem of single-factor authentication vulnerability.",
+        "after": "MFA requires an additional distinct factor, so the stolen username/password pair alone is insufficient when MFA is correctly enforced. It reduces credential-stuffing exposure but is not a guarantee against every takeover; factor strength and resistance to phishing or approval abuse matter.\nB: Arbitrary periodic password changes (e.g., every 30 days) are discouraged by NIST SP 800-63B because they cause users to select predictable patterns and do not prevent credential stuffing.\nC: Increasing password length does not prevent credential stuffing because the attacker possesses the exact credential pair reused by the victim.\nD: Banning remote work is an extreme operational disruption that fails to solve the root problem of single-factor authentication vulnerability."
+      },
+      "short_explanation_en": {
+        "before": "Multi-Factor Authentication (MFA) stops credential stuffing because stolen passwords alone are insufficient to authenticate.",
+        "after": "Correctly enforced MFA makes stolen passwords alone insufficient and reduces credential-stuffing risk."
+      },
+      "explanation_th": {
+        "before": "ข้อ A ถูกต้อง: การยืนยันตัวตนแบบหลายปัจจัย (MFA) ช่วยให้มั่นใจว่า แม้รหัสผ่านจะรั่วไหลและถูกนำมาสวมรอย แต่ระบบจะปฏิเสธการเข้าถึงหากไม่มีปัจจัยที่สอง\n- ข้อ B ไม่ถูกต้อง: การบังคับเปลี่ยนรหัสผ่านทุก 30 วันเป็นแนวทางที่ NIST SP 800-63B แนะนำให้ยกเลิก เพราะทำให้ผู้ใช้ตั้งรหัสเดาง่ายขึ้นและไม่ช่วยกัน Credential stuffing\n- ข้อ C ไม่ถูกต้อง: การเพิ่มความยาวรหัสผ่านไม่ได้ช่วยอะไร เพราะผู้โจมตีได้รหัสที่ถูกต้องชุดนั้นมาจากเว็บอื่นที่พนักงานไปใช้ซ้ำอยู่แล้ว\n- ข้อ D ไม่ถูกต้อง: การห้ามทำงานนอกสถานที่เป็นการรบกวนธุรกิจอย่างรุนแรงและแก้ปัญหาไม่ตรงจุดเรื่องการพึ่งพารหัสผ่านเพียงอย่างเดียว",
+        "after": "MFA ต้องใช้ปัจจัยต่างประเภทเพิ่มเติม ทำให้คู่ชื่อผู้ใช้และรหัสผ่านที่ถูกขโมยเพียงอย่างเดียวไม่เพียงพอเมื่อบังคับใช้ MFA อย่างถูกต้อง วิธีนี้ลดความเสี่ยงจาก Credential stuffing แต่ไม่ได้รับประกันว่าจะป้องกันการยึดบัญชีได้ทุกกรณี ความแข็งแรงของปัจจัยและความต้านทานต่อ Phishing หรือการหลอกให้อนุมัติยังมีความสำคัญ\nB: การบังคับเปลี่ยนรหัสผ่านทุก 30 วันเป็นแนวทางที่ NIST SP 800-63B แนะนำให้ยกเลิก เพราะทำให้ผู้ใช้ตั้งรหัสเดาง่ายขึ้นและไม่ช่วยกัน Credential stuffing\nC: การเพิ่มความยาวรหัสผ่านไม่ได้ช่วยอะไร เพราะผู้โจมตีได้รหัสที่ถูกต้องชุดนั้นมาจากเว็บอื่นที่พนักงานไปใช้ซ้ำอยู่แล้ว\nD: การห้ามทำงานนอกสถานที่เป็นการรบกวนธุรกิจอย่างรุนแรงและแก้ปัญหาไม่ตรงจุดเรื่องการพึ่งพารหัสผ่านเพียงอย่างเดียว"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Multi-Factor Authentication (MFA) ensures that even if credentials are leaked and replayed via credential stuffing, access is denied without the second authentication factor.",
+            "th": "การยืนยันตัวตนแบบหลายปัจจัย (MFA) ช่วยให้มั่นใจว่า แม้รหัสผ่านจะรั่วไหลและถูกนำมาสวมรอย แต่ระบบจะปฏิเสธการเข้าถึงหากไม่มีปัจจัยที่สอง"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Arbitrary periodic password changes (e.g., every 30 days) are discouraged by NIST SP 800-63B because they cause users to select predictable patterns and do not prevent credential stuffing.",
+              "text_th": "การบังคับเปลี่ยนรหัสผ่านทุก 30 วันเป็นแนวทางที่ NIST SP 800-63B แนะนำให้ยกเลิก เพราะทำให้ผู้ใช้ตั้งรหัสเดาง่ายขึ้นและไม่ช่วยกัน Credential stuffing"
+            },
+            {
+              "letter": "C",
+              "text_en": "Increasing password length does not prevent credential stuffing because the attacker possesses the exact credential pair reused by the victim.",
+              "text_th": "การเพิ่มความยาวรหัสผ่านไม่ได้ช่วยอะไร เพราะผู้โจมตีได้รหัสที่ถูกต้องชุดนั้นมาจากเว็บอื่นที่พนักงานไปใช้ซ้ำอยู่แล้ว"
+            },
+            {
+              "letter": "D",
+              "text_en": "Banning remote work is an extreme operational disruption that fails to solve the root problem of single-factor authentication vulnerability.",
+              "text_th": "การห้ามทำงานนอกสถานที่เป็นการรบกวนธุรกิจอย่างรุนแรงและแก้ปัญหาไม่ตรงจุดเรื่องการพึ่งพารหัสผ่านเพียงอย่างเดียว"
+            }
+          ],
+          "example": {
+            "en": "An employee uses 'Password123!@#' on a compromised retail website and their company email. An attacker uses a bot to try logging in. Because the company requires MFA, the login triggers a push alert on the employee's phone, which they deny, blocking the breach.",
+            "th": "พนักงานใช้รหัสเดียวกับเว็บบอร์ดที่โดนแฮก เมื่อแฮกเกอร์นำรหัสนั้นมาลองล็อกอินอีเมลบริษัท แต่ติดหน้าจอถาม OTP บนมือถือ พนักงานจึงรู้ตัวและกดปฏิเสธ ทำให้แฮกเกอร์เข้าไม่ได้"
+          },
+          "exam_tip": {
+            "en": "NIST SP 800-63B guidance: Stop forcing frequent periodic password expirations (e.g., 30/90 days). Enforce MFA and check against known breached password lists instead.",
+            "th": "แนวทางของ NIST SP 800-63B: เลิกบังคับเปลี่ยนรหัสผ่านทุก 30-90 วันโดยไม่มีเหตุ แต่ให้บังคับใช้ MFA และตรวจจับการใช้รหัสผ่านซ้ำที่เคยหลุดในอินเทอร์เน็ตแทน"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "MFA requires an additional distinct factor, so the stolen username/password pair alone is insufficient when MFA is correctly enforced. It reduces credential-stuffing exposure but is not a guarantee against every takeover; factor strength and resistance to phishing or approval abuse matter.",
+            "th": "MFA ต้องใช้ปัจจัยต่างประเภทเพิ่มเติม ทำให้คู่ชื่อผู้ใช้และรหัสผ่านที่ถูกขโมยเพียงอย่างเดียวไม่เพียงพอเมื่อบังคับใช้ MFA อย่างถูกต้อง วิธีนี้ลดความเสี่ยงจาก Credential stuffing แต่ไม่ได้รับประกันว่าจะป้องกันการยึดบัญชีได้ทุกกรณี ความแข็งแรงของปัจจัยและความต้านทานต่อ Phishing หรือการหลอกให้อนุมัติยังมีความสำคัญ"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Arbitrary periodic password changes (e.g., every 30 days) are discouraged by NIST SP 800-63B because they cause users to select predictable patterns and do not prevent credential stuffing.",
+              "text_th": "การบังคับเปลี่ยนรหัสผ่านทุก 30 วันเป็นแนวทางที่ NIST SP 800-63B แนะนำให้ยกเลิก เพราะทำให้ผู้ใช้ตั้งรหัสเดาง่ายขึ้นและไม่ช่วยกัน Credential stuffing"
+            },
+            {
+              "letter": "C",
+              "text_en": "Increasing password length does not prevent credential stuffing because the attacker possesses the exact credential pair reused by the victim.",
+              "text_th": "การเพิ่มความยาวรหัสผ่านไม่ได้ช่วยอะไร เพราะผู้โจมตีได้รหัสที่ถูกต้องชุดนั้นมาจากเว็บอื่นที่พนักงานไปใช้ซ้ำอยู่แล้ว"
+            },
+            {
+              "letter": "D",
+              "text_en": "Banning remote work is an extreme operational disruption that fails to solve the root problem of single-factor authentication vulnerability.",
+              "text_th": "การห้ามทำงานนอกสถานที่เป็นการรบกวนธุรกิจอย่างรุนแรงและแก้ปัญหาไม่ตรงจุดเรื่องการพึ่งพารหัสผ่านเพียงอย่างเดียว"
+            }
+          ],
+          "example": {
+            "en": "An employee reuses the same long password on a personal service and corporate email. With the distinct additional factor enforced, replaying that password alone is rejected; this does not establish protection against an attacker who also defeats that factor.",
+            "th": "พนักงานใช้รหัสผ่านยาวเดียวกันกับบริการส่วนตัวและอีเมลองค์กร เมื่อบังคับใช้ปัจจัยต่างประเภทเพิ่มเติม การนำรหัสผ่านนั้นมาใช้ซ้ำเพียงอย่างเดียวจะถูกปฏิเสธ แต่ไม่ได้แสดงว่าป้องกันผู้โจมตีที่เอาชนะปัจจัยเพิ่มเติมได้ด้วย"
+          },
+          "exam_tip": {
+            "en": "NIST SP 800-63B guidance: Stop forcing frequent periodic password expirations (e.g., 30/90 days). Enforce MFA and check against known breached password lists instead.",
+            "th": "แนวทางของ NIST SP 800-63B: เลิกบังคับเปลี่ยนรหัสผ่านทุก 30-90 วันโดยไม่มีเหตุ แต่ให้บังคับใช้ MFA และตรวจจับการใช้รหัสผ่านซ้ำที่เคยหลุดในอินเทอร์เน็ตแทน"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 626,
+    "domain": 2,
+    "issue": "Reporting is claimed to ensure containment/evidence preservation; rationale invents organizational policy; tip attributes a universal rule to ISC2.",
+    "references": [
+      "R12",
+      "L07"
+    ],
+    "safe_to_apply": true,
+    "key_before": "D",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option D is correct. Immediately escalating the anomaly to the designated cybersecurity response team ensures rapid incident containment while preserving digital forensic evidence. Option A is incorrect: End users must never negotiate with extortionists or reply to attack lures, which alerts adversaries and violates organizational policy. Option B is incorrect: Downloading unauthorized software from the internet is a severe policy violation that frequently introduces additional secondary malware infections. Option C is incorrect: Abruptly pulling the power cord destroys volatile RAM data (e.g., active memory artifacts, network socket tables, and encryption keys) required for forensic triage.",
+        "after": "Following the stated recognize-and-report duty, the employee should promptly contact the designated response team or helpdesk using established procedures. Reporting enables authorized responders to assess containment and evidence needs; it does not by itself guarantee either outcome.\nA: Negotiating with the sender is not the stated reporting duty and can expose the employee to further manipulation. Ransom decisions belong to the organization’s authorized process.\nB: Installing an unapproved removal tool can alter evidence or introduce further risk. The employee should follow the reporting procedure rather than attempt an unauthorized cleanup.\nC: Abrupt power removal can lose volatile evidence. In this recognize-and-report scenario it is not the prescribed first action; shutdown or isolation decisions should follow the response procedure and any urgent safety needs."
+      },
+      "explanation_th": {
+        "before": "ข้อ D ถูกต้อง: การรายงานสิ่งผิดปกติไปยังทีมความมั่นคงปลอดภัยทันทีช่วยให้ควบคุมเหตุการณ์ได้อย่างรวดเร็วและรักษาหลักฐานทางนิติวิทยาศาสตร์ไว้ได้\n- ข้อ A ไม่ถูกต้อง: พนักงานต้องไม่เจรจากับผู้กรรโชกทรัพย์หรือตอบกลับอีเมลคนร้าย เพราะทำให้คนร้ายไหวตัวและขัดต่อนโยบายบริษัท\n- ข้อ B ไม่ถูกต้อง: การดาวน์โหลดโปรแกรมแปลกปลอมจากอินเทอร์เน็ตเป็นการละเมิดนโยบายและมักนำมัลแวร์ตัวอื่นเข้ามาติดซ้ำเติม\n- ข้อ C ไม่ถูกต้อง: การกระชากปลั๊กไฟทำลายข้อมูลในหน่วยความจำ RAM ชั่วคราว ซึ่งอาจมีคีย์ถอดรหัสหรือหลักฐานสำคัญที่จำเป็นต่อการสืบสวน",
+        "after": "ตามหน้าที่ Recognize and report ที่ระบุในโจทย์ พนักงานควรติดต่อทีมตอบสนองหรือ Helpdesk ที่กำหนดโดยเร็วตามขั้นตอนองค์กร การรายงานช่วยให้ผู้ตอบสนองที่มีอำนาจประเมินการจำกัดผลกระทบและการเก็บหลักฐาน แต่ไม่ได้รับประกันผลลัพธ์ทั้งสองโดยตัวมันเอง\nA: การต่อรองกับผู้ส่งไม่ใช่หน้าที่รายงานที่ระบุ และอาจเปิดทางให้พนักงานถูกหลอกเพิ่มเติม การตัดสินใจเรื่องค่าไถ่ต้องเป็นไปตามกระบวนการของผู้มีอำนาจในองค์กร\nB: การติดตั้งเครื่องมือลบมัลแวร์ที่ไม่ได้รับอนุมัติอาจเปลี่ยนแปลงหลักฐานหรือเพิ่มความเสี่ยง พนักงานควรทำตามขั้นตอนรายงานแทนการพยายามกำจัดมัลแวร์โดยไม่มีอำนาจ\nC: การตัดไฟทันทีอาจทำให้หลักฐานในหน่วยความจำชั่วคราวสูญหาย ในโจทย์ที่กำหนดหน้าที่ Recognize and report จึงไม่ใช่การกระทำแรกตามขั้นตอน การปิดเครื่องหรือแยกเครือข่ายต้องเป็นไปตามกระบวนการตอบสนองและความจำเป็นเร่งด่วนด้านความปลอดภัย"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Immediately escalating the anomaly to the designated cybersecurity response team ensures rapid incident containment while preserving digital forensic evidence.",
+            "th": "การรายงานสิ่งผิดปกติไปยังทีมความมั่นคงปลอดภัยทันทีช่วยให้ควบคุมเหตุการณ์ได้อย่างรวดเร็วและรักษาหลักฐานทางนิติวิทยาศาสตร์ไว้ได้"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "End users must never negotiate with extortionists or reply to attack lures, which alerts adversaries and violates organizational policy.",
+              "text_th": "พนักงานต้องไม่เจรจากับผู้กรรโชกทรัพย์หรือตอบกลับอีเมลคนร้าย เพราะทำให้คนร้ายไหวตัวและขัดต่อนโยบายบริษัท"
+            },
+            {
+              "letter": "B",
+              "text_en": "Downloading unauthorized software from the internet is a severe policy violation that frequently introduces additional secondary malware infections.",
+              "text_th": "การดาวน์โหลดโปรแกรมแปลกปลอมจากอินเทอร์เน็ตเป็นการละเมิดนโยบายและมักนำมัลแวร์ตัวอื่นเข้ามาติดซ้ำเติม"
+            },
+            {
+              "letter": "C",
+              "text_en": "Abruptly pulling the power cord destroys volatile RAM data (e.g., active memory artifacts, network socket tables, and encryption keys) required for forensic triage.",
+              "text_th": "การกระชากปลั๊กไฟทำลายข้อมูลในหน่วยความจำ RAM ชั่วคราว ซึ่งอาจมีคีย์ถอดรหัสหรือหลักฐานสำคัญที่จำเป็นต่อการสืบสวน"
+            }
+          ],
+          "example": {
+            "en": "An employee noticing strange pop-ups clicks the 'Report Phishing / Incident' button in their email client and calls the SOC hotline immediately, allowing engineers to isolate the machine via EDR within 60 seconds.",
+            "th": "พนักงานสังเกตเห็นหน้าต่างแปลกๆ จึงกดปุ่มแจ้งเหตุฉุกเฉินและโทรสายด่วน SOC ทันที ทำให้ทีมวิศวกรสามารถสั่งตัดการเชื่อมต่อเครือข่ายของเครื่องผ่านระบบ EDR ได้ภายใน 60 วินาที"
+          },
+          "exam_tip": {
+            "en": "Core ISC2 Exam Philosophy: End users are not forensic investigators. When something looks wrong, the user's golden rule is 'Recognize, Stop, and REPORT immediately.'",
+            "th": "ปรัชญาสำคัญของ ISC2: ผู้ใช้งานไม่ใช่ผู้เชี่ยวชาญด้านนิติวิทยาศาสตร์ เมื่อพบสิ่งผิดปกติ กฎทองคำคือ 'สังเกต หยุด และรายงานทันที (Recognize and Report)'"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "Following the stated recognize-and-report duty, the employee should promptly contact the designated response team or helpdesk using established procedures. Reporting enables authorized responders to assess containment and evidence needs; it does not by itself guarantee either outcome.",
+            "th": "ตามหน้าที่ Recognize and report ที่ระบุในโจทย์ พนักงานควรติดต่อทีมตอบสนองหรือ Helpdesk ที่กำหนดโดยเร็วตามขั้นตอนองค์กร การรายงานช่วยให้ผู้ตอบสนองที่มีอำนาจประเมินการจำกัดผลกระทบและการเก็บหลักฐาน แต่ไม่ได้รับประกันผลลัพธ์ทั้งสองโดยตัวมันเอง"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Negotiating with the sender is not the stated reporting duty and can expose the employee to further manipulation. Ransom decisions belong to the organization’s authorized process.",
+              "text_th": "การต่อรองกับผู้ส่งไม่ใช่หน้าที่รายงานที่ระบุ และอาจเปิดทางให้พนักงานถูกหลอกเพิ่มเติม การตัดสินใจเรื่องค่าไถ่ต้องเป็นไปตามกระบวนการของผู้มีอำนาจในองค์กร"
+            },
+            {
+              "letter": "B",
+              "text_en": "Installing an unapproved removal tool can alter evidence or introduce further risk. The employee should follow the reporting procedure rather than attempt an unauthorized cleanup.",
+              "text_th": "การติดตั้งเครื่องมือลบมัลแวร์ที่ไม่ได้รับอนุมัติอาจเปลี่ยนแปลงหลักฐานหรือเพิ่มความเสี่ยง พนักงานควรทำตามขั้นตอนรายงานแทนการพยายามกำจัดมัลแวร์โดยไม่มีอำนาจ"
+            },
+            {
+              "letter": "C",
+              "text_en": "Abrupt power removal can lose volatile evidence. In this recognize-and-report scenario it is not the prescribed first action; shutdown or isolation decisions should follow the response procedure and any urgent safety needs.",
+              "text_th": "การตัดไฟทันทีอาจทำให้หลักฐานในหน่วยความจำชั่วคราวสูญหาย ในโจทย์ที่กำหนดหน้าที่ Recognize and report จึงไม่ใช่การกระทำแรกตามขั้นตอน การปิดเครื่องหรือแยกเครือข่ายต้องเป็นไปตามกระบวนการตอบสนองและความจำเป็นเร่งด่วนด้านความปลอดภัย"
+            }
+          ],
+          "example": {
+            "en": "The employee uses the established helpdesk contact to report the ransom message. Authorized responders then assess containment and evidence handling under the incident procedure.",
+            "th": "พนักงานใช้ช่องทาง Helpdesk ที่กำหนดเพื่อรายงานข้อความเรียกค่าไถ่ จากนั้นผู้ตอบสนองที่มีอำนาจจะประเมินการจำกัดผลกระทบและจัดการหลักฐานตามขั้นตอนเหตุการณ์"
+          },
+          "exam_tip": {
+            "en": "Read the employee’s stated role and reporting procedure. Authorized containment and evidence handling depend on the incident and safety context.",
+            "th": "อ่านบทบาทพนักงานและขั้นตอนรายงานที่โจทย์กำหนด การจำกัดผลกระทบและจัดการหลักฐานโดยผู้มีอำนาจขึ้นกับบริบทเหตุการณ์และความปลอดภัย"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 627,
+    "domain": 2,
+    "issue": "Unsupported legal entitlement and NIST violation claims; counts are dismissed categorically rather than contextualized.",
+    "references": [
+      "R11",
+      "L06"
+    ],
+    "safe_to_apply": true,
+    "key_before": "C",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option C is correct. Raw firewall block counts represent vanity metrics that quantify ambient external scanning volume without providing actionable intelligence regarding internal control effectiveness or business risk. Option A is incorrect: Firewalls typically operate at Layers 3, 4, and 7 (application firewalls), not exclusively at Layer 2 (data link layer). Option B is incorrect: Corporate directors have a fiduciary duty of oversight and are fully entitled to review all enterprise security metrics without legal prohibitions. Option D is incorrect: Multiplying arbitrary event volume by processor counts creates a meaningless mathematical distortion that violates NIST SP 800-55 measurement standards.",
+        "after": "The count alone does not show whether important assets are protected or business risk is improving. In this board briefing it needs context such as scope, trends, exposure and control objectives; counts can still be useful when linked to a defined decision.\nA: Firewalls typically operate at Layers 3, 4, and 7 (application firewalls), not exclusively at Layer 2 (data link layer).\nB: The scenario supplies no legal rule forbidding this disclosure to the board. The stated problem is lack of decision-relevant context, not a blanket prohibition on board access to firewall statistics.\nD: Multiplying by processor count has no defined relationship to the stated control-effectiveness or risk objective. Such a calculation needs a justified measurement model, not an invented formula."
+      },
+      "short_explanation_en": {
+        "before": "Raw firewall block counts are vanity metrics measuring external internet noise rather than internal control efficacy or actionable business risk.",
+        "after": "A raw firewall count needs business and control context to support the board’s decision."
+      },
+      "explanation_th": {
+        "before": "ข้อ C ถูกต้อง: จำนวนการบล็อกของไฟร์วอลล์เป็นตัวเลขผิวเผิน (Vanity metrics) ที่บอกแค่อินเทอร์เน็ตมีคนสแกนเยอะแค่ไหน แต่ไม่ได้ให้ข้อมูลที่นำไปใช้ปรับปรุงความปลอดภัยหรือประเมินความเสี่ยงได้จริง\n- ข้อ A ไม่ถูกต้อง: ไฟร์วอลล์ทำงานที่เลเยอร์ 3, 4 และ 7 (Next-Gen Firewall) ไม่ได้จำกัดอยู่ที่เลเยอร์ 2\n- ข้อ B ไม่ถูกต้อง: คณะกรรมการบริษัทมีหน้าที่กำกับดูแลและมีสิทธิ์ตามกฎหมายในการตรวจสอบข้อมูลตัวชี้วัดความปลอดภัยทั้งหมดขององค์กร\n- ข้อ D ไม่ถูกต้อง: การนำตัวเลขนับเหตุการณ์มาคูณกับจำนวนโพรเซสเซอร์เป็นการคำนวณที่ไร้สาระและละเมิดหลักการวัดผลของ NIST",
+        "after": "จำนวนครั้งเพียงอย่างเดียวไม่ได้แสดงว่าทรัพย์สินสำคัญได้รับการปกป้องหรือความเสี่ยงทางธุรกิจดีขึ้น ในรายงานต่อคณะกรรมการนี้ต้องมีบริบท เช่น ขอบเขต แนวโน้ม ความเสี่ยง และวัตถุประสงค์ของมาตรการ จำนวนครั้งยังมีประโยชน์ได้เมื่อเชื่อมโยงกับการตัดสินใจที่กำหนดไว้\nA: ไฟร์วอลล์ทำงานที่เลเยอร์ 3, 4 และ 7 (Next-Gen Firewall) ไม่ได้จำกัดอยู่ที่เลเยอร์ 2\nB: โจทย์ไม่ได้ระบุกฎหมายที่ห้ามเปิดเผยสถิตินี้ต่อคณะกรรมการ ปัญหาคือขาดบริบทที่ช่วยตัดสินใจ ไม่ใช่ข้อห้ามทั่วไปไม่ให้คณะกรรมการเข้าถึงสถิติไฟร์วอลล์\nD: การคูณจำนวนหน่วยประมวลผลไม่ได้มีความสัมพันธ์ที่กำหนดไว้กับเป้าหมายประสิทธิผลของมาตรการหรือความเสี่ยงตามโจทย์ การคำนวณต้องมีแบบจำลองการวัดที่อธิบายได้ ไม่ใช่สูตรที่สมมติขึ้น"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Raw firewall block counts represent vanity metrics that quantify ambient external scanning volume without providing actionable intelligence regarding internal control effectiveness or business risk.",
+            "th": "จำนวนการบล็อกของไฟร์วอลล์เป็นตัวเลขผิวเผิน (Vanity metrics) ที่บอกแค่อินเทอร์เน็ตมีคนสแกนเยอะแค่ไหน แต่ไม่ได้ให้ข้อมูลที่นำไปใช้ปรับปรุงความปลอดภัยหรือประเมินความเสี่ยงได้จริง"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Firewalls typically operate at Layers 3, 4, and 7 (application firewalls), not exclusively at Layer 2 (data link layer).",
+              "text_th": "ไฟร์วอลล์ทำงานที่เลเยอร์ 3, 4 และ 7 (Next-Gen Firewall) ไม่ได้จำกัดอยู่ที่เลเยอร์ 2"
+            },
+            {
+              "letter": "B",
+              "text_en": "Corporate directors have a fiduciary duty of oversight and are fully entitled to review all enterprise security metrics without legal prohibitions.",
+              "text_th": "คณะกรรมการบริษัทมีหน้าที่กำกับดูแลและมีสิทธิ์ตามกฎหมายในการตรวจสอบข้อมูลตัวชี้วัดความปลอดภัยทั้งหมดขององค์กร"
+            },
+            {
+              "letter": "D",
+              "text_en": "Multiplying arbitrary event volume by processor counts creates a meaningless mathematical distortion that violates NIST SP 800-55 measurement standards.",
+              "text_th": "การนำตัวเลขนับเหตุการณ์มาคูณกับจำนวนโพรเซสเซอร์เป็นการคำนวณที่ไร้สาระและละเมิดหลักการวัดผลของ NIST"
+            }
+          ],
+          "example": {
+            "en": "Telling the board 'We blocked 10 million scans' is like a homeowner saying '10,000 cars drove past my house today.' A meaningful metric is '100% of critical internet-facing systems had zero unpatched vulnerabilities.'",
+            "th": "การบอกบอร์ดว่า 'เราบล็อกไป 10 ล้านครั้ง' เหมือนเจ้าของบ้านบอกว่า 'วันนี้มีรถวิ่งผ่านหน้าบ้านหมื่นคัน' ตัวชี้วัดที่ดีควรถามว่า 'เซิร์ฟเวอร์ต่ออินเทอร์เน็ตทุกเครื่องได้รับการอัปเดตช่องโหว่ครบ 100% หรือยัง'"
+          },
+          "exam_tip": {
+            "en": "Exam rule on metrics: Vanity metrics = big numbers that sound impressive but drive zero decisions (e.g., blocked port scans). Useful metrics = rates, percentages, and trends that drive action.",
+            "th": "หลักจำตัวชี้วัดในข้อสอบ: Vanity metrics = ตัวเลขมหาศาลที่ดูน่าตื่นเต้นแต่ตัดสินใจอะไรไม่ได้ (เช่น port scan ที่บล็อกได้); Useful metrics = สัดส่วน อัตราส่วน และแนวโน้มที่นำไปสู่การแก้ไขปรับปรุง"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "The count alone does not show whether important assets are protected or business risk is improving. In this board briefing it needs context such as scope, trends, exposure and control objectives; counts can still be useful when linked to a defined decision.",
+            "th": "จำนวนครั้งเพียงอย่างเดียวไม่ได้แสดงว่าทรัพย์สินสำคัญได้รับการปกป้องหรือความเสี่ยงทางธุรกิจดีขึ้น ในรายงานต่อคณะกรรมการนี้ต้องมีบริบท เช่น ขอบเขต แนวโน้ม ความเสี่ยง และวัตถุประสงค์ของมาตรการ จำนวนครั้งยังมีประโยชน์ได้เมื่อเชื่อมโยงกับการตัดสินใจที่กำหนดไว้"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Firewalls typically operate at Layers 3, 4, and 7 (application firewalls), not exclusively at Layer 2 (data link layer).",
+              "text_th": "ไฟร์วอลล์ทำงานที่เลเยอร์ 3, 4 และ 7 (Next-Gen Firewall) ไม่ได้จำกัดอยู่ที่เลเยอร์ 2"
+            },
+            {
+              "letter": "B",
+              "text_en": "The scenario supplies no legal rule forbidding this disclosure to the board. The stated problem is lack of decision-relevant context, not a blanket prohibition on board access to firewall statistics.",
+              "text_th": "โจทย์ไม่ได้ระบุกฎหมายที่ห้ามเปิดเผยสถิตินี้ต่อคณะกรรมการ ปัญหาคือขาดบริบทที่ช่วยตัดสินใจ ไม่ใช่ข้อห้ามทั่วไปไม่ให้คณะกรรมการเข้าถึงสถิติไฟร์วอลล์"
+            },
+            {
+              "letter": "D",
+              "text_en": "Multiplying by processor count has no defined relationship to the stated control-effectiveness or risk objective. Such a calculation needs a justified measurement model, not an invented formula.",
+              "text_th": "การคูณจำนวนหน่วยประมวลผลไม่ได้มีความสัมพันธ์ที่กำหนดไว้กับเป้าหมายประสิทธิผลของมาตรการหรือความเสี่ยงตามโจทย์ การคำนวณต้องมีแบบจำลองการวัดที่อธิบายได้ ไม่ใช่สูตรที่สมมติขึ้น"
+            }
+          ],
+          "example": {
+            "en": "A board report can relate blocked traffic trends to the monitored scope, exposed critical services and identified control gaps, explaining the limits of what the counts demonstrate.",
+            "th": "รายงานต่อคณะกรรมการอาจเชื่อมแนวโน้มทราฟฟิกที่ถูกบล็อกกับขอบเขตที่เฝ้าระวัง บริการสำคัญที่เปิดรับการเชื่อมต่อ และช่องว่างของมาตรการ พร้อมอธิบายข้อจำกัดของสิ่งที่ตัวเลขแสดงได้"
+          },
+          "exam_tip": {
+            "en": "Choose measures that support the intended audience’s decision. Counts, rates, percentages and trends all require defined scope and interpretation.",
+            "th": "เลือกตัวชี้วัดที่สนับสนุนการตัดสินใจของกลุ่มเป้าหมาย จำนวนครั้ง อัตรา ร้อยละ และแนวโน้มล้วนต้องกำหนดขอบเขตและวิธีตีความ"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 628,
+    "domain": 2,
+    "issue": "One incident is conflated with MTTD; alert-to-containment is labeled a universal respond metric.",
+    "references": [
+      "R11",
+      "L06"
+    ],
+    "safe_to_apply": true,
+    "key_before": "B",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option B is correct. Time to Detect begins at the initial security breach milestone (08:00) and terminates upon formal detection alert generation (10:00), spanning exactly 2 hours. Option A is incorrect: Measuring from initial compromise to server isolation encompasses both detection and active incident response containment, conflating TTD with total incident dwell-and-containment time. Option C is incorrect: The 45-minute span measures SOC triage latency (time from alert generation to human review), not intrusion detection time. Option D is incorrect: The 1.5-hour duration measures Time to Respond (TTR) or Time to Contain, starting from the alert timestamp and ending at active host containment.",
+        "after": "For this incident, using the supplied 10:00 detection milestone, TTD is 10:00 minus 08:00, or 2 hours. A mean time to detect would require averaging defined detection intervals over a set of incidents.\nA: Measuring from initial compromise to server isolation encompasses both detection and active incident response containment, conflating TTD with total incident dwell-and-containment time.\nC: The 45-minute span measures SOC triage latency (time from alert generation to human review), not intrusion detection time.\nD: The 1.5-hour interval runs from the detection alert to host isolation. It is a detection-to-containment interval, not the compromise-to-detection interval asked for; a response metric needs its own defined endpoints."
+      },
+      "explanation_th": {
+        "before": "ข้อ B ถูกต้อง: Time to Detect เริ่มต้นนับตั้งแต่วินาทีที่ระบบถูกเจาะ (08:00) จนถึงจุดที่มีการตรวจพบและแจ้งเตือนอย่างเป็นทางการ (10:00) รวมเป็นเวลา 2 ชั่วโมงพอดี\n- ข้อ A ไม่ถูกต้อง: การนับตั้งแต่เจาะระบบจนตัดเน็ต เป็นการรวมทั้งช่วงตรวจจับและการเข้าควบคุมเหตุการณ์เข้าด้วยกัน ซึ่งเป็นการปนกันระหว่าง TTD กับเวลาควบคุมเหตุการณ์ทั้งหมด\n- ข้อ C ไม่ถูกต้อง: ช่วงเวลา 45 นาทีวัดเพียงความล่าช้าในการเปิดดูงานของนักวิเคราะห์ SOC ไม่ใช่เวลาในการตรวจจับการบุกรุก\n- ข้อ D ไม่ถูกต้อง: ช่วงเวลา 1.5 ชั่วโมงคือ Time to Respond (TTR) หรือเวลาที่ใช้ในการตอบสนองและกักกันความเสียหาย ซึ่งเริ่มนับหลังการตรวจจับพบแล้ว",
+        "after": "สำหรับเหตุการณ์นี้ เมื่อใช้จุดตรวจพบเวลา 10:00 ตามข้อมูลในโจทย์ TTD คือ 10:00 ลบ 08:00 เท่ากับ 2 ชั่วโมง ส่วน Mean time to detect ต้องคำนวณค่าเฉลี่ยของช่วงเวลาตรวจพบที่กำหนดไว้จากหลายเหตุการณ์\nA: การนับตั้งแต่เจาะระบบจนตัดเน็ต เป็นการรวมทั้งช่วงตรวจจับและการเข้าควบคุมเหตุการณ์เข้าด้วยกัน ซึ่งเป็นการปนกันระหว่าง TTD กับเวลาควบคุมเหตุการณ์ทั้งหมด\nC: ช่วงเวลา 45 นาทีวัดเพียงความล่าช้าในการเปิดดูงานของนักวิเคราะห์ SOC ไม่ใช่เวลาในการตรวจจับการบุกรุก\nD: ช่วง 1.5 ชั่วโมงนับจากการแจ้งเตือนตรวจพบถึงการแยกเครื่อง เป็นช่วงเวลาจากตรวจพบถึงจำกัดผลกระทบ ไม่ใช่จากเริ่มถูกเจาะถึงตรวจพบที่โจทย์ถาม และตัวชี้วัดการตอบสนองต้องกำหนดจุดเริ่มและจุดสิ้นสุดของตนเอง"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Time to Detect begins at the initial security breach milestone (08:00) and terminates upon formal detection alert generation (10:00), spanning exactly 2 hours.",
+            "th": "Time to Detect เริ่มต้นนับตั้งแต่วินาทีที่ระบบถูกเจาะ (08:00) จนถึงจุดที่มีการตรวจพบและแจ้งเตือนอย่างเป็นทางการ (10:00) รวมเป็นเวลา 2 ชั่วโมงพอดี"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Measuring from initial compromise to server isolation encompasses both detection and active incident response containment, conflating TTD with total incident dwell-and-containment time.",
+              "text_th": "การนับตั้งแต่เจาะระบบจนตัดเน็ต เป็นการรวมทั้งช่วงตรวจจับและการเข้าควบคุมเหตุการณ์เข้าด้วยกัน ซึ่งเป็นการปนกันระหว่าง TTD กับเวลาควบคุมเหตุการณ์ทั้งหมด"
+            },
+            {
+              "letter": "C",
+              "text_en": "The 45-minute span measures SOC triage latency (time from alert generation to human review), not intrusion detection time.",
+              "text_th": "ช่วงเวลา 45 นาทีวัดเพียงความล่าช้าในการเปิดดูงานของนักวิเคราะห์ SOC ไม่ใช่เวลาในการตรวจจับการบุกรุก"
+            },
+            {
+              "letter": "D",
+              "text_en": "The 1.5-hour duration measures Time to Respond (TTR) or Time to Contain, starting from the alert timestamp and ending at active host containment.",
+              "text_th": "ช่วงเวลา 1.5 ชั่วโมงคือ Time to Respond (TTR) หรือเวลาที่ใช้ในการตอบสนองและกักกันความเสียหาย ซึ่งเริ่มนับหลังการตรวจจับพบแล้ว"
+            }
+          ],
+          "example": {
+            "en": "If a burglar picks a lock at 2:00 AM and trips the motion alarm at 2:15 AM, the Time to Detect is 15 minutes. Police arriving at 2:30 AM to arrest the burglar represents response time.",
+            "th": "ถ้าขโมยสะเดาะกลอนเข้าบ้านตอน 02:00 น. แล้วสัญญาณเตือนภัยดังตอน 02:15 น. ค่า Time to Detect คือ 15 นาที ส่วนตำรวจมาถึงบ้านตอน 02:30 น. เพื่อจับกุม นั่นคือเวลาตอบสนอง (Response time)"
+          },
+          "exam_tip": {
+            "en": "Phase 3.5 Revalidated milestone logic: MTTD start = Intrusion occurred; MTTD end = Alert/Detection triggered. Do not confuse with Response (Alert to Containment).",
+            "th": "หลักการที่ถูกต้องตาม Phase 3.5: จุดเริ่ม MTTD = เกิดการบุกรุก; จุดสิ้นสุด MTTD = ระบบตรวจจับและแจ้งเตือน อย่าสับสนกับเวลา Response (นับจากแจ้งเตือนจนถึงควบคุมเหตุการณ์)"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "For this incident, using the supplied 10:00 detection milestone, TTD is 10:00 minus 08:00, or 2 hours. A mean time to detect would require averaging defined detection intervals over a set of incidents.",
+            "th": "สำหรับเหตุการณ์นี้ เมื่อใช้จุดตรวจพบเวลา 10:00 ตามข้อมูลในโจทย์ TTD คือ 10:00 ลบ 08:00 เท่ากับ 2 ชั่วโมง ส่วน Mean time to detect ต้องคำนวณค่าเฉลี่ยของช่วงเวลาตรวจพบที่กำหนดไว้จากหลายเหตุการณ์"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Measuring from initial compromise to server isolation encompasses both detection and active incident response containment, conflating TTD with total incident dwell-and-containment time.",
+              "text_th": "การนับตั้งแต่เจาะระบบจนตัดเน็ต เป็นการรวมทั้งช่วงตรวจจับและการเข้าควบคุมเหตุการณ์เข้าด้วยกัน ซึ่งเป็นการปนกันระหว่าง TTD กับเวลาควบคุมเหตุการณ์ทั้งหมด"
+            },
+            {
+              "letter": "C",
+              "text_en": "The 45-minute span measures SOC triage latency (time from alert generation to human review), not intrusion detection time.",
+              "text_th": "ช่วงเวลา 45 นาทีวัดเพียงความล่าช้าในการเปิดดูงานของนักวิเคราะห์ SOC ไม่ใช่เวลาในการตรวจจับการบุกรุก"
+            },
+            {
+              "letter": "D",
+              "text_en": "The 1.5-hour interval runs from the detection alert to host isolation. It is a detection-to-containment interval, not the compromise-to-detection interval asked for; a response metric needs its own defined endpoints.",
+              "text_th": "ช่วง 1.5 ชั่วโมงนับจากการแจ้งเตือนตรวจพบถึงการแยกเครื่อง เป็นช่วงเวลาจากตรวจพบถึงจำกัดผลกระทบ ไม่ใช่จากเริ่มถูกเจาะถึงตรวจพบที่โจทย์ถาม และตัวชี้วัดการตอบสนองต้องกำหนดจุดเริ่มและจุดสิ้นสุดของตนเอง"
+            }
+          ],
+          "example": {
+            "en": "If a burglar picks a lock at 2:00 AM and trips the motion alarm at 2:15 AM, the Time to Detect is 15 minutes. Police arriving at 2:30 AM to arrest the burglar represents response time.",
+            "th": "ถ้าขโมยสะเดาะกลอนเข้าบ้านตอน 02:00 น. แล้วสัญญาณเตือนภัยดังตอน 02:15 น. ค่า Time to Detect คือ 15 นาที ส่วนตำรวจมาถึงบ้านตอน 02:30 น. เพื่อจับกุม นั่นคือเวลาตอบสนอง (Response time)"
+          },
+          "exam_tip": {
+            "en": "Use the stated milestones and units. TTD describes this incident; MTTD is an average over an explicitly defined incident set.",
+            "th": "ใช้จุดเวลาและหน่วยที่โจทย์ระบุ TTD อธิบายเหตุการณ์นี้ ส่วน MTTD เป็นค่าเฉลี่ยของกลุ่มเหตุการณ์ที่กำหนดไว้อย่างชัดเจน"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 633,
+    "domain": 2,
+    "issue": "Tip asserts an exclusive universal board/report audience rule rather than the stated communication requirement.",
+    "references": [
+      "R11",
+      "L06"
+    ],
+    "safe_to_apply": true,
+    "key_before": "A",
+    "key_proposed": "unchanged",
+    "fields": {
+      "short_explanation_en": {
+        "before": "Boards of Directors require formal executive reports focusing on strategic trends, business risk, and resource alignment, rather than tactical operational noise.",
+        "after": "A business-aligned executive report fits the strategic decision needs stated in this scenario."
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "An Executive Report synthesizes technical telemetry into strategic, business-aligned narratives that support governance, risk oversight, and fiduciary capital allocation decisions.",
+            "th": "รายงานระดับบริหารทำหน้าที่กลั่นกรองข้อมูลทางเทคนิคให้เป็นข้อความเชิงกลยุทธ์ที่เข้าใจง่าย เพื่อสนับสนุนการกำกับดูแลความเสี่ยงและการอนุมัติงบประมาณขององค์กร"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Dynamic SOC dashboards provide minute-by-minute operational telemetry designed for tactical monitoring engineers, which overwhelms board members with irrelevant noise.",
+              "text_th": "แดชบอร์ด SOC แบบเรียลไทม์ออกแบบมาสำหรับวิศวกรเฝ้าระวังหน้าจอ การนำมาให้บอร์ดดูจะทำให้บอร์ดจมอยู่กับรายละเอียดปลีกย่อยที่ไม่เกี่ยวกับกลยุทธ์"
+            },
+            {
+              "letter": "C",
+              "text_en": "Exporting raw technical scanner findings dumps operational work tickets on governance directors without providing executive analysis, prioritization, or business context.",
+              "text_th": "การส่งไฟล์ช่องโหว่ดิบหลายแสนรายการเป็นการโยนภาระงานเทคนิคให้ผู้บริหาร โดยไม่มีการวิเคราะห์จัดลำดับความสำคัญหรือบอกผลกระทบทางธุรกิจ"
+            },
+            {
+              "letter": "D",
+              "text_en": "Instant chat alerts for individual malware incidents spam board members with operational noise, violating the governance boundary between oversight and day-to-day operations.",
+              "text_th": "การยิงแจ้งเตือนมัลแวร์เข้าแช็ตบอร์ดเป็นการรบกวนด้วยเรื่องหยุมหยิม และก้าวล่วงขอบเขตระหว่างการกำกับดูแลระดับสูงกับการทำงานประจำวัน"
+            }
+          ],
+          "example": {
+            "en": "A CISO presents a 10-page quarterly report to the board with charts showing risk reducing from Red to Yellow following a cloud migration, justifying next year's $2M budget request.",
+            "th": "CISO นำเสนอรายงานประจำไตรมาส 10 หน้า พร้อมกราฟแสดงความเสี่ยงที่ลดลงจากสีแดงเป็นสีเหลืองหลังย้ายขึ้นคลาวด์ เพื่อสนับสนุนการของบประมาณ 2 ล้านดอลลาร์ในปีหน้า"
+          },
+          "exam_tip": {
+            "en": "Target audience rule: Board = Formal Strategic Reports (Risk, Business, Budget); Managers = Scorecards (Targets, SLAs); Analysts/SOC = Real-time Dashboards (Alerts, Packets).",
+            "th": "กฎการเลือกรูปแบบรายงานตามกลุ่มผู้ฟัง: คณะกรรมการ (Board) = รายงานกลยุทธ์ระดับบริหาร (ความเสี่ยง, ธุรกิจ, งบประมาณ); ผู้จัดการ = Scorecards (เป้าหมาย, SLAs); นักวิเคราะห์ SOC = แดชบอร์ดเรียลไทม์ (แจ้งเตือน, แพ็กเก็ต)"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "An Executive Report synthesizes technical telemetry into strategic, business-aligned narratives that support governance, risk oversight, and fiduciary capital allocation decisions.",
+            "th": "รายงานระดับบริหารทำหน้าที่กลั่นกรองข้อมูลทางเทคนิคให้เป็นข้อความเชิงกลยุทธ์ที่เข้าใจง่าย เพื่อสนับสนุนการกำกับดูแลความเสี่ยงและการอนุมัติงบประมาณขององค์กร"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "Dynamic SOC dashboards provide minute-by-minute operational telemetry designed for tactical monitoring engineers, which overwhelms board members with irrelevant noise.",
+              "text_th": "แดชบอร์ด SOC แบบเรียลไทม์ออกแบบมาสำหรับวิศวกรเฝ้าระวังหน้าจอ การนำมาให้บอร์ดดูจะทำให้บอร์ดจมอยู่กับรายละเอียดปลีกย่อยที่ไม่เกี่ยวกับกลยุทธ์"
+            },
+            {
+              "letter": "C",
+              "text_en": "Exporting raw technical scanner findings dumps operational work tickets on governance directors without providing executive analysis, prioritization, or business context.",
+              "text_th": "การส่งไฟล์ช่องโหว่ดิบหลายแสนรายการเป็นการโยนภาระงานเทคนิคให้ผู้บริหาร โดยไม่มีการวิเคราะห์จัดลำดับความสำคัญหรือบอกผลกระทบทางธุรกิจ"
+            },
+            {
+              "letter": "D",
+              "text_en": "Instant chat alerts for individual malware incidents spam board members with operational noise, violating the governance boundary between oversight and day-to-day operations.",
+              "text_th": "การยิงแจ้งเตือนมัลแวร์เข้าแช็ตบอร์ดเป็นการรบกวนด้วยเรื่องหยุมหยิม และก้าวล่วงขอบเขตระหว่างการกำกับดูแลระดับสูงกับการทำงานประจำวัน"
+            }
+          ],
+          "example": {
+            "en": "A CISO presents a 10-page quarterly report to the board with charts showing risk reducing from Red to Yellow following a cloud migration, justifying next year's $2M budget request.",
+            "th": "CISO นำเสนอรายงานประจำไตรมาส 10 หน้า พร้อมกราฟแสดงความเสี่ยงที่ลดลงจากสีแดงเป็นสีเหลืองหลังย้ายขึ้นคลาวด์ เพื่อสนับสนุนการของบประมาณ 2 ล้านดอลลาร์ในปีหน้า"
+          },
+          "exam_tip": {
+            "en": "Match the information, level of detail and format to the decision and audience. A strategic report fits this scenario; boards can also use suitable scorecards or dashboards.",
+            "th": "จับคู่ข้อมูล ระดับรายละเอียด และรูปแบบกับการตัดสินใจและกลุ่มเป้าหมาย รายงานเชิงกลยุทธ์เหมาะกับโจทย์นี้ แต่คณะกรรมการอาจใช้ Scorecard หรือ Dashboard ที่เหมาะสมได้เช่นกัน"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 636,
+    "domain": 2,
+    "issue": "Risk-acceptance authority is assigned universally by job title instead of governance delegation.",
+    "references": [
+      "R06",
+      "L06"
+    ],
+    "safe_to_apply": true,
+    "key_before": "C",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option C is correct. Residual risk is the risk that remains after implementing all planned security controls. Because achieving absolute zero risk is impossible in operational environments, governance requires documenting this residual risk in the enterprise risk register and obtaining formal, informed risk acceptance from the designated business asset owner who has the authority and budget to absorb the impact. Option A is incorrect because absolute zero risk is an unachievable fallacy; attempting to eliminate all risk paralyzes business operations. Option B is incorrect because operational IT staff or administrators cannot accept business risk; only business asset owners or executive management possess the authority to accept risk. Option D is incorrect because technical controls can reduce risk, but they cannot eliminate residual risk or bypass governance sign-off requirements.",
+        "after": "The residual risk should be documented and referred to the designated risk-acceptance authority. Among these options, the designated business asset owner best matches that governance responsibility; the organization must define the owner’s authority and escalation limits.\nA: Absolute zero risk is an unachievable fallacy; attempting to eliminate all risk paralyzes business operations.\nB: Deploying firewall rules does not itself authorize an administrator to accept the organization’s business risk. The scenario identifies no such delegation to the junior administrator.\nD: Technical controls can reduce risk, but they cannot eliminate residual risk or bypass governance sign-off requirements."
+      },
+      "short_explanation_en": {
+        "before": "Residual risk must be recorded in the risk register and formally accepted by the designated business asset owner.",
+        "after": "Residual risk should be documented and accepted through the designated organizational authority."
+      },
+      "explanation_th": {
+        "before": "ข้อ C ถูกต้อง: ความเสี่ยงคงเหลือ (Residual Risk) คือความเสี่ยงที่ยังหลงเหลืออยู่หลังติดตั้งมาตรการป้องกันแล้ว เนื่องจากในความเป็นจริงความเสี่ยงไม่สามารถลดลงเป็นศูนย์ได้ หลักการกำกับดูแลจึงกำหนดให้บันทึกความเสี่ยงนี้ลงในทะเบียนความเสี่ยง (Risk Register) และต้องได้รับการอนุมัติยอมรับความเสี่ยงอย่างเป็นทางการจากเจ้าของทรัพย์สินทางธุรกิจที่มีอำนาจตัดสินใจ\n- ข้อ A ไม่ถูกต้อง: แนวคิดลดความเสี่ยงเป็นศูนย์เป็นสิ่งที่เป็นไปไม่ได้ในทางปฏิบัติ และจะทำให้องค์กรไม่สามารถดำเนินงานได้\n- ข้อ B ไม่ถูกต้อง: เจ้าหน้าที่ไอทีระดับปฏิบัติการไม่มีอำนาจในการยอมรับความเสี่ยงทางธุรกิจขององค์กร\n- ข้อ D ไม่ถูกต้อง: การซื้อฮาร์ดแวร์เพิ่มช่วยลดความเสี่ยงได้ แต่ไม่สามารถทำให้ความเสี่ยงคงเหลือเป็นศูนย์ และไม่สามารถข้ามขั้นตอนการอนุมัติของฝ่ายบริหารได้",
+        "after": "ควรบันทึกความเสี่ยงที่เหลือและเสนอให้ผู้มีอำนาจยอมรับความเสี่ยงที่ได้รับมอบหมาย ในบรรดาตัวเลือก เจ้าของทรัพย์สินทางธุรกิจที่ได้รับมอบหมายตรงกับความรับผิดชอบด้านการกำกับดูแลมากที่สุด โดยองค์กรต้องกำหนดอำนาจและขอบเขตการส่งต่อของเจ้าของนั้น\nA: แนวคิดลดความเสี่ยงเป็นศูนย์เป็นสิ่งที่เป็นไปไม่ได้ในทางปฏิบัติ และจะทำให้องค์กรไม่สามารถดำเนินงานได้\nB: การติดตั้งกฎไฟร์วอลล์ไม่ได้ให้อำนาจผู้ดูแลระบบยอมรับความเสี่ยงทางธุรกิจขององค์กรโดยตัวมันเอง และโจทย์ไม่ได้ระบุการมอบอำนาจดังกล่าวแก่ผู้ดูแลระบบระดับต้น\nD: การซื้ออุปกรณ์เพิ่มไม่สามารถขจัดความเสี่ยงคงเหลือให้หมดไป และไม่สามารถทดแทนการอนุมัติยอมรับความเสี่ยงได้"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "Residual risk is the risk that remains after implementing all planned security controls. Governance requires documenting this residual risk in the enterprise risk register and obtaining formal, informed risk acceptance from the designated business asset owner who has the authority and budget to absorb the impact.",
+            "th": "ความเสี่ยงคงเหลือ (Residual Risk) คือความเสี่ยงที่ยังหลงเหลืออยู่หลังติดตั้งมาตรการป้องกันแล้ว หลักการกำกับดูแลกำหนดให้บันทึกความเสี่ยงนี้ลงในทะเบียนความเสี่ยง และต้องได้รับการลงนามยอมรับอย่างเป็นทางการจากเจ้าของทรัพย์สินทางธุรกิจ"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Absolute zero risk is an unachievable fallacy; attempting to eliminate all risk paralyzes business operations.",
+              "text_th": "แนวคิดลดความเสี่ยงเป็นศูนย์เป็นสิ่งที่เป็นไปไม่ได้ในทางปฏิบัติ และจะทำให้องค์กรไม่สามารถดำเนินงานได้"
+            },
+            {
+              "letter": "B",
+              "text_en": "Operational IT staff or administrators cannot accept business risk; only business asset owners or executive management possess the authority to accept risk.",
+              "text_th": "เจ้าหน้าที่ไอทีระดับปฏิบัติการไม่มีอำนาจในการยอมรับความเสี่ยงทางธุรกิจขององค์กร"
+            },
+            {
+              "letter": "D",
+              "text_en": "Technical controls can reduce risk, but they cannot eliminate residual risk or bypass governance sign-off requirements.",
+              "text_th": "การซื้ออุปกรณ์เพิ่มไม่สามารถขจัดความเสี่ยงคงเหลือให้หมดไป และไม่สามารถทดแทนการอนุมัติยอมรับความเสี่ยงได้"
+            }
+          ],
+          "example": {
+            "en": "A hospital radiology department head formally signs the risk register accepting low-likelihood zero-day risk on an encrypted PACS imaging server after MFA and EDR are verified.",
+            "th": "หัวหน้าแผนกรังสีวิทยาร่วมลงนามในทะเบียนความเสี่ยงเพื่อยอมรับความเสี่ยงคงเหลือระดับต่ำของเซิร์ฟเวอร์ภาพถ่ายทางการแพทย์หลังตรวจสอบมาตรการ MFA และ EDR เรียบร้อยแล้ว"
+          },
+          "exam_tip": {
+            "en": "On the ISC2 CC exam, watch out for answers claiming security can achieve 'zero risk.' Security balances protection with business functionality, and residual risk must always be accepted by business owners.",
+            "th": "ในการสอบ ISC2 CC ให้ระวังตัวเลือกที่อ้างว่าความปลอดภัยสามารถทำให้ 'ความเสี่ยงเป็นศูนย์' ได้ เพราะความมั่นคงปลอดภัยต้องรักษาสมดุลกับการใช้งาน และความเสี่ยงคงเหลือต้องมีเจ้าของธุรกิจลงนามยอมรับเสมอ"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "The residual risk should be documented and referred to the designated risk-acceptance authority. Among these options, the designated business asset owner best matches that governance responsibility; the organization must define the owner’s authority and escalation limits.",
+            "th": "ควรบันทึกความเสี่ยงที่เหลือและเสนอให้ผู้มีอำนาจยอมรับความเสี่ยงที่ได้รับมอบหมาย ในบรรดาตัวเลือก เจ้าของทรัพย์สินทางธุรกิจที่ได้รับมอบหมายตรงกับความรับผิดชอบด้านการกำกับดูแลมากที่สุด โดยองค์กรต้องกำหนดอำนาจและขอบเขตการส่งต่อของเจ้าของนั้น"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Absolute zero risk is an unachievable fallacy; attempting to eliminate all risk paralyzes business operations.",
+              "text_th": "แนวคิดลดความเสี่ยงเป็นศูนย์เป็นสิ่งที่เป็นไปไม่ได้ในทางปฏิบัติ และจะทำให้องค์กรไม่สามารถดำเนินงานได้"
+            },
+            {
+              "letter": "B",
+              "text_en": "Deploying firewall rules does not itself authorize an administrator to accept the organization’s business risk. The scenario identifies no such delegation to the junior administrator.",
+              "text_th": "การติดตั้งกฎไฟร์วอลล์ไม่ได้ให้อำนาจผู้ดูแลระบบยอมรับความเสี่ยงทางธุรกิจขององค์กรโดยตัวมันเอง และโจทย์ไม่ได้ระบุการมอบอำนาจดังกล่าวแก่ผู้ดูแลระบบระดับต้น"
+            },
+            {
+              "letter": "D",
+              "text_en": "Technical controls can reduce risk, but they cannot eliminate residual risk or bypass governance sign-off requirements.",
+              "text_th": "การซื้ออุปกรณ์เพิ่มไม่สามารถขจัดความเสี่ยงคงเหลือให้หมดไป และไม่สามารถทดแทนการอนุมัติยอมรับความเสี่ยงได้"
+            }
+          ],
+          "example": {
+            "en": "A hospital radiology department head formally signs the risk register accepting low-likelihood zero-day risk on an encrypted PACS imaging server after MFA and EDR are verified.",
+            "th": "หัวหน้าแผนกรังสีวิทยาร่วมลงนามในทะเบียนความเสี่ยงเพื่อยอมรับความเสี่ยงคงเหลือระดับต่ำของเซิร์ฟเวอร์ภาพถ่ายทางการแพทย์หลังตรวจสอบมาตรการ MFA และ EDR เรียบร้อยแล้ว"
+          },
+          "exam_tip": {
+            "en": "Check that residual risk is documented and accepted through the organization’s designated authority. Technical implementation alone is not risk-acceptance authorization.",
+            "th": "ตรวจว่าความเสี่ยงที่เหลือได้รับการบันทึกและยอมรับผ่านผู้มีอำนาจที่องค์กรกำหนด การนำมาตรการทางเทคนิคไปใช้เพียงอย่างเดียวไม่ใช่การมอบอำนาจยอมรับความเสี่ยง"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 638,
+    "domain": 2,
+    "issue": "Discussion-based exercise is generalized as a mandatory universal progression with zero operational effect.",
+    "references": [
+      "R10",
+      "L07"
+    ],
+    "safe_to_apply": true,
+    "key_before": "A",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option A is correct. A tabletop exercise (or structured walkthrough) brings key emergency personnel together in a discussion-based, conference room setting to step through disaster scenarios role-by-role. It validates procedural logic, clarifies responsibilities, and identifies planning flaws at low cost with zero disruption to active business operations, making it the recommended initial test for any new or updated DRP. Option B is incorrect because a full-interruption test completely terminates primary operations; it is high-risk, expensive, and should only be considered after preliminary tests succeed. Option C is incorrect because a parallel test involves running live workloads on duplicate environments, which requires substantial resources and comes later in the testing lifecycle. Option D is incorrect because an unannounced physical evacuation during peak business hours disrupts operations and does not evaluate IT system recovery procedures.",
+        "after": "A discussion-based tabletop exercise fits the stated goal of reviewing roles, recovery procedures and communications without intentionally interrupting production. It can expose procedural gaps, but does not demonstrate that technical recovery or failover will work.\nB: A full-interruption test terminates primary operations; it is high-risk, expensive, and should only be considered after preliminary tests succeed.\nC: The proposed 48-hour parallel processing test requires recovery resources and operational coordination beyond the low-cost discussion sought here. Exercise selection depends on objectives and risk, not a universal sequence.\nD: An unannounced evacuation disrupts customer service and does not evaluate IT system recovery procedures."
+      },
+      "short_explanation_en": {
+        "before": "Tabletop exercises allow teams to validate DRP roles and procedures cost-effectively with zero operational disruption.",
+        "after": "A tabletop can review roles and procedures without intentionally interrupting production; it does not prove technical recovery."
+      },
+      "explanation_th": {
+        "before": "ข้อ A ถูกต้อง: การฝึกซ้อมบนโต๊ะ (Tabletop exercise หรือ Structured walkthrough) เป็นการนำบุคลากรหลักมาร่วมพูดคุยและทบทวนขั้นตอนตามแผนทีละขั้นตอนในห้องประชุมเพื่อตรวจสอบความเข้าใจและข้อบกพร่อง โดยมีค่าใช้จ่ายต่ำและไม่กระทบต่อการทำงานจริง จึงเป็นขั้นตอนแรกที่ควรทำในการทดสอบแผน DRP เสมอ\n- ข้อ B ไม่ถูกต้อง: Full-interruption test คือการตัดระบบจริงเพื่อทดสอบศูนย์สำรอง เป็นการทดสอบที่มีความเสี่ยงและค่าใช้จ่ายสูงสุด ต้องทำหลังจากผ่านการทดสอบระดับอื่นมาแล้ว\n- ข้อ C ไม่ถูกต้อง: Parallel test เป็นการทดสอบขั้นสูงที่นำศูนย์สำรองมารันงานควบคู่ไปกับระบบจริง ต้องใช้ทรัพยากรสูงและไม่ใช่วิธีแรกที่ควรทำ\n- ข้อ D ไม่ถูกต้อง: การซ้อมอพยพโดยไม่แจ้งล่วงหน้ากระทบต่อการบริการลูกค้า และไม่ได้เป็นการตรวจสอบขั้นตอนการกู้คืนระบบไอที",
+        "after": "การฝึกซ้อม Tabletop แบบอภิปรายเหมาะกับเป้าหมายทบทวนบทบาท ขั้นตอนกู้คืน และการสื่อสาร โดยไม่จงใจหยุดระบบจริง สามารถช่วยพบช่องว่างของกระบวนการ แต่ไม่ได้พิสูจน์ว่าการกู้คืนทางเทคนิคหรือ Failover จะทำงานได้\nB: การทดสอบแบบตัดระบบจริงมีความเสี่ยงและค่าใช้จ่ายสูงมาก ไม่ควรทำเป็นขั้นตอนแรก\nC: การทดสอบประมวลผลคู่ขนาน 48 ชั่วโมงที่เสนอต้องใช้ทรัพยากรกู้คืนและการประสานงานเกินกว่าการอภิปรายต้นทุนต่ำที่ต้องการในโจทย์ การเลือกแบบฝึกขึ้นกับวัตถุประสงค์และความเสี่ยง ไม่ใช่ลำดับเดียวที่ใช้ทุกกรณี\nD: การซ้อมอพยพกะทันหันรบกวนลูกค้าและไม่ได้ประเมินขั้นตอนการกู้คืนระบบไอที"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "A tabletop exercise (or structured walkthrough) brings key emergency personnel together in a discussion-based, conference room setting to step through disaster scenarios role-by-role. It validates procedural logic and clarifies responsibilities at low cost with zero disruption to active business operations, making it the recommended initial test for any new DRP.",
+            "th": "การฝึกซ้อมบนโต๊ะ (Tabletop exercise หรือ Structured walkthrough) เป็นการรวมผู้มีบทบาทสำคัญมาทบทวนขั้นตอนการกู้คืนในห้องประชุมเพื่อสร้างความเข้าใจและหาข้อบกพร่อง โดยไม่กระทบต่อการทำงานจริงและประหยัดค่าใช้จ่าย จึงเป็นวิธีเริ่มต้นที่เหมาะสมที่สุด"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "A full-interruption test terminates primary operations; it is high-risk, expensive, and should only be considered after preliminary tests succeed.",
+              "text_th": "การทดสอบแบบตัดระบบจริงมีความเสี่ยงและค่าใช้จ่ายสูงมาก ไม่ควรทำเป็นขั้นตอนแรก"
+            },
+            {
+              "letter": "C",
+              "text_en": "A parallel test requires duplicate systems and substantial resources, occurring later in the testing progression.",
+              "text_th": "การทดสอบแบบคู่ขนานต้องใช้ทรัพยากรสูงและจัดอยู่ในลำดับขั้นการทดสอบที่สูงกว่า"
+            },
+            {
+              "letter": "D",
+              "text_en": "An unannounced evacuation disrupts customer service and does not evaluate IT system recovery procedures.",
+              "text_th": "การซ้อมอพยพกะทันหันรบกวนลูกค้าและไม่ได้ประเมินขั้นตอนการกู้คืนระบบไอที"
+            }
+          ],
+          "example": {
+            "en": "Before testing failover servers, a bank's CISO hosts a 3-hour tabletop walkthrough with department heads to confirm everyone understands who declares a disaster and contacts the DR site.",
+            "th": "ก่อนการทดสอบสลับระบบจริง CISO ของธนาคารจัดประชุม Tabletop นาน 3 ชั่วโมงกับหัวหน้าแผนกเพื่อซักซ้อมว่าใครเป็นผู้ประกาศภาวะภัยพิบัติและใครต้องประสานงานกับศูนย์สำรอง"
+          },
+          "exam_tip": {
+            "en": "On the ISC2 CC exam, recognize the standard testing progression: Checklist review -> Tabletop/Walkthrough -> Simulation -> Parallel test -> Full interruption test.",
+            "th": "ลำดับขั้นการทดสอบ DRP สำหรับการสอบ CC: ตรวจสอบเอกสาร (Checklist) -> ซักซ้อมบนโต๊ะ (Tabletop) -> จำลองสถานการณ์ (Simulation) -> ทดสอบคู่ขนาน (Parallel) -> ตัดระบบจริง (Full-interruption)"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "A discussion-based tabletop exercise fits the stated goal of reviewing roles, recovery procedures and communications without intentionally interrupting production. It can expose procedural gaps, but does not demonstrate that technical recovery or failover will work.",
+            "th": "การฝึกซ้อม Tabletop แบบอภิปรายเหมาะกับเป้าหมายทบทวนบทบาท ขั้นตอนกู้คืน และการสื่อสาร โดยไม่จงใจหยุดระบบจริง สามารถช่วยพบช่องว่างของกระบวนการ แต่ไม่ได้พิสูจน์ว่าการกู้คืนทางเทคนิคหรือ Failover จะทำงานได้"
+          },
+          "incorrect": [
+            {
+              "letter": "B",
+              "text_en": "A full-interruption test terminates primary operations; it is high-risk, expensive, and should only be considered after preliminary tests succeed.",
+              "text_th": "การทดสอบแบบตัดระบบจริงมีความเสี่ยงและค่าใช้จ่ายสูงมาก ไม่ควรทำเป็นขั้นตอนแรก"
+            },
+            {
+              "letter": "C",
+              "text_en": "The proposed 48-hour parallel processing test requires recovery resources and operational coordination beyond the low-cost discussion sought here. Exercise selection depends on objectives and risk, not a universal sequence.",
+              "text_th": "การทดสอบประมวลผลคู่ขนาน 48 ชั่วโมงที่เสนอต้องใช้ทรัพยากรกู้คืนและการประสานงานเกินกว่าการอภิปรายต้นทุนต่ำที่ต้องการในโจทย์ การเลือกแบบฝึกขึ้นกับวัตถุประสงค์และความเสี่ยง ไม่ใช่ลำดับเดียวที่ใช้ทุกกรณี"
+            },
+            {
+              "letter": "D",
+              "text_en": "An unannounced evacuation disrupts customer service and does not evaluate IT system recovery procedures.",
+              "text_th": "การซ้อมอพยพกะทันหันรบกวนลูกค้าและไม่ได้ประเมินขั้นตอนการกู้คืนระบบไอที"
+            }
+          ],
+          "example": {
+            "en": "Before testing failover servers, a bank's CISO hosts a 3-hour tabletop walkthrough with department heads to confirm everyone understands who declares a disaster and contacts the DR site.",
+            "th": "ก่อนการทดสอบสลับระบบจริง CISO ของธนาคารจัดประชุม Tabletop นาน 3 ชั่วโมงกับหัวหน้าแผนกเพื่อซักซ้อมว่าใครเป็นผู้ประกาศภาวะภัยพิบัติและใครต้องประสานงานกับศูนย์สำรอง"
+          },
+          "exam_tip": {
+            "en": "Choose the exercise that tests the stated objective within the disruption and resource constraints. Discussion and technical execution provide different evidence; terminology and progression may vary by program.",
+            "th": "เลือกการฝึกที่ตรวจสอบวัตถุประสงค์ตามข้อจำกัดเรื่องผลกระทบและทรัพยากร การอภิปรายและการลงมือทดสอบทางเทคนิคให้หลักฐานต่างกัน และชื่อหรือขั้นตอนการฝึกอาจแตกต่างตามโปรแกรม"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 639,
+    "domain": 2,
+    "issue": "Shortest MTD is asserted as a universal recovery sequence ignoring dependencies.",
+    "references": [
+      "R10",
+      "L06"
+    ],
+    "safe_to_apply": true,
+    "key_before": "B",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation": {
+        "before": "Option B is correct. In business continuity and disaster recovery, systems must be restored strictly in accordance with recovery priorities established by the Business Impact Analysis (BIA). The system with the shortest Maximum Tolerable Downtime (MTD) and Recovery Time Objective (RTO)—here, the Customer Emergency Dispatch System with an MTD of 2 hours—must be restored first, because exceeding its MTD threatens human life, critical safety, and corporate survival. Option A is incorrect because payroll has an MTD of 72 hours, allowing substantial time for restoration compared to emergency dispatch. Option C is incorrect because marketing visibility (MTD = 120 hours) is non-critical compared to life safety or vital operations. Option D is incorrect because recovery sequencing is governed by business criticality and MTD/RTO thresholds, not by data storage size or technical convenience.",
+        "after": "Among the listed choices, emergency dispatch has the stated safety-critical function and the shortest downtime tolerance, so it is the best recovery priority on the supplied facts. An actual recovery sequence must also account for the BIA’s dependencies, prerequisites and approved recovery objectives.\nA: Payroll has an MTD of 72 hours, allowing substantial time for restoration compared to emergency dispatch.\nC: Marketing visibility is non-critical compared to emergency dispatch operations.\nD: Recovery sequencing is governed by business criticality and MTD thresholds, not by data storage size or technical convenience."
+      },
+      "short_explanation_en": {
+        "before": "System recovery sequencing is prioritized by shortest Maximum Tolerable Downtime (MTD) and BIA criticality.",
+        "after": "Recovery priorities consider business criticality, downtime tolerances and system dependencies."
+      },
+      "explanation_th": {
+        "before": "ข้อ B ถูกต้อง: ในการกู้คืนระบบจากภัยพิบัติ ลำดับความสำคัญในการกู้คืนต้องเป็นไปตามผลการวิเคราะห์ BIA อย่างเคร่งครัด โดยระบบที่มีระยะเวลาหยุดทำงานสูงสุดที่ยอมรับได้ (Maximum Tolerable Downtime - MTD) สั้นที่สุดจะต้องได้รับการกู้คืนก่อน ในที่นี้คือระบบประสานงานเหตุฉุกเฉิน (MTD 2 ชั่วโมง) เพราะหากเกินเวลานี้จะส่งผลกระทบต่อความปลอดภัยและสร้างความเสียหายรุนแรงที่สุด\n- ข้อ A ไม่ถูกต้อง: ระบบเงินเดือนมี MTD นานถึง 72 ชั่วโมง ยังสามารถรอการกู้คืนในลำดับถัดไปได้\n- ข้อ C ไม่ถูกต้อง: เว็บไซต์การตลาดมี MTD นานที่สุด (120 ชั่วโมง) ไม่ใช่ระบบวิกฤติต่อความอยู่รอด\n- ข้อ D ไม่ถูกต้อง: การจัดลำดับกู้คืนต้องขึ้นอยู่กับความสำคัญทางธุรกิจและค่า MTD ไม่ใช่ขนาดของข้อมูล",
+        "after": "ในบรรดาตัวเลือก ระบบ Emergency dispatch มีหน้าที่สำคัญต่อความปลอดภัยตามโจทย์และมีระยะเวลาที่ทนต่อการหยุดทำงานสั้นที่สุด จึงควรได้รับความสำคัญในการกู้คืนจากข้อมูลที่ให้มา ส่วนลำดับกู้คืนจริงต้องพิจารณาระบบที่พึ่งพากัน เงื่อนไขก่อนดำเนินการ และเป้าหมายกู้คืนที่อนุมัติใน BIA ด้วย\nA: ระบบเงินเดือนมี MTD นานถึง 72 ชั่วโมง ยังมีเวลากู้คืนได้หลังจากระบบวิกฤติได้รับการดูแลแล้ว\nC: เว็บไซต์การตลาดมีความสำคัญรองลงมาอย่างมากเมื่อเทียบกับระบบฉุกเฉินที่กระทบความปลอดภัย\nD: ลำดับการกู้คืนต้องพิจารณาจากผลกระทบทางธุรกิจและค่า MTD ไม่ใช่ความสะดวกหรือขนาดพื้นที่ข้อมูล"
+      },
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "In business continuity and disaster recovery, systems must be restored strictly in accordance with recovery priorities established by the Business Impact Analysis (BIA). The system with the shortest Maximum Tolerable Downtime (MTD) must be restored first because exceeding its threshold threatens organizational viability.",
+            "th": "ในการกู้คืนระบบจากภัยพิบัติ การจัดลำดับความสำคัญต้องอิงตามผลวิเคราะห์ BIA โดยระบบที่มีค่า MTD สั้นที่สุดต้องได้รับการกู้คืนเป็นอันดับแรกเพื่อป้องกันความเสียหายต่อความอยู่รอดขององค์กร"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Payroll has an MTD of 72 hours, allowing substantial time for restoration compared to emergency dispatch.",
+              "text_th": "ระบบเงินเดือนมี MTD นานถึง 72 ชั่วโมง ยังมีเวลากู้คืนได้หลังจากระบบวิกฤติได้รับการดูแลแล้ว"
+            },
+            {
+              "letter": "C",
+              "text_en": "Marketing visibility is non-critical compared to emergency dispatch operations.",
+              "text_th": "เว็บไซต์การตลาดมีความสำคัญรองลงมาอย่างมากเมื่อเทียบกับระบบฉุกเฉินที่กระทบความปลอดภัย"
+            },
+            {
+              "letter": "D",
+              "text_en": "Recovery sequencing is governed by business criticality and MTD thresholds, not by data storage size or technical convenience.",
+              "text_th": "ลำดับการกู้คืนต้องพิจารณาจากผลกระทบทางธุรกิจและค่า MTD ไม่ใช่ความสะดวกหรือขนาดพื้นที่ข้อมูล"
+            }
+          ],
+          "example": {
+            "en": "A hospital disaster response team restores the patient life-support telemetry network (MTD = 30 min) before recovering billing servers (MTD = 48 hrs).",
+            "th": "ทีมกู้คืนระบบของโรงพยาบาลจะกู้คืนระบบมอนิเตอร์สัญญาณชีพออนไลน์ (MTD = 30 นาที) ก่อนเซิร์ฟเวอร์ระบบออกใบแจ้งหนี้ (MTD = 48 ชั่วโมง)"
+          },
+          "exam_tip": {
+            "en": "Remember for the CC exam: MTD (Maximum Tolerable Downtime) is the overall business tolerance limit; RTO (Recovery Time Objective) must always be set shorter than or equal to MTD.",
+            "th": "ข้อควรจำสำหรับการสอบ CC: ค่า MTD คือขีดจำกัดสูงสุดที่ธุรกิจจะทนได้ ส่วน RTO คือเป้าหมายเวลาในการกู้คืนระบบ ซึ่งจะต้องสั้นกว่าหรือเท่ากับ MTD เสมอ"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "Among the listed choices, emergency dispatch has the stated safety-critical function and the shortest downtime tolerance, so it is the best recovery priority on the supplied facts. An actual recovery sequence must also account for the BIA’s dependencies, prerequisites and approved recovery objectives.",
+            "th": "ในบรรดาตัวเลือก ระบบ Emergency dispatch มีหน้าที่สำคัญต่อความปลอดภัยตามโจทย์และมีระยะเวลาที่ทนต่อการหยุดทำงานสั้นที่สุด จึงควรได้รับความสำคัญในการกู้คืนจากข้อมูลที่ให้มา ส่วนลำดับกู้คืนจริงต้องพิจารณาระบบที่พึ่งพากัน เงื่อนไขก่อนดำเนินการ และเป้าหมายกู้คืนที่อนุมัติใน BIA ด้วย"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Payroll has an MTD of 72 hours, allowing substantial time for restoration compared to emergency dispatch.",
+              "text_th": "ระบบเงินเดือนมี MTD นานถึง 72 ชั่วโมง ยังมีเวลากู้คืนได้หลังจากระบบวิกฤติได้รับการดูแลแล้ว"
+            },
+            {
+              "letter": "C",
+              "text_en": "Marketing visibility is non-critical compared to emergency dispatch operations.",
+              "text_th": "เว็บไซต์การตลาดมีความสำคัญรองลงมาอย่างมากเมื่อเทียบกับระบบฉุกเฉินที่กระทบความปลอดภัย"
+            },
+            {
+              "letter": "D",
+              "text_en": "Recovery sequencing is governed by business criticality and MTD thresholds, not by data storage size or technical convenience.",
+              "text_th": "ลำดับการกู้คืนต้องพิจารณาจากผลกระทบทางธุรกิจและค่า MTD ไม่ใช่ความสะดวกหรือขนาดพื้นที่ข้อมูล"
+            }
+          ],
+          "example": {
+            "en": "A hospital disaster response team restores the patient life-support telemetry network (MTD = 30 min) before recovering billing servers (MTD = 48 hrs).",
+            "th": "ทีมกู้คืนระบบของโรงพยาบาลจะกู้คืนระบบมอนิเตอร์สัญญาณชีพออนไลน์ (MTD = 30 นาที) ก่อนเซิร์ฟเวอร์ระบบออกใบแจ้งหนี้ (MTD = 48 ชั่วโมง)"
+          },
+          "exam_tip": {
+            "en": "Remember for the CC exam: MTD (Maximum Tolerable Downtime) is the overall business tolerance limit; RTO (Recovery Time Objective) must always be set shorter than or equal to MTD.",
+            "th": "ข้อควรจำสำหรับการสอบ CC: ค่า MTD คือขีดจำกัดสูงสุดที่ธุรกิจจะทนได้ ส่วน RTO คือเป้าหมายเวลาในการกู้คืนระบบ ซึ่งจะต้องสั้นกว่าหรือเท่ากับ MTD เสมอ"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 645,
+    "domain": 2,
+    "issue": "Tip attributes a fixed audience-format rule to the CC exam.",
+    "references": [
+      "R11",
+      "L06"
+    ],
+    "safe_to_apply": true,
+    "key_before": "D",
+    "key_proposed": "unchanged",
+    "fields": {
+      "explanation_detail": {
+        "before": {
+          "correct": {
+            "en": "A Security Dashboard delivers dynamic, real-time tactical telemetry for technical operations teams (like SOC engineers), while a Security Scorecard provides periodic, structured evaluative ratings (like letter grades or compliance percentages) for executive governance.",
+            "th": "แดชบอร์ดความปลอดภัยแสดงข้อมูลเชิงปฏิบัติการแบบเรียลไทม์สำหรับทีมเทคนิค (เช่น วิศวกร SOC) ในขณะที่สกอร์การ์ดนำเสนอผลประเมินตามรอบเวลาสำหรับผู้บริหาร"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Static annual reports fail frontline operational needs, and terminal logs overwhelm executive committees.",
+              "text_th": "รายงานประจำปีไม่ตอบสนองงานปฏิบัติการสด และข้อมูลล็อกเทอร์มินัลไม่เหมาะกับผู้บริหาร"
+            },
+            {
+              "letter": "B",
+              "text_en": "Unencrypted spreadsheets lack automation, real-time capabilities, and data security.",
+              "text_th": "สเปรดชีตที่ไม่ได้เข้ารหัสไม่ปลอดภัยและไม่สามารถแสดงผลแบบเรียลไทม์ได้"
+            },
+            {
+              "letter": "C",
+              "text_en": "SOC engineers cannot respond to active incidents using periodic scorecards, and board members cannot parse raw syslog streams.",
+              "text_th": "วิศวกร SOC ไม่สามารถใช้สกอร์การ์ดรับมือภัยสดๆ ได้ และคณะกรรมการไม่สามารถอ่านข้อความ syslog ดิบได้"
+            }
+          ],
+          "example": {
+            "en": "A SIEM dashboard displays flashing real-time alerts on SOC monitors, while the CISO sends a monthly color-coded scorecard to the board showing which departments remediated vulnerabilities on time.",
+            "th": "จอภาพในห้อง SOC แสดงแดชบอร์ดของระบบ SIEM แบบเรียลไทม์ ในขณะที่ CISO ส่งสกอร์การ์ดสีเขียว-เหลือง-แดงให้บอร์ดบริหารทุกสิ้นเดือนเพื่อรายงานว่าแผนกใดปิดช่องโหว่ได้ตามกำหนด"
+          },
+          "exam_tip": {
+            "en": "Audience matching is key on the CC exam: Tactical/Operational (SOC) = Real-time Dashboards; Strategic/Governance (Board/Audit) = Periodic Scorecards and Executive Reports.",
+            "th": "หลักการจับคู่กลุ่มผู้รับสารในการสอบ CC: ระดับปฏิบัติการ (SOC) = แดชบอร์ดเรียลไทม์; ระดับกลยุทธ์/การกำกับดูแล (บอร์ด/ผู้บริหาร) = สกอร์การ์ดและรายงานสรุปเป็นงวดๆ"
+          }
+        },
+        "after": {
+          "correct": {
+            "en": "A Security Dashboard delivers dynamic, real-time tactical telemetry for technical operations teams (like SOC engineers), while a Security Scorecard provides periodic, structured evaluative ratings (like letter grades or compliance percentages) for executive governance.",
+            "th": "แดชบอร์ดความปลอดภัยแสดงข้อมูลเชิงปฏิบัติการแบบเรียลไทม์สำหรับทีมเทคนิค (เช่น วิศวกร SOC) ในขณะที่สกอร์การ์ดนำเสนอผลประเมินตามรอบเวลาสำหรับผู้บริหาร"
+          },
+          "incorrect": [
+            {
+              "letter": "A",
+              "text_en": "Static annual reports fail frontline operational needs, and terminal logs overwhelm executive committees.",
+              "text_th": "รายงานประจำปีไม่ตอบสนองงานปฏิบัติการสด และข้อมูลล็อกเทอร์มินัลไม่เหมาะกับผู้บริหาร"
+            },
+            {
+              "letter": "B",
+              "text_en": "Unencrypted spreadsheets lack automation, real-time capabilities, and data security.",
+              "text_th": "สเปรดชีตที่ไม่ได้เข้ารหัสไม่ปลอดภัยและไม่สามารถแสดงผลแบบเรียลไทม์ได้"
+            },
+            {
+              "letter": "C",
+              "text_en": "SOC engineers cannot respond to active incidents using periodic scorecards, and board members cannot parse raw syslog streams.",
+              "text_th": "วิศวกร SOC ไม่สามารถใช้สกอร์การ์ดรับมือภัยสดๆ ได้ และคณะกรรมการไม่สามารถอ่านข้อความ syslog ดิบได้"
+            }
+          ],
+          "example": {
+            "en": "A SIEM dashboard displays flashing real-time alerts on SOC monitors, while the CISO sends a monthly color-coded scorecard to the board showing which departments remediated vulnerabilities on time.",
+            "th": "จอภาพในห้อง SOC แสดงแดชบอร์ดของระบบ SIEM แบบเรียลไทม์ ในขณะที่ CISO ส่งสกอร์การ์ดสีเขียว-เหลือง-แดงให้บอร์ดบริหารทุกสิ้นเดือนเพื่อรายงานว่าแผนกใดปิดช่องโหว่ได้ตามกำหนด"
+          },
+          "exam_tip": {
+            "en": "In this scenario, a live dashboard fits SOC monitoring and a periodic scorecard fits target-based review. Select formats by the audience’s actual decisions, not by an exclusive job-title rule.",
+            "th": "ในโจทย์นี้ Dashboard แบบสดเหมาะกับการเฝ้าระวังของ SOC และ Scorecard เป็นระยะเหมาะกับการทบทวนตามเป้าหมาย เลือกรูปแบบตามการตัดสินใจจริงของกลุ่มเป้าหมาย ไม่ใช่กฎที่ผูกตายตัวกับชื่อตำแหน่ง"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 1018,
+    "domain": 5,
+    "issue": "Thai stem omits the English MOST appropriate qualifier.",
+    "references": [
+      "R01",
+      "L08"
+    ],
+    "safe_to_apply": true,
+    "key_before": "B",
+    "key_proposed": "unchanged",
+    "fields": {
+      "question_th": {
+        "before": "รายงานภัยคุกคามที่เชื่อถือได้ระบุ Hash ไฟล์อันตรายและช่วงที่ Campaign ทำงาน นักวิเคราะห์ต้องการทราบว่า Endpoint ที่เกี่ยวข้องเคยพบไฟล์นั้นหรือไม่ ควรใช้รายงานอย่างไร?",
+        "after": "รายงานภัยคุกคามที่เชื่อถือได้ระบุ Hash ไฟล์อันตรายและช่วงที่ Campaign ทำงาน นักวิเคราะห์ต้องการทราบว่า Endpoint ที่เกี่ยวข้องเคยพบไฟล์นั้นหรือไม่ การใช้รายงานในข้อใดเหมาะสมที่สุด?"
+      }
+    }
+  }
+]

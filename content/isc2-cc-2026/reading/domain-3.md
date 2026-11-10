@@ -141,36 +141,10 @@
   </div>
   <figcaption class="reading-figcaption">
     <span class="reading-figure-badge badge-have">Something You Have · Cryptographic Smart Card</span>
-    <strong>ฮาร์ดแวร์ยืนยันตัวตน Personal Identity Verification (PIV / CAC Smart Card):</strong> ตัวอย่างบัตรสมาร์ตการ์ดมาตรฐานความปลอดภัยระดับสูง แสดงแผ่นสัมผัสโลหะทองของไมโครโปรเซสเซอร์ (Integrated Circuit Chip) ที่จัดเก็บ Private Key และ Digital Certificate อย่างปลอดภัย โดยไม่สามารถคัดลอกหรือดึงกุญแจลับออกมาได้ (Hardware Cryptographic Token)
+    <strong>ฮาร์ดแวร์ยืนยันตัวตน Personal Identity Verification (PIV / CAC Smart Card):</strong> ตัวอย่างบัตรสมาร์ตการ์ดมาตรฐานความปลอดภัยระดับสูง แสดงแผ่นสัมผัสโลหะทองของไมโครโปรเซสเซอร์ (Integrated Circuit Chip) ที่จัดเก็บ Private Key และ Digital Certificate อย่างปลอดภัย โดยออกแบบให้ใช้กุญแจภายในขอบเขตป้องกันตามการตั้งค่า แต่ไม่ใช่หลักประกันว่าดึงกุญแจออกไม่ได้ในทุกสถานการณ์ / A hardware token is designed to protect configured keys; protection is implementation-dependent.
     <span class="reading-figure-attr">ภาพ: U.S. Government Accountability Office (GAO Report GAO-11-751) / Public Domain</span>
   </figcaption>
 </figure>
-
-<div class="reading-semantic-diagram" data-diagram="biometricSensitivityCurve"></div>
-
-<div class="reading-example-box">
-  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การปรับตั้งค่าไบโอเมตริกซ์ — ห้องมั่นคงคลังอาวุธ (High Security) เทียบกับ ประตูตรวจบัตรสนามบิน (High Throughput)</div>
-  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> องค์กรด้านความมั่นคงกำลังติดตั้งระบบสแกนม่านตา (Iris Scanner) ใน 2 พื้นที่ที่มีเป้าหมายต่างกันอย่างสิ้นเชิง: (1) ประตูทางเข้าห้องนิรภัยเก็บข้อมูลลับทางทหาร และ (2) ประตูทางผ่านอัตโนมัติ (Automated Border Gate) ที่สนามบินนานาชาติ</div>
-  <div class="reading-example-step"><strong>2. การตั้งค่าพื้นที่ความมั่นคงสูง (Vault / Military: เน้น Low FAR):</strong>
-    <ul>
-      <li><strong>เป้าหมาย:</strong> ป้องกันไม่ให้ผู้ไม่มีสิทธิ์ผ่านเข้าไปได้โดยเด็ดขาด แม้จะยอมให้เจ้าหน้าที่ตัวจริงถูกปฏิเสธบ้างก็ตาม</li>
-      <li><strong>การตั้งค่า:</strong> ปรับเพิ่มระดับความไว (High Sensitivity / Stringent Threshold) ส่งผลให้ <strong>False Acceptance Rate (FAR)</strong> ลดลงเกือบเป็น 0% (ไม่มีทางยอมรับคนแปลกหน้า)</li>
-      <li><strong>ผลข้างเคียง:</strong> <strong>False Rejection Rate (FRR)</strong> สูงขึ้น เจ้าหน้าที่ตัวจริงอาจต้องสแกนม่านตาซ้ำ 2-3 ครั้งกว่าระบบจะยอมรับ แต่ในบริบทนี้ถือเป็นเรื่องยอมรับได้เพื่อแลกกับความปลอดภัยสูงสุด</li>
-    </ul>
-  </div>
-  <div class="reading-example-step"><strong>3. การตั้งค่าพื้นที่ที่มีผู้คนหนาแน่น (Airport Turnstile: เน้น Low FRR & Throughput):</strong>
-    <ul>
-      <li><strong>เป้าหมาย:</strong> ระบายผู้โดยสารหลายหมื่นคนต่อชั่วโมง ไม่ให้เกิดคิวสะสมหรือการติดขัดที่หน้าประตู</li>
-      <li><strong>การตั้งค่า:</strong> ปรับลดระดับความไวลงเล็กน้อยเพื่อให้ผู้โดยสารที่ถูกต้องเดินผ่านได้รวดเร็ว ช่วยให้ <strong>False Rejection Rate (FRR)</strong> ต่ำสุด โดยมีเจ้าหน้าที่รักษาความปลอดภัยตรวจซ้ำเป็นด่านที่สอง</li>
-      <li><strong>จุดสมดุล (CER):</strong> ในการเลือกซื้ออุปกรณ์ ผู้จัดซื้อเลือกสแกนเนอร์ที่มีค่า <strong>Crossover Error Rate (CER / EER)</strong> ต่ำที่สุด เพราะจุดที่ FAR เท่ากับ FRR ยิ่งต่ำ หมายถึงเซ็นเซอร์มีคุณภาพและแม่นยำสูงโดยรวม</li>
-    </ul>
-  </div>
-  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): FAR (Type II Error) คือการยอมรับคนร้าย ส่วน FRR (Type I Error) คือการปฏิเสธคนดี การปรับระดับความไวของระบบไบโอเมตริกซ์ต้องสอดคล้องกับวัตถุประสงค์การใช้งาน: ระบบความมั่นคงสูงต้องการ FAR ต่ำสุด ขณะที่ระบบสาธารณะเน้น FRR ต่ำเพื่อความสะดวก และอุปกรณ์ที่ดีที่สุดคืออุปกรณ์ที่มีค่า CER ต่ำที่สุด</div>
-</div>
-
-</section>
-<p><strong>ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed):</strong> ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ</p>
-<p><strong>Illustrative check:</strong> The policy-designated approver authorizes only monthly-report reading, not payroll changes or network administration. Testing shows payroll changes also succeed. Correct the excess grant, then verify that report reading succeeds while payroll changes and network administration are denied.</p>
 
 <h3 id="topic-3-1-access-review">3.1.4 Access Review &amp; 6 Core Audit Findings: การทบทวนสิทธิ์เป็นระยะ</h3>
 
@@ -248,7 +222,7 @@
   <div class="reading-example-step"><strong>4. การแก้ไขและการบังคับใช้นโยบาย (Remediation & Least Privilege):</strong>
     <ul>
       <li>ฝ่ายความปลอดภัยเพิกถอนสิทธิ์การอนุมัติจ่ายเงินในระบบบัญชีทั้งหมดทันที</li>
-      <li>กำหนดให้ขั้นตอน Mover ในระบบ IAM บังคับตรวจสอบและตัดสิทธิ์เดิมก่อนจัดสรรสิทธิ์ใหม่โดยอัตโนมัติ เพื่อป้องกันปัญหา Privilege Creep ในอนาคต</li>
+      <li>กำหนดให้การเปลี่ยนบทบาทตรวจสิทธิ์ที่ยังจำเป็น ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และตรวจผลสิทธิ์ใหม่ตามลำดับที่องค์กรอนุมัติ / Review current need, remove obsolete/conflicting rights and verify the approved transition. เพื่อป้องกันปัญหา Privilege Creep ในอนาคต</li>
     </ul>
   </div>
   <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): ในขั้นตอน Mover ของวงจรชีวิต JML ความเสี่ยงสูงสุดคือการสะสมสิทธิ์เดิมที่ล้าสมัย (Privilege Creep) การทบทวนสิทธิ์เป็นระยะ (Periodic Access Review) ร่วมกับการบังคับใช้หลัก Least Privilege จะช่วยตรวจจับและตัดสิทธิ์ที่เกินจำเป็นออกก่อนที่จะนำไปสู่การทุจริตหรือช่องโหว่ความปลอดภัย</div>
@@ -498,6 +472,34 @@
 คืออุปสรรคและมาตรการที่ใช้ป้องกันการเข้าถึงสถานที่ อาคาร ห้องเซิร์ฟเวอร์ หรืออุปกรณ์ฮาร์ดแวร์โดยตรง (เช่น รั้ว ประตูล็อก การ์ดรักษาความปลอดภัย กล้องวงจรปิด)
 
 </section>
+<h4>Biometric matching in access control — ความคลาดเคลื่อนในการตรวจชีวมิติ</h4>
+<p>การตรวจชีวมิติใช้ได้กับการเข้าถึงทั้งดิจิทัลและกายภาพ ต้องแยกการยอมรับผิดคน (FAR) จากการปฏิเสธผู้ใช้จริง (FRR) และทดสอบเกณฑ์ให้เหมาะกับความเสี่ยง / Biometric matching may support logical or physical access; distinguish false acceptance from false rejection and test the threshold for the use case.</p>
+<div class="reading-semantic-diagram" data-diagram="biometricSensitivityCurve"></div>
+
+<div class="reading-example-box">
+  <div class="reading-example-title">สถานการณ์ตัวอย่างในโลกจริง (Realistic Operational Scenario): การปรับตั้งค่าไบโอเมตริกซ์ — ห้องมั่นคงคลังอาวุธ (High Security) เทียบกับ ประตูตรวจบัตรสนามบิน (High Throughput)</div>
+  <div class="reading-example-step"><strong>1. สถานการณ์เริ่มต้น (Initial Situation):</strong> องค์กรด้านความมั่นคงกำลังติดตั้งระบบสแกนม่านตา (Iris Scanner) ใน 2 พื้นที่ที่มีเป้าหมายต่างกันอย่างสิ้นเชิง: (1) ประตูทางเข้าห้องนิรภัยเก็บข้อมูลลับทางทหาร และ (2) ประตูทางผ่านอัตโนมัติ (Automated Border Gate) ที่สนามบินนานาชาติ</div>
+  <div class="reading-example-step"><strong>2. การตั้งค่าพื้นที่ความมั่นคงสูง (Vault / Military: เน้น Low FAR):</strong>
+    <ul>
+      <li><strong>เป้าหมาย:</strong> ป้องกันไม่ให้ผู้ไม่มีสิทธิ์ผ่านเข้าไปได้โดยเด็ดขาด แม้จะยอมให้เจ้าหน้าที่ตัวจริงถูกปฏิเสธบ้างก็ตาม</li>
+      <li><strong>การตั้งค่า:</strong> ปรับเพิ่มระดับความไว (High Sensitivity / Stringent Threshold) ส่งผลให้ <strong>False Acceptance Rate (FAR)</strong> ลดลงตามเกณฑ์ที่ทดสอบ แต่ไม่รับประกันว่าจะไม่ยอมรับผิดคน (Lower measured FAR, not zero-risk authentication)</li>
+      <li><strong>ผลข้างเคียง:</strong> <strong>False Rejection Rate (FRR)</strong> สูงขึ้น เจ้าหน้าที่ตัวจริงอาจต้องสแกนม่านตาซ้ำ 2-3 ครั้งกว่าระบบจะยอมรับ แต่ในบริบทนี้ถือเป็นเรื่องยอมรับได้เพื่อแลกกับความปลอดภัยสูงสุด</li>
+    </ul>
+  </div>
+  <div class="reading-example-step"><strong>3. การตั้งค่าพื้นที่ที่มีผู้คนหนาแน่น (Airport Turnstile: เน้น Low FRR & Throughput):</strong>
+    <ul>
+      <li><strong>เป้าหมาย:</strong> ระบายผู้โดยสารหลายหมื่นคนต่อชั่วโมง ไม่ให้เกิดคิวสะสมหรือการติดขัดที่หน้าประตู</li>
+      <li><strong>การตั้งค่า:</strong> ปรับลดระดับความไวลงเล็กน้อยเพื่อให้ผู้โดยสารที่ถูกต้องเดินผ่านได้รวดเร็ว ช่วยให้ <strong>False Rejection Rate (FRR)</strong> ต่ำสุด โดยมีเจ้าหน้าที่รักษาความปลอดภัยตรวจซ้ำเป็นด่านที่สอง</li>
+      <li><strong>จุดสมดุล (CER):</strong> ในการเลือกซื้ออุปกรณ์ ผู้จัดซื้อเปรียบเทียบ <strong>Crossover Error Rate (CER / EER)</strong> ภายใต้ชุดข้อมูลและเงื่อนไขทดสอบที่เทียบกันได้ ค่าต่ำอาจช่วยเปรียบเทียบระบบ แต่จุดที่ FAR เท่ากับ FRR ไม่จำเป็นต้องเป็นเกณฑ์ใช้งานที่เหมาะกับทุกพื้นที่ / Compare EER under comparable tests; the equal-error point is not every site’s operating threshold.</li>
+    </ul>
+  </div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): FAR (Type II Error) คือการยอมรับคนร้าย ส่วน FRR (Type I Error) คือการปฏิเสธคนดี การปรับระดับความไวของระบบไบโอเมตริกซ์ต้องสอดคล้องกับวัตถุประสงค์การใช้งาน: ระบบความมั่นคงสูงต้องการ FAR ต่ำสุด ขณะที่ระบบสาธารณะเน้น FRR ต่ำเพื่อความสะดวก และอุปกรณ์ที่ดีที่สุดคืออุปกรณ์ที่มีค่า CER ต่ำที่สุด</div>
+</div>
+
+</section>
+<p><strong>ตัวอย่างสมมติ: สิทธิ์ที่อนุมัติเทียบกับผลจริง (Approved vs observed):</strong> ผู้มีอำนาจตามนโยบายอนุมัติให้นักวิเคราะห์อ่านรายงานรายเดือนเท่านั้น ไม่ให้แก้ Payroll หรือดูแล Network แต่ผลตรวจพบว่าแก้ Payroll ได้ ต้องแก้สิทธิ์ที่เกินและตรวจซ้ำว่าอ่านรายงานได้ ส่วนแก้ Payroll และดูแล Network ต้องถูกปฏิเสธ</p>
+<p><strong>Illustrative check:</strong> The policy-designated approver authorizes only monthly-report reading, not payroll changes or network administration. Testing shows payroll changes also succeed. Correct the excess grant, then verify that report reading succeeds while payroll changes and network administration are denied.</p>
+
 <h3 id="topic-3-2-sod">3.2.2 Segregation of Duties (SoD): การแบ่งแยกหน้าที่ความรับผิดชอบ</h3>
 
 **Segregation of Duties (SoD)** หรือ **Separation of Duties** คือหลักการควบคุมภายในที่กำหนดให้กระบวนการทำงานที่มีความสำคัญอย่างยิ่งยวด (Critical Tasks) จะต้องถูกแบ่งขั้นตอนออกเป็นส่วน ๆ และกระจายให้ผู้ปฏิบัติงานมากกว่าหนึ่งคนทำร่วมกัน:

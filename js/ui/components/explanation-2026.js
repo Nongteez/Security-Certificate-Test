@@ -189,13 +189,10 @@ export function renderExplanation2026Content(question, lang = 'en') {
     // Both (EN + TH) mode: clearly separated language sections
     return `
       <div class="exp-2026-container exp-2026-both">
-        <div class="exp-lang-block exp-lang-en">
-          <div class="exp-lang-label"><span class="lang-badge">EN</span> English Explanation</div>
+        <div class="exp-lang-block exp-lang-en" lang="en">
           ${renderSingleLangStructured(question, 'en')}
         </div>
-        <div class="explanation-divider" aria-hidden="true"></div>
-        <div class="exp-lang-block exp-lang-th">
-          <div class="exp-lang-label"><span class="lang-badge">TH</span> คำอธิบายภาษาไทย</div>
+        <div class="exp-lang-block exp-lang-th" lang="th">
           ${renderSingleLangStructured(question, 'th')}
         </div>
       </div>
@@ -204,19 +201,16 @@ export function renderExplanation2026Content(question, lang = 'en') {
 
   // Fallback for unstructured questions: clean paragraph formatting
   if (lang === 'en') {
-    return `<div class="explanation-en exp-2026-fallback">${formatParagraphs(question.explanation)}</div>`;
+    return `<div class="explanation-en exp-2026-fallback" lang="en">${formatParagraphs(question.explanation)}</div>`;
   } else if (lang === 'th') {
-    return `<div class="explanation-th exp-2026-fallback">${formatParagraphs(question.explanation_th || question.explanation)}</div>`;
+    return `<div class="explanation-th exp-2026-fallback" lang="th">${formatParagraphs(question.explanation_th || question.explanation)}</div>`;
   } else {
     return `
       <div class="exp-2026-container exp-2026-both">
-        <div class="explanation-en exp-2026-fallback">
-          <span class="lang-badge">EN</span>
+        <div class="explanation-en exp-2026-fallback" lang="en">
           ${formatParagraphs(question.explanation)}
         </div>
-        <div class="explanation-divider" aria-hidden="true"></div>
-        <div class="explanation-th exp-2026-fallback">
-          <span class="lang-badge">TH</span>
+        <div class="explanation-th exp-2026-fallback" lang="th">
           ${formatParagraphs(question.explanation_th || question.explanation)}
         </div>
       </div>

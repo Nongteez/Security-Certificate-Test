@@ -61,9 +61,9 @@ export const domain5Scenarios = [
     id: 6,
     topic: 'Security Alert Triage & Alert Fatigue',
     situation: 'เจ้าหน้าที่ศูนย์เฝ้าระวังความมั่นคงปลอดภัย (SOC) ได้รับการแจ้งเตือนจากระบบตรวจจับมากกว่า 5,000 ครั้งต่อวัน โดยพบว่ามากกว่า 95% เป็นการแจ้งเตือนกิจกรรมปกติของระบบ ส่งผลให้นักวิเคราะห์ทำงานหนักเกินไปและมองข้ามการแจ้งเตือนภัยคุกคามจริงที่แฝงเข้ามา',
-    question: 'ปรากฏการณ์ที่เกิดการแจ้งเตือนกิจกรรมปกติว่าเป็นภัย (False Positive) จนนำไปสู่ความเหนื่อยล้าของเจ้าหน้าที่ เรียกว่าอะไร และภัยประเภทใดที่อันตรายที่สุดต่อความมั่นคงปลอดภัย?',
-    answer: 'Alert Fatigue (ความเหนื่อยล้าจากการแจ้งเตือน) เกิดจาก False Positive; และภัยที่อันตรายที่สุดคือ False Negative',
-    reasoning: 'False Positive (เตือนผิดพลาดทั้งที่ไม่มีภัย) ก่อให้เกิดภาวะ Alert Fatigue ทำให้เจ้าหน้าที่ละเลยการตรวจสอบ ขณะที่ False Negative (มีภัยคุกคามเกิดขึ้นจริงแต่ระบบตรวจไม่พบและไม่แจ้งเตือน) เป็นสถานการณ์ที่อันตรายที่สุด เพราะผู้โจมตีสามารถยึดครองระบบได้โดยที่องค์กรไม่รู้ตัว'
+    question: 'การเตือนกิจกรรมปกติว่าเป็นภัย (False Positive) สะสมทำให้เกิดอะไร และเหตุใดต้องประเมินผลกระทบของ False Positive กับ False Negative ตามบริบท?',
+    answer: 'False Positive ที่สะสมอาจทำให้ Alert Fatigue; False Negative คือภัยจริงที่ไม่ถูกตรวจพบ ความรุนแรงของทั้งสองขึ้นกับผลกระทบและบริบท',
+    reasoning: 'False Positive ที่สะสมอาจทำให้เจ้าหน้าที่ล้าและพลาดสัญญาณสำคัญ ขณะที่ False Negative ปล่อยให้ภัยจริงดำเนินต่อโดยไม่ถูกตรวจพบ ทั้งสองอาจรุนแรงได้ ต้องพิจารณาผลกระทบ ความเชื่อมั่น และความสำคัญของระบบ / False positives can cause fatigue or unnecessary disruption; false negatives leave real threats undetected. Assess impact and context rather than assuming one type is always worst.'
   },
   {
     id: 7,

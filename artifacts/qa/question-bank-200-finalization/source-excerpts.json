@@ -1,0 +1,604 @@
+[
+  {
+    "id": 1041,
+    "objective": "1.1",
+    "target": "Accounting and attributable activity",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 115,
+      "heading": "3.4 Accounting / Auditing — การบันทึกและตรวจสอบ"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 115,
+    "end": 145,
+    "excerpt": "### 3.4 Accounting / Auditing — การบันทึกและตรวจสอบ\n\nบันทึกว่า **ใครทำอะไร เมื่อไร และกับระบบใด** เพื่อการติดตาม สืบสวน และตรวจสอบความรับผิดชอบ เช่น Access Logs, Audit Trails\n\n| คำถามในโจทย์ | แนวคิด |\n|---|---|\n| “Who are you?” | Identification |\n| “Prove you are that person.” | Authentication |\n| “What are you allowed to do?” | Authorization |\n| “What did you do?” | Accounting |\n\n---\n\n## 4. Non-repudiation, Privacy และ Accountability\n\n### 4.1 Non-repudiation — การไม่อาจปฏิเสธการกระทำ\n\nหมายถึงการมีหลักฐานที่ช่วยให้ผู้กระทำ **ไม่สามารถปฏิเสธการกระทำที่ตรวจพิสูจน์ได้อย่างน่าเชื่อถือ** เช่น การใช้ Digital Signature พร้อมการจัดการกุญแจและหลักฐานที่เหมาะสม\n\n**แยกจาก Authentication:** Authentication ยืนยันตัวตน ณ จุดหนึ่ง ส่วน Non-repudiation มุ่งให้มีหลักฐานยืนยันการกระทำภายหลัง\n\n### 4.2 Privacy — ความเป็นส่วนตัว\n\nเน้นการจัดการ **Personal Information / Personal Data** อย่างเหมาะสม ตั้งแต่การเก็บ ใช้ เปิดเผย เก็บรักษา ไปจนถึงการลบข้อมูล\n\n**ตัวอย่าง:** บริษัทควรเก็บข้อมูลลูกค้าเท่าที่จำเป็นต่อวัตถุประสงค์ และจำกัดผู้เข้าถึงข้อมูลนั้น\n\n### 4.3 Accountability — ความรับผิดชอบตรวจสอบย้อนกลับได้\n\nบุคคลหรือระบบต้องสามารถถูกเชื่อมโยงกับการกระทำได้อย่างเหมาะสม โดยอาศัยการระบุตัวตนที่ชัดเจนและบันทึกกิจกรรมที่เชื่อถือได้\n"
+  },
+  {
+    "id": 1042,
+    "objective": "1.1",
+    "target": "Non-repudiation versus authentication",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 130,
+      "heading": "4.1 Non-repudiation — การไม่อาจปฏิเสธการกระทำ"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 130,
+    "end": 160,
+    "excerpt": "### 4.1 Non-repudiation — การไม่อาจปฏิเสธการกระทำ\n\nหมายถึงการมีหลักฐานที่ช่วยให้ผู้กระทำ **ไม่สามารถปฏิเสธการกระทำที่ตรวจพิสูจน์ได้อย่างน่าเชื่อถือ** เช่น การใช้ Digital Signature พร้อมการจัดการกุญแจและหลักฐานที่เหมาะสม\n\n**แยกจาก Authentication:** Authentication ยืนยันตัวตน ณ จุดหนึ่ง ส่วน Non-repudiation มุ่งให้มีหลักฐานยืนยันการกระทำภายหลัง\n\n### 4.2 Privacy — ความเป็นส่วนตัว\n\nเน้นการจัดการ **Personal Information / Personal Data** อย่างเหมาะสม ตั้งแต่การเก็บ ใช้ เปิดเผย เก็บรักษา ไปจนถึงการลบข้อมูล\n\n**ตัวอย่าง:** บริษัทควรเก็บข้อมูลลูกค้าเท่าที่จำเป็นต่อวัตถุประสงค์ และจำกัดผู้เข้าถึงข้อมูลนั้น\n\n### 4.3 Accountability — ความรับผิดชอบตรวจสอบย้อนกลับได้\n\nบุคคลหรือระบบต้องสามารถถูกเชื่อมโยงกับการกระทำได้อย่างเหมาะสม โดยอาศัยการระบุตัวตนที่ชัดเจนและบันทึกกิจกรรมที่เชื่อถือได้\n\n> **จำ:** Confidentiality = ใครอ่านได้, Privacy = ข้อมูลส่วนบุคคลถูกจัดการอย่างไร, Non-repudiation = หลักฐานการกระทำ, Accountability = ตรวจสอบว่าใครรับผิดชอบต่อการกระทำ\n\n---\n\n## 5. Risk Management — การบริหารความเสี่ยง\n\n### 5.1 องค์ประกอบของความเสี่ยง\n\n- **Likelihood:** โอกาสที่เหตุการณ์จะเกิด\n- **Impact:** ความเสียหายหากเกิดเหตุ\n- **Risk Level:** ระดับความเสี่ยงจากการพิจารณา Likelihood และ Impact ร่วมกัน\n\nในการประเมินแบบง่ายมักใช้แนวคิด **Risk ≈ Likelihood × Impact** แต่ในทางปฏิบัติองค์กรอาจใช้วิธีเชิงคุณภาพหรือเชิงปริมาณต่างกัน\n\n**ตัวอย่าง:** ระบบเก่ามีช่องโหว่ร้ายแรง เปิดรับอินเทอร์เน็ต และเก็บข้อมูลสำคัญ → โอกาสและผลกระทบอาจสูง จึงควรจัดลำดับความสำคัญในการจัดการ"
+  },
+  {
+    "id": 1043,
+    "objective": "1.1",
+    "target": "Privacy data minimization",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 136,
+      "heading": "4.2 Privacy — ความเป็นส่วนตัว"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 136,
+    "end": 166,
+    "excerpt": "### 4.2 Privacy — ความเป็นส่วนตัว\n\nเน้นการจัดการ **Personal Information / Personal Data** อย่างเหมาะสม ตั้งแต่การเก็บ ใช้ เปิดเผย เก็บรักษา ไปจนถึงการลบข้อมูล\n\n**ตัวอย่าง:** บริษัทควรเก็บข้อมูลลูกค้าเท่าที่จำเป็นต่อวัตถุประสงค์ และจำกัดผู้เข้าถึงข้อมูลนั้น\n\n### 4.3 Accountability — ความรับผิดชอบตรวจสอบย้อนกลับได้\n\nบุคคลหรือระบบต้องสามารถถูกเชื่อมโยงกับการกระทำได้อย่างเหมาะสม โดยอาศัยการระบุตัวตนที่ชัดเจนและบันทึกกิจกรรมที่เชื่อถือได้\n\n> **จำ:** Confidentiality = ใครอ่านได้, Privacy = ข้อมูลส่วนบุคคลถูกจัดการอย่างไร, Non-repudiation = หลักฐานการกระทำ, Accountability = ตรวจสอบว่าใครรับผิดชอบต่อการกระทำ\n\n---\n\n## 5. Risk Management — การบริหารความเสี่ยง\n\n### 5.1 องค์ประกอบของความเสี่ยง\n\n- **Likelihood:** โอกาสที่เหตุการณ์จะเกิด\n- **Impact:** ความเสียหายหากเกิดเหตุ\n- **Risk Level:** ระดับความเสี่ยงจากการพิจารณา Likelihood และ Impact ร่วมกัน\n\nในการประเมินแบบง่ายมักใช้แนวคิด **Risk ≈ Likelihood × Impact** แต่ในทางปฏิบัติองค์กรอาจใช้วิธีเชิงคุณภาพหรือเชิงปริมาณต่างกัน\n\n**ตัวอย่าง:** ระบบเก่ามีช่องโหว่ร้ายแรง เปิดรับอินเทอร์เน็ต และเก็บข้อมูลสำคัญ → โอกาสและผลกระทบอาจสูง จึงควรจัดลำดับความสำคัญในการจัดการ\n\n### 5.2 ขั้นตอนบริหารความเสี่ยง\n\n1. **Identify:** ระบุ Assets, Threats, Vulnerabilities และสถานการณ์เสี่ยง\n2. **Assess / Analyze:** ประเมิน Likelihood และ Impact\n3. **Treat / Respond:** เลือกวิธีจัดการความเสี่ยง"
+  },
+  {
+    "id": 1044,
+    "objective": "1.1",
+    "target": "Apply a supplied ordinary retention schedule",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+      "line": 431,
+      "heading": "13. Data Retention"
+    },
+    "sha256": "51a89939fab6f6bc1833600e9d99c3c58bde68c7e40e0ac4801e95ab755b1d74",
+    "start": 431,
+    "end": 461,
+    "excerpt": "# 13. Data Retention\n\nRetention คือ\n\n> กำหนดว่า Data ต้องเก็บไว้นานแค่ไหน และเมื่อไรควรลบ\n\nเช่น\n\n> Employee tax records → เก็บตามระยะเวลาที่กฎหมายกำหนด\n\nอย่าสับสน:\n\n**Inventory**\n\n> What data do we have?\n\n**Retention**\n\n> How long do we keep it?\n\n---\n\n# 14. Right to Be Forgotten\n\nแนวคิดคือบุคคลสามารถร้องขอให้ลบ Personal Data ได้ในบางเงื่อนไข เช่นข้อมูลนั้นไม่จำเป็นต้องเก็บอีกแล้ว\n\nแต่ต้องระวัง:\n\n> **ไม่ได้หมายความว่าขอลบแล้วองค์กรต้องลบทุกกรณี**\n\nถ้ามีกฎหมายหรือเหตุผลทางกฎหมายกำหนดให้ต้องเก็บ ก็อาจยังต้อง Retain ข้อมูลนั้น"
+  },
+  {
+    "id": 1045,
+    "objective": "1.1",
+    "target": "Scope an erasure request against supplied retention obligations",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+      "line": 453,
+      "heading": "14. Right to Be Forgotten"
+    },
+    "sha256": "51a89939fab6f6bc1833600e9d99c3c58bde68c7e40e0ac4801e95ab755b1d74",
+    "start": 453,
+    "end": 483,
+    "excerpt": "# 14. Right to Be Forgotten\n\nแนวคิดคือบุคคลสามารถร้องขอให้ลบ Personal Data ได้ในบางเงื่อนไข เช่นข้อมูลนั้นไม่จำเป็นต้องเก็บอีกแล้ว\n\nแต่ต้องระวัง:\n\n> **ไม่ได้หมายความว่าขอลบแล้วองค์กรต้องลบทุกกรณี**\n\nถ้ามีกฎหมายหรือเหตุผลทางกฎหมายกำหนดให้ต้องเก็บ ก็อาจยังต้อง Retain ข้อมูลนั้น\n\n---\n\n# 15. Risk Management\n\nRisk Management คือ\n\n> กระบวนการอย่างเป็นระบบในการ Identify, Assess, Respond และ Monitor Risk\n\nและที่สำคัญ:\n\n> **เป็น Continuous Process ไม่ใช่ One-time Activity**\n\nLifecycle ที่เรียนคือ:\n\n```text\n1 Identify\n     ↓\n2 Assess / Analyze\n     ↓\n3 Treat / Respond\n     ↓"
+  },
+  {
+    "id": 1046,
+    "objective": "1.1",
+    "target": "Purpose-compatible use of personal data",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 136,
+      "heading": "4.2 Privacy — ความเป็นส่วนตัว"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 136,
+    "end": 166,
+    "excerpt": "### 4.2 Privacy — ความเป็นส่วนตัว\n\nเน้นการจัดการ **Personal Information / Personal Data** อย่างเหมาะสม ตั้งแต่การเก็บ ใช้ เปิดเผย เก็บรักษา ไปจนถึงการลบข้อมูล\n\n**ตัวอย่าง:** บริษัทควรเก็บข้อมูลลูกค้าเท่าที่จำเป็นต่อวัตถุประสงค์ และจำกัดผู้เข้าถึงข้อมูลนั้น\n\n### 4.3 Accountability — ความรับผิดชอบตรวจสอบย้อนกลับได้\n\nบุคคลหรือระบบต้องสามารถถูกเชื่อมโยงกับการกระทำได้อย่างเหมาะสม โดยอาศัยการระบุตัวตนที่ชัดเจนและบันทึกกิจกรรมที่เชื่อถือได้\n\n> **จำ:** Confidentiality = ใครอ่านได้, Privacy = ข้อมูลส่วนบุคคลถูกจัดการอย่างไร, Non-repudiation = หลักฐานการกระทำ, Accountability = ตรวจสอบว่าใครรับผิดชอบต่อการกระทำ\n\n---\n\n## 5. Risk Management — การบริหารความเสี่ยง\n\n### 5.1 องค์ประกอบของความเสี่ยง\n\n- **Likelihood:** โอกาสที่เหตุการณ์จะเกิด\n- **Impact:** ความเสียหายหากเกิดเหตุ\n- **Risk Level:** ระดับความเสี่ยงจากการพิจารณา Likelihood และ Impact ร่วมกัน\n\nในการประเมินแบบง่ายมักใช้แนวคิด **Risk ≈ Likelihood × Impact** แต่ในทางปฏิบัติองค์กรอาจใช้วิธีเชิงคุณภาพหรือเชิงปริมาณต่างกัน\n\n**ตัวอย่าง:** ระบบเก่ามีช่องโหว่ร้ายแรง เปิดรับอินเทอร์เน็ต และเก็บข้อมูลสำคัญ → โอกาสและผลกระทบอาจสูง จึงควรจัดลำดับความสำคัญในการจัดการ\n\n### 5.2 ขั้นตอนบริหารความเสี่ยง\n\n1. **Identify:** ระบุ Assets, Threats, Vulnerabilities และสถานการณ์เสี่ยง\n2. **Assess / Analyze:** ประเมิน Likelihood และ Impact\n3. **Treat / Respond:** เลือกวิธีจัดการความเสี่ยง"
+  },
+  {
+    "id": 1047,
+    "objective": "1.1",
+    "target": "Identification versus authentication",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 94,
+      "heading": "3.1 Identification — การระบุตัวตน"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 94,
+    "end": 124,
+    "excerpt": "### 3.1 Identification — การระบุตัวตน\n\nผู้ใช้ **อ้างว่าตนเป็นใคร** เช่น กรอก Username หรือแสดง Employee ID ยังไม่ใช่การพิสูจน์ว่าคนนั้นเป็นเจ้าของตัวตนจริง\n\n### 3.2 Authentication — การพิสูจน์ตัวตน\n\nระบบ **ตรวจสอบว่าคำกล่าวอ้างนั้นถูกต้องหรือไม่** เช่น ตรวจ Password, Security Key หรือ Biometric\n\n**Authentication Factors ที่ควรจำ:**\n1. **Something You Know:** Password, PIN\n2. **Something You Have:** Hardware Security Key, Token\n3. **Something You Are:** Fingerprint, Face Recognition\n\n**MFA** ต้องมีอย่างน้อยสองปัจจัย **ต่างประเภท** กัน เช่น Password + Security Key; Password + PIN ยังอยู่ในประเภท Something You Know ทั้งคู่\n\n### 3.3 Authorization — การกำหนดสิทธิ์\n\nหลังพิสูจน์ตัวตน ระบบตัดสินว่า **ผู้ใช้ทำอะไรกับทรัพยากรใดได้บ้าง** เช่น Read, Write, Delete\n\nตัวอย่าง: เข้าระบบได้แต่เปิดไฟล์ HR ไม่ได้ → Authentication สำเร็จ แต่ Authorization ไม่อนุญาต\n\n### 3.4 Accounting / Auditing — การบันทึกและตรวจสอบ\n\nบันทึกว่า **ใครทำอะไร เมื่อไร และกับระบบใด** เพื่อการติดตาม สืบสวน และตรวจสอบความรับผิดชอบ เช่น Access Logs, Audit Trails\n\n| คำถามในโจทย์ | แนวคิด |\n|---|---|\n| “Who are you?” | Identification |\n| “Prove you are that person.” | Authentication |\n| “What are you allowed to do?” | Authorization |\n| “What did you do?” | Accounting |"
+  },
+  {
+    "id": 1048,
+    "objective": "1.2",
+    "target": "Inherent and residual risk",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 180,
+      "heading": "5.4 Inherent Risk และ Residual Risk"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 180,
+    "end": 210,
+    "excerpt": "### 5.4 Inherent Risk และ Residual Risk\n\n- **Inherent Risk:** ความเสี่ยงก่อนนำมาตรการควบคุมมาพิจารณา\n- **Residual Risk:** ความเสี่ยงที่ยังเหลือหลังใช้มาตรการควบคุม\n\n**ตัวอย่าง:** ก่อนติดตั้ง MFA ความเสี่ยงจากรหัสผ่านรั่วสูง หลังติดตั้ง MFA ความเสี่ยงลดลงแต่ไม่เป็นศูนย์ → ส่วนที่เหลือคือ Residual Risk\n\n### 5.5 Risk Appetite และ Risk Tolerance\n\n> **ทบทวนเสริมเพื่อแยกศัพท์:** หัวข้อนี้ไม่ได้ยืนยันว่าอยู่ในสไลด์ที่เราเรียนทุกหน้า\n\n- **Risk Appetite:** ระดับ/ประเภทความเสี่ยงที่องค์กรเต็มใจรับเพื่อบรรลุเป้าหมาย\n- **Risk Tolerance:** ขอบเขตความเบี่ยงเบนจากระดับความเสี่ยงหรือเป้าหมายที่องค์กรยอมรับได้\n\n---\n\n## 6. Security Controls — มาตรการควบคุมความปลอดภัย\n\nคำว่า **Control** หมายถึงมาตรการที่ใช้ลด จัดการ ตรวจจับ หรือรับมือความเสี่ยง การจัดประเภทควรแยก **ตามลักษณะของมาตรการ** กับ **ตามหน้าที่**\n\n### 6.1 แบ่งตามลักษณะของมาตรการ\n\n| ประเภท | ความหมาย | ตัวอย่าง |\n|---|---|---|\n| **Administrative / Managerial** | นโยบายและการบริหารจัดการ | Security Policy, Awareness Training, Risk Assessment |\n| **Technical / Logical** | ใช้เทคโนโลยีควบคุมระบบ | Firewall, MFA, Encryption, ACL |\n| **Physical** | ควบคุมพื้นที่หรืออุปกรณ์ทางกายภาพ | Door Lock, Fence, Security Guard |\n\n### 6.2 แบ่งตามหน้าที่\n\n| หน้าที่ | ความหมาย | ตัวอย่าง |"
+  },
+  {
+    "id": 1049,
+    "objective": "1.2",
+    "target": "Single loss estimate",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+      "line": 588,
+      "heading": "19. Single Loss Expectancy — SLE"
+    },
+    "sha256": "51a89939fab6f6bc1833600e9d99c3c58bde68c7e40e0ac4801e95ab755b1d74",
+    "start": 588,
+    "end": 618,
+    "excerpt": "# 19. Single Loss Expectancy — SLE\n\nคือ\n\n> ความเสียหายทางการเงินที่คาดว่าจะเกิดจาก **เหตุการณ์หนึ่งครั้ง**\n\nสูตร:\n\n> **SLE = AV × EF**\n\nตัวอย่าง:\n\n```text\nAV = $10,000\nEF = 50%\n\nSLE = 10,000 × 0.50\n    = $5,000\n```\n\n---\n\n# 20. Annualized Rate of Occurrence — ARO\n\nARO คือ\n\n> จำนวนครั้งโดยประมาณที่ Risk จะเกิดใน 1 ปี\n\nเช่น:\n\nปีละ 2 ครั้ง"
+  },
+  {
+    "id": 1050,
+    "objective": "1.2",
+    "target": "Annualized versus single-event loss",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+      "line": 639,
+      "heading": "21. Annualized Loss Expectancy — ALE"
+    },
+    "sha256": "51a89939fab6f6bc1833600e9d99c3c58bde68c7e40e0ac4801e95ab755b1d74",
+    "start": 639,
+    "end": 669,
+    "excerpt": "# 21. Annualized Loss Expectancy — ALE\n\nคือ\n\n> ความเสียหายที่คาดว่าจะเกิด **ต่อปี**\n\nสูตร:\n\n> **ALE = SLE × ARO**\n\nตัวอย่าง:\n\n```text\nSLE = $5,000\nARO = 2\n\nALE = $10,000/year\n```\n\nจำ Flow:\n\n```text\nAV × EF = SLE\nSLE × ARO = ALE\n```\n\nหรือ:\n\n> **Asset → Single Loss → Annual Loss**\n\n---"
+  },
+  {
+    "id": 1051,
+    "objective": "1.2",
+    "target": "Constrained comparison of risk-treatment evidence",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Script - DOMAIN 1.txt",
+      "line": 175,
+      "heading": "00:41:59–00:44:46 — risk acceptance cost example (read through line 182)"
+    },
+    "sha256": "62eb73349ad0c48fd89be1df6d4907f942fe5d03bb62ca664875b47c11c184b9",
+    "start": 175,
+    "end": 205,
+    "excerpt": "00:41:59 - 00:43:25\nappropriate only for low impact or low probability risk that are deemed tolerable. For example, if the organization IT systems are not connected to the internet, they are used over private lane. So that information that organization has very uh low risk of denial of service attack. So this type of risk let's suppose they can accept. Then the next uh risk uh so we so again the accept we are continuing this. So this is to acknowledge and choose not to take additional action. So it is usually appropriate when the cost\n\n00:42:42 - 00:44:15\nof treatment exceeds the potential loss or risk within the organization tolerance. So uh either the risk is very low its likelihood or impacting low or if you uh let's suppose if you mitigate the risk or if you let's suppose uh use a counter mayor let's suppose if you have a risk of DOS attack and you say that you may have a potential loss of $5,000 and the counter measure to reduce that risk. Let's suppose DOS protection, a firewall or a web application firewall, anything that can protect you\n\n00:43:30 - 00:44:46\nfrom DOS, it cost 7,000 USD. So it is counterproductive as you can see that the potential loss due to risk is lower than the counter mayor that you uh will have to implement. So it is another criteria to accept such type of risk. Then we have the avoid which is eliminating the risk entirely by discontinuing the activity or process that generates it. So it is best for high impact or high lilude risk that cannot be mitigated effectively. For example, avoiding certain vendor with a history of data breach. For example, if\n\n00:44:08 - 00:45:33\nyou are planning to purchase a new IT system or a new application and the vendor that you are considering is a history of data breaches. So it is better to even uh to either change that vendor or even to uh avoid having purchased that application at all. And the most common of these factor is the mitigate which is reducing the risk to an acceptable level by implementing controls or measures. So it focuses on minimizing the likelihood or impact of the risk. Example is installing the firewall and anti-malware software to\n\n00:44:51 - 00:46:13\nprotect against cyber threats. Step number four is to monitor and review the risk. So risk management does not end after mitigation or after treatment. So organizations should continually continuously monitor the existing risk, evaluate whether security controls that were placed remain effective, to identify new threats and vulnerabilities, to reassess changes to system and business processes, to review previously accepted risk, and to update risk assessments when conditions change. So for example, example of change that\n\n00:45:32 - 00:46:47\nmay trigger a new risk assessment or reassessment is when organization acquires uh new technology, when there is a major software upgrade, when there are new regulatory compliance from government or other agencies or when there is some new threat or vulnerabilities uh in the system. And the fifth and last step is communication. So uh it is the risk communication and reporting. So the process of documenting and communicating risk related information to all the stakeholders. It includes details on\n\n00:46:10 - 00:47:48\nidentified risk their status mitigation efforts and potential impact. So it helps stakeholders make informed decisions and prioritize resources for risk management. So again risk reporting is the process of uh as these uh this already we studied in the previous slide and our next objective 1.3 is to understand the governance concepts. So what is governance? So governance is the system by which an organization is directed, controlled and held accountable. In cyber security, governance ensures that security activities support the\n\n00:46:59 - 00:48:24\nbusiness objectives, legal and regulatory requirements, organizational policies, riskmanagement objectives and protection of information and assets. So key point to remember is that governance provides the direction and oversight for an organization's cyber security program. So in governance we have the regulation and laws. So laws and regulation are legally enforcable requirements established by government or regulatory authorities. So organization may be required to comply with certain laws and regulation\n\n00:47:41 - 00:49:11\nbased on their industry. For example, if it is the health related industry in US, the organization may be required to comply with the HIPPA law, if it is finance related or if the organization deals with the credit card data, it may be required to uh comply with the PCIDSS standard. Geographic location. For example, if the organization is working inside EU jurisdiction, then they may comply they have to comply with the GDPR, privacy law that we just studied uh few slides back. Types of data processed whether it\n\n00:48:26 - 00:49:56\nis financial, health related, private data, types of services provided and government requirements. So these are the examples of a few laws. GDPR we already studied which protects the personal data and privacy within its scope. So GDPR scope is usually for the EU uh citizen European Union based citizen. HIPPA is a law that establish requirements for protecting certain health information in the United States. PCIDSS provides security requirements for organization handling, payment card data, for example, the Visa,\n\n00:49:10 - 00:50:32"
+  },
+  {
+    "id": 1052,
+    "objective": "1.2",
+    "target": "Prioritizing likelihood and impact together",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 152,
+      "heading": "5.1 องค์ประกอบของความเสี่ยง"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 152,
+    "end": 182,
+    "excerpt": "### 5.1 องค์ประกอบของความเสี่ยง\n\n- **Likelihood:** โอกาสที่เหตุการณ์จะเกิด\n- **Impact:** ความเสียหายหากเกิดเหตุ\n- **Risk Level:** ระดับความเสี่ยงจากการพิจารณา Likelihood และ Impact ร่วมกัน\n\nในการประเมินแบบง่ายมักใช้แนวคิด **Risk ≈ Likelihood × Impact** แต่ในทางปฏิบัติองค์กรอาจใช้วิธีเชิงคุณภาพหรือเชิงปริมาณต่างกัน\n\n**ตัวอย่าง:** ระบบเก่ามีช่องโหว่ร้ายแรง เปิดรับอินเทอร์เน็ต และเก็บข้อมูลสำคัญ → โอกาสและผลกระทบอาจสูง จึงควรจัดลำดับความสำคัญในการจัดการ\n\n### 5.2 ขั้นตอนบริหารความเสี่ยง\n\n1. **Identify:** ระบุ Assets, Threats, Vulnerabilities และสถานการณ์เสี่ยง\n2. **Assess / Analyze:** ประเมิน Likelihood และ Impact\n3. **Treat / Respond:** เลือกวิธีจัดการความเสี่ยง\n4. **Monitor / Review:** ติดตามผลและทบทวนเมื่อสถานการณ์เปลี่ยน\n\n### 5.3 Risk Treatment 4 วิธี\n\n| วิธี | คำอธิบาย | ตัวอย่าง |\n|---|---|---|\n| **Avoidance** | หยุด/ไม่ทำกิจกรรมที่ก่อความเสี่ยง | ยกเลิกบริการที่มีความเสี่ยงเกินรับได้ |\n| **Mitigation / Reduction** | ใช้มาตรการลดโอกาสหรือผลกระทบ | Patch, MFA, Segmentation |\n| **Transfer / Sharing** | โอนหรือแบ่งภาระผลกระทบบางส่วน | Cyber Insurance, ข้อตกลงกับผู้ให้บริการ |\n| **Acceptance** | ยอมรับความเสี่ยงภายใต้การตัดสินใจที่เหมาะสม | ผู้มีอำนาจอนุมัติความเสี่ยงระดับต่ำ |\n\n**จุดออกสอบสำคัญ:** การซื้อประกัน **ไม่ได้ทำให้ความเสี่ยงทางเทคนิคหายไป** แต่ช่วยโอน/แบ่งผลกระทบทางการเงินบางส่วน\n\n### 5.4 Inherent Risk และ Residual Risk\n\n- **Inherent Risk:** ความเสี่ยงก่อนนำมาตรการควบคุมมาพิจารณา"
+  },
+  {
+    "id": 1053,
+    "objective": "1.2",
+    "target": "Review control effectiveness after treatment",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 162,
+      "heading": "5.2 ขั้นตอนบริหารความเสี่ยง"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 162,
+    "end": 192,
+    "excerpt": "### 5.2 ขั้นตอนบริหารความเสี่ยง\n\n1. **Identify:** ระบุ Assets, Threats, Vulnerabilities และสถานการณ์เสี่ยง\n2. **Assess / Analyze:** ประเมิน Likelihood และ Impact\n3. **Treat / Respond:** เลือกวิธีจัดการความเสี่ยง\n4. **Monitor / Review:** ติดตามผลและทบทวนเมื่อสถานการณ์เปลี่ยน\n\n### 5.3 Risk Treatment 4 วิธี\n\n| วิธี | คำอธิบาย | ตัวอย่าง |\n|---|---|---|\n| **Avoidance** | หยุด/ไม่ทำกิจกรรมที่ก่อความเสี่ยง | ยกเลิกบริการที่มีความเสี่ยงเกินรับได้ |\n| **Mitigation / Reduction** | ใช้มาตรการลดโอกาสหรือผลกระทบ | Patch, MFA, Segmentation |\n| **Transfer / Sharing** | โอนหรือแบ่งภาระผลกระทบบางส่วน | Cyber Insurance, ข้อตกลงกับผู้ให้บริการ |\n| **Acceptance** | ยอมรับความเสี่ยงภายใต้การตัดสินใจที่เหมาะสม | ผู้มีอำนาจอนุมัติความเสี่ยงระดับต่ำ |\n\n**จุดออกสอบสำคัญ:** การซื้อประกัน **ไม่ได้ทำให้ความเสี่ยงทางเทคนิคหายไป** แต่ช่วยโอน/แบ่งผลกระทบทางการเงินบางส่วน\n\n### 5.4 Inherent Risk และ Residual Risk\n\n- **Inherent Risk:** ความเสี่ยงก่อนนำมาตรการควบคุมมาพิจารณา\n- **Residual Risk:** ความเสี่ยงที่ยังเหลือหลังใช้มาตรการควบคุม\n\n**ตัวอย่าง:** ก่อนติดตั้ง MFA ความเสี่ยงจากรหัสผ่านรั่วสูง หลังติดตั้ง MFA ความเสี่ยงลดลงแต่ไม่เป็นศูนย์ → ส่วนที่เหลือคือ Residual Risk\n\n### 5.5 Risk Appetite และ Risk Tolerance\n\n> **ทบทวนเสริมเพื่อแยกศัพท์:** หัวข้อนี้ไม่ได้ยืนยันว่าอยู่ในสไลด์ที่เราเรียนทุกหน้า\n\n- **Risk Appetite:** ระดับ/ประเภทความเสี่ยงที่องค์กรเต็มใจรับเพื่อบรรลุเป้าหมาย\n- **Risk Tolerance:** ขอบเขตความเบี่ยงเบนจากระดับความเสี่ยงหรือเป้าหมายที่องค์กรยอมรับได้"
+  },
+  {
+    "id": 1054,
+    "objective": "1.3",
+    "target": "Procedure versus standard",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 235,
+      "heading": "7.1 Policy, Standard, Procedure, Guideline"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 235,
+    "end": 265,
+    "excerpt": "### 7.1 Policy, Standard, Procedure, Guideline\n\n| เอกสาร | คำถามที่ตอบ | ตัวอย่าง |\n|---|---|---|\n| **Policy** | องค์กรกำหนดหลักการ/สิ่งที่ต้องทำอะไร | ผู้ใช้ต้องปกป้องข้อมูลลูกค้า |\n| **Standard** | ต้องปฏิบัติตามข้อกำหนดขั้นต่ำใด | บัญชีผู้ดูแลระบบต้องใช้ MFA |\n| **Procedure** | ทำอย่างไรทีละขั้นตอน | ขั้นตอนสร้างบัญชีพนักงานใหม่ |\n| **Guideline** | มีคำแนะนำหรือแนวปฏิบัติใด | คำแนะนำสร้าง Passphrase |\n\n**จำง่าย:** Policy = What/Why, Standard = Required Specification, Procedure = How, Guideline = Recommended Practice\n\n### 7.2 Governance, Risk, Compliance (GRC)\n\n- **Governance:** การกำกับทิศทางและความรับผิดชอบ\n- **Risk Management:** การระบุ ประเมิน และจัดการความเสี่ยง\n- **Compliance:** การปฏิบัติตามกฎหมาย ระเบียบ ข้อกำหนด และสัญญาที่เกี่ยวข้อง\n\n**ข้อควรจำ:** Compliance ไม่ได้หมายความว่าปลอดภัยอย่างสมบูรณ์ องค์กรยังต้องประเมินความเสี่ยงจริง\n\n### 7.3 Due Care และ Due Diligence\n\n- **Due Care:** การใช้ความระมัดระวังและมาตรการที่สมเหตุสมผล\n- **Due Diligence:** การตรวจสอบ ประเมิน และติดตามอย่างรอบคอบเพื่อให้รู้สถานะและความเสี่ยง\n\n**ตัวอย่างเพื่อแยก:** กำหนดให้มี Security Policy และ Controls ที่เหมาะสม → Due Care; ตรวจประเมินว่ามาตรการถูกใช้จริงและยังมีประสิทธิภาพหรือไม่ → Due Diligence\n\n---\n\n## 8. ISC2 Code of Ethics — จริยธรรมวิชาชีพ\n\nหัวข้อจริยธรรมสำคัญเพราะข้อสอบอาจใช้สถานการณ์ที่มีความขัดแย้งระหว่างผลประโยชน์ส่วนตัว องค์กร และความปลอดภัยของสาธารณะ"
+  },
+  {
+    "id": 1055,
+    "objective": "1.3",
+    "target": "Guideline and mandatory requirements",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 235,
+      "heading": "7.1 Policy, Standard, Procedure, Guideline"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 235,
+    "end": 265,
+    "excerpt": "### 7.1 Policy, Standard, Procedure, Guideline\n\n| เอกสาร | คำถามที่ตอบ | ตัวอย่าง |\n|---|---|---|\n| **Policy** | องค์กรกำหนดหลักการ/สิ่งที่ต้องทำอะไร | ผู้ใช้ต้องปกป้องข้อมูลลูกค้า |\n| **Standard** | ต้องปฏิบัติตามข้อกำหนดขั้นต่ำใด | บัญชีผู้ดูแลระบบต้องใช้ MFA |\n| **Procedure** | ทำอย่างไรทีละขั้นตอน | ขั้นตอนสร้างบัญชีพนักงานใหม่ |\n| **Guideline** | มีคำแนะนำหรือแนวปฏิบัติใด | คำแนะนำสร้าง Passphrase |\n\n**จำง่าย:** Policy = What/Why, Standard = Required Specification, Procedure = How, Guideline = Recommended Practice\n\n### 7.2 Governance, Risk, Compliance (GRC)\n\n- **Governance:** การกำกับทิศทางและความรับผิดชอบ\n- **Risk Management:** การระบุ ประเมิน และจัดการความเสี่ยง\n- **Compliance:** การปฏิบัติตามกฎหมาย ระเบียบ ข้อกำหนด และสัญญาที่เกี่ยวข้อง\n\n**ข้อควรจำ:** Compliance ไม่ได้หมายความว่าปลอดภัยอย่างสมบูรณ์ องค์กรยังต้องประเมินความเสี่ยงจริง\n\n### 7.3 Due Care และ Due Diligence\n\n- **Due Care:** การใช้ความระมัดระวังและมาตรการที่สมเหตุสมผล\n- **Due Diligence:** การตรวจสอบ ประเมิน และติดตามอย่างรอบคอบเพื่อให้รู้สถานะและความเสี่ยง\n\n**ตัวอย่างเพื่อแยก:** กำหนดให้มี Security Policy และ Controls ที่เหมาะสม → Due Care; ตรวจประเมินว่ามาตรการถูกใช้จริงและยังมีประสิทธิภาพหรือไม่ → Due Diligence\n\n---\n\n## 8. ISC2 Code of Ethics — จริยธรรมวิชาชีพ\n\nหัวข้อจริยธรรมสำคัญเพราะข้อสอบอาจใช้สถานการณ์ที่มีความขัดแย้งระหว่างผลประโยชน์ส่วนตัว องค์กร และความปลอดภัยของสาธารณะ"
+  },
+  {
+    "id": 1056,
+    "objective": "1.3",
+    "target": "Law/regulation versus voluntary guidance",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 246,
+      "heading": "7.2 Governance, Risk, Compliance (GRC)"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 246,
+    "end": 276,
+    "excerpt": "### 7.2 Governance, Risk, Compliance (GRC)\n\n- **Governance:** การกำกับทิศทางและความรับผิดชอบ\n- **Risk Management:** การระบุ ประเมิน และจัดการความเสี่ยง\n- **Compliance:** การปฏิบัติตามกฎหมาย ระเบียบ ข้อกำหนด และสัญญาที่เกี่ยวข้อง\n\n**ข้อควรจำ:** Compliance ไม่ได้หมายความว่าปลอดภัยอย่างสมบูรณ์ องค์กรยังต้องประเมินความเสี่ยงจริง\n\n### 7.3 Due Care และ Due Diligence\n\n- **Due Care:** การใช้ความระมัดระวังและมาตรการที่สมเหตุสมผล\n- **Due Diligence:** การตรวจสอบ ประเมิน และติดตามอย่างรอบคอบเพื่อให้รู้สถานะและความเสี่ยง\n\n**ตัวอย่างเพื่อแยก:** กำหนดให้มี Security Policy และ Controls ที่เหมาะสม → Due Care; ตรวจประเมินว่ามาตรการถูกใช้จริงและยังมีประสิทธิภาพหรือไม่ → Due Diligence\n\n---\n\n## 8. ISC2 Code of Ethics — จริยธรรมวิชาชีพ\n\nหัวข้อจริยธรรมสำคัญเพราะข้อสอบอาจใช้สถานการณ์ที่มีความขัดแย้งระหว่างผลประโยชน์ส่วนตัว องค์กร และความปลอดภัยของสาธารณะ\n\n**หลักการ 4 ข้อ (สรุปความภาษาไทย):**\n1. **Protect society, the common good, necessary public trust and confidence, and the infrastructure.** — ปกป้องสังคม ประโยชน์ส่วนรวม ความเชื่อมั่นของสาธารณะ และโครงสร้างพื้นฐาน\n2. **Act honorably, honestly, justly, responsibly, and legally.** — ประพฤติอย่างมีเกียรติ ซื่อสัตย์ ยุติธรรม รับผิดชอบ และถูกกฎหมาย\n3. **Provide diligent and competent service to principals.** — ให้บริการแก่ผู้ว่าจ้าง/ผู้มีส่วนได้เสียที่รับผิดชอบอย่างรอบคอบและมีความสามารถ\n4. **Advance and protect the profession.** — ส่งเสริมและปกป้องวิชาชีพ\n\n**แนวคิดสำหรับสถานการณ์:** ไม่ปกปิดเหตุร้ายแรงเพื่อประโยชน์ส่วนตัว ไม่ละเมิดสิทธิ์โดยไม่มีอำนาจ และให้ความสำคัญกับความปลอดภัยและผลประโยชน์ส่วนรวม\n\n> หมายเหตุ: ข้อความภาษาอังกฤษข้างต้นเป็นหลักการที่รู้จักทั่วไปของ ISC2 Code of Ethics; ควรตรวจข้อความล่าสุดจาก ISC2 หากต้องการอ้างอิงอย่างเป็นทางการ\n"
+  },
+  {
+    "id": 1057,
+    "objective": "1.3",
+    "target": "Compliance does not establish complete security",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/Domain 1.md",
+      "line": 246,
+      "heading": "7.2 Governance, Risk, Compliance (GRC)"
+    },
+    "sha256": "7a45a89e2c2a7604aa0a2aadeaf3c7c5117fbac66c53c4010fbc3cee4a948082",
+    "start": 246,
+    "end": 276,
+    "excerpt": "### 7.2 Governance, Risk, Compliance (GRC)\n\n- **Governance:** การกำกับทิศทางและความรับผิดชอบ\n- **Risk Management:** การระบุ ประเมิน และจัดการความเสี่ยง\n- **Compliance:** การปฏิบัติตามกฎหมาย ระเบียบ ข้อกำหนด และสัญญาที่เกี่ยวข้อง\n\n**ข้อควรจำ:** Compliance ไม่ได้หมายความว่าปลอดภัยอย่างสมบูรณ์ องค์กรยังต้องประเมินความเสี่ยงจริง\n\n### 7.3 Due Care และ Due Diligence\n\n- **Due Care:** การใช้ความระมัดระวังและมาตรการที่สมเหตุสมผล\n- **Due Diligence:** การตรวจสอบ ประเมิน และติดตามอย่างรอบคอบเพื่อให้รู้สถานะและความเสี่ยง\n\n**ตัวอย่างเพื่อแยก:** กำหนดให้มี Security Policy และ Controls ที่เหมาะสม → Due Care; ตรวจประเมินว่ามาตรการถูกใช้จริงและยังมีประสิทธิภาพหรือไม่ → Due Diligence\n\n---\n\n## 8. ISC2 Code of Ethics — จริยธรรมวิชาชีพ\n\nหัวข้อจริยธรรมสำคัญเพราะข้อสอบอาจใช้สถานการณ์ที่มีความขัดแย้งระหว่างผลประโยชน์ส่วนตัว องค์กร และความปลอดภัยของสาธารณะ\n\n**หลักการ 4 ข้อ (สรุปความภาษาไทย):**\n1. **Protect society, the common good, necessary public trust and confidence, and the infrastructure.** — ปกป้องสังคม ประโยชน์ส่วนรวม ความเชื่อมั่นของสาธารณะ และโครงสร้างพื้นฐาน\n2. **Act honorably, honestly, justly, responsibly, and legally.** — ประพฤติอย่างมีเกียรติ ซื่อสัตย์ ยุติธรรม รับผิดชอบ และถูกกฎหมาย\n3. **Provide diligent and competent service to principals.** — ให้บริการแก่ผู้ว่าจ้าง/ผู้มีส่วนได้เสียที่รับผิดชอบอย่างรอบคอบและมีความสามารถ\n4. **Advance and protect the profession.** — ส่งเสริมและปกป้องวิชาชีพ\n\n**แนวคิดสำหรับสถานการณ์:** ไม่ปกปิดเหตุร้ายแรงเพื่อประโยชน์ส่วนตัว ไม่ละเมิดสิทธิ์โดยไม่มีอำนาจ และให้ความสำคัญกับความปลอดภัยและผลประโยชน์ส่วนรวม\n\n> หมายเหตุ: ข้อความภาษาอังกฤษข้างต้นเป็นหลักการที่รู้จักทั่วไปของ ISC2 Code of Ethics; ควรตรวจข้อความล่าสุดจาก ISC2 หากต้องการอ้างอิงอย่างเป็นทางการ\n"
+  },
+  {
+    "id": 1058,
+    "objective": "1.4",
+    "target": "Detective purpose in context",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+      "line": 1237,
+      "heading": "40. Detective"
+    },
+    "sha256": "51a89939fab6f6bc1833600e9d99c3c58bde68c7e40e0ac4801e95ab755b1d74",
+    "start": 1237,
+    "end": 1267,
+    "excerpt": "# 40. Detective\n\nเป้าหมาย:\n\n> Discover / Detect Activity\n\nKeyword:\n\n- Monitoring\n- Audit\n- Logging\n- Alerts\n- Detection\n\nตัวอย่าง:\n\n- IDS\n- Audit Logs\n- Monitoring\n- Motion Detector\n\nจำ:\n\n> **Detective = Find it**\n\n---\n\n# 41. Corrective\n\nใช้เมื่อมีปัญหาเกิดแล้ว เพื่อ:\n"
+  },
+  {
+    "id": 1059,
+    "objective": "1.4",
+    "target": "Compensating control with an explicit constraint",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+      "line": 1283,
+      "heading": "42. Compensating"
+    },
+    "sha256": "51a89939fab6f6bc1833600e9d99c3c58bde68c7e40e0ac4801e95ab755b1d74",
+    "start": 1283,
+    "end": 1313,
+    "excerpt": "# 42. Compensating\n\nคือ\n\n> Alternative Control\n\nใช้เมื่อ Primary/Preferred Control ไม่สามารถใช้ได้ แล้วต้องใช้ Control อื่นมาชดเชยเพื่อให้บรรลุวัตถุประสงค์ด้าน Security\n\nKeyword:\n\n- Alternative\n- Substitute\n- Compensate\n\nจำ:\n\n> **Compensating = Can't use A → use B instead**\n\n---\n\n# 43. Directive\n\nใช้เพื่อ\n\n> Guide / Direct Behavior\n\nตัวอย่าง:\n\n- Policies\n- Procedures\n- Standards"
+  },
+  {
+    "id": 1060,
+    "objective": "1.4",
+    "target": "One control can have different functions",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+      "line": 1324,
+      "heading": "44. Overlapping Security Controls"
+    },
+    "sha256": "51a89939fab6f6bc1833600e9d99c3c58bde68c7e40e0ac4801e95ab755b1d74",
+    "start": 1324,
+    "end": 1354,
+    "excerpt": "# 44. Overlapping Security Controls\n\nสำคัญมาก:\n\n> **Control หนึ่งตัวสามารถจัดได้หลาย Type ขึ้นอยู่กับ Context**\n\nอย่าจำชื่อ Control แบบตายตัว\n\nเช่น:\n\n### CCTV\n\nถ้าติดให้คนเห็นเพื่อทำให้โจรไม่กล้าเข้า\n\n→ **Deterrent**\n\nถ้าใช้บันทึก/ตรวจจับผู้บุกรุก\n\n→ **Detective**\n\nดังนั้น CCTV อาจเป็น:\n\n```text\nCategory = Physical\n\nType = Deterrent\n       และ/หรือ\n       Detective\n```\n\n---"
+  },
+  {
+    "id": 1061,
+    "objective": "1.5",
+    "target": "Public safety and common good",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+      "line": 1542,
+      "heading": "Canon 1"
+    },
+    "sha256": "51a89939fab6f6bc1833600e9d99c3c58bde68c7e40e0ac4801e95ab755b1d74",
+    "start": 1542,
+    "end": 1572,
+    "excerpt": "## Canon 1\n\n> **Protect society, the common good, necessary public trust and confidence, and the infrastructure.**\n\nคิดถึง:\n\n- Society\n- Public\n- Common Good\n- Public Trust\n- Infrastructure\n\n---\n\n## Canon 2\n\n> **Act honorably, honestly, justly, responsibly, and legally.**\n\nคิดถึง:\n\n- Honesty\n- Integrity\n- Fairness\n- Responsibility\n- Legality\n\n---\n\n## Canon 3\n\n> **Provide diligent and competent service to principals.**"
+  },
+  {
+    "id": 1062,
+    "objective": "1.5",
+    "target": "Honesty and lawful professional conduct",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+      "line": 1556,
+      "heading": "Canon 2"
+    },
+    "sha256": "51a89939fab6f6bc1833600e9d99c3c58bde68c7e40e0ac4801e95ab755b1d74",
+    "start": 1556,
+    "end": 1586,
+    "excerpt": "## Canon 2\n\n> **Act honorably, honestly, justly, responsibly, and legally.**\n\nคิดถึง:\n\n- Honesty\n- Integrity\n- Fairness\n- Responsibility\n- Legality\n\n---\n\n## Canon 3\n\n> **Provide diligent and competent service to principals.**\n\nPrincipal อาจเป็น:\n\n- Employer\n- Client\n- Organization ที่เรามีหน้าที่ให้บริการ\n\nต้องให้บริการอย่าง:\n\n- Diligent\n- Competent\n- Professional\n\n---"
+  },
+  {
+    "id": 1063,
+    "objective": "1.5",
+    "target": "Competent service to principals",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+      "line": 1570,
+      "heading": "Canon 3"
+    },
+    "sha256": "51a89939fab6f6bc1833600e9d99c3c58bde68c7e40e0ac4801e95ab755b1d74",
+    "start": 1570,
+    "end": 1600,
+    "excerpt": "## Canon 3\n\n> **Provide diligent and competent service to principals.**\n\nPrincipal อาจเป็น:\n\n- Employer\n- Client\n- Organization ที่เรามีหน้าที่ให้บริการ\n\nต้องให้บริการอย่าง:\n\n- Diligent\n- Competent\n- Professional\n\n---\n\n## Canon 4\n\n> **Advance and protect the profession.**\n\nคิดถึง:\n\n- Cybersecurity Profession\n- Professional reputation\n- Development of profession\n- Protecting professional standards\n\n---\n"
+  },
+  {
+    "id": 1064,
+    "objective": "1.5",
+    "target": "Advancing and protecting the profession",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 1/D1 sum.md",
+      "line": 1588,
+      "heading": "Canon 4"
+    },
+    "sha256": "51a89939fab6f6bc1833600e9d99c3c58bde68c7e40e0ac4801e95ab755b1d74",
+    "start": 1588,
+    "end": 1618,
+    "excerpt": "## Canon 4\n\n> **Advance and protect the profession.**\n\nคิดถึง:\n\n- Cybersecurity Profession\n- Professional reputation\n- Development of profession\n- Protecting professional standards\n\n---\n\n# 51. จำ ISC2 Canons\n\nจำ:\n\n> **S → A → P → P**\n\n```text\nSociety\n   ↓\nAct honorably\n   ↓\nPrincipals\n   ↓\nProfession\n```\n\nหรือ:\n"
+  },
+  {
+    "id": 1065,
+    "objective": "2.4",
+    "target": "Comparable security measurements",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 2/D2 sum.md",
+      "line": 459,
+      "heading": "🟠 Security Metrics"
+    },
+    "sha256": "147e80020de872c7c99da14ff120fd2fa347000955171d09679e20da4b5215f0",
+    "start": 459,
+    "end": 489,
+    "excerpt": "# 🟠 Security Metrics\n\n**Metric = Measurable Value**\n\nใช้ประเมิน Performance/Effectiveness ของ:\n\n> Activity  \n> Process  \n> Control\n\nตัวอย่าง:\n\n> Number of Incidents  \n> Number of Vulnerabilities  \n> % Systems Patched  \n> MTTD  \n> MTTR\n\nMetric ที่ดีควร:\n\n> Relevant  \n> Measurable  \n> Consistent  \n> Meaningful to Intended Audience\n\n---\n\n# 🟠 MTTD / MTTR\n\n**MTTD — Mean Time to Detect**\n"
+  },
+  {
+    "id": 1066,
+    "objective": "3.1",
+    "target": "Identifier scope versus entity linkage",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 3/domain-3-knowledge-map.md",
+      "line": 53,
+      "heading": "KNOW-D3-001 - Identity, account and identifier"
+    },
+    "sha256": "fa5e1d11a21676383266146062aa101daffaaebdadf18994d710a88b2f2fe62a",
+    "start": 53,
+    "end": 83,
+    "excerpt": "### KNOW-D3-001 - Identity, account and identifier\n\n**Objective:** 3.1. **Academic status:** CORRECTED. **Classification/evidence:** COURSE T@00:04:11; EXTERNAL [R03], glossary entries for digital identity/identifier/subscriber account; [R04], subscriber-account records. The course equates identity with username; external evidence supplies the distinction.\n\n**EN:** A digital identity represents an entity through attributes in a particular context. An account is the system's managed record associated with that entity; an identifier names or distinguishes it within a defined scope. A username is an identifier, not the complete identity. One person can have different accounts or identities across systems.\n\n**TH:** อัตลักษณ์ดิจิทัลแทนบุคคลหรือสิ่งหนึ่งผ่านชุดคุณลักษณะในบริบทหนึ่ง บัญชีคือระเบียนที่ระบบใช้จัดการสิ่งนั้น ส่วนตัวระบุใช้เรียกหรือแยกแยะภายในขอบเขตที่กำหนด ชื่อผู้ใช้เป็นตัวระบุ ไม่ใช่อัตลักษณ์ทั้งหมด บุคคลเดียวอาจมีหลายบัญชีหรือหลายอัตลักษณ์ในต่างระบบ\n\n**Use case / relevance:** linking an employee's directory and application accounts. **Misconception:** the same displayed username proves accounts belong to the same entity.\n\n### KNOW-D3-002 - Credentials and authenticators\n\n**Objective:** 3.1; prerequisite to 3.2. **Academic status:** CORRECTED. **Classification/evidence:** COURSE S03, T@00:04:51; EXTERNAL [R03], credential definition; [R05], introduction and authenticator types. Terminology is externally corrected.\n\n**EN:** In NIST's terminology, a credential binds an identity through an identifier to an authenticator. An authenticator is the secret or device controlled to demonstrate authentication, such as a password or cryptographic authenticator. Passwords are one mechanism; a username/password pair is not a universal credential definition. A public username is not an authentication factor.\n\n**TH:** ตามศัพท์ของ NIST credential เชื่อมอัตลักษณ์ผ่านตัวระบุกับสิ่งที่ใช้พิสูจน์ตัวตน ส่วน authenticator คือความลับหรืออุปกรณ์ที่ผู้ใช้ควบคุมเพื่อยืนยันตัวตน เช่น รหัสผ่านหรืออุปกรณ์เข้ารหัส รหัสผ่านเป็นเพียงวิธีหนึ่ง คู่ชื่อผู้ใช้กับรหัสผ่านจึงไม่ใช่นิยามที่ใช้ได้กับทุกกรณี และชื่อผู้ใช้ที่เปิดเผยได้ไม่ใช่ปัจจัยยืนยันตัวตน\n\n**Use case / relevance:** issuing an authenticator during onboarding. **Misconception:** every credential is a password, or a username contributes a second MFA factor.\n\n### KNOW-D3-003 - Role definition and decision responsibilities\n\n**Objective:** 3.1. **Academic status:** ACCEPTED. **Classification/evidence:** COURSE S02; EXTERNAL [R07], AC-2. Job-function teaching is retained; governance responsibilities are supplemented.\n\n**EN:** Define job functions and required permissions before granting access. Organizational policy assigns who may approve access, who implements it and who reviews continuing need; a job title alone does not establish approval authority. Keep these responsibilities explicit.\n\n**TH:** กำหนดหน้าที่งานและสิทธิ์ที่จำเป็นก่อนให้สิทธิ์เข้าถึง นโยบายองค์กรต้องระบุว่าใครอนุมัติ ใครดำเนินการ และใครทบทวนความจำเป็นอย่างต่อเนื่อง ชื่อตำแหน่งเพียงอย่างเดียวไม่ได้ทำให้มีอำนาจอนุมัติ ต้องระบุความรับผิดชอบเหล่านี้ให้ชัดเจน\n\n**Use case / relevance:** finance access approved by the designated authority and implemented by an administrator. **Misconception:** the person creating an account can automatically authorize every permission.\n\n### KNOW-D3-004 - Authorized provisioning"
+  },
+  {
+    "id": 1067,
+    "objective": "3.1",
+    "target": "Credential binding and authenticator",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 3/domain-3-knowledge-map.md",
+      "line": 63,
+      "heading": "KNOW-D3-002 - Credentials and authenticators"
+    },
+    "sha256": "fa5e1d11a21676383266146062aa101daffaaebdadf18994d710a88b2f2fe62a",
+    "start": 63,
+    "end": 93,
+    "excerpt": "### KNOW-D3-002 - Credentials and authenticators\n\n**Objective:** 3.1; prerequisite to 3.2. **Academic status:** CORRECTED. **Classification/evidence:** COURSE S03, T@00:04:51; EXTERNAL [R03], credential definition; [R05], introduction and authenticator types. Terminology is externally corrected.\n\n**EN:** In NIST's terminology, a credential binds an identity through an identifier to an authenticator. An authenticator is the secret or device controlled to demonstrate authentication, such as a password or cryptographic authenticator. Passwords are one mechanism; a username/password pair is not a universal credential definition. A public username is not an authentication factor.\n\n**TH:** ตามศัพท์ของ NIST credential เชื่อมอัตลักษณ์ผ่านตัวระบุกับสิ่งที่ใช้พิสูจน์ตัวตน ส่วน authenticator คือความลับหรืออุปกรณ์ที่ผู้ใช้ควบคุมเพื่อยืนยันตัวตน เช่น รหัสผ่านหรืออุปกรณ์เข้ารหัส รหัสผ่านเป็นเพียงวิธีหนึ่ง คู่ชื่อผู้ใช้กับรหัสผ่านจึงไม่ใช่นิยามที่ใช้ได้กับทุกกรณี และชื่อผู้ใช้ที่เปิดเผยได้ไม่ใช่ปัจจัยยืนยันตัวตน\n\n**Use case / relevance:** issuing an authenticator during onboarding. **Misconception:** every credential is a password, or a username contributes a second MFA factor.\n\n### KNOW-D3-003 - Role definition and decision responsibilities\n\n**Objective:** 3.1. **Academic status:** ACCEPTED. **Classification/evidence:** COURSE S02; EXTERNAL [R07], AC-2. Job-function teaching is retained; governance responsibilities are supplemented.\n\n**EN:** Define job functions and required permissions before granting access. Organizational policy assigns who may approve access, who implements it and who reviews continuing need; a job title alone does not establish approval authority. Keep these responsibilities explicit.\n\n**TH:** กำหนดหน้าที่งานและสิทธิ์ที่จำเป็นก่อนให้สิทธิ์เข้าถึง นโยบายองค์กรต้องระบุว่าใครอนุมัติ ใครดำเนินการ และใครทบทวนความจำเป็นอย่างต่อเนื่อง ชื่อตำแหน่งเพียงอย่างเดียวไม่ได้ทำให้มีอำนาจอนุมัติ ต้องระบุความรับผิดชอบเหล่านี้ให้ชัดเจน\n\n**Use case / relevance:** finance access approved by the designated authority and implemented by an administrator. **Misconception:** the person creating an account can automatically authorize every permission.\n\n### KNOW-D3-004 - Authorized provisioning\n\n**Objective:** 3.1. **Academic status:** CORRECTED. **Classification/evidence:** COURSE S03, T@00:04:11; EXTERNAL [R07], AC-2. Corrects the universal first-step claim.\n\n**EN:** Provisioning establishes accounts and approved access, including appropriate roles and authenticators. Follow defined prerequisites and approvals, grant needed access and confirm the intended assignment. Account creation is not automatically the first action in every IAM workflow.\n\n**TH:** การจัดเตรียมสิทธิ์หรือ provisioning สร้างบัญชีและสิทธิ์ที่ได้รับอนุมัติ รวมถึงบทบาทและสิ่งที่ใช้ยืนยันตัวตน ต้องทำตามเงื่อนไขและการอนุมัติที่กำหนด ให้สิทธิ์เท่าที่จำเป็น และตรวจสอบการกำหนดสิทธิ์ การสร้างบัญชีไม่ได้เป็นการกระทำแรกของทุกกระบวนการ IAM เสมอไป\n\n**Use case / relevance:** a new employee receives an approved role, not a convenient copy of another person's full access. **Misconception:** urgency removes the need for authorized scope.\n\n### KNOW-D3-005 - Role changes and privilege accumulation"
+  },
+  {
+    "id": 1068,
+    "objective": "3.1",
+    "target": "Approved provisioning scope versus copying a peer",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 3/domain-3-knowledge-map.md",
+      "line": 83,
+      "heading": "KNOW-D3-004 - Authorized provisioning"
+    },
+    "sha256": "fa5e1d11a21676383266146062aa101daffaaebdadf18994d710a88b2f2fe62a",
+    "start": 83,
+    "end": 113,
+    "excerpt": "### KNOW-D3-004 - Authorized provisioning\n\n**Objective:** 3.1. **Academic status:** CORRECTED. **Classification/evidence:** COURSE S03, T@00:04:11; EXTERNAL [R07], AC-2. Corrects the universal first-step claim.\n\n**EN:** Provisioning establishes accounts and approved access, including appropriate roles and authenticators. Follow defined prerequisites and approvals, grant needed access and confirm the intended assignment. Account creation is not automatically the first action in every IAM workflow.\n\n**TH:** การจัดเตรียมสิทธิ์หรือ provisioning สร้างบัญชีและสิทธิ์ที่ได้รับอนุมัติ รวมถึงบทบาทและสิ่งที่ใช้ยืนยันตัวตน ต้องทำตามเงื่อนไขและการอนุมัติที่กำหนด ให้สิทธิ์เท่าที่จำเป็น และตรวจสอบการกำหนดสิทธิ์ การสร้างบัญชีไม่ได้เป็นการกระทำแรกของทุกกระบวนการ IAM เสมอไป\n\n**Use case / relevance:** a new employee receives an approved role, not a convenient copy of another person's full access. **Misconception:** urgency removes the need for authorized scope.\n\n### KNOW-D3-005 - Role changes and privilege accumulation\n\n**Objective:** 3.1. **Academic status:** ACCEPTED. **Classification/evidence:** COURSE S04, T@00:06:53; EXTERNAL [R14], modification stage. Event-driven handling supplements the periodic-review example.\n\n**EN:** A transfer or promotion requires reassessing existing entitlements as well as assigning new ones. Privilege accumulation occurs when obsolete permissions remain as duties change. Remove rights no longer justified while preserving approved current access; do not wait solely for the next routine review.\n\n**TH:** เมื่อย้ายงานหรือเลื่อนตำแหน่ง ต้องประเมินสิทธิ์เดิมพร้อมกับให้สิทธิ์ใหม่ การสะสมสิทธิ์เกิดเมื่อสิทธิ์ที่หมดความจำเป็นยังคงอยู่หลังหน้าที่เปลี่ยน ควรถอนสิทธิ์ที่ไม่จำเป็นโดยคงสิทธิ์ปัจจุบันที่ได้รับอนุมัติ และไม่รอเพียงการทบทวนตามรอบครั้งถัดไป\n\n**Use case / relevance:** finance-to-IT transfer retaining financial reporting access without need. **Misconception:** promotion justifies keeping every former entitlement.\n\n### KNOW-D3-006 - Access review, recertification and remediation\n\n**Objective:** 3.1. **Academic status:** ACCEPTED. **Classification/evidence:** COURSE S04; EXTERNAL [R18], review decisions and applying changes; [R07], AC-2 review frequency. Completion steps are supplemental.\n\n**EN:** An access review compares current rights with current business need; recertification records the decision to retain or withdraw them. The designated reviewer uses suitable evidence, documents decisions, and ensures required removals are applied and checked. A completed review form alone does not remove access. Policy and risk determine cadence.\n\n**TH:** การทบทวนสิทธิ์เปรียบเทียบสิทธิ์ปัจจุบันกับความจำเป็นทางธุรกิจปัจจุบัน การรับรองสิทธิ์ซ้ำบันทึกการตัดสินใจว่าจะคงหรือถอนสิทธิ์ ผู้ทบทวนที่ได้รับมอบหมายใช้หลักฐานที่เหมาะสม บันทึกผล และทำให้แน่ใจว่าการถอนสิทธิ์เกิดขึ้นจริงพร้อมตรวจสอบ แบบฟอร์มที่เสร็จแล้วไม่ได้ถอนสิทธิ์เอง ความถี่ขึ้นกับนโยบายและความเสี่ยง\n\n**Use case / relevance:** reviewer rejects obsolete application access and verifies its removal. **Misconception:** recertification is an automatic renewal or a universal fixed-day schedule.\n\n### KNOW-D3-007 - Inactive accounts versus orphaned accounts"
+  },
+  {
+    "id": 1069,
+    "objective": "3.1",
+    "target": "Risk/policy-based access-review cadence",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 3/domain-3-knowledge-map.md",
+      "line": 103,
+      "heading": "KNOW-D3-006 - Access review, recertification and remediation"
+    },
+    "sha256": "fa5e1d11a21676383266146062aa101daffaaebdadf18994d710a88b2f2fe62a",
+    "start": 103,
+    "end": 133,
+    "excerpt": "### KNOW-D3-006 - Access review, recertification and remediation\n\n**Objective:** 3.1. **Academic status:** ACCEPTED. **Classification/evidence:** COURSE S04; EXTERNAL [R18], review decisions and applying changes; [R07], AC-2 review frequency. Completion steps are supplemental.\n\n**EN:** An access review compares current rights with current business need; recertification records the decision to retain or withdraw them. The designated reviewer uses suitable evidence, documents decisions, and ensures required removals are applied and checked. A completed review form alone does not remove access. Policy and risk determine cadence.\n\n**TH:** การทบทวนสิทธิ์เปรียบเทียบสิทธิ์ปัจจุบันกับความจำเป็นทางธุรกิจปัจจุบัน การรับรองสิทธิ์ซ้ำบันทึกการตัดสินใจว่าจะคงหรือถอนสิทธิ์ ผู้ทบทวนที่ได้รับมอบหมายใช้หลักฐานที่เหมาะสม บันทึกผล และทำให้แน่ใจว่าการถอนสิทธิ์เกิดขึ้นจริงพร้อมตรวจสอบ แบบฟอร์มที่เสร็จแล้วไม่ได้ถอนสิทธิ์เอง ความถี่ขึ้นกับนโยบายและความเสี่ยง\n\n**Use case / relevance:** reviewer rejects obsolete application access and verifies its removal. **Misconception:** recertification is an automatic renewal or a universal fixed-day schedule.\n\n### KNOW-D3-007 - Inactive accounts versus orphaned accounts\n\n**Objective:** 3.1. **Academic status:** CORRECTED. **Classification/evidence:** COURSE S04, T@00:06:53; EXTERNAL [R19], inactivity investigation; [R14], orphan-account discussion.\n\n**EN:** Inactivity concerns lack of use over a defined period. An orphaned account lacks a valid responsible owner, identity linkage or appropriate management. They can overlap but are different conditions: an orphaned account may still be used. Investigate ownership, purpose and dependencies before deciding remediation.\n\n**TH:** บัญชีที่ไม่เคลื่อนไหวพิจารณาจากการไม่มีการใช้งานในช่วงเวลาที่กำหนด ส่วนบัญชีที่ขาดผู้รับผิดชอบหรือ orphaned account ไม่มีเจ้าของที่เหมาะสม ไม่มีความเชื่อมโยงกับอัตลักษณ์ที่ถูกต้อง หรือขาดการจัดการ ทั้งสองกรณีอาจเกิดร่วมกันแต่ไม่เหมือนกัน บัญชีที่ขาดผู้รับผิดชอบอาจยังถูกใช้อยู่ ต้องตรวจสอบเจ้าของ วัตถุประสงค์ และระบบที่พึ่งพาก่อนจัดการ\n\n**Use case / relevance:** contrast a rarely used approved recovery account with a departed employee's still-active account. **Misconception:** no recent login proves orphaning or justifies immediate deletion.\n\n### KNOW-D3-008 - Deprovisioning and record retention\n\n**Objective:** 3.1. **Academic status:** CORRECTED. **Classification/evidence:** COURSE S05-S06, T@00:08:15; EXTERNAL [R04], subscriber-account suspension/termination; [R17], deprovisioning. Avoids conflating access withdrawal and record destruction.\n\n**EN:** Deprovisioning removes unneeded access after departure, expiry or changed duties. Disable or remove relevant accounts and entitlements according to policy, including application and privileged access. Disabling access and deleting records are different decisions; retain or dispose of records under applicable requirements, not by an assumed universal rule.\n\n**TH:** การถอนสิทธิ์หรือ deprovisioning ยกเลิกการเข้าถึงที่ไม่จำเป็นเมื่อออกจากงาน หมดสัญญา หรือเปลี่ยนหน้าที่ ต้องระงับหรือลบบัญชีและสิทธิ์ที่เกี่ยวข้องตามนโยบาย รวมถึงแอปพลิเคชันและสิทธิ์ระดับสูง การระงับสิทธิ์กับการทำลายระเบียนเป็นคนละการตัดสินใจ การเก็บหรือทำลายข้อมูลต้องเป็นไปตามข้อกำหนดที่ใช้จริง ไม่ใช่กฎเดียวที่สมมติขึ้น\n\n**Use case / relevance:** terminate access at an authorized contract end while preserving required audit records. **Misconception:** every departure requires immediate destruction of the identity history.\n\n### KNOW-D3-009 - Downstream access and independent sessions"
+  },
+  {
+    "id": 1070,
+    "objective": "3.2",
+    "target": "ACL is an enforcement mechanism, not always DAC",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 3/D3 surm.md",
+      "line": 551,
+      "heading": "15.1 ACL — Access Control List"
+    },
+    "sha256": "16fb2f733a715d94065a10a8b3091c5cedaf6c1145f9e5d863de798db529cc96",
+    "start": 551,
+    "end": 581,
+    "excerpt": "## 15.1 ACL — Access Control List\n\nACL เป็นรายการกำหนดว่า Subject ใดทำ Action ใดกับ Object ได้ เช่น:\n\n```text\nreport.csv:\n  Alice: read, write\n  Bob:   read\n  Guest: deny\n```\n\nACL เป็น **mechanism** ที่อาจใช้ในระบบหลายรูปแบบ อย่าสับสนว่า ACL = DAC เสมอไป\n\n## 15.2 Group-Based Access\n\nใช้ Groups เพื่อจัดการ Membership แล้วมอบ Permission ให้ Group; ช่วยลดการตั้งค่าทีละ User แต่ต้องระวังการเข้ากลุ่มผิดและการสะสม Membership\n\n## 15.3 Privileged Accounts\n\nPrivileged Account คือบัญชีที่มีสิทธิ์สูง เช่น System Administrator, Database Administrator, Cloud Administrator\n\nความเสี่ยง: เมื่อถูกยึด ผู้โจมตีอาจแก้ Configuration, อ่าน Sensitive Data หรือขยายการโจมตีได้\n\nแนวปฏิบัติที่เกี่ยวข้อง:\n\n- ใช้บัญชี Admin เฉพาะเมื่อจำเป็น\n- ใช้ Least Privilege และ Access Review\n- ปกป้องด้วย MFA ที่เหมาะสม\n- บันทึกและตรวจสอบกิจกรรมที่สำคัญ\n- ถอนสิทธิ์ Admin เมื่อหมดหน้าที่\n"
+  },
+  {
+    "id": 1071,
+    "objective": "3.2",
+    "target": "Prospective scope of a group-wide permission change",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 3/D3 surm.md",
+      "line": 564,
+      "heading": "15.2 Group-Based Access"
+    },
+    "sha256": "16fb2f733a715d94065a10a8b3091c5cedaf6c1145f9e5d863de798db529cc96",
+    "start": 564,
+    "end": 594,
+    "excerpt": "## 15.2 Group-Based Access\n\nใช้ Groups เพื่อจัดการ Membership แล้วมอบ Permission ให้ Group; ช่วยลดการตั้งค่าทีละ User แต่ต้องระวังการเข้ากลุ่มผิดและการสะสม Membership\n\n## 15.3 Privileged Accounts\n\nPrivileged Account คือบัญชีที่มีสิทธิ์สูง เช่น System Administrator, Database Administrator, Cloud Administrator\n\nความเสี่ยง: เมื่อถูกยึด ผู้โจมตีอาจแก้ Configuration, อ่าน Sensitive Data หรือขยายการโจมตีได้\n\nแนวปฏิบัติที่เกี่ยวข้อง:\n\n- ใช้บัญชี Admin เฉพาะเมื่อจำเป็น\n- ใช้ Least Privilege และ Access Review\n- ปกป้องด้วย MFA ที่เหมาะสม\n- บันทึกและตรวจสอบกิจกรรมที่สำคัญ\n- ถอนสิทธิ์ Admin เมื่อหมดหน้าที่\n\n## 15.4 PAM — Privileged Access Management\n\nPAM เป็นแนวทาง/เครื่องมือบริหารสิทธิ์ระดับสูง เช่น การอนุมัติ, จำกัดระยะเวลา, ควบคุม Secrets และติดตาม Sessions\n\n## 15.5 Separation of Environments\n\n**[เสริม]** องค์กรอาจแยก Dev/Test/Production Access เพื่อลดความเสี่ยงที่ผู้ใช้คนเดียวแก้โค้ด อนุมัติ และนำขึ้น Production โดยไม่มีการตรวจสอบ ซึ่งเชื่อมกับ SoD\n\n---\n\n# 16. สถานการณ์บูรณาการ IAM\n\n## Scenario A — New Finance Employee"
+  },
+  {
+    "id": 1072,
+    "objective": "3.2",
+    "target": "Time-bounded privileged access",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 3/D3 surm.md",
+      "line": 582,
+      "heading": "15.4 PAM — Privileged Access Management"
+    },
+    "sha256": "16fb2f733a715d94065a10a8b3091c5cedaf6c1145f9e5d863de798db529cc96",
+    "start": 582,
+    "end": 612,
+    "excerpt": "## 15.4 PAM — Privileged Access Management\n\nPAM เป็นแนวทาง/เครื่องมือบริหารสิทธิ์ระดับสูง เช่น การอนุมัติ, จำกัดระยะเวลา, ควบคุม Secrets และติดตาม Sessions\n\n## 15.5 Separation of Environments\n\n**[เสริม]** องค์กรอาจแยก Dev/Test/Production Access เพื่อลดความเสี่ยงที่ผู้ใช้คนเดียวแก้โค้ด อนุมัติ และนำขึ้น Production โดยไม่มีการตรวจสอบ ซึ่งเชื่อมกับ SoD\n\n---\n\n# 16. สถานการณ์บูรณาการ IAM\n\n## Scenario A — New Finance Employee\n\n**เหตุการณ์:** Alice เข้าทำงาน Finance\n\n1. กำหนด Role และ Responsibilities\n2. Provision Identity และ Accounting Access\n3. Assign Permission เท่าที่จำเป็น (Least Privilege)\n4. Authenticate เมื่อ Login และ Authorize ตาม Role\n5. Review Access ตามรอบ\n\n**Key concepts:** Roles Definition, Provisioning, RBAC, Least Privilege, Access Review\n\n## Scenario B — Transfer from Finance to IT\n\n**เหตุการณ์:** Bob ย้าย Finance → IT\n\n1. Review สิทธิ์ปัจจุบัน\n2. Remove Finance Access ที่ไม่จำเป็น\n3. Provision IT Access ที่จำเป็น"
+  },
+  {
+    "id": 1073,
+    "objective": "3.2",
+    "target": "Evaluate an explicit attribute policy",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 3/Domain 3.md",
+      "line": 264,
+      "heading": "16. Attribute-Based Access Control (ABAC)"
+    },
+    "sha256": "35f3e17c6811e043c817da496e13d2659da603826d48aae049ee74773472e43d",
+    "start": 264,
+    "end": 294,
+    "excerpt": "## 16. Attribute-Based Access Control (ABAC)\n\n**Definition:** โมเดลที่ตัดสิน Access จาก **Attributes / Conditions** ของ User, Resource, Environment หรือ Device\n\n| Attribute Category | ตัวอย่าง |\n|---|---|\n| User | Department, Job Title |\n| Resource | Resource Type, Sensitivity |\n| Environment | Time, Location |\n| Device | Device Type, Company Device |\n\n**ตัวอย่าง Policy:** Department = Finance **และ** Device = Company Device **และ** Time = Working Hours → Allow Access; หากไม่ผ่านเงื่อนไข → Deny Access\n\n**Key Feature:** ใช้หลาย Attributes ร่วมกัน ไม่จำกัดเฉพาะ Role\n\n**คำใบ้สอบ:** Department, Device, Location, Time, Multiple Conditions\n\n**จำสอบ:** `ABAC = Attributes / Conditions`\n\n> หมายเหตุ: ABAC ในบทเรียนนี้ไม่มีสไลด์รายละเอียดข้อดี–ข้อเสีย จึงไม่ระบุเป็นเนื้อหาจากสไลด์\n\n## 17. ตารางเปรียบเทียบ Access Control Models\n\n| Model | ใคร/อะไรตัดสิน Access | ตัวอย่าง | ข้อดี/ข้อจำกัดที่เรียน |\n|---|---|---|---|\n| DAC | Owner | เจ้าของไฟล์ให้ Read/Write | ยืดหยุ่น / เสี่ยงให้สิทธิ์เกิน |\n| MAC | Central Policy + Label | Confidential / Secret / Top Secret | เข้มงวด / จัดการซับซ้อน |\n| RBAC | Role | Finance Role | จัดการง่าย / ต้องออกแบบ Role ดี |\n| ABAC | Attributes / Conditions | Department + Device + Time | เน้นการใช้หลายเงื่อนไข (ไม่ได้เรียนข้อดี–ข้อเสียจากสไลด์) |\n\n---"
+  },
+  {
+    "id": 1074,
+    "objective": "4.1",
+    "target": "Switching versus routing function",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+      "line": 120,
+      "heading": "2.7 MAC, ARP, Routing, Switching"
+    },
+    "sha256": "7d6af9f3e322cfd4791d826e05d8554e7fd6bc56383654dd05ab8d64eedd28de",
+    "start": 120,
+    "end": 150,
+    "excerpt": "## 2.7 MAC, ARP, Routing, Switching\n\n- **MAC address:** ที่อยู่ของอินเทอร์เฟซที่ใช้บนลิงก์ L2; ไม่ใช่ตัวแทน identity ที่เชื่อถือได้เสมอไป (spoof ได้)\n- **ARP:** หา MAC จาก IPv4 ในเครือข่ายท้องถิ่น; **ARP spoofing/poisoning** ทำให้ส่งข้อมูลผิดปลายทางได้\n- **Switch:** ส่ง frame ตาม MAC table ภายใน L2; VLAN แยก broadcast domains\n- **Router:** ส่ง IP packet ระหว่าง subnet/เครือข่ายที่ต่างกัน\n- **Default gateway:** เราเตอร์ที่ host ใช้ส่งข้อมูลไปนอก subnet\n- **ICMP:** ส่งข้อความควบคุม/วินิจฉัย เช่น ping, traceroute (ขึ้นกับ implementation)\n\n## 2.8 NAT และ PAT [เสริมที่เคยถาม]\n\n**NAT (Network Address Translation)** แปลง IP address ระหว่างเครือข่าย เช่น private ↔ public. **PAT (Port Address Translation)** หรือ NAT overload แปลง IP และ port เพื่อให้หลายเครื่องแชร์ public IP เดียวได้\n\nตัวอย่าง PAT:\n\n```text\n192.168.1.10:50001 ─┐\n                    ├── Router PAT ── 203.0.113.5:40001 → Internet\n192.168.1.20:50002 ─┘              203.0.113.5:40002 → Internet\n```\n\nเราเตอร์ใช้ mapping table เพื่อส่ง response กลับเครื่องต้นทางให้ถูกต้อง. **NAT/PAT ไม่ใช่ firewall โดยตัวมันเอง** และไม่ได้แทนการบังคับ policy/ตรวจสอบ traffic\n\n## 2.9 Network Devices\n\n| อุปกรณ์ | ทำหน้าที่ | จุดจำสอบ |\n|---|---|---|\n| Hub | ส่งสัญญาณออกทุกพอร์ต (รุ่นเก่า) | ไม่มีการเรียนรู้ MAC |\n| Switch | ส่ง frame ใน LAN | L2, VLAN, MAC table |\n| Router | ส่ง packet ข้าม network | L3, IP routing |\n| Firewall | อนุญาต/ปฏิเสธตามนโยบาย | Rule, zone, state |"
+  },
+  {
+    "id": 1075,
+    "objective": "4.1",
+    "target": "Transport tradeoff",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+      "line": 78,
+      "heading": "2.4 TCP vs UDP"
+    },
+    "sha256": "7d6af9f3e322cfd4791d826e05d8554e7fd6bc56383654dd05ab8d64eedd28de",
+    "start": 78,
+    "end": 108,
+    "excerpt": "## 2.4 TCP vs UDP\n\n| TCP | UDP |\n|---|---|\n| Connection-oriented, ใช้ handshake | Connectionless |\n| มี sequence, acknowledgment, retransmission | ไม่มีการรับประกันส่งถึงในตัวโปรโตคอล |\n| ควบคุมลำดับและความน่าเชื่อถือ | overhead ต่ำ เหมาะกับงานที่ยอมรับ loss/จัดการเองได้ |\n| SSH, SMTP, HTTPS over HTTP/1.1/2 | DNS ส่วนใหญ่, VoIP, streaming บางชนิด, QUIC |\n\n**TCP three-way handshake:** SYN → SYN-ACK → ACK. **UDP ไม่เท่ากับไม่ปลอดภัย** เพราะความปลอดภัยขึ้นกับโปรโตคอลชั้นบนด้วย เช่น QUIC ใช้ TLS 1.3\n\n## 2.5 IP Addressing, IPv4, IPv6\n\nIPv4 ยาว 32 บิต เช่น `192.168.10.25`; IPv6 ยาว 128 บิต เช่น `2001:db8::1` (ตัวอย่างเอกสาร)\n\n**IPv4 private ranges (RFC 1918):**\n- `10.0.0.0/8`\n- `172.16.0.0/12` (172.16–172.31)\n- `192.168.0.0/16`\n\n**Loopback:** `127.0.0.1` (IPv4), `::1` (IPv6); **IPv4 link-local/APIPA:** `169.254.0.0/16`; **IPv6 link-local:** `fe80::/10`.\n\n**Public IP** ใช้สำหรับการกำหนดเส้นทางบนอินเทอร์เน็ตได้ตามนโยบายและการจัดสรร; **private IP** ไม่ถูก route บนอินเทอร์เน็ตสาธารณะโดยตรง\n\n## 2.6 Subnet Mask และ CIDR [เสริมที่เคยถาม]\n\n`/24` หมายถึง 24 บิตแรกเป็น network prefix → mask `255.255.255.0`. IPv4 เหลือ 8 host bits → 256 addresses และโดยทั่วไป 254 usable hosts ใน subnet แบบปกติ (ข้อยกเว้น /31, /32)\n\n| CIDR | Subnet mask | ที่อยู่ทั้งหมด | Usable โดยทั่วไป |\n|---|---|---:|---:|\n| /8 | 255.0.0.0 | 16,777,216 | 16,777,214 |"
+  },
+  {
+    "id": 1076,
+    "objective": "4.1",
+    "target": "Private addressing/NAT versus security policy",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+      "line": 129,
+      "heading": "2.8 NAT และ PAT [เสริมที่เคยถาม]"
+    },
+    "sha256": "7d6af9f3e322cfd4791d826e05d8554e7fd6bc56383654dd05ab8d64eedd28de",
+    "start": 129,
+    "end": 159,
+    "excerpt": "## 2.8 NAT และ PAT [เสริมที่เคยถาม]\n\n**NAT (Network Address Translation)** แปลง IP address ระหว่างเครือข่าย เช่น private ↔ public. **PAT (Port Address Translation)** หรือ NAT overload แปลง IP และ port เพื่อให้หลายเครื่องแชร์ public IP เดียวได้\n\nตัวอย่าง PAT:\n\n```text\n192.168.1.10:50001 ─┐\n                    ├── Router PAT ── 203.0.113.5:40001 → Internet\n192.168.1.20:50002 ─┘              203.0.113.5:40002 → Internet\n```\n\nเราเตอร์ใช้ mapping table เพื่อส่ง response กลับเครื่องต้นทางให้ถูกต้อง. **NAT/PAT ไม่ใช่ firewall โดยตัวมันเอง** และไม่ได้แทนการบังคับ policy/ตรวจสอบ traffic\n\n## 2.9 Network Devices\n\n| อุปกรณ์ | ทำหน้าที่ | จุดจำสอบ |\n|---|---|---|\n| Hub | ส่งสัญญาณออกทุกพอร์ต (รุ่นเก่า) | ไม่มีการเรียนรู้ MAC |\n| Switch | ส่ง frame ใน LAN | L2, VLAN, MAC table |\n| Router | ส่ง packet ข้าม network | L3, IP routing |\n| Firewall | อนุญาต/ปฏิเสธตามนโยบาย | Rule, zone, state |\n| Wireless AP | เชื่อม Wi-Fi เข้ากับ LAN | WPA2/WPA3, SSID |\n| Proxy | ตัวกลางรับ/ส่ง request | Filtering, logging, caching |\n| Load balancer | กระจายคำขอไป backend | Availability, scaling |\n| IDS | ตรวจจับ/แจ้งเตือน | ไม่จำเป็นต้อง block |\n| IPS | ตรวจจับและป้องกัน inline | สามารถ block traffic |\n| VPN gateway | สร้าง tunnel เข้ารหัส | Remote/site-to-site access |\n\n## 2.10 Wireless Security [เสริม]\n"
+  },
+  {
+    "id": 1077,
+    "objective": "4.1",
+    "target": "DNS versus network reachability",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+      "line": 194,
+      "heading": "2.12 DNS และ DHCP [เสริม]"
+    },
+    "sha256": "7d6af9f3e322cfd4791d826e05d8554e7fd6bc56383654dd05ab8d64eedd28de",
+    "start": 194,
+    "end": 224,
+    "excerpt": "## 2.12 DNS และ DHCP [เสริม]\n\nDNS แปลงชื่อ domain เป็น IP (และ record อื่น ๆ). Record สำคัญ: `A` IPv4, `AAAA` IPv6, `CNAME` alias, `MX` mail routing, `TXT` text/policy, `NS` authoritative nameserver, `PTR` reverse lookup. **DNS poisoning** ทำให้ได้คำตอบผิด; DNSSEC ช่วยยืนยันความถูกต้อง/แหล่งที่มาของข้อมูล DNS แต่ไม่ได้เข้ารหัส query โดยตัวมันเอง\n\nDHCPv4 ขั้นตอน **DORA:** Discover → Offer → Request → Acknowledge. Rogue DHCP อาจแจก gateway/DNS ปลอมได้; ป้องกันด้วย DHCP snooping และการควบคุมพอร์ตสวิตช์\n\n---\n\n# 3. Objective 4.2 — Network Security Architecture\n\n## 3.1 Network Segmentation [จากสไลด์]\n\nแบ่งเครือข่ายเป็นส่วนย่อยที่แยกกันเพื่อ **จำกัดการแพร่กระจายการโจมตี, ควบคุม traffic, ลด lateral movement, จำกัด blast radius, และจัด policy เฉพาะแต่ละส่วน**. บางรูปแบบช่วยลด broadcast และเพิ่มประสิทธิภาพ\n\nตัวอย่าง:\n\n```text\nInternet\n   │\nFirewall\n   ├── DMZ (public web)\n   ├── VLAN 10 Employees\n   ├── VLAN 20 Guests ── Internet only\n   ├── VLAN 30 Servers\n   └── VLAN 40 IoT ── only allowed to management service\n```\n\n**หลักสำคัญ:** แยก network อย่างเดียวไม่พอ ต้องมี **enforcement** เช่น ACL, firewall, security group; การ routing แบบ unrestricted ทำให้แยก VLAN แล้วแต่ยังเข้าถึงกันได้\n\n## 3.2 Firewall Zones [จากสไลด์]\n"
+  },
+  {
+    "id": 1078,
+    "objective": "4.1",
+    "target": "Select the time-synchronization service function",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+      "line": 187,
+      "heading": "2.11 Applications and Protocols — Time sync / NTP row"
+    },
+    "sha256": "7d6af9f3e322cfd4791d826e05d8554e7fd6bc56383654dd05ab8d64eedd28de",
+    "start": 187,
+    "end": 217,
+    "excerpt": "| Time sync | NTP | UDP 123 | สำคัญต่อ logs และการตรวจสอบเหตุการณ์ |\n| Directory | LDAP | TCP/UDP 389 | LDAPS TCP 636 |\n| File sharing | SMB | TCP 445 | จำกัด exposure; hardening |\n| Authentication | Kerberos | TCP/UDP 88 | ใช้ ticket |\n\n**ข้อควรระวัง:** port เป็นค่า default ไม่ใช่หลักฐานว่าทราฟฟิกนั้นปลอดภัยหรือเป็นแอปนั้นจริง; ตรวจสอบ protocol/configuration เพิ่มเติม\n\n## 2.12 DNS และ DHCP [เสริม]\n\nDNS แปลงชื่อ domain เป็น IP (และ record อื่น ๆ). Record สำคัญ: `A` IPv4, `AAAA` IPv6, `CNAME` alias, `MX` mail routing, `TXT` text/policy, `NS` authoritative nameserver, `PTR` reverse lookup. **DNS poisoning** ทำให้ได้คำตอบผิด; DNSSEC ช่วยยืนยันความถูกต้อง/แหล่งที่มาของข้อมูล DNS แต่ไม่ได้เข้ารหัส query โดยตัวมันเอง\n\nDHCPv4 ขั้นตอน **DORA:** Discover → Offer → Request → Acknowledge. Rogue DHCP อาจแจก gateway/DNS ปลอมได้; ป้องกันด้วย DHCP snooping และการควบคุมพอร์ตสวิตช์\n\n---\n\n# 3. Objective 4.2 — Network Security Architecture\n\n## 3.1 Network Segmentation [จากสไลด์]\n\nแบ่งเครือข่ายเป็นส่วนย่อยที่แยกกันเพื่อ **จำกัดการแพร่กระจายการโจมตี, ควบคุม traffic, ลด lateral movement, จำกัด blast radius, และจัด policy เฉพาะแต่ละส่วน**. บางรูปแบบช่วยลด broadcast และเพิ่มประสิทธิภาพ\n\nตัวอย่าง:\n\n```text\nInternet\n   │\nFirewall\n   ├── DMZ (public web)\n   ├── VLAN 10 Employees\n   ├── VLAN 20 Guests ── Internet only\n   ├── VLAN 30 Servers"
+  },
+  {
+    "id": 1079,
+    "objective": "4.2",
+    "target": "East-west versus north-south visibility",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+      "line": 308,
+      "heading": "3.9 ACL, Least Privilege, East-West / North-South [เสริม]"
+    },
+    "sha256": "7d6af9f3e322cfd4791d826e05d8554e7fd6bc56383654dd05ab8d64eedd28de",
+    "start": 308,
+    "end": 338,
+    "excerpt": "## 3.9 ACL, Least Privilege, East-West / North-South [เสริม]\n\nACL เป็นชุดกฎ allow/deny ตาม address, protocol, port, direction ฯลฯ; rule ordering มีผลในหลายระบบ\n\n- **North-South:** เข้า/ออกขอบเครือข่าย เช่น Internet ↔ data center\n- **East-West:** ระหว่าง workload/servers ภายใน\n- **Lateral movement:** ผู้โจมตีเคลื่อนจากระบบที่ยึดได้ไปยังระบบอื่น\n- **Blast radius:** ขอบเขตผลกระทบเมื่อเกิด breach\n\n## 3.10 VPN, TLS, IPsec [เสริม]\n\nVPN สร้างการเชื่อมต่อผ่านเครือข่ายที่ไม่เชื่อถือได้; **remote-access VPN** สำหรับผู้ใช้, **site-to-site VPN** เชื่อมสำนักงาน. **IPsec** มักใช้ระดับ IP; **TLS** ปกป้องข้อมูลระหว่างแอป เช่น HTTPS. VPN ไม่ได้ทำให้ endpoint ที่ติด malware ปลอดภัยโดยอัตโนมัติ\n\n## 3.11 Embedded Systems [จากสไลด์]\n\nEmbedded system คือระบบคอมพิวเตอร์ที่ออกแบบมาทำหน้าที่เฉพาะภายในอุปกรณ์หรือระบบใหญ่ เช่น industrial controller, medical device, automotive system, smart appliance; มักมี CPU/RAM/storage จำกัด\n\n**ความท้าทาย:** อายุใช้งานยาว, compute จำกัด, patch ยาก, legacy software, security capability จำกัด, physical exposure.  \n**แนวทาง [เสริม]:** asset inventory, secure configuration, firmware signing, network isolation, allowlisting, controlled maintenance window, physical security, monitoring ตามข้อจำกัดของอุปกรณ์\n\n## 3.12 Industrial Control Systems (ICS) [จากสไลด์]\n\nICS ใช้ **monitor และ control กระบวนการทางอุตสาหกรรม** เช่น โรงไฟฟ้า/การจ่ายไฟ, โรงงาน, ระบบน้ำ, น้ำมันและก๊าซ. เหตุการณ์ความปลอดภัยอาจทำให้ **เกิดอันตรายทางกายภาพและต่อชีวิต** ไม่ใช่เพียงข้อมูลรั่ว\n\n**ความต้องการหลักจากสไลด์:**\n1. **Availability:** ต้องทำงานต่อเนื่อง\n2. **Safety:** การเปลี่ยนแปลง security ต้องไม่ทำให้สภาวะทางกายภาพไม่ปลอดภัย\n3. **Reliability:** การทำงานเสถียรและคาดการณ์ได้\n4. **Legacy technology:** อุปกรณ์เก่าและ patch ยาก\n5. **Segmentation:** แยก ICS จากเครือข่ายที่เชื่อถือน้อยกว่า\n"
+  },
+  {
+    "id": 1080,
+    "objective": "4.2",
+    "target": "Policy-triggered reevaluation during ongoing resource access",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+      "line": 268,
+      "heading": "3.6 Zero Trust [จากสไลด์]"
+    },
+    "sha256": "7d6af9f3e322cfd4791d826e05d8554e7fd6bc56383654dd05ab8d64eedd28de",
+    "start": 268,
+    "end": 298,
+    "excerpt": "## 3.6 Zero Trust [จากสไลด์]\n\nหลักคือ **อย่าให้ความเชื่อถือเพียงเพราะอยู่ภายใน network**; ประเมิน identity, device posture, application, resource, location, context และให้สิทธิ์ตามความจำเป็น\n\n- Verify explicitly: ตรวจสอบ identity และ context\n- Least privilege: สิทธิ์ขั้นต่ำและจำกัดขอบเขต\n- Assume breach: ออกแบบเผื่อถูกบุกรุกแล้ว เช่น segmentation, monitoring\n\n**ตัวอย่าง:** พนักงานอยู่ในสำนักงานแต่ใช้เครื่องไม่ compliant → อาจถูกปฏิเสธเข้าถึงระบบสำคัญ; ผู้ใช้อยู่ภายนอกแต่ผ่าน MFA/อุปกรณ์ compliant → อาจได้รับสิทธิ์ที่จำเป็น\n\n**ข้อควรระวัง:** Zero Trust ไม่ใช่สินค้าเดียว ไม่ใช่แค่ VPN หรือ MFA และไม่แปลว่าไม่เชื่อใครเลยจนทำงานไม่ได้\n\n## 3.7 Defense in Depth [จากสไลด์]\n\nหลายชั้นควบคู่กันเพื่อไม่ให้มาตรการเดียวล้มเหลวแล้วข้อมูลถูกเจาะทันที\n\n| ชั้น | ตัวอย่าง control |\n|---|---|\n| Perimeter | Firewall, IDS/IPS |\n| Network | VLAN, DMZ, ACL, micro-segmentation |\n| Endpoint | EDR/anti-malware, patching, hardening |\n| Application | Secure coding, WAF, authentication |\n| Data | Encryption, backup, access control |\n| Identity/People [เสริม] | MFA, awareness, least privilege |\n| Monitoring [เสริม] | Logs, SIEM, incident response |\n\n**WAF** ป้องกันโจมตีระดับเว็บแอป เช่นบางรูปแบบของ SQL injection/XSS แต่ไม่แทน secure coding. **IDS** แจ้งเตือน; **IPS** สามารถบล็อก; **EDR** ตรวจจับ/ตอบสนองที่ endpoint\n\n## 3.8 Firewalls และ NGFW [เสริมที่เคยถาม]\n\n- **Packet-filtering firewall:** พิจารณา IP, port, protocol ตามกฎ"
+  },
+  {
+    "id": 1081,
+    "objective": "4.3",
+    "target": "Community cloud eligibility",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 4/D4 surm.md",
+      "line": 453,
+      "heading": "Community Cloud"
+    },
+    "sha256": "7d6af9f3e322cfd4791d826e05d8554e7fd6bc56383654dd05ab8d64eedd28de",
+    "start": 453,
+    "end": 483,
+    "excerpt": "### Community Cloud\nใช้ร่วมกันหลายองค์กรที่มีความต้องการ/ข้อกำกับคล้ายกัน เช่น หน่วยงานรัฐหรือกลุ่มสุขภาพ. ข้อดี: cost sharing, tailored controls; ความท้าทาย: governance, ownership, access, compliance coordination\n\n### Multi-Cloud\nใช้บริการ cloud จาก provider มากกว่าหนึ่งราย เช่น AWS + Azure + GCP. เป้าหมาย: ลดการพึ่งพา vendor รายเดียว, เลือกบริการที่เหมาะ, เพิ่มทางเลือกด้าน resilience; ความท้าทาย: policy fragmentation, IAM, logs, data transfer cost, skills. **Multi-cloud ไม่ได้แปลว่ามี failover อัตโนมัติ**\n\n| คำ | จำสั้น ๆ |\n|---|---|\n| Public | Provider ให้บริการหลายลูกค้า |\n| Private | เฉพาะองค์กรเดียว |\n| Hybrid | เชื่อม private/public environments |\n| Community | หลายองค์กรที่มีความต้องการร่วมกัน |\n| Multi-cloud | หลาย cloud providers |\n\n## 4.6 Cloud Security Controls [เสริม]\n\n### IAM และ MFA\nกำหนด roles/permissions ตาม least privilege; ใช้ MFA สำหรับบัญชีที่สำคัญ; หลีกเลี่ยง long-lived access keys; ทบทวนสิทธิ์ service accounts และ machine identities\n\n### Data protection\n- **Encryption in transit:** TLS\n- **Encryption at rest:** เข้ารหัสข้อมูลที่เก็บใน disk/database/object storage\n- **Key management:** ดูแล lifecycle, rotation, access to keys; KMS/HSM ตามความต้องการ\n- **Backups:** ทดสอบ restore; ป้องกัน backup ถูกลบ/แก้โดยผู้โจมตี\n- **Data classification:** แบ่งระดับความลับก่อนตั้ง policy\n\n### Network controls\nCloud VPC/VNet, subnets, routing, security groups, network ACL, private endpoints, WAF, DDoS protection; ปิด public exposure ที่ไม่จำเป็น\n\n### Visibility และ response\nเปิด audit logs, activity logs, flow logs, monitoring/alerts; เก็บ logs ตาม retention และข้อกำกับ; เตรียม incident response runbook และทดสอบ"
+  },
+  {
+    "id": 1082,
+    "objective": "5.1",
+    "target": "Bulk confidentiality after a shared session key is established",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 5/D5 sum.md",
+      "line": 61,
+      "heading": "3. Symmetric Encryption"
+    },
+    "sha256": "a5a5e15599558596c63bdac5c024e88203870cdb36040638eca56cd9c97584fb",
+    "start": 61,
+    "end": 91,
+    "excerpt": "## 3. Symmetric Encryption\n\nSymmetric Encryption คือการเข้ารหัสแบบใช้ Secret Key เดียวกัน สำหรับทั้ง Encryption และ Decryption\n\nตัวอย่างอัลกอริทึมที่สำคัญคือ AES (Advanced Encryption Standard)\n\nการใช้งานตามสไลด์ ได้แก่\n\n- เข้ารหัสไฟล์และ Storage เช่น Encrypted Drive\n- เข้ารหัสข้อมูลสำคัญใน Database\n- ปกป้องการสื่อสาร เช่น VPN และเครือข่าย Wi-Fi\n\nข้อดีคือทำงานได้รวดเร็ว เหมาะกับการเข้ารหัสข้อมูลปริมาณมาก แต่มีข้อท้าทายคือการแจกจ่ายและเก็บรักษา Secret Key อย่างปลอดภัย\n\nจำสำหรับสอบ: Symmetric = Same Secret Key, Fast, Bulk Data Encryption\n\n## 4. Asymmetric Encryption\n\nAsymmetric Encryption ใช้ Key สองตัวที่มีความสัมพันธ์กัน เรียกว่า Key Pair\n\n- Public Key: สามารถเปิดเผยให้ผู้อื่นใช้ได้\n- Private Key: เจ้าของต้องเก็บเป็นความลับ\n\nสำหรับการเข้ารหัสเพื่อรักษาความลับ ผู้ส่งสามารถใช้ Public Key ของผู้รับเข้ารหัส และผู้รับใช้ Private Key ที่สอดคล้องกันถอดรหัส\n\nนอกจากนี้ Asymmetric Cryptography ยังใช้ใน Digital Signatures และกระบวนการสร้างหรือแลกเปลี่ยนกุญแจอย่างปลอดภัย\n\nตัวอย่างอัลกอริทึมคือ RSA\n\n| Symmetric              | Asymmetric                                        |\n| ---------------------- | ------------------------------------------------- |"
+  },
+  {
+    "id": 1083,
+    "objective": "5.1",
+    "target": "Signing and verification key roles",
+    "source": {
+      "path": "ISC2 Update 2026/Domain 5/D5 sum.md",
+      "line": 142,
+      "heading": "7. Digital Signatures"
+    },
+    "sha256": "a5a5e15599558596c63bdac5c024e88203870cdb36040638eca56cd9c97584fb",
+    "start": 142,
+    "end": 172,
+    "excerpt": "## 7. Digital Signatures\n\nDigital Signature หรือลายเซ็นดิจิทัล ใช้ Cryptographic Algorithms เพื่อช่วยยืนยันว่าใครเป็นผู้ลงนาม และข้อมูลถูกแก้ไขหลังลงนามหรือไม่\n\nหลักการทั่วไปคือผู้ลงนามใช้ Private Key สร้างลายเซ็น และผู้ตรวจสอบใช้ Public Key ที่สอดคล้องกันตรวจสอบลายเซ็น\n\nDigital Signatures สนับสนุน\n\n- Authentication\n- Integrity\n- Non-repudiation\n\nตัวอย่างเช่น บริษัทลงนามดิจิทัลในเอกสารสำคัญ เพื่อให้ผู้รับตรวจสอบความถูกต้องของเอกสารและผู้ลงนามได้\n\nDigital Signature ไม่ได้ทำให้เนื้อหาเอกสารเป็นความลับโดยอัตโนมัติ หากต้องการ Confidentiality ต้องใช้ Encryption เพิ่มเติม\n\n## 8. Hardware Security Module (HSM)\n\nHSM คืออุปกรณ์ Hardware ที่ออกแบบมาเพื่อสร้าง จัดเก็บ และจัดการ Cryptographic Keys อย่างปลอดภัย\n\nหน้าที่สำคัญ ได้แก่\n\n- Secure Key Generation\n- Secure Key Storage\n- Key Management\n- Cryptographic Operations\n- Digital Signatures\n\nHSM มักใช้ในระบบ Banking, Government และ Cloud Services โดยมีคุณสมบัติต้านทานการแก้ไขหรือเข้าถึงอุปกรณ์โดยไม่ได้รับอนุญาต (Tamper Resistance)\n\nสไลด์กล่าวถึงมาตรฐาน FIPS 140-2 ซึ่งเกี่ยวข้องกับการประเมินความปลอดภัยของ Cryptographic Modules"
+  }
+]

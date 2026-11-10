@@ -242,8 +242,8 @@ const questions = [
       "It proves the content is safe because port 443 is assigned to HTTPS"
     ],
     "correct_idx": 1,
-    "explanation": "Option B is correct. Header/state checks do not inspect the stated encrypted content. Authorized application-layer inspection or endpoint/application validation is needed for that separate assurance goal. Option A is incorrect: A port-number change does not give the gateway visibility into encrypted application content. Option C is incorrect: A completed handshake establishes transport state, not whether application instructions are malicious. Option D is incorrect: A registered port does not prove the actual application content or its safety.",
-    "short_explanation_en": "Allowed ports and established state do not establish the safety of encrypted application content.",
+    "explanation": "Option B is correct. Header and connection-state checks do not establish whether application requests contain malicious instructions. Suitable authorized application-layer or endpoint validation is needed for that separate content-assurance goal. Option A is incorrect: Changing a port number does not add the missing application-content inspection. Option C is incorrect: A completed handshake establishes transport state, not whether application instructions are malicious. Option D is incorrect: A registered port does not prove the actual application content or its safety.",
+    "short_explanation_en": "Allowed ports and established state do not establish the safety of application content.",
     "question_th": "Gateway อนุญาต TCP Port 443 ไปยัง Portal ลูกค้า โดยตรวจ Header และสถานะการเชื่อมต่อ แต่ไม่ถอดรหัสทราฟฟิกแอป ผู้จัดการถามว่าสิ่งนี้พิสูจน์หรือไม่ว่าคำขออัปโหลดของแอปไม่มีคำสั่งอันตราย คำตอบใดเหมาะสมที่สุด?",
     "options_th": [
       "การเปลี่ยน Port ที่อนุญาตเป็นเลขที่ไม่ค่อยใช้จะให้การตรวจที่ขาดอยู่",
@@ -251,17 +251,17 @@ const questions = [
       "พิสูจน์ว่าเนื้อหาปลอดภัยหาก TCP Handshake สำเร็จ",
       "พิสูจน์ว่าเนื้อหาปลอดภัย เพราะ Port 443 กำหนดให้ HTTPS"
     ],
-    "explanation_th": "ข้อ B ถูกต้อง: การตรวจ Header/State ไม่ได้ตรวจเนื้อหาเข้ารหัสที่ระบุ ต้องมีการตรวจระดับแอปที่ได้รับอนุมัติหรือการตรวจที่ Endpoint/แอปสำหรับเป้าหมายการประเมินเนื้อหาอีกส่วนนี้\n- ข้อ A ไม่ถูกต้อง: การเปลี่ยนหมายเลข Port ไม่ได้ทำให้ Gateway มองเห็นเนื้อหาแอปที่เข้ารหัส\n- ข้อ C ไม่ถูกต้อง: Handshake ที่สำเร็จแสดงสถานะ Transport ไม่ได้บอกว่าคำสั่งในแอปเป็นอันตรายหรือไม่\n- ข้อ D ไม่ถูกต้อง: Port ที่จดทะเบียนไม่ได้พิสูจน์เนื้อหาจริงของแอปหรือความปลอดภัยของเนื้อหา",
+    "explanation_th": "ข้อ B ถูกต้อง: การตรวจ Header และสถานะการเชื่อมต่อไม่ได้ยืนยันว่าคำขอแอปมีคำสั่งอันตรายหรือไม่ ต้องใช้การตรวจระดับแอปหรือ Endpoint ที่เหมาะสมและได้รับอนุญาตเพื่อประเมินเนื้อหาแยกต่างหาก\n- ข้อ A ไม่ถูกต้อง: การเปลี่ยนหมายเลข Port ไม่ได้เพิ่มการตรวจเนื้อหาแอปที่ขาดอยู่\n- ข้อ C ไม่ถูกต้อง: Handshake ที่สำเร็จแสดงสถานะ Transport ไม่ได้บอกว่าคำสั่งในแอปเป็นอันตรายหรือไม่\n- ข้อ D ไม่ถูกต้อง: Port ที่จดทะเบียนไม่ได้พิสูจน์เนื้อหาจริงของแอปหรือความปลอดภัยของเนื้อหา",
     "explanation_detail": {
       "correct": {
-        "en": "Header/state checks do not inspect the stated encrypted content. Authorized application-layer inspection or endpoint/application validation is needed for that separate assurance goal.",
-        "th": "การตรวจ Header/State ไม่ได้ตรวจเนื้อหาเข้ารหัสที่ระบุ ต้องมีการตรวจระดับแอปที่ได้รับอนุมัติหรือการตรวจที่ Endpoint/แอปสำหรับเป้าหมายการประเมินเนื้อหาอีกส่วนนี้"
+        "en": "Header and connection-state checks do not establish whether application requests contain malicious instructions. Suitable authorized application-layer or endpoint validation is needed for that separate content-assurance goal.",
+        "th": "การตรวจ Header และสถานะการเชื่อมต่อไม่ได้ยืนยันว่าคำขอแอปมีคำสั่งอันตรายหรือไม่ ต้องใช้การตรวจระดับแอปหรือ Endpoint ที่เหมาะสมและได้รับอนุญาตเพื่อประเมินเนื้อหาแยกต่างหาก"
       },
       "incorrect": [
         {
           "letter": "A",
-          "text_en": "A port-number change does not give the gateway visibility into encrypted application content.",
-          "text_th": "การเปลี่ยนหมายเลข Port ไม่ได้ทำให้ Gateway มองเห็นเนื้อหาแอปที่เข้ารหัส"
+          "text_en": "Changing a port number does not add the missing application-content inspection.",
+          "text_th": "การเปลี่ยนหมายเลข Port ไม่ได้เพิ่มการตรวจเนื้อหาแอปที่ขาดอยู่"
         },
         {
           "letter": "C",
@@ -377,7 +377,7 @@ const questions = [
       "Add the scanner's MAC address to the workstation network and disable encryption"
     ],
     "correct_idx": 2,
-    "explanation": "Option C is correct. This meets the explicitly approved compatibility exception while limiting the scanner to its required gateway and retaining stronger supported settings for workstations. Option A is incorrect: Hiding an SSID does not replace encryption/authentication and would weaken all workstation access. Option B is incorrect: The stated business need is only the scanning gateway; broad production access is unnecessary under the allowed restricted design. Option D is incorrect: MAC filtering is not a replacement for the supported security modes and unnecessarily exposes the wider network.",
+    "explanation": "Option C is correct. This meets the approved compatibility exception, limits the scanner to its required gateway and retains the approved WPA3 configuration for workstations. Option A is incorrect: Hiding an SSID does not replace encryption/authentication and would weaken all workstation access. Option B is incorrect: The stated business need is only the scanning gateway; broad production access is unnecessary under the allowed restricted design. Option D is incorrect: MAC filtering is not a replacement for the supported security modes and unnecessarily exposes the wider network.",
     "short_explanation_en": "Handle authorized wireless compatibility with supported protection and scoped access rather than weakening the whole network.",
     "question_th": "เครื่องทำงานองค์กรรองรับการตั้งค่า WPA3 ที่อนุมัติ แต่เครื่องสแกนที่จำเป็นรองรับเฉพาะโหมด WPA2 ที่อนุมัติและต้องติดต่อเพียง Scanning Gateway นโยบายอนุญาตเครือข่ายรองรับอุปกรณ์เก่าที่จำกัดสิทธิ์ ข้อเสนอใดรักษาความต้องการนี้และจำกัดการเปิดเผยได้เหมาะสมที่สุด?",
     "options_th": [
@@ -386,11 +386,11 @@ const questions = [
       "ใช้เครือข่าย WPA2 ที่อนุมัติและจำกัดสำหรับเครื่องสแกน และคง WPA3 ให้เครื่องทำงาน",
       "เพิ่ม MAC Address ของเครื่องสแกนในเครือข่ายเครื่องทำงานแล้วปิดการเข้ารหัส"
     ],
-    "explanation_th": "ข้อ C ถูกต้อง: วิธีนี้ทำตามข้อยกเว้นความเข้ากันได้ที่อนุมัติ จำกัดเครื่องสแกนให้ถึง Gateway ที่จำเป็น และคงการตั้งค่าที่แข็งแกร่งกว่าซึ่งเครื่องทำงานรองรับ\n- ข้อ A ไม่ถูกต้อง: การซ่อน SSID ไม่ทดแทนการเข้ารหัส/ยืนยันตัวตน และจะทำให้เครื่องทำงานทั้งหมดมีการป้องกันลดลง\n- ข้อ B ไม่ถูกต้อง: ความจำเป็นที่ระบุคือ Scanning Gateway เท่านั้น การเข้าถึง Production แบบกว้างไม่จำเป็นเมื่ออนุญาตแบบจำกัดแล้ว\n- ข้อ D ไม่ถูกต้อง: การกรอง MAC ไม่ทดแทนโหมดความปลอดภัยที่รองรับ และเปิดเผยเครือข่ายหลักโดยไม่จำเป็น",
+    "explanation_th": "ข้อ C ถูกต้อง: วิธีนี้ตรงข้อยกเว้นความเข้ากันได้ที่อนุมัติ จำกัดเครื่องสแกนให้เข้าถึง Gateway ที่จำเป็น และคงการตั้งค่า WPA3 ที่อนุมัติสำหรับเครื่องทำงาน\n- ข้อ A ไม่ถูกต้อง: การซ่อน SSID ไม่ทดแทนการเข้ารหัส/ยืนยันตัวตน และจะทำให้เครื่องทำงานทั้งหมดมีการป้องกันลดลง\n- ข้อ B ไม่ถูกต้อง: ความจำเป็นที่ระบุคือ Scanning Gateway เท่านั้น การเข้าถึง Production แบบกว้างไม่จำเป็นเมื่ออนุญาตแบบจำกัดแล้ว\n- ข้อ D ไม่ถูกต้อง: การกรอง MAC ไม่ทดแทนโหมดความปลอดภัยที่รองรับ และเปิดเผยเครือข่ายหลักโดยไม่จำเป็น",
     "explanation_detail": {
       "correct": {
-        "en": "This meets the explicitly approved compatibility exception while limiting the scanner to its required gateway and retaining stronger supported settings for workstations.",
-        "th": "วิธีนี้ทำตามข้อยกเว้นความเข้ากันได้ที่อนุมัติ จำกัดเครื่องสแกนให้ถึง Gateway ที่จำเป็น และคงการตั้งค่าที่แข็งแกร่งกว่าซึ่งเครื่องทำงานรองรับ"
+        "en": "This meets the approved compatibility exception, limits the scanner to its required gateway and retains the approved WPA3 configuration for workstations.",
+        "th": "วิธีนี้ตรงข้อยกเว้นความเข้ากันได้ที่อนุมัติ จำกัดเครื่องสแกนให้เข้าถึง Gateway ที่จำเป็น และคงการตั้งค่า WPA3 ที่อนุมัติสำหรับเครื่องทำงาน"
       },
       "incorrect": [
         {
@@ -419,7 +419,7 @@ const questions = [
       "The advertised maximum data rate",
       "The number of client entries in the MAC allowlist",
       "A successful connectivity test from an approved client to its gateway",
-      "The actual supported authentication/encryption mode and maintained firmware"
+      "The supported authentication/encryption mode actually configured and the maintained firmware"
     ],
     "correct_idx": 3,
     "explanation": "Option D is correct. Wireless protection depends on actual security configuration and implementation maintenance. Generation, SSID visibility and MAC restrictions do not substitute for those controls. Option A is incorrect: A nominal throughput capability does not establish authentication or encryption settings. Option B is incorrect: The size of an allowlist does not overcome the limits of using observable/copyable MAC identifiers. Option C is incorrect: Connectivity demonstrates a working path but does not establish which authentication/encryption mode protects it or whether the implementation is maintained.",
@@ -1487,6 +1487,366 @@ const questions = [
           "letter": "C",
           "text_en": "A valid development identity does not grant production data rights and conflicts with the explicit prohibition.",
           "text_th": "ตัวตน Development ที่ถูกต้องไม่ได้ให้สิทธิ์ข้อมูล Production และขัดกับข้อห้ามที่ระบุ"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1074,
+    "dom": 4,
+    "question": "Two IP subnets must communicate according to an existing access policy. The current device is a Layer 2 switch that forwards frames within a subnet but provides no inter-subnet function. Which capability is needed to forward traffic between the subnets?",
+    "options": [
+      "Additional MAC-based frame forwarding within the existing subnet",
+      "DNS name resolution for the receiving hosts",
+      "Address leasing for hosts on each subnet",
+      "IP routing between the subnets"
+    ],
+    "correct_idx": 3,
+    "explanation": "Routing provides inter-network packet forwarding. A multilayer device could supply it, but the stated Layer 2 switch does not.\n\nA: More within-subnet switching does not supply inter-subnet routing.\nB: DNS maps names to addresses; it does not forward packets between subnets.\nC: Address assignment does not itself provide the required forwarding path.",
+    "short_explanation_en": "Routing provides inter-network packet forwarding. A multilayer device could supply it, but the stated Layer 2 switch does not.",
+    "question_th": "ซับเน็ต IP สองวงต้องสื่อสารกันตามนโยบายเข้าถึงที่มีอยู่ อุปกรณ์ปัจจุบันเป็นสวิตช์ Layer 2 ที่ส่งเฟรมภายในซับเน็ตแต่ไม่มีหน้าที่ข้ามซับเน็ต ต้องเพิ่มความสามารถใดเพื่อส่งทราฟฟิกระหว่างซับเน็ต?",
+    "options_th": [
+      "การส่งต่อเฟรมตาม MAC เพิ่มภายในซับเน็ตเดิม",
+      "การแปลงชื่อ DNS ให้โฮสต์ปลายทาง",
+      "การให้เช่าที่อยู่แก่โฮสต์ในแต่ละซับเน็ต",
+      "การกำหนดเส้นทาง IP ระหว่างซับเน็ต"
+    ],
+    "explanation_th": "Routing ส่งแพ็กเก็ตข้ามเครือข่าย อุปกรณ์หลายเลเยอร์ทำหน้าที่นี้ได้ แต่สวิตช์ Layer 2 ตามโจทย์ไม่มีความสามารถนี้\n\nA: การสวิตช์ภายในซับเน็ตเพิ่มเติมไม่ได้ให้การกำหนดเส้นทางข้ามซับเน็ต\nB: DNS แปลงชื่อเป็นที่อยู่ ไม่ได้ส่งแพ็กเก็ตข้ามซับเน็ต\nC: การกำหนดที่อยู่ไม่ได้ให้เส้นทางส่งต่อที่ต้องการด้วยตัวเอง",
+    "explanation_detail": {
+      "correct": {
+        "en": "Routing provides inter-network packet forwarding. A multilayer device could supply it, but the stated Layer 2 switch does not.",
+        "th": "Routing ส่งแพ็กเก็ตข้ามเครือข่าย อุปกรณ์หลายเลเยอร์ทำหน้าที่นี้ได้ แต่สวิตช์ Layer 2 ตามโจทย์ไม่มีความสามารถนี้"
+      },
+      "incorrect": [
+        {
+          "letter": "A",
+          "text_en": "More within-subnet switching does not supply inter-subnet routing.",
+          "text_th": "การสวิตช์ภายในซับเน็ตเพิ่มเติมไม่ได้ให้การกำหนดเส้นทางข้ามซับเน็ต"
+        },
+        {
+          "letter": "B",
+          "text_en": "DNS maps names to addresses; it does not forward packets between subnets.",
+          "text_th": "DNS แปลงชื่อเป็นที่อยู่ ไม่ได้ส่งแพ็กเก็ตข้ามซับเน็ต"
+        },
+        {
+          "letter": "C",
+          "text_en": "Address assignment does not itself provide the required forwarding path.",
+          "text_th": "การกำหนดที่อยู่ไม่ได้ให้เส้นทางส่งต่อที่ต้องการด้วยตัวเอง"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1075,
+    "dom": 4,
+    "question": "A real-time sensor application sends independent samples. Late samples have no value, occasional loss is acceptable, and the application handles any recovery it needs. The design does not require transport-layer ordered retransmission. Which transport best matches these stated needs?",
+    "options": [
+      "TCP, because retransmitting every missing sample is required here",
+      "UDP, which does not itself require reliable ordered delivery",
+      "TCP, because choosing it supplies payload encryption",
+      "UDP, because it guarantees every sample arrives within a deadline"
+    ],
+    "correct_idx": 1,
+    "explanation": "UDP fits the stated datagram tradeoff. The application must provide any needed recovery and security; UDP is not a confidentiality service.\n\nA: The scenario explicitly does not require transport-level ordered retransmission of late samples.\nC: TCP does not by itself supply confidentiality.\nD: UDP provides no such delivery or timing guarantee.",
+    "short_explanation_en": "UDP fits the stated datagram tradeoff. The application must provide any needed recovery and security; UDP is not a confidentiality service.",
+    "question_th": "แอปพลิเคชันเซนเซอร์เวลาจริงส่งตัวอย่างที่เป็นอิสระกัน ตัวอย่างที่มาช้าไม่มีประโยชน์ ยอมให้สูญหายบางครั้งได้ และแอปพลิเคชันจัดการการกู้คืนที่ต้องการเอง การออกแบบไม่ต้องการการส่งซ้ำแบบเรียงลำดับจากชั้นขนส่ง โปรโตคอลขนส่งใดตรงความต้องการที่ระบุที่สุด?",
+    "options_th": [
+      "TCP เพราะกรณีนี้ต้องส่งซ้ำทุกตัวอย่างที่หาย",
+      "UDP ซึ่งไม่ได้กำหนดให้ต้องส่งถึงอย่างเชื่อถือได้ตามลำดับด้วยตัวเอง",
+      "TCP เพราะเลือกแล้วจะได้การเข้ารหัสเพย์โหลด",
+      "UDP เพราะรับประกันว่าทุกตัวอย่างถึงภายในกำหนด"
+    ],
+    "explanation_th": "UDP ตรงการแลกเปลี่ยนแบบเดตาแกรมตามที่ระบุ แอปพลิเคชันต้องจัดการการกู้คืนและความปลอดภัยที่ต้องการ ส่วน UDP ไม่ใช่บริการรักษาความลับ\n\nA: โจทย์ระบุชัดว่าไม่ต้องการให้ชั้นขนส่งส่งซ้ำตามลำดับสำหรับตัวอย่างที่มาช้า\nC: TCP ไม่ได้ให้การรักษาความลับด้วยตัวเอง\nD: UDP ไม่รับประกันการส่งถึงหรือเวลาตามที่อ้าง",
+    "explanation_detail": {
+      "correct": {
+        "en": "UDP fits the stated datagram tradeoff. The application must provide any needed recovery and security; UDP is not a confidentiality service.",
+        "th": "UDP ตรงการแลกเปลี่ยนแบบเดตาแกรมตามที่ระบุ แอปพลิเคชันต้องจัดการการกู้คืนและความปลอดภัยที่ต้องการ ส่วน UDP ไม่ใช่บริการรักษาความลับ"
+      },
+      "incorrect": [
+        {
+          "letter": "A",
+          "text_en": "The scenario explicitly does not require transport-level ordered retransmission of late samples.",
+          "text_th": "โจทย์ระบุชัดว่าไม่ต้องการให้ชั้นขนส่งส่งซ้ำตามลำดับสำหรับตัวอย่างที่มาช้า"
+        },
+        {
+          "letter": "C",
+          "text_en": "TCP does not by itself supply confidentiality.",
+          "text_th": "TCP ไม่ได้ให้การรักษาความลับด้วยตัวเอง"
+        },
+        {
+          "letter": "D",
+          "text_en": "UDP provides no such delivery or timing guarantee.",
+          "text_th": "UDP ไม่รับประกันการส่งถึงหรือเวลาตามที่อ้าง"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1076,
+    "dom": 4,
+    "question": "A small office uses private IPv4 addresses and PAT to share one public address. Policy must also restrict which external services users may contact. Which assessment correctly separates these needs?",
+    "options": [
+      "PAT automatically enforces the organization's approved-service list",
+      "Private addressing proves outbound destinations are authorized",
+      "PAT supplies address/port translation; access-control rules must enforce the service restrictions",
+      "Adding more translated public addresses creates the required service policy"
+    ],
+    "correct_idx": 2,
+    "explanation": "Translation and authorization are different functions, even when one device implements both. The stated policy needs explicit enforcement.\n\nA: Address translation does not know the organization's unstated approved-service policy.\nB: An address range does not establish which services a user is permitted to contact.\nD: Changing translation capacity does not define or enforce service authorization.",
+    "short_explanation_en": "Translation and authorization are different functions, even when one device implements both. The stated policy needs explicit enforcement.",
+    "question_th": "สำนักงานเล็กใช้ที่อยู่ IPv4 ส่วนตัวและ PAT เพื่อใช้ที่อยู่สาธารณะหนึ่งหมายเลขร่วมกัน นโยบายยังต้องจำกัดบริการภายนอกที่ผู้ใช้ติดต่อได้ ข้อใดแยกความต้องการทั้งสองได้ถูกต้อง?",
+    "options_th": [
+      "PAT บังคับรายการบริการที่องค์กรอนุมัติโดยอัตโนมัติ",
+      "การใช้ที่อยู่ส่วนตัวยืนยันว่าปลายทางขาออกได้รับอนุญาต",
+      "PAT แปลงที่อยู่และพอร์ต ส่วนกฎควบคุมสิทธิ์ต้องบังคับข้อจำกัดบริการ",
+      "เพิ่มที่อยู่สาธารณะสำหรับแปลงแล้วจะสร้างนโยบายบริการที่ต้องการ"
+    ],
+    "explanation_th": "การแปลงที่อยู่และการอนุญาตเป็นคนละหน้าที่ แม้อุปกรณ์เดียวทำทั้งสองได้ นโยบายที่ระบุต้องมีกฎบังคับชัดเจน\n\nA: การแปลงที่อยู่ไม่ได้รู้รายการบริการที่อนุมัติขององค์กรซึ่งยังไม่ได้กำหนดให้กลไก\nB: ช่วงที่อยู่ไม่ได้ยืนยันว่าผู้ใช้ได้รับสิทธิ์ติดต่อบริการใด\nD: การเพิ่มขนาดการแปลงไม่ได้กำหนดหรือบังคับสิทธิ์ใช้บริการ",
+    "explanation_detail": {
+      "correct": {
+        "en": "Translation and authorization are different functions, even when one device implements both. The stated policy needs explicit enforcement.",
+        "th": "การแปลงที่อยู่และการอนุญาตเป็นคนละหน้าที่ แม้อุปกรณ์เดียวทำทั้งสองได้ นโยบายที่ระบุต้องมีกฎบังคับชัดเจน"
+      },
+      "incorrect": [
+        {
+          "letter": "A",
+          "text_en": "Address translation does not know the organization's unstated approved-service policy.",
+          "text_th": "การแปลงที่อยู่ไม่ได้รู้รายการบริการที่อนุมัติขององค์กรซึ่งยังไม่ได้กำหนดให้กลไก"
+        },
+        {
+          "letter": "B",
+          "text_en": "An address range does not establish which services a user is permitted to contact.",
+          "text_th": "ช่วงที่อยู่ไม่ได้ยืนยันว่าผู้ใช้ได้รับสิทธิ์ติดต่อบริการใด"
+        },
+        {
+          "letter": "D",
+          "text_en": "Changing translation capacity does not define or enforce service authorization.",
+          "text_th": "การเพิ่มขนาดการแปลงไม่ได้กำหนดหรือบังคับสิทธิ์ใช้บริการ"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1077,
+    "dom": 4,
+    "question": "An application receives the expected IP address from an authenticated DNS response for a service name. Its subsequent connection to that address times out. What does this evidence establish?",
+    "options": [
+      "The DNS lookup failed because the connection timed out",
+      "Name resolution succeeded, but service connectivity has not been demonstrated",
+      "The service is reachable because its name resolved correctly",
+      "The destination must be running an incorrect application protocol"
+    ],
+    "correct_idx": 1,
+    "explanation": "Obtaining the expected address completes the stated name lookup. Connection failure still needs separate reachability/service investigation.\n\nA: The evidence explicitly records successful resolution before the connection attempt.\nC: A valid address answer does not demonstrate a successful connection.\nD: A timeout alone does not determine the destination's protocol or exact cause.",
+    "short_explanation_en": "Obtaining the expected address completes the stated name lookup. Connection failure still needs separate reachability/service investigation.",
+    "question_th": "แอปพลิเคชันได้รับที่อยู่ IP ที่คาดไว้จากคำตอบ DNS ที่ตรวจสอบแหล่งที่มาได้สำหรับชื่อบริการ จากนั้นการเชื่อมต่อไปยังที่อยู่นั้นหมดเวลา หลักฐานนี้ยืนยันอะไร?",
+    "options_th": [
+      "การค้นหา DNS ล้มเหลวเพราะการเชื่อมต่อหมดเวลา",
+      "การแปลงชื่อสำเร็จ แต่ยังไม่ได้แสดงว่าติดต่อบริการได้",
+      "เข้าถึงบริการได้เพราะชื่อแปลงเป็นที่อยู่ถูกต้อง",
+      "ปลายทางต้องใช้โปรโตคอลแอปพลิเคชันผิดชนิด"
+    ],
+    "explanation_th": "ได้รับที่อยู่ที่คาดไว้จึงเสร็จการค้นหาชื่อตามโจทย์ ส่วนการเชื่อมต่อล้มเหลวยังต้องตรวจการเข้าถึงหรือบริการแยกต่างหาก\n\nA: หลักฐานระบุชัดว่าการแปลงชื่อสำเร็จก่อนพยายามเชื่อมต่อ\nC: คำตอบที่อยู่ถูกต้องไม่ได้แสดงว่าการเชื่อมต่อสำเร็จ\nD: การหมดเวลาเพียงอย่างเดียวไม่ได้ระบุโปรโตคอลของปลายทางหรือสาเหตุแน่นอน",
+    "explanation_detail": {
+      "correct": {
+        "en": "Obtaining the expected address completes the stated name lookup. Connection failure still needs separate reachability/service investigation.",
+        "th": "ได้รับที่อยู่ที่คาดไว้จึงเสร็จการค้นหาชื่อตามโจทย์ ส่วนการเชื่อมต่อล้มเหลวยังต้องตรวจการเข้าถึงหรือบริการแยกต่างหาก"
+      },
+      "incorrect": [
+        {
+          "letter": "A",
+          "text_en": "The evidence explicitly records successful resolution before the connection attempt.",
+          "text_th": "หลักฐานระบุชัดว่าการแปลงชื่อสำเร็จก่อนพยายามเชื่อมต่อ"
+        },
+        {
+          "letter": "C",
+          "text_en": "A valid address answer does not demonstrate a successful connection.",
+          "text_th": "คำตอบที่อยู่ถูกต้องไม่ได้แสดงว่าการเชื่อมต่อสำเร็จ"
+        },
+        {
+          "letter": "D",
+          "text_en": "A timeout alone does not determine the destination's protocol or exact cause.",
+          "text_th": "การหมดเวลาเพียงอย่างเดียวไม่ได้ระบุโปรโตคอลของปลายทางหรือสาเหตุแน่นอน"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1078,
+    "dom": 4,
+    "question": "A central monitoring service receives complete logs from its servers, but their clocks differ by several minutes. Forwarding is working, and an approved time source is available. Which service should be configured to address clock alignment?",
+    "options": [
+      "NTP against the approved time source",
+      "DNS against the approved name resolver",
+      "SNMP polling of interface counters",
+      "SFTP delivery of additional log copies"
+    ],
+    "correct_idx": 0,
+    "explanation": "NTP supplies time synchronization. It supports correlation but alone does not establish the integrity or authenticity of every log record.\n\nB: Name resolution does not synchronize the server clocks.\nC: Management counter collection does not by itself correct time settings.\nD: Copying logs does not fix the already-stated clock disagreement.",
+    "short_explanation_en": "NTP supplies time synchronization. It supports correlation but alone does not establish the integrity or authenticity of every log record.",
+    "question_th": "บริการเฝ้าระวังส่วนกลางได้รับบันทึกครบจากเซิร์ฟเวอร์ แต่นาฬิกาของเซิร์ฟเวอร์คลาดกันหลายนาที การส่งต่อบันทึกทำงานปกติ และมีแหล่งเวลาที่อนุมัติแล้ว ควรตั้งค่าบริการใดเพื่อทำเวลาให้ตรงกัน?",
+    "options_th": [
+      "NTP โดยใช้แหล่งเวลาที่อนุมัติ",
+      "DNS โดยใช้ตัวแปลงชื่อที่อนุมัติ",
+      "SNMP เพื่อดึงค่าตัวนับอินเทอร์เฟซ",
+      "SFTP เพื่อส่งสำเนาบันทึกเพิ่ม"
+    ],
+    "explanation_th": "NTP ทำให้เวลาตรงกัน ช่วยเชื่อมโยงเหตุการณ์ แต่เพียงอย่างเดียวไม่ได้ยืนยันความถูกต้องครบถ้วนหรือแหล่งที่มาของทุกระเบียน\n\nB: การแปลงชื่อไม่ได้ทำให้นาฬิกาเซิร์ฟเวอร์ตรงกัน\nC: การเก็บตัวนับเพื่อจัดการระบบไม่ได้แก้การตั้งเวลาด้วยตัวเอง\nD: การคัดลอกบันทึกไม่ได้แก้เวลาที่ไม่ตรงกันตามโจทย์",
+    "explanation_detail": {
+      "correct": {
+        "en": "NTP supplies time synchronization. It supports correlation but alone does not establish the integrity or authenticity of every log record.",
+        "th": "NTP ทำให้เวลาตรงกัน ช่วยเชื่อมโยงเหตุการณ์ แต่เพียงอย่างเดียวไม่ได้ยืนยันความถูกต้องครบถ้วนหรือแหล่งที่มาของทุกระเบียน"
+      },
+      "incorrect": [
+        {
+          "letter": "B",
+          "text_en": "Name resolution does not synchronize the server clocks.",
+          "text_th": "การแปลงชื่อไม่ได้ทำให้นาฬิกาเซิร์ฟเวอร์ตรงกัน"
+        },
+        {
+          "letter": "C",
+          "text_en": "Management counter collection does not by itself correct time settings.",
+          "text_th": "การเก็บตัวนับเพื่อจัดการระบบไม่ได้แก้การตั้งเวลาด้วยตัวเอง"
+        },
+        {
+          "letter": "D",
+          "text_en": "Copying logs does not fix the already-stated clock disagreement.",
+          "text_th": "การคัดลอกบันทึกไม่ได้แก้เวลาที่ไม่ตรงกันตามโจทย์"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1079,
+    "dom": 4,
+    "question": "An assessor needs visibility into application-to-database flows between internal workload segments. The existing sensor sees only traffic entering or leaving the organization at its internet edge. Which additional observation point best addresses this gap?",
+    "options": [
+      "Another sensor receiving only the same internet-edge traffic",
+      "A monitoring point that receives the relevant internal workload-to-workload flows",
+      "A report of public DNS queries made by external clients",
+      "An inventory of the organization's public IP addresses"
+    ],
+    "correct_idx": 1,
+    "explanation": "The specified flows are east-west traffic inside the environment. An internet-edge-only view does not necessarily observe them.\n\nA: Duplicating the existing observation scope does not expose internal-only flows.\nC: Those queries do not show the internal application-to-database exchanges.\nD: An address inventory is not observation of the required internal traffic.",
+    "short_explanation_en": "The specified flows are east-west traffic inside the environment. An internet-edge-only view does not necessarily observe them.",
+    "question_th": "ผู้ประเมินต้องมองเห็นการไหลจากแอปพลิเคชันไปฐานข้อมูลระหว่างส่วนเครือข่ายของเวิร์กโหลดภายใน เซนเซอร์เดิมเห็นเฉพาะทราฟฟิกที่เข้าหรือออกองค์กรผ่านขอบอินเทอร์เน็ต จุดสังเกตเพิ่มเติมใดเติมช่องว่างนี้ได้เหมาะสมที่สุด?",
+    "options_th": [
+      "เซนเซอร์อีกตัวที่รับเฉพาะทราฟฟิกขอบอินเทอร์เน็ตชุดเดิม",
+      "จุดเฝ้าระวังที่ได้รับการไหลระหว่างเวิร์กโหลดภายในที่เกี่ยวข้อง",
+      "รายงานคำถาม DNS สาธารณะจากไคลเอนต์ภายนอก",
+      "ทะเบียนที่อยู่ IP สาธารณะขององค์กร"
+    ],
+    "explanation_th": "การไหลที่ระบุเป็นทราฟฟิก East-west ภายในสภาพแวดล้อม การมองจากขอบอินเทอร์เน็ตอย่างเดียวไม่จำเป็นต้องเห็นการไหลเหล่านี้\n\nA: การซ้ำขอบเขตสังเกตเดิมไม่ได้ทำให้เห็นการไหลที่อยู่ภายในเท่านั้น\nC: คำถามเหล่านั้นไม่ได้แสดงการแลกเปลี่ยนภายในจากแอปพลิเคชันไปฐานข้อมูล\nD: ทะเบียนที่อยู่ไม่ใช่การสังเกตทราฟฟิกภายในที่ต้องการ",
+    "explanation_detail": {
+      "correct": {
+        "en": "The specified flows are east-west traffic inside the environment. An internet-edge-only view does not necessarily observe them.",
+        "th": "การไหลที่ระบุเป็นทราฟฟิก East-west ภายในสภาพแวดล้อม การมองจากขอบอินเทอร์เน็ตอย่างเดียวไม่จำเป็นต้องเห็นการไหลเหล่านี้"
+      },
+      "incorrect": [
+        {
+          "letter": "A",
+          "text_en": "Duplicating the existing observation scope does not expose internal-only flows.",
+          "text_th": "การซ้ำขอบเขตสังเกตเดิมไม่ได้ทำให้เห็นการไหลที่อยู่ภายในเท่านั้น"
+        },
+        {
+          "letter": "C",
+          "text_en": "Those queries do not show the internal application-to-database exchanges.",
+          "text_th": "คำถามเหล่านั้นไม่ได้แสดงการแลกเปลี่ยนภายในจากแอปพลิเคชันไปฐานข้อมูล"
+        },
+        {
+          "letter": "D",
+          "text_en": "An address inventory is not observation of the required internal traffic.",
+          "text_th": "ทะเบียนที่อยู่ไม่ใช่การสังเกตทราฟฟิกภายในที่ต้องการ"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1080,
+    "dom": 4,
+    "question": "A resource policy requires reevaluation of an ongoing session when verified endpoint protection stops, and suspension of resource access until compliance is restored. During a session, that change is confirmed. The VPN remains connected. Which action follows the policy's Zero Trust approach?",
+    "options": [
+      "Reevaluate the session and suspend the resource access as the policy specifies",
+      "Keep resource access unchanged until the VPN disconnects",
+      "Wait until the next login before evaluating the confirmed change",
+      "Require a fresh VPN login while leaving resource access available until it succeeds"
+    ],
+    "correct_idx": 0,
+    "explanation": "Ongoing authorization can respond to relevant verified context changes. The surviving VPN connection does not override the explicit resource policy.\n\nB: Network admission is not sufficient to override the supplied reevaluation rule.\nC: The stated rule applies during the ongoing session, not only at login.\nD: VPN reauthentication does not implement the required resource suspension; continued access leaves the confirmed policy condition untreated.",
+    "short_explanation_en": "Ongoing authorization can respond to relevant verified context changes. The surviving VPN connection does not override the explicit resource policy.",
+    "question_th": "นโยบายทรัพยากรกำหนดให้ประเมินเซสชันที่กำลังใช้งานใหม่เมื่อยืนยันได้ว่าการป้องกันเครื่องปลายทางหยุดทำงาน และระงับสิทธิ์เข้าถึงทรัพยากรจนกลับมาผ่านข้อกำหนด ระหว่างเซสชันยืนยันการเปลี่ยนแปลงนี้แล้ว แต่ VPN ยังเชื่อมต่ออยู่ การดำเนินการใดเป็นไปตามแนวทาง Zero Trust ของนโยบาย?",
+    "options_th": [
+      "ประเมินเซสชันใหม่และระงับการเข้าถึงทรัพยากรตามที่นโยบายกำหนด",
+      "คงสิทธิ์ทรัพยากรไว้จนกว่า VPN จะตัดการเชื่อมต่อ",
+      "รอการเข้าสู่ระบบครั้งถัดไปก่อนประเมินการเปลี่ยนแปลงที่ยืนยันแล้ว",
+      "ให้เข้าสู่ VPN ใหม่โดยคงสิทธิ์ทรัพยากรไว้จนกว่าจะสำเร็จ"
+    ],
+    "explanation_th": "การอนุญาตระหว่างใช้งานตอบสนองต่อการเปลี่ยนบริบทที่เกี่ยวข้องและยืนยันแล้วได้ การที่ VPN ยังเชื่อมต่อไม่ได้ยกเลิกนโยบายทรัพยากรที่ระบุ\n\nB: การอนุญาตเข้าเครือข่ายไม่พอที่จะข้ามกฎประเมินใหม่ตามที่ให้มา\nC: กฎที่ระบุใช้ระหว่างเซสชันที่กำลังใช้งาน ไม่ใช่เฉพาะตอนเข้าสู่ระบบ\nD: การพิสูจน์ตัวตน VPN ใหม่ไม่ได้ทำตามการระงับทรัพยากรที่กำหนด การคงสิทธิ์ทำให้เงื่อนไขละเมิดนโยบายที่ยืนยันแล้วยังไม่ถูกจัดการ",
+    "explanation_detail": {
+      "correct": {
+        "en": "Ongoing authorization can respond to relevant verified context changes. The surviving VPN connection does not override the explicit resource policy.",
+        "th": "การอนุญาตระหว่างใช้งานตอบสนองต่อการเปลี่ยนบริบทที่เกี่ยวข้องและยืนยันแล้วได้ การที่ VPN ยังเชื่อมต่อไม่ได้ยกเลิกนโยบายทรัพยากรที่ระบุ"
+      },
+      "incorrect": [
+        {
+          "letter": "B",
+          "text_en": "Network admission is not sufficient to override the supplied reevaluation rule.",
+          "text_th": "การอนุญาตเข้าเครือข่ายไม่พอที่จะข้ามกฎประเมินใหม่ตามที่ให้มา"
+        },
+        {
+          "letter": "C",
+          "text_en": "The stated rule applies during the ongoing session, not only at login.",
+          "text_th": "กฎที่ระบุใช้ระหว่างเซสชันที่กำลังใช้งาน ไม่ใช่เฉพาะตอนเข้าสู่ระบบ"
+        },
+        {
+          "letter": "D",
+          "text_en": "VPN reauthentication does not implement the required resource suspension; continued access leaves the confirmed policy condition untreated.",
+          "text_th": "การพิสูจน์ตัวตน VPN ใหม่ไม่ได้ทำตามการระงับทรัพยากรที่กำหนด การคงสิทธิ์ทำให้เงื่อนไขละเมิดนโยบายที่ยืนยันแล้วยังไม่ถูกจัดการ"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1081,
+    "dom": 4,
+    "question": "Several independent research institutes need a cloud environment reserved for their consortium. They share specified security and governance concerns, and access is restricted to participating institutes rather than the general public or one institute alone. Which deployment model best matches this requirement?",
+    "options": [
+      "Community cloud",
+      "Private cloud for one institute exclusively",
+      "Public cloud open for general use",
+      "Hybrid cloud merely because several institutes are members"
+    ],
+    "correct_idx": 0,
+    "explanation": "A community cloud serves a defined community of organizations with shared concerns. It need not be restricted to one organization's exclusive use.\n\nB: Exclusive use by one organization does not meet the described multi-organization community scope.\nC: General public availability differs from the stated restriction to the consortium.\nD: Multiple participating organizations do not by themselves establish a composition of distinct cloud infrastructures.",
+    "short_explanation_en": "A community cloud serves a defined community of organizations with shared concerns. It need not be restricted to one organization's exclusive use.",
+    "question_th": "สถาบันวิจัยอิสระหลายแห่งต้องการสภาพแวดล้อมคลาวด์สงวนไว้ให้กลุ่มความร่วมมือของตน สถาบันมีข้อกังวลด้านความปลอดภัยและการกำกับดูแลที่ระบุร่วมกัน และจำกัดการเข้าถึงให้สถาบันที่เข้าร่วม ไม่ใช่สาธารณะทั่วไปหรือสถาบันเดียว โมเดลนำคลาวด์ไปใช้ใดตรงความต้องการที่สุด?",
+    "options_th": [
+      "Community cloud",
+      "Private cloud สำหรับสถาบันเดียวโดยเฉพาะ",
+      "Public cloud ที่เปิดให้ใช้ทั่วไป",
+      "Hybrid cloud เพียงเพราะมีหลายสถาบันเป็นสมาชิก"
+    ],
+    "explanation_th": "Community cloud ให้บริการกลุ่มองค์กรที่กำหนดและมีข้อกังวลร่วมกัน ไม่จำเป็นต้องจำกัดเฉพาะองค์กรเดียว\n\nB: การใช้เฉพาะองค์กรเดียวไม่ตรงขอบเขตหลายองค์กรในกลุ่มตามที่อธิบาย\nC: การเปิดต่อสาธารณะต่างจากข้อจำกัดเฉพาะกลุ่มความร่วมมือที่ระบุ\nD: หลายองค์กรเข้าร่วมไม่ได้แสดงด้วยตัวเองว่ามีการประกอบโครงสร้างคลาวด์ต่างชนิดเข้าด้วยกัน",
+    "explanation_detail": {
+      "correct": {
+        "en": "A community cloud serves a defined community of organizations with shared concerns. It need not be restricted to one organization's exclusive use.",
+        "th": "Community cloud ให้บริการกลุ่มองค์กรที่กำหนดและมีข้อกังวลร่วมกัน ไม่จำเป็นต้องจำกัดเฉพาะองค์กรเดียว"
+      },
+      "incorrect": [
+        {
+          "letter": "B",
+          "text_en": "Exclusive use by one organization does not meet the described multi-organization community scope.",
+          "text_th": "การใช้เฉพาะองค์กรเดียวไม่ตรงขอบเขตหลายองค์กรในกลุ่มตามที่อธิบาย"
+        },
+        {
+          "letter": "C",
+          "text_en": "General public availability differs from the stated restriction to the consortium.",
+          "text_th": "การเปิดต่อสาธารณะต่างจากข้อจำกัดเฉพาะกลุ่มความร่วมมือที่ระบุ"
+        },
+        {
+          "letter": "D",
+          "text_en": "Multiple participating organizations do not by themselves establish a composition of distinct cloud infrastructures.",
+          "text_th": "หลายองค์กรเข้าร่วมไม่ได้แสดงด้วยตัวเองว่ามีการประกอบโครงสร้างคลาวด์ต่างชนิดเข้าด้วยกัน"
         }
       ]
     }

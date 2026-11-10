@@ -409,20 +409,20 @@ export const diagrams = {
 
   // 1.1.3 AAA Identity Lifecycle
   aaaLifecycle: `
-<div class="reading-diagram-card" data-diagram="aaaLifecycle" role="region" aria-label="AAA Identity Lifecycle Process Flow">
+<div class="reading-diagram-card" data-diagram="aaaLifecycle" data-relationship="illustrative-access" role="region" aria-label="AAA Identity Lifecycle Process Flow">
   <div class="reading-diagram-header">
     <span class="reading-diagram-tag">Process Flow</span>
     <h4 class="reading-diagram-title">The AAA Framework &amp; Identity Lifecycle</h4>
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
-    <svg viewBox="0 0 760 140" class="reading-diagram-svg" aria-label="Identification to Authentication to Authorization to Accounting" role="img">
+    <svg viewBox="0 0 760 155" class="reading-diagram-svg" aria-label="Illustrative identity claim, proof and permission, with ongoing accounting" role="img">
       <!-- Step 1: Identification -->
       <g>
-        <rect x="10" y="25" width="165" height="90" rx="8" class="diag-box diag-box-banner" />
+        <rect x="10" y="25" width="165" height="100" rx="8" class="diag-box diag-box-banner" />
         <text x="92" y="52" class="diag-step-num" text-anchor="middle">STEP 01</text>
         <text x="92" y="74" class="diag-text-title" text-anchor="middle">Identification</text>
         <text x="92" y="93" class="diag-text-sub" text-anchor="middle">"Who are you?"</text>
-        <text x="92" y="107" class="diag-text-sub" text-anchor="middle">Username / User ID</text>
+        <text x="92" y="114" class="diag-text-sub" text-anchor="middle">Username / User ID</text>
       </g>
       <g>
         <line x1="175" y1="70" x2="199" y2="70" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />
@@ -431,11 +431,11 @@ export const diagrams = {
 
       <!-- Step 2: Authentication -->
       <g>
-        <rect x="205" y="25" width="165" height="90" rx="8" class="diag-box diag-box-banner" />
+        <rect x="205" y="25" width="165" height="100" rx="8" class="diag-box diag-box-banner" />
         <text x="287" y="52" class="diag-step-num" text-anchor="middle">STEP 02</text>
         <text x="287" y="74" class="diag-text-title" text-anchor="middle">Authentication</text>
         <text x="287" y="93" class="diag-text-sub" text-anchor="middle">"Prove it!"</text>
-        <text x="287" y="107" class="diag-text-sub" text-anchor="middle">Password, MFA, Bio</text>
+        <text x="287" y="114" class="diag-text-sub" text-anchor="middle">Password, MFA, Bio</text>
       </g>
       <g>
         <line x1="370" y1="70" x2="394" y2="70" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />
@@ -444,24 +444,20 @@ export const diagrams = {
 
       <!-- Step 3: Authorization -->
       <g>
-        <rect x="400" y="25" width="165" height="90" rx="8" class="diag-box diag-box-banner" />
+        <rect x="400" y="25" width="165" height="100" rx="8" class="diag-box diag-box-banner" />
         <text x="482" y="52" class="diag-step-num" text-anchor="middle">STEP 03</text>
         <text x="482" y="74" class="diag-text-title" text-anchor="middle">Authorization</text>
         <text x="482" y="93" class="diag-text-sub" text-anchor="middle">"What can you do?"</text>
-        <text x="482" y="107" class="diag-text-sub" text-anchor="middle">Permissions / Roles</text>
-      </g>
-      <g>
-        <line x1="565" y1="70" x2="589" y2="70" stroke="var(--blue, #3b82f6)" stroke-width="2" stroke-linecap="round" />
-        <polygon points="595,70 587,65 587,75" fill="var(--blue, #3b82f6)" />
+        <text x="482" y="114" class="diag-text-sub" text-anchor="middle">Permissions / Roles</text>
       </g>
 
-      <!-- Step 4: Accounting -->
-      <g>
-        <rect x="595" y="25" width="155" height="90" rx="8" class="diag-box diag-box-banner" />
-        <text x="672" y="52" class="diag-step-num" text-anchor="middle">STEP 04</text>
+      <!-- Accounting throughout the example -->
+      <g data-concept="accounting" data-scope="ongoing">
+        <rect x="595" y="25" width="155" height="100" rx="8" class="diag-box diag-box-banner" />
+        <text x="672" y="52" class="diag-step-num" text-anchor="middle">ONGOING</text>
         <text x="672" y="74" class="diag-text-title" text-anchor="middle">Accounting</text>
         <text x="672" y="93" class="diag-text-sub" text-anchor="middle">"What did you do?"</text>
-        <text x="672" y="107" class="diag-text-sub" text-anchor="middle">Audit Logs / Tracing</text>
+        <text x="672" y="114" class="diag-text-sub" text-anchor="middle">Audit Logs / Tracing</text>
       </g>
     </svg>
   </div>
@@ -499,7 +495,7 @@ export const diagrams = {
       </div>
       <div class="reading-mob-tier-card reading-tier-dashboard">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">04</span>
+          <span class="reading-mob-tier-num">LOG</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">ACCOUNTING &amp; AUDITING (การตรวจสอบ)</h5>
             <span class="reading-mob-tier-action">&quot;What did you do?&quot; &middot; Audit Logs / Tracing</span>
@@ -509,7 +505,7 @@ export const diagrams = {
       </div>
     </div>
   </div>
-  <p class="reading-semantic-note">Accounting (Audit Logs) บันทึกเหตุการณ์อย่างต่อเนื่องตลอดการใช้งานเพื่อสนับสนุน Accountability และการไม่สามารถปฏิเสธความรับผิดชอบได้ (Non-repudiation)</p>
+  <p class="reading-semantic-note">Accounting records relevant events throughout the access example, including failed authentication attempts. Logs support accountability when protected and reliably linked to identity; non-repudiation also depends on suitable evidence and controls. / Accounting บันทึกเหตุการณ์ที่เกี่ยวข้องตลอดตัวอย่าง รวมถึงการพิสูจน์ตัวตนที่ไม่สำเร็จ Log ที่ได้รับการปกป้องช่วยสนับสนุน Accountability ส่วน Non-repudiation ต้องพิจารณาหลักฐานและมาตรการประกอบ</p>
 </div>
 `,
 
@@ -1038,7 +1034,7 @@ export const diagrams = {
         <text x="122" y="180" class="diag-text-title" font-weight="700" text-anchor="middle">Risk Avoidance</text>
         <text x="122" y="198" class="diag-text-sub" font-weight="600" text-anchor="middle">การหลีกเลี่ยงความเสี่ยง</text>
         <text x="122" y="222" class="diag-text-sub" font-size="11px" text-anchor="middle">"Stop the Activity"</text>
-        <text x="122" y="238" class="diag-text-sub" font-size="10.5px" text-anchor="middle">ยกเลิกโครงการ / ตัดความเสี่ยงเป็น 0</text>
+        <text x="122" y="238" class="diag-text-sub" font-size="10.5px" text-anchor="middle">หยุดกิจกรรมที่ก่อความเสี่ยงเป้าหมาย</text>
       </g>
 
       <!-- Option 2: TRANSFER -->
@@ -1084,7 +1080,7 @@ export const diagrams = {
       <g>
         <rect x="30" y="298" width="815" height="64" rx="8" class="diag-box diag-box-banner" />
         <text x="50" y="324" class="diag-text-title" font-weight="700">Governance Gate &middot; Residual Risk Evaluation:</text>
-        <text x="50" y="344" class="diag-text-sub">ความเสี่ยงที่หลงเหลือ (Residual Risk) ต้องได้รับการประเมินใหม่ หาก Residual Risk &le; Risk Appetite &rarr; Accept ได้อย่างถูกต้อง | ทบทวนสม่ำเสมอ</text>
+        <text x="50" y="344" class="diag-text-sub">ประเมินความเสี่ยงที่เหลือ ขออนุมัติ และกำหนดวันทบทวน</text>
         <rect x="660" y="310" width="168" height="38" rx="6" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-width="1" />
         <text x="744" y="327" class="diag-step-num" text-anchor="middle" fill="#059669">GOVERNANCE RULE</text>
         <text x="744" y="341" class="diag-text-sub" font-size="10.5px" font-weight="700" text-anchor="middle" fill="#047857">Residual &le; Appetite</text>
@@ -1094,7 +1090,7 @@ export const diagrams = {
   <div class="reading-diag-mobile reading-mobile-stack" aria-label="Risk Treatment Decision Framework Mobile">
     <div class="reading-mob-banner">
       <span class="reading-mob-banner-tag">RISK TREATMENT DECISION FRAMEWORK</span>
-      <p class="reading-mob-banner-text">วงจรการตัดสินใจรับมือความเสี่ยง 4 กลยุทธ์ตามกรอบมาตรฐานสากล: หลีกเลี่ยง &middot; โอน &middot; ลด &middot; ยอมรับ</p>
+      <p class="reading-mob-banner-text">วงจรการตัดสินใจรับมือความเสี่ยง 4 กลยุทธ์เป็นแบบจำลองช่วยเรียนรู้: หลีกเลี่ยง &middot; โอน &middot; ลด &middot; ยอมรับ</p>
     </div>
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-foundation">
@@ -1116,7 +1112,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">"Stop the Activity" &middot; ยุติกิจกรรมเสี่ยง</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ยกเลิกโครงการ ยุติบริการ หรือตัดการเชื่อมต่อที่มีความเสี่ยงสูงเกินรับไหวและไม่มีมาตรการควบคุมที่คุ้มค่า เพื่อตัดโอกาสเกิดความเสียหายเป็น 0 โดยสิ้นเชิง</p>
+        <p class="reading-mob-tier-desc">ยกเลิกโครงการ ยุติบริการ หรือตัดการเชื่อมต่อที่มีความเสี่ยงสูงเกินรับไหวและไม่มีมาตรการควบคุมที่คุ้มค่า เพื่อยุติการเผชิญความเสี่ยงจากกิจกรรมนั้น ไม่ใช่ทำให้ความเสี่ยงทั้งหมดขององค์กรเป็นศูนย์ / Stop the targeted risky activity; other risks can remain.</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-amber">
@@ -1138,7 +1134,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">"Apply Controls" &middot; ติดตั้งมาตรการความปลอดภัย</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">กลยุทธ์หลักที่ใช้บ่อยที่สุด: ติดตั้ง Security Controls ทางเทคนิค บริหารจัดการ หรือกายภาพ (เช่น MFA, Patching, Firewall, Backup) เพื่อลดโอกาสเกิด (Likelihood) หรือลดผลกระทบ (Impact)</p>
+        <p class="reading-mob-tier-desc">ทางเลือกหนึ่งคือ: ติดตั้ง Security Controls ทางเทคนิค บริหารจัดการ หรือกายภาพ (เช่น MFA, Patching, Firewall, Backup) เพื่อลดโอกาสเกิด (Likelihood) หรือลดผลกระทบ (Impact)</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-blue">
@@ -1149,7 +1145,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">"Residual Risk &le; Appetite" &middot; ยอมรับอย่างมีเอกสาร</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ยอมรับความเสี่ยงที่เหลืออยู่ (Residual Risk) เมื่อประเมินแล้วว่าต่ำกว่าหรือเท่ากับ Risk Appetite ต้องผ่านการลงนามอนุมัติจากผู้บริหารอย่างเป็นทางการ บันทึกใน Risk Register และทบทวนสม่ำเสมอ</p>
+        <p class="reading-mob-tier-desc">ยอมรับความเสี่ยงที่เหลืออยู่ (Residual Risk) เมื่อประเมินแล้วว่าต่ำกว่าหรือเท่ากับ Risk Appetite ต้องได้รับการอนุมัติจากผู้มีอำนาจตามนโยบาย บันทึกใน Risk Register และทบทวนสม่ำเสมอ</p>
       </div>
     </div>
   </div>
@@ -1262,7 +1258,7 @@ export const diagrams = {
 
   // 1.4.2 Security Control Function Matrix (Non-Linear Taxonomy)
   controlTimeline: `
-<div class="reading-diagram-card" data-diagram="controlTimeline" role="region" aria-label="Security Control Function Matrix">
+<div class="reading-diagram-card" data-diagram="controlTimeline" data-relationship="coexisting-functions" role="region" aria-label="Security Control Function Matrix">
   <div class="reading-diagram-header">
     <span class="reading-diagram-tag">Control Taxonomy</span>
     <h4 class="reading-diagram-title">Security Control Functions: Purpose, Timing &amp; Overlapping Roles</h4>
@@ -1273,41 +1269,35 @@ export const diagrams = {
       <g>
         <rect x="15" y="15" width="260" height="125" rx="8" class="diag-timeline-card" />
         <rect x="99" y="27" width="92" height="22" rx="4" class="diag-timeline-badge" />
-        <text x="145" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">BEFORE</text>
-        <text x="145" y="68" class="diag-timeline-title" text-anchor="middle">Deterrent &amp; Preventive</text>
-        <text x="145" y="93" class="diag-timeline-desc" text-anchor="middle">ยับยั้งใจ &amp; สกัดกั้นก่อนเกิดเหตุ</text>
+        <text x="145" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">REDUCE</text>
+        <text x="145" y="68" class="diag-timeline-title" text-anchor="middle"><tspan data-concept="deterrent">Deterrent</tspan> &amp; <tspan data-concept="preventive">Preventive</tspan></text>
+        <text x="145" y="93" class="diag-timeline-desc" text-anchor="middle">ยับยั้งใจ &amp; ลดโอกาสเกิดเหตุ</text>
         <text x="145" y="117" class="diag-timeline-example" text-anchor="middle">Warning Banners, MFA, Firewall</text>
       </g>
 
       <!-- Arrow 1: Before -> During -->
-      <g class="diag-timeline-arrow-group" aria-hidden="true">
-        <line x1="277" y1="77" x2="289" y2="77" class="diag-timeline-arrow-line" />
-        <polygon points="293,77 287,73 287,81" class="diag-timeline-arrow-head" />
-      </g>
+
 
       <!-- Column 2: During Incident -->
       <g>
         <rect x="295" y="15" width="260" height="125" rx="8" class="diag-timeline-card" />
         <rect x="379" y="27" width="92" height="22" rx="4" class="diag-timeline-badge" />
-        <text x="425" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">DURING</text>
-        <text x="425" y="68" class="diag-timeline-title" text-anchor="middle">Detective</text>
-        <text x="425" y="93" class="diag-timeline-desc" text-anchor="middle">ตรวจจับ &amp; แจ้งเตือนภัยขณะเกิดเหตุ</text>
+        <text x="425" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">DETECT</text>
+        <text x="425" y="68" class="diag-timeline-title" text-anchor="middle" data-concept="detective">Detective</text>
+        <text x="425" y="93" class="diag-timeline-desc" text-anchor="middle">ตรวจพบได้ขณะเกิดหรือย้อนหลัง</text>
         <text x="425" y="117" class="diag-timeline-example" text-anchor="middle">IDS, Security Logs, Motion Sensor</text>
       </g>
 
       <!-- Arrow 2: During -> After -->
-      <g class="diag-timeline-arrow-group" aria-hidden="true">
-        <line x1="557" y1="77" x2="569" y2="77" class="diag-timeline-arrow-line" />
-        <polygon points="573,77 567,73 567,81" class="diag-timeline-arrow-head" />
-      </g>
+
 
       <!-- Column 3: After Incident -->
       <g>
         <rect x="575" y="15" width="260" height="125" rx="8" class="diag-timeline-card" />
         <rect x="659" y="27" width="92" height="22" rx="4" class="diag-timeline-badge" />
-        <text x="705" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">AFTER</text>
-        <text x="705" y="68" class="diag-timeline-title" text-anchor="middle">Corrective &amp; Recovery</text>
-        <text x="705" y="93" class="diag-timeline-desc" text-anchor="middle">แก้ไขเยียวยา &amp; กู้คืนระบบหลังเกิดเหตุ</text>
+        <text x="705" y="38" class="diag-timeline-badge-text" text-anchor="middle" dominant-baseline="central">RESPOND</text>
+        <text x="705" y="68" class="diag-timeline-title" text-anchor="middle"><tspan data-concept="corrective">Corrective</tspan> &amp; <tspan data-concept="recovery">Recovery</tspan></text>
+        <text x="705" y="93" class="diag-timeline-desc" text-anchor="middle">แก้ไข &amp; ฟื้นฟูตามบริบท</text>
         <text x="705" y="117" class="diag-timeline-example" text-anchor="middle">Patching, Malware Removal, Alternate Site</text>
       </g>
     </svg>
@@ -1316,27 +1306,27 @@ export const diagrams = {
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-kpi">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">BEFORE</span>
+          <span class="reading-mob-tier-num">REDUCE</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">DETERRENT &amp; PREVENTIVE</h5>
-            <span class="reading-mob-tier-action">ก่อนเกิดเหตุ &middot; ยับยั้งและสกัดกั้น</span>
+            <span class="reading-mob-tier-action">ยับยั้งและลดโอกาสเกิดเหตุ</span>
           </div>
         </div>
         <p class="reading-mob-tier-desc"><strong>Deterrent:</strong> ป้องปราม/ยับยั้งใจ (Warning Banners, ป้ายเตือน) &middot; <strong>Preventive:</strong> สกัดกั้น ป้องกันไม่ให้เกิดเหตุ (Firewall, MFA, การล็อคประตู, Least Privilege)</p>
       </div>
       <div class="reading-mob-tier-card reading-tier-kri">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">DURING</span>
+          <span class="reading-mob-tier-num">DETECT</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">DETECTIVE</h5>
-            <span class="reading-mob-tier-action">ขณะเกิดเหตุ &middot; ตรวจจับและแจ้งเตือน</span>
+            <span class="reading-mob-tier-action">ตรวจจับและแจ้งเตือนตามการตั้งค่า</span>
           </div>
         </div>
         <p class="reading-mob-tier-desc"><strong>Detective:</strong> ตรวจพบกิจกรรมที่น่าสงสัย (Intrusion Detection System / IDS, Security Logs, Motion Sensor, Honeytokens)</p>
       </div>
       <div class="reading-mob-tier-card reading-tier-report">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">AFTER</span>
+          <span class="reading-mob-tier-num">RESPOND</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">CORRECTIVE &amp; RECOVERY</h5>
             <span class="reading-mob-tier-action">หลังเกิดเหตุ &middot; แก้ไขและฟื้นฟู</span>
@@ -1362,6 +1352,7 @@ export const diagrams = {
       การจำแนกตามช่วงเวลา (Before / During / After) เป็นกรอบแนวคิดเพื่อความเข้าใจ ไม่ได้จำกัดว่ามาตรการหนึ่งจะถูกผูกขาดอยู่เพียงช่วงเวลาเดียว เช่น <em>กล้องวงจรปิด (CCTV)</em> เมื่อติดตั้งเด่นชัดจะทำหน้าที่เป็น <strong>Deterrent</strong> (ป้องปรามยับยั้งใจผู้บุกรุกก่อนเกิดเหตุ) ขณะเดียวกันก็ทำหน้าที่เป็น <strong>Detective</strong> (ตรวจจับและบันทึกภาพหลักฐานขณะเกิดเหตุ)
     </p>
   </div>
+<p class="reading-semantic-note">These are coexisting functions, not a mandatory sequence; activities may overlap. / เป็นหน้าที่ที่ใช้ร่วมกันและซ้อนทับได้ ไม่ใช่ลำดับก่อน–ระหว่าง–หลังที่ทุกมาตรการต้องทำตาม</p>
 </div>
 `,
 
@@ -1678,95 +1669,26 @@ export const diagrams = {
 
   // 2.2.5 BC vs DR Scope Hierarchy
   bcVsDrScope: `
-<div class="reading-diagram-card" data-diagram="bcVsDrScope" role="region" aria-label="Scope Relationship: Business Continuity and Disaster Recovery">
-  <div class="reading-diagram-header">
-    <span class="reading-diagram-tag">Resilience Architecture</span>
-    <h4 class="reading-diagram-title">Scope Relationship: Business Continuity (BC) vs. Disaster Recovery (DR)</h4>
-  </div>
-  <div class="reading-diagram-svg-wrap reading-diag-desktop">
-    <svg viewBox="0 0 840 310" class="reading-diagram-svg" aria-label="Concentric relationship showing DR as a nested subset of BC (DR subset of BC)" role="img">
-      <g>
-        <rect x="20" y="15" width="800" height="280" rx="12" class="diag-box diag-box-banner diag-bc-outer" />
-        <rect x="36" y="28" width="168" height="22" rx="4" class="diag-scope-badge-bc" />
-        <text x="120" y="39" class="diag-scope-badge-bc-text" text-anchor="middle" dominant-baseline="central">ORGANIZATION-WIDE</text>
-        <text x="216" y="44" class="diag-text-title diag-bc-title" font-size="16px">BUSINESS CONTINUITY (BC) — ความต่อเนื่องทางธุรกิจ</text>
-        <text x="36" y="72" class="diag-text-sub diag-bc-desc" font-size="13px">เป้าหมาย: รักษาการดำเนินงานของธุรกิจในภาพรวมให้ดำเนินต่อไปได้ทั้งระหว่างและหลังวิกฤต</text>
-        <g class="diag-scope-pills">
-          <g>
-            <rect x="36" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />
-            <text x="108.5" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">People (บุคลากร)</text>
-          </g>
-          <g>
-            <rect x="191.75" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />
-            <text x="264.25" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Processes (กระบวนการ)</text>
-          </g>
-          <g>
-            <rect x="347.5" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />
-            <text x="420" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Facilities (สถานที่)</text>
-          </g>
-          <g>
-            <rect x="503.25" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />
-            <text x="575.75" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Suppliers (คู่ค้า)</text>
-          </g>
-          <g>
-            <rect x="659" y="88" width="145" height="26" rx="5" class="diag-scope-pill-rect" />
-            <text x="731.5" y="101" class="diag-scope-pill-text" text-anchor="middle" dominant-baseline="central">Technology (เทคโนโลยี)</text>
-          </g>
-        </g>
-      </g>
-      <g>
-        <rect x="36" y="126" width="768" height="154" rx="8" class="diag-box diag-box-blue diag-dr-inner" stroke-width="2" />
-        <rect x="52" y="138" width="140" height="22" rx="4" class="diag-scope-badge-dr" />
-        <text x="122" y="149" class="diag-scope-badge-dr-text" text-anchor="middle" dominant-baseline="central">IT SUBSET (DR ⊂ BC)</text>
-        <text x="204" y="154" class="diag-text-title diag-dr-title" font-size="15px">DISASTER RECOVERY (DR) — แผนกู้คืนระบบเทคโนโลยีสารสนเทศ</text>
-        <text x="52" y="180" class="diag-text-sub diag-dr-desc" font-size="13px">เป้าหมาย: กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</text>
-        <g class="diag-dr-examples-group">
-          <rect x="52" y="196" width="736" height="70" rx="6" class="diag-examples-rect" />
-          <line x1="52" y1="196" x2="52" y2="266" stroke="var(--blue)" stroke-width="4" stroke-linecap="round" />
-          <text x="68" y="215" class="diag-examples-hdr">PRACTICAL EXAMPLES (ตัวอย่างการปฏิบัติ):</text>
-          <text x="68" y="235" class="diag-examples-item">• กู้คืนฐานข้อมูล &amp; Virtual Machines (Data &amp; System Restoration) · กู้คืนระบบ Cloud / On-Premise</text>
-          <text x="68" y="253" class="diag-examples-item">• สลับการทำงานไปยังศูนย์สำรอง (Hot / Warm / Cold Alternate Sites) · ฟื้นฟูโครงข่ายสื่อสาร (Network Recovery)</text>
-        </g>
-      </g>
-    </svg>
-  </div>
-  <div class="reading-diag-mobile reading-mobile-scope" aria-label="Scope Relationship: BC vs DR">
-    <div class="reading-mob-scope-outer">
-      <div class="reading-mob-scope-header">
-        <div class="reading-mob-scope-badges">
-          <span class="reading-mob-tag-pill">ORGANIZATION-WIDE SCOPE</span>
-        </div>
-        <h5 class="reading-mob-scope-title">BUSINESS CONTINUITY (BC)</h5>
-        <span class="reading-mob-scope-sub">ร่มใหญ่ครอบคลุมทั้งองค์กร (Comprehensive Scope)</span>
-        <p class="reading-mob-scope-goal"><strong>เป้าหมาย:</strong> รักษาการดำเนินงานของธุรกิจในภาพรวมให้ดำเนินต่อไปได้ทั้งระหว่างและหลังวิกฤต</p>
-        <div class="reading-mob-scope-tags">
-          <span class="reading-mob-tag-item">People (บุคลากร)</span>
-          <span class="reading-mob-tag-item">Processes (กระบวนการ)</span>
-          <span class="reading-mob-tag-item">Facilities (สถานที่)</span>
-          <span class="reading-mob-tag-item">Suppliers (คู่ค้า)</span>
-          <span class="reading-mob-tag-item">Technology (เทคโนโลยี)</span>
-        </div>
-      </div>
-      <div class="reading-mob-scope-inner">
-        <div class="reading-mob-inner-head">
-          <div class="reading-mob-scope-badges">
-            <span class="reading-mob-tag-pill reading-mob-pill-accent">IT SUBSET (DR ⊂ BC)</span>
-          </div>
-          <h6 class="reading-mob-inner-title">DISASTER RECOVERY (DR)</h6>
-          <span class="reading-mob-inner-sub">แผนกู้คืนระบบ IT โครงสร้างพื้นฐาน และข้อมูล</span>
-        </div>
-        <p class="reading-mob-inner-goal"><strong>เป้าหมาย:</strong> กู้คืนระบบ IT, โครงสร้างพื้นฐาน และข้อมูลหลังภัยพิบัติ (IT Infrastructure &amp; Data Restoration)</p>
-        <div class="reading-mob-inner-examples">
-          <span class="reading-mob-examples-label">ตัวอย่างการปฏิบัติ (Practical Examples):</span>
-          <ul class="reading-mob-examples-list">
-            <li>กู้คืนฐานข้อมูล, Virtual Machines (VMs) และระบบ Cloud จากชุด Backup</li>
-            <li>สลับการทำงานไปยังศูนย์สำรอง (Hot Site / Warm Site / Cold Site)</li>
-            <li>ฟื้นฟูโครงข่ายสื่อสารและระบบเครือข่ายสำรอง (Network Recovery)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="reading-diagram-card" data-diagram="bcVsDrScope" data-relationship="supporting-scopes" role="region" aria-label="Coordinated business continuity and IT recovery scopes">
+ <div class="reading-diagram-header"><span class="reading-diagram-tag">Coordinated scopes</span><h4 class="reading-diagram-title">BC and DR — different focus, coordinated plans</h4></div>
+ <div class="reading-diagram-svg-wrap reading-diag-desktop"><svg viewBox="0 0 840 270" class="reading-diagram-svg" role="img" aria-label="Business continuity and disaster recovery support one another; not universal subset notation">
+ <rect x="15" y="15" width="395" height="230" rx="8" class="diag-box diag-box-blue"/>
+ <text x="35" y="48" class="diag-text-title">Business Continuity (BC)</text>
+ <text x="35" y="77" class="diag-text-sub">รักษากิจกรรมธุรกิจที่สำคัญระหว่างเหตุขัดข้อง</text>
+ <text x="35" y="108" class="diag-text-label">People · Processes · Facilities</text>
+ <text x="35" y="132" class="diag-text-label">Suppliers · Technology</text>
+ <text x="35" y="173" class="diag-text-sub">ตัวอย่าง: ย้ายสถานที่ทำงาน / วิธีทำงานสำรอง</text>
+ <text x="35" y="201" class="diag-text-sub">เป้าหมาย: รักษาบริการธุรกิจตามลำดับความสำคัญ</text>
+ <rect x="430" y="15" width="395" height="230" rx="8" class="diag-box diag-box-banner"/>
+ <text x="450" y="48" class="diag-text-title">Disaster Recovery (DR)</text>
+ <text x="450" y="77" class="diag-text-sub">กู้คืนระบบ IT และข้อมูลที่ธุรกิจต้องใช้</text>
+ <text x="450" y="108" class="diag-text-label">Data · Virtual Machines · Network Recovery</text>
+ <text x="450" y="132" class="diag-text-label">Hot Site · Warm Site · Cold Site</text>
+ <text x="450" y="173" class="diag-text-sub">ตัวอย่าง: กู้ฐานข้อมูล / สลับศูนย์สำรอง</text>
+ <text x="450" y="201" class="diag-text-sub">เป้าหมาย: คืนความสามารถ IT ตามเป้าหมายที่ทดสอบ</text>
+ </svg></div>
+ <div class="reading-diag-mobile reading-mobile-stack"><div class="reading-mob-tier-card"><h5>Business Continuity (BC)</h5><p>รักษากิจกรรมธุรกิจสำคัญระหว่างเหตุขัดข้อง ครอบคลุม People, Processes, Facilities, Suppliers และ Technology เช่น ย้ายสถานที่ทำงานหรือใช้วิธีทำงานสำรอง / Keep priority business activities operating using coordinated people, process, facility, supplier and technology arrangements.</p></div><div class="reading-mob-tier-card"><h5>Disaster Recovery (DR)</h5><p>กู้คืน IT และข้อมูล เช่น ฐานข้อมูล, Virtual Machines, Network Recovery และ Hot Site / Warm Site / Cold Site โดยทดสอบเทียบเป้าหมาย / Restore IT capabilities and data against tested recovery objectives.</p></div></div>
+ <p class="reading-semantic-note">DR supports business continuity. Coordinate technical recovery with business priorities; this is a scope comparison, not a universal set equation. / ประสานการกู้คืน IT กับความต้องการธุรกิจ ไม่ใช้สัญลักษณ์เซตแทนความสัมพันธ์ทุกองค์กร</p>
 </div>
 `,
 
@@ -1874,167 +1796,24 @@ export const diagrams = {
 
   // 2.4.8 Cybersecurity Effectiveness & Measurement Hierarchy
   effectivenessHierarchy: `
-<div class="reading-diagram-card reading-measurement-system" data-diagram="effectivenessHierarchy" role="region" aria-label="Cybersecurity Measurement Architecture: 6-Part Framework">
-  <div class="reading-diagram-header">
-    <span class="reading-diagram-tag">Measurement Architecture</span>
-    <h4 class="reading-diagram-title">Cybersecurity Measurement, Visualization &amp; Communication Architecture</h4>
-  </div>
-  <div class="reading-diagram-svg-wrap reading-diag-desktop">
-    <svg viewBox="0 0 840 405" class="reading-diagram-svg" aria-label="6-concept cybersecurity measurement architecture: Metric to Report" role="img">
-      <g>
-        <rect x="40" y="15" width="760" height="74" rx="8" class="diag-box diag-box-banner" />
-        <g transform="translate(58, 28)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-        </g>
-        <text x="96" y="44" class="diag-step-num">06</text>
-        <text x="130" y="44" class="diag-text-title">REPORT</text>
-        <text x="200" y="44" class="diag-text-action">COMMUNICATE &amp; RECOMMEND</text>
-        <text x="130" y="68" class="diag-text-sub">เอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions)</text>
-      </g>
-
-      <line x1="420" y1="89" x2="420" y2="105" stroke="var(--diag-connector, #64748b)" stroke-width="2" stroke-dasharray="3,3" />
-
-      <g>
-        <rect x="40" y="105" width="370" height="84" rx="8" class="diag-box diag-box-banner" />
-        <g transform="translate(56, 118)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="3" y="3" width="7" height="9" rx="1"/>
-          <rect x="14" y="3" width="7" height="5" rx="1"/>
-          <rect x="14" y="12" width="7" height="9" rx="1"/>
-          <rect x="3" y="16" width="7" height="5" rx="1"/>
-        </g>
-        <text x="92" y="134" class="diag-step-num">04</text>
-        <text x="124" y="134" class="diag-text-title">DASHBOARD</text>
-        <text x="226" y="134" class="diag-text-action">VISUALIZE</text>
-        <text x="56" y="158" class="diag-text-sub">ภาพรวมสถานะความปลอดภัยแบบเรียลไทม์</text>
-        <text x="56" y="175" class="diag-text-sub">แสดงผลผ่านชาร์ต/กราฟ สำหรับการเฝ้าระวังรายวัน</text>
-      </g>
-
-      <g>
-        <rect x="430" y="105" width="370" height="84" rx="8" class="diag-box diag-box-banner" />
-        <g transform="translate(446, 118)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-          <rect x="8" y="2" width="8" height="4" rx="1"/>
-          <path d="m9 14 2 2 4-4"/>
-        </g>
-        <text x="482" y="134" class="diag-step-num">05</text>
-        <text x="514" y="134" class="diag-text-title">SCORECARD</text>
-        <text x="614" y="134" class="diag-text-action">COMPARE TARGETS</text>
-        <text x="446" y="158" class="diag-text-sub">ตารางสรุปผลงานจริง (Actual) เทียบเกณฑ์เป้าหมาย</text>
-        <text x="446" y="175" class="diag-text-sub">ชี้วัด Gaps และความก้าวหน้าตามเกณฑ์ที่ตกลงไว้</text>
-      </g>
-
-      <line x1="420" y1="189" x2="420" y2="205" stroke="var(--diag-connector, #64748b)" stroke-width="2" stroke-dasharray="3,3" />
-
-      <g>
-        <rect x="40" y="205" width="370" height="84" rx="8" class="diag-box diag-box-banner" />
-        <g transform="translate(56, 218)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"/>
-          <circle cx="12" cy="6" r="6"/>
-          <circle cx="12" cy="2" r="2"/>
-        </g>
-        <text x="92" y="234" class="diag-step-num">02</text>
-        <text x="124" y="234" class="diag-text-title">KPI</text>
-        <text x="160" y="234" class="diag-text-action">PERFORMANCE</text>
-        <text x="56" y="258" class="diag-text-sub">วัดผลการดำเนินงานเทียบกับเป้าหมายความสำเร็จ</text>
-        <text x="56" y="275" class="diag-text-sub">ตอบคำถาม: การดำเนินงานก้าวหน้าสู่เป้าหมายหรือไม่?</text>
-      </g>
-
-      <g>
-        <rect x="430" y="205" width="370" height="84" rx="8" class="diag-box diag-box-banner" />
-        <g transform="translate(446, 218)" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <line x1="12" y1="8" x2="12" y2="12"/>
-          <line x1="12" y1="16" x2="12.01" y2="16"/>
-        </g>
-        <text x="482" y="234" class="diag-step-num">03</text>
-        <text x="514" y="234" class="diag-text-title">KRI</text>
-        <text x="554" y="234" class="diag-text-action diag-action-amber">RISK WARNING</text>
-        <text x="446" y="258" class="diag-text-sub">สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเพิ่มสูงขึ้น</text>
-        <text x="446" y="275" class="diag-text-sub">ตอบคำถาม: ระดับความเสี่ยงเข้าใกล้จุดวิกฤตหรือไม่?</text>
-      </g>
-
-      <line x1="420" y1="289" x2="420" y2="305" stroke="var(--diag-connector, #64748b)" stroke-width="2" stroke-dasharray="3,3" />
-
-      <g>
-        <rect x="40" y="305" width="760" height="80" rx="8" class="diag-box diag-box-blue" />
-        <g transform="translate(58, 320)" stroke="var(--blue, #3b82f6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="m12 14 4-4"/>
-          <path d="M3.34 19a10 10 0 1 1 17.32 0"/>
-        </g>
-        <text x="96" y="336" class="diag-step-num">01</text>
-        <text x="130" y="336" class="diag-text-title">METRIC</text>
-        <text x="200" y="336" class="diag-text-action">MEASURE &middot; FOUNDATION</text>
-        <text x="130" y="358" class="diag-text-sub">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ</text>
-        <text x="130" y="374" class="diag-text-sub">คุณสมบัติ Metric ที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</text>
-      </g>
-    </svg>
-  </div>
-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Measurement Architecture: 6-Part Framework">
-    <div class="reading-mob-stack-list">
-      <div class="reading-mob-tier-card reading-tier-report">
-        <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">06</span>
-          <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">REPORT</h5>
-            <span class="reading-mob-tier-action">COMMUNICATE &amp; RECOMMEND</span>
-          </div>
-        </div>
-        <p class="reading-mob-tier-desc">เอกสารรายงานทางการ สรุปรายละเอียดเชิงลึก ข้อค้นพบ และข้อเสนอแนะเชิงกลยุทธ์ (Recommended Actions) สำหรับผู้บริหาร</p>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-dashboard">
-        <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">04 &amp; 05</span>
-          <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">DASHBOARD &amp; SCORECARD</h5>
-            <span class="reading-mob-tier-action">VISUALIZE &amp; COMPARE</span>
-          </div>
-        </div>
-        <p class="reading-mob-tier-desc"><strong>Dashboard:</strong> แสดงผลกราฟิกแบบ Real-time &middot; <strong>Scorecard:</strong> เปรียบเทียบผลงานจริง (Actual) เทียบเป้าหมาย (Targets) เพื่อชี้วัด Gaps</p>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-kri">
-        <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">02 &amp; 03</span>
-          <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">KPI &amp; KRI</h5>
-            <span class="reading-mob-tier-action">PERFORMANCE &amp; RISK WARNING</span>
-          </div>
-        </div>
-        <p class="reading-mob-tier-desc"><strong>KPI:</strong> วัดความก้าวหน้าสู่เป้าหมายความสำเร็จ &middot; <strong>KRI:</strong> สัญญาณเตือนล่วงหน้าเมื่อความเสี่ยงเข้าใกล้จุดวิกฤต</p>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-kpi">
-        <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">01</span>
-          <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">METRIC</h5>
-            <span class="reading-mob-tier-action">MEASURE &middot; FOUNDATION</span>
-          </div>
-        </div>
-        <p class="reading-mob-tier-desc">ค่าดิบที่วัดได้เชิงปริมาณ (Quantifiable Raw Value) ซึ่งเป็นรากฐานข้อมูลของการวัดผลทุกระดับ &middot; คุณสมบัติที่ดี: Relevant (ตรงประเด็น), Measurable (วัดได้จริง), Consistent (วัดซ้ำได้ผลสม่ำเสมอ)</p>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="reading-diagram-card reading-measurement-system" data-diagram="effectivenessHierarchy" role="region" aria-label="Six measurement concepts grouped by purpose; a local study aid">
+<div class="reading-diagram-header"><span class="reading-diagram-tag">Local study aid</span><h4 class="reading-diagram-title">Measures and communication — grouped by purpose</h4></div>
+<div class="reading-diag-desktop reading-diagram-svg-wrap"><svg viewBox="0 0 840 360" class="reading-diagram-svg" role="img" aria-label="Metric KPI KRI are measures; dashboard scorecard report communicate measures; no mandatory sequence"><text x="35" y="30" class="diag-text-title">Measures</text><text x="445" y="30" class="diag-text-title">Communication</text><g data-concept="metric" data-group="measures"><rect x="20" y="52" width="390" height="86" rx="6" class="diag-box diag-box-banner"/><text x="36" y="77" class="diag-text-title">Metric</text><text x="36" y="101" class="diag-text-sub">ค่าที่กำหนดและวัดได้</text><text x="36" y="122" class="diag-text-sub">Defined measurable value</text></g><g data-concept="kpi" data-group="measures"><rect x="20" y="150" width="390" height="86" rx="6" class="diag-box diag-box-banner"/><text x="36" y="175" class="diag-text-title">KPI</text><text x="36" y="199" class="diag-text-sub">ติดตามผลงานเทียบเป้าหมาย</text><text x="36" y="220" class="diag-text-sub">Performance against objectives</text></g><g data-concept="kri" data-group="measures"><rect x="20" y="248" width="390" height="86" rx="6" class="diag-box diag-box-banner"/><text x="36" y="273" class="diag-text-title">KRI</text><text x="36" y="297" class="diag-text-sub">ติดตามสัญญาณความเสี่ยง</text><text x="36" y="318" class="diag-text-sub">Risk trend / warning measure</text></g><g data-concept="dashboard" data-group="communication"><rect x="430" y="52" width="390" height="86" rx="6" class="diag-box diag-box-banner"/><text x="446" y="77" class="diag-text-title">Dashboard</text><text x="446" y="101" class="diag-text-sub">แสดงภาพรวมตามรอบอัปเดต</text><text x="446" y="122" class="diag-text-sub">View with a defined refresh cadence</text></g><g data-concept="scorecard" data-group="communication"><rect x="430" y="150" width="390" height="86" rx="6" class="diag-box diag-box-banner"/><text x="446" y="175" class="diag-text-title">Scorecard</text><text x="446" y="199" class="diag-text-sub">เทียบผลจริงกับเป้าหมาย</text><text x="446" y="220" class="diag-text-sub">Actual versus target</text></g><g data-concept="report" data-group="communication"><rect x="430" y="248" width="390" height="86" rx="6" class="diag-box diag-box-banner"/><text x="446" y="273" class="diag-text-title">Report</text><text x="446" y="297" class="diag-text-sub">อธิบายผลและข้อเสนอแนะ</text><text x="446" y="318" class="diag-text-sub">Findings and recommended actions</text></g></svg></div><div class="reading-diag-mobile reading-mobile-stack"><div class="reading-mob-tier-card" data-concept="metric" data-group="measures"><h5>Metric</h5><p>ค่าที่กำหนดและวัดได้ / Defined measurable value</p></div><div class="reading-mob-tier-card" data-concept="kpi" data-group="measures"><h5>KPI</h5><p>ติดตามผลงานเทียบเป้าหมาย / Performance against objectives</p></div><div class="reading-mob-tier-card" data-concept="kri" data-group="measures"><h5>KRI</h5><p>ติดตามสัญญาณความเสี่ยง / Risk trend / warning measure</p></div><div class="reading-mob-tier-card" data-concept="dashboard" data-group="communication"><h5>Dashboard</h5><p>แสดงภาพรวมตามรอบอัปเดต / View with a defined refresh cadence</p></div><div class="reading-mob-tier-card" data-concept="scorecard" data-group="communication"><h5>Scorecard</h5><p>เทียบผลจริงกับเป้าหมาย / Actual versus target</p></div><div class="reading-mob-tier-card" data-concept="report" data-group="communication"><h5>Report</h5><p>อธิบายผลและข้อเสนอแนะ / Findings and recommended actions</p></div></div><p class="reading-semantic-note">A local study aid, not a fixed hierarchy or mandatory sequence. Views can combine multiple measures; rows do not imply one-to-one dependencies. Good measures are Relevant (ตรงประเด็น), Measurable (วัดได้จริง) and Consistent (วัดซ้ำได้ผลสม่ำเสมอ). / แบ่งตามหน้าที่ ไม่ใช่ลำดับขั้นสากล รูปแบบนำเสนอหนึ่งอาจรวมหลายตัวชี้วัดได้</p></div>
 `,
 
   // 3.1.1 IAM Lifecycle (Joiner -> Mover -> Leaver)
   iamLifecycle: `
-<div class="reading-diagram-card" data-diagram="iamLifecycle" role="region" aria-label="Identity and Access Management Lifecycle: Joiner, Mover, Leaver">
+<div class="reading-diagram-card" data-diagram="iamLifecycle" data-relationship="illustrative-lifecycle" role="region" aria-label="Identity and Access Management Lifecycle: Joiner, Mover, Leaver">
   <div class="reading-diagram-header">
     <span class="reading-diagram-tag">Identity Governance</span>
     <h4 class="reading-diagram-title">The JML Lifecycle: Joiner, Mover, Leaver Architecture</h4>
   </div>
   <div class="reading-diagram-svg-wrap reading-diag-desktop">
     <svg viewBox="0 0 840 220" class="reading-diagram-svg" aria-label="JML Lifecycle showing Joiner provisioning, Mover access re-evaluation, and Leaver deprovisioning with continuous access review" role="img">
-      <g>
+      <g data-stage="joiner">
         <rect x="20" y="20" width="245" height="150" rx="8" class="diag-box diag-box-blue" />
         <rect x="35" y="32" width="90" height="20" rx="4" fill="#1d4ed8" />
-        <text x="80" y="42" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">01 JOINER</text>
+        <text x="80" y="42" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">ENTRY · JOINER</text>
         <text x="35" y="70" class="diag-text-title" font-size="15px">Provisioning</text>
         <text x="35" y="88" class="diag-text-sub" font-size="12px">การจัดสรรสิทธิ์พนักงานใหม่</text>
         <line x1="35" y1="100" x2="250" y2="100" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
@@ -2043,15 +1822,11 @@ export const diagrams = {
         <text x="35" y="154" class="diag-text-sub" font-size="11.5px">&bull; Initial Credentials &amp; Permissions</text>
       </g>
 
-      <g>
-        <path d="M 268 95 L 290 95" stroke="var(--blue, #3b82f6)" stroke-width="2.5" stroke-linecap="round" />
-        <polygon points="296,95 288,90 288,100" fill="var(--blue, #3b82f6)" />
-      </g>
 
-      <g>
+      <g data-stage="mover">
         <rect x="298" y="20" width="245" height="150" rx="8" class="diag-box diag-box-banner" />
         <rect x="313" y="32" width="85" height="20" rx="4" fill="#f59e0b" />
-        <text x="355.5" y="42" fill="#0f172a" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">02 MOVER</text>
+        <text x="355.5" y="42" fill="#0f172a" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">MOVER</text>
         <text x="313" y="70" class="diag-text-title" font-size="15px">Re-Evaluation</text>
         <text x="313" y="88" class="diag-text-sub" font-size="12px">ย้ายฝ่าย / เปลี่ยนตำแหน่ง</text>
         <line x1="313" y1="100" x2="528" y2="100" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
@@ -2060,15 +1835,11 @@ export const diagrams = {
         <text x="313" y="154" class="diag-text-sub" font-size="11.5px">&bull; Prevent Privilege Accumulation</text>
       </g>
 
-      <g>
-        <path d="M 546 95 L 568 95" stroke="var(--blue, #3b82f6)" stroke-width="2.5" stroke-linecap="round" />
-        <polygon points="574,95 566,90 566,100" fill="var(--blue, #3b82f6)" />
-      </g>
 
-      <g>
+      <g data-stage="leaver">
         <rect x="576" y="20" width="245" height="150" rx="8" class="diag-box diag-box-blue" />
         <rect x="591" y="32" width="90" height="20" rx="4" fill="#ef4444" />
-        <text x="636" y="42" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">03 LEAVER</text>
+        <text x="636" y="42" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">EXIT · LEAVER</text>
         <text x="591" y="70" class="diag-text-title" font-size="15px">Deprovisioning</text>
         <text x="591" y="88" class="diag-text-sub" font-size="12px">พ้นสภาพ / ลาออก / เลิกจ้าง</text>
         <line x1="591" y1="100" x2="806" y2="100" stroke="var(--diag-connector, #64748b)" stroke-width="1" />
@@ -2087,7 +1858,7 @@ export const diagrams = {
     <div class="reading-mob-stack-list">
       <div class="reading-mob-tier-card reading-tier-kpi">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">01</span>
+          <span class="reading-mob-tier-num">ENTRY</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">JOINER (เข้าใหม่)</h5>
             <span class="reading-mob-tier-action">Provisioning &amp; Role Definition</span>
@@ -2095,37 +1866,32 @@ export const diagrams = {
         </div>
         <p class="reading-mob-tier-desc">กำหนดบทบาทและหน้าที่ให้ชัดเจนก่อนให้สิทธิ์ (Define Roles first) สร้างบัญชี กำหนด Unique ID และจัดสรรสิทธิ์เริ่มต้น</p>
       </div>
-      <div class="reading-mob-arrow-down" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </div>
       <div class="reading-mob-tier-card reading-tier-kri">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">02</span>
+          <span class="reading-mob-tier-num">CHANGE</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">MOVER (ย้ายฝ่าย)</h5>
+            <h5 class="reading-mob-tier-name" data-optional="true" data-repeatable="true">MOVER (optional / repeatable)</h5>
             <span class="reading-mob-tier-action">Access Re-Evaluation</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ประเมินสิทธิ์ใหม่และเพิกถอนสิทธิ์เดิมออกทันที เพื่อป้องกันปัญหา Privilege Accumulation / Privilege Creep (สิทธิ์เก่าสะสม)</p>
-      </div>
-      <div class="reading-mob-arrow-down" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        <p class="reading-mob-tier-desc">ทบทวนหน้าที่ใหม่ ถอนสิทธิ์ที่เลิกใช้หรือขัดนโยบาย และคงสิทธิ์ที่ยังจำเป็นตามอำนาจอนุมัติ / Revoke obsolete or conflicting rights and retain justified access under the approved policy.</p>
       </div>
       <div class="reading-mob-tier-card reading-tier-report">
         <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">03</span>
+          <span class="reading-mob-tier-num">EXIT</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">LEAVER (พ้นสภาพ)</h5>
             <span class="reading-mob-tier-action">Deprovisioning &amp; Retention</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">เพิกถอนสิทธิ์ทันทีโดยใช้วิธี Disable Account (ไม่ลบถาวรทันที) เพื่อรักษาประวัติการตรวจสอบย้อนหลัง (Audit Trail)</p>
+        <p class="reading-mob-tier-desc">ถอนการเข้าถึงตามเวลาที่อนุมัติ เช่น Disable Account ส่วนการเก็บหรือลบบัญชีและ Audit Trail ให้ทำตามนโยบายและข้อกำหนด ไม่ถือว่า Disable เก็บ Log ทุกระบบโดยอัตโนมัติ / Withdraw access as authorized; account and evidence retention depend on policy and system behavior.</p>
       </div>
     </div>
     <div class="reading-mob-banner" style="margin-top: 12px; border-left: 3.5px solid var(--blue, #3b82f6);">
       <p class="reading-mob-banner-text"><strong>Periodic Access Reviews:</strong> ตรวจสอบสิทธิ์สม่ำเสมออย่างต่อเนื่องครอบคลุมทั้ง 3 ขั้นตอน</p>
     </div>
   </div>
+<p class="reading-semantic-note">An identity can leave without a Mover event and can move roles repeatedly. Periodic Access Reviews apply throughout. / ผู้ใช้ย้ายบทบาทได้หลายครั้ง หรือออกจากองค์กรโดยไม่เคยย้ายบทบาท ต้องทบทวนสิทธิ์ตลอดวงจร</p>
 </div>
 `,
 
@@ -2518,7 +2284,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Host-to-Host Communication</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ดูแลการเชื่อมต่อและส่งข้อมูลระหว่างเครื่องปลายทาง (TCP เชื่อถือได้ vs UDP รวดเร็ว) กำกับด้วย Port Numbers &middot; PDU: Segments / Datagrams</p>
+        <p class="reading-mob-tier-desc">ดูแลการเชื่อมต่อและส่งข้อมูลระหว่างเครื่องปลายทาง (TCP: ordered byte stream; UDP: datagrams, context-dependent latency) กำกับด้วย Port Numbers &middot; PDU: Segments / Datagrams</p>
         <div class="reading-mob-sub-layers" style="margin-top: 8px;">
           <div class="reading-mob-sub-item" data-osi-layer="4" style="font-size: 13.5px; padding: 6px 10px; background: var(--panel-2); border-radius: 4px; border-left: 3px solid #f59e0b;"><strong>4. Transport:</strong> TCP, UDP, Ports &middot; PDU: Segments / Datagrams</div>
         </div>
@@ -2687,7 +2453,7 @@ export const diagrams = {
       <g>
         <rect x="20" y="20" width="800" height="42" rx="6" class="diag-box diag-box-banner" />
         <rect x="32" y="28" width="60" height="26" rx="4" fill="#64748b" />
-        <text x="62" y="41" fill="#ffffff" font-size="11px" font-weight="800" text-anchor="middle" dominant-baseline="central">TIER 1</text>
+        <text x="62" y="41" fill="#ffffff" font-size="11px" font-weight="800" text-anchor="middle" dominant-baseline="central">GROUP 1</text>
         <text x="106" y="41" class="diag-text-title" font-size="13.5px" font-weight="700" dominant-baseline="central">Perimeter Security (ความมั่นคงปลอดภัยขอบเขตเครือข่าย)</text>
         <text x="804" y="41" class="diag-text-sub" font-size="11px" text-anchor="end" dominant-baseline="central">Firewalls &middot; Edge Routers &middot; Anti-DDoS &middot; External IDS/IPS</text>
       </g>
@@ -2695,7 +2461,7 @@ export const diagrams = {
       <g>
         <rect x="20" y="70" width="800" height="42" rx="6" class="diag-box diag-box-blue" />
         <rect x="32" y="78" width="60" height="26" rx="4" fill="#3b82f6" />
-        <text x="62" y="91" fill="#ffffff" font-size="11px" font-weight="800" text-anchor="middle" dominant-baseline="central">TIER 2</text>
+        <text x="62" y="91" fill="#ffffff" font-size="11px" font-weight="800" text-anchor="middle" dominant-baseline="central">GROUP 2</text>
         <text x="106" y="91" class="diag-text-title" font-size="13.5px" font-weight="700" dominant-baseline="central">Network Security (การแบ่งส่วนและการควบคุมเครือข่าย)</text>
         <text x="804" y="91" class="diag-text-sub" font-size="11px" text-anchor="end" dominant-baseline="central">VLANs &middot; DMZ Architecture &middot; Micro-Segmentation &middot; VPN</text>
       </g>
@@ -2703,7 +2469,7 @@ export const diagrams = {
       <g>
         <rect x="20" y="120" width="800" height="42" rx="6" class="diag-box diag-box-banner" />
         <rect x="32" y="128" width="60" height="26" rx="4" fill="#f59e0b" />
-        <text x="62" y="141" fill="#0f172a" font-size="11px" font-weight="800" text-anchor="middle" dominant-baseline="central">TIER 3</text>
+        <text x="62" y="141" fill="#0f172a" font-size="11px" font-weight="800" text-anchor="middle" dominant-baseline="central">GROUP 3</text>
         <text x="106" y="141" class="diag-text-title" font-size="13.5px" font-weight="700" dominant-baseline="central">Endpoint Security (ความปลอดภัยเครื่องลูกข่ายและเซิร์ฟเวอร์)</text>
         <text x="804" y="141" class="diag-text-sub" font-size="11px" text-anchor="end" dominant-baseline="central">EDR &middot; Host Firewall &middot; OS Patching &middot; Hardening</text>
       </g>
@@ -2711,7 +2477,7 @@ export const diagrams = {
       <g>
         <rect x="20" y="170" width="800" height="42" rx="6" class="diag-box diag-box-blue" />
         <rect x="32" y="178" width="60" height="26" rx="4" fill="#8b5cf6" />
-        <text x="62" y="191" fill="#ffffff" font-size="11px" font-weight="800" text-anchor="middle" dominant-baseline="central">TIER 4</text>
+        <text x="62" y="191" fill="#ffffff" font-size="11px" font-weight="800" text-anchor="middle" dominant-baseline="central">GROUP 4</text>
         <text x="106" y="191" class="diag-text-title" font-size="13.5px" font-weight="700" dominant-baseline="central">Application Security (ความปลอดภัยระดับซอฟต์แวร์)</text>
         <text x="804" y="191" class="diag-text-sub" font-size="11px" text-anchor="end" dominant-baseline="central">Web Application Firewall (WAF) &middot; Input Validation &middot; MFA</text>
       </g>
@@ -2719,7 +2485,7 @@ export const diagrams = {
       <g>
         <rect x="20" y="220" width="800" height="42" rx="6" class="diag-box diag-box-blue" />
         <rect x="32" y="228" width="60" height="26" rx="4" fill="#10b981" />
-        <text x="62" y="241" fill="#ffffff" font-size="11px" font-weight="800" text-anchor="middle" dominant-baseline="central">TIER 5</text>
+        <text x="62" y="241" fill="#ffffff" font-size="11px" font-weight="800" text-anchor="middle" dominant-baseline="central">GROUP 5</text>
         <text x="106" y="241" class="diag-text-title" font-size="13.5px" font-weight="700" dominant-baseline="central">Data Security &middot; The Core Asset (หัวใจของการปกป้องข้อมูล)</text>
         <text x="804" y="241" class="diag-text-sub" font-size="11px" text-anchor="end" dominant-baseline="central">AES-256 Encryption &middot; Access ACLs &middot; Immutable Backups</text>
       </g>
@@ -2783,6 +2549,7 @@ export const diagrams = {
       </div>
     </div>
   </div>
+<p class="reading-semantic-note">Example complementary control groups, not five required stages or guaranteed independent barriers. / เป็นกลุ่มมาตรการตัวอย่างที่ใช้เสริมกัน ไม่ใช่ขั้นตอนบังคับห้าขั้น และยังอาจมีจุดพึ่งพาร่วม</p>
 </div>
 `,
 
@@ -3131,7 +2898,7 @@ export const diagrams = {
         <text x="40" y="170" class="diag-text-sub" font-size="11px">&bull; Persistence (การฝังตัวระยะยาว)</text>
         <text x="40" y="192" class="diag-text-sub" font-size="11px">&bull; Lateral Movement (การเคลื่อนที่แนวราบ)</text>
         <text x="40" y="214" class="diag-text-sub" font-size="11px">&bull; Exfiltration (การขโมยส่งข้อมูลออก)</text>
-        <text x="40" y="238" fill="#3b82f6" font-size="10.5px" font-weight="700">14 Enterprise Tactics ทั้งหมด</text>
+        <text x="40" y="238" fill="#3b82f6" font-size="10.5px" font-weight="700">ตัวอย่าง Tactics / Goal examples</text>
       </g>
 
       <path d="M 280 140 H 320" stroke="var(--diag-connector, #64748b)" stroke-width="2" fill="none" />
@@ -3144,9 +2911,9 @@ export const diagrams = {
         <text x="380" y="48" fill="#ffffff" font-size="11px" font-weight="700" text-anchor="middle" dominant-baseline="central">TECHNIQUE</text>
         <text x="335" y="80" class="diag-text-title" font-size="14px" font-weight="700">The "HOW" (วิธีการ/เทคนิค)</text>
         <text x="335" y="102" class="diag-text-sub" font-size="11.5px">วิธีที่ศัตรูใช้กระทำเพื่อบรรลุเป้าหมาย:</text>
-        <text x="335" y="126" class="diag-text-sub" font-size="11px">&bull; Phishing: Spearphishing Link (T1566)</text>
+        <text x="335" y="126" class="diag-text-sub" font-size="11px">&bull; Spearphishing Link (T1566.002)</text>
         <text x="335" y="148" class="diag-text-sub" font-size="11px">&bull; Pass the Hash (T1550.002)</text>
-        <text x="335" y="170" class="diag-text-sub" font-size="11px">&bull; Command and Scripting: PowerShell (T1059)</text>
+        <text x="335" y="170" class="diag-text-sub" font-size="11px">&bull; PowerShell (T1059.001)</text>
         <text x="335" y="192" class="diag-text-sub" font-size="11px">&bull; Scheduled Task / Job (T1053)</text>
         <text x="335" y="214" class="diag-text-sub" font-size="11px">&bull; Valid Accounts (T1078)</text>
         <text x="335" y="238" fill="#6366f1" font-size="10.5px" font-weight="700">รวม Sub-techniques ย่อยเฉพาะเจาะจง</text>
@@ -3486,7 +3253,7 @@ export const diagrams = {
         <rect x="30" y="0" width="800" height="150" rx="8" class="diag-box" />
         <rect x="42" y="10" width="220" height="24" rx="4" fill="rgba(59, 130, 246, 0.12)" />
         <text x="50" y="26" class="diag-text-title" font-weight="700" fill="var(--blue, #3b82f6)">STRATEGY A: DIFFERENTIAL BACKUP</text>
-        <text x="275" y="26" class="diag-text-sub" font-size="11.5px">สำรองเฉพาะข้อมูลที่เปลี่ยนนับจาก Full ล่าสุด (ขนาดไฟล์สำรองโตขึ้นทุกวัน)</text>
+        <text x="50" y="44" class="diag-text-sub" font-size="11.5px">สำรองเฉพาะข้อมูลที่เปลี่ยนนับจาก Full ล่าสุด (ขนาดไฟล์สำรองโตขึ้นทุกวัน)</text>
 
         <!-- Daily Backup Footprint -->
         <g transform="translate(150, 42)">
@@ -3508,12 +3275,12 @@ export const diagrams = {
         <!-- Recovery Action Sequence -->
         <g transform="translate(42, 108)">
           <rect x="0" y="0" width="776" height="34" rx="5" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.4)" />
-          <text x="14" y="21" font-size="11.5px" font-weight="700" fill="var(--green, #10b981)">RECOVERY PATH ON THURSDAY (EXACTLY 2 STEPS):</text>
+          <text x="14" y="21" font-size="11.5px" font-weight="700" fill="var(--green, #10b981)">BEFORE NEXT THURSDAY BACKUP (2 BACKUP SETS):</text>
           <text x="340" y="21" font-size="12px" font-weight="700" fill="var(--text)">[1] Restore Sun Full (Base)</text>
           <text x="520" y="21" font-size="12px" fill="var(--text-secondary)">&rarr;</text>
-          <text x="540" y="21" font-size="12px" font-weight="700" fill="#f59e0b">[2] Restore Wed Diff (All Changes)</text>
+          <text x="540" y="21" font-size="12px" font-weight="700" fill="#f59e0b">[2] Restore Wed Diff</text>
           <rect x="710" y="6" width="56" height="22" rx="3" fill="#10b981" />
-          <text x="738" y="21" text-anchor="middle" font-size="10px" font-weight="700" fill="#ffffff">FAST RTO</text>
+          <text x="738" y="21" text-anchor="middle" font-size="10px" font-weight="700" fill="#ffffff">2 SETS</text>
         </g>
       </g>
 
@@ -3522,7 +3289,7 @@ export const diagrams = {
         <rect x="30" y="0" width="800" height="150" rx="8" class="diag-box" />
         <rect x="42" y="10" width="220" height="24" rx="4" fill="rgba(16, 185, 129, 0.12)" />
         <text x="50" y="26" class="diag-text-title" font-weight="700" fill="var(--green, #10b981)">STRATEGY B: INCREMENTAL BACKUP</text>
-        <text x="275" y="26" class="diag-text-sub" font-size="11.5px">สำรองเฉพาะข้อมูลที่เปลี่ยนนับจาก Backup ครั้งล่าสุด (ขนาดเล็ก สำรองเร็วสุด)</text>
+        <text x="50" y="44" class="diag-text-sub" font-size="11.5px">สำรองเฉพาะข้อมูลที่เปลี่ยนนับจาก Backup ครั้งล่าสุด (ขนาดขึ้นกับข้อมูลที่เปลี่ยน)</text>
 
         <!-- Daily Backup Footprint -->
         <g transform="translate(150, 42)">
@@ -3543,16 +3310,16 @@ export const diagrams = {
         <!-- Recovery Action Sequence -->
         <g transform="translate(42, 108)">
           <rect x="0" y="0" width="776" height="34" rx="5" fill="rgba(245, 158, 11, 0.08)" stroke="rgba(245, 158, 11, 0.4)" />
-          <text x="14" y="21" font-size="11.5px" font-weight="700" fill="#f59e0b">RECOVERY PATH ON THURSDAY (4 SEQUENTIAL STEPS):</text>
+          <text x="14" y="21" font-size="11.5px" font-weight="700" fill="#f59e0b">BEFORE NEXT THURSDAY BACKUP (4 BACKUP SETS):</text>
           <text x="340" y="21" font-size="11px" font-weight="600" fill="var(--text)">[1] Sun Full &rarr; [2] Mon Inc &rarr; [3] Tue Inc &rarr; [4] Wed Inc</text>
           <rect x="710" y="6" width="56" height="22" rx="3" fill="#f59e0b" />
-          <text x="738" y="21" text-anchor="middle" font-size="10px" font-weight="700" fill="#ffffff">SLOW RTO</text>
+          <text x="738" y="21" text-anchor="middle" font-size="10px" font-weight="700" fill="#ffffff">4 SETS</text>
         </g>
       </g>
 
       <!-- Bottom Trade-off Banner -->
       <g transform="translate(30, 386)">
-        <text x="400" y="16" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">EXAM TAKEAWAY: Differential = Fast Restore (2 sets), Slower Backup | Incremental = Fastest Daily Backup, Slowest Restore (N sets)</text>
+        <text x="400" y="16" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">RESTORE DEPENDENCIES: Full + latest Diff (2 sets) | Full + all later Incr (N sets); elapsed time depends on the system</text>
       </g>
     </svg>
   </div>
@@ -3563,10 +3330,10 @@ export const diagrams = {
           <span class="reading-mob-tier-num">DIFF</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">DIFFERENTIAL BACKUP (2-Step Recovery Chain)</h5>
-            <span class="reading-mob-tier-action">Fast Restoration &bull; 2 Sets Required</span>
+            <span class="reading-mob-tier-action">Restore Full + latest Diff &bull; 2 Sets</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc"><strong>สิ่งที่สำรอง:</strong> บันทึกเฉพาะไฟล์ที่มีการเปลี่ยนแปลงนับตั้งแต่ Full Backup ครั้งล่าสุด (ขนาดไฟล์จะใหญ่ขึ้นเรื่อย ๆ ในแต่ละวัน)<br><strong>การกู้คืนเมื่อระบบล่มวันพฤหัส:</strong> ใช้เพียง <code>Full (อาทิตย์) + Diff (พุธ)</code> = <strong>2 ชุดเท่านั้น</strong> กู้คืนได้รวดเร็ว ลดความเสี่ยงจากสื่อบันทึกสูญหาย</p>
+        <p class="reading-mob-tier-desc"><strong>สิ่งที่สำรอง:</strong> บันทึกเฉพาะไฟล์ที่มีการเปลี่ยนแปลงนับตั้งแต่ Full Backup ครั้งล่าสุด (ขนาดไฟล์จะใหญ่ขึ้นเรื่อย ๆ ในแต่ละวัน)<br><strong>การกู้คืนก่อน Backup วันพฤหัสรอบถัดไป:</strong> ใช้เพียง <code>Full (อาทิตย์) + Diff (พุธ)</code> = <strong>2 ชุดเท่านั้น</strong> กู้คืนได้รวดเร็ว ลดความเสี่ยงจากสื่อบันทึกสูญหาย</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-scorecard">
@@ -3574,21 +3341,21 @@ export const diagrams = {
           <span class="reading-mob-tier-num">INCR</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">INCREMENTAL BACKUP (Sequential Replay Chain)</h5>
-            <span class="reading-mob-tier-action">Fastest Daily Backup &bull; Sequential Replay</span>
+            <span class="reading-mob-tier-action">Restore Full + all later Incr &bull; Sequential Replay</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc"><strong>สิ่งที่สำรอง:</strong> บันทึกเฉพาะสิ่งที่เปลี่ยนนับจาก Backup ครั้งก่อนหน้า (ใช้เวลาและพื้นที่สำรองน้อยที่สุดในแต่ละวัน)<br><strong>การกู้คืนเมื่อระบบล่มวันพฤหัส:</strong> ต้องกู้เรียงลำดับ <code>Full (อาทิตย์) &rarr; Incr (จันทร์) &rarr; Incr (อังคาร) &rarr; Incr (พุธ)</code> รวม <strong>4 ชุด</strong> หากเทปชุดใดชุดหนึ่งเสียหาย จะไม่สามารถกู้คืนข้อมูลต่อได้</p>
+        <p class="reading-mob-tier-desc"><strong>สิ่งที่สำรอง:</strong> บันทึกเฉพาะสิ่งที่เปลี่ยนนับจาก Backup ครั้งก่อนหน้า (ปริมาณงานขึ้นกับข้อมูลที่เปลี่ยน)<br><strong>การกู้คืนก่อน Backup วันพฤหัสรอบถัดไป:</strong> ต้องกู้เรียงลำดับ <code>Full (อาทิตย์) &rarr; Incr (จันทร์) &rarr; Incr (อังคาร) &rarr; Incr (พุธ)</code> รวม <strong>4 ชุด</strong> หากเทปชุดใดชุดหนึ่งเสียหาย จะไม่สามารถกู้คืนข้อมูลต่อได้</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-kri">
         <div class="reading-mob-tier-head">
           <span class="reading-mob-tier-num">RULE</span>
           <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">ARCHIVE BIT BEHAVIOR (กลไก Archive Bit สำหรับห้องสอบ)</h5>
+            <h5 class="reading-mob-tier-name">ARCHIVE-BIT FILE BACKUPS (ตัวอย่างกลไกบางระบบ)</h5>
             <span class="reading-mob-tier-action">Key Mechanism Trigger</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">&bull; <strong>Full Backup:</strong> สำรองทุกไฟล์ และ <em>เคลียร์ Archive Bit (เซ็ตเป็น 0)</em><br>&bull; <strong>Differential Backup:</strong> สำรองไฟล์ที่มีการเปลี่ยนแปลง แต่ <em>ไม่เคลียร์ Archive Bit (ยังคงเป็น 1)</em><br>&bull; <strong>Incremental Backup:</strong> สำรองไฟล์ที่มีการเปลี่ยนแปลง และ <em>เคลียร์ Archive Bit (เซ็ตเป็น 0)</em></p>
+        <p class="reading-mob-tier-desc">ในระบบแบ็กอัพไฟล์ที่ใช้ Archive Bit (ไม่ใช่ทุกผลิตภัณฑ์): &bull; <strong>Full Backup:</strong> สำรองทุกไฟล์ และ <em>เคลียร์ Archive Bit (เซ็ตเป็น 0)</em><br>&bull; <strong>Differential Backup:</strong> สำรองไฟล์ที่มีการเปลี่ยนแปลง แต่ <em>ไม่เคลียร์ Archive Bit (ยังคงเป็น 1)</em><br>&bull; <strong>Incremental Backup:</strong> สำรองไฟล์ที่มีการเปลี่ยนแปลง และ <em>เคลียร์ Archive Bit (เซ็ตเป็น 0)</em></p>
       </div>
     </div>
   </div>
@@ -3610,12 +3377,12 @@ export const diagrams = {
         <rect x="15" y="15" width="160" height="28" rx="4" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" stroke-width="1" />
         <text x="95" y="34" text-anchor="middle" font-size="12px" font-weight="700" fill="#ef4444">HOT SITE</text>
         
-        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Readiness (RTO):</text>
+        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Example recovery:</text>
         <text x="20" y="86" font-size="11.5px" font-weight="700" fill="#ef4444">Minutes to Hours</text>
         
         <text x="20" y="112" font-size="11px" font-weight="700" fill="var(--text)">Data Status:</text>
-        <text x="20" y="128" font-size="10.5px" fill="var(--text-secondary)">Real-time Synchronous</text>
-        <text x="20" y="142" font-size="10.5px" fill="var(--text-secondary)">or Continuous Mirroring</text>
+        <text x="20" y="128" font-size="10.5px" fill="var(--text-secondary)">Configured replication</text>
+        <text x="20" y="142" font-size="10.5px" fill="var(--text-secondary)">and tested recovery paths</text>
         
         <text x="20" y="168" font-size="11px" font-weight="700" fill="var(--text)">Hardware State:</text>
         <text x="20" y="184" font-size="10.5px" fill="var(--text-secondary)">Fully populated, active,</text>
@@ -3623,7 +3390,7 @@ export const diagrams = {
         
         <rect x="15" y="222" width="160" height="36" rx="4" class="diag-box diag-box-banner" />
         <text x="95" y="238" text-anchor="middle" font-size="10px" font-weight="700" fill="#ef4444">COST: $$$$$ (HIGHEST)</text>
-        <text x="95" y="250" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Mission-Critical Systems</text>
+        <text x="95" y="258" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Mission-Critical Systems</text>
       </g>
 
       <!-- Col 2: Warm Site -->
@@ -3632,7 +3399,7 @@ export const diagrams = {
         <rect x="15" y="15" width="160" height="28" rx="4" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="1" />
         <text x="95" y="34" text-anchor="middle" font-size="12px" font-weight="700" fill="#f59e0b">WARM SITE</text>
         
-        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Readiness (RTO):</text>
+        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Example recovery:</text>
         <text x="20" y="86" font-size="11.5px" font-weight="700" fill="#f59e0b">Hours to Days (12-48h)</text>
         
         <text x="20" y="112" font-size="11px" font-weight="700" fill="var(--text)">Data Status:</text>
@@ -3645,7 +3412,7 @@ export const diagrams = {
         
         <rect x="15" y="222" width="160" height="36" rx="4" class="diag-box diag-box-banner" />
         <text x="95" y="238" text-anchor="middle" font-size="10px" font-weight="700" fill="#f59e0b">COST: $$$ (MODERATE)</text>
-        <text x="95" y="250" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Balanced Trade-off</text>
+        <text x="95" y="258" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Balanced Trade-off</text>
       </g>
 
       <!-- Col 3: Cold Site -->
@@ -3654,7 +3421,7 @@ export const diagrams = {
         <rect x="15" y="15" width="160" height="28" rx="4" fill="rgba(59, 130, 246, 0.15)" stroke="var(--blue, #3b82f6)" stroke-width="1" />
         <text x="95" y="34" text-anchor="middle" font-size="12px" font-weight="700" fill="var(--blue, #3b82f6)">COLD SITE</text>
         
-        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Readiness (RTO):</text>
+        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Example recovery:</text>
         <text x="20" y="86" font-size="11.5px" font-weight="700" fill="var(--blue, #3b82f6)">Days to Weeks</text>
         
         <text x="20" y="112" font-size="11px" font-weight="700" fill="var(--text)">Data Status:</text>
@@ -3667,7 +3434,7 @@ export const diagrams = {
         
         <rect x="15" y="222" width="160" height="36" rx="4" class="diag-box diag-box-banner" />
         <text x="95" y="238" text-anchor="middle" font-size="10px" font-weight="700" fill="var(--blue, #3b82f6)">COST: $ (LOWEST)</text>
-        <text x="95" y="250" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Non-Urgent Operations</text>
+        <text x="95" y="258" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Non-Urgent Operations</text>
       </g>
 
       <!-- Col 4: Cloud DR -->
@@ -3676,7 +3443,7 @@ export const diagrams = {
         <rect x="15" y="15" width="160" height="28" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
         <text x="95" y="34" text-anchor="middle" font-size="12px" font-weight="700" fill="#10b981">CLOUD DR (DRaaS)</text>
         
-        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Readiness (RTO):</text>
+        <text x="20" y="68" font-size="11px" font-weight="700" fill="var(--text)">Example recovery:</text>
         <text x="20" y="86" font-size="11.5px" font-weight="700" fill="#10b981">Minutes to Hours</text>
         
         <text x="20" y="112" font-size="11px" font-weight="700" fill="var(--text)">Data Status:</text>
@@ -3689,7 +3456,7 @@ export const diagrams = {
         
         <rect x="15" y="222" width="160" height="36" rx="4" class="diag-box diag-box-banner" />
         <text x="95" y="238" text-anchor="middle" font-size="10px" font-weight="700" fill="#10b981">COST: PAY-AS-YOU-GO</text>
-        <text x="95" y="250" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Flexible OpEx Model</text>
+        <text x="95" y="258" text-anchor="middle" font-size="9px" fill="var(--text-secondary)">Flexible OpEx Model</text>
       </g>
     </svg>
   </div>
@@ -3700,7 +3467,7 @@ export const diagrams = {
           <span class="reading-mob-tier-num">HOT</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">HOT SITE (ศูนย์กู้คืนระบบพร้อมใช้งานทันที)</h5>
-            <span class="reading-mob-tier-action">RTO: Minutes to Hours &bull; Cost: $$$$$</span>
+            <span class="reading-mob-tier-action">Example: Minutes to Hours &bull; Cost: $$$$$</span>
           </div>
         </div>
         <p class="reading-mob-tier-desc">มีอุปกรณ์และระบบที่เหมือนกับไซต์หลักทุกประการ ข้อมูลมีการทำสำเนาจำลองแบบต่อเนื่อง (Real-time Mirroring) พร้อมสลับการทำงานได้ทันทีเมื่อไซต์หลักล่ม เหมาะกับงานที่หยุดชะงักไม่ได้ (Mission-Critical)</p>
@@ -3711,7 +3478,7 @@ export const diagrams = {
           <span class="reading-mob-tier-num">WARM</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">WARM SITE (ศูนย์กู้คืนระบบติดตั้งอุปกรณ์พร้อมส่วนหนึ่ง)</h5>
-            <span class="reading-mob-tier-action">RTO: Hours to Days (12-48h) &bull; Cost: $$$</span>
+            <span class="reading-mob-tier-action">Example: Hours to Days (12-48h) &bull; Cost: $$$</span>
           </div>
         </div>
         <p class="reading-mob-tier-desc">มีฮาร์ดแวร์พื้นฐานติดตั้งไว้แล้ว แต่ยังไม่มีข้อมูลล่าสุด ต้องนำข้อมูลสำรองจากเทปหรือคลาวด์มา Restore และคอนฟิกค่าก่อนเปิดบริการ เป็นจุดกึ่งกลางระหว่างต้นทุนและความเร็ว</p>
@@ -3722,7 +3489,7 @@ export const diagrams = {
           <span class="reading-mob-tier-num">COLD</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">COLD SITE (ศูนย์กู้คืนระบบแบบอาคารเปล่า)</h5>
-            <span class="reading-mob-tier-action">RTO: Days to Weeks &bull; Cost: $</span>
+            <span class="reading-mob-tier-action">Example: Days to Weeks &bull; Cost: $</span>
           </div>
         </div>
         <p class="reading-mob-tier-desc">มีเพียงพื้นที่อาคาร ระบบไฟฟ้า ระบบปรับอากาศ (HVAC) และการเดินสายสัญญาณ แต่ไม่มีเครื่องเซิร์ฟเวอร์หรือข้อมูลติดตั้งอยู่ ต้องสั่งซื้อและติดตั้งอุปกรณ์ใหม่ทั้งหมด ค่าใช้จ่ายถูกที่สุดแต่ใช้เวลากู้นานที่สุด</p>
@@ -3733,13 +3500,14 @@ export const diagrams = {
           <span class="reading-mob-tier-num">CLOUD</span>
           <div class="reading-mob-tier-info">
             <h5 class="reading-mob-tier-name">CLOUD DR / DRaaS (การกู้คืนบนระบบคลาวด์)</h5>
-            <span class="reading-mob-tier-action">RTO: Minutes to Hours &bull; Pay-as-you-go</span>
+            <span class="reading-mob-tier-action">Example: Minutes to Hours &bull; Pay-as-you-go</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ใช้โครงสร้างพื้นฐานคลาวด์ในการทำ Snapshots และสำรอง Image เมื่อเกิดภัยพิบัติสามารถเปิด Virtual Machines ขึ้นมาทำงานแทนได้ทันที จ่ายค่าบริการตามการใช้งานจริง (OpEx)</p>
+        <p class="reading-mob-tier-desc">ใช้โครงสร้างพื้นฐานคลาวด์ในการทำ Snapshots และสำรอง Image เมื่อเกิดภัยพิบัติอาจเปิด Virtual Machines ทดแทนได้เมื่อจัดเตรียมและทดสอบทรัพยากร ข้อมูล และการเชื่อมต่อไว้ จ่ายค่าบริการตามการใช้งานจริง (OpEx)</p>
       </div>
     </div>
   </div>
+<p class="reading-semantic-note">Readiness and time ranges are illustrative, not guaranteed RTOs. Data freshness, capacity, dependencies and restore tests determine whether a site meets its objectives. / ความพร้อมและช่วงเวลาเป็นตัวอย่าง ต้องตรวจข้อมูล ความจุ จุดพึ่งพา และผลทดสอบ ไม่ใช่ชื่อศูนย์สำรองที่รับประกัน RTO</p>
 </div>
 `,
 
@@ -3803,13 +3571,13 @@ export const diagrams = {
         <!-- CER Callout Box -->
         <rect x="360" y="202" width="190" height="48" rx="6" fill="var(--panel-2, #0f172a)" stroke="#10b981" stroke-width="1.5" />
         <text x="455" y="220" text-anchor="middle" font-size="12px" font-weight="700" fill="#10b981">CER / EER Point</text>
-        <text x="455" y="238" text-anchor="middle" font-size="10px" font-weight="600" fill="var(--text)">FAR = FRR (Optimal Balance)</text>
+        <text x="455" y="238" text-anchor="middle" font-size="10px" font-weight="600" fill="var(--text)">FAR = FRR (Test metric)</text>
       </g>
 
       <!-- Bottom Benchmark Footer -->
       <g transform="translate(30, 350)">
         <rect x="0" y="0" width="800" height="30" rx="5" class="diag-box diag-box-banner" />
-        <text x="400" y="19" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">EXAM RULE: The LOWER the CER value, the MORE ACCURATE the biometric system &bull; High-security sites tune for lower FAR</text>
+        <text x="400" y="19" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">EER compares like-for-like tests; choose operating thresholds for the use case.</text>
       </g>
     </svg>
   </div>
@@ -3823,7 +3591,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Security Failure &bull; Impostor Accepted</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">ระบบตัดสินใจผิดพลาดโดย <strong>"อนุญาตให้ผู้ไม่มีสิทธิ์ผ่านเข้ามา"</strong> ถือเป็นความล้มเหลวด้านความมั่นคงปลอดภัยที่ร้ายแรงที่สุด เกิดขึ้นเมื่อตั้งค่าระบบให้ผ่อนปรน (Low Sensitivity)</p>
+        <p class="reading-mob-tier-desc">ระบบตัดสินใจผิดพลาดโดย <strong>"อนุญาตให้ผู้ไม่มีสิทธิ์ผ่านเข้ามา"</strong> อาจมีผลต่อความมั่นคงปลอดภัยตามบริบท เกิดขึ้นเมื่อตั้งค่าระบบให้ผ่อนปรน (Low Sensitivity)</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-scorecard">
@@ -3845,7 +3613,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Accuracy Benchmark &bull; FAR = FRR</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">จุดตัดที่อัตราความผิดพลาด <strong>FAR เท่ากับ FRR พอดี</strong> ใช้เป็นตัวชี้วัดเปรียบเทียบความแม่นยำรวมของเทคโนโลยีไบโอเมตริกซ์: <strong>ยิ่งค่า CER ต่ำ แสดงว่าระบบมีความแม่นยำสูงกว่า</strong> (The lower the CER, the more accurate the device)</p>
+        <p class="reading-mob-tier-desc">จุดตัดที่อัตราความผิดพลาด <strong>FAR เท่ากับ FRR พอดี</strong> ใช้เป็นตัวชี้วัดเปรียบเทียบความแม่นยำรวมของเทคโนโลยีไบโอเมตริกซ์: <strong>ค่า CER ใช้เทียบระบบได้เมื่อเงื่อนไขทดสอบเทียบกันได้ ไม่จำเป็นต้องเลือกจุดใช้งานที่ FAR = FRR</strong> (Compare like-for-like EER; choose a risk-appropriate operating point)</p>
       </div>
     </div>
   </div>
@@ -3894,7 +3662,7 @@ export const diagrams = {
 
         <!-- Established Footer -->
         <rect x="15" y="240" width="365" height="68" rx="5" class="diag-box diag-box-banner" />
-        <text x="197" y="258" text-anchor="middle" font-size="11px" font-weight="700" fill="var(--text)">CONNECTION ESTABLISHED &middot; RELIABLE STREAM</text>
+        <text x="197" y="258" text-anchor="middle" font-size="11px" font-weight="700" fill="var(--text)">ILLUSTRATIVE CONNECTION &middot; ORDERED BYTE STREAM</text>
         <text x="197" y="274" text-anchor="middle" font-size="10px" fill="var(--text-secondary)">&bull; Header: 20&ndash;60 Bytes &bull; In-Order Delivery &bull; Retransmission on Loss</text>
         <text x="197" y="292" text-anchor="middle" font-size="10px" fill="var(--blue, #3b82f6)">Use Cases: HTTP/HTTPS, SSH, SFTP, SMTP, Database</text>
       </g>
@@ -3939,7 +3707,7 @@ export const diagrams = {
       <!-- Bottom Benchmark Banner -->
       <g transform="translate(25, 345)">
         <rect x="0" y="0" width="810" height="26" rx="4" class="diag-box diag-box-banner" />
-        <text x="405" y="17" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">EXAM TAKEAWAY: UDP latency advantage is from zero setup/retransmission &mdash; actual speed depends on application and network conditions</text>
+        <text x="405" y="17" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">PERFORMANCE CONTEXT: UDP avoids TCP setup/retransmission overhead &mdash; actual speed depends on application and network conditions</text>
       </g>
     </svg>
   </div>
@@ -3953,7 +3721,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Connection-Oriented &bull; Reliable In-Order</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc"><strong>3-Way Handshake:</strong> ต้องจับมือ <code>SYN &rarr; SYN-ACK &rarr; ACK</code> ให้สำเร็จก่อนเริ่มส่งข้อมูล<br><strong>ความเชื่อถือได้:</strong> รับประกันลำดับข้อมูล (Sequencing) และมีการส่งซ้ำเมื่อข้อมูลตกหล่น (Retransmission) มี Header ขนาด 20-60 Bytes เหมาะกับ Web (HTTPS), Mail (SMTP), SSH, File Transfer</p>
+        <p class="reading-mob-tier-desc"><strong>3-Way Handshake:</strong> ต้องจับมือ <code>SYN &rarr; SYN-ACK &rarr; ACK</code> ให้สำเร็จก่อนเริ่มส่งข้อมูล<br><strong>ความเชื่อถือได้:</strong> ให้บริการไบต์เรียงลำดับ (Sequencing) แต่การเชื่อมต่ออาจล้มเหลว และมีการส่งซ้ำเมื่อข้อมูลตกหล่น (Retransmission) มี Header ขนาด 20-60 Bytes เหมาะกับ Web (HTTPS), Mail (SMTP), SSH, File Transfer</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-scorecard">
@@ -4048,7 +3816,7 @@ export const diagrams = {
         <line x1="266" y1="80" x2="310" y2="80" stroke="#10b981" stroke-width="2" />
         <polygon points="316,80 308,76 308,84" fill="#10b981" />
         <rect x="316" y="65" width="65" height="30" rx="4" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" />
-        <text x="348" y="84" text-anchor="middle" font-size="10px" font-weight="700" fill="#10b981">Pass Safe</text>
+        <text x="348" y="84" text-anchor="middle" font-size="10px" font-weight="700" fill="#10b981">Allowed traffic</text>
 
         <!-- Malicious Packet Dropped -->
         <line x1="208" y1="118" x2="208" y2="155" stroke="#ef4444" stroke-width="2" />
@@ -4056,13 +3824,13 @@ export const diagrams = {
         <rect x="138" y="165" width="140" height="30" rx="4" fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" />
         <text x="208" y="184" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#ef4444">DROP / RESET PACKET</text>
 
-        <text x="197" y="235" text-anchor="middle" font-size="11px" font-weight="700" fill="#10b981">&bull; BLOCKS ATTACK IN REAL-TIME &bull; Active Safeguard</text>
+        <text x="197" y="235" text-anchor="middle" font-size="11px" font-weight="700" fill="#10b981">&bull; CAN BLOCK MATCHED TRAFFIC &bull; Active Safeguard</text>
       </g>
 
       <!-- Bottom Benchmark Banner -->
       <g transform="translate(25, 285)">
         <rect x="0" y="0" width="810" height="26" rx="4" class="diag-box diag-box-banner" />
-        <text x="405" y="17" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">EXAM DECISION: IDS = Detective (Out-of-band copy, alerts only) | IPS = Preventive (In-line path, actively blocks/drops packets)</text>
+        <text x="405" y="17" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">ILLUSTRATED CONFIGURATION: IDS = Detective (Out-of-band copy, alerts only) | IPS = Preventive (In-line path, actively blocks/drops packets)</text>
       </g>
     </svg>
   </div>
@@ -4091,307 +3859,13 @@ export const diagrams = {
       </div>
     </div>
   </div>
+<p class="reading-semantic-note">This example uses a passive IDS and an inline IPS with prevention enabled. Detection and blocking depend on rules and configuration; allowed traffic is not proof of harmless content. / ภาพนี้แสดง IDS รับสำเนาและ IPS ในเส้นทางที่เปิดใช้การป้องกัน ผลขึ้นกับกฎและการตั้งค่า ทราฟฟิกที่ผ่านไม่ได้แปลว่าปลอดภัยทั้งหมด</p>
 </div>
 `,
 
 // 5.1.6 & 5.1.7 Cryptography Foundations: Symmetric, Asymmetric, Hashing & Digital Signatures
   cryptographyPipelines: `
-<div class="reading-diagram-card reading-crypto-pipelines" data-diagram="cryptographyPipelines" role="region" aria-label="Cryptography Pipelines: Symmetric, Asymmetric, Hashing and Digital Signatures">
-  <div class="reading-diagram-header">
-    <span class="reading-diagram-tag">Cryptographic Foundations</span>
-    <h4 class="reading-diagram-title">Cryptographic Systems: Symmetric, Asymmetric, Hashing &amp; Digital Signatures</h4>
-  </div>
-  <div class="reading-diagram-svg-wrap reading-diag-desktop">
-    <svg viewBox="0 0 860 840" class="reading-diagram-svg" aria-label="Visual pipelines comparing Symmetric encryption, Asymmetric encryption, Cryptographic Hashing with avalanche effect, and Digital Signature signing and verification" role="img">
-      
-      <!-- ========================================================
-           BAND 1: SYMMETRIC ENCRYPTION (SHARED SECRET KEY)
-           ======================================================== -->
-      <g transform="translate(25, 15)">
-        <rect x="0" y="0" width="810" height="185" rx="8" class="diag-box diag-box-banner" />
-        
-        <!-- Header Pill -->
-        <rect x="15" y="12" width="410" height="24" rx="4" fill="#1d4ed8" />
-        <text x="220" y="28" text-anchor="middle" font-size="11.5px" font-weight="700" fill="#ffffff">1. SYMMETRIC ENCRYPTION · SHARED SECRET KEY (ความลับร่วมกัน)</text>
-        
-        <!-- Pipeline Flow -->
-        <!-- Step 1: Plaintext -->
-        <g transform="translate(20, 50)">
-          <rect x="0" y="0" width="145" height="75" rx="6" class="diag-box diag-box-blue" />
-          <text x="72" y="24" text-anchor="middle" font-size="12px" font-weight="700" class="diag-text-title">Plaintext (ข้อความเดิม)</text>
-          <rect x="12" y="36" width="121" height="26" rx="4" fill="rgba(59, 130, 246, 0.12)" />
-          <text x="72" y="53" text-anchor="middle" font-size="11px" font-family="monospace" font-weight="700" fill="var(--blue, #2563eb)">"SECRET DATA"</text>
-        </g>
-
-        <!-- Arrow 1 -> Key Engine -->
-        <g transform="translate(165, 80)">
-          <line x1="0" y1="7" x2="40" y2="7" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
-          <polygon points="46,7 38,3 38,11" fill="var(--diag-connector, #64748b)" />
-        </g>
-
-        <!-- Step 2: Encryption Engine with Key K -->
-        <g transform="translate(215, 45)">
-          <rect x="0" y="0" width="140" height="85" rx="6" fill="rgba(37, 99, 235, 0.12)" stroke="#2563eb" stroke-width="1.5" />
-          <text x="70" y="24" text-anchor="middle" font-size="12px" font-weight="700" fill="var(--blue, #2563eb)">ENCRYPT ENGINE</text>
-          <rect x="15" y="34" width="110" height="22" rx="4" fill="#1d4ed8" />
-          <text x="70" y="49" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#ffffff">&#128273; Shared Key K</text>
-          <text x="70" y="73" text-anchor="middle" font-size="10px" class="diag-text-sub">AES-256 / ChaCha20</text>
-        </g>
-
-        <!-- Arrow 2 -> Ciphertext -->
-        <g transform="translate(355, 80)">
-          <line x1="0" y1="7" x2="40" y2="7" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
-          <polygon points="46,7 38,3 38,11" fill="var(--diag-connector, #64748b)" />
-        </g>
-
-        <!-- Step 3: Ciphertext in Transit -->
-        <g transform="translate(405, 50)">
-          <rect x="0" y="0" width="145" height="75" rx="6" class="diag-box diag-box-amber" />
-          <text x="72" y="24" text-anchor="middle" font-size="12px" font-weight="700" fill="#b45309">Ciphertext (ข้อความเข้ารหัส)</text>
-          <rect x="12" y="36" width="121" height="26" rx="4" fill="rgba(245, 158, 11, 0.15)" />
-          <text x="72" y="53" text-anchor="middle" font-size="11px" font-family="monospace" font-weight="700" fill="#d97706">%#8@!*&amp;^$7f</text>
-        </g>
-
-        <!-- Arrow 3 -> Decrypt Engine -->
-        <g transform="translate(550, 80)">
-          <line x1="0" y1="7" x2="40" y2="7" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
-          <polygon points="46,7 38,3 38,11" fill="var(--diag-connector, #64748b)" />
-        </g>
-
-        <!-- Step 4: Decryption Engine with Same Key K -->
-        <g transform="translate(600, 45)">
-          <rect x="0" y="0" width="140" height="85" rx="6" fill="rgba(37, 99, 235, 0.12)" stroke="#2563eb" stroke-width="1.5" />
-          <text x="70" y="24" text-anchor="middle" font-size="12px" font-weight="700" fill="var(--blue, #2563eb)">DECRYPT ENGINE</text>
-          <rect x="15" y="34" width="110" height="22" rx="4" fill="#1d4ed8" />
-          <text x="70" y="49" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#ffffff">&#128273; Same Key K</text>
-          <text x="70" y="73" text-anchor="middle" font-size="10px" class="diag-text-sub">กุญแจดอกเดียวกันเป๊ะ</text>
-        </g>
-
-        <!-- Arrow 4 -> Final Plaintext -->
-        <g transform="translate(740, 80)">
-          <line x1="0" y1="7" x2="25" y2="7" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
-          <polygon points="31,7 23,3 23,11" fill="var(--diag-connector, #64748b)" />
-        </g>
-
-        <!-- Bottom Feature Bar -->
-        <g transform="translate(20, 142)">
-          <rect x="0" y="0" width="770" height="30" rx="4" fill="rgba(59, 130, 246, 0.08)" stroke="rgba(59, 130, 246, 0.3)" stroke-width="1" />
-          <text x="385" y="20" text-anchor="middle" font-size="11px" font-weight="600" class="diag-text-sub">
-            <tspan fill="#1d4ed8" font-weight="700">จุดเด่น:</tspan> ประสิทธิภาพสูงมาก เหมาะกับข้อมูลปริมาณมาก (Bulk Data) &bull; <tspan fill="#b91c1c" font-weight="700">ข้อจำกัดหลัก:</tspan> การแจกจ่ายกุญแจ (Key Distribution Problem) ต้องส่งผ่านช่องทางปลอดภัย (ใช้ n(n-1)/2 กุญแจ)
-          </text>
-        </g>
-      </g>
-
-      <!-- ========================================================
-           BAND 2: ASYMMETRIC ENCRYPTION (PUBLIC / PRIVATE PAIR)
-           ======================================================== -->
-      <g transform="translate(25, 215)">
-        <rect x="0" y="0" width="810" height="195" rx="8" class="diag-box diag-box-banner" />
-        
-        <!-- Header Pill -->
-        <rect x="15" y="12" width="460" height="24" rx="4" fill="#6d28d9" />
-        <text x="245" y="28" text-anchor="middle" font-size="11.5px" font-weight="700" fill="#ffffff">2. ASYMMETRIC ENCRYPTION · PUBLIC &amp; PRIVATE KEY PAIR (กุญแจคู่รหัส)</text>
-
-        <!-- Mode A: Confidentiality (Encryption) -->
-        <g transform="translate(20, 48)">
-          <rect x="0" y="0" width="370" height="98" rx="6" class="diag-box diag-box-blue" />
-          <rect x="10" y="8" width="220" height="20" rx="3" fill="#1d4ed8" />
-          <text x="120" y="22" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#ffffff">โหมดรักษาความลับ (CONFIDENTIALITY)</text>
-          
-          <text x="15" y="48" font-size="11px" font-weight="700" class="diag-text-title">ผู้ส่ง (Sender) เข้ารหัสด้วย:</text>
-          <rect x="175" y="34" width="180" height="22" rx="4" fill="rgba(37, 99, 235, 0.15)" stroke="#2563eb" />
-          <text x="265" y="49" text-anchor="middle" font-size="10px" font-weight="700" fill="#1d4ed8">&#128274; Public Key ของผู้รับ</text>
-          
-          <text x="15" y="78" font-size="11px" font-weight="700" class="diag-text-title">ผู้รับ (Recipient) ถอดรหัสด้วย:</text>
-          <rect x="175" y="64" width="180" height="22" rx="4" fill="rgba(220, 38, 38, 0.15)" stroke="#dc2626" />
-          <text x="265" y="79" text-anchor="middle" font-size="10px" font-weight="700" fill="#b91c1c">&#128273; Private Key ของผู้รับเอง</text>
-        </g>
-
-        <!-- Mode B: Authenticity / Digital Signature -->
-        <g transform="translate(420, 48)">
-          <rect x="0" y="0" width="370" height="98" rx="6" class="diag-box diag-box-emerald" />
-          <rect x="10" y="8" width="230" height="20" rx="3" fill="#047857" />
-          <text x="125" y="22" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#ffffff">โหมดยืนยันตัวตน (AUTHENTICITY / SIGN)</text>
-          
-          <text x="15" y="48" font-size="11px" font-weight="700" class="diag-text-title">ผู้ส่ง (Signer) ลงลายมือชื่อด้วย:</text>
-          <rect x="175" y="34" width="180" height="22" rx="4" fill="rgba(220, 38, 38, 0.15)" stroke="#dc2626" />
-          <text x="265" y="49" text-anchor="middle" font-size="10px" font-weight="700" fill="#b91c1c">&#128273; Private Key ของผู้ส่งเอง</text>
-          
-          <text x="15" y="78" font-size="11px" font-weight="700" class="diag-text-title">ทุกคนในโลก ตรวจสอบด้วย:</text>
-          <rect x="175" y="64" width="180" height="22" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#059669" />
-          <text x="265" y="79" text-anchor="middle" font-size="10px" font-weight="700" fill="#047857">&#128274; Public Key ของผู้ส่ง</text>
-        </g>
-
-        <!-- Bottom Asymmetric Summary -->
-        <g transform="translate(20, 155)">
-          <rect x="0" y="0" width="770" height="28" rx="4" fill="rgba(109, 40, 217, 0.08)" stroke="rgba(109, 40, 217, 0.3)" stroke-width="1" />
-          <text x="385" y="18" text-anchor="middle" font-size="10.5px" font-weight="600" class="diag-text-sub">
-            <tspan fill="#6d28d9" font-weight="700">กฎเหล็กจำสอบ:</tspan> สิ่งใดเข้ารหัสด้วยกุญแจดอกหนึ่ง ต้องถอดด้วยกุญแจอีกดอกในคู่นั้นเท่านั้น &bull; Private Key ห้ามเปิดเผยเด็ดขาด &bull; Public Key แจกจ่ายได้เสรี
-          </text>
-        </g>
-      </g>
-
-      <!-- ========================================================
-           BAND 3: CRYPTOGRAPHIC HASHING & AVALANCHE EFFECT
-           ======================================================== -->
-      <g transform="translate(25, 425)">
-        <rect x="0" y="0" width="810" height="185" rx="8" class="diag-box diag-box-banner" />
-        
-        <!-- Header Pill -->
-        <rect x="15" y="12" width="460" height="24" rx="4" fill="#0e7490" />
-        <text x="245" y="28" text-anchor="middle" font-size="11.5px" font-weight="700" fill="#ffffff">3. CRYPTOGRAPHIC HASHING · ONE-WAY DIGEST &amp; AVALANCHE EFFECT</text>
-
-        <!-- Avalanche Demo Box A -->
-        <g transform="translate(20, 48)">
-          <rect x="0" y="0" width="180" height="52" rx="6" class="diag-box diag-box-blue" />
-          <text x="90" y="20" text-anchor="middle" font-size="10.5px" font-weight="700" class="diag-text-title">Input A (ข้อความต้นฉบับ)</text>
-          <text x="90" y="38" text-anchor="middle" font-size="11px" font-family="monospace" font-weight="700" fill="#2563eb">"ISC2 CC 2026"</text>
-          
-          <line x1="180" y1="26" x2="225" y2="26" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
-          <polygon points="231,26 223,22 223,30" fill="var(--diag-connector, #64748b)" />
-
-          <rect x="231" y="8" width="105" height="36" rx="4" fill="#0e7490" />
-          <text x="283" y="30" text-anchor="middle" font-size="11px" font-weight="700" fill="#ffffff">SHA-256</text>
-
-          <line x1="336" y1="26" x2="375" y2="26" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
-          <polygon points="381,26 373,22 373,30" fill="var(--diag-connector, #64748b)" />
-
-          <rect x="381" y="0" width="389" height="52" rx="6" fill="rgba(14, 116, 144, 0.12)" stroke="#0e7490" />
-          <text x="575" y="20" text-anchor="middle" font-size="10px" font-weight="700" fill="#0e7490">Output Digest A (256 bits · 64 Hex Chars)</text>
-          <text x="575" y="38" text-anchor="middle" font-size="9.5px" font-family="monospace" font-weight="700" fill="var(--text)">f6b25b7af6ddbc236d5a4c79...90698cab</text>
-        </g>
-
-        <!-- Avalanche Demo Box B (Modifying ONE Dot) -->
-        <g transform="translate(20, 108)">
-          <rect x="0" y="0" width="180" height="52" rx="6" class="diag-box diag-box-amber" />
-          <text x="90" y="20" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#b45309">Input B (+ เติมจุด 1 ตัว)</text>
-          <text x="90" y="38" text-anchor="middle" font-size="11px" font-family="monospace" font-weight="700" fill="#d97706">"ISC2 CC 2026."</text>
-          
-          <line x1="180" y1="26" x2="225" y2="26" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
-          <polygon points="231,26 223,22 223,30" fill="var(--diag-connector, #64748b)" />
-
-          <rect x="231" y="8" width="105" height="36" rx="4" fill="#0e7490" />
-          <text x="283" y="30" text-anchor="middle" font-size="11px" font-weight="700" fill="#ffffff">SHA-256</text>
-
-          <line x1="336" y1="26" x2="375" y2="26" stroke="var(--diag-connector, #64748b)" stroke-width="2" />
-          <polygon points="381,26 373,22 373,30" fill="var(--diag-connector, #64748b)" />
-
-          <rect x="381" y="0" width="389" height="52" rx="6" fill="rgba(244, 63, 94, 0.12)" stroke="#e11d48" />
-          <text x="575" y="20" text-anchor="middle" font-size="10px" font-weight="700" fill="#e11d48">&#9888; Output Digest B (Avalanche: &gt;50% บิตเปลี่ยนไปสิ้นเชิง)</text>
-          <text x="575" y="38" text-anchor="middle" font-size="9.5px" font-family="monospace" font-weight="700" fill="var(--text)">ccb550aaca692c0be01b943c...50ecbb7e</text>
-        </g>
-      </g>
-
-      <!-- ========================================================
-           BAND 4: DIGITAL SIGNATURE (SIGNING & VERIFY WORKFLOW)
-           ======================================================== -->
-      <g transform="translate(25, 625)">
-        <rect x="0" y="0" width="810" height="200" rx="8" class="diag-box diag-box-banner" />
-        
-        <!-- Header Pill -->
-        <rect x="15" y="12" width="480" height="24" rx="4" fill="#047857" />
-        <text x="255" y="28" text-anchor="middle" font-size="11.5px" font-weight="700" fill="#ffffff">4. DIGITAL SIGNATURE WORKFLOW · INTEGRITY &amp; NON-REPUDIATION</text>
-
-        <!-- Left Column: Signing Workflow (Sender) -->
-        <g transform="translate(20, 48)">
-          <rect x="0" y="0" width="365" height="135" rx="6" class="diag-box diag-box-rose" />
-          <text x="182" y="20" text-anchor="middle" font-size="11px" font-weight="700" fill="#b91c1c">ขั้นตอนฝั่งผู้ส่ง (SIGNING PROCESS)</text>
-          
-          <rect x="12" y="32" width="95" height="30" rx="4" class="diag-box diag-box-banner" />
-          <text x="59" y="51" text-anchor="middle" font-size="10px" font-weight="700" class="diag-text-title">Message</text>
-
-          <line x1="107" y1="47" x2="135" y2="47" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" />
-          <polygon points="139,47 133,44 133,50" fill="var(--diag-connector, #64748b)" />
-
-          <rect x="139" y="32" width="75" height="30" rx="4" fill="#0e7490" />
-          <text x="176" y="51" text-anchor="middle" font-size="10px" font-weight="700" fill="#ffffff">Hash Func</text>
-
-          <line x1="214" y1="47" x2="242" y2="47" stroke="var(--diag-connector, #64748b)" stroke-width="1.5" />
-          <polygon points="246,47 240,44 240,50" fill="var(--diag-connector, #64748b)" />
-
-          <rect x="246" y="32" width="105" height="30" rx="4" class="diag-box diag-box-banner" />
-          <text x="298" y="51" text-anchor="middle" font-size="9.5px" font-family="monospace" font-weight="700" class="diag-text-title">Digest (D1)</text>
-
-          <!-- Sign Operation Arrow -->
-          <line x1="298" y1="62" x2="298" y2="82" stroke="var(--diag-rose-line, #ef4444)" stroke-width="2" />
-          <polygon points="298,87 294,80 302,80" fill="var(--diag-rose-line, #ef4444)" />
-
-          <rect x="195" y="88" width="156" height="36" rx="4" fill="#b91c1c" />
-          <text x="273" y="104" text-anchor="middle" font-size="9.5px" font-weight="700" fill="#ffffff">&#128273; Encrypt Digest with</text>
-          <text x="273" y="118" text-anchor="middle" font-size="10px" font-weight="700" fill="#fecdd3">Sender's PRIVATE Key</text>
-
-          <text x="100" y="110" font-size="10px" font-weight="700" fill="#047857">&#10140; Digital Signature</text>
-        </g>
-
-        <!-- Right Column: Verification Workflow (Receiver) -->
-        <g transform="translate(425, 48)">
-          <rect x="0" y="0" width="365" height="135" rx="6" class="diag-box diag-box-emerald" />
-          <text x="182" y="20" text-anchor="middle" font-size="11px" font-weight="700" fill="#047857">ขั้นตอนฝั่งผู้รับ (VERIFICATION PROCESS)</text>
-          
-          <rect x="12" y="32" width="165" height="42" rx="4" class="diag-box diag-box-banner" />
-          <text x="94" y="48" text-anchor="middle" font-size="9.5px" class="diag-text-title">Hash received message</text>
-          <text x="94" y="64" text-anchor="middle" font-size="10px" font-family="monospace" font-weight="700" fill="#0e7490">&#10140; Computed Digest (D_A)</text>
-
-          <rect x="188" y="32" width="165" height="42" rx="4" class="diag-box diag-box-banner" />
-          <text x="270" y="48" text-anchor="middle" font-size="9.5px" class="diag-text-title">Decrypt Signature with</text>
-          <text x="270" y="64" text-anchor="middle" font-size="10px" font-weight="700" fill="#047857">&#128274; Sender's PUBLIC Key (D_B)</text>
-
-          <!-- Compare Box -->
-          <rect x="12" y="86" width="341" height="38" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#059669" stroke-width="1.5" />
-          <text x="182" y="103" text-anchor="middle" font-size="10.5px" font-weight="700" fill="#047857">เปรียบเทียบ: D_A == D_B ? &bull; หากตรงกัน = สำเร็จ 100%</text>
-          <text x="182" y="117" text-anchor="middle" font-size="9px" class="diag-text-sub">ยืนยัน Integrity (ไม่ถูกดัดแปลง) &amp; Authenticity / Non-Repudiation (ผู้ส่งปฏิเสธไม่ได้)</text>
-        </g>
-      </g>
-    </svg>
-  </div>
-  <div class="reading-diag-mobile reading-mobile-stack" aria-label="Cryptography Pipelines Mobile Stack">
-    <div class="reading-mob-stack-list">
-      <div class="reading-mob-tier-card reading-tier-kpi">
-        <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">01</span>
-          <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">1. SYMMETRIC ENCRYPTION (กุญแจสมมาตร)</h5>
-            <span class="reading-mob-tier-action">Fast · Bulk Data · Shared Secret Key</span>
-          </div>
-        </div>
-        <p class="reading-mob-tier-desc"><strong>การทำงาน:</strong> ใช้กุญแจลับดอกเดียวกัน (Shared Secret Key K) ทั้งเข้ารหัส (Encrypt) และถอดรหัส (Decrypt)<br><strong>ข้อดี:</strong> ทำงานเร็วมาก กินพลังงานน้อย เหมาะกับการเข้ารหัสไฟล์ขนาดใหญ่ (AES-256, ChaCha20)<br><strong>ปัญหาข้อจำกัด (Key Distribution):</strong> ผู้ส่งและผู้รับต้องแลกเปลี่ยนกุญแจลับอย่างปลอดภัยก่อน หากมีผู้ใช้ N คน ต้องบริหารจัดการกุญแจถึง <code>n(n-1)/2</code> คู่</p>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-scorecard">
-        <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">02</span>
-          <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">2. ASYMMETRIC ENCRYPTION (กุญแจอสมมาตร)</h5>
-            <span class="reading-mob-tier-action">Key Pair · Public Key + Private Key</span>
-          </div>
-        </div>
-        <p class="reading-mob-tier-desc"><strong>กุญแจคู่รหัส:</strong> ประกอบด้วย Public Key (แจกจ่ายได้เสรี) และ Private Key (เก็บรักษาเป็นความลับสูงสุด ห้ามเปิดเผย)<br><strong>โหมด 1 รักษาความลับ (Confidentiality):</strong> ผู้ส่งเข้ารหัสด้วย <em>Public Key ของผู้รับ</em> &rarr; มีเพียงผู้รับที่ถือ <em>Private Key ของตนเอง</em> เท่านั้นที่ถอดรหัสได้<br><strong>โหมด 2 ยืนยันตัวตน (Authenticity / Signature):</strong> ผู้ส่งลงลายมือชื่อด้วย <em>Private Key ของผู้ส่ง</em> &rarr; ทุกคนสามารถตรวจสอบได้ด้วย <em>Public Key ของผู้ส่ง</em></p>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-audit">
-        <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">03</span>
-          <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">3. CRYPTOGRAPHIC HASHING (ฟังก์ชันแฮชทางคณิตศาสตร์)</h5>
-            <span class="reading-mob-tier-action">One-Way · Deterministic · Fixed-Length Digest</span>
-          </div>
-        </div>
-        <p class="reading-mob-tier-desc"><strong>คุณสมบัติหลัก:</strong> แปลงข้อมูลขนาดใดก็ได้ให้กลายเป็นค่าสรุปย่อความยาวคงที่ (Digest) เช่น SHA-256 จะได้ 256 บิต (64 ตัวอักษรฐานสิบหก) เสมอ เป็นฟังก์ชันทางเดียว (One-Way) ไม่สามารถแปลงย้อนกลับได้<br><strong>Avalanche Effect:</strong> หากเปลี่ยนแปลงข้อมูลตั้งต้นเพียงบิตเดียวหรือตัวอักษรเดียว ค่า Hash Digest ที่ได้จะเปลี่ยนแปลงไปมากกว่า 50% อย่างสิ้นเชิง ทำให้ตรวจจับการดัดแปลงข้อมูลได้ทันที</p>
-      </div>
-
-      <div class="reading-mob-tier-card reading-tier-kpi">
-        <div class="reading-mob-tier-head">
-          <span class="reading-mob-tier-num">04</span>
-          <div class="reading-mob-tier-info">
-            <h5 class="reading-mob-tier-name">4. DIGITAL SIGNATURES (ลายมือชื่อดิจิทัล)</h5>
-            <span class="reading-mob-tier-action">Integrity · Authenticity · Non-Repudiation</span>
-          </div>
-        </div>
-        <p class="reading-mob-tier-desc"><strong>ขั้นตอนการสร้าง:</strong> ผู้ส่งนำข้อความไปแฮชเป็น Digest จากนั้น <strong>เข้ารหัสเฉพาะค่า Digest ด้วย Private Key ของผู้ส่ง</strong> แล้วแนบไปกับข้อความเดิม<br><strong>ขั้นตอนการตรวจ:</strong> ผู้รับนำข้อความที่ได้ไปแฮชใหม่ (D1) และนำลายมือชื่อไปถอดรหัสด้วย Public Key ของผู้ส่ง (D2) หาก <code>D1 == D2</code> ถือว่าเอกสารไม่ถูกแก้ไขและส่งมาจากเจ้าของตัวจริง<br><strong>ข้อควรระวังสำหรับสอบ:</strong> ลายมือชื่อดิจิทัล <em>ไม่ได้เข้ารหัสเนื้อหาข้อความ</em> จึงไม่ได้รับประกันการรักษาความลับ (Confidentiality) แต่รับประกัน Integrity, Authenticity และการปฏิเสธความรับผิดไม่ได้ (Non-Repudiation)</p>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="reading-diagram-card" data-diagram="cryptographyPipelines" role="region" aria-label="Four cryptographic purposes: inputs operations and outputs"><div class="reading-diagram-header"><span class="reading-diagram-tag">Purpose comparison</span><h4 class="reading-diagram-title">Encryption, hashing and signing — different inputs and results</h4></div><div class="reading-diag-desktop reading-diagram-svg-wrap"><svg viewBox="0 0 840 590" class="reading-diagram-svg" role="img" aria-label="Four independent examples, not four sequential stages"><g><rect x="15" y="15" width="810" height="128" rx="8" class="diag-box diag-box-banner"/><text x="32" y="42" class="diag-text-title">Symmetric encryption</text><rect x="32" y="62" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="42" y="91" class="diag-text-sub">Plaintext + shared K</text><rect x="317" y="62" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="327" y="91" class="diag-text-sub">Encrypt with K</text><rect x="602" y="62" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="612" y="91" class="diag-text-sub">Ciphertext</text><path d="M258 86 h45" stroke="var(--diag-connector)" stroke-width="2"/><path d="M297 81 l6 5 -6 5" fill="none" stroke="var(--diag-connector)" stroke-width="2"/><path d="M543 86 h45" stroke="var(--diag-connector)" stroke-width="2"/><path d="M582 81 l6 5 -6 5" fill="none" stroke="var(--diag-connector)" stroke-width="2"/><text x="32" y="131" class="diag-text-sub">Same K decrypts ciphertext; shared-key confidentiality.</text></g><g><rect x="15" y="157" width="810" height="128" rx="8" class="diag-box diag-box-banner"/><text x="32" y="184" class="diag-text-title">Public-key encryption</text><rect x="32" y="204" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="42" y="233" class="diag-text-sub">Plaintext + recipient public key</text><rect x="317" y="204" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="327" y="233" class="diag-text-sub">Encrypt (selected scheme)</text><rect x="602" y="204" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="612" y="233" class="diag-text-sub">Ciphertext</text><path d="M258 228 h45" stroke="var(--diag-connector)" stroke-width="2"/><path d="M297 223 l6 5 -6 5" fill="none" stroke="var(--diag-connector)" stroke-width="2"/><path d="M543 228 h45" stroke="var(--diag-connector)" stroke-width="2"/><path d="M582 223 l6 5 -6 5" fill="none" stroke="var(--diag-connector)" stroke-width="2"/><text x="32" y="273" class="diag-text-sub">Corresponding recipient private key decrypts ciphertext.</text></g><g><rect x="15" y="299" width="810" height="128" rx="8" class="diag-box diag-box-banner"/><text x="32" y="326" class="diag-text-title">Cryptographic hashing</text><rect x="32" y="346" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="42" y="375" class="diag-text-sub">ISC2 CC 2026 / plus a dot</text><rect x="317" y="346" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="327" y="375" class="diag-text-sub">SHA-256</text><rect x="602" y="346" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="612" y="375" class="diag-text-sub">Two 256-bit digests</text><path d="M258 370 h45" stroke="var(--diag-connector)" stroke-width="2"/><path d="M297 365 l6 5 -6 5" fill="none" stroke="var(--diag-connector)" stroke-width="2"/><path d="M543 370 h45" stroke="var(--diag-connector)" stroke-width="2"/><path d="M582 365 l6 5 -6 5" fill="none" stroke="var(--diag-connector)" stroke-width="2"/><text x="32" y="415" class="diag-text-sub">Digest comparison checks data, not sender identity.</text></g><g><rect x="15" y="441" width="810" height="128" rx="8" class="diag-box diag-box-banner"/><text x="32" y="468" class="diag-text-title">Digital signature</text><rect x="32" y="488" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="42" y="517" class="diag-text-sub">Document + signing private key</text><rect x="317" y="488" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="327" y="517" class="diag-text-sub">Sign (scheme-defined hashing)</text><rect x="602" y="488" width="218" height="48" rx="5" class="diag-box diag-box-blue"/><text x="612" y="517" class="diag-text-sub">Signature</text><path d="M258 512 h45" stroke="var(--diag-connector)" stroke-width="2"/><path d="M297 507 l6 5 -6 5" fill="none" stroke="var(--diag-connector)" stroke-width="2"/><path d="M543 512 h45" stroke="var(--diag-connector)" stroke-width="2"/><path d="M582 507 l6 5 -6 5" fill="none" stroke="var(--diag-connector)" stroke-width="2"/><text x="32" y="557" class="diag-text-sub">Verify with document, signature and trusted public key.</text></g></svg></div><div class="reading-diag-mobile reading-mobile-stack"><div class="reading-mob-tier-card"><h5>Symmetric encryption</h5><p>Plaintext + shared K → Encrypt with K → Ciphertext</p><p>ใช้กุญแจลับร่วมกันในการเข้ารหัสและถอดรหัส ต้องปกป้องและแจกจ่ายกุญแจอย่างเหมาะสม / Decrypt with the same K to recover plaintext; distribute and protect the shared key.</p></div><div class="reading-mob-tier-card"><h5>Public-key encryption</h5><p>Plaintext + recipient public key → Encrypt (selected scheme) → Ciphertext</p><p>ตัวอย่างรักษาความลับ: ผู้รับถอดรหัสด้วย Private Key คู่กัน ต้องเชื่อถือความสัมพันธ์ระหว่างกุญแจกับผู้รับ / Recipient decrypts with the corresponding private key. Trust the recipient/key association.</p></div><div class="reading-mob-tier-card"><h5>Cryptographic hashing</h5><p>ISC2 CC 2026 / plus a dot → SHA-256 → Two 256-bit digests</p><p>แฮชตรวจเทียบข้อมูล ไม่ยืนยันตัวผู้ส่งโดยลำพัง การเติมจุดเปลี่ยนหลายบิตของอินพุต / A small input change produces different digests; a bare hash does not authenticate its sender.</p></div><div class="reading-mob-tier-card"><h5>Digital signature</h5><p>Document + signing private key → Sign (scheme-defined hashing) → Signature</p><p>Sign สร้างลายมือชื่อด้วย Private Key; Verify ตรวจเอกสาร ลายมือชื่อ และ Public Key ที่เชื่อถือได้ / Verify(document, signature, trusted public key) → valid / invalid. Not digest decryption as a universal rule.</p></div></div><p class="reading-semantic-note">Signing does not hide content; valid verification supports integrity and origin under trusted-key/evidence assumptions, not proof of human intent or harmless software. / การลงนามไม่ซ่อนข้อมูล ผลตรวจที่ผ่านเป็นหลักฐานตามเงื่อนไขกุญแจและหลักฐานประกอบ</p><p class="reading-semantic-note">SHA-256("ISC2 CC 2026"): <code>f6b25b7af6ddbc236d5a4c79a19b6054753d522ea1d42b728c7c717190698cab</code><br>SHA-256("ISC2 CC 2026."): <code>ccb550aaca692c0be01b943cee4f4bb8a4179052a70af421364d96f650ecbb7e</code><br>This pair differs in 123/256 output bits; about half is an average expectation, not a per-pair guarantee. / ตัวอย่างคู่นี้ต่าง 123 บิต ไม่ใช่กฎว่าทุกคู่ต้องต่างเกินครึ่ง</p><p class="reading-semantic-note">The n(n−1)/2 key-count example assumes one distinct symmetric key per pair of n participants, not every deployed key-management design. / จำนวนกุญแจแบบจับคู่เป็นสมมติฐานหนึ่ง ไม่ใช่ข้อกำหนดทุกระบบ</p></div>
 `,
 
   // 5.2.2 SIEM Multi-Source Telemetry Pipeline
@@ -4500,7 +3974,7 @@ export const diagrams = {
 
         <g transform="translate(12, 50)">
           <rect x="0" y="0" width="146" height="64" rx="4" class="diag-box diag-box-banner" />
-          <text x="73" y="22" text-anchor="middle" font-size="10px" font-weight="700" fill="#ef4444">High-Severity Alert</text>
+          <text x="73" y="22" text-anchor="middle" font-size="10px" font-weight="700" fill="#ef4444">Candidate Alert</text>
           <text x="73" y="38" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">แจ้งเตือนบนหน้าจอ SOC</text>
           <text x="73" y="52" text-anchor="middle" font-size="8.5px" fill="var(--text-secondary)">จัดลำดับความเร่งด่วน</text>
 
@@ -4518,7 +3992,7 @@ export const diagrams = {
       <!-- Bottom Benchmark Banner -->
       <g transform="translate(25, 315)">
         <rect x="0" y="0" width="810" height="26" rx="4" class="diag-box diag-box-banner" />
-        <text x="405" y="17" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">EXAM TAKEAWAY: Logging is Passive Recording &bull; SIEM is Active Correlation across Disparate Sources &bull; NTP is Essential</text>
+        <text x="405" y="17" text-anchor="middle" font-size="11px" font-weight="600" fill="var(--text-secondary)">PROCESS CONTEXT: Logging records relevant events &bull; SIEM is Active Correlation across Disparate Sources &bull; Reliable timestamps support linkage</text>
       </g>
     </svg>
   </div>
@@ -4543,7 +4017,7 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Normalization &bull; UTC Clock Synchronization</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">แปลงข้อมูล Log หลากหลายรูปแบบให้อยู่ในมาตรฐานเดียวกัน (CEF) และต้องมี <strong>NTP (Network Time Protocol)</strong> ซิงค์เวลาของทุกระบบให้ตรงกันในมาตรฐาน UTC เพื่อให้สามารถเรียงลำดับไทม์ไลน์การโจมตีได้อย่างถูกต้อง</p>
+        <p class="reading-mob-tier-desc">แปลงฟิลด์ Log ให้เทียบกันได้ตาม Schema ที่เลือก เช่น CEF และใช้การเทียบเวลาที่เชื่อถือได้ เช่น NTP พร้อมเขตเวลา/Offset ที่ชัดเจน เพื่อให้สามารถเรียงลำดับไทม์ไลน์การโจมตีได้อย่างถูกต้อง</p>
       </div>
 
       <div class="reading-mob-tier-card reading-tier-kri">
@@ -4565,10 +4039,11 @@ export const diagrams = {
             <span class="reading-mob-tier-action">Alert Dashboard &bull; Ticket &bull; SOAR Playbook</span>
           </div>
         </div>
-        <p class="reading-mob-tier-desc">สร้างการแจ้งเตือนระดับสูงบน Dashboard ของทีม SOC เปิด Incident Ticket ให้เจ้าหน้าที่สอบสวน และสามารถสั่งการอัตโนมัติผ่าน SOAR เพื่อกักกันเครื่องที่ติดมัลแวร์ได้ทันที</p>
+        <p class="reading-mob-tier-desc">สร้างสัญญาณเพื่อให้ทีม SOC ตรวจสอบหลักฐานและจัดลำดับความเร่งด่วน เปิด Incident Ticket ให้เจ้าหน้าที่สอบสวน และสามารถสั่งการอัตโนมัติผ่าน SOAR เพื่อกักกันเครื่องได้ตามกฎและอำนาจอนุมัติ โดยต้องพิจารณาผลกระทบ</p>
       </div>
     </div>
   </div>
+<p class="reading-semantic-note">Illustrative collection → normalization → correlation → validation/response pipeline. Correlation creates hypotheses for triage, not automatic proof of compromise. / ลำดับนี้เป็นภาพตัวอย่างของการประมวลผล ต้องตรวจยืนยันเหตุและผลกระทบก่อนสรุป</p>
 </div>
 `,
 

@@ -4885,3 +4885,42 @@ html[data-theme="light"] .reading-scroll-nav {
   border-radius: 4px;
   background: rgba(37, 99, 235, 0.08);
 }
+
+/* Semantic remediation: preserve each diagram's native reading size. */
+@container reading-diagram (min-width: 880px) and (max-width: 1050px) {
+  .reading-body [data-diagram="backupRestoreChains"] .reading-diag-desktop,
+  .reading-body [data-diagram="drSiteTiers"] .reading-diag-desktop,
+  .reading-body [data-diagram="idsVsIpsInspectionFlow"] .reading-diag-desktop { display: none !important; }
+  .reading-body [data-diagram="backupRestoreChains"] .reading-diag-mobile,
+  .reading-body [data-diagram="drSiteTiers"] .reading-diag-mobile,
+  .reading-body [data-diagram="idsVsIpsInspectionFlow"] .reading-diag-mobile { display: block !important; }
+}
+.reading-body .reading-diagram-card code { white-space: normal; overflow-wrap: anywhere; }
+.reading-body .reading-diagram-card .reading-mob-tier-card > h5 { margin: 0 0 .6rem; }
+.reading-body .reading-example-box {
+  box-shadow: none;
+  border-radius: 0;
+  border: 0;
+  border-left: 2px solid var(--line);
+  background: transparent;
+  padding: 12px 18px;
+}
+/* End semantic remediation. */
+
+/* Direct definitions now use their actual semantic level. */
+.reading-body .reading-structure-pilot .reading-definition-unit > h4 { margin: 0 0 8px; font-size: 16px; line-height: 1.55; font-weight: 700; color: var(--text); }
+
+/* Diagram panels follow theme surfaces; white-on-colour badges need dark fills. */
+.reading-body .reading-diagram-card svg .diag-box:not([class*="diag-box-"]) { fill: var(--panel-2); }
+.reading-body .reading-diagram-card svg rect[fill="#1e293b"],
+.reading-body .reading-diagram-card svg rect[fill="#334155"] { fill: var(--panel-2); }
+.reading-body .reading-diagram-card svg rect[fill="#6366f1"] { fill: #4338ca; }
+.reading-body .reading-diagram-card svg rect[fill="#0ea5e9"] { fill: #0369a1; }
+.reading-body :is([data-diagram="irpLifecycle"], [data-diagram="backupRestoreChains"]) svg rect[fill="#f59e0b"] { fill: #92400e; }
+@container reading-diagram (min-width: 880px) and (max-width: 1050px) {
+  .reading-body :is([data-diagram="dmzFirewallArchitecture"], [data-diagram="siemTelemetryPipeline"], [data-diagram="mitreAttackTacticTechnique"], [data-diagram="irpLifecycle"], [data-diagram="assetLifecycleAndEol"], [data-diagram="purpleTeamLoop"]) .reading-diag-desktop { display: none !important; }
+  .reading-body :is([data-diagram="dmzFirewallArchitecture"], [data-diagram="siemTelemetryPipeline"], [data-diagram="mitreAttackTacticTechnique"], [data-diagram="irpLifecycle"], [data-diagram="assetLifecycleAndEol"], [data-diagram="purpleTeamLoop"]) .reading-diag-mobile { display: block !important; }
+}
+
+/* Alias older diagram-local surface names within the reader only. */
+.reading-screen { --bg-subtle: var(--panel-2); --text-secondary: var(--text-muted); }

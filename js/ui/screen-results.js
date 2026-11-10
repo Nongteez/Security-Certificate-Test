@@ -285,6 +285,10 @@ export function renderResultsScreen(container, onRerender) {
  */
 export function renderReviewWrongScreen(container, onRerender) {
   const lang = state.setup.language || 'en';
+  const quiz = state.quiz || {};
+  const separateExplanation = (quiz.certification || state.selectedCertification)?.id === 'isc2-cc' &&
+    (quiz.versionId || state.selectedExamVersion) === 'next-bank' && quiz.finished === true &&
+    ['practice', 'exam'].includes(quiz.mode);
   const wrongItems = getWrongQuestions();
 
   // Safety fallback if no wrong answers
@@ -316,8 +320,8 @@ export function renderReviewWrongScreen(container, onRerender) {
   } else {
     // Both
     questionHtml = `
-      <div class="question-en"><span class="lang-badge">EN</span>${escapeHtml(currentQ.question)}</div>
-      <div class="question-th"><span class="lang-badge">TH</span>${escapeHtml(currentQ.question_th || currentQ.question)}</div>
+      <div class="question-en">${separateExplanation ? '' : '<span class="lang-badge">EN</span>'}${escapeHtml(currentQ.question)}</div>
+      <div class="question-th">${separateExplanation ? '' : '<span class="lang-badge">TH</span>'}${escapeHtml(currentQ.question_th || currentQ.question)}</div>
     `;
   }
 
@@ -385,9 +389,18 @@ export function renderReviewWrongScreen(container, onRerender) {
   }
 
   const isLastItem = activeReviewIndex === totalWrong - 1;
+  const explanationTag = separateExplanation ? 'section' : 'div';
+  const explanationHtml = `
+        <${explanationTag} class="explanation-box"${separateExplanation ? ' aria-labelledby="review-explanation-title"' : ' style="margin-top: 20px;"'}>
+          <div class="explanation-header"${separateExplanation ? ' id="review-explanation-title"' : ''}>
+            <span>💡 ${t('explanation', lang)}</span>
+          </div>
+          ${expContentHtml}
+        </${explanationTag}>
+  `;
 
   container.innerHTML = `
-    <div class="quiz-container review-screen-container">
+    <div class="quiz-container review-screen-container${separateExplanation ? ' quiz-explanation-separated' : ''}">
       <!-- Top Navigation & Controls Header -->
       <div class="quiz-header">
         <div class="quiz-header-left">
@@ -445,13 +458,10 @@ export function renderReviewWrongScreen(container, onRerender) {
         </div>
 
         <!-- Explanation Box -->
-        <div class="explanation-box" style="margin-top: 20px;">
-          <div class="explanation-header">
-            <span>💡 ${t('explanation', lang)}</span>
-          </div>
-          ${expContentHtml}
-        </div>
+        ${!separateExplanation ? explanationHtml : ''}
       </div>
+
+      ${separateExplanation ? explanationHtml : ''}
 
       <!-- Bottom Action Bar -->
       <div class="quiz-actions-bar">

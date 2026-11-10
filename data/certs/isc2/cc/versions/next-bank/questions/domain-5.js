@@ -733,7 +733,7 @@ const questions = [
     "correct_idx": 1,
     "explanation": "Option B is correct. The indicator and time context support a focused retrospective search; matching evidence can then be investigated. Option A is incorrect: Record coverage and retention may be incomplete; absence of a match is not complete proof of absence. Option C is incorrect: That search does not directly answer whether endpoints encountered the specified file. Option D is incorrect: A report about a campaign does not establish that every endpoint encountered the file.",
     "short_explanation_en": "The indicator and time context support a focused retrospective search; matching evidence can then be investigated.",
-    "question_th": "รายงานภัยคุกคามที่เชื่อถือได้ระบุ Hash ไฟล์อันตรายและช่วงที่ Campaign ทำงาน นักวิเคราะห์ต้องการทราบว่า Endpoint ที่เกี่ยวข้องเคยพบไฟล์นั้นหรือไม่ ควรใช้รายงานอย่างไร?",
+    "question_th": "รายงานภัยคุกคามที่เชื่อถือได้ระบุ Hash ไฟล์อันตรายและช่วงที่ Campaign ทำงาน นักวิเคราะห์ต้องการทราบว่า Endpoint ที่เกี่ยวข้องเคยพบไฟล์นั้นหรือไม่ การใช้รายงานในข้อใดเหมาะสมที่สุด?",
     "options_th": [
       "ถือว่าการไม่พบ Hash พิสูจน์ว่าไม่มีกิจกรรมที่เกี่ยวข้อง",
       "ค้นบันทึก Endpoint ที่เกี่ยวข้องตาม Hash ในช่วงเวลาที่ระบุ",
@@ -1706,6 +1706,96 @@ const questions = [
           "letter": "C",
           "text_en": "A visitor-supplied contact does not meet the established service-desk verification route.",
           "text_th": "ผู้ติดต่อที่ผู้มาเยือนให้เองไม่ตรงช่องทาง Service desk ที่กำหนดไว้"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1082,
+    "dom": 5,
+    "question": "Two endpoints have already established and protected a shared session key. They now need to encrypt a large stream for confidentiality. Key establishment and signing are outside this decision. Which mechanism best fits the bulk-protection role?",
+    "options": [
+      "Symmetric encryption using the established session key",
+      "A hash of each block without encrypting its contents",
+      "A digital signature on each unencrypted block",
+      "Public-key encryption of a newly generated session key"
+    ],
+    "correct_idx": 0,
+    "explanation": "Symmetric encryption is suited to bulk confidentiality using the shared key. This choice does not replace key protection or any separately needed integrity mechanism.\n\nB: Hashing can support content comparison but does not conceal the plaintext stream.\nC: Signatures support origin/integrity evidence, not confidentiality of exposed block contents.\nD: That addresses key establishment, which is already completed and outside the requested bulk-protection role.",
+    "short_explanation_en": "Symmetric encryption is suited to bulk confidentiality using the shared key. This choice does not replace key protection or any separately needed integrity mechanism.",
+    "question_th": "เครื่องปลายทางสองฝั่งสร้างและปกป้องกุญแจเซสชันร่วมกันแล้ว จากนี้ต้องเข้ารหัสสตรีมข้อมูลขนาดใหญ่เพื่อรักษาความลับ การสร้างกุญแจและการลงนามอยู่นอกการตัดสินใจนี้ กลไกใดตรงหน้าที่ปกป้องข้อมูลปริมาณมากที่สุด?",
+    "options_th": [
+      "การเข้ารหัสแบบสมมาตรด้วยกุญแจเซสชันที่สร้างไว้",
+      "แฮชแต่ละบล็อกโดยไม่เข้ารหัสเนื้อหา",
+      "ลงลายมือชื่อดิจิทัลแต่ละบล็อกที่ไม่เข้ารหัส",
+      "เข้ารหัสกุญแจเซสชันที่สร้างใหม่ด้วยกุญแจสาธารณะ"
+    ],
+    "explanation_th": "การเข้ารหัสสมมาตรเหมาะกับการรักษาความลับของข้อมูลปริมาณมากด้วยกุญแจร่วม ทางเลือกนี้ไม่ได้แทนการปกป้องกุญแจหรือกลไกตรวจความถูกต้องครบถ้วนที่อาจต้องมีแยก\n\nB: แฮชช่วยเปรียบเทียบเนื้อหาได้ แต่ไม่ได้ซ่อนสตรีมข้อความต้นฉบับ\nC: ลายมือชื่อช่วยเป็นหลักฐานแหล่งที่มาและความถูกต้องครบถ้วน ไม่ได้รักษาความลับของเนื้อหาที่เปิดอยู่\nD: เป็นการสร้างกุญแจซึ่งทำเสร็จแล้วและอยู่นอกหน้าที่ปกป้องข้อมูลปริมาณมากที่ถาม",
+    "explanation_detail": {
+      "correct": {
+        "en": "Symmetric encryption is suited to bulk confidentiality using the shared key. This choice does not replace key protection or any separately needed integrity mechanism.",
+        "th": "การเข้ารหัสสมมาตรเหมาะกับการรักษาความลับของข้อมูลปริมาณมากด้วยกุญแจร่วม ทางเลือกนี้ไม่ได้แทนการปกป้องกุญแจหรือกลไกตรวจความถูกต้องครบถ้วนที่อาจต้องมีแยก"
+      },
+      "incorrect": [
+        {
+          "letter": "B",
+          "text_en": "Hashing can support content comparison but does not conceal the plaintext stream.",
+          "text_th": "แฮชช่วยเปรียบเทียบเนื้อหาได้ แต่ไม่ได้ซ่อนสตรีมข้อความต้นฉบับ"
+        },
+        {
+          "letter": "C",
+          "text_en": "Signatures support origin/integrity evidence, not confidentiality of exposed block contents.",
+          "text_th": "ลายมือชื่อช่วยเป็นหลักฐานแหล่งที่มาและความถูกต้องครบถ้วน ไม่ได้รักษาความลับของเนื้อหาที่เปิดอยู่"
+        },
+        {
+          "letter": "D",
+          "text_en": "That addresses key establishment, which is already completed and outside the requested bulk-protection role.",
+          "text_th": "เป็นการสร้างกุญแจซึ่งทำเสร็จแล้วและอยู่นอกหน้าที่ปกป้องข้อมูลปริมาณมากที่ถาม"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1083,
+    "dom": 5,
+    "question": "A release team distributes a software package with a digital signature. The publisher keeps its signing private key secret, and recipients obtain an authenticated copy of the publisher's public key. Which key use allows recipients to check the signature?",
+    "options": [
+      "Verify with each recipient's private key",
+      "Obtain and use the publisher's private key",
+      "Verify with a shared encryption key selected by the recipient",
+      "Verify with the publisher's public key"
+    ],
+    "correct_idx": 3,
+    "explanation": "The corresponding authenticated public key verifies a signature made with the publisher's private signing key. Verification is not decryption of confidential package content.\n\nA: A recipient's private key is not the public verification key corresponding to the publisher's signature.\nB: Recipients do not need the secret signing key; distributing it would compromise signing control.\nC: An unrelated symmetric key does not verify the publisher's public-key signature.",
+    "short_explanation_en": "The corresponding authenticated public key verifies a signature made with the publisher's private signing key. Verification is not decryption of confidential package content.",
+    "question_th": "ทีมเผยแพร่แจกจ่ายชุดซอฟต์แวร์พร้อมลายมือชื่อดิจิทัล ผู้เผยแพร่เก็บกุญแจส่วนตัวสำหรับลงนามเป็นความลับ และผู้รับได้สำเนากุญแจสาธารณะของผู้เผยแพร่ที่ตรวจสอบความแท้จริงแล้ว การใช้กุญแจแบบใดให้ผู้รับตรวจสอบลายมือชื่อได้?",
+    "options_th": [
+      "ตรวจสอบด้วยกุญแจส่วนตัวของผู้รับแต่ละคน",
+      "ขอและใช้กุญแจส่วนตัวของผู้เผยแพร่",
+      "ตรวจสอบด้วยกุญแจเข้ารหัสร่วมที่ผู้รับเลือก",
+      "ตรวจสอบด้วยกุญแจสาธารณะของผู้เผยแพร่"
+    ],
+    "explanation_th": "กุญแจสาธารณะที่สัมพันธ์กันและตรวจสอบความแท้จริงแล้วใช้ตรวจลายมือชื่อที่สร้างด้วยกุญแจส่วนตัวของผู้เผยแพร่ การตรวจไม่ใช่การถอดเนื้อหาชุดซอฟต์แวร์ที่เป็นความลับ\n\nA: กุญแจส่วนตัวของผู้รับไม่ใช่กุญแจตรวจสอบสาธารณะที่สัมพันธ์กับลายมือชื่อของผู้เผยแพร่\nB: ผู้รับไม่ต้องใช้กุญแจลงนามลับ การแจกกุญแจนั้นจะทำให้การควบคุมการลงนามเสียหาย\nC: กุญแจสมมาตรที่ไม่เกี่ยวข้องตรวจลายมือชื่อแบบกุญแจสาธารณะของผู้เผยแพร่ไม่ได้",
+    "explanation_detail": {
+      "correct": {
+        "en": "The corresponding authenticated public key verifies a signature made with the publisher's private signing key. Verification is not decryption of confidential package content.",
+        "th": "กุญแจสาธารณะที่สัมพันธ์กันและตรวจสอบความแท้จริงแล้วใช้ตรวจลายมือชื่อที่สร้างด้วยกุญแจส่วนตัวของผู้เผยแพร่ การตรวจไม่ใช่การถอดเนื้อหาชุดซอฟต์แวร์ที่เป็นความลับ"
+      },
+      "incorrect": [
+        {
+          "letter": "A",
+          "text_en": "A recipient's private key is not the public verification key corresponding to the publisher's signature.",
+          "text_th": "กุญแจส่วนตัวของผู้รับไม่ใช่กุญแจตรวจสอบสาธารณะที่สัมพันธ์กับลายมือชื่อของผู้เผยแพร่"
+        },
+        {
+          "letter": "B",
+          "text_en": "Recipients do not need the secret signing key; distributing it would compromise signing control.",
+          "text_th": "ผู้รับไม่ต้องใช้กุญแจลงนามลับ การแจกกุญแจนั้นจะทำให้การควบคุมการลงนามเสียหาย"
+        },
+        {
+          "letter": "C",
+          "text_en": "An unrelated symmetric key does not verify the publisher's public-key signature.",
+          "text_th": "กุญแจสมมาตรที่ไม่เกี่ยวข้องตรวจลายมือชื่อแบบกุญแจสาธารณะของผู้เผยแพร่ไม่ได้"
         }
       ]
     }

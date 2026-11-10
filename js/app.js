@@ -8,6 +8,7 @@ import { renderApp } from './ui/renderer.js';
 import { state } from './core/state.js';
 import certifications from '../data/certifications.js';
 import { parseReadingDeepLink, loadReadingProgress } from './core/reading-progress.js';
+import { setupStudyHistory } from './core/study-answers.js';
 
 // Apply saved or default theme
 initTheme();
@@ -85,6 +86,7 @@ function setupHashRouting() {
 
 // Bootstrap router before rendering
 handleInitialRoute();
+setupStudyHistory(state, certifications.find(c => c.id === 'isc2-cc'), renderApp);
 setupHashRouting();
 
 // Initialize application on DOM content loaded or immediately if already parsed

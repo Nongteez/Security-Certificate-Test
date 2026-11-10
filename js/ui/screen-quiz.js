@@ -21,6 +21,7 @@ import {
 import { t } from '../core/i18n.js';
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
 import { renderExplanation2026Content } from './components/explanation-2026.js';
+import updatedExamConfig from '../../data/certs/isc2/cc/versions/next-bank/exam.config.js';
 
 const DOMAIN_MAP = {
   1: { en: "Security Principles", th: "หลักการความปลอดภัย" },
@@ -48,6 +49,8 @@ export function renderQuizScreen(container, onRerender) {
 
   const lang = state.setup.language || 'en';
   const isExam = quiz.mode === 'exam';
+  const isUpdatedCC = (quiz.certification || state.selectedCertification)?.id === 'isc2-cc' &&
+    (quiz.versionId || state.selectedExamVersion) === 'next-bank';
 
   const currentIndex = quiz.currentIndex;
   const totalQuestions = quiz.questions.length;
@@ -55,7 +58,7 @@ export function renderQuizScreen(container, onRerender) {
   const currentAnswer = quiz.answers[currentIndex];
   const isAnswered = currentAnswer !== null;
 
-  const domainInfo = DOMAIN_MAP[currentQ.dom] || { en: `Domain ${currentQ.dom}` };
+  const domainInfo = (isUpdatedCC ? updatedExamConfig.domains.find(d => d.id === currentQ.dom)?.name : DOMAIN_MAP[currentQ.dom]) || { en: `Domain ${currentQ.dom}` };
   const domainLabel = domainInfo.en;
 
   const progressPercent = Math.round(((currentIndex + 1) / totalQuestions) * 100);
@@ -73,8 +76,8 @@ export function renderQuizScreen(container, onRerender) {
   } else {
     // Both
     questionHtml = `
-      <div class="question-en"><span class="lang-badge">EN</span>${escapeHtml(currentQ.question)}</div>
-      <div class="question-th"><span class="lang-badge">TH</span>${escapeHtml(currentQ.question_th || currentQ.question)}</div>
+      <div class="question-en">${isUpdatedCC ? '' : '<span class="lang-badge">EN</span>'}${escapeHtml(currentQ.question)}</div>
+      <div class="question-th">${isUpdatedCC ? '' : '<span class="lang-badge">TH</span>'}${escapeHtml(currentQ.question_th || currentQ.question)}</div>
     `;
   }
 
@@ -127,6 +130,7 @@ export function renderQuizScreen(container, onRerender) {
         <div class="option-content">
           ${optionTextHtml}
         </div>
+        ${isUpdatedCC && (stateClass === 'correct' || stateClass === 'wrong') ? `<span class="quiz-feedback-mark" role="img" aria-label="${stateClass === 'correct' ? 'Correct answer' : 'Incorrect answer'}">${stateClass === 'correct' ? '✓' : '✕'}</span>` : ''}
       </button>
     `;
   }).join('');
@@ -153,13 +157,14 @@ export function renderQuizScreen(container, onRerender) {
       }
     }
 
+    const explanationTag = isUpdatedCC ? 'section' : 'div';
     explanationHtml = `
-      <div class="explanation-box" id="quiz-explanation-box">
-        <div class="explanation-header">
+      <${explanationTag} class="explanation-box" id="quiz-explanation-box"${isUpdatedCC ? ' aria-labelledby="quiz-explanation-title"' : ''}>
+        <div class="explanation-header"${isUpdatedCC ? ' id="quiz-explanation-title"' : ''}>
           <span>💡 ${t('explanation', lang)}</span>
         </div>
         ${expContentHtml}
-      </div>
+      </${explanationTag}>
     `;
   }
 
@@ -174,7 +179,7 @@ export function renderQuizScreen(container, onRerender) {
     : t('noTimeLimit', lang);
 
   container.innerHTML = `
-    <div class="quiz-container">
+    <div class="quiz-container${isUpdatedCC ? ' quiz-minimal-2026 quiz-explanation-separated' : ''}">
       <!-- Top Navigation & Controls Header -->
       <div class="quiz-header">
         <div class="quiz-header-left">
@@ -252,8 +257,10 @@ export function renderQuizScreen(container, onRerender) {
         </div>
 
         <!-- Explanation (Practice Mode) -->
-        ${explanationHtml}
+        ${!isUpdatedCC ? explanationHtml : ''}
       </div>
+
+      ${isUpdatedCC ? explanationHtml : ''}
 
       <!-- Bottom Action Bar -->
       <div class="quiz-actions-bar">

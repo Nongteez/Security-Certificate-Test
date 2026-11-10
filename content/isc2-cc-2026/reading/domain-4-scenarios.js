@@ -23,7 +23,7 @@ export const domain4Scenarios = [
     situation: 'ผู้ดูแลระบบความมั่นคงปลอดภัยพบว่า หากคอมพิวเตอร์ในแผนกต้อนรับ (Reception) ถูกมัลแวร์เรียกค่าไถ่ (Ransomware) โจมตี มัลแวร์จะสามารถแพร่กระจายผ่านระบบเครือข่ายไปยังเซิร์ฟเวอร์ฐานข้อมูลการเงิน (Financial Database) ได้โดยตรงเนื่องจากเครือข่ายทั้งหมดเชื่อมต่อกันเป็นผืนเดียว (Flat Network)',
     question: 'สถาปัตยกรรมความมั่นคงปลอดภัยใดที่องค์กรควรนำมาใช้เพื่อจำกัดการแพร่กระจายของภัยคุกคาม และลดขอบเขตความเสียหาย (Blast Radius)?',
     answer: 'Network Segmentation — การแบ่งส่วนเครือข่าย',
-    reasoning: 'Network Segmentation คือการแบ่งระบบเครือข่ายขนาดใหญ่ออกเป็นส่วนย่อย ๆ (Subnetworks หรือ Segments) ที่มีการแยกและควบคุมการไหลเวียนของทราฟฟิกด้วย Access Control Lists (ACLs) หรือไฟร์วอลล์ การแบ่งส่วนเครือข่ายที่บังคับใช้และทดสอบนโยบายอย่างถูกต้อง ช่วยจำกัดการเข้าถึง (Reachability) ลดรัศมีความเสียหาย (Blast Radius) และขัดขวางหรือหน่วงเหนี่ยวการเคลื่อนที่ในแนวราบ (Lateral Movement) ของผู้โจมตีไปยังระบบสำคัญอื่น'
+    reasoning: 'Network Segmentation แบ่งเครือข่ายเป็นส่วนที่ควบคุมการสื่อสาร การบังคับใช้กฎ เช่น ACLs หรือไฟร์วอลล์ ช่วยจำกัดเส้นทางที่ไม่ได้รับอนุญาต ลดโอกาส Lateral Movement และขอบเขตความเสียหาย (Blast Radius) ผลขึ้นกับโครงสร้างเครือข่าย การบังคับใช้กฎ ทราฟฟิกที่อนุญาต และมาตรการอื่น ผู้โจมตีจึงอาจยังใช้เส้นทางที่อนุญาตหรือจุดควบคุมที่ถูกเจาะได้ การแยก VLAN อย่างเดียวไม่รับประกันการป้องกัน / Network segmentation divides networks into controlled parts. Enforced ACLs or firewalls can restrict unauthorized paths and reduce lateral movement and blast radius. Effectiveness depends on topology, rule enforcement, permitted traffic and other controls. Attackers may still use permitted paths or compromised controls; VLAN separation alone does not guarantee protection.'
   },
   {
     id: 2,

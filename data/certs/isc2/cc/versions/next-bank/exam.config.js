@@ -32,8 +32,8 @@ const config = {
       },
       weight: 0.24,
       weightPercentage: 24,
-      questionCount: 24,
-      questionThCount: 24,
+      questionCount: domain1.length,
+      questionThCount: domain1.filter(q => q.question_th && q.options_th?.length === 4).length,
       questionFile: "./questions/domain-1.js",
       available: true
     },
@@ -50,8 +50,8 @@ const config = {
       },
       weight: 0.173,
       weightPercentage: 17.3,
-      questionCount: 39,
-      questionThCount: 39,
+      questionCount: domain2.length,
+      questionThCount: domain2.filter(q => q.question_th && q.options_th?.length === 4).length,
       questionFile: "./questions/domain-2.js",
       available: true
     },
@@ -68,8 +68,8 @@ const config = {
       },
       weight: 0.20,
       weightPercentage: 20,
-      questionCount: 23,
-      questionThCount: 23,
+      questionCount: domain3.length,
+      questionThCount: domain3.filter(q => q.question_th && q.options_th?.length === 4).length,
       questionFile: "./questions/domain-3.js",
       available: true
     },
@@ -86,8 +86,8 @@ const config = {
       },
       weight: 0.213,
       weightPercentage: 21.3,
-      questionCount: 33,
-      questionThCount: 33,
+      questionCount: domain4.length,
+      questionThCount: domain4.filter(q => q.question_th && q.options_th?.length === 4).length,
       questionFile: "./questions/domain-4.js",
       available: true
     },

@@ -13,6 +13,7 @@ import { loadActiveQuizSession, clearActiveQuizSession, resolveSessionVersion, h
 import { getExamVersions, resolveExamVersion } from '../../data/exam-versions.js';
 import certifications from '../../data/certifications.js';
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
+import { canStudyAnswers, createStudySelection, openStudyAnswers } from '../core/study-answers.js';
 
 /**
  * Renders the Certification Start / Setup screen into the given container.
@@ -360,6 +361,12 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
             ${startBtnLabel}
           </button>
         </div>
+        ${canStudyAnswers(cert, examVersion) ? `<div class="study-start-row">
+          <button type="button" class="btn btn-secondary btn-study-answers" id="btn-study-answers" ${!examConfig || practicePoolSize === 0 ? 'disabled' : ''}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v16M3 3c4 0 7 0 9 2 2-2 5-2 9-2v16c-4 0-7 0-9 2-2-2-5-2-9-2z"/></svg>
+            Study Answers
+          </button>
+        </div>` : ''}
       </div>
 
       ${confirmModalHtml}
@@ -367,6 +374,23 @@ export function renderCertStartScreen(container, cert, version, onBackToHome, ex
   `;
 
   // --- Attach Event Listeners ---
+
+  const studyBtn = container.querySelector('#btn-study-answers');
+  studyBtn?.addEventListener('click', async () => {
+    if (studyBtn.disabled || !stillOnSetup()) return;
+    studyBtn.disabled = true;
+    try {
+      const questions = await createStudySelection(cert, examVersion, state.setup.practice);
+      if (!stillOnSetup() || !studyBtn.isConnected) return;
+      if (openStudyAnswers(questions, domains, state)) onStartQuiz?.();
+    } catch (err) {
+      if (!stillOnSetup() || !studyBtn.isConnected) return;
+      studyBtn.disabled = false;
+      const error = container.querySelector('#setup-error');
+      error.textContent = 'Questions could not be loaded. Saved progress has been kept.';
+      error.hidden = false;
+    }
+  });
 
   // Back Button
   const backBtn = container.querySelector('#btn-back-home');

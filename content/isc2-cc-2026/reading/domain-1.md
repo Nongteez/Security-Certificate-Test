@@ -180,7 +180,7 @@
 
 ### 1.1.3 Identification & Authentication (AAA)
 
-การควบคุมการเข้าถึงระบบมีลำดับขั้นตอนที่เป็นมาตรฐาน เรียกว่า **AAA Framework** โดยมีขั้นตอนตั้งต้นคือ **Identification**
+ในตัวอย่างการเข้าถึงนี้ ผู้ใช้กล่าวอ้างตัวตน แล้วระบบพิสูจน์ตัวตนและประเมินสิทธิ์ ส่วน Accounting บันทึกเหตุการณ์ที่เกี่ยวข้องตลอดการเข้าถึง รวมถึงความพยายามที่ไม่สำเร็จ / This access example separates identity claim, authentication and authorization; accounting records relevant events throughout, including failed attempts.
 
 <div class="reading-semantic-diagram" data-diagram="aaaLifecycle"></div>
 
@@ -194,14 +194,14 @@
 
 ขั้นตอนที่ระบบ **ตรวจสอบและพิสูจน์ว่าผู้ใช้เป็นบุคคลนั้นจริงตามที่กล่าวอ้าง (Proving Identity)** เช่น การตรวจสอบ Password, การตรวจลายนิ้วมือ, หรือการรับรหัส OTP
 
-<h4 class="reading-subtopic-title">สรุปลำดับขั้นตอนของ AAA Framework</h4>
+<h4 class="reading-concept-group-title">บทบาทที่สัมพันธ์กันในตัวอย่างการเข้าถึง (Related access concepts)</h4>
 
 | ขั้นตอน (Stage) | ชื่อกระบวนการ | ความหมายเชิงปฏิบัติ (Core Concept) | สิ่งที่ผู้ใช้ทำ (User Action) | สิ่งที่ระบบทำ (System Action) |
 |---|---|---|---|---|
-| **Step 1** | **Identification** | กล่าวอ้างตัวตน (Claim Identity) | ป้อน Username หรือแตะบัตรสมาร์ตการ์ด | รับค่าและเตรียมค้นหาประวัติผู้ใช้ |
-| **Step 2** | **Authentication** | พิสูจน์ตัวตน (Prove Identity) | ป้อน Password หรือสแกนลายนิ้วมือ | ตรวจสอบว่าตรงกับข้อมูลยืนยันตัวตนหรือไม่ |
-| **Step 3** | **Authorization** | อนุญาตสิทธิ์ (Grant Permissions) | พยายามเข้าถึงไฟล์หรือสั่งรันโปรแกรม | ตรวจสอบสิทธิ์ (ACL/RBAC) ว่าอนุญาตให้ทำได้หรือไม่ |
-| **Step 4** | **Accounting / Auditing** | บันทึกและตรวจสอบย้อนหลัง (Track Actions) | ใช้งานระบบตามปกติ | บันทึก Log กิจกรรม เวลา และผลลัพธ์เพื่อตรวจสอบย้อนหลัง |
+| **Claim** | **Identification** | กล่าวอ้างตัวตน (Claim Identity) | ป้อน Username หรือแตะบัตรสมาร์ตการ์ด | รับค่าและเตรียมค้นหาประวัติผู้ใช้ |
+| **Proof** | **Authentication** | พิสูจน์ตัวตน (Prove Identity) | ป้อน Password หรือสแกนลายนิ้วมือ | ตรวจสอบว่าตรงกับข้อมูลยืนยันตัวตนหรือไม่ |
+| **Permission** | **Authorization** | อนุญาตสิทธิ์ (Grant Permissions) | พยายามเข้าถึงไฟล์หรือสั่งรันโปรแกรม | ตรวจสอบสิทธิ์ (ACL/RBAC) ว่าอนุญาตให้ทำได้หรือไม่ |
+| **Ongoing record** | **Accounting / Auditing** | บันทึกและตรวจสอบย้อนหลัง (Track Actions) | ใช้งานระบบตามปกติ | บันทึก Log กิจกรรม เวลา และผลลัพธ์เพื่อตรวจสอบย้อนหลัง |
 
 <div id="topic-1-1-mfa" class="reading-topic-anchor"></div>
 
@@ -244,7 +244,7 @@
         <span class="reading-figure-badge badge-are">Something You Are</span>
         <h5 class="reading-figure-title">Biometric Access Control Scanner</h5>
       </div>
-      <p class="reading-figure-desc">ตัวอย่างเครื่องสแกนลายนิ้วมือควบคุมการเข้าออก Data Center (Macquarie Telecom) ตรวจสอบคุณลักษณะทางกายภาพที่ไม่สามารถโอนย้าย เลียนแบบ หรือลืมทิ้งไว้ได้</p>
+      <p class="reading-figure-desc">ตัวอย่างเครื่องสแกนลายนิ้วมือควบคุมการเข้าออก Data Center (Macquarie Telecom) เปรียบเทียบลักษณะทางกายภาพกับข้อมูลที่ลงทะเบียนไว้ แต่ยังอาจยอมรับผิดคน ปฏิเสธเจ้าของตัวจริง หรือถูกปลอมแปลงได้ จึงต้องปกป้องเซนเซอร์และข้อมูลชีวมิติ / Biometric matching can make errors or face spoofing; protect the sensor and biometric data.</p>
       <div class="reading-attribution">ภาพ: Wikimedia Commons (CC BY 3.0 โดย Lgate74)</div>
     </figcaption>
   </figure>
@@ -285,7 +285,7 @@
 
 วัตถุประสงค์หลักคือการใช้ในการสืบสวนคดีความมั่นคงปลอดภัย (Forensics), เฝ้าระวังความผิดปกติ, และสร้าง **Accountability** ที่ตรวจสอบย้อนหลังได้
 
-<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>สรุปคำถามหลักในข้อสอบสำหรับ 4 ขั้นตอน AAA:</h5>
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>สรุปคำถามเพื่อแยก 4 แนวคิดในการเข้าถึง (Four access concepts):</h5>
 
 | คำถามหลักในข้อสอบ | ขั้นตอนที่เกี่ยวข้อง |
 |---|---|
@@ -328,7 +328,7 @@
 
 #### 1. Non-repudiation — การไม่อาจปฏิเสธความรับผิดชอบได้
 
-ความสามารถในการพิสูจน์ได้อย่างน่าเชื่อถือว่า มีบุคคลใดบุคคลหนึ่งได้กระทำการหรือส่งข้อมูลนั้นจริง โดยผู้กระทำไม่สามารถอ้างภายหลังได้ว่าตนเองไม่ได้เป็นผู้ทำ โดยอาศัยกลไกสำคัญคือ **Digital Signature** ร่วมกับโครงสร้างกุญแจสาธารณะ (PKI) และการประทับเวลาที่เชื่อถือได้ (Timestamping)
+ความสามารถในการพิสูจน์ได้อย่างน่าเชื่อถือว่า มีบุคคลใดบุคคลหนึ่งได้กระทำการหรือส่งข้อมูลนั้นจริง เพื่อใช้ประกอบการโต้แย้งภายหลัง โดยต้องพิจารณาความน่าเชื่อถือของกุญแจ การควบคุมตัวตน และหลักฐานประกอบ ไม่ใช่การรับประกันเจตนาของบุคคล (Evidence for later disputes, not proof of human intent) โดยอาศัยกลไกสำคัญคือ **Digital Signature** ร่วมกับโครงสร้างกุญแจสาธารณะ (PKI) และการประทับเวลาที่เชื่อถือได้ (Timestamping)
 
 *ความต่างจาก Authentication:* Authentication พิสูจน์ตัวตน ณ ขณะล็อกอิน ส่วน Non-repudiation สร้างหลักฐานทางนิติวิทยาศาสตร์ที่ผูกมัดการกระทำในอดีต
 
@@ -689,7 +689,7 @@ $ALE = SLE \times ARO$
   <div class="reading-example-step"><strong>2. การคำนวณความเสี่ยงเดิม (Inherent Risk Calculation):</strong>
     <ul>
       <li>หากเกิดเหตุการณ์ฮาร์ดแวร์เซิร์ฟเวอร์พังเสียหายอย่างรุนแรง ประเมินว่าจะสูญเสียข้อมูลและโอกาสขาย 40% ($EF = 0.40$) &rarr; $SLE = \$200,000 \times 0.40 = \$80,000$ ต่อครั้ง</li>
-      <li>จากสถิติในอุตสาหกรรม เหตุการณ์ฮาร์ดแวร์พังเช่นนี้มีโอกาสเกิดขึ้นเฉลี่ยทุก 2 ปีครั้ง ($ARO = 0.5$)</li>
+      <li>สมมติว่าข้อมูลประเมินในตัวอย่างให้ความถี่เหตุการณ์ฮาร์ดแวร์พังเฉลี่ยทุก 2 ปีครั้ง ($ARO = 0.5$)</li>
       <li>ความเสียหายที่คาดว่าจะเกิดขึ้นต่อปีเดิม ($ALE_{\text{initial}}$) = $\$80,000 \times 0.5 = \$40,000$ ต่อปี</li>
     </ul>
   </div>
@@ -700,7 +700,7 @@ $ALE = SLE \times ARO$
       <li><strong>คำนวณความคุ้มค่าสุทธิ (Cost-Benefit):</strong> $(\$40,000 - \$5,000) - \$10,000 = \$25,000$ ต่อปี</li>
     </ul>
   </div>
-  <div class="reading-example-step"><strong>4. ผลกระทบและการตัดสินใจ (Management Decision):</strong> คณะกรรมการบริหารอนุมัติงบประมาณทันที เพราะตัวเลขพิสูจน์ชัดเจนว่าการลงทุน \$10,000 สามารถประหยัดความสูญเสียให้องค์กรได้ถึง \$25,000 ต่อปี</div>
+  <div class="reading-example-step"><strong>4. ผลกระทบและการตัดสินใจ (Management Decision):</strong> ในตัวอย่างนี้ คณะกรรมการใช้ผลประโยชน์สุทธิที่คาดไว้ \$25,000 ต่อปีประกอบการพิจารณาต้นทุน \$10,000 ต่อปี ผลจริงขึ้นกับสมมติฐานและประสิทธิผลของมาตรการที่ต้องตรวจสอบ (Estimated benefit under stated assumptions, not guaranteed savings)</div>
   <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): การตัดสินใจซื้อมาตรการควบคุมความปลอดภัยในองค์กรต้องใช้การวิเคราะห์เชิงปริมาณ (Quantitative Analysis) เปรียบเทียบผลประโยชน์ที่ลดความสูญเสียต่อปีกับต้นทุนของมาตรการนั้น ไม่ใช่การตัดสินใจด้วยความรู้สึก</div>
 </div>
 
@@ -742,10 +742,6 @@ $ALE = SLE \times ARO$
 - **Risk Transfer** (การโอนความเสี่ยง)
 - **Risk Acceptance** (การยอมรับความเสี่ยง)
 :::
-
-<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>กระบวนการตัดสินใจเลือกกลยุทธ์รับมือความเสี่ยง (Risk Treatment Decision Logic):</h5>
-
-<div class="reading-semantic-diagram" data-diagram="riskTreatmentDecisionFlow"></div>
 
 <div class="reading-callout danger">
   <div class="reading-callout-header">
@@ -818,6 +814,11 @@ $ALE = SLE \times ARO$
     <li>หาก <strong>Residual Risk &gt; Risk Appetite</strong> &rarr; องค์กร <strong>ต้องดำเนินการจัดการต่อ (Treat)</strong> เช่น ลดความเสี่ยงเพิ่มเติม (Mitigate), โอนความเสี่ยง (Transfer), หรือหลีกเลี่ยงกิจกรรมนั้น (Avoid) จนกว่าจะอยู่ภายในกรอบที่ยอมรับได้</li>
   </ul>
 </div>
+
+<h5 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>กระบวนการตัดสินใจเลือกกลยุทธ์รับมือความเสี่ยง (Risk Treatment Decision Logic):</h5>
+
+<div class="reading-semantic-diagram" data-diagram="riskTreatmentDecisionFlow"></div>
+<p class="reading-semantic-note">ภาพเชื่อมคำศัพท์ข้างต้นกับทางเลือกในการตอบสนอง ไม่ใช่สูตรตัดสินใจแทนผู้มีอำนาจ / This study model connects the definitions to response options; authorized judgment remains necessary.</p>
 
 </section>
 
@@ -995,7 +996,7 @@ $ALE = SLE \times ARO$
       <span class="reading-figure-badge badge-physical">Physical Security Control</span>
       <h5 class="reading-figure-title">Optical Access Control Turnstiles (ระบบประตูปีกกั้นออปติคัล)</h5>
     </div>
-    <p class="reading-figure-desc">ตัวอย่างมาตรการควบคุมทางกายภาพ (Physical Control) ที่ทำหน้าที่ร่วมกันทั้ง <strong>Preventive</strong> (สกัดกั้นการเข้าถึงโดยไม่ได้รับอนุญาต และป้องกันการเดินตามกันหรือ Tailgating / Piggybacking) และ <strong>Detective</strong> (มีเซนเซอร์ตรวจจับและส่งสัญญาณเตือน Alarm เมื่อมีการบุกรุกหรือฝ่าแนวกั้น)</p>
+    <p class="reading-figure-desc">ตัวอย่างมาตรการควบคุมทางกายภาพ (Physical Control) ที่ทำหน้าที่ร่วมกันทั้ง <strong>Preventive</strong> (สกัดกั้นการเข้าถึงโดยไม่ได้รับอนุญาต และช่วยจำกัดการเดินตามกันหรือ Tailgating / Piggybacking ตามการออกแบบและการใช้งาน) และ <strong>Detective</strong> (มีเซนเซอร์ตรวจจับและส่งสัญญาณเตือน Alarm เมื่อมีการบุกรุกหรือฝ่าแนวกั้น)</p>
     <div class="reading-attribution">ภาพ: Wikimedia Commons (CC BY-SA 4.0 โดย Fabtron)</div>
   </figcaption>
 </figure>
@@ -1189,8 +1190,6 @@ $ALE = SLE \times ARO$
 สมาชิกและผู้ถือใบรับรองของ ISC2 ทุกคนต้องยึดมั่นและปฏิบัติตาม **ประมวลจริยธรรม 4 ข้อ (4 Canons)** โดยพิจารณาหน้าที่ทั้งสี่ร่วมกับข้อเท็จจริงและใช้ดุลยพินิจทางวิชาชีพ:
 
 <h4 class="reading-intro-label"><svg class="reading-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>ประมวลจริยธรรม 4 ข้อ (The Four Canons):</h4>
-
-<div class="reading-semantic-diagram" data-diagram="ethicsCanons"></div>
 
 <div class="reading-precedence-rule">
   <svg class="reading-rule-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>

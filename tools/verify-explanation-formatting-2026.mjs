@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import fs from 'node:fs';
 
-import { renderExplanation2026Content } from '../js/ui/components/explanation-2026.js';
+import { renderExplanation2026Content, escapeHtml } from '../js/ui/components/explanation-2026.js';
 import nextBankQuestions from '../data/certs/isc2/cc/versions/next-bank/questions/domain-1.js';
 import legacyDomain1 from '../data/certs/isc2/cc/versions/2026/questions/domain-1.js';
 import * as loader from '../js/core/question-loader.js';
@@ -13,8 +13,8 @@ import certifications from '../data/certifications.js';
 
 const cc = certifications[0];
 
-test('2026 Domain 1 Data Structure: All 24 questions have valid explanation_detail', () => {
-  assert.equal(nextBankQuestions.length, 24, '2026 Domain 1 must contain exactly 24 questions');
+test('2026 Domain 1 Data Structure: All 48 questions have valid explanation_detail', () => {
+  assert.equal(nextBankQuestions.length, 48, '2026 Domain 1 must contain exactly 48 questions');
 
   let structuredCount = 0;
   let tipCount = 0;
@@ -55,7 +55,7 @@ test('2026 Domain 1 Data Structure: All 24 questions have valid explanation_deta
     structuredCount++;
   }
 
-  assert.equal(structuredCount, 24, 'All 24 questions must be structured');
+  assert.equal(structuredCount, 48, 'All 48 questions must be structured');
   assert.equal(tipCount, 2, 'Two questions have explicit exam tips (Q598, Q606)');
   assert.equal(exampleCount, 1, 'One question has an explicit example (Q607)');
 });
@@ -109,15 +109,16 @@ test('2026 Explanation Renderer in TH mode: Produces Thai explanations with Engl
   assert.ok(html607.includes('SOC 2'));
 });
 
-test('2026 Explanation Renderer in EN+TH mode: Separates EN and TH blocks with divider', () => {
+test('2026 Explanation Renderer in EN+TH mode: Separates EN and TH blocks without redundant labels', () => {
   for (const q of nextBankQuestions) {
     const html = renderExplanation2026Content(q, 'both');
     assert.ok(html.includes('exp-2026-both'), 'Must have bilingual container');
     assert.ok(html.includes('exp-lang-en'), 'Must have EN block');
     assert.ok(html.includes('exp-lang-th'), 'Must have TH block');
-    assert.ok(html.includes('explanation-divider'), 'Must have language divider');
-    assert.ok(html.includes('<span class="lang-badge">EN</span> English Explanation'), 'Must have EN header');
-    assert.ok(html.includes('<span class="lang-badge">TH</span> คำอธิบายภาษาไทย'), 'Must have TH header');
+    assert.ok(!html.includes('explanation-divider'), 'Languages use spacing');
+    assert.ok(!html.includes('English Explanation') && !html.includes('exp-lang-label'), 'No redundant language header');
+    assert.ok(!html.includes('คำอธิบายภาษาไทย') && !html.includes('lang-badge'), 'No language labels or badges');
+    assert.ok(html.indexOf(escapeHtml(q.explanation_detail.correct.en)) < html.indexOf(escapeHtml(q.explanation_detail.correct.th)), 'English precedes Thai');
 
     // Both languages present
     assert.ok(html.includes(q.explanation_detail.correct.en.slice(0, 20)));
@@ -142,7 +143,7 @@ test('Fallback resilience: Unstructured questions render clean paragraphs withou
   assert.ok(htmlEn.includes('exp-bullet-item'), 'Must format bullets');
 
   const htmlBoth = renderExplanation2026Content(unstructuredQuestion, 'both');
-  assert.ok(htmlBoth.includes('explanation-divider'), 'Must have bilingual divider');
+  assert.ok(!htmlBoth.includes('lang-badge') && !htmlBoth.includes('explanation-divider'), 'Fallback uses unlabeled spaced language blocks');
   assert.ok(htmlBoth.includes('This is paragraph one'));
   assert.ok(htmlBoth.includes('นี่คือย่อหน้าที่หนึ่ง'));
 });
@@ -208,8 +209,8 @@ test('next-bank Activation: Practice and Review screens render 2026 structured e
   assert.match(dummyContainer.innerHTML, /Why Other Options Are Incorrect/);
   assert.match(dummyContainer.innerHTML, /<span class="exp-letter-tag">[A-D]<\/span>/, 'Must render plain letter label');
   assert.doesNotMatch(dummyContainer.innerHTML, /<span class="exp-letter-tag">Option [A-D]<\/span>/, 'Must not render Option badge prefix');
-  assert.match(dummyContainer.innerHTML, /English Explanation/);
-  assert.match(dummyContainer.innerHTML, /คำอธิบายภาษาไทย/);
+  assert.doesNotMatch(dummyContainer.innerHTML, /English Explanation/);
+  assert.doesNotMatch(dummyContainer.innerHTML, /คำอธิบายภาษาไทย/);
 
   // Now record answer for question 1 and finish quiz to test Review Screen
   engine.recordAnswer({ questionIndex: 1, selectedIndex: (loadedNextBank[1].correct_idx + 1) % 4 }); // wrong answer
@@ -230,7 +231,7 @@ test('next-bank Activation: Practice and Review screens render 2026 structured e
   assert.match(dummyReviewContainer.innerHTML, /exp-correct-section/);
   assert.match(dummyReviewContainer.innerHTML, /Why Other Options Are Incorrect/);
   assert.match(dummyReviewContainer.innerHTML, /<span class="exp-letter-tag">[A-D]<\/span>/, 'Review screen renders plain letter label');
-  assert.match(dummyReviewContainer.innerHTML, /English Explanation/);
+  assert.doesNotMatch(dummyReviewContainer.innerHTML, /English Explanation/);
 
   engine.exitQuizSession();
 });

@@ -791,7 +791,7 @@
     </ul>
   </div>
   <div class="reading-example-step"><strong>4. ผลลัพธ์และบทเรียน (Security Impact):</strong> การบุกรุกถูกกักบริเวณ (Contained) ไว้เฉพาะใน DMZ เท่านั้น เครือข่ายภายในและฐานข้อมูลหลักไม่ได้รับความเสียหาย ทีม CSIRT สามารถตัดการเชื่อมต่อเว็บเซิร์ฟเวอร์ที่ถูกเจาะเพื่อล้างระบบและติดตั้งใหม่ได้อย่างปลอดภัย</div>
-  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): วัตถุประสงค์หลักของ DMZ คือการสร้างเขตกันชนเพื่อวางเซิร์ฟเวอร์ที่ต้องเปิดสู่สาธารณะ หากเซิร์ฟเวอร์ใน DMZ ถูกยึด ไฟร์วอลล์ชั้นในจะป้องกันไม่ให้ผู้โจมตีทะลุเข้าสู่เครือข่ายภายในที่เป็นหัวใจขององค์กร</div>
+  <div class="reading-example-takeaway">บทเรียนสำคัญ (Key Takeaway): วัตถุประสงค์หลักของ DMZ คือการสร้างเขตกันชนเพื่อวางเซิร์ฟเวอร์ที่ต้องเปิดสู่สาธารณะ หากเซิร์ฟเวอร์ใน DMZ ถูกยึด กฎไฟร์วอลล์ชั้นในที่บังคับใช้และทดสอบช่วยจำกัดการเข้าถึงเครือข่ายภายใน แต่เส้นทางที่อนุญาตหรือมาตรการที่ถูกเจาะยังเป็นความเสี่ยง (Enforced inner-boundary policy limits reachability; it does not guarantee containment)</div>
 </div>
 <h3 id="topic-4-2-vlans-routing">4.2.4 Virtual Local Area Networks (VLANs) &amp; Routing: เครือข่ายเสมือนระดับสวิตช์</h3>
 
@@ -850,7 +850,7 @@
 - เซิร์ฟเวอร์ใน Web Tier ด้วยกันเองไม่สามารถสื่อสารข้ามหากันได้ (Peer-to-Peer Isolation) ทำให้เมื่อเว็บเซิร์ฟเวอร์เครื่องหนึ่งถูกเจาะระบบ ผู้โจมตีไม่สามารถเคลื่อนที่ในแนวราบไปยังเซิร์ฟเวอร์เครื่องอื่นในระดับเดียวกันได้
 <h3 id="topic-4-2-defense-in-depth">4.2.6 Defense in Depth Layered Strategy: การป้องกันแบบเชิงลึกหลายชั้น</h3>
 
-**Defense in Depth (หรือ Layered Defense)** คือปรัชญาและกลยุทธ์การออกแบบความมั่นคงปลอดภัยที่วางมาตรการควบคุมและป้องกันซ้อนกันหลายระดับชั้น เพื่อให้มั่นใจว่า **หากการควบคุมในชั้นใดชั้นหนึ่งล้มเหลวหรือไม่ทำงาน การควบคุมในชั้นถัดไปยังคงสามารถตรวจจับ ป้องกัน และลดทอนผลกระทบของภัยคุกคามได้**
+**Defense in Depth (หรือ Layered Defense)** คือปรัชญาและกลยุทธ์การออกแบบความมั่นคงปลอดภัยที่วางมาตรการควบคุมและป้องกันซ้อนกันหลายระดับชั้น เพื่อให้มั่นใจว่า **มาตรการที่เสริมกันอาจช่วยลดโอกาสและผลกระทบเมื่อบางส่วนล้มเหลว แต่ยังอาจมีจุดพึ่งพาร่วมหรือเส้นทางที่ผู้โจมตีใช้ได้ จึงไม่รับประกันว่าชั้นถัดไปจะป้องกันได้เสมอ / Complementary controls can reduce risk, but shared dependencies and remaining paths can still fail.**
 
 <div class="reading-semantic-diagram" data-diagram="defenseInDepthLayers"></div>
 
@@ -1035,8 +1035,8 @@
 
 | ชั้นสถาปัตยกรรม (Architectural Layer) | On-Premises (ศูนย์ข้อมูลตนเอง) | IaaS (Infrastructure as a Service) | PaaS (Platform as a Service) | SaaS (Software as a Service) |
 |---|---|---|---|---|
-| **Data &amp; Information (ข้อมูลและความลับ)** | **Customer** | **Customer** | **Customer** | **Customer** |
-| **Identity &amp; Access (บัญชีและสิทธิ์ผู้ใช้)** | **Customer** | **Customer** | **Customer** | **Customer** |
+| **Customer-controlled data decisions/settings (การตัดสินใจและตั้งค่าข้อมูลที่ลูกค้าควบคุม)** | **Customer** | **Customer** | **Customer** | **Customer** |
+| **Customer-controlled IAM decisions/settings (การตัดสินใจและตั้งค่า IAM ที่ลูกค้าควบคุม)** | **Customer** | **Customer** | **Customer** | **Customer** |
 | **Application (โค้ดและการตั้งค่าแอป)** | **Customer** | **Customer** | **Customer** | **Cloud Provider (CSP)** |
 | **Runtime &amp; Middleware (สภาพแวดล้อมรันไทม์)** | **Customer** | **Customer** | **Cloud Provider (CSP)** | **Cloud Provider (CSP)** |
 | **Operating System (ระบบปฏิบัติการ OS)** | **Customer** | **Customer** | **Cloud Provider (CSP)** | **Cloud Provider (CSP)** |
@@ -1372,7 +1372,7 @@ topic: Network Segmentation & Blast Radius
 situation: ผู้ดูแลระบบความมั่นคงปลอดภัยพบว่า หากคอมพิวเตอร์ในแผนกต้อนรับ (Reception) ถูกมัลแวร์เรียกค่าไถ่ (Ransomware) โจมตี มัลแวร์จะสามารถแพร่กระจายผ่านระบบเครือข่ายไปยังเซิร์ฟเวอร์ฐานข้อมูลการเงิน (Financial Database) ได้โดยตรงเนื่องจากเครือข่ายทั้งหมดเชื่อมต่อกันเป็นผืนเดียว (Flat Network)
 question: สถาปัตยกรรมความมั่นคงปลอดภัยใดที่องค์กรควรนำมาใช้เพื่อจำกัดการแพร่กระจายของภัยคุกคาม และลดขอบเขตความเสียหาย (Blast Radius)?
 answer: Network Segmentation — การแบ่งส่วนเครือข่าย
-reasoning: Network Segmentation คือการแบ่งระบบเครือข่ายขนาดใหญ่ออกเป็นส่วนย่อย ๆ (Subnetworks หรือ Segments) ที่มีการแยกและควบคุมการไหลเวียนของทราฟฟิกด้วย Access Control Lists (ACLs) หรือไฟร์วอลล์ การแบ่งส่วนเครือข่ายที่บังคับใช้และทดสอบนโยบายอย่างถูกต้อง ช่วยจำกัดการเข้าถึง (Reachability) ลดรัศมีความเสียหาย (Blast Radius) และขัดขวางหรือหน่วงเหนี่ยวการเคลื่อนที่ในแนวราบ (Lateral Movement) ของผู้โจมตีไปยังระบบสำคัญอื่น
+reasoning: Network Segmentation แบ่งเครือข่ายเป็นส่วนที่ควบคุมการสื่อสาร การบังคับใช้กฎ เช่น ACLs หรือไฟร์วอลล์ ช่วยจำกัดเส้นทางที่ไม่ได้รับอนุญาต ลดโอกาส Lateral Movement และขอบเขตความเสียหาย (Blast Radius) ผลขึ้นกับโครงสร้างเครือข่าย การบังคับใช้กฎ ทราฟฟิกที่อนุญาต และมาตรการอื่น ผู้โจมตีจึงอาจยังใช้เส้นทางที่อนุญาตหรือจุดควบคุมที่ถูกเจาะได้ การแยก VLAN อย่างเดียวไม่รับประกันการป้องกัน / Network segmentation divides networks into controlled parts. Enforced ACLs or firewalls can restrict unauthorized paths and reduce lateral movement and blast radius. Effectiveness depends on topology, rule enforcement, permitted traffic and other controls. Attackers may still use permitted paths or compromised controls; VLAN separation alone does not guarantee protection.
 :::
 
 :::scenario

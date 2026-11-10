@@ -3,6 +3,75 @@
    Responsive, Dark/Light theme, Touch-friendly options & Bilingual Typography
    ========================================================================== */
 
+/* Active updated-CC quizzes only; shared quiz and Study Answers rules stay intact. */
+.quiz-minimal-2026 .option-item {
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+  min-height: 52px;
+  padding: 16px 18px;
+}
+.quiz-minimal-2026 .option-item:hover:not(:disabled) { transform: none; }
+.quiz-minimal-2026 .option-item:not(.selected):not(.correct):not(.wrong):hover:not(:disabled) {
+  background: var(--panel-2);
+  border-color: transparent;
+}
+.quiz-minimal-2026 .option-item.selected,
+.quiz-minimal-2026 .option-item.selected:hover {
+  background: var(--blue-bg);
+  border-color: var(--blue);
+}
+.quiz-minimal-2026 .option-item:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.quiz-minimal-2026 .quiz-feedback-mark { font-size: 18px; font-weight: 700; flex-shrink: 0; }
+.quiz-minimal-2026 .correct .quiz-feedback-mark { color: var(--green); }
+.quiz-minimal-2026 .wrong .quiz-feedback-mark { color: var(--red); }
+.quiz-minimal-2026 .explanation-box { border: 0; border-radius: 0; background: transparent; }
+.quiz-explanation-separated > .explanation-box { border: 0; border-radius: 0; background: transparent; margin-top: 0; }
+.quiz-minimal-2026 .domain-pill {
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.8;
+  white-space: normal;
+}
+
+/* Study Answers is available only in the updated ISC2 CC outline. */
+.study-start-row { margin-top: 12px; }
+.btn-study-answers { width: 100%; min-height: 52px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.study-answers { max-width: 1000px; overflow-wrap: anywhere; }
+.study-answers h1 { margin: 0; }
+.study-answers .question-text { font: inherit; margin: 0; }
+.study-language { display: block; white-space: pre-line; }
+.study-outline, .study-metadata { color: var(--text-dim); }
+.study-metadata { margin-bottom: 20px; font-size: 14px; line-height: 1.8; }
+.study-answers .study-metadata .study-language { display: inline; white-space: normal; }
+.study-answers .study-metadata .study-th { margin: 0 0 0 8px; }
+.study-th { display: block; margin-top: 8px; color: var(--text-dim); }
+.study-navigation { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.study-options { list-style: none; padding: 0; margin: 24px 0 0; }
+.study-options .option-item { cursor: default; width: 100%; text-align: left; }
+.study-answers .study-options .option-item { user-select: text; border: 0; background: transparent; border-radius: 0; padding: 16px 18px; }
+.study-answers .study-options .option-item.correct { border: 1px solid var(--green); border-radius: var(--radius-sm); padding: 15px 17px; }
+.study-answers .study-options .option-item:hover { transform: none; border-color: transparent; background: transparent; }
+.study-answers .explanation-box { display: block; margin-top: 0; border: 0; border-radius: 0; background: transparent; }
+.study-answers .explanation-header { margin-top: 0; }
+.study-answers .exp-section-body, .study-answers .exp-incorrect-body,
+.study-answers .exp-option-quote, .study-answers .exp-p { font-size: 15px; line-height: 1.8; }
+.study-answers :focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+@media (max-width: 600px) {
+  .study-answers .quiz-header, .study-answers .quiz-header-right { width: 100%; }
+  .study-answers .quiz-header-right { justify-content: space-between; }
+  .study-navigation > span { width: 100%; order: -1; text-align: center; }
+  .study-navigation .btn { font-size: 12px; padding: 10px; }
+}
+
 .quiz-container {
   max-width: 1100px;
   width: 100%;
@@ -510,17 +579,7 @@
   gap: 12px;
 }
 
-.exp-lang-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
-  font-weight: 700;
-  color: var(--text-dim);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
+.exp-2026-both { gap: 28px; }
 
 /* Base minimal section: neutral, borderless, separated by subtle neutral dividers */
 .exp-section {

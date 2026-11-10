@@ -1,0 +1,108 @@
+{
+  "619": {
+    "classification": "REVISE",
+    "stored_key": "C",
+    "key_assessment": "C plausibly describes bare facility readiness; no supplied evidence proves that it meets the original five-business-day RTO. Do not approve the all-requirements claim.",
+    "evidence": "R10 site descriptions and BIA/capability reasoning; local D2 recovery notes. General and detailed NIST cold-site descriptions differ about telecom wording, so specify passive cabling versus active IT.",
+    "bilingual": "Both versions overstate five-day assurance. Thai adds ordering/procurement to the delivery/setup wording; procurement lead time is not validated in either version.",
+    "proposed_stem_en": "A manufacturer selects a fixed alternate facility with power, cooling, raised flooring and passive communications cabling. It has no installed computing or networking equipment, application software or restored production data. Recovery time will be validated separately after equipment procurement and recovery testing. Which readiness model BEST describes this facility?",
+    "proposed_stem_th": "ผู้ผลิตเลือกอาคารสำรองแบบอยู่กับที่ซึ่งมีระบบไฟฟ้า ระบบทำความเย็น พื้นยก และสายสื่อสารแบบพาสซีฟ แต่ยังไม่มีอุปกรณ์คอมพิวเตอร์ อุปกรณ์เครือข่าย ซอฟต์แวร์แอปพลิเคชัน หรือข้อมูลระบบจริงที่กู้คืนไว้ ระยะเวลากู้คืนจะต้องตรวจสอบแยกต่างหากหลังจัดหาอุปกรณ์และทดสอบการกู้คืน รูปแบบความพร้อมของสถานที่ใดอธิบายอาคารนี้ได้เหมาะสมที่สุด?",
+    "options_policy": "Retain current A Warm / B Hot / C Cold / D Mobile, in both languages.",
+    "proposed_correct_en": "C describes a fixed facility with supporting infrastructure but no installed IT recovery environment. The label alone does not establish a recovery deadline.",
+    "proposed_correct_th": "C อธิบายอาคารที่มีโครงสร้างสนับสนุนแต่ยังไม่มีสภาพแวดล้อมไอทีสำหรับกู้คืน ชื่อประเภทสถานที่เพียงอย่างเดียวไม่ได้ยืนยันว่าจะกู้คืนได้ตามกำหนดเวลา",
+    "wrong_en": [
+      "A warm site has some installed IT equipment; the proposed facility does not.",
+      "A hot site has operational recovery equipment rather than only the specified infrastructure.",
+      "A mobile site is transportable, whereas the proposed building is fixed."
+    ],
+    "wrong_th": [
+      "Warm site มีอุปกรณ์ไอทีติดตั้งไว้บางส่วน แต่อาคารที่เสนอในโจทย์ยังไม่มี",
+      "Hot site มีอุปกรณ์กู้คืนพร้อมทำงาน ไม่ใช่มีเพียงโครงสร้างสนับสนุนตามที่ระบุ",
+      "Mobile site เคลื่อนย้ายได้ แต่อาคารในข้อเสนอเป็นสถานที่อยู่กับที่"
+    ],
+    "target_change": "Same Domain 2 / 2.2 and site-readiness concepts, but narrowed from cost/RTO satisfaction to readiness classification. Keeping the original RTO decision requires explicit validated lead times and cost evidence instead. Human must choose that target tradeoff."
+  },
+  "629": {
+    "classification": "REVISE",
+    "stored_key": "A",
+    "key_assessment": "A can be a locally defined initial-response milestone; it is not established as the universal endpoint of MTTR or the whole Respond phase.",
+    "evidence": "R11 defines measures and averages; R12 separates reporting, response and recovery roles. Local MTTR/respond shorthand does not define an endpoint.",
+    "bilingual": "EN and TH share the unsupported universal endpoint. Both must specify local boundaries and distinguish an individual interval from its mean.",
+    "proposed_stem_en": "For critical endpoint ransomware alerts, an organization defines an individual initial-response interval as starting when the SOC alert is generated and ending when responders complete an approved initial containment action. Its SLA requires the mean of these intervals over the reporting period to be under 20 minutes. Which listed milestone ends an individual interval used in this SLA?",
+    "proposed_stem_th": "สำหรับการแจ้งเตือนแรนซัมแวร์ระดับวิกฤตที่เครื่องปลายทาง องค์กรกำหนดช่วงเวลาตอบสนองเบื้องต้นแต่ละเหตุให้เริ่มเมื่อ SOC สร้างแจ้งเตือน และสิ้นสุดเมื่อผู้ตอบสนองดำเนินการจำกัดผลกระทบเบื้องต้นที่ได้รับอนุมัติเสร็จสิ้น SLA กำหนดให้ค่าเฉลี่ยของช่วงเวลาเหล่านี้ตลอดรอบรายงานต่ำกว่า 20 นาที จุดเวลาที่ระบุในตัวเลือกใดเป็นจุดสิ้นสุดของช่วงเวลาแต่ละเหตุสำหรับ SLA นี้?",
+    "options_policy": "Clarify A with the proposed completed-action wording below; retain B/C/D. A remains the proposed key, subject to human approval and new blind review.",
+    "proposed_correct_en": "A matches the explicitly defined initial-containment endpoint for this organization. It ends that measured interval, not every incident-response activity. The SLA mean is calculated over the defined set of intervals.",
+    "proposed_correct_th": "A ตรงกับจุดสิ้นสุดที่องค์กรนี้กำหนดไว้สำหรับการจำกัดผลกระทบเบื้องต้น เป็นการสิ้นสุดช่วงเวลาที่วัด ไม่ใช่สิ้นสุดกิจกรรมตอบสนองเหตุการณ์ทุกอย่าง ส่วนค่าเฉลี่ยตาม SLA คำนวณจากกลุ่มช่วงเวลาที่กำหนดไว้",
+    "wrong_en": [
+      "Full service restoration is later than this SLA’s initial-containment endpoint.",
+      "Physical hardware replacement is not the endpoint defined in this SLA.",
+      "A vendor’s scheduled update release is a separate process, not this organization’s measured response endpoint."
+    ],
+    "wrong_th": [
+      "การกู้คืนบริการทั้งหมดอยู่ถัดจากจุดจำกัดผลกระทบเบื้องต้นที่ SLA นี้กำหนด",
+      "การเปลี่ยนฮาร์ดแวร์ทางกายภาพไม่ใช่จุดสิ้นสุดที่กำหนดใน SLA นี้",
+      "การเผยแพร่อัปเดตตามรอบของผู้ขายเป็นอีกกระบวนการ ไม่ใช่จุดสิ้นสุดการตอบสนองที่องค์กรนี้วัด"
+    ],
+    "target_change": "Domain/objective 2 / 2.4 unchanged. Replaces unsupported universal terminology recall with interpretation of explicitly defined metric boundaries and averaging.",
+    "proposed_option_A_en": "Completion of the approved initial containment action for the affected endpoint, such as network isolation",
+    "proposed_option_A_th": "การดำเนินการจำกัดผลกระทบเบื้องต้นที่ได้รับอนุมัติสำหรับเครื่องปลายทางนั้นเสร็จสิ้น เช่น แยกเครื่องออกจากเครือข่าย"
+  },
+  "630": {
+    "classification": "REVISE",
+    "stored_key": "D",
+    "key_assessment": "D captures the intended asset-versus-vulnerability distinction, but its velocity/speed wording is not supported by a percentage within SLA. No supplied option is wholly precise under the original wording.",
+    "evidence": "R11 meaningful units, populations and interpretation. A proportion meeting a deadline is not a duration or items-per-unit-time velocity.",
+    "bilingual": "Both labels and D wrongly say velocity/speed. EN correct reasoning says timeliness while its Thai counterpart says speed. PRIMARY distinguishes is also unnatural English.",
+    "proposed_stem_en": "A monthly scorecard reports two measures. X is the percentage of managed workstations running the approved patch build on the report date: 9,200 of 10,000, or 92%. Y is the percentage of critical vulnerability findings whose 15-day SLA deadlines fell in that month that were remediated by their deadlines: 84 of 100, or 84%. Which statement correctly distinguishes these measures?",
+    "proposed_stem_th": "สกอร์การ์ดประจำเดือนรายงานตัวชี้วัดสองตัว X คือร้อยละของเครื่องปลายทางที่อยู่ในการจัดการและกำลังใช้งานระบบด้วยชุดแพตช์ที่อนุมัติ ณ วันที่รายงาน เท่ากับ 9,200 จาก 10,000 เครื่อง หรือ 92% Y คือร้อยละของข้อค้นพบช่องโหว่ระดับวิกฤตที่ครบกำหนด SLA 15 วันในเดือนนั้น และได้รับการแก้ไขทันกำหนด เท่ากับ 84 จาก 100 รายการ หรือ 84% ข้อความใดอธิบายความแตกต่างของตัวชี้วัดทั้งสองได้ถูกต้อง?",
+    "options_policy": "Proposed replacement wording for all four options is below; D remains the proposed key. This is a human-review proposal for existing Q630, not a bank edit.",
+    "proposed_options_en": [
+      "Both percentages use workstations as their population and differ only in their target thresholds.",
+      "X measures average patching duration, while Y measures the proportion of critical findings still unresolved.",
+      "X measures workstations missing the approved build, while Y measures findings remediated after their deadlines.",
+      "X is a snapshot of approved patch state across workstations, while Y is an on-time remediation proportion for the critical findings due in the period."
+    ],
+    "proposed_options_th": [
+      "ร้อยละทั้งสองใช้เครื่องปลายทางเป็นประชากรที่วัด และแตกต่างกันเฉพาะค่าเป้าหมาย",
+      "X วัดระยะเวลาเฉลี่ยในการแพตช์ ส่วน Y วัดสัดส่วนข้อค้นพบระดับวิกฤตที่ยังไม่ได้แก้ไข",
+      "X วัดเครื่องที่ยังขาดชุดแพตช์ที่อนุมัติ ส่วน Y วัดข้อค้นพบที่แก้ไขหลังครบกำหนด",
+      "X เป็นภาพสถานะชุดแพตช์ที่อนุมัติของเครื่องปลายทาง ณ จุดเวลา ส่วน Y เป็นสัดส่วนการแก้ไขทันกำหนดของข้อค้นพบระดับวิกฤตที่ครบกำหนดในรอบรายงาน"
+    ],
+    "proposed_correct_en": "D distinguishes a point-in-time asset-state population from a deadline-defined finding cohort. The percentages alone do not give average days to remediate or findings closed per unit time.",
+    "proposed_correct_th": "D แยกประชากรเครื่องปลายทางที่วัดสถานะ ณ จุดเวลาออกจากกลุ่มข้อค้นพบที่กำหนดตามวันครบกำหนด ร้อยละเหล่านี้เพียงอย่างเดียวไม่ได้ให้จำนวนวันเฉลี่ยในการแก้ไขหรือจำนวนข้อค้นพบที่ปิดต่อหน่วยเวลา",
+    "wrong_en": [
+      "Y counts findings rather than workstations, so the populations differ.",
+      "Neither measure is an average duration, and Y counts on-time remediation rather than unresolved findings.",
+      "This reverses the stated numerators: X counts approved builds and Y counts remediation by the deadline."
+    ],
+    "wrong_th": [
+      "Y นับข้อค้นพบ ไม่ใช่เครื่องปลายทาง ประชากรที่วัดจึงต่างกัน",
+      "ไม่มีตัวใดเป็นระยะเวลาเฉลี่ย และ Y นับการแก้ไขทันกำหนด ไม่ใช่ข้อค้นพบที่ยังไม่ได้แก้ไข",
+      "ข้อความนี้กลับความหมายตัวเศษที่ระบุ X นับเครื่องที่มีชุดแพตช์ที่อนุมัติ และ Y นับข้อค้นพบที่แก้ไขทันกำหนด"
+    ],
+    "target_change": "Domain/objective 2 / 2.4 unchanged. Preserves population/timeliness interpretation, removes unsupported velocity terminology, and makes the finding cohort explicit instead of using an ambiguous count of global CVE identifiers."
+  },
+  "637": {
+    "classification": "REVISE",
+    "stored_key": "D",
+    "key_assessment": "D is the strongest candidate among the supplied strategies, but no option demonstrates the original mandatory zero-loss and sub-15-minute guarantee. Near-zero is not zero.",
+    "evidence": "R10 readiness and tested capability. Replication loss behavior, failover capacity and the defined failure scenario require validation.",
+    "bilingual": "EN RTO under 15 minutes differs from TH no more than 15 minutes. EN explanation relaxes RPO to near zero while TH claims zero. Both versions overstate site-label assurance.",
+    "proposed_stem_en": "A stock exchange requires an RTO of less than 15 minutes and an RPO of zero lost data for its defined recovery scenario. The team has not yet validated the candidate designs’ replication loss behavior or end-to-end recovery performance. Which listed strategy is the BEST candidate to assess against these requirements?",
+    "proposed_stem_th": "ตลาดหลักทรัพย์กำหนด RTO ให้น้อยกว่า 15 นาที และ RPO ให้ไม่มีข้อมูลสูญหายสำหรับสถานการณ์กู้คืนที่กำหนด ทีมงานยังไม่ได้ตรวจสอบพฤติกรรมการสูญหายของข้อมูลจากการทำสำเนาหรือสมรรถนะการกู้คืนตั้งแต่ต้นจนจบของแบบที่เสนอ กลยุทธ์ใดในตัวเลือกเหมาะสมที่สุดที่จะนำมาประเมินเทียบกับข้อกำหนดเหล่านี้?",
+    "options_policy": "Retain current four strategy descriptions and proposed key D; this changes the criterion from guaranteed compliance to candidate selection for validation.",
+    "proposed_correct_en": "D has the greatest stated readiness and a continuously maintained data copy, making it the best candidate among these choices. Meeting the targets still requires validation of replication and acknowledged-write loss behavior, recovery capacity and failover under the defined failure scenario.",
+    "proposed_correct_th": "D มีความพร้อมตามที่ระบุมากที่สุดและมีข้อมูลสำเนาที่ปรับปรุงต่อเนื่อง จึงเป็นตัวเลือกที่เหมาะสมที่สุดสำหรับนำไปประเมิน แต่ยังต้องตรวจสอบการทำสำเนา การสูญหายของข้อมูลที่ยืนยันบันทึกแล้ว ความสามารถกู้คืน และการสลับระบบภายใต้สถานการณ์ขัดข้องที่กำหนดก่อนยืนยันว่าบรรลุเป้าหมาย",
+    "wrong_en": [
+      "Post-disaster hardware procurement leaves substantial readiness work compared with D; no fixed recovery duration is inferred from the cold-site name.",
+      "Manual tape restoration/configuration adds recovery work compared with the continuously maintained copy in D.",
+      "Dispatching a trailer after the event adds deployment work; the described desktop setup supplies no comparable prepared transaction platform."
+    ],
+    "wrong_th": [
+      "การจัดหาฮาร์ดแวร์หลังเกิดภัยพิบัติยังเหลืองานเตรียมความพร้อมมากกว่า D โดยไม่ได้สรุประยะเวลากู้คืนตายตัวจากชื่อ Cold site",
+      "การกู้คืนจากเทปและตั้งค่าด้วยตนเองเพิ่มงานกู้คืนเมื่อเทียบกับข้อมูลสำเนาที่ปรับปรุงต่อเนื่องใน D",
+      "การส่งรถเทรลเลอร์หลังเกิดเหตุเพิ่มงานเคลื่อนย้าย และชุดคอมพิวเตอร์ที่บรรยายไม่ได้แสดงแพลตฟอร์มธุรกรรมที่เตรียมพร้อมเทียบเท่า D"
+    ],
+    "target_change": "Domain/objective 2 / 2.2 retained. Changes unjustified mandatory-compliance assertion into readiness comparison and validation judgment. It does not prove a real design achieves either objective."
+  }
+}

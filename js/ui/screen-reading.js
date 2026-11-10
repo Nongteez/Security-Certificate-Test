@@ -112,10 +112,9 @@ export function renderReadingScreen(container, onBack) {
 
   // Auto-expand domain and objective if initialAnchor belongs to one
   if (initialAnchor) {
-    const objMatch = initialAnchor.match(/^(?:topic|obj)-(\d+)-(\d+)/);
-    if (objMatch) {
-      expandedDomainSet.add(parseInt(objMatch[1], 10));
-      expandedObjSet.add(`${objMatch[1]}.${objMatch[2]}`);
+    for (const domain of READING_DOMAINS) {
+      const objective = (domain.objectives || []).find(obj => obj.anchorId === initialAnchor || (obj.topics || []).some(topic => topic.id === initialAnchor));
+      if (objective) { expandedDomainSet.add(domain.id); expandedObjSet.add(objective.id); break; }
     }
   }
 
@@ -149,8 +148,8 @@ export function renderReadingScreen(container, onBack) {
 
   function setActiveAnchor(id, expand = false) {
     activeScrollSpyTopicId = id;
-    const match = id?.match(/^(?:topic|obj)-(\d+)-(\d+)/);
-    const objective = match ? `${match[1]}.${match[2]}` : null;
+    const objective = (getActiveDomain().objectives || [])
+      .find(obj => obj.anchorId === id || (obj.topics || []).some(topic => topic.id === id))?.id || null;
     if (expand && objective) {
       expandedDomainSet.add(selectedDomainId);
       expandedObjSet.add(objective);
@@ -234,7 +233,15 @@ export function renderReadingScreen(container, onBack) {
     if (!getDomainReadingCached(selectedDomainId) || !container.querySelector('.reading-article-markdown')) return;
     // Wait for the actual article and font/image layout once, rather than retrying
     // scroll commands after the user has started reading or a new route has won.
-    const images = [...container.querySelectorAll('.reading-article img')].map(img => img.decode?.().catch(() => {}));
+    const layoutTarget = location.anchorId && document.getElementById(location.anchorId);
+    const images = [...container.querySelectorAll('.reading-article img')]
+      .filter(img => img.complete || img.loading !== 'lazy' || (layoutTarget && (img.compareDocumentPosition(layoutTarget) & Node.DOCUMENT_POSITION_FOLLOWING)))
+      .map(img => {
+        // Only preceding images can shift this anchor. Offscreen lazy images
+        // after it must not delay every reload until the fallback timer.
+        if (!img.complete && img.loading === 'lazy') img.loading = 'eager';
+        return img.decode?.().catch(() => {});
+      });
     let timeout;
     await Promise.race([
       Promise.all([document.fonts?.ready, ...images]),
@@ -554,7 +561,7 @@ export function renderReadingScreen(container, onBack) {
 
   function applyReadingLanguageMetadata() {
     const article = container.querySelector('.reading-article');
-    if (!article || ![1, 2, 3, 4].includes(getActiveDomain().id)) return;
+    if (!article || !getActiveDomain().published) return;
     article.querySelector('.reading-article-markdown')?.setAttribute('lang', 'th');
     for (const element of article.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,dt,dd,figcaption,blockquote,em,.reading-diagram-tag')) {
       const text = element.textContent;
