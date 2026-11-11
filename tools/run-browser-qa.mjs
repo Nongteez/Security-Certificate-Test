@@ -2,12 +2,24 @@ import { spawn } from 'node:child_process';
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import os from 'node:os';
+import assert from 'node:assert/strict';
 
 const ROOT = path.resolve('.');
 const PORT = 5173;
+const trace=[];
+const mark=(event,p={})=>trace.push({event,hostMs:Date.now(),p});
+const delayedRouteCheck = process.argv.includes('--delayed-route-check');
+const delay = delayedRouteCheck ? 1800 : 0;
+const held=new Set();
+const flush=()=>fs.writeFileSync(path.join(ARTIFACTS_DIR,'request-trace.json'),JSON.stringify(trace,null,2));
 const CHROME_PATH = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
-const ARTIFACTS_DIR = path.resolve('artifacts/qa/v3-browser-review');
+const ARTIFACTS_DIR = process.env.SEC_CERT_BROWSER_QA_OUTPUT
+  ? path.resolve(process.env.SEC_CERT_BROWSER_QA_OUTPUT)
+  : fs.mkdtempSync(path.join(os.tmpdir(), 'sec-cert-learning-qa-'));
+const relativeOutput = path.relative(ROOT, ARTIFACTS_DIR);
+assert.ok(relativeOutput === '..' || relativeOutput.startsWith('..' + path.sep) || path.isAbsolute(relativeOutput),
+  'Browser QA output must be outside the checkout');
 
 // Ensure artifacts directory exists
 fs.mkdirSync(ARTIFACTS_DIR, { recursive: true });
@@ -32,12 +44,15 @@ function startServer() {
       let reqPath = decodeURIComponent(req.url.split('?')[0]);
       if (reqPath === '/') reqPath = '/index.html';
       const fullPath = path.join(ROOT, reqPath);
+      mark('http:request',{url:req.url,method:req.method});
+      res.on('finish',()=>mark('http:finish',{url:req.url,status:res.statusCode}));
+      res.on('close',()=>mark('http:close',{url:req.url,status:res.statusCode,finished:res.writableFinished}));
       if (!fullPath.startsWith(ROOT)) {
         res.writeHead(403);
         res.end('Forbidden');
         return;
       }
-      fs.stat(fullPath, (err, stats) => {
+      const serve = () => fs.stat(fullPath, (err, stats) => {
         if (err || !stats.isFile()) {
           res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
           res.end(`Not Found: ${reqPath}`);
@@ -48,6 +63,10 @@ function startServer() {
         res.writeHead(200, { 'Content-Type': contentType, 'Access-Control-Allow-Origin': '*' });
         fs.createReadStream(fullPath).pipe(res);
       });
+      if(delay && /\/lessons\/lesson-d5-/.test(reqPath) && !held.has(reqPath) && held.size<3) {
+        held.add(reqPath); mark('http:hold',{url:req.url,delay});
+        setTimeout(()=>{if(!res.destroyed)serve();},delay);
+      } else serve();
     });
     server.listen(PORT, '127.0.0.1', () => resolve(server));
     server.on('error', reject);
@@ -99,6 +118,7 @@ class CDPClient {
   }
 
   async eval(expression) {
+    mark('automation:eval',{expression:expression.trim().slice(0,1300)});
     const res = await this.send('Runtime.evaluate', {
       expression,
       returnByValue: true,
@@ -115,6 +135,61 @@ class CDPClient {
   }
 }
 
+
+// A canceled request is allowed only with evidence that this exact outgoing
+// lesson fetch was aborted by the Learning Center -> Domain 1 route transition.
+function checkNetwork(events) {
+  const requests = new Map(), signalAborts = [], failed = [], httpErrors = [], runtimeErrors = [];
+  const completed = new Set();
+  const transition = events.find(e => e.event === 'route:domain-one');
+  for (const e of events) {
+    const { event, p } = e;
+    if (event === 'Network.requestWillBeSent') requests.set(p.requestId, e);
+    if (event === 'Network.loadingFinished') {
+      const request = requests.get(p.requestId)?.p.request;
+      if (request) completed.add(request.url);
+    }
+    if (event === 'Network.loadingFailed') failed.push(e);
+    if (event === 'Network.responseReceived' && p.response.status >= 400) {
+      httpErrors.push({ url: p.response.url, status: p.response.status });
+    }
+    if (event === 'Runtime.exceptionThrown' || (event === 'Runtime.consoleAPICalled' && p.type === 'error')) {
+      runtimeErrors.push(p);
+    }
+    if (event === 'Runtime.bindingCalled' && p.name === 'qaTraceFetch') {
+      const trace = JSON.parse(p.payload);
+      if (trace.event === 'fetch:signal-abort') signalAborts.push({ ...trace, hostMs: e.hostMs });
+    }
+  }
+  const expected = [], unexplained = [];
+  for (const e of failed) {
+    const req = requests.get(e.p.requestId);
+    const request = req?.p.request;
+    const url = request?.url;
+    const abort = signalAborts.findIndex(a => a.url === url &&
+      Math.abs(a.hostMs - e.hostMs) <= 250 && a.hostMs >= req.hostMs &&
+      /at dispose .*\/js\/ui\/learning\/routes\.js:/.test(a.stack) &&
+      /at onDomain .*\/js\/ui\/learning\/routes\.js:/.test(a.stack));
+    const verified = transition && req && req.hostMs <= transition.hostMs &&
+      e.hostMs >= transition.hostMs && e.hostMs <= transition.hostMs + 350 &&
+      e.p.canceled === true && e.p.errorText === 'net::ERR_ABORTED' && e.p.type === 'Fetch' &&
+      request.method === 'GET' &&
+      /^http:\/\/127\.0\.0\.1:5173\/content\/isc2-cc-2026\/learning\/published\/lessons\/lesson-d[2-5]-[^/]+\.json$/.test(url) &&
+      abort >= 0;
+    const detail = { ...e.p, url, method: request?.method, frameId: req?.p.frameId,
+      initiator: req?.p.initiator, signal: verified ? signalAborts.splice(abort, 1)[0] : undefined };
+    (verified ? expected : unexplained).push(detail);
+  }
+  for (const path of ['/index.html', '/js/app.js', '/css/learning.css',
+    '/content/isc2-cc-2026/learning/published/catalog.json',
+    '/content/isc2-cc-2026/learning/published/lessons/lesson-d1-01-cia-triad.json']) {
+    if (!completed.has('http://127.0.0.1:5173' + path)) {
+      unexplained.push({ url: path, errorText: 'Required resource did not finish' });
+    }
+  }
+  return { expected, unexplained, httpErrors, runtimeErrors };
+}
+
 async function runQA() {
   console.log('--- ISC2 CC 2026 Presentation Viewer V3: Real Browser QA ---');
 
@@ -123,7 +198,7 @@ async function runQA() {
   console.log(`[1] Dev server started at http://127.0.0.1:${PORT}/`);
 
   // 2. Launch Chrome
-  const userDataDir = path.join(ROOT, '.tmp-chrome-profile');
+  const userDataDir = fs.mkdtempSync(path.join(ARTIFACTS_DIR, 'chrome-profile-'));
   const chromeProcess = spawn(CHROME_PATH, [
     '--headless=new',
     '--remote-debugging-port=9444',
@@ -155,7 +230,7 @@ async function runQA() {
   console.log(`    User-Agent: ${versionData['User-Agent']}`);
 
   // Create new target tab
-  const newTabRes = await fetch(`http://127.0.0.1:9444/json/new?http://127.0.0.1:${PORT}/index.html`, { method: 'PUT' });
+  const newTabRes = await fetch('http://127.0.0.1:9444/json/new?about:blank', { method: 'PUT' });
   const tabData = await newTabRes.json();
   const cdp = new CDPClient(tabData.webSocketDebuggerUrl);
   await cdp.connect();
@@ -167,10 +242,26 @@ async function runQA() {
   cdp.on('Runtime.consoleAPICalled', p => consoleLogs.push({ type: p.type, args: p.args?.map(a => a.value) }));
   cdp.on('Network.loadingFailed', p => networkErrors.push(p));
 
+  for(const event of ['Network.requestWillBeSent','Network.responseReceived','Network.loadingFinished','Network.loadingFailed','Network.requestServedFromCache','Page.frameNavigated','Page.navigatedWithinDocument','Page.frameStartedLoading','Page.frameStoppedLoading','Page.lifecycleEvent','Runtime.consoleAPICalled','Runtime.exceptionThrown','Runtime.bindingCalled']) cdp.on(event,p=>mark(event,p));
   await cdp.send('Page.enable');
+  await cdp.send('Page.setLifecycleEventsEnabled',{enabled:true});
   await cdp.send('Runtime.enable');
   await cdp.send('Console.enable');
   await cdp.send('Network.enable');
+  await cdp.send('Runtime.addBinding',{name:'qaTraceFetch'});
+  await cdp.send('Page.addScriptToEvaluateOnNewDocument',{source:`(() => {
+    const nativeFetch=window.fetch;
+    window.fetch=function(input,init) {
+      const url=new URL(input instanceof Request?input.url:input,location.href).href;
+      const signal=init?.signal||(input instanceof Request?input.signal:null);
+      const tag=(event)=>qaTraceFetch(JSON.stringify({event,url,wallMs:performance.timeOrigin+performance.now(),stack:new Error().stack,href:location.href,screen:document.querySelector('.learning-viewer')?'viewer':document.querySelector('.learning-screen')?'learning':'other'}));
+      tag('fetch:start');
+      if(signal)signal.addEventListener('abort',()=>tag('fetch:signal-abort'),{once:true});
+      return nativeFetch.apply(this,arguments);
+    };
+  })()`});
+  mark('automation:initial-navigation');
+  await cdp.send('Page.navigate',{url:`http://127.0.0.1:${PORT}/index.html`});
 
   // Set default desktop viewport 1440x900
   await cdp.send('Emulation.setDeviceMetricsOverride', {
@@ -240,6 +331,7 @@ async function runQA() {
   await new Promise(r => setTimeout(r, 600));
 
   // In Learning Center, click Domain 1 card
+  mark('route:domain-one');
   await click('#learning-domain-1');
   console.log('    Opened Domain 1 Overview');
   await new Promise(r => setTimeout(r, 600));
@@ -543,14 +635,67 @@ async function runQA() {
   fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
   console.log(`[12] Full report written to: ${reportPath}`);
 
-  // Cleanup
-  cdp.close();
-  chromeProcess.kill();
-  server.close();
+  try {
+
+  mark('supplemental:start');
+  const stateOfPage = () => cdp.eval(String.raw`(() => {
+    const viewer=document.querySelector('.learning-viewer');
+    const slide=document.querySelector('.learning-slide');
+    return {url:location.href,counter:document.querySelector('.learning-counter')?.textContent?.trim(),
+      title:document.querySelector('.learning-slide-title')?.textContent?.trim(),
+      images:[...document.querySelectorAll('.learning-viewer img')].map(i=>({src:i.currentSrc||i.src,loaded:i.complete&&i.naturalWidth>0})),
+      svgCount:viewer?.querySelectorAll('svg').length||0,
+      cssLoaded:[...document.querySelectorAll('link[rel=stylesheet]')].filter(x=>new URL(x.href).origin===location.origin).every(x=>!!x.sheet),
+      visible:!!slide&&slide.getBoundingClientRect().width>0,
+      contentError:document.body.textContent.includes('Learning content could not be loaded.'),
+      mode:viewer?.classList.contains('learning-reading-mode'),
+      saved:JSON.parse(localStorage.getItem('sec_cert_learning_progress_v1')||'{}'),
+      startEnabled:document.querySelector('#btn-start-learning')?.disabled===false,
+      dialog:!!document.querySelector('[role=dialog]')};
+  })()`);
+  const waitFor = async (fn) => { for(let i=0;i<50;i++){const s=await stateOfPage();if(fn(s))return s;await new Promise(r=>setTimeout(r,100));}throw Error('Supplemental state timeout'); };
+  const original=await stateOfPage();
+  await click('[data-action="reading"]');
+  const reading=await waitFor(s=>s.mode===true&&s.visible);
+  await click('[data-action="reading"]');
+  await waitFor(s=>s.mode===false&&s.visible);
+  await click('[data-action="lesson-info"]');
+  const info=await waitFor(s=>s.dialog);
+  await click('[data-action="close-info"]');
+  await waitFor(s=>!s.dialog);
+  await click('[data-action="back-domain"]');
+  const domain=await waitFor(s=>s.startEnabled);
+  await click('#btn-start-learning');
+  const resumed=await waitFor(s=>s.visible&&s.counter===original.counter);
+  const contents=[original,reading,resumed].every(s=>s.visible&&!s.contentError&&s.cssLoaded&&s.images.every(i=>i.loaded));
+  if (!contents || !Object.values(resumed.saved.lessons||{}).some(x=>x.lastSlideId&&x.visitedSlideIds?.length)) throw Error('Supplemental content or progress assertion failed');
+  fs.writeFileSync(path.join(ARTIFACTS_DIR,'supplemental.json'),JSON.stringify({original,reading,info,domain,resumed},null,2));
+  mark('supplemental:passed');
+  const network = checkNetwork(trace);
+  report.network = network;
+  report.networkErrors = network.unexplained;
+  report.expectedRouteCancellations = network.expected;
+  fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
+  assert.equal(network.httpErrors.length, 0, 'HTTP errors during Learning Slides QA');
+  assert.equal(network.runtimeErrors.length, 0, 'Browser exceptions or console errors during Learning Slides QA');
+  assert.equal(network.unexplained.length, 0, 'Unexpected or unexplained network failure during Learning Slides QA');
+  if (delayedRouteCheck) {
+    assert.equal(held.size, 3, 'Controlled route-cancellation fixture must hold exactly three requests');
+    assert.deepEqual(new Set(network.expected.map(e => new URL(e.url).pathname)), held,
+      'Every held request must be individually attributed to the outgoing Learning Center route');
+  }
+  console.log('Network gate passed: ' + network.expected.length + ' verified background route cancellations.');
+
+
+  } finally {
+    mark('teardown:start');flush();
+    cdp.close();chromeProcess.kill();server.close();
+  }
   console.log('--- Browser QA Complete ---');
 }
 
 runQA().catch(err => {
+  mark('harness:error',{message:String(err.stack)});flush();
   console.error('Browser QA Error:', err);
   process.exit(1);
 });
