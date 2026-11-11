@@ -234,9 +234,17 @@ export function renderQuizScreen(container, onRerender) {
               </div>
             </div>
           ` : ''}
-          <button type="button" class="btn btn-finish-quiz ${isExam ? 'exam' : 'practice'}" id="btn-quiz-finish">
-            ${finishButtonLabel}
-          </button>
+          <div class="quiz-finish-actions">
+            <button type="button" class="btn btn-finish-quiz ${isExam ? 'exam' : 'practice'}" id="btn-quiz-finish">
+              ${finishButtonLabel}
+            </button>
+            <button type="button" class="btn btn-secondary btn-quiz-next-header" id="btn-quiz-next-header"
+              aria-label="${nextButtonText.replace(/ →$/, '')}" ${nextButtonDisabled}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -497,16 +505,18 @@ export function renderQuizScreen(container, onRerender) {
   }
 
   // 8. Next / Finish Button
-  const nextBtn = container.querySelector('#btn-quiz-next');
-  if (nextBtn && (!nextButtonDisabled || isExam)) {
-    nextBtn.addEventListener('click', () => {
+  if (!nextButtonDisabled) {
+    const handleNext = () => {
       if (isLastQuestion) {
         openFinishModal();
       } else {
         nextQuestion();
         renderQuizScreen(container, onRerender);
       }
-    });
+    };
+    for (const button of container.querySelectorAll('#btn-quiz-next, #btn-quiz-next-header')) {
+      button.addEventListener('click', handleNext);
+    }
   }
 }
 
