@@ -6,6 +6,8 @@ Completed: 2026-11-06 (Asia/Bangkok). Scope: ISC2 CC 2026 `next-bank` only. The 
 
 ## Implemented result
 
+The [academic verification replay guide](academic-verification-replay.md) documents how to rerun the original expansion checks and the later academic acceptance checks against their respective snapshots.
+
 Exactly **200** runtime questions, including **43 original new questions (1041–1083)**. All original157 records are byte-for-byte unchanged, including all six unresolved records. IDs, answer keys, option order, content, schema and relative ordering of the original records are preserved. No original question was regenerated. New records were appended to each existing domain array.
 
 | Domain | Existing | Added IDs | Added | Final |
@@ -150,7 +152,7 @@ Q614/Q627 distractor replacement is substantive assessment revision even though 
 | `node tools/verify-isc2-question-migration.mjs` | Exit1 →Exit1 | Missing historical root HTML fixture. |
 | `node tools/verify-domain5-integration.mjs` | Exit1 →Exit1 | Historical protected pre-Phase1 Domain1 hash. Actual hash changes further because authorized additions are appended. |
 
-**11 focused checks plus37 targeted regression checks pass. No new failed test names or new failing commands in the compared regression set.** Detailed before/after logs and [regression-comparison.json](../../../artifacts/qa/question-bank-200-finalization/regression-comparison.json) are retained. Failed assertions during test/harness development were investigated: sentence punctuation was initially parsed as part of numeric values; saved answers are objects rather than bare indices; original flat/structured rationale strings were not universally literal duplicates. Tests were corrected to the real API and explicit preservation scope, not by modifying the engine or original content.
+**11 focused checks plus37 targeted regression checks pass. No new failed test names or new failing commands in the compared regression set.** Detailed before/after logs and [regression-comparison.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/regression-comparison.json) are retained. Failed assertions during test/harness development were investigated: sentence punctuation was initially parsed as part of numeric values; saved answers are objects rather than bare indices; original flat/structured rationale strings were not universally literal duplicates. Tests were corrected to the real API and explicit preservation scope, not by modifying the engine or original content.
 
 There are127 pre-existing literal flat/structured rationale differences across27 original records, preserved exactly and logged in [historical-flat-representation-differences.json](../../../artifacts/qa/question-bank-200-finalization/historical-flat-representation-differences.json). This string screen does not mean127 semantic errors. All structured explanation content renders fully; every new flat/structured rationale agrees. No blanket full-bank academic acceptance follows from technical tests.
 
@@ -158,7 +160,7 @@ No root package.json/test runner is present; relevant Node verification tools we
 
 ## Real Chrome evidence
 
-Installed **Chrome/156.0.8078.80** on Windows, launched headless with a fresh temporary profile and loopback-only server. This is actual installed Chrome/CDP testing, not a DOM-only mock and not human acceptance. [Machine results](../../../artifacts/qa/question-bank-200-finalization/chrome/browser-results.json), [run log](../../../artifacts/qa/question-bank-200-finalization/chrome-run.log), and40 screenshots are included.
+Installed **Chrome/156.0.8078.80** on Windows, launched headless with a fresh temporary profile and loopback-only server. This is actual installed Chrome/CDP testing, not a DOM-only mock and not human acceptance. [Machine results](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/chrome/browser-results.json), [run log](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/chrome-run.log), and40 screenshots are included.
 
 - **897 passing checks**, zero application console errors/exceptions.
 - **324** representative Study/Practice/completed-review states: six new IDs1044/1051/1065/1071/1080/1083 ×3 viewports ×2 themes ×3 views ×3 languages.
@@ -171,13 +173,13 @@ Installed **Chrome/156.0.8078.80** on Windows, launched headless with a fresh te
 
 | Screenshot | Evidence |
 | --- | --- |
-| [Desktop configuration200](../../../artifacts/qa/question-bank-200-finalization/chrome/configuration-1440-light.png) | Available count and domain totals. |
-| [Mobile configuration200](../../../artifacts/qa/question-bank-200-finalization/chrome/configuration-390-dark.png) | Mobile/dark setup. |
-| [Long bilingual Study1051](../../../artifacts/qa/question-bank-200-finalization/chrome/q1051-study-390x844-dark-both.png) | Mobile Thai/English wrap and B highlight. |
-| [Practice1044](../../../artifacts/qa/question-bank-200-finalization/chrome/q1044-practice-390x844-dark-both.png) | Feedback after an answer and complete explanations. |
-| [Completed review1083](../../../artifacts/qa/question-bank-200-finalization/chrome/q1083-review-1440x900-light-both.png) | Permitted bilingual review and D key. |
-| [Exam configuration125/120](../../../artifacts/qa/question-bank-200-finalization/chrome/exam-configuration-125-120.png) | Fixed Exam configuration. |
-| [Active125-question Exam](../../../artifacts/qa/question-bank-200-finalization/chrome/active-exam-125-no-answers.png) | Answer secrecy before completion. |
+| [Desktop configuration200](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/chrome/configuration-1440-light.png) | Available count and domain totals. |
+| [Mobile configuration200](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/chrome/configuration-390-dark.png) | Mobile/dark setup. |
+| [Long bilingual Study1051](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/chrome/q1051-study-390x844-dark-both.png) | Mobile Thai/English wrap and B highlight. |
+| [Practice1044](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/chrome/q1044-practice-390x844-dark-both.png) | Feedback after an answer and complete explanations. |
+| [Completed review1083](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/chrome/q1083-review-1440x900-light-both.png) | Permitted bilingual review and D key. |
+| [Exam configuration125/120](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/chrome/exam-configuration-125-120.png) | Fixed Exam configuration. |
+| [Active125-question Exam](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/chrome/active-exam-125-no-answers.png) | Answer secrecy before completion. |
 
 An initial Chrome pass753 checks/270 states was retained separately; the final897-check pass adds long-scenario/B-position coverage. Its counts are not added to the final totals. The screenshot index lists every final capture.
 
@@ -197,7 +199,7 @@ Task-entry protection covers **1489 existing files**. Exactly **9 existing files
 | `tools/verify-explanation-formatting-2026.mjs` | Expected Domain1 structured count/title24→48 only. Prior UI-test edits preserved. |
 | `docs/plans/task.md` | Add/update finalization row only. |
 
-Created production metadata: `data/certs/isc2/cc/versions/next-bank/question-metadata.json`. Created regression tool: `tools/verify-question-bank-200.mjs`. Created this report: `docs/plans/isc2-cc-2026/question-bank-200-final-report.md`. Every other new evidence/script/copy/log/worksheet/image is confined to `artifacts/qa/question-bank-200-finalization/`. Exact paths and SHA256 values: [delivery-manifest.json](../../../artifacts/qa/question-bank-200-finalization/delivery-manifest.json). Preservation details: [preservation.json](../../../artifacts/qa/question-bank-200-finalization/preservation.json).
+Created production metadata: `data/certs/isc2/cc/versions/next-bank/question-metadata.json`. Created regression tool: `tools/verify-question-bank-200.mjs`. Created this report: `docs/plans/isc2-cc-2026/question-bank-200-final-report.md`. Every other new evidence/script/copy/log/worksheet/image is confined to `artifacts/qa/question-bank-200-finalization/`. Exact paths and SHA256 values: [delivery-manifest.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/delivery-manifest.json). Preservation details: [preservation.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-200-finalization/preservation.json).
 
 The branch is `codex/isc2-cc-200-finalization`. Pre-existing unrelated dirty-tree changes were retained; they are not attributed to this task. No commit, merge, push or deployment was performed.
 

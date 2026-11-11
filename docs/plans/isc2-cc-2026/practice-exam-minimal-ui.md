@@ -51,13 +51,13 @@ QA evidence is in `artifacts/qa/practice-exam-minimal-ui/`.
 
 | Check | Result | Evidence |
 | --- | --- | --- |
-| New quiz UI + Study Answers + explanation tests | **19/19 PASS** | [focused-tests.txt](../../../artifacts/qa/practice-exam-minimal-ui/focused-tests.txt) |
-| Existing engine suite | **7/7 PASS** | [engine-regression.txt](../../../artifacts/qa/practice-exam-minimal-ui/engine-regression.txt) |
-| Existing persistence suite | **8/8 PASS** | [persistence-regression.txt](../../../artifacts/qa/practice-exam-minimal-ui/persistence-regression.txt) |
-| Real Chrome integration | **139/139 PASS** | [browser-results.json](../../../artifacts/qa/practice-exam-minimal-ui/browser-results.json) |
+| New quiz UI + Study Answers + explanation tests | **19/19 PASS** | [focused-tests.txt](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/focused-tests.txt) |
+| Existing engine suite | **7/7 PASS** | [engine-regression.txt](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/engine-regression.txt) |
+| Existing persistence suite | **8/8 PASS** | [persistence-regression.txt](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/persistence-regression.txt) |
+| Real Chrome integration | **139/139 PASS** | [browser-results.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/browser-results.json) |
 | Visual matrix | **90/90 states PASS**, zero horizontal overflow | Same browser JSON |
-| Broader historical version/language suites plus focused suites | **37 PASS / 6 historical FAIL**, 43 total; no new failure names | [broad-regressions.txt](../../../artifacts/qa/practice-exam-minimal-ui/broad-regressions.txt), [baseline-comparison.json](../../../artifacts/qa/practice-exam-minimal-ui/baseline-comparison.json) |
-| Production preservation | Only quiz renderer and quiz CSS changed; **143 other files byte-identical** | [before-hashes.json](../../../artifacts/qa/practice-exam-minimal-ui/before-hashes.json), [preservation.json](../../../artifacts/qa/practice-exam-minimal-ui/preservation.json) |
+| Broader historical version/language suites plus focused suites | **37 PASS / 6 historical FAIL**, 43 total; no new failure names | [broad-regressions.txt](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/broad-regressions.txt), [baseline-comparison.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/baseline-comparison.json) |
+| Production preservation | Only quiz renderer and quiz CSS changed; **143 other files byte-identical** | [before-hashes.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/before-hashes.json), [preservation.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/preservation.json) |
 | Scoped diff whitespace checks | PASS | `git diff --check` |
 
 The 90-state matrix covers 1440×900, 1920×1080 and 390×844, light/dark and EN/TH/EN+TH: Practice default/wrong/correct feedback and Exam default/selected. Checks cover neutral rows, comfortable targets, blue/green/red treatments, correct disclosure stage, Exam secrecy, neutral Explanation, domain names and overflow. Further checks cover answer positions A–D, all five domain titles at desktop/mobile widths, a long scenario, native mouse hover/full-row clicking, native Tab/Enter focus and activation, first-answer locking, language switching, Previous/Next, running countdown, saved-session restoration after resetting in-memory quiz state, completion/results and legacy/Study Answers isolation. Zero application console errors or uncaught exceptions.
@@ -66,13 +66,13 @@ Chrome used an isolated temporary profile and local HTTP server; launch used the
 
 Screenshots: **52 captures**. Manually inspected default, hover, keyboard focus, Exam selected, Practice feedback, Thai/bilingual, light/dark and long-domain mobile examples:
 
-- [Desktop default, dark](../../../artifacts/qa/practice-exam-minimal-ui/practice-default-1440-dark.png)
-- [Desktop hover](../../../artifacts/qa/practice-exam-minimal-ui/desktop-neutral-hover.png)
-- [Keyboard focus](../../../artifacts/qa/practice-exam-minimal-ui/desktop-keyboard-focus.png)
-- [Practice feedback, desktop dark](../../../artifacts/qa/practice-exam-minimal-ui/practice-1440x900-dark-both.png)
-- [Exam selected, mobile light](../../../artifacts/qa/practice-exam-minimal-ui/exam-390x844-light-both.png)
-- [Practice Thai feedback, mobile light](../../../artifacts/qa/practice-exam-minimal-ui/practice-390x844-light-th.png)
-- [Long domain heading, mobile dark](../../../artifacts/qa/practice-exam-minimal-ui/long-domain-mobile-dark.png)
+- [Desktop default, dark](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/practice-default-1440-dark.png)
+- [Desktop hover](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/desktop-neutral-hover.png)
+- [Keyboard focus](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/desktop-keyboard-focus.png)
+- [Practice feedback, desktop dark](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/practice-1440x900-dark-both.png)
+- [Exam selected, mobile light](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/exam-390x844-light-both.png)
+- [Practice Thai feedback, mobile light](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/practice-390x844-light-th.png)
+- [Long domain heading, mobile dark](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/practice-exam-minimal-ui/long-domain-mobile-dark.png)
 
 ## Review and remaining limitations
 

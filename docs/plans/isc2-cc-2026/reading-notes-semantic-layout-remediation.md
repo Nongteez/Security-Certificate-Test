@@ -104,8 +104,8 @@ Direct comparison examples (1366×768, Dark):
 
 | Component | Before | After |
 | --- | --- | --- |
-| BC/DR scope | [Before](../../../artifacts/qa/reading-notes-semantic-layout-remediation/screenshots/matrix-before/D2-1366x768-dark-01-diagram.png) | [After](../../../artifacts/qa/reading-notes-semantic-layout-remediation/screenshots/matrix-after-final/D2-1366x768-dark-01-diagram.png) |
-| Measurement grouping | [Before](../../../artifacts/qa/reading-notes-semantic-layout-remediation/screenshots/matrix-before/D2-1366x768-dark-10-diagram.png) | [After](../../../artifacts/qa/reading-notes-semantic-layout-remediation/screenshots/matrix-after-final/D2-1366x768-dark-10-diagram.png) |
+| BC/DR scope | [Before](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/reading-notes-semantic-layout-remediation/screenshots/matrix-before/D2-1366x768-dark-01-diagram.png) | [After](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/reading-notes-semantic-layout-remediation/screenshots/matrix-after-final/D2-1366x768-dark-01-diagram.png) |
+| Measurement grouping | [Before](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/reading-notes-semantic-layout-remediation/screenshots/matrix-before/D2-1366x768-dark-10-diagram.png) | [After](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/reading-notes-semantic-layout-remediation/screenshots/matrix-after-final/D2-1366x768-dark-10-diagram.png) |
 
 ## 9. Browser verification matrix
 

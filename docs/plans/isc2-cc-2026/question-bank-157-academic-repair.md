@@ -533,10 +533,10 @@ Existing saved Chrome evidence was inspected on resume; the bank files still exa
 
 | Screenshot | Before | After |
 | --- | --- | --- |
-| Q588 study 1440x900 | [PNG](../../../artifacts/qa/question-bank-academic-repair/before/q588-study-1440x900-light-both.png) | [PNG](../../../artifacts/qa/question-bank-academic-repair/after/q588-study-1440x900-light-both.png) |
-| Q611 practice 390x844 | [PNG](../../../artifacts/qa/question-bank-academic-repair/before/q611-practice-390x844-dark-both.png) | [PNG](../../../artifacts/qa/question-bank-academic-repair/after/q611-practice-390x844-dark-both.png) |
-| Q591 review 1440x900 | [PNG](../../../artifacts/qa/question-bank-academic-repair/before/q591-review-1440x900-light-both.png) | [PNG](../../../artifacts/qa/question-bank-academic-repair/after/q591-review-1440x900-light-both.png) |
-| Q1018 study 390x844 | [PNG](../../../artifacts/qa/question-bank-academic-repair/before/q1018-study-390x844-dark-both.png) | [PNG](../../../artifacts/qa/question-bank-academic-repair/after/q1018-study-390x844-dark-both.png) |
+| Q588 study 1440x900 | [PNG](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-academic-repair/before/q588-study-1440x900-light-both.png) | [PNG](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-academic-repair/after/q588-study-1440x900-light-both.png) |
+| Q611 practice 390x844 | [PNG](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-academic-repair/before/q611-practice-390x844-dark-both.png) | [PNG](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-academic-repair/after/q611-practice-390x844-dark-both.png) |
+| Q591 review 1440x900 | [PNG](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-academic-repair/before/q591-review-1440x900-light-both.png) | [PNG](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-academic-repair/after/q591-review-1440x900-light-both.png) |
+| Q1018 study 390x844 | [PNG](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-academic-repair/before/q1018-study-390x844-dark-both.png) | [PNG](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-academic-repair/after/q1018-study-390x844-dark-both.png) |
 
 ## Preservation and exact file scope
 

@@ -57,13 +57,13 @@ Modified:
 
 | Verification | Result | Evidence |
 | --- | --- | --- |
-| New study tests + existing explanation regressions | PASS 15/15 (7 new, 8 existing); includes all 157 questions × 3 languages | [focused-tests.txt](../../../artifacts/qa/study-answers/focused-tests.txt) |
-| Existing quiz engine suite | PASS 7/7 | [engine-regression.txt](../../../artifacts/qa/study-answers/engine-regression.txt) |
-| Existing persistence suite | PASS 8/8, including legacy 583-question counts | [persistence-regression.txt](../../../artifacts/qa/study-answers/persistence-regression.txt) |
-| Real Chrome integration | PASS 47/47 checks; 471 bank/language cases; no application console errors or uncaught exceptions | [browser-results.json](../../../artifacts/qa/study-answers/browser-results.json) |
+| New study tests + existing explanation regressions | PASS 15/15 (7 new, 8 existing); includes all 157 questions × 3 languages | [focused-tests.txt](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/focused-tests.txt) |
+| Existing quiz engine suite | PASS 7/7 | [engine-regression.txt](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/engine-regression.txt) |
+| Existing persistence suite | PASS 8/8, including legacy 583-question counts | [persistence-regression.txt](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/persistence-regression.txt) |
+| Real Chrome integration | PASS 47/47 checks; 471 bank/language cases; no application console errors or uncaught exceptions | [browser-results.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/browser-results.json) |
 | Layout matrix | PASS all 18 states: 1440×900, 1920×1080, 390×844 × light/dark × EN/TH/both; 0 horizontal page overflow | Browser JSON + screenshots below |
-| Protected source/data snapshot | PASS 212 files byte-identical, including all question banks, loader/engine/storage/state and unrelated source work | [preservation.json](../../../artifacts/qa/study-answers/preservation.json) |
-| Broader historical version/language suites plus focused suites | 33 PASS / 6 FAIL out of 39; same 6 failing test names on pre-change bootstrap/setup/router code (26 PASS / 6 FAIL out of 32) | [comparison](../../../artifacts/qa/study-answers/baseline-comparison.json), [before](../../../artifacts/qa/study-answers/study-baseline-regressions.txt), [after](../../../artifacts/qa/study-answers/study-regressions.txt) |
+| Protected source/data snapshot | PASS 212 files byte-identical, including all question banks, loader/engine/storage/state and unrelated source work | [preservation.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/preservation.json) |
+| Broader historical version/language suites plus focused suites | 33 PASS / 6 FAIL out of 39; same 6 failing test names on pre-change bootstrap/setup/router code (26 PASS / 6 FAIL out of 32) | [comparison](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/baseline-comparison.json), [before](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/study-baseline-regressions.txt), [after](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/study-regressions.txt) |
 | Scoped diff whitespace validation | PASS `git diff --check` | Executed after implementation |
 
 The six historical failures are five in `verify-exam-versions.mjs` and one in `verify-ui-language-boundary.mjs`: four still treat `next-bank` as unavailable, one integrity fixture references the absent `original/isc2_cc_BothThai-eng_583quiz.html`, and one expects four cards although the application has five. Baseline and implementation were tested separately; no historical tests were weakened or rewritten. The dedicated new tests verify current scope and legacy behavior directly.
@@ -74,11 +74,11 @@ Browser checks exercised real button handlers, Previous/Next and boundary states
 
 Screenshots: 18 study captures, 6 explanation captures and 6 configuration captures. Representative manually inspected evidence:
 
-- [Mobile bilingual, light](../../../artifacts/qa/study-answers/study-390x844-light-both.png)
-- [Desktop bilingual, dark](../../../artifacts/qa/study-answers/explanation-1440x900-dark.png)
-- [Large desktop bilingual, light](../../../artifacts/qa/study-answers/explanation-1920x1080-light.png)
-- [Mobile configuration, light](../../../artifacts/qa/study-answers/configuration-390x844-light.png)
-- [Desktop configuration, dark](../../../artifacts/qa/study-answers/configuration-1440x900-dark.png)
+- [Mobile bilingual, light](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/study-390x844-light-both.png)
+- [Desktop bilingual, dark](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/explanation-1440x900-dark.png)
+- [Large desktop bilingual, light](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/explanation-1920x1080-light.png)
+- [Mobile configuration, light](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/configuration-390x844-light.png)
+- [Desktop configuration, dark](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers/configuration-1440x900-dark.png)
 
 Visual inspection confirmed Thai wrapping, clear correct-answer labeling, aligned primary/secondary actions and readable explanations in both themes. Study-specific text sizes preserve comfortable explanation reading on mobile. Screenshot capture waits for question/explanation animations to settle.
 
@@ -121,6 +121,6 @@ Verification:
 - Manually inspected actual mobile light and desktop dark bilingual screenshots with correct positions A and D; confirmed cleaner rows, preserved green emphasis, inline domain/title and complete readable explanations.
 - No application console errors or uncaught exceptions. Tests use an isolated Chrome profile. No new scoped issues found. Existing historical failures/117-question allocation described above were not changed; the broader historical suites were not rerun for this visual-only refinement.
 
-Evidence: [browser results](../../../artifacts/qa/study-answers-ui-refinement/browser-results.json), [focused tests](../../../artifacts/qa/study-answers-ui-refinement/focused-tests.txt), [engine](../../../artifacts/qa/study-answers-ui-refinement/engine-regression.txt), [persistence](../../../artifacts/qa/study-answers-ui-refinement/persistence-regression.txt), [mobile light](../../../artifacts/qa/study-answers-ui-refinement/refined-390-light-answer-A.png), [desktop dark](../../../artifacts/qa/study-answers-ui-refinement/refined-1440-dark-answer-D.png).
+Evidence: [browser results](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers-ui-refinement/browser-results.json), [focused tests](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers-ui-refinement/focused-tests.txt), [engine](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers-ui-refinement/engine-regression.txt), [persistence](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers-ui-refinement/persistence-regression.txt), [mobile light](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers-ui-refinement/refined-390-light-answer-A.png), [desktop dark](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-answers-ui-refinement/refined-1440-dark-answer-D.png).
 
 Ready for human visual review; not human-accepted.

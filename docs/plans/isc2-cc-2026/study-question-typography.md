@@ -49,13 +49,13 @@ Computed styles and screenshots were captured before production edits, then reca
 
 Evidence:
 
-- [Before computed styles](../../../artifacts/qa/study-question-typography/before/browser-results.json)
-- [After computed styles](../../../artifacts/qa/study-question-typography/after/browser-results.json)
-- [Exact comparison and preservation](../../../artifacts/qa/study-question-typography/comparison.json)
-- [Focused tests](../../../artifacts/qa/study-question-typography/focused-tests.txt), [engine](../../../artifacts/qa/study-question-typography/engine-regression.txt), [persistence](../../../artifacts/qa/study-question-typography/persistence-regression.txt)
-- [Broad regressions](../../../artifacts/qa/study-question-typography/broad-regressions.txt), [historical failure comparison](../../../artifacts/qa/study-question-typography/baseline-comparison.json)
-- [Mobile Thai before](../../../artifacts/qa/study-question-typography/before/study-390x844-light-th.png) → [after](../../../artifacts/qa/study-question-typography/after/study-390x844-light-th.png)
-- [Desktop bilingual before](../../../artifacts/qa/study-question-typography/before/study-1440x900-dark-both.png) → [after](../../../artifacts/qa/study-question-typography/after/study-1440x900-dark-both.png)
+- [Before computed styles](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/before/browser-results.json)
+- [After computed styles](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/after/browser-results.json)
+- [Exact comparison and preservation](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/comparison.json)
+- [Focused tests](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/focused-tests.txt), [engine](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/engine-regression.txt), [persistence](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/persistence-regression.txt)
+- [Broad regressions](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/broad-regressions.txt), [historical failure comparison](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/baseline-comparison.json)
+- [Mobile Thai before](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/before/study-390x844-light-th.png) → [after](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/after/study-390x844-light-th.png)
+- [Desktop bilingual before](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/before/study-1440x900-dark-both.png) → [after](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/study-question-typography/after/study-1440x900-dark-both.png)
 
 Visually inspected mobile light Thai before/after and desktop dark bilingual after screenshots: excessive question bolding is removed, the long scenario wraps naturally, and answer/explanation styles retain their appearance. Review verified the helper's default path is unchanged, existing shared quiz CSS was not edited, and class reuse is limited to the Study question call site.
 

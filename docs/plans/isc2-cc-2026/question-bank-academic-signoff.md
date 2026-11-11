@@ -232,7 +232,7 @@ Outstanding source constraints include named-law applicability, exact retention/
 
 ## Preservation and read-only validation
 
-Entry snapshot covers **1,435 existing protected files**, including current bank/code/config, academic sources, vocabulary/slides, previous reports and previous repair evidence. All must retain their entry hashes; the final result is recorded in `artifacts/qa/question-bank-academic-signoff/verification.json`. The task tracker is the only pre-existing document intentionally updated outside that protected snapshot.
+Entry snapshot covers **1,435 existing protected files**, including current bank/code/config, academic sources, vocabulary/slides, previous reports and previous repair evidence. All must retain their entry hashes; the final result is recorded in [`artifacts/qa/question-bank-academic-signoff/verification.json`](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/question-bank-academic-signoff/verification.json). The task tracker is the only pre-existing document intentionally updated outside that protected snapshot.
 
 - Fresh read-only `verify-repairs.mjs`: **8/8 pass**. It confirms the existing 28 repairs/proposals and prior 129-record invariants; it does not prove independent academic correctness or erase the new review findings.
 - Fresh `tools/verify-study-answers.mjs`: **8/8 pass**.

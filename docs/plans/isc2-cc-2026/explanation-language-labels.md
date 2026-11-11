@@ -33,14 +33,14 @@ Exact files changed for this task:
 
 | Verification | Result | Evidence |
 | --- | --- | --- |
-| Shared explanation, Study Answers and quiz UI focused suites | **19/19 PASS** | [focused-tests.txt](../../../artifacts/qa/explanation-language-labels/focused-tests.txt) |
-| Existing engine regression suite | **7/7 PASS** | [engine-regression.txt](../../../artifacts/qa/explanation-language-labels/engine-regression.txt) |
-| Existing persistence suite | **8/8 PASS** | [persistence-regression.txt](../../../artifacts/qa/explanation-language-labels/persistence-regression.txt) |
-| Real Chrome | **78/78 checks PASS** | [browser-results.json](../../../artifacts/qa/explanation-language-labels/browser-results.json) |
+| Shared explanation, Study Answers and quiz UI focused suites | **19/19 PASS** | [focused-tests.txt](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/explanation-language-labels/focused-tests.txt) |
+| Existing engine regression suite | **7/7 PASS** | [engine-regression.txt](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/explanation-language-labels/engine-regression.txt) |
+| Existing persistence suite | **8/8 PASS** | [persistence-regression.txt](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/explanation-language-labels/persistence-regression.txt) |
+| Real Chrome | **78/78 checks PASS** | [browser-results.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/explanation-language-labels/browser-results.json) |
 | All-view matrix | **54/54 states PASS**: Study, Practice, completed Exam review × EN/TH/both × light/dark × 1440×900, 1920×1080, 390×844 | Same browser JSON |
 | Exhaustive explanation content | **471/471 bank/language cases PASS**: all 157 questions, correct/incorrect reasoning, available examples/tips | Same browser JSON |
-| Source preservation | Only explanation component/CSS changed in production; **143 other source/data files byte-identical** | [preservation.json](../../../artifacts/qa/explanation-language-labels/preservation.json), [before-hashes.json](../../../artifacts/qa/explanation-language-labels/before-hashes.json) |
-| Broader historical regressions | **37 PASS / 6 historical FAIL**, same failing test names as the previous task | [broad-regressions.txt](../../../artifacts/qa/explanation-language-labels/broad-regressions.txt), [baseline-comparison.json](../../../artifacts/qa/explanation-language-labels/baseline-comparison.json) |
+| Source preservation | Only explanation component/CSS changed in production; **143 other source/data files byte-identical** | [preservation.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/explanation-language-labels/preservation.json), [before-hashes.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/explanation-language-labels/before-hashes.json) |
+| Broader historical regressions | **37 PASS / 6 historical FAIL**, same failing test names as the previous task | [broad-regressions.txt](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/explanation-language-labels/broad-regressions.txt), [baseline-comparison.json](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/explanation-language-labels/baseline-comparison.json) |
 | Scoped whitespace checks | PASS | `git diff --check` |
 
 The browser uses an isolated Chrome profile and local HTTP server, with the approved local command outside the sandbox. Language modes were changed using the actual selectors. Practice explanations were checked absent before clicking and present after the existing click trigger. Exam review was entered through real Exam completion and Results → Review Wrong Answers; active Exam checks confirmed absence of explanations and correctness markup before completion. Legacy Practice retains its two explanation badges and independent markup. No application console errors or uncaught exceptions; zero page overflow in the matrix.
@@ -49,9 +49,9 @@ All current bank questions have structured explanations. General-explanation com
 
 18 actual bilingual Chrome screenshots were saved. Visually inspected:
 
-- [Study Answers, mobile light](../../../artifacts/qa/explanation-language-labels/study-390x844-light-both.png)
-- [Practice, desktop dark](../../../artifacts/qa/explanation-language-labels/practice-1440x900-dark-both.png)
-- [Completed Exam review, mobile dark](../../../artifacts/qa/explanation-language-labels/review-390x844-dark-both.png)
+- [Study Answers, mobile light](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/explanation-language-labels/study-390x844-light-both.png)
+- [Practice, desktop dark](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/explanation-language-labels/practice-1440x900-dark-both.png)
+- [Completed Exam review, mobile dark](https://github.com/Nongteez/Security-Certificate-Test/blob/8eecd568d3939cf2ef15babab9befd2ee8c74ab6/artifacts/qa/explanation-language-labels/review-390x844-dark-both.png)
 
 Inspection confirms that redundant explanation labels/badges are absent, main headings remain, language sections have clean spacing and complete readable reasoning, and the surrounding interfaces retain their existing presentation.
 
