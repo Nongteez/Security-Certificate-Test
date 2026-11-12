@@ -84,13 +84,13 @@ test('all bank answers/explanations render immediately in every language without
   }
   assert.equal(JSON.stringify({ bank, quiz: state.quiz }), before);
 });
-test('missing Thai question/choice and general explanation follow English fallback; HTML escaped', () => {
+test('missing Thai question/choice still use English fallback, but explanations omit the absent translation', () => {
   studyAnswers.questions = [{ id: 'test', dom: 1, question: '<script>question</script>', options: ['<b>answer</b>'], correct_idx: 0, explanation: '<em>reason</em>' }];
   studyAnswers.index = 0;state.setup.language = 'th';
   const root = container();renderStudyAnswersScreen(root, () => {});
   assert.ok(root.innerHTML.includes('&lt;script&gt;question&lt;/script&gt;'));
   assert.ok(root.innerHTML.includes('&lt;b&gt;answer&lt;/b&gt;'));
-  assert.ok(root.innerHTML.includes('&lt;em&gt;reason&lt;/em&gt;'));
+  assert.ok(!root.innerHTML.includes('&lt;em&gt;reason&lt;/em&gt;'));
   assert.ok(!root.innerHTML.includes('Why Other Options Are Incorrect'));
   state.setup.language = 'en';
 });
@@ -117,4 +117,72 @@ test('only study question spans reuse the existing responsive quiz typography cl
     assert.doesNotMatch(options,/question-en|question-th/);
   }
   state.setup.language='en';
+});
+
+test('Study Answers pairs reasons by option identity in display order and renders optional sections once', () => {
+  state.selectedCertification = cert;
+  state.selectedExamVersion = 'next-bank';
+  studyAnswers.index = 0;
+  studyAnswers.questions = [{
+    id: 'pairing', dom: 1, question: 'Question', correct_idx: 2,
+    options: ['Choice A', 'Choice B', 'Data Processor', 'Choice D'],
+    options_th: ['ตัวเลือก A', 'ตัวเลือก B', 'ผู้ประมวลผลข้อมูล', 'ตัวเลือก D'],
+    explanation_detail: {
+      correct: { en: 'Correct EN reasoning', th: 'เหตุผลที่ถูกต้อง' },
+      incorrect: [
+        { letter: 'D', text_en: 'Reason D EN', text_th: 'เหตุผล D' },
+        { letter: 'A', text_en: 'Reason A EN', text_th: 'เหตุผล A' },
+        { idx: 1, text_en: 'Reason B EN' }
+      ],
+      example: { en: 'Example EN', th: 'ตัวอย่าง' },
+      exam_tip: { th: 'เคล็ดลับ' }
+    }
+  }];
+  const root = container();
+  function explanation(language) {
+    state.setup.language = language;
+    renderStudyAnswersScreen(root, () => assert.fail('Unexpected redirect'));
+    return root.innerHTML.slice(root.innerHTML.indexOf('id="study-explanation-title"'));
+  }
+  const both = explanation('both');
+  assert.match(both, /<span>Correct Answer<\/span>\s*<\/h3>\s*<div class="study-explanation-options">\s*<div class="study-explanation-row study-explanation-correct-row">\s*<span class="option-letter">C<\/span>/);
+  for (const heading of ['Correct Answer', 'Why Other Options Are Incorrect', 'Real-World Example', 'Exam Tip']) {
+    assert.equal(both.split(heading).length - 1, 1, heading);
+  }
+  const ordered = ['Correct Answer', '>C</span>', 'Data Processor', 'ผู้ประมวลผลข้อมูล', 'Correct EN reasoning', 'เหตุผลที่ถูกต้อง',
+    'Why Other Options Are Incorrect', 'Choice A', 'ตัวเลือก A', 'Reason A EN', 'เหตุผล A',
+    'Choice B', 'ตัวเลือก B', 'Reason B EN', 'Choice D', 'ตัวเลือก D', 'Reason D EN', 'เหตุผล D', 'Example EN', 'ตัวอย่าง', 'เคล็ดลับ'];
+  let cursor = 0;
+  for (const part of ordered) {
+    const at = both.indexOf(part, cursor);
+    assert.ok(at >= cursor, 'Out of order or missing: ' + part);
+    cursor = at + part.length;
+  }
+  assert.doesNotMatch(both, /exp-lang-block/);
+  assert.equal(both.split('Reason B EN').length - 1, 1);
+  const en = explanation('en');
+  assert.match(en, /Reason A EN/);
+  assert.doesNotMatch(en, /เหตุผล|ตัวอย่าง|เคล็ดลับ|Exam Tip/);
+  const th = explanation('th');
+  assert.match(th, /เหตุผล A/);
+  assert.doesNotMatch(th, /Correct EN reasoning|Reason [ABD] EN|Example EN|Data Processor/);
+  state.setup.language = 'en';
+});
+
+test('Study Answers omits empty optional explanation fields and escapes an unstructured explanation', () => {
+  state.selectedCertification = cert;
+  state.selectedExamVersion = 'next-bank';
+  state.setup.language = 'both';
+  studyAnswers.index = 0;
+  const question = { id: 'optional', dom: 2, question: 'Question', options: ['A'], correct_idx: 0 };
+  const root = container();
+  studyAnswers.questions = [{ ...question, explanation_detail: { correct: { en: 'Only English' }, example: {}, exam_tip: { en: ' ' } } }];
+  renderStudyAnswersScreen(root, () => assert.fail('Unexpected redirect'));
+  assert.match(root.innerHTML, /Only English/);
+  assert.doesNotMatch(root.innerHTML, /Why Other Options Are Incorrect|Real-World Example|Exam Tip/);
+  studyAnswers.questions = [{ ...question, explanation: '<script>reason</script>' }];
+  renderStudyAnswersScreen(root, () => assert.fail('Unexpected redirect'));
+  assert.ok(root.innerHTML.includes('&lt;script&gt;reason&lt;/script&gt;'));
+  assert.equal(root.innerHTML.split('&lt;script&gt;reason&lt;/script&gt;').length - 1, 1);
+  state.setup.language = 'en';
 });

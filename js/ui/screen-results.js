@@ -14,7 +14,7 @@ import {
   getWrongQuestions
 } from '../core/quiz-engine.js';
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
-import { renderExplanation2026Content } from './components/explanation-2026.js';
+import { renderExplanation2026Content, renderStudyExplanation2026Content } from './components/explanation-2026.js';
 
 const DOMAIN_MAP = {
   1: { en: 'Security Principles', th: 'หลักการความมั่นคงปลอดภัย' },
@@ -373,7 +373,9 @@ export function renderReviewWrongScreen(container, onRerender) {
   let expContentHtml = '';
   const versionId = state.quiz?.versionId || state.selectedExamVersion;
   if (versionId === 'next-bank') {
-    expContentHtml = renderExplanation2026Content(currentQ, lang);
+    expContentHtml = separateExplanation
+      ? renderStudyExplanation2026Content(currentQ, lang)
+      : renderExplanation2026Content(currentQ, lang);
   } else {
     if (lang === 'en') {
       expContentHtml = `<div class="explanation-en">${escapeHtml(currentQ.explanation)}</div>`;

@@ -217,3 +217,102 @@ export function renderExplanation2026Content(question, lang = 'en') {
     `;
   }
 }
+
+function hasStudyText(text) {
+  return typeof text === 'string' && text.trim().length > 0;
+}
+
+function studyLanguagePair(en, th, lang, render) {
+  return [
+    lang !== 'th' && hasStudyText(en) ? render(en, 'en') : '',
+    lang !== 'en' && hasStudyText(th) ? render(th, 'th') : ''
+  ].join('');
+}
+
+function studyReason(en, th, lang) {
+  return studyLanguagePair(en, th, lang, (text, code) =>
+    `<p class="study-explanation-text" lang="${code}">${escapeHtml(text)}</p>`);
+}
+
+function studyOptionalSection(title, detail, lang) {
+  const reasoning = studyReason(detail?.en, detail?.th, lang);
+  return reasoning ? `
+    <section class="exp-section">
+      <h3 class="exp-section-title">${title}</h3>
+      <div class="exp-section-body">${reasoning}</div>
+    </section>` : '';
+}
+
+function studyOptionLabels(en, th, lang) {
+  const labels = studyLanguagePair(en, th, lang, (text, code) =>
+    `<span lang="${code}">${escapeHtml(text)}</span>`);
+  return labels ? `<div class="study-explanation-labels">${labels}</div>` : '';
+}
+
+/** Pairs each Study Answers explanation with its translation within the same semantic section. */
+export function renderStudyExplanation2026Content(question, lang) {
+  const detail = question.explanation_detail;
+  const wrapper = `study-explanation${lang === 'both' ? ' study-explanation-both' : ''}`;
+  if (!detail?.correct) {
+    const paragraphs = studyLanguagePair(question.explanation, question.explanation_th, lang,
+      (text, code) => `<div lang="${code}">${formatParagraphs(text)}</div>`);
+    return paragraphs ? `<div class="${wrapper} study-explanation-general">${paragraphs}</div>` : '';
+  }
+
+  const { options, options_th: optionsTh, correct_idx: correctIndex } = question;
+  const correctLetter = LETTERS[correctIndex];
+  const correctLabels = studyOptionLabels(options[correctIndex], optionsTh?.[correctIndex], lang);
+  const correctReasoning = studyReason(detail.correct.en, detail.correct.th, lang);
+
+  // The bank identifies an incorrect reason by letter, with an explicit index as a fallback.
+  const incorrectByOption = new Map();
+  for (const item of detail.incorrect ?? []) {
+    const index = LETTER_TO_IDX[item.letter] ?? item.idx;
+    if (Number.isInteger(index) && index >= 0 && index < options.length && index !== correctIndex) {
+      incorrectByOption.set(index, item);
+    }
+  }
+  const incorrect = options.map((option, index) => {
+    const item = incorrectByOption.get(index);
+    const reasoning = studyReason(item?.text_en, item?.text_th, lang);
+    if (!reasoning) return '';
+    const labels = studyOptionLabels(option, optionsTh?.[index], lang);
+    return `
+      <div class="exp-incorrect-item study-explanation-row" data-study-option="${LETTERS[index]}" role="listitem">
+        <span class="option-letter">${LETTERS[index]}</span>
+        <div class="option-content">
+          ${labels}
+          <div class="exp-incorrect-body">${reasoning}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="${wrapper}">
+      <section class="exp-section exp-correct-section">
+        <h3 class="exp-section-title">
+          <span class="exp-status-icon exp-status-correct" aria-hidden="true">✓</span>
+          <span>Correct Answer</span>
+        </h3>
+        <div class="study-explanation-options">
+          <div class="study-explanation-row study-explanation-correct-row">
+            <span class="option-letter">${correctLetter}</span>
+            <div class="option-content">
+              ${correctLabels}
+              ${correctReasoning ? `<div class="exp-section-body">${correctReasoning}</div>` : ''}
+            </div>
+          </div>
+        </div>
+      </section>
+      ${incorrect ? `
+        <section class="exp-section exp-incorrect-section">
+          <h3 class="exp-section-title">
+            <span class="exp-status-icon exp-status-incorrect" aria-hidden="true">✕</span>
+            <span>Why Other Options Are Incorrect</span>
+          </h3>
+          <div class="exp-incorrect-list" role="list">${incorrect}</div>
+        </section>` : ''}
+      ${studyOptionalSection('Real-World Example', detail.example, lang)}
+      ${studyOptionalSection('Exam Tip', detail.exam_tip, lang)}
+    </div>`;
+}

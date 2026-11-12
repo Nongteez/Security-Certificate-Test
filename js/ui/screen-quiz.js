@@ -20,7 +20,7 @@ import {
 } from '../core/quiz-engine.js';
 import { t } from '../core/i18n.js';
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
-import { renderExplanation2026Content } from './components/explanation-2026.js';
+import { renderExplanation2026Content, renderStudyExplanation2026Content } from './components/explanation-2026.js';
 import updatedExamConfig from '../../data/certs/isc2/cc/versions/next-bank/exam.config.js';
 
 const DOMAIN_MAP = {
@@ -142,7 +142,9 @@ export function renderQuizScreen(container, onRerender) {
     let expContentHtml = '';
 
     if (versionId === 'next-bank') {
-      expContentHtml = renderExplanation2026Content(currentQ, lang);
+      expContentHtml = isUpdatedCC
+        ? renderStudyExplanation2026Content(currentQ, lang)
+        : renderExplanation2026Content(currentQ, lang);
     } else {
       if (lang === 'en') {
         expContentHtml = `<div class="explanation-en">${escapeHtml(currentQ.explanation)}</div>`;

@@ -1,6 +1,6 @@
 import { state, updateSetup } from '../core/state.js';
 import { canStudyAnswers, studyAnswers } from '../core/study-answers.js';
-import { escapeHtml, renderExplanation2026Content } from './components/explanation-2026.js';
+import { escapeHtml, renderStudyExplanation2026Content } from './components/explanation-2026.js';
 import { renderThemeToggle, attachThemeToggle } from './components/theme-toggle.js';
 
 // The same content fallback used in quiz questions and choices.
@@ -52,7 +52,7 @@ export function renderStudyAnswersScreen(container, rerender, focusId) {
       </article>
       <section class="explanation-box" aria-labelledby="study-explanation-title">
         <h2 class="explanation-header" id="study-explanation-title">Explanation</h2>
-        ${renderExplanation2026Content(q, lang)}
+        ${renderStudyExplanation2026Content(q, lang)}
       </section>
     </main>`;
   attachThemeToggle(container, 'study-theme-toggle');

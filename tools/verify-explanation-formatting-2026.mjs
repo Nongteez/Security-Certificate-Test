@@ -182,7 +182,7 @@ test('Legacy Isolation: Pre-2026 exam questions NEVER use 2026 structured explan
   engine.exitQuizSession();
 });
 
-test('next-bank Activation: Practice and Review screens render 2026 structured explanation', async () => {
+test('next-bank Practice and Review pair bilingual explanations for the current question', async () => {
   // Load through question loader so that origins are tagged
   const loadedNextBank = await loader.loadDomainQuestions({ vendorId: 'isc2', certId: 'cc', version: 'next-bank', domainId: 1 });
 
@@ -202,15 +202,21 @@ test('next-bank Activation: Practice and Review screens render 2026 structured e
   const { renderQuizScreen } = await import('../js/ui/screen-quiz.js');
   renderQuizScreen(dummyContainer, () => {});
 
-  // next-bank Practice Quiz Screen verification
-  assert.match(dummyContainer.innerHTML, /exp-2026-container/);
-  assert.match(dummyContainer.innerHTML, /exp-correct-section/);
-  assert.match(dummyContainer.innerHTML, /Correct Answer: Option B/);
-  assert.match(dummyContainer.innerHTML, /Why Other Options Are Incorrect/);
-  assert.match(dummyContainer.innerHTML, /<span class="exp-letter-tag">[A-D]<\/span>/, 'Must render plain letter label');
-  assert.doesNotMatch(dummyContainer.innerHTML, /<span class="exp-letter-tag">Option [A-D]<\/span>/, 'Must not render Option badge prefix');
-  assert.doesNotMatch(dummyContainer.innerHTML, /English Explanation/);
-  assert.doesNotMatch(dummyContainer.innerHTML, /คำอธิบายภาษาไทย/);
+  const practice = dummyContainer.innerHTML.split('id="quiz-explanation-box"')[1];
+  assert.ok(practice, 'Practice reveals the explanation after an answer');
+  assert.match(practice, /<span>Correct Answer<\/span>\s*<\/h3>\s*<div class="study-explanation-options">\s*<div class="study-explanation-row study-explanation-correct-row">\s*<span class="option-letter">B<\/span>/);
+  assert.equal(practice.split('Why Other Options Are Incorrect').length - 1, 1);
+  assert.doesNotMatch(practice, /exp-lang-block|Correct Answer: Option/);
+
+  const question = loadedNextBank[0];
+  const correct = question.explanation_detail.correct;
+  const content = [question.options[1], question.options_th[1], correct.en, correct.th];
+  let previous = -1;
+  for (const text of content) {
+    const position = practice.indexOf(escapeHtml(text), previous + 1);
+    assert.ok(position > previous, 'Correct answer labels and reasoning are paired in EN/TH order');
+    previous = position;
+  }
 
   // Now record answer for question 1 and finish quiz to test Review Screen
   engine.recordAnswer({ questionIndex: 1, selectedIndex: (loadedNextBank[1].correct_idx + 1) % 4 }); // wrong answer
@@ -226,12 +232,20 @@ test('next-bank Activation: Practice and Review screens render 2026 structured e
 
   renderReviewWrongScreen(dummyReviewContainer, () => {});
 
-  // Review Screen must also use the structured 2026 explanation layout
-  assert.match(dummyReviewContainer.innerHTML, /exp-2026-container/);
-  assert.match(dummyReviewContainer.innerHTML, /exp-correct-section/);
-  assert.match(dummyReviewContainer.innerHTML, /Why Other Options Are Incorrect/);
-  assert.match(dummyReviewContainer.innerHTML, /<span class="exp-letter-tag">[A-D]<\/span>/, 'Review screen renders plain letter label');
-  assert.doesNotMatch(dummyReviewContainer.innerHTML, /English Explanation/);
+  const review = dummyReviewContainer.innerHTML.split('id="review-explanation-title"')[1];
+  assert.ok(review, 'Review shows the explanation for the missed question');
+  const missed = loadedNextBank[1];
+  const letter = String.fromCharCode(65 + missed.correct_idx);
+  assert.match(review, /<span>Correct Answer<\/span>\s*<\/h3>/);
+  const badge = review.match(/class="study-explanation-row study-explanation-correct-row">\s*<span class="option-letter">([A-D])<\/span>/);
+  assert.equal(badge?.[1], letter);
+  assert.equal(review.split('Why Other Options Are Incorrect').length - 1, 1);
+  assert.doesNotMatch(review, /exp-lang-block|Correct Answer: Option/);
+  const correctEn = escapeHtml(missed.explanation_detail.correct.en);
+  const correctTh = escapeHtml(missed.explanation_detail.correct.th);
+  assert.ok(review.indexOf(correctEn) >= 0 && review.indexOf(correctTh) > review.indexOf(correctEn));
+  const incorrectLetters = [...review.matchAll(/data-study-option="([A-D])"/g)].map(([, option]) => option);
+  assert.deepEqual(incorrectLetters, ['A', 'B', 'C', 'D'].filter(option => option !== letter));
 
   engine.exitQuizSession();
 });

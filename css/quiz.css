@@ -64,6 +64,29 @@
 .study-answers .explanation-header { margin-top: 0; }
 .study-answers .exp-section-body, .study-answers .exp-incorrect-body,
 .study-answers .exp-option-quote, .study-answers .exp-p { font-size: 15px; line-height: 1.8; }
+.study-explanation .exp-section-title { margin: 0; }
+.study-explanation .exp-section { gap: 4px; }
+.study-explanation .exp-section + .exp-section { margin-top: 12px; padding-top: 12px; }
+.study-explanation .exp-section-body,
+.study-explanation .exp-incorrect-body { font-size: 15px; line-height: 1.65; }
+.study-explanation .study-explanation-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 14px;
+}
+.study-explanation .study-explanation-row > .option-content { min-width: 0; }
+.study-explanation .study-explanation-correct-row .exp-section-body { padding-inline-start: 0; }
+.study-explanation .exp-incorrect-item { padding-block: 8px; }
+.study-explanation .exp-incorrect-item:first-child { padding-top: 0; }
+.study-explanation .exp-incorrect-item:last-child { padding-bottom: 0; }
+.study-explanation-labels > span { display: block; }
+.study-explanation-text { margin: 0; white-space: pre-line; }
+.study-explanation-both .study-explanation-text[lang="en"] { color: var(--text); }
+.study-explanation-both .study-explanation-text[lang="th"],
+.study-explanation-both .study-explanation-labels [lang="th"] { color: var(--text-dim); }
+.study-explanation-text + .study-explanation-text { margin-top: 4px; }
+.study-explanation-general > div + div { margin-top: 8px; }
 .study-answers :focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
 @media (max-width: 600px) {
   .study-answers .quiz-header, .study-answers .quiz-header-right { width: 100%; }
@@ -516,7 +539,8 @@
   background: var(--green-bg) !important;
 }
 
-.option-item.correct .option-letter {
+.option-item.correct .option-letter,
+.study-explanation-correct-row > .option-letter {
   background: var(--green) !important;
   color: #ffffff !important;
   border-color: var(--green) !important;
@@ -680,7 +704,8 @@
 }
 
 /* Incorrect options list: clean rows without nested card borders */
-.exp-incorrect-list {
+.exp-incorrect-list,
+.study-explanation-options {
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -730,7 +755,8 @@
   line-height: inherit;
 }
 
-.exp-incorrect-option-text {
+.exp-incorrect-option-text,
+.study-explanation-labels > span {
   font-size: 13.5px;
   font-weight: 600;
   color: var(--text);
@@ -1121,7 +1147,8 @@
 
   .exp-option-quote,
   .exp-section-body,
-  .exp-incorrect-list {
+  .exp-incorrect-list,
+  .study-explanation-options {
     padding-left: 0;
   }
 
@@ -1179,6 +1206,8 @@
 
 /* Narrow Phones (<= 430px, 390px, 375px) */
 @media (max-width: 430px) {
+  .study-explanation .study-explanation-row { gap: 10px; }
+
   .quiz-container {
     gap: 14px;
   }
